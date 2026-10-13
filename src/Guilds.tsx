@@ -645,7 +645,7 @@ export function Guilds({
                         )}
                       </button>
                     ))}
-                  {editable && obj?.room === room && turnControls && perspectiveEditing !== obj.id && (
+                  {editable && obj?.room === room && turnControls && (
                     <div className="guild-turn-controls" aria-label="Vistas do item selecionado">
                       {([-1, 1] as const).map((direction) => (
                         <button
@@ -746,32 +746,7 @@ export function Guilds({
                       </label>
                       {obj?.room === room && (
                         <>
-                          <GuildPerspectiveControls
-                            key={obj.id}
-                            stage={scene}
-                            geometry={pieceGeometry}
-                            perspective={obj.perspective}
-                            guides={
-                              current!.perspectives?.[room] ?? guildRoomPerspective(room)
-                            }
-                            changeGuides={(guides) =>
-                              setDoc((d) =>
-                                d
-                                  ? {
-                                      ...d,
-                                      perspectives: { ...d.perspectives, [room]: guides },
-                                    }
-                                  : d,
-                              )
-                            }
-                            change={(perspective) => updateObject({ perspective })}
-                            active={perspectiveEditing === obj.id}
-                            toggle={() =>
-                              setPerspectiveEditing(
-                                perspectiveEditing === obj.id ? '' : obj.id,
-                              )
-                            }
-                          />
+
                           <label>
                             Tamanho
                             <input
@@ -798,6 +773,32 @@ export function Guilds({
                               ))}
                             </select>
                           </label>
+                          <GuildPerspectiveControls
+                            key={obj.id}
+                            stage={scene}
+                            geometry={pieceGeometry}
+                            perspective={obj.perspective}
+                            guides={
+                              current!.perspectives?.[room] ?? guildRoomPerspective(room)
+                            }
+                            changeGuides={(guides) =>
+                              setDoc((d) =>
+                                d
+                                  ? {
+                                      ...d,
+                                      perspectives: { ...d.perspectives, [room]: guides },
+                                    }
+                                  : d,
+                              )
+                            }
+                            change={(perspective) => updateObject({ perspective })}
+                            active={perspectiveEditing === obj.id}
+                            toggle={() =>
+                              setPerspectiveEditing(
+                                perspectiveEditing === obj.id ? '' : obj.id,
+                              )
+                            }
+                          />
                           <button
                             onClick={() =>
                               setDoc((d) =>

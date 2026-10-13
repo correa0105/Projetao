@@ -3,6 +3,11 @@
   padding-top: 18px;
   border-top: 1px solid #b7904940;
 }
+.guild-perspective-help { padding: 0 0 0 18px; margin: 0 0 14px; font-size: 11px; line-height: 1.7; color: #b9ac93; }
+.guild-perspective-help li + li { margin-top: 7px; }
+.guild-perspective-help strong { color: #dec48c; }
+.guild-floor-contact { stroke: #f0d79c; stroke-width: 2; stroke-linecap: round; }
+.guild-guide-label { fill: #f0d79c; font: 11px Arial; paint-order: stroke; stroke: #17130f; stroke-width: 3px; }
 .guild-perspective-panel > button {
   width: 100%;
   margin: 4px 0;
@@ -38,6 +43,8 @@
 }
 .guild-perspective-check input {
   accent-color: #cba963;
+  width: auto;
+  flex: none;
 }
 .guild-perspective-overlay {
   position: absolute;

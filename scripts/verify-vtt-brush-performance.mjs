@@ -7,7 +7,7 @@ const bundle = await build({ entryPoints: ['src/vtt-terrain-canvas.ts'], bundle:
   format: 'iife', globalName: 'Terrain', platform: 'browser' });
 const browser = await chromium.launch({ channel: process.env.BROWSER_CHANNEL || 'msedge', headless: true });
 const baseline = process.env.BRUSH_BASELINE_JS ? await readFile(process.env.BRUSH_BASELINE_JS, 'utf8') : null;
-const art = JSON.parse(await readFile('data/vtt/terrain-v3-reviewed-20261013.json'));
+const art = JSON.parse(await readFile('data/vtt/terrain-v4-reviewed-20261013.json'));
 const texturePath = art.find(t=>t.id==='grass').image;
 const url = 'data:image/webp;base64,' + (await readFile('public'+texturePath)).toString('base64');
 await mkdir('test-results/brush-performance', { recursive: true });

@@ -8,15 +8,20 @@ import sharp from 'sharp';
 import {chromium} from 'playwright';
 
 // Native texture, layered brush and asset integration QA, without a database.
-const art=JSON.parse(await readFile('data/vtt/terrain-v3-reviewed-20261013.json'));
-assert.equal(art.length,6);
+const previous=JSON.parse(await readFile('data/vtt/terrain-v3-reviewed-20261013.json'));
+const updated=JSON.parse(await readFile('data/vtt/terrain-v4-reviewed-20261013.json'));
+const art=previous.map(a=>updated.find(n=>n.id===a.id)||a);art.splice(1,0,updated.find(a=>a.id==='rocky-grass'));
+const floor=updated.find(a=>a.id==='woodland-floor');
+assert((await sharp('public'+floor.image).metadata()).hasAlpha);
+assert.equal(createHash('sha256').update(await readFile('public'+floor.image)).digest('hex'),floor.sha256);
+assert.equal(art.length,7);
 for(const a of art){
   const data=await readFile('public'+a.image),meta=await sharp(data).metadata();
   assert.equal(meta.width,1024);assert.equal(meta.height,1024);
   assert.equal(createHash('sha256').update(data).digest('hex'),a.sha256);
   assert.equal(meta.hasAlpha,false);
 }
-const bundle=await build({stdin:{contents:"export {renderVtt} from './src/vtt-canvas';export {newScene,newToken} from './shared/vtt';export {terrainTextures} from './shared/vtt-terrain';export {terrainCacheStats} from './src/vtt-terrain-canvas';export {effectMaterialsReady} from './src/vtt-effects-materials';export {physicalPropsReady} from './src/vtt-effects-physical';",resolveDir:process.cwd()},bundle:true,write:false,platform:'browser',format:'iife',globalName:'QA'});
+const bundle=await build({stdin:{contents:"export {renderVtt} from './src/vtt-canvas';export {newScene,newToken} from './shared/vtt';export {terrainTextures,woodlandFloorImage} from './shared/vtt-terrain';export {drawTerrain} from './src/vtt-terrain-canvas';export {terrainCacheStats} from './src/vtt-terrain-canvas';export {effectMaterialsReady} from './src/vtt-effects-materials';export {physicalPropsReady} from './src/vtt-effects-physical';",resolveDir:process.cwd()},bundle:true,write:false,platform:'browser',format:'iife',globalName:'QA'});
 const root=path.resolve('public');
 const server=createServer(async(req,res)=>{
   const url=new URL(req.url,'http://localhost');
@@ -34,7 +39,7 @@ try{
   await page.goto('http://127.0.0.1:'+server.address().port);await page.addScriptTag({content:bundle.outputFiles[0].text});
   const report=await page.evaluate(async()=>{
     await Promise.all([QA.effectMaterialsReady,QA.physicalPropsReady]);
-    const paths=[...QA.terrainTextures.map(t=>t.image),'/vtt/scenery-v2-20261012/terrain-grass.webp','/vtt/trees-20261013/oak-young.png','/vtt/trees-20261013/pine-highland.png','/vtt/trees-20261013/oak-ancient.png','/vtt/rocks-20261013/granito-grande.png'];
+    const paths=[QA.woodlandFloorImage,...QA.terrainTextures.map(t=>t.image),'/vtt/scenery-v2-20261012/terrain-grass.webp','/vtt/trees-20261013/oak-young.png','/vtt/trees-20261013/pine-highland.png','/vtt/trees-20261013/oak-ancient.png','/vtt/rocks-20261013/granito-grande.png'];
     const images=new Map(await Promise.all(paths.map(async src=>{const image=new Image();image.src=src;await image.decode();return [src,image];})));
     const stroke=(texture,points,radius,layer='base')=>({id:crypto.randomUUID(),texture,radius,softness:.5,opacity:1,textureScale:360,shape:'round',layer,erase:false,points});
     const options=(w,h)=>({camera:{x:w/2,y:h/2,zoom:1},width:w,height:h,dpr:1,images,selected:[],gm:true,preview:false,viewer:null,layer:'tokens',ruler:[],draft:null,showWalls:false,ping:null,userId:'qa',visualEffects:true});
@@ -55,13 +60,13 @@ try{
     const start=performance.now();for(let i=0;i<30;i++)QA.renderVtt(c,scene,{...o,camera:{...o.camera,x:640+i*.2}});
     const ms=(performance.now()-start)/30,after=QA.terrainCacheStats(canvas);
     QA.renderVtt(c,scene,{...o,terrainDraft:stroke('sand',[{x:530,y:600},{x:800,y:650}],60,'path')});
-    return {textures:QA.terrainTextures.map(t=>({id:t.id,image:t.image,width:images.get(t.image).naturalWidth})),warm,after,navigationMs:ms};
+    return {groundCached:warm.groundTilesBuilt===after.groundTilesBuilt, textures:QA.terrainTextures.map(t=>({id:t.id,image:t.image,width:images.get(t.image).naturalWidth})),warm,after,navigationMs:ms};
   });
   assert.deepEqual(report.textures.map(t=>t.id),art.map(t=>t.id));
   assert(report.textures.every(t=>t.width===1024));assert.equal(report.warm.strokesDrawn,report.after.strokesDrawn);
-  assert(report.navigationMs<45);assert.deepEqual(errors,[]);
+  assert(report.navigationMs<45);assert(report.groundCached);assert(report.warm.groundTilesBuilt>0);assert.deepEqual(errors,[]);
   await page.locator('#textures').screenshot({path:'test-results/terrain-art/materials.png'});
   await page.locator('#map').screenshot({path:'test-results/terrain-art/forest-map.png'});
   await writeFile('test-results/terrain-art/result.json',JSON.stringify({passed:true,...report,errors},null,2));
-  console.log(JSON.stringify({passed:true,textures:6,navigationMs:report.navigationMs}));
+  console.log(JSON.stringify({passed:true,textures:7,navigationMs:report.navigationMs}));
 }finally{await browser.close();await new Promise(r=>server.close(r));}

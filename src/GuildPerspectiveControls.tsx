@@ -1,7 +1,7 @@
 import { useRef, useState, type RefObject } from 'react';
 import { createPortal } from 'react-dom';
 import {
-  guildFitPerspective,
+  guildFitPerspectiveSoft,
   guildMovePerspectiveCorner,
   type GuildPerspective,
   type GuildPerspectiveGuides,
@@ -47,42 +47,58 @@ export function GuildPerspectiveControls({
     height: number;
   } | null>(null);
   const [snap, setSnap] = useState(true);
+  const [refine, setRefine] = useState(false);
+  const [hint, setHint] = useState('');
   const fit = (side: 'left' | 'right') => {
-    if (geometry)
+    if (geometry) {
       change(
-        guildFitPerspective(geometry.base, {
+        guildFitPerspectiveSoft(geometry.base, {
           x: guides[side] * geometry.width,
           y: guides.horizon * geometry.height,
         }),
       );
+      setHint('Ajuste suave aplicado. Os pés mantêm o apoio no chão; confira a vista e o tamanho.');
+    }
   };
   return (
     <section className="guild-perspective-panel" aria-label="Perspectiva do objeto">
+      <ol className="guild-perspective-help">
+        <li><strong>Escolha a vista.</strong> Use as setas do móvel para mostrar as faces voltadas para a sala.</li>
+        <li><strong>Apoie no piso.</strong> Arraste pelos pés; perto da parede, diminua o tamanho.</li>
+        <li><strong>Confira as linhas.</strong> As laterais do móvel devem acompanhar as linhas do piso.</li>
+      </ol>
       <button type="button" aria-pressed={active} onClick={toggle}>
         {active ? 'Concluir perspectiva' : 'Ajustar perspectiva'}
       </button>
       {active && (
         <>
           <p>
-            Escolha uma vista próxima. Alinhe com uma fuga da sala ou arraste os quatro cantos
-            da peça.
+            Use as linhas como referência. O alinhamento faz uma correção leve;
+            para mostrar outra lateral, troque a vista do móvel.
           </p>
           <div className="guild-perspective-presets">
             <button type="button" disabled={!geometry} onClick={() => fit('left')}>
-              Fuga à esquerda
+              Alinhar à esquerda
             </button>
             <button type="button" disabled={!geometry} onClick={() => fit('right')}>
-              Fuga à direita
+              Alinhar à direita
             </button>
           </div>
-          <label className="guild-perspective-check">
+          <button type="button" aria-pressed={refine} onClick={() => {
+            setRefine(!refine);
+            if(!refine) stage.current?.scrollIntoView({ block: 'center', behavior: 'instant' });
+          }}>
+            {refine ? 'Ocultar cantos' : 'Refinar pelos cantos'}
+          </button>
+          <p role="status">{hint || 'A linha dourada marca o apoio da peça no chão. Arraste o móvel normalmente com as guias abertas.'}</p>
+          {refine && <label className="guild-perspective-check">
             <input
               type="checkbox"
               checked={snap}
               onChange={(e) => setSnap(e.target.checked)}
             />
             Aderir às linhas de fuga
-          </label>
+          </label>}
           <details>
             <summary>Calibrar as guias da sala</summary>
             {[
@@ -106,7 +122,7 @@ export function GuildPerspectiveControls({
               </label>
             ))}
           </details>
-          <button type="button" onClick={() => change(undefined)}>
+          <button type="button" onClick={() => { change(undefined); setHint('Vista original restaurada.'); }}>
             Restaurar perspectiva
           </button>
         </>
@@ -128,6 +144,7 @@ export function GuildPerspectiveControls({
                 y1={guides.horizon * geometry.height}
                 y2={guides.horizon * geometry.height}
               />
+              <text className="guild-guide-label" x="12" y={guides.horizon * geometry.height - 8}>Horizonte · altura da câmera</text>
               {(['left', 'right'] as const).map((side) =>
                 [0, 0.2, 0.4, 0.6, 0.8, 1].map((x, i) => (
                   <line
@@ -140,12 +157,14 @@ export function GuildPerspectiveControls({
                   />
                 )),
               )}
-              <polygon
+              <line className="guild-floor-contact" x1={geometry.points[3].x} y1={geometry.points[3].y} x2={geometry.points[2].x} y2={geometry.points[2].y} />
+              <text className="guild-guide-label" x={(geometry.points[3].x + geometry.points[2].x) / 2} y={(geometry.points[3].y + geometry.points[2].y) / 2 + 18} textAnchor="middle">Apoio no chão</text>
+              {refine && <polygon
                 className="guild-perspective-quad"
                 points={geometry.points.map((p) => p.x + ',' + p.y).join(' ')}
-              />
+              />}
             </svg>
-            {geometry.points.map((point, index) => (
+            {refine && geometry.points.map((point, index) => (
               <button
                 key={index}
                 type="button"

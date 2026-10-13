@@ -326,8 +326,11 @@ try {
   const anchorBeforePerspective = await position();
   await page.getByRole('button', { name: 'Ajustar perspectiva', exact: true }).click();
   await expect(page.getByLabel('Guias de perspectiva da sala')).toBeVisible();
+  await expect(page.locator('.guild-perspective-handle')).toHaveCount(0);
+  await expect(page.getByRole('button', { name:'Virar item à direita', exact:true })).toBeVisible();
+  await page.getByRole('button', { name:'Refinar pelos cantos', exact:true }).click();
   await expect(page.locator('.guild-perspective-handle')).toHaveCount(4);
-  await page.getByRole('button', { name: 'Fuga à direita', exact: true }).click();
+  await page.getByRole('button', { name: 'Alinhar à direita', exact: true }).click();
   await expect(object.locator('img')).toHaveAttribute('style', /matrix3d/);
   expect(await position()).toEqual(anchorBeforePerspective);
   await page.getByLabel('Aderir às linhas de fuga', { exact: true }).uncheck();
@@ -335,6 +338,8 @@ try {
     name: 'Ajustar canto superior esquerdo',
     exact: true,
   });
+  await handle.scrollIntoViewIfNeeded();
+  await expect(handle).toBeInViewport();
   const h = (await handle.boundingBox())!;
   await page.mouse.move(h.x + h.width / 2, h.y + h.height / 2);
   await page.mouse.down();
@@ -392,6 +397,7 @@ try {
   await api(ownerContext, '/social/friends/' + friend.id, 'POST', {});
   await api(friendContext, '/social/friends/' + owner.id, 'PATCH', {});
   await page.goto(origin + '/#profiles?user=' + owner.id);
+  await page.getByRole('button',{name:'Abrir perfil de Viajante do Amanhecer',exact:true}).click();
   await expect(page.locator('.player-profile-home')).toBeVisible();
   await page.getByRole('button', { name: 'Personalizar perfil', exact: true }).click();
   await page
@@ -433,10 +439,10 @@ try {
   await page.getByRole('button', { name: 'Enviar', exact: true }).click();
   await expect(page.getByText('Uma nova jornada!', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Fechar amigos e chat', exact: true }).click();
-  await page.getByRole('button', { name: 'Personagens e coleções', exact: true }).click();
+  await page.getByRole('button', { name: 'Voltar ao personagem', exact: true }).click();
   await expect(page.locator('.public-camp')).toBeVisible();
   await page
-    .getByRole('button', { name: 'Perfil de Viajante do Amanhecer', exact: true })
+    .getByRole('button', { name: 'Abrir perfil de Viajante do Amanhecer', exact: true })
     .click();
   await expect(page.locator('.player-profile-home')).toBeVisible();
   expect(errors).toEqual([]);

@@ -200,19 +200,20 @@
   display: block;
   position: absolute;
   inset: 0;
-  background: url('/cards/arcana-art-v1.webp') no-repeat;
-  background-size: 400% 200%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   z-index: -1;
-  filter: saturate(0.76);
+  filter: none;
 }
 .arcana-card-face::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(#05091170, #05091100 38%, #05091120 60%, #030710ef 89%);
+  background: linear-gradient(transparent 82%, #d8be91ed 88%, #d8be91fa);
   z-index: 0;
 }
 .arcana-card-ornament {
+  display: none;
   position: absolute;
   left: 0;
   right: 0;
@@ -224,27 +225,27 @@
 }
 .arcana-card-name {
   position: absolute;
-  bottom: 16%;
+  bottom: 6%;
   left: 8%;
   right: 8%;
   font:
     clamp(10px, 1vw, 14px)/1.4 'Libre Baskerville',
     Georgia,
     serif;
-  color: #f0dfb9;
+  color: #271b10;
   text-align: center;
-  text-shadow: 0 2px 4px #000;
+  text-shadow: none;
 }
 .arcana-card-family {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 7%;
+  bottom: 2%;
   text-align: center;
   font-size: 7px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #c8ad80;
+  color: #604829;
 }
 .arcana-card-face.small .arcana-card-name {
   font-size: 8px;

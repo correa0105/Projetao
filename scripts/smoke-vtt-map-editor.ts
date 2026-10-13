@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
-import { mkdir, writeFile, cp } from 'node:fs/promises';
+import { mkdir, writeFile, cp, readFile } from 'node:fs/promises';
 import { build } from 'esbuild';
 import path from 'node:path';
 import { newToken } from '../shared/vtt';
@@ -33,6 +33,10 @@ const bundle = await build({
 });
 await writeFile('dist/client/__qa/renderer.js', bundle.outputFiles[0].text);
 await cp('public/vtt/rocks-20261013', 'dist/client/vtt/rocks-20261013', { recursive: true });
+for(const a of JSON.parse(await readFile('data/cards/tarot-v2-reviewed-20261013.json','utf8'))) {
+  await mkdir(path.dirname('dist/client'+a.image),{recursive:true});
+  await cp('public'+a.image,'dist/client'+a.image);
+}
 for (const t of terrainTextures) {
   await mkdir(path.dirname('dist/client'+t.image), {recursive:true});
   await cp('public'+t.image, 'dist/client'+t.image);
@@ -169,7 +173,7 @@ try {
   // Brush palette and layers, with input through actual pointer capture.
   await page.getByRole('button', { name: 'Brush do mapa', exact: true }).click();
   const brush = page.getByRole('region', { name: 'Brush do mapa', exact: true });
-  await expect(page.getByLabel('Texturas do brush').getByRole('button')).toHaveCount(6);
+  await expect(page.getByLabel('Texturas do brush').getByRole('button')).toHaveCount(terrainTextures.length);
   p = await screen(350, 200);
   await page.mouse.move(p.x, p.y);
   await page.mouse.down();
@@ -680,15 +684,24 @@ try {
   for(const [width,height] of [[1920,1000],[1440,768],[1024,768],[390,844]]) {
     await page.setViewportSize({width,height});
     await page.getByRole('button',{name:'Todas',exact:true}).click();
-    await expect(page.locator('.cards-catalog > button')).toHaveCount(8);
+    await expect(page.locator('.cards-catalog > button')).toHaveCount(4);
+    if(width>650) { for(const card of await page.locator('.cards-catalog > button').all()) await expect(card).toBeInViewport({ratio:1}); await expect(page.locator('.cards-pagination')).toBeInViewport({ratio:1}); }
     const layout=await page.locator('.cards-workbench').evaluate(el=>{
       const table=el.querySelector('.cards-table')!,detail=el.querySelector('.cards-detail')!,copy=el.querySelector('.cards-detail-copy')!;
-      return {width:el.getBoundingClientRect().width,overflow:document.documentElement.scrollWidth>innerWidth,tableScroll:getComputedStyle(table).overflowY,detailScroll:getComputedStyle(detail).overflowY,copyWidth:copy.getBoundingClientRect().width};
+      return {beside:detail.getBoundingClientRect().left > table.getBoundingClientRect().left + table.getBoundingClientRect().width, width:el.getBoundingClientRect().width,overflow:document.documentElement.scrollWidth>innerWidth,tableScroll:getComputedStyle(table).overflowY,detailScroll:getComputedStyle(detail).overflowY,copyWidth:copy.getBoundingClientRect().width};
     });
     expect(layout.width).toBeLessThanOrEqual(720.5);expect(layout.overflow).toBe(false);
-    expect(layout.copyWidth).toBeGreaterThan(180);expect(layout.tableScroll).toBe('visible');expect(layout.detailScroll).toBe('visible');
+    expect(layout.copyWidth).toBeGreaterThan(160);expect(layout.beside).toBe(width>650);expect(layout.tableScroll).toBe('visible');expect(layout.detailScroll).toBe('visible');
+    await page.getByRole('button',{name:'Próximas cartas',exact:true}).click();
+    await expect(page.locator('.cards-catalog > button')).toHaveCount(4);
+    await expect(page.getByRole('button',{name:'Próximas cartas',exact:true})).toBeDisabled();
+    await expect(page.locator('.cards-pagination')).toContainText('Página 2 de 2');
+    await expect(page.getByRole('button',{name:'A Vigília',exact:true})).toHaveCount(0);
+    await page.getByRole('button',{name:'Cartas anteriores',exact:true}).click();
+    await expect(page.getByRole('button',{name:'A Vigília',exact:true})).toBeVisible();
     await page.getByRole('button',{name:'Minha coleção',exact:true}).click();
     await expect(page.locator('.cards-catalog > button')).toHaveCount(1);
+    await expect(page.locator('.cards-pagination')).toContainText('Página 1 de 1');
     await page.getByRole('button',{name:'A Vigília',exact:true}).click();
     await page.getByRole('button',{name:'Equipar no espaço 2',exact:true}).scrollIntoViewIfNeeded();
     await expect(page.getByRole('button',{name:'Equipar no espaço 2',exact:true})).toBeInViewport();
@@ -740,6 +753,8 @@ try {
       uniformJournalCovers: true,
       characterGuildMembership: true,
       compactCardsPanel: true,
+      fourCardsPerPage: true,
+      engravedCardArt: true,
       pixels,
       errors,
     }),

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   guildFitPerspective,
+  guildFitPerspectiveSoft,
   guildPerspectiveCorners,
   guildPerspectiveSchema,
   guildMovePerspectiveCorner,
@@ -35,6 +36,15 @@ test('bordas superior e inferior convergem na fuga escolhida em ambos os lados',
     const actual = lineIntersection(tl, tr, bl, br);
     assert(Math.abs(actual.x - vanishing.x) < 1e-6);
     assert(Math.abs(actual.y - vanishing.y) < 1e-6);
+  }
+});
+test('alinhamento suave limita a deformação e preserva o centro de apoio no piso', () => {
+  for (const vanishing of [{x:-1000,y:100},{x:1600,y:100}]) {
+    const p = guildFitPerspectiveSoft({left:400,top:300,width:200,height:90},vanishing);
+    assert(guildPerspectiveSchema.safeParse(p).success);
+    assert(p.every(c => Math.abs(c.x) <= .12 && Math.abs(c.y) <= .12));
+    assert(Math.abs((p[2].y+p[3].y)/2) < 1e-9);
+    assert(p.some(c => c.y !== 0));
   }
 });
 test('cantos não cruzam, valores não finitos são rejeitados e limites são respeitados', () => {

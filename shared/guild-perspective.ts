@@ -86,3 +86,16 @@ export function guildFitPerspective(
   result = guildMovePerspectiveCorner(result, movingLeft ? 0 : 1, 0, topOffset);
   return guildMovePerspectiveCorner(result, movingLeft ? 3 : 2, 0, bottomOffset);
 }
+
+/** Gentle refinement of a real furniture view; keep the floor contact in place. */
+export function guildFitPerspectiveSoft(
+  base: { left: number; top: number; width: number; height: number },
+  vanishing: { x: number; y: number },
+): GuildPerspective {
+  const fitted = guildFitPerspective(base, vanishing);
+  const floor = (fitted[2].y + fitted[3].y) / 2;
+  const centered = fitted.map(p => ({ x: p.x, y: p.y - floor }));
+  const maximum = Math.max(...centered.map(p => Math.max(Math.abs(p.x), Math.abs(p.y))));
+  const strength = maximum > .12 ? .12 / maximum : 1;
+  return centered.map(p => ({ x: p.x * strength, y: p.y * strength })) as GuildPerspective;
+}

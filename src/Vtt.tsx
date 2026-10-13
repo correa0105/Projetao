@@ -1,5 +1,5 @@
 import { VttTerrainBrush, type TerrainBrushSettings } from './VttTerrainBrush';
-import { terrainTextures } from '../shared/vtt-terrain';
+import { terrainTextures, woodlandFloorImage } from '../shared/vtt-terrain';
 import type { TerrainStroke, TerrainLayer } from '../shared/vtt';
 import { VttTokenMenu } from './VttTokenMenu';
 import { VttAtmosphereMenu } from './VttAtmosphereMenu';

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "vigil",
+    "name": "A Vigília",
+    "image": "/cards/tarot-v2-20261013/vigil.webp",
+    "source": "data/cards/tarot-v2-sources-20261013/vigil.png",
+    "width": 700,
+    "height": 1000,
+    "sourceSha256": "196db6704bd19c77f6968d7f15d37b568642211fac97747f9ca7cc378ecfb9b5",
+    "sha256": "be9974e49b83259f58ef6be9039e85e1db834c46fd3ec2d81c4262ab841db69b",
+    "generator": "image_gen",
+    "mode": "generate",
+    "prompt": "Use case: game-asset. Asset type: ONE original portrait tarot card illustration for the Alvorada Cinzenta medieval fantasy card salon. Input images: attached sheets are STYLE REFERENCES ONLY; invent a new composition, no copying existing cards, no artist signature or logos. Primary request: a tall gothic lantern held by two bony hands; its flame forms a watchful human eye, behind it impossible cathedral windows and curling smoke, protective unsettling vigil. Evoke the strange unsettling symbolic hand-inked tarot engravings in the reference: bold black silhouettes, fine varied crosshatching, expressive curving ink strokes, starbursts and dream logic. Upgrade craftsmanship: elegant antique printmaking, carefully composed strong focal symbol, controlled readable negative space, exquisitely drawn detail. Palette warm aged ivory parchment, deep near-black ink, tiny subdued old brass accents; no bright white, no neon, no realistic photographic rendering, no 3D. Flat frontal illustration with the subject occupying central upper 80 percent, thin restrained engraved border, quiet empty parchment strip across bottom 16 percent reserved for UI title. No text, letters, numerals, numbers, watermark, signature, title or labels anywhere. ONE card only, portrait approx 7:10 ratio, full bleed, no table, no surrounding mockup, no shadows outside card. Cohesive deluxe occult deck with elegant medieval salon aesthetic.",
+    "references": [
+      {
+        "path": "docs/references/tarot-engraving-style-1-20261013.png",
+        "sha256": "d52ebbee3d09d5f61ae0d840f196682d45d112a48d6b8c34cfe15101f40de0fc",
+        "role": "style_reference"
+      },
+      {
+        "path": "docs/references/tarot-engraving-style-2-20261013.png",
+        "sha256": "389e847b58acbfd0b2c4973e6f74a239bc9d3588e9ad239c3e0e71d0d6f3ab2c",
+        "role": "style_reference"
+      }
+    ]
+  },
+  {
+    "id": "raven",
+    "name": "O Corvo",
+    "image": "/cards/tarot-v2-20261013/raven.webp",
+    "source": "data/cards/tarot-v2-sources-20261013/raven.png",
+    "width": 700,
+    "height": 1000,
+    "sourceSha256": "0fef52e8ec30b1cfe70199c3f2b5a5fa7a3f9bad7d3317057b6f67053e712acd",
+    "sha256": "d85d6667fad8e421dec323d0e88b142bc555c54297b8dc4410f01d475f979181",
+    "generator": "image_gen",
+    "mode": "generate",
+    "prompt": "Use case: game-asset. Asset type: ONE original portrait tarot card illustration for the Alvorada Cinzenta medieval fantasy card salon. Input images: attached sheets are STYLE REFERENCES ONLY; invent a new composition, no copying existing cards, no artist signature or logos. Primary request: a great black raven with a crescent halo, feather patterns containing small staring eyes, perched on a cracked gate; one feather turns into a winding road amid strange rolling clouds. Evoke the strange unsettling symbolic hand-inked tarot engravings in the reference: bold black silhouettes, fine varied crosshatching, expressive curving ink strokes, starbursts and dream logic. Upgrade craftsmanship: elegant antique printmaking, carefully composed strong focal symbol, controlled readable negative space, exquisitely drawn detail. Palette warm aged ivory parchment, deep near-black ink, tiny subdued old brass accents; no bright white, no neon, no realistic photographic rendering, no 3D. Flat frontal illustration with the subject occupying central upper 80 percent, thin restrained engraved border, quiet empty parchment strip across bottom 16 percent reserved for UI title. No text, letters, numerals, numbers, watermark, signature, title or labels anywhere. ONE card only, portrait approx 7:10 ratio, full bleed, no table, no surrounding mockup, no shadows outside card. Cohesive deluxe occult deck with elegant medieval salon aesthetic.",
+    "references": [
+      {
+        "path": "docs/references/tarot-engraving-style-1-20261013.png",
+        "sha256": "d52ebbee3d09d5f61ae0d840f196682d45d112a48d6b8c34cfe15101f40de0fc",
+        "role": "style_reference"
+      },
+      {
+        "path": "docs/references/tarot-engraving-style-2-20261013.png",
+        "sha256": "389e847b58acbfd0b2c4973e6f74a239bc9d3588e9ad239c3e0e71d0d6f3ab2c",
+        "role": "style_reference"
+      }
+    ]
+  },
+  {
+    "id": "mirror",
+    "name": "O Espelho Partido",
+    "image": "/cards/tarot-v2-20261013/mirror.webp",
+    "source": "data/cards/tarot-v2-sources-20261013/mirror.png",
+    "width": 700,
+    "height": 1000,
+    "sourceSha256": "36192ae92a2fb97d2672620e092b8c55691506f91529897ad849669fd2385a96",
+    "sha256": "218ebe809daeb5e7b1b123963ccb4e587784e64051c88808c2ec13f94900f945",
+    "generator": "image_gen",
+    "mode": "generate",
+    "prompt": "Use case: game-asset. Asset type: ONE original portrait tarot card illustration for the Alvorada Cinzenta medieval fantasy card salon. Input images: attached sheets are STYLE REFERENCES ONLY; invent a new composition, no copying existing cards, no artist signature or logos. Primary request: a shattered ornate oval mirror floating in space; every shard reflects a different strange mask-like face and one empty shard reflects a star, twisting ribbonlike smoke, surreal metaphysical symmetry. Evoke the strange unsettling symbolic hand-inked tarot engravings in the reference: bold black silhouettes, fine varied crosshatching, expressive curving ink strokes, starbursts and dream logic. Upgrade craftsmanship: elegant antique printmaking, carefully composed strong focal symbol, controlled readable negative space, exquisitely drawn detail. Palette warm aged ivory parchment, deep near-black ink, tiny subdued old brass accents; no bright white, no neon, no realistic photographic rendering, no 3D. Flat frontal illustration with the subject occupying central upper 80 percent, thin restrained engraved border, quiet empty parchment strip across bottom 16 percent reserved for UI title. No text, letters, numerals, numbers, watermark, signature, title or labels anywhere. ONE card only, portrait approx 7:10 ratio, full bleed, no table, no surrounding mockup, no shadows outside card. Cohesive deluxe occult deck with elegant medieval salon aesthetic.",
+    "references": [
+      {
+        "path": "docs/references/tarot-engraving-style-1-20261013.png",
+        "sha256": "d52ebbee3d09d5f61ae0d840f196682d45d112a48d6b8c34cfe15101f40de0fc",
+        "role": "style_reference"
+      },
+      {
+        "path": "docs/references/tarot-engraving-style-2-20261013.png",
+        "sha256": "389e847b58acbfd0b2c4973e6f74a239bc9d3588e9ad239c3e0e71d0d6f3ab2c",
+        "role": "style_reference"
+      }
+    ]
+  },
+  {
+    "id": "moon",
+    "name": "A Lua Errante",
+    "image": "/cards/tarot-v2-20261013/moon.webp",
+    "source": "data/cards/tarot-v2-sources-20261013/moon.png",
+    "width": 700,
+    "height": 1000,
+    "sourceSha256": "32ec680d8475ddb22af65ee05aafd22526f3ec826499259e7b7f3dc8e23f7bfc",
+    "sha256": "f5cacfce2a9e5efb17f6c6f52285435d84573d1f716bdd6eeda69fe89715cf3f",
+    "generator": "image_gen",
+    "mode": "generate",
+    "prompt": "Use case: game-asset. Asset type: ONE original portrait tarot card illustration for the Alvorada Cinzenta medieval fantasy card salon. Input images: attached sheets are STYLE REFERENCES ONLY; invent a new composition, no copying existing cards, no artist signature or logos. Primary request: a large crescent moon with an uncanny sleepy human face, surrounded by twisting clouds, projecting a road like a ribbon toward a tiny cloaked traveler beside an angular mountain, dreamlike wandering. Evoke the strange unsettling symbolic hand-inked tarot engravings in the reference: bold black silhouettes, fine varied crosshatching, expressive curving ink strokes, starbursts and dream logic. Upgrade craftsmanship: elegant antique printmaking, carefully composed strong focal symbol, controlled readable negative space, exquisitely drawn detail. Palette warm aged ivory parchment, deep near-black ink, tiny subdued old brass accents; no bright white, no neon, no realistic photographic rendering, no 3D. Flat frontal illustration with the subject occupying central upper 80 percent, thin restrained engraved border, quiet empty parchment strip across bottom 16 percent reserved for UI title. No text, letters, numerals, numbers, watermark, signature, title or labels anywhere. ONE card only, portrait approx 7:10 ratio, full bleed, no table, no surrounding mockup, no shadows outside card. Cohesive deluxe occult deck with elegant medieval salon aesthetic.",
+    "references": [
+      {
+        "path": "docs/references/tarot-engraving-style-1-20261013.png",
+        "sha256": "d52ebbee3d09d5f61ae0d840f196682d45d112a48d6b8c34cfe15101f40de0fc",
+        "role": "style_reference"
+      },
+      {
+        "path": "docs/references/tarot-engraving-style-2-20261013.png",
+        "sha256": "389e847b58acbfd0b2c4973e6f74a239bc9d3588e9ad239c3e0e71d0d6f3ab2c",
+        "role": "style_reference"
+      }
+    ]
+  },
+  {
+    "id": "roots",
+    "name": "Raízes Antigas",
+    "image": "/cards/tarot-v2-20261013/roots.webp",
+    "source": "data/cards/tarot-v2-sources-20261013/roots.png",
+    "width": 700,
+    "height": 1000,
+    "sourceSha256": "5cc08ff0ed2ee2a8790d6b3cdb649021a478d7ba16449d24d6129fd4353b50df",
+    "sha256": "922ee45921b4805c406f2cc7de27d088909b9ed5db340328380a2625a57a6979",
+    "generator": "image_gen",
+    "mode": "generate",
+    "prompt": "Use case: game-asset. Asset type: ONE original portrait tarot card illustration for the Alvorada Cinzenta medieval fantasy card salon. Input images: attached sheets are STYLE REFERENCES ONLY; invent a new composition, no copying existing cards, no artist signature or logos. Primary request: an ancient hollow tree with a tiny masklike face in its trunk; elaborate curling roots wrap around old stone arches and a buried human profile, a few stars above, botanical mythic memory. Evoke the strange unsettling symbolic hand-inked tarot engravings in the reference: bold black silhouettes, fine varied crosshatching, expressive curving ink strokes, starbursts and dream logic. Upgrade craftsmanship: elegant antique printmaking, carefully composed strong focal symbol, controlled readable negative space, exquisitely drawn detail. Palette warm aged ivory parchment, deep near-black ink, tiny subdued old brass accents; no bright white, no neon, no realistic photographic rendering, no 3D. Flat frontal illustration with the subject occupying central upper 80 percent, thin restrained engraved border, quiet empty parchment strip across bottom 16 percent reserved for UI title. No text, letters, numerals, numbers, watermark, signature, title or labels anywhere. ONE card only, portrait approx 7:10 ratio, full bleed, no table, no surrounding mockup, no shadows outside card. Cohesive deluxe occult deck with elegant medieval salon aesthetic.",
+    "references": [
+      {
+        "path": "docs/references/tarot-engraving-style-1-20261013.png",
+        "sha256": "d52ebbee3d09d5f61ae0d840f196682d45d112a48d6b8c34cfe15101f40de0fc",
+        "role": "style_reference"
+      },
+      {
+        "path": "docs/references/tarot-engraving-style-2-20261013.png",
+        "sha256": "389e847b58acbfd0b2c4973e6f74a239bc9d3588e9ad239c3e0e71d0d6f3ab2c",
+        "role": "style_reference"
+      }
+    ]
+  },
+  {
+    "id": "anchor",
+    "name": "Âncora da Maré",
+    "image": "/cards/tarot-v2-20261013/anchor.webp",
+    "source": "data/cards/tarot-v2-sources-20261013/anchor.png",
+    "width": 700,
+    "height": 1000,
+    "sourceSha256": "6d686fc43bfc199a4f5cb8c9235bc633e6837bcc35d271399d0d67177c9cfb5e",
+    "sha256": "a3dd20cde5b0e742eabc82aa0311a1f18ee1251b15e3266275dc79944bf3c777",
+    "generator": "image_gen",
+    "mode": "generate",
+    "prompt": "Use case: game-asset. Asset type: ONE original portrait tarot card illustration for the Alvorada Cinzenta medieval fantasy card salon. Input images: attached sheets are STYLE REFERENCES ONLY; invent a new composition, no copying existing cards, no artist signature or logos. Primary request: an enormous old anchor suspended beneath a strange spiraling ocean moon; ropes curl into stylized tidal waves, two skeletal fish and distant surreal ships, still solemn symbolic return. Evoke the strange unsettling symbolic hand-inked tarot engravings in the reference: bold black silhouettes, fine varied crosshatching, expressive curving ink strokes, starbursts and dream logic. Upgrade craftsmanship: elegant antique printmaking, carefully composed strong focal symbol, controlled readable negative space, exquisitely drawn detail. Palette warm aged ivory parchment, deep near-black ink, tiny subdued old brass accents; no bright white, no neon, no realistic photographic rendering, no 3D. Flat frontal illustration with the subject occupying central upper 80 percent, thin restrained engraved border, quiet empty parchment strip across bottom 16 percent reserved for UI title. No text, letters, numerals, numbers, watermark, signature, title or labels anywhere. ONE card only, portrait approx 7:10 ratio, full bleed, no table, no surrounding mockup, no shadows outside card. Cohesive deluxe occult deck with elegant medieval salon aesthetic.",
+    "references": [
+      {
+        "path": "docs/references/tarot-engraving-style-1-20261013.png",
+        "sha256": "d52ebbee3d09d5f61ae0d840f196682d45d112a48d6b8c34cfe15101f40de0fc",
+        "role": "style_reference"
+      },
+      {
+        "path": "docs/references/tarot-engraving-style-2-20261013.png",
+        "sha256": "389e847b58acbfd0b2c4973e6f74a239bc9d3588e9ad239c3e0e71d0d6f3ab2c",
+        "role": "style_reference"
+      }
+    ]
+  },
+  {
+    "id": "blade",
+    "name": "O Último Corte",
+    "image": "/cards/tarot-v2-20261013/blade.webp",
+    "source": "data/cards/tarot-v2-sources-20261013/blade.png",
+    "width": 700,
+    "height": 1000,
+    "sourceSha256": "ee5bbb4173d8a4ce5893997ffb8c4745fffc6eed43ecd1e9446bbeea73b8be4f",
+    "sha256": "d3a91784276b2df047fb54b3bce0c7f06356dc45ffdc5a6e5b7c320db516cf0c",
+    "generator": "image_gen",
+    "mode": "generate",
+    "prompt": "Use case: game-asset. Asset type: ONE original portrait tarot card illustration for the Alvorada Cinzenta medieval fantasy card salon. Input images: attached sheets are STYLE REFERENCES ONLY; invent a new composition, no copying existing cards, no artist signature or logos. Primary request: a single long ceremonial sword upright in two disembodied gauntleted hands, blade reflecting a closed human eye, a broken ribbon encircles the hilt, laurel thorns and angular rays, eerie sacred oath. Evoke the strange unsettling symbolic hand-inked tarot engravings in the reference: bold black silhouettes, fine varied crosshatching, expressive curving ink strokes, starbursts and dream logic. Upgrade craftsmanship: elegant antique printmaking, carefully composed strong focal symbol, controlled readable negative space, exquisitely drawn detail. Palette warm aged ivory parchment, deep near-black ink, tiny subdued old brass accents; no bright white, no neon, no realistic photographic rendering, no 3D. Flat frontal illustration with the subject occupying central upper 80 percent, thin restrained engraved border, quiet empty parchment strip across bottom 16 percent reserved for UI title. No text, letters, numerals, numbers, watermark, signature, title or labels anywhere. ONE card only, portrait approx 7:10 ratio, full bleed, no table, no surrounding mockup, no shadows outside card. Cohesive deluxe occult deck with elegant medieval salon aesthetic.",
+    "references": [
+      {
+        "path": "docs/references/tarot-engraving-style-1-20261013.png",
+        "sha256": "d52ebbee3d09d5f61ae0d840f196682d45d112a48d6b8c34cfe15101f40de0fc",
+        "role": "style_reference"
+      },
+      {
+        "path": "docs/references/tarot-engraving-style-2-20261013.png",
+        "sha256": "389e847b58acbfd0b2c4973e6f74a239bc9d3588e9ad239c3e0e71d0d6f3ab2c",
+        "role": "style_reference"
+      }
+    ]
+  },
+  {
+    "id": "throne",
+    "name": "O Trono Vazio",
+    "image": "/cards/tarot-v2-20261013/throne.webp",
+    "source": "data/cards/tarot-v2-sources-20261013/throne.png",
+    "width": 700,
+    "height": 1000,
+    "sourceSha256": "f10e61bffffc5c651f733980690c6dbd0c51e0178982b5030e9417ce1fc3c78f",
+    "sha256": "776480a7e91514ef7dbf05cd33460a260e4b12224540e521893382456a6d988d",
+    "generator": "image_gen",
+    "mode": "generate",
+    "prompt": "Use case: game-asset. Asset type: ONE original portrait tarot card illustration for the Alvorada Cinzenta medieval fantasy card salon. Input images: attached sheets are STYLE REFERENCES ONLY; invent a new composition, no copying existing cards, no artist signature or logos. Primary request: an empty high gothic throne surrounded by floating crowns and staring stars; two stone skeletal guardians flank it, an absence shaped like a human silhouette remains in the seat, surreal architecture and regal fate. Evoke the strange unsettling symbolic hand-inked tarot engravings in the reference: bold black silhouettes, fine varied crosshatching, expressive curving ink strokes, starbursts and dream logic. Upgrade craftsmanship: elegant antique printmaking, carefully composed strong focal symbol, controlled readable negative space, exquisitely drawn detail. Palette warm aged ivory parchment, deep near-black ink, tiny subdued old brass accents; no bright white, no neon, no realistic photographic rendering, no 3D. Flat frontal illustration with the subject occupying central upper 80 percent, thin restrained engraved border, quiet empty parchment strip across bottom 16 percent reserved for UI title. No text, letters, numerals, numbers, watermark, signature, title or labels anywhere. ONE card only, portrait approx 7:10 ratio, full bleed, no table, no surrounding mockup, no shadows outside card. Cohesive deluxe occult deck with elegant medieval salon aesthetic.",
+    "references": [
+      {
+        "path": "docs/references/tarot-engraving-style-1-20261013.png",
+        "sha256": "d52ebbee3d09d5f61ae0d840f196682d45d112a48d6b8c34cfe15101f40de0fc",
+        "role": "style_reference"
+      },
+      {
+        "path": "docs/references/tarot-engraving-style-2-20261013.png",
+        "sha256": "389e847b58acbfd0b2c4973e6f74a239bc9d3588e9ad239c3e0e71d0d6f3ab2c",
+        "role": "style_reference"
+      }
+    ]
+  }
+]

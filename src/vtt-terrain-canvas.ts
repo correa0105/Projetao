@@ -1,7 +1,10 @@
 import type { TerrainStroke, TerrainLayer, VttScene } from '../shared/vtt';
-import { terrainTextures } from '../shared/vtt-terrain';
+import { terrainTextures, woodlandFloorImage, isGrassTexture } from '../shared/vtt-terrain';
+import { isTreeCanopy } from '../shared/vtt-canopies';
+import { viewerSees, type VttToken } from '../shared/vtt';
 import type { RenderOptions } from './vtt-canvas';
 import { softenTerrainMask } from './vtt-terrain-blur';
+import { grassMaterial } from './vtt-grass-material';
 
 const TILE = 512;
 const BUDGET = 96 * 1024 * 1024;
@@ -12,14 +15,17 @@ type Split = { layer: string; under?: HTMLCanvasElement; active: HTMLCanvasEleme
 type Tile = {
   bounds: Bounds; density: number; canvas: HTMLCanvasElement; valid: boolean;
   split?: Split; draft?: TerrainStroke; preview?: HTMLCanvasElement;
+  revision: number; grass?: { scale: number; image: HTMLImageElement; canvas: HTMLCanvasElement };
+  ground?: { signature: string; image: HTMLImageElement; canvas: HTMLCanvasElement };
 };
 type Cache = {
   scene: string; source?: TerrainStroke[]; strokes: Stroke[]; layers: TerrainLayer[];
   images: (HTMLImageElement | undefined)[]; imageWidths: number[];
   tiles: Map<string, Tile>; mask: HTMLCanvasElement; piece: HTMLCanvasElement; layer: HTMLCanvasElement; work: HTMLCanvasElement;
+  coverage: HTMLCanvasElement; layerCoverage: HTMLCanvasElement; layerAlpha: HTMLCanvasElement;
   blurInput: Float32Array; blurOutput: Float32Array;
   masks: Map<string,{value:TerrainStroke;bounds:Bounds;density:number;canvas:HTMLCanvasElement}>;
-  stats: { tilesBuilt: number; strokesDrawn: number; draftTilesRendered: number };
+  stats: { tilesBuilt: number; strokesDrawn: number; draftTilesRendered: number; groundTilesBuilt: number };
 };
 const caches = new WeakMap<HTMLCanvasElement, Cache>();
 const overlaps = (a: Bounds, b: Bounds) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
@@ -45,7 +51,7 @@ function clear(c: HTMLCanvasElement, w = TILE, h = TILE) {
   ctx.resetTransform(); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; ctx.filter = 'none'; ctx.clearRect(0, 0, w, h);
   return ctx;
 }
-function bytes(t: Tile) { return TILE * TILE * 4 * (1 + (t.split ? 1 + Number(!!t.split.under) + Number(!!t.split.over) : 0) + (t.preview ? 1 : 0)); }
+function bytes(t: Tile) { return TILE * TILE * 4 * (1 + (t.split ? 1 + Number(!!t.split.under) + Number(!!t.split.over) : 0) + (t.preview ? 1 : 0) + Number(!!t.grass) + Number(!!t.ground)); }
 export function terrainCacheStats(c: HTMLCanvasElement) {
   const cache = caches.get(c);
   return cache ? { ...cache.stats, cacheBytes: [...cache.tiles.values()].reduce((n, t) => n + bytes(t), 0), maskBytes: [...cache.masks.values()].reduce((n, m) => n + m.canvas.width * m.canvas.height * 4, 0), tiles: cache.tiles.size } : null;
@@ -61,7 +67,7 @@ function update(cache: Cache, scene: VttScene, images: RenderOptions['images']) 
   const loaded = terrainTextures.map(t => images.get(t.image));
   const imageChange = loaded.some((img, i) => img !== cache.images[i] || (img?.naturalWidth || 0) !== cache.imageWidths[i]);
   const source = scene.terrain || [];
-  if (layerChange || imageChange) for (const t of cache.tiles.values()) { t.valid = false; t.split = undefined; t.preview = undefined; t.draft = undefined; }
+  if (layerChange || imageChange) for (const t of cache.tiles.values()) { t.valid = false; t.split = undefined; t.preview = undefined; t.draft = undefined; t.grass = undefined; t.revision++; }
   if (source !== cache.source) {
     const old = new Map(cache.strokes.map(s => [s.value.id, s]));
     const changed: Bounds[] = [];
@@ -85,6 +91,7 @@ function update(cache: Cache, scene: VttScene, images: RenderOptions['images']) 
         compose(cache, tile, tile.canvas, tile.split.active);
       } else { tile.valid = false; tile.split = undefined; }
       tile.preview = undefined; tile.draft = undefined;
+      tile.revision++;
     }
     cache.source = source; cache.strokes = next;
   }
@@ -158,9 +165,15 @@ function apply(cache: Cache, tile: Tile, s: TerrainStroke, target: HTMLCanvasEle
   if(right<=left || bottom<=top)return;
   const w=right-left,h=bottom-top,pc=clear(cache.piece,w,h);
   if(!s.erase){
-    const pattern=pc.createPattern(image!,'repeat')!;
-    pattern.setTransform(new DOMMatrix([s.textureScale/image!.naturalWidth*tile.density,0,0,s.textureScale/image!.naturalHeight*tile.density,-tile.bounds.left*tile.density-left,-tile.bounds.top*tile.density-top]));
-    pc.fillStyle=pattern;pc.fillRect(0,0,w,h);pc.globalCompositeOperation='destination-in';
+    if(isGrassTexture(s.texture)) {
+      if(!tile.grass || tile.grass.scale !== s.textureScale || tile.grass.image !== image) tile.grass = { scale:s.textureScale, image:image!, canvas:grassMaterial(image!,tile.bounds,tile.density,s.textureScale) };
+      pc.drawImage(tile.grass.canvas,left,top,w,h,0,0,w,h);
+    } else {
+      const pattern=pc.createPattern(image!,'repeat')!;
+      pattern.setTransform(new DOMMatrix([s.textureScale/image!.naturalWidth*tile.density,0,0,s.textureScale/image!.naturalHeight*tile.density,-tile.bounds.left*tile.density-left,-tile.bounds.top*tile.density-top]));
+      pc.fillStyle=pattern;pc.fillRect(0,0,w,h);
+    }
+    pc.globalCompositeOperation='destination-in';
   }
   pc.drawImage(mask.canvas,(area.left-tile.bounds.left)*tile.density-left,(area.top-tile.bounds.top)*tile.density-top,(area.right-area.left)*tile.density,(area.bottom-area.top)*tile.density);
   const tc=target.getContext('2d')!;tc.globalAlpha=s.opacity;tc.globalCompositeOperation=s.erase?'destination-out':'source-over';tc.drawImage(cache.piece,left,top);tc.globalAlpha=1;tc.globalCompositeOperation='source-over';
@@ -186,7 +199,50 @@ function buildTile(cache: Cache, tile: Tile, active?: string) {
       const c = split[part]!.getContext('2d')!; c.globalAlpha = l.opacity; c.drawImage(rendered, 0, 0);
     }
   }
-  out.globalAlpha = 1; tile.valid = true; tile.split = split; tile.preview = undefined; tile.draft = undefined; cache.stats.tilesBuilt++;
+  out.globalAlpha = 1; tile.valid = true; tile.split = split; tile.preview = undefined; tile.draft = undefined; tile.revision++; cache.stats.tilesBuilt++;
+}
+
+// Dirt/leaf contact patches belong to the ground, below actors and canopies.
+// Build only tiles touched by a visible tree. Paint masks and complete overlays
+// are cached; moving a character or camera never replays the brush history.
+function woodlandGround(cache: Cache, tile: Tile, trees: VttToken[], image: HTMLImageElement) {
+  const nearby = trees.filter(t => {
+    const r = Math.max(t.width,t.height) * .62;
+    return overlaps(tile.bounds,{left:t.x-r,top:t.y-r,right:t.x+r,bottom:t.y+r});
+  });
+  if(!nearby.length || !cache.strokes.some(s => isGrassTexture(s.value.texture) && !s.value.erase && overlaps(s.bounds,tile.bounds))) { tile.ground = undefined; return null; }
+  const signature = tile.revision + ':' + nearby.map(t => [t.id,t.x,t.y,t.width,t.height,t.rotation,t.flipX,t.flipY].join(',')).join(';');
+  if(tile.ground?.signature === signature && tile.ground.image === image) return tile.ground.canvas;
+  const coverage = clear(cache.coverage);
+  for(const layer of cache.layers) {
+    if(!layer.visible || layer.opacity <= 0) continue;
+    const gc = clear(cache.layerCoverage), ac = clear(cache.layerAlpha);
+    for(const stroke of cache.strokes) {
+      const s = stroke.value;
+      if((s.layer || 'base') !== layer.id || !overlaps(stroke.bounds,tile.bounds)) continue;
+      const texture = cache.images[terrainTextures.findIndex(t=>t.id===s.texture)];
+      if(!s.erase && (!texture?.complete || !texture.naturalWidth)) continue;
+      const mask = alphaMask(cache,tile,s), b = mask.bounds;
+      for(const [c,grass] of [[gc,true],[ac,false]] as const) {
+        c.globalAlpha = s.opacity;
+        c.globalCompositeOperation = s.erase || (grass && !isGrassTexture(s.texture)) ? 'destination-out' : 'source-over';
+        c.drawImage(mask.canvas,(b.left-tile.bounds.left)*tile.density,(b.top-tile.bounds.top)*tile.density,(b.right-b.left)*tile.density,(b.bottom-b.top)*tile.density);
+      }
+    }
+    coverage.globalAlpha = layer.opacity;
+    coverage.globalCompositeOperation = 'destination-out'; coverage.drawImage(cache.layerAlpha,0,0);
+    coverage.globalCompositeOperation = 'lighter'; coverage.drawImage(cache.layerCoverage,0,0);
+  }
+  const out = tile.ground?.canvas || canvas(), c = clear(out);
+  c.setTransform(tile.density,0,0,tile.density,-tile.bounds.left*tile.density,-tile.bounds.top*tile.density);
+  for(const t of nearby) {
+    c.save();c.translate(t.x,t.y);c.rotate(t.rotation*Math.PI/180);
+    c.scale(t.flipX?-1:1,t.flipY?-1:1);c.globalAlpha=.65;
+    c.drawImage(image,-t.width*.55,-t.height*.55,t.width*1.1,t.height*1.1);c.restore();
+  }
+  c.resetTransform();c.globalAlpha=1;c.globalCompositeOperation='destination-in';c.drawImage(cache.coverage,0,0);
+  tile.ground={signature,image,canvas:out};cache.stats.groundTilesBuilt++;
+  return out;
 }
 function compose(cache: Cache, tile: Tile, target: HTMLCanvasElement, active: HTMLCanvasElement) {
   const split = tile.split!, c = clear(target), metadata = cache.layers.find(l => l.id === split.layer);
@@ -209,7 +265,7 @@ export function drawTerrain(c: CanvasRenderingContext2D, scene: VttScene, o: Ren
   let cache = caches.get(c.canvas);
   if (!cache || cache.scene !== scene.id) {
     const mask = canvas(); mask.getContext('2d', { willReadFrequently: true });
-    cache = { scene: scene.id, strokes: [], layers: [], images: [], imageWidths: [], tiles: new Map(), mask, piece: canvas(), layer: canvas(), work: canvas(), blurInput: new Float32Array(0), blurOutput: new Float32Array(0), masks: new Map(), stats: { tilesBuilt: 0, strokesDrawn: 0, draftTilesRendered: 0 } };
+    cache = { scene: scene.id, strokes: [], layers: [], images: [], imageWidths: [], tiles: new Map(), mask, piece: canvas(), layer: canvas(), work: canvas(), coverage:canvas(),layerCoverage:canvas(),layerAlpha:canvas(),blurInput: new Float32Array(0), blurOutput: new Float32Array(0), masks: new Map(), stats: { tilesBuilt: 0, strokesDrawn: 0, draftTilesRendered: 0, groundTilesBuilt:0 } };
     caches.set(c.canvas, cache);
   }
   update(cache, scene, o.images);
@@ -219,6 +275,8 @@ export function drawTerrain(c: CanvasRenderingContext2D, scene: VttScene, o: Ren
   const density = Math.max(.125, Math.min(4, 2 ** Math.ceil(Math.log2(zoom)))), world = TILE / density;
   const visible = { left: Math.max(0, -tx / zoom), top: Math.max(0, -ty / zoom), right: Math.min(scene.width, (c.canvas.width - tx) / zoom), bottom: Math.min(scene.height, (c.canvas.height - ty) / zoom) };
   const draftBounds = o.terrainDraft ? bounds(o.terrainDraft) : null;
+  const floorImage = o.images.get(woodlandFloorImage);
+  const trees = floorImage?.complete && floorImage.naturalWidth ? (scene.tokens || []).filter(t => isTreeCanopy(t) && !((!o.gm || o.preview) && t.hidden) && !(o.preview && o.viewer && !viewerSees(o.viewer,t,scene))) : [];
   c.save(); c.setTransform(zoom, 0, 0, zoom, tx, ty); c.beginPath(); c.rect(0, 0, scene.width, scene.height); c.clip();
   for (let y = Math.floor(visible.top / world); y < Math.ceil(visible.bottom / world); y++) {
     for (let x = Math.floor(visible.left / world); x < Math.ceil(visible.right / world); x++) {
@@ -227,12 +285,16 @@ export function drawTerrain(c: CanvasRenderingContext2D, scene: VttScene, o: Ren
       if (!tile) {
         const area = { left: x * world, top: y * world, right: (x + 1) * world, bottom: (y + 1) * world };
         if (!cache.strokes.some(s => overlaps(s.bounds, area)) && !(draftBounds && overlaps(draftBounds, area))) continue;
-        tile = { bounds: area, density, canvas: canvas(), valid: false }; cache.tiles.set(key, tile);
+        tile = { bounds: area, density, canvas: canvas(), valid: false, revision:0 }; cache.tiles.set(key, tile);
       }
       const affected = draftBounds && overlaps(draftBounds, tile.bounds);
       if (!tile.valid && !affected) buildTile(cache, tile);
       const image = affected ? draftTile(cache, tile, o.terrainDraft!) : tile.canvas;
       c.drawImage(image, x * world, y * world, world, world);
+      if(trees.length && !affected) {
+        const ground = woodlandGround(cache,tile,trees,floorImage!);
+        if(ground)c.drawImage(ground,x*world,y*world,world,world);
+      }
       cache.tiles.delete(key); cache.tiles.set(key, tile);
     }
   }

@@ -1,0 +1,48 @@
+[
+  {
+    "id": "grass",
+    "image": "/vtt/terrain-v4-20261013/grass.webp",
+    "source": "data/vtt/terrain-v4-sources-20261013/grass.png",
+    "sourceSha256": "ad9b5c61ff17b18deb8c805c921618760d8bba7d4779613dce6d6b370fc017c1",
+    "sha256": "78175925e75deaea303777bd8dc87b07f3f4fca79e27c8e860ed7e1ae746ff10",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": false,
+    "generator": "image_gen",
+    "mode": "generate",
+    "prompt": "Use case: game-asset. Asset type: seamless terrain texture tile for a detailed top-down medieval fantasy virtual tabletop. Primary request: beautiful LOW short meadow grass with a soft PAINTED finish, subtle grouped brushwork and generous quiet areas so detailed tree sprites read clearly above it. Orthographic straight overhead camera. Restrained muted olive, sage, moss green and warm umber colors; medium luminosity, gentle contrast. Several large irregular softly interwoven patches of green grass, faded dry straw vegetation and earthy soil; the patches should be broad asymmetric areas, not granular photographic noise or thin repeated blades. Material looks like tasteful realistic fantasy environment concept painting, not a photograph, not cartoon. Fully flat even diffuse lighting, no trees, no objects, no cast shadows, no rocks, no text or border. Perfectly seamless matching left/right/top/bottom boundaries. Square full-bleed texture, tiny details subordinate to the soft broad shapes. Avoid grain, peppered pixels, high-frequency speckling, dramatic dark blobs, obvious repeating circles, neon greens, perspective horizon."
+  },
+  {
+    "id": "woodland-floor",
+    "image": "/vtt/terrain-v4-20261013/woodland-floor.webp",
+    "source": "data/vtt/terrain-v4-sources-20261013/woodland-floor.png",
+    "sourceSha256": "383dfd6920d254cf2b91832eba8b54c155968b361dd58b9e6149e72dcbf936cf",
+    "sha256": "51d8d381a87d61188c8561cc7631d68d168eacfe86cdc4c5d1e48fa2aad76778",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": true,
+    "generator": "image_gen",
+    "mode": "generate",
+    "prompt": "Use case: game-asset. Asset type: ONE transparent ground decal for beneath a top-down fantasy VTT tree. Primary request: an irregular subtle oval woodland contact patch of softly painted warm earthy soil, a few scattered dry russet oak leaves and muted moss, with a very soft low-opacity contact shadow toward the center. Straight orthographic overhead camera, flat diffuse light. Detailed hand painted medieval fantasy style, muted natural olive and umber palette. Leaves sparse and small, quiet contrast, no bright rim. Center largely soft bare earth, perimeter fades naturally into fully transparent pixels with irregular grass tufts and isolated sparse leaves. Ground decal is a gentle integration layer beneath a tree canopy, no tree/trunk/rock/object, no circular disk, no solid background, no text, no frame, no scene. Preserve real alpha transparency and translucent feathering around all boundaries, with generous transparent margin. Single centered ground patch, square image."
+  },
+  {
+    "id": "rocky-grass",
+    "image": "/vtt/terrain-v4-20261013/rocky-grass.webp",
+    "source": "data/vtt/terrain-v4-sources-20261013/rocky-grass.png",
+    "sourceSha256": "224df542add6cc612cce3514d313eea642cfff95418a60d13889c3c6368ace51",
+    "sha256": "58800f9bf34d4d683919cde43ccb661bbddc77157a18a32e2da75caf98f4eeee",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": false,
+    "generator": "image_gen",
+    "mode": "generate",
+    "prompt": "Use case: game-asset. Asset type: ONE seamless painted rocky grass terrain texture for a top-down medieval fantasy VTT brush. Input image is a material STYLE REFERENCE showing low woodland grass, mottled soil and stone pockets. Primary request: a beautiful realistic painted forest meadow floor in that style, short restrained olive and moss-green grass with softly grouped small herb leaves, warm earthy patches, occasional faded straw, and scattered pockets of weathered gray rocks and little gravel. Stones occur in a few asymmetric clusters, only around 20 percent of the surface; generous other regions remain grassy and uncluttered. Variety of small flat angular stones and a few medium stones, no large boulders. Fine crafted fantasy environmental painting, subdued low-contrast detail, gentle warm-neutral diffuse overhead lighting, no dramatic shadows, no horizon, no depth perspective. Straight orthographic overhead view, square full bleed, seamless matching edges. Avoid dense pebble carpet, evenly repeated rocks, grainy photographic noise, cartoon art, bright saturated green, trees, buildings, frames, grids, text, labels, watermark.",
+    "references": [
+      {
+        "path": "docs/references/rocky-grass-style-20261013.png",
+        "sha256": "62d902f5eefb29ed4a9dcfc76e0962fa329378e2cabf513725fafffb2da354d8",
+        "role": "style_reference"
+      }
+    ]
+  }
+]

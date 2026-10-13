@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Check, Coins, Lock, Sparkles, X } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight, Coins, Lock, Sparkles, X } from 'lucide-react';
 import { api, post } from './api';
 import { cards, cardQuestions, type Card, type OwnedCard } from '../shared/cards';
 import { money } from '../shared/rules';
@@ -15,7 +15,7 @@ export function CardFace({ card, small = false }: { card: Card; small?: boolean 
         className="arcana-card-art"
         style={
           {
-            backgroundPosition: `${((card.cell % 4) * 100) / 3}% ${Math.floor(card.cell / 4) * 100}%`,
+            backgroundImage: `url('/cards/tarot-v2-20261013/${card.id}.webp')`,
           } as CSSProperties
         }
       />
@@ -38,6 +38,7 @@ export function Cards({
     [selected, setSelected] = useState<Card>(cards[0]),
     [slot, setSlot] = useState(1),
     [filter, setFilter] = useState('Todas'),
+    [catalogPage, setCatalogPage] = useState(0),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
     [notice, setNotice] = useState(''),
@@ -54,6 +55,7 @@ export function Cards({
     let cancelled = false;
     live.current = true;
     setOwned([]);
+    setCatalogPage(0);
     setNotice('');
     setError('');
     if (character)
@@ -82,6 +84,17 @@ export function Cards({
     if (!showQuestions) timer.current = setTimeout(() => setConversation(false), 14000);
   }
   const item = owned.find((c) => c.card_id === selected.id);
+  const available = cards.filter(c => filter === 'Todas' ||
+    (filter === 'À venda' ? c.buyable : owned.some(o => o.card_id === c.id)));
+  const pages = Math.max(1, Math.ceil(available.length / 4));
+  const currentPage = Math.min(catalogPage, pages - 1);
+  const visibleCards = available.slice(currentPage * 4, currentPage * 4 + 4);
+  function turnPage(direction: -1 | 1) {
+    const next = Math.max(0, Math.min(pages - 1, currentPage + direction));
+    setCatalogPage(next);
+    if(available[next * 4]) setSelected(available[next * 4]);
+    key.current = crypto.randomUUID(); setError(''); setNotice('');
+  }
   async function purchase() {
     if (!character || inFlight.current) return;
     inFlight.current = true;
@@ -235,19 +248,14 @@ export function Cards({
                 <button
                   key={label}
                   aria-pressed={filter === label}
-                  onClick={() => setFilter(label)}
+                  onClick={() => { setFilter(label); setCatalogPage(0); }}
                 >
                   {label}
                 </button>
               ))}
             </nav>
             <div className="cards-catalog">
-              {cards
-                .filter(
-                  (c) =>
-                    filter === 'Todas' ||
-                    (filter === 'À venda' ? c.buyable : owned.some((o) => o.card_id === c.id)),
-                )
+              {visibleCards
                 .map((card) => (
                   <button
                     key={card.id}
@@ -288,6 +296,12 @@ export function Cards({
                   </button>
                 ))}
             </div>
+            {available.length === 0 && <p className="cards-catalog-empty">Nenhuma carta nesta coleção.</p>}
+            <nav className="cards-pagination" aria-label="Navegar pelas cartas">
+              <button type="button" aria-label="Cartas anteriores" disabled={busy || currentPage === 0} onClick={() => turnPage(-1)}><ChevronLeft size={16}/></button>
+              <span role="status">Página {currentPage + 1} de {pages}<small>{available.length ? `${currentPage * 4 + 1}–${Math.min((currentPage + 1) * 4, available.length)} de ${available.length} cartas` : '0 cartas'}</small></span>
+              <button type="button" aria-label="Próximas cartas" disabled={busy || currentPage === pages - 1} onClick={() => turnPage(1)}><ChevronRight size={16}/></button>
+            </nav>
           </div>
           <section
             className="cards-detail"
