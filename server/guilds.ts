@@ -70,21 +70,16 @@ function checkRooms(
       throw new AppError(403, 'Esta sala ainda não foi liberada pelo nível da guilda.');
   }
 }
-async function guild(db: PoolClient, id: string, uid: string, owner = false) {
+async function guild(db: PoolClient, id: string, uid: string, owner = false, characterId: string | null = null) {
   const {
     rows: [g],
   } = await db.query('SELECT * FROM player_guilds WHERE id=$1 FOR UPDATE', [id]);
   if (!g) throw new AppError(404, 'Guilda não encontrada.');
-  if (
-    owner
-      ? g.owner_id !== uid
-      : !(
-          await db.query('SELECT 1 FROM player_guild_members WHERE guild_id=$1 AND user_id=$2', [
-            id,
-            uid,
-          ])
-        ).rowCount
-  )
+  const member = (await db.query(
+    'SELECT 1 FROM player_guild_members WHERE guild_id=$1 AND user_id=$2 AND ($3::uuid IS NULL OR character_id=$3)',
+    [id, uid, characterId],
+  )).rowCount;
+  if (!member || (owner && g.owner_id !== uid))
     throw new AppError(
       403,
       owner ? 'Somente o fundador pode administrar a guilda.' : 'Você não pertence a esta guilda.',
@@ -119,6 +114,17 @@ async function weeks(db: Pick<PoolClient, 'query'>, id: string) {
 }
 export function guildsRouter() {
   const router = express.Router();
+  // A selected character must belong to the authenticated account. Legacy callers
+  // without a character retain the registered member's account context.
+  router.use(/^\/guilds(?=\/|$)/, async (req, res, next) => {
+    const characterId = req.query.character_id === undefined ? null : uuid.parse(req.query.character_id);
+    if (characterId && !(await pool.query(
+      'SELECT 1 FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL',
+      [characterId, res.locals.user.id],
+    )).rowCount) throw new AppError(404, 'Escolha um personagem seu.');
+    res.locals.guildCharacterId = characterId;
+    next();
+  });
   router.get('/community/settings', async (_req, res) =>
     res.json({
       ...(await communitySettings()),
@@ -144,7 +150,7 @@ export function guildsRouter() {
       pool.query(
         `SELECT g.id,g.document->>'name' AS name,g.document->'crest' AS crest,g.prestige,(SELECT count(*)::int FROM player_guild_members m WHERE m.guild_id=g.id) AS members FROM player_guilds g ORDER BY g.prestige DESC,g.created_at,g.id`,
       ),
-      pool.query('SELECT guild_id FROM player_guild_members WHERE user_id=$1', [uid]),
+      pool.query(`SELECT m.guild_id,m.character_id,c.name AS character_name FROM player_guild_members m JOIN characters c ON c.id=m.character_id WHERE m.user_id=$1`, [uid]),
       pool.query(
         `SELECT i.guild_id,g.document->>'name' AS name,g.document->'crest' AS crest FROM player_guild_invites i JOIN player_guilds g ON g.id=i.guild_id WHERE i.user_id=$1`,
         [uid],
@@ -152,7 +158,8 @@ export function guildsRouter() {
     ]);
     res.json({
       items: directory.rows.map((g) => ({ ...g, rank: guildRank(g.prestige) })),
-      mine: mine.rows[0]?.guild_id || null,
+      mine: mine.rows[0] && (!res.locals.guildCharacterId || mine.rows[0].character_id === res.locals.guildCharacterId) ? mine.rows[0].guild_id : null,
+      membership: mine.rows[0] || null,
       invites: invites.rows,
     });
   });
@@ -224,7 +231,7 @@ export function guildsRouter() {
       `SELECT m.user_id,m.character_id,u.name,c.name AS character_name,c.level FROM player_guild_members m JOIN "user" u ON u.id=m.user_id JOIN characters c ON c.id=m.character_id WHERE m.guild_id=$1 ORDER BY m.joined_at,m.user_id`,
       [id],
     );
-    const member = members.rows.some((m) => m.user_id === uid);
+    const member = members.rows.some((m) => m.user_id === uid && (!res.locals.guildCharacterId || m.character_id === res.locals.guildCharacterId));
     res.json({
       id,
       document: guildDocumentSchema.parse(g.document),
@@ -234,7 +241,7 @@ export function guildsRouter() {
       level: guildLevel(g.prestige),
       room_unlocks: (await communitySettings()).document.room_unlocks,
       owner_id: g.owner_id,
-      is_owner: g.owner_id === uid,
+      is_owner: member && g.owner_id === uid,
       is_member: member,
       members: members.rows,
       treasury_cp: member ? Number(g.treasury_cp) : null,
@@ -265,7 +272,7 @@ export function guildsRouter() {
         .parse(req.body);
     res.json(
       await transaction(async (db) => {
-        const g = await guild(db, id, res.locals.user.id, true);
+        const g = await guild(db, id, res.locals.user.id, true, res.locals.guildCharacterId);
         checkRooms(input.document, g.prestige, (await communitySettings(db)).document);
         if (g.revision !== input.revision)
           throw new AppError(409, 'A sede mudou. Reabra antes de salvar.');
@@ -287,7 +294,7 @@ export function guildsRouter() {
         .strict()
         .parse(req.body);
     await transaction(async (db) => {
-      await guild(db, id, res.locals.user.id, true);
+      await guild(db, id, res.locals.user.id, true, res.locals.guildCharacterId);
       if (!(await db.query('SELECT 1 FROM "user" WHERE id=$1', [uid])).rowCount)
         throw new AppError(404, 'Jogador não encontrado.');
       if ((await db.query('SELECT 1 FROM player_guild_members WHERE user_id=$1', [uid])).rowCount)
@@ -357,7 +364,7 @@ export function guildsRouter() {
       uid = res.locals.user.id,
       target = z.string().max(100).parse(req.params.user);
     await transaction(async (db) => {
-      const g = await guild(db, id, uid);
+      const g = await guild(db, id, uid, false, res.locals.guildCharacterId);
       if (target === g.owner_id)
         throw new AppError(409, 'O fundador precisa permanecer na guilda.');
       if (target !== uid && g.owner_id !== uid)
@@ -375,7 +382,7 @@ export function guildsRouter() {
       mid = z.string().max(50).parse(req.params.mission);
     res.json(
       await transaction(async (db) => {
-        await guild(db, id, uid, true);
+        await guild(db, id, uid, true, res.locals.guildCharacterId);
         const w = await weeks(db, id),
           {
             rows: [m],
@@ -414,7 +421,7 @@ export function guildsRouter() {
         .parse(req.body);
     res.json(
       await transaction(async (db) => {
-        const g = await guild(db, id, uid, true),
+        const g = await guild(db, id, uid, true, res.locals.guildCharacterId),
           object = g.document.placements.find((o: { id: string }) => o.id === oid);
         if (!object) throw new AppError(404, 'Objeto não encontrado.');
         const { document: c } = await communitySettings(db),

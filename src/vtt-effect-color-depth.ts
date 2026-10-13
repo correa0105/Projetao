@@ -57,7 +57,27 @@ void main(){
  gl_FragColor=vec4(color*opacity,opacity);
 }`;
 
-let source: HTMLCanvasElement | undefined;
+const sources = new Map<number, HTMLCanvasElement>();
+const SOURCE_BUDGET = 32 * 1024 * 1024;
+let sourceBytes = 0;
+function colorSurface(pixels: number) {
+  let source = sources.get(pixels);
+  if (!source) {
+    source = document.createElement('canvas');
+    source.width = source.height = pixels;
+    sources.set(pixels, source);
+    sourceBytes += pixels * pixels * 4;
+    while (sourceBytes > SOURCE_BUDGET && sources.size > 1) {
+      const oldest = sources.keys().next().value!;
+      sources.delete(oldest);
+      sourceBytes -= oldest * oldest * 4;
+    }
+  } else {
+    sources.delete(pixels);
+    sources.set(pixels, source);
+  }
+  return source;
+}
 let output: HTMLCanvasElement | undefined;
 let gl: WebGLRenderingContext | null = null;
 let program: WebGLProgram | undefined;
@@ -149,7 +169,6 @@ export function drawWithColorDepth(
     draw(c);
     return;
   }
-  source ??= document.createElement('canvas');
   const span =
     Math.max(Math.abs(matrix.a) + Math.abs(matrix.c), Math.abs(matrix.b) + Math.abs(matrix.d)) *
     extent *
@@ -157,7 +176,7 @@ export function drawWithColorDepth(
   const wanted = Math.max(128, Math.ceil((span + 4) / 2) * 2),
     pixels = Math.min(1024, wanted),
     factor = pixels / wanted;
-  if (source.width !== pixels) source.width = source.height = pixels;
+  const source = colorSurface(pixels);
   const layer = source.getContext('2d')!;
   layer.setTransform(1, 0, 0, 1, 0, 0);
   layer.clearRect(0, 0, pixels, pixels);
@@ -192,8 +211,10 @@ export function drawWithColorDepth(
   }
   const device = gpu();
   if (device) {
-    if (output!.width !== pixels) output!.width = output!.height = pixels;
-    device.viewport(0, 0, pixels, pixels);
+    // Grow once for the largest effect, then crop the exact original resolution.
+    // Alternating token sizes no longer reallocates the GPU drawing buffer.
+    if (output!.width < pixels || output!.height < pixels) output!.width = output!.height = pixels;
+    device.viewport(0, output!.height - pixels, pixels, pixels);
     device.useProgram(program!);
     const hex = color.replace('#', '');
     device.uniform3f(
@@ -211,7 +232,7 @@ export function drawWithColorDepth(
   c.setTransform(1, 0, 0, 1, x, y);
   c.globalAlpha = 1;
   if (!device) c.filter = 'saturate(1.65) contrast(1.12) brightness(1.12)';
-  c.drawImage(device ? output! : source, 0, 0, wanted, wanted);
+  c.drawImage(device ? output! : source, 0, 0, pixels, pixels, 0, 0, wanted, wanted);
   if (!device) {
     c.globalAlpha = 0.35;
     c.globalCompositeOperation = 'screen';

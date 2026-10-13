@@ -97,364 +97,95 @@
   width: min(330px, 28%);
   z-index: 35;
 }
-:root .cards-room .cards-workbench {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  margin-left: var(--page-header-edge);
-  padding: 0;
-  padding-top: 235px;
-  width: min(960px, 61vw);
-  height: calc(100% - 78px);
-  pointer-events: none;
+
+/* One compact panel owns its scroll. Explicit salon scope prevents the generic
+   realm details layout from squeezing a 180px preview into a 260px sidebar. */
+:root .app-shell[data-page='cards'] .cards-room { min-height: 0; }
+:root .app-shell[data-page='cards'] .cards-room header { max-width: min(620px, 65vw); }
+:root .app-shell[data-page='cards'] .cards-room header > h2 { font-size: clamp(20px, 2vw, 28px); margin: 8px 0; }
+:root .app-shell[data-page='cards'] .cards-room .cards-workbench {
+  position: absolute; z-index: 2; top: 205px; bottom: 78px;
+  width: min(720px, 59vw); max-height: 650px; min-height: 0;
+  margin: 0 0 0 var(--page-header-edge); padding: 16px;
+  overflow: auto; overscroll-behavior: contain; scrollbar-width: thin;
+  scrollbar-color: #927545 transparent; border: 1px solid #a68c5455;
+  border-radius: 8px; background: linear-gradient(#171b19f2,#171b19f2), url('/achievement-wood-v1.png') center / 620px auto;
+  box-shadow: 0 12px 35px #0006;
 }
-:root .cards-room .cards-workbench > * {
-  pointer-events: auto;
+:root .app-shell[data-page='cards'] .cards-room .cards-playset {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 0 0 14px; border: 0; border-bottom: 1px solid #a68c5435;
+  background: none; box-shadow: none;
 }
-:root .cards-room .cards-playset {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-  gap: 18px;
-  padding: 12px 18px;
-  background:
-    linear-gradient(#191912d9, #191912d9),
-    url('/achievement-wood-v1.png') center / 620px auto;
-  border: 1px solid #a68c544a;
-  border-radius: 4px;
-  box-shadow: 0 6px 24px #0005;
-}
-:root .cards-room .cards-playset h2 {
-  font: 17px var(--serif);
-  color: #ddc69e;
-  margin: 5px 0;
-}
-:root .cards-room .cards-playset p {
-  font-size: 10px;
-  color: #beb198;
-  margin: 0;
-}
-:root .cards-room .eyebrow {
-  font-size: 8px;
-  letter-spacing: 0.14em;
-}
-:root .cards-room .cards-equipped {
-  position: static;
-  width: 142px;
-  gap: 12px;
-  flex-shrink: 0;
-}
-:root .cards-room .cards-empty-slot {
-  border-radius: 3px;
-}
-:root .cards-room .cards-browse {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
-  gap: 16px;
-  padding-top: 16px;
-  align-items: stretch;
-  flex: 1;
-  min-height: 0;
-}
-:root .cards-room .cards-table {
-  position: static;
-  min-height: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  padding: 18px;
-  background:
-    linear-gradient(#1c1d19db, #1c1d19db),
-    url('/character-parchment-v2.png') center / 760px auto;
-  border: 1px solid #9c845966;
-  border-radius: 5px;
-  box-shadow:
-    inset 0 0 18px #0004,
-    0 8px 28px #0005;
-}
-:root .cards-room .cards-catalog-heading h2 {
-  font: 20px var(--serif);
-  color: #d8c3a0;
-  margin: 5px 0;
-}
-:root .cards-room .cards-catalog-heading p {
-  color: #b9ac93;
-  font-size: 10px;
-  margin: 0;
-}
-:root .cards-room .cards-filters {
-  position: static;
-  justify-content: flex-start;
-  width: auto;
-  padding: 12px 0;
-  gap: 20px;
-  flex-shrink: 0;
-}
-:root .cards-room .cards-filters button {
-  font-size: 10px;
-  padding: 5px 0;
-}
-:root .cards-room .cards-catalog {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-content: start;
-  gap: 20px 12px;
-  padding: 7px 4px 14px;
-  width: auto;
-  min-width: 0;
-  overflow: auto;
-  min-height: 0;
-  scrollbar-width: thin;
-  scrollbar-color: #8a754b transparent;
-}
-:root .cards-room .cards-catalog > button {
-  margin: 0;
-  transform: none;
-  transition:
-    translate 0.18s,
-    filter 0.18s;
-}
-:root .cards-room .cards-catalog > button:hover {
-  transform: none;
-  translate: 0 -3px;
-}
-:root .cards-room .cards-catalog > button[aria-pressed='true'] {
-  transform: none;
-}
-:root .cards-room .cards-catalog > button:focus-visible {
-  outline: 2px solid #d0ae72;
-  outline-offset: 3px;
-  transform: none;
-}
-:root .cards-room .cards-catalog .arcana-card-name {
-  font-size: clamp(11px, 1vw, 14px);
-}
-:root .cards-room .cards-catalog-price {
-  min-height: 16px;
-  font-size: 9px;
-  margin-top: 8px;
-}
-:root .cards-room .cards-detail {
-  position: static;
-  overflow: auto;
-  max-width: none;
-  margin: 0;
-  padding: 18px;
-  background:
-    linear-gradient(#191b16e8, #191b16e8),
-    url('/achievement-wood-v1.png') center / 620px auto;
-  border: 1px solid #9c845966;
-  border-radius: 5px;
-  box-shadow: 0 8px 28px #0005;
-  scrollbar-width: thin;
-  scrollbar-color: #8a754b transparent;
-}
-:root .cards-room .cards-detail-preview {
-  display: block;
-  width: 87px;
-  margin: 0 auto 16px;
-}
-:root .cards-room .cards-detail h2 {
-  font-size: 22px;
-  color: #dec393;
-  margin: 8px 0;
-}
-:root .cards-room .cards-detail p {
-  font-size: 11px;
-  line-height: 1.85;
-}
-:root .cards-room .cards-record {
-  border-left: 1px solid #a58a5060;
-  margin: 16px 0;
-  padding-left: 12px;
-}
-:root .cards-room .cards-record > span {
-  font: 8px var(--sans);
-  color: #bda77e;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-:root .cards-room .cards-record p {
-  font: italic 10px/1.8 var(--serif);
-  color: #c0af90;
-}
-:root .cards-room .cards-history {
-  border-block: 1px solid #a68c5435;
-  margin-top: 14px;
-  padding: 10px 0;
-}
-:root .cards-room .cards-history summary {
-  color: #d0b889;
-  font-size: 10px;
-  cursor: pointer;
-}
-:root .cards-room .cards-history[open] summary {
-  margin-bottom: 12px;
-}
-:root .cards-room .cards-gold {
-  flex-wrap: wrap;
-  margin: 14px 0;
-}
-:root .cards-room .cards-detail-actions {
-  gap: 8px;
-  flex-wrap: wrap;
-}
-:root .cards-room .cards-detail-actions .button,
-:root .cards-room .cards-detail .button {
-  font-size: 11px;
-  padding: 10px 12px;
-}
-@media (min-width: 1650px) {
-  :root .cards-room .cards-catalog {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-@media (max-width: 1200px) {
-  :root .cards-room .cards-workbench {
-    width: 66vw;
-  }
-  :root .cards-room .cards-browse {
-    grid-template-columns: minmax(0, 1fr) 215px;
-    gap: 12px;
-  }
-  :root .cards-room .cards-table,
-  :root .cards-room .cards-detail {
-    padding: 12px;
-  }
-}
-@media (max-width: 900px) {
-  :root .cards-room .cards-room-backdrop {
-    background-position: 72% center;
-  }
-  :root .cards-room .cards-workbench {
-    padding-top: 235px;
-    width: 69vw;
-  }
-  :root .cards-room .cards-room-content > header {
-    top: 130px;
-    max-width: 66%;
-    left: 22px;
-  }
-  :root .cards-room .cards-browse {
-    grid-template-columns: minmax(0, 1fr) 190px;
-  }
-  :root .cards-room .cards-catalog {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  :root .cards-room .cards-workbench {
-    margin-left: 22px;
-  }
-  :root .cards-room .cards-playset h2 {
-    font-size: 15px;
-  }
-  :root .cards-room .cards-host-dialogue {
-    width: 38%;
-    right: 12px;
-  }
+:root .app-shell[data-page='cards'] .cards-room .eyebrow { font-size: 8px; letter-spacing: .12em; }
+:root .app-shell[data-page='cards'] .cards-room .cards-playset h2 { margin: 5px 0; font: 16px var(--serif); color: #e4cba2; }
+:root .app-shell[data-page='cards'] .cards-room .cards-playset p { margin: 0; color: #bfb8a6; font-size: 11px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-equipped { position: static; display: flex; width: 146px; flex-shrink: 0; gap: 10px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-equipped > button { width: 42px; height: 56px; flex: 1; }
+:root .app-shell[data-page='cards'] .cards-room .cards-empty-slot { height: 100%; aspect-ratio: auto; gap: 2px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-empty-slot > span { font-size: 16px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-empty-slot small { font: 12px var(--sans); }
+:root .app-shell[data-page='cards'] .cards-room .cards-slot-index { display: none; }
+:root .app-shell[data-page='cards'] .cards-room .cards-equipped .arcana-card-face { height: 100%; }
+:root .app-shell[data-page='cards'] .cards-room .cards-equipped .arcana-card-name { font-size: 7px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-browse { display: flex; flex-direction: column; gap: 14px; padding-top: 14px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-table { position: static; display: block; padding: 0; border: 0; background: none; box-shadow: none; overflow: visible; }
+:root .app-shell[data-page='cards'] .cards-room .cards-catalog-heading .eyebrow { display: none; }
+:root .app-shell[data-page='cards'] .cards-room .cards-catalog-heading h2 { margin: 0; font: 17px var(--serif); color: #e2cfaf; }
+:root .app-shell[data-page='cards'] .cards-room .cards-filters { position: static; display: flex; justify-content: flex-start; gap: 6px; padding: 12px 0; width: auto; border: 0; }
+:root .app-shell[data-page='cards'] .cards-room .cards-filters > button { padding: 7px 12px; min-height: 32px; font-size: 11px; border: 1px solid #a68c5435; border-radius: 5px; background: #ffffff05; color: #c2b9a6; text-shadow: none; }
+:root .app-shell[data-page='cards'] .cards-room .cards-filters > button[aria-pressed='true'] { background: #c6a46c1c; color: #f0d5a0; border-color: #c6a46c80; box-shadow: none; }
+:root .app-shell[data-page='cards'] .cards-room .cards-catalog { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px 10px; padding: 4px; width: auto; min-width: 0; overflow: visible; max-height: none; }
+:root .app-shell[data-page='cards'] .cards-room .cards-catalog > button { display: grid; justify-items: center; min-width: 0; margin: 0; padding: 0; background: none; border: 0; transform: none; transition: filter .15s; }
+:root .app-shell[data-page='cards'] .cards-room .cards-catalog > button:is(:hover,[aria-pressed='true'],:focus-visible) { transform: none; translate: none; }
+:root .app-shell[data-page='cards'] .cards-room .cards-catalog > button:focus-visible { outline: 2px solid #e1bd7d; outline-offset: 4px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-catalog .arcana-card-face { width: min(100%,100px); }
+:root .app-shell[data-page='cards'] .cards-room .cards-catalog .arcana-card-name { font-size: 10px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-catalog .arcana-card-family { font-size: 6px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-catalog-price { min-height: 14px; margin-top: 6px; font-size: 9px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-detail { position: static; display: grid; grid-template-columns: 64px minmax(0,1fr); align-items: start; gap: 16px; margin: 0; padding: 14px 0 0; border: 0; border-top: 1px solid #a68c5440; background: none; box-shadow: none; overflow: visible; scroll-margin-top: 16px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-detail-preview { display: block; width: 64px; margin: 0; padding: 0; transform: none; }
+:root .app-shell[data-page='cards'] .cards-room .cards-detail-copy { min-width: 0; }
+:root .app-shell[data-page='cards'] .cards-room .cards-detail-copy > h2 { margin: 4px 0 7px; font: 20px/1.25 var(--serif); color: #e6cfaa; }
+:root .app-shell[data-page='cards'] .cards-room .cards-detail p { font: 11px/1.65 var(--sans); color: #c5beaf; margin: 0 0 10px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-level { font-size: 10px; margin-bottom: 9px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-gold { flex-direction: row; align-items: center; flex-wrap: wrap; gap: 12px; margin: 10px 0; }
+:root .app-shell[data-page='cards'] .cards-room .cards-gold strong { font: 16px var(--serif); color: #e1be7d; }
+:root .app-shell[data-page='cards'] .cards-room .cards-gold span { font-size: 10px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-detail-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-detail .button { padding: 9px 13px; min-height: 36px; font-size: 11px; width: auto; }
+:root .app-shell[data-page='cards'] .cards-room .cards-history { margin-top: 12px; border: 0; padding: 0; }
+:root .app-shell[data-page='cards'] .cards-room .cards-history summary { font: 11px var(--sans); color: #c8b589; cursor: pointer; padding: 7px 0; }
+:root .app-shell[data-page='cards'] .cards-room .cards-history[open] summary { margin-bottom: 8px; }
+:root .app-shell[data-page='cards'] .cards-room .cards-record { margin: 12px 0 0; padding-left: 10px; border-left: 2px solid #a58a5050; }
+:root .app-shell[data-page='cards'] .cards-room .cards-record p { font: italic 11px/1.7 var(--serif); text-transform: none; font-variant: normal; }
+@media (max-width: 1000px) {
+  :root .app-shell[data-page='cards'] .cards-room .cards-workbench { width: min(640px,72vw); margin-left: 22px; top: 205px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-room-content > header { left: 22px; max-width: 75%; }
 }
 @media (max-width: 650px) {
-  :root .app-shell[data-page='cards'] .main-shell {
-    height: auto;
-    overflow: visible;
-  }
-  :root .cards-room {
-    min-height: 100dvh;
-    height: auto;
-    overflow: visible;
-    padding: 0 0 100px;
-  }
-  :root .cards-room .cards-scene {
-    position: fixed;
-    height: 100dvh;
-  }
-  :root .cards-room .cards-room-backdrop {
-    background-size: auto 680px;
-    background-position: 72% top;
-    background-color: #171510;
-  }
-  :root .cards-room .cards-room-shade {
-    background:
-      linear-gradient(90deg, #14141080, transparent),
-      linear-gradient(180deg, transparent 30%, #14141080 70%, #141410e0);
-  }
-  :root .cards-room .cards-room-content > header {
-    top: 120px;
-    max-width: 55%;
-    left: 18px;
-  }
-  :root .cards-room header h2 {
-    font-size: clamp(19px, 5.8vw, 23px);
-  }
-  :root .cards-room header p {
-    max-width: 185px;
-    font-size: 10px;
-  }
-  :root .cards-room .cards-host-dialogue {
-    top: 135px;
-    right: 18px;
-    left: 18px;
-    width: auto;
-  }
-  :root .cards-room .cards-workbench {
-    padding-top: 320px;
-    width: auto;
-    height: auto;
-    margin: 0 16px;
-  }
-  :root .cards-room .cards-playset {
-    padding: 12px;
-    gap: 10px;
-  }
-  :root .cards-room .cards-playset h2 {
-    font-size: 15px;
-  }
-  :root .cards-room .cards-playset p {
-    font-size: 9px;
-    max-width: 130px;
-    line-height: 1.6;
-  }
-  :root .cards-room .cards-equipped {
-    width: 128px;
-    gap: 8px;
-  }
-  :root .cards-room .cards-browse {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  :root .cards-room .cards-table {
-    padding: 16px;
-  }
-  :root .cards-room .cards-catalog {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    max-height: 340px;
-    gap: 20px 10px;
-  }
-  :root .cards-room .cards-filters {
-    gap: 24px;
-  }
-  :root .cards-room .cards-detail {
-    scroll-margin-top: 24px;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 90px minmax(0, 1fr);
-    gap: 20px;
-  }
-  :root .cards-room .cards-detail-preview {
-    width: 90px;
-    margin: 0;
-  }
-  :root .cards-room .cards-detail h2 {
-    font-size: 21px;
-  }
-  :root .cards-room .cards-record {
-    margin-block: 14px;
-  }
+  :root .app-shell[data-page='cards'] .main-shell { height: auto; overflow: visible; }
+  :root .app-shell[data-page='cards'] .cards-room { height: auto; min-height: 100dvh; overflow: visible; padding-bottom: 90px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-scene { position: fixed; height: 100dvh; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-room-backdrop { background-size: auto 680px; background-position: 72% top; background-color: #171510; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-room-shade { background: linear-gradient(180deg,#14141040,transparent 20%,#141410de 65%); }
+  :root .app-shell[data-page='cards'] .cards-room .cards-room-content > header { top: 110px; left: 18px; max-width: 80%; }
+  :root .app-shell[data-page='cards'] .cards-room header > h2 { font-size: 21px; }
+  :root .app-shell[data-page='cards'] .cards-room header p { font-size: 10px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-workbench { position: relative; inset: auto; width: auto; height: auto; max-height: none; margin: 0 14px; padding: 14px; top: 0; transform: none; overflow: visible; margin-top: 245px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-playset { gap: 12px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-playset h2 { font-size: 14px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-playset p { font-size: 10px; max-width: 150px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-equipped { width: 128px; gap: 8px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-catalog { gap: 10px 6px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-catalog .arcana-card-name { font-size: 8px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-catalog .arcana-card-family { display: none; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-catalog-price { font-size: 8px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-detail { grid-template-columns: 48px minmax(0,1fr); gap: 12px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-detail-preview { width: 48px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-detail-copy > h2 { font-size: 19px; }
+  :root .app-shell[data-page='cards'] .cards-room .cards-host-dialogue { top: 100px; left: 18px; right: 18px; width: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
-  :root .cards-room .cards-catalog > button {
-    transition: none;
-  }
+  :root .app-shell[data-page='cards'] .cards-room .cards-catalog > button { transition: none; }
 }

@@ -598,6 +598,126 @@ try {
   for (const values of Object.values(rendering.coverage))
     expect(values.every((v) => v > 100)).toBe(true);
   expect(rendering.performanceMs).toBeLessThan(45);
+  // Account details open from the traveller identity; directory visits begin in camp.
+  const { createLegacyTestCharacter } = await import('../tests/character-fixtures');
+  const character = await createLegacyTestCharacter(account.id, 'Nana de teste');
+  const profileUrl = origin + '/#profiles?user=' + encodeURIComponent(account.id);
+  await page.goto(profileUrl);
+  await expect(page.locator('.public-camp')).toBeVisible();
+  await expect(page.locator('.player-profile-home')).toHaveCount(0);
+  await expect(page.getByRole('button', {name:'Perfil de Editor de teste',exact:true})).toHaveCount(0);
+  const identity = page.getByRole('button', {name:'Abrir perfil de Editor de teste',exact:true});
+  await identity.click();
+  await expect(page.locator('.player-profile-home')).toBeVisible();
+  await expect(page.getByRole('button', {name:'Personalizar perfil',exact:true})).toBeVisible();
+  await page.getByRole('button', {name:'Voltar ao personagem',exact:true}).click();
+  await expect(page.locator('.public-camp')).toBeVisible();
+  await identity.focus(); await page.keyboard.press('Enter');
+  await expect(page.locator('.player-profile-home')).toBeVisible();
+  await page.reload(); // Profile entry always starts with the character.
+  await expect(page.locator('.public-camp')).toBeVisible();
+  await page.goto(profileUrl + '&character=' + character.id);
+  await expect(page.locator('.public-camp')).toBeVisible();
+  await identity.click();
+  await expect(page.locator('.player-profile-home')).toBeVisible();
+  await page.screenshot({path:'test-results/map-editor/profile-account-desktop.png'});
+  await page.setViewportSize({width:390,height:844});
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await page.getByRole('button', {name:'Voltar ao personagem',exact:true}).click();
+  await identity.click();
+  await expect(page.locator('.player-profile-home')).toBeVisible();
+  await page.screenshot({path:'test-results/map-editor/profile-account-mobile.png'});
+  await page.setViewportSize({width:1440,height:1000});
+  const visitor = await browser.newContext({viewport:{width:1440,height:1000}});
+  await visitor.request.post(origin+'/api/auth/sign-up/email',{headers:{Origin:origin},data:{name:'Visitante de teste',email:randomUUID()+'@example.test',password:'Test-'+randomUUID()}});
+  const visitorPage = await visitor.newPage();await visitorPage.goto(profileUrl);
+  await expect(visitorPage.locator('.public-camp')).toBeVisible();
+  await visitorPage.getByRole('button',{name:'Abrir perfil de Editor de teste',exact:true}).click();
+  await expect(visitorPage.locator('.player-profile-home')).toBeVisible();
+  await expect(visitorPage.getByRole('button',{name:'Personalizar perfil',exact:true})).toHaveCount(0);
+  await visitor.close();
+  // Switching characters must not grant the account's other character membership.
+  const alternate = await createLegacyTestCharacter(account.id, 'Irineu de teste');
+  const {communitySettingsSchema,guildDocumentSchema} = await import('../shared/guilds');
+  const cfg = await request('/community/settings', undefined, 'GET');
+  await request('/community/settings', {document:communitySettingsSchema.parse({...cfg.document,founding_po:0}),revision:cfg.revision}, 'PUT');
+  const guild = await request('/guilds',{character_id:character.id,request_id:randomUUID(),document:guildDocumentSchema.parse({name:'Companhia de teste'})});
+  await page.goto(origin+'/#guild?id='+guild.id);
+  await page.reload();
+  await page.getByRole('button',{name:/Abrir menu de/}).click();
+  await page.getByRole('option',{name:'Nana de teste',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Personalizar sede',exact:true})).toBeVisible();
+  await expect(page.locator('.guild-feedback')).toContainText('Nana de teste · Membro desta guilda');
+  await page.getByRole('button',{name:'Abrir menu de Nana de teste',exact:true}).click();
+  await page.getByRole('option',{name:'Irineu de teste',exact:true}).click();
+  await expect(page.locator('.guild-feedback')).toContainText('Irineu de teste · Visitante');
+  await expect(page.getByRole('button',{name:'Personalizar sede',exact:true})).toHaveCount(0);
+  await expect(page.getByRole('button',{name:'Minha guilda',exact:true})).toHaveCount(0);
+  await page.goto(origin+'/#guild');
+  await expect(page.getByText('O personagem selecionado não é membro.',{exact:false})).toBeVisible();
+  await page.getByRole('button',{name:'Usar Nana de teste',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Personalizar sede',exact:true})).toBeVisible();
+  expect((await pool.query('SELECT character_id FROM player_guild_members WHERE guild_id=$1',[guild.id])).rows.map(m=>m.character_id)).toEqual([character.id]);
+  await page.screenshot({path:'test-results/map-editor/guild-character-member.png'});
+  await pool.query('UPDATE characters SET gold_cp=50000 WHERE id=$1',[character.id]);
+  await page.goto(origin+'/#cards');
+  await page.reload();
+  await expect(page.getByRole('button',{name:'A Vigília',exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'A Vigília',exact:true}).click();
+  await page.getByRole('button',{name:'Comprar carta',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Equipar no espaço 1',exact:true})).toBeEnabled();
+  await page.getByRole('button',{name:'Encerrar conversa',exact:true}).click();
+  await page.getByRole('button',{name:'Selecionar espaço 2',exact:true}).click();
+  await page.getByRole('button',{name:'Equipar no espaço 2',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Selecionar espaço 2: A Vigília',exact:true})).toBeVisible();
+  expect((await request('/cards/'+character.id,undefined,'GET'))[0].slot).toBe(2);
+  await page.getByRole('button',{name:'Esvaziar espaço 2',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Selecionar espaço 2',exact:true})).toBeVisible();
+  for(const [width,height] of [[1920,1000],[1440,768],[1024,768],[390,844]]) {
+    await page.setViewportSize({width,height});
+    await page.getByRole('button',{name:'Todas',exact:true}).click();
+    await expect(page.locator('.cards-catalog > button')).toHaveCount(8);
+    const layout=await page.locator('.cards-workbench').evaluate(el=>{
+      const table=el.querySelector('.cards-table')!,detail=el.querySelector('.cards-detail')!,copy=el.querySelector('.cards-detail-copy')!;
+      return {width:el.getBoundingClientRect().width,overflow:document.documentElement.scrollWidth>innerWidth,tableScroll:getComputedStyle(table).overflowY,detailScroll:getComputedStyle(detail).overflowY,copyWidth:copy.getBoundingClientRect().width};
+    });
+    expect(layout.width).toBeLessThanOrEqual(720.5);expect(layout.overflow).toBe(false);
+    expect(layout.copyWidth).toBeGreaterThan(180);expect(layout.tableScroll).toBe('visible');expect(layout.detailScroll).toBe('visible');
+    await page.getByRole('button',{name:'Minha coleção',exact:true}).click();
+    await expect(page.locator('.cards-catalog > button')).toHaveCount(1);
+    await page.getByRole('button',{name:'A Vigília',exact:true}).click();
+    await page.getByRole('button',{name:'Equipar no espaço 2',exact:true}).scrollIntoViewIfNeeded();
+    await expect(page.getByRole('button',{name:'Equipar no espaço 2',exact:true})).toBeInViewport();
+    await page.getByText('História e comentário do Anfitrião',{exact:true}).click();
+    await expect(page.locator('.cards-history')).toHaveAttribute('open','');
+    await page.getByText('História e comentário do Anfitrião',{exact:true}).click();
+    await page.getByRole('button',{name:'Todas',exact:true}).click();
+    await page.screenshot({path:'test-results/map-editor/cards-compact-'+width+'.png'});
+  }
+  await page.getByRole('button',{name:'Abrir menu de Nana de teste',exact:true}).click();
+  await page.getByRole('option',{name:'Irineu de teste',exact:true}).click();
+  await page.getByRole('button',{name:'Minha coleção',exact:true}).click();
+  await expect(page.locator('.cards-catalog > button')).toHaveCount(0);
+  await page.setViewportSize({width:1440,height:1000});
+  // Different native aspect ratios and saved fit modes share one thumbnail frame.
+  for(const [index,image] of ['/atlas-world-v2.png','/character-camp-v2.png','/alvorada-dawn-banner.png'].entries()) {
+    await request('/home-updates',{title:'Crônica de teste '+index,body:'Uma história para o diário.',kind:'article',layout:index===0?'portrait':'compact',image_path:image,image_side:'right',image_fit:index===1?'contain':'cover',link:'',starts_at:null,location:'',text_align:'left',text_size:'normal',position:index});
+  }
+  await page.goto(origin+'/#overview');
+  const covers=page.locator('.journal-compact .journal-image,.journal-portrait .journal-image');
+  await expect(covers).toHaveCount(3);
+  for(const width of [1440,390]) {
+    await page.setViewportSize({width,height:width===1440?1000:844});
+    const sizes=await covers.evaluateAll(elements=>elements.map(el=>({frame:el.getBoundingClientRect().toJSON(),image:el.querySelector('img')!.getBoundingClientRect().toJSON()})));
+    for(const size of sizes) {
+      expect(Math.abs(size.frame.width-size.image.width)).toBeLessThan(1);
+      expect(Math.abs(size.frame.height-size.image.height)).toBeLessThan(1);
+      expect(Math.abs(size.frame.width/size.frame.height-16/9)).toBeLessThan(.01);
+      expect(Math.abs(size.frame.height-sizes[0].frame.height)).toBeLessThan(1);
+    }
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+    await page.screenshot({path:'test-results/map-editor/journal-cards-'+width+'.png',fullPage:true});
+  }
   expect(errors).toEqual([]);
   const { canopy, frames, ...pixels } = rendering;
   await writeFile(
@@ -612,6 +732,10 @@ try {
       smallRockScale: true,
       canopyBinding: true,
       permissions: true,
+      profileAvatarNavigation: true,
+      uniformJournalCovers: true,
+      characterGuildMembership: true,
+      compactCardsPanel: true,
       pixels,
       errors,
     }),

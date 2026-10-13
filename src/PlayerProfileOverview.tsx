@@ -22,7 +22,7 @@ export type PlayerOverview = {
     unlocks: number[];
   };
   friends: { id: string; name: string; avatar: string }[];
-  guild: { id: string; name: string; crest: Crest; prestige: number } | null;
+  guild: { id: string; name: string; crest: Crest; prestige: number; character_id: string; character_name: string } | null;
   blocked: boolean;
   friend: { status: string; incoming: boolean } | null;
 };
@@ -200,7 +200,7 @@ export function PlayerProfileOverview({
                 (p.guild ? (
                   <a href={'#guild?id=' + p.guild.id}>
                     <GuildCrest crest={p.guild.crest} size={64} />
-                    {p.guild.name}
+                    {p.guild.name} · {p.guild.character_name}
                     <ArrowUpRight size={16} />
                   </a>
                 ) : (
@@ -243,6 +243,7 @@ export function PlayerProfileOverview({
             <section className="player-module player-guild-badge">
               <GuildCrest crest={p.guild.crest} size={90} />
               <h2>{p.guild.name}</h2>
+              <p>{p.guild.character_name} · Membro da guilda</p>
               <a href={'#guild?id=' + p.guild.id}>
                 Visitar sede <ArrowUpRight size={14} />
               </a>

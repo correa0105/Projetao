@@ -106,7 +106,8 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
       stranger = await signup('Visitante');
     await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [adm.id]);
     const ch = await createLegacyTestCharacter(owner.id, 'Fundador personagem'),
-      other = await createLegacyTestCharacter(stranger.id);
+      other = await createLegacyTestCharacter(stranger.id),
+      alternate = await createLegacyTestCharacter(owner.id, 'Outro aventureiro');
     await pool.query('UPDATE characters SET gold_cp=200000 WHERE id=$1', [ch.id]);
     let cfg = communitySettingsSchema.parse({}),
       revision = 0,
@@ -230,6 +231,30 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
         );
       },
     );
+    await t.test('somente o personagem registrado pertence à guilda', async () => {
+      const memberContext = '?character_id=' + ch.id, visitorContext = '?character_id=' + alternate.id;
+      const directory = (await request('/guilds' + memberContext, owner)).data;
+      assert.equal(directory.mine, id);
+      assert.equal(directory.membership.character_id, ch.id);
+      const alternateDirectory = (await request('/guilds' + visitorContext, owner)).data;
+      assert.equal(alternateDirectory.mine, null);
+      assert.equal(alternateDirectory.membership.character_name, ch.name);
+      const member = (await request('/guilds/' + id + memberContext, owner)).data;
+      assert.equal(member.is_member, true); assert.equal(member.is_owner, true);
+      assert.equal(member.members.length, 1); assert.equal(member.members[0].character_id, ch.id);
+      const visitor = (await request('/guilds/' + id + visitorContext, owner)).data;
+      assert.equal(visitor.is_member, false); assert.equal(visitor.is_owner, false);
+      assert.equal(visitor.weekly, null); assert.equal(visitor.treasury_cp, null);
+      assert.deepEqual(visitor.ledger, []); assert.deepEqual(visitor.upgrades, []);
+      assert.equal((await request('/guilds/' + id + visitorContext, owner, 'PUT', {document:doc,revision:0})).status, 403);
+      assert.equal((await request('/guilds/' + id + '/invites' + visitorContext, owner, 'POST', {user_id:stranger.id})).status, 403);
+      assert.equal((await request('/guilds/' + id + '/weekly/adventure/claim' + visitorContext, owner, 'POST', {})).status, 403);
+      assert.equal((await request('/guilds?character_id=' + other.id, owner)).status, 404);
+      assert.equal((await request('/guilds/' + id + '?character_id=' + other.id, owner)).status, 404);
+      assert.equal((await request('/guilds?character_id=invalid', owner)).status, 400);
+      const profile = (await request('/profiles/' + owner.id, owner)).data;
+      assert.equal(profile.guild.character_id, ch.id); assert.equal(profile.guild.character_name, ch.name);
+    });
     await t.test(
       'quatro salas iniciais, sede exclusiva do dono, vistas e expansões validadas',
       async () => {
@@ -410,6 +435,9 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
           'INSERT INTO mission_rewards(post_id,character_id,experience,awarded_by) VALUES($1,$2,0,$3)',
           [p.id, ch.id, adm.id],
         );
+        const {rows:[unrelated]} = await pool.query("INSERT INTO board_posts(author_id,kind,status,title,description,location,difficulty) VALUES($1,'mission','completed','Outra aventura','Crônica','Norte','Moderada') RETURNING id", [adm.id]);
+        await pool.query('INSERT INTO mission_participants(post_id,character_id) VALUES($1,$2)', [unrelated.id, alternate.id]);
+        await pool.query('INSERT INTO mission_rewards(post_id,character_id,experience,awarded_by) VALUES($1,$2,0,$3)', [unrelated.id, alternate.id, adm.id]);
         g = (await request('/guilds/' + id, owner)).data;
         assert.equal(g.weekly.items[0].progress, 1);
         cfg.missions[0].gold_po = 999;
@@ -473,7 +501,7 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
       'perfil: nível de conta legítimo, vitrines protegidas e upload próprio permitido',
       async () => {
         let p = (await request('/profiles/' + owner.id, owner)).data;
-        assert.equal(p.progress.level, 1);
+        assert.equal(p.progress.level, accountProgress(2, 0, cfg.profile_unlocks).level);
         const document = profileSettingsSchema.parse({
           bio: 'Uma história',
           border: 'runic',

@@ -60,6 +60,7 @@ type Entry = {
 type Directory = {
   items: Entry[];
   mine: string | null;
+  membership: { guild_id: string; character_id: string; character_name: string } | null;
   invites: { guild_id: string; name: string; crest: Crest }[];
 };
 type Guild = {
@@ -74,7 +75,7 @@ type Guild = {
   prestige: number;
   treasury_cp: number | null;
   room_unlocks: CommunitySettings['room_unlocks'];
-  members: { user_id: string; name: string; character_name: string }[];
+  members: { user_id: string; character_id: string; name: string; character_name: string }[];
   upgrades: { object_id: string; level: number }[];
   ledger: { kind: string; amount_cp: string; created_at: string }[];
   weekly: {
@@ -90,10 +91,14 @@ type Guild = {
 export function Guilds({
   user,
   characters,
+  activeCharacterId,
+  onSelectCharacter,
   onPurchased,
 }: {
   user: User;
   characters: Character[];
+  activeCharacterId: string;
+  onSelectCharacter: (id: string) => void;
   onPurchased: () => void | Promise<void>;
 }) {
   const [directory, setDirectory] = useState<Directory | null>(null),
@@ -108,7 +113,7 @@ export function Guilds({
     [notice, setNotice] = useState(''),
     [busy, setBusy] = useState(false),
     [founding, setFounding] = useState(false),
-    [character, setCharacter] = useState(characters[0]?.id || ''),
+    [character, setCharacter] = useState(activeCharacterId || characters[0]?.id || ''),
     [doc, setDoc] = useState<GuildDocument | null>(null),
     [config, setConfig] = useState<CommunitySettings | null>(null),
     [selected, setSelected] = useState(''),
@@ -133,14 +138,15 @@ export function Guilds({
     right: number;
     top: number;
   } | null>(null);
+  const memberUrl = (url: string) => activeCharacterId ? url + '?character_id=' + encodeURIComponent(activeCharacterId) : url;
   async function load() {
     const [d, s] = await Promise.all([
-      api<Directory>('/guilds'),
+      api<Directory>(memberUrl('/guilds')),
       api<Settings>('/community/settings'),
     ]);
     setDirectory(d);
     setSettings(s);
-    if (target) setG(await api<Guild>('/guilds/' + target));
+    if (target) setG(await api<Guild>(memberUrl('/guilds/' + target)));
   }
   useEffect(() => {
     void load().catch((e) => setError(e.message));
@@ -319,7 +325,7 @@ export function Guilds({
                   ? 'Custo aguardando configuração do administrador'
                   : settings?.document.founding_po.toLocaleString('pt-BR') + ' PO para fundar'}
               </strong>
-              {!directory.mine && (
+              {!directory.membership && (
                 <button
                   disabled={busy || !characters.length || settings?.document.founding_po === null}
                   onClick={() => {
@@ -337,6 +343,16 @@ export function Guilds({
               )}
             </div>
           </div>
+          {!directory.mine && directory.membership && (
+            <p className="guild-paper" role="status">
+              {directory.membership.character_name} é o personagem da sua conta que pertence a uma guilda.
+              O personagem selecionado não é membro.
+              <button onClick={() => {
+                onSelectCharacter(directory.membership!.character_id);
+                location.hash = 'guild?id=' + directory.membership!.guild_id;
+              }}>Usar {directory.membership.character_name}</button>
+            </p>
+          )}
           {directory.invites.length > 0 && (
             <section className="guild-paper">
               <h2>Convites recebidos</h2>
@@ -359,6 +375,7 @@ export function Guilds({
                     onClick={() =>
                       void run(async () => {
                         await post('/guilds/' + i.guild_id + '/join', { character_id: character });
+                        onSelectCharacter(character);
                         location.hash = 'guild?id=' + i.guild_id;
                       })
                     }
@@ -425,6 +442,10 @@ export function Guilds({
               </button>
             )}
           </div>
+          <p className="guild-feedback" role="status">
+            {characters.find(c => c.id === activeCharacterId)?.name || 'Seu personagem'}
+            {g.is_member ? ' · Membro desta guilda' : ' · Visitante · Não pertence a esta guilda'}
+          </p>
           <nav className="guild-tabs" aria-label="Áreas da guilda">
             {[
               ['house', 'Sede', Home],
@@ -799,7 +820,7 @@ export function Guilds({
                         disabled={busy}
                         onClick={() =>
                           void run(async () => {
-                            await api('/guilds/' + g.id, {
+                            await api(memberUrl('/guilds/' + g.id), {
                               method: 'PUT',
                               body: JSON.stringify({ document: doc, revision: g.revision }),
                             });
@@ -837,7 +858,7 @@ export function Guilds({
                       disabled={busy || !upgrade || level >= upgrade.max_level}
                       onClick={() =>
                         void run(async () => {
-                          await post('/guilds/' + g.id + '/upgrade/' + obj.id, {
+                          await post(memberUrl('/guilds/' + g.id + '/upgrade/' + obj.id), {
                             level: level + 1,
                           });
                           await load();
@@ -892,7 +913,7 @@ export function Guilds({
                         onClick={() =>
                           void run(async () => {
                             await post(
-                              '/guilds/' + g.id + '/weekly/' + m.mission_id + '/claim',
+                              memberUrl('/guilds/' + g.id + '/weekly/' + m.mission_id + '/claim'),
                               {},
                             );
                             await load();
@@ -938,13 +959,13 @@ export function Guilds({
                       {m.character_name} · {m.user_id === g.owner_id ? 'Fundador' : 'Membro'}
                     </small>
                   </button>
-                  {m.user_id !== g.owner_id && (g.is_owner || m.user_id === user.id) && (
+                  {m.user_id !== g.owner_id && (g.is_owner || (g.is_member && m.character_id === activeCharacterId)) && (
                     <button
                       disabled={busy}
                       onClick={() =>
                         void run(async () => {
                           await api(
-                            '/guilds/' + g.id + '/members/' + encodeURIComponent(m.user_id),
+                            memberUrl('/guilds/' + g.id + '/members/' + encodeURIComponent(m.user_id)),
                             { method: 'DELETE' },
                           );
                           await load();
@@ -974,7 +995,7 @@ export function Guilds({
                         disabled={busy || g.members.length >= 8}
                         onClick={() =>
                           void run(async () => {
-                            await post('/guilds/' + g.id + '/invites', { user_id: p.id });
+                            await post(memberUrl('/guilds/' + g.id + '/invites'), { user_id: p.id });
                             setNotice('Convite enviado a ' + p.name + '.');
                           })
                         }
@@ -1010,6 +1031,7 @@ export function Guilds({
                 setFounding(false);
                 setDoc(null);
                 await onPurchased();
+                onSelectCharacter(character);
                 location.hash = 'guild?id=' + r.id;
               });
             }}

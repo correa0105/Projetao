@@ -122,7 +122,7 @@ export function socialRouter() {
       guild:
         (
           await pool.query(
-            `SELECT g.id,g.document->>'name' name,g.document->'crest' crest,g.prestige FROM player_guild_members m JOIN player_guilds g ON g.id=m.guild_id WHERE m.user_id=$1`,
+            `SELECT g.id,g.document->>'name' name,g.document->'crest' crest,g.prestige,m.character_id,c.name AS character_name FROM player_guild_members m JOIN player_guilds g ON g.id=m.guild_id JOIN characters c ON c.id=m.character_id WHERE m.user_id=$1`,
             [uid],
           )
         ).rows[0] || null,

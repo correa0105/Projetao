@@ -94,6 +94,17 @@
   height: 100%;
   transition: filter 0.3s ease;
 }
+.journal-compact .journal-image,
+.journal-portrait .journal-image {
+  aspect-ratio: 16 / 9;
+}
+.journal-compact .journal-image img,
+.journal-portrait .journal-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
 .journal-image:hover img {
   filter: brightness(1.08);
 }
@@ -111,9 +122,6 @@
 }
 .journal-landscape .journal-image {
   min-height: 290px;
-}
-.journal-portrait .journal-image {
-  aspect-ratio: 4/5;
 }
 .journal-compact .journal-image {
   aspect-ratio: 16/9;
@@ -449,9 +457,6 @@
     height: auto;
     aspect-ratio: 16/10;
   }
-  .journal-portrait .journal-image {
-    aspect-ratio: 4/3;
-  }
   .journal-feature .journal-copy {
     padding: 24px;
   }
@@ -494,13 +499,6 @@
   }
   .journal-landscape .journal-copy {
     flex: 1;
-  }
-}
-
-@media (min-width: 601px) {
-  .journal-portrait .journal-image {
-    height: 320px;
-    aspect-ratio: auto;
   }
 }
 

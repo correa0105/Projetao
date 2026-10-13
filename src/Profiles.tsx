@@ -116,9 +116,8 @@ const panels: { id: Panel; name: string; icon: typeof Users }[] = [
 export function Profiles({ user }: { user: User }) {
   const [uploads, setUploads] = useState(0);
   const uploading = uploads > 0;
-  const [overview, setOverview] = useState(
-    !new URLSearchParams(location.hash.split('?')[1] || '').get('character'),
-  );
+  const [overview, setOverview] = useState(false);
+  const [navigationVersion, setNavigationVersion] = useState(0);
   const olderLoaded = useRef(false);
   const params = () => new URLSearchParams(location.hash.split('?')[1] || ''),
     [target, setTarget] = useState(params().get('user') || ''),
@@ -186,10 +185,11 @@ export function Profiles({ user }: { user: User }) {
       setTarget(params().get('user') || '');
       setSelected(params().get('character') || '');
       setPanel('characters');
-      setOverview(!params().get('character'));
+      setOverview(false);
       setSheetCharacterId(null);
       setProfile(null);
       setDetails(null);
+      setNavigationVersion((version) => version + 1);
     }
     window.addEventListener('hashchange', navigate);
     return () => window.removeEventListener('hashchange', navigate);
@@ -244,7 +244,7 @@ export function Profiles({ user }: { user: User }) {
       window.removeEventListener('focus', reload);
       document.removeEventListener('visibilitychange', reload);
     };
-  }, [target]);
+  }, [target, navigationVersion]);
   useEffect(() => {
     setDetails(null);
     setCompanion(null);
@@ -279,7 +279,7 @@ export function Profiles({ user }: { user: User }) {
       window.removeEventListener('companion-art-updated', artworkChanged);
       document.removeEventListener('visibilitychange', reload);
     };
-  }, [target, selected]);
+  }, [target, selected, navigationVersion]);
   useEffect(() => {
     void run(loadSocial);
     const timer = setInterval(() => {
@@ -440,14 +440,11 @@ export function Profiles({ user }: { user: User }) {
         <p className="social-empty">Abrindo o perfil…</p>
       ) : (
         <>
-          <nav className="player-profile-tabs" aria-label="Perfil do usuário">
-            <button aria-pressed={overview} onClick={() => setOverview(true)}>
-              Perfil de {profile.name}
-            </button>
-            <button aria-pressed={!overview} onClick={() => setOverview(false)}>
-              Personagens e coleções
-            </button>
-          </nav>
+          {overview && (
+            <nav className="player-profile-tabs" aria-label="Voltar ao personagem">
+              <button onClick={() => setOverview(false)}><ArrowLeft size={16} /> Voltar ao personagem</button>
+            </nav>
+          )}
           {overview && (
             <PlayerProfileOverview
               profile={profile}
@@ -714,7 +711,9 @@ export function Profiles({ user }: { user: User }) {
                 </section>
               </div>
             </div>
-            <div className="profile-visit-selector">
+            <button className="profile-visit-selector profile-account-link"
+              aria-label={'Abrir perfil de ' + profile.name}
+              onClick={() => setOverview(true)}>
               <div
                 className="profile-character-avatar"
                 aria-label={current ? 'Retrato de ' + current.name : 'Retrato do viajante'}
@@ -751,7 +750,7 @@ export function Profiles({ user }: { user: User }) {
                   </span>
                 )}
               </div>
-            </div>
+            </button>
             <ProfileNextArrow panels={panels} selected={panel} onSelect={setPanel} />
           </div>
           {sheetCharacterId && (

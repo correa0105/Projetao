@@ -1,4 +1,5 @@
 import { drawTerrain } from './vtt-terrain-canvas';
+import { renderBuffer, renderWorkCache, tokenOnScreen } from './vtt-render-cache';
 import type { TerrainStroke } from '../shared/vtt';
 import { tokenResizeHandles } from '../shared/vtt-token-resize';
 import { isTreeCanopy, canopyActor } from '../shared/vtt-canopies';
@@ -229,6 +230,9 @@ function dominantColor(image: HTMLImageElement, fallback: string) {
 }
 export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOptions) {
   const { width, height, dpr, camera: cam, images } = o;
+  const view = {left:cam.x-width/2/cam.zoom,top:cam.y-height/2/cam.zoom,right:cam.x+width/2/cam.zoom,bottom:cam.y+height/2/cam.zoom};
+  const sortedTokens = orderedTokens(s.tokens);
+  const now = Date.now(), reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   c.setTransform(dpr, 0, 0, dpr, 0, 0);
   c.clearRect(0, 0, width, height);
   const background = images.get(s.background);
@@ -341,8 +345,8 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
           right: cam.x + width / 2 / cam.zoom,
           bottom: cam.y + height / 2 / cam.zoom,
         },
-        Date.now(),
-        matchMedia('(prefers-reduced-motion: reduce)').matches,
+        now,
+        reduced,
         images,
       );
     }
@@ -353,15 +357,16 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       drawing(c, d);
       c.restore();
     }
-    for (const t of orderedTokens(s.tokens).filter((t) => t.layer === layer && !isTreeCanopy(t))) {
+    for (const t of sortedTokens.filter((t) => t.layer === layer && !isTreeCanopy(t))) {
       if ((!o.gm || o.preview) && t.hidden) continue;
+      if (!tokenOnScreen(t, view, cam.zoom)) continue;
       if (o.preview && o.viewer && t.id !== o.viewer.id && !viewerSees(o.viewer, t, s)) continue;
       c.save();
       if(layer === 'map') clipCanopyBase(c,s,t);
       c.translate(t.x, t.y);
       c.rotate((t.rotation * Math.PI) / 180);
       c.globalAlpha = t.hidden || layer === 'gm' ? s.gmOpacity : 1;
-      if (o.visualEffects !== false) c.globalAlpha *= spellTokenOpacity(t, o.spellEffects || [], Date.now(), matchMedia('(prefers-reduced-motion: reduce)').matches);
+      if (o.visualEffects !== false) c.globalAlpha *= spellTokenOpacity(t, o.spellEffects || [], now, reduced);
       if (o.visualEffects !== false && (t.id === o.currentTurn || t.id === o.nextTurn))
         drawTurnEffect(c, Math.max(t.width, t.height) * 0.6, t.id === o.nextTurn);
       if (o.visualEffects !== false) {
@@ -374,7 +379,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       c.scale(t.flipX ? -1 : 1, t.flipY ? -1 : 1);
       const img = images.get(t.image);
       if (t.animatedAsset) {
-        drawAnimatedAsset(c, t, img, Date.now(), matchMedia('(prefers-reduced-motion: reduce)').matches, o.visualEffects !== false);
+        drawAnimatedAsset(c, t, img, now, reduced, o.visualEffects !== false);
       } else if (layer === 'map') {
         if (img?.complete && img.naturalWidth)
           c.drawImage(img, -t.width / 2, -t.height / 2, t.width, t.height);
@@ -501,8 +506,8 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       o.spellEffects,
       'front',
       spellView,
-      Date.now(),
-      matchMedia('(prefers-reduced-motion: reduce)').matches,
+      now,
+      reduced,
       images,
     );
   if (o.spellPreview) drawSpellPreview(c, s, o.spellPreview, spellView, cam.zoom);
@@ -517,113 +522,66 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
           ? [o.viewer]
           : []
         : s.tokens.filter((t) => t.controller === o.userId && t.layer === 'tokens' && !t.hidden);
-    const makeCanvas = () => {
-      const el = document.createElement('canvas');
-      el.width = c.canvas.width;
-      el.height = c.canvas.height;
-      return el;
-    };
-    const world = makeCanvas();
-    world.getContext('2d')!.drawImage(c.canvas, 0, 0);
-    const light = makeCanvas(),
-      visibility = makeCanvas(),
-      los = makeCanvas(),
-      colors = makeCanvas();
-    const transform = (ctx: CanvasRenderingContext2D) =>
-      ctx.setTransform(
-        dpr * cam.zoom,
-        0,
-        0,
-        dpr * cam.zoom,
-        dpr * (width / 2 - cam.x * cam.zoom),
-        dpr * (height / 2 - cam.y * cam.zoom),
-      );
-    const lc = light.getContext('2d')!,
-      vc = visibility.getContext('2d')!,
-      line = los.getContext('2d')!,
-      tc = colors.getContext('2d')!;
-    transform(lc);
-    transform(vc);
-    transform(line);
-    transform(tc);
-    for (const v of viewers) {
-      polygon(line, sightPolygon(v, 50000, s));
-      line.fillStyle = '#fff';
-      line.fill();
-      if (v.vision > 0) {
-        polygon(vc, sightPolygon(v, visionPixels(v.vision, s), s));
-        vc.fillStyle = '#fff';
-        vc.fill();
+    const cache = renderWorkCache(c.canvas), sources = sceneLights(s);
+    const lightingKey = JSON.stringify([s.id,width,height,dpr,cam,master,s.ambient,s.grid.size,s.grid.unit,s.grid.scale,
+      viewers.map(v=>[v.x,v.y,v.vision]),s.walls,sources]);
+    const rebuild = cache.lightingKey !== lightingKey;
+    const light = renderBuffer(c.canvas,'light',rebuild), colors = renderBuffer(c.canvas,'colors',rebuild),
+      mask = renderBuffer(c.canvas,'darkness',rebuild);
+    if (rebuild) {
+      const visibility = renderBuffer(c.canvas,'visibility'), los = renderBuffer(c.canvas,'los');
+      const transform = (ctx: CanvasRenderingContext2D) => ctx.setTransform(
+        dpr*cam.zoom,0,0,dpr*cam.zoom,dpr*(width/2-cam.x*cam.zoom),dpr*(height/2-cam.y*cam.zoom));
+      const lc = light.getContext('2d')!, vc = visibility.getContext('2d')!,
+        line = los.getContext('2d')!, tc = colors.getContext('2d')!;
+      transform(lc); transform(vc); transform(line); transform(tc);
+      for (const v of viewers) {
+        polygon(line,sightPolygon(v,50000,s));line.fillStyle='#fff';line.fill();
+        if (v.vision>0) {polygon(vc,sightPolygon(v,visionPixels(v.vision,s),s));vc.fillStyle='#fff';vc.fill();}
       }
+      for (const source of sources) {
+        const r=visionPixels(source.bright+source.dim,s);if(r<=0)continue;
+        // Both light and tint use exactly the same visibility polygon.
+        const shape=sightPolygon(source,r,s,source.rotation,source.angle);
+        lc.save();polygon(lc,shape);lc.clip();
+        const gradient=lc.createRadialGradient(source.x,source.y,0,source.x,source.y,r);
+        gradient.addColorStop(0,'#fff');gradient.addColorStop(Math.min(.99,source.bright/(source.bright+source.dim)),'#fff');gradient.addColorStop(1,'#ffffff70');
+        lc.fillStyle=gradient;lc.fillRect(source.x-r,source.y-r,r*2,r*2);lc.restore();
+        tc.save();polygon(tc,shape);tc.clip();
+        const tint=tc.createRadialGradient(source.x,source.y,0,source.x,source.y,r);
+        tint.addColorStop(0,source.color+'20');tint.addColorStop(1,source.color+'00');
+        tc.fillStyle=tint;tc.fillRect(source.x-r,source.y-r,r*2,r*2);tc.restore();
+      }
+      lc.setTransform(1,0,0,1,0,0);
+      if(!master){lc.globalCompositeOperation='destination-in';lc.drawImage(los,0,0);}
+      vc.setTransform(1,0,0,1,0,0);
+      if(s.ambient>.05)vc.drawImage(los,0,0);
+      if(master&&s.ambient>.05){vc.fillStyle='#fff';vc.fillRect(0,0,width*dpr,height*dpr);}
+      vc.drawImage(light,0,0);
+      if(master&&!viewers.length)vc.drawImage(light,0,0);
+      const m=mask.getContext('2d')!;
+      m.fillStyle='#03060a';m.fillRect(0,0,mask.width,mask.height);
+      m.globalCompositeOperation='destination-out';m.drawImage(visibility,0,0);
+      cache.lightingKey=lightingKey;cache.lightingBuilds++;
     }
-    for (const source of sceneLights(s)) {
-      const r = visionPixels(source.bright + source.dim, s);
-      if (r <= 0) continue;
-      lc.save();
-      polygon(lc, sightPolygon(source, r, s, source.rotation, source.angle));
-      lc.clip();
-      const gradient = lc.createRadialGradient(source.x, source.y, 0, source.x, source.y, r);
-      gradient.addColorStop(0, '#fff');
-      gradient.addColorStop(Math.min(0.99, source.bright / (source.bright + source.dim)), '#fff');
-      gradient.addColorStop(1, '#ffffff70');
-      lc.fillStyle = gradient;
-      lc.fillRect(source.x - r, source.y - r, r * 2, r * 2);
-      lc.restore();
-      tc.save();
-      polygon(tc, sightPolygon(source, r, s, source.rotation, source.angle));
-      tc.clip();
-      const tint = tc.createRadialGradient(source.x, source.y, 0, source.x, source.y, r);
-      tint.addColorStop(0, source.color + '20');
-      tint.addColorStop(1, source.color + '00');
-      tc.fillStyle = tint;
-      tc.fillRect(source.x - r, source.y - r, r * 2, r * 2);
-      tc.restore();
-    }
-    lc.setTransform(1, 0, 0, 1, 0, 0);
-    if (!master) {
-      lc.globalCompositeOperation = 'destination-in';
-      lc.drawImage(los, 0, 0);
-    }
-    vc.setTransform(1, 0, 0, 1, 0, 0);
-    if (s.ambient > 0.05) vc.drawImage(los, 0, 0);
-    if (master && s.ambient > 0.05) {
-      vc.fillStyle = '#fff';
-      vc.fillRect(0, 0, width * dpr, height * dpr);
-    }
-    vc.drawImage(light, 0, 0);
-    if (master && !viewers.length) vc.drawImage(light, 0, 0);
-    c.save();
-    c.setTransform(1, 0, 0, 1, 0, 0);
-    if (!master) {
-      c.filter =
-        s.ambient <= 0.05
-          ? 'grayscale(1) brightness(.62)'
-          : `brightness(${0.35 + s.ambient * 0.65})`;
-      c.drawImage(world, 0, 0);
-      c.filter = 'none';
-      const colored = makeCanvas(),
-        cc = colored.getContext('2d')!;
-      cc.drawImage(world, 0, 0);
-      cc.drawImage(colors, 0, 0);
-      cc.globalCompositeOperation = 'destination-in';
-      cc.drawImage(light, 0, 0);
-      c.drawImage(colored, 0, 0);
-    } else c.drawImage(colors, 0, 0);
-    const mask = makeCanvas(),
-      m = mask.getContext('2d')!;
-    m.fillStyle = '#03060a';
-    m.fillRect(0, 0, mask.width, mask.height);
-    m.globalCompositeOperation = 'destination-out';
-    m.drawImage(visibility, 0, 0);
-    c.globalAlpha = darkness;
-    c.drawImage(mask, 0, 0);
-    c.restore();
+    c.save();c.setTransform(1,0,0,1,0,0);
+    if(!master){
+      const world=renderBuffer(c.canvas,'world'), colored=renderBuffer(c.canvas,'colored');
+      world.getContext('2d')!.drawImage(c.canvas,0,0);
+      c.filter=s.ambient<=.05?'grayscale(1) brightness(.62)':`brightness(${.35+s.ambient*.65})`;
+      c.drawImage(world,0,0);c.filter='none';
+      const cc=colored.getContext('2d')!;
+      cc.drawImage(world,0,0);cc.drawImage(colors,0,0);cc.globalCompositeOperation='destination-in';cc.drawImage(light,0,0);
+      c.drawImage(colored,0,0);
+    }else c.drawImage(colors,0,0);
+    c.globalAlpha=darkness;c.drawImage(mask,0,0);c.restore();
   }
   if (s.fog && s.fogMode === 'manual') {
-    const mask = document.createElement('canvas');
-    mask.width = c.canvas.width;
-    mask.height = c.canvas.height;
+    const cache = renderWorkCache(c.canvas);
+    const fogKey = JSON.stringify([s.id,width,height,dpr,cam,s.reveals,s.fogAreas]);
+    const mask = renderBuffer(c.canvas,'manual-fog',cache.fogKey !== fogKey);
     const m = mask.getContext('2d')!;
+    if (cache.fogKey !== fogKey) {
     m.fillStyle = '#03060a';
     m.fillRect(0, 0, mask.width, mask.height);
     m.setTransform(
@@ -645,6 +603,8 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       m.fillStyle = '#03060a';
       polygon(m, area.points);
       m.fill();
+    }
+    cache.fogKey = fogKey;
     }
     c.save();
     c.setTransform(1, 0, 0, 1, 0, 0);

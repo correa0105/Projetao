@@ -47,14 +47,21 @@ export function Cards({
   const key = useRef(crypto.randomUUID()),
     inFlight = useRef(false),
     live = useRef(true),
+    currentCharacter = useRef(character?.id),
     timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  currentCharacter.current = character?.id;
   useEffect(() => {
+    let cancelled = false;
     live.current = true;
+    setOwned([]);
+    setNotice('');
+    setError('');
     if (character)
       void api<OwnedCard[]>('/cards/' + character.id)
-        .then(setOwned)
-        .catch((e) => setError(e.message));
+        .then((cards) => { if (!cancelled) setOwned(cards); })
+        .catch((e) => { if (!cancelled) setError(e.message); });
     return () => {
+      cancelled = true;
       live.current = false;
       if (timer.current) clearTimeout(timer.current);
     };
@@ -87,9 +94,10 @@ export function Cards({
         card_id: selected.id,
         idempotency_key: key.current,
       });
-      if (live.current) {
+      const collection = await api<OwnedCard[]>('/cards/' + character.id);
+      if (live.current && currentCharacter.current === character.id) {
         key.current = crypto.randomUUID();
-        setOwned(await api<OwnedCard[]>('/cards/' + character.id));
+        setOwned(collection);
         setNotice('A carta foi guardada na sua coleção.');
         say(
           'Uma boa escolha. Agora decida qual lugar ela ocupa entre as três cartas que acompanham você.',
@@ -97,7 +105,7 @@ export function Cards({
       }
       await onPurchased();
     } catch (e) {
-      if (live.current) setError((e as Error).message);
+      if (live.current && currentCharacter.current === character.id) setError((e as Error).message);
     } finally {
       inFlight.current = false;
       if (live.current) setBusy(false);
@@ -119,12 +127,12 @@ export function Cards({
         body: JSON.stringify({ slots }),
       });
       const updated = await api<OwnedCard[]>('/cards/' + character.id);
-      if (live.current) {
+      if (live.current && currentCharacter.current === character.id) {
         setOwned(updated);
         setNotice(ownedId ? 'Carta equipada.' : 'Espaço liberado.');
       }
     } catch (e) {
-      if (live.current) setError((e as Error).message);
+      if (live.current && currentCharacter.current === character.id) setError((e as Error).message);
     } finally {
       inFlight.current = false;
       if (live.current) setBusy(false);
@@ -181,8 +189,8 @@ export function Cards({
         <div className="cards-playset">
           <div>
             <span className="eyebrow">COM {character?.name || 'SEU PERSONAGEM'}</span>
-            <h2>Três cartas para a jornada</h2>
-            <p>Escolha um espaço para equipar a carta selecionada.</p>
+            <h2>Cartas equipadas</h2>
+            <p>Selecione um espaço, depois equipe uma carta.</p>
           </div>
           <section className="cards-equipped" aria-label="Três cartas equipadas">
             {[1, 2, 3].map((position) => {
@@ -207,7 +215,7 @@ export function Cards({
                   ) : (
                     <span className="cards-empty-slot">
                       <span>✦</span>
-                      <small>Espaço {position}</small>
+                      <small>{position}</small>
                     </span>
                   )}
                   <span className="cards-slot-index">{position}</span>
@@ -220,8 +228,7 @@ export function Cards({
           <div className="cards-table">
             <div className="cards-catalog-heading">
               <span className="eyebrow">O ACERVO DO ANFITRIÃO</span>
-              <h2>Escolha uma história</h2>
-              <p>Selecione uma carta para conhecer seu registro.</p>
+              <h2>Escolha sua carta</h2>
             </div>
             <nav className="cards-filters" aria-label="Filtrar cartas">
               {['Todas', 'Minha coleção', 'À venda'].map((label) => (
@@ -244,6 +251,7 @@ export function Cards({
                 .map((card) => (
                   <button
                     key={card.id}
+                    aria-label={card.name}
                     disabled={busy}
                     aria-pressed={selected.id === card.id}
                     onClick={() => {
@@ -293,17 +301,6 @@ export function Cards({
               <span className="eyebrow">{selected.family}</span>
               <h2>{selected.name}</h2>
               <p>{selected.description}</p>
-            {cardStories[selected.id] && (
-              <details className="cards-history">
-                <summary>História da carta</summary>
-                <span className="eyebrow">{cardStories[selected.id].provenance}</span>
-                <p>{cardStories[selected.id].story}</p>
-              </details>
-            )}
-              <blockquote className="cards-record">
-                <span>Do registro do Anfitrião</span>
-                <p>{selected.comment}</p>
-              </blockquote>
               {item ? (
                 <>
                   <span className="cards-level">
@@ -329,9 +326,6 @@ export function Cards({
                       </button>
                     )}
                   </div>
-                  <small className="cards-upgrade-note">
-                    Os aprimoramentos serão definidos em uma próxima etapa.
-                  </small>
                 </>
               ) : selected.buyable ? (
                 <>
@@ -362,6 +356,14 @@ export function Cards({
                   Esta carta ainda não tem uma forma de obtenção disponível.
                 </p>
               )}
+              <details className="cards-history" key={selected.id}>
+                <summary>História e comentário do Anfitrião</summary>
+                {cardStories[selected.id] && <>
+                  <span className="eyebrow">{cardStories[selected.id].provenance}</span>
+                  <p>{cardStories[selected.id].story}</p>
+                </>}
+                <blockquote className="cards-record"><p>{selected.comment}</p></blockquote>
+              </details>
               {error && <p role="alert">{error}</p>}
               {notice && <p role="status">{notice}</p>}
             </div>

@@ -398,6 +398,17 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   const [terrainDraft, setTerrainDraft] = useState<TerrainStroke | null>(null);
   const [terrainCursor, setTerrainCursor] = useState<Point | null>(null);
   const terrainActive = useRef<TerrainStroke | null>(null);
+  const terrainFrame = useRef(0), terrainPointer = useRef<Point | null>(null);
+  useEffect(() => () => cancelAnimationFrame(terrainFrame.current), []);
+  function scheduleTerrainRender(p: Point) {
+    terrainPointer.current = p;
+    if (terrainFrame.current) return;
+    terrainFrame.current = requestAnimationFrame(() => {
+      terrainFrame.current = 0;
+      setTerrainCursor(terrainPointer.current);
+      setTerrainDraft(terrainActive.current);
+    });
+  }
   const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium' | 'animated' | 'terrain'>(
       'images',
     ),
@@ -469,6 +480,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const blur=()=>{panHeld.current=false;
       const d=drag.current;drag.current=null;
       if(d && d.kind!=='pan'){docRef.current=d.original;setDoc(d.original);}
+      cancelAnimationFrame(terrainFrame.current);terrainFrame.current=0;terrainPointer.current=null;
       terrainActive.current=null;setTerrainDraft(null);setRuler([]);setLasso([]);setDraft(null);
     };
     window.addEventListener('keydown',down);window.addEventListener('keyup',up);window.addEventListener('blur',blur);
@@ -1024,8 +1036,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const c = canvas.current;
     if (!c || !scene) return;
     const dpr = Math.min(2, devicePixelRatio || 1);
-    c.width = Math.round(bounds.width * dpr);
-    c.height = Math.round(bounds.height * dpr);
+    const width = Math.round(bounds.width * dpr), height = Math.round(bounds.height * dpr);
+    if (c.width !== width) c.width = width;
+    if (c.height !== height) c.height = height;
     const atmosphereScene = atmospherePreview?.sceneId === scene.id ? { ...scene, atmosphere: atmospherePreview.value } : scene;
     const draw = () =>
       renderVtt(
@@ -1237,6 +1250,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       }
       if (e.key === 'Escape' && (tool === 'terrain-paint' || tool === 'terrain-erase')) {
         if (mapsOpen || settingsId || sheetId) return;
+        cancelAnimationFrame(terrainFrame.current); terrainFrame.current = 0; terrainPointer.current = null;
         terrainActive.current = null; setTerrainDraft(null); setTerrainCursor(null);
         setTool('select'); e.preventDefault(); return;
       }
@@ -1726,13 +1740,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       setCamera({...navigation.camera,x:navigation.camera.x-(e.clientX-navigation.screen.x)/navigation.camera.zoom,
         y:navigation.camera.y-(e.clientY-navigation.screen.y)/navigation.camera.zoom});return;
     }
-    if (tool.startsWith('terrain-') && gm && !preview) setTerrainCursor(point(e));
+    if (tool.startsWith('terrain-') && gm && !preview) scheduleTerrainRender(point(e));
     if (terrainActive.current && gm && !preview && scene) {
       const p = point(e), stroke = terrainActive.current;
       const last = stroke.points.at(-1)!;
       if (Math.hypot(p.x-last.x,p.y-last.y) >= Math.max(1,stroke.radius*.08)) {
         const points = stroke.points.length >= 1499 ? stroke.points.filter((_,i)=>i%2===0) : stroke.points;
-        terrainActive.current = {...stroke,points:[...points,p]}; setTerrainDraft(terrainActive.current);
+        terrainActive.current = {...stroke,points:[...points,p]};
       }
       return;
     }
@@ -1883,6 +1897,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);return;}
     if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);
     if (terrainActive.current) {
+      cancelAnimationFrame(terrainFrame.current); terrainFrame.current = 0;
       const stroke = terrainActive.current; terrainActive.current = null; setTerrainDraft(null);
       if (gm && !preview && scene) { const p = point(e); editScene(s => s.terrain.push({...stroke,points:[...stroke.points,p]})); }
       if (e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
@@ -3037,7 +3052,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             onPointerDown={e=>pointerDown(e)}
             onPointerMove={pointerMove}
             onPointerUp={pointerUp}
-            onPointerLeave={() => setTerrainCursor(null)}
+            onPointerLeave={() => {terrainPointer.current=null;setTerrainCursor(null);}}
             onLostPointerCapture={()=>{if(drag.current?.kind==='pan')drag.current=null;}}
             onDragOver={(e) => {
               if (
