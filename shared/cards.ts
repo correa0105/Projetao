@@ -1,6 +1,7 @@
 export const cards = [
   {
     id: 'vigil',
+    rarity: 'common',
     name: 'A Vigília',
     family: 'Luz',
     price_cp: 5000,
@@ -13,6 +14,7 @@ export const cards = [
   },
   {
     id: 'raven',
+    rarity: 'common',
     name: 'O Corvo',
     family: 'Presságio',
     price_cp: 7500,
@@ -25,6 +27,7 @@ export const cards = [
   },
   {
     id: 'mirror',
+    rarity: 'uncommon',
     name: 'O Espelho Partido',
     family: 'Mistério',
     price_cp: 10000,
@@ -36,6 +39,7 @@ export const cards = [
   },
   {
     id: 'moon',
+    rarity: 'rare',
     name: 'A Lua Errante',
     family: 'Caminho',
     price_cp: 15000,
@@ -47,6 +51,7 @@ export const cards = [
   },
   {
     id: 'roots',
+    rarity: 'uncommon',
     name: 'Raízes Antigas',
     family: 'Memória',
     price_cp: 0,
@@ -58,6 +63,7 @@ export const cards = [
   },
   {
     id: 'anchor',
+    rarity: 'rare',
     name: 'Âncora da Maré',
     family: 'Vínculo',
     price_cp: 0,
@@ -69,6 +75,7 @@ export const cards = [
   },
   {
     id: 'blade',
+    rarity: 'very-rare',
     name: 'O Último Corte',
     family: 'Juramento',
     price_cp: 0,
@@ -80,6 +87,7 @@ export const cards = [
   },
   {
     id: 'throne',
+    rarity: 'legendary',
     name: 'O Trono Vazio',
     family: 'Destino',
     price_cp: 0,
@@ -116,3 +124,10 @@ export const cardQuestions = [
       'As quatro primeiras estão à venda; deixei o preço junto de cada uma. As outras ficam sob minha guarda por enquanto. Quando houver um modo de recebê-las, você saberá. Não aceito ouro por promessas.',
   },
 ] as const;
+export const cardRarities = {
+  common: {name:'Comum',colour:'#f5f4ef',effects:0},
+  uncommon: {name:'Incomum',colour:'#7aa75f',effects:0},
+  rare: {name:'Rara',colour:'#70a7e2',effects:1},
+  'very-rare': {name:'Muito rara',colour:'#b88ce8',effects:3},
+  legendary: {name:'Lendária',colour:'#eeaa58',effects:5},
+} as const;

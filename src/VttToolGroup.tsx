@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ComponentType } from 'react';
 import { createPortal } from 'react-dom';
-type Option = { id: string; name: string; icon: ComponentType<{ size?: number }> };
+type Option = { id: string; name: string; icon: ComponentType<{ size?: number }>; options?: Option[] };
 export function VttToolGroup({
   label,
   options,
@@ -15,10 +15,12 @@ export function VttToolGroup({
   icon?: Option['icon'];
 }) {
   const [open, setOpen] = useState(false),
+    [branch, setBranch] = useState<Option | null>(null),
     [position, setPosition] = useState({ left: 0, top: 0 });
   const anchor = useRef<HTMLButtonElement>(null),
     popup = useRef<HTMLDivElement>(null);
-  const Icon = GroupIcon || (options.find((option) => option.id === selected) || options[0]).icon;
+  const active = (option: Option): boolean => option.id === selected || !!option.options?.some(active);
+  const Icon = GroupIcon || (options.find(active) || options[0]).icon;
   useEffect(() => {
     if (!open) return;
     const close = (e: PointerEvent) => {
@@ -29,7 +31,7 @@ export function VttToolGroup({
     document.addEventListener('pointerdown', close);
     popup.current?.querySelector('button')?.focus();
     return () => document.removeEventListener('pointerdown', close);
-  }, [open]);
+  }, [open, branch]);
   return (
     <>
       <button
@@ -37,9 +39,10 @@ export function VttToolGroup({
         aria-label={label}
         title={label}
         aria-expanded={open}
-        aria-pressed={options.some((option) => option.id === selected)}
+        aria-pressed={options.some(active)}
         onClick={() => {
           const box = anchor.current!.getBoundingClientRect();
+          setBranch(null);
           setPosition({
             left: Math.min(innerWidth - 224, box.right + 8),
             top: Math.max(8, Math.min(box.top, innerHeight - options.length * 40 - 22)),
@@ -60,16 +63,20 @@ export function VttToolGroup({
             onKeyDown={(e) => {
               if (e.key === 'Escape') {
                 e.stopPropagation();
+                if (branch) { setBranch(null); return; }
                 setOpen(false);
                 anchor.current?.focus();
               }
             }}
           >
-            {options.map((option) => (
+            {branch && <button onClick={() => setBranch(null)} aria-label={`Voltar às opções de ${label}`}>← {label}</button>}
+            {(branch?.options || options).map((option) => (
               <button
                 key={option.id}
-                aria-pressed={option.id === selected}
+                aria-pressed={active(option)}
+                aria-expanded={option.options ? branch?.id === option.id : undefined}
                 onClick={() => {
+                  if (option.options) { setBranch(option); return; }
                   choose(option.id);
                   setOpen(false);
                   anchor.current?.focus();

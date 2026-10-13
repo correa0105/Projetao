@@ -7,11 +7,13 @@ const random = (x: number, y: number, salt: number) => {
 
 /** Bake broad world-anchored colour variation once per terrain tile, at native density. */
 export function grassMaterial(image: HTMLImageElement, area: Bounds, density: number, scale: number) {
-  const canvas = document.createElement('canvas'); canvas.width = canvas.height = 512;
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.round((area.right - area.left) * density);
+  canvas.height = Math.round((area.bottom - area.top) * density);
   const c = canvas.getContext('2d')!;
   const pattern = c.createPattern(image, 'repeat')!;
   pattern.setTransform(new DOMMatrix([scale / image.naturalWidth * density, 0, 0, scale / image.naturalHeight * density, -area.left * density, -area.top * density]));
-  c.fillStyle = pattern; c.fillRect(0, 0, 512, 512);
+  c.fillStyle = pattern; c.fillRect(0, 0, canvas.width, canvas.height);
   c.setTransform(density, 0, 0, density, -area.left * density, -area.top * density);
   const cell = Math.max(480, scale * 2.7);
   const colours = ['76,96,51', '116,89,55', '147,134,82'];

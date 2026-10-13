@@ -33,7 +33,7 @@ const bundle = await build({
 });
 await writeFile('dist/client/__qa/renderer.js', bundle.outputFiles[0].text);
 await cp('public/vtt/rocks-20261013', 'dist/client/vtt/rocks-20261013', { recursive: true });
-for(const a of JSON.parse(await readFile('data/cards/tarot-v2-reviewed-20261013.json','utf8'))) {
+for(const a of JSON.parse(await readFile('data/cards/tarot-rarity-reviewed-20261013.json','utf8'))) {
   await mkdir(path.dirname('dist/client'+a.image),{recursive:true});
   await cp('public'+a.image,'dist/client'+a.image);
 }
@@ -133,6 +133,24 @@ try {
   await page.reload();
   const canvas = page.getByLabel('Tabuleiro da mesa', { exact: true });
   await expect(canvas).toBeVisible();
+  const tools=page.getByRole('navigation',{name:'Ferramentas da mesa'});
+  const toolbar=await tools.locator('button').evaluateAll(buttons=>buttons.map(b=>b.getAttribute('aria-label')));
+  expect(toolbar.slice(0,3)).toEqual(['Selecionar (V)','Seleção livre (L)','Régua (R)']);
+  expect(toolbar.indexOf('Escolher dados')).toBe(toolbar.indexOf('Névoa')+1);
+  expect(toolbar.indexOf('Camadas')).toBe(toolbar.indexOf('Escolher dados')+1);
+  await tools.getByRole('button',{name:'Desenho',exact:true}).click();
+  const drawing=page.getByRole('group',{name:'Opções de Desenho'});
+  await expect(drawing.getByRole('button')).toHaveCount(3);
+  await drawing.getByRole('button',{name:'Formas',exact:true}).click();
+  await expect(drawing.getByRole('button',{name:'Área circular',exact:true})).toBeVisible();
+  await drawing.getByRole('button',{name:'Retângulo',exact:true}).click();
+  await tools.getByRole('button',{name:'Desenho',exact:true}).click();
+  await drawing.getByRole('button',{name:'Texto',exact:true}).click();
+  await expect(tools.getByRole('button',{name:'Desenho',exact:true})).toHaveAttribute('aria-pressed','true');
+  await tools.getByRole('button',{name:'Desenho',exact:true}).click();
+  await page.keyboard.press('Escape');
+  await expect(drawing).toHaveCount(0);
+  await tools.getByRole('button',{name:'Selecionar (V)',exact:true}).click();
   async function camera() {
     return canvas.evaluate((e) => ({
       x: +e.dataset.cameraX!,
@@ -202,6 +220,11 @@ try {
   row = await stored();
   expect(row.document.scenes[0].terrainLayers).toHaveLength(2);
   expect(row.document.scenes[0].terrain[2].erase).toBe(true);
+  await page.getByLabel('Textura: Água',{exact:true}).click();
+  p=await screen(620,350);await page.mouse.move(p.x,p.y);await page.mouse.down();await page.mouse.move(p.x+40,p.y-20,{steps:5});await page.mouse.up();
+  await expect.poll(async()=>{const saved=await stored();return saved.document.scenes[0].terrain.at(-1)?.texture;}).toBe('water');
+  await page.getByRole('button',{name:'Desfazer',exact:true}).click();
+  await expect.poll(async()=>(await stored()).document.scenes[0].terrain.length).toBe(3);
   await page.screenshot({ path: 'test-results/map-editor/brush-desktop.png' });
   // Left select has no HUD; right click does. Conditions share their state.
   await page.getByLabel('Camadas', { exact: true }).click();
@@ -672,6 +695,7 @@ try {
   await page.reload();
   await expect(page.getByRole('button',{name:'A Vigília',exact:true})).toBeVisible();
   await page.getByRole('button',{name:'A Vigília',exact:true}).click();
+  await expect(page.locator('.cards-detail .cards-rarity')).toHaveText('Comum');
   await page.getByRole('button',{name:'Comprar carta',exact:true}).click();
   await expect(page.getByRole('button',{name:'Equipar no espaço 1',exact:true})).toBeEnabled();
   await page.getByRole('button',{name:'Encerrar conversa',exact:true}).click();
@@ -705,9 +729,10 @@ try {
     await page.getByRole('button',{name:'A Vigília',exact:true}).click();
     await page.getByRole('button',{name:'Equipar no espaço 2',exact:true}).scrollIntoViewIfNeeded();
     await expect(page.getByRole('button',{name:'Equipar no espaço 2',exact:true})).toBeInViewport();
-    await page.getByText('História e comentário do Anfitrião',{exact:true}).click();
-    await expect(page.locator('.cards-history')).toHaveAttribute('open','');
-    await page.getByText('História e comentário do Anfitrião',{exact:true}).click();
+    await expect(page.locator('.cards-history')).toHaveCount(0);
+    const preview=await page.locator('.cards-detail-preview').boundingBox(),copy=await page.locator('.cards-detail-copy').boundingBox();
+    expect(preview!.width).toBeGreaterThanOrEqual(128);expect(copy!.y).toBeGreaterThan(preview!.y+preview!.height);
+    expect(Math.abs(preview!.x+preview!.width/2-(copy!.x+copy!.width/2))).toBeLessThan(2);
     await page.getByRole('button',{name:'Todas',exact:true}).click();
     await page.screenshot({path:'test-results/map-editor/cards-compact-'+width+'.png'});
   }
@@ -755,6 +780,11 @@ try {
       compactCardsPanel: true,
       fourCardsPerPage: true,
       engravedCardArt: true,
+      compactDrawingTools: true,
+      toolbarOrder: true,
+      largeCenteredCard: true,
+      cardRarity: true,
+      waterBrushSaved: true,
       pixels,
       errors,
     }),

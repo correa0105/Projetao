@@ -28,6 +28,7 @@ import {
   ArrowDown,
   Ruler,
   Pencil,
+  Paintbrush,
   Square,
   Circle,
   Triangle,
@@ -2748,52 +2749,32 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       )}
       <div className={`vtt-layout ${!panelOpen ? 'panel-closed' : ''}`}>
         <nav className="vtt-tools" aria-label="Ferramentas da mesa">
-          {gm && (
-            <VttToolGroup
-              label="Camadas"
-              selected={layer}
-              icon={Layers}
-              options={[
-                { id: 'map', name: 'Fundo · visível aos jogadores', icon: Image },
-                { id: 'tokens', name: 'Tokens · jogadores', icon: Users },
-                { id: 'gm', name: 'Mestre · oculto', icon: EyeOff },
-                { id: 'lighting', name: 'Iluminação e barreiras', icon: Lightbulb },
-              ]}
-              choose={changeLayer}
-            />
-          )}
-          {!spectator && (
-            <button
-              aria-label="Escolher dados"
-              title="Escolher dados"
-              aria-pressed={diceOpen}
-              onClick={() => setDiceOpen((v) => !v)}
-            >
-              <Dices size={20} />
-            </button>
-          )}
+          {toolList.filter(t => ['select', 'lasso', 'ruler'].includes(t.id) && !spectator && (gm || !t.gm)).map(({id,name,icon:Icon}) => (
+            <button key={id} title={name} aria-label={name} aria-pressed={tool === id} disabled={id === 'lasso' && preview}
+              onClick={() => {setLasso([]);drag.current=null;setFogPoints([]);setFogPointer(null);setContextMenu(null);setDraft(null);setTool(id);}}><Icon size={19}/></button>
+          ))}
           {gm && !preview && <button title="Áreas de transparência" aria-label="Áreas de transparência" aria-pressed={canopyEditing} onClick={()=>{if(!canopyEditing)setPanelOpen(false);setCanopyEditing(v=>!v);}}><Eye size={20}/></button>}
           {gm && !preview && <button aria-label="Brush do mapa" title="Brush do mapa" aria-pressed={tool.startsWith('terrain-')}
-            onClick={()=>{setLibrary('terrain');setTab('art');setPanelOpen(true);setContextMenu(null);setQuery('');changeLayer('map');setTool('terrain-paint');}}><Pencil size={20}/></button>}
+            onClick={()=>{setLibrary('terrain');setTab('art');setPanelOpen(true);setContextMenu(null);setQuery('');changeLayer('map');setTool('terrain-paint');}}><Paintbrush size={20}/></button>}
           {toolList
             .filter(
               (t) =>
-                (spectator ? t.id === 'pan' : gm || !t.gm) &&
+                !['select', 'lasso', 'ruler'].includes(t.id) && (spectator ? t.id === 'pan' : gm || !t.gm) &&
                 (!barrierTools.has(t.id) || barrierEditing),
             )
             .map(({ id, name, icon: Icon }) =>
-              ['circle', 'cone', 'line', 'hide'].includes(id) ? null : id === 'rect' ? (
+              ['rect', 'circle', 'cone', 'line', 'text', 'hide'].includes(id) ? null : id === 'pen' ? (
                 <VttToolGroup
-                  key="forms"
-                  label="Formas"
-                  options={toolList.filter((t) =>
-                    ['rect', 'circle', 'cone', 'line'].includes(t.id),
-                  )}
+                  key="drawing"
+                  label="Desenho"
+                  options={[
+                    toolList.find(t => t.id === 'pen')!,
+                    {id:'forms',name:'Formas',icon:Square,options:toolList.filter(t => ['rect','circle','cone','line'].includes(t.id))},
+                    toolList.find(t => t.id === 'text')!,
+                  ]}
                   selected={tool}
                   choose={(id) => {
-                    setFogPoints([]);
-                    setFogPointer(null);
-                    setDraft(null);
+                    setLasso([]);drag.current=null;setFogPoints([]);setFogPointer(null);setContextMenu(null);setDraft(null);
                     if (layer === 'lighting') changeLayer('tokens');
                     setTool(id as Tool);
                   }}
@@ -2868,6 +2849,30 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 </button>
               ),
             )}
+          {!spectator && (
+            <button
+              aria-label="Escolher dados"
+              title="Escolher dados"
+              aria-pressed={diceOpen}
+              onClick={() => setDiceOpen((v) => !v)}
+            >
+              <Dices size={20} />
+            </button>
+          )}
+          {gm && (
+            <VttToolGroup
+              label="Camadas"
+              selected={layer}
+              icon={Layers}
+              options={[
+                { id: 'map', name: 'Fundo · visível aos jogadores', icon: Image },
+                { id: 'tokens', name: 'Tokens · jogadores', icon: Users },
+                { id: 'gm', name: 'Mestre · oculto', icon: EyeOff },
+                { id: 'lighting', name: 'Iluminação e barreiras', icon: Lightbulb },
+              ]}
+              choose={changeLayer}
+            />
+          )}
           {gm && (
             <>
               <div className="vtt-tool-separator" />

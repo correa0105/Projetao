@@ -7,6 +7,8 @@ import {
   type CSSProperties,
   type PointerEvent,
 } from 'react';
+import { createPortal } from 'react-dom';
+import { houseResizePoints, houseResizeScale, houseResizeLabels } from '../shared/house-resize';
 import {
   Save,
   Package,
@@ -67,6 +69,7 @@ import {
   houseDepthLayers,
 } from '../shared/house-perspective';
 import './house.css';
+import './house-item-menu.css';
 import frameQuads from '../shared/house-frame-quads.json';
 import {
   houseCornerLabels,
@@ -245,6 +248,26 @@ export function House({
     [rewardValue, setRewardValue] = useState('1'),
     [grantReason, setGrantReason] = useState('');
   const [rpPinned, setRpPinned] = useState(() => pinnedRpPreference(user.id));
+  const [itemMenu,setItemMenu]=useState<{id:string;left:number;top:number}|null>(null);
+  const itemMenuRef=useRef<HTMLElement>(null);
+  useEffect(()=>{
+    if(!itemMenu)return;
+    const close=(e:globalThis.PointerEvent)=>{if(!itemMenuRef.current?.contains(e.target as Node))setItemMenu(null);};
+    const key=(e:KeyboardEvent)=>{if(e.key==='Escape')setItemMenu(null);};
+    document.addEventListener('pointerdown',close);window.addEventListener('keydown',key);
+    itemMenuRef.current?.querySelector<HTMLButtonElement>('button')?.focus();
+    return()=>{document.removeEventListener('pointerdown',close);window.removeEventListener('keydown',key);};
+  },[itemMenu]);
+  useEffect(()=>setItemMenu(null),[room,homeId]);
+  useLayoutEffect(()=>{
+    const menu=itemMenuRef.current;if(!menu||!itemMenu)return;
+    const fit=()=>{const box=menu.getBoundingClientRect();setItemMenu(v=>{
+      if(!v)return v;const left=Math.max(8,Math.min(v.left,innerWidth-box.width-8)),top=Math.max(8,Math.min(v.top,innerHeight-box.height-8));
+      return Math.abs(left-v.left)<.5&&Math.abs(top-v.top)<.5?v:{...v,left,top};
+    });};
+    const observer=new ResizeObserver(fit);observer.observe(menu);window.addEventListener('resize',fit);fit();
+    return()=>{observer.disconnect();window.removeEventListener('resize',fit);};
+  },[itemMenu?.id]);
   const [chatActive, setChatActive] = useState(false);
   const [speeches, setSpeeches] = useState<
     Record<string, { id: string; body: string; characterId: string; expires: number }>
@@ -755,6 +778,19 @@ export function House({
     el.addEventListener('pointerup', end);
     el.addEventListener('pointercancel', end);
   }
+  function resizePiece(event:PointerEvent<HTMLButtonElement>,p:HousePlacement,point:{x:number;y:number}) {
+    if(!home?.is_owner||busy||!pieceGeometry||event.button!==0)return;
+    event.preventDefault();event.stopPropagation();activeDrag.current=true;
+    const el=event.currentTarget,pointerId=event.pointerId,start={x:event.clientX,y:event.clientY},g=pieceGeometry;
+    const vector={x:point.x-g.x,y:point.y-g.y};el.setPointerCapture(pointerId);
+    const move=(e:globalThis.PointerEvent)=>patch(p.id,{scale:houseResizeScale(p.scale,{x:e.clientX-start.x,y:e.clientY-start.y},vector,g.height)});
+    const end=()=>{activeDrag.current=false;el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',end);el.removeEventListener('pointercancel',end);if(el.hasPointerCapture(pointerId))el.releasePointerCapture(pointerId);};
+    el.addEventListener('pointermove',move);el.addEventListener('pointerup',end);el.addEventListener('pointercancel',end);
+  }
+  function openItemMenu(id:string,x:number,y:number) {
+    if(!home?.is_owner||busy)return;
+    setSelected(id);setItemMenu({id,left:Math.max(8,Math.min(innerWidth-292,x+12)),top:Math.max(8,Math.min(innerHeight-420,y))});
+  }
   function dragActor(event: PointerEvent<HTMLButtonElement>, p: HouseState['presence'][number]) {
     if (p.user_id !== user.id || busy || event.button !== 0) return;
     event.preventDefault();
@@ -891,6 +927,128 @@ export function House({
       aria-label="House"
       style={{ '--house-top': `${viewportTop}px` } as CSSProperties}
     >
+            {home && home.is_owner && choice && itemMenu?.id === choice.id && createPortal(
+              <section ref={itemMenuRef} className="house-inspector house-item-menu" role="dialog" aria-label="Ajustes da peça" style={{left:itemMenu.left,top:itemMenu.top}}>
+                <button className="house-item-menu-close" aria-label="Fechar ajustes da peça" onClick={()=>setItemMenu(null)}><X size={16}/></button>
+                <h3>{placementName(choice)}</h3>
+                <fieldset
+                  className="house-transform"
+                  disabled={busy}
+                  aria-label="Controles da peça"
+                >
+                  {choice.kind === 'item' && (
+                    <>
+                      <label>
+                        Direção
+                        <select
+                          aria-label="Direção da peça"
+                          value={choice.facing ?? 0}
+                          onChange={(e) => patch(choice.id, { facing: Number(e.target.value) })}
+                        >
+                          {!choiceViews.some((view) => view.value === (choice.facing ?? 0)) && (
+                            <option value={choice.facing} disabled>
+                              Vista salva · escolha outra direção
+                            </option>
+                          )}
+                          {choiceViews.map(({ label, value }) => (
+                            <option value={value} key={value}>
+                              {label}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                      {home.inventory.find((item) => item.id === choice.ref)?.catalog_id ===
+                        'frame' && (
+                        <label className="house-frame-backing-toggle">
+                          <input
+                            type="checkbox"
+                            checked={choice.frame_backing === true}
+                            onChange={(event) =>
+                              patch(choice.id, { frame_backing: event.target.checked })
+                            }
+                          />
+                          Manter fundo de madeira
+                        </label>
+                      )}
+                    </>
+                  )}
+                  <label>
+                    Tamanho
+                    <input
+                      aria-label="Tamanho da peça"
+                      type="range"
+                      min="3"
+                      max="80"
+                      step="0.1"
+                      value={choice.scale * 100}
+                      onChange={(e) => patch(choice.id, { scale: Number(e.target.value) / 100 })}
+                    />
+                  </label>
+                  <button
+                    type="button"
+                    aria-pressed={distorting === choice.id}
+                    onClick={() => setDistorting((id) => (id === choice.id ? '' : choice.id))}
+                  >
+                    <Scan size={16} />
+                    {distorting === choice.id ? 'Concluir distorção' : 'Distorcer imagem'}
+                  </button>
+                  {distorting === choice.id && (
+                    <small className="house-distortion-hint">
+                      Arraste os quatro pontos. Cada canto pode variar até 12%. Use Salvar mudanças
+                      para guardar.
+                    </small>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => patch(choice.id, { distortion: undefined, rotation: 0 })}
+                  >
+                    <RotateCw size={16} />
+                    Restaurar forma
+                  </button>
+                  <button onClick={() => order(choice.id, 1)}>Trazer à frente</button>
+                  <button onClick={() => order(choice.id, -1)}>Enviar para trás</button>
+                  <label>
+                    Camada da peça
+                    <select
+                      aria-label="Camada da peça"
+                      value={choice.depth_layer ?? 3}
+                      onChange={(event) =>
+                        patch(choice.id, { depth_layer: Number(event.target.value) })
+                      }
+                    >
+                      {houseDepthLayers.map((layer) => (
+                        <option key={layer} value={layer}>
+                          Camada {layer}
+                        </option>
+                      ))}
+                    </select>
+                    <small>1 à frente · 6 ao fundo</small>
+                  </label>
+                  <button
+                    onClick={() => {
+                      edit((h) => ({
+                        ...h,
+                        rooms: h.rooms.map((r) => ({
+                          ...r,
+                          placements: r.placements.filter((p) => p.id !== choice.id),
+                        })),
+                      }));
+                      setSelected('');
+                    }}
+                  >
+                    <Package size={16} />
+                    Guardar
+                  </button>
+                  {home.inventory.find((i) => i.id === choice.ref) && (
+                    <button
+                      onClick={() => setRead(home.inventory.find((i) => i.id === choice.ref)!)}
+                    >
+                      Ver lembrança
+                    </button>
+                  )}
+                </fieldset>
+              </section>,document.body
+            )}
       <header className="house-header">
         <a className="house-exit" href="#overview" aria-label="Sair da House" title="Sair da House">
           <ArrowLeft size={20} />
@@ -1039,7 +1197,7 @@ export function House({
         </div>
       )}
       {home && (
-        <div className={`house-body ${tab && tab !== 'rp' ? 'has-panel' : ''}`}>
+        <div className={`house-body ${tab && tab !== 'rp' ? 'has-panel' : ''} ${(!tab || tab === 'rp') && !ownActor ? 'no-sidebar' : ''}`}>
           <nav className="house-dock" aria-label="Controles da casa">
             {home.is_owner && (
               <>
@@ -1153,6 +1311,8 @@ export function House({
                             : undefined
                         }
                         onPointerDown={(e) => drag(e, p)}
+                        onContextMenu={(e)=>{e.preventDefault();e.stopPropagation();openItemMenu(p.id,e.clientX,e.clientY);}}
+                        onKeyDown={(e)=>{if(e.key==='ContextMenu'||(e.shiftKey&&e.key==='F10')){e.preventDefault();const r=e.currentTarget.getBoundingClientRect();openItemMenu(p.id,r.right,r.top);}}}
                         onClick={() => {
                           if (home.is_owner) setSelected(p.id);
                         }}
@@ -1260,6 +1420,16 @@ export function House({
                       >
                         <span aria-hidden="true" />
                       </button>
+                    ))}
+                  </div>
+                )}
+                {home.is_owner&&choice&&pieceGeometry&&!distortionHandles&&(
+                  <div className="house-resize-controls" aria-label="Redimensionar peça pelas bordas">
+                    {houseResizePoints({...pieceGeometry,y:pieceGeometry.y+6,width:pieceGeometry.width+12,height:pieceGeometry.height+12},choice.rotation).map((point,i)=>(
+                      <button key={i} type="button" disabled={busy} aria-label={'Redimensionar peça: '+houseResizeLabels[i]}
+                        title={'Arraste para aumentar ou reduzir · '+houseResizeLabels[i]}
+                        style={{left:point.x,top:point.y,cursor:['nwse-resize','ns-resize','nesw-resize','ew-resize'][i%4]}}
+                        onClick={e=>e.stopPropagation()} onPointerDown={e=>resizePiece(e,choice,point)}/>
                     ))}
                   </div>
                 )}
@@ -1438,7 +1608,7 @@ export function House({
                   versions: 'Personagem',
                   rewards: 'Recompensas',
                   settings: 'Configurações',
-                }[tab] || (choice ? 'Ajustes da peça' : 'Personagem')}
+                }[tab] || 'Personagem'}
               </strong>
               {tab && tab !== 'rp' && (
                 <button aria-label="Fechar painel" onClick={() => setTab('')}>
@@ -1446,127 +1616,6 @@ export function House({
                 </button>
               )}
             </div>
-            {home.is_owner && choice && (
-              <section className="house-inspector" aria-label="Ajustes da peça">
-                <h3>{placementName(choice)}</h3>
-                <fieldset
-                  className="house-transform"
-                  disabled={busy}
-                  aria-label="Controles da peça"
-                >
-                  {choice.kind === 'item' && (
-                    <>
-                      <label>
-                        Direção
-                        <select
-                          aria-label="Direção da peça"
-                          value={choice.facing ?? 0}
-                          onChange={(e) => patch(choice.id, { facing: Number(e.target.value) })}
-                        >
-                          {!choiceViews.some((view) => view.value === (choice.facing ?? 0)) && (
-                            <option value={choice.facing} disabled>
-                              Vista salva · escolha outra direção
-                            </option>
-                          )}
-                          {choiceViews.map(({ label, value }) => (
-                            <option value={value} key={value}>
-                              {label}
-                            </option>
-                          ))}
-                        </select>
-                      </label>
-                      {home.inventory.find((item) => item.id === choice.ref)?.catalog_id ===
-                        'frame' && (
-                        <label className="house-frame-backing-toggle">
-                          <input
-                            type="checkbox"
-                            checked={choice.frame_backing === true}
-                            onChange={(event) =>
-                              patch(choice.id, { frame_backing: event.target.checked })
-                            }
-                          />
-                          Manter fundo de madeira
-                        </label>
-                      )}
-                    </>
-                  )}
-                  <label>
-                    Tamanho
-                    <input
-                      aria-label="Tamanho da peça"
-                      type="range"
-                      min="3"
-                      max="80"
-                      step="0.1"
-                      value={choice.scale * 100}
-                      onChange={(e) => patch(choice.id, { scale: Number(e.target.value) / 100 })}
-                    />
-                  </label>
-                  <button
-                    type="button"
-                    aria-pressed={distorting === choice.id}
-                    onClick={() => setDistorting((id) => (id === choice.id ? '' : choice.id))}
-                  >
-                    <Scan size={16} />
-                    {distorting === choice.id ? 'Concluir distorção' : 'Distorcer imagem'}
-                  </button>
-                  {distorting === choice.id && (
-                    <small className="house-distortion-hint">
-                      Arraste os quatro pontos. Cada canto pode variar até 12%. Use Salvar mudanças
-                      para guardar.
-                    </small>
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => patch(choice.id, { distortion: undefined, rotation: 0 })}
-                  >
-                    <RotateCw size={16} />
-                    Restaurar forma
-                  </button>
-                  <button onClick={() => order(choice.id, 1)}>Trazer à frente</button>
-                  <button onClick={() => order(choice.id, -1)}>Enviar para trás</button>
-                  <label>
-                    Camada da peça
-                    <select
-                      aria-label="Camada da peça"
-                      value={choice.depth_layer ?? 3}
-                      onChange={(event) =>
-                        patch(choice.id, { depth_layer: Number(event.target.value) })
-                      }
-                    >
-                      {houseDepthLayers.map((layer) => (
-                        <option key={layer} value={layer}>
-                          Camada {layer}
-                        </option>
-                      ))}
-                    </select>
-                    <small>1 à frente · 6 ao fundo</small>
-                  </label>
-                  <button
-                    onClick={() => {
-                      edit((h) => ({
-                        ...h,
-                        rooms: h.rooms.map((r) => ({
-                          ...r,
-                          placements: r.placements.filter((p) => p.id !== choice.id),
-                        })),
-                      }));
-                      setSelected('');
-                    }}
-                  >
-                    <Package size={16} />
-                    Guardar
-                  </button>
-                  {home.inventory.find((i) => i.id === choice.ref) && (
-                    <button
-                      onClick={() => setRead(home.inventory.find((i) => i.id === choice.ref)!)}
-                    >
-                      Ver lembrança
-                    </button>
-                  )}
-                </fieldset>
-              </section>
-            )}
             {ownActor && (
               <div className="house-actor-controls" aria-label="Aparência e camadas do personagem">
                 <button

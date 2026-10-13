@@ -1,24 +1,27 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Check, ChevronLeft, ChevronRight, Coins, Lock, Sparkles, X } from 'lucide-react';
 import { api, post } from './api';
-import { cards, cardQuestions, type Card, type OwnedCard } from '../shared/cards';
+import { cards, cardRarities, cardQuestions, type Card, type OwnedCard } from '../shared/cards';
 import { money } from '../shared/rules';
 import type { Character } from './types';
-import { cardStories } from '../shared/card-stories';
 import './cards.css';
 import './cards-manor.css';
+import './cards-rarity.css';
 import { CardsHost } from './CardsHost';
 export function CardFace({ card, small = false }: { card: Card; small?: boolean }) {
   return (
-    <span className={'arcana-card-face' + (small ? ' small' : '')}>
+    <span className={'arcana-card-face' + (small ? ' small' : '')} data-rarity={card.rarity} style={{'--card-rarity':cardRarities[card.rarity].colour} as CSSProperties}>
       <span
         className="arcana-card-art"
         style={
           {
-            backgroundImage: `url('/cards/tarot-v2-20261013/${card.id}.webp')`,
+            backgroundImage: `url('/cards/tarot-rarity-20261013/${card.id}.webp')`,
           } as CSSProperties
         }
       />
+      {!small && cardRarities[card.rarity].effects > 0 && <span className="arcana-card-effects" aria-hidden="true">
+        {Array.from({length:cardRarities[card.rarity].effects},(_,i)=><i key={i} style={{'--spark':i} as CSSProperties}/>)}
+      </span>}
       <span className="arcana-card-ornament" aria-hidden="true">
         ✦
       </span>
@@ -314,6 +317,7 @@ export function Cards({
             <div className="cards-detail-copy">
               <span className="eyebrow">{selected.family}</span>
               <h2>{selected.name}</h2>
+              <span className="cards-rarity" data-rarity={selected.rarity} style={{color:cardRarities[selected.rarity].colour}}>{cardRarities[selected.rarity].name}</span>
               <p>{selected.description}</p>
               {item ? (
                 <>
@@ -370,14 +374,6 @@ export function Cards({
                   Esta carta ainda não tem uma forma de obtenção disponível.
                 </p>
               )}
-              <details className="cards-history" key={selected.id}>
-                <summary>História e comentário do Anfitrião</summary>
-                {cardStories[selected.id] && <>
-                  <span className="eyebrow">{cardStories[selected.id].provenance}</span>
-                  <p>{cardStories[selected.id].story}</p>
-                </>}
-                <blockquote className="cards-record"><p>{selected.comment}</p></blockquote>
-              </details>
               {error && <p role="alert">{error}</p>}
               {notice && <p role="status">{notice}</p>}
             </div>

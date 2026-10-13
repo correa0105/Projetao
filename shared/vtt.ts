@@ -163,7 +163,7 @@ export const terrainLayerSchema = z.object({
 }).strict();
 export type TerrainLayer = z.infer<typeof terrainLayerSchema>;
 export const terrainStrokeSchema = z.object({
-  id, texture: z.enum(['grass', 'earth', 'sand', 'stone', 'wood', 'snow', 'rocky-grass']),
+  id, texture: z.enum(['grass', 'earth', 'sand', 'stone', 'wood', 'snow', 'rocky-grass', 'water']),
   erase: z.boolean().default(false), points: z.array(pointSchema).min(1).max(1500),
   radius: z.number().min(5).max(1000), softness: z.number().min(0).max(1),
   opacity: z.number().min(.05).max(1), textureScale: z.number().min(20).max(2000),

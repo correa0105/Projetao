@@ -5,8 +5,13 @@ import { viewerSees, type VttToken } from '../shared/vtt';
 import type { RenderOptions } from './vtt-canvas';
 import { softenTerrainMask } from './vtt-terrain-blur';
 import { grassMaterial } from './vtt-grass-material';
+import { waterShore } from './vtt-water-shore';
 
 const TILE = 512;
+// Neighbouring tiles render the same border pixels. The padded image can then
+// be sampled across its edge without blending with transparent canvas pixels.
+const GUTTER = 2;
+const RASTER = TILE + GUTTER * 2;
 const BUDGET = 96 * 1024 * 1024;
 const defaultLayers: TerrainLayer[] = [{ id: 'base', name: 'Chão', visible: true, opacity: 1 }];
 type Bounds = { left: number; top: number; right: number; bottom: number };
@@ -17,6 +22,7 @@ type Tile = {
   split?: Split; draft?: TerrainStroke; preview?: HTMLCanvasElement;
   revision: number; grass?: { scale: number; image: HTMLImageElement; canvas: HTMLCanvasElement };
   ground?: { signature: string; image: HTMLImageElement; canvas: HTMLCanvasElement };
+  shore?: { revision: number; canvas: HTMLCanvasElement };
 };
 type Cache = {
   scene: string; source?: TerrainStroke[]; strokes: Stroke[]; layers: TerrainLayer[];
@@ -25,7 +31,7 @@ type Cache = {
   coverage: HTMLCanvasElement; layerCoverage: HTMLCanvasElement; layerAlpha: HTMLCanvasElement;
   blurInput: Float32Array; blurOutput: Float32Array;
   masks: Map<string,{value:TerrainStroke;bounds:Bounds;density:number;canvas:HTMLCanvasElement}>;
-  stats: { tilesBuilt: number; strokesDrawn: number; draftTilesRendered: number; groundTilesBuilt: number };
+  stats: { tilesBuilt: number; strokesDrawn: number; draftTilesRendered: number; groundTilesBuilt: number; shoreTilesBuilt: number };
 };
 const caches = new WeakMap<HTMLCanvasElement, Cache>();
 const overlaps = (a: Bounds, b: Bounds) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
@@ -43,15 +49,15 @@ function sameStroke(a: TerrainStroke, b: TerrainStroke) {
       a.points.length !== b.points.length) return false;
   return a.points.every((p, i) => p.x === b.points[i].x && p.y === b.points[i].y);
 }
-function canvas() { const c = document.createElement('canvas'); c.width = c.height = TILE; return c; }
-function clear(c: HTMLCanvasElement, w = TILE, h = TILE) {
+function canvas() { const c = document.createElement('canvas'); c.width = c.height = RASTER; return c; }
+function clear(c: HTMLCanvasElement, w = RASTER, h = RASTER) {
   if (c.width !== w) c.width = w;
   if (c.height !== h) c.height = h;
   const ctx = c.getContext('2d')!;
   ctx.resetTransform(); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; ctx.filter = 'none'; ctx.clearRect(0, 0, w, h);
   return ctx;
 }
-function bytes(t: Tile) { return TILE * TILE * 4 * (1 + (t.split ? 1 + Number(!!t.split.under) + Number(!!t.split.over) : 0) + (t.preview ? 1 : 0) + Number(!!t.grass) + Number(!!t.ground)); }
+function bytes(t: Tile) { return RASTER * RASTER * 4 * (1 + (t.split ? 1 + Number(!!t.split.under) + Number(!!t.split.over) : 0) + (t.preview ? 1 : 0) + Number(!!t.grass) + Number(!!t.ground) + Number(!!t.shore)); }
 export function terrainCacheStats(c: HTMLCanvasElement) {
   const cache = caches.get(c);
   return cache ? { ...cache.stats, cacheBytes: [...cache.tiles.values()].reduce((n, t) => n + bytes(t), 0), maskBytes: [...cache.masks.values()].reduce((n, m) => n + m.canvas.width * m.canvas.height * 4, 0), tiles: cache.tiles.size } : null;
@@ -161,7 +167,7 @@ function apply(cache: Cache, tile: Tile, s: TerrainStroke, target: HTMLCanvasEle
   cache.stats.strokesDrawn++;
   const mask=alphaMask(cache,tile,s),area=mask.bounds;
   const left=Math.max(0,Math.floor((area.left-tile.bounds.left)*tile.density)),top=Math.max(0,Math.floor((area.top-tile.bounds.top)*tile.density));
-  const right=Math.min(TILE,Math.ceil((area.right-tile.bounds.left)*tile.density)),bottom=Math.min(TILE,Math.ceil((area.bottom-tile.bounds.top)*tile.density));
+  const right=Math.min(RASTER,Math.ceil((area.right-tile.bounds.left)*tile.density)),bottom=Math.min(RASTER,Math.ceil((area.bottom-tile.bounds.top)*tile.density));
   if(right<=left || bottom<=top)return;
   const w=right-left,h=bottom-top,pc=clear(cache.piece,w,h);
   if(!s.erase){
@@ -260,12 +266,44 @@ function draftTile(cache: Cache, tile: Tile, draft: TerrainStroke) {
   return tile.preview;
 }
 
+function shoreline(cache: Cache, tile: Tile) {
+  if(tile.shore?.revision === tile.revision) return tile.shore.canvas;
+  if(!cache.strokes.some(s=>s.value.texture==='water'&&!s.value.erase&&overlaps(s.bounds,tile.bounds))) {tile.shore=undefined;return null;}
+  // A small mask with a 24-world-pixel neighbour margin; native water texture
+  // remains full resolution. Reusing alphaMask avoids replaying geometry/blur.
+  const density=Math.min(tile.density,.5),padding=26;
+  const area={left:Math.floor((tile.bounds.left-padding)*density)/density,top:Math.floor((tile.bounds.top-padding)*density)/density,right:Math.ceil((tile.bounds.right+padding)*density)/density,bottom:Math.ceil((tile.bounds.bottom+padding)*density)/density};
+  const w=Math.round((area.right-area.left)*density),h=Math.round((area.bottom-area.top)*density);
+  const coverage=clear(cache.coverage,w,h);
+  for(const layer of cache.layers) {
+    if(!layer.visible||layer.opacity<=0)continue;
+    const gc=clear(cache.layerCoverage,w,h),ac=clear(cache.layerAlpha,w,h);
+    for(const stroke of cache.strokes) {
+      const s=stroke.value;
+      if((s.layer||'base')!==layer.id||!overlaps(stroke.bounds,area))continue;
+      const texture=cache.images[terrainTextures.findIndex(t=>t.id===s.texture)];
+      if(!s.erase&&(!texture?.complete||!texture.naturalWidth))continue;
+      const mask=alphaMask(cache,{...tile,bounds:area},s),b=mask.bounds;
+      for(const [c,water] of [[gc,true],[ac,false]] as const) {
+        c.globalAlpha=s.opacity;c.globalCompositeOperation=s.erase||(water&&s.texture!=='water')?'destination-out':'source-over';
+        c.drawImage(mask.canvas,(b.left-area.left)*density,(b.top-area.top)*density,(b.right-b.left)*density,(b.bottom-b.top)*density);
+      }
+    }
+    coverage.globalAlpha=layer.opacity;coverage.globalCompositeOperation='destination-out';coverage.drawImage(cache.layerAlpha,0,0);
+    coverage.globalCompositeOperation='lighter';coverage.drawImage(cache.layerCoverage,0,0);
+  }
+  const out=waterShore(cache.coverage,area,density,tile.bounds,tile.density);
+  tile.shore={revision:tile.revision,canvas:out};cache.stats.shoreTilesBuilt++;
+  return out;
+}
+
 export function drawTerrain(c: CanvasRenderingContext2D, scene: VttScene, o: RenderOptions) {
   if (!(scene.terrain?.length || o.terrainDraft)) { caches.delete(c.canvas); return; }
   let cache = caches.get(c.canvas);
   if (!cache || cache.scene !== scene.id) {
     const mask = canvas(); mask.getContext('2d', { willReadFrequently: true });
-    cache = { scene: scene.id, strokes: [], layers: [], images: [], imageWidths: [], tiles: new Map(), mask, piece: canvas(), layer: canvas(), work: canvas(), coverage:canvas(),layerCoverage:canvas(),layerAlpha:canvas(),blurInput: new Float32Array(0), blurOutput: new Float32Array(0), masks: new Map(), stats: { tilesBuilt: 0, strokesDrawn: 0, draftTilesRendered: 0, groundTilesBuilt:0 } };
+    const coverage=canvas();coverage.getContext('2d',{willReadFrequently:true});
+    cache = { scene: scene.id, strokes: [], layers: [], images: [], imageWidths: [], tiles: new Map(), mask, piece: canvas(), layer: canvas(), work: canvas(), coverage,layerCoverage:canvas(),layerAlpha:canvas(),blurInput: new Float32Array(0), blurOutput: new Float32Array(0), masks: new Map(), stats: { tilesBuilt: 0, strokesDrawn: 0, draftTilesRendered: 0, groundTilesBuilt:0, shoreTilesBuilt:0 } };
     caches.set(c.canvas, cache);
   }
   update(cache, scene, o.images);
@@ -283,18 +321,32 @@ export function drawTerrain(c: CanvasRenderingContext2D, scene: VttScene, o: Ren
       const key = `${density}:${x}:${y}`;
       let tile = cache.tiles.get(key);
       if (!tile) {
-        const area = { left: x * world, top: y * world, right: (x + 1) * world, bottom: (y + 1) * world };
+        const padding = GUTTER / density;
+        const area = { left: x * world - padding, top: y * world - padding, right: (x + 1) * world + padding, bottom: (y + 1) * world + padding };
         if (!cache.strokes.some(s => overlaps(s.bounds, area)) && !(draftBounds && overlaps(draftBounds, area))) continue;
         tile = { bounds: area, density, canvas: canvas(), valid: false, revision:0 }; cache.tiles.set(key, tile);
       }
       const affected = draftBounds && overlaps(draftBounds, tile.bounds);
       if (!tile.valid && !affected) buildTile(cache, tile);
       const image = affected ? draftTile(cache, tile, o.terrainDraft!) : tile.canvas;
-      c.drawImage(image, x * world, y * world, world, world);
+      // Each device pixel belongs to exactly one tile, including translucent
+      // layers. Clip at integer device coordinates; draw the real gutter outside
+      // that partition so interpolation never exposes a transparent tile edge.
+      const left = Math.round(tx + x * world * zoom), top = Math.round(ty + y * world * zoom);
+      const right = Math.round(tx + (x + 1) * world * zoom), bottom = Math.round(ty + (y + 1) * world * zoom);
+      c.save(); c.resetTransform(); c.beginPath(); c.rect(left, top, right - left, bottom - top); c.clip();
+      c.setTransform(zoom, 0, 0, zoom, tx, ty);
+      const size = RASTER / density;
+      c.drawImage(image, tile.bounds.left, tile.bounds.top, size, size);
+      if(!affected) {
+        const shore=shoreline(cache,tile);
+        if(shore)c.drawImage(shore,tile.bounds.left,tile.bounds.top,size,size);
+      }
       if(trees.length && !affected) {
         const ground = woodlandGround(cache,tile,trees,floorImage!);
-        if(ground)c.drawImage(ground,x*world,y*world,world,world);
+        if(ground)c.drawImage(ground,tile.bounds.left,tile.bounds.top,size,size);
       }
+      c.restore();
       cache.tiles.delete(key); cache.tiles.set(key, tile);
     }
   }

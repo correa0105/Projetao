@@ -86,6 +86,7 @@ export function VttTerrainBrush({
           </button>
         ))}
       </div>
+      {value.texture === 'water' && <p>A espuma acompanha a margem ao soltar o pincel. Pinte água sobre terra ou areia para formar a costa.</p>}
       <label>
         Formato do brush
         <select
