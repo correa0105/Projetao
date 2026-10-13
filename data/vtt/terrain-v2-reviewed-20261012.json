@@ -1,0 +1,26 @@
+[
+  {
+    "id": "grass",
+    "sha256": "b57016ba05b023c031560863ce8792e66a63779e39909cdc5ac44ead07f1f2f2"
+  },
+  {
+    "id": "earth",
+    "sha256": "1821b20afe897b86719d60a47b45c3832618e82b16d19bcd136968ed8ae1a01f"
+  },
+  {
+    "id": "sand",
+    "sha256": "83600d32c280cf5b4fee04aa409606fba9689d1613d5efe9be31fc932b00a914"
+  },
+  {
+    "id": "stone",
+    "sha256": "4265d3e5ff4319c1b0220e2791dab9ed737498f54bc5dbcb868e6ed2d9760354"
+  },
+  {
+    "id": "wood",
+    "sha256": "dd850f8b90f39fdc2d29879e0f058dec05a3a618d2e8cb14db097e6ebbf0d207"
+  },
+  {
+    "id": "snow",
+    "sha256": "9994b9b90498a288ddd8f11b7f7b872b966685e917e23ea7368461c092430201"
+  }
+]

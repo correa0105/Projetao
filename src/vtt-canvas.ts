@@ -1,5 +1,8 @@
+import { drawTerrain } from './vtt-terrain-canvas';
+import type { TerrainStroke } from '../shared/vtt';
+import { tokenResizeHandles } from '../shared/vtt-token-resize';
 import { isTreeCanopy, canopyActor } from '../shared/vtt-canopies';
-import { captureCanopyAreas, drawCanopyForeground } from './vtt-canopies-canvas';
+import { captureCanopyAreas, drawCanopyForeground, clipCanopyBase } from './vtt-canopies-canvas';
 import { drawMapAtmosphere } from './vtt-atmosphere';
 import {
   sightPolygon,
@@ -27,6 +30,8 @@ import { spellTokenOpacity } from './vtt-spell-cinematic';
 import type { SpellEffect } from '../shared/vtt-spells';
 export type VttCamera = { x: number; y: number; zoom: number };
 export type RenderOptions = {
+  terrainDraft?: TerrainStroke | null;
+  terrainCursor?: {x:number;y:number;radius:number;erase:boolean} | null;
   visualEffects?: boolean;
   bloodEnabled?: boolean;
   spellEffects?: SpellEffect[];
@@ -37,6 +42,7 @@ export type RenderOptions = {
   dpr: number;
   images: Map<string, HTMLImageElement>;
   selected: string[];
+  resizeTokenId?: string;
   target?: string;
   currentTurn?: string;
   nextTurn?: string;
@@ -247,6 +253,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
   c.clip();
   if (background?.complete && background.naturalWidth)
     c.drawImage(background, 0, 0, s.width, s.height);
+  drawTerrain(c,s,o);
   const g = s.grid;
   const drawGrid = () => {
     c.save();
@@ -350,6 +357,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       if ((!o.gm || o.preview) && t.hidden) continue;
       if (o.preview && o.viewer && t.id !== o.viewer.id && !viewerSees(o.viewer, t, s)) continue;
       c.save();
+      if(layer === 'map') clipCanopyBase(c,s,t);
       c.translate(t.x, t.y);
       c.rotate((t.rotation * Math.PI) / 180);
       c.globalAlpha = t.hidden || layer === 'gm' ? s.gmOpacity : 1;
@@ -769,6 +777,26 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     c.restore();
   }
   if (o.ping && o.visualEffects !== false) drawPing(c, o.ping, cam.zoom);
+  if (o.terrainCursor && o.gm && !o.preview) {
+    c.save(); c.beginPath(); c.arc(o.terrainCursor.x,o.terrainCursor.y,o.terrainCursor.radius,0,Math.PI*2);
+    c.strokeStyle = o.terrainCursor.erase ? '#f8b6a3' : '#f5e0a0'; c.lineWidth = 1.5/cam.zoom;
+    c.setLineDash([5/cam.zoom,4/cam.zoom]); c.stroke(); c.restore();
+  }
+  if (o.gm && !o.preview && o.resizeTokenId) {
+    const token = s.tokens.find(t => t.id === o.resizeTokenId && !t.locked && t.layer === o.layer);
+    if (token) {
+      c.save();
+      c.setLineDash([]);
+      c.lineWidth = 1.5 / cam.zoom;
+      c.fillStyle = '#19252b';
+      c.strokeStyle = '#f5d893';
+      for (const h of tokenResizeHandles(token, cam.zoom)) {
+        c.fillRect(h.x - 5 / cam.zoom, h.y - 5 / cam.zoom, 10 / cam.zoom, 10 / cam.zoom);
+        c.strokeRect(h.x - 5 / cam.zoom, h.y - 5 / cam.zoom, 10 / cam.zoom, 10 / cam.zoom);
+      }
+      c.restore();
+    }
+  }
   c.strokeStyle = '#5b5846';
   c.lineWidth = 2 / cam.zoom;
   c.strokeRect(0, 0, s.width, s.height);

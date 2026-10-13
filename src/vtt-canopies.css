@@ -42,14 +42,15 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 290px;
+  width: 360px;
+  max-width: calc(100% - 76px);
   max-height: calc(100% - 24px);
   overflow: auto;
   pointer-events: auto;
   background: #171a1eeb;
   border: 1px solid #8c7143;
   box-shadow: 0 12px 35px #0008;
-  padding: 16px;
+  padding: 20px;
   border-radius: 5px;
   backdrop-filter: blur(8px);
   font-size: 12px;
@@ -126,10 +127,10 @@
   .vtt-canopy-controls {
     top: auto;
     bottom: 144px;
-    width: 240px;
-    max-width: calc(100% - 24px);
-    max-height: 42%;
-    padding: 12px;
+    width: calc(100% - 72px);
+    max-width: 360px;
+    max-height: 48%;
+    padding: 16px;
   }
   .vtt-canopy-controls p {
     font-size: 11px;
@@ -143,3 +144,7 @@
 .vtt-canopy-label-line output { color:#d8ba7d;flex:none; }
 :root .vtt-canopy-controls .vtt-canopy-toggle { display:flex;align-items:center;flex-direction:row;gap:8px; }
 :root .vtt-canopy-controls input[type=checkbox] { width:16px;height:16px;flex:0 0 16px;margin:0;accent-color:#c39b60; }
+
+.vtt-canopy-row > select { flex: 1 1 150px; }
+.vtt-canopy-row > button { flex: 0 0 auto; min-width: 104px; }
+@media (max-width: 380px) { .vtt-canopy-row { flex-wrap: wrap; } .vtt-canopy-row > select, .vtt-canopy-row > button { flex: 1 1 100%; } }

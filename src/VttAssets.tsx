@@ -45,7 +45,7 @@ export function VttAssets({
       e.preventDefault();
       return;
     }
-    e.dataTransfer.setData(treeAssetMime, JSON.stringify({ id, scale }));
+    e.dataTransfer.setData(treeAssetMime, JSON.stringify({ id, scale: selected === id ? scale : 1 }));
     e.dataTransfer.effectAllowed = 'copy';
   };
   return (
@@ -57,6 +57,7 @@ export function VttAssets({
             setCollection('trees');
             setGroup('Todos');
             setSelected('');
+            setScale(1);
           }}
         >
           <Trees size={14} /> Árvores <small>{treeAssets.length}</small>
@@ -67,6 +68,7 @@ export function VttAssets({
             setCollection('rocks');
             setGroup('Todos');
             setSelected('');
+            setScale(1);
           }}
         >
           ◆ Pedras <small>{rockAssets.length}</small>
@@ -103,6 +105,7 @@ export function VttAssets({
                 onClick={() => {
                   setGroup(g);
                   setSelected('');
+            setScale(1);
                 }}
               >
                 {g}
@@ -125,8 +128,9 @@ export function VttAssets({
               <img src={item.image} alt={item.name} />
               <h4>{item.name}</h4>
               <p>
-                {item.group} · {item.squares * scale} × {item.squares * scale} quadrados
+                {item.group} · {Number((item.squares * scale).toFixed(2)).toLocaleString('pt-BR')} × {Number((item.squares * scale).toFixed(2)).toLocaleString('pt-BR')} quadrados
               </p>
+              <p className="vtt-scale-reference">Referência: um personagem Médio ocupa 1 quadrado da grade. Cada asset entra na sua escala natural.</p>
               <label>
                 Escala
                 <select
@@ -155,7 +159,7 @@ export function VttAssets({
                 key={a.id}
                 draggable={gm}
                 onDragStart={(e) => drag(e, a.id)}
-                onClick={() => setSelected(a.id)}
+                onClick={() => { if (a.id !== selected) setScale(1); setSelected(a.id); }}
                 aria-label={'Asset: ' + a.name}
                 aria-pressed={selected === a.id}
                 title={gm ? 'Arraste para o mapa ou veja a prévia' : a.name}
@@ -164,7 +168,7 @@ export function VttAssets({
                   <img src={a.image} alt="" loading="lazy" draggable={false} />
                 </span>
                 <strong>{a.name}</strong>
-                <small>{a.group}</small>
+                <small>{a.group} · {a.squares.toLocaleString('pt-BR')} quadrados</small>
               </button>
             ))}
           </div>

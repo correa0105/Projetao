@@ -1,0 +1,26 @@
+[
+  {
+    "id": "grass",
+    "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Dense fine natural meadow grass, layered tiny blades, subdued olive and fresh green, small dry blade variation, evenly dense. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency."
+  },
+  {
+    "id": "earth",
+    "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Rich compact brown earthen soil, fine organic grains, faint worn patches, no large stones. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency."
+  },
+  {
+    "id": "sand",
+    "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Fine warm golden sand grains with very subtle soft wind ripples, small-scale homogeneous surface. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency."
+  },
+  {
+    "id": "stone",
+    "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Weathered pale gray stone paving with irregular medium stones, tight cracks, muted fine mineral grain. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency."
+  },
+  {
+    "id": "wood",
+    "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Parallel honey brown worn oak floorboards, fine wood grain and subtle joints, no furniture. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency."
+  },
+  {
+    "id": "snow",
+    "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Soft fresh white snow with subtle pale blue granular shading and tiny natural surface variation. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency."
+  }
+]

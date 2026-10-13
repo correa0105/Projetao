@@ -728,6 +728,8 @@ export function vttRouter() {
         const submittedScene = req.body.document.scenes.find((s: VttScene) => s.id === scene.id);
         if (previous && submittedScene?.canopyAreas === undefined) scene.canopyAreas = previous.canopyAreas;
         if (previous && submittedScene?.canopyOpacity === undefined) scene.canopyOpacity = previous.canopyOpacity;
+        if (previous && submittedScene?.terrain === undefined) scene.terrain = previous.terrain || [];
+        if (previous && submittedScene?.terrainLayers === undefined) scene.terrainLayers = previous.terrainLayers || [{id:'base',name:'Chão',visible:true,opacity:1}];
         scene.blood = previous ? structuredClone(previous.blood) : [];
         for (const token of scene.tokens) {
           const old = previous?.tokens.find((t) => t.id === token.id);

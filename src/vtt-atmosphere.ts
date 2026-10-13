@@ -1,6 +1,7 @@
 import { weatherPreset, type MapAtmosphere } from '../shared/vtt-atmosphere';
 import type { VttScene } from '../shared/vtt';
 import { seededRandom, fract } from './vtt-effects-primitives';
+import { drawMapWind } from './vtt-map-wind';
 import { drawWeatherFlows, drawCelestialWeather } from './vtt-atmosphere-flows';
 import { approvedSkyFragment } from './vtt-atmosphere-approved-sky';
 
@@ -419,8 +420,8 @@ export function drawMapAtmosphere(
   grade(c, a, s, now, reduced, width, height);
   if (a.enabled && a.intensity > 0 && a.weather !== 'meteors') {
     const t = reduced ? 12.5 : (now % 86400000) / 1000;
-    haze(c, a, view, t, width, height);
-    drawWeatherFlows(c, s.id, a, t, width, height);
+    if(a.weather==='wind'||a.weather==='gale') drawMapWind(c,s.id,a,t,width,height);
+    else { haze(c, a, view, t, width, height);drawWeatherFlows(c, s.id, a, t, width, height); }
     drawCelestialWeather(c, a, t, width, height);
     lightning(c, s, a, t, width, height, reduced);
   }

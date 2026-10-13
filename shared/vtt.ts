@@ -157,6 +157,20 @@ export const drawingSchema = z
   })
   .strict();
 export type VttDrawing = z.infer<typeof drawingSchema>;
+export const terrainLayerSchema = z.object({
+  id: z.union([z.literal('base'), id]), name: z.string().trim().min(1).max(60),
+  visible: z.boolean().default(true), opacity: z.number().min(0).max(1).default(1),
+}).strict();
+export type TerrainLayer = z.infer<typeof terrainLayerSchema>;
+export const terrainStrokeSchema = z.object({
+  id, texture: z.enum(['grass', 'earth', 'sand', 'stone', 'wood', 'snow']),
+  erase: z.boolean().default(false), points: z.array(pointSchema).min(1).max(1500),
+  radius: z.number().min(5).max(1000), softness: z.number().min(0).max(1),
+  opacity: z.number().min(.05).max(1), textureScale: z.number().min(20).max(2000),
+  shape: z.enum(['round','square','rough']).default('round'),
+  layer: z.union([z.literal('base'), id]).default('base'),
+}).strict();
+export type TerrainStroke = z.infer<typeof terrainStrokeSchema>;
 export const sceneSchema = z
   .object({
     id,
@@ -212,11 +226,17 @@ export const sceneSchema = z
     drawings: z.array(drawingSchema).max(2000),
     canopyAreas: z.array(canopyAreaSchema).max(80).optional(),
     canopyOpacity: z.number().min(0.1).max(0.8).optional(),
+    terrain: z.array(terrainStrokeSchema).max(1000).default([]),
+    terrainLayers: z.array(terrainLayerSchema).min(1).max(8).default([{id:'base',name:'Chão',visible:true,opacity:1}]),
   })
   .strict()
   .superRefine((scene, ctx) => {
     if (scene.canopyAreas && new Set(scene.canopyAreas.map(a=>a.id)).size !== scene.canopyAreas.length)
       ctx.addIssue({ code: 'custom', message: 'Áreas repetidas.', path: ['canopyAreas'] });
+    if (!scene.terrainLayers.some(l => l.id === 'base') || new Set(scene.terrainLayers.map(l=>l.id)).size !== scene.terrainLayers.length)
+      ctx.addIssue({code:'custom',message:'Camadas de pintura inválidas.',path:['terrainLayers']});
+    if (new Set(scene.terrain.map(t=>t.id)).size !== scene.terrain.length || scene.terrain.some(t=>!scene.terrainLayers.some(l=>l.id===t.layer)))
+      ctx.addIssue({code:'custom',message:'Traços de pintura inválidos.',path:['terrain']});
     for (const key of ['tokens', 'walls', 'drawings', 'lights'] as const)
       if (new Set(scene[key].map((x) => x.id)).size !== scene[key].length)
         ctx.addIssue({ code: 'custom', message: 'Identificadores repetidos.', path: [key] });

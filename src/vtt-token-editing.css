@@ -1,0 +1,22 @@
+.vtt-token-sheet-action {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #b7a17c38;
+}
+.vtt-token-sheet-action button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.vtt-token-resize-hint {
+  color: #bab3a5;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.vtt-scale-reference {
+  padding: 9px 12px;
+  border: 1px solid #b7a17c38;
+  border-radius: 5px;
+  font-size: 11px;
+  color: #d5c7a9;
+}

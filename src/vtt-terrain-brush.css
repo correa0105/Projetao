@@ -1,0 +1,109 @@
+.vtt-terrain-brush {
+  padding: 16px;
+  background: #171d20;
+  border: 1px solid #8c7143;
+  border-radius: 7px;
+  margin: 12px 0;
+}
+.vtt-terrain-brush :is(h3, h4) {
+  color: #e6d8b8;
+  margin: 0 0 8px;
+}
+.vtt-panel .vtt-terrain-brush h3 {
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+}
+.vtt-terrain-brush p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #bcb59f;
+  line-height: 1.6;
+}
+.vtt-terrain-modes {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+.vtt-terrain-modes button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.vtt-terrain-textures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.vtt-terrain-textures button {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.vtt-terrain-textures img {
+  width: 100%;
+  aspect-ratio: 1.4;
+  object-fit: cover;
+}
+.vtt-terrain-textures span {
+  font-size: 11px;
+  padding: 6px 2px;
+}
+.vtt-terrain-brush button[aria-pressed='true'] {
+  outline: 1px solid #d9b470;
+  background: #3a3527;
+}
+.vtt-terrain-brush label {
+  display: grid;
+  gap: 7px;
+  margin: 16px 0;
+  font-size: 12px;
+  color: #d5cab0;
+}
+.vtt-terrain-brush :is(input, select) {
+  width: 100%;
+  min-width: 0;
+  accent-color: #c5a265;
+}
+.vtt-terrain-layers {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #8c714344;
+}
+.vtt-terrain-layers header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.vtt-terrain-layers header h4 {
+  margin: 0;
+}
+.vtt-terrain-layers header button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.vtt-terrain-layer {
+  display: flex;
+  gap: 6px;
+  margin: 6px 0;
+}
+.vtt-terrain-layer-name {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.vtt-terrain-layer-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.vtt-terrain-layer-tools button {
+  min-height: 32px;
+}

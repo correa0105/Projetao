@@ -1,3 +1,6 @@
+import { VttTerrainBrush, type TerrainBrushSettings } from './VttTerrainBrush';
+import { terrainTextures } from '../shared/vtt-terrain';
+import type { TerrainStroke, TerrainLayer } from '../shared/vtt';
 import { VttTokenMenu } from './VttTokenMenu';
 import { VttAtmosphereMenu } from './VttAtmosphereMenu';
 import { livingEffectReady } from './vtt-effects-living';
@@ -87,7 +90,6 @@ import {
   snapPoint,
   distance,
   rulerLabel,
-  conditions,
   blockingWalls,
   activateScene,
   lightSchema,
@@ -110,6 +112,8 @@ import {
   type VttAsset,
   type VttFocusSignal,
 } from '../shared/vtt';
+import { tokenResizeHandleAt, tokenResizeCursor, resizeTokenRectangle, type ResizeHandle } from '../shared/vtt-token-resize';
+import './vtt-token-editing.css';
 import { renderVtt, tokenAt, drawingAt, segmentDistance, type VttCamera } from './vtt-canvas';
 import type { AttackRequest } from '../shared/vtt-attack';
 import { vttUpdateMessage } from '../shared/vtt-protocol';
@@ -165,6 +169,8 @@ import './vtt.css';
 import './vtt-library-tabs.css';
 type Tool =
   | 'select'
+  | 'terrain-paint'
+  | 'terrain-erase'
   | 'lasso'
   | 'pan'
   | 'ruler'
@@ -388,7 +394,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [historyEnd, setHistoryEnd] = useState(false),
     [settingsId, setSettingsId] = useState<string | null>(null),
     [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
-  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium' | 'animated'>(
+  const [terrainBrush, setTerrainBrush] = useState<TerrainBrushSettings>({texture:'grass',radius:45,softness:.5,opacity:1,textureScale:280,shape:'round',layer:'base'});
+  const [terrainDraft, setTerrainDraft] = useState<TerrainStroke | null>(null);
+  const [terrainCursor, setTerrainCursor] = useState<Point | null>(null);
+  const terrainActive = useRef<TerrainStroke | null>(null);
+  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium' | 'animated' | 'terrain'>(
       'images',
     ),
     [presetVersion, setPresetVersion] = useState(0),
@@ -433,7 +443,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       screen: Point;
       camera: VttCamera;
       original: VttDocument;
-      kind: 'pan' | 'tokens' | 'drawing' | 'shape' | 'lasso';
+      kind: 'pan' | 'tokens' | 'drawing' | 'shape' | 'lasso' | 'resize';
+      resizeHandle?: ResizeHandle;
       tool?: Tool;
       layer?: string;
       tokens: VttToken[];
@@ -451,6 +462,18 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   const tokenClick = useRef<{id: string; x: number; y: number} | null>(null);
   const contextDrag = useRef<{ id: number; dx: number; dy: number } | null>(null);
   const suppressContextUntil = useRef(0);
+  const panHeld = useRef(false);
+  useEffect(() => {
+    const down=(e:KeyboardEvent)=>{if(e.code==='Space' && !(e.target as HTMLElement).closest('input,textarea,select,button,[contenteditable]')) {e.preventDefault();panHeld.current=true;}};
+    const up=(e:KeyboardEvent)=>{if(e.code==='Space')panHeld.current=false;};
+    const blur=()=>{panHeld.current=false;
+      const d=drag.current;drag.current=null;
+      if(d && d.kind!=='pan'){docRef.current=d.original;setDoc(d.original);}
+      terrainActive.current=null;setTerrainDraft(null);setRuler([]);setLasso([]);setDraft(null);
+    };
+    window.addEventListener('keydown',down);window.addEventListener('keyup',up);window.addEventListener('blur',blur);
+    return ()=>{window.removeEventListener('keydown',down);window.removeEventListener('keyup',up);window.removeEventListener('blur',blur);};
+  }, []);
   const music = useMusicInterlude();
   const sounds = useVttSounds(state?.id),
     soundQueue = useRef(Promise.resolve());
@@ -744,6 +767,22 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       });
     }
   }
+  function changeTokenConditions(conditions: string[]) {
+    if (!canToken || busy || preview) return;
+    editToken({ conditions });
+    if (gm) void act(save);
+  }
+  function terrainPanel() {
+    const layers = scene?.terrainLayers || [{id:'base',name:'Chão',visible:true,opacity:1}];
+    const active = layers.some(l=>l.id===terrainBrush.layer) ? terrainBrush.layer : 'base';
+    return <VttTerrainBrush value={{...terrainBrush,layer:active}} change={setTerrainBrush} mode={tool}
+      gm={gm && !preview} busy={busy} layers={layers}
+      hasPaint={!!scene?.terrain.some(t=>t.layer===active)}
+      updateLayers={layers=>editScene(s=>{s.terrainLayers=layers;})}
+      removeLayer={id=>editScene(s=>{s.terrain=s.terrain.filter(t=>t.layer!==id);s.terrainLayers=s.terrainLayers.filter(l=>l.id!==id);})}
+      clear={()=>{terrainActive.current=null;setTerrainDraft(null);editScene(s=>{s.terrain=s.terrain.filter(t=>t.layer!==active);});}}
+      activate={erase=>{terrainActive.current=null;setTerrainDraft(null);setTerrainBrush(v=>({...v,layer:active}));changeLayer('map');setTool(erase?'terrain-erase':'terrain-paint');}}/>;
+  }
   function editSelected(fn: (t: VttToken) => void) {
     if (!gm) return;
     editScene((s) => s.tokens.filter((t) => selection.includes(t.id)).forEach(fn));
@@ -837,6 +876,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }, []);
   const combat = useVttCombat(state?.id, scene?.id, save, refreshRoom);
   const spellcasting = useVttSpells(state?.id, scene, user.id, gm && !preview, save, refreshRoom);
+  const resizeToken = gm && !preview && !sheetId && !canopyEditing && !busy && !attackBusy &&
+    !spellcasting.pending && tool === 'select' && selection.length === 1 && token &&
+    !token.locked && token.layer === layer ? token : undefined;
   async function act(fn: () => Promise<unknown>) {
     try {
       setNotice('');
@@ -969,7 +1011,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }, [state?.id]);
   useEffect(() => {
     if (!scene) return;
-    for (const path of [scene.background, ...scene.tokens.map((t) => t.image)]) {
+    for (const path of [scene.background, ...scene.tokens.map((t) => t.image), ...terrainTextures.map(t=>t.image)]) {
       if (!path || images.current.has(path)) continue;
       const image = new window.Image();
       image.onload = () => setImageVersion((v) => v + 1);
@@ -1018,7 +1060,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           spellEffects: spellcasting.effects,
           spellPreview: spellcasting.preview,
           images: images.current,
+          terrainDraft,
+          terrainCursor: tool.startsWith('terrain-') && terrainCursor ? {...terrainCursor,radius:terrainBrush.radius,erase:tool==='terrain-erase'} : null,
           selected: selection,
+          resizeTokenId: resizeToken?.id,
           target: attackTarget?.id,
           currentTurn: combat.state?.active ? combat.state.currentId || undefined : undefined,
           nextTurn: combat.state?.active ? combat.state.nextId || undefined : undefined,
@@ -1102,6 +1147,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     bounds,
     selection,
     attackTarget?.id,
+    resizeToken,
     combat.state,
     preview,
     previewViewerId,
@@ -1111,6 +1157,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     spellcasting.preview,
     visualEffects,
     imageVersion,
+    terrainDraft,
+    terrainCursor,
+    terrainBrush,
+    tool,
     atmospherePreview,
     layer,
     ruler,
@@ -1174,6 +1224,22 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }
   useEffect(() => {
     function key(e: KeyboardEvent) {
+      if (drag.current?.kind === 'resize') {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          const original = drag.current.original;
+          drag.current = null;
+          docRef.current = original;
+          setDoc(original);
+          if (canvas.current) canvas.current.style.cursor = 'default';
+        } else if (e.ctrlKey || e.metaKey) e.preventDefault();
+        return;
+      }
+      if (e.key === 'Escape' && (tool === 'terrain-paint' || tool === 'terrain-erase')) {
+        if (mapsOpen || settingsId || sheetId) return;
+        terrainActive.current = null; setTerrainDraft(null); setTerrainCursor(null);
+        setTool('select'); e.preventDefault(); return;
+      }
       if ((e.target as HTMLElement).closest('input,textarea,select,button,[contenteditable]'))
         return;
       if (e.key === 'Escape') {
@@ -1297,13 +1363,62 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         camera.y,
     };
   }
-  function pointerDown(e: ReactPointerEvent<HTMLCanvasElement>) {
+  function wheel(e:React.WheelEvent<HTMLCanvasElement | SVGSVGElement>) {
+              if (!e.defaultPrevented) e.preventDefault();
+              if (drag.current?.kind === 'resize') return;
+              cancelAnimationFrame(focusFrame.current);
+              if (e.ctrlKey && token && token.layer !== 'map') {
+                if (canToken && e.deltaY) {
+                  const step = Math.sign(e.deltaY) * 15;
+                  if (gm)
+                    editSelected((t) => {
+                      if (t.layer !== 'map') t.rotation = (((t.rotation + step) % 360) + 360) % 360;
+                    });
+                  else editToken({ rotation: (((token.rotation + step) % 360) + 360) % 360 });
+                }
+                return;
+              }
+              const p = point(e),
+                zoom = Math.min(5, Math.max(0.03, camera.zoom * Math.exp(-e.deltaY * 0.0015)));
+              const rect = e.currentTarget.getBoundingClientRect(),
+                dx = e.clientX - rect.left - bounds.width / 2,
+                dy = e.clientY - rect.top - bounds.height / 2;
+              setCamera({ zoom, x: p.x - dx / zoom, y: p.y - dy / zoom });
+  }
+  function pointerDown(e: ReactPointerEvent<HTMLCanvasElement>, forcePan = false) {
     tokenClick.current = null;
     cancelAnimationFrame(focusFrame.current);
     if (!scene || !doc) return;
-    if (barrierTools.has(tool) && !barrierEditing) return;
     const p = point(e),
       snap = e.altKey ? p : snapPoint(p, scene.grid);
+    if (forcePan || e.button === 1 || (e.button === 0 && (panHeld.current || tool === 'pan'))) {
+      e.preventDefault();e.currentTarget.focus({preventScroll:true});e.currentTarget.setPointerCapture(e.pointerId);
+      setContextMenu(null);terrainActive.current=null;setTerrainDraft(null);
+      drag.current={kind:'pan',start:p,last:p,screen:{x:e.clientX,y:e.clientY},camera,original:doc,tokens:[]};
+      e.currentTarget.style.cursor='grabbing';return;
+    }
+    if (barrierTools.has(tool) && !barrierEditing) return;
+    if (e.button === 0 && resizeToken) {
+      const handle = tokenResizeHandleAt(resizeToken, p, camera.zoom);
+      if (handle) {
+        e.preventDefault();
+        e.currentTarget.focus({ preventScroll: true });
+        e.currentTarget.setPointerCapture(e.pointerId);
+        setContextMenu(null);
+        drag.current = { kind: 'resize', resizeHandle: handle, start: p, last: p,
+          screen: { x: e.clientX, y: e.clientY }, camera,
+          original: structuredClone(docRef.current!), tokens: [structuredClone(resizeToken)] };
+        return;
+      }
+    }
+    if (e.button === 0 && (tool === 'terrain-paint' || tool === 'terrain-erase')) {
+      if (!gm || preview || spectator || busy) return;
+      if (!scene.terrainLayers.find(l=>l.id===terrainBrush.layer)?.visible) return;
+      if (scene.terrain.length >= 1000) { setNotice('Limite de 1.000 traços neste mapa.'); return; }
+      e.preventDefault(); e.currentTarget.focus({ preventScroll: true }); e.currentTarget.setPointerCapture(e.pointerId);
+      const stroke: TerrainStroke = { id: crypto.randomUUID(), ...terrainBrush, erase: tool === 'terrain-erase', points: [p] };
+      terrainActive.current = stroke; setTerrainDraft(stroke); return;
+    }
     if (e.button === 2) {
       if (spectator || preview || attackBusy || busy) return;
       const hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
@@ -1531,7 +1646,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             tokens: movementTokens(ids),
           };
         }
-        return;
+        if (hit.layer !== 'map' || (!hit.locked && !preview && (gm || hit.controller === user.id))) return;
+        drag.current={kind:'pan',start:p,last:p,screen:{x:e.clientX,y:e.clientY},camera,original:doc,tokens:[]};
+        setContextMenu(null);return;
       }
       const drawing = gm ? drawingAt(p, scene, layer, 8 / camera.zoom) : null;
       if (drawing) {
@@ -1604,6 +1721,21 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     else setRuler([snap, snap]);
   }
   function pointerMove(e: ReactPointerEvent<HTMLCanvasElement>) {
+    const navigation=drag.current;
+    if(navigation?.kind==='pan') {
+      setCamera({...navigation.camera,x:navigation.camera.x-(e.clientX-navigation.screen.x)/navigation.camera.zoom,
+        y:navigation.camera.y-(e.clientY-navigation.screen.y)/navigation.camera.zoom});return;
+    }
+    if (tool.startsWith('terrain-') && gm && !preview) setTerrainCursor(point(e));
+    if (terrainActive.current && gm && !preview && scene) {
+      const p = point(e), stroke = terrainActive.current;
+      const last = stroke.points.at(-1)!;
+      if (Math.hypot(p.x-last.x,p.y-last.y) >= Math.max(1,stroke.radius*.08)) {
+        const points = stroke.points.length >= 1499 ? stroke.points.filter((_,i)=>i%2===0) : stroke.points;
+        terrainActive.current = {...stroke,points:[...points,p]}; setTerrainDraft(terrainActive.current);
+      }
+      return;
+    }
     if (spellcasting.pending && !preview) {
       const p = point(e);
       spellcasting.hover(e.altKey || !scene ? p : snapPoint(p, scene.grid));
@@ -1614,7 +1746,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       setFogPointer(point(e));
       return;
     }
-    if (!d || !scene || !doc) return;
+    if (!d || !scene || !doc) {
+      if (resizeToken) {
+        const handle = tokenResizeHandleAt(resizeToken, point(e), camera.zoom);
+        e.currentTarget.style.cursor = handle ? tokenResizeCursor(handle, resizeToken.rotation) : 'default';
+      }
+      return;
+    }
     if (
       d.kind === 'shape' &&
       barrierTools.has(d.tool!) &&
@@ -1626,6 +1764,25 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     const p = point(e);
+    if (d.kind === 'resize' && gm && !preview && d.resizeHandle) {
+      const original = d.tokens[0];
+      if (Math.hypot(e.clientX - d.screen.x, e.clientY - d.screen.y) < 2 && !d.moved) return;
+      d.moved = true;
+      const next = structuredClone(docRef.current!);
+      const s = next.scenes.find(s => s.id === next.activeScene)!;
+      const target = s.tokens.find(t => t.id === original.id);
+      if (!target || target.locked) return;
+      Object.assign(target, resizeTokenRectangle(original, d.resizeHandle, d.start, p, s, e.shiftKey));
+      if (target.attachment) {
+        const parent = s.tokens.find(t => t.id === target.attachment!.tokenId);
+        if (parent) { target.attachment.offsetX = target.x - parent.x; target.attachment.offsetY = target.y - parent.y; }
+      }
+      syncAttachmentPositions(s, d.original.scenes.find(s => s.id === next.activeScene));
+      if (s.tokens.some(t => t.attachment && (t.x < 0 || t.y < 0 || t.x > s.width || t.y > s.height))) return;
+      docRef.current = next;
+      setDoc(next);
+      return;
+    }
     if (d.kind === 'lasso') {
       const path = d.lasso!;
       if (Math.hypot(p.x - path.at(-1)!.x, p.y - path.at(-1)!.y) >= 3 / d.camera.zoom) {
@@ -1655,6 +1812,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       if (d.measured && !d.moved) {
         if (Math.hypot(e.clientX - d.screen.x, e.clientY - d.screen.y) < 4) return;
         d.moved = true;
+        setContextMenu(null);
       }
       const next = structuredClone(docRef.current!);
       const s = next.scenes.find((s) => s.id === next.activeScene)!;
@@ -1721,14 +1879,34 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       );
   }
   function pointerUp(e: ReactPointerEvent<HTMLCanvasElement>) {
-    const click = tokenClick.current;
-    tokenClick.current = null;
-    if (click && !preview && !spectator && Math.hypot(e.clientX - click.x, e.clientY - click.y) < 4) {
-      setContextMenu({x: e.clientX, y: e.clientY});
+    if(drag.current?.kind==='pan') {drag.current=null;e.currentTarget.style.cursor=tool==='pan'?'grab':'default';
+      if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);return;}
+    if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);
+    if (terrainActive.current) {
+      const stroke = terrainActive.current; terrainActive.current = null; setTerrainDraft(null);
+      if (gm && !preview && scene) { const p = point(e); editScene(s => s.terrain.push({...stroke,points:[...stroke.points,p]})); }
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
+      return;
     }
+    tokenClick.current = null;
     const d = drag.current;
     if (!d || !scene) return;
     drag.current = null;
+    if (d.kind === 'resize') {
+      e.currentTarget.style.cursor = 'default';
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
+      const original = d.tokens[0];
+      const resized = docRef.current?.scenes.find(s => s.id === scene.id)?.tokens.find(t => t.id === original.id);
+      if (!gm || !resized || ['x','y','width','height'].every(k => resized[k as 'x'] === original[k as 'x'])) return;
+      undo.current.push(d.original);
+      if (undo.current.length > 30) undo.current.shift();
+      redo.current = [];
+      serial.current++;
+      dirtyRef.current = true;
+      setDirty(true);
+      setDoc(structuredClone(docRef.current!));
+      return;
+    }
     if (d.measured) {
       suppressContextUntil.current = Date.now() + 600;
       setRuler([]);
@@ -2580,6 +2758,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             </button>
           )}
           {gm && !preview && <button title="Áreas de transparência" aria-label="Áreas de transparência" aria-pressed={canopyEditing} onClick={()=>{if(!canopyEditing)setPanelOpen(false);setCanopyEditing(v=>!v);}}><Eye size={20}/></button>}
+          {gm && !preview && <button aria-label="Brush do mapa" title="Brush do mapa" aria-pressed={tool.startsWith('terrain-')}
+            onClick={()=>{setLibrary('terrain');setTab('art');setPanelOpen(true);setContextMenu(null);setQuery('');changeLayer('map');setTool('terrain-paint');}}><Pencil size={20}/></button>}
           {toolList
             .filter(
               (t) =>
@@ -2846,17 +3026,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               closeAttack={() => setAttack(null)}
             />
           )}
-          {gm && !preview && canopyEditing && <VttCanopyEditor key={scene.id} scene={scene} camera={camera} bounds={bounds} busy={busy} close={()=>setCanopyEditing(false)} save={()=>void act(save)} update={(areas,opacity)=>editScene(s=>{s.canopyAreas=areas;if(opacity!==undefined)s.canopyOpacity=opacity;})}/>}
+          {gm && !preview && canopyEditing && <VttCanopyEditor key={scene.id} scene={scene} camera={camera} bounds={bounds} busy={busy} selectedItemId={selection[0]} navigation={{wheel,holding:()=>panHeld.current,down:e=>pointerDown(e as unknown as ReactPointerEvent<HTMLCanvasElement>,true),move:e=>pointerMove(e as unknown as ReactPointerEvent<HTMLCanvasElement>),up:e=>pointerUp(e as unknown as ReactPointerEvent<HTMLCanvasElement>)}} close={()=>setCanopyEditing(false)} save={()=>void act(save)} update={(areas,opacity)=>editScene(s=>{s.canopyAreas=areas;if(opacity!==undefined)s.canopyOpacity=opacity;})}/>}
           <canvas
             ref={canvas}
             aria-label="Tabuleiro da mesa"
             tabIndex={0}
             style={{
-              cursor: tool === 'pan' ? 'grab' : tool === 'select' ? 'default' : 'crosshair',
+              cursor: tool.startsWith('terrain-') ? 'crosshair' : tool === 'pan' ? 'grab' : tool === 'select' ? 'default' : 'crosshair',
             }}
-            onPointerDown={pointerDown}
+            onPointerDown={e=>pointerDown(e)}
             onPointerMove={pointerMove}
             onPointerUp={pointerUp}
+            onPointerLeave={() => setTerrainCursor(null)}
+            onLostPointerCapture={()=>{if(drag.current?.kind==='pan')drag.current=null;}}
             onDragOver={(e) => {
               if (
                 !preview &&
@@ -2923,6 +3105,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             data-selection-count={selection.length}
             data-selection-ids={selection.join(',')}
             onPointerCancel={() => {
+              terrainActive.current = null; setTerrainDraft(null);
               tokenClick.current = null;
               setLasso([]);
               setFogPoints([]);
@@ -2938,7 +3121,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             }}
             onContextMenu={(e) => {
               e.preventDefault();
-              if (drag.current?.measured || Date.now() < suppressContextUntil.current) return;
+              if (drag.current?.measured ? drag.current.moved : Date.now() < suppressContextUntil.current) return;
               if (spectator || preview || attackBusy) return;
               setTool('select');
               const p = point(e),
@@ -2968,27 +3151,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 y: Math.max(8, Math.min(e.clientY, innerHeight - 520)),
               });
             }}
-            onWheel={(e) => {
-              if (!e.defaultPrevented) e.preventDefault();
-              cancelAnimationFrame(focusFrame.current);
-              if (e.ctrlKey && token && token.layer !== 'map') {
-                if (canToken && e.deltaY) {
-                  const step = Math.sign(e.deltaY) * 15;
-                  if (gm)
-                    editSelected((t) => {
-                      if (t.layer !== 'map') t.rotation = (((t.rotation + step) % 360) + 360) % 360;
-                    });
-                  else editToken({ rotation: (((token.rotation + step) % 360) + 360) % 360 });
-                }
-                return;
-              }
-              const p = point(e),
-                zoom = Math.min(5, Math.max(0.03, camera.zoom * Math.exp(-e.deltaY * 0.0015)));
-              const rect = e.currentTarget.getBoundingClientRect(),
-                dx = e.clientX - rect.left - bounds.width / 2,
-                dy = e.clientY - rect.top - bounds.height / 2;
-              setCamera({ zoom, x: p.x - dx / zoom, y: p.y - dy / zoom });
-            }}
+            onWheel={wheel}
             onDoubleClick={(e) => {
               if (spectator || attackBusy) return;
               if (['reveal', 'hide'].includes(tool) && fogPoints.length >= 3) {
@@ -3779,14 +3942,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               onChange={(v) => editToken({ height: v })}
                             />
                           </div>
-                          <label>
-                            Cor da borda
-                            <input
-                              type="color"
-                              value={token.color}
-                              onChange={(e) => editToken({ color: e.target.value })}
-                            />
-                          </label>
+                          <p className="vtt-token-resize-hint">Arraste os cantos ou as bordas do quadrado no mapa. Os cantos preservam a proporção; Shift permite ajustar livremente.</p>
                           <label>
                             Camada do token
                             <select
@@ -3931,26 +4087,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           </div>
                         </>
                       )}
-                      <h3>Condições</h3>
-                      <div className="vtt-conditions">
-                        {conditions.map((c) => (
-                          <button
-                            key={c}
-                            disabled={!canToken || (!gm && token.conditions.includes(c))}
-                            aria-pressed={token.conditions.includes(c)}
-                            onClick={() =>
-                              editToken({
-                                conditions: token.conditions.includes(c)
-                                  ? token.conditions.filter((v) => v !== c)
-                                  : [...token.conditions, c],
-                              })
-                            }
-                          >
-                            {c}
-                          </button>
-                        ))}
+                      <VttConditionMenu expanded conditions={token.conditions} gm={gm}
+                        enabled={canToken} busy={busy} onChange={changeTokenConditions} />
+                      <div className="vtt-token-sheet-action">
+                        <button onClick={() => openSheet()}><BookOpen size={15} />Abrir ficha do token</button>
                       </div>
-                      <button onClick={() => openSheet()}>Abrir ficha do token</button>
                     </>
                   )}
                 </>
@@ -4004,7 +4145,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       ))}
                     </div>
                   )}
-                  <label className="vtt-search">
+                  {library !== 'terrain' && <label className="vtt-search">
                     Buscar na biblioteca
                     <input
                       aria-label="Buscar na biblioteca"
@@ -4012,8 +4153,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       onChange={(e) => setQuery(e.target.value)}
                       placeholder="Nome, tipo, nível…"
                     />
-                  </label>
-                  {gm && library !== 'presets' && library !== 'premium' && library !== 'animated' && (
+                  </label>}
+                  {gm && library !== 'terrain' && library !== 'presets' && library !== 'premium' && library !== 'animated' && (
                     <label className="vtt-file-button">
                       <Upload size={14} />
                       {library === 'images' ? 'Enviar imagem' : 'Importar JSON do 5etools'}
@@ -4038,7 +4179,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       />
                     </label>
                   )}
-                  {library === 'animated' ? (
+                  {library === 'terrain' ? terrainPanel() : library === 'animated' ? (
                     <VttAnimatedAssets query={query} gm={gm && !preview} add={addAnimatedAsset} />
                   ) : library === 'presets' || library === 'premium' ? (
                     <VttAssets enabled={library === 'premium'} gm={gm && !preview} query={query} add={addTreeAsset}><VttPrivateLibrary
@@ -5172,7 +5313,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                     }}
                   />) : null}
           conditions={<VttConditionMenu expanded conditions={token.conditions} gm={gm} enabled={canToken}
-            busy={busy} onChange={conditions => {editToken({conditions}); if(gm)void act(save);}} />}
+            busy={busy} onChange={changeTokenConditions} />}
         >
               <button
                 onClick={() => {

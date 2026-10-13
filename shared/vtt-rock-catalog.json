@@ -3,175 +3,175 @@
     "id": "granito-grande",
     "name": "Rocha de granito",
     "group": "Grandes",
-    "squares": 3,
+    "squares": 2,
     "image": "/vtt/rocks-20261013/granito-grande.png"
   },
   {
     "id": "basalto-grande",
     "name": "Bloco de basalto",
     "group": "Grandes",
-    "squares": 3,
+    "squares": 2.2,
     "image": "/vtt/rocks-20261013/basalto-grande.png"
   },
   {
     "id": "arenito-grande",
     "name": "Rocha de arenito",
     "group": "Grandes",
-    "squares": 3,
+    "squares": 1.8,
     "image": "/vtt/rocks-20261013/arenito-grande.png"
   },
   {
     "id": "calcario-grande",
     "name": "Rocha calcária",
     "group": "Grandes",
-    "squares": 3,
+    "squares": 2,
     "image": "/vtt/rocks-20261013/calcario-grande.png"
   },
   {
     "id": "rocha-musgo",
     "name": "Rocha com musgo",
     "group": "Grandes",
-    "squares": 3,
+    "squares": 2.2,
     "image": "/vtt/rocks-20261013/rocha-musgo.png"
   },
   {
     "id": "rocha-partida",
     "name": "Rocha partida",
     "group": "Grandes",
-    "squares": 3,
+    "squares": 2.4,
     "image": "/vtt/rocks-20261013/rocha-partida.png"
   },
   {
     "id": "rocha-nevada",
     "name": "Rocha nevada",
     "group": "Grandes",
-    "squares": 3,
+    "squares": 2,
     "image": "/vtt/rocks-20261013/rocha-nevada.png"
   },
   {
     "id": "rocha-ferrosa",
     "name": "Rocha ferruginosa",
     "group": "Grandes",
-    "squares": 3,
+    "squares": 1.8,
     "image": "/vtt/rocks-20261013/rocha-ferrosa.png"
   },
   {
     "id": "pedra-rio",
     "name": "Pedra de rio",
     "group": "Pequenas",
-    "squares": 1,
+    "squares": 0.25,
     "image": "/vtt/rocks-20261013/pedra-rio.png"
   },
   {
     "id": "pedra-quartzo",
     "name": "Pedra de quartzo",
     "group": "Pequenas",
-    "squares": 1,
+    "squares": 0.35,
     "image": "/vtt/rocks-20261013/pedra-quartzo.png"
   },
   {
     "id": "pedra-ardosia",
     "name": "Laje de ardósia",
     "group": "Pequenas",
-    "squares": 1,
+    "squares": 0.45,
     "image": "/vtt/rocks-20261013/pedra-ardosia.png"
   },
   {
     "id": "pedra-vulcanica",
     "name": "Pedra vulcânica",
     "group": "Pequenas",
-    "squares": 1,
+    "squares": 0.35,
     "image": "/vtt/rocks-20261013/pedra-vulcanica.png"
   },
   {
     "id": "pedra-lisa",
     "name": "Seixo claro",
     "group": "Pequenas",
-    "squares": 1,
+    "squares": 0.2,
     "image": "/vtt/rocks-20261013/pedra-lisa.png"
   },
   {
     "id": "pedra-pontuda",
     "name": "Pedra pontuda",
     "group": "Pequenas",
-    "squares": 1,
+    "squares": 0.4,
     "image": "/vtt/rocks-20261013/pedra-pontuda.png"
   },
   {
     "id": "pedra-lichen",
     "name": "Pedra com líquen",
     "group": "Pequenas",
-    "squares": 1,
+    "squares": 0.3,
     "image": "/vtt/rocks-20261013/pedra-lichen.png"
   },
   {
     "id": "pedra-marrom",
     "name": "Pedra de barro",
     "group": "Pequenas",
-    "squares": 1,
+    "squares": 0.35,
     "image": "/vtt/rocks-20261013/pedra-marrom.png"
   },
   {
     "id": "grupo-rio",
     "name": "Seixos de rio",
     "group": "Aglomerados",
-    "squares": 2.5,
+    "squares": 0.8,
     "image": "/vtt/rocks-20261013/grupo-rio.png"
   },
   {
     "id": "grupo-granito",
     "name": "Fragmentos de granito",
     "group": "Aglomerados",
-    "squares": 2.5,
+    "squares": 1.1,
     "image": "/vtt/rocks-20261013/grupo-granito.png"
   },
   {
     "id": "grupo-musgo",
     "name": "Pedras musgosas",
     "group": "Aglomerados",
-    "squares": 2.5,
+    "squares": 1.3,
     "image": "/vtt/rocks-20261013/grupo-musgo.png"
   },
   {
     "id": "grupo-entulho",
     "name": "Pedras quebradas",
     "group": "Aglomerados",
-    "squares": 2.5,
+    "squares": 1.2,
     "image": "/vtt/rocks-20261013/grupo-entulho.png"
   },
   {
     "id": "grupo-arenito",
     "name": "Pedras de deserto",
     "group": "Aglomerados",
-    "squares": 2.5,
+    "squares": 1.4,
     "image": "/vtt/rocks-20261013/grupo-arenito.png"
   },
   {
     "id": "grupo-basaltico",
     "name": "Aglomerado basáltico",
     "group": "Aglomerados",
-    "squares": 2.5,
+    "squares": 1.5,
     "image": "/vtt/rocks-20261013/grupo-basaltico.png"
   },
   {
     "id": "grupo-gelo",
     "name": "Pedras de tundra",
     "group": "Aglomerados",
-    "squares": 2.5,
+    "squares": 1.4,
     "image": "/vtt/rocks-20261013/grupo-gelo.png"
   },
   {
     "id": "grupo-seixos",
     "name": "Cascalho miúdo",
     "group": "Aglomerados",
-    "squares": 2.5,
+    "squares": 0.65,
     "image": "/vtt/rocks-20261013/grupo-seixos.png"
   },
   {
     "id": "grupo-afloramento",
     "name": "Afloramento rochoso",
     "group": "Aglomerados",
-    "squares": 2.5,
+    "squares": 2.4,
     "image": "/vtt/rocks-20261013/grupo-afloramento.png"
   }
 ]
