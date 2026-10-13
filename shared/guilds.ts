@@ -23,6 +23,15 @@ export const crestFields = [
   'sunburst',
 ] as const;
 export const crestBorders = ['shield', 'round', 'banner', 'diamond', 'hexagon', 'laurel'] as const;
+// `border` is the historical shape key. Keep it so saved guilds remain compatible.
+export const crestOrnaments = [
+  'beveled',
+  'riveted',
+  'braided',
+  'runic',
+  'laurel',
+  'thorns',
+] as const;
 export const guildRooms = [
   { id: 'main', name: 'Salão principal', image: '/guild/rooms/main.webp', starter: true },
   { id: 'forge', name: 'Ferraria', image: '/guild/rooms/forge.webp', starter: true },
@@ -57,8 +66,10 @@ export const crestSchema = z
     icon: z.enum(crestIcons).default('sword'),
     field: z.enum(crestFields).default('quartered'),
     border: z.enum(crestBorders).default('shield'),
+    ornament: z.enum(crestOrnaments).default('beveled'),
     iconColor: color.default('#e5c681'),
     fieldColor: color.default('#283b36'),
+    fieldColor2: color.default('#17272d'),
     borderColor: color.default('#b28a4c'),
   })
   .strict();

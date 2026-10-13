@@ -13,8 +13,32 @@ import {
   guildWeek,
   guildRooms,
   guildDecor,
+  crestSchema,
 } from '../shared/guilds';
 import { profileSettingsSchema } from '../shared/social';
+
+test('Brasões antigos mantêm formato e bordas novas são independentes', () => {
+  const old = {
+    icon: 'book',
+    field: 'quartered',
+    border: 'shield',
+    iconColor: '#e5c681',
+    fieldColor: '#283b36',
+    borderColor: '#b28a4c',
+  };
+  const crest = crestSchema.parse(old);
+  assert.equal(crest.border, 'shield');
+  assert.equal(crest.ornament, 'beveled');
+  assert.equal(crest.fieldColor2, '#17272d');
+  for (const ornament of ['riveted', 'braided', 'runic', 'laurel', 'thorns']) {
+    const next = crestSchema.parse({ ...old, ornament, fieldColor2: '#203344' });
+    assert.equal(next.border, old.border);
+    assert.equal(next.icon, old.icon);
+    assert.equal(next.borderColor, old.borderColor);
+  }
+  assert.equal(crestSchema.safeParse({ ...old, ornament: 'unknown' }).success, false);
+  assert.equal(crestSchema.safeParse({ ...old, borderColor: 'javascript:bad' }).success, false);
+});
 test('Guildas, economia, missões e perfis em banco descartável', async (t) => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
   await migrate();
@@ -205,7 +229,18 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
           scale: 0.17,
           facing: 0,
         };
-        doc = guildDocumentSchema.parse({ ...doc, placements: [piece] });
+        doc = guildDocumentSchema.parse({
+          ...doc,
+          placements: [piece],
+          crest: {
+            ...doc.crest,
+            icon: 'book',
+            border: 'shield',
+            ornament: 'runic',
+            borderColor: '#b6884a',
+            fieldColor2: '#203344',
+          },
+        });
         assert.equal(
           (await request('/guilds/' + id, stranger, 'PUT', { document: doc, revision: 0 })).status,
           403,
@@ -223,6 +258,7 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
           (await request('/guilds/' + id, owner, 'PUT', { document: doc, revision: 0 })).status,
           200,
         );
+        assert.deepEqual((await request('/guilds/' + id, owner)).data.document.crest, doc.crest);
         assert.equal(
           (await request('/guilds/' + id, owner, 'PUT', { document: doc, revision: 0 })).status,
           409,

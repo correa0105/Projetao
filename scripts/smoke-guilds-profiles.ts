@@ -4,6 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { communitySettingsSchema } from '../shared/guilds';
+import { houseTurnFacing } from '../shared/house';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable DB only');
 const origin = 'http://localhost:3059';
@@ -133,15 +134,34 @@ try {
   await page.goto(origin + '/#guild');
   await page.getByRole('button', { name: 'Fundar uma guilda', exact: true }).click();
   await page.getByLabel('Nome da guilda', { exact: true }).fill('Companhia do Amanhecer');
-  await page.getByLabel('Símbolo', { exact: true }).selectOption('raven');
-  await page.getByLabel('Fundo', { exact: true }).selectOption('diagonal');
-  await page.getByLabel('Borda', { exact: true }).selectOption('laurel');
+  const workshop = page.getByRole('region', { name: 'Oficina de brasões' });
+  await workshop.getByRole('button', { name: 'Runas gravadas', exact: false }).click();
+  await workshop.getByRole('button', { name: 'Formato', exact: false }).click();
+  await workshop.getByRole('button', { name: 'Formato: Escudo', exact: true }).click();
+  await workshop.getByRole('button', { name: 'Símbolo', exact: false }).first().click();
+  await workshop.getByRole('button', { name: 'Símbolo: Corvo', exact: true }).click();
+  await workshop.getByRole('button', { name: 'Fundo', exact: true }).click();
+  await workshop.getByRole('button', { name: 'Fundo: Banda', exact: true }).click();
+  await workshop.getByRole('button', { name: 'Borda', exact: true }).click();
+  await workshop.getByRole('button', { name: 'Borda: Louros', exact: true }).click();
+  await workshop.getByLabel('Cor da borda', { exact: true }).fill('#b6884a');
+  for (const width of [1440, 768, 390, 320]) await screenshot('crest-workshop', width);
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await page.getByRole('button', { name: 'Fundar guilda', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Fundar uma guilda', exact: true })).toHaveCount(0);
   await expect(
     page.getByRole('heading', { name: 'Companhia do Amanhecer', exact: true }),
   ).toBeVisible();
   const id = (await api(ownerContext, '/guilds')).mine;
   expect(id).toBeTruthy();
+  const savedCrest = (await api(ownerContext, '/guilds/' + id)).document.crest;
+  expect(savedCrest).toMatchObject({
+    icon: 'raven',
+    field: 'diagonal',
+    border: 'shield',
+    ornament: 'laurel',
+    borderColor: '#b6884a',
+  });
   expect(
     (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [a.id])).rows[0].gold_cp,
   ).toBe(150000);
@@ -155,17 +175,59 @@ try {
   await page.getByRole('button', { name: 'Personalizar sede', exact: true }).click();
   await page.getByLabel('Objeto', { exact: true }).selectOption('table');
   await page.getByRole('button', { name: 'Adicionar peça', exact: true }).click();
+  await expect(page.getByLabel('Decoração da sala')).toBeVisible();
+  await expect(page.getByLabel('História da guilda')).toHaveCount(0);
+  await expect(workshop).toHaveCount(0);
   const object = page.locator('.guild-furniture').first();
   await expect(object).toBeVisible();
+  const position = () => object.evaluate((el) => ({ x: el.style.left, y: el.style.top }));
+  const beforeClick = await position();
+  const box = (await object.boundingBox())!;
+  await page.mouse.move(box.x + box.width * 0.25, box.y + box.height * 0.3);
+  await page.mouse.down();
+  await page.mouse.move(box.x + box.width * 0.25 + 1, box.y + box.height * 0.3 + 1);
+  await page.mouse.up();
+  expect(await position()).toEqual(beforeClick);
+  await page.mouse.down();
+  await page.mouse.move(box.x + box.width * 0.25 + 50, box.y + box.height * 0.3 + 15, { steps: 8 });
+  await page.mouse.up();
+  const stage = (await page.locator('.guild-room').boundingBox())!;
+  const moved = await position();
+  expect(parseFloat(moved.x) - parseFloat(beforeClick.x)).toBeCloseTo((49 / stage.width) * 100, 1);
+  expect(parseFloat(moved.y) - parseFloat(beforeClick.y)).toBeCloseTo((14 / stage.height) * 100, 1);
+  const sidebar = (await page.getByLabel('Decoração da sala').boundingBox())!;
+  expect(sidebar.x).toBeGreaterThanOrEqual(stage.x + stage.width);
+  const oldFacing = Number(await object.getAttribute('data-facing'));
+  await page.getByRole('button', { name: 'Virar item à direita', exact: true }).click();
+  await expect(object).toHaveAttribute(
+    'data-facing',
+    String(houseTurnFacing('table', oldFacing, 1)),
+  );
+  await expect(object.locator('img')).toHaveAttribute(
+    'src',
+    new RegExp('/' + houseTurnFacing('table', oldFacing, 1) + '\\.webp$'),
+  );
+  await page.getByRole('button', { name: 'Virar item à esquerda', exact: true }).click();
+  await expect(object).toHaveAttribute('data-facing', String(oldFacing));
   await object.focus();
   await page.keyboard.press('ArrowRight');
   await page.getByLabel('Atmosfera', { exact: true }).selectOption('warm');
+  for (const width of [1440, 768, 390, 320]) await screenshot('decoration-sidebar', width);
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await page.getByRole('button', { name: 'Salvar sede', exact: true }).click();
   await expect(page.getByText('Sede salva.', { exact: true })).toBeVisible();
   const g = await api(ownerContext, '/guilds/' + id);
   expect(g.document.placements.length).toBe(6);
   expect(g.document.placements.at(-1).room).toBe('meeting');
   expect(g.document.ambience).toBe('warm');
+  expect(g.document.crest).toEqual(savedCrest);
+  await page.reload();
+  await expect(
+    page.getByRole('heading', { name: 'Companhia do Amanhecer', exact: true }),
+  ).toBeVisible();
+  expect((await api(ownerContext, '/guilds/' + id)).document.placements).toEqual(
+    g.document.placements,
+  );
   for (const width of [1440, 768, 390, 320]) await screenshot('guild', width);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.getByRole('button', { name: 'Companhia', exact: true }).click();
@@ -195,13 +257,11 @@ try {
     .fill('Coleciono histórias, amizades e mapas do Norte.');
   await page.getByLabel('Borda do avatar', { exact: true }).selectOption('runic');
   await page.getByLabel('Efeito da borda', { exact: true }).selectOption('aurora');
-  await page
-    .getByLabel('Enviar background personalizado', { exact: true })
-    .setInputFiles({
-      name: 'abrigo.webp',
-      mimeType: 'image/webp',
-      buffer: await readFile('public/guild/rooms/lounge.webp'),
-    });
+  await page.getByLabel('Enviar background personalizado', { exact: true }).setInputFiles({
+    name: 'abrigo.webp',
+    mimeType: 'image/webp',
+    buffer: await readFile('public/guild/rooms/lounge.webp'),
+  });
   await page.getByRole('button', { name: 'Adicionar vitrine', exact: true }).click();
   await page.getByLabel('Título', { exact: true }).nth(1).fill('Crônicas do Norte');
   await page.getByLabel('Texto', { exact: true }).fill('Uma fogueira, uma estrada e bons amigos.');

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, type CSSProperties } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef, type CSSProperties } from 'react';
 import {
   Shield,
   Users,
@@ -11,13 +11,12 @@ import {
   Save,
   Home,
   X,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { api, post } from './api';
 import type { User, Character } from './types';
 import {
-  crestIcons,
-  crestFields,
-  crestBorders,
   crestSchema,
   guildDocumentSchema,
   guildRooms,
@@ -31,8 +30,10 @@ import {
   houseFacingOptions,
   houseDefaultFacing,
   houseDefaultScale,
+  houseTurnFacing,
 } from '../shared/house';
 import { GuildCrest } from './GuildCrest';
+import { CrestEditor } from './GuildCrestEditor';
 import { Modal } from './components';
 import { visitProfile } from './HallOfFame';
 import './guilds.css';
@@ -75,73 +76,6 @@ type Guild = {
     }[];
   } | null;
 };
-const labels: Record<string, string> = {
-  sword: 'Espada',
-  wolf: 'Lobo',
-  crown: 'Coroa',
-  raven: 'Corvo',
-  tree: 'Árvore',
-  flame: 'Chama',
-  moon: 'Lua',
-  star: 'Estrela',
-  anchor: 'Âncora',
-  book: 'Livro',
-  dragon: 'Cristal dracônico',
-  mountain: 'Montanha',
-  plain: 'Liso',
-  quartered: 'Quartelado',
-  diagonal: 'Faixa diagonal',
-  stripes: 'Listras',
-  chevron: 'Divisa',
-  sunburst: 'Raios',
-  shield: 'Escudo',
-  round: 'Circular',
-  banner: 'Estandarte',
-  diamond: 'Losango',
-  hexagon: 'Hexágono',
-  laurel: 'Louros',
-};
-function CrestEditor({ value, onChange }: { value: Crest; onChange: (c: Crest) => void }) {
-  return (
-    <div className="crest-editor">
-      <GuildCrest crest={value} size={140} />
-      <div>
-        {(
-          [
-            ['icon', 'Símbolo', crestIcons, 'iconColor'],
-            ['field', 'Fundo', crestFields, 'fieldColor'],
-            ['border', 'Borda', crestBorders, 'borderColor'],
-          ] as const
-        ).map(([key, name, options, color]) => (
-          <div className="crest-layer" key={key}>
-            <label>
-              {name}
-              <select
-                aria-label={name}
-                value={value[key]}
-                onChange={(e) => onChange({ ...value, [key]: e.target.value })}
-              >
-                {options.map((id) => (
-                  <option key={id} value={id}>
-                    {labels[id]}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label>
-              Cor
-              <input
-                type="color"
-                value={value[color]}
-                onChange={(e) => onChange({ ...value, [color]: e.target.value })}
-              />
-            </label>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 export function Guilds({
   user,
   characters,
@@ -171,6 +105,20 @@ export function Guilds({
     [people, setPeople] = useState<{ id: string; name: string }[]>([]),
     [decor, setDecor] = useState(guildDecor[0]?.id || '');
   const request = useRef(crypto.randomUUID());
+  const scene = useRef<HTMLDivElement>(null);
+  const grab = useRef<{
+    id: string;
+    pointer: number;
+    x: number;
+    y: number;
+    startX: number;
+    startY: number;
+  } | null>(null);
+  const [turnControls, setTurnControls] = useState<{
+    left: number;
+    right: number;
+    top: number;
+  } | null>(null);
   async function load() {
     const [d, s] = await Promise.all([
       api<Directory>('/guilds'),
@@ -237,6 +185,41 @@ export function Guilds({
     upgrade = settings?.document.upgrades.find((u) => u.catalog === obj?.catalog),
     roomInfo = guildRooms.find((r) => r.id === room)!,
     editable = Boolean(doc && g?.is_owner);
+  useLayoutEffect(() => {
+    const stage = scene.current;
+    if (!stage || !editable || !obj || obj.room !== room) {
+      setTurnControls(null);
+      return;
+    }
+    const piece = stage.querySelector<HTMLButtonElement>('[data-guild-piece="' + obj.id + '"]');
+    if (!piece) return;
+    const update = () => {
+      const bounds = stage.getBoundingClientRect(),
+        r = piece.getBoundingClientRect();
+      setTurnControls({
+        left: Math.max(
+          (18 / bounds.width) * 100,
+          ((r.left - bounds.left - 14) / bounds.width) * 100,
+        ),
+        right: Math.min(
+          100 - (18 / bounds.width) * 100,
+          ((r.right - bounds.left + 14) / bounds.width) * 100,
+        ),
+        top: Math.max(
+          (20 / bounds.height) * 100,
+          Math.min(
+            100 - (20 / bounds.height) * 100,
+            ((r.top + r.height * 0.6 - bounds.top) / bounds.height) * 100,
+          ),
+        ),
+      });
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(stage);
+    observer.observe(piece);
+    return () => observer.disconnect();
+  }, [editable, obj?.id, obj?.x, obj?.y, obj?.scale, obj?.facing, room]);
   function updateObject(values: Partial<GuildDocument['placements'][number]>) {
     setDoc((d) =>
       d
@@ -459,303 +442,350 @@ export function Guilds({
                   );
                 })}
               </nav>
-              <div
-                className={`guild-room ambience-${current!.ambience}`}
-                style={{ backgroundImage: `url('${roomInfo.image}')` }}
-                aria-label={roomInfo.name}
-              >
-                <span className="guild-room-caption">{roomInfo.name}</span>
-                {current!.placements
-                  .filter((p) => p.room === room)
-                  .sort((a, b) => a.y - b.y)
-                  .map((p) => (
-                    <button
-                      className={`guild-furniture ${selected === p.id ? 'selected' : ''}`}
-                      key={p.id}
-                      aria-label={guildDecor.find((i) => i.id === p.catalog)?.name || p.catalog}
-                      style={
-                        {
-                          left: p.x * 100 + '%',
-                          top: p.y * 100 + '%',
-                          width: p.scale * 100 + '%',
-                        } as CSSProperties
-                      }
-                      onClick={() => setSelected(p.id)}
-                      onPointerDown={(e) => {
-                        if (!editable) return;
-                        e.preventDefault();
-                        setSelected(p.id);
-                        e.currentTarget.setPointerCapture(e.pointerId);
-                      }}
-                      onPointerMove={(e) => {
-                        if (!editable || !e.currentTarget.hasPointerCapture(e.pointerId)) return;
-                        const r = e.currentTarget.parentElement!.getBoundingClientRect();
-                        setDoc((d) =>
-                          d
-                            ? {
-                                ...d,
-                                placements: d.placements.map((o) =>
-                                  o.id === p.id
-                                    ? {
-                                        ...o,
-                                        x: Math.max(
-                                          0.03,
-                                          Math.min(0.97, (e.clientX - r.left) / r.width),
-                                        ),
-                                        y: Math.max(
-                                          0.1,
-                                          Math.min(0.97, (e.clientY - r.top) / r.height),
-                                        ),
-                                      }
-                                    : o,
-                                ),
-                              }
-                            : d,
-                        );
-                      }}
-                      onPointerUp={(e) => {
-                        if (e.currentTarget.hasPointerCapture(e.pointerId))
-                          e.currentTarget.releasePointerCapture(e.pointerId);
-                      }}
-                      onKeyDown={(e) => {
-                        if (
-                          !editable ||
-                          !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)
-                        )
-                          return;
-                        e.preventDefault();
-                        setSelected(p.id);
-                        setDoc((d) =>
-                          d
-                            ? {
-                                ...d,
-                                placements: d.placements.map((o) =>
-                                  o.id === p.id
-                                    ? {
-                                        ...o,
-                                        x: Math.max(
-                                          0.03,
-                                          Math.min(
-                                            0.97,
-                                            o.x +
-                                              (e.key === 'ArrowRight'
-                                                ? 0.01
-                                                : e.key === 'ArrowLeft'
-                                                  ? -0.01
-                                                  : 0),
-                                          ),
-                                        ),
-                                        y: Math.max(
-                                          0.1,
-                                          Math.min(
-                                            0.97,
-                                            o.y +
-                                              (e.key === 'ArrowDown'
-                                                ? 0.01
-                                                : e.key === 'ArrowUp'
-                                                  ? -0.01
-                                                  : 0),
-                                          ),
-                                        ),
-                                      }
-                                    : o,
-                                ),
-                              }
-                            : d,
-                        );
-                      }}
-                    >
-                      <img
-                        src={houseItemImage(p.catalog, p.facing)}
-                        alt=""
-                        draggable={false}
-                        onLoad={(e) => {
-                          const img = e.currentTarget,
-                            c = document.createElement('canvas');
-                          c.width = 96;
-                          c.height = Math.max(
-                            1,
-                            Math.round((96 * img.naturalHeight) / img.naturalWidth),
-                          );
-                          const ctx = c.getContext('2d');
-                          if (!ctx) return;
-                          ctx.drawImage(img, 0, 0, c.width, c.height);
-                          const data = ctx.getImageData(0, 0, c.width, c.height).data;
-                          let bottom = c.height - 1;
-                          for (; bottom > 0; bottom--) {
-                            let found = false;
-                            for (let x = 0; x < c.width; x++)
-                              if (data[(bottom * c.width + x) * 4 + 3] > 64) {
-                                found = true;
-                                break;
-                              }
-                            if (found) break;
-                          }
-                          img.style.transform = `translateY(${((c.height - bottom - 1) / c.height) * 100}%)`;
-                        }}
-                      />
-                      {(g.upgrades.find((u) => u.object_id === p.id)?.level || 1) > 1 && (
-                        <small>Nv. {g.upgrades.find((u) => u.object_id === p.id)!.level}</small>
-                      )}
-                    </button>
-                  ))}
-              </div>
-              {editable && (
-                <section className="guild-paper guild-house-editor">
-                  <h2>Decorar {roomInfo.name}</h2>
-                  <p>
-                    Arraste as peças ou use as setas do teclado. Salve para compartilhar a sede com
-                    sua guilda.
-                  </p>
-                  <div className="guild-field-grid">
-                    <label>
-                      Objeto
-                      <select
-                        aria-label="Objeto"
-                        value={decor}
-                        onChange={(e) => setDecor(e.target.value)}
-                      >
-                        {guildDecor.map((i) => (
-                          <option key={i.id} value={i.id}>
-                            {i.name}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <button
-                      disabled={current!.placements.length >= 24}
-                      onClick={() => {
-                        const id = crypto.randomUUID();
-                        setDoc((d) =>
-                          d
-                            ? {
-                                ...d,
-                                placements: [
-                                  ...d.placements,
-                                  {
-                                    id,
-                                    catalog: decor,
-                                    room: room as GuildDocument['placements'][number]['room'],
-                                    x: 0.5,
-                                    y: 0.72,
-                                    scale: Math.max(0.04, Math.min(0.6, houseDefaultScale(decor))),
-                                    facing: houseDefaultFacing(decor),
-                                  },
-                                ],
-                              }
-                            : d,
-                        );
-                        setSelected(id);
-                      }}
-                    >
-                      <Plus size={16} />
-                      Adicionar peça
-                    </button>
-                    <label>
-                      Atmosfera
-                      <select
-                        aria-label="Atmosfera"
-                        value={current!.ambience}
-                        onChange={(e) =>
-                          setDoc((d) =>
-                            d ? { ...d, ambience: e.target.value as GuildDocument['ambience'] } : d,
-                          )
+              <div className={`guild-house-layout ${editable ? 'is-editing' : ''}`}>
+                <div
+                  ref={scene}
+                  className={`guild-room ambience-${current!.ambience}`}
+                  style={{ backgroundImage: `url('${roomInfo.image}')` }}
+                  aria-label={roomInfo.name}
+                >
+                  <span className="guild-room-caption">{roomInfo.name}</span>
+                  {current!.placements
+                    .filter((p) => p.room === room)
+                    .sort((a, b) => a.y - b.y)
+                    .map((p) => (
+                      <button
+                        className={`guild-furniture ${selected === p.id ? 'selected' : ''}`}
+                        key={p.id}
+                        type="button"
+                        data-guild-piece={p.id}
+                        data-facing={p.facing}
+                        aria-label={guildDecor.find((i) => i.id === p.catalog)?.name || p.catalog}
+                        style={
+                          {
+                            left: p.x * 100 + '%',
+                            top: p.y * 100 + '%',
+                            width: p.scale * 100 + '%',
+                          } as CSSProperties
                         }
+                        onClick={() => setSelected(p.id)}
+                        onPointerDown={(e) => {
+                          if (!editable || busy || e.button !== 0) return;
+                          e.preventDefault();
+                          setSelected(p.id);
+                          const r = scene.current!.getBoundingClientRect();
+                          grab.current = {
+                            id: p.id,
+                            pointer: e.pointerId,
+                            x: (e.clientX - r.left) / r.width - p.x,
+                            y: (e.clientY - r.top) / r.height - p.y,
+                            startX: e.clientX,
+                            startY: e.clientY,
+                          };
+                          e.currentTarget.setPointerCapture(e.pointerId);
+                        }}
+                        onPointerMove={(e) => {
+                          if (!editable || !e.currentTarget.hasPointerCapture(e.pointerId)) return;
+                          const point = grab.current;
+                          if (
+                            !point ||
+                            point.id !== p.id ||
+                            point.pointer !== e.pointerId ||
+                            Math.hypot(e.clientX - point.startX, e.clientY - point.startY) < 3
+                          )
+                            return;
+                          const r = scene.current!.getBoundingClientRect();
+                          setDoc((d) =>
+                            d
+                              ? {
+                                  ...d,
+                                  placements: d.placements.map((o) =>
+                                    o.id === p.id
+                                      ? {
+                                          ...o,
+                                          x: Math.max(
+                                            0.03,
+                                            Math.min(
+                                              0.97,
+                                              (e.clientX - r.left) / r.width - point.x,
+                                            ),
+                                          ),
+                                          y: Math.max(
+                                            0.1,
+                                            Math.min(
+                                              0.97,
+                                              (e.clientY - r.top) / r.height - point.y,
+                                            ),
+                                          ),
+                                        }
+                                      : o,
+                                  ),
+                                }
+                              : d,
+                          );
+                        }}
+                        onLostPointerCapture={() => {
+                          grab.current = null;
+                        }}
+                        onPointerCancel={() => {
+                          grab.current = null;
+                        }}
+                        onPointerUp={(e) => {
+                          grab.current = null;
+                          if (e.currentTarget.hasPointerCapture(e.pointerId))
+                            e.currentTarget.releasePointerCapture(e.pointerId);
+                        }}
+                        onKeyDown={(e) => {
+                          if (
+                            !editable ||
+                            !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)
+                          )
+                            return;
+                          e.preventDefault();
+                          setSelected(p.id);
+                          setDoc((d) =>
+                            d
+                              ? {
+                                  ...d,
+                                  placements: d.placements.map((o) =>
+                                    o.id === p.id
+                                      ? {
+                                          ...o,
+                                          x: Math.max(
+                                            0.03,
+                                            Math.min(
+                                              0.97,
+                                              o.x +
+                                                (e.key === 'ArrowRight'
+                                                  ? 0.01
+                                                  : e.key === 'ArrowLeft'
+                                                    ? -0.01
+                                                    : 0),
+                                            ),
+                                          ),
+                                          y: Math.max(
+                                            0.1,
+                                            Math.min(
+                                              0.97,
+                                              o.y +
+                                                (e.key === 'ArrowDown'
+                                                  ? 0.01
+                                                  : e.key === 'ArrowUp'
+                                                    ? -0.01
+                                                    : 0),
+                                            ),
+                                          ),
+                                        }
+                                      : o,
+                                  ),
+                                }
+                              : d,
+                          );
+                        }}
                       >
-                        <option value="natural">Luz natural</option>
-                        <option value="warm">À luz de velas</option>
-                        <option value="moonlit">Noite serena</option>
-                      </select>
-                    </label>
-                    {obj && (
-                      <>
-                        <label>
-                          Tamanho
-                          <input
-                            type="range"
-                            min=".04"
-                            max=".6"
-                            step=".01"
-                            value={obj.scale}
-                            onChange={(e) => updateObject({ scale: Number(e.target.value) })}
-                          />
-                        </label>
-                        <label>
-                          Vista
-                          <select
-                            value={obj.facing}
-                            onChange={(e) => updateObject({ facing: Number(e.target.value) })}
-                          >
-                            {houseFacingOptions(obj.catalog).map((f) => (
-                              <option key={f.value} value={f.value}>
-                                {f.label}
-                              </option>
-                            ))}
-                          </select>
-                        </label>
+                        <img
+                          src={houseItemImage(p.catalog, p.facing)}
+                          alt=""
+                          draggable={false}
+                          onLoad={(e) => {
+                            const img = e.currentTarget,
+                              c = document.createElement('canvas');
+                            c.width = 96;
+                            c.height = Math.max(
+                              1,
+                              Math.round((96 * img.naturalHeight) / img.naturalWidth),
+                            );
+                            const ctx = c.getContext('2d');
+                            if (!ctx) return;
+                            ctx.drawImage(img, 0, 0, c.width, c.height);
+                            const data = ctx.getImageData(0, 0, c.width, c.height).data;
+                            let bottom = c.height - 1;
+                            for (; bottom > 0; bottom--) {
+                              let found = false;
+                              for (let x = 0; x < c.width; x++)
+                                if (data[(bottom * c.width + x) * 4 + 3] > 64) {
+                                  found = true;
+                                  break;
+                                }
+                              if (found) break;
+                            }
+                            img.style.transform = `translateY(${((c.height - bottom - 1) / c.height) * 100}%)`;
+                          }}
+                        />
+                        {(g.upgrades.find((u) => u.object_id === p.id)?.level || 1) > 1 && (
+                          <small>Nv. {g.upgrades.find((u) => u.object_id === p.id)!.level}</small>
+                        )}
+                      </button>
+                    ))}
+                  {editable && obj?.room === room && turnControls && (
+                    <div className="guild-turn-controls" aria-label="Vistas do item selecionado">
+                      {([-1, 1] as const).map((direction) => (
                         <button
+                          key={direction}
+                          type="button"
+                          disabled={busy}
+                          aria-label={
+                            direction < 0 ? 'Virar item à esquerda' : 'Virar item à direita'
+                          }
+                          style={{
+                            left: (direction < 0 ? turnControls.left : turnControls.right) + '%',
+                            top: turnControls.top + '%',
+                          }}
+                          onPointerDown={(e) => e.stopPropagation()}
                           onClick={() =>
+                            updateObject({
+                              facing: houseTurnFacing(obj.catalog, obj.facing, direction),
+                            })
+                          }
+                        >
+                          {direction < 0 ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                {editable && (
+                  <aside className="guild-paper guild-house-editor" aria-label="Decoração da sala">
+                    <h2>Decorar {roomInfo.name}</h2>
+                    <p>
+                      Arraste as peças ou use as setas do teclado. Salve para compartilhar a sede
+                      com sua guilda.
+                    </p>
+                    <div className="guild-field-grid">
+                      <label>
+                        Objeto
+                        <select
+                          aria-label="Objeto"
+                          value={decor}
+                          onChange={(e) => setDecor(e.target.value)}
+                        >
+                          {guildDecor.map((i) => (
+                            <option key={i.id} value={i.id}>
+                              {i.name}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                      <button
+                        disabled={current!.placements.length >= 24}
+                        onClick={() => {
+                          const id = crypto.randomUUID();
+                          setDoc((d) =>
+                            d
+                              ? {
+                                  ...d,
+                                  placements: [
+                                    ...d.placements,
+                                    {
+                                      id,
+                                      catalog: decor,
+                                      room: room as GuildDocument['placements'][number]['room'],
+                                      x: 0.5,
+                                      y: 0.72,
+                                      scale: Math.max(
+                                        0.04,
+                                        Math.min(0.6, houseDefaultScale(decor)),
+                                      ),
+                                      facing: houseDefaultFacing(decor),
+                                    },
+                                  ],
+                                }
+                              : d,
+                          );
+                          setSelected(id);
+                        }}
+                      >
+                        <Plus size={16} />
+                        Adicionar peça
+                      </button>
+                      <label>
+                        Atmosfera
+                        <select
+                          aria-label="Atmosfera"
+                          value={current!.ambience}
+                          onChange={(e) =>
                             setDoc((d) =>
                               d
-                                ? {
-                                    ...d,
-                                    placements: d.placements.filter((p) => p.id !== selected),
-                                  }
+                                ? { ...d, ambience: e.target.value as GuildDocument['ambience'] }
                                 : d,
                             )
                           }
                         >
-                          Remover peça
-                        </button>
-                      </>
-                    )}
-                  </div>
-                  <label>
-                    Nome
-                    <input
-                      value={current!.name}
-                      maxLength={60}
-                      onChange={(e) => setDoc((d) => (d ? { ...d, name: e.target.value } : d))}
-                    />
-                  </label>
-                  <label>
-                    História da guilda
-                    <textarea
-                      value={current!.description}
-                      maxLength={1500}
-                      onChange={(e) =>
-                        setDoc((d) => (d ? { ...d, description: e.target.value } : d))
-                      }
-                    />
-                  </label>
-                  <CrestEditor
-                    value={current!.crest}
-                    onChange={(crest) => setDoc((d) => (d ? { ...d, crest } : d))}
-                  />
-                  <div className="guild-actions">
-                    <button
-                      disabled={busy}
-                      onClick={() =>
-                        void run(async () => {
-                          await api('/guilds/' + g.id, {
-                            method: 'PUT',
-                            body: JSON.stringify({ document: doc, revision: g.revision }),
-                          });
-                          setDoc(null);
-                          await load();
-                          setNotice('Sede salva.');
-                        })
-                      }
-                    >
-                      <Save size={16} />
-                      Salvar sede
-                    </button>
-                    <button disabled={busy} onClick={() => setDoc(null)}>
-                      Descartar edição
-                    </button>
-                  </div>
-                </section>
-              )}
+                          <option value="natural">Luz natural</option>
+                          <option value="warm">À luz de velas</option>
+                          <option value="moonlit">Noite serena</option>
+                        </select>
+                      </label>
+                      {obj?.room === room && (
+                        <>
+                          <label>
+                            Tamanho
+                            <input
+                              type="range"
+                              min=".04"
+                              max=".6"
+                              step=".01"
+                              aria-label="Tamanho do objeto"
+                              value={obj.scale}
+                              onChange={(e) => updateObject({ scale: Number(e.target.value) })}
+                            />
+                          </label>
+                          <label>
+                            Vista
+                            <select
+                              aria-label="Vista do objeto"
+                              value={obj.facing}
+                              onChange={(e) => updateObject({ facing: Number(e.target.value) })}
+                            >
+                              {houseFacingOptions(obj.catalog).map((f) => (
+                                <option key={f.value} value={f.value}>
+                                  {f.label}
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+                          <button
+                            onClick={() =>
+                              setDoc((d) =>
+                                d
+                                  ? {
+                                      ...d,
+                                      placements: d.placements.filter((p) => p.id !== selected),
+                                    }
+                                  : d,
+                              )
+                            }
+                          >
+                            Remover peça
+                          </button>
+                        </>
+                      )}
+                    </div>
+                    <div className="guild-actions">
+                      <button
+                        disabled={busy}
+                        onClick={() =>
+                          void run(async () => {
+                            await api('/guilds/' + g.id, {
+                              method: 'PUT',
+                              body: JSON.stringify({ document: doc, revision: g.revision }),
+                            });
+                            setDoc(null);
+                            await load();
+                            setNotice('Sede salva.');
+                          })
+                        }
+                      >
+                        <Save size={16} />
+                        Salvar sede
+                      </button>
+                      <button disabled={busy} onClick={() => setDoc(null)}>
+                        Descartar edição
+                      </button>
+                    </div>
+                  </aside>
+                )}
+              </div>
               {obj && g.is_member && !editable && (
                 <section className="guild-paper">
                   <h3>
@@ -979,7 +1009,11 @@ export function Guilds({
                 onChange={(e) => setDoc({ ...doc, description: e.target.value })}
               />
             </label>
-            <CrestEditor value={doc.crest} onChange={(crest) => setDoc({ ...doc, crest })} />
+            <CrestEditor
+              value={doc.crest}
+              name={doc.name}
+              onChange={(crest) => setDoc({ ...doc, crest })}
+            />
             <p>
               {settings?.document.founding_po} PO · sede inicial com quatro salas · oito jogadores.
             </p>

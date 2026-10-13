@@ -495,3 +495,117 @@
   filter: blur(5px);
   z-index: -1;
 }
+.guild-house-layout {
+  max-width: 1540px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 20px;
+}
+.guild-house-layout.is-editing {
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+.guild-house-layout .guild-room {
+  width: 100%;
+  margin: 0;
+  max-width: none;
+}
+.guild-house-layout .guild-house-editor {
+  width: 100%;
+  margin: 0;
+  padding: 22px;
+  position: sticky;
+  top: 80px;
+}
+.guild-house-editor h2 {
+  font-size: 23px;
+  margin: 0 0 12px;
+}
+.guild-house-editor > p {
+  font-size: 11px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.guild-house-editor .guild-field-grid {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.guild-house-editor .guild-field-grid label {
+  margin: 4px 0;
+}
+.guild-house-editor .guild-field-grid button {
+  width: 100%;
+}
+.guild-house-editor input[type='range'] {
+  accent-color: #c7a05e;
+}
+.guild-house-editor .guild-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 20px 0 0;
+  gap: 8px;
+  padding-top: 18px;
+  border-top: 1px solid #aa874833;
+}
+.guild-turn-controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 102;
+}
+:root .guild-page .guild-turn-controls button {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  border: 1px solid #d5b777;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: #eadab8;
+  background: #202927eb;
+  box-shadow: 0 2px 8px #0007;
+}
+:root .guild-page .guild-turn-controls button:hover {
+  background: #3d4335;
+  border-color: #ffe1a0;
+}
+@media (min-width: 1100px) {
+  .guild-page:has(.is-editing)
+    :is(.guild-room-tabs, .guild-tabs, .guild-summary, .guild-page-heading) {
+    max-width: 1540px;
+  }
+}
+@media (max-width: 1000px) {
+  .guild-house-layout.is-editing {
+    grid-template-columns: minmax(0, 1fr) 250px;
+    gap: 12px;
+  }
+  .guild-house-layout .guild-house-editor {
+    padding: 16px;
+  }
+}
+@media (max-width: 760px) {
+  .guild-house-layout.is-editing {
+    grid-template-columns: 1fr;
+  }
+  .guild-house-layout .guild-house-editor {
+    position: static;
+  }
+  .guild-house-editor .guild-field-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .guild-house-editor .guild-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 400px) {
+  .guild-house-editor .guild-field-grid {
+    grid-template-columns: 1fr;
+  }
+  .guild-house-editor .guild-actions {
+    grid-template-columns: 1fr;
+  }
+}
