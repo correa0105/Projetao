@@ -1,0 +1,177 @@
+[
+  {
+    "id": "oak-ancient",
+    "name": "Carvalho ancestral",
+    "squares": 4,
+    "group": "Carvalhos",
+    "image": "/vtt/trees-20261013/oak-ancient.png"
+  },
+  {
+    "id": "oak-young",
+    "name": "Carvalho jovem",
+    "squares": 2,
+    "group": "Carvalhos",
+    "image": "/vtt/trees-20261013/oak-young.png"
+  },
+  {
+    "id": "oak-hollow",
+    "name": "Carvalho retorcido",
+    "squares": 4,
+    "group": "Carvalhos",
+    "image": "/vtt/trees-20261013/oak-hollow.png"
+  },
+  {
+    "id": "pine-highland",
+    "name": "Pinheiro das colinas",
+    "squares": 3,
+    "group": "Coníferas",
+    "image": "/vtt/trees-20261013/pine-highland.png"
+  },
+  {
+    "id": "juniper",
+    "name": "Zimbro",
+    "squares": 2,
+    "group": "Coníferas",
+    "image": "/vtt/trees-20261013/juniper.png"
+  },
+  {
+    "id": "spruce",
+    "name": "Abeto escuro",
+    "squares": 3,
+    "group": "Coníferas",
+    "image": "/vtt/trees-20261013/spruce.png"
+  },
+  {
+    "id": "fir-snow",
+    "name": "Abeto nevado",
+    "squares": 3,
+    "group": "Coníferas",
+    "image": "/vtt/trees-20261013/fir-snow.png"
+  },
+  {
+    "id": "birch",
+    "name": "Bétula de verão",
+    "squares": 3,
+    "group": "Caducifólias",
+    "image": "/vtt/trees-20261013/birch.png"
+  },
+  {
+    "id": "birch-autumn",
+    "name": "Bétula dourada",
+    "squares": 3,
+    "group": "Caducifólias",
+    "image": "/vtt/trees-20261013/birch-autumn.png"
+  },
+  {
+    "id": "maple-green",
+    "name": "Bordo verde",
+    "squares": 3,
+    "group": "Caducifólias",
+    "image": "/vtt/trees-20261013/maple-green.png"
+  },
+  {
+    "id": "maple-crimson",
+    "name": "Bordo vermelho",
+    "squares": 3,
+    "group": "Caducifólias",
+    "image": "/vtt/trees-20261013/maple-crimson.png"
+  },
+  {
+    "id": "maple-gold",
+    "name": "Bordo de outono",
+    "squares": 3,
+    "group": "Caducifólias",
+    "image": "/vtt/trees-20261013/maple-gold.png"
+  },
+  {
+    "id": "willow",
+    "name": "Salgueiro",
+    "squares": 4,
+    "group": "Diversas",
+    "image": "/vtt/trees-20261013/willow.png"
+  },
+  {
+    "id": "cypress",
+    "name": "Cipreste",
+    "squares": 2,
+    "group": "Diversas",
+    "image": "/vtt/trees-20261013/cypress.png"
+  },
+  {
+    "id": "dead-oak",
+    "name": "Árvore seca",
+    "squares": 3,
+    "group": "Secas",
+    "image": "/vtt/trees-20261013/dead-oak.png"
+  },
+  {
+    "id": "burnt",
+    "name": "Árvore carbonizada",
+    "squares": 3,
+    "group": "Secas",
+    "image": "/vtt/trees-20261013/burnt.png"
+  },
+  {
+    "id": "acacia",
+    "name": "Acácia",
+    "squares": 4,
+    "group": "Clima quente",
+    "image": "/vtt/trees-20261013/acacia.png"
+  },
+  {
+    "id": "olive",
+    "name": "Oliveira",
+    "squares": 3,
+    "group": "Diversas",
+    "image": "/vtt/trees-20261013/olive.png"
+  },
+  {
+    "id": "apple",
+    "name": "Macieira",
+    "squares": 3,
+    "group": "Diversas",
+    "image": "/vtt/trees-20261013/apple.png"
+  },
+  {
+    "id": "cherry",
+    "name": "Cerejeira",
+    "squares": 3,
+    "group": "Diversas",
+    "image": "/vtt/trees-20261013/cherry.png"
+  },
+  {
+    "id": "moon-tree",
+    "name": "Árvore lunar",
+    "squares": 4,
+    "group": "Fantásticas",
+    "image": "/vtt/trees-20261013/moon-tree.png"
+  },
+  {
+    "id": "blight-tree",
+    "name": "Árvore corrompida",
+    "squares": 3,
+    "group": "Fantásticas",
+    "image": "/vtt/trees-20261013/blight-tree.png"
+  },
+  {
+    "id": "swamp-tree",
+    "name": "Árvore do pântano",
+    "squares": 4,
+    "group": "Diversas",
+    "image": "/vtt/trees-20261013/swamp-tree.png"
+  },
+  {
+    "id": "palm",
+    "name": "Palmeira",
+    "squares": 3,
+    "group": "Clima quente",
+    "image": "/vtt/trees-20261013/palm.png"
+  },
+  {
+    "id": "baobab",
+    "name": "Baobá",
+    "squares": 4,
+    "group": "Clima quente",
+    "image": "/vtt/trees-20261013/baobab.png"
+  }
+]

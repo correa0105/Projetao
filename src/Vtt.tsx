@@ -122,6 +122,8 @@ import { VttHotbar, ActionShortcut } from './VttHotbar';
 import { VttEffects } from './VttEffects';
 import { VttAttackVisuals } from './VttAttackVisuals';
 import { VttEffectSounds } from './VttEffectSounds';
+import { treeAssets, treeAssetMime } from '../shared/vtt-tree-assets';
+import { VttAssets } from './VttAssets';
 import { useVttMediaPreferences } from './vtt-media-preferences';
 import { useVttSpells, requestSpellCast } from './useVttSpells';
 import { VttSpellControls } from './VttSpellControls';
@@ -1901,6 +1903,35 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setSelection([t.id]);
     setTab('token');
   }
+  function addTreeAsset(id: string, scale = 1, at?: Point) {
+    if (!gm || !scene || preview) return;
+    const asset = treeAssets.find((a) => a.id === id);
+    if (!asset || ![0.5, 1, 1.5, 2].includes(scale)) return;
+    const token = newToken(crypto.randomUUID(), scene),
+      size = Math.max(
+        8,
+        Math.min(scene.width, scene.height, scene.grid.size * asset.squares * scale),
+      );
+    const center = at ? snapPoint(at, scene.grid) : camera;
+    Object.assign(token, {
+      name: asset.name,
+      image: asset.image,
+      layer: 'map',
+      width: size,
+      height: size,
+      x: Math.max(size / 2, Math.min(scene.width - size / 2, center.x)),
+      y: Math.max(size / 2, Math.min(scene.height - size / 2, center.y)),
+      vision: 0,
+      bleeds: false,
+      hp: 0,
+      maxHp: 1,
+      ac: 0,
+    });
+    editScene((s) => s.tokens.push(token));
+    changeLayer('map');
+    setSelection([token.id]);
+    setTool('select');
+  }
   function addAnimatedAsset(id: AnimatedAsset['id'], at?: Point) {
     if (!gm || !scene || preview) return;
     const asset = animatedAssets.find(a => a.id === id);
@@ -2828,13 +2859,18 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 !busy &&
                 (e.dataTransfer.types.includes(characterMime) ||
                   e.dataTransfer.types.includes(companionMime) ||
-                  (gm && (e.dataTransfer.types.includes(monsterMime) || e.dataTransfer.types.includes(animatedAssetMime))))
+                  (gm && (e.dataTransfer.types.includes(monsterMime) || e.dataTransfer.types.includes(animatedAssetMime) || e.dataTransfer.types.includes(treeAssetMime))))
               ) {
                 e.preventDefault();
                 e.dataTransfer.dropEffect = 'copy';
               }
             }}
             onDrop={(e) => {
+              if(gm && !preview && e.dataTransfer.types.includes(treeAssetMime)) {
+                e.preventDefault();
+                try {const payload=JSON.parse(e.dataTransfer.getData(treeAssetMime));addTreeAsset(payload.id,payload.scale,point(e));} catch { /* Ignore malformed external drops. */ }
+                return;
+              }
               if (gm && !preview && e.dataTransfer.types.includes(animatedAssetMime)) {
                 e.preventDefault(); addAnimatedAsset(e.dataTransfer.getData(animatedAssetMime) as AnimatedAsset['id'], point(e)); return;
               }
@@ -3927,7 +3963,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             {
                               monsters: 'Monstros',
                               presets: 'Presets de monstros',
-                              premium: 'Galeria de monstros',
+                              premium: 'Assets',
                               spells: 'Magias',
                               animated: 'Assets animados',
                             }[k]
@@ -3936,7 +3972,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             {
                               monsters: 'Monstros',
                               presets: 'Presets de monstros',
-                              premium: 'Galeria de monstros',
+                              premium: 'Assets',
                               spells: 'Magias',
                               animated: 'Assets animados',
                             }[k]
@@ -3953,7 +3989,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             {
                               monsters: 'Monstros',
                               presets: 'Presets',
-                              premium: 'Galeria',
+                              premium: 'Assets',
                               spells: 'Magias',
                               animated: 'Assets animados',
                             }[k]
@@ -3999,7 +4035,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   {library === 'animated' ? (
                     <VttAnimatedAssets query={query} gm={gm && !preview} add={addAnimatedAsset} />
                   ) : library === 'presets' || library === 'premium' ? (
-                    <VttPrivateLibrary
+                    <VttAssets enabled={library === 'premium'} gm={gm && !preview} query={query} add={addTreeAsset}><VttPrivateLibrary
                       kind={library}
                       gm={gm && !preview}
                       viewMonsters={() => {
@@ -4012,7 +4048,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       importPreset={importMonsterPreset}
                       importPremium={(m) => addMonster(m as Entry)}
                       drag={dragMonster}
-                    />
+                    /></VttAssets>
                   ) : library === 'images' ? (
                     <>
                       <details className="vtt-monster-gallery">

@@ -3,6 +3,7 @@ import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
 import { newToken, drawingSchema } from '../shared/vtt.js';
+import { vttProtocolVersion } from '../shared/vtt-protocol.js';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco descartável obrigatório.');
 const origin = 'http://localhost:3006';
@@ -18,7 +19,7 @@ await new Promise<void>((r) => server.once('listening', r));
 const browser = await chromium.launch({ channel: 'msedge', headless: true }),
   ctx = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
-    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '7' },
+    extraHTTPHeaders: { 'X-Vtt-Schema-Version': String(vttProtocolVersion) },
   }),
   page = await ctx.newPage();
 const errors: string[] = [];
@@ -103,7 +104,8 @@ try {
   await externalMessage('Voltou ao final');
   expect(await bottom()).toBeLessThan(3);
   await page.getByRole('button', { name: 'Biblioteca', exact: true }).click();
-  await panel.getByRole('button', { name: 'Galeria de monstros', exact: true }).click();
+  await panel.getByRole('button', { name: 'Assets', exact: true }).click();
+  await panel.getByRole('button', { name: 'Criaturas', exact: true }).click();
   const assets = JSON.parse(await readFile('data/vtt/premium-art/manifest.json', 'utf8')).assets;
   await expect(panel.locator('.vtt-premium-grid > button')).toHaveCount(assets.length);
   await expect(panel.getByLabel('Mudar tokens para premium', { exact: true })).toHaveCount(0);
@@ -184,7 +186,8 @@ try {
     row.getByRole('button', { name: 'Dano aplicado em Alvo', exact: true }),
   ).toBeDisabled();
   await page.getByRole('button', { name: 'Biblioteca', exact: true }).click();
-  await panel.getByRole('button', { name: 'Galeria de monstros', exact: true }).click();
+  await panel.getByRole('button', { name: 'Assets', exact: true }).click();
+  await panel.getByRole('button', { name: 'Criaturas', exact: true }).click();
   await expect(panel.locator('.vtt-premium-grid > button')).toHaveCount(assets.length);
   await panel.getByRole('button', { name: 'Ver todos os monstros', exact: true }).click();
   await expect(panel.locator('.vtt-compendium img.premium')).toHaveCount(assets.length);
@@ -203,7 +206,8 @@ try {
   await panel.getByRole('button', { name: 'Monstros', exact: true }).click();
   await expect(panel.locator('.vtt-compendium img.premium')).toHaveCount(assets.length);
   await page.screenshot({ path: 'test-results/vtt-premium-monsters.png' });
-  await panel.getByRole('button', { name: 'Galeria de monstros', exact: true }).click();
+  await panel.getByRole('button', { name: 'Assets', exact: true }).click();
+  await panel.getByRole('button', { name: 'Criaturas', exact: true }).click();
   await expect
     .poll(() =>
       panel
@@ -525,7 +529,8 @@ try {
     const playerPanel = playerPage.locator('.vtt-panel-content');
     await playerPanel.getByRole('button', { name: 'Monstros', exact: true }).click();
     await expect(playerPanel.locator('.vtt-compendium img.premium')).toHaveCount(assets.length);
-    await playerPanel.getByRole('button', { name: 'Galeria de monstros', exact: true }).click();
+    await playerPanel.getByRole('button', { name: 'Assets', exact: true }).click();
+    await playerPanel.getByRole('button', { name: 'Criaturas', exact: true }).click();
     await expect(playerPanel.locator('.vtt-premium-grid > button')).toHaveCount(assets.length);
     await expect(playerPanel.locator('.vtt-premium-grid > button').first()).toHaveAttribute(
       'draggable',
@@ -547,7 +552,7 @@ try {
     'Seleção livre: contorno irregular, Shift, efeitos em dois tokens, exclusão mista, desfazer e Esc aprovados; seleção não grava nem move objetos.',
   );
   console.log(
-    `VTT básico: ${assets.length} artes padrão em Monstros e Galeria, sem ativação/tag, recarga e mesas preservadas, chat/editor/dano e quatro larguras aprovados.`,
+    `VTT básico: ${assets.length} artes padrão em Monstros e Assets/Criaturas, sem ativação/tag, recarga e mesas preservadas, chat/editor/dano e quatro larguras aprovados.`,
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/vtt-premium-failure.png' });
