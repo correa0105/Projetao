@@ -1,3 +1,5 @@
+import { isTreeCanopy, canopyActor } from '../shared/vtt-canopies';
+import { captureCanopyAreas, drawCanopyForeground } from './vtt-canopies-canvas';
 import { drawMapAtmosphere } from './vtt-atmosphere';
 import {
   sightPolygon,
@@ -303,7 +305,11 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     }
     c.restore();
   };
+  const visibleCanopyToken = (t: VttToken) => !((!o.gm || o.preview) && t.hidden) && !(o.preview && o.viewer && t.id !== o.viewer.id && !viewerSees(o.viewer,t,s));
+  const canopyActors = s.tokens.filter(t=>canopyActor(t) && visibleCanopyToken(t));
+  let canopyCover: HTMLCanvasElement | null = null;
   for (const layer of ['map', 'tokens', 'gm']) {
+    if (layer === 'gm') drawCanopyForeground(c,s,images,canopyActors,canopyCover,visibleCanopyToken,o.selected,cam.zoom);
     if (layer === 'tokens' && o.visualEffects !== false && o.bloodEnabled !== false)
       drawBloodDecals(
         c,
@@ -340,7 +346,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       drawing(c, d);
       c.restore();
     }
-    for (const t of orderedTokens(s.tokens).filter((t) => t.layer === layer)) {
+    for (const t of orderedTokens(s.tokens).filter((t) => t.layer === layer && !isTreeCanopy(t))) {
       if ((!o.gm || o.preview) && t.hidden) continue;
       if (o.preview && o.viewer && t.id !== o.viewer.id && !viewerSees(o.viewer, t, s)) continue;
       c.save();
@@ -472,7 +478,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.restore();
       }
     }
-    if (layer === 'map') drawGrid();
+    if (layer === 'map') { drawGrid(); canopyCover = captureCanopyAreas(c,s); }
   }
   const spellView = {
     left: cam.x - width / 2 / cam.zoom,

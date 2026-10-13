@@ -1,0 +1,145 @@
+.vtt-canopy-editor {
+  position: absolute;
+  inset: 0;
+  z-index: 14;
+  pointer-events: none;
+}
+.vtt-canopy-selection {
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  touch-action: none;
+  cursor: crosshair;
+}
+.vtt-canopy-selection polygon {
+  fill: #79a8aa22;
+  stroke: #87b5b6;
+  stroke-width: 1.5;
+  stroke-dasharray: 6 4;
+}
+.vtt-canopy-selection polygon.selected {
+  fill: #dec38c28;
+  stroke: #dec38c;
+  stroke-dasharray: none;
+}
+.vtt-canopy-selection polyline {
+  fill: #dec38c19;
+  stroke: #dec38c;
+  stroke-width: 2;
+  pointer-events: none;
+}
+.vtt-canopy-selection circle {
+  fill: #19242a;
+  stroke: #dec38c;
+  stroke-width: 2;
+  cursor: move;
+}
+.vtt-canopy-selection circle:focus {
+  outline: none;
+  fill: #dec38c;
+}
+.vtt-canopy-controls {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 290px;
+  max-height: calc(100% - 24px);
+  overflow: auto;
+  pointer-events: auto;
+  background: #171a1eeb;
+  border: 1px solid #8c7143;
+  box-shadow: 0 12px 35px #0008;
+  padding: 16px;
+  border-radius: 5px;
+  backdrop-filter: blur(8px);
+  font-size: 12px;
+}
+.vtt-canopy-controls header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ddc18c;
+}
+.vtt-canopy-controls header h3 {
+  margin: 0;
+  flex: 1;
+  font-size: 14px;
+}
+.vtt-canopy-controls header button {
+  padding: 4px;
+  display: flex;
+}
+.vtt-canopy-controls p {
+  color: #acaea9;
+  line-height: 1.55;
+  margin: 12px 0;
+}
+.vtt-canopy-controls label {
+  display: grid;
+  gap: 7px;
+  margin: 14px 0;
+  color: #d1c7b7;
+}
+.vtt-canopy-controls label > span {
+  margin: 0;
+}
+.vtt-canopy-controls :is(select, input:not([type='range'], [type='checkbox'])) {
+  width: 100%;
+  min-width: 0;
+  padding: 8px;
+  font-size: 12px;
+}
+.vtt-canopy-controls input[type='range'] {
+  accent-color: #c39b60;
+  width: 100%;
+}
+.vtt-canopy-row {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.vtt-canopy-row > * {
+  min-width: 0;
+}
+.vtt-canopy-row button,
+.vtt-canopy-save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 8px;
+  white-space: nowrap;
+}
+.vtt-canopy-controls .vtt-canopy-toggle {
+  display: flex;
+  align-items: center;
+}
+.vtt-canopy-save {
+  width: 100%;
+  margin-top: 16px;
+  border-color: #987b48;
+  background: #b78b4320;
+  color: #e3c88f;
+}
+@media (max-width: 600px) {
+  .vtt-canopy-controls {
+    top: auto;
+    bottom: 144px;
+    width: 240px;
+    max-width: calc(100% - 24px);
+    max-height: 42%;
+    padding: 12px;
+  }
+  .vtt-canopy-controls p {
+    font-size: 11px;
+    margin: 8px 0;
+  }
+}
+
+:root .vtt-canopy-controls { font: 400 12px/1.45 Inter, sans-serif; }
+:root .vtt-canopy-controls p { font-weight: 400; }
+:root .vtt-canopy-controls .vtt-canopy-label-line { display:flex;align-items:center;justify-content:space-between;gap:6px; }
+.vtt-canopy-label-line output { color:#d8ba7d;flex:none; }
+:root .vtt-canopy-controls .vtt-canopy-toggle { display:flex;align-items:center;flex-direction:row;gap:8px; }
+:root .vtt-canopy-controls input[type=checkbox] { width:16px;height:16px;flex:0 0 16px;margin:0;accent-color:#c39b60; }

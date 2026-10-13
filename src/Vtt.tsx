@@ -122,6 +122,8 @@ import { VttHotbar, ActionShortcut } from './VttHotbar';
 import { VttEffects } from './VttEffects';
 import { VttAttackVisuals } from './VttAttackVisuals';
 import { VttEffectSounds } from './VttEffectSounds';
+import { VttCanopyEditor } from './VttCanopyEditor';
+import { rockAssets } from '../shared/vtt-rock-assets';
 import { treeAssets, treeAssetMime } from '../shared/vtt-tree-assets';
 import { VttAssets } from './VttAssets';
 import { useVttMediaPreferences } from './vtt-media-preferences';
@@ -337,6 +339,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [dirty, setDirty] = useState(false);
   const media = useVttMediaPreferences(user.id);
   const visualEffects = media.visualEffects;
+  const [canopyEditing, setCanopyEditing] = useState(false);
   const [tool, setTool] = useState<Tool>('select'),
     [tab, setTab] = useState<Tab>('chat'),
     [layer, setLayer] = useState('tokens'),
@@ -1905,7 +1908,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }
   function addTreeAsset(id: string, scale = 1, at?: Point) {
     if (!gm || !scene || preview) return;
-    const asset = treeAssets.find((a) => a.id === id);
+    const asset = [...treeAssets,...rockAssets].find((a) => a.id === id);
     if (!asset || ![0.5, 1, 1.5, 2].includes(scale)) return;
     const token = newToken(crypto.randomUUID(), scene),
       size = Math.max(
@@ -2576,6 +2579,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               <Dices size={20} />
             </button>
           )}
+          {gm && !preview && <button title="Áreas de transparência" aria-label="Áreas de transparência" aria-pressed={canopyEditing} onClick={()=>{if(!canopyEditing)setPanelOpen(false);setCanopyEditing(v=>!v);}}><Eye size={20}/></button>}
           {toolList
             .filter(
               (t) =>
@@ -2842,6 +2846,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               closeAttack={() => setAttack(null)}
             />
           )}
+          {gm && !preview && canopyEditing && <VttCanopyEditor key={scene.id} scene={scene} camera={camera} bounds={bounds} busy={busy} close={()=>setCanopyEditing(false)} save={()=>void act(save)} update={(areas,opacity)=>editScene(s=>{s.canopyAreas=areas;if(opacity!==undefined)s.canopyOpacity=opacity;})}/>}
           <canvas
             ref={canvas}
             aria-label="Tabuleiro da mesa"
@@ -3421,6 +3426,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           Novo mapa
                         </button>
                       </div>
+                      <button onClick={()=>{setPanelOpen(false);setCanopyEditing(true);}}><Eye size={15}/>Editar áreas de transparência</button>
                       <h3>Camadas</h3>
                       <label>
                         Opacidade da camada do mestre

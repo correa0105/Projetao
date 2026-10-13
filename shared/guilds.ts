@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { houseCatalog, houseTemplates, houseSupportsFacing } from './house';
+import { guildPerspectiveSchema, guildPerspectiveGuidesSchema } from './guild-perspective';
 export const crestIcons = [
   'sword',
   'wolf',
@@ -84,6 +85,7 @@ export const guildPlacementSchema = z
     y: z.number().min(0.1).max(0.97),
     scale: z.number().min(0.04).max(0.6),
     facing: z.number().int().min(0).max(15),
+    perspective: guildPerspectiveSchema.optional(),
   })
   .strict()
   .refine((p) => houseSupportsFacing(p.catalog, p.facing), 'Vista inválida.');
@@ -94,6 +96,7 @@ export const guildDocumentSchema = z
     crest: crestSchema.default(() => crestSchema.parse({})),
     ambience: z.enum(['natural', 'warm', 'moonlit']).default('natural'),
     placements: z.array(guildPlacementSchema).max(24).default([]),
+    perspectives: z.partialRecord(z.enum(roomIds), guildPerspectiveGuidesSchema).optional(),
   })
   .strict()
   .refine(

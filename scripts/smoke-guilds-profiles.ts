@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { chromium, expect } from '@playwright/test';
+import { chromium, expect, type Locator } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
@@ -24,7 +24,7 @@ await new Promise<void>((r) => server.once('listening', r));
 const browser = await chromium.launch({ channel: 'msedge', headless: true }),
   ownerContext = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
-    reducedMotion: 'reduce',
+    reducedMotion: 'no-preference',
   }),
   admContext = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
@@ -81,7 +81,10 @@ async function screenshot(label: string, width: number) {
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2),
     'No horizontal overflow: ' + label + ' ' + width,
   ).toBe(true);
-  await page.screenshot({ path: `test-results/community/${label}-${width}.png`, fullPage: true });
+  await page.screenshot({
+    path: `test-results/community/${label}-${width}.png`,
+    fullPage: true,
+  });
 }
 await mkdir('test-results/community', { recursive: true });
 try {
@@ -148,7 +151,9 @@ try {
   for (const width of [1440, 768, 390, 320]) await screenshot('crest-workshop', width);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.getByRole('button', { name: 'Fundar guilda', exact: true }).click();
-  await expect(page.getByRole('dialog', { name: 'Fundar uma guilda', exact: true })).toHaveCount(0);
+  await expect(
+    page.getByRole('dialog', { name: 'Fundar uma guilda', exact: true }),
+  ).toHaveCount(0);
   await expect(
     page.getByRole('heading', { name: 'Companhia do Amanhecer', exact: true }),
   ).toBeVisible();
@@ -181,23 +186,95 @@ try {
   const object = page.locator('.guild-furniture').first();
   await expect(object).toBeVisible();
   const position = () => object.evaluate((el) => ({ x: el.style.left, y: el.style.top }));
+  const assertTurnAlignment = async (piece: Locator) => {
+    await expect
+      .poll(async () => {
+        const art = await piece.locator('img').evaluate((image: HTMLImageElement) => {
+          if (!image.complete || !image.naturalWidth) return null;
+          const c = document.createElement('canvas');
+          c.width = image.naturalWidth;
+          c.height = image.naturalHeight;
+          const ctx = c.getContext('2d')!;
+          ctx.drawImage(image, 0, 0);
+          const data = ctx.getImageData(0, 0, c.width, c.height).data;
+          let left = c.width,
+            top = c.height,
+            right = 0,
+            bottom = 0;
+          for (let y = 0; y < c.height; y++)
+            for (let x = 0; x < c.width; x++)
+              if (data[(y * c.width + x) * 4 + 3] > 64) {
+                left = Math.min(left, x);
+                right = Math.max(right, x + 1);
+                top = Math.min(top, y);
+                bottom = Math.max(bottom, y + 1);
+              }
+          const r = image.getBoundingClientRect();
+          return {
+            left: r.left + (left / c.width) * r.width,
+            right: r.left + (right / c.width) * r.width,
+            centerY: r.top + ((top + bottom) / (2 * c.height)) * r.height,
+          };
+        });
+        const left = await page
+          .getByRole('button', { name: 'Virar item à esquerda', exact: true })
+          .boundingBox();
+        const right = await page
+          .getByRole('button', { name: 'Virar item à direita', exact: true })
+          .boundingBox();
+        if (!art || !left || !right) return 1000;
+        return Math.max(
+          Math.abs(left.y + left.height / 2 - art.centerY),
+          Math.abs(right.y + right.height / 2 - art.centerY),
+          Math.abs(art.left - (left.x + left.width / 2) - 20),
+          Math.abs(right.x + right.width / 2 - art.right - 20),
+        );
+      })
+      .toBeLessThan(3);
+  };
+  const assertHoldKeepsPosition = async (piece: Locator) => {
+    const before = (await piece.boundingBox())!;
+    await page.mouse.move(before.x + before.width * 0.5, before.y + before.height * 0.6);
+    await page.mouse.down();
+    await page.waitForTimeout(220);
+    const held = (await piece.boundingBox())!;
+    expect(held.x).toBeCloseTo(before.x, 1);
+    expect(held.y).toBeCloseTo(before.y, 1);
+    await page.mouse.up();
+    const released = (await piece.boundingBox())!;
+    expect(released.x).toBeCloseTo(before.x, 1);
+    expect(released.y).toBeCloseTo(before.y, 1);
+  };
   const beforeClick = await position();
   const box = (await object.boundingBox())!;
   await page.mouse.move(box.x + box.width * 0.25, box.y + box.height * 0.3);
   await page.mouse.down();
+  await page.waitForTimeout(220);
+  const heldBox = (await object.boundingBox())!;
+  expect(heldBox.x).toBeCloseTo(box.x, 1);
+  expect(heldBox.y).toBeCloseTo(box.y, 1);
   await page.mouse.move(box.x + box.width * 0.25 + 1, box.y + box.height * 0.3 + 1);
   await page.mouse.up();
   expect(await position()).toEqual(beforeClick);
   await page.mouse.down();
-  await page.mouse.move(box.x + box.width * 0.25 + 50, box.y + box.height * 0.3 + 15, { steps: 8 });
+  await page.mouse.move(box.x + box.width * 0.25 + 50, box.y + box.height * 0.3 + 15, {
+    steps: 8,
+  });
   await page.mouse.up();
   const stage = (await page.locator('.guild-room').boundingBox())!;
   const moved = await position();
-  expect(parseFloat(moved.x) - parseFloat(beforeClick.x)).toBeCloseTo((49 / stage.width) * 100, 1);
-  expect(parseFloat(moved.y) - parseFloat(beforeClick.y)).toBeCloseTo((14 / stage.height) * 100, 1);
+  expect(parseFloat(moved.x) - parseFloat(beforeClick.x)).toBeCloseTo(
+    (49 / stage.width) * 100,
+    1,
+  );
+  expect(parseFloat(moved.y) - parseFloat(beforeClick.y)).toBeCloseTo(
+    (14 / stage.height) * 100,
+    1,
+  );
   const sidebar = (await page.getByLabel('Decoração da sala').boundingBox())!;
   expect(sidebar.x).toBeGreaterThanOrEqual(stage.x + stage.width);
   const oldFacing = Number(await object.getAttribute('data-facing'));
+  await assertTurnAlignment(object);
   await page.getByRole('button', { name: 'Virar item à direita', exact: true }).click();
   await expect(object).toHaveAttribute(
     'data-facing',
@@ -207,13 +284,77 @@ try {
     'src',
     new RegExp('/' + houseTurnFacing('table', oldFacing, 1) + '\\.webp$'),
   );
+  await assertTurnAlignment(object);
   await page.getByRole('button', { name: 'Virar item à esquerda', exact: true }).click();
   await expect(object).toHaveAttribute('data-facing', String(oldFacing));
+  await assertTurnAlignment(object);
+  await page.getByLabel('Tamanho do objeto', { exact: true }).focus();
+  await page.keyboard.press('ArrowRight');
+  await page.keyboard.press('ArrowRight');
+  await assertTurnAlignment(object);
+  await assertHoldKeepsPosition(object);
+  for (const catalog of ['chest', 'bench']) {
+    await page.getByLabel('Objeto', { exact: true }).selectOption(catalog);
+    await page.getByRole('button', { name: 'Adicionar peça', exact: true }).click();
+    const fixtureId = await page
+      .locator('.guild-furniture.selected')
+      .getAttribute('data-guild-piece');
+    const fixture = page.locator('[data-guild-piece="' + fixtureId + '"]');
+    await fixture.focus();
+    for (let i = 0; i < 20; i++) await page.keyboard.press('ArrowRight');
+    for (let i = 0; i < 5; i++) await page.keyboard.press('ArrowDown');
+    await assertTurnAlignment(fixture);
+    await assertHoldKeepsPosition(fixture);
+    await page.getByRole('button', { name: 'Virar item à direita', exact: true }).click();
+    await assertTurnAlignment(fixture);
+    await page.getByRole('button', { name: 'Virar item à esquerda', exact: true }).click();
+    await assertTurnAlignment(fixture);
+    await page.screenshot({ path: 'test-results/community/turn-' + catalog + '.png' });
+    await page.getByRole('button', { name: 'Remover peça', exact: true }).click();
+  }
   await object.focus();
   await page.keyboard.press('ArrowRight');
+  for (let i = 0; i < 20; i++) await page.keyboard.press('ArrowLeft');
   await page.getByLabel('Atmosfera', { exact: true }).selectOption('warm');
-  for (const width of [1440, 768, 390, 320]) await screenshot('decoration-sidebar', width);
+  for (const width of [1440, 768, 390, 320]) {
+    await screenshot('decoration-sidebar', width);
+    await assertTurnAlignment(object);
+    await assertHoldKeepsPosition(object);
+  }
   await page.setViewportSize({ width: 1440, height: 1000 });
+  const pieceId = await object.getAttribute('data-guild-piece');
+  const anchorBeforePerspective = await position();
+  await page.getByRole('button', { name: 'Ajustar perspectiva', exact: true }).click();
+  await expect(page.getByLabel('Guias de perspectiva da sala')).toBeVisible();
+  await expect(page.locator('.guild-perspective-handle')).toHaveCount(4);
+  await page.getByRole('button', { name: 'Fuga à direita', exact: true }).click();
+  await expect(object.locator('img')).toHaveAttribute('style', /matrix3d/);
+  expect(await position()).toEqual(anchorBeforePerspective);
+  await page.getByLabel('Aderir às linhas de fuga', { exact: true }).uncheck();
+  const handle = page.getByRole('button', {
+    name: 'Ajustar canto superior esquerdo',
+    exact: true,
+  });
+  const h = (await handle.boundingBox())!;
+  await page.mouse.move(h.x + h.width / 2, h.y + h.height / 2);
+  await page.mouse.down();
+  await page.waitForTimeout(200);
+  const heldHandle = (await handle.boundingBox())!;
+  expect(heldHandle.x).toBeCloseTo(h.x, 1);
+  expect(heldHandle.y).toBeCloseTo(h.y, 1);
+  await page.mouse.move(h.x + h.width / 2 + 12, h.y + h.height / 2 + 7, { steps: 5 });
+  await page.mouse.up();
+  const movedHandle = (await handle.boundingBox())!;
+  expect(movedHandle.x - h.x).toBeCloseTo(12, 0);
+  expect(movedHandle.y - h.y).toBeCloseTo(7, 0);
+  expect(await position()).toEqual(anchorBeforePerspective);
+  await page.getByText('Calibrar as guias da sala', { exact: true }).click();
+  await page.getByLabel('Linha do horizonte', { exact: true }).focus();
+  await page.keyboard.press('ArrowRight');
+  for (const width of [1440, 390, 320]) await screenshot('perspective-guides', width);
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.getByRole('button', { name: 'Concluir perspectiva', exact: true }).click();
+  await expect(page.locator('.guild-perspective-handle')).toHaveCount(0);
   await page.getByRole('button', { name: 'Salvar sede', exact: true }).click();
   await expect(page.getByText('Sede salva.', { exact: true })).toBeVisible();
   const g = await api(ownerContext, '/guilds/' + id);
@@ -221,6 +362,10 @@ try {
   expect(g.document.placements.at(-1).room).toBe('meeting');
   expect(g.document.ambience).toBe('warm');
   expect(g.document.crest).toEqual(savedCrest);
+  expect(
+    g.document.placements.find((p: { id: string }) => p.id === pieceId).perspective,
+  ).toHaveLength(4);
+  expect(g.document.perspectives.meeting.horizon).toBe(0.44);
   await page.reload();
   await expect(
     page.getByRole('heading', { name: 'Companhia do Amanhecer', exact: true }),
@@ -264,9 +409,13 @@ try {
   });
   await page.getByRole('button', { name: 'Adicionar vitrine', exact: true }).click();
   await page.getByLabel('Título', { exact: true }).nth(1).fill('Crônicas do Norte');
-  await page.getByLabel('Texto', { exact: true }).fill('Uma fogueira, uma estrada e bons amigos.');
+  await page
+    .getByLabel('Texto', { exact: true })
+    .fill('Uma fogueira, uma estrada e bons amigos.');
   await page.getByRole('button', { name: 'Salvar meu perfil', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Crônicas do Norte', exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'Crônicas do Norte', exact: true }),
+  ).toBeVisible();
   expect((await api(ownerContext, '/profiles/' + owner.id)).document.background).toMatch(
     /^\/api\/social\/assets\//,
   );
@@ -274,7 +423,9 @@ try {
   for (const width of [1440, 768, 390, 320]) await screenshot('profile', width);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.getByRole('button', { name: 'Amigos e mensagens', exact: true }).click();
-  await expect(page.getByRole('dialog', { name: 'Amigos e chat', exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('dialog', { name: 'Amigos e chat', exact: true }),
+  ).toBeVisible();
   await page
     .getByRole('button', { name: 'Conversar com Companheiro de jornada', exact: true })
     .click();
@@ -284,7 +435,9 @@ try {
   await page.getByRole('button', { name: 'Fechar amigos e chat', exact: true }).click();
   await page.getByRole('button', { name: 'Personagens e coleções', exact: true }).click();
   await expect(page.locator('.public-camp')).toBeVisible();
-  await page.getByRole('button', { name: 'Perfil de Viajante do Amanhecer', exact: true }).click();
+  await page
+    .getByRole('button', { name: 'Perfil de Viajante do Amanhecer', exact: true })
+    .click();
   await expect(page.locator('.player-profile-home')).toBeVisible();
   expect(errors).toEqual([]);
   expect([...new Set(missing)]).toEqual([]);
@@ -298,6 +451,10 @@ try {
       crestLayers: true,
       foundationGold: true,
       ownerFurniture: true,
+      visibleTurnAlignment: true,
+      heldFurnitureStable: true,
+      perspectiveGuides: true,
+      perspectivePersisted: true,
       roomLocks: true,
       invitations: true,
       chat: true,
@@ -306,6 +463,9 @@ try {
     }),
   );
   console.log('Community browser QA passed.');
+} catch (error) {
+  await page.screenshot({ path: 'test-results/community/turn-failure.png', fullPage: true });
+  throw error;
 } finally {
   await browser.close();
   await new Promise<void>((r) => server.close(() => r()));

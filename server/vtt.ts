@@ -725,6 +725,9 @@ export function vttRouter() {
         )
           throw new AppError(400, 'O token vinculado ficaria fora do mapa.');
         const previous = r.document.scenes.find((s) => s.id === scene.id);
+        const submittedScene = req.body.document.scenes.find((s: VttScene) => s.id === scene.id);
+        if (previous && submittedScene?.canopyAreas === undefined) scene.canopyAreas = previous.canopyAreas;
+        if (previous && submittedScene?.canopyOpacity === undefined) scene.canopyOpacity = previous.canopyOpacity;
         scene.blood = previous ? structuredClone(previous.blood) : [];
         for (const token of scene.tokens) {
           const old = previous?.tokens.find((t) => t.id === token.id);

@@ -1,5 +1,6 @@
 import { useState, type ReactNode, type DragEvent } from 'react';
 import { Trees, Bird, Plus, X } from 'lucide-react';
+import { rockAssets } from '../shared/vtt-rock-assets';
 import { treeAssets, treeAssetMime } from '../shared/vtt-tree-assets';
 import './vtt-tree-assets.css';
 
@@ -21,17 +22,23 @@ export function VttAssets({
     [selected, setSelected] = useState(''),
     [scale, setScale] = useState(1);
   if (!enabled) return children;
-  const item = treeAssets.find((a) => a.id === selected),
+  const catalog = collection === 'rocks' ? rockAssets : treeAssets,
+    rock = collection === 'rocks';
+  const item = catalog.find((a) => a.id === selected),
     normalize = (s: string) =>
       s
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase();
   const terms = normalize(query).trim().split(/\s+/).filter(Boolean),
-    shown = treeAssets.filter(
+    shown = catalog.filter(
       (a) =>
         (group === 'Todos' || a.group === group) &&
-        terms.every((t) => normalize(a.name + ' ' + a.group + ' árvore floresta').includes(t)),
+        terms.every((t) =>
+          normalize(
+            a.name + ' ' + a.group + (rock ? ' pedra rocha cascalho' : ' árvore floresta'),
+          ).includes(t),
+        ),
     );
   const drag = (e: DragEvent, id: string) => {
     if (!gm) {
@@ -44,8 +51,25 @@ export function VttAssets({
   return (
     <section className="vtt-world-assets" aria-label="Acervo de assets">
       <nav className="vtt-asset-collections" aria-label="Coleções de assets">
-        <button aria-pressed={collection === 'trees'} onClick={() => setCollection('trees')}>
+        <button
+          aria-pressed={collection === 'trees'}
+          onClick={() => {
+            setCollection('trees');
+            setGroup('Todos');
+            setSelected('');
+          }}
+        >
           <Trees size={14} /> Árvores <small>{treeAssets.length}</small>
+        </button>
+        <button
+          aria-pressed={rock}
+          onClick={() => {
+            setCollection('rocks');
+            setGroup('Todos');
+            setSelected('');
+          }}
+        >
+          ◆ Pedras <small>{rockAssets.length}</small>
         </button>
         <button
           aria-pressed={collection === 'creatures'}
@@ -59,15 +83,20 @@ export function VttAssets({
       ) : (
         <>
           <header>
-            <small>FLORESTA · VISTA SUPERIOR</small>
-            <h3>Árvores para seus mapas</h3>
+            <small>{rock ? 'TERRENO' : 'FLORESTA'} · VISTA SUPERIOR</small>
+            <h3>{rock ? 'Pedras' : 'Árvores'} para seus mapas</h3>
             <p>
-              Copas, galhos e folhas com transparência. Arraste uma árvore para o mapa ou escolha
-              sua escala.
+              {rock
+                ? 'Rochas, seixos e aglomerados com fundo transparente.'
+                : 'Copas, galhos e folhas com transparência.'}{' '}
+              Arraste um asset para o mapa ou escolha sua escala.
             </p>
           </header>
-          <nav className="vtt-tree-groups" aria-label="Tipos de árvores">
-            {['Todos', ...new Set(treeAssets.map((a) => a.group))].map((g) => (
+          <nav
+            className="vtt-tree-groups"
+            aria-label={rock ? 'Tipos de pedras' : 'Tipos de árvores'}
+          >
+            {['Todos', ...new Set(catalog.map((a) => a.group))].map((g) => (
               <button
                 key={g}
                 aria-pressed={group === g}
@@ -81,13 +110,14 @@ export function VttAssets({
             ))}
           </nav>
           <div className="vtt-tree-count">
-            {shown.length} árvores{!gm && ' · Somente visualização'}
+            {shown.length} {rock ? 'pedras' : 'árvores'}
+            {!gm && ' · Somente visualização'}
           </div>
           {item && (
             <article className="vtt-tree-preview">
               <button
                 className="vtt-tree-close"
-                aria-label="Fechar prévia da árvore"
+                aria-label={rock ? 'Fechar prévia da pedra' : 'Fechar prévia da árvore'}
                 onClick={() => setSelected('')}
               >
                 <X size={15} />
@@ -100,7 +130,7 @@ export function VttAssets({
               <label>
                 Escala
                 <select
-                  aria-label="Escala da árvore"
+                  aria-label={rock ? 'Escala da pedra' : 'Escala da árvore'}
                   value={scale}
                   onChange={(e) => setScale(Number(e.target.value))}
                 >
@@ -138,7 +168,7 @@ export function VttAssets({
               </button>
             ))}
           </div>
-          {!shown.length && <p>Nenhuma árvore encontrada. Experimente outro nome ou tipo.</p>}
+          {!shown.length && <p>Nenhum asset encontrado. Experimente outro nome ou tipo.</p>}
         </>
       )}
     </section>

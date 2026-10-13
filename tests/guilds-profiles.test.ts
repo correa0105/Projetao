@@ -37,7 +37,10 @@ test('Brasões antigos mantêm formato e bordas novas são independentes', () =>
     assert.equal(next.borderColor, old.borderColor);
   }
   assert.equal(crestSchema.safeParse({ ...old, ornament: 'unknown' }).success, false);
-  assert.equal(crestSchema.safeParse({ ...old, borderColor: 'javascript:bad' }).success, false);
+  assert.equal(
+    crestSchema.safeParse({ ...old, borderColor: 'javascript:bad' }).success,
+    false,
+  );
 });
 test('Guildas, economia, missões e perfis em banco descartável', async (t) => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
@@ -54,7 +57,11 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
   async function request(path: string, who?: Account, method = 'GET', body?: unknown) {
     const r = await fetch(base + path, {
       method,
-      headers: { Origin: origin, Cookie: who?.cookie || '', 'Content-Type': 'application/json' },
+      headers: {
+        Origin: origin,
+        Cookie: who?.cookie || '',
+        'Content-Type': 'application/json',
+      },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
     return { status: r.status, data: await r.json(), headers: r.headers };
@@ -106,42 +113,48 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
       id = '',
       doc = guildDocumentSchema.parse({ name: 'Companhia do Amanhecer' });
     const rid = randomUUID();
-    await t.test('custo somente configurado por administrador e revisão otimista', async () => {
-      assert.equal(
-        (
-          await request('/guilds', owner, 'POST', {
-            document: doc,
-            character_id: ch.id,
-            request_id: rid,
-          })
-        ).status,
-        409,
-      );
-      cfg.founding_po = 500;
-      cfg.missions = [
-        {
-          id: 'adventure',
-          name: 'Uma nova crônica',
-          metric: 'missions',
-          goal: 1,
-          gold_po: 50,
-          prestige: 200,
-        },
-      ];
-      assert.equal(
-        (await request('/community/settings', owner, 'PUT', { document: cfg, revision })).status,
-        403,
-      );
-      assert.equal(
-        (await request('/community/settings', adm, 'PUT', { document: cfg, revision })).status,
-        200,
-      );
-      assert.equal(
-        (await request('/community/settings', adm, 'PUT', { document: cfg, revision })).status,
-        409,
-      );
-      revision++;
-    });
+    await t.test(
+      'custo somente configurado por administrador e revisão otimista',
+      async () => {
+        assert.equal(
+          (
+            await request('/guilds', owner, 'POST', {
+              document: doc,
+              character_id: ch.id,
+              request_id: rid,
+            })
+          ).status,
+          409,
+        );
+        cfg.founding_po = 500;
+        cfg.missions = [
+          {
+            id: 'adventure',
+            name: 'Uma nova crônica',
+            metric: 'missions',
+            goal: 1,
+            gold_po: 50,
+            prestige: 200,
+          },
+        ];
+        assert.equal(
+          (await request('/community/settings', owner, 'PUT', { document: cfg, revision }))
+            .status,
+          403,
+        );
+        assert.equal(
+          (await request('/community/settings', adm, 'PUT', { document: cfg, revision }))
+            .status,
+          200,
+        );
+        assert.equal(
+          (await request('/community/settings', adm, 'PUT', { document: cfg, revision }))
+            .status,
+          409,
+        );
+        revision++;
+      },
+    );
     await t.test(
       'fundação atômica, ouro insuficiente, propriedade, replay concorrente',
       async () => {
@@ -182,7 +195,8 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
         assert.equal(id, r[1].data.id);
         assert.equal(r.filter((x) => x.data.replayed).length, 1);
         assert.equal(
-          (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [ch.id])).rows[0].gold_cp,
+          (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [ch.id])).rows[0]
+            .gold_cp,
           150000,
         );
         assert.equal(
@@ -228,10 +242,17 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
           y: 0.8,
           scale: 0.17,
           facing: 0,
+          perspective: [
+            { x: 0, y: -0.1 },
+            { x: 0, y: 0 },
+            { x: 0, y: 0 },
+            { x: 0, y: -0.2 },
+          ],
         };
         doc = guildDocumentSchema.parse({
           ...doc,
           placements: [piece],
+          perspectives: { main: { horizon: 0.42, left: -1, right: 2 } },
           crest: {
             ...doc.crest,
             icon: 'book',
@@ -242,7 +263,8 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
           },
         });
         assert.equal(
-          (await request('/guilds/' + id, stranger, 'PUT', { document: doc, revision: 0 })).status,
+          (await request('/guilds/' + id, stranger, 'PUT', { document: doc, revision: 0 }))
+            .status,
           403,
         );
         assert.equal(
@@ -255,12 +277,25 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
           403,
         );
         assert.equal(
-          (await request('/guilds/' + id, owner, 'PUT', { document: doc, revision: 0 })).status,
+          (await request('/guilds/' + id, owner, 'PUT', { document: doc, revision: 0 }))
+            .status,
           200,
         );
-        assert.deepEqual((await request('/guilds/' + id, owner)).data.document.crest, doc.crest);
+        assert.deepEqual(
+          (await request('/guilds/' + id, owner)).data.document.crest,
+          doc.crest,
+        );
+        assert.deepEqual(
+          (await request('/guilds/' + id, owner)).data.document.placements[0].perspective,
+          piece.perspective,
+        );
+        assert.deepEqual(
+          (await request('/guilds/' + id, owner)).data.document.perspectives,
+          doc.perspectives,
+        );
         assert.equal(
-          (await request('/guilds/' + id, owner, 'PUT', { document: doc, revision: 0 })).status,
+          (await request('/guilds/' + id, owner, 'PUT', { document: doc, revision: 0 }))
+            .status,
           409,
         );
         assert.equal(
@@ -273,8 +308,11 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
           400,
         );
         assert.equal(
-          (await request('/guilds/' + id + '/upgrade/' + piece.id, owner, 'POST', { level: 2 }))
-            .status,
+          (
+            await request('/guilds/' + id + '/upgrade/' + piece.id, owner, 'POST', {
+              level: 2,
+            })
+          ).status,
           409,
         );
       },
@@ -283,24 +321,36 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
       'convites, propriedade do personagem e capacidade oito sob concorrência',
       async () => {
         assert.equal(
-          (await request('/guilds/' + id + '/join', stranger, 'POST', { character_id: other.id }))
-            .status,
+          (
+            await request('/guilds/' + id + '/join', stranger, 'POST', {
+              character_id: other.id,
+            })
+          ).status,
           403,
         );
         assert.equal(
-          (await request('/guilds/' + id + '/invites', stranger, 'POST', { user_id: stranger.id }))
-            .status,
+          (
+            await request('/guilds/' + id + '/invites', stranger, 'POST', {
+              user_id: stranger.id,
+            })
+          ).status,
           403,
         );
         await request('/guilds/' + id + '/invites', owner, 'POST', { user_id: stranger.id });
         assert.equal(
-          (await request('/guilds/' + id + '/join', stranger, 'POST', { character_id: ch.id }))
-            .status,
+          (
+            await request('/guilds/' + id + '/join', stranger, 'POST', {
+              character_id: ch.id,
+            })
+          ).status,
           400,
         );
         assert.equal(
-          (await request('/guilds/' + id + '/join', stranger, 'POST', { character_id: other.id }))
-            .status,
+          (
+            await request('/guilds/' + id + '/join', stranger, 'POST', {
+              character_id: other.id,
+            })
+          ).status,
           200,
         );
         for (let i = 0; i < 5; i++) {
@@ -308,7 +358,8 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
             c = await createLegacyTestCharacter(u.id);
           await request('/guilds/' + id + '/invites', owner, 'POST', { user_id: u.id });
           assert.equal(
-            (await request('/guilds/' + id + '/join', u, 'POST', { character_id: c.id })).status,
+            (await request('/guilds/' + id + '/join', u, 'POST', { character_id: c.id }))
+              .status,
             200,
           );
         }
@@ -336,11 +387,13 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
         let g = (await request('/guilds/' + id, owner)).data;
         assert.equal(g.weekly.items[0].progress, 0);
         assert.equal(
-          (await request('/guilds/' + id + '/weekly/adventure/claim', owner, 'POST', {})).status,
+          (await request('/guilds/' + id + '/weekly/adventure/claim', owner, 'POST', {}))
+            .status,
           409,
         );
         assert.equal(
-          (await request('/guilds/' + id + '/weekly/adventure/claim', stranger, 'POST', {})).status,
+          (await request('/guilds/' + id + '/weekly/adventure/claim', stranger, 'POST', {}))
+            .status,
           403,
         );
         const {
@@ -349,10 +402,10 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
           "INSERT INTO board_posts(author_id,kind,status,title,description,location,difficulty) VALUES($1,'mission','completed','Aventura','Crônica','Norte','Moderada') RETURNING id",
           [adm.id],
         );
-        await pool.query('INSERT INTO mission_participants(post_id,character_id) VALUES($1,$2)', [
-          p.id,
-          ch.id,
-        ]);
+        await pool.query(
+          'INSERT INTO mission_participants(post_id,character_id) VALUES($1,$2)',
+          [p.id, ch.id],
+        );
         await pool.query(
           'INSERT INTO mission_rewards(post_id,character_id,experience,awarded_by) VALUES($1,$2,0,$3)',
           [p.id, ch.id, adm.id],
@@ -361,7 +414,8 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
         assert.equal(g.weekly.items[0].progress, 1);
         cfg.missions[0].gold_po = 999;
         assert.equal(
-          (await request('/community/settings', adm, 'PUT', { document: cfg, revision })).status,
+          (await request('/community/settings', adm, 'PUT', { document: cfg, revision }))
+            .status,
           200,
         );
         revision++;
@@ -380,32 +434,41 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
         assert.equal(guildWeek(new Date('2026-10-19T00:00:00Z')), '2026-10-19');
       },
     );
-    await t.test('melhorias configuradas usam tesouro, requisitos e replay por nível', async () => {
-      const piece = doc.placements[0];
-      cfg.upgrades = [
-        { catalog: piece.catalog, gold_po: 10, prestige: 200, missions: 1, max_level: 3 },
-      ];
-      await request('/community/settings', adm, 'PUT', { document: cfg, revision });
-      revision++;
-      assert.equal(
-        (await request('/guilds/' + id + '/upgrade/' + piece.id, owner, 'POST', { level: 3 }))
-          .status,
-        409,
-      );
-      const r = await Promise.all([
-        request('/guilds/' + id + '/upgrade/' + piece.id, owner, 'POST', { level: 2 }),
-        request('/guilds/' + id + '/upgrade/' + piece.id, owner, 'POST', { level: 2 }),
-      ]);
-      r.forEach((x) => assert.equal(x.status, 200));
-      const g = (await request('/guilds/' + id, owner)).data;
-      assert.equal(g.treasury_cp, 4000);
-      assert.equal(g.upgrades[0].level, 2);
-      assert.equal(
-        (await request('/guilds/' + id + '/upgrade/' + piece.id, stranger, 'POST', { level: 3 }))
-          .status,
-        403,
-      );
-    });
+    await t.test(
+      'melhorias configuradas usam tesouro, requisitos e replay por nível',
+      async () => {
+        const piece = doc.placements[0];
+        cfg.upgrades = [
+          { catalog: piece.catalog, gold_po: 10, prestige: 200, missions: 1, max_level: 3 },
+        ];
+        await request('/community/settings', adm, 'PUT', { document: cfg, revision });
+        revision++;
+        assert.equal(
+          (
+            await request('/guilds/' + id + '/upgrade/' + piece.id, owner, 'POST', {
+              level: 3,
+            })
+          ).status,
+          409,
+        );
+        const r = await Promise.all([
+          request('/guilds/' + id + '/upgrade/' + piece.id, owner, 'POST', { level: 2 }),
+          request('/guilds/' + id + '/upgrade/' + piece.id, owner, 'POST', { level: 2 }),
+        ]);
+        r.forEach((x) => assert.equal(x.status, 200));
+        const g = (await request('/guilds/' + id, owner)).data;
+        assert.equal(g.treasury_cp, 4000);
+        assert.equal(g.upgrades[0].level, 2);
+        assert.equal(
+          (
+            await request('/guilds/' + id + '/upgrade/' + piece.id, stranger, 'POST', {
+              level: 3,
+            })
+          ).status,
+          403,
+        );
+      },
+    );
     await t.test(
       'perfil: nível de conta legítimo, vitrines protegidas e upload próprio permitido',
       async () => {
@@ -425,7 +488,10 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
         assert.equal(
           (
             await request('/profiles/' + owner.id, owner, 'PUT', {
-              document: { ...document, showcases: [...document.showcases, ...document.showcases] },
+              document: {
+                ...document,
+                showcases: [...document.showcases, ...document.showcases],
+              },
               revision: 0,
             })
           ).status,
@@ -469,7 +535,10 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
         assert.equal(
           (
             await request('/profiles/' + owner.id, owner, 'PUT', {
-              document: { ...document, showcases: [...document.showcases, ...document.showcases] },
+              document: {
+                ...document,
+                showcases: [...document.showcases, ...document.showcases],
+              },
               revision: 0,
             })
           ).status,
@@ -481,14 +550,18 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
       'amizade e mensagens continuam privadas; lista no perfil reflete amizade',
       async () => {
         assert.equal(
-          (await request('/social/chat/' + stranger.id, owner, 'POST', { body: 'Olá' })).status,
+          (await request('/social/chat/' + stranger.id, owner, 'POST', { body: 'Olá' }))
+            .status,
           403,
         );
         await request('/social/friends/' + stranger.id, owner, 'POST', {});
         await request('/social/friends/' + owner.id, stranger, 'PATCH', {});
         assert.equal(
-          (await request('/social/chat/' + stranger.id, owner, 'POST', { body: 'Olá, companhia!' }))
-            .status,
+          (
+            await request('/social/chat/' + stranger.id, owner, 'POST', {
+              body: 'Olá, companhia!',
+            })
+          ).status,
           201,
         );
         const p = (await request('/profiles/' + owner.id, stranger)).data;

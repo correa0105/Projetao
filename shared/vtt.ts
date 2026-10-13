@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { canopyAreaSchema } from './vtt-canopies.js';
 import { atmosphereSchema } from './vtt-atmosphere.js';
 import { animatedAssetSchema } from './vtt-animated-assets.js';
 import { soundboardSchema, emptySoundboard } from './vtt-sounds.js';
@@ -209,9 +210,13 @@ export const sceneSchema = z
     walls: z.array(wallSchema).max(2000),
     lights: z.array(lightSchema).max(500).default([]),
     drawings: z.array(drawingSchema).max(2000),
+    canopyAreas: z.array(canopyAreaSchema).max(80).optional(),
+    canopyOpacity: z.number().min(0.1).max(0.8).optional(),
   })
   .strict()
   .superRefine((scene, ctx) => {
+    if (scene.canopyAreas && new Set(scene.canopyAreas.map(a=>a.id)).size !== scene.canopyAreas.length)
+      ctx.addIssue({ code: 'custom', message: 'Áreas repetidas.', path: ['canopyAreas'] });
     for (const key of ['tokens', 'walls', 'drawings', 'lights'] as const)
       if (new Set(scene[key].map((x) => x.id)).size !== scene[key].length)
         ctx.addIssue({ code: 'custom', message: 'Identificadores repetidos.', path: [key] });

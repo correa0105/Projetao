@@ -36,6 +36,17 @@ import { GuildCrest } from './GuildCrest';
 import { CrestEditor } from './GuildCrestEditor';
 import { Modal } from './components';
 import { visitProfile } from './HallOfFame';
+import {
+  guildFurnitureGeometry,
+  guildFurnitureVisibleRect,
+} from './guild-furniture-geometry';
+import { GuildFurnitureArt } from './GuildFurnitureArt';
+import {
+  GuildPerspectiveControls,
+  type GuildPieceGeometry,
+} from './GuildPerspectiveControls';
+import { guildRoomPerspective } from '../shared/guild-perspective';
+import './guild-perspective.css';
 import './guilds.css';
 type Settings = { document: CommunitySettings; revision: number; can_edit: boolean };
 type Entry = {
@@ -106,6 +117,9 @@ export function Guilds({
     [decor, setDecor] = useState(guildDecor[0]?.id || '');
   const request = useRef(crypto.randomUUID());
   const scene = useRef<HTMLDivElement>(null);
+  const refreshTurnControls = useRef<(() => void) | null>(null);
+  const [perspectiveEditing, setPerspectiveEditing] = useState('');
+  const [pieceGeometry, setPieceGeometry] = useState<GuildPieceGeometry | null>(null);
   const grab = useRef<{
     id: string;
     pointer: number;
@@ -189,37 +203,54 @@ export function Guilds({
     const stage = scene.current;
     if (!stage || !editable || !obj || obj.room !== room) {
       setTurnControls(null);
+      setPieceGeometry(null);
       return;
     }
-    const piece = stage.querySelector<HTMLButtonElement>('[data-guild-piece="' + obj.id + '"]');
-    if (!piece) return;
+    const image = stage.querySelector<HTMLImageElement>(
+      '[data-guild-piece="' + obj.id + '"] img',
+    );
+    if (!image) return;
     const update = () => {
       const bounds = stage.getBoundingClientRect(),
-        r = piece.getBoundingClientRect();
+        r = guildFurnitureVisibleRect(image);
+      if (!r) {
+        setTurnControls(null);
+        return;
+      }
+      const width = stage.clientWidth,
+        height = stage.clientHeight,
+        originX = bounds.left + stage.clientLeft,
+        originY = bounds.top + stage.clientTop;
+      const geometry = guildFurnitureGeometry(image);
+      if (geometry)
+        setPieceGeometry({
+          width,
+          height,
+          base: {
+            ...geometry.base,
+            left: geometry.base.left - originX,
+            top: geometry.base.top - originY,
+          },
+          points: geometry.points.map((p) => ({ x: p.x - originX, y: p.y - originY })),
+        });
       setTurnControls({
-        left: Math.max(
-          (18 / bounds.width) * 100,
-          ((r.left - bounds.left - 14) / bounds.width) * 100,
-        ),
-        right: Math.min(
-          100 - (18 / bounds.width) * 100,
-          ((r.right - bounds.left + 14) / bounds.width) * 100,
-        ),
-        top: Math.max(
-          (20 / bounds.height) * 100,
-          Math.min(
-            100 - (20 / bounds.height) * 100,
-            ((r.top + r.height * 0.6 - bounds.top) / bounds.height) * 100,
-          ),
-        ),
+        left: (Math.max(18, Math.min(width - 18, r.left - originX - 20)) / width) * 100,
+        right: (Math.max(18, Math.min(width - 18, r.right - originX + 20)) / width) * 100,
+        top:
+          (Math.max(18, Math.min(height - 18, (r.top + r.bottom) / 2 - originY)) / height) *
+          100,
       });
     };
+    refreshTurnControls.current = update;
     update();
     const observer = new ResizeObserver(update);
     observer.observe(stage);
-    observer.observe(piece);
-    return () => observer.disconnect();
-  }, [editable, obj?.id, obj?.x, obj?.y, obj?.scale, obj?.facing, room]);
+    observer.observe(image);
+    return () => {
+      observer.disconnect();
+      if (refreshTurnControls.current === update) refreshTurnControls.current = null;
+    };
+  }, [editable, obj?.id, obj?.x, obj?.y, obj?.scale, obj?.facing, obj?.perspective, room]);
   function updateObject(values: Partial<GuildDocument['placements'][number]>) {
     setDoc((d) =>
       d
@@ -583,41 +614,17 @@ export function Guilds({
                           );
                         }}
                       >
-                        <img
-                          src={houseItemImage(p.catalog, p.facing)}
-                          alt=""
-                          draggable={false}
-                          onLoad={(e) => {
-                            const img = e.currentTarget,
-                              c = document.createElement('canvas');
-                            c.width = 96;
-                            c.height = Math.max(
-                              1,
-                              Math.round((96 * img.naturalHeight) / img.naturalWidth),
-                            );
-                            const ctx = c.getContext('2d');
-                            if (!ctx) return;
-                            ctx.drawImage(img, 0, 0, c.width, c.height);
-                            const data = ctx.getImageData(0, 0, c.width, c.height).data;
-                            let bottom = c.height - 1;
-                            for (; bottom > 0; bottom--) {
-                              let found = false;
-                              for (let x = 0; x < c.width; x++)
-                                if (data[(bottom * c.width + x) * 4 + 3] > 64) {
-                                  found = true;
-                                  break;
-                                }
-                              if (found) break;
-                            }
-                            img.style.transform = `translateY(${((c.height - bottom - 1) / c.height) * 100}%)`;
-                          }}
+                        <GuildFurnitureArt
+                          source={houseItemImage(p.catalog, p.facing)}
+                          perspective={p.perspective}
+                          onReady={() => refreshTurnControls.current?.()}
                         />
                         {(g.upgrades.find((u) => u.object_id === p.id)?.level || 1) > 1 && (
                           <small>Nv. {g.upgrades.find((u) => u.object_id === p.id)!.level}</small>
                         )}
                       </button>
                     ))}
-                  {editable && obj?.room === room && turnControls && (
+                  {editable && obj?.room === room && turnControls && perspectiveEditing !== obj.id && (
                     <div className="guild-turn-controls" aria-label="Vistas do item selecionado">
                       {([-1, 1] as const).map((direction) => (
                         <button
@@ -718,6 +725,32 @@ export function Guilds({
                       </label>
                       {obj?.room === room && (
                         <>
+                          <GuildPerspectiveControls
+                            key={obj.id}
+                            stage={scene}
+                            geometry={pieceGeometry}
+                            perspective={obj.perspective}
+                            guides={
+                              current!.perspectives?.[room] ?? guildRoomPerspective(room)
+                            }
+                            changeGuides={(guides) =>
+                              setDoc((d) =>
+                                d
+                                  ? {
+                                      ...d,
+                                      perspectives: { ...d.perspectives, [room]: guides },
+                                    }
+                                  : d,
+                              )
+                            }
+                            change={(perspective) => updateObject({ perspective })}
+                            active={perspectiveEditing === obj.id}
+                            toggle={() =>
+                              setPerspectiveEditing(
+                                perspectiveEditing === obj.id ? '' : obj.id,
+                              )
+                            }
+                          />
                           <label>
                             Tamanho
                             <input
