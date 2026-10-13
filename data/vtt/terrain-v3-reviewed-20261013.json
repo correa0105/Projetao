@@ -1,0 +1,80 @@
+[
+  {
+    "id": "grass",
+    "name": "Grama",
+    "image": "/vtt/terrain-v3-20261013/grass.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 746786,
+    "sha256": "f72abb19c84d9068ef8a8c98f4d0f1d3e562325605b344b82535876be1bed2b3",
+    "source": "data/vtt/terrain-v3-sources-20261013/grass.png",
+    "sourceSha256": "faa880967eaf55f9550e87a0b7bcb136f54b795cc6d0f064d1a426d680de0b80",
+    "generator": "image_gen.imagegen",
+    "prompt": "Use case: stylized-concept. Asset type: one seamless square ground texture for a premium dark fantasy virtual tabletop terrain brush. Create a NEW full-bleed square texture viewed exactly from vertically overhead, orthographic, no perspective or horizon. Match highly detailed naturalistic illustrated tree and rock tokens: realistic materials with restrained painterly finish, earthy nuanced colors, calm readable overall values so characters remain distinct. This is ground at tabletop scale, not a close-up macro photograph. Diffuse neutral overcast light, tiny contact shadows only. Seamlessly tile in both axes: opposite edges must join naturally, no frames, vignette, edge darkening, directional lighting gradient, identifiable repeating centerpiece, grid, text, objects, characters or watermark. Cover the whole canvas evenly with nonuniform organic material variation. Fine details and subtle medium-scale variation, avoid flat procedural noise or decorative fantasy patterns. Output only this single finished square material.\nSubject: Low natural meadow grass: fine short olive and sage green blades, tufts and tiny clover, dry straw hints, sparse irregular spots of brown soil showing between blades. Muted living greens, medium dark earth underneath, subtle density variations. Detailed wild ground, no neon green, moss carpet, giant leaves or regular lawns."
+  },
+  {
+    "id": "earth",
+    "name": "Terra",
+    "image": "/vtt/terrain-v3-20261013/earth.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 720948,
+    "sha256": "620cc7bd2094a92415408a7910cbe55b735aef1df7b69130d7d5070007c4c117",
+    "source": "data/vtt/terrain-v3-sources-20261013/earth.png",
+    "sourceSha256": "38894b2af1f220780edc10625750d8d51dcee9633a299863242d7c2e6bbba581",
+    "generator": "image_gen.imagegen",
+    "prompt": "Use case: stylized-concept. Asset type: one seamless square ground texture for a premium dark fantasy virtual tabletop terrain brush. Create a NEW full-bleed square texture viewed exactly from vertically overhead, orthographic, no perspective or horizon. Match highly detailed naturalistic illustrated tree and rock tokens: realistic materials with restrained painterly finish, earthy nuanced colors, calm readable overall values so characters remain distinct. This is ground at tabletop scale, not a close-up macro photograph. Diffuse neutral overcast light, tiny contact shadows only. Seamlessly tile in both axes: opposite edges must join naturally, no frames, vignette, edge darkening, directional lighting gradient, identifiable repeating centerpiece, grid, text, objects, characters or watermark. Cover the whole canvas evenly with nonuniform organic material variation. Fine details and subtle medium-scale variation, avoid flat procedural noise or decorative fantasy patterns. Output only this single finished square material.\nSubject: Trodden woodland earth: rich umber and warm gray brown soil, varied grain, tiny embedded gravel and a few dry leaf fragments, gently compacted patches interspersed with loose organic dirt. Natural scattered detail without roads, tracks or major rocks. Rich material depth, no chunky giant clods, mud craters or repetitive brown noise."
+  },
+  {
+    "id": "sand",
+    "name": "Areia",
+    "image": "/vtt/terrain-v3-20261013/sand.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 648586,
+    "sha256": "0dec09edcb5e75b482b0fbe808ac0640d32c96d7c326bfeb62f4dcf761f1ceeb",
+    "source": "data/vtt/terrain-v3-sources-20261013/sand.png",
+    "sourceSha256": "88c78d031b7bd28371f4272c7b59bb856543be4561d08918e51ca7d4a42239d1",
+    "generator": "image_gen.imagegen",
+    "prompt": "Use case: stylized-concept. Asset type: one seamless square ground texture for a premium dark fantasy virtual tabletop terrain brush. Create a NEW full-bleed square texture viewed exactly from vertically overhead, orthographic, no perspective or horizon. Match highly detailed naturalistic illustrated tree and rock tokens: realistic materials with restrained painterly finish, earthy nuanced colors, calm readable overall values so characters remain distinct. This is ground at tabletop scale, not a close-up macro photograph. Diffuse neutral overcast light, tiny contact shadows only. Seamlessly tile in both axes: opposite edges must join naturally, no frames, vignette, edge darkening, directional lighting gradient, identifiable repeating centerpiece, grid, text, objects, characters or watermark. Cover the whole canvas evenly with nonuniform organic material variation. Fine details and subtle medium-scale variation, avoid flat procedural noise or decorative fantasy patterns. Output only this single finished square material.\nSubject: Natural coastal sand: pale warm ochre and gray beige grains with small irregular wind traces, lightly disturbed patches and sparse tiny dark mineral flecks. Fine realistic granular depth. Low gentle undulations, not repeated sinusoidal stripes, dunes, footprints or large pebbles. Soft sand at game-map scale."
+  },
+  {
+    "id": "stone",
+    "name": "Pedra",
+    "image": "/vtt/terrain-v3-20261013/stone.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 643626,
+    "sha256": "977cb541e6f24dbd8626714a2d0a4a5c0a516e610696b46ce89d5e53e104810d",
+    "source": "data/vtt/terrain-v3-sources-20261013/stone.png",
+    "sourceSha256": "f78384987dee6d7251e32ffd8c2467609c7477954a665bdfcb4a85203edfe38d",
+    "generator": "image_gen.imagegen",
+    "prompt": "Use case: stylized-concept. Asset type: one seamless square ground texture for a premium dark fantasy virtual tabletop terrain brush. Create a NEW full-bleed square texture viewed exactly from vertically overhead, orthographic, no perspective or horizon. Match highly detailed naturalistic illustrated tree and rock tokens: realistic materials with restrained painterly finish, earthy nuanced colors, calm readable overall values so characters remain distinct. This is ground at tabletop scale, not a close-up macro photograph. Diffuse neutral overcast light, tiny contact shadows only. Seamlessly tile in both axes: opposite edges must join naturally, no frames, vignette, edge darkening, directional lighting gradient, identifiable repeating centerpiece, grid, text, objects, characters or watermark. Cover the whole canvas evenly with nonuniform organic material variation. Fine details and subtle medium-scale variation, avoid flat procedural noise or decorative fantasy patterns. Output only this single finished square material.\nSubject: Weathered gray rocky ground: small uneven slate and sandstone fragments partially embedded in dusty earth, natural stone grain and shallow irregular cracks, some small cool gray gravel. Organic mixed sizes and subtle mineral color variation. Mostly flat traversable ground, no giant boulders, uniform cobblestones, geometric pavers, polished rock or manufactured grid."
+  },
+  {
+    "id": "wood",
+    "name": "Madeira",
+    "image": "/vtt/terrain-v3-20261013/wood.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 496864,
+    "sha256": "5c15784e6768c2838eb7691d88a2a22d0c7b49a29ac42ac16654bbd54612714f",
+    "source": "data/vtt/terrain-v3-sources-20261013/wood.png",
+    "sourceSha256": "c0be4522bd71c7264b3570a1e1bd3a7e14b3718aeadcec61fcc2be49e7b4ec21",
+    "generator": "image_gen.imagegen",
+    "prompt": "Use case: stylized-concept. Asset type: one seamless square ground texture for a premium dark fantasy virtual tabletop terrain brush. Create a NEW full-bleed square texture viewed exactly from vertically overhead, orthographic, no perspective or horizon. Match highly detailed naturalistic illustrated tree and rock tokens: realistic materials with restrained painterly finish, earthy nuanced colors, calm readable overall values so characters remain distinct. This is ground at tabletop scale, not a close-up macro photograph. Diffuse neutral overcast light, tiny contact shadows only. Seamlessly tile in both axes: opposite edges must join naturally, no frames, vignette, edge darkening, directional lighting gradient, identifiable repeating centerpiece, grid, text, objects, characters or watermark. Cover the whole canvas evenly with nonuniform organic material variation. Fine details and subtle medium-scale variation, avoid flat procedural noise or decorative fantasy patterns. Output only this single finished square material.\nSubject: Aged medieval wooden floor viewed from directly above: parallel worn oak boards with natural different widths and staggered joins, nuanced warm walnut and muted honey brown grain, subtle knots and nail heads, fine cracks and narrow shadowed seams. Hand-worked timber, realistic worn finish without glossy varnish. Boards continue seamlessly across both axes; no frame, furniture, rug, wall or perspective."
+  },
+  {
+    "id": "snow",
+    "name": "Neve",
+    "image": "/vtt/terrain-v3-20261013/snow.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 442666,
+    "sha256": "8494a57286d6a879cb4a6c480ee81b39ac64150913658fe10186502840ead94c",
+    "source": "data/vtt/terrain-v3-sources-20261013/snow.png",
+    "sourceSha256": "a5dec29d08cd58bf3639b9409e3a69efbc7c831a168baed375ce691646f5b6d6",
+    "generator": "image_gen.imagegen",
+    "prompt": "Use case: stylized-concept. Asset type: one seamless square ground texture for a premium dark fantasy virtual tabletop terrain brush. Create a NEW full-bleed square texture viewed exactly from vertically overhead, orthographic, no perspective or horizon. Match highly detailed naturalistic illustrated tree and rock tokens: realistic materials with restrained painterly finish, earthy nuanced colors, calm readable overall values so characters remain distinct. This is ground at tabletop scale, not a close-up macro photograph. Diffuse neutral overcast light, tiny contact shadows only. Seamlessly tile in both axes: opposite edges must join naturally, no frames, vignette, edge darkening, directional lighting gradient, identifiable repeating centerpiece, grid, text, objects, characters or watermark. Cover the whole canvas evenly with nonuniform organic material variation. Fine details and subtle medium-scale variation, avoid flat procedural noise or decorative fantasy patterns. Output only this single finished square material.\nSubject: Natural shallow snow-covered ground: soft irregular powder and gently compacted patches, intricate fine crystalline texture, slightly uneven subtle forms, muted ivory and cool gray-blue low shadows, occasional tiny earth flecks. Snow remains readable and textured, not blown out white or luminous blue. No footprints, snowflakes floating in air, ice lake, large drifts, trees or rocks."
+  }
+]

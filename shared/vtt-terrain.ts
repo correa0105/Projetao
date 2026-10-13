@@ -1,9 +1,9 @@
 export const terrainTextures = [
-  { id: 'grass', name: 'Grama', image: '/vtt/scenery-v2-20261012/terrain-grass.webp' },
-  { id: 'earth', name: 'Terra', image: '/vtt/scenery-v2-20261012/terrain-earth.webp' },
-  { id: 'sand', name: 'Areia', image: '/vtt/scenery-v2-20261012/terrain-sand.webp' },
-  { id: 'stone', name: 'Pedra', image: '/vtt/scenery-v2-20261012/terrain-stone.webp' },
-  { id: 'wood', name: 'Madeira', image: '/vtt/scenery-v2-20261012/terrain-wood.webp' },
-  { id: 'snow', name: 'Neve', image: '/vtt/scenery-v2-20261012/terrain-snow.webp' },
+  { id: 'grass', name: 'Grama', image: '/vtt/terrain-v3-20261013/grass.webp' },
+  { id: 'earth', name: 'Terra', image: '/vtt/terrain-v3-20261013/earth.webp' },
+  { id: 'sand', name: 'Areia', image: '/vtt/terrain-v3-20261013/sand.webp' },
+  { id: 'stone', name: 'Pedra', image: '/vtt/terrain-v3-20261013/stone.webp' },
+  { id: 'wood', name: 'Madeira', image: '/vtt/terrain-v3-20261013/wood.webp' },
+  { id: 'snow', name: 'Neve', image: '/vtt/terrain-v3-20261013/snow.webp' },
 ] as const;
 export type TerrainTextureId = (typeof terrainTextures)[number]['id'];

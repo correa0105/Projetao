@@ -7,16 +7,18 @@ const bundle = await build({ entryPoints: ['src/vtt-terrain-canvas.ts'], bundle:
   format: 'iife', globalName: 'Terrain', platform: 'browser' });
 const browser = await chromium.launch({ channel: process.env.BROWSER_CHANNEL || 'msedge', headless: true });
 const baseline = process.env.BRUSH_BASELINE_JS ? await readFile(process.env.BRUSH_BASELINE_JS, 'utf8') : null;
-const url = 'data:image/webp;base64,' + (await readFile('public/vtt/scenery-v2-20261012/terrain-grass.webp')).toString('base64');
+const art = JSON.parse(await readFile('data/vtt/terrain-v3-reviewed-20261013.json'));
+const texturePath = art.find(t=>t.id==='grass').image;
+const url = 'data:image/webp;base64,' + (await readFile('public'+texturePath)).toString('base64');
 await mkdir('test-results/brush-performance', { recursive: true });
 try {
   const page = await browser.newPage();
   await page.setContent('<canvas width="2560" height="1600"></canvas>');
   if (baseline) await page.addScriptTag({ content: baseline.replace(/\bTerrain\b/g, 'TerrainBefore') });
   await page.addScriptTag({ content: bundle.outputFiles[0].text });
-  const report = await page.evaluate(async ({ url, baseline }) => {
+  const report = await page.evaluate(async ({ url, baseline, texturePath }) => {
     const image = new Image(); image.src = url; await image.decode();
-    const images = new Map([['/vtt/scenery-v2-20261012/terrain-grass.webp', image]]);
+    const images = new Map([[texturePath,image],['/vtt/scenery-v2-20261012/terrain-grass.webp',image]]);
     const options = { images, camera: { x: 640, y: 400, zoom: 1 }, dpr: 2 };
     const make = i => ({ id: String(i), texture: 'grass', erase: i % 9 === 8, radius: 45, softness: .5,
       opacity: .8, textureScale: 280, shape: 'round', layer: i % 2 ? 'top' : 'base',
@@ -66,7 +68,7 @@ try {
     for (let i = 0; i < 24; i++) Terrain.drawTerrain(c, sparse, { ...options, camera: { x: 500 + (i % 12) * 1000, y: 500 + Math.floor(i / 12) * 1000, zoom: 1 } });
     const bounded = Terrain.terrainCacheStats(c.canvas);
     return { viewport: '1280 × 800, DPR 2', strokes: 120, points: 9600, before, after, start, reused, paints, wideBrushMs, cache, bounded };
-  }, { url, baseline: !!baseline });
+  }, { url, baseline: !!baseline, texturePath });
   await writeFile('test-results/brush-performance/result.json', JSON.stringify({ passed: false, ...report }, null, 2));
   assert.equal(report.start.strokesDrawn, report.reused.strokesDrawn, 'Camera, animation and cloned token documents must reuse paint');
   assert.equal(report.start.tilesBuilt, report.reused.tilesBuilt, 'Warm navigation must reuse tiles');

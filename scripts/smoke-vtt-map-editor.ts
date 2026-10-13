@@ -3,6 +3,7 @@ import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, writeFile, cp } from 'node:fs/promises';
 import { build } from 'esbuild';
+import path from 'node:path';
 import { newToken } from '../shared/vtt';
 import { rockAssets } from '../shared/vtt-rock-assets';
 import { terrainTextures } from '../shared/vtt-terrain';
@@ -17,11 +18,12 @@ const { pool } = await import('../server/db'),
 await migrate();
 await seed();
 await mkdir('test-results/map-editor', { recursive: true });
+await writeFile('test-results/map-editor/result.json',JSON.stringify({passed:false}));
 await mkdir('dist/client/__qa', { recursive: true });
 const bundle = await build({
   stdin: {
     contents:
-      "import {renderVtt} from './src/vtt-canvas';import {newScene,newToken} from './shared/vtt';import {bindCanopy,resolveCanopy} from './shared/vtt-canopies';import {drawTerrain} from './src/vtt-terrain-canvas';import {drawMapWind,mapWindMotion} from './src/vtt-map-wind';import {effectMaterialsReady} from './src/vtt-effects-materials';import {physicalPropsReady} from './src/vtt-effects-physical'; window.editorQA={renderVtt,newScene,newToken,bindCanopy,resolveCanopy,drawTerrain,drawMapWind,mapWindMotion,ready:Promise.all([effectMaterialsReady,physicalPropsReady])};",
+      "import {renderVtt} from './src/vtt-canvas';import {newScene,newToken} from './shared/vtt';import {bindCanopy,resolveCanopy} from './shared/vtt-canopies';import {drawTerrain} from './src/vtt-terrain-canvas';import {terrainTextures} from './shared/vtt-terrain';import {drawMapWind,mapWindMotion} from './src/vtt-map-wind';import {effectMaterialsReady} from './src/vtt-effects-materials';import {physicalPropsReady} from './src/vtt-effects-physical'; window.editorQA={renderVtt,newScene,newToken,bindCanopy,resolveCanopy,drawTerrain,terrainTextures,drawMapWind,mapWindMotion,ready:Promise.all([effectMaterialsReady,physicalPropsReady])};",
     resolveDir: process.cwd(),
   },
   bundle: true,
@@ -31,8 +33,10 @@ const bundle = await build({
 });
 await writeFile('dist/client/__qa/renderer.js', bundle.outputFiles[0].text);
 await cp('public/vtt/rocks-20261013', 'dist/client/vtt/rocks-20261013', { recursive: true });
-await mkdir('dist/client/vtt/scenery-v2-20261012', { recursive: true });
-for (const t of terrainTextures) await cp('public' + t.image, 'dist/client' + t.image);
+for (const t of terrainTextures) {
+  await mkdir(path.dirname('dist/client'+t.image), {recursive:true});
+  await cp('public'+t.image, 'dist/client'+t.image);
+}
 const { createApp } = await import('../server/app');
 const env = process.env.NODE_ENV;
 process.env.NODE_ENV = 'production';
@@ -484,7 +488,7 @@ try {
       ['earth', '#ff0000'],
     ])
       textures.set(
-        '/vtt/scenery-v2-20261012/terrain-' + id + '.webp',
+        q.terrainTextures.find((texture: {id:string;image:string})=>texture.id===id)!.image,
         await image(
           '<svg width="16" height="16"><rect width="16" height="16" fill="' + color + '"/></svg>',
         ),
