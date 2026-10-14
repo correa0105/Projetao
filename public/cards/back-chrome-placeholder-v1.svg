@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="1000" viewBox="0 0 700 1000">
+  <defs>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#555f6d"/><stop offset=".18" stop-color="#dde2e9"/><stop offset=".37" stop-color="#929daa"/><stop offset=".54" stop-color="#f8fafc"/><stop offset=".75" stop-color="#616c7a"/><stop offset="1" stop-color="#c1c9d2"/></linearGradient>
+    <linearGradient id="cut" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fafcff"/><stop offset=".35" stop-color="#4f5b68"/><stop offset=".66" stop-color="#cfd7df"/><stop offset="1" stop-color="#343e4b"/></linearGradient>
+    <pattern id="brushed" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 1H8M0 5H8" stroke="#fff" stroke-opacity=".07"/><path d="M0 3H8" stroke="#111824" stroke-opacity=".035"/></pattern>
+  </defs>
+  <rect width="700" height="1000" rx="28" fill="url(#metal)"/>
+  <rect width="700" height="1000" rx="28" fill="url(#brushed)"/>
+  <rect x="26" y="26" width="648" height="948" rx="24" fill="none" stroke="url(#cut)" stroke-width="7"/>
+  <rect x="44" y="44" width="612" height="912" rx="16" fill="none" stroke="#394655" stroke-opacity=".4"/>
+  <g transform="translate(350 500)"><circle r="177" fill="#1b2633" fill-opacity=".13" stroke="url(#cut)" stroke-width="7"/>
+    <circle r="157" fill="none" stroke="#f4f7fb" stroke-opacity=".7"/>
+    <path d="M0-127 29-29 127 0 29 29 0 127-29 29-127 0-29-29Z" fill="url(#cut)" stroke="#e9eef5" stroke-width="2"/>
+    <circle r="22" fill="#dce3eb" stroke="#485765" stroke-width="3"/>
+  </g>
+  <path d="M350 99 368 122 350 145 332 122ZM350 855 368 878 350 901 332 878Z" fill="url(#cut)"/>
+</svg>

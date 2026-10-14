@@ -11,20 +11,21 @@ import './cards-rarity.css';
 import { CardsHost } from './CardsHost';
 import {CardFrame} from './CardFrame';
 import {cardVisualLevel} from '../shared/card-presentation';
-export function CardFace({ card, small = false, level = 1 }: { card: Card; small?: boolean; level?: number }) {
+import {CardViewer3D} from './CardViewer3D';
+export function CardFace({ card, small = false, level = 1, finish = 'original' }: { card: Card; small?: boolean; level?: number; finish?:'original'|'chrome' }) {
   const visualLevel=cardVisualLevel(level);
   return (
-    <span className={'arcana-card-face' + (small ? ' small' : '')} data-rarity={card.rarity} data-level={visualLevel}>
+    <span className={'arcana-card-face' + (small ? ' small' : '')} data-rarity={card.rarity} data-level={visualLevel} data-finish={finish}>
       <span
         className="arcana-card-art"
         style={
           {
-            backgroundImage: `url('/cards/tarot-symbolic-20261013/${card.id}-${visualLevel===1?1:2}.webp')`,
+            backgroundImage: `url('/cards/tarot-symbolic-20261013/${card.id}-${visualLevel===1&&finish!=='chrome'?1:2}.webp')`,
           } as CSSProperties
         }
       />
-      {visualLevel===3 && <span className="arcana-card-metallic" aria-hidden="true"/>}
-      <CardFrame cell={card.cell} metallic={visualLevel===3}/>
+      {(visualLevel===3||finish==='chrome') && <span className="arcana-card-metallic" aria-hidden="true"/>}
+      <CardFrame cell={card.cell} metallic={visualLevel===3||finish==='chrome'} chrome={finish==='chrome'}/>
       <span className="arcana-card-title">
         <span className="arcana-card-name" style={{fontSize: `${Math.min(7.5, 112 / card.name.length)}cqw`}}>{card.name}</span>
       </span>
@@ -401,7 +402,7 @@ export function CardInspection({card, close, level=1}: {card: Card; close: () =>
   return createPortal(<dialog ref={dialog} className="card-inspection" aria-label={'Inspecionar '+card.name} onCancel={e => {e.preventDefault();close();}} onClick={e => {if(e.target === e.currentTarget) close();}}>
     <div className="card-inspection-content">
       <button type="button" className="card-inspection-close" aria-label="Fechar inspeção" onClick={close}><X size={20}/></button>
-      <CardFace card={card} level={level}/>
+      <CardViewer3D card={card} level={level}/>
       <span className="cards-rarity" style={{color:cardRarities[card.rarity].colour}}>{cardRarities[card.rarity].name}</span>
     </div>
   </dialog>, document.body);

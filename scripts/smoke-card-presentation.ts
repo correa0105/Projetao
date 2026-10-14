@@ -77,6 +77,55 @@ try {
         const large = await captions(dialog), bounds = await dialog.boundingBox();
         expect(bounds!.width).toBeLessThanOrEqual(viewport.width); expect(bounds!.height).toBeLessThanOrEqual(viewport.height);
         expect(await dialog.evaluate(el => getComputedStyle(el,'::backdrop').backdropFilter)).toContain('blur');
+        if(name==='A Vigília'&&level===1){
+          const stage=dialog.getByRole('group',{name:'Girar '+name+' em 3D',exact:true});
+          const cardModel=stage.locator('.card-viewer-model'),reverse=stage.locator('.card-viewer-back');
+          await expect(reverse).toHaveText('');
+          await dialog.getByRole('button',{name:'Virar',exact:true}).click();
+          await expect(dialog.getByRole('status')).toHaveText('Verso');
+          await page.waitForTimeout(270);
+          await expect(stage.locator('.card-viewer-front')).toHaveAttribute('aria-hidden','true');
+          expect(await reverse.evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('back-placeholder-v1.svg');
+          await page.screenshot({path:`test-results/card-presentation/reverse-${viewport.width}-${viewport.height}.png`});
+          await dialog.getByRole('button',{name:'Prévia cromada',exact:true}).click();
+          await expect(cardModel).toHaveAttribute('data-finish','chrome');
+          expect(await reverse.evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('back-chrome-placeholder-v1.svg');
+          await page.waitForTimeout(120);
+          await page.screenshot({path:`test-results/card-presentation/chrome-reverse-${viewport.width}-${viewport.height}.png`});
+          await stage.focus();await page.keyboard.press('Home');await page.waitForTimeout(270);
+          await expect(stage.locator('.arcana-card-face')).toHaveAttribute('data-finish','chrome');
+          await expect(stage.locator('.card-viewer-front')).toHaveAttribute('aria-hidden','false');
+          expect(await stage.locator('.arcana-card-art').evaluate(el=>getComputedStyle(el).filter)).toContain('saturate');
+          await page.screenshot({path:`test-results/card-presentation/chrome-front-${viewport.width}-${viewport.height}.png`});
+          await dialog.getByRole('button',{name:'Prévia cromada',exact:true}).click();
+          await stage.focus();await page.keyboard.press('ArrowRight');
+          await expect(cardModel).toHaveCSS('--card-rotation-y','15deg');
+          await page.keyboard.press('Home');await page.waitForTimeout(270);
+          const shape=await stage.boundingBox();
+          await page.mouse.move(shape!.x+shape!.width*.15,shape!.y+shape!.height*.45);
+          await page.mouse.down();
+          await page.mouse.move(shape!.x+shape!.width*.68,shape!.y+shape!.height*.38,{steps:12});
+          await page.mouse.up();
+          expect(await cardModel.evaluate(el=>parseFloat((el as HTMLElement).style.getPropertyValue('--card-rotation-y')))).toBeGreaterThan(180);
+          await expect(stage).toHaveAttribute('data-dragging','false');
+          await page.waitForTimeout(270);
+          await page.screenshot({path:`test-results/card-presentation/drag-rotation-${viewport.width}-${viewport.height}.png`});
+          await dialog.getByRole('button',{name:'Restaurar',exact:true}).click();await page.waitForTimeout(270);
+          await expect(cardModel).toHaveCSS('--card-rotation-y','0deg');
+          await expect(cardModel).toHaveCSS('--card-rotation-x','0deg');
+          if(viewport.width===320){
+            const cdp=await context.newCDPSession(page);
+            const point={x:shape!.x+shape!.width*.2,y:shape!.y+shape!.height*.5};
+            await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
+            await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:shape!.x+shape!.width*.72,y:point.y}]});
+            await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+            await expect(stage).toHaveAttribute('data-dragging','false');
+            expect(await cardModel.evaluate(el=>parseFloat((el as HTMLElement).style.getPropertyValue('--card-rotation-y')))).toBeGreaterThan(180);
+            await dialog.getByRole('button',{name:'Restaurar',exact:true}).click();await page.waitForTimeout(270);
+            await cdp.detach();
+          }
+          expect((await dialog.boundingBox())!.height).toBeLessThanOrEqual(viewport.height);
+        }
         if (['O Espelho Partido','A Vigília'].includes(name)) await page.screenshot({path:`test-results/card-presentation/inspect-${name==='A Vigília'?'vigil':'mirror'}-${viewport.width}-${viewport.height}-level-${level}.png`});
         await page.keyboard.press('Escape'); await expect(dialog).toHaveCount(0);
         checks.push({viewport, name, level, normal, large});
@@ -91,7 +140,7 @@ try {
   }
   expect(errors).toEqual([]); expect(missing).toEqual([]);
   expect((await api('/cards/'+character.id)).every((c:{level:number})=>c.level===1)).toBe(true);
-  await writeFile('test-results/card-presentation/result.json', JSON.stringify({passed:true,cards:8,captions:true,pagination:true,inspection:true,threeFinishes:true,ownedLevelsUnchanged:true,viewports:5,checks,errors,missing},null,2));
+  await writeFile('test-results/card-presentation/result.json', JSON.stringify({passed:true,cards:8,captions:true,pagination:true,inspection:true,threeFinishes:true,rotation3D:true,chromePreview:true,touchRotation:true,ownedLevelsUnchanged:true,viewports:5,checks,errors,missing},null,2));
   console.log('Eight cards: titles fit, two pages, ownership and inspection passed at five viewport sizes.');
 } catch(error) {
   await page.screenshot({path:'test-results/card-presentation/failure.png',fullPage:true}); throw error;

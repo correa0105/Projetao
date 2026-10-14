@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="1000" viewBox="0 0 700 1000">
+  <defs>
+    <radialGradient id="ink"><stop stop-color="#393340"/><stop offset="1" stop-color="#171b23"/></radialGradient>
+    <pattern id="weave" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M21 0 42 21 21 42 0 21Z" fill="none" stroke="#ac9261" stroke-opacity=".1"/></pattern>
+  </defs>
+  <rect width="700" height="1000" rx="28" fill="url(#ink)"/>
+  <rect x="28" y="28" width="644" height="944" rx="24" fill="url(#weave)" stroke="#ac9261" stroke-width="3"/>
+  <rect x="43" y="43" width="614" height="914" rx="17" fill="none" stroke="#ac9261" stroke-opacity=".55"/>
+  <g transform="translate(350 500)" fill="none" stroke="#c4ac79">
+    <circle r="176" stroke-width="2"/><circle r="158" stroke-opacity=".5"/>
+    <path d="M0-125 29-29 125 0 29 29 0 125-29 29-125 0-29-29Z" fill="#c4ac79" fill-opacity=".18" stroke-width="3"/>
+    <path d="M-88-88-16-38 0-68 16-38 88-88 38-16 68 0 38 16 88 88 16 38 0 68-16 38-88 88-38 16-68 0-38-16Z" stroke-opacity=".55"/>
+    <circle r="22" fill="#c4ac79" fill-opacity=".3"/>
+  </g>
+  <path d="M350 98 370 122 350 146 330 122ZM350 854 370 878 350 902 330 878Z" fill="none" stroke="#c4ac79" stroke-width="2"/>
+</svg>
