@@ -1,0 +1,77 @@
+{
+  "mode": "built-in image_gen",
+  "scope": "Eight chrome-only prismatic fronts; original art retained",
+  "assets": [
+    {
+      "id": "vigil",
+      "name": "A Vigília",
+      "path": "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/companion-delivery-validation/public/cards/tarot-symbolic-20261013/vigil-2.webp",
+      "prompt": "Edit target image 1: the existing tarot artwork \"A Vigília\". Style/material reference image 2: the approved luminous prismatic Raven. Preserve image 1's exact main objects, composition, anatomy, symbolism, landscape and detailed illustrated engraving. Apply the same premium fully PRISMATIC holographic opalescent foil throughout EVERYTHING in the art: subject, foreground, background, small details and linework reflect cyan, blue, violet, rose, mint, pearlescent and restrained warm spectral highlights. Keep dimensional tonal shading and fine readable engraving, without large flat black silhouettes, harsh threshold black and white, or a dominant gold/silver/black palette. Do not insert any bird, object, character or extra branch from the style reference. The whole card art should visibly share that iridescent artistic treatment. Full bleed portrait 7:10 composition, no external frame or border, no lettering, no title, no signature, no watermark. Finished high-quality game illustration rather than a photographed card.",
+      "generated": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-73b5c479-f7d6-431c-bd20-c1df9a964779.png",
+      "native": "data/cards/prismatic-20261014/vigil.png",
+      "public": "public/cards/prismatic-20261014/vigil.webp"
+    },
+    {
+      "id": "mirror",
+      "name": "O Espelho Partido",
+      "path": "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/companion-delivery-validation/public/cards/tarot-symbolic-20261013/mirror-2.webp",
+      "prompt": "Edit target image 1: the existing tarot artwork \"O Espelho Partido\". Style/material reference image 2: the approved luminous prismatic Raven. Preserve image 1's exact main objects, composition, anatomy, symbolism, landscape and detailed illustrated engraving. Apply the same premium fully PRISMATIC holographic opalescent foil throughout EVERYTHING in the art: subject, foreground, background, small details and linework reflect cyan, blue, violet, rose, mint, pearlescent and restrained warm spectral highlights. Keep dimensional tonal shading and fine readable engraving, without large flat black silhouettes, harsh threshold black and white, or a dominant gold/silver/black palette. Do not insert any bird, object, character or extra branch from the style reference. The whole card art should visibly share that iridescent artistic treatment. Full bleed portrait 7:10 composition, no external frame or border, no lettering, no title, no signature, no watermark. Finished high-quality game illustration rather than a photographed card.",
+      "generated": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-08f211ed-f276-459f-9e45-6310cfb5b923.png",
+      "native": "data/cards/prismatic-20261014/mirror.png",
+      "public": "public/cards/prismatic-20261014/mirror.webp"
+    },
+    {
+      "id": "moon",
+      "name": "A Lua Errante",
+      "path": "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/companion-delivery-validation/public/cards/tarot-symbolic-20261013/moon-2.webp",
+      "prompt": "Edit target image 1: the existing tarot artwork \"A Lua Errante\". Style/material reference image 2: the approved luminous prismatic Raven. Preserve image 1's exact main objects, composition, anatomy, symbolism, landscape and detailed illustrated engraving. Apply the same premium fully PRISMATIC holographic opalescent foil throughout EVERYTHING in the art: subject, foreground, background, small details and linework reflect cyan, blue, violet, rose, mint, pearlescent and restrained warm spectral highlights. Keep dimensional tonal shading and fine readable engraving, without large flat black silhouettes, harsh threshold black and white, or a dominant gold/silver/black palette. Do not insert any bird, object, character or extra branch from the style reference. The whole card art should visibly share that iridescent artistic treatment. Full bleed portrait 7:10 composition, no external frame or border, no lettering, no title, no signature, no watermark. Finished high-quality game illustration rather than a photographed card.",
+      "generated": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-04433345-506a-496b-ae2e-82425d06ac36.png",
+      "native": "data/cards/prismatic-20261014/moon.png",
+      "public": "public/cards/prismatic-20261014/moon.webp"
+    },
+    {
+      "id": "roots",
+      "name": "Raízes Antigas",
+      "path": "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/companion-delivery-validation/public/cards/tarot-symbolic-20261013/roots-2.webp",
+      "prompt": "Edit target image 1: the existing tarot artwork \"Raízes Antigas\". Style/material reference image 2: the approved luminous prismatic Raven. Preserve image 1's exact main objects, composition, anatomy, symbolism, landscape and detailed illustrated engraving. Apply the same premium fully PRISMATIC holographic opalescent foil throughout EVERYTHING in the art: subject, foreground, background, small details and linework reflect cyan, blue, violet, rose, mint, pearlescent and restrained warm spectral highlights. Keep dimensional tonal shading and fine readable engraving, without large flat black silhouettes, harsh threshold black and white, or a dominant gold/silver/black palette. Do not insert any bird, object, character or extra branch from the style reference. The whole card art should visibly share that iridescent artistic treatment. Full bleed portrait 7:10 composition, no external frame or border, no lettering, no title, no signature, no watermark. Finished high-quality game illustration rather than a photographed card.",
+      "generated": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-01195e6e-c40c-4255-8ba7-dc9a49086bd1.png",
+      "native": "data/cards/prismatic-20261014/roots.png",
+      "public": "public/cards/prismatic-20261014/roots.webp"
+    },
+    {
+      "id": "anchor",
+      "name": "Âncora da Maré",
+      "path": "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/companion-delivery-validation/public/cards/tarot-symbolic-20261013/anchor-2.webp",
+      "prompt": "Edit target image 1: the existing tarot artwork \"Âncora da Maré\". Style/material reference image 2: the approved luminous prismatic Raven. Preserve image 1's exact main objects, composition, anatomy, symbolism, landscape and detailed illustrated engraving. Apply the same premium fully PRISMATIC holographic opalescent foil throughout EVERYTHING in the art: subject, foreground, background, small details and linework reflect cyan, blue, violet, rose, mint, pearlescent and restrained warm spectral highlights. Keep dimensional tonal shading and fine readable engraving, without large flat black silhouettes, harsh threshold black and white, or a dominant gold/silver/black palette. Do not insert any bird, object, character or extra branch from the style reference. The whole card art should visibly share that iridescent artistic treatment. Full bleed portrait 7:10 composition, no external frame or border, no lettering, no title, no signature, no watermark. Finished high-quality game illustration rather than a photographed card.",
+      "generated": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-9114f9c6-210a-4f41-945e-f02e1992e00d.png",
+      "native": "data/cards/prismatic-20261014/anchor.png",
+      "public": "public/cards/prismatic-20261014/anchor.webp"
+    },
+    {
+      "id": "blade",
+      "name": "O Último Corte",
+      "path": "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/companion-delivery-validation/public/cards/tarot-symbolic-20261013/blade-2.webp",
+      "prompt": "Edit target image 1: the existing tarot artwork \"O Último Corte\". Style/material reference image 2: the approved luminous prismatic Raven. Preserve image 1's exact main objects, composition, anatomy, symbolism, landscape and detailed illustrated engraving. Apply the same premium fully PRISMATIC holographic opalescent foil throughout EVERYTHING in the art: subject, foreground, background, small details and linework reflect cyan, blue, violet, rose, mint, pearlescent and restrained warm spectral highlights. Keep dimensional tonal shading and fine readable engraving, without large flat black silhouettes, harsh threshold black and white, or a dominant gold/silver/black palette. Do not insert any bird, object, character or extra branch from the style reference. The whole card art should visibly share that iridescent artistic treatment. Full bleed portrait 7:10 composition, no external frame or border, no lettering, no title, no signature, no watermark. Finished high-quality game illustration rather than a photographed card.",
+      "generated": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-ccdf6c9f-c728-4049-b513-6e442009f9b5.png",
+      "native": "data/cards/prismatic-20261014/blade.png",
+      "public": "public/cards/prismatic-20261014/blade.webp"
+    },
+    {
+      "id": "throne",
+      "name": "O Trono Vazio",
+      "path": "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/companion-delivery-validation/public/cards/tarot-symbolic-20261013/throne-2.webp",
+      "prompt": "Edit target image 1: the existing tarot artwork \"O Trono Vazio\". Style/material reference image 2: the approved luminous prismatic Raven. Preserve image 1's exact main objects, composition, anatomy, symbolism, landscape and detailed illustrated engraving. Apply the same premium fully PRISMATIC holographic opalescent foil throughout EVERYTHING in the art: subject, foreground, background, small details and linework reflect cyan, blue, violet, rose, mint, pearlescent and restrained warm spectral highlights. Keep dimensional tonal shading and fine readable engraving, without large flat black silhouettes, harsh threshold black and white, or a dominant gold/silver/black palette. Do not insert any bird, object, character or extra branch from the style reference. The whole card art should visibly share that iridescent artistic treatment. Full bleed portrait 7:10 composition, no external frame or border, no lettering, no title, no signature, no watermark. Finished high-quality game illustration rather than a photographed card.",
+      "generated": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-6c0e6ec5-821a-41ec-b5fd-df587fb3e1da.png",
+      "native": "data/cards/prismatic-20261014/throne.png",
+      "public": "public/cards/prismatic-20261014/throne.webp"
+    },
+    {
+      "id": "raven",
+      "name": "O Corvo",
+      "prompt": "Precise edit of image 1, the prismatic raven artwork. Image 2 is the original artwork and serves ONLY as reference for correct tree branch topology. Remove the EXTRA detached upright branch along the left side behind/beside the raven's tail, rising from roughly x=5-16%, y=18-47%. It was not part of the original tree and looks disconnected. Fill that removed region seamlessly with the existing prismatic night sky. Keep the main continuous curved trunk and the connected branch that the raven's feet rest on, matching the original reference's coherent tree structure. Do not add any new trunk, branch, floating feather or object. Preserve everything else in image 1: raven pose, feather detail attached to the bird, holographic prismatic colors, moon, landscape, composition, art quality and portrait aspect. No text, no watermark, no frame.",
+      "generated": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-b642cbb6-3bde-434a-99eb-f7bd511dedac.png",
+      "native": "data/cards/prismatic-20261014/raven.png",
+      "public": "public/cards/prismatic-20261014/raven.webp"
+    }
+  ]
+}

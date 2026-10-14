@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1000">
+  <defs><path id="curl" d="M22 137 C3 101 10 53 33 29 C54 7 92 6 122 24 C151 42 161 58 151 78 C130 61 116 59 98 71 C104 47 89 28 67 31 C41 34 34 57 48 78 C22 73 16 94 22 137 Z"/></defs>
+  <g fill="white" stroke="white" stroke-width="5" stroke-linejoin="round">
+    <rect x="23" y="17" width="654" height="966" rx="42"/>
+    <use href="#curl"/><use href="#curl" transform="translate(700 0) scale(-1 1)"/>
+    <use href="#curl" transform="translate(0 1000) scale(1 -1)"/><use href="#curl" transform="translate(700 1000) scale(-1 -1)"/>
+  </g>
+</svg>

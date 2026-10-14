@@ -14,6 +14,7 @@ import {
   documentSchema,
   type VttDocument,
 } from '../shared/vtt.js';
+import {tokenPlacement} from '../shared/vtt-placement';
 import { movementBlocked, attachmentMovementError } from '../shared/vtt-movement.js';
 import { translateAttachmentGroup } from '../shared/vtt-attachments.js';
 import { vttAssetPath } from '../shared/vtt-token-image.js';
@@ -106,7 +107,7 @@ async function importCompanion(
   }
   if (existing && !position) return { token, changed: false };
   const at = position
-    ? snapPoint(position, scene.grid)
+    ? tokenPlacement(position,token,scene)
     : {
         x:
           scene.width / 2 +
@@ -117,7 +118,7 @@ async function importCompanion(
     x: Math.max(token.width / 2, Math.min(scene.width - token.width / 2, at.x)),
     y: Math.max(token.height / 2, Math.min(scene.height - token.height / 2, at.y)),
   };
-  if (!isGm && movementBlocked(scene, existing || to, to))
+  if (!isGm && movementBlocked(scene, existing || to, to, token))
     throw new AppError(400, 'Uma barreira bloqueia esta posição.');
   if (existing) {
     if (token.attachment)

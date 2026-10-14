@@ -2,6 +2,9 @@ import { blockingWalls, intersection, type Point, type VttScene } from './vtt.js
 import { attachedGroup, attachmentRoot } from './vtt-attachments.js';
 import type { VttToken } from './vtt.js';
 
+import {treeMovementBlocked} from './vtt-tree-trunks';
+import {houseMovementBlocked,houseDoorwaySnap} from './vtt-houses';
+import {pointSegmentDistance,segmentDistance,tokenGroundRadius} from './vtt-collision';
 const epsilon = 1e-7;
 function onSegment(p: Point, a: Point, b: Point) {
   return (
@@ -13,9 +16,17 @@ function onSegment(p: Point, a: Point, b: Point) {
   );
 }
 /** Walls are physical barriers regardless of the legacy lighting/movement toggle. */
-export function movementBlocked(scene: VttScene, from: Point, to: Point) {
+export function movementBlocked(scene: VttScene, from: Point, to: Point, token?: Pick<VttToken,'width'|'height'>) {
   if (Math.hypot(to.x - from.x, to.y - from.y) < epsilon) return false;
-  return blockingWalls(scene, true).some((w) => {
+  const radius=token?tokenGroundRadius(token):0;
+  if(treeMovementBlocked(scene,from,to,radius)||houseMovementBlocked(scene,from,to,radius))return true;
+  return blockingWalls(scene, true).filter(w=>!w.id.includes(':house-wall:')).some((w) => {
+    if(radius>0){
+      if(onSegment(from,w.a,w.b))return onSegment(to,w.a,w.b);
+      const before=pointSegmentDistance(from,w.a,w.b),after=pointSegmentDistance(to,w.a,w.b);
+      if(before<radius&&after>before&&!intersection(from,to,w.a,w.b,true))return false;
+      return segmentDistance(from,to,w.a,w.b)<radius-.001;
+    }
     // A token placed on a wall by the master can move away, but cannot travel along it.
     if (onSegment(from, w.a, w.b)) return onSegment(to, w.a, w.b);
     return (
@@ -39,12 +50,19 @@ export function attachmentMovementError(
       const to = { x: point.x + dx, y: point.y + dy };
       if (to.x < 0 || to.y < 0 || to.x > scene.width || to.y > scene.height)
         return 'Movimento fora do mapa.';
-      if (member.layer === 'tokens' && movementBlocked(scene, from, to))
+      if (member.layer === 'tokens' && movementBlocked(scene, from, to, member))
         return 'Uma parede, porta fechada ou janela fechada bloqueia o movimento.';
       from = to;
     }
   }
   return null;
+}
+/** A blocked drag advances to contact rather than refusing the entire grid step. */
+export function constrainMovement(scene:VttScene,token:VttToken,to:Point):Point {
+  if(token.layer==='tokens')to=houseDoorwaySnap(scene,token,to);
+  if(token.layer!=='tokens'||!attachmentMovementError(scene,token,[to]))return to;
+  let low=0,high=1;for(let i=0;i<25;i++){const fraction=(low+high)/2,p={x:token.x+(to.x-token.x)*fraction,y:token.y+(to.y-token.y)*fraction};if(attachmentMovementError(scene,token,[p]))high=fraction;else low=fraction;}
+  return{x:token.x+(to.x-token.x)*low,y:token.y+(to.y-token.y)*low};
 }
 
 /** Check a carried offset's rotational arc after translation, before saving. */
@@ -74,7 +92,7 @@ export function attachmentRotationError(
         };
       if (to.x < 0 || to.y < 0 || to.x > scene.width || to.y > scene.height)
         return 'A rotação do token vinculado ultrapassa o mapa.';
-      if (token.layer === 'tokens' && movementBlocked(scene, from, to))
+      if (token.layer === 'tokens' && movementBlocked(scene, from, to, token))
         return 'Uma parede bloqueia a rotação do token vinculado.';
       from = to;
     }

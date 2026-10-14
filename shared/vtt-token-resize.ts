@@ -2,6 +2,17 @@ import type { Point, VttToken } from './vtt';
 
 export type ResizeHandle = 'nw' | 'n' | 'ne' | 'e' | 'se' | 's' | 'sw' | 'w';
 type Rectangle = Pick<VttToken, 'x' | 'y' | 'width' | 'height' | 'rotation'>;
+export function tokenRotationHandle(token:Rectangle,zoom:number) {
+  const angle=token.rotation*Math.PI/180,distance=token.height/2+30/zoom;
+  return{x:token.x+Math.sin(angle)*distance,y:token.y-Math.cos(angle)*distance};
+}
+export function tokenRotationHandleAt(token:Rectangle,p:Point,zoom:number) {
+  const h=tokenRotationHandle(token,zoom);return Math.hypot(p.x-h.x,p.y-h.y)*zoom<=12;
+}
+export function rotationFromDrag(token:Rectangle,start:Point,p:Point,snap=false) {
+  const delta=(Math.atan2(p.y-token.y,p.x-token.x)-Math.atan2(start.y-token.y,start.x-token.x))*180/Math.PI;
+  const angle=token.rotation+delta;return (((snap?Math.round(angle/15)*15:angle)%360)+360)%360;
+}
 const directions: Record<ResizeHandle, [number, number]> = {
   nw: [-1, -1],
   n: [0, -1],

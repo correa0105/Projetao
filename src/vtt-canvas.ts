@@ -2,7 +2,10 @@ import { drawTerrain } from './vtt-terrain-canvas';
 import { renderBuffer, renderWorkCache, tokenOnScreen } from './vtt-render-cache';
 import type { TerrainStroke } from '../shared/vtt';
 import {houseAsset,houseOccupied,houseWalls} from '../shared/vtt-houses';
-import { tokenResizeHandles } from '../shared/vtt-token-resize';
+import {drawHouseDoor} from './vtt-house-doors';
+import {treeTrunk} from '../shared/vtt-tree-trunks';
+import {drawHouseVision} from './vtt-house-vision';
+import { tokenRotationHandle, tokenResizeHandles } from '../shared/vtt-token-resize';
 import { isTreeCanopy, canopyActor } from '../shared/vtt-canopies';
 import { captureCanopyAreas, drawCanopyForeground, clipCanopyBase } from './vtt-canopies-canvas';
 import { drawMapAtmosphere } from './vtt-atmosphere';
@@ -265,6 +268,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     c.strokeStyle = g.color;
     c.globalAlpha = g.opacity;
     c.lineWidth = 1 / cam.zoom;
+    c.shadowColor = '#000';c.shadowBlur=1.5/cam.zoom;
     const left = Math.max(0, cam.x - width / 2 / cam.zoom),
       right = Math.min(s.width, cam.x + width / 2 / cam.zoom),
       top = Math.max(0, cam.y - height / 2 / cam.zoom),
@@ -321,16 +325,6 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
   const canopyActors = s.tokens.filter(t=>canopyActor(t) && visibleCanopyToken(t));
   let canopyCover: HTMLCanvasElement | null = null;
   for (const layer of ['map', 'tokens', 'gm']) {
-    if(layer==='gm')for(const house of sortedTokens){
-      const asset=houseAsset(house);
-      if(!asset||!visibleCanopyToken(house)||!tokenOnScreen(house,view,cam.zoom))continue;
-      const roof=images.get(house.image),floor=images.get(asset.interior);
-      if(houseOccupied(house,canopyActors)&&floor?.complete&&floor.naturalWidth)continue;
-      if(!roof?.complete||!roof.naturalWidth)continue;
-      c.save();c.translate(house.x,house.y);c.rotate(house.rotation*Math.PI/180);
-      c.scale(house.flipX?-1:1,house.flipY?-1:1);c.globalAlpha=house.hidden?s.gmOpacity:1;
-      c.drawImage(roof,-house.width/2,-house.height/2,house.width,house.height);c.restore();
-    }
     if (layer === 'gm') drawCanopyForeground(c,s,images,canopyActors,canopyCover,visibleCanopyToken,o.selected,cam.zoom);
     if (layer === 'tokens' && o.visualEffects !== false && o.bloodEnabled !== false)
       drawBloodDecals(
@@ -368,7 +362,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       drawing(c, d);
       c.restore();
     }
-    for (const t of sortedTokens.filter((t) => t.layer === layer && !isTreeCanopy(t))) {
+    for (const t of sortedTokens.filter((t) => t.layer === layer && !isTreeCanopy(t)).sort((a,b)=>Number(!!houseAsset(b))-Number(!!houseAsset(a)))) {
       if ((!o.gm || o.preview) && t.hidden) continue;
       if (!tokenOnScreen(t, view, cam.zoom)) continue;
       if (o.preview && o.viewer && t.id !== o.viewer.id && !viewerSees(o.viewer, t, s)) continue;
@@ -388,13 +382,19 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       if (t.deathAt && layer !== 'map')
         c.filter = 'brightness(.42) sepia(1) saturate(4) hue-rotate(320deg)';
       c.scale(t.flipX ? -1 : 1, t.flipY ? -1 : 1);
-      const house=houseAsset(t),img=images.get(house?.interior||t.image);
+      const house=houseAsset(t),img=images.get(house&&houseOccupied(t,canopyActors)?house.interior:t.image);
       if (t.animatedAsset) {
         drawAnimatedAsset(c, t, img, now, reduced, o.visualEffects !== false);
       } else if (layer === 'map') {
-        if (img?.complete && img.naturalWidth)
-          c.drawImage(img, -t.width / 2, -t.height / 2, t.width, t.height);
-        else {
+        if (img?.complete && img.naturalWidth) {
+          const floor=house&&images.get(house.interior);
+          if(house&&!houseOccupied(t,canopyActors)&&floor?.complete&&floor.naturalWidth){
+            // Expose the entrance wall below the eave so the door is at ground level.
+            c.drawImage(floor,-t.width/2,-t.height/2,t.width,t.height);
+            c.save();c.beginPath();c.rect(-t.width/2,-t.height/2,t.width,t.height*(house.footprint.bottom-.045));c.clip();
+            c.drawImage(img,-t.width/2,-t.height/2,t.width,t.height);c.restore();
+          }else c.drawImage(img, -t.width / 2, -t.height / 2, t.width, t.height);
+        } else {
           c.fillStyle = t.color;
           c.fillRect(-t.width / 2, -t.height / 2, t.width, t.height);
         }
@@ -502,7 +502,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.restore();
       }
     }
-    if (layer === 'map') { drawGrid(); canopyCover = captureCanopyAreas(c,s); }
+    if (layer === 'map') { for(const h of sortedTokens)if(houseAsset(h)&&visibleCanopyToken(h)&&tokenOnScreen(h,view,cam.zoom))drawHouseDoor(c,s,h,reduced,images);drawGrid(); canopyCover = captureCanopyAreas(c,s); }
   }
   const spellView = {
     left: cam.x - width / 2 / cam.zoom,
@@ -535,7 +535,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         : s.tokens.filter((t) => t.controller === o.userId && t.layer === 'tokens' && !t.hidden);
     const cache = renderWorkCache(c.canvas), sources = sceneLights(s);
     const lightingKey = JSON.stringify([s.id,width,height,dpr,cam,master,s.ambient,s.grid.size,s.grid.unit,s.grid.scale,
-      viewers.map(v=>[v.x,v.y,v.vision]),s.walls,sources]);
+      viewers.map(v=>[v.x,v.y,v.vision]),s.walls,houseWalls(s),sources]);
     const rebuild = cache.lightingKey !== lightingKey;
     const light = renderBuffer(c.canvas,'light',rebuild), colors = renderBuffer(c.canvas,'colors',rebuild),
       mask = renderBuffer(c.canvas,'darkness',rebuild);
@@ -623,9 +623,11 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     c.drawImage(mask, 0, 0);
     c.restore();
   }
+  drawHouseVision(c,s,o);
   if (o.showWalls && o.gm && !o.preview && o.layer === 'lighting') {
     c.save();
     c.lineWidth = 4 / cam.zoom;
+    for(const t of s.tokens){const trunk=treeTrunk(t);if(!trunk)continue;c.strokeStyle='#bc7770';c.setLineDash([]);c.beginPath();c.arc(trunk.x,trunk.y,trunk.radius,0,Math.PI*2);c.stroke();}
     for (const wall of [...s.walls,...houseWalls(s)]) {
       c.strokeStyle =
         wall.kind === 'door'
@@ -761,6 +763,12 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       c.lineWidth = 1.5 / cam.zoom;
       c.fillStyle = '#19252b';
       c.strokeStyle = '#f5d893';
+      if(token.layer==='map'){
+        const h=tokenRotationHandle(token,cam.zoom),a=token.rotation*Math.PI/180;
+        path(c,[{x:token.x+Math.sin(a)*token.height/2,y:token.y-Math.cos(a)*token.height/2},h]);c.stroke();
+        c.beginPath();c.arc(h.x,h.y,8/cam.zoom,0,Math.PI*2);c.fill();c.stroke();
+        c.font=`${13/cam.zoom}px sans-serif`;c.textAlign='center';c.textBaseline='middle';c.fillStyle='#f5d893';c.fillText('↻',h.x,h.y);c.fillStyle='#19252b';
+      }
       for (const h of tokenResizeHandles(token, cam.zoom)) {
         c.fillRect(h.x - 5 / cam.zoom, h.y - 5 / cam.zoom, 10 / cam.zoom, 10 / cam.zoom);
         c.strokeRect(h.x - 5 / cam.zoom, h.y - 5 / cam.zoom, 10 / cam.zoom, 10 / cam.zoom);

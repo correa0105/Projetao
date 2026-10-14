@@ -1,0 +1,6 @@
+{
+  "mode": "built-in image_gen",
+  "key": "doorOak",
+  "prompt": "Asset: one realistic top-down wooden door leaf for a fantasy VTT. The reference house interior is ONLY material/style reference; do not generate a house. Generate a single horizontal rectangular door leaf, weathered oak with detailed uneven grain, several joined planks, worn dark forged iron hinge straps at the LEFT end and a tiny iron handle near the RIGHT end. Bird's-eye orthographic top-down floor-plan view, same painterly photographic fantasy quality as the house. Slim door leaf seen from above, four-to-one horizontal aspect, soft bevel and natural wood tone. No frame, no threshold, no surrounding floor, no wall, no labels. Transparent background, snug clean silhouette, no cast shadow outside the object. It will rotate about its left hinge in code.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-f1bad8a8-9aa6-4b22-aa0b-889f5df6828d.png"
+}

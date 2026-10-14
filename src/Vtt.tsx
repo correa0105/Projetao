@@ -1,6 +1,9 @@
 import {VttNatureAssets} from './VttNatureAssets';
 import {natureAssets,natureAssetMime} from '../shared/vtt-nature-assets';
-import {houseInteriorImages} from '../shared/vtt-houses';
+import {houseInteriorImages,houseAsset,houseDoorObstructed,fitHouseToGrid,housePlacement} from '../shared/vtt-houses';
+import {tokenPlacement} from '../shared/vtt-placement';
+import {VttHouseDoors} from './VttHouseDoors';
+import {houseDoorsAnimating} from './vtt-house-doors';
 import { VttTerrainBrush, type TerrainBrushSettings } from './VttTerrainBrush';
 import { terrainTextures, woodlandFloorImage } from '../shared/vtt-terrain';
 import type { TerrainStroke, TerrainLayer } from '../shared/vtt';
@@ -27,6 +30,7 @@ import {
 } from 'react';
 import {
   MousePointer2,
+  Hand,
   LassoSelect,
   ArrowDown,
   Ruler,
@@ -116,7 +120,7 @@ import {
   type VttAsset,
   type VttFocusSignal,
 } from '../shared/vtt';
-import { tokenResizeHandleAt, tokenResizeCursor, resizeTokenRectangle, type ResizeHandle } from '../shared/vtt-token-resize';
+import { tokenRotationHandleAt, rotationFromDrag, tokenResizeHandleAt, tokenResizeCursor, resizeTokenRectangle, type ResizeHandle } from '../shared/vtt-token-resize';
 import './vtt-token-editing.css';
 import { renderVtt, tokenAt, drawingAt, segmentDistance, type VttCamera } from './vtt-canvas';
 import type { AttackRequest } from '../shared/vtt-attack';
@@ -153,7 +157,7 @@ import { compendiumText, monsterDetails } from '../shared/vtt-compendium';
 import { monsterArt } from '../shared/vtt-monster-art';
 import { hpCommand } from '../shared/vtt-hp';
 import { lassoSelection } from '../shared/vtt-selection';
-import { movementBlocked } from '../shared/vtt-movement';
+import { movementBlocked,constrainMovement } from '../shared/vtt-movement';
 import { attachmentMovementError } from '../shared/vtt-movement';
 import {
   attachmentError,
@@ -245,6 +249,7 @@ const tabs: { id: Tab; name: string; icon: typeof Sun }[] = [
 ];
 const toolList: { id: Tool; name: string; icon: typeof Sun; gm?: boolean }[] = [
   { id: 'select', name: 'Selecionar (V)', icon: MousePointer2 },
+  { id: 'pan', name: 'Mover mapa (H)', icon: Hand },
   { id: 'lasso', name: 'Seleção livre (L)', icon: LassoSelect, gm: true },
   { id: 'ruler', name: 'Régua (R)', icon: Ruler },
   { id: 'attach', name: 'Vincular sobre outro token', icon: Link2 },
@@ -458,7 +463,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       screen: Point;
       camera: VttCamera;
       original: VttDocument;
-      kind: 'pan' | 'tokens' | 'drawing' | 'shape' | 'lasso' | 'resize';
+      kind: 'pan' | 'tokens' | 'drawing' | 'shape' | 'lasso' | 'resize' | 'rotate';
       resizeHandle?: ResizeHandle;
       tool?: Tool;
       layer?: string;
@@ -479,7 +484,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   const suppressContextUntil = useRef(0);
   const panHeld = useRef(false);
   useEffect(() => {
-    const down=(e:KeyboardEvent)=>{if(e.code==='Space' && !(e.target as HTMLElement).closest('input,textarea,select,button,[contenteditable]')) {e.preventDefault();panHeld.current=true;}};
+    const down=(e:KeyboardEvent)=>{if(e.code==='Space' && !(e.target as HTMLElement).closest('input,textarea,select,[contenteditable]')) {e.preventDefault();panHeld.current=true;}};
     const up=(e:KeyboardEvent)=>{if(e.code==='Space')panHeld.current=false;};
     const blur=()=>{panHeld.current=false;
       const d=drag.current;drag.current=null;
@@ -728,6 +733,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setTool('select');
     setAttackTargetId(null);
   }
+  async function toggleHouseDoor(house:VttToken) {
+    if(!state||!scene||preview||spectator||busy)return;
+    if(house.houseDoorOpen&&houseDoorObstructed(house,scene.tokens)){setNotice('A passagem está ocupada. Afaste o personagem antes de fechar a porta.');return;}
+    await save();
+    receive(await api<VttState>(`/vtt/rooms/${state.id}/houses/${house.id}/door`,{method:'PATCH',body:JSON.stringify({open:!house.houseDoorOpen})}));
+  }
   function moveSelectedToken(to: Point) {
     if (!scene || !token) return;
     const root = attachmentRoot(scene.tokens, token);
@@ -737,7 +748,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       );
       return;
     }
-    const destination = { x: root.x + to.x - token.x, y: root.y + to.y - token.y };
+    const destination = constrainMovement(scene,root,{ x: root.x + to.x - token.x, y: root.y + to.y - token.y });
     const error = attachmentMovementError(scene, root, [destination]);
     if (error) {
       setNotice(error);
@@ -1027,7 +1038,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }, [state?.id]);
   useEffect(() => {
     if (!scene) return;
-    for (const path of [scene.background, ...scene.tokens.map((t) => t.image), ...houseInteriorImages(scene), ...terrainTextures.map(t=>t.image)]) {
+    for (const path of [scene.background, ...scene.tokens.map((t) => t.image), ...houseInteriorImages(scene), '/vtt/house-parts-20261014/door-oak.webp', ...terrainTextures.map(t=>t.image)]) {
       if (!path || images.current.has(path)) continue;
       const image = new window.Image();
       image.onload = () => setImageVersion((v) => v + 1);
@@ -1136,14 +1147,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const restartAnimation = () => {
       cancelAnimationFrame(frame);
       draw();
-      if (!(infinite || until > Date.now() || (visualEffects && atmosphereTransitioning(c, scene.id))) || motionPreference.matches) return;
+      if (!(houseDoorsAnimating(c,scene.id) || infinite || until > Date.now() || (visualEffects && atmosphereTransitioning(c, scene.id))) || motionPreference.matches) return;
       let lastDraw = 0;
       const animate = (now: number) => {
         if (now - lastDraw >= 1000 / 60 - 1 && !document.hidden) {
           draw();
           lastDraw = now;
         }
-        if (infinite || Date.now() < until || (visualEffects && atmosphereTransitioning(c, scene.id))) frame = requestAnimationFrame(animate);
+        if (houseDoorsAnimating(c,scene.id) || infinite || Date.now() < until || (visualEffects && atmosphereTransitioning(c, scene.id))) frame = requestAnimationFrame(animate);
       };
       frame = requestAnimationFrame(animate);
     };
@@ -1241,7 +1252,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }
   useEffect(() => {
     function key(e: KeyboardEvent) {
-      if (drag.current?.kind === 'resize') {
+      if (drag.current?.kind === 'resize' || drag.current?.kind === 'rotate') {
         if (e.key === 'Escape') {
           e.preventDefault();
           const original = drag.current.original;
@@ -1298,7 +1309,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         e.preventDefault();
         duplicate();
       }
-      const shortcuts: Record<string, Tool> = { v: 'select', l: 'lasso', r: 'ruler', p: 'pen' };
+      const shortcuts: Record<string, Tool> = { v: 'select', h: 'pan', l: 'lasso', r: 'ruler', p: 'pen' };
       const shortcut = shortcuts[e.key.toLowerCase()];
       if (shortcut && !e.ctrlKey && !e.metaKey && (shortcut !== 'lasso' || (gm && !preview))) {
         setTool(shortcut);
@@ -1325,10 +1336,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               token.y + (e.key === 'ArrowUp' ? -step : e.key === 'ArrowDown' ? step : 0),
             ),
           };
-        if (scene && token.layer === 'tokens' && movementBlocked(scene, token, p)) {
-          setNotice('Uma parede, porta fechada ou janela fechada bloqueia o movimento.');
-          return;
-        }
         moveSelectedToken(p);
       }
     }
@@ -1383,14 +1390,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }
   function wheel(e:React.WheelEvent<HTMLCanvasElement | SVGSVGElement>) {
               if (!e.defaultPrevented) e.preventDefault();
-              if (drag.current?.kind === 'resize') return;
+              if (drag.current?.kind === 'resize' || drag.current?.kind === 'rotate') return;
               cancelAnimationFrame(focusFrame.current);
-              if (e.ctrlKey && token && token.layer !== 'map') {
+              if ((e.shiftKey || e.ctrlKey) && token) {
                 if (canToken && e.deltaY) {
                   const step = Math.sign(e.deltaY) * 15;
                   if (gm)
                     editSelected((t) => {
-                      if (t.layer !== 'map') t.rotation = (((t.rotation + step) % 360) + 360) % 360;
+                      t.rotation = (((t.rotation + step) % 360) + 360) % 360;
                     });
                   else editToken({ rotation: (((token.rotation + step) % 360) + 360) % 360 });
                 }
@@ -1409,13 +1416,17 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (!scene || !doc) return;
     const p = point(e),
       snap = e.altKey ? p : snapPoint(p, scene.grid);
-    if (forcePan || e.button === 1 || (e.button === 0 && (panHeld.current || tool === 'pan'))) {
+    if (forcePan || e.button === 1 || (e.button === 0 && (e.ctrlKey || panHeld.current || tool === 'pan'))) {
       e.preventDefault();e.currentTarget.focus({preventScroll:true});e.currentTarget.setPointerCapture(e.pointerId);
       setContextMenu(null);terrainActive.current=null;setTerrainDraft(null);
       drag.current={kind:'pan',start:p,last:p,screen:{x:e.clientX,y:e.clientY},camera,original:doc,tokens:[]};
       e.currentTarget.style.cursor='grabbing';return;
     }
     if (barrierTools.has(tool) && !barrierEditing) return;
+    if(e.button===0&&resizeToken&&resizeToken.layer==='map'&&tokenRotationHandleAt(resizeToken,p,camera.zoom)){
+      e.preventDefault();e.currentTarget.focus({preventScroll:true});e.currentTarget.setPointerCapture(e.pointerId);setContextMenu(null);
+      drag.current={kind:'rotate',start:p,last:p,screen:{x:e.clientX,y:e.clientY},camera,original:structuredClone(docRef.current!),tokens:[structuredClone(resizeToken)]};return;
+    }
     if (e.button === 0 && resizeToken) {
       const handle = tokenResizeHandleAt(resizeToken, p, camera.zoom);
       if (handle) {
@@ -1767,7 +1778,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (!d || !scene || !doc) {
       if (resizeToken) {
         const handle = tokenResizeHandleAt(resizeToken, point(e), camera.zoom);
-        e.currentTarget.style.cursor = handle ? tokenResizeCursor(handle, resizeToken.rotation) : 'default';
+        e.currentTarget.style.cursor = resizeToken.layer==='map'&&tokenRotationHandleAt(resizeToken,point(e),camera.zoom)?'grab':handle ? tokenResizeCursor(handle, resizeToken.rotation) : 'default';
       }
       return;
     }
@@ -1782,6 +1793,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     const p = point(e);
+    if(d.kind==='rotate'&&gm&&!preview){
+      const original=d.tokens[0],next=structuredClone(docRef.current!),s=next.scenes.find(s=>s.id===next.activeScene)!,target=s.tokens.find(t=>t.id===original.id);
+      if(!target||target.locked)return;
+      target.rotation=rotationFromDrag(original,d.start,p,e.shiftKey);d.moved=true;docRef.current=next;setDoc(next);return;
+    }
     if (d.kind === 'resize' && gm && !preview && d.resizeHandle) {
       const original = d.tokens[0];
       if (Math.hypot(e.clientX - d.screen.x, e.clientY - d.screen.y) < 2 && !d.moved) return;
@@ -1837,19 +1853,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       for (const original of d.tokens) {
         const t = s.tokens.find((t) => t.id === original.id)!,
           to = { x: original.x + p.x - d.start.x, y: original.y + p.y - d.start.y };
-        const grid =
-          s.grid.type === 'square'
-            ? {
-                ...s.grid,
-                offsetX: s.grid.offsetX + t.width / 2,
-                offsetY: s.grid.offsetY + t.height / 2,
-              }
-            : s.grid;
-        const dest = e.altKey ? to : snapPoint(to, grid);
-        const destination = {
-          x: Math.max(0, Math.min(s.width, dest.x)),
-          y: Math.max(0, Math.min(s.height, dest.y)),
-        };
+        const placed=tokenPlacement(to,t,s,e.altKey);
+        const destination = houseAsset(t)?housePlacement({...t,...placed},s,e.altKey):constrainMovement(s,t,placed);
         if (attachmentMovementError(s, t, [destination])) continue;
         if ((d.path?.length || 0) >= 2000) continue;
         if (t.x !== destination.x || t.y !== destination.y)
@@ -1911,12 +1916,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const d = drag.current;
     if (!d || !scene) return;
     drag.current = null;
-    if (d.kind === 'resize') {
+    if (d.kind === 'resize' || d.kind === 'rotate') {
       e.currentTarget.style.cursor = 'default';
       if (e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
       const original = d.tokens[0];
       const resized = docRef.current?.scenes.find(s => s.id === scene.id)?.tokens.find(t => t.id === original.id);
-      if (!gm || !resized || ['x','y','width','height'].every(k => resized[k as 'x'] === original[k as 'x'])) return;
+      if (!gm || !resized || ['x','y','width','height','rotation'].every(k => resized[k as 'x'] === original[k as 'x'])) return;
       undo.current.push(d.original);
       if (undo.current.length > 30) undo.current.shift();
       redo.current = [];
@@ -2095,8 +2100,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   function newMarker() {
     if (!scene) return;
     const t = newToken(crypto.randomUUID(), scene);
-    t.x = camera.x;
-    t.y = camera.y;
+    Object.assign(t,tokenPlacement(camera,t,scene));
     t.layer = layer === 'lighting' ? 'tokens' : (layer as VttToken['layer']);
     editScene((s) => s.tokens.push(t));
     changeLayer(t.layer);
@@ -2108,9 +2112,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if(scene.tokens.length>=1000){setNotice('Limite de 1.000 peças neste mapa.');return;}
     const asset=natureAssets.find(a=>a.id===id);if(!asset)return;
     const factor=Math.min(1,scene.width/(asset.width*scene.grid.size*scale),scene.height/(asset.height*scene.grid.size*scale),8000/(asset.width*scene.grid.size*scale),8000/(asset.height*scene.grid.size*scale));
-    const width=Math.max(8,asset.width*scene.grid.size*scale*factor),height=Math.max(8,asset.height*scene.grid.size*scale*factor),p=at?snapPoint(at,scene.grid):camera;
+    const width=Math.max(8,asset.width*scene.grid.size*scale*factor),height=Math.max(8,asset.height*scene.grid.size*scale*factor),p=tokenPlacement(at||camera,{width,height},scene);
     const t=newToken(crypto.randomUUID(),scene);
     Object.assign(t,{name:asset.name,image:asset.image,width,height,layer:'map',vision:0,bleeds:false,x:Math.max(width/2,Math.min(scene.width-width/2,p.x)),y:Math.max(height/2,Math.min(scene.height-height/2,p.y))});
+    if(houseAsset(t))Object.assign(t,housePlacement(t,scene));
     editScene(s=>s.tokens.push(t));changeLayer('map');setSelection([t.id]);setTool('select');
   }
   function addTreeAsset(id: string, scale = 1, at?: Point) {
@@ -2122,7 +2127,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         8,
         Math.min(scene.width, scene.height, scene.grid.size * asset.squares * scale),
       );
-    const center = at ? snapPoint(at, scene.grid) : camera;
+    const center = tokenPlacement(at||camera,{width:size,height:size},scene);
     Object.assign(token, {
       name: asset.name,
       image: asset.image,
@@ -2150,7 +2155,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const size = Math.min(scene.width, scene.height, scene.grid.size * asset.squares);
     Object.assign(t, { name: asset.name, image: asset.image, layer: 'map',
       width: size, height: size, animatedAsset: { id, speed: 1, intensity: .8, playing: true } });
-    const p = at ? snapPoint(at, scene.grid) : camera;
+    const p = tokenPlacement(at||camera,t,scene);
     t.x = Math.max(size / 2, Math.min(scene.width - size / 2, p.x));
     t.y = Math.max(size / 2, Math.min(scene.height - size / 2, p.y));
     editScene(s => s.tokens.push(t));
@@ -2181,7 +2186,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         details: e.details,
       },
     });
-    const origin = at ? snapPoint(at, scene.grid) : camera;
+    const origin = tokenPlacement(at||camera,t,scene);
     t.x = Math.max(
       Math.min(t.width / 2, scene.width / 2),
       Math.min(scene.width - t.width / 2, origin.x),
@@ -3220,6 +3225,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }
             }}
           />
+          {!spectator&&!preview&&<VttHouseDoors scene={scene} camera={camera} width={bounds.width} height={bounds.height} gm={gm} userId={user.id} disabled={busy} toggle={h=>void act(()=>toggleHouseDoor(h))}/>}
           <VttTurnCarousel
             controls={combat}
             gm={gm}
@@ -3613,6 +3619,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </p>
                   {gm && (
                     <>
+                      <label className="vtt-check"><input type="checkbox" checked={scene.grid.type!=='none'&&scene.grid.opacity>0} onChange={e=>editScene(s=>{if(e.target.checked){if(s.grid.type==='none')s.grid.type='square';s.grid.opacity=Math.max(.38,s.grid.opacity);}else s.grid.opacity=0;})}/>Mostrar grade</label>
+                      <label className="vtt-check"><input type="checkbox" checked={scene.grid.snap} onChange={e=>editScene(s=>{s.grid.snap=e.target.checked;})}/>Encaixar objetos na grade</label>
                       <div className="vtt-row">
                         <button onClick={() => setMapsOpen(true)}>
                           <MapIcon size={15} />
@@ -3935,6 +3943,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             <NumberField label="Velocidade da animação" value={token.animatedAsset.speed} min={.25} max={2} onChange={v=>editToken({animatedAsset:{...token.animatedAsset!,speed:v}})}/>
                             <label>Intensidade<input aria-label="Intensidade do asset" type="range" min={.2} max={1} step={.05} value={token.animatedAsset.intensity} onChange={e=>editToken({animatedAsset:{...token.animatedAsset!,intensity:Number(e.target.value)}})}/></label>
                           </fieldset>}
+                          {houseAsset(token)&&<><button onClick={()=>void act(()=>toggleHouseDoor(token))}>{token.houseDoorOpen?'Fechar':'Abrir'} porta principal</button><button onClick={()=>editScene(s=>fitHouseToGrid(s.tokens.find(t=>t.id===token.id)!,s))}>Ajustar casa à escala dos personagens</button><p className="vtt-muted">Corrige a proporção da casa e alinha a porta à grade, mantendo o tamanho dos personagens.</p></>}
                           <h3>Barra de boss</h3>
                           <label>
                             Barra de boss
@@ -3980,7 +3989,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               onChange={(v) => editToken({ height: v })}
                             />
                           </div>
-                          <p className="vtt-token-resize-hint">Arraste os cantos ou as bordas do quadrado no mapa. Os cantos preservam a proporção; Shift permite ajustar livremente.</p>
+                          <p className="vtt-token-resize-hint">Arraste os cantos ou as bordas do quadrado no mapa. Os cantos preservam a proporção; Shift permite ajustar livremente. A alça redonda gira o asset; Shift + rolagem gira em passos de 15°.</p>
                           <label>
                             Camada do token
                             <select
@@ -4316,8 +4325,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                                         const t = newToken(crypto.randomUUID(), scene);
                                         t.name = a.name.replace(/\.[^.]+$/, '');
                                         t.image = a.path;
-                                        t.x = camera.x;
-                                        t.y = camera.y;
+                                        Object.assign(t,tokenPlacement(camera,t,scene));
                                         editScene((s) => s.tokens.push(t));
                                         setSelection([t.id]);
                                       }

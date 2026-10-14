@@ -1,0 +1,5 @@
+.vtt-house-doors{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:3}
+.vtt-workspace .vtt-house-doors button{position:absolute;transform:translate(-50%,-50%);width:32px;height:32px;min-height:0;padding:0;display:grid;place-items:center;pointer-events:auto;background:#211b15ed;border:1px solid #ac9062;border-radius:50%;color:#e3d3b5;box-shadow:0 2px 8px #0008}
+.vtt-workspace .vtt-house-doors button:hover{background:#51422d}
+.vtt-workspace .vtt-house-doors button:focus-visible{outline:2px solid #f4dfaa;outline-offset:3px}
+.vtt-workspace .vtt-house-doors button:active{transform:translate(-50%,-50%)}

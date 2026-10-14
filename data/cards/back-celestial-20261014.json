@@ -1,0 +1,16 @@
+{
+  "mode": "built-in image_gen",
+  "source": "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-3487463c-9a8a-4ad1-b2b8-f9e08e4c78b9.png",
+  "variants": [
+    {
+      "key": "newBackDark",
+      "prompt": "Precisely recolor this supplied tarot card back into the higher-level dark version. Preserve the exact moon, stars, feathers, radial sunburst, dots, border and layout with no extra objects and no words. Replace beige paper with textured charcoal slate and the dark violet engraving with luminous ivory and restrained warm brass accents. Keep every fine line readable, elegant premium print finish, portrait full bleed. No raven, no signature, no watermark. Match the supplied composition exactly.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-736a8ba7-3294-49cf-92f6-afbf16ebc4f8.png"
+    },
+    {
+      "key": "newBackPrism",
+      "prompt": "Precisely recolor this supplied tarot card back into a premium fully PRISMATIC holographic opal version matching the prismatic tarot fronts. Preserve the exact moon, stars, feathers, radial sunburst, dots, border and symmetrical layout. Entire background and every illustrated detail reflect luminous cyan, blue, violet, rose, mint, pearlescent spectral hues with fine readable engraving. No dominant black/silver/gold blocks. No added objects or bird. No text, signature or watermark. Portrait full bleed, straight-on flat clean game asset.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-c9e7ee12-82bd-40da-bcbc-a02053f85f5d.png"
+    }
+  ]
+}

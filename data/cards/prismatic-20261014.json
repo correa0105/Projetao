@@ -1,0 +1,20 @@
+{
+  "mode": "built-in image_gen",
+  "scope": "Chrome-only prismatic finish; originals retained",
+  "assets": [
+    {
+      "key": "ravenPrism",
+      "path": "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/companion-delivery-validation/public/cards/tarot-symbolic-20261013/raven-2.webp",
+      "prompt": "Edit target: the supplied raven tarot artwork. Preserve the exact portrait composition, perched raven anatomy and pose, moon behind its head, gnarled branch and distant landscape, and the intricate illustrated linework. Change the entire artwork into premium PRISMATIC holographic foil, including the raven, branch, moon, landscape and background: richly luminous opalescent cyan, blue, violet, rose, mint, pearlescent highlights and subtle warm spectral reflections. Details must keep dimensional shading and thin readable engraving, never turn into large flat black silhouettes or harsh threshold black and white. No dominant gold/silver/black palette. Remove all three floating detached feathers to the right of the bird; replace them with continuous elegant prismatic sky. Keep the feathers attached to the bird. Full bleed portrait 7:10 aspect, no card border, no lettering, no title, no signature, no watermark. This is a finished clean game artwork, not a photograph of a card.",
+      "native": "data/cards/raven-prismatic-source-20261014.png",
+      "public": "/cards/raven-prismatic-20261014.webp"
+    },
+    {
+      "key": "backPrism",
+      "path": "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/companion-delivery-validation/public/cards/back-raven-silver-gold-20261014.webp",
+      "prompt": "Edit target: the supplied tarot card back. Preserve the large flying raven pose with outstretched wings, moon and astronomical/ornamental layout, border and portrait proportions. Refinish the ENTIRE card in luminous PRISMATIC holographic opal foil: detailed raven body and wings themselves reflect cyan, blue, violet, pink, mint and pearlescent spectral colors, with shaded crystalline engraving and fine linework. Background, ornament, frame and bird form one cohesive premium prismatic material. No dominant silver/black/gold scheme and no solid flat black bird. Remove the detached floating feather decorations around the border and fill with refined prismatic space, preserving the bird's own attached wing and tail feathers. Remove the bottom-right signature/watermark completely, fill that area seamlessly with the card material, add no text or signature anywhere. Full bleed clean portrait card back texture, no perspective, no external shadows, no labels, no title. Do not crop the bird or wings more than the original.",
+      "native": "data/cards/back-prismatic-source-20261014.png",
+      "public": "/cards/back-prismatic-20261014.webp"
+    }
+  ]
+}

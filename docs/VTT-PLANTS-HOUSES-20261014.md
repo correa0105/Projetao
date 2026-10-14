@@ -1,5 +1,10 @@
 # 25 plantas e 25 casas no VTT
 
+Este guia registra a integração inicial. As correções posteriores de escala,
+porta fechada persistida, visão interna/janelas, grid, troncos e navegação estão
+em [VTT-SCENERY-CONTROLS-20261014.md](VTT-SCENERY-CONTROLS-20261014.md) e
+substituem a descrição inicial de entrada sempre aberta e telhado sobre os tokens.
+
 Atualização de 14/10/2026. As 50 artes foram concluídas e integradas à Biblioteca
 → Assets → Plantas/Casas, junto das árvores e pedras. O atalho
 Cenários também continua disponível. O mestre pode pesquisar, abrir a

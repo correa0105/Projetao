@@ -67,15 +67,15 @@ export function CardViewer3D({card,level=1}:{card:Card;level?:number}) {
       }}>
       <div ref={model} className="card-viewer-model" data-finish={chrome?'chrome':'original'}>
         <div ref={front} className="card-viewer-front" aria-hidden="false"><CardFace card={card} level={level} finish={chrome?'chrome':'original'}/></div>
-        <div ref={back} className="card-viewer-back" role="img" aria-label={'Verso de '+card.name} aria-hidden="true" style={{backgroundImage:`url('${chrome?cardBacks.chrome:cardBacks.original}')`} as CSSProperties}/>
-        {['left','right','top','bottom'].map(edge=><span key={edge} className={'card-viewer-edge edge-'+edge} aria-hidden="true"/>)}
+        <div ref={back} className="card-viewer-back" role="img" aria-label={'Verso de '+card.name} aria-hidden="true" style={{backgroundImage:`url('${chrome?cardBacks.chrome:cardVisualLevel(level)===2?cardBacks.dark:cardBacks.original}')`} as CSSProperties}/>
+        {[-1.5,-.5,.5,1.5].map(depth=><span key={depth} className="card-viewer-core" style={{transform:`translateZ(${depth}px)`}} aria-hidden="true"/>)}
       </div>
     </div>
     <div className="card-viewer-controls">
       <button type="button" onClick={()=>{rotate(rotation.current.y+180);setSide(side==='Frente'?'Verso':'Frente');}}><Rotate3D size={14}/>Virar</button>
       <button type="button" onClick={()=>{rotate(0,0);setSide('Frente');}}><RotateCcw size={14}/>Restaurar</button>
-      {cardVisualLevel(level)<3&&<button type="button" aria-pressed={chromePreview} onClick={()=>setChromePreview(!chromePreview)}>Prévia cromada</button>}
+      {cardVisualLevel(level)<3&&<button type="button" aria-pressed={chromePreview} onClick={()=>setChromePreview(!chromePreview)}>Prévia prismática</button>}
     </div>
-    <p className="card-viewer-help" id="card-viewer-help">Arraste para girar · Use as setas ou Home<span role="status">{side}{chrome?' · Cromada':''}</span></p>
+    <p className="card-viewer-help" id="card-viewer-help">Arraste para girar · Use as setas ou Home<span role="status">{side}{chrome?' · Prismática':''}</span></p>
   </>;
 }

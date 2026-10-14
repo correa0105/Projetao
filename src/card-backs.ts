@@ -1,5 +1,2 @@
-// The original stays intact; only chrome uses the silver-and-gold variant.
-export const cardBacks={
-  original:'/cards/back-raven-20261014.png',
-  chrome:'/cards/back-raven-silver-gold-20261014.webp',
-} as const;
+// Three matching backs; original source and earlier designs stay archived.
+export const cardBacks={original:'/cards/back-celestial-original-20261014.webp',dark:'/cards/back-celestial-dark-20261014.webp',chrome:'/cards/back-celestial-prismatic-20261014.webp'} as const;

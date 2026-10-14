@@ -60,6 +60,8 @@ import {
   type VttToken,
   type VttFocusSignal,
 } from '../shared/vtt.js';
+import {houseAsset,houseDoorPoint,houseDoorObstructed,canReachHouseDoor,housePointVisible} from '../shared/vtt-houses';
+import {tokenPlacement} from '../shared/vtt-placement';
 const uuid = z.string().uuid();
 type DB = Pick<PoolClient, 'query'>;
 async function room(db: DB, id: string, user: string, lock = false) {
@@ -93,6 +95,8 @@ function canSee(t: VttToken, s: VttScene, user: string) {
   if (attachmentUnavailable(s.tokens, t)) return false;
   if (t.controller === user) return true;
   if (s.fog && s.fogMode === 'manual' && !manualFogSees(t, s)) return false;
+  const interiorViewers=s.tokens.filter(v=>v.layer==='tokens'&&v.controller===user&&!v.hidden);
+  if(interiorViewers.length&&!interiorViewers.some(v=>housePointVisible(v,t,s)))return false;
   if (!s.lighting && !(s.fog && s.fogMode === 'vision')) return true;
   const viewers = s.tokens.filter((t) => t.controller === user && t.layer === 'tokens');
   return viewers.some((v) => !v.hidden && viewerSees(v, t, s));
@@ -294,7 +298,7 @@ async function importCharacter(
   const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
   const existing = scene.tokens.find((t) => t.characterId === cid && t.controller === user);
   const placement = (token: { width: number; height: number }) => {
-    const at = snapPoint(position!, scene.grid);
+    const at = tokenPlacement(position!,token,scene);
     return {
       x: Math.max(
         Math.min(token.width / 2, scene.width / 2),
@@ -313,7 +317,7 @@ async function importCharacter(
     if (existing.locked || (r.owner_id !== user && existing.hidden))
       throw new AppError(403, 'Este token está bloqueado ou oculto.');
     const destination = placement(existing);
-    if (r.owner_id !== user && movementBlocked(scene, existing, destination))
+    if (r.owner_id !== user && movementBlocked(scene, existing, destination, existing))
       throw new AppError(400, 'Uma parede, porta fechada ou janela fechada bloqueia o movimento.');
     if (existing.x === destination.x && existing.y === destination.y) return false;
     const groupError = attachmentMovementError(scene, existing, [destination]);
@@ -906,6 +910,19 @@ export function vttRouter() {
     });
     res.json(await state(rid, res.locals.user.id));
   });
+  router.patch('/vtt/rooms/:id/houses/:token/door', async (req,res)=>{
+    const rid=uuid.parse(req.params.id),tid=uuid.parse(req.params.token),{open}=z.object({open:z.boolean()}).strict().parse(req.body);
+    await transaction(async db=>{
+      const r=await room(db,rid,res.locals.user.id,true),s=r.document.scenes.find(s=>s.id===r.document.activeScene)!,h=s.tokens.find(t=>t.id===tid);
+      const master=r.owner_id===res.locals.user.id&&await isAdministrator(res.locals.user.id,db);
+      if(!h||!houseAsset(h))throw new AppError(404,'Casa não encontrada.');
+      if(!master&&(r.role==='spectator'||!canReachHouseDoor(h,s,res.locals.user.id)||!canSee({...h,...houseDoorPoint(h),width:1,height:1},s,res.locals.user.id)))throw new AppError(403,'Aproxime seu personagem da porta para abri-la ou fechá-la.');
+      if((h.houseDoorOpen===true)===open)return;
+      if(!open&&houseDoorObstructed(h,s.tokens))throw new AppError(400,'A passagem está ocupada. Afaste o personagem antes de fechar a porta.');
+      h.houseDoorOpen=open;
+      await db.query('UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',[rid,JSON.stringify(r.document)]);
+    });res.json(await state(rid,res.locals.user.id));
+  });
   router.patch('/vtt/rooms/:id/tokens/:token', async (req, res) => {
     const rid = uuid.parse(req.params.id),
       tid = uuid.parse(req.params.token);
@@ -960,7 +977,7 @@ export function vttRouter() {
       for (const to of path) {
         if (to.x < 0 || to.y < 0 || to.x > s.width || to.y > s.height)
           throw new AppError(400, 'Movimento fora do mapa.');
-        if (movementBlocked(s, from, to))
+        if (movementBlocked(s, from, to, t))
           throw new AppError(
             400,
             'Uma parede, porta fechada ou janela fechada bloqueia o movimento.',

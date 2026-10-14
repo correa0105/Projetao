@@ -20,11 +20,13 @@ type Split = { layer: string; under?: HTMLCanvasElement; active: HTMLCanvasEleme
 type Tile = {
   bounds: Bounds; density: number; canvas: HTMLCanvasElement; valid: boolean;
   split?: Split; draft?: TerrainStroke; preview?: HTMLCanvasElement;
+  baked?: {key:string;canvas:HTMLCanvasElement};
   revision: number; grass?: { scale: number; image: HTMLImageElement; canvas: HTMLCanvasElement };
   ground?: { signature: string; image: HTMLImageElement; canvas: HTMLCanvasElement };
   shore?: { revision: number; canvas: HTMLCanvasElement };
 };
 type Cache = {
+  epoch: number; flat?: {key:string;canvas:HTMLCanvasElement;filled:Set<string>;density:number};
   scene: string; source?: TerrainStroke[]; strokes: Stroke[]; layers: TerrainLayer[];
   images: (HTMLImageElement | undefined)[]; imageWidths: number[];
   tiles: Map<string, Tile>; mask: HTMLCanvasElement; piece: HTMLCanvasElement; layer: HTMLCanvasElement; work: HTMLCanvasElement;
@@ -57,10 +59,10 @@ function clear(c: HTMLCanvasElement, w = RASTER, h = RASTER) {
   ctx.resetTransform(); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; ctx.filter = 'none'; ctx.clearRect(0, 0, w, h);
   return ctx;
 }
-function bytes(t: Tile) { return RASTER * RASTER * 4 * (1 + (t.split ? 1 + Number(!!t.split.under) + Number(!!t.split.over) : 0) + (t.preview ? 1 : 0) + Number(!!t.grass) + Number(!!t.ground) + Number(!!t.shore)); }
+function bytes(t: Tile) { return RASTER * RASTER * 4 * (1 + (t.split ? 1 + Number(!!t.split.under) + Number(!!t.split.over) : 0) + (t.preview ? 1 : 0) + Number(!!t.grass) + Number(!!t.ground) + Number(!!t.shore) + Number(!!t.baked)); }
 export function terrainCacheStats(c: HTMLCanvasElement) {
   const cache = caches.get(c);
-  return cache ? { ...cache.stats, cacheBytes: [...cache.tiles.values()].reduce((n, t) => n + bytes(t), 0), maskBytes: [...cache.masks.values()].reduce((n, m) => n + m.canvas.width * m.canvas.height * 4, 0), tiles: cache.tiles.size } : null;
+  return cache ? { ...cache.stats, cacheBytes: (cache.flat?cache.flat.canvas.width*cache.flat.canvas.height*4:0)+[...cache.tiles.values()].reduce((n, t) => n + bytes(t), 0), maskBytes: [...cache.masks.values()].reduce((n, m) => n + m.canvas.width * m.canvas.height * 4, 0), tiles: cache.tiles.size } : null;
 }
 
 // Immutable documents may clone the paint during token movement. Compare only when
@@ -73,6 +75,7 @@ function update(cache: Cache, scene: VttScene, images: RenderOptions['images']) 
   const loaded = terrainTextures.map(t => images.get(t.image));
   const imageChange = loaded.some((img, i) => img !== cache.images[i] || (img?.naturalWidth || 0) !== cache.imageWidths[i]);
   const source = scene.terrain || [];
+  if (layerChange || imageChange) cache.epoch++;
   if (layerChange || imageChange) for (const t of cache.tiles.values()) { t.valid = false; t.split = undefined; t.preview = undefined; t.draft = undefined; t.grass = undefined; t.revision++; }
   if (source !== cache.source) {
     const old = new Map(cache.strokes.map(s => [s.value.id, s]));
@@ -84,6 +87,7 @@ function update(cache: Cache, scene: VttScene, images: RenderOptions['images']) 
       return { value, bounds: area };
     });
     for (const removed of old.values()) changed.push(removed.bounds);
+    if(changed.length)cache.epoch++;
     for(const [key,mask] of cache.masks) if(!next.some(s=>s.value.id===mask.value.id)) cache.masks.delete(key);
     const appended = !layerChange && !imageChange && source.length >= cache.strokes.length &&
       cache.strokes.every((s, i) => sameStroke(s.value, source[i]));
@@ -303,22 +307,33 @@ export function drawTerrain(c: CanvasRenderingContext2D, scene: VttScene, o: Ren
   if (!cache || cache.scene !== scene.id) {
     const mask = canvas(); mask.getContext('2d', { willReadFrequently: true });
     const coverage=canvas();coverage.getContext('2d',{willReadFrequently:true});
-    cache = { scene: scene.id, strokes: [], layers: [], images: [], imageWidths: [], tiles: new Map(), mask, piece: canvas(), layer: canvas(), work: canvas(), coverage,layerCoverage:canvas(),layerAlpha:canvas(),blurInput: new Float32Array(0), blurOutput: new Float32Array(0), masks: new Map(), stats: { tilesBuilt: 0, strokesDrawn: 0, draftTilesRendered: 0, groundTilesBuilt:0, shoreTilesBuilt:0 } };
+    cache = { epoch:0, scene: scene.id, strokes: [], layers: [], images: [], imageWidths: [], tiles: new Map(), mask, piece: canvas(), layer: canvas(), work: canvas(), coverage,layerCoverage:canvas(),layerAlpha:canvas(),blurInput: new Float32Array(0), blurOutput: new Float32Array(0), masks: new Map(), stats: { tilesBuilt: 0, strokesDrawn: 0, draftTilesRendered: 0, groundTilesBuilt:0, shoreTilesBuilt:0 } };
     caches.set(c.canvas, cache);
   }
   update(cache, scene, o.images);
   const zoom = o.camera.zoom * o.dpr, tx = c.canvas.width / 2 - o.camera.x * zoom, ty = c.canvas.height / 2 - o.camera.y * zoom;
   // World tiles survive camera moves and small zoom changes. Rasterize only the
   // visible tiles; the LRU budget bounds retained bitmap memory.
-  const density = Math.max(.125, Math.min(4, 2 ** Math.ceil(Math.log2(zoom)))), world = TILE / density;
+  // Fixed map resolution: scrolling no longer invalidates/replays brush history.
+  // Full native detail. Large maps use consolidated chunks under the same LRU
+  // ceiling instead of allocating a gigabyte-sized bitmap or blurring the art.
+  const consolidate=scene.width*scene.height<=16*1024*1024&&Math.max(scene.width,scene.height)<=8192;
+  const density=1,world=TILE;
   const visible = { left: Math.max(0, -tx / zoom), top: Math.max(0, -ty / zoom), right: Math.min(scene.width, (c.canvas.width - tx) / zoom), bottom: Math.min(scene.height, (c.canvas.height - ty) / zoom) };
   const draftBounds = o.terrainDraft ? bounds(o.terrainDraft) : null;
   const floorImage = o.images.get(woodlandFloorImage);
   const trees = floorImage?.complete && floorImage.naturalWidth ? (scene.tokens || []).filter(t => isTreeCanopy(t) && !((!o.gm || o.preview) && t.hidden) && !(o.preview && o.viewer && !viewerSees(o.viewer,t,scene))) : [];
+  const key=[cache.epoch,scene.width,scene.height,density,floorImage?.naturalWidth||0,...trees.map(t=>[t.id,t.x,t.y,t.width,t.height,t.rotation,t.flipX,t.flipY].join(','))].join(':');
+  if(!cache.flat||cache.flat.key!==key){
+    const flat=cache.flat?.canvas||canvas();clear(flat,consolidate?scene.width:1,consolidate?scene.height:1);
+    cache.flat={key,canvas:flat,filled:new Set(),density};
+  }
+  const flat=cache.flat,fc=flat.canvas.getContext('2d')!;
   c.save(); c.setTransform(zoom, 0, 0, zoom, tx, ty); c.beginPath(); c.rect(0, 0, scene.width, scene.height); c.clip();
   for (let y = Math.floor(visible.top / world); y < Math.ceil(visible.bottom / world); y++) {
     for (let x = Math.floor(visible.left / world); x < Math.ceil(visible.right / world); x++) {
       const key = `${density}:${x}:${y}`;
+      if(!o.terrainDraft&&consolidate&&flat.filled.has(key))continue;
       let tile = cache.tiles.get(key);
       if (!tile) {
         const padding = GUTTER / density;
@@ -329,27 +344,27 @@ export function drawTerrain(c: CanvasRenderingContext2D, scene: VttScene, o: Ren
       const affected = draftBounds && overlaps(draftBounds, tile.bounds);
       if (!tile.valid && !affected) buildTile(cache, tile);
       const image = affected ? draftTile(cache, tile, o.terrainDraft!) : tile.canvas;
-      // Each device pixel belongs to exactly one tile, including translucent
-      // layers. Clip at integer device coordinates; draw the real gutter outside
-      // that partition so interpolation never exposes a transparent tile edge.
-      const left = Math.round(tx + x * world * zoom), top = Math.round(ty + y * world * zoom);
-      const right = Math.round(tx + (x + 1) * world * zoom), bottom = Math.round(ty + (y + 1) * world * zoom);
-      c.save(); c.resetTransform(); c.beginPath(); c.rect(left, top, right - left, bottom - top); c.clip();
-      c.setTransform(zoom, 0, 0, zoom, tx, ty);
-      const size = RASTER / density;
-      c.drawImage(image, tile.bounds.left, tile.bounds.top, size, size);
-      if(!affected) {
-        const shore=shoreline(cache,tile);
-        if(shore)c.drawImage(shore,tile.bounds.left,tile.bounds.top,size,size);
+      const bakedKey=flat.key+':'+tile.revision;
+      let combined=image;
+      if(!o.terrainDraft){
+        if(tile.baked?.key!==bakedKey){
+          const baked=tile.baked?.canvas||canvas(),bc=clear(baked);bc.drawImage(image,0,0);
+          const shore=shoreline(cache,tile);if(shore)bc.drawImage(shore,0,0);
+          if(trees.length){const ground=woodlandGround(cache,tile,trees,floorImage!);if(ground)bc.drawImage(ground,0,0);}
+          tile.baked={key:bakedKey,canvas:baked};
+        }
+        combined=tile.baked!.canvas;
       }
-      if(trees.length && !affected) {
-        const ground = woodlandGround(cache,tile,trees,floorImage!);
-        if(ground)c.drawImage(ground,tile.bounds.left,tile.bounds.top,size,size);
-      }
-      c.restore();
+      const intoAtlas=!o.terrainDraft&&consolidate,target=intoAtlas?fc:c;
+      target.save();target.setTransform(intoAtlas?density:zoom,0,0,intoAtlas?density:zoom,intoAtlas?0:tx,intoAtlas?0:ty);
+      target.beginPath();target.rect(x*world,y*world,world,world);target.clip();
+      const size=RASTER/density;target.drawImage(combined,tile.bounds.left,tile.bounds.top,size,size);
+      if(o.terrainDraft&&!affected){const shore=shoreline(cache,tile);if(shore)target.drawImage(shore,tile.bounds.left,tile.bounds.top,size,size);if(trees.length){const ground=woodlandGround(cache,tile,trees,floorImage!);if(ground)target.drawImage(ground,tile.bounds.left,tile.bounds.top,size,size);}}
+      target.restore();if(intoAtlas)flat.filled.add(key);
       cache.tiles.delete(key); cache.tiles.set(key, tile);
     }
   }
+  if(!o.terrainDraft&&consolidate)c.drawImage(flat.canvas,0,0,flat.canvas.width/density,flat.canvas.height/density);
   c.restore();
   let memory = [...cache.tiles.values()].reduce((n, t) => n + bytes(t), 0);
   for (const [key, tile] of cache.tiles) {

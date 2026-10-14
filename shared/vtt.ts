@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import {houseWalls} from './vtt-houses.js';
+import {houseWalls,housePointVisible} from './vtt-houses.js';
 import { canopyAreaSchema } from './vtt-canopies.js';
 import { atmosphereSchema } from './vtt-atmosphere.js';
 import { animatedAssetSchema } from './vtt-animated-assets.js';
@@ -117,6 +117,7 @@ export const tokenSchema = z
     sheet: sheetSchema.nullable().default(null),
     monster: monsterCustomizationSchema.nullable().default(null),
     animatedAsset: animatedAssetSchema.optional(),
+    houseDoorOpen: z.boolean().optional(),
   })
   .strict();
 export type VttToken = z.infer<typeof tokenSchema>;
@@ -453,7 +454,7 @@ export function newScene(id: string, name = 'Novo mapa'): VttScene {
       scale: 5,
       unit: 'ft',
       color: '#8392a3',
-      opacity: 0.18,
+      opacity: 0.38,
       offsetX: 0,
       offsetY: 0,
       snap: true,
@@ -721,6 +722,7 @@ export function manualFogSees(p: Point, scene: VttScene) {
   return visible;
 }
 export function visiblePoint(origin: Point, target: Point, s: VttScene, radius: number) {
+  if(!housePointVisible(origin,target,s))return false;
   return (
     Math.hypot(origin.x - target.x, origin.y - target.y) <= radius &&
     !blockingWalls(s).some((w) => intersection(origin, target, w.a, w.b))

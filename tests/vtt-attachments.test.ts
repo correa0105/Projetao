@@ -100,6 +100,7 @@ test('walls and map limits apply to every carried footprint center, and hiding a
   ];
   assert.ok(attachmentMovementError(scene, base, [{ x: 450, y: 300 }]));
   assert.equal(attachmentMovementError(scene, base, [{ x: 350, y: 350 }]), null);
+  assert.equal(attachmentMovementError(scene, base, [{ x: 300, y: 350 }]), null);
   assert.ok(attachmentMovementError(scene, base, [{ x: 1300, y: 300 }]));
   base.hidden = true;
   assert.equal(attachmentUnavailable(scene.tokens, rider), true);

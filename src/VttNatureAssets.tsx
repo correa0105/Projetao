@@ -12,7 +12,7 @@ export function VttNatureAssets({query,gm,add,category:fixedCategory}:{query:str
       <button className="vtt-nature-close" aria-label="Fechar prévia do cenário" onClick={()=>setSelected(null)}>×</button>
       <img src={inside&&selected.interior?selected.interior:selected.image} alt={selected.name+(inside?' · Interior':'')}/>
       <h3>{selected.name}</h3>
-      {selected.interior&&<><div className="vtt-nature-views">{[false,true].map(v=><button key={String(v)} aria-pressed={inside===v} onClick={()=>setInside(v)}>{v?'Interior':'Telhado'}</button>)}</div><p>Paredes automáticas. Entre pela porta principal para revelar o interior.</p></>}
+      {selected.interior&&<><div className="vtt-nature-views">{[false,true].map(v=><button key={String(v)} aria-pressed={inside===v} onClick={()=>setInside(v)}>{v?'Interior':'Telhado'}</button>)}</div><p>Escala ampla para personagens de um quadrado. Clique no ícone da porta para abrir ou fechar; entre para revelar o interior.</p></>}
       <label>Escala<select value={scale} onChange={e=>setScale(Number(e.target.value))}>{[.5,1,1.5,2,3].map(v=><option key={v} value={v}>{v}×</option>)}</select></label>
       <p>{Number((selected.width*scale).toFixed(2))} × {Number((selected.height*scale).toFixed(2))} quadrados</p>
       {gm&&<button onClick={()=>add(selected.id,scale)}>Colocar no mapa</button>}
