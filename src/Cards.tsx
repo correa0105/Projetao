@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useId, useRef, useState, type CSSProperties } from 'react';
 import { Check, ChevronLeft, ChevronRight, Coins, Lock, Sparkles, X, ZoomIn } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { api, post } from './api';
@@ -11,18 +11,22 @@ import './cards-rarity.css';
 import { CardsHost } from './CardsHost';
 import {CardFrame} from './CardFrame';
 import {CardGoldDetails} from './CardGoldDetails';
+import {CardSilverMaterial} from './CardSilverMaterial';
 import {cardVisualLevel} from '../shared/card-presentation';
 import {CardViewer3D} from './CardViewer3D';
 export function CardFace({ card, small = false, level = 1, finish }: { card: Card; small?: boolean; level?: number; finish?:'original'|'chrome' }) {
+  const silverId='card-silver-'+useId().replaceAll(':','');
   const visualLevel=cardVisualLevel(level),resolvedFinish=finish??(visualLevel===3?'chrome':'original');
   const art=`/cards/tarot-symbolic-20261013/${card.id}-${visualLevel===1&&resolvedFinish!=='chrome'?1:2}.webp`;
   return (
     <span className={'arcana-card-face' + (small ? ' small' : '')} data-rarity={card.rarity} data-level={visualLevel} data-finish={resolvedFinish}>
+      {resolvedFinish==='chrome' && <CardSilverMaterial id={silverId}/>}
       <span
         className="arcana-card-art"
         style={
           {
             backgroundImage: `url('${art}')`,
+            filter: resolvedFinish==='chrome'?`url(#${silverId})`:undefined,
           } as CSSProperties
         }
       />

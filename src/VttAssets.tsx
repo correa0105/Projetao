@@ -3,18 +3,21 @@ import { Trees, Bird, Plus, X } from 'lucide-react';
 import { rockAssets } from '../shared/vtt-rock-assets';
 import { treeAssets, treeAssetMime } from '../shared/vtt-tree-assets';
 import './vtt-tree-assets.css';
+import {VttNatureAssets} from './VttNatureAssets';
 
 export function VttAssets({
   enabled,
   query,
   gm,
   add,
+  addNature,
   children,
 }: {
   enabled: boolean;
   query: string;
   gm: boolean;
   add: (id: string, scale: number) => void;
+  addNature: (id: string, scale: number) => void;
   children: ReactNode;
 }) {
   const [collection, setCollection] = useState('trees'),
@@ -79,8 +82,11 @@ export function VttAssets({
         >
           <Bird size={14} /> Criaturas
         </button>
+        {['Plantas','Casas'].map(name=><button key={name} aria-pressed={collection===name} onClick={()=>setCollection(name)}>{name}<small>25</small></button>)}
       </nav>
-      {collection === 'creatures' ? (
+      {collection === 'Plantas'||collection === 'Casas' ? (
+        <VttNatureAssets key={collection} category={collection} query={query} gm={gm} add={addNature}/>
+      ) : collection === 'creatures' ? (
         children
       ) : (
         <>

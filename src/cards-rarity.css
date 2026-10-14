@@ -33,17 +33,15 @@
   --card-paper: #dce2e9;
   --card-frame-ink: #202833;
 }
-.arcana-card-face[data-finish='chrome'] .arcana-card-art {
-  filter: grayscale(1) contrast(1.04);
-}
+.card-material-defs {position:absolute;pointer-events:none;}
 .arcana-card-face[data-finish='chrome'] .arcana-card-metallic {
   inset: 0;
   border-radius: 4px;
   background: repeating-linear-gradient(var(--card-chrome-angle,122deg),#19212c 0%,#54616e 10%,#bbc4cf 17%,#e4e8eb 20%,#586776 25%,#202631 34%,#19212c 42%);
   background-size: 118% 118%;
   background-position: var(--card-chrome-x,48%) var(--card-chrome-y,46%);
-  mix-blend-mode: color-dodge;
-  opacity: .62;
+  mix-blend-mode: soft-light;
+  opacity: .4;
 }
 :root .cards-room .cards-catalog > button[aria-pressed='true'] .arcana-card-face {
   border: 0;
@@ -327,3 +325,5 @@
   .card-inspection {padding: 12px;}
   .card-inspection-content {gap: 6px;width: min(74vw,calc((100dvh - 200px) * .7),440px);}
 }
+
+.card-viewer-model[data-finish='chrome'] .card-viewer-back {background-color:#bec2c7;}

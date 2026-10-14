@@ -4223,7 +4223,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   {library === 'terrain' ? terrainPanel() : library === 'nature' ? (<VttNatureAssets query={query} gm={gm&&!preview} add={addNatureAsset}/>) : library === 'animated' ? (
                     <VttAnimatedAssets query={query} gm={gm && !preview} add={addAnimatedAsset} />
                   ) : library === 'presets' || library === 'premium' ? (
-                    <VttAssets enabled={library === 'premium'} gm={gm && !preview} query={query} add={addTreeAsset}><VttPrivateLibrary
+                    <VttAssets enabled={library === 'premium'} gm={gm && !preview} query={query} add={addTreeAsset} addNature={addNatureAsset}><VttPrivateLibrary
                       kind={library}
                       gm={gm && !preview}
                       viewMonsters={() => {

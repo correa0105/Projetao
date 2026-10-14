@@ -32,14 +32,15 @@ try{
   const board=page.getByLabel('Tabuleiro da mesa',{exact:true});await expect(board).toBeVisible();
   const {rows:[created]}=await pool.query('SELECT id FROM vtt_rooms WHERE owner_id=$1',[owner.id]);const root='/vtt/rooms/'+created.id;
   const saved=()=>api(ctx,root);
-  await page.getByRole('button',{name:'Biblioteca',exact:true}).click();await page.getByRole('button',{name:'Cenários',exact:true}).click();
+  await page.getByRole('button',{name:'Biblioteca',exact:true}).click();await page.getByRole('button',{name:'Assets',exact:true}).click();
+  await page.locator('.vtt-asset-collections button').filter({hasText:'Plantas'}).click();
   await expect(page.locator('.vtt-nature-card')).toHaveCount(25);
   await page.getByLabel('Buscar na biblioteca',{exact:true}).fill('hortensia');await expect(page.locator('.vtt-nature-card')).toHaveCount(1);
   await page.getByLabel('Buscar na biblioteca',{exact:true}).fill('');
   await page.locator('.vtt-nature-card').filter({hasText:'Samambaia da mata'}).click();await page.locator('.vtt-nature-detail select').selectOption('2');
   await page.getByRole('button',{name:'Colocar no mapa',exact:true}).click();await page.getByRole('button',{name:'Salvar mesa',exact:true}).click();
   await expect.poll(async()=>{const s=(await saved()).document.scenes[0],a=natureAssets[0],t=s.tokens.find((t:any)=>t.image===a.image);return !!t&&Math.abs(t.width-a.width*s.grid.size*2)<.01;}).toBe(true);
-  await page.locator('.vtt-nature nav button').filter({hasText:'Casas'}).click();await expect(page.locator('.vtt-nature-card')).toHaveCount(25);
+  await page.locator('.vtt-asset-collections button').filter({hasText:'Casas'}).click();await expect(page.locator('.vtt-nature-card')).toHaveCount(25);
   await page.locator('.vtt-nature-card').filter({hasText:'Cabana de palha'}).click();await page.getByRole('button',{name:'Interior',exact:true}).click();
   await expect(page.locator('.vtt-nature-detail>img')).toHaveAttribute('src',houseAssets[0].interior);
   await expect.poll(()=>page.locator('.vtt-nature-detail>img').evaluate((img:HTMLImageElement)=>img.complete&&img.naturalWidth>0)).toBe(true);
@@ -56,6 +57,8 @@ try{
     await page.screenshot({path:'test-results/vtt-nature/library-'+width+'.png',fullPage:true});
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2)).toBe(true);
   }
+  await page.getByRole('button',{name:'Cenários',exact:true}).click();
+  await expect(page.locator('.vtt-nature-card')).toHaveCount(25);
   let room=await saved();await api(player,'/vtt/join','POST',{invite:room.invite,role:'player'});
   let scene=room.document.scenes[0],house=scene.tokens.find((t:any)=>t.image===houseAssets[0].image);
   scene.fog=scene.lighting=false;const actor=newToken(randomUUID(),scene);actor.controller=guest.id;actor.name='Visitante';actor.vision=0;
@@ -90,7 +93,7 @@ try{
     rendererChecks.push({id:asset.id,entry:true,exit:true});
   }
   expect(errors).toEqual([]);expect(missing).toEqual([]);
-  await writeFile('test-results/vtt-nature/result.json',JSON.stringify({passed:true,plants:25,houses:25,library:true,search:true,scale:true,drag:true,serverMovement:true,playerCannotEdit:true,roofEntryAndExit:true,viewports:3,rendererChecks,errors,missing},null,2));
+  await writeFile('test-results/vtt-nature/result.json',JSON.stringify({passed:true,plants:25,houses:25,library:true,assetsTab:true,search:true,scale:true,drag:true,serverMovement:true,playerCannotEdit:true,roofEntryAndExit:true,viewports:3,rendererChecks,errors,missing},null,2));
   console.log('25 plants and 25 houses: library, drag, scale, server walls, door entry/exit, all roof/interior pairs and three widths passed.');
 }catch(error){await page.screenshot({path:'test-results/vtt-nature/failure.png',fullPage:true});throw error;}
 finally{await browser.close();await new Promise<void>(r=>server.close(()=>r()));await pool.end();}

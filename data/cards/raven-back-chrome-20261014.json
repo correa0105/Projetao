@@ -1,0 +1,18 @@
+{
+  "mode": "built-in image_gen",
+  "intent": "precise-object-edit",
+  "input": "data/cards/raven-back-source-20261014.png",
+  "original": "data/cards/raven-back-chrome-source-20261014.png",
+  "asset": "public/cards/back-raven-silver-gold-20261014.webp",
+  "prompt": "Use case: precise-object-edit. Edit target: the supplied portrait raven card-back artwork. Recolor this exact artwork for the CHROME edition only. Replace the entire dark brown/black background behind the raven, across the full card including outer margins and the circular decorative medallions, with bright polished SILVER, neutral platinum/light steel, softly brushed luminous metal. NOT a dark background with a bright streak: the whole negative-space background must read silver. Keep the raven itself charcoal black with the exact same pose, feather contours, wings, beak, scale and placement. Recolor existing ornamental lines, arcane circles, stars, loose feathers and border lines into rich warm GOLD inlay, bright metallic gold against the silver. Preserve the exact original illustration structure, framing, dimensions/proportions, small artist signature at bottom right, and all existing details. No redesign, no new motifs, no extra words, no new signature, no rainbow or iridescent colors. Flat front-facing finished card back, no environment, no perspective, no mockup shadow, full bleed. The result should unmistakably have a SILVER background with GOLD ornament and the original black raven.",
+  "data/cards/raven-back-chrome-source-20261014.png": {
+    "width": 1005,
+    "height": 1566,
+    "sha256": "0b8d558639a19475d0fb97acacbe75ce80ed7d7f01809960e639eff475a96bb2"
+  },
+  "public/cards/back-raven-silver-gold-20261014.webp": {
+    "width": 1005,
+    "height": 1566,
+    "sha256": "e477ea29e85374121a02488c51222458cda9cb868f19008187696c1907cb4767"
+  }
+}

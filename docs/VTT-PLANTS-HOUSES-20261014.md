@@ -1,7 +1,8 @@
 # 25 plantas e 25 casas no VTT
 
 Atualização de 14/10/2026. As 50 artes foram concluídas e integradas à Biblioteca
-→ Cenários, nas categorias Plantas e Casas. O mestre pode pesquisar, abrir a
+→ Assets → Plantas/Casas, junto das árvores e pedras. O atalho
+Cenários também continua disponível. O mestre pode pesquisar, abrir a
 prévia, ajustar a escala, colocar no mapa ou arrastar uma peça. Miniaturas com
 nomes abaixo da imagem cabem também na biblioteca do celular.
 
@@ -29,7 +30,7 @@ as regras das demais peças continuam preservadas.
 Validação: TypeScript/build; 29 testes de geometria e movimento, cobrindo as
 25 casas, giro, espelhamento, abertura, paredes, entrada/saída, remoção e
 compatibilidade. Auditoria das 75 mídias: transparência, tamanho, proporção,
-unicidade e integridade dos 50 originais. O navegador real confere busca,
+unicidade e integridade dos 50 originais. O navegador real confere o acesso pela aba Assets, o atalho Cenários, busca,
 escala, arraste, persistência, três larguras, passagem pela porta, bloqueio de
 paredes no servidor, permissão do jogador e todas as 25 combinações de telhado
 e interior no renderer real. Testes usam bancos temporários isolados.

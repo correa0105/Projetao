@@ -2,11 +2,11 @@ import {useState} from 'react';
 import {natureAssets,natureAssetMime,type NatureAsset} from '../shared/vtt-nature-assets';
 import './vtt-nature-assets.css';
 const normalize=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-export function VttNatureAssets({query,gm,add}:{query:string;gm:boolean;add:(id:string,scale:number)=>void}) {
-  const [category,setCategory]=useState('Plantas'),[selected,setSelected]=useState<NatureAsset|null>(null),[scale,setScale]=useState(1),[inside,setInside]=useState(false);
+export function VttNatureAssets({query,gm,add,category:fixedCategory}:{query:string;gm:boolean;add:(id:string,scale:number)=>void;category?:string}) {
+  const [category,setCategory]=useState(fixedCategory??'Plantas'),[selected,setSelected]=useState<NatureAsset|null>(null),[scale,setScale]=useState(1),[inside,setInside]=useState(false);
   const terms=normalize(query).trim().split(/\s+/).filter(Boolean),items=natureAssets.filter(a=>a.category===category&&terms.every(t=>normalize(a.name+' '+a.category).includes(t)));
   return <section className="vtt-nature">
-    <nav aria-label="Plantas e casas">{['Plantas','Casas'].map(c=><button key={c} aria-pressed={category===c} onClick={()=>{setCategory(c);setSelected(null);}}>{c}<small>25</small></button>)}</nav>
+    {!fixedCategory&&<nav aria-label="Plantas e casas">{['Plantas','Casas'].map(c=><button key={c} aria-pressed={category===c} onClick={()=>{setCategory(c);setSelected(null);}}>{c}<small>25</small></button>)}</nav>}
     <p>{items.length} peças · {gm?'Arraste para o mapa ou abra a prévia':'Escolha uma peça para ver a arte'}</p>
     {selected&&<div className="vtt-nature-detail">
       <button className="vtt-nature-close" aria-label="Fechar prévia do cenário" onClick={()=>setSelected(null)}>×</button>
