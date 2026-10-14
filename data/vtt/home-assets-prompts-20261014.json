@@ -1,0 +1,880 @@
+{
+  "mode": "built-in image_gen",
+  "requests": [
+    {
+      "id": "furniture-001",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-001.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-001.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: plain oak dining chair with a square seat and wooden back. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-002",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-002.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-002.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: comfortable worn brown leather armchair. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-003",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-003.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-003.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: carved wooden chair with muted green upholstered seat. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-004",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-004.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-004.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: short backless wooden bench. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-005",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-005.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-005.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: long sturdy oak bench for two people. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-006",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-006.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-006.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: rectangular oak dining table with clear empty tabletop. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-007",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-007.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-007.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: round natural wood dining table. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 2 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-008",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-008.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-008.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: small square wooden side table. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-009",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-009.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-009.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: writing desk with small drawers and an empty writing surface. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-010",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-010.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-010.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: heavy carpenters workbench with a vise and restrained tools. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-011",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-011.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-011.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: single bed with linen pillow and subdued green wool blanket. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 2 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-012",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-012.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-012.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: double wooden bed with two linen pillows and muted warm rust blanket. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 2 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-013",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-013.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-013.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: small wooden baby cradle with cream linen. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-014",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-014.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-014.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: simple straw sleeping mattress with rolled pillow. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 2 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-015",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-015.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-015.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: two-seat carved wood sofa with dark blue cushions. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-016",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-016.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-016.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: long leather chaise lounge on a wooden frame. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-017",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-017.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-017.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: closed tall wooden wardrobe with two doors. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-018",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-018.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-018.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: oak dresser with four drawers. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-019",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-019.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-019.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: bookcase with distinct muted cloth-bound books. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-020",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-020.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-020.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: simple wooden shelf with sparse ceramic jars. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-021",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-021.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-021.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: closed wooden treasure chest with restrained iron bands. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-022",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-022.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-022.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: closed reinforced iron-bound storage chest. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-023",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-023.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-023.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: slender wooden sideboard with two doors. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-024",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-024.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-024.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: kitchen counter with cutting board and a small ceramic bowl. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-025",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-025.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-025.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: closed cream weathered kitchen cupboard. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-026",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-026.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-026.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: wooden pantry rack with sacks and ceramic food jars. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-027",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-027.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-027.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: one closed oak barrel with iron hoops. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-028",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-028.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-028.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: round wooden water tub with visible still water. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-029",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-029.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-029.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: one round wooden stool. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-030",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-030.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-030.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: freestanding wooden coat rack with a simple muted cloak. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-031",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-031.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-031.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: one small tabletop oil lamp with subtle warm flame. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-032",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-032.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-032.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: one wrought-iron standing candlestick with three candles. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-033",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-033.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-033.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: small stone fireplace with a restrained ember bed, a complete standalone object. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-034",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-034.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-034.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: one low iron brazier with restrained embers. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-035",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-035.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-035.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: compact rustic brick wood stove with a cast iron cooking plate. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-036",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-036.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-036.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: one simple ceramic washbasin on a wooden stand. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-037",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-037.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-037.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: oval freestanding wooden bathtub with a little still water. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 2 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-038",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-038.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-038.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: rectangular woven wool rug with muted green and rust geometric pattern. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 3 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-039",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-039.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-039.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: round woven natural fiber rug. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 2 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-040",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-040.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-040.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: flat irregular brown animal-hide rug. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 2 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-041",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-041.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-041.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: three-panel wooden folding privacy screen with linen inserts. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-042",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-042.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-042.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: wooden weaving loom with a restrained striped textile. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 2 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-043",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-043.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-043.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: alchemists worktable with small glass flasks, mortar and restrained herbs. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-044",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-044.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-044.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: scholars writing table with parchment, inkpot and quill. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-045",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-045.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-045.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: small wooden shelf with clearly arranged glass potion bottles in restrained natural colors. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-046",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-046.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-046.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: wooden rack with a spear, sword and shield, no characters. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-047",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-047.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-047.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: wooden armor stand holding a simple medieval suit of armor, no living person. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-048",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-048.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-048.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: small round game table with a recognizable wooden chessboard and pieces. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 2 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-049",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-049.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-049.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: cartographers table with rolled maps, a compass and a simple blank diagram. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 2 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "furniture-050",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-050.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-050.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated furniture asset for a fantasy VTT. Image 1 is ONLY a MATERIAL, QUALITY and CAMERA STYLE REFERENCE, not an edit target: never reproduce the room, walls or background. Object: one terracotta indoor plant pot with modest green foliage. Match the reference's detailed realistic painterly natural wood, iron, leather, linen or stone and almost vertical overhead camera with a small visible front face. Consistent top-down orientation: back of furniture toward image top, front toward bottom. Believable human scale: footprint 1 by 1 five-foot map cells. A normal human chair seat fits a human; beds fit a normal person; ordinary furniture proportions. Sharp natural detailed texture, clear silhouette, restrained earthy palette, subtle contact shadow only, no bloom or blur. ONE complete individual object, centered and filling the frame. Actual transparent alpha around the object and shadow; no floor tile, ground, room, wall, background color, border, lettering, label, signature, watermark, grid, people or extra unrelated objects. Preserve a usable top-down sprite silhouette at small map scale."
+    },
+    {
+      "id": "empty-house-001",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-001-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-001.png",
+      "public": "public/vtt/houses-empty-20261014/house-001-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Cabana de palha. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-002",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-002.png",
+      "public": "public/vtt/houses-empty-20261014/house-002-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa de telhas vermelhas. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-003",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-003-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-003.png",
+      "public": "public/vtt/houses-empty-20261014/house-003-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa do lenhador. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-004",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-004-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-004.png",
+      "public": "public/vtt/houses-empty-20261014/house-004-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa do pescador. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-005",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-005-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-005.png",
+      "public": "public/vtt/houses-empty-20261014/house-005-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa do caçador. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-006",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-006-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-006.png",
+      "public": "public/vtt/houses-empty-20261014/house-006-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa da herbalista. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-007",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-007-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-007.png",
+      "public": "public/vtt/houses-empty-20261014/house-007-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa do tecelão. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-008",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-008-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-008.png",
+      "public": "public/vtt/houses-empty-20261014/house-008-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa do oleiro. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-009",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-009-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-009.png",
+      "public": "public/vtt/houses-empty-20261014/house-009-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa do ferreiro. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-010",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-010-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-010.png",
+      "public": "public/vtt/houses-empty-20261014/house-010-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa do padeiro. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-011",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-011-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-011.png",
+      "public": "public/vtt/houses-empty-20261014/house-011-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa do mercador. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-012",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-012-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-012.png",
+      "public": "public/vtt/houses-empty-20261014/house-012-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa de pedra. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-013",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-013-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-013.png",
+      "public": "public/vtt/houses-empty-20261014/house-013-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa de ardósia. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-014",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-014-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-014.png",
+      "public": "public/vtt/houses-empty-20261014/house-014-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa da fazenda. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-015",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-015-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-015.png",
+      "public": "public/vtt/houses-empty-20261014/house-015-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa de junco. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-016",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-016-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-016.png",
+      "public": "public/vtt/houses-empty-20261014/house-016-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa do deserto. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-017",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-017-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-017.png",
+      "public": "public/vtt/houses-empty-20261014/house-017-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa alpina. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-018",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-018-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-018.png",
+      "public": "public/vtt/houses-empty-20261014/house-018-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa nevada. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-019",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-019-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-019.png",
+      "public": "public/vtt/houses-empty-20261014/house-019-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa nobre. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-020",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-020-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-020.png",
+      "public": "public/vtt/houses-empty-20261014/house-020-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa gótica. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-021",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-021-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-021.png",
+      "public": "public/vtt/houses-empty-20261014/house-021-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa élfica. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-022",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-022-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-022.png",
+      "public": "public/vtt/houses-empty-20261014/house-022-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa anã. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-023",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-023-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-023.png",
+      "public": "public/vtt/houses-empty-20261014/house-023-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa costeira. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-024",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-024-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-024.png",
+      "public": "public/vtt/houses-empty-20261014/house-024-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa dos viajantes. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    },
+    {
+      "id": "empty-house-025",
+      "kind": "empty-house",
+      "inputs": [
+        "public/vtt/houses-20261014/house-025-interior.webp"
+      ],
+      "native": "data/vtt/empty-houses-20261014/house-025.png",
+      "public": "public/vtt/houses-empty-20261014/house-025-interior.webp",
+      "transparent": true,
+      "prompt": "Precisely edit image 1, the existing top-down VTT interior of Casa do escriba. Remove ALL removable furniture and contents: beds, mattresses, tables, chairs, benches, cabinets, shelves, chests, barrels, sacks, rugs, hides, baskets, food, plants, tools, textiles and wall decorations. Restore the bare floor underneath with exactly matching plank or stone material, grain direction, scale and natural lighting. PRESERVE the exact building outline and position, all structural walls, posts, thresholds, the main doorway opening, windows actually present in the original, structural built-in fireplace/oven/chimney and their geometry. Do NOT add windows, doors, rooms, walls or furnishings; do NOT move or reshape the house, widen its portal, crop or rotate it. Keep the same nearly vertical overhead perspective, native detailed realistic painterly quality, restrained natural colors, crisp wall texture and matching floor. The result is an EMPTY playable room in the identical footprint. Maintain the original transparent alpha outside the building, no surrounding terrain, ground plate, grid, text, signature or watermark."
+    }
+  ]
+}

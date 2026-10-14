@@ -1,0 +1,29 @@
+{
+  "mode": "built-in",
+  "assets": [
+    {
+      "id": "furniture-093-refined",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-refined-20261014/furniture-093.png",
+      "public": "public/vtt/home-furniture-refined-20261014/furniture-093.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: antique brass two pan balance scale on a wooden base. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-100-refined",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-refined-20261014/furniture-100.png",
+      "public": "public/vtt/home-furniture-refined-20261014/furniture-100.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: worn brown leather and oak fireplace bellows with a brass nozzle. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    }
+  ]
+}

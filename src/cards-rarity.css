@@ -34,8 +34,8 @@
 }
 .arcana-card-face[data-finish='chrome'] {
   overflow: hidden;
-  --card-paper: #bbd9ef;
-  --card-frame-ink: #273459;
+  --card-paper: #c1cbd1;
+  --card-frame-ink: #27343f;
 }
 .card-material-defs {position:absolute;pointer-events:none;}
 .arcana-card-face[data-finish='chrome'] .arcana-card-metallic {
@@ -47,39 +47,28 @@
 }
 .arcana-card-face[data-level='2'][data-finish='original'] {--card-paper:#d9ba73;--card-frame-ink:#302413;}
 .arcana-card-face[data-level='2'][data-finish='original'] .arcana-card-art {filter:sepia(.72) saturate(1.15);}
-.arcana-card-face[data-finish='chrome'] .arcana-card-art {filter:saturate(.65) contrast(1.04);}
+.arcana-card-face[data-finish='chrome'] .arcana-card-art {filter:none;}
 .card-prismatic-foil {
   display:contents;
   position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;
   mask-image:url('/cards/card-silhouette.svg');mask-size:100% 100%;mask-repeat:no-repeat;
 }
-.card-prismatic-foil > span {position:absolute;inset:-60%;z-index:3;pointer-events:none;will-change:transform;}
+.card-prismatic-foil > span {position:absolute;inset:-45%;z-index:3;pointer-events:none;will-change:transform;animation:card-prism-travel 11s ease-in-out -3s infinite alternate;}
 .card-prism-spectrum {
-  background:repeating-linear-gradient(118deg,#a3eafa 0%,#ac97ee 12%,#f391d2 24%,#ffe3a2 36%,#95e8bb 48%,#87caf4 60%,#be93ed 72%,#a3eafa 84%);
-  mix-blend-mode:color;opacity:.64;
-  animation:card-prism-spectrum 7s ease-in-out -2s infinite alternate;
+  background:linear-gradient(var(--card-chrome-angle,122deg),#fff0 29%,#82b5c400 36%,#79afc566 41%,#aaa0c8aa 45%,#dbb3c7bb 49%,#dfc49cbb 53%,#a4ccbcaa 57%,#78b6c366 61%,#78b6c300 66%,#fff0 73%);
+  mix-blend-mode:color;opacity:calc(.42 * var(--card-foil-light,.75));
 }
 .card-prism-caustics {
-  background:repeating-linear-gradient(56deg,#63b7f744 0%,#dbb4ff99 9%,#fff6 13%,#ffc48d66 17%,#a9f1cc44 27%,#63b7f744 36%);
-  mix-blend-mode:soft-light;opacity:.32;
-  animation:card-prism-caustics 8s ease-in-out -3s infinite alternate;
+  background:linear-gradient(var(--card-chrome-angle,122deg),#0000 35%,#0003 42%,#0000 47%,#fff3 52%,#fff0 59%,#0000 70%);
+  mix-blend-mode:soft-light;opacity:.16;
 }
 .card-prism-glint {
-  background:linear-gradient(112deg,#fff0 32%,#b6f9ff22 39%,#fff7 44%,#fff0 49%,#fff0 66%,#ffe6ff44 72%,#fff0 78%);
-  mix-blend-mode:screen;opacity:.35;
-  animation:card-prism-glint 7s ease-in-out -1s infinite alternate;
+  background:linear-gradient(var(--card-chrome-angle,122deg),#fff0 45%,#c3e0e900 48%,#d6e5e92e 49.2%,#f7fafba3 50%,#d8e3e733 50.6%,#fff0 52%,#fff0 57%);
+  mix-blend-mode:screen;opacity:calc(.24 * var(--card-foil-light,.75));
 }
-@keyframes card-prism-spectrum {
-  from {transform:translate(calc(-16% + var(--card-foil-x,0%)),calc(-9% + var(--card-foil-y,0%))) rotate(-9deg);}
-  to {transform:translate(calc(17% + var(--card-foil-x,0%)),calc(12% + var(--card-foil-y,0%))) rotate(10deg);}
-}
-@keyframes card-prism-caustics {
-  from {transform:translate(calc(12% + var(--card-foil-x,0%)),calc(-14% + var(--card-foil-y,0%)));}
-  to {transform:translate(calc(-15% + var(--card-foil-x,0%)),calc(15% + var(--card-foil-y,0%)));}
-}
-@keyframes card-prism-glint {
-  from {transform:translate(calc(-23% + var(--card-foil-x,0%)),var(--card-foil-y,0%));}
-  to {transform:translate(calc(24% + var(--card-foil-x,0%)),var(--card-foil-y,0%));}
+@keyframes card-prism-travel {
+  from {transform:translate(calc(-32% + var(--card-foil-x,0%)),calc(-5% + var(--card-foil-y,0%)));}
+  to {transform:translate(calc(32% + var(--card-foil-x,0%)),calc(5% + var(--card-foil-y,0%)));}
 }
 @media (prefers-reduced-motion:reduce) {.card-prismatic-foil > span {animation:none;will-change:auto;}}
 :root .cards-room .cards-catalog > button[aria-pressed='true'] .arcana-card-face {

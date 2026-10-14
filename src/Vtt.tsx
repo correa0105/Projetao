@@ -1038,7 +1038,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }, [state?.id]);
   useEffect(() => {
     if (!scene) return;
-    for (const path of [scene.background, ...scene.tokens.map((t) => t.image), ...houseInteriorImages(scene), '/vtt/house-parts-20261014/door-oak.webp', ...terrainTextures.map(t=>t.image)]) {
+    for (const path of [scene.background, ...scene.tokens.map((t) => t.image), ...houseInteriorImages(scene), '/vtt/house-parts-20261014/door-vertical.webp', ...terrainTextures.map(t=>t.image)]) {
       if (!path || images.current.has(path)) continue;
       const image = new window.Image();
       image.onload = () => setImageVersion((v) => v + 1);
@@ -3225,7 +3225,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }
             }}
           />
-          {!spectator&&!preview&&<VttHouseDoors scene={scene} camera={camera} width={bounds.width} height={bounds.height} gm={gm} userId={user.id} disabled={busy} toggle={h=>void act(()=>toggleHouseDoor(h))}/>}
+          {!spectator&&!preview&&<VttHouseDoors scene={scene} camera={camera} width={bounds.width} height={bounds.height} gm={gm} userId={user.id} selected={selection} disabled={busy} toggle={h=>void act(()=>toggleHouseDoor(h))}/>}
           <VttTurnCarousel
             controls={combat}
             gm={gm}

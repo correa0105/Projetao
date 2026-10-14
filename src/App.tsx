@@ -3,7 +3,6 @@ import { LoreLibrary } from './LoreLibrary';
 import { FlashMessage } from './FlashMessage';
 import { PageHeader } from './PageHeader';
 import { ProfileMenu } from './ProfileMenu';
-import { AdminScreenRecorder } from './AdminScreenRecorder';
 import { NoticeBoard } from './NoticeBoard';
 import {
   lazy,
@@ -38,7 +37,6 @@ import {
   Swords,
   Trophy,
   Users,
-  Video,
   X,
 } from 'lucide-react';
 import { authClient, api, post } from './api';
@@ -146,9 +144,6 @@ function Portal({ user }: { user: User }) {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [selectedId, setSelectedId] = useState('');
   const [characterMenuOpen, setCharacterMenuOpen] = useState(false);
-  const [recorderOpen, setRecorderOpen] = useState(false);
-  const openRecorder = useCallback(() => setRecorderOpen(true), []);
-  const recorderPermissionLost = useCallback(() => setAdministrator(false), []);
   const [catalog, setCatalog] = useState<Item[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
   const [entries, setEntries] = useState<Entry[]>([]);
@@ -685,19 +680,6 @@ function Portal({ user }: { user: User }) {
                 >
                   Meu perfil
                 </button>
-                {administrator && (
-                  <button
-                    type="button"
-                    className="admin-recorder-menu"
-                    onClick={() => {
-                      setCharacterMenuOpen(false);
-                      openRecorder();
-                    }}
-                  >
-                    <Video size={16} aria-hidden="true" />
-                    Gravar tela
-                  </button>
-                )}
                 {character && (
                   <span
                     className="profile-character-summary"
@@ -808,14 +790,6 @@ function Portal({ user }: { user: User }) {
           }}
         />
       )}
-      <AdminScreenRecorder
-        administrator={administrator}
-        open={recorderOpen}
-        vtt={page === 'vtt'}
-        onOpen={openRecorder}
-        onClose={() => setRecorderOpen(false)}
-        onPermissionLost={recorderPermissionLost}
-      />
     </div>
   );
 }

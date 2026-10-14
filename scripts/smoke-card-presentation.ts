@@ -78,7 +78,7 @@ try {
         await expect(dialog.locator('.arcana-card-face')).toHaveAttribute('data-finish',level===3?'chrome':'original');
         await expect(dialog.locator('.arcana-card-gold')).toHaveCount(0);
         expect(await dialog.locator('.arcana-card-face').evaluate(el=>getComputedStyle(el).maskImage)).toContain('card-silhouette.svg');
-        if(level===3)expect(await dialog.locator('.arcana-card-art').evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('/cards/prismatic-20261014/');
+        if(level===3)expect(await dialog.locator('.arcana-card-art').evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('/cards/prismatic-clean-20261014/');
         const large = await captions(dialog), bounds = await dialog.boundingBox();
         expect(bounds!.width).toBeLessThanOrEqual(viewport.width); expect(bounds!.height).toBeLessThanOrEqual(viewport.height);
         expect(await dialog.evaluate(el => getComputedStyle(el,'::backdrop').backdropFilter)).toContain('blur');
@@ -94,14 +94,14 @@ try {
           await page.screenshot({path:`test-results/card-presentation/reverse-${viewport.width}-${viewport.height}.png`});
           await dialog.getByRole('button',{name:'Prévia prismática',exact:true}).click();
           await expect(cardModel).toHaveAttribute('data-finish','chrome');
-          expect(await reverse.evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('back-celestial-prismatic-20261014.webp');
+          expect(await reverse.evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('back-celestial-clean-20261014.webp');
           expect(await reverse.evaluate(el=>getComputedStyle(el).maskImage)).toContain('card-silhouette.svg');
           await page.waitForTimeout(120);
           await page.screenshot({path:`test-results/card-presentation/chrome-reverse-${viewport.width}-${viewport.height}.png`});
           await stage.focus();await page.keyboard.press('Home');await page.waitForTimeout(270);
           await expect(stage.locator('.arcana-card-face')).toHaveAttribute('data-finish','chrome');
           await expect(stage.locator('.card-viewer-front')).toHaveAttribute('aria-hidden','false');
-          expect(await stage.locator('.arcana-card-art').evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('/cards/prismatic-20261014/vigil.webp');
+          expect(await stage.locator('.arcana-card-art').evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('/cards/prismatic-clean-20261014/vigil.webp');
           await expect(stage.locator('.card-viewer-core')).toHaveCount(4);
           await page.screenshot({path:`test-results/card-presentation/chrome-front-${viewport.width}-${viewport.height}.png`});
           const reflection=stage.locator('.card-viewer-front .arcana-card-metallic');

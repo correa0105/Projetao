@@ -16,7 +16,7 @@ import {CardPrismaticFoil} from './CardPrismaticFoil';
 export function CardFace({ card, small = false, level = 1, finish }: { card: Card; small?: boolean; level?: number; finish?:'original'|'chrome' }) {
   const visualLevel=cardVisualLevel(level),resolvedFinish=finish??(visualLevel===3?'chrome':'original');
   const nativePrism=resolvedFinish==='chrome';
-  const art=nativePrism?`/cards/prismatic-20261014/${card.id}.webp`:`/cards/tarot-symbolic-20261013/${card.id}-${visualLevel===1?1:2}.webp`;
+  const art=nativePrism?`/cards/prismatic-clean-20261014/${card.id}.webp`:card.id==='raven'?`/cards/raven-corrected-20261014/raven-${visualLevel===1?1:2}.webp`:`/cards/tarot-symbolic-20261013/${card.id}-${visualLevel===1?1:2}.webp`;
   return (
     <span className={'arcana-card-face' + (small ? ' small' : '')} data-rarity={card.rarity} data-level={visualLevel} data-finish={resolvedFinish} data-prismatic-art={nativePrism}>
       <span

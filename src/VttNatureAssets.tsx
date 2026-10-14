@@ -6,7 +6,7 @@ export function VttNatureAssets({query,gm,add,category:fixedCategory}:{query:str
   const [category,setCategory]=useState(fixedCategory??'Plantas'),[selected,setSelected]=useState<NatureAsset|null>(null),[scale,setScale]=useState(1),[inside,setInside]=useState(false);
   const terms=normalize(query).trim().split(/\s+/).filter(Boolean),items=natureAssets.filter(a=>a.category===category&&terms.every(t=>normalize(a.name+' '+a.category).includes(t)));
   return <section className="vtt-nature">
-    {!fixedCategory&&<nav aria-label="Plantas e casas">{['Plantas','Casas'].map(c=><button key={c} aria-pressed={category===c} onClick={()=>{setCategory(c);setSelected(null);}}>{c}<small>25</small></button>)}</nav>}
+    {!fixedCategory&&<nav aria-label="Coleções de cenário">{['Plantas','Casas','Casas vazias','Mobílias'].map(c=><button key={c} aria-pressed={category===c} onClick={()=>{setCategory(c);setSelected(null);}}>{c}<small>{natureAssets.filter(a=>a.category===c).length}</small></button>)}</nav>}
     <p>{items.length} peças · {gm?'Arraste para o mapa ou abra a prévia':'Escolha uma peça para ver a arte'}</p>
     {selected&&<div className="vtt-nature-detail">
       <button className="vtt-nature-close" aria-label="Fechar prévia do cenário" onClick={()=>setSelected(null)}>×</button>

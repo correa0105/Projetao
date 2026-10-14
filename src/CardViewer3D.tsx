@@ -25,6 +25,7 @@ export function CardViewer3D({card,level=1}:{card:Card;level?:number}) {
     model.current?.style.setProperty('--card-chrome-y',(46+pitch*30)+'%');
     model.current?.style.setProperty('--card-foil-x',(tilt*12+light.current.x*10)+'%');
     model.current?.style.setProperty('--card-foil-y',(pitch*10+light.current.y*8)+'%');
+    model.current?.style.setProperty('--card-foil-light',String(.65+Math.abs(tilt)*.25+Math.abs(pitch)*.1));
     const reversed=Math.cos(rotation.current.y*Math.PI/180)<0;
     front.current?.setAttribute('aria-hidden',String(reversed));
     back.current?.setAttribute('aria-hidden',String(!reversed));

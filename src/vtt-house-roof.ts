@@ -3,7 +3,8 @@ import {houseAsset} from '../shared/vtt-houses';
 
 const roofs=new WeakMap<HTMLImageElement,HTMLCanvasElement>();
 /** Keep the entire roof aligned with the native floor; only its eaves are translucent. */
-export function drawHouseRoof(c:CanvasRenderingContext2D,h:VttToken,roof:HTMLImageElement,floor:HTMLImageElement) {
+export function drawHouseRoof(c:CanvasRenderingContext2D,h:VttToken,roof:HTMLImageElement,floor:HTMLImageElement,fade=true) {
+  if(!fade){c.drawImage(roof,-h.width/2,-h.height/2,h.width,h.height);return;}
   let surface=roofs.get(roof);
   if(!surface){
     const f=houseAsset(h)!.footprint,w=roof.naturalWidth,height=roof.naturalHeight;

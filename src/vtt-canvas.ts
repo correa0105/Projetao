@@ -1,7 +1,9 @@
 import { drawTerrain } from './vtt-terrain-canvas';
 import { renderBuffer, renderWorkCache, tokenOnScreen } from './vtt-render-cache';
 import type { TerrainStroke } from '../shared/vtt';
-import {houseAsset,houseOccupied,houseWalls} from '../shared/vtt-houses';
+import {houseAsset,houseContains,houseOccupied,houseRoofOccluded,houseWalls} from '../shared/vtt-houses';
+import furniture from '../shared/vtt-home-furniture-catalog.json';
+const houseFurniture=new Set(furniture.map(a=>a.image));
 import {drawHouseDoor} from './vtt-house-doors';
 import {treeTrunk} from '../shared/vtt-tree-trunks';
 import {drawHouseVision} from './vtt-house-vision';
@@ -324,6 +326,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
   };
   const visibleCanopyToken = (t: VttToken) => !((!o.gm || o.preview) && t.hidden) && !(o.preview && o.viewer && t.id !== o.viewer.id && !viewerSees(o.viewer,t,s));
   const canopyActors = s.tokens.filter(t=>canopyActor(t) && visibleCanopyToken(t));
+  const closedHouses=s.tokens.filter(h=>houseAsset(h)&&!houseOccupied(h,canopyActors));
   let canopyCover: HTMLCanvasElement | null = null;
   for (const layer of ['map', 'tokens', 'gm']) {
     if (layer === 'gm') drawCanopyForeground(c,s,images,canopyActors,canopyCover,visibleCanopyToken,o.selected,cam.zoom);
@@ -367,6 +370,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       if ((!o.gm || o.preview) && t.hidden) continue;
       if (!tokenOnScreen(t, view, cam.zoom)) continue;
       if (o.preview && o.viewer && t.id !== o.viewer.id && !viewerSees(o.viewer, t, s)) continue;
+      if(houseFurniture.has(t.image)&&closedHouses.some(h=>houseContains(h,t)))continue;
       c.save();
       if(layer === 'map') clipCanopyBase(c,s,t);
       c.translate(t.x, t.y);
@@ -390,7 +394,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         if (img?.complete && img.naturalWidth) {
           const floor=house&&images.get(house.interior);
           if(house&&!houseOccupied(t,canopyActors)&&floor?.complete&&floor.naturalWidth){
-            drawHouseRoof(c,t,img,floor);
+            drawHouseRoof(c,t,img,floor,houseRoofOccluded(t,canopyActors,s));
           }else c.drawImage(img, -t.width / 2, -t.height / 2, t.width, t.height);
         } else {
           c.fillStyle = t.color;
@@ -500,7 +504,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.restore();
       }
     }
-    if (layer === 'map') { for(const h of sortedTokens)if(houseAsset(h)&&visibleCanopyToken(h)&&tokenOnScreen(h,view,cam.zoom))drawHouseDoor(c,s,h,reduced,images);drawGrid(); canopyCover = captureCanopyAreas(c,s); }
+    if (layer === 'map') { for(const h of sortedTokens)if(houseAsset(h)&&(houseOccupied(h,canopyActors)||houseRoofOccluded(h,canopyActors,s))&&visibleCanopyToken(h)&&tokenOnScreen(h,view,cam.zoom))drawHouseDoor(c,s,h,reduced,images);drawGrid(); canopyCover = captureCanopyAreas(c,s); }
   }
   const spellView = {
     left: cam.x - width / 2 / cam.zoom,

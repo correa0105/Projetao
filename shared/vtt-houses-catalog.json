@@ -12,10 +12,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.44,
-      "doorEnd": 0.56
+      "doorStart": 0.4551,
+      "doorEnd": 0.5322
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8467,
+      "height": 0.072
+    }
   },
   {
     "id": "house-002",
@@ -30,23 +40,37 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.425,
-      "doorEnd": 0.585
+      "doorStart": 0.423,
+      "doorEnd": 0.546
     },
     "windows": [
       {
         "x": 0.28,
         "y": 0.81,
         "facing": 90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.28,
+        "viewY": 0.82
       },
       {
         "x": 0.7,
         "y": 0.81,
         "facing": 90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.7,
+        "viewY": 0.818
       }
-    ]
+    ],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0927734375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8213,
+      "height": 0.072
+    }
   },
   {
     "id": "house-003",
@@ -61,10 +85,20 @@
       "top": 0.21,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.44,
-      "doorEnd": 0.56
+      "doorStart": 0.4531,
+      "doorEnd": 0.5508
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.091796875,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8525,
+      "height": 0.072
+    }
   },
   {
     "id": "house-004",
@@ -79,10 +113,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.45,
-      "doorEnd": 0.58
+      "doorStart": 0.4453,
+      "doorEnd": 0.5361
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8428,
+      "height": 0.072
+    }
   },
   {
     "id": "house-005",
@@ -97,10 +141,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.44,
-      "doorEnd": 0.565
+      "doorStart": 0.4336,
+      "doorEnd": 0.5557
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0927734375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8232,
+      "height": 0.072
+    }
   },
   {
     "id": "house-006",
@@ -115,10 +169,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.405,
-      "doorEnd": 0.56
+      "doorStart": 0.4248,
+      "doorEnd": 0.5322
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8525,
+      "height": 0.072
+    }
   },
   {
     "id": "house-007",
@@ -133,10 +197,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.405,
-      "doorEnd": 0.545
+      "doorStart": 0.4463,
+      "doorEnd": 0.5391
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8223,
+      "height": 0.072
+    }
   },
   {
     "id": "house-008",
@@ -151,10 +225,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.43,
-      "doorEnd": 0.565
+      "doorStart": 0.4443,
+      "doorEnd": 0.5566
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9287109375,
+      "bottom": 0.9091796875
+    },
+    "doorVisual": {
+      "baseY": 0.8213,
+      "height": 0.072
+    }
   },
   {
     "id": "house-009",
@@ -169,23 +253,37 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.43,
-      "doorEnd": 0.555
+      "doorStart": 0.4551,
+      "doorEnd": 0.5557
     },
     "windows": [
       {
         "x": 0.3,
         "y": 0.19,
         "facing": -90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.3,
+        "viewY": 0.19
       },
       {
         "x": 0.73,
         "y": 0.19,
         "facing": -90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.73,
+        "viewY": 0.19
       }
-    ]
+    ],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8252,
+      "height": 0.072
+    }
   },
   {
     "id": "house-010",
@@ -200,10 +298,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.425,
-      "doorEnd": 0.565
+      "doorStart": 0.4316,
+      "doorEnd": 0.5342
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.7676,
+      "height": 0.072
+    }
   },
   {
     "id": "house-011",
@@ -218,10 +326,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.44,
-      "doorEnd": 0.56
+      "doorStart": 0.4502,
+      "doorEnd": 0.5527
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8086,
+      "height": 0.072
+    }
   },
   {
     "id": "house-012",
@@ -236,47 +354,69 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.415,
-      "doorEnd": 0.585
+      "doorStart": 0.4346,
+      "doorEnd": 0.5625
     },
     "windows": [
       {
         "x": 0.3,
         "y": 0.19,
         "facing": -90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.3,
+        "viewY": 0.177
       },
       {
         "x": 0.7,
         "y": 0.19,
         "facing": -90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.7,
+        "viewY": 0.177
       },
       {
         "x": 0.17,
         "y": 0.43,
         "facing": 180,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.134,
+        "viewY": 0.43
       },
       {
         "x": 0.83,
         "y": 0.43,
         "facing": 0,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.866,
+        "viewY": 0.43
       },
       {
         "x": 0.17,
         "y": 0.69,
         "facing": 180,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.133,
+        "viewY": 0.69
       },
       {
         "x": 0.83,
         "y": 0.69,
         "facing": 0,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.868,
+        "viewY": 0.69
       }
-    ]
+    ],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.834,
+      "height": 0.072
+    }
   },
   {
     "id": "house-013",
@@ -291,47 +431,69 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.42,
-      "doorEnd": 0.56
+      "doorStart": 0.4385,
+      "doorEnd": 0.541
     },
     "windows": [
       {
         "x": 0.3,
         "y": 0.19,
         "facing": -90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.3,
+        "viewY": 0.177
       },
       {
         "x": 0.7,
         "y": 0.19,
         "facing": -90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.7,
+        "viewY": 0.177
       },
       {
         "x": 0.31,
         "y": 0.81,
         "facing": 90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.31,
+        "viewY": 0.829
       },
       {
         "x": 0.69,
         "y": 0.81,
         "facing": 90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.69,
+        "viewY": 0.829
       },
       {
         "x": 0.17,
         "y": 0.5,
         "facing": 180,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.124,
+        "viewY": 0.5
       },
       {
         "x": 0.83,
         "y": 0.5,
         "facing": 0,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.876,
+        "viewY": 0.5
       }
-    ]
+    ],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8291,
+      "height": 0.072
+    }
   },
   {
     "id": "house-014",
@@ -346,10 +508,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.43,
-      "doorEnd": 0.555
+      "doorStart": 0.4404,
+      "doorEnd": 0.5449
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8018,
+      "height": 0.072
+    }
   },
   {
     "id": "house-015",
@@ -364,10 +536,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.43,
-      "doorEnd": 0.555
+      "doorStart": 0.4453,
+      "doorEnd": 0.5527
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8037,
+      "height": 0.072
+    }
   },
   {
     "id": "house-016",
@@ -382,10 +564,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.42,
-      "doorEnd": 0.57
+      "doorStart": 0.4434,
+      "doorEnd": 0.5596
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8271,
+      "height": 0.072
+    }
   },
   {
     "id": "house-017",
@@ -400,10 +592,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.43,
-      "doorEnd": 0.56
+      "doorStart": 0.4512,
+      "doorEnd": 0.5488
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.072265625,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.832,
+      "height": 0.072
+    }
   },
   {
     "id": "house-018",
@@ -418,10 +620,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.43,
-      "doorEnd": 0.56
+      "doorStart": 0.4434,
+      "doorEnd": 0.5371
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8213,
+      "height": 0.072
+    }
   },
   {
     "id": "house-019",
@@ -436,41 +648,61 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.42,
-      "doorEnd": 0.575
+      "doorStart": 0.4551,
+      "doorEnd": 0.542
     },
     "windows": [
       {
         "x": 0.5,
         "y": 0.19,
         "facing": -90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.5,
+        "viewY": 0.14
       },
       {
         "x": 0.3,
         "y": 0.81,
         "facing": 90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.3,
+        "viewY": 0.86
       },
       {
         "x": 0.7,
         "y": 0.81,
         "facing": 90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.7,
+        "viewY": 0.86
       },
       {
         "x": 0.17,
         "y": 0.5,
         "facing": 180,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.119,
+        "viewY": 0.5
       },
       {
         "x": 0.83,
         "y": 0.5,
         "facing": 0,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.88,
+        "viewY": 0.5
       }
-    ]
+    ],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8105,
+      "height": 0.072
+    }
   },
   {
     "id": "house-020",
@@ -485,10 +717,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.425,
-      "doorEnd": 0.55
+      "doorStart": 0.4268,
+      "doorEnd": 0.5234
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8184,
+      "height": 0.072
+    }
   },
   {
     "id": "house-021",
@@ -503,35 +745,53 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.43,
-      "doorEnd": 0.56
+      "doorStart": 0.4482,
+      "doorEnd": 0.5488
     },
     "windows": [
       {
         "x": 0.17,
         "y": 0.4,
         "facing": 180,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.143,
+        "viewY": 0.4
       },
       {
         "x": 0.83,
         "y": 0.4,
         "facing": 0,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.857,
+        "viewY": 0.4
       },
       {
         "x": 0.17,
         "y": 0.56,
         "facing": 180,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.139,
+        "viewY": 0.56
       },
       {
         "x": 0.83,
         "y": 0.56,
         "facing": 0,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.861,
+        "viewY": 0.56
       }
-    ]
+    ],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.091796875,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.7832,
+      "height": 0.072
+    }
   },
   {
     "id": "house-022",
@@ -546,10 +806,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.415,
-      "doorEnd": 0.56
+      "doorStart": 0.4453,
+      "doorEnd": 0.54
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8271,
+      "height": 0.072
+    }
   },
   {
     "id": "house-023",
@@ -564,23 +834,37 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.415,
-      "doorEnd": 0.585
+      "doorStart": 0.425,
+      "doorEnd": 0.565
     },
     "windows": [
       {
         "x": 0.29,
         "y": 0.81,
         "facing": 90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.29,
+        "viewY": 0.824
       },
       {
         "x": 0.71,
         "y": 0.81,
         "facing": 90,
-        "width": 0.085
+        "width": 0.085,
+        "viewX": 0.71,
+        "viewY": 0.824
       }
-    ]
+    ],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.091796875,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8252,
+      "height": 0.072
+    }
   },
   {
     "id": "house-024",
@@ -595,10 +879,20 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.43,
-      "doorEnd": 0.555
+      "doorStart": 0.4551,
+      "doorEnd": 0.5371
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8242,
+      "height": 0.072
+    }
   },
   {
     "id": "house-025",
@@ -613,9 +907,942 @@
       "top": 0.19,
       "right": 0.83,
       "bottom": 0.81,
-      "doorStart": 0.43,
-      "doorEnd": 0.565
+      "doorStart": 0.4453,
+      "doorEnd": 0.5508
     },
-    "windows": []
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9287109375,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8252,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-001",
+    "name": "Cabana de palha · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-001-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-001-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.453,
+      "doorEnd": 0.5319
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8485,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-002",
+    "name": "Casa de telhas vermelhas · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-002-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-002-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4229,
+      "doorEnd": 0.5459
+    },
+    "windows": [
+      {
+        "x": 0.28,
+        "y": 0.81,
+        "facing": 90,
+        "width": 0.085,
+        "viewX": 0.28,
+        "viewY": 0.824
+      },
+      {
+        "x": 0.7,
+        "y": 0.81,
+        "facing": 90,
+        "width": 0.085,
+        "viewX": 0.7,
+        "viewY": 0.823
+      }
+    ],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0927734375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8246,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-003",
+    "name": "Casa do lenhador · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-003-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-003-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.21,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4545,
+      "doorEnd": 0.5494
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.091796875,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8541,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-004",
+    "name": "Casa do pescador · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-004-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-004-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.445,
+      "doorEnd": 0.5359
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8445,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-005",
+    "name": "Casa do caçador · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-005-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-005-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4354,
+      "doorEnd": 0.5542
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0927734375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8262,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-006",
+    "name": "Casa da herbalista · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-006-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-006-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.425,
+      "doorEnd": 0.5319
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8525,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-007",
+    "name": "Casa do tecelão · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-007-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-007-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4498,
+      "doorEnd": 0.5375
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8254,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-008",
+    "name": "Casa do oleiro · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-008-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-008-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4434,
+      "doorEnd": 0.5574
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9287109375,
+      "bottom": 0.9091796875
+    },
+    "doorVisual": {
+      "baseY": 0.823,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-009",
+    "name": "Casa do ferreiro · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-009-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-009-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4545,
+      "doorEnd": 0.555
+    },
+    "windows": [
+      {
+        "x": 0.3,
+        "y": 0.19,
+        "facing": -90,
+        "width": 0.085,
+        "viewX": 0.3,
+        "viewY": 0.19
+      },
+      {
+        "x": 0.73,
+        "y": 0.19,
+        "facing": -90,
+        "width": 0.085,
+        "viewX": 0.73,
+        "viewY": 0.19
+      }
+    ],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8254,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-010",
+    "name": "Casa do padeiro · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-010-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-010-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4322,
+      "doorEnd": 0.5343
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.7687,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-011",
+    "name": "Casa do mercador · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-011-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-011-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4498,
+      "doorEnd": 0.5518
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8094,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-012",
+    "name": "Casa de pedra · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-012-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-012-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4346,
+      "doorEnd": 0.5622
+    },
+    "windows": [
+      {
+        "x": 0.3,
+        "y": 0.19,
+        "facing": -90,
+        "width": 0.085,
+        "viewX": 0.3,
+        "viewY": 0.176
+      },
+      {
+        "x": 0.7,
+        "y": 0.19,
+        "facing": -90,
+        "width": 0.085,
+        "viewX": 0.7,
+        "viewY": 0.177
+      },
+      {
+        "x": 0.17,
+        "y": 0.43,
+        "facing": 180,
+        "width": 0.085,
+        "viewX": 0.133,
+        "viewY": 0.43
+      },
+      {
+        "x": 0.83,
+        "y": 0.43,
+        "facing": 0,
+        "width": 0.085,
+        "viewX": 0.868,
+        "viewY": 0.43
+      },
+      {
+        "x": 0.17,
+        "y": 0.69,
+        "facing": 180,
+        "width": 0.085,
+        "viewX": 0.131,
+        "viewY": 0.69
+      },
+      {
+        "x": 0.83,
+        "y": 0.69,
+        "facing": 0,
+        "width": 0.085,
+        "viewX": 0.869,
+        "viewY": 0.69
+      }
+    ],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8349,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-013",
+    "name": "Casa de ardósia · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-013-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-013-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4418,
+      "doorEnd": 0.5399
+    },
+    "windows": [
+      {
+        "x": 0.3,
+        "y": 0.19,
+        "facing": -90,
+        "width": 0.085,
+        "viewX": 0.3,
+        "viewY": 0.175
+      },
+      {
+        "x": 0.7,
+        "y": 0.19,
+        "facing": -90,
+        "width": 0.085,
+        "viewX": 0.7,
+        "viewY": 0.175
+      },
+      {
+        "x": 0.31,
+        "y": 0.81,
+        "facing": 90,
+        "width": 0.085,
+        "viewX": 0.31,
+        "viewY": 0.831
+      },
+      {
+        "x": 0.69,
+        "y": 0.81,
+        "facing": 90,
+        "width": 0.085,
+        "viewX": 0.69,
+        "viewY": 0.831
+      },
+      {
+        "x": 0.17,
+        "y": 0.5,
+        "facing": 180,
+        "width": 0.085,
+        "viewX": 0.123,
+        "viewY": 0.5
+      },
+      {
+        "x": 0.83,
+        "y": 0.5,
+        "facing": 0,
+        "width": 0.085,
+        "viewX": 0.877,
+        "viewY": 0.5
+      }
+    ],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8309,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-014",
+    "name": "Casa da fazenda · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-014-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-014-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4402,
+      "doorEnd": 0.5439
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8038,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-015",
+    "name": "Casa de junco · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-015-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-015-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4474,
+      "doorEnd": 0.5518
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8054,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-016",
+    "name": "Casa do deserto · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-016-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-016-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4402,
+      "doorEnd": 0.5606
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.827,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-017",
+    "name": "Casa alpina · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-017-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-017-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4537,
+      "doorEnd": 0.547
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.072265625,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8333,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-018",
+    "name": "Casa nevada · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-018-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-018-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4434,
+      "doorEnd": 0.5367
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.823,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-019",
+    "name": "Casa nobre · vazia",
+    "category": "Casas vazias",
+    "width": 7,
+    "height": 7,
+    "image": "/vtt/houses-empty-20261014/house-019-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-019-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4569,
+      "doorEnd": 0.5391
+    },
+    "windows": [
+      {
+        "x": 0.5,
+        "y": 0.19,
+        "facing": -90,
+        "width": 0.085,
+        "viewX": 0.5,
+        "viewY": 0.139
+      },
+      {
+        "x": 0.3,
+        "y": 0.81,
+        "facing": 90,
+        "width": 0.085,
+        "viewX": 0.3,
+        "viewY": 0.861
+      },
+      {
+        "x": 0.7,
+        "y": 0.81,
+        "facing": 90,
+        "width": 0.085,
+        "viewX": 0.7,
+        "viewY": 0.861
+      },
+      {
+        "x": 0.17,
+        "y": 0.5,
+        "facing": 180,
+        "width": 0.085,
+        "viewX": 0.119,
+        "viewY": 0.5
+      },
+      {
+        "x": 0.83,
+        "y": 0.5,
+        "facing": 0,
+        "width": 0.085,
+        "viewX": 0.88,
+        "viewY": 0.5
+      }
+    ],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8118,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-020",
+    "name": "Casa gótica · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-020-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-020-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4258,
+      "doorEnd": 0.5239
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.819,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-021",
+    "name": "Casa élfica · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-021-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-021-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4506,
+      "doorEnd": 0.5478
+    },
+    "windows": [
+      {
+        "x": 0.17,
+        "y": 0.4,
+        "facing": 180,
+        "width": 0.085,
+        "viewX": 0.141,
+        "viewY": 0.4
+      },
+      {
+        "x": 0.83,
+        "y": 0.4,
+        "facing": 0,
+        "width": 0.085,
+        "viewX": 0.859,
+        "viewY": 0.4
+      },
+      {
+        "x": 0.17,
+        "y": 0.56,
+        "facing": 180,
+        "width": 0.085,
+        "viewX": 0.137,
+        "viewY": 0.56
+      },
+      {
+        "x": 0.83,
+        "y": 0.56,
+        "facing": 0,
+        "width": 0.085,
+        "viewX": 0.864,
+        "viewY": 0.56
+      }
+    ],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.091796875,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.7847,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-022",
+    "name": "Casa anã · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-022-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-022-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4442,
+      "doorEnd": 0.5415
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8293,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-023",
+    "name": "Casa costeira · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-023-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-023-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4296,
+      "doorEnd": 0.5696
+    },
+    "windows": [
+      {
+        "x": 0.29,
+        "y": 0.81,
+        "facing": 90,
+        "width": 0.085,
+        "viewX": 0.29,
+        "viewY": 0.825
+      },
+      {
+        "x": 0.71,
+        "y": 0.81,
+        "facing": 90,
+        "width": 0.085,
+        "viewX": 0.71,
+        "viewY": 0.826
+      }
+    ],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.091796875,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8262,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-024",
+    "name": "Casa dos viajantes · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-024-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-024-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.4545,
+      "doorEnd": 0.5375
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0703125,
+      "top": 0.08984375,
+      "right": 0.9296875,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8246,
+      "height": 0.072
+    }
+  },
+  {
+    "id": "house-empty-025",
+    "name": "Casa do escriba · vazia",
+    "category": "Casas vazias",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/houses-empty-20261014/house-025-roof.webp",
+    "interior": "/vtt/houses-empty-20261014/house-025-interior.webp",
+    "footprint": {
+      "left": 0.17,
+      "top": 0.19,
+      "right": 0.83,
+      "bottom": 0.81,
+      "doorStart": 0.445,
+      "doorEnd": 0.5534
+    },
+    "windows": [],
+    "roofBounds": {
+      "left": 0.0712890625,
+      "top": 0.0908203125,
+      "right": 0.9287109375,
+      "bottom": 0.91015625
+    },
+    "doorVisual": {
+      "baseY": 0.8254,
+      "height": 0.072
+    }
   }
 ]

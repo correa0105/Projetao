@@ -1,0 +1,802 @@
+[
+  {
+    "id": "furniture-001",
+    "name": "Cadeira de madeira",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-001.webp"
+  },
+  {
+    "id": "furniture-002",
+    "name": "Poltrona de couro",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-002.webp"
+  },
+  {
+    "id": "furniture-003",
+    "name": "Cadeira estofada",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-003.webp"
+  },
+  {
+    "id": "furniture-004",
+    "name": "Banco curto",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-004.webp"
+  },
+  {
+    "id": "furniture-005",
+    "name": "Banco comprido",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-005.webp"
+  },
+  {
+    "id": "furniture-006",
+    "name": "Mesa de jantar",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-006.webp"
+  },
+  {
+    "id": "furniture-007",
+    "name": "Mesa redonda",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/home-furniture-20261014/furniture-007.webp"
+  },
+  {
+    "id": "furniture-008",
+    "name": "Mesa lateral",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-008.webp"
+  },
+  {
+    "id": "furniture-009",
+    "name": "Escrivaninha",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-009.webp"
+  },
+  {
+    "id": "furniture-010",
+    "name": "Mesa de trabalho",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-010.webp"
+  },
+  {
+    "id": "furniture-011",
+    "name": "Cama de solteiro",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 2,
+    "image": "/vtt/home-furniture-20261014/furniture-011.webp"
+  },
+  {
+    "id": "furniture-012",
+    "name": "Cama de casal",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/home-furniture-20261014/furniture-012.webp"
+  },
+  {
+    "id": "furniture-013",
+    "name": "Berço",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-013.webp"
+  },
+  {
+    "id": "furniture-014",
+    "name": "Colchão de palha",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 2,
+    "image": "/vtt/home-furniture-20261014/furniture-014.webp"
+  },
+  {
+    "id": "furniture-015",
+    "name": "Sofá de madeira",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-015.webp"
+  },
+  {
+    "id": "furniture-016",
+    "name": "Chaise de couro",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 2,
+    "image": "/vtt/home-furniture-20261014/furniture-016.webp"
+  },
+  {
+    "id": "furniture-017",
+    "name": "Guarda-roupa",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-017.webp"
+  },
+  {
+    "id": "furniture-018",
+    "name": "Cômoda",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-018.webp"
+  },
+  {
+    "id": "furniture-019",
+    "name": "Estante de livros",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-019.webp"
+  },
+  {
+    "id": "furniture-020",
+    "name": "Prateleira",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-020.webp"
+  },
+  {
+    "id": "furniture-021",
+    "name": "Baú de madeira",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-021.webp"
+  },
+  {
+    "id": "furniture-022",
+    "name": "Baú de ferro",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-022.webp"
+  },
+  {
+    "id": "furniture-023",
+    "name": "Aparador",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-023.webp"
+  },
+  {
+    "id": "furniture-024",
+    "name": "Bancada de cozinha",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-024.webp"
+  },
+  {
+    "id": "furniture-025",
+    "name": "Armário de cozinha",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-025.webp"
+  },
+  {
+    "id": "furniture-026",
+    "name": "Despensa",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-026.webp"
+  },
+  {
+    "id": "furniture-027",
+    "name": "Barril",
+    "category": "Mobílias",
+    "width": 0.75,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-027.webp"
+  },
+  {
+    "id": "furniture-028",
+    "name": "Tina de água",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-028.webp"
+  },
+  {
+    "id": "furniture-029",
+    "name": "Banqueta",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-029.webp"
+  },
+  {
+    "id": "furniture-030",
+    "name": "Cabideiro",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-030.webp"
+  },
+  {
+    "id": "furniture-031",
+    "name": "Lamparina",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-031.webp"
+  },
+  {
+    "id": "furniture-032",
+    "name": "Candelabro",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-032.webp"
+  },
+  {
+    "id": "furniture-033",
+    "name": "Lareira de pedra",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-033.webp"
+  },
+  {
+    "id": "furniture-034",
+    "name": "Braseiro",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-034.webp"
+  },
+  {
+    "id": "furniture-035",
+    "name": "Fogão a lenha",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-035.webp"
+  },
+  {
+    "id": "furniture-036",
+    "name": "Lavabo",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-036.webp"
+  },
+  {
+    "id": "furniture-037",
+    "name": "Banheira",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 2,
+    "image": "/vtt/home-furniture-20261014/furniture-037.webp"
+  },
+  {
+    "id": "furniture-038",
+    "name": "Tapete retangular",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 3,
+    "image": "/vtt/home-furniture-20261014/furniture-038.webp"
+  },
+  {
+    "id": "furniture-039",
+    "name": "Tapete redondo",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/home-furniture-20261014/furniture-039.webp"
+  },
+  {
+    "id": "furniture-040",
+    "name": "Tapete de pele",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/home-furniture-20261014/furniture-040.webp"
+  },
+  {
+    "id": "furniture-041",
+    "name": "Biombo",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-041.webp"
+  },
+  {
+    "id": "furniture-042",
+    "name": "Tear",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/home-furniture-20261014/furniture-042.webp"
+  },
+  {
+    "id": "furniture-043",
+    "name": "Bancada de alquimia",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-043.webp"
+  },
+  {
+    "id": "furniture-044",
+    "name": "Mesa de escrita",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-044.webp"
+  },
+  {
+    "id": "furniture-045",
+    "name": "Estante de poções",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-045.webp"
+  },
+  {
+    "id": "furniture-046",
+    "name": "Suporte de armas",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-046.webp"
+  },
+  {
+    "id": "furniture-047",
+    "name": "Suporte de armadura",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-047.webp"
+  },
+  {
+    "id": "furniture-048",
+    "name": "Mesa de xadrez",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/home-furniture-20261014/furniture-048.webp"
+  },
+  {
+    "id": "furniture-049",
+    "name": "Mesa de mapas",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-049.webp"
+  },
+  {
+    "id": "furniture-050",
+    "name": "Vaso de plantas",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-050.webp"
+  },
+  {
+    "id": "furniture-051",
+    "name": "Chaleira de cobre",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-051.webp"
+  },
+  {
+    "id": "furniture-052",
+    "name": "Caldeirão de ferro",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-052.webp"
+  },
+  {
+    "id": "furniture-053",
+    "name": "Suporte de panelas",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-053.webp"
+  },
+  {
+    "id": "furniture-054",
+    "name": "Moinho manual de grãos",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-054.webp"
+  },
+  {
+    "id": "furniture-055",
+    "name": "Pilão de pedra",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-055.webp"
+  },
+  {
+    "id": "furniture-056",
+    "name": "Jarro de cerâmica",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-056.webp"
+  },
+  {
+    "id": "furniture-057",
+    "name": "Ânfora de vinho",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-057.webp"
+  },
+  {
+    "id": "furniture-058",
+    "name": "Cesto de pães",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-058.webp"
+  },
+  {
+    "id": "furniture-059",
+    "name": "Caixote de verduras",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-059.webp"
+  },
+  {
+    "id": "furniture-060",
+    "name": "Sacos de grãos",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-060.webp"
+  },
+  {
+    "id": "furniture-061",
+    "name": "Feixe de ervas secas",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-061.webp"
+  },
+  {
+    "id": "furniture-062",
+    "name": "Tábua de queijos",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-062.webp"
+  },
+  {
+    "id": "furniture-063",
+    "name": "Secador de carnes",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-063.webp"
+  },
+  {
+    "id": "furniture-064",
+    "name": "Batedeira de manteiga",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-064.webp"
+  },
+  {
+    "id": "furniture-065",
+    "name": "Prensa de frutas",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-065.webp"
+  },
+  {
+    "id": "furniture-066",
+    "name": "Peneira de farinha",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-066.webp"
+  },
+  {
+    "id": "furniture-067",
+    "name": "Pedra de amolar",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-067.webp"
+  },
+  {
+    "id": "furniture-068",
+    "name": "Bigorna",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-068.webp"
+  },
+  {
+    "id": "furniture-069",
+    "name": "Morsa de bancada",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-069.webp"
+  },
+  {
+    "id": "furniture-070",
+    "name": "Caixa de ferramentas",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-070.webp"
+  },
+  {
+    "id": "furniture-071",
+    "name": "Corda enrolada",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-071.webp"
+  },
+  {
+    "id": "furniture-072",
+    "name": "Escada de madeira",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 3,
+    "image": "/vtt/home-furniture-20261014/furniture-072.webp"
+  },
+  {
+    "id": "furniture-073",
+    "name": "Ferramentas de jardim",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-073.webp"
+  },
+  {
+    "id": "furniture-074",
+    "name": "Pilha de lenha",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-074.webp"
+  },
+  {
+    "id": "furniture-075",
+    "name": "Roda de fiar",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-075.webp"
+  },
+  {
+    "id": "furniture-076",
+    "name": "Cesto de costura",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-076.webp"
+  },
+  {
+    "id": "furniture-077",
+    "name": "Manequim de alfaiate",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-077.webp"
+  },
+  {
+    "id": "furniture-078",
+    "name": "Pilha de roupas de cama",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-078.webp"
+  },
+  {
+    "id": "furniture-079",
+    "name": "Botas na soleira",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-079.webp"
+  },
+  {
+    "id": "furniture-080",
+    "name": "Penico de cerâmica",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-080.webp"
+  },
+  {
+    "id": "furniture-081",
+    "name": "Varal de roupas",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-081.webp"
+  },
+  {
+    "id": "furniture-082",
+    "name": "Bacia de lavar",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-082.webp"
+  },
+  {
+    "id": "furniture-083",
+    "name": "Espelho ornamentado",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-083.webp"
+  },
+  {
+    "id": "furniture-084",
+    "name": "Ícone doméstico",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-084.webp"
+  },
+  {
+    "id": "furniture-085",
+    "name": "Altar doméstico",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-085.webp"
+  },
+  {
+    "id": "furniture-086",
+    "name": "Estátua decorativa",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-086.webp"
+  },
+  {
+    "id": "furniture-087",
+    "name": "Bola de cristal",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-087.webp"
+  },
+  {
+    "id": "furniture-088",
+    "name": "Gaiola de pássaro",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-088.webp"
+  },
+  {
+    "id": "furniture-089",
+    "name": "Ampulheta",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-089.webp"
+  },
+  {
+    "id": "furniture-090",
+    "name": "Luneta em tripé",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-090.webp"
+  },
+  {
+    "id": "furniture-091",
+    "name": "Globo terrestre",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-091.webp"
+  },
+  {
+    "id": "furniture-092",
+    "name": "Relógio de pêndulo",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-092.webp"
+  },
+  {
+    "id": "furniture-093",
+    "name": "Balança de pratos",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-refined-20261014/furniture-093.webp"
+  },
+  {
+    "id": "furniture-094",
+    "name": "Maleta de remédios",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-094.webp"
+  },
+  {
+    "id": "furniture-095",
+    "name": "Tinteiro e pergaminhos",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-095.webp"
+  },
+  {
+    "id": "furniture-096",
+    "name": "Pilha de livros",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/home-furniture-20261014/furniture-096.webp"
+  },
+  {
+    "id": "furniture-097",
+    "name": "Púlpito de leitura",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-097.webp"
+  },
+  {
+    "id": "furniture-098",
+    "name": "Alaúde",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-098.webp"
+  },
+  {
+    "id": "furniture-099",
+    "name": "Tabuleiro de gamão",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/home-furniture-20261014/furniture-099.webp"
+  },
+  {
+    "id": "furniture-100",
+    "name": "Fole de lareira",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 1,
+    "image": "/vtt/home-furniture-refined-20261014/furniture-100.webp"
+  }
+]

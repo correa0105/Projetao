@@ -1,0 +1,605 @@
+{
+  "mode": "built-in",
+  "assets": [
+    {
+      "id": "furniture-051",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-051.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-051.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: aged copper kettle with a dark iron handle and spout. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-052",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-052.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-052.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: round iron cooking cauldron with three short feet, viewed from above. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-053",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-053.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-053.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: small freestanding iron rack holding three cooking pans. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-054",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-054.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-054.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: circular stone hand quern with wooden crank and a little grain in its hopper. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-055",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-055.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-055.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: small rough stone mortar and its pestle. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-056",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-056.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-056.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: large brown glazed earthenware water pitcher. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-057",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-057.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-057.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: terracotta wine amphora with two curved handles and a cork. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-058",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-058.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-058.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: oval wicker basket with rustic loaves of bread. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-059",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-059.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-059.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: open wooden crate containing cabbages, carrots and turnips. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-060",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-060.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-060.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: three tied coarse burlap grain sacks grouped as one stack. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-061",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-061.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-061.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: tied bundle of dried culinary herbs. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-062",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-062.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-062.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: round wooden cutting board with a cheese wheel and a small knife. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-063",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-063.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-063.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: small wooden tripod drying rack with strips of cured meat. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-064",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-064.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-064.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: traditional wooden butter churn with vertical plunger. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-065",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-065.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-065.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: small oak screw fruit press with cast iron spindle. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-066",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-066.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-066.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: round wood framed flour sieve with fine woven mesh. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-067",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-067.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-067.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: circular grindstone in a compact timber stand with foot treadle. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-068",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-068.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-068.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: worn iron blacksmith anvil on an oak stump. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-069",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-069.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-069.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: heavy antique iron vise with a wooden handle. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-070",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-070.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-070.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: open carpenters tool tote containing hammer, saw and chisels. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-071",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-071.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-071.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: neat coil of rough hemp rope. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-072",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-072.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-072.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: long straight timber ladder lying flat. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 3 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-073",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-073.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-073.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: bundle of iron rake, hoe and wooden shovel neatly tied together. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-074",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-074.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-074.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: low stack of split logs bound by simple side stakes. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-075",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-075.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-075.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: compact oak spinning wheel with treadle and wool spool. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-076",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-076.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-076.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: open wicker sewing basket with thread spools and small scissors. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-077",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-077.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-077.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: plain linen tailoring torso mannequin on a wooden tripod. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-078",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-078.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-078.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: stack of folded ivory linen sheets with one wool blanket. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-079",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-079.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-079.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: pair of brown leather boots on a small rectangular coir doormat. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-080",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-080.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-080.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: simple cream glazed chamber pot with one handle. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-081",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-081.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-081.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: short freestanding drying line between two timber posts with three linen garments. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 2 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-082",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-082.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-082.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: shallow white ceramic wash basin with folded washcloth. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-083",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-083.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-083.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: small freestanding oval mirror in a carved dark wood frame, its reflection neutral gray. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-084",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-084.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-084.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: small painted devotional panel depicting a simple radiant sun, no writing. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-085",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-085.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-085.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: small stone household altar with offering dish and a single unlit candle. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-086",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-086.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-086.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: small carved limestone owl statue on a square pedestal. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-087",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-087.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-087.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: clear crystal sphere on a three legged dark brass stand with subtle neutral reflection. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-088",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-088.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-088.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: empty round brass birdcage with a tiny perch. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-089",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-089.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-089.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: simple oak and glass hourglass filled with pale sand. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-090",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-090.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-090.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: antique brass telescope on a compact oak tripod. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-091",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-091.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-091.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: aged parchment terrestrial globe on a dark wooden stand, no legible labels. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-092",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-092.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-092.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: small oak freestanding pendulum clock cabinet with brass dial. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-093",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-093.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-093.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: compact square iron lockbox with a heavy clasp. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-094",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-094.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-094.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: open worn leather medicine kit containing small jars and bandages. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-095",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-095.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-095.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: brass inkwell, quill and two rolled parchments arranged as one compact set. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-096",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-096.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-096.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: stack of five worn closed leather bound books with no legible writing. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 0.5 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-097",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-097.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-097.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: oak lectern with an open blank parchment ledger. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-098",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-098.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-098.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: wooden lute lying flat with visible strings and carved sound hole. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 0.5 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-099",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-099.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-099.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: open wooden backgammon board with ivory and dark counters. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    },
+    {
+      "id": "furniture-100",
+      "kind": "furniture",
+      "inputs": [
+        "public/vtt/houses-20261014/house-002-interior.webp"
+      ],
+      "native": "data/vtt/home-furniture-20261014/furniture-100.png",
+      "public": "public/vtt/home-furniture-20261014/furniture-100.webp",
+      "trim": true,
+      "transparent": true,
+      "prompt": "Generate ONE isolated new household prop for a fantasy VTT. Image 1 is ONLY the material, detail and camera style reference, never reproduce its room. Object: open small toy box containing a wooden horse, cloth doll and carved blocks. Use the same natural detailed painterly oak, iron, stone, leather or linen. Almost vertical top-down camera with only a small visible front face; the object is viewed overhead, back toward image top, front toward bottom. Human sized object, footprint 1 by 1 five-foot map cells, appropriate to its practical use. ONE complete object or the specified single compact set. Crisp realistic earthy material, restrained colors, no bloom, colored magical glow, blur or exaggerated shadow. Actual transparent alpha around the complete isolated sprite and a subtle contact shadow. No room, wall, floor tile, ground, colored background, grid, border, lettering, watermark, labels, people, or unrelated extra props."
+    }
+  ]
+}
