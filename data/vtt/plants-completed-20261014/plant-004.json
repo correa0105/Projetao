@@ -1,0 +1,16 @@
+{
+  "id": "plant-004",
+  "name": "Junco do brejo",
+  "category": "Plantas",
+  "squares": 1.5,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one clump of marsh reeds with thin green blades and three brown cattail flower spikes visible directly overhead.",
+  "image": "/vtt/plants-20261014/plant-004.webp",
+  "width": 1.416,
+  "height": 1.5,
+  "pixelWidth": 725,
+  "pixelHeight": 768,
+  "source": "data/vtt/plants-sources-20261014/plant-004.png",
+  "sourceSha256": "8415d6b24394e545cea32f4d981e8cd4d7798ef279713132fb6f87d600990efa",
+  "sha256": "568621b4a6e9137b66d5afac2bd0d7ea0d48dc74d86d419b4e666afc6c93ce09",
+  "tool": "built-in image_gen"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "plant-016",
+  "name": "Hortênsia",
+  "category": "Plantas",
+  "squares": 1.5,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one hydrangea shrub with rounded clusters of dusty blue flowers and broad muted green leaves.",
+  "image": "/vtt/plants-20261014/plant-016.webp",
+  "width": 1.5,
+  "height": 1.4355,
+  "pixelWidth": 768,
+  "pixelHeight": 735,
+  "source": "data/vtt/plants-sources-20261014/plant-016.png",
+  "sourceSha256": "fd0169430699d3710f972f49056988ffc21ff86a4473624cd14d91fce71159cd",
+  "sha256": "c411dc1df010530e7626aba50a22fd1c395e5e6a72ebae7193941cc5a2d00f1e",
+  "tool": "built-in image_gen"
+}

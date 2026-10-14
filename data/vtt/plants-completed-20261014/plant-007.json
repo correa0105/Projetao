@@ -1,0 +1,16 @@
+{
+  "id": "plant-007",
+  "name": "Musgo",
+  "category": "Plantas",
+  "squares": 1.2,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one irregular cushion of moss with fine velvety green texture, no rocks or soil.",
+  "image": "/vtt/plants-20261014/plant-007.webp",
+  "width": 1.1734,
+  "height": 1.2,
+  "pixelWidth": 751,
+  "pixelHeight": 768,
+  "source": "data/vtt/plants-sources-20261014/plant-007.png",
+  "sourceSha256": "afbe1ab157638fadb3c07aafd7d61c874255fe25a00f5cd6315dc2c5753594ac",
+  "sha256": "016f795368e081931674e0d818ef0fdd9da39d2140f280a99229435be4de4e20",
+  "tool": "built-in image_gen"
+}

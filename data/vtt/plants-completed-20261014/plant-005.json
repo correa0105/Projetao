@@ -1,0 +1,16 @@
+{
+  "id": "plant-005",
+  "name": "Cavalinha",
+  "category": "Plantas",
+  "squares": 1,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one patch of horsetail stems and radiating fine whorls, muted green botanical structure.",
+  "image": "/vtt/plants-20261014/plant-005.webp",
+  "width": 0.9596,
+  "height": 1,
+  "pixelWidth": 737,
+  "pixelHeight": 768,
+  "source": "data/vtt/plants-sources-20261014/plant-005.png",
+  "sourceSha256": "f5da89d29a0da3dd3c6e7d583899f355dbeaba30f7283ead73c47f4651036703",
+  "sha256": "c1e4decb5b56f9ae6511aead87fed4be9b1a9485ae782529710f637303ca6b0e",
+  "tool": "built-in image_gen"
+}

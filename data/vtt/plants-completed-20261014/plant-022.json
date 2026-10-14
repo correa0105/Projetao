@@ -1,0 +1,16 @@
+{
+  "id": "plant-022",
+  "name": "Babosa",
+  "category": "Plantas",
+  "squares": 1.3,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one aloe rosette with broad fleshy tapering olive-green leaves, soft pale speckles and small teeth.",
+  "image": "/vtt/plants-20261014/plant-022.webp",
+  "width": 1.2882,
+  "height": 1.3,
+  "pixelWidth": 761,
+  "pixelHeight": 768,
+  "source": "data/vtt/plants-sources-20261014/plant-022.png",
+  "sourceSha256": "ce3bc1be022e948357afda0acf181cca6708d2c0c36e0dd624fbf09972e2d2a0",
+  "sha256": "d4283fd68d1e6a3fc0a07021783426ecf7c77bc666235a78c620aa9fce1c43d0",
+  "tool": "built-in image_gen"
+}

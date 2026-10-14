@@ -1,0 +1,16 @@
+{
+  "id": "plant-015",
+  "name": "Urze",
+  "category": "Plantas",
+  "squares": 1.2,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one compact heath shrub with many fine dark branches, tiny green leaves and subdued mauve flowers.",
+  "image": "/vtt/plants-20261014/plant-015.webp",
+  "width": 1.1906,
+  "height": 1.2,
+  "pixelWidth": 762,
+  "pixelHeight": 768,
+  "source": "data/vtt/plants-sources-20261014/plant-015.png",
+  "sourceSha256": "6b59a3881e1f4f20bfb365bc7af148d17768e5b34874571a34584a37e1ca6920",
+  "sha256": "24124ea85298032c7ed22bd642d2f883f0d2c82650c900b2c14148745fd4360c",
+  "tool": "built-in image_gen"
+}

@@ -1,0 +1,427 @@
+[
+  {
+    "id": "house-001",
+    "name": "Cabana de palha",
+    "category": "Casas",
+    "width": 5,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-001-roof.webp",
+    "interior": "/vtt/houses-20261014/house-001-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-002",
+    "name": "Casa de telhas vermelhas",
+    "category": "Casas",
+    "width": 6,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-002-roof.webp",
+    "interior": "/vtt/houses-20261014/house-002-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-003",
+    "name": "Casa do lenhador",
+    "category": "Casas",
+    "width": 5,
+    "height": 6,
+    "image": "/vtt/houses-20261014/house-003-roof.webp",
+    "interior": "/vtt/houses-20261014/house-003-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-004",
+    "name": "Casa do pescador",
+    "category": "Casas",
+    "width": 6,
+    "height": 4,
+    "image": "/vtt/houses-20261014/house-004-roof.webp",
+    "interior": "/vtt/houses-20261014/house-004-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-005",
+    "name": "Casa do caçador",
+    "category": "Casas",
+    "width": 5,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-005-roof.webp",
+    "interior": "/vtt/houses-20261014/house-005-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-006",
+    "name": "Casa da herbalista",
+    "category": "Casas",
+    "width": 5,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-006-roof.webp",
+    "interior": "/vtt/houses-20261014/house-006-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-007",
+    "name": "Casa do tecelão",
+    "category": "Casas",
+    "width": 6,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-007-roof.webp",
+    "interior": "/vtt/houses-20261014/house-007-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-008",
+    "name": "Casa do oleiro",
+    "category": "Casas",
+    "width": 5,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-008-roof.webp",
+    "interior": "/vtt/houses-20261014/house-008-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-009",
+    "name": "Casa do ferreiro",
+    "category": "Casas",
+    "width": 6,
+    "height": 6,
+    "image": "/vtt/houses-20261014/house-009-roof.webp",
+    "interior": "/vtt/houses-20261014/house-009-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-010",
+    "name": "Casa do padeiro",
+    "category": "Casas",
+    "width": 6,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-010-roof.webp",
+    "interior": "/vtt/houses-20261014/house-010-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-011",
+    "name": "Casa do mercador",
+    "category": "Casas",
+    "width": 7,
+    "height": 6,
+    "image": "/vtt/houses-20261014/house-011-roof.webp",
+    "interior": "/vtt/houses-20261014/house-011-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-012",
+    "name": "Casa de pedra",
+    "category": "Casas",
+    "width": 6,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-012-roof.webp",
+    "interior": "/vtt/houses-20261014/house-012-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-013",
+    "name": "Casa de ardósia",
+    "category": "Casas",
+    "width": 5,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-013-roof.webp",
+    "interior": "/vtt/houses-20261014/house-013-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-014",
+    "name": "Casa da fazenda",
+    "category": "Casas",
+    "width": 7,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-014-roof.webp",
+    "interior": "/vtt/houses-20261014/house-014-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-015",
+    "name": "Casa de junco",
+    "category": "Casas",
+    "width": 5,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-015-roof.webp",
+    "interior": "/vtt/houses-20261014/house-015-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-016",
+    "name": "Casa do deserto",
+    "category": "Casas",
+    "width": 6,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-016-roof.webp",
+    "interior": "/vtt/houses-20261014/house-016-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-017",
+    "name": "Casa alpina",
+    "category": "Casas",
+    "width": 6,
+    "height": 6,
+    "image": "/vtt/houses-20261014/house-017-roof.webp",
+    "interior": "/vtt/houses-20261014/house-017-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-018",
+    "name": "Casa nevada",
+    "category": "Casas",
+    "width": 6,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-018-roof.webp",
+    "interior": "/vtt/houses-20261014/house-018-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-019",
+    "name": "Casa nobre",
+    "category": "Casas",
+    "width": 8,
+    "height": 6,
+    "image": "/vtt/houses-20261014/house-019-roof.webp",
+    "interior": "/vtt/houses-20261014/house-019-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-020",
+    "name": "Casa gótica",
+    "category": "Casas",
+    "width": 6,
+    "height": 6,
+    "image": "/vtt/houses-20261014/house-020-roof.webp",
+    "interior": "/vtt/houses-20261014/house-020-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-021",
+    "name": "Casa élfica",
+    "category": "Casas",
+    "width": 6,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-021-roof.webp",
+    "interior": "/vtt/houses-20261014/house-021-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-022",
+    "name": "Casa anã",
+    "category": "Casas",
+    "width": 6,
+    "height": 6,
+    "image": "/vtt/houses-20261014/house-022-roof.webp",
+    "interior": "/vtt/houses-20261014/house-022-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-023",
+    "name": "Casa costeira",
+    "category": "Casas",
+    "width": 6,
+    "height": 5,
+    "image": "/vtt/houses-20261014/house-023-roof.webp",
+    "interior": "/vtt/houses-20261014/house-023-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-024",
+    "name": "Casa dos viajantes",
+    "category": "Casas",
+    "width": 7,
+    "height": 6,
+    "image": "/vtt/houses-20261014/house-024-roof.webp",
+    "interior": "/vtt/houses-20261014/house-024-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  },
+  {
+    "id": "house-025",
+    "name": "Casa do escriba",
+    "category": "Casas",
+    "width": 5,
+    "height": 6,
+    "image": "/vtt/houses-20261014/house-025-roof.webp",
+    "interior": "/vtt/houses-20261014/house-025-interior.webp",
+    "footprint": {
+      "left": 0.18,
+      "top": 0.2,
+      "right": 0.82,
+      "bottom": 0.8,
+      "doorStart": 0.44,
+      "doorEnd": 0.56
+    }
+  }
+]

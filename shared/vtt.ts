@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import {houseWalls} from './vtt-houses.js';
 import { canopyAreaSchema } from './vtt-canopies.js';
 import { atmosphereSchema } from './vtt-atmosphere.js';
 import { animatedAssetSchema } from './vtt-animated-assets.js';
@@ -618,7 +619,7 @@ export function intersection(
     : null;
 }
 export function blockingWalls(s: VttScene, movement = false) {
-  return s.walls.filter(
+  return [...s.walls,...houseWalls(s)].filter(
     (w) => (movement && w.kind === 'wall') || (!w.open && (movement || w.kind !== 'window')),
   );
 }

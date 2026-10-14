@@ -1,0 +1,16 @@
+{
+  "id": "plant-019",
+  "name": "Girassol",
+  "category": "Plantas",
+  "squares": 1.1,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one sunflower plant seen directly from above, one golden yellow flower head and supporting broad green leaves.",
+  "image": "/vtt/plants-20261014/plant-019.webp",
+  "width": 1.0728,
+  "height": 1.1,
+  "pixelWidth": 749,
+  "pixelHeight": 768,
+  "source": "data/vtt/plants-sources-20261014/plant-019.png",
+  "sourceSha256": "7ef142a4f65b5bd8d8d9cf4dffa61da67b8a58d3c370e428f954b884e2f67511",
+  "sha256": "e628d409133e3334ca3be31f9bd8db61830a4db23da603e8a1625dcfcd93bb8e",
+  "tool": "built-in image_gen"
+}

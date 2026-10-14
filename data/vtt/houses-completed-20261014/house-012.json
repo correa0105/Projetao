@@ -1,0 +1,39 @@
+{
+  "id": "house-012",
+  "name": "Casa de pedra",
+  "category": "Casas",
+  "width": 6,
+  "height": 5,
+  "prompt": "Use case: stylized-concept. Asset type: ONE fantasy VTT house with two registered sprite layers. Create a wide landscape image exactly twice as wide as tall, containing TWO equal square panels side by side on genuine transparent alpha. Left panel: the complete roof/exterior of this house viewed strictly vertically from above. Right panel: the SAME house with roof completely removed, showing furnished interior floor and thick perimeter walls viewed strictly vertically from above. Both panels have the same centered rectangular building footprint and same north/south orientation. MAIN ENTRANCE is an OPEN GAP at the center of the SOUTH/bottom perimeter wall on the interior; never fill that opening with a closed door or furniture. No other entrances. A single open-plan room, no internal dividing walls; clear walking path from the main entrance through the middle. Roof covers this identical footprint with modest eaves. Orthographic 90-degree overhead camera; no isometric angle, side facades, horizon or visible vertical wall faces. Style: highly detailed hand-painted realistic medieval fantasy battlemap scenery with restrained natural materials and warm soft overhead lighting. Fully isolated building layers; transparent outside both rectangular buildings, no terrain, garden, floor disk, background, grid, labels, text or watermark. Both panels must remain separate with transparent margins, never overlap. Subject: a rugged grey-stone dwelling with dark slate roof; interior flagstone floor, iron stove, bed and dining bench.",
+  "source": "data/vtt/houses-sources-20261014/house-012.png",
+  "sourceSha256": "c43c800eb443bcdf082dce63077e2a10c9fdf38329bab62e304d072bd32ea287",
+  "tool": "built-in image_gen",
+  "layers": [
+    {
+      "kind": "roof",
+      "image": "/vtt/houses-20261014/house-012-roof.webp",
+      "sha256": "325a1d12f66c5bb30641842552ca8fc3c2dae300972a7863d5dc8ec6448305a4",
+      "pixelWidth": 1024,
+      "pixelHeight": 1024,
+      "registeredRectangle": {
+        "left": 72,
+        "top": 92,
+        "width": 880,
+        "height": 840
+      }
+    },
+    {
+      "kind": "interior",
+      "image": "/vtt/houses-20261014/house-012-interior.webp",
+      "sha256": "2a42c2ac684b17eb2a4a86c8039abc0da898c9d1a22283a0bbc36fca19940a8e",
+      "pixelWidth": 1024,
+      "pixelHeight": 1024,
+      "registeredRectangle": {
+        "left": 123,
+        "top": 143,
+        "width": 778,
+        "height": 738
+      }
+    }
+  ]
+}

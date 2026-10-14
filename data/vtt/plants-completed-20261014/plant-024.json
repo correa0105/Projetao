@@ -1,0 +1,16 @@
+{
+  "id": "plant-024",
+  "name": "Cacto de palma",
+  "category": "Plantas",
+  "squares": 1.5,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one prickly pear cactus cluster from strictly overhead, thick desaturated sage-green pads and small subtle spines.",
+  "image": "/vtt/plants-20261014/plant-024.webp",
+  "width": 1.4902,
+  "height": 1.5,
+  "pixelWidth": 763,
+  "pixelHeight": 768,
+  "source": "data/vtt/plants-sources-20261014/plant-024.png",
+  "sourceSha256": "825a4e2d087b2bf75d50601ac90288c9a0c08ad94135fd7539bf83874ec932a6",
+  "sha256": "1554c29e606616d83ac1b102713e8a1c5d2bb03a79b7f43e9b01cc1fb23b17cf",
+  "tool": "built-in image_gen"
+}

@@ -1,6 +1,7 @@
 import { drawTerrain } from './vtt-terrain-canvas';
 import { renderBuffer, renderWorkCache, tokenOnScreen } from './vtt-render-cache';
 import type { TerrainStroke } from '../shared/vtt';
+import {houseAsset,houseOccupied,houseWalls} from '../shared/vtt-houses';
 import { tokenResizeHandles } from '../shared/vtt-token-resize';
 import { isTreeCanopy, canopyActor } from '../shared/vtt-canopies';
 import { captureCanopyAreas, drawCanopyForeground, clipCanopyBase } from './vtt-canopies-canvas';
@@ -320,6 +321,16 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
   const canopyActors = s.tokens.filter(t=>canopyActor(t) && visibleCanopyToken(t));
   let canopyCover: HTMLCanvasElement | null = null;
   for (const layer of ['map', 'tokens', 'gm']) {
+    if(layer==='gm')for(const house of sortedTokens){
+      const asset=houseAsset(house);
+      if(!asset||!visibleCanopyToken(house)||!tokenOnScreen(house,view,cam.zoom))continue;
+      const roof=images.get(house.image),floor=images.get(asset.interior);
+      if(houseOccupied(house,canopyActors)&&floor?.complete&&floor.naturalWidth)continue;
+      if(!roof?.complete||!roof.naturalWidth)continue;
+      c.save();c.translate(house.x,house.y);c.rotate(house.rotation*Math.PI/180);
+      c.scale(house.flipX?-1:1,house.flipY?-1:1);c.globalAlpha=house.hidden?s.gmOpacity:1;
+      c.drawImage(roof,-house.width/2,-house.height/2,house.width,house.height);c.restore();
+    }
     if (layer === 'gm') drawCanopyForeground(c,s,images,canopyActors,canopyCover,visibleCanopyToken,o.selected,cam.zoom);
     if (layer === 'tokens' && o.visualEffects !== false && o.bloodEnabled !== false)
       drawBloodDecals(
@@ -377,7 +388,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       if (t.deathAt && layer !== 'map')
         c.filter = 'brightness(.42) sepia(1) saturate(4) hue-rotate(320deg)';
       c.scale(t.flipX ? -1 : 1, t.flipY ? -1 : 1);
-      const img = images.get(t.image);
+      const house=houseAsset(t),img=images.get(house?.interior||t.image);
       if (t.animatedAsset) {
         drawAnimatedAsset(c, t, img, now, reduced, o.visualEffects !== false);
       } else if (layer === 'map') {
@@ -615,7 +626,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
   if (o.showWalls && o.gm && !o.preview && o.layer === 'lighting') {
     c.save();
     c.lineWidth = 4 / cam.zoom;
-    for (const wall of s.walls) {
+    for (const wall of [...s.walls,...houseWalls(s)]) {
       c.strokeStyle =
         wall.kind === 'door'
           ? wall.open

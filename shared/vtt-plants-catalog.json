@@ -1,0 +1,202 @@
+[
+  {
+    "id": "plant-001",
+    "name": "Samambaia da mata",
+    "category": "Plantas",
+    "width": 1.5,
+    "height": 1.4922,
+    "image": "/vtt/plants-20261014/plant-001.webp"
+  },
+  {
+    "id": "plant-002",
+    "name": "Samambaia prateada",
+    "category": "Plantas",
+    "width": 1.3,
+    "height": 1.2898,
+    "image": "/vtt/plants-20261014/plant-002.webp"
+  },
+  {
+    "id": "plant-003",
+    "name": "Capim alto",
+    "category": "Plantas",
+    "width": 1.1812,
+    "height": 1.2,
+    "image": "/vtt/plants-20261014/plant-003.webp"
+  },
+  {
+    "id": "plant-004",
+    "name": "Junco do brejo",
+    "category": "Plantas",
+    "width": 1.416,
+    "height": 1.5,
+    "image": "/vtt/plants-20261014/plant-004.webp"
+  },
+  {
+    "id": "plant-005",
+    "name": "Cavalinha",
+    "category": "Plantas",
+    "width": 0.9596,
+    "height": 1,
+    "image": "/vtt/plants-20261014/plant-005.webp"
+  },
+  {
+    "id": "plant-006",
+    "name": "Trevo",
+    "category": "Plantas",
+    "width": 1,
+    "height": 0.9635,
+    "image": "/vtt/plants-20261014/plant-006.webp"
+  },
+  {
+    "id": "plant-007",
+    "name": "Musgo",
+    "category": "Plantas",
+    "width": 1.1734,
+    "height": 1.2,
+    "image": "/vtt/plants-20261014/plant-007.webp"
+  },
+  {
+    "id": "plant-008",
+    "name": "Hera rasteira",
+    "category": "Plantas",
+    "width": 1.9297,
+    "height": 2,
+    "image": "/vtt/plants-20261014/plant-008.webp"
+  },
+  {
+    "id": "plant-009",
+    "name": "Hosta",
+    "category": "Plantas",
+    "width": 1.3927,
+    "height": 1.4,
+    "image": "/vtt/plants-20261014/plant-009.webp"
+  },
+  {
+    "id": "plant-010",
+    "name": "Arbusto de amoras",
+    "category": "Plantas",
+    "width": 1.7,
+    "height": 1.669,
+    "image": "/vtt/plants-20261014/plant-010.webp"
+  },
+  {
+    "id": "plant-011",
+    "name": "Arbusto de azevinho",
+    "category": "Plantas",
+    "width": 1.6,
+    "height": 1.5625,
+    "image": "/vtt/plants-20261014/plant-011.webp"
+  },
+  {
+    "id": "plant-012",
+    "name": "Arbusto espinhoso",
+    "category": "Plantas",
+    "width": 1.5708,
+    "height": 1.6,
+    "image": "/vtt/plants-20261014/plant-012.webp"
+  },
+  {
+    "id": "plant-013",
+    "name": "Alecrim",
+    "category": "Plantas",
+    "width": 1.0499,
+    "height": 1.1,
+    "image": "/vtt/plants-20261014/plant-013.webp"
+  },
+  {
+    "id": "plant-014",
+    "name": "Lavanda",
+    "category": "Plantas",
+    "width": 1.1672,
+    "height": 1.2,
+    "image": "/vtt/plants-20261014/plant-014.webp"
+  },
+  {
+    "id": "plant-015",
+    "name": "Urze",
+    "category": "Plantas",
+    "width": 1.1906,
+    "height": 1.2,
+    "image": "/vtt/plants-20261014/plant-015.webp"
+  },
+  {
+    "id": "plant-016",
+    "name": "Hortênsia",
+    "category": "Plantas",
+    "width": 1.5,
+    "height": 1.4355,
+    "image": "/vtt/plants-20261014/plant-016.webp"
+  },
+  {
+    "id": "plant-017",
+    "name": "Margaridas",
+    "category": "Plantas",
+    "width": 1.09,
+    "height": 1.1,
+    "image": "/vtt/plants-20261014/plant-017.webp"
+  },
+  {
+    "id": "plant-018",
+    "name": "Papoulas",
+    "category": "Plantas",
+    "width": 1.1,
+    "height": 1.0857,
+    "image": "/vtt/plants-20261014/plant-018.webp"
+  },
+  {
+    "id": "plant-019",
+    "name": "Girassol",
+    "category": "Plantas",
+    "width": 1.0728,
+    "height": 1.1,
+    "image": "/vtt/plants-20261014/plant-019.webp"
+  },
+  {
+    "id": "plant-020",
+    "name": "Vitória-régia",
+    "category": "Plantas",
+    "width": 1.4,
+    "height": 1.3818,
+    "image": "/vtt/plants-20261014/plant-020.webp"
+  },
+  {
+    "id": "plant-021",
+    "name": "Lótus",
+    "category": "Plantas",
+    "width": 1.3927,
+    "height": 1.4,
+    "image": "/vtt/plants-20261014/plant-021.webp"
+  },
+  {
+    "id": "plant-022",
+    "name": "Babosa",
+    "category": "Plantas",
+    "width": 1.2882,
+    "height": 1.3,
+    "image": "/vtt/plants-20261014/plant-022.webp"
+  },
+  {
+    "id": "plant-023",
+    "name": "Agave",
+    "category": "Plantas",
+    "width": 1.8,
+    "height": 1.7883,
+    "image": "/vtt/plants-20261014/plant-023.webp"
+  },
+  {
+    "id": "plant-024",
+    "name": "Cacto de palma",
+    "category": "Plantas",
+    "width": 1.4902,
+    "height": 1.5,
+    "image": "/vtt/plants-20261014/plant-024.webp"
+  },
+  {
+    "id": "plant-025",
+    "name": "Bananeira",
+    "category": "Plantas",
+    "width": 2.2701,
+    "height": 2.3,
+    "image": "/vtt/plants-20261014/plant-025.webp"
+  }
+]

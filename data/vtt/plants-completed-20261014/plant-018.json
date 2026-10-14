@@ -1,0 +1,16 @@
+{
+  "id": "plant-018",
+  "name": "Papoulas",
+  "category": "Plantas",
+  "squares": 1.1,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one small patch of deep crimson poppies with ruffled petals, dark centers and green lobed foliage.",
+  "image": "/vtt/plants-20261014/plant-018.webp",
+  "width": 1.1,
+  "height": 1.0857,
+  "pixelWidth": 768,
+  "pixelHeight": 758,
+  "source": "data/vtt/plants-sources-20261014/plant-018.png",
+  "sourceSha256": "1469c7ac9104cc22ddfebd7ecc4ff55dba5e7106a16fc933ca9fb614b9aeceb3",
+  "sha256": "59c944969a7955e3b823583b2e78c793625253c676df4d2f99c3d4c168345b2d",
+  "tool": "built-in image_gen"
+}

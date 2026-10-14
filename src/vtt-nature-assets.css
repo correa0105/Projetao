@@ -1,0 +1,13 @@
+.vtt-nature nav,.vtt-nature-views{display:flex;gap:6px;margin:8px 0}
+.vtt-nature nav button{flex:1;display:flex;justify-content:space-between;align-items:center}
+.vtt-nature button[aria-pressed='true']{border-color:#b99a63;background:#b99a6318}
+.vtt-nature p{font-size:11px;line-height:1.5;color:#bcb7aa}
+.vtt-nature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.vtt-nature-card{display:grid;grid-template-rows:108px auto;gap:7px;min-width:0;padding:8px;text-align:center;font-size:11px}
+.vtt-nature-card img{width:100%;height:108px;object-fit:contain;pointer-events:none}
+.vtt-nature-detail{position:relative;padding:12px;border:1px solid #b99a6355;border-radius:5px;margin-bottom:12px;background:#ffffff03}
+.vtt-nature-detail>img{display:block;width:100%;height:230px;object-fit:contain}
+.vtt-nature-detail h3{font-size:16px;margin:9px 0}
+.vtt-nature-detail label{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.vtt-nature-detail select{min-width:90px}
+.vtt-nature .vtt-nature-close{position:absolute;top:5px;right:5px;padding:3px 9px}

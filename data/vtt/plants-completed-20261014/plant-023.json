@@ -1,0 +1,16 @@
+{
+  "id": "plant-023",
+  "name": "Agave",
+  "category": "Plantas",
+  "squares": 1.8,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one sculptural agave rosette with long pointed blue-grey leaves radiating from the center.",
+  "image": "/vtt/plants-20261014/plant-023.webp",
+  "width": 1.8,
+  "height": 1.7883,
+  "pixelWidth": 768,
+  "pixelHeight": 763,
+  "source": "data/vtt/plants-sources-20261014/plant-023.png",
+  "sourceSha256": "57ae84c5116f245f14fa7ac1a43a0855d61bd65f872596ee0ea546496697529a",
+  "sha256": "6be2b2a1d390c2ece3077a523d474847e505d81daee834c2533e23addc676db6",
+  "tool": "built-in image_gen"
+}

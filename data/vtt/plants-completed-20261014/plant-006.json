@@ -1,0 +1,16 @@
+{
+  "id": "plant-006",
+  "name": "Trevo",
+  "category": "Plantas",
+  "squares": 1,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one low compact patch of three-leaf clover with two tiny cream flowers.",
+  "image": "/vtt/plants-20261014/plant-006.webp",
+  "width": 1,
+  "height": 0.9635,
+  "pixelWidth": 768,
+  "pixelHeight": 740,
+  "source": "data/vtt/plants-sources-20261014/plant-006.png",
+  "sourceSha256": "95b0e70fd2ef0437592fa030a7f0ae667b84457500d012a72f7a72f443416589",
+  "sha256": "2d76b030f3ac3e3a74b670792cfaf0a3ecc70c46c774c6b6d4308318b38a79e5",
+  "tool": "built-in image_gen"
+}

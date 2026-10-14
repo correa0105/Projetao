@@ -1,0 +1,16 @@
+{
+  "id": "plant-001",
+  "name": "Samambaia da mata",
+  "category": "Plantas",
+  "squares": 1.5,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one lush woodland fern rosette with long finely divided fronds radiating from a single central crown.",
+  "image": "/vtt/plants-20261014/plant-001.webp",
+  "width": 1.5,
+  "height": 1.4922,
+  "pixelWidth": 768,
+  "pixelHeight": 764,
+  "source": "data/vtt/plants-sources-20261014/plant-001.png",
+  "sourceSha256": "2ac199295522c0b6c321d8632052cd1d761c588a1537f83f9a5be18c5c1d584a",
+  "sha256": "62bc96f9f6206263526098fa45d260abdcd41fc9b663a514cf82ae8fe37a518b",
+  "tool": "built-in image_gen"
+}

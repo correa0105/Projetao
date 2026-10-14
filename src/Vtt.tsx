@@ -1,3 +1,6 @@
+import {VttNatureAssets} from './VttNatureAssets';
+import {natureAssets,natureAssetMime} from '../shared/vtt-nature-assets';
+import {houseInteriorImages} from '../shared/vtt-houses';
 import { VttTerrainBrush, type TerrainBrushSettings } from './VttTerrainBrush';
 import { terrainTextures, woodlandFloorImage } from '../shared/vtt-terrain';
 import type { TerrainStroke, TerrainLayer } from '../shared/vtt';
@@ -410,7 +413,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       setTerrainDraft(terrainActive.current);
     });
   }
-  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium' | 'animated' | 'terrain'>(
+  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium' | 'nature' | 'animated' | 'terrain'>(
       'images',
     ),
     [presetVersion, setPresetVersion] = useState(0),
@@ -1024,7 +1027,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }, [state?.id]);
   useEffect(() => {
     if (!scene) return;
-    for (const path of [scene.background, ...scene.tokens.map((t) => t.image), ...terrainTextures.map(t=>t.image)]) {
+    for (const path of [scene.background, ...scene.tokens.map((t) => t.image), ...houseInteriorImages(scene), ...terrainTextures.map(t=>t.image)]) {
       if (!path || images.current.has(path)) continue;
       const image = new window.Image();
       image.onload = () => setImageVersion((v) => v + 1);
@@ -2100,6 +2103,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setSelection([t.id]);
     setTab('token');
   }
+  function addNatureAsset(id:string,scale=1,at?:Point) {
+    if(!gm||!scene||preview||busy||!Number.isFinite(scale)||scale<.25||scale>3)return;
+    if(scene.tokens.length>=1000){setNotice('Limite de 1.000 peças neste mapa.');return;}
+    const asset=natureAssets.find(a=>a.id===id);if(!asset)return;
+    const factor=Math.min(1,scene.width/(asset.width*scene.grid.size*scale),scene.height/(asset.height*scene.grid.size*scale),8000/(asset.width*scene.grid.size*scale),8000/(asset.height*scene.grid.size*scale));
+    const width=Math.max(8,asset.width*scene.grid.size*scale*factor),height=Math.max(8,asset.height*scene.grid.size*scale*factor),p=at?snapPoint(at,scene.grid):camera;
+    const t=newToken(crypto.randomUUID(),scene);
+    Object.assign(t,{name:asset.name,image:asset.image,width,height,layer:'map',vision:0,bleeds:false,x:Math.max(width/2,Math.min(scene.width-width/2,p.x)),y:Math.max(height/2,Math.min(scene.height-height/2,p.y))});
+    editScene(s=>s.tokens.push(t));changeLayer('map');setSelection([t.id]);setTool('select');
+  }
   function addTreeAsset(id: string, scale = 1, at?: Point) {
     if (!gm || !scene || preview) return;
     const asset = [...treeAssets,...rockAssets].find((a) => a.id === id);
@@ -3066,13 +3079,18 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 !busy &&
                 (e.dataTransfer.types.includes(characterMime) ||
                   e.dataTransfer.types.includes(companionMime) ||
-                  (gm && (e.dataTransfer.types.includes(monsterMime) || e.dataTransfer.types.includes(animatedAssetMime) || e.dataTransfer.types.includes(treeAssetMime))))
+                  (gm && (e.dataTransfer.types.includes(monsterMime) || e.dataTransfer.types.includes(animatedAssetMime) || e.dataTransfer.types.includes(natureAssetMime) || e.dataTransfer.types.includes(treeAssetMime))))
               ) {
                 e.preventDefault();
                 e.dataTransfer.dropEffect = 'copy';
               }
             }}
             onDrop={(e) => {
+              if(gm&&!preview&&!busy&&e.dataTransfer.types.includes(natureAssetMime)){
+                e.preventDefault();
+                try{const a=JSON.parse(e.dataTransfer.getData(natureAssetMime));addNatureAsset(a.id,a.scale,point(e));}catch{setNotice('Não foi possível colocar a peça.');}
+                return;
+              }
               if(gm && !preview && e.dataTransfer.types.includes(treeAssetMime)) {
                 e.preventDefault();
                 try {const payload=JSON.parse(e.dataTransfer.getData(treeAssetMime));addTreeAsset(payload.id,payload.scale,point(e));} catch { /* Ignore malformed external drops. */ }
@@ -4123,7 +4141,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       className="vtt-subtabs vtt-library-tabs"
                       aria-label="Categorias da biblioteca"
                     >
-                      {(['monsters', 'presets', 'premium', 'spells', 'animated'] as const).map((k) => (
+                      {(['monsters', 'presets', 'premium', 'spells', 'nature', 'animated'] as const).map((k) => (
                         <button
                           key={k}
                           aria-label={
@@ -4132,6 +4150,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               presets: 'Presets de monstros',
                               premium: 'Assets',
                               spells: 'Magias',
+                              nature: 'Cenários',
                               animated: 'Assets animados',
                             }[k]
                           }
@@ -4141,6 +4160,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               presets: 'Presets de monstros',
                               premium: 'Assets',
                               spells: 'Magias',
+                              nature: 'Cenários',
                               animated: 'Assets animados',
                             }[k]
                           }
@@ -4158,6 +4178,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               presets: 'Presets',
                               premium: 'Assets',
                               spells: 'Magias',
+                              nature: 'Cenários',
                               animated: 'Assets animados',
                             }[k]
                           }
@@ -4174,7 +4195,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       placeholder="Nome, tipo, nível…"
                     />
                   </label>}
-                  {gm && library !== 'terrain' && library !== 'presets' && library !== 'premium' && library !== 'animated' && (
+                  {gm && library !== 'nature' && library !== 'terrain' && library !== 'presets' && library !== 'premium' && library !== 'animated' && (
                     <label className="vtt-file-button">
                       <Upload size={14} />
                       {library === 'images' ? 'Enviar imagem' : 'Importar JSON do 5etools'}
@@ -4199,7 +4220,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       />
                     </label>
                   )}
-                  {library === 'terrain' ? terrainPanel() : library === 'animated' ? (
+                  {library === 'terrain' ? terrainPanel() : library === 'nature' ? (<VttNatureAssets query={query} gm={gm&&!preview} add={addNatureAsset}/>) : library === 'animated' ? (
                     <VttAnimatedAssets query={query} gm={gm && !preview} add={addAnimatedAsset} />
                   ) : library === 'presets' || library === 'premium' ? (
                     <VttAssets enabled={library === 'premium'} gm={gm && !preview} query={query} add={addTreeAsset}><VttPrivateLibrary

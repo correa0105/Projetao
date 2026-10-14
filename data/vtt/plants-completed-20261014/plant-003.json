@@ -1,0 +1,16 @@
+{
+  "id": "plant-003",
+  "name": "Capim alto",
+  "category": "Plantas",
+  "squares": 1.2,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one dense irregular clump of long arched meadow grass blades, natural olive and straw tips.",
+  "image": "/vtt/plants-20261014/plant-003.webp",
+  "width": 1.1812,
+  "height": 1.2,
+  "pixelWidth": 756,
+  "pixelHeight": 768,
+  "source": "data/vtt/plants-sources-20261014/plant-003.png",
+  "sourceSha256": "29731440f8651e85b5870f235b552991f8699c1738c55ac0a2b82688e35d4416",
+  "sha256": "5532ef9a89c8487002fbcfbfe6a2c94e783256309923895f915c7e7b9acc3c78",
+  "tool": "built-in image_gen"
+}

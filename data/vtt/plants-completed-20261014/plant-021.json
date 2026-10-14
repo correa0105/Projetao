@@ -1,0 +1,16 @@
+{
+  "id": "plant-021",
+  "name": "Lótus",
+  "category": "Plantas",
+  "squares": 1.4,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one lotus plant viewed strictly overhead, three broad overlapping circular leaves and one soft blush flower, no water drawn.",
+  "image": "/vtt/plants-20261014/plant-021.webp",
+  "width": 1.3927,
+  "height": 1.4,
+  "pixelWidth": 764,
+  "pixelHeight": 768,
+  "source": "data/vtt/plants-sources-20261014/plant-021.png",
+  "sourceSha256": "9d0013280b5f04647b7fd39d2620e9a1885035d97af3c6b5f60a6ea6eab30ae2",
+  "sha256": "8ef8cc12e7e91a3d1a5670418771d66e968e939ec903136aeb5c315061ec0801",
+  "tool": "built-in image_gen"
+}

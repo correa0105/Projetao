@@ -1,0 +1,16 @@
+{
+  "id": "plant-012",
+  "name": "Arbusto espinhoso",
+  "category": "Plantas",
+  "squares": 1.6,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one low thorn shrub with slender tangled woody branches and small sparse olive leaves.",
+  "image": "/vtt/plants-20261014/plant-012.webp",
+  "width": 1.5708,
+  "height": 1.6,
+  "pixelWidth": 754,
+  "pixelHeight": 768,
+  "source": "data/vtt/plants-sources-20261014/plant-012.png",
+  "sourceSha256": "06bead40587a3aae6ff40298b941bd11ac84337718a28ef35c88c058637f21d2",
+  "sha256": "861bb3b64010295581216b1cd7a91b824efb6831233cb95afb81f3849a7939ca",
+  "tool": "built-in image_gen"
+}

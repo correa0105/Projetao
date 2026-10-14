@@ -1,0 +1,16 @@
+{
+  "id": "plant-011",
+  "name": "Arbusto de azevinho",
+  "category": "Plantas",
+  "squares": 1.6,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one compact holly shrub with thick spiny dark moss-green leaves and sparse deep red berry clusters.",
+  "image": "/vtt/plants-20261014/plant-011.webp",
+  "width": 1.6,
+  "height": 1.5625,
+  "pixelWidth": 768,
+  "pixelHeight": 750,
+  "source": "data/vtt/plants-sources-20261014/plant-011.png",
+  "sourceSha256": "c8c634185d5b32c8fe855f862b381fe21d35b5ed31a847f66fe1a390afcd5d89",
+  "sha256": "96f46e92b3d76a25af50d790eb85c185c6e6b55eac2a3ad6d3ef4ce43296b26d",
+  "tool": "built-in image_gen"
+}

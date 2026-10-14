@@ -1,0 +1,16 @@
+{
+  "id": "plant-013",
+  "name": "Alecrim",
+  "category": "Plantas",
+  "squares": 1.1,
+  "prompt": "Use case: stylized-concept. Asset type: one isolated plant sprite for a fantasy virtual tabletop battle map. Camera: strict orthographic overhead at 90 degrees, looking straight down, no side view or horizon. Style: detailed hand-painted realistic fantasy cartography, natural leaf veins and tactile foliage, restrained natural colors, soft warm overhead light, subtle depth between overlapping leaves. Composition: one complete botanical subject centered on a square canvas, fills about 82 percent, every leaf fully visible, clean transparent padding. Genuine transparent alpha, including gaps between leaves. No pot, ground, soil disk, grid, border, labels, text, watermark or surrounding scene. One plant only, not a sheet or set. Subject: one rosemary bush with narrow silvery needle leaves and a handful of tiny lavender flowers.",
+  "image": "/vtt/plants-20261014/plant-013.webp",
+  "width": 1.0499,
+  "height": 1.1,
+  "pixelWidth": 733,
+  "pixelHeight": 768,
+  "source": "data/vtt/plants-sources-20261014/plant-013.png",
+  "sourceSha256": "44a8a3b577084386d98f499488db59f71c103a4c4f77fb358f934b9fc51d71b4",
+  "sha256": "2bb303d252c4531c9b69edde8f6c2952d19b57ac9e616c74299c22a2b8065bfb",
+  "tool": "built-in image_gen"
+}
