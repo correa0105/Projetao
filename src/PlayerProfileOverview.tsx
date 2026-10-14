@@ -29,7 +29,7 @@ export type PlayerOverview = {
 type Details = {
   achievements: { code: string }[];
   definitions: { code: string; title: string }[];
-  cards: { id: string; name: string; image?: string }[];
+  cards: { id: string; name: string; level?: number; image?: string }[];
   pets: { id: string; name: string; image_url?: string | null }[];
   mounts: { id: string; name: string; image_url?: string | null }[];
 } | null;
@@ -175,7 +175,7 @@ export function PlayerProfileOverview({
                   {details?.cards.map((c) => (
                     <span key={c.id}>
                       {cards.find((card) => card.id === c.id) && (
-                        <CardFace card={cards.find((card) => card.id === c.id)!} small />
+                        <CardFace card={cards.find((card) => card.id === c.id)!} small level={c.level}/>
                       )}
                       <strong>{c.name}</strong>
                     </span>

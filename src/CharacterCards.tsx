@@ -68,7 +68,7 @@ export function CardCollection({
                     aria-pressed={current?.ownedId === item.ownedId}
                     onClick={() => setSelected(item.ownedId)}
                   >
-                    <CardFace card={item.card} small />
+                    <CardFace card={item.card} small level={item.level}/>
                     <span>
                       <strong>{item.card.name}</strong>
                       <small>
@@ -113,7 +113,7 @@ export function CardCollection({
                         onClick={() => setSelected(item.ownedId)}
                         aria-label={`Ver carta do espaço ${slot}: ${item.card.name}`}
                       >
-                        <CardFace card={item.card} />
+                        <CardFace card={item.card} level={item.level}/>
                       </button>
                     ) : (
                       <div className="character-card-empty">
@@ -143,7 +143,7 @@ export function CardCollection({
           {current ? (
             <section className="card-folio-record" aria-label="Registro da carta selecionada">
               <div className="card-folio-art">
-                <CardFace card={current.card} />
+                <CardFace card={current.card} level={current.level}/>
               </div>
               <div className="character-card-description">
                 <span className="eyebrow">
@@ -203,7 +203,7 @@ export function CardCollection({
           return (
             <article key={slot} className="character-card-slot" data-slot={slot} data-empty={!item}>
               {item ? (
-                <CardFace card={item.card} />
+                <CardFace card={item.card} level={item.level}/>
               ) : (
                 <div className="character-card-empty">
                   <Layers size={24} strokeWidth={1} />
@@ -247,7 +247,7 @@ export function CardCollection({
                   aria-pressed={current?.ownedId === item.ownedId}
                   onClick={() => setSelected(item.ownedId)}
                 >
-                  <CardFace card={item.card} small />
+                  <CardFace card={item.card} small level={item.level}/>
                   <span>
                     {item.slot ? `Equipada · espaço ${item.slot}` : 'Na coleção'} · nível{' '}
                     {item.level}

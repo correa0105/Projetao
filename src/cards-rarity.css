@@ -1,27 +1,64 @@
 .arcana-card-face[data-rarity] {
-  border: 1px solid color-mix(in srgb, var(--card-rarity) 62%, #292c2c);
-  --card-paper: #faf9f5;
-  --card-ink: #252b2b;
+  border: 0;
+  --card-paper: #cbb18b;
+  --card-frame-ink: #382449;
   background: var(--card-paper);
   overflow: visible;
   border-radius: 5px;
   box-shadow: 0 5px 15px #0007;
+  container-type: inline-size;
 }
-.arcana-card-face[data-rarity='uncommon'] {
-  --card-paper: #e4e6cd;
-  --card-ink: #213b2a;
+.arcana-card-face[data-level='2'], .arcana-card-face[data-level='3'] {
+  --card-paper: #e8e7e3;
+  --card-frame-ink: #171717;
 }
-.arcana-card-face[data-rarity='rare'] {
-  --card-paper: #dde5e8;
-  --card-ink: #243c52;
+.arcana-card-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }
-.arcana-card-face[data-rarity='very-rare'] {
-  --card-paper: #251b33;
-  --card-ink: #eadcf4;
+.arcana-card-metallic {
+  position: absolute;
+  inset: 2% 3% 13%;
+  border-radius: 5%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(125deg,#fff1 8%,#d7e2f566 26%,#fff0 38%,#ecddb777 60%,#fff5 64%,#d4dced11 83%);
+  mix-blend-mode: soft-light;
 }
-.arcana-card-face[data-rarity='legendary'] {
-  --card-paper: #2d2017;
-  --card-ink: #f5dfb9;
+:root .cards-room .cards-catalog > button[aria-pressed='true'] .arcana-card-face {
+  border: 0;
+  box-shadow: 0 5px 15px #0007;
+}
+:root .arcana-card-face:hover, :root button:focus-visible .arcana-card-face {
+  outline: 1.5px solid #6ca172;
+  outline-offset: 2px;
+}
+:root .cards-room .cards-catalog > button:hover {filter: none;}
+.cards-level-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+  font-size: 9px;
+  color: #a99e89;
+}
+.cards-level-preview button {
+  padding: 3px 7px;
+  min-height: 24px;
+  font-size: 9px;
+  border: 1px solid #8e80634d;
+  border-radius: 3px;
+  background: #ffffff05;
+  color: #c4b598;
+}
+.cards-level-preview button[aria-pressed='true'] {
+  background: #c6a46c1c;
+  border-color: #c6a46c80;
 }
 .arcana-card-face[data-rarity]::after {
   content: none;
@@ -37,17 +74,36 @@
   color: #28251f;
   text-shadow: none;
 }
-.arcana-card-face[data-rarity] .arcana-card-name {
-  bottom: 6.5%;
-  font-size: clamp(10px, 1vw, 15px);
+.arcana-card-title {
+  position: absolute;
+  left: 16%;
+  right: 16%;
+  top: 91.8%;
+  height: 8%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 2;
+}
+/* A card owns its caption size. Page and viewport typography must not enlarge it. */
+:root .arcana-card-face[data-rarity] .arcana-card-title .arcana-card-name {
+  position: static;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-weight: 400;
   line-height: 1.12;
+  letter-spacing: normal;
+  white-space: nowrap;
+  text-transform: none;
+  color: #28251f;
 }
 .arcana-card-face[data-rarity] .arcana-card-family {
   display: none;
-}
-:root .cards-room .cards-detail-preview .arcana-card-name {
-  display: block;
-  font-size: clamp(12px, 1.1vw, 18px);
 }
 :root .app-shell[data-page='cards'] .cards-room .cards-rarity,
 .cards-rarity {
@@ -58,79 +114,6 @@
   letter-spacing: 0.03em;
   margin: 0 0 9px;
   opacity: 0.85;
-}
-.arcana-card-effects {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  border: 0;
-  border-radius: inherit;
-  box-shadow: 0 0 10px 2px color-mix(in srgb, var(--card-rarity) 45%, transparent);
-  animation: card-rarity-glow 7s ease-in-out infinite;
-}
-.arcana-card-effects i {
-  position: absolute;
-  left: 12%;
-  top: -1px;
-  width: 18px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--card-rarity), transparent);
-  box-shadow: 0 0 4px var(--card-rarity);
-  animation: card-rarity-spark 9s ease-in-out infinite;
-  animation-delay: calc(var(--spark) * -2s);
-}
-.arcana-card-effects i:nth-child(2n) {
-  top: auto;
-  bottom: -1px;
-  left: 60%;
-}
-.arcana-card-effects i:nth-child(3n) {
-  top: 30%;
-  left: auto;
-  right: -1px;
-  width: 1px;
-  height: 15px;
-}
-.arcana-card-face[data-rarity='very-rare'] .arcana-card-effects {
-  box-shadow: 0 0 15px 3px color-mix(in srgb, var(--card-rarity) 45%, transparent);
-  animation-duration: 6s;
-}
-.arcana-card-face[data-rarity='legendary'] .arcana-card-effects {
-  box-shadow: 0 0 22px 4px color-mix(in srgb, var(--card-rarity) 52%, transparent);
-  animation-duration: 5s;
-}
-@keyframes card-rarity-glow {
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-@keyframes card-rarity-spark {
-  0%,
-  20%,
-  100% {
-    opacity: 0;
-    transform: translateX(0);
-  }
-  45%,
-  65% {
-    opacity: 0.65;
-  }
-  80% {
-    opacity: 0;
-    transform: translateX(16px);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .arcana-card-effects,
-  .arcana-card-effects i {
-    animation: none;
-    opacity: 0.35;
-  }
 }
 :root .cards-room .cards-inspect-art {
   display: block;
@@ -182,10 +165,6 @@
 }
 .card-inspection .arcana-card-face {
   width: 100%;
-}
-.card-inspection .arcana-card-name {
-  display: block;
-  font-size: clamp(18px, 3vw, 28px);
 }
 .card-inspection .cards-rarity {
   font-size: 10px;

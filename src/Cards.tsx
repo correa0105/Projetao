@@ -9,24 +9,25 @@ import './cards.css';
 import './cards-manor.css';
 import './cards-rarity.css';
 import { CardsHost } from './CardsHost';
-export function CardFace({ card, small = false }: { card: Card; small?: boolean }) {
+import {CardFrame} from './CardFrame';
+import {cardVisualLevel} from '../shared/card-presentation';
+export function CardFace({ card, small = false, level = 1 }: { card: Card; small?: boolean; level?: number }) {
+  const visualLevel=cardVisualLevel(level);
   return (
-    <span className={'arcana-card-face' + (small ? ' small' : '')} data-rarity={card.rarity} style={{'--card-rarity':cardRarities[card.rarity].colour} as CSSProperties}>
+    <span className={'arcana-card-face' + (small ? ' small' : '')} data-rarity={card.rarity} data-level={visualLevel}>
       <span
         className="arcana-card-art"
         style={
           {
-            backgroundImage: `url('/cards/tarot-nouveau-20261013/${card.id}.webp')`,
+            backgroundImage: `url('/cards/tarot-symbolic-20261013/${card.id}-${visualLevel===1?1:2}.webp')`,
           } as CSSProperties
         }
       />
-      {!small && cardRarities[card.rarity].effects > 0 && <span className="arcana-card-effects" aria-hidden="true">
-        {Array.from({length:cardRarities[card.rarity].effects},(_,i)=><i key={i} style={{'--spark':i} as CSSProperties}/>)}
-      </span>}
-      <span className="arcana-card-ornament" aria-hidden="true">
-        ✦
+      {visualLevel===3 && <span className="arcana-card-metallic" aria-hidden="true"/>}
+      <CardFrame cell={card.cell} metallic={visualLevel===3}/>
+      <span className="arcana-card-title">
+        <span className="arcana-card-name" style={{fontSize: `${Math.min(7.5, 112 / card.name.length)}cqw`}}>{card.name}</span>
       </span>
-      <span className="arcana-card-name">{card.name}</span>
       <span className="arcana-card-family">{card.family}</span>
     </span>
   );
@@ -50,6 +51,7 @@ export function Cards({
     [conversation, setConversation] = useState(false),
     [questions, setQuestions] = useState(false);
   const [inspecting, setInspecting] = useState<Card | null>(null);
+  const [previewLevel,setPreviewLevel]=useState(1);
   const key = useRef(crypto.randomUUID()),
     inFlight = useRef(false),
     live = useRef(true),
@@ -89,6 +91,7 @@ export function Cards({
     if (!showQuestions) timer.current = setTimeout(() => setConversation(false), 14000);
   }
   const item = owned.find((c) => c.card_id === selected.id);
+  useEffect(()=>setPreviewLevel(cardVisualLevel(item?.level)),[selected.id,item?.level,character?.id]);
   const available = cards.filter(c => filter === 'Todas' ||
     (filter === 'À venda' ? c.buyable : owned.some(o => o.card_id === c.id)));
   const pages = Math.max(1, Math.ceil(available.length / 4));
@@ -229,7 +232,7 @@ export function Cards({
                   }}
                 >
                   {definition ? (
-                    <CardFace card={definition} small />
+                    <CardFace card={definition} small level={equipped?.level}/>
                   ) : (
                     <span className="cards-empty-slot">
                       <span>✦</span>
@@ -282,7 +285,7 @@ export function Cards({
                         });
                     }}
                   >
-                    <CardFace card={card} />
+                    <CardFace card={card} level={owned.find(c=>c.card_id===card.id)?.level}/>
                     <span className="cards-catalog-price">
                       {owned.some((o) => o.card_id === card.id) ? (
                         <>
@@ -314,12 +317,13 @@ export function Cards({
             aria-label="Carta selecionada"
           >
             <div className="cards-detail-preview">
-              <button type="button" className="cards-inspect-art" aria-label={'Inspecionar '+selected.name} onClick={() => setInspecting(selected)}><CardFace card={selected}/></button>
+              <button type="button" className="cards-inspect-art" aria-label={'Inspecionar '+selected.name} onClick={() => setInspecting(selected)}><CardFace card={selected} level={previewLevel}/></button>
             </div>
             <div className="cards-detail-copy">
               <span className="eyebrow">{selected.family}</span>
               <h2>{selected.name}</h2>
               <span className="cards-rarity" data-rarity={selected.rarity} style={{color:cardRarities[selected.rarity].colour}}>{cardRarities[selected.rarity].name}</span>
+              <div className="cards-level-preview" aria-label="Comparar níveis da carta"><span>Prévia</span>{[1,2,3].map(level=><button type="button" key={level} aria-label={'Prévia nível '+level} aria-pressed={previewLevel===level} onClick={()=>setPreviewLevel(level)}>{level===3?'3 · Metálica':level}</button>)}</div>
               <p>{selected.description}</p>
               <button type="button" className="cards-inspect-button" onClick={() => setInspecting(selected)}><ZoomIn size={13}/>Inspecionar</button>
               {item ? (
@@ -383,11 +387,11 @@ export function Cards({
           </section>
         </div>
       </div>
-      {inspecting && <CardInspection card={inspecting} close={() => setInspecting(null)}/>}
+      {inspecting && <CardInspection card={inspecting} level={previewLevel} close={() => setInspecting(null)}/>}
     </section>
   );
 }
-export function CardInspection({card, close}: {card: Card; close: () => void}) {
+export function CardInspection({card, close, level=1}: {card: Card; close: () => void;level?:number}) {
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
@@ -397,7 +401,7 @@ export function CardInspection({card, close}: {card: Card; close: () => void}) {
   return createPortal(<dialog ref={dialog} className="card-inspection" aria-label={'Inspecionar '+card.name} onCancel={e => {e.preventDefault();close();}} onClick={e => {if(e.target === e.currentTarget) close();}}>
     <div className="card-inspection-content">
       <button type="button" className="card-inspection-close" aria-label="Fechar inspeção" onClick={close}><X size={20}/></button>
-      <CardFace card={card}/>
+      <CardFace card={card} level={level}/>
       <span className="cards-rarity" style={{color:cardRarities[card.rarity].colour}}>{cardRarities[card.rarity].name}</span>
     </div>
   </dialog>, document.body);
