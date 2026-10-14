@@ -1,5 +1,5 @@
-// Separate assets let the temporary reverse designs be replaced without touching front art.
+// Both finishes use the exact supplied raven artwork; chrome adds reflected light in CSS.
 export const cardBacks={
-  original:'/cards/back-placeholder-v1.svg',
-  chrome:'/cards/back-chrome-placeholder-v1.svg',
+  original:'/cards/back-raven-20261014.png',
+  chrome:'/cards/back-raven-20261014.png',
 } as const;

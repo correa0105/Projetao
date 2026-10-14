@@ -34,24 +34,31 @@
   --card-frame-ink: #202833;
 }
 .arcana-card-face[data-finish='chrome'] .arcana-card-art {
-  filter: saturate(.08) contrast(1.04);
+  filter: grayscale(1) contrast(1.04);
 }
 .arcana-card-face[data-finish='chrome'] .arcana-card-metallic {
   inset: 0;
   border-radius: 4px;
-  background: linear-gradient(var(--card-chrome-angle,122deg),#242931 4%,#637080 21%,#c4cbd3 30%,#edf1f5 34%,#64717f 39%,#222831 50%,#84909d 63%,#dce2e8 70%,#4b5665 78%,#252a32 96%);
-  background-size: 180% 180%;
+  background: repeating-linear-gradient(var(--card-chrome-angle,122deg),#19212c 0%,#54616e 10%,#bbc4cf 17%,#e4e8eb 20%,#586776 25%,#202631 34%,#19212c 42%);
+  background-size: 118% 118%;
   background-position: var(--card-chrome-x,48%) var(--card-chrome-y,46%);
   mix-blend-mode: color-dodge;
-  opacity: .78;
+  opacity: .62;
 }
 :root .cards-room .cards-catalog > button[aria-pressed='true'] .arcana-card-face {
   border: 0;
   box-shadow: 0 5px 15px #0007;
 }
 :root .arcana-card-face:hover, :root button:focus-visible .arcana-card-face {
-  outline: 1.5px solid #6ca172;
-  outline-offset: 2px;
+  outline: none;
+}
+.arcana-card-gold {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 :root .cards-room .cards-catalog > button:hover {filter: none;}
 .cards-level-preview {
@@ -213,7 +220,7 @@
   outline: none;
 }
 .card-viewer-stage:focus-visible {
-  outline: 1px solid #6ca172;
+  outline: 1px solid #b3a082;
   outline-offset: 6px;
 }
 .card-viewer-stage[data-dragging='true'] {cursor: grabbing;}
@@ -237,9 +244,10 @@
 .card-viewer-front .arcana-card-face {height: 100%;}
 .card-viewer-back {
   border-radius: 5px;
-  background-color: #20242c;
+  background-color: #1c160c;
   background-position: center;
-  background-size: 100% 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
   box-shadow: 0 5px 15px #0007;
   transform: rotateY(180deg) translateZ(2.5px);
   pointer-events: none;
@@ -261,7 +269,7 @@
   border-radius: inherit;
   pointer-events: none;
   background: linear-gradient(var(--card-chrome-angle,122deg),#0000 12%,#edf2f88c 31%,#fff0 42%,#19233266 60%,#e3ebf455 75%,#0000 91%);
-  background-size: 180% 180%;
+  background-size: 118% 118%;
   background-position: var(--card-chrome-x,48%) var(--card-chrome-y,46%);
   mix-blend-mode: soft-light;
 }

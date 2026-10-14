@@ -3,13 +3,15 @@ import {RotateCcw, Rotate3D} from 'lucide-react';
 import type {Card} from '../shared/cards';
 import {CardFace} from './Cards';
 import {cardBacks} from './card-backs';
+import {cardVisualLevel} from '../shared/card-presentation';
 
 export function CardViewer3D({card,level=1}:{card:Card;level?:number}) {
   const stage=useRef<HTMLDivElement>(null),model=useRef<HTMLDivElement>(null);
   const front=useRef<HTMLDivElement>(null),back=useRef<HTMLDivElement>(null);
   const rotation=useRef({x:0,y:0}),frame=useRef<number|null>(null);
   const drag=useRef<{id:number;x:number;y:number;rx:number;ry:number;width:number;height:number}|null>(null);
-  const [chrome,setChrome]=useState(false),[side,setSide]=useState('Frente');
+  const [chromePreview,setChromePreview]=useState(false),[side,setSide]=useState('Frente');
+  const chrome=cardVisualLevel(level)===3||chromePreview;
   function paint() {
     frame.current=null;
     model.current?.style.setProperty('--card-rotation-x',rotation.current.x+'deg');
@@ -72,7 +74,7 @@ export function CardViewer3D({card,level=1}:{card:Card;level?:number}) {
     <div className="card-viewer-controls">
       <button type="button" onClick={()=>{rotate(rotation.current.y+180);setSide(side==='Frente'?'Verso':'Frente');}}><Rotate3D size={14}/>Virar</button>
       <button type="button" onClick={()=>{rotate(0,0);setSide('Frente');}}><RotateCcw size={14}/>Restaurar</button>
-      <button type="button" aria-pressed={chrome} onClick={()=>setChrome(!chrome)}>Prévia cromada</button>
+      {cardVisualLevel(level)<3&&<button type="button" aria-pressed={chromePreview} onClick={()=>setChromePreview(!chromePreview)}>Prévia cromada</button>}
     </div>
     <p className="card-viewer-help" id="card-viewer-help">Arraste para girar · Use as setas ou Home<span role="status">{side}{chrome?' · Cromada':''}</span></p>
   </>;

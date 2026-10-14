@@ -10,22 +10,25 @@ import './cards-manor.css';
 import './cards-rarity.css';
 import { CardsHost } from './CardsHost';
 import {CardFrame} from './CardFrame';
+import {CardGoldDetails} from './CardGoldDetails';
 import {cardVisualLevel} from '../shared/card-presentation';
 import {CardViewer3D} from './CardViewer3D';
-export function CardFace({ card, small = false, level = 1, finish = 'original' }: { card: Card; small?: boolean; level?: number; finish?:'original'|'chrome' }) {
-  const visualLevel=cardVisualLevel(level);
+export function CardFace({ card, small = false, level = 1, finish }: { card: Card; small?: boolean; level?: number; finish?:'original'|'chrome' }) {
+  const visualLevel=cardVisualLevel(level),resolvedFinish=finish??(visualLevel===3?'chrome':'original');
+  const art=`/cards/tarot-symbolic-20261013/${card.id}-${visualLevel===1&&resolvedFinish!=='chrome'?1:2}.webp`;
   return (
-    <span className={'arcana-card-face' + (small ? ' small' : '')} data-rarity={card.rarity} data-level={visualLevel} data-finish={finish}>
+    <span className={'arcana-card-face' + (small ? ' small' : '')} data-rarity={card.rarity} data-level={visualLevel} data-finish={resolvedFinish}>
       <span
         className="arcana-card-art"
         style={
           {
-            backgroundImage: `url('/cards/tarot-symbolic-20261013/${card.id}-${visualLevel===1&&finish!=='chrome'?1:2}.webp')`,
+            backgroundImage: `url('${art}')`,
           } as CSSProperties
         }
       />
-      {(visualLevel===3||finish==='chrome') && <span className="arcana-card-metallic" aria-hidden="true"/>}
-      <CardFrame cell={card.cell} metallic={visualLevel===3||finish==='chrome'} chrome={finish==='chrome'}/>
+      {(visualLevel===3||resolvedFinish==='chrome') && <span className="arcana-card-metallic" aria-hidden="true"/>}
+      {resolvedFinish==='chrome' && <CardGoldDetails art={art}/>}
+      <CardFrame cell={card.cell} metallic={visualLevel===3||resolvedFinish==='chrome'} chrome={resolvedFinish==='chrome'}/>
       <span className="arcana-card-title">
         <span className="arcana-card-name" style={{fontSize: `${Math.min(7.5, 112 / card.name.length)}cqw`}}>{card.name}</span>
       </span>

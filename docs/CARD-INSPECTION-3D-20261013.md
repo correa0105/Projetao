@@ -1,34 +1,36 @@
-# Inspeção 3D, verso provisório e prévia cromada
+# Cartas: inspeção 3D, prata, ouro e verso de corvo
 
-Inspecionar agora abre uma carta física em 3D por CSS, com frente, verso e quatro
-arestas. Arrastar gira horizontalmente em 360 graus e inclina verticalmente até
-30 graus. Virar mostra o outro lado; Restaurar volta à frente. Setas giram e
-Home restaura. Pointer capture conserva o gesto fora da carta; toque usa o mesmo
-controle. Escape, botão fechar, clique no fundo, blur e retorno do foco continuam.
+Atualização de 14/10/2026. Inspecionar abre uma carta física com frente, verso e
+quatro arestas. Arrastar gira em 360 graus e inclina até 30 graus; Virar,
+Restaurar, setas e Home também controlam a posição. Pointer capture mantém o
+gesto fora da carta. Toque, Escape, fechar, fundo borrado e retorno de foco
+continuam disponíveis.
 
-As dezesseis ilustrações atuais são conservadas byte a byte. A renderização 3D
-usa as imagens nativas existentes e mantém os títulos HTML proporcionais. Não
-redesenha personagens nem converte a ilustração em outra arte. A rotação altera
-somente transform CSS, atualizada no máximo uma vez por frame durante o arraste,
-sem renderizar React a cada movimento ou manter loop ativo em repouso.
+O acabamento final do nível visual 3 agora é o mesmo no catálogo, nos espaços
+equipados, na prévia de nível e na inspeção. Nos níveis 1 e 2, Prévia cromada
+permite apenas comparar a aparência, sem alterar o nível possuído. A moldura
+continua compartilhada entre raridades e os títulos permanecem proporcionais.
+Os contornos verdes foram retirados; botões e área de giro mantêm indicação de
+foco pelo teclado em tom neutro.
 
-Prévia cromada é um acabamento de inspeção em prata e grafite, com baixo nível
-de cor. Neutraliza os pequenos acentos da ilustração escura, aplica reflexos de
-prata sobre todo o fundo da frente, incluindo a base, moldura e arestas frias e
-um verso de metal escovado. As faixas de luz acompanham a inclinação e o giro;
-o desenho preto permanece legível. Não há animação ativa em repouso.
-Correção de 14/10: o reflexo anterior era fraco e terminava antes da base da carta.
-O acabamento agora usa color-dodge e ocupa toda a arte. Não altera raridade, nível
-possuído, compras ou equipamento. Os três níveis continuam independentes.
+Faixas repetidas de reflexão cobrem toda a frente, com tamanho de fundo 118%,
+e se deslocam com o giro/inclinação. A superfície usa prata/grafite com baixa
+saturação. Os detalhes originalmente dourados da ilustração de nível 2 são
+extraídos por máscara SVG de crominância e recebem um gradiente de ouro. O
+reflexo não apaga mais esses detalhes. A arte preta e branca fica legível, sem
+partículas, arco-íris ou animação contínua. Há no máximo uma atualização CSS por
+frame durante o gesto, sem renderizar React a cada movimento.
 
-Versos provisórios são SVGs próprios editáveis:
-public/cards/back-placeholder-v1.svg e public/cards/back-chrome-placeholder-v1.svg.
-Os caminhos ficam isolados em src/card-backs.ts para futura substituição. O verso
-comum usa tinta escura e emblema discreto; o cromado usa somente tons neutros.
-Não houve geração ou edição das artes raster nesta mudança.
+O verso usa exatamente o PNG enviado pelo usuário, com proporção e assinatura
+preservadas: public/cards/back-raven-20261014.png. A referência original fica em
+data/cards/raven-back-source-20261014.png; os dois arquivos são idênticos. O
+acabamento cromado acrescenta somente reflexos CSS sobre esse mesmo verso.
+Os caminhos ficam em src/card-backs.ts. Os SVGs provisórios e as dezesseis
+ilustrações originais foram mantidos; nenhuma nova arte raster foi gerada.
 
-QA usa o navegador com CSS real em cinco viewports. Confere frente/verso,
-arraste, toque, setas/Home, restauração, preview cromado, tamanho do diálogo,
-títulos e nível da coleção intacto. TypeScript/build e mídias/raridades anteriores
-também são conferidos. Publicação local muda só cliente e dois versos, sem SQL,
-preservando servidor, banco e todas as mídias anteriores.
+Validação: TypeScript/build; navegador real em cinco tamanhos, oito cartas e
+três níveis; títulos sem corte, nível 3 consistente, ouro, imagem do verso,
+arraste, toque, teclado, retorno e níveis da coleção intactos. Verificação das
+24 combinações de carta/nível confere a moldura compartilhada, ausência de
+contornos verdes e ausência de animação contínua. Resultados em
+test-results/card-presentation e test-results/tarot-art.

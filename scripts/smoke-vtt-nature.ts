@@ -47,7 +47,13 @@ try{
   await page.getByRole('button',{name:'Salvar mesa',exact:true}).click();
   await expect.poll(async()=> (await saved()).document.scenes[0].tokens.filter((t:any)=>t.image===houseAssets[0].image).length).toBe(1);
   for(const width of [1440,768,390]){
-    await page.setViewportSize({width,height:1000});await page.screenshot({path:'test-results/vtt-nature/library-'+width+'.png',fullPage:true});
+    await page.setViewportSize({width,height:1000});
+    expect(await page.locator('.vtt-nature-card').evaluateAll(cards=>cards.every(card=>{
+      const bounds=card.getBoundingClientRect(),art=card.querySelector('img')!.getBoundingClientRect(),name=card.querySelector('span')!.getBoundingClientRect();
+      return name.top>=art.bottom-1&&name.left>=bounds.left&&name.right<=bounds.right&&card.scrollWidth<=card.clientWidth+2;
+    }))).toBe(true);
+    await page.locator('.vtt-panel-content').evaluate(el=>el.scrollTop=0);
+    await page.screenshot({path:'test-results/vtt-nature/library-'+width+'.png',fullPage:true});
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2)).toBe(true);
   }
   let room=await saved();await api(player,'/vtt/join','POST',{invite:room.invite,role:'player'});

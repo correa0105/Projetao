@@ -8,7 +8,9 @@ try{
  assert.equal(faces.length,24);for(const face of faces){assert.deepEqual(face.paths,faces[0].paths);assert.equal(face.foil,face.level===3);assert.equal(face.animation,'none');assert(!/Comum|Incomum|Rara|Lendária/.test(face.text));}
  for(const level of [1,2,3])assert.equal(new Set(faces.filter(f=>f.level===level).map(f=>f.ink)).size,1);
  assert.equal(await page.locator('.arcana-card-effects').count(),0);
- for(const face of await page.locator('.arcana-card-face[data-level="1"]').all()){await face.hover();assert.equal(await face.evaluate(el=>getComputedStyle(el).outlineColor),'rgb(108, 161, 114)');}
+ for(const face of await page.locator('.arcana-card-face[data-level="1"]').all()){await face.hover();assert.equal(await face.evaluate(el=>getComputedStyle(el).outlineStyle),'none');}
  await page.emulateMedia({reducedMotion:'reduce'});assert(await page.locator('.arcana-card-face,.arcana-card-metallic').evaluateAll(els=>els.every(el=>getComputedStyle(el).animationName==='none')));
- await fs.writeFile('test-results/tarot-art/rarity-effects.json',JSON.stringify({passed:true,sharedFrame:true,greenHover:true,threeFinishes:true,noContinuousAnimation:true,faces},null,2));console.log('Shared frame, green hover and three static finishes passed.');
+ await fs.mkdir('test-results/tarot-art',{recursive:true});
+ await page.screenshot({path:'test-results/tarot-art/finishes-final.png',fullPage:true});
+ await fs.writeFile('test-results/tarot-art/rarity-effects.json',JSON.stringify({passed:true,sharedFrame:true,noGreenOutlines:true,threeFinishes:true,noContinuousAnimation:true,faces},null,2));console.log('Shared frame, no green outlines and three static finishes passed.');
 }finally{await browser.close();}
