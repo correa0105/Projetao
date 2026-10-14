@@ -104,8 +104,9 @@ try {
           expect(await stage.locator('.arcana-card-art').evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('/cards/prismatic-20261014/vigil.webp');
           await expect(stage.locator('.card-viewer-core')).toHaveCount(4);
           await page.screenshot({path:`test-results/card-presentation/chrome-front-${viewport.width}-${viewport.height}.png`});
-          const reflection=stage.locator('.arcana-card-metallic');
-          await expect(reflection).toHaveCSS('mix-blend-mode','soft-light');
+          const reflection=stage.locator('.card-viewer-front .arcana-card-metallic');
+          await expect(reflection.locator('span')).toHaveCount(3);
+          await expect(reflection.locator('.card-prism-spectrum')).toHaveCSS('mix-blend-mode','color');
           await expect(reflection).toHaveCSS('top','0px');
           await expect(reflection).toHaveCSS('bottom','0px');
           await page.keyboard.press('ArrowRight');await page.keyboard.press('ArrowRight');await page.waitForTimeout(270);

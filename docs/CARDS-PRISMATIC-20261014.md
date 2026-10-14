@@ -13,10 +13,15 @@ em data/cards/back-celestial-20261014.json. O antigo verso do corvo fica arquiva
 
 Frente, verso e quatro camadas da espessura 3D usam a silhueta ornamental
 card-silhouette.svg. Não existe a placa retangular fora do contorno. Reflexos
-prismáticos acompanham o giro; não há animação contínua em repouso. A inspeção
+prismáticos se movem continuamente pela ilustração, moldura e verso, mesmo em
+repouso, e acompanham o giro e o ponteiro. As três camadas de luz preservam o
+desenho e usam composição CSS; movimento reduzido desliga o ciclo automático.
+As oito frentes escuras têm molduras e detalhes dourados coerentes com o verso.
+A inspeção
 preserva arraste, teclado, toque, virar, restaurar e fundo borrado. Níveis
 possuídos, nomes, raridades e regras continuam iguais.
 
 QA: oito cartas e três níveis, legendas, faces, toque/giro, nova silhueta,
-24 faces na galeria e cinco tamanhos de tela. Evidências em
+24 faces na galeria, animação em toda a frente/verso, celular, movimento reduzido
+e cinco tamanhos de tela. Evidências em test-results/card-foil-animation,
 test-results/card-presentation e test-results/tarot-art/prismatic-background.json.

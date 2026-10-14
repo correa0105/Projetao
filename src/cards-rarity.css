@@ -33,6 +33,7 @@
   mix-blend-mode: soft-light;
 }
 .arcana-card-face[data-finish='chrome'] {
+  overflow: hidden;
   --card-paper: #bbd9ef;
   --card-frame-ink: #273459;
 }
@@ -40,12 +41,47 @@
 .arcana-card-face[data-finish='chrome'] .arcana-card-metallic {
   inset: 0;
   border-radius: 4px;
-  background: repeating-linear-gradient(var(--card-chrome-angle,122deg),#8bd8e8 0%,#b0a1ef 14%,#efacd7 27%,#ffebbe 39%,#a2efd8 52%,#85c8f4 65%,#c5a2ef 80%,#8bd8e8 100%);
-  background-size: 118% 118%;
-  background-position: var(--card-chrome-x,48%) var(--card-chrome-y,46%);
-  mix-blend-mode: soft-light;
-  opacity: .24;
+  background: none;
+  mix-blend-mode: normal;
+  opacity: 1;
 }
+.arcana-card-face[data-level='2'][data-finish='original'] {--card-paper:#d9ba73;--card-frame-ink:#302413;}
+.arcana-card-face[data-level='2'][data-finish='original'] .arcana-card-art {filter:sepia(.72) saturate(1.15);}
+.arcana-card-face[data-finish='chrome'] .arcana-card-art {filter:saturate(.65) contrast(1.04);}
+.card-prismatic-foil {
+  display:contents;
+  position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;
+  mask-image:url('/cards/card-silhouette.svg');mask-size:100% 100%;mask-repeat:no-repeat;
+}
+.card-prismatic-foil > span {position:absolute;inset:-60%;z-index:3;pointer-events:none;will-change:transform;}
+.card-prism-spectrum {
+  background:repeating-linear-gradient(118deg,#a3eafa 0%,#ac97ee 12%,#f391d2 24%,#ffe3a2 36%,#95e8bb 48%,#87caf4 60%,#be93ed 72%,#a3eafa 84%);
+  mix-blend-mode:color;opacity:.64;
+  animation:card-prism-spectrum 7s ease-in-out -2s infinite alternate;
+}
+.card-prism-caustics {
+  background:repeating-linear-gradient(56deg,#63b7f744 0%,#dbb4ff99 9%,#fff6 13%,#ffc48d66 17%,#a9f1cc44 27%,#63b7f744 36%);
+  mix-blend-mode:soft-light;opacity:.32;
+  animation:card-prism-caustics 8s ease-in-out -3s infinite alternate;
+}
+.card-prism-glint {
+  background:linear-gradient(112deg,#fff0 32%,#b6f9ff22 39%,#fff7 44%,#fff0 49%,#fff0 66%,#ffe6ff44 72%,#fff0 78%);
+  mix-blend-mode:screen;opacity:.35;
+  animation:card-prism-glint 7s ease-in-out -1s infinite alternate;
+}
+@keyframes card-prism-spectrum {
+  from {transform:translate(calc(-16% + var(--card-foil-x,0%)),calc(-9% + var(--card-foil-y,0%))) rotate(-9deg);}
+  to {transform:translate(calc(17% + var(--card-foil-x,0%)),calc(12% + var(--card-foil-y,0%))) rotate(10deg);}
+}
+@keyframes card-prism-caustics {
+  from {transform:translate(calc(12% + var(--card-foil-x,0%)),calc(-14% + var(--card-foil-y,0%)));}
+  to {transform:translate(calc(-15% + var(--card-foil-x,0%)),calc(15% + var(--card-foil-y,0%)));}
+}
+@keyframes card-prism-glint {
+  from {transform:translate(calc(-23% + var(--card-foil-x,0%)),var(--card-foil-y,0%));}
+  to {transform:translate(calc(24% + var(--card-foil-x,0%)),var(--card-foil-y,0%));}
+}
+@media (prefers-reduced-motion:reduce) {.card-prismatic-foil > span {animation:none;will-change:auto;}}
 :root .cards-room .cards-catalog > button[aria-pressed='true'] .arcana-card-face {
   border: 0;
   box-shadow: 0 5px 15px #0007;
@@ -108,7 +144,7 @@
   display: grid;
   place-items: center;
   pointer-events: none;
-  z-index: 2;
+  z-index: 4;
 }
 /* A card owns its caption size. Page and viewport typography must not enlarge it. */
 :root .arcana-card-face[data-rarity] .arcana-card-title .arcana-card-name {
@@ -244,6 +280,8 @@
 .card-viewer-front {transform: translateZ(2.5px);}
 .card-viewer-front .arcana-card-face {height: 100%;}
 .card-viewer-back {
+  overflow: hidden;
+  isolation: isolate;
   border-radius: 5px;
   background-color: #1c160c;
   background-position: center;
@@ -279,7 +317,7 @@
   background: linear-gradient(90deg,#566170,#edf2f8,#758392);
 }
 .card-viewer-model[data-finish='chrome'] .card-viewer-back::after {
-  content: '';
+  content: none;
   position: absolute;
   inset: 0;
   border-radius: inherit;

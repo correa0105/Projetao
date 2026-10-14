@@ -5,6 +5,7 @@ import {houseAsset,houseOccupied,houseWalls} from '../shared/vtt-houses';
 import {drawHouseDoor} from './vtt-house-doors';
 import {treeTrunk} from '../shared/vtt-tree-trunks';
 import {drawHouseVision} from './vtt-house-vision';
+import {drawHouseRoof} from './vtt-house-roof';
 import { tokenRotationHandle, tokenResizeHandles } from '../shared/vtt-token-resize';
 import { isTreeCanopy, canopyActor } from '../shared/vtt-canopies';
 import { captureCanopyAreas, drawCanopyForeground, clipCanopyBase } from './vtt-canopies-canvas';
@@ -389,10 +390,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         if (img?.complete && img.naturalWidth) {
           const floor=house&&images.get(house.interior);
           if(house&&!houseOccupied(t,canopyActors)&&floor?.complete&&floor.naturalWidth){
-            // Expose the entrance wall below the eave so the door is at ground level.
-            c.drawImage(floor,-t.width/2,-t.height/2,t.width,t.height);
-            c.save();c.beginPath();c.rect(-t.width/2,-t.height/2,t.width,t.height*(house.footprint.bottom-.045));c.clip();
-            c.drawImage(img,-t.width/2,-t.height/2,t.width,t.height);c.restore();
+            drawHouseRoof(c,t,img,floor);
           }else c.drawImage(img, -t.width / 2, -t.height / 2, t.width, t.height);
         } else {
           c.fillStyle = t.color;

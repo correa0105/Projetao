@@ -27,10 +27,11 @@ export function houseWalls(scene:VttScene):VttWall[] {
     for(const [i,[p,q]] of [[lt,rt],[rt,rb],[rb,end],[start,lb],[lb,lt],[start,end]].entries()){
       if(i===5){result.push({id:house.id+':house-wall:door',a:houseWorld(p,house),b:houseWorld(q,house),kind:'door',open:house.houseDoorOpen===true});continue;}
       const horizontal=p.y===q.y,lo=horizontal?Math.min(p.x,q.x):Math.min(p.y,q.y),hi=horizontal?Math.max(p.x,q.x):Math.max(p.y,q.y);
-      const windows=a.windows.filter(w=>horizontal&&Math.abs(w.y-p.y)<.001&&w.x>lo&&w.x<hi).sort((a,b)=>a.x-b.x);
+      const coordinate=(w:Point)=>horizontal?w.x:w.y;
+      const windows=a.windows.filter(w=>Math.abs((horizontal?w.y:w.x)-(horizontal?p.y:p.x))<.001&&coordinate(w)>lo&&coordinate(w)<hi).sort((a,b)=>coordinate(a)-coordinate(b));
       let at=lo;
       const push=(from:number,to:number,kind:'wall'|'window')=>{if(to<=from)return;const point=(v:number)=>horizontal?{x:v,y:p.y}:{x:p.x,y:v};result.push({id:house.id+':house-wall:'+result.length,a:houseWorld(point(from),house),b:houseWorld(point(to),house),kind,open:false});};
-      for(const w of windows){const left=Math.max(at,w.x-w.width/2),right=Math.min(hi,w.x+w.width/2);push(at,left,'wall');push(left,right,'window');at=right;}
+      for(const w of windows){const left=Math.max(at,coordinate(w)-w.width/2),right=Math.min(hi,coordinate(w)+w.width/2);push(at,left,'wall');push(left,right,'window');at=right;}
       push(at,hi,'wall');
     }
     return result;
@@ -107,7 +108,7 @@ export function housePointVisible(origin:Point,target:Point,scene:VttScene) {
   const room=scene.tokens.find(h=>houseAsset(h)&&houseContains(h,origin));if(!room||houseContains(room,target))return true;
   // Interior occupants can see the wall surface and operate the doorway itself.
   const p=localPoint(room,target),f=houseAsset(room)!.footprint,u=p.x/room.width+.5,v=p.y/room.height+.5;
-  if(u>=f.left-.025&&u<=f.right+.025&&v>=f.top-.025&&v<=f.bottom+.025)return true;
+  if(u>=f.left-1e-8&&u<=f.right+1e-8&&v>=f.top-1e-8&&v<=f.bottom+1e-8)return true;
   return houseWindowViews(room,origin,scene).some(v=>{
     const dx=target.x-v.origin.x,dy=target.y-v.origin.y,angle=Math.atan2(dy,dx)*180/Math.PI,difference=((angle-v.facing+540)%360)-180;
     return Math.hypot(dx,dy)<=v.radius&&Math.abs(difference)<=v.angle/2;

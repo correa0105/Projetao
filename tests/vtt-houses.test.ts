@@ -48,11 +48,35 @@ test('entrances align to a cell and a normal actor can approach walls and enter 
   }
 });
 test('inside vision hides exterior until approaching a window, then reveals a cone',()=>{
-  const s=newScene(randomUUID()),h=newToken(randomUUID(),s);Object.assign(h,{layer:'map',image:houseAssets[0].image,width:630,height:630,x:700,y:700});s.tokens=[h];
-  const center=houseWorld({x:.5,y:.5},h),outside=houseWorld({x:.5,y:-.2},h),near=houseWorld({x:.5,y:.24},h);
+  const s=newScene(randomUUID()),h=newToken(randomUUID(),s),asset=houseAssets.find(a=>a.id==='house-012')!;Object.assign(h,{layer:'map',image:asset.image,width:630,height:630,x:700,y:700});s.tokens=[h];
+  const center=houseWorld({x:.5,y:.5},h),outside=houseWorld({x:.3,y:-.2},h),near=houseWorld({x:.3,y:asset.footprint.top+.05},h);
   assert.equal(housePointVisible(center,outside,s),false);assert.equal(houseWindowViews(h,center,s).length,0);
   assert.equal(housePointVisible(center,houseDoorPoint(h),s),true);
   assert.equal(housePointVisible(near,outside,s),true);assert.equal(housePointVisible(near,houseWorld({x:-.2,y:.24},h),s),false);
+});
+test('windowless houses have no cones at furniture, chimney or the doorway, including rotation and flips',()=>{
+  const s=newScene(randomUUID()),h=newToken(randomUUID(),s);s.tokens=[h];
+  for(const a of houseAssets.filter(a=>a.windows.length===0))for(const rotation of [0,90,45])for(const flipX of [false,true]){
+    Object.assign(h,{layer:'map',image:a.image,width:630,height:630,x:700,y:700,rotation,flipX});
+    for(const p of [{x:.5,y:a.footprint.top+.04},{x:.29,y:a.footprint.bottom-.04},{x:.72,y:a.footprint.bottom-.04}]){
+      const origin=houseWorld(p,h);assert.deepEqual(houseWindowViews(h,origin,s),[]);
+      assert.equal(housePointVisible(origin,houseWorld({x:p.x,y:p.y<.5?-.2:1.2},h),s),false,a.id);
+    }
+    assert.equal(houseWalls(s).filter(w=>w.kind==='window').length,0);
+  }
+});
+test('all audited windows split their own wall and widen only while approaching that opening',()=>{
+  const s=newScene(randomUUID()),h=newToken(randomUUID(),s);s.tokens=[h];
+  for(const a of houseAssets){Object.assign(h,{layer:'map',image:a.image,width:630,height:630,x:700,y:700,rotation:45,flipX:true});
+    assert.equal(houseWalls(s).filter(w=>w.kind==='window').length,a.windows.length,a.id);
+    for(const w of a.windows){const angle=w.facing*Math.PI/180;
+      const near=houseWorld({x:w.x-Math.cos(angle)*.04,y:w.y-Math.sin(angle)*.04},h);
+      const farther=houseWorld({x:w.x-Math.cos(angle)*.1,y:w.y-Math.sin(angle)*.1},h);
+      const origin=houseWorld(w,h),views=houseWindowViews(h,near,s),v=views.find(v=>Math.hypot(v.origin.x-origin.x,v.origin.y-origin.y)<.001)!;
+      const away=houseWindowViews(h,farther,s).find(v=>Math.hypot(v.origin.x-origin.x,v.origin.y-origin.y)<.001)!;
+      assert(v&&away&&v.angle>away.angle,a.id);
+    }
+  }
 });
 test('casas antigas e imagens arbitrárias não ganham barreiras ou interiores',()=>{
   const scene=newScene(randomUUID()),house=newToken(randomUUID(),scene);

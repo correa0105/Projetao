@@ -12,6 +12,7 @@ import { CardsHost } from './CardsHost';
 import {CardFrame} from './CardFrame';
 import {cardVisualLevel} from '../shared/card-presentation';
 import {CardViewer3D} from './CardViewer3D';
+import {CardPrismaticFoil} from './CardPrismaticFoil';
 export function CardFace({ card, small = false, level = 1, finish }: { card: Card; small?: boolean; level?: number; finish?:'original'|'chrome' }) {
   const visualLevel=cardVisualLevel(level),resolvedFinish=finish??(visualLevel===3?'chrome':'original');
   const nativePrism=resolvedFinish==='chrome';
@@ -26,8 +27,8 @@ export function CardFace({ card, small = false, level = 1, finish }: { card: Car
           } as CSSProperties
         }
       />
-      {(visualLevel===3||resolvedFinish==='chrome') && <span className="arcana-card-metallic" aria-hidden="true"/>}
-      <CardFrame cell={card.cell} metallic={visualLevel===3||resolvedFinish==='chrome'} chrome={resolvedFinish==='chrome'}/>
+      <CardFrame cell={card.cell} metallic={visualLevel>=2||nativePrism} chrome={nativePrism} gold={visualLevel===2&&!nativePrism}/>
+      {nativePrism && <CardPrismaticFoil/>}
       <span className="arcana-card-title">
         <span className="arcana-card-name" style={{fontSize: `${Math.min(7.5, 112 / card.name.length)}cqw`}}>{card.name}</span>
       </span>

@@ -19,7 +19,12 @@ ao batente, abrindo para fora. A arte da casa fornece o piso e o batente,
 sem a antiga placa escura desenhada sobre a entrada.
 
 O interior aparece ao entrar. Na visão do personagem dentro da casa, o exterior
-fica oculto. Aproximar-se de uma janela abre um cone exterior de visão, que
+fica oculto pelo recorte nativo da arte, inclusive entre os batentes e ao redor
+das paredes. As 25 casas têm aberturas conferidas individualmente; chaminés,
+móveis, espelhos e portas não são janelas. Casas sem janela não geram cones.
+O telhado inteiro permanece alinhado à casa do lado de fora, com beirais
+translúcidos sobre as bases das paredes. Dentro, é removido por completo.
+Aproximar-se de uma janela real abre um cone exterior de visão, que
 se amplia com a aproximação. Janelas bloqueiam movimento e deixam passar visão.
 O servidor também filtra tokens externos para a visão interna do jogador.
 O mestre vê a visão interna ao selecionar o personagem; sem essa seleção,
@@ -39,5 +44,7 @@ correspondente. As plantas e objetos externos são desenhados sobre a casa.
 QA: testes de movimento/casas/grade/troncos; navegador em banco UUID descartável,
 com portas, permissões, arraste, giro, câmera, visão interna e janelas; benchmark
 de zoom e edição/desfazer. Evidências em test-results/vtt-nature, terrain-zoom
-e brush-performance. Nenhuma migration nova; protocolo 15 pede recarga a clientes
+e brush-performance. A verificação house-vision examina pixels externos das
+25 silhuetas, ausência de cones falsos e conservação de todo o telhado.
+Nenhuma migration nova; protocolo 16 pede recarga a clientes
 que ainda usam a geometria anterior.
