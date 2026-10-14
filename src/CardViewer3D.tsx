@@ -14,6 +14,11 @@ export function CardViewer3D({card,level=1}:{card:Card;level?:number}) {
     frame.current=null;
     model.current?.style.setProperty('--card-rotation-x',rotation.current.x+'deg');
     model.current?.style.setProperty('--card-rotation-y',rotation.current.y+'deg');
+    // Move the reflected light with the card; no animation runs while it is still.
+    const tilt=Math.sin(rotation.current.y*Math.PI/180),pitch=Math.sin(rotation.current.x*Math.PI/180);
+    model.current?.style.setProperty('--card-chrome-angle',(122+tilt*24+pitch*12)+'deg');
+    model.current?.style.setProperty('--card-chrome-x',(48+tilt*32)+'%');
+    model.current?.style.setProperty('--card-chrome-y',(46+pitch*30)+'%');
     const reversed=Math.cos(rotation.current.y*Math.PI/180)<0;
     front.current?.setAttribute('aria-hidden',String(reversed));
     back.current?.setAttribute('aria-hidden',String(!reversed));

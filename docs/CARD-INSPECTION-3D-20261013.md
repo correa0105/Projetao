@@ -13,8 +13,12 @@ somente transform CSS, atualizada no máximo uma vez por frame durante o arraste
 sem renderizar React a cada movimento ou manter loop ativo em repouso.
 
 Prévia cromada é um acabamento de inspeção em prata e grafite, com baixo nível
-de cor. Neutraliza os pequenos acentos da ilustração escura, aplica reflexo leve,
-moldura e arestas frias e um verso de metal escovado. Não altera raridade, nível
+de cor. Neutraliza os pequenos acentos da ilustração escura, aplica reflexos de
+prata sobre todo o fundo da frente, incluindo a base, moldura e arestas frias e
+um verso de metal escovado. As faixas de luz acompanham a inclinação e o giro;
+o desenho preto permanece legível. Não há animação ativa em repouso.
+Correção de 14/10: o reflexo anterior era fraco e terminava antes da base da carta.
+O acabamento agora usa color-dodge e ocupa toda a arte. Não altera raridade, nível
 possuído, compras ou equipamento. Os três níveis continuam independentes.
 
 Versos provisórios são SVGs próprios editáveis:

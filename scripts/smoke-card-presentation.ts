@@ -97,6 +97,14 @@ try {
           await expect(stage.locator('.card-viewer-front')).toHaveAttribute('aria-hidden','false');
           expect(await stage.locator('.arcana-card-art').evaluate(el=>getComputedStyle(el).filter)).toContain('saturate');
           await page.screenshot({path:`test-results/card-presentation/chrome-front-${viewport.width}-${viewport.height}.png`});
+          const reflection=stage.locator('.arcana-card-metallic');
+          await expect(reflection).toHaveCSS('mix-blend-mode','color-dodge');
+          await expect(reflection).toHaveCSS('top','0px');
+          await expect(reflection).toHaveCSS('bottom','0px');
+          await page.keyboard.press('ArrowRight');await page.keyboard.press('ArrowRight');await page.waitForTimeout(270);
+          expect(await cardModel.evaluate(el=>(el as HTMLElement).style.getPropertyValue('--card-chrome-x'))).not.toBe('48%');
+          await page.screenshot({path:`test-results/card-presentation/chrome-front-tilted-${viewport.width}-${viewport.height}.png`});
+          await page.keyboard.press('Home');await page.waitForTimeout(270);
           await dialog.getByRole('button',{name:'Prévia cromada',exact:true}).click();
           await stage.focus();await page.keyboard.press('ArrowRight');
           await expect(cardModel).toHaveCSS('--card-rotation-y','15deg');
@@ -140,7 +148,7 @@ try {
   }
   expect(errors).toEqual([]); expect(missing).toEqual([]);
   expect((await api('/cards/'+character.id)).every((c:{level:number})=>c.level===1)).toBe(true);
-  await writeFile('test-results/card-presentation/result.json', JSON.stringify({passed:true,cards:8,captions:true,pagination:true,inspection:true,threeFinishes:true,rotation3D:true,chromePreview:true,touchRotation:true,ownedLevelsUnchanged:true,viewports:5,checks,errors,missing},null,2));
+  await writeFile('test-results/card-presentation/result.json', JSON.stringify({passed:true,cards:8,captions:true,pagination:true,inspection:true,threeFinishes:true,rotation3D:true,chromePreview:true,chromeBackground:true,touchRotation:true,ownedLevelsUnchanged:true,viewports:5,checks,errors,missing},null,2));
   console.log('Eight cards: titles fit, two pages, ownership and inspection passed at five viewport sizes.');
 } catch(error) {
   await page.screenshot({path:'test-results/card-presentation/failure.png',fullPage:true}); throw error;

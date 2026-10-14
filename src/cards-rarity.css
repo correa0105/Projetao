@@ -37,8 +37,13 @@
   filter: saturate(.08) contrast(1.04);
 }
 .arcana-card-face[data-finish='chrome'] .arcana-card-metallic {
-  background: linear-gradient(125deg,#f8fafc11 8%,#c7d1df88 26%,#fff0 38%,#f3f6fa88 60%,#fff7 64%,#71819833 83%);
-  mix-blend-mode: soft-light;
+  inset: 0;
+  border-radius: 4px;
+  background: linear-gradient(var(--card-chrome-angle,122deg),#242931 4%,#637080 21%,#c4cbd3 30%,#edf1f5 34%,#64717f 39%,#222831 50%,#84909d 63%,#dce2e8 70%,#4b5665 78%,#252a32 96%);
+  background-size: 180% 180%;
+  background-position: var(--card-chrome-x,48%) var(--card-chrome-y,46%);
+  mix-blend-mode: color-dodge;
+  opacity: .78;
 }
 :root .cards-room .cards-catalog > button[aria-pressed='true'] .arcana-card-face {
   border: 0;
@@ -248,6 +253,17 @@
 }
 .card-viewer-model[data-finish='chrome'] .card-viewer-edge {
   background: linear-gradient(90deg,#566170,#edf2f8,#758392);
+}
+.card-viewer-model[data-finish='chrome'] .card-viewer-back::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(var(--card-chrome-angle,122deg),#0000 12%,#edf2f88c 31%,#fff0 42%,#19233266 60%,#e3ebf455 75%,#0000 91%);
+  background-size: 180% 180%;
+  background-position: var(--card-chrome-x,48%) var(--card-chrome-y,46%);
+  mix-blend-mode: soft-light;
 }
 .card-viewer-edge.edge-left, .card-viewer-edge.edge-right {
   top: 0;
