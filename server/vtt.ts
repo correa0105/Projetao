@@ -61,7 +61,7 @@ import {
   type VttToken,
   type VttFocusSignal,
 } from '../shared/vtt.js';
-import {houseAsset,houseDoorPoint,houseDoorObstructed,canReachHouseDoor,housePointVisible} from '../shared/vtt-houses';
+import {houseAsset,houseDoorPoint,houseDoorObstructed,canReachHouseDoor,housePointVisible,houseWindowOpen,canReachHouseWindow,houseWorld} from '../shared/vtt-houses';
 import {tokenPlacement} from '../shared/vtt-placement';
 const uuid = z.string().uuid();
 type DB = Pick<PoolClient, 'query'>;
@@ -125,6 +125,10 @@ function playerDocument(doc: VttDocument, user: string, spectator = false): VttD
         ...scene,
         folderId: null,
         tokens,
+        houseCues: scene.houseCues.filter(cue=>{
+          const h=scene.tokens.find(t=>t.id===cue.houseId);
+          return h&&!h.hidden&&scene.tokens.some(t=>t.layer==='tokens'&&t.controller===user&&!t.hidden&&Math.hypot(t.x-h.x,t.y-h.y)<=Math.max(h.width,h.height)/2+scene.grid.size*8);
+        }),
         blood: scene.blood.filter((mark) => {
           if (mark.private) return false;
           const source = scene.tokens.find((t) => t.id === mark.source);
@@ -732,6 +736,8 @@ export function vttRouter() {
         const previous = r.document.scenes.find((s) => s.id === scene.id);
         const submittedScene = req.body.document.scenes.find((s: VttScene) => s.id === scene.id);
         if (previous && submittedScene?.canopyAreas === undefined) scene.canopyAreas = previous.canopyAreas;
+        // Interaction cues are server-authored and survive unrelated GM saves/undo.
+        scene.houseCues = previous?.houseCues ?? [];
         if (previous && submittedScene?.canopyOpacity === undefined) scene.canopyOpacity = previous.canopyOpacity;
         if (previous && submittedScene?.terrain === undefined) scene.terrain = previous.terrain || [];
         if (previous && submittedScene?.terrainLayers === undefined) scene.terrainLayers = previous.terrainLayers || [{id:'base',name:'Chão',visible:true,opacity:1}];
@@ -924,6 +930,20 @@ export function vttRouter() {
       if((h.houseDoorOpen===true)===open)return;
       if(!open&&houseDoorObstructed(h,s.tokens))throw new AppError(400,'A passagem está ocupada. Afaste o personagem antes de fechar a porta.');
       h.houseDoorOpen=open;
+      s.houseCues=[...s.houseCues.filter(c=>Date.now()-c.at<10000),{id:randomUUID(),houseId:h.id,kind:open?'door-open' as const:'door-close' as const,at:Date.now()}].slice(-40);
+      await db.query('UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',[rid,JSON.stringify(r.document)]);
+    });res.json(await state(rid,res.locals.user.id));
+  });
+  router.patch('/vtt/rooms/:id/houses/:token/windows/:index',async(req,res)=>{
+    const rid=uuid.parse(req.params.id),tid=uuid.parse(req.params.token),index=z.coerce.number().int().min(0).max(31).parse(req.params.index),{open}=z.object({open:z.boolean()}).strict().parse(req.body);
+    await transaction(async db=>{
+      const r=await room(db,rid,res.locals.user.id,true),s=r.document.scenes.find(s=>s.id===r.document.activeScene)!,h=s.tokens.find(t=>t.id===tid),w=h&&houseAsset(h)?.windows[index];
+      if(!h||!w)throw new AppError(404,'Janela não encontrada.');
+      const master=r.owner_id===res.locals.user.id&&await isAdministrator(res.locals.user.id,db);
+      if(!master&&(r.role==='spectator'||!canReachHouseWindow(h,index,s,res.locals.user.id)||!canSee({...h,...houseWorld(w,h),width:1,height:1},s,res.locals.user.id)))throw new AppError(403,'Aproxime seu personagem da janela para abri-la ou fechá-la.');
+      if(houseWindowOpen(h,index)===open)return;
+      h.houseWindowsClosed=open?(h.houseWindowsClosed??[]).filter(i=>i!==index):[...(h.houseWindowsClosed??[]),index];
+      s.houseCues=[...s.houseCues.filter(c=>Date.now()-c.at<10000),{id:randomUUID(),houseId:h.id,window:index,kind:open?'window-open' as const:'window-close' as const,at:Date.now()}].slice(-40);
       await db.query('UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',[rid,JSON.stringify(r.document)]);
     });res.json(await state(rid,res.locals.user.id));
   });

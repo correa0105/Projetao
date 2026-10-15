@@ -2,7 +2,7 @@ import { z } from 'zod';
 import {calibrateObjectSizes} from './vtt-object-scale.js';
 import {lightAnimationSchema,lightEffectSpeedSchema} from './vtt-lighting.js';
 import {terrainTextureIds} from './vtt-terrain.js';
-import {houseWalls,housePointVisible} from './vtt-houses.js';
+import {houseWalls,housePointVisible,houseAsset,houseContains} from './vtt-houses.js';
 import { canopyAreaSchema } from './vtt-canopies.js';
 import { atmosphereSchema } from './vtt-atmosphere.js';
 import { animatedAssetSchema } from './vtt-animated-assets.js';
@@ -123,6 +123,7 @@ export const tokenSchema = z
     monster: monsterCustomizationSchema.nullable().default(null),
     animatedAsset: animatedAssetSchema.optional(),
     houseDoorOpen: z.boolean().optional(),
+    houseWindowsClosed: z.array(z.number().int().min(0).max(31)).max(32).optional(),
     assetScaleVersion: z.literal(2).optional(),
     sceneryToken: z.boolean().optional(),
   })
@@ -230,6 +231,7 @@ export const sceneSchema = z
       )
       .max(3000)
       .default([]),
+    houseCues: z.array(z.object({id,houseId:id,window:z.number().int().min(0).max(31).optional(),kind:z.enum(['door-open','door-close','window-open','window-close']),at:z.number().int().nonnegative()}).strict()).max(40).default([]),
     tokens: z.array(tokenSchema).max(1000),
     blood: z.array(bloodDecalSchema).max(MAX_BLOOD_DECALS).default([]),
     walls: z.array(wallSchema).max(2000),
@@ -734,6 +736,8 @@ export function manualFogSees(p: Point, scene: VttScene) {
 }
 export function visiblePoint(origin: Point, target: Point, s: VttScene, radius: number) {
   if(!housePointVisible(origin,target,s))return false;
+  const room=s.tokens.find(h=>houseAsset(h)&&houseContains(h,origin));
+  if(room&&!houseContains(room,target))return Math.hypot(origin.x-target.x,origin.y-target.y)<=radius;
   return (
     Math.hypot(origin.x - target.x, origin.y - target.y) <= radius &&
     !blockingWalls(s).some((w) => intersection(origin, target, w.a, w.b))

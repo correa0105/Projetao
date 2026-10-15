@@ -32,7 +32,7 @@ export function houseWalls(scene:VttScene):VttWall[] {
       const windows=a.windows.filter(w=>Math.abs((horizontal?w.y:w.x)-(horizontal?p.y:p.x))<.001&&coordinate(w)>lo&&coordinate(w)<hi).sort((a,b)=>coordinate(a)-coordinate(b));
       let at=lo;
       const push=(from:number,to:number,kind:'wall'|'window')=>{if(to<=from)return;const point=(v:number)=>horizontal?{x:v,y:p.y}:{x:p.x,y:v};result.push({id:house.id+':house-wall:'+result.length,a:houseWorld(point(from),house),b:houseWorld(point(to),house),kind,open:false});};
-      for(const w of windows){const left=Math.max(at,coordinate(w)-w.width/2),right=Math.min(hi,coordinate(w)+w.width/2);push(at,left,'wall');push(left,right,'window');at=right;}
+      for(const w of windows){const left=Math.max(at,coordinate(w)-w.width/2),right=Math.min(hi,coordinate(w)+w.width/2);push(at,left,'wall');push(left,right,houseWindowOpen(house,a.windows.indexOf(w))?'window':'wall');at=right;}
       push(at,hi,'wall');
     }
     return result;
@@ -96,23 +96,40 @@ export function fitHouseToGrid(house:VttToken,scene:VttScene) {
     if(t.attachment){t.attachment.offsetX*=ratioX;t.attachment.offsetY*=ratioY;}
   }
 }
+export const houseWindowOpen=(house:VttToken,index:number)=>!house.houseWindowsClosed?.includes(index);
+export function canReachHouseWindow(house:VttToken,index:number,scene:VttScene,userId:string) {
+  const w=houseAsset(house)?.windows[index];if(!w||house.hidden)return false;
+  const p=houseWorld(w,house);
+  return scene.tokens.some(t=>t.layer==='tokens'&&t.controller===userId&&!t.hidden&&!t.locked&&Math.hypot(t.x-p.x,t.y-p.y)<=scene.grid.size*1.5+Math.min(t.width,t.height)/2);
+}
+export function visibleHouseWindows(scene:VttScene,gm:boolean,userId:string,selected:string[]) {
+  const actors=scene.tokens.filter(t=>t.layer==='tokens'&&!t.hidden&&(gm?selected.includes(t.id):t.controller===userId));
+  return scene.tokens.filter(h=>houseAsset(h)&&!h.hidden).flatMap(h=>houseAsset(h)!.windows.flatMap((w,index)=>{
+    const p=houseWorld(w,h),near=actors.some(t=>Math.hypot(t.x-p.x,t.y-p.y)<=scene.grid.size*2);
+    return (gm?near:canReachHouseWindow(h,index,scene,userId))?[{house:h,index,point:houseWorld({x:w.viewX,y:w.viewY},h)}]:[];
+  }));
+}
 export function houseWindowViews(house:VttToken,actor:Point,scene:VttScene) {
   const a=houseAsset(house);if(!a||!houseContains(house,actor))return[];
-  return a.windows.flatMap(w=>{
+  return a.windows.flatMap((w,index)=>{
+    if(!houseWindowOpen(house,index))return[];
     const origin=houseWorld(w,house),distance=Math.hypot(actor.x-origin.x,actor.y-origin.y),reach=scene.grid.size*2;
     if(distance>=reach)return[];
     const direction=houseWorld({x:w.x+Math.cos(w.facing*Math.PI/180)*.1,y:w.y+Math.sin(w.facing*Math.PI/180)*.1},house);
     const facing=Math.atan2(direction.y-origin.y,direction.x-origin.x)*180/Math.PI,normal={x:Math.cos(facing*Math.PI/180),y:Math.sin(facing*Math.PI/180)};
+    // Anchor both edges at the native exterior sill, even when approaching from the side.
     const aperture=houseWorld({x:w.viewX,y:w.viewY},house),width=w.width*(Math.abs(Math.sin(w.facing*Math.PI/180))>.5?house.width:house.height);
-    const tangent={x:-normal.y,y:normal.x},left={x:origin.x-tangent.x*width/2,y:origin.y-tangent.y*width/2},right={x:origin.x+tangent.x*width/2,y:origin.y+tangent.y*width/2};
-    const start=Math.atan2(left.y-actor.y,left.x-actor.x)*180/Math.PI,end=Math.atan2(right.y-actor.y,right.x-actor.x)*180/Math.PI,difference=((end-start+540)%360)-180;
     const progress=Math.max(0,1-distance/reach),proximity=progress*progress*(3-2*progress),fade=Math.min(1,progress/.35);
-    return[{origin,aperture,eye:actor,normal,facing,beamFacing:start+difference/2,angle:Math.abs(difference),width,radius:scene.grid.size*(8+8*proximity)+distance,opacity:fade*fade*(3-2*fade)}];
+    const angle=24+116*proximity,depth=width/(2*Math.tan(angle*Math.PI/360));
+    const eye={x:aperture.x-normal.x*depth,y:aperture.y-normal.y*depth};
+    if(blockingWalls(scene).some(w=>!w.id.startsWith(house.id+':house-wall:')&&intersection(actor,origin,w.a,w.b)))return[];
+    return[{houseId:house.id,index,origin,aperture,eye,normal,facing,beamFacing:facing,angle,width,radius:scene.grid.size*(8+8*proximity)+depth,opacity:fade*fade*(3-2*fade)}];
   });
 }
-/** Clip the eye's sight polygon at the outer face of the window, retaining the full aperture. */
+/** Cast outside the window, never through the inner wall or from a displaced actor cone. */
 export function houseWindowPolygon(view:ReturnType<typeof houseWindowViews>[number],scene:VttScene):Point[] {
-  const points=sightPolygon(view.eye,view.radius,scene,view.beamFacing,view.angle),output:Point[]=[];
+  const outside={...scene,tokens:scene.tokens.filter(t=>t.id!==view.houseId)};
+  const points=sightPolygon(view.eye,view.radius,outside,view.beamFacing,view.angle),output:Point[]=[];
   const side=(p:Point)=>(p.x-view.aperture.x)*view.normal.x+(p.y-view.aperture.y)*view.normal.y;
   for(let i=0;i<points.length;i++){
     const p=points[i],q=points[(i+1)%points.length],a=side(p),b=side(q);
@@ -126,10 +143,10 @@ export function housePointVisible(origin:Point,target:Point,scene:VttScene) {
   const p=localPoint(room,target),f=houseAsset(room)!.footprint,u=p.x/room.width+.5,v=p.y/room.height+.5;
   if(u>=f.left-1e-8&&u<=f.right+1e-8&&v>=f.top-1e-8&&v<=f.bottom+1e-8)return true;
   return houseWindowViews(room,origin,scene).some(view=>{
-    const dx=target.x-origin.x,dy=target.y-origin.y,angle=Math.atan2(dy,dx)*180/Math.PI,difference=((angle-view.beamFacing+540)%360)-180;
+    const dx=target.x-view.eye.x,dy=target.y-view.eye.y,angle=Math.atan2(dy,dx)*180/Math.PI,difference=((angle-view.beamFacing+540)%360)-180;
     return view.opacity>0&&Math.hypot(dx,dy)<=view.radius&&Math.abs(difference)<=view.angle/2+1e-6&&
       (target.x-view.aperture.x)*view.normal.x+(target.y-view.aperture.y)*view.normal.y>=-1e-6&&
-      !blockingWalls(scene).some(w=>intersection(origin,target,w.a,w.b));
+      !blockingWalls(scene).some(w=>!w.id.startsWith(room.id+':house-wall:')&&intersection(view.eye,target,w.a,w.b));
   });
 }
 /** Fade only when the standing body or one of its occupied grid cells overlaps the roof. */

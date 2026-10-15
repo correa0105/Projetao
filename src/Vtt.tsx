@@ -5,6 +5,8 @@ import {houseInteriorImages,houseAsset,houseDoorObstructed,fitHouseToGrid,houseP
 import {tokenPlacement} from '../shared/vtt-placement';
 import {createNatureToken} from '../shared/vtt-nature-placement';
 import {VttHouseDoors} from './VttHouseDoors';
+import {VttHouseSounds} from './VttHouseSounds';
+import {houseWindowOpen} from '../shared/vtt-houses';
 import {houseDoorsAnimating} from './vtt-house-doors';
 import {VttLightPresets,VttLightEffectFields} from './VttLightingControls';
 import {lightPresetValues,sceneHasAnimatedLights,type LightPresetId} from '../shared/vtt-lighting';
@@ -741,6 +743,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setContextMenu(null);
     setTool('select');
     setAttackTargetId(null);
+  }
+  async function toggleHouseWindow(house:VttToken,index:number) {
+    if(!state||!scene||preview||spectator||busy)return;
+    await save();
+    receive(await api<VttState>(`/vtt/rooms/${state.id}/houses/${house.id}/windows/${index}`,{method:'PATCH',body:JSON.stringify({open:!houseWindowOpen(house,index)})}));
   }
   async function toggleHouseDoor(house:VttToken) {
     if(!state||!scene||preview||spectator||busy)return;
@@ -3005,6 +3012,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             enabled={media.soundEnabled && !preview}
             volume={media.soundVolume}
           />
+          <VttHouseSounds roomId={state.id} scene={scene} enabled={media.soundEnabled && !preview} volume={media.soundVolume}/>
           <VttRollSounds
             roomId={state.id}
             messages={state.messages}
@@ -3232,7 +3240,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }
             }}
           />
-          {!spectator&&!preview&&<VttHouseDoors scene={scene} camera={camera} width={bounds.width} height={bounds.height} gm={gm} userId={user.id} selected={selection} disabled={busy} toggle={h=>void act(()=>toggleHouseDoor(h))}/>}
+          {!spectator&&!preview&&<VttHouseDoors scene={scene} camera={camera} width={bounds.width} height={bounds.height} gm={gm} userId={user.id} selected={selection} disabled={busy} toggle={h=>void act(()=>toggleHouseDoor(h))} toggleWindow={(h,index)=>void act(()=>toggleHouseWindow(h,index))}/>}
           <VttTurnCarousel
             controls={combat}
             gm={gm}
@@ -3954,7 +3962,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             <NumberField label="Velocidade da animação" value={token.animatedAsset.speed} min={.25} max={2} onChange={v=>editToken({animatedAsset:{...token.animatedAsset!,speed:v}})}/>
                             <label>Intensidade<input aria-label="Intensidade do asset" type="range" min={.2} max={1} step={.05} value={token.animatedAsset.intensity} onChange={e=>editToken({animatedAsset:{...token.animatedAsset!,intensity:Number(e.target.value)}})}/></label>
                           </fieldset>}
-                          {houseAsset(token)&&<><button onClick={()=>void act(()=>toggleHouseDoor(token))}>{token.houseDoorOpen?'Fechar':'Abrir'} porta principal</button><button onClick={()=>editScene(s=>fitHouseToGrid(s.tokens.find(t=>t.id===token.id)!,s))}>Ajustar casa à escala dos personagens</button><p className="vtt-muted">Corrige a proporção da casa e alinha a porta à grade, mantendo o tamanho dos personagens.</p></>}
+                          {houseAsset(token)&&<><button onClick={()=>void act(()=>toggleHouseDoor(token))}>{token.houseDoorOpen?'Fechar':'Abrir'} porta principal</button>{houseAsset(token)!.windows.map((_,index)=><button key={index} onClick={()=>void act(()=>toggleHouseWindow(token,index))}>{houseWindowOpen(token,index)?'Fechar':'Abrir'} janela {index+1}</button>)}<button onClick={()=>editScene(s=>fitHouseToGrid(s.tokens.find(t=>t.id===token.id)!,s))}>Ajustar casa à escala dos personagens</button><p className="vtt-muted">Corrige a proporção da casa e alinha a porta à grade, mantendo o tamanho dos personagens.</p></>}
                           {!token.sceneryToken && <>
                           <h3>Barra de boss</h3>
                           <label>

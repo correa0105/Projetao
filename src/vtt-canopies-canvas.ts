@@ -1,4 +1,5 @@
 import type { VttScene, VttToken } from '../shared/vtt';
+import {clipOutdoorPlants} from './vtt-house-layers';
 import {
   canopyActor,
   canopyAreaOccupied,
@@ -163,7 +164,7 @@ export function drawCanopyForeground(
     const used: Path2D[] = [];
     if (isTreeCanopy(item) && areas.length) {
       c.save();
-      clipCanopyBase(c, scene, item);
+      clipCanopyBase(c, scene, item);clipOutdoorPlants(c,scene,item);
       c.translate(item.x, item.y);
       c.rotate((item.rotation * Math.PI) / 180);
       c.scale(item.flipX ? -1 : 1, item.flipY ? -1 : 1);
@@ -179,6 +180,7 @@ export function drawCanopyForeground(
         outside.addPath(previous);
         c.clip(outside, 'evenodd');
       }
+      clipOutdoorPlants(c,scene,item);
       const path = areaPath(area);
       c.clip(path);
       c.translate(item.x, item.y);
@@ -196,6 +198,7 @@ export function drawCanopyForeground(
     const image = images.get(tree.image);
     if (!visible(tree) || !image?.complete || !image.naturalWidth) continue;
     c.save();
+    clipOutdoorPlants(c,scene,tree);
     c.translate(tree.x, tree.y);
     c.rotate((tree.rotation * Math.PI) / 180);
     c.scale(tree.flipX ? -1 : 1, tree.flipY ? -1 : 1);

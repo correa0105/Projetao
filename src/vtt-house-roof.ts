@@ -3,8 +3,8 @@ import {houseAsset} from '../shared/vtt-houses';
 
 const roofs=new WeakMap<HTMLImageElement,HTMLCanvasElement>();
 /** Keep the entire roof aligned with the native floor; only its eaves are translucent. */
-export function drawHouseRoof(c:CanvasRenderingContext2D,h:VttToken,roof:HTMLImageElement,floor:HTMLImageElement,fade=true,beneath?:()=>void) {
-  if(!fade){beneath?.();c.drawImage(roof,-h.width/2,-h.height/2,h.width,h.height);return;}
+export function drawHouseRoof(c:CanvasRenderingContext2D,h:VttToken,roof:HTMLImageElement,floor:HTMLImageElement,fade=true,beneath?:()=>void,phase:'all'|'base'|'roof'='all') {
+  if(!fade){if(phase!=='roof')beneath?.();if(phase!=='base')c.drawImage(roof,-h.width/2,-h.height/2,h.width,h.height);return;}
   let surface=roofs.get(roof);
   if(!surface){
     const f=houseAsset(h)!.footprint,w=roof.naturalWidth,height=roof.naturalHeight;
@@ -19,6 +19,7 @@ export function drawHouseRoof(c:CanvasRenderingContext2D,h:VttToken,roof:HTMLIma
     r.globalCompositeOperation='destination-in';r.drawImage(mask,0,0);roofs.set(roof,surface);
   }
   const f=houseAsset(h)!.footprint;
+  if(phase!=='roof'){
   // Reveal the front and side wall bases, not furniture or a second interior chimney.
   c.save();c.beginPath();
   c.rect((f.left-.065-.5)*h.width,(f.top-.5)*h.height,h.width*.105,(f.bottom-f.top+.07)*h.height);
@@ -26,5 +27,6 @@ export function drawHouseRoof(c:CanvasRenderingContext2D,h:VttToken,roof:HTMLIma
   c.rect(-h.width/2,(f.bottom-.05-.5)*h.height,h.width,h.height*.12);c.clip();
   c.drawImage(floor,-h.width/2,-h.height/2,h.width,h.height);c.restore();
   beneath?.();
-  c.drawImage(surface,-h.width/2,-h.height/2,h.width,h.height);
+  }
+  if(phase!=='base')c.drawImage(surface,-h.width/2,-h.height/2,h.width,h.height);
 }

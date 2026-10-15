@@ -173,6 +173,46 @@ try{
   expect((await request(spectator,doorPath,'PATCH',{open:false})).status).toBe(403);await spectator.close();
   const resident=(await saved()).document.scenes[0].tokens.find((t:any)=>t.image.includes('/resident-'));expect((await request(player,root+'/tokens/'+resident.id,'PATCH',{x:resident.x+70,y:resident.y})).status).toBe(403);
   const forbidden=await request(player,root,'PUT',{revision:room.revision,document:room.document});expect(forbidden.status).toBe(403);
+  // Live windows: reach/ownership, persistent state, interaction sounds and silent reload.
+  await page.setViewportSize({width:1440,height:1000});
+  room=await saved();scene=room.document.scenes[0];scene.fog=scene.lighting=false;scene.terrain=[];scene.walls=[];
+  const windowAsset=houseAssets.find(a=>a.id==='house-002')!,windowHouse=newToken(randomUUID(),scene),windowActor=newToken(randomUUID(),scene),window=windowAsset.windows[0];
+  Object.assign(windowHouse,{layer:'map',image:windowAsset.image,name:'Casa de teste de janela',width:630,height:630,x:1100,y:1000});
+  Object.assign(windowActor,{...houseWorld({x:window.x,y:window.y-.07},windowHouse),controller:guest.id,name:'Visitante da janela'});scene.tokens=[windowHouse,windowActor];
+  room=await api(ctx,root,'PUT',{revision:room.revision,document:room.document});
+  const windowPath=root+'/houses/'+windowHouse.id+'/windows/0';
+  await ctx.addInitScript(()=>{
+    localStorage.setItem('alvorada-effects-muted','false');
+    (window as any).__housePlayed=[];
+    HTMLMediaElement.prototype.play=function(){if(this.src.includes('/audio/vtt/sfx-'))(window as any).__housePlayed.push({src:this.src,volume:this.volume});return Promise.resolve();};
+  });
+  await page.reload();await expect(board).toBeVisible();await page.waitForTimeout(400);
+  expect(await page.evaluate(()=>(window as any).__housePlayed)).toEqual([]);
+  const atWindow=await screen(windowActor);await page.mouse.click(atWindow.x,atWindow.y);
+  const closeWindow=page.getByRole('button',{name:'Fechar janela 1 — Casa de teste de janela',exact:true});await expect(closeWindow).toBeVisible();await closeWindow.click();
+  await expect.poll(async()=>(await saved()).document.scenes[0].tokens.find((t:any)=>t.id===windowHouse.id).houseWindowsClosed).toEqual([0]);
+  await expect.poll(()=>page.evaluate(()=>(window as any).__housePlayed.map((a:any)=>a.src.split('/').at(-1)))).toEqual(['sfx-metallatch.ogg']);
+  await expect(page.getByRole('button',{name:'Abrir janela 1 — Casa de teste de janela',exact:true})).toBeVisible();
+  await api(player,windowPath,'PATCH',{open:true});
+  await expect.poll(()=>page.evaluate(()=>(window as any).__housePlayed.map((a:any)=>a.src.split('/').at(-1)))).toEqual(['sfx-metallatch.ogg','sfx-creak1.ogg']);
+  await page.getByRole('button',{name:'Configurações e ajuda',exact:true}).click();
+  await page.getByLabel('Som dos efeitos e ataques',{exact:true}).uncheck();await api(player,windowPath,'PATCH',{open:false});
+  await expect(page.getByRole('button',{name:'Abrir janela 1 — Casa de teste de janela',exact:true})).toBeVisible();
+  expect(await page.evaluate(()=>(window as any).__housePlayed.length)).toBe(2);
+  await page.getByLabel('Som dos efeitos e ataques',{exact:true}).check();await api(player,windowPath,'PATCH',{open:true});
+  await expect.poll(()=>page.evaluate(()=>(window as any).__housePlayed.length)).toBe(3);
+  const freshDoor=root+'/houses/'+windowHouse.id+'/door';await api(ctx,freshDoor,'PATCH',{open:true});
+  await expect.poll(()=>page.evaluate(()=>(window as any).__housePlayed.map((a:any)=>a.src.split('/').at(-1)))).toContain('sfx-dooropen-1.ogg');
+  await api(ctx,freshDoor,'PATCH',{open:false});
+  await expect.poll(()=>page.evaluate(()=>(window as any).__housePlayed.map((a:any)=>a.src.split('/').at(-1)))).toContain('sfx-doorclose-1.ogg');
+  expect(await page.evaluate(()=>(window as any).__housePlayed.every((a:any)=>a.volume>0&&a.volume<=1))).toBe(true);
+  const cuesBefore=(await saved()).document.scenes[0].houseCues.length;await api(player,windowPath,'PATCH',{open:true});expect((await saved()).document.scenes[0].houseCues.length).toBe(cuesBefore);
+  const watch=await browser.newContext();await api(watch,'/auth/sign-up/email','POST',{name:'Observador',email:randomUUID()+'@example.test',password:'Test-'+randomUUID()});await api(watch,'/vtt/join','POST',{invite:room.invite,role:'spectator'});expect((await request(watch,windowPath,'PATCH',{open:false})).status).toBe(403);await watch.close();
+  room=await saved();scene=room.document.scenes[0];Object.assign(scene.tokens.find((t:any)=>t.id===windowActor.id),{x:300,y:300});await api(ctx,root,'PUT',{revision:room.revision,document:room.document});
+  expect((await request(player,windowPath,'PATCH',{open:false})).status).toBe(403);
+  expect((await request(player,root+'/houses/'+windowHouse.id+'/windows/31','PATCH',{open:false})).status).toBe(404);
+  await api(ctx,windowPath,'PATCH',{open:false});await page.reload();await expect(board).toBeVisible();await page.waitForTimeout(500);expect(await page.evaluate(()=>(window as any).__housePlayed)).toEqual([]);
+  expect((await saved()).document.scenes[0].tokens.find((t:any)=>t.id===windowHouse.id).houseWindowsClosed).toEqual([0]);
   // GM-only scenery conversion retains the placed cart offset and persists without creature HUD.
   await page.setViewportSize({width:1440,height:1000});
   room=await saved();scene=room.document.scenes[0];scene.fog=scene.lighting=false;scene.terrain=[];
@@ -237,7 +277,7 @@ try{
     rendererChecks.push({id:asset.id,entry:true,exit:true});
   }
   expect(errors).toEqual([]);expect(missing).toEqual([]);
-  await writeFile('test-results/vtt-nature/result.json',JSON.stringify({passed:true,terrainTextures:18,newTerrainPainted:10,terrainReload:true,terrainNetworkRecovery:true,sceneryConversion:true,sceneryLinkPermissions:true,sceneryRotation:true,lightingPresets:true,lightSpeed:true,physicalObjectScale:true,protocol:20,plants:25,houses:90,emptyHouses:25,animals:40,commerces:40,furniture:100,gardening:25,residents:25,merchants:25,thumbnails:true,residentBody:true,residentRotation:true,scaledNewDrag:true,library:true,assetsTab:true,search:true,scale:true,drag:true,gridSnap:true,cameraPan:true,spacePan:true,interiorVision:true,windowCones:true,doorTexture:true,rotationHandle:true,shiftWheel:true,persistentDoor:true,doorPermissions:true,doorObstruction:true,serverMovement:true,playerCannotEdit:true,roofEntryAndExit:true,viewports:3,rendererChecks,errors,missing},null,2));
+  await writeFile('test-results/vtt-nature/result.json',JSON.stringify({passed:true,windowControls:true,windowPermissions:true,windowPersistence:true,houseAudio:true,houseAudioMute:true,silentReload:true,terrainTextures:18,newTerrainPainted:10,terrainReload:true,terrainNetworkRecovery:true,sceneryConversion:true,sceneryLinkPermissions:true,sceneryRotation:true,lightingPresets:true,lightSpeed:true,physicalObjectScale:true,protocol:vttProtocolVersion,plants:25,houses:90,emptyHouses:25,animals:40,commerces:40,furniture:100,gardening:25,residents:25,merchants:25,thumbnails:true,residentBody:true,residentRotation:true,scaledNewDrag:true,library:true,assetsTab:true,search:true,scale:true,drag:true,gridSnap:true,cameraPan:true,spacePan:true,interiorVision:true,windowCones:true,doorTexture:true,rotationHandle:true,shiftWheel:true,persistentDoor:true,doorPermissions:true,doorObstruction:true,serverMovement:true,playerCannotEdit:true,roofEntryAndExit:true,viewports:3,rendererChecks,errors,missing},null,2));
   console.log('25 plants, 90 houses, 100 household assets and 40 animals: library, drag, scale, server walls, door entry/exit, all roof/interior pairs and three widths passed.');
 }catch(error){await page.screenshot({path:'test-results/vtt-nature/failure.png',fullPage:true});throw error;}
 finally{await browser.close();await new Promise<void>(r=>server.close(()=>r()));await pool.end();}

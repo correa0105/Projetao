@@ -559,7 +559,7 @@ function Portal({ user }: { user: User }) {
       return <CharacterCards key={character?.id || 'visitor'} character={character} />;
     return (
       <>
-        {page !== 'characters' && page !== 'lore' && page !== 'pets' && (
+        {page !== 'characters' && page !== 'pets' && (
           <div className="page-header-spacer" aria-hidden="true" />
         )}
         {page === 'characters' && (

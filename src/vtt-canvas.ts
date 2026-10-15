@@ -4,7 +4,7 @@ import {drawMapObject} from './vtt-object-sprites';
 import { drawTerrain } from './vtt-terrain-canvas';
 import { renderBuffer, renderWorkCache, tokenOnScreen } from './vtt-render-cache';
 import type { TerrainStroke } from '../shared/vtt';
-import {houseAsset,houseContains,houseOccupied,houseRoofOccluded,houseWalls} from '../shared/vtt-houses';
+import {houseAsset,houseContains,houseOccupied,houseRoofOccluded,houseWalls,houseWindowViews,houseWindowPolygon} from '../shared/vtt-houses';
 import furniture from '../shared/vtt-home-furniture-catalog.json';
 import {villageAssets,residentAsset,houseViewActors} from '../shared/vtt-village-assets';
 const houseFurniture=new Set([...furniture,...villageAssets.filter(a=>!('actor' in a&&a.actor))].map(a=>vttVisualSource(a.image)));
@@ -12,6 +12,7 @@ import {drawHouseDoor} from './vtt-house-doors';
 import {treeTrunk} from '../shared/vtt-tree-trunks';
 import {drawHouseVision} from './vtt-house-vision';
 import {drawHouseRoof} from './vtt-house-roof';
+import {drawCanopiesBelowRoofs,clipOutdoorPlants} from './vtt-house-layers';
 import { tokenRotationHandle, tokenResizeHandles } from '../shared/vtt-token-resize';
 import { isTreeCanopy, canopyActor } from '../shared/vtt-canopies';
 import { captureCanopyAreas, drawCanopyForeground, clipCanopyBase } from './vtt-canopies-canvas';
@@ -334,7 +335,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
   const closedHouses=s.tokens.filter(h=>houseAsset(h)&&!houseOccupied(h,houseActors));
   let canopyCover: HTMLCanvasElement | null = null;
   for (const layer of ['map', 'tokens', 'gm']) {
-    if (layer === 'gm') drawCanopyForeground(c,s,images,canopyActors,canopyCover,visibleCanopyToken,o.selected,cam.zoom);
+    if (layer === 'gm') drawCanopiesBelowRoofs(c,closedHouses.filter(visibleCanopyToken),images,ctx=>drawCanopyForeground(ctx,s,images,canopyActors,canopyCover,visibleCanopyToken,o.selected,cam.zoom));
     if (layer === 'tokens' && o.visualEffects !== false && o.bloodEnabled !== false)
       drawBloodDecals(
         c,
@@ -377,7 +378,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       if (o.preview && o.viewer && t.id !== o.viewer.id && !viewerSees(o.viewer, t, s)) continue;
       if((houseFurniture.has(vttVisualSource(t.image))||residentAsset(t))&&closedHouses.some(h=>houseContains(h,t)))continue;
       c.save();
-      if(layer === 'map') clipCanopyBase(c,s,t);
+      if(layer === 'map') {clipCanopyBase(c,s,t);clipOutdoorPlants(c,s,t);}
       c.translate(t.x, t.y);
       c.rotate((t.rotation * Math.PI) / 180);
       c.globalAlpha = t.hidden || layer === 'gm' ? s.gmOpacity : 1;
@@ -400,8 +401,8 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
           const floor=house&&images.get(house.interior);
           if(house&&!houseOccupied(t,houseActors)){
             if(floor?.complete&&floor.naturalWidth)
-              drawHouseRoof(c,t,img,floor,houseRoofOccluded(t,houseActors,s),()=>drawHouseDoor(c,s,t,reduced,images,true));
-            else {drawHouseDoor(c,s,t,reduced,images,true);c.drawImage(img,-t.width/2,-t.height/2,t.width,t.height);}
+              drawHouseRoof(c,t,img,floor,houseRoofOccluded(t,houseActors,s),()=>drawHouseDoor(c,s,t,reduced,images,true),'base');
+            else {drawHouseDoor(c,s,t,reduced,images,true);}
           }else if(houseFurniture.has(vttVisualSource(t.image))){
             drawMapObject(c,t,img);
           }else {
@@ -520,7 +521,17 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.restore();
       }
     }
-    if (layer === 'map') { drawGrid(); canopyCover = captureCanopyAreas(c,s); }
+    if (layer === 'map') {
+      // Walls precede outdoor props; roofs cover them regardless of prop level.
+      for(const h of closedHouses.filter(visibleCanopyToken)) {
+        if(!tokenOnScreen(h,view,cam.zoom))continue;
+        const roof=images.get(h.image),floor=images.get(houseAsset(h)!.interior);if(!roof?.complete||!roof.naturalWidth)continue;
+        c.save();c.translate(h.x,h.y);c.rotate(h.rotation*Math.PI/180);c.scale(h.flipX?-1:1,h.flipY?-1:1);c.globalAlpha=h.hidden?s.gmOpacity:1;
+        if(floor?.complete&&floor.naturalWidth)drawHouseRoof(c,h,roof,floor,houseRoofOccluded(h,houseActors,s),undefined,'roof');
+        else c.drawImage(roof,-h.width/2,-h.height/2,h.width,h.height);c.restore();
+      }
+      drawGrid();canopyCover = captureCanopyAreas(c,s);
+    }
   }
   const spellView = {
     left: cam.x - width / 2 / cam.zoom,
@@ -554,7 +565,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     const cache = renderWorkCache(c.canvas), sources = sceneLights(s);
     const lightTick=!reduced&&o.visualEffects!==false&&sceneHasAnimatedLights(s)?Math.floor(now/80)*80:0;
     const lightingKey = JSON.stringify([s.id,width,height,dpr,cam,master,s.ambient,s.grid.size,s.grid.unit,s.grid.scale,
-      viewers.map(v=>[v.x,v.y,v.vision]),s.walls,houseWalls(s),sources,lightTick]);
+      viewers.map(v=>[v.x,v.y,v.vision]),s.walls,houseWalls(s),s.tokens.filter(h=>houseAsset(h)).map(h=>[h.id,h.houseWindowsClosed]),sources,lightTick]);
     const rebuild = cache.lightingKey !== lightingKey;
     const light = renderBuffer(c.canvas,'light',rebuild), colors = renderBuffer(c.canvas,'colors',rebuild),
       mask = renderBuffer(c.canvas,'darkness',rebuild);
@@ -567,6 +578,10 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       transform(lc); transform(vc); transform(line); transform(tc);
       for (const v of viewers) {
         polygon(line,sightPolygon(v,50000,s));line.fillStyle='#fff';line.fill();
+        for(const h of s.tokens.filter(h=>houseAsset(h)&&houseContains(h,v)))for(const window of houseWindowViews(h,v,s)) {
+          const points=houseWindowPolygon(window,s);polygon(line,points);line.fill();
+          if(v.vision>0){vc.save();vc.beginPath();vc.arc(v.x,v.y,visionPixels(v.vision,s),0,Math.PI*2);vc.clip();polygon(vc,points);vc.fillStyle='#fff';vc.fill();vc.restore();}
+        }
         if (v.vision>0) {polygon(vc,sightPolygon(v,visionPixels(v.vision,s),s));vc.fillStyle='#fff';vc.fill();}
       }
       for (const source of sources) {

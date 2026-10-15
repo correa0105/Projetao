@@ -6,7 +6,7 @@ export function drawHouseVision(c:CanvasRenderingContext2D,scene:VttScene,o:Rend
   const all=o.preview?(o.viewer?[o.viewer]:[]):o.gm?scene.tokens.filter(t=>t.layer==='tokens'&&o.selected.includes(t.id)):scene.tokens.filter(t=>t.layer==='tokens'&&t.controller===o.userId&&!t.hidden);
   const actors=all.filter(t=>scene.tokens.some(h=>houseAsset(h)&&houseContains(h,t)));
   if(!actors.length||actors.length!==all.length)return;
-  const key=JSON.stringify([scene.id,c.canvas.width,c.canvas.height,o.camera,o.dpr,scene.grid,actors.map(a=>[a.x,a.y]),scene.tokens.filter(h=>houseAsset(h)).map(h=>[h.image,h.x,h.y,h.width,h.height,h.rotation,h.flipX,h.flipY,h.houseDoorOpen,o.images.get(houseAsset(h)!.interior)?.naturalWidth]),scene.walls]);
+  const key=JSON.stringify([scene.id,c.canvas.width,c.canvas.height,o.camera,o.dpr,scene.grid,actors.map(a=>[a.x,a.y]),scene.tokens.filter(h=>houseAsset(h)).map(h=>[h.image,h.x,h.y,h.width,h.height,h.rotation,h.flipX,h.flipY,h.houseDoorOpen,h.houseWindowsClosed,o.images.get(houseAsset(h)!.interior)?.naturalWidth]),scene.walls]);
   const mask=renderBuffer(c.canvas,'house-vision',false);
   if(mask.dataset.visionKey===key){c.save();c.resetTransform();c.drawImage(mask,0,0);c.restore();return;}
   const m=mask.getContext('2d')!,zoom=o.camera.zoom*o.dpr;m.reset();
@@ -20,7 +20,10 @@ export function drawHouseVision(c:CanvasRenderingContext2D,scene:VttScene,o:Rend
       m.drawImage(floor,-h.width/2,-h.height/2,h.width,h.height);m.restore();
     }else polygon([{x:f.left,y:f.top},{x:f.right,y:f.top},{x:f.right,y:f.bottom},{x:f.left,y:f.bottom}].map(p=>houseWorld(p,h)));
     for(const v of houseWindowViews(h,actor,scene)){
-      m.globalAlpha=v.opacity;polygon(houseWindowPolygon(v,scene));m.globalAlpha=1;
+      m.save();m.globalAlpha=v.opacity;
+      const radius=v.radius-Math.hypot(v.eye.x-v.aperture.x,v.eye.y-v.aperture.y),fade=m.createRadialGradient(v.aperture.x,v.aperture.y,0,v.aperture.x,v.aperture.y,radius);
+      fade.addColorStop(0,'#fff');fade.addColorStop(.72,'#fff');fade.addColorStop(1,'#ffffff00');m.fillStyle=fade;
+      polygon(houseWindowPolygon(v,scene));m.restore();
     }
   }
   mask.dataset.visionKey=key;c.save();c.resetTransform();c.drawImage(mask,0,0);c.restore();
