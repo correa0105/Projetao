@@ -1,0 +1,29 @@
+{
+  "id": "furniture-016",
+  "name": "Chaise de couro",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: long leather chaise lounge on a wooden frame. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 2 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-016.png",
+  "sourceSha256": "ec48dc6f1102d51cd1824aa7536cf5b2f24b96cd8b7f1e03721372fe8b3fc5fd",
+  "sourcePixels": {
+    "width": 887,
+    "height": 1774
+  },
+  "image": "/vtt/overhead-20261015/furniture-016.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-016.webp",
+  "sha256": "a87ab18896e2a8b8782f5f550c4c6c3e95c7f727770b405cac5c2b3c0783f4f8",
+  "thumbnailSha256": "4f1d9b5e76654dad6696b295b8c60aaa4f503b1c20ca1bb6ea81b3ee995d5dee",
+  "pixelWidth": 440,
+  "pixelHeight": 1008,
+  "bytes": 171348,
+  "clearFraction": 0.2583581349206349,
+  "opaqueFraction": 0.7332341269841269,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-016.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 2
+  }
+}

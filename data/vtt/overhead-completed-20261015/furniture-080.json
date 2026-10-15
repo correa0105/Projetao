@@ -1,0 +1,29 @@
+{
+  "id": "furniture-080",
+  "name": "Penico de cerâmica",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: simple cream glazed chamber pot with one handle. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 0.5 by 0.5 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-080.png",
+  "sourceSha256": "76fee9226827e44f452bbf169e5c67806df41841d92771f7f54eacae73838f44",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-080.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-080.webp",
+  "sha256": "5e4b3936bf7a376779256aa86b30d269e3b0ccac2963d8073ec72e9d785267d9",
+  "thumbnailSha256": "a5185cf3a432b9668f4e0eed3d7f46bc7359bcc705caf2d4ed1e1bf4e531a04c",
+  "pixelWidth": 1008,
+  "pixelHeight": 833,
+  "bytes": 188632,
+  "clearFraction": 0.4197559976371501,
+  "opaqueFraction": 0.5750061929533719,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-080.webp"
+  ],
+  "physicalSize": {
+    "width": 0.5,
+    "height": 0.5
+  }
+}

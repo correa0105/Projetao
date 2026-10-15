@@ -1,0 +1,29 @@
+{
+  "id": "furniture-064",
+  "name": "Batedeira de manteiga",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: traditional wooden butter churn with vertical plunger. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CORRECTION AFTER CAMERA REVIEW: A butter churn seen vertically down: circular wooden lid viewed as a perfect circle with a small centered ROUND end-grain cap of the vertical stirring stick. The vertical stick shaft is hidden directly beneath this cap; not a tall pole rising toward image top. No cylindrical barrel sides. Absolute 90 degree vertical orthographic camera. No perspective tilt, no vertical front faces. Fully transparent background.",
+  "source": "data/vtt/overhead-20261015/furniture-064.png",
+  "sourceSha256": "e9a627c208bcd735688954504553f08b27924f5ce87c028b4c25e662ebee5a13",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-064.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-064.webp",
+  "sha256": "cb67328e5d4adda06779faae5c69aa9d01f4750c5f8cb2b554e590b58988d437",
+  "thumbnailSha256": "0a8bcdbacb5b26fcac47938459d8b3a658489b7b61ea7cb4018e157e2832307b",
+  "pixelWidth": 904,
+  "pixelHeight": 894,
+  "bytes": 318112,
+  "clearFraction": 0.33376269525449903,
+  "opaqueFraction": 0.6598438953891231,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-064.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

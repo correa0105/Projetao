@@ -1,0 +1,27 @@
+{
+  "id": "commerce-018-interior",
+  "name": "Livraria · Interior",
+  "kind": "interior",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE furnished Livraria interior as a STRICT ARCHITECTURAL FLOOR PLAN for a medieval VTT. Room dimensions 9 by 8 five-foot cells, rectangular physical width-to-height ratio 1.125. Content: wood floor, low tables with stacks of books, bookcase top edges, a reading desk and a sales counter. TRUE ORTHOGRAPHIC NADIR camera from DIRECTLY ABOVE, exactly vertical 90 degrees to the floor, absolutely no tilt, isometric or converging edges. All furniture shows ONLY its flat TOP surfaces, no cabinet fronts, drawer handles, chair backrest faces, side faces or legs. Four perimeter walls show only their thin horizontal TOP CUTS of even thickness. One open-plan room, clear walking route through the center. A single OPEN DOOR GAP centered in the BOTTOM wall, wide enough for a human. Two windows appear ONLY as thin blue-grey top slivers in the bottom wall, at 23% and 77% along that wall; no other wall openings. Do not draw a door leaf or stairs. Keep coherent human scale: chair less than one cell and bed two cells long. Realistic detailed hand-painted medieval material texture, even overhead light. Complete room centered with transparent alpha outside the rectangular wall outline, no outside floor, grass, roof, grid, labels, text, people or watermark.\nStrict plan projection for tall furniture: cupboards and bookcases show ONLY opaque horizontal top boards, NEVER their doors or book-spine faces. Fireplaces and forges show ONLY a U-shaped top-cut stone rim around an open coal pit, NEVER a front firebox opening or facade. Vertical posts appear ONLY as circular end-grain caps, with shafts occluded beneath them.",
+  "source": "data/vtt/overhead-20261015/commerce-018-interior.png",
+  "sourceSha256": "0a618869db1c741c73ffbda516d8ec900be6bdafd302a0dba96652046de187d1",
+  "sourcePixels": {
+    "width": 1330,
+    "height": 1182
+  },
+  "image": "/vtt/overhead-20261015/commerce-018-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-018-interior.webp",
+  "sha256": "1344ffa2d5f9c3d4a81ed4760db58e5db808a517474fba9f44f28a46ae7d00d1",
+  "thumbnailSha256": "c3cb989295ba826275454fa305657b2ead7be3b2431fbe50f3925ea1fa7fe159",
+  "pixelWidth": 1600,
+  "pixelHeight": 1422,
+  "bytes": 477884,
+  "clearFraction": 0.391039029535865,
+  "opaqueFraction": 0.6038365857946554,
+  "legacy": [],
+  "physicalSize": {
+    "width": 9,
+    "height": 8
+  }
+}

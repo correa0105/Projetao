@@ -1,0 +1,29 @@
+{
+  "id": "furniture-025",
+  "name": "Armário de cozinha",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: closed cream weathered kitchen cupboard. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 2 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-025.png",
+  "sourceSha256": "412dcd492c521b555e1ae44d13c3d3d100f33c549a3c55dba4138a7714a3cafd",
+  "sourcePixels": {
+    "width": 1774,
+    "height": 887
+  },
+  "image": "/vtt/overhead-20261015/furniture-025.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-025.webp",
+  "sha256": "b9a23acf262c56f2b8cba2f492e50c15b3452ae8c90621677587e60725c170d0",
+  "thumbnailSha256": "105d69de383c723f1189eb6bf61484401cf7846600573cc1009c10c38f1dd8d4",
+  "pixelWidth": 1008,
+  "pixelHeight": 367,
+  "bytes": 120154,
+  "clearFraction": 0.2589204619177371,
+  "opaqueFraction": 0.7330970762510272,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-025.webp"
+  ],
+  "physicalSize": {
+    "width": 2,
+    "height": 1
+  }
+}

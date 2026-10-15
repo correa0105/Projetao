@@ -1,0 +1,29 @@
+{
+  "id": "furniture-030",
+  "name": "Cabideiro",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: freestanding wooden coat rack with a simple muted cloak. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CORRECTION AFTER CAMERA REVIEW: A standing coat rack seen exactly from its zenith: a small central circular end-grain pole cap and six horizontal hooks radiating outward like a star; coat draped around hooks seen only as cloth folds from above. The vertical pole shaft is entirely hidden beneath the top cap. Do not show a tall standing pole. Absolute 90 degree vertical orthographic camera. No perspective tilt, no vertical front faces. Fully transparent background.",
+  "source": "data/vtt/overhead-20261015/furniture-030.png",
+  "sourceSha256": "06dc4503910eff4125d2d361807396d2c1c9c29e193bb128a0a3930c5353618a",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-030.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-030.webp",
+  "sha256": "70a4f43bb7e9004b66aecd4675edd23f52200e85193671d35b8a28ae6e452717",
+  "thumbnailSha256": "84e600accea4b759542aeae248d668ea6a009de425dbeedac9431467c901b260",
+  "pixelWidth": 942,
+  "pixelHeight": 1008,
+  "bytes": 243432,
+  "clearFraction": 0.6212118339904964,
+  "opaqueFraction": 0.37042092137633537,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-030.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

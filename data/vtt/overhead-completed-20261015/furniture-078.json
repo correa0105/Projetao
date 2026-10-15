@@ -1,0 +1,29 @@
+{
+  "id": "furniture-078",
+  "name": "Pilha de roupas de cama",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: stack of folded ivory linen sheets with one wool blanket. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 0.5 by 0.5 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-078.png",
+  "sourceSha256": "ffe56d308913b595e2a0ed83c00f15aa668c3674b6d875e23efae9885cfccef1",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-078.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-078.webp",
+  "sha256": "534d159a9d28af141c5fc2c7d18ab9a1077bc2a2be6cba3d8cd374afabd766f7",
+  "thumbnailSha256": "18ab80cebca08b433ad4048474d7a779c29b16e93296f67f69f6997d0e8deda0",
+  "pixelWidth": 1008,
+  "pixelHeight": 901,
+  "bytes": 384596,
+  "clearFraction": 0.16244516674594367,
+  "opaqueFraction": 0.8272510261966421,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-078.webp"
+  ],
+  "physicalSize": {
+    "width": 0.5,
+    "height": 0.5
+  }
+}

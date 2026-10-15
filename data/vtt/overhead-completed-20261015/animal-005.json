@@ -1,0 +1,27 @@
+{
+  "id": "animal-005",
+  "name": "Alce",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: large bull moose with broad palmate antlers. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-005.png",
+  "sourceSha256": "3677109307d8301a56b88095ef17d822ad0656d9dff87a5b4ec121225874839f",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-005.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-005.webp",
+  "sha256": "13508c99c93058432d3f938f87851ba0e004bff90be5d5b5670ccc396ef6a673",
+  "thumbnailSha256": "357c884e1f30a0d8bb1b85e1f856598b359e2b423986a70db961ddd5a3e4f7a9",
+  "pixelWidth": 703,
+  "pixelHeight": 1008,
+  "bytes": 182690,
+  "clearFraction": 0.6566246697825645,
+  "opaqueFraction": 0.3320082300345458,
+  "legacy": [],
+  "physicalSize": {
+    "width": 2,
+    "height": 2
+  }
+}

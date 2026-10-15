@@ -1,0 +1,29 @@
+{
+  "id": "furniture-028",
+  "name": "Tina de água",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: round wooden water tub with visible still water. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-028.png",
+  "sourceSha256": "78f95a759223f297b07751c209f5692b8ec99a2dc89a062ea8e53c7216f0d0af",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-028.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-028.webp",
+  "sha256": "c24cdb859b18057c125f17f8b3edcc1f0aa150913f882577b1cffe2a77b8fc5a",
+  "thumbnailSha256": "0e962b279de7ca2c9127e7f621ea2c318e709b82e1ce017242a991a872264060",
+  "pixelWidth": 1005,
+  "pixelHeight": 1008,
+  "bytes": 390210,
+  "clearFraction": 0.34116323146173894,
+  "opaqueFraction": 0.6541113875069099,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-028.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "furniture-084",
+  "name": "Ícone doméstico",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: small painted devotional panel depicting a simple radiant sun, no writing. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 0.5 by 0.5 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-084.png",
+  "sourceSha256": "d597ee0d5a905c2f033c672c5a7596405db6b7233370a91b3f70cb9294779fd2",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-084.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-084.webp",
+  "sha256": "85a25543e1500f888287dc79bf17af88b88676882af1de546df34d353fe52a20",
+  "thumbnailSha256": "a2d07eacc0655edee57c1a8f24027cd4d59e55934ddd739cdc9e5d93fe3df883",
+  "pixelWidth": 952,
+  "pixelHeight": 918,
+  "bytes": 490544,
+  "clearFraction": 0.16542057999670456,
+  "opaqueFraction": 0.8261817799015031,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-084.webp"
+  ],
+  "physicalSize": {
+    "width": 0.5,
+    "height": 0.5
+  }
+}

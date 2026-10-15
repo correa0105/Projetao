@@ -1,0 +1,29 @@
+{
+  "id": "furniture-095",
+  "name": "Tinteiro e pergaminhos",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: brass inkwell, quill and two rolled parchments arranged as one compact set. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 0.5 by 0.5 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-095.png",
+  "sourceSha256": "4f9378ddb7a4fa6bff76574cfee6de3d8167258022bdad3ca5041318794bf310",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-095.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-095.webp",
+  "sha256": "66b7148dc5e57bc49363f4ae9ee43d7a3918b18e25b1ea67ca5e3f8d8575c0c0",
+  "thumbnailSha256": "b8a6006ef59e9f48891eb88730eaa8c1493a26af8d069a342ff6a66dc024873b",
+  "pixelWidth": 1008,
+  "pixelHeight": 967,
+  "bytes": 304742,
+  "clearFraction": 0.5508137588023834,
+  "opaqueFraction": 0.4379575597905484,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-095.webp"
+  ],
+  "physicalSize": {
+    "width": 0.5,
+    "height": 0.5
+  }
+}

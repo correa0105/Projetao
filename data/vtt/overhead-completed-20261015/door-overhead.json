@@ -1,0 +1,29 @@
+{
+  "id": "door-overhead",
+  "name": "Porta · Vista superior",
+  "kind": "door",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE very narrow horizontal medieval oak door TOP EDGE sprite for a 90-degree overhead VTT. This is a thin long strip of wood seen STRAIGHT DOWN from the ceiling, NOT the rectangular front face of a standing door. Silhouette aspect ratio TEN units wide by ONE unit deep. Detailed worn oak grain, small dark iron hinge pins at the LEFT end and tiny top of a latch at the RIGHT end. Only top-facing wood and hardware are visible. No vertical panel, upright planks, door facade, ring handle seen from front, perspective, isometric view, frame, wall, threshold, floor, ground, people, text or watermark. Complete narrow beam centered on genuine transparent alpha with small padding, crisp realistic hand-painted medieval game texture.",
+  "source": "data/vtt/overhead-20261015/door-overhead.png",
+  "sourceSha256": "6fcafb5ebcb6f9544480151ab0a8e4436e427e6931eaa2d5c4a11b473165c35a",
+  "sourcePixels": {
+    "width": 2172,
+    "height": 724
+  },
+  "image": "/vtt/overhead-20261015/door-overhead.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/door-overhead.webp",
+  "sha256": "d1bcb49d5b7761603771ebd80f52604618c445697c7e8230990f93132aa8d906",
+  "thumbnailSha256": "4446f724922dfd71e7555df6062de63f77dcd4a251cddcda47c16aa2039d1c02",
+  "pixelWidth": 1008,
+  "pixelHeight": 131,
+  "bytes": 35966,
+  "clearFraction": 0.6331106870229007,
+  "opaqueFraction": 0.3513495092693566,
+  "legacy": [
+    "/vtt/house-parts-20261014/door-vertical.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 0.12
+  }
+}

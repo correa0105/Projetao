@@ -1,0 +1,27 @@
+{
+  "id": "commerce-002-interior",
+  "name": "Taverna · Interior",
+  "kind": "interior",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE furnished Taverna interior as a STRICT ARCHITECTURAL FLOOR PLAN for a medieval VTT. Room dimensions 14 by 10 five-foot cells, rectangular physical width-to-height ratio 1.400. Content: warm plank floor, long oak bar counter, six dining tables, benches, ale barrels and a stone cooking hearth. TRUE ORTHOGRAPHIC NADIR camera from DIRECTLY ABOVE, exactly vertical 90 degrees to the floor, absolutely no tilt, isometric or converging edges. All furniture shows ONLY its flat TOP surfaces, no cabinet fronts, drawer handles, chair backrest faces, side faces or legs. Four perimeter walls show only their thin horizontal TOP CUTS of even thickness. One open-plan room, clear walking route through the center. A single OPEN DOOR GAP centered in the BOTTOM wall, wide enough for a human. Two windows appear ONLY as thin blue-grey top slivers in the bottom wall, at 23% and 77% along that wall; no other wall openings. Do not draw a door leaf or stairs. Keep coherent human scale: chair less than one cell and bed two cells long. Realistic detailed hand-painted medieval material texture, even overhead light. Complete room centered with transparent alpha outside the rectangular wall outline, no outside floor, grass, roof, grid, labels, text, people or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-002-interior.png",
+  "sourceSha256": "ffe3137df05f8187c0ef55e1bd31a10536422c5a567b243d92a3360ba364fa0e",
+  "sourcePixels": {
+    "width": 1484,
+    "height": 1060
+  },
+  "image": "/vtt/overhead-20261015/commerce-002-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-002-interior.webp",
+  "sha256": "5e3a2722044d846d0133698d61993cfeb2de2a0c0ba9f4a6eb9ec6055c575da4",
+  "thumbnailSha256": "e7c1a381a098d2ac5543192b48556919a6db87320f3ef41f19e401aa49dbde40",
+  "pixelWidth": 1600,
+  "pixelHeight": 1143,
+  "bytes": 518684,
+  "clearFraction": 0.3821877734033246,
+  "opaqueFraction": 0.613396762904637,
+  "legacy": [],
+  "physicalSize": {
+    "width": 14,
+    "height": 10
+  }
+}

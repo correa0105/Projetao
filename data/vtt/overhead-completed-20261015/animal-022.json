@@ -1,0 +1,27 @@
+{
+  "id": "animal-022",
+  "name": "Guaxinim",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: raccoon with ringed tail and grey fur. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-022.png",
+  "sourceSha256": "6347315f16be5d32a129acf427d0fe14f6e3d4bbcf7afa9da37239e58f799113",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-022.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-022.webp",
+  "sha256": "3aa69fec3d00bb7fc9dff8f688ce9dfff79230f7371cd097420c8b99e5854cf8",
+  "thumbnailSha256": "0e2c4f028e7e1ebeabca04291fdc432440beb64c30a829aabd8115b171f97ffa",
+  "pixelWidth": 395,
+  "pixelHeight": 1008,
+  "bytes": 143784,
+  "clearFraction": 0.5048648784408278,
+  "opaqueFraction": 0.4363572433192686,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

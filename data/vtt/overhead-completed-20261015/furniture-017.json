@@ -1,0 +1,29 @@
+{
+  "id": "furniture-017",
+  "name": "Guarda-roupa",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: closed tall wooden wardrobe with two doors. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 2 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CORRECTION AFTER CAMERA REVIEW: A closed tall wardrobe: show ONLY its rectangular horizontal wooden top panel. The doors and handles are on the VERTICAL front wall and are COMPLETELY HIDDEN from this camera. Do not draw drawers, handles, feet or the front wall below the top. Absolute 90 degree vertical orthographic camera. No perspective tilt, no vertical front faces. Fully transparent background.",
+  "source": "data/vtt/overhead-20261015/furniture-017.png",
+  "sourceSha256": "d4a21064b5b5696e17000bb7b7af898b0aee19b8ce3a202b4f0960ea3b236d4d",
+  "sourcePixels": {
+    "width": 1774,
+    "height": 887
+  },
+  "image": "/vtt/overhead-20261015/furniture-017.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-017.webp",
+  "sha256": "e5884fc3159cd106601bd355175bd16e77bf252f80b429f6f4d7a02a378c80d9",
+  "thumbnailSha256": "886f538af20b48ab189bf26221ff187ad63a461253cfff8a3c79c47d45b80596",
+  "pixelWidth": 1008,
+  "pixelHeight": 436,
+  "bytes": 192020,
+  "clearFraction": 0.22370576671035386,
+  "opaqueFraction": 0.7673201543614387,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-017.webp"
+  ],
+  "physicalSize": {
+    "width": 2,
+    "height": 1
+  }
+}

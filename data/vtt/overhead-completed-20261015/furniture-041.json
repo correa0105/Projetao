@@ -1,0 +1,29 @@
+{
+  "id": "furniture-041",
+  "name": "Biombo",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: three-panel wooden folding privacy screen with linen inserts. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 2 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CORRECTION AFTER CAMERA REVIEW: A three panel privacy screen standing vertically: viewed EXACTLY overhead, ONLY three narrow wooden top edges form a shallow zigzag line. No large fabric panel faces visible. Three thin rectangular bars connected with tiny hinges. The visual footprint is wide and very thin. Absolute 90 degree vertical orthographic camera. No perspective tilt, no vertical front faces. Fully transparent background.",
+  "source": "data/vtt/overhead-20261015/furniture-041.png",
+  "sourceSha256": "58a25c897e90990e99995889a3575a4887a1b845ef08a722b23933e2852fc1a7",
+  "sourcePixels": {
+    "width": 1774,
+    "height": 887
+  },
+  "image": "/vtt/overhead-20261015/furniture-041.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-041.webp",
+  "sha256": "03e6ffe20e99ac19693ad81553a68a77c300e1b0619d623775af61a5806108af",
+  "thumbnailSha256": "87782961aa4b3439e3c881bb59b5426368be2c1be01b5fb54ace841a130d14d5",
+  "pixelWidth": 1008,
+  "pixelHeight": 226,
+  "bytes": 35326,
+  "clearFraction": 0.858354403708386,
+  "opaqueFraction": 0.13059242871189775,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-041.webp"
+  ],
+  "physicalSize": {
+    "width": 2,
+    "height": 1
+  }
+}

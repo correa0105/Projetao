@@ -1,0 +1,29 @@
+{
+  "id": "furniture-019",
+  "name": "Estante de livros",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: bookcase with distinct muted cloth-bound books. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 2 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CORRECTION AFTER CAMERA REVIEW: A tall bookcase: show ONLY its horizontal wooden top board. Books sit on shelves below this opaque board, so the books are NOT visible. No front book spines, no exposed shelves, no vertical cabinet face. Absolute 90 degree vertical orthographic camera. No perspective tilt, no vertical front faces. Fully transparent background.",
+  "source": "data/vtt/overhead-20261015/furniture-019.png",
+  "sourceSha256": "d741475ef717af5dbd9e1d74b383d63915cc52cd4e9d786a137ae2e31a9c392a",
+  "sourcePixels": {
+    "width": 1774,
+    "height": 887
+  },
+  "image": "/vtt/overhead-20261015/furniture-019.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-019.webp",
+  "sha256": "fb34263560f3920aa00b72b7110c25704dc9f543f0284495dc1eeb9918c69c23",
+  "thumbnailSha256": "4423247a36d63ef10e37f9e975bcbce97d3ec0465180502f516975e626284cb2",
+  "pixelWidth": 1008,
+  "pixelHeight": 317,
+  "bytes": 109982,
+  "clearFraction": 0.30714223123529116,
+  "opaqueFraction": 0.6817040959391117,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-019.webp"
+  ],
+  "physicalSize": {
+    "width": 2,
+    "height": 1
+  }
+}

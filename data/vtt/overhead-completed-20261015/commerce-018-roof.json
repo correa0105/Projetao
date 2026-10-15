@@ -1,0 +1,27 @@
+{
+  "id": "commerce-018-roof",
+  "name": "Livraria · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Livraria roof, 9 by 8 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.125. Roof material: brown slate. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-018-roof.png",
+  "sourceSha256": "fea448e05688ea548e2e6b397fcbf87551bd8b0b4faaa75491296a4534f4c61a",
+  "sourcePixels": {
+    "width": 1330,
+    "height": 1182
+  },
+  "image": "/vtt/overhead-20261015/commerce-018-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-018-roof.webp",
+  "sha256": "e5019de40dfc3c24f3c0c5ef3dd61f8ddab3817bb152c1f9c23e262940995884",
+  "thumbnailSha256": "369ac7f332701c81897177d2adecc591efd75888f592b758ce5990465710039b",
+  "pixelWidth": 1600,
+  "pixelHeight": 1422,
+  "bytes": 879030,
+  "clearFraction": 0.20765427215189874,
+  "opaqueFraction": 0.7861269338959213,
+  "legacy": [],
+  "physicalSize": {
+    "width": 9,
+    "height": 8
+  }
+}

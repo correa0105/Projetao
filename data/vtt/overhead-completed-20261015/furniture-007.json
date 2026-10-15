@@ -1,0 +1,29 @@
+{
+  "id": "furniture-007",
+  "name": "Mesa redonda",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: round natural wood dining table. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 2 by 2 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-007.png",
+  "sourceSha256": "b3308b94cb5cd1bc023b0ea526e5264fd99ba2597fb68a9af96d109c92493ffc",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-007.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-007.webp",
+  "sha256": "bc6cb7bc96f54e2e61e991910a46a7d458cad9fffeeb6611b7b62592f22a0530",
+  "thumbnailSha256": "617d709718c11337b5d95c93401f5d648c08c40aa611f80678a87e995afc01ae",
+  "pixelWidth": 995,
+  "pixelHeight": 1008,
+  "bytes": 309478,
+  "clearFraction": 0.5052664114221903,
+  "opaqueFraction": 0.48529951344021693,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-007.webp"
+  ],
+  "physicalSize": {
+    "width": 2,
+    "height": 2
+  }
+}

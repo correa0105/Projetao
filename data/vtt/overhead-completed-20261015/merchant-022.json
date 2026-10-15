@@ -1,0 +1,29 @@
+{
+  "id": "merchant-022",
+  "name": "Expositor de joias",
+  "kind": "merchant",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT environment asset. Subject: low wooden market jewelry display with dark linen lining and small silver pins, bracelets and colored glass pendants. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. For a merchant stall show the TOP rectangle of its cloth canopy and a goods-covered counter extending in front in the same floor plan: no front panel, hanging vertical cloth, upright poles or visible post sides. For a wagon show its open cargo or canvas ROOF from directly above; wheels appear as narrow side strips, never round side-view wheels. For gardening objects show top surfaces and plant foliage from straight above; tools lie flat. Realistic hand-painted medieval natural materials, crisp details, coherent human footprint 1 by 1 five-foot cells. Transparent alpha outside the complete object, tiny contact shadow only. No external ground, floor tile, room, people, background color, frame, grid, text, signature or watermark.",
+  "source": "data/vtt/overhead-20261015/merchant-022.png",
+  "sourceSha256": "69c510f21ec2f8ae60409171175ef2c95a449abeb3d04700a3957bd42b1a0cd2",
+  "sourcePixels": {
+    "width": 1536,
+    "height": 1024
+  },
+  "image": "/vtt/overhead-20261015/merchant-022.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/merchant-022.webp",
+  "sha256": "dd80624b5b4d8d6fee3d6001f3abb335350070091133d73d31cb547392b6e375",
+  "thumbnailSha256": "16f6b85fc0afd7b66aa66dd4f83243c141138cf73fe64e333faa74f40a44d6da",
+  "pixelWidth": 1008,
+  "pixelHeight": 673,
+  "bytes": 257172,
+  "clearFraction": 0.26148611995565935,
+  "opaqueFraction": 0.7314691973867308,
+  "legacy": [
+    "/vtt/village-life-20261014/merchant-022.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

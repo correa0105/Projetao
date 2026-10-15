@@ -1,0 +1,30 @@
+{
+  "id": "furniture-100",
+  "name": "Fole de lareira",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: Fole de lareira. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 0.5 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CAMERA CORRECTION: A medieval cooking hearth in architectural plan view: a U-shaped stone rim showing ONLY horizontal top-cut blocks around an open square fire pit with coals seen from above, small pot openings at its edges. No vertical fireplace front wall, no chimney facade, no front hanging utensils. Orthographic 90 degrees vertical, absolutely no tilt, transparent background.",
+  "source": "data/vtt/overhead-20261015/furniture-100.png",
+  "sourceSha256": "ef3f01ab15731d37cd1a8705fdb2c7f2754e5d799b0056463b878df5bf397c4a",
+  "sourcePixels": {
+    "width": 1774,
+    "height": 887
+  },
+  "image": "/vtt/overhead-20261015/furniture-100.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-100.webp",
+  "sha256": "7e8f2095f1a50ce7aa02dd0f9fccfde4f5c8611aa574170825c03dfa0dcfdb8d",
+  "thumbnailSha256": "52541cd34afd701dca7824dcba1f4173c225270af26c984abd1ac0d808357aba",
+  "pixelWidth": 1008,
+  "pixelHeight": 663,
+  "bytes": 329512,
+  "clearFraction": 0.2790870621752975,
+  "opaqueFraction": 0.7123045799516388,
+  "legacy": [
+    "/vtt/home-furniture-refined-20261014/furniture-100.webp",
+    "/vtt/home-furniture-20261014/furniture-100.webp"
+  ],
+  "physicalSize": {
+    "width": 0.5,
+    "height": 1
+  }
+}

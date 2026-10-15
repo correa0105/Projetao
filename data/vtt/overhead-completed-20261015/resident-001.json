@@ -1,0 +1,29 @@
+{
+  "id": "resident-001",
+  "name": "Lia · Jardineira",
+  "kind": "resident",
+  "tool": "built-in image_gen",
+  "prompt": "Create a single VTT pawn of an ordinary adult woman with warm brown skin, curly black hair in a bun, moss-green linen work clothes, a cream apron and a tiny green seedling held near her waist. CRITICAL CAMERA: a TRUE ZENITH / NADIR PLAN VIEW, orthographic projection from DIRECTLY ABOVE her head, camera optical axis perfectly VERTICAL, 90 degrees to the floor. Like a tactical battlemap token photographed straight down from the ceiling. Show only the TOP of her hair bun and crown, broad shoulders, upper back, top surfaces of forearms and hands. Her body hides her legs and most of her feet. The crown and shoulders dominate a COMPACT roughly square silhouette. She faces the BOTTOM of the image. NO FACE, eyes, cheeks, chest, apron front, long visible torso, frontal legs, standing doll silhouette, three-quarter angle, isometric view, horizon, pedestal, token rim, circle, floor or ground. Detailed realistic hand-painted medieval game sprite, crisp texture, restrained earthy colors. Genuine transparent alpha outside the overhead silhouette; small contact shadow only. Exactly one civilian, centered, modest padding, no text, labels, signature or UI.",
+  "source": "data/vtt/overhead-20261015/resident-001.png",
+  "sourceSha256": "0f7576f12cfbbfcb2fab51465d47f151c50c2a16a9a8ba6d7de53670668c1422",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/resident-001.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/resident-001.webp",
+  "sha256": "198cbe3fe8c2ee1260ae594dbfcebbc8a7ffaefa1242d63897dcebfedf61ba90",
+  "thumbnailSha256": "1328ff5decd6d2e85ef91313c8fb565f0cb66f19ba2a03bd6e84a5dcdc9fe379",
+  "pixelWidth": 683,
+  "pixelHeight": 756,
+  "bytes": 171338,
+  "clearFraction": 0.4273706879856221,
+  "opaqueFraction": 0.5323986923547684,
+  "legacy": [
+    "/vtt/village-life-20261014/resident-001.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

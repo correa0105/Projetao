@@ -1,0 +1,27 @@
+{
+  "id": "commerce-028-roof",
+  "name": "Loja de velas · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Loja de velas roof, 8 by 7 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.143. Roof material: honey-brown tiles. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-028-roof.png",
+  "sourceSha256": "681ba947edb013f7efe8adb33b4e3af4ffa34c96dd30fe021d7a1acb199dc475",
+  "sourcePixels": {
+    "width": 1341,
+    "height": 1173
+  },
+  "image": "/vtt/overhead-20261015/commerce-028-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-028-roof.webp",
+  "sha256": "cc0e7b0e95110c6192ed38d81a511f8c97f4af2657319a070b9afb5ed10b9ac1",
+  "thumbnailSha256": "3dbca89a139ccbcf18f765eafee7d739c09105a8338cb321fac18acea847e2ad",
+  "pixelWidth": 1600,
+  "pixelHeight": 1400,
+  "bytes": 936928,
+  "clearFraction": 0.209528125,
+  "opaqueFraction": 0.7832790178571428,
+  "legacy": [],
+  "physicalSize": {
+    "width": 8,
+    "height": 7
+  }
+}

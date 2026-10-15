@@ -16,6 +16,7 @@ import type { HallEntry, HallSettings } from '../shared/social';
 import './hall-profiles.css';
 import './hall-character-art.css';
 import './community-prestige.css';
+import './community-refinements.css';
 export function visitProfile(user: string, character?: string) {
   location.hash =
     'profiles?user=' +
@@ -119,6 +120,7 @@ export function HallOfFame({
   }
   return (
     <section className={`hall-of-fame ${embedded ? 'embedded' : ''}`}>
+      <div className="hall-gallery">
       <div className="hall-heading">
         <span className="social-eyebrow">Nomes gravados na história</span>
         <h2>
@@ -211,6 +213,7 @@ export function HallOfFame({
           ))}
         </div>
       )}
+      </div>
       <div className="hall-search">
         <Search size={16} />
         <input

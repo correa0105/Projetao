@@ -1,0 +1,27 @@
+{
+  "id": "commerce-006-roof",
+  "name": "Açougue · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Açougue roof, 9 by 7 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.286. Roof material: dark wood shingles. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-006-roof.png",
+  "sourceSha256": "ed51690d3a017e3e6300153422ad5df0a0156992f1a0c7e0050a91fb8b644344",
+  "sourcePixels": {
+    "width": 1422,
+    "height": 1106
+  },
+  "image": "/vtt/overhead-20261015/commerce-006-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-006-roof.webp",
+  "sha256": "b53f0708ab3358c049b3b53962fe8560b5cd976861695bafef80bef400deaf79",
+  "thumbnailSha256": "7b012ec3510c527fac7ce5615fbce87a1df77f417e2672b87c1d5f49e364b2db",
+  "pixelWidth": 1600,
+  "pixelHeight": 1244,
+  "bytes": 813438,
+  "clearFraction": 0.20132837620578778,
+  "opaqueFraction": 0.7920709405144695,
+  "legacy": [],
+  "physicalSize": {
+    "width": 9,
+    "height": 7
+  }
+}

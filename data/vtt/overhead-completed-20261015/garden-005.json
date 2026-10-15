@@ -1,0 +1,29 @@
+{
+  "id": "garden-005",
+  "name": "Forcado",
+  "kind": "garden",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT environment asset. Subject: four tine iron garden fork with an oak handle lying flat. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. For a merchant stall show the TOP rectangle of its cloth canopy and a goods-covered counter extending in front in the same floor plan: no front panel, hanging vertical cloth, upright poles or visible post sides. For a wagon show its open cargo or canvas ROOF from directly above; wheels appear as narrow side strips, never round side-view wheels. For gardening objects show top surfaces and plant foliage from straight above; tools lie flat. Realistic hand-painted medieval natural materials, crisp details, coherent human footprint 0.5 by 1.5 five-foot cells. Transparent alpha outside the complete object, tiny contact shadow only. No external ground, floor tile, room, people, background color, frame, grid, text, signature or watermark.",
+  "source": "data/vtt/overhead-20261015/garden-005.png",
+  "sourceSha256": "45faa12b35f3a2da7b940b18b09927c4e5d8f1f7435225d47690fd1ac4262c24",
+  "sourcePixels": {
+    "width": 1536,
+    "height": 1024
+  },
+  "image": "/vtt/overhead-20261015/garden-005.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/garden-005.webp",
+  "sha256": "4d14e36cecd54b749addec07a70b4095bd47d96e2be94450ef7b52a50a5363e8",
+  "thumbnailSha256": "29b463ec840bab7aa4205bcf723a89e3a3efa381d8283cb6fba5a8a58f9c4ba9",
+  "pixelWidth": 1008,
+  "pixelHeight": 266,
+  "bytes": 71358,
+  "clearFraction": 0.6892827306361141,
+  "opaqueFraction": 0.2139015693996897,
+  "legacy": [
+    "/vtt/village-life-20261014/garden-005.webp"
+  ],
+  "physicalSize": {
+    "width": 0.5,
+    "height": 1.5
+  }
+}

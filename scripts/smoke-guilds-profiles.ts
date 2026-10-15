@@ -78,6 +78,12 @@ async function signup(ctx: typeof ownerContext, name: string) {
 async function screenshot(label: string, width: number) {
   await page.setViewportSize({ width, height: 1000 });
   await page.waitForTimeout(180);
+  if(label==='hall') {
+    const figures=page.locator('.hall-character-art>img');
+    await expect.poll(()=>figures.evaluateAll(images=>images.every(i=>(i as HTMLImageElement).complete&&(i as HTMLImageElement).naturalWidth>0))).toBe(true);
+    const bounds=await figures.evaluateAll(images=>images.map(image=>({width:image.getBoundingClientRect().width,height:image.getBoundingClientRect().height,stage:image.closest('.hall-podium-stage')!.getBoundingClientRect().height})));
+    expect(bounds.every(b=>b.width>30&&b.height>b.stage*.65),JSON.stringify({width,bounds})).toBe(true);
+  }
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2),
     'No horizontal overflow: ' + label + ' ' + width,
@@ -143,11 +149,11 @@ try {
   await workshop.getByRole('button', { name: 'Formato', exact: false }).click();
   await workshop.getByRole('button', { name: 'Formato: Escudo', exact: true }).click();
   await workshop.getByRole('button', { name: 'Símbolo', exact: false }).first().click();
-  await workshop.getByRole('button', { name: 'Símbolo: Corvo', exact: true }).click();
+  await workshop.getByRole('button', { name: 'Símbolo: Grifo', exact: true }).click();
   await workshop.getByRole('button', { name: 'Fundo', exact: true }).click();
-  await workshop.getByRole('button', { name: 'Fundo: Banda', exact: true }).click();
+  await workshop.getByRole('button', { name: 'Fundo: Arminho', exact: true }).click();
   await workshop.getByRole('button', { name: 'Borda', exact: true }).click();
-  await workshop.getByRole('button', { name: 'Borda: Louros', exact: true }).click();
+  await workshop.getByRole('button', { name: 'Borda: Filigrana', exact: true }).click();
   await workshop.getByLabel('Cor da borda', { exact: true }).fill('#b6884a');
   for (const width of [1440, 768, 390, 320]) await screenshot('crest-workshop', width);
   await page.setViewportSize({ width: 1440, height: 1000 });
@@ -162,10 +168,10 @@ try {
   expect(id).toBeTruthy();
   const savedCrest = (await api(ownerContext, '/guilds/' + id)).document.crest;
   expect(savedCrest).toMatchObject({
-    icon: 'raven',
-    field: 'diagonal',
+    icon: 'griffin',
+    field: 'ermine',
     border: 'shield',
-    ornament: 'laurel',
+    ornament: 'filigree',
     borderColor: '#b6884a',
   });
   expect(

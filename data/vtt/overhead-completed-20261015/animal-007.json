@@ -1,0 +1,27 @@
+{
+  "id": "animal-007",
+  "name": "Corça",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: graceful female roe deer without antlers. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-007.png",
+  "sourceSha256": "216c238bb18e2d1da4d69e41ac853ede77d033be1bc12ce5291b400c3fb0275f",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-007.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-007.webp",
+  "sha256": "b5f614b273b4c4272d51fbe1ed7b46772f617bcd67fe65954b64cd474b76f20f",
+  "thumbnailSha256": "8a22028ac3dd4550070d02c64e969eb02aabc6fcb2a22c81b5667eb10da7ddb3",
+  "pixelWidth": 320,
+  "pixelHeight": 1008,
+  "bytes": 113158,
+  "clearFraction": 0.5364552331349206,
+  "opaqueFraction": 0.44479476686507935,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

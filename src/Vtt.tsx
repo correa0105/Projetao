@@ -1,3 +1,4 @@
+import {vttVisualSource} from '../shared/vtt-asset-visuals';
 import {VttNatureAssets} from './VttNatureAssets';
 import {natureAssets,natureAssetMime} from '../shared/vtt-nature-assets';
 import {houseInteriorImages,houseAsset,houseDoorObstructed,fitHouseToGrid,housePlacement} from '../shared/vtt-houses';
@@ -1044,7 +1045,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       const image = new window.Image();
       image.onload = () => setImageVersion((v) => v + 1);
       image.onerror = () => setNotice('Uma imagem não pôde ser carregada. Confira a biblioteca.');
-      image.src = path;
+      image.src = vttVisualSource(path);
       images.current.set(path, image);
     }
   }, [scene]);

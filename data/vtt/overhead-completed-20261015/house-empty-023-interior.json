@@ -1,0 +1,31 @@
+{
+  "parent": "house-023-interior",
+  "parentSourceSha256": "20249612204c14d83695a6770cc04d965b5009c579ddd86e44f302db28db5922",
+  "id": "house-empty-023-interior",
+  "name": "Casa costeira · vazia · Interior",
+  "kind": "empty-interior",
+  "tool": "built-in image_gen",
+  "prompt": "EDIT ONLY the movable furnishings in Image 1. Remove all movable beds, tables, chairs, stools, cabinets, barrels, baskets, rugs and loose objects. Reconstruct the same continuous original floor beneath them. Preserve the strict 90-degree orthographic camera, exact square room outline, wall TOPS, wall thickness, door gap, window slivers, fixed masonry hearth and all external alpha perfectly. This must be the exact SAME room as Image 1 with empty usable space, not a redesigned building. No people, new objects, text, grid, side facades, vertical wall faces, background or watermark.",
+  "source": "data/vtt/overhead-20261015/house-empty-023-interior.png",
+  "sourceSha256": "157be57e5559d43684597753019979b535735f521aa9987ce1daa1dafb23dc75",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/house-empty-023-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/house-empty-023-interior.webp",
+  "sha256": "f285aceed8350965b5aa7df94ad4919fdd30a2d5ffc85452da9835151ce28c4b",
+  "thumbnailSha256": "18e57b365f41643f6d785801a8fdc4098e71d6ae7eff8c496a60c60b9bc77384",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 365910,
+  "clearFraction": 0.545144921875,
+  "opaqueFraction": 0.449832421875,
+  "legacy": [
+    "/vtt/houses-empty-20261014/house-023-interior.webp"
+  ],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}

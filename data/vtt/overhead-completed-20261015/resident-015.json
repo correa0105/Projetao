@@ -1,0 +1,29 @@
+{
+  "id": "resident-015",
+  "name": "Yara · Tecelã",
+  "kind": "resident",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE fantasy VTT civilian pawn. Subject: adult elf woman with copper brown skin, long black braids, leaf green linen tunic and a small folded cloth bundle. CRITICAL CAMERA: a TRUE ZENITH / NADIR PLAN VIEW, orthographic projection from DIRECTLY ABOVE her head, camera optical axis perfectly VERTICAL, 90 degrees to the floor. Like a tactical battlemap token photographed straight down from the ceiling. Show only the TOP of her hair bun and crown, broad shoulders, upper back, top surfaces of forearms and hands. Her body hides her legs and most of her feet. The crown and shoulders dominate a COMPACT roughly square silhouette. She faces the BOTTOM of the image. NO FACE, eyes, cheeks, chest, apron front, long visible torso, frontal legs, standing doll silhouette, three-quarter angle, isometric view, horizon, pedestal, token rim, circle, floor or ground. Detailed realistic hand-painted medieval game sprite, crisp texture, restrained earthy colors. Genuine transparent alpha outside the overhead silhouette; small contact shadow only. Exactly one civilian, centered, modest padding, no text, labels, signature or UI.",
+  "source": "data/vtt/overhead-20261015/resident-015.png",
+  "sourceSha256": "fc51aa0fbc6cf6b59cd3d851d0fcd8d151ca7bedbe9be23c08ffb4fc3e49c748",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/resident-015.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/resident-015.webp",
+  "sha256": "f9fc6ab6198b9c77b65708ea3dfee2a882612ee8744606e4314cc357d84cd47b",
+  "thumbnailSha256": "0315594e614dcfe3ee7b4bcb79a5d39f485764d098098ecf869356b644d5150b",
+  "pixelWidth": 756,
+  "pixelHeight": 723,
+  "bytes": 164842,
+  "clearFraction": 0.44693443690677437,
+  "opaqueFraction": 0.513222024632813,
+  "legacy": [
+    "/vtt/village-life-20261014/resident-015.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

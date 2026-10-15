@@ -1,0 +1,29 @@
+{
+  "id": "furniture-011",
+  "name": "Cama de solteiro",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE single medieval oak bed sprite for a VTT battlemap, one cream pillow and an olive green quilt, a narrow oak frame. STRICT ARCHITECTURAL PLAN VIEW, true orthographic projection from a camera DIRECTLY VERTICALLY ABOVE, 90 degrees to the floor, no camera tilt. The mattress is a clean long RECTANGLE with exactly parallel edges, long axis north-south and pillow at the TOP. Only top surfaces of the mattress, pillow, rails and a thin headboard edge are visible. Headboard is ONLY a thin line along the north edge, never a tall panel. No vertical front or side faces, footboard face, visible legs, elevation, trapezoidal perspective, isometric angle or background floor. Realistic detailed hand-painted fantasy battlemat art, natural worn oak and linen texture, coherent human scale 1 by 2 five-foot cells. Genuine transparent alpha around the complete object and tiny contact shadow. Centered, no cropped edges, no room, floor tile, people, text, signature, watermark or frame.",
+  "source": "data/vtt/overhead-20261015/furniture-011.png",
+  "sourceSha256": "19c3893f544dabbbd7b8c02640cec2f5c7aa09ca81fdbe0901e0ce168752d542",
+  "sourcePixels": {
+    "width": 1236,
+    "height": 1272
+  },
+  "image": "/vtt/overhead-20261015/furniture-011.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-011.webp",
+  "sha256": "8bbc4cf3dc90bc10329e70f277966436503d697a3ef785ab0178de2b74a05900",
+  "thumbnailSha256": "40a8a0ba98bff2ea41e0ac2798a50f540e68d91b02aa11da7255eeed9fed9e6d",
+  "pixelWidth": 490,
+  "pixelHeight": 1008,
+  "bytes": 197054,
+  "clearFraction": 0.22162091026886946,
+  "opaqueFraction": 0.7224287333981212,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-011.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 2
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "commerce-007-roof",
+  "name": "Peixaria · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Peixaria roof, 8 by 7 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.143. Roof material: blue-grey wood shingles. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-007-roof.png",
+  "sourceSha256": "01a836a6b7407cb5e3e3a13ed5406d1c11e28936879b0c4ba884ec8b316bf4fc",
+  "sourcePixels": {
+    "width": 1339,
+    "height": 1174
+  },
+  "image": "/vtt/overhead-20261015/commerce-007-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-007-roof.webp",
+  "sha256": "2baf094e369eac4ec678f482b07698598a496b88e86f50f5f7ed0bca9e5f7acb",
+  "thumbnailSha256": "afbb408c1dd3569434653f4fe2d51b5a640dd5ce45b128f634d274f9fcd17033",
+  "pixelWidth": 1600,
+  "pixelHeight": 1400,
+  "bytes": 757940,
+  "clearFraction": 0.215815625,
+  "opaqueFraction": 0.7769620535714286,
+  "legacy": [],
+  "physicalSize": {
+    "width": 8,
+    "height": 7
+  }
+}

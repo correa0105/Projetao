@@ -1,0 +1,29 @@
+{
+  "id": "garden-017",
+  "name": "Colmeia de palha",
+  "kind": "garden",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT environment asset. Subject: traditional woven straw beehive skep on a little timber platform, no swarm. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. For a merchant stall show the TOP rectangle of its cloth canopy and a goods-covered counter extending in front in the same floor plan: no front panel, hanging vertical cloth, upright poles or visible post sides. For a wagon show its open cargo or canvas ROOF from directly above; wheels appear as narrow side strips, never round side-view wheels. For gardening objects show top surfaces and plant foliage from straight above; tools lie flat. Realistic hand-painted medieval natural materials, crisp details, coherent human footprint 1 by 1 five-foot cells. Transparent alpha outside the complete object, tiny contact shadow only. No external ground, floor tile, room, people, background color, frame, grid, text, signature or watermark.",
+  "source": "data/vtt/overhead-20261015/garden-017.png",
+  "sourceSha256": "25f7bcf80b5f34f01f200ea4509f57c3ba9fccdabfa1b89529174a438d81376c",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/garden-017.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/garden-017.webp",
+  "sha256": "9334351f7212aae5c51b96773b9adf7e8bdc9169e9191927d3eb810b450936d3",
+  "thumbnailSha256": "e43d64d7eafebbd1d9c600e23f3f81f8a0ae68bd84a4367ff22763582c668857",
+  "pixelWidth": 881,
+  "pixelHeight": 1008,
+  "bytes": 430026,
+  "clearFraction": 0.2875756715853197,
+  "opaqueFraction": 0.704264859557141,
+  "legacy": [
+    "/vtt/village-life-20261014/garden-017.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

@@ -19,7 +19,7 @@ for(const asset of houseAssets)test(asset.name+': paredes, entrada e telhado aco
     assert.equal(blockingWalls(scene,true).length,houseWalls(scene).length-1);
     assert.equal(movementBlocked(scene,doorOutside,houseWorld({x:(asset.footprint.doorStart+asset.footprint.doorEnd)/2,y:.6},house),actor),false);
     assert.equal(movementBlocked(scene,westOutside,center,actor),true);
-    const touching=houseWorld({x:asset.footprint.left+.04,y:.5},house);
+    const touching=houseWorld({x:asset.footprint.left+1/house.width,y:.5},house);
     assert.equal(movementBlocked(scene,center,touching,actor),true,'body cannot enter wall');
     Object.assign(actor,houseWorld({x:.5,y:asset.footprint.bottom},house));
     assert.equal(houseDoorObstructed(house,[actor]),true);

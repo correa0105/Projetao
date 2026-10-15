@@ -1,0 +1,27 @@
+{
+  "id": "animal-017",
+  "name": "Lobo",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: grey wolf with thick fur. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-017.png",
+  "sourceSha256": "cdea074b9833d70c1bc782dcde396baf0645032503fa85cb7c09d5ffc489cd94",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-017.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-017.webp",
+  "sha256": "79b374c99e2b7bb556bb4b9517ad55636407cd07c802f48425b1c3f193dc874d",
+  "thumbnailSha256": "7714220971d6f3b5d239aad31e33593ccb2a5f2cea4e71b2ba12cb8c4c26036e",
+  "pixelWidth": 336,
+  "pixelHeight": 1008,
+  "bytes": 124974,
+  "clearFraction": 0.4855796485260771,
+  "opaqueFraction": 0.469505857898715,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

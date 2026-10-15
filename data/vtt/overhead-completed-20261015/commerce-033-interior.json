@@ -1,0 +1,27 @@
+{
+  "id": "commerce-033-interior",
+  "name": "Moinho de grãos · Interior",
+  "kind": "interior",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE furnished Moinho de grãos interior as a STRICT ARCHITECTURAL FLOOR PLAN for a medieval VTT. Room dimensions 12 by 12 five-foot cells, rectangular physical width-to-height ratio 1.000. Content: stone floor, two circular millstone tops, grain hoppers viewed from above, flour sacks, timber supports seen only as top cuts and storage benches. TRUE ORTHOGRAPHIC NADIR camera from DIRECTLY ABOVE, exactly vertical 90 degrees to the floor, absolutely no tilt, isometric or converging edges. All furniture shows ONLY its flat TOP surfaces, no cabinet fronts, drawer handles, chair backrest faces, side faces or legs. Four perimeter walls show only their thin horizontal TOP CUTS of even thickness. One open-plan room, clear walking route through the center. A single OPEN DOOR GAP centered in the BOTTOM wall, wide enough for a human. Two windows appear ONLY as thin blue-grey top slivers in the bottom wall, at 23% and 77% along that wall; no other wall openings. Do not draw a door leaf or stairs. Keep coherent human scale: chair less than one cell and bed two cells long. Realistic detailed hand-painted medieval material texture, even overhead light. Complete room centered with transparent alpha outside the rectangular wall outline, no outside floor, grass, roof, grid, labels, text, people or watermark.\nStrict plan projection for tall furniture: cupboards and bookcases show ONLY opaque horizontal top boards, NEVER their doors or book-spine faces. Fireplaces and forges show ONLY a U-shaped top-cut stone rim around an open coal pit, NEVER a front firebox opening or facade. Vertical posts appear ONLY as circular end-grain caps, with shafts occluded beneath them.",
+  "source": "data/vtt/overhead-20261015/commerce-033-interior.png",
+  "sourceSha256": "6ddbad4d635b55de3c5c6f34b9f49e339d67655a1afb29216c603634b69f235d",
+  "sourcePixels": {
+    "width": 1261,
+    "height": 1247
+  },
+  "image": "/vtt/overhead-20261015/commerce-033-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-033-interior.webp",
+  "sha256": "564bbaffbcbdddbfb8a81003de1ff7a1d47d4c99062b6e37da4887fef12253a4",
+  "thumbnailSha256": "dc7ff609cebcfed32c6bc4a5f326b7e6d9f17ec9adbec784e278943920d7dd20",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 764940,
+  "clearFraction": 0.40769765625,
+  "opaqueFraction": 0.587808984375,
+  "legacy": [],
+  "physicalSize": {
+    "width": 12,
+    "height": 12
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "furniture-082",
+  "name": "Bacia de lavar",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: shallow white ceramic wash basin with folded washcloth. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 0.5 by 0.5 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-082.png",
+  "sourceSha256": "31f95703420a99b9a94cfc7a14a040862c977aa7d3e4c6ba800813aec09689f9",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-082.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-082.webp",
+  "sha256": "2269f39619ef4e124472793c86506087123dff4d9761d321dd8a00b06ce2c9c4",
+  "thumbnailSha256": "d98a329d80bed9c1386dba4a1de60aae619e3f126733f96e82746090a8911982",
+  "pixelWidth": 982,
+  "pixelHeight": 1008,
+  "bytes": 240674,
+  "clearFraction": 0.31685517893511783,
+  "opaqueFraction": 0.678181472860699,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-082.webp"
+  ],
+  "physicalSize": {
+    "width": 0.5,
+    "height": 0.5
+  }
+}

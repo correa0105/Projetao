@@ -1,0 +1,27 @@
+{
+  "id": "animal-013",
+  "name": "Ovelha",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: woolly cream sheep. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-013.png",
+  "sourceSha256": "005d2524a2542fd6c5c0aec7916fa3674820d793f7f3cd27181a06e95a768b6b",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-013.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-013.webp",
+  "sha256": "b9bfaa1bab92df18c1cb249b479d971deab3be71722926f40ad75bf670594a65",
+  "thumbnailSha256": "4942eb10c1fd389fcc47294659a6e0af802da02664dac6e8805df3af8511fdaa",
+  "pixelWidth": 477,
+  "pixelHeight": 1008,
+  "bytes": 165006,
+  "clearFraction": 0.46758427340188347,
+  "opaqueFraction": 0.5055052244517654,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "commerce-021-roof",
+  "name": "Templo · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Templo roof, 12 by 14 five-foot cells, rectangular perimeter with physical width-to-height ratio 0.857. Roof material: pale stone roof slabs. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-021-roof.png",
+  "sourceSha256": "d81554acc6cc915ca777bd74518030de69bf8c50d57e87e8cbbe278a86d81ef9",
+  "sourcePixels": {
+    "width": 1161,
+    "height": 1355
+  },
+  "image": "/vtt/overhead-20261015/commerce-021-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-021-roof.webp",
+  "sha256": "8261d8136b7995e673fe7e7157152be174ea217123ea9cd1588346ce1baa104e",
+  "thumbnailSha256": "52f6a8713a767991f24e5601f99c82d4d112aef39085875c48c7366ef3a7cc7a",
+  "pixelWidth": 1371,
+  "pixelHeight": 1600,
+  "bytes": 935474,
+  "clearFraction": 0.23476887308533917,
+  "opaqueFraction": 0.7582909372720642,
+  "legacy": [],
+  "physicalSize": {
+    "width": 12,
+    "height": 14
+  }
+}

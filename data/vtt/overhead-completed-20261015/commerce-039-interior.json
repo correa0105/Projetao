@@ -1,0 +1,27 @@
+{
+  "id": "commerce-039-interior",
+  "name": "Correio · Interior",
+  "kind": "interior",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE furnished Correio interior as a STRICT ARCHITECTURAL FLOOR PLAN for a medieval VTT. Room dimensions 8 by 7 five-foot cells, rectangular physical width-to-height ratio 1.143. Content: wood floor, sorting tables with letters and parcels, pigeonhole cabinets viewed ONLY as plain top surfaces, mail baskets and a service counter. TRUE ORTHOGRAPHIC NADIR camera from DIRECTLY ABOVE, exactly vertical 90 degrees to the floor, absolutely no tilt, isometric or converging edges. All furniture shows ONLY its flat TOP surfaces, no cabinet fronts, drawer handles, chair backrest faces, side faces or legs. Four perimeter walls show only their thin horizontal TOP CUTS of even thickness. One open-plan room, clear walking route through the center. A single OPEN DOOR GAP centered in the BOTTOM wall, wide enough for a human. Two windows appear ONLY as thin blue-grey top slivers in the bottom wall, at 23% and 77% along that wall; no other wall openings. Do not draw a door leaf or stairs. Keep coherent human scale: chair less than one cell and bed two cells long. Realistic detailed hand-painted medieval material texture, even overhead light. Complete room centered with transparent alpha outside the rectangular wall outline, no outside floor, grass, roof, grid, labels, text, people or watermark.\nStrict plan projection for tall furniture: cupboards and bookcases show ONLY opaque horizontal top boards, NEVER their doors or book-spine faces. Fireplaces and forges show ONLY a U-shaped top-cut stone rim around an open coal pit, NEVER a front firebox opening or facade. Vertical posts appear ONLY as circular end-grain caps, with shafts occluded beneath them.",
+  "source": "data/vtt/overhead-20261015/commerce-039-interior.png",
+  "sourceSha256": "2610033e1c1fb3b49cb98f5ca93b2f570061780366584d7f7260b2a3e0f2b2d6",
+  "sourcePixels": {
+    "width": 1341,
+    "height": 1173
+  },
+  "image": "/vtt/overhead-20261015/commerce-039-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-039-interior.webp",
+  "sha256": "9ecc720d75e2e79ed57deeb8bcb3acb0ab2faf3d4b182b9fcaed033538843362",
+  "thumbnailSha256": "693efb43d276aa04b2955727661f787cec03a39467a484168dd97ef9f4061624",
+  "pixelWidth": 1600,
+  "pixelHeight": 1400,
+  "bytes": 551238,
+  "clearFraction": 0.389634375,
+  "opaqueFraction": 0.6059191964285714,
+  "legacy": [],
+  "physicalSize": {
+    "width": 8,
+    "height": 7
+  }
+}

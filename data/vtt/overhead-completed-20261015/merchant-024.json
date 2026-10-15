@@ -1,0 +1,29 @@
+{
+  "id": "merchant-024",
+  "name": "Arara de roupas",
+  "kind": "merchant",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT environment asset. Subject: freestanding oak market clothing rail with four plain linen garments hanging neatly. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. For a merchant stall show the TOP rectangle of its cloth canopy and a goods-covered counter extending in front in the same floor plan: no front panel, hanging vertical cloth, upright poles or visible post sides. For a wagon show its open cargo or canvas ROOF from directly above; wheels appear as narrow side strips, never round side-view wheels. For gardening objects show top surfaces and plant foliage from straight above; tools lie flat. Realistic hand-painted medieval natural materials, crisp details, coherent human footprint 2 by 1 five-foot cells. Transparent alpha outside the complete object, tiny contact shadow only. No external ground, floor tile, room, people, background color, frame, grid, text, signature or watermark.\nCRITICAL CAMERA REVIEW: An upright clothing rack viewed from absolute zenith: a narrow horizontal top rail connecting two circular post caps, with ONLY small neck openings and compact folded cloth TOP EDGES of hanging garments along the rail. The long bodies and sleeves of vertical shirts are hidden directly beneath these folded edges. No full shirt fronts, no long hanging sleeves, no vertical post shafts. The silhouette is a thin horizontal strip like an architectural plan symbol. Strict 90 degree orthographic nadir, transparent background.",
+  "source": "data/vtt/overhead-20261015/merchant-024.png",
+  "sourceSha256": "537eed10e29ef10bb76833966b3aa7b221d9e9733e33edcc226d9bd87edb7f4c",
+  "sourcePixels": {
+    "width": 1774,
+    "height": 887
+  },
+  "image": "/vtt/overhead-20261015/merchant-024.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/merchant-024.webp",
+  "sha256": "e29e7419579a380954b34d0e21cc7a5b6340cf7af133e0a615e01793ec69a509",
+  "thumbnailSha256": "cc195919edffbd5553990e4c6eba99e6f59d7f4a05c4ff61cb10c38bed37b38d",
+  "pixelWidth": 1008,
+  "pixelHeight": 190,
+  "bytes": 58360,
+  "clearFraction": 0.6469715956558062,
+  "opaqueFraction": 0.3223579782790309,
+  "legacy": [
+    "/vtt/village-life-20261014/merchant-024.webp"
+  ],
+  "physicalSize": {
+    "width": 2,
+    "height": 1
+  }
+}

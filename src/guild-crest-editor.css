@@ -353,3 +353,9 @@ dialog:has(.guild-crest-editor) {
     width: 6px;
   }
 }
+
+.crest-display-ring { display:none; }
+.crest-choice-grid { grid-template-columns:repeat(4,minmax(0,1fr)); max-height:410px; overflow:auto; padding:2px; scrollbar-width:thin; }
+:root .crest-choice-grid button { min-height:106px; }
+.crest-choice-heading h4 { display:flex;align-items:center;gap:8px; }
+@media(max-width:650px){.crest-choice-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-height:360px;}}

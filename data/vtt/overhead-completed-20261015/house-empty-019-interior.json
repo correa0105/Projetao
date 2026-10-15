@@ -1,0 +1,31 @@
+{
+  "parent": "house-019-interior",
+  "parentSourceSha256": "c869d234eeee8949919a3955f38752c69493cc8753a317bb845403c0d9ab03c9",
+  "id": "house-empty-019-interior",
+  "name": "Casa nobre · vazia · Interior",
+  "kind": "empty-interior",
+  "tool": "built-in image_gen",
+  "prompt": "EDIT ONLY the movable furnishings in Image 1. Remove all movable beds, tables, chairs, stools, cabinets, barrels, baskets, rugs and loose objects. Reconstruct the same continuous original floor beneath them. Preserve the strict 90-degree orthographic camera, exact square room outline, wall TOPS, wall thickness, door gap, window slivers, fixed masonry hearth and all external alpha perfectly. This must be the exact SAME room as Image 1 with empty usable space, not a redesigned building. No people, new objects, text, grid, side facades, vertical wall faces, background or watermark.",
+  "source": "data/vtt/overhead-20261015/house-empty-019-interior.png",
+  "sourceSha256": "ac8f90fc8878cc9494fa88170f3838d89333c034775697be657731b98846b39f",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/house-empty-019-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/house-empty-019-interior.webp",
+  "sha256": "a9326a7467e4de62fb5ede41fd57341164ada909d640a87f7ba9dd2c1d9a9f92",
+  "thumbnailSha256": "7b685489042b8bacb17959378a0cedbe542df9647689fb3231eb99ad3a8db92a",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 330788,
+  "clearFraction": 0.537015234375,
+  "opaqueFraction": 0.4578703125,
+  "legacy": [
+    "/vtt/houses-empty-20261014/house-019-interior.webp"
+  ],
+  "physicalSize": {
+    "width": 7,
+    "height": 7
+  }
+}

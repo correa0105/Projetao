@@ -1,0 +1,29 @@
+{
+  "id": "furniture-003",
+  "name": "Cadeira estofada",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: carved wooden chair with muted green upholstered seat. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-003.png",
+  "sourceSha256": "9b580a84c933fdffd22ac3adaa59318973350c4274669de77e963f3bc4ee2d73",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-003.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-003.webp",
+  "sha256": "793c032414d8f824f0b0e76eaa0db95c18ad1c0ab15b41bf1c34944082ed6fa2",
+  "thumbnailSha256": "abb8534b5ca0d19196800d085a61dfdd65f8a6bbb6880427ce7c195b28d99408",
+  "pixelWidth": 953,
+  "pixelHeight": 1008,
+  "bytes": 382652,
+  "clearFraction": 0.27408642715568216,
+  "opaqueFraction": 0.7154183114309033,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-003.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

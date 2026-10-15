@@ -1,0 +1,27 @@
+{
+  "id": "commerce-015-roof",
+  "name": "Vidraçaria · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Vidraçaria roof, 10 by 9 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.111. Roof material: copper-green metal panels. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-015-roof.png",
+  "sourceSha256": "1d72a6cb56747cd43c3cec00b88f04364efbaf3171de1014b74a57b8a3a7231a",
+  "sourcePixels": {
+    "width": 1322,
+    "height": 1190
+  },
+  "image": "/vtt/overhead-20261015/commerce-015-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-015-roof.webp",
+  "sha256": "864e4d924eacf087693d2fb9b37ea27ec7099b9b75688f71a22b2e0bc7f24cb5",
+  "thumbnailSha256": "9adde09390e81c6749386bbeac9e4ea36927b124d56731058509957d60858c2d",
+  "pixelWidth": 1600,
+  "pixelHeight": 1440,
+  "bytes": 861880,
+  "clearFraction": 0.20156119791666666,
+  "opaqueFraction": 0.7923385416666666,
+  "legacy": [],
+  "physicalSize": {
+    "width": 10,
+    "height": 9
+  }
+}

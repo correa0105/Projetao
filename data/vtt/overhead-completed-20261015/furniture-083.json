@@ -1,0 +1,29 @@
+{
+  "id": "furniture-083",
+  "name": "Espelho ornamentado",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: small freestanding oval mirror in a carved dark wood frame, its reflection neutral gray. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CAMERA CORRECTION: A standing upright mirror seen EXACTLY FROM ABOVE: ONLY its thin horizontal wooden top edge and circular post caps, no broad reflective oval surface, no frontal mirror face. Like an architectural plan symbol for an upright mirror. Orthographic 90 degrees vertical, absolutely no tilt, transparent background.",
+  "source": "data/vtt/overhead-20261015/furniture-083.png",
+  "sourceSha256": "241adce85636d403bc75fa7072192a3f9c7dc5cea4952ad04826b5dccddbae23",
+  "sourcePixels": {
+    "width": 1536,
+    "height": 1024
+  },
+  "image": "/vtt/overhead-20261015/furniture-083.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-083.webp",
+  "sha256": "a51126d3cf3a722750cda97e34a23bebb94fed6a6d6f737284429a889296705c",
+  "thumbnailSha256": "94bd6f31b8e042f7e606e0437667f41678e2fbd995c8a01fdc72744ccfacbcba",
+  "pixelWidth": 1008,
+  "pixelHeight": 442,
+  "bytes": 102972,
+  "clearFraction": 0.6514759750053868,
+  "opaqueFraction": 0.31564901601666306,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-083.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

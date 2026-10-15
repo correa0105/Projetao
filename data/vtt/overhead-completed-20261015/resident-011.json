@@ -1,0 +1,29 @@
+{
+  "id": "resident-011",
+  "name": "Estela · Professora",
+  "kind": "resident",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE fantasy VTT civilian pawn. Subject: adult medium brown skinned woman with black hair in a bun, dark teal linen dress and a closed book under her arm. CRITICAL CAMERA: a TRUE ZENITH / NADIR PLAN VIEW, orthographic projection from DIRECTLY ABOVE her head, camera optical axis perfectly VERTICAL, 90 degrees to the floor. Like a tactical battlemap token photographed straight down from the ceiling. Show only the TOP of her hair bun and crown, broad shoulders, upper back, top surfaces of forearms and hands. Her body hides her legs and most of her feet. The crown and shoulders dominate a COMPACT roughly square silhouette. She faces the BOTTOM of the image. NO FACE, eyes, cheeks, chest, apron front, long visible torso, frontal legs, standing doll silhouette, three-quarter angle, isometric view, horizon, pedestal, token rim, circle, floor or ground. Detailed realistic hand-painted medieval game sprite, crisp texture, restrained earthy colors. Genuine transparent alpha outside the overhead silhouette; small contact shadow only. Exactly one civilian, centered, modest padding, no text, labels, signature or UI.",
+  "source": "data/vtt/overhead-20261015/resident-011.png",
+  "sourceSha256": "e671ecd3d5cf153a8591ef16c733527c675120a648464905dda4f1236b5b3d73",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/resident-011.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/resident-011.webp",
+  "sha256": "f983cb4da785c2bb70a75d362ba9a284438eb0b38dfdcaf126f075b4e8039e2b",
+  "thumbnailSha256": "6d5258408263794170ac97ccb32ab0c4a283a8adc0723fe5d00aaa51bc15edce",
+  "pixelWidth": 756,
+  "pixelHeight": 728,
+  "bytes": 147436,
+  "clearFraction": 0.42332039653468223,
+  "opaqueFraction": 0.5350965172393743,
+  "legacy": [
+    "/vtt/village-life-20261014/resident-011.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

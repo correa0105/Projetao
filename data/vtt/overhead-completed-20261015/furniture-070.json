@@ -1,0 +1,29 @@
+{
+  "id": "furniture-070",
+  "name": "Caixa de ferramentas",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: open carpenters tool tote containing hammer, saw and chisels. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-070.png",
+  "sourceSha256": "f086d1c7756b95237c49c8e42dc44e2d7bc9be4729499afa0f80eb99244c932a",
+  "sourcePixels": {
+    "width": 1536,
+    "height": 1024
+  },
+  "image": "/vtt/overhead-20261015/furniture-070.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-070.webp",
+  "sha256": "4e6cd2a7de2627e95695626ff564439d57cd0daf2c2d5f72ba82f2d662c229b9",
+  "thumbnailSha256": "956977a489ffb3e56763c452822d1ff69a3b620606b2452c0754aecd3868f956",
+  "pixelWidth": 1008,
+  "pixelHeight": 588,
+  "bytes": 247528,
+  "clearFraction": 0.2836778560630601,
+  "opaqueFraction": 0.7098281773026671,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-070.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

@@ -52,6 +52,7 @@ import { guildRoomPerspective } from '../shared/guild-perspective';
 import './guild-perspective.css';
 import './guilds.css';
 import './guild-decor-editor.css';
+import './community-refinements.css';
 import { guildFloorScale, guildFurnitureWidth, guildFloorDragPosition } from '../shared/guild-floor';
 type Settings = { document: CommunitySettings; revision: number; can_edit: boolean };
 type Entry = {
@@ -288,13 +289,16 @@ export function Guilds({
     );
   }
   return (
-    <section className="guild-page">
+    <section className={`guild-page ${g ? 'guild-is-detail' : ''}`}>
       <header className="guild-page-heading">
+        {g && <GuildCrest crest={current!.crest} size={100} />}
+        <div className="guild-heading-copy">
         <span className="social-eyebrow">Um brasão. Oito histórias. Um lar.</span>
         <h1>{g?.document.name || 'Guildas da Alvorada'}</h1>
         <p>
           {g?.document.description || 'Encontre sua companhia e construa um lugar para voltar.'}
         </p>
+        </div>
         <div className="guild-actions">
           {target && (
             <button onClick={() => (location.hash = 'guild')}>
@@ -439,14 +443,12 @@ export function Guilds({
       ) : (
         <>
           <div className="guild-summary">
-            <GuildCrest crest={current!.crest} size={110} />
-            <div>
+            <div className="guild-rank">
               <span className="social-eyebrow">Patente {g.rank}</span>
               <h2>Nível {g.level}</h2>
-              <span>
-                {g.prestige} prestígio · {g.members.length}/8 jogadores
-              </span>
             </div>
+            <div className="guild-stat"><Trophy size={16}/><strong>{g.prestige}</strong><span>Prestígio</span></div>
+            <div className="guild-stat"><Users size={16}/><strong>{g.members.length}<small>/8</small></strong><span>Jogadores</span></div>
             {g.is_member && (
               <strong>
                 <Coins size={18} /> {((g.treasury_cp || 0) / 100).toLocaleString('pt-BR')} PO
@@ -463,31 +465,34 @@ export function Guilds({
               </button>
             )}
           </div>
-          <p className="guild-feedback" role="status">
+          <p className="guild-membership" role="status">
+            <Users size={14}/>
             {characters.find(c => c.id === activeCharacterId)?.name || 'Seu personagem'}
             {g.is_member ? ' · Membro desta guilda' : ' · Visitante · Não pertence a esta guilda'}
           </p>
           <nav className="guild-tabs" aria-label="Áreas da guilda">
             {[
-              ['house', 'Sede', Home],
-              ['missions', 'Missões semanais', Trophy],
-              ['members', 'Companhia', Users],
-            ].map(([id, name, Icon]) => {
+              ['house', 'Sede', Home, 'Salas e decoração'],
+              ['missions', 'Missões semanais', Trophy, 'Objetivos e recompensas'],
+              ['members', 'Companhia', Users, 'Membros e convites'],
+            ].map(([id, name, Icon, description]) => {
               const I = Icon as typeof Home;
               return (
                 <button
                   key={String(id)}
+                  aria-label={String(name)}
                   aria-pressed={tab === id}
                   onClick={() => setTab(String(id))}
                 >
                   <I size={16} />
-                  {String(name)}
+                  <span>{String(name)}<small>{String(description)}</small></span>
                 </button>
               );
             })}
           </nav>
           {tab === 'house' && (
             <>
+              <div className="guild-room-heading"><div><span className="social-eyebrow">Explore a sede</span><h2>{roomInfo.name}</h2></div><p>Novas salas são liberadas conforme a guilda sobe de nível.</p></div>
               <nav className="guild-room-tabs" aria-label="Salas da sede">
                 {guildRooms.map((r) => {
                   const locked =

@@ -1,0 +1,29 @@
+{
+  "id": "resident-007",
+  "name": "Amara · Curandeira",
+  "kind": "resident",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE fantasy VTT civilian pawn. Subject: adult dark brown skinned woman with tightly braided black hair, olive linen robe and a small herb satchel. CRITICAL CAMERA: a TRUE ZENITH / NADIR PLAN VIEW, orthographic projection from DIRECTLY ABOVE her head, camera optical axis perfectly VERTICAL, 90 degrees to the floor. Like a tactical battlemap token photographed straight down from the ceiling. Show only the TOP of her hair bun and crown, broad shoulders, upper back, top surfaces of forearms and hands. Her body hides her legs and most of her feet. The crown and shoulders dominate a COMPACT roughly square silhouette. She faces the BOTTOM of the image. NO FACE, eyes, cheeks, chest, apron front, long visible torso, frontal legs, standing doll silhouette, three-quarter angle, isometric view, horizon, pedestal, token rim, circle, floor or ground. Detailed realistic hand-painted medieval game sprite, crisp texture, restrained earthy colors. Genuine transparent alpha outside the overhead silhouette; small contact shadow only. Exactly one civilian, centered, modest padding, no text, labels, signature or UI.",
+  "source": "data/vtt/overhead-20261015/resident-007.png",
+  "sourceSha256": "fbf276af59d8be617a95dece4dff0365a3a16f7cb5cc05f4f4a6ea14088d805b",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/resident-007.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/resident-007.webp",
+  "sha256": "8e972f143e5d6633cc5a4473bdef5a40b6909fa3de16e41f1c8474d9bcb31634",
+  "thumbnailSha256": "650fe6b1ee418a352377739337d7bf929b6c66df0ad9340c0ff25c8adaa998f1",
+  "pixelWidth": 752,
+  "pixelHeight": 756,
+  "bytes": 178442,
+  "clearFraction": 0.41215488855116517,
+  "opaqueFraction": 0.5621781070584262,
+  "legacy": [
+    "/vtt/village-life-20261014/resident-007.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

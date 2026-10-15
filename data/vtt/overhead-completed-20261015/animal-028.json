@@ -1,0 +1,27 @@
+{
+  "id": "animal-028",
+  "name": "Lontra",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: brown river otter with smooth fur and tapered tail. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-028.png",
+  "sourceSha256": "3e05b9c1ce4e3fbcebf442c97cbdb2f8d16b30f5e61be160e3828c50990ee980",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-028.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-028.webp",
+  "sha256": "d2e8b0b41b914a88127e69da0995932a7f1c3bea0fa5ec9ba784e90d50425388",
+  "thumbnailSha256": "600e41fe00bef27d0757cfc08724547a77c4a34f357b63d2606884eb9ced829f",
+  "pixelWidth": 308,
+  "pixelHeight": 1008,
+  "bytes": 104516,
+  "clearFraction": 0.5369447021232735,
+  "opaqueFraction": 0.4286745001030715,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "commerce-035-roof",
+  "name": "Cervejaria · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Cervejaria roof, 14 by 10 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.400. Roof material: dark brown timber shingles. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-035-roof.png",
+  "sourceSha256": "5e2e6143487f0870a1b0e7268138e557d0d1448193d4b1395c630687aba63e47",
+  "sourcePixels": {
+    "width": 1484,
+    "height": 1060
+  },
+  "image": "/vtt/overhead-20261015/commerce-035-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-035-roof.webp",
+  "sha256": "5ce2fc8f24e3c2c77cf234430972b099496065e0ff4947f53c90a340822419d0",
+  "thumbnailSha256": "7f1a3399eaf99a51514f6676d4ca764751f83df1c5d4a882630d2bb60059d89f",
+  "pixelWidth": 1600,
+  "pixelHeight": 1143,
+  "bytes": 748578,
+  "clearFraction": 0.20807250656167978,
+  "opaqueFraction": 0.7847577646544182,
+  "legacy": [],
+  "physicalSize": {
+    "width": 14,
+    "height": 10
+  }
+}

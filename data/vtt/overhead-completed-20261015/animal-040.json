@@ -1,0 +1,27 @@
+{
+  "id": "animal-040",
+  "name": "Jacaré",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: green-brown crocodilian with ridged back and long tapering tail. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-040.png",
+  "sourceSha256": "d043e64228cf0bdec85ad79334430258fd09b4f826c92c0205148c2d02dcb14c",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-040.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-040.webp",
+  "sha256": "75df3337dde2bf414b7101a9166c1f2be57bbd20fcfd598294528ac5d519730e",
+  "thumbnailSha256": "5a1075fe0d56f63b5f74acd3c7aa593ad253a067d8fe4fe130dc63b8de63a0d7",
+  "pixelWidth": 294,
+  "pixelHeight": 1008,
+  "bytes": 95978,
+  "clearFraction": 0.6081045513443473,
+  "opaqueFraction": 0.38138767411726593,
+  "legacy": [],
+  "physicalSize": {
+    "width": 2,
+    "height": 2
+  }
+}

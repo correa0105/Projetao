@@ -1,0 +1,27 @@
+{
+  "id": "commerce-009-interior",
+  "name": "Mercearia · Interior",
+  "kind": "interior",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE furnished Mercearia interior as a STRICT ARCHITECTURAL FLOOR PLAN for a medieval VTT. Room dimensions 10 by 9 five-foot cells, rectangular physical width-to-height ratio 1.111. Content: plank floor, stocked merchant counters, plain shelf tops with sacks and jars, grain bins, barrels and a ledger desk. TRUE ORTHOGRAPHIC NADIR camera from DIRECTLY ABOVE, exactly vertical 90 degrees to the floor, absolutely no tilt, isometric or converging edges. All furniture shows ONLY its flat TOP surfaces, no cabinet fronts, drawer handles, chair backrest faces, side faces or legs. Four perimeter walls show only their thin horizontal TOP CUTS of even thickness. One open-plan room, clear walking route through the center. A single OPEN DOOR GAP centered in the BOTTOM wall, wide enough for a human. Two windows appear ONLY as thin blue-grey top slivers in the bottom wall, at 23% and 77% along that wall; no other wall openings. Do not draw a door leaf or stairs. Keep coherent human scale: chair less than one cell and bed two cells long. Realistic detailed hand-painted medieval material texture, even overhead light. Complete room centered with transparent alpha outside the rectangular wall outline, no outside floor, grass, roof, grid, labels, text, people or watermark.\nStrict plan projection for tall furniture: cupboards and bookcases show ONLY opaque horizontal top boards, NEVER their doors or book-spine faces. Fireplaces and forges show ONLY a U-shaped top-cut stone rim around an open coal pit, NEVER a front firebox opening or facade. Vertical posts appear ONLY as circular end-grain caps, with shafts occluded beneath them.",
+  "source": "data/vtt/overhead-20261015/commerce-009-interior.png",
+  "sourceSha256": "83a52ba359d24e2a7a27c27e481185f3690599da1ca30e50f5d11deb8ec33a79",
+  "sourcePixels": {
+    "width": 1322,
+    "height": 1190
+  },
+  "image": "/vtt/overhead-20261015/commerce-009-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-009-interior.webp",
+  "sha256": "785031e61ffca3364e74e2d7af98487d1c8a5510970bafd920f58a508c75c6fd",
+  "thumbnailSha256": "589015c5b6d2ab40825122991945638fdd732c13088385a8ac21e0372888ba63",
+  "pixelWidth": 1600,
+  "pixelHeight": 1440,
+  "bytes": 584286,
+  "clearFraction": 0.3904800347222222,
+  "opaqueFraction": 0.6042942708333333,
+  "legacy": [],
+  "physicalSize": {
+    "width": 10,
+    "height": 9
+  }
+}

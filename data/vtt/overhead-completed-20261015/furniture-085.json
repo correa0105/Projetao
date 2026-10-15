@@ -1,0 +1,29 @@
+{
+  "id": "furniture-085",
+  "name": "Altar doméstico",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: small stone household altar with offering dish and a single unlit candle. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-085.png",
+  "sourceSha256": "4dde6567cbc68ef75fb71f9b998854a63ea6673c738b4dec2a1d3b186ffde093",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-085.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-085.webp",
+  "sha256": "24f2e0c4ee97880baad0e4b50b59fc94d10fdaae62721f4a85de4140dc525040",
+  "thumbnailSha256": "a1ad6ea8613a8494ecc28577714fd149db78852488f10ba82ebb78b6905d614a",
+  "pixelWidth": 961,
+  "pixelHeight": 816,
+  "bytes": 426754,
+  "clearFraction": 0.2023346799698027,
+  "opaqueFraction": 0.7885041113219481,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-085.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

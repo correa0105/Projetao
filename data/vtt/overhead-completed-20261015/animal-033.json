@@ -1,0 +1,27 @@
+{
+  "id": "animal-033",
+  "name": "Galo",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: proud red-and-black rooster with folded wings. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-033.png",
+  "sourceSha256": "118e79fcf0358ad003ad8704c27acfdd6304b543918cbabe66a3ac193cff7c43",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-033.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-033.webp",
+  "sha256": "178f1c4707e7831eb565b348273248c0a4dada41b2ddab7a64cdf1c694f28599",
+  "thumbnailSha256": "9f105313d2e03007d79337a3661a96d4f9fe10009a3f8ebad404ee081cbc474d",
+  "pixelWidth": 442,
+  "pixelHeight": 1008,
+  "bytes": 149344,
+  "clearFraction": 0.5058940242763772,
+  "opaqueFraction": 0.48110365941248295,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

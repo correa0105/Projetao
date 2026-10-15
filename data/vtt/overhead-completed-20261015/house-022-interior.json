@@ -1,0 +1,29 @@
+{
+  "id": "house-022-interior",
+  "name": "Casa anã · Interior",
+  "kind": "interior",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE SQUARE furnished cottage interior as a STRICT 2D ARCHITECTURAL FLOOR PLAN. Identity and furnishing: a sturdy rectangular dwarf home with metal-braced dark stone roof; interior stone floor, strong square furniture, bed and beer barrel.. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Four perimeter walls appear ONLY as equal-width horizontal TOP CUT surfaces; no visible upright wall faces. Corner beams are small square end-grain TOPS. Floor is a rectangle with perfectly parallel edges. Every furniture item is a flat TOP silhouette, including ONLY plain cabinet TOPS: absolutely no drawers, handles, vertical cabinet fronts, chair backs, bed legs or vertical furniture faces. Room is about 6 by 6 five-foot cells, a bed is two cells long and a chair smaller than one. Keep a clear walking route through the middle. The ONLY doorway is a clean OPEN GAP in the BOTTOM wall, centered 49.0% across the complete room outline and 13.3% of room width. Do not draw a door leaf or panel. NO WINDOWS anywhere in this house; no glass, wall openings or window-like wall objects. Complete square room centered on transparent alpha, no roof, exterior grass, stairs, floor disk, labels, grid, text or watermark. Realistic detailed hand-painted medieval materials and soft even overhead light.\nStrict plan projection for tall furniture: cupboards and bookcases show ONLY opaque horizontal top boards, NEVER their doors or book-spine faces. Fireplaces and forges show ONLY a U-shaped top-cut stone rim around an open coal pit, NEVER a front firebox opening or facade. Vertical posts appear ONLY as circular end-grain caps, with shafts occluded beneath them.",
+  "source": "data/vtt/overhead-20261015/house-022-interior.png",
+  "sourceSha256": "b3128fd7294134b660205aff11606f87763759bc765a566e7b79dce419fa231b",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/house-022-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/house-022-interior.webp",
+  "sha256": "0677663db530d4a148eb7c87004c9eb3ae735a8c0e2a4608f12e469850f76ff0",
+  "thumbnailSha256": "b9804244a6dee7a644630c22cada19839074b32cb73c103d25791687b90fbed8",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 472344,
+  "clearFraction": 0.538473828125,
+  "opaqueFraction": 0.457668359375,
+  "legacy": [
+    "/vtt/houses-20261014/house-022-interior.webp"
+  ],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}

@@ -1,0 +1,1842 @@
+[
+  {
+    "id": "commerce-001",
+    "name": "Ferraria",
+    "category": "Comércios",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/overhead-20261015/commerce-001-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-001-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-001-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.42777777777777776,
+      "doorEnd": 0.5722222222222222
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-002",
+    "name": "Taverna",
+    "category": "Comércios",
+    "width": 14,
+    "height": 10,
+    "image": "/vtt/overhead-20261015/commerce-002-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-002-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-002-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.45357142857142857,
+      "doorEnd": 0.5464285714285715
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-003",
+    "name": "Boticário",
+    "category": "Comércios",
+    "width": 8,
+    "height": 7,
+    "image": "/vtt/overhead-20261015/commerce-003-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-003-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-003-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.41875,
+      "doorEnd": 0.58125
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-004",
+    "name": "Biblioteca",
+    "category": "Comércios",
+    "width": 14,
+    "height": 12,
+    "image": "/vtt/overhead-20261015/commerce-004-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-004-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-004-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.45357142857142857,
+      "doorEnd": 0.5464285714285715
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-005",
+    "name": "Padaria",
+    "category": "Comércios",
+    "width": 9,
+    "height": 7,
+    "image": "/vtt/overhead-20261015/commerce-005-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-005-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-005-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.42777777777777776,
+      "doorEnd": 0.5722222222222222
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-006",
+    "name": "Açougue",
+    "category": "Comércios",
+    "width": 9,
+    "height": 7,
+    "image": "/vtt/overhead-20261015/commerce-006-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-006-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-006-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.42777777777777776,
+      "doorEnd": 0.5722222222222222
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-007",
+    "name": "Peixaria",
+    "category": "Comércios",
+    "width": 8,
+    "height": 7,
+    "image": "/vtt/overhead-20261015/commerce-007-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-007-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-007-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.41875,
+      "doorEnd": 0.58125
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-008",
+    "name": "Hortifrúti",
+    "category": "Comércios",
+    "width": 9,
+    "height": 8,
+    "image": "/vtt/overhead-20261015/commerce-008-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-008-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-008-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.42777777777777776,
+      "doorEnd": 0.5722222222222222
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-009",
+    "name": "Mercearia",
+    "category": "Comércios",
+    "width": 10,
+    "height": 9,
+    "image": "/vtt/overhead-20261015/commerce-009-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-009-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-009-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.435,
+      "doorEnd": 0.565
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-010",
+    "name": "Alfaiataria",
+    "category": "Comércios",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/overhead-20261015/commerce-010-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-010-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-010-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.42777777777777776,
+      "doorEnd": 0.5722222222222222
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-011",
+    "name": "Sapataria",
+    "category": "Comércios",
+    "width": 8,
+    "height": 7,
+    "image": "/vtt/overhead-20261015/commerce-011-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-011-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-011-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.41875,
+      "doorEnd": 0.58125
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-012",
+    "name": "Marcenaria",
+    "category": "Comércios",
+    "width": 12,
+    "height": 10,
+    "image": "/vtt/overhead-20261015/commerce-012-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-012-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-012-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.4458333333333333,
+      "doorEnd": 0.5541666666666667
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-013",
+    "name": "Oficina de carroças",
+    "category": "Comércios",
+    "width": 14,
+    "height": 12,
+    "image": "/vtt/overhead-20261015/commerce-013-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-013-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-013-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.45357142857142857,
+      "doorEnd": 0.5464285714285715
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-014",
+    "name": "Olaria",
+    "category": "Comércios",
+    "width": 10,
+    "height": 9,
+    "image": "/vtt/overhead-20261015/commerce-014-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-014-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-014-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.435,
+      "doorEnd": 0.565
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-015",
+    "name": "Vidraçaria",
+    "category": "Comércios",
+    "width": 10,
+    "height": 9,
+    "image": "/vtt/overhead-20261015/commerce-015-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-015-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-015-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.435,
+      "doorEnd": 0.565
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-016",
+    "name": "Joalheria",
+    "category": "Comércios",
+    "width": 8,
+    "height": 7,
+    "image": "/vtt/overhead-20261015/commerce-016-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-016-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-016-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.41875,
+      "doorEnd": 0.58125
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-017",
+    "name": "Relojoaria",
+    "category": "Comércios",
+    "width": 7,
+    "height": 7,
+    "image": "/vtt/overhead-20261015/commerce-017-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-017-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-017-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.40714285714285714,
+      "doorEnd": 0.5928571428571429
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-018",
+    "name": "Livraria",
+    "category": "Comércios",
+    "width": 9,
+    "height": 8,
+    "image": "/vtt/overhead-20261015/commerce-018-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-018-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-018-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.42777777777777776,
+      "doorEnd": 0.5722222222222222
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-019",
+    "name": "Papelaria",
+    "category": "Comércios",
+    "width": 7,
+    "height": 7,
+    "image": "/vtt/overhead-20261015/commerce-019-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-019-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-019-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.40714285714285714,
+      "doorEnd": 0.5928571428571429
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-020",
+    "name": "Casa de mapas",
+    "category": "Comércios",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/overhead-20261015/commerce-020-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-020-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-020-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.42777777777777776,
+      "doorEnd": 0.5722222222222222
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-021",
+    "name": "Templo",
+    "category": "Comércios",
+    "width": 12,
+    "height": 14,
+    "image": "/vtt/overhead-20261015/commerce-021-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-021-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-021-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.4458333333333333,
+      "doorEnd": 0.5541666666666667
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-022",
+    "name": "Clínica",
+    "category": "Comércios",
+    "width": 10,
+    "height": 10,
+    "image": "/vtt/overhead-20261015/commerce-022-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-022-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-022-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.435,
+      "doorEnd": 0.565
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-023",
+    "name": "Estalagem",
+    "category": "Comércios",
+    "width": 16,
+    "height": 12,
+    "image": "/vtt/overhead-20261015/commerce-023-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-023-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-023-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.459375,
+      "doorEnd": 0.540625
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-024",
+    "name": "Estábulo",
+    "category": "Comércios",
+    "width": 16,
+    "height": 10,
+    "image": "/vtt/overhead-20261015/commerce-024-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-024-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-024-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.459375,
+      "doorEnd": 0.540625
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-025",
+    "name": "Casa de banhos",
+    "category": "Comércios",
+    "width": 14,
+    "height": 10,
+    "image": "/vtt/overhead-20261015/commerce-025-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-025-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-025-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.45357142857142857,
+      "doorEnd": 0.5464285714285715
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-026",
+    "name": "Tinturaria",
+    "category": "Comércios",
+    "width": 10,
+    "height": 9,
+    "image": "/vtt/overhead-20261015/commerce-026-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-026-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-026-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.435,
+      "doorEnd": 0.565
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-027",
+    "name": "Curtume",
+    "category": "Comércios",
+    "width": 12,
+    "height": 10,
+    "image": "/vtt/overhead-20261015/commerce-027-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-027-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-027-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.4458333333333333,
+      "doorEnd": 0.5541666666666667
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-028",
+    "name": "Loja de velas",
+    "category": "Comércios",
+    "width": 8,
+    "height": 7,
+    "image": "/vtt/overhead-20261015/commerce-028-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-028-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-028-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.41875,
+      "doorEnd": 0.58125
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-029",
+    "name": "Perfumaria",
+    "category": "Comércios",
+    "width": 7,
+    "height": 7,
+    "image": "/vtt/overhead-20261015/commerce-029-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-029-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-029-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.40714285714285714,
+      "doorEnd": 0.5928571428571429
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-030",
+    "name": "Oficina arcana",
+    "category": "Comércios",
+    "width": 10,
+    "height": 10,
+    "image": "/vtt/overhead-20261015/commerce-030-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-030-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-030-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.435,
+      "doorEnd": 0.565
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-031",
+    "name": "Floricultura",
+    "category": "Comércios",
+    "width": 9,
+    "height": 9,
+    "image": "/vtt/overhead-20261015/commerce-031-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-031-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-031-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.42777777777777776,
+      "doorEnd": 0.5722222222222222
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-032",
+    "name": "Celeiro mercantil",
+    "category": "Comércios",
+    "width": 12,
+    "height": 10,
+    "image": "/vtt/overhead-20261015/commerce-032-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-032-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-032-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.4458333333333333,
+      "doorEnd": 0.5541666666666667
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-033",
+    "name": "Moinho de grãos",
+    "category": "Comércios",
+    "width": 12,
+    "height": 12,
+    "image": "/vtt/overhead-20261015/commerce-033-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-033-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-033-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.4458333333333333,
+      "doorEnd": 0.5541666666666667
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-034",
+    "name": "Vinícola",
+    "category": "Comércios",
+    "width": 12,
+    "height": 10,
+    "image": "/vtt/overhead-20261015/commerce-034-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-034-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-034-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.4458333333333333,
+      "doorEnd": 0.5541666666666667
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-035",
+    "name": "Cervejaria",
+    "category": "Comércios",
+    "width": 14,
+    "height": 10,
+    "image": "/vtt/overhead-20261015/commerce-035-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-035-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-035-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.45357142857142857,
+      "doorEnd": 0.5464285714285715
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-036",
+    "name": "Casa de leilões",
+    "category": "Comércios",
+    "width": 14,
+    "height": 12,
+    "image": "/vtt/overhead-20261015/commerce-036-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-036-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-036-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.45357142857142857,
+      "doorEnd": 0.5464285714285715
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-037",
+    "name": "Casa de penhores",
+    "category": "Comércios",
+    "width": 9,
+    "height": 8,
+    "image": "/vtt/overhead-20261015/commerce-037-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-037-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-037-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.42777777777777776,
+      "doorEnd": 0.5722222222222222
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-038",
+    "name": "Casa de câmbio",
+    "category": "Comércios",
+    "width": 10,
+    "height": 9,
+    "image": "/vtt/overhead-20261015/commerce-038-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-038-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-038-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.435,
+      "doorEnd": 0.565
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-039",
+    "name": "Correio",
+    "category": "Comércios",
+    "width": 8,
+    "height": 7,
+    "image": "/vtt/overhead-20261015/commerce-039-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-039-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-039-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.41875,
+      "doorEnd": 0.58125
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  },
+  {
+    "id": "commerce-040",
+    "name": "Casa dos mercadores",
+    "category": "Comércios",
+    "width": 16,
+    "height": 12,
+    "image": "/vtt/overhead-20261015/commerce-040-roof.webp",
+    "interior": "/vtt/overhead-20261015/commerce-040-interior.webp",
+    "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-040-roof.webp",
+    "footprint": {
+      "left": 0.12,
+      "top": 0.14,
+      "right": 0.88,
+      "bottom": 0.86,
+      "doorStart": 0.459375,
+      "doorEnd": 0.540625
+    },
+    "windows": [
+      {
+        "x": 0.2948,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.2948,
+        "viewY": 0.89
+      },
+      {
+        "x": 0.7052,
+        "y": 0.86,
+        "facing": 90,
+        "width": 0.075,
+        "viewX": 0.7052,
+        "viewY": 0.89
+      }
+    ],
+    "roofBounds": {
+      "left": 0.045,
+      "top": 0.055,
+      "right": 0.955,
+      "bottom": 0.945
+    },
+    "doorVisual": {
+      "baseY": 0.86,
+      "height": 0.012
+    }
+  }
+]

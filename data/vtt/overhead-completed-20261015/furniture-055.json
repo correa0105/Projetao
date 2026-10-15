@@ -1,0 +1,29 @@
+{
+  "id": "furniture-055",
+  "name": "Pilão de pedra",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: small rough stone mortar and its pestle. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 0.5 by 0.5 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-055.png",
+  "sourceSha256": "3c55dcd673e2cbab5b2bd2d7e9a5605c41c167748731eb55c39d76e2353c2889",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-055.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-055.webp",
+  "sha256": "40f03f337ce7298450f649a55ab36f2c212e457fa04338960827f4c7bab378cb",
+  "thumbnailSha256": "e1fb5b4b86f60010bc1ae94b4099f8c6c75ca94ceea9b9547f4792dc734cb680",
+  "pixelWidth": 1008,
+  "pixelHeight": 987,
+  "bytes": 479428,
+  "clearFraction": 0.30919915247422847,
+  "opaqueFraction": 0.684760015117158,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-055.webp"
+  ],
+  "physicalSize": {
+    "width": 0.5,
+    "height": 0.5
+  }
+}

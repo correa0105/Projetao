@@ -1,0 +1,27 @@
+{
+  "id": "commerce-031-roof",
+  "name": "Floricultura · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Floricultura roof, 9 by 9 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.000. Roof material: green glass roof panels with metal ribs. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-031-roof.png",
+  "sourceSha256": "f20d368b0db3f9e619990c3369e75fa14d6da67cfc0bdfb1f0a6ebbeb9a1eafa",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/commerce-031-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-031-roof.webp",
+  "sha256": "d91c8dd5dba12526b976fb578839d36fac0ea82234cd27bb050071b7d75e3fa5",
+  "thumbnailSha256": "7a6b6c8e1e84c2864f077c46ee2631140d6c445cc8eb7b1f6fe22e6ed19b17e4",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 847404,
+  "clearFraction": 0.266448828125,
+  "opaqueFraction": 0.726523828125,
+  "legacy": [],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}

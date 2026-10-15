@@ -1,0 +1,27 @@
+{
+  "id": "animal-037",
+  "name": "Águia",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: large golden eagle with folded wings. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-037.png",
+  "sourceSha256": "064abc7e39dc64da2dea8f115a799c556ffa11e9237a3499ca816b98157eafb9",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-037.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-037.webp",
+  "sha256": "157f486b45971e9012f0c789a0b179e7983699dff633bef189d0a6121d731100",
+  "thumbnailSha256": "84f292a1aa32c5fdf3e1cea468ab4ee6a17bf8a666935543815cb15ab17ae902",
+  "pixelWidth": 575,
+  "pixelHeight": 1008,
+  "bytes": 186550,
+  "clearFraction": 0.4936663216011042,
+  "opaqueFraction": 0.49971877156659766,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

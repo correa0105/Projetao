@@ -1,0 +1,27 @@
+{
+  "id": "animal-014",
+  "name": "Burro",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: grey donkey with long ears and dark mane. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-014.png",
+  "sourceSha256": "40f598c4564df88b9d6bd488403bfb31dfe483f2a71a14961290fc829374d481",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-014.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-014.webp",
+  "sha256": "a7845cfac70dbdc34e682794efd3afb40ab2b8cff4b4ce89ced85b807aa499d4",
+  "thumbnailSha256": "f0a11c0c18d48b904f681742bcefc7651d795af78e6b80f432e3edd02e862c37",
+  "pixelWidth": 342,
+  "pixelHeight": 1008,
+  "bytes": 108486,
+  "clearFraction": 0.5286044973544973,
+  "opaqueFraction": 0.44892903555184255,
+  "legacy": [],
+  "physicalSize": {
+    "width": 2,
+    "height": 2
+  }
+}

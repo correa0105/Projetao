@@ -1,0 +1,27 @@
+{
+  "id": "commerce-005-interior",
+  "name": "Padaria · Interior",
+  "kind": "interior",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE furnished Padaria interior as a STRICT ARCHITECTURAL FLOOR PLAN for a medieval VTT. Room dimensions 9 by 7 five-foot cells, rectangular physical width-to-height ratio 1.286. Content: stone floor, masonry bread oven, flour bins, kneading benches, bread display table and sacks of grain. TRUE ORTHOGRAPHIC NADIR camera from DIRECTLY ABOVE, exactly vertical 90 degrees to the floor, absolutely no tilt, isometric or converging edges. All furniture shows ONLY its flat TOP surfaces, no cabinet fronts, drawer handles, chair backrest faces, side faces or legs. Four perimeter walls show only their thin horizontal TOP CUTS of even thickness. One open-plan room, clear walking route through the center. A single OPEN DOOR GAP centered in the BOTTOM wall, wide enough for a human. Two windows appear ONLY as thin blue-grey top slivers in the bottom wall, at 23% and 77% along that wall; no other wall openings. Do not draw a door leaf or stairs. Keep coherent human scale: chair less than one cell and bed two cells long. Realistic detailed hand-painted medieval material texture, even overhead light. Complete room centered with transparent alpha outside the rectangular wall outline, no outside floor, grass, roof, grid, labels, text, people or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-005-interior.png",
+  "sourceSha256": "64cf45205b0a1fa350add75dc788dfd9d593f70a31b6e9dbe44eb2bb6b935df1",
+  "sourcePixels": {
+    "width": 1422,
+    "height": 1106
+  },
+  "image": "/vtt/overhead-20261015/commerce-005-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-005-interior.webp",
+  "sha256": "048a298d1982be84333c2af9efa388734eb07647fd13e0e4ef406348538217cd",
+  "thumbnailSha256": "f1c1a055a31aa307822a26c11bd6cf6025a5bee60016e05635e78940226bb13d",
+  "pixelWidth": 1600,
+  "pixelHeight": 1244,
+  "bytes": 683442,
+  "clearFraction": 0.38708450562700963,
+  "opaqueFraction": 0.608654541800643,
+  "legacy": [],
+  "physicalSize": {
+    "width": 9,
+    "height": 7
+  }
+}

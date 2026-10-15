@@ -1,0 +1,29 @@
+{
+  "id": "furniture-040",
+  "name": "Tapete de pele",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: flat irregular brown animal-hide rug. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 2 by 2 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-040.png",
+  "sourceSha256": "2d0c9498c5cbf81acbc9d2b0b476b4dc40dfe40cfa5fd4ca3565e981960792e3",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-040.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-040.webp",
+  "sha256": "0a0d09254d54898652f0b53b9d206cd053409dba6a27ac9f769cfb00f738c176",
+  "thumbnailSha256": "2709aec31eba95c8df55d3e70879f43cc9f5fb4ce60f6ad21cc0a66a4983c012",
+  "pixelWidth": 1008,
+  "pixelHeight": 991,
+  "bytes": 391948,
+  "clearFraction": 0.39182904073166436,
+  "opaqueFraction": 0.5988609789694552,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-040.webp"
+  ],
+  "physicalSize": {
+    "width": 2,
+    "height": 2
+  }
+}

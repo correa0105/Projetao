@@ -1,0 +1,27 @@
+{
+  "id": "commerce-011-roof",
+  "name": "Sapataria · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Sapataria roof, 8 by 7 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.143. Roof material: brown clay tiles. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-011-roof.png",
+  "sourceSha256": "b0ac15eb8333fedad34d6106dd48de8c5e2e494ac379fe54d7a6ceac7cf22031",
+  "sourcePixels": {
+    "width": 1340,
+    "height": 1174
+  },
+  "image": "/vtt/overhead-20261015/commerce-011-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-011-roof.webp",
+  "sha256": "ce7387f1af0292f82972b5d7755f392860fbf8eab20fb3291fc821523285f8b9",
+  "thumbnailSha256": "3b8fc1783640a129a19cf28e69b86b1b264577c31d95922e97d8e38679813b4b",
+  "pixelWidth": 1600,
+  "pixelHeight": 1400,
+  "bytes": 977114,
+  "clearFraction": 0.20377767857142856,
+  "opaqueFraction": 0.7902071428571429,
+  "legacy": [],
+  "physicalSize": {
+    "width": 8,
+    "height": 7
+  }
+}

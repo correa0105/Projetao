@@ -1,0 +1,27 @@
+{
+  "id": "animal-019",
+  "name": "Urso-pardo",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: large brown bear. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-019.png",
+  "sourceSha256": "0b69cae16c0025dc169971f7e703e8455aa5cc4b04a59da08e8ccfe85eddfceb",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-019.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-019.webp",
+  "sha256": "c25c1677a430317bb5845a7bd1d94d223f719875a7b7b4ff305600287b778aca",
+  "thumbnailSha256": "be314514e3df6156e0a56b3386e1ea4a33196e5e1e8e7dceefa517c18183fa42",
+  "pixelWidth": 519,
+  "pixelHeight": 1008,
+  "bytes": 197490,
+  "clearFraction": 0.4326734868642383,
+  "opaqueFraction": 0.5438859069639417,
+  "legacy": [],
+  "physicalSize": {
+    "width": 2,
+    "height": 2
+  }
+}

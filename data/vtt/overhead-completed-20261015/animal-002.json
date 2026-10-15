@@ -1,0 +1,27 @@
+{
+  "id": "animal-002",
+  "name": "Cavalo com sela",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: chestnut riding horse with brown leather saddle stirrups and simple bridle, no rider. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-002.png",
+  "sourceSha256": "c2ad2cd5acdbbad4147352d3038e40e664b1f191a0779eb46e5c56599babfc70",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-002.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-002.webp",
+  "sha256": "d85ae6a0a6b0d4833eaf8b5ff174a9ba771ae33f1888d7242a7cf9c324a01e2e",
+  "thumbnailSha256": "2d60346b08ebdedf0ad22c6057d9505ba423a2cadf743987a94a97d0cb21a59f",
+  "pixelWidth": 352,
+  "pixelHeight": 1008,
+  "bytes": 93346,
+  "clearFraction": 0.5852047258297258,
+  "opaqueFraction": 0.39476799242424243,
+  "legacy": [],
+  "physicalSize": {
+    "width": 2,
+    "height": 2
+  }
+}

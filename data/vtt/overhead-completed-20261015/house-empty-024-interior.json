@@ -1,0 +1,31 @@
+{
+  "parent": "house-024-interior",
+  "parentSourceSha256": "3b5e9d040c17cd5716aa1a267494b833a54abce917af3a67765b2854c05bbaaf",
+  "id": "house-empty-024-interior",
+  "name": "Casa dos viajantes · vazia · Interior",
+  "kind": "empty-interior",
+  "tool": "built-in image_gen",
+  "prompt": "EDIT ONLY the movable furnishings in Image 1. Remove all movable beds, tables, chairs, stools, cabinets, barrels, baskets, rugs and loose objects. Reconstruct the same continuous original floor beneath them. Preserve the strict 90-degree orthographic camera, exact square room outline, wall TOPS, wall thickness, door gap, window slivers, fixed masonry hearth and all external alpha perfectly. This must be the exact SAME room as Image 1 with empty usable space, not a redesigned building. No people, new objects, text, grid, side facades, vertical wall faces, background or watermark.",
+  "source": "data/vtt/overhead-20261015/house-empty-024-interior.png",
+  "sourceSha256": "ef72e79ec6d2da7e863e5049d85203c9d29ab1838ae7e2be3b7b90154566f3cf",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/house-empty-024-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/house-empty-024-interior.webp",
+  "sha256": "6c5a475b2b4406133647f71442504d45b8db290d751198adf067ebbf921f3444",
+  "thumbnailSha256": "89aa18221fcbb01094720e10b88d8c5cff90674ac6e52520fa50ac729976258a",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 396396,
+  "clearFraction": 0.548740625,
+  "opaqueFraction": 0.445972265625,
+  "legacy": [
+    "/vtt/houses-empty-20261014/house-024-interior.webp"
+  ],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}

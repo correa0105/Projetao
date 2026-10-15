@@ -1,0 +1,27 @@
+{
+  "id": "animal-026",
+  "name": "Ouriço",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: small hedgehog with a spiny brown back. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-026.png",
+  "sourceSha256": "3e0bdf7bf058fa749a0c5a8e919ea0384663b22fde8886d3bccb7cf5d5e4dbbc",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-026.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-026.webp",
+  "sha256": "92a3744d8561841663276a169c36569455c084ea2981d66f88a4c0e6520a6a25",
+  "thumbnailSha256": "034d1533fb157e33e529a68104e75e906f2a585829671433794e63c5596f7a16",
+  "pixelWidth": 600,
+  "pixelHeight": 1008,
+  "bytes": 274192,
+  "clearFraction": 0.46622189153439153,
+  "opaqueFraction": 0.5006547619047619,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

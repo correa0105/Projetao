@@ -1,0 +1,29 @@
+{
+  "id": "furniture-077",
+  "name": "Manequim de alfaiate",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: plain linen tailoring torso mannequin on a wooden tripod. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CORRECTION AFTER CAMERA REVIEW: A tailor dress form seen from directly overhead: ONLY circular neck-cap and broad symmetrical shoulder tops of linen, small short upper arm shapes. Chest, waist, stand pole shaft and tripod legs are occluded under shoulders. Compact silhouette, no frontal dress-form torso. Absolute 90 degree vertical orthographic camera. No perspective tilt, no vertical front faces. Fully transparent background.",
+  "source": "data/vtt/overhead-20261015/furniture-077.png",
+  "sourceSha256": "1cae7125d62994a85170cd59d6dba64c134f92c12e114dc6ff7b0c1338a29b45",
+  "sourcePixels": {
+    "width": 1263,
+    "height": 1246
+  },
+  "image": "/vtt/overhead-20261015/furniture-077.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-077.webp",
+  "sha256": "bafdfc30b027c6142086b8d90f5b9beede30a88c17715c96e7f85c3cc2d2e42e",
+  "thumbnailSha256": "0fe9ca2cc685caf8ab37f28bd4796dd6503c7584e808f24499737e83d2b7d2ba",
+  "pixelWidth": 1008,
+  "pixelHeight": 588,
+  "bytes": 207252,
+  "clearFraction": 0.4784158703163805,
+  "opaqueFraction": 0.5157161078717201,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-077.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

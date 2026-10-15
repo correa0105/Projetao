@@ -1,0 +1,29 @@
+{
+  "id": "garden-015",
+  "name": "Estufa pequena",
+  "kind": "garden",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT environment asset. Subject: small wooden framed glass greenhouse with visible seedling benches inside, complete glass roof, no outside floor or scenery. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. For a merchant stall show the TOP rectangle of its cloth canopy and a goods-covered counter extending in front in the same floor plan: no front panel, hanging vertical cloth, upright poles or visible post sides. For a wagon show its open cargo or canvas ROOF from directly above; wheels appear as narrow side strips, never round side-view wheels. For gardening objects show top surfaces and plant foliage from straight above; tools lie flat. Realistic hand-painted medieval natural materials, crisp details, coherent human footprint 3 by 4 five-foot cells. Transparent alpha outside the complete object, tiny contact shadow only. No external ground, floor tile, room, people, background color, frame, grid, text, signature or watermark.",
+  "source": "data/vtt/overhead-20261015/garden-015.png",
+  "sourceSha256": "a797c151bc2feab57d5b52e133856b59e339fbbf2740f6d6d49658c819f66613",
+  "sourcePixels": {
+    "width": 1086,
+    "height": 1448
+  },
+  "image": "/vtt/overhead-20261015/garden-015.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/garden-015.webp",
+  "sha256": "236bfab560d9c4e4ba29f33ca1e68618acff0481ef100b1a308e547e6594e157",
+  "thumbnailSha256": "c39b476565598ca143d177fc208ac7bea0e6249d029e062e6802096148cb2be9",
+  "pixelWidth": 635,
+  "pixelHeight": 1008,
+  "bytes": 270816,
+  "clearFraction": 0.29442882139732535,
+  "opaqueFraction": 0.673648606424197,
+  "legacy": [
+    "/vtt/village-life-20261014/garden-015.webp"
+  ],
+  "physicalSize": {
+    "width": 3,
+    "height": 4
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "furniture-065",
+  "name": "Prensa de frutas",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: small oak screw fruit press with cast iron spindle. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CORRECTION AFTER CAMERA REVIEW: A screw press seen from zenith: circular wood barrel rim and upper crossbeam shown as horizontal plan surfaces; center screw represented by circular top cap. NO barrel side wall, no long vertical screw shaft, no tilted metal screw, no front feet. Absolute 90 degree vertical orthographic camera. No perspective tilt, no vertical front faces. Fully transparent background.",
+  "source": "data/vtt/overhead-20261015/furniture-065.png",
+  "sourceSha256": "0469f337119480560f02a3c9d76899f6cb2fa8cea4caba2a805f7a9f4ca636d8",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-065.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-065.webp",
+  "sha256": "d39baa44bc96d24dee09f6823465d06a8813705e07e0cebfa79c71db50dcb69a",
+  "thumbnailSha256": "e36d06ebdfa9ecc5a152b2094d7879f74585513ac8ff9e38dbe68d5ca5d3f9b6",
+  "pixelWidth": 1008,
+  "pixelHeight": 979,
+  "bytes": 324626,
+  "clearFraction": 0.47521766622890216,
+  "opaqueFraction": 0.5194339056698607,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-065.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

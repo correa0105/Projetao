@@ -1,3 +1,4 @@
+import {additionalCrestIcons,additionalCrestFields,additionalCrestOrnaments} from './guild-crest-options';
 import { z } from 'zod';
 import { houseCatalog, houseTemplates, houseSupportsFacing } from './house';
 import { guildPerspectiveSchema, guildPerspectiveGuidesSchema } from './guild-perspective';
@@ -14,6 +15,7 @@ export const crestIcons = [
   'book',
   'dragon',
   'mountain',
+  ...additionalCrestIcons,
 ] as const;
 export const crestFields = [
   'plain',
@@ -22,6 +24,7 @@ export const crestFields = [
   'stripes',
   'chevron',
   'sunburst',
+  ...additionalCrestFields,
 ] as const;
 export const crestBorders = ['shield', 'round', 'banner', 'diamond', 'hexagon', 'laurel'] as const;
 // `border` is the historical shape key. Keep it so saved guilds remain compatible.
@@ -32,6 +35,7 @@ export const crestOrnaments = [
   'runic',
   'laurel',
   'thorns',
+  ...additionalCrestOrnaments,
 ] as const;
 export const guildRooms = [
   { id: 'main', name: 'Salão principal', image: '/guild/rooms/main.webp', starter: true },

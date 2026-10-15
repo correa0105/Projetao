@@ -1,0 +1,29 @@
+{
+  "id": "garden-025",
+  "name": "Pérgola florida",
+  "kind": "garden",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT environment asset. Subject: small oak garden pergola with delicate climbing wisteria and a complete overhead timber lattice, no ground tile. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. For a merchant stall show the TOP rectangle of its cloth canopy and a goods-covered counter extending in front in the same floor plan: no front panel, hanging vertical cloth, upright poles or visible post sides. For a wagon show its open cargo or canvas ROOF from directly above; wheels appear as narrow side strips, never round side-view wheels. For gardening objects show top surfaces and plant foliage from straight above; tools lie flat. Realistic hand-painted medieval natural materials, crisp details, coherent human footprint 2 by 3 five-foot cells. Transparent alpha outside the complete object, tiny contact shadow only. No external ground, floor tile, room, people, background color, frame, grid, text, signature or watermark.\nMANDATORY CAMERA CORRECTION: An upright wisteria trellis seen from zenith: ONLY a thin wooden top rail with a compact strip of overlapping green leaf TOPS and purple blossom clusters. The vertical lattice is hidden from a true 90-degree camera. No full rectangular front grid, no vertical plant wall. All seen from a strict overhead 90 degree camera with zero tilt.",
+  "source": "data/vtt/overhead-20261015/garden-025.png",
+  "sourceSha256": "5310e08de5159dcd932259bda2bd26b662cb04536138ed3880190d00a0b3d729",
+  "sourcePixels": {
+    "width": 1536,
+    "height": 1024
+  },
+  "image": "/vtt/overhead-20261015/garden-025.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/garden-025.webp",
+  "sha256": "81dbfb7f8f2a0625e3a376179c04180df52532878fb0c526720e09995d9bdb2d",
+  "thumbnailSha256": "8ae55ffbe61c9349c2c237af56bf97903d72a38e23de665b0a4ce9ad7dfc1ea5",
+  "pixelWidth": 1008,
+  "pixelHeight": 610,
+  "bytes": 352992,
+  "clearFraction": 0.41533632578714547,
+  "opaqueFraction": 0.5001870283632579,
+  "legacy": [
+    "/vtt/village-life-20261014/garden-025.webp"
+  ],
+  "physicalSize": {
+    "width": 2,
+    "height": 3
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "animal-038",
+  "name": "Falcão",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: peregrine falcon with folded wings. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-038.png",
+  "sourceSha256": "e9a27bd5bbb3c817b11c945f822ad1c7931236378ecc6f914a332e96a28ac25b",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-038.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-038.webp",
+  "sha256": "8f9896bae815fe20461c905b7b84968885c99d1e006994b2d0c8ed57b95d9701",
+  "thumbnailSha256": "0c0f052839717483d725a54de5b268c605ac81d8112139b8429e340e11f93fbd",
+  "pixelWidth": 485,
+  "pixelHeight": 1008,
+  "bytes": 142378,
+  "clearFraction": 0.4848224513172967,
+  "opaqueFraction": 0.5082862870234004,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

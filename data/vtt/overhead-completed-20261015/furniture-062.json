@@ -1,0 +1,29 @@
+{
+  "id": "furniture-062",
+  "name": "Tábua de queijos",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: round wooden cutting board with a cheese wheel and a small knife. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 0.5 by 0.5 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-062.png",
+  "sourceSha256": "6e9fb50b9d7ebcf0096720175f228c5a77d42c66f6fdc740ec84a53abbdf5152",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-062.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-062.webp",
+  "sha256": "abf64e9a41774aae99f48382e28e4cc918a3891443cd40d6ee5333d0fa30c9c3",
+  "thumbnailSha256": "9259ac92c41466a5bebe19f5f726c67d88977ec245f70a3dd77e4317a2d7b3c3",
+  "pixelWidth": 1000,
+  "pixelHeight": 1008,
+  "bytes": 441756,
+  "clearFraction": 0.31425694444444446,
+  "opaqueFraction": 0.6810813492063492,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-062.webp"
+  ],
+  "physicalSize": {
+    "width": 0.5,
+    "height": 0.5
+  }
+}

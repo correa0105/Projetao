@@ -1,0 +1,27 @@
+{
+  "id": "commerce-039-roof",
+  "name": "Correio · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Correio roof, 8 by 7 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.143. Roof material: weathered red clay tiles. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-039-roof.png",
+  "sourceSha256": "49efeb501861103d01b70a136de243e0a8efbf383ae2d521ea9be5c60e00804f",
+  "sourcePixels": {
+    "width": 1341,
+    "height": 1173
+  },
+  "image": "/vtt/overhead-20261015/commerce-039-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-039-roof.webp",
+  "sha256": "259c883ce9adf73b0f61c70abba5fa6d881845789a85b03c9f53b23345825237",
+  "thumbnailSha256": "b1bc6b0314b8762a894be5f4bd3e8c1c477b6e1e12485aab36d159c0995818a1",
+  "pixelWidth": 1600,
+  "pixelHeight": 1400,
+  "bytes": 951250,
+  "clearFraction": 0.200525,
+  "opaqueFraction": 0.7932892857142857,
+  "legacy": [],
+  "physicalSize": {
+    "width": 8,
+    "height": 7
+  }
+}

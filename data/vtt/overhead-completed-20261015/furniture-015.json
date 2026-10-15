@@ -1,0 +1,29 @@
+{
+  "id": "furniture-015",
+  "name": "Sofá de madeira",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: two-seat carved wood sofa with dark blue cushions. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 2 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-015.png",
+  "sourceSha256": "c2d04397380376d0ed20c61bacfdb98ee0e2e1f22ad92d38f9f817183bf26d98",
+  "sourcePixels": {
+    "width": 1774,
+    "height": 887
+  },
+  "image": "/vtt/overhead-20261015/furniture-015.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-015.webp",
+  "sha256": "9f6b0e9094d5b3859f6790f05e318e84c6adcd54c0de04f7c5d125067060b310",
+  "thumbnailSha256": "cf74b23bdf5c6eff0bb4fc88b9dedac1cd39338c10051fd20e695e4767599506",
+  "pixelWidth": 1008,
+  "pixelHeight": 576,
+  "bytes": 193696,
+  "clearFraction": 0.23256138392857142,
+  "opaqueFraction": 0.7604442239858906,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-015.webp"
+  ],
+  "physicalSize": {
+    "width": 2,
+    "height": 1
+  }
+}

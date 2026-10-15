@@ -1,8 +1,9 @@
 import catalog from './vtt-houses-catalog.json';
+import commerce from './vtt-commerce-catalog.json';
 import type {Point,VttScene,VttToken,VttWall} from './vtt';
 import {pointBoxDistance,sweptCircleHitsBox,tokenGroundRadius,type BarrierBox} from './vtt-collision';
 import {snapPoint,sightPolygon,blockingWalls,intersection} from './vtt';
-export const houseAssets=catalog;
+export const houseAssets=[...catalog,...commerce];
 const byImage=new Map(houseAssets.map(a=>[a.image,a]));
 export const houseAsset=(token:VttToken)=>token.layer==='map'?byImage.get(token.image):undefined;
 export function houseWorld(p:Point,t:VttToken):Point {

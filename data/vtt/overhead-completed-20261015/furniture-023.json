@@ -1,0 +1,29 @@
+{
+  "id": "furniture-023",
+  "name": "Aparador",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: slender wooden sideboard with two doors. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 2 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CORRECTION AFTER CAMERA REVIEW: A low closed sideboard: ONLY a rectangular horizontal wooden countertop. The vertical drawers are hidden beneath this opaque top. No drawers or front board visible. Absolute 90 degree vertical orthographic camera. No perspective tilt, no vertical front faces. Fully transparent background.",
+  "source": "data/vtt/overhead-20261015/furniture-023.png",
+  "sourceSha256": "0933d769ece11aa1a6e2441aa69f8b2c22a35ac687d7ae6f5d6f9e7e4c32c874",
+  "sourcePixels": {
+    "width": 1774,
+    "height": 887
+  },
+  "image": "/vtt/overhead-20261015/furniture-023.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-023.webp",
+  "sha256": "488990f72a50c6c39079ca108b0a55856f2d1f63e9e717e5fb4bccea37be57c8",
+  "thumbnailSha256": "238f54161045f777810984a88e261039ebc9b891d857fbc6978872a7bbb62645",
+  "pixelWidth": 1008,
+  "pixelHeight": 403,
+  "bytes": 178614,
+  "clearFraction": 0.23804600417503644,
+  "opaqueFraction": 0.7526241679467486,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-023.webp"
+  ],
+  "physicalSize": {
+    "width": 2,
+    "height": 1
+  }
+}

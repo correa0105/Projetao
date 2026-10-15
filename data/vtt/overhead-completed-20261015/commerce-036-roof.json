@@ -1,0 +1,27 @@
+{
+  "id": "commerce-036-roof",
+  "name": "Casa de leilões · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Casa de leilões roof, 14 by 12 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.167. Roof material: red glazed clay tiles. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-036-roof.png",
+  "sourceSha256": "b2d35be530912884d8cded00c82e2d4ec14678d389dd153290958d91cad1a045",
+  "sourcePixels": {
+    "width": 1354,
+    "height": 1161
+  },
+  "image": "/vtt/overhead-20261015/commerce-036-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-036-roof.webp",
+  "sha256": "fb37df2559027dcebe363a119c0f99c34574d9f61e51cf1e530ce7aed683c9b9",
+  "thumbnailSha256": "e820d3f3a84c1c158758351ac53bb0c7b5810daf83e507b2a1ecc03f1a0f97e6",
+  "pixelWidth": 1600,
+  "pixelHeight": 1371,
+  "bytes": 948688,
+  "clearFraction": 0.19921635667396062,
+  "opaqueFraction": 0.7944625273522976,
+  "legacy": [],
+  "physicalSize": {
+    "width": 14,
+    "height": 12
+  }
+}

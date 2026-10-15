@@ -1,0 +1,27 @@
+{
+  "id": "commerce-012-roof",
+  "name": "Marcenaria · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Marcenaria roof, 12 by 10 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.200. Roof material: weathered cedar shingles. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-012-roof.png",
+  "sourceSha256": "a7d84af1d785b57aed2bc851bc0a371b4519873091c451882fef4fadb215ce72",
+  "sourcePixels": {
+    "width": 1374,
+    "height": 1145
+  },
+  "image": "/vtt/overhead-20261015/commerce-012-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-012-roof.webp",
+  "sha256": "6bc13566695d39f37565fbc132e262f9452505b1a8f8bb552996fb22ab67d576",
+  "thumbnailSha256": "61a162f4af2a8f0af169674fbaf79d45f2680b1d59549584e958762d4a889043",
+  "pixelWidth": 1600,
+  "pixelHeight": 1333,
+  "bytes": 850422,
+  "clearFraction": 0.19787087396849212,
+  "opaqueFraction": 0.7949503000750188,
+  "legacy": [],
+  "physicalSize": {
+    "width": 12,
+    "height": 10
+  }
+}

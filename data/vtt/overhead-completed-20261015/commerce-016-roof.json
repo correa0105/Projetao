@@ -1,0 +1,27 @@
+{
+  "id": "commerce-016-roof",
+  "name": "Joalheria · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Joalheria roof, 8 by 7 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.143. Roof material: dark blue glazed tiles. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-016-roof.png",
+  "sourceSha256": "fc8dcf27ebe7273f3fd2b8c5e1d860fc1ca61f3b6707105fbef47faf10e8eda4",
+  "sourcePixels": {
+    "width": 1340,
+    "height": 1174
+  },
+  "image": "/vtt/overhead-20261015/commerce-016-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-016-roof.webp",
+  "sha256": "5f87b8b8bc7664c06ce107ab86b12545b0eed6f0b44e9b1d798c2ba5a038b2cf",
+  "thumbnailSha256": "27a6def453b0cbe8076e94a74f7dea9b73b31a79de7ca296386c0f7708e43940",
+  "pixelWidth": 1600,
+  "pixelHeight": 1400,
+  "bytes": 779858,
+  "clearFraction": 0.2245,
+  "opaqueFraction": 0.76805625,
+  "legacy": [],
+  "physicalSize": {
+    "width": 8,
+    "height": 7
+  }
+}

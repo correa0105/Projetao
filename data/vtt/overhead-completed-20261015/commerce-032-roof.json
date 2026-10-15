@@ -1,0 +1,27 @@
+{
+  "id": "commerce-032-roof",
+  "name": "Celeiro mercantil · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Celeiro mercantil roof, 12 by 10 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.200. Roof material: thick straw thatch. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-032-roof.png",
+  "sourceSha256": "c095295cc5f0b92b34651aa95f9b48536dbdd19ae0fea2907daf5d9dfd46a9b3",
+  "sourcePixels": {
+    "width": 1374,
+    "height": 1145
+  },
+  "image": "/vtt/overhead-20261015/commerce-032-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-032-roof.webp",
+  "sha256": "69ef1fac10e1390803d188be32cb7f84ffafad838f3fc46547e322cafd43515a",
+  "thumbnailSha256": "bf5472402d8f3be1badb6829599551972ac3261afc2322bd3ea7aa0660074834",
+  "pixelWidth": 1600,
+  "pixelHeight": 1333,
+  "bytes": 1013390,
+  "clearFraction": 0.20697815078769694,
+  "opaqueFraction": 0.7785905851462865,
+  "legacy": [],
+  "physicalSize": {
+    "width": 12,
+    "height": 10
+  }
+}

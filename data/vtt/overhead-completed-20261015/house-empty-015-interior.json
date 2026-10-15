@@ -1,0 +1,31 @@
+{
+  "parent": "house-015-interior",
+  "parentSourceSha256": "c714f7279701b2bde5f33d666c4434152dd0004ab2e31b6761b0b8a96fc87f05",
+  "id": "house-empty-015-interior",
+  "name": "Casa de junco · vazia · Interior",
+  "kind": "empty-interior",
+  "tool": "built-in image_gen",
+  "prompt": "EDIT ONLY the movable furnishings in Image 1. Remove all movable beds, tables, chairs, stools, cabinets, barrels, baskets, rugs and loose objects. Reconstruct the same continuous original floor beneath them. Preserve the strict 90-degree orthographic camera, exact square room outline, wall TOPS, wall thickness, door gap, window slivers, fixed masonry hearth and all external alpha perfectly. This must be the exact SAME room as Image 1 with empty usable space, not a redesigned building. No people, new objects, text, grid, side facades, vertical wall faces, background or watermark.",
+  "source": "data/vtt/overhead-20261015/house-empty-015-interior.png",
+  "sourceSha256": "383ec2130f13848da0680de4081c54fe69d6759c1f2f9d06949b398d6c2ee1ca",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/house-empty-015-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/house-empty-015-interior.webp",
+  "sha256": "f995dc462f409461137ba85533e91642233b60cb8083b1cad2aa10befbd5fd7d",
+  "thumbnailSha256": "dbd0b83ae850320e86bcf98f458e7afe3a5ac419ef8fe790a4eba7543e2f9dcf",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 354516,
+  "clearFraction": 0.534155859375,
+  "opaqueFraction": 0.46126953125,
+  "legacy": [
+    "/vtt/houses-empty-20261014/house-015-interior.webp"
+  ],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}

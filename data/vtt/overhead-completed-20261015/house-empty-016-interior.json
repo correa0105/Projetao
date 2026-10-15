@@ -1,0 +1,31 @@
+{
+  "parent": "house-016-interior",
+  "parentSourceSha256": "b1512b123c4081cc2cf9f6579c9c29b37b70408be60aa231d0908858e7df4797",
+  "id": "house-empty-016-interior",
+  "name": "Casa do deserto · vazia · Interior",
+  "kind": "empty-interior",
+  "tool": "built-in image_gen",
+  "prompt": "EDIT ONLY the movable furnishings in Image 1. Remove all movable beds, tables, chairs, stools, cabinets, barrels, baskets, rugs and loose objects. Reconstruct the same continuous original floor beneath them. Preserve the strict 90-degree orthographic camera, exact square room outline, wall TOPS, wall thickness, door gap, window slivers, fixed masonry hearth and all external alpha perfectly. This must be the exact SAME room as Image 1 with empty usable space, not a redesigned building. No people, new objects, text, grid, side facades, vertical wall faces, background or watermark.",
+  "source": "data/vtt/overhead-20261015/house-empty-016-interior.png",
+  "sourceSha256": "ccf2926fa7241ea2462dc92d3bd94b463c0e0608a63cd35c23ca34263f58f59f",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/house-empty-016-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/house-empty-016-interior.webp",
+  "sha256": "83ed104f25888a73ee869789105788a329c4d5b30d3724b483548eface3e6b8a",
+  "thumbnailSha256": "de4a53c8fcdb6e7238ffe544976a0d6d91121b855e01c4bf5a8b6a8ed2694217",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 325682,
+  "clearFraction": 0.5382515625,
+  "opaqueFraction": 0.457430859375,
+  "legacy": [
+    "/vtt/houses-empty-20261014/house-016-interior.webp"
+  ],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}

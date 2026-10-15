@@ -1,0 +1,29 @@
+{
+  "id": "resident-018",
+  "name": "Noé · Mensageiro",
+  "kind": "resident",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE fantasy VTT civilian pawn. Subject: small adult halfling man with olive skin and curly hair, simple gray hood, muted blue tunic, brown trousers and a compact leather letter satchel. CRITICAL CAMERA: a TRUE ZENITH / NADIR PLAN VIEW, orthographic projection from DIRECTLY ABOVE her head, camera optical axis perfectly VERTICAL, 90 degrees to the floor. Like a tactical battlemap token photographed straight down from the ceiling. Show only the TOP of her hair bun and crown, broad shoulders, upper back, top surfaces of forearms and hands. Her body hides her legs and most of her feet. The crown and shoulders dominate a COMPACT roughly square silhouette. She faces the BOTTOM of the image. NO FACE, eyes, cheeks, chest, apron front, long visible torso, frontal legs, standing doll silhouette, three-quarter angle, isometric view, horizon, pedestal, token rim, circle, floor or ground. Detailed realistic hand-painted medieval game sprite, crisp texture, restrained earthy colors. Genuine transparent alpha outside the overhead silhouette; small contact shadow only. Exactly one civilian, centered, modest padding, no text, labels, signature or UI.",
+  "source": "data/vtt/overhead-20261015/resident-018.png",
+  "sourceSha256": "e72b2cd583bae0e7525d5d4eaef693b115d06a5294dad2e96b9d7e60227a79b8",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/resident-018.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/resident-018.webp",
+  "sha256": "4246e4cd0b3b0b47f8c79e21867b9c1f8de8b3835280b88af4bd2fe4e0fbb3b4",
+  "thumbnailSha256": "5f22e605ce4f311e94677398727375ba4ed3a395c145f080704f8df35fe2edc3",
+  "pixelWidth": 756,
+  "pixelHeight": 675,
+  "bytes": 175550,
+  "clearFraction": 0.41423672349598273,
+  "opaqueFraction": 0.5452655300803448,
+  "legacy": [
+    "/vtt/village-life-20261014/resident-018.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

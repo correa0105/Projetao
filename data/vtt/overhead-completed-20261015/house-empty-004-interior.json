@@ -1,0 +1,31 @@
+{
+  "parent": "house-004-interior",
+  "parentSourceSha256": "b4dcb0e537d851be6e06c898beb4befb886084a5213c65e1b45546f0e9d605ad",
+  "id": "house-empty-004-interior",
+  "name": "Casa do pescador · vazia · Interior",
+  "kind": "empty-interior",
+  "tool": "built-in image_gen",
+  "prompt": "EDIT ONLY the movable furnishings in Image 1. Remove all movable beds, tables, chairs, stools, cabinets, barrels, baskets, rugs and loose objects. Reconstruct the same continuous original floor beneath them. Preserve the strict 90-degree orthographic camera, exact square room outline, wall TOPS, wall thickness, door gap, window slivers, fixed masonry hearth and all external alpha perfectly. This must be the exact SAME room as Image 1 with empty usable space, not a redesigned building. No people, new objects, text, grid, side facades, vertical wall faces, background or watermark.",
+  "source": "data/vtt/overhead-20261015/house-empty-004-interior.png",
+  "sourceSha256": "e41cc1caf4ec51e72e01c13655aebfeb70779df0da2cc1fa8e12059941b47f3d",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/house-empty-004-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/house-empty-004-interior.webp",
+  "sha256": "dcbe9c446fdf6946bac15b54685c9ee038a8d5e7375085b3f4b7e815828d6fab",
+  "thumbnailSha256": "737f3844c5c103c1fc4df8d4d22c08529ad5b1b36574359f653ee0d9390d5987",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 442590,
+  "clearFraction": 0.54217890625,
+  "opaqueFraction": 0.45348515625,
+  "legacy": [
+    "/vtt/houses-empty-20261014/house-004-interior.webp"
+  ],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}

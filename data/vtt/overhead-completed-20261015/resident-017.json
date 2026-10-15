@@ -1,0 +1,29 @@
+{
+  "id": "resident-017",
+  "name": "Celina · Cozinheira",
+  "kind": "resident",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE fantasy VTT civilian pawn. Subject: older light tan skinned woman with a cream cloth headscarf, brown apron over an earth red dress, holding a wooden ladle. CRITICAL CAMERA: a TRUE ZENITH / NADIR PLAN VIEW, orthographic projection from DIRECTLY ABOVE her head, camera optical axis perfectly VERTICAL, 90 degrees to the floor. Like a tactical battlemap token photographed straight down from the ceiling. Show only the TOP of her hair bun and crown, broad shoulders, upper back, top surfaces of forearms and hands. Her body hides her legs and most of her feet. The crown and shoulders dominate a COMPACT roughly square silhouette. She faces the BOTTOM of the image. NO FACE, eyes, cheeks, chest, apron front, long visible torso, frontal legs, standing doll silhouette, three-quarter angle, isometric view, horizon, pedestal, token rim, circle, floor or ground. Detailed realistic hand-painted medieval game sprite, crisp texture, restrained earthy colors. Genuine transparent alpha outside the overhead silhouette; small contact shadow only. Exactly one civilian, centered, modest padding, no text, labels, signature or UI.",
+  "source": "data/vtt/overhead-20261015/resident-017.png",
+  "sourceSha256": "fc77a342c145b3a7365e5d50997d71d8077db245a9e0fa0f8630855d63c85851",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/resident-017.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/resident-017.webp",
+  "sha256": "5baa6d7b471b63d2560fe2a39d6e23c87f122610aea836b57b3a43b6114ecba8",
+  "thumbnailSha256": "43bd2e845c20c76a718387b916a34e70b1cd689ecea650aa9995f33a63397ce0",
+  "pixelWidth": 738,
+  "pixelHeight": 756,
+  "bytes": 176470,
+  "clearFraction": 0.4835785262614531,
+  "opaqueFraction": 0.4892584706270343,
+  "legacy": [
+    "/vtt/village-life-20261014/resident-017.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

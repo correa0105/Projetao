@@ -1,0 +1,27 @@
+{
+  "id": "animal-029",
+  "name": "Castor",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: brown beaver with broad flat paddle tail. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-029.png",
+  "sourceSha256": "3c2545702d792aba1b2d2cfaf9c3dce692cab88dec9efa3b02732993c79bf7ab",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-029.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-029.webp",
+  "sha256": "1bbb484aab327ae18c7b3da87850886d4464bd59c3b0f3286ffef079b2002ada",
+  "thumbnailSha256": "a39156d87e2d85737cff74549fb66b6b8abe75a5dbc8d0a5ee78e47ba374da01",
+  "pixelWidth": 443,
+  "pixelHeight": 1008,
+  "bytes": 166006,
+  "clearFraction": 0.5079812963560142,
+  "opaqueFraction": 0.4667535562005088,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

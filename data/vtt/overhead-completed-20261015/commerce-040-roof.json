@@ -1,0 +1,27 @@
+{
+  "id": "commerce-040-roof",
+  "name": "Casa dos mercadores · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Casa dos mercadores roof, 16 by 12 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.333. Roof material: copper-green roof panels. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-040-roof.png",
+  "sourceSha256": "f0a69b2a85774247ec6bb87fd154665b3d14fc0209bf457fcd6fc9e013b3a58d",
+  "sourcePixels": {
+    "width": 1448,
+    "height": 1086
+  },
+  "image": "/vtt/overhead-20261015/commerce-040-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-040-roof.webp",
+  "sha256": "da05ee9fc312cdcb6509f14341145e901bd81db54c0e6bf4e7e6c52ab8d88896",
+  "thumbnailSha256": "69f682a9ea4bbadbe05caf65bbd72b82c0f2dfd723aa26581b65524035b97985",
+  "pixelWidth": 1600,
+  "pixelHeight": 1200,
+  "bytes": 655792,
+  "clearFraction": 0.20831354166666666,
+  "opaqueFraction": 0.7841625,
+  "legacy": [],
+  "physicalSize": {
+    "width": 16,
+    "height": 12
+  }
+}

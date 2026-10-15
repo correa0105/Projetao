@@ -1,0 +1,29 @@
+{
+  "id": "furniture-097",
+  "name": "Púlpito de leitura",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: oak lectern with an open blank parchment ledger. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-097.png",
+  "sourceSha256": "99a7d0325c0c92d197fdc956ca5d60892697e1c81df7f8fc3529f1b0fde14ab6",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-097.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-097.webp",
+  "sha256": "4025374f06cea8e568dea42ac164cab3332681d321373e1cf452225035c06e37",
+  "thumbnailSha256": "ac23d00c85d21e40bf2278cab1f2e756b7e665ca1f97e49c94ea6e58b7ca6e1f",
+  "pixelWidth": 1008,
+  "pixelHeight": 879,
+  "bytes": 356184,
+  "clearFraction": 0.19981106777181862,
+  "opaqueFraction": 0.7933212344475143,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-097.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

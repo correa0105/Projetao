@@ -1,0 +1,29 @@
+{
+  "id": "furniture-043",
+  "name": "Bancada de alquimia",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: alchemists worktable with small glass flasks, mortar and restrained herbs. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 2 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-043.png",
+  "sourceSha256": "09c03888f9500c68c36f5c993aaf4602f1a325d3d268689f2a2424304fe457a5",
+  "sourcePixels": {
+    "width": 1774,
+    "height": 887
+  },
+  "image": "/vtt/overhead-20261015/furniture-043.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-043.webp",
+  "sha256": "ea3f6f31d9cc67fbffce6e235979a70a1cd02c10a45c7b577e934a3588e972ee",
+  "thumbnailSha256": "ee24d1e68dd153e87100b1a9cd9f020406d0736a3082fbe19e5c8ea2a61b73d2",
+  "pixelWidth": 1008,
+  "pixelHeight": 456,
+  "bytes": 228060,
+  "clearFraction": 0.25910696881091616,
+  "opaqueFraction": 0.7320232003620162,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-043.webp"
+  ],
+  "physicalSize": {
+    "width": 2,
+    "height": 1
+  }
+}

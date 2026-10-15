@@ -1,0 +1,74 @@
+/* Shared ink, brass and stone; the gallery includes both figures and nameplates. */
+:root .app-shell[data-page='hall'] .hall-of-fame:not(.embedded){padding:0 0 100px;background:#14120f;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-gallery{padding:82px max(6vw,24px) 30px;background:linear-gradient(180deg,#120e0b44 0%,#120e0b28 65%,#14120f 100%),url('/community/hall-of-honor.webp') center bottom/cover no-repeat;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-heading h2{font-size:clamp(27px,3vw,43px);margin:12px 0;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-heading p{font-size:12px;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-heading .button{margin-top:14px;min-height:32px;padding:7px 11px;font-size:10px;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-rankings{margin:22px auto 10px;max-width:1060px;padding:8px 0;gap:5px;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-rankings button{padding:8px 11px;font-size:11px;white-space:nowrap;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium{max-width:1040px;margin:32px auto 0;gap:clamp(14px,3vw,40px);align-items:end;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage{height:clamp(220px,23vw,320px);padding:0 8px 15px;}
+:root .app-shell .hall-of-fame:not(.embedded) .place-1 .hall-podium-stage{height:clamp(250px,26vw,360px);}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage::before{display:none;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage::after{left:10%;right:10%;bottom:0;height:13px;box-shadow:0 7px 15px #0009;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage>.hall-place{top:-15px;width:42px;height:42px;min-width:42px;min-height:42px;gap:0;padding:6px;font-size:9px;border-color:#b9a07870;background:#1d1913ed;box-shadow:0 4px 12px #0005;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-place svg{width:17px;height:17px;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage>.hall-character-art{margin-top:10px;height:calc(100% - 10px);max-width:100%;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details{display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:0;padding:13px 14px 9px;gap:3px 12px;clip-path:none;border:1px solid #b9915133;border-top:1px solid #b9915170;border-radius:2px;background:linear-gradient(135deg,#251e16ed,#17140fed);text-align:left;align-items:start;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details h2{display:block;grid-column:1;min-height:0;width:auto;font:500 clamp(15px,1.5vw,20px)/1.25 var(--serif);margin:0;color:#e7d5b2;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-class{grid-column:1;font-size:10px;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-owner{grid-column:1;font-size:10px;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value{grid-column:2;grid-row:1/4;margin:0;display:flex;flex-direction:column;align-items:flex-end;gap:3px;font:500 25px/1.1 var(--serif);white-space:nowrap;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value small{font:8px Arial,sans-serif;letter-spacing:.08em;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-profile-link{grid-column:1/-1;justify-content:flex-start;font-size:8px;margin:5px 0 0;padding-top:6px;border-top:1px solid #c6a46c1c;}
+:root .app-shell .hall-of-fame:not(.embedded)>:is(.hall-search,.hall-table,.hall-pagination,.hall-score-help){width:calc(100% - 48px);max-width:1120px;margin-left:auto;margin-right:auto;}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion:is(:hover,:focus-visible){transform:translateY(-3px);outline-offset:3px;}
+@media(max-width:760px){:root .app-shell .hall-of-fame:not(.embedded) .hall-gallery{padding:76px 18px 24px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-podium{gap:10px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details{padding:10px 8px;gap:3px 5px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value{font-size:21px;}}
+@media(max-width:560px){:root .app-shell .hall-of-fame:not(.embedded) .hall-podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:end;gap:7px;margin-top:32px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion.place-1{order:0;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion.place-2{order:-1;}:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage{height:145px;padding:0 0 10px;}:root .app-shell .hall-of-fame:not(.embedded) .place-1 .hall-podium-stage{height:175px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details{display:flex;flex-direction:column;align-items:center;text-align:center;padding:9px 5px;min-height:118px;gap:4px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details h2{font-size:12px;line-height:1.15;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-class{font-size:8px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-owner{font-size:8px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value{font-size:20px;align-items:center;margin:2px 0;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value small{font-size:6px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-profile-link{font-size:6px;margin-top:auto;gap:2px;width:100%;justify-content:center;}:root .app-shell .hall-of-fame:not(.embedded) .hall-profile-link svg{width:9px;height:9px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-rankings{justify-content:flex-start;overflow:auto;}:root .app-shell .hall-of-fame:not(.embedded) .hall-rankings button{font-size:10px;padding:8px 9px;}:root .app-shell .hall-of-fame:not(.embedded)>:is(.hall-search,.hall-table,.hall-pagination,.hall-score-help){width:calc(100% - 32px);}}
+/* A compact guild masthead, followed by clear areas and a room chooser. */
+:root .app-shell .guild-page{padding:82px max(5vw,20px) 100px;}
+:root .app-shell .guild-page .guild-page-heading{display:flex;align-items:center;gap:22px;margin:0 auto 25px;}
+:root .app-shell .guild-page .guild-heading-copy{min-width:0;flex:1;}
+:root .app-shell .guild-page .guild-page-heading h1{font-size:clamp(29px,3vw,42px);line-height:1.1;margin:9px 0 10px;}
+:root .app-shell .guild-page .guild-page-heading p{margin:0;max-width:640px;font-size:13px;line-height:1.7;color:#b4ab99;}
+:root .app-shell .guild-page .guild-page-heading>.guild-actions{justify-content:flex-end;max-width:370px;margin:0;gap:7px;}
+:root .app-shell .guild-page .guild-page-heading>.guild-actions button{padding:9px 11px;font-size:11px;min-height:35px;}
+:root .app-shell .guild-page .guild-page-heading>.guild-crest{flex:none;filter:drop-shadow(0 8px 10px #0007);}
+:root .app-shell .guild-page .guild-summary{gap:24px;margin:0 auto;padding:16px 0;border-top:1px solid #c5a26426;border-bottom:1px solid #c5a26426;flex-wrap:wrap;}
+:root .app-shell .guild-page .guild-summary .guild-rank{padding-right:24px;border-right:1px solid #c5a26426;}
+:root .app-shell .guild-page .guild-summary h2{font-size:25px;margin:6px 0 0;}
+:root .app-shell .guild-page .guild-summary .social-eyebrow{font-size:9px;}
+:root .app-shell .guild-page .guild-stat{display:grid;grid-template-columns:18px auto;gap:4px 8px;align-items:center;color:#c7ae7b;}
+:root .app-shell .guild-page .guild-stat strong{font:23px/1 var(--serif);color:#e6ddcb;}
+:root .app-shell .guild-page .guild-stat strong small{font:12px Arial,sans-serif;color:#9d9483;}
+:root .app-shell .guild-page .guild-stat>span{grid-column:2;font-size:10px;color:#aaa08e;}
+:root .app-shell .guild-page .guild-summary>strong{font-size:20px;}
+:root .app-shell .guild-page .guild-summary>strong small{font-size:9px;}
+:root .app-shell .guild-page .guild-summary>button{font-size:11px;padding:9px 12px;min-height:35px;}
+:root .app-shell .guild-page .guild-summary .guild-stat+button{margin-left:auto;}
+:root .app-shell .guild-page .guild-membership{display:flex;gap:7px;align-items:center;max-width:1240px;margin:12px auto 0;font-size:11px;color:#a79b83;}
+:root .app-shell .guild-page .guild-tabs{gap:0;padding:0;margin:22px auto 24px;border:1px solid #c5a26424;background:#ffffff03;}
+:root .app-shell .guild-page .guild-tabs button{flex:1;justify-content:flex-start;padding:14px 18px;border:0;border-radius:0;background:transparent;gap:12px;box-shadow:none;min-height:63px;position:relative;}
+:root .app-shell .guild-page .guild-tabs button+button{border-left:1px solid #c5a26424;}
+:root .app-shell .guild-page .guild-tabs button[aria-pressed=true]{background:linear-gradient(135deg,#b78b3025,#b78b3006);box-shadow:inset 0 -2px #c4a067;}
+:root .app-shell .guild-page .guild-tabs button>span{display:flex;flex-direction:column;align-items:flex-start;gap:5px;line-height:1.2;font-size:13px;}
+:root .app-shell .guild-page .guild-tabs button small{font-size:10px;font-weight:400;color:#a59c8a;}
+:root .app-shell .guild-page .guild-tabs button>svg{width:19px;height:19px;flex:none;}
+:root .app-shell .guild-page .guild-room-heading{display:flex;justify-content:space-between;align-items:end;gap:16px;max-width:1240px;margin:0 auto 12px;}
+:root .app-shell .guild-page .guild-room-heading h2{font:500 24px var(--serif);margin:6px 0 0;color:#e5dcc9;}
+:root .app-shell .guild-page .guild-room-heading p{margin:0;font-size:11px;color:#a69b85;max-width:300px;text-align:right;line-height:1.6;}
+:root .app-shell .guild-page .guild-room-tabs{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;margin:0 auto 16px;}
+:root .app-shell .guild-page .guild-room-tabs button{display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:5px;min-height:44px;padding:8px 6px;font-size:10px;line-height:1.4;border:1px solid #c4a0672e;background:#211b1244;}
+:root .app-shell .guild-page .guild-room-tabs button[aria-pressed=true]{border-color:#c4a0679c;background:#b58b2d1a;color:#e8cc91;}
+:root .app-shell .guild-page .guild-room-tabs button:disabled{opacity:1;color:#827966;background:#ffffff02;border-color:#c4a06714;}
+:root .app-shell .guild-page .guild-room-tabs button small{font-size:8px;color:#9c8a66;}
+:root .app-shell .guild-page .guild-room-caption{font-size:11px;padding:7px 11px;}
+@media(min-width:1100px){:root .app-shell .guild-page:has(.guild-house-layout.is-editing) .guild-page-heading{max-width:1540px;}:root .app-shell .guild-page:has(.guild-house-layout.is-editing) :is(.guild-summary,.guild-membership,.guild-tabs,.guild-room-heading,.guild-room-tabs){max-width:1540px;}}
+@media(max-width:900px){:root .app-shell .guild-page .guild-page-heading{flex-wrap:wrap;gap:14px;}:root .app-shell .guild-page .guild-page-heading>.guild-actions{width:100%;max-width:none;justify-content:flex-start;}:root .app-shell .guild-page .guild-room-tabs{grid-template-columns:repeat(4,minmax(0,1fr));}:root .app-shell .guild-page .guild-summary{gap:14px 20px;}:root .app-shell .guild-page .guild-summary .guild-rank{padding-right:20px;}}
+@media(max-width:560px){:root .app-shell .guild-page{padding:76px 16px 90px;}:root .app-shell .guild-page .guild-page-heading{gap:12px;margin-bottom:20px;}:root .app-shell .guild-page .guild-page-heading>.guild-crest{width:74px!important;height:74px!important;}:root .app-shell .guild-page .guild-page-heading .social-eyebrow{font-size:7px;letter-spacing:.12em;}:root .app-shell .guild-page .guild-page-heading h1{font-size:27px;margin:6px 0;}:root .app-shell .guild-page .guild-page-heading p{font-size:11px;line-height:1.6;}:root .app-shell .guild-page .guild-page-heading>.guild-actions{gap:5px;}:root .app-shell .guild-page .guild-page-heading>.guild-actions button{font-size:10px;padding:7px 9px;}:root .app-shell .guild-page .guild-summary{gap:13px;padding:13px 0;}:root .app-shell .guild-page .guild-summary h2{font-size:22px;}:root .app-shell .guild-page .guild-summary .guild-rank{padding-right:13px;}:root .app-shell .guild-page .guild-summary .guild-stat strong{font-size:21px;}:root .app-shell .guild-page .guild-summary>.guild-stat{gap:4px 5px;}:root .app-shell .guild-page .guild-summary>strong{margin-left:0;flex:1;}:root .app-shell .guild-page .guild-summary>button{flex:1;min-width:135px;justify-content:center;font-size:10px;}:root .app-shell .guild-page .guild-membership{font-size:10px;line-height:1.6;align-items:flex-start;}:root .app-shell .guild-page .guild-membership svg{flex:none;margin-top:2px;}:root .app-shell .guild-page .guild-tabs{margin:18px auto;}:root .app-shell .guild-page .guild-tabs button{padding:11px 7px;gap:5px;justify-content:center;min-height:52px;}:root .app-shell .guild-page .guild-tabs button>span{font-size:10px;gap:3px;}:root .app-shell .guild-page .guild-tabs button small{display:none;}:root .app-shell .guild-page .guild-tabs button>svg{width:15px;height:15px;}:root .app-shell .guild-page .guild-room-heading{gap:10px;align-items:center;}:root .app-shell .guild-page .guild-room-heading h2{font-size:21px;}:root .app-shell .guild-page .guild-room-heading .social-eyebrow{font-size:8px;}:root .app-shell .guild-page .guild-room-heading p{font-size:9px;max-width:155px;}:root .app-shell .guild-page .guild-room-tabs{gap:4px;}:root .app-shell .guild-page .guild-room-tabs button{font-size:9px;padding:7px 4px;min-height:48px;}:root .app-shell .guild-page .guild-room-tabs button small{font-size:7px;}:root .app-shell .guild-page .guild-room-tabs button svg{width:10px;}}
+
+:root .app-shell .guild-page .guild-stat strong{display:flex;align-items:baseline;gap:2px;white-space:nowrap;}
+:root .app-shell .guild-page .guild-stat strong small{display:inline;margin:0;}
+:root .app-shell .guild-page .guild-summary>strong{display:grid;grid-template-columns:18px auto;align-items:center;gap:5px;white-space:nowrap;}
+:root .app-shell .guild-page .guild-summary>strong small{grid-column:1/-1;white-space:normal;}
+@media(max-width:560px){:root .app-shell .guild-page{padding-top:28px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-gallery{padding-top:120px;}}

@@ -1,0 +1,29 @@
+{
+  "id": "resident-012",
+  "name": "Vicente · Escriba",
+  "kind": "resident",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE fantasy VTT civilian pawn. Subject: young adult man with light olive skin and short dark curls, plain navy linen robe, carrying a rolled parchment. CRITICAL CAMERA: a TRUE ZENITH / NADIR PLAN VIEW, orthographic projection from DIRECTLY ABOVE her head, camera optical axis perfectly VERTICAL, 90 degrees to the floor. Like a tactical battlemap token photographed straight down from the ceiling. Show only the TOP of her hair bun and crown, broad shoulders, upper back, top surfaces of forearms and hands. Her body hides her legs and most of her feet. The crown and shoulders dominate a COMPACT roughly square silhouette. She faces the BOTTOM of the image. NO FACE, eyes, cheeks, chest, apron front, long visible torso, frontal legs, standing doll silhouette, three-quarter angle, isometric view, horizon, pedestal, token rim, circle, floor or ground. Detailed realistic hand-painted medieval game sprite, crisp texture, restrained earthy colors. Genuine transparent alpha outside the overhead silhouette; small contact shadow only. Exactly one civilian, centered, modest padding, no text, labels, signature or UI.",
+  "source": "data/vtt/overhead-20261015/resident-012.png",
+  "sourceSha256": "111d6bff00de03966ff7188367f22eae94ad14823418a2e78cda7515d3f55498",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/resident-012.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/resident-012.webp",
+  "sha256": "1e5b02b0a982faa3df97c1d6ce1b049f0654cbad047901d3170a22a7dbc86e9b",
+  "thumbnailSha256": "f3deb1bca3d8e0c8954d4b0fc617c19f25eca3feb2d901292d664d7b81301d89",
+  "pixelWidth": 756,
+  "pixelHeight": 593,
+  "bytes": 125652,
+  "clearFraction": 0.4141527699706452,
+  "opaqueFraction": 0.5605342755427073,
+  "legacy": [
+    "/vtt/village-life-20261014/resident-012.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

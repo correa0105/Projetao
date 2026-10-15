@@ -1,0 +1,29 @@
+{
+  "id": "furniture-047",
+  "name": "Suporte de armadura",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: wooden armor stand holding a simple medieval suit of armor, no living person. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CORRECTION AFTER CAMERA REVIEW: An empty suit of armor on a stand seen from exactly above: a compact overhead silhouette showing ONLY crown of steel helmet, curved shoulder pauldrons, and gauntlet tops beside them; torso, helmet face, visor, chest plate, long legs hidden under shoulder footprint. Like an overhead player token, not a frontal mannequin. Absolute 90 degree vertical orthographic camera. No perspective tilt, no vertical front faces. Fully transparent background.\nFINAL CAMERA REVIEW: Show a compact armored shoulder silhouette with ONLY a smooth closed round STEEL HELMET CROWN seen from exactly above. Helmet is a plain rounded metal dome with a subtle center seam. NO visor opening, NO eyes, NO faceplate or front mask visible. Shoulder pauldron TOPS flank the dome, gauntlet TOPS barely peek below. Torso and legs are fully occluded under crown and shoulders.",
+  "source": "data/vtt/overhead-20261015/furniture-047.png",
+  "sourceSha256": "2ead2cbffa56890b08dd5baf62b01e603d6741925b11c3db69212b1d4c3d455d",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-047.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-047.webp",
+  "sha256": "3d10589e5d52e38e15e15641ae32822ddadac675d28bd5560a450a1acae739c3",
+  "thumbnailSha256": "d710385610a6f411f82f1399a61ae0635ccd3965f204b710cad54b6a0f41b263",
+  "pixelWidth": 1008,
+  "pixelHeight": 682,
+  "bytes": 260816,
+  "clearFraction": 0.41749871991807475,
+  "opaqueFraction": 0.5746302308802309,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-047.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

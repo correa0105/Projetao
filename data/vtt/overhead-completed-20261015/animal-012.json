@@ -1,0 +1,27 @@
+{
+  "id": "animal-012",
+  "name": "Cabra",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: rustic white-and-brown goat with short horns. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-012.png",
+  "sourceSha256": "e6205e7871c8a710314edf1411bdd31d719f71ce56aa6983458ca8ccf9acf040",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-012.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-012.webp",
+  "sha256": "b6f7a1dd65e6039d647d98d9b2c1507fa4308d06f962abf5937bb811eaf541c0",
+  "thumbnailSha256": "9b5e33d9f94aa2c91b1a81f6b76598c8bd43d9867bbe652364cd02c89e81778e",
+  "pixelWidth": 395,
+  "pixelHeight": 1008,
+  "bytes": 146790,
+  "clearFraction": 0.5119876431585292,
+  "opaqueFraction": 0.4541641551135222,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

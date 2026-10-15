@@ -1,0 +1,27 @@
+{
+  "id": "animal-027",
+  "name": "Rato",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: small grey rat with slender bare tail. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-027.png",
+  "sourceSha256": "da05012d9c48ad5df1e7558e3faa24e80ae555366701fe9522ce9156f8cfe282",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-027.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-027.webp",
+  "sha256": "ccbe83e17be8406d27adedb219b9f97e0de7c28253d07b47326ecd1f104cbdb3",
+  "thumbnailSha256": "0b3c4243ab9f417aa199c916e5a2144c4975fd230a7cefebd6cb1576c544f9b4",
+  "pixelWidth": 319,
+  "pixelHeight": 1008,
+  "bytes": 94484,
+  "clearFraction": 0.6410938199731303,
+  "opaqueFraction": 0.33230084092153056,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

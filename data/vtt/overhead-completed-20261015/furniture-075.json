@@ -1,0 +1,29 @@
+{
+  "id": "furniture-075",
+  "name": "Roda de fiar",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: compact oak spinning wheel with treadle and wool spool. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nFINAL CAMERA REVIEW: Depict a spinning wheel from strict zenith in an architectural PLAN. Its upright vertical flywheel is seen EDGE ON as a very narrow long wood strip inside a compact frame with small circular end-grain post caps. Show a horizontal axle and bobbin from above. The circular wheel SIDE FACE is completely invisible; never draw a full round wheel disk. No long visible vertical legs or frontal machine view.",
+  "source": "data/vtt/overhead-20261015/furniture-075.png",
+  "sourceSha256": "d426bc4bef53213749d5acf87b6a0c63787904c647eb7fae1fafcf5027a2355c",
+  "sourcePixels": {
+    "width": 1302,
+    "height": 1208
+  },
+  "image": "/vtt/overhead-20261015/furniture-075.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-075.webp",
+  "sha256": "32bc8109f5f12b0f03957197856c2b23e142fc1af4ef528bc2af58191eb316f9",
+  "thumbnailSha256": "f01cd294096ed62cc728d97bd8ec46a8e725ad7d78e592cc266b36756c7009dc",
+  "pixelWidth": 1008,
+  "pixelHeight": 685,
+  "bytes": 275202,
+  "clearFraction": 0.5027024678484533,
+  "opaqueFraction": 0.4649359865600742,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-075.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

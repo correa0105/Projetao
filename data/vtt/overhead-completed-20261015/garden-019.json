@@ -1,0 +1,29 @@
+{
+  "id": "garden-019",
+  "name": "Bebedouro de pássaros",
+  "kind": "garden",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT environment asset. Subject: round shallow stone birdbath on a short carved pedestal, no birds. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. For a merchant stall show the TOP rectangle of its cloth canopy and a goods-covered counter extending in front in the same floor plan: no front panel, hanging vertical cloth, upright poles or visible post sides. For a wagon show its open cargo or canvas ROOF from directly above; wheels appear as narrow side strips, never round side-view wheels. For gardening objects show top surfaces and plant foliage from straight above; tools lie flat. Realistic hand-painted medieval natural materials, crisp details, coherent human footprint 1 by 1 five-foot cells. Transparent alpha outside the complete object, tiny contact shadow only. No external ground, floor tile, room, people, background color, frame, grid, text, signature or watermark.\nMANDATORY CAMERA CORRECTION: A stone bird bath seen exactly above: ONLY a perfectly round shallow stone water basin, with a round rim and water with one small leaf. Its vertical pedestal and base are ENTIRELY HIDDEN underneath the basin. No pedestal visible toward the bottom, no oblique bowl. All seen from a strict overhead 90 degree camera with zero tilt.",
+  "source": "data/vtt/overhead-20261015/garden-019.png",
+  "sourceSha256": "fbe98fd0ee96b5ba57682c7851a9fa4d12c846b513204b51a4144775f273d981",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/garden-019.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/garden-019.webp",
+  "sha256": "3798455c43690c9379e2408cceca21a8bf36c93444fce7eb80912a69065d3b52",
+  "thumbnailSha256": "3d9c86e9461f633e180e86fe771b03f86d1eb057b1c0d8b2c97f8d73c04ed3d2",
+  "pixelWidth": 1008,
+  "pixelHeight": 1005,
+  "bytes": 444098,
+  "clearFraction": 0.321504580273237,
+  "opaqueFraction": 0.6735548448235016,
+  "legacy": [
+    "/vtt/village-life-20261014/garden-019.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

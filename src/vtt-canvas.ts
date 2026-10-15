@@ -1,10 +1,11 @@
+import {vttVisualSource} from '../shared/vtt-asset-visuals';
 import { drawTerrain } from './vtt-terrain-canvas';
 import { renderBuffer, renderWorkCache, tokenOnScreen } from './vtt-render-cache';
 import type { TerrainStroke } from '../shared/vtt';
 import {houseAsset,houseContains,houseOccupied,houseRoofOccluded,houseWalls} from '../shared/vtt-houses';
 import furniture from '../shared/vtt-home-furniture-catalog.json';
 import {villageAssets,residentAsset,houseViewActors} from '../shared/vtt-village-assets';
-const houseFurniture=new Set([...furniture,...villageAssets.filter(a=>!('actor' in a&&a.actor))].map(a=>a.image));
+const houseFurniture=new Set([...furniture,...villageAssets.filter(a=>!('actor' in a&&a.actor))].map(a=>vttVisualSource(a.image)));
 import {drawHouseDoor} from './vtt-house-doors';
 import {treeTrunk} from '../shared/vtt-tree-trunks';
 import {drawHouseVision} from './vtt-house-vision';
@@ -372,7 +373,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       if ((!o.gm || o.preview) && t.hidden) continue;
       if (!tokenOnScreen(t, view, cam.zoom)) continue;
       if (o.preview && o.viewer && t.id !== o.viewer.id && !viewerSees(o.viewer, t, s)) continue;
-      if((houseFurniture.has(t.image)||residentAsset(t))&&closedHouses.some(h=>houseContains(h,t)))continue;
+      if((houseFurniture.has(vttVisualSource(t.image))||residentAsset(t))&&closedHouses.some(h=>houseContains(h,t)))continue;
       c.save();
       if(layer === 'map') clipCanopyBase(c,s,t);
       c.translate(t.x, t.y);
@@ -506,7 +507,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.restore();
       }
     }
-    if (layer === 'map') { for(const h of sortedTokens)if(houseAsset(h)&&(houseOccupied(h,houseActors)||houseRoofOccluded(h,houseActors,s))&&visibleCanopyToken(h)&&tokenOnScreen(h,view,cam.zoom))drawHouseDoor(c,s,h,reduced,images);drawGrid(); canopyCover = captureCanopyAreas(c,s); }
+    if (layer === 'map') { for(const h of sortedTokens)if(houseAsset(h)&&visibleCanopyToken(h)&&tokenOnScreen(h,view,cam.zoom))drawHouseDoor(c,s,h,reduced,images);drawGrid(); canopyCover = captureCanopyAreas(c,s); }
   }
   const spellView = {
     left: cam.x - width / 2 / cam.zoom,

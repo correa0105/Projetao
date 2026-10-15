@@ -1,0 +1,31 @@
+{
+  "parent": "house-014-interior",
+  "parentSourceSha256": "68ac1b2ad811e9f5ec96e7b72567d0272de883118dedd60fda2fcb70c2c895e4",
+  "id": "house-empty-014-interior",
+  "name": "Casa da fazenda · vazia · Interior",
+  "kind": "empty-interior",
+  "tool": "built-in image_gen",
+  "prompt": "EDIT ONLY the movable furnishings in Image 1. Remove all movable beds, tables, chairs, stools, cabinets, barrels, baskets, rugs and loose objects. Reconstruct the same continuous original floor beneath them. Preserve the strict 90-degree orthographic camera, exact square room outline, wall TOPS, wall thickness, door gap, window slivers, fixed masonry hearth and all external alpha perfectly. This must be the exact SAME room as Image 1 with empty usable space, not a redesigned building. No people, new objects, text, grid, side facades, vertical wall faces, background or watermark.",
+  "source": "data/vtt/overhead-20261015/house-empty-014-interior.png",
+  "sourceSha256": "403af99d1adcd39227705e403a4064e249029a79de38a4afb8d995efd40e7898",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/house-empty-014-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/house-empty-014-interior.webp",
+  "sha256": "3b4c7717fe0f9851ce1a543df870cf877aa0b505c85fc8f049d9eb0eec1c1fe5",
+  "thumbnailSha256": "e487f7953546e35f85127a4816787a75850b6c1d144b5c13b86e640d983a5020",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 421820,
+  "clearFraction": 0.54043671875,
+  "opaqueFraction": 0.4549828125,
+  "legacy": [
+    "/vtt/houses-empty-20261014/house-014-interior.webp"
+  ],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}

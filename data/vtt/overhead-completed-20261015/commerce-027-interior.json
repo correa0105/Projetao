@@ -1,0 +1,27 @@
+{
+  "id": "commerce-027-interior",
+  "name": "Curtume · Interior",
+  "kind": "interior",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE furnished Curtume interior as a STRICT ARCHITECTURAL FLOOR PLAN for a medieval VTT. Room dimensions 12 by 10 five-foot cells, rectangular physical width-to-height ratio 1.200. Content: stone floor, tanning vats, hide preparation workbenches, stretched leather frames lying flat, barrels and tool chests. TRUE ORTHOGRAPHIC NADIR camera from DIRECTLY ABOVE, exactly vertical 90 degrees to the floor, absolutely no tilt, isometric or converging edges. All furniture shows ONLY its flat TOP surfaces, no cabinet fronts, drawer handles, chair backrest faces, side faces or legs. Four perimeter walls show only their thin horizontal TOP CUTS of even thickness. One open-plan room, clear walking route through the center. A single OPEN DOOR GAP centered in the BOTTOM wall, wide enough for a human. Two windows appear ONLY as thin blue-grey top slivers in the bottom wall, at 23% and 77% along that wall; no other wall openings. Do not draw a door leaf or stairs. Keep coherent human scale: chair less than one cell and bed two cells long. Realistic detailed hand-painted medieval material texture, even overhead light. Complete room centered with transparent alpha outside the rectangular wall outline, no outside floor, grass, roof, grid, labels, text, people or watermark.\nStrict plan projection for tall furniture: cupboards and bookcases show ONLY opaque horizontal top boards, NEVER their doors or book-spine faces. Fireplaces and forges show ONLY a U-shaped top-cut stone rim around an open coal pit, NEVER a front firebox opening or facade. Vertical posts appear ONLY as circular end-grain caps, with shafts occluded beneath them.",
+  "source": "data/vtt/overhead-20261015/commerce-027-interior.png",
+  "sourceSha256": "cea35631a07f6c47e5cd31f0715f117835869d50776dd05d84ff0702e9fbf9f3",
+  "sourcePixels": {
+    "width": 1374,
+    "height": 1145
+  },
+  "image": "/vtt/overhead-20261015/commerce-027-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-027-interior.webp",
+  "sha256": "12c46699cbc966a9c25338223abbfff5aa497de889df6225412befac8e74032a",
+  "thumbnailSha256": "861cf914ececa59ee309f59da46732f681d23cbe4e64211a9206db80e69820fa",
+  "pixelWidth": 1600,
+  "pixelHeight": 1333,
+  "bytes": 664756,
+  "clearFraction": 0.3850243810952738,
+  "opaqueFraction": 0.609930607651913,
+  "legacy": [],
+  "physicalSize": {
+    "width": 12,
+    "height": 10
+  }
+}

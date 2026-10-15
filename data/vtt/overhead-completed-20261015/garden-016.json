@@ -1,0 +1,29 @@
+{
+  "id": "garden-016",
+  "name": "Espantalho",
+  "kind": "garden",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT environment asset. Subject: small friendly garden scarecrow with a patched linen shirt and straw hat on a crossed timber pole. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. For a merchant stall show the TOP rectangle of its cloth canopy and a goods-covered counter extending in front in the same floor plan: no front panel, hanging vertical cloth, upright poles or visible post sides. For a wagon show its open cargo or canvas ROOF from directly above; wheels appear as narrow side strips, never round side-view wheels. For gardening objects show top surfaces and plant foliage from straight above; tools lie flat. Realistic hand-painted medieval natural materials, crisp details, coherent human footprint 1 by 1 five-foot cells. Transparent alpha outside the complete object, tiny contact shadow only. No external ground, floor tile, room, people, background color, frame, grid, text, signature or watermark.\nMANDATORY CAMERA CORRECTION: A scarecrow exactly overhead: a round straw hat crown in the center with two straight outstretched linen sleeve TOP surfaces extending left and right on a crossbar. Head, face and hanging long tunic are hidden directly below hat and shoulders. No full frontal body, no face, no vertical pole shaft. All seen from a strict overhead 90 degree camera with zero tilt.",
+  "source": "data/vtt/overhead-20261015/garden-016.png",
+  "sourceSha256": "6d2b1364fa886c2c64cd12fd74d753429d037a738d80b77be6c43953a8efe046",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/garden-016.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/garden-016.webp",
+  "sha256": "18bf7c23adb958ad7bf8c053fc2a4f19efe69bee8349cb47158efa71d85546fc",
+  "thumbnailSha256": "5759cf2d99cd69be54749a4bd7f1e4da9eb9f161c4e3ddf857d29d3993953239",
+  "pixelWidth": 1008,
+  "pixelHeight": 454,
+  "bytes": 158152,
+  "clearFraction": 0.653835396126145,
+  "opaqueFraction": 0.31004824837423955,
+  "legacy": [
+    "/vtt/village-life-20261014/garden-016.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

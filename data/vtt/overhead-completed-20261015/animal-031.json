@@ -1,0 +1,27 @@
+{
+  "id": "animal-031",
+  "name": "Pato",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: male mallard duck standing with folded wings. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-031.png",
+  "sourceSha256": "4691eccc85ccdd8094e54f0d6b35ac6a5195f778fbd8365646379577fb29e107",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-031.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-031.webp",
+  "sha256": "50881c46e3af470c0da94460b0bd11b14cc9b382b1af0ec4a70ad0a5532b40b8",
+  "thumbnailSha256": "cfbd209763cdace60303cca4eb66510740585709edccdeb831331e135677569a",
+  "pixelWidth": 510,
+  "pixelHeight": 1008,
+  "bytes": 156626,
+  "clearFraction": 0.521265172735761,
+  "opaqueFraction": 0.47109788359788357,
+  "legacy": [],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

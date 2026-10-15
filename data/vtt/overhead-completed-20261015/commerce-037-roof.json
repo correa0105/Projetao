@@ -1,0 +1,27 @@
+{
+  "id": "commerce-037-roof",
+  "name": "Casa de penhores · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Casa de penhores roof, 9 by 8 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.125. Roof material: dark green slate. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-037-roof.png",
+  "sourceSha256": "b3eb3daf5d14ee1e4718b470ab681fb612dfdda387109fd306a7bebd4126aac3",
+  "sourcePixels": {
+    "width": 1330,
+    "height": 1182
+  },
+  "image": "/vtt/overhead-20261015/commerce-037-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-037-roof.webp",
+  "sha256": "10534a61069e4c667b8f77b6a6b71ac8b996f6d66f9b09a21941e88e22981038",
+  "thumbnailSha256": "38c32d05695bd4fb1a6b856c630c6dcb18f8cebc5cf7905119bf8373d7d20c8d",
+  "pixelWidth": 1600,
+  "pixelHeight": 1422,
+  "bytes": 804774,
+  "clearFraction": 0.21947740857946554,
+  "opaqueFraction": 0.7729575421940929,
+  "legacy": [],
+  "physicalSize": {
+    "width": 9,
+    "height": 8
+  }
+}

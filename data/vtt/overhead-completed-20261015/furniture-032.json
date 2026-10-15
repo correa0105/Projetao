@@ -1,0 +1,29 @@
+{
+  "id": "furniture-032",
+  "name": "Candelabro",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: one wrought-iron standing candlestick with three candles. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-032.png",
+  "sourceSha256": "abac8b95cd8d940d6b3b9e6638526e38d1dfe87598e3ac1c299281db849c2882",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-032.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-032.webp",
+  "sha256": "f3fb9a349f708a61e693045fe4ce9652d6018eb969688742082fdba86448ca4c",
+  "thumbnailSha256": "e5a5f0ed5077c9f6bfbd88f3ca1468393e230a4afd8c16e9b7399dca91e660ae",
+  "pixelWidth": 1008,
+  "pixelHeight": 961,
+  "bytes": 156138,
+  "clearFraction": 0.7618665659118312,
+  "opaqueFraction": 0.2310733693407991,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-032.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

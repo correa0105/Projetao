@@ -1,0 +1,27 @@
+{
+  "id": "commerce-001-roof",
+  "name": "Ferraria · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Ferraria roof, 9 by 9 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.000. Roof material: dark slate roof. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-001-roof.png",
+  "sourceSha256": "0729858f801d7a5e14661f85cece864d2a71ff7cb45b5a7a15e2a1e796a85545",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/commerce-001-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-001-roof.webp",
+  "sha256": "07b5c15c2714deec16c284ca91b8732bd35e4576f8a91a9406d4f14ab0aba98b",
+  "thumbnailSha256": "7b675e5db2307ba2222b440c0219dbcf00a17a1f925b0f6286580289ea228fd4",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 878188,
+  "clearFraction": 0.213294140625,
+  "opaqueFraction": 0.780789453125,
+  "legacy": [],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "house-005-roof",
+  "name": "Casa do caçador · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated SQUARE house roof as a TRUE architectural ROOF PLAN. Identity/materials: a forest lodge with dark timber roof shingles. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. SQUARE perimeter, equal eaves on all four sides, square canvas. View only roof covering, ridge and any roof decoration from directly above. If a chimney exists, show ONLY a square black opening with a thin flat stone rim of equal width on all four sides, no upright chimney sides or projected height. NO walls, facade, windows, doors, stairs, side posts, floor or exterior ground. Detailed realistic hand-painted medieval battlemap, natural weathered materials, even overhead light. Genuine alpha transparency outside roof, with no painted ground and no broad colored shadow or halo. No text, grid, labels or watermark.",
+  "source": "data/vtt/overhead-20261015/house-005-roof.png",
+  "sourceSha256": "edd276735b67702e2008d86afd496c41283ebaf7009ac3c8740b647f0e06c0ec",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/house-005-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/house-005-roof.webp",
+  "sha256": "938c12b512a40930931c8dfef3981020ffc53fdc5d54f97950c98e215bfd7ef7",
+  "thumbnailSha256": "3579d89932c24dcae608cfbdeb5bae6421116fb81bdf363249914144f853674a",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 892320,
+  "clearFraction": 0.3433375,
+  "opaqueFraction": 0.6511296875,
+  "legacy": [
+    "/vtt/houses-20261014/house-005-roof.webp",
+    "/vtt/houses-empty-20261014/house-005-roof.webp"
+  ],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}

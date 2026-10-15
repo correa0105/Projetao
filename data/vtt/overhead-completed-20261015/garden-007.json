@@ -1,0 +1,29 @@
+{
+  "id": "garden-007",
+  "name": "Carrinho de mão",
+  "kind": "garden",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT environment asset. Subject: one wheel wooden garden wheelbarrow with a little soil and two rear handles. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. For a merchant stall show the TOP rectangle of its cloth canopy and a goods-covered counter extending in front in the same floor plan: no front panel, hanging vertical cloth, upright poles or visible post sides. For a wagon show its open cargo or canvas ROOF from directly above; wheels appear as narrow side strips, never round side-view wheels. For gardening objects show top surfaces and plant foliage from straight above; tools lie flat. Realistic hand-painted medieval natural materials, crisp details, coherent human footprint 1 by 2 five-foot cells. Transparent alpha outside the complete object, tiny contact shadow only. No external ground, floor tile, room, people, background color, frame, grid, text, signature or watermark.",
+  "source": "data/vtt/overhead-20261015/garden-007.png",
+  "sourceSha256": "fba8f4963b945c91ba4006fbb1158ee0ba0ac09d56001d22df08a8b8ab8fd9d2",
+  "sourcePixels": {
+    "width": 887,
+    "height": 1774
+  },
+  "image": "/vtt/overhead-20261015/garden-007.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/garden-007.webp",
+  "sha256": "642bb3034b5cbb500d23bb4c279195f74f44ba7ab60061ec1d3970b84ed7627e",
+  "thumbnailSha256": "142f918bb4e58fb1faab87bba9a1fd2bd8a15554928d68bbd27f78535b76d889",
+  "pixelWidth": 409,
+  "pixelHeight": 1008,
+  "bytes": 157270,
+  "clearFraction": 0.5195768812822602,
+  "opaqueFraction": 0.42853989599099623,
+  "legacy": [
+    "/vtt/village-life-20261014/garden-007.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 2
+  }
+}

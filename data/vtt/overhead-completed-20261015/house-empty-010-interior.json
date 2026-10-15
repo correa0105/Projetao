@@ -1,0 +1,31 @@
+{
+  "parent": "house-010-interior",
+  "parentSourceSha256": "f36e0686ef1030839d9720d41c2c2fde5dc0d5db0af5e19271687926e01b7039",
+  "id": "house-empty-010-interior",
+  "name": "Casa do padeiro · vazia · Interior",
+  "kind": "empty-interior",
+  "tool": "built-in image_gen",
+  "prompt": "EDIT ONLY the movable furnishings in Image 1. Remove all movable beds, tables, chairs, stools, cabinets, barrels, baskets, rugs and loose objects. Reconstruct the same continuous original floor beneath them. Preserve the strict 90-degree orthographic camera, exact square room outline, wall TOPS, wall thickness, door gap, window slivers, fixed masonry hearth and all external alpha perfectly. This must be the exact SAME room as Image 1 with empty usable space, not a redesigned building. No people, new objects, text, grid, side facades, vertical wall faces, background or watermark.",
+  "source": "data/vtt/overhead-20261015/house-empty-010-interior.png",
+  "sourceSha256": "ddbf7e6df5ce066541e183a7fb7566550fc254a99773851ad51331953db98146",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/house-empty-010-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/house-empty-010-interior.webp",
+  "sha256": "64f0684fb264c2b6e70b133b2c3cc65ce006a265fa53b925c02ebfae9dcb07ce",
+  "thumbnailSha256": "2cd8d69d340fc9e18cda3a6877f367577c4d0b93ddf628bc71a0b6210fe996ed",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 526270,
+  "clearFraction": 0.54651328125,
+  "opaqueFraction": 0.448912109375,
+  "legacy": [
+    "/vtt/houses-empty-20261014/house-010-interior.webp"
+  ],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}

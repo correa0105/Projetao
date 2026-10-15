@@ -1,0 +1,27 @@
+{
+  "id": "commerce-003-interior",
+  "name": "Boticário · Interior",
+  "kind": "interior",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE furnished Boticário interior as a STRICT ARCHITECTURAL FLOOR PLAN for a medieval VTT. Room dimensions 8 by 7 five-foot cells, rectangular physical width-to-height ratio 1.143. Content: oak floor, herb preparation tables, mortar and pestle, drying herb baskets, plain cabinet tops with bottles and an apothecary counter. TRUE ORTHOGRAPHIC NADIR camera from DIRECTLY ABOVE, exactly vertical 90 degrees to the floor, absolutely no tilt, isometric or converging edges. All furniture shows ONLY its flat TOP surfaces, no cabinet fronts, drawer handles, chair backrest faces, side faces or legs. Four perimeter walls show only their thin horizontal TOP CUTS of even thickness. One open-plan room, clear walking route through the center. A single OPEN DOOR GAP centered in the BOTTOM wall, wide enough for a human. Two windows appear ONLY as thin blue-grey top slivers in the bottom wall, at 23% and 77% along that wall; no other wall openings. Do not draw a door leaf or stairs. Keep coherent human scale: chair less than one cell and bed two cells long. Realistic detailed hand-painted medieval material texture, even overhead light. Complete room centered with transparent alpha outside the rectangular wall outline, no outside floor, grass, roof, grid, labels, text, people or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-003-interior.png",
+  "sourceSha256": "af5d7ad16c300a04bfd56a32e1dad352f030880405e61f02a55e155151439438",
+  "sourcePixels": {
+    "width": 1340,
+    "height": 1174
+  },
+  "image": "/vtt/overhead-20261015/commerce-003-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-003-interior.webp",
+  "sha256": "db50c87d485b2b117b3af465542b329c71d63c6f50ff13f38546167c22171fc5",
+  "thumbnailSha256": "5efa1bdefb6bd54d258e8dc597232179106dfe2e3ce40011efe119db3e134190",
+  "pixelWidth": 1600,
+  "pixelHeight": 1400,
+  "bytes": 624058,
+  "clearFraction": 0.3885370535714286,
+  "opaqueFraction": 0.6064401785714286,
+  "legacy": [],
+  "physicalSize": {
+    "width": 8,
+    "height": 7
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "commerce-011-interior",
+  "name": "Sapataria · Interior",
+  "kind": "interior",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE furnished Sapataria interior as a STRICT ARCHITECTURAL FLOOR PLAN for a medieval VTT. Room dimensions 8 by 7 five-foot cells, rectangular physical width-to-height ratio 1.143. Content: oak floor, cobbler workbenches, leather sheets, boot lasts, tools and finished shoes on low tables. TRUE ORTHOGRAPHIC NADIR camera from DIRECTLY ABOVE, exactly vertical 90 degrees to the floor, absolutely no tilt, isometric or converging edges. All furniture shows ONLY its flat TOP surfaces, no cabinet fronts, drawer handles, chair backrest faces, side faces or legs. Four perimeter walls show only their thin horizontal TOP CUTS of even thickness. One open-plan room, clear walking route through the center. A single OPEN DOOR GAP centered in the BOTTOM wall, wide enough for a human. Two windows appear ONLY as thin blue-grey top slivers in the bottom wall, at 23% and 77% along that wall; no other wall openings. Do not draw a door leaf or stairs. Keep coherent human scale: chair less than one cell and bed two cells long. Realistic detailed hand-painted medieval material texture, even overhead light. Complete room centered with transparent alpha outside the rectangular wall outline, no outside floor, grass, roof, grid, labels, text, people or watermark.\nStrict plan projection for tall furniture: cupboards and bookcases show ONLY opaque horizontal top boards, NEVER their doors or book-spine faces. Fireplaces and forges show ONLY a U-shaped top-cut stone rim around an open coal pit, NEVER a front firebox opening or facade. Vertical posts appear ONLY as circular end-grain caps, with shafts occluded beneath them.",
+  "source": "data/vtt/overhead-20261015/commerce-011-interior.png",
+  "sourceSha256": "02fca527f813e4cb77ad02b1218aa48fdfa3f4f0eb3d513669c4ddb3d8fe1360",
+  "sourcePixels": {
+    "width": 1340,
+    "height": 1174
+  },
+  "image": "/vtt/overhead-20261015/commerce-011-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-011-interior.webp",
+  "sha256": "5a3dcfdee37f04d45c76774e12e59766d9fe0278cb3987f75ad0153d0df4d9c0",
+  "thumbnailSha256": "fcbd1ebe0d56234cd9f46e87018041ac3cd93574a7ef97dad984728922dda622",
+  "pixelWidth": 1600,
+  "pixelHeight": 1400,
+  "bytes": 615114,
+  "clearFraction": 0.39086160714285717,
+  "opaqueFraction": 0.6046691964285714,
+  "legacy": [],
+  "physicalSize": {
+    "width": 8,
+    "height": 7
+  }
+}

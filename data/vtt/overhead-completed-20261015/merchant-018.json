@@ -1,0 +1,29 @@
+{
+  "id": "merchant-018",
+  "name": "Cesto de uvas",
+  "kind": "merchant",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT environment asset. Subject: round woven wicker basket filled with black and green grapes. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. For a merchant stall show the TOP rectangle of its cloth canopy and a goods-covered counter extending in front in the same floor plan: no front panel, hanging vertical cloth, upright poles or visible post sides. For a wagon show its open cargo or canvas ROOF from directly above; wheels appear as narrow side strips, never round side-view wheels. For gardening objects show top surfaces and plant foliage from straight above; tools lie flat. Realistic hand-painted medieval natural materials, crisp details, coherent human footprint 0.75 by 0.75 five-foot cells. Transparent alpha outside the complete object, tiny contact shadow only. No external ground, floor tile, room, people, background color, frame, grid, text, signature or watermark.",
+  "source": "data/vtt/overhead-20261015/merchant-018.png",
+  "sourceSha256": "b4c81939a11f0195b4c39202787d4cb87f5c6ffa6bfd56a005361032aa827ac5",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/merchant-018.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/merchant-018.webp",
+  "sha256": "0c0ee26775f6ea1b3a9947b216c01477d9cbfd849f691b2d285d54ff22a15065",
+  "thumbnailSha256": "d494df1dd19ed2adcb8f5fe80c7b2fa445ac3ad87ed788956431bc39578d08cb",
+  "pixelWidth": 1008,
+  "pixelHeight": 954,
+  "bytes": 396636,
+  "clearFraction": 0.3544443196565838,
+  "opaqueFraction": 0.6408563774915976,
+  "legacy": [
+    "/vtt/village-life-20261014/merchant-018.webp"
+  ],
+  "physicalSize": {
+    "width": 0.75,
+    "height": 0.75
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "furniture-069",
+  "name": "Morsa de bancada",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: heavy antique iron vise with a wooden handle. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 0.5 by 0.5 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-069.png",
+  "sourceSha256": "253ebf60d0a51fdcccd7cbbd0fe95fd4f6fb9892095fcb8ef117f4131b7f0735",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-069.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-069.webp",
+  "sha256": "d88b90f70890658ca014e40adf07c465140ec8c1f6dec88c94510004887a9b37",
+  "thumbnailSha256": "de45181d2a03c70ea3cd70e60170fa2ce6188caa6f6eaf25e57383cf968b9125",
+  "pixelWidth": 1008,
+  "pixelHeight": 925,
+  "bytes": 243622,
+  "clearFraction": 0.6287752037752038,
+  "opaqueFraction": 0.3643951093951094,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-069.webp"
+  ],
+  "physicalSize": {
+    "width": 0.5,
+    "height": 0.5
+  }
+}

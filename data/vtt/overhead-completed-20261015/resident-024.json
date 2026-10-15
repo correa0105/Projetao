@@ -1,0 +1,29 @@
+{
+  "id": "resident-024",
+  "name": "Olívia · Musicista",
+  "kind": "resident",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE fantasy VTT civilian pawn. Subject: young adult woman with light olive skin, long dark curly hair, muted purple tunic and linen skirt, carrying a wooden flute. CRITICAL CAMERA: a TRUE ZENITH / NADIR PLAN VIEW, orthographic projection from DIRECTLY ABOVE her head, camera optical axis perfectly VERTICAL, 90 degrees to the floor. Like a tactical battlemap token photographed straight down from the ceiling. Show only the TOP of her hair bun and crown, broad shoulders, upper back, top surfaces of forearms and hands. Her body hides her legs and most of her feet. The crown and shoulders dominate a COMPACT roughly square silhouette. She faces the BOTTOM of the image. NO FACE, eyes, cheeks, chest, apron front, long visible torso, frontal legs, standing doll silhouette, three-quarter angle, isometric view, horizon, pedestal, token rim, circle, floor or ground. Detailed realistic hand-painted medieval game sprite, crisp texture, restrained earthy colors. Genuine transparent alpha outside the overhead silhouette; small contact shadow only. Exactly one civilian, centered, modest padding, no text, labels, signature or UI.",
+  "source": "data/vtt/overhead-20261015/resident-024.png",
+  "sourceSha256": "b7a44ad07ecd80df3565939f4cf9b895c334881b8e57ca68693a23522bf0f27f",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/resident-024.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/resident-024.webp",
+  "sha256": "50b9656ab3b61dddc9cd790dd46a5bd1d53467403e88e08baa38052e63341079",
+  "thumbnailSha256": "f92cbdfce4ad19af3479c8f791e5dc86aabc0bb391cc8a1d409c40f4a3bcc7f8",
+  "pixelWidth": 657,
+  "pixelHeight": 756,
+  "bytes": 158460,
+  "clearFraction": 0.42936065006080226,
+  "opaqueFraction": 0.5132194599470095,
+  "legacy": [
+    "/vtt/village-life-20261014/resident-024.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

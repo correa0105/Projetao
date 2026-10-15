@@ -1,0 +1,27 @@
+{
+  "id": "animal-024",
+  "name": "Elefante",
+  "kind": "animal",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT animal pawn. Subject: large grey African elephant with broad ears trunk and ivory tusks. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, camera directly VERTICALLY ABOVE the animal, 90 degrees to the ground, like a tactical token photographed straight down from the ceiling. Show its BACK and TOP of the head, spine, shoulders, ears, tail and upper surfaces of any antlers or equipment. The head and muzzle/beak point to the BOTTOM of the image, tail or train toward TOP. Feet and hooves are mostly hidden under the body, not an upright frontal pose. For birds show the TOP of the crown, back and folded wings, never a side profile or a portrait face. For hooved animals show the dorsal back and narrow top of the mane, never a side view of the body or round side-view hooves. No rider. NO tilted camera, isometric projection, horizon, frontal chest, side face, standing doll, circle, token rim, floor, terrain or scenery. Fine realistic hand-painted natural fur/feathers/scales and restrained colors; complete anatomically believable animal, compact usable overhead silhouette, crisp edges, tiny contact shadow, genuine transparent alpha all around. No text, watermark, label, border or extra creatures.",
+  "source": "data/vtt/overhead-20261015/animal-024.png",
+  "sourceSha256": "5c508c38e7ac7dae8a30759b79aef07d7d01e5ea0b3018cb5e7fc898728b310a",
+  "sourcePixels": {
+    "width": 1024,
+    "height": 1536
+  },
+  "image": "/vtt/overhead-20261015/animal-024.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/animal-024.webp",
+  "sha256": "6707ee02d27dd3f45b80afbeac673c46ec986831043b50998218f6215adda976",
+  "thumbnailSha256": "d4602c0cb0dd0e4aafe7cd9580c6e281819ddca552eaf165c3b6328d0c99b9ed",
+  "pixelWidth": 523,
+  "pixelHeight": 1008,
+  "bytes": 128754,
+  "clearFraction": 0.6240193177334669,
+  "opaqueFraction": 0.36607522231327205,
+  "legacy": [],
+  "physicalSize": {
+    "width": 3,
+    "height": 3
+  }
+}

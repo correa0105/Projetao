@@ -1,0 +1,29 @@
+{
+  "id": "resident-008",
+  "name": "Gaspar · Pescador",
+  "kind": "resident",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE fantasy VTT civilian pawn. Subject: sun tanned adult man with short black beard, faded blue tunic, rolled brown trousers, carrying a small bucket. CRITICAL CAMERA: a TRUE ZENITH / NADIR PLAN VIEW, orthographic projection from DIRECTLY ABOVE her head, camera optical axis perfectly VERTICAL, 90 degrees to the floor. Like a tactical battlemap token photographed straight down from the ceiling. Show only the TOP of her hair bun and crown, broad shoulders, upper back, top surfaces of forearms and hands. Her body hides her legs and most of her feet. The crown and shoulders dominate a COMPACT roughly square silhouette. She faces the BOTTOM of the image. NO FACE, eyes, cheeks, chest, apron front, long visible torso, frontal legs, standing doll silhouette, three-quarter angle, isometric view, horizon, pedestal, token rim, circle, floor or ground. Detailed realistic hand-painted medieval game sprite, crisp texture, restrained earthy colors. Genuine transparent alpha outside the overhead silhouette; small contact shadow only. Exactly one civilian, centered, modest padding, no text, labels, signature or UI.",
+  "source": "data/vtt/overhead-20261015/resident-008.png",
+  "sourceSha256": "81e080bd4f419b949d7e14161b4c6023f249f612a2c48bcafeee746371f991f6",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/resident-008.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/resident-008.webp",
+  "sha256": "4059b7c1857911cd635435a3a296b5206e9a479a9cb479c294de6d6afa02b68b",
+  "thumbnailSha256": "929c14de41cc0027bb83ca8acea1218614f5f6aeabbb7d26cbe844c82119e00a",
+  "pixelWidth": 756,
+  "pixelHeight": 628,
+  "bytes": 190388,
+  "clearFraction": 0.36039497185994,
+  "opaqueFraction": 0.5934856603646412,
+  "legacy": [
+    "/vtt/village-life-20261014/resident-008.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

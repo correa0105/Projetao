@@ -1,0 +1,29 @@
+{
+  "id": "merchant-023",
+  "name": "Cavalete de anúncio",
+  "kind": "merchant",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT environment asset. Subject: rustic free standing oak A-frame market sign with a completely blank dark chalkboard. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. For a merchant stall show the TOP rectangle of its cloth canopy and a goods-covered counter extending in front in the same floor plan: no front panel, hanging vertical cloth, upright poles or visible post sides. For a wagon show its open cargo or canvas ROOF from directly above; wheels appear as narrow side strips, never round side-view wheels. For gardening objects show top surfaces and plant foliage from straight above; tools lie flat. Realistic hand-painted medieval natural materials, crisp details, coherent human footprint 1 by 1 five-foot cells. Transparent alpha outside the complete object, tiny contact shadow only. No external ground, floor tile, room, people, background color, frame, grid, text, signature or watermark.\nCRITICAL CAMERA REVIEW: A vertical standing chalkboard sign seen from DIRECTLY ABOVE: ONLY the thin horizontal wooden top edge of the board, narrow dark slate edge between two circular end-grain post caps. The board FRONT SURFACE faces sideways and is entirely invisible from zenith. The support feet extend a little front/back in plan. No broad black rectangle, no front face, no written text. Strict 90 degree orthographic nadir, transparent background.",
+  "source": "data/vtt/overhead-20261015/merchant-023.png",
+  "sourceSha256": "16a915735a80bb54ea822dc0286c84cdb96bc5279344ee564a40e7cf56b3e710",
+  "sourcePixels": {
+    "width": 1536,
+    "height": 1024
+  },
+  "image": "/vtt/overhead-20261015/merchant-023.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/merchant-023.webp",
+  "sha256": "c5811492d0b0be4da755630fe35c2d2695d45890f9c107a66635bfe89b422781",
+  "thumbnailSha256": "27c62194bfce284e332083b7826948d3e1cfc3cad029a307942776a7e4d473d3",
+  "pixelWidth": 1008,
+  "pixelHeight": 372,
+  "bytes": 83126,
+  "clearFraction": 0.6706642558457074,
+  "opaqueFraction": 0.2763456861239119,
+  "legacy": [
+    "/vtt/village-life-20261014/merchant-023.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

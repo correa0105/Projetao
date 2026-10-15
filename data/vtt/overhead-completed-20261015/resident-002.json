@@ -1,0 +1,29 @@
+{
+  "id": "resident-002",
+  "name": "Tomás · Oleiro",
+  "kind": "resident",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE fantasy VTT civilian pawn. Subject: middle aged man with light olive skin, balding head and short beard, clay stained brown apron over a muted ocher tunic. CRITICAL CAMERA: a TRUE ZENITH / NADIR PLAN VIEW, orthographic projection from DIRECTLY ABOVE her head, camera optical axis perfectly VERTICAL, 90 degrees to the floor. Like a tactical battlemap token photographed straight down from the ceiling. Show only the TOP of her hair bun and crown, broad shoulders, upper back, top surfaces of forearms and hands. Her body hides her legs and most of her feet. The crown and shoulders dominate a COMPACT roughly square silhouette. She faces the BOTTOM of the image. NO FACE, eyes, cheeks, chest, apron front, long visible torso, frontal legs, standing doll silhouette, three-quarter angle, isometric view, horizon, pedestal, token rim, circle, floor or ground. Detailed realistic hand-painted medieval game sprite, crisp texture, restrained earthy colors. Genuine transparent alpha outside the overhead silhouette; small contact shadow only. Exactly one civilian, centered, modest padding, no text, labels, signature or UI.",
+  "source": "data/vtt/overhead-20261015/resident-002.png",
+  "sourceSha256": "3f8303454f8c6187fb21f696617d35a4eec06e732b6e8b87317253adfdf721eb",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/resident-002.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/resident-002.webp",
+  "sha256": "68ff34a10f73cb639bf7b621bfe6401a197c693c0ed54f5c6c2a019f94e90293",
+  "thumbnailSha256": "e28e522e93341e7d416480f36c3c49134355d5aec10c409db42f32cbf18c0f95",
+  "pixelWidth": 756,
+  "pixelHeight": 629,
+  "bytes": 191108,
+  "clearFraction": 0.3686438539379716,
+  "opaqueFraction": 0.597574465221524,
+  "legacy": [
+    "/vtt/village-life-20261014/resident-002.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

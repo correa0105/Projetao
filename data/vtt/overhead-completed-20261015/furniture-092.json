@@ -1,0 +1,29 @@
+{
+  "id": "furniture-092",
+  "name": "Relógio de pêndulo",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: small oak freestanding pendulum clock cabinet with brass dial. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 1 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.\nCRITICAL CAMERA CORRECTION: A tall closed grandfather clock viewed exactly from above: ONLY a small rectangular opaque wooden TOP panel. The clock dial and pendulum belong to a vertical front face that is entirely hidden beneath this lid. Do not show any clock dial, pendulum or cabinet front. Orthographic 90 degrees vertical, absolutely no tilt, transparent background.",
+  "source": "data/vtt/overhead-20261015/furniture-092.png",
+  "sourceSha256": "b68ca6c6f0fc2caed5cb206f9067ec1891032a5ced72708ebd8adda076a14e56",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/furniture-092.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-092.webp",
+  "sha256": "85947b87b5d9e229c6c68ea22404361b248c5d5ff3fcfea3b00032e404aaef64",
+  "thumbnailSha256": "270ebbc5c0e3bc30a2dc47bdaea54f2dc5bb3b08ff311cce9a82cc1a342f9167",
+  "pixelWidth": 852,
+  "pixelHeight": 805,
+  "bytes": 314020,
+  "clearFraction": 0.229653282010906,
+  "opaqueFraction": 0.7617400052488846,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-092.webp"
+  ],
+  "physicalSize": {
+    "width": 1,
+    "height": 1
+  }
+}

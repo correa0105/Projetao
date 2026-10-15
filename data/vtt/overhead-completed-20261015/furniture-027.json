@@ -1,0 +1,29 @@
+{
+  "id": "furniture-027",
+  "name": "Barril",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: one closed oak barrel with iron hoops. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 0.75 by 1 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-027.png",
+  "sourceSha256": "b744693cd5bd74ca73a787e173507f71d81a6bfeebd39643f618ad405f6477de",
+  "sourcePixels": {
+    "width": 1086,
+    "height": 1448
+  },
+  "image": "/vtt/overhead-20261015/furniture-027.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-027.webp",
+  "sha256": "a3aa505a98adcb160c3ec6c6c96bb1bfd1617e9033fb112074f14fc3ace9f197",
+  "thumbnailSha256": "069e28abfdf00505e83421df2f0eea9d10d1f1f8a75d3863547dc808c74b8645",
+  "pixelWidth": 1000,
+  "pixelHeight": 1008,
+  "bytes": 426134,
+  "clearFraction": 0.32372222222222224,
+  "opaqueFraction": 0.6711825396825397,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-027.webp"
+  ],
+  "physicalSize": {
+    "width": 0.75,
+    "height": 1
+  }
+}

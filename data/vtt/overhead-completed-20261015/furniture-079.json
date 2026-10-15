@@ -1,0 +1,29 @@
+{
+  "id": "furniture-079",
+  "name": "Botas na soleira",
+  "kind": "furniture",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT household asset. Subject: pair of brown leather boots on a small rectangular coir doormat. CRITICAL CAMERA: TRUE ORTHOGRAPHIC NADIR, straight DOWN from a camera directly vertically ABOVE, 90 degrees to the ground, like an architectural plan. There is ZERO camera tilt and ZERO perspective convergence. Show ONLY upward-facing surfaces. Never show the front, vertical side, upright facade, drawer fronts, tall backrest face, front legs or any elevation. All straight opposite edges remain perfectly parallel. Round tops are CIRCLES, never ellipses. This is a battlemap sprite, not an isometric or catalog product view. Natural realistic hand-painted medieval oak, iron, leather, stone and linen materials, crisp details, restrained earth colors, even overhead light and a tiny contact shadow only. The object lies in its normal use orientation with back/north toward image TOP. Human scale footprint 0.5 by 0.5 five-foot cells. For a bed show only a rectangular mattress and a thin headboard TOP edge; for a chair show its seat and thin backrest TOP edge; for a cabinet or bookcase show ONLY its plain wooden TOP surface, never shelves, doors, drawer handles or fronts. Genuine transparent alpha around the complete single object. No floor tile, room, ground, people, text, watermark, border, haze or extra objects.",
+  "source": "data/vtt/overhead-20261015/furniture-079.png",
+  "sourceSha256": "2aa8da7173b1e1ae5b111bf2c1dbcaf7a17a9a7f36196353d1ce0539fc11811f",
+  "sourcePixels": {
+    "width": 1295,
+    "height": 1214
+  },
+  "image": "/vtt/overhead-20261015/furniture-079.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/furniture-079.webp",
+  "sha256": "6cf94f108a513b9b2d2a3153b32114405892f4a33fc0ad0409c93f54f995cb33",
+  "thumbnailSha256": "abda29309cbe825fb82d14ea9d8508f7223e92be406866d0b0228beb27d8395c",
+  "pixelWidth": 1008,
+  "pixelHeight": 805,
+  "bytes": 430586,
+  "clearFraction": 0.23279971408853398,
+  "opaqueFraction": 0.751618111012521,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-079.webp"
+  ],
+  "physicalSize": {
+    "width": 0.5,
+    "height": 0.5
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "commerce-004-roof",
+  "name": "Biblioteca · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Biblioteca roof, 14 by 12 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.167. Roof material: blue-grey slate. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-004-roof.png",
+  "sourceSha256": "cd7dc7e28b832f17c68b2fe274158e16b54ccebd96936e53bf5b8584a3d61c6e",
+  "sourcePixels": {
+    "width": 1354,
+    "height": 1161
+  },
+  "image": "/vtt/overhead-20261015/commerce-004-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-004-roof.webp",
+  "sha256": "6aaf08c5751b76a6879fd7ef916b82a55867b456a8235cb856ba1be7ea0d7bea",
+  "thumbnailSha256": "a8eea59d19231b21651187517da32dc34f83cd96eed391c8a7ee8325b63573e8",
+  "pixelWidth": 1600,
+  "pixelHeight": 1371,
+  "bytes": 763402,
+  "clearFraction": 0.21653674325309993,
+  "opaqueFraction": 0.7774416484318016,
+  "legacy": [],
+  "physicalSize": {
+    "width": 14,
+    "height": 12
+  }
+}

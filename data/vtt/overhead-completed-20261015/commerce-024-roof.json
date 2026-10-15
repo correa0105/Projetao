@@ -1,0 +1,27 @@
+{
+  "id": "commerce-024-roof",
+  "name": "Estábulo · Telhado",
+  "kind": "roof",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE isolated fantasy VTT Estábulo roof, 16 by 10 five-foot cells, rectangular perimeter with physical width-to-height ratio 1.600. Roof material: straw thatch. Camera is EXACTLY VERTICALLY ABOVE: TRUE ORTHOGRAPHIC NADIR ARCHITECTURAL ROOF PLAN, 90 degrees to ground, no perspective or tilted camera. Only the roof top surface and its ridges are visible; equal eaves on opposite sides, parallel edges. No facade, front wall, windows, door, stairs, upright chimney sides, ground, courtyard, signs or lettering. If there is a vent show only a dark square opening with a narrow flat stone rim. Fine realistic hand-painted medieval natural textures, even overhead lighting. Complete roof silhouette centered, genuine transparent alpha all around, no floor, people, broad shadow, frame or watermark.",
+  "source": "data/vtt/overhead-20261015/commerce-024-roof.png",
+  "sourceSha256": "9a5c98f41021d380a4bd6ef8797cc5c25965adfeb82013dbf2fa9d14578b4035",
+  "sourcePixels": {
+    "width": 1586,
+    "height": 992
+  },
+  "image": "/vtt/overhead-20261015/commerce-024-roof.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-024-roof.webp",
+  "sha256": "aa6bc15d4aa982b1423bfb9539001fcd7b2e9771139c4acefd292e3ae412deeb",
+  "thumbnailSha256": "83d6c29b71e3612b6918b372e006fc33666f99ff478a1820d9bedbfb3596c3ee",
+  "pixelWidth": 1600,
+  "pixelHeight": 1000,
+  "bytes": 851296,
+  "clearFraction": 0.205469375,
+  "opaqueFraction": 0.77036375,
+  "legacy": [],
+  "physicalSize": {
+    "width": 16,
+    "height": 10
+  }
+}

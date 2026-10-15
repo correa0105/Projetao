@@ -1,0 +1,29 @@
+{
+  "id": "house-025-interior",
+  "name": "Casa do escriba · Interior",
+  "kind": "interior",
+  "tool": "built-in image_gen",
+  "prompt": "EDIT Image 1 only to correct the projection of the bookcases. Keep the exact same complete room, square or rectangular outline, walls, door gap, windows, floorboards, bed or reading tables, rugs, chairs and other objects in their exact positions. Every tall bookcase must be shown ONLY as an opaque horizontal WOODEN TOP PANEL from a strict 90 degree zenith camera. The entire vertical shelf front and ALL upright book spines below the top panel are fully occluded, ZERO visible front surface. Remove the strips of frontal multicolored book spines and replace their former projected area with the same floorboards at ground level; keep the narrower wood top cap itself in place. Books may lie flat ON TOP of the opaque panels, their covers facing upward. Do not draw any new standing book spines, drawer fronts, or cabinet legs. This is a strict textured architectural PLAN, not an oblique room. Preserve all exterior alpha, wall thickness, floor plan, materials and lighting; no additional objects, text, labels, watermark or new openings.",
+  "source": "data/vtt/overhead-20261015/house-025-interior.png",
+  "sourceSha256": "bf2df1d0fec87870f6da1089b2fa695032181b2f560788090f41d22a9677a927",
+  "sourcePixels": {
+    "width": 1254,
+    "height": 1254
+  },
+  "image": "/vtt/overhead-20261015/house-025-interior.webp",
+  "thumbnail": "/vtt/overhead-thumbs-20261015/house-025-interior.webp",
+  "sha256": "243e355cd6c1c9cae2976fa12e13f9820e22e78aabdcbc48b1dd0b9db67423ac",
+  "thumbnailSha256": "c77216ce8a5ddd2ba0b0b34c47691f75fc894805828a5b1e5d487a424d3ad2f1",
+  "pixelWidth": 1600,
+  "pixelHeight": 1600,
+  "bytes": 348406,
+  "clearFraction": 0.54605390625,
+  "opaqueFraction": 0.44987109375,
+  "legacy": [
+    "/vtt/houses-20261014/house-025-interior.webp"
+  ],
+  "physicalSize": {
+    "width": 9,
+    "height": 9
+  }
+}
