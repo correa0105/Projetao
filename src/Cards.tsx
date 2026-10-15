@@ -322,19 +322,20 @@ export function Cards({
           >
             <div className="cards-detail-preview">
               <button type="button" className="cards-inspect-art" aria-label={'Inspecionar '+selected.name} onClick={() => setInspecting(selected)}><CardFace card={selected} level={previewLevel}/></button>
+              <div className="cards-detail-meta">
+              <span className="cards-rarity" data-rarity={selected.rarity} style={{color:cardRarities[selected.rarity].colour}}>{cardRarities[selected.rarity].name}</span>
+              <div className="cards-level-preview" aria-label="Comparar níveis da carta">{[1,2,3].map(level=><button type="button" key={level} aria-label={'Prévia Nv '+level} aria-pressed={previewLevel===level} onClick={()=>setPreviewLevel(level)}>{'Nv '+level}</button>)}</div>
+              </div>
             </div>
             <div className="cards-detail-copy">
-              <span className="eyebrow">{selected.family}</span>
               <h2>{selected.name}</h2>
-              <span className="cards-rarity" data-rarity={selected.rarity} style={{color:cardRarities[selected.rarity].colour}}>{cardRarities[selected.rarity].name}</span>
-              <div className="cards-level-preview" aria-label="Comparar níveis da carta"><span>Prévia</span>{[1,2,3].map(level=><button type="button" key={level} aria-label={'Prévia nível '+level} aria-pressed={previewLevel===level} onClick={()=>setPreviewLevel(level)}>{level===3?'3 · Metálica':level}</button>)}</div>
               <p>{selected.description}</p>
               <button type="button" className="cards-inspect-button" onClick={() => setInspecting(selected)}><ZoomIn size={13}/>Inspecionar</button>
               {item ? (
                 <>
                   <span className="cards-level">
                     <Sparkles size={12} />
-                    Nível {item.level} ·{' '}
+                    Nv {item.level} ·{' '}
                     {item.slot ? 'Equipada no espaço ' + item.slot : 'Na coleção'}
                   </span>
                   <div className="cards-detail-actions">

@@ -372,3 +372,6 @@
 }
 
 .card-viewer-model[data-finish='chrome'] .card-viewer-back {background-color:#bdd9e8;}
+
+.cards-detail-meta { margin-top: 10px; text-align: center; }
+.cards-detail-meta .cards-level-preview { margin-bottom: 0; }

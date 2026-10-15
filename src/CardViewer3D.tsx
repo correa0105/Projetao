@@ -82,8 +82,8 @@ export function CardViewer3D({card,level=1}:{card:Card;level?:number}) {
     <div className="card-viewer-controls">
       <button type="button" onClick={()=>{rotate(rotation.current.y+180);setSide(side==='Frente'?'Verso':'Frente');}}><Rotate3D size={14}/>Virar</button>
       <button type="button" onClick={()=>{rotate(0,0);setSide('Frente');}}><RotateCcw size={14}/>Restaurar</button>
-      {cardVisualLevel(level)<3&&<button type="button" aria-pressed={chromePreview} onClick={()=>setChromePreview(!chromePreview)}>Prévia prismática</button>}
+      {cardVisualLevel(level)<3&&<button type="button" aria-label="Prévia Nv 3" aria-pressed={chromePreview} onClick={()=>setChromePreview(!chromePreview)}>Nv 3</button>}
     </div>
-    <p className="card-viewer-help" id="card-viewer-help">Arraste para girar · Use as setas ou Home<span role="status">{side}{chrome?' · Prismática':''}</span></p>
+    <p className="card-viewer-help" id="card-viewer-help">Arraste para girar · Use as setas ou Home<span role="status">{side}{' · Nv '+(chrome?3:cardVisualLevel(level))}</span></p>
   </>;
 }

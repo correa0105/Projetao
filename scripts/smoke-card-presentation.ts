@@ -67,8 +67,13 @@ try {
         visited.push(name); await page.getByRole('button', {name,exact:true}).click();
         const levels=viewport.width===1440&&viewport.height===1000||viewport.width===320?[1,2,3]:[1];
         for(const level of levels){
-        await page.getByRole('button',{name:'Prévia nível '+level,exact:true}).click();
+        await page.getByRole('button',{name:'Prévia Nv '+level,exact:true}).click();
         await expect(page.locator('.cards-detail-preview .arcana-card-face')).toHaveAttribute('data-level',String(level));
+        await expect(page.locator('.cards-detail-meta .cards-level-preview button')).toHaveText(['Nv 1','Nv 2','Nv 3']);
+        await expect(page.locator('.cards-detail-copy > .eyebrow')).toHaveCount(0);
+        await expect(page.locator('.cards-detail-copy > h2 + p')).toHaveText(cards.find(c=>c.name===name)!.description);
+        const placement=await page.locator('.cards-detail').evaluate(el=>{const art=el.querySelector('.cards-inspect-art')!.getBoundingClientRect(),rarity=el.querySelector('.cards-detail-meta .cards-rarity')!.getBoundingClientRect(),controls=el.querySelector('.cards-level-preview')!.getBoundingClientRect(),title=el.querySelector('.cards-detail-copy h2')!.getBoundingClientRect(),text=el.querySelector('.cards-detail-copy h2 + p')!.getBoundingClientRect();return{under:rarity.top>=art.bottom,grouped:controls.top>=rarity.bottom,close:text.top-title.bottom};});
+        expect(placement.under).toBe(true);expect(placement.grouped).toBe(true);expect(placement.close).toBeLessThanOrEqual(10);
         await expect(page.locator('.cards-detail-preview .arcana-card-metallic')).toHaveCount(level===3?1:0);
         await expect(page.locator('.cards-detail-preview .arcana-card-face')).toHaveAttribute('data-finish',level===3?'chrome':'original');
         const normal = await captions(page.locator('.cards-workbench'));
@@ -87,12 +92,12 @@ try {
           const cardModel=stage.locator('.card-viewer-model'),reverse=stage.locator('.card-viewer-back');
           await expect(reverse).toHaveText('');
           await dialog.getByRole('button',{name:'Virar',exact:true}).click();
-          await expect(dialog.getByRole('status')).toHaveText('Verso');
+          await expect(dialog.getByRole('status')).toHaveText('Verso · Nv 1');
           await page.waitForTimeout(270);
           await expect(stage.locator('.card-viewer-front')).toHaveAttribute('aria-hidden','true');
           expect(await reverse.evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('back-celestial-original-20261014.webp');
           await page.screenshot({path:`test-results/card-presentation/reverse-${viewport.width}-${viewport.height}.png`});
-          await dialog.getByRole('button',{name:'Prévia prismática',exact:true}).click();
+          await dialog.getByRole('button',{name:'Prévia Nv 3',exact:true}).click();
           await expect(cardModel).toHaveAttribute('data-finish','chrome');
           expect(await reverse.evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('back-celestial-clean-20261014.webp');
           expect(await reverse.evaluate(el=>getComputedStyle(el).maskImage)).toContain('card-silhouette.svg');
@@ -113,7 +118,7 @@ try {
           expect(await cardModel.evaluate(el=>(el as HTMLElement).style.getPropertyValue('--card-chrome-x'))).not.toBe('48%');
           await page.screenshot({path:`test-results/card-presentation/chrome-front-tilted-${viewport.width}-${viewport.height}.png`});
           await page.keyboard.press('Home');await page.waitForTimeout(270);
-          await dialog.getByRole('button',{name:'Prévia prismática',exact:true}).click();
+          await dialog.getByRole('button',{name:'Prévia Nv 3',exact:true}).click();
           await stage.focus();await page.keyboard.press('ArrowRight');
           await expect(cardModel).toHaveCSS('--card-rotation-y','15deg');
           await page.keyboard.press('Home');await page.waitForTimeout(270);
@@ -156,7 +161,7 @@ try {
   }
   expect(errors).toEqual([]); expect(missing).toEqual([]);
   expect((await api('/cards/'+character.id)).every((c:{level:number})=>c.level===1)).toBe(true);
-  await writeFile('test-results/card-presentation/result.json', JSON.stringify({passed:true,cards:8,captions:true,pagination:true,inspection:true,threeFinishes:true,rotation3D:true,chromePreview:true,prismaticDeck:true,ornamentalSilhouette:true,chromeOnly:true,ravenBack:true,levelThreeChrome:true,touchRotation:true,ownedLevelsUnchanged:true,viewports:5,checks,errors,missing},null,2));
+  await writeFile('test-results/card-presentation/result.json', JSON.stringify({passed:true,levelLabels:true,metadataBelowArt:true,titleNextToText:true,noFamilyLabel:true,cards:8,captions:true,pagination:true,inspection:true,threeFinishes:true,rotation3D:true,chromePreview:true,prismaticDeck:true,ornamentalSilhouette:true,chromeOnly:true,ravenBack:true,levelThreeChrome:true,touchRotation:true,ownedLevelsUnchanged:true,viewports:5,checks,errors,missing},null,2));
   console.log('Eight cards: titles fit, two pages, ownership and inspection passed at five viewport sizes.');
 } catch(error) {
   await page.screenshot({path:'test-results/card-presentation/failure.png',fullPage:true}); throw error;
