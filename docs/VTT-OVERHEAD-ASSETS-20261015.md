@@ -65,6 +65,8 @@ O protocolo VTT é 19; abas antigas recebem a instrução para recarregar. Nenhu
 
 ## Artes e rastreabilidade
 
+Revisão do regador de cobre: bico e alça traseira alinhados no mesmo eixo horizontal, reservatório circular visto de cima. A arte e a miniatura usam o arquivo `garden-001-aligned-v2.webp`; o mapeamento atualiza também os tokens salvos com a URL antiga. O PNG anterior permanece preservado.
+
 - Prompts: [overhead-prompts-20261015.json](../data/vtt/overhead-prompts-20261015.json).
 - PNGs nativos: `data/vtt/overhead-20261015/`.
 - WebPs transparentes: `public/vtt/overhead-20261015/`.
