@@ -1,0 +1,680 @@
+{
+  "mode": "built-in",
+  "assets": [
+    {
+      "id": "garden-001",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-001.png",
+      "public": "public/vtt/village-life-20261014/garden-001.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-001.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: aged copper watering can with a long spout and perforated rose. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 0.5 by 0.5 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-001",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-001.png",
+      "public": "public/vtt/village-life-20261014/resident-001.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-001.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: adult woman with warm brown skin, curly black hair, moss green linen dress and work apron, holding one small seedling. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-002",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-002.png",
+      "public": "public/vtt/village-life-20261014/garden-002.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-002.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: wood handled steel gardening spade lying flat. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 0.5 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-002",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-002.png",
+      "public": "public/vtt/village-life-20261014/resident-002.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-002.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: middle aged man with light olive skin, balding head and short beard, clay stained brown apron over a muted ocher tunic. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-003",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-003.png",
+      "public": "public/vtt/village-life-20261014/garden-003.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-003.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: long ash wood handled iron hoe lying flat. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 0.5 by 1.5 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-003",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-003.png",
+      "public": "public/vtt/village-life-20261014/resident-003.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-003.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: broad shouldered adult woman with tan skin, auburn braid, ivory linen apron and dusty red work dress, carrying a bread loaf. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-004",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-004.png",
+      "public": "public/vtt/village-life-20261014/garden-004.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-004.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: long wood handled leaf rake with curved iron tines lying flat. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 0.75 by 1.5 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-004",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-004.png",
+      "public": "public/vtt/village-life-20261014/resident-004.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-004.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: middle aged dark skinned man wearing a straw hat, muted green tunic and brown trousers, carrying a small seed pouch. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-005",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-005.png",
+      "public": "public/vtt/village-life-20261014/garden-005.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-005.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: four tine iron garden fork with an oak handle lying flat. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 0.5 by 1.5 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-005",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-005.png",
+      "public": "public/vtt/village-life-20261014/resident-005.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-005.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: older light brown skinned woman with gray hair beneath a plain headscarf, plum linen work dress and tiny sewing pouch. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-006",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-006.png",
+      "public": "public/vtt/village-life-20261014/garden-006.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-006.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: antique steel pruning shears with leather wrapped handles. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 0.5 by 0.5 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-006",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-006.png",
+      "public": "public/vtt/village-life-20261014/resident-006.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-006.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: adult Black man with short dark hair, blue gray tunic, brown leather work apron, carrying a small carpenters hammer at his side. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-007",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-007.png",
+      "public": "public/vtt/village-life-20261014/garden-007.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-007.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: one wheel wooden garden wheelbarrow with a little soil and two rear handles. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-007",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-007.png",
+      "public": "public/vtt/village-life-20261014/resident-007.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-007.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: adult dark brown skinned woman with tightly braided black hair, olive linen robe and a small herb satchel. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-008",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-008.png",
+      "public": "public/vtt/village-life-20261014/garden-008.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-008.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: wooden divided seedling tray with tiny green shoots in dark soil. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-008",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-008.png",
+      "public": "public/vtt/village-life-20261014/resident-008.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-008.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: sun tanned adult man with short black beard, faded blue tunic, rolled brown trousers, carrying a small bucket. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-009",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-009.png",
+      "public": "public/vtt/village-life-20261014/garden-009.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-009.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: rectangular raised timber garden bed with cabbage and carrots in neatly spaced rows, contained soil only. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 3 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-009",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-009.png",
+      "public": "public/vtt/village-life-20261014/resident-009.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-009.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: adult light skinned woman with brown hair under a cream kerchief, dusty rose linen dress, carrying a small ceramic milk jug. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-010",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-010.png",
+      "public": "public/vtt/village-life-20261014/garden-010.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-010.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: square raised timber garden bed with natural chamomile, marigold and violet flowers, contained soil only. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-010",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-010.png",
+      "public": "public/vtt/village-life-20261014/resident-010.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-010.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: stocky adult man with light skin and gray beard, off white tunic, charcoal work apron and a small stoneworkers chisel. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-011",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-011.png",
+      "public": "public/vtt/village-life-20261014/garden-011.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-011.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: square raised garden bed containing rosemary, thyme and sage, contained soil only. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-011",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-011.png",
+      "public": "public/vtt/village-life-20261014/resident-011.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-011.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: adult medium brown skinned woman with black hair in a bun, dark teal linen dress and a closed book under her arm. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-012",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-012.png",
+      "public": "public/vtt/village-life-20261014/garden-012.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-012.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: free standing oak lattice with a climbing green grapevine and a few purple grapes. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-012",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-012.png",
+      "public": "public/vtt/village-life-20261014/resident-012.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-012.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: young adult man with light olive skin and short dark curls, plain navy linen robe, carrying a rolled parchment. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-013",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-013.png",
+      "public": "public/vtt/village-life-20261014/garden-013.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-013.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: open slatted timber compost bin with rich soil and brown leaves. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-013",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-013.png",
+      "public": "public/vtt/village-life-20261014/resident-013.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-013.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: stocky adult light skinned woman with red braided hair, brown apron over a plum dress and a wooden pitcher. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-014",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-014.png",
+      "public": "public/vtt/village-life-20261014/garden-014.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-014.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: oak rainwater collector with a visible water opening, mesh cover and a small wooden spigot. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-014",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-014.png",
+      "public": "public/vtt/village-life-20261014/resident-014.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-014.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: adult man with golden brown skin, curly hair, simple ocher hooded coat, carrying a plain wooden shepherds staff. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-015",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-015.png",
+      "public": "public/vtt/village-life-20261014/garden-015.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-015.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: small wooden framed glass greenhouse with visible seedling benches inside, complete glass roof, no outside floor or scenery. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 3 by 4 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-015",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-015.png",
+      "public": "public/vtt/village-life-20261014/resident-015.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-015.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: adult elf woman with copper brown skin, long black braids, leaf green linen tunic and a small folded cloth bundle. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-016",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-016.png",
+      "public": "public/vtt/village-life-20261014/garden-016.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-016.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: small friendly garden scarecrow with a patched linen shirt and straw hat on a crossed timber pole. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-016",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-016.png",
+      "public": "public/vtt/village-life-20261014/resident-016.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-016.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: short broad adult dwarf man with brown skin, a braided black beard, charcoal shirt and worn brown leather apron, carrying a small iron hammer, no armor. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-017",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-017.png",
+      "public": "public/vtt/village-life-20261014/garden-017.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-017.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: traditional woven straw beehive skep on a little timber platform, no swarm. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-017",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-017.png",
+      "public": "public/vtt/village-life-20261014/resident-017.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-017.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: older light tan skinned woman with a cream cloth headscarf, brown apron over an earth red dress, holding a wooden ladle. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-018",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-018.png",
+      "public": "public/vtt/village-life-20261014/garden-018.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-018.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: small circular weathered stone garden fountain with clear shallow water and a central carved stone flower. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-018",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-018.png",
+      "public": "public/vtt/village-life-20261014/resident-018.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-018.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: small adult halfling man with olive skin and curly hair, simple gray hood, muted blue tunic, brown trousers and a compact leather letter satchel. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-019",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-019.png",
+      "public": "public/vtt/village-life-20261014/garden-019.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-019.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: round shallow stone birdbath on a short carved pedestal, no birds. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-019",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-019.png",
+      "public": "public/vtt/village-life-20261014/resident-019.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-019.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: elderly brown skinned woman with gray hair in a bun, beige headwrap and dark blue linen dress, holding a small woven basket. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-020",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-020.png",
+      "public": "public/vtt/village-life-20261014/garden-020.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-020.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: three short blank wooden plant markers bundled as one compact object. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 0.5 by 0.5 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-020",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-020.png",
+      "public": "public/vtt/village-life-20261014/resident-020.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-020.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: elderly light skinned man with thinning gray hair, patched brown work coat and plain trousers, holding a straw broom. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-021",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-021.png",
+      "public": "public/vtt/village-life-20261014/garden-021.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-021.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: coiled supple brown leather irrigation hose with brass fittings, medieval materials, no plastic. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-021",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-021.png",
+      "public": "public/vtt/village-life-20261014/resident-021.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-021.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: adult brown skinned woman with shoulder length wavy black hair, deep red linen vest over an ivory dress and belt pouches. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-022",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-022.png",
+      "public": "public/vtt/village-life-20261014/garden-022.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-022.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: rustic oak potting bench with a few empty terracotta pots, soil scoop and a small seedling. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-022",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-022.png",
+      "public": "public/vtt/village-life-20261014/resident-022.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-022.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: broad adult light skinned man with flour dusted hair, gray linen tunic and brown trousers, carrying a small flour sack. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-023",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-023.png",
+      "public": "public/vtt/village-life-20261014/garden-023.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-023.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: three tiny linen seed packets tied with twine, no lettering. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 0.5 by 0.5 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-023",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-023.png",
+      "public": "public/vtt/village-life-20261014/resident-023.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-023.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: young adult man aged twenty with dark brown skin, short black curls, ocher linen vest, blue trousers and a tied tool roll. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-024",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-024.png",
+      "public": "public/vtt/village-life-20261014/garden-024.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-024.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: low curved border of smooth garden stones arranged as one continuous edging segment, no ground around them. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-024",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-024.png",
+      "public": "public/vtt/village-life-20261014/resident-024.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-024.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: young adult woman with light olive skin, long dark curly hair, muted purple tunic and linen skirt, carrying a wooden flute. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "garden-025",
+      "kind": "garden",
+      "native": "data/vtt/village-life-20261014/garden-025.png",
+      "public": "public/vtt/village-life-20261014/garden-025.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/garden-025.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: small oak garden pergola with delicate climbing wisteria and a complete overhead timber lattice, no ground tile. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 3 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "resident-025",
+      "kind": "resident",
+      "native": "data/vtt/village-life-20261014/resident-025.png",
+      "public": "public/vtt/village-life-20261014/resident-025.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/resident-025.webp",
+      "prompt": "Create ONE full body fantasy VTT townsfolk token sprite. Subject: elderly light brown skinned woman with gray hair, a lavender linen dress, warm gray shawl and a simple walking cane. CAMERA IS DIRECTLY OVERHEAD, a strict birds eye orthographic view looking DOWN at the crown of the head and shoulders, then the complete foreshortened torso, hands and both feet. The person faces toward the BOTTOM of the image. This is an overhead game pawn, NEVER a frontal portrait, side portrait, bust, character sheet or standing eye-level illustration. Single ordinary peaceful civilian, believable human anatomy and everyday medieval work clothing, no armor, weapons, heroic pose or magical effect. Detailed realistic painterly fantasy game art, crisp natural linen, leather and hair textures, restrained earthy colors. One complete character, centered, fill the frame with modest padding, small contact shadow at the feet. Genuine transparent alpha around every body part, no circle, token rim, base, floor, grass, scenery, background color, frame, label, text, signature, watermark, second person or extra objects. Keep the entire head, hands, legs and shoes visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-001",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-001.png",
+      "public": "public/vtt/village-life-20261014/merchant-001.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-001.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: complete rustic fruit market stall, muted red and cream canvas canopy, counter displaying apples, pears and oranges. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 3 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-002",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-002.png",
+      "public": "public/vtt/village-life-20261014/merchant-002.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-002.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: complete rustic vegetable market stall, muted green canvas canopy, counter displaying cabbages, carrots and squash. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 3 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-003",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-003.png",
+      "public": "public/vtt/village-life-20261014/merchant-003.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-003.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: complete rustic bakery market stall, tan canvas awning, counter with wicker bread baskets. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-004",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-004.png",
+      "public": "public/vtt/village-life-20261014/merchant-004.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-004.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: complete rustic fish market stall, faded blue canvas awning, wooden counter with fresh silver fish and shallow water tubs. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 3 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-005",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-005.png",
+      "public": "public/vtt/village-life-20261014/merchant-005.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-005.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: complete rustic dairy market stall, dull terracotta canvas awning, counter displaying cheese wheels and ceramic milk jugs. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-006",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-006.png",
+      "public": "public/vtt/village-life-20261014/merchant-006.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-006.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: complete rustic spice market stall, ocher canvas awning, counter with bowls of spices and herb bundles. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 3 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-007",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-007.png",
+      "public": "public/vtt/village-life-20261014/merchant-007.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-007.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: complete rustic cloth market stall, muted purple canopy, counter displaying cloth bolts in restrained earth tones. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 3 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-008",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-008.png",
+      "public": "public/vtt/village-life-20261014/merchant-008.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-008.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: complete rustic pottery market stall, off white canvas canopy, counter displaying handmade clay bowls and jugs. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 3 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-009",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-009.png",
+      "public": "public/vtt/village-life-20261014/merchant-009.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-009.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: complete rustic tool market stall, gray linen canopy, counter with iron hammers, chisels and practical hand tools, no weapons. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 3 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-010",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-010.png",
+      "public": "public/vtt/village-life-20261014/merchant-010.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-010.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: complete rustic flower market stall, cream canvas awning, counter with natural bunches of garden flowers. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 3 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-011",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-011.png",
+      "public": "public/vtt/village-life-20261014/merchant-011.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-011.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: large open four wheeled oak merchants wagon, tied barrels, folded bales and rope inside, wheels and drawbar complete, no animals or people. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 4 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-012",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-012.png",
+      "public": "public/vtt/village-life-20261014/merchant-012.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-012.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: four wheeled traveling wagon with a curved aged cream canvas cover over an oak chassis, complete wheels and drawbar, no animals or people. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 4 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-013",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-013.png",
+      "public": "public/vtt/village-life-20261014/merchant-013.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-013.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: small two wheeled oak pushcart with a display of small goods and a folded fabric canopy, complete rear handles. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-014",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-014.png",
+      "public": "public/vtt/village-life-20261014/merchant-014.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-014.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: two wheeled rustic fruit delivery cart with open apple and pear crates, complete drawbar and wheels, no animal. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 3 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-015",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-015.png",
+      "public": "public/vtt/village-life-20261014/merchant-015.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-015.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: open slatted wooden crate full of natural red and green apples. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-016",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-016.png",
+      "public": "public/vtt/village-life-20261014/merchant-016.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-016.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: open slatted wooden crate full of ripe yellow green pears. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-017",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-017.png",
+      "public": "public/vtt/village-life-20261014/merchant-017.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-017.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: open slatted wooden crate containing oranges and lemons. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-018",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-018.png",
+      "public": "public/vtt/village-life-20261014/merchant-018.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-018.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: round woven wicker basket filled with black and green grapes. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 0.75 by 0.75 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-019",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-019.png",
+      "public": "public/vtt/village-life-20261014/merchant-019.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-019.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: three small open burlap spice sacks holding peppercorns, cinnamon and turmeric, grouped as one compact cargo object. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-020",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-020.png",
+      "public": "public/vtt/village-life-20261014/merchant-020.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-020.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: three tightly tied bolts of muted linen and wool cloth grouped as one cargo bundle. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-021",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-021.png",
+      "public": "public/vtt/village-life-20261014/merchant-021.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-021.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: stack of three closed weathered oak shipping crates with simple rope bindings, no lettering. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 2 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-022",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-022.png",
+      "public": "public/vtt/village-life-20261014/merchant-022.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-022.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: low wooden market jewelry display with dark linen lining and small silver pins, bracelets and colored glass pendants. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-023",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-023.png",
+      "public": "public/vtt/village-life-20261014/merchant-023.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-023.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: rustic free standing oak A-frame market sign with a completely blank dark chalkboard. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 1 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-024",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-024.png",
+      "public": "public/vtt/village-life-20261014/merchant-024.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-024.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: freestanding oak market clothing rail with four plain linen garments hanging neatly. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    },
+    {
+      "id": "merchant-025",
+      "kind": "merchant",
+      "native": "data/vtt/village-life-20261014/merchant-025.png",
+      "public": "public/vtt/village-life-20261014/merchant-025.webp",
+      "thumbnail": "public/vtt/village-life-thumbs-20261014/merchant-025.webp",
+      "prompt": "Create ONE isolated top-down fantasy VTT environment asset. Subject: low oak booksellers display with closed leather books and rolled parchments, no lettering, no chairs. Match a realistic painterly medieval village made of weathered oak, iron, linen, clay and stone, crisp tactile details and restrained natural earth colors. Bird's-eye near-vertical orthographic camera looking down, with only a very small visible front face, back toward image top and front toward image bottom. Object occupies 2 by 1 five-foot map cells, coherent human scale. One complete object or the specified connected structure or compact set, not a sprite sheet. Use genuine transparent alpha outside the asset and a subtle contact shadow. No people, animals, modern plastic, neon, bloom, blur, grid, detached unrelated objects, outer floor tile, ground, room, scenery, background color, border, label, lettering, signature or watermark. For beds and planters keep the soil ONLY inside their frame; for stalls preserve the complete canopy, counter and connected posts with all edges visible.",
+      "transparent": true
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { Trees, Bird, Plus, X } from 'lucide-react';
 import { rockAssets } from '../shared/vtt-rock-assets';
 import { treeAssets, treeAssetMime } from '../shared/vtt-tree-assets';
 import './vtt-tree-assets.css';
-import {natureAssets} from '../shared/vtt-nature-assets';
+import {natureAssets,natureCategories} from '../shared/vtt-nature-assets';
 import {VttNatureAssets} from './VttNatureAssets';
 
 export function VttAssets({
@@ -83,9 +83,9 @@ export function VttAssets({
         >
           <Bird size={14} /> Criaturas
         </button>
-        {['Plantas','Casas','Casas vazias','Mobílias'].map(name=><button key={name} aria-pressed={collection===name} onClick={()=>setCollection(name)}>{name}<small>{natureAssets.filter(a=>a.category===name).length}</small></button>)}
+        {natureCategories.map(name=><button key={name} aria-pressed={collection===name} onClick={()=>setCollection(name)}>{name}<small>{natureAssets.filter(a=>a.category===name).length}</small></button>)}
       </nav>
-      {['Plantas','Casas','Casas vazias','Mobílias'].includes(collection) ? (
+      {natureCategories.includes(collection) ? (
         <VttNatureAssets key={collection} category={collection} query={query} gm={gm} add={addNature}/>
       ) : collection === 'creatures' ? (
         children

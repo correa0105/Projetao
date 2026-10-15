@@ -17,7 +17,7 @@ await new Promise<void>(r=>server.once('listening',r));
 const browser=await chromium.launch({channel:'msedge',headless:true}),ctx=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'}),player=await browser.newContext();
 await ctx.addInitScript(()=>{localStorage.setItem('alvorada-music-muted','true');localStorage.setItem('alvorada-effects-muted','true');});
 const page=await ctx.newPage(),errors:string[]=[],missing:string[]=[];page.on('pageerror',e=>errors.push(e.message));
-page.on('response',r=>{if(r.status()>=400&&/\/vtt\/(plants|houses|houses-empty|home-furniture|home-furniture-refined|house-parts)-20261014\//.test(r.url()))missing.push(r.url());});
+page.on('response',r=>{if(r.status()>=400&&/\/vtt\/(plants|houses|houses-empty|home-furniture|home-furniture-refined|house-parts|village-life|village-life-thumbs)-20261014\//.test(r.url()))missing.push(r.url());});
 const headers={Origin:origin,'X-Vtt-Schema-Version':String(vttProtocolVersion)};
 async function request(context:BrowserContext,path:string,method='GET',data?:unknown){const r=await context.request.fetch(origin+'/api'+path,{method,data,headers});return {status:r.status(),data:await r.json()};}
 async function api(context:BrowserContext,path:string,method='GET',data?:unknown){const r=await request(context,path,method,data);expect(r.status,JSON.stringify(r.data)).toBeLessThan(300);return r.data;}
@@ -75,6 +75,22 @@ try{
   await page.getByLabel('Buscar na biblioteca',{exact:true}).fill('cama de solteiro');await expect(page.locator('.vtt-nature-card')).toHaveCount(1);await page.locator('.vtt-nature-card').click();await page.getByRole('button',{name:'Colocar no mapa',exact:true}).click();await page.getByRole('button',{name:'Salvar mesa',exact:true}).click();
   const bed=natureAssets.find(a=>a.id==='furniture-011')!;await expect.poll(async()=>{const s=(await saved()).document.scenes[0],t=s.tokens.find((t:any)=>t.image===bed.image);return t?.height/s.grid.size;}).toBe(2);
   await page.getByLabel('Buscar na biblioteca',{exact:true}).fill('');await expect(page.locator('.vtt-nature-card')).toHaveCount(100);await expect(page.getByRole('button',{name:'Gravar tela',exact:true})).toHaveCount(0);
+  // New collections use thumbnails; previews and saved tokens retain the complete art.
+  for(const category of ['Jardinagem','Moradores','Mercadores']){
+    await page.locator('.vtt-asset-collections button').filter({hasText:category}).click();await expect(page.locator('.vtt-nature-card')).toHaveCount(25);
+    for(const card of await page.locator('.vtt-nature-card').all())await card.scrollIntoViewIfNeeded();
+    await expect.poll(()=>page.locator('.vtt-nature-card img').evaluateAll(images=>images.every(img=>(img as HTMLImageElement).complete&&(img as HTMLImageElement).naturalWidth>0))).toBe(true);
+    expect(await page.locator('.vtt-nature-card img').evaluateAll(images=>images.every(img=>(img as HTMLImageElement).naturalWidth<=224&&img.getAttribute('src')!.includes('village-life-thumbs')))).toBe(true);
+    const asset=natureAssets.find(a=>a.category===category)!;await page.locator('.vtt-nature-card').first().click();
+    await expect(page.locator('.vtt-nature-detail>img')).toHaveAttribute('src',asset.image);await expect.poll(()=>page.locator('.vtt-nature-detail>img').evaluate((img:HTMLImageElement)=>img.complete&&img.naturalWidth>0)).toBe(true);
+    await page.locator('.vtt-nature-detail select').selectOption('1.5');
+    const bounds=(await board.boundingBox())!;await page.locator('.vtt-nature-card').first().dragTo(board,{targetPosition:{x:bounds.width*.30,y:bounds.height*.55}});
+    await page.getByRole('button',{name:'Salvar mesa',exact:true}).click();
+    await expect.poll(async()=>{const s=(await saved()).document.scenes[0],t=s.tokens.find((t:any)=>t.image===asset.image);return t?.width/s.grid.size;}).toBe(asset.width*1.5);
+    const token=(await saved()).document.scenes[0].tokens.find((t:any)=>t.image===asset.image);
+    expect(token.layer).toBe(asset.actor?'tokens':'map');expect(token.bleeds).toBe(!!asset.actor);expect(token.notes).toBe(asset.notes??'');
+    if(asset.actor){const pivot=await screen(token);await page.mouse.move(pivot.x,pivot.y);await page.keyboard.down('Shift');await page.mouse.wheel(0,100);await page.keyboard.up('Shift');await page.getByRole('button',{name:'Salvar mesa',exact:true}).click();await expect.poll(async()=>Math.round((await saved()).document.scenes[0].tokens.find((t:any)=>t.id===token.id).rotation)).toBe(15);}
+  }
   for(const width of [1440,768,390]){
     await page.setViewportSize({width,height:1000});
     expect(await page.locator('.vtt-nature-card').evaluateAll(cards=>cards.every(card=>{
@@ -116,6 +132,7 @@ try{
   await api(player,doorPath,'PATCH',{open:true});
   const spectator=await browser.newContext();await api(spectator,'/auth/sign-up/email','POST',{name:'Observador',email:randomUUID()+'@example.test',password:'Test-'+randomUUID()});await api(spectator,'/vtt/join','POST',{invite:room.invite,role:'spectator'});
   expect((await request(spectator,doorPath,'PATCH',{open:false})).status).toBe(403);await spectator.close();
+  const resident=(await saved()).document.scenes[0].tokens.find((t:any)=>t.image.includes('/resident-'));expect((await request(player,root+'/tokens/'+resident.id,'PATCH',{x:resident.x+70,y:resident.y})).status).toBe(403);
   const forbidden=await request(player,root,'PUT',{revision:room.revision,document:room.document});expect(forbidden.status).toBe(403);
   // Test the actual canvas renderer with every finished roof/interior pair.
   const bundle=await build({stdin:{contents:"import{renderVtt}from'./src/vtt-canvas';import{newScene,newToken}from'./shared/vtt';import{houseAssets,houseWorld}from'./shared/vtt-houses';import{houseDoorsAnimating}from'./src/vtt-house-doors';window.houseQA={renderVtt,newScene,newToken,houseAssets,houseWorld,houseDoorsAnimating};",resolveDir:process.cwd()},bundle:true,write:false,platform:'browser',format:'iife'});
@@ -143,7 +160,7 @@ try{
     rendererChecks.push({id:asset.id,entry:true,exit:true});
   }
   expect(errors).toEqual([]);expect(missing).toEqual([]);
-  await writeFile('test-results/vtt-nature/result.json',JSON.stringify({passed:true,plants:25,houses:50,emptyHouses:25,furniture:100,library:true,assetsTab:true,search:true,scale:true,drag:true,gridSnap:true,cameraPan:true,spacePan:true,interiorVision:true,windowCones:true,doorTexture:true,rotationHandle:true,shiftWheel:true,persistentDoor:true,doorPermissions:true,doorObstruction:true,serverMovement:true,playerCannotEdit:true,roofEntryAndExit:true,viewports:3,rendererChecks,errors,missing},null,2));
+  await writeFile('test-results/vtt-nature/result.json',JSON.stringify({passed:true,plants:25,houses:50,emptyHouses:25,furniture:100,gardening:25,residents:25,merchants:25,thumbnails:true,residentBody:true,residentRotation:true,scaledNewDrag:true,library:true,assetsTab:true,search:true,scale:true,drag:true,gridSnap:true,cameraPan:true,spacePan:true,interiorVision:true,windowCones:true,doorTexture:true,rotationHandle:true,shiftWheel:true,persistentDoor:true,doorPermissions:true,doorObstruction:true,serverMovement:true,playerCannotEdit:true,roofEntryAndExit:true,viewports:3,rendererChecks,errors,missing},null,2));
   console.log('25 plants, 50 houses and 100 household assets: library, drag, scale, server walls, door entry/exit, all roof/interior pairs and three widths passed.');
 }catch(error){await page.screenshot({path:'test-results/vtt-nature/failure.png',fullPage:true});throw error;}
 finally{await browser.close();await new Promise<void>(r=>server.close(()=>r()));await pool.end();}

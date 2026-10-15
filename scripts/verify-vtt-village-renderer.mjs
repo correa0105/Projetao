@@ -1,0 +1,22 @@
+import fs from 'node:fs/promises';import path from 'node:path';import assert from 'node:assert/strict';import{createServer}from'node:http';import{build}from'esbuild';import{chromium}from'playwright';
+const bundle=await build({stdin:{contents:"export{renderVtt}from'./src/vtt-canvas';export{newScene,newToken}from'./shared/vtt';export{houseAssets,houseWorld}from'./shared/vtt-houses';export{villageAssets}from'./shared/vtt-village-assets';export{createNatureToken}from'./shared/vtt-nature-placement';",resolveDir:process.cwd()},bundle:true,write:false,format:'iife',globalName:'VillageQA',platform:'browser'});
+const server=createServer(async(req,res)=>{if(req.url==='/'){res.setHeader('Content-Type','text/html');res.end('<canvas width="1000" height="1000"></canvas>');return;}try{res.setHeader('Content-Type','image/webp');res.end(await fs.readFile(path.resolve('public','.'+req.url)));}catch{res.writeHead(404).end();}});server.listen(0,'127.0.0.1');await new Promise(r=>server.once('listening',r));
+const browser=await chromium.launch({channel:'msedge',headless:true});await fs.mkdir('test-results/village-renderer',{recursive:true});
+try{const page=await browser.newPage({reducedMotion:'reduce'});await page.goto('http://127.0.0.1:'+server.address().port);await page.addScriptTag({content:bundle.outputFiles[0].text});await page.evaluate(()=>document.fonts.ready);
+ const result=await page.evaluate(async()=>{
+  const q=VillageQA,s=q.newScene(crypto.randomUUID());s.width=s.height=1000;s.fog=s.lighting=false;s.grid.opacity=0;s.backgroundColor='#315231';
+  const a=q.houseAssets[0],h=q.newToken(crypto.randomUUID(),s);Object.assign(h,{layer:'map',image:a.image,x:500,y:500,width:a.width*70,height:a.height*70});
+  const images=new Map();for(const src of[a.image,a.interior,'/vtt/house-parts-20261014/door-vertical.webp',...q.villageAssets.map(a=>a.image)]){const im=new Image();im.src=src;await im.decode();images.set(src,im);}
+  const c=document.querySelector('canvas').getContext('2d'),o={camera:{x:500,y:500,zoom:1},width:1000,height:1000,dpr:1,images,selected:[],gm:true,preview:false,viewer:null,layer:'tokens',ruler:[],draft:null,showWalls:false,ping:null,visualEffects:false,userId:'gm'};
+  s.tokens=[h];q.renderVtt(c,s,o);const roof=c.canvas.toDataURL(),checks=[];
+  for(const a of q.villageAssets){const t=q.createNatureToken(crypto.randomUUID(),a.id,s,{x:500,y:500});Object.assign(t,q.houseWorld({x:.5,y:.5},h));s.tokens=[h,t];o.selected=[];q.renderVtt(c,s,o);const hidden=c.canvas.toDataURL()===roof;
+   if(a.actor){o.selected=[t.id];q.renderVtt(c,s,o);const selected=c.canvas.toDataURL()!==roof;o.selected=[];o.userId='player';o.gm=false;q.renderVtt(c,s,o);const unowned=c.canvas.toDataURL()===roof;t.controller='player';q.renderVtt(c,s,o);const controlled=c.canvas.toDataURL()!==roof;o.gm=true;o.userId='gm';checks.push({id:a.id,hidden,selected,unowned,controlled});}
+   else{const actor=q.newToken(crypto.randomUUID(),s);Object.assign(actor,{...q.houseWorld({x:.3,y:.3},h),vision:0});s.tokens=[h,t,actor];q.renderVtt(c,s,o);const withProp=c.canvas.toDataURL();s.tokens=[h,actor];q.renderVtt(c,s,o);checks.push({id:a.id,hidden,visible:withProp!==c.canvas.toDataURL()});}
+  }
+  const t=q.createNatureToken(crypto.randomUUID(),'resident-001',s,{x:500,y:500},3);s.tokens=[t];o.selected=[];q.renderVtt(c,s,o);const fullBody=c.canvas.toDataURL(),corners=[];
+  for(const [x,y]of[[t.x-t.width/2+4,t.y-t.height/2+4],[t.x+t.width/2-4,t.y-t.height/2+4],[t.x-t.width/2+4,t.y+t.height/2-4],[t.x+t.width/2-4,t.y+t.height/2-4]])corners.push([...c.getImageData(x,y,1,1).data].slice(0,3));
+  return{checks,fullBody,corners};
+ });
+ assert.equal(result.checks.length,75);for(const check of result.checks)assert(Object.entries(check).every(([k,v])=>k==='id'||v===true),JSON.stringify(check));assert(result.corners.every(p=>p.join(',')==='49,82,49'),'Resident has a visible rectangular or portrait background');
+ await fs.writeFile('test-results/village-renderer/full-body.png',Buffer.from(result.fullBody.split(',')[1],'base64'));await fs.writeFile('test-results/village-renderer/result.json',JSON.stringify({passed:true,assets:75,fullBody:true,checks:result.checks},null,2));console.log('75 native village images: covered interiors, selected and controlled residents, full-body transparency passed.');
+}finally{await browser.close();server.close();}

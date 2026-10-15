@@ -1,0 +1,2506 @@
+{
+  "mode": "built-in",
+  "prompts": "data/vtt/village-life-prompts-20261014.json",
+  "assets": [
+    {
+      "id": "garden-001",
+      "name": "Regador de cobre",
+      "category": "Jardinagem",
+      "width": 0.5,
+      "height": 0.5,
+      "image": "/vtt/village-life-20261014/garden-001.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-001.webp",
+        "width": 94,
+        "height": 222,
+        "bytes": 8682,
+        "sha256": "6b3fda3c6871ffc0dc45bdbcfc7a4d6eced4e9c6b52ae7260a92d8de370dd76e",
+        "transparentFraction": 0.46909143185738933
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-001.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 832020,
+        "sha256": "bfe48ae750c354a99d11932f6d33a0c16abae65c54786407d9e3a49a99e5302f",
+        "transparentFraction": 0.7580806808960926
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-001.webp",
+        "width": 422,
+        "height": 1008,
+        "bytes": 137196,
+        "sha256": "c99811a5175a820d1f6ef8ce3b5edd8b7a98f9a8af9d4b289672c96e3dc42675",
+        "transparentFraction": 0.4615469608064395
+      }
+    },
+    {
+      "id": "garden-002",
+      "name": "Pá de jardinagem",
+      "category": "Jardinagem",
+      "width": 0.5,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/garden-002.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-002.webp",
+        "width": 66,
+        "height": 222,
+        "bytes": 6214,
+        "sha256": "2c6e508af3578c96ee06faddf922081d70dc209fe5c4c9e6931276c9d3bb0bea",
+        "transparentFraction": 0.5427927927927928
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-002.png",
+        "width": 887,
+        "height": 1774,
+        "bytes": 1094053,
+        "sha256": "47f138f472c46f13baf7cf37c5a4f1065d06cee35122f9a384b663a60c85381d",
+        "transparentFraction": 0.7013691439291584
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-002.webp",
+        "width": 296,
+        "height": 1008,
+        "bytes": 96386,
+        "sha256": "93a8cc628e6371c11fd3fbde73386f823c312b3001bf57743e19e1a65b871b75",
+        "transparentFraction": 0.5325805716430716
+      }
+    },
+    {
+      "id": "garden-003",
+      "name": "Enxada",
+      "category": "Jardinagem",
+      "width": 0.5,
+      "height": 1.5,
+      "image": "/vtt/village-life-20261014/garden-003.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-003.webp",
+        "width": 59,
+        "height": 222,
+        "bytes": 3654,
+        "sha256": "a5f4b4ab6256caa86268b99a84e19fe6f6bc8d92ae5394a1b755aad8f24c0e6e",
+        "transparentFraction": 0.6629256375019087
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-003.png",
+        "width": 724,
+        "height": 2172,
+        "bytes": 911651,
+        "sha256": "73e63ed117fc923a812080091e65013dceab5ea396fe1138ba4595d0a8587112",
+        "transparentFraction": 0.7006069208306624
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-003.webp",
+        "width": 262,
+        "height": 1008,
+        "bytes": 55338,
+        "sha256": "132c1b3035ee98eff3b8e8a5b94dc810fe99d6b3742b0be3c1c57e5228cad97f",
+        "transparentFraction": 0.6452767175572519
+      }
+    },
+    {
+      "id": "garden-004",
+      "name": "Ancinho de folhas",
+      "category": "Jardinagem",
+      "width": 0.75,
+      "height": 1.5,
+      "image": "/vtt/village-life-20261014/garden-004.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-004.webp",
+        "width": 88,
+        "height": 222,
+        "bytes": 6346,
+        "sha256": "b7516672e5d44b92f4f5313a2706859d8053d12ce2e7ca5858c3d2b1abccadb8",
+        "transparentFraction": 0.752968877968878
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-004.png",
+        "width": 887,
+        "height": 1774,
+        "bytes": 674434,
+        "sha256": "04b5b85a150ab783676cef45eef1cb314885001e1608908708530d6b5882413f",
+        "transparentFraction": 0.78271068128002
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-004.webp",
+        "width": 396,
+        "height": 1008,
+        "bytes": 77088,
+        "sha256": "b270263340bf68d1fd2baef15be8e56e7ac68b06e799cd6bb428229126d6092e",
+        "transparentFraction": 0.7428250761584095
+      }
+    },
+    {
+      "id": "garden-005",
+      "name": "Forcado",
+      "category": "Jardinagem",
+      "width": 0.5,
+      "height": 1.5,
+      "image": "/vtt/village-life-20261014/garden-005.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-005.webp",
+        "width": 56,
+        "height": 222,
+        "bytes": 4376,
+        "sha256": "2d6e74d237dbeb8cdc3e18317f5a27c7fc7e7a510599badedf00f0074db2280a",
+        "transparentFraction": 0.668516731016731
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-005.png",
+        "width": 724,
+        "height": 2172,
+        "bytes": 848867,
+        "sha256": "fa5708c498584a3f232ce62de4a662db9f4d12e97399b212da00965707bcbaba",
+        "transparentFraction": 0.7023188140370156
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-005.webp",
+        "width": 249,
+        "height": 1008,
+        "bytes": 60640,
+        "sha256": "5d3fe963426817e87880da00cf01a6781a9706575c7d6bacb77700557c13d7c1",
+        "transparentFraction": 0.6443751195257219
+      }
+    },
+    {
+      "id": "garden-006",
+      "name": "Tesoura de poda",
+      "category": "Jardinagem",
+      "width": 0.5,
+      "height": 0.5,
+      "image": "/vtt/village-life-20261014/garden-006.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-006.webp",
+        "width": 105,
+        "height": 222,
+        "bytes": 11422,
+        "sha256": "e9c494650f08ba4f9257f6834988f74f4559f917bbb413e10ec9ab373368ddfa",
+        "transparentFraction": 0.502016302016302
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-006.png",
+        "width": 1240,
+        "height": 1269,
+        "bytes": 1009421,
+        "sha256": "170288e89cc80046caf843f258ad779a953beea97d2f2808210838b8786dbc3a",
+        "transparentFraction": 0.7363506952388216
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-006.webp",
+        "width": 474,
+        "height": 1008,
+        "bytes": 174182,
+        "sha256": "eb6b5e050bc3f299c51ace1dec3d164950f46f4dee26bfe9af14320533f3c70f",
+        "transparentFraction": 0.4896900743419731
+      }
+    },
+    {
+      "id": "garden-007",
+      "name": "Carrinho de mão",
+      "category": "Jardinagem",
+      "width": 1,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/garden-007.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-007.webp",
+        "width": 92,
+        "height": 222,
+        "bytes": 9322,
+        "sha256": "7706ccff6eff3e39aecd0d31d8861cd057d8de47853a3299b0eb6ae2748607d1",
+        "transparentFraction": 0.46043869956913436
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-007.png",
+        "width": 887,
+        "height": 1774,
+        "bytes": 1649742,
+        "sha256": "1c65a8d4c908d79cd16f193ce41276ce6f7efe8fda46bcc6e08395b2863161e2",
+        "transparentFraction": 0.5279936042218237
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-007.webp",
+        "width": 414,
+        "height": 1008,
+        "bytes": 150772,
+        "sha256": "125427d2a3d879feb1cbc40b1148c865ae12bba9db2ac343734d8e0f0314a824",
+        "transparentFraction": 0.46165698566060887
+      }
+    },
+    {
+      "id": "garden-008",
+      "name": "Sementeira",
+      "category": "Jardinagem",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/garden-008.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-008.webp",
+        "width": 222,
+        "height": 182,
+        "bytes": 22120,
+        "sha256": "3f18e93df567d866b4f4a6195d1908e6ea11b04eb46fd270742e5e6620d0cc51",
+        "transparentFraction": 0.19636669636669637
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-008.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2395807,
+        "sha256": "52cbb09640799a85c314f737196255add4572e24370db562113c89c51d2b547e",
+        "transparentFraction": 0.39127169453283783
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-008.webp",
+        "width": 1008,
+        "height": 826,
+        "bytes": 435174,
+        "sha256": "b29fc546d1b9d647b1f99ac79eb432f1c03411c0e249c3a7d2a5986af4ffee17",
+        "transparentFraction": 0.1826489776701641
+      }
+    },
+    {
+      "id": "garden-009",
+      "name": "Canteiro de hortaliças",
+      "category": "Jardinagem",
+      "width": 2,
+      "height": 3,
+      "image": "/vtt/village-life-20261014/garden-009.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-009.webp",
+        "width": 130,
+        "height": 222,
+        "bytes": 14874,
+        "sha256": "fab949a59a653d3f5fcce65c0cc935cbd957cdf19a2c7ba4150797ceb6e8abe5",
+        "transparentFraction": 0.2120928620928621
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-009.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2579659,
+        "sha256": "df49bec2af6eb211e2e1054e421e81302b7e96ee8b4c1a4109a64a32b20a206c",
+        "transparentFraction": 0.4479026794433594
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-009.webp",
+        "width": 586,
+        "height": 1008,
+        "bytes": 306968,
+        "sha256": "cf25dafbc10003bb7f15bd356bdfd82c45ec5e9c8c2c40ddc85312db7f13c269",
+        "transparentFraction": 0.19748835256514438
+      }
+    },
+    {
+      "id": "garden-010",
+      "name": "Canteiro de flores",
+      "category": "Jardinagem",
+      "width": 2,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/garden-010.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-010.webp",
+        "width": 222,
+        "height": 215,
+        "bytes": 26840,
+        "sha256": "bee5b7f47274b2b5c1d84a3ec9c8273f2b92a189e6f8dbb12c6aab5527369ff9",
+        "transparentFraction": 0.19262518332285775
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-010.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2318576,
+        "sha256": "54c58ed829d5816cbb756e58546d492eef9343a8e5a82099baae2c7edd80913f",
+        "transparentFraction": 0.4238964818164012
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-010.webp",
+        "width": 1008,
+        "height": 977,
+        "bytes": 515090,
+        "sha256": "944d81d1dd332cb8a9f8e54dfa486dd47c4fc5b2b5e6d2fcab0c28bbdc42bb35",
+        "transparentFraction": 0.18512087537164304
+      }
+    },
+    {
+      "id": "garden-011",
+      "name": "Canteiro de ervas",
+      "category": "Jardinagem",
+      "width": 2,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/garden-011.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-011.webp",
+        "width": 207,
+        "height": 222,
+        "bytes": 25738,
+        "sha256": "1953965d1e5f73a98a79c2f9668c36b045fe47205edc75d32f203c52ccdf57b7",
+        "transparentFraction": 0.21528049788919354
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-011.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2840906,
+        "sha256": "75fe38996ff888dd21df719ff4f86b673bb2adb645779fa2f28a026cf6b9e19a",
+        "transparentFraction": 0.36252667699406554
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-011.webp",
+        "width": 941,
+        "height": 1008,
+        "bytes": 531972,
+        "sha256": "509eb547f3edb4731b9c15db6c30d18ccbcf001e9d87d4069168df91fd0fc2be",
+        "transparentFraction": 0.21261048698615118
+      }
+    },
+    {
+      "id": "garden-012",
+      "name": "Treliça de videira",
+      "category": "Jardinagem",
+      "width": 1,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/garden-012.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-012.webp",
+        "width": 105,
+        "height": 222,
+        "bytes": 16834,
+        "sha256": "2edbc39b73c3d0e71457314121e54e23384421af0e03e9f48b7e77daa50b32e0",
+        "transparentFraction": 0.37584727584727584
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-012.png",
+        "width": 887,
+        "height": 1774,
+        "bytes": 2167145,
+        "sha256": "0a496ab80a98b2da5985514115d230550af9ed460993dcb3c2a8952c32037b0e",
+        "transparentFraction": 0.4475106416241616
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-012.webp",
+        "width": 473,
+        "height": 1008,
+        "bytes": 250810,
+        "sha256": "e2afa1e21428f79c0eabd00cab3998ee209732ba22db9dc6400909cfe44b8a5b",
+        "transparentFraction": 0.35816638142219537
+      }
+    },
+    {
+      "id": "garden-013",
+      "name": "Composteira",
+      "category": "Jardinagem",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/garden-013.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-013.webp",
+        "width": 209,
+        "height": 222,
+        "bytes": 25006,
+        "sha256": "52a33bb28627110d9e7d6349bb1528eafe677cfd733e495c26d0c0be2392cec0",
+        "transparentFraction": 0.23444976076555024
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-013.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2678741,
+        "sha256": "c1d954560fcc8245fda273822d461ead39b4bfd1f913076a5e8f44f99ebce9c3",
+        "transparentFraction": 0.36198487010625013
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-013.webp",
+        "width": 947,
+        "height": 1008,
+        "bytes": 508352,
+        "sha256": "827e6b8e05086c2632cdce0cd72664f0d2255e356d3c41a73804a72a63bfecb3",
+        "transparentFraction": 0.2247730929753105
+      }
+    },
+    {
+      "id": "garden-014",
+      "name": "Barril de chuva",
+      "category": "Jardinagem",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/garden-014.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-014.webp",
+        "width": 160,
+        "height": 222,
+        "bytes": 16970,
+        "sha256": "381c2e63e9d9708666db4265895283598b6fcb5b60c448e4946b8c7a8e84717a",
+        "transparentFraction": 0.32221283783783783
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-014.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1799680,
+        "sha256": "caf2f722af58141ee728305e1b027a25c118f97b25b73691efb7b4f116aafaf0",
+        "transparentFraction": 0.5524662388172839
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-014.webp",
+        "width": 726,
+        "height": 1008,
+        "bytes": 292286,
+        "sha256": "94f1a1199d3440dc7654cb7d6659e41b3ae305f9328b1180102f211ae1d1d18c",
+        "transparentFraction": 0.3201973741746469
+      }
+    },
+    {
+      "id": "garden-015",
+      "name": "Estufa pequena",
+      "category": "Jardinagem",
+      "width": 3,
+      "height": 4,
+      "image": "/vtt/village-life-20261014/garden-015.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-015.webp",
+        "width": 130,
+        "height": 222,
+        "bytes": 14912,
+        "sha256": "408c97c2b7a39beb50d2ac24a8539727547123a7e5070bf75cfceaafac8464b7",
+        "transparentFraction": 0.2777893277893278
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-015.png",
+        "width": 1086,
+        "height": 1448,
+        "bytes": 2368557,
+        "sha256": "a7ff0b28c9038a9f02bab97d922ca4fa8d46a6649f35a85a43654a4425b4a0dc",
+        "transparentFraction": 0.3814215072799976
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-015.webp",
+        "width": 588,
+        "height": 1008,
+        "bytes": 273198,
+        "sha256": "261ad3c1caafa9761bcfcd42d76a77d843f3783b5dc3efee0b1c725b49e50c98",
+        "transparentFraction": 0.2675618858654573
+      }
+    },
+    {
+      "id": "garden-016",
+      "name": "Espantalho",
+      "category": "Jardinagem",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/garden-016.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-016.webp",
+        "width": 222,
+        "height": 203,
+        "bytes": 17078,
+        "sha256": "7ca33d5b0a17154caa1cc81bca18292bd84c90d718c52c438fb6d61dca4ebcc3",
+        "transparentFraction": 0.6508010473527714
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-016.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1468848,
+        "sha256": "8c73ea2806cd394c82a5e14fffe6f74e2b2c6e2b3209f0413d19668d64b86c84",
+        "transparentFraction": 0.6724414886716574
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-016.webp",
+        "width": 1008,
+        "height": 923,
+        "bytes": 260672,
+        "sha256": "4689531223c9c9359cd67f301968cfab544183c8fc6295f86c08763fa8d4aaae",
+        "transparentFraction": 0.659980180226659
+      }
+    },
+    {
+      "id": "garden-017",
+      "name": "Colmeia de palha",
+      "category": "Jardinagem",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/garden-017.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-017.webp",
+        "width": 187,
+        "height": 222,
+        "bytes": 22006,
+        "sha256": "739e1a8337ce3156d69e96720ee334361ac0a0204c1e4fd8a4d3d1402d3249e0",
+        "transparentFraction": 0.25405887170593056
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-017.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1863080,
+        "sha256": "b6086600a6dc94943dc90efa3097b010d27a9704b3d8a46eaecb1c91d01b7313",
+        "transparentFraction": 0.5683700515606837
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-017.webp",
+        "width": 849,
+        "height": 1008,
+        "bytes": 426296,
+        "sha256": "adb160163f01dc2c647c092b273988023dc473ba38e35ede32a371f66925e22c",
+        "transparentFraction": 0.2459289173070092
+      }
+    },
+    {
+      "id": "garden-018",
+      "name": "Fonte de jardim",
+      "category": "Jardinagem",
+      "width": 2,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/garden-018.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-018.webp",
+        "width": 213,
+        "height": 222,
+        "bytes": 21812,
+        "sha256": "7194050f9646669fc9a430db8b7fef62ddaea55388cec2e84ee9a36370fe6695",
+        "transparentFraction": 0.3384299792750497
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-018.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2680310,
+        "sha256": "66a672af5ae8c750a5b736a45338bebe1a187f623dd48f9fca012d964ecaa738",
+        "transparentFraction": 0.3610742275436307
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-018.webp",
+        "width": 968,
+        "height": 1008,
+        "bytes": 434296,
+        "sha256": "a55d8e0d153bbba532809a6f0d356c513fca28064f73460622fde865b5ae2eb8",
+        "transparentFraction": 0.3366508018496655
+      }
+    },
+    {
+      "id": "garden-019",
+      "name": "Bebedouro de pássaros",
+      "category": "Jardinagem",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/garden-019.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-019.webp",
+        "width": 172,
+        "height": 222,
+        "bytes": 17694,
+        "sha256": "be16bca55a6ee82ff80e4f2ed748f2f474728922d33d27e67911f5a1794a0517",
+        "transparentFraction": 0.39440603394091767
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-019.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1987479,
+        "sha256": "806fb1401d0f35b4731607e357e9a587046f4158c36299d21b36bfac2a105056",
+        "transparentFraction": 0.5344905870592096
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-019.webp",
+        "width": 781,
+        "height": 1008,
+        "bytes": 335128,
+        "sha256": "5aa105be33a747b21cbedb78c017d7f6e70ad83898b1f6f442ace4317084730b",
+        "transparentFraction": 0.3932280551998862
+      }
+    },
+    {
+      "id": "garden-020",
+      "name": "Estacas de plantio",
+      "category": "Jardinagem",
+      "width": 0.5,
+      "height": 0.5,
+      "image": "/vtt/village-life-20261014/garden-020.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-020.webp",
+        "width": 165,
+        "height": 222,
+        "bytes": 14270,
+        "sha256": "577f32dcc98a3d046307791b0a7c6301d5e3be5faa93e03c8dbbc953280c5584",
+        "transparentFraction": 0.5125853125853126
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-020.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1057126,
+        "sha256": "e369883b946990c43aedc8323e36ea5f1b8877234ba1990c8d0c359cb27de933",
+        "transparentFraction": 0.7538129977691801
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-020.webp",
+        "width": 749,
+        "height": 1008,
+        "bytes": 245344,
+        "sha256": "2a6ebe92b02016123ce84dd7eed9d86ada9f9fdf15023e3d6d54aee3e70f5803",
+        "transparentFraction": 0.5084941297391231
+      }
+    },
+    {
+      "id": "garden-021",
+      "name": "Mangueira de couro",
+      "category": "Jardinagem",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/garden-021.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-021.webp",
+        "width": 222,
+        "height": 205,
+        "bytes": 18480,
+        "sha256": "f6cf42d9cd437d23a5c94257b9a57d261947c90d94da1874acfc4e28e2347e44",
+        "transparentFraction": 0.44388046583168533
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-021.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1882123,
+        "sha256": "01faacaa8c9d1f98f0726cde8ba864f850084e0a9a87f4a3be07637779b8e50e",
+        "transparentFraction": 0.5129963701482211
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-021.webp",
+        "width": 1008,
+        "height": 930,
+        "bytes": 331388,
+        "sha256": "d2d8240bd9598e7fca9eff21093d6b25a58001679f50e942b86075a5b2464e79",
+        "transparentFraction": 0.44470579450418163
+      }
+    },
+    {
+      "id": "garden-022",
+      "name": "Mesa de envasamento",
+      "category": "Jardinagem",
+      "width": 2,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/garden-022.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-022.webp",
+        "width": 222,
+        "height": 140,
+        "bytes": 14978,
+        "sha256": "47d835b1c3f7fa73dfdd6aaf13133873f84ded1b01afb3d135adbd9cef471dad",
+        "transparentFraction": 0.2525096525096525
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-022.png",
+        "width": 1774,
+        "height": 887,
+        "bytes": 2463352,
+        "sha256": "5618728698203ed9db73a49dc4859c32068760df4d20e29fb07e7562cc588243",
+        "transparentFraction": 0.33374090743280427
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-022.webp",
+        "width": 1008,
+        "height": 635,
+        "bytes": 293924,
+        "sha256": "358ae5370f48954c23b7779844cb4464c4c94bb61ff91194831ceec5dd774953",
+        "transparentFraction": 0.244680352455943
+      }
+    },
+    {
+      "id": "garden-023",
+      "name": "Saquinhos de sementes",
+      "category": "Jardinagem",
+      "width": 0.5,
+      "height": 0.5,
+      "image": "/vtt/village-life-20261014/garden-023.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-023.webp",
+        "width": 222,
+        "height": 212,
+        "bytes": 20370,
+        "sha256": "bfce3387536e935efb14b899ad8c6cf149cafbcd74cdbb6c54c0cd12fbd894e8",
+        "transparentFraction": 0.4460946795852456
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-023.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1229496,
+        "sha256": "e8389747d728a615b1d42332d9b50c80a1c7d243f17aac7dc7259922816586be",
+        "transparentFraction": 0.7248841983165831
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-023.webp",
+        "width": 898,
+        "height": 858,
+        "bytes": 296770,
+        "sha256": "d8a2a256f9c6cccb926e45fa5a1f973d73e048ae74a50ee1ef8bd3b4e631a307",
+        "transparentFraction": 0.4437431536540668
+      }
+    },
+    {
+      "id": "garden-024",
+      "name": "Borda de pedras",
+      "category": "Jardinagem",
+      "width": 2,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/garden-024.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-024.webp",
+        "width": 222,
+        "height": 87,
+        "bytes": 8088,
+        "sha256": "47760973ea010d76266e9da9994a6dbc91eac693dd3cb8ec85ae0a9e2ee5c090",
+        "transparentFraction": 0.5673086879983432
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-024.png",
+        "width": 1774,
+        "height": 887,
+        "bytes": 1448977,
+        "sha256": "a675aef6a8dac4c04679ff2358e69e65d03b4d0bab78341e197ec49323db7f9f",
+        "transparentFraction": 0.6249350190462512
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-024.webp",
+        "width": 1008,
+        "height": 389,
+        "bytes": 122402,
+        "sha256": "d2fe70759f72c6ff69a0bd709e9a3c258acb650100d517b4345ff617eebd2a16",
+        "transparentFraction": 0.5564838617537846
+      }
+    },
+    {
+      "id": "garden-025",
+      "name": "Pérgola florida",
+      "category": "Jardinagem",
+      "width": 2,
+      "height": 3,
+      "image": "/vtt/village-life-20261014/garden-025.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/garden-025.webp",
+        "width": 148,
+        "height": 222,
+        "bytes": 22352,
+        "sha256": "eba9362f3f55b85f53f163b44d18802366248237ee6e3c90366f2d9189d34cfa",
+        "transparentFraction": 0.40723155588020454
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/garden-025.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2719917,
+        "sha256": "948026aeef3504ef6e9597d0293aefc42f25264264421ecf39d55339cca94391",
+        "transparentFraction": 0.4309406280517578
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/garden-025.webp",
+        "width": 670,
+        "height": 1008,
+        "bytes": 334288,
+        "sha256": "4166d5847fc1d3c61610af899acf472ca62bdc11dce8f9af35b2a7801f6e7d0b",
+        "transparentFraction": 0.39598880597014924
+      }
+    },
+    {
+      "id": "resident-001",
+      "name": "Lia · Jardineira",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-001.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-001.webp",
+        "width": 107,
+        "height": 222,
+        "bytes": 9852,
+        "sha256": "2e4f6267a62c67c02aaa74fa1da5cff127003b796291e8f834732c4ff87c99d8",
+        "transparentFraction": 0.4387892565462659
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Lia cuida das hortas e dos jardins da vila.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-001.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2269111,
+        "sha256": "dbaf53b8d6aa3f299e6bb91793b2711bf48095d039f676cd4056c4de5210e6db",
+        "transparentFraction": 0.5649541219075521
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-001.webp",
+        "width": 362,
+        "height": 756,
+        "bytes": 91194,
+        "sha256": "db783dbd503f29b848560221be998ae2853fc259ee286723216ce37edcaa1f4b",
+        "transparentFraction": 0.44565392148265076
+      }
+    },
+    {
+      "id": "resident-002",
+      "name": "Tomás · Oleiro",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-002.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-002.webp",
+        "width": 149,
+        "height": 222,
+        "bytes": 13604,
+        "sha256": "4b0e47d13d016c8abe83c39e5b4d4393daf77f6973ecd0a555832e227b8d25fb",
+        "transparentFraction": 0.4565572283693089
+      },
+      "actor": true,
+      "species": "humano",
+      "notes": "Tomás modela potes, vasos e peças de cerâmica.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-002.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2622561,
+        "sha256": "45dca8b046b852fd4fab70716fe25a7524cfe4dd03c536c1f78e23502619a045",
+        "transparentFraction": 0.4112478892008464
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-002.webp",
+        "width": 507,
+        "height": 756,
+        "bytes": 128602,
+        "sha256": "912e8c425730650e35d6496294b409c43c1e9a61af4cf6b6a49bdc3753778886",
+        "transparentFraction": 0.46155411540026925
+      }
+    },
+    {
+      "id": "resident-003",
+      "name": "Joana · Padeira",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-003.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-003.webp",
+        "width": 145,
+        "height": 222,
+        "bytes": 12266,
+        "sha256": "6405bbf90c01bfa1459faadf02e74ff677e9169c644502fe664f40108b14a169",
+        "transparentFraction": 0.49586828207517863
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Joana prepara os pães da vizinhança.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-003.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2468416,
+        "sha256": "a2119c8237f62b6accfa7216774d7b58844feb545518ee68fad3476a3535a531",
+        "transparentFraction": 0.4651304880777995
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-003.webp",
+        "width": 493,
+        "height": 756,
+        "bytes": 114568,
+        "sha256": "ef8c1a8c9f1c7e0ab3f66d9a397f258c0a3db01ffe0d5e06d65521f62975e89f",
+        "transparentFraction": 0.5034960344290973
+      }
+    },
+    {
+      "id": "resident-004",
+      "name": "Bento · Camponês",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-004.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-004.webp",
+        "width": 145,
+        "height": 222,
+        "bytes": 12842,
+        "sha256": "6570b8173c6fef8d983da2cf2da2a5f86d3c1ff4bbdab1ba7a54cdee2a222093",
+        "transparentFraction": 0.4614165890027959
+      },
+      "actor": true,
+      "species": "humano",
+      "notes": "Bento trabalha nas lavouras próximas à vila.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-004.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2341576,
+        "sha256": "3ff1c51dd9d4dffe79f12c2884448abd5ed6df167052814761d9fee2cb38094f",
+        "transparentFraction": 0.5037994384765625
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-004.webp",
+        "width": 493,
+        "height": 756,
+        "bytes": 118634,
+        "sha256": "ece919965ccc6955fa07ccc8b500e7b8902f20ff664b3258b05ad9deaed78cf0",
+        "transparentFraction": 0.47256297154877275
+      }
+    },
+    {
+      "id": "resident-005",
+      "name": "Inês · Costureira",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-005.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-005.webp",
+        "width": 146,
+        "height": 222,
+        "bytes": 11390,
+        "sha256": "cb3c407561d5ee59d5e868deed2c0fd322bb95ac07e6c19a67bff1f75093f856",
+        "transparentFraction": 0.40617672466987537
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Inês remenda roupas e confecciona vestidos.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-005.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2603213,
+        "sha256": "c928f82387cbe2384874dda922ded49c27e6b26564897a2450679b19e2d55af0",
+        "transparentFraction": 0.44810930887858075
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-005.webp",
+        "width": 495,
+        "height": 756,
+        "bytes": 113984,
+        "sha256": "e3082ec9b8939de111847c8cb54f730fdb5e97c0dc8ad0375a5a7447923d2d07",
+        "transparentFraction": 0.4104056437389771
+      }
+    },
+    {
+      "id": "resident-006",
+      "name": "Raul · Carpinteiro",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-006.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-006.webp",
+        "width": 145,
+        "height": 222,
+        "bytes": 12034,
+        "sha256": "260fcfced1bc681ef921b821cdadb971fd3d63e9a2f5a752aea093516ec4a8cb",
+        "transparentFraction": 0.47663870767319044
+      },
+      "actor": true,
+      "species": "humano",
+      "notes": "Raul constrói e repara as peças de madeira.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-006.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2294965,
+        "sha256": "181a97858618e24c2f27e5f7800b937ece7628b5ad49528b39c52fd8f8ca56cd",
+        "transparentFraction": 0.4994252522786458
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-006.webp",
+        "width": 492,
+        "height": 756,
+        "bytes": 103628,
+        "sha256": "493820a3ca15e079b230781ddb3942dfe58b5ce8903538619f809533967e8527",
+        "transparentFraction": 0.4938459801264679
+      }
+    },
+    {
+      "id": "resident-007",
+      "name": "Amara · Curandeira",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-007.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-007.webp",
+        "width": 131,
+        "height": 222,
+        "bytes": 9930,
+        "sha256": "fecf0d9db3b8b586225d42813435ecc46d2988c87734090f2ef0ae6ab39fa3be",
+        "transparentFraction": 0.4983838800632694
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Amara conhece as ervas da região.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-007.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2188382,
+        "sha256": "b2eebfe70ab31a4b83e32c8a1b1cdafed6f589a53d0706c414e274e6c5e2ca7d",
+        "transparentFraction": 0.5631491343180338
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-007.webp",
+        "width": 446,
+        "height": 756,
+        "bytes": 91196,
+        "sha256": "ed0c04d6d1b7f1032f9ecdfd2e09cacd6cfcbf390911cd2520fc85bf99e80681",
+        "transparentFraction": 0.510902318077206
+      }
+    },
+    {
+      "id": "resident-008",
+      "name": "Gaspar · Pescador",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-008.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-008.webp",
+        "width": 154,
+        "height": 222,
+        "bytes": 14028,
+        "sha256": "3dc786c3b26693ea84ce7cd4e31cb72779c5034f8ee232b35b9c95def6862493",
+        "transparentFraction": 0.47554697554697556
+      },
+      "actor": true,
+      "species": "humano",
+      "notes": "Gaspar pesca no rio e vende o que recolhe.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-008.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2378326,
+        "sha256": "7c5d1c46e4ad8bc48ad73da4cf8583e7cb93a32ba9e6db3c9a086d1656f18fb3",
+        "transparentFraction": 0.5119228363037109
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-008.webp",
+        "width": 524,
+        "height": 756,
+        "bytes": 122664,
+        "sha256": "7a1cc8775777b5e6d9d56a98d0f756afabbb8db418da51daa1b62dba44450bef",
+        "transparentFraction": 0.4908518114624985
+      }
+    },
+    {
+      "id": "resident-009",
+      "name": "Nara · Leiteira",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-009.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-009.webp",
+        "width": 132,
+        "height": 222,
+        "bytes": 10730,
+        "sha256": "6abb66fcd15cf69b809012fe51a7184c8c88c5d9c40fec56f0e3c9531d73c62d",
+        "transparentFraction": 0.45515970515970516
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Nara cuida dos animais e distribui leite.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-009.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2434065,
+        "sha256": "bf285406adda7d419a3caaa142b648a59315dc51c0bfe2cf940ced336ccb3a53",
+        "transparentFraction": 0.4995237986246745
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-009.webp",
+        "width": 449,
+        "height": 756,
+        "bytes": 98740,
+        "sha256": "32ef203fdade74bbd5a93dd4c6b4f69c17aebc4941596b8634ab385d227cd319",
+        "transparentFraction": 0.4662565842966734
+      }
+    },
+    {
+      "id": "resident-010",
+      "name": "Olaf · Pedreiro",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-010.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-010.webp",
+        "width": 160,
+        "height": 222,
+        "bytes": 14420,
+        "sha256": "42c757a300cf27be797bd26cae49648dcc65bfe57f3a8bc49967c6265efed30f",
+        "transparentFraction": 0.4613175675675676
+      },
+      "actor": true,
+      "species": "humano",
+      "notes": "Olaf assenta pedras e conserta as paredes.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-010.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2632809,
+        "sha256": "fda98fa398aa52c9f153156d3cf821f9849f8f13cbd6adcfd38db88326bdcc09",
+        "transparentFraction": 0.45760154724121094
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-010.webp",
+        "width": 544,
+        "height": 756,
+        "bytes": 129860,
+        "sha256": "9f87a83244aa7d9ced52c832a567551eb5242f184547a80689156a2daca9408f",
+        "transparentFraction": 0.47441789215686275
+      }
+    },
+    {
+      "id": "resident-011",
+      "name": "Estela · Professora",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-011.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-011.webp",
+        "width": 133,
+        "height": 222,
+        "bytes": 9252,
+        "sha256": "d0bf60b7fc7af96a2e2a4672f1138876d5323b9b577a6d35bfe9be36f06266a1",
+        "transparentFraction": 0.48096592833434937
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Estela ensina leitura às crianças da vila.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-011.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2095237,
+        "sha256": "0dd966b21fa9dac5736e40a5f4fa02cb5c277630f7bc6816cae009323720f2a9",
+        "transparentFraction": 0.5528488159179688
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-011.webp",
+        "width": 450,
+        "height": 756,
+        "bytes": 83588,
+        "sha256": "904ac4b910f3378bec1b4ffdaed974da42d13fec4e84713ae89d1d35d19d3738",
+        "transparentFraction": 0.48731040564373895
+      }
+    },
+    {
+      "id": "resident-012",
+      "name": "Vicente · Escriba",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-012.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-012.webp",
+        "width": 162,
+        "height": 222,
+        "bytes": 11102,
+        "sha256": "29fcf83423f19a6c6dd979103b72bf6d7284f542cc94d66482c4dda9e3c96ff0",
+        "transparentFraction": 0.48759870982093206
+      },
+      "actor": true,
+      "species": "humano",
+      "notes": "Vicente registra cartas e acordos.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-012.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2212711,
+        "sha256": "fe50c5b93651d2b4ad5f3e2ac519fc1ab2e643b058441de1086966c97a86e017",
+        "transparentFraction": 0.4940478006998698
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-012.webp",
+        "width": 549,
+        "height": 756,
+        "bytes": 98614,
+        "sha256": "727f63b35849711d60ddf814f21ff003a98180e5ee44e502dc133a7826c93801",
+        "transparentFraction": 0.4942006148745675
+      }
+    },
+    {
+      "id": "resident-013",
+      "name": "Bruna · Estalajadeira",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-013.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-013.webp",
+        "width": 148,
+        "height": 222,
+        "bytes": 11060,
+        "sha256": "ec1a5cb95a1431efa042962e2c0f3d98a99e69ed85ca99dfbdc5401be557b6f0",
+        "transparentFraction": 0.4321889457024592
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Bruna recebe viajantes na estalagem.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-013.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2433704,
+        "sha256": "a428702c31420aa8e509c2ed53e7c506d4cbe76ca34b9d02a4aa97c3e8ad5d7e",
+        "transparentFraction": 0.41079139709472656
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-013.webp",
+        "width": 502,
+        "height": 756,
+        "bytes": 102592,
+        "sha256": "ed04399dac6f5647c0d55b173e27f900fd6e10dd5bc1e6fb4e59bf904d32fb53",
+        "transparentFraction": 0.43992548325217645
+      }
+    },
+    {
+      "id": "resident-014",
+      "name": "Tobias · Pastor",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-014.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-014.webp",
+        "width": 148,
+        "height": 222,
+        "bytes": 14264,
+        "sha256": "5b83496de6ea9a4ce6d5450d0f56ff55148e61a5ab7aee17b293e9116213259b",
+        "transparentFraction": 0.4681945458972486
+      },
+      "actor": true,
+      "species": "humano",
+      "notes": "Tobias conduz os rebanhos pelos caminhos.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-014.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2470095,
+        "sha256": "fd1e4cbe9fdc32455f415613b48610c29591b2bd7c8e8a5dcd5aed58729d7d90",
+        "transparentFraction": 0.4420146942138672
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-014.webp",
+        "width": 501,
+        "height": 756,
+        "bytes": 122036,
+        "sha256": "73a669455ce4d4a7f7e7528c30943211c10220a933dc196bcf8f8ca36b700b7c",
+        "transparentFraction": 0.47111332889776003
+      }
+    },
+    {
+      "id": "resident-015",
+      "name": "Yara · Tecelã",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-015.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-015.webp",
+        "width": 134,
+        "height": 222,
+        "bytes": 10354,
+        "sha256": "d5fabfcdaacf4718f76e375f55c283fff22c1c93cdb437a96a0af7268aa342c9",
+        "transparentFraction": 0.5006723141051499
+      },
+      "actor": true,
+      "species": "elfa",
+      "notes": "Yara tece panos e trabalha com fibras.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-015.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2238644,
+        "sha256": "c77dd8d4c77a7d454ba3a759553906dac4e9122e26f6abf94468a46cddcd3c99",
+        "transparentFraction": 0.5383733113606771
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-015.webp",
+        "width": 456,
+        "height": 756,
+        "bytes": 88250,
+        "sha256": "ed2b9369912385590d8c36486218cf27d0a1b266916e86b21a5c7293f34430a4",
+        "transparentFraction": 0.5148171354311705
+      }
+    },
+    {
+      "id": "resident-016",
+      "name": "Dori · Ferreiro",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-016.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-016.webp",
+        "width": 163,
+        "height": 222,
+        "bytes": 13792,
+        "sha256": "2b5f2deb307611df3e2a30f23c9b0e7649f4e9305113fe5c01248ff59f89126c",
+        "transparentFraction": 0.4554247499032775
+      },
+      "actor": true,
+      "species": "anão",
+      "notes": "Dori forja ferramentas e ferragens.",
+      "bodyScale": 0.88,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-016.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2387063,
+        "sha256": "05ba45ef69702acafa0b87fd1c0aa643229e1d7095aac00b419f4e42dc1fba15",
+        "transparentFraction": 0.4597829182942708
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-016.webp",
+        "width": 555,
+        "height": 756,
+        "bytes": 129228,
+        "sha256": "43d14a27cfe42a1c86585d484341bf7c0b6b7bc69fbe6f00e44186adb8a37f29",
+        "transparentFraction": 0.46893321893321893
+      }
+    },
+    {
+      "id": "resident-017",
+      "name": "Celina · Cozinheira",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-017.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-017.webp",
+        "width": 155,
+        "height": 222,
+        "bytes": 14068,
+        "sha256": "99ce45941e9fc8e53ca050f41732debc62a9df72e4c0d3d9cffc8d90509ba514",
+        "transparentFraction": 0.43655913978494626
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Celina prepara refeições para a comunidade.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-017.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2499946,
+        "sha256": "bffd4493d0b90c132018207ce6a08f93c8e9cc0944c2b9c5ce7f1d6374c7f478",
+        "transparentFraction": 0.43994712829589844
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-017.webp",
+        "width": 525,
+        "height": 756,
+        "bytes": 121424,
+        "sha256": "06c2190b7881ff361035d0996eb697aae2d657060f3ebd5ad0f87eec56c9d254",
+        "transparentFraction": 0.44520282186948856
+      }
+    },
+    {
+      "id": "resident-018",
+      "name": "Noé · Mensageiro",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-018.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-018.webp",
+        "width": 149,
+        "height": 222,
+        "bytes": 12648,
+        "sha256": "751b9efdee9287f8e1421a8f95a8d081807bed71d1fe4c50dec99ba9c90b711e",
+        "transparentFraction": 0.49398391680270876
+      },
+      "actor": true,
+      "species": "halfling",
+      "notes": "Noé entrega recados pelos caminhos da vila.",
+      "bodyScale": 0.75,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-018.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2412207,
+        "sha256": "6f2ef727d1faad1bd32fa6f51d413511fc4eff7cb700e2870d931e601f9e31a2",
+        "transparentFraction": 0.5278491973876953
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-018.webp",
+        "width": 506,
+        "height": 756,
+        "bytes": 114720,
+        "sha256": "25aaed87592dc8baa311e086a063de51cfa51ed32cfe93fff475ca2d3e4fba4a",
+        "transparentFraction": 0.50672616433486
+      }
+    },
+    {
+      "id": "resident-019",
+      "name": "Marta · Cesteira",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-019.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-019.webp",
+        "width": 133,
+        "height": 222,
+        "bytes": 10646,
+        "sha256": "184a7870925968660f343e1d6983aafe4bf6ee354903ec9a6524ffb7d8f5fe4d",
+        "transparentFraction": 0.5003386845492108
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Marta trança cestos e ensina seu ofício.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-019.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2213548,
+        "sha256": "061fe305d40d12f2b5dc7d860ca710584a58ebc8e0054d8773079cbe1a864b5a",
+        "transparentFraction": 0.5316956837972006
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-019.webp",
+        "width": 452,
+        "height": 756,
+        "bytes": 96190,
+        "sha256": "f49a58ca6b53084253888806f881af8f6088a26b7c9e24ad3ee16703094da950",
+        "transparentFraction": 0.5092065833216276
+      }
+    },
+    {
+      "id": "resident-020",
+      "name": "Adelmo · Zelador",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-020.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-020.webp",
+        "width": 139,
+        "height": 222,
+        "bytes": 12986,
+        "sha256": "cedc2cadbc3368b845bd38486cf4765a49f691ceb8c6d15a541ddf3dfd5e85ef",
+        "transparentFraction": 0.4988657722470672
+      },
+      "actor": true,
+      "species": "humano",
+      "notes": "Adelmo cuida dos espaços comuns.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-020.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2451049,
+        "sha256": "040482fb79f492716c3fe1b96d3499cf71c6218f64cf3952fd12aab0271fc8cb",
+        "transparentFraction": 0.5366662343343099
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-020.webp",
+        "width": 472,
+        "height": 756,
+        "bytes": 128308,
+        "sha256": "19fe2c78d18b64681a7c7909b361d7f5714a91f1070502a5678b0e2a196458c5",
+        "transparentFraction": 0.506672607837862
+      }
+    },
+    {
+      "id": "resident-021",
+      "name": "Aurora · Vendeira",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-021.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-021.webp",
+        "width": 145,
+        "height": 222,
+        "bytes": 13266,
+        "sha256": "cf9b2dff554cdeed1eec916ae68b220f247b9806808f4cedc42b9434b1729708",
+        "transparentFraction": 0.45281143212177694
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Aurora compra e vende produtos da vizinhança.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-021.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2345951,
+        "sha256": "8ddddb37de5f201518f34be5233f1a42fb2b426949e2b775c0f4ebea82686dfb",
+        "transparentFraction": 0.49724388122558594
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-021.webp",
+        "width": 492,
+        "height": 756,
+        "bytes": 123654,
+        "sha256": "463708bfbf6e2261e76bf3d8af650bdc26aa93fb29ef7a9be2575c71002f69c4",
+        "transparentFraction": 0.4570724179464017
+      }
+    },
+    {
+      "id": "resident-022",
+      "name": "Severo · Moleiro",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-022.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-022.webp",
+        "width": 151,
+        "height": 222,
+        "bytes": 11898,
+        "sha256": "375db185a49fe2f3ff5e95b1941059206299e06d71f7b041586a5f908029d2d1",
+        "transparentFraction": 0.518047849173677
+      },
+      "actor": true,
+      "species": "humano",
+      "notes": "Severo cuida do moinho e da farinha.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-022.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2582851,
+        "sha256": "4ef9b5276c44032331285283783f15ecc91369b145f0b368c9b267f53f387410",
+        "transparentFraction": 0.4727954864501953
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-022.webp",
+        "width": 513,
+        "height": 756,
+        "bytes": 113938,
+        "sha256": "85e0768d94923011ddaa8f5cc1f5507455f6b5e60a34401832df75487125d8ab",
+        "transparentFraction": 0.5261275617026104
+      }
+    },
+    {
+      "id": "resident-023",
+      "name": "Luan · Aprendiz",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-023.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-023.webp",
+        "width": 149,
+        "height": 222,
+        "bytes": 13730,
+        "sha256": "5d8d24c243e8edb40ee3bde41c99c2e74db05cc5960c71d02be42fad696c60be",
+        "transparentFraction": 0.469314952536429
+      },
+      "actor": true,
+      "species": "humano",
+      "notes": "Luan aprende os ofícios dos artesãos.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-023.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2360679,
+        "sha256": "380086c0037bcab1a0b4ffbb02db012c317d77b1dc399ece56f1f58de89740f3",
+        "transparentFraction": 0.5012385050455729
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-023.webp",
+        "width": 505,
+        "height": 756,
+        "bytes": 123046,
+        "sha256": "8ac8222c8283dfdbe5a397fedf5950262bd7e4d58c169d52e3d394464891e9f4",
+        "transparentFraction": 0.47900623395672903
+      }
+    },
+    {
+      "id": "resident-024",
+      "name": "Olívia · Musicista",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-024.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-024.webp",
+        "width": 123,
+        "height": 222,
+        "bytes": 10548,
+        "sha256": "643f6baf3f6016efeadf138362b1c22837b44e5f66c8ce7ec96358c68d53fb06",
+        "transparentFraction": 0.4919065406870285
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Olívia toca nas festas e nas tardes da praça.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-024.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2095670,
+        "sha256": "54b84743653e52728636ddcdd6216a74d59c600d423fe36cbdc10641eaa408c4",
+        "transparentFraction": 0.5665982564290365
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-024.webp",
+        "width": 416,
+        "height": 756,
+        "bytes": 92248,
+        "sha256": "f4b190ceab3997e65df7ef3bc7874cfa8348d8b2a5f4cefc235bdc3f575bea04",
+        "transparentFraction": 0.49820665445665446
+      }
+    },
+    {
+      "id": "resident-025",
+      "name": "Rosana · Moradora idosa",
+      "category": "Moradores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/resident-025.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/resident-025.webp",
+        "width": 131,
+        "height": 222,
+        "bytes": 12038,
+        "sha256": "f3032d23c4eb6a8d2d159a7fcc7adde20d4b627731391b23928671f429183553",
+        "transparentFraction": 0.4714256240973798
+      },
+      "actor": true,
+      "species": "humana",
+      "notes": "Rosana conhece as histórias antigas da vila.",
+      "bodyScale": 1,
+      "native": {
+        "file": "data/vtt/village-life-20261014/resident-025.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2437703,
+        "sha256": "cbb743caeabd5bd03185c8fb00499762ac02aec17ca01fcd1f5e94e025f7c35a",
+        "transparentFraction": 0.5276101430257162
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/resident-025.webp",
+        "width": 445,
+        "height": 756,
+        "bytes": 113630,
+        "sha256": "ded91e8d8e4a1bb05e1d741c1238aeb36a92bac44c75e9394712af2da2afaf7f",
+        "transparentFraction": 0.48040247309910233
+      }
+    },
+    {
+      "id": "merchant-001",
+      "name": "Barraca de frutas",
+      "category": "Mercadores",
+      "width": 3,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-001.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-001.webp",
+        "width": 222,
+        "height": 151,
+        "bytes": 14804,
+        "sha256": "247f699749d995291917f8b8c5d9806fee6b2dcdfc3bf39a6612c403bfbf242e",
+        "transparentFraction": 0.3289481534514647
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-001.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 3047867,
+        "sha256": "c09c8acc8c0d69b90f65c41b9528e998e3fca71aa29e119ab018a54970bcf53b",
+        "transparentFraction": 0.3561623891194661
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-001.webp",
+        "width": 1008,
+        "height": 685,
+        "bytes": 273194,
+        "sha256": "cf6259fee5b86da51986675318c33a74fa38b954fce3889486a6a99cd9ad20b4",
+        "transparentFraction": 0.3287249449658209
+      }
+    },
+    {
+      "id": "merchant-002",
+      "name": "Barraca de legumes",
+      "category": "Mercadores",
+      "width": 3,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-002.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-002.webp",
+        "width": 222,
+        "height": 151,
+        "bytes": 14772,
+        "sha256": "a7ceba9d4c4d009b28cace4de9c56582537af0a4119f63178be95580c6086988",
+        "transparentFraction": 0.2754310601992721
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-002.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2718544,
+        "sha256": "84dc1d8f1935cf853844ba6f8abe1deb5647f1f3919c8a2ffbd749cc3fad786b",
+        "transparentFraction": 0.30420875549316406
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-002.webp",
+        "width": 1008,
+        "height": 681,
+        "bytes": 269878,
+        "sha256": "12cab035e5bac1a65abf82ca9a71eb3360048f5145af8dfce2274a8e17abd83f",
+        "transparentFraction": 0.2686379740344498
+      }
+    },
+    {
+      "id": "merchant-003",
+      "name": "Barraca de pães",
+      "category": "Mercadores",
+      "width": 2,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-003.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-003.webp",
+        "width": 222,
+        "height": 211,
+        "bytes": 22690,
+        "sha256": "cd4c911244befa6c0a106917c3f804b17681f45c8c7af21076b27f763faa8acc",
+        "transparentFraction": 0.2879467144869988
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-003.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2778021,
+        "sha256": "89bcddf0e921af434a07e704d65e142d9dd97c71c5d795f6c05df67b28bbb478",
+        "transparentFraction": 0.2744697033289327
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-003.webp",
+        "width": 1008,
+        "height": 957,
+        "bytes": 412542,
+        "sha256": "15ab8c78b92693d8b4287f42bd9ff912e99bca78657dd41f18feb293f7909480",
+        "transparentFraction": 0.28931245957108026
+      }
+    },
+    {
+      "id": "merchant-004",
+      "name": "Barraca de peixes",
+      "category": "Mercadores",
+      "width": 3,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-004.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-004.webp",
+        "width": 222,
+        "height": 127,
+        "bytes": 14906,
+        "sha256": "aeaaa309802779a96ec7a3ce5063a628ff53cfb65638067cc45f31e54e46747f",
+        "transparentFraction": 0.29375044335674255
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-004.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2780965,
+        "sha256": "a26a48ed7f90ba451ddd0c2fc816701f47d3db1ac0b1157299d9afa1fbfb43fb",
+        "transparentFraction": 0.3576946258544922
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-004.webp",
+        "width": 1008,
+        "height": 574,
+        "bytes": 267252,
+        "sha256": "f2600dea60f71094f6bd32f6a2c611adb693fd1bce9e60145f2427cb2a6b4738",
+        "transparentFraction": 0.2895321746584813
+      }
+    },
+    {
+      "id": "merchant-005",
+      "name": "Barraca de queijos",
+      "category": "Mercadores",
+      "width": 2,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-005.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-005.webp",
+        "width": 215,
+        "height": 222,
+        "bytes": 21032,
+        "sha256": "931111da638a55477c24a9a34526ae0648b465bbaa077f37c66035a0d3237555",
+        "transparentFraction": 0.27056358684265663
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-005.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2679357,
+        "sha256": "04ff0d031c3a99207b199c4aaa7aec982c0f053471d78378fceb1a8c11979510",
+        "transparentFraction": 0.3113965136125801
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-005.webp",
+        "width": 978,
+        "height": 1008,
+        "bytes": 417548,
+        "sha256": "fcd41e0c56c592c27877efd622013c180cda8473d2b9d6bc9b9b71bd82c6f46c",
+        "transparentFraction": 0.274062104391859
+      }
+    },
+    {
+      "id": "merchant-006",
+      "name": "Barraca de especiarias",
+      "category": "Mercadores",
+      "width": 3,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-006.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-006.webp",
+        "width": 222,
+        "height": 146,
+        "bytes": 16198,
+        "sha256": "1a1122e9f1b96db7192860b0bfaa26e168e3f6e0f6ed675450e05093fccb3bee",
+        "transparentFraction": 0.2539491546340861
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-006.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2701396,
+        "sha256": "c599fc21c28ed97c77cafc29a6922de1996935f5e26010d1897ba8999837162f",
+        "transparentFraction": 0.3914794921875
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-006.webp",
+        "width": 1008,
+        "height": 662,
+        "bytes": 299800,
+        "sha256": "66d404dd03f2f69c0d99af86c7f7192168dda0cfbfb3a1ec42ccd03b74aa0dbd",
+        "transparentFraction": 0.2467600585047715
+      }
+    },
+    {
+      "id": "merchant-007",
+      "name": "Barraca de tecidos",
+      "category": "Mercadores",
+      "width": 3,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-007.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-007.webp",
+        "width": 222,
+        "height": 131,
+        "bytes": 12172,
+        "sha256": "dda6106b2309f27113a2e32af0a52e59ba57eca5469dea7fc0237536236ea75f",
+        "transparentFraction": 0.279966989890654
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-007.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2514601,
+        "sha256": "1240b1f433a34244a98fd33689698e695a4a80396384f18497976d348c066aee",
+        "transparentFraction": 0.3925088246663411
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-007.webp",
+        "width": 1008,
+        "height": 592,
+        "bytes": 222198,
+        "sha256": "16e235b58206bb7fc0bf709640ae0feeeab0a02e2dcb21fd33f7eb2654b0dac5",
+        "transparentFraction": 0.27660640551265553
+      }
+    },
+    {
+      "id": "merchant-008",
+      "name": "Barraca de cerâmicas",
+      "category": "Mercadores",
+      "width": 3,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-008.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-008.webp",
+        "width": 222,
+        "height": 145,
+        "bytes": 15134,
+        "sha256": "3fbffd58883a2467df1b6d73e579f816e87841133c23af8feb1cc39140166c7e",
+        "transparentFraction": 0.24448586517552034
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-008.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2761600,
+        "sha256": "7a1d503d65629240a70f69ef06b786b329da1e0b2c9b3d2da93605223356f3aa",
+        "transparentFraction": 0.3511492411295573
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-008.webp",
+        "width": 1008,
+        "height": 657,
+        "bytes": 279116,
+        "sha256": "ff52be9692e1611cf47ccb0efa4da17965d43f37e791a0a63cecbae64269cd01",
+        "transparentFraction": 0.2407467807011186
+      }
+    },
+    {
+      "id": "merchant-009",
+      "name": "Barraca de ferramentas",
+      "category": "Mercadores",
+      "width": 3,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-009.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-009.webp",
+        "width": 222,
+        "height": 164,
+        "bytes": 16308,
+        "sha256": "837f636d2ade706515247e6588cb38f333dcb4800f8beed35692472cc9dfc338",
+        "transparentFraction": 0.27914194682487364
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-009.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2827039,
+        "sha256": "d39852cee1aa7aec8cb2f9cf9fcd201794a61b46c1b34cbd40730ef8b023a044",
+        "transparentFraction": 0.33214696248372394
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-009.webp",
+        "width": 1008,
+        "height": 744,
+        "bytes": 293530,
+        "sha256": "7d443d6558ee6f917bd704eacaa96ca0acb0a4e4cc11a579e013dbe1475b3ea0",
+        "transparentFraction": 0.2708973374295955
+      }
+    },
+    {
+      "id": "merchant-010",
+      "name": "Barraca de flores",
+      "category": "Mercadores",
+      "width": 3,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-010.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-010.webp",
+        "width": 222,
+        "height": 124,
+        "bytes": 14066,
+        "sha256": "920924b22d4f25b5738759de236737f6cfbe7b804468c8c17b2cc31a41c25275",
+        "transparentFraction": 0.2952630049404243
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-010.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2607457,
+        "sha256": "342601147a89e3cb2d9fb9376a561bc48e0e559a6dfbf24fcbffcac5e802d820",
+        "transparentFraction": 0.3703117370605469
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-010.webp",
+        "width": 1008,
+        "height": 561,
+        "bytes": 246184,
+        "sha256": "24c1d28dba97ed431ceae3840a1f51b2f39f9ba1dfc14bb9837704c1cfec4cf3",
+        "transparentFraction": 0.2865807939337351
+      }
+    },
+    {
+      "id": "merchant-011",
+      "name": "Carroça de mercador",
+      "category": "Mercadores",
+      "width": 2,
+      "height": 4,
+      "image": "/vtt/village-life-20261014/merchant-011.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-011.webp",
+        "width": 109,
+        "height": 222,
+        "bytes": 11978,
+        "sha256": "24e0c0d67c636bce60f67b0e8e54c2765ce0771a7d480480f5cb1c06042790fb",
+        "transparentFraction": 0.35011157946937765
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-011.png",
+        "width": 887,
+        "height": 1774,
+        "bytes": 2283193,
+        "sha256": "6a1b9c56b8d3d3604f573b95c7e247897a6a4af19594d0d906ef2acd3a18b415",
+        "transparentFraction": 0.31840603785863447
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-011.webp",
+        "width": 490,
+        "height": 1008,
+        "bytes": 199946,
+        "sha256": "ed88bc78af379f1c6ad1b3efe38041ee5790fde610a6079abb8f461fe3e4d034",
+        "transparentFraction": 0.33905085843861354
+      }
+    },
+    {
+      "id": "merchant-012",
+      "name": "Carroça coberta",
+      "category": "Mercadores",
+      "width": 2,
+      "height": 4,
+      "image": "/vtt/village-life-20261014/merchant-012.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-012.webp",
+        "width": 96,
+        "height": 222,
+        "bytes": 9598,
+        "sha256": "0fd32ad21e1e0c0820e4e3a5737700e0e2539854a9143c22c675c7ad4ecb27c3",
+        "transparentFraction": 0.40746996996997
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-012.png",
+        "width": 887,
+        "height": 1774,
+        "bytes": 1761055,
+        "sha256": "f2dde43e875dc8c6c811041f56b6f4e0d4f0e903f7b51d447da4c2cf33b22e39",
+        "transparentFraction": 0.4670322547024603
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-012.webp",
+        "width": 431,
+        "height": 1008,
+        "bytes": 151974,
+        "sha256": "cfbd118597a2f15effcbd667ac2ec328b4cec2a01669c241894f690381db39c9",
+        "transparentFraction": 0.3945604537251869
+      }
+    },
+    {
+      "id": "merchant-013",
+      "name": "Carrinho ambulante",
+      "category": "Mercadores",
+      "width": 1,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-013.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-013.webp",
+        "width": 112,
+        "height": 222,
+        "bytes": 11634,
+        "sha256": "7ba0849e31a6845173df11e4d3d30bae931e24ac9b971d4f115e6107ed7c24a3",
+        "transparentFraction": 0.4793677606177606
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-013.png",
+        "width": 887,
+        "height": 1774,
+        "bytes": 1912272,
+        "sha256": "a4c1e5088150a0f01b0ffc6e7ef042a3652fec4f2cf49007a24bbca9ec22c352",
+        "transparentFraction": 0.4543633518860047
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-013.webp",
+        "width": 505,
+        "height": 1008,
+        "bytes": 161948,
+        "sha256": "5f68e9e3915d924c6d4bcda3a8addd68af0708219e2a2aa0cfba622567916a64",
+        "transparentFraction": 0.48863547068992613
+      }
+    },
+    {
+      "id": "merchant-014",
+      "name": "Carroça de frutas",
+      "category": "Mercadores",
+      "width": 2,
+      "height": 3,
+      "image": "/vtt/village-life-20261014/merchant-014.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-014.webp",
+        "width": 129,
+        "height": 222,
+        "bytes": 12608,
+        "sha256": "7d6f5a5b81237a81ae79866471a13d9b942e87a3c7fd160954f8109a69eea7ea",
+        "transparentFraction": 0.4624624624624625
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-014.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2260731,
+        "sha256": "4f0685e480a0c24777f72020feef58c1b3ee240f58112e10f140ba9ef6a68d66",
+        "transparentFraction": 0.48069127400716144
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-014.webp",
+        "width": 582,
+        "height": 1008,
+        "bytes": 204860,
+        "sha256": "1f9aa6a62103a27127db04c6d98a07aa128d9162c1e3e4d3c03156e608c66b64",
+        "transparentFraction": 0.4401778895979927
+      }
+    },
+    {
+      "id": "merchant-015",
+      "name": "Caixote de maçãs",
+      "category": "Mercadores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/merchant-015.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-015.webp",
+        "width": 199,
+        "height": 222,
+        "bytes": 21412,
+        "sha256": "a54807c5a3bf1178460afb54475e5afe412428c0ff39e705082236d5a9c98100",
+        "transparentFraction": 0.16811535153243695
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-015.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2351748,
+        "sha256": "b4ee3fbf4758509421eb3109f89afa9562f4004fdb00e013d8d109755ccbbc58",
+        "transparentFraction": 0.33667956319681325
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-015.webp",
+        "width": 904,
+        "height": 1008,
+        "bytes": 433078,
+        "sha256": "d480510b7b0012e551fb4de7088694506b262ff118436d8effc82dd3f0696598",
+        "transparentFraction": 0.1566790894086248
+      }
+    },
+    {
+      "id": "merchant-016",
+      "name": "Caixote de peras",
+      "category": "Mercadores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/merchant-016.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-016.webp",
+        "width": 209,
+        "height": 222,
+        "bytes": 22908,
+        "sha256": "40035278babf6d21cb20bd9c982ccddfe827b540b2ea0f4c67dee97a65ccd8f5",
+        "transparentFraction": 0.18237855079960344
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-016.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2340251,
+        "sha256": "7e010edc28036dfd3727d8a09359b04fa35aec9b413135398799e9049f73ec17",
+        "transparentFraction": 0.3462082420783
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-016.webp",
+        "width": 948,
+        "height": 1008,
+        "bytes": 466118,
+        "sha256": "58af78525b58e20c3277f68fca4d9df9d8ab5241069b8803288ddf62aca6c4ac",
+        "transparentFraction": 0.17015667905699552
+      }
+    },
+    {
+      "id": "merchant-017",
+      "name": "Caixote de cítricos",
+      "category": "Mercadores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/merchant-017.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-017.webp",
+        "width": 219,
+        "height": 222,
+        "bytes": 23352,
+        "sha256": "19b7d49f4dca458cae4a7f1ed176443a8bb2889cffd26f455921100509153dab",
+        "transparentFraction": 0.17300176889217986
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-017.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1983751,
+        "sha256": "0566a885f3464f2fcd8fd0aeb34aaa99013d9ca75f5c737e0f0b753c933a8169",
+        "transparentFraction": 0.42874857871080485
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-017.webp",
+        "width": 996,
+        "height": 1008,
+        "bytes": 445152,
+        "sha256": "3df3d41f5172aa3f2c0b0784e66a7f8320ec4f79a44f81968ebc3264a2470d6d",
+        "transparentFraction": 0.16554511697583987
+      }
+    },
+    {
+      "id": "merchant-018",
+      "name": "Cesto de uvas",
+      "category": "Mercadores",
+      "width": 0.75,
+      "height": 0.75,
+      "image": "/vtt/village-life-20261014/merchant-018.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-018.webp",
+        "width": 222,
+        "height": 210,
+        "bytes": 23454,
+        "sha256": "5286d85949fdc5336ac54cabd3c7d3b93112d133fbba39944233a3aad004c036",
+        "transparentFraction": 0.329021879021879
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-018.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2105441,
+        "sha256": "bef408934ea50e1e40e4678dc76db38669c7a3ad747c2da80845ae88cfdbd563",
+        "transparentFraction": 0.46422166769686285
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-018.webp",
+        "width": 1008,
+        "height": 953,
+        "bytes": 405270,
+        "sha256": "8fb11c09bc0827fd4642964b63e6ae8711881ab5962e0c715dc97c7280a0401f",
+        "transparentFraction": 0.3248575925648329
+      }
+    },
+    {
+      "id": "merchant-019",
+      "name": "Sacaria de especiarias",
+      "category": "Mercadores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/merchant-019.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-019.webp",
+        "width": 211,
+        "height": 222,
+        "bytes": 21092,
+        "sha256": "55ef9a1cd885be0b3d077922d08a4f7e78b1ac9e60150b43ac109297430b79b4",
+        "transparentFraction": 0.35184236369070493
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-019.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2292563,
+        "sha256": "1cba419a12388baf4cabb43c7dc35e82ad36c8f65d03766ca97c180be55e78ac",
+        "transparentFraction": 0.47163780845473113
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-019.webp",
+        "width": 959,
+        "height": 1008,
+        "bytes": 419092,
+        "sha256": "54d5f9195f46f819b8a76b78050f7f8429e7ed0b16935f1e01a851fc60fdb11b",
+        "transparentFraction": 0.35070220302232813
+      }
+    },
+    {
+      "id": "merchant-020",
+      "name": "Fardos de tecidos",
+      "category": "Mercadores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/merchant-020.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-020.webp",
+        "width": 205,
+        "height": 222,
+        "bytes": 20602,
+        "sha256": "40201df2343f4f210ba54fb25b96dcb386cca78e93268c6658a4d989fb1fbe07",
+        "transparentFraction": 0.1754119973632169
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-020.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2228435,
+        "sha256": "86f3f2878ab81ed54c48811e543d9a0c4788a7017bd6f64186c34bca734cbe13",
+        "transparentFraction": 0.48336614698991937
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-020.webp",
+        "width": 929,
+        "height": 1008,
+        "bytes": 467978,
+        "sha256": "283c46939676d69ae060ba72929e0900b9dc50f0c3adafb0a605287fa26a740f",
+        "transparentFraction": 0.16515134040699164
+      }
+    },
+    {
+      "id": "merchant-021",
+      "name": "Caixas de carga",
+      "category": "Mercadores",
+      "width": 1,
+      "height": 2,
+      "image": "/vtt/village-life-20261014/merchant-021.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-021.webp",
+        "width": 109,
+        "height": 222,
+        "bytes": 11318,
+        "sha256": "5eb78b912729d06d6757d62e7653e6938ead9104092072d8b016fbe4c3b72a1c",
+        "transparentFraction": 0.2796512108438714
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-021.png",
+        "width": 887,
+        "height": 1774,
+        "bytes": 2115089,
+        "sha256": "1b79c2d0ff6b042790fa4e02b34ddffb0b84d3e5c6b5ea5eed1c83a585341360",
+        "transparentFraction": 0.3907760727735841
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-021.webp",
+        "width": 490,
+        "height": 1008,
+        "bytes": 209698,
+        "sha256": "dbde29fe280db27036ec7b7f1cdffa78514379bd59a3202506520565d1db994c",
+        "transparentFraction": 0.2696752510528021
+      }
+    },
+    {
+      "id": "merchant-022",
+      "name": "Expositor de joias",
+      "category": "Mercadores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/merchant-022.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-022.webp",
+        "width": 222,
+        "height": 158,
+        "bytes": 15052,
+        "sha256": "543f2cb1cdf9f0c74217ef02674778bb0b81c4069285de47030fd4fcb4d44238",
+        "transparentFraction": 0.22491162048124075
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-022.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 2114512,
+        "sha256": "628d4fb8e1d387b4726915bab16478d310e70448783653554aab05e8a40f2549",
+        "transparentFraction": 0.43580224302964166
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-022.webp",
+        "width": 1008,
+        "height": 714,
+        "bytes": 305070,
+        "sha256": "2c0ce9adc745880278f466b988f2770635ab01c19e07d78ccd8a6b1f6c98f644",
+        "transparentFraction": 0.21649215241652217
+      }
+    },
+    {
+      "id": "merchant-023",
+      "name": "Cavalete de anúncio",
+      "category": "Mercadores",
+      "width": 1,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/merchant-023.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-023.webp",
+        "width": 176,
+        "height": 222,
+        "bytes": 16044,
+        "sha256": "7ed3e59e7826da98db31018b4dd305286d8ff94014656a9e4850b80f7a802063",
+        "transparentFraction": 0.2788185913185913
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-023.png",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1215300,
+        "sha256": "20ea1b6d082a64819a46bdc5f6cb1f6a4a839ff7533aa2fcc62a7d079fc2d7e3",
+        "transparentFraction": 0.6450179203264068
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-023.webp",
+        "width": 777,
+        "height": 981,
+        "bytes": 275568,
+        "sha256": "baaa142c94a54f1a991a012787813b75f3409d8d4a5f7fbbef0900499b022708",
+        "transparentFraction": 0.2769545430095889
+      }
+    },
+    {
+      "id": "merchant-024",
+      "name": "Arara de roupas",
+      "category": "Mercadores",
+      "width": 2,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/merchant-024.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-024.webp",
+        "width": 222,
+        "height": 114,
+        "bytes": 12900,
+        "sha256": "74925c33c8d32ba1ada50db5bb74dce57861888136ac72471a3260ee32449c64",
+        "transparentFraction": 0.4214082503556188
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-024.png",
+        "width": 1774,
+        "height": 887,
+        "bytes": 2161513,
+        "sha256": "831ace89085088098c5320aa616c81f4c6c7b4081735cd169c535b46c44db097",
+        "transparentFraction": 0.4140942258782438
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-024.webp",
+        "width": 1008,
+        "height": 512,
+        "bytes": 197656,
+        "sha256": "3cb986c24a7fb11098488e6c84e2e808078a7205dd88c7979427a7c119118187",
+        "transparentFraction": 0.40140206473214285
+      }
+    },
+    {
+      "id": "merchant-025",
+      "name": "Banca de livros",
+      "category": "Mercadores",
+      "width": 2,
+      "height": 1,
+      "image": "/vtt/village-life-20261014/merchant-025.webp",
+      "thumbnail": {
+        "file": "public/vtt/village-life-thumbs-20261014/merchant-025.webp",
+        "width": 222,
+        "height": 103,
+        "bytes": 10420,
+        "sha256": "67bfcdf155a80f4eb8cfaef44616f8ad13c180960454157aceba1f78645cf5f2",
+        "transparentFraction": 0.2930989241668853
+      },
+      "native": {
+        "file": "data/vtt/village-life-20261014/merchant-025.png",
+        "width": 1774,
+        "height": 887,
+        "bytes": 2365871,
+        "sha256": "0bd975ce2ae7f82d54522eaf02afd806efdd86a2619cf0e2c672e52c181973dc",
+        "transparentFraction": 0.36232934952953155
+      },
+      "public": {
+        "file": "public/vtt/village-life-20261014/merchant-025.webp",
+        "width": 1008,
+        "height": 463,
+        "bytes": 198060,
+        "sha256": "0bfb71452e8fc8b4bb4b92f91f6372383480bdb52674ffa85c8a4d64bd47a8a3",
+        "transparentFraction": 0.27938264938804896
+      }
+    }
+  ]
+}

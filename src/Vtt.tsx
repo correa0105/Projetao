@@ -2,6 +2,7 @@ import {VttNatureAssets} from './VttNatureAssets';
 import {natureAssets,natureAssetMime} from '../shared/vtt-nature-assets';
 import {houseInteriorImages,houseAsset,houseDoorObstructed,fitHouseToGrid,housePlacement} from '../shared/vtt-houses';
 import {tokenPlacement} from '../shared/vtt-placement';
+import {createNatureToken} from '../shared/vtt-nature-placement';
 import {VttHouseDoors} from './VttHouseDoors';
 import {houseDoorsAnimating} from './vtt-house-doors';
 import { VttTerrainBrush, type TerrainBrushSettings } from './VttTerrainBrush';
@@ -2108,15 +2109,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setTab('token');
   }
   function addNatureAsset(id:string,scale=1,at?:Point) {
-    if(!gm||!scene||preview||busy||!Number.isFinite(scale)||scale<.25||scale>3)return;
+    if(!gm||!scene||preview||busy)return;
     if(scene.tokens.length>=1000){setNotice('Limite de 1.000 peças neste mapa.');return;}
-    const asset=natureAssets.find(a=>a.id===id);if(!asset)return;
-    const factor=Math.min(1,scene.width/(asset.width*scene.grid.size*scale),scene.height/(asset.height*scene.grid.size*scale),8000/(asset.width*scene.grid.size*scale),8000/(asset.height*scene.grid.size*scale));
-    const width=Math.max(8,asset.width*scene.grid.size*scale*factor),height=Math.max(8,asset.height*scene.grid.size*scale*factor),p=tokenPlacement(at||camera,{width,height},scene);
-    const t=newToken(crypto.randomUUID(),scene);
-    Object.assign(t,{name:asset.name,image:asset.image,width,height,layer:'map',vision:0,bleeds:false,x:Math.max(width/2,Math.min(scene.width-width/2,p.x)),y:Math.max(height/2,Math.min(scene.height-height/2,p.y))});
-    if(houseAsset(t))Object.assign(t,housePlacement(t,scene));
-    editScene(s=>s.tokens.push(t));changeLayer('map');setSelection([t.id]);setTool('select');
+    const t=createNatureToken(crypto.randomUUID(),id,scene,at||camera,scale);if(!t)return;
+    editScene(s=>s.tokens.push(t));changeLayer(t.layer);setSelection([t.id]);setTool('select');
   }
   function addTreeAsset(id: string, scale = 1, at?: Point) {
     if (!gm || !scene || preview) return;
