@@ -1,0 +1,178 @@
+/* Shared by the standalone Hall and the profile tab. */
+:root .app-shell .hall-of-fame {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  background: transparent;
+  padding: 0 0 100px;
+  color: #e2d7bf;
+}
+:root .app-shell .hall-of-fame::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(#15100b55, #15100b77),
+    url('/community/hall-of-honor.webp') center/cover no-repeat;
+  z-index: -1;
+  pointer-events: none;
+}
+:root .app-shell .hall-of-fame .hall-gallery {
+  background: transparent;
+  padding: 92px max(6vw, 24px) 20px;
+}
+:root .app-shell .hall-of-fame .hall-heading {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+}
+:root .app-shell .hall-of-fame .hall-heading h2 {
+  font: 500 clamp(27px, 3vw, 43px)/1.2 var(--serif);
+  margin: 14px 0 12px;
+  color: #e8dfce;
+}
+:root .app-shell .hall-of-fame .hall-heading p {
+  font-size: 12px;
+  color: #c2b69e;
+}
+:root .app-shell .hall-of-fame .hall-podium {
+  margin-top: 66px;
+}
+:root
+  .app-shell
+  .hall-of-fame
+  > :is(.hall-search, .hall-table, .hall-pagination, .hall-score-help) {
+  position: relative;
+  background-color: #19150fe8;
+}
+:root .app-shell .hall-of-fame .hall-menu-trigger {
+  position: fixed;
+  left: 22px;
+  top: 86px;
+  z-index: 25;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 40px;
+  padding: 10px 13px;
+  color: #d9c08b;
+  background: #19150fe8;
+  border: 1px solid #ad8c4c66;
+  border-radius: 3px;
+  font: 11px sans-serif;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+}
+.hall-menu-caption {
+  color: #aa9a7a;
+  font-size: 11px;
+  margin: 0 0 18px;
+}
+:root .app-shell .hall-of-fame .scene-panel {
+  top: 140px;
+}
+:root .app-shell .hall-of-fame .scene-panel .hall-rankings {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: visible;
+}
+:root .app-shell .hall-of-fame .scene-panel .hall-rankings button {
+  display: flex;
+  justify-content: start;
+  text-align: left;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 45px;
+  padding: 12px;
+  font: 12px sans-serif;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: transparent;
+  color: #baab8d;
+}
+:root .app-shell .hall-of-fame .scene-panel .hall-rankings button > span {
+  flex: 1;
+}
+:root .app-shell .hall-of-fame .scene-panel .hall-rankings button[aria-pressed='true'] {
+  background: #ac854624;
+  border-color: #be9f5e55;
+  color: #ecd4a0;
+}
+:root .app-shell .hall-of-fame .scene-panel .hall-rankings button:hover {
+  background: #ac85461a;
+  color: #ecd4a0;
+}
+:root .app-shell .hall-of-fame .scene-panel .button {
+  width: 100%;
+  margin: 22px 0 0;
+  padding: 12px;
+  color: #ccb78d;
+  font: 11px/1.5 sans-serif;
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  background: #ffffff04;
+  border: 1px solid #be9f5e44;
+}
+:root .app-shell .hall-of-fame.embedded {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  border: 0;
+  border-radius: 0;
+}
+:root .app-shell .hall-of-fame.embedded .hall-gallery {
+  padding-top: 80px;
+}
+@media (max-width: 700px) {
+  :root .app-shell .hall-of-fame .hall-menu-trigger {
+    left: 14px;
+    top: 77px;
+    min-height: 34px;
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+  :root .app-shell .hall-of-fame .hall-gallery {
+    padding-top: 127px;
+  }
+  :root .app-shell .hall-of-fame .hall-podium {
+    margin-top: 48px;
+  }
+  :root .app-shell .hall-of-fame .scene-panel {
+    top: 122px;
+  }
+  :root .app-shell .hall-of-fame.embedded .hall-gallery {
+    padding-top: 62px;
+  }
+}
+
+:root .app-shell[data-page='profiles'] .profile-panels-strip:has(.hall-of-fame) {
+  width: 100%;
+  transform: none !important;
+}
+:root
+  .app-shell[data-page='profiles']
+  .profile-panels-strip:has(.hall-of-fame)
+  > .public-profile-panel {
+  width: 100%;
+  flex-basis: 100%;
+}
+:root
+  .app-shell[data-page='profiles']
+  .profile-panels-strip:has(.hall-of-fame)
+  > .public-profile-panel[aria-hidden='true'] {
+  display: none;
+}
+:root .app-shell[data-page='profiles'] .public-profile-panel:has(> .hall-of-fame) {
+  padding: 0;
+  background: transparent;
+}
+
+:root .app-shell[data-page='profiles'] .visiting .public-profile-panel:has(>.hall-of-fame) { padding:0; }
+:root .app-shell .hall-of-fame > .hall-score-help {max-width:1200px;width:calc(100% - 48px);margin:24px auto;}
+:root .app-shell .hall-of-fame .hall-champion:is(:hover,:focus-visible,.focused) {outline:1px solid #c2a16666;outline-offset:4px;}

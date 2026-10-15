@@ -10,6 +10,8 @@ import {
   ArrowUpRight,
   UserRound,
   X,
+  Menu,
+  ChevronRight,
 } from 'lucide-react';
 import { api } from './api';
 import type { HallEntry, HallSettings } from '../shared/social';
@@ -17,6 +19,8 @@ import './hall-profiles.css';
 import './hall-character-art.css';
 import './community-prestige.css';
 import './community-refinements.css';
+import { ScenePanel } from './ScenePanel';
+import './hall-immersive.css';
 export function visitProfile(user: string, character?: string) {
   location.hash =
     'profiles?user=' +
@@ -50,7 +54,8 @@ export function HallOfFame({
     [ranking, setRanking] = useState<Ranking>('general'),
     [query, setQuery] = useState(''),
     [editing, setEditing] = useState<HallSettings | null>(null),
-    [page, setPage] = useState(1);
+    [page, setPage] = useState(1),
+    [menuOpen, setMenuOpen] = useState(false);
   const load = () =>
     api<HallResponse>('/hall')
       .then(setData)
@@ -120,99 +125,120 @@ export function HallOfFame({
   }
   return (
     <section className={`hall-of-fame ${embedded ? 'embedded' : ''}`}>
-      <div className="hall-gallery">
-      <div className="hall-heading">
-        <span className="social-eyebrow">Nomes gravados na história</span>
-        <h2>
-          {data?.document.title && data.document.title !== 'Hall da Fama'
-            ? data.document.title
-            : embedded
-              ? 'Hall da Fama'
-              : 'Os nomes que se tornam lenda'}
-        </h2>
-        <p>{data?.document.intro || 'As histórias que deixam sua marca na Alvorada.'}</p>
-        {data?.can_edit && !embedded && (
-          <button
-            className="button outline"
-            onClick={() => setEditing(structuredClone(data.document))}
-          >
-            <Settings2 size={15} />
-            Editar pontuação e apresentação
-          </button>
-        )}
-      </div>
-      {error && (
-        <p className="social-error" role="alert">
-          {error}
-        </p>
-      )}
-      <nav className="hall-rankings" aria-label="Tipos de ranking">
-        {rankings.map(({ id, name, icon: Icon }) => (
-          <button
-            key={id}
-            aria-pressed={ranking === id}
-            onClick={() => {
-              setRanking(id);
-              setPage(1);
-            }}
-          >
-            <Icon size={15} />
-            {name}
-          </button>
-        ))}
-      </nav>
-      {!query && ordered.length > 0 && (
-        <div className="hall-podium">
-          {ordered.slice(0, 3).map((e) => (
+      <button
+        className="hall-menu-trigger"
+        aria-label="Menu do Hall da Fama"
+        aria-expanded={menuOpen}
+        aria-controls="scene-panel-hall"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <Menu size={18} />
+        <span>{rankings.find((r) => r.id === ranking)?.name}</span>
+        <ChevronRight size={14} />
+      </button>
+      {menuOpen && (
+        <ScenePanel id="hall" title="Hall da Fama" side="left" close={() => setMenuOpen(false)}>
+          <p className="hall-menu-caption">Explore os registros da Alvorada</p>
+          <nav className="hall-rankings" aria-label="Tipos de ranking">
+            {rankings.map(({ id, name, icon: Icon }) => (
+              <button
+                key={id}
+                aria-pressed={ranking === id}
+                onClick={() => {
+                  setRanking(id);
+                  setPage(1);
+                  setMenuOpen(false);
+                }}
+              >
+                <Icon size={18} />
+                <span>{name}</span>
+                <ChevronRight size={14} />
+              </button>
+            ))}
+          </nav>{' '}
+          {data?.can_edit && (
             <button
-              className={`hall-champion place-${e.categoryRank} ${e.id === focusCharacterId ? 'focused' : ''}`}
-              key={e.id}
-              onClick={() => visitProfile(e.user_id, e.id)}
+              className="button outline"
+              onClick={() => {
+                setEditing(structuredClone(data.document));
+                setMenuOpen(false);
+              }}
             >
-              <div className="hall-podium-stage">
-                <span className="hall-place">
-                  {e.categoryRank === 1 ? <Crown size={26} /> : <Trophy size={22} />}
-                  <b>#{e.categoryRank}</b>
-                </span>
-                <span className="hall-character-art">
-                  <img
-                    key={e.portrait}
-                    src={e.portrait}
-                    alt={e.name}
-                    onError={(event) => {
-                      const image = event.currentTarget;
-                      if (!image.src.endsWith('/character-silhouette-v2.png'))
-                        image.src = '/character-silhouette-v2.png';
-                    }}
-                  />
-                </span>
-              </div>
-              <div className="hall-champion-details">
-                <h2>{ranking === 'rating' ? e.owner_name : e.name}</h2>
-                <span className="hall-champion-class">
-                  {e.class} · Nível {e.level}
-                </span>
-                <small className="hall-champion-owner">{e.owner_name}</small>
-                <strong className="hall-champion-value">
-                  {ranking === 'rating'
-                    ? e.categoryValue.toFixed(2)
-                    : e.categoryValue.toLocaleString('pt-BR')}
-                  <small>
-                    {ranking === 'rating'
-                      ? 'avaliação ponderada'
-                      : ranking === 'general' || ranking === 'prestige'
-                        ? 'pontos'
-                        : 'registros'}
-                  </small>
-                </strong>
-                <span className="hall-profile-link">
-                  Visitar perfil <ArrowUpRight size={13} />
-                </span>
-              </div>
+              <Settings2 size={15} />
+              Editar pontuação e apresentação
             </button>
-          ))}
-        </div>
+          )}
+        </ScenePanel>
       )}
+      <div className="hall-gallery">
+        <div className="hall-heading">
+          <h2>
+            {data?.document.title && data.document.title !== 'Hall da Fama'
+              ? data.document.title
+              : embedded
+                ? 'Hall da Fama'
+                : 'Os nomes que se tornam lenda'}
+          </h2>
+          <p>{data?.document.intro || 'As histórias que deixam sua marca na Alvorada.'}</p>
+        </div>
+        {error && (
+          <p className="social-error" role="alert">
+            {error}
+          </p>
+        )}
+
+        {!query && ordered.length > 0 && (
+          <div className="hall-podium">
+            {ordered.slice(0, 3).map((e) => (
+              <button
+                className={`hall-champion place-${e.categoryRank} ${e.id === focusCharacterId ? 'focused' : ''}`}
+                key={e.id}
+                onClick={() => visitProfile(e.user_id, e.id)}
+              >
+                <div className="hall-podium-stage">
+                  <span className="hall-place">
+                    {e.categoryRank === 1 ? <Crown size={26} /> : <Trophy size={22} />}
+                    <b>#{e.categoryRank}</b>
+                  </span>
+                  <span className="hall-character-art">
+                    <img
+                      key={e.portrait}
+                      src={e.portrait}
+                      alt={e.name}
+                      onError={(event) => {
+                        const image = event.currentTarget;
+                        if (!image.src.endsWith('/character-silhouette-v2.png'))
+                          image.src = '/character-silhouette-v2.png';
+                      }}
+                    />
+                  </span>
+                </div>
+                <div className="hall-champion-details">
+                  <h2>{ranking === 'rating' ? e.owner_name : e.name}</h2>
+                  <span className="hall-champion-class">
+                    {e.class} · Nível {e.level}
+                  </span>
+                  <small className="hall-champion-owner">{e.owner_name}</small>
+                  <strong className="hall-champion-value">
+                    {ranking === 'rating'
+                      ? e.categoryValue.toFixed(2)
+                      : e.categoryValue.toLocaleString('pt-BR')}
+                    <small>
+                      {ranking === 'rating'
+                        ? 'avaliação ponderada'
+                        : ranking === 'general' || ranking === 'prestige'
+                          ? 'pontos'
+                          : 'registros'}
+                    </small>
+                  </strong>
+                  <span className="hall-profile-link">
+                    Visitar perfil <ArrowUpRight size={13} />
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
       </div>
       <div className="hall-search">
         <Search size={16} />

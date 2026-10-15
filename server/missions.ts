@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { transaction } from './db.js';
+import type { PoolClient } from 'pg';
 import { AppError } from './services.js';
 import { creditMissionTags } from './mission-tag-progress.js';
 import {
@@ -9,6 +10,59 @@ import {
   RANK_REWARD_CP,
   type Rank,
 } from '../shared/progression.js';
+
+export const missionHookSchema = z.object({
+  title: z.string().trim().min(5).max(100),
+  description: z.string().trim().min(15).max(3000),
+});
+
+async function insertHook(
+  client: PoolClient,
+  id: string,
+  userId: string,
+  data: z.infer<typeof missionHookSchema>,
+) {
+  // Both publication paths serialize on the source mission, including concurrent requests.
+  const {
+    rows: [mission],
+  } = await client.query('SELECT * FROM board_posts WHERE id=$1 FOR UPDATE', [id]);
+  if (!mission || mission.kind !== 'mission' || mission.author_id !== userId)
+    throw new AppError(403, 'Somente o criador da missão pode registrar seu gancho.');
+  if (mission.status !== 'completed')
+    throw new AppError(409, 'Conclua a missão antes de registrar um gancho.');
+  if (
+    (
+      await client.query("SELECT 1 FROM board_posts WHERE kind='hook' AND source_mission_id=$1", [
+        id,
+      ])
+    ).rowCount
+  )
+    throw new AppError(
+      409,
+      'Esta missão já tem um gancho. Cada missão concluída permite um único gancho.',
+    );
+  return (
+    await client.query(
+      `INSERT INTO board_posts(author_id,kind,title,description,location,difficulty,source_mission_id,region_id,location_id)
+     VALUES($1,'hook',$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+      [
+        userId,
+        data.title,
+        data.description,
+        mission.location,
+        mission.difficulty,
+        id,
+        mission.region_id,
+        mission.location_id,
+      ],
+    )
+  ).rows[0];
+}
+
+export async function publishMissionHook(id: string, userId: string, input: unknown) {
+  const data = missionHookSchema.parse(input);
+  return transaction((client) => insertHook(client, id, userId, data));
+}
 
 export const completionSchema = z.object({
   summary: z.string().trim().min(10).max(5000),
@@ -20,12 +74,7 @@ export const completionSchema = z.object({
       }),
     )
     .max(200),
-  hook: z
-    .object({
-      title: z.string().trim().min(5).max(100),
-      description: z.string().trim().min(15).max(3000),
-    })
-    .optional(),
+  hook: missionHookSchema.optional(),
 });
 
 export async function completeMission(
@@ -106,21 +155,7 @@ export async function completeMission(
       "UPDATE board_posts SET status='completed',completion_summary=$2,closed_at=now() WHERE id=$1 RETURNING *",
       [id, data.summary],
     );
-    if (data.hook)
-      await client.query(
-        `INSERT INTO board_posts(author_id,kind,title,description,location,difficulty,source_mission_id,region_id,location_id)
-       VALUES($1,'hook',$2,$3,$4,$5,$6,$7,$8)`,
-        [
-          userId,
-          data.hook.title,
-          data.hook.description,
-          mission.location,
-          mission.difficulty,
-          id,
-          mission.region_id,
-          mission.location_id,
-        ],
-      );
+    if (data.hook) await insertHook(client, id, userId, data.hook);
     return completed;
   });
 }

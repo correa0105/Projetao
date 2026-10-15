@@ -1,5 +1,5 @@
 /* Real player art stays separate from the painted gallery. */
-:root .app-shell[data-page='hall'] .hall-of-fame:not(.embedded) {
+:root .app-shell .hall-of-fame {
   background:
     linear-gradient(#120e0b70, #120f0a94 60%, #14120ffc 100%),
     url('/community/hall-of-honor.webp') center top/100% auto no-repeat,
@@ -9,40 +9,40 @@
   min-height: 100dvh;
   color: #eee0c9;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-heading {
+:root .app-shell .hall-of-fame .hall-heading {
   max-width: 1000px;
   margin: auto;
   text-align: center;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-heading h2 {
+:root .app-shell .hall-of-fame .hall-heading h2 {
   font: 500 clamp(30px, 3.2vw, 52px)/1.15 var(--serif);
   margin: 18px 0;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-heading p {
+:root .app-shell .hall-of-fame .hall-heading p {
   margin: 0 auto;
   max-width: 650px;
   color: #d2bfa1;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-heading .button {
+:root .app-shell .hall-of-fame .hall-heading .button {
   font-size: 11px;
   margin-top: 20px;
   background: #17120b9c;
   display: inline-flex;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-rankings {
+:root .app-shell .hall-of-fame .hall-rankings {
   justify-content: center;
   max-width: 1200px;
   margin: 26px auto 12px;
   border-color: #c69e5530;
   scrollbar-width: thin;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium {
+:root .app-shell .hall-of-fame .hall-podium {
   max-width: 1120px;
   margin: 24px auto 56px;
   gap: 32px;
   align-items: end;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium > .hall-champion {
+:root .app-shell .hall-of-fame .hall-podium > .hall-champion {
   background: none;
   border: 0;
   border-radius: 0;
@@ -51,28 +51,28 @@
   padding: 0;
   transition: transform 0.2s;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion:is(:hover, :focus-visible) {
+:root .app-shell .hall-of-fame .hall-champion:is(:hover, :focus-visible) {
   transform: translateY(-6px);
   outline: 1px solid var(--medal-ink);
   outline-offset: 9px;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage {
+:root .app-shell .hall-of-fame .hall-podium-stage {
   height: clamp(280px, 27vw, 410px);
   overflow: visible;
   padding: 0 16px 30px;
   background: radial-gradient(ellipse at 50% 95%, #ad80413b, transparent 55%);
 }
-:root .app-shell .hall-of-fame:not(.embedded) .place-1 .hall-podium-stage {
+:root .app-shell .hall-of-fame .place-1 .hall-podium-stage {
   height: clamp(320px, 31vw, 470px);
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage::before {
+:root .app-shell .hall-of-fame .hall-podium-stage::before {
   inset: 24px 8% 0;
   border: 1px solid #c29a5550;
   border-bottom: 0;
   border-radius: 50% 50% 0 0;
   background: linear-gradient(#0f0c084a, #17100766);
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage::after {
+:root .app-shell .hall-of-fame .hall-podium-stage::after {
   left: 8%;
   right: 8%;
   bottom: 4px;
@@ -81,7 +81,7 @@
   background: linear-gradient(#c9ad75, #514430 35%, #201b12 75%, #917446);
   box-shadow: 0 12px 22px #000b;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage > .hall-place {
+:root .app-shell .hall-of-fame .hall-podium-stage > .hall-place {
   position: absolute;
   top: -10px;
   left: 50%;
@@ -98,18 +98,18 @@
   padding: 8px;
   font-size: 12px;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage > .hall-character-art {
+:root .app-shell .hall-of-fame .hall-podium-stage > .hall-character-art {
   max-width: 95%;
   height: 100%;
   flex: none;
   margin-top: 22px;
   filter: drop-shadow(0 0 18px #c1983820);
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-character-art > img {
+:root .app-shell .hall-of-fame .hall-character-art > img {
   object-position: center bottom;
   filter: drop-shadow(0 12px 9px #0009);
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details {
+:root .app-shell .hall-of-fame .hall-champion-details {
   min-height: 184px;
   padding: 25px 12px 20px;
   background: linear-gradient(145deg, #392b1ccc, #18130de8);
@@ -118,31 +118,31 @@
   clip-path: polygon(4% 0, 96% 0, 100% 12%, 100% 88%, 96% 100%, 4% 100%, 0 88%, 0 12%);
   gap: 6px;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details::before {
+:root .app-shell .hall-of-fame .hall-champion-details::before {
   display: none;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details h2 {
+:root .app-shell .hall-of-fame .hall-champion-details h2 {
   font-size: clamp(20px, 2vw, 29px);
   color: var(--medal-ink);
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value {
+:root .app-shell .hall-of-fame .hall-champion-value {
   font: 500 28px var(--serif);
   margin-top: 9px;
   display: flex;
   align-items: baseline;
   gap: 8px;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value small {
+:root .app-shell .hall-of-fame .hall-champion-value small {
   font: 10px var(--sans);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-:root .app-shell .hall-of-fame:not(.embedded) :is(.hall-search, .hall-table, .hall-pagination) {
+:root .app-shell .hall-of-fame :is(.hall-search, .hall-table, .hall-pagination) {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
-:root .app-shell .hall-of-fame:not(.embedded) .hall-table-row {
+:root .app-shell .hall-of-fame .hall-table-row {
   background: #19140fcc;
   border-color: #a987442b;
 }
@@ -486,38 +486,38 @@
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
-  :root .app-shell .hall-of-fame:not(.embedded) .hall-rankings {
+  :root .app-shell .hall-of-fame .hall-rankings {
     justify-content: flex-start;
   }
-  :root .app-shell .hall-of-fame:not(.embedded) .hall-podium {
+  :root .app-shell .hall-of-fame .hall-podium {
     gap: 14px;
   }
-  :root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details {
+  :root .app-shell .hall-of-fame .hall-champion-details {
     min-height: 200px;
     padding: 20px 8px;
   }
 }
 @media (max-width: 560px) {
-  :root .app-shell[data-page='hall'] .hall-of-fame:not(.embedded) {
+  :root .app-shell .hall-of-fame {
     padding: 82px 18px 110px;
     background-size: auto 950px;
   }
-  :root .app-shell .hall-of-fame:not(.embedded) .hall-podium {
+  :root .app-shell .hall-of-fame .hall-podium {
     display: flex;
     flex-direction: column;
     gap: 35px;
     align-items: stretch;
   }
-  :root .app-shell .hall-of-fame:not(.embedded) .hall-champion.place-1 {
+  :root .app-shell .hall-of-fame .hall-champion.place-1 {
     order: -1;
   }
-  :root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage {
+  :root .app-shell .hall-of-fame .hall-podium-stage {
     height: 280px;
   }
-  :root .app-shell .hall-of-fame:not(.embedded) .place-1 .hall-podium-stage {
+  :root .app-shell .hall-of-fame .place-1 .hall-podium-stage {
     height: 340px;
   }
-  :root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details {
+  :root .app-shell .hall-of-fame .hall-champion-details {
     min-height: 0;
   }
   .player-profile-home {

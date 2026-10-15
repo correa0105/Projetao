@@ -1,30 +1,30 @@
 /* Shared ink, brass and stone; the gallery includes both figures and nameplates. */
-:root .app-shell[data-page='hall'] .hall-of-fame:not(.embedded){padding:0 0 100px;background:#14120f;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-gallery{padding:82px max(6vw,24px) 30px;background:linear-gradient(180deg,#120e0b44 0%,#120e0b28 65%,#14120f 100%),url('/community/hall-of-honor.webp') center bottom/cover no-repeat;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-heading h2{font-size:clamp(27px,3vw,43px);margin:12px 0;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-heading p{font-size:12px;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-heading .button{margin-top:14px;min-height:32px;padding:7px 11px;font-size:10px;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-rankings{margin:22px auto 10px;max-width:1060px;padding:8px 0;gap:5px;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-rankings button{padding:8px 11px;font-size:11px;white-space:nowrap;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium{max-width:1040px;margin:32px auto 0;gap:clamp(14px,3vw,40px);align-items:end;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage{height:clamp(220px,23vw,320px);padding:0 8px 15px;}
-:root .app-shell .hall-of-fame:not(.embedded) .place-1 .hall-podium-stage{height:clamp(250px,26vw,360px);}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage::before{display:none;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage::after{left:10%;right:10%;bottom:0;height:13px;box-shadow:0 7px 15px #0009;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage>.hall-place{top:-15px;width:42px;height:42px;min-width:42px;min-height:42px;gap:0;padding:6px;font-size:9px;border-color:#b9a07870;background:#1d1913ed;box-shadow:0 4px 12px #0005;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-place svg{width:17px;height:17px;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage>.hall-character-art{margin-top:10px;height:calc(100% - 10px);max-width:100%;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details{display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:0;padding:13px 14px 9px;gap:3px 12px;clip-path:none;border:1px solid #b9915133;border-top:1px solid #b9915170;border-radius:2px;background:linear-gradient(135deg,#251e16ed,#17140fed);text-align:left;align-items:start;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details h2{display:block;grid-column:1;min-height:0;width:auto;font:500 clamp(15px,1.5vw,20px)/1.25 var(--serif);margin:0;color:#e7d5b2;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-class{grid-column:1;font-size:10px;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-owner{grid-column:1;font-size:10px;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value{grid-column:2;grid-row:1/4;margin:0;display:flex;flex-direction:column;align-items:flex-end;gap:3px;font:500 25px/1.1 var(--serif);white-space:nowrap;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value small{font:8px Arial,sans-serif;letter-spacing:.08em;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-profile-link{grid-column:1/-1;justify-content:flex-start;font-size:8px;margin:5px 0 0;padding-top:6px;border-top:1px solid #c6a46c1c;}
-:root .app-shell .hall-of-fame:not(.embedded)>:is(.hall-search,.hall-table,.hall-pagination,.hall-score-help){width:calc(100% - 48px);max-width:1120px;margin-left:auto;margin-right:auto;}
-:root .app-shell .hall-of-fame:not(.embedded) .hall-champion:is(:hover,:focus-visible){transform:translateY(-3px);outline-offset:3px;}
-@media(max-width:760px){:root .app-shell .hall-of-fame:not(.embedded) .hall-gallery{padding:76px 18px 24px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-podium{gap:10px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details{padding:10px 8px;gap:3px 5px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value{font-size:21px;}}
-@media(max-width:560px){:root .app-shell .hall-of-fame:not(.embedded) .hall-podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:end;gap:7px;margin-top:32px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion.place-1{order:0;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion.place-2{order:-1;}:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage{height:145px;padding:0 0 10px;}:root .app-shell .hall-of-fame:not(.embedded) .place-1 .hall-podium-stage{height:175px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details{display:flex;flex-direction:column;align-items:center;text-align:center;padding:9px 5px;min-height:118px;gap:4px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details h2{font-size:12px;line-height:1.15;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-class{font-size:8px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-owner{font-size:8px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value{font-size:20px;align-items:center;margin:2px 0;}:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value small{font-size:6px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-profile-link{font-size:6px;margin-top:auto;gap:2px;width:100%;justify-content:center;}:root .app-shell .hall-of-fame:not(.embedded) .hall-profile-link svg{width:9px;height:9px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-rankings{justify-content:flex-start;overflow:auto;}:root .app-shell .hall-of-fame:not(.embedded) .hall-rankings button{font-size:10px;padding:8px 9px;}:root .app-shell .hall-of-fame:not(.embedded)>:is(.hall-search,.hall-table,.hall-pagination,.hall-score-help){width:calc(100% - 32px);}}
+:root .app-shell .hall-of-fame{padding:0 0 100px;background:#14120f;}
+:root .app-shell .hall-of-fame .hall-gallery{padding:82px max(6vw,24px) 30px;background:linear-gradient(180deg,#120e0b44 0%,#120e0b28 65%,#14120f 100%),url('/community/hall-of-honor.webp') center bottom/cover no-repeat;}
+:root .app-shell .hall-of-fame .hall-heading h2{font-size:clamp(27px,3vw,43px);margin:12px 0;}
+:root .app-shell .hall-of-fame .hall-heading p{font-size:12px;}
+:root .app-shell .hall-of-fame .hall-heading .button{margin-top:14px;min-height:32px;padding:7px 11px;font-size:10px;}
+:root .app-shell .hall-of-fame .hall-rankings{margin:22px auto 10px;max-width:1060px;padding:8px 0;gap:5px;}
+:root .app-shell .hall-of-fame .hall-rankings button{padding:8px 11px;font-size:11px;white-space:nowrap;}
+:root .app-shell .hall-of-fame .hall-podium{max-width:1040px;margin:32px auto 0;gap:clamp(14px,3vw,40px);align-items:end;}
+:root .app-shell .hall-of-fame .hall-podium-stage{height:clamp(220px,23vw,320px);padding:0 8px 15px;}
+:root .app-shell .hall-of-fame .place-1 .hall-podium-stage{height:clamp(250px,26vw,360px);}
+:root .app-shell .hall-of-fame .hall-podium-stage::before{display:none;}
+:root .app-shell .hall-of-fame .hall-podium-stage::after{left:10%;right:10%;bottom:0;height:13px;box-shadow:0 7px 15px #0009;}
+:root .app-shell .hall-of-fame .hall-podium-stage>.hall-place{top:-15px;width:42px;height:42px;min-width:42px;min-height:42px;gap:0;padding:6px;font-size:9px;border-color:#b9a07870;background:#1d1913ed;box-shadow:0 4px 12px #0005;}
+:root .app-shell .hall-of-fame .hall-place svg{width:17px;height:17px;}
+:root .app-shell .hall-of-fame .hall-podium-stage>.hall-character-art{margin-top:10px;height:calc(100% - 10px);max-width:100%;}
+:root .app-shell .hall-of-fame .hall-champion-details{display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:0;padding:13px 14px 9px;gap:3px 12px;clip-path:none;border:1px solid #b9915133;border-top:1px solid #b9915170;border-radius:2px;background:linear-gradient(135deg,#251e16ed,#17140fed);text-align:left;align-items:start;}
+:root .app-shell .hall-of-fame .hall-champion-details h2{display:block;grid-column:1;min-height:0;width:auto;font:500 clamp(15px,1.5vw,20px)/1.25 var(--serif);margin:0;color:#e7d5b2;}
+:root .app-shell .hall-of-fame .hall-champion-class{grid-column:1;font-size:10px;}
+:root .app-shell .hall-of-fame .hall-champion-owner{grid-column:1;font-size:10px;}
+:root .app-shell .hall-of-fame .hall-champion-value{grid-column:2;grid-row:1/4;margin:0;display:flex;flex-direction:column;align-items:flex-end;gap:3px;font:500 25px/1.1 var(--serif);white-space:nowrap;}
+:root .app-shell .hall-of-fame .hall-champion-value small{font:8px Arial,sans-serif;letter-spacing:.08em;}
+:root .app-shell .hall-of-fame .hall-profile-link{grid-column:1/-1;justify-content:flex-start;font-size:8px;margin:5px 0 0;padding-top:6px;border-top:1px solid #c6a46c1c;}
+:root .app-shell .hall-of-fame>:is(.hall-search,.hall-table,.hall-pagination,.hall-score-help){width:calc(100% - 48px);max-width:1120px;margin-left:auto;margin-right:auto;}
+:root .app-shell .hall-of-fame .hall-champion:is(:hover,:focus-visible){transform:translateY(-3px);outline-offset:3px;}
+@media(max-width:760px){:root .app-shell .hall-of-fame .hall-gallery{padding:76px 18px 24px;}:root .app-shell .hall-of-fame .hall-podium{gap:10px;}:root .app-shell .hall-of-fame .hall-champion-details{padding:10px 8px;gap:3px 5px;}:root .app-shell .hall-of-fame .hall-champion-value{font-size:21px;}}
+@media(max-width:560px){:root .app-shell .hall-of-fame .hall-podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:end;gap:7px;margin-top:32px;}:root .app-shell .hall-of-fame .hall-champion.place-1{order:0;}:root .app-shell .hall-of-fame .hall-champion.place-2{order:-1;}:root .app-shell .hall-of-fame .hall-podium-stage{height:145px;padding:0 0 10px;}:root .app-shell .hall-of-fame .place-1 .hall-podium-stage{height:175px;}:root .app-shell .hall-of-fame .hall-champion-details{display:flex;flex-direction:column;align-items:center;text-align:center;padding:9px 5px;min-height:118px;gap:4px;}:root .app-shell .hall-of-fame .hall-champion-details h2{font-size:12px;line-height:1.15;}:root .app-shell .hall-of-fame .hall-champion-class{font-size:8px;}:root .app-shell .hall-of-fame .hall-champion-owner{font-size:8px;}:root .app-shell .hall-of-fame .hall-champion-value{font-size:20px;align-items:center;margin:2px 0;}:root .app-shell .hall-of-fame .hall-champion-value small{font-size:6px;}:root .app-shell .hall-of-fame .hall-profile-link{font-size:6px;margin-top:auto;gap:2px;width:100%;justify-content:center;}:root .app-shell .hall-of-fame .hall-profile-link svg{width:9px;height:9px;}:root .app-shell .hall-of-fame .hall-rankings{justify-content:flex-start;overflow:auto;}:root .app-shell .hall-of-fame .hall-rankings button{font-size:10px;padding:8px 9px;}:root .app-shell .hall-of-fame>:is(.hall-search,.hall-table,.hall-pagination,.hall-score-help){width:calc(100% - 32px);}}
 /* A compact guild masthead, followed by clear areas and a room chooser. */
 :root .app-shell .guild-page{padding:82px max(5vw,20px) 100px;}
 :root .app-shell .guild-page .guild-page-heading{display:flex;align-items:center;gap:22px;margin:0 auto 25px;}
@@ -71,6 +71,6 @@
 :root .app-shell .guild-page .guild-stat strong small{display:inline;margin:0;}
 :root .app-shell .guild-page .guild-summary>strong{display:grid;grid-template-columns:18px auto;align-items:center;gap:5px;white-space:nowrap;}
 :root .app-shell .guild-page .guild-summary>strong small{grid-column:1/-1;white-space:normal;}
-@media(max-width:560px){:root .app-shell .guild-page{padding-top:28px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-gallery{padding-top:120px;}}
+@media(max-width:560px){:root .app-shell .guild-page{padding-top:28px;}:root .app-shell .hall-of-fame .hall-gallery{padding-top:120px;}}
 
 :root .app-shell .guild-is-detail>.guild-house-layout{margin:0 auto 30px;width:100%;}

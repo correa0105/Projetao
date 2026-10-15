@@ -8,7 +8,7 @@ import { socialRouter } from './social.js';
 import { guildsRouter } from './guilds.js';
 import { towerRouter } from './tower.js';
 import express from 'express';
-import {sendCatalog,compressedBundle} from './http-transfer.js';
+import { sendCatalog, compressedBundle } from './http-transfer.js';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
 import { toNodeHandler, fromNodeHeaders } from 'better-auth/node';
@@ -20,7 +20,7 @@ import { auth, origins } from './auth.js';
 import { pool, transaction } from './db.js';
 import { administratorPredicate, isAdministrator, requireAdministrator } from './administrators.js';
 import { AppError, purchase } from './services.js';
-import { completeMission, completionSchema } from './missions.js';
+import { completeMission, completionSchema, publishMissionHook } from './missions.js';
 import { houseRouter } from './house.js';
 import { atlasId, resolvePostLocation } from './atlas.js';
 import { characterArtRouter, characterListSql } from './character-art.js';
@@ -58,6 +58,7 @@ const postSchema = z.object({
   title: z.string().trim().min(5).max(100),
   description: z.string().trim().min(15).max(3000),
   kind: z.enum(['mission', 'event']),
+  event_source_id: uuid.optional(),
   mission_rank: z.enum(RANKS).default('Ferro'),
   rank_test_level: z
     .union([z.literal(4), z.literal(8), z.literal(12), z.literal(16)])
@@ -299,7 +300,9 @@ export function createApp() {
     res.json({ inventory: inventory.rows, achievements: achievements.rows, history: history.rows });
   });
   app.get('/api/catalog', async (req, res) =>
-    sendCatalog(req,res,
+    sendCatalog(
+      req,
+      res,
       (
         await pool.query(
           `SELECT id,name,original_name,category,description,price_cp,weight_lb,source,source_url,
@@ -376,12 +379,25 @@ export function createApp() {
     if (data.starts_at && new Date(data.starts_at).getTime() <= Date.now())
       throw new AppError(400, 'Escolha uma data e hora futuras.');
     const post = await transaction(async (client) => {
+      if (data.event_source_id) {
+        if (data.kind !== 'mission')
+          throw new AppError(400, 'Somente missões podem pertencer a um evento.');
+        const event = await client.query(
+          "SELECT id FROM board_posts WHERE id=$1 AND kind='event' AND status='active' FOR SHARE",
+          [data.event_source_id],
+        );
+        if (!event.rowCount)
+          throw new AppError(
+            409,
+            'Este evento não está ativo. O registro de missões de evento está bloqueado.',
+          );
+      }
       const location = await resolvePostLocation(client, data);
       const {
         rows: [created],
       } = await client.query(
-        `INSERT INTO board_posts(author_id,kind,title,description,location,difficulty,reward_cp,starts_at,region_id,location_id,paper_style,paper_summary,rank_test_level,mission_rank)
-         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING *`,
+        `INSERT INTO board_posts(author_id,kind,title,description,location,difficulty,reward_cp,starts_at,region_id,location_id,paper_style,paper_summary,rank_test_level,mission_rank,event_source_id)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING *`,
         [
           res.locals.user.id,
           data.kind,
@@ -397,12 +413,18 @@ export function createApp() {
           data.paper_summary,
           data.rank_test_level,
           data.mission_rank,
+          data.event_source_id || null,
         ],
       );
       if (data.kind === 'mission') await setMissionTags(client, created.id, data.tag_ids);
       return created;
     });
     res.status(201).json(post);
+  });
+  app.post('/api/board/:id/hook', async (req, res) => {
+    res
+      .status(201)
+      .json(await publishMissionHook(uuid.parse(req.params.id), res.locals.user.id, req.body));
   });
   app.patch('/api/board/:id/paper', async (req, res) => {
     const id = uuid.parse(req.params.id);
@@ -694,7 +716,8 @@ export function createApp() {
       express.static(resolve('dist/client'), {
         setHeaders: (res, file) => {
           if (file.endsWith('.html')) res.setHeader('Cache-Control', 'no-store');
-          else if(file.startsWith(resolve('dist/client/assets')))res.setHeader('Cache-Control','public, max-age=31536000, immutable');
+          else if (file.startsWith(resolve('dist/client/assets')))
+            res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
         },
       }),
     );

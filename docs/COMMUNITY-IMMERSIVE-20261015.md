@@ -1,0 +1,15 @@
+# Guildas, Hall e registros da mesa — 15/10/2026
+
+A entrada das guildas agora apresenta ações para fundar/procurar, sede ilustrada, regras de entrada por convite e diretório pesquisável com ordenação e filtro de vagas. A identidade e os brasões continuam reais; nenhum registro de demonstração foi criado em produção.
+
+A sede ocupa o viewport. Nome/brasão e salas ficam no alto; companhia/missões e edição ficam nos cantos inferiores. Um painel por vez, fechamento explícito ou Escape com retorno de foco. Recolher o editor conserva o rascunho; somente Salvar sede ou Descartar edição encerram a edição. Os móveis usam o mesmo plano 16:9 do cenário em todos os formatos, com alternância entre preencher e enquadrar. Coordenadas, oito/dezesseis vistas, perspectiva por peça e ownership foram conservados.
+
+Hall principal e Hall da aba de perfis compartilham a apresentação em tinta/latão, fundo que cobre o viewport, placas compactas e menu lateral de categorias. A edição continua exclusiva do administrador. Removida a legenda Nomes gravados na história. Busca, perfil destacado, avaliação e cálculo de pontuação permanecem.
+
+O ilustrador é um serviço compartilhado, consultável por qualquer conta autenticada. Nenhuma permissão individual nova é necessária para contas recém-criadas ou beta. Consulta inicial e erro de rede não são tratados como serviço offline; a disponibilidade retorna por polling/foco. Erros históricos da última arte no inventário são exibidos no contexto, sem recriar um alerta global ao abrir a tela. Supervisor existente permanece ativo; nenhuma geração real de teste foi solicitada.
+
+Missões comuns continuam publicáveis por jogadores. Ganchos podem ser registrados ao concluir a missão ou posteriormente pelo mesmo criador; uma única publicação por missão concluída, com lock transacional compartilhado entre os dois caminhos. Ganchos não são créditos de participação: seguem a missão mestrada pelo autor. A API nega autoria alheia, missão não concluída e concorrência duplicada. Eventos continuam exclusivos do administrador para criar/editar. A área de Eventos no mural fica bloqueada ao jogador sem evento ativo; registrar missão nela vincula event_source_id, validado novamente sob lock no servidor. Eventos abertos/agendados, concluídos e fechados não liberam a publicação. Mission normal não depende de evento.
+
+Migration 097 adiciona apenas a coluna nullable e o vínculo de evento; registros antigos são preservados. Aviso antigo de nível corrigido para distinguir escolhas pendentes de evolução já aplicada. A ampliação do catálogo de subclasses é trabalho separado em andamento, não é anunciada como concluída nesta publicação.
+
+Validação: scripts/test-community-immersive-isolated.mjs cria e remove banco PostgreSQL UUID. Exercita fundação pela UI, ownership de visitante, salas, foco/Escape, rascunho recolhido, persistência da decoração, cinco larguras (320–1440), Hall principal/perfis, filtros laterais, disponibilidade de arte para nova conta, gancho concorrente único e eventos ativos/inativos na API/UI. Imagens em test-results/community-immersive. Nenhum teste no banco de jogadores.

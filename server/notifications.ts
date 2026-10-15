@@ -73,7 +73,9 @@ export function notificationsRouter() {
         add(
           'level',
           `Nível ${c.level} alcançado`,
-          'Seu novo nível foi registrado. A atualização de PV, habilidades e magias ao subir de nível ainda será implementada.',
+          (c.choices?.advancement?.levels?.length || 0) + 1 < c.level
+            ? 'Seu novo nível foi registrado. Abra a ficha para concluir as escolhas de classe, atributos e magias dos níveis pendentes.'
+            : 'Sua evolução foi aplicada à ficha. Confira os PV, as características e as magias do novo nível.',
           'profile',
           'Conferir ficha',
           c.level,

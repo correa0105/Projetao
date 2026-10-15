@@ -155,6 +155,7 @@ function Portal({ user }: { user: User }) {
   const [modal, setModal] = useState<'character' | 'post' | null>(null);
   const [postLocation, setPostLocation] = useState<AtlasLocation | undefined>();
   const [postFromAtlas, setPostFromAtlas] = useState(false);
+  const [postEventId, setPostEventId] = useState<string | undefined>();
   const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState('');
   const [query, setQuery] = useState('');
@@ -517,6 +518,7 @@ function Portal({ user }: { user: User }) {
             posts={posts}
             renderMission={(item) => postCard(item)}
             onPublish={(place) => {
+              setPostEventId(undefined);
               setPostLocation(place);
               setPostFromAtlas(true);
               setModal('post');
@@ -634,7 +636,8 @@ function Portal({ user }: { user: User }) {
             feedback={toast}
             renderPost={(item) => postCard(item, false)}
             canCreateEvent={administrator}
-            onPublish={(kind) => {
+            onPublish={(kind, eventId) => {
+              setPostEventId(eventId);
               setPostKind(kind);
               setPostLocation(undefined);
               setPostFromAtlas(false);
@@ -767,8 +770,9 @@ function Portal({ user }: { user: User }) {
         <Modal title="Um chamado à guilda" close={() => setModal(null)}>
           <PostForm
             initialKind={postFromAtlas ? 'mission' : postKind}
-            canCreateEvent={!postFromAtlas && administrator}
+            canCreateEvent={!postFromAtlas && !postEventId && administrator}
             initialLocation={postLocation}
+            initialEventId={postEventId}
             requireMappedLocation={postFromAtlas}
             done={async () => {
               await refresh();

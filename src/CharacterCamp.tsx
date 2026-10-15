@@ -97,6 +97,7 @@ export function CharacterCamp({
   const [state, setState] = useState<ArtState>({ available: false, jobs: [], pending_new: 0 });
   const [error, setError] = useState('');
   const [loadError, setLoadError] = useState('');
+  const [availability, setAvailability] = useState<boolean | null>(null);
   const [editing, setEditing] = useState<Character | null>(null);
   const [deleting, setDeleting] = useState<Character | null>(null);
   const [deleteName, setDeleteName] = useState('');
@@ -139,16 +140,23 @@ export function CharacterCamp({
         if (snapshot.current && signature !== snapshot.current) await refreshRef.current();
         snapshot.current = signature;
         setState(result);
+        setAvailability(result.available);
         setLoadError('');
       } catch (error) {
-        if (alive) setLoadError((error as Error).message);
+        if (alive) {
+          setAvailability(null);
+          setLoadError('Não foi possível consultar o ilustrador. Tentando novamente…');
+        }
       }
     };
     void update();
     const timer = setInterval(() => void update(), 4000);
+    const focus = () => void update();
+    window.addEventListener('focus', focus);
     return () => {
       alive = false;
       clearInterval(timer);
+      window.removeEventListener('focus', focus);
     };
   }, []);
   const pending = state.jobs.filter((j) => ['queued', 'running'].includes(j.status));
@@ -231,7 +239,7 @@ export function CharacterCamp({
                 </a>
                 <button
                   className="button outline small-button"
-                  disabled={character.art_pending || !state.available}
+                  disabled={character.art_pending || availability !== true}
                   onClick={() => {
                     if (!character.art_unlimited && character.art_used >= 2) {
                       setError(
@@ -289,7 +297,12 @@ export function CharacterCamp({
           </article>
         )}
       </div>
-      {(loadError || (error && !editing)) && <FlashMessage>{loadError || error}</FlashMessage>}
+      {loadError && (
+        <p className="camp-status" role="status">
+          {loadError}
+        </p>
+      )}
+      {error && !editing && <FlashMessage>{error}</FlashMessage>}
       {notice && (
         <FlashMessage key={notice.id}>
           {notice.name}: {notice.error}
@@ -332,7 +345,11 @@ export function CharacterCamp({
               role="status"
             >
               <span className="illustrator-dot" aria-hidden="true" />
-              {state.available ? 'Ilustrador disponível' : 'Ilustrador offline'}
+              {availability === null
+                ? 'Consultando o ilustrador…'
+                : availability
+                  ? 'Ilustrador disponível'
+                  : 'Ilustrador offline'}
             </span>
             <ReferenceInput onChange={setReference} disabled={busy} />
             <ArtEquipmentChoices
@@ -345,7 +362,10 @@ export function CharacterCamp({
               onHelmetModeChange={setHelmetMode}
             />
             {error && <FlashMessage>{error}</FlashMessage>}
-            <button className="button primary" disabled={busy || !reference || !equipmentReady}>
+            <button
+              className="button primary"
+              disabled={busy || !reference || !equipmentReady || availability !== true}
+            >
               {busy ? 'Enviando…' : 'Gerar imagem'}
             </button>
           </form>

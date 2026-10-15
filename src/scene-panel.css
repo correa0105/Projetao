@@ -1,0 +1,94 @@
+.scene-panel {
+  position: fixed;
+  top: 106px;
+  bottom: 90px;
+  width: min(360px, calc(100vw - 32px));
+  z-index: 32;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ba9c5b55;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #262119f5, #14120ff7);
+  box-shadow: 0 16px 70px #0009;
+  color: #e6ddcb;
+  outline: none;
+  animation: scene-panel-in 180ms ease-out;
+  font: 12px/1.6 var(--sans, 'DM Sans', sans-serif);
+}
+.scene-panel.panel-left {
+  left: 20px;
+}
+.scene-panel.panel-right {
+  right: 20px;
+}
+.scene-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: none;
+  padding: 14px 18px;
+  border-bottom: 1px solid #ba9c5b33;
+}
+.scene-panel-heading h2 {
+  margin: 0;
+  font: 22px/1.2 var(--serif);
+  color: #e6ddcb;
+}
+.scene-panel .scene-panel-heading button {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ba9c5b44;
+  background: #ffffff06;
+  color: #d6c29a;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.scene-panel-content {
+  padding: 18px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+}
+.scene-panel button:focus-visible {
+  outline: 2px solid #d6ba80;
+  outline-offset: 3px;
+}
+@keyframes scene-panel-in {
+  from {
+    opacity: 0;
+    translate: 0 7px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@media (max-width: 560px) {
+  .scene-panel {
+    top: 116px;
+    bottom: 90px;
+    width: calc(100vw - 24px);
+  }
+  .scene-panel.panel-left {
+    left: 12px;
+  }
+  .scene-panel.panel-right {
+    right: 12px;
+  }
+  .scene-panel-heading {
+    padding: 11px 14px;
+  }
+  .scene-panel-content {
+    padding: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene-panel {
+    animation: none;
+  }
+}

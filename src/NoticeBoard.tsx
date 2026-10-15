@@ -1,6 +1,6 @@
 import { FlashMessage } from './FlashMessage';
 import { useEffect, useRef, useState, type ReactNode, type PointerEvent } from 'react';
-import { Plus, Search, X } from 'lucide-react';
+import { Plus, Search, X, Lock } from 'lucide-react';
 import type { Post } from './types';
 import { api } from './api';
 import { PaperPicker } from './NoticePaper';
@@ -39,10 +39,22 @@ export function NoticeBoard({
   userId: string;
   renderPost: (post: Post) => ReactNode;
   canCreateEvent: boolean;
-  onPublish: (kind: 'mission' | 'event') => void;
+  onPublish: (kind: 'mission' | 'event', eventId?: string) => void;
   onPaperChange: () => Promise<void>;
   feedback?: string;
 }) {
+  const [hookOpen, setHookOpen] = useState(false);
+  const [hookSource, setHookSource] = useState('');
+  const [hookBusy, setHookBusy] = useState(false);
+  const [eventSource, setEventSource] = useState('');
+  const activeEvents = posts.filter((p) => p.kind === 'event' && p.status === 'active');
+  const hookSources = posts.filter(
+    (p) =>
+      p.kind === 'mission' &&
+      p.status === 'completed' &&
+      p.author_id === userId &&
+      !posts.some((h) => h.kind === 'hook' && h.source_mission_id === p.id),
+  );
   const [category, setCategory] = useState<Post['kind'] | null>(null);
   const [postId, setPostId] = useState<string | null>(null);
   const [filter, setFilter] = useState('Atuais');
@@ -244,14 +256,40 @@ export function NoticeBoard({
           {categories.map((c) => (
             <button
               key={c.kind}
+              disabled={c.kind === 'event' && activeEvents.length === 0 && !canCreateEvent}
+              title={
+                c.kind === 'event' && activeEvents.length === 0
+                  ? 'Nenhum evento ativo no servidor'
+                  : undefined
+              }
               className={'notice-hanging-sign notice-sign-' + c.kind}
               onClick={(e) => openCategory(c.kind, e.currentTarget)}
               aria-label={'Abrir ' + c.title}
             >
-              <img className="notice-sign-fixed-pins" src={`/notices/hanging-${c.kind}-v2.png`} alt="" draggable={false} />
-              <img className="notice-sign-moving-chains" src={`/notices/hanging-${c.kind}-v2.png`} alt="" draggable={false} />
-              <img className="notice-sign-moving-board" src={`/notices/hanging-${c.kind}-v2.png`} alt="" draggable={false} />
-              <span>{c.title}</span>
+              <img
+                className="notice-sign-fixed-pins"
+                src={`/notices/hanging-${c.kind}-v2.png`}
+                alt=""
+                draggable={false}
+              />
+              <img
+                className="notice-sign-moving-chains"
+                src={`/notices/hanging-${c.kind}-v2.png`}
+                alt=""
+                draggable={false}
+              />
+              <img
+                className="notice-sign-moving-board"
+                src={`/notices/hanging-${c.kind}-v2.png`}
+                alt=""
+                draggable={false}
+              />
+              <span>
+                {c.title}
+                {c.kind === 'event' && activeEvents.length === 0 && (
+                  <Lock size={13} aria-label="Sem evento ativo" />
+                )}
+              </span>
             </button>
           ))}
           <small id="notice-drag-help">
@@ -312,10 +350,56 @@ export function NoticeBoard({
                   ))}
                 </div>
                 <div className="notice-register-actions">
-                  <button className="button primary" onClick={() => onPublish('mission')}>
-                    <Plus size={16} />
-                    Registrar missão
-                  </button>
+                  {category === 'mission' && (
+                    <button className="button primary" onClick={() => onPublish('mission')}>
+                      <Plus size={16} />
+                      Registrar missão
+                    </button>
+                  )}
+                  {category === 'hook' && (
+                    <button
+                      className="button primary"
+                      disabled={!hookSources.length}
+                      onClick={() => {
+                        setHookSource(hookSources[0]?.id || '');
+                        setHookOpen(true);
+                      }}
+                    >
+                      <Plus size={16} />
+                      Registrar gancho
+                    </button>
+                  )}
+                  {category === 'event' && activeEvents.length > 1 && (
+                    <select
+                      aria-label="Evento da missão"
+                      value={
+                        activeEvents.some((e) => e.id === eventSource)
+                          ? eventSource
+                          : activeEvents[0].id
+                      }
+                      onChange={(e) => setEventSource(e.target.value)}
+                    >
+                      {activeEvents.map((e) => (
+                        <option key={e.id} value={e.id}>
+                          {e.title}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                  {category === 'event' && activeEvents.length > 0 && (
+                    <button
+                      className="button primary"
+                      onClick={() =>
+                        onPublish(
+                          'mission',
+                          activeEvents.find((e) => e.id === eventSource)?.id || activeEvents[0].id,
+                        )
+                      }
+                    >
+                      <Plus size={16} />
+                      Registrar missão no evento
+                    </button>
+                  )}
                   {category === 'event' && canCreateEvent && (
                     <button className="button" onClick={() => onPublish('event')}>
                       Registrar evento
@@ -338,16 +422,8 @@ export function NoticeBoard({
               </label>
             </>
           )}
-          {error && (
-            <FlashMessage>
-              {error}
-            </FlashMessage>
-          )}
-          {feedback && (
-            <FlashMessage kind="info">
-              {feedback}
-            </FlashMessage>
-          )}
+          {error && <FlashMessage>{error}</FlashMessage>}
+          {feedback && <FlashMessage kind="info">{feedback}</FlashMessage>}
           <div className={'quest-grid' + (selected ? ' notice-single' : '')}>
             {selected
               ? renderPost(selected)
@@ -405,7 +481,81 @@ export function NoticeBoard({
             </nav>
           )}
           {category === 'hook' && (
-            <p className="source-note">Ganchos nascem da conclusão de uma missão.</p>
+            <p className="source-note">
+              Cada missão que você conclui como mestre permite um gancho. {hookSources.length}{' '}
+              {hookSources.length === 1 ? 'missão disponível' : 'missões disponíveis'}.
+            </p>
+          )}
+          {category === 'event' && !activeEvents.length && (
+            <p className="source-note">
+              Nenhum evento está ativo. Missões de evento ficam bloqueadas até a ativação pelo
+              administrador.
+            </p>
+          )}
+          {category === 'hook' && hookOpen && (
+            <form
+              className="stack notice-hook-form"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (hookBusy) return;
+                setHookBusy(true);
+                setError('');
+                const values = Object.fromEntries(new FormData(e.currentTarget));
+                try {
+                  await api('/board/' + hookSource + '/hook', {
+                    method: 'POST',
+                    body: JSON.stringify(values),
+                  });
+                  await onPaperChange();
+                  setHookOpen(false);
+                } catch (err) {
+                  setError((err as Error).message);
+                } finally {
+                  setHookBusy(false);
+                }
+              }}
+            >
+              <h3>Um novo fio da história</h3>
+              <label>
+                Missão de origem
+                <select
+                  aria-label="Missão de origem do gancho"
+                  required
+                  value={hookSource}
+                  onChange={(e) => setHookSource(e.target.value)}
+                >
+                  {hookSources.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.title}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                Título do gancho
+                <input name="title" required minLength={5} maxLength={100} />
+              </label>
+              <label>
+                Descrição do gancho
+                <textarea name="description" required minLength={15} maxLength={3000} />
+              </label>
+              <div className="notice-register-actions">
+                <button
+                  className="button primary"
+                  disabled={hookBusy || !hookSources.some((p) => p.id === hookSource)}
+                >
+                  Publicar gancho
+                </button>
+                <button
+                  className="button outline"
+                  type="button"
+                  disabled={hookBusy}
+                  onClick={() => setHookOpen(false)}
+                >
+                  Cancelar gancho
+                </button>
+              </div>
+            </form>
           )}
         </dialog>
       )}

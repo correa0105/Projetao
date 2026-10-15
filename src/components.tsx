@@ -468,12 +468,14 @@ export function PostForm({
   canCreateEvent = false,
   initialLocation,
   requireMappedLocation = false,
+  initialEventId,
 }: {
   done: () => Promise<void>;
   initialKind?: 'mission' | 'event';
   canCreateEvent?: boolean;
   initialLocation?: AtlasLocation;
   requireMappedLocation?: boolean;
+  initialEventId?: string;
 }) {
   const [kind, setKind] = useState<string>(canCreateEvent ? initialKind : 'mission');
   const [missionRank, setMissionRank] = useState<Rank>('Ferro');
@@ -515,6 +517,7 @@ export function PostForm({
       await post<Post>('/board', {
         ...form,
         kind,
+        event_source_id: initialEventId,
         tag_ids: kind === 'mission' ? tagIds : [],
         mission_rank: missionRank,
         rank_test_level:
@@ -533,6 +536,12 @@ export function PostForm({
   }
   return (
     <form className="stack board-post-form" onSubmit={submit}>
+      {initialEventId && (
+        <p className="source-note">
+          Esta missão será vinculada ao evento ativo. A disponibilidade será conferida novamente ao
+          publicar.
+        </p>
+      )}
       <label>
         Título
         <input

@@ -17,6 +17,8 @@ export function CharacterArtButton({
   onRefresh: () => Promise<void>;
 }) {
   const [state, setState] = useState<ArtState>({ available: false, jobs: [], pending_new: 0 });
+  const [availability, setAvailability] = useState<boolean | null>(null);
+  const [availabilityError, setAvailabilityError] = useState('');
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -45,6 +47,8 @@ export function CharacterArtButton({
         const changed = previous && previous !== signature;
         previous = signature;
         setState(result);
+        setAvailability(result.available);
+        setAvailabilityError('');
         if (
           changed &&
           !result.jobs.some(
@@ -54,16 +58,23 @@ export function CharacterArtButton({
         )
           await refresh.current();
       } catch {
-        if (alive) setState((current) => ({ ...current, available: false }));
+        if (alive) {
+          setAvailability(null);
+          setAvailabilityError('Não foi possível consultar o ilustrador. Tentando novamente…');
+        }
       } finally {
         updating = false;
       }
     };
+    setAvailability(null);
     void update();
     const timer = setInterval(() => void update(), 4000);
+    const focus = () => void update();
+    window.addEventListener('focus', focus);
     return () => {
       alive = false;
       clearInterval(timer);
+      window.removeEventListener('focus', focus);
     };
   }, [character.id]);
   const pending =
@@ -76,7 +87,7 @@ export function CharacterArtButton({
     <div className="equipment-generate">
       <button
         className="button outline small-button"
-        disabled={pending || !state.available}
+        disabled={pending || availability !== true}
         onClick={() => {
           if (!character.art_unlimited && character.art_used >= 2) {
             setError(
@@ -96,15 +107,22 @@ export function CharacterArtButton({
         <Sparkles size={15} />
         {pending ? 'Vestindo...' : 'Vestir'}
       </button>
-      {!pending && !state.available && (
-        <p className="muted" role="status">
-          Ilustrador offline. A geração ficará disponível quando ele for iniciado.
+      {!pending && availability !== true && (
+        <p
+          className="muted"
+          role="status"
+          data-illustrator-status={availability === null ? 'checking' : 'offline'}
+        >
+          {availabilityError ||
+            (availability === null
+              ? 'Consultando o ilustrador…'
+              : 'Ilustrador offline. A disponibilidade será atualizada automaticamente.')}
         </p>
       )}
       {!pending && !open && latestJob?.status === 'failed' && (
-        <FlashMessage>
+        <p className="muted" role="status">
           {latestJob.error || 'A imagem não foi gerada. Tente novamente; sua cota foi preservada.'}
-        </FlashMessage>
+        </p>
       )}
       {error && !open && <FlashMessage>{error}</FlashMessage>}
       {open && (
@@ -144,7 +162,12 @@ export function CharacterArtButton({
               role="status"
             >
               <span className="illustrator-dot" aria-hidden="true" />
-              {state.available ? 'Ilustrador disponível' : 'Ilustrador offline'}
+              {availabilityError ||
+                (availability === null
+                  ? 'Consultando o ilustrador…'
+                  : availability
+                    ? 'Ilustrador disponível'
+                    : 'Ilustrador offline')}
             </span>
             <ReferenceInput onChange={setReference} disabled={busy} />
             <ArtEquipmentChoices
@@ -157,7 +180,10 @@ export function CharacterArtButton({
               onHelmetModeChange={setHelmetMode}
             />
             {error && <FlashMessage>{error}</FlashMessage>}
-            <button className="button primary" disabled={busy || !reference || !equipmentReady}>
+            <button
+              className="button primary"
+              disabled={busy || !reference || !equipmentReady || availability !== true}
+            >
               {busy ? 'Vestindo...' : 'Vestir'}
             </button>
           </form>
