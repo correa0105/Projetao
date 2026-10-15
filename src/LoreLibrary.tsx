@@ -22,6 +22,7 @@ import {
 import { api, post } from './api';
 import { Modal } from './components';
 import { FlashMessage } from './FlashMessage';
+import { LoreSmoke } from './LoreSmoke';
 import { LoreScrollHolderIcon, LoreScrollIcon } from './LoreSymbols';
 import { LoreTimeline, type LoreTimelineHandle } from './LoreTimeline';
 import { useLoreScrollSound } from './SiteMusic';
@@ -400,6 +401,7 @@ export function LoreLibrary() {
       className={`lore-library ${editing ? 'is-editing' : ''}`}
       aria-label="Biblioteca de lore"
     >
+      <LoreSmoke/>
       {message && <FlashMessage kind="info">{message}</FlashMessage>}
       <div className="lore-scene">
         <div className="lore-scene-art" aria-hidden="true" />
