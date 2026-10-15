@@ -1,3 +1,9 @@
+import {
+  extendedFeatureNames,
+  extendedFeatureSummaries,
+} from './class-feature-descriptions-2024.js';
+import catalog from './character-rules-2024.json';
+import { subclassDescriptions } from './subclass-descriptions-2024.js';
 /** Original Portuguese summaries of the CC-BY-4.0 SRD 5.2.1 class tables. */
 export const featureNames: Record<string, string> = {
   Rage: 'Fúria',
@@ -141,7 +147,8 @@ export const featureSummaries: Record<string, string> = {
     'Em efeitos com salvaguarda de Destreza para metade, nenhum dano no sucesso e metade na falha, salvo Incapacitado.',
   'Reliable Talent':
     'Nos testes de perícia ou ferramenta com proficiência, resultados de 9 ou menos no d20 contam como 10.',
-  Metamagic: 'Use pontos de feitiçaria para modificar suas magias conforme as opções escolhidas.',
+  Metamagic:
+    'Use pontos de feitiçaria para modificar suas magias conforme as opções escolhidas.',
   Scholar:
     'Especialização em uma perícia proficiente entre Arcanismo, História, Investigação, Medicina, Natureza e Religião.',
   'Magical Secrets':
@@ -168,6 +175,21 @@ export type SubclassRule = {
   page: number;
   features: Record<number, string[]>;
   spells?: Record<number, string[]>;
+  source?: string;
+  book?: string;
+  url?: string;
+  levels?: number[];
+  school?: string;
+  extraAttack?: number;
+  casting?: {
+    list: string;
+    ability: number;
+    cantrips: number[];
+    prepared: number[];
+    slots: number[][];
+  };
+  innate?: { level: number; spells: string[]; ability: string | null }[];
+  variants?: Record<string, Record<number, string[]>>;
 };
 export const subclassRules: Record<string, SubclassRule[]> = {
   Bárbaro: [
@@ -221,7 +243,9 @@ export const subclassRules: Record<string, SubclassRule[]> = {
         6: [
           'Curandeiro abençoado: ao curar outra criatura com espaço de magia, recupera 2 + círculo do espaço PV no turno da conjuração.',
         ],
-        17: ['Cura suprema: usa o máximo dos dados para curar com magias e Canalizar Divindade.'],
+        17: [
+          'Cura suprema: usa o máximo dos dados para curar com magias e Canalizar Divindade.',
+        ],
       },
       spells: {
         3: ['aid', 'bless', 'cure-wounds', 'lesser-restoration'],
@@ -244,7 +268,9 @@ export const subclassRules: Record<string, SubclassRule[]> = {
         6: [
           'Recuperação natural: conjura uma magia do círculo sem espaço por descanso longo e recupera espaços de círculo inferior a 6 após um descanso curto.',
         ],
-        10: ['Proteção da natureza: imune a Envenenado e resistente ao dano associado ao terreno.'],
+        10: [
+          'Proteção da natureza: imune a Envenenado e resistente ao dano associado ao terreno.',
+        ],
         14: [
           'Santuário da natureza: usa Forma Selvagem para criar área com meia cobertura e a resistência do terreno para aliados.',
         ],
@@ -329,7 +355,9 @@ export const subclassRules: Record<string, SubclassRule[]> = {
           'Táticas defensivas: escolha Escape da Horda ou Defesa de Múltiplos Ataques após descanso curto ou longo.',
         ],
         11: ['Presa superior: aprimora o dano adicional de Marca do Caçador.'],
-        15: ['Defesa superior: reação para ganhar resistência ao dano sofrido até o fim do turno.'],
+        15: [
+          'Defesa superior: reação para ganhar resistência ao dano sofrido até o fim do turno.',
+        ],
       },
     },
   ],
@@ -416,7 +444,9 @@ export const subclassRules: Record<string, SubclassRule[]> = {
         6: [
           'Esculpir magias: protege até 1 + círculo da magia criaturas visíveis de suas evocações.',
         ],
-        10: ['Evocação empoderada: soma Inteligência a uma rolagem de dano de evocação de mago.'],
+        10: [
+          'Evocação empoderada: soma Inteligência a uma rolagem de dano de evocação de mago.',
+        ],
         14: [
           'Sobrecarga: maximiza dano de magia de mago usando espaço de círculo 1–5; usos adicionais antes de descanso longo causam dano necrótico crescente.',
         ],
@@ -450,3 +480,18 @@ export const landSpells: Record<string, Record<number, string[]>> = {
     9: ['insect-plague'],
   },
 };
+
+// Preserve saved SRD subclass IDs and default ordering while adding current books.
+for (const row of catalog.subclasses) {
+  const list = (subclassRules[row.class] ||= []);
+  const existing = list.find((s) => s.id === row.id);
+  const features = existing?.features || subclassDescriptions[row.class + '/' + row.id];
+  if (!features) throw Error('Missing subclass summaries: ' + row.class + '/' + row.id);
+  const rule = { ...row, features } as unknown as SubclassRule;
+  if (existing) Object.assign(existing, rule);
+  else list.push(rule);
+}
+
+Object.assign(featureNames, extendedFeatureNames);
+for (const [name, summary] of Object.entries(extendedFeatureSummaries))
+  featureSummaries[name] ||= summary;

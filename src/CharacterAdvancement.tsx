@@ -3,6 +3,7 @@ import { ArrowUp, BookOpen, Check, Search, Shield } from 'lucide-react';
 import { classes, statNames, modifier } from '../shared/rules';
 import { spells, type SheetResponse } from '../shared/character-sheet';
 import {
+  classProfile,
   defaultAdvanceChoice,
   levelPlan,
   multiclassReason,
@@ -11,7 +12,7 @@ import {
   advancementStats,
   type AdvanceChoice,
 } from '../shared/character-advancement';
-import { featureNames } from '../shared/class-advancement-text';
+import { featureNames, featureSummaries } from '../shared/class-advancement-text';
 import type { Character } from './types';
 import { Modal } from './components';
 import { ChoiceList } from './SheetChoices';
@@ -117,7 +118,9 @@ export function CharacterAdvancement({
   onSaved: (r: SheetResponse) => Promise<void>;
 }) {
   const [open, setOpen] = useState(false);
-  const [choice, setChoice] = useState<AdvanceChoice>(() => defaultAdvanceChoice(character.class));
+  const [choice, setChoice] = useState<AdvanceChoice>(() =>
+    defaultAdvanceChoice(character.class),
+  );
   const [busy, setBusy] = useState(false),
     [error, setError] = useState('');
   const requestId = useRef(crypto.randomUUID());
@@ -131,6 +134,12 @@ export function CharacterAdvancement({
   const update = (patch: Partial<AdvanceChoice>) => {
     setChoice((v) => {
       const next = { ...v, ...patch };
+      if (patch.class && patch.class !== v.class) {
+        next.retrain = undefined;
+        next.newCantrips = [];
+        next.newSpells = [];
+      }
+      if (patch.subclass && patch.subclass !== v.subclass) next.retrain = undefined;
       const nextPlan = levelPlan(character, s.choices!, next);
       next.choices = Object.fromEntries(
         Object.entries(next.choices)
@@ -181,7 +190,9 @@ export function CharacterAdvancement({
   const target = grant ? character.level + 1 : character.level - d.pendingLevels + 1;
   const changedCon =
     modifier(advancementStats(character, choice, plan.level)[2]) - modifier(character.stats[2]);
-  const draconic = d.classLevels.find((s) => s.class === 'Feiticeiro' && s.subclass === 'draconic');
+  const draconic = d.classLevels.find(
+    (s) => s.class === 'Feiticeiro' && s.subclass === 'draconic',
+  );
   const hpGain =
     plan.hpGain +
     changedCon * (grant ? character.level + 1 : character.level) +
@@ -207,7 +218,10 @@ export function CharacterAdvancement({
           {d.pendingLevels > 0 && (
             <p className="advancement-pending">
               {d.pendingLevels}{' '}
-              {d.pendingLevels === 1 ? 'nível aguardando escolhas' : 'níveis aguardando escolhas'}.
+              {d.pendingLevels === 1
+                ? 'nível aguardando escolhas'
+                : 'níveis aguardando escolhas'}
+              .
             </p>
           )}
         </div>
@@ -226,6 +240,10 @@ export function CharacterAdvancement({
           </button>
         )}
       </section>
+      <ClassProgressionReference
+        cls={character.class}
+        subclass={d.classLevels[0]?.subclass || ''}
+      />
       {open && (
         <Modal
           title={`Evoluir para o nível ${target}`}
@@ -262,7 +280,9 @@ export function CharacterAdvancement({
                   return (
                     <option key={cls} value={cls} disabled={!!reason}>
                       {cls} —{' '}
-                      {previous ? `nível ${previous.level + 1}` : reason || 'iniciar multiclasse'}
+                      {previous
+                        ? `nível ${previous.level + 1}`
+                        : reason || 'iniciar multiclasse'}
                     </option>
                   );
                 })}
@@ -281,7 +301,9 @@ export function CharacterAdvancement({
               </span>
               <span>
                 <b>
-                  {plan.profile.maxSpell ? `Círculo ${plan.profile.maxSpell}` : 'Sem conjuração'}
+                  {plan.profile.maxSpell
+                    ? `Círculo ${plan.profile.maxSpell}`
+                    : 'Sem conjuração'}
                 </b>
                 <small>Magias desta classe</small>
               </span>
@@ -305,20 +327,41 @@ export function CharacterAdvancement({
                     aria-label="Subclasse"
                     value={choice.subclass}
                     onChange={(e) =>
-                      update({ subclass: e.target.value, bonusSpells: [], choices: {} })
+                      update({
+                        subclass: e.target.value,
+                        newCantrips: [],
+                        newSpells: [],
+                        bonusSpells: [],
+                        choices: {},
+                      })
                     }
                   >
                     <option value="">Selecione a subclasse</option>
-                    {plan.subclasses.map((v) => (
-                      <option key={v.id} value={v.id}>
-                        {v.name}
-                      </option>
+                    {[...new Set(plan.subclasses.map((v) => v.book))].map((book) => (
+                      <optgroup key={book} label={book || 'Livro do Jogador 2024'}>
+                        {plan.subclasses
+                          .filter((v) => v.book === book)
+                          .map((v) => (
+                            <option key={v.id} value={v.id}>
+                              {v.name}
+                            </option>
+                          ))}
+                      </optgroup>
                     ))}
                   </select>
-                  <small>Subclasses disponíveis no SRD 5.2.1.</small>
+                  <small>
+                    {plan.subclasses.length} subclasses · regras de 2024 e suplementos
+                    compatíveis.
+                  </small>
                   {choice.subclass && (
                     <p>
-                      {plan.subclasses.find((s) => s.id === choice.subclass)?.features[3].join(' ')}
+                      {plan.subclasses
+                        .find((s) => s.id === choice.subclass)
+                        ?.features[3]?.join(' ')}
+                      <small>
+                        {plan.subclasses.find((v) => v.id === choice.subclass)?.book}, p.{' '}
+                        {plan.subclasses.find((v) => v.id === choice.subclass)?.page}
+                      </small>
                     </p>
                   )}
                 </label>
@@ -407,6 +450,69 @@ export function CharacterAdvancement({
                   onChange={(v) => update({ bonusSpells: v })}
                 />
               )}
+              {plan.retraining.map((field) => {
+                const swap = choice.retrain?.find((v) => v.kind === field.kind);
+                const label = (id: string) => spells.find((s) => s.id === id)?.label || id;
+                return (
+                  <details className="advancement-retrain" key={field.kind}>
+                    <summary>{field.label} · opcional</summary>
+                    <label>
+                      Substituir
+                      <select
+                        value={swap?.from || ''}
+                        onChange={(e) =>
+                          update({
+                            retrain: [
+                              ...(choice.retrain || []).filter((v) => v.kind !== field.kind),
+                              ...(e.target.value
+                                ? [{ kind: field.kind, from: e.target.value, to: '' }]
+                                : []),
+                            ],
+                          })
+                        }
+                      >
+                        <option value="">Manter as escolhas atuais</option>
+                        {field.from.map((id) => (
+                          <option key={id} value={id}>
+                            {label(id)}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    {swap && (
+                      <label>
+                        Nova escolha
+                        <select
+                          value={swap.to}
+                          onChange={(e) =>
+                            update({
+                              retrain: choice.retrain?.map((v) =>
+                                v.kind === field.kind ? { ...v, to: e.target.value } : v,
+                              ),
+                            })
+                          }
+                        >
+                          <option value="">Selecione a substituição</option>
+                          {field.to
+                            .filter(
+                              (id) =>
+                                ![
+                                  ...choice.newCantrips,
+                                  ...choice.newSpells,
+                                  ...Object.values(choice.choices).flat(),
+                                ].includes(id),
+                            )
+                            .map((id) => (
+                              <option key={id} value={id}>
+                                {label(id)}
+                              </option>
+                            ))}
+                        </select>
+                      </label>
+                    )}
+                  </details>
+                );
+              })}
               {plan.automatic.length > 0 && (
                 <p className="advancement-automatic">
                   Sempre disponíveis pela classe ou subclasse:{' '}
@@ -434,5 +540,105 @@ export function CharacterAdvancement({
         </Modal>
       )}
     </>
+  );
+}
+
+function ClassProgressionReference({ cls, subclass }: { cls: string; subclass: string }) {
+  const [selectedClass, setClass] = useState(cls),
+    [selectedSub, setSub] = useState(subclass);
+  const sub = subclassRules[selectedClass]?.find((s) => s.id === selectedSub);
+  return (
+    <details className="advancement-reference">
+      <summary>
+        <BookOpen size={16} /> Consultar evolução · níveis 1–20
+      </summary>
+      <div className="advancement-reference-controls">
+        <label>
+          Classe da consulta
+          <select
+            value={selectedClass}
+            onChange={(e) => {
+              setClass(e.target.value);
+              setSub('');
+            }}
+          >
+            {classes.map((c) => (
+              <option key={c}>{c}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Subclasse da consulta
+          <select value={selectedSub} onChange={(e) => setSub(e.target.value)}>
+            <option value="">Somente a classe</option>
+            {(subclassRules[selectedClass] || []).map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.name} · {s.source}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      {sub && (
+        <p className="advancement-source">
+          {sub.book}, p. {sub.page} ·{' '}
+          <a href={sub.url} target="_blank" rel="noreferrer">
+            Consultar fonte
+          </a>
+        </p>
+      )}
+      <p>
+        As escolhas e os valores da ficha seguem sua evolução registrada. Ativações, condições e
+        efeitos sobre outras criaturas são resolvidos durante a sessão.
+      </p>
+      <ol className="advancement-reference-levels">
+        {Array.from({ length: 20 }, (_, i) => {
+          const level = i + 1,
+            profile = classProfile(selectedClass, level, selectedSub);
+          const names = profile.features
+            .split(',')
+            .map((v) => v.trim())
+            .filter((v) => v && v !== '—' && !/Subclass/i.test(v));
+          const subclassFeatures = sub?.features[level] || [];
+          return (
+            <li key={level}>
+              <details>
+                <summary>
+                  <b>Nível {level}</b>
+                  <span>
+                    {[
+                      ...names.map((n) => featureNames[n] || n),
+                      ...(subclassFeatures.length ? ['Características de ' + sub!.name] : []),
+                    ].join(' · ') || 'Progressão de recursos'}
+                  </span>
+                </summary>
+                <ul>
+                  {names.map((n) => (
+                    <li key={n}>
+                      <strong>{featureNames[n] || n}:</strong> {featureSummaries[n]}
+                    </li>
+                  ))}
+                  {subclassFeatures.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+                {profile.ability !== null && (
+                  <p>
+                    {profile.cantrips} truques · {profile.prepareCount} magias{' '}
+                    {selectedClass === 'Mago' ? 'preparadas do grimório' : 'na progressão'} ·{' '}
+                    {profile.pactSlots
+                      ? profile.pactSlots + ' espaços de pacto de círculo ' + profile.pactLevel
+                      : profile.slots
+                          .map((n, i) => (n ? 'C' + (i + 1) + ': ' + n : ''))
+                          .filter(Boolean)
+                          .join(' · ')}
+                  </p>
+                )}
+              </details>
+            </li>
+          );
+        })}
+      </ol>
+    </details>
   );
 }

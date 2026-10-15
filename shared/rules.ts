@@ -10,6 +10,7 @@ export const races = [
   'Tiefling',
 ] as const;
 export const classes = [
+  'Artífice',
   'Bárbaro',
   'Bardo',
   'Bruxo',
@@ -24,6 +25,7 @@ export const classes = [
   'Patrulheiro',
 ] as const;
 export const hitDice: Record<string, number> = {
+  Artífice: 8,
   Bárbaro: 12,
   Bardo: 8,
   Bruxo: 8,

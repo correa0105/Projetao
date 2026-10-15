@@ -14,6 +14,7 @@ import {
 import { deriveSheet, spells, sheetAttacks } from '../shared/character-sheet.js';
 import { featureNames } from '../shared/class-advancement-text.js';
 import tables from '../shared/class-advancement-tables.json';
+import catalog from '../shared/character-rules-2024.json';
 import { legalAdvance, advanceFixture, originFixture } from './advancement-fixtures.js';
 import { pool } from '../server/db.js';
 import { migrate } from '../server/migrate.js';
@@ -21,7 +22,10 @@ import { createLegacyTestCharacter } from './character-fixtures.js';
 
 test('SRD: tabelas completas, escolhas até nível 20 e magias das subclasses', () => {
   for (const cls of classes) {
-    assert.equal(tables.classes[cls].rows.length, 20);
+    assert.equal(
+      (cls === 'Artífice' ? catalog.artificer : tables.classes[cls]).rows.length,
+      20,
+    );
     const { character, choices } = originFixture(cls);
     for (let level = 2; level <= 20; level++) {
       const d = advanceFixture(character, choices, legalAdvance(character, choices));
@@ -41,8 +45,8 @@ test('SRD: tabelas completas, escolhas até nível 20 e magias das subclasses', 
             id,
           );
   }
-  assert.equal(spells.length, 338);
-  assert.equal(new Set(spells.map((s) => s.id)).size, 338);
+  assert.equal(spells.length, 444);
+  assert.equal(new Set(spells.map((s) => s.id)).size, 444);
   assert.ok(
     spells.some((s) => s.id === 'fireball' && s.level === 3 && s.classes.includes('wizard')),
   );
@@ -156,7 +160,14 @@ test('API: admin vigente, ownership, idempotência, concorrência e preservaçã
     const initial = deriveSheet(hero, f.choices);
     await pool.query(
       'UPDATE characters SET race=$2,class=$3,stats=$4,hp=$5,armor_class=$6,gold_cp=45678,progression_missions=3 WHERE id=$1',
-      [hero.id, hero.race, hero.class, JSON.stringify(hero.stats), initial.hp, initial.armorClass],
+      [
+        hero.id,
+        hero.race,
+        hero.class,
+        JSON.stringify(hero.stats),
+        initial.hp,
+        initial.armorClass,
+      ],
     );
     await pool.query(
       'INSERT INTO character_sheets(character_id,choices,rolls,assignment,finalized_at,current_hp,slots_used) VALUES($1,$2,$3,$4,now(),$5,1)',
@@ -214,7 +225,8 @@ test('API: admin vigente, ownership, idempotência, concorrência e preservaçã
       assert.equal(r.status, 200, JSON.stringify(r.data));
       assert.equal(r.data.derived.classLevels[0].level, 2);
     }
-    const persisted = (await pool.query('SELECT * FROM characters WHERE id=$1', [hero.id])).rows[0];
+    const persisted = (await pool.query('SELECT * FROM characters WHERE id=$1', [hero.id]))
+      .rows[0];
     assert.equal(persisted.level, 2);
     assert.equal(persisted.gold_cp, 45678);
     assert.equal(persisted.progression_missions, 3);
@@ -289,7 +301,8 @@ test('API: admin vigente, ownership, idempotência, concorrência e preservaçã
       409,
     );
     assert.equal(
-      (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0].gold_cp,
+      (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0]
+        .gold_cp,
       45678,
     );
     assert.equal(

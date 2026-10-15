@@ -1,0 +1,95 @@
+{
+  "asOf": "2026-10-15",
+  "revision": "90d343cde64cf8dce1083ea0525a6b0b9e545f2e",
+  "content": "Mechanical facts and original Portuguese summaries; upstream prose excluded",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/generated/gendata-spell-source-lookup.json",
+      "sha256": "395fdc39ad149cbd27237c1089107f9e9bfcf73734797e96c44577a373fb0f9e"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/books.json",
+      "sha256": "3799309248e3650e9a646937761f6ed79034a2199bbceacc0c0426bbd17091fe"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/index.json",
+      "sha256": "77b4e3c24ab8a0515948c258a7104f04bbe70e6a89a17714f2ee0bdfce23c2e8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/spells/index.json",
+      "sha256": "210f9924f3cb8caefb46af68c767103541f04ef01bb942740bcdd1553b70dd42"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-artificer.json",
+      "sha256": "49dbc64c51b58d54a6dda44105d4d67d6f65e65a67faeeef54bf19e30ab01882"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-barbarian.json",
+      "sha256": "ce324f2b0cd65631efb0be53cc13e42cdfadfa8cf1592e0b889dd74e873e429b"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-bard.json",
+      "sha256": "e5041a799e8c720db3a28539c2a25e9d6d821b6229a65fd1484f749ea3978b1d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-cleric.json",
+      "sha256": "604d81ad5012ca92f56a5aadacdf298a04d4889443e99644d4bf2af46f5a0900"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-druid.json",
+      "sha256": "e320ecf4f19e49acbbc449fcde4f8448bfad4bfc40a56138dced312a52af13a1"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-fighter.json",
+      "sha256": "d23fa43867fb08e707e44bfe4b5af0ac1741e2f742ee8ee0535bc4282dee72dd"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-monk.json",
+      "sha256": "381b5b1a80da79b661b9656d65b266d0bca290cf83d261c5f15ce8d0ecba4ff5"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-paladin.json",
+      "sha256": "b089a6fb9b72c89fcd9ecbc65df79246a68b8cde18fc70ab459b9ba116b10e5b"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-ranger.json",
+      "sha256": "24295fd2f62e72e0ac8c0cbfc74bd304d16128123edd66dc67364880da1a6d6f"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-rogue.json",
+      "sha256": "8344744c2be2af6b51275368fbe2447a40f1549a3f60ce09f013174758546e6b"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-sorcerer.json",
+      "sha256": "9f17737aa137ca3979b20cdcc7e8b0120c7be293cf9849c2d27c93f2e0e87c79"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-warlock.json",
+      "sha256": "867a945c460be5925df0e6d87238b226912e7f2eb567fde0a88c05179eadbcac"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/class/class-wizard.json",
+      "sha256": "833066cec97469353092424ae9878bab1b591c0da782f81625bb3e54850393fe"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/spells/spells-xphb.json",
+      "sha256": "442544a91aad1181cbad78d49cfa48f9ced7d8b048dbc781e32fa6fefc6278b9"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/spells/spells-frhof.json",
+      "sha256": "fc9ab7d738eaa77af05f7436628546ff84bf103dd41a3aed0e0648ef26797676"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/spells/spells-efa.json",
+      "sha256": "e4c35eb6a906e59a5a93c4eb00af39e63a8c5714cc847e038444a9e92ebbdac2"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/spells/spells-au.json",
+      "sha256": "cdced1ecaa9dcdcccfd3aa5d44b7637b80ba6befb88984c437408a532118f8e5"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/90d343cde64cf8dce1083ea0525a6b0b9e545f2e/data/items.json",
+      "sha256": "cb87271ea8f40c85d46dcebd43f63fcdaee44fc5931cf83c44c2b6437fc55a9e"
+    }
+  ]
+}

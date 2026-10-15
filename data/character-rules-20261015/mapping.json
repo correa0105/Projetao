@@ -1,0 +1,765 @@
+{
+  "classes": {
+    "artificer": "Artífice",
+    "barbarian": "Bárbaro",
+    "bard": "Bardo",
+    "cleric": "Clérigo",
+    "druid": "Druida",
+    "fighter": "Guerreiro",
+    "monk": "Monge",
+    "paladin": "Paladino",
+    "ranger": "Patrulheiro",
+    "rogue": "Ladino",
+    "sorcerer": "Feiticeiro",
+    "warlock": "Bruxo",
+    "wizard": "Mago"
+  },
+  "subclasses": [
+    {
+      "class": "barbarian",
+      "name": "Path of the Berserker",
+      "source": "XPHB",
+      "id": "berserker",
+      "label": "Caminho do Berserker"
+    },
+    {
+      "class": "barbarian",
+      "name": "Path of the Wild Heart",
+      "source": "XPHB",
+      "id": "wild-heart",
+      "label": "Caminho do Coração Selvagem"
+    },
+    {
+      "class": "barbarian",
+      "name": "Path of the World Tree",
+      "source": "XPHB",
+      "id": "world-tree",
+      "label": "Caminho da Árvore do Mundo"
+    },
+    {
+      "class": "barbarian",
+      "name": "Path of the Zealot",
+      "source": "XPHB",
+      "id": "zealot",
+      "label": "Caminho do Zelote"
+    },
+    {
+      "class": "druid",
+      "name": "Circle of the Land",
+      "source": "XPHB",
+      "id": "land",
+      "label": "Círculo da Terra"
+    },
+    {
+      "class": "druid",
+      "name": "Circle of the Moon",
+      "source": "XPHB",
+      "id": "moon",
+      "label": "Círculo da Lua"
+    },
+    {
+      "class": "druid",
+      "name": "Circle of the Sea",
+      "source": "XPHB",
+      "id": "sea",
+      "label": "Círculo do Mar"
+    },
+    {
+      "class": "druid",
+      "name": "Circle of the Stars",
+      "source": "XPHB",
+      "id": "stars",
+      "label": "Círculo das Estrelas"
+    },
+    {
+      "class": "monk",
+      "name": "Warrior of Mercy",
+      "source": "XPHB",
+      "id": "mercy",
+      "label": "Guerreiro da Misericórdia"
+    },
+    {
+      "class": "monk",
+      "name": "Warrior of Shadow",
+      "source": "XPHB",
+      "id": "shadow",
+      "label": "Guerreiro das Sombras"
+    },
+    {
+      "class": "monk",
+      "name": "Warrior of the Elements",
+      "source": "XPHB",
+      "id": "elements",
+      "label": "Guerreiro dos Elementos"
+    },
+    {
+      "class": "monk",
+      "name": "Warrior of the Open Hand",
+      "source": "XPHB",
+      "id": "open-hand",
+      "label": "Guerreiro da Mão Aberta"
+    },
+    {
+      "class": "monk",
+      "name": "Warrior of the Mystic Arts",
+      "source": "AU",
+      "id": "mystic-arts",
+      "label": "Guerreiro das Artes Místicas"
+    },
+    {
+      "class": "fighter",
+      "name": "Battle Master",
+      "source": "XPHB",
+      "id": "battle-master",
+      "label": "Mestre de Batalha"
+    },
+    {
+      "class": "fighter",
+      "name": "Champion",
+      "source": "XPHB",
+      "id": "champion",
+      "label": "Campeão"
+    },
+    {
+      "class": "fighter",
+      "name": "Eldritch Knight",
+      "source": "XPHB",
+      "id": "eldritch-knight",
+      "label": "Cavaleiro Místico"
+    },
+    {
+      "class": "fighter",
+      "name": "Psi Warrior",
+      "source": "XPHB",
+      "id": "psi-warrior",
+      "label": "Guerreiro Psíquico"
+    },
+    {
+      "class": "fighter",
+      "name": "Banneret",
+      "source": "FRHoF",
+      "id": "banneret",
+      "label": "Cavaleiro do Estandarte"
+    },
+    {
+      "class": "fighter",
+      "name": "Arcane Archer",
+      "source": "AU",
+      "id": "arcane-archer",
+      "label": "Arqueiro Arcano"
+    },
+    {
+      "class": "artificer",
+      "name": "Alchemist",
+      "source": "EFA",
+      "id": "alchemist",
+      "label": "Alquimista"
+    },
+    {
+      "class": "artificer",
+      "name": "Armorer",
+      "source": "EFA",
+      "id": "armorer",
+      "label": "Armeiro"
+    },
+    {
+      "class": "artificer",
+      "name": "Artillerist",
+      "source": "EFA",
+      "id": "artillerist",
+      "label": "Artilheiro"
+    },
+    {
+      "class": "artificer",
+      "name": "Battle Smith",
+      "source": "EFA",
+      "id": "battle-smith",
+      "label": "Ferreiro de Batalha"
+    },
+    {
+      "class": "artificer",
+      "name": "Cartographer",
+      "source": "EFA",
+      "id": "cartographer",
+      "label": "Cartógrafo"
+    },
+    {
+      "class": "artificer",
+      "name": "Reanimator",
+      "source": "RHW",
+      "id": "reanimator",
+      "label": "Reanimador"
+    },
+    {
+      "class": "bard",
+      "name": "College of Dance",
+      "source": "XPHB",
+      "id": "dance",
+      "label": "Colégio da Dança"
+    },
+    {
+      "class": "bard",
+      "name": "College of Glamour",
+      "source": "XPHB",
+      "id": "glamour",
+      "label": "Colégio do Glamour"
+    },
+    {
+      "class": "bard",
+      "name": "College of Lore",
+      "source": "XPHB",
+      "id": "lore",
+      "label": "Colégio do Conhecimento"
+    },
+    {
+      "class": "bard",
+      "name": "College of Valor",
+      "source": "XPHB",
+      "id": "valor",
+      "label": "Colégio da Bravura"
+    },
+    {
+      "class": "bard",
+      "name": "College of the Moon",
+      "source": "FRHoF",
+      "id": "moon",
+      "label": "Colégio da Lua"
+    },
+    {
+      "class": "bard",
+      "name": "College of Spirits",
+      "source": "RHW",
+      "id": "spirits",
+      "label": "Colégio dos Espíritos"
+    },
+    {
+      "class": "ranger",
+      "name": "Beast Master",
+      "source": "XPHB",
+      "id": "beast-master",
+      "label": "Mestre das Feras"
+    },
+    {
+      "class": "ranger",
+      "name": "Fey Wanderer",
+      "source": "XPHB",
+      "id": "fey-wanderer",
+      "label": "Andarilho Feérico"
+    },
+    {
+      "class": "ranger",
+      "name": "Gloom Stalker",
+      "source": "XPHB",
+      "id": "gloom-stalker",
+      "label": "Predador Sombrio"
+    },
+    {
+      "class": "ranger",
+      "name": "Hunter",
+      "source": "XPHB",
+      "id": "hunter",
+      "label": "Caçador"
+    },
+    {
+      "class": "ranger",
+      "name": "Winter Walker",
+      "source": "FRHoF",
+      "id": "winter-walker",
+      "label": "Andarilho do Inverno"
+    },
+    {
+      "class": "ranger",
+      "name": "Hollow Warden",
+      "source": "RHW",
+      "id": "hollow-warden",
+      "label": "Guardião do Vazio"
+    },
+    {
+      "class": "rogue",
+      "name": "Arcane Trickster",
+      "source": "XPHB",
+      "id": "arcane-trickster",
+      "label": "Trapaceiro Arcano"
+    },
+    {
+      "class": "rogue",
+      "name": "Assassin",
+      "source": "XPHB",
+      "id": "assassin",
+      "label": "Assassino"
+    },
+    {
+      "class": "rogue",
+      "name": "Soulknife",
+      "source": "XPHB",
+      "id": "soulknife",
+      "label": "Lâmina Psíquica"
+    },
+    {
+      "class": "rogue",
+      "name": "Thief",
+      "source": "XPHB",
+      "id": "thief",
+      "label": "Ladrão"
+    },
+    {
+      "class": "rogue",
+      "name": "Scion of the Three",
+      "source": "FRHoF",
+      "id": "scion-of-three",
+      "label": "Herdeiro dos Três"
+    },
+    {
+      "class": "rogue",
+      "name": "Phantom",
+      "source": "RHW",
+      "id": "phantom",
+      "label": "Fantasma"
+    },
+    {
+      "class": "warlock",
+      "name": "Archfey Patron",
+      "source": "XPHB",
+      "id": "archfey",
+      "label": "Patrono Arquifada"
+    },
+    {
+      "class": "warlock",
+      "name": "Celestial Patron",
+      "source": "XPHB",
+      "id": "celestial",
+      "label": "Patrono Celestial"
+    },
+    {
+      "class": "warlock",
+      "name": "Fiend Patron",
+      "source": "XPHB",
+      "id": "fiend",
+      "label": "Patrono Ínfero"
+    },
+    {
+      "class": "warlock",
+      "name": "Great Old One Patron",
+      "source": "XPHB",
+      "id": "great-old-one",
+      "label": "Patrono Grande Antigo"
+    },
+    {
+      "class": "warlock",
+      "name": "Undead Patron",
+      "source": "RHW",
+      "id": "undead",
+      "label": "Patrono Morto-vivo"
+    },
+    {
+      "class": "warlock",
+      "name": "Vestige Patron",
+      "source": "AU",
+      "id": "vestige",
+      "label": "Patrono Vestígio"
+    },
+    {
+      "class": "paladin",
+      "name": "Oath of Devotion",
+      "source": "XPHB",
+      "id": "devotion",
+      "label": "Juramento da Devoção"
+    },
+    {
+      "class": "paladin",
+      "name": "Oath of Glory",
+      "source": "XPHB",
+      "id": "glory",
+      "label": "Juramento da Glória"
+    },
+    {
+      "class": "paladin",
+      "name": "Oath of the Ancients",
+      "source": "XPHB",
+      "id": "ancients",
+      "label": "Juramento dos Anciões"
+    },
+    {
+      "class": "paladin",
+      "name": "Oath of Vengeance",
+      "source": "XPHB",
+      "id": "vengeance",
+      "label": "Juramento da Vingança"
+    },
+    {
+      "class": "paladin",
+      "name": "Oath of the Noble Genies",
+      "source": "FRHoF",
+      "id": "noble-genies",
+      "label": "Juramento dos Gênios Nobres"
+    },
+    {
+      "class": "sorcerer",
+      "name": "Aberrant Sorcery",
+      "source": "XPHB",
+      "id": "aberrant",
+      "label": "Feitiçaria Aberrante"
+    },
+    {
+      "class": "sorcerer",
+      "name": "Clockwork Sorcery",
+      "source": "XPHB",
+      "id": "clockwork",
+      "label": "Feitiçaria Mecânica"
+    },
+    {
+      "class": "sorcerer",
+      "name": "Draconic Sorcery",
+      "source": "XPHB",
+      "id": "draconic",
+      "label": "Feitiçaria Dracônica"
+    },
+    {
+      "class": "sorcerer",
+      "name": "Wild Magic Sorcery",
+      "source": "XPHB",
+      "id": "wild-magic",
+      "label": "Feitiçaria Selvagem"
+    },
+    {
+      "class": "sorcerer",
+      "name": "Spellfire Sorcery",
+      "source": "FRHoF",
+      "id": "spellfire",
+      "label": "Feitiçaria do Fogo Mágico"
+    },
+    {
+      "class": "sorcerer",
+      "name": "Shadow Sorcery",
+      "source": "RHW",
+      "id": "shadow",
+      "label": "Feitiçaria Sombria"
+    },
+    {
+      "class": "wizard",
+      "name": "Abjurer",
+      "source": "XPHB",
+      "id": "abjurer",
+      "label": "Abjurador"
+    },
+    {
+      "class": "wizard",
+      "name": "Diviner",
+      "source": "XPHB",
+      "id": "diviner",
+      "label": "Adivinhador"
+    },
+    {
+      "class": "wizard",
+      "name": "Evoker",
+      "source": "XPHB",
+      "id": "evoker",
+      "label": "Evocador"
+    },
+    {
+      "class": "wizard",
+      "name": "Illusionist",
+      "source": "XPHB",
+      "id": "illusionist",
+      "label": "Ilusionista"
+    },
+    {
+      "class": "wizard",
+      "name": "Bladesinger",
+      "source": "FRHoF",
+      "id": "bladesinger",
+      "label": "Cantor da Lâmina"
+    },
+    {
+      "class": "wizard",
+      "name": "Conjurer",
+      "source": "AU",
+      "id": "conjurer",
+      "label": "Conjurador"
+    },
+    {
+      "class": "wizard",
+      "name": "Enchanter",
+      "source": "AU",
+      "id": "enchanter",
+      "label": "Encantador"
+    },
+    {
+      "class": "wizard",
+      "name": "Necromancer",
+      "source": "AU",
+      "id": "necromancer",
+      "label": "Necromante"
+    },
+    {
+      "class": "wizard",
+      "name": "Transmuter",
+      "source": "AU",
+      "id": "transmuter",
+      "label": "Transmutador"
+    },
+    {
+      "class": "cleric",
+      "name": "Life Domain",
+      "source": "XPHB",
+      "id": "life",
+      "label": "Domínio da Vida"
+    },
+    {
+      "class": "cleric",
+      "name": "Light Domain",
+      "source": "XPHB",
+      "id": "light",
+      "label": "Domínio da Luz"
+    },
+    {
+      "class": "cleric",
+      "name": "Trickery Domain",
+      "source": "XPHB",
+      "id": "trickery",
+      "label": "Domínio da Trapaça"
+    },
+    {
+      "class": "cleric",
+      "name": "War Domain",
+      "source": "XPHB",
+      "id": "war",
+      "label": "Domínio da Guerra"
+    },
+    {
+      "class": "cleric",
+      "name": "Knowledge Domain",
+      "source": "FRHoF",
+      "id": "knowledge",
+      "label": "Domínio do Conhecimento"
+    },
+    {
+      "class": "cleric",
+      "name": "Grave Domain",
+      "source": "RHW",
+      "id": "grave",
+      "label": "Domínio da Sepultura"
+    },
+    {
+      "class": "cleric",
+      "name": "Arcana Domain",
+      "source": "AU",
+      "id": "arcana",
+      "label": "Domínio Arcano"
+    }
+  ],
+  "spellLabels": {
+    "Arcane Gate": "Portal Arcano",
+    "Arcane Vigor": "Vigor Arcano",
+    "Armor of Agathys": "Armadura de Agathys",
+    "Arms of Hadar": "Braços de Hadar",
+    "Aura of Purity": "Aura de Pureza",
+    "Aura of Vitality": "Aura de Vitalidade",
+    "Banishing Smite": "Destruição Banidora",
+    "Beast Sense": "Sentido Bestial",
+    "Blade Ward": "Proteção contra Lâminas",
+    "Blinding Smite": "Destruição Cegante",
+    "Circle of Power": "Círculo de Poder",
+    "Cloud of Daggers": "Nuvem de Adagas",
+    "Compelled Duel": "Duelo Compelido",
+    "Conjure Barrage": "Conjurar Barragem",
+    "Conjure Volley": "Conjurar Saraivada",
+    "Cordon of Arrows": "Cordão de Flechas",
+    "Crown of Madness": "Coroa da Loucura",
+    "Crusader's Mantle": "Manto do Cruzado",
+    "Destructive Wave": "Onda Destrutiva",
+    "Elemental Weapon": "Arma Elemental",
+    "Feign Death": "Simular Morte",
+    "Fount of Moonlight": "Fonte do Luar",
+    "Friends": "Amigos",
+    "Grasping Vine": "Vinha Agarradora",
+    "Hail of Thorns": "Chuva de Espinhos",
+    "Hunger of Hadar": "Fome de Hadar",
+    "Jallarzi's Storm of Radiance": "Tempestade Radiante de Jallarzi",
+    "Lightning Arrow": "Flecha Relampejante",
+    "Mind Sliver": "Lasca Mental",
+    "Phantasmal Force": "Força Fantasmagórica",
+    "Power Word Fortify": "Palavra de Poder Fortificar",
+    "Staggering Smite": "Destruição Estonteante",
+    "Steel Wind Strike": "Golpe do Vento de Aço",
+    "Summon Aberration": "Convocar Aberração",
+    "Summon Beast": "Convocar Fera",
+    "Summon Celestial": "Convocar Celestial",
+    "Summon Construct": "Convocar Construto",
+    "Summon Elemental": "Convocar Elemental",
+    "Summon Fey": "Convocar Feérico",
+    "Summon Fiend": "Convocar Ínfero",
+    "Summon Undead": "Convocar Morto-vivo",
+    "Swift Quiver": "Aljava Veloz",
+    "Synaptic Static": "Estática Sináptica",
+    "Tasha's Bubbling Cauldron": "Caldeirão Borbulhante de Tasha",
+    "Telepathy": "Telepatia",
+    "Thorn Whip": "Chicote de Espinhos",
+    "Thunderclap": "Palma Trovejante",
+    "Thunderous Smite": "Destruição Trovejante",
+    "Toll the Dead": "Dobrar dos Mortos",
+    "Witch Bolt": "Raio de Bruxa",
+    "Word of Radiance": "Palavra de Radiância",
+    "Wrathful Smite": "Destruição Colérica",
+    "Yolande's Regal Presence": "Presença Régia de Yolande",
+    "Alustriel's Mooncloak": "Manto Lunar de Alustriel",
+    "Backlash": "Repercussão",
+    "Blade of Disaster": "Lâmina do Desastre",
+    "Cacophonic Shield": "Escudo Cacofônico",
+    "Conjure Constructs": "Conjurar Construtos",
+    "Death Armor": "Armadura da Morte",
+    "Deryan's Helpful Homunculi": "Homúnculos Prestativos de Deryan",
+    "Dirge": "Lamento Fúnebre",
+    "Doomtide": "Maré da Perdição",
+    "Elminster's Effulgent Spheres": "Esferas Fulgurantes de Elminster",
+    "Elminster's Elusion": "Evasão de Elminster",
+    "Holy Star of Mystra": "Estrela Sagrada de Mystra",
+    "Laeral's Silver Lance": "Lança Prateada de Laeral",
+    "Simbul's Synostodweomer": "Sinostodweomer de Simbul",
+    "Songal's Elemental Suffusion": "Infusão Elemental de Songal",
+    "Spellfire Flare": "Clarão de Fogo Mágico",
+    "Spellfire Storm": "Tempestade de Fogo Mágico",
+    "Syluné's Viper": "Víbora de Syluné",
+    "Wardaway": "Afastamento",
+    "Homunculus Servant": "Servo Homúnculo",
+    "Aura of Evasion": "Aura de Evasão",
+    "Battle Familiar": "Familiar de Batalha",
+    "Catnap": "Soneca",
+    "Detonate": "Detonar",
+    "Disruptive Tune": "Melodia Perturbadora",
+    "Distorted Distance": "Distância Distorcida",
+    "Dueling Ground": "Campo de Duelo",
+    "Enervation": "Enervação",
+    "Entrancing Mirrors": "Espelhos Encantadores",
+    "Festering Blast": "Explosão Pútrida",
+    "Fractured Awareness": "Consciência Fragmentada",
+    "Grave Ground": "Solo Sepulcral",
+    "Hindsight": "Retrospecção",
+    "Illusory Dragon": "Dragão Ilusório",
+    "Inflict Doubt": "Infligir Dúvida",
+    "Invulnerability": "Invulnerabilidade",
+    "Iron Body": "Corpo de Ferro",
+    "Lightning Ring": "Anel de Relâmpagos",
+    "Moment of Prescience": "Momento de Presciência",
+    "Mordenkainen's Lucubration": "Lucubração de Mordenkainen",
+    "Negative Energy Flood": "Inundação de Energia Negativa",
+    "Power Word Pain": "Palavra de Poder Dor",
+    "Reweave Fate": "Retecer o Destino",
+    "Spirit Lantern": "Lanterna Espiritual",
+    "Summon Dinosaur": "Convocar Dinossauro",
+    "Summon Plant": "Convocar Planta",
+    "Transfix": "Transfixar",
+    "Uncertain Footing": "Passos Incertos",
+    "Vision of Elapsing Eons": "Visão de Eras Decorridas",
+    "Wail of the Banshee": "Lamento da Banshee",
+    "Waves of Exhaustion": "Ondas de Exaustão",
+    "Wither and Bloom": "Definhar e Florescer",
+    "Zone of Amicability": "Zona de Amizade"
+  },
+  "planLabels": {
+    "Alchemy Jug": "Jarro alquímico",
+    "Bag of Holding": "Bolsa de armazenamento",
+    "Cap of Water Breathing": "Gorro de respirar na água",
+    "Manifold Tool": "Ferramenta versátil",
+    "Repeating Shot": "Disparo repetidor",
+    "Returning Weapon": "Arma retornável",
+    "Boots of the Winding Path": "Botas do caminho sinuoso",
+    "Dazzling Weapon": "Arma deslumbrante",
+    "Helm of Awareness": "Elmo de prontidão",
+    "Mind Sharpener": "Afiador da mente",
+    "Repulsion Shield": "Escudo de repulsão",
+    "Spell-Refueling Ring": "Anel de reposição de magia",
+    "+1 Shield": "Escudo +1",
+    "+2 Shield": "Escudo +2",
+    "+1 Armor": "Armadura +1",
+    "+2 Armor": "Armadura +2",
+    "+1 Weapon": "Arma +1",
+    "+2 Weapon": "Arma +2",
+    "+1 Wand of the War Mage": "Varinha do mago de guerra +1",
+    "+2 Wand of the War Mage": "Varinha do mago de guerra +2",
+    "+1 Wraps of Unarmed Power": "Faixas de poder desarmado +1",
+    "+2 Wraps of Unarmed Power": "Faixas de poder desarmado +2",
+    "Adventurer's Ring": "Anel do aventureiro",
+    "Charlatan's Die": "Dado do charlatão",
+    "Conjurer's Canopy": "Dossel do conjurador",
+    "Dictation Quill": "Pena de ditado",
+    "Elocutionist's Lexicon": "Léxico do orador",
+    "Ensorcelled Missive": "Mensagem enfeitiçada",
+    "Evergreen Fertilizer": "Fertilizante perene",
+    "Heward's Handy Spice Pouch": "Bolsa de temperos de Heward",
+    "Homeward Compass": "Bússola do caminho de casa",
+    "Instrument of Illusions": "Instrumento das ilusões",
+    "Instrument of Scribing": "Instrumento da escrita",
+    "Lucky Foot": "Pata da sorte",
+    "Prosthetic Limb": "Membro protético",
+    "Spell Component Ring": "Anel de componentes mágicos",
+    "Sweeping Broom": "Vassoura de limpeza",
+    "Veteran's Cane": "Bengala do veterano",
+    "Baba Yaga's Dancing Broom": "Vassoura dançante de Baba Yaga",
+    "Bag of Tricks, Gray": "Bolsa de truques cinza",
+    "Bag of Tricks, Rust": "Bolsa de truques ferrugem",
+    "Bag of Tricks, Tan": "Bolsa de truques castanha",
+    "Blemished Idol of Good Fortunes": "Ídolo danificado da boa fortuna",
+    "Driftglobe": "Globo flutuante",
+    "Elemental Gem, Blue Sapphire": "Gema elemental de safira azul",
+    "Elemental Gem, Emerald": "Gema elemental de esmeralda",
+    "Elemental Gem, Red Corundum": "Gema elemental de coríndon vermelho",
+    "Elemental Gem, Yellow Diamond": "Gema elemental de diamante amarelo",
+    "Figurine of Wondrous Power, Silver Raven": "Estatueta de poder maravilhoso: corvo de prata",
+    "Hag Eye": "Olho de bruxa",
+    "Instrument of the Bards, Doss Lute": "Instrumento dos bardos: alaúde Doss",
+    "Instrument of the Bards, Fochlucan Bandore": "Instrumento dos bardos: bandolim Fochlucan",
+    "Instrument of the Bards, Mac-Fuirmidh Cittern": "Instrumento dos bardos: cítara Mac-Fuirmidh",
+    "Keoghtom's Ointment": "Unguento de Keoghtom",
+    "Magewright's Gloves": "Luvas do artífice mágico",
+    "Nature's Mantle": "Manto da natureza",
+    "Necklace of the Beastly Familiar (Giant Octopus)": "Colar do familiar bestial: polvo gigante",
+    "Orb of Divination Detection": "Orbe de detecção de adivinhação",
+    "Orb of Sorcery": "Orbe de feitiçaria",
+    "Quaal's Feather Token, Anchor": "Pena de Quaal: âncora",
+    "Quaal's Feather Token, Fan": "Pena de Quaal: leque",
+    "Quaal's Feather Token, Tree": "Pena de Quaal: árvore",
+    "Quiver of Ehlonna": "Aljava de Ehlonna",
+    "Saddle of the Cavalier": "Sela do cavaleiro",
+    "Spell-Slinger's Puppet": "Marionete do conjurador",
+    "Stone of Good Luck": "Pedra da boa sorte",
+    "Thayan Spell Tattoo": "Tatuagem mágica de Thay",
+    "Thespian's Playbill": "Cartaz do ator",
+    "Thief's Thimble": "Dedal do ladrão",
+    "Arcane Chatelaine": "Chatelaine arcana",
+    "Arcanist's Bestiary": "Bestiário do arcanista",
+    "Bellows of Strangulation": "Fole do estrangulamento",
+    "Belt of Hill Giant Strength": "Cinto da força do gigante da colina",
+    "Blood Amulet": "Amuleto de sangue",
+    "Cube of Summoning": "Cubo de invocação",
+    "Daern's Instant Fortress": "Fortaleza instantânea de Daern",
+    "Dream Weaver": "Tecelão de sonhos",
+    "Figurine of Wondrous Power, Bronze Griffon": "Estatueta de poder maravilhoso: grifo de bronze",
+    "Figurine of Wondrous Power, Ebony Fly": "Estatueta de poder maravilhoso: mosca de ébano",
+    "Figurine of Wondrous Power, Golden Lions": "Estatueta de poder maravilhoso: leões de ouro",
+    "Figurine of Wondrous Power, Ivory Goats": "Estatueta de poder maravilhoso: cabras de marfim",
+    "Figurine of Wondrous Power, Marble Elephant": "Estatueta de poder maravilhoso: elefante de mármore",
+    "Figurine of Wondrous Power, Onyx Dog": "Estatueta de poder maravilhoso: cão de ônix",
+    "Figurine of Wondrous Power, Serpentine Owl": "Estatueta de poder maravilhoso: coruja de serpentina",
+    "Heward's Handy Haversack": "Mochila prática de Heward",
+    "Horn of Valhalla, Brass": "Chifre de Valhalla de latão",
+    "Horn of Valhalla, Silver": "Chifre de Valhalla de prata",
+    "Instrument of the Bards, Canaith Mandolin": "Instrumento dos bardos: bandolim Canaith",
+    "Instrument of the Bards, Cli Lyre": "Instrumento dos bardos: lira Cli",
+    "Ioun Stone, Awareness": "Pedra Ioun de prontidão",
+    "Ioun Stone, Protection": "Pedra Ioun de proteção",
+    "Ioun Stone, Reserve": "Pedra Ioun de reserva",
+    "Ioun Stone, Sustenance": "Pedra Ioun de sustento",
+    "Iron Bands of Bilarro": "Faixas de ferro de Bilarro",
+    "Mage's Manacle": "Algema do mago",
+    "Necklace of the Beastly Familiar (Giant Scorpion)": "Colar do familiar bestial: escorpião gigante",
+    "Necklace of the Beastly Familiar (Hippopotamus)": "Colar do familiar bestial: hipopótamo",
+    "Prismatic Rune": "Runa prismática",
+    "Quaal's Feather Token, Bird": "Pena de Quaal: pássaro",
+    "Quaal's Feather Token, Swan Boat": "Pena de Quaal: barco cisne",
+    "Quaal's Feather Token, Whip": "Pena de Quaal: chicote",
+    "Scholar's Anchoring Bangle": "Bracelete de ancoragem do erudito",
+    "Secret Keeper's Circlet": "Diadema do guardião de segredos",
+    "Spell Duelist's Trophy": "Troféu do duelista arcano"
+  }
+}

@@ -11,7 +11,13 @@ await pool.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
   const args = process.argv.includes('--browser')
-    ? ['--import', 'tsx', 'scripts/smoke-character-advancement.ts']
+    ? [
+        '--import',
+        'tsx',
+        process.argv.includes('--expansion')
+          ? 'scripts/smoke-character-rules-2024.ts'
+          : 'scripts/smoke-character-advancement.ts',
+      ]
     : [
         '--import',
         'tsx',
@@ -21,6 +27,7 @@ try {
           ? ['tests/*.test.ts']
           : [
               'tests/character-advancement.test.ts',
+              'tests/character-rules-2024.test.ts',
               'tests/character-sheet.test.ts',
               'tests/srd-2024.test.ts',
               'tests/progression.test.ts',

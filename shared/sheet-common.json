@@ -515,6 +515,23 @@
         "Percepção",
         "Sobrevivência"
       ]
+    },
+    "Artífice": {
+      "id": "artificer",
+      "saves": [
+        2,
+        3
+      ],
+      "count": 2,
+      "skills": [
+        "Arcanismo",
+        "História",
+        "Investigação",
+        "Medicina",
+        "Natureza",
+        "Percepção",
+        "Prestidigitação"
+      ]
     }
   },
   "spellLabels": {

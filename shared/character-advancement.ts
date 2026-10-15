@@ -1,9 +1,10 @@
 import { z } from 'zod';
 import tables from './class-advancement-tables.json';
-import spellData from './srd-2024-spells.json';
+import spellData from './character-rules-2024.json';
+import { subclassFields, subclassToolGrants } from './subclass-choices-2024.js';
 import common from './sheet-common.json';
 import { classes, hitDice, modifier, statNames } from './rules.js';
-import type { SheetChoices } from './character-sheet.js';
+import { backgroundTool, type SheetChoices } from './character-sheet.js';
 import {
   featureNames,
   featureSummaries,
@@ -11,7 +12,12 @@ import {
   landSpells,
 } from './class-advancement-text.js';
 export { subclassRules } from './class-advancement-text.js';
-export type AdvancementCharacter = { class: string; race: string; stats: number[]; level: number };
+export type AdvancementCharacter = {
+  class: string;
+  race: string;
+  stats: number[];
+  level: number;
+};
 export const advanceChoiceSchema = z
   .object({
     class: z.enum(classes),
@@ -19,6 +25,18 @@ export const advanceChoiceSchema = z
     newCantrips: z.array(z.string().max(80)).max(6).default([]),
     newSpells: z.array(z.string().max(80)).max(30).default([]),
     bonusSpells: z.array(z.string().max(80)).max(4).default([]),
+    retrain: z
+      .array(
+        z
+          .object({
+            kind: z.enum(['cantrip', 'spell', 'plan', 'armorPlan']),
+            from: z.string().max(100),
+            to: z.string().max(100),
+          })
+          .strict(),
+      )
+      .max(4)
+      .optional(),
     boosts: z.array(z.number().int().min(0).max(2)).length(6).default([0, 0, 0, 0, 0, 0]),
     choices: z.record(z.string().max(40), z.array(z.string().max(100)).max(12)).default({}),
   })
@@ -50,6 +68,7 @@ export type ClassState = {
 };
 const spells = spellData.spells;
 const classId: Record<string, string> = {
+  Artífice: 'artificer',
   Bárbaro: 'barbarian',
   Bardo: 'bard',
   Clérigo: 'cleric',
@@ -64,6 +83,7 @@ const classId: Record<string, string> = {
   Mago: 'wizard',
 };
 const ability: Record<string, number> = {
+  Artífice: 3,
   Bardo: 5,
   Bruxo: 5,
   Clérigo: 4,
@@ -74,7 +94,7 @@ const ability: Record<string, number> = {
   Patrulheiro: 4,
 };
 const full = ['Bardo', 'Clérigo', 'Druida', 'Feiticeiro', 'Mago'];
-const half = ['Paladino', 'Patrulheiro'];
+const half = ['Artífice', 'Paladino', 'Patrulheiro'];
 const learned = ['Bardo', 'Bruxo', 'Feiticeiro', 'Patrulheiro'];
 const unique = (v: string[]) => [...new Set(v)];
 export function allocatedLevel(c: SheetChoices) {
@@ -88,18 +108,38 @@ export function classStates(character: AdvancementCharacter, c: SheetChoices): C
       level: 1,
       subclass: '',
       cantrips: [...c.cantrips],
-      known: character.class === 'Patrulheiro' ? c.advancement?.initialSpells || [] : [...c.spells],
+      known:
+        character.class === 'Patrulheiro' ? c.advancement?.initialSpells || [] : [...c.spells],
       choices: initialChoices,
     },
   ];
   for (const row of c.advancement?.levels || []) {
     let current = state.find((s) => s.class === row.class);
     if (!current) {
-      current = { class: row.class, level: 0, subclass: '', cantrips: [], known: [], choices: {} };
+      current = {
+        class: row.class,
+        level: 0,
+        subclass: '',
+        cantrips: [],
+        known: [],
+        choices: {},
+      };
       state.push(current);
     }
     current.level++;
     if (row.subclass) current.subclass = row.subclass;
+    for (const swap of row.retrain || []) {
+      if (swap.kind === 'cantrip')
+        current.cantrips = current.cantrips.filter((id) => id !== swap.from).concat(swap.to);
+      if (swap.kind === 'spell')
+        current.known = current.known.filter((id) => id !== swap.from).concat(swap.to);
+      if (swap.kind === 'plan' || swap.kind === 'armorPlan') {
+        const key = swap.kind === 'plan' ? 'plans' : 'armorPlans';
+        current.choices[key] = (current.choices[key] || [])
+          .filter((id) => id !== swap.from)
+          .concat(swap.to);
+      }
+    }
     current.cantrips = unique([...current.cantrips, ...row.newCantrips]);
     current.known = unique([...current.known, ...row.newSpells, ...row.bonusSpells]);
     if (row.class === 'Bardo' && row.classLevel === 6)
@@ -109,21 +149,49 @@ export function classStates(character: AdvancementCharacter, c: SheetChoices): C
   }
   return state;
 }
-export function classProfile(cls: string, level: number) {
+export function classProfile(cls: string, level: number, subclass = '') {
+  const subclassRule = subclassRules[cls]?.find((s) => s.id === subclass);
+  const casting = level >= 3 ? subclassRule?.casting : undefined;
   const source = (
     tables.classes as Record<
       string,
       { rows: { level: number; features: string; numbers: number[] }[] }
     >
   )[cls];
-  const row = source?.rows[level - 1];
+  const row =
+    cls === 'Artífice' ? spellData.artificer.rows[level - 1] : source?.rows[level - 1];
   const n = row?.numbers || [];
-  const mage = full.includes(cls) || half.includes(cls) || cls === 'Bruxo';
+  const mage = full.includes(cls) || half.includes(cls) || cls === 'Bruxo' || Boolean(casting);
   const offset = cls === 'Mago' ? 0 : 1;
-  const cantrips = cls === 'Bruxo' ? n[1] : full.includes(cls) ? n[offset] : 0;
-  const count =
-    cls === 'Bruxo' ? n[2] : full.includes(cls) ? n[offset + 1] : half.includes(cls) ? n[1] : 0;
-  const slots = full.includes(cls) ? n.slice(offset + 2) : half.includes(cls) ? n.slice(2) : [];
+  const cantrips = casting
+    ? casting.cantrips[level - 1]
+    : cls === 'Artífice'
+      ? n[2]
+      : cls === 'Bruxo'
+        ? n[1]
+        : full.includes(cls)
+          ? n[offset]
+          : 0;
+  const count = casting
+    ? casting.prepared[level - 1]
+    : cls === 'Artífice'
+      ? n[3]
+      : cls === 'Bruxo'
+        ? n[2]
+        : full.includes(cls)
+          ? n[offset + 1]
+          : half.includes(cls)
+            ? n[1]
+            : 0;
+  const slots = casting
+    ? [...casting.slots[level - 1]]
+    : cls === 'Artífice'
+      ? n.slice(4)
+      : full.includes(cls)
+        ? n.slice(offset + 2)
+        : half.includes(cls)
+          ? n.slice(2)
+          : [];
   while (slots.length < 9) slots.push(0);
   const maxSpell = cls === 'Bruxo' ? n[4] || 0 : slots.findLastIndex((v) => v > 0) + 1;
   return {
@@ -134,15 +202,22 @@ export function classProfile(cls: string, level: number) {
     prepareCount: count || 0,
     slots: slots.slice(0, 9),
     maxSpell,
-    ability: mage ? ability[cls] : null,
+    ability: casting ? casting.ability : mage ? ability[cls] : null,
+    spellList: casting?.list || classId[cls],
+    thirdCaster: Boolean(casting),
     pactSlots: cls === 'Bruxo' ? n[3] || 0 : 0,
     pactLevel: cls === 'Bruxo' ? n[4] || 0 : 0,
     resources: n,
   };
 }
-export function multiclassReason(character: AdvancementCharacter, c: SheetChoices, cls: string) {
+export function multiclassReason(
+  character: AdvancementCharacter,
+  c: SheetChoices,
+  cls: string,
+) {
   if (classStates(character, c).some((s) => s.class === cls)) return '';
   const requirements: Record<string, number[][]> = {
+    Artífice: [[3]],
     Bárbaro: [[0]],
     Bardo: [[5]],
     Bruxo: [[5]],
@@ -169,14 +244,40 @@ export function alwaysPrepared(
   subclass: string,
   choices: Record<string, string[]>,
 ) {
-  const entries = subclassRules[cls]?.find((s) => s.id === subclass)?.spells || {};
+  const rule = subclassRules[cls]?.find((s) => s.id === subclass);
+  const entries = subclass === 'arcane-archer' ? {} : rule?.spells || {};
+  const domainNames: Record<string, string> = {
+    Vida: 'Life Domain',
+    Luz: 'Light Domain',
+    Trapaça: 'Trickery Domain',
+    Guerra: 'War Domain',
+  };
+  const variant =
+    subclass === 'vestige'
+      ? rule?.variants?.[domainNames[choices.vestigeDomain?.[0]] || 'Life Domain'] || {}
+      : {};
   const terrain =
     cls === 'Druida' && subclass === 'land'
       ? landSpells[choices.terrain?.[0] || 'Árido'] || {}
       : {};
-  const values = Object.entries({ ...entries, ...terrain })
+  const values = Object.entries({ ...entries, ...terrain, ...variant })
     .filter(([lv]) => Number(lv) <= level)
     .flatMap(([, s]) => s);
+  values.push(
+    ...(choices.subCantrips || []),
+    ...[6, 7, 8, 9].flatMap((i) => choices['arcana' + i] || []),
+  );
+  if (cls === 'Artífice') values.push('mending');
+  if (cls === 'Bardo' && subclass === 'spirits' && level >= 3) values.push('guidance');
+  if (cls === 'Ladino' && subclass === 'scion-of-three' && level >= 3)
+    values.push(
+      (
+        { Bane: 'minor-illusion', Bhaal: 'blade-ward', Myrkul: 'chill-touch' } as Record<
+          string,
+          string
+        >
+      )[choices.deity?.[0] || 'Bane'],
+    );
   if (cls === 'Druida') values.push('speak-with-animals');
   if (cls === 'Patrulheiro') values.push('hunters-mark');
   if (cls === 'Bardo') values.push(...(choices.loreBonus || []));
@@ -184,15 +285,17 @@ export function alwaysPrepared(
   if (cls === 'Paladino' && level >= 5) values.push('find-steed');
   return unique(values.filter((id) => spells.some((s) => s.id === id)));
 }
-export function classSpellOptions(
-  cls: string,
-  level: number,
-  maximum = classProfile(cls, level).maxSpell,
-) {
+export function classSpellOptions(cls: string, level: number, maximum?: number, subclass = '') {
+  const profile = classProfile(cls, level, subclass);
+  maximum ??= profile.maxSpell;
   const lists =
-    cls === 'Bardo' && level >= 10 ? ['bard', 'cleric', 'druid', 'wizard'] : [classId[cls]];
+    cls === 'Bardo' && level >= 10
+      ? ['bard', 'cleric', 'druid', 'wizard']
+      : [profile.spellList];
   return spells
-    .filter((s) => s.level > 0 && s.level <= maximum && s.classes.some((v) => lists.includes(v)))
+    .filter(
+      (s) => s.level > 0 && s.level <= maximum && s.classes.some((v) => lists.includes(v)),
+    )
     .map((s) => s.id);
 }
 const evoc = spells.filter((s) => s.school === 'Evocation').map((s) => s.id);
@@ -219,11 +322,11 @@ export function levelPlan(
     previous = states.find((s) => s.class === input.class),
     level = (previous?.level || 0) + 1,
     cls = input.class;
-  const profile = classProfile(cls, level),
-    old = previous ? classProfile(cls, previous.level) : null;
+  const sub = previous?.subclass || input.subclass;
+  const profile = classProfile(cls, level, sub),
+    old = previous ? classProfile(cls, previous.level, sub) : null;
   const known = previous?.known || [],
     cantrips = previous?.cantrips || [];
-  const sub = previous?.subclass || input.subclass;
   const combined = { ...previous?.choices, ...input.choices };
   const automatic = alwaysPrepared(cls, level, sub, combined);
   const newCantrips = Math.max(0, profile.cantrips - cantrips.length);
@@ -232,14 +335,20 @@ export function levelPlan(
       ? level === 1
         ? 6
         : 2
-      : learned.includes(cls)
-        ? Math.max(0, profile.prepareCount - known.filter((s) => !automatic.includes(s)).length)
+      : learned.includes(cls) || profile.thirdCaster
+        ? Math.max(
+            0,
+            profile.prepareCount -
+              known.filter(
+                (s) => !automatic.includes(s) && spells.find((v) => v.id === s)?.level !== 0,
+              ).length,
+          )
         : 0;
-  const spellOptions = classSpellOptions(cls, level).filter(
+  const spellOptions = classSpellOptions(cls, level, undefined, sub).filter(
     (s) => !known.includes(s) && !automatic.includes(s),
   );
   const bonusCount =
-    cls === 'Mago' && sub === 'evoker'
+    cls === 'Mago' && Boolean(subclassRules[cls]?.find((s) => s.id === sub)?.school)
       ? level === 3
         ? 2
         : profile.maxSpell > (old?.maxSpell || 0)
@@ -250,11 +359,15 @@ export function levelPlan(
         : 0;
   const bonusOptions =
     cls === 'Mago'
-      ? spellOptions.filter((s) => evoc.includes(s))
+      ? spellOptions.filter(
+          (id) =>
+            spells.find((s) => s.id === id)?.school ===
+            subclassRules[cls]?.find((s) => s.id === sub)?.school,
+        )
       : spells
           .filter(
             (s) =>
-              s.level > 0 &&
+              s.level >= 0 &&
               s.level <= 3 &&
               s.classes.some((v) => ['cleric', 'druid', 'wizard'].includes(v)) &&
               !known.includes(s.id),
@@ -268,14 +381,18 @@ export function levelPlan(
     ...Object.values(c.options)
       .flat()
       .filter((s) => common.skills.includes(s)),
-    ...states.flatMap((s) => s.choices.skills || []),
+    ...states.flatMap((s) =>
+      Object.values(s.choices)
+        .flat()
+        .filter((v) => common.skills.includes(v)),
+    ),
   ]);
   const experts = unique([...c.expertise, ...states.flatMap((s) => s.choices.expertise || [])]);
   const add = (key: string, label: string, count: number, options: string[]) => {
     if (count > 0) fields.push({ key, label, count, options });
   };
   const previousChoice = (key: string) => previous?.choices[key] || [];
-  if (level === 1 && ['Bardo', 'Ladino', 'Patrulheiro'].includes(cls))
+  if (level === 1 && ['Artífice', 'Bardo', 'Ladino', 'Patrulheiro'].includes(cls))
     add(
       'skills',
       'Perícia da nova classe',
@@ -318,7 +435,9 @@ export function levelPlan(
   ].filter(
     (v) =>
       !c.backgroundExtras.includes(v) &&
-      !states.some((s) => s.choices.languages?.includes(v) || s.choices.rogueLanguage?.includes(v)),
+      !states.some(
+        (s) => s.choices.languages?.includes(v) || s.choices.rogueLanguage?.includes(v),
+      ),
   );
   if (cls === 'Ladino' && level === 1)
     add('languages', 'Idioma adicional do ladino', 1, languageOptions);
@@ -350,6 +469,13 @@ export function levelPlan(
     Math.max(0, masteries - previousChoice('mastery').length),
     weaponOptions.filter((v) => !previousChoice('mastery').includes(v)),
   );
+  if (cls === 'Bárbaro' && level === 3)
+    add(
+      'skills',
+      'Perícia de Conhecimento Primal',
+      1,
+      common.classes.Bárbaro.skills.filter((v) => !trained.includes(v)),
+    );
   if (cls === 'Bardo' && sub === 'lore' && level === 3)
     add(
       'skills',
@@ -377,14 +503,19 @@ export function levelPlan(
       (s) =>
         !experts.includes(s) &&
         (cls !== 'Mago' ||
-          ['Arcanismo', 'História', 'Investigação', 'Medicina', 'Natureza', 'Religião'].includes(
-            s,
-          )),
+          [
+            'Arcanismo',
+            'História',
+            'Investigação',
+            'Medicina',
+            'Natureza',
+            'Religião',
+          ].includes(s)),
     ),
   );
   if (
     (cls === 'Guerreiro' && level === 1) ||
-    (half.includes(cls) && level === 2) ||
+    (['Paladino', 'Patrulheiro'].includes(cls) && level === 2) ||
     (cls === 'Guerreiro' && sub === 'champion' && level === 7)
   )
     add(
@@ -393,8 +524,10 @@ export function levelPlan(
       1,
       styles.filter((s) => !previousChoice('style').includes(s)),
     );
-  if (cls === 'Clérigo' && level === 1) add('order', 'Ordem divina', 1, ['Protetor', 'Taumaturgo']);
-  if (cls === 'Druida' && level === 1) add('order', 'Ordem primal', 1, ['Guardião', 'Mago primal']);
+  if (cls === 'Clérigo' && level === 1)
+    add('order', 'Ordem divina', 1, ['Protetor', 'Taumaturgo']);
+  if (cls === 'Druida' && level === 1)
+    add('order', 'Ordem primal', 1, ['Guardião', 'Mago primal']);
   if (level === 1 && ['Taumaturgo', 'Mago primal'].includes(input.choices.order?.[0]))
     add(
       'orderCantrip',
@@ -453,12 +586,14 @@ export function levelPlan(
             'Mestre de Muitas Formas',
           ]
         : []),
-      ...(level >= 5 && [...inv, ...(input.choices.invocations || [])].includes('Pacto da Lâmina')
+      ...(level >= 5 &&
+      [...inv, ...(input.choices.invocations || [])].includes('Pacto da Lâmina')
         ? ['Lâmina Sedenta', 'Destruição Mística']
         : []),
       ...(level >= 7 ? ['Sussurros do Túmulo'] : []),
       ...(level >= 9 ? ['Visões de Reinos Distantes'] : []),
-      ...(level >= 9 && [...inv, ...(input.choices.invocations || [])].includes('Pacto da Lâmina')
+      ...(level >= 9 &&
+      [...inv, ...(input.choices.invocations || [])].includes('Pacto da Lâmina')
         ? ['Devorador de Vida']
         : []),
       ...(level >= 12 && inv.includes('Lâmina Sedenta') ? ['Lâmina Devoradora'] : []),
@@ -483,7 +618,8 @@ export function levelPlan(
         2,
         spells
           .filter(
-            (s) => s.level === 1 && s.ritual && !known.includes(s.id) && !automatic.includes(s.id),
+            (s) =>
+              s.level === 1 && s.ritual && !known.includes(s.id) && !automatic.includes(s.id),
           )
           .map((s) => s.id),
       );
@@ -519,6 +655,32 @@ export function levelPlan(
       2,
       known.filter((id) => spells.find((s) => s.id === id)?.level === 3),
     );
+  const ownedTools = unique([
+    backgroundTool(c),
+    ...Object.values(c.options).flat(),
+    ...states.flatMap((s) => [
+      ...(s.choices.subTools || []),
+      ...(subclassToolGrants[s.class + '/' + s.subclass] || []),
+    ]),
+  ]);
+  if (character.class === 'Artífice')
+    ownedTools.push('Ferramentas de ladrão', 'Ferramentas de funileiro');
+  const saveIndexes = (common.classes as Record<string, { saves: number[] }>)[character.class]
+    .saves;
+  fields.push(
+    ...subclassFields({
+      cls,
+      sub,
+      level,
+      previous,
+      trained,
+      tools: ownedTools,
+      cantrips,
+      choices: combined,
+      languages: languageOptions,
+      saves: saveIndexes,
+    }),
+  );
   const asi =
     profile.features.includes('Ability Score Improvement') ||
     profile.features.includes('Epic Boon');
@@ -531,7 +693,13 @@ export function levelPlan(
     subclasses: subclassRules[cls] || [],
     newCantrips,
     cantripOptions: spells
-      .filter((s) => s.level === 0 && s.classes.includes(classId[cls]) && !cantrips.includes(s.id))
+      .filter(
+        (s) =>
+          s.level === 0 &&
+          s.classes.includes(profile.spellList) &&
+          !cantrips.includes(s.id) &&
+          !automatic.includes(s.id),
+      )
       .map((s) => s.id),
     newSpells,
     spellOptions,
@@ -545,6 +713,76 @@ export function levelPlan(
       hitDice[cls] / 2 + 1 + modifier(character.stats[2]) + (character.race === 'Anão' ? 1 : 0),
     ),
     automatic,
+    retraining: [
+      ...(cantrips.length
+        ? [
+            {
+              kind: 'cantrip' as const,
+              label: 'Trocar um truque da classe',
+              from: cantrips,
+              to: spells
+                .filter(
+                  (s) =>
+                    s.level === 0 &&
+                    s.classes.includes(profile.spellList) &&
+                    !cantrips.includes(s.id) &&
+                    !automatic.includes(s.id),
+                )
+                .map((s) => s.id),
+            },
+          ]
+        : []),
+      ...((learned.includes(cls) || profile.thirdCaster) && known.length
+        ? [
+            {
+              kind: 'spell' as const,
+              label: 'Trocar uma magia da progressão',
+              from: known.filter(
+                (id) =>
+                  spells.find((s) => s.id === id)?.level !== 0 &&
+                  !automatic.includes(id) &&
+                  !(previous?.choices.loreBonus || []).includes(id),
+              ),
+              to: spellOptions,
+            },
+          ]
+        : []),
+      ...(cls === 'Artífice' && previousChoice('plans').length
+        ? [
+            {
+              kind: 'plan' as const,
+              label: 'Trocar um plano de item',
+              from: previousChoice('plans'),
+              to: spellData.artificer.plans
+                .filter(
+                  (p) =>
+                    p.level <= level &&
+                    !previousChoice('plans').includes(p.label) &&
+                    !previousChoice('armorPlans').includes(p.label),
+                )
+                .map((p) => p.label),
+            },
+          ]
+        : []),
+      ...(cls === 'Artífice' && previousChoice('armorPlans').length
+        ? [
+            {
+              kind: 'armorPlan' as const,
+              label: 'Trocar o plano adicional de armadura',
+              from: previousChoice('armorPlans'),
+              to: spellData.artificer.plans
+                .filter(
+                  (p) =>
+                    p.level <= level &&
+                    p.armor &&
+                    !previousChoice('plans').includes(p.label) &&
+                    !previousChoice('armorPlans').includes(p.label),
+                )
+                .map((p) => p.label),
+            },
+          ]
+        : []),
+    ].filter((v) => v.from.length && v.to.length),
   };
 }
 export function defaultAdvanceChoice(cls: string): AdvanceChoice {
@@ -558,7 +796,11 @@ export function defaultAdvanceChoice(cls: string): AdvanceChoice {
     choices: {},
   };
 }
-export function validateAdvance(character: AdvancementCharacter, c: SheetChoices, input: unknown) {
+export function validateAdvance(
+  character: AdvancementCharacter,
+  c: SheetChoices,
+  input: unknown,
+) {
   const next = advanceChoiceSchema.parse(input),
     plan = levelPlan(character, c, next);
   const check = (ok: boolean, message: string) => {
@@ -582,16 +824,39 @@ export function validateAdvance(character: AdvancementCharacter, c: SheetChoices
   check(
     next.bonusSpells.length <= plan.bonusCount &&
       new Set(next.bonusSpells).size === next.bonusSpells.length &&
-      next.bonusSpells.every((s) => plan.bonusOptions.includes(s) && !next.newSpells.includes(s)),
+      next.bonusSpells.every(
+        (s) => plan.bonusOptions.includes(s) && !next.newSpells.includes(s),
+      ),
     'Confira as magias adicionais da subclasse.',
   );
   if (next.class === 'Mago' && plan.level === 3 && plan.bonusCount)
-    check(next.bonusSpells.length === 2, 'Escolha as duas evocações da subclasse.');
+    check(next.bonusSpells.length === 2, 'Escolha as duas magias da escola da subclasse.');
   if (next.class === 'Bardo' && plan.bonusCount)
     check(
       next.bonusSpells.length === plan.bonusCount,
       'Escolha as duas magias de Descobertas Mágicas.',
     );
+  check(
+    new Set((next.retrain || []).map((v) => v.kind)).size === (next.retrain || []).length,
+    'Só pode trocar uma opção de cada tipo por nível.',
+  );
+  check(
+    (next.retrain || []).filter((v) => v.kind === 'plan' || v.kind === 'armorPlan').length <= 1,
+    'Só pode trocar um plano de item por nível.',
+  );
+  for (const swap of next.retrain || []) {
+    const options = plan.retraining.find((v) => v.kind === swap.kind);
+    check(
+      Boolean(options?.from.includes(swap.from) && options.to.includes(swap.to)),
+      'Troca de característica não permitida neste nível.',
+    );
+    check(
+      ![...next.newCantrips, ...next.newSpells, ...Object.values(next.choices).flat()].includes(
+        swap.to,
+      ),
+      'A troca deve ser diferente das novas escolhas.',
+    );
+  }
   check(
     Object.keys(next.choices).every((k) => plan.fields.some((f) => f.key === k)),
     'Escolha de característica não disponível neste nível.',
@@ -605,12 +870,22 @@ export function validateAdvance(character: AdvancementCharacter, c: SheetChoices
     next.boosts.every((v, i) => !v || character.stats[i] + v <= 20),
     'A melhoria não pode elevar um atributo acima de 20.',
   );
+  const extraCantrips = [
+    ...(next.choices.subCantrips || []),
+    ...(next.choices.orderCantrip || []),
+  ];
+  check(
+    !extraCantrips.some((id) => next.newCantrips.includes(id)),
+    'Os truques adicionais devem ser diferentes dos truques da classe.',
+  );
   if (next.choices.orderCantrip)
     check(
       !next.newCantrips.includes(next.choices.orderCantrip[0]),
       'O truque da ordem deve ser diferente dos truques da classe.',
     );
-  if (next.choices.invocations?.some((s) => ['Lâmina Sedenta', 'Devorador de Vida'].includes(s)))
+  if (
+    next.choices.invocations?.some((s) => ['Lâmina Sedenta', 'Devorador de Vida'].includes(s))
+  )
     check(
       [
         ...(plan.previous?.choices.invocation || []),
@@ -648,18 +923,19 @@ export type ClassMagic = Omit<ReturnType<typeof classProfile>, 'cantrips'> & {
 export function magicClasses(character: AdvancementCharacter, c: SheetChoices): ClassMagic[] {
   const prof = 2 + Math.floor((character.level - 1) / 4);
   return classStates(character, c)
-    .filter((s) => classProfile(s.class, s.level).ability !== null)
+    .filter((s) => classProfile(s.class, s.level, s.subclass).ability !== null)
     .map((s) => {
-      const p = classProfile(s.class, s.level),
+      const p = classProfile(s.class, s.level, s.subclass),
         always = alwaysPrepared(s.class, s.level, s.subclass, s.choices),
-        flexible = !learned.includes(s.class);
+        flexible = !learned.includes(s.class) && !p.thirdCaster;
       if (s.class === 'Bardo' && s.subclass === 'lore')
         always.push(
           ...(c.advancement?.levels
             .filter((r) => r.class === 'Bardo' && r.classLevel === 6)
             .flatMap((r) => r.bonusSpells) || []),
         );
-      if (s.class === 'Bardo' && s.level === 20) always.push('power-word-heal', 'power-word-kill');
+      if (s.class === 'Bardo' && s.level === 20)
+        always.push('power-word-heal', 'power-word-kill');
       if (s.class === 'Bruxo') {
         always.push(...(s.choices.tomeRituals || []));
         if (
@@ -676,7 +952,10 @@ export function magicClasses(character: AdvancementCharacter, c: SheetChoices): 
           ...(s.choices.mastery2 || []),
           ...(s.choices.signature || []),
         );
-      const allowed = s.class === 'Mago' ? s.known : classSpellOptions(s.class, s.level);
+      const allowed =
+        s.class === 'Mago'
+          ? s.known
+          : classSpellOptions(s.class, s.level, undefined, s.subclass);
       const prepared = flexible
         ? c.advancement?.prepared?.[s.class] || []
         : s.known.filter((id) => !always.includes(id));
@@ -702,10 +981,22 @@ export function magicClasses(character: AdvancementCharacter, c: SheetChoices): 
 }
 export function combinedSlots(character: AdvancementCharacter, c: SheetChoices) {
   const states = classStates(character, c),
-    casters = states.filter((s) => full.includes(s.class) || half.includes(s.class));
-  if (casters.length === 1) return classProfile(casters[0].class, casters[0].level).slots;
+    casters = states.filter(
+      (s) =>
+        full.includes(s.class) ||
+        half.includes(s.class) ||
+        classProfile(s.class, s.level, s.subclass).thirdCaster,
+    );
+  if (casters.length === 1)
+    return classProfile(casters[0].class, casters[0].level, casters[0].subclass).slots;
   const total = casters.reduce(
-    (sum, s) => sum + (half.includes(s.class) ? Math.ceil(s.level / 2) : s.level),
+    (sum, s) =>
+      sum +
+      (half.includes(s.class)
+        ? Math.ceil(s.level / 2)
+        : classProfile(s.class, s.level, s.subclass).thirdCaster
+          ? Math.floor(s.level / 3)
+          : s.level),
     0,
   );
   return total ? classProfile('Mago', Math.min(20, total)).slots : [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -756,7 +1047,8 @@ export function applyAdvancement<
     racial = character.race === 'Anão' ? 1 : 0;
   const hitDiceByType: Record<string, number> = {};
   for (const s of states)
-    hitDiceByType['d' + hitDice[s.class]] = (hitDiceByType['d' + hitDice[s.class]] || 0) + s.level;
+    hitDiceByType['d' + hitDice[s.class]] =
+      (hitDiceByType['d' + hitDice[s.class]] || 0) + s.level;
   let hp =
     Math.max(1, hitDice[character.class] + con + racial) +
     levels.reduce((n, s) => n + Math.max(1, hitDice[s.class] / 2 + 1 + con + racial), 0);
@@ -766,13 +1058,20 @@ export function applyAdvancement<
     level = (cls: string) => state(cls)?.level || 0;
   if (state('Feiticeiro')?.subclass === 'draconic') hp += level('Feiticeiro');
   const features: string[] = [],
-    groups = { ...base.featureGroups, class: [] as string[], feats: [...base.featureGroups.feats] };
+    groups = {
+      ...base.featureGroups,
+      class: [] as string[],
+      feats: [...base.featureGroups.feats],
+    };
   if (levels.length) {
     for (const s of states) {
       const source = (
         tables.classes as Record<string, { rows: { level: number; features: string }[] }>
       )[s.class];
-      for (const row of source.rows.filter((r) => r.level <= s.level))
+      for (const row of (s.class === 'Artífice'
+        ? spellData.artificer.rows
+        : source.rows
+      ).filter((r) => r.level <= s.level))
         for (const en of row.features.split(',').map((v) => v.trim())) {
           if (
             !en ||
@@ -809,6 +1108,14 @@ export function applyAdvancement<
             'mastery1',
             'mastery2',
             'signature',
+            'maneuvers',
+            'arcaneShots',
+            'armorModel',
+            'modifications',
+            'deity',
+            'vestigeDomain',
+            'plans',
+            'armorPlans',
           ].includes(key)
         )
           features.push(
@@ -833,7 +1140,22 @@ export function applyAdvancement<
       features.push(
         `Foco — recursos: ${classProfile('Monge', level('Monge')).resources[1]} pontos; artes marciais d${classProfile('Monge', level('Monge')).resources[0]}.`,
       );
-    if (level('Paladino')) features.push(`Cura pelas mãos — reserva: ${level('Paladino') * 5} PV.`);
+    if (level('Artífice')) {
+      const p = classProfile('Artífice', level('Artífice'));
+      features.push(
+        'Replicação — recursos: ' +
+          p.resources[0] +
+          ' planos; até ' +
+          p.resources[1] +
+          ' itens simultâneos' +
+          (state('Artífice')?.subclass === 'armorer' && level('Artífice') >= 9
+            ? ' e um plano/item adicional de armadura'
+            : '') +
+          '.',
+      );
+    }
+    if (level('Paladino'))
+      features.push(`Cura pelas mãos — reserva: ${level('Paladino') * 5} PV.`);
     if (level('Feiticeiro') >= 2)
       features.push(
         `Pontos de feitiçaria — reserva: ${classProfile('Feiticeiro', level('Feiticeiro')).resources[0]}.`,
@@ -852,8 +1174,24 @@ export function applyAdvancement<
       features.push(`Maestria de ${name}: disponível em ataques com esta arma.`);
     groups.class = features;
   }
-  const addedSkills = states.flatMap((s) => s.choices.skills || []),
-    experts = unique([...c.expertise, ...states.flatMap((s) => s.choices.expertise || [])]);
+  const fixedSkills = states.flatMap((s) =>
+    s.class === 'Monge' && s.subclass === 'mercy' ? ['Intuição', 'Medicina'] : [],
+  );
+  const addedSkills = states
+      .flatMap((s) => [
+        ...(s.choices.skills || []),
+        ...(s.choices.subSkills || []),
+        ...(s.choices.knowledgeSkills || []),
+        ...(s.choices.phantomTraining || []),
+      ])
+      .concat(fixedSkills),
+    experts = unique([
+      ...c.expertise,
+      ...states.flatMap((s) => [
+        ...(s.choices.expertise || []),
+        ...(s.choices.knowledgeSkills || []),
+      ]),
+    ]);
   const skills = base.skills.map((s) => {
     const trained = s.trained || addedSkills.includes(s.name),
       expert = experts.includes(s.name);
@@ -865,7 +1203,15 @@ export function applyAdvancement<
         s.value +
         (addedSkills.includes(s.name) && !s.trained ? prof : 0) +
         (expert && !s.expert ? prof : 0) +
-        (!trained && level('Bardo') >= 2 ? Math.floor(prof / 2) : 0),
+        (!trained && level('Bardo') >= 2 ? Math.floor(prof / 2) : 0) +
+        (state('Patrulheiro')?.subclass === 'fey-wanderer' &&
+        [5].includes(common.skillAbilities[common.skills.indexOf(s.name)])
+          ? Math.max(1, modifier(character.stats[4]))
+          : 0) +
+        (state('Mago')?.subclass === 'enchanter' &&
+        state('Mago')?.choices.subSkills?.includes(s.name)
+          ? Math.max(1, modifier(character.stats[3]))
+          : 0),
     };
   });
   const monk = state('Monge'),
@@ -877,6 +1223,10 @@ export function applyAdvancement<
   if (barb) unarmoredOptions.push(10 + modifier(character.stats[1]) + con);
   if (sorc?.subclass === 'draconic')
     unarmoredOptions.push(10 + modifier(character.stats[1]) + modifier(character.stats[5]));
+  if (state('Bardo')?.subclass === 'dance' && !base.equipment.some((e) => /Escudo/.test(e)))
+    unarmoredOptions.push(10 + modifier(character.stats[1]) + modifier(character.stats[5]));
+  if (state('Paladino')?.subclass === 'noble-genies')
+    unarmoredOptions.push(10 + modifier(character.stats[1]) + modifier(character.stats[5]));
   const unarmored = Math.max(...unarmoredOptions);
   const armored = base.equipment.some((e) =>
       ['Cota de malha', 'Camisão de malha', 'Couro', 'Couro batido'].includes(e),
@@ -885,7 +1235,8 @@ export function applyAdvancement<
   const speed =
     base.speed +
     (level('Bárbaro') >= 5 && !base.equipment.includes('Cota de malha') ? 3 : 0) +
-    (monk && !armored && !shield ? classProfile('Monge', monk.level).resources[2] * 0.3 : 0);
+    (monk && !armored && !shield ? classProfile('Monge', monk.level).resources[2] * 0.3 : 0) +
+    (level('Patrulheiro') >= 6 && !base.equipment.includes('Cota de malha') ? 3 : 0);
   const saves = base.saves.map((v, i) =>
     level('Monge') >= 14
       ? modifier(character.stats[i]) + prof
@@ -893,7 +1244,26 @@ export function applyAdvancement<
         ? modifier(character.stats[i]) + prof
         : v,
   );
+  const extraSaves = states.flatMap((s) => [
+    ...(s.choices.subSave || []).map((v) => statNames.indexOf(v)),
+    ...(s.class === 'Clérigo' &&
+    s.subclass === 'knowledge' &&
+    s.level >= 6 &&
+    !s.choices.subSave?.length
+      ? [3]
+      : []),
+    ...(s.class === 'Patrulheiro' &&
+    s.subclass === 'gloom-stalker' &&
+    s.level >= 7 &&
+    !s.choices.subSave?.length
+      ? [4]
+      : []),
+  ]);
+  for (const i of extraSaves) saves[i] = modifier(character.stats[i]) + prof;
+  if (state('Patrulheiro')?.subclass === 'hollow-warden' && level('Patrulheiro') >= 7)
+    saves[2] += Math.max(1, modifier(character.stats[4]));
   const secondary: Record<string, string[]> = {
+    Artífice: ['Armaduras leves, médias e escudos', 'Ferramentas de funileiro'],
     Bárbaro: ['Armas marciais', 'Escudos'],
     Bardo: ['Armaduras leves'],
     Bruxo: ['Armaduras leves'],
@@ -910,6 +1280,24 @@ export function applyAdvancement<
   const proficiencies = unique([
     ...base.proficiencies,
     ...states.slice(1).flatMap((s) => secondary[s.class] || []),
+    ...states.flatMap((s) => [
+      ...(subclassToolGrants[s.class + '/' + s.subclass] || []),
+      ...(s.choices.subTools || []),
+      ...(s.choices.phantomTraining || []).filter((v) => !common.skills.includes(v)),
+    ]),
+    ...states.flatMap((s) =>
+      s.subclass === 'valor'
+        ? ['Armas marciais', 'Armaduras médias e escudos']
+        : s.subclass === 'battle-smith'
+          ? ['Armas marciais']
+          : s.subclass === 'artillerist'
+            ? ['Armas marciais à distância']
+            : s.subclass === 'armorer'
+              ? ['Armaduras pesadas']
+              : s.subclass === 'bladesinger'
+                ? ['Armas marciais corpo a corpo sem Pesada ou Duas Mãos']
+                : [],
+    ),
     ...states.flatMap((s) => s.choices.instrument || []),
     ...states.flatMap((s) =>
       s.choices.order?.includes('Protetor')
@@ -922,6 +1310,10 @@ export function applyAdvancement<
   const attacksPerAction = Math.max(
     1,
     level('Guerreiro') >= 20 ? 4 : level('Guerreiro') >= 11 ? 3 : 0,
+    ...states.map((s) => {
+      const required = subclassRules[s.class]?.find((v) => v.id === s.subclass)?.extraAttack;
+      return required && s.level >= required ? 2 : 1;
+    }),
     ...['Guerreiro', 'Bárbaro', 'Monge', 'Paladino', 'Patrulheiro'].map((cls) =>
       level(cls) >= 5 ? 2 : 1,
     ),
@@ -945,7 +1337,7 @@ export function applyAdvancement<
     languages: unique([
       ...base.languages,
       ...states.flatMap((s) => s.choices.languages || []),
-      ...(level('Druida') ? ['Druídico'] : []),
+      ...(level('Druida') || state('Bardo')?.subclass === 'moon' ? ['Druídico'] : []),
       ...(level('Ladino') ? ['Gíria dos ladrões'] : []),
     ]),
     classLevels: states,
@@ -954,8 +1346,36 @@ export function applyAdvancement<
     hitDiceByType,
     pendingLevels: pending,
     attacksPerAction,
-    martialDie: monk && !armored && !shield ? classProfile('Monge', monk.level).resources[0] : 0,
+    martialDie:
+      monk && !armored && !shield ? classProfile('Monge', monk.level).resources[0] : 0,
   };
+  for (const s of states) {
+    const sub = subclassRules[s.class]?.find((v) => v.id === s.subclass);
+    const innate = (sub?.innate || []).filter((v) => v.level <= s.level);
+    if (!magics.some((m) => m.class === s.class)) {
+      const selected = alwaysPrepared(s.class, s.level, s.subclass, s.choices);
+      if (selected.length)
+        innate.push({
+          level: 3,
+          spells: selected,
+          ability: s.subclass === 'scion-of-three' ? 'int' : null,
+        });
+    }
+    for (const grant of innate) {
+      const abilityIndex =
+        ({ str: 0, dex: 1, con: 2, int: 3, wis: 4, cha: 5 } as Record<string, number>)[
+          grant.ability || ''
+        ] ??
+        (s.class === 'Bárbaro' && s.subclass === 'wild-heart' ? 4 : (ability[s.class] ?? 3));
+      result.spellGrants.push({
+        source: sub?.name || s.class,
+        ability: abilityIndex,
+        cantrips: grant.spells.filter((id) => spells.find((v) => v.id === id)?.level === 0),
+        spells: grant.spells.filter((id) => spells.find((v) => v.id === id)?.level !== 0),
+        note: 'Disponibilidade, custos e usos conforme a característica da subclasse; não acrescenta espaços de magia.',
+      });
+    }
+  }
   if (levels.length) {
     result.featureGroups = groups;
     result.features = [...groups.race, ...groups.class, ...groups.feats];

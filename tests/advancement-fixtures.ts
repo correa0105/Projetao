@@ -12,13 +12,15 @@ export function legalAdvance(
   character: AdvancementCharacter,
   choices: SheetChoices,
   cls = character.class,
+  subclass?: string,
 ): AdvanceChoice {
   const next = defaultAdvanceChoice(cls);
   let plan = levelPlan(character, choices, next);
-  if (plan.subclassRequired) next.subclass = plan.subclasses[0].id;
+  if (plan.subclassRequired) next.subclass = subclass || plan.subclasses[0].id;
   for (let pass = 0; pass < 3; pass++) {
     plan = levelPlan(character, choices, next);
-    for (const field of plan.fields) next.choices[field.key] = field.options.slice(0, field.count);
+    for (const field of plan.fields)
+      next.choices[field.key] = field.options.slice(0, field.count);
   }
   plan = levelPlan(character, choices, next);
   next.newCantrips = plan.cantripOptions
