@@ -123,7 +123,7 @@ try {
   );
   expect(
     await page.locator('.main-shell').evaluate((el) => getComputedStyle(el).backgroundImage),
-  ).toContain('character-library-v1.png');
+  ).toContain('character-library-v2-20261012.webp');
   await mkdir('test-results', { recursive: true });
   await page.screenshot({ path: 'test-results/sheet-desktop.png', fullPage: true });
   const skillHelp = page.getByRole('button', { name: 'Informações sobre Perícias', exact: true });

@@ -26,7 +26,7 @@ import { PaperPicker } from './NoticePaper';
 import type { PaperStyle } from '../shared/notice-board';
 import type { AtlasData, AtlasLocation, Character, Post } from './types';
 import { SheetChoices } from './SheetChoices';
-import { defaultChoices, validateChoices } from '../shared/character-sheet';
+import { defaultChoices, reconcileChoices, validateChoices } from '../shared/character-sheet';
 import { ReferenceInput } from './CharacterCamp';
 import { MissionTagPicker } from './MissionTagPicker';
 import type { ArtState } from '../shared/character-art';
@@ -59,11 +59,15 @@ export function Modal({
   close,
   children,
   parchment = false,
+  dismissOnBackdrop = true,
+  dismissOnEscape = true,
 }: {
   title: string;
   close: () => void;
   children: ReactNode;
   parchment?: boolean;
+  dismissOnBackdrop?: boolean;
+  dismissOnEscape?: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -75,10 +79,10 @@ export function Modal({
       ref={ref}
       onCancel={(event) => {
         event.preventDefault();
-        close();
+        if (dismissOnEscape) close();
       }}
       onClick={(event) => {
-        if (event.target === event.currentTarget) close();
+        if (dismissOnBackdrop && event.target === event.currentTarget) close();
       }}
       aria-labelledby="dialog-title"
     >
@@ -144,7 +148,10 @@ export function Login() {
         password: String(form.get('password')),
       };
       const result = register
-        ? await authClient.signUp.email({ ...credentials, name: String(form.get('name')).trim() })
+        ? await authClient.signUp.email({
+            ...credentials,
+            name: String(form.get('name')).trim(),
+          })
         : await authClient.signIn.email(credentials);
       if (result.error)
         setError(
@@ -313,12 +320,33 @@ export function Login() {
 }
 export function CharacterForm({ done }: { done: () => Promise<void> }) {
   const [reference, setReference] = useState('');
-  const [available, setAvailable] = useState(false);
+  const [available, setAvailable] = useState<boolean | null>(null);
+  const [availabilityError, setAvailabilityError] = useState('');
   const requestKey = useRef(crypto.randomUUID());
   useEffect(() => {
-    void api<ArtState>('/character-art')
-      .then((state) => setAvailable(state.available))
-      .catch(() => {});
+    let alive = true;
+    const update = async () => {
+      try {
+        const state = await api<ArtState>('/character-art');
+        if (alive) {
+          setAvailable(state.available);
+          setAvailabilityError('');
+        }
+      } catch {
+        if (alive) {
+          setAvailable(null);
+          setAvailabilityError('Não foi possível consultar o ilustrador. Tentando novamente…');
+        }
+      }
+    };
+    void update();
+    const timer = setInterval(() => void update(), 4000);
+    window.addEventListener('focus', update);
+    return () => {
+      alive = false;
+      clearInterval(timer);
+      window.removeEventListener('focus', update);
+    };
   }, []);
   const [race, setRace] = useState<string>('Humano');
   const [cls, setCls] = useState<string>('Guerreiro');
@@ -359,9 +387,18 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
         Até dois personagens por conta. Sua imagem de corpo inteiro é obrigatória; o personagem
         chega ao acampamento quando ela estiver pronta.
       </p>
-      {!available && (
-        <FlashMessage>O ilustrador está offline. Volte quando ele estiver disponível.</FlashMessage>
-      )}
+      <p
+        className="muted small"
+        role="status"
+        data-illustrator-status={available === null ? 'checking' : available ? 'online' : 'offline'}
+      >
+        {availabilityError ||
+          (available === null
+            ? 'Consultando o ilustrador…'
+            : available
+              ? 'Ilustrador disponível.'
+              : 'Ilustrador offline. A disponibilidade será atualizada automaticamente.')}
+      </p>
       <label>
         Nome do personagem
         <input
@@ -381,7 +418,7 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
             value={race}
             onChange={(e) => {
               setRace(e.target.value);
-              setChoices(defaultChoices(e.target.value, cls));
+              setChoices((current) => reconcileChoices(e.target.value, cls, current));
             }}
           >
             {races.map((race) => (
@@ -397,7 +434,7 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
             value={cls}
             onChange={(e) => {
               setCls(e.target.value);
-              setChoices(defaultChoices(race, e.target.value));
+              setChoices((current) => reconcileChoices(race, e.target.value, current));
             }}
           >
             {classes.map((item) => (

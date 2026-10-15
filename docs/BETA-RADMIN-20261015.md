@@ -23,3 +23,13 @@ Se houver um override de release local, inclua-o antes de `compose.beta-radmin.y
 O script `scripts/setup-beta-accounts.ts` cria exatamente oito contas com credenciais independentes e gera um arquivo privado. Execute somente contra o PostgreSQL local depois de aplicar a migration 096. A execução registra progresso e não troca senhas de contas já existentes. A reserva de ouro é protegida contra repetição.
 
 O backup da Área de Trabalho inclui fontes, artes, configurações locais e um dump PostgreSQL para conservar personagens, salas e pintura. Dependências e saídas de build podem ser reconstruídas pelos comandos do README. Senhas e dump não fazem parte do envio ao GitHub.
+
+## Ilustrador no beta (15/10/2026)
+
+A geração de personagens e companheiros está disponível para as oito contas provisórias, com as mesmas regras de titularidade e cotas normais. O indicador reflete o heartbeat real do serviço local; não depende de permissão administrativa. A sessão ChatGPT permanece somente no computador anfitrião.
+
+O serviço foi reativado após uma interrupção da conexão com PostgreSQL. No Windows, `scripts/keep-illustrator.ps1` supervisiona o processo, conserva um worker já ativo e reinicia o worker em até 20 segundos após ele encerrar. Um bloqueio exclusivo de arquivo evita supervisores duplicados; o lock do PostgreSQL continua impedindo dois workers. Logs e PIDs ficam em `.local/`. O supervisor não altera cotas, ouro nem pedidos da fila. Ao reiniciar, o worker mantém sua regra existente de marcar gerações interrompidas como falha sem cobrar a cota.
+
+Nesta instalação, o atalho **Alvorada - Ilustrador** na inicialização do usuário executa o supervisor em segundo plano ao entrar no Windows. O mesmo atalho foi colocado na pasta de acessos do beta, na Área de Trabalho. Para execução manual em outro Windows com Node e Codex instalados: `powershell -NoProfile -File scripts/keep-illustrator.ps1`. Mantenha o computador, Docker e Radmin ligados; o supervisor tenta novamente quando um serviço ainda estiver iniciando. Não inicia Docker nem disponibiliza o site com o computador desligado.
+
+O formulário distingue consulta em andamento, ilustrador offline e ilustrador online. Consulta novamente a cada quatro segundos e ao retornar à janela; uma resposta pendente não dispara aviso falso de offline e uma reativação é reconhecida sem fechar o formulário. QA do beta em PostgreSQL descartável verifica a espera, o estado offline real, a recuperação automática e oito contas em HTTP sem contexto seguro.

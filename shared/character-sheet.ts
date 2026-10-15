@@ -3,6 +3,7 @@ import { hitDice, modifier, statNames, races } from './rules.js';
 import base from './sheet-common.json';
 import spellData from './srd-2024-spells.json';
 import { applyAdvancement, type AdvancementState } from './character-advancement.js';
+import { additionalBackgrounds, type BackgroundRule } from './character-backgrounds.js';
 export const RULESET = 'SRD 5.2.1 · D&D 5.5e';
 export const { skills, skillAbilities, alignments } = base;
 export const languages = [
@@ -74,17 +75,7 @@ export const tools = [
   ...instruments,
 ];
 export const spells = spellData.spells;
-export const backgroundRules: Record<
-  string,
-  {
-    abilities: number[];
-    skills: string[];
-    tool: string;
-    feat: string;
-    gold: number;
-    gear: string[];
-  }
-> = {
+export const backgroundRules: Record<string, BackgroundRule> = {
   Acólito: {
     abilities: [3, 4, 5],
     skills: ['Intuição', 'Religião'],
@@ -142,7 +133,9 @@ export const backgroundRules: Record<
       'Roupas de viajante',
     ],
   },
+  ...additionalBackgrounds,
 };
+export const ORIGIN_RULES = 'alvorada-20261015' as const;
 export const originFeats = [
   'Alerta',
   'Atacante Selvagem',
@@ -150,6 +143,12 @@ export const originFeats = [
   'Iniciado em Magia: Clérigo',
   'Iniciado em Magia: Druida',
   'Iniciado em Magia: Mago',
+  'Artífice',
+  'Brigão de Taverna',
+  'Curandeiro',
+  'Músico',
+  'Robusto',
+  'Sortudo',
 ];
 type RaceRule = { speed: number; size: string; traits: string[]; variants: string[] };
 export const raceRules: Record<string, RaceRule> = {
@@ -505,10 +504,11 @@ export function trainedWeapon(cls: string, w: string, c?: SheetChoices) {
 export type ChoiceField = { key: string; label: string; count: number; options: string[] };
 export const choicesSchema = z.object({
   version: z.literal(2),
+  originRules: z.literal(ORIGIN_RULES).optional(),
   species: z.enum(races),
   subrace: z.string().max(40),
   alignment: z.enum(alignments as [string, ...string[]]),
-  backgroundType: z.enum(['Acólito', 'Criminoso', 'Sábio', 'Soldado']),
+  backgroundType: z.enum(Object.keys(backgroundRules) as [string, ...string[]]),
   backgroundSkills: z.array(z.string()).length(2),
   backgroundExtras: z.array(z.string()).length(2),
   abilityBoosts: z.array(z.number().int().min(0).max(2)).length(6),
@@ -529,12 +529,36 @@ export const choicesSchema = z.object({
 });
 export type SheetChoices = z.infer<typeof choicesSchema> & { advancement?: AdvancementState };
 export function feats(c: SheetChoices) {
-  return [backgroundRules[c.backgroundType].feat, ...(c.options.humanFeat || [])];
+  const background = backgroundRules[c.backgroundType].feat;
+  return [
+    c.originRules && background.startsWith('Iniciado em Magia: ')
+      ? 'Iniciado em Magia: ' + (c.options.featClass0?.[0] || background.split(': ')[1])
+      : background,
+    ...(c.options.humanFeat || []),
+  ];
+}
+export function backgroundTool(c: SheetChoices) {
+  const tool = backgroundRules[c.backgroundType].tool;
+  return tool === 'Jogo escolhido'
+    ? c.options.game?.[0] || tool
+    : ['Ferramenta de artesão escolhida', 'Instrumento escolhido'].includes(tool)
+      ? c.options.backgroundTool?.[0] || tool
+      : tool;
 }
 export function choiceFields(race: string, cls: string, c?: SheetChoices): ChoiceField[] {
   const result: ChoiceField[] = [];
   const add = (key: string, label: string, count: number, options: string[]) =>
     result.push({ key, label, count, options });
+  const background = backgroundRules[c?.backgroundType || 'Acólito'];
+  if (c?.originRules && background.feat.startsWith('Iniciado em Magia: '))
+    add('featClass0', 'Classe de Iniciado em Magia do antecedente', 1, [
+      background.feat.split(': ')[1],
+      ...['Clérigo', 'Druida', 'Mago'].filter((v) => v !== background.feat.split(': ')[1]),
+    ]);
+  if (background.tool === 'Ferramenta de artesão escolhida')
+    add('backgroundTool', 'Ferramenta do antecedente', 1, artisanTools);
+  if (background.tool === 'Instrumento escolhido')
+    add('backgroundTool', 'Instrumento do antecedente', 1, instruments);
   if (['Humano', 'Tiefling'].includes(race)) add('size', 'Tamanho', 1, ['Médio', 'Pequeno']);
   if (race === 'Humano') {
     add('racialSkills', 'Perícia humana', 1, skills);
@@ -542,9 +566,7 @@ export function choiceFields(race: string, cls: string, c?: SheetChoices): Choic
       'humanFeat',
       'Talento de origem humano',
       1,
-      originFeats.filter(
-        (f) => f === 'Habilidoso' || f !== backgroundRules[c?.backgroundType || 'Acólito'].feat,
-      ),
+      originFeats.filter((f) => f === 'Habilidoso' || f !== (c ? feats(c)[0] : background.feat)),
     );
   }
   if (race === 'Elfo')
@@ -560,7 +582,12 @@ export function choiceFields(race: string, cls: string, c?: SheetChoices): Choic
     );
   if (race === 'Draconato') add('dragon', 'Ancestralidade dracônica', 1, Object.keys(dragons));
   if (cls === 'Bardo') {
-    add('instruments', 'Instrumentos musicais', 3, instruments);
+    add(
+      'instruments',
+      'Instrumentos musicais',
+      3,
+      instruments.filter((v) => !c || v !== backgroundTool(c)),
+    );
     add('instrument', 'Instrumento inicial', 1, instruments);
   }
   if (cls === 'Monge')
@@ -601,7 +628,7 @@ export function choiceFields(race: string, cls: string, c?: SheetChoices): Choic
         (w) => trainedWeapon(cls, w, c) && (cls !== 'Bárbaro' || !weaponData[w].ranged),
       ),
     );
-  if (c?.backgroundType === 'Soldado')
+  if (background.tool === 'Jogo escolhido' || background.gear.includes('Jogo escolhido'))
     add('game', 'Jogo do antecedente', 1, [
       'Dados de jogo',
       'Baralho',
@@ -638,14 +665,58 @@ export function choiceFields(race: string, cls: string, c?: SheetChoices): Choic
   if (c)
     for (const [index, feat] of feats(c).entries()) {
       if (feat === 'Habilidoso')
-        add('skilled' + index, 'Proficiências de Habilidoso', 3, [
-          ...skills,
-          ...tools,
-          ...instruments,
-        ]);
+        add(
+          'skilled' + index,
+          'Proficiências de Habilidoso',
+          3,
+          [...new Set([...skills, ...tools])].filter(
+            (v) =>
+              ![
+                ...c.backgroundSkills,
+                ...racialSkills(race, c),
+                ...c.classSkills,
+                backgroundTool(c),
+                ...(cls === 'Druida' ? ['Kit de herbalismo'] : []),
+                ...(cls === 'Ladino' ? ['Ferramentas de ladrão'] : []),
+                ...(c.options.instruments || []),
+                ...(c.options.monkTool || []),
+                ...Object.entries(c.options)
+                  .filter(
+                    ([key]) =>
+                      /^(crafter|musician)\d+$/.test(key) ||
+                      (key.startsWith('skilled') && Number(key.slice(7)) < index),
+                  )
+                  .flatMap(([, values]) => values),
+              ].includes(v),
+          ),
+        );
+      if (feat === 'Artífice')
+        add(
+          'crafter' + index,
+          'Ferramentas de Artífice',
+          3,
+          artisanTools.filter((v) => v !== backgroundTool(c) && !c.options.monkTool?.includes(v)),
+        );
+      if (feat === 'Músico')
+        add(
+          'musician' + index,
+          'Instrumentos de Músico',
+          3,
+          instruments.filter(
+            (v) =>
+              v !== backgroundTool(c) &&
+              !c.options.instruments?.includes(v) &&
+              !c.options.monkTool?.includes(v),
+          ),
+        );
       if (feat.startsWith('Iniciado em Magia: ')) {
         const cl = feat.split(': ')[1];
-        add('featAbility' + index, 'Atributo de ' + feat, 1, statNames.slice(3));
+        add(
+          'featAbility' + index,
+          'Atributo de ' + feat,
+          1,
+          c.originRules ? [cl === 'Mago' ? 'Inteligência' : 'Sabedoria'] : statNames.slice(3),
+        );
         add(
           'featCantrips' + index,
           'Truques de ' + feat,
@@ -812,7 +883,13 @@ export function startingEquipment(cls: string, c: SheetChoices) {
     ...(c.equipment.background?.[0] === '50 PO'
       ? []
       : [
-          ...backgroundRules[c.backgroundType].gear,
+          ...backgroundRules[c.backgroundType].gear.map((v) =>
+            v === 'Jogo escolhido'
+              ? c.options.game?.[0] || v
+              : ['Ferramenta de artesão escolhida', 'Instrumento escolhido'].includes(v)
+                ? backgroundTool(c)
+                : v,
+          ),
           ...(c.backgroundType === 'Soldado' ? c.options.game || [] : []),
         ]),
   ];
@@ -857,6 +934,7 @@ export function defaultChoices(race: string, cls: string, background = 'Acólito
     b = backgroundRules[background];
   let c: SheetChoices = {
     version: 2,
+    originRules: ORIGIN_RULES,
     species: species as SheetChoices['species'],
     subrace: raceRules[species].variants[0],
     alignment: 'Neutro',
@@ -895,15 +973,99 @@ export function defaultChoices(race: string, cls: string, background = 'Acólito
             .options.find((x) => !b.skills.includes(x))!
         : s,
     );
-  if (c.options.skilled1)
-    c.options.skilled1 = skills
-      .filter((s) => !b.skills.includes(s) && !racialSkills(species, c).includes(s))
-      .slice(0, 3);
+  const taken = new Set([
+    ...b.skills,
+    ...racialSkills(species, c),
+    backgroundTool(c),
+    ...(cls === 'Druida' ? ['Kit de herbalismo'] : []),
+    ...(cls === 'Ladino' ? ['Ferramentas de ladrão'] : []),
+    ...(c.options.instruments || []),
+    ...(c.options.monkTool || []),
+  ]);
+  for (const key of Object.keys(c.options).filter((key) => key.startsWith('skilled'))) {
+    c.options[key] = [...skills, ...tools].filter((s) => !taken.has(s)).slice(0, 3);
+    c.options[key].forEach((s) => taken.add(s));
+  }
   c.classSkills = classRules[cls].skills
     .filter((s) => !proficientSkills(species, c).includes(s))
     .slice(0, classRules[cls].count);
   if (cls === 'Ladino') c.expertise = proficientSkills(species, c).slice(0, 2);
   return c;
+}
+export function reconcileChoices(
+  race: string,
+  cls: string,
+  current: SheetChoices,
+  background = current.backgroundType,
+): SheetChoices {
+  const defaults = defaultChoices(race, cls, background),
+    b = backgroundRules[background],
+    k = classRules[cls];
+  const retain = (selected: string[], allowed: string[], count: number) =>
+    [...new Set([...selected.filter((v) => allowed.includes(v)), ...allowed])].slice(0, count);
+  let c = normalizeOptions(race, cls, {
+    ...defaults,
+    ...current,
+    species: defaults.species,
+    subrace: raceRules[race].variants.includes(current.subrace)
+      ? current.subrace
+      : defaults.subrace,
+    backgroundType: background,
+    backgroundSkills: [...b.skills],
+    abilityBoosts: current.abilityBoosts.every((v, i) => !v || b.abilities.includes(i))
+      ? [...current.abilityBoosts]
+      : defaults.abilityBoosts,
+    options: { ...defaults.options, ...current.options },
+    equipment: Object.fromEntries(
+      equipmentFields(cls).map((f) => [
+        f.key,
+        retain(current.equipment[f.key] || [], f.options, f.count),
+      ]),
+    ),
+    cantrips: retain(
+      current.cantrips,
+      spellOptions(cls, 0).map((s) => s.id),
+      k.cantrips,
+    ),
+    spells: retain(
+      current.spells,
+      spellOptions(cls, 1).map((s) => s.id),
+      k.known,
+    ),
+    classSkills: [],
+    expertise: [],
+  });
+  const racial = choiceFields(race, cls, c).find((f) => f.key === 'racialSkills');
+  if (racial)
+    c.options.racialSkills = retain(
+      c.options.racialSkills || [],
+      racial.options.filter((v) => !b.skills.includes(v)),
+      racial.count,
+    );
+  const taken = new Set([
+    ...b.skills,
+    ...racialSkills(race, c),
+    backgroundTool(c),
+    ...(cls === 'Druida' ? ['Kit de herbalismo'] : []),
+    ...(cls === 'Ladino' ? ['Ferramentas de ladrão'] : []),
+    ...(c.options.instruments || []),
+    ...(c.options.monkTool || []),
+  ]);
+  for (const f of choiceFields(race, cls, c).filter((f) => f.key.startsWith('skilled'))) {
+    c.options[f.key] = retain(
+      c.options[f.key] || [],
+      f.options.filter((v) => !taken.has(v)),
+      f.count,
+    );
+    c.options[f.key].forEach((v) => taken.add(v));
+  }
+  c.classSkills = retain(
+    current.classSkills,
+    k.skills.filter((v) => !taken.has(v)),
+    k.count,
+  );
+  c.expertise = retain(current.expertise, proficientSkills(race, c), cls === 'Ladino' ? 2 : 0);
+  return normalizeOptions(race, cls, c);
 }
 export function validateChoices(race: string, cls: string, input: unknown): SheetChoices {
   const c = choicesSchema.parse(input),
@@ -956,7 +1118,7 @@ export function validateChoices(race: string, cls: string, input: unknown): Shee
         [
           ...racial,
           ...c.backgroundSkills,
-          b.tool,
+          backgroundTool(c),
           ...(cls === 'Druida' ? ['Kit de herbalismo'] : []),
           ...(cls === 'Ladino' ? ['Ferramentas de ladrão'] : []),
           ...(c.options.instruments || []),
@@ -1129,7 +1291,7 @@ function deriveOriginSheet(
   const featureGroups = {
     background: [
       'Perícias: ' + c.backgroundSkills.join(', ') + '.',
-      'Ferramenta: ' + backgroundRules[c.backgroundType].tool + '.',
+      'Ferramenta: ' + backgroundTool(c) + '.',
       'Idiomas escolhidos: ' + c.backgroundExtras.join(', ') + '.',
     ],
     class: [...k.features],
@@ -1151,6 +1313,21 @@ function deriveOriginSheet(
       'feats',
       'Atacante Selvagem: uma vez por turno ao acertar com arma, role os dados de dano da arma duas vezes e escolha um resultado.',
     );
+  const originDescriptions: Record<string, string> = {
+    Artífice:
+      'Artífice: proficiência em três ferramentas de artesão; desconto de 20% em itens não mágicos e fabricação rápida resolvidos na mesa.',
+    Curandeiro:
+      'Curandeiro: com um kit, uma criatura pode gastar um Dado de Vida para recuperar o resultado mais sua proficiência. Pode repetir resultados 1 de cura deste talento ou de magias, usando o novo resultado.',
+    Sortudo:
+      'Sortudo: pontos de sorte iguais à proficiência por descanso longo; gaste um para obter vantagem em um teste de d20 ou impor desvantagem a um ataque contra você.',
+    Músico:
+      'Músico: proficiência em três instrumentos. Ao terminar descanso curto ou longo, sua música pode conceder Inspiração Heroica a aliados que a escutem, até sua proficiência.',
+    Robusto: 'Robusto: máximo de pontos de vida aumentado em 2 por nível.',
+    'Brigão de Taverna':
+      'Brigão de Taverna: dano desarmado 1d4 + Força; pode repetir um resultado 1 do dado. Proficiência em armas improvisadas; uma vez por turno, pode empurrar 1,5 m ao causar dano com ataque desarmado na ação Atacar.',
+  };
+  for (const feat of feats(c))
+    if (originDescriptions[feat]) addFeature('feats', originDescriptions[feat]);
   if (race === 'Elfo')
     addFeature('race', 'Visão no escuro: ' + (c.subrace === 'Drow' ? 36 : 18) + ' m.');
   if (race === 'Gnomo' && c.subrace === 'Gnomo das rochas')
@@ -1265,10 +1442,14 @@ function deriveOriginSheet(
     featureGroups,
     proficiencies: [
       ...k.proficiencies,
-      backgroundRules[c.backgroundType].tool,
+      backgroundTool(c),
       ...(c.options.game || []),
       ...(c.options.instruments || []),
       ...(c.options.monkTool || []),
+      ...Object.entries(c.options)
+        .filter(([key]) => /^(crafter|musician)\d+$/.test(key))
+        .flatMap(([, v]) => v),
+      ...(feats(c).includes('Brigão de Taverna') ? ['Armas improvisadas'] : []),
       ...(cls === 'Ladino'
         ? ['Ferramentas de ladrão']
         : cls === 'Druida'
@@ -1306,7 +1487,9 @@ export function deriveSheet(
   character: { race: string; class: string; stats: number[]; level: number },
   c: SheetChoices,
 ) {
-  return applyAdvancement(character, c, deriveOriginSheet(character, c));
+  const sheet = applyAdvancement(character, c, deriveOriginSheet(character, c));
+  if (feats(c).includes('Robusto')) sheet.hp += 2 * character.level;
+  return sheet;
 }
 export type SheetRecord = {
   choices: SheetChoices | null;

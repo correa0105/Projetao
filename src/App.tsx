@@ -746,7 +746,13 @@ function Portal({ user }: { user: User }) {
       <Navigation page={page} go={go} />
       {toast && <FlashMessage kind="info">{toast}</FlashMessage>}
       {modal === 'character' && (
-        <Modal title="Uma nova história" parchment close={() => setModal(null)}>
+        <Modal
+          title="Uma nova história"
+          parchment
+          dismissOnBackdrop={false}
+          dismissOnEscape={false}
+          close={() => setModal(null)}
+        >
           <CharacterForm
             done={async () => {
               await refresh();

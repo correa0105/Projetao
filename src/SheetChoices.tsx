@@ -11,7 +11,8 @@ import {
   racialSkills,
   proficientSkills,
   backgroundRules,
-  defaultChoices,
+  reconcileChoices,
+  backgroundTool,
   normalizeOptions,
   startingEquipment,
   startingGold,
@@ -98,7 +99,7 @@ export function SheetChoices({
     const match = /^feat(?:Ability|Cantrips|Spell)(\d+)$/.exec(key);
     if (!match) return undefined;
     const index = Number(match[1]);
-    return `${feats(c)[index]} — origem: ${index === 0 ? `antecedente ${c.backgroundType}` : 'talento adicional de Humano'}. Concede 2 truques e 1 magia de nível 1 sempre preparada, sem mudar sua classe. Escolha Inteligência, Sabedoria ou Carisma para essas magias. A magia de nível 1 pode ser usada uma vez sem espaço por descanso longo; também pode usar espaços, se você os tiver.${cls === 'Bárbaro' ? ' Durante a Fúria, você não pode conjurar magias nem manter concentração.' : ''}`;
+    return `${feats(c)[index]} — origem: ${index === 0 ? `antecedente ${c.backgroundType}` : 'talento adicional de Humano'}. Concede 2 truques e 1 magia de nível 1 sempre preparada, sem mudar sua classe. ${c.originRules ? 'Regra da mesa: o atributo é automático, conforme a classe do talento (Sabedoria para Clérigo/Druida e Inteligência para Mago).' : 'Escolha Inteligência, Sabedoria ou Carisma para essas magias.'} A magia de nível 1 pode ser usada uma vez sem espaço por descanso longo; também pode usar espaços, se você os tiver.${cls === 'Bárbaro' ? ' Durante a Fúria, você não pode conjurar magias nem manter concentração.' : ''}`;
   };
   return (
     <div className="sheet-creation stack">
@@ -113,7 +114,11 @@ export function SheetChoices({
         </label>
         <label>
           Alinhamento
-          <select value={c.alignment} onChange={(e) => update({ alignment: e.target.value })}>
+          <select
+            aria-label="Alinhamento"
+            value={c.alignment}
+            onChange={(e) => update({ alignment: e.target.value })}
+          >
             {alignments.map((v) => (
               <option key={v}>{v}</option>
             ))}
@@ -125,26 +130,13 @@ export function SheetChoices({
           Antecedente
           <SheetHelp label="Antecedente">
             O antecedente concede bônus de atributos, duas perícias, uma ferramenta e um talento de
-            origem. Opções do SRD 5.2.1.
+            origem. Inclui os 16 antecedentes básicos de 2024.
           </SheetHelp>
           <select
             aria-label="Antecedente"
             value={c.backgroundType}
             onChange={(e) => {
-              const next = defaultChoices(race, cls, e.target.value);
-              onChange({
-                ...c,
-                ...next,
-                alignment: c.alignment,
-                personality: c.personality,
-                ideals: c.ideals,
-                bonds: c.bonds,
-                flaws: c.flaws,
-                appearance: c.appearance,
-                age: c.age,
-                height: c.height,
-                weight: c.weight,
-              });
+              onChange(reconcileChoices(race, cls, c, e.target.value));
             }}
           >
             {Object.keys(backgroundRules).map((v) => (
@@ -154,12 +146,12 @@ export function SheetChoices({
         </label>
         <div className="sheet-field-description">
           <p className="muted small">
-            {b.skills.join(' · ')} · {b.tool} · {b.feat}
+            {b.skills.join(' · ')} · {backgroundTool(c)} · {feats(c)[0]}
           </p>
           {b.feat.startsWith('Iniciado em Magia') && (
             <p className="muted small">
-              O antecedente {c.backgroundType} concede {b.feat}: 2 truques e 1 magia de nível 1,
-              mesmo para {cls}. Essas escolhas vêm do antecedente e são adicionais às da classe.
+              O antecedente {c.backgroundType} concede {feats(c)[0]}: 2 truques e 1 magia de nível
+              1, mesmo para {cls}. Essas escolhas vêm do antecedente e são adicionais às da classe.
               {cls === 'Bárbaro' &&
                 ' Durante a Fúria, não é possível conjurar nem manter concentração.'}
             </p>
@@ -205,34 +197,45 @@ export function SheetChoices({
         options={languages.filter((v) => v !== 'Comum')}
         onChange={(v) => update({ backgroundExtras: v })}
       />
-      {choiceFields(race, cls, c).map((f) =>
-        f.count === 1 ? (
-          <label key={f.key}>
-            {f.label}
-            {spellFeatHelp(f.key) && <SheetHelp label={f.label}>{spellFeatHelp(f.key)}</SheetHelp>}
-            <select
-              value={c.options[f.key]?.[0] || ''}
-              onChange={(e) => update({ options: { ...c.options, [f.key]: [e.target.value] } })}
-            >
-              {f.options.map((v) => (
-                <option key={v} value={v}>
-                  {spells.find((s) => s.id === v)?.label || v}
-                </option>
-              ))}
-            </select>
-          </label>
-        ) : (
-          <ChoiceList
-            key={f.key}
-            label={f.label}
-            help={spellFeatHelp(f.key)}
-            count={f.count}
-            value={c.options[f.key] || []}
-            options={f.options}
-            onChange={(v) => onChange({ ...c, options: { ...c.options, [f.key]: v } })}
-          />
-        ),
+      {c.originRules && feats(c).some((f) => f.startsWith('Iniciado em Magia')) && (
+        <p className="muted small">
+          Regra da mesa: Iniciado em Magia usa automaticamente Sabedoria para Clérigo/Druida e
+          Inteligência para Mago.
+        </p>
       )}
+      {choiceFields(race, cls, c)
+        .filter((f) => !c.originRules || !f.key.startsWith('featAbility'))
+        .map((f) =>
+          f.count === 1 ? (
+            <label key={f.key}>
+              {f.label}
+              {spellFeatHelp(f.key) && (
+                <SheetHelp label={f.label}>{spellFeatHelp(f.key)}</SheetHelp>
+              )}
+              <select
+                aria-label={f.label}
+                value={c.options[f.key]?.[0] || ''}
+                onChange={(e) => update({ options: { ...c.options, [f.key]: [e.target.value] } })}
+              >
+                {f.options.map((v) => (
+                  <option key={v} value={v}>
+                    {spells.find((s) => s.id === v)?.label || v}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ) : (
+            <ChoiceList
+              key={f.key}
+              label={f.label}
+              help={spellFeatHelp(f.key)}
+              count={f.count}
+              value={c.options[f.key] || []}
+              options={f.options}
+              onChange={(v) => onChange({ ...c, options: { ...c.options, [f.key]: v } })}
+            />
+          ),
+        )}
       <ChoiceList
         label={'Perícias de ' + cls}
         count={k.count}
