@@ -5,8 +5,9 @@ import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {build} from 'esbuild';
 import {vttVisualSource} from '../shared/vtt-asset-visuals';
 import {natureAssets} from '../shared/vtt-nature-assets';
-import {houseAssets,houseWorld,houseDoorPoint} from '../shared/vtt-houses';
+import {houseAssets,houseWorld,houseDoorPoint,houseAsset} from '../shared/vtt-houses';
 import {newToken} from '../shared/vtt';
+import {createNatureToken} from '../shared/vtt-nature-placement';
 import {vttProtocolVersion} from '../shared/vtt-protocol';
 if(!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))throw Error('Disposable DB only');
 const origin='http://localhost:3074';process.env.APP_ORIGIN=process.env.BETTER_AUTH_URL=origin;
@@ -18,7 +19,7 @@ await new Promise<void>(r=>server.once('listening',r));
 const browser=await chromium.launch({channel:'msedge',headless:true}),ctx=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'}),player=await browser.newContext();
 await ctx.addInitScript(()=>{localStorage.setItem('alvorada-music-muted','true');localStorage.setItem('alvorada-effects-muted','true');});
 const page=await ctx.newPage(),errors:string[]=[],missing:string[]=[];page.on('pageerror',e=>errors.push(e.message));
-page.on('response',r=>{if(r.status()>=400&&/\/vtt\/((plants|houses|houses-empty|home-furniture|home-furniture-refined|house-parts|village-life|village-life-thumbs)-20261014|overhead-20261015|overhead-thumbs-20261015)\//.test(r.url()))missing.push(r.url());});
+page.on('response',r=>{if(r.status()>=400&&/\/vtt\/((plants|houses|houses-empty|home-furniture|home-furniture-refined|house-parts|village-life|village-life-thumbs)-20261014|overhead-20261015|overhead-thumbs-20261015|human-scale-20261015|human-scale-thumbs-20261015)\//.test(r.url()))missing.push(r.url());});
 const headers={Origin:origin,'X-Vtt-Schema-Version':String(vttProtocolVersion)};
 async function request(context:BrowserContext,path:string,method='GET',data?:unknown){const r=await context.request.fetch(origin+'/api'+path,{method,data,headers});return {status:r.status(),data:await r.json()};}
 async function api(context:BrowserContext,path:string,method='GET',data?:unknown){const r=await request(context,path,method,data);expect(r.status,JSON.stringify(r.data)).toBeLessThan(300);return r.data;}
@@ -38,6 +39,42 @@ try{
   await page.getByRole('button',{name:'Régua (R)',exact:true}).click();await page.keyboard.down('Space');const beforeSpace=await camera();await page.mouse.move(panBox.x+panBox.width*.4,panBox.y+panBox.height*.4);await page.mouse.down();await page.mouse.move(panBox.x+panBox.width*.4+50,panBox.y+panBox.height*.4,{steps:6});await page.mouse.up();await page.keyboard.up('Space');expect((await camera()).x).not.toBe(beforeSpace.x);
   const {rows:[created]}=await pool.query('SELECT id FROM vtt_rooms WHERE owner_id=$1',[owner.id]);const root='/vtt/rooms/'+created.id;
   const saved=()=>api(ctx,root);
+  // Prepared lights are configured at placement and retain their animation speed after saving.
+  await page.getByRole('button',{name:'Camadas',exact:true}).click();await page.getByRole('button',{name:'Iluminação e barreiras',exact:true}).click();
+  await page.getByRole('button',{name:'Fonte de luz',exact:true}).click();
+  await page.mouse.click(panBox.x+panBox.width*.35,panBox.y+panBox.height*.35);
+  await expect(page.getByRole('region',{name:'Presets de iluminação',exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'Salvar mesa',exact:true}).click();
+  await expect.poll(async()=>{const l=(await saved()).document.scenes[0].lights[0];return [l?.name,l?.bright,l?.dim,l?.animation,l?.effectSpeed];}).toEqual(['Tocha',20,20,'torch',1]);
+  await page.getByLabel('Preset de iluminação',{exact:true}).selectOption('campfire');
+  await page.getByRole('button',{name:'Aplicar à luz selecionada',exact:true}).click();
+  await page.getByLabel('Animação da luz',{exact:true}).selectOption('arcane');
+  await page.getByLabel('Velocidade do efeito de luz',{exact:true}).focus();await page.keyboard.press('End');
+  await page.getByRole('button',{name:'Salvar mesa',exact:true}).click();
+  await expect.poll(async()=>{const l=(await saved()).document.scenes[0].lights[0];return [l?.name,l?.bright,l?.dim,l?.animation,l?.effectSpeed];}).toEqual(['Fogueira',30,30,'arcane',3]);
+  await page.screenshot({path:'test-results/vtt-nature/lighting-presets.png',fullPage:true});
+
+  // Every additional material is selectable and persists as painted terrain.
+  await page.getByRole('button',{name:'Brush do mapa',exact:true}).click();
+  await expect(page.getByRole('button',{name:/^Textura: /})).toHaveCount(18);
+  expect(await page.locator('.vtt-terrain-textures button').evaluateAll(cards=>cards.every(c=>c.scrollWidth<=c.clientWidth+2))).toBe(true);
+  let terrainIndex=0;
+  for(const name of ['Terra batida','Lama','Cascalho','Folhas secas','Musgo','Grama seca','Paralelepípedos','Terracota','Mármore','Madeira escura']){
+    await page.getByRole('button',{name:'Textura: '+name,exact:true}).click();
+    const b=await screen({x:500+(terrainIndex%5)*130,y:650+Math.floor(terrainIndex/5)*160});terrainIndex++;await page.mouse.move(b.x,b.y);await page.mouse.down();await page.mouse.move(b.x+15,b.y+10,{steps:4});await page.mouse.up();
+  }
+  await expect.poll(async()=>new Set((await saved()).document.scenes[0].terrain.map((t:any)=>t.texture)).size).toBe(10);
+  const paintedRoom=await saved();paintedRoom.document.scenes[0].lighting=false;await api(ctx,root,'PUT',{revision:paintedRoom.revision,document:paintedRoom.document});
+  const failedTextures=new Set<string>();
+  await page.route('**/vtt/terrain-expansion-20261015/*.webp',async route=>{const url=route.request().url();if(!failedTextures.has(url)){failedTextures.add(url);await route.fulfill({status:503,body:'temporary interruption'});}else await route.continue();});
+  await page.reload();await expect(board).toBeVisible();
+  await expect.poll(async()=>{const p=await screen({x:760,y:655});return board.evaluate((el,p)=>{const b=el.getBoundingClientRect(),c=el as HTMLCanvasElement,d=c.getContext('2d')!.getImageData(Math.round((p.x-b.x)*c.width/b.width),Math.round((p.y-b.y)*c.height/b.height),1,1).data;return d[0]>80&&d[1]>60&&d[2]<d[0];},p);},{timeout:15000}).toBe(true);
+  expect(failedTextures.size).toBeGreaterThan(0);
+  await page.unroute('**/vtt/terrain-expansion-20261015/*.webp');
+  expect(new Set((await saved()).document.scenes[0].terrain.map((t:any)=>t.texture)).size).toBe(10);
+  await page.getByRole('button',{name:'Brush do mapa',exact:true}).click();
+  await page.screenshot({path:'test-results/vtt-nature/terrain-18.png',fullPage:true});
+  await page.keyboard.press('Escape');
   await page.getByRole('button',{name:'Biblioteca',exact:true}).click();await page.getByRole('button',{name:'Assets',exact:true}).click();
   await page.locator('.vtt-asset-collections button').filter({hasText:'Plantas'}).click();
   await expect(page.locator('.vtt-nature-card')).toHaveCount(25);
@@ -74,7 +111,7 @@ try{
   await page.locator('.vtt-nature-card').first().click();await page.getByRole('button',{name:'Interior',exact:true}).click();await expect(page.locator('.vtt-nature-detail>img')).toHaveAttribute('src',vttVisualSource(houseAssets[25].interior));
   await page.locator('.vtt-asset-collections button').filter({hasText:'Mobílias'}).click();await expect(page.locator('.vtt-nature-card')).toHaveCount(100);
   await page.getByLabel('Buscar na biblioteca',{exact:true}).fill('cama de solteiro');await expect(page.locator('.vtt-nature-card')).toHaveCount(1);await page.locator('.vtt-nature-card').click();await page.getByRole('button',{name:'Colocar no mapa',exact:true}).click();await page.getByRole('button',{name:'Salvar mesa',exact:true}).click();
-  const bed=natureAssets.find(a=>a.id==='furniture-011')!;await expect.poll(async()=>{const s=(await saved()).document.scenes[0],t=s.tokens.find((t:any)=>t.image===bed.image);return t?.height/s.grid.size;}).toBe(2);
+  const bed=natureAssets.find(a=>a.id==='furniture-011')!;await expect.poll(async()=>{const s=(await saved()).document.scenes[0],t=s.tokens.find((t:any)=>t.image===bed.image);return t?.height/s.grid.size;}).toBeCloseTo(bed.height);
   await page.getByLabel('Buscar na biblioteca',{exact:true}).fill('');await expect(page.locator('.vtt-nature-card')).toHaveCount(100);await expect(page.getByRole('button',{name:'Gravar tela',exact:true})).toHaveCount(0);
   // New collections use thumbnails; previews and saved tokens retain the complete art.
   for(const category of ['Jardinagem','Moradores','Mercadores','Animais','Comércios']){
@@ -106,6 +143,7 @@ try{
   await expect(page.locator('.vtt-nature-card')).toHaveCount(25);
   let room=await saved();await api(player,'/vtt/join','POST',{invite:room.invite,role:'player'});
   let scene=room.document.scenes[0],house=scene.tokens.find((t:any)=>t.image===houseAssets[0].image);
+  scene.tokens=scene.tokens.filter((t:any)=>!houseAsset(t)||t.id===house.id);
   scene.fog=scene.lighting=false;const actor=newToken(randomUUID(),scene);actor.controller=guest.id;actor.name='Visitante';actor.vision=0;
   Object.assign(actor,houseWorld({x:.03,y:.5},house));scene.tokens.push(actor);
   room=await api(ctx,root,'PUT',{revision:room.revision,document:room.document});
@@ -135,6 +173,44 @@ try{
   expect((await request(spectator,doorPath,'PATCH',{open:false})).status).toBe(403);await spectator.close();
   const resident=(await saved()).document.scenes[0].tokens.find((t:any)=>t.image.includes('/resident-'));expect((await request(player,root+'/tokens/'+resident.id,'PATCH',{x:resident.x+70,y:resident.y})).status).toBe(403);
   const forbidden=await request(player,root,'PUT',{revision:room.revision,document:room.document});expect(forbidden.status).toBe(403);
+  // GM-only scenery conversion retains the placed cart offset and persists without creature HUD.
+  await page.setViewportSize({width:1440,height:1000});
+  room=await saved();scene=room.document.scenes[0];scene.fog=scene.lighting=false;scene.terrain=[];
+  const horse=createNatureToken(randomUUID(),'animal-002',scene,{x:500,y:500})!;horse.controller=guest.id;
+  const wagon=createNatureToken(randomUUID(),'merchant-012',scene,{x:710,y:500})!;wagon.name='Carroça vinculada';wagon.controller=guest.id;wagon.rotation=90;
+  const loose=createNatureToken(randomUUID(),'merchant-012',scene,{x:710,y:770})!;loose.name='Outra carroça';
+  const cartStart={x:wagon.x,y:wagon.y},horseStart={x:horse.x,y:horse.y,rotation:horse.rotation};
+  const relativeRadius=Math.hypot(wagon.x-horse.x,wagon.y-horse.y);
+  scene.tokens=[horse,wagon,loose];scene.walls=[];
+  room=await api(ctx,root,'PUT',{revision:room.revision,document:room.document});
+  expect((await request(player,root+'/tokens/'+wagon.id+'/attachment','POST',{tokenId:horse.id})).status).toBe(403);
+  await page.reload();await expect(board).toBeVisible();
+  // Context menu can reach map scenery with the normal right-click workflow.
+  let cartPoint=await screen(wagon);await page.mouse.click(cartPoint.x,cartPoint.y,{button:'right'});
+  await page.getByRole('button',{name:'Configurações do token',exact:true}).click();
+  await page.getByLabel('Vincular cenário a um token',{exact:true}).selectOption(horse.id);
+  await expect.poll(async()=>{const cart=(await saved()).document.scenes[0].tokens.find((t:any)=>t.id===wagon.id);return [cart?.layer,cart?.sceneryToken,cart?.attachment?.tokenId,cart?.x,cart?.y];}).toEqual(['tokens',true,horse.id,cartStart.x,cartStart.y]);
+  room=await saved();expect(room.document.scenes[0].tokens.find((t:any)=>t.id===loose.id).layer).toBe('map');
+  for(const tokenId of [null,horse.id])expect((await request(player,root+'/tokens/'+wagon.id+'/attachment','POST',{tokenId})).status).toBe(403);
+  await api(player,root+'/tokens/'+horse.id,'PATCH',{x:horseStart.x+70,y:horseStart.y});
+  room=await saved();const movedHorse=room.document.scenes[0].tokens.find((t:any)=>t.id===horse.id),movedCart=room.document.scenes[0].tokens.find((t:any)=>t.id===wagon.id);
+  const turn=(movedHorse.rotation-horseStart.rotation)*Math.PI/180,dx=cartStart.x-horseStart.x,dy=cartStart.y-horseStart.y;
+  expect(movedCart.x).toBeCloseTo(movedHorse.x+dx*Math.cos(turn)-dy*Math.sin(turn));expect(movedCart.y).toBeCloseTo(movedHorse.y+dx*Math.sin(turn)+dy*Math.cos(turn));
+  await api(player,root+'/tokens/'+horse.id,'PATCH',{rotation:(movedHorse.rotation+90)%360});
+  room=await saved();const rotated=room.document.scenes[0].tokens.find((t:any)=>t.id===wagon.id);
+  expect(rotated.attachment.tokenId).toBe(horse.id);expect(Math.hypot(rotated.x-movedHorse.x,rotated.y-movedHorse.y)).toBeCloseTo(relativeRadius);
+  await page.reload();await expect(board).toBeVisible();cartPoint=await screen(rotated);await page.mouse.click(cartPoint.x,cartPoint.y,{button:'right'});
+  await expect(page.getByRole('group',{name:'Valores do token',exact:true})).toHaveCount(0);
+  await expect(page.getByRole('button',{name:'Abrir ficha',exact:true})).toHaveCount(0);
+  await page.getByRole('button',{name:'Configurações do token',exact:true}).click();await expect(page.getByLabel('Vincular cenário a um token',{exact:true})).toHaveValue(horse.id);
+  await page.screenshot({path:'test-results/vtt-nature/wagon-linked.png',fullPage:true});
+  await page.getByLabel('Vincular cenário a um token',{exact:true}).selectOption('');
+  await expect.poll(async()=>(await saved()).document.scenes[0].tokens.find((t:any)=>t.id===wagon.id).attachment).toBeNull();
+  await page.keyboard.press('Escape');
+  const otherPoint=await screen(loose);await expect(async()=>{await page.mouse.click(otherPoint.x,otherPoint.y,{button:'right'});await expect(page.getByRole('button',{name:'Configurações do token',exact:true})).toBeVisible({timeout:200});}).toPass({timeout:3000});await page.getByRole('button',{name:'Configurações do token',exact:true}).click();
+  await page.getByRole('button',{name:'Transformar cenário em token',exact:true}).click();
+  await expect.poll(async()=>(await saved()).document.scenes[0].tokens.find((t:any)=>t.id===loose.id).sceneryToken).toBe(true);
+  await page.keyboard.press('Escape');
   // Test the actual canvas renderer with every finished roof/interior pair.
   const bundle=await build({stdin:{contents:"import{vttVisualSource}from'./shared/vtt-asset-visuals';import{renderVtt}from'./src/vtt-canvas';import{newScene,newToken}from'./shared/vtt';import{houseAssets,houseWorld}from'./shared/vtt-houses';import{houseDoorsAnimating}from'./src/vtt-house-doors';window.houseQA={vttVisualSource,renderVtt,newScene,newToken,houseAssets,houseWorld,houseDoorsAnimating};",resolveDir:process.cwd()},bundle:true,write:false,platform:'browser',format:'iife'});
   const proof=await ctx.newPage();proof.on('pageerror',e=>errors.push(e.message));
@@ -161,7 +237,7 @@ try{
     rendererChecks.push({id:asset.id,entry:true,exit:true});
   }
   expect(errors).toEqual([]);expect(missing).toEqual([]);
-  await writeFile('test-results/vtt-nature/result.json',JSON.stringify({passed:true,plants:25,houses:90,emptyHouses:25,animals:40,commerces:40,furniture:100,gardening:25,residents:25,merchants:25,thumbnails:true,residentBody:true,residentRotation:true,scaledNewDrag:true,library:true,assetsTab:true,search:true,scale:true,drag:true,gridSnap:true,cameraPan:true,spacePan:true,interiorVision:true,windowCones:true,doorTexture:true,rotationHandle:true,shiftWheel:true,persistentDoor:true,doorPermissions:true,doorObstruction:true,serverMovement:true,playerCannotEdit:true,roofEntryAndExit:true,viewports:3,rendererChecks,errors,missing},null,2));
+  await writeFile('test-results/vtt-nature/result.json',JSON.stringify({passed:true,terrainTextures:18,newTerrainPainted:10,terrainReload:true,terrainNetworkRecovery:true,sceneryConversion:true,sceneryLinkPermissions:true,sceneryRotation:true,lightingPresets:true,lightSpeed:true,physicalObjectScale:true,protocol:20,plants:25,houses:90,emptyHouses:25,animals:40,commerces:40,furniture:100,gardening:25,residents:25,merchants:25,thumbnails:true,residentBody:true,residentRotation:true,scaledNewDrag:true,library:true,assetsTab:true,search:true,scale:true,drag:true,gridSnap:true,cameraPan:true,spacePan:true,interiorVision:true,windowCones:true,doorTexture:true,rotationHandle:true,shiftWheel:true,persistentDoor:true,doorPermissions:true,doorObstruction:true,serverMovement:true,playerCannotEdit:true,roofEntryAndExit:true,viewports:3,rendererChecks,errors,missing},null,2));
   console.log('25 plants, 90 houses, 100 household assets and 40 animals: library, drag, scale, server walls, door entry/exit, all roof/interior pairs and three widths passed.');
 }catch(error){await page.screenshot({path:'test-results/vtt-nature/failure.png',fullPage:true});throw error;}
 finally{await browser.close();await new Promise<void>(r=>server.close(()=>r()));await pool.end();}

@@ -157,7 +157,7 @@ export const VttTokenMenu = forwardRef<
         }
       }}
     >
-      <div
+      {!token.sceneryToken && <div
         className="vtt-token-bubbles"
         role="group"
         aria-label="Valores do token"
@@ -193,7 +193,7 @@ export const VttTokenMenu = forwardRef<
           <strong>{speedValue}</strong>
           <span>ft</span>
         </button>
-      </div>
+      </div>}
       <div
         className="vtt-token-actions"
         role="group"
@@ -208,7 +208,7 @@ export const VttTokenMenu = forwardRef<
         >
           <Settings2 size={21} />
         </button>
-        {token.layer === 'tokens' && (
+        {token.layer === 'tokens' && !token.sceneryToken && (
           <button
             title="Condições"
             aria-label="Condições do token"
@@ -219,14 +219,14 @@ export const VttTokenMenu = forwardRef<
             {token.conditions.length > 0 && <b>{token.conditions.length}</b>}
           </button>
         )}
-        <button title="Abrir ficha" aria-label="Abrir ficha" onClick={openSheet}>
+        {!token.sceneryToken && <button title="Abrir ficha" aria-label="Abrir ficha" onClick={openSheet}>
           <BookOpen size={20} />
-        </button>
+        </button>}
         <button title="Fechar menu do token" aria-label="Fechar menu do token" onClick={close}>
           <X size={18} />
         </button>
       </div>
-      {pane && (
+      {pane && (pane === 'settings' || !token.sceneryToken) && (
         <div
           className="vtt-context-menu vtt-token-popover"
           role="dialog"

@@ -1,6 +1,6 @@
 {
   "parent": "house-002-interior",
-  "parentSourceSha256": "c5edfc05975a75ee364f6f921b4a34d2934d1e88374128c5e353e679ba68dfa9",
+  "parentSourceSha256": "f00a39ff5be3facf03e633d49e245626c7526510c6d98195a0428730d7a3995d",
   "id": "house-empty-002-interior",
   "name": "Casa de telhas vermelhas · vazia · Interior",
   "kind": "empty-interior",

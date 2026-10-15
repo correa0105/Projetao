@@ -3,23 +3,25 @@
   "name": "Livraria · Interior",
   "kind": "interior",
   "tool": "built-in image_gen",
-  "prompt": "Create ONE furnished Livraria interior as a STRICT ARCHITECTURAL FLOOR PLAN for a medieval VTT. Room dimensions 9 by 8 five-foot cells, rectangular physical width-to-height ratio 1.125. Content: wood floor, low tables with stacks of books, bookcase top edges, a reading desk and a sales counter. TRUE ORTHOGRAPHIC NADIR camera from DIRECTLY ABOVE, exactly vertical 90 degrees to the floor, absolutely no tilt, isometric or converging edges. All furniture shows ONLY its flat TOP surfaces, no cabinet fronts, drawer handles, chair backrest faces, side faces or legs. Four perimeter walls show only their thin horizontal TOP CUTS of even thickness. One open-plan room, clear walking route through the center. A single OPEN DOOR GAP centered in the BOTTOM wall, wide enough for a human. Two windows appear ONLY as thin blue-grey top slivers in the bottom wall, at 23% and 77% along that wall; no other wall openings. Do not draw a door leaf or stairs. Keep coherent human scale: chair less than one cell and bed two cells long. Realistic detailed hand-painted medieval material texture, even overhead light. Complete room centered with transparent alpha outside the rectangular wall outline, no outside floor, grass, roof, grid, labels, text, people or watermark.\nStrict plan projection for tall furniture: cupboards and bookcases show ONLY opaque horizontal top boards, NEVER their doors or book-spine faces. Fireplaces and forges show ONLY a U-shaped top-cut stone rim around an open coal pit, NEVER a front firebox opening or facade. Vertical posts appear ONLY as circular end-grain caps, with shafts occluded beneath them.",
-  "source": "data/vtt/overhead-20261015/commerce-018-interior.png",
-  "sourceSha256": "0a618869db1c741c73ffbda516d8ec900be6bdafd302a0dba96652046de187d1",
+  "prompt": "Precise-object-edit of the supplied furnished Livraria battlemap interior. Preserve the exact outer wall rectangle, wall thickness, floor texture, centered bottom door gap and all original window positions. Correct OVERSIZED furniture and handheld objects to REAL HUMAN SCALE relative to a standard human TOKEN of ONE 1.5-metre grid square. The building canvas is 9 by 8 grid squares; the clear floor is approximately 6.84 squares wide and 5.76 squares high. Treat this as an invisible measuring grid, never draw it. Furniture must obey these REAL dimensions: single bed 0.65 by 1.4 squares, double bed 1.05 by 1.4 squares, chair or stool 0.35 by 0.35 squares, dining table 1.4 by 0.65 squares, desk/workbench 1.4 by 0.5 squares, cabinet/bookcase modules 1.2 by 0.35 squares, sofa 1.3 by 0.5 squares, barrel 0.4 squares diameter, anvil 0.6 by 0.3 squares, quenching basin 0.5 squares diameter, small box/basket 0.3 squares wide, ordinary bath 0.6 by 1.2 squares, forge 1.2 by 1 squares. Small objects on tables must be normal handheld size: cups 10cm, plates 25cm, books 20-30cm, tools 25-55cm, never giant table-covering ornaments. Beds must never be 3-4 metres long. Shrink oversized movable pieces substantially, around 50-60% of their current linear dimensions, until they match these measurements. Retain the kind and purpose of the furnished room, arranging the correctly sized pieces around its edges with clear walking routes. Large commercial rooms may contain sensible repeated small tables, beds, shelves or workstations; do not enlarge individual furniture to fill the room. Reduce oversized built-in commercial fixtures to the stated real sizes too; keep their room purpose. STRICT VERTICAL ORTHOGRAPHIC NADIR view: all furniture shows only top-facing surfaces. Circular barrel/tub tops, opaque TOP boards over bookcases and wardrobes (NO book-spine fronts or doors), U-shaped horizontal TOP CUT fireplace/forge rims. Zero camera tilt, no isometric, no standing facade or legs. Keep the same detailed hand-painted medieval natural materials and lighting. Transparent alpha outside the complete wall outline. No human, token, scale marker, grid, ruler, labels, text, roof, door leaf, stairs, outdoor terrain or watermark.",
+  "source": "data/vtt/human-scale-20261015/commerce-018-interior.png",
+  "sourceSha256": "bda42f26d9d8ceada82e887a066f5a3315b1b509755171e095c96a304c7fea07",
   "sourcePixels": {
     "width": 1330,
     "height": 1182
   },
-  "image": "/vtt/overhead-20261015/commerce-018-interior.webp",
-  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-018-interior.webp",
-  "sha256": "1344ffa2d5f9c3d4a81ed4760db58e5db808a517474fba9f44f28a46ae7d00d1",
-  "thumbnailSha256": "c3cb989295ba826275454fa305657b2ead7be3b2431fbe50f3925ea1fa7fe159",
+  "image": "/vtt/human-scale-20261015/commerce-018-interior.webp",
+  "thumbnail": "/vtt/human-scale-thumbs-20261015/commerce-018-interior.webp",
+  "sha256": "99d9053dac26443c464684d0ef65207955592c263a43c73e2ebbdb40389e405f",
+  "thumbnailSha256": "b13ffb48674ff9aa2dcfd7cae6be9ca505dcca922bcf327382fea12ac6640fa9",
   "pixelWidth": 1600,
   "pixelHeight": 1422,
-  "bytes": 477884,
-  "clearFraction": 0.391039029535865,
-  "opaqueFraction": 0.6038365857946554,
-  "legacy": [],
+  "bytes": 384850,
+  "clearFraction": 0.39072521097046414,
+  "opaqueFraction": 0.6021844233473981,
+  "legacy": [
+    "/vtt/overhead-20261015/commerce-018-interior.webp"
+  ],
   "physicalSize": {
     "width": 9,
     "height": 8

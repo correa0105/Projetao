@@ -1,6 +1,6 @@
 {
   "parent": "house-001-interior",
-  "parentSourceSha256": "768a1365643729eac2890f981a2d659a2fac37cc7972173723ffd431c1d5299d",
+  "parentSourceSha256": "b4b91bee209887e94b1337d80ea1a78331694386030391b18423f93630ca5f5d",
   "id": "house-empty-001-interior",
   "name": "Cabana de palha · vazia · Interior",
   "kind": "empty-interior",

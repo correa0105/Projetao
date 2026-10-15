@@ -1,0 +1,20 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {randomUUID} from 'node:crypto';
+import {pool,transaction} from '../server/db';import {migrate} from '../server/migrate';import {grantBetaStartingGold} from '../server/beta-accounts';
+if(!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))throw Error('Disposable DB only');
+test('beta gold is granted once to the first character, preserving regular users and deletion history',async()=>{
+ await migrate();const user=randomUUID(),regular=randomUUID();
+ await pool.query('INSERT INTO "user"(id,name,email,"emailVerified","createdAt","updatedAt") VALUES($1,\'Beta\',$2,false,now(),now()),($3,\'Regular\',$4,false,now(),now())',[user,user+'@example.test',regular,regular+'@example.test']);
+ const first=(await pool.query("INSERT INTO characters(user_id,name,race,class,hp,gold_cp) VALUES($1,'Beta','Humano','Guerreiro',10,0) RETURNING id",[user])).rows[0].id;
+ const normal=(await pool.query("INSERT INTO characters(user_id,name,race,class,hp,gold_cp) VALUES($1,'Regular','Humano','Guerreiro',10,15000) RETURNING id",[regular])).rows[0].id;
+ await pool.query('INSERT INTO beta_accounts(user_id,cohort) VALUES($1,\'test-beta\')',[user]);
+ assert.equal(await transaction(db=>grantBetaStartingGold(db,regular,normal)),false);
+ assert.equal(await transaction(db=>grantBetaStartingGold(db,user,first)),true);
+ assert.equal(await transaction(db=>grantBetaStartingGold(db,user,first)),false);
+ const beta=(await pool.query('SELECT gold_cp,starting_wealth_granted FROM characters WHERE id=$1',[first])).rows[0];assert.equal(beta.gold_cp,2000000);assert(beta.starting_wealth_granted);
+ assert.equal((await pool.query('SELECT gold_cp FROM characters WHERE id=$1',[normal])).rows[0].gold_cp,15000);
+ await pool.query('DELETE FROM characters WHERE id=$1',[first]);
+ const next=(await pool.query("INSERT INTO characters(user_id,name,race,class,hp,gold_cp) VALUES($1,'Outro','Humano','Guerreiro',10,0) RETURNING id",[user])).rows[0].id;
+ assert.equal(await transaction(db=>grantBetaStartingGold(db,user,next)),false);
+ await pool.query('DELETE FROM "user" WHERE id=$1',[user]);assert.equal((await pool.query('SELECT count(*)::int total FROM beta_accounts WHERE user_id=$1',[user])).rows[0].total,0);
+});
+test.after(()=>pool.end());

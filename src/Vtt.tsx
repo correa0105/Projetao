@@ -6,10 +6,15 @@ import {tokenPlacement} from '../shared/vtt-placement';
 import {createNatureToken} from '../shared/vtt-nature-placement';
 import {VttHouseDoors} from './VttHouseDoors';
 import {houseDoorsAnimating} from './vtt-house-doors';
+import {VttLightPresets,VttLightEffectFields} from './VttLightingControls';
+import {lightPresetValues,sceneHasAnimatedLights,type LightPresetId} from '../shared/vtt-lighting';
 import { VttTerrainBrush, type TerrainBrushSettings } from './VttTerrainBrush';
 import { terrainTextures, woodlandFloorImage } from '../shared/vtt-terrain';
+import {createVttImageLoader} from './vtt-image-loader';
 import type { TerrainStroke, TerrainLayer } from '../shared/vtt';
 import { VttTokenMenu } from './VttTokenMenu';
+import {VttSceneryActions} from './VttSceneryActions';
+import {convertSceneryToToken} from '../shared/vtt-scenery-token';
 import { VttAtmosphereMenu } from './VttAtmosphereMenu';
 import { livingEffectReady } from './vtt-effects-living';
 import { atmosphereAnimated, atmosphereTransitioning } from './vtt-atmosphere';
@@ -375,6 +380,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [attack, setAttack] = useState<AttackRequest | null>(null),
     [joinRole, setJoinRole] = useState<'player' | 'spectator'>('player'),
     [showWalls, setShowWalls] = useState(true),
+    [lightPreset,setLightPreset]=useState<LightPresetId>('torch'),
     [ruler, setRuler] = useState<Point[]>([]),
     [lasso, setLasso] = useState<Point[]>([]),
     [fogShape, setFogShape] = useState<'rect' | 'polygon' | 'brush'>('rect'),
@@ -730,6 +736,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       tokenId: parentId,
     });
     receive(next);
+    if(token.layer==='map'||token.sceneryToken)changeLayer('tokens',[selected]);
     setSelection([selected]);
     setContextMenu(null);
     setTool('select');
@@ -1038,16 +1045,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       cancelAnimationFrame(focusFrame.current);
     };
   }, [state?.id]);
+  const mapImages = useRef<ReturnType<typeof createVttImageLoader> | null>(null);
+  useEffect(() => {
+    const loader=createVttImageLoader(images.current,vttVisualSource,()=>setImageVersion(v=>v+1),()=>setNotice('Uma imagem não pôde ser carregada. A pintura continua salva; confira a conexão.'));
+    mapImages.current=loader;
+    window.addEventListener('online',loader.retry);
+    return ()=>{window.removeEventListener('online',loader.retry);loader.dispose();mapImages.current=null;};
+  }, []);
   useEffect(() => {
     if (!scene) return;
-    for (const path of [scene.background, ...scene.tokens.map((t) => t.image), ...houseInteriorImages(scene), '/vtt/house-parts-20261014/door-vertical.webp', ...terrainTextures.map(t=>t.image)]) {
-      if (!path || images.current.has(path)) continue;
-      const image = new window.Image();
-      image.onload = () => setImageVersion((v) => v + 1);
-      image.onerror = () => setNotice('Uma imagem não pôde ser carregada. Confira a biblioteca.');
-      image.src = vttVisualSource(path);
-      images.current.set(path, image);
-    }
+    // Load painted materials first so refreshing a large scene restores its ground promptly.
+    const used=new Set(scene.terrain.map(t=>t.texture));
+    const textures=[...terrainTextures].sort((a,b)=>Number(used.has(b.id))-Number(used.has(a.id)));
+    for (const path of [...textures.map(t=>t.image), scene.background, ...scene.tokens.map(t=>t.image), ...houseInteriorImages(scene), '/vtt/house-parts-20261014/door-vertical.webp'])mapImages.current?.load(path);
   }, [scene]);
   useEffect(() => {
     const c = canvas.current;
@@ -1140,6 +1150,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const infinite =
       visualEffects &&
       (atmosphereAnimated(atmosphereScene.atmosphere) ||
+        ((scene.lighting||(scene.fog&&scene.fogMode==='vision'))&&sceneHasAnimatedLights(scene)) ||
         !!combat.state?.active ||
         !!effectPreview ||
         spellcasting.effects.some((e) => e.persistent && (!e.expires || e.expires > Date.now())) ||
@@ -1479,8 +1490,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (tool === 'attach' && e.button === 0 && !spectator && !preview) {
-      const hit = tokenAt(p, scene, 'tokens', gm);
-      if (!hit) return;
+      const hit = tokenAt(p, scene, gm && !token ? '*' : 'tokens', gm);
+      if (!hit || (!gm && (hit.sceneryToken || token?.sceneryToken))) return;
       if (!token || hit.id === token.id) {
         if (gm || hit.controller === user.id) {
           setSelection([hit.id]);
@@ -1561,10 +1572,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (tool === 'light' && gm) {
       const l = lightSchema.parse({
         id: crypto.randomUUID(),
-        name: 'Fonte de luz',
+        ...lightPresetValues(lightPreset,scene.grid.unit),
         x: snap.x,
         y: snap.y,
-        color: '#e9c887',
       });
       editScene((s) => {
         s.lights.push(l);
@@ -1910,7 +1920,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (terrainActive.current) {
       cancelAnimationFrame(terrainFrame.current); terrainFrame.current = 0;
       const stroke = terrainActive.current; terrainActive.current = null; setTerrainDraft(null);
-      if (gm && !preview && scene) { const p = point(e); editScene(s => s.terrain.push({...stroke,points:[...stroke.points,p]})); }
+      if (gm && !preview && scene) { const p = point(e); editScene(s => s.terrain.push({...stroke,points:[...stroke.points,p]})); void act(save); }
       if (e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
       return;
     }
@@ -3651,6 +3661,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                         />
                         <span>{Math.round(scene.gmOpacity * 100)}%</span>
                       </label>
+                      {(layer==='lighting'||tool==='light')&&<VttLightPresets value={lightPreset} unit={scene.grid.unit} onChange={setLightPreset} onPlace={()=>{changeLayer('lighting');setTool('light');setSelection([]);}} onApply={selectedLight?()=>editScene(s=>{Object.assign(s.lights.find(l=>l.id===selectedLight.id)!,lightPresetValues(lightPreset,s.grid.unit));}):undefined}/>}
                       {selectedLight && (
                         <div className="vtt-object-detail">
                           <h3>Fonte de luz</h3>
@@ -3725,6 +3736,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             />
                             Luz acesa
                           </label>
+                          <VttLightEffectFields animation={selectedLight.animation} speed={selectedLight.effectSpeed} onChange={v=>editScene(s=>{Object.assign(s.lights.find(l=>l.id===selectedLight.id)!,v);})}/>
                           <button onClick={removeSelected}>
                             <Trash2 size={14} />
                             Excluir luz selecionada
@@ -3901,6 +3913,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                         />
                       </label>
                       <div className="vtt-two">
+                        {!token.sceneryToken && <>
                         <NumberField
                           label="PV atual"
                           value={token.hp}
@@ -3924,6 +3937,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           disabled={!gm}
                           onChange={(v) => editToken({ ac: v })}
                         />
+                        </>}
                         <NumberField
                           label="Rotação"
                           value={token.rotation}
@@ -3941,6 +3955,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             <label>Intensidade<input aria-label="Intensidade do asset" type="range" min={.2} max={1} step={.05} value={token.animatedAsset.intensity} onChange={e=>editToken({animatedAsset:{...token.animatedAsset!,intensity:Number(e.target.value)}})}/></label>
                           </fieldset>}
                           {houseAsset(token)&&<><button onClick={()=>void act(()=>toggleHouseDoor(token))}>{token.houseDoorOpen?'Fechar':'Abrir'} porta principal</button><button onClick={()=>editScene(s=>fitHouseToGrid(s.tokens.find(t=>t.id===token.id)!,s))}>Ajustar casa à escala dos personagens</button><p className="vtt-muted">Corrige a proporção da casa e alinha a porta à grade, mantendo o tamanho dos personagens.</p></>}
+                          {!token.sceneryToken && <>
                           <h3>Barra de boss</h3>
                           <label>
                             Barra de boss
@@ -3963,6 +3978,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               ))}
                             </select>
                           </label>
+                          </>}
                           {monsterArt('', token.name) && (
                             <button
                               onClick={() => editToken({ image: monsterArt('', token.name) })}
@@ -4111,6 +4127,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               onChange={(e) => editToken({ lightColor: e.target.value })}
                             />
                           </label>
+                          <VttLightEffectFields animation={token.lightAnimation} speed={token.lightEffectSpeed} onChange={v=>editToken({lightAnimation:v.animation,lightEffectSpeed:v.effectSpeed})}/>
                           <label>
                             Notas do mestre
                             <textarea
@@ -5349,7 +5366,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           openSheet={() => {openSheet(); setContextMenu(null);}}
           completeSettings={() => {setTab('token'); setPanelOpen(true); setContextMenu(null);}}
           edit={patch => {editToken(patch); if(gm) void act(save);}}
-          hp={gm ? (                  <VttHpControl
+          hp={gm && !token.sceneryToken ? (                  <VttHpControl
                     key={token.id}
                     token={token}
                     busy={busy}
@@ -5361,7 +5378,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           conditions={<VttConditionMenu expanded conditions={token.conditions} gm={gm} enabled={canToken}
             busy={busy} onChange={changeTokenConditions} />}
         >
-              <button
+              {gm && (token.layer === 'map' || token.sceneryToken) && <VttSceneryActions token={token} tokens={scene.tokens} busy={busy} convert={() => { editScene(s => {const placed=s.tokens.find(t=>t.id===token.id);if(placed)convertSceneryToToken(placed);}); changeLayer('tokens', [token.id]); void act(save);}} bind={id=>void act(()=>bindToken(id))} />}
+              {!token.sceneryToken && <button
                 onClick={() => {
                   openSheet();
                   setContextMenu(null);
@@ -5369,8 +5387,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               >
                 <Users size={14} />
                 Abrir ficha
-              </button>
-              {gm && (
+              </button>}
+              {gm && !token.sceneryToken && (
                 <>
                   <VttHpControl
                     key={token.id}
@@ -5384,11 +5402,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 </>
               )}
               {canToken && <VttTokenScaleControl key={token.id} token={token} gridSize={scene.grid.size} busy={busy} change={size=>{editToken(size);if(gm)void act(save);}} />}
-              {gm && token.layer === 'tokens' && <label className="vtt-check"><input type="checkbox" checked={token.bleeds} disabled={busy} onChange={e=>{editToken({bleeds:e.target.checked});void act(save);}} />Esta criatura sangra</label>}
+              {gm && token.layer === 'tokens' && !token.sceneryToken && <label className="vtt-check"><input type="checkbox" checked={token.bleeds} disabled={busy} onChange={e=>{editToken({bleeds:e.target.checked});void act(save);}} />Esta criatura sangra</label>}
               <details className="vtt-context-options" key={token.id}>
                 <summary>Mais opções</summary>
                 {gm && (<>
-                  <details>
+                  {!token.sceneryToken && <details>
                     <summary>Combate</summary>
                   <button
                     disabled={
@@ -5414,7 +5432,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   >
                     Adicionar selecionados à ordem
                   </button>
-                  </details>
+                  </details>}
                   <details>
                     <summary>Camada e profundidade</summary>
                   <label>
@@ -5455,7 +5473,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               )}
               {canToken && (
                 <>
-                  {token.layer === 'tokens' && (
+                  {token.layer === 'tokens' && !token.sceneryToken && (
                     <details>
                     <summary>Movimento vinculado</summary>
                     <fieldset className="vtt-token-attachment">

@@ -1,6 +1,6 @@
 {
   "parent": "house-003-interior",
-  "parentSourceSha256": "2656eb1ec368cd4bee9ef0c048b597396b3599d6b511f6b9718801afd6349155",
+  "parentSourceSha256": "e9dd6d1b6711f7a5422bae33edcb44b51d6759e295180bc8d733f7948452ae3a",
   "id": "house-empty-003-interior",
   "name": "Casa do lenhador · vazia · Interior",
   "kind": "empty-interior",

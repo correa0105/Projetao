@@ -1,6 +1,6 @@
 {
   "parent": "house-012-interior",
-  "parentSourceSha256": "dad32641ccf846728f70aa3463d0dc002cc2b94b8e36ba58c325d06e10389605",
+  "parentSourceSha256": "0f3b56dd022fcafddf674989933e3f559367249b8d760a90361b63e4886dd405",
   "id": "house-empty-012-interior",
   "name": "Casa de pedra · vazia · Interior",
   "kind": "empty-interior",

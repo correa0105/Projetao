@@ -1,0 +1,7 @@
+# Keep localhost access and expose only the configured Radmin VPN address.
+services:
+  app:
+    ports:
+      - '${BETA_BIND_IP:?Configure BETA_BIND_IP in .env}:3000:3000'
+    environment:
+      APP_ORIGIN: ${APP_ORIGIN:-http://localhost:3000},http://${BETA_BIND_IP}:3000

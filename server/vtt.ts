@@ -1,3 +1,4 @@
+import {convertSceneryToToken} from '../shared/vtt-scenery-token.js';
 import express from 'express';
 import { randomInt, randomUUID, randomBytes } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
@@ -877,7 +878,8 @@ export function vttRouter() {
       const child = s.tokens.find((t) => t.id === tid);
       if (
         !child ||
-        child.layer !== 'tokens' ||
+        (child.layer !== 'tokens' && !(master && child.layer === 'map' && tokenId)) ||
+        (child.sceneryToken && !master) ||
         (!master &&
           (child.controller !== res.locals.user.id ||
             child.locked ||
@@ -889,13 +891,15 @@ export function vttRouter() {
         if (
           !parent ||
           parent.layer !== 'tokens' ||
+          (parent.sceneryToken && !master) ||
           (!master &&
             (parent.controller !== res.locals.user.id ||
               parent.locked ||
               !canSee(parent, s, res.locals.user.id)))
         )
           throw new AppError(403, 'Escolha um token de apoio que você possa mover.');
-        child.attachment = { tokenId, offsetX: 0, offsetY: 0, baseRotation: parent.rotation };
+        if (child.layer === 'map') convertSceneryToToken(child);
+        child.attachment = { tokenId, offsetX: child.sceneryToken ? child.x-parent.x : 0, offsetY: child.sceneryToken ? child.y-parent.y : 0, baseRotation: parent.rotation };
         const error = attachmentError(s.tokens);
         if (error) throw new AppError(400, error);
         syncAttachmentPositions(s);

@@ -81,7 +81,7 @@ export function VttTerrainBrush({
               activate(false);
             }}
           >
-            <img src={t.image} alt="" />
+            <img src={'thumbnail' in t ? t.thumbnail : t.image} alt="" loading="lazy" />
             <span>{t.name}</span>
           </button>
         ))}

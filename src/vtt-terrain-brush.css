@@ -107,3 +107,5 @@
 .vtt-terrain-layer-tools button {
   min-height: 32px;
 }
+
+.vtt-terrain-textures button{min-width:0}.vtt-terrain-textures button span{max-width:100%;overflow-wrap:anywhere;line-height:1.3}

@@ -3,23 +3,25 @@
   "name": "Estábulo · Interior",
   "kind": "interior",
   "tool": "built-in image_gen",
-  "prompt": "Create ONE furnished Estábulo interior as a STRICT ARCHITECTURAL FLOOR PLAN for a medieval VTT. Room dimensions 16 by 10 five-foot cells, rectangular physical width-to-height ratio 1.600. Content: packed earthen floor, open timber stall rails with broad access gaps, hay bales, feed troughs, water barrels and tack benches, no animals. TRUE ORTHOGRAPHIC NADIR camera from DIRECTLY ABOVE, exactly vertical 90 degrees to the floor, absolutely no tilt, isometric or converging edges. All furniture shows ONLY its flat TOP surfaces, no cabinet fronts, drawer handles, chair backrest faces, side faces or legs. Four perimeter walls show only their thin horizontal TOP CUTS of even thickness. One open-plan room, clear walking route through the center. A single OPEN DOOR GAP centered in the BOTTOM wall, wide enough for a human. Two windows appear ONLY as thin blue-grey top slivers in the bottom wall, at 23% and 77% along that wall; no other wall openings. Do not draw a door leaf or stairs. Keep coherent human scale: chair less than one cell and bed two cells long. Realistic detailed hand-painted medieval material texture, even overhead light. Complete room centered with transparent alpha outside the rectangular wall outline, no outside floor, grass, roof, grid, labels, text, people or watermark.\nStrict plan projection for tall furniture: cupboards and bookcases show ONLY opaque horizontal top boards, NEVER their doors or book-spine faces. Fireplaces and forges show ONLY a U-shaped top-cut stone rim around an open coal pit, NEVER a front firebox opening or facade. Vertical posts appear ONLY as circular end-grain caps, with shafts occluded beneath them.",
-  "source": "data/vtt/overhead-20261015/commerce-024-interior.png",
-  "sourceSha256": "0c7f912244d269967757e3f49fe7c8e093608710b3c69b18b83fa15c4e8bee2d",
+  "prompt": "Precise entrance obstruction removal. Preserve this complete strict-overhead stable floor plan, its outside rectangular walls, centered bottom entrance gap, windows, straw, side furnishings, eight horse stalls, natural wood/earth textures and transparent exterior. There is a wooden post and vertical stall divider DIRECTLY INSIDE the centered bottom doorway, blocking the human's entry path. Remove that center-bottom post and the divider running upward from it into the room; remove its upper end post too if it blocks the center route. Fill their former footprints with the same packed-earth floor. Clear a STRAIGHT unobstructed path from the bottom doorway all the way into the broad central horizontal aisle. This path must stay at least the FULL WIDTH of the actual door opening. Keep stall dividers outside this central entrance lane, and keep the northern stalls and exterior boundary untouched. Do not add another post, door leaf, gate, plank, beam, bread, crate, bench or debris across the entrance corridor. Camera exactly vertical overhead; do not change scale or furniture. No text, labels, grid, people, roof or outside terrain.",
+  "source": "data/vtt/human-scale-20261015/commerce-024-interior.png",
+  "sourceSha256": "2f070aebf2a2d18a3f7ba35b79c8f1fc49f51940222a9586ec33da8e6af24183",
   "sourcePixels": {
-    "width": 1586,
-    "height": 992
+    "width": 1584,
+    "height": 993
   },
-  "image": "/vtt/overhead-20261015/commerce-024-interior.webp",
-  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-024-interior.webp",
-  "sha256": "98a245c6929c223a833a03b26f86e3fb4b85036771a56d7d910e53b62c9e024c",
-  "thumbnailSha256": "bbc25d0f4f690e6514a9999b26976f3d4bc8e6efbf69ac0b12ec331306a0d396",
+  "image": "/vtt/human-scale-20261015/commerce-024-interior.webp",
+  "thumbnail": "/vtt/human-scale-thumbs-20261015/commerce-024-interior.webp",
+  "sha256": "1e416dd15d6e76d75dddec105ba443567637ecfcb5ef7835dff39223d7132eef",
+  "thumbnailSha256": "a7f3a19942564334eee0b7f14fe41ace643b78d51f152d5918c3f3ca6984fabd",
   "pixelWidth": 1600,
   "pixelHeight": 1000,
-  "bytes": 577168,
-  "clearFraction": 0.39302875,
-  "opaqueFraction": 0.601530625,
-  "legacy": [],
+  "bytes": 396506,
+  "clearFraction": 0.391318125,
+  "opaqueFraction": 0.600275625,
+  "legacy": [
+    "/vtt/overhead-20261015/commerce-024-interior.webp"
+  ],
   "physicalSize": {
     "width": 16,
     "height": 10

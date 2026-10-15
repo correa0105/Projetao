@@ -54,7 +54,7 @@ function current(room: Room): Combat {
       entries: [],
     };
   c.entries = c.entries.filter((e) =>
-    scene.tokens.some((t) => t.id === e.tokenId && t.layer === 'tokens' && !t.hidden),
+    scene.tokens.some((t) => t.id === e.tokenId && t.layer === 'tokens' && !t.hidden && !t.sceneryToken),
   );
   if (!c.entries.some((e) => e.tokenId === c.currentId))
     c.currentId = c.entries[0]?.tokenId || null;
@@ -137,7 +137,7 @@ export function vttCombatRouter(
         if (c.active)
           throw new AppError(409, 'Encerre o combate antes de adicionar participantes.');
         for (const id of new Set(input.tokenIds)) {
-          if (!scene.tokens.some((t) => t.id === id && t.layer === 'tokens' && !t.hidden))
+          if (!scene.tokens.some((t) => t.id === id && t.layer === 'tokens' && !t.hidden && !t.sceneryToken))
             throw new AppError(400, 'Escolha tokens visíveis do mapa ativo.');
           if (!c.entries.some((e) => e.tokenId === id))
             c.entries.push({ tokenId: id, value: null, die: null, bonus: null });

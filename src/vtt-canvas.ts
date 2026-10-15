@@ -1,4 +1,6 @@
 import {vttVisualSource} from '../shared/vtt-asset-visuals';
+import {lightAnimationState,sceneHasAnimatedLights} from '../shared/vtt-lighting';
+import {drawMapObject} from './vtt-object-sprites';
 import { drawTerrain } from './vtt-terrain-canvas';
 import { renderBuffer, renderWorkCache, tokenOnScreen } from './vtt-render-cache';
 import type { TerrainStroke } from '../shared/vtt';
@@ -396,13 +398,22 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       } else if (layer === 'map') {
         if (img?.complete && img.naturalWidth) {
           const floor=house&&images.get(house.interior);
-          if(house&&!houseOccupied(t,houseActors)&&floor?.complete&&floor.naturalWidth){
-            drawHouseRoof(c,t,img,floor,houseRoofOccluded(t,houseActors,s));
-          }else c.drawImage(img, -t.width / 2, -t.height / 2, t.width, t.height);
+          if(house&&!houseOccupied(t,houseActors)){
+            if(floor?.complete&&floor.naturalWidth)
+              drawHouseRoof(c,t,img,floor,houseRoofOccluded(t,houseActors,s),()=>drawHouseDoor(c,s,t,reduced,images,true));
+            else {drawHouseDoor(c,s,t,reduced,images,true);c.drawImage(img,-t.width/2,-t.height/2,t.width,t.height);}
+          }else if(houseFurniture.has(vttVisualSource(t.image))){
+            drawMapObject(c,t,img);
+          }else {
+            c.drawImage(img,-t.width/2,-t.height/2,t.width,t.height);
+            if(house)drawHouseDoor(c,s,t,reduced,images,true);
+          }
         } else {
           c.fillStyle = t.color;
           c.fillRect(-t.width / 2, -t.height / 2, t.width, t.height);
         }
+      } else if (t.sceneryToken && img?.complete && img.naturalWidth) {
+        drawMapObject(c,t,img);
       } else if (
         (t.image.startsWith('/vtt/monsters/') ||
           t.image.startsWith('/api/vtt/premium-art/') ||
@@ -493,6 +504,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.shadowBlur = 5;
         c.fillText(t.name, t.x, t.y + t.height / 2 + 14 / cam.zoom);
         c.shadowBlur = 0;
+        if (!t.sceneryToken) {
         const hpWidth = Math.min(t.width * 0.6, 84 / cam.zoom);
         c.fillStyle = '#07100c';
         c.fillRect(t.x - hpWidth / 2, t.y - t.height / 2 - 9 / cam.zoom, hpWidth, 4 / cam.zoom);
@@ -504,10 +516,11 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
           4 / cam.zoom,
         );
         if (t.conditions.length) drawConditionBadges(c, t, cam.zoom);
+        }
         c.restore();
       }
     }
-    if (layer === 'map') { for(const h of sortedTokens)if(houseAsset(h)&&visibleCanopyToken(h)&&tokenOnScreen(h,view,cam.zoom))drawHouseDoor(c,s,h,reduced,images);drawGrid(); canopyCover = captureCanopyAreas(c,s); }
+    if (layer === 'map') { drawGrid(); canopyCover = captureCanopyAreas(c,s); }
   }
   const spellView = {
     left: cam.x - width / 2 / cam.zoom,
@@ -539,8 +552,9 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
           : []
         : s.tokens.filter((t) => t.controller === o.userId && t.layer === 'tokens' && !t.hidden);
     const cache = renderWorkCache(c.canvas), sources = sceneLights(s);
+    const lightTick=!reduced&&o.visualEffects!==false&&sceneHasAnimatedLights(s)?Math.floor(now/80)*80:0;
     const lightingKey = JSON.stringify([s.id,width,height,dpr,cam,master,s.ambient,s.grid.size,s.grid.unit,s.grid.scale,
-      viewers.map(v=>[v.x,v.y,v.vision]),s.walls,houseWalls(s),sources]);
+      viewers.map(v=>[v.x,v.y,v.vision]),s.walls,houseWalls(s),sources,lightTick]);
     const rebuild = cache.lightingKey !== lightingKey;
     const light = renderBuffer(c.canvas,'light',rebuild), colors = renderBuffer(c.canvas,'colors',rebuild),
       mask = renderBuffer(c.canvas,'darkness',rebuild);
@@ -559,13 +573,14 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         const r=visionPixels(source.bright+source.dim,s);if(r<=0)continue;
         // Both light and tint use exactly the same visibility polygon.
         const shape=sightPolygon(source,r,s,source.rotation,source.angle);
-        lc.save();polygon(lc,shape);lc.clip();
+        const pulse=lightAnimationState(source,lightTick,reduced||o.visualEffects===false);
+        lc.save();polygon(lc,shape);lc.clip();lc.globalAlpha=pulse.intensity;
         const gradient=lc.createRadialGradient(source.x,source.y,0,source.x,source.y,r);
-        gradient.addColorStop(0,'#fff');gradient.addColorStop(Math.min(.99,source.bright/(source.bright+source.dim)),'#fff');gradient.addColorStop(1,'#ffffff70');
+        gradient.addColorStop(0,'#fff');gradient.addColorStop(Math.min(.99,source.bright/(source.bright+source.dim)*pulse.core),'#fff');gradient.addColorStop(1,'#ffffff70');
         lc.fillStyle=gradient;lc.fillRect(source.x-r,source.y-r,r*2,r*2);lc.restore();
         tc.save();polygon(tc,shape);tc.clip();
         const tint=tc.createRadialGradient(source.x,source.y,0,source.x,source.y,r);
-        tint.addColorStop(0,source.color+'20');tint.addColorStop(1,source.color+'00');
+        tint.addColorStop(0,source.color+Math.round(32*(pulse.intensity+pulse.warmth)).toString(16).padStart(2,'0'));tint.addColorStop(1,source.color+'00');
         tc.fillStyle=tint;tc.fillRect(source.x-r,source.y-r,r*2,r*2);tc.restore();
       }
       lc.setTransform(1,0,0,1,0,0);

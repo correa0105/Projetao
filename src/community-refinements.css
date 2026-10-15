@@ -72,3 +72,5 @@
 :root .app-shell .guild-page .guild-summary>strong{display:grid;grid-template-columns:18px auto;align-items:center;gap:5px;white-space:nowrap;}
 :root .app-shell .guild-page .guild-summary>strong small{grid-column:1/-1;white-space:normal;}
 @media(max-width:560px){:root .app-shell .guild-page{padding-top:28px;}:root .app-shell .hall-of-fame:not(.embedded) .hall-gallery{padding-top:120px;}}
+
+:root .app-shell .guild-is-detail>.guild-house-layout{margin:0 auto 30px;width:100%;}

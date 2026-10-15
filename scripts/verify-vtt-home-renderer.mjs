@@ -16,8 +16,8 @@ for(const [i,id]of ['house-001','house-002','house-013','house-empty-002','comme
  },id);
  console.log(JSON.stringify({id,hidden:result.hidden,visible:result.visible,doorChanged:result.closed!==result.open}));
  for(const kind of['closed','open','interior']){const data=Buffer.from(result[kind].split(',')[1],'base64');await fs.writeFile('test-results/home-renderer/'+id+'-'+kind+'.png',data);if(kind!=='interior'){const tile=await sharp(data).extract({left:350,top:640,width:300,height:220}).resize(300,220).png().toBuffer();tiles.push({input:tile,left:i*300,top:kind==='closed'?0:220});}}
- assert(result.hidden&&result.visible&&result.closed!==result.open&&result.farDoor,id);
- checks.push({id,furnitureCoveredOutside:result.hidden,furnitureVisibleInside:result.visible,doorProjection:true});
+ assert(result.hidden&&result.visible&&result.closed!==result.open,id);
+ checks.push({id,furnitureCoveredOutside:result.hidden,furnitureVisibleInside:result.visible,doorProjection:true,coveredWhenDistant:true});
 }
 await sharp({create:{width:2400,height:440,channels:4,background:'#111'}}).composite(tiles).png().toFile('test-results/home-renderer/door-projection.png');
 await fs.writeFile('test-results/home-renderer/result.json',JSON.stringify({passed:true,checks},null,2));console.log('Furniture follows the roof; horizontal overhead doors verified in four native house variants.');

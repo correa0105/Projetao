@@ -1,0 +1,1802 @@
+[
+  {
+    "id": "furniture-001",
+    "image": "/vtt/home-furniture-20261014/furniture-001.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.55,
+      "height": 0.55
+    }
+  },
+  {
+    "id": "furniture-002",
+    "image": "/vtt/home-furniture-20261014/furniture-002.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.85,
+      "height": 0.85
+    }
+  },
+  {
+    "id": "furniture-003",
+    "image": "/vtt/home-furniture-20261014/furniture-003.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "furniture-004",
+    "image": "/vtt/home-furniture-20261014/furniture-004.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.8,
+      "height": 0.4
+    }
+  },
+  {
+    "id": "furniture-005",
+    "image": "/vtt/home-furniture-20261014/furniture-005.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 0.45
+    }
+  },
+  {
+    "id": "furniture-006",
+    "image": "/vtt/home-furniture-20261014/furniture-006.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 2.1,
+      "height": 0.9
+    }
+  },
+  {
+    "id": "furniture-007",
+    "image": "/vtt/home-furniture-20261014/furniture-007.webp",
+    "previous": {
+      "width": 2,
+      "height": 2
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 1.5
+    }
+  },
+  {
+    "id": "furniture-008",
+    "image": "/vtt/home-furniture-20261014/furniture-008.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "furniture-009",
+    "image": "/vtt/home-furniture-20261014/furniture-009.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 0.7
+    }
+  },
+  {
+    "id": "furniture-010",
+    "image": "/vtt/home-furniture-20261014/furniture-010.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 2.1,
+      "height": 0.75
+    }
+  },
+  {
+    "id": "furniture-011",
+    "image": "/vtt/home-furniture-20261014/furniture-011.webp",
+    "previous": {
+      "width": 1,
+      "height": 2
+    },
+    "metres": {
+      "width": 0.95,
+      "height": 2.1
+    }
+  },
+  {
+    "id": "furniture-012",
+    "image": "/vtt/home-furniture-20261014/furniture-012.webp",
+    "previous": {
+      "width": 2,
+      "height": 2
+    },
+    "metres": {
+      "width": 1.6,
+      "height": 2.1
+    }
+  },
+  {
+    "id": "furniture-013",
+    "image": "/vtt/home-furniture-20261014/furniture-013.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.7,
+      "height": 1.2
+    }
+  },
+  {
+    "id": "furniture-014",
+    "image": "/vtt/home-furniture-20261014/furniture-014.webp",
+    "previous": {
+      "width": 1,
+      "height": 2
+    },
+    "metres": {
+      "width": 0.9,
+      "height": 2
+    }
+  },
+  {
+    "id": "furniture-015",
+    "image": "/vtt/home-furniture-20261014/furniture-015.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 2,
+      "height": 0.8
+    }
+  },
+  {
+    "id": "furniture-016",
+    "image": "/vtt/home-furniture-20261014/furniture-016.webp",
+    "previous": {
+      "width": 1,
+      "height": 2
+    },
+    "metres": {
+      "width": 0.8,
+      "height": 1.8
+    }
+  },
+  {
+    "id": "furniture-017",
+    "image": "/vtt/home-furniture-20261014/furniture-017.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "furniture-018",
+    "image": "/vtt/home-furniture-20261014/furniture-018.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.2,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "furniture-019",
+    "image": "/vtt/home-furniture-20261014/furniture-019.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 0.4
+    }
+  },
+  {
+    "id": "furniture-020",
+    "image": "/vtt/home-furniture-20261014/furniture-020.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 0.35
+    }
+  },
+  {
+    "id": "furniture-021",
+    "image": "/vtt/home-furniture-20261014/furniture-021.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.8,
+      "height": 0.45
+    }
+  },
+  {
+    "id": "furniture-022",
+    "image": "/vtt/home-furniture-20261014/furniture-022.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.9,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "furniture-023",
+    "image": "/vtt/home-furniture-20261014/furniture-023.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 0.45
+    }
+  },
+  {
+    "id": "furniture-024",
+    "image": "/vtt/home-furniture-20261014/furniture-024.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 2.1,
+      "height": 0.65
+    }
+  },
+  {
+    "id": "furniture-025",
+    "image": "/vtt/home-furniture-20261014/furniture-025.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "furniture-026",
+    "image": "/vtt/home-furniture-20261014/furniture-026.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "furniture-027",
+    "image": "/vtt/home-furniture-20261014/furniture-027.webp",
+    "previous": {
+      "width": 0.75,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.65
+    }
+  },
+  {
+    "id": "furniture-028",
+    "image": "/vtt/home-furniture-20261014/furniture-028.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.9,
+      "height": 0.9
+    }
+  },
+  {
+    "id": "furniture-029",
+    "image": "/vtt/home-furniture-20261014/furniture-029.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.4,
+      "height": 0.4
+    }
+  },
+  {
+    "id": "furniture-030",
+    "image": "/vtt/home-furniture-20261014/furniture-030.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.5,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "furniture-031",
+    "image": "/vtt/home-furniture-20261014/furniture-031.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.25,
+      "height": 0.25
+    }
+  },
+  {
+    "id": "furniture-032",
+    "image": "/vtt/home-furniture-20261014/furniture-032.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.55,
+      "height": 0.55
+    }
+  },
+  {
+    "id": "furniture-033",
+    "image": "/vtt/home-furniture-20261014/furniture-033.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 0.8
+    }
+  },
+  {
+    "id": "furniture-034",
+    "image": "/vtt/home-furniture-20261014/furniture-034.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.65
+    }
+  },
+  {
+    "id": "furniture-035",
+    "image": "/vtt/home-furniture-20261014/furniture-035.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.2,
+      "height": 0.75
+    }
+  },
+  {
+    "id": "furniture-036",
+    "image": "/vtt/home-furniture-20261014/furniture-036.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "furniture-037",
+    "image": "/vtt/home-furniture-20261014/furniture-037.webp",
+    "previous": {
+      "width": 1,
+      "height": 2
+    },
+    "metres": {
+      "width": 0.8,
+      "height": 1.8
+    }
+  },
+  {
+    "id": "furniture-038",
+    "image": "/vtt/home-furniture-20261014/furniture-038.webp",
+    "previous": {
+      "width": 2,
+      "height": 3
+    },
+    "metres": {
+      "width": 2.1,
+      "height": 3
+    }
+  },
+  {
+    "id": "furniture-039",
+    "image": "/vtt/home-furniture-20261014/furniture-039.webp",
+    "previous": {
+      "width": 2,
+      "height": 2
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 1.8
+    }
+  },
+  {
+    "id": "furniture-040",
+    "image": "/vtt/home-furniture-20261014/furniture-040.webp",
+    "previous": {
+      "width": 2,
+      "height": 2
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 1.5
+    }
+  },
+  {
+    "id": "furniture-041",
+    "image": "/vtt/home-furniture-20261014/furniture-041.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "furniture-042",
+    "image": "/vtt/home-furniture-20261014/furniture-042.webp",
+    "previous": {
+      "width": 2,
+      "height": 2
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 1.5
+    }
+  },
+  {
+    "id": "furniture-043",
+    "image": "/vtt/home-furniture-20261014/furniture-043.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 0.7
+    }
+  },
+  {
+    "id": "furniture-044",
+    "image": "/vtt/home-furniture-20261014/furniture-044.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.2,
+      "height": 0.65
+    }
+  },
+  {
+    "id": "furniture-045",
+    "image": "/vtt/home-furniture-20261014/furniture-045.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 0.4
+    }
+  },
+  {
+    "id": "furniture-046",
+    "image": "/vtt/home-furniture-20261014/furniture-046.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 0.4
+    }
+  },
+  {
+    "id": "furniture-047",
+    "image": "/vtt/home-furniture-20261014/furniture-047.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "furniture-048",
+    "image": "/vtt/home-furniture-20261014/furniture-048.webp",
+    "previous": {
+      "width": 2,
+      "height": 2
+    },
+    "metres": {
+      "width": 1.1,
+      "height": 1.1
+    }
+  },
+  {
+    "id": "furniture-049",
+    "image": "/vtt/home-furniture-20261014/furniture-049.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 0.9
+    }
+  },
+  {
+    "id": "furniture-050",
+    "image": "/vtt/home-furniture-20261014/furniture-050.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.45,
+      "height": 0.45
+    }
+  },
+  {
+    "id": "furniture-051",
+    "image": "/vtt/home-furniture-20261014/furniture-051.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.3,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "furniture-052",
+    "image": "/vtt/home-furniture-20261014/furniture-052.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.65
+    }
+  },
+  {
+    "id": "furniture-053",
+    "image": "/vtt/home-furniture-20261014/furniture-053.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.7,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "furniture-054",
+    "image": "/vtt/home-furniture-20261014/furniture-054.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.55,
+      "height": 0.55
+    }
+  },
+  {
+    "id": "furniture-055",
+    "image": "/vtt/home-furniture-20261014/furniture-055.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.25,
+      "height": 0.25
+    }
+  },
+  {
+    "id": "furniture-056",
+    "image": "/vtt/home-furniture-20261014/furniture-056.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.25,
+      "height": 0.25
+    }
+  },
+  {
+    "id": "furniture-057",
+    "image": "/vtt/home-furniture-20261014/furniture-057.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.3,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "furniture-058",
+    "image": "/vtt/home-furniture-20261014/furniture-058.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.4,
+      "height": 0.35
+    }
+  },
+  {
+    "id": "furniture-059",
+    "image": "/vtt/home-furniture-20261014/furniture-059.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 0.45
+    }
+  },
+  {
+    "id": "furniture-060",
+    "image": "/vtt/home-furniture-20261014/furniture-060.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.75,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "furniture-061",
+    "image": "/vtt/home-furniture-20261014/furniture-061.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.3,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "furniture-062",
+    "image": "/vtt/home-furniture-20261014/furniture-062.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.35,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "furniture-063",
+    "image": "/vtt/home-furniture-20261014/furniture-063.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 1,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "furniture-064",
+    "image": "/vtt/home-furniture-20261014/furniture-064.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.5,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "furniture-065",
+    "image": "/vtt/home-furniture-20261014/furniture-065.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.7,
+      "height": 0.7
+    }
+  },
+  {
+    "id": "furniture-066",
+    "image": "/vtt/home-furniture-20261014/furniture-066.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.4,
+      "height": 0.4
+    }
+  },
+  {
+    "id": "furniture-067",
+    "image": "/vtt/home-furniture-20261014/furniture-067.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.4
+    }
+  },
+  {
+    "id": "furniture-068",
+    "image": "/vtt/home-furniture-20261014/furniture-068.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.9,
+      "height": 0.45
+    }
+  },
+  {
+    "id": "furniture-069",
+    "image": "/vtt/home-furniture-20261014/furniture-069.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.3,
+      "height": 0.25
+    }
+  },
+  {
+    "id": "furniture-070",
+    "image": "/vtt/home-furniture-20261014/furniture-070.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 0.35
+    }
+  },
+  {
+    "id": "furniture-071",
+    "image": "/vtt/home-furniture-20261014/furniture-071.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.4,
+      "height": 0.4
+    }
+  },
+  {
+    "id": "furniture-072",
+    "image": "/vtt/home-furniture-20261014/furniture-072.webp",
+    "previous": {
+      "width": 1,
+      "height": 3
+    },
+    "metres": {
+      "width": 0.5,
+      "height": 2.5
+    }
+  },
+  {
+    "id": "furniture-073",
+    "image": "/vtt/home-furniture-20261014/furniture-073.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 1.3
+    }
+  },
+  {
+    "id": "furniture-074",
+    "image": "/vtt/home-furniture-20261014/furniture-074.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 1,
+      "height": 0.8
+    }
+  },
+  {
+    "id": "furniture-075",
+    "image": "/vtt/home-furniture-20261014/furniture-075.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.85
+    }
+  },
+  {
+    "id": "furniture-076",
+    "image": "/vtt/home-furniture-20261014/furniture-076.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.35,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "furniture-077",
+    "image": "/vtt/home-furniture-20261014/furniture-077.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.5,
+      "height": 0.45
+    }
+  },
+  {
+    "id": "furniture-078",
+    "image": "/vtt/home-furniture-20261014/furniture-078.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 0.45
+    }
+  },
+  {
+    "id": "furniture-079",
+    "image": "/vtt/home-furniture-20261014/furniture-079.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.4,
+      "height": 0.35
+    }
+  },
+  {
+    "id": "furniture-080",
+    "image": "/vtt/home-furniture-20261014/furniture-080.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.3,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "furniture-081",
+    "image": "/vtt/home-furniture-20261014/furniture-081.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 2.5,
+      "height": 0.35
+    }
+  },
+  {
+    "id": "furniture-082",
+    "image": "/vtt/home-furniture-20261014/furniture-082.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.45,
+      "height": 0.45
+    }
+  },
+  {
+    "id": "furniture-083",
+    "image": "/vtt/home-furniture-20261014/furniture-083.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "furniture-084",
+    "image": "/vtt/home-furniture-20261014/furniture-084.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.25,
+      "height": 0.2
+    }
+  },
+  {
+    "id": "furniture-085",
+    "image": "/vtt/home-furniture-20261014/furniture-085.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "furniture-086",
+    "image": "/vtt/home-furniture-20261014/furniture-086.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.5,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "furniture-087",
+    "image": "/vtt/home-furniture-20261014/furniture-087.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.25,
+      "height": 0.25
+    }
+  },
+  {
+    "id": "furniture-088",
+    "image": "/vtt/home-furniture-20261014/furniture-088.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.45,
+      "height": 0.4
+    }
+  },
+  {
+    "id": "furniture-089",
+    "image": "/vtt/home-furniture-20261014/furniture-089.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.2,
+      "height": 0.2
+    }
+  },
+  {
+    "id": "furniture-090",
+    "image": "/vtt/home-furniture-20261014/furniture-090.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.7,
+      "height": 0.7
+    }
+  },
+  {
+    "id": "furniture-091",
+    "image": "/vtt/home-furniture-20261014/furniture-091.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.5,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "furniture-092",
+    "image": "/vtt/home-furniture-20261014/furniture-092.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.55,
+      "height": 0.35
+    }
+  },
+  {
+    "id": "furniture-093",
+    "image": "/vtt/home-furniture-refined-20261014/furniture-093.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.55,
+      "height": 0.35
+    }
+  },
+  {
+    "id": "furniture-094",
+    "image": "/vtt/home-furniture-20261014/furniture-094.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.45,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "furniture-095",
+    "image": "/vtt/home-furniture-20261014/furniture-095.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.5,
+      "height": 0.35
+    }
+  },
+  {
+    "id": "furniture-096",
+    "image": "/vtt/home-furniture-20261014/furniture-096.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.35,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "furniture-097",
+    "image": "/vtt/home-furniture-20261014/furniture-097.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "furniture-098",
+    "image": "/vtt/home-furniture-20261014/furniture-098.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.35,
+      "height": 0.9
+    }
+  },
+  {
+    "id": "furniture-099",
+    "image": "/vtt/home-furniture-20261014/furniture-099.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.55,
+      "height": 0.4
+    }
+  },
+  {
+    "id": "furniture-100",
+    "image": "/vtt/home-furniture-refined-20261014/furniture-100.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.4,
+      "height": 0.7
+    }
+  },
+  {
+    "id": "garden-001",
+    "image": "/vtt/village-life-20261014/garden-001.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.8,
+      "height": 0.4
+    }
+  },
+  {
+    "id": "garden-002",
+    "image": "/vtt/village-life-20261014/garden-002.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.3,
+      "height": 1.2
+    }
+  },
+  {
+    "id": "garden-003",
+    "image": "/vtt/village-life-20261014/garden-003.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 1.5
+    },
+    "metres": {
+      "width": 0.35,
+      "height": 1.3
+    }
+  },
+  {
+    "id": "garden-004",
+    "image": "/vtt/village-life-20261014/garden-004.webp",
+    "previous": {
+      "width": 0.75,
+      "height": 1.5
+    },
+    "metres": {
+      "width": 0.5,
+      "height": 1.3
+    }
+  },
+  {
+    "id": "garden-005",
+    "image": "/vtt/village-life-20261014/garden-005.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 1.5
+    },
+    "metres": {
+      "width": 0.35,
+      "height": 1.3
+    }
+  },
+  {
+    "id": "garden-006",
+    "image": "/vtt/village-life-20261014/garden-006.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.25,
+      "height": 0.25
+    }
+  },
+  {
+    "id": "garden-007",
+    "image": "/vtt/village-life-20261014/garden-007.webp",
+    "previous": {
+      "width": 1,
+      "height": 2
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 1.6
+    }
+  },
+  {
+    "id": "garden-008",
+    "image": "/vtt/village-life-20261014/garden-008.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.45
+    }
+  },
+  {
+    "id": "garden-009",
+    "image": "/vtt/village-life-20261014/garden-009.webp",
+    "previous": {
+      "width": 2,
+      "height": 3
+    },
+    "metres": {
+      "width": 2,
+      "height": 3
+    }
+  },
+  {
+    "id": "garden-010",
+    "image": "/vtt/village-life-20261014/garden-010.webp",
+    "previous": {
+      "width": 2,
+      "height": 2
+    },
+    "metres": {
+      "width": 2,
+      "height": 2
+    }
+  },
+  {
+    "id": "garden-011",
+    "image": "/vtt/village-life-20261014/garden-011.webp",
+    "previous": {
+      "width": 2,
+      "height": 2
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 2
+    }
+  },
+  {
+    "id": "garden-012",
+    "image": "/vtt/village-life-20261014/garden-012.webp",
+    "previous": {
+      "width": 1,
+      "height": 2
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "garden-013",
+    "image": "/vtt/village-life-20261014/garden-013.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 1,
+      "height": 1
+    }
+  },
+  {
+    "id": "garden-014",
+    "image": "/vtt/village-life-20261014/garden-014.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.65
+    }
+  },
+  {
+    "id": "garden-015",
+    "image": "/vtt/village-life-20261014/garden-015.webp",
+    "previous": {
+      "width": 3,
+      "height": 4
+    },
+    "metres": {
+      "width": 3,
+      "height": 4
+    }
+  },
+  {
+    "id": "garden-016",
+    "image": "/vtt/village-life-20261014/garden-016.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.65
+    }
+  },
+  {
+    "id": "garden-017",
+    "image": "/vtt/village-life-20261014/garden-017.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "garden-018",
+    "image": "/vtt/village-life-20261014/garden-018.webp",
+    "previous": {
+      "width": 2,
+      "height": 2
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 1.5
+    }
+  },
+  {
+    "id": "garden-019",
+    "image": "/vtt/village-life-20261014/garden-019.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.5,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "garden-020",
+    "image": "/vtt/village-life-20261014/garden-020.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.4,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "garden-021",
+    "image": "/vtt/village-life-20261014/garden-021.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.65
+    }
+  },
+  {
+    "id": "garden-022",
+    "image": "/vtt/village-life-20261014/garden-022.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 0.7
+    }
+  },
+  {
+    "id": "garden-023",
+    "image": "/vtt/village-life-20261014/garden-023.webp",
+    "previous": {
+      "width": 0.5,
+      "height": 0.5
+    },
+    "metres": {
+      "width": 0.3,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "garden-024",
+    "image": "/vtt/village-life-20261014/garden-024.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 2,
+      "height": 0.3
+    }
+  },
+  {
+    "id": "garden-025",
+    "image": "/vtt/village-life-20261014/garden-025.webp",
+    "previous": {
+      "width": 2,
+      "height": 3
+    },
+    "metres": {
+      "width": 2.5,
+      "height": 3
+    }
+  },
+  {
+    "id": "merchant-001",
+    "image": "/vtt/village-life-20261014/merchant-001.webp",
+    "previous": {
+      "width": 3,
+      "height": 2
+    },
+    "metres": {
+      "width": 3,
+      "height": 2
+    }
+  },
+  {
+    "id": "merchant-002",
+    "image": "/vtt/village-life-20261014/merchant-002.webp",
+    "previous": {
+      "width": 3,
+      "height": 2
+    },
+    "metres": {
+      "width": 3,
+      "height": 2
+    }
+  },
+  {
+    "id": "merchant-003",
+    "image": "/vtt/village-life-20261014/merchant-003.webp",
+    "previous": {
+      "width": 2,
+      "height": 2
+    },
+    "metres": {
+      "width": 2.5,
+      "height": 2
+    }
+  },
+  {
+    "id": "merchant-004",
+    "image": "/vtt/village-life-20261014/merchant-004.webp",
+    "previous": {
+      "width": 3,
+      "height": 2
+    },
+    "metres": {
+      "width": 3,
+      "height": 2
+    }
+  },
+  {
+    "id": "merchant-005",
+    "image": "/vtt/village-life-20261014/merchant-005.webp",
+    "previous": {
+      "width": 2,
+      "height": 2
+    },
+    "metres": {
+      "width": 2.5,
+      "height": 2
+    }
+  },
+  {
+    "id": "merchant-006",
+    "image": "/vtt/village-life-20261014/merchant-006.webp",
+    "previous": {
+      "width": 3,
+      "height": 2
+    },
+    "metres": {
+      "width": 3,
+      "height": 2
+    }
+  },
+  {
+    "id": "merchant-007",
+    "image": "/vtt/village-life-20261014/merchant-007.webp",
+    "previous": {
+      "width": 3,
+      "height": 2
+    },
+    "metres": {
+      "width": 3,
+      "height": 2
+    }
+  },
+  {
+    "id": "merchant-008",
+    "image": "/vtt/village-life-20261014/merchant-008.webp",
+    "previous": {
+      "width": 3,
+      "height": 2
+    },
+    "metres": {
+      "width": 3,
+      "height": 2
+    }
+  },
+  {
+    "id": "merchant-009",
+    "image": "/vtt/village-life-20261014/merchant-009.webp",
+    "previous": {
+      "width": 3,
+      "height": 2
+    },
+    "metres": {
+      "width": 3,
+      "height": 2
+    }
+  },
+  {
+    "id": "merchant-010",
+    "image": "/vtt/village-life-20261014/merchant-010.webp",
+    "previous": {
+      "width": 3,
+      "height": 2
+    },
+    "metres": {
+      "width": 3,
+      "height": 2
+    }
+  },
+  {
+    "id": "merchant-011",
+    "image": "/vtt/village-life-20261014/merchant-011.webp",
+    "previous": {
+      "width": 2,
+      "height": 4
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 4
+    }
+  },
+  {
+    "id": "merchant-012",
+    "image": "/vtt/village-life-20261014/merchant-012.webp",
+    "previous": {
+      "width": 2,
+      "height": 4
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 4
+    }
+  },
+  {
+    "id": "merchant-013",
+    "image": "/vtt/village-life-20261014/merchant-013.webp",
+    "previous": {
+      "width": 1,
+      "height": 2
+    },
+    "metres": {
+      "width": 0.9,
+      "height": 1.8
+    }
+  },
+  {
+    "id": "merchant-014",
+    "image": "/vtt/village-life-20261014/merchant-014.webp",
+    "previous": {
+      "width": 2,
+      "height": 3
+    },
+    "metres": {
+      "width": 1.6,
+      "height": 3
+    }
+  },
+  {
+    "id": "merchant-015",
+    "image": "/vtt/village-life-20261014/merchant-015.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "merchant-016",
+    "image": "/vtt/village-life-20261014/merchant-016.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "merchant-017",
+    "image": "/vtt/village-life-20261014/merchant-017.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.6,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "merchant-018",
+    "image": "/vtt/village-life-20261014/merchant-018.webp",
+    "previous": {
+      "width": 0.75,
+      "height": 0.75
+    },
+    "metres": {
+      "width": 0.5,
+      "height": 0.5
+    }
+  },
+  {
+    "id": "merchant-019",
+    "image": "/vtt/village-life-20261014/merchant-019.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.8,
+      "height": 0.7
+    }
+  },
+  {
+    "id": "merchant-020",
+    "image": "/vtt/village-life-20261014/merchant-020.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.7,
+      "height": 0.6
+    }
+  },
+  {
+    "id": "merchant-021",
+    "image": "/vtt/village-life-20261014/merchant-021.webp",
+    "previous": {
+      "width": 1,
+      "height": 2
+    },
+    "metres": {
+      "width": 1.1,
+      "height": 1.3
+    }
+  },
+  {
+    "id": "merchant-022",
+    "image": "/vtt/village-life-20261014/merchant-022.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.2,
+      "height": 0.7
+    }
+  },
+  {
+    "id": "merchant-023",
+    "image": "/vtt/village-life-20261014/merchant-023.webp",
+    "previous": {
+      "width": 1,
+      "height": 1
+    },
+    "metres": {
+      "width": 0.65,
+      "height": 0.35
+    }
+  },
+  {
+    "id": "merchant-024",
+    "image": "/vtt/village-life-20261014/merchant-024.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.5,
+      "height": 0.45
+    }
+  },
+  {
+    "id": "merchant-025",
+    "image": "/vtt/village-life-20261014/merchant-025.webp",
+    "previous": {
+      "width": 2,
+      "height": 1
+    },
+    "metres": {
+      "width": 1.8,
+      "height": 0.75
+    }
+  }
+]

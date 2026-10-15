@@ -84,7 +84,7 @@ export function canopySource(area: CanopyArea, tokens: VttToken[]) {
 }
 export const isTreeCanopy = (t: VttToken) =>
   t.layer === 'map' && t.image.startsWith('/vtt/trees-20261013/');
-export const canopyActor = (t: VttToken) => t.layer === 'tokens' && !t.hidden;
+export const canopyActor = (t: VttToken) => t.layer === 'tokens' && !t.hidden && !t.sceneryToken;
 export function canopyContains(p: Point, points: Point[]) {
   let inside = false;
   for (let i = 0, j = points.length - 1; i < points.length; j = i++) {

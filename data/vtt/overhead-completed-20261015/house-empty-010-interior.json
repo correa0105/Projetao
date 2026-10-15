@@ -1,6 +1,6 @@
 {
   "parent": "house-010-interior",
-  "parentSourceSha256": "f36e0686ef1030839d9720d41c2c2fde5dc0d5db0af5e19271687926e01b7039",
+  "parentSourceSha256": "a7220c60da7a77a79963559ea7fb8fec1257688ae4ccd6aa7329244d320b2d62",
   "id": "house-empty-010-interior",
   "name": "Casa do padeiro · vazia · Interior",
   "kind": "empty-interior",

@@ -1,6 +1,6 @@
 {
   "parent": "house-011-interior",
-  "parentSourceSha256": "d6455a29c40a36da6a13799ea7b892515ba5c56c56a8efb64dde7765cd5ce593",
+  "parentSourceSha256": "3f067b670cf17a3eed209a8be701db8e336fc45bcdbdfa92380ee5dbfdac24df",
   "id": "house-empty-011-interior",
   "name": "Casa do mercador · vazia · Interior",
   "kind": "empty-interior",

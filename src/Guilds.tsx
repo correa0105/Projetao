@@ -288,239 +288,8 @@ export function Guilds({
         : d,
     );
   }
-  return (
-    <section className={`guild-page ${g ? 'guild-is-detail' : ''}`}>
-      <header className="guild-page-heading">
-        {g && <GuildCrest crest={current!.crest} size={100} />}
-        <div className="guild-heading-copy">
-        <span className="social-eyebrow">Um brasão. Oito histórias. Um lar.</span>
-        <h1>{g?.document.name || 'Guildas da Alvorada'}</h1>
-        <p>
-          {g?.document.description || 'Encontre sua companhia e construa um lugar para voltar.'}
-        </p>
-        </div>
-        <div className="guild-actions">
-          {target && (
-            <button onClick={() => (location.hash = 'guild')}>
-              <ArrowLeft size={15} />
-              Todas as guildas
-            </button>
-          )}
-          {directory?.mine && directory.mine !== target && (
-            <button onClick={() => (location.hash = 'guild?id=' + directory.mine)}>
-              <Home size={15} />
-              Minha guilda
-            </button>
-          )}
-          {settings?.can_edit && (
-            <button onClick={() => setConfig(structuredClone(settings.document))}>
-              <Settings2 size={15} />
-              Painel administrativo
-            </button>
-          )}
-        </div>
-      </header>
-      {error && (
-        <p className="guild-feedback error" role="alert">
-          {error}
-        </p>
-      )}
-      {notice && (
-        <p className="guild-feedback" role="status">
-          {notice}
-        </p>
-      )}
-      {!directory ? (
-        <p role="status">Abrindo o registro das guildas…</p>
-      ) : !target ? (
-        <>
-          <div className="guild-introduction">
-            <img src="/guild/rooms/main.webp" alt="Salão modesto de uma nova guilda" />
-            <div>
-              <span className="social-eyebrow">O primeiro capítulo</span>
-              <h2>Uma sede para chamar de sua</h2>
-              <p>
-                Sua guilda começa com ferraria, salão principal, sala de estar e sala de reunião.
-                Reúna até oito jogadores, personalize o brasão e a decoração e escreva novas
-                crônicas em companhia.
-              </p>
-              <strong>
-                {settings?.document.founding_po === null
-                  ? 'Custo aguardando configuração do administrador'
-                  : settings?.document.founding_po.toLocaleString('pt-BR') + ' PO para fundar'}
-              </strong>
-              {!directory.mine && (
-                <p className="guild-new-character">{characters.find(c => c.id === activeCharacterId)?.name || 'Seu personagem'} ainda não pertence a uma guilda.</p>
-              )}
-              {!directory.mine && (
-                <div className="guild-actions">
-                <button onClick={() => document.getElementById('guild-directory')?.scrollIntoView({block:'start',behavior:'smooth'})}><Search size={16}/>Procurar guildas</button>
-                <button
-                  disabled={busy || !freeCharacters.length || settings?.document.founding_po === null}
-                  onClick={() => {
-                    request.current = crypto.randomUUID();
-                    setCharacter(freeCharacters.find(c => c.id === activeCharacterId)?.id || freeCharacters[0]?.id || '');
-                    setDoc(guildDocumentSchema.parse({ name: 'Nova guilda' }));
-                    setFounding(true);
-                  }}
-                >
-                  <Plus size={17} />
-                  Fundar uma guilda
-                </button>
-                </div>
-              )}
-              {!characters.length && (
-                <small>Crie um personagem para fundar ou entrar em uma guilda.</small>
-              )}
-            </div>
-          </div>
-          {!directory.mine && freeCharacters.length > 0 && directory.invites.length > 0 && (
-            <section className="guild-paper">
-              <h2>Convites recebidos</h2>
-              <label>
-                Representar com
-                <select value={character} onChange={(e) => setCharacter(e.target.value)}>
-                  {freeCharacters.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              {directory.invites.map((i) => (
-                <div className="guild-invite" key={i.guild_id}>
-                  <GuildCrest crest={i.crest} size={55} />
-                  <strong>{i.name}</strong>
-                  <button
-                    disabled={busy || !character}
-                    onClick={() =>
-                      void run(async () => {
-                        await post('/guilds/' + i.guild_id + '/join', { character_id: character });
-                        onSelectCharacter(character);
-                        location.hash = 'guild?id=' + i.guild_id;
-                      })
-                    }
-                  >
-                    Aceitar
-                  </button>
-                  <button
-                    disabled={busy}
-                    onClick={() =>
-                      void run(async () => {
-                        await api('/guilds/' + i.guild_id + '/invites', { method: 'DELETE' });
-                        await load();
-                      })
-                    }
-                  >
-                    Recusar
-                  </button>
-                </div>
-              ))}
-            </section>
-          )}
-          <h2 className="guild-section-title" id="guild-directory">
-            <Trophy size={22} />
-            Ranking das guildas
-          </h2>
-          <label className="guild-directory-search">Procurar guildas<input type="search" aria-label="Procurar guildas" value={guildSearch} onChange={e => setGuildSearch(e.target.value)} placeholder="Nome da guilda"/></label>
-          <div className="guild-directory">
-            {directory.items.map((e,i) => ({e,i})).filter(({e}) => e.name.toLocaleLowerCase('pt-BR').includes(guildSearch.toLocaleLowerCase('pt-BR'))).map(({e, i}) => (
-              <button key={e.id} onClick={() => (location.hash = 'guild?id=' + e.id)}>
-                <span className="guild-ranking-number">{String(i + 1).padStart(2, '0')}</span>
-                <GuildCrest crest={e.crest} size={85} />
-                <h3>{e.name}</h3>
-                <small>
-                  {e.rank} · {e.members}/8 jogadores
-                </small>
-                <strong>{e.prestige} prestígio</strong>
-              </button>
-            ))}
-            {!directory.items.length && <p>O registro aguarda o primeiro brasão.</p>}
-          </div>
-        </>
-      ) : !g ? (
-        <p role="status">Abrindo a sede…</p>
-      ) : (
-        <>
-          <div className="guild-summary">
-            <div className="guild-rank">
-              <span className="social-eyebrow">Patente {g.rank}</span>
-              <h2>Nível {g.level}</h2>
-            </div>
-            <div className="guild-stat"><Trophy size={16}/><strong>{g.prestige}</strong><span>Prestígio</span></div>
-            <div className="guild-stat"><Users size={16}/><strong>{g.members.length}<small>/8</small></strong><span>Jogadores</span></div>
-            {g.is_member && (
-              <strong>
-                <Coins size={18} /> {((g.treasury_cp || 0) / 100).toLocaleString('pt-BR')} PO
-                <small>Tesouro da guilda</small>
-              </strong>
-            )}
-            {g.is_owner && (
-              <button disabled={busy} onClick={() => setCrestDraft({crest: structuredClone(current!.crest), revision:g.revision})}><Palette size={16}/>Editar brasão</button>
-            )}
-            {g.is_owner && !editable && (
-              <button disabled={busy} onClick={() => setDoc(structuredClone(g.document))}>
-                <Settings2 size={16} />
-                Personalizar sede
-              </button>
-            )}
-          </div>
-          <p className="guild-membership" role="status">
-            <Users size={14}/>
-            {characters.find(c => c.id === activeCharacterId)?.name || 'Seu personagem'}
-            {g.is_member ? ' · Membro desta guilda' : ' · Visitante · Não pertence a esta guilda'}
-          </p>
-          <nav className="guild-tabs" aria-label="Áreas da guilda">
-            {[
-              ['house', 'Sede', Home, 'Salas e decoração'],
-              ['missions', 'Missões semanais', Trophy, 'Objetivos e recompensas'],
-              ['members', 'Companhia', Users, 'Membros e convites'],
-            ].map(([id, name, Icon, description]) => {
-              const I = Icon as typeof Home;
-              return (
-                <button
-                  key={String(id)}
-                  aria-label={String(name)}
-                  aria-pressed={tab === id}
-                  onClick={() => setTab(String(id))}
-                >
-                  <I size={16} />
-                  <span>{String(name)}<small>{String(description)}</small></span>
-                </button>
-              );
-            })}
-          </nav>
-          {tab === 'house' && (
-            <>
-              <div className="guild-room-heading"><div><span className="social-eyebrow">Explore a sede</span><h2>{roomInfo.name}</h2></div><p>Novas salas são liberadas conforme a guilda sobe de nível.</p></div>
-              <nav className="guild-room-tabs" aria-label="Salas da sede">
-                {guildRooms.map((r) => {
-                  const locked =
-                    !r.starter && g.level < g.room_unlocks[r.id as keyof typeof g.room_unlocks];
-                  return (
-                    <button
-                      key={r.id}
-                      disabled={locked}
-                      title={
-                        locked
-                          ? 'Libera no nível ' + g.room_unlocks[r.id as keyof typeof g.room_unlocks]
-                          : r.name
-                      }
-                      aria-pressed={room === r.id}
-                      onClick={() => {
-                        setRoom(r.id);
-                        setSelected('');
-                      }}
-                    >
-                      {locked && <Lock size={13} />} {r.name}
-                      {locked && (
-                        <small>Nv. {g.room_unlocks[r.id as keyof typeof g.room_unlocks]}</small>
-                      )}
-                    </button>
-                  );
-                })}
-              </nav>
-              <div className={`guild-house-layout ${editable ? 'is-editing' : ''}`}>
+  const headquarters = g && tab === 'house' ? (
+<div className={`guild-house-layout ${editable ? 'is-editing' : ''}`}>
                 <div
                   ref={scene}
                   className={`guild-room ambience-${current!.ambience}`}
@@ -853,6 +622,239 @@ export function Guilds({
                   </aside>
                 )}
               </div>
+  ) : null;
+  return (
+    <section className={`guild-page ${g ? 'guild-is-detail' : ''}`}>
+      {headquarters}
+      <header className="guild-page-heading">
+        {g && <GuildCrest crest={current!.crest} size={100} />}
+        <div className="guild-heading-copy">
+        <h1>{g?.document.name || 'Guildas da Alvorada'}</h1>
+        <p>
+          {g?.document.description || 'Encontre sua companhia e construa um lugar para voltar.'}
+        </p>
+        </div>
+        <div className="guild-actions">
+          {target && (
+            <button onClick={() => (location.hash = 'guild')}>
+              <ArrowLeft size={15} />
+              Todas as guildas
+            </button>
+          )}
+          {directory?.mine && directory.mine !== target && (
+            <button onClick={() => (location.hash = 'guild?id=' + directory.mine)}>
+              <Home size={15} />
+              Minha guilda
+            </button>
+          )}
+          {settings?.can_edit && (
+            <button onClick={() => setConfig(structuredClone(settings.document))}>
+              <Settings2 size={15} />
+              Painel administrativo
+            </button>
+          )}
+        </div>
+      </header>
+      {error && (
+        <p className="guild-feedback error" role="alert">
+          {error}
+        </p>
+      )}
+      {notice && (
+        <p className="guild-feedback" role="status">
+          {notice}
+        </p>
+      )}
+      {!directory ? (
+        <p role="status">Abrindo o registro das guildas…</p>
+      ) : !target ? (
+        <>
+          <div className="guild-introduction">
+            <img src="/guild/rooms/main.webp" alt="Salão modesto de uma nova guilda" />
+            <div>
+              <span className="social-eyebrow">O primeiro capítulo</span>
+              <h2>Uma sede para chamar de sua</h2>
+              <p>
+                Sua guilda começa com ferraria, salão principal, sala de estar e sala de reunião.
+                Reúna até oito jogadores, personalize o brasão e a decoração e escreva novas
+                crônicas em companhia.
+              </p>
+              <strong>
+                {settings?.document.founding_po === null
+                  ? 'Custo aguardando configuração do administrador'
+                  : settings?.document.founding_po.toLocaleString('pt-BR') + ' PO para fundar'}
+              </strong>
+              {!directory.mine && (
+                <p className="guild-new-character">{characters.find(c => c.id === activeCharacterId)?.name || 'Seu personagem'} ainda não pertence a uma guilda.</p>
+              )}
+              {!directory.mine && (
+                <div className="guild-actions">
+                <button onClick={() => document.getElementById('guild-directory')?.scrollIntoView({block:'start',behavior:'smooth'})}><Search size={16}/>Procurar guildas</button>
+                <button
+                  disabled={busy || !freeCharacters.length || settings?.document.founding_po === null}
+                  onClick={() => {
+                    request.current = crypto.randomUUID();
+                    setCharacter(freeCharacters.find(c => c.id === activeCharacterId)?.id || freeCharacters[0]?.id || '');
+                    setDoc(guildDocumentSchema.parse({ name: 'Nova guilda' }));
+                    setFounding(true);
+                  }}
+                >
+                  <Plus size={17} />
+                  Fundar uma guilda
+                </button>
+                </div>
+              )}
+              {!characters.length && (
+                <small>Crie um personagem para fundar ou entrar em uma guilda.</small>
+              )}
+            </div>
+          </div>
+          {!directory.mine && freeCharacters.length > 0 && directory.invites.length > 0 && (
+            <section className="guild-paper">
+              <h2>Convites recebidos</h2>
+              <label>
+                Representar com
+                <select value={character} onChange={(e) => setCharacter(e.target.value)}>
+                  {freeCharacters.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {directory.invites.map((i) => (
+                <div className="guild-invite" key={i.guild_id}>
+                  <GuildCrest crest={i.crest} size={55} />
+                  <strong>{i.name}</strong>
+                  <button
+                    disabled={busy || !character}
+                    onClick={() =>
+                      void run(async () => {
+                        await post('/guilds/' + i.guild_id + '/join', { character_id: character });
+                        onSelectCharacter(character);
+                        location.hash = 'guild?id=' + i.guild_id;
+                      })
+                    }
+                  >
+                    Aceitar
+                  </button>
+                  <button
+                    disabled={busy}
+                    onClick={() =>
+                      void run(async () => {
+                        await api('/guilds/' + i.guild_id + '/invites', { method: 'DELETE' });
+                        await load();
+                      })
+                    }
+                  >
+                    Recusar
+                  </button>
+                </div>
+              ))}
+            </section>
+          )}
+          <h2 className="guild-section-title" id="guild-directory">
+            <Trophy size={22} />
+            Ranking das guildas
+          </h2>
+          <label className="guild-directory-search">Procurar guildas<input type="search" aria-label="Procurar guildas" value={guildSearch} onChange={e => setGuildSearch(e.target.value)} placeholder="Nome da guilda"/></label>
+          <div className="guild-directory">
+            {directory.items.map((e,i) => ({e,i})).filter(({e}) => e.name.toLocaleLowerCase('pt-BR').includes(guildSearch.toLocaleLowerCase('pt-BR'))).map(({e, i}) => (
+              <button key={e.id} onClick={() => (location.hash = 'guild?id=' + e.id)}>
+                <span className="guild-ranking-number">{String(i + 1).padStart(2, '0')}</span>
+                <GuildCrest crest={e.crest} size={85} />
+                <h3>{e.name}</h3>
+                <small>
+                  {e.rank} · {e.members}/8 jogadores
+                </small>
+                <strong>{e.prestige} prestígio</strong>
+              </button>
+            ))}
+            {!directory.items.length && <p>O registro aguarda o primeiro brasão.</p>}
+          </div>
+        </>
+      ) : !g ? (
+        <p role="status">Abrindo a sede…</p>
+      ) : (
+        <>
+          <div className="guild-summary">
+            <div className="guild-rank">
+              <span className="social-eyebrow">Patente {g.rank}</span>
+              <h2>Nível {g.level}</h2>
+            </div>
+            <div className="guild-stat"><Trophy size={16}/><strong>{g.prestige}</strong><span>Prestígio</span></div>
+            <div className="guild-stat"><Users size={16}/><strong>{g.members.length}<small>/8</small></strong><span>Jogadores</span></div>
+            {g.is_member && (
+              <strong>
+                <Coins size={18} /> {((g.treasury_cp || 0) / 100).toLocaleString('pt-BR')} PO
+                <small>Tesouro da guilda</small>
+              </strong>
+            )}
+            {g.is_owner && (
+              <button disabled={busy} onClick={() => setCrestDraft({crest: structuredClone(current!.crest), revision:g.revision})}><Palette size={16}/>Editar brasão</button>
+            )}
+            {g.is_owner && !editable && (
+              <button disabled={busy} onClick={() => setDoc(structuredClone(g.document))}>
+                <Settings2 size={16} />
+                Personalizar sede
+              </button>
+            )}
+          </div>
+          <p className="guild-membership" role="status">
+            <Users size={14}/>
+            {characters.find(c => c.id === activeCharacterId)?.name || 'Seu personagem'}
+            {g.is_member ? ' · Membro desta guilda' : ' · Visitante · Não pertence a esta guilda'}
+          </p>
+          <nav className="guild-tabs" aria-label="Áreas da guilda">
+            {[
+              ['house', 'Sede', Home, 'Salas e decoração'],
+              ['missions', 'Missões semanais', Trophy, 'Objetivos e recompensas'],
+              ['members', 'Companhia', Users, 'Membros e convites'],
+            ].map(([id, name, Icon, description]) => {
+              const I = Icon as typeof Home;
+              return (
+                <button
+                  key={String(id)}
+                  aria-label={String(name)}
+                  aria-pressed={tab === id}
+                  onClick={() => setTab(String(id))}
+                >
+                  <I size={16} />
+                  <span>{String(name)}<small>{String(description)}</small></span>
+                </button>
+              );
+            })}
+          </nav>
+          {tab === 'house' && (
+            <>
+              <div className="guild-room-heading"><div><span className="social-eyebrow">Explore a sede</span><h2>{roomInfo.name}</h2></div><p>Novas salas são liberadas conforme a guilda sobe de nível.</p></div>
+              <nav className="guild-room-tabs" aria-label="Salas da sede">
+                {guildRooms.map((r) => {
+                  const locked =
+                    !r.starter && g.level < g.room_unlocks[r.id as keyof typeof g.room_unlocks];
+                  return (
+                    <button
+                      key={r.id}
+                      disabled={locked}
+                      title={
+                        locked
+                          ? 'Libera no nível ' + g.room_unlocks[r.id as keyof typeof g.room_unlocks]
+                          : r.name
+                      }
+                      aria-pressed={room === r.id}
+                      onClick={() => {
+                        setRoom(r.id);
+                        setSelected('');
+                      }}
+                    >
+                      {locked && <Lock size={13} />} {r.name}
+                      {locked && (
+                        <small>Nv. {g.room_unlocks[r.id as keyof typeof g.room_unlocks]}</small>
+                      )}
+                    </button>
+                  );
+                })}
+              </nav>
               {obj && g.is_member && !editable && (
                 <section className="guild-paper">
                   <h3>

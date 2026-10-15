@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import {grantBetaStartingGold} from './beta-accounts.js';
 import type { CharacterArtPair } from './character-token-illustrator.js';
 import { normalizeCharacterToken, syncCharacterTokenArt } from './character-token-art.js';
 import {
@@ -259,6 +260,7 @@ export async function completeArt(jobId: string, output: CharacterArtPair) {
         ],
       );
       characterId = character.id;
+      await grantBetaStartingGold(client,job.user_id,character.id);
       if (data.choices) {
         await client.query('INSERT INTO character_sheets(character_id,choices) VALUES($1,$2)', [
           characterId,

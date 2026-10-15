@@ -1,0 +1,102 @@
+[
+  {
+    "id": "packed-earth",
+    "name": "Terra batida",
+    "prompt": "Use case: stylized-concept. Asset type: seamless repeating terrain texture for a medieval fantasy virtual tabletop. Subject: Dry compacted ochre-brown footpath soil, fine dusty earth with tiny flattened grit and subtle natural wear. No footprints or tracks. Composition: perfectly flat orthographic 90-degree overhead view, full square material fills every pixel edge to edge. The full image covers approximately 3 by 3 metres in the game world. Tile must repeat seamlessly on ALL four edges: continuous material at opposite boundaries, no visible borders or central composition. Style: detailed realistic hand-painted PBR-like fantasy battlemap texture, restrained natural colors, sharp legible fine surface detail. Lighting: even diffuse neutral ambient light, uniform brightness throughout, no directional cast shadows, no vignette, no perspective. Opaque background. No objects, buildings, people, animals, text, labels, watermark, grid overlay or frame.",
+    "tool": "built-in image_gen",
+    "source": "data/vtt/terrain-expansion-20261015/packed-earth.png",
+    "image": "/vtt/terrain-expansion-20261015/packed-earth.webp",
+    "thumbnail": "/vtt/terrain-expansion-thumbs-20261015/packed-earth.webp",
+    "sha256": "17e8f3bb9613a2516230bb617f60dd4dd333df60a9c708595406a750567e22b6"
+  },
+  {
+    "id": "mud",
+    "name": "Lama",
+    "prompt": "Use case: stylized-concept. Asset type: seamless repeating terrain texture for a medieval fantasy virtual tabletop. Subject: Wet dark brown muddy soil with subtle soft undulations and small shallow damp patches; no deep puddles or footprints. Composition: perfectly flat orthographic 90-degree overhead view, full square material fills every pixel edge to edge. The full image covers approximately 3 by 3 metres in the game world. Tile must repeat seamlessly on ALL four edges: continuous material at opposite boundaries, no visible borders or central composition. Style: detailed realistic hand-painted PBR-like fantasy battlemap texture, restrained natural colors, sharp legible fine surface detail. Lighting: even diffuse neutral ambient light, uniform brightness throughout, no directional cast shadows, no vignette, no perspective. Opaque background. No objects, buildings, people, animals, text, labels, watermark, grid overlay or frame.",
+    "tool": "built-in image_gen",
+    "source": "data/vtt/terrain-expansion-20261015/mud.png",
+    "image": "/vtt/terrain-expansion-20261015/mud.webp",
+    "thumbnail": "/vtt/terrain-expansion-thumbs-20261015/mud.webp",
+    "sha256": "a4a17cc313ea56fc3d71fbec67dff0755c0e87993db49192024f26ad9389a89d"
+  },
+  {
+    "id": "gravel",
+    "name": "Cascalho",
+    "prompt": "Use case: stylized-concept. Asset type: seamless repeating terrain texture for a medieval fantasy virtual tabletop. Subject: Dense small rounded gray and warm beige pea gravel, stones 1–3 cm, evenly distributed, no big rocks. Composition: perfectly flat orthographic 90-degree overhead view, full square material fills every pixel edge to edge. The full image covers approximately 3 by 3 metres in the game world. Tile must repeat seamlessly on ALL four edges: continuous material at opposite boundaries, no visible borders or central composition. Style: detailed realistic hand-painted PBR-like fantasy battlemap texture, restrained natural colors, sharp legible fine surface detail. Lighting: even diffuse neutral ambient light, uniform brightness throughout, no directional cast shadows, no vignette, no perspective. Opaque background. No objects, buildings, people, animals, text, labels, watermark, grid overlay or frame.",
+    "tool": "built-in image_gen",
+    "source": "data/vtt/terrain-expansion-20261015/gravel.png",
+    "image": "/vtt/terrain-expansion-20261015/gravel.webp",
+    "thumbnail": "/vtt/terrain-expansion-thumbs-20261015/gravel.webp",
+    "sha256": "5ac2eafde6d41e7fded8661bbfd40d96a3d26f5798722d8ff9cf64689c4934b0"
+  },
+  {
+    "id": "leaves",
+    "name": "Folhas secas",
+    "prompt": "Use case: stylized-concept. Asset type: seamless repeating terrain texture for a medieval fantasy virtual tabletop. Subject: Thin carpet of naturally scattered brown oak and beech autumn leaves over forest soil, ochre and muted brown, leaves small scale. Composition: perfectly flat orthographic 90-degree overhead view, full square material fills every pixel edge to edge. The full image covers approximately 3 by 3 metres in the game world. Tile must repeat seamlessly on ALL four edges: continuous material at opposite boundaries, no visible borders or central composition. Style: detailed realistic hand-painted PBR-like fantasy battlemap texture, restrained natural colors, sharp legible fine surface detail. Lighting: even diffuse neutral ambient light, uniform brightness throughout, no directional cast shadows, no vignette, no perspective. Opaque background. No objects, buildings, people, animals, text, labels, watermark, grid overlay or frame.",
+    "tool": "built-in image_gen",
+    "source": "data/vtt/terrain-expansion-20261015/leaves.png",
+    "image": "/vtt/terrain-expansion-20261015/leaves.webp",
+    "thumbnail": "/vtt/terrain-expansion-thumbs-20261015/leaves.webp",
+    "sha256": "6e42a141430645216893c55eeb44975349db8911aee775f0f11d9d977464318a"
+  },
+  {
+    "id": "moss",
+    "name": "Musgo",
+    "prompt": "Use case: stylized-concept. Asset type: seamless repeating terrain texture for a medieval fantasy virtual tabletop. Subject: Dense soft natural green moss ground, tiny varied clumps, dark forest green, minute earthy gaps, no plants taller than moss. Composition: perfectly flat orthographic 90-degree overhead view, full square material fills every pixel edge to edge. The full image covers approximately 3 by 3 metres in the game world. Tile must repeat seamlessly on ALL four edges: continuous material at opposite boundaries, no visible borders or central composition. Style: detailed realistic hand-painted PBR-like fantasy battlemap texture, restrained natural colors, sharp legible fine surface detail. Lighting: even diffuse neutral ambient light, uniform brightness throughout, no directional cast shadows, no vignette, no perspective. Opaque background. No objects, buildings, people, animals, text, labels, watermark, grid overlay or frame.",
+    "tool": "built-in image_gen",
+    "source": "data/vtt/terrain-expansion-20261015/moss.png",
+    "image": "/vtt/terrain-expansion-20261015/moss.webp",
+    "thumbnail": "/vtt/terrain-expansion-thumbs-20261015/moss.webp",
+    "sha256": "e9c7bbfbfb787f24b0266e9a5be26c24cc40370e5ee5d51c001b66d7ca4f09fd"
+  },
+  {
+    "id": "dry-grass",
+    "name": "Grama seca",
+    "prompt": "Use case: stylized-concept. Asset type: seamless repeating terrain texture for a medieval fantasy virtual tabletop. Subject: Short dry golden straw-colored grass growing over dry soil, desaturated natural ochre and tan, subtle irregular fine blades. Composition: perfectly flat orthographic 90-degree overhead view, full square material fills every pixel edge to edge. The full image covers approximately 3 by 3 metres in the game world. Tile must repeat seamlessly on ALL four edges: continuous material at opposite boundaries, no visible borders or central composition. Style: detailed realistic hand-painted PBR-like fantasy battlemap texture, restrained natural colors, sharp legible fine surface detail. Lighting: even diffuse neutral ambient light, uniform brightness throughout, no directional cast shadows, no vignette, no perspective. Opaque background. No objects, buildings, people, animals, text, labels, watermark, grid overlay or frame.",
+    "tool": "built-in image_gen",
+    "source": "data/vtt/terrain-expansion-20261015/dry-grass.png",
+    "image": "/vtt/terrain-expansion-20261015/dry-grass.webp",
+    "thumbnail": "/vtt/terrain-expansion-thumbs-20261015/dry-grass.webp",
+    "sha256": "902fb9d291617edb134f9668f3361ad0ee6f3e926e8caf5b2be47d837c8368a8"
+  },
+  {
+    "id": "cobblestone",
+    "name": "Paralelepípedos",
+    "prompt": "Use case: stylized-concept. Asset type: seamless repeating terrain texture for a medieval fantasy virtual tabletop. Subject: Medieval road of worn small gray cobblestones with irregular rectangular shapes 15–25 cm, narrow earthy mortar gaps, all stones flat and level. Composition: perfectly flat orthographic 90-degree overhead view, full square material fills every pixel edge to edge. The full image covers approximately 3 by 3 metres in the game world. Tile must repeat seamlessly on ALL four edges: continuous material at opposite boundaries, no visible borders or central composition. Style: detailed realistic hand-painted PBR-like fantasy battlemap texture, restrained natural colors, sharp legible fine surface detail. Lighting: even diffuse neutral ambient light, uniform brightness throughout, no directional cast shadows, no vignette, no perspective. Opaque background. No objects, buildings, people, animals, text, labels, watermark, grid overlay or frame.",
+    "tool": "built-in image_gen",
+    "source": "data/vtt/terrain-expansion-20261015/cobblestone.png",
+    "image": "/vtt/terrain-expansion-20261015/cobblestone.webp",
+    "thumbnail": "/vtt/terrain-expansion-thumbs-20261015/cobblestone.webp",
+    "sha256": "f0a81fbdd88db21883911b6e5226e3b62be08a90d6632f83e087ea86b6bd95c6"
+  },
+  {
+    "id": "terracotta",
+    "name": "Terracota",
+    "prompt": "Use case: stylized-concept. Asset type: seamless repeating terrain texture for a medieval fantasy virtual tabletop. Subject: Weathered warm reddish terracotta floor tiles, small square 25 cm tiles in straight aligned grid, fine grout, subtle varied clay tones, no decorative motifs. Composition: perfectly flat orthographic 90-degree overhead view, full square material fills every pixel edge to edge. The full image covers approximately 3 by 3 metres in the game world. Tile must repeat seamlessly on ALL four edges: continuous material at opposite boundaries, no visible borders or central composition. Style: detailed realistic hand-painted PBR-like fantasy battlemap texture, restrained natural colors, sharp legible fine surface detail. Lighting: even diffuse neutral ambient light, uniform brightness throughout, no directional cast shadows, no vignette, no perspective. Opaque background. No objects, buildings, people, animals, text, labels, watermark, grid overlay or frame.",
+    "tool": "built-in image_gen",
+    "source": "data/vtt/terrain-expansion-20261015/terracotta.png",
+    "image": "/vtt/terrain-expansion-20261015/terracotta.webp",
+    "thumbnail": "/vtt/terrain-expansion-thumbs-20261015/terracotta.webp",
+    "sha256": "532b4acbb89c6e77438e166672f30c53562fc9b561bd0c3f85a610a0c90aa45c"
+  },
+  {
+    "id": "marble",
+    "name": "Mármore",
+    "prompt": "Use case: stylized-concept. Asset type: seamless repeating terrain texture for a medieval fantasy virtual tabletop. Subject: Pale cream marble floor with delicate warm gray veins, large flat slabs with faint narrow joints, subtle matte wear, no shine or reflections. Composition: perfectly flat orthographic 90-degree overhead view, full square material fills every pixel edge to edge. The full image covers approximately 3 by 3 metres in the game world. Tile must repeat seamlessly on ALL four edges: continuous material at opposite boundaries, no visible borders or central composition. Style: detailed realistic hand-painted PBR-like fantasy battlemap texture, restrained natural colors, sharp legible fine surface detail. Lighting: even diffuse neutral ambient light, uniform brightness throughout, no directional cast shadows, no vignette, no perspective. Opaque background. No objects, buildings, people, animals, text, labels, watermark, grid overlay or frame.",
+    "tool": "built-in image_gen",
+    "source": "data/vtt/terrain-expansion-20261015/marble.png",
+    "image": "/vtt/terrain-expansion-20261015/marble.webp",
+    "thumbnail": "/vtt/terrain-expansion-thumbs-20261015/marble.webp",
+    "sha256": "2ff61cad06e803060d2bce35e2868d7d8ed12a446cf4b212c7eb862e14f4d156"
+  },
+  {
+    "id": "dark-wood",
+    "name": "Madeira escura",
+    "prompt": "Use case: stylized-concept. Asset type: seamless repeating terrain texture for a medieval fantasy virtual tabletop. Subject: Dark walnut timber floor, narrow 15 cm wooden planks running vertically, staggered joints, aged matte brown wood grain, subtle knots, no nails or debris. Composition: perfectly flat orthographic 90-degree overhead view, full square material fills every pixel edge to edge. The full image covers approximately 3 by 3 metres in the game world. Tile must repeat seamlessly on ALL four edges: continuous material at opposite boundaries, no visible borders or central composition. Style: detailed realistic hand-painted PBR-like fantasy battlemap texture, restrained natural colors, sharp legible fine surface detail. Lighting: even diffuse neutral ambient light, uniform brightness throughout, no directional cast shadows, no vignette, no perspective. Opaque background. No objects, buildings, people, animals, text, labels, watermark, grid overlay or frame.",
+    "tool": "built-in image_gen",
+    "source": "data/vtt/terrain-expansion-20261015/dark-wood.png",
+    "image": "/vtt/terrain-expansion-20261015/dark-wood.webp",
+    "thumbnail": "/vtt/terrain-expansion-thumbs-20261015/dark-wood.webp",
+    "sha256": "465dfea64a001b493dfbf2871076698b7cf088bb6d6ef871e1dc70a6d77f174e"
+  }
+]

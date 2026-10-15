@@ -3,23 +3,25 @@
   "name": "Biblioteca · Interior",
   "kind": "interior",
   "tool": "built-in image_gen",
-  "prompt": "EDIT Image 1 only to correct the projection of the bookcases. Keep the exact same complete room, square or rectangular outline, walls, door gap, windows, floorboards, bed or reading tables, rugs, chairs and other objects in their exact positions. Every tall bookcase must be shown ONLY as an opaque horizontal WOODEN TOP PANEL from a strict 90 degree zenith camera. The entire vertical shelf front and ALL upright book spines below the top panel are fully occluded, ZERO visible front surface. Remove the strips of frontal multicolored book spines and replace their former projected area with the same floorboards at ground level; keep the narrower wood top cap itself in place. Books may lie flat ON TOP of the opaque panels, their covers facing upward. Do not draw any new standing book spines, drawer fronts, or cabinet legs. This is a strict textured architectural PLAN, not an oblique room. Preserve all exterior alpha, wall thickness, floor plan, materials and lighting; no additional objects, text, labels, watermark or new openings.",
-  "source": "data/vtt/overhead-20261015/commerce-004-interior.png",
-  "sourceSha256": "940fa58f1ab95439e686485538a4db8af346b7e792f563f20dab4849705aa13b",
+  "prompt": "Precise-object-edit of the supplied furnished Biblioteca battlemap interior. Preserve the exact outer wall rectangle, wall thickness, floor texture, centered bottom door gap and all original window positions. Correct OVERSIZED furniture and handheld objects to REAL HUMAN SCALE relative to a standard human TOKEN of ONE 1.5-metre grid square. The building canvas is 14 by 12 grid squares; the clear floor is approximately 10.64 squares wide and 8.64 squares high. Treat this as an invisible measuring grid, never draw it. Furniture must obey these REAL dimensions: single bed 0.65 by 1.4 squares, double bed 1.05 by 1.4 squares, chair or stool 0.35 by 0.35 squares, dining table 1.4 by 0.65 squares, desk/workbench 1.4 by 0.5 squares, cabinet/bookcase modules 1.2 by 0.35 squares, sofa 1.3 by 0.5 squares, barrel 0.4 squares diameter, anvil 0.6 by 0.3 squares, quenching basin 0.5 squares diameter, small box/basket 0.3 squares wide, ordinary bath 0.6 by 1.2 squares, forge 1.2 by 1 squares. Small objects on tables must be normal handheld size: cups 10cm, plates 25cm, books 20-30cm, tools 25-55cm, never giant table-covering ornaments. Beds must never be 3-4 metres long. Shrink oversized movable pieces substantially, around 50-60% of their current linear dimensions, until they match these measurements. Retain the kind and purpose of the furnished room, arranging the correctly sized pieces around its edges with clear walking routes. Large commercial rooms may contain sensible repeated small tables, beds, shelves or workstations; do not enlarge individual furniture to fill the room. Reduce oversized built-in commercial fixtures to the stated real sizes too; keep their room purpose. STRICT VERTICAL ORTHOGRAPHIC NADIR view: all furniture shows only top-facing surfaces. Circular barrel/tub tops, opaque TOP boards over bookcases and wardrobes (NO book-spine fronts or doors), U-shaped horizontal TOP CUT fireplace/forge rims. Zero camera tilt, no isometric, no standing facade or legs. Keep the same detailed hand-painted medieval natural materials and lighting. Transparent alpha outside the complete wall outline. No human, token, scale marker, grid, ruler, labels, text, roof, door leaf, stairs, outdoor terrain or watermark.",
+  "source": "data/vtt/human-scale-20261015/commerce-004-interior.png",
+  "sourceSha256": "4ee0a751aa04566f53d95fcc43198976453a96bc02937ac86043109c95f9ebd3",
   "sourcePixels": {
     "width": 1354,
     "height": 1161
   },
-  "image": "/vtt/overhead-20261015/commerce-004-interior.webp",
-  "thumbnail": "/vtt/overhead-thumbs-20261015/commerce-004-interior.webp",
-  "sha256": "293bdff78984aec8e03c5f8265719930e1b2c06bd66da1621f8172ace8f03610",
-  "thumbnailSha256": "74433f00781ac65fb97b0f12b6903f0dc4f895af917a652af032c94272349ef3",
+  "image": "/vtt/human-scale-20261015/commerce-004-interior.webp",
+  "thumbnail": "/vtt/human-scale-thumbs-20261015/commerce-004-interior.webp",
+  "sha256": "f2110939cea9641abcd14015b5e740430f7f790dcbee8d0716ad63d34e31a828",
+  "thumbnailSha256": "7c60422361b53566505fd14626b4e4104de78e545c7eba4570ceb600892e4049",
   "pixelWidth": 1600,
   "pixelHeight": 1371,
-  "bytes": 389406,
-  "clearFraction": 0.38432986870897157,
-  "opaqueFraction": 0.6101490700218818,
-  "legacy": [],
+  "bytes": 365512,
+  "clearFraction": 0.38417487235594455,
+  "opaqueFraction": 0.609785284463895,
+  "legacy": [
+    "/vtt/overhead-20261015/commerce-004-interior.webp"
+  ],
   "physicalSize": {
     "width": 14,
     "height": 12

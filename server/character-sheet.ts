@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import {grantBetaStartingGold} from './beta-accounts.js';
 import { randomInt } from 'node:crypto';
 import type { PoolClient } from 'pg';
 import { z } from 'zod';
@@ -314,7 +315,8 @@ export function characterSheetRouter() {
           bonuses[i],
       );
       const d = deriveSheet({ ...c, stats }, sheet.choices);
-      if (!c.starting_wealth_granted)
+      const betaGold = await grantBetaStartingGold(client,user,id);
+      if (!betaGold && !c.starting_wealth_granted)
         await client.query(
           'UPDATE characters SET gold_cp=gold_cp+$2,starting_wealth_granted=true WHERE id=$1',
           [id, startingGold(c.class, sheet.choices)],

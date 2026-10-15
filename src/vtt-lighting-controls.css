@@ -1,0 +1,7 @@
+.vtt-light-presets{margin:12px 0;padding:12px;border:1px solid #b79b6544;border-radius:5px;background:#c9a55b08;}
+.vtt-light-presets h3{display:flex;align-items:center;gap:7px;margin-top:0;}
+.vtt-light-presets p,.vtt-light-presets small{font-size:11px;line-height:1.5;color:#baa988;}
+.vtt-light-presets .vtt-row{flex-wrap:wrap;}
+.vtt-light-effect-fields{display:grid;gap:8px;margin:10px 0;}
+.vtt-light-effect-fields output{float:right;color:#dfc484;font-variant-numeric:tabular-nums;}
+.vtt-light-effect-fields input:disabled{opacity:.35;}

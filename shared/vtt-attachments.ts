@@ -23,7 +23,7 @@ export function attachmentError(tokens: VttToken[]): string | null {
       const parent = byId.get(current.attachment.tokenId);
       if (!parent) return 'O token de apoio precisa existir no mesmo mapa.';
       if (current.layer !== 'tokens' || parent.layer !== 'tokens')
-        return 'O vínculo só pode unir tokens de criaturas.';
+        return 'O vínculo só pode unir itens na camada de tokens.';
       if (seen.has(parent.id) || seen.size >= 8)
         return 'O vínculo entre tokens é circular ou profundo demais.';
       seen.add(parent.id);

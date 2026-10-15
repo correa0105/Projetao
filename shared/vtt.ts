@@ -1,4 +1,7 @@
 import { z } from 'zod';
+import {calibrateObjectSizes} from './vtt-object-scale.js';
+import {lightAnimationSchema,lightEffectSpeedSchema} from './vtt-lighting.js';
+import {terrainTextureIds} from './vtt-terrain.js';
 import {houseWalls,housePointVisible} from './vtt-houses.js';
 import { canopyAreaSchema } from './vtt-canopies.js';
 import { atmosphereSchema } from './vtt-atmosphere.js';
@@ -101,6 +104,8 @@ export const tokenSchema = z
     dimLight: z.number().min(0).max(10000).default(0),
     lightColor: color.default('#ffe0a0'),
     lightAngle: z.number().min(1).max(360).default(360),
+    lightAnimation: lightAnimationSchema.default('none'),
+    lightEffectSpeed: lightEffectSpeedSchema.default(1),
     controller: z.string().max(100).nullable().default(null),
     characterId: id.nullable().default(null),
     companionId: id.nullable().default(null),
@@ -118,6 +123,8 @@ export const tokenSchema = z
     monster: monsterCustomizationSchema.nullable().default(null),
     animatedAsset: animatedAssetSchema.optional(),
     houseDoorOpen: z.boolean().optional(),
+    assetScaleVersion: z.literal(2).optional(),
+    sceneryToken: z.boolean().optional(),
   })
   .strict();
 export type VttToken = z.infer<typeof tokenSchema>;
@@ -143,6 +150,8 @@ export const lightSchema = z
     rotation: z.number().min(-360).max(360).default(0),
     angle: z.number().min(1).max(360).default(360),
     enabled: z.boolean().default(true),
+    animation: lightAnimationSchema.default('none'),
+    effectSpeed: lightEffectSpeedSchema.default(1),
   })
   .strict();
 export type VttLight = z.infer<typeof lightSchema>;
@@ -165,7 +174,7 @@ export const terrainLayerSchema = z.object({
 }).strict();
 export type TerrainLayer = z.infer<typeof terrainLayerSchema>;
 export const terrainStrokeSchema = z.object({
-  id, texture: z.enum(['grass', 'earth', 'sand', 'stone', 'wood', 'snow', 'rocky-grass', 'water']),
+  id, texture: z.enum(terrainTextureIds),
   erase: z.boolean().default(false), points: z.array(pointSchema).min(1).max(1500),
   radius: z.number().min(5).max(1000), softness: z.number().min(0).max(1),
   opacity: z.number().min(.05).max(1), textureScale: z.number().min(20).max(2000),
@@ -242,7 +251,7 @@ export const sceneSchema = z
     for (const key of ['tokens', 'walls', 'drawings', 'lights'] as const)
       if (new Set(scene[key].map((x) => x.id)).size !== scene[key].length)
         ctx.addIssue({ code: 'custom', message: 'Identificadores repetidos.', path: [key] });
-  });
+  }).transform(calibrateObjectSizes);
 export type VttScene = z.infer<typeof sceneSchema>;
 export const documentSchema = z
   .object({
@@ -675,6 +684,8 @@ export function sceneLights(s: VttScene) {
         color: t.lightColor,
         rotation: t.rotation,
         angle: t.lightAngle,
+        animation: t.lightAnimation,
+        effectSpeed: t.lightEffectSpeed,
         enabled: true,
       })),
   ];

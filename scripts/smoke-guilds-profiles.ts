@@ -164,6 +164,8 @@ try {
   await expect(
     page.getByRole('heading', { name: 'Companhia do Amanhecer', exact: true }),
   ).toBeVisible();
+  expect(await page.locator('.guild-room').evaluate(room=>{const heading=document.querySelector('.guild-page-heading')!;return room.getBoundingClientRect().bottom<=heading.getBoundingClientRect().top;})).toBe(true);
+  await expect(page.getByText('Um brasão. Oito histórias. Um lar.',{exact:true})).toHaveCount(0);
   const id = (await api(ownerContext, '/guilds')).mine;
   expect(id).toBeTruthy();
   const savedCrest = (await api(ownerContext, '/guilds/' + id)).document.crest;
