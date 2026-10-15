@@ -40,7 +40,11 @@ test('ficha: escolhas válidas, bônus raciais e regras de nível 1', () => {
 });
 
 test('ficha API: titularidade, rolagem única concorrente, distribuição definitiva e persistência', async () => {
-  assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/, 'Use the isolated sheet test runner.');
+  assert.match(
+    new URL(process.env.DATABASE_URL!).pathname,
+    /^\/alvorada_test_[0-9a-f]{32}$/,
+    'Use the isolated sheet test runner.',
+  );
   await migrate();
   const { createApp } = await import('../server/app.js');
   const server = createApp().listen(0, '127.0.0.1');
@@ -137,8 +141,19 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
       400,
     );
     const assignment = [5, 4, 3, 2, 1, 0];
+    assert.equal(
+      (
+        await req(path + '/finalize', alice.cookie, {
+          assignment,
+          ability_boosts: [2, 2, 0, 0, 0, 0],
+        })
+      ).status,
+      400,
+    );
+    choices.abilityBoosts = [2, 1, 0, 0, 0, 0];
     const done = await req(path + '/finalize', alice.cookie, {
       assignment,
+      ability_boosts: choices.abilityBoosts,
       stats: [99, 99, 99, 99, 99, 99],
       hp: 999,
     });
@@ -153,6 +168,17 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
     assert.deepEqual(db.stats, expected);
     assert.equal(db.gold_cp, character.gold_cp);
     assert.equal(db.hp, done.data.derived.hp);
+    assert.deepEqual(done.data.sheet.choices.abilityBoosts, choices.abilityBoosts);
+    assert.deepEqual(done.data.sheet.rolls, rolls);
+    assert.equal(
+      (
+        await req(path + '/finalize', alice.cookie, {
+          assignment,
+          ability_boosts: [0, 0, 0, 1, 1, 1],
+        })
+      ).status,
+      409,
+    );
     assert.equal((await req(path + '/finalize', alice.cookie, { assignment })).status, 200);
     assert.equal(
       (await req(path + '/finalize', alice.cookie, { assignment: [0, 1, 2, 3, 4, 5] })).status,

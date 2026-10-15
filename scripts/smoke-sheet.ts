@@ -52,6 +52,7 @@ try {
   await page.goto(origin + '/#characters');
   await page.reload();
   await page.getByRole('button', { name: 'Criar personagem' }).click();
+  await expect(page.locator('.ability-boost-choices')).toHaveCount(0);
   await page.getByLabel('Nome do personagem').fill('Liora dos Tomos');
   await page.getByLabel('Espécie', { exact: true }).selectOption('Elfo');
   await page.getByLabel('Classe', { exact: true }).selectOption('Mago');
@@ -79,6 +80,7 @@ try {
     .evaluate((el) => el.setAttribute('open', ''));
   await page.screenshot({ path: 'test-results/sheet-choices.png', fullPage: true });
   await page.getByRole('button', { name: 'Rolar os seis atributos' }).click();
+  await expect(page.locator('.ability-boost-choices')).toHaveCount(0);
   await expect(page.locator('.sheet-rolls>div')).toHaveCount(6);
   await expect(page.getByLabel('Resultado para Inteligência')).toHaveCount(0);
   const persistedRolls = (
@@ -105,6 +107,7 @@ try {
     if (i === 1) await page.setViewportSize({ width: 1440, height: 1000 });
   }
   await expect(page.getByLabel('Resultado para Inteligência')).toBeVisible();
+  await expect(page.locator('.ability-boost-choices')).toBeVisible();
   expect(
     (await pool.query('SELECT rolls FROM character_sheets WHERE character_id=$1', [id])).rows[0]
       .rolls,
@@ -113,10 +116,35 @@ try {
   const before = await page.locator('.sheet-rolls').innerText();
   await page.reload();
   await expect(page.locator('.sheet-rolls')).toHaveText(before, { useInnerText: true });
+  await page.getByLabel('Atributo com +2', { exact: true }).selectOption('0');
+  await page.getByLabel('Atributo com +1', { exact: true }).selectOption('1');
+  const confirmDistribution = page.getByRole('button', {
+    name: 'Confirmar distribuição e abrir ficha',
+  });
+  await expect(confirmDistribution).toBeEnabled();
+  await page.getByRole('radio', { name: 'Três +1', exact: true }).check();
+  await expect(confirmDistribution).toBeDisabled();
+  await page.getByRole('checkbox', { name: 'Constituição +1', exact: true }).check();
+  await expect(confirmDistribution).toBeEnabled();
+  await expect(page.getByRole('checkbox', { name: 'Sabedoria +1', exact: true })).toBeDisabled();
+  for (const width of [390, 320]) {
+    await page.setViewportSize({ width, height: 960 });
+    await page.locator('.ability-boost-choices').scrollIntoViewIfNeeded();
+    expect(
+      await page.locator('.main-content').evaluate((el) => el.scrollWidth > el.clientWidth + 1),
+    ).toBe(false);
+    await page.screenshot({ path: `test-results/sheet-boosts-${width}.png` });
+  }
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await page.getByLabel('Resultado para Inteligência').selectOption('0');
   await page.getByRole('button', { name: 'Confirmar distribuição e abrir ficha' }).click();
   await expect(page.getByRole('tab', { name: 'Atributos', exact: true })).toBeVisible();
   await expect(page.locator('.sheet-vitals')).toBeVisible();
+  const savedBoosts = (
+    await pool.query('SELECT choices,rolls FROM character_sheets WHERE character_id=$1', [id])
+  ).rows[0];
+  expect(savedBoosts.choices.abilityBoosts).toEqual([1, 1, 1, 0, 0, 0]);
+  expect(savedBoosts.rolls).toEqual(persistedRolls);
   await expect(page.locator('.sheet-panel').first()).toHaveCSS(
     'background-color',
     'rgb(23, 27, 30)',

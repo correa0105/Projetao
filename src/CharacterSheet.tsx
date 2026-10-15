@@ -34,6 +34,7 @@ import {
   validateChoices,
   racialBonuses,
   classRules,
+  backgroundRules,
   spells,
   spellOptions,
   dragons,
@@ -41,6 +42,7 @@ import {
   type SheetRecord,
 } from '../shared/character-sheet';
 import { SheetChoices, ChoiceList } from './SheetChoices';
+import { AbilityBoostChoices } from './AbilityBoostChoices';
 import { SheetHelp } from './SheetHelp';
 import { ItemThumbnail } from './ItemThumbnail';
 import { AttributeDice } from './AttributeDice';
@@ -368,7 +370,7 @@ export function CharacterSheet({
           <p>
             {revealedRolls < 6
               ? 'Lance uma rolagem por vez. Em cada uma, quatro dados caem e o menor é descartado.'
-              : 'Distribua os resultados. Ao confirmar, os bônus do antecedente e os valores da ficha serão calculados.'}
+              : 'Distribua os resultados dos dados e escolha os bônus do antecedente. Confira os valores finais antes de confirmar.'}
           </p>
           <AttributeDice
             key={c.id}
@@ -378,6 +380,7 @@ export function CharacterSheet({
           />
           {revealedRolls === 6 && (
             <>
+              <h4>1. Distribua os resultados dos dados</h4>
               <div className="sheet-attributes">
                 {statNames.map((name, i) => (
                   <label key={name}>
@@ -407,10 +410,33 @@ export function CharacterSheet({
                   </label>
                 ))}
               </div>
+              <fieldset className="sheet-choice">
+                <legend>2. Escolha os bônus do antecedente</legend>
+                <p className="muted small">
+                  Escolha +2 em um atributo e +1 em outro, ou +1 em três atributos diferentes.
+                </p>
+                <AbilityBoostChoices
+                  value={choices.abilityBoosts}
+                  allowed={
+                    choices.originRules
+                      ? statNames.map((_, i) => i)
+                      : backgroundRules[choices.backgroundType].abilities
+                  }
+                  onChange={(abilityBoosts) =>
+                    setChoices((current) => ({ ...current, abilityBoosts }))
+                  }
+                />
+              </fieldset>
               <button
                 className="button primary"
-                disabled={busy}
-                onClick={() => void action('finalize', { assignment }, true)}
+                disabled={busy || choices.abilityBoosts.reduce((a, b) => a + b, 0) !== 3}
+                onClick={() =>
+                  void action(
+                    'finalize',
+                    { assignment, ability_boosts: choices.abilityBoosts },
+                    true,
+                  )
+                }
               >
                 Confirmar distribuição e abrir ficha
               </button>

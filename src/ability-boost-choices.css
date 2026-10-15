@@ -1,0 +1,97 @@
+.ability-boost-choices {
+  display: grid;
+  gap: 14px;
+}
+.ability-boost-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.ability-boost-modes > label,
+.ability-boost-grid > label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid #64573c;
+  border-radius: 4px;
+  background: #171c1d;
+  color: #d9d2bf;
+  cursor: pointer;
+}
+.ability-boost-modes > label:has(input:checked),
+.ability-boost-grid > label:has(input:checked) {
+  border-color: #b79a60;
+  background: #302b21;
+  color: #f1dfb7;
+}
+.ability-boost-choices input[type='radio'],
+.ability-boost-choices input[type='checkbox'] {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  margin: 0;
+  accent-color: #b79a60;
+}
+.ability-boost-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.ability-boost-split label {
+  min-width: 0;
+}
+.ability-boost-split select {
+  width: 100%;
+  min-width: 0;
+}
+.ability-boost-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.ability-boost-grid > label {
+  min-width: 0;
+}
+.ability-boost-grid > label span {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+.ability-boost-grid > label strong {
+  font-size: 0.85em;
+  color: #c6ae78;
+}
+.ability-boost-grid > label:has(input:disabled) {
+  opacity: 0.45;
+  cursor: default;
+}
+.ability-boost-summary {
+  margin: 0;
+  color: #d8c49a;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.ability-boost-summary span {
+  display: block;
+  color: #b9b1a0;
+}
+@media (max-width: 600px) {
+  .ability-boost-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ability-boost-grid > label {
+    gap: 7px;
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+  .ability-boost-split {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 380px) {
+  .ability-boost-grid {
+    grid-template-columns: 1fr;
+  }
+}

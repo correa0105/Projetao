@@ -1012,9 +1012,10 @@ export function reconcileChoices(
       : defaults.subrace,
     backgroundType: background,
     backgroundSkills: [...b.skills],
-    abilityBoosts: current.abilityBoosts.every((v, i) => !v || b.abilities.includes(i))
-      ? [...current.abilityBoosts]
-      : defaults.abilityBoosts,
+    abilityBoosts:
+      current.originRules || current.abilityBoosts.every((v, i) => !v || b.abilities.includes(i))
+        ? [...current.abilityBoosts]
+        : defaults.abilityBoosts,
     options: { ...defaults.options, ...current.options },
     equipment: Object.fromEntries(
       equipmentFields(cls).map((f) => [
@@ -1084,7 +1085,7 @@ export function validateChoices(race: string, cls: string, input: unknown): Shee
   check(r.variants.includes(c.subrace), 'Linhagem inválida.');
   check(
     c.abilityBoosts.reduce((a, b) => a + b, 0) === 3 &&
-      c.abilityBoosts.every((v, i) => v === 0 || b.abilities.includes(i)),
+      c.abilityBoosts.every((v, i) => v === 0 || Boolean(c.originRules) || b.abilities.includes(i)),
     'Distribua +2/+1 ou +1/+1/+1 nos atributos do antecedente.',
   );
   list(c.backgroundSkills, 2, b.skills, 'perícias do antecedente');

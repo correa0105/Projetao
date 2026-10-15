@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {grantBetaStartingGold} from './beta-accounts.js';
+import { grantBetaStartingGold } from './beta-accounts.js';
 import { randomInt } from 'node:crypto';
 import type { PoolClient } from 'pg';
 import { z } from 'zod';
@@ -286,12 +286,13 @@ export function characterSheetRouter() {
   router.post('/characters/:id/sheet/finalize', async (req, res) => {
     const id = z.string().uuid().parse(req.params.id),
       user = res.locals.user.id;
-    const { assignment } = z
+    const { assignment, ability_boosts } = z
       .object({
         assignment: z
           .array(z.number().int().min(0).max(5))
           .length(6)
           .refine((v) => new Set(v).size === 6, 'Use cada resultado uma vez.'),
+        ability_boosts: z.array(z.number().int().min(0).max(2)).length(6).optional(),
       })
       .parse(req.body);
     await transaction(async (client) => {
@@ -303,31 +304,42 @@ export function characterSheetRouter() {
       ]);
       if (!sheet?.rolls || !sheet.choices) throw new AppError(409, 'Role os atributos primeiro.');
       if (sheet.finalized_at) {
-        if (JSON.stringify(sheet.assignment) !== JSON.stringify(assignment))
+        if (
+          JSON.stringify(sheet.assignment) !== JSON.stringify(assignment) ||
+          (ability_boosts &&
+            JSON.stringify(sheet.choices.abilityBoosts) !== JSON.stringify(ability_boosts))
+        )
           throw new AppError(409, 'A distribuição já foi confirmada.');
         return;
       }
-      const bonuses = racialBonuses(c.race, sheet.choices);
+      const finalChoices = {
+        ...sheet.choices,
+        ...validated(c.race, c.class, {
+          ...sheet.choices,
+          abilityBoosts: ability_boosts || sheet.choices.abilityBoosts,
+        }),
+      };
+      const bonuses = racialBonuses(c.race, finalChoices);
       const stats = assignment.map(
         (roll, i) =>
           sheet.rolls![roll].reduce((a, b) => a + b, 0) -
           Math.min(...sheet.rolls![roll]) +
           bonuses[i],
       );
-      const d = deriveSheet({ ...c, stats }, sheet.choices);
-      const betaGold = await grantBetaStartingGold(client,user,id);
+      const d = deriveSheet({ ...c, stats }, finalChoices);
+      const betaGold = await grantBetaStartingGold(client, user, id);
       if (!betaGold && !c.starting_wealth_granted)
         await client.query(
           'UPDATE characters SET gold_cp=gold_cp+$2,starting_wealth_granted=true WHERE id=$1',
-          [id, startingGold(c.class, sheet.choices)],
+          [id, startingGold(c.class, finalChoices)],
         );
       await client.query(
         'UPDATE characters SET stats=$3,hp=$4,armor_class=$5 WHERE id=$1 AND user_id=$2',
         [id, user, JSON.stringify(stats), d.hp, d.armorClass],
       );
       await client.query(
-        'UPDATE character_sheets SET assignment=$2,finalized_at=now(),current_hp=$3,updated_at=now() WHERE character_id=$1',
-        [id, JSON.stringify(assignment), d.hp],
+        'UPDATE character_sheets SET assignment=$2,choices=$4,finalized_at=now(),current_hp=$3,updated_at=now() WHERE character_id=$1',
+        [id, JSON.stringify(assignment), d.hp, JSON.stringify(finalChoices)],
       );
     });
     res.json(await result(id, user));

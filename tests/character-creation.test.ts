@@ -92,3 +92,24 @@ test('criação: Robusto concede exatamente dois PV por nível', () => {
     );
   }
 });
+
+test('criação: distribuição livre de três pontos, preservada ao trocar origem', () => {
+  const c = defaultChoices('Orc', 'Guerreiro', 'Acólito');
+  for (const boosts of [
+    [2, 1, 0, 0, 0, 0],
+    [1, 0, 1, 0, 0, 1],
+  ]) {
+    const next = { ...c, abilityBoosts: boosts };
+    validateChoices('Orc', 'Guerreiro', next);
+    assert.deepEqual(reconcileChoices('Elfo', 'Mago', next, 'Sábio').abilityBoosts, boosts);
+  }
+  for (const boosts of [
+    [3, 0, 0, 0, 0, 0],
+    [2, 2, 0, 0, 0, 0],
+    [1, 1, 0, 0, 0, 0],
+  ])
+    assert.throws(() => validateChoices('Orc', 'Guerreiro', { ...c, abilityBoosts: boosts }));
+  const legacy = { ...c, abilityBoosts: [2, 1, 0, 0, 0, 0] };
+  delete legacy.originRules;
+  assert.throws(() => validateChoices('Orc', 'Guerreiro', legacy));
+});

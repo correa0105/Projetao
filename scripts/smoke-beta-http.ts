@@ -108,6 +108,7 @@ try {
     if (i === 0) {
       const dialog = page.getByRole('dialog');
       await page.getByLabel('Nome do personagem').fill('História preservada');
+      await expect(page.locator('.ability-boost-choices')).toHaveCount(0);
       await page.getByLabel('Alinhamento', { exact: true }).selectOption('Caótico e bom');
       await page.getByLabel('Antecedente', { exact: true }).selectOption('Guia');
       await expect(page.getByLabel('Antecedente', { exact: true }).locator('option')).toHaveCount(
@@ -129,6 +130,7 @@ try {
       await page.getByLabel('Espécie', { exact: true }).selectOption('Elfo');
       await expect(page.getByLabel('Alinhamento', { exact: true })).toHaveValue('Caótico e bom');
       await expect(page.getByLabel('Antecedente', { exact: true })).toHaveValue('Guia');
+      checks.push({ boostsDeferredUntilRolls: true });
       await page.mouse.click(4, 4);
       await expect(dialog).toBeVisible();
       await page.keyboard.press('Escape');

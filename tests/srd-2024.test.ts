@@ -104,8 +104,11 @@ test('SRD 5.2.1: cálculos, magias e restrições revisadas', () => {
   c.equipment.background = ['50 PO'];
   assert.equal(startingGold('Guerreiro', c), 20500);
   assert.throws(() => validateChoices('Orc', 'Guerreiro', { ...c, version: 1 }));
+  const legacy = { ...c, options: { ...c.options } };
+  delete legacy.originRules;
+  delete legacy.options.featClass0;
   assert.throws(() =>
-    validateChoices('Orc', 'Guerreiro', { ...c, abilityBoosts: [2, 1, 0, 0, 0, 0] }),
+    validateChoices('Orc', 'Guerreiro', { ...legacy, abilityBoosts: [2, 1, 0, 0, 0, 0] }),
   );
   const rogue = defaultChoices('Elfo', 'Ladino');
   assert.throws(() =>

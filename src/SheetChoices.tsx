@@ -79,22 +79,6 @@ export function SheetChoices({
     b = backgroundRules[c.backgroundType],
     used = racialSkills(race, c);
   const update = (v: Partial<Choices>) => onChange(normalizeOptions(race, cls, { ...c, ...v }));
-  const boostDistributions = [
-    ...b.abilities.flatMap((primary) =>
-      b.abilities
-        .filter((secondary) => secondary !== primary)
-        .map((secondary) => ({
-          values: statNames.map((_, index) =>
-            index === primary ? 2 : index === secondary ? 1 : 0,
-          ),
-          label: `+2 ${statNames[primary]} e +1 ${statNames[secondary]}`,
-        })),
-    ),
-    {
-      values: statNames.map((_, index) => (b.abilities.includes(index) ? 1 : 0)),
-      label: `+1 em ${b.abilities.map((index) => statNames[index]).join(', ')}`,
-    },
-  ];
   const spellFeatHelp = (key: string) => {
     const match = /^feat(?:Ability|Cantrips|Spell)(\d+)$/.exec(key);
     if (!match) return undefined;
@@ -158,38 +142,6 @@ export function SheetChoices({
           )}
         </div>
       </div>
-      <fieldset className="sheet-choice">
-        <legend>
-          Bônus do antecedente
-          <SheetHelp label="Bônus do antecedente">
-            Escolha +2 em um atributo e +1 em outro, ou +1 nos três. Nenhum atributo pode
-            ultrapassar 20.
-          </SheetHelp>
-        </legend>
-        <select
-          aria-label="Distribuição dos bônus do antecedente"
-          value={c.abilityBoosts.join(',')}
-          onChange={(event) => {
-            const selected = boostDistributions.find(
-              (option) => option.values.join(',') === event.target.value,
-            );
-            if (selected) update({ abilityBoosts: selected.values });
-          }}
-        >
-          {!boostDistributions.some(
-            (option) => option.values.join(',') === c.abilityBoosts.join(','),
-          ) && (
-            <option value={c.abilityBoosts.join(',')} disabled>
-              Escolha uma distribuição válida
-            </option>
-          )}
-          {boostDistributions.map((option) => (
-            <option key={option.values.join(',')} value={option.values.join(',')}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </fieldset>
       <ChoiceList
         label="Idiomas iniciais (além de Comum)"
         count={2}
