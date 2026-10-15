@@ -145,6 +145,8 @@ function Portal({ user }: { user: User }) {
   const [selectedId, setSelectedId] = useState('');
   const [characterMenuOpen, setCharacterMenuOpen] = useState(false);
   const [catalog, setCatalog] = useState<Item[]>([]);
+  const [catalogLoading,setCatalogLoading]=useState(true);
+  const [catalogError,setCatalogError]=useState('');
   const [posts, setPosts] = useState<Post[]>([]);
   const [entries, setEntries] = useState<Entry[]>([]);
   const [details, setDetails] = useState<Details | null>(null);
@@ -160,23 +162,17 @@ function Portal({ user }: { user: User }) {
   const [postKind, setPostKind] = useState<'mission' | 'event'>('mission');
   const rulesActive = page === 'rules' && !loading && !loadError;
   const character = characters.find((item) => item.id === selectedId) || characters[0];
-  const refresh = useCallback(async () => {
-    const [nextCharacters, nextCatalog, nextPosts, nextEntries, me] = await Promise.all([
-      api<Character[]>('/characters'),
-      api<Item[]>('/catalog'),
-      api<Post[]>('/board'),
-      api<Entry[]>('/world'),
-      api<User>('/me'),
-    ]);
-    setCharacters(nextCharacters);
-    setCatalog(nextCatalog);
-    setPosts(nextPosts);
-    setEntries(nextEntries);
-    setAdministrator(me.administrador === 1);
-    setCanEditKingdom(me.canEditKingdom === true);
+  const refresh = useCallback(async (options?:{backgroundCatalog?:boolean}) => {
+    const catalogue=api<Item[]>('/catalog').then(items=>{setCatalog(items);setCatalogError('');}).catch(error=>{setCatalogError(error.message);throw error;}).finally(()=>setCatalogLoading(false));
+    const essentials=Promise.all([api<Character[]>('/characters'),api<Post[]>('/board'),api<Entry[]>('/world'),api<User>('/me')]).then(([nextCharacters,nextPosts,nextEntries,me])=>{
+      setCharacters(nextCharacters);setPosts(nextPosts);setEntries(nextEntries);setAdministrator(me.administrador===1);setCanEditKingdom(me.canEditKingdom===true);
+    });
+    // Opening camp or the journal never waits for the multi-megabyte shop catalogue.
+    if(options?.backgroundCatalog){void catalogue.catch(()=>{});await essentials;}
+    else await Promise.all([essentials,catalogue]);
   }, []);
   useEffect(() => {
-    refresh()
+    refresh({backgroundCatalog:true})
       .catch((error) => setLoadError(error.message))
       .finally(() => setLoading(false));
   }, [refresh]);
@@ -510,6 +506,8 @@ function Portal({ user }: { user: User }) {
           {loadError}
         </Empty>
       );
+    if(page==='shop'&&catalogLoading)return <div className="loading-content" role="status">Abrindo o Empório…</div>;
+    if(page==='shop'&&catalogError)return <Empty title="Não foi possível carregar o Empório." action={<button className="button primary" onClick={()=>{setCatalogLoading(true);void refresh().catch(()=>{});}}>Tentar novamente</button>}>{catalogError}</Empty>;
     if (page === 'rules') return null;
     if (page === 'world')
       return (

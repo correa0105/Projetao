@@ -8,6 +8,7 @@ import { socialRouter } from './social.js';
 import { guildsRouter } from './guilds.js';
 import { towerRouter } from './tower.js';
 import express from 'express';
+import {sendCatalog,compressedBundle} from './http-transfer.js';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
 import { toNodeHandler, fromNodeHeaders } from 'better-auth/node';
@@ -297,8 +298,8 @@ export function createApp() {
     ]);
     res.json({ inventory: inventory.rows, achievements: achievements.rows, history: history.rows });
   });
-  app.get('/api/catalog', async (_req, res) =>
-    res.json(
+  app.get('/api/catalog', async (req, res) =>
+    sendCatalog(req,res,
       (
         await pool.query(
           `SELECT id,name,original_name,category,description,price_cp,weight_lb,source,source_url,
@@ -688,10 +689,12 @@ export function createApp() {
   });
   app.use('/api', (_req, _res, next) => next(new AppError(404, 'Rota não encontrada.')));
   if (existsSync(resolve('dist/client/index.html'))) {
+    app.use(compressedBundle);
     app.use(
       express.static(resolve('dist/client'), {
         setHeaders: (res, file) => {
           if (file.endsWith('.html')) res.setHeader('Cache-Control', 'no-store');
+          else if(file.startsWith(resolve('dist/client/assets')))res.setHeader('Cache-Control','public, max-age=31536000, immutable');
         },
       }),
     );

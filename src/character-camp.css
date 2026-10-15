@@ -318,7 +318,7 @@ body:has(.character-camp) {
   flex-direction: column;
   background:
     linear-gradient(180deg, #0e0d0c70, transparent 40%, #0e0d0cc9),
-    #191817 url('/character-camp-v2.png') center var(--camp-background-y, 50%) /
+    #191817 url('/character-camp-v2.webp') center var(--camp-background-y, 50%) /
       var(--camp-background-size, cover) no-repeat;
 }
 .app-shell:has(.character-camp) header.topbar {
