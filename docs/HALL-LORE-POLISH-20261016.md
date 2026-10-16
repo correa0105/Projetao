@@ -4,6 +4,14 @@ O Hall ocupa toda a largura disponível, removendo o limite de 1600 px do conte�
 
 Após a referência adicional enviada pelo usuário, a passagem para a tabela usa o mesmo acabamento de Eventos: um degradê escuro amplo dissolve a base do salão no carvão da página. A fumaça WebGL anterior foi retirada. A camada não intercepta cliques e não depende de animação. Busca, tabela, menus e Hall dentro dos perfis continuam disponíveis.
 
+A pedido posterior, vinte pequenas brasas douradas sobem nessa passagem, como
+em Eventos: pontos de 2 px, brilho suave, leve deriva lateral e ciclos de 12 a
+17 segundos defasados. Ficam restritos à transição, não interceptam cliques e
+são desativados com movimento reduzido. A mesma camada aparece no Hall de
+Perfis. TypeScript/build e o navegador em sete tamanhos mais dois em Perfis
+passaram; a captura animada foi inspecionada, com deslocamento ascendente e
+movimento reduzido conferidos.
+
 A Lore usa carvão neutro e bronze, aproximando-se de Regras, com seletores e superfícies sem o tom esverdeado anterior. As linhas de pasta têm ícones de 46×42 px, título de 15 px e ações Editar/Excluir próximas do nome; com ações administrativas, cada linha fica abaixo de 90 px. Hierarquia, contadores e permissões permanecem.
 
 O fundo da linha temporal foi substituído por um arquivo noturno com ampulheta, instrumento astronômico, crônicas e vela. Arte original criada com o gerador `image_gen` embutido; arquivo `public/lore-timeline-archive-20261016.webp`, 1672×941 px, 117.240 bytes. Prompt, origem e SHA-256 em `data/lore-timeline-archive-20261016.json`. A imagem anterior é mantida. Texto, eras, engrenagens, som e edição permanecem.

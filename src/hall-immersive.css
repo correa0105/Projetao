@@ -354,9 +354,26 @@
   position:relative;isolation:isolate;z-index:2;padding:88px 0 60px;min-height:320px;
   background:var(--page,#151413);
 }
-:root .app-shell .hall-of-fame .hall-ranking-section > * {
+:root .app-shell .hall-of-fame .hall-ranking-section > :not(.hall-transition-embers) {
   position:relative;z-index:2;width:calc(100% - 48px);max-width:1120px;margin-inline:auto;
 }
 :root .app-shell .hall-of-fame .hall-ranking-section .hall-search {margin-top:0;margin-bottom:16px;}
 :root .app-shell .hall-of-fame .hall-ranking-section .hall-table {background:#18150feb;}
 :root .app-shell .hall-of-fame .hall-ranking-section .hall-score-guide {margin-top:22px;}
+.hall-transition-embers {
+  position:absolute;top:-230px;left:0;width:100%;height:320px;z-index:1;
+  overflow:hidden;pointer-events:none;
+}
+.hall-transition-embers i {
+  position:absolute;bottom:0;width:2px;height:2px;border-radius:50%;
+  background:#c49145;box-shadow:0 0 9px #eeb363;opacity:0;
+  animation:hall-embers-rise 16s linear infinite;
+}
+@keyframes hall-embers-rise {
+  10% {opacity:.65;}
+  90% {opacity:0;}
+  to {transform:translate(50px,-320px);}
+}
+@media(prefers-reduced-motion:reduce) {
+  .hall-transition-embers i {animation:none;}
+}

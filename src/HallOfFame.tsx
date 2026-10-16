@@ -244,6 +244,17 @@ export function HallOfFame({
         )}
       </div>
       <div className="hall-ranking-section">
+      {!query && ordered.length > 0 && (
+        <div className="hall-transition-embers" aria-hidden="true">
+          {Array.from({ length: 20 }, (_, i) => (
+            <i key={i} style={{
+              left: ((i * 43) % 100) + '%',
+              animationDelay: -i * .8 + 's',
+              animationDuration: 12 + (i % 6) + 's',
+            }} />
+          ))}
+        </div>
+      )}
       <div className="hall-search">
         <Search size={16} />
         <input
