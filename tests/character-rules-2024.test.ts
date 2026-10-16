@@ -58,8 +58,8 @@ for (const entry of catalog.subclasses)
   });
 test('fontes atuais e IDs de magia preservados', () => {
   assert.equal(classes.length, 13);
-  assert.equal(catalog.subclasses.length, 76);
-  assert.equal(new Set(catalog.subclasses.map((s) => s.class + '/' + s.id)).size, 76);
+  assert.equal(catalog.subclasses.length, 68);
+  assert.equal(new Set(catalog.subclasses.map((s) => s.class + '/' + s.id)).size, 68);
   for (const sub of catalog.subclasses) {
     assert.equal(sub.edition, '2024');
     assert.ok(catalog.books.some((b) => b.id === sub.source && b.published <= catalog.asOf));
@@ -84,7 +84,6 @@ test('conjuradores parciais: arredondamento na multiclasse e listas distintas', 
   for (const [cls, id, list, ability] of [
     ['Guerreiro', 'eldritch-knight', 'wizard', 3],
     ['Ladino', 'arcane-trickster', 'wizard', 3],
-    ['Monge', 'mystic-arts', 'sorcerer', 4],
   ] as const) {
     const a = originFixture(cls);
     for (let n = 2; n <= 5; n++)

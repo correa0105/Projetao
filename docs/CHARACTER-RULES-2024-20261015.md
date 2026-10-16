@@ -1,6 +1,6 @@
 # Classes e subclasses — 15/10/2026
 
-A ficha agora oferece 13 classes e 76 subclasses das versões atuais dos livros abaixo, com progressão de níveis 1–20. O seletor mantém os IDs das fichas anteriores e mostra a origem de cada opção. A consulta de evolução fica disponível aos jogadores, incluindo os níveis ainda não alcançados.
+A ficha oferece 13 classes e 68 subclasses das versões atuais dos livros abaixo, com progressão de níveis 1–20. Arcana Unleashed foi retirado em 16/10/2026 a pedido do usuário; Tasha permanece permitido. O seletor mantém os IDs das fichas anteriores e mostra a origem de cada opção. A consulta de evolução fica disponível aos jogadores, incluindo os níveis ainda não alcançados.
 
 | Livro | Subclasses |
 | --- | ---: |
@@ -8,16 +8,15 @@ A ficha agora oferece 13 classes e 76 subclasses das versões atuais dos livros 
 | Forgotten Realms: Heroes of Faerûn (FRHoF) | 8 |
 | Eberron: Forge of the Artificer (EFA) | 5 |
 | Ravenloft: The Horrors Within (RHW) | 7 |
-| Arcana Unleashed (AU) | 8 |
 
 Inclui Artífice e seis especializações no conjunto. O corte do catálogo é 15/10/2026; não representa todos os livros do 5etools, UA ou todas as versões legadas de 2014.
 
 ## O que a ficha calcula e registra
 
 - PV médios por classe, Constituição retroativa, proficiência, perícias/especializações, salvaguardas adicionais, CA sem armadura e ataques por ação.
-- Conjuração das classes e das subclasses Cavaleiro Místico, Trapaceiro Arcano e Artes Místicas, com Inteligência/Sabedoria próprias. Espaços de terceiros de conjuração usam a tabela própria quando isolados e arredondamento para baixo na soma de multiclasse. Pacto permanece separado.
-- 444 magias com IDs antigos preservados, listas atualizadas, magias fixas de subclasses, escolas dos magos e escolhas adicionais por nível.
-- Manobras, disparos arcanos, perícias, ferramentas, divindade/domínio e outras escolhas iniciais das novas subclasses. Trocas opcionais de truque/magia/plano na evolução são validadas no servidor.
+- Conjuração das classes e das subclasses Cavaleiro Místico e Trapaceiro Arcano, com os atributos próprios. Espaços de terceiros de conjuração usam a tabela própria quando isolados e arredondamento para baixo na soma de multiclasse. Pacto permanece separado.
+- 411 magias com IDs antigos preservados, listas atualizadas, magias fixas de subclasses, escolas dos magos e escolhas adicionais por nível.
+- Manobras, perícias, ferramentas, divindade/domínio e outras escolhas iniciais das novas subclasses. Trocas opcionais de truque/magia/plano na evolução são validadas no servidor.
 - Artífice: origem, ferramentas, magias, planos elegíveis por nível, limite de replicação e plano adicional de armadura. Planos não creditam produtos ou ouro: itens replicados são temporários e sua criação/uso é resolvida na sessão.
 
 Ativações, criaturas/companheiros de classe, condições, formas temporárias, resistências e efeitos em outros alvos continuam descritos para resolução na mesa. A atualização não transforma essas descrições em automação de combate. A evolução mantém a melhoria de atributos existente; não acrescenta um catálogo geral de talentos aos níveis de melhoria. Trocas durante descansos das escolhas adicionais específicas de subclasses não são um novo editor nesta entrega.
@@ -34,8 +33,8 @@ Reprodução: node --import tsx scripts/import-character-rules-2024.mjs. O mater
 
 ## Validação
 
-- 98 testes em PostgreSQL UUID descartável: todas as 76 subclasses até o nível 20, origem do Artífice em todas as espécies/antecedentes, valores independentes de salvaguardas/especialização, mistura de conjuradores, trocas e escolhas adulteradas, mais regressões de ownership/replay/concorrência e economia.
+- 90 testes em PostgreSQL UUID descartável: todas as 68 subclasses até o nível 20, origem do Artífice em todas as espécies/antecedentes, valores independentes de salvaguardas/especialização, mistura de conjuradores, trocas e escolhas adulteradas, mais regressões de ownership/replay/concorrência e economia. Dois testes adicionais conferem a política de fontes e a rejeição de subclasse retirada enviada pelo cliente.
 - TypeScript, build do cliente e build do servidor.
-- Navegador real em cinco larguras: evolução e persistência de magias, seis subclasses de guerreiro, manobras do Mestre de Batalha, planos/armadura do Artífice e consulta dos vinte níveis.
+- Navegador real em cinco larguras: evolução e persistência de magias, cinco subclasses de guerreiro, manobras do Mestre de Batalha, planos/armadura do Artífice e consulta dos vinte níveis.
 
 Comandos: node scripts/test-character-advancement-isolated.mjs; node scripts/test-character-advancement-isolated.mjs --browser --expansion. Ambos exigem o PostgreSQL local configurado e criam/removem apenas o banco de teste UUID.

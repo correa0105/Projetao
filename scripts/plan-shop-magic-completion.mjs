@@ -4,6 +4,7 @@
 import fs from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
+import { permittedSource } from '../shared/content-sources.ts';
 import {
   nameKey as key,
   resolveCopies,
@@ -103,6 +104,7 @@ function priority(x) {
 }
 const eligible = (x) =>
   isMagic(x) &&
+  permittedSource(x.source) &&
   !x.source.startsWith('UA') &&
   (!sourceInfo.get(x.source)?.published || sourceInfo.get(x.source).published <= '2026-10-09');
 const candidates = resolveCopies(items).filter(eligible);

@@ -15,10 +15,6 @@
       "sha256": "d6df59a02812d07ffe6f1d5e5317805eea677586b75d693f1d9904fb0468dcb9"
     },
     {
-      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-au.json",
-      "sha256": "805a3ccb583e8415ee494e582c6172d900ebd63f85d599b785f260591992ead7"
-    },
-    {
       "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-bmt.json",
       "sha256": "cdbcb5381e2296e3d1ffdf11b5442be3ddb4c32fff62a60694c6bf1b49af7741"
     },

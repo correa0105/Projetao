@@ -21,11 +21,6 @@
       "id": "RHW",
       "name": "Ravenloft: The Horrors Within",
       "published": "2026-06-16"
-    },
-    {
-      "id": "AU",
-      "name": "Arcana Unleashed",
-      "published": "2026-09-15"
     }
   ],
   "subclasses": [
@@ -746,292 +741,6 @@
       "variants": {}
     },
     {
-      "class": "Monge",
-      "id": "mystic-arts",
-      "name": "Guerreiro das Artes Místicas",
-      "originalName": "Warrior of the Mystic Arts",
-      "source": "AU",
-      "book": "Arcana Unleashed",
-      "page": 11,
-      "edition": "2024",
-      "url": "https://5e.tools/classes.html#monk_xphb,state:submysticartsau=b1",
-      "levels": [
-        3,
-        6,
-        11,
-        17
-      ],
-      "sourceFeatures": [
-        {
-          "name": "Spellcasting",
-          "level": 3,
-          "page": 11
-        },
-        {
-          "name": "Mystic Fighting Style",
-          "level": 6,
-          "page": 12
-        },
-        {
-          "name": "Mystic Focus",
-          "level": 6,
-          "page": 12
-        },
-        {
-          "name": "Focused Strike",
-          "level": 11,
-          "page": 13
-        },
-        {
-          "name": "Improved Mystic Fighting Style",
-          "level": 17,
-          "page": 13
-        }
-      ],
-      "spells": {},
-      "innate": [],
-      "variants": {},
-      "casting": {
-        "list": "sorcerer",
-        "ability": 4,
-        "cantrips": [
-          0,
-          0,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3
-        ],
-        "prepared": [
-          0,
-          0,
-          3,
-          4,
-          4,
-          4,
-          5,
-          6,
-          6,
-          7,
-          8,
-          8,
-          9,
-          10,
-          10,
-          11,
-          11,
-          11,
-          12,
-          13
-        ],
-        "slots": [
-          [
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            2,
-            0,
-            0,
-            0
-          ],
-          [
-            3,
-            0,
-            0,
-            0
-          ],
-          [
-            3,
-            0,
-            0,
-            0
-          ],
-          [
-            3,
-            0,
-            0,
-            0
-          ],
-          [
-            4,
-            2,
-            0,
-            0
-          ],
-          [
-            4,
-            2,
-            0,
-            0
-          ],
-          [
-            4,
-            2,
-            0,
-            0
-          ],
-          [
-            4,
-            3,
-            0,
-            0
-          ],
-          [
-            4,
-            3,
-            0,
-            0
-          ],
-          [
-            4,
-            3,
-            0,
-            0
-          ],
-          [
-            4,
-            3,
-            2,
-            0
-          ],
-          [
-            4,
-            3,
-            2,
-            0
-          ],
-          [
-            4,
-            3,
-            2,
-            0
-          ],
-          [
-            4,
-            3,
-            3,
-            0
-          ],
-          [
-            4,
-            3,
-            3,
-            0
-          ],
-          [
-            4,
-            3,
-            3,
-            0
-          ],
-          [
-            4,
-            3,
-            3,
-            1
-          ],
-          [
-            4,
-            3,
-            3,
-            1
-          ]
-        ]
-      },
-      "resources": [
-        {
-          "labels": [
-            "Prepared Spells"
-          ],
-          "rows": [
-            [
-              0
-            ],
-            [
-              0
-            ],
-            [
-              3
-            ],
-            [
-              4
-            ],
-            [
-              4
-            ],
-            [
-              4
-            ],
-            [
-              5
-            ],
-            [
-              6
-            ],
-            [
-              6
-            ],
-            [
-              7
-            ],
-            [
-              8
-            ],
-            [
-              8
-            ],
-            [
-              9
-            ],
-            [
-              10
-            ],
-            [
-              10
-            ],
-            [
-              11
-            ],
-            [
-              11
-            ],
-            [
-              11
-            ],
-            [
-              12
-            ],
-            [
-              13
-            ]
-          ]
-        }
-      ]
-    },
-    {
       "class": "Guerreiro",
       "id": "battle-master",
       "name": "Mestre de Batalha",
@@ -1664,69 +1373,6 @@
           "ability": "cha"
         }
       ],
-      "variants": {}
-    },
-    {
-      "class": "Guerreiro",
-      "id": "arcane-archer",
-      "name": "Arqueiro Arcano",
-      "originalName": "Arcane Archer",
-      "source": "AU",
-      "book": "Arcana Unleashed",
-      "page": 9,
-      "edition": "2024",
-      "url": "https://5e.tools/classes.html#fighter_xphb,state:subarcanearcherau=b1",
-      "levels": [
-        3,
-        7,
-        10,
-        15,
-        18
-      ],
-      "sourceFeatures": [
-        {
-          "name": "Arcane Archer Lore",
-          "level": 3,
-          "page": 9
-        },
-        {
-          "name": "Arcane Shot",
-          "level": 3,
-          "page": 9
-        },
-        {
-          "name": "Arcane Shot Options",
-          "level": 3,
-          "page": 9
-        },
-        {
-          "name": "Curving Shot",
-          "level": 7,
-          "page": 9
-        },
-        {
-          "name": "Magical Ammunition",
-          "level": 7,
-          "page": 9
-        },
-        {
-          "name": "Ever-Ready Shot",
-          "level": 10,
-          "page": 10
-        },
-        {
-          "name": "Indomitable Teleport",
-          "level": 15,
-          "page": 10
-        },
-        {
-          "name": "Masterful Shots",
-          "level": 18,
-          "page": 10
-        }
-      ],
-      "spells": {},
-      "innate": [],
       "variants": {}
     },
     {
@@ -3870,134 +3516,6 @@
       "variants": {}
     },
     {
-      "class": "Bruxo",
-      "id": "vestige",
-      "name": "Patrono Vestígio",
-      "originalName": "Vestige Patron",
-      "source": "AU",
-      "book": "Arcana Unleashed",
-      "page": 13,
-      "edition": "2024",
-      "url": "https://5e.tools/classes.html#warlock_xphb,state:subvestigeau=b1",
-      "levels": [
-        3,
-        6,
-        10,
-        14
-      ],
-      "sourceFeatures": [
-        {
-          "name": "Vestige Companion",
-          "level": 3,
-          "page": 13
-        },
-        {
-          "name": "Vestige Spells",
-          "level": 3,
-          "page": 14
-        },
-        {
-          "name": "Vestige Power",
-          "level": 6,
-          "page": 14
-        },
-        {
-          "name": "Vestige Recovery",
-          "level": 10,
-          "page": 14
-        },
-        {
-          "name": "Semblance of Life",
-          "level": 14,
-          "page": 14
-        }
-      ],
-      "spells": {},
-      "innate": [],
-      "variants": {
-        "Life Domain": {
-          "3": [
-            "aid",
-            "bless",
-            "cure-wounds",
-            "lesser-restoration"
-          ],
-          "5": [
-            "mass-healing-word",
-            "revivify"
-          ],
-          "7": [
-            "aura-of-life",
-            "death-ward"
-          ],
-          "9": [
-            "greater-restoration",
-            "mass-cure-wounds"
-          ]
-        },
-        "Light Domain": {
-          "3": [
-            "burning-hands",
-            "faerie-fire",
-            "scorching-ray",
-            "see-invisibility"
-          ],
-          "5": [
-            "daylight",
-            "fireball"
-          ],
-          "7": [
-            "arcane-eye",
-            "wall-of-fire"
-          ],
-          "9": [
-            "flame-strike",
-            "scrying"
-          ]
-        },
-        "Trickery Domain": {
-          "3": [
-            "charm-person",
-            "disguise-self",
-            "invisibility",
-            "pass-without-trace"
-          ],
-          "5": [
-            "hypnotic-pattern",
-            "nondetection"
-          ],
-          "7": [
-            "confusion",
-            "dimension-door"
-          ],
-          "9": [
-            "dominate-person",
-            "modify-memory"
-          ]
-        },
-        "War Domain": {
-          "3": [
-            "guiding-bolt",
-            "magic-weapon",
-            "shield-of-faith",
-            "spiritual-weapon"
-          ],
-          "5": [
-            "crusaders-mantle",
-            "spirit-guardians"
-          ],
-          "7": [
-            "fire-shield",
-            "freedom-of-movement"
-          ],
-          "9": [
-            "hold-monster",
-            "steel-wind-strike"
-          ]
-        }
-      }
-    },
-    {
       "class": "Paladino",
       "id": "devotion",
       "name": "Juramento da Devoção",
@@ -5067,292 +4585,6 @@
       "extraAttack": 6
     },
     {
-      "class": "Mago",
-      "id": "conjurer",
-      "name": "Conjurador",
-      "originalName": "Conjurer",
-      "source": "AU",
-      "book": "Arcana Unleashed",
-      "page": 15,
-      "edition": "2024",
-      "url": "https://5e.tools/classes.html#wizard_xphb,state:subconjurerau=b1",
-      "levels": [
-        3,
-        6,
-        10,
-        14
-      ],
-      "sourceFeatures": [
-        {
-          "name": "Benign Transposition",
-          "level": 3,
-          "page": 15
-        },
-        {
-          "name": "Conjuration Savant",
-          "level": 3,
-          "page": 15
-        },
-        {
-          "name": "Distant Transposition",
-          "level": 6,
-          "page": 15
-        },
-        {
-          "name": "Durable Summons",
-          "level": 6,
-          "page": 16
-        },
-        {
-          "name": "Focused Conjuration",
-          "level": 10,
-          "page": 16
-        },
-        {
-          "name": "Splintered Summons",
-          "level": 14,
-          "page": 16
-        }
-      ],
-      "spells": {
-        "3": [],
-        "5": [],
-        "7": [],
-        "9": [],
-        "11": [],
-        "13": [],
-        "15": [],
-        "17": []
-      },
-      "innate": [],
-      "variants": {},
-      "school": "Conjuration"
-    },
-    {
-      "class": "Mago",
-      "id": "enchanter",
-      "name": "Encantador",
-      "originalName": "Enchanter",
-      "source": "AU",
-      "book": "Arcana Unleashed",
-      "page": 16,
-      "edition": "2024",
-      "url": "https://5e.tools/classes.html#wizard_xphb,state:subenchanterau=b1",
-      "levels": [
-        3,
-        6,
-        10,
-        14
-      ],
-      "sourceFeatures": [
-        {
-          "name": "Enchanting Conversationalist",
-          "level": 3,
-          "page": 16
-        },
-        {
-          "name": "Enchantment Savant",
-          "level": 3,
-          "page": 16
-        },
-        {
-          "name": "Hypnotic Presence",
-          "level": 3,
-          "page": 17
-        },
-        {
-          "name": "Split Enchantment",
-          "level": 6,
-          "page": 17
-        },
-        {
-          "name": "Instinctive Charm",
-          "level": 10,
-          "page": 17
-        },
-        {
-          "name": "Alter Memories",
-          "level": 14,
-          "page": 17
-        }
-      ],
-      "spells": {
-        "3": [],
-        "5": [],
-        "7": [],
-        "9": [],
-        "11": [],
-        "13": [],
-        "15": [],
-        "17": []
-      },
-      "innate": [],
-      "variants": {},
-      "school": "Enchantment"
-    },
-    {
-      "class": "Mago",
-      "id": "necromancer",
-      "name": "Necromante",
-      "originalName": "Necromancer",
-      "source": "AU",
-      "book": "Arcana Unleashed",
-      "page": 17,
-      "edition": "2024",
-      "url": "https://5e.tools/classes.html#wizard_xphb,state:subnecromancerau=b1",
-      "levels": [
-        3,
-        6,
-        10,
-        14
-      ],
-      "sourceFeatures": [
-        {
-          "name": "Necromancy Savant",
-          "level": 3,
-          "page": 17
-        },
-        {
-          "name": "Necromancy Spellbook",
-          "level": 3,
-          "page": 17
-        },
-        {
-          "name": "Grave Power",
-          "level": 6,
-          "page": 17
-        },
-        {
-          "name": "Undead Thralls",
-          "level": 6,
-          "page": 18
-        },
-        {
-          "name": "Harvest Undead",
-          "level": 10,
-          "page": 18
-        },
-        {
-          "name": "Death's Master",
-          "level": 14,
-          "page": 18
-        }
-      ],
-      "spells": {
-        "3": [
-          "find-familiar"
-        ],
-        "5": [],
-        "6": [
-          "animate-dead"
-        ],
-        "7": [],
-        "9": [],
-        "11": [],
-        "13": [],
-        "15": [],
-        "17": []
-      },
-      "innate": [
-        {
-          "level": 6,
-          "spells": [
-            "animate-dead"
-          ],
-          "ability": null
-        }
-      ],
-      "variants": {},
-      "school": "Necromancy"
-    },
-    {
-      "class": "Mago",
-      "id": "transmuter",
-      "name": "Transmutador",
-      "originalName": "Transmuter",
-      "source": "AU",
-      "book": "Arcana Unleashed",
-      "page": 19,
-      "edition": "2024",
-      "url": "https://5e.tools/classes.html#wizard_xphb,state:subtransmuterau=b1",
-      "levels": [
-        3,
-        6,
-        10,
-        14
-      ],
-      "sourceFeatures": [
-        {
-          "name": "Transmutation Savant",
-          "level": 3,
-          "page": 19
-        },
-        {
-          "name": "Transmuter's Stone",
-          "level": 3,
-          "page": 19
-        },
-        {
-          "name": "Wondrous Alteration",
-          "level": 3,
-          "page": 19
-        },
-        {
-          "name": "Empowered Transmutation",
-          "level": 6,
-          "page": 20
-        },
-        {
-          "name": "Potent Stone",
-          "level": 10,
-          "page": 20
-        },
-        {
-          "name": "Shape-Shifter",
-          "level": 10,
-          "page": 20
-        },
-        {
-          "name": "Master Transmuter",
-          "level": 14,
-          "page": 20
-        }
-      ],
-      "spells": {
-        "3": [
-          "alter-self"
-        ],
-        "5": [],
-        "7": [],
-        "9": [],
-        "10": [
-          "polymorph"
-        ],
-        "11": [],
-        "13": [],
-        "15": [],
-        "17": []
-      },
-      "innate": [
-        {
-          "level": 3,
-          "spells": [
-            "alter-self"
-          ],
-          "ability": null
-        },
-        {
-          "level": 10,
-          "spells": [
-            "polymorph"
-          ],
-          "ability": null
-        }
-      ],
-      "variants": {},
-      "school": "Transmutation"
-    },
-    {
       "class": "Clérigo",
       "id": "life",
       "name": "Domínio da Vida",
@@ -5744,82 +4976,6 @@
           "dispel-evil-and-good",
           "raise-dead"
         ]
-      },
-      "innate": [],
-      "variants": {}
-    },
-    {
-      "class": "Clérigo",
-      "id": "arcana",
-      "name": "Domínio Arcano",
-      "originalName": "Arcana Domain",
-      "source": "AU",
-      "book": "Arcana Unleashed",
-      "page": 8,
-      "edition": "2024",
-      "url": "https://5e.tools/classes.html#cleric_xphb,state:subarcanaau=b1",
-      "levels": [
-        3,
-        6,
-        17
-      ],
-      "sourceFeatures": [
-        {
-          "name": "Arcana Domain Spells",
-          "level": 3,
-          "page": 8
-        },
-        {
-          "name": "Modify Magic",
-          "level": 3,
-          "page": 8
-        },
-        {
-          "name": "Student of Arcana",
-          "level": 3,
-          "page": 8
-        },
-        {
-          "name": "Fortifying Spell",
-          "level": 3,
-          "page": 8
-        },
-        {
-          "name": "Tenacious Spell",
-          "level": 3,
-          "page": 8
-        },
-        {
-          "name": "Dispelling Recovery",
-          "level": 6,
-          "page": 9
-        },
-        {
-          "name": "Magical Mastery",
-          "level": 17,
-          "page": 9
-        }
-      ],
-      "spells": {
-        "3": [
-          "detect-magic",
-          "magic-missile",
-          "magic-weapon",
-          "arcanists-magic-aura"
-        ],
-        "5": [
-          "counterspell",
-          "dispel-magic"
-        ],
-        "7": [
-          "arcane-eye",
-          "secret-chest"
-        ],
-        "9": [
-          "arcane-hand",
-          "teleportation-circle"
-        ],
-        "17": []
       },
       "innate": [],
       "variants": {}
@@ -6215,22 +5371,6 @@
       "page": 244
     },
     {
-      "id": "aura-of-evasion",
-      "name": "Aura of Evasion",
-      "level": 7,
-      "classes": [
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Aura de Evasão",
-      "school": "Abjuration",
-      "source": "AU",
-      "page": 35
-    },
-    {
       "id": "aura-of-life",
       "name": "Aura of Life",
       "level": 4,
@@ -6370,22 +5510,6 @@
       "school": "Transmutation",
       "source": "XPHB",
       "page": 245
-    },
-    {
-      "id": "battle-familiar",
-      "name": "Battle Familiar",
-      "level": 2,
-      "classes": [
-        "druid",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Familiar de Batalha",
-      "school": "Conjuration",
-      "source": "AU",
-      "page": 35
     },
     {
       "id": "beacon-of-hope",
@@ -6664,23 +5788,6 @@
       "school": "Enchantment",
       "source": "XPHB",
       "page": 249
-    },
-    {
-      "id": "catnap",
-      "name": "Catnap",
-      "level": 3,
-      "classes": [
-        "bard",
-        "sorcerer",
-        "wizard",
-        "artificer"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Soneca",
-      "school": "Enchantment",
-      "source": "AU",
-      "page": 37
     },
     {
       "id": "chain-lightning",
@@ -7595,22 +6702,6 @@
       "page": 262
     },
     {
-      "id": "detonate",
-      "name": "Detonate",
-      "level": 9,
-      "classes": [
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Detonar",
-      "school": "Evocation",
-      "source": "AU",
-      "page": 38
-    },
-    {
       "id": "dimension-door",
       "name": "Dimension Door",
       "level": 4,
@@ -7712,22 +6803,6 @@
       "page": 264
     },
     {
-      "id": "disruptive-tune",
-      "name": "Disruptive Tune",
-      "level": 2,
-      "classes": [
-        "bard",
-        "sorcerer",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Melodia Perturbadora",
-      "school": "Abjuration",
-      "source": "AU",
-      "page": 38
-    },
-    {
       "id": "dissonant-whispers",
       "name": "Dissonant Whispers",
       "level": 1,
@@ -7740,23 +6815,6 @@
       "school": "Enchantment",
       "source": "XPHB",
       "page": 264
-    },
-    {
-      "id": "distorted-distance",
-      "name": "Distorted Distance",
-      "level": 4,
-      "classes": [
-        "bard",
-        "warlock",
-        "wizard",
-        "artificer"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Distância Distorcida",
-      "school": "Illusion",
-      "source": "AU",
-      "page": 38
     },
     {
       "id": "divination",
@@ -7928,28 +6986,6 @@
       "page": 266
     },
     {
-      "id": "dueling-ground",
-      "name": "Dueling Ground",
-      "level": 2,
-      "classes": [
-        "bard",
-        "cleric",
-        "druid",
-        "paladin",
-        "ranger",
-        "sorcerer",
-        "warlock",
-        "wizard",
-        "artificer"
-      ],
-      "ritual": true,
-      "concentration": false,
-      "label": "Campo de Duelo",
-      "school": "Abjuration",
-      "source": "AU",
-      "page": 38
-    },
-    {
       "id": "earthquake",
       "name": "Earthquake",
       "level": 8,
@@ -8044,22 +7080,6 @@
       "page": 144
     },
     {
-      "id": "enervation",
-      "name": "Enervation",
-      "level": 5,
-      "classes": [
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Enervação",
-      "school": "Necromancy",
-      "source": "AU",
-      "page": 38
-    },
-    {
       "id": "enhance-ability",
       "name": "Enhance Ability",
       "level": 2,
@@ -8140,23 +7160,6 @@
       "school": "Enchantment",
       "source": "XPHB",
       "page": 269
-    },
-    {
-      "id": "entrancing-mirrors",
-      "name": "Entrancing Mirrors",
-      "level": 8,
-      "classes": [
-        "bard",
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Espelhos Encantadores",
-      "school": "Illusion",
-      "source": "AU",
-      "page": 39
     },
     {
       "id": "etherealness",
@@ -8322,23 +7325,6 @@
       "school": "Necromancy",
       "source": "XPHB",
       "page": 271
-    },
-    {
-      "id": "festering-blast",
-      "name": "Festering Blast",
-      "level": 4,
-      "classes": [
-        "druid",
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Explosão Pútrida",
-      "school": "Necromancy",
-      "source": "AU",
-      "page": 39
     },
     {
       "id": "find-familiar",
@@ -8651,23 +7637,6 @@
       "page": 277
     },
     {
-      "id": "fractured-awareness",
-      "name": "Fractured Awareness",
-      "level": 7,
-      "classes": [
-        "bard",
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Consciência Fragmentada",
-      "school": "Divination",
-      "source": "AU",
-      "page": 40
-    },
-    {
       "id": "freedom-of-movement",
       "name": "Freedom of Movement",
       "level": 4,
@@ -8874,22 +7843,6 @@
       "school": "Conjuration",
       "source": "XPHB",
       "page": 280
-    },
-    {
-      "id": "grave-ground",
-      "name": "Grave Ground",
-      "level": 5,
-      "classes": [
-        "cleric",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Solo Sepulcral",
-      "school": "Necromancy",
-      "source": "AU",
-      "page": 40
     },
     {
       "id": "grease",
@@ -9216,20 +8169,6 @@
       "page": 331
     },
     {
-      "id": "hindsight",
-      "name": "Hindsight",
-      "level": 9,
-      "classes": [
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Retrospecção",
-      "school": "Divination",
-      "source": "AU",
-      "page": 40
-    },
-    {
       "id": "hold-monster",
       "name": "Hold Monster",
       "level": 5,
@@ -9402,20 +8341,6 @@
       "page": 287
     },
     {
-      "id": "illusory-dragon",
-      "name": "Illusory Dragon",
-      "level": 8,
-      "classes": [
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Dragão Ilusório",
-      "school": "Illusion",
-      "source": "AU",
-      "page": 40
-    },
-    {
       "id": "illusory-script",
       "name": "Illusory Script",
       "level": 1,
@@ -9461,23 +8386,6 @@
       "school": "Conjuration",
       "source": "XPHB",
       "page": 288
-    },
-    {
-      "id": "inflict-doubt",
-      "name": "Inflict Doubt",
-      "level": 3,
-      "classes": [
-        "bard",
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Infligir Dúvida",
-      "school": "Enchantment",
-      "source": "AU",
-      "page": 40
     },
     {
       "id": "inflict-wounds",
@@ -9540,36 +8448,6 @@
       "school": "Illusion",
       "source": "XPHB",
       "page": 289
-    },
-    {
-      "id": "invulnerability",
-      "name": "Invulnerability",
-      "level": 9,
-      "classes": [
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Invulnerabilidade",
-      "school": "Abjuration",
-      "source": "AU",
-      "page": 41
-    },
-    {
-      "id": "iron-body",
-      "name": "Iron Body",
-      "level": 8,
-      "classes": [
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Corpo de Ferro",
-      "school": "Transmutation",
-      "source": "AU",
-      "page": 41
     },
     {
       "id": "irresistible-dance",
@@ -9748,23 +8626,6 @@
       "school": "Evocation",
       "source": "XPHB",
       "page": 292
-    },
-    {
-      "id": "lightning-ring",
-      "name": "Lightning Ring",
-      "level": 8,
-      "classes": [
-        "druid",
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Anel de Relâmpagos",
-      "school": "Evocation",
-      "source": "AU",
-      "page": 41
     },
     {
       "id": "locate-animals-or-plants",
@@ -10270,20 +9131,6 @@
       "page": 299
     },
     {
-      "id": "moment-of-prescience",
-      "name": "Moment of Prescience",
-      "level": 8,
-      "classes": [
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Momento de Presciência",
-      "school": "Divination",
-      "source": "AU",
-      "page": 42
-    },
-    {
       "id": "moonbeam",
       "name": "Moonbeam",
       "level": 2,
@@ -10296,20 +9143,6 @@
       "school": "Evocation",
       "source": "XPHB",
       "page": 300
-    },
-    {
-      "id": "mordenkainens-lucubration",
-      "name": "Mordenkainen's Lucubration",
-      "level": 5,
-      "classes": [
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Lucubração de Mordenkainen",
-      "school": "Divination",
-      "source": "AU",
-      "page": 42
     },
     {
       "id": "move-earth",
@@ -10326,21 +9159,6 @@
       "school": "Transmutation",
       "source": "XPHB",
       "page": 302
-    },
-    {
-      "id": "negative-energy-flood",
-      "name": "Negative Energy Flood",
-      "level": 5,
-      "classes": [
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Inundação de Energia Negativa",
-      "school": "Necromancy",
-      "source": "AU",
-      "page": 42
     },
     {
       "id": "nondetection",
@@ -10579,23 +9397,6 @@
       "school": "Enchantment",
       "source": "XPHB",
       "page": 306
-    },
-    {
-      "id": "power-word-pain",
-      "name": "Power Word Pain",
-      "level": 7,
-      "classes": [
-        "bard",
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Palavra de Poder Dor",
-      "school": "Enchantment",
-      "source": "AU",
-      "page": 42
     },
     {
       "id": "power-word-stun",
@@ -10997,23 +9798,6 @@
       "school": "Necromancy",
       "source": "XPHB",
       "page": 312
-    },
-    {
-      "id": "reweave-fate",
-      "name": "Reweave Fate",
-      "level": 7,
-      "classes": [
-        "bard",
-        "cleric",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Retecer o Destino",
-      "school": "Divination",
-      "source": "AU",
-      "page": 42
     },
     {
       "id": "rope-trick",
@@ -11570,23 +10354,6 @@
       "page": 319
     },
     {
-      "id": "spirit-lantern",
-      "name": "Spirit Lantern",
-      "level": 5,
-      "classes": [
-        "cleric",
-        "warlock",
-        "wizard",
-        "artificer"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Lanterna Espiritual",
-      "school": "Necromancy",
-      "source": "AU",
-      "page": 43
-    },
-    {
       "id": "spiritual-weapon",
       "name": "Spiritual Weapon",
       "level": 2,
@@ -11787,20 +10554,6 @@
       "page": 324
     },
     {
-      "id": "summon-dinosaur",
-      "name": "Summon Dinosaur",
-      "level": 6,
-      "classes": [
-        "druid"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Convocar Dinossauro",
-      "school": "Conjuration",
-      "source": "AU",
-      "page": 43
-    },
-    {
       "id": "summon-dragon",
       "name": "Summon Dragon",
       "level": 5,
@@ -11861,21 +10614,6 @@
       "school": "Conjuration",
       "source": "XPHB",
       "page": 326
-    },
-    {
-      "id": "summon-plant",
-      "name": "Summon Plant",
-      "level": 5,
-      "classes": [
-        "druid",
-        "ranger"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Convocar Planta",
-      "school": "Conjuration",
-      "source": "AU",
-      "page": 44
     },
     {
       "id": "summon-undead",
@@ -12225,22 +10963,6 @@
       "page": 334
     },
     {
-      "id": "transfix",
-      "name": "Transfix",
-      "level": 7,
-      "classes": [
-        "bard",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Transfixar",
-      "school": "Enchantment",
-      "source": "AU",
-      "page": 44
-    },
-    {
       "id": "transport-via-plants",
       "name": "Transport via Plants",
       "level": 6,
@@ -12351,23 +11073,6 @@
       "page": 336
     },
     {
-      "id": "uncertain-footing",
-      "name": "Uncertain Footing",
-      "level": 2,
-      "classes": [
-        "bard",
-        "warlock",
-        "wizard",
-        "artificer"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Passos Incertos",
-      "school": "Illusion",
-      "source": "AU",
-      "page": 44
-    },
-    {
       "id": "unseen-servant",
       "name": "Unseen Servant",
       "level": 1,
@@ -12414,23 +11119,6 @@
       "page": 337
     },
     {
-      "id": "vision-of-elapsing-eons",
-      "name": "Vision of Elapsing Eons",
-      "level": 9,
-      "classes": [
-        "bard",
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Visão de Eras Decorridas",
-      "school": "Illusion",
-      "source": "AU",
-      "page": 45
-    },
-    {
       "id": "vitriolic-sphere",
       "name": "Vitriolic Sphere",
       "level": 4,
@@ -12444,22 +11132,6 @@
       "school": "Evocation",
       "source": "XPHB",
       "page": 337
-    },
-    {
-      "id": "wail-of-the-banshee",
-      "name": "Wail of the Banshee",
-      "level": 9,
-      "classes": [
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Lamento da Banshee",
-      "school": "Necromancy",
-      "source": "AU",
-      "page": 45
     },
     {
       "id": "wall-of-fire",
@@ -12605,22 +11277,6 @@
       "page": 340
     },
     {
-      "id": "waves-of-exhaustion",
-      "name": "Waves of Exhaustion",
-      "level": 5,
-      "classes": [
-        "sorcerer",
-        "warlock",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": true,
-      "label": "Ondas de Exaustão",
-      "school": "Necromancy",
-      "source": "AU",
-      "page": 45
-    },
-    {
       "id": "web",
       "name": "Web",
       "level": 2,
@@ -12712,22 +11368,6 @@
       "page": 343
     },
     {
-      "id": "wither-and-bloom",
-      "name": "Wither and Bloom",
-      "level": 2,
-      "classes": [
-        "druid",
-        "sorcerer",
-        "wizard"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Definhar e Florescer",
-      "school": "Necromancy",
-      "source": "AU",
-      "page": 45
-    },
-    {
       "id": "word-of-radiance",
       "name": "Word of Radiance",
       "level": 0,
@@ -12785,21 +11425,6 @@
       "page": 343
     },
     {
-      "id": "zone-of-amicability",
-      "name": "Zone of Amicability",
-      "level": 4,
-      "classes": [
-        "bard",
-        "warlock"
-      ],
-      "ritual": false,
-      "concentration": false,
-      "label": "Zona de Amizade",
-      "school": "Enchantment",
-      "source": "AU",
-      "page": 45
-    },
-    {
       "id": "zone-of-truth",
       "name": "Zone of Truth",
       "level": 2,
@@ -12835,15 +11460,6 @@
         "level": 2,
         "source": "XDMG",
         "page": 245,
-        "armor": false,
-        "attunement": false
-      },
-      {
-        "name": "Spell Component Ring",
-        "label": "Anel de componentes mágicos",
-        "level": 2,
-        "source": "AU",
-        "page": 123,
         "armor": false,
         "attunement": false
       },
@@ -12915,15 +11531,6 @@
         "page": 239,
         "armor": false,
         "attunement": true
-      },
-      {
-        "name": "Homeward Compass",
-        "label": "Bússola do caminho de casa",
-        "level": 2,
-        "source": "AU",
-        "page": 119,
-        "armor": false,
-        "attunement": false
       },
       {
         "name": "Pipe of Smoke Monsters",
@@ -13086,15 +11693,6 @@
         "attunement": true
       },
       {
-        "name": "Conjurer's Canopy",
-        "label": "Dossel do conjurador",
-        "level": 2,
-        "source": "AU",
-        "page": 117,
-        "armor": false,
-        "attunement": false
-      },
-      {
         "name": "Dread Helm",
         "label": "Elmo do pavor",
         "level": 2,
@@ -13144,15 +11742,6 @@
         "source": "EFA",
         "armor": false,
         "attunement": true
-      },
-      {
-        "name": "Evergreen Fertilizer",
-        "label": "Fertilizante perene",
-        "level": 2,
-        "source": "AU",
-        "page": 119,
-        "armor": false,
-        "attunement": false
       },
       {
         "name": "Cap of Water Breathing",
@@ -13216,29 +11805,11 @@
         "attunement": false
       },
       {
-        "name": "Elocutionist's Lexicon",
-        "label": "Léxico do orador",
-        "level": 2,
-        "source": "AU",
-        "page": 119,
-        "armor": false,
-        "attunement": false
-      },
-      {
         "name": "Prosthetic Limb",
         "label": "Membro protético",
         "level": 2,
         "source": "XDMG",
         "page": 290,
-        "armor": false,
-        "attunement": false
-      },
-      {
-        "name": "Ensorcelled Missive",
-        "label": "Mensagem enfeitiçada",
-        "level": 2,
-        "source": "AU",
-        "page": 119,
         "armor": false,
         "attunement": false
       },
@@ -13287,28 +11858,10 @@
         "attunement": false
       },
       {
-        "name": "Lucky Foot",
-        "label": "Pata da sorte",
-        "level": 2,
-        "source": "AU",
-        "page": 119,
-        "armor": false,
-        "attunement": false
-      },
-      {
         "name": "Sending Stones",
         "label": "Pedras de mensagem",
         "level": 2,
         "source": "XDMG",
-        "armor": false,
-        "attunement": false
-      },
-      {
-        "name": "Dictation Quill",
-        "label": "Pena de ditado",
-        "level": 2,
-        "source": "AU",
-        "page": 118,
         "armor": false,
         "attunement": false
       },
@@ -13387,15 +11940,6 @@
         "level": 2,
         "source": "XDMG",
         "page": 289,
-        "armor": false,
-        "attunement": false
-      },
-      {
-        "name": "Sweeping Broom",
-        "label": "Vassoura de limpeza",
-        "level": 2,
-        "source": "AU",
-        "page": 124,
         "armor": false,
         "attunement": false
       },
@@ -13732,29 +12276,11 @@
         "attunement": true
       },
       {
-        "name": "Thespian's Playbill",
-        "label": "Cartaz do ator",
-        "level": 10,
-        "source": "AU",
-        "page": 124,
-        "armor": false,
-        "attunement": true
-      },
-      {
         "name": "Hat of Disguise",
         "label": "Chapéu do disfarce",
         "level": 10,
         "source": "XDMG",
         "page": 266,
-        "armor": false,
-        "attunement": true
-      },
-      {
-        "name": "Necklace of the Beastly Familiar (Giant Octopus)",
-        "label": "Colar do familiar bestial: polvo gigante",
-        "level": 10,
-        "source": "AU",
-        "page": 120,
         "armor": false,
         "attunement": true
       },
@@ -13766,15 +12292,6 @@
         "page": 249,
         "armor": false,
         "attunement": false
-      },
-      {
-        "name": "Thief's Thimble",
-        "label": "Dedal do ladrão",
-        "level": 10,
-        "source": "AU",
-        "page": 124,
-        "armor": false,
-        "attunement": true
       },
       {
         "name": "Circlet of Blasting",
@@ -13910,15 +12427,6 @@
         "attunement": false
       },
       {
-        "name": "Blemished Idol of Good Fortunes",
-        "label": "Ídolo danificado da boa fortuna",
-        "level": 10,
-        "source": "AU",
-        "page": 127,
-        "armor": false,
-        "attunement": true
-      },
-      {
         "name": "Instrument of the Bards, Doss Lute",
         "label": "Instrumento dos bardos: alaúde Doss",
         "level": 10,
@@ -13973,15 +12481,6 @@
         "attunement": true
       },
       {
-        "name": "Magewright's Gloves",
-        "label": "Luvas do artífice mágico",
-        "level": 10,
-        "source": "AU",
-        "page": 120,
-        "armor": false,
-        "attunement": true
-      },
-      {
         "name": "Elven Chain",
         "label": "Malha élfica",
         "level": 10,
@@ -14017,15 +12516,6 @@
         "attunement": true
       },
       {
-        "name": "Spell-Slinger's Puppet",
-        "label": "Marionete do conjurador",
-        "level": 10,
-        "source": "AU",
-        "page": 123,
-        "armor": false,
-        "attunement": true
-      },
-      {
         "name": "Medallion of Thoughts",
         "label": "Medalhão dos pensamentos",
         "level": 10,
@@ -14051,24 +12541,6 @@
         "page": 261,
         "armor": false,
         "attunement": false
-      },
-      {
-        "name": "Orb of Divination Detection",
-        "label": "Orbe de detecção de adivinhação",
-        "level": 10,
-        "source": "AU",
-        "page": 121,
-        "armor": false,
-        "attunement": true
-      },
-      {
-        "name": "Orb of Sorcery",
-        "label": "Orbe de feitiçaria",
-        "level": 10,
-        "source": "AU",
-        "page": 121,
-        "armor": false,
-        "attunement": true
       },
       {
         "name": "Stone of Good Luck",
@@ -14232,15 +12704,6 @@
         "attunement": true
       },
       {
-        "name": "Mage's Manacle",
-        "label": "Algema do mago",
-        "level": 14,
-        "source": "AU",
-        "page": 120,
-        "armor": false,
-        "attunement": false
-      },
-      {
         "name": "Dimensional Shackles",
         "label": "Algemas dimensionais",
         "level": 14,
@@ -14255,15 +12718,6 @@
         "level": 14,
         "source": "XDMG",
         "page": 228,
-        "armor": false,
-        "attunement": true
-      },
-      {
-        "name": "Blood Amulet",
-        "label": "Amuleto de sangue",
-        "level": 14,
-        "source": "AU",
-        "page": 116,
         "armor": false,
         "attunement": true
       },
@@ -14318,15 +12772,6 @@
         "attunement": false
       },
       {
-        "name": "Arcanist's Bestiary",
-        "label": "Bestiário do arcanista",
-        "level": 14,
-        "source": "AU",
-        "page": 116,
-        "armor": false,
-        "attunement": true
-      },
-      {
         "name": "Bag of Beans",
         "label": "Bolsa de feijões",
         "level": 14,
@@ -14363,15 +12808,6 @@
         "attunement": true
       },
       {
-        "name": "Scholar's Anchoring Bangle",
-        "label": "Bracelete de ancoragem do erudito",
-        "level": 14,
-        "source": "AU",
-        "page": 122,
-        "armor": false,
-        "attunement": true
-      },
-      {
         "name": "Brazier of Commanding Fire Elementals",
         "label": "Braseiro de comandar elementais do fogo",
         "level": 14,
@@ -14404,15 +12840,6 @@
         "level": 14,
         "source": "XDMG",
         "page": 244,
-        "armor": false,
-        "attunement": false
-      },
-      {
-        "name": "Arcane Chatelaine",
-        "label": "Chatelaine arcana",
-        "level": 14,
-        "source": "AU",
-        "page": 116,
         "armor": false,
         "attunement": false
       },
@@ -14471,24 +12898,6 @@
         "attunement": true
       },
       {
-        "name": "Necklace of the Beastly Familiar (Giant Scorpion)",
-        "label": "Colar do familiar bestial: escorpião gigante",
-        "level": 14,
-        "source": "AU",
-        "page": 120,
-        "armor": false,
-        "attunement": true
-      },
-      {
-        "name": "Necklace of the Beastly Familiar (Hippopotamus)",
-        "label": "Colar do familiar bestial: hipopótamo",
-        "level": 14,
-        "source": "AU",
-        "page": 120,
-        "armor": false,
-        "attunement": true
-      },
-      {
         "name": "Bead of Force",
         "label": "Conta de força",
         "level": 14,
@@ -14523,15 +12932,6 @@
         "page": 247,
         "armor": false,
         "attunement": false
-      },
-      {
-        "name": "Secret Keeper's Circlet",
-        "label": "Diadema do guardião de segredos",
-        "level": 14,
-        "source": "AU",
-        "page": 122,
-        "armor": false,
-        "attunement": true
       },
       {
         "name": "Helm of Teleportation",
@@ -14628,15 +13028,6 @@
         "level": 14,
         "source": "XDMG",
         "page": 270,
-        "armor": false,
-        "attunement": false
-      },
-      {
-        "name": "Bellows of Strangulation",
-        "label": "Fole do estrangulamento",
-        "level": 14,
-        "source": "AU",
-        "page": 116,
         "armor": false,
         "attunement": false
       },
@@ -14820,24 +13211,6 @@
         "attunement": true
       },
       {
-        "name": "Prismatic Rune",
-        "label": "Runa prismática",
-        "level": 14,
-        "source": "AU",
-        "page": 122,
-        "armor": false,
-        "attunement": true
-      },
-      {
-        "name": "Dream Weaver",
-        "label": "Tecelão de sonhos",
-        "level": 14,
-        "source": "AU",
-        "page": 119,
-        "armor": false,
-        "attunement": true
-      },
-      {
         "name": "Bowl of Commanding Water Elementals",
         "label": "Tigela de comandar elementais da água",
         "level": 14,
@@ -14845,15 +13218,6 @@
         "page": 240,
         "armor": false,
         "attunement": false
-      },
-      {
-        "name": "Spell Duelist's Trophy",
-        "label": "Troféu do duelista arcano",
-        "level": 14,
-        "source": "AU",
-        "page": 123,
-        "armor": false,
-        "attunement": true
       },
       {
         "name": "Horn of Blasting",

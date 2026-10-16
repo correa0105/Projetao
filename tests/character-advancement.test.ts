@@ -45,8 +45,8 @@ test('SRD: tabelas completas, escolhas até nível 20 e magias das subclasses', 
             id,
           );
   }
-  assert.equal(spells.length, 444);
-  assert.equal(new Set(spells.map((s) => s.id)).size, 444);
+  assert.equal(spells.length, 411);
+  assert.equal(new Set(spells.map((s) => s.id)).size, 411);
   assert.ok(
     spells.some((s) => s.id === 'fireball' && s.level === 3 && s.classes.includes('wizard')),
   );

@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 import { resolveCopies } from './shop-magic-source.mjs';
+import { permittedSource } from '../shared/content-sources.ts';
 const base = 'https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/',
   cache = '.local/shop-completion/spells';
 const asOf = '2026-10-09';
@@ -31,7 +32,7 @@ const names = [
     Object.entries(index)
       .filter(
         ([id]) =>
-          !id.startsWith('UA') &&
+          !id.startsWith('UA') && permittedSource(id) &&
           (!sourceInfo.get(id)?.published || sourceInfo.get(id).published <= asOf),
       )
       .map(([, file]) => file),
@@ -58,7 +59,7 @@ const resolved = resolveCopies(rows),
   byName = new Map();
 for (const row of resolved) {
   if (
-    row.source.startsWith('UA') ||
+    row.source.startsWith('UA') || !permittedSource(row.source) ||
     row.level < 0 ||
     row.level > 9 ||
     (sourceInfo.get(row.source)?.published ?? '1900-01-01') > asOf

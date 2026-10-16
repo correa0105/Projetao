@@ -98,7 +98,7 @@ try {
     if (cls === 'Guerreiro' && next.subclass)
       expect(
         await modal.getByLabel('Subclasse', { exact: true }).locator('option').count(),
-      ).toBe(7);
+      ).toBe(6);
     if (next.subclass)
       await modal.getByLabel('Subclasse', { exact: true }).selectOption(next.subclass);
     const plan = levelPlan(current, sheet.sheet!.choices!, next);
@@ -250,7 +250,7 @@ try {
     }),
   );
   console.log(
-    'Class expansion browser QA passed: real advancement, six fighter subclasses, maneuvers, artificer plans, spell persistence, reference and five widths.',
+    'Class expansion browser QA passed: real advancement, five fighter subclasses, maneuvers, artificer plans, spell persistence, reference and five widths.',
   );
 } finally {
   await browser.close();

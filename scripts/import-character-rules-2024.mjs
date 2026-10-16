@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { subclassDescriptions } from '../shared/subclass-descriptions-2024.ts';
+import { permittedSource } from '../shared/content-sources.ts';
 const revision = '90d343cde64cf8dce1083ea0525a6b0b9e545f2e';
 const baseUrl = `https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/${revision}/data/`;
 const cache = '.local/subclass-sources';
@@ -12,9 +13,14 @@ const oldSpells = JSON.parse(await fs.readFile('shared/srd-2024-spells.json', 'u
 const sources = [];
 await fs.mkdir(cache, { recursive: true });
 async function read(relative, local) {
-  const response = await fetch(baseUrl + relative);
-  assert(response.ok, relative + ': ' + response.status);
-  const bytes = Buffer.from(await response.arrayBuffer());
+  let bytes;
+  if (process.argv.includes('--offline')) {
+    bytes = await fs.readFile(cache + '/' + local);
+  } else {
+    const response = await fetch(baseUrl + relative);
+    assert(response.ok, relative + ': ' + response.status);
+    bytes = Buffer.from(await response.arrayBuffer());
+  }
   await fs.writeFile(cache + '/' + local, bytes);
   sources.push({
     url: baseUrl + relative,
@@ -33,7 +39,7 @@ const raw = {};
 for (const cls of Object.keys(mapping.classes))
   raw[cls] = await read('class/' + classIndex[cls], cls + '.json');
 const spellRows = [];
-for (const src of ['XPHB', 'FRHoF', 'EFA', 'AU'])
+for (const src of ['XPHB', 'FRHoF', 'EFA'].filter(permittedSource))
   spellRows.push(...(await read('spells/' + spellIndex[src], 'spells-' + src + '.json')).spell);
 const slug = (name) =>
   name
@@ -97,7 +103,7 @@ function fixed(value) {
   return Object.values(value).flatMap(fixed);
 }
 const subclasses = [];
-for (const m of mapping.subclasses) {
+for (const m of mapping.subclasses.filter((m) => permittedSource(m.source))) {
   const classSource = m.class === 'artificer' ? 'EFA' : 'XPHB';
   const s = raw[m.class].subclass.find(
     (s) => s.name === m.name && s.source === m.source && s.classSource === classSource,
@@ -209,8 +215,8 @@ for (const m of mapping.subclasses) {
       })),
   });
 }
-assert.equal(subclasses.length, 76);
-assert.equal(new Set(subclasses.map((s) => s.class + '/' + s.id)).size, 76);
+assert.equal(subclasses.length, mapping.subclasses.filter((m) => permittedSource(m.source)).length);
+assert.equal(new Set(subclasses.map((s) => s.class + '/' + s.id)).size, subclasses.length);
 const art = raw.artificer.class.find((c) => c.source === 'EFA');
 const artFeatures = raw.artificer.classFeature.filter(
   (f) => f.classSource === 'EFA' && f.source === 'EFA',
@@ -278,7 +284,7 @@ function planTables(value) {
 planTables(artPlans);
 for (const item of rawItems) {
   if (
-    !['XDMG', 'EFA', 'FRHoF', 'AU', 'RHW'].includes(item.source) ||
+    !['XDMG', 'EFA', 'FRHoF', 'RHW'].includes(item.source) ||
     item._copy ||
     item.curse ||
     item.cursed
@@ -301,12 +307,13 @@ for (const item of rawItems) {
   });
 }
 // These two grants are alternative cantrips, selected by the feature field.
-subclasses.find((s) => s.class === 'Guerreiro' && s.id === 'arcane-archer').spells = {};
+const archer = subclasses.find((s) => s.class === 'Guerreiro' && s.id === 'arcane-archer');
+if (archer) archer.spells = {};
 const result = {
   asOf: '2026-10-15',
   revision,
   books: books
-    .filter((b) => ['XPHB', 'FRHoF', 'EFA', 'RHW', 'AU'].includes(b.id))
+    .filter((b) => ['XPHB', 'FRHoF', 'EFA', 'RHW'].includes(b.id))
     .map((b) => ({ id: b.id, name: b.name, published: b.published })),
   subclasses,
   spells: [...spells.values()].sort((a, b) => a.id.localeCompare(b.id)),

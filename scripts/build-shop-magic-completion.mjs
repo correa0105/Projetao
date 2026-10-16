@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { permittedSource } from '../shared/content-sources.ts';
 const dir = 'data/shop-magic-completion-20261009';
 const candidates = JSON.parse(await fs.readFile(dir + '/candidates.json')).items;
 const editorial = JSON.parse(await fs.readFile(dir + '/editorial.json'));
@@ -56,6 +57,7 @@ const items = [],
   pending = [],
   hashes = new Set();
 for (const c of candidates) {
+  if (!permittedSource(c.facts.source)) continue;
   const e = editorial[c.id],
     a = art.find((x) => x.id === c.id);
   if (e?.review !== 'approved' || a?.review !== 'approved') {
