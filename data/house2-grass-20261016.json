@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-16",
+  "method": "built-in image_gen",
+  "reference": "/vtt/terrain-v4-20261013/grass.webp",
+  "composition": "110 irregular overlapping feathered regions with different tile scales and rotations; common overhead camera and palette",
+  "assets": [
+    {
+      "id": "short-grass",
+      "image": "/house2/grass-short-20261016.webp",
+      "source": "exec-010c8833-36d8-4382-b8c4-2a877f7d7a7f.png",
+      "sourceSha256": "b4509bf83d716cc25c4700950e8dc55517c3e43bcfbfa9f454bd72213755bb06",
+      "sha256": "51ddaae48b963c6ffe9d6365173787fd01a03596eae50362b799a09f59f5f049",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 820358,
+      "prompt": "Use case: style-transfer. Asset type: seamless tileable top-down grass terrain texture for a fantasy VTT. Input image 1 is the reference for EXACT COLOR, brightness, material rendering and overhead camera. Keep the same muted olive/sage green and straw undertones, same average brightness, same fine semi-realistic painted game texture. Create a different ground pattern, not a scenic illustration. Strict vertical 90-degree orthographic plan view; no perspective, no horizon, no shadows from objects outside frame. Texture fills entire square edge to edge and MUST tile seamlessly in all directions. Even diffuse neutral light. Fine detailed blades, dirt grains and tiny plant details at ground scale, no tree, shrub, rock formation, building, path, symbol, text, frame, grid, or watermark. No large repeated diagonal/checker mottling and no periodic clumps. Natural aperiodic distribution. Maintain color continuity with the provided texture; variation comes from details, NOT a new color or contrast. Deliver one square seamless tile with full frame usable texture. Variant: short close-cropped grass, fine interwoven narrow blades and small lightly worn patches of exposed soil interspersed irregularly. A calm fine-grained ground pattern with fewer broad yellow blotches than reference, same overall green tone."
+    },
+    {
+      "id": "meadow-tufts",
+      "image": "/house2/grass-tufts-20261016.webp",
+      "source": "exec-598a873c-71b9-40af-8d24-94e47971cfdf.png",
+      "sourceSha256": "3ae58b5af428c2d2750c094950bde958188e9ff1ff68fa15f5f8ffcbef6a2278",
+      "sha256": "d09aebf0561c3e7566f5bb6a74002e5cef284f447b066c05f35b3ce222891380",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 797206,
+      "prompt": "Use case: style-transfer. Asset type: seamless tileable top-down grass terrain texture for a fantasy VTT. Input image 1 is the reference for EXACT COLOR, brightness, material rendering and overhead camera. Keep the same muted olive/sage green and straw undertones, same average brightness, same fine semi-realistic painted game texture. Create a different ground pattern, not a scenic illustration. Strict vertical 90-degree orthographic plan view; no perspective, no horizon, no shadows from objects outside frame. Texture fills entire square edge to edge and MUST tile seamlessly in all directions. Even diffuse neutral light. Fine detailed blades, dirt grains and tiny plant details at ground scale, no tree, shrub, rock formation, building, path, symbol, text, frame, grid, or watermark. No large repeated diagonal/checker mottling and no periodic clumps. Natural aperiodic distribution. Maintain color continuity with the provided texture; variation comes from details, NOT a new color or contrast. Deliver one square seamless tile with full frame usable texture. Variant: fine wispy meadow grass with scattered small low tufts of narrow blades flowing in subtly varied directions, tiny sparse dry stems and delicate ground moss. Varied density at small scale, NO large radial starburst clumps; same overall green tone."
+    },
+    {
+      "id": "clover-grass",
+      "image": "/house2/grass-clover-20261016.webp",
+      "source": "exec-ea0592c0-ea13-4fb1-8ca4-2e33d12d5cc4.png",
+      "sourceSha256": "bdda941509f7c62a1119362b132ea2374a826da341bc3a330efca19c37db5817",
+      "sha256": "52db2a6b37ed479aa7735182b0adb334d1775ad4fee469c71cf4e6acd9f8033f",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 843828,
+      "prompt": "Use case: style-transfer. Asset type: seamless tileable top-down grass terrain texture for a fantasy VTT. Input image 1 is the reference for EXACT COLOR, brightness, material rendering and overhead camera. Keep the same muted olive/sage green and straw undertones, same average brightness, same fine semi-realistic painted game texture. Create a different ground pattern, not a scenic illustration. Strict vertical 90-degree orthographic plan view; no perspective, no horizon, no shadows from objects outside frame. Texture fills entire square edge to edge and MUST tile seamlessly in all directions. Even diffuse neutral light. Fine detailed blades, dirt grains and tiny plant details at ground scale, no tree, shrub, rock formation, building, path, symbol, text, frame, grid, or watermark. No large repeated diagonal/checker mottling and no periodic clumps. Natural aperiodic distribution. Maintain color continuity with the provided texture; variation comes from details, NOT a new color or contrast. Deliver one square seamless tile with full frame usable texture. Variant: natural small clover leaves and tiny creeping groundcover woven into short grass, minute delicate leaf shapes scattered aperiodically, occasional tiny earth specks. NO flowers or oversized leaves; same overall green tone."
+    }
+  ]
+}

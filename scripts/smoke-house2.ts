@@ -79,7 +79,19 @@ try {
   await page.getByRole('textbox', { name: 'Pesquisar vizinhanças' }).fill('');
   await page.screenshot({ path: 'test-results/house2/directory.png' });
   await page.locator('.h2-neighborhood-card').first().click();
-  await expect(page.locator('.h2-plot')).toHaveCount(36);
+  await expect(page.locator('.h2-plot')).toHaveCount(12);
+  await page.locator('.h2-village-landscape image').evaluateAll(async (nodes) => {
+    const sources = [...new Set(nodes.map((n) => n.getAttribute('href')!))];
+    await Promise.all(
+      sources.map((src) => {
+        const image = new Image();
+        image.src = src;
+        return image.decode();
+      }),
+    );
+  });
+  await expect(page.locator('[data-grass-variant]')).toHaveCount(3);
+  await page.screenshot({ path: 'test-results/house2/village.png' });
   const p = page.locator('.h2-plot').first(),
     plotId =
       (await p.getAttribute('data-house2-plot')) ||
@@ -87,19 +99,38 @@ try {
   await p.focus();
   await page.keyboard.press('Enter');
   await page.getByRole('button', { name: /Comprar terreno/ }).click();
+  await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
   await expect(page.locator('.h2-catalog button')).toHaveCount(25);
   await page.locator('.h2-catalog button').first().click();
+  await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
   await expect(page.getByText(/já foi adquirida para este terreno/)).toBeVisible();
   await tool('Mobília');
   await expect(page.locator('.h2-catalog button')).toHaveCount(100);
   await page.getByRole('textbox', { name: 'Pesquisar mobília' }).fill('Cadeira de madeira');
   await expect(page.locator('.h2-catalog button')).toHaveCount(1);
   await page.locator('.h2-catalog button').first().click();
-  await expect(page.getByRole('status')).toContainText('Mobília adquirida');
+  await page.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  expect((await request(context, '/house-v2', undefined, 'GET')).inventory.length).toBe(0);
+  await page.locator('.h2-catalog button').first().click();
+  await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
+  await expect(page.locator('.h2-world-notice')).toContainText('Mobília adquirida');
   await tool('Minha coleção');
-  await page.getByRole('button', { name: /Cadeira de madeira Colocar/ }).click();
+  await page.getByRole('button', { name: /Cadeira de madeira.*Colocar/ }).click();
   await page.getByRole('button', { name: 'Mover para a direita', exact: true }).click();
   await page.getByRole('button', { name: 'Girar peça', exact: true }).click();
+  await page.getByLabel('Tamanho do item', { exact: true }).fill('160');
+  await expect(page.getByLabel('Encaixar na grade')).not.toBeChecked();
+  const neighborhood = (await request(context, '/house-v2', undefined, 'GET')).neighborhoods[0].id;
+  const fixedBefore = (
+    await request(context, '/house-v2/neighborhoods/' + neighborhood, undefined, 'GET')
+  ).plots.find((p: any) => p.id === plotId);
+  await page.getByLabel('Posição X', { exact: true }).fill('9.17');
+  await page.getByRole('button', { name: 'Salvar', exact: true }).click();
+  await expect(page.locator('.h2-world-notice')).toContainText('Terreno salvo');
+  const fractional = (await request(context, '/house-v2', undefined, 'GET')).inventory[0];
+  expect(fractional.x).toBe(9.17);
+  expect(fractional.scale).toBe(1.6);
+  await page.getByLabel('Posição X', { exact: true }).fill('9.23');
   const piece = page
     .locator('[data-house2-piece]')
     .filter({ has: page.locator('image') })
@@ -119,25 +150,31 @@ try {
   await page.mouse.move(20, 450, { steps: 8 });
   await page.mouse.up();
   await page.getByRole('button', { name: 'Salvar', exact: true }).click();
-  await expect(page.getByRole('status')).toContainText('Terreno salvo');
+  await expect(page.locator('.h2-world-notice')).toContainText('Terreno salvo');
   const directory = await request(context, '/house-v2', undefined, 'GET'),
     saved = directory.inventory.find((i: any) => i.id === itemId);
   expect(saved.plot_id).toBe(plotId);
   expect(saved.rotation).toBe(90);
+  expect(saved.scale).toBe(1.6);
   const n = directory.neighborhoods[0].id,
     state = await request(context, '/house-v2/neighborhoods/' + n, undefined, 'GET'),
     lot = state.plots.find((p: any) => p.id === plotId);
-  expect(saved.x).toBeGreaterThanOrEqual(lot.x + 0.5);
-  expect(saved.x).toBeLessThanOrEqual(lot.x + lot.width - 0.5);
+  expect([lot.house_x, lot.house_y, lot.house_rotation]).toEqual([
+    fixedBefore.house_x,
+    fixedBefore.house_y,
+    fixedBefore.house_rotation,
+  ]);
+  expect(saved.x).toBeGreaterThanOrEqual(lot.x + 0.8);
+  expect(saved.x).toBeLessThanOrEqual(lot.x + lot.width - 0.8);
   await page.reload();
   await expect(page.locator('.h2-neighborhood-card')).toHaveCount(3);
   await page.locator('.h2-neighborhood-card').first().click();
-  await expect(page.locator('.h2-plot')).toHaveCount(36);
+  await expect(page.locator('.h2-plot')).toHaveCount(12);
   await page.locator(`g[data-house2-plot="${plotId}"] > .h2-plot`).focus();
   await page.keyboard.press('Enter');
   await page.getByRole('button', { name: 'Entrar na casa', exact: true }).click();
   await tool('Minha coleção');
-  await page.getByRole('button', { name: /Cadeira de madeira Selecionar/ }).click();
+  await page.getByRole('button', { name: /Cadeira de madeira.*Ajustar/ }).click();
   await expect(page.locator(`[data-house2-piece="${itemId}"]`)).toHaveAttribute(
     'transform',
     `translate(${saved.x} ${saved.y}) rotate(90)`,
@@ -189,12 +226,14 @@ try {
   }
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.getByRole('button', { name: 'Ver toda a vizinhança' }).click();
-  await page.locator(`g[data-house2-plot="${plotId}"] > .h2-plot`).hover();
+  await page
+    .locator(`g[data-house2-plot="${plotId}"] > .h2-plot`)
+    .hover({ position: { x: 2, y: 2 } });
   await expect(page.locator('.h2-owner-tooltip')).toContainText('Casa de Aurora');
   await page.screenshot({ path: 'test-results/house2/owner-hover.png' });
   await peer.goto(origin + '/#house2');
   await peer.locator('.h2-neighborhood-card').first().click();
-  await expect(peer.locator('.h2-plot')).toHaveCount(36);
+  await expect(peer.locator('.h2-plot')).toHaveCount(12);
   await peer.locator(`g[data-house2-plot="${plotId}"] > .h2-plot`).focus();
   await peer.keyboard.press('Enter');
   await expect(peer.getByText(/somente visita/)).toBeVisible();

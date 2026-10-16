@@ -22,7 +22,6 @@ import {
 import { api, post } from './api';
 import { Modal } from './components';
 import { FlashMessage } from './FlashMessage';
-import { ScenePanel } from './ScenePanel';
 import { LoreSmoke } from './LoreSmoke';
 import { LoreScrollHolderIcon, LoreScrollIcon } from './LoreSymbols';
 import { RulebookEmblem } from './RulebookSymbols';
@@ -330,17 +329,6 @@ export function LoreLibrary() {
   const [dialog, setDialog] = useState<'page' | 'folder' | null>(null);
   const [query, setQuery] = useState('');
   const [indexOpen, setIndexOpen] = useState(false);
-  const [basicPreview, setBasicPreview] = useState(false);
-  const [viewMenuOpen, setViewMenuOpen] = useState(false);
-  const viewMenu = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!viewMenuOpen) return;
-    const close = (event: globalThis.PointerEvent) => {
-      if (!viewMenu.current?.contains(event.target as Node)) setViewMenuOpen(false);
-    };
-    document.addEventListener('pointerdown', close);
-    return () => document.removeEventListener('pointerdown', close);
-  }, [viewMenuOpen]);
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
   const [deletingFolder, setDeletingFolder] = useState<LoreFolder | null>(null);
@@ -366,8 +354,8 @@ export function LoreLibrary() {
       const loaded = await api<LorePage>(`/lore/pages/${id}`);
       if (token === request.current) {
         setPage(loaded);
-        if (basicPreview && !loaded.published) return;
-        setEditing(edit && loaded.can_edit && !basicPreview);
+        if (!index?.can_manage_folders && !loaded.published) return;
+        setEditing(edit && loaded.can_edit);
       }
     } catch (error) {
       setMessage((error as Error).message);
@@ -405,7 +393,7 @@ export function LoreLibrary() {
       </section>
     );
   const region = index.regions.find((item) => item.id === regionId) || index.regions[0];
-  const basicView = basicPreview && index.can_manage_folders;
+  const basicView = !index.can_manage_folders;
   const canManage = index.can_manage_folders && !basicView;
   const folders = index.folders.filter((folder) => folder.region_id === region.id);
   const regionPages = index.pages.filter(
@@ -426,64 +414,6 @@ export function LoreLibrary() {
     >
       <LoreSmoke />
       {message && <FlashMessage kind="info">{message}</FlashMessage>}
-      {index.can_manage_folders && (
-        <div className="lore-view-menu" ref={viewMenu}>
-          <button
-            type="button"
-            className="lore-view-trigger"
-            aria-label="Menu de visualização da Lore"
-            aria-expanded={viewMenuOpen}
-            aria-controls="scene-panel-lore-view"
-            data-preview={basicView || undefined}
-            title={basicView ? 'Prévia de conta básica' : 'Visualização de administrador'}
-            onClick={() => setViewMenuOpen((v) => !v)}
-          >
-            <Eye size={17} />
-            <span>Visualização</span>
-            <ChevronRight size={14} />
-          </button>
-          {viewMenuOpen && (
-            <ScenePanel
-              id="lore-view"
-              title="Visualização da Lore"
-              close={() => setViewMenuOpen(false)}
-            >
-              <div className="lore-view-options" role="group" aria-label="Modo de visualização">
-                <span className="lore-kicker">{basicView ? 'Conta básica' : 'Administrador'}</span>
-                <span>
-                  {basicView
-                    ? 'Prévia de conta básica · somente conteúdo publicado'
-                    : 'Confira a biblioteca como um jogador, sem rascunhos nem controles de edição.'}
-                </span>
-                <button
-                  type="button"
-                  aria-pressed={basicView}
-                  disabled={
-                    editing ||
-                    Boolean(dialog || deletingFolder || deletingPage || editingFolder || trash)
-                  }
-                  title={editing ? 'Feche a edição para trocar a visualização' : undefined}
-                  onClick={() => {
-                    request.current++;
-                    setBusy(false);
-                    setBasicPreview((v) => !v);
-                    setPage(null);
-                    setDialog(null);
-                    setDeletingFolder(null);
-                    setDeletingPage(null);
-                    setEditingFolder(null);
-                    setTrash(null);
-                    setViewMenuOpen(false);
-                  }}
-                >
-                  <Eye size={15} />{' '}
-                  {basicView ? 'Voltar à visão de administrador' : 'Ver como conta básica'}
-                </button>
-              </div>
-            </ScenePanel>
-          )}
-        </div>
-      )}
       <div className="lore-scene">
         <div className="lore-scene-art" aria-hidden="true" />
         <div className="lore-hero" aria-hidden="true" />

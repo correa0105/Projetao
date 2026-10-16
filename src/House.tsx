@@ -1,3 +1,4 @@
+import {basicAccountPreview} from './account-preview';
 import {
   useEffect,
   useLayoutEffect,
@@ -543,7 +544,7 @@ export function House({
       .then((v) => {
         if (current !== generation.current) return;
         setHome(v);
-        if (v.is_owner)
+        if (v.is_owner && !basicAccountPreview())
           void post(`/house/${homeId}/rewards`, {})
             .then(() => api<HouseState>(`/house/${homeId}`))
             .then((next) => {

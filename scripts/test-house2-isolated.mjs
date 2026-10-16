@@ -11,9 +11,11 @@ await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
   process.exitCode = await new Promise((resolve, reject) => {
-    const args = process.argv.includes('--browser')
-      ? ['--import', 'tsx', 'scripts/smoke-house2.ts']
-      : ['--import', 'tsx', '--test', 'tests/house-v2.test.ts'];
+    const args = process.argv.includes('--migration')
+      ? ['--import', 'tsx', '--test', 'tests/house-v2-village.test.ts']
+      : process.argv.includes('--browser')
+        ? ['--import', 'tsx', 'scripts/smoke-house2.ts']
+        : ['--import', 'tsx', '--test', 'tests/house-v2.test.ts'];
     const child = spawn(process.execPath, args, {
       env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
       stdio: 'inherit',

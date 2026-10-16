@@ -13,10 +13,10 @@ const folderWriteLock = (client: import('pg').PoolClient) =>
 async function requireFolderManager(userId: string) {
   await requireAdministrator(userId);
 }
-const editable = `(p.deleted_at IS NULL AND ${administratorPredicate()})`;
-const visible = `(p.deleted_at IS NULL AND (p.published OR ${editable}))`;
-const summary = `p.id,p.region_id,p.folder_id,p.title,p.subtitle,p.published,p.revision,
-  ${editable} AS can_edit,
+const editable = () => `(p.deleted_at IS NULL AND ${administratorPredicate()})`;
+const visible = () => `(p.deleted_at IS NULL AND (p.published OR ${editable()}))`;
+const summary = () => `p.id,p.region_id,p.folder_id,p.title,p.subtitle,p.published,p.revision,
+  ${editable()} AS can_edit,
   (SELECT '/api/lore/images/' || (b->>'asset_id') FROM jsonb_array_elements(p.blocks) b
     WHERE b->>'type'='image' LIMIT 1) AS thumbnail`;
 
@@ -34,7 +34,7 @@ async function getPage(id: string, userId: string, edit = false) {
   const {
     rows: [page],
   } = await pool.query(
-    `SELECT ${summary},p.blocks FROM lore_pages p WHERE p.id=$2 AND ${edit ? editable : visible}`,
+    `SELECT ${summary()},p.blocks FROM lore_pages p WHERE p.id=$2 AND ${edit ? editable() : visible()}`,
     [userId, id],
   );
   if (!page) throw new AppError(404, 'Crônica não encontrada ou indisponível para esta conta.');
@@ -56,7 +56,7 @@ export function loreRouter() {
         'SELECT id,region_id,parent_id,name,revision FROM lore_folders WHERE deleted_at IS NULL ORDER BY name',
       ),
       pool.query(
-        `SELECT ${summary} FROM lore_pages p WHERE ${visible} ORDER BY p.created_at,p.id`,
+        `SELECT ${summary()} FROM lore_pages p WHERE ${visible()} ORDER BY p.created_at,p.id`,
         [userId],
       ),
       isAdministrator(userId),
@@ -351,7 +351,7 @@ export function loreRouter() {
       const {
         rows: [page],
       } = await client.query(
-        `SELECT p.* FROM lore_pages p WHERE p.id=$2 AND ${editable} FOR UPDATE`,
+        `SELECT p.* FROM lore_pages p WHERE p.id=$2 AND ${editable()} FOR UPDATE`,
         [userId, id],
       );
       if (!page) throw new AppError(404, 'Crônica não encontrada ou indisponível para exclusão.');
@@ -413,7 +413,7 @@ export function loreRouter() {
       const {
         rows: [page],
       } = await client.query(
-        `SELECT p.* FROM lore_pages p WHERE p.id=$2 AND ${editable} FOR UPDATE`,
+        `SELECT p.* FROM lore_pages p WHERE p.id=$2 AND ${editable()} FOR UPDATE`,
         [userId, id],
       );
       if (!page) throw new AppError(404, 'Crônica não encontrada ou indisponível para edição.');
@@ -504,7 +504,7 @@ export function loreRouter() {
     const {
       rows: [image],
     } = await pool.query(
-      `SELECT i.image_data,i.mime_type FROM lore_images i JOIN lore_pages p ON p.id=i.page_id WHERE i.id=$2 AND ${visible}`,
+      `SELECT i.image_data,i.mime_type FROM lore_images i JOIN lore_pages p ON p.id=i.page_id WHERE i.id=$2 AND ${visible()}`,
       [res.locals.user.id, uuid.parse(req.params.id)],
     );
     if (!image) throw new AppError(404, 'Imagem não encontrada.');

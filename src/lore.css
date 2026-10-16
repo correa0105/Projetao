@@ -106,6 +106,13 @@
 .lore-scene .lore-timeline::before {
   display: none;
 }
+.lore-scene .lore-timeline-heading { position:relative; min-height:72px; justify-content:flex-end; }
+.lore-scene .lore-timeline-heading > div:first-child {
+  position:absolute;
+  top:calc(-1 * var(--lore-hero-height) + 28px);
+  left:calc(-1 * clamp(24px, 4.5vw, 90px) + clamp(24px, 3vw, 46px));
+  max-width:calc(100% - 24px);
+}
 .lore-archive {
   display: grid;
   grid-template-columns: 266px minmax(0, 1fr);

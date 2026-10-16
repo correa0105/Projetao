@@ -1,5 +1,15 @@
 # Lore como arquivo de leitura — 16/10/2026
 
+O título e a frase da Linha Temporal agora ficam no alto à esquerda do card,
+com margem adaptada à largura. Linha de eras e botão de edição conservam sua
+posição. Conferência visual e limites do título validados de 320 a 1920 px.
+
+O menu de visualização foi promovido para todas as páginas do portal. Há somente
+uma aba lateral global, inclusive na Lore, com estado por sessão e conta. A prévia
+consulta o servidor com capacidades básicas, sem rascunhos e sem privilégios de
+ouro infinito ou edição administrativa. Voltar não altera o papel real da conta.
+Guia e verificações: `ACCOUNT-PREVIEW.md`.
+
 O pergaminho aberto ganhou uma ilustração original com camadas reais de papel,
 bordas gastas e manuscrito discreto, substituindo apenas o desenho anterior.
 Os quatro rastros mágicos, dez partículas e animação de abertura permanecem

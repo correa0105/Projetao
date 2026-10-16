@@ -18,7 +18,7 @@ import {
 } from '../shared/rulebook.js';
 
 type Database = Pool | PoolClient;
-const editorPredicate = administratorPredicate();
+const editorPredicate = () => administratorPredicate();
 const initialDocument = JSON.stringify(rulebookDocumentSchema.parse(INITIAL_RULEBOOK));
 const writeSchema = z
   .object({
@@ -178,10 +178,10 @@ export function rulebookRouter() {
     await requireEditor(userId);
     await ensureInitialRulebook();
     const { rows } = await pool.query(
-      `SELECT revision,document->>'title' AS title,updated_at FROM rulebook_documents WHERE id=1 AND ${editorPredicate}
+      `SELECT revision,document->>'title' AS title,updated_at FROM rulebook_documents WHERE id=1 AND ${editorPredicate()}
        UNION ALL
        SELECT revision,snapshot->>'title' AS title,document_updated_at AS updated_at
-       FROM rulebook_versions WHERE document_id=1 AND ${editorPredicate} ORDER BY revision DESC`,
+       FROM rulebook_versions WHERE document_id=1 AND ${editorPredicate()} ORDER BY revision DESC`,
       [userId],
     );
     res.set('Cache-Control', 'no-store').json({ revisions: rows });
@@ -195,9 +195,9 @@ export function rulebookRouter() {
     const {
       rows: [snapshot],
     } = await pool.query(
-      `SELECT document,revision FROM rulebook_documents WHERE id=1 AND revision=$2 AND ${editorPredicate}
+      `SELECT document,revision FROM rulebook_documents WHERE id=1 AND revision=$2 AND ${editorPredicate()}
        UNION ALL SELECT snapshot AS document,revision FROM rulebook_versions
-       WHERE document_id=1 AND revision=$2 AND ${editorPredicate}`,
+       WHERE document_id=1 AND revision=$2 AND ${editorPredicate()}`,
       [userId, revision],
     );
     if (!snapshot) throw new AppError(404, 'Esta revisão do livro não existe.');
@@ -243,7 +243,7 @@ export function rulebookRouter() {
       rows: [image],
     } = await pool.query(
       `SELECT i.image_data,i.mime_type FROM rulebook_images i WHERE i.id=$2 AND (
-        ${editorPredicate} OR EXISTS(
+        ${editorPredicate()} OR EXISTS(
           SELECT 1 FROM rulebook_documents d WHERE d.id=1 AND (
             d.document->>'cover_image'='/api/rulebook/images/'||i.id
             OR jsonb_path_exists(d.document,

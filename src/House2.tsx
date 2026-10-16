@@ -30,11 +30,18 @@ import {
 } from 'lucide-react';
 import { api, post } from './api';
 import { ScenePanel } from './ScenePanel';
+import { Modal } from './components';
+import { House2Village, House2VillageRoofs } from './House2Village';
 import {
   house2Clamp,
   house2Furniture,
   house2Houses,
   house2Terrains,
+  house2Landscape,
+  house2World,
+  house2VillagePlots,
+  house2HousePlacement,
+  house2DoorPoint,
   type House2Directory,
   type House2Item,
   type House2Layout,
@@ -75,9 +82,20 @@ export function House2({ character, user }: { character?: Character; user: User 
   const [draft, setDraft] = useState<House2Layout | null>(null);
   const [selectedPiece, setSelectedPiece] = useState<string | null>(null);
   const [interior, setInterior] = useState<string | null>(null);
-  const [camera, setCamera] = useState<Camera>({ x: 50, y: 50, span: 104 });
+  const [camera, setCamera] = useState<Camera>({ x: 50, y: 92, span: 124 });
   const [viewport, setViewport] = useState({ width: 1440, height: 900 });
-  const [grid, setGrid] = useState(true),
+  const [snap, setSnap] = useState(false);
+  const [confirmation, setConfirmation] = useState<{
+    kind: 'plot' | 'house' | 'furniture';
+    catalogId?: string;
+    plotId: string;
+    characterId: string;
+    name: string;
+    price: number;
+    image?: string;
+  } | null>(null);
+  const [purchaseError, setPurchaseError] = useState('');
+  const [grid, setGrid] = useState(false),
     [hover, setHover] = useState<string | null>(null);
   const [notice, setNotice] = useState(''),
     [loading, setLoading] = useState(true),
@@ -128,6 +146,7 @@ export function House2({ character, user }: { character?: Character; user: User 
             ...i,
             plot_id: plot.id,
             catalog_id: directory?.inventory.find((o) => o.id === i.id)?.catalog_id || '',
+            scale: i.scale ?? 1,
           })),
         ]
       : scene?.items || [];
@@ -222,7 +241,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     setSelected(null);
     setInterior(null);
     setTool(null);
-    setCamera({ x: 50, y: 50, span: Math.max(104, (104 * innerHeight) / innerWidth) });
+    setCamera({ x: 50, y: 92, span: Math.max(124, (135 * innerHeight) / innerWidth) });
     setMenu(false);
     setNotice('');
   }
@@ -260,12 +279,41 @@ export function House2({ character, user }: { character?: Character; user: User 
           x: i.x!,
           y: i.y!,
           rotation: i.rotation as 0 | 90 | 180 | 270,
+          scale: i.scale ?? 1,
         })),
       }
     );
   }
+  function requestPurchase(kind: 'plot' | 'house' | 'furniture', catalogId?: string) {
+    if (!character || !plot || busy || (kind !== 'furniture' && guardDirty())) return;
+    const spec =
+      kind === 'house'
+        ? house2Houses.find((h) => h.id === catalogId)
+        : kind === 'furniture'
+          ? house2Furniture.find((f) => f.id === catalogId)
+          : null;
+    setPurchaseError('');
+    setConfirmation({
+      kind,
+      catalogId,
+      plotId: plot.id,
+      characterId: character.id,
+      name: spec?.name ?? `Terreno ${plot.number}`,
+      price: spec?.price ?? plot.price,
+      image: spec?.image,
+    });
+  }
   async function buy(kind: 'plot' | 'house' | 'furniture', catalogId?: string) {
     if (!character || !plot || busy || (kind !== 'furniture' && guardDirty())) return;
+    if (
+      !confirmation ||
+      confirmation.plotId !== plot.id ||
+      confirmation.characterId !== character.id
+    ) {
+      setConfirmation(null);
+      setNotice('Selecione novamente o terreno antes de comprar.');
+      return;
+    }
     const path =
       kind === 'plot'
         ? `/house-v2/plots/${plot.id}/purchase`
@@ -285,6 +333,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     try {
       await post(path, { ...body, idempotency_key: purchaseKey.current.key });
       purchaseKey.current = null;
+      setConfirmation(null);
       await reload(sceneId, true);
       setNotice(
         kind === 'plot'
@@ -297,6 +346,7 @@ export function House2({ character, user }: { character?: Character; user: User 
       if (kind === 'house') setInterior(plot.id);
     } catch (e) {
       setNotice((e as Error).message);
+      setPurchaseError((e as Error).message);
     } finally {
       setBusy(false);
     }
@@ -310,8 +360,8 @@ export function House2({ character, user }: { character?: Character; user: User 
         method: 'PUT',
         body: JSON.stringify(draft),
       });
-      setDraft(null);
       await reload(sceneId, true);
+      setDraft(null);
       setNotice('Terreno salvo.');
     } catch (e) {
       setNotice((e as Error).message);
@@ -332,6 +382,7 @@ export function House2({ character, user }: { character?: Character; user: User 
       x: plot.x + plot.width / 2,
       y: plot.y + plot.height / 2,
       rotation: 0,
+      scale: item.scale ?? 1,
     });
     setDraft(structuredClone(d));
     setSelectedPiece(item.id);
@@ -340,7 +391,7 @@ export function House2({ character, user }: { character?: Character; user: User 
   }
   function adjust(rotation = false, dx = 0, dy = 0) {
     const d = startDraft();
-    if (!d || !plot || !selectedPiece) return;
+    if (!d || !plot || !selectedPiece || selectedPiece === 'house') return;
     const p = selectedPiece === 'house' ? d.house : d.items.find((i) => i.id === selectedPiece);
     const spec =
       selectedPiece === 'house'
@@ -359,8 +410,40 @@ export function House2({ character, user }: { character?: Character; user: User 
           y: p.y + dy,
           rotation: (rotation ? (p.rotation + 90) % 360 : p.rotation) as 0 | 90 | 180 | 270,
         },
-        spec.width,
-        spec.height,
+        spec.width * ((p as { scale?: number }).scale ?? 1),
+        spec.height * ((p as { scale?: number }).scale ?? 1),
+      ),
+    );
+    setDraft(structuredClone(d));
+  }
+  function resizeItem(value: number) {
+    const d = startDraft(),
+      piece = d?.items.find((i) => i.id === selectedPiece),
+      spec = house2Furniture.find(
+        (f) => f.id === directory?.inventory.find((i) => i.id === selectedPiece)?.catalog_id,
+      );
+    if (!d || !piece || !spec || !plot || !Number.isFinite(value)) return;
+    piece.scale = Math.max(0.25, Math.min(3, value));
+    Object.assign(
+      piece,
+      house2Clamp(plot, piece, spec.width * piece.scale, spec.height * piece.scale),
+    );
+    setDraft(structuredClone(d));
+  }
+  function positionItem(axis: 'x' | 'y', value: number) {
+    const d = startDraft(),
+      piece = d?.items.find((i) => i.id === selectedPiece),
+      spec = house2Furniture.find(
+        (f) => f.id === directory?.inventory.find((i) => i.id === selectedPiece)?.catalog_id,
+      );
+    if (!d || !piece || !spec || !plot || !Number.isFinite(value)) return;
+    Object.assign(
+      piece,
+      house2Clamp(
+        plot,
+        { ...piece, [axis]: value },
+        spec.width * (piece.scale ?? 1),
+        spec.height * (piece.scale ?? 1),
       ),
     );
     setDraft(structuredClone(d));
@@ -378,6 +461,7 @@ export function House2({ character, user }: { character?: Character; user: User 
   }
   function pointerDown(e: ReactPointerEvent<SVGSVGElement>) {
     if (e.button !== 0 || busy || drag.current) return;
+    if ((e.target as Element).closest('[data-house2-fixed]')) return;
     const pieceElement = (e.target as Element).closest('[data-house2-piece]');
     const id = pieceElement?.getAttribute('data-house2-piece') || undefined;
     const p = world(e.clientX, e.clientY);
@@ -387,6 +471,7 @@ export function House2({ character, user }: { character?: Character; user: User 
         : shownItems.find((i) => i.id === id);
     const edit =
       !!id &&
+      id !== 'house' &&
       canEdit &&
       (id === 'house' || shownItems.some((i) => i.id === id && i.plot_id === plot?.id));
     if (edit) setSelectedPiece(id!);
@@ -413,8 +498,14 @@ export function House2({ character, user }: { character?: Character; user: User 
     if (a.kind === 'pan') {
       setCamera({
         ...a.camera,
-        x: Math.max(0, Math.min(100, a.camera.x - (dx * a.camera.span) / viewport.height)),
-        y: Math.max(0, Math.min(100, a.camera.y - (dy * a.camera.span) / viewport.height)),
+        x: Math.max(
+          house2World.x,
+          Math.min(house2World.x + 200, a.camera.x - (dx * a.camera.span) / viewport.height),
+        ),
+        y: Math.max(
+          house2World.y,
+          Math.min(house2World.y + 200, a.camera.y - (dy * a.camera.span) / viewport.height),
+        ),
       });
       return;
     }
@@ -435,11 +526,11 @@ export function House2({ character, user }: { character?: Character; user: User 
         plot,
         {
           ...piece,
-          x: Math.round((p.x - a.offsetX) * 2) / 2,
-          y: Math.round((p.y - a.offsetY) * 2) / 2,
+          x: snap ? Math.round((p.x - a.offsetX) * 2) / 2 : p.x - a.offsetX,
+          y: snap ? Math.round((p.y - a.offsetY) * 2) / 2 : p.y - a.offsetY,
         },
-        spec.width,
-        spec.height,
+        spec.width * ((piece as { scale?: number }).scale ?? 1),
+        spec.height * ((piece as { scale?: number }).scale ?? 1),
       ),
     );
     setDraft(structuredClone(d));
@@ -496,6 +587,9 @@ export function House2({ character, user }: { character?: Character; user: User 
       <Coins size={15} /> {number(directory?.balance ?? 20000)} <small>créditos de teste</small>
     </span>
   );
+  const selectedTransform =
+    draft?.items.find((i) => i.id === selectedPiece) ??
+    shownItems.find((i) => i.id === selectedPiece);
   const editor = canEdit && selectedPiece && (
     <div className="h2-piece-controls">
       <strong>
@@ -505,7 +599,43 @@ export function House2({ character, user }: { character?: Character; user: User 
               (f) => f.id === directory?.inventory.find((i) => i.id === selectedPiece)?.catalog_id,
             )?.name}
       </strong>
-      <span>Arraste na grade ou use os controles.</span>
+      <span>Arraste livremente dentro do seu terreno.</span>
+      <label className="h2-checkbox">
+        <input type="checkbox" checked={snap} onChange={(e) => setSnap(e.target.checked)} />{' '}
+        Encaixar na grade
+      </label>
+      {selectedPiece !== 'house' && (
+        <div className="h2-item-size">
+          <label>
+            Tamanho do item <output>{Math.round((selectedTransform?.scale ?? 1) * 100)}%</output>
+            <input
+              aria-label="Tamanho do item"
+              type="range"
+              min={25}
+              max={300}
+              step={1}
+              value={Math.round((selectedTransform?.scale ?? 1) * 100)}
+              disabled={busy}
+              onChange={(e) => resizeItem(Number(e.target.value) / 100)}
+            />
+          </label>
+          <div className="h2-coordinates">
+            {(['x', 'y'] as const).map((axis) => (
+              <label key={axis}>
+                {axis.toUpperCase()}
+                <input
+                  aria-label={'Posição ' + axis.toUpperCase()}
+                  type="number"
+                  step="0.01"
+                  value={Number((selectedTransform?.[axis] ?? 0).toFixed(2))}
+                  disabled={busy}
+                  onChange={(e) => positionItem(axis, e.target.valueAsNumber)}
+                />
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
       <div className="h2-move-controls">
         <button
           aria-label="Mover para a esquerda"
@@ -600,7 +730,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                 <option value="stone">Pedra</option>
               </select>
             </label>
-            <button disabled={busy}>Criar vizinhança 100 × 100</button>
+            <button disabled={busy}>Criar vizinhança 200 × 200</button>
           </form>
         )}
         {notice && (
@@ -625,10 +755,9 @@ export function House2({ character, user }: { character?: Character; user: User 
                 <button className="h2-neighborhood-card" key={n.id} onClick={() => enter(n.id)}>
                   <div
                     className="h2-card-map"
-                    style={{ backgroundImage: `url(${house2Terrains[n.terrain]})` }}
+                    style={{ backgroundImage: `url(${house2Landscape})` }}
                     aria-hidden="true"
                   >
-                    <div className="h2-card-road" />
                     {[0, 1, 2].map((v) => (
                       <img
                         key={v}
@@ -636,7 +765,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                         alt=""
                       />
                     ))}
-                    <span>100 × 100</span>
+                    <span>200 × 200</span>
                   </div>
                   <div className="h2-card-description">
                     <span className="h2-eyebrow">
@@ -678,7 +807,7 @@ export function House2({ character, user }: { character?: Character; user: User 
         ref={mapRef}
         className="h2-map"
         viewBox={`${view.x} ${view.y} ${view.width} ${view.height}`}
-        aria-label="Mapa da vizinhança, 100 por 100 quadrados"
+        aria-label="Mapa da vizinhança, 200 por 200 quadrados"
         onPointerDown={pointerDown}
         onPointerMove={pointerMove}
         onPointerUp={pointerUp}
@@ -711,9 +840,7 @@ export function House2({ character, user }: { character?: Character; user: User 
             <feDropShadow dx=".12" dy=".28" stdDeviation=".19" floodOpacity=".7" />
           </filter>
         </defs>
-        <rect x="-100" y="-100" width="300" height="300" fill="url(#h2-earth)" />
-        <rect x="-100" y="-100" width="300" height="300" fill="#101310" opacity=".22" />
-        <rect width="100" height="100" fill="url(#h2-road)" />
+        <House2Village plots={scene?.plots ?? []} />
         {scene?.plots.map((p) => (
           <g
             key={p.id}
@@ -721,7 +848,6 @@ export function House2({ character, user }: { character?: Character; user: User 
             onMouseEnter={() => setHover(p.id)}
             onMouseLeave={() => setHover(null)}
           >
-            <rect x={p.x} y={p.y} width={p.width} height={p.height} fill="url(#h2-earth)" />
             <rect
               className={
                 'h2-plot ' + (p.can_edit ? 'mine ' : '') + (p.id === selected ? 'selected' : '')
@@ -731,10 +857,11 @@ export function House2({ character, user }: { character?: Character; user: User 
               width={p.width - 0.2}
               height={p.height - 0.2}
               fill={p.character_id ? '#a8883d' : '#c8b375'}
-              fillOpacity={p.id === selected ? '.2' : '.035'}
+              fillOpacity={p.id === selected ? '.06' : '0'}
               stroke={p.id === selected ? '#ecd18d' : p.can_edit ? '#bba267' : '#b8ab8b'}
-              strokeWidth={p.id === selected ? '.12' : '.045'}
-              strokeOpacity={p.id === selected ? '1' : '.45'}
+              strokeWidth={p.id === selected ? 1.2 : 0.8}
+              vectorEffect="non-scaling-stroke"
+              strokeOpacity={p.id === selected ? '.8' : '0'}
               role="button"
               tabIndex={0}
               aria-label={`Terreno ${p.number}${p.owner_name ? ' · ' + p.owner_name : ' · disponível'}`}
@@ -753,7 +880,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                   : `Terreno ${p.number} · disponível`}
               </title>
             </rect>
-            {!p.house_id && (
+            {!p.house_id && p.character_id && (
               <g pointerEvents="none">
                 <text x={p.x + p.width / 2} y={p.y + p.height / 2} className="h2-lot-label">
                   {p.character_id ? p.owner_name : String(p.number).padStart(2, '0')}
@@ -765,7 +892,16 @@ export function House2({ character, user }: { character?: Character; user: User 
             )}
           </g>
         ))}
-        {grid && <rect width="100" height="100" fill="url(#h2-grid)" pointerEvents="none" />}
+        {grid && (
+          <rect
+            x={house2World.x}
+            y={house2World.y}
+            width="200"
+            height="200"
+            fill="url(#h2-grid)"
+            pointerEvents="none"
+          />
+        )}
         {scene?.plots
           .filter((p) => p.house_id)
           .map((original) => {
@@ -803,125 +939,40 @@ export function House2({ character, user }: { character?: Character; user: User 
               <title>{spec.name}</title>
               <image
                 href={spec.image}
-                x={-spec.width / 2}
-                y={-spec.height / 2}
-                width={spec.width}
-                height={spec.height}
+                x={(-spec.width * item.scale) / 2}
+                y={(-spec.height * item.scale) / 2}
+                width={spec.width * item.scale}
+                height={spec.height * item.scale}
               />
               {selectedPiece === item.id && (
                 <rect
-                  x={-spec.width / 2}
-                  y={-spec.height / 2}
-                  width={spec.width}
-                  height={spec.height}
+                  x={(-spec.width * item.scale) / 2}
+                  y={(-spec.height * item.scale) / 2}
+                  width={spec.width * item.scale}
+                  height={spec.height * item.scale}
                   fill="none"
                   stroke="#f2d891"
-                  strokeWidth=".06"
+                  strokeWidth="1.1"
+                  vectorEffect="non-scaling-stroke"
                   pointerEvents="none"
                 />
               )}
             </g>
           );
         })}
-        {scene?.plots
-          .filter((p) => p.house_id)
-          .map((original) => {
-            const p = original.id === shownPlot?.id ? shownPlot : original,
-              spec = house2Houses.find((h) => h.id === p.house_id);
-            if (!spec) return null;
-            return (
-              <g
-                key={p.id}
-                data-house2-plot={p.id}
-                onMouseEnter={() => setHover(p.id)}
-                onMouseLeave={() => setHover(null)}
-              >
-                <g
-                  transform={`translate(${p.house_x} ${p.house_y}) rotate(${p.house_rotation})`}
-                  data-house2-piece={p.id === selected && p.can_edit ? 'house' : undefined}
-                  className={p.id === selected && p.can_edit ? 'h2-editable' : ''}
-                >
-                  {interior !== p.id ? (
-                    <image
-                      href={spec.image}
-                      x={-spec.width / 2}
-                      y={-spec.height / 2}
-                      width={spec.width}
-                      height={spec.height}
-                      filter="url(#h2-house-shadow)"
-                    />
-                  ) : (
-                    <rect
-                      x={-spec.width / 2}
-                      y={-spec.height / 2}
-                      width={spec.width}
-                      height={spec.height}
-                      fill="transparent"
-                      pointerEvents="none"
-                    />
-                  )}
-                  <title>
-                    {spec.name} · Casa de {p.owner_name} ({p.player_name})
-                  </title>
-                  {p.id === selected && selectedPiece === 'house' && (
-                    <rect
-                      x={-spec.width / 2}
-                      y={-spec.height / 2}
-                      width={spec.width}
-                      height={spec.height}
-                      fill="none"
-                      stroke="#f2d891"
-                      strokeWidth=".08"
-                      pointerEvents="none"
-                    />
-                  )}
-                </g>
-                <g
-                  className="h2-door"
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`${interior === p.id ? 'Sair da' : 'Entrar na'} casa de ${p.owner_name}`}
-                  onPointerDown={(e) => e.stopPropagation()}
-                  onClick={() => {
-                    if (p.id !== selected && guardDirty()) return;
-                    setSelected(p.id);
-                    setInterior(interior === p.id ? null : p.id);
-                    setSelectedPiece(null);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      if (p.id !== selected && guardDirty()) return;
-                      setSelected(p.id);
-                      setInterior(interior === p.id ? null : p.id);
-                    }
-                  }}
-                >
-                  <circle
-                    cx={p.house_x!}
-                    cy={p.house_y! + 4.2}
-                    r=".52"
-                    fill="#191710"
-                    stroke="#c2a469"
-                    strokeWidth=".045"
-                  />
-                  <path
-                    d={`M${p.house_x! - 0.2} ${p.house_y! + 4.44}v-.47h.36v.47m-.5 0h.65`}
-                    fill="none"
-                    stroke="#e1cca0"
-                    strokeWidth=".04"
-                  />
-                </g>
-              </g>
-            );
-          })}
-        <rect
-          width="100"
-          height="100"
-          fill="none"
-          stroke="#151712"
-          strokeWidth=".35"
-          pointerEvents="none"
+        <House2VillageRoofs
+          plots={scene?.plots ?? []}
+          interior={interior}
+          selected={selected}
+          hover={hover}
+          onHover={setHover}
+          choose={choose}
+          enter={(p) => {
+            if (p.id !== selected && guardDirty()) return;
+            setSelected(p.id);
+            setInterior(interior === p.id ? null : p.id);
+            setSelectedPiece(null);
+          }}
         />
         {hover &&
           (() => {
@@ -957,7 +1008,7 @@ export function House2({ character, user }: { character?: Character; user: User 
       </svg>
       <div className="h2-world-heading">
         <strong>{scene?.neighborhood.name || 'Vizinhança'}</strong>
-        <span>100 × 100 · House 2.0 · testes</span>
+        <span>200 × 200 · House 2.0 · testes</span>
       </div>
       <div className="h2-unified" ref={menuRef}>
         <button
@@ -1022,7 +1073,7 @@ export function House2({ character, user }: { character?: Character; user: User 
         </button>
         <button
           aria-label="Ver toda a vizinhança"
-          onClick={() => setCamera({ x: 50, y: 50, span: Math.max(104, 104 / aspect) })}
+          onClick={() => setCamera({ x: 50, y: 85, span: Math.max(208, 208 / aspect) })}
         >
           <Map size={17} />
         </button>
@@ -1064,8 +1115,8 @@ export function House2({ character, user }: { character?: Character; user: User 
               <>
                 <p>{scene?.neighborhood.description}</p>
                 <p>
-                  Mapa de 100 × 100 quadrados. Terrenos de 12 × 12, separados por ruas
-                  compartilhadas.
+                  Mapa de 200 × 200 quadrados. Terrenos de 12 × 12, distribuídos entre jardins e
+                  caminhos do vilarejo.
                 </p>
                 <label className="h2-checkbox">
                   <input
@@ -1131,10 +1182,14 @@ export function House2({ character, user }: { character?: Character; user: User 
                           O terreno inteiro será seu para construir e decorar. Custo:{' '}
                           {number(plot.price)} créditos de teste.
                         </p>
+                        <p>
+                          As casas nos terrenos livres são modelos ilustrativos. Depois de comprar o
+                          terreno, você escolhe sua casa separadamente.
+                        </p>
                         <button
                           className="h2-primary"
                           disabled={!character || busy || (directory?.balance ?? 0) < plot.price}
-                          onClick={() => buy('plot')}
+                          onClick={() => requestPurchase('plot')}
                         >
                           <LandPlot size={16} /> Comprar terreno · {number(plot.price)}
                         </button>
@@ -1154,13 +1209,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                     )}
                     {canEdit && house && (
                       <>
-                        <button
-                          onClick={() => {
-                            setSelectedPiece('house');
-                          }}
-                        >
-                          <Move size={16} /> Mover minha casa
-                        </button>
+                        <p>A casa é fixa no terreno. Ajuste a mobília pela sua coleção.</p>
                         <button
                           onClick={() => {
                             setTool('collection');
@@ -1220,7 +1269,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                                   !!draft ||
                                   (directory?.balance ?? 0) < h.price
                                 }
-                                onClick={() => buy('house', h.id)}
+                                onClick={() => requestPurchase('house', h.id)}
                               >
                                 <img src={h.image} alt="" loading="lazy" />
                                 <strong>{h.name.replace(' · vazia', '')}</strong>
@@ -1257,7 +1306,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                           <button
                             key={f.id}
                             disabled={!character || busy || (directory?.balance ?? 0) < f.price}
-                            onClick={() => buy('furniture', f.id)}
+                            onClick={() => requestPurchase('furniture', f.id)}
                           >
                             <img src={f.image} alt="" loading="lazy" />
                             <strong>{f.name}</strong>
@@ -1278,7 +1327,10 @@ export function House2({ character, user }: { character?: Character; user: User 
                     >
                       <Plus size={16} /> Comprar mobília
                     </button>
-                    <div className="h2-catalog">
+                    <p className="h2-collection-intro">
+                      PEÇAS QUE JÁ SÃO SUAS · sem compra nesta lista
+                    </p>
+                    <div className="h2-collection-list">
                       {directory?.inventory
                         .filter((i) => !i.plot_id || i.plot_id === selected)
                         .map((i) => {
@@ -1295,7 +1347,10 @@ export function House2({ character, user }: { character?: Character; user: User 
                             >
                               <img src={spec.image} alt="" />
                               <strong>{spec.name}</strong>
-                              <small>{placed ? 'Selecionar peça' : 'Colocar no terreno'}</small>
+                              <span className="h2-owned-badge">
+                                {placed ? 'No terreno' : 'Guardado'}
+                              </span>
+                              <small>{placed ? 'Ajustar peça →' : '+ Colocar no terreno'}</small>
                             </button>
                           );
                         })}
@@ -1307,6 +1362,50 @@ export function House2({ character, user }: { character?: Character; user: User 
             )}
           </div>
         </ScenePanel>
+      )}
+
+      {confirmation && (
+        <Modal
+          title="Confirmar compra"
+          close={() => {
+            if (!busy) setConfirmation(null);
+          }}
+          dismissOnBackdrop={!busy}
+          dismissOnEscape={!busy}
+        >
+          <div className="h2-purchase-confirmation">
+            {confirmation.image && <img src={confirmation.image} alt="" />}
+            <h3>{confirmation.name}</h3>
+            <p>Esta compra usa apenas créditos de teste.</p>
+            <dl>
+              <div>
+                <dt>Preço</dt>
+                <dd>{number(confirmation.price)} créditos</dd>
+              </div>
+              <div>
+                <dt>Seu saldo</dt>
+                <dd>{number(directory?.balance ?? 0)} créditos</dd>
+              </div>
+              <div>
+                <dt>Saldo após a compra</dt>
+                <dd>{number((directory?.balance ?? 0) - confirmation.price)} créditos</dd>
+              </div>
+            </dl>
+            {purchaseError && <p role="alert">{purchaseError}</p>}
+            <div className="h2-confirm-actions">
+              <button disabled={busy} onClick={() => setConfirmation(null)}>
+                Cancelar
+              </button>
+              <button
+                className="h2-primary"
+                disabled={busy || (directory?.balance ?? 0) < confirmation.price}
+                onClick={() => buy(confirmation.kind, confirmation.catalogId)}
+              >
+                {busy ? 'Concluindo…' : 'Confirmar compra'}
+              </button>
+            </div>
+          </div>
+        </Modal>
       )}
     </section>
   );

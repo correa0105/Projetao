@@ -58,14 +58,14 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
       second = scene.plots[1],
       racing = scene.plots[2];
     const buy = (character_id: string) => ({ character_id, idempotency_key: randomUUID() });
-    await t.test('100 × 100, três vizinhanças e autenticação', async () => {
+    await t.test('200 × 200, três vizinhanças e autenticação', async () => {
       assert.equal((await req('/house-v2')).status, 401);
-      assert.equal(scene.plots.length, 36);
+      assert.equal(scene.plots.length, 12);
       assert.equal(directory.neighborhoods.length, 3);
       assert.equal(directory.balance, 20000);
       assert.equal(house2Houses.length, 25);
       assert.equal(house2Furniture.length, 100);
-      assert(scene.plots.every((p: any) => p.x + p.width <= 100 && p.y + p.height <= 100));
+      assert(scene.plots.every((p: any) => p.x + p.width <= 200 && p.y + p.height <= 200));
       assert.equal(
         (
           await req('/house-v2/neighborhoods', owner, 'POST', {
@@ -227,7 +227,7 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
             house: { x: p.x + 2, y: p.y + 6, rotation: 0 },
           })
         ).status,
-        400,
+        403,
       );
       assert.equal(
         (
@@ -241,6 +241,54 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
       assert.equal(house2Within(p, { x: p.x + 0.5, y: p.y + 2, rotation: 90 }, 3, 1), true);
       assert.equal(house2Within(p, { x: p.x + 0.49, y: p.y + 2, rotation: 90 }, 3, 1), false);
     });
+    await t.test(
+      'tamanho e coordenadas livres persistem com limites e propriedade no servidor',
+      async () => {
+        scene = (await req('/house-v2/neighborhoods/' + n, owner)).data;
+        const p = scene.plots[0];
+        const body = {
+          revision: p.revision,
+          house: { x: p.house_x, y: p.house_y, rotation: p.house_rotation },
+          items: [{ id: item, x: p.x + 6.17, y: p.y + 5.23, rotation: 90, scale: 1.6 }],
+        };
+        assert.equal(
+          (await req(`/house-v2/plots/${lot.id}/layout`, other, 'PUT', body)).status,
+          403,
+        );
+        assert.equal(
+          (
+            await req(`/house-v2/plots/${lot.id}/layout`, owner, 'PUT', {
+              ...body,
+              items: [{ ...body.items[0], x: p.x + 0.1 }],
+            })
+          ).status,
+          400,
+        );
+        assert.equal(
+          (await req(`/house-v2/plots/${lot.id}/layout`, owner, 'PUT', body)).status,
+          200,
+        );
+        const saved = (await req('/house-v2', owner)).data.inventory.find(
+          (i: any) => i.id === item,
+        );
+        assert.equal(saved.x, p.x + 6.17);
+        assert.equal(saved.y, p.y + 5.23);
+        assert.equal(saved.scale, 1.6);
+        const legacy = {
+          ...body,
+          revision: p.revision + 1,
+          items: body.items.map(({ scale, ...i }) => i),
+        };
+        assert.equal(
+          (await req(`/house-v2/plots/${lot.id}/layout`, owner, 'PUT', legacy)).status,
+          200,
+        );
+        assert.equal(
+          (await req('/house-v2', owner)).data.inventory.find((i: any) => i.id === item).scale,
+          1.6,
+        );
+      },
+    );
     await t.test('visita expõe proprietário e decoração, sem saldo ou coleção alheia', async () => {
       const visit = (await req('/house-v2/neighborhoods/' + n, other)).data;
       assert.equal(visit.plots[0].owner_name, 'Aurora');
@@ -299,7 +347,7 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
       assert.equal(r.status, 201);
       assert.equal(
         (await req('/house-v2/neighborhoods/' + r.data.id, owner)).data.plots.length,
-        36,
+        12,
       );
       await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [admin.id]);
       assert.equal(

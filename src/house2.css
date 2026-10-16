@@ -678,3 +678,35 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
     transition: none;
   }
 }
+
+/* Village scenery and SVG focus must never inherit browser-sized focus rings. */
+.house2-world { background:#3d4936; }
+.house2-world::before { content:''; position:absolute; inset:0; background:url('/vtt/terrain-v4-20261013/grass.webp') center/320px 320px; z-index:-1; pointer-events:none; }
+.house2-world .h2-map, .house2-world .h2-map *:focus, .house2-world .h2-map *:focus-visible { outline:none!important; outline-offset:0!important; box-shadow:none!important; }
+.house2-world .h2-map .h2-plot:focus-visible { stroke:#f0d293; stroke-width:1.5px; stroke-opacity:1; vector-effect:non-scaling-stroke; }
+.h2-map .h2-house-fixed { cursor:pointer; }
+.h2-house-preview { opacity:.94; cursor:pointer; }
+.h2-map .h2-plot:hover { stroke-width:1px; stroke-opacity:.6; fill-opacity:.04; vector-effect:non-scaling-stroke; }
+.h2-world-heading { background:linear-gradient(90deg,#1b261600,#1b2616e8 20%,#1b2616e8 80%,#1b261600); }
+.h2-card-map { background-position:center; background-size:cover; }
+.h2-item-size { display:grid; gap:10px; }
+.h2-item-size > label { display:grid; grid-template-columns:1fr auto; align-items:center; gap:5px; font-size:11px; }
+.h2-item-size input[type='range'] { grid-column:1/-1; width:100%; padding:0; height:20px; accent-color:#c4a264; }
+.h2-coordinates { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.h2-coordinates label { display:flex; align-items:center; gap:6px; font-size:10px; color:#ab9e80; }
+.h2-coordinates input { min-width:0; width:100%; background:#21231c; border:1px solid #89704466; border-radius:3px; color:#dacaab; padding:7px; }
+.h2-collection-intro { color:#c0ab7e!important; font-size:9px; letter-spacing:.07em; border-bottom:1px solid #8b734143; padding-bottom:10px; }
+.h2-collection-list { display:grid; gap:7px; }
+.h2-collection-list > button { display:grid; grid-template-columns:47px 1fr; grid-template-rows:auto auto auto; text-align:left; justify-items:start; column-gap:13px; padding:10px; background:#20271b60; border:1px solid #a48b4d38; }
+.h2-collection-list img { width:45px; height:52px; object-fit:contain; grid-row:1/4; align-self:center; }
+.h2-collection-list strong { font-size:12px; font-weight:500; }
+.h2-owned-badge { font-size:9px; color:#abb89a; }
+.h2-collection-list small { font-size:10px; color:#ddc58b; }
+.h2-purchase-confirmation { width:min(360px,calc(100vw - 80px)); color:#cabea3; font-size:13px; }
+.h2-purchase-confirmation > img { display:block; width:120px; height:120px; object-fit:contain; margin:8px auto; }
+.h2-purchase-confirmation h3 { font:24px Georgia,serif; text-align:center; color:#e7d8b8; }
+.h2-purchase-confirmation dl { border-block:1px solid #8f794b50; padding-block:10px; }
+.h2-purchase-confirmation dl > div { display:flex; justify-content:space-between; gap:15px; padding:7px 0; }
+.h2-purchase-confirmation dd { margin:0; color:#dbc18c; }
+.h2-confirm-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:20px; }
+.h2-purchase-confirmation [role='alert'] { color:#e6ad90; }

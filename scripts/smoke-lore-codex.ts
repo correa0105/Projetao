@@ -51,11 +51,11 @@ async function openIndex() {
   if (await button.isVisible()) await button.click();
 }
 async function openViewMenu() {
-  const trigger = page.getByRole('button', { name: 'Menu de visualização da Lore', exact: true });
+  const trigger = page.getByRole('button', { name: 'Menu de visualização da conta', exact: true });
   await trigger.click();
   await expect(trigger).toHaveAttribute('aria-expanded', 'true');
   await expect(
-    page.getByRole('complementary', { name: 'Visualização da Lore', exact: true }),
+    page.getByRole('complementary', { name: 'Visualização da conta', exact: true }),
   ).toBeVisible();
 }
 async function archiveScreenshot(name: string) {
@@ -119,22 +119,32 @@ try {
     await page.goto(origin + '/#lore');
     await page.reload();
     await expect(page.locator('.lore-page-row')).toHaveCount(4);
+    const sceneBox = (await page.locator('.lore-scene').boundingBox())!;
+    const titleBox = (await page
+      .locator('.lore-timeline-heading > div:first-child')
+      .boundingBox())!;
+    expect(titleBox.y - sceneBox.y).toBeGreaterThan(20);
+    expect(titleBox.y - sceneBox.y).toBeLessThan(90);
+    expect(titleBox.x - sceneBox.x).toBeGreaterThan(15);
+    expect(titleBox.x - sceneBox.x).toBeLessThan(65);
+    expect(titleBox.x + titleBox.width).toBeLessThanOrEqual(sceneBox.x + sceneBox.width);
+    await page.screenshot({ path: 'test-results/lore-codex/heading-' + viewport.width + '.png' });
     await expect(page.locator('.lore-view-switch')).toHaveCount(0);
     await openViewMenu();
     const menu = (await page
-      .getByRole('complementary', { name: 'Visualização da Lore', exact: true })
+      .getByRole('complementary', { name: 'Visualização da conta', exact: true })
       .boundingBox())!;
     expect(menu.x).toBeGreaterThanOrEqual(0);
     expect(menu.x + menu.width).toBeLessThanOrEqual(viewport.width + 1);
     await page.screenshot({ path: 'test-results/lore-codex/view-menu-' + viewport.width + '.png' });
     await page.keyboard.press('Escape');
     await expect(
-      page.getByRole('button', { name: 'Menu de visualização da Lore', exact: true }),
+      page.getByRole('button', { name: 'Menu de visualização da conta', exact: true }),
     ).toBeFocused();
     await openViewMenu();
     await page.mouse.click(1, viewport.height - 100);
     await expect(
-      page.getByRole('complementary', { name: 'Visualização da Lore', exact: true }),
+      page.getByRole('complementary', { name: 'Visualização da conta', exact: true }),
     ).toHaveCount(0);
     await expect(page.getByRole('button', { name: 'Editar eras', exact: true })).toBeVisible();
     await archiveScreenshot('archive-' + viewport.width);
@@ -230,7 +240,7 @@ try {
   await basicPage.goto(origin + '/#lore');
   await expect(basicPage.locator('.lore-page-row')).toHaveCount(3);
   await expect(
-    basicPage.getByRole('button', { name: 'Menu de visualização da Lore', exact: true }),
+    basicPage.getByRole('button', { name: 'Menu de visualização da conta', exact: true }),
   ).toHaveCount(0);
   await expect(
     basicPage.locator('.lore-page-edit,.lore-folder-edit,.lore-timeline-edit'),

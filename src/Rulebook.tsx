@@ -1,3 +1,4 @@
+import {accountPreviewHeaders} from './account-preview';
 import {
   useCallback,
   useEffect,
@@ -104,7 +105,7 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch('/api/rulebook' + path, {
     credentials: 'include',
     ...options,
-    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    headers: { 'Content-Type': 'application/json', ...accountPreviewHeaders(), ...options?.headers },
   });
   const data = await response.json();
   if (!response.ok) {

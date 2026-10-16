@@ -23,6 +23,7 @@ import { AppError, purchase } from './services.js';
 import { completeMission, completionSchema, publishMissionHook } from './missions.js';
 import { houseRouter } from './house.js';
 import { house2Router } from './house-v2.js';
+import { accountPreview, basicPreviewPayload } from './account-preview.js';
 import { atlasId, resolvePostLocation } from './atlas.js';
 import { characterArtRouter, characterListSql } from './character-art.js';
 import { characterSchema } from '../shared/character-art.js';
@@ -182,6 +183,14 @@ export function createApp() {
       (await auth.api.getSession({ headers: fromNodeHeaders(req.headers) }));
     if (!session) throw new AppError(401, 'Entre na sua conta para continuar.');
     res.locals.user = session.user;
+    if (req.get('X-Account-Preview') === 'basic' && await isAdministrator(session.user.id)) {
+      if (!['GET','HEAD','OPTIONS'].includes(req.method))
+        throw new AppError(403, 'A prévia é somente para consulta. Volte à visão de administrador para fazer alterações.');
+      res.locals.user = {...session.user,administrador:0,role:'player',gold_unlimited:false,canEditKingdom:false};
+      const json = res.json.bind(res);
+      res.json = (body) => json(basicPreviewPayload(body,session.user.id));
+      return accountPreview.run(true,next);
+    }
     next();
   });
   // Frequent read-only updates have their own authenticated-user budget. Players

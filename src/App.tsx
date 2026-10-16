@@ -1,4 +1,5 @@
 import { HomeJournal } from './HomeJournal';
+import { AccountPreview } from './AccountPreview';
 import { LoreLibrary } from './LoreLibrary';
 import { FlashMessage } from './FlashMessage';
 import { PageHeader } from './PageHeader';
@@ -133,7 +134,7 @@ export default function App() {
       </div>
     );
   if (!session) return <Login />;
-  return <Portal key={session.user.id} user={session.user} />;
+  return <AccountPreview key={session.user.id} user={session.user}>{(user,preview)=><Portal key={session.user.id+':'+preview} user={user}/>}</AccountPreview>;
 }
 
 function Portal({ user }: { user: User }) {
@@ -144,7 +145,8 @@ function Portal({ user }: { user: User }) {
   const [page, setPage] = useState<Page>(initialPage);
   const [rulesVisited, setRulesVisited] = useState(() => initialPage() === 'rules');
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [selectedId, setSelectedId] = useState('');
+  const [selectedId, setSelectedId] = useState(() => sessionStorage.getItem('alvorada-selected-character:' + user.id) || '');
+  useEffect(() => {if(selectedId)sessionStorage.setItem('alvorada-selected-character:' + user.id,selectedId);}, [selectedId,user.id]);
   const [characterMenuOpen, setCharacterMenuOpen] = useState(false);
   const [catalog, setCatalog] = useState<Item[]>([]);
   const [catalogLoading,setCatalogLoading]=useState(true);

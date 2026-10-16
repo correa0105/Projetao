@@ -1,0 +1,79 @@
+.account-preview-trigger {
+  position: fixed;
+  right: 0;
+  top: 42%;
+  z-index: 61;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 36px;
+  min-height: 142px;
+  padding: 11px 6px;
+  border: 1px solid #bd98636b;
+  border-right: 0;
+  border-radius: 5px 0 0 5px;
+  background: #171512f5;
+  backdrop-filter: blur(12px);
+  color: #cdb68e;
+  font: 11px var(--sans, 'DM Sans', sans-serif);
+  box-shadow: -4px 5px 18px #0004;
+  cursor: pointer;
+}
+.account-preview-trigger span {
+  writing-mode: vertical-rl;
+  letter-spacing: 0.08em;
+}
+.account-preview[data-preview] .account-preview-trigger {
+  color: #f0d4a4;
+  border-color: #bd9863;
+}
+.account-preview-trigger[aria-expanded='true'] > svg:last-child {
+  transform: rotate(180deg);
+}
+.account-preview #scene-panel-account-preview {
+  z-index: 62;
+  bottom: auto;
+  max-height: calc(100dvh - 160px);
+  top: clamp(80px, 20vh, 180px);
+}
+.account-preview-options {
+  display: grid;
+  gap: 16px;
+  font: 12px/1.6 var(--sans, 'DM Sans', sans-serif);
+  color: #b5a991;
+}
+.account-preview-options p {
+  margin: 0;
+}
+.account-preview-label {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #bd9863;
+}
+.account-preview-options button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px;
+  border: 1px solid #bd986375;
+  border-radius: 3px;
+  background: #282119;
+  color: #e3cfa9;
+  font: inherit;
+  cursor: pointer;
+}
+.account-preview button:focus-visible {
+  outline: 2px solid #ddc08a;
+  outline-offset: 3px;
+}
+@media (max-width: 560px) {
+  .account-preview-trigger {
+    width: 28px;
+    min-height: 130px;
+    padding-inline: 4px;
+    font-size: 10px;
+  }
+}

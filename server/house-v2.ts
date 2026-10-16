@@ -12,16 +12,23 @@ import {
   house2Furniture,
   house2LayoutSchema,
   house2Within,
+  house2VillagePlots,
+  house2HousePlacement,
 } from '../shared/house-v2.js';
 
 const uuid = z.string().uuid();
 const purchaseSchema = z.object({ character_id: uuid, idempotency_key: uuid }).strict();
-const plotSelect = `SELECT p.*,c.name owner_name,u.name player_name,
+const plotSelect = `SELECT p.*,coalesce(p.village_slot,p.number) AS number,c.name owner_name,u.name player_name,
   coalesce(c.user_id=$2,false) AND c.deleted_at IS NULL AS can_edit
   FROM house2_plots p LEFT JOIN characters c ON c.id=p.character_id
   LEFT JOIN "user" u ON u.id=c.user_id`;
 async function editPlot(db: PoolClient, id: string, user: string) {
-  const p = (await db.query(`${plotSelect} WHERE p.id=$1 FOR UPDATE OF p`, [id, user])).rows[0];
+  const p = (
+    await db.query(`${plotSelect} WHERE p.id=$1 AND p.retired_at IS NULL FOR UPDATE OF p`, [
+      id,
+      user,
+    ])
+  ).rows[0];
   if (!p || !p.can_edit) throw new AppError(403, 'Você só pode editar os terrenos que comprou.');
   return p;
 }
@@ -81,7 +88,7 @@ export function house2Router() {
     const neighborhoods = await pool.query(
       `SELECT n.*,count(p.id)::int total,count(p.id) FILTER(WHERE p.character_id IS NULL)::int available,
       count(p.id) FILTER(WHERE c.user_id=$1 AND c.deleted_at IS NULL)::int owned
-      FROM house2_neighborhoods n LEFT JOIN house2_plots p ON p.neighborhood_id=n.id
+      FROM house2_neighborhoods n LEFT JOIN house2_plots p ON p.neighborhood_id=n.id AND p.retired_at IS NULL
       LEFT JOIN characters c ON c.id=p.character_id GROUP BY n.id ORDER BY n.created_at,n.name`,
       [user],
     );
@@ -90,7 +97,7 @@ export function house2Router() {
         ?.balance ?? house2StartingBalance;
     const inventory = (
       await pool.query(
-        'SELECT id,catalog_id,plot_id,x,y,rotation FROM house2_items WHERE user_id=$1 ORDER BY created_at,id',
+        'SELECT id,catalog_id,plot_id,x,y,rotation,scale FROM house2_items WHERE user_id=$1 ORDER BY created_at,id',
         [user],
       )
     ).rows;
@@ -114,8 +121,12 @@ export function house2Router() {
         )
       ).rows[0];
       await db.query(
-        'INSERT INTO house2_plots(neighborhood_id,number,x,y,price) SELECT $1,r*6+c+1,3+c*16,3+r*16,$2 FROM generate_series(0,5) r CROSS JOIN generate_series(0,5) c',
-        [n.id, house2PlotPrice],
+        'INSERT INTO house2_plots(neighborhood_id,number,village_slot,x,y,price) SELECT $1,ord,ord,x,y,$2 FROM jsonb_to_recordset($3::jsonb) AS p(ord integer,x integer,y integer)',
+        [
+          n.id,
+          house2PlotPrice,
+          JSON.stringify(house2VillagePlots.map((p, i) => ({ ord: i + 1, x: p.x, y: p.y }))),
+        ],
       );
       return n.id;
     });
@@ -128,11 +139,14 @@ export function house2Router() {
       .rows[0];
     if (!neighborhood) throw new AppError(404, 'Vizinhança não encontrada.');
     const plots = (
-      await pool.query(`${plotSelect} WHERE p.neighborhood_id=$1 ORDER BY p.number`, [id, user])
+      await pool.query(
+        `${plotSelect} WHERE p.neighborhood_id=$1 AND p.retired_at IS NULL ORDER BY p.village_slot,p.number`,
+        [id, user],
+      )
     ).rows;
     const items = (
       await pool.query(
-        'SELECT i.id,i.catalog_id,i.plot_id,i.x,i.y,i.rotation FROM house2_items i JOIN house2_plots p ON p.id=i.plot_id WHERE p.neighborhood_id=$1 ORDER BY i.created_at,i.id',
+        'SELECT i.id,i.catalog_id,i.plot_id,i.x,i.y,i.rotation,i.scale FROM house2_items i JOIN house2_plots p ON p.id=i.plot_id WHERE p.neighborhood_id=$1 AND p.retired_at IS NULL ORDER BY i.created_at,i.id',
         [id],
       )
     ).rows;
@@ -143,8 +157,12 @@ export function house2Router() {
       b = purchaseSchema.parse(req.body);
     res.json(
       await purchase(res.locals.user.id, b, 'plot', [id, b.character_id], async (db) => {
-        const p = (await db.query('SELECT * FROM house2_plots WHERE id=$1 FOR UPDATE', [id]))
-          .rows[0];
+        const p = (
+          await db.query(
+            'SELECT * FROM house2_plots WHERE id=$1 AND retired_at IS NULL FOR UPDATE',
+            [id],
+          )
+        ).rows[0];
         if (!p) throw new AppError(404, 'Terreno não encontrado.');
         if (p.character_id) throw new AppError(409, 'Este terreno já foi comprado.');
         await db.query(
@@ -172,9 +190,10 @@ export function house2Router() {
         async (db) => {
           const p = await editPlot(db, id, res.locals.user.id);
           if (p.house_id) throw new AppError(409, 'Este terreno já possui uma casa.');
+          const placement = house2HousePlacement(p);
           await db.query(
-            'UPDATE house2_plots SET house_id=$2,house_x=x+width/2,house_y=y+height/2,revision=revision+1 WHERE id=$1',
-            [id, spec.id],
+            'UPDATE house2_plots SET house_id=$2,house_x=$3,house_y=$4,house_rotation=$5,revision=revision+1 WHERE id=$1',
+            [id, spec.id, placement.x, placement.y, placement.rotation],
           );
           return { amount: spec.price, result: { plot_id: id, house_id: spec.id } };
         },
@@ -228,6 +247,15 @@ export function house2Router() {
       if (Boolean(p.house_id) !== Boolean(b.house))
         throw new AppError(400, 'A casa precisa ser adquirida antes de ser posicionada.');
       if (b.house) {
+        if (
+          b.house.x !== p.house_x ||
+          b.house.y !== p.house_y ||
+          b.house.rotation !== p.house_rotation
+        )
+          throw new AppError(
+            403,
+            'A casa é fixa no terreno. Você pode ajustar apenas a decoração.',
+          );
         const spec = house2Houses.find((h) => h.id === p.house_id);
         if (!spec || !house2Within(p, b.house, spec.width, spec.height))
           throw new AppError(400, 'A casa deve ficar inteiramente no seu terreno.');
@@ -246,14 +274,23 @@ export function house2Router() {
           spec = house2Furniture.find((f) => f.id === owned?.catalog_id);
         if (!owned || !spec || (owned.plot_id && owned.plot_id !== id))
           throw new AppError(403, 'Esta mobília não está disponível no seu terreno.');
-        if (!house2Within(p, i, spec.width, spec.height))
+        const scale = i.scale ?? owned.scale;
+        if (!house2Within(p, i, spec.width * scale, spec.height * scale))
           throw new AppError(400, 'A mobília deve ficar inteiramente no seu terreno.');
       }
       await db.query('UPDATE house2_items SET plot_id=NULL,x=NULL,y=NULL WHERE plot_id=$1', [id]);
       for (const i of b.items)
         await db.query(
-          'UPDATE house2_items SET plot_id=$2,x=$3,y=$4,rotation=$5 WHERE id=$1 AND user_id=$6',
-          [i.id, id, i.x, i.y, i.rotation, user],
+          'UPDATE house2_items SET plot_id=$2,x=$3,y=$4,rotation=$5,scale=$6 WHERE id=$1 AND user_id=$7',
+          [
+            i.id,
+            id,
+            i.x,
+            i.y,
+            i.rotation,
+            i.scale ?? items.find((o) => o.id === i.id)!.scale,
+            user,
+          ],
         );
       const updated = (
         await db.query(
