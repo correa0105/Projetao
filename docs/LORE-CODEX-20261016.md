@@ -3,19 +3,37 @@
 A seção regional segue a composição de Regras: barra de consulta e busca,
 sumário à esquerda, selos de bronze do mesmo sistema ilustrado, títulos em
 Marcellus, superfícies carvão e detalhes de cobre. O cabeçalho de região/pasta
-recebe um selo maior; crônicas têm numeração e ações administrativas abaixo do
-título. Foram reduzidos o tamanho dos títulos, a separação entre entradas e a
-altura das pastas. No celular, o sumário abre e recolhe por botão e fecha após
+recebe um selo maior; crônicas têm numeração. Após o refino adicional pedido,
+as ações administrativas são ícones na mesma linha de cada pasta/crônica,
+com rótulos acessíveis e descrição ao passar o mouse. Pastas têm linhas de
+44 px, selos de 30 px e títulos de 12 px; as entradas e o cabeçalho também
+ficaram menores. A busca foi alinhada à coluna principal, usando o espaço
+antes vazio da faixa. No celular, o sumário abre e recolhe por botão e fecha após
 escolher uma pasta/região. A linha temporal, suas imagens, engrenagens, viagens,
 sons e editores permanecem.
 
-Administradores têm **Ver como conta básica**, com indicação da prévia e botão
-para voltar. A prévia remove rascunhos da lista e dos contadores, esconde ações
+Administradores têm uma aba **Visualização** na borda direita que abre um
+menu lateral com **Ver como conta básica** e o retorno à visão administrativa.
+A faixa horizontal anterior foi removida. Escape, fechar e clique fora
+recolhem o menu; a troca também o recolhe, e Escape devolve o foco à aba.
+A prévia remove rascunhos da lista e dos contadores, esconde ações
 de criação/edição/exclusão/restauração e o editor de eras. Abrir uma crônica
 publicada continua possível. A troca é local à página e não altera a conta nem
 o banco; recarregar retorna à visão administrativa. Enquanto há uma edição ou
 diálogo aberto, a troca fica indisponível para preservar o trabalho em curso.
 As regras de autorização do servidor permanecem como antes.
+
+O fundo ilustrado volta ao passar o mouse ou focar uma crônica: a primeira
+imagem da página, ou o cenário de castelo usado anteriormente, cobre a linha
+com transparência e máscara para preservar o título. Os selos reproduzem os
+efeitos de Regras: relevo no hover/foco, reflexo metálico de 1,05 s e brilho
+discreto no item selecionado. Movimento reduzido desliga essas animações.
+
+A névoa externa foi suavizada: quatro oitavas de ruído em volumes maiores,
+menos deformação, contraste menor e transição mais suave junto à biblioteca,
+sem os filamentos claros e redemoinhos apertados anteriores. O limite de
+15 quadros/s, pausa, fallback e proteção da leitura continuam. Detalhes e QA
+de máscara/alpha em `LORE-SMOKE-20261015.md`.
 
 ## Cópia da versão anterior
 

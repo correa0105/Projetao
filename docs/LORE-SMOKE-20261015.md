@@ -1,8 +1,8 @@
 # Fumaça escura nas margens da Lore — 15/10/2026
 
-A fumaça ocupa a área externa ao contêiner da biblioteca, inclusive cabeçalho, margens e rodapé, atrás dos controles. O campo procedural usa seis oitavas de ruído e camadas de deformação independentes para formar volumes, dobras e filamentos. As formas evoluem continuamente em ritmo lento, sem deslocar uma imagem plana nem criar emenda de ciclo.
+A fumaça ocupa a área externa ao contêiner da biblioteca, inclusive cabeçalho, margens e rodapé, atrás dos controles. No refino de 16/10, a pedido do usuário, o campo passou a quatro oitavas e volumes largos: ruído em escala de 620 px, deformação mais discreta, contraste reduzido e borda suave junto à leitura. Os filamentos claros e dobras apertadas foram removidos. As formas evoluem continuamente em ritmo lento, sem deslocar uma imagem plana nem criar emenda de ciclo. O fallback também usa gradientes mais escuros e suaves.
 
-A máscara segue o retângulo real da biblioteca ao rolar e redimensionar a janela. O conteúdo preserva seus pixels e seus controles: o canvas é decorativo, não recebe foco nem cliques. Arredondamento de composição de até um nível RGB foi observado no celular, sem sobreposição visual.
+A máscara segue o retângulo real da biblioteca ao rolar e redimensionar a janela. O canvas é decorativo, não recebe foco nem cliques. O QA lê nove pontos do framebuffer a cada quadro e exige alpha zero dentro da área de leitura; capturas com/sem o canvas comparam somente o trecho visível, evitando a recomposição de textos causada por capturas de elementos maiores que a janela.
 
 Superfície limitada a 1056 px de largura / 800 px de altura e 15 quadros por segundo. O loop pausa com a aba oculta; movimento reduzido mantém um quadro estático. Há fundo estático/gradiente suave para WebGL indisponível, e recursos GPU/eventos são descartados ao sair da Lore.
 

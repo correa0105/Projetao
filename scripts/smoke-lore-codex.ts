@@ -50,6 +50,14 @@ async function openIndex() {
   const button = page.getByRole('button', { name: 'Abrir sumário', exact: true });
   if (await button.isVisible()) await button.click();
 }
+async function openViewMenu() {
+  const trigger = page.getByRole('button', { name: 'Menu de visualização da Lore', exact: true });
+  await trigger.click();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  await expect(
+    page.getByRole('complementary', { name: 'Visualização da Lore', exact: true }),
+  ).toBeVisible();
+}
 async function archiveScreenshot(name: string) {
   await page
     .locator('.lore-archive')
@@ -111,10 +119,59 @@ try {
     await page.goto(origin + '/#lore');
     await page.reload();
     await expect(page.locator('.lore-page-row')).toHaveCount(4);
+    await expect(page.locator('.lore-view-switch')).toHaveCount(0);
+    await openViewMenu();
+    const menu = (await page
+      .getByRole('complementary', { name: 'Visualização da Lore', exact: true })
+      .boundingBox())!;
+    expect(menu.x).toBeGreaterThanOrEqual(0);
+    expect(menu.x + menu.width).toBeLessThanOrEqual(viewport.width + 1);
+    await page.screenshot({ path: 'test-results/lore-codex/view-menu-' + viewport.width + '.png' });
+    await page.keyboard.press('Escape');
+    await expect(
+      page.getByRole('button', { name: 'Menu de visualização da Lore', exact: true }),
+    ).toBeFocused();
+    await openViewMenu();
+    await page.mouse.click(1, viewport.height - 100);
+    await expect(
+      page.getByRole('complementary', { name: 'Visualização da Lore', exact: true }),
+    ).toHaveCount(0);
     await expect(page.getByRole('button', { name: 'Editar eras', exact: true })).toBeVisible();
     await archiveScreenshot('archive-' + viewport.width);
     await openIndex();
     await expect(page.locator('.lore-sidebar .lore-folder-emblem')).toHaveCount(6);
+    if (viewport.width === 1440) {
+      const rows = await page
+        .locator('.lore-folder-row')
+        .evaluateAll((es) => es.map((e) => e.getBoundingClientRect().height));
+      expect(Math.max(...rows)).toBeLessThanOrEqual(60);
+      expect(
+        (await page.locator('.lore-page-row').first().boundingBox())!.height,
+      ).toBeLessThanOrEqual(110);
+      await page.emulateMedia({ reducedMotion: 'no-preference' });
+      const folderButton = page.locator('[data-folder-choice]').first();
+      await folderButton.hover();
+      await expect
+        .poll(() =>
+          folderButton.locator('.rb-emblem').evaluate((e) => getComputedStyle(e).transform),
+        )
+        .not.toBe('none');
+      await expect(folderButton.locator('.rb-emblem-sheen')).toHaveCSS(
+        'animation-name',
+        'lore-metal-glint',
+      );
+      const row = page.locator('.lore-page-row').first();
+      await row.hover();
+      await expect(row.locator('.lore-page-art')).toHaveCSS('opacity', '0.35');
+      await row.locator('.lore-page-art').evaluate(async (e) => {
+        const src = getComputedStyle(e).backgroundImage.match(/url\(["']?([^"')]+)/)![1];
+        const img = new Image();
+        img.src = src;
+        await img.decode();
+      });
+      await row.screenshot({ path: 'test-results/lore-codex/row-hover-1440.png' });
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+    }
     await archiveScreenshot('index-' + viewport.width);
     await page.locator('[data-folder-choice="' + folder.id + '"]').click();
     await expect(page.locator('.lore-stage-toolbar h2')).toHaveText('História');
@@ -129,6 +186,7 @@ try {
     await expect(page.locator('.lore-blocks')).toContainText('memória das estradas');
     await archiveScreenshot('reader-' + viewport.width);
     await page.getByRole('button', { name: 'Voltar ao arquivo', exact: true }).click();
+    await openViewMenu();
     await page.getByRole('button', { name: 'Ver como conta básica', exact: true }).click();
     await expect(page.locator('.lore-page-row')).toHaveCount(3);
     await expect(page.locator('.lore-folder-actions,.lore-page-actions')).toHaveCount(0);
@@ -144,6 +202,7 @@ try {
     await expect(page.getByRole('button', { name: 'Editar crônica', exact: true })).toHaveCount(0);
     await expect(page.getByRole('button', { name: 'Excluir crônica', exact: true })).toHaveCount(0);
     await page.getByRole('button', { name: 'Voltar ao arquivo', exact: true }).click();
+    await openViewMenu();
     await page
       .getByRole('button', { name: 'Voltar à visão de administrador', exact: true })
       .click();
@@ -154,6 +213,7 @@ try {
         .getByRole('button', { name: 'Editar crônica ' + published.title, exact: true })
         .click();
       await expect(page.getByRole('region', { name: 'Editor de crônica' })).toBeVisible();
+      await openViewMenu();
       await expect(
         page.getByRole('button', { name: 'Ver como conta básica', exact: true }),
       ).toBeDisabled();
@@ -169,7 +229,9 @@ try {
   }
   await basicPage.goto(origin + '/#lore');
   await expect(basicPage.locator('.lore-page-row')).toHaveCount(3);
-  await expect(basicPage.getByRole('group', { name: 'Visualização da Lore' })).toHaveCount(0);
+  await expect(
+    basicPage.getByRole('button', { name: 'Menu de visualização da Lore', exact: true }),
+  ).toHaveCount(0);
   await expect(
     basicPage.locator('.lore-page-edit,.lore-folder-edit,.lore-timeline-edit'),
   ).toHaveCount(0);

@@ -22,6 +22,7 @@ import {
 import { api, post } from './api';
 import { Modal } from './components';
 import { FlashMessage } from './FlashMessage';
+import { ScenePanel } from './ScenePanel';
 import { LoreSmoke } from './LoreSmoke';
 import { LoreScrollHolderIcon, LoreScrollIcon } from './LoreSymbols';
 import { RulebookEmblem } from './RulebookSymbols';
@@ -45,8 +46,8 @@ import './lore-codex.css';
 
 function archiveSymbol(name: string): RulebookSymbol {
   const text = name.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
-  if (/capital|reino/.test(text)) return 'crest';
-  if (/cidade|territorio|lugar/.test(text)) return 'compass';
+  if (/capita|reino/.test(text)) return 'crest';
+  if (/cidade|territorio|lugar|regio/.test(text)) return 'compass';
   if (/criatura|besta/.test(text)) return 'swords';
   if (/lenda|magia/.test(text)) return 'arcana';
   if (/religia|divin|crenca/.test(text)) return 'oath';
@@ -282,6 +283,7 @@ function FolderTree({
                         className="lore-folder-edit lore-content-action"
                         type="button"
                         aria-label={`Editar pasta ${folder.name}`}
+                        title={`Editar pasta ${folder.name}`}
                         onClick={() => onEdit(folder)}
                       >
                         <Pencil size={13} /> <span>Editar</span>
@@ -292,6 +294,7 @@ function FolderTree({
                         className="lore-folder-delete lore-content-action"
                         type="button"
                         aria-label={`Excluir pasta ${folder.name}`}
+                        title={`Excluir pasta ${folder.name}`}
                         onClick={() => onDelete(folder)}
                       >
                         <Trash2 size={13} /> <span>Excluir</span>
@@ -328,6 +331,16 @@ export function LoreLibrary() {
   const [query, setQuery] = useState('');
   const [indexOpen, setIndexOpen] = useState(false);
   const [basicPreview, setBasicPreview] = useState(false);
+  const [viewMenuOpen, setViewMenuOpen] = useState(false);
+  const viewMenu = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!viewMenuOpen) return;
+    const close = (event: globalThis.PointerEvent) => {
+      if (!viewMenu.current?.contains(event.target as Node)) setViewMenuOpen(false);
+    };
+    document.addEventListener('pointerdown', close);
+    return () => document.removeEventListener('pointerdown', close);
+  }, [viewMenuOpen]);
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
   const [deletingFolder, setDeletingFolder] = useState<LoreFolder | null>(null);
@@ -414,34 +427,61 @@ export function LoreLibrary() {
       <LoreSmoke />
       {message && <FlashMessage kind="info">{message}</FlashMessage>}
       {index.can_manage_folders && (
-        <div className="lore-view-switch" role="group" aria-label="Visualização da Lore">
-          <span>
-            {basicView
-              ? 'Prévia de conta básica · somente conteúdo publicado'
-              : 'Visualização de administrador'}
-          </span>
+        <div className="lore-view-menu" ref={viewMenu}>
           <button
             type="button"
-            aria-pressed={basicView}
-            disabled={
-              editing || Boolean(dialog || deletingFolder || deletingPage || editingFolder || trash)
-            }
-            title={editing ? 'Feche a edição para trocar a visualização' : undefined}
-            onClick={() => {
-              request.current++;
-              setBusy(false);
-              setBasicPreview((v) => !v);
-              setPage(null);
-              setDialog(null);
-              setDeletingFolder(null);
-              setDeletingPage(null);
-              setEditingFolder(null);
-              setTrash(null);
-            }}
+            className="lore-view-trigger"
+            aria-label="Menu de visualização da Lore"
+            aria-expanded={viewMenuOpen}
+            aria-controls="scene-panel-lore-view"
+            data-preview={basicView || undefined}
+            title={basicView ? 'Prévia de conta básica' : 'Visualização de administrador'}
+            onClick={() => setViewMenuOpen((v) => !v)}
           >
-            <Eye size={15} />{' '}
-            {basicView ? 'Voltar à visão de administrador' : 'Ver como conta básica'}
+            <Eye size={17} />
+            <span>Visualização</span>
+            <ChevronRight size={14} />
           </button>
+          {viewMenuOpen && (
+            <ScenePanel
+              id="lore-view"
+              title="Visualização da Lore"
+              close={() => setViewMenuOpen(false)}
+            >
+              <div className="lore-view-options" role="group" aria-label="Modo de visualização">
+                <span className="lore-kicker">{basicView ? 'Conta básica' : 'Administrador'}</span>
+                <span>
+                  {basicView
+                    ? 'Prévia de conta básica · somente conteúdo publicado'
+                    : 'Confira a biblioteca como um jogador, sem rascunhos nem controles de edição.'}
+                </span>
+                <button
+                  type="button"
+                  aria-pressed={basicView}
+                  disabled={
+                    editing ||
+                    Boolean(dialog || deletingFolder || deletingPage || editingFolder || trash)
+                  }
+                  title={editing ? 'Feche a edição para trocar a visualização' : undefined}
+                  onClick={() => {
+                    request.current++;
+                    setBusy(false);
+                    setBasicPreview((v) => !v);
+                    setPage(null);
+                    setDialog(null);
+                    setDeletingFolder(null);
+                    setDeletingPage(null);
+                    setEditingFolder(null);
+                    setTrash(null);
+                    setViewMenuOpen(false);
+                  }}
+                >
+                  <Eye size={15} />{' '}
+                  {basicView ? 'Voltar à visão de administrador' : 'Ver como conta básica'}
+                </button>
+              </div>
+            </ScenePanel>
+          )}
         </div>
       )}
       <div className="lore-scene">
@@ -654,6 +694,13 @@ export function LoreLibrary() {
                 <div className="lore-page-list">
                   {pages.map((item, position) => (
                     <div className="lore-page-row" key={item.id}>
+                      <span
+                        className="lore-page-art"
+                        aria-hidden="true"
+                        style={{
+                          backgroundImage: `url("${item.thumbnail || '/alvorada-dawn-banner.png'}")`,
+                        }}
+                      />
                       <button className="lore-page-link" onClick={() => void openPage(item.id)}>
                         <span className="lore-entry-mark" aria-hidden="true">
                           <RulebookEmblem symbol="quill" />
@@ -667,13 +714,6 @@ export function LoreLibrary() {
                           <strong>{item.title}</strong>
                           <span>{item.subtitle}</span>
                         </span>
-                        <span
-                          className="lore-page-art"
-                          aria-hidden="true"
-                          style={{
-                            backgroundImage: `url("${item.thumbnail || '/alvorada-dawn-banner.png'}")`,
-                          }}
-                        />
                         <ChevronRight size={20} />
                       </button>
                       {item.can_edit && !basicView && (
@@ -682,6 +722,7 @@ export function LoreLibrary() {
                             type="button"
                             className="lore-page-edit lore-content-action"
                             aria-label={`Editar crônica ${item.title}`}
+                            title={`Editar crônica ${item.title}`}
                             onClick={() => void openPage(item.id, true)}
                           >
                             <Pencil size={15} /> <span>Editar</span>
@@ -690,6 +731,7 @@ export function LoreLibrary() {
                             type="button"
                             className="lore-page-delete lore-content-action"
                             aria-label={`Excluir crônica ${item.title}`}
+                            title={`Excluir crônica ${item.title}`}
                             onClick={() => setDeletingPage(item)}
                           >
                             <Trash2 size={15} /> <span>Excluir</span>
