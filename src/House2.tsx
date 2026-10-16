@@ -20,6 +20,7 @@ import {
   Minus,
   Move,
   Plus,
+  RotateCcw,
   RotateCw,
   Save,
   Search,
@@ -401,7 +402,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     setInterior(plot.id);
     setNotice('Arraste a peça dentro do seu terreno e salve as mudanças.');
   }
-  function adjust(rotation = false, dx = 0, dy = 0) {
+  function adjust(rotation: -1 | 0 | 1 = 0, dx = 0, dy = 0) {
     const d = startDraft();
     if (!d || !plot || !selectedPiece || selectedPiece === 'house') return;
     const p = selectedPiece === 'house' ? d.house : d.items.find((i) => i.id === selectedPiece);
@@ -420,7 +421,7 @@ export function House2({ character, user }: { character?: Character; user: User 
           ...p,
           x: p.x + dx,
           y: p.y + dy,
-          rotation: (rotation ? (p.rotation + 90) % 360 : p.rotation) as 0 | 90 | 180 | 270,
+          rotation: ((p.rotation + rotation * 90 + 360) % 360) as 0 | 90 | 180 | 270,
         },
         spec.width * ((p as { scale?: number }).scale ?? 1),
         spec.height * ((p as { scale?: number }).scale ?? 1),
@@ -620,6 +621,28 @@ export function House2({ character, user }: { character?: Character; user: User 
       </label>
       {selectedPiece !== 'house' && (
         <div className="h2-item-size">
+          <div className="h2-item-rotation" role="group" aria-label="Rotação do objeto">
+            <span>
+              Rotação{' '}
+              <output aria-label="Ângulo do objeto">{selectedTransform?.rotation ?? 0}°</output>
+            </span>
+            <div>
+              <button
+                aria-label="Girar peça 90° à esquerda"
+                disabled={busy}
+                onClick={() => adjust(-1)}
+              >
+                <RotateCcw size={16} /> Girar −90°
+              </button>
+              <button
+                aria-label="Girar peça 90° à direita"
+                disabled={busy}
+                onClick={() => adjust(1)}
+              >
+                <RotateCw size={16} /> Girar +90°
+              </button>
+            </div>
+          </div>
           <label>
             Tamanho do item <output>{Math.round((selectedTransform?.scale ?? 1) * 100)}%</output>
             <input
@@ -654,25 +677,18 @@ export function House2({ character, user }: { character?: Character; user: User 
         <button
           aria-label="Mover para a esquerda"
           disabled={busy}
-          onClick={() => adjust(false, -0.5, 0)}
+          onClick={() => adjust(0, -0.5, 0)}
         >
           ←
         </button>
-        <button aria-label="Mover para cima" disabled={busy} onClick={() => adjust(false, 0, -0.5)}>
+        <button aria-label="Mover para cima" disabled={busy} onClick={() => adjust(0, 0, -0.5)}>
           ↑
         </button>
-        <button aria-label="Mover para baixo" disabled={busy} onClick={() => adjust(false, 0, 0.5)}>
+        <button aria-label="Mover para baixo" disabled={busy} onClick={() => adjust(0, 0, 0.5)}>
           ↓
         </button>
-        <button
-          aria-label="Mover para a direita"
-          disabled={busy}
-          onClick={() => adjust(false, 0.5, 0)}
-        >
+        <button aria-label="Mover para a direita" disabled={busy} onClick={() => adjust(0, 0.5, 0)}>
           →
-        </button>
-        <button aria-label="Girar peça" disabled={busy} onClick={() => adjust(true)}>
-          <RotateCw size={16} />
         </button>
         {selectedPiece !== 'house' && (
           <button disabled={busy} onClick={storePiece}>

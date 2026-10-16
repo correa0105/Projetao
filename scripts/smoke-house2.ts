@@ -144,7 +144,13 @@ try {
   await tool('Minha coleção');
   await page.getByRole('button', { name: /Cadeira de madeira.*Colocar/ }).click();
   await page.getByRole('button', { name: 'Mover para a direita', exact: true }).click();
-  await page.getByRole('button', { name: 'Girar peça', exact: true }).click();
+  await expect(page.getByLabel('Ângulo do objeto', { exact: true })).toHaveText('0°');
+  await page.getByRole('button', { name: 'Girar peça 90° à esquerda', exact: true }).click();
+  await expect(page.getByLabel('Ângulo do objeto', { exact: true })).toHaveText('270°');
+  await page.getByRole('button', { name: 'Girar peça 90° à direita', exact: true }).click();
+  await expect(page.getByLabel('Ângulo do objeto', { exact: true })).toHaveText('0°');
+  await page.getByRole('button', { name: 'Girar peça 90° à direita', exact: true }).click();
+  await expect(page.getByLabel('Ângulo do objeto', { exact: true })).toHaveText('90°');
   await page.getByLabel('Tamanho do item', { exact: true }).fill('160');
   await expect(page.getByLabel('Encaixar na grade')).not.toBeChecked();
   const neighborhood = (await request(context, '/house-v2', undefined, 'GET')).neighborhoods[0].id;
@@ -202,6 +208,7 @@ try {
   await page.getByRole('button', { name: 'Entrar na casa', exact: true }).click();
   await tool('Minha coleção');
   await page.getByRole('button', { name: /Cadeira de madeira.*Ajustar/ }).click();
+  await expect(page.getByLabel('Ângulo do objeto', { exact: true })).toHaveText('90°');
   await expect(page.locator(`[data-house2-piece="${itemId}"]`)).toHaveAttribute(
     'transform',
     `translate(${saved.x} ${saved.y}) rotate(90)`,
@@ -243,6 +250,18 @@ try {
         panel.y + panel.height <= viewport.height,
     ).toBe(true);
     await page.getByRole('button', { name: 'Fechar Vizinhança', exact: true }).click();
+    await tool('Minha coleção');
+    await page.getByRole('button', { name: /Cadeira de madeira.*Ajustar/ }).click();
+    await expect(page.getByLabel('Ângulo do objeto', { exact: true })).toHaveText('90°');
+    for (const name of ['Girar peça 90° à esquerda', 'Girar peça 90° à direita']) {
+      const control = page.getByRole('button', { name, exact: true });
+      await control.scrollIntoViewIfNeeded();
+      await expect(control).toBeVisible();
+      const r = (await control.boundingBox())!;
+      expect(r.x >= 0 && r.x + r.width <= viewport.width + 1).toBe(true);
+    }
+    await page.screenshot({ path: `test-results/house2/rotation-${viewport.width}.png` });
+    await page.getByRole('button', { name: 'Fechar Minha coleção', exact: true }).click();
     expect(
       await page.evaluate(
         () =>

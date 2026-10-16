@@ -84,6 +84,12 @@ desligado; mostrar a grade também é opcional. A caixa inteira, após giro e es
 dentro do lote. O servidor repete essa validação; não basta limitar o cursor.
 É possível mobiliar o interior ou a parte externa do próprio terreno.
 
+Para girar um objeto, clique nele no próprio terreno ou use Minha coleção →
+Ajustar peça. O bloco **Rotação** mostra o ângulo atual e os botões **Girar −90°**
+e **Girar +90°**. O giro respeita os limites do terreno e é confirmado em
+**Salvar**; **Descartar** conserva a orientação salva anteriormente. Visitantes
+não recebem os controles. A estrutura da casa permanece fixa.
+
 Salvar é explícito e usa revisão otimista. Descartar conserva a última versão
 persistida. Guardar retira o móvel do lote, preservando a compra. Uma peça não
 pode estar em dois lotes; para mudar de lote, guardar e salvar primeiro. Troca
