@@ -193,7 +193,7 @@
 
 /* Hall laureates, 1672 × 941. Measured standing surfaces: (835,473),
    (395,521), (1277,568). Figures and engraved ranks move with the painting. */
-:root .app-shell .hall-of-fame:has(.hall-exhibition)::before { background:#100e0b; }
+:root .app-shell .hall-of-fame:has(.hall-exhibition)::before { background:var(--page,#151413); }
 :root .app-shell .hall-of-fame .hall-gallery:has(.hall-exhibition) {
   position:relative;height:100dvh;min-height:620px;padding:0;
 }
@@ -208,8 +208,8 @@
 :root .app-shell .hall-of-fame .hall-heading p { margin:0 auto; }
 :root .app-shell .hall-of-fame .hall-exhibition {position:absolute;inset:0;}
 :root .app-shell .hall-of-fame .hall-exhibition::after {
-  content:'';position:absolute;left:0;right:0;bottom:0;height:clamp(36px,6dvh,70px);
-  z-index:1;pointer-events:none;background:linear-gradient(transparent,#100e0b);
+  content:'';position:absolute;left:0;right:0;bottom:-1px;height:clamp(170px,24dvh,280px);
+  z-index:1;pointer-events:none;background:linear-gradient(0deg,var(--page,#151413),#15141320 70%,transparent);
 }
 :root .app-shell .hall-of-fame .hall-exhibition-viewport {
   width:100%;height:100%;overflow-x:auto;overflow-y:hidden;
@@ -352,23 +352,11 @@
 
 :root .app-shell .hall-of-fame .hall-ranking-section {
   position:relative;isolation:isolate;z-index:2;padding:88px 0 60px;min-height:320px;
-  background:linear-gradient(transparent,#100e0b 140px);
+  background:var(--page,#151413);
 }
-:root .app-shell .hall-of-fame .hall-ranking-section > :not(.hall-ranking-smoke) {
+:root .app-shell .hall-of-fame .hall-ranking-section > * {
   position:relative;z-index:2;width:calc(100% - 48px);max-width:1120px;margin-inline:auto;
 }
 :root .app-shell .hall-of-fame .hall-ranking-section .hall-search {margin-top:0;margin-bottom:16px;}
 :root .app-shell .hall-of-fame .hall-ranking-section .hall-table {background:#18150feb;}
 :root .app-shell .hall-of-fame .hall-ranking-section .hall-score-guide {margin-top:22px;}
-.hall-ranking-smoke {
-  position:absolute;top:-100px;left:0;width:100%;height:260px;z-index:1;
-  pointer-events:none;contain:strict;
-}
-.hall-ranking-smoke[data-renderer='fallback'] {
-  background:radial-gradient(ellipse at 25% 72%,#554c3f88,transparent 55%),
-    radial-gradient(ellipse at 75% 85%,#4b433888,transparent 50%),linear-gradient(transparent,#100e0b 85%);
-  animation:hall-smoke-drift 20s ease-in-out infinite alternate;
-}
-.hall-ranking-smoke[data-paused='true'] {animation-play-state:paused;}
-@keyframes hall-smoke-drift {to{background-position:10vw 0,-8vw 0,0 0;}}
-@media(prefers-reduced-motion:reduce) {.hall-ranking-smoke[data-renderer='fallback']{animation:none;}}

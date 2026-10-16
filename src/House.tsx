@@ -29,6 +29,7 @@ import {
   ChevronRight,
   Scan,
   Settings,
+  Menu,
 } from 'lucide-react';
 import { api, post } from './api';
 import { Modal } from './components';
@@ -248,6 +249,28 @@ export function House({
     [rewardValue, setRewardValue] = useState('1'),
     [grantReason, setGrantReason] = useState('');
   const [rpPinned, setRpPinned] = useState(() => pinnedRpPreference(user.id));
+  const [menuOpen, setMenuOpen] = useState(false);
+  const houseMenu = useRef<HTMLDivElement>(null);
+  const houseMenuButton = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const close = (event: globalThis.PointerEvent) => {
+      if (!houseMenu.current?.contains(event.target as Node) &&
+          !houseMenuButton.current?.contains(event.target as Node)) setMenuOpen(false);
+    };
+    const key = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        houseMenuButton.current?.focus();
+      }
+    };
+    document.addEventListener('pointerdown', close);
+    window.addEventListener('keydown', key);
+    return () => {
+      document.removeEventListener('pointerdown', close);
+      window.removeEventListener('keydown', key);
+    };
+  }, [menuOpen]);
   const [itemMenu,setItemMenu]=useState<{id:string;left:number;top:number}|null>(null);
   const itemMenuRef=useRef<HTMLElement>(null);
   useEffect(()=>{
@@ -281,34 +304,33 @@ export function House({
   }, [user.id]);
   const stageSlot = useRef<HTMLDivElement>(null);
   const [sceneSize, setSceneSize] = useState({ width: 0, height: 0 });
-  const [viewportTop, setViewportTop] = useState(82);
   useLayoutEffect(() => {
     document.body.classList.add('house-immersive');
-    const header = document.querySelector<HTMLElement>('.main-shell > .page-header');
-    const resize = () =>
-      setViewportTop(header ? Math.max(0, header.getBoundingClientRect().bottom + 8) : 8);
-    const observer = new ResizeObserver(resize);
-    if (header) observer.observe(header);
-    window.addEventListener('resize', resize);
-    resize();
     return () => {
-      observer.disconnect();
-      window.removeEventListener('resize', resize);
       document.body.classList.remove('house-immersive');
     };
   }, []);
   useLayoutEffect(() => {
     const slot = stageSlot.current;
     if (!slot) return;
+    let frame = 0;
     const resize = () => {
-      const width = Math.max(0, Math.min(slot.clientWidth, (slot.clientHeight * 16) / 9));
+      // One original 16:9 plane: crop in landscape, pan in portrait. Opening a
+      // tool never resizes this plane or changes any saved furniture coordinate.
+      const width = Math.max(slot.clientWidth, (slot.clientHeight * 16) / 9);
       setSceneSize({ width, height: (width * 9) / 16 });
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const actor = home?.presence.find(p => p.user_id === user.id && p.room === room);
+        slot.scrollLeft = slot.clientWidth / slot.clientHeight <= 1.2
+          ? Math.max(0, width * (actor?.x ?? .5) - slot.clientWidth / 2) : 0;
+      });
     };
     const observer = new ResizeObserver(resize);
     observer.observe(slot);
     resize();
-    return () => observer.disconnect();
-  }, [home?.id]);
+    return () => { observer.disconnect(); cancelAnimationFrame(frame); };
+  }, [home?.id, room, user.id]);
   const stage = useRef<HTMLDivElement>(null),
     chatLog = useRef<HTMLDivElement>(null),
     chatForm = useRef<HTMLFormElement>(null),
@@ -916,6 +938,7 @@ export function House({
     setRecipient(await api<Profile>(`/profiles/${encodeURIComponent(id)}`));
   }
   function toggle(name: string) {
+    setMenuOpen(false);
     if (name === 'rp') followChat.current = true;
     setTab((v) => (v === name ? '' : name));
     setError('');
@@ -925,7 +948,6 @@ export function House({
     <section
       className="house-workspace"
       aria-label="House"
-      style={{ '--house-top': `${viewportTop}px` } as CSSProperties}
     >
             {home && home.is_owner && choice && itemMenu?.id === choice.id && createPortal(
               <section ref={itemMenuRef} className="house-inspector house-item-menu" role="dialog" aria-label="Ajustes da peça" style={{left:itemMenu.left,top:itemMenu.top}}>
@@ -1049,6 +1071,16 @@ export function House({
                 </fieldset>
               </section>,document.body
             )}
+      <button className="house-menu-trigger" ref={houseMenuButton}
+        aria-label="Menu da House" aria-expanded={menuOpen} aria-controls="house-controls"
+        onClick={() => setMenuOpen(v => !v)}>
+        {menuOpen ? <X size={18} /> : <Menu size={18} />} <span>House</span>
+        <ChevronDown size={14} />
+      </button>
+      <div className="house-scene-title">{home?.name || 'House'}<small>{labels[room]}</small></div>
+      {home && <span className="house-pan-hint"><ChevronLeft size={13} /> Deslize para explorar <ChevronRight size={13} /></span>}
+      {dirty && !menuOpen && <button className="house-unsaved" onClick={() => setMenuOpen(true)}><Save size={15} /> Alterações por salvar</button>}
+      <div className="house-controls" id="house-controls" ref={houseMenu} hidden={!menuOpen}>
       <header className="house-header">
         <a className="house-exit" href="#overview" aria-label="Sair da House" title="Sair da House">
           <ArrowLeft size={20} />
@@ -1133,6 +1165,62 @@ export function House({
           )}
         </div>
       </header>
+      {home && (<>
+          <nav className="house-dock" aria-label="Controles da casa">
+            {home.is_owner && (
+              <>
+                <button aria-pressed={tab === 'decor'} onClick={() => toggle('decor')}>
+                  <Package size={17} />
+                  Decorar
+                </button>
+                <button aria-pressed={tab === 'shop'} onClick={() => toggle('shop')}>
+                  <ShoppingBag size={17} />
+                  Mobília
+                </button>
+                <button aria-pressed={tab === 'guests'} onClick={() => toggle('guests')}>
+                  <Users size={17} />
+                  Convidados
+                </button>
+              </>
+            )}
+            <button aria-pressed={tab === 'rp' || rpPinned} onClick={() => toggle('rp')}>
+              <MessageCircle size={17} />
+              RP
+            </button>
+            <button aria-pressed={tab === 'settings'} onClick={() => toggle('settings')}>
+              <Settings size={17} />
+              Configurações
+            </button>
+            <button aria-pressed={tab === 'versions'} onClick={() => toggle('versions')}>
+              <ImagePlus size={17} />
+              Personagem
+            </button>
+            {index?.can_admin && (
+              <button aria-pressed={tab === 'rewards'} onClick={() => toggle('rewards')}>
+                <Gift size={17} />
+                Recompensas
+              </button>
+            )}
+          </nav>
+
+            <nav className="house-rooms" aria-label="Ambientes da casa">
+              {roomKinds.map((k) => (
+                <button
+                  key={k}
+                  aria-pressed={room === k}
+                  onClick={() => {
+                    setRoom(k);
+                    setMenuOpen(false);
+                    setSelected('');
+                  }}
+                >
+                  {labels[k]}
+                </button>
+              ))}
+              {!home.is_owner && <span>Visitando {home.owner_name}</span>}
+            </nav>
+      </>)}
+      </div>
       {error && (
         <p className="house-feedback" role="alert">
           {error}
@@ -1197,60 +1285,9 @@ export function House({
         </div>
       )}
       {home && (
-        <div className={`house-body ${tab && tab !== 'rp' ? 'has-panel' : ''} ${(!tab || tab === 'rp') && !ownActor ? 'no-sidebar' : ''}`}>
-          <nav className="house-dock" aria-label="Controles da casa">
-            {home.is_owner && (
-              <>
-                <button aria-pressed={tab === 'decor'} onClick={() => toggle('decor')}>
-                  <Package size={17} />
-                  Decorar
-                </button>
-                <button aria-pressed={tab === 'shop'} onClick={() => toggle('shop')}>
-                  <ShoppingBag size={17} />
-                  Mobília
-                </button>
-                <button aria-pressed={tab === 'guests'} onClick={() => toggle('guests')}>
-                  <Users size={17} />
-                  Convidados
-                </button>
-              </>
-            )}
-            <button aria-pressed={tab === 'rp' || rpPinned} onClick={() => toggle('rp')}>
-              <MessageCircle size={17} />
-              RP
-            </button>
-            <button aria-pressed={tab === 'settings'} onClick={() => toggle('settings')}>
-              <Settings size={17} />
-              Configurações
-            </button>
-            <button aria-pressed={tab === 'versions'} onClick={() => toggle('versions')}>
-              <ImagePlus size={17} />
-              Personagem
-            </button>
-            {index?.can_admin && (
-              <button aria-pressed={tab === 'rewards'} onClick={() => toggle('rewards')}>
-                <Gift size={17} />
-                Recompensas
-              </button>
-            )}
-          </nav>
+        <div className={`house-body ${tab && tab !== 'rp' ? 'has-panel' : ''} ${!tab || tab === 'rp' ? 'no-sidebar' : ''}`}>
           <div className="house-center">
-            <nav className="house-rooms" aria-label="Ambientes da casa">
-              {roomKinds.map((k) => (
-                <button
-                  key={k}
-                  aria-pressed={room === k}
-                  onClick={() => {
-                    setRoom(k);
-                    setSelected('');
-                  }}
-                >
-                  {labels[k]}
-                </button>
-              ))}
-              {!home.is_owner && <span>Visitando {home.owner_name}</span>}
-            </nav>
-            <div className="house-stage-slot" ref={stageSlot}>
+            <div className="house-stage-slot" ref={stageSlot} style={{ '--house-backdrop': `url(${houseTemplates.find((t) => t.id === current?.template)?.image})` } as CSSProperties}>
               <div
                 className="house-scene"
                 ref={stage}
@@ -1598,7 +1635,7 @@ export function House({
               </div>
             </div>
           </div>
-          <aside className="house-sidebar" aria-label="Painel da casa">
+          {tab && tab !== 'rp' && <aside className="house-sidebar" aria-label="Painel da casa">
             <div className="house-sidebar-top">
               <strong>
                 {{
@@ -2172,10 +2209,10 @@ export function House({
             )}
             {!tab && !choice && (
               <p className="house-sidebar-hint">
-                Escolha uma opção à esquerda ou uma peça na cena.
+                Abra o menu da House ou escolha uma peça na cena.
               </p>
             )}
-          </aside>
+          </aside>}
         </div>
       )}
       {buy && spec && home && (

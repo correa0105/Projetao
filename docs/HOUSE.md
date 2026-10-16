@@ -1,5 +1,29 @@
 # House — 07/10/2026
 
+## Tela inteira e menu único — 16/10/2026
+
+O cenário ocupa toda a janela. O botão House no canto superior esquerdo reúne
+troca de casa, salvamento, ferramentas e ambientes. Decorar, Mobília, Convidados,
+Configurações, Personagem e Recompensas abrem painéis sobre o cenário; RP continua
+na parte inferior. Recompensas exige a permissão administrativa existente.
+O menu fecha ao escolher ferramenta/ambiente, clicar fora ou pressionar Escape.
+Mudanças por salvar mantêm um aviso clicável mesmo com o menu recolhido.
+
+Os painéis não redimensionam a cena. A pintura e todos os objetos conservam
+o plano 16:9, proporções e coordenadas salvas; paisagem preenche a janela com
+recorte central e retrato permite deslizar horizontalmente pelo cenário.
+O compositor de RP permanece ancorado à janela durante esse deslocamento.
+O cabeçalho global fica oculto apenas enquanto a House está montada; Menu e
+saída continuam disponíveis e restauram a navegação normal.
+
+Validação em PostgreSQL UUID descartável: seis tamanhos de 320 a 1920 px,
+menu por clique/teclado/Escape/fora, ferramentas de jogador, troca de cômodo,
+RP/foco/fixação, arraste sem salto, coordenadas preservadas e salvar/recarregar.
+O teste anterior de ajustes também confere oito alças, quatro larguras, vistas,
+camadas, distorção e persistência. TypeScript e build do cliente aprovados.
+Reprodução: `scripts/test-house-fullscreen-isolated.mjs` e
+`scripts/test-house-item-menu-isolated.mjs`, depois do build do cliente.
+
 ## Perspectiva pelo chão — 08/10/2026
 
 Mobília, montarias, mascotes e personagens usam o mesmo plano de profundidade

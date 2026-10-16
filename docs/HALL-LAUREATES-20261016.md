@@ -1,6 +1,6 @@
 # Hall dos melhores — 16/10/2026
 
-Refino posterior no mesmo dia: largura total, nomes/números centralizados, informações agrupadas e fumaça na passagem para o ranking. Ver `HALL-LORE-POLISH-20261016.md`.
+Refino posterior no mesmo dia: largura total, nomes/números centralizados, informações agrupadas e transição escura como Eventos na passagem para o ranking. Ver `HALL-LORE-POLISH-20261016.md`.
 
 O salão de três nichos iguais foi substituído por uma galeria de honra, com três pedestais de pedra em alturas diferentes. O primeiro fica mais alto, no centro, sob uma coroa e louros iluminados. Segundo e terceiro recebem bases laterais, luz e números em prata e bronze. As identificações acompanham as placas físicas da pintura; pontuação, classe, jogador e acesso ao perfil ficam abaixo.
 

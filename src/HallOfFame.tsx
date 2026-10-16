@@ -1,5 +1,4 @@
 import { HallExhibition } from './HallExhibition';
-import { HallRankingTransition } from './HallRankingTransition';
 import { useEffect, useMemo, useState } from 'react';
 import {
   Crown,
@@ -245,7 +244,6 @@ export function HallOfFame({
         )}
       </div>
       <div className="hall-ranking-section">
-      {!query && ordered.length > 0 && <HallRankingTransition />}
       <div className="hall-search">
         <Search size={16} />
         <input
