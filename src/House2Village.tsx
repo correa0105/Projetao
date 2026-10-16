@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { House2GroundPaint } from './House2GroundPaint';
 import {
   villageTextures,
   villageScenery,
@@ -31,13 +32,13 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
             key={name}
             id={'h2-village-' + name}
             patternUnits="userSpaceOnUse"
-            width={name === 'grass' ? 22 : 8}
-            height={name === 'grass' ? 22 : 8}
+            width={name === 'grass' ? 10 : name === 'earth' ? 3.5 : 8}
+            height={name === 'grass' ? 10 : name === 'earth' ? 3.5 : 8}
           >
             <image
               href={image}
-              width={name === 'grass' ? 22 : 8}
-              height={name === 'grass' ? 22 : 8}
+              width={name === 'grass' ? 10 : name === 'earth' ? 3.5 : 8}
+              height={name === 'grass' ? 10 : name === 'earth' ? 3.5 : 8}
             />
           </pattern>
         ))}
@@ -51,12 +52,12 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
           <g key={image}>
             <pattern
               id={'h2-grass-detail-' + index}
-              width={20 + index * 3}
-              height={20 + index * 3}
+              width={10 + index * 2}
+              height={10 + index * 2}
               patternUnits="userSpaceOnUse"
               patternTransform={`rotate(${index * 71 + 19})`}
             >
-              <image href={image} width={20 + index * 3} height={20 + index * 3} />
+              <image href={image} width={10 + index * 2} height={10 + index * 2} />
             </pattern>
             <mask
               id={'h2-grass-area-' + index}
@@ -100,26 +101,11 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
           mask={`url(#h2-grass-area-${index})`}
         />
       ))}
-      <path
-        d={villageRiver}
-        fill="none"
-        stroke="url(#h2-village-earth)"
-        strokeWidth={11}
-        opacity={0.75}
-      />
-      <path d={villageRiver} fill="none" stroke="url(#h2-village-water)" strokeWidth={7.5} />
+      <House2GroundPaint d={villageRiver} width={11} material="earth" opacity={0.8} />
+      <House2GroundPaint d={villageRiver} width={7.5} material="water" />
       <g fill="none" strokeLinecap="round" strokeLinejoin="round">
         {lanes.map((d) => (
-          <g key={d}>
-            <path
-              d={d}
-              stroke="url(#h2-village-earth)"
-              strokeWidth={3.6}
-              opacity={0.4}
-              filter="url(#h2-village-soft)"
-            />
-            <path d={d} stroke="url(#h2-village-earth)" strokeWidth={2.5} opacity={0.85} />
-          </g>
+          <House2GroundPaint key={d} d={d} width={2.7} material="earth" />
         ))}
         {plots.map((p) => {
           const placement = p.house_id
@@ -136,29 +122,29 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
               : a,
           );
           return (
-            <path
+            <House2GroundPaint
               key={p.id}
-              className="h2-garden-path"
               d={`M ${nearest[0]} ${nearest[1]} Q ${(nearest[0] + edge.x) / 2 + 0.5} ${(nearest[1] + edge.y) / 2 - 1} ${edge.x} ${edge.y} L ${door.x} ${door.y}`}
-              stroke="url(#h2-village-earth)"
-              strokeWidth={1.5}
-              opacity={0.8}
+              material="earth"
+              width={1.65}
             />
           );
         })}
       </g>
       <g data-house2-scenery="overhead">
         {scenery.map((s) => (
-          <image
-            key={s.id}
-            data-nature-kind={s.kind}
-            href={s.image}
-            x={-s.size / 2}
-            y={-s.size / 2}
-            width={s.size}
-            height={s.size}
-            transform={`translate(${s.x} ${s.y}) rotate(${s.rotation})`}
-          />
+          <g key={s.id} transform={`translate(${s.x} ${s.y})`} filter={`url(#h2-shadow-${s.kind})`}>
+            <image
+              data-nature-kind={s.kind}
+              href={s.image}
+              x={-s.size / 2}
+              y={-s.size / 2}
+              width={s.size}
+              height={s.size}
+              transform={`rotate(${s.rotation})`}
+              filter={s.kind === 'rock' ? 'url(#h2-rock-tone)' : undefined}
+            />
+          </g>
         ))}
       </g>
       <g transform="translate(60 78)">
@@ -209,25 +195,26 @@ export function House2VillageRoofs({
               onMouseLeave={() => onHover(null)}
             >
               {(preview || interior !== p.id) && (
-                <g
-                  data-house2-fixed={preview ? undefined : 'true'}
-                  transform={`translate(${position.x} ${position.y}) rotate(${position.rotation})`}
-                  onClick={() => choose(p)}
-                >
-                  <image
-                    className={preview ? 'h2-house-preview' : 'h2-house-fixed'}
-                    href={spec.image}
-                    x={-spec.width / 2}
-                    y={-spec.height / 2}
-                    width={spec.width}
-                    height={spec.height}
-                    filter="url(#h2-house-shadow)"
-                  />
-                  <title>
-                    {preview
-                      ? `Modelo ilustrativo · Terreno ${p.number} disponível · escolha sua casa após adquirir o terreno`
-                      : `${spec.name} · Casa de ${p.owner_name} (${p.player_name})`}
-                  </title>
+                <g filter="url(#h2-shadow-house)">
+                  <g
+                    data-house2-fixed={preview ? undefined : 'true'}
+                    transform={`translate(${position.x} ${position.y}) rotate(${position.rotation})`}
+                    onClick={() => choose(p)}
+                  >
+                    <image
+                      className={preview ? 'h2-house-preview' : 'h2-house-fixed'}
+                      href={spec.image}
+                      x={-spec.width / 2}
+                      y={-spec.height / 2}
+                      width={spec.width}
+                      height={spec.height}
+                    />
+                    <title>
+                      {preview
+                        ? `Modelo ilustrativo · Terreno ${p.number} disponível · escolha sua casa após adquirir o terreno`
+                        : `${spec.name} · Casa de ${p.owner_name} (${p.player_name})`}
+                    </title>
+                  </g>
                 </g>
               )}
               {!preview ? (

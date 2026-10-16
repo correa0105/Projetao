@@ -4,6 +4,7 @@ import { isTreeCanopy } from '../shared/vtt-canopies';
 import { viewerSees, type VttToken } from '../shared/vtt';
 import type { RenderOptions } from './vtt-canvas';
 import { softenTerrainMask } from './vtt-terrain-blur';
+import {terrainContactSoftness,roughenTerrainMargin} from './vtt-terrain-edge';
 import { grassMaterial } from './vtt-grass-material';
 import { waterShore } from './vtt-water-shore';
 
@@ -40,7 +41,7 @@ const overlaps = (a: Bounds, b: Bounds) => a.left < b.right && a.right > b.left 
 function bounds(s: TerrainStroke): Bounds {
   let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
   for (const p of s.points) { left = Math.min(left, p.x); top = Math.min(top, p.y); right = Math.max(right, p.x); bottom = Math.max(bottom, p.y); }
-  const margin = s.radius * (1 + s.softness);
+  const margin = s.radius * (1 + terrainContactSoftness(s));
   return { left: left - margin, top: top - margin, right: right + margin, bottom: bottom + margin };
 }
 function sameStroke(a: TerrainStroke, b: TerrainStroke) {
@@ -109,7 +110,8 @@ function update(cache: Cache, scene: VttScene, images: RenderOptions['images']) 
 }
 
 function alphaMask(cache: Cache, tile: Tile, s: TerrainStroke) {
-  const original = bounds(s), density = s.softness > 0 ? Math.min(tile.density, 1, 6 / Math.max(.01, s.radius * s.softness * .3)) : tile.density;
+  const softness=terrainContactSoftness(s);
+  const original = bounds(s), density = softness > 0 ? Math.min(tile.density, 1, 6 / Math.max(.01, s.radius * softness * .3)) : tile.density;
   const snap = (b: Bounds): Bounds => ({left:Math.floor(b.left*density)/density,top:Math.floor(b.top*density)/density,right:Math.ceil(b.right*density)/density,bottom:Math.ceil(b.bottom*density)/density});
   let area = snap(original);
   const complete = (area.right-area.left)*density*(area.bottom-area.top)*density <= 1024*1024;
@@ -117,16 +119,16 @@ function alphaMask(cache: Cache, tile: Tile, s: TerrainStroke) {
   let stored = complete ? cache.masks.get(key) : undefined;
   if (stored && sameStroke(stored.value,s)) { cache.masks.delete(key);cache.masks.set(key,stored);return stored; }
   if (!complete) {
-    const margin=s.radius*s.softness*.9+3/density;
+    const margin=s.radius*softness*.9+3/density;
     area=snap({left:Math.max(original.left,tile.bounds.left-margin),top:Math.max(original.top,tile.bounds.top-margin),right:Math.min(original.right,tile.bounds.right+margin),bottom:Math.min(original.bottom,tile.bounds.bottom+margin)});
   }
   const mw=Math.max(1,Math.round((area.right-area.left)*density)),mh=Math.max(1,Math.round((area.bottom-area.top)*density));
   const image = stored?.canvas || (complete ? canvas() : cache.mask);
   image.getContext('2d',{willReadFrequently:true});
-  const mc=clear(image,mw,mh),sigma=s.radius*density*s.softness*.3;
+  const mc=clear(image,mw,mh),sigma=s.radius*density*softness*.3;
   mc.setTransform(density,0,0,density,-area.left*density,-area.top*density);
   mc.fillStyle = mc.strokeStyle = '#fff'; mc.lineCap = mc.lineJoin = 'round';
-  const radius = s.radius * (1 - s.softness * .35);
+  const radius = s.radius * (1 - softness * .35);
   if ((s.shape || 'round') === 'round') {
     mc.lineWidth = radius * 2; mc.beginPath();
     if (s.points.every(p => p.x === s.points[0].x && p.y === s.points[0].y)) { mc.arc(s.points[0].x, s.points[0].y, radius, 0, Math.PI * 2); mc.fill(); }
@@ -155,7 +157,9 @@ function alphaMask(cache: Cache, tile: Tile, s: TerrainStroke) {
   if (sigma > .5) {
     const pixels=mc.getImageData(0,0,mw,mh),count=mw*mh;
     if(cache.blurInput.length<count){cache.blurInput=new Float32Array(count);cache.blurOutput=new Float32Array(count);}
-    softenTerrainMask(pixels.data,mw,mh,sigma,cache.blurInput,cache.blurOutput);mc.putImageData(pixels,0,0);
+    softenTerrainMask(pixels.data,mw,mh,sigma,cache.blurInput,cache.blurOutput);
+    if(!s.erase)roughenTerrainMargin(pixels.data,mw,mh,area.left,area.top,density);
+    mc.putImageData(pixels,0,0);
   }
   const result={value:s,bounds:area,density,canvas:image};
   if(complete){

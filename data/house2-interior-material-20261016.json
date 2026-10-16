@@ -1,0 +1,25 @@
+{
+  "method": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: seamless square floor material for an orthographic medieval VTT interior. Create only an edge-to-edge flat surface of broad aged oak floorboards viewed exactly from above at 90 degrees. Twelve parallel long planks across the square, staggered end joints, restrained honey-brown and warm umber tones, hand-worked grain, fine knots, small scratches, subtle dark gaps and occasional recessed iron nail heads. Finely detailed realistic painted tabletop battlemat finish, readable at room scale, natural material variation without strong stains. Neutral even diffuse illumination, no directional cast shadows, no perspective, no walls, no borders, no furniture, no props, no text, no bevelled tile edge. All four edges should tile seamlessly. Crisp fine wood fibres, no blur, no exaggerated contrast, no repeated short plank mosaic.",
+  "image": "/house2/oak-floor-20261016.webp",
+  "sha256": "16ebf1eb18ddafd4f561968fd97aba9913425d0fe5ccd6c7cf2bd2840c51559e",
+  "sourceSha256": "ac3374626b1319f0a8fdfa3caaff8234557ebfc0602fd7a7461972ef19b772c6",
+  "metadata": {
+    "format": "webp",
+    "mediaType": "image/webp",
+    "size": 771368,
+    "width": 1254,
+    "height": 1254,
+    "space": "srgb",
+    "channels": 3,
+    "depth": "uchar",
+    "isProgressive": false,
+    "isPalette": false,
+    "hasProfile": false,
+    "hasAlpha": false,
+    "autoOrient": {
+      "width": 1254,
+      "height": 1254
+    }
+  }
+}

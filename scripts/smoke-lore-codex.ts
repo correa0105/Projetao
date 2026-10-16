@@ -154,7 +154,8 @@ try {
       const rows = await page
         .locator('.lore-folder-row')
         .evaluateAll((es) => es.map((e) => e.getBoundingClientRect().height));
-      expect(Math.max(...rows)).toBeLessThanOrEqual(60);
+      expect(Math.min(...rows)).toBeGreaterThanOrEqual(68);
+      expect(Math.max(...rows)).toBeLessThanOrEqual(90);
       expect(
         (await page.locator('.lore-page-row').first().boundingBox())!.height,
       ).toBeLessThanOrEqual(110);

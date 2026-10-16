@@ -1,5 +1,14 @@
 # Seis texturas de chão — 13/10/2026
 
+Refino de 16/10: todos os 18 materiais atuais recebem uma margem estreita de
+contato mesclada e irregular, inclusive com pincel duro. A alteração afeta só
+o alpha parcial da borda; miolo, RGB, textura, dados dos traços, camadas e
+borracha são preservados. Ruído em coordenadas do mundo mantém continuidade
+entre tiles. Máscaras continuam em cache; zoom e navegação não repintam traços.
+`tests/vtt-terrain-edge.test.ts` confere bordas e continuidade;
+`scripts/verify-vtt-terrain-cache.mjs` confere reuso, desfazer e camadas;
+`scripts/verify-vtt-light-terrain-renderer.mjs` renderiza os 18 materiais.
+
 Grama, terra, areia, pedra, madeira e neve foram substituídas por seis artes originais individuais, vistas de cima, com detalhe natural e cores próximas das árvores e rochas do VTT. A grama tem pequenos tufos e solo aparente; terra e areia têm grãos irregulares; pedra usa fragmentos naturais; madeira usa tábuas envelhecidas; neve mantém variação e textura sem branco estourado.
 
 Produção pelo `image_gen.imagegen` embutido, uma chamada por material. Nenhum atlas foi usado como substituto das seis imagens. PNGs originais em `data/vtt/terrain-v3-sources-20261013/`; imagens de uso no site em `public/vtt/terrain-v3-20261013/`, WebP 1024×1024, qualidade 95. A conversão apenas dimensiona e codifica o resultado nativo.

@@ -710,3 +710,5 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
 .h2-purchase-confirmation dd { margin:0; color:#dbc18c; }
 .h2-confirm-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:20px; }
 .h2-purchase-confirmation [role='alert'] { color:#e6ad90; }
+.h2-day-phase{display:grid;gap:8px;font-size:12px;color:#c6b68e;}
+.h2-day-phase select{width:100%;min-height:38px;padding:8px;border:1px solid #a5894c66;border-radius:3px;background:#24241c;color:#e6d7b7;font:inherit;}

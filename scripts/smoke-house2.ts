@@ -91,7 +91,33 @@ try {
     );
   });
   await expect(page.locator('[data-grass-variant]')).toHaveCount(3);
+  const checkCamera = async () => {
+    const [x, y, w, h] = (await page.locator('.h2-map').getAttribute('viewBox'))!
+      .split(' ')
+      .map(Number);
+    expect(x).toBeGreaterThanOrEqual(-50 - 1e-6);
+    expect(y).toBeGreaterThanOrEqual(-15 - 1e-6);
+    expect(x + w).toBeLessThanOrEqual(150 + 1e-6);
+    expect(y + h).toBeLessThanOrEqual(185 + 1e-6);
+    expect(w).toBeLessThanOrEqual(140 + 1e-6);
+    expect(h).toBeLessThanOrEqual(86 + 1e-6);
+  };
+  await checkCamera();
   await page.screenshot({ path: 'test-results/house2/village.png' });
+  await tool('Vizinhança');
+  const shadowDirections = [];
+  for (const phase of ['morning', 'afternoon', 'dusk', 'night']) {
+    await page.getByLabel('Horário do cenário').selectOption(phase);
+    await expect(page.locator('[data-house2-day-phase]')).toHaveAttribute(
+      'data-house2-day-phase',
+      phase,
+    );
+    shadowDirections.push(await page.locator('#h2-shadow-tree feDropShadow').getAttribute('dx'));
+    await page.screenshot({ path: `test-results/house2/light-${phase}.png` });
+  }
+  expect(new Set(shadowDirections).size).toBe(4);
+  await page.getByLabel('Horário do cenário').selectOption('afternoon');
+  await page.getByRole('button', { name: 'Fechar Vizinhança', exact: true }).click();
   const p = page.locator('.h2-plot').first(),
     plotId =
       (await p.getAttribute('data-house2-plot')) ||
@@ -104,6 +130,7 @@ try {
   await page.locator('.h2-catalog button').first().click();
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
   await expect(page.getByText(/já foi adquirida para este terreno/)).toBeVisible();
+  await expect(page.locator('[data-house2-interior="orthographic"]')).toHaveCount(1);
   await tool('Mobília');
   await expect(page.locator('.h2-catalog button')).toHaveCount(100);
   await page.getByRole('textbox', { name: 'Pesquisar mobília' }).fill('Cadeira de madeira');
@@ -191,6 +218,7 @@ try {
     { width: 320, height: 568 },
   ]) {
     await page.setViewportSize(viewport);
+    await checkCamera();
     expect(await page.locator('.house2-world').boundingBox()).toEqual({
       x: 0,
       y: 0,
@@ -225,7 +253,15 @@ try {
     results.push(viewport);
   }
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.getByRole('button', { name: 'Ver toda a vizinhança' }).click();
+  await page.getByRole('button', { name: 'Centralizar vizinhança' }).click();
+  await checkCamera();
+  await page.mouse.move(700, 450);
+  for (let i = 0; i < 16; i++) await page.mouse.wheel(0, 300);
+  await checkCamera();
+  await expect(page.getByRole('button', { name: 'Ver toda a vizinhança' })).toHaveCount(0);
+  await page.locator(`g[data-house2-plot="${plotId}"] > .h2-plot`).focus();
+  await page.keyboard.press('Enter');
+  await page.getByRole('button', { name: 'Fechar Terrenos', exact: true }).click();
   await page
     .locator(`g[data-house2-plot="${plotId}"] > .h2-plot`)
     .hover({ position: { x: 2, y: 2 } });

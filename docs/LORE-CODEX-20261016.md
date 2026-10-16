@@ -1,5 +1,10 @@
 # Lore como arquivo de leitura — 16/10/2026
 
+O sumário segue o espaçamento do Livro de regras: emblemas de 44 px, linhas de
+ao menos 68 px, intervalo de 10 px entre entradas, padding vertical de 12 px
+e distância de 12 px entre ícone e texto. Ações administrativas permanecem
+compactas. Conferência responsiva em seis larguras pelo smoke da Lore.
+
 O título e a frase da Linha Temporal agora ficam no alto à esquerda do card,
 com margem adaptada à largura. Linha de eras e botão de edição conservam sua
 posição. Conferência visual e limites do título validados de 320 a 1920 px.

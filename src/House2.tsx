@@ -32,6 +32,10 @@ import { api, post } from './api';
 import { ScenePanel } from './ScenePanel';
 import { Modal } from './components';
 import { House2Village, House2VillageRoofs } from './House2Village';
+import { boundHouse2Camera, initialHouse2Camera, type House2Camera } from './house2-camera';
+import { House2Lighting } from './House2Lighting';
+import { House2Interior, house2CutawayImage } from './House2Interior';
+import { house2DayPhases, type House2DayPhase } from '../shared/house2-lighting';
 import {
   house2Clamp,
   house2Furniture,
@@ -67,7 +71,7 @@ const toolIcons = {
   collection: Warehouse,
   settings: Settings,
 };
-type Camera = { x: number; y: number; span: number };
+type Camera = House2Camera;
 
 export function House2({ character, user }: { character?: Character; user: User }) {
   const [directory, setDirectory] = useState<House2Directory | null>(null);
@@ -82,8 +86,15 @@ export function House2({ character, user }: { character?: Character; user: User 
   const [draft, setDraft] = useState<House2Layout | null>(null);
   const [selectedPiece, setSelectedPiece] = useState<string | null>(null);
   const [interior, setInterior] = useState<string | null>(null);
-  const [camera, setCamera] = useState<Camera>({ x: 50, y: 92, span: 124 });
+  const [camera, setCamera] = useState<Camera>(() =>
+    initialHouse2Camera({ width: innerWidth, height: innerHeight }),
+  );
   const [viewport, setViewport] = useState({ width: 1440, height: 900 });
+  const [dayPhase, setDayPhase] = useState<House2DayPhase>(() => {
+    const saved = localStorage.getItem('alvorada-house2-day-phase');
+    return saved && Object.hasOwn(house2DayPhases, saved) ? (saved as House2DayPhase) : 'afternoon';
+  });
+  useEffect(() => localStorage.setItem('alvorada-house2-day-phase', dayPhase), [dayPhase]);
   const [snap, setSnap] = useState(false);
   const [confirmation, setConfirmation] = useState<{
     kind: 'plot' | 'house' | 'furniture';
@@ -151,11 +162,12 @@ export function House2({ character, user }: { character?: Character; user: User 
         ]
       : scene?.items || [];
   const aspect = viewport.width / viewport.height;
+  const boundedCamera = boundHouse2Camera(camera, viewport);
   const view = {
-    x: camera.x - (camera.span * aspect) / 2,
-    y: camera.y - camera.span / 2,
-    width: camera.span * aspect,
-    height: camera.span,
+    x: boundedCamera.x - (boundedCamera.span * aspect) / 2,
+    y: boundedCamera.y - boundedCamera.span / 2,
+    width: boundedCamera.span * aspect,
+    height: boundedCamera.span,
   };
 
   const reload = useCallback(async (id: string | null, silent = false) => {
@@ -241,7 +253,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     setSelected(null);
     setInterior(null);
     setTool(null);
-    setCamera({ x: 50, y: 92, span: Math.max(124, (135 * innerHeight) / innerWidth) });
+    setCamera(initialHouse2Camera(viewport));
     setMenu(false);
     setNotice('');
   }
@@ -479,7 +491,7 @@ export function House2({ character, user }: { character?: Character; user: User 
       pointer: e.pointerId,
       startX: e.clientX,
       startY: e.clientY,
-      camera: { ...camera },
+      camera: { ...boundedCamera },
       kind: edit ? (id === 'house' ? 'house' : 'item') : 'pan',
       id,
       offsetX: value ? p.x - value.x! : 0,
@@ -496,17 +508,16 @@ export function House2({ character, user }: { character?: Character; user: User 
     if (!a.moved && Math.hypot(dx, dy) < 4) return;
     a.moved = true;
     if (a.kind === 'pan') {
-      setCamera({
-        ...a.camera,
-        x: Math.max(
-          house2World.x,
-          Math.min(house2World.x + 200, a.camera.x - (dx * a.camera.span) / viewport.height),
+      setCamera(
+        boundHouse2Camera(
+          {
+            ...a.camera,
+            x: a.camera.x - (dx * a.camera.span) / viewport.height,
+            y: a.camera.y - (dy * a.camera.span) / viewport.height,
+          },
+          viewport,
         ),
-        y: Math.max(
-          house2World.y,
-          Math.min(house2World.y + 200, a.camera.y - (dy * a.camera.span) / viewport.height),
-        ),
-      });
+      );
       return;
     }
     const d = startDraft(),
@@ -561,7 +572,10 @@ export function House2({ character, user }: { character?: Character; user: User 
     if (p) choose(p);
   }
   function zoom(factor: number) {
-    setCamera((c) => ({ ...c, span: Math.max(9, Math.min(145, c.span * factor)) }));
+    setCamera((c) => {
+      const current = boundHouse2Camera(c, viewport);
+      return boundHouse2Camera({ ...current, span: current.span * factor }, viewport);
+    });
   }
   async function createNeighborhood(e: React.FormEvent) {
     e.preventDefault();
@@ -840,6 +854,7 @@ export function House2({ character, user }: { character?: Character; user: User 
             <feDropShadow dx=".12" dy=".28" stdDeviation=".19" floodOpacity=".7" />
           </filter>
         </defs>
+        <House2Lighting phase={dayPhase} />
         <House2Village plots={scene?.plots ?? []} />
         {scene?.plots.map((p) => (
           <g
@@ -914,52 +929,53 @@ export function House2({ character, user }: { character?: Character; user: User 
                 transform={`translate(${p.house_x} ${p.house_y}) rotate(${p.house_rotation})`}
                 pointerEvents="none"
               >
-                <image
-                  href={spec.interior}
-                  x={-spec.width / 2}
-                  y={-spec.height / 2}
+                <House2Interior
+                  id={spec.id}
+                  instance={p.id}
                   width={spec.width}
                   height={spec.height}
                 />
               </g>
             );
           })}
-        {shownItems.map((item) => {
-          const spec = house2Furniture.find((f) => f.id === item.catalog_id);
-          if (!spec) return null;
-          const editable = item.plot_id === selected && canEdit;
-          return (
-            <g
-              key={item.id}
-              data-house2-plot={item.plot_id!}
-              data-house2-piece={editable ? item.id : undefined}
-              transform={`translate(${item.x} ${item.y}) rotate(${item.rotation})`}
-              className={editable ? 'h2-editable' : ''}
-            >
-              <title>{spec.name}</title>
-              <image
-                href={spec.image}
-                x={(-spec.width * item.scale) / 2}
-                y={(-spec.height * item.scale) / 2}
-                width={spec.width * item.scale}
-                height={spec.height * item.scale}
-              />
-              {selectedPiece === item.id && (
-                <rect
+        <g filter="url(#h2-shadow-item)">
+          {shownItems.map((item) => {
+            const spec = house2Furniture.find((f) => f.id === item.catalog_id);
+            if (!spec) return null;
+            const editable = item.plot_id === selected && canEdit;
+            return (
+              <g
+                key={item.id}
+                data-house2-plot={item.plot_id!}
+                data-house2-piece={editable ? item.id : undefined}
+                transform={`translate(${item.x} ${item.y}) rotate(${item.rotation})`}
+                className={editable ? 'h2-editable' : ''}
+              >
+                <title>{spec.name}</title>
+                <image
+                  href={spec.image}
                   x={(-spec.width * item.scale) / 2}
                   y={(-spec.height * item.scale) / 2}
                   width={spec.width * item.scale}
                   height={spec.height * item.scale}
-                  fill="none"
-                  stroke="#f2d891"
-                  strokeWidth="1.1"
-                  vectorEffect="non-scaling-stroke"
-                  pointerEvents="none"
                 />
-              )}
-            </g>
-          );
-        })}
+                {selectedPiece === item.id && (
+                  <rect
+                    x={(-spec.width * item.scale) / 2}
+                    y={(-spec.height * item.scale) / 2}
+                    width={spec.width * item.scale}
+                    height={spec.height * item.scale}
+                    fill="none"
+                    stroke="#f2d891"
+                    strokeWidth="1.1"
+                    vectorEffect="non-scaling-stroke"
+                    pointerEvents="none"
+                  />
+                )}
+              </g>
+            );
+          })}
+        </g>
         <House2VillageRoofs
           plots={scene?.plots ?? []}
           interior={interior}
@@ -973,6 +989,16 @@ export function House2({ character, user }: { character?: Character; user: User 
             setInterior(interior === p.id ? null : p.id);
             setSelectedPiece(null);
           }}
+        />
+        <rect
+          data-house2-day-phase={dayPhase}
+          x={house2World.x}
+          y={house2World.y}
+          width={200}
+          height={200}
+          fill={house2DayPhases[dayPhase].tint}
+          opacity={house2DayPhases[dayPhase].tintOpacity}
+          pointerEvents="none"
         />
         {hover &&
           (() => {
@@ -1072,8 +1098,8 @@ export function House2({ character, user }: { character?: Character; user: User 
           <Minus size={17} />
         </button>
         <button
-          aria-label="Ver toda a vizinhança"
-          onClick={() => setCamera({ x: 50, y: 85, span: Math.max(208, 208 / aspect) })}
+          aria-label="Centralizar vizinhança"
+          onClick={() => setCamera(initialHouse2Camera(viewport))}
         >
           <Map size={17} />
         </button>
@@ -1114,6 +1140,20 @@ export function House2({ character, user }: { character?: Character; user: User 
             {tool === 'settings' ? (
               <>
                 <p>{scene?.neighborhood.description}</p>
+                <label className="h2-day-phase">
+                  Luz do cenário
+                  <select
+                    aria-label="Horário do cenário"
+                    value={dayPhase}
+                    onChange={(e) => setDayPhase(e.target.value as House2DayPhase)}
+                  >
+                    {Object.entries(house2DayPhases).map(([id, phase]) => (
+                      <option key={id} value={id}>
+                        {phase.name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
                 <p>
                   Mapa de 200 × 200 quadrados. Terrenos de 12 × 12, distribuídos entre jardins e
                   caminhos do vilarejo.
@@ -1271,7 +1311,11 @@ export function House2({ character, user }: { character?: Character; user: User 
                                 }
                                 onClick={() => requestPurchase('house', h.id)}
                               >
-                                <img src={h.image} alt="" loading="lazy" />
+                                <img
+                                  src={house2CutawayImage(h.id) || h.image}
+                                  alt=""
+                                  loading="lazy"
+                                />
                                 <strong>{h.name.replace(' · vazia', '')}</strong>
                                 <small>{number(h.price)} créditos · comprar</small>
                               </button>

@@ -1,0 +1,88 @@
+{
+  "method": "built-in image_gen",
+  "date": "2026-10-16",
+  "scope": "Three empty House 2.0 interiors with four inward-facing walls; south wall corrected. Original furniture untouched.",
+  "assets": [
+    {
+      "id": "house-empty-001",
+      "image": "/house2/interior-cutaway-001-v2-20261016.webp",
+      "prompt": "Use case: stylized-concept. Asset type: transparent VTT HOUSE INTERIOR sprite, empty room for player-placed furniture. Make ONE original square medieval house interior, following the illustrated battlemat visual language of the user's two reference pictures: controlled dark ink contours, warm painted materials, subtle wear, finely worked architectural detailing. Camera is centered exactly overhead, looking vertically down; square floor has parallel sides, not isometric and no vanishing point. ALL FOUR inward wall faces must be visible equally, like a shallow cutaway/dollhouse plan: left wall face on left, right on right, rear on top, front on bottom; no single rear-wall-only perspective. Walls have thin exposed top caps, realistic thickness, fitted corner joints, small baseboards and inset framed windows. A single open doorway is centered in bottom wall; no swinging door leaf. Oak cottage: warm oak floorboards, exposed heavy oak corner posts and wall beams with fitted joinery, light warm limewashed plaster inward wall faces, deeply framed timber windows on left and right walls, understated country dwelling. Restrained warm brown and parchment cream palette. The room is completely EMPTY: no furniture, fireplace, rugs, paintings, objects, props, people, shelves, bedding, stairs or floor clutter. Full square house footprint centered and entirely visible, outer wall boundary at about 95% of canvas width/height, internal usable floor spans about 78% width/height centered on canvas. Fine crisp grain and texture, natural material shading and narrow ambient shadows at floor/wall contact, no blur. True transparent background outside building; no landscape, grass, solid background, grid, text, watermark or branding. Do not copy a specific reference floorplan or furniture. Output one full-room sprite, not a contact sheet.",
+      "sha256": "1d6ab887f6b1d9ec6a0ea9140e986a0f6a5725c03f92a04d188e4e31ae8bf719",
+      "sourceSha256": "dfb0f3e9e71cd8e3b3fd68af66e3159f9d3ce848f499b324bea2a10f2b3189ee",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 496614,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "editPrompt": "Edit the attached empty house sprite. Critical correction: the BOTTOM / SOUTH wall currently shows its EXTERIOR face, so only three INTERIOR wall faces are visible. Rebuild ONLY that bottom wall and its two corner joins so we see its INNER face looking toward the center of the room, symmetrically opposite the top wall. Concrete geometry: the TOP CAP / topmost horizontal beam of the south wall belongs at the very BOTTOM OUTER edge of the image, around 94% canvas height. Its visible plaster/masonry INNER FACE must extend UPWARD from that cap toward the floor, occupying about 82%–94% canvas height. The baseboard / foot of the south wall is at about 82% height where it touches the floor. Do NOT leave a horizontal beam at 82% height with the wall face hanging BELOW it: that is an EXTERIOR facade and is the error to correct. The south wall should splay outward at its corners: inner floor corners about x14% and86% at y82%; outer cap corners about x5% and95% at y94%. Preserve an open doorway centered in the south wall, with the jambs and threshold also rebuilt in the corrected inward-facing perspective. Viewer should be able to stand at the CENTER of the room and see the four surfaces all facing them: north, south, east and west. Keep top/left/right walls, windows, material style, high-quality texture, original square proportions, floor and transparency outside the building. Keep room completely empty. No text or furniture. This is a symmetric overhead cutaway / splayed-wall battlemat, NOT an oblique camera viewing only the three far walls. For unambiguous geometry, the south wall must look exactly like the NORTH wall rotated 180 degrees and fitted around the open doorway: its wide wall TOP CAP is on the OUTER bottom edge, its INNER FACE and structural studs are ABOVE the cap, its baseboard is above the face against the wooden floor. Make all four wall planes symmetrically splayed away from the room centre. Do not show the outside facade of the south wall.",
+      "source": "exec-8af4e910-b7fc-4cd2-ab10-7d347e87cf64.png"
+    },
+    {
+      "id": "house-empty-002",
+      "image": "/house2/interior-cutaway-002-v2-20261016.webp",
+      "prompt": "Use case: stylized-concept. Asset type: transparent VTT HOUSE INTERIOR sprite, empty room for player-placed furniture. Make ONE original square medieval house interior, following the illustrated battlemat visual language of the user's two reference pictures: controlled dark ink contours, warm painted materials, subtle wear, finely worked architectural detailing. Camera is centered exactly overhead, looking vertically down; square floor has parallel sides, not isometric and no vanishing point. ALL FOUR inward wall faces must be visible equally, like a shallow cutaway/dollhouse plan: left wall face on left, right on right, rear on top, front on bottom; no single rear-wall-only perspective. Walls have thin exposed top caps, realistic thickness, fitted corner joints, small baseboards and inset framed windows. A single open doorway is centered in bottom wall; no swinging door leaf. Stone cottage: fitted weathered gray limestone wall caps with irregular masonry joints, pale warm-gray plaster inward wall faces between stone corner piers, thick dark oak window frames on left and right walls, rich medium-brown floorboards with natural scratches and staggered joints. Refined modest stone house; neutral stone, muted brown. The room is completely EMPTY: no furniture, fireplace, rugs, paintings, objects, props, people, shelves, bedding, stairs or floor clutter. Full square house footprint centered and entirely visible, outer wall boundary at about 95% of canvas width/height, internal usable floor spans about 78% width/height centered on canvas. Fine crisp grain and texture, natural material shading and narrow ambient shadows at floor/wall contact, no blur. True transparent background outside building; no landscape, grass, solid background, grid, text, watermark or branding. Do not copy a specific reference floorplan or furniture. Output one full-room sprite, not a contact sheet.",
+      "sha256": "753fb03e01a3f3fd359f16a97c9f2ee4f17c646b5ce7bf0505166472f0551b3e",
+      "sourceSha256": "13c0d6cc49ca4780bf7345b56b2992543832b94d0c6b9fcf4e516a328afba6c4",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 534858,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "editPrompt": "Edit the attached empty house sprite. Critical correction: the BOTTOM / SOUTH wall currently shows its EXTERIOR face, so only three INTERIOR wall faces are visible. Rebuild ONLY that bottom wall and its two corner joins so we see its INNER face looking toward the center of the room, symmetrically opposite the top wall. Concrete geometry: the TOP CAP / topmost horizontal beam of the south wall belongs at the very BOTTOM OUTER edge of the image, around 94% canvas height. Its visible plaster/masonry INNER FACE must extend UPWARD from that cap toward the floor, occupying about 82%–94% canvas height. The baseboard / foot of the south wall is at about 82% height where it touches the floor. Do NOT leave a horizontal beam at 82% height with the wall face hanging BELOW it: that is an EXTERIOR facade and is the error to correct. The south wall should splay outward at its corners: inner floor corners about x14% and86% at y82%; outer cap corners about x5% and95% at y94%. Preserve an open doorway centered in the south wall, with the jambs and threshold also rebuilt in the corrected inward-facing perspective. Viewer should be able to stand at the CENTER of the room and see the four surfaces all facing them: north, south, east and west. Keep top/left/right walls, windows, material style, high-quality texture, original square proportions, floor and transparency outside the building. Keep room completely empty. No text or furniture. This is a symmetric overhead cutaway / splayed-wall battlemat, NOT an oblique camera viewing only the three far walls. For unambiguous geometry, the south wall must look exactly like the NORTH wall rotated 180 degrees and fitted around the open doorway: its wide wall TOP CAP is on the OUTER bottom edge, its INNER FACE and structural studs are ABOVE the cap, its baseboard is above the face against the wooden floor. Make all four wall planes symmetrically splayed away from the room centre. Do not show the outside facade of the south wall.",
+      "source": "exec-cd479236-3f46-49c9-ac5e-0230ea022f09.png"
+    },
+    {
+      "id": "house-empty-003",
+      "image": "/house2/interior-cutaway-003-v2-20261016.webp",
+      "prompt": "Use case: stylized-concept. Asset type: transparent VTT HOUSE INTERIOR sprite, empty room for player-placed furniture. Make ONE original square medieval house interior, following the illustrated battlemat visual language of the user's two reference pictures: controlled dark ink contours, warm painted materials, subtle wear, finely worked architectural detailing. Camera is centered exactly overhead, looking vertically down; square floor has parallel sides, not isometric and no vanishing point. ALL FOUR inward wall faces must be visible equally, like a shallow cutaway/dollhouse plan: left wall face on left, right on right, rear on top, front on bottom; no single rear-wall-only perspective. Walls have thin exposed top caps, realistic thickness, fitted corner joints, small baseboards and inset framed windows. A single open doorway is centered in bottom wall; no swinging door leaf. Timber townhouse: dark walnut structural posts and detailed timber wall caps, muted sage lime-plaster inward wall faces, framed windows with slender mullions and light blue-gray panes on left and right walls, honey-colored old wood floor with finely delineated planks. Elegant but restrained medieval village home; walnut, muted sage, warm oak. The room is completely EMPTY: no furniture, fireplace, rugs, paintings, objects, props, people, shelves, bedding, stairs or floor clutter. Full square house footprint centered and entirely visible, outer wall boundary at about 95% of canvas width/height, internal usable floor spans about 78% width/height centered on canvas. Fine crisp grain and texture, natural material shading and narrow ambient shadows at floor/wall contact, no blur. True transparent background outside building; no landscape, grass, solid background, grid, text, watermark or branding. Do not copy a specific reference floorplan or furniture. Output one full-room sprite, not a contact sheet.",
+      "sha256": "a949d6c1ce5deac9b371a34cf7765b5a2cd47ecbbb26734ba374f762f0a91b65",
+      "sourceSha256": "1150fa777b5a51222b4a529394b14498831ee12ad31d799aeeb71087d6b14530",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 496398,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "editPrompt": "Edit the attached empty house sprite. Critical correction: the BOTTOM / SOUTH wall currently shows its EXTERIOR face, so only three INTERIOR wall faces are visible. Rebuild ONLY that bottom wall and its two corner joins so we see its INNER face looking toward the center of the room, symmetrically opposite the top wall. Concrete geometry: the TOP CAP / topmost horizontal beam of the south wall belongs at the very BOTTOM OUTER edge of the image, around 94% canvas height. Its visible plaster/masonry INNER FACE must extend UPWARD from that cap toward the floor, occupying about 82%–94% canvas height. The baseboard / foot of the south wall is at about 82% height where it touches the floor. Do NOT leave a horizontal beam at 82% height with the wall face hanging BELOW it: that is an EXTERIOR facade and is the error to correct. The south wall should splay outward at its corners: inner floor corners about x14% and86% at y82%; outer cap corners about x5% and95% at y94%. Preserve an open doorway centered in the south wall, with the jambs and threshold also rebuilt in the corrected inward-facing perspective. Viewer should be able to stand at the CENTER of the room and see the four surfaces all facing them: north, south, east and west. Keep top/left/right walls, windows, material style, high-quality texture, original square proportions, floor and transparency outside the building. Keep room completely empty. No text or furniture. This is a symmetric overhead cutaway / splayed-wall battlemat, NOT an oblique camera viewing only the three far walls. For unambiguous geometry, the south wall must look exactly like the NORTH wall rotated 180 degrees and fitted around the open doorway: its wide wall TOP CAP is on the OUTER bottom edge, its INNER FACE and structural studs are ABOVE the cap, its baseboard is above the face against the wooden floor. Make all four wall planes symmetrically splayed away from the room centre. Do not show the outside facade of the south wall.",
+      "source": "exec-1fa3146d-3c68-4c29-9416-26dad92bd62f.png"
+    }
+  ]
+}
