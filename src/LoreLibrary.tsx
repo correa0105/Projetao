@@ -4,8 +4,8 @@ import {
   ArrowLeft,
   ArrowUp,
   BookOpen,
-  Castle,
   Check,
+  ChevronDown,
   ChevronRight,
   Eye,
   Feather,
@@ -24,6 +24,8 @@ import { Modal } from './components';
 import { FlashMessage } from './FlashMessage';
 import { LoreSmoke } from './LoreSmoke';
 import { LoreScrollHolderIcon, LoreScrollIcon } from './LoreSymbols';
+import { RulebookEmblem } from './RulebookSymbols';
+import type { RulebookSymbol } from '../shared/rulebook';
 import { LoreTimeline, type LoreTimelineHandle } from './LoreTimeline';
 import { useLoreScrollSound } from './SiteMusic';
 import {
@@ -39,6 +41,18 @@ import {
   type LoreDeletedFolder,
 } from '../shared/lore';
 import './lore.css';
+import './lore-codex.css';
+
+function archiveSymbol(name: string): RulebookSymbol {
+  const text = name.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+  if (/capital|reino/.test(text)) return 'crest';
+  if (/cidade|territorio|lugar/.test(text)) return 'compass';
+  if (/criatura|besta/.test(text)) return 'swords';
+  if (/lenda|magia/.test(text)) return 'arcana';
+  if (/religia|divin|crenca/.test(text)) return 'oath';
+  if (/historia|cronica/.test(text)) return 'codex';
+  return 'quill';
+}
 
 const alignLabels = { left: 'Esquerda', center: 'Centro', right: 'Direita' };
 const formatLabels = {
@@ -206,7 +220,6 @@ function LoreFolderButton({
   count: number;
   onSelect: (id: string) => void;
 }) {
-  const [rummaging, setRummaging] = useState(false);
   return (
     <button
       type="button"
@@ -214,20 +227,9 @@ function LoreFolderButton({
       style={{ '--folder-depth': depth } as CSSProperties}
       aria-pressed={active}
       data-folder-choice={folder.id}
-      onPointerEnter={(event) => {
-        if (event.pointerType === 'mouse') setRummaging(true);
-      }}
-      onPointerLeave={() => setRummaging(false)}
-      onFocus={(event) => {
-        if (event.currentTarget.matches(':focus-visible')) setRummaging(true);
-      }}
-      onBlur={() => setRummaging(false)}
-      onClick={() => {
-        setRummaging(false);
-        onSelect(folder.id);
-      }}
+      onClick={() => onSelect(folder.id)}
     >
-      <LoreScrollHolderIcon rummaging={rummaging} />
+      <RulebookEmblem symbol={archiveSymbol(folder.name)} className="lore-folder-emblem" />
       <span className="lore-folder-name">{folder.name}</span>
       <small className="lore-folder-count">{count.toString().padStart(2, '0')}</small>
     </button>
@@ -324,6 +326,8 @@ export function LoreLibrary() {
   const [editing, setEditing] = useState(false);
   const [dialog, setDialog] = useState<'page' | 'folder' | null>(null);
   const [query, setQuery] = useState('');
+  const [indexOpen, setIndexOpen] = useState(false);
+  const [basicPreview, setBasicPreview] = useState(false);
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
   const [deletingFolder, setDeletingFolder] = useState<LoreFolder | null>(null);
@@ -349,7 +353,8 @@ export function LoreLibrary() {
       const loaded = await api<LorePage>(`/lore/pages/${id}`);
       if (token === request.current) {
         setPage(loaded);
-        setEditing(edit && loaded.can_edit);
+        if (basicPreview && !loaded.published) return;
+        setEditing(edit && loaded.can_edit && !basicPreview);
       }
     } catch (error) {
       setMessage((error as Error).message);
@@ -364,6 +369,7 @@ export function LoreLibrary() {
     setFolderId(folder);
     setPage(null);
     setEditing(false);
+    setIndexOpen(false);
   }
   async function navigate(region: string, folder: string | null) {
     const token = ++request.current;
@@ -386,8 +392,12 @@ export function LoreLibrary() {
       </section>
     );
   const region = index.regions.find((item) => item.id === regionId) || index.regions[0];
+  const basicView = basicPreview && index.can_manage_folders;
+  const canManage = index.can_manage_folders && !basicView;
   const folders = index.folders.filter((folder) => folder.region_id === region.id);
-  const regionPages = index.pages.filter((item) => item.region_id === region.id);
+  const regionPages = index.pages.filter(
+    (item) => item.region_id === region.id && (!basicView || item.published),
+  );
   const allowedFolders = folderId ? loreDescendants(folderId, folders) : null;
   const pages = regionPages.filter(
     (item) =>
@@ -401,13 +411,45 @@ export function LoreLibrary() {
       className={`lore-library ${editing ? 'is-editing' : ''}`}
       aria-label="Biblioteca de lore"
     >
-      <LoreSmoke/>
+      <LoreSmoke />
       {message && <FlashMessage kind="info">{message}</FlashMessage>}
+      {index.can_manage_folders && (
+        <div className="lore-view-switch" role="group" aria-label="Visualização da Lore">
+          <span>
+            {basicView
+              ? 'Prévia de conta básica · somente conteúdo publicado'
+              : 'Visualização de administrador'}
+          </span>
+          <button
+            type="button"
+            aria-pressed={basicView}
+            disabled={
+              editing || Boolean(dialog || deletingFolder || deletingPage || editingFolder || trash)
+            }
+            title={editing ? 'Feche a edição para trocar a visualização' : undefined}
+            onClick={() => {
+              request.current++;
+              setBusy(false);
+              setBasicPreview((v) => !v);
+              setPage(null);
+              setDialog(null);
+              setDeletingFolder(null);
+              setDeletingPage(null);
+              setEditingFolder(null);
+              setTrash(null);
+            }}
+          >
+            <Eye size={15} />{' '}
+            {basicView ? 'Voltar à visão de administrador' : 'Ver como conta básica'}
+          </button>
+        </div>
+      )}
       <div className="lore-scene">
         <div className="lore-scene-art" aria-hidden="true" />
         <div className="lore-hero" aria-hidden="true" />
         {!editing && (
           <LoreTimeline
+            readOnly={basicView}
             ref={timeline}
             folders={index.folders}
             regions={index.regions}
@@ -435,70 +477,130 @@ export function LoreLibrary() {
         />
       ) : (
         <div className="lore-archive" id="lore-archive">
-          <aside className="lore-sidebar" aria-label="Regiões e pastas da lore">
-            <span className="lore-kicker">TERRITÓRIOS DO ATLAS</span>
-            <label className="lore-region-picker">
-              Região
-              <select value={region.id} onChange={(event) => navigate(event.target.value, null)}>
-                {index.regions.map((item) => (
-                  <option value={item.id} key={item.id}>
-                    {item.name}
-                  </option>
-                ))}
-              </select>
+          <div className="lore-reading-tools">
+            <span className="lore-reading-position">
+              <BookOpen size={17} />
+              <span>
+                Consulta às crônicas
+                <small>
+                  {String(regionPages.length).padStart(2, '0')} registros · {region.name}
+                </small>
+              </span>
+            </span>
+            <label className="lore-search">
+              <Search size={17} />
+              <input
+                value={query}
+                onChange={(event) => {
+                  setQuery(event.target.value);
+                  setPage(null);
+                }}
+                placeholder="Buscar no arquivo…"
+                aria-label="Buscar crônica"
+              />
+              {query && (
+                <button
+                  type="button"
+                  aria-label="Limpar busca de crônicas"
+                  onClick={() => setQuery('')}
+                >
+                  <X size={15} />
+                </button>
+              )}
             </label>
-            <button
-              className={`lore-all ${!folderId ? 'is-active' : ''}`}
-              onClick={() => navigate(region.id, null)}
-            >
-              <BookOpen size={16} /> Todas as crônicas <small>{regionPages.length}</small>
-            </button>
-            <FolderTree
-              folders={folders}
-              active={folderId}
-              onSelect={(id) => navigate(region.id, id)}
-              pages={regionPages}
-              onDelete={index.can_manage_folders ? setDeletingFolder : undefined}
-              onEdit={index.can_manage_folders ? setEditingFolder : undefined}
-            />
-            {index.can_manage_folders && (
-              <button className="lore-folder-add" onClick={() => setDialog('folder')}>
-                <LoreScrollHolderIcon /> Nova pasta / subpasta
-              </button>
-            )}
-            {index.can_manage_folders && (
+          </div>
+          <aside
+            className="lore-sidebar"
+            data-open={indexOpen || undefined}
+            aria-label="Regiões e pastas da lore"
+          >
+            <div className="lore-index-heading">
+              <span className="lore-kicker">Sumário</span>
+              <small>{String(folders.length).padStart(2, '0')}</small>
               <button
-                className="lore-folder-trash"
-                onClick={() =>
-                  void api<LoreDeletedFolder[]>('/lore/folder-trash')
-                    .then((entries) => {
-                      setTrashError('');
-                      setTrash(entries);
-                    })
-                    .catch((error) => setMessage(error.message))
-                }
+                type="button"
+                className="lore-index-toggle"
+                aria-expanded={indexOpen}
+                aria-controls="lore-index-body"
+                onClick={() => setIndexOpen((v) => !v)}
               >
-                <Trash2 size={14} /> Pastas excluídas
+                {indexOpen ? 'Fechar sumário' : 'Abrir sumário'}
+                <ChevronDown size={15} />
               </button>
-            )}
-            <div className="lore-sidebar-seal">
-              <Castle size={24} />
-              <p>
-                Os arquivos de
-                <br />
-                <b>{region.name}</b>
-              </p>
+            </div>
+            <div className="lore-index-body" id="lore-index-body">
+              <label className="lore-region-picker">
+                Região
+                <select value={region.id} onChange={(event) => navigate(event.target.value, null)}>
+                  {index.regions.map((item) => (
+                    <option value={item.id} key={item.id}>
+                      {item.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <button
+                className={`lore-all ${!folderId ? 'is-active' : ''}`}
+                onClick={() => navigate(region.id, null)}
+              >
+                <BookOpen size={16} /> Todas as crônicas <small>{regionPages.length}</small>
+              </button>
+              <FolderTree
+                folders={folders}
+                active={folderId}
+                onSelect={(id) => navigate(region.id, id)}
+                pages={regionPages}
+                onDelete={canManage ? setDeletingFolder : undefined}
+                onEdit={canManage ? setEditingFolder : undefined}
+              />
+              {canManage && (
+                <button className="lore-folder-add" onClick={() => setDialog('folder')}>
+                  <Plus size={15} /> Nova pasta / subpasta
+                </button>
+              )}
+              {canManage && (
+                <button
+                  className="lore-folder-trash"
+                  onClick={() =>
+                    void api<LoreDeletedFolder[]>('/lore/folder-trash')
+                      .then((entries) => {
+                        setTrashError('');
+                        setTrash(entries);
+                      })
+                      .catch((error) => setMessage(error.message))
+                  }
+                >
+                  <Trash2 size={14} /> Pastas excluídas
+                </button>
+              )}
+              <div className="lore-sidebar-seal">
+                <RulebookEmblem symbol="codex" />
+                <p>
+                  Os arquivos de
+                  <br />
+                  <b>{region.name}</b>
+                </p>
+              </div>
             </div>
           </aside>
           <div className="lore-stage">
             <div className="lore-stage-toolbar">
               <div>
+                <RulebookEmblem
+                  symbol={
+                    folderId
+                      ? archiveSymbol(folders.find((f) => f.id === folderId)?.name || '')
+                      : 'crest'
+                  }
+                  className="lore-archive-emblem"
+                />
                 <span className="lore-kicker">
                   {folderId ? loreFolderPath(folderId, folders) : 'ARQUIVO REGIONAL'}
                 </span>
-                <h2>{region.name}</h2>
+                <h2>{folderId ? folders.find((f) => f.id === folderId)?.name : region.name}</h2>
+                <p className="lore-region-description">{region.description}</p>
               </div>
-              {index.can_manage_folders && (
+              {canManage && (
                 <button className="button lore-new" onClick={() => setDialog('page')}>
                   <Feather size={16} /> Nova crônica
                 </button>
@@ -511,7 +613,7 @@ export function LoreLibrary() {
                   <button onClick={() => setPage(null)}>
                     <ArrowLeft size={15} /> Voltar ao arquivo
                   </button>
-                  {page.can_edit && (
+                  {page.can_edit && !basicView && (
                     <>
                       <button onClick={() => setEditing(true)}>
                         <Feather size={15} /> Editar crônica
@@ -543,21 +645,20 @@ export function LoreLibrary() {
               </article>
             ) : (
               <>
-                <p className="lore-region-description">{region.description}</p>
-                <label className="lore-search">
-                  <Search size={16} />
-                  <input
-                    value={query}
-                    onChange={(event) => setQuery(event.target.value)}
-                    placeholder="Buscar crônica nesta região…"
-                    aria-label="Buscar crônica"
-                  />
-                </label>
+                <div className="lore-list-heading">
+                  <span className="lore-kicker">
+                    {query ? 'Resultados da busca' : 'Crônicas deste arquivo'}
+                  </span>
+                  <small>{String(pages.length).padStart(2, '0')}</small>
+                </div>
                 <div className="lore-page-list">
-                  {pages.map((item) => (
+                  {pages.map((item, position) => (
                     <div className="lore-page-row" key={item.id}>
                       <button className="lore-page-link" onClick={() => void openPage(item.id)}>
-                        <LoreScrollIcon />
+                        <span className="lore-entry-mark" aria-hidden="true">
+                          <RulebookEmblem symbol="quill" />
+                          <small>{String(position + 1).padStart(2, '0')}</small>
+                        </span>
                         <span className="lore-page-copy">
                           <small>
                             {loreFolderPath(item.folder_id, folders)}
@@ -575,7 +676,7 @@ export function LoreLibrary() {
                         />
                         <ChevronRight size={20} />
                       </button>
-                      {item.can_edit && (
+                      {item.can_edit && !basicView && (
                         <div className="lore-page-actions">
                           <button
                             type="button"
@@ -607,9 +708,11 @@ export function LoreLibrary() {
                         ? 'Tente outro título ou pasta.'
                         : 'Registre cidades, lendas e habitantes deste território.'}
                     </p>
-                    <button className="button" onClick={() => setDialog('page')}>
-                      <Plus size={15} /> Escrever a primeira crônica
-                    </button>
+                    {canManage && (
+                      <button className="button" onClick={() => setDialog('page')}>
+                        <Plus size={15} /> Escrever a primeira crônica
+                      </button>
+                    )}
                   </div>
                 )}
               </>

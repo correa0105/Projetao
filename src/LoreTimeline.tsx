@@ -33,11 +33,12 @@ type Props = {
   folders: LoreFolder[];
   regions: { id: string; name: string }[];
   onFolder: (folderId: string) => void;
+  readOnly?: boolean;
 };
 const pause = (milliseconds: number) =>
   new Promise<void>((resolve) => window.setTimeout(resolve, milliseconds));
 export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreTimeline(
-  { folders, regions, onFolder },
+  { folders, regions, onFolder, readOnly = false },
   ref,
 ) {
   const [timeline, setTimeline] = useState<LoreTimelineResponse | null>(null);
@@ -46,6 +47,9 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
   const [arrival, setArrival] = useState(0);
   const [beam, setBeam] = useState({ origin: 0, tip: 0, duration: 0, token: 0 });
   const [edit, setEdit] = useState(false);
+  useEffect(() => {
+    if (readOnly) setEdit(false);
+  }, [readOnly]);
   const [error, setError] = useState('');
   const host = useRef<HTMLElement>(null);
   const active = useRef('');
@@ -231,7 +235,7 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
           <span className="lore-kicker">O TEMPO GUARDA SEUS SEGREDOS</span>
           {document.title && <h2>{document.title}</h2>}
         </div>
-        {timeline.can_edit && (
+        {timeline.can_edit && !readOnly && (
           <button className="lore-timeline-edit" onClick={() => setEdit(true)}>
             <Pencil size={14} /> Editar eras
           </button>
@@ -341,7 +345,7 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
           )}
         </div>
       </div>
-      {edit && (
+      {edit && !readOnly && (
         <TimelineEditor
           timeline={timeline}
           folders={folders}
