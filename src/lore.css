@@ -4,7 +4,7 @@
   --lore-gold: #bb995c;
   --lore-line: #a58a5136;
   color: var(--lore-ink);
-  background: #161713;
+  background: #131210;
   width: 100%;
   max-width: 1380px;
   margin: 0 auto 28px;
@@ -48,7 +48,7 @@
   position: relative;
   isolation: isolate;
   overflow: clip;
-  background: #161713;
+  background: #131210;
 }
 .lore-hero {
   height: var(--lore-hero-height);
@@ -65,7 +65,7 @@
   bottom: auto;
   height: var(--lore-backdrop-height);
   z-index: -3;
-  background: url('/lore-archive-20261012.webp') right top / cover no-repeat;
+  background: url('/lore-timeline-archive-20261016.webp') right top / cover no-repeat;
   opacity: 0.65;
   mask-image: linear-gradient(#000 12%, #0009 55%, transparent 100%);
 }
@@ -77,8 +77,8 @@
   height: var(--lore-backdrop-height);
   z-index: -1;
   background:
-    linear-gradient(180deg, #16171315, #16171340 32%, #161713 100%),
-    linear-gradient(90deg, #161713aa, transparent 75%);
+    linear-gradient(180deg, #13121015, #13121040 32%, #131210 100%),
+    linear-gradient(90deg, #131210aa, transparent 75%);
 }
 .lore-scene::after {
   content: '';
@@ -101,7 +101,7 @@
 }
 .lore-scene .lore-timeline {
   padding-top: 24px;
-  background: linear-gradient(180deg, #16171310, #161713);
+  background: linear-gradient(180deg, #13121010, #131210);
 }
 .lore-scene .lore-timeline::before {
   display: none;
@@ -133,7 +133,7 @@
 .lore-library input,
 .lore-library textarea {
   color: var(--lore-ink);
-  background: #20221c;
+  background: #201e1a;
   border: 1px solid #80744e55;
   padding: 10px 12px;
   width: 100%;
@@ -992,17 +992,25 @@
 }
 .lore-folder-row {
   display: block;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ae915226;
 }
 .lore-folder-row > button:first-child {
   flex: 1;
   min-width: 0;
-  padding-block: 17px;
-  gap: 13px;
-  border-bottom: 1px solid #ae915226;
+  min-height: 50px;
+  padding-block: 5px;
+  gap: 9px;
+  border-bottom: 0;
 }
+.lore-folder-row > button:first-child .lore-scroll-holder-icon {
+  width: 46px;
+  height: 42px;
+}
+.lore-folder-tree > li {margin:0;padding:0;}
 .lore-folder-name {
   font-family: 'Cinzel', Georgia, serif;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0.035em;
@@ -1035,8 +1043,11 @@
 .lore-folder-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin: -3px 0 10px calc(8px + var(--folder-depth, 0) * 14px);
+  gap: 5px;
+  margin: -1px 0 2px calc(63px + var(--folder-depth, 0) * 14px);
+}
+.lore-folder-actions .lore-content-action {
+  min-height:28px;padding:4px 7px;font-size:10px;
 }
 .lore-folder-tree .lore-folder-edit:hover {
   color: #e5c783;

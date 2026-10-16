@@ -1,4 +1,5 @@
 import { HallExhibition } from './HallExhibition';
+import { HallRankingTransition } from './HallRankingTransition';
 import { useEffect, useMemo, useState } from 'react';
 import {
   Crown,
@@ -180,9 +181,6 @@ export function HallOfFame({
                 ? 'Hall da Fama'
                 : 'Os melhores da Alvorada'}
           </h2>
-          <p>{!data?.document.intro || data.document.intro === 'As histórias que deixam sua marca na Alvorada.'
-            ? 'Um lugar de honra para os destaques da guilda.'
-            : data.document.intro}</p>
         </div>
         {error && (
           <p className="social-error" role="alert">
@@ -218,8 +216,8 @@ export function HallOfFame({
                       />
                     </span>
                   </div>
+                  <h2 className="hall-champion-name">{ranking === 'rating' ? e.owner_name : e.name}</h2>
                   <div className="hall-champion-details">
-                    <h2>{ranking === 'rating' ? e.owner_name : e.name}</h2>
                     <span className="hall-champion-class">
                       {e.class} · Nível {e.level}
                     </span>
@@ -246,6 +244,8 @@ export function HallOfFame({
           </HallExhibition>
         )}
       </div>
+      <div className="hall-ranking-section">
+      {!query && ordered.length > 0 && <HallRankingTransition />}
       <div className="hall-search">
         <Search size={16} />
         <input
@@ -339,6 +339,7 @@ export function HallOfFame({
           </p>
         </details>
       )}
+      </div>
       {editing && data && (
         <div className="social-modal-backdrop">
           <form

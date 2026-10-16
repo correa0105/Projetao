@@ -125,6 +125,32 @@ try {
       ).toBeLessThan(0.001);
       expect(Math.abs(m.foot - ({1:0.5027,2:0.5537,3:0.6036} as Record<number,number>)[m.rank])).toBeLessThan(0.001);
     }
+    const layout=await page.locator('.hall-exhibition-scene').evaluate(el=>{
+      const scene=el.getBoundingClientRect(),gallery=el.closest('.hall-gallery')!.getBoundingClientRect();
+      return {left:gallery.left,right:gallery.right,viewport:document.documentElement.clientWidth,
+        cards:[...el.querySelectorAll('.hall-champion')].map(card=>{
+          const rank=card.querySelector('.hall-place')!.getBoundingClientRect();
+          const name=card.querySelector('.hall-champion-name')!.getBoundingClientRect();
+          const group=card.querySelector('.hall-champion-details')!.getBoundingClientRect();
+          return {rank:card.classList.contains('place-1')?1:card.classList.contains('place-2')?2:3,
+            nameX:(name.left+name.width/2-scene.left)/scene.width,
+            rankX:(rank.left+rank.width/2-scene.left)/scene.width,
+            centerError:Math.abs(group.left+group.width/2-rank.left-rank.width/2),
+            top:group.top,height:group.height,
+            contained:[...card.querySelectorAll('.hall-champion-details > *')].every(child=>{
+              const r=child.getBoundingClientRect();return r.left>=group.left&&r.right<=group.right+1&&r.top>=group.top&&r.bottom<=group.bottom+1;
+            })};
+        })};
+    });
+    expect(Math.abs(layout.left)).toBeLessThan(1);
+    expect(Math.abs(layout.right-layout.viewport)).toBeLessThan(1);
+    for(const card of layout.cards){
+      expect(card.centerError).toBeLessThan(1);expect(card.height).toBeLessThan(100);expect(card.contained).toBe(true);
+      expect(Math.abs(card.nameX-({1:836/1672,2:381/1672,3:1288/1672} as Record<number,number>)[card.rank])).toBeLessThan(.001);
+      expect(Math.abs(card.rankX-({1:836/1672,2:383/1672,3:1290/1672} as Record<number,number>)[card.rank])).toBeLessThan(.001);
+      expect(Math.abs(card.top-layout.cards[0].top)).toBeLessThan(1);
+    }
+    await expect(page.locator('.hall-heading p')).toHaveCount(0);
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2),
     ).toBe(true);
@@ -165,6 +191,25 @@ try {
       }),
     ).toBeLessThan(2),
   ).toPass();
+  await page.setViewportSize({width:1440,height:960});
+  await page.locator('.hall-ranking-section').evaluate(e=>window.scrollTo(0,e.getBoundingClientRect().top+scrollY-innerHeight*.58));
+  const smoke=page.locator('.hall-ranking-smoke');
+  await expect(smoke).toHaveAttribute('data-renderer',/webgl|fallback/);
+  await expect(smoke).toHaveCSS('pointer-events','none');
+  await page.emulateMedia({reducedMotion:'no-preference'});
+  await expect(smoke).toHaveAttribute('data-paused','false');
+  await page.waitForTimeout(250);
+  const first=await smoke.screenshot();await page.waitForTimeout(900);const next=await smoke.screenshot();
+  expect(first.equals(next)).toBe(false);
+  await page.screenshot({path:'test-results/hall-exhibition/ranking-transition.png',fullPage:false});
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await expect(smoke).toHaveAttribute('data-paused','true');
+  await page.waitForTimeout(100);const still=await smoke.screenshot();await page.waitForTimeout(250);
+  expect(still.equals(await smoke.screenshot())).toBe(true);
+  await expect(page.getByRole('table',{name:'Ranking de personagens'})).toBeVisible();
+  await page.getByLabel('Buscar personagem no Hall da Fama').fill('Nana');
+  await expect(page.locator('.hall-table-row')).toHaveCount(1);
+  await page.getByLabel('Buscar personagem no Hall da Fama').fill('');
   await page.setViewportSize({ width: 1440, height: 960 });
   await page.goto(origin + '/#profiles?user=' + user.id);
   await page.getByRole('button', { name: 'Próxima aba: Conquistas', exact: true }).click();

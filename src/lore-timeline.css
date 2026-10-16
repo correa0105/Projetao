@@ -5,7 +5,7 @@
   border-bottom: 1px solid var(--lore-line);
   background:
     radial-gradient(ellipse at 78% 35%, #ab7d2920, transparent 55%),
-    linear-gradient(130deg, #141612, #1c1d17 70%, #141512);
+    linear-gradient(130deg, #12110f, #181511 70%, #12110f);
   isolation: isolate;
 }
 .lore-timeline::before {
@@ -31,7 +31,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #141511;
+  background: #12110f;
   color: var(--lore-gold);
   border: 1px solid var(--lore-line);
   padding: 10px 14px;

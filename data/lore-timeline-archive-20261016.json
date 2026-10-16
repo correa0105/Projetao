@@ -1,0 +1,10 @@
+{
+  "generator": "built-in image_gen",
+  "sourceBasename": "exec-d7badfd7-67a4-465e-9576-eb98b9db6ebb.png",
+  "prompt": "Use case: stylized-concept.\nAsset type: wide 16:9 background illustration for the timeline section of a dark medieval fantasy guild website.\nPrimary request: replace a sepia daytime castle landscape with a dark archival scene about time and preserved history, matching a premium candlelit rulebook library interface.\nScene/backdrop: a secluded medieval archive in near darkness, charcoal stone and blackened walnut, a beautiful aged bronze hourglass holding pale fine sand on an archivist's desk in the upper-right third. Behind it, a restrained antique astronomical armillary instrument and a few leather-bound chronicles, faint distant rows of shelves. A single short candle casts a small pool of amber light on the hourglass, bronze mechanism and book edges. Subtle dust in the light, deep atmospheric shadows, tactile hand-painted realism. The hourglass and archive are the focal point; do not include a landscape or castle.\nComposition: landscape 16:9, cinematic close environmental framing. Concentrate all lit detail in the rightmost 40% and upper 45% of the image. Keep the entire left 55% and lower 50% extremely dark and quiet with only vague archival silhouettes, so the website can place its own title, timeline gears, labels and readable descriptions over it. Seamless dark charcoal edges; no border. Do not paint a timeline, UI, icons, chains or a row of gears.\nPalette: neutral near-black charcoal, muted antique bronze, softly warm candle gold, small ivory sand highlights. No green, olive or orange wash.\nConstraints: no people, readable text, letters, numbers, logos, watermarks, modern clocks, modern objects, brightly lit paper, open central book, castle, landscape, fake UI, panels or labels. This is a finished original background painting, not a website screenshot.",
+  "image": "/lore-timeline-archive-20261016.webp",
+  "width": 1672,
+  "height": 941,
+  "bytes": 117240,
+  "sha256": "7385c442447fed8f88e3469633e0a703fe619bfc0f2d7d5d0b83b1ef337651be"
+}
