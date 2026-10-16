@@ -8,18 +8,30 @@ todo o cenário. Centralizar vizinhança mantém esse limite, inclusive no celul
 
 Os três primeiros modelos têm interiores ilustrados próprios, com as quatro
 paredes internas visíveis no ângulo das referências, vigas, janelas emolduradas
-e materiais distintos: madeira/reboco claro, pedra/madeira e madeira/reboco sálvia.
-São casas vazias; os móveis continuam sendo os originais do VTT. As prévias de
-compra mostram esses interiores. As outras 22 casas usam plantas ortográficas
+e materiais distintos: carvalho/reboco claro, madeira cinza/piso castanho e
+madeira envelhecida/painéis sálvia. A versão 3 refaz os quatro lados como uma
+moldura uniforme, com cantos em meia-esquadria, espessura consistente e
+arestas paralelas, seguindo diretamente a referência posterior do usuário.
+São casas vazias; os móveis continuam sendo os originais do VTT. O catálogo
+mostra esses interiores e a confirmação mostra o telhado correspondente;
+as prévias dos bairros também usam os tetos novos. As outras 22 casas usam plantas ortográficas
 com piso nítido, encaixes e janelas detalhadas. Nenhuma posição, orientação,
 escala, posse ou compra salva é alterada pelo novo desenho.
 
-As três ilustrações e o material de carvalho foram produzidos com imagegen
-embutido. A face sul foi corrigida para apontar ao centro, com rodapé junto
-ao piso e viga no limite externo. Arquivos em `public/house2/interior-cutaway-00{1,2,3}-v2-20261016.webp`
-e `public/house2/oak-floor-20261016.webp`; prompts completos e hashes em
-`data/house2-cutaway-interiors-20261016.json` e
-`data/house2-interior-material-20261016.json`. Não substituir a mobília por
+Cada modelo possui telhado próprio — palha, telhas de barro ou telhas de madeira
+escura — no mesmo centro e orientação da casa, com beiral 4% maior. O interior
+só é desenhado quando a casa está aberta; fechada exibe seu teto correspondente,
+sem sobrepor a fachada de outro modelo. Casas fechadas não deixam faixas do piso
+ou das paredes internas aparecendo ao redor do telhado.
+
+As seis artes vigentes foram produzidas com imagegen embutido, usando a referência
+fornecida para os interiores e cada interior como referência do próprio teto.
+Arquivos em `public/house2/interior-plan-00{1,2,3}-v3-20261016.webp` e
+`public/house2/roof-plan-00{1,2,3}-v1-20261016.webp`; prompts completos, referências
+e hashes em `data/house2-architecture-20261016.json`. A versão anterior permanece
+registrada em `data/house2-cutaway-interiors-20261016.json`.
+O carvalho das outras plantas permanece em `public/house2/oak-floor-20261016.webp`,
+com prompt em `data/house2-interior-material-20261016.json`. Não substituir a mobília por
 variantes geradas: o usuário esclareceu que a correção é na casa.
 
 Em House 2.0 → Vizinhança → Luz do cenário, Manhã, Tarde, Entardecer e
@@ -31,7 +43,10 @@ Grama e terra usam textura em escala menor para conservar detalhes no zoom.
 Caminhos e margens do riacho têm bordas irregulares mescladas com o material
 vizinho, preservando a nitidez do miolo. Não há personalização de grama por lote.
 
-QA: `scripts/verify-house2-interiors.mjs` confere os 25 interiores, os três
+QA: `scripts/verify-house2-architecture.mjs` compara teto/interior em pixels,
+exige cobertura integral da planta e renderiza os três modelos abertos e fechados
+em 0°, 90°, 180° e 270°, com armários originais junto às quatro paredes.
+`scripts/verify-house2-interiors.mjs` confere os 25 interiores, os três
 cutaways, carregamento, janelas e pixels de três sombras diferentes. O smoke
 da House valida cinco larguras, limites da câmera, quatro horários, compra
 confirmada, arraste, tamanho, coordenadas livres, persistência e visita sem edição

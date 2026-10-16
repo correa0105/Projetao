@@ -36,6 +36,7 @@ import { House2Village, House2VillageRoofs } from './House2Village';
 import { boundHouse2Camera, initialHouse2Camera, type House2Camera } from './house2-camera';
 import { House2Lighting } from './House2Lighting';
 import { House2Interior, house2CutawayImage } from './House2Interior';
+import { house2Architecture } from './house2-architecture';
 import { house2DayPhases, type House2DayPhase } from '../shared/house2-lighting';
 import {
   house2Clamp,
@@ -313,7 +314,9 @@ export function House2({ character, user }: { character?: Character; user: User 
       characterId: character.id,
       name: spec?.name ?? `Terreno ${plot.number}`,
       price: spec?.price ?? plot.price,
-      image: spec?.image,
+      image:
+        (kind === 'house' && catalogId ? house2Architecture(catalogId)?.roof : undefined) ??
+        spec?.image,
     });
   }
   async function buy(kind: 'plot' | 'house' | 'furniture', catalogId?: string) {
@@ -788,13 +791,16 @@ export function House2({ character, user }: { character?: Character; user: User 
                     style={{ backgroundImage: `url(${house2Landscape})` }}
                     aria-hidden="true"
                   >
-                    {[0, 1, 2].map((v) => (
-                      <img
-                        key={v}
-                        src={house2Houses[(index * 5 + v * 2) % house2Houses.length].image}
-                        alt=""
-                      />
-                    ))}
+                    {[0, 1, 2].map((v) => {
+                      const model = house2Houses[(index * 5 + v * 2) % house2Houses.length];
+                      return (
+                        <img
+                          key={v}
+                          src={house2Architecture(model.id)?.roof ?? model.image}
+                          alt=""
+                        />
+                      );
+                    })}
                     <span>200 × 200</span>
                   </div>
                   <div className="h2-card-description">
@@ -934,7 +940,7 @@ export function House2({ character, user }: { character?: Character; user: User 
           />
         )}
         {scene?.plots
-          .filter((p) => p.house_id)
+          .filter((p) => p.house_id && interior === p.id)
           .map((original) => {
             const p = original.id === shownPlot?.id ? shownPlot : original,
               spec = house2Houses.find((h) => h.id === p.house_id);

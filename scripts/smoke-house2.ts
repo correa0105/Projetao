@@ -128,9 +128,24 @@ try {
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
   await expect(page.locator('.h2-catalog button')).toHaveCount(25);
   await page.locator('.h2-catalog button').first().click();
+  await expect(page.locator('.h2-purchase-confirmation img')).toHaveAttribute(
+    'src',
+    '/house2/roof-plan-001-v1-20261016.webp',
+  );
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
   await expect(page.getByText(/já foi adquirida para este terreno/)).toBeVisible();
   await expect(page.locator('[data-house2-interior="orthographic"]')).toHaveCount(1);
+  await page.getByRole('button', { name: 'Sair da casa de Aurora', exact: true }).click();
+  await expect(page.locator('[data-house2-interior="orthographic"]')).toHaveCount(0);
+  await expect(
+    page.locator('[data-house2-fixed="true"] [data-house2-roof="house-empty-001"]'),
+  ).toHaveAttribute('href', '/house2/roof-plan-001-v1-20261016.webp');
+  await page.screenshot({ path: 'test-results/house2/matched-roof-closed.png' });
+  await page.getByRole('button', { name: 'Entrar na casa de Aurora', exact: true }).click();
+  await expect(page.locator('[data-house2-interior="orthographic"]')).toHaveCount(1);
+  await expect(
+    page.locator('[data-house2-fixed="true"] [data-house2-roof="house-empty-001"]'),
+  ).toHaveCount(0);
   await tool('Mobília');
   await expect(page.locator('.h2-catalog button')).toHaveCount(100);
   await page.getByRole('textbox', { name: 'Pesquisar mobília' }).fill('Cadeira de madeira');

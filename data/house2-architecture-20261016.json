@@ -1,0 +1,188 @@
+{
+  "method": "built-in image_gen",
+  "date": "2026-10-16",
+  "scope": "Rebuild the three House 2.0 interiors using the user-supplied mitered wall-frame reference; three matching opaque overhead roofs. Empty interiors, original furniture and saved transforms preserved.",
+  "assets": [
+    {
+      "id": "house-empty-001",
+      "part": "interior",
+      "source": "exec-3cdb65bc-1522-47ab-b2b3-18f6802e025b.png",
+      "prompt": "Edit this EMPTY overhead room sprite by changing ONLY its materials and palette. Preserve the EXACT geometry: square floor boundary, thin uniform four-sided mitered inner wall frame, precise diagonal corner joins, symmetric north/south wall thickness, window positions, central open bottom doorway, outer bounds and alpha. Keep all straight edges straight and parallel. Do not add 3D perspective, pillars, ledges, projecting corner blocks or an exterior facade. Match the same hand-inked battlemat illustration. Material variation: warm aged honey-brown oak floorboards and oak frame; change the blue-gray inner wall panels into subtle warm ivory lime-plaster, with a few restrained fine hairline wear marks. Preserve all four inward facing wall bands, wood baseboards, glass windows, floorboard joints and fine grain detail. Empty room, no furniture, fireplace, props, grid, text or watermark. Transparent exterior and open doorway.",
+      "references": [
+        "exec-5bb0c514-a3ec-4418-83a2-83721ac7a0d1.png"
+      ],
+      "image": "/house2/interior-plan-001-v3-20261016.webp",
+      "sha256": "fd50fc246437bfba5e0aa4f70ffe41188b41c706ab25830e5c590a3360a5d6ae",
+      "sourceSha256": "b09f908a0a002b26c51a7a4ab4e2209f5ddaaa7bf0b49f03075950fa6ea32648",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 439304,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    {
+      "id": "house-empty-002",
+      "part": "interior",
+      "source": "exec-5bb0c514-a3ec-4418-83a2-83721ac7a0d1.png",
+      "prompt": "Reference image 1 is the full architectural STYLE AND GEOMETRY reference; reference image 2 is the exact SOUTH WALL / lower-corner detail to follow. Transform the reference into ONE ORIGINAL EMPTY SQUARE MEDIEVAL ROOM VTT sprite. Rebuild the architecture following the reference's thin, precise, hand-drawn battlemat construction. The viewpoint is strictly overhead at 90 degrees. The usable floor is a TRUE SQUARE with parallel horizontal and vertical edges. The walls form ONE UNIFORM MITERED INNER FRAME around this floor: the north, south, west and east wall bands have EQUAL visual thickness, with 45-degree mitered inside corner seams. The entire lower wall must be the north wall ROTATED 180 DEGREES, including both lower corners, baseboard and cap. Copy the lower frame treatment shown in reference 2: straight narrow wooden wall band ABOVE the outer bottom beam, clean diagonal miters joining the side wall bands, no projecting stone corner blocks, no exterior facade, no leaning trapezoidal pillars, no low front balustrade, no thick ledges. The lower inside corners must meet at x/y right angles on the usable floor. Make the SOUTH inner wall face recognizable as part of the same continuous inner wall frame as the other three sides, never a detached external face. Outer square boundary at x/y 4% and96%; inside square floor boundary at x/y11% and89%, with all four wall bands 7% deep. Put one narrow open doorway in the exact centre of the bottom wall; jambs stay within the wall thickness. Retain visible inset windows in the left and right walls, contained entirely in the wall bands and viewed from straight above, no broad foreshortened fronts. Empty interior: REMOVE ALL furniture, fireplace, bed, rug, tables, chairs, logs, shelf, debris, leaves, cracks/holes in the floor, loose objects and door leaf from the reference. Finely illustrated worn materials with dark ink outlines and crisp woodgrain, restrained neutral lighting and narrow contact shadows only. No 3D rendering, no isometric camera, no exaggerated perspective, no oblique facade, no grass, no surroundings, no text, no watermark. Fully transparent exterior around the complete square building, including transparency through the bottom doorway. Do not reproduce any existing watermarks or branding. Material variant: medium brown oak floorboards, muted gray stone wall caps, and cool gray timber wall lining.",
+      "references": [
+        "codex-clipboard-ca0b3858-f459-4430-bd46-7f257f541107.png",
+        "codex-clipboard-96e8c790-eca3-4b23-930e-81714be6e445.png"
+      ],
+      "image": "/house2/interior-plan-002-v3-20261016.webp",
+      "sha256": "118c1c8c177af5adc82915adea9f87bd4e0daec7f73565c7c207929a1d15650b",
+      "sourceSha256": "80a9b03c8ecbdd8f08a50f3b22a26a0225911ad6909b4317b661e30ec8159cd6",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 514436,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    {
+      "id": "house-empty-003",
+      "part": "interior",
+      "source": "exec-b069d74c-0f46-49e2-b368-c63522dde062.png",
+      "prompt": "Edit this EMPTY overhead room sprite by changing ONLY its materials and palette. Preserve the EXACT geometry: square floor boundary, thin uniform four-sided mitered inner wall frame, precise diagonal corner joins, symmetric north/south wall thickness, window positions, central open bottom doorway, outer bounds and alpha. Keep all straight edges straight and parallel. Do not add 3D perspective, pillars, ledges, projecting corner blocks or an exterior facade. Match the same hand-inked battlemat illustration. Material variation: weathered silver-gray and muted brown floorboards, dark aged walnut outer frame, desaturated muted sage-gray inner timber wall panels, soft cool blue light in the window recesses. Crisp hand-worked wood grain with fine understated wear. Preserve all four inward facing wall bands, wood baseboards, glass windows, floorboard joints and fine grain detail. Empty room, no furniture, fireplace, props, grid, text or watermark. Transparent exterior and open doorway.",
+      "references": [
+        "exec-5bb0c514-a3ec-4418-83a2-83721ac7a0d1.png"
+      ],
+      "image": "/house2/interior-plan-003-v3-20261016.webp",
+      "sha256": "1db7d7e04a1fbb7e78f0decbbadb4bba78c60379f9d2ecd4a17b6156beb68529",
+      "sourceSha256": "fb679a2802a93967b8e83f502a95c44118195bdd5af775bb66ad0a62262b0647",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 448168,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    {
+      "id": "house-empty-001",
+      "part": "roof",
+      "source": "exec-986c64e8-54a1-401b-8ee6-feeba1854664.png",
+      "prompt": "Use the attached room sprite as the EXACT footprint, material-style and orientation reference. Replace the entire open interior with its OWN NEW COMPLETE ROOF, viewed strictly vertically from above at 90 degrees. Produce only the roof sprite of this same square medieval building, NOT an image of another house and NOT a roof laid over a visible interior. Square roof, centered, all edges parallel to canvas; symmetrical hipped roof with a short central ridge running left-right and four clearly readable sloping roof planes meeting in neat diagonal hip lines. Eaves extend a little beyond all four wall lines, covering the entire square room. Outer eave boundary must be at 3% and97% of canvas width and height, solid and opaque throughout, without holes or cutouts; no roof dormer, no open area, no furnishings. No visible side wall, front facade, windows, porch, floor, stairs or doorway underneath. Roof must be viewed as a TRUE OVERHEAD MAP SPRITE, never isometric or oblique. Match the clean, finely textured hand-inked battlemat style of the reference, restrained highlights, crisp individual shingles/tiles with small irregular wear, straight outer edges. Keep same square canvas and centre as the reference room. Transparent outside the eaves; no ground, grass, sky, grid, text, branding, border or big cast shadow. Material: weathered straw thatch in muted natural golden-brown, carefully bundled layers, dark timber eave trim and a simple bound thatch ridge, realistic understated wear.",
+      "references": [
+        "exec-3cdb65bc-1522-47ab-b2b3-18f6802e025b.png"
+      ],
+      "image": "/house2/roof-plan-001-v1-20261016.webp",
+      "sha256": "c4985ab9577967876e11e73556e9194ebb26170cf0a7758e33ab445fcbd3979a",
+      "sourceSha256": "07e1e8361f1fdf2d588d51afd6d7c4e20f7c0a0dda6fd1b2f8259be219096d43",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 923210,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    {
+      "id": "house-empty-002",
+      "part": "roof",
+      "source": "exec-8dcbcb1f-c68c-404d-aca7-2fd0ad023fc6.png",
+      "prompt": "Use the attached room sprite as the EXACT footprint, material-style and orientation reference. Replace the entire open interior with its OWN NEW COMPLETE ROOF, viewed strictly vertically from above at 90 degrees. Produce only the roof sprite of this same square medieval building, NOT an image of another house and NOT a roof laid over a visible interior. Square roof, centered, all edges parallel to canvas; symmetrical hipped roof with a short central ridge running left-right and four clearly readable sloping roof planes meeting in neat diagonal hip lines. Eaves extend a little beyond all four wall lines, covering the entire square room. Outer eave boundary must be at 3% and97% of canvas width and height, solid and opaque throughout, without holes or cutouts; no roof dormer, no open area, no furnishings. No visible side wall, front facade, windows, porch, floor, stairs or doorway underneath. Roof must be viewed as a TRUE OVERHEAD MAP SPRITE, never isometric or oblique. Match the clean, finely textured hand-inked battlemat style of the reference, restrained highlights, crisp individual shingles/tiles with small irregular wear, straight outer edges. Keep same square canvas and centre as the reference room. Transparent outside the eaves; no ground, grass, sky, grid, text, branding, border or big cast shadow. Material: aged muted terracotta tiles, warm reddish clay with a few darker replaced tiles, discreet stone chimney near the rear-right roof plane, straight timber eaves, restrained earthy color.",
+      "references": [
+        "exec-5bb0c514-a3ec-4418-83a2-83721ac7a0d1.png"
+      ],
+      "image": "/house2/roof-plan-002-v1-20261016.webp",
+      "sha256": "a9867e8a71ae4048fdeda2783fef6e73d67cbfb109c231b364a01ab8e512bf03",
+      "sourceSha256": "cde5f9dc4a647190e86de3617a37cc0f2ccb34929388b8d629b0b784562bb4f7",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 722430,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    {
+      "id": "house-empty-003",
+      "part": "roof",
+      "source": "exec-1edb6bfd-a190-436b-8059-9ccdbec17098.png",
+      "prompt": "Use the attached room sprite as the EXACT footprint, material-style and orientation reference. Replace the entire open interior with its OWN NEW COMPLETE ROOF, viewed strictly vertically from above at 90 degrees. Produce only the roof sprite of this same square medieval building, NOT an image of another house and NOT a roof laid over a visible interior. Square roof, centered, all edges parallel to canvas; symmetrical hipped roof with a short central ridge running left-right and four clearly readable sloping roof planes meeting in neat diagonal hip lines. Eaves extend a little beyond all four wall lines, covering the entire square room. Outer eave boundary must be at 3% and97% of canvas width and height, solid and opaque throughout, without holes or cutouts; no roof dormer, no open area, no furnishings. No visible side wall, front facade, windows, porch, floor, stairs or doorway underneath. Roof must be viewed as a TRUE OVERHEAD MAP SPRITE, never isometric or oblique. Match the clean, finely textured hand-inked battlemat style of the reference, restrained highlights, crisp individual shingles/tiles with small irregular wear, straight outer edges. Keep same square canvas and centre as the reference room. Transparent outside the eaves; no ground, grass, sky, grid, text, branding, border or big cast shadow. Material: weathered dark slate-gray and gray-brown wood shingles in neatly overlapping courses, dark walnut eaves and a simple dark cap along the ridge, soft muted blue-green patina on a few shingles.",
+      "references": [
+        "exec-b069d74c-0f46-49e2-b368-c63522dde062.png"
+      ],
+      "image": "/house2/roof-plan-003-v1-20261016.webp",
+      "sha256": "64e823f8c46d6f9f8fad5a290483ac5cf8790483926ed45efa59ed15c755a6ca",
+      "sourceSha256": "9c8942b3881deb41ed987f46a4df8f30e026c3c659211589dc0bd6acc20e4d65",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 626842,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    }
+  ]
+}

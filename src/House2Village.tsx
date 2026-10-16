@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { House2GroundPaint } from './House2GroundPaint';
+import { house2Architecture } from './house2-architecture';
 import {
   villageTextures,
   villageScenery,
@@ -183,6 +184,9 @@ export function House2VillageRoofs({
               ? house2Houses[(((p.village_slot ?? 1) - 1) * 3 + 4) % house2Houses.length]
               : house2Houses.find((h) => h.id === p.house_id);
           if (!spec) return null;
+          const architecture = house2Architecture(spec.id);
+          const roofWidth = spec.width * (architecture?.roofScale ?? 1);
+          const roofHeight = spec.height * (architecture?.roofScale ?? 1);
           const position = preview
               ? house2HousePlacement(p)
               : { x: p.house_x!, y: p.house_y!, rotation: p.house_rotation },
@@ -203,11 +207,12 @@ export function House2VillageRoofs({
                   >
                     <image
                       className={preview ? 'h2-house-preview' : 'h2-house-fixed'}
-                      href={spec.image}
-                      x={-spec.width / 2}
-                      y={-spec.height / 2}
-                      width={spec.width}
-                      height={spec.height}
+                      data-house2-roof={spec.id}
+                      href={architecture?.roof ?? spec.image}
+                      x={-roofWidth / 2}
+                      y={-roofHeight / 2}
+                      width={roofWidth}
+                      height={roofHeight}
                     />
                     <title>
                       {preview

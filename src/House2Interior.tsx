@@ -1,9 +1,5 @@
-export function house2CutawayImage(id: string) {
-  const variant = Number(id.slice(-3));
-  return variant >= 1 && variant <= 3
-    ? `/house2/interior-cutaway-${String(variant).padStart(3, '0')}-v2-20261016.webp`
-    : undefined;
-}
+import { house2CutawayImage } from './house2-architecture';
+export { house2CutawayImage } from './house2-architecture';
 
 /** Three illustrated cutaways, plus plan geometry for the remaining empty models. */
 export function House2Interior({
