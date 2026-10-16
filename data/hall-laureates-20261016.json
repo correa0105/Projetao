@@ -1,0 +1,30 @@
+{
+  "generator": "built-in image_gen",
+  "sourceBasename": "exec-4c9f0d3b-3b43-4521-b28c-d909537d64f7.png",
+  "image": "/community/hall-laureates-20261016.webp",
+  "width": 1672,
+  "height": 941,
+  "prompt": "Use case: stylized-concept.\nAsset type: finished background artwork for a dark medieval fantasy RPG Hall of Fame web page, landscape 16:9, high detail.\nPrimary request: a completely new prestigious gallery celebrating the three best adventurers. The architecture must make FIRST, SECOND, THIRD places unmistakably different through physical elevation and lighting. The existing page feels like three equal alcoves in an ordinary tavern; replace that atmosphere with a ceremonial champions' exhibition.\nScene: a grand, intimate medieval guild chamber of honors made of charcoal stone, aged bronze, deep oxblood velvet and muted gold. A coherent three-tier stone winners' podium across the central foreground, with broad empty flat standing surfaces. Highest central platform centered at 50% image width with standing surface at 62% image height. Second-place platform centered at 28% width with standing surface at 69% height. Third-place platform centered at 72% width with standing surface at 73% height. The front of each plinth is a substantial carved dark stone face with a large clean blank inset area for a rank number that will be added by the website, and a small blank inset bronze dedication plaque. The podium belongs physically to the room, with plausible perspective and contact shadows. A few shallow ceremonial steps lead up to the plinths. The central plinth is widest and tallest; side plinths are modestly smaller. These three empty standing areas are reserved for separate character cutouts, so do not paint figures on them.\nArchitecture: a towering sculpted bronze laurel wreath and a restrained crown relief behind the central champion, rising vertically through the middle of the composition; long burgundy ceremonial banners, dignified stone pilasters, side-wall historical armaments only very far in the shadows. Central champion receives a concentrated shaft of warm golden light; second and third have softer silver-warm and bronze accent light. Slim candles along edges, subtle dust in the overhead light, rich tactile materials and painterly realism. Recognizably a place of honor, distinction, victory and achievement.\nComposition: straight-on eye-level centered camera, restrained perspective, symmetrical architecture but asymmetrical three-level podium. Reserve top 8–18% for a readable HTML page title on subdued dark architecture. Keep the full three platforms inside the middle 60% image width and below their standing surfaces through 88% image height. Frame fills the screen, no borders. Do not devote most of the image to empty floor. Edge zones can be dark and quiet.\nLighting: central golden spotlight strongest, moody dark surroundings but visible podium geometry and crisp edges; premium museum exhibition mood.\nConstraints: NO people, statues of people, creatures, silhouettes, trophies shaped like people, UI, cards, labels, text, letters, digits, numerals, watermark, modern spotlights, modern museum equipment, horses, stable, tavern furniture, shelves of random goods, excessive orange fog. All podiums are empty. This is environment art only, not a screenshot or interface mockup.",
+  "anchors": {
+    "first": {
+      "x": 0.4994,
+      "feet": 0.5027,
+      "rank": 0.612,
+      "details": 0.7065
+    },
+    "second": {
+      "x": 0.2362,
+      "feet": 0.5537,
+      "rank": 0.645,
+      "details": 0.7205
+    },
+    "third": {
+      "x": 0.7638,
+      "feet": 0.6036,
+      "rank": 0.6775,
+      "details": 0.7365
+    }
+  },
+  "sha256": "ad0de788d90c72fd893577214765f6e35c1abd547e595a1ced4a8b3aabb4d6d0",
+  "bytes": 234352
+}

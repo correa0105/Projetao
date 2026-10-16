@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile, readFile } from 'node:fs/promises';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable DB required');
 const origin = 'http://localhost:3081';
@@ -81,14 +81,26 @@ try {
   const user = await signup(owner, 'Exposição QA'),
     guest = await signup(stranger, 'Visitante QA');
   const heroes = [
-    await createLegacyTestCharacter(user.id, 'Guerreira do nicho'),
-    await createLegacyTestCharacter(user.id, 'Anã do nicho'),
-    await createLegacyTestCharacter(guest.id, 'Mago do nicho'),
+    await createLegacyTestCharacter(user.id, 'Irineu'),
+    await createLegacyTestCharacter(user.id, 'Cheratico'),
+    await createLegacyTestCharacter(guest.id, 'Nana'),
   ];
   for (const [i, c] of heroes.entries())
     await pool.query('UPDATE characters SET level=$2 WHERE id=$1', [c.id, i + 1]);
+  if (process.env.HALL_QA_PORTRAITS_DIR)
+    for (const [i,c] of heroes.entries())
+      await pool.query('INSERT INTO character_portraits(character_id,image) VALUES($1,$2)',
+        [c.id,await readFile(process.env.HALL_QA_PORTRAITS_DIR+'/'+i+'.webp')]);
   await page.goto(origin + '/#hall');
   await expect(page.locator('.hall-champion')).toHaveCount(3);
+  await page.evaluate(async()=>{
+    const scene=document.querySelector('.hall-exhibition-scene')!;
+    const src=getComputedStyle(scene).backgroundImage.match(/url\(["']?([^"')]+)/)![1];
+    const image=new Image();image.src=src;await image.decode();
+  });
+  await page.locator('.hall-character-art img').evaluateAll(async imgs=>{
+    await Promise.all(imgs.map(img=>(img as HTMLImageElement).decode()));
+  });
   const results: {width:number;height:number;embedded:boolean;metrics:{rank:number;x:number;foot:number}[]}[] = [];
   async function alignment(width: number, height: number, embedded = false) {
     await page.setViewportSize({ width, height });
@@ -108,10 +120,10 @@ try {
     for (const m of metrics) {
       expect(
         Math.abs(
-          m.x - ({ 1: 0.501196, 2: 0.269139, 3: 0.735048 } as Record<number, number>)[m.rank],
+          m.x - ({ 1: 0.4994, 2: 0.2362, 3: 0.7638 } as Record<number, number>)[m.rank],
         ),
       ).toBeLessThan(0.001);
-      expect(Math.abs(m.foot - 0.542)).toBeLessThan(0.001);
+      expect(Math.abs(m.foot - ({1:0.5027,2:0.5537,3:0.6036} as Record<number,number>)[m.rank])).toBeLessThan(0.001);
     }
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2),
@@ -171,7 +183,7 @@ try {
     JSON.stringify({ passed: true, results, errors }),
   );
   console.log(
-    'Hall alignment passed: seven viewport sizes, matching niche centers and shelf, mobile navigation, embedded Hall and sidebar.',
+    'Hall laureates passed: seven viewport sizes, three physical podium heights, mobile navigation, embedded Hall and sidebar.',
   );
 } finally {
   await browser.close();

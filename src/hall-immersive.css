@@ -13,7 +13,7 @@
   inset: 0;
   background:
     linear-gradient(#15100b55, #15100b77),
-    url('/community/hall-of-honor.webp') center/cover no-repeat;
+    url('/community/hall-laureates-20261016.webp') center/cover no-repeat;
   z-index: -1;
   pointer-events: none;
 }
@@ -186,244 +186,145 @@
   outline-offset: 4px;
 }
 
-/* Anchors measured on hall-of-honor.webp (1672 × 941): niches x=450/838/1229,
-   the stone display shelf is y=510. Keep the art and these anchors on one plane. */
+/* Hall laureates, 1672 × 941. Measured standing surfaces: (835,473),
+   (395,521), (1277,568). Figures and engraved ranks move with the painting. */
+:root .app-shell .hall-of-fame:has(.hall-exhibition)::before { background:#100e0b; }
 :root .app-shell .hall-of-fame .hall-gallery:has(.hall-exhibition) {
-  position: relative;
-  height: 100dvh;
-  min-height: 540px;
-  padding: 0;
+  position:relative;height:100dvh;min-height:620px;padding:0;
 }
 :root .app-shell .hall-of-fame .hall-gallery:has(.hall-exhibition) .hall-heading {
-  position: absolute;
-  z-index: 3;
-  top: clamp(55px, 7dvh, 78px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 140px);
-  max-width: 1000px;
-  margin: 0;
-  pointer-events: none;
+  position:absolute;z-index:3;top:clamp(63px,7.5dvh,92px);left:50%;
+  transform:translateX(-50%);width:calc(100% - 160px);max-width:1000px;
+  margin:0;pointer-events:none;text-shadow:0 2px 12px #000;
 }
 :root .app-shell .hall-of-fame .hall-gallery:has(.hall-exhibition) .hall-heading h2 {
-  margin: 0 0 8px;
-  font-size: clamp(24px, 2.8vw, 40px);
+  margin:0 0 9px;font-size:clamp(26px,2.8vw,42px);letter-spacing:.025em;
 }
-:root .app-shell .hall-of-fame .hall-exhibition {
-  position: absolute;
-  inset: 0;
-}
+:root .app-shell .hall-of-fame .hall-heading p { margin:0 auto; }
+:root .app-shell .hall-of-fame .hall-exhibition {position:absolute;inset:0;}
 :root .app-shell .hall-of-fame .hall-exhibition-viewport {
-  width: 100%;
-  height: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: #b99a5b55 transparent;
-  scroll-snap-type: x mandatory;
-  overscroll-behavior-x: contain;
+  width:100%;height:100%;overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:none;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;
 }
+:root .app-shell .hall-of-fame .hall-exhibition-viewport::-webkit-scrollbar {display:none;}
 :root .app-shell .hall-of-fame .hall-exhibition-scene {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  width: max(100%, calc(max(100dvh, 540px) * 1672 / 941));
-  aspect-ratio: 1672/941;
-  background:
-    linear-gradient(#15100b55, #15100b77),
-    url('/community/hall-of-honor.webp') center/100% 100% no-repeat;
+  position:relative;top:50%;transform:translateY(-50%);
+  width:max(100%,calc(max(100dvh,620px) * 1672 / 941));aspect-ratio:1672/941;
+  container-type:inline-size;
+  background:url('/community/hall-laureates-20261016.webp') center/100% 100% no-repeat;
+}
+:root .app-shell .hall-of-fame .hall-exhibition-scene::before {
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(#080705bb,transparent 28%,transparent 86%,#08070555);
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-podium {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
+  position:absolute;inset:0;display:block;width:100%;height:100%;
+  max-width:none;margin:0;padding:0;
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-champion {
-  position: absolute;
-  top: 20%;
-  left: 50.1196%;
-  width: 17.4%;
-  height: 46%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  transform: translateX(-50%);
-  scroll-snap-align: center;
-  background: none;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  overflow: visible;
+  --feet:50.27%;--figure-height:32%;--rank-y:61.2%;--details-y:70.65%;
+  position:absolute;top:0;left:49.94%;width:23%;height:100%;
+  margin:0;padding:0;display:block;transform:translateX(-50%);
+  scroll-snap-align:center;background:none;border:0;border-radius:0;box-shadow:none;
+  overflow:visible;text-align:center;cursor:pointer;
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .place-2 {
-  left: 26.9139%;
+  --feet:55.37%;--figure-height:29%;--rank-y:64.5%;--details-y:72.05%;left:23.62%;width:21%;
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .place-3 {
-  left: 73.5048%;
+  --feet:60.36%;--figure-height:27%;--rank-y:67.75%;--details-y:73.65%;left:76.38%;width:21%;
 }
-:root
-  .app-shell
-  .hall-of-fame
-  .hall-exhibition-scene
-  .hall-champion:is(:hover, :focus-visible, .focused) {
-  transform: translateX(-50%);
-  outline: none;
+:root .app-shell .hall-of-fame .hall-exhibition-scene .hall-champion:is(:hover,:focus-visible,.focused) {
+  transform:translateX(-50%);outline:none;box-shadow:none;
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-podium-stage {
-  position: relative;
-  width: 100%;
-  height: 74.3478%;
-  padding: 0;
-  background: none;
-  overflow: visible;
+  position:absolute;inset:0;width:100%;height:100%;padding:0;background:none;overflow:visible;
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-podium-stage::before,
-:root .app-shell .hall-of-fame .hall-exhibition-scene .hall-podium-stage::after {
-  display: none;
-}
+:root .app-shell .hall-of-fame .hall-exhibition-scene .hall-podium-stage::after {display:none;}
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-podium-stage > .hall-place {
-  position: absolute;
-  top: 3%;
-  left: 50%;
-  margin: 0;
-  transform: translateX(-50%);
+  position:absolute;top:var(--rank-y);left:50%;transform:translate(-50%,-50%);
+  display:block;min-width:0;min-height:0;width:50%;margin:0;padding:0;
+  border:0;border-radius:0;background:none;box-shadow:none;color:var(--medal-ink);
+  text-shadow:0 2px 1px #000,0 -1px 0 #fff2;
+}
+:root .app-shell .hall-of-fame .hall-exhibition-scene .hall-place svg {display:none;}
+:root .app-shell .hall-of-fame .hall-exhibition-scene .hall-place b {
+  font:500 clamp(40px,3.5cqw,68px)/1 var(--serif);
+}
+:root .app-shell .hall-of-fame .hall-exhibition-scene .place-1 .hall-place b {
+  font-size:clamp(48px,4.2cqw,80px);color:#f1d08b;
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-podium-stage > .hall-character-art {
-  position: absolute;
-  inset: 19% 0 0;
-  width: 100%;
-  height: auto;
-  max-width: none;
-  margin: 0;
+  position:absolute;inset:auto auto calc(100% - var(--feet)) -8%;
+  width:110%;height:var(--figure-height);max-width:none;margin:0;left:-5%;
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-character-art > img {
-  object-fit: contain;
-  object-position: center bottom;
+  object-fit:contain;object-position:center bottom;transform:translateY(3%);
+  filter:drop-shadow(0 8px 5px #0009) drop-shadow(0 0 12px #b68e3820);
+}
+:root .app-shell .hall-of-fame .hall-exhibition-scene .place-1 .hall-character-art > img {
+  filter:drop-shadow(0 8px 5px #0009) drop-shadow(0 0 15px #dfb95744);
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-champion-details {
-  position: absolute;
-  top: calc(74.3478% + 22px);
-  left: 0;
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  min-height: 0;
-  gap: 3px 10px;
-  padding: 12px;
-  align-items: start;
-  text-align: left;
+  position:absolute;top:var(--details-y);left:0;width:100%;min-height:0;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  margin:0;padding:0 8px;border:0;background:none;box-shadow:none;
+  text-shadow:0 2px 5px #000,0 0 12px #000;text-align:center;
 }
+:root .app-shell .hall-of-fame .hall-exhibition-scene .hall-champion-details::before {display:none;}
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-champion-details h2 {
-  grid-column: 1;
-  margin: 0;
-  min-height: 0;
-  font-size: clamp(15px, 1.4vw, 20px);
-  text-align: left;
+  display:block;width:100%;min-height:0;margin:0 0 15px;padding:0;
+  font-size:clamp(15px,1.22cqw,23px);line-height:1.2;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--medal-ink);text-align:center;
 }
-:root
-  .app-shell
-  .hall-of-fame
-  .hall-exhibition-scene
-  :is(.hall-champion-class, .hall-champion-owner) {
-  grid-column: 1;
-  font-size: 10px;
+:root .app-shell .hall-of-fame .hall-exhibition-scene .hall-champion-class {
+  font-size:clamp(10px,.66cqw,12px);color:#d3c6ad;line-height:1.4;
+}
+:root .app-shell .hall-of-fame .hall-exhibition-scene .hall-champion-owner {
+  font-size:clamp(9px,.6cqw,11px);color:#b8a98e;line-height:1.4;
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-champion-value {
-  grid-column: 2;
-  grid-row: 1/4;
-  align-items: flex-end;
-  margin: 0;
-  font-size: 25px;
+  display:flex;flex-direction:row;align-items:baseline;justify-content:center;
+  gap:6px;margin:4px 0 0;font:500 clamp(22px,1.8cqw,32px)/1.2 var(--serif);
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-champion-value small {
-  font-size: 8px;
+  font:9px/1.4 Arial,sans-serif;letter-spacing:.1em;
 }
 :root .app-shell .hall-of-fame .hall-exhibition-scene .hall-profile-link {
-  grid-column: 1/-1;
-  font-size: 9px;
-  justify-content: flex-start;
+  justify-content:center;font-size:9px;margin:5px 0 0;padding:5px 12px;
+  border:0;background:none;letter-spacing:.08em;
 }
-:root
-  .app-shell
-  .hall-of-fame
-  .hall-exhibition-scene
-  .hall-champion:is(:hover, :focus-visible, .focused)
-  .hall-champion-details {
-  outline: 1px solid var(--medal-ink);
-  outline-offset: 4px;
+:root .app-shell .hall-of-fame .hall-exhibition-scene .hall-champion:is(:hover,:focus-visible,.focused) .hall-profile-link {
+  color:#f2d394;text-decoration:underline;text-underline-offset:4px;
 }
-:root .app-shell .hall-of-fame .hall-exhibition-controls {
-  display: none;
+:root .app-shell .hall-of-fame .hall-exhibition-scene .hall-champion:focus-visible .hall-champion-details {
+  outline:1px solid var(--medal-ink);outline-offset:8px;border-radius:2px;
 }
-@media (max-aspect-ratio: 6/5) {
+:root .app-shell .hall-of-fame .hall-exhibition-controls {display:none;}
+@media (max-aspect-ratio:6/5) {
   :root .app-shell .hall-of-fame .hall-gallery:has(.hall-exhibition) .hall-heading {
-    top: 110px;
-    width: calc(100% - 42px);
+    top:110px;width:calc(100% - 48px);
   }
   :root .app-shell .hall-of-fame .hall-exhibition-controls {
-    position: absolute;
-    bottom: 18%;
-    left: 18px;
-    right: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    pointer-events: none;
+    position:absolute;bottom:max(20%,115px);left:18px;right:18px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;pointer-events:none;
   }
   :root .app-shell .hall-of-fame .hall-exhibition-controls button {
-    display: grid;
-    place-items: center;
-    min-width: 40px;
-    min-height: 40px;
-    border: 1px solid #ae8b4f77;
-    border-radius: 50%;
-    background: #17120bd9;
-    color: #d7bd88;
-    cursor: pointer;
-    pointer-events: auto;
+    display:grid;place-items:center;min-width:42px;min-height:42px;
+    border:1px solid #ae8b4f77;border-radius:50%;background:#17120be8;
+    color:#d7bd88;cursor:pointer;pointer-events:auto;
   }
   :root .app-shell .hall-of-fame .hall-exhibition-controls span {
-    font-size: 10px;
-    color: #c3b296;
-    text-shadow: 0 2px 4px #000;
+    display:none;
   }
 }
-
-@media (max-width: 700px) {
-  :root .app-shell .hall-of-fame .hall-menu-trigger {
-    top: 22px;
-    left: 14px;
-    min-height: 40px;
-    padding: 10px;
-  }
+@media (max-width:700px) {
+  :root .app-shell .hall-of-fame .hall-menu-trigger {top:22px;left:14px;min-height:40px;padding:10px;}
   :root .app-shell .hall-of-fame .hall-menu-trigger > span,
-  :root .app-shell .hall-of-fame .hall-menu-trigger > svg:last-child {
-    display: none;
-  }
-  :root .app-shell .hall-of-fame .hall-gallery:has(.hall-exhibition) .hall-heading h2 {
-    font-size: 20px;
-    line-height: 1.2;
-  }
-  :root .app-shell .hall-of-fame .hall-gallery:has(.hall-exhibition) .hall-heading p {
-    font-size: 10px;
-    line-height: 1.5;
-    max-width: 250px;
-  }
+  :root .app-shell .hall-of-fame .hall-menu-trigger > svg:last-child {display:none;}
+  :root .app-shell .hall-of-fame .hall-gallery:has(.hall-exhibition) .hall-heading h2 {font-size:24px;line-height:1.2;}
+  :root .app-shell .hall-of-fame .hall-gallery:has(.hall-exhibition) .hall-heading p {font-size:11px;line-height:1.5;max-width:270px;}
 }
-
-:root .app-shell .hall-of-fame.embedded .hall-exhibition {
-  position: fixed;
-  inset: 0;
-}
-:root .app-shell .hall-of-fame.embedded .hall-gallery:has(.hall-exhibition) .hall-heading {
-  position: fixed;
-}
+:root .app-shell .hall-of-fame.embedded .hall-exhibition {position:fixed;inset:0;}
+:root .app-shell .hall-of-fame.embedded .hall-gallery:has(.hall-exhibition) .hall-heading {position:fixed;}

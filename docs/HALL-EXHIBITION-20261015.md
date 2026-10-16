@@ -1,5 +1,7 @@
 # Hall: personagens nos nichos
 
+**Substituído em 16/10/2026:** a composição atual usa três pedestais em alturas diferentes e uma nova galeria de honra. Ver `HALL-LAUREATES-20261016.md`. As coordenadas abaixo descrevem a versão anterior.
+
 O Hall usa o plano da pintura original de 1672 × 941 pixels para posicionar as três exposições. Os centros ficam em x=450, 838 e 1229, com apoio dos pés em y≈510. A imagem mantém proporção, e figuras e placas acompanham as mesmas coordenadas. As posições de classificação permanecem segundo/primeiro/terceiro da esquerda para a direita.
 
 Em telas estreitas, a exposição desliza horizontalmente; começa no primeiro lugar e permite arrastar ou usar as setas, com foco de teclado e respeito a movimento reduzido. O Hall da aba Perfis utiliza o mesmo componente.

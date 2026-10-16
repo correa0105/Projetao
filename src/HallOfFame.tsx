@@ -178,9 +178,11 @@ export function HallOfFame({
               ? data.document.title
               : embedded
                 ? 'Hall da Fama'
-                : 'Os nomes que se tornam lenda'}
+                : 'Os melhores da Alvorada'}
           </h2>
-          <p>{data?.document.intro || 'As histórias que deixam sua marca na Alvorada.'}</p>
+          <p>{!data?.document.intro || data.document.intro === 'As histórias que deixam sua marca na Alvorada.'
+            ? 'Um lugar de honra para os destaques da guilda.'
+            : data.document.intro}</p>
         </div>
         {error && (
           <p className="social-error" role="alert">
@@ -195,12 +197,13 @@ export function HallOfFame({
                 <button
                   className={`hall-champion place-${e.categoryRank} ${e.id === focusCharacterId ? 'focused' : ''}`}
                   key={e.id}
+                  title={`${e.categoryRank}º lugar — ${e.name} · ${e.class}, nível ${e.level} · ${e.owner_name}`}
                   onClick={() => visitProfile(e.user_id, e.id)}
                 >
                   <div className="hall-podium-stage">
                     <span className="hall-place">
                       {e.categoryRank === 1 ? <Crown size={26} /> : <Trophy size={22} />}
-                      <b>#{e.categoryRank}</b>
+                      <b>{e.categoryRank}</b>
                     </span>
                     <span className="hall-character-art">
                       <img

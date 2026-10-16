@@ -1,7 +1,7 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-/** Room and figures share the original painting's coordinate system. */
+/** The three plinths and their exhibits share the painting's coordinate system. */
 export function HallExhibition({ children }: { children: ReactNode }) {
   const viewport = useRef<HTMLDivElement>(null);
   useEffect(() => {
