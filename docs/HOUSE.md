@@ -1,5 +1,9 @@
 # House — 07/10/2026
 
+A House 2.0 experimental é uma opção separada em Explorar. Usa terrenos em
+vizinhanças superiores, casas vazias e mobília do VTT com créditos de teste.
+Não altera esta versão ou suas compras. Guia: `HOUSE-2-EXPERIMENTAL.md`.
+
 ## Tela inteira e menu único — 16/10/2026
 
 O cenário ocupa toda a janela. O botão House no canto superior esquerdo reúne

@@ -508,34 +508,8 @@ export function LoreScrollIcon({ open = false }: { open?: boolean }) {
           <path d="m56 60 3 5-3 5-3-5Zm0 3v4" fill="none" stroke="#f0b77b" strokeWidth="1" />
           <path d="m50 59 2-1m9 11 2-2m-7 5 3-1" fill="none" stroke="#e5a273" strokeWidth=".6" />
         </g>
-        <g className="lore-scroll-open" stroke="#886139" strokeWidth="1.4">
-          <path
-            d="M20 22h68l-4 27 3 14-4 22 5 21H20l3-25-4-16 4-19Z"
-            fill={`url(#${id}-sheet)`}
-            filter={`url(#${id}-grain)`}
-          />
-          <path
-            d="M25 24c5 22-4 55 1 77M81 27c-4 17 2 49-1 72"
-            fill="none"
-            stroke="#ffe9b5"
-            opacity=".65"
-          />
-          <path d="M28 26h49v70H28Z" fill="none" stroke="#997449" opacity=".5" />
-          <path d="m29 32 5-5m39 0 5 5m-49 57 5 6m39 0 5-6" stroke="#a47d46" fill="none" />
-          <g fill="none" stroke="#80603c" opacity=".82" strokeWidth="1.25">
-            <path d="m54 35 6 7-6 7-6-7Zm0 3v8M35 55h37M36 61h31M35 67h38M37 73h29M36 79h33M42 85h19" />
-            <path d="m33 52 2 3-2 3m42 10-3 3 3 3" />
-          </g>
-          <path d="M18 15h73c10 0 11 14 0 14H18c-10 0-11-14 0-14Z" fill={`url(#${id}-paper)`} />
-          <ellipse cx="18" cy="22" rx="6" ry="7" fill="#efcf91" />
-          <ellipse cx="18" cy="22" rx="3.5" ry="4" fill="#5a3a23" />
-          <path d="M17 19c5-1 5 6 1 5-2-1-2-4 0-3" fill="none" stroke="#d6ad6b" strokeWidth="1.1" />
-          <path d="M27 17h56" stroke="#ffedc3" strokeWidth="1.8" opacity=".68" />
-          <path d="M20 101h72c10 0 10 14 0 14H20c-10 0-10-14 0-14Z" fill={`url(#${id}-paper)`} />
-          <ellipse cx="92" cy="108" rx="6" ry="7" fill="#a47742" />
-          <ellipse cx="92" cy="108" rx="3" ry="4" fill="#604126" />
-          <path d="M23 104h59" stroke="#f9dba1" strokeWidth="1.7" opacity=".68" />
-          <path d="M19 42l5 3m59 42-4 4m-48 6 3-2m40-60 3 2" stroke="#9a723d" opacity=".5" />
+        <g className="lore-scroll-open">
+          <image href="/lore/open-parchment-20261016.webp" x="8" y="8" width="94" height="114" preserveAspectRatio="xMidYMid meet" />
         </g>
         {open && (
           <g className="lore-scroll-magic">

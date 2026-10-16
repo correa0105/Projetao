@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-16",
+  "purpose": "Replace only the open parchment illustration; retain existing magic wisps, particles and unfurl animation.",
+  "method": "built-in image_gen",
+  "source": "exec-57432731-9db6-4cc6-a0f4-19d7282d00a8.png",
+  "image": "/lore/open-parchment-20261016.webp",
+  "prompt": "Use case: stylized-concept.\nAsset type: one isolated premium fantasy RPG UI illustration, an OPEN unfurled parchment scroll, to replace a crude flat vector icon in a dark medieval library website. It will be displayed only about 82 by 98 pixels, so the silhouette, material depth and restrained details must read beautifully at small size.\nSubject: a single upright open sheet of old natural vellum. Its top and bottom edges curl into substantial irregular PAPER rolls, with visible layered spiral ends and convincing thickness. No wooden sticks, dowels, rods or handles. The hanging sheet has gently uneven, frayed and curled edges, tiny nicks, delicate creases and subtle fibrous mottling. A few quiet rows of faded brown manuscript strokes and one small, understated ornamental heading, without readable words. Slight asymmetry and soft paper folds make it a real artifact.\nStyle: highly polished hand-painted inventory art with realistic material rendering, carefully modeled light and shadow, rich but restrained detail, elegant historical dark fantasy aesthetic; NOT cartoon, emoji, flat vector or cheap clipart. Cream, aged ivory, muted ochre and deep umber at the folds. Soft directional warm light from upper left; natural darker inner roll cavities. Strong clear silhouette and moderate contrast on a dark UI.\nComposition: front-facing, portrait 4:5 object proportion, entire scroll fully visible, centered, filling most of the image with a small safe transparent margin on every side. No extreme perspective, no object cropped.\nBackdrop: genuinely transparent alpha, no ground, no rectangle, no scenery, no drop-shadow outside the object.\nConstraints: only the physical scroll artwork. Do NOT draw blue light, magic wisps, particles, smoke, glow, sparkles, animated effects, wax seal, ribbon, frame or extra props; those effects already exist in the app and must remain independent. No logos, watermark or readable text.",
+  "width": 432,
+  "height": 529,
+  "bytes": 76032,
+  "sha256": "94c95e5240242f95eb7ec798173f4054eaa994bb9c15dfe1c9f9d1d8650cdc79",
+  "sourceSha256": "97432e5f5cca7419e099456b1531a21dba10425351f08489bf9a0bab792a1fc2",
+  "transparentPixels": 74335,
+  "protectedEffectsSha256": "0e57f48387daffffe899e536dca7de6a9bc39fc2ad6d8f8f9c2a13d9c73b1589"
+}

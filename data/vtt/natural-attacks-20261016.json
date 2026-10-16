@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-16",
+  "method": "built-in image_gen",
+  "purpose": "Textured reusable natural-attack sprites; actor art, damage and timing remain separate.",
+  "assets": [
+    {
+      "id": "bite",
+      "prompt": "Use case: stylized-concept. Asset type: a premium dark fantasy virtual-tabletop attack-animation sprite, one isolated anatomical fantasy-creature fragment on genuine transparent alpha. Highly detailed hand-painted realism, physically modeled volume, textured rough scales and worn keratin/bone, small scratches, pores, subtle warm edge highlights, rich shaded cavities, crisp silhouette. Neutral graphite, desaturated blue-green skin, aged ivory tips and umber cavities. It must read at 80-140 pixels as well as large. Flat orthographic top-down/overhead view, fully visible with transparent margin, no perspective scenery. No cartoon or flat vector, no bold drawn outlines, no badge, no frame, no floor, no drop shadow outside the shape, no gore or blood, no full creature, no letters or symbols. No attack streaks, glow, particles or magical trails; those are animated separately in code. Subject: ONE upper crescent-shaped reptilian jaw segment, like a shallow inverted U, open underside facing toward the bottom of the canvas. Nine individually modeled slightly irregular conical teeth point downward toward the open mouth space; two larger curved side fangs. Teeth and gums form one coherent short jaw. Deep dark charcoal scaly outer jaw ridge, restrained muted dark gums, convincing ivory enamel with fine striations, worn tips and layered shading. The broad crescent lies horizontally. Only the upper jaw, do not draw the lower jaw, no eye/head/body. Designed so a vertically mirrored copy becomes the matching lower jaw that closes in an animation. Keep the center inside the U completely transparent. Near-square canvas, centered silhouette.",
+      "source": "exec-d2bbebeb-9137-4343-a6d4-f15b1695a82b.png",
+      "image": "/vtt/natural-attacks-20261016/bite.webp",
+      "sourceSha256": "50631c7280cdf6c9a6e9c75e650832c5f9400921bdecb3c96cb79bd602f5098a",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sha256": "d1193704aaf3194b375d45f4590195459997ca28e43cfc9c5d779e3d79621ae1",
+      "width": 640,
+      "height": 352,
+      "bytes": 79588,
+      "transparentPixels": 122254
+    },
+    {
+      "id": "claw",
+      "prompt": "Use case: stylized-concept. Asset type: a premium dark fantasy virtual-tabletop attack-animation sprite, one isolated anatomical fantasy-creature fragment on genuine transparent alpha. Highly detailed hand-painted realism, physically modeled volume, textured rough scales and worn keratin/bone, small scratches, pores, subtle warm edge highlights, rich shaded cavities, crisp silhouette. Neutral graphite, desaturated blue-green skin, aged ivory tips and umber cavities. It must read at 80-140 pixels as well as large. Flat orthographic top-down/overhead view, fully visible with transparent margin, no perspective scenery. No cartoon or flat vector, no bold drawn outlines, no badge, no frame, no floor, no drop shadow outside the shape, no gore or blood, no full creature, no letters or symbols. No attack streaks, glow, particles or magical trails; those are animated separately in code. Subject: ONE compact three-fingered monster claw, all three articulated fingers organically joined by a small broad scaly knuckle/paw base at the top. Three long, elegantly curved polished ivory-keratin talons curl downward toward the bottom of the canvas and taper to sharp slightly hooked points. Talons separated by transparent spaces. Strong rounded knuckles, overlapping small charcoal-blue scales with microtexture, beautiful shaded ridges, believable tendons, naturally modeled depth. The three talons are staggered slightly, not rigidly identical. No arm or wrist beyond a softly tapered short base. A coherent creature paw fragment, centered, portrait composition.",
+      "source": "exec-19c8721c-48b2-4c6b-8f93-879d001bdb1b.png",
+      "image": "/vtt/natural-attacks-20261016/claw.webp",
+      "sourceSha256": "fe81d42b2cae61c07f5bc416f9df2e2ebd291d8b39ece39f79f1ed39384bee48",
+      "sourceWidth": 1145,
+      "sourceHeight": 1374,
+      "sha256": "b08269624e7918b8017bfd0005fd19916fe586f70995116a4fa741d16bfa6487",
+      "width": 488,
+      "height": 640,
+      "bytes": 110804,
+      "transparentPixels": 171123
+    },
+    {
+      "id": "tail",
+      "prompt": "Use case: stylized-concept. Asset type: a premium dark fantasy virtual-tabletop attack-animation sprite, one isolated anatomical fantasy-creature fragment on genuine transparent alpha. Highly detailed hand-painted realism, physically modeled volume, textured rough scales and worn keratin/bone, small scratches, pores, subtle warm edge highlights, rich shaded cavities, crisp silhouette. Neutral graphite, desaturated blue-green skin, aged ivory tips and umber cavities. It must read at 80-140 pixels as well as large. Flat orthographic top-down/overhead view, fully visible with transparent margin, no perspective scenery. No cartoon or flat vector, no bold drawn outlines, no badge, no frame, no floor, no drop shadow outside the shape, no gore or blood, no full creature, no letters or symbols. No attack streaks, glow, particles or magical trails; those are animated separately in code. Subject: ONE sweeping reptilian monster tail, a broad root at the LEFT that tapers continuously along an elegant shallow S-shaped curl to a long sharp tapered tip at the RIGHT. Top-down view. Broad root curves slightly upward, middle bends gently downward, tip curls upward. Sculpted overlapping charcoal-blue-green scales with subtle organic patterning and individual raised highlights; a restrained row of seven small horn ridges along the outer upper edge. Convincing cylindrical anatomy, dark creases between scales and pale worn horn details. Tail alone, no creature or hindquarters. Entire tail visible with a generous safe alpha margin. Wide landscape silhouette, left-to-right orientation, centered.",
+      "source": "exec-d82fc0e8-0a69-4a91-acd0-21e832fde408.png",
+      "image": "/vtt/natural-attacks-20261016/tail.webp",
+      "sourceSha256": "b7bbb8da70505411ad98a13fc0cd39de1fd19a7251199be2f65e59d80abcfe6d",
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "sha256": "2f92978dde3f6847f5adad30ec97563316b2927c15f4c380b8c868094fadb7a5",
+      "width": 640,
+      "height": 227,
+      "bytes": 47650,
+      "transparentPixels": 90976
+    }
+  ],
+  "textures": [
+    {
+      "id": "scale",
+      "image": "/vtt/natural-attacks-20261016/scale-material.webp",
+      "source": "exec-d82fc0e8-0a69-4a91-acd0-21e832fde408.png",
+      "extract": {
+        "left": 280,
+        "top": 360,
+        "width": 160,
+        "height": 160
+      },
+      "width": 128,
+      "height": 128,
+      "sha256": "02ce8855aa16595fbc486779f7dac6e833cbc0d3e6f6fa4f7f13dbdbcc9f7726",
+      "bytes": 9758
+    },
+    {
+      "id": "bone",
+      "image": "/vtt/natural-attacks-20261016/bone-material.webp",
+      "source": "exec-d2bbebeb-9137-4343-a6d4-f15b1695a82b.png",
+      "extract": {
+        "left": 605,
+        "top": 405,
+        "width": 55,
+        "height": 92
+      },
+      "width": 128,
+      "height": 128,
+      "sha256": "7d2a9fb4e783ab1cd6a42228270de97d81a04fe889e1ea465a55292d1e0bb244",
+      "bytes": 4912
+    }
+  ]
+}

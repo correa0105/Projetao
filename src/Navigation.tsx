@@ -80,6 +80,7 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     items: [
       { page: 'world', label: 'Mundo', icon: Map },
       { page: 'house', label: 'House', icon: House },
+      { page: 'house2', label: 'House 2.0 · testes', icon: House },
       { page: 'guild', label: 'Guilda', icon: Shield },
     ],
   },

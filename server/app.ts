@@ -22,6 +22,7 @@ import { administratorPredicate, isAdministrator, requireAdministrator } from '.
 import { AppError, purchase } from './services.js';
 import { completeMission, completionSchema, publishMissionHook } from './missions.js';
 import { houseRouter } from './house.js';
+import { house2Router } from './house-v2.js';
 import { atlasId, resolvePostLocation } from './atlas.js';
 import { characterArtRouter, characterListSql } from './character-art.js';
 import { characterSchema } from '../shared/character-art.js';
@@ -215,6 +216,7 @@ export function createApp() {
   );
   app.use('/api/character-art', express.json({ limit: '12mb' }));
   app.use('/api/house', express.json({ limit: '8mb' }));
+  app.use('/api/house-v2', express.json({ limit: '128kb' }));
   app.use('/api/lore', express.json({ limit: '2mb' }));
   app.use('/api/rulebook', express.json({ limit: '12mb' }));
   app.use('/api', rulebookRouter());
@@ -242,6 +244,7 @@ export function createApp() {
   app.use('/api', guildsRouter());
   app.use('/api', towerRouter());
   app.use('/api', houseRouter());
+  app.use('/api', house2Router());
   app.get('/api/me', async (_req, res) => {
     const {
       rows: [permission],

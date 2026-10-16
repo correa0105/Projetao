@@ -1,5 +1,11 @@
 # Lore como arquivo de leitura — 16/10/2026
 
+O pergaminho aberto ganhou uma ilustração original com camadas reais de papel,
+bordas gastas e manuscrito discreto, substituindo apenas o desenho anterior.
+Os quatro rastros mágicos, dez partículas e animação de abertura permanecem
+idênticos. Arte do imagegen embutido em `public/lore/open-parchment-20261016.webp`;
+prompt completo, alpha, dimensões e hashes em `data/lore-open-parchment-20261016.json`.
+
 A seção regional segue a composição de Regras: barra de consulta e busca,
 sumário à esquerda, selos de bronze do mesmo sistema ilustrado, títulos em
 Marcellus, superfícies carvão e detalhes de cobre. O cabeçalho de região/pasta

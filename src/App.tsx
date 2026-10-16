@@ -67,6 +67,7 @@ const Vtt = lazy(() => import('./Vtt').then((module) => ({ default: module.Vtt }
 const Tower = lazy(() => import('./Tower').then((module) => ({ default: module.Tower })));
 const GuildPage = lazy(() => import('./Guilds').then((module) => ({ default: module.Guilds })));
 const HousePage = lazy(() => import('./House').then((module) => ({ default: module.House })));
+const House2Page = lazy(() => import('./House2').then((module) => ({ default: module.House2 })));
 const HallOfFame = lazy(() =>
   import('./HallOfFame').then((module) => ({ default: module.HallOfFame })),
 );
@@ -94,6 +95,7 @@ const titles: Record<Page, string> = {
   hall: 'Hall da Fama',
   profiles: 'Perfis da Alvorada',
   house: 'House',
+  house2: 'House 2.0',
   guild: 'Guilda',
   world: 'Mapa Alvorada',
   lore: 'Crônicas & lore',
@@ -647,6 +649,7 @@ function Portal({ user }: { user: User }) {
         )}
         {page === 'lore' && <LoreLibrary />}
         {page === 'house' && <HousePage character={character} user={user} onPurchased={refresh} />}
+        {page === 'house2' && <House2Page character={character} user={user} />}
         {page === 'guild' && (
           <GuildPage key={character?.id || 'no-character'} user={user} characters={characters} activeCharacterId={character?.id || ''} onSelectCharacter={setSelectedId} onPurchased={refresh} />
         )}

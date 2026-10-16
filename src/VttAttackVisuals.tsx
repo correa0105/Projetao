@@ -10,6 +10,13 @@ import {
   type WeaponAnimation,
 } from './vtt-weapon-animation';
 import './vtt-attack-visuals.css';
+const attackSounds = (kind: string, weapon?: string) => {
+  if (kind === 'arrow') return ['/audio/vtt-attacks/bow-release.wav', '/audio/vtt-attacks/arrow-impact.wav'];
+  if (kind !== 'natural') return ['/audio/vtt/sfx-knifeslice.ogg', '/audio/vtt-attacks/blade-impact.wav'];
+  if (weapon === 'bite' || weapon === 'pincer') return ['/audio/vtt/sfx-creature-breath.ogg', '/audio/vtt/sfx-chop.ogg'];
+  if (weapon === 'slam' || weapon === 'hoof' || weapon === 'tail') return ['/audio/vtt/sfx-cloth1.ogg', '/audio/vtt-attacks/blade-impact.wav'];
+  return ['/audio/vtt/sfx-knifeslice.ogg', '/audio/vtt-attacks/blade-impact.wav'];
+};
 
 export function VttAttackVisuals({
   roomId,
@@ -76,9 +83,8 @@ export function VttAttackVisuals({
         .slice(-15);
       if (current.current.enabled)
         events.current.push(weaponAnimation(e, actor, target, m.id, performance.now()));
-      sound(
-        e.kind === 'arrow' ? '/audio/vtt-attacks/bow-release.wav' : '/audio/vtt/sfx-knifeslice.ogg',
-      );
+      const sounds = attackSounds(e.kind, e.weapon);
+      sound(sounds[0]);
       if (e.hit) {
         const timer = setTimeout(
           () => {
@@ -88,11 +94,7 @@ export function VttAttackVisuals({
               visible(e.target_id) &&
               current.current.scene.id === e.sceneId
             )
-              sound(
-                e.kind === 'arrow'
-                  ? '/audio/vtt-attacks/arrow-impact.wav'
-                  : '/audio/vtt-attacks/blade-impact.wav',
-              );
+              sound(sounds[1]);
           },
           e.kind === 'arrow' ? 830 : 500,
         );

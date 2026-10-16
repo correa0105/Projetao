@@ -1,6 +1,8 @@
 import type { AttackVisual } from '../shared/vtt-attack-visual';
 import type { Point, VttToken } from '../shared/vtt';
 import { drawWeaponArt, drawProjectile, preloadWeaponArt } from './vtt-weapon-art';
+import { drawNaturalAnimation } from './vtt-natural-animation';
+export { preloadNaturalArt } from './vtt-natural-art';
 void preloadWeaponArt();
 export type WeaponAnimation = AttackVisual & {
   id: string;
@@ -116,6 +118,7 @@ function impact(c: CanvasRenderingContext2D, e: WeaponAnimation, age: number, an
 export function drawWeaponAnimation(c: CanvasRenderingContext2D, e: WeaponAnimation, now: number) {
   const age = now - e.started;
   if (age < 0 || age > weaponAnimationDuration) return false;
+  if (e.kind === 'natural') return drawNaturalAnimation(c, e, age);
   const ranged = e.kind === 'arrow',
     style = e.weapon || (ranged ? 'bow' : 'sword'),
     launch = ranged ? 180 : 0,
