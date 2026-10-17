@@ -1173,6 +1173,7 @@ export function House2({ character, user }: { character?: Character; user: User 
         )}
         <House2VillageRoofs
           plots={scene?.plots ?? []}
+          actors={actors.tokens}
           interior={visibleInterior}
           doorControls={false}
           selected={selected}

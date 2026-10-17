@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
 import { House2GroundPaint } from './House2GroundPaint';
 import { house2Architecture } from './house2-architecture';
+import { House2Roof } from './House2Roof';
+import { house2RoofOccluded } from './house2-roof-visibility';
+import type { House2Token } from '../shared/house2-tokens';
 import {
   villageTextures,
   villageScenery,
@@ -176,6 +179,7 @@ export function House2VillageRoofs({
   enter,
   onHover,
   doorControls = true,
+  actors = [],
 }: {
   plots: House2Plot[];
   interior: string | null;
@@ -185,6 +189,7 @@ export function House2VillageRoofs({
   enter: (p: House2Plot) => void;
   onHover: (id: string | null) => void;
   doorControls?: boolean;
+  actors?: House2Token[];
 }) {
   return (
     <>
@@ -217,12 +222,11 @@ export function House2VillageRoofs({
                     transform={`translate(${position.x} ${position.y}) rotate(${position.rotation})`}
                     onClick={() => choose(p)}
                   >
-                    <image
-                      className={preview ? 'h2-house-preview' : 'h2-house-fixed'}
-                      data-house2-roof={spec.id}
-                      href={architecture?.roof ?? spec.image}
-                      x={-roofWidth / 2}
-                      y={-roofHeight / 2}
+                    <House2Roof
+                      house={spec}
+                      instance={p.id}
+                      preview={preview}
+                      fade={!preview && house2RoofOccluded(p, actors)}
                       width={roofWidth}
                       height={roofHeight}
                     />

@@ -238,6 +238,79 @@ try {
       .locator('circle'),
   ).toHaveAttribute('r', '.25');
   await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(0);
+  await expect(ownRoof).toHaveAttribute('data-house2-roof-eaves', 'transparent');
+  const fadedEaves = await page.screenshot({ path: output + '/eaves-transparent.png' });
+  const edgePixel = await screen(house2HouseWorld(house, { x: -1, y: floor.bottom + 0.45 })),
+    centerPixel = await screen(house2HouseWorld(house, { x: 0, y: 0 })),
+    away = house2HouseWorld(house, {
+      x: (floor.doorStart + floor.doorEnd) / 2,
+      y: floor.bottom + 2.4,
+    });
+  await drag(actor, away);
+  await expect(ownRoof).toHaveAttribute('data-house2-roof-eaves', 'solid');
+  await expect
+    .poll(
+      async () =>
+        (await request(owner, base + '/tokens', undefined, 'GET')).tokens.find(
+          (t: any) => t.id === actor.id,
+        ).x,
+    )
+    .toBeCloseTo(away.x, 2);
+  await page.getByRole('button', { name: 'Fechar Meus tokens', exact: true }).click();
+  const solidEaves = await page.screenshot({ path: output + '/eaves-restored.png' });
+  async function pixel(data: Buffer, at: { x: number; y: number }) {
+    return [
+      ...(await sharp(data)
+        .extract({ left: Math.round(at.x), top: Math.round(at.y), width: 1, height: 1 })
+        .removeAlpha()
+        .raw()
+        .toBuffer()),
+    ];
+  }
+  const edgeBefore = await pixel(fadedEaves, edgePixel),
+    edgeAfter = await pixel(solidEaves, edgePixel),
+    centerBefore = await pixel(fadedEaves, centerPixel),
+    centerAfter = await pixel(solidEaves, centerPixel);
+  expect(edgeBefore.reduce((sum, n, i) => sum + Math.abs(n - edgeAfter[i]), 0)).toBeGreaterThan(30);
+  expect(
+    centerBefore.reduce((sum, n, i) => sum + Math.abs(n - centerAfter[i]), 0),
+  ).toBeLessThanOrEqual(3);
+  actor = (await request(owner, base + '/tokens', undefined, 'GET')).tokens.find(
+    (t: any) => t.id === actor.id,
+  );
+  await drag(actor, to);
+  await expect(ownRoof).toHaveAttribute('data-house2-roof-eaves', 'transparent');
+  await expect
+    .poll(
+      async () =>
+        (await request(owner, base + '/tokens', undefined, 'GET')).tokens.find(
+          (t: any) => t.id === actor.id,
+        ).x,
+    )
+    .toBeCloseTo(to.x, 2);
+  await page.getByRole('button', { name: 'Fechar Meus tokens', exact: true }).click();
+  const eavesDownload = page.waitForEvent('download');
+  await page
+    .getByRole('button', { name: 'Print da House 2.0 em alta qualidade', exact: true })
+    .click();
+  await (await eavesDownload).saveAs(output + '/eaves-hd.png');
+  const eavesHd = await sharp(output + '/eaves-hd.png').metadata();
+  expect(eavesHd.width).toBe(5760);
+  expect(eavesHd.height).toBe(3600);
+  const hdEdge = await pixel(await readFile(output + '/eaves-hd.png'), {
+    x: edgePixel.x * 4,
+    y: edgePixel.y * 4,
+  });
+  expect(hdEdge.reduce((sum, n, i) => sum + Math.abs(n - edgeAfter[i]), 0)).toBeGreaterThan(20);
+  await page.reload();
+  await page.locator('.h2-neighborhood-card').first().click();
+  await expect(ownRoof).toHaveAttribute('data-house2-roof-eaves', 'transparent');
+  await tool('Meus tokens');
+  await page.getByRole('button', { name: 'Localizar Aurora no mapa', exact: true }).click();
+  await page.getByRole('button', { name: 'Fechar Meus tokens', exact: true }).click();
+  actor = (await request(owner, base + '/tokens', undefined, 'GET')).tokens.find(
+    (t: any) => t.id === actor.id,
+  );
   await page.screenshot({ path: output + '/outside-roof.png' });
   await drag(actor, inside);
   await expect(ownRoof).toHaveCount(1);
@@ -364,6 +437,11 @@ try {
         originalDoorOnly: true,
         smallDoorControl: true,
         rotatedHouse: 270,
+        eavesRevealAndRestore: true,
+        eavesPixelDifference: edgeBefore.reduce((sum, n, i) => sum + Math.abs(n - edgeAfter[i]), 0),
+        roofCenterPreserved: true,
+        eavesAfterReload: true,
+        eavesInHdCapture: true,
         persistence: true,
         visitorReadOnly: true,
         ownerRoofEditing: true,
