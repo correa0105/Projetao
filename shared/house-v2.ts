@@ -25,6 +25,8 @@ export const house2VillagePlots = [
 ] as const;
 export const house2StartingBalance = 20000;
 export const house2PlotPrice = 1200;
+export const house2PlotSize = 18;
+export const house2PlotExpansion = 3;
 export const house2Houses = houses
   .filter((h) => h.category === 'Casas vazias')
   .map((h, i) => ({
@@ -70,6 +72,7 @@ export type House2Plot = {
   house_x: number | null;
   house_y: number | null;
   house_rotation: number;
+  door_open?: boolean;
   revision: number;
   village_slot: number | null;
 };

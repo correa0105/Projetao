@@ -50,16 +50,36 @@ test('Vilarejo: preservar casas, móveis, compras e mais de doze terrenos adquir
     await pool.query('INSERT INTO house2_accounts(user_id,balance)VALUES($1,15231)', [user]);
     const before = (
       await pool.query(
-        'SELECT id,character_id,x,y,house_id,house_x,house_y,house_rotation FROM house2_plots WHERE character_id IS NOT NULL ORDER BY id',
+        'SELECT id,character_id,x,y,width,height,house_id,house_x,house_y,house_rotation FROM house2_plots WHERE character_id IS NOT NULL ORDER BY id',
       )
     ).rows;
     await migrate();
     const after = (
       await pool.query(
-        'SELECT id,character_id,x,y,house_id,house_x,house_y,house_rotation FROM house2_plots WHERE character_id IS NOT NULL ORDER BY id',
+        'SELECT id,character_id,x,y,width,height,house_id,house_x,house_y,house_rotation FROM house2_plots WHERE character_id IS NOT NULL ORDER BY id',
       )
     ).rows;
-    assert.deepEqual(after, before);
+    assert.deepEqual(
+      after,
+      before.map((p, i) =>
+        after[i].width === 18
+          ? {
+              ...p,
+              x: Math.max(0, Math.min(182, p.x - 3)),
+              y: Math.max(0, Math.min(182, p.y - 3)),
+              width: 18,
+              height: 18,
+            }
+          : p,
+      ),
+    );
+    assert(
+      (
+        await pool.query(
+          'SELECT count(*)::int n FROM house2_plots WHERE retired_at IS NULL AND width=18',
+        )
+      ).rows[0].n > 0,
+    );
     const stored = (await pool.query('SELECT * FROM house2_items WHERE id=$1', [item.id])).rows[0];
     delete stored.scale;
     assert.deepEqual(stored, item);

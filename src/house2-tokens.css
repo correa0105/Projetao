@@ -1,0 +1,81 @@
+.h2-token-panel,
+.h2-token-panel > label,
+.h2-token-adjust,
+.h2-token-adjust > label {
+  display: grid;
+  gap: 0.65rem;
+}
+.h2-token-panel input {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem;
+  background: #101923;
+  color: #ded0b7;
+  border: 1px solid #806b4f;
+  border-radius: 0.3rem;
+  font: inherit;
+}
+.h2-token-source {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.7rem;
+  border: 1px solid #806b4f70;
+  border-radius: 0.4rem;
+  background: #10192390;
+}
+.h2-token-source > img {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+}
+.h2-token-source > div {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+.h2-token-source strong,
+.h2-token-source span {
+  overflow-wrap: anywhere;
+}
+.h2-token-source span {
+  font-size: 0.75rem;
+  color: #b8ab93;
+}
+.h2-token-source button {
+  font-size: 0.8rem;
+}
+.h2-token-adjust {
+  border-top: 1px solid #806b4f80;
+  padding-top: 1rem;
+}
+.h2-token-adjust h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.h2-actor {
+  outline: none;
+  touch-action: none;
+}
+.h2-actor.controlled {
+  cursor: grab;
+}
+.h2-actor.controlled:active {
+  cursor: grabbing;
+}
+.h2-actor:focus-visible > g {
+  filter: drop-shadow(0 0 0.1px #f5d292);
+}
+.h2-actor-name {
+  font:
+    0.26px system-ui,
+    sans-serif;
+  fill: #f5e5c5;
+  stroke: #101923;
+  stroke-width: 0.065px;
+  paint-order: stroke fill;
+  stroke-linejoin: round;
+}

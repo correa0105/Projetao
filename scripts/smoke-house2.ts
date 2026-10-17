@@ -645,6 +645,8 @@ try {
   await page.locator(`g[data-house2-plot="${plotId}"] > .h2-plot`).focus();
   await page.keyboard.press('Enter');
   await page.getByRole('button', { name: 'Fechar Terrenos', exact: true }).click();
+  await page.getByRole('button', { name: 'Sair da casa de Aurora', exact: true }).click();
+  await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(0);
   await page
     .locator(`g[data-house2-plot="${plotId}"] > .h2-plot`)
     .hover({ position: { x: 2, y: 2 } });

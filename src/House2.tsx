@@ -29,6 +29,7 @@ import {
   Warehouse,
   Paintbrush,
   X,
+  UsersRound,
 } from 'lucide-react';
 import { api, post } from './api';
 import { ScenePanel } from './ScenePanel';
@@ -45,6 +46,9 @@ import { House2Clock } from './House2Clock';
 import { House2Capture } from './House2Capture';
 import { House2Ground, House2GroundEditor } from './House2Ground';
 import { House2ItemBorder } from './House2ItemBorder';
+import { House2TokensLayer, House2TokensPanel, useHouse2Tokens } from './House2Tokens';
+import { House2Doors, House2IndoorVision } from './House2Doors';
+import { house2Contains } from '../shared/house2-tokens';
 import {
   house2BorderHandles,
   house2ResizeFromBorder,
@@ -75,7 +79,7 @@ import type { Character, User } from './types';
 import './house2.css';
 
 const number = (n: number) => n.toLocaleString('pt-BR');
-type Tool = 'terrain' | 'houses' | 'shop' | 'collection' | 'settings' | 'ground';
+type Tool = 'terrain' | 'houses' | 'shop' | 'collection' | 'settings' | 'ground' | 'tokens';
 const toolNames: Record<Tool, string> = {
   terrain: 'Terrenos',
   houses: 'Casas vazias',
@@ -83,6 +87,7 @@ const toolNames: Record<Tool, string> = {
   collection: 'Minha coleção',
   settings: 'Vizinhança',
   ground: 'Pintar terreno',
+  tokens: 'Meus tokens',
 };
 const toolIcons = {
   terrain: LandPlot,
@@ -91,6 +96,7 @@ const toolIcons = {
   collection: Warehouse,
   settings: Settings,
   ground: Paintbrush,
+  tokens: UsersRound,
 };
 type Camera = House2Camera;
 
@@ -110,6 +116,7 @@ export function House2({ character, user }: { character?: Character; user: User 
   const [draft, setDraft] = useState<House2Layout | null>(null);
   const [selectedPiece, setSelectedPiece] = useState<string | null>(null);
   const [interior, setInterior] = useState<string | null>(null);
+  const [hideRoofOnEdit, setHideRoofOnEdit] = useState(true);
   const [camera, setCamera] = useState<Camera>(() =>
     initialHouse2Camera({ width: innerWidth, height: innerHeight }),
   );
@@ -132,6 +139,7 @@ export function House2({ character, user }: { character?: Character; user: User 
   const [notice, setNotice] = useState(''),
     [loading, setLoading] = useState(true),
     [busy, setBusy] = useState(false);
+  const actors = useHouse2Tokens(sceneId, setNotice);
   const [newName, setNewName] = useState(''),
     [newTerrain, setNewTerrain] = useState('earth');
   const [createOpen, setCreateOpen] = useState(false);
@@ -285,6 +293,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     return true;
   };
   function enter(id: string) {
+    if (actors.busy) return;
     if (guardDirty()) return;
     setScene(null);
     setSceneId(id);
@@ -296,6 +305,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     setNotice('');
   }
   function leave() {
+    if (actors.busy) return;
     if (guardDirty()) return;
     setSceneId(null);
     setScene(null);
@@ -309,7 +319,11 @@ export function House2({ character, user }: { character?: Character; user: User 
     setSelectedPiece(null);
     if (p.id !== selected) setInterior(null);
     if (focus)
-      setCamera({ x: p.x + p.width / 2, y: p.y + p.height / 2, span: Math.max(19, 19 / aspect) });
+      setCamera({
+        x: p.x + p.width / 2,
+        y: p.y + p.height / 2,
+        span: Math.max(p.height + 7, (p.width + 7) / aspect),
+      });
     setTool('terrain');
   }
   function startDraft(): House2Layout | null {
@@ -684,7 +698,26 @@ export function House2({ character, user }: { character?: Character; user: User 
   const selectedTransform =
     draft?.items.find((i) => i.id === selectedPiece) ??
     shownItems.find((i) => i.id === selectedPiece);
-  const visibleInterior = tool === 'ground' && canEdit && plot ? plot.id : interior;
+  const actorPlots = (scene?.plots ?? []).map((p) => ({
+    ...p,
+    door_open: actors.doors[p.id] ?? p.door_open,
+  }));
+  const editingInterior =
+    canEdit &&
+    plot &&
+    (tool === 'ground' ||
+      (hideRoofOnEdit && (tool === 'collection' || tool === 'shop' || !!selectedPiece)))
+      ? plot.id
+      : null;
+  const occupiedInterior = actors.viewer
+    ? (actorPlots.find((p) => p.house_id && house2Contains(p, actors.viewer!)) ?? null)
+    : null;
+  const visibleInterior =
+    editingInterior ?? (actors.viewer ? (occupiedInterior?.id ?? null) : interior);
+  const visionPlot = editingInterior
+    ? null
+    : (occupiedInterior ??
+      (!actors.viewer ? (actorPlots.find((p) => p.id === interior) ?? null) : null));
   const borderItem =
     canEdit && !busy && tool !== 'ground'
       ? shownItems.find((i) => i.id === selectedPiece && i.plot_id === selected)
@@ -1109,6 +1142,7 @@ export function House2({ character, user }: { character?: Character; user: User 
         <House2VillageRoofs
           plots={scene?.plots ?? []}
           interior={visibleInterior}
+          doorControls={false}
           selected={selected}
           hover={hover}
           onHover={setHover}
@@ -1117,6 +1151,17 @@ export function House2({ character, user }: { character?: Character; user: User 
             if (p.id !== selected && guardDirty()) return;
             setSelected(p.id);
             setInterior(interior === p.id ? null : p.id);
+            setSelectedPiece(null);
+          }}
+        />
+        <House2TokensLayer
+          interior={visibleInterior}
+          controls={actors}
+          plots={actorPlots}
+          world={world}
+          disabled={busy || !!draft || tool === 'ground'}
+          choose={() => {
+            setTool('tokens');
             setSelectedPiece(null);
           }}
         />
@@ -1129,6 +1174,20 @@ export function House2({ character, user }: { character?: Character; user: User 
           fill={house2DayPhases[dayPhase].tint}
           opacity={house2DayPhases[dayPhase].tintOpacity}
           pointerEvents="none"
+        />
+        <House2IndoorVision plot={visionPlot} />
+        <House2Doors
+          plots={actorPlots}
+          interior={visibleInterior}
+          viewer={actors.viewer}
+          busy={actors.busy}
+          inspect={(p) => {
+            if (p.id !== selected && guardDirty()) return;
+            setSelected(p.id);
+            setInterior(interior === p.id ? null : p.id);
+            setSelectedPiece(null);
+          }}
+          toggle={(p) => void actors.door(p.id, !p.door_open)}
         />
         {tool === 'ground' && canEdit && plot && !busy && (
           <House2GroundEditor
@@ -1145,6 +1204,7 @@ export function House2({ character, user }: { character?: Character; user: User 
           />
         )}
         {hover &&
+          (!visionPlot || hover === visionPlot.id) &&
           (() => {
             const p = scene?.plots.find((p) => p.id === hover);
             if (!p) return null;
@@ -1298,13 +1358,19 @@ export function House2({ character, user }: { character?: Character; user: User 
       {tool && (
         <ScenePanel id="house2" title={toolNames[tool]} close={() => setTool(null)}>
           <div className="h2-panel">
-            {tool !== 'ground' && balance}
-            {tool === 'settings' ? (
+            {tool !== 'ground' && tool !== 'tokens' && balance}
+            {tool === 'tokens' ? (
+              <House2TokensPanel
+                controls={actors}
+                center={{ x: boundedCamera.x, y: boundedCamera.y }}
+                focus={(t) => setCamera({ x: t.x, y: t.y, span: 19 })}
+              />
+            ) : tool === 'settings' ? (
               <>
                 <p>{scene?.neighborhood.description}</p>
                 <House2Clock world={worldClock} />
                 <p>
-                  Mapa de 200 × 200 quadrados. Terrenos de 12 × 12, distribuídos entre jardins e
+                  Mapa de 200 × 200 quadrados. Pátios de até 18 × 18, distribuídos entre jardins e
                   caminhos do vilarejo.
                 </p>
                 <label className="h2-checkbox">
@@ -1329,7 +1395,8 @@ export function House2({ character, user }: { character?: Character; user: User 
                   {plot ? (
                     <>
                       <span className="h2-eyebrow">
-                        TERRENO {String(plot.number).padStart(2, '0')} · 12 × 12
+                        TERRENO {String(plot.number).padStart(2, '0')} · {plot.width} ×{' '}
+                        {plot.height}
                       </span>
                       <h3>
                         {plot.owner_name ? `Casa de ${plot.owner_name}` : 'Um espaço para sua casa'}
@@ -1340,7 +1407,18 @@ export function House2({ character, user }: { character?: Character; user: User 
                           {canEdit ? ' · seu terreno' : ' · somente visita'}
                         </p>
                       )}
-                      {plot.house_id && tool !== 'ground' && (
+                      {plot.house_id && canEdit && tool !== 'ground' && (
+                        <label className="h2-checkbox">
+                          <input
+                            type="checkbox"
+                            aria-label="Ocultar telhado ao editar"
+                            checked={hideRoofOnEdit}
+                            onChange={(e) => setHideRoofOnEdit(e.target.checked)}
+                          />{' '}
+                          Ocultar telhado ao editar
+                        </label>
+                      )}
+                      {plot.house_id && tool !== 'ground' && !actors.viewer && (
                         <button
                           onClick={() => {
                             setInterior(interior === plot.id ? null : plot.id);

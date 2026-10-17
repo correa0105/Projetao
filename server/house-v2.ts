@@ -5,9 +5,11 @@ import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { requireAdministrator } from './administrators.js';
+import { house2TokensRouter } from './house2-tokens.js';
 import {
   house2StartingBalance,
   house2PlotPrice,
+  house2PlotExpansion,
   house2Houses,
   house2Furniture,
   house2LayoutSchema,
@@ -83,6 +85,7 @@ async function purchase(
 }
 export function house2Router() {
   const router = Router();
+  router.use(house2TokensRouter());
   router.get('/house-v2', async (_req, res) => {
     const user = res.locals.user.id;
     const neighborhoods = await pool.query(
@@ -125,7 +128,13 @@ export function house2Router() {
         [
           n.id,
           house2PlotPrice,
-          JSON.stringify(house2VillagePlots.map((p, i) => ({ ord: i + 1, x: p.x, y: p.y }))),
+          JSON.stringify(
+            house2VillagePlots.map((p, i) => ({
+              ord: i + 1,
+              x: p.x - house2PlotExpansion,
+              y: p.y - house2PlotExpansion,
+            })),
+          ),
         ],
       );
       return n.id;

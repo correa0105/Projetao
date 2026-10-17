@@ -175,6 +175,7 @@ export function House2VillageRoofs({
   choose,
   enter,
   onHover,
+  doorControls = true,
 }: {
   plots: House2Plot[];
   interior: string | null;
@@ -183,6 +184,7 @@ export function House2VillageRoofs({
   choose: (p: House2Plot) => void;
   enter: (p: House2Plot) => void;
   onHover: (id: string | null) => void;
+  doorControls?: boolean;
 }) {
   return (
     <>
@@ -232,40 +234,41 @@ export function House2VillageRoofs({
                   </g>
                 </g>
               )}
-              {!preview ? (
-                <g
-                  className="h2-door"
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`${interior === p.id ? 'Sair da' : 'Entrar na'} casa de ${p.owner_name}`}
-                  transform={`translate(${door.x} ${door.y})`}
-                  onPointerDown={(e) => e.stopPropagation()}
-                  onClick={() => enter(p)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      enter(p);
-                    }
-                  }}
-                >
-                  <circle r=".52" fill="#191710" stroke="#c2a469" strokeWidth=".045" />
-                  <path
-                    d="M-.2 .24v-.47h.36v.47m-.5 0h.65"
-                    fill="none"
-                    stroke="#e1cca0"
-                    strokeWidth=".04"
-                  />
-                </g>
-              ) : (
-                (hover === p.id || selected === p.id) && (
-                  <g transform={`translate(${door.x} ${door.y})`} pointerEvents="none">
-                    <circle r=".48" fill="#252b1e" stroke="#d2ba79" strokeWidth=".04" />
-                    <text textAnchor="middle" y=".17" fontSize=".5" fill="#e8d9ab">
-                      +
-                    </text>
+              {doorControls &&
+                (!preview ? (
+                  <g
+                    className="h2-door"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`${interior === p.id ? 'Sair da' : 'Entrar na'} casa de ${p.owner_name}`}
+                    transform={`translate(${door.x} ${door.y})`}
+                    onPointerDown={(e) => e.stopPropagation()}
+                    onClick={() => enter(p)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        enter(p);
+                      }
+                    }}
+                  >
+                    <circle r=".52" fill="#191710" stroke="#c2a469" strokeWidth=".045" />
+                    <path
+                      d="M-.2 .24v-.47h.36v.47m-.5 0h.65"
+                      fill="none"
+                      stroke="#e1cca0"
+                      strokeWidth=".04"
+                    />
                   </g>
-                )
-              )}
+                ) : (
+                  (hover === p.id || selected === p.id) && (
+                    <g transform={`translate(${door.x} ${door.y})`} pointerEvents="none">
+                      <circle r=".48" fill="#252b1e" stroke="#d2ba79" strokeWidth=".04" />
+                      <text textAnchor="middle" y=".17" fontSize=".5" fill="#e8d9ab">
+                        +
+                      </text>
+                    </g>
+                  )
+                ))}
             </g>
           );
         })}
