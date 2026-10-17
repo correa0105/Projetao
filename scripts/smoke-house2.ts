@@ -215,7 +215,7 @@ try {
   const item = page.locator(`[data-house2-piece="${itemId}"]`);
   await expect(item).toHaveAttribute('transform', /rotate\(90\)/);
   // Drag far outside the lot: the item must remain fully inside its purchased boundaries.
-  const box = (await item.boundingBox())!;
+  const box = (await item.locator('image').boundingBox())!;
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
   await page.mouse.down();
   await page.mouse.move(20, 450, { steps: 8 });
@@ -251,6 +251,104 @@ try {
     'transform',
     `translate(${saved.x} ${saved.y}) rotate(90)`,
   );
+  // Edit the actual SVG border, including the rotated corner and touch input.
+  await expect(item.locator('[data-house2-handle]')).toHaveCount(9);
+  await page.getByLabel('Posição X', { exact: true }).fill(String(lot.x + lot.width / 2));
+  await page.getByLabel('Posição Y', { exact: true }).fill(String(lot.y + lot.height / 2));
+  await page.getByLabel('Tamanho do item', { exact: true }).fill('100');
+  await page.getByRole('button', { name: 'Fechar Minha coleção', exact: true }).click();
+  const image = item.locator('image'),
+    corner = item.locator('[data-house2-handle="se"]');
+  const naturalWidth = Number(await image.getAttribute('width'));
+  const center = async (locator: typeof item) => {
+    const b = (await locator.boundingBox())!;
+    return { x: b.x + b.width / 2, y: b.y + b.height / 2 };
+  };
+  const from = await center(corner),
+    middle = await center(image);
+  await page.mouse.move(from.x, from.y);
+  await page.mouse.down();
+  await page.mouse.move(from.x + (from.x - middle.x) * 0.5, from.y + (from.y - middle.y) * 0.5, {
+    steps: 6,
+  });
+  await page.mouse.up();
+  const enlargedWidth = Number(await image.getAttribute('width'));
+  expect(enlargedWidth).toBeGreaterThan(naturalWidth);
+  const turnHandle = item.locator('[data-house2-handle="rotate"]');
+  const pivot = await center(image),
+    turnFrom = await center(turnHandle);
+  await page.mouse.move(turnFrom.x, turnFrom.y);
+  await page.mouse.down();
+  await page.mouse.move(pivot.x - (turnFrom.y - pivot.y), pivot.y + (turnFrom.x - pivot.x), {
+    steps: 8,
+  });
+  await page.mouse.up();
+  await expect(item).toHaveAttribute('transform', /rotate\(180\)/);
+  // A real touch gesture must resize without panning the camera.
+  const cdp = await context.newCDPSession(page);
+  const touchFrom = await center(corner),
+    touchMiddle = await center(image);
+  const cameraBefore = await page.locator('.h2-map').getAttribute('viewBox');
+  await cdp.send('Input.dispatchTouchEvent', {
+    type: 'touchStart',
+    touchPoints: [{ x: touchFrom.x, y: touchFrom.y }],
+  });
+  await cdp.send('Input.dispatchTouchEvent', {
+    type: 'touchMove',
+    touchPoints: [
+      {
+        x: touchFrom.x + (touchFrom.x - touchMiddle.x) * 0.4,
+        y: touchFrom.y + (touchFrom.y - touchMiddle.y) * 0.4,
+      },
+    ],
+  });
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  expect(Number(await image.getAttribute('width'))).toBeGreaterThan(enlargedWidth);
+  expect(await page.locator('.h2-map').getAttribute('viewBox')).toBe(cameraBefore);
+  await cdp.detach();
+  await page.getByRole('button', { name: 'Salvar', exact: true }).click();
+  await expect(page.locator('.h2-world-notice')).toContainText('Terreno salvo');
+  const borderSaved = (await request(context, '/house-v2', undefined, 'GET')).inventory.find(
+    (i: any) => i.id === itemId,
+  );
+  expect(borderSaved.scale).toBeGreaterThan(1);
+  expect(borderSaved.rotation).toBe(180);
+  // Interrupted gestures restore exactly the state from before the gesture.
+  const beforeCancel = await image.getAttribute('width'),
+    cancelFrom = await center(corner);
+  await page.mouse.move(cancelFrom.x, cancelFrom.y);
+  await page.mouse.down();
+  await page.mouse.move(cancelFrom.x - 35, cancelFrom.y - 35, { steps: 5 });
+  await page.keyboard.press('Escape');
+  await page.mouse.up();
+  await expect(image).toHaveAttribute('width', beforeCancel!);
+  await expect(page.getByRole('button', { name: 'Salvar', exact: true })).toHaveCount(0);
+  await page.reload();
+  await page.locator('.h2-neighborhood-card').first().click();
+  await page.locator(`g[data-house2-plot="${plotId}"] > .h2-plot`).focus();
+  await page.keyboard.press('Enter');
+  await page.getByRole('button', { name: 'Entrar na casa', exact: true }).click();
+  await tool('Minha coleção');
+  await page.getByRole('button', { name: /Cadeira de madeira.*Ajustar/ }).click();
+  await expect(page.getByLabel('Ângulo do objeto', { exact: true })).toHaveText('180°');
+  expect(Number(await image.getAttribute('width'))).toBeCloseTo(
+    naturalWidth * borderSaved.scale,
+    6,
+  );
+  await page.getByRole('button', { name: 'Fechar Minha coleção', exact: true }).click();
+  await turnHandle.focus();
+  await page.keyboard.press('ArrowLeft');
+  await expect(item).toHaveAttribute('transform', /rotate\(90\)/);
+  await corner.focus();
+  await page.keyboard.press('ArrowUp');
+  expect(Number(await image.getAttribute('width'))).toBeGreaterThan(
+    naturalWidth * borderSaved.scale,
+  );
+  await page.screenshot({ path: 'test-results/house2/border-editor.png' });
+  await page.getByRole('button', { name: 'Salvar', exact: true }).click();
+  await expect(page.locator('.h2-world-notice')).toContainText('Terreno salvo');
+  await tool('Minha coleção');
+  await page.getByRole('button', { name: /Cadeira de madeira.*Ajustar/ }).click();
   await page.getByRole('button', { name: 'Guardar', exact: true }).click();
   await page.getByRole('button', { name: 'Descartar', exact: true }).click();
   await page.getByRole('button', { name: 'Fechar Minha coleção', exact: true }).click();
@@ -361,6 +459,7 @@ try {
   await peer.keyboard.press('Enter');
   await expect(peer.getByText(/somente visita/)).toBeVisible();
   await expect(peer.getByRole('button', { name: 'Mover minha casa' })).toHaveCount(0);
+  await expect(peer.locator('[data-house2-handle]')).toHaveCount(0);
   const forbidden = await visitor.request.put(origin + `/api/house-v2/plots/${plotId}/layout`, {
     headers: { Origin: origin },
     data: {
@@ -388,6 +487,11 @@ try {
         ownership: true,
         purchase: true,
         drag: true,
+        borderResize: true,
+        borderRotation: true,
+        touchResize: true,
+        borderKeyboard: true,
+        borderCancellation: true,
         persistence: true,
         visitorReadOnly: true,
         testCreditsOnly: true,

@@ -43,6 +43,13 @@ import { worldClockPhase, worldClockLabel } from '../shared/world-clock';
 import { useWorldClock } from './useWorldClock';
 import { House2Clock } from './House2Clock';
 import { House2Ground, House2GroundEditor } from './House2Ground';
+import { House2ItemBorder } from './House2ItemBorder';
+import {
+  house2BorderHandles,
+  house2ResizeFromBorder,
+  house2RotateFromBorder,
+  type House2BorderHandle,
+} from './house2-item-transform';
 import { terrainTextures, type TerrainTextureId } from '../shared/vtt-terrain';
 import {
   house2Clamp,
@@ -138,11 +145,15 @@ export function House2({ character, user }: { character?: Character; user: User 
     startX: number;
     startY: number;
     camera: Camera;
-    kind: 'pan' | 'house' | 'item';
+    kind: 'pan' | 'house' | 'item' | 'resize' | 'rotate';
     id?: string;
     offsetX: number;
     offsetY: number;
     moved: boolean;
+    handle?: House2BorderHandle | 'rotate';
+    origin?: { x: number; y: number };
+    initial?: House2Layout['items'][number];
+    before?: House2Layout | null;
   } | null>(null);
   dirtyRef.current = !!draft;
   busyRef.current = busy;
@@ -233,6 +244,19 @@ export function House2({ character, user }: { character?: Character; user: User 
     window.addEventListener('beforeunload', prevent);
     return () => window.removeEventListener('beforeunload', prevent);
   }, [draft]);
+  useEffect(() => {
+    const cancel = (e: KeyboardEvent) => {
+      const active = drag.current;
+      if (e.key !== 'Escape' || !active?.handle) return;
+      e.preventDefault();
+      drag.current = null;
+      setDraft(active.before ?? null);
+      if (mapRef.current?.hasPointerCapture(active.pointer))
+        mapRef.current.releasePointerCapture(active.pointer);
+    };
+    document.addEventListener('keydown', cancel);
+    return () => document.removeEventListener('keydown', cancel);
+  }, []);
   useEffect(() => {
     if (!menu) return;
     const outside = (e: globalThis.PointerEvent) => {
@@ -417,28 +441,20 @@ export function House2({ character, user }: { character?: Character; user: User 
   function adjust(rotation: -1 | 0 | 1 = 0, dx = 0, dy = 0) {
     const d = startDraft();
     if (!d || !plot || !selectedPiece || selectedPiece === 'house') return;
-    const p = selectedPiece === 'house' ? d.house : d.items.find((i) => i.id === selectedPiece);
-    const spec =
-      selectedPiece === 'house'
-        ? house
-        : house2Furniture.find(
-            (f) => f.id === directory?.inventory.find((i) => i.id === selectedPiece)?.catalog_id,
-          );
-    if (!p || !spec) return;
-    Object.assign(
-      p,
-      house2Clamp(
-        plot,
-        {
-          ...p,
-          x: p.x + dx,
-          y: p.y + dy,
-          rotation: ((p.rotation + rotation * 90 + 360) % 360) as 0 | 90 | 180 | 270,
-        },
-        spec.width * ((p as { scale?: number }).scale ?? 1),
-        spec.height * ((p as { scale?: number }).scale ?? 1),
-      ),
+    const p = d.items.find((i) => i.id === selectedPiece);
+    const spec = house2Furniture.find(
+      (f) => f.id === directory?.inventory.find((i) => i.id === selectedPiece)?.catalog_id,
     );
+    if (!p || !spec) return;
+    const nextRotation = ((p.rotation + rotation * 90 + 360) % 360) as 0 | 90 | 180 | 270;
+    const turned = nextRotation % 180 !== 0;
+    const scale = Math.min(
+      p.scale ?? 1,
+      plot.width / (turned ? spec.height : spec.width),
+      plot.height / (turned ? spec.width : spec.height),
+    );
+    const next = { ...p, x: p.x + dx, y: p.y + dy, rotation: nextRotation, scale };
+    Object.assign(p, house2Clamp(plot, next, spec.width * scale, spec.height * scale));
     setDraft(structuredClone(d));
   }
   function resizeItem(value: number) {
@@ -448,7 +464,16 @@ export function House2({ character, user }: { character?: Character; user: User 
         (f) => f.id === directory?.inventory.find((i) => i.id === selectedPiece)?.catalog_id,
       );
     if (!d || !piece || !spec || !plot || !Number.isFinite(value)) return;
-    piece.scale = Math.max(0.25, Math.min(3, value));
+    const turned = piece.rotation % 180 !== 0;
+    piece.scale = Math.max(
+      0.25,
+      Math.min(
+        3,
+        value,
+        plot.width / (turned ? spec.height : spec.width),
+        plot.height / (turned ? spec.width : spec.height),
+      ),
+    );
     Object.assign(
       piece,
       house2Clamp(plot, piece, spec.width * piece.scale, spec.height * piece.scale),
@@ -490,26 +515,44 @@ export function House2({ character, user }: { character?: Character; user: User 
     const pieceElement = (e.target as Element).closest('[data-house2-piece]');
     const id = pieceElement?.getAttribute('data-house2-piece') || undefined;
     const p = world(e.clientX, e.clientY);
-    const value =
-      id === 'house'
-        ? draft?.house || (shownPlot && { x: shownPlot.house_x!, y: shownPlot.house_y! })
-        : shownItems.find((i) => i.id === id);
+    const value = shownItems.find((i) => i.id === id);
     const edit =
       !!id &&
       id !== 'house' &&
       canEdit &&
       (id === 'house' || shownItems.some((i) => i.id === id && i.plot_id === plot?.id));
+    const handleValue = (e.target as Element)
+      .closest('[data-house2-handle]')
+      ?.getAttribute('data-house2-handle');
+    const handle =
+      edit && handleValue && (handleValue === 'rotate' || handleValue in house2BorderHandles)
+        ? (handleValue as House2BorderHandle | 'rotate')
+        : undefined;
     if (edit) setSelectedPiece(id!);
     drag.current = {
       pointer: e.pointerId,
       startX: e.clientX,
       startY: e.clientY,
       camera: { ...boundedCamera },
-      kind: edit ? (id === 'house' ? 'house' : 'item') : 'pan',
+      kind: handle ? (handle === 'rotate' ? 'rotate' : 'resize') : edit ? 'item' : 'pan',
       id,
       offsetX: value ? p.x - value.x! : 0,
       offsetY: value ? p.y - value.y! : 0,
       moved: false,
+      ...(handle && value
+        ? {
+            handle,
+            origin: { x: p.x, y: p.y },
+            initial: {
+              id: id!,
+              x: value.x!,
+              y: value.y!,
+              rotation: value.rotation as 0 | 90 | 180 | 270,
+              scale: (value as { scale?: number }).scale ?? 1,
+            },
+            before: draft ? structuredClone(draft) : null,
+          }
+        : {}),
     };
     e.currentTarget.setPointerCapture(e.pointerId);
   }
@@ -544,6 +587,19 @@ export function House2({ character, user }: { character?: Character; user: User 
             (f) => f.id === directory?.inventory.find((i) => i.id === a.id)?.catalog_id,
           );
     if (!piece || !spec) return;
+    if (a.handle && a.initial && a.origin) {
+      Object.assign(
+        piece,
+        a.handle === 'rotate'
+          ? house2RotateFromBorder(plot, a.initial, spec, a.origin, p)
+          : house2ResizeFromBorder(plot, a.initial, spec, a.handle, {
+              x: p.x - a.origin.x,
+              y: p.y - a.origin.y,
+            }),
+      );
+      setDraft(structuredClone(d));
+      return;
+    }
     Object.assign(
       piece,
       house2Clamp(
@@ -565,6 +621,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     drag.current = null;
     if (e.currentTarget.hasPointerCapture(e.pointerId))
       e.currentTarget.releasePointerCapture(e.pointerId);
+    if (cancelled && a.handle) setDraft(a.before ?? null);
     if (a.moved || cancelled) return;
     if (a.kind !== 'pan') {
       setSelectedPiece(a.id!);
@@ -626,7 +683,9 @@ export function House2({ character, user }: { character?: Character; user: User 
               (f) => f.id === directory?.inventory.find((i) => i.id === selectedPiece)?.catalog_id,
             )?.name}
       </strong>
-      <span>Arraste livremente dentro do seu terreno.</span>
+      <span>
+        Arraste para mover. Use as bordas para redimensionar e o controle acima para girar.
+      </span>
       <label className="h2-checkbox">
         <input type="checkbox" checked={snap} onChange={(e) => setSnap(e.target.checked)} />{' '}
         Encaixar na grade
@@ -857,8 +916,10 @@ export function House2({ character, user }: { character?: Character; user: User 
         onPointerMove={pointerMove}
         onPointerUp={pointerUp}
         onPointerCancel={(e) => pointerUp(e, true)}
+        onLostPointerCapture={(e) => pointerUp(e, true)}
         onWheel={(e) => {
-          if (!(e.target as Element).closest('button')) zoom(e.deltaY > 0 ? 1.12 : 1 / 1.12);
+          if (!drag.current && !(e.target as Element).closest('button'))
+            zoom(e.deltaY > 0 ? 1.12 : 1 / 1.12);
         }}
       >
         <defs>
@@ -995,17 +1056,14 @@ export function House2({ character, user }: { character?: Character; user: User 
                   width={spec.width * item.scale}
                   height={spec.height * item.scale}
                 />
-                {selectedPiece === item.id && (
-                  <rect
-                    x={(-spec.width * item.scale) / 2}
-                    y={(-spec.height * item.scale) / 2}
+                {selectedPiece === item.id && editable && !busy && tool !== 'ground' && (
+                  <House2ItemBorder
                     width={spec.width * item.scale}
                     height={spec.height * item.scale}
-                    fill="none"
-                    stroke="#f2d891"
-                    strokeWidth="1.1"
-                    vectorEffect="non-scaling-stroke"
-                    pointerEvents="none"
+                    pixel={boundedCamera.span / viewport.height}
+                    rotation={item.rotation}
+                    resize={(delta) => resizeItem(item.scale + delta)}
+                    turn={(direction) => adjust(direction)}
                   />
                 )}
               </g>

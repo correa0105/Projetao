@@ -257,6 +257,54 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
 .h2-map .h2-editable {
   cursor: move;
 }
+.h2-item-border-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 12px;
+  vector-effect: non-scaling-stroke;
+  pointer-events: stroke;
+  cursor: move;
+}
+.h2-item-border-line {
+  fill: none;
+  stroke: #f2d891;
+  stroke-width: 1.2px;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+.h2-item-handle {
+  touch-action: none;
+}
+.h2-handle-hit {
+  fill: transparent;
+  pointer-events: all;
+}
+.h2-handle-mark {
+  fill: #2b211c;
+  stroke: #f2d891;
+  stroke-width: 1.5;
+  pointer-events: none;
+}
+.h2-item-handle:hover .h2-handle-mark,
+.h2-item-handle:focus-visible .h2-handle-mark {
+  fill: #805f3c;
+  stroke: #fff1c7;
+  stroke-width: 2.5;
+}
+.h2-item-turn {
+  cursor: grab;
+}
+.h2-item-turn:active {
+  cursor: grabbing;
+}
+.h2-turn-icon {
+  fill: none;
+  stroke: #f2d891;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
 .h2-plot {
   cursor: pointer;
   transition:
