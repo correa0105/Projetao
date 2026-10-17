@@ -1,0 +1,32 @@
+{
+  "id": "terrain-stone-cobbles",
+  "kind": "terrain",
+  "name": "Calçamento medieval",
+  "width": 1,
+  "height": 1,
+  "group": "stone",
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE seamless square tileable terrain texture for a medieval top-down tactical battlemap. Subject: irregular small worn medieval grey stone cobbles with subtle earth-filled joints. Match the fine hand-painted warm earthy material detail of the supplied style references, not photorealism. Strict vertically overhead orthographic texture. Fill the ENTIRE canvas edge to edge with the same continuous material, completely OPAQUE image. Truly seamless on all four edges; no borders, margins, vignettes, dominant central feature, visible lighting direction, large rocks, plants, objects, footprints, grid, text or watermark. Small natural detail appropriate for a repeating terrain brush; balanced material density and consistent even overhead illumination.",
+  "public": "public/vtt/medieval-expansion-20261017/terrain/stone-cobbles.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/terrain/stone-cobbles.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-c5050983-6e5d-4e10-bbb0-c292eb02bd12.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "trimDimensions": [
+    1254,
+    1254
+  ],
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "bytes": 547766,
+  "sha256": "b5f201b380c86f73ba344d895e9e88f8916d4cfc3b2247afceb29f6db0217b9a",
+  "generatedAt": "2026-10-17T13:19:35.307Z"
+}

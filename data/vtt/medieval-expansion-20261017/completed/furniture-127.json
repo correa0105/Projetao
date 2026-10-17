@@ -1,0 +1,44 @@
+{
+  "id": "furniture-127",
+  "kind": "furniture",
+  "name": "Cristaleira de madeira",
+  "width": 1.5,
+  "height": 0.75,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\furniture-127.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-c10ceaf9-7425-4f2c-949e-433e02d43190.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png"
+  ],
+  "prompt": "Image1 is strict TOP-DOWN GEOMETRIC GUIDE. Keep its camera, occlusion and silhouette. Image2 is MATERIAL/COLOR guidance ONLY, do not copy its camera errors. Image3 is approved hand-painted medieval battlemap style. Create ONE finely painted original isolated sprite. Cristaleira de madeira: a closed cabinet or casket seen from ABSOLUTE ZENITH. Show ONE single opaque flat wooden horizontal TOP PANEL. Copy wood grain, brass inlay and colors from image2, but REMOVE every drawer front, pull handle, keyhole, lock face and all vertical side/front panels. Any items resting on top remain in top view. Only the horizontal top plane is visible, no depth below its edge. Footprint ratio 1.5:0.75. TRUE NADIR camera at 90 degrees vertically above, zero perspective tilt. Rich warm worn timber/stone/linen detail, restrained fine outlines, muted earthy colors. Actual transparent alpha outside complete sprite. No ground patch, shadow halo, grid, text, people, watermark or extra objects.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-127.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-127.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-c0a6c428-147c-420a-8ce7-ffdb901e7442.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1706,
+    674
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 170622,
+  "sha256": "a2adccb0fa208cb12bab84f12c7ff9bca8a62aa0ede90a47b42689d6880707b8",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 84243780,
+    "squaresSum": 21269302690,
+    "mean": 160.83963533960193,
+    "stdev": 121.40160076325321,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 57,
+    "maxY": 66
+  },
+  "generatedAt": "2026-10-17T13:43:32.345Z"
+}

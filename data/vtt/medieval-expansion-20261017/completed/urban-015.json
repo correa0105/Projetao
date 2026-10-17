@@ -1,0 +1,43 @@
+{
+  "id": "urban-015",
+  "kind": "furniture",
+  "name": "Toldo listrado de feira",
+  "width": 3,
+  "height": 2,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: complete freestanding market awning canopy top with muted burgundy and cream stripes, no stall visible below. Physical footprint ratio 3:2. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-015.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-015.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-af5b304e-593f-4bec-80f2-d00a36004cf0.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "trimDimensions": [
+    1438,
+    845
+  ],
+  "dimensions": [
+    1025,
+    682
+  ],
+  "bytes": 250002,
+  "sha256": "0cba2b1566aeb40f8145542fd890ec8f254ef9ac0430898c155d9a1ed3feff6d",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 110355945,
+    "squaresSum": 27851435387,
+    "mean": 157.8655961662256,
+    "stdev": 122.14872407176036,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 46,
+    "maxY": 64
+  },
+  "generatedAt": "2026-10-17T13:19:37.958Z"
+}

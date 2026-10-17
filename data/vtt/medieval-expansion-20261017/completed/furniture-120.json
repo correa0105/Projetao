@@ -1,0 +1,44 @@
+{
+  "id": "furniture-120",
+  "kind": "furniture",
+  "name": "Caixa de joias marchetada",
+  "width": 0.5,
+  "height": 0.5,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\furniture-120.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-b31770af-dd6d-4d7e-bed7-f3ce0ba55436.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png"
+  ],
+  "prompt": "Image1 is strict TOP-DOWN GEOMETRIC GUIDE. Keep its camera, occlusion and silhouette. Image2 is MATERIAL/COLOR guidance ONLY, do not copy its camera errors. Image3 is approved hand-painted medieval battlemap style. Create ONE finely painted original isolated sprite. Caixa de joias marchetada: a closed cabinet or casket seen from ABSOLUTE ZENITH. Show ONE single opaque flat wooden horizontal TOP PANEL. Copy wood grain, brass inlay and colors from image2, but REMOVE every drawer front, pull handle, keyhole, lock face and all vertical side/front panels. Any items resting on top remain in top view. Only the horizontal top plane is visible, no depth below its edge. Footprint ratio 0.5:0.5. TRUE NADIR camera at 90 degrees vertically above, zero perspective tilt. Rich warm worn timber/stone/linen detail, restrained fine outlines, muted earthy colors. Actual transparent alpha outside complete sprite. No ground patch, shadow halo, grid, text, people, watermark or extra objects.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-120.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-120.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-4ab75273-5afb-4862-90ea-5283027f7cdf.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "trimDimensions": [
+    1050,
+    1020
+  ],
+  "dimensions": [
+    1025,
+    1025
+  ],
+  "bytes": 435428,
+  "sha256": "ff86e1644bf86e68111f11112dc6382cdd44999bd5127df140603ad8dd7339b8",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 218960525,
+    "squaresSum": 55288238251,
+    "mean": 208.40977989292088,
+    "stdev": 95.86195021556556,
+    "minX": 0,
+    "minY": 32,
+    "maxX": 157,
+    "maxY": 46
+  },
+  "generatedAt": "2026-10-17T13:43:31.166Z"
+}

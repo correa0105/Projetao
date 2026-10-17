@@ -64,7 +64,7 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
       assert.equal(directory.neighborhoods.length, 3);
       assert.equal(directory.balance, 20000);
       assert.equal(house2Houses.length, 25);
-      assert.equal(house2Furniture.length, 100);
+      assert.equal(house2Furniture.length, 250);
       assert(scene.plots.every((p: any) => p.x + p.width <= 200 && p.y + p.height <= 200));
       assert.equal(
         (
@@ -287,6 +287,74 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
           (await req('/house-v2', owner)).data.inventory.find((i: any) => i.id === item).scale,
           1.6,
         );
+      },
+    );
+    await t.test(
+      'pintura persiste, recorta no próprio terreno e mantém ownership e clientes antigos',
+      async () => {
+        scene = (await req('/house-v2/neighborhoods/' + n, owner)).data;
+        const p = scene.plots.find((p: any) => p.id === lot.id);
+        const ground = [
+          {
+            material: 'grass-sienna',
+            width: 1,
+            points: [
+              { x: p.x + 0.2, y: p.y + 0.2 },
+              { x: p.x + 2, y: p.y + 2 },
+            ],
+          },
+        ];
+        const body = {
+          revision: p.revision,
+          house: p.house_id ? { x: p.house_x, y: p.house_y, rotation: p.house_rotation } : null,
+          items: scene.items
+            .filter((i: any) => i.plot_id === lot.id)
+            .map((i: any) => ({ id: i.id, x: i.x, y: i.y, rotation: i.rotation, scale: i.scale })),
+          ground,
+        };
+        for (const account of [other, admin])
+          assert.equal(
+            (await req('/house-v2/plots/' + lot.id + '/layout', account, 'PUT', body)).status,
+            403,
+          );
+        assert.equal(
+          (
+            await req('/house-v2/plots/' + lot.id + '/layout', owner, 'PUT', {
+              ...body,
+              ground: [{ ...ground[0], material: 'inventado' }],
+            })
+          ).status,
+          400,
+        );
+        assert.equal(
+          (
+            await req('/house-v2/plots/' + lot.id + '/layout', owner, 'PUT', {
+              ...body,
+              ground: [{ ...ground[0], points: [{ x: p.x + p.width + 1, y: p.y }] }],
+            })
+          ).status,
+          400,
+        );
+        const saved = await req('/house-v2/plots/' + lot.id + '/layout', owner, 'PUT', body);
+        assert.equal(saved.status, 200);
+        assert.equal(
+          (await req('/house-v2/plots/' + lot.id + '/layout', owner, 'PUT', body)).status,
+          409,
+        );
+        let visit = (await req('/house-v2/neighborhoods/' + n, other)).data;
+        assert.deepEqual(visit.plots.find((p: any) => p.id === lot.id).ground, ground);
+        const { ground: _, ...legacy } = body;
+        assert.equal(
+          (
+            await req('/house-v2/plots/' + lot.id + '/layout', owner, 'PUT', {
+              ...legacy,
+              revision: saved.data.revision,
+            })
+          ).status,
+          200,
+        );
+        visit = (await req('/house-v2/neighborhoods/' + n, other)).data;
+        assert.deepEqual(visit.plots.find((p: any) => p.id === lot.id).ground, ground);
       },
     );
     await t.test('visita expõe proprietário e decoração, sem saldo ou coleção alheia', async () => {

@@ -1,0 +1,43 @@
+{
+  "id": "furniture-129",
+  "kind": "furniture",
+  "name": "Bancada de encadernação",
+  "width": 2,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: bookbinding workbench with flat book covers, small tools and leather strips, no visible table legs. Physical footprint ratio 2:1. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-129.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-129.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-3283c73a-6422-4b90-b8f3-15b3aa67ae11.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1687,
+    628
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 222276,
+  "sha256": "e33b29a06ff145ee60c0750bad983449d27e1bd587954a02dd52a41aa4237fc5",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 80209856,
+    "squaresSum": 20192778564,
+    "mean": 153.13800009546082,
+    "stdev": 122.8868288183552,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 427,
+    "maxY": 78
+  },
+  "generatedAt": "2026-10-17T13:25:56.959Z"
+}

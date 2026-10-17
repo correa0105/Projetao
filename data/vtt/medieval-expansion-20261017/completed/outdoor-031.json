@@ -1,0 +1,44 @@
+{
+  "id": "outdoor-031",
+  "kind": "furniture",
+  "name": "Cerca de estacas curta",
+  "width": 2,
+  "height": 0.5,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\outdoor-031.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-2986a558-cb32-408d-bef8-da83cd7f3f66.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png"
+  ],
+  "prompt": "Image1 is strict TOP-DOWN GEOMETRIC GUIDE. Keep its camera, occlusion and silhouette. Image2 is MATERIAL/COLOR guidance ONLY, do not copy its camera errors. Image3 is approved hand-painted medieval battlemap style. Create ONE finely painted original isolated sprite. A standing garden fence segment seen exactly vertically from above. Show ONLY a very thin straight wooden TOP RAIL between two square stone post TOP CAPS. No broad vertical picket faces, no vertical panel, no fence elevation. All slats collapse to tiny top caps along the thin rail. Footprint ratio 2:0.5. TRUE NADIR camera at 90 degrees vertically above, zero perspective tilt. Rich warm worn timber/stone/linen detail, restrained fine outlines, muted earthy colors. Actual transparent alpha outside complete sprite. No ground patch, shadow halo, grid, text, people, watermark or extra objects.",
+  "public": "public/vtt/medieval-expansion-20261017/outdoor-031.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/outdoor-031.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-66707898-b823-431a-bc8f-43f188a74643.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1579,
+    247
+  ],
+  "dimensions": [
+    1025,
+    257
+  ],
+  "bytes": 56396,
+  "sha256": "798d77a8e565aa0f91caed9d7cc954a87c789ae5136e0502d90cf1dcba5b5106",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 17355903,
+    "squaresSum": 4351238197,
+    "mean": 65.88555755907754,
+    "stdev": 110.34980276909666,
+    "minX": 0,
+    "minY": 32,
+    "maxX": 53,
+    "maxY": 64
+  },
+  "generatedAt": "2026-10-17T13:43:33.957Z"
+}

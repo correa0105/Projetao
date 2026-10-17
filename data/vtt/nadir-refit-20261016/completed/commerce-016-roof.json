@@ -1,0 +1,52 @@
+{
+  "id": "commerce-016-roof",
+  "kind": "roof",
+  "name": "Joalheria · Telhado",
+  "width": 8,
+  "height": 7,
+  "legacy": [],
+  "previous": "public/vtt/overhead-20261015/commerce-016-roof.webp",
+  "prompt": "Use case: precise-object-edit. Image 1 is the matching original interior REFERENCE for footprint, style and materials. Create its separate completely opaque ROOF sprite, as if closing this building. STRICT CAMERA: TRUE ORTHOGRAPHIC NADIR PLAN, a camera vertically above pointing straight DOWN at 90 degrees. ZERO tilt and ZERO perspective convergence. All rectangular edges stay parallel, all round tops are true CIRCLES. Show ONLY horizontal upward-facing surfaces. No vertical front or side faces, no elevations, no standing facades, no tall backrest fronts or legs. This is a flat tactical battlemap, never an isometric product render. Original finely hand-painted medieval fantasy battlemap in the supplied references’ visual spirit: warm natural timber, stone, iron, linen, leather, rich small-scale texture, delicate crisp contours, believable worn edges and subtle surface scratches. Earthy colors, occasional muted textile color, gentle even overhead light, tight soft contact shadows. No glossy plastic, no blurry photo textures, no heavy outlines. Reference images are STYLE guidance only, not edit targets; do not copy their exact room arrangement or branding. Roof identity: Joalheria. One rectangular hip or gabled roof viewed strictly vertically from above, width/height ratio 1.169. Perimeter perfectly rectangular with equal eaves. Complete roof covers EVERY wall and the entire interior in the reference. Only roof top covering, ridge and restrained material-specific trim; no room, walls, front facade, windows, doors, stairs or ground. A chimney, if any, is a small flat square stone rim with a black central opening, no standing vertical sides. Crisp fine hand-painted thatch, shingles, tiles or slate according to this roof identity. No generic old house pasted on top. Narrow transparent margin around complete roof. Genuinely transparent alpha outside the complete asset. No grid, text, watermark, branding, people, tokens, scale markers, ruler or background ground patch.",
+  "refs": [
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-dd0d2654-a32b-4664-b318-1529a98cfaa0.png"
+  ],
+  "public": "public/vtt/nadir-20261016/commerce-016-roof.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/commerce-016-roof.webp",
+  "houseId": "commerce-016",
+  "parent": "commerce-016-interior",
+  "outer": {
+    "left": 0.045,
+    "top": 0.055,
+    "right": 0.955,
+    "bottom": 0.945
+  },
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-7df3acb6-516f-474b-981b-f61e592a3db2.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1356,
+    1160
+  ],
+  "trimDimensions": [
+    1316,
+    920
+  ],
+  "dimensions": [
+    1536,
+    1344
+  ],
+  "bytes": 850752,
+  "sha256": "2a8d544cf420b9b7989d28999b9f1b0dd2667d0092fe1d72224b2dd01d955fe1",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 410190920,
+    "squaresSum": 103331552228,
+    "mean": 198.69894360739087,
+    "stdev": 102.82586748765158,
+    "minX": 0,
+    "minY": 0,
+    "maxX": 77,
+    "maxY": 107
+  },
+  "generatedAt": "2026-10-17T13:13:36.148Z"
+}

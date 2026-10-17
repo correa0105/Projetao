@@ -1,0 +1,44 @@
+{
+  "id": "outdoor-038",
+  "kind": "furniture",
+  "name": "Sacos de adubo",
+  "width": 1.5,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\outdoor-038.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-06482e66-4244-43fe-95d8-429abd6011a9.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png"
+  ],
+  "prompt": "Image1 is a strict top-down GEOMETRIC PLAN GUIDE. Image2 is MATERIAL/COLOR reference only, DO NOT repeat its tilted camera. Image3 supplies approved hand-painted medieval battlemap style. Create one original richly textured isolated sprite following the exact overhead geometry of image1. Three CLOSED tied burlap fertilizer sacks LYING FLAT on their broad sides, seen from directly overhead. Rounded bag silhouettes, tight gathered neck ties, no open cylindrical mouths or upright sack sidewalls. Top surfaces only, earthy coarse burlap and restrained dark compost stains. Footprint ratio 1.5:1. Camera truly vertical at 90 degrees, no perspective or elevation. Warm worn detailed natural material, restrained contour, even overhead light. Genuinely transparent alpha outside complete object. No extra furniture, terrain, text, grid, watermark, people or shadow halo.",
+  "public": "public/vtt/medieval-expansion-20261017/outdoor-038.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/outdoor-038.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-444eab8d-6bd5-4960-826e-04c1cab58b20.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "trimDimensions": [
+    1190,
+    924
+  ],
+  "dimensions": [
+    1025,
+    682
+  ],
+  "bytes": 302994,
+  "sha256": "01cf98fe1823921f7c8fc984d5f747ce8c35dd7bb17d8be62db717bb25b098fd",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 94427763,
+    "squaresSum": 23783238013,
+    "mean": 135.08012731564267,
+    "stdev": 125.60099163098947,
+    "minX": 0,
+    "minY": 48,
+    "maxX": 219,
+    "maxY": 50
+  },
+  "generatedAt": "2026-10-17T13:43:34.412Z"
+}

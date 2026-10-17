@@ -1,0 +1,43 @@
+{
+  "id": "urban-024",
+  "kind": "furniture",
+  "name": "Fardos de palha",
+  "width": 2,
+  "height": 1.5,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: three rectangular bound straw bales with crosswise ropes. Physical footprint ratio 2:1.5. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-024.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-024.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-af8c6053-9583-4b35-9eb4-7eb02289d8ab.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1448,
+    1086
+  ],
+  "trimDimensions": [
+    1229,
+    849
+  ],
+  "dimensions": [
+    1025,
+    768
+  ],
+  "bytes": 406082,
+  "sha256": "13c1192b8361c1e3bf2b8e652d12b5c8061cf66cfd9c1d30c60960446ca26b61",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 120235138,
+    "squaresSum": 30105583030,
+    "mean": 152.73772611788618,
+    "stdev": 122.12733866319209,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 222,
+    "maxY": 151
+  },
+  "generatedAt": "2026-10-17T13:26:02.215Z"
+}

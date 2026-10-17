@@ -1,0 +1,43 @@
+{
+  "id": "urban-005",
+  "kind": "furniture",
+  "name": "Barraca de verduras",
+  "width": 3,
+  "height": 2,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: medieval vegetable market stall with tidy small cabbage, carrots and greens in timber bins. Physical footprint ratio 3:2. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-005.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-005.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-0f1154ef-cffa-412d-b39b-8def828cfca8.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "trimDimensions": [
+    1406,
+    830
+  ],
+  "dimensions": [
+    1025,
+    682
+  ],
+  "bytes": 341900,
+  "sha256": "2c9850509116713e31666f6a5083f2210d36ae6cf7ef7d864adb356c2617493f",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 122975374,
+    "squaresSum": 31014701600,
+    "mean": 175.91785136971603,
+    "stdev": 115.84410903765178,
+    "minX": 0,
+    "minY": 32,
+    "maxX": 75,
+    "maxY": 59
+  },
+  "generatedAt": "2026-10-17T13:12:38.036Z"
+}

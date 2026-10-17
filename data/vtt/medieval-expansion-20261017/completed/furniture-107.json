@@ -1,0 +1,44 @@
+{
+  "id": "furniture-107",
+  "kind": "furniture",
+  "name": "Cadeira de vime",
+  "width": 1,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\furniture-107.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-d9d8710d-0152-42cf-8184-bafcca5b1106.png",
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png"
+  ],
+  "prompt": "Image 1 is a strict GEOMETRIC PLAN GUIDE: preserve its absolute overhead camera, occlusion and horizontal silhouette. Image 2 is MATERIAL/COLOR guidance only, do NOT copy its camera errors. Image 3 is the approved hand-painted medieval battlemap STYLE. Create one original isolated sprite using the geometry of image 1 and richly painted worn material detail of the other references. Woven wicker garden chair viewed from absolute zenith. Show woven horizontal seat, two slim horizontal armrest TOP strips and an extremely narrow curved BACKREST TOP EDGE. Backrest weave front and vertical leg shafts completely invisible. True orthographic plan at absolute 90-degree zenith, no tilt. Only horizontal upper surfaces. Preserve footprint ratio 1:1. Genuinely transparent alpha outside complete object, no background, halo, grid, text, branding, watermark, extra furniture or people.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-107.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-107.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-960c44c6-302a-4dac-b2e3-9206299c824d.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "trimDimensions": [
+    1115,
+    1104
+  ],
+  "dimensions": [
+    1025,
+    1025
+  ],
+  "bytes": 498672,
+  "sha256": "25ec15b10d8242e8a073867a9b8889c50e151d8303efb0b3bf1ce456a32f3354",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 196205924,
+    "squaresSum": 49397071222,
+    "mean": 186.7516230814991,
+    "stdev": 110.18478275589402,
+    "minX": 0,
+    "minY": 0,
+    "maxX": 59,
+    "maxY": 50
+  },
+  "generatedAt": "2026-10-17T13:35:42.404Z"
+}

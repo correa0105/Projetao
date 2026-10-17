@@ -1,0 +1,39 @@
+{
+  "updatedAt": "2026-10-17T13:56:40.801Z",
+  "status": "published",
+  "exported": 170,
+  "remaining": 0,
+  "collections": {
+    "indoor": 50,
+    "outdoor": 50,
+    "urban": 50,
+    "grass": 10,
+    "earth": 5,
+    "stone": 5
+  },
+  "generator": "built-in image_gen",
+  "visualReview": true,
+  "integratedTargets": [
+    "VTT",
+    "House 2.0"
+  ],
+  "cameraCorrections": [
+    "furniture-107",
+    "furniture-108",
+    "furniture-109",
+    "furniture-115",
+    "furniture-120",
+    "furniture-124",
+    "furniture-126",
+    "furniture-127",
+    "outdoor-007",
+    "outdoor-013",
+    "outdoor-030",
+    "outdoor-031",
+    "outdoor-038",
+    "urban-033",
+    "urban-039"
+  ],
+  "release": "medieval-complete-v1-20261017",
+  "verified": true
+}

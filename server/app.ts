@@ -23,6 +23,7 @@ import { AppError, purchase } from './services.js';
 import { completeMission, completionSchema, publishMissionHook } from './missions.js';
 import { houseRouter } from './house.js';
 import { house2Router } from './house-v2.js';
+import { worldClockRouter } from './world-clock.js';
 import { accountPreview, basicPreviewPayload } from './account-preview.js';
 import { atlasId, resolvePostLocation } from './atlas.js';
 import { characterArtRouter, characterListSql } from './character-art.js';
@@ -183,13 +184,22 @@ export function createApp() {
       (await auth.api.getSession({ headers: fromNodeHeaders(req.headers) }));
     if (!session) throw new AppError(401, 'Entre na sua conta para continuar.');
     res.locals.user = session.user;
-    if (req.get('X-Account-Preview') === 'basic' && await isAdministrator(session.user.id)) {
-      if (!['GET','HEAD','OPTIONS'].includes(req.method))
-        throw new AppError(403, 'A prévia é somente para consulta. Volte à visão de administrador para fazer alterações.');
-      res.locals.user = {...session.user,administrador:0,role:'player',gold_unlimited:false,canEditKingdom:false};
+    if (req.get('X-Account-Preview') === 'basic' && (await isAdministrator(session.user.id))) {
+      if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method))
+        throw new AppError(
+          403,
+          'A prévia é somente para consulta. Volte à visão de administrador para fazer alterações.',
+        );
+      res.locals.user = {
+        ...session.user,
+        administrador: 0,
+        role: 'player',
+        gold_unlimited: false,
+        canEditKingdom: false,
+      };
       const json = res.json.bind(res);
-      res.json = (body) => json(basicPreviewPayload(body,session.user.id));
-      return accountPreview.run(true,next);
+      res.json = (body) => json(basicPreviewPayload(body, session.user.id));
+      return accountPreview.run(true, next);
     }
     next();
   });
@@ -225,7 +235,7 @@ export function createApp() {
   );
   app.use('/api/character-art', express.json({ limit: '12mb' }));
   app.use('/api/house', express.json({ limit: '8mb' }));
-  app.use('/api/house-v2', express.json({ limit: '128kb' }));
+  app.use('/api/house-v2', express.json({ limit: '512kb' }));
   app.use('/api/lore', express.json({ limit: '2mb' }));
   app.use('/api/rulebook', express.json({ limit: '12mb' }));
   app.use('/api', rulebookRouter());
@@ -254,6 +264,7 @@ export function createApp() {
   app.use('/api', towerRouter());
   app.use('/api', houseRouter());
   app.use('/api', house2Router());
+  app.use('/api', worldClockRouter());
   app.get('/api/me', async (_req, res) => {
     const {
       rows: [permission],

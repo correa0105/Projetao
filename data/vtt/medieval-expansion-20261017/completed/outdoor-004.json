@@ -1,0 +1,43 @@
+{
+  "id": "outdoor-004",
+  "kind": "furniture",
+  "name": "Banco de jardim reto",
+  "width": 2.5,
+  "height": 0.75,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: straight weathered timber garden bench, seat and thin backrest top strip. Physical footprint ratio 2.5:0.75. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/outdoor-004.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/outdoor-004.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-bd81fed9-767c-4df9-b94d-6a38d9b6f14f.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1905,
+    826
+  ],
+  "trimDimensions": [
+    1804,
+    637
+  ],
+  "dimensions": [
+    1025,
+    307
+  ],
+  "bytes": 132200,
+  "sha256": "6a1fdb3b79c6ac5c7166b45f7bb8900e19244d1ce1c8a602ba26b5470d2ca6a8",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 51092334,
+    "squaresSum": 12839076216,
+    "mean": 162.3654055771828,
+    "stdev": 120.16068163357093,
+    "minX": 0,
+    "minY": 32,
+    "maxX": 104,
+    "maxY": 32
+  },
+  "generatedAt": "2026-10-17T13:12:31.607Z"
+}

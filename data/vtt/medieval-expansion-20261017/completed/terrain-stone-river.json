@@ -1,0 +1,32 @@
+{
+  "id": "terrain-stone-river",
+  "kind": "terrain",
+  "name": "Pedras de rio",
+  "width": 1,
+  "height": 1,
+  "group": "stone",
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE seamless square tileable terrain texture for a medieval top-down tactical battlemap. Subject: small rounded river pebbles in muted grey brown and beige. Match the fine hand-painted warm earthy material detail of the supplied style references, not photorealism. Strict vertically overhead orthographic texture. Fill the ENTIRE canvas edge to edge with the same continuous material, completely OPAQUE image. Truly seamless on all four edges; no borders, margins, vignettes, dominant central feature, visible lighting direction, large rocks, plants, objects, footprints, grid, text or watermark. Small natural detail appropriate for a repeating terrain brush; balanced material density and consistent even overhead illumination.",
+  "public": "public/vtt/medieval-expansion-20261017/terrain/stone-river.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/terrain/stone-river.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-736e396b-18b6-4119-a252-d3f259995836.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "trimDimensions": [
+    1254,
+    1254
+  ],
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "bytes": 590478,
+  "sha256": "634cca5ff9ef825ada22ef77a333c64321a7134f4b8a6e8fc938f38dc7b2f514",
+  "generatedAt": "2026-10-17T13:19:36.184Z"
+}

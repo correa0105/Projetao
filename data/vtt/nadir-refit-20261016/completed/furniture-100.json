@@ -1,0 +1,49 @@
+{
+  "id": "furniture-100",
+  "kind": "furniture",
+  "name": "Fole de lareira",
+  "width": 0.5,
+  "height": 1,
+  "legacy": [
+    "/vtt/home-furniture-refined-20261014/furniture-100.webp",
+    "/vtt/home-furniture-20261014/furniture-100.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/furniture-100.webp",
+  "prompt": "Image 1 is a strict GEOMETRIC PLAN GUIDE: preserve its absolute overhead camera, occlusion and horizontal silhouette. Image 2 is MATERIAL/COLOR guidance only, do NOT copy its camera errors. Image 3 is the approved hand-painted medieval battlemap STYLE. Create one original isolated sprite using the geometry of image 1 and richly painted worn material detail of the other references. ONE HANDHELD FIREPLACE BELLOWS lying FLAT horizontally on the floor, viewed directly from above. Pear-shaped wooden top paddle with iron studs and a short iron air NOZZLE at image TOP, two long wooden handles at image BOTTOM, leather bellows seam around edge. This is an air-pumping fireplace TOOL, NOT animal fur, NOT a rug, NOT an animal hide. True orthographic plan at absolute 90-degree zenith, no tilt. Only horizontal upper surfaces. Preserve footprint ratio 0.5:1. Genuinely transparent alpha outside complete object, no background, halo, grid, text, branding, watermark, extra furniture or people.",
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\furniture-100.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-0494ff8f-614a-4eca-8f3d-467300158b7b.png",
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png"
+  ],
+  "public": "public/vtt/nadir-20261016/furniture-100.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-100.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-656ecc37-36b7-4206-acc7-d4680cf8abc4.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    887,
+    1774
+  ],
+  "trimDimensions": [
+    836,
+    1510
+  ],
+  "dimensions": [
+    511,
+    1025
+  ],
+  "bytes": 165238,
+  "sha256": "7fd5ce9dbd45c583417574228b7b01ad03525681cd8966575a7caec63526db73",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 55586011,
+    "squaresSum": 13985495451,
+    "mean": 106.12574292396545,
+    "stdev": 124.25255832568155,
+    "minX": 0,
+    "minY": 32,
+    "maxX": 233,
+    "maxY": 112
+  },
+  "generatedAt": "2026-10-17T13:35:41.801Z"
+}

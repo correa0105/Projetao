@@ -1,0 +1,43 @@
+{
+  "id": "urban-016",
+  "kind": "furniture",
+  "name": "Carroça de mercadorias",
+  "width": 4,
+  "height": 2,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: medieval wooden merchant wagon seen directly above, open bed with closed crates and thin wheel top edges. Physical footprint ratio 4:2. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-016.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-016.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-2206256c-5930-404b-a3df-54048ff41054.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1712,
+    727
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 192904,
+  "sha256": "d4638ad356dcb94b61e5e707a5f5c7815a7725867649aa645c7230d6c7f8aa0b",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 65581792,
+    "squaresSum": 16504835932,
+    "mean": 125.20985537683165,
+    "stdev": 125.83255326935233,
+    "minX": 0,
+    "minY": 32,
+    "maxX": 890,
+    "maxY": 64
+  },
+  "generatedAt": "2026-10-17T13:19:38.232Z"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "urban-050",
+  "kind": "furniture",
+  "name": "Conjunto de lixeiras de vime",
+  "width": 2,
+  "height": 1.5,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: three large round woven wicker refuse baskets viewed exactly above, open tops and modest straw scraps. Physical footprint ratio 2:1.5. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-050.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-050.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-feb3d068-90a7-4c4c-be33-fb491dee7132.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1448,
+    1086
+  ],
+  "trimDimensions": [
+    1206,
+    1035
+  ],
+  "dimensions": [
+    1025,
+    768
+  ],
+  "bytes": 308544,
+  "sha256": "1009113ec31b7b1f7937dbec9b31cf89816d804cdfd4d30e2a3ba0d2ee1e0ff2",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 99111455,
+    "squaresSum": 24925978551,
+    "mean": 125.90377921747968,
+    "stdev": 125.74719573273565,
+    "minX": 0,
+    "minY": 32,
+    "maxX": 572,
+    "maxY": 32
+  },
+  "generatedAt": "2026-10-17T13:41:17.664Z"
+}

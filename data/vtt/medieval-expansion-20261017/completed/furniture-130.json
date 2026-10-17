@@ -1,0 +1,43 @@
+{
+  "id": "furniture-130",
+  "kind": "furniture",
+  "name": "Bancada de alquimia doméstica",
+  "width": 2,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: compact alchemy bench with small round flask openings, ceramic bowls, mortar and parchment. Physical footprint ratio 2:1. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-130.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-130.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-978a8925-500d-4154-9e79-6a588d59da4e.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1516,
+    604
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 237016,
+  "sha256": "fd3d6ac45d14c82869a6962e60032519762e216dc76b9be4b5b354478aba15a8",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 84760954,
+    "squaresSum": 21343470966,
+    "mean": 161.8270325998759,
+    "stdev": 120.67042496175021,
+    "minX": 0,
+    "minY": 0,
+    "maxX": 62,
+    "maxY": 65
+  },
+  "generatedAt": "2026-10-17T13:25:57.239Z"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "outdoor-043",
+  "kind": "furniture",
+  "name": "Lenheiro coberto baixo",
+  "width": 2,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: low log storage bin seen overhead, stacked round log ends beneath narrow slatted top cover. Physical footprint ratio 2:1. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/outdoor-043.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/outdoor-043.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-dd9637c6-b875-4478-adfc-49bff6e0cd36.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1549,
+    633
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 226430,
+  "sha256": "ad62e036785aaab6f949de6713dd3eb4d96bf45f2f6bfc01c7746b978c4f301c",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 82440867,
+    "squaresSum": 20758121673,
+    "mean": 157.39748365233163,
+    "stdev": 121.89263298194332,
+    "minX": 0,
+    "minY": 48,
+    "maxX": 936,
+    "maxY": 60
+  },
+  "generatedAt": "2026-10-17T13:41:13.461Z"
+}

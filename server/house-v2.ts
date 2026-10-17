@@ -244,6 +244,14 @@ export function house2Router() {
       const p = await editPlot(db, id, user);
       if (p.revision !== b.revision)
         throw new AppError(409, 'O terreno mudou em outra janela. Recarregue antes de editar.');
+      if (
+        b.ground?.some((s) =>
+          s.points.some(
+            (at) => at.x < p.x || at.y < p.y || at.x > p.x + p.width || at.y > p.y + p.height,
+          ),
+        )
+      )
+        throw new AppError(400, 'A pintura deve permanecer dentro do seu terreno.');
       if (Boolean(p.house_id) !== Boolean(b.house))
         throw new AppError(400, 'A casa precisa ser adquirida antes de ser posicionada.');
       if (b.house) {
@@ -294,8 +302,14 @@ export function house2Router() {
         );
       const updated = (
         await db.query(
-          'UPDATE house2_plots SET house_x=$2,house_y=$3,house_rotation=$4,revision=revision+1 WHERE id=$1 RETURNING revision',
-          [id, b.house?.x ?? null, b.house?.y ?? null, b.house?.rotation ?? 0],
+          'UPDATE house2_plots SET house_x=$2,house_y=$3,house_rotation=$4,ground=coalesce($5::jsonb,ground),revision=revision+1 WHERE id=$1 RETURNING revision',
+          [
+            id,
+            b.house?.x ?? null,
+            b.house?.y ?? null,
+            b.house?.rotation ?? 0,
+            b.ground === undefined ? null : JSON.stringify(b.ground),
+          ],
         )
       ).rows[0];
       return updated;

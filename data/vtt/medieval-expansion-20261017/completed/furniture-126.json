@@ -1,0 +1,44 @@
+{
+  "id": "furniture-126",
+  "kind": "furniture",
+  "name": "Aparador de louça",
+  "width": 2,
+  "height": 0.75,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\furniture-126.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-19c239a0-cdfd-4852-a985-be9d2e41e2c4.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png"
+  ],
+  "prompt": "Image1 is strict TOP-DOWN GEOMETRIC GUIDE. Keep its camera, occlusion and silhouette. Image2 is MATERIAL/COLOR guidance ONLY, do not copy its camera errors. Image3 is approved hand-painted medieval battlemap style. Create ONE finely painted original isolated sprite. Aparador de louça: a closed cabinet or casket seen from ABSOLUTE ZENITH. Show ONE single opaque flat wooden horizontal TOP PANEL. Copy wood grain, brass inlay and colors from image2, but REMOVE every drawer front, pull handle, keyhole, lock face and all vertical side/front panels. Any items resting on top remain in top view. Only the horizontal top plane is visible, no depth below its edge. Footprint ratio 2:0.75. TRUE NADIR camera at 90 degrees vertically above, zero perspective tilt. Rich warm worn timber/stone/linen detail, restrained fine outlines, muted earthy colors. Actual transparent alpha outside complete sprite. No ground patch, shadow halo, grid, text, people, watermark or extra objects.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-126.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-126.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-50dbd831-405c-4a5a-9e76-8774a1cb40da.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    2048,
+    768
+  ],
+  "trimDimensions": [
+    1939,
+    639
+  ],
+  "dimensions": [
+    1025,
+    385
+  ],
+  "bytes": 150054,
+  "sha256": "bb630be0d82b2b37ad6203ef02c4214f8004a54cedaaaddaed6ea3322e1ddaee",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 68777970,
+    "squaresSum": 17347766044,
+    "mean": 174.2869052898321,
+    "stdev": 116.55144107116654,
+    "minX": 0,
+    "minY": 48,
+    "maxX": 44,
+    "maxY": 48
+  },
+  "generatedAt": "2026-10-17T13:43:31.972Z"
+}

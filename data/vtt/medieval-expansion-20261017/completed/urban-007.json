@@ -1,0 +1,43 @@
+{
+  "id": "urban-007",
+  "kind": "furniture",
+  "name": "Barraca de carnes",
+  "width": 3,
+  "height": 2,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: medieval butcher display stall seen directly above, modest meat cuts on wooden counter, no hanging frontal meat. Physical footprint ratio 3:2. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-007.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-007.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-0d24ba10-bb57-4f9a-90f4-54022e2e0ffb.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "trimDimensions": [
+    1352,
+    803
+  ],
+  "dimensions": [
+    1025,
+    682
+  ],
+  "bytes": 329302,
+  "sha256": "f9ab395a86cde6258571ff2ea04d9be922408d925ba927b3fdd37e7e684ce7c4",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 121778812,
+    "squaresSum": 30709505224,
+    "mean": 174.20615406623276,
+    "stdev": 116.54431265938909,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 58,
+    "maxY": 56
+  },
+  "generatedAt": "2026-10-17T13:12:38.879Z"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "house-008-roof",
+  "kind": "roof",
+  "name": "Casa do oleiro · Telhado",
+  "width": 9,
+  "height": 9,
+  "legacy": [
+    "/vtt/houses-20261014/house-008-roof.webp",
+    "/vtt/houses-empty-20261014/house-008-roof.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/house-008-roof.webp",
+  "prompt": "Use case: precise-object-edit. Image 1 is the matching original interior REFERENCE for footprint, style and materials. Create its separate completely opaque ROOF sprite, as if closing this building. STRICT CAMERA: TRUE ORTHOGRAPHIC NADIR PLAN, a camera vertically above pointing straight DOWN at 90 degrees. ZERO tilt and ZERO perspective convergence. All rectangular edges stay parallel, all round tops are true CIRCLES. Show ONLY horizontal upward-facing surfaces. No vertical front or side faces, no elevations, no standing facades, no tall backrest fronts or legs. This is a flat tactical battlemap, never an isometric product render. Original finely hand-painted medieval fantasy battlemap in the supplied references’ visual spirit: warm natural timber, stone, iron, linen, leather, rich small-scale texture, delicate crisp contours, believable worn edges and subtle surface scratches. Earthy colors, occasional muted textile color, gentle even overhead light, tight soft contact shadows. No glossy plastic, no blurry photo textures, no heavy outlines. Reference images are STYLE guidance only, not edit targets; do not copy their exact room arrangement or branding. Roof identity: a plaster cottage with earth-red roof tiles. One rectangular hip or gabled roof viewed strictly vertically from above, width/height ratio 1.048. Perimeter perfectly rectangular with equal eaves. Complete roof covers EVERY wall and the entire interior in the reference. Only roof top covering, ridge and restrained material-specific trim; no room, walls, front facade, windows, doors, stairs or ground. A chimney, if any, is a small flat square stone rim with a black central opening, no standing vertical sides. Crisp fine hand-painted thatch, shingles, tiles or slate according to this roof identity. No generic old house pasted on top. Narrow transparent margin around complete roof. Genuinely transparent alpha outside the complete asset. No grid, text, watermark, branding, people, tokens, scale markers, ruler or background ground patch.",
+  "refs": [
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-d9b40217-8312-4435-ae8c-e4cf1333f568.png"
+  ],
+  "public": "public/vtt/nadir-20261016/house-008-roof.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/house-008-roof.webp",
+  "houseId": "house-008",
+  "parent": "house-008-interior",
+  "outer": {
+    "left": 0.0712890625,
+    "top": 0.0908203125,
+    "right": 0.9287109375,
+    "bottom": 0.9091796875
+  },
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ef5910a6-44fd-412d-87a9-4764de070b47.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1284,
+    1225
+  ],
+  "trimDimensions": [
+    1236,
+    1095
+  ],
+  "dimensions": [
+    1536,
+    1536
+  ],
+  "bytes": 907062,
+  "sha256": "e82bb14d491e125849f05d8fa24696fdb2467148fa0f663e3be83606787378c1",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 401950440,
+    "squaresSum": 101314689806,
+    "mean": 170.36880493164062,
+    "stdev": 117.97135057863753,
+    "minX": 0,
+    "minY": 48,
+    "maxX": 129,
+    "maxY": 736
+  },
+  "generatedAt": "2026-10-17T13:09:27.713Z"
+}

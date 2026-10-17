@@ -1,0 +1,44 @@
+{
+  "id": "furniture-115",
+  "kind": "furniture",
+  "name": "Cama com dossel recolhido",
+  "width": 2.5,
+  "height": 2,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\furniture-115.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-c2cad583-442a-49c2-a95a-400a0afa1015.png",
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png"
+  ],
+  "prompt": "Image 1 is a strict GEOMETRIC PLAN GUIDE: preserve its absolute overhead camera, occlusion and horizontal silhouette. Image 2 is MATERIAL/COLOR guidance only, do NOT copy its camera errors. Image 3 is the approved hand-painted medieval battlemap STYLE. Create one original isolated sprite using the geometry of image 1 and richly painted worn material detail of the other references. Double canopy bed seen from absolute zenith. Four circular post TOP CAPS are connected by thin horizontal canopy rails framing the bed. Only mattress, pillows and warm rust blanket below; NO upright post shafts, headboard front or large hanging curtain faces. Curtains are tightly tied at post caps and are only tiny fabric knots in plan. True orthographic plan at absolute 90-degree zenith, no tilt. Only horizontal upper surfaces. Preserve footprint ratio 2.5:2. Genuinely transparent alpha outside complete object, no background, halo, grid, text, branding, watermark, extra furniture or people.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-115.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-115.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-58ba7222-375e-4e99-a336-fcbad1586b2d.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1402,
+    1122
+  ],
+  "trimDimensions": [
+    1302,
+    989
+  ],
+  "dimensions": [
+    1025,
+    820
+  ],
+  "bytes": 398212,
+  "sha256": "46913abb0917d8c869393d3b2432c1038d3ec3732a5248036c6a366aea3a2305",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 152788255,
+    "squaresSum": 38488398983,
+    "mean": 181.7825758477097,
+    "stdev": 112.90427619283535,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 971,
+    "maxY": 48
+  },
+  "generatedAt": "2026-10-17T13:35:44.164Z"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "furniture-081",
+  "kind": "furniture",
+  "name": "Varal de roupas",
+  "width": 2,
+  "height": 1,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-081.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/furniture-081.webp",
+  "prompt": "Image 1 is a strict GEOMETRIC PLAN GUIDE: preserve its absolute overhead camera, occlusion and horizontal silhouette. Image 2 is MATERIAL/COLOR guidance only, do NOT copy its camera errors. Image 3 is the approved hand-painted medieval battlemap STYLE. Create one original isolated sprite using the geometry of image 1 and richly painted worn material detail of the other references. A medieval clothesline seen EXACTLY vertically downward. Only two circular end-grain pole caps, one thin rope between them and three extremely narrow zigzag TOP EDGES of hanging cloth. Hanging garments are vertical, so their big front panels are completely invisible. Do not draw broad cloth silhouettes or vertical pole shafts. True orthographic plan at absolute 90-degree zenith, no tilt. Only horizontal upper surfaces. Preserve footprint ratio 2:1. Genuinely transparent alpha outside complete object, no background, halo, grid, text, branding, watermark, extra furniture or people.",
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\furniture-081.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-7570f173-c371-45eb-b7d6-9d515353e375.png",
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png"
+  ],
+  "public": "public/vtt/nadir-20261016/furniture-081.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-081.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-3d45678a-c8d4-4c3c-a9b6-3296d10d419a.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1553,
+    146
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 44294,
+  "sha256": "77178fdc6938b952a180cd90cc96abf1c8726e59acaf9335f027ebb94af5b78f",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 7228443,
+    "squaresSum": 1782264077,
+    "mean": 13.800664407426853,
+    "stdev": 56.676946041417374,
+    "minX": 0,
+    "minY": 32,
+    "maxX": 33,
+    "maxY": 258
+  },
+  "generatedAt": "2026-10-17T13:35:38.834Z"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "outdoor-049",
+  "kind": "furniture",
+  "name": "Churrasqueira de pedra",
+  "width": 2,
+  "height": 1.5,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: rectangular rustic stone grill viewed overhead, horizontal grate and ember opening, no vertical front. Physical footprint ratio 2:1.5. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/outdoor-049.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/outdoor-049.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-80c27c70-8353-4f5d-ba6a-51c63215bb79.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1448,
+    1086
+  ],
+  "trimDimensions": [
+    1332,
+    854
+  ],
+  "dimensions": [
+    1025,
+    768
+  ],
+  "bytes": 436320,
+  "sha256": "a13647ea202c1a28d443c008e3eeef760c10d29b7b0b7c1d2058b8bca139b279",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 140130360,
+    "squaresSum": 35258970660,
+    "mean": 178.01112804878048,
+    "stdev": 114.46577656771198,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 936,
+    "maxY": 96
+  },
+  "generatedAt": "2026-10-17T13:41:16.020Z"
+}

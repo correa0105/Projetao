@@ -1,0 +1,43 @@
+{
+  "id": "furniture-142",
+  "kind": "furniture",
+  "name": "Porta-guarda-chuvas de vime",
+  "width": 0.75,
+  "height": 0.75,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: round wicker umbrella basket with circular opening and two closed wooden-handled umbrellas seen from above. Physical footprint ratio 0.75:0.75. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-142.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-142.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-db9b438e-f88f-4672-b646-af0248e4774c.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "trimDimensions": [
+    1021,
+    1094
+  ],
+  "dimensions": [
+    1025,
+    1025
+  ],
+  "bytes": 404766,
+  "sha256": "2d604702ae5cf0b28822d7858f267772a08a74d3e5217235cc82f9281cee50ea",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 145581598,
+    "squaresSum": 36674803470,
+    "mean": 138.56666079714455,
+    "stdev": 125.32717736336953,
+    "minX": 0,
+    "minY": 64,
+    "maxX": 104,
+    "maxY": 72
+  },
+  "generatedAt": "2026-10-17T13:34:00.961Z"
+}

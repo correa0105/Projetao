@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import houses from './vtt-houses-catalog.json';
 import furniture from './vtt-home-furniture-catalog.json';
+import medievalFurniture from './vtt-medieval-furniture-catalog.json';
+import { terrainTextureIds } from './vtt-terrain';
 import { vttVisualSource } from './vtt-asset-visuals';
 
 export const house2Size = 200;
@@ -30,7 +32,7 @@ export const house2Houses = houses
     interior: vttVisualSource(h.interior),
     price: 600 + Math.floor(i / 5) * 100,
   }));
-export const house2Furniture = furniture.map((f) => ({
+export const house2Furniture = [...furniture, ...medievalFurniture].map((f) => ({
   ...f,
   image: vttVisualSource(f.image),
   price: Math.max(15, Math.round(f.width * f.height * 30)),
@@ -50,6 +52,7 @@ export type House2Neighborhood = {
   owned: number;
 };
 export type House2Plot = {
+  ground?: House2GroundStroke[];
   id: string;
   neighborhood_id: string;
   number: number;
@@ -89,6 +92,24 @@ export type House2Scene = {
   items: House2Item[];
 };
 const coordinate = z.number().finite().min(0).max(house2Size);
+export const house2GroundStrokeSchema = z
+  .object({
+    material: z.enum(terrainTextureIds),
+    width: z.number().finite().min(0.25).max(4),
+    points: z
+      .array(z.object({ x: coordinate, y: coordinate }).strict())
+      .min(1)
+      .max(200),
+  })
+  .strict();
+export const house2GroundSchema = z
+  .array(house2GroundStrokeSchema)
+  .max(250)
+  .refine(
+    (strokes) => strokes.reduce((n, s) => n + s.points.length, 0) <= 5000,
+    'A pintura excede o limite de pontos do terreno.',
+  );
+export type House2GroundStroke = z.infer<typeof house2GroundStrokeSchema>;
 export const house2TransformSchema = z
   .object({
     x: coordinate,
@@ -99,6 +120,7 @@ export const house2TransformSchema = z
 export const house2LayoutSchema = z
   .object({
     revision: z.number().int().min(0),
+    ground: house2GroundSchema.optional(),
     house: house2TransformSchema.nullable(),
     items: z
       .array(

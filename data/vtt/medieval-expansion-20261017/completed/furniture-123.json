@@ -1,0 +1,43 @@
+{
+  "id": "furniture-123",
+  "kind": "furniture",
+  "name": "Estante de mapas fechada",
+  "width": 2,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: map cabinet opaque horizontal flat top with a small rolled map and brass compass on top, no drawers visible. Physical footprint ratio 2:1. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-123.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-123.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-76a82bba-bb0b-49c5-bfc5-7a3de4e325ae.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1601,
+    691
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 243056,
+  "sha256": "693b070352abf8c99e6d98be1fb1583e31cf1bacb80537946c201c4d6b8d67e5",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 92680254,
+    "squaresSum": 23354861688,
+    "mean": 176.9466927592955,
+    "stdev": 115.23621939024704,
+    "minX": 0,
+    "minY": 48,
+    "maxX": 73,
+    "maxY": 49
+  },
+  "generatedAt": "2026-10-17T13:25:55.570Z"
+}

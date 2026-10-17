@@ -1,0 +1,62 @@
+[
+  {
+    "id": "furniture-001",
+    "previousSource": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-c975f985-3297-4f04-a169-6767b1deaf6e.png",
+    "previousSha256": "f2c8325291c156f499c7de77be2f000776beb992b186519cafebb1db76edab31",
+    "reason": "Remove frontal surfaces and retain only overhead tops"
+  },
+  {
+    "id": "furniture-002",
+    "previousSource": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-fae4cee8-5627-4356-aaaa-fffbd06b26a7.png",
+    "previousSha256": "6f32abe661ae412a39a5ae212c99c57ec053cb04614b2154becb0391c06bcc40",
+    "reason": "Remove frontal surfaces and retain only overhead tops"
+  },
+  {
+    "id": "furniture-003",
+    "previousSource": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-fae18044-72e8-42b4-91e2-d55f58270b9b.png",
+    "previousSha256": "f2e8fac739534131c969c0819dbff0ec52410d6d3be1ef31088fdc5827d29ee8",
+    "reason": "Remove frontal surfaces and retain only overhead tops"
+  },
+  {
+    "id": "furniture-005",
+    "previousSource": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-d1574e7d-04b4-4ba0-9f47-a4ee9b1d0cec.png",
+    "previousSha256": "3b76ba09317ea2c8b59e705f05180593eeaf6caabfa9f5761596c2045445b43e",
+    "reason": "Remove frontal surfaces and retain only overhead tops"
+  },
+  {
+    "id": "furniture-009",
+    "previousSource": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-45836a9f-8e5c-4d2a-a673-5e23b7a1351c.png",
+    "previousSha256": "9a121d6360786090e517f1028afdb4abf1aa273b0d08d92616658eb49ea4ae44",
+    "reason": "Remove frontal surfaces and retain only overhead tops"
+  },
+  {
+    "id": "furniture-011",
+    "previousSource": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-942b5de7-1472-4bde-97ca-e93a6f11c8a3.png",
+    "previousSha256": "75a528a1031155c64dd2c7df7a13f6db4faccfb97f232c66188733c97b3194b6",
+    "reason": "Remove frontal surfaces and retain only overhead tops"
+  },
+  {
+    "id": "furniture-012",
+    "previousSource": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-ae6c7450-4fa0-414a-ad2a-6f0b096b5093.png",
+    "previousSha256": "1335e7a1fdcb78eca32c9da9a35d3c034a82f1687b9f219ca844a7e1aa2a5d7b",
+    "reason": "Remove frontal surfaces and retain only overhead tops"
+  },
+  {
+    "id": "furniture-013",
+    "previousSource": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-2e50faf0-93ea-4e16-b572-5f29f4bb073e.png",
+    "previousSha256": "c5e8befcaf7f2e90fe1202fe432dcc7e7a9dfcd9f45ca322dd514ae6e75da162",
+    "reason": "Remove frontal surfaces and retain only overhead tops"
+  },
+  {
+    "id": "furniture-015",
+    "previousSource": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-97884cb1-70ab-4f7d-8241-db804ec6e1c7.png",
+    "previousSha256": "12b4f2b514a6f7221ab5c2cc6380bb5888f2e393a762345e3c59711aa2e24c9c",
+    "reason": "Remove frontal surfaces and retain only overhead tops"
+  },
+  {
+    "id": "furniture-018",
+    "previousSource": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-d0f31c1c-13da-45fc-ac7d-8061ce2c8359.png",
+    "previousSha256": "a453479bb1dde0335569423a6d79807e568ba0f0522da42e164c9d07ae38c918",
+    "reason": "Remove frontal surfaces and retain only overhead tops"
+  }
+]

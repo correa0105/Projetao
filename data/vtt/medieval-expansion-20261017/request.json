@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-17",
+  "indoor": 50,
+  "outdoor": 50,
+  "urban": 50,
+  "grass": 10,
+  "earth": 5,
+  "stone": 5,
+  "targets": [
+    "VTT",
+    "House 2.0"
+  ],
+  "clock": "House 2.0 follows world clock; only administrators edit clock",
+  "original136StillRequired": true
+}

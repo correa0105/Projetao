@@ -1,0 +1,43 @@
+{
+  "id": "urban-046",
+  "kind": "furniture",
+  "name": "Barreira móvel de madeira",
+  "width": 3,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: wooden town road barrier viewed directly above, horizontal beam top with two cross foot tops. Physical footprint ratio 3:1. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-046.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-046.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-8109ab01-5af2-4538-bc7e-48533c37ee32.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    2172,
+    724
+  ],
+  "trimDimensions": [
+    1929,
+    578
+  ],
+  "dimensions": [
+    1025,
+    341
+  ],
+  "bytes": 94470,
+  "sha256": "dc639638eaf03a35aa989e5e308a907a8e8202b225d3a52d763e2bc8d7e531da",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 31207197,
+    "squaresSum": 7845448641,
+    "mean": 89.28459194621271,
+    "stdev": 120.30932244617308,
+    "minX": 0,
+    "minY": 0,
+    "maxX": 859,
+    "maxY": 27
+  },
+  "generatedAt": "2026-10-17T13:41:16.723Z"
+}

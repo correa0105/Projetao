@@ -1,0 +1,43 @@
+{
+  "id": "furniture-119",
+  "kind": "furniture",
+  "name": "Arca de enxoval",
+  "width": 2,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: long cedar linen chest with flat top inlaid with simple carved floral border. Physical footprint ratio 2:1. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-119.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-119.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-93e7e678-bcd9-42b5-8b3a-da037ec3da09.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1662,
+    668
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 230024,
+  "sha256": "52f67bee5c68ab160f60f86b2fe30fd55665a9d3ff1459cc14f69b2ea31506f6",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 86769288,
+    "squaresSum": 21863160690,
+    "mean": 165.66137749988067,
+    "stdev": 119.57360814554639,
+    "minX": 0,
+    "minY": 32,
+    "maxX": 65,
+    "maxY": 64
+  },
+  "generatedAt": "2026-10-17T13:19:30.713Z"
+}

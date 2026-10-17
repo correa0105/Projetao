@@ -1,0 +1,43 @@
+{
+  "id": "urban-020",
+  "kind": "furniture",
+  "name": "Barril de água urbano",
+  "width": 1,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: large closed oak water barrel showing round lid with small central bung. Physical footprint ratio 1:1. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-020.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-020.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ce36b5cc-14e2-4abf-8868-c40f97f0f7ae.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "trimDimensions": [
+    1179,
+    1183
+  ],
+  "dimensions": [
+    1025,
+    1025
+  ],
+  "bytes": 450162,
+  "sha256": "892e75e30214ec5ff009ed4bfdc274fa567e172e563ca9cd5d6ce98a81facca2",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 177791379,
+    "squaresSum": 44839880299,
+    "mean": 169.22439405116003,
+    "stdev": 118.50047010829535,
+    "minX": 0,
+    "minY": 48,
+    "maxX": 410,
+    "maxY": 48
+  },
+  "generatedAt": "2026-10-17T13:19:39.435Z"
+}

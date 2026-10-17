@@ -1,0 +1,43 @@
+{
+  "id": "urban-032",
+  "kind": "furniture",
+  "name": "Escadaria de pedra baixa",
+  "width": 3,
+  "height": 2,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: short broad outdoor stone stair seen vertically above, parallel horizontal treads, no side faces. Physical footprint ratio 3:2. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-032.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-032.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-8bce299b-dd60-42d8-8766-20ba9cc6b13a.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "trimDimensions": [
+    1356,
+    809
+  ],
+  "dimensions": [
+    1025,
+    682
+  ],
+  "bytes": 341070,
+  "sha256": "62359b78429a334b8b769a061fe0e18f5e999fda104fb37ea19b58fa0986b40c",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 126141863,
+    "squaresSum": 31741474823,
+    "mean": 180.44755453830197,
+    "stdev": 113.33704467169939,
+    "minX": 0,
+    "minY": 80,
+    "maxX": 991,
+    "maxY": 82
+  },
+  "generatedAt": "2026-10-17T13:30:42.267Z"
+}

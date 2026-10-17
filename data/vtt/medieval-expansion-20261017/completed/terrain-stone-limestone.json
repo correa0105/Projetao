@@ -1,0 +1,32 @@
+{
+  "id": "terrain-stone-limestone",
+  "kind": "terrain",
+  "name": "Pedra calcária clara",
+  "width": 1,
+  "height": 1,
+  "group": "stone",
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE seamless square tileable terrain texture for a medieval top-down tactical battlemap. Subject: pale warm grey limestone gravel and small flat chips. Match the fine hand-painted warm earthy material detail of the supplied style references, not photorealism. Strict vertically overhead orthographic texture. Fill the ENTIRE canvas edge to edge with the same continuous material, completely OPAQUE image. Truly seamless on all four edges; no borders, margins, vignettes, dominant central feature, visible lighting direction, large rocks, plants, objects, footprints, grid, text or watermark. Small natural detail appropriate for a repeating terrain brush; balanced material density and consistent even overhead illumination.",
+  "public": "public/vtt/medieval-expansion-20261017/terrain/stone-limestone.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/terrain/stone-limestone.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-b050f2bd-1b32-4561-b228-6ed6c99eb3de.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "trimDimensions": [
+    1254,
+    1254
+  ],
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "bytes": 659582,
+  "sha256": "a8935c3ea835af49724f4ef58cc77971243f77222f0ba9fa646e2bc2ef5e54f6",
+  "generatedAt": "2026-10-17T13:19:35.910Z"
+}

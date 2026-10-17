@@ -1,0 +1,43 @@
+{
+  "id": "outdoor-009",
+  "kind": "furniture",
+  "name": "Balanço de jardim",
+  "width": 2.5,
+  "height": 1.5,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: garden swing seen overhead, timber crossbeam, two rope dots and plank seat below, no standing faces. Physical footprint ratio 2.5:1.5. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/outdoor-009.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/outdoor-009.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-87849611-e8da-4aac-a263-84377466d5ff.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1619,
+    971
+  ],
+  "trimDimensions": [
+    1560,
+    683
+  ],
+  "dimensions": [
+    1025,
+    613
+  ],
+  "bytes": 206812,
+  "sha256": "a13c3ce0fe49b3c9b19b35e7183e3a17fdc5ddc9d73fbb6b30c031ef59edb511",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 55397656,
+    "squaresSum": 13867478782,
+    "mean": 88.16720009549198,
+    "stdev": 119.57055784355965,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 127,
+    "maxY": 112
+  },
+  "generatedAt": "2026-10-17T13:13:45.675Z"
+}

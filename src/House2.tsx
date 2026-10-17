@@ -27,6 +27,7 @@ import {
   Settings,
   Undo2,
   Warehouse,
+  Paintbrush,
   X,
 } from 'lucide-react';
 import { api, post } from './api';
@@ -37,7 +38,12 @@ import { boundHouse2Camera, initialHouse2Camera, type House2Camera } from './hou
 import { House2Lighting } from './House2Lighting';
 import { House2Interior, house2CutawayImage } from './House2Interior';
 import { house2Architecture } from './house2-architecture';
-import { house2DayPhases, type House2DayPhase } from '../shared/house2-lighting';
+import { house2DayPhases } from '../shared/house2-lighting';
+import { worldClockPhase, worldClockLabel } from '../shared/world-clock';
+import { useWorldClock } from './useWorldClock';
+import { House2Clock } from './House2Clock';
+import { House2Ground, House2GroundEditor } from './House2Ground';
+import { terrainTextures, type TerrainTextureId } from '../shared/vtt-terrain';
 import {
   house2Clamp,
   house2Furniture,
@@ -58,13 +64,14 @@ import type { Character, User } from './types';
 import './house2.css';
 
 const number = (n: number) => n.toLocaleString('pt-BR');
-type Tool = 'terrain' | 'houses' | 'shop' | 'collection' | 'settings';
+type Tool = 'terrain' | 'houses' | 'shop' | 'collection' | 'settings' | 'ground';
 const toolNames: Record<Tool, string> = {
   terrain: 'Terrenos',
   houses: 'Casas vazias',
   shop: 'Mobília',
   collection: 'Minha coleção',
   settings: 'Vizinhança',
+  ground: 'Pintar terreno',
 };
 const toolIcons = {
   terrain: LandPlot,
@@ -72,6 +79,7 @@ const toolIcons = {
   shop: Armchair,
   collection: Warehouse,
   settings: Settings,
+  ground: Paintbrush,
 };
 type Camera = House2Camera;
 
@@ -82,6 +90,9 @@ export function House2({ character, user }: { character?: Character; user: User 
   const [query, setQuery] = useState(''),
     [filter, setFilter] = useState('all');
   const [catalogQuery, setCatalogQuery] = useState('');
+  const [catalogCategory, setCatalogCategory] = useState('Todas');
+  const [groundMaterial, setGroundMaterial] = useState<TerrainTextureId>('grass-meadow'),
+    [groundWidth, setGroundWidth] = useState(1);
   const [selected, setSelected] = useState<string | null>(null);
   const [tool, setTool] = useState<Tool | null>(null),
     [menu, setMenu] = useState(false);
@@ -92,11 +103,8 @@ export function House2({ character, user }: { character?: Character; user: User 
     initialHouse2Camera({ width: innerWidth, height: innerHeight }),
   );
   const [viewport, setViewport] = useState({ width: 1440, height: 900 });
-  const [dayPhase, setDayPhase] = useState<House2DayPhase>(() => {
-    const saved = localStorage.getItem('alvorada-house2-day-phase');
-    return saved && Object.hasOwn(house2DayPhases, saved) ? (saved as House2DayPhase) : 'afternoon';
-  });
-  useEffect(() => localStorage.setItem('alvorada-house2-day-phase', dayPhase), [dayPhase]);
+  const worldClock = useWorldClock();
+  const dayPhase = worldClockPhase(worldClock.timeMs);
   const [snap, setSnap] = useState(false);
   const [confirmation, setConfirmation] = useState<{
     kind: 'plot' | 'house' | 'furniture';
@@ -281,6 +289,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     return (
       draft || {
         revision: plot.revision,
+        ground: structuredClone(plot.ground ?? []),
         house: plot.house_id
           ? {
               x: plot.house_x!,
@@ -878,6 +887,11 @@ export function House2({ character, user }: { character?: Character; user: User 
         </defs>
         <House2Lighting phase={dayPhase} />
         <House2Village plots={scene?.plots ?? []} />
+        <House2Ground
+          plots={(scene?.plots ?? []).map((p) =>
+            p.id === selected && draft ? { ...p, ground: draft.ground ?? p.ground } : p,
+          )}
+        />
         {scene?.plots.map((p) => (
           <g
             key={p.id}
@@ -1012,6 +1026,20 @@ export function House2({ character, user }: { character?: Character; user: User 
             setSelectedPiece(null);
           }}
         />
+        {tool === 'ground' && canEdit && plot && !busy && (
+          <House2GroundEditor
+            plot={plot}
+            strokes={draft?.ground ?? plot.ground ?? []}
+            material={groundMaterial}
+            width={groundWidth}
+            world={world}
+            notice={setNotice}
+            change={(ground) => {
+              const d = startDraft();
+              if (d) setDraft({ ...d, ground });
+            }}
+          />
+        )}
         <rect
           data-house2-day-phase={dayPhase}
           x={house2World.x}
@@ -1082,6 +1110,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                   key={k}
                   onClick={() => {
                     setTool(k);
+                    if (k === 'ground') setInterior(null);
                     setMenu(false);
                     setCatalogQuery('');
                   }}
@@ -1111,6 +1140,12 @@ export function House2({ character, user }: { character?: Character; user: User 
             </button>
           </nav>
         )}
+      </div>
+      <div className="h2-clock-display" aria-label="Horário do mundo">
+        <time dateTime={worldClockLabel(worldClock.timeMs)}>
+          {worldClock.clock ? worldClockLabel(worldClock.timeMs) : '—:—'}
+        </time>{' '}
+        · {house2DayPhases[dayPhase].name}
       </div>
       <div className="h2-map-controls">
         <button aria-label="Aproximar mapa" onClick={() => zoom(0.75)}>
@@ -1162,20 +1197,7 @@ export function House2({ character, user }: { character?: Character; user: User 
             {tool === 'settings' ? (
               <>
                 <p>{scene?.neighborhood.description}</p>
-                <label className="h2-day-phase">
-                  Luz do cenário
-                  <select
-                    aria-label="Horário do cenário"
-                    value={dayPhase}
-                    onChange={(e) => setDayPhase(e.target.value as House2DayPhase)}
-                  >
-                    {Object.entries(house2DayPhases).map(([id, phase]) => (
-                      <option key={id} value={id}>
-                        {phase.name}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+                <House2Clock world={worldClock} />
                 <p>
                   Mapa de 200 × 200 quadrados. Terrenos de 12 × 12, distribuídos entre jardins e
                   caminhos do vilarejo.
@@ -1293,7 +1315,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                       ))}
                   </>
                 )}
-                {['houses', 'shop', 'collection'].includes(tool) && !canEdit && (
+                {['houses', 'shop', 'collection', 'ground'].includes(tool) && !canEdit && (
                   <p>
                     Selecione um terreno seu. Compras e decoração ficam disponíveis apenas nos
                     terrenos que você adquiriu.
@@ -1347,11 +1369,80 @@ export function House2({ character, user }: { character?: Character; user: User 
                     )}
                   </>
                 )}
+                {canEdit && tool === 'ground' && (
+                  <div className="h2-ground-tools">
+                    <p>
+                      Pinte dentro do seu terreno. Salvar confirma a pintura; Descartar restaura o
+                      estado anterior.
+                    </p>
+                    <label>
+                      Tamanho do pincel{' '}
+                      <input
+                        aria-label="Tamanho do pincel"
+                        type="range"
+                        min=".25"
+                        max="4"
+                        step=".25"
+                        value={groundWidth}
+                        onChange={(e) => setGroundWidth(Number(e.target.value))}
+                      />
+                      {groundWidth} quadrados
+                    </label>
+                    <div className="h2-ground-textures">
+                      {terrainTextures.map((t) => (
+                        <button
+                          key={t.id}
+                          aria-pressed={groundMaterial === t.id}
+                          onClick={() => setGroundMaterial(t.id)}
+                        >
+                          <img
+                            src={'thumbnail' in t ? t.thumbnail : t.image}
+                            alt=""
+                            loading="lazy"
+                          />
+                          {t.name}
+                        </button>
+                      ))}
+                    </div>
+                    <button
+                      disabled={!(draft?.ground ?? plot?.ground ?? []).length}
+                      onClick={() => {
+                        const d = startDraft();
+                        if (d)
+                          setDraft({ ...d, ground: (d.ground ?? plot?.ground ?? []).slice(0, -1) });
+                      }}
+                    >
+                      Desfazer traço
+                    </button>
+                    <button
+                      disabled={!(draft?.ground ?? plot?.ground ?? []).length}
+                      onClick={() => {
+                        const d = startDraft();
+                        if (d) setDraft({ ...d, ground: [] });
+                      }}
+                    >
+                      Limpar pintura
+                    </button>
+                  </div>
+                )}
                 {canEdit && tool === 'shop' && (
                   <>
                     <p>
-                      As mesmas 100 peças da mobília do VTT. A compra entra na sua coleção de teste.
+                      {house2Furniture.length} peças para interiores, jardins e cidade. A compra
+                      entra na sua coleção de teste.
                     </p>
+                    <label>
+                      Categoria
+                      <select
+                        aria-label="Categoria de mobília"
+                        value={catalogCategory}
+                        onChange={(e) => setCatalogCategory(e.target.value)}
+                      >
+                        {['Todas', ...new Set(house2Furniture.map((f) => f.category))].map((c) => (
+                          <option key={c}>{c}</option>
+                        ))}
+                      </select>
+                    </label>
                     <label className="h2-search">
                       <Search size={15} />
                       <input
@@ -1363,10 +1454,12 @@ export function House2({ character, user }: { character?: Character; user: User 
                     </label>
                     <div className="h2-catalog">
                       {house2Furniture
-                        .filter((f) =>
-                          f.name
-                            .toLocaleLowerCase('pt-BR')
-                            .includes(catalogQuery.toLocaleLowerCase('pt-BR')),
+                        .filter(
+                          (f) =>
+                            (catalogCategory === 'Todas' || f.category === catalogCategory) &&
+                            f.name
+                              .toLocaleLowerCase('pt-BR')
+                              .includes(catalogQuery.toLocaleLowerCase('pt-BR')),
                         )
                         .map((f) => (
                           <button

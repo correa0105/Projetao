@@ -1,0 +1,43 @@
+{
+  "id": "urban-030",
+  "kind": "furniture",
+  "name": "Sarjeta de pedra",
+  "width": 3,
+  "height": 0.5,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: straight medieval street stone gutter segment with shallow dark water channel, no surrounding terrain. Physical footprint ratio 3:0.5. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-030.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-030.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-8f17a7ea-39ee-4a66-88ef-364a378f1fdd.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    2172,
+    724
+  ],
+  "trimDimensions": [
+    2024,
+    394
+  ],
+  "dimensions": [
+    1025,
+    171
+  ],
+  "bytes": 95340,
+  "sha256": "202e306b2ff1e44357805fa6dac83f98cf80806e542cef1d52bca15e4a29c061",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 30621567,
+    "squaresSum": 7691031429,
+    "mean": 174.70584510055627,
+    "stdev": 115.57569361221525,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 109,
+    "maxY": 16
+  },
+  "generatedAt": "2026-10-17T13:26:04.441Z"
+}

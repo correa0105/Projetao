@@ -1,0 +1,43 @@
+{
+  "id": "urban-041",
+  "kind": "furniture",
+  "name": "Jardineira pública de pedra",
+  "width": 3,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: long carved stone town planter filled with compact muted green shrubs. Physical footprint ratio 3:1. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-041.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-041.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-2f4c7367-b093-4433-b032-137719720ad6.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    2172,
+    724
+  ],
+  "trimDimensions": [
+    2010,
+    513
+  ],
+  "dimensions": [
+    1025,
+    341
+  ],
+  "bytes": 158924,
+  "sha256": "8f737ce58bd972101bc28c171fffba390e16957179efa6aa48ef0523fdfab723",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 52121118,
+    "squaresSum": 13101608438,
+    "mean": 149.11985694871612,
+    "stdev": 123.48016054012456,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 92,
+    "maxY": 49
+  },
+  "generatedAt": "2026-10-17T13:34:04.657Z"
+}

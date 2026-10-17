@@ -1,0 +1,43 @@
+{
+  "id": "outdoor-017",
+  "kind": "furniture",
+  "name": "Canteiro elevado de ervas",
+  "width": 2,
+  "height": 1.5,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: rectangular raised timber herb bed, soil and four patches of herbs. Physical footprint ratio 2:1.5. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/outdoor-017.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/outdoor-017.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ca0a9745-439f-49e7-b53c-ba11ad170173.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1448,
+    1086
+  ],
+  "trimDimensions": [
+    1322,
+    858
+  ],
+  "dimensions": [
+    1025,
+    768
+  ],
+  "bytes": 408644,
+  "sha256": "06a8c0da6a0cfab69352612422d4fc7dfe77d0177f4e8b5b4199777686857943",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 137831376,
+    "squaresSum": 34722294794,
+    "mean": 175.09067073170732,
+    "stdev": 115.98224132404268,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 103,
+    "maxY": 73
+  },
+  "generatedAt": "2026-10-17T13:19:33.746Z"
+}

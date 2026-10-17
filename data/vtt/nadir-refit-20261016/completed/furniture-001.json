@@ -8,40 +8,41 @@
     "/vtt/home-furniture-20261014/furniture-001.webp"
   ],
   "previous": "public/vtt/overhead-20261015/furniture-001.webp",
-  "prompt": "Create ONE isolated original medieval fantasy VTT furniture sprite. STRICT CAMERA: a true orthographic plan viewed vertically DOWN at 90 degrees, with ZERO tilt. Show ONLY horizontal surfaces visible from directly overhead. The object stands in its normal use orientation, north/back toward image top. No visible vertical fronts, backrest elevations, cabinet doors, drawer fronts, side faces, feet or standing legs. Rectangular surfaces have perfectly parallel opposite edges; circular tops are true circles, never ellipses. STYLE: finely hand-painted tactical battlemap like the supplied references, crisp delicate dark contours, warm worn oak and iron, natural grain and subtle small scratches, restrained earthy palette, a tiny soft contact shadow only. Rich readable crafted details, no glossy product photography and no heavy 3D render. Draw the complete SINGLE asset centered on genuinely transparent alpha with a narrow clear margin; no room, floor patch, people, grid, labels, text, watermark or extra furniture. Reference images are visual/style guidance only; do not copy their whole room, exact arrangement or branding. Subject: a rustic oak chair. The square wooden SEAT is the dominant visible surface. At the north edge show ONLY the thin top edge of a gently curved back rail and the small circular tops of its two posts. The backrest front MUST NOT be visible; no vertical slats appearing above the seat, no front apron, no legs below. Four tiny peg caps and subtle seatboard seams give tactile detail. Exactly one chair, no cushion, no table.",
+  "prompt": "Use case: precise-object-edit. Image 1 is EDIT TARGET. Other images are style references only. Correct the target into a completely vertical orthographic NADIR plan. Camera exactly vertically overhead, absolutely no tilt. Keep its identity, materials, color, footprint and fine hand-painted medieval battlemap detail. Replace every visible vertical face with correct horizontal TOP surfaces: backrests and bed headboards are narrow horizontal wood cut-top strips, with round end-grain post TOPS, never tall fronts. Armrests only slim top strips. Beds retain mattress and linen. Dressers and desks have ONE opaque wooden top panel, no visible drawer fronts, drawer handles or vertical panels below the top. Rectangular edges stay parallel and horizontal, circular surfaces are true circles. Object: Cadeira de madeira. Footprint ratio 1:1. Complete isolated silhouette with narrow transparent margin. Actual transparent alpha outside sprite. No legs showing, elevation, perspective, terrain, text, grid, people, watermark or shadow halo.",
   "refs": [
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-c975f985-3297-4f04-a169-6767b1deaf6e.png",
     "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png",
     "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-71463700-016a-4127-b690-04ff2b4121a9.png"
   ],
   "public": "public/vtt/nadir-20261016/furniture-001.webp",
   "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-001.webp",
-  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-c975f985-3297-4f04-a169-6767b1deaf6e.png",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-8e58f2b8-4664-4b07-aee7-a56d3c56afba.png",
   "generator": "built-in image_gen",
   "sourceDimensions": [
-    1261,
-    1247
+    1254,
+    1254
   ],
   "trimDimensions": [
-    901,
-    896
+    1036,
+    1008
   ],
   "dimensions": [
     1025,
     1025
   ],
-  "bytes": 489686,
-  "sha256": "f2c8325291c156f499c7de77be2f000776beb992b186519cafebb1db76edab31",
+  "bytes": 428074,
+  "sha256": "180939e768f5b6ced8dbec5f81b46ca18f95a79d393de4478cf240b227be0cf9",
   "alpha": {
     "min": 0,
     "max": 255,
-    "sum": 202289768,
-    "squaresSum": 50899873434,
-    "mean": 192.54231338488995,
-    "stdev": 106.65224180423219,
+    "sum": 202426822,
+    "squaresSum": 51089923900,
+    "mean": 192.67276335514575,
+    "stdev": 107.26295856657173,
     "minX": 0,
-    "minY": 0,
-    "maxX": 912,
-    "maxY": 36
+    "minY": 48,
+    "maxX": 112,
+    "maxY": 48
   },
-  "generatedAt": "2026-10-16T22:28:09.174Z"
+  "generatedAt": "2026-10-17T13:14:19.868Z"
 }

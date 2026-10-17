@@ -1,0 +1,48 @@
+{
+  "id": "furniture-075",
+  "kind": "furniture",
+  "name": "Roda de fiar",
+  "width": 1,
+  "height": 1,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-075.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/furniture-075.webp",
+  "prompt": "Image 1 is a strict GEOMETRIC PLAN GUIDE: preserve its absolute overhead camera, occlusion and horizontal silhouette. Image 2 is MATERIAL/COLOR guidance only, do NOT copy its camera errors. Image 3 is the approved hand-painted medieval battlemap STYLE. Create one original isolated sprite using the geometry of image 1 and richly painted worn material detail of the other references. Medieval oak spinning wheel. IMPORTANT: its wheel stands vertically, so from the absolute zenith it is ONLY a thin narrow rectangular wood strip, NEVER a round wheel disk. Low horizontal frame top rails, four circular post caps, horizontal bobbin/spindle on one side. No vertical faces or treadle seen in elevation. True orthographic plan at absolute 90-degree zenith, no tilt. Only horizontal upper surfaces. Preserve footprint ratio 1:1. Genuinely transparent alpha outside complete object, no background, halo, grid, text, branding, watermark, extra furniture or people.",
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\furniture-075.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-dfb43cce-2bbc-4fe4-af69-c155fc2504b2.png",
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png"
+  ],
+  "public": "public/vtt/nadir-20261016/furniture-075.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-075.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-8805067d-7a1c-4406-bf37-5c57957f4f57.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "trimDimensions": [
+    1017,
+    810
+  ],
+  "dimensions": [
+    1025,
+    1025
+  ],
+  "bytes": 325508,
+  "sha256": "8b8eb2b51291f0f1c23ea8defa43e5adeb8d677faf27f8f3a3eaa2f3f9c97cc4",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 97682378,
+    "squaresSum": 24410340588,
+    "mean": 92.97549363474123,
+    "stdev": 120.78776865922676,
+    "minX": 0,
+    "minY": 0,
+    "maxX": 802,
+    "maxY": 132
+  },
+  "generatedAt": "2026-10-17T13:35:38.572Z"
+}

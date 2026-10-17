@@ -705,35 +705,258 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
 }
 
 /* Village scenery and SVG focus must never inherit browser-sized focus rings. */
-.house2-world { background:#3d4936; }
-.house2-world::before { content:''; position:absolute; inset:0; background:url('/vtt/terrain-v4-20261013/grass.webp') center/320px 320px; z-index:-1; pointer-events:none; }
-.house2-world .h2-map, .house2-world .h2-map *:focus, .house2-world .h2-map *:focus-visible { outline:none!important; outline-offset:0!important; box-shadow:none!important; }
-.house2-world .h2-map .h2-plot:focus-visible { stroke:#f0d293; stroke-width:1.5px; stroke-opacity:1; vector-effect:non-scaling-stroke; }
-.h2-map .h2-house-fixed { cursor:pointer; }
-.h2-house-preview { opacity:.94; cursor:pointer; }
-.h2-map .h2-plot:hover { stroke-width:1px; stroke-opacity:.6; fill-opacity:.04; vector-effect:non-scaling-stroke; }
-.h2-world-heading { background:linear-gradient(90deg,#1b261600,#1b2616e8 20%,#1b2616e8 80%,#1b261600); }
-.h2-card-map { background-position:center; background-size:cover; }
-.h2-item-size { display:grid; gap:10px; }
-.h2-item-size > label { display:grid; grid-template-columns:1fr auto; align-items:center; gap:5px; font-size:11px; }
-.h2-item-size input[type='range'] { grid-column:1/-1; width:100%; padding:0; height:20px; accent-color:#c4a264; }
-.h2-coordinates { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.h2-coordinates label { display:flex; align-items:center; gap:6px; font-size:10px; color:#ab9e80; }
-.h2-coordinates input { min-width:0; width:100%; background:#21231c; border:1px solid #89704466; border-radius:3px; color:#dacaab; padding:7px; }
-.h2-collection-intro { color:#c0ab7e!important; font-size:9px; letter-spacing:.07em; border-bottom:1px solid #8b734143; padding-bottom:10px; }
-.h2-collection-list { display:grid; gap:7px; }
-.h2-collection-list > button { display:grid; grid-template-columns:47px 1fr; grid-template-rows:auto auto auto; text-align:left; justify-items:start; column-gap:13px; padding:10px; background:#20271b60; border:1px solid #a48b4d38; }
-.h2-collection-list img { width:45px; height:52px; object-fit:contain; grid-row:1/4; align-self:center; }
-.h2-collection-list strong { font-size:12px; font-weight:500; }
-.h2-owned-badge { font-size:9px; color:#abb89a; }
-.h2-collection-list small { font-size:10px; color:#ddc58b; }
-.h2-purchase-confirmation { width:min(360px,calc(100vw - 80px)); color:#cabea3; font-size:13px; }
-.h2-purchase-confirmation > img { display:block; width:120px; height:120px; object-fit:contain; margin:8px auto; }
-.h2-purchase-confirmation h3 { font:24px Georgia,serif; text-align:center; color:#e7d8b8; }
-.h2-purchase-confirmation dl { border-block:1px solid #8f794b50; padding-block:10px; }
-.h2-purchase-confirmation dl > div { display:flex; justify-content:space-between; gap:15px; padding:7px 0; }
-.h2-purchase-confirmation dd { margin:0; color:#dbc18c; }
-.h2-confirm-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:20px; }
-.h2-purchase-confirmation [role='alert'] { color:#e6ad90; }
-.h2-day-phase{display:grid;gap:8px;font-size:12px;color:#c6b68e;}
-.h2-day-phase select{width:100%;min-height:38px;padding:8px;border:1px solid #a5894c66;border-radius:3px;background:#24241c;color:#e6d7b7;font:inherit;}
+.house2-world {
+  background: #3d4936;
+}
+.house2-world::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/vtt/terrain-v4-20261013/grass.webp') center/320px 320px;
+  z-index: -1;
+  pointer-events: none;
+}
+.house2-world .h2-map,
+.house2-world .h2-map *:focus,
+.house2-world .h2-map *:focus-visible {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+}
+.house2-world .h2-map .h2-plot:focus-visible {
+  stroke: #f0d293;
+  stroke-width: 1.5px;
+  stroke-opacity: 1;
+  vector-effect: non-scaling-stroke;
+}
+.h2-map .h2-house-fixed {
+  cursor: pointer;
+}
+.h2-house-preview {
+  opacity: 0.94;
+  cursor: pointer;
+}
+.h2-map .h2-plot:hover {
+  stroke-width: 1px;
+  stroke-opacity: 0.6;
+  fill-opacity: 0.04;
+  vector-effect: non-scaling-stroke;
+}
+.h2-world-heading {
+  background: linear-gradient(90deg, #1b261600, #1b2616e8 20%, #1b2616e8 80%, #1b261600);
+}
+.h2-card-map {
+  background-position: center;
+  background-size: cover;
+}
+.h2-item-size {
+  display: grid;
+  gap: 10px;
+}
+.h2-item-size > label {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+}
+.h2-item-size input[type='range'] {
+  grid-column: 1/-1;
+  width: 100%;
+  padding: 0;
+  height: 20px;
+  accent-color: #c4a264;
+}
+.h2-coordinates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.h2-coordinates label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: #ab9e80;
+}
+.h2-coordinates input {
+  min-width: 0;
+  width: 100%;
+  background: #21231c;
+  border: 1px solid #89704466;
+  border-radius: 3px;
+  color: #dacaab;
+  padding: 7px;
+}
+.h2-collection-intro {
+  color: #c0ab7e !important;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  border-bottom: 1px solid #8b734143;
+  padding-bottom: 10px;
+}
+.h2-collection-list {
+  display: grid;
+  gap: 7px;
+}
+.h2-collection-list > button {
+  display: grid;
+  grid-template-columns: 47px 1fr;
+  grid-template-rows: auto auto auto;
+  text-align: left;
+  justify-items: start;
+  column-gap: 13px;
+  padding: 10px;
+  background: #20271b60;
+  border: 1px solid #a48b4d38;
+}
+.h2-collection-list img {
+  width: 45px;
+  height: 52px;
+  object-fit: contain;
+  grid-row: 1/4;
+  align-self: center;
+}
+.h2-collection-list strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+.h2-owned-badge {
+  font-size: 9px;
+  color: #abb89a;
+}
+.h2-collection-list small {
+  font-size: 10px;
+  color: #ddc58b;
+}
+.h2-purchase-confirmation {
+  width: min(360px, calc(100vw - 80px));
+  color: #cabea3;
+  font-size: 13px;
+}
+.h2-purchase-confirmation > img {
+  display: block;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin: 8px auto;
+}
+.h2-purchase-confirmation h3 {
+  font:
+    24px Georgia,
+    serif;
+  text-align: center;
+  color: #e7d8b8;
+}
+.h2-purchase-confirmation dl {
+  border-block: 1px solid #8f794b50;
+  padding-block: 10px;
+}
+.h2-purchase-confirmation dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 7px 0;
+}
+.h2-purchase-confirmation dd {
+  margin: 0;
+  color: #dbc18c;
+}
+.h2-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+.h2-purchase-confirmation [role='alert'] {
+  color: #e6ad90;
+}
+.h2-day-phase {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  color: #c6b68e;
+}
+.h2-day-phase select {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px;
+  border: 1px solid #a5894c66;
+  border-radius: 3px;
+  background: #24241c;
+  color: #e6d7b7;
+  font: inherit;
+}
+.h2-clock-display {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  max-width: calc(100vw - 22rem);
+  padding: 0.45rem 0.8rem;
+  border: 1px solid #7d684b80;
+  border-radius: 0.5rem;
+  background: #111b25e8;
+  color: #d8c49e;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.h2-world-clock {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.8rem;
+  border: 1px solid #7d684b70;
+  border-radius: 0.5rem;
+  background: #101923;
+}
+.h2-world-clock > span {
+  font-size: 0.75rem;
+  color: #b5a88f;
+}
+.h2-world-clock strong {
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+}
+.h2-world-clock form {
+  display: grid;
+  gap: 0.5rem;
+}
+.h2-ground-tools {
+  display: grid;
+  gap: 0.65rem;
+}
+.h2-ground-textures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+.h2-ground-textures button {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.35rem;
+  font-size: 0.7rem;
+}
+.h2-ground-textures img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+.h2-ground-textures [aria-pressed='true'] {
+  outline: 2px solid #c19b64;
+}
+.h2-ground-tools input[type='range'] {
+  max-width: 100%;
+}
+@media (max-width: 650px) {
+  .h2-clock-display {
+    top: 4.4rem;
+    max-width: calc(100vw - 1.5rem);
+    font-size: 0.8rem;
+  }
+  .h2-ground-textures {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

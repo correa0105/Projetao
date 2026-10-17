@@ -6,8 +6,9 @@ import { renderBuffer, renderWorkCache, tokenOnScreen } from './vtt-render-cache
 import type { TerrainStroke } from '../shared/vtt';
 import {houseAsset,houseContains,houseOccupied,houseRoofOccluded,houseWalls,houseWindowViews,houseWindowPolygon} from '../shared/vtt-houses';
 import furniture from '../shared/vtt-home-furniture-catalog.json';
+import medievalFurniture from '../shared/vtt-medieval-furniture-catalog.json';
 import {villageAssets,residentAsset,houseViewActors} from '../shared/vtt-village-assets';
-const houseFurniture=new Set([...furniture,...villageAssets.filter(a=>!('actor' in a&&a.actor))].map(a=>vttVisualSource(a.image)));
+const houseFurniture=new Set([...furniture,...medievalFurniture,...villageAssets.filter(a=>!('actor' in a&&a.actor))].map(a=>vttVisualSource(a.image)));
 import {drawHouseDoor} from './vtt-house-doors';
 import {treeTrunk} from '../shared/vtt-tree-trunks';
 import {drawHouseVision} from './vtt-house-vision';

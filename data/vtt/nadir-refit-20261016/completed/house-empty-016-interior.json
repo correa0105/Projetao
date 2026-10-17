@@ -1,0 +1,62 @@
+{
+  "id": "house-empty-016-interior",
+  "kind": "empty-interior",
+  "name": "Casa do deserto · vazia · Interior",
+  "width": 9,
+  "height": 9,
+  "legacy": [
+    "/vtt/houses-empty-20261014/house-016-interior.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/house-empty-016-interior.webp",
+  "prompt": "Use case: precise-object-edit. Image 1 is the EDIT TARGET, the matching newly painted furnished room. Change ONLY its contents: remove ALL movable furniture, rugs, beds, tables, seats, storage, utensils, plants, clutter and all hearth/oven/workstation fixtures. Restore continuous floor with the exact same plank or tile texture beneath them. This is the player-furnishable EMPTY version of exactly the SAME building. Preserve the precise rectangular exterior silhouette, narrow horizontal cut TOP caps of ALL FOUR walls, 90-degree corners, material colors, doorway gap, threshold, every window top sliver and external transparent alpha. Do not add new walls or tilt the camera. Keep overhead orthographic plan, no vertical wall faces, no trapezoid bottom wall. Genuinely transparent alpha outside the complete asset. No grid, text, watermark, branding, people, tokens, scale markers, ruler or background ground patch.",
+  "refs": [
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-9a09e334-6356-442c-9184-565fe72fc3ac.png"
+  ],
+  "public": "public/vtt/nadir-20261016/house-empty-016-interior.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/house-empty-016-interior.webp",
+  "houseId": "house-016",
+  "parent": "house-016-interior",
+  "outer": {
+    "left": 0.14500000000000002,
+    "top": 0.165,
+    "right": 0.855,
+    "bottom": 0.8350000000000001
+  },
+  "footprint": {
+    "left": 0.17,
+    "top": 0.19,
+    "right": 0.83,
+    "bottom": 0.81,
+    "doorStart": 0.4434,
+    "doorEnd": 0.5596
+  },
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-18360b1f-4fe6-4026-b174-552593b5c4a6.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1292,
+    1218
+  ],
+  "trimDimensions": [
+    1271,
+    1183
+  ],
+  "dimensions": [
+    1536,
+    1536
+  ],
+  "bytes": 520396,
+  "sha256": "630a148d9cf7fa5bbd51d362f19f1a609d50a2427a3abfd0f3340be652edf606",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 277792524,
+    "squaresSum": 69821131848,
+    "mean": 117.74382019042969,
+    "stdev": 125.42110225290271,
+    "minX": 0,
+    "minY": 0,
+    "maxX": 1309,
+    "maxY": 474
+  },
+  "generatedAt": "2026-10-17T13:12:27.087Z"
+}

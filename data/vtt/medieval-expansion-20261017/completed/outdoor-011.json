@@ -1,0 +1,43 @@
+{
+  "id": "outdoor-011",
+  "kind": "furniture",
+  "name": "Pergolado aberto",
+  "width": 3,
+  "height": 3,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: square open wooden pergola seen directly above as four post caps joined by spaced overhead crossbeams, no roof. Physical footprint ratio 3:3. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/outdoor-011.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/outdoor-011.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-91afe458-5081-4c2f-bbf0-56694bbd22e8.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "trimDimensions": [
+    1162,
+    1131
+  ],
+  "dimensions": [
+    1025,
+    1025
+  ],
+  "bytes": 366308,
+  "sha256": "316aff3a32b6165d3c7464a236231a516740facad09b87398cfc959dd7fbb403",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 117073366,
+    "squaresSum": 29253586062,
+    "mean": 111.43211516954194,
+    "stdev": 124.20500290425495,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 57,
+    "maxY": 45
+  },
+  "generatedAt": "2026-10-17T13:19:31.509Z"
+}

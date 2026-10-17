@@ -1,0 +1,43 @@
+{
+  "id": "furniture-125",
+  "kind": "furniture",
+  "name": "Prateleira de especiarias",
+  "width": 1.5,
+  "height": 0.5,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: thin wall shelf seen overhead with twelve small round spice jar lids in two rows. Physical footprint ratio 1.5:0.5. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-125.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-125.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-84ce8bc7-6ea3-45c1-bcea-3ad088cbd1a0.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    2172,
+    724
+  ],
+  "trimDimensions": [
+    1964,
+    581
+  ],
+  "dimensions": [
+    1025,
+    341
+  ],
+  "bytes": 171124,
+  "sha256": "61a0bd3506c4d48f529d1e28ac1242043460d88c7ab20a4912f960e2b2412c80",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 62133734,
+    "squaresSum": 15649148152,
+    "mean": 177.76620842572063,
+    "stdev": 114.76858247782332,
+    "minX": 0,
+    "minY": 48,
+    "maxX": 992,
+    "maxY": 48
+  },
+  "generatedAt": "2026-10-17T13:25:56.145Z"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "furniture-108",
+  "kind": "furniture",
+  "name": "Cadeira de carvalho entalhada",
+  "width": 1,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\furniture-108.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-6793850b-bf1e-4a6e-b36c-8c9f3703a569.png",
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png"
+  ],
+  "prompt": "Image 1 is a strict GEOMETRIC PLAN GUIDE: preserve its absolute overhead camera, occlusion and horizontal silhouette. Image 2 is MATERIAL/COLOR guidance only, do NOT copy its camera errors. Image 3 is the approved hand-painted medieval battlemap STYLE. Create one original isolated sprite using the geometry of image 1 and richly painted worn material detail of the other references. Carved oak chair viewed from absolute zenith. Show flat engraved horizontal SEAT, thin backrest TOP edge only and four circular post END-GRAIN TOP CAPS. No tall backrest front panel or leg shaft faces. True orthographic plan at absolute 90-degree zenith, no tilt. Only horizontal upper surfaces. Preserve footprint ratio 1:1. Genuinely transparent alpha outside complete object, no background, halo, grid, text, branding, watermark, extra furniture or people.",
+  "public": "public/vtt/medieval-expansion-20261017/furniture-108.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/furniture-108.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-c3b9d770-a798-4fde-8307-981a50fc3ea6.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "trimDimensions": [
+    1059,
+    1110
+  ],
+  "dimensions": [
+    1025,
+    1025
+  ],
+  "bytes": 518078,
+  "sha256": "b99c77a9ef8fa75c8a409ca59dde2f90bac0f75b3bf1f89fb732bf765ccad568",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 187423816,
+    "squaresSum": 47196166500,
+    "mean": 178.39268625817965,
+    "stdev": 114.44672418341827,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 203,
+    "maxY": 65
+  },
+  "generatedAt": "2026-10-17T13:35:43.005Z"
+}

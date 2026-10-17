@@ -1,0 +1,43 @@
+{
+  "id": "urban-040",
+  "kind": "furniture",
+  "name": "Coluna ornamental urbana",
+  "width": 1.5,
+  "height": 1.5,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: medieval stone decorative column seen directly overhead as round carved capital on square stepped base. Physical footprint ratio 1.5:1.5. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-040.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-040.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ed43f7b7-9737-4fd1-996c-d9518186c67f.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1278,
+    1230
+  ],
+  "trimDimensions": [
+    1064,
+    1006
+  ],
+  "dimensions": [
+    1025,
+    1025
+  ],
+  "bytes": 580068,
+  "sha256": "91ff57e871b7b00b2fd42478ba253e88501a893feaa560a1bb09c7d221d49b48",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 204678965,
+    "squaresSum": 51548520143,
+    "mean": 194.81638548483045,
+    "stdev": 105.4097248690776,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 208,
+    "maxY": 62
+  },
+  "generatedAt": "2026-10-17T13:34:04.422Z"
+}

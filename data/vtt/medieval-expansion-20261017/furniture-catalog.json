@@ -1,0 +1,1352 @@
+[
+  {
+    "id": "furniture-101",
+    "name": "Mesa oval de escrita",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-101.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-101.webp"
+  },
+  {
+    "id": "furniture-102",
+    "name": "Mesa de chá octogonal",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/furniture-102.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-102.webp"
+  },
+  {
+    "id": "furniture-103",
+    "name": "Mesa baixa de mosaico",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-103.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-103.webp"
+  },
+  {
+    "id": "furniture-104",
+    "name": "Mesa dobrável de estudo",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/furniture-104.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-104.webp"
+  },
+  {
+    "id": "furniture-105",
+    "name": "Banco curvo de leitura",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-105.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-105.webp"
+  },
+  {
+    "id": "furniture-106",
+    "name": "Banco de canto almofadado",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/furniture-106.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-106.webp"
+  },
+  {
+    "id": "furniture-107",
+    "name": "Cadeira de vime",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-107.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-107.webp"
+  },
+  {
+    "id": "furniture-108",
+    "name": "Cadeira de carvalho entalhada",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-108.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-108.webp"
+  },
+  {
+    "id": "furniture-109",
+    "name": "Poltrona de linho",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/furniture-109.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-109.webp"
+  },
+  {
+    "id": "furniture-110",
+    "name": "Chaise de couro vermelho",
+    "category": "Mobílias",
+    "width": 2.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-110.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-110.webp"
+  },
+  {
+    "id": "furniture-111",
+    "name": "Recamier de veludo",
+    "category": "Mobílias",
+    "width": 2.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-111.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-111.webp"
+  },
+  {
+    "id": "furniture-112",
+    "name": "Cama de campanha dobrável",
+    "category": "Mobílias",
+    "width": 2.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-112.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-112.webp"
+  },
+  {
+    "id": "furniture-113",
+    "name": "Cama de alcova",
+    "category": "Mobílias",
+    "width": 2.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/furniture-113.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-113.webp"
+  },
+  {
+    "id": "furniture-114",
+    "name": "Cama infantil de madeira",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/furniture-114.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-114.webp"
+  },
+  {
+    "id": "furniture-115",
+    "name": "Cama com dossel recolhido",
+    "category": "Mobílias",
+    "width": 2.5,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/furniture-115.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-115.webp"
+  },
+  {
+    "id": "furniture-116",
+    "name": "Berço de vime",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/furniture-116.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-116.webp"
+  },
+  {
+    "id": "furniture-117",
+    "name": "Baú de viagem reforçado",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-117.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-117.webp"
+  },
+  {
+    "id": "furniture-118",
+    "name": "Cofre doméstico de ferro",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-118.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-118.webp"
+  },
+  {
+    "id": "furniture-119",
+    "name": "Arca de enxoval",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-119.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-119.webp"
+  },
+  {
+    "id": "furniture-120",
+    "name": "Caixa de joias marchetada",
+    "category": "Mobílias",
+    "width": 0.5,
+    "height": 0.5,
+    "image": "/vtt/medieval-expansion-20261017/furniture-120.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-120.webp"
+  },
+  {
+    "id": "furniture-121",
+    "name": "Armário estreito de canto",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-121.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-121.webp"
+  },
+  {
+    "id": "furniture-122",
+    "name": "Guarda-roupa de carvalho",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-122.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-122.webp"
+  },
+  {
+    "id": "furniture-123",
+    "name": "Estante de mapas fechada",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-123.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-123.webp"
+  },
+  {
+    "id": "furniture-124",
+    "name": "Arquivo de pergaminhos",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-124.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-124.webp"
+  },
+  {
+    "id": "furniture-125",
+    "name": "Prateleira de especiarias",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 0.5,
+    "image": "/vtt/medieval-expansion-20261017/furniture-125.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-125.webp"
+  },
+  {
+    "id": "furniture-126",
+    "name": "Aparador de louça",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/furniture-126.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-126.webp"
+  },
+  {
+    "id": "furniture-127",
+    "name": "Cristaleira de madeira",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/furniture-127.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-127.webp"
+  },
+  {
+    "id": "furniture-128",
+    "name": "Bancada de costura",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-128.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-128.webp"
+  },
+  {
+    "id": "furniture-129",
+    "name": "Bancada de encadernação",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-129.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-129.webp"
+  },
+  {
+    "id": "furniture-130",
+    "name": "Bancada de alquimia doméstica",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-130.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-130.webp"
+  },
+  {
+    "id": "furniture-131",
+    "name": "Mesa de cartografia",
+    "category": "Mobílias",
+    "width": 2.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/furniture-131.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-131.webp"
+  },
+  {
+    "id": "furniture-132",
+    "name": "Bancada de ourives",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-132.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-132.webp"
+  },
+  {
+    "id": "furniture-133",
+    "name": "Bacia de cerâmica azul",
+    "category": "Mobílias",
+    "width": 0.75,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/furniture-133.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-133.webp"
+  },
+  {
+    "id": "furniture-134",
+    "name": "Banheira oval de madeira",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/furniture-134.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-134.webp"
+  },
+  {
+    "id": "furniture-135",
+    "name": "Ofurô de cedro",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/furniture-135.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-135.webp"
+  },
+  {
+    "id": "furniture-136",
+    "name": "Tapete oval de lã",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/furniture-136.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-136.webp"
+  },
+  {
+    "id": "furniture-137",
+    "name": "Passadeira de corredor",
+    "category": "Mobílias",
+    "width": 3,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/furniture-137.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-137.webp"
+  },
+  {
+    "id": "furniture-138",
+    "name": "Tapete redondo de juta",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/furniture-138.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-138.webp"
+  },
+  {
+    "id": "furniture-139",
+    "name": "Almofadas de chão",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-139.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-139.webp"
+  },
+  {
+    "id": "furniture-140",
+    "name": "Biombo de madeira recolhido",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 0.5,
+    "image": "/vtt/medieval-expansion-20261017/furniture-140.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-140.webp"
+  },
+  {
+    "id": "furniture-141",
+    "name": "Cabideiro circular",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-141.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-141.webp"
+  },
+  {
+    "id": "furniture-142",
+    "name": "Porta-guarda-chuvas de vime",
+    "category": "Mobílias",
+    "width": 0.75,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/furniture-142.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-142.webp"
+  },
+  {
+    "id": "furniture-143",
+    "name": "Lareira circular baixa",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/furniture-143.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-143.webp"
+  },
+  {
+    "id": "furniture-144",
+    "name": "Braseiro quadrado",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-144.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-144.webp"
+  },
+  {
+    "id": "furniture-145",
+    "name": "Suporte de velas de chão",
+    "category": "Mobílias",
+    "width": 0.75,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/furniture-145.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-145.webp"
+  },
+  {
+    "id": "furniture-146",
+    "name": "Lamparinas sobre bandeja",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-146.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-146.webp"
+  },
+  {
+    "id": "furniture-147",
+    "name": "Aquário de pedra",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-147.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-147.webp"
+  },
+  {
+    "id": "furniture-148",
+    "name": "Jardineira doméstica de ervas",
+    "category": "Mobílias",
+    "width": 1.5,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/furniture-148.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-148.webp"
+  },
+  {
+    "id": "furniture-149",
+    "name": "Terrário de musgo",
+    "category": "Mobílias",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-149.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-149.webp"
+  },
+  {
+    "id": "furniture-150",
+    "name": "Mesa de instrumentos musicais",
+    "category": "Mobílias",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/furniture-150.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/furniture-150.webp"
+  },
+  {
+    "id": "outdoor-001",
+    "name": "Mesa de piquenique",
+    "category": "Mobílias externas",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-001.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-001.webp"
+  },
+  {
+    "id": "outdoor-002",
+    "name": "Mesa de jardim redonda",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-002.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-002.webp"
+  },
+  {
+    "id": "outdoor-003",
+    "name": "Mesa de jardim hexagonal",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-003.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-003.webp"
+  },
+  {
+    "id": "outdoor-004",
+    "name": "Banco de jardim reto",
+    "category": "Mobílias externas",
+    "width": 2.5,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-004.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-004.webp"
+  },
+  {
+    "id": "outdoor-005",
+    "name": "Banco curvo de jardim",
+    "category": "Mobílias externas",
+    "width": 2.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-005.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-005.webp"
+  },
+  {
+    "id": "outdoor-006",
+    "name": "Banco de tronco",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-006.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-006.webp"
+  },
+  {
+    "id": "outdoor-007",
+    "name": "Cadeira de jardim trançada",
+    "category": "Mobílias externas",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-007.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-007.webp"
+  },
+  {
+    "id": "outdoor-008",
+    "name": "Espreguiçadeira de lona",
+    "category": "Mobílias externas",
+    "width": 2.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-008.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-008.webp"
+  },
+  {
+    "id": "outdoor-009",
+    "name": "Balanço de jardim",
+    "category": "Mobílias externas",
+    "width": 2.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-009.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-009.webp"
+  },
+  {
+    "id": "outdoor-010",
+    "name": "Rede entre suportes",
+    "category": "Mobílias externas",
+    "width": 3,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-010.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-010.webp"
+  },
+  {
+    "id": "outdoor-011",
+    "name": "Pergolado aberto",
+    "category": "Mobílias externas",
+    "width": 3,
+    "height": 3,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-011.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-011.webp"
+  },
+  {
+    "id": "outdoor-012",
+    "name": "Treliça com roseira",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-012.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-012.webp"
+  },
+  {
+    "id": "outdoor-013",
+    "name": "Floreira de barril",
+    "category": "Mobílias externas",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-013.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-013.webp"
+  },
+  {
+    "id": "outdoor-014",
+    "name": "Floreira retangular de madeira",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-014.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-014.webp"
+  },
+  {
+    "id": "outdoor-015",
+    "name": "Vaso grande de terracota",
+    "category": "Mobílias externas",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-015.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-015.webp"
+  },
+  {
+    "id": "outdoor-016",
+    "name": "Vaso de pedra com folhagens",
+    "category": "Mobílias externas",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-016.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-016.webp"
+  },
+  {
+    "id": "outdoor-017",
+    "name": "Canteiro elevado de ervas",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-017.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-017.webp"
+  },
+  {
+    "id": "outdoor-018",
+    "name": "Canteiro elevado de hortaliças",
+    "category": "Mobílias externas",
+    "width": 3,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-018.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-018.webp"
+  },
+  {
+    "id": "outdoor-019",
+    "name": "Canteiro circular florido",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-019.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-019.webp"
+  },
+  {
+    "id": "outdoor-020",
+    "name": "Composteira de madeira",
+    "category": "Mobílias externas",
+    "width": 1.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-020.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-020.webp"
+  },
+  {
+    "id": "outdoor-021",
+    "name": "Poço rústico sem cobertura",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-021.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-021.webp"
+  },
+  {
+    "id": "outdoor-022",
+    "name": "Bomba manual de água",
+    "category": "Mobílias externas",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-022.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-022.webp"
+  },
+  {
+    "id": "outdoor-023",
+    "name": "Bebedouro de animais",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-023.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-023.webp"
+  },
+  {
+    "id": "outdoor-024",
+    "name": "Cochinho de madeira",
+    "category": "Mobílias externas",
+    "width": 1.5,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-024.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-024.webp"
+  },
+  {
+    "id": "outdoor-025",
+    "name": "Banheira de pássaros",
+    "category": "Mobílias externas",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-025.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-025.webp"
+  },
+  {
+    "id": "outdoor-026",
+    "name": "Fonte pequena de jardim",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-026.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-026.webp"
+  },
+  {
+    "id": "outdoor-027",
+    "name": "Lago ornamental delimitado",
+    "category": "Mobílias externas",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-027.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-027.webp"
+  },
+  {
+    "id": "outdoor-028",
+    "name": "Pedras de caminho em conjunto",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-028.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-028.webp"
+  },
+  {
+    "id": "outdoor-029",
+    "name": "Ponte pequena de madeira",
+    "category": "Mobílias externas",
+    "width": 3,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-029.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-029.webp"
+  },
+  {
+    "id": "outdoor-030",
+    "name": "Portão de jardim aberto",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 0.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-030.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-030.webp"
+  },
+  {
+    "id": "outdoor-031",
+    "name": "Cerca de estacas curta",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 0.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-031.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-031.webp"
+  },
+  {
+    "id": "outdoor-032",
+    "name": "Cerca de pedra baixa",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 0.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-032.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-032.webp"
+  },
+  {
+    "id": "outdoor-033",
+    "name": "Carrinho de mão",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-033.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-033.webp"
+  },
+  {
+    "id": "outdoor-034",
+    "name": "Carroça de jardinagem",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-034.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-034.webp"
+  },
+  {
+    "id": "outdoor-035",
+    "name": "Carretel de mangueira de couro",
+    "category": "Mobílias externas",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-035.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-035.webp"
+  },
+  {
+    "id": "outdoor-036",
+    "name": "Regador de cobre",
+    "category": "Mobílias externas",
+    "width": 0.75,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-036.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-036.webp"
+  },
+  {
+    "id": "outdoor-037",
+    "name": "Cesto de colheita",
+    "category": "Mobílias externas",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-037.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-037.webp"
+  },
+  {
+    "id": "outdoor-038",
+    "name": "Sacos de adubo",
+    "category": "Mobílias externas",
+    "width": 1.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-038.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-038.webp"
+  },
+  {
+    "id": "outdoor-039",
+    "name": "Suporte de ferramentas externas",
+    "category": "Mobílias externas",
+    "width": 1.5,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-039.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-039.webp"
+  },
+  {
+    "id": "outdoor-040",
+    "name": "Pilha de tábuas",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-040.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-040.webp"
+  },
+  {
+    "id": "outdoor-041",
+    "name": "Pilha de pedras de construção",
+    "category": "Mobílias externas",
+    "width": 1.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-041.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-041.webp"
+  },
+  {
+    "id": "outdoor-042",
+    "name": "Toco de cortar lenha",
+    "category": "Mobílias externas",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-042.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-042.webp"
+  },
+  {
+    "id": "outdoor-043",
+    "name": "Lenheiro coberto baixo",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-043.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-043.webp"
+  },
+  {
+    "id": "outdoor-044",
+    "name": "Galinheiro pequeno aberto",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-044.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-044.webp"
+  },
+  {
+    "id": "outdoor-045",
+    "name": "Ninho de palha",
+    "category": "Mobílias externas",
+    "width": 0.75,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-045.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-045.webp"
+  },
+  {
+    "id": "outdoor-046",
+    "name": "Colmeia de palha",
+    "category": "Mobílias externas",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-046.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-046.webp"
+  },
+  {
+    "id": "outdoor-047",
+    "name": "Casa de cachorro sem teto",
+    "category": "Mobílias externas",
+    "width": 1.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-047.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-047.webp"
+  },
+  {
+    "id": "outdoor-048",
+    "name": "Braseiro de jardim",
+    "category": "Mobílias externas",
+    "width": 1.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-048.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-048.webp"
+  },
+  {
+    "id": "outdoor-049",
+    "name": "Churrasqueira de pedra",
+    "category": "Mobílias externas",
+    "width": 2,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-049.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-049.webp"
+  },
+  {
+    "id": "outdoor-050",
+    "name": "Tenda de jardim fechada",
+    "category": "Mobílias externas",
+    "width": 3,
+    "height": 3,
+    "image": "/vtt/medieval-expansion-20261017/outdoor-050.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/outdoor-050.webp"
+  },
+  {
+    "id": "urban-001",
+    "name": "Banco público de pedra",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/urban-001.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-001.webp"
+  },
+  {
+    "id": "urban-002",
+    "name": "Banco público de madeira",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/urban-002.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-002.webp"
+  },
+  {
+    "id": "urban-003",
+    "name": "Mesa comunitária",
+    "category": "Cidade medieval",
+    "width": 4,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-003.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-003.webp"
+  },
+  {
+    "id": "urban-004",
+    "name": "Barraca de frutas",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-004.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-004.webp"
+  },
+  {
+    "id": "urban-005",
+    "name": "Barraca de verduras",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-005.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-005.webp"
+  },
+  {
+    "id": "urban-006",
+    "name": "Barraca de peixe",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-006.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-006.webp"
+  },
+  {
+    "id": "urban-007",
+    "name": "Barraca de carnes",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-007.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-007.webp"
+  },
+  {
+    "id": "urban-008",
+    "name": "Barraca de tecidos",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-008.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-008.webp"
+  },
+  {
+    "id": "urban-009",
+    "name": "Barraca de cerâmica",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-009.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-009.webp"
+  },
+  {
+    "id": "urban-010",
+    "name": "Barraca de pão",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-010.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-010.webp"
+  },
+  {
+    "id": "urban-011",
+    "name": "Barraca de livros",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-011.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-011.webp"
+  },
+  {
+    "id": "urban-012",
+    "name": "Barraca de ferramentas",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-012.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-012.webp"
+  },
+  {
+    "id": "urban-013",
+    "name": "Banca de especiarias",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-013.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-013.webp"
+  },
+  {
+    "id": "urban-014",
+    "name": "Banca de flores",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-014.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-014.webp"
+  },
+  {
+    "id": "urban-015",
+    "name": "Toldo listrado de feira",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-015.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-015.webp"
+  },
+  {
+    "id": "urban-016",
+    "name": "Carroça de mercadorias",
+    "category": "Cidade medieval",
+    "width": 4,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-016.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-016.webp"
+  },
+  {
+    "id": "urban-017",
+    "name": "Carroça de feno",
+    "category": "Cidade medieval",
+    "width": 4,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-017.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-017.webp"
+  },
+  {
+    "id": "urban-018",
+    "name": "Carroça coberta",
+    "category": "Cidade medieval",
+    "width": 4,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-018.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-018.webp"
+  },
+  {
+    "id": "urban-019",
+    "name": "Carrinho de vendedor",
+    "category": "Cidade medieval",
+    "width": 2.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-019.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-019.webp"
+  },
+  {
+    "id": "urban-020",
+    "name": "Barril de água urbano",
+    "category": "Cidade medieval",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/urban-020.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-020.webp"
+  },
+  {
+    "id": "urban-021",
+    "name": "Conjunto de barris mercantis",
+    "category": "Cidade medieval",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-021.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-021.webp"
+  },
+  {
+    "id": "urban-022",
+    "name": "Engradados de feira",
+    "category": "Cidade medieval",
+    "width": 2,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-022.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-022.webp"
+  },
+  {
+    "id": "urban-023",
+    "name": "Sacos de grãos mercantis",
+    "category": "Cidade medieval",
+    "width": 2,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-023.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-023.webp"
+  },
+  {
+    "id": "urban-024",
+    "name": "Fardos de palha",
+    "category": "Cidade medieval",
+    "width": 2,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-024.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-024.webp"
+  },
+  {
+    "id": "urban-025",
+    "name": "Pelourinho de praça",
+    "category": "Cidade medieval",
+    "width": 1.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-025.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-025.webp"
+  },
+  {
+    "id": "urban-026",
+    "name": "Fonte octogonal de praça",
+    "category": "Cidade medieval",
+    "width": 4,
+    "height": 4,
+    "image": "/vtt/medieval-expansion-20261017/urban-026.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-026.webp"
+  },
+  {
+    "id": "urban-027",
+    "name": "Poço público com cobertura",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 3,
+    "image": "/vtt/medieval-expansion-20261017/urban-027.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-027.webp"
+  },
+  {
+    "id": "urban-028",
+    "name": "Bebedouro público de pedra",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/urban-028.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-028.webp"
+  },
+  {
+    "id": "urban-029",
+    "name": "Cisterna urbana",
+    "category": "Cidade medieval",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-029.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-029.webp"
+  },
+  {
+    "id": "urban-030",
+    "name": "Sarjeta de pedra",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 0.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-030.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-030.webp"
+  },
+  {
+    "id": "urban-031",
+    "name": "Ponte urbana curta",
+    "category": "Cidade medieval",
+    "width": 4,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-031.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-031.webp"
+  },
+  {
+    "id": "urban-032",
+    "name": "Escadaria de pedra baixa",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-032.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-032.webp"
+  },
+  {
+    "id": "urban-033",
+    "name": "Poste de lanterna",
+    "category": "Cidade medieval",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/urban-033.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-033.webp"
+  },
+  {
+    "id": "urban-034",
+    "name": "Suporte duplo de lanternas",
+    "category": "Cidade medieval",
+    "width": 1.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/urban-034.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-034.webp"
+  },
+  {
+    "id": "urban-035",
+    "name": "Braseiro público",
+    "category": "Cidade medieval",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-035.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-035.webp"
+  },
+  {
+    "id": "urban-036",
+    "name": "Placa de indicação urbana",
+    "category": "Cidade medieval",
+    "width": 1.5,
+    "height": 0.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-036.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-036.webp"
+  },
+  {
+    "id": "urban-037",
+    "name": "Quadro público de avisos",
+    "category": "Cidade medieval",
+    "width": 2,
+    "height": 0.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-037.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-037.webp"
+  },
+  {
+    "id": "urban-038",
+    "name": "Sino de rua em suporte",
+    "category": "Cidade medieval",
+    "width": 1.5,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/urban-038.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-038.webp"
+  },
+  {
+    "id": "urban-039",
+    "name": "Estátua de praça em pedestal",
+    "category": "Cidade medieval",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-039.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-039.webp"
+  },
+  {
+    "id": "urban-040",
+    "name": "Coluna ornamental urbana",
+    "category": "Cidade medieval",
+    "width": 1.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-040.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-040.webp"
+  },
+  {
+    "id": "urban-041",
+    "name": "Jardineira pública de pedra",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/urban-041.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-041.webp"
+  },
+  {
+    "id": "urban-042",
+    "name": "Árvore em vaso urbano",
+    "category": "Cidade medieval",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/medieval-expansion-20261017/urban-042.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-042.webp"
+  },
+  {
+    "id": "urban-043",
+    "name": "Grade de drenagem",
+    "category": "Cidade medieval",
+    "width": 1,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/urban-043.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-043.webp"
+  },
+  {
+    "id": "urban-044",
+    "name": "Tampa de esgoto de pedra",
+    "category": "Cidade medieval",
+    "width": 1.5,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-044.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-044.webp"
+  },
+  {
+    "id": "urban-045",
+    "name": "Portão urbano duplo",
+    "category": "Cidade medieval",
+    "width": 4,
+    "height": 0.75,
+    "image": "/vtt/medieval-expansion-20261017/urban-045.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-045.webp"
+  },
+  {
+    "id": "urban-046",
+    "name": "Barreira móvel de madeira",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/urban-046.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-046.webp"
+  },
+  {
+    "id": "urban-047",
+    "name": "Cavalete de transporte",
+    "category": "Cidade medieval",
+    "width": 2,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/urban-047.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-047.webp"
+  },
+  {
+    "id": "urban-048",
+    "name": "Tronco de amarração",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 0.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-048.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-048.webp"
+  },
+  {
+    "id": "urban-049",
+    "name": "Cocho de estábulo público",
+    "category": "Cidade medieval",
+    "width": 3,
+    "height": 1,
+    "image": "/vtt/medieval-expansion-20261017/urban-049.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-049.webp"
+  },
+  {
+    "id": "urban-050",
+    "name": "Conjunto de lixeiras de vime",
+    "category": "Cidade medieval",
+    "width": 2,
+    "height": 1.5,
+    "image": "/vtt/medieval-expansion-20261017/urban-050.webp",
+    "thumbnail": "/vtt/medieval-expansion-thumbs-20261017/urban-050.webp"
+  }
+]

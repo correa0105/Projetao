@@ -1,0 +1,43 @@
+{
+  "id": "outdoor-006",
+  "kind": "furniture",
+  "name": "Banco de tronco",
+  "width": 2,
+  "height": 0.75,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: rustic split-log bench horizontal wood seat with bark edges. Physical footprint ratio 2:0.75. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/outdoor-006.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/outdoor-006.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-9c7991bd-68b4-4428-b220-8512cf446cae.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    2048,
+    768
+  ],
+  "trimDimensions": [
+    1800,
+    636
+  ],
+  "dimensions": [
+    1025,
+    385
+  ],
+  "bytes": 166106,
+  "sha256": "3d49198d71e4cb5135e29005e31bc9c7fd874dc2aa80c288c3939f321bba5a19",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 59854617,
+    "squaresSum": 15067592765,
+    "mean": 151.67467089008554,
+    "stdev": 123.19450443295084,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 85,
+    "maxY": 23
+  },
+  "generatedAt": "2026-10-17T13:12:32.148Z"
+}

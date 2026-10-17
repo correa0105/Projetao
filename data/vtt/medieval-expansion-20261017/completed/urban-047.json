@@ -1,0 +1,43 @@
+{
+  "id": "urban-047",
+  "kind": "furniture",
+  "name": "Cavalete de transporte",
+  "width": 2,
+  "height": 1,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-1.png",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\data\\vtt\\medieval-expansion-20261017\\references\\approved-style-2.png"
+  ],
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No vertical fronts, legs, door faces, tall backrests or facades. Original finely hand-painted medieval fantasy battlemap style matching the supplied approved reference images: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic or photoreal render. References are STYLE guidance only; create an original item. Subject: medieval wooden trestle viewed directly above as long horizontal top rail with small end leg top caps, no frontal legs. Physical footprint ratio 2:1. North/back is image TOP.",
+  "public": "public/vtt/medieval-expansion-20261017/urban-047.webp",
+  "thumbnail": "public/vtt/medieval-expansion-thumbs-20261017/urban-047.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-070395e7-02c7-403d-b69e-d4c2eec42804.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1617,
+    680
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 194356,
+  "sha256": "7fc0b9bc24a87ee74ade9eb2ed40e7015a2f5d8ccd21a1686065b96f86b29c8b",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 76068348,
+    "squaresSum": 19160458200,
+    "mean": 145.23096367715144,
+    "stdev": 124.45667670744564,
+    "minX": 0,
+    "minY": 32,
+    "maxX": 924,
+    "maxY": 54
+  },
+  "generatedAt": "2026-10-17T13:41:16.988Z"
+}

@@ -1,5 +1,7 @@
 # Retomada das artes em planta — 17/10/2026
 
+**Conclusão em 17/10/2026:** as 255 artes foram completadas, revisadas e integradas. A expansão adicional de 150 móveis e 20 pincéis também terminou: 425 imagens distintas, sem pendências. VTT e House 2.0 compartilham as novas peças; a House ganhou pintura persistida por terreno e relógio global editável somente pelo administrador, com iluminação automática. Publicação `medieval-complete-v1-20261017` saudável, com backup e auditoria dos arquivos e dados anteriores. Detalhes e validação em [VTT-HOUSE2-MEDIEVAL-COMPLETE-20261017.md](VTT-HOUSE2-MEDIEVAL-COMPLETE-20261017.md). Os checkpoints abaixo são históricos.
+
 ## Retomada seguinte: House em vista vertical publicada
 
 Os três interiores experimentais em perspectiva da House 2.0 foram retirados da renderização. House e VTT agora resolvem as mesmas plantas ortográficas pelos IDs existentes; os caminhos antigos continuam como aliases. O renderer usa as dimensões e o giro salvos e o telhado correspondente do catálogo, sem alterar compras, posse, coordenadas, escalas ou dados de jogadores.

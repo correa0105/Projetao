@@ -1,0 +1,48 @@
+{
+  "id": "furniture-083",
+  "kind": "furniture",
+  "name": "Espelho ornamentado",
+  "width": 1,
+  "height": 1,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-083.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/furniture-083.webp",
+  "prompt": "Image 1 is a strict GEOMETRIC PLAN GUIDE: preserve its absolute overhead camera, occlusion and horizontal silhouette. Image 2 is MATERIAL/COLOR guidance only, do NOT copy its camera errors. Image 3 is the approved hand-painted medieval battlemap STYLE. Create one original isolated sprite using the geometry of image 1 and richly painted worn material detail of the other references. A freestanding VERTICAL mirror viewed EXACTLY from its zenith. The mirror face is invisible because it is vertical. Show ONLY a very narrow horizontal carved wooden TOP edge, thin silver glass edge, circular top caps of side pivots, and narrow horizontal base-foot tops. NO oval mirror face, NO reflection disk, NO frontal ornament face. True orthographic plan at absolute 90-degree zenith, no tilt. Only horizontal upper surfaces. Preserve footprint ratio 1:1. Genuinely transparent alpha outside complete object, no background, halo, grid, text, branding, watermark, extra furniture or people.",
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\nadir-correction-guides\\furniture-083.png",
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ff73f4fb-5cc7-4332-af47-12de3b6cbc14.png",
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png"
+  ],
+  "public": "public/vtt/nadir-20261016/furniture-083.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-083.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-0c32ee84-9e71-4d4f-b50a-d2e0b9cd5597.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "trimDimensions": [
+    1011,
+    371
+  ],
+  "dimensions": [
+    1025,
+    1025
+  ],
+  "bytes": 86100,
+  "sha256": "b271c9b3e3994bc7239e14b102d7485801e2bbf4d85caa861b08e871cbfc6dfe",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 28136465,
+    "squaresSum": 7033004053,
+    "mean": 26.78069244497323,
+    "stdev": 77.31050838798386,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 971,
+    "maxY": 464
+  },
+  "generatedAt": "2026-10-17T13:35:39.200Z"
+}

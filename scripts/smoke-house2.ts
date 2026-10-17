@@ -18,10 +18,12 @@ const server = createApp().listen(3074, '127.0.0.1');
 await new Promise<void>((r) => server.once('listening', r));
 const browser = await chromium.launch({ channel: 'msedge', headless: true }),
   context = await browser.newContext({
+    extraHTTPHeaders: { 'Accept-Encoding': 'identity' },
     viewport: { width: 1440, height: 900 },
     reducedMotion: 'reduce',
   }),
   visitor = await browser.newContext({
+    extraHTTPHeaders: { 'Accept-Encoding': 'identity' },
     viewport: { width: 1440, height: 900 },
     reducedMotion: 'reduce',
   });
@@ -72,6 +74,10 @@ async function tool(name: string) {
 try {
   const hero = await signup(context, 'Aurora'),
     other = await signup(visitor, 'Bruma');
+  await pool.query(
+    'UPDATE "user" SET administrador=1 WHERE id=(SELECT user_id FROM characters WHERE id=$1)',
+    [hero.id],
+  );
   await page.goto(origin + '/#house2');
   await expect(page.locator('.h2-neighborhood-card')).toHaveCount(3);
   await page.getByRole('textbox', { name: 'Pesquisar vizinhanças' }).fill('Bosque');
@@ -106,8 +112,15 @@ try {
   await page.screenshot({ path: 'test-results/house2/village.png' });
   await tool('Vizinhança');
   const shadowDirections = [];
-  for (const phase of ['morning', 'afternoon', 'dusk', 'night']) {
-    await page.getByLabel('Horário do cenário').selectOption(phase);
+  for (const [phase, time] of [
+    ['morning', '08:00'],
+    ['afternoon', '14:00'],
+    ['dusk', '18:00'],
+    ['night', '22:00'],
+  ]) {
+    await page.getByRole('button', { name: 'Ajustar hora', exact: true }).click();
+    await page.getByLabel('Hora do mundo', { exact: true }).fill(time);
+    await page.getByRole('button', { name: 'Salvar hora', exact: true }).click();
     await expect(page.locator('[data-house2-day-phase]')).toHaveAttribute(
       'data-house2-day-phase',
       phase,
@@ -116,7 +129,17 @@ try {
     await page.screenshot({ path: `test-results/house2/light-${phase}.png` });
   }
   expect(new Set(shadowDirections).size).toBe(4);
-  await page.getByLabel('Horário do cenário').selectOption('afternoon');
+  await page.getByRole('button', { name: 'Ajustar hora', exact: true }).click();
+  await page.getByLabel('Hora do mundo', { exact: true }).fill('14:00');
+  await page.getByRole('button', { name: 'Salvar hora', exact: true }).click();
+  await expect(page.locator('[data-house2-day-phase]')).toHaveAttribute(
+    'data-house2-day-phase',
+    'afternoon',
+  );
+  await pool.query(
+    'UPDATE "user" SET administrador=0 WHERE id=(SELECT user_id FROM characters WHERE id=$1)',
+    [hero.id],
+  );
   await page.getByRole('button', { name: 'Fechar Vizinhança', exact: true }).click();
   const p = page.locator('.h2-plot').first(),
     plotId =
@@ -130,7 +153,7 @@ try {
   await page.locator('.h2-catalog button').first().click();
   await expect(page.locator('.h2-purchase-confirmation img')).toHaveAttribute(
     'src',
-    '/house2/roof-plan-001-v1-20261016.webp',
+    '/vtt/nadir-20261016/house-001-roof.webp',
   );
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
   await expect(page.getByText(/já foi adquirida para este terreno/)).toBeVisible();
@@ -139,7 +162,7 @@ try {
   await expect(page.locator('[data-house2-interior="orthographic"]')).toHaveCount(0);
   await expect(
     page.locator('[data-house2-fixed="true"] [data-house2-roof="house-empty-001"]'),
-  ).toHaveAttribute('href', '/house2/roof-plan-001-v1-20261016.webp');
+  ).toHaveAttribute('href', '/vtt/nadir-20261016/house-001-roof.webp');
   await page.screenshot({ path: 'test-results/house2/matched-roof-closed.png' });
   await page.getByRole('button', { name: 'Entrar na casa de Aurora', exact: true }).click();
   await expect(page.locator('[data-house2-interior="orthographic"]')).toHaveCount(1);
@@ -147,7 +170,7 @@ try {
     page.locator('[data-house2-fixed="true"] [data-house2-roof="house-empty-001"]'),
   ).toHaveCount(0);
   await tool('Mobília');
-  await expect(page.locator('.h2-catalog button')).toHaveCount(100);
+  await expect(page.locator('.h2-catalog button')).toHaveCount(250);
   await page.getByRole('textbox', { name: 'Pesquisar mobília' }).fill('Cadeira de madeira');
   await expect(page.locator('.h2-catalog button')).toHaveCount(1);
   await page.locator('.h2-catalog button').first().click();
@@ -231,6 +254,36 @@ try {
   await page.getByRole('button', { name: 'Guardar', exact: true }).click();
   await page.getByRole('button', { name: 'Descartar', exact: true }).click();
   await page.getByRole('button', { name: 'Fechar Minha coleção', exact: true }).click();
+  await tool('Pintar terreno');
+  await expect(page.locator('.h2-ground-textures button')).toHaveCount(38);
+  await page.getByRole('button', { name: 'Grama de prado', exact: true }).click();
+  const paintAt = await page.locator('.h2-map').evaluate((node, p) => {
+    const svg = node as unknown as SVGSVGElement,
+      at = svg.createSVGPoint();
+    at.x = p.x + 0.6;
+    at.y = p.y + 0.6;
+    const a = at.matrixTransform(svg.getScreenCTM()!);
+    at.x = p.x + 2;
+    at.y = p.y + 0.8;
+    const b = at.matrixTransform(svg.getScreenCTM()!);
+    return { a: { x: a.x, y: a.y }, b: { x: b.x, y: b.y } };
+  }, lot);
+  await page.mouse.move(paintAt.a.x, paintAt.a.y);
+  await page.mouse.down();
+  await page.mouse.move(paintAt.b.x, paintAt.b.y, { steps: 6 });
+  await page.mouse.up();
+  await page.getByRole('button', { name: 'Salvar', exact: true }).click();
+  await expect(page.locator('.h2-world-notice')).toContainText('Terreno salvo');
+  const painted = (
+    await request(context, '/house-v2/neighborhoods/' + n, undefined, 'GET')
+  ).plots.find((p: any) => p.id === plotId);
+  expect(painted.ground.length).toBe(1);
+  expect(painted.ground[0].material).toBe('grass-meadow');
+  expect(painted.ground[0].points.length).toBeGreaterThan(1);
+  await page.getByRole('button', { name: 'Desfazer traço', exact: true }).click();
+  await page.getByRole('button', { name: 'Descartar', exact: true }).click();
+  await expect(page.locator('[data-house2-ground] path')).toHaveCount(3);
+  await page.getByRole('button', { name: 'Fechar Pintar terreno', exact: true }).click();
   const results = [];
   for (const viewport of [
     { width: 1920, height: 1080 },
