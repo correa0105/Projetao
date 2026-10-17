@@ -1,3 +1,7 @@
+import { VttHighQualityCapture, renderVttCaptureFrame, type VttCaptureFrame } from './VttHighQualityCapture';
+import { VttItemLayers, VttStackButtons } from './VttItemLayers';
+import { VttRoomCharacters } from './VttRoomCharacters';
+import { reorderVttItems } from '../shared/vtt-stacking';
 import {vttVisualSource} from '../shared/vtt-asset-visuals';
 import {VttNatureAssets} from './VttNatureAssets';
 import {natureAssets,natureAssetMime} from '../shared/vtt-nature-assets';
@@ -354,6 +358,7 @@ function NumberField({
   );
 }
 export function Vtt({ characters, user }: { characters: Character[]; user: User }) {
+  const captureFrame = useRef<VttCaptureFrame | null>(null);
   const [rooms, setRooms] = useState<{ id: string; name: string; is_owner: boolean }[]>([]),
     [canCreate, setCanCreate] = useState(false),
     [state, setState] = useState<VttState | null>(null),
@@ -1075,7 +1080,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (c.height !== height) c.height = height;
     const atmosphereScene = atmospherePreview?.sceneId === scene.id ? { ...scene, atmosphere: atmospherePreview.value } : scene;
     const draw = () =>
-      renderVtt(
+      renderVttCaptureFrame(captureFrame,
         c.getContext('2d')!,
         spectator && !scene.fog && !state?.viewingUser
           ? { ...atmosphereScene, lighting: false }
@@ -1413,7 +1418,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               if (drag.current?.kind === 'resize' || drag.current?.kind === 'rotate') return;
               cancelAnimationFrame(focusFrame.current);
               if ((e.shiftKey || e.ctrlKey) && token) {
-                if (canToken && e.deltaY) {
+                if (canToken && !preview && !busy && !token.locked && e.deltaY) {
                   const step = Math.sign(e.deltaY) * 15;
                   if (gm)
                     editSelected((t) => {
@@ -1436,6 +1441,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (!scene || !doc) return;
     const p = point(e),
       snap = e.altKey ? p : snapPoint(p, scene.grid);
+    if (!forcePan && e.button === 0 && e.ctrlKey && !panHeld.current && tool !== 'pan' &&
+      token && canToken && !preview && !busy && !token.locked && token.layer === layer &&
+      tokenAt(p, {...scene,tokens:[token]}, layer, gm && !preview)?.id === token.id) {
+      e.preventDefault(); e.currentTarget.focus({preventScroll:true}); e.currentTarget.setPointerCapture(e.pointerId);
+      setContextMenu(null); e.currentTarget.style.cursor = 'grabbing';
+      drag.current = {kind:'rotate',start:p,last:p,screen:{x:e.clientX,y:e.clientY},camera,
+        original:structuredClone(docRef.current!),tokens:[structuredClone(token)]};
+      return;
+    }
     if (forcePan || e.button === 1 || (e.button === 0 && (e.ctrlKey || panHeld.current || tool === 'pan'))) {
       e.preventDefault();e.currentTarget.focus({preventScroll:true});e.currentTarget.setPointerCapture(e.pointerId);
       setContextMenu(null);terrainActive.current=null;setTerrainDraft(null);
@@ -1795,6 +1809,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (!d || !scene || !doc) {
+      if (e.ctrlKey && token && canToken && !preview && !token.locked) {
+        e.currentTarget.style.cursor = 'grab'; return;
+      }
       if (resizeToken) {
         const handle = tokenResizeHandleAt(resizeToken, point(e), camera.zoom);
         e.currentTarget.style.cursor = resizeToken.layer==='map'&&tokenRotationHandleAt(resizeToken,point(e),camera.zoom)?'grab':handle ? tokenResizeCursor(handle, resizeToken.rotation) : 'default';
@@ -1812,7 +1829,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     const p = point(e);
-    if(d.kind==='rotate'&&gm&&!preview){
+    if(d.kind==='rotate'&&canToken&&!preview){
       const original=d.tokens[0],next=structuredClone(docRef.current!),s=next.scenes.find(s=>s.id===next.activeScene)!,target=s.tokens.find(t=>t.id===original.id);
       if(!target||target.locked)return;
       target.rotation=rotationFromDrag(original,d.start,p,e.shiftKey);d.moved=true;docRef.current=next;setDoc(next);return;
@@ -1940,6 +1957,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       if (e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
       const original = d.tokens[0];
       const resized = docRef.current?.scenes.find(s => s.id === scene.id)?.tokens.find(t => t.id === original.id);
+      if (d.kind === 'rotate' && !gm && canToken && resized && resized.rotation !== original.rotation) {
+        const rotation = resized.rotation;
+        docRef.current = d.original; setDoc(d.original);
+        editToken({rotation});
+        return;
+      }
       if (!gm || !resized || ['x','y','width','height','rotation'].every(k => resized[k as 'x'] === original[k as 'x'])) return;
       undo.current.push(d.original);
       if (undo.current.length > 30) undo.current.shift();
@@ -2222,14 +2245,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     try {
       await save();
       setBusy(true);
-      const next = await post<VttState>(
-        `/vtt/rooms/${state.id}/characters/${id}`,
-        at ? { position: at } : {},
-      );
+      const alreadyPlaced = scene?.tokens.some(t => t.characterId === id);
+      const position = at || (!alreadyPlaced ? {x:camera.x,y:camera.y} : undefined);
+      const next = await post<VttState>(`/vtt/rooms/${state.id}/characters/${id}`, position ? { position } : {});
       receive(next);
       const imported = next.document.scenes
         .find((s) => s.id === next.document.activeScene)
-        ?.tokens.find((t) => t.characterId === id && t.controller === user.id);
+        ?.tokens.find((t) => t.characterId === id && (gm || t.controller === user.id));
+      if (imported && !at) setCamera(c => ({...c,x:imported.x,y:imported.y}));
       if (imported) {
         changeLayer('tokens', [imported.id]);
         setSelection([imported.id]);
@@ -2729,6 +2752,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           </div>
         )}
         <div className="vtt-top-actions">
+          <VttHighQualityCapture administrator={user.administrador === 1} frame={captureFrame} roomId={state.id}/>
           {gm && (
             <button
               aria-label="Biblioteca de mapas"
@@ -2901,8 +2925,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 { id: 'tokens', name: 'Tokens · jogadores', icon: Users },
                 { id: 'gm', name: 'Mestre · oculto', icon: EyeOff },
                 { id: 'lighting', name: 'Iluminação e barreiras', icon: Lightbulb },
+                { id: 'order', name: 'Ordem de sobreposição dos itens', icon: Layers },
               ]}
-              choose={changeLayer}
+              choose={next => {
+                if(next === 'order') {
+                  setTab('scene'); setPanelOpen(true);
+                  requestAnimationFrame(() => document.getElementById('vtt-item-layers')?.scrollIntoView({block:'nearest'}));
+                } else changeLayer(next);
+              }}
             />
           )}
           {gm && (
@@ -3128,7 +3158,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               if (!spectator && !preview && e.dataTransfer.types.includes(characterMime)) {
                 e.preventDefault();
                 const id = e.dataTransfer.getData(characterMime);
-                if (characters.some((c) => c.id === id))
+                if (gm || characters.some((c) => c.id === id))
                   void act(() => bringCharacter(id, point(e)));
                 return;
               }
@@ -3652,6 +3682,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       </div>
                       <button onClick={()=>{setPanelOpen(false);setCanopyEditing(true);}}><Eye size={15}/>Editar áreas de transparência</button>
                       <h3>Camadas</h3>
+                      <VttItemLayers scene={scene} selection={selection} disabled={busy || preview} edit={editScene}
+                        select={item => {changeLayer(item.layer,[item.id]);setSelection([item.id]);setAttackTargetId(null);}}/>
                       <label>
                         Opacidade da camada do mestre
                         <input
@@ -4010,7 +4042,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               onChange={(v) => editToken({ height: v })}
                             />
                           </div>
-                          <p className="vtt-token-resize-hint">Arraste os cantos ou as bordas do quadrado no mapa. Os cantos preservam a proporção; Shift permite ajustar livremente. A alça redonda gira o asset; Shift + rolagem gira em passos de 15°.</p>
+                          <p className="vtt-token-resize-hint">Arraste os cantos ou as bordas do quadrado no mapa. Os cantos preservam a proporção; Shift permite ajustar livremente. A alça redonda gira o asset; Ctrl + arraste gira o item selecionado. Ctrl ou Shift + rolagem gira em passos de 15°.</p>
+                          <VttStackButtons disabled={busy || preview} apply={action => editScene(s => reorderVttItems(s.tokens,selection,action))}/>
                           <label>
                             Camada do token
                             <select
@@ -4545,7 +4578,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                     Cria uma cópia de sessão com ficha e token. PV e condições da mesa não alteram o
                     personagem do site.
                   </p>
-                  {characters.map((c) => (
+                  {gm && !preview ? <VttRoomCharacters roomId={state.id} scene={scene} busy={busy}
+                    place={id => void act(() => bringCharacter(id))} drag={dragCharacter}/> : characters.map((c) => (
                     <button
                       className="vtt-list-row vtt-character-row"
                       key={c.id}
@@ -5262,7 +5296,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </ol>
                   <h3>Atalhos</h3>
                   <p>
-                    V selecionar · R régua · P lápis. Roda do mouse: zoom no cursor. Ctrl+roda:
+                    V selecionar · R régua · P lápis. Roda do mouse: zoom no cursor. Ctrl+arraste: girar o item selecionado. Ctrl+roda:
                     girar seleção em 15°. Shift+clique: seleção múltipla. Alt+arraste: movimento sem
                     grade. Delete: excluir. Ctrl+D: duplicar. Ctrl+Z: desfazer. Ctrl+S: salvar. Esc:
                     encerrar ferramenta.
@@ -5441,6 +5475,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                     Adicionar selecionados à ordem
                   </button>
                   </details>}
+                  <VttStackButtons disabled={busy || preview} apply={action => editScene(s => reorderVttItems(s.tokens,selection,action))}/>
                   <details>
                     <summary>Camada e profundidade</summary>
                   <label>

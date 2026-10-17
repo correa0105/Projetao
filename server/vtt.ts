@@ -276,6 +276,7 @@ async function importCharacter(
   user: string,
   cid: string,
   position?: { x: number; y: number },
+  actor = user,
 ) {
   const {
     rows: [c],
@@ -319,10 +320,10 @@ async function importCharacter(
     if (!position) return false;
     if (existing.attachment)
       throw new AppError(400, 'Solte o vínculo antes de reposicionar este token.');
-    if (existing.locked || (r.owner_id !== user && existing.hidden))
+    if (existing.locked || (r.owner_id !== actor && existing.hidden))
       throw new AppError(403, 'Este token está bloqueado ou oculto.');
     const destination = placement(existing);
-    if (r.owner_id !== user && movementBlocked(scene, existing, destination, existing))
+    if (r.owner_id !== actor && movementBlocked(scene, existing, destination, existing))
       throw new AppError(400, 'Uma parede, porta fechada ou janela fechada bloqueia o movimento.');
     if (existing.x === destination.x && existing.y === destination.y) return false;
     const groupError = attachmentMovementError(scene, existing, [destination]);
@@ -1189,6 +1190,23 @@ export function vttRouter() {
       has_more: rows.length > 100,
     });
   });
+  router.get('/vtt/rooms/:id/capture-permission', async (req, res) => {
+    await room(pool, uuid.parse(req.params.id), res.locals.user.id);
+    await requireAdministrator(res.locals.user.id);
+    res.json({ allowed: true });
+  });
+  router.get('/vtt/rooms/:id/characters', async (req, res) => {
+    const r = await gm(pool, uuid.parse(req.params.id), res.locals.user.id);
+    const { rows } = await pool.query(
+      `SELECT c.id,c.name,c.class,c.level,c.user_id AS controller,u.name AS player_name
+       FROM characters c JOIN "user" u ON u.id=c.user_id
+       WHERE c.deleted_at IS NULL AND (c.user_id=$2 OR EXISTS(
+         SELECT 1 FROM vtt_members m WHERE m.room_id=$1 AND m.user_id=c.user_id AND m.role='player'))
+       ORDER BY u.name,c.created_at,c.id`,
+      [r.id, r.owner_id],
+    );
+    res.json({ characters: rows });
+  });
   router.post('/vtt/rooms/:id/characters/:character', async (req, res) => {
     const rid = uuid.parse(req.params.id),
       cid = uuid.parse(req.params.character);
@@ -1201,7 +1219,18 @@ export function vttRouter() {
       const r = await room(db, rid, res.locals.user.id, true);
       if (r.role === 'spectator')
         throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
-      if (await importCharacter(db, r, res.locals.user.id, cid, input.position))
+      let controller = res.locals.user.id;
+      if (r.owner_id === controller) {
+        await gm(db, rid, controller);
+        const { rows: [character] } = await db.query(
+          `SELECT c.user_id FROM characters c WHERE c.id=$1 AND c.deleted_at IS NULL AND
+           (c.user_id=$3 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=$2 AND m.user_id=c.user_id AND m.role='player'))`,
+          [cid, rid, controller],
+        );
+        if (!character) throw new AppError(404, 'Personagem não disponível nesta mesa.');
+        controller = character.user_id;
+      }
+      if (await importCharacter(db, r, controller, cid, input.position, res.locals.user.id))
         await db.query(
           'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now()WHERE id=$1',
           [rid, JSON.stringify(documentSchema.parse(r.document))],
