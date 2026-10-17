@@ -1,50 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
 import type { House2Plot } from '../shared/house-v2';
 import { house2World } from '../shared/house-v2';
 import { house2Floor, house2HouseWorld, type House2Token } from '../shared/house2-tokens';
-import { vttVisualSource } from '../shared/vtt-asset-visuals';
-
-function DoorLeaf({ plot, width }: { plot: House2Plot; width: number }) {
-  const [angle, setAngle] = useState(plot.door_open ? 90 : 0),
-    current = useRef(angle);
-  useEffect(() => {
-    const target = plot.door_open ? 90 : 0,
-      from = current.current;
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      current.current = target;
-      setAngle(target);
-      return;
-    }
-    let frame = 0;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const progress = Math.min(1, (now - start) / 380);
-      current.current = from + (target - from) * (1 - (1 - progress) ** 3);
-      setAngle(current.current);
-      if (progress < 1) frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [plot.door_open]);
-  return (
-    <g
-      data-house2-door-leaf={plot.id}
-      data-door-open={plot.door_open ? 'true' : 'false'}
-      data-door-angle={angle}
-      transform={`rotate(${angle})`}
-    >
-      <image
-        href={vttVisualSource('/vtt/house-parts-20261014/door-vertical.webp')}
-        x="0"
-        y={-width * 0.07}
-        width={width}
-        height={width * 0.14}
-        preserveAspectRatio="none"
-      />
-      <circle cx={width * 0.025} r={width * 0.025} fill="#302b23" />
-    </g>
-  );
-}
 
 export function House2IndoorVision({ plot }: { plot: House2Plot | null }) {
   const f = plot && house2Floor(plot);
@@ -91,21 +47,12 @@ export function House2Doors({
         .filter((p) => p.house_id)
         .map((p) => {
           const f = house2Floor(p)!;
-          const at = house2HouseWorld(p, { x: f.doorEnd + 1.3, y: f.bottom + 0.6 });
+          const at = house2HouseWorld(p, { x: f.doorEnd + 0.55, y: f.bottom + 0.95 });
           const name = viewer
             ? `${p.door_open ? 'Fechar' : 'Abrir'} porta da casa de ${p.owner_name}`
             : `${interior === p.id ? 'Sair da' : 'Entrar na'} casa de ${p.owner_name}`;
-          const width = f.doorEnd - f.doorStart;
           return (
             <g key={p.id}>
-              <g
-                transform={`translate(${p.house_x} ${p.house_y}) rotate(${p.house_rotation})`}
-                pointerEvents="none"
-              >
-                <g transform={`translate(${f.doorStart} ${f.bottom})`}>
-                  <DoorLeaf plot={p} width={width} />
-                </g>
-              </g>
               <g
                 className="h2-door"
                 role="button"
@@ -125,8 +72,9 @@ export function House2Doors({
                 }}
               >
                 <title>{name}</title>
-                <circle r=".52" fill="#191710" stroke="#c2a469" strokeWidth=".045" />
+                <circle r=".25" fill="#191710" stroke="#c2a469" strokeWidth=".025" />
                 <path
+                  transform="scale(.47)"
                   d={
                     p.door_open
                       ? 'M-.2 .24v-.47h.36v.47m-.5 0h.65 M-.2-.23l.18.1v.47L-.2.24Z'

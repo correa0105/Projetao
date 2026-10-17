@@ -12,6 +12,7 @@ import type { House2Plot } from '../shared/house-v2';
 import './house2-tokens.css';
 
 type Snapshot = { tokens: House2Token[]; doors: Record<string, boolean> };
+export const house2TokenDragType = 'application/x-house2-token';
 const empty = (): Snapshot => ({ tokens: [], doors: {} });
 export function useHouse2Tokens(neighborhood: string | null, notice: (message: string) => void) {
   const [snapshot, setSnapshot] = useState<Snapshot>(empty),
@@ -84,7 +85,11 @@ export function useHouse2Tokens(neighborhood: string | null, notice: (message: s
       }
     }
   }
-  async function bring(source: House2TokenSource, position: { x: number; y: number }) {
+  async function bring(
+    source: House2TokenSource,
+    position: { x: number; y: number },
+    exact = false,
+  ) {
     const existing = snapshot.tokens.find(
       (t) => t.source_id === source.id && t.kind === source.kind && t.can_control,
     );
@@ -93,9 +98,9 @@ export function useHouse2Tokens(neighborhood: string | null, notice: (message: s
       return existing;
     }
     return operation(async (current) => {
-      const nearby = snapshot.tokens.filter(
-        (t) => Math.hypot(t.x - position.x, t.y - position.y) < 3,
-      ).length;
+      const nearby = exact
+        ? 0
+        : snapshot.tokens.filter((t) => Math.hypot(t.x - position.x, t.y - position.y) < 3).length;
       const t = await post<House2Token>(base + '/tokens', {
         kind: source.kind,
         source_id: source.id,
@@ -199,6 +204,9 @@ export function House2TokensLayer({
     offset: { x: number; y: number };
     path: { x: number; y: number }[];
     moved: boolean;
+    rotating: boolean;
+    startAngle: number;
+    wasSelected: boolean;
   } | null>(null);
   const latest = useRef(controls);
   latest.current = controls;
@@ -207,8 +215,16 @@ export function House2TokensLayer({
     if (!d) return;
     drag.current = null;
     if (d.node.hasPointerCapture(d.pointer)) d.node.releasePointerCapture(d.pointer);
-    if (!cancel && d.moved) void latest.current.update(d.token, { x: d.at.x, y: d.at.y }, d.path);
-    else latest.current.preview(null);
+    if (!cancel && d.moved)
+      void latest.current.update(
+        d.token,
+        d.rotating ? { rotation: d.at.rotation } : { x: d.at.x, y: d.at.y },
+        d.rotating ? undefined : d.path,
+      );
+    else {
+      latest.current.preview(null);
+      if (!cancel && !d.rotating && d.wasSelected) latest.current.select(null);
+    }
   }
   useEffect(() => {
     const escape = (e: KeyboardEvent) => {
@@ -223,13 +239,14 @@ export function House2TokensLayer({
       latest.current.preview(null);
     };
   }, []);
-  function down(e: PointerEvent<SVGGElement>, t: House2Token) {
+  function down(e: PointerEvent<SVGGElement>, t: House2Token, rotating = e.ctrlKey) {
     if (!t.can_control || disabled || controls.busy || e.button !== 0) return;
     e.preventDefault();
     e.stopPropagation();
     controls.select(t.id);
     choose();
     const at = world(e.clientX, e.clientY);
+    e.currentTarget.focus();
     drag.current = {
       pointer: e.pointerId,
       node: e.currentTarget,
@@ -238,6 +255,9 @@ export function House2TokensLayer({
       offset: { x: at.x - t.x, y: at.y - t.y },
       path: [],
       moved: false,
+      rotating,
+      startAngle: Math.atan2(at.y - t.y, at.x - t.x),
+      wasSelected: controls.selected === t.id,
     };
     controls.preview(t);
     e.currentTarget.setPointerCapture(e.pointerId);
@@ -247,6 +267,17 @@ export function House2TokensLayer({
     if (!d || e.pointerId !== d.pointer) return;
     e.stopPropagation();
     const p = world(e.clientX, e.clientY);
+    if (d.rotating) {
+      if (Math.hypot(p.x - d.token.x, p.y - d.token.y) < 0.08) return;
+      const angle = Math.atan2(p.y - d.token.y, p.x - d.token.x);
+      const rotation =
+        (((d.token.rotation + ((angle - d.startAngle) * 180) / Math.PI) % 360) + 360) % 360;
+      if (Math.abs(rotation - d.at.rotation) < 0.01) return;
+      d.at = { ...d.token, rotation };
+      d.moved = true;
+      controls.preview(d.at);
+      return;
+    }
     const at = house2TokenClamp({ x: p.x - d.offset.x, y: p.y - d.offset.y, size: d.token.size });
     if (Math.hypot(at.x - d.at.x, at.y - d.at.y) < 0.025) return;
     if (!house2TokenCanMove(plots, d.at, at, d.token.size) || d.path.length >= 198) return;
@@ -265,6 +296,7 @@ export function House2TokensLayer({
             data-house2-token={t.id}
             data-token-kind={t.kind}
             data-token-control={t.can_control ? 'mine' : 'visitor'}
+            data-token-selected={controls.selected === t.id ? 'true' : 'false'}
             transform={`translate(${t.x} ${t.y})`}
             role="group"
             aria-label={`Token de ${t.name}`}
@@ -284,7 +316,7 @@ export function House2TokensLayer({
               if (!t.can_control || disabled || controls.busy) return;
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                controls.select(t.id);
+                controls.select(controls.selected === t.id ? null : t.id);
                 choose();
               }
               const directions: Record<string, [number, number]> = {
@@ -296,7 +328,14 @@ export function House2TokensLayer({
               const direction = directions[e.key];
               if (direction) {
                 e.preventDefault();
+                e.stopPropagation();
                 controls.select(t.id);
+                if (e.ctrlKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+                  void controls.update(t, {
+                    rotation: (t.rotation + direction[0] * (e.shiftKey ? 15 : 1) + 360) % 360,
+                  });
+                  return;
+                }
                 const step = e.shiftKey ? 1 : 0.25;
                 void controls.update(t, {
                   x: t.x + direction[0] * step,
@@ -327,16 +366,37 @@ export function House2TokensLayer({
                 clipPath={t.top_down ? undefined : `url(#h2-actor-face-${t.id})`}
               />
             </g>
-            {controls.viewer?.id === t.id && (
-              <circle
+            {controls.selected === t.id && t.can_control && !disabled && (
+              <g
                 data-house2-token-controls="true"
-                r={t.size / 2 + 0.07}
-                fill="none"
-                stroke="#e4c682"
-                strokeWidth="1.5"
-                vectorEffect="non-scaling-stroke"
-                pointerEvents="none"
-              />
+                className="h2-actor-turn"
+                role="button"
+                tabIndex={0}
+                aria-label={`Girar ${t.name}`}
+                transform={`translate(0 ${-t.size / 2 - 0.32})`}
+                onPointerDown={(e) => down(e, t, true)}
+                onKeyDown={(e) => {
+                  if (!['ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(e.key) || controls.busy)
+                    return;
+                  e.preventDefault();
+                  e.stopPropagation();
+                  const step = e.key === 'ArrowLeft' ? -1 : 1;
+                  void controls.update(t, {
+                    rotation: (t.rotation + step * (e.shiftKey ? 15 : 1) + 360) % 360,
+                  });
+                }}
+              >
+                <title>Girar livremente · Ctrl + arraste no personagem</title>
+                <rect x="-.26" y="-.26" width=".52" height=".52" fill="transparent" />
+                <path
+                  d="M.16-.04a.17.17 0 1 0-.03.15 M.16-.2v.16H0"
+                  fill="none"
+                  stroke="#e4c682"
+                  strokeWidth=".035"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </g>
             )}
             <text
               className="h2-actor-name"
@@ -366,8 +426,8 @@ export function House2TokensPanel({
   return (
     <div className="h2-token-panel">
       <p>
-        Traga seus personagens e os pets deles. Arraste seus tokens pelo mapa; a posição é salva ao
-        soltar.
+        Arraste um personagem ou pet desta lista para o mapa, ou use Trazer para o mapa. Clique
+        novamente no token para desmarcar. Ctrl + arraste gira livremente; solte para salvar.
       </p>
       <label>
         Buscar personagem ou pet
@@ -397,8 +457,24 @@ export function House2TokensPanel({
             (t) => t.kind === s.kind && t.source_id === s.id && t.can_control,
           );
           return (
-            <article className="h2-token-source" key={s.kind + s.id}>
-              <img src={s.image_url} alt="" loading="lazy" />
+            <article
+              className="h2-token-source"
+              key={s.kind + s.id}
+              data-house2-token-source={s.id}
+              draggable={!controls.busy}
+              onDragStart={(e) => {
+                if (controls.busy) {
+                  e.preventDefault();
+                  return;
+                }
+                e.dataTransfer.setData(
+                  house2TokenDragType,
+                  JSON.stringify({ id: s.id, kind: s.kind }),
+                );
+                e.dataTransfer.effectAllowed = 'copy';
+              }}
+            >
+              <img src={s.image_url} alt="" loading="lazy" draggable={false} />
               <div>
                 <strong>{s.name}</strong>
                 <span>{s.kind === 'pet' ? `Pet de ${s.character_name}` : 'Seu personagem'}</span>
@@ -433,8 +509,9 @@ export function House2TokensPanel({
             <UserRound size={16} /> {selected.name}
           </h3>
           <p>
-            Setas movem o token; Shift aumenta o passo. Paredes e portas fechadas bloqueiam a
-            passagem.
+            Ctrl + arraste ou a alça acima do token gira em qualquer ângulo. Setas movem; Ctrl +
+            esquerda/direita gira um grau. Shift aumenta o passo. Paredes e portas fechadas
+            bloqueiam a passagem.
           </p>
           <label>
             Tamanho do token

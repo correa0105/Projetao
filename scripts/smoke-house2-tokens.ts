@@ -4,7 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { house2Houses } from '../shared/house-v2';
-import { house2Doorway, house2Floor } from '../shared/house2-tokens';
+import { house2Floor, house2HouseWorld } from '../shared/house2-tokens';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco descartável obrigatório.');
 const origin = 'http://localhost:3076',
@@ -111,10 +111,10 @@ try {
     idempotency_key: randomUUID(),
     catalog_id: house2Houses[0].id,
   });
+  await pool.query('UPDATE house2_plots SET house_rotation=270 WHERE id=$1', [lot.id]);
   const house = (await request(owner, base, undefined, 'GET')).plots.find(
       (p: any) => p.id === lot.id,
     ),
-    door = house2Doorway(house)!,
     floor = house2Floor(house)!;
   await page.goto(origin + '/#house2');
   await page.locator('.h2-neighborhood-card').first().click();
@@ -123,11 +123,17 @@ try {
     page.getByRole('button', { name: 'Trazer Aurora para o mapa', exact: true }),
   ).toBeVisible();
   await expect(page.getByText('Pet de Aurora', { exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'Trazer Aurora para o mapa', exact: true }).click();
+  await page.locator(`[data-house2-token-source="${hero.id}"]`).dragTo(page.locator('.h2-map'), {
+    sourcePosition: { x: 24, y: 24 },
+    targetPosition: { x: 600, y: 500 },
+  });
   await expect(
     page.getByRole('button', { name: 'Localizar Aurora no mapa', exact: true }),
   ).toBeEnabled();
-  await page.getByRole('button', { name: 'Trazer Luar para o mapa', exact: true }).click();
+  await page.locator(`[data-house2-token-source="${pet.id}"]`).dragTo(page.locator('.h2-map'), {
+    sourcePosition: { x: 24, y: 24 },
+    targetPosition: { x: 650, y: 450 },
+  });
   await expect(page.locator('[data-house2-token]')).toHaveCount(2);
   await page.locator('[data-house2-token] image').evaluateAll(async (nodes) => {
     await Promise.all(
@@ -143,7 +149,69 @@ try {
   let actor = state.tokens.find((t: any) => t.kind === 'character'),
     animal = state.tokens.find((t: any) => t.kind === 'pet');
   expect(actor.x).not.toBe(animal.x);
-  const to = { x: door.x, y: door.y + 1 };
+  const actorNode = page.locator(`[data-house2-token="${actor.id}"]`);
+  await actorNode.locator('image').click();
+  await expect(actorNode).toHaveAttribute('data-token-selected', 'true');
+  await expect(page.locator('[data-house2-token-controls] circle')).toHaveCount(0);
+  await actorNode.locator('image').click();
+  await expect(actorNode).toHaveAttribute('data-token-selected', 'false');
+  await expect(page.getByRole('button', { name: 'Girar Aurora', exact: true })).toHaveCount(0);
+  await actorNode.locator('image').click();
+  await expect(actorNode).toHaveAttribute('data-token-selected', 'true');
+  await page.keyboard.down('Control');
+  await drag(
+    { x: actor.x + actor.size * 0.35, y: actor.y },
+    {
+      x: actor.x + 2 * Math.cos((127.25 * Math.PI) / 180),
+      y: actor.y + 2 * Math.sin((127.25 * Math.PI) / 180),
+    },
+  );
+  await page.keyboard.up('Control');
+  await expect
+    .poll(
+      async () =>
+        (await request(owner, base + '/tokens', undefined, 'GET')).tokens.find(
+          (t: any) => t.id === actor.id,
+        ).rotation,
+    )
+    .toBeGreaterThan(120);
+  const turned = (await request(owner, base + '/tokens', undefined, 'GET')).tokens.find(
+    (t: any) => t.id === actor.id,
+  );
+  expect(Math.abs(turned.rotation - 127.25)).toBeLessThan(2);
+  expect(turned.x).toBe(actor.x);
+  expect(turned.y).toBe(actor.y);
+  expect(turned.rotation % 15).not.toBe(0);
+  actor = turned;
+  const turnHandle = page.getByRole('button', { name: 'Girar Aurora', exact: true });
+  await expect(turnHandle).toBeVisible();
+  const handleBox = (await turnHandle.boundingBox())!,
+    handleCenter = { x: handleBox.x + handleBox.width / 2, y: handleBox.y + handleBox.height / 2 };
+  const heroCenter = await screen(actor);
+  await page.mouse.move(handleCenter.x, handleCenter.y);
+  await page.mouse.down();
+  await page.mouse.move(heroCenter.x + 90, heroCenter.y, { steps: 12 });
+  await page.mouse.up();
+  await expect
+    .poll(
+      async () =>
+        (await request(owner, base + '/tokens', undefined, 'GET')).tokens.find(
+          (t: any) => t.id === actor.id,
+        ).revision,
+    )
+    .toBeGreaterThan(actor.revision);
+  actor = (await request(owner, base + '/tokens', undefined, 'GET')).tokens.find(
+    (t: any) => t.id === actor.id,
+  );
+  await page.screenshot({ path: output + '/free-rotation-no-circle.png' });
+  const to = house2HouseWorld(house, {
+      x: (floor.doorStart + floor.doorEnd) / 2,
+      y: floor.bottom + 1,
+    }),
+    inside = house2HouseWorld(house, {
+      x: (floor.doorStart + floor.doorEnd) / 2,
+      y: floor.bottom - 1,
+    });
   actor = await request(
     owner,
     base + '/tokens/' + actor.id,
@@ -162,33 +230,23 @@ try {
   const ownRoof = page.locator('[data-house2-fixed="true"] [data-house2-roof]'),
     leaf = page.locator(`[data-house2-door-leaf="${lot.id}"]`);
   await expect(ownRoof).toHaveCount(1);
+  await expect(leaf).toHaveCount(0);
+  await expect(page.locator('.h2-map image[href*="door-vertical"]')).toHaveCount(0);
+  await expect(
+    page
+      .getByRole('button', { name: 'Abrir porta da casa de Aurora', exact: true })
+      .locator('circle'),
+  ).toHaveAttribute('r', '.25');
   await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(0);
   await page.screenshot({ path: output + '/outside-roof.png' });
-  await drag(actor, { x: door.x, y: door.y - 1 });
+  await drag(actor, inside);
   await expect(ownRoof).toHaveCount(1);
   await page.getByRole('button', { name: 'Fechar Meus tokens', exact: true }).click();
-  const hinge = () =>
-    leaf.evaluate((g) => {
-      const m = (g as SVGGElement).getScreenCTM()!;
-      return { x: m.e, y: m.f };
-    });
-  const before = await hinge();
   await page.getByRole('button', { name: 'Abrir porta da casa de Aurora', exact: true }).click();
-  await expect(leaf).toHaveAttribute('data-door-open', 'true');
-  await expect
-    .poll(async () => Number(await leaf.getAttribute('data-door-angle')), { intervals: [25, 40] })
-    .toBeGreaterThan(5);
-  const during = Number(await leaf.getAttribute('data-door-angle'));
-  expect(during).toBeGreaterThanOrEqual(0);
-  expect(during).toBeLessThan(90);
-  await page.screenshot({ path: output + '/door-opening.png' });
-  await expect.poll(async () => Number(await leaf.getAttribute('data-door-angle'))).toBe(90);
-  const after = await hinge();
-  expect(Math.abs(after.x - before.x)).toBeLessThan(0.1);
-  expect(Math.abs(after.y - before.y)).toBeLessThan(0.1);
+  await expect(leaf).toHaveCount(0);
   state = await request(owner, base + '/tokens', undefined, 'GET');
   actor = state.tokens.find((t: any) => t.id === actor.id);
-  await drag(actor, { x: door.x, y: door.y - 1 });
+  await drag(actor, inside);
   await expect(ownRoof).toHaveCount(0);
   await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(1);
   await expect
@@ -196,11 +254,32 @@ try {
       async () =>
         (await request(owner, base + '/tokens', undefined, 'GET')).tokens.find(
           (t: any) => t.id === actor.id,
-        ).y,
+        ).x,
     )
-    .toBeCloseTo(door.y - 1, 2);
+    .toBeCloseTo(inside.x, 2);
   await page.getByRole('button', { name: 'Fechar Meus tokens', exact: true }).click();
-  const outside = await screen({ x: house.house_x + floor.left - 2, y: house.house_y });
+  await expect(leaf).toHaveCount(1);
+  await expect(leaf).toHaveAttribute('data-door-open', 'true');
+  await expect(leaf.locator('image')).toHaveAttribute('href', house2Houses[0].interior);
+  await page.getByRole('button', { name: 'Fechar porta da casa de Aurora', exact: true }).click();
+  await expect.poll(async () => Number(await leaf.getAttribute('data-door-angle'))).toBe(0);
+  const hinge = () =>
+    leaf.evaluate((g) => {
+      const m = (g as SVGGElement).getScreenCTM()!;
+      return { x: m.e, y: m.f };
+    });
+  const before = await hinge();
+  await page.getByRole('button', { name: 'Abrir porta da casa de Aurora', exact: true }).click();
+  await expect
+    .poll(async () => Number(await leaf.getAttribute('data-door-angle')), { intervals: [25, 40] })
+    .toBeGreaterThan(5);
+  expect(Number(await leaf.getAttribute('data-door-angle'))).toBeLessThan(90);
+  await page.screenshot({ path: output + '/door-opening.png' });
+  await expect.poll(async () => Number(await leaf.getAttribute('data-door-angle'))).toBe(90);
+  const after = await hinge();
+  expect(Math.abs(after.x - before.x)).toBeLessThan(0.1);
+  expect(Math.abs(after.y - before.y)).toBeLessThan(0.1);
+  const outside = await screen(house2HouseWorld(house, { x: floor.left - 2, y: 0 }));
   const screenshot = await page.screenshot({ path: output + '/inside-hidden-exterior.png' });
   const pixels = await sharp(screenshot).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const offset = (Math.round(outside.y) * pixels.info.width + Math.round(outside.x)) * 3;
@@ -222,12 +301,12 @@ try {
   await page.getByRole('button', { name: 'Fechar Meus tokens', exact: true }).click();
   state = await request(owner, base + '/tokens', undefined, 'GET');
   actor = state.tokens.find((t: any) => t.id === actor.id);
-  await drag(actor, { x: door.x, y: door.y + 1 });
+  await drag(actor, to);
   await expect(ownRoof).toHaveCount(1);
   await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(0);
   await page.getByRole('button', { name: 'Fechar Meus tokens', exact: true }).click();
   await page.getByRole('button', { name: 'Fechar porta da casa de Aurora', exact: true }).click();
-  await expect(leaf).toHaveAttribute('data-door-open', 'false');
+  await expect(leaf).toHaveCount(0);
   await page.locator(`g[data-house2-plot="${lot.id}"] > .h2-plot`).focus();
   await page.keyboard.press('Enter');
   await tool('Minha coleção');
@@ -278,6 +357,13 @@ try {
       {
         passed: true,
         tokensAndPets: true,
+        libraryDragImport: true,
+        freeRotation: true,
+        selectionCircleRemoved: true,
+        clickAgainDeselects: true,
+        originalDoorOnly: true,
+        smallDoorControl: true,
+        rotatedHouse: 270,
         persistence: true,
         visitorReadOnly: true,
         ownerRoofEditing: true,

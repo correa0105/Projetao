@@ -31,6 +31,17 @@
   height: 68px;
   object-fit: contain;
 }
+.h2-token-source[draggable='true'] {
+  cursor: grab;
+}
+.h2-actor-turn {
+  cursor: crosshair;
+  outline: none;
+}
+.h2-actor-turn:hover path,
+.h2-actor-turn:focus-visible path {
+  stroke: #fff2ce;
+}
 .h2-token-source > div {
   display: grid;
   gap: 0.4rem;

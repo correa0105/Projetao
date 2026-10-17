@@ -46,7 +46,12 @@ import { House2Clock } from './House2Clock';
 import { House2Capture } from './House2Capture';
 import { House2Ground, House2GroundEditor } from './House2Ground';
 import { House2ItemBorder } from './House2ItemBorder';
-import { House2TokensLayer, House2TokensPanel, useHouse2Tokens } from './House2Tokens';
+import {
+  House2TokensLayer,
+  House2TokensPanel,
+  useHouse2Tokens,
+  house2TokenDragType,
+} from './House2Tokens';
 import { House2Doors, House2IndoorVision } from './House2Doors';
 import { house2Contains } from '../shared/house2-tokens';
 import {
@@ -706,7 +711,8 @@ export function House2({ character, user }: { character?: Character; user: User 
     canEdit &&
     plot &&
     (tool === 'ground' ||
-      (hideRoofOnEdit && (tool === 'collection' || tool === 'shop' || !!selectedPiece)))
+      (hideRoofOnEdit &&
+        (tool === 'collection' || tool === 'shop' || (tool !== 'tokens' && !!selectedPiece))))
       ? plot.id
       : null;
   const occupiedInterior = actors.viewer
@@ -976,6 +982,31 @@ export function House2({ character, user }: { character?: Character; user: User 
         className="h2-map"
         viewBox={`${view.x} ${view.y} ${view.width} ${view.height}`}
         aria-label="Mapa da vizinhança, 200 por 200 quadrados"
+        onDragOver={(e) => {
+          if (e.dataTransfer.types.includes(house2TokenDragType) && !actors.busy && !busy) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'copy';
+          }
+        }}
+        onDrop={(e) => {
+          if (!e.dataTransfer.types.includes(house2TokenDragType)) return;
+          e.preventDefault();
+          if (actors.busy || busy) return;
+          try {
+            const value = JSON.parse(e.dataTransfer.getData(house2TokenDragType));
+            const source = actors.sources.find((s) => s.id === value.id && s.kind === value.kind);
+            if (!source) return;
+            const at = world(e.clientX, e.clientY);
+            void actors.bring(source, { x: at.x, y: at.y }, true).then((t) => {
+              if (!t) return;
+              setSelectedPiece(null);
+              setTool('tokens');
+              setCamera({ x: t.x, y: t.y, span: 19 });
+            });
+          } catch {
+            setNotice('Não foi possível trazer esse token. Use a lista Meus tokens.');
+          }
+        }}
         onPointerDown={pointerDown}
         onPointerMove={pointerMove}
         onPointerUp={pointerUp}
@@ -1093,6 +1124,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                 <House2Interior
                   id={spec.id}
                   instance={p.id}
+                  doorOpen={actors.doors[p.id] ?? p.door_open ?? false}
                   width={spec.width}
                   height={spec.height}
                 />
@@ -1282,6 +1314,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                   key={k}
                   onClick={() => {
                     setTool(k);
+                    if (k === 'tokens') setSelectedPiece(null);
                     setMenu(false);
                     setCatalogQuery('');
                   }}
@@ -1363,7 +1396,10 @@ export function House2({ character, user }: { character?: Character; user: User 
               <House2TokensPanel
                 controls={actors}
                 center={{ x: boundedCamera.x, y: boundedCamera.y }}
-                focus={(t) => setCamera({ x: t.x, y: t.y, span: 19 })}
+                focus={(t) => {
+                  setSelectedPiece(null);
+                  setCamera({ x: t.x, y: t.y, span: 19 });
+                }}
               />
             ) : tool === 'settings' ? (
               <>
