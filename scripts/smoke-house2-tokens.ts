@@ -365,12 +365,37 @@ try {
   const hd = await sharp(output + '/inside-hd.png').metadata();
   expect(hd.width).toBe(5760);
   expect(hd.height).toBe(3600);
+  // A second click must end character vision, even while another own pet exists.
+  await actorNode.locator('image').click();
+  await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(0);
+  await expect(page.locator('[data-house2-token][data-token-selected="true"]')).toHaveCount(0);
+  await expect(ownRoof).toHaveCount(1);
+  const overview = await page.screenshot({ path: output + '/deselected-map-visible.png' });
+  expect([
+    ...(await sharp(overview)
+      .extract({ left: Math.round(outside.x), top: Math.round(outside.y), width: 1, height: 1 })
+      .removeAlpha()
+      .raw()
+      .toBuffer()),
+  ]).not.toEqual([9, 13, 17]);
+  await page.getByRole('button', { name: 'Atualizar tokens no mapa', exact: true }).click();
+  await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Entrar na casa de Aurora', exact: true }).click();
+  await expect(ownRoof).toHaveCount(0);
+  await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(0);
+  await page.screenshot({ path: output + '/inspect-without-darkness.png' });
+  await page.getByRole('button', { name: 'Sair da casa de Aurora', exact: true }).click();
+  await page.getByRole('button', { name: 'Localizar Aurora no mapa', exact: true }).click();
+  await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(1);
+  await page.getByRole('button', { name: 'Fechar Meus tokens', exact: true }).click();
   await page.reload();
   await page.locator('.h2-neighborhood-card').first().click();
-  await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(1);
-  await expect(ownRoof).toHaveCount(0);
+  await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(0);
+  await expect(ownRoof).toHaveCount(1);
   await tool('Meus tokens');
   await page.getByRole('button', { name: 'Localizar Aurora no mapa', exact: true }).click();
+  await expect(page.locator('[data-house2-indoor-vision]')).toHaveCount(1);
+  await expect(ownRoof).toHaveCount(0);
   await page.getByRole('button', { name: 'Fechar Meus tokens', exact: true }).click();
   state = await request(owner, base + '/tokens', undefined, 'GET');
   actor = state.tokens.find((t: any) => t.id === actor.id);
@@ -442,6 +467,9 @@ try {
         roofCenterPreserved: true,
         eavesAfterReload: true,
         eavesInHdCapture: true,
+        deselectRestoresMap: true,
+        manualInspectWithoutDarkness: true,
+        reloadWithoutSelectionShowsMap: true,
         persistence: true,
         visitorReadOnly: true,
         ownerRoofEditing: true,

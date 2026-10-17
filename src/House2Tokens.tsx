@@ -155,10 +155,7 @@ export function useHouse2Tokens(neighborhood: string | null, notice: (message: s
   const tokens = preview
     ? snapshot.tokens.map((t) => (t.id === preview.id ? preview : t))
     : snapshot.tokens;
-  const viewer =
-    tokens.find((t) => t.id === selected && t.can_control) ??
-    tokens.find((t) => t.can_control && t.kind === 'character') ??
-    tokens.find((t) => t.can_control);
+  const viewer = tokens.find((t) => t.id === selected && t.can_control);
   return {
     tokens,
     sources,

@@ -204,6 +204,11 @@ try {
     'data-house2-day-phase',
     'afternoon',
   );
+  const afternoonItemShadow = page.locator('#h2-shadow-item feDropShadow');
+  expect(Math.abs(Number(await afternoonItemShadow.getAttribute('dx')))).toBeGreaterThan(0.3);
+  expect(Number(await afternoonItemShadow.getAttribute('flood-opacity'))).toBeGreaterThanOrEqual(
+    0.45,
+  );
   await page.getByRole('button', { name: 'Fechar Vizinhança', exact: true }).click();
   const printButton = page.getByRole('button', {
     name: 'Print da House 2.0 em alta qualidade',
@@ -636,6 +641,7 @@ try {
     results.push(viewport);
   }
   await page.setViewportSize({ width: 1440, height: 900 });
+  await page.screenshot({ path: 'test-results/house2/afternoon-objects-shadows.png' });
   await page.getByRole('button', { name: 'Centralizar vizinhança' }).click();
   await checkCamera();
   await page.mouse.move(700, 450);
@@ -702,6 +708,7 @@ try {
         groundMaterialsFeathered: true,
         rotationControlCentered: true,
         headerNoOverlap: true,
+        afternoonObjectShadows: true,
         administratorCapture: true,
         capture: { width: capture.width, height: capture.height, format: capture.format },
         touchResize: true,

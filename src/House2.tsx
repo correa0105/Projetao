@@ -720,10 +720,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     : null;
   const visibleInterior =
     editingInterior ?? (actors.viewer ? (occupiedInterior?.id ?? null) : interior);
-  const visionPlot = editingInterior
-    ? null
-    : (occupiedInterior ??
-      (!actors.viewer ? (actorPlots.find((p) => p.id === interior) ?? null) : null));
+  const visionPlot = editingInterior ? null : occupiedInterior;
   const borderItem =
     canEdit && !busy && tool !== 'ground'
       ? shownItems.find((i) => i.id === selectedPiece && i.plot_id === selected)
