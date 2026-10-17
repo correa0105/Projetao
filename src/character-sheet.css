@@ -490,3 +490,70 @@ dialog:has(.character-creation-form) {
     font-size: 11px;
   }
 }
+.sheet-feature-source {
+  display: block;
+  margin: 4px 0 6px;
+  color: #c0a46d;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.sheet-feature-section {
+  margin-top: 24px;
+}
+.sheet-class-choices {
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ac8a4b55;
+  background: #151a19a0;
+  border-radius: 4px;
+}
+.sheet-class-choices h4 {
+  margin: 0 0 8px;
+}
+.sheet-class-choices p {
+  margin: 6px 0 12px;
+  font-size: 12px;
+}
+.sheet-class-choices .button {
+  margin-top: 12px;
+}
+.sheet-identity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  margin: 14px 0 20px;
+}
+.sheet-identity-grid > div {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 10px;
+  border-bottom: 1px solid #b99a5b26;
+  padding: 12px 0;
+}
+.sheet-identity-grid > div:first-child {
+  grid-column: 1/-1;
+}
+.sheet-identity-grid dt {
+  font-weight: 600;
+  color: #d6c7a4;
+}
+.sheet-identity-grid dd {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.sheet-resource-grid input[readonly] {
+  background: #151a1c;
+  border-color: #9d895534;
+  cursor: default;
+  color: #ded4bb;
+  font-weight: 600;
+}
+@media (max-width: 720px) {
+  .sheet-identity-grid {
+    grid-template-columns: 1fr;
+  }
+  .sheet-identity-grid > div {
+    grid-template-columns: minmax(0, 130px) minmax(0, 1fr);
+  }
+}

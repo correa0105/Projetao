@@ -28,6 +28,7 @@ process.env.NODE_ENV = qaEnvironment;
 await new Promise<void>((r) => server.once('listening', r));
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
 const context = await browser.newContext({
+    extraHTTPHeaders: { 'Accept-Encoding': 'identity' },
     viewport: { width: 1440, height: 1000 },
     reducedMotion: 'reduce',
   }),

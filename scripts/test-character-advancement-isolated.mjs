@@ -14,9 +14,11 @@ try {
     ? [
         '--import',
         'tsx',
-        process.argv.includes('--expansion')
-          ? 'scripts/smoke-character-rules-2024.ts'
-          : 'scripts/smoke-character-advancement.ts',
+        process.argv.includes('--choices')
+          ? 'scripts/smoke-class-choices-camp.ts'
+          : process.argv.includes('--expansion')
+            ? 'scripts/smoke-character-rules-2024.ts'
+            : 'scripts/smoke-character-advancement.ts',
       ]
     : [
         '--import',
@@ -27,6 +29,7 @@ try {
           ? ['tests/*.test.ts']
           : [
               'tests/character-advancement.test.ts',
+              'tests/class-choices.test.ts',
               'tests/character-rules-2024.test.ts',
               'tests/character-sheet.test.ts',
               'tests/srd-2024.test.ts',

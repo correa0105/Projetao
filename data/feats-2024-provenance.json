@@ -1,0 +1,10 @@
+{
+  "source": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/feats.json",
+  "reference": "https://5e.tools/feats.html",
+  "retrieved": "2026-10-17",
+  "book": "Player’s Handbook 2024 (XPHB)",
+  "upstreamSha256": "f2f2f8beddac8f9e65d7f9157f26520854bf4a8140f1de41aa71dcb019eb0b33",
+  "entries": 76,
+  "scope": "Nomes, categorias, páginas, pré-requisitos e aumentos como dados de regra. Resumos em português redigidos para o portal.",
+  "generator": "scripts/build-feats-catalog.mjs"
+}

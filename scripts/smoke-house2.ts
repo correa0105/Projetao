@@ -272,8 +272,8 @@ try {
   await page.keyboard.press('Enter');
   await page.getByRole('button', { name: /Comprar terreno/ }).click();
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
-  await expect(page.locator('.h2-catalog button')).toHaveCount(25);
-  await page.locator('.h2-catalog button').first().click();
+  await expect(page.locator('.h2-catalog:not(.h2-finishes-catalog) button')).toHaveCount(25);
+  await page.locator('.h2-catalog:not(.h2-finishes-catalog) button').first().click();
   await expect(page.locator('.h2-purchase-confirmation img')).toHaveAttribute(
     'src',
     '/vtt/nadir-20261016/house-001-roof.webp',
@@ -293,13 +293,13 @@ try {
     page.locator('[data-house2-fixed="true"] [data-house2-roof="house-empty-001"]'),
   ).toHaveCount(0);
   await tool('Mobília');
-  await expect(page.locator('.h2-catalog button')).toHaveCount(250);
+  await expect(page.locator('.h2-catalog:not(.h2-finishes-catalog) button')).toHaveCount(252);
   await page.getByRole('textbox', { name: 'Pesquisar mobília' }).fill('Cadeira de madeira');
-  await expect(page.locator('.h2-catalog button')).toHaveCount(1);
-  await page.locator('.h2-catalog button').first().click();
+  await expect(page.locator('.h2-catalog:not(.h2-finishes-catalog) button')).toHaveCount(1);
+  await page.locator('.h2-catalog:not(.h2-finishes-catalog) button').first().click();
   await page.getByRole('button', { name: 'Cancelar', exact: true }).click();
   expect((await request(context, '/house-v2', undefined, 'GET')).inventory.length).toBe(0);
-  await page.locator('.h2-catalog button').first().click();
+  await page.locator('.h2-catalog:not(.h2-finishes-catalog) button').first().click();
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
   await expect(page.locator('.h2-world-notice')).toContainText('Mobília adquirida');
   await tool('Minha coleção');

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {grantBetaStartingGold} from './beta-accounts.js';
+import { grantBetaStartingGold } from './beta-accounts.js';
 import type { CharacterArtPair } from './character-token-illustrator.js';
 import { normalizeCharacterToken, syncCharacterTokenArt } from './character-token-art.js';
 import {
@@ -14,13 +14,10 @@ import { resolve } from 'node:path';
 import { EQUIPMENT_SLOTS, isHelmet } from '../shared/equipment.js';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
-import {
-  characterSchema,
-  CHARACTER_LIMIT,
-  ART_MAX_BYTES,
-  ART_MONTHLY_LIMIT,
-} from '../shared/character-art.js';
+import { characterSchema, ART_MAX_BYTES, ART_MONTHLY_LIMIT } from '../shared/character-art.js';
 import { hitDice, modifier } from '../shared/rules.js';
+import { isAdministrator } from './administrators.js';
+import { characterLimit } from '../shared/character-art.js';
 
 const uuid = z.string().uuid();
 const requestSchema = z
@@ -104,7 +101,7 @@ export async function enqueueArt(userId: string, input: unknown) {
     const {
       rows: [account],
     } = await client.query(
-      'SELECT u.id,COALESCE((SELECT unlimited FROM character_art_allowances a WHERE a.user_id=u.id),false) AS art_unlimited FROM "user" u WHERE u.id=$1 FOR UPDATE',
+      'SELECT u.id,u.administrador,COALESCE((SELECT unlimited FROM character_art_allowances a WHERE a.user_id=u.id),false) AS art_unlimited FROM "user" u WHERE u.id=$1 FOR UPDATE',
       [userId],
     );
     const previous = await client.query(
@@ -147,10 +144,10 @@ export async function enqueueArt(userId: string, input: unknown) {
         (SELECT count(*) FROM character_art_jobs WHERE user_id=$1 AND character_id IS NULL AND status IN ('queued','running')) AS total`,
         [userId],
       );
-      if (Number(counts.total) >= CHARACTER_LIMIT)
+      if (Number(counts.total) >= characterLimit(account.administrador === 1))
         throw new AppError(
           409,
-          'Cada conta pode ter até dois personagens, incluindo os que estão em preparação.',
+          `Esta conta pode ter até ${characterLimit(account.administrador === 1)} personagens, incluindo os que estão em preparação.`,
         );
     }
     const equipment: { slot: string; item_id: string; name: string; image: Buffer }[] = [];
@@ -225,7 +222,11 @@ export async function completeArt(jobId: string, output: CharacterArtPair) {
   return transaction(async (client) => {
     const owner = await client.query('SELECT user_id FROM character_art_jobs WHERE id=$1', [jobId]);
     if (!owner.rowCount) throw new AppError(404, 'Pedido não encontrado.');
-    await client.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE', [owner.rows[0].user_id]);
+    const {
+      rows: [account],
+    } = await client.query('SELECT id,administrador FROM "user" WHERE id=$1 FOR UPDATE', [
+      owner.rows[0].user_id,
+    ]);
     const {
       rows: [job],
     } = await client.query('SELECT * FROM character_art_jobs WHERE id=$1 FOR UPDATE', [jobId]);
@@ -239,7 +240,7 @@ export async function completeArt(jobId: string, output: CharacterArtPair) {
         'SELECT count(*)::int AS total FROM characters WHERE user_id=$1 AND deleted_at IS NULL',
         [job.user_id],
       );
-      if (counts.total >= CHARACTER_LIMIT)
+      if (counts.total >= characterLimit(account.administrador === 1))
         throw new AppError(409, 'Limite de personagens atingido.');
       const data = characterSchema.parse(job.creation);
       const {
@@ -260,7 +261,7 @@ export async function completeArt(jobId: string, output: CharacterArtPair) {
         ],
       );
       characterId = character.id;
-      await grantBetaStartingGold(client,job.user_id,character.id);
+      await grantBetaStartingGold(client, job.user_id, character.id);
       if (data.choices) {
         await client.query('INSERT INTO character_sheets(character_id,choices) VALUES($1,$2)', [
           characterId,
@@ -353,6 +354,7 @@ export function characterArtRouter() {
     );
     res.json({
       available: await artWorkerAvailable(),
+      character_limit: characterLimit(await isAdministrator(res.locals.user.id)),
       jobs,
       pending_new: jobs.filter((j) => !j.character_id && ['queued', 'running'].includes(j.status))
         .length,

@@ -1,4 +1,6 @@
 import type { house2Houses } from '../shared/house-v2';
+import { house2Finish, type House2Finishes } from '../shared/house2-finishes';
+import { vttVisualSource } from '../shared/vtt-asset-visuals';
 
 /** Match the VTT's 32% eaves, feathered opaque center and protected chimney. */
 export function House2Roof({
@@ -8,6 +10,7 @@ export function House2Roof({
   height,
   preview,
   fade,
+  finishes,
 }: {
   house: (typeof house2Houses)[number];
   instance: string;
@@ -15,6 +18,7 @@ export function House2Roof({
   height: number;
   preview: boolean;
   fade: boolean;
+  finishes?: House2Finishes;
 }) {
   const f = house.footprint,
     mask = 'h2-eaves-' + instance,
@@ -104,7 +108,8 @@ export function House2Roof({
         className={preview ? 'h2-house-preview' : 'h2-house-fixed'}
         data-house2-roof={house.id}
         data-house2-roof-eaves={fade ? 'transparent' : 'solid'}
-        href={house.image}
+        href={vttVisualSource(house2Finish(finishes, 'roof')?.image ?? house.image)}
+        data-house2-roof-finish={finishes?.roof ?? 'original'}
         x={-width / 2}
         y={-height / 2}
         width={width}

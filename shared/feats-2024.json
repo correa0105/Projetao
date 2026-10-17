@@ -1,0 +1,1462 @@
+[
+  {
+    "id": "actor",
+    "name": "Ator",
+    "text": "Imitação de vozes e vantagem para representar outra pessoa.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 202,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "cha": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "alert",
+    "name": "Alerta",
+    "text": "Soma proficiência à iniciativa e permite trocar iniciativa com um aliado disposto.",
+    "category": "O",
+    "source": "XPHB",
+    "page": 200,
+    "prerequisite": [],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "archery",
+    "name": "Arquearia",
+    "text": "Recebe +2 nos ataques com armas à distância.",
+    "category": "FS",
+    "source": "XPHB",
+    "page": 209,
+    "prerequisite": [
+      {
+        "feature": ["Fighting Style"]
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "athlete",
+    "name": "Atleta",
+    "text": "Levantar consome menos movimento, escalada aprimorada e saltos com menos corrida.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 202,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "str": 13
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "ability": [
+          {
+            "dex": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "blessed-warrior",
+    "name": "Guerreiro abençoado",
+    "text": "Escolha dois truques de clérigo usando Carisma.",
+    "category": "FS:P",
+    "source": "XPHB",
+    "page": 110,
+    "prerequisite": [
+      {
+        "otherSummary": {
+          "entry": "When Gaining the Level 2 Paladin \"Fighting Style\" Feature",
+          "entrySummary": "Special"
+        }
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "blind-fighting",
+    "name": "Combate às cegas",
+    "text": "Visão às cegas a até 3 metros.",
+    "category": "FS",
+    "source": "XPHB",
+    "page": 209,
+    "prerequisite": [
+      {
+        "feature": ["Fighting Style"]
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-combat-prowess",
+    "name": "Dádiva de proeza em combate",
+    "text": "Permite converter um ataque que errou em acerto, recuperando no próximo turno.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 210,
+    "prerequisite": [
+      {
+        "level": 19
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-dimensional-travel",
+    "name": "Dádiva de viagem dimensional",
+    "text": "Teleporte curto após a ação Atacar ou Mágica.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 210,
+    "prerequisite": [
+      {
+        "level": 19
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-energy-resistance",
+    "name": "Dádiva de resistência a energia",
+    "text": "Escolha duas resistências de energia, com troca após descanso longo.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 210,
+    "prerequisite": [
+      {
+        "level": 19
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-fate",
+    "name": "Dádiva do destino",
+    "text": "Modifica um teste de d20 com 2d4; recuperação por iniciativa ou descanso.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 210,
+    "prerequisite": [
+      {
+        "level": 19
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-fortitude",
+    "name": "Dádiva de fortitude",
+    "text": "Aumenta o máximo de PV em 40 e melhora recuperação de PV.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 210,
+    "prerequisite": [
+      {
+        "level": 19
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-irresistible-offense",
+    "name": "Dádiva de ofensiva irresistível",
+    "text": "Ignora resistências físicas e acrescenta dano ao obter 20 no ataque.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 211,
+    "prerequisite": [
+      {
+        "level": 19
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-recovery",
+    "name": "Dádiva de recuperação",
+    "text": "Pode recuperar metade dos PV máximos e evitar cair a zero conforme os usos da dádiva.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 211,
+    "prerequisite": [
+      {
+        "level": 19
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-skill",
+    "name": "Dádiva de perícia",
+    "text": "Proficiência em todas as perícias e uma especialização.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 211,
+    "prerequisite": [
+      {
+        "level": 19
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-speed",
+    "name": "Dádiva de velocidade",
+    "text": "Aumenta muito o deslocamento e permite Desengajar por ação bônus.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 211,
+    "prerequisite": [
+      {
+        "level": 19
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-spell-recall",
+    "name": "Dádiva de recuperação de magia",
+    "text": "Uma rolagem pode preservar um espaço de magia de nível 1 a 4.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 211,
+    "prerequisite": [
+      {
+        "level": 19,
+        "spellcasting2020": true
+      }
+    ],
+    "abilities": [3, 4, 5],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-the-night-spirit",
+    "name": "Dádiva do espírito noturno",
+    "text": "Invisibilidade e resistências enquanto em penumbra ou escuridão.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 211,
+    "prerequisite": [
+      {
+        "level": 19
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "boon-of-truesight",
+    "name": "Dádiva de visão verdadeira",
+    "text": "Concede visão verdadeira a até 18 metros.",
+    "category": "EB",
+    "source": "XPHB",
+    "page": 211,
+    "prerequisite": [
+      {
+        "level": 19
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 30,
+    "repeatable": false
+  },
+  {
+    "id": "charger",
+    "name": "Investida",
+    "text": "Disparada aprimorada e dano adicional ou empurrão após uma investida.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 202,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "str": 13
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "ability": [
+          {
+            "dex": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "chef",
+    "name": "Cozinheiro",
+    "text": "Proficiência com utensílios de cozinheiro, comida que melhora descansos e petiscos que concedem PV temporários ao consumir.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 202,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [2, 4],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "crafter",
+    "name": "Artífice",
+    "text": "Três ferramentas de artesão, desconto em itens não mágicos e fabricação rápida.",
+    "category": "O",
+    "source": "XPHB",
+    "page": 200,
+    "prerequisite": [],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "crossbow-expert",
+    "name": "Especialista em bestas",
+    "text": "Ignora Recarga, melhora ataques próximos e ataques extras com bestas leves.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 203,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "dex": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "crusher",
+    "name": "Esmagador",
+    "text": "Pode deslocar uma criatura atingida com dano contundente e favorecer ataques após um crítico.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 203,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [0, 2],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "defense",
+    "name": "Defesa",
+    "text": "Recebe +1 na CA enquanto usa armadura leve, média ou pesada.",
+    "category": "FS",
+    "source": "XPHB",
+    "page": 209,
+    "prerequisite": [
+      {
+        "feature": ["Fighting Style"]
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "defensive-duelist",
+    "name": "Duelista defensivo",
+    "text": "Reação com arma de Acuidade para aumentar a CA contra ataques corpo a corpo.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 203,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "dex": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "druidic-warrior",
+    "name": "Guerreiro druídico",
+    "text": "Escolha dois truques de druida usando Sabedoria.",
+    "category": "FS:R",
+    "source": "XPHB",
+    "page": 120,
+    "prerequisite": [
+      {
+        "otherSummary": {
+          "entry": "When Gaining the Level 2 Ranger \"Fighting Style\" Feature",
+          "entrySummary": "Special"
+        }
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "dual-wielder",
+    "name": "Combatente com duas armas",
+    "text": "Ataque adicional e saque de duas armas conforme as condições do talento.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 203,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "str": 13
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "ability": [
+          {
+            "dex": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "dueling",
+    "name": "Duelismo",
+    "text": "Recebe +2 no dano com uma arma corpo a corpo em uma mão, sem outra arma empunhada.",
+    "category": "FS",
+    "source": "XPHB",
+    "page": 209,
+    "prerequisite": [
+      {
+        "feature": ["Fighting Style"]
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "durable",
+    "name": "Durável",
+    "text": "Vantagem em salvaguardas contra a morte e uso de um Dado de Vida por ação bônus para recuperar PV.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 203,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [2],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "elemental-adept",
+    "name": "Adepto elemental",
+    "text": "Escolha um tipo de dano mágico; ignora resistência e melhora resultados 1 nos dados daquele dano.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 203,
+    "prerequisite": [
+      {
+        "level": 4,
+        "spellcasting2020": true
+      }
+    ],
+    "abilities": [3, 4, 5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": true
+  },
+  {
+    "id": "fey-touched",
+    "name": "Tocado pelas fadas",
+    "text": "Passo Nebuloso e uma magia de nível 1 de Adivinhação ou Encantamento; usos e espaços conforme o talento.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 204,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [3, 4, 5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "grappler",
+    "name": "Agarrador",
+    "text": "Combina dano desarmado e agarrão, melhora ataques e deslocamento com uma criatura agarrada.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 204,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "str": 13
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "ability": [
+          {
+            "dex": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "great-weapon-fighting",
+    "name": "Combate com armas grandes",
+    "text": "Trata resultados 1 e 2 nos dados de dano como 3 com arma elegível empunhada com duas mãos.",
+    "category": "FS",
+    "source": "XPHB",
+    "page": 209,
+    "prerequisite": [
+      {
+        "feature": ["Fighting Style"]
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "great-weapon-master",
+    "name": "Mestre de armas grandes",
+    "text": "Dano adicional com armas Pesadas e ataque bônus após crítico ou reduzir uma criatura a zero.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 204,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "str": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [0],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "healer",
+    "name": "Curandeiro",
+    "text": "Kit de curandeiro permite gastar Dado de Vida; melhora resultados 1 de cura.",
+    "category": "O",
+    "source": "XPHB",
+    "page": 201,
+    "prerequisite": [],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "heavily-armored",
+    "name": "Fortemente protegido",
+    "text": "Concede treinamento com armaduras pesadas.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 204,
+    "prerequisite": [
+      {
+        "level": 4,
+        "proficiency": [
+          {
+            "armor": "medium"
+          }
+        ]
+      }
+    ],
+    "abilities": [2, 0],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "heavy-armor-master",
+    "name": "Mestre de armaduras pesadas",
+    "text": "Reduz dano contundente, cortante e perfurante enquanto usa armadura pesada.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 204,
+    "prerequisite": [
+      {
+        "level": 4,
+        "proficiency": [
+          {
+            "armor": "heavy"
+          }
+        ]
+      }
+    ],
+    "abilities": [2, 0],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "inspiring-leader",
+    "name": "Líder inspirador",
+    "text": "Após um descanso, pode conceder PV temporários a até seis criaturas escolhidas; não é uma reserva permanente.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 204,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "wis": 13
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "ability": [
+          {
+            "cha": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [4, 5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "interception",
+    "name": "Interceptação",
+    "text": "Reação para reduzir dano de um ataque contra criatura próxima com arma ou escudo.",
+    "category": "FS",
+    "source": "XPHB",
+    "page": 209,
+    "prerequisite": [
+      {
+        "feature": ["Fighting Style"]
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "keen-mind",
+    "name": "Mente aguçada",
+    "text": "Treinamento ou especialização em uma perícia de conhecimento e Estudar como ação bônus.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 205,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "int": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [3],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "lightly-armored",
+    "name": "Levemente protegido",
+    "text": "Concede treinamento com armaduras leves e escudos.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 205,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "lucky",
+    "name": "Sortudo",
+    "text": "Pontos de sorte por descanso longo para vantagem própria ou desvantagem em um ataque recebido.",
+    "category": "O",
+    "source": "XPHB",
+    "page": 201,
+    "prerequisite": [],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "mage-slayer",
+    "name": "Matador de magos",
+    "text": "Interfere na concentração e permite resistir a uma salvaguarda mental por descanso.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 205,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "magic-initiate",
+    "name": "Iniciado em Magia",
+    "text": "Dois truques e uma magia de nível 1 da lista escolhida, com atributo de conjuração escolhido.",
+    "category": "O",
+    "source": "XPHB",
+    "page": 201,
+    "prerequisite": [],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": true
+  },
+  {
+    "id": "martial-weapon-training",
+    "name": "Treinamento com armas marciais",
+    "text": "Concede proficiência com armas marciais.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 205,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "medium-armor-master",
+    "name": "Mestre de armaduras médias",
+    "text": "Permite maior contribuição de Destreza à CA com armadura média.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 205,
+    "prerequisite": [
+      {
+        "level": 4,
+        "proficiency": [
+          {
+            "armor": "medium"
+          }
+        ]
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "moderately-armored",
+    "name": "Moderadamente protegido",
+    "text": "Concede treinamento com armaduras médias.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 205,
+    "prerequisite": [
+      {
+        "level": 4,
+        "proficiency": [
+          {
+            "armor": "light"
+          }
+        ]
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "mounted-combatant",
+    "name": "Combatente montado",
+    "text": "Melhora ataques, proteção e salvaguardas da montaria nas condições do talento.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 205,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [0, 1, 4],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "musician",
+    "name": "Músico",
+    "text": "Três instrumentos; sua música após descansar pode conceder Inspiração Heroica.",
+    "category": "O",
+    "source": "XPHB",
+    "page": 201,
+    "prerequisite": [],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "observant",
+    "name": "Observador",
+    "text": "Treinamento ou especialização em uma perícia de observação e Procurar como ação bônus.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 205,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "int": 13
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "ability": [
+          {
+            "wis": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [3, 4],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "piercer",
+    "name": "Perfurador",
+    "text": "Permite repetir um dado de dano perfurante e acrescenta dado no crítico.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 206,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "poisoner",
+    "name": "Envenenador",
+    "text": "Criação e aplicação rápida de veneno; ignora resistência a dano venenoso.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 206,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [1, 3],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "polearm-master",
+    "name": "Mestre de armas de haste",
+    "text": "Ataque bônus e reação quando uma criatura entra no alcance de arma elegível.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 206,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "str": 13
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "ability": [
+          {
+            "dex": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [1, 0],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "protection",
+    "name": "Proteção",
+    "text": "Reação com escudo para impor desvantagem a ataques contra um aliado próximo.",
+    "category": "FS",
+    "source": "XPHB",
+    "page": 209,
+    "prerequisite": [
+      {
+        "feature": ["Fighting Style"]
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "resilient",
+    "name": "Resiliente",
+    "text": "Aumenta um atributo sem proficiência em salvaguarda e concede proficiência nessa salvaguarda.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 206,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "ritual-caster",
+    "name": "Conjurador de rituais",
+    "text": "Aprende rituais de nível 1 e permite um ritual rápido por descanso longo.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 206,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "int": 13
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "ability": [
+          {
+            "wis": 13
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "ability": [
+          {
+            "cha": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [3, 4, 5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "savage-attacker",
+    "name": "Atacante Selvagem",
+    "text": "Uma vez por turno, rola duas vezes os dados de dano de uma arma e escolhe um resultado.",
+    "category": "O",
+    "source": "XPHB",
+    "page": 201,
+    "prerequisite": [],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "sentinel",
+    "name": "Sentinela",
+    "text": "Reações e ataques de oportunidade aprimorados; pode interromper o movimento do alvo.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 207,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "str": 13
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "ability": [
+          {
+            "dex": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "shadow-touched",
+    "name": "Tocado pelas sombras",
+    "text": "Invisibilidade e uma magia de nível 1 de Ilusão ou Necromancia; usos conforme o talento.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 207,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [3, 4, 5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "sharpshooter",
+    "name": "Atirador de elite",
+    "text": "Melhora ataques próximos e de longo alcance; ignora cobertura parcial com armas à distância.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 207,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "dex": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "shield-master",
+    "name": "Mestre de escudo",
+    "text": "Golpe de escudo e proteção contra efeitos que exigem salvaguarda de Destreza.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 207,
+    "prerequisite": [
+      {
+        "level": 4,
+        "proficiency": [
+          {
+            "armor": "shield"
+          }
+        ]
+      }
+    ],
+    "abilities": [0],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "skill-expert",
+    "name": "Especialista em perícia",
+    "text": "Uma proficiência em perícia e uma especialização.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 207,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [0, 1, 2, 3, 4, 5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "skilled",
+    "name": "Habilidoso",
+    "text": "Três proficiências novas em perícias ou ferramentas.",
+    "category": "O",
+    "source": "XPHB",
+    "page": 201,
+    "prerequisite": [],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": true
+  },
+  {
+    "id": "skulker",
+    "name": "Espreitador",
+    "text": "Visão às cegas curta e benefícios para furtividade em combate.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 208,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "dex": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "slasher",
+    "name": "Cortador",
+    "text": "Reduz deslocamento ao causar dano cortante e prejudica ataques do alvo após crítico.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 208,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "speedy",
+    "name": "Veloz",
+    "text": "Aumenta deslocamento em 3 metros e melhora Disparada e defesa contra ataques de oportunidade.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 208,
+    "prerequisite": [
+      {
+        "level": 4,
+        "ability": [
+          {
+            "dex": 13
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "ability": [
+          {
+            "con": 13
+          }
+        ]
+      }
+    ],
+    "abilities": [1, 2],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "spell-sniper",
+    "name": "Atirador de magias",
+    "text": "Melhora alcance, cobertura e ataques mágicos contra alvos próximos.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 208,
+    "prerequisite": [
+      {
+        "level": 4,
+        "spellcasting2020": true
+      }
+    ],
+    "abilities": [3, 4, 5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "tavern-brawler",
+    "name": "Brigão de Taverna",
+    "text": "Melhora ataques desarmados, armas improvisadas e empurrões.",
+    "category": "O",
+    "source": "XPHB",
+    "page": 202,
+    "prerequisite": [],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "telekinetic",
+    "name": "Telecinético",
+    "text": "Mãos Mágicas aprimorada e empurrão telecinético por ação bônus.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 208,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [3, 4, 5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "telepathic",
+    "name": "Telepático",
+    "text": "Comunicação telepática e Detectar Pensamentos conforme os usos do talento.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 208,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [3, 4, 5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "thrown-weapon-fighting",
+    "name": "Combate com armas de arremesso",
+    "text": "Recebe +2 no dano de ataques à distância com armas de Arremesso.",
+    "category": "FS",
+    "source": "XPHB",
+    "page": 210,
+    "prerequisite": [
+      {
+        "feature": ["Fighting Style"]
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "tough",
+    "name": "Robusto",
+    "text": "Aumenta o máximo de PV em 2 por nível do personagem.",
+    "category": "O",
+    "source": "XPHB",
+    "page": 202,
+    "prerequisite": [],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "two-weapon-fighting",
+    "name": "Combate com duas armas",
+    "text": "Adiciona o modificador do atributo ao dano do ataque extra de arma Leve.",
+    "category": "FS",
+    "source": "XPHB",
+    "page": 210,
+    "prerequisite": [
+      {
+        "feature": ["Fighting Style"]
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "unarmed-fighting",
+    "name": "Combate desarmado",
+    "text": "Melhora o dado do golpe desarmado e causa dano a uma criatura agarrada no início do turno.",
+    "category": "FS",
+    "source": "XPHB",
+    "page": 210,
+    "prerequisite": [
+      {
+        "feature": ["Fighting Style"]
+      }
+    ],
+    "abilities": [],
+    "boost": 0,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "war-caster",
+    "name": "Conjurador de guerra",
+    "text": "Melhora concentração, componentes somáticos e reações de magia.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 209,
+    "prerequisite": [
+      {
+        "level": 4,
+        "spellcasting2020": true
+      }
+    ],
+    "abilities": [3, 4, 5],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  },
+  {
+    "id": "weapon-master",
+    "name": "Mestre de armas",
+    "text": "Uma maestria de arma adicional, com troca após descanso longo.",
+    "category": "G",
+    "source": "XPHB",
+    "page": 209,
+    "prerequisite": [
+      {
+        "level": 4
+      }
+    ],
+    "abilities": [0, 1],
+    "boost": 1,
+    "maximum": 20,
+    "repeatable": false
+  }
+]

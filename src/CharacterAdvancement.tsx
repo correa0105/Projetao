@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { ArrowUp, BookOpen, Check, Search, Shield } from 'lucide-react';
 import { classes, statNames, modifier } from '../shared/rules';
-import { spells, type SheetResponse } from '../shared/character-sheet';
+import { spells, feats, type SheetResponse } from '../shared/character-sheet';
 import {
   classProfile,
   defaultAdvanceChoice,
@@ -118,9 +118,7 @@ export function CharacterAdvancement({
   onSaved: (r: SheetResponse) => Promise<void>;
 }) {
   const [open, setOpen] = useState(false);
-  const [choice, setChoice] = useState<AdvanceChoice>(() =>
-    defaultAdvanceChoice(character.class),
-  );
+  const [choice, setChoice] = useState<AdvanceChoice>(() => defaultAdvanceChoice(character.class));
   const [busy, setBusy] = useState(false),
     [error, setError] = useState('');
   const requestId = useRef(crypto.randomUUID());
@@ -135,6 +133,8 @@ export function CharacterAdvancement({
     setChoice((v) => {
       const next = { ...v, ...patch };
       if (patch.class && patch.class !== v.class) {
+        next.feat = undefined;
+        next.boosts = [0, 0, 0, 0, 0, 0];
         next.retrain = undefined;
         next.newCantrips = [];
         next.newSpells = [];
@@ -188,13 +188,20 @@ export function CharacterAdvancement({
     }
   }
   const target = grant ? character.level + 1 : character.level - d.pendingLevels + 1;
+  const boostSpent = choice.boosts.reduce((sum, value) => sum + value, 0);
+  const boostBudget = choice.feat ? (plan.feats.selected?.boost ?? 0) : 2;
   const changedCon =
     modifier(advancementStats(character, choice, plan.level)[2]) - modifier(character.stats[2]);
-  const draconic = d.classLevels.find(
-    (s) => s.class === 'Feiticeiro' && s.subclass === 'draconic',
-  );
+  const draconic = d.classLevels.find((s) => s.class === 'Feiticeiro' && s.subclass === 'draconic');
   const hpGain =
     plan.hpGain +
+    (feats(s.choices!).includes('Robusto') ||
+    s.choices!.advancement?.levels.some((r) => r.feat === 'tough')
+      ? 2
+      : choice.feat === 'tough'
+        ? 2 * target
+        : 0) +
+    (choice.feat === 'boon-of-fortitude' ? 40 : 0) +
     changedCon * (grant ? character.level + 1 : character.level) +
     (choice.class === 'Feiticeiro'
       ? draconic
@@ -218,10 +225,7 @@ export function CharacterAdvancement({
           {d.pendingLevels > 0 && (
             <p className="advancement-pending">
               {d.pendingLevels}{' '}
-              {d.pendingLevels === 1
-                ? 'nível aguardando escolhas'
-                : 'níveis aguardando escolhas'}
-              .
+              {d.pendingLevels === 1 ? 'nível aguardando escolhas' : 'níveis aguardando escolhas'}.
             </p>
           )}
         </div>
@@ -280,9 +284,7 @@ export function CharacterAdvancement({
                   return (
                     <option key={cls} value={cls} disabled={!!reason}>
                       {cls} —{' '}
-                      {previous
-                        ? `nível ${previous.level + 1}`
-                        : reason || 'iniciar multiclasse'}
+                      {previous ? `nível ${previous.level + 1}` : reason || 'iniciar multiclasse'}
                     </option>
                   );
                 })}
@@ -301,9 +303,7 @@ export function CharacterAdvancement({
               </span>
               <span>
                 <b>
-                  {plan.profile.maxSpell
-                    ? `Círculo ${plan.profile.maxSpell}`
-                    : 'Sem conjuração'}
+                  {plan.profile.maxSpell ? `Círculo ${plan.profile.maxSpell}` : 'Sem conjuração'}
                 </b>
                 <small>Magias desta classe</small>
               </span>
@@ -350,8 +350,7 @@ export function CharacterAdvancement({
                     ))}
                   </select>
                   <small>
-                    {plan.subclasses.length} subclasses · regras de 2024 e suplementos
-                    compatíveis.
+                    {plan.subclasses.length} subclasses · regras de 2024 e suplementos compatíveis.
                   </small>
                   {choice.subclass && (
                     <p>
@@ -368,10 +367,64 @@ export function CharacterAdvancement({
               )}
               {plan.asi && (
                 <fieldset className="advancement-attributes">
-                  <legend>Melhoria de atributos · distribuir 2 pontos</legend>
+                  <legend>
+                    Atributos ou talento · {choice.class}, nível {plan.level}
+                  </legend>
+                  <label>
+                    Escolha deste nível
+                    <select
+                      aria-label="Atributos ou talento"
+                      value={choice.feat || 'attributes'}
+                      onChange={(e) =>
+                        update({
+                          feat: e.target.value === 'attributes' ? undefined : e.target.value,
+                          boosts: [0, 0, 0, 0, 0, 0],
+                          choices: Object.fromEntries(
+                            Object.entries(choice.choices).filter(([k]) => !k.startsWith('feat')),
+                          ),
+                        })
+                      }
+                    >
+                      <option value="attributes">Melhoria de atributos (+2 ou dois +1)</option>
+                      {(['O', 'G', 'FS', 'EB'] as const).map((category) => (
+                        <optgroup
+                          key={category}
+                          label={
+                            {
+                              O: 'Talentos de origem',
+                              G: 'Talentos gerais',
+                              FS: 'Estilos de luta',
+                              EB: 'Dádivas épicas',
+                            }[category]
+                          }
+                        >
+                          {plan.feats.allowed
+                            .filter((f) => f.category === category)
+                            .map((f) => (
+                              <option key={f.id} value={f.id}>
+                                {f.name}
+                              </option>
+                            ))}
+                        </optgroup>
+                      ))}
+                    </select>
+                  </label>
+                  {plan.feats.selected && (
+                    <p>
+                      <strong>{plan.feats.selected.name}</strong>: {plan.feats.selected.text}
+                      <small>
+                        Talento concedido por {choice.class} no nível {plan.level} · Livro do
+                        Jogador 2024, p. {plan.feats.selected.page}.
+                      </small>
+                    </p>
+                  )}
                   <p>
-                    O limite desta melhoria é 20. A Constituição recalcula os PV dos níveis
-                    anteriores.
+                    {boostBudget - boostSpent} de {boostBudget} pontos disponíveis.{' '}
+                    {choice.feat
+                      ? 'Use somente o atributo permitido pelo talento.'
+                      : 'Escolha +2 em um atributo ou +1 em dois.'}
+                    O limite desta melhoria é {plan.feats.selected?.maximum ?? 20}. A Constituição
+                    recalcula os PV dos níveis anteriores.
                   </p>
                   <div>
                     {statNames.map((name, i) => (
@@ -388,13 +441,21 @@ export function CharacterAdvancement({
                             })
                           }
                         >
-                          {[0, 1, 2]
-                            .filter((n) => n === 0 || character.stats[i] + n <= 20)
-                            .map((n) => (
-                              <option key={n} value={n}>
-                                {character.stats[i]} → {character.stats[i] + n} (+{n})
-                              </option>
-                            ))}
+                          {[0, 1, 2].map((n) => (
+                            <option
+                              key={n}
+                              value={n}
+                              disabled={
+                                n > 0 &&
+                                (character.stats[i] + n > (plan.feats.selected?.maximum ?? 20) ||
+                                  boostSpent - choice.boosts[i] + n > boostBudget ||
+                                  (!!choice.feat &&
+                                    (!plan.feats.selected?.abilities.includes(i) || n > 1)))
+                              }
+                            >
+                              {character.stats[i]} → {character.stats[i] + n} (+{n})
+                            </option>
+                          ))}
                         </select>
                       </label>
                     ))}

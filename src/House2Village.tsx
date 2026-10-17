@@ -227,6 +227,7 @@ export function House2VillageRoofs({
                       instance={p.id}
                       preview={preview}
                       fade={!preview && house2RoofOccluded(p, actors)}
+                      finishes={p.finishes}
                       width={roofWidth}
                       height={roofHeight}
                     />

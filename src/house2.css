@@ -1048,3 +1048,80 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+.h2-light-wave {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: h2-light-breathe var(--light-period, 3s) ease-in-out var(--light-delay, 0s) infinite
+    alternate;
+}
+.h2-item-unlit > image {
+  filter: grayscale(0.8) brightness(0.72);
+}
+.h2-flame-core {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: h2-flame-flicker 1.1s ease-in-out infinite alternate;
+}
+@keyframes h2-light-breathe {
+  0% {
+    opacity: 0.82;
+    transform: scale(0.965);
+  }
+  35% {
+    opacity: 0.96;
+    transform: scale(1);
+  }
+  68% {
+    opacity: 0.87;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.025);
+  }
+}
+@keyframes h2-flame-flicker {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.9) rotate(-7deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.08) rotate(6deg);
+  }
+}
+.h2-finishes-shop {
+  border-bottom: 1px solid #c7ab6b44;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.h2-finish-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 12px 0;
+}
+.h2-finish-tabs button {
+  flex: 1;
+}
+.h2-finish-tabs button[aria-pressed='true'] {
+  border-color: #d9ba79;
+  background: #564729;
+}
+.h2-finishes-catalog button {
+  min-height: 125px;
+}
+.h2-finishes-catalog img {
+  height: 86px;
+  object-fit: contain;
+}
+.h2-world-meta .music-controls {
+  position: relative;
+  z-index: 40;
+  pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .h2-light-wave,
+  .h2-flame-core {
+    animation: none;
+  }
+}

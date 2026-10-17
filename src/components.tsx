@@ -384,8 +384,8 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
         seis atributos. Regras de nível 1 do SRD 5.2.1 (2024).
       </p>
       <p className="muted small">
-        Até dois personagens por conta. Sua imagem de corpo inteiro é obrigatória; o personagem
-        chega ao acampamento quando ela estiver pronta.
+        Sua imagem de corpo inteiro é obrigatória; o personagem chega ao acampamento quando ela
+        estiver pronta.
       </p>
       <p
         className="muted small"

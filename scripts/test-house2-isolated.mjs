@@ -15,7 +15,14 @@ try {
       ? ['--import', 'tsx', '--test', 'tests/house-v2-village.test.ts']
       : process.argv.includes('--browser')
         ? ['--import', 'tsx', 'scripts/smoke-house2.ts']
-        : ['--import', 'tsx', '--test', 'tests/house-v2.test.ts'];
+        : [
+            '--import',
+            'tsx',
+            '--test',
+            '--test-concurrency=1',
+            'tests/house-v2.test.ts',
+            'tests/house2-light-vision.test.ts',
+          ];
     const child = spawn(process.execPath, args, {
       env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
       stdio: 'inherit',

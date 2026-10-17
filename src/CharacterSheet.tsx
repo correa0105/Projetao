@@ -48,17 +48,19 @@ import { ItemThumbnail } from './ItemThumbnail';
 import { AttributeDice } from './AttributeDice';
 import { CharacterAdvancement } from './CharacterAdvancement';
 import { SheetMagic } from './SheetMagic';
+import { SheetClassChoices } from './SheetClassChoices';
 import './character-sheet.css';
 import './character-parchment.css';
 const signed = (v: number) => `${v >= 0 ? '+' : ''}${v}`;
 const spellName = (id: string) => spells.find((s) => s.id === id)?.label || id;
-function FeatureCard({ text }: { text: string }) {
+function FeatureCard({ text, source }: { text: string; source?: string }) {
   const separator = text.indexOf(':');
   return (
     <li>
       <Sparkles size={17} aria-hidden="true" />
       <div>
         <strong>{separator < 0 ? text : text.slice(0, separator)}</strong>
+        {source && <small className="sheet-feature-source">{source}</small>}
         {separator >= 0 && <p>{text.slice(separator + 1).trim()}</p>}
       </div>
     </li>
@@ -160,7 +162,28 @@ export function CharacterSheet({
         void api<SheetResponse>(`/characters/${c.id}/sheet`)
           .then((r) => {
             if (live)
-              setData((previous) => (previous ? { ...previous, attacks: r.attacks } : previous));
+              setData((previous) =>
+                previous
+                  ? {
+                      ...previous,
+                      attacks: r.attacks,
+                      equipped: r.equipped,
+                      startingEquipment: r.startingEquipment,
+                      capabilities: r.capabilities,
+                      sheet:
+                        previous.sheet && r.sheet
+                          ? {
+                              ...previous.sheet,
+                              current_hp: r.sheet.current_hp,
+                              temp_hp: r.sheet.temp_hp,
+                              hit_dice_used: r.sheet.hit_dice_used,
+                              death_success: r.sheet.death_success,
+                              death_failure: r.sheet.death_failure,
+                            }
+                          : previous.sheet,
+                    }
+                  : previous,
+              );
           })
           .catch(() => {});
     };
@@ -204,7 +227,19 @@ export function CharacterSheet({
   const change = (v: Partial<SheetRecord>) =>
     setDraft((current) => (current ? { ...current, ...v } : current));
   function saveState() {
-    if (draft) void action('state', draft);
+    if (draft) {
+      const body: Record<string, unknown> = { ...draft };
+      if (!data?.capabilities?.can_manage_resources)
+        for (const key of [
+          'current_hp',
+          'temp_hp',
+          'hit_dice_used',
+          'death_success',
+          'death_failure',
+        ])
+          delete body[key];
+      void action('state', body);
+    }
   }
   const armorNote = d?.equipment.some((x) => x === 'Escudo' || x === 'Escudo de madeira')
     ? 'CA com escudo; armas de duas mãos exigem guardá-lo.'
@@ -596,14 +631,24 @@ export function CharacterSheet({
                       {f.label}
                       <input
                         type="number"
+                        readOnly={!data?.capabilities?.can_manage_resources}
                         min={0}
                         max={f.max}
-                        value={draft[f.key] ?? 0}
+                        value={
+                          (data?.capabilities?.can_manage_resources ? draft[f.key] : s?.[f.key]) ??
+                          0
+                        }
                         onChange={(e) => change({ [f.key]: Number(e.target.value) })}
                       />
                     </label>
                   ))}
                 </div>
+                {!data?.capabilities?.can_manage_resources && (
+                  <p className="muted small">
+                    Valores registrados pelo jogo e pelo administrador. PV temporários não se
+                    acumulam; a concessão e a recuperação seguem a fonte do efeito.
+                  </p>
+                )}
                 <label className="sheet-inspiration">
                   <input
                     type="checkbox"
@@ -615,6 +660,15 @@ export function CharacterSheet({
                 <button className="button primary" disabled={busy} onClick={saveState}>
                   Salvar recursos
                 </button>
+                {data?.capabilities?.can_manage_resources && (
+                  <button
+                    className="button outline"
+                    disabled={busy}
+                    onClick={() => void action('long-rest', {}, true)}
+                  >
+                    Aplicar descanso longo (ADM)
+                  </button>
+                )}
                 <h3>
                   Ataques com armas equipadas
                   <SheetHelp label="Ataques com armas equipadas">
@@ -693,31 +747,47 @@ export function CharacterSheet({
                     {8 + modifier(c.stats[2]) + d.proficiency}.
                   </p>
                 )}
-                <h3>Traços e recursos</h3>
-                <ul className="sheet-features">
-                  {d.features.map((v, i) => (
-                    <FeatureCard key={i} text={v} />
-                  ))}
-                  {Object.entries(choices.options)
-                    .filter(([key]) => ['style', 'enemy', 'terrain', 'dragon'].includes(key))
-                    .map(([key, v]) => (
-                      <FeatureCard
-                        key={key}
-                        text={
-                          (
-                            {
-                              style: 'Estilo de luta',
-                              enemy: 'Inimigo favorito',
-                              terrain: 'Terreno favorito',
-                              dragon: 'Ancestralidade dracônica',
-                            } as Record<string, string>
-                          )[key] +
-                          ': ' +
-                          v.join(', ')
+                {(['class', 'feat', 'race', 'background'] as const).map((category) => {
+                  const entries = d.featureEntries.filter((f) => f.category === category);
+                  if (!entries.length) return null;
+                  return (
+                    <section
+                      className="sheet-feature-section"
+                      key={category}
+                      aria-label={
+                        {
+                          class: 'Classe',
+                          feat: 'Talento',
+                          race: 'Espécie',
+                          background: 'Antecedente',
+                        }[category]
+                      }
+                    >
+                      <h3>
+                        {
+                          {
+                            class: 'Classe',
+                            feat: 'Talento',
+                            race: 'Espécie',
+                            background: 'Antecedente',
+                          }[category]
                         }
-                      />
-                    ))}
-                </ul>
+                      </h3>
+                      {category === 'class' && (
+                        <SheetClassChoices key={c.id} id={c.id} data={data!} saved={receive} />
+                      )}
+                      <ul className="sheet-features">
+                        {entries.map((f) => (
+                          <FeatureCard
+                            key={f.id}
+                            text={f.title + ': ' + f.description}
+                            source={f.source}
+                          />
+                        ))}
+                      </ul>
+                    </section>
+                  );
+                })}
               </>
             )}
             {tab === 'Magias' && (
@@ -827,22 +897,34 @@ export function CharacterSheet({
                         .filter(Boolean)
                         .join(' · ')}
                     </p>
-                    {(['appearance', 'personality', 'ideals', 'bonds', 'flaws'] as const).map(
-                      (key, i) => (
-                        <div key={key}>
-                          <h4>
-                            {['Aparência', 'Personalidade', 'Ideais', 'Vínculos', 'Defeitos'][i]}
-                          </h4>
-                          <p>{choices[key] || 'Não informado.'}</p>
-                        </div>
-                      ),
-                    )}
+                    <dl className="sheet-identity-grid">
+                      {(['appearance', 'personality', 'ideals', 'bonds', 'flaws'] as const).map(
+                        (key, i) => (
+                          <div key={key}>
+                            <dt>
+                              {['Aparência', 'Personalidade', 'Ideais', 'Vínculos', 'Defeitos'][i]}
+                            </dt>
+                            <dd>{choices[key] || '—'}</dd>
+                          </div>
+                        ),
+                      )}
+                    </dl>
                     <h3>História</h3>
                     <p className="biography">
                       {c.biography || 'Sua história ainda está sendo escrita.'}
                     </p>
                   </div>
                   <div hidden={tab !== 'Equipamento'}>
+                    <h3>Equipamento em uso</h3>
+                    {data?.equipped?.length ? (
+                      <ul className="sheet-equipment-grid">
+                        {data.equipped.map((item) => (
+                          <EquipmentCard key={item.id} name={item.name} image={item.image_path} />
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="muted small">Nenhum item da loja equipado.</p>
+                    )}
                     <h3>
                       Equipamento inicial
                       <SheetHelp label="Equipamento inicial">
@@ -852,7 +934,14 @@ export function CharacterSheet({
                     </h3>
                     <ul className="sheet-equipment-grid">
                       {d.equipment.map((v, i) => (
-                        <EquipmentCard key={i} name={v} />
+                        <EquipmentCard
+                          key={i}
+                          name={v}
+                          image={
+                            data?.startingEquipment?.find((e) => e.name === v)?.image_path ||
+                            details?.inventory.find((e) => e.name === v)?.image_path
+                          }
+                        />
                       ))}
                     </ul>
                     <h3>Inventário adquirido</h3>

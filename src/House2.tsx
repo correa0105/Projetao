@@ -37,6 +37,11 @@ import { Modal } from './components';
 import { House2Village, House2VillageRoofs } from './House2Village';
 import { boundHouse2Camera, initialHouse2Camera, type House2Camera } from './house2-camera';
 import { House2Lighting } from './House2Lighting';
+import { House2ItemLights } from './House2ItemLights';
+import { useHouse2ItemSounds } from './House2ItemSounds';
+import { house2LightItems } from '../shared/house2-items-lighting';
+import { MusicControls } from './SiteMusic';
+import { House2FinishesShop } from './House2FinishesShop';
 import { House2Interior, house2CutawayImage } from './House2Interior';
 import { house2Architecture } from './house2-architecture';
 import { house2DayPhases } from '../shared/house2-lighting';
@@ -192,6 +197,7 @@ export function House2({ character, user }: { character?: Character; user: User 
       ? [
           ...(scene?.items.filter((i) => i.plot_id !== plot.id) || []),
           ...draft.items.map((i) => ({
+            ...directory?.inventory.find((o) => o.id === i.id),
             ...i,
             plot_id: plot.id,
             catalog_id: directory?.inventory.find((o) => o.id === i.id)?.catalog_id || '',
@@ -707,6 +713,29 @@ export function House2({ character, user }: { character?: Character; user: User 
     ...p,
     door_open: actors.doors[p.id] ?? p.door_open,
   }));
+  async function toggleItemLight(item: House2Item) {
+    if (busy) return;
+    setBusy(true);
+    try {
+      const light = await post<{ light_on: boolean; light_revision: number }>(
+        `/house-v2/items/${item.id}/light`,
+        { on: !item.light_on, revision: item.light_revision ?? 0 },
+      );
+      setDirectory((d) =>
+        d
+          ? { ...d, inventory: d.inventory.map((i) => (i.id === item.id ? { ...i, ...light } : i)) }
+          : d,
+      );
+      setScene((s) =>
+        s ? { ...s, items: s.items.map((i) => (i.id === item.id ? { ...i, ...light } : i)) } : s,
+      );
+    } catch (e) {
+      setNotice((e as Error).message);
+      await reload(sceneId, true);
+    } finally {
+      setBusy(false);
+    }
+  }
   const editingInterior =
     canEdit &&
     plot &&
@@ -721,6 +750,14 @@ export function House2({ character, user }: { character?: Character; user: User 
   const visibleInterior =
     editingInterior ?? (actors.viewer ? (occupiedInterior?.id ?? null) : interior);
   const visionPlot = editingInterior ? null : occupiedInterior;
+  useHouse2ItemSounds(
+    shownItems,
+    actorPlots,
+    visibleInterior,
+    actors.viewer ?? boundedCamera,
+    sceneId,
+    !!occupiedInterior,
+  );
   const borderItem =
     canEdit && !busy && tool !== 'ground'
       ? shownItems.find((i) => i.id === selectedPiece && i.plot_id === selected)
@@ -744,6 +781,15 @@ export function House2({ character, user }: { character?: Character; user: User 
       </label>
       {selectedPiece !== 'house' && (
         <div className="h2-item-size">
+          {borderItem && house2LightItems[borderItem.catalog_id] && (
+            <button
+              disabled={busy}
+              aria-pressed={!!borderItem.light_on}
+              onClick={() => void toggleItemLight(borderItem)}
+            >
+              {borderItem.light_on ? 'Apagar luz' : 'Acender luz'}
+            </button>
+          )}
           <div className="h2-item-rotation" role="group" aria-label="Rotação do objeto">
             <span>
               Rotação{' '}
@@ -1121,6 +1167,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                 <House2Interior
                   id={spec.id}
                   instance={p.id}
+                  finishes={p.finishes}
                   doorOpen={actors.doors[p.id] ?? p.door_open ?? false}
                   width={spec.width}
                   height={spec.height}
@@ -1139,7 +1186,10 @@ export function House2({ character, user }: { character?: Character; user: User 
                 data-house2-plot={item.plot_id!}
                 data-house2-piece={editable ? item.id : undefined}
                 transform={`translate(${item.x} ${item.y}) rotate(${item.rotation})`}
-                className={editable ? 'h2-editable' : ''}
+                className={
+                  (editable ? 'h2-editable ' : '') +
+                  (house2LightItems[item.catalog_id] && !item.light_on ? 'h2-item-unlit' : '')
+                }
               >
                 <title>{spec.name}</title>
                 <image
@@ -1195,15 +1245,12 @@ export function House2({ character, user }: { character?: Character; user: User 
             setSelectedPiece(null);
           }}
         />
-        <rect
-          data-house2-day-phase={dayPhase}
-          x={house2World.x}
-          y={house2World.y}
-          width={200}
-          height={200}
-          fill={house2DayPhases[dayPhase].tint}
-          opacity={house2DayPhases[dayPhase].tintOpacity}
-          pointerEvents="none"
+        <House2ItemLights
+          items={shownItems}
+          plots={actorPlots}
+          interior={visibleInterior}
+          phase={dayPhase}
+          view={view}
         />
         <House2IndoorVision plot={visionPlot} />
         <House2Doors
@@ -1286,6 +1333,7 @@ export function House2({ character, user }: { character?: Character; user: User 
             disabled={busy || !scene}
             notice={setNotice}
           />
+          <MusicControls />
         </div>
       </header>
       <div className="h2-unified" ref={menuRef}>
@@ -1632,6 +1680,17 @@ export function House2({ character, user }: { character?: Character; user: User 
                 )}
                 {canEdit && tool === 'shop' && (
                   <>
+                    {plot && directory && (
+                      <House2FinishesShop
+                        plot={plot}
+                        character={character}
+                        owned={directory.finishes ?? []}
+                        balance={directory.balance}
+                        disabled={busy || !!draft}
+                        refresh={() => reload(sceneId, true)}
+                        notice={setNotice}
+                      />
+                    )}
                     <p>
                       {house2Furniture.length} peças para interiores, jardins e cidade. A compra
                       entra na sua coleção de teste.

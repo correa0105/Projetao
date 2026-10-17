@@ -15,6 +15,7 @@ import {
   advancementStats,
   magicClasses,
   combinedSlots,
+  classStates,
   type AdvancementState,
 } from '../shared/character-advancement.js';
 import {
@@ -27,6 +28,9 @@ import {
   spellOptions,
   type SheetRecord,
 } from '../shared/character-sheet.js';
+import { fightingStyles } from '../shared/fighting-styles.js';
+import { MISSION_THRESHOLDS } from '../shared/progression.js';
+import { modifier } from '../shared/rules.js';
 
 async function owned(client: Pick<PoolClient, 'query'>, id: string, userId: string, lock = false) {
   const {
@@ -53,18 +57,56 @@ async function result(id: string, user: string) {
   const {
     rows: [sheet],
   } = await pool.query('SELECT * FROM character_sheets WHERE character_id=$1', [id]);
-  const { attacks } = await readCharacterLoadout(pool, c, sheet?.choices);
+  const { attacks, inventory } = await readCharacterLoadout(pool, c, sheet?.choices);
   const normalized = sheet?.choices
     ? {
         ...sheet,
         choices: seedAdvancement(c.class, sheet.choices, sheet.prepared, sheet.slots_used),
       }
     : sheet;
+  const derived = normalized?.finalized_at ? deriveSheet(c, normalized.choices) : null;
+  const aliases: Record<string, string> = {
+    'Duas adagas': 'Adaga',
+    'Cinco adagas': 'Adaga',
+    'Oito azagaias': 'Azagaia',
+    'Seis azagaias': 'Azagaia',
+    'Quatro machadinhas': 'Machadinha',
+    'Espada grande': 'Espada grande',
+    Vestes: 'Roupas comuns',
+  };
+  const names = [
+    ...new Set(
+      (derived?.equipment || [])
+        .flatMap((v) => [v, aliases[v] || v])
+        .map((v) => v.toLocaleLowerCase('pt-BR')),
+    ),
+  ];
+  const art = names.length
+    ? (
+        await pool.query(
+          'SELECT name,image_path FROM catalog_items WHERE image_path IS NOT NULL AND lower(name)=ANY($1::text[]) ORDER BY active DESC,id',
+          [names],
+        )
+      ).rows
+    : [];
+  const administrator = await isAdministrator(user);
   return {
     attacks,
+    equipped: inventory
+      .filter((i) => i.equipped?.length)
+      .map((i) => ({ id: i.id, name: i.name, image_path: i.image_path, slots: i.equipped })),
+    startingEquipment: (derived?.equipment || []).map((name) => ({
+      name,
+      image_path:
+        art.find(
+          (i) =>
+            i.name.toLocaleLowerCase('pt-BR') ===
+            (aliases[name] || name).toLocaleLowerCase('pt-BR'),
+        )?.image_path || null,
+    })),
     sheet: normalized || null,
-    derived: normalized?.finalized_at ? deriveSheet(c, normalized.choices) : null,
-    capabilities: { can_grant_level: await isAdministrator(user) },
+    derived,
+    capabilities: { can_grant_level: administrator, can_manage_resources: administrator },
   };
 }
 function seedAdvancement(
@@ -91,6 +133,60 @@ export function characterSheetRouter() {
   router.get('/characters/:id/sheet', async (req, res) =>
     res.json(await result(z.string().uuid().parse(req.params.id), res.locals.user.id)),
   );
+  router.post('/characters/:id/sheet/fighting-style', async (req, res) => {
+    const id = z.string().uuid().parse(req.params.id),
+      user = res.locals.user.id,
+      body = z
+        .object({
+          classLevel: z.number().int().min(1).max(20),
+          from: z.enum(fightingStyles as [string, ...string[]]),
+          to: z.enum(fightingStyles as [string, ...string[]]),
+          requestId: z.string().uuid(),
+        })
+        .strict()
+        .parse(req.body);
+    await transaction(async (db) => {
+      const c = await owned(db, id, user, true),
+        {
+          rows: [s],
+        } = await db.query('SELECT * FROM character_sheets WHERE character_id=$1 FOR UPDATE', [id]);
+      if (!s?.finalized_at) throw new AppError(409, 'Conclua a ficha primeiro.');
+      const choices = seedAdvancement(c.class, s.choices, s.prepared, s.slots_used),
+        fighter = classStates(c, choices).find((v) => v.class === 'Guerreiro');
+      if (choices.advancement!.styleChanges?.some((r) => r.requestId === body.requestId)) return;
+      if (!fighter || fighter.level !== body.classLevel)
+        throw new AppError(409, 'O nível de Guerreiro mudou. Atualize a ficha.');
+      if (
+        choices.advancement!.styleChanges?.some((r) => r.classLevel === fighter.level) ||
+        choices.advancement!.levels.some(
+          (r) =>
+            r.class === 'Guerreiro' &&
+            r.classLevel === fighter.level &&
+            r.retrain?.some((v) => v.kind === 'style'),
+        )
+      )
+        throw new AppError(409, 'A troca de estilo deste nível de Guerreiro já foi usada.');
+      if (!fighter.choices.style?.includes(body.from) || fighter.choices.style.includes(body.to))
+        throw new AppError(400, 'Selecione um estilo atual e uma nova opção diferente.');
+      const next = {
+          ...choices,
+          advancement: {
+            ...choices.advancement!,
+            styleChanges: [
+              ...(choices.advancement!.styleChanges || []),
+              { ...body, createdAt: new Date().toISOString() },
+            ],
+          },
+        },
+        derived = deriveSheet(c, next);
+      await db.query(
+        'UPDATE character_sheets SET choices=$2,updated_at=now() WHERE character_id=$1',
+        [id, JSON.stringify(next)],
+      );
+      await db.query('UPDATE characters SET armor_class=$2 WHERE id=$1', [id, derived.armorClass]);
+    });
+    res.json(await result(id, user));
+  });
   router.post('/characters/:id/sheet/advance', async (req, res) => {
     const id = z.string().uuid().parse(req.params.id),
       user = res.locals.user.id;
@@ -173,8 +269,15 @@ export function characterSheetRouter() {
         [id, JSON.stringify(next), current],
       );
       await client.query(
-        'UPDATE characters SET level=$2,stats=$3,hp=$4,armor_class=$5 WHERE id=$1',
-        [id, newLevel, JSON.stringify(stats), derived.hp, derived.armorClass],
+        'UPDATE characters SET level=$2,stats=$3,hp=$4,armor_class=$5,progression_missions=GREATEST(progression_missions,$6) WHERE id=$1',
+        [
+          id,
+          newLevel,
+          JSON.stringify(stats),
+          derived.hp,
+          derived.armorClass,
+          body.grant ? MISSION_THRESHOLDS[newLevel - 1] : 0,
+        ],
       );
     });
     res.json(await result(id, user));
@@ -351,13 +454,13 @@ export function characterSheetRouter() {
       .object({
         prepared: z.array(z.string()).max(30),
         notes: z.string().max(8000),
-        current_hp: z.number().int().min(0),
-        temp_hp: z.number().int().min(0).max(999),
+        current_hp: z.number().int().min(0).optional(),
+        temp_hp: z.number().int().min(0).max(999).optional(),
         inspiration: z.boolean(),
-        death_success: z.number().int().min(0).max(3),
-        death_failure: z.number().int().min(0).max(3),
+        death_success: z.number().int().min(0).max(3).optional(),
+        death_failure: z.number().int().min(0).max(3).optional(),
         slots_used: z.number().int().min(0),
-        hit_dice_used: z.number().int().min(0),
+        hit_dice_used: z.number().int().min(0).optional(),
       })
       .parse(req.body);
     await transaction(async (client) => {
@@ -368,6 +471,23 @@ export function characterSheetRouter() {
       if (!s?.finalized_at) throw new AppError(409, 'Conclua a ficha primeiro.');
       const d = deriveSheet(c, s.choices),
         k = classRules[c.class];
+      if (
+        !(await isAdministrator(user, client)) &&
+        (
+          ['current_hp', 'temp_hp', 'hit_dice_used', 'death_success', 'death_failure'] as const
+        ).some((key) => body[key] !== undefined && body[key] !== s[key])
+      )
+        throw new AppError(
+          403,
+          'Os recursos da sessão são atualizados pelo jogo ou pelo administrador.',
+        );
+      const resources = {
+        current_hp: body.current_hp ?? s.current_hp ?? c.hp,
+        temp_hp: body.temp_hp ?? s.temp_hp,
+        hit_dice_used: body.hit_dice_used ?? s.hit_dice_used,
+        death_success: body.death_success ?? s.death_success,
+        death_failure: body.death_failure ?? s.death_failure,
+      };
       const primary = magicClasses(c, seedAdvancement(c.class, s.choices, s.prepared)).find(
         (m) => m.class === c.class,
       );
@@ -383,9 +503,9 @@ export function characterSheetRouter() {
         body.prepared.length > d.prepareCount ||
         new Set(body.prepared).size !== body.prepared.length ||
         body.prepared.some((x) => !allowed.includes(x)) ||
-        body.current_hp > c.hp ||
+        resources.current_hp > c.hp ||
         body.slots_used > d.slots ||
-        body.hit_dice_used > c.level
+        resources.hit_dice_used > c.level
       )
         throw new AppError(
           400,
@@ -397,13 +517,13 @@ export function characterSheetRouter() {
           id,
           JSON.stringify(body.prepared),
           body.notes,
-          body.current_hp,
-          body.temp_hp,
+          resources.current_hp,
+          resources.temp_hp,
           body.inspiration,
-          body.death_success,
-          body.death_failure,
+          resources.death_success,
+          resources.death_failure,
           body.slots_used,
-          body.hit_dice_used,
+          resources.hit_dice_used,
         ],
       );
       if (s.choices.advancement?.levels.length) {
@@ -452,6 +572,33 @@ export function characterSheetRouter() {
       await client.query(
         'UPDATE character_sheets SET choices=$2,updated_at=now() WHERE character_id=$1',
         [id, JSON.stringify(choices)],
+      );
+    });
+    res.json(await result(id, user));
+  });
+  router.post('/characters/:id/sheet/long-rest', async (req, res) => {
+    const user = res.locals.user.id,
+      id = z.string().uuid().parse(req.params.id);
+    await requireAdministrator(user);
+    await transaction(async (db) => {
+      const c = await owned(db, id, user, true),
+        {
+          rows: [s],
+        } = await db.query('SELECT * FROM character_sheets WHERE character_id=$1 FOR UPDATE', [id]);
+      if (!s?.finalized_at) throw new AppError(409, 'Conclua a ficha primeiro.');
+      const choices = seedAdvancement(c.class, s.choices, s.prepared, s.slots_used),
+        states = classStates(c, choices),
+        celestial = states.find(
+          (v) => v.class === 'Bruxo' && v.subclass === 'celestial' && v.level >= 10,
+        ),
+        temp = celestial ? Math.max(0, celestial.level + modifier(c.stats[5])) : 0;
+      const next = {
+        ...choices,
+        advancement: { ...choices.advancement!, slotsUsed: Array(9).fill(0), pactUsed: 0 },
+      };
+      await db.query(
+        'UPDATE character_sheets SET current_hp=$2,temp_hp=$3,hit_dice_used=0,death_success=0,death_failure=0,slots_used=0,choices=$4,updated_at=now() WHERE character_id=$1',
+        [id, c.hp, temp, JSON.stringify(next)],
       );
     });
     res.json(await result(id, user));

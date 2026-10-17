@@ -5,6 +5,8 @@ import medievalFurniture from './vtt-medieval-furniture-catalog.json';
 import { terrainTextureIds } from './vtt-terrain';
 import { vttVisualSource } from './vtt-asset-visuals';
 import { house2DefaultGrassImage } from './reference-grass';
+import { house2ExtraLightItems } from './house2-items-lighting';
+import type { House2Finishes } from './house2-finishes';
 
 export const house2Size = 200;
 export const house2Landscape = house2DefaultGrassImage;
@@ -35,11 +37,13 @@ export const house2Houses = houses
     interior: vttVisualSource(h.interior),
     price: 600 + Math.floor(i / 5) * 100,
   }));
-export const house2Furniture = [...furniture, ...medievalFurniture].map((f) => ({
-  ...f,
-  image: vttVisualSource(f.image),
-  price: Math.max(15, Math.round(f.width * f.height * 30)),
-}));
+export const house2Furniture = [...furniture, ...medievalFurniture, ...house2ExtraLightItems].map(
+  (f) => ({
+    ...f,
+    image: vttVisualSource(f.image),
+    price: Math.max(15, Math.round(f.width * f.height * 30)),
+  }),
+);
 export const house2Terrains = {
   earth: '/vtt/terrain-v3-20261013/earth.webp',
   grass: house2DefaultGrassImage,
@@ -55,6 +59,7 @@ export type House2Neighborhood = {
   owned: number;
 };
 export type House2Plot = {
+  finishes?: House2Finishes;
   ground?: House2GroundStroke[];
   id: string;
   neighborhood_id: string;
@@ -77,6 +82,8 @@ export type House2Plot = {
   village_slot: number | null;
 };
 export type House2Item = {
+  light_on?: boolean;
+  light_revision?: number;
   id: string;
   catalog_id: string;
   plot_id: string | null;
@@ -86,6 +93,7 @@ export type House2Item = {
   scale: number;
 };
 export type House2Directory = {
+  finishes?: string[];
   neighborhoods: House2Neighborhood[];
   balance: number;
   inventory: House2Item[];

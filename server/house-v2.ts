@@ -6,6 +6,8 @@ import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { requireAdministrator } from './administrators.js';
 import { house2TokensRouter } from './house2-tokens.js';
+import { house2LightItems } from '../shared/house2-items-lighting.js';
+import { house2FinishesCatalog } from '../shared/house2-finishes.js';
 import {
   house2StartingBalance,
   house2PlotPrice,
@@ -100,11 +102,17 @@ export function house2Router() {
         ?.balance ?? house2StartingBalance;
     const inventory = (
       await pool.query(
-        'SELECT id,catalog_id,plot_id,x,y,rotation,scale FROM house2_items WHERE user_id=$1 ORDER BY created_at,id',
+        'SELECT id,catalog_id,plot_id,x,y,rotation,scale,light_on,light_revision FROM house2_items WHERE user_id=$1 ORDER BY created_at,id',
         [user],
       )
     ).rows;
-    res.json({ neighborhoods: neighborhoods.rows, balance, inventory });
+    const finishes = (
+      await pool.query(
+        'SELECT catalog_id FROM house2_finish_ownership WHERE user_id=$1 ORDER BY catalog_id',
+        [user],
+      )
+    ).rows.map((r) => r.catalog_id);
+    res.json({ neighborhoods: neighborhoods.rows, balance, inventory, finishes });
   });
   router.post('/house-v2/neighborhoods', async (req, res) => {
     const b = z
@@ -155,11 +163,101 @@ export function house2Router() {
     ).rows;
     const items = (
       await pool.query(
-        'SELECT i.id,i.catalog_id,i.plot_id,i.x,i.y,i.rotation,i.scale FROM house2_items i JOIN house2_plots p ON p.id=i.plot_id WHERE p.neighborhood_id=$1 AND p.retired_at IS NULL ORDER BY i.created_at,i.id',
+        'SELECT i.id,i.catalog_id,i.plot_id,i.x,i.y,i.rotation,i.scale,i.light_on,i.light_revision FROM house2_items i JOIN house2_plots p ON p.id=i.plot_id WHERE p.neighborhood_id=$1 AND p.retired_at IS NULL ORDER BY i.created_at,i.id',
         [id],
       )
     ).rows;
     res.json({ neighborhood, plots, items });
+  });
+  router.post('/house-v2/items/:id/light', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      user = res.locals.user.id,
+      b = z
+        .object({ on: z.boolean(), revision: z.number().int().min(0) })
+        .strict()
+        .parse(req.body);
+    const result = await transaction(async (db) => {
+      const {
+        rows: [item],
+      } = await db.query('SELECT * FROM house2_items WHERE id=$1 AND user_id=$2 FOR UPDATE', [
+        id,
+        user,
+      ]);
+      if (!item) throw new AppError(404, 'Objeto não encontrado.');
+      if (!house2LightItems[item.catalog_id])
+        throw new AppError(400, 'Este objeto não possui iluminação.');
+      if (item.light_on === b.on)
+        return { light_on: item.light_on, light_revision: item.light_revision };
+      if (item.light_revision !== b.revision)
+        throw new AppError(409, 'A luz mudou em outra janela. Recarregue e tente novamente.');
+      return (
+        await db.query(
+          'UPDATE house2_items SET light_on=$2,light_revision=light_revision+1 WHERE id=$1 RETURNING light_on,light_revision',
+          [id, b.on],
+        )
+      ).rows[0];
+    });
+    res.json(result);
+  });
+  router.post('/house-v2/finishes', async (req, res) => {
+    const b = purchaseSchema
+        .extend({ catalog_id: z.string().max(80) })
+        .strict()
+        .parse(req.body),
+      user = res.locals.user.id,
+      spec = house2FinishesCatalog.find((f) => f.id === b.catalog_id);
+    if (!spec) throw new AppError(400, 'Escolha um revestimento da loja.');
+    res.json(
+      await purchase(user, b, 'finish', [b.character_id, b.catalog_id], async (db) => {
+        const old = await db.query(
+          'SELECT 1 FROM house2_finish_ownership WHERE user_id=$1 AND catalog_id=$2',
+          [user, spec.id],
+        );
+        if (old.rowCount) throw new AppError(409, 'Este revestimento já pertence à sua coleção.');
+        await db.query('INSERT INTO house2_finish_ownership(user_id,catalog_id)VALUES($1,$2)', [
+          user,
+          spec.id,
+        ]);
+        return { amount: spec.price, result: { catalog_id: spec.id } };
+      }),
+    );
+  });
+  router.post('/house-v2/plots/:id/finish', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      user = res.locals.user.id,
+      b = z
+        .object({
+          kind: z.enum(['roof', 'walls', 'floor']),
+          catalog_id: z.string().max(80).nullable(),
+          revision: z.number().int().min(0),
+        })
+        .strict()
+        .parse(req.body);
+    const result = await transaction(async (db) => {
+      const p = await editPlot(db, id, user);
+      if (!p.house_id) throw new AppError(409, 'Compre uma casa antes de aplicar revestimentos.');
+      if (p.revision !== b.revision)
+        throw new AppError(409, 'O terreno mudou em outra janela. Recarregue antes de aplicar.');
+      if (b.catalog_id) {
+        const spec = house2FinishesCatalog.find((f) => f.id === b.catalog_id && f.kind === b.kind),
+          owned = await db.query(
+            'SELECT 1 FROM house2_finish_ownership WHERE user_id=$1 AND catalog_id=$2',
+            [user, b.catalog_id],
+          );
+        if (!spec || !owned.rowCount)
+          throw new AppError(403, 'Compre este revestimento da categoria escolhida primeiro.');
+      }
+      const finishes = { ...p.finishes };
+      if (b.catalog_id) finishes[b.kind] = b.catalog_id;
+      else delete finishes[b.kind];
+      return (
+        await db.query(
+          'UPDATE house2_plots SET finishes=$2,revision=revision+1 WHERE id=$1 RETURNING finishes,revision',
+          [id, JSON.stringify(finishes)],
+        )
+      ).rows[0];
+    });
+    res.json(result);
   });
   router.post('/house-v2/plots/:id/purchase', async (req, res) => {
     const id = uuid.parse(req.params.id),

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { house2Houses } from '../shared/house-v2';
 import { house2CutawayImage } from './house2-architecture';
+import { house2Finish, type House2Finishes } from '../shared/house2-finishes';
 export { house2CutawayImage } from './house2-architecture';
 
 /** Empty interiors share the VTT vertical plan and matching roof footprint. */
@@ -10,12 +11,14 @@ export function House2Interior({
   width,
   height,
   doorOpen = false,
+  finishes,
 }: {
   id: string;
   instance: string;
   width: number;
   height: number;
   doorOpen?: boolean;
+  finishes?: House2Finishes;
 }) {
   const image = house2CutawayImage(id);
   const spec = house2Houses.find((h) => h.id === id);
@@ -50,9 +53,33 @@ export function House2Interior({
     h = 0.024 * height,
     mask = 'h2-native-door-mask-' + instance,
     clip = 'h2-native-door-clip-' + instance;
+  const floor = house2Finish(finishes, 'floor'),
+    walls = house2Finish(finishes, 'walls'),
+    left = (f.left - 0.5) * width,
+    right = (f.right - 0.5) * width,
+    top = (f.top - 0.5) * height,
+    bottom = (f.bottom - 0.5) * height,
+    tile = 'h2-finish-' + instance;
   return (
     <g data-house2-interior="orthographic" data-house2-cutaway={Number(id.slice(-3))}>
       <defs>
+        {[floor, walls]
+          .filter((v) => !!v)
+          .map((v) => (
+            <pattern
+              key={v!.kind}
+              id={tile + '-' + v!.kind}
+              width={v!.kind === 'floor' ? 2 : 1}
+              height={v!.kind === 'floor' ? 2 : 1}
+              patternUnits="userSpaceOnUse"
+            >
+              <image
+                href={v!.image}
+                width={v!.kind === 'floor' ? 2 : 1}
+                height={v!.kind === 'floor' ? 2 : 1}
+              />
+            </pattern>
+          ))}
         <mask
           id={mask}
           maskUnits="userSpaceOnUse"
@@ -76,6 +103,29 @@ export function House2Interior({
         height={height}
         mask={`url(#${mask})`}
       />
+      {floor && (
+        <rect
+          data-house2-floor-finish={floor.id}
+          x={left + 0.13}
+          y={top + 0.13}
+          width={right - left - 0.26}
+          height={bottom - top - 0.26}
+          fill={`url(#${tile}-floor)`}
+          stroke="#21180e"
+          strokeWidth=".05"
+        />
+      )}
+      {walls && (
+        <g mask={`url(#${mask})`} data-house2-wall-finish={walls.id}>
+          <path
+            d={`M${left - 0.09} ${top - 0.09}H${right + 0.09}V${bottom + 0.09}H${left - 0.09}Z M${left + 0.13} ${top + 0.13}V${bottom - 0.13}H${right - 0.13}V${top + 0.13}Z`}
+            fillRule="evenodd"
+            fill={`url(#${tile}-walls)`}
+            stroke="#2b2419"
+            strokeWidth=".035"
+          />
+        </g>
+      )}
       <g transform={`translate(${x} ${y + h / 2})`}>
         <g
           data-house2-door-leaf={instance}

@@ -64,7 +64,7 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
       assert.equal(directory.neighborhoods.length, 3);
       assert.equal(directory.balance, 20000);
       assert.equal(house2Houses.length, 25);
-      assert.equal(house2Furniture.length, 250);
+      assert.equal(house2Furniture.length, 252);
       assert(scene.plots.every((p: any) => p.x + p.width <= 200 && p.y + p.height <= 200));
       assert.equal(
         (
@@ -468,6 +468,109 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
         assert.deepEqual(
           preserved.plots.find((p: any) => p.id === second.id).ground,
           neighbor.ground,
+        );
+      },
+    );
+    await t.test(
+      'revestimentos: preço no servidor, compra idempotente, posse, categoria e revisão',
+      async () => {
+        const before = (await req('/house-v2', owner)).data.balance,
+          body = { ...buy(a.id), catalog_id: 'floor-marble' };
+        const results = await Promise.all([
+          req('/house-v2/finishes', owner, 'POST', body),
+          req('/house-v2/finishes', owner, 'POST', body),
+        ]);
+        results.forEach((r) => assert.equal(r.status, 200, JSON.stringify(r.data)));
+        const d = (await req('/house-v2', owner)).data;
+        assert.equal(d.balance, before - 380);
+        assert.deepEqual(d.finishes, ['floor-marble']);
+        assert.equal(
+          (
+            await req('/house-v2/finishes', owner, 'POST', {
+              ...buy(a.id),
+              catalog_id: 'floor-marble',
+              price: 0,
+            })
+          ).status,
+          400,
+        );
+        const p = (await req('/house-v2/neighborhoods/' + n, owner)).data.plots.find(
+            (p: any) => p.id === lot.id,
+          ),
+          apply = { kind: 'floor', catalog_id: 'floor-marble', revision: p.revision };
+        assert.equal(
+          (await req(`/house-v2/plots/${lot.id}/finish`, other, 'POST', apply)).status,
+          403,
+        );
+        assert.equal(
+          (await req(`/house-v2/plots/${lot.id}/finish`, owner, 'POST', { ...apply, kind: 'roof' }))
+            .status,
+          403,
+        );
+        assert.equal(
+          (await req(`/house-v2/plots/${lot.id}/finish`, owner, 'POST', apply)).status,
+          200,
+        );
+        assert.equal(
+          (await req(`/house-v2/plots/${lot.id}/finish`, owner, 'POST', apply)).status,
+          409,
+        );
+        const after = (await req('/house-v2/neighborhoods/' + n, owner)).data.plots.find(
+          (p: any) => p.id === lot.id,
+        );
+        assert.deepEqual(after.finishes, { floor: 'floor-marble' });
+        assert.equal(after.house_id, p.house_id);
+        assert.equal(after.house_x, p.house_x);
+        assert.deepEqual(after.ground, p.ground);
+      },
+    );
+    await t.test(
+      'luzes pertencem aos objetos; alteração independente não sobrescreve layout',
+      async () => {
+        const bought = await req('/house-v2/furniture', owner, 'POST', {
+          ...buy(a.id),
+          plot_id: lot.id,
+          catalog_id: 'h2-firepit',
+        });
+        assert.equal(bought.status, 200);
+        const id = bought.data.item_id;
+        assert.equal(
+          (await req(`/house-v2/items/${id}/light`, other, 'POST', { on: true, revision: 0 }))
+            .status,
+          404,
+        );
+        assert.equal(
+          (await req(`/house-v2/items/${item}/light`, owner, 'POST', { on: true, revision: 0 }))
+            .status,
+          400,
+        );
+        for (const r of await Promise.all([
+          req(`/house-v2/items/${id}/light`, owner, 'POST', { on: true, revision: 0 }),
+          req(`/house-v2/items/${id}/light`, owner, 'POST', { on: true, revision: 0 }),
+        ]))
+          assert.equal(r.status, 200);
+        assert.equal(
+          (await req(`/house-v2/items/${id}/light`, owner, 'POST', { on: false, revision: 0 }))
+            .status,
+          409,
+        );
+        assert.equal(
+          (
+            await req(`/house-v2/items/${id}/light`, owner, 'POST', {
+              on: false,
+              revision: 1,
+              color: 'red',
+            })
+          ).status,
+          400,
+        );
+        const saved = (await req('/house-v2', owner)).data.inventory.find((i: any) => i.id === id);
+        assert.equal(saved.light_on, true);
+        assert.equal(saved.light_revision, 1);
+        assert.equal(
+          (await req(`/house-v2/items/${id}/light`, owner, 'POST', { on: false, revision: 1 }))
+            .status,
+          200,
         );
       },
     );

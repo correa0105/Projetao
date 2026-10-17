@@ -210,6 +210,12 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
       slots_used: 0,
       hit_dice_used: 1,
     };
+    assert.equal((await req(path + '/state', alice.cookie, state)).status, 403);
+    const { current_hp, temp_hp, hit_dice_used, death_success, death_failure, ...playerState } =
+      state;
+    assert.equal((await req(path + '/state', alice.cookie, playerState)).status, 200);
+    assert.equal((await req(path, alice.cookie)).data.sheet.current_hp, done.data.derived.hp);
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [alice.id]);
     assert.equal(
       (await req(path + '/state', alice.cookie, { ...state, current_hp: 999 })).status,
       400,

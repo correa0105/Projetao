@@ -3,6 +3,7 @@ import { races, classes } from './rules.js';
 import { choicesSchema, validateChoices } from './character-sheet.js';
 
 export const CHARACTER_LIMIT = 2;
+export const characterLimit = (administrator: boolean) => (administrator ? 4 : CHARACTER_LIMIT);
 export const ART_MONTHLY_LIMIT = 2;
 export const ART_MAX_BYTES = 8 * 1024 * 1024;
 export const characterSchema = z
@@ -39,4 +40,9 @@ export type ArtJob = {
   error: string | null;
   created_at: string;
 };
-export type ArtState = { available: boolean; jobs: ArtJob[]; pending_new: number };
+export type ArtState = {
+  available: boolean;
+  jobs: ArtJob[];
+  pending_new: number;
+  character_limit?: number;
+};
