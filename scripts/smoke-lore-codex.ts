@@ -16,8 +16,12 @@ process.env.NODE_ENV = 'production';
 const server = createApp().listen(3083, '127.0.0.1');
 await new Promise<void>((r) => server.once('listening', r));
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
-const admin = await browser.newContext({ reducedMotion: 'reduce' }),
-  basic = await browser.newContext({ reducedMotion: 'reduce' });
+const browserOptions = {
+  reducedMotion: 'reduce' as const,
+  extraHTTPHeaders: { 'Accept-Encoding': 'identity' },
+};
+const admin = await browser.newContext(browserOptions),
+  basic = await browser.newContext(browserOptions);
 for (const context of [admin, basic])
   await context.addInitScript(() => {
     localStorage.setItem('alvorada-music-muted', 'true');
@@ -123,10 +127,16 @@ try {
     const titleBox = (await page
       .locator('.lore-timeline-heading > div:first-child')
       .boundingBox())!;
-    expect(titleBox.y - sceneBox.y).toBeGreaterThan(20);
-    expect(titleBox.y - sceneBox.y).toBeLessThan(90);
+    const heroBox = (await page.locator('.lore-hero').boundingBox())!;
+    expect(
+      Math.abs(titleBox.y + titleBox.height / 2 - heroBox.y - heroBox.height / 2),
+    ).toBeLessThan(1);
     expect(titleBox.x - sceneBox.x).toBeGreaterThan(15);
-    expect(titleBox.x - sceneBox.x).toBeLessThan(65);
+    expect(titleBox.x - sceneBox.x).toBeLessThan(100);
+    await expect(page.locator('.lore-timeline-heading > div:first-child')).toHaveCSS(
+      'text-align',
+      'left',
+    );
     expect(titleBox.x + titleBox.width).toBeLessThanOrEqual(sceneBox.x + sceneBox.width);
     await page.screenshot({ path: 'test-results/lore-codex/heading-' + viewport.width + '.png' });
     await expect(page.locator('.lore-view-switch')).toHaveCount(0);

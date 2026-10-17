@@ -107,14 +107,14 @@
   display: none;
 }
 .lore-scene .lore-timeline-heading { position:relative; min-height:72px; justify-content:flex-end; }
-.lore-scene .lore-timeline-heading > div:first-child {
+:root .app-shell[data-page='lore'] .lore-library .lore-scene .lore-timeline-heading > div:first-child {
   position:absolute;
-  top:calc(-1 * var(--lore-hero-height) + 28px);
-  left:50%;
-  transform:translateX(-50%);
+  top:calc(-.5 * var(--lore-hero-height) - 24px);
+  left:0;
+  transform:translateY(-50%);
   width:max-content;
   max-width:100%;
-  text-align:center;
+  text-align:left;
 }
 .lore-archive {
   display: grid;

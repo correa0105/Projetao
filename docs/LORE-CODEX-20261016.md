@@ -5,9 +5,14 @@ ao menos 68 px, intervalo de 10 px entre entradas, padding vertical de 12 px
 e distância de 12 px entre ícone e texto. Ações administrativas permanecem
 compactas. Conferência responsiva em seis larguras pelo smoke da Lore.
 
-O título e a frase da Linha Temporal agora ficam no alto à esquerda do card,
-com margem adaptada à largura. Linha de eras e botão de edição conservam sua
-posição. Conferência visual e limites do título validados de 320 a 1920 px.
+Atualização de 17/10: o título e a frase da Linha Temporal ficam alinhados à
+esquerda e centralizados verticalmente no cabeçalho ilustrado, com margem
+adaptada à largura. A regra do portal prevalece sobre o estilo antigo que
+forçava centralização horizontal. Linha de eras, botão de edição e textos
+salvos conservam suas posições e conteúdo. TypeScript/build e smoke completo
+da Lore em seis larguras, de 320 a 1920 px, aprovados incluindo a folha de
+estilos da publicação real. Publicação somente do cliente, mantendo servidor,
+artes, migrations e dados anteriores.
 
 O menu de visualização foi promovido para todas as páginas do portal. Há somente
 uma aba lateral global, inclusive na Lore, com estado por sessão e conta. A prévia
