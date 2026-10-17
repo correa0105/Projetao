@@ -1,0 +1,46 @@
+{
+  "id": "furniture-023",
+  "kind": "furniture",
+  "name": "Aparador",
+  "width": 2,
+  "height": 1,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-023.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/furniture-023.webp",
+  "prompt": "Use case: style-transfer. Image 1 is an OVERHEAD GEOMETRY AND STYLE reference. Create one different rectangular solid wooden TOP PANEL, a furniture sprite strictly flat in the image plane. Make a warm worn oak sideboard top with a narrow carved oak-leaf border. Only the opaque horizontal tabletop-like panel and its tiny top rim; no contents, other furniture, handles, doors, fronts, drawers, standing side surfaces or legs. The rectangular top occupies the complete silhouette. Opposite edges precisely parallel, axis aligned, 2:1 ratio long left-right. Same rich fine hand-painted medieval texture as reference, different grain and detail. Genuine transparent alpha outside this one panel, no floor, labels, text or watermark.",
+  "refs": [
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-f56e9c9f-d846-4f3e-8d72-e27bd3a84ab8.png"
+  ],
+  "public": "public/vtt/nadir-20261016/furniture-023.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-023.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-21643754-4fb8-4166-9c5e-2b5b127d9c1c.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1690,
+    637
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 204042,
+  "sha256": "38b08e917fbaf9e7ac1f572d1e39056826bed4c2005eb375b1282c52c4e1bf34",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 87723017,
+    "squaresSum": 22088741273,
+    "mean": 167.48225287575772,
+    "stdev": 118.83567066339734,
+    "minX": 0,
+    "minY": 0,
+    "maxX": 992,
+    "maxY": 136
+  },
+  "generatedAt": "2026-10-16T22:28:16.308Z"
+}

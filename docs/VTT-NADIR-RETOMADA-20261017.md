@@ -1,0 +1,19 @@
+# Retomada das artes em planta — 17/10/2026
+
+Pedido retomado neste chat após desconexões do chat anterior. Direção vigente em `data/vtt/nadir-refit-20261016/art-direction.json`: conservar o acabamento dos interiores aprovados house-023, house-021 e house-011; vista ortográfica vertical, paredes estreitas e equivalentes nos quatro lados, telhados completos correspondentes e interiores residenciais mobiliados/vazios.
+
+Plano completo: 255 imagens para 25 casas, 40 comércios e 100 móveis. Prompts e destinos individuais: `data/vtt/nadir-refit-20261016/prompts.json`. Os registros em `completed/` são exports de arte; não significam publicação nem aprovação de integração. Catálogos, IDs, compras, posições, giros, escalas, ownership e economia devem ser preservados.
+
+Retomada começou em 83 exports. Novas peças geradas, revisadas e exportadas neste chat: furniture-036, furniture-037, furniture-039 a furniture-047, furniture-049 a furniture-052 e furniture-057 a furniture-061 (20 peças). Seis interiores comerciais previamente salvos pelo outro chat também foram exportados e revisados visualmente: commerce-022-interior a commerce-027-interior. Total: 109/255; 146 pendentes. Todos os 109 arquivos e hashes foram conferidos; fila permanente de revisão em `review-pending.json` e guia geométrico em `guides/weapon-rack-plan.png`.
+
+Ferramenta utilizada: image_gen integrado, com transparência e as duas referências de estilo do plano. Fontes e prompts por peça ficam em `.local/nadir-refit-generated/`; os manifests permanentes, dimensões, hashes e miniaturas ficam em `data/vtt/nadir-refit-20261016/completed/`, `public/vtt/nadir-20261016/` e `public/vtt/nadir-thumbs-20261016/`.
+
+Furniture-038 (tapete retangular) continua pendente: cinco tentativas mantiveram fundo/halo visível fora do tecido; não contar essas tentativas como concluídas. Preservar os originais das tentativas para comparação. Furniture-046 foi corrigido usando guia geométrico e está exportado. Ainda reprovados: furniture-048 (tabuleiro irregular), furniture-053 (panelas frontais), furniture-054 (moinho inclinado), furniture-055 (pilão oblíquo) e furniture-056 (jarro oblíquo). Candidatos e motivos em `.local/nadir-refit-rejected/`. Rever também a lista histórica `.local/nadir-review.json` antes de encerrar o lote.
+
+Os últimos pedidos recuperados do outro chat incluem retirar a faixa vazia acima do Hall no perfil visitado e centralizar título/frase da Linha Temporal. Ambos foram corrigidos em `src/hall-immersive.css` e `src/lore.css`. Conferência do CSS em 1912, 1440, 768, 390 e 320 px: padding e afastamento do Hall iguais a zero, erro de centralização da Linha Temporal igual a zero, texto contido. TypeScript e build do cliente passaram. Os ensaios com o servidor Vite não concluíram a navegação; a verificação final usou os seletores/estrutura reais e CSS de produção em Chromium, sem escrever no banco. Métricas em `test-results/header-css-metrics.json`.
+
+Publicação incremental aplicada ao Docker local: `header-polish-v1-20261017`, partindo exatamente de `house2-architecture-v3.1-20261016`. Acrescentados apenas stylesheet versionado e seu gzip, mais link no index. Servidor e 13.988 arquivos anteriores iguais por SHA-256; HTTP/stylesheet/health aprovados. Novas artes continuam em preparação e não foram incluídas nesta publicação.
+
+Comandos de retomada, executados a partir da raiz do projeto: `node .local/nadir-assets.mjs status`, `node .local/nadir-assets.mjs next 8` e, após revisão visual e registro da fonte, `node .local/nadir-assets.mjs export`.
+
+Após completar e revisar as artes, integrar referências sem alterar dados dos jogadores, validar a interface e o renderer, então seguir o fluxo de publicação e Git da branch Welson estabelecido no projeto. Este checkpoint não afirma que o lote foi integrado ou publicado.

@@ -1,0 +1,46 @@
+{
+  "id": "furniture-026",
+  "kind": "furniture",
+  "name": "Despensa",
+  "width": 2,
+  "height": 1,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-026.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/furniture-026.webp",
+  "prompt": "Use case: style-transfer. Image 1 is an OVERHEAD GEOMETRY AND STYLE reference. Create one different rectangular solid wooden TOP PANEL, a furniture sprite strictly flat in the image plane. Make a warm worn walnut pantry cabinet top with crossgrain joining and small pegs. Only the opaque horizontal tabletop-like panel and its tiny top rim; no contents, other furniture, handles, doors, fronts, drawers, standing side surfaces or legs. The rectangular top occupies the complete silhouette. Opposite edges precisely parallel, axis aligned, 2:1 ratio long left-right. Same rich fine hand-painted medieval texture as reference, different grain and detail. Genuine transparent alpha outside this one panel, no floor, labels, text or watermark.",
+  "refs": [
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-f56e9c9f-d846-4f3e-8d72-e27bd3a84ab8.png"
+  ],
+  "public": "public/vtt/nadir-20261016/furniture-026.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-026.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-760a2154-e396-4384-a846-34169029110e.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1702,
+    635
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 209852,
+  "sha256": "e7e34b394593c6b880cb9145cc1ec55d1838908aeeac35434af244e7f39af23c",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 85815351,
+    "squaresSum": 21634695901,
+    "mean": 163.8401050069209,
+    "stdev": 120.25710483732215,
+    "minX": 0,
+    "minY": 48,
+    "maxX": 42,
+    "maxY": 78
+  },
+  "generatedAt": "2026-10-16T22:28:17.136Z"
+}

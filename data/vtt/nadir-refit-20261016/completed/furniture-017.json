@@ -1,0 +1,47 @@
+{
+  "id": "furniture-017",
+  "kind": "furniture",
+  "name": "Guarda-roupa",
+  "width": 2,
+  "height": 1,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-017.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/furniture-017.webp",
+  "prompt": "Create ONE isolated original medieval fantasy VTT furniture sprite. STRICT CAMERA: a true orthographic plan viewed vertically DOWN at 90 degrees, with ZERO tilt. Show ONLY horizontal surfaces visible from directly overhead. The object stands in its normal use orientation, north/back toward image top. No visible vertical fronts, backrest elevations, cabinet doors, drawer fronts, side faces, feet or standing legs. Rectangular surfaces have perfectly parallel opposite edges; circular tops are true circles, never ellipses. STYLE: finely hand-painted tactical battlemap like the supplied references, crisp delicate dark contours, warm worn oak and iron, natural grain and subtle small scratches, restrained earthy palette, a tiny soft contact shadow only. Rich readable crafted details, no glossy product photography and no heavy 3D render. Draw the complete SINGLE asset centered on genuinely transparent alpha with a narrow clear margin; no room, floor patch, people, grid, labels, text, watermark or extra furniture. Reference images are visual/style guidance only; do not copy their whole room, exact arrangement or branding. Subject: a tall closed walnut wardrobe viewed from precisely vertically above. Only the horizontal rectangular TOP panel is visible, ratio 2:1 long left-right. A restrained carved geometric border, quartered grain and four small flush brass corner caps distinguish the crafted top. The cupboard's doors, handles and front are vertical and therefore COMPLETELY OCCLUDED by its top; do not show them, do not tilt the camera to expose them. One closed wardrobe top, no books, baskets or loose objects.",
+  "refs": [
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png",
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-71463700-016a-4127-b690-04ff2b4121a9.png"
+  ],
+  "public": "public/vtt/nadir-20261016/furniture-017.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-017.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-f56e9c9f-d846-4f3e-8d72-e27bd3a84ab8.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1566,
+    645
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 231660,
+  "sha256": "08cc13a90396328818f48fa6cdceafa063e5d90c98ae15640223975c844c7281",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 93372874,
+    "squaresSum": 23516435726,
+    "mean": 178.26905446040763,
+    "stdev": 114.5344581794921,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 916,
+    "maxY": 59
+  },
+  "generatedAt": "2026-10-16T22:28:14.407Z"
+}

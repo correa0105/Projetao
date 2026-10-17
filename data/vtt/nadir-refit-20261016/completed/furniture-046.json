@@ -1,0 +1,46 @@
+{
+  "id": "furniture-046",
+  "kind": "furniture",
+  "name": "Suporte de armas",
+  "width": 2,
+  "height": 1,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-046.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/furniture-046.webp",
+  "prompt": "Render the supplied geometric guide as a richly hand-painted medieval VTT battlemap weapon-rack sprite. Input is an EXACT top-down PLAN silhouette guide: preserve its ultra-thin horizontal footprint, three round upright post end-grain caps, narrow wooden top rail, tiny round end of upright spear, sword pommel as a small rounded rectangle, and shield seen ONLY as its thin curved TOP EDGE. Add warm worn oak grain, delicate contour strokes and tiny old iron fasteners to these same upward-facing surfaces. Do not extrude anything, do not show any spear blade, sword blade, vertical shield face, rail side, feet, legs or frontal display. Camera is exactly overhead at 90 degrees, no tilt or depth exposure. Complete sprite on transparent background, no floor, text or backdrop. This is the view of objects standing vertically beneath the camera; their height is completely foreshortened.",
+  "refs": [
+    "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/Projetao/.local/nadir-weapon-rack-guide.png"
+  ],
+  "public": "public/vtt/nadir-20261016/furniture-046.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-046.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1494c-4983-7593-9d13-fd2c6675cd79\\exec-59da57c9-b672-446a-b002-f7d7d4179983.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1465,
+    143
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 55952,
+  "sha256": "78021c272b5246817fd3e0201495c40881ebad915ec0ffe187366bfe62865675",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 15125309,
+    "squaresSum": 3783379057,
+    "mean": 28.87749319841535,
+    "stdev": 79.93368019299098,
+    "minX": 0,
+    "minY": 48,
+    "maxX": 34,
+    "maxY": 240
+  },
+  "generatedAt": "2026-10-17T10:13:31.028Z"
+}

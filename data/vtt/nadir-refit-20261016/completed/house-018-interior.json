@@ -1,0 +1,62 @@
+{
+  "id": "house-018-interior",
+  "kind": "interior",
+  "name": "Casa nevada · Interior",
+  "width": 9,
+  "height": 9,
+  "legacy": [
+    "/vtt/houses-20261014/house-018-interior.webp"
+  ],
+  "previous": "public/vtt/human-scale-20261015/house-018-interior.webp",
+  "prompt": "Create ONE original furnished medieval building interior battlemap, Casa nevada. STRICT CAMERA: TRUE ORTHOGRAPHIC NADIR PLAN, a camera vertically above pointing straight DOWN at 90 degrees. ZERO tilt and ZERO perspective convergence. All rectangular edges stay parallel, all round tops are true CIRCLES. Show ONLY horizontal upward-facing surfaces. No vertical front or side faces, no elevations, no standing facades, no tall backrest fronts or legs. This is a flat tactical battlemap, never an isometric product render. Original finely hand-painted medieval fantasy battlemap in the supplied references’ visual spirit: warm natural timber, stone, iron, linen, leather, rich small-scale texture, delicate crisp contours, believable worn edges and subtle surface scratches. Earthy colors, occasional muted textile color, gentle even overhead light, tight soft contact shadows. No glossy plastic, no blurry photo textures, no heavy outlines. Reference images are STYLE guidance only, not edit targets; do not copy their exact room arrangement or branding. Architecture is a clean RECTANGULAR overhead cut plan, width/height ratio 1.060. All FOUR exterior walls show ONLY their horizontal narrow cut TOP caps, uniform thickness about 6.5% of room width. Absolutely NO vertical inner wall faces, outward splaying, trapezoids, beveled box depth or facade at the bottom. Top/bottom are identical construction and thickness, left/right also identical. Square true 90-degree corners. One open rectangular floor, no internal partition walls or stairs. The floor directly meets the narrow top wall caps on all four sides. Entire building framed with a narrow transparent margin. South wall has ONE OPEN doorway gap from 42.0% to 55.2% of total room width. It is an empty gap in the wall with a small flat threshold, no door leaf and no stairs. No windows. Design/content: snow-country cottage, silvery worn wood and grey stone tops; thick ivory fur rug, blue wool bed, stove, compact dining table, storage chest and stacked firewood. Real human scale: the clear room is about 8.9m wide by 8.4m long. Single beds 1m x2.1m, double beds1.6m x2.1m, chairs0.5m square, tables2.1m x1m, barrels0.6m diameter. Tiny tabletop cups10cm, books25cm, tools40cm; NEVER giant objects. Clear usable walking routes to every workstation and entrance. Rich detail near edges and useful open central floor. Only top surfaces on furniture; opaque TOP panels on tall cupboards and bookshelves, no exposed shelf or book fronts. Fireplaces show a U-shaped horizontal cut rim with visible coals in its opening, never a vertical mantel facade. Genuinely transparent alpha outside the complete asset. No grid, text, watermark, branding, people, tokens, scale markers, ruler or background ground patch. No roof, outdoor terrain or exterior walls visible below the cut plane.",
+  "refs": [
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png",
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-71463700-016a-4127-b690-04ff2b4121a9.png"
+  ],
+  "public": "public/vtt/nadir-20261016/house-018-interior.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/house-018-interior.webp",
+  "houseId": "house-018",
+  "outer": {
+    "left": 0.14500000000000002,
+    "top": 0.165,
+    "right": 0.855,
+    "bottom": 0.8350000000000001
+  },
+  "footprint": {
+    "left": 0.17,
+    "top": 0.19,
+    "right": 0.83,
+    "bottom": 0.81,
+    "doorStart": 0.4434,
+    "doorEnd": 0.5371
+  },
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-15bf731e-c4a5-410a-9c72-350a138af156.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1292,
+    1217
+  ],
+  "trimDimensions": [
+    1235,
+    1149
+  ],
+  "dimensions": [
+    1536,
+    1536
+  ],
+  "bytes": 608052,
+  "sha256": "f8c3cf5c9990cbd4944d6fb4cdc08bab32c97a84cdda8073738318fe81123c9b",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 273718324,
+    "squaresSum": 68954449002,
+    "mean": 116.01694912380643,
+    "stdev": 125.56583746745756,
+    "minX": 0,
+    "minY": 48,
+    "maxX": 1307,
+    "maxY": 432
+  },
+  "generatedAt": "2026-10-17T01:10:43.397Z"
+}

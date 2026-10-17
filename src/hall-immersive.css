@@ -181,6 +181,11 @@
 :root .app-shell[data-page='profiles'] .visiting .public-profile-panel:has(> .hall-of-fame) {
   padding: 0;
 }
+
+/* Keep the immersive Hall above the generic profile-panel header spacing. */
+:root .app-shell[data-page='profiles'] .visiting #profile-panel-hall.public-profile-panel {
+  padding: 0;
+}
 :root .app-shell .hall-of-fame > .hall-score-help {
   max-width: 1200px;
   width: calc(100% - 48px);

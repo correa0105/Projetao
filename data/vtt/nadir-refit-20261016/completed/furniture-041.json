@@ -1,0 +1,47 @@
+{
+  "id": "furniture-041",
+  "kind": "furniture",
+  "name": "Biombo",
+  "width": 2,
+  "height": 1,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-041.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/furniture-041.webp",
+  "prompt": "Create ONE isolated original medieval fantasy VTT furniture sprite. STRICT CAMERA: TRUE ORTHOGRAPHIC NADIR PLAN, a camera vertically above pointing straight DOWN at 90 degrees. ZERO tilt and ZERO perspective convergence. All rectangular edges stay parallel, all round tops are true CIRCLES. Show ONLY horizontal upward-facing surfaces. No vertical front or side faces, no elevations, no standing facades, no tall backrest fronts or legs. This is a flat tactical battlemap, never an isometric product render. Original finely hand-painted medieval fantasy battlemap in the supplied references’ visual spirit: warm natural timber, stone, iron, linen, leather, rich small-scale texture, delicate crisp contours, believable worn edges and subtle surface scratches. Earthy colors, occasional muted textile color, gentle even overhead light, tight soft contact shadows. No glossy plastic, no blurry photo textures, no heavy outlines. Reference images are STYLE guidance only, not edit targets; do not copy their exact room arrangement or branding. Subject: three-panel wooden folding privacy screen with linen inserts.  A three panel privacy screen standing vertically: viewed EXACTLY overhead, ONLY three narrow wooden top edges form a shallow zigzag line. No large fabric panel faces visible. Three thin rectangular bars connected with tiny hinges. The visual footprint is wide and very thin. Absolute 90 degree vertical orthographic camera. No perspective tilt, no vertical front faces. Fully transparent background. Physical footprint ratio 2:1. Back/north is image TOP. Only the single requested object; no associated chairs, tables or extra furnishings. Cabinets, bookcases, drawers and closets show ONLY an opaque horizontal TOP panel, never front doors, handles or book spines. Seats show cushion/seat and the thin TOP edge of the back rail. Rugs lie flat. Keep the complete silhouette centered with narrow transparent margin. Genuinely transparent alpha outside the complete asset. No grid, text, watermark, branding, people, tokens, scale markers, ruler or background ground patch.",
+  "refs": [
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png",
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-71463700-016a-4127-b690-04ff2b4121a9.png"
+  ],
+  "public": "public/vtt/nadir-20261016/furniture-041.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-041.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1494c-4983-7593-9d13-fd2c6675cd79\\exec-fde995b9-3e32-467d-9256-5c813c2a4841.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1575,
+    284
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 51072,
+  "sha256": "4864f6e3df687088b2a1faceab24622bdc12beff9ab2eebcece6947c0b07a0f3",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 12374348,
+    "squaresSum": 3092819840,
+    "mean": 23.62531239558971,
+    "stdev": 73.12125714479357,
+    "minX": 0,
+    "minY": 0,
+    "maxX": 272,
+    "maxY": 192
+  },
+  "generatedAt": "2026-10-17T10:04:40.765Z"
+}

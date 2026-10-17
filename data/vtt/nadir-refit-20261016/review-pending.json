@@ -1,0 +1,45 @@
+{
+  "updatedAt": "2026-10-17T10:33:32.151Z",
+  "exported": 109,
+  "total": 255,
+  "remaining": 146,
+  "notIntegrated": true,
+  "regenerate": [
+    "furniture-001",
+    "furniture-002",
+    "furniture-003",
+    "furniture-005",
+    "furniture-009",
+    "furniture-011",
+    "furniture-012",
+    "furniture-013",
+    "furniture-015",
+    "furniture-018",
+    "furniture-038",
+    "furniture-048",
+    "furniture-053",
+    "furniture-054",
+    "furniture-055",
+    "furniture-056"
+  ],
+  "reason": "Visible vertical fronts or upright backrest/post faces; use geometric overhead guide rather than repeat the same camera prompt.",
+  "repairs": {
+    "furniture-046": "Corrected and exported using geometric plan guide"
+  },
+  "notes": {
+    "furniture-038": "Five generated attempts still contain visible background halo; not exported",
+    "furniture-048": "Chessboard count irregular",
+    "furniture-053": "Frontal hanging pans instead of overhead edges",
+    "furniture-054": "Oblique mill and handle",
+    "furniture-055": "Oblique mortar opening",
+    "furniture-056": "Oblique jug opening"
+  },
+  "reviewedRecoveredInteriors": [
+    "commerce-022-interior",
+    "commerce-023-interior",
+    "commerce-024-interior",
+    "commerce-025-interior",
+    "commerce-026-interior",
+    "commerce-027-interior"
+  ]
+}

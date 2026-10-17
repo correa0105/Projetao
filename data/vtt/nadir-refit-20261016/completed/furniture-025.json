@@ -1,0 +1,46 @@
+{
+  "id": "furniture-025",
+  "kind": "furniture",
+  "name": "Armário de cozinha",
+  "width": 2,
+  "height": 1,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-025.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/furniture-025.webp",
+  "prompt": "Use case: style-transfer. Image 1 is an OVERHEAD GEOMETRY AND STYLE reference. Create one different rectangular solid wooden TOP PANEL, a furniture sprite strictly flat in the image plane. Make a warm worn pine kitchen cupboard top with small inset iron corner brackets. Only the opaque horizontal tabletop-like panel and its tiny top rim; no contents, other furniture, handles, doors, fronts, drawers, standing side surfaces or legs. The rectangular top occupies the complete silhouette. Opposite edges precisely parallel, axis aligned, 2:1 ratio long left-right. Same rich fine hand-painted medieval texture as reference, different grain and detail. Genuine transparent alpha outside this one panel, no floor, labels, text or watermark.",
+  "refs": [
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-f56e9c9f-d846-4f3e-8d72-e27bd3a84ab8.png"
+  ],
+  "public": "public/vtt/nadir-20261016/furniture-025.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-025.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-7d62f9b7-1681-40ea-bed0-e90ae4df7dd5.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1703,
+    624
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 214512,
+  "sha256": "fde4284819e65876403f605303ed37ab97181ac617f286258bc8781f77bc5458",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 85105047,
+    "squaresSum": 21423368051,
+    "mean": 162.48398071691088,
+    "stdev": 120.41941989499318,
+    "minX": 0,
+    "minY": 16,
+    "maxX": 33,
+    "maxY": 192
+  },
+  "generatedAt": "2026-10-16T22:28:16.864Z"
+}

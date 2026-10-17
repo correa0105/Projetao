@@ -1,0 +1,47 @@
+{
+  "id": "furniture-019",
+  "kind": "furniture",
+  "name": "Estante de livros",
+  "width": 2,
+  "height": 1,
+  "legacy": [
+    "/vtt/home-furniture-20261014/furniture-019.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/furniture-019.webp",
+  "prompt": "Create ONE isolated original medieval fantasy VTT furniture sprite. STRICT CAMERA: TRUE ORTHOGRAPHIC NADIR PLAN, a camera vertically above pointing straight DOWN at 90 degrees. ZERO tilt and ZERO perspective convergence. All rectangular edges stay parallel, all round tops are true CIRCLES. Show ONLY horizontal upward-facing surfaces. No vertical front or side faces, no elevations, no standing facades, no tall backrest fronts or legs. This is a flat tactical battlemap, never an isometric product render. Original finely hand-painted medieval fantasy battlemap in the supplied references’ visual spirit: warm natural timber, stone, iron, linen, leather, rich small-scale texture, delicate crisp contours, believable worn edges and subtle surface scratches. Earthy colors, occasional muted textile color, gentle even overhead light, tight soft contact shadows. No glossy plastic, no blurry photo textures, no heavy outlines. Reference images are STYLE guidance only, not edit targets; do not copy their exact room arrangement or branding. Subject: bookcase with distinct muted cloth-bound books.  A tall bookcase: show ONLY its horizontal wooden top board. Books sit on shelves below this opaque board, so the books are NOT visible. No front book spines, no exposed shelves, no vertical cabinet face. Absolute 90 degree vertical orthographic camera. No perspective tilt, no vertical front faces. Fully transparent background. Physical footprint ratio 2:1. Back/north is image TOP. Only the single requested object; no associated chairs, tables or extra furnishings. Cabinets, bookcases, drawers and closets show ONLY an opaque horizontal TOP panel, never front doors, handles or book spines. Seats show cushion/seat and the thin TOP edge of the back rail. Rugs lie flat. Keep the complete silhouette centered with narrow transparent margin. Genuinely transparent alpha outside the complete asset. No grid, text, watermark, branding, people, tokens, scale markers, ruler or background ground patch.",
+  "refs": [
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-c443359b-b252-4e63-ae36-a87a99f14dd6.png",
+    "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-71463700-016a-4127-b690-04ff2b4121a9.png"
+  ],
+  "public": "public/vtt/nadir-20261016/furniture-019.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/furniture-019.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-a2808450-81aa-41b7-961a-5bee80ae57a5.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "trimDimensions": [
+    1631,
+    562
+  ],
+  "dimensions": [
+    1025,
+    511
+  ],
+  "bytes": 194382,
+  "sha256": "c1e36086eecf6a5bcf7966bd2112a8f4ab1799e8051bac11e8637f138aa1e42e",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 75509882,
+    "squaresSum": 19016649184,
+    "mean": 144.1647310390912,
+    "stdev": 124.59319803157686,
+    "minX": 0,
+    "minY": 0,
+    "maxX": 41,
+    "maxY": 314
+  },
+  "generatedAt": "2026-10-16T22:28:14.940Z"
+}
