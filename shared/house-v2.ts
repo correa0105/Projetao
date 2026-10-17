@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import houses from './vtt-houses-catalog.json';
 import furniture from './vtt-home-furniture-catalog.json';
+import { vttVisualSource } from './vtt-asset-visuals';
 
 export const house2Size = 200;
 export const house2Landscape = '/vtt/terrain-v4-20261013/grass.webp';
@@ -25,10 +26,13 @@ export const house2Houses = houses
   .filter((h) => h.category === 'Casas vazias')
   .map((h, i) => ({
     ...h,
+    image: vttVisualSource(h.image),
+    interior: vttVisualSource(h.interior),
     price: 600 + Math.floor(i / 5) * 100,
   }));
 export const house2Furniture = furniture.map((f) => ({
   ...f,
+  image: vttVisualSource(f.image),
   price: Math.max(15, Math.round(f.width * f.height * 30)),
 }));
 export const house2Terrains = {

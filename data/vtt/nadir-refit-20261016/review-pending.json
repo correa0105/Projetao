@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-10-17T10:33:32.151Z",
-  "exported": 109,
+  "updatedAt": "2026-10-17T11:59:58.863Z",
+  "exported": 119,
   "total": 255,
-  "remaining": 146,
-  "notIntegrated": true,
+  "remaining": 136,
+  "notIntegrated": false,
   "regenerate": [
     "furniture-001",
     "furniture-002",
@@ -41,5 +41,12 @@
     "commerce-025-interior",
     "commerce-026-interior",
     "commerce-027-interior"
-  ]
+  ],
+  "partiallyIntegrated": true,
+  "integrated": [
+    "house-empty-001-interior",
+    "house-empty-002-interior",
+    "house-empty-003-interior"
+  ],
+  "integrationNote": "Only these three interiors are integrated into the house-topdown-v1 client release; all other new exports await complete review and integration."
 }

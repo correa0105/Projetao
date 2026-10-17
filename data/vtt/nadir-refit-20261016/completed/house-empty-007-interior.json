@@ -1,0 +1,62 @@
+{
+  "id": "house-empty-007-interior",
+  "kind": "empty-interior",
+  "name": "Casa do tecelão · vazia · Interior",
+  "width": 9,
+  "height": 9,
+  "legacy": [
+    "/vtt/houses-empty-20261014/house-007-interior.webp"
+  ],
+  "previous": "public/vtt/overhead-20261015/house-empty-007-interior.webp",
+  "prompt": "Remove all contents, preserve exact overhead room shell, continuous wooden floor and transparent exterior.",
+  "refs": [
+    "C:\\Users\\limaw\\.codex\\generated_images\\01a1455d-56af-7bb1-9a5a-4ef1250bd05d\\exec-5a5dd295-cbe9-428b-81c6-1b924aff431f.png"
+  ],
+  "public": "public/vtt/nadir-20261016/house-empty-007-interior.webp",
+  "thumbnail": "public/vtt/nadir-thumbs-20261016/house-empty-007-interior.webp",
+  "houseId": "house-007",
+  "parent": "house-007-interior",
+  "outer": {
+    "left": 0.14500000000000002,
+    "top": 0.165,
+    "right": 0.855,
+    "bottom": 0.8350000000000001
+  },
+  "footprint": {
+    "left": 0.17,
+    "top": 0.19,
+    "right": 0.83,
+    "bottom": 0.81,
+    "doorStart": 0.4463,
+    "doorEnd": 0.5391
+  },
+  "source": "C:/Users/limaw/.codex/generated_images/01a149b7-d8b5-7cc2-970a-5e6b6ac684ae/exec-462cd9c7-076e-4cac-a789-ee772d09e109.png",
+  "generator": "built-in image_gen",
+  "sourceDimensions": [
+    1293,
+    1217
+  ],
+  "trimDimensions": [
+    1263,
+    1177
+  ],
+  "dimensions": [
+    1536,
+    1536
+  ],
+  "bytes": 381426,
+  "sha256": "dfe0f09996aef935fa91e277713b58cddd9fd193b00e304bc4384f60853c3397",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "sum": 271018453,
+    "squaresSum": 68317377997,
+    "mean": 114.8725946214464,
+    "stdev": 125.54271438111242,
+    "minX": 0,
+    "minY": 32,
+    "maxX": 238,
+    "maxY": 346
+  },
+  "generatedAt": "2026-10-17T11:59:42.450Z"
+}

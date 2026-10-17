@@ -1,11 +1,13 @@
-/** House 2.0 artwork is independent of the shared VTT catalog and saved transforms. */
+import { house2Houses } from '../shared/house-v2';
+
+/** Both clients share orthographic art without changing saved transforms. */
 export function house2Architecture(id: string) {
-  const match = /^house-empty-(001|002|003)$/.exec(id);
-  if (!match) return undefined;
+  const house = house2Houses.find((house) => house.id === id);
+  if (!house) return undefined;
   return {
-    interior: `/house2/interior-plan-${match[1]}-v3-20261016.webp`,
-    roof: `/house2/roof-plan-${match[1]}-v1-20261016.webp`,
-    roofScale: 1.04,
+    interior: house.interior,
+    roof: house.image,
+    roofScale: 1,
   };
 }
 

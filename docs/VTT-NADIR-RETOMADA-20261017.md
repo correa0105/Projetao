@@ -1,5 +1,15 @@
 # Retomada das artes em planta — 17/10/2026
 
+## Retomada seguinte: House em vista vertical publicada
+
+Os três interiores experimentais em perspectiva da House 2.0 foram retirados da renderização. House e VTT agora resolvem as mesmas plantas ortográficas pelos IDs existentes; os caminhos antigos continuam como aliases. O renderer usa as dimensões e o giro salvos e o telhado correspondente do catálogo, sem alterar compras, posse, coordenadas, escalas ou dados de jogadores.
+
+TypeScript e build de produção passaram em cópia de trabalho isolada com somente os quatro arquivos da correção. O renderer real das 25 casas foi conferido aberto/fechado nas quatro rotações: nenhum erro de JavaScript, interiores ocultos quando fechados, telhados com cobertura integral e móveis preservados. Capturas e métricas em `test-results/house2-topdown-20261017/`.
+
+Publicação incremental `house-topdown-v1-20261017`, sobre `header-polish-v1-20261017`: 66 arquivos novos, servidor e 13.990 arquivos anteriores preservados por SHA-256, exceto o index atualizado. O CSS anterior do Hall e da Linha Temporal permanece carregado. Saúde, index e três imagens novas conferidos por HTTP. Registro local em `.local/house-topdown-deployment-result.json`. Nenhuma migration ou seed executada.
+
+O checkpoint anterior continha outros oito exports recuperados (commerce-028 a 031 e house-empty-002 a 005), levando o total a 117. Nesta retomada, house-empty-006 e 007 foram gerados pelo imagegen integrado, revisados e exportados: 119/255, com 136 ainda pendentes. Esses totais representam arquivos exportados; somente os três interiores vazios 001–003 foram integrados nesta publicação. A fila completa de artes continua pendente.
+
 Pedido retomado neste chat após desconexões do chat anterior. Direção vigente em `data/vtt/nadir-refit-20261016/art-direction.json`: conservar o acabamento dos interiores aprovados house-023, house-021 e house-011; vista ortográfica vertical, paredes estreitas e equivalentes nos quatro lados, telhados completos correspondentes e interiores residenciais mobiliados/vazios.
 
 Plano completo: 255 imagens para 25 casas, 40 comércios e 100 móveis. Prompts e destinos individuais: `data/vtt/nadir-refit-20261016/prompts.json`. Os registros em `completed/` são exports de arte; não significam publicação nem aprovação de integração. Catálogos, IDs, compras, posições, giros, escalas, ownership e economia devem ser preservados.

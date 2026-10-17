@@ -720,8 +720,8 @@
     "thumbnail": "/vtt/human-scale-thumbs-20261015/house-001-interior.webp"
   },
   "/vtt/houses-empty-20261014/house-001-interior.webp": {
-    "image": "/vtt/overhead-20261015/house-empty-001-interior.webp",
-    "thumbnail": "/vtt/overhead-thumbs-20261015/house-empty-001-interior.webp"
+    "image": "/vtt/nadir-20261016/house-empty-001-interior.webp",
+    "thumbnail": "/vtt/nadir-thumbs-20261016/house-empty-001-interior.webp"
   },
   "/vtt/houses-20261014/house-002-roof.webp": {
     "image": "/vtt/overhead-20261015/house-002-roof.webp",
@@ -736,8 +736,8 @@
     "thumbnail": "/vtt/human-scale-thumbs-20261015/house-002-interior.webp"
   },
   "/vtt/houses-empty-20261014/house-002-interior.webp": {
-    "image": "/vtt/overhead-20261015/house-empty-002-interior.webp",
-    "thumbnail": "/vtt/overhead-thumbs-20261015/house-empty-002-interior.webp"
+    "image": "/vtt/nadir-20261016/house-empty-002-interior.webp",
+    "thumbnail": "/vtt/nadir-thumbs-20261016/house-empty-002-interior.webp"
   },
   "/vtt/houses-20261014/house-003-roof.webp": {
     "image": "/vtt/overhead-20261015/house-003-roof.webp",
@@ -752,8 +752,8 @@
     "thumbnail": "/vtt/human-scale-thumbs-20261015/house-003-interior.webp"
   },
   "/vtt/houses-empty-20261014/house-003-interior.webp": {
-    "image": "/vtt/overhead-20261015/house-empty-003-interior.webp",
-    "thumbnail": "/vtt/overhead-thumbs-20261015/house-empty-003-interior.webp"
+    "image": "/vtt/nadir-20261016/house-empty-003-interior.webp",
+    "thumbnail": "/vtt/nadir-thumbs-20261016/house-empty-003-interior.webp"
   },
   "/vtt/houses-20261014/house-004-roof.webp": {
     "image": "/vtt/overhead-20261015/house-004-roof.webp",
@@ -1270,5 +1270,17 @@
   "/vtt/overhead-20261015/commerce-040-interior.webp": {
     "image": "/vtt/human-scale-20261015/commerce-040-interior.webp",
     "thumbnail": "/vtt/human-scale-thumbs-20261015/commerce-040-interior.webp"
+  },
+  "/house2/interior-plan-001-v3-20261016.webp": {
+    "image": "/vtt/nadir-20261016/house-empty-001-interior.webp",
+    "thumbnail": "/vtt/nadir-thumbs-20261016/house-empty-001-interior.webp"
+  },
+  "/house2/interior-plan-002-v3-20261016.webp": {
+    "image": "/vtt/nadir-20261016/house-empty-002-interior.webp",
+    "thumbnail": "/vtt/nadir-thumbs-20261016/house-empty-002-interior.webp"
+  },
+  "/house2/interior-plan-003-v3-20261016.webp": {
+    "image": "/vtt/nadir-20261016/house-empty-003-interior.webp",
+    "thumbnail": "/vtt/nadir-thumbs-20261016/house-empty-003-interior.webp"
   }
 }

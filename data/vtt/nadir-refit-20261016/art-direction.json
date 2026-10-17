@@ -1,7 +1,35 @@
 {
-  "scope": { "houses": 25, "commerce": 40, "furniture": 100, "images": 255 },
-  "approvedInteriors": ["house-023-interior", "house-021-interior", "house-011-interior"],
+  "scope": {
+    "houses": 25,
+    "commerce": 40,
+    "furniture": 100,
+    "images": 255
+  },
+  "approvedInteriors": [
+    "house-023-interior",
+    "house-021-interior",
+    "house-011-interior"
+  ],
   "approval": "User explicitly approved these generated examples and requested continuing this exact direction on 2026-10-16.",
   "direction": "Painted medieval overhead battlemap, narrow matching wall tops on all four sides, crisp warm material detail, complete matching roof, furnished and player-furnishable empty residential variants.",
-  "preserve": ["Catalog IDs", "purchases", "saved object positions", "rotations", "custom scales", "ownership", "economy", "production player data"]
+  "preserve": [
+    "Catalog IDs",
+    "purchases",
+    "saved object positions",
+    "rotations",
+    "custom scales",
+    "ownership",
+    "economy",
+    "production player data"
+  ],
+  "latestUserCorrection": {
+    "date": "2026-10-17",
+    "request": "Remove the pictured perspective/cutaway houses from display and keep only the completely overhead versions. Continue all 146 pending artworks without stopping at a partial batch.",
+    "retire": [
+      "/house2/interior-plan-001-v3-20261016.webp",
+      "/house2/interior-plan-002-v3-20261016.webp",
+      "/house2/interior-plan-003-v3-20261016.webp"
+    ],
+    "replacement": "Matching Nadir empty residential interiors; preserve purchases, house IDs and saved transforms."
+  }
 }
