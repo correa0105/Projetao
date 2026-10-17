@@ -1,5 +1,5 @@
 import { Eye, EyeOff, Plus, ArrowUp, ArrowDown, Trash2, Paintbrush, Eraser } from 'lucide-react';
-import { terrainTextures } from '../shared/vtt-terrain';
+import { TerrainTexturePicker } from './TerrainTexturePicker';
 import type { TerrainLayer, TerrainStroke } from '../shared/vtt';
 import './vtt-terrain-brush.css';
 export type TerrainBrushSettings = Pick<
@@ -69,24 +69,22 @@ export function VttTerrainBrush({
           Borracha
         </button>
       </div>
-      <div className="vtt-terrain-textures" aria-label="Texturas do brush">
-        {terrainTextures.map((t) => (
-          <button
-            key={t.id}
-            disabled={blocked}
-            aria-label={'Textura: ' + t.name}
-            aria-pressed={value.texture === t.id}
-            onClick={() => {
-              change({ ...value, texture: t.id });
-              activate(false);
-            }}
-          >
-            <img src={'thumbnail' in t ? t.thumbnail : t.image} alt="" loading="lazy" />
-            <span>{t.name}</span>
-          </button>
-        ))}
-      </div>
-      {value.texture === 'water' && <p>A espuma acompanha a margem ao soltar o pincel. Pinte água sobre terra ou areia para formar a costa.</p>}
+      <TerrainTexturePicker
+        value={value.texture}
+        className="vtt-terrain-textures"
+        labelPrefix="Textura: "
+        disabled={blocked}
+        change={(texture) => {
+          change({ ...value, texture });
+          activate(false);
+        }}
+      />
+      {value.texture === 'water' && (
+        <p>
+          A espuma acompanha a margem ao soltar o pincel. Pinte água sobre terra ou areia para
+          formar a costa.
+        </p>
+      )}
       <label>
         Formato do brush
         <select

@@ -152,6 +152,9 @@ try {
     await pool.query('SELECT count(*)::int n FROM vtt_assets WHERE room_id=$1', [room.id])
   ).rows[0].n;
   await rosterPanel.getByRole('button', { name: 'Selecionar Mira no mapa', exact: true }).click();
+  await expect(
+    rosterPanel.getByRole('button', { name: 'Selecionar Mira no mapa', exact: true }),
+  ).toBeEnabled();
   expect((await current()).tokens.filter((t: any) => t.characterId === hero.id).length).toBe(1);
   expect(
     (await pool.query('SELECT count(*)::int n FROM vtt_assets WHERE room_id=$1', [room.id])).rows[0]
@@ -256,6 +259,21 @@ try {
   await page.screenshot({ path: 'test-results/vtt-map-controls/layers.png' });
   await page.getByRole('button', { name: 'Brush do mapa', exact: true }).click();
   await expect(page.locator('.vtt-terrain-textures button')).toHaveCount(terrainTextures.length);
+  await expect(page.locator('.vtt-terrain-textures button').first()).toHaveAccessibleName(
+    'Textura: Grama fina clara',
+  );
+  const textureSearch = page.getByRole('searchbox', {
+    name: 'Buscar textura de terreno',
+    exact: true,
+  });
+  await textureSearch.fill('fina clara');
+  await expect(page.locator('.vtt-terrain-textures button')).toHaveCount(1);
+  await page.getByRole('button', { name: 'Textura: Grama fina clara', exact: true }).click();
+  await expect(page.locator('[aria-label="Textura selecionada"]')).toContainText(
+    'Grama fina clara',
+  );
+  await page.screenshot({ path: 'test-results/vtt-map-controls/grass-search.png' });
+  await textureSearch.fill('');
   for (const [index, texture] of referenceGrassTextures.entries()) {
     await page.getByRole('button', { name: 'Textura: ' + texture.name, exact: true }).click();
     const from = await screen(150 + index * 180, 550),
@@ -372,6 +390,7 @@ try {
         rosterPrivacy: true,
         administratorCapture: true,
         referenceGrassBrushes: referenceGrassTextures.length,
+        grassSearchAndPreview: true,
         capture: { width: metadata.width, height: metadata.height, format: metadata.format },
         siteCharacterPreserved: true,
         errors,

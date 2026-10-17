@@ -139,6 +139,7 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
           <g key={s.id} transform={`translate(${s.x} ${s.y})`} filter={`url(#h2-shadow-${s.kind})`}>
             <image
               data-nature-kind={s.kind}
+              data-nature-zone={s.zone}
               href={s.image}
               x={-s.size / 2}
               y={-s.size / 2}

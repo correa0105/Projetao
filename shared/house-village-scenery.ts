@@ -1,9 +1,9 @@
 import trees from './vtt-tree-catalog.json';
 import rocks from './vtt-rock-catalog.json';
 import plants from './vtt-plants-catalog.json';
-import type { House2Plot } from './house-v2';
+import { house2DoorPoint, house2HousePlacement, type House2Plot } from './house-v2';
 import { house2DefaultGrassImage, referenceGrassTextures } from './reference-grass';
-import { villageLaneSamples } from './house-village-paths';
+import { nearestVillageLane, villageLaneSamples, villageWell } from './house-village-paths';
 
 export const villageTextures = {
   grass: house2DefaultGrassImage,
@@ -49,9 +49,8 @@ export const villageLanePoints = [
   [95, 113],
   [107, 106],
 ];
-const crowns = trees.filter((t) =>
-  ['oak-ancient', 'oak-young', 'pine-highland', 'juniper', 'birch', 'spruce'].includes(t.id),
-);
+export const villageTreeStyleIds = ['oak-young', 'spruce', 'birch'] as const;
+const crowns = trees.filter((t) => villageTreeStyleIds.some((id) => id === t.id));
 const stones = rocks.slice(0, 4);
 const shrubs = plants.filter((t) =>
   ['plant-001', 'plant-010', 'plant-011', 'plant-009'].includes(t.id),
@@ -76,8 +75,52 @@ export const villageGrassPatches = Array.from({ length: 110 }, (_, i) => {
     rotation: noise(i, 17) * 180,
   };
 });
-export function villageScenery(plots: Pick<House2Plot, 'x' | 'y' | 'width' | 'height'>[]) {
-  const pieces = [];
+type SceneryPlot = Pick<House2Plot, 'x' | 'y' | 'width' | 'height'> &
+  Partial<Pick<House2Plot, 'village_slot' | 'house_id' | 'house_x' | 'house_y' | 'house_rotation'>>;
+function accessSamples(point: { x: number; y: number }, door = point) {
+  const start = nearestVillageLane(point),
+    control = { x: (start.x + point.x) / 2 + 0.3, y: (start.y + point.y) / 2 - 0.5 };
+  return Array.from({ length: 41 }, (_, i) => {
+    const t = i / 40,
+      s = 1 - t;
+    return {
+      x: s * s * start.x + 2 * s * t * control.x + t * t * point.x,
+      y: s * s * start.y + 2 * s * t * control.y + t * t * point.y,
+    };
+  }).concat(
+    Array.from({ length: 13 }, (_, i) => ({
+      x: point.x + ((door.x - point.x) * i) / 12,
+      y: point.y + ((door.y - point.y) * i) / 12,
+    })),
+  );
+}
+export function villageScenery(plots: SceneryPlot[]) {
+  const clearPaths = [
+    ...villageLaneSamples,
+    ...accessSamples(villageWell),
+    ...plots.flatMap((p, i) => {
+      const placement =
+        p.house_id && p.house_x != null && p.house_y != null
+          ? { x: p.house_x, y: p.house_y, rotation: p.house_rotation ?? 0 }
+          : house2HousePlacement({ ...p, village_slot: p.village_slot ?? (i % 12) + 1 });
+      const door = house2DoorPoint(placement.x, placement.y, placement.rotation),
+        angle = (placement.rotation * Math.PI) / 180;
+      return accessSamples(
+        { x: door.x - Math.sin(angle) * 3, y: door.y + Math.cos(angle) * 3 },
+        door,
+      );
+    }),
+  ];
+  const pieces: {
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    rotation: number;
+    image: string;
+    kind: 'tree' | 'rock' | 'plant';
+    zone: 'woodland' | 'field';
+  }[] = [];
   for (let row = 0; row < 29; row++)
     for (let col = 0; col < 29; col++) {
       const id = row * 29 + col,
@@ -85,16 +128,18 @@ export function villageScenery(plots: Pick<House2Plot, 'x' | 'y' | 'width' | 'he
         y = -11 + row * 6.8 + (noise(id, 1) - 0.5) * 5;
       const woodland =
         x < -5 + Math.sin(y * 0.045) * 10 || y < 20 || y > 150 + Math.sin(x * 0.06) * 7 || x > 114;
-      const tree = woodland && noise(id, 2) > 0.24;
-      // The inhabited clearing stays open. Decorative rocks and plants belong to the woodland.
-      if (!woodland) continue;
+      const tree = noise(id, 2) > (woodland ? 0.24 : 0.36);
+      // Scatter only trees in the inhabited field; rocks and ornamental plants stay at the edges.
+      if (!woodland && !tree) continue;
       if (!tree && x >= -5 && x <= 114 && y >= 20 && y <= 158) continue;
       const rock = !tree && noise(id, 3) > 0.68;
       if (rock && noise(id, 3) <= 0.96) continue;
       const source = tree ? crowns : rock ? stones : shrubs;
       const asset = source[Math.floor(noise(id, 4) * source.length)];
       const size = tree
-        ? 6 + noise(id, 5) * 3.5
+        ? woodland
+          ? 6 + noise(id, 5) * 3.5
+          : 5 + noise(id, 5) * 3
         : rock
           ? 2 + noise(id, 5) * 2
           : 1.6 + noise(id, 5) * 1.8;
@@ -109,7 +154,15 @@ export function villageScenery(plots: Pick<House2Plot, 'x' | 'y' | 'width' | 'he
         )
       )
         continue;
-      if (villageLaneSamples.some((p) => Math.hypot(p.x - x, p.y - y) < size / 2 + 4)) continue;
+      if (clearPaths.some((p) => Math.hypot(p.x - x, p.y - y) < size / 2 + 4)) continue;
+      if (Math.hypot(villageWell.x - x, villageWell.y - y) < size / 2 + 4) continue;
+      if (
+        !woodland &&
+        pieces.some(
+          (p) => p.kind === 'tree' && Math.hypot(p.x - x, p.y - y) < (p.size + size) / 2 + 3,
+        )
+      )
+        continue;
       if (x > 126 && x < 141) continue;
       pieces.push({
         id,
@@ -119,6 +172,7 @@ export function villageScenery(plots: Pick<House2Plot, 'x' | 'y' | 'width' | 'he
         rotation: Math.floor(noise(id, 6) * 360),
         image: asset.image,
         kind: tree ? 'tree' : rock ? 'rock' : 'plant',
+        zone: woodland ? 'woodland' : 'field',
       });
     }
   return pieces;

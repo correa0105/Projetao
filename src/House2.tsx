@@ -52,7 +52,8 @@ import {
   house2SetItemRotation,
   type House2BorderHandle,
 } from './house2-item-transform';
-import { terrainTextures, type TerrainTextureId } from '../shared/vtt-terrain';
+import { type TerrainTextureId } from '../shared/vtt-terrain';
+import { TerrainTexturePicker } from './TerrainTexturePicker';
 import {
   house2Clamp,
   house2RotatedSize,
@@ -101,7 +102,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     [filter, setFilter] = useState('all');
   const [catalogQuery, setCatalogQuery] = useState('');
   const [catalogCategory, setCatalogCategory] = useState('Todas');
-  const [groundMaterial, setGroundMaterial] = useState<TerrainTextureId>('grass-meadow'),
+  const [groundMaterial, setGroundMaterial] = useState<TerrainTextureId>('grass-reference-light'),
     [groundWidth, setGroundWidth] = useState(1);
   const [selected, setSelected] = useState<string | null>(null);
   const [tool, setTool] = useState<Tool | null>(null),
@@ -683,6 +684,7 @@ export function House2({ character, user }: { character?: Character; user: User 
   const selectedTransform =
     draft?.items.find((i) => i.id === selectedPiece) ??
     shownItems.find((i) => i.id === selectedPiece);
+  const visibleInterior = tool === 'ground' && canEdit && plot ? plot.id : interior;
   const borderItem =
     canEdit && !busy && tool !== 'ground'
       ? shownItems.find((i) => i.id === selectedPiece && i.plot_id === selected)
@@ -1044,7 +1046,7 @@ export function House2({ character, user }: { character?: Character; user: User 
           />
         )}
         {scene?.plots
-          .filter((p) => p.house_id && interior === p.id)
+          .filter((p) => p.house_id && visibleInterior === p.id)
           .map((original) => {
             const p = original.id === shownPlot?.id ? shownPlot : original,
               spec = house2Houses.find((h) => h.id === p.house_id);
@@ -1106,7 +1108,7 @@ export function House2({ character, user }: { character?: Character; user: User 
         )}
         <House2VillageRoofs
           plots={scene?.plots ?? []}
-          interior={interior}
+          interior={visibleInterior}
           selected={selected}
           hover={hover}
           onHover={setHover}
@@ -1117,6 +1119,16 @@ export function House2({ character, user }: { character?: Character; user: User 
             setInterior(interior === p.id ? null : p.id);
             setSelectedPiece(null);
           }}
+        />
+        <rect
+          data-house2-day-phase={dayPhase}
+          x={house2World.x}
+          y={house2World.y}
+          width={200}
+          height={200}
+          fill={house2DayPhases[dayPhase].tint}
+          opacity={house2DayPhases[dayPhase].tintOpacity}
+          pointerEvents="none"
         />
         {tool === 'ground' && canEdit && plot && !busy && (
           <House2GroundEditor
@@ -1132,16 +1144,6 @@ export function House2({ character, user }: { character?: Character; user: User 
             }}
           />
         )}
-        <rect
-          data-house2-day-phase={dayPhase}
-          x={house2World.x}
-          y={house2World.y}
-          width={200}
-          height={200}
-          fill={house2DayPhases[dayPhase].tint}
-          opacity={house2DayPhases[dayPhase].tintOpacity}
-          pointerEvents="none"
-        />
         {hover &&
           (() => {
             const p = scene?.plots.find((p) => p.id === hover);
@@ -1220,7 +1222,6 @@ export function House2({ character, user }: { character?: Character; user: User 
                   key={k}
                   onClick={() => {
                     setTool(k);
-                    if (k === 'ground') setInterior(null);
                     setMenu(false);
                     setCatalogQuery('');
                   }}
@@ -1297,7 +1298,7 @@ export function House2({ character, user }: { character?: Character; user: User 
       {tool && (
         <ScenePanel id="house2" title={toolNames[tool]} close={() => setTool(null)}>
           <div className="h2-panel">
-            {balance}
+            {tool !== 'ground' && balance}
             {tool === 'settings' ? (
               <>
                 <p>{scene?.neighborhood.description}</p>
@@ -1339,7 +1340,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                           {canEdit ? ' · seu terreno' : ' · somente visita'}
                         </p>
                       )}
-                      {plot.house_id && (
+                      {plot.house_id && tool !== 'ground' && (
                         <button
                           onClick={() => {
                             setInterior(interior === plot.id ? null : plot.id);
@@ -1476,8 +1477,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                 {canEdit && tool === 'ground' && (
                   <div className="h2-ground-tools">
                     <p>
-                      Pinte dentro do seu terreno. Salvar confirma a pintura; Descartar restaura o
-                      estado anterior.
+                      Pinte no seu terreno. Salvar confirma; Descartar restaura o estado anterior.
                     </p>
                     <label>
                       Tamanho do pincel{' '}
@@ -1492,22 +1492,11 @@ export function House2({ character, user }: { character?: Character; user: User 
                       />
                       {groundWidth} quadrados
                     </label>
-                    <div className="h2-ground-textures">
-                      {terrainTextures.map((t) => (
-                        <button
-                          key={t.id}
-                          aria-pressed={groundMaterial === t.id}
-                          onClick={() => setGroundMaterial(t.id)}
-                        >
-                          <img
-                            src={'thumbnail' in t ? t.thumbnail : t.image}
-                            alt=""
-                            loading="lazy"
-                          />
-                          {t.name}
-                        </button>
-                      ))}
-                    </div>
+                    <TerrainTexturePicker
+                      value={groundMaterial}
+                      change={setGroundMaterial}
+                      className="h2-ground-textures"
+                    />
                     <button
                       disabled={!(draft?.ground ?? plot?.ground ?? []).length}
                       onClick={() => {

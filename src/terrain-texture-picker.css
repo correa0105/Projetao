@@ -1,0 +1,52 @@
+.terrain-texture-picker {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+.terrain-texture-picker .terrain-texture-search {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  font-size: 12px;
+}
+.terrain-texture-search input {
+  width: 100%;
+  min-width: 0;
+  padding: 9px 10px;
+  color: #ded5c1;
+  background: #121b22;
+  border: 1px solid #92774d66;
+  border-radius: 4px;
+  font: inherit;
+}
+.terrain-texture-search input:focus-visible {
+  outline: 2px solid #c3a16a;
+  outline-offset: 2px;
+}
+.terrain-texture-selected {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 8px;
+  background: #151d22;
+  border: 1px solid #92774d44;
+  border-radius: 4px;
+}
+.terrain-texture-selected img {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+.terrain-texture-selected span {
+  display: grid;
+  gap: 4px;
+  color: #a99d86;
+  font-size: 11px;
+}
+.terrain-texture-selected strong {
+  color: #e0d4bd;
+  font-size: 12px;
+  font-weight: 500;
+}

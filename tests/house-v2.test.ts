@@ -407,6 +407,70 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
         assert.deepEqual(visit.plots.find((p: any) => p.id === lot.id).ground, ground);
       },
     );
+    await t.test(
+      'dois jogadores salvam terrenos diferentes ao mesmo tempo sem perder nenhuma alteração',
+      async () => {
+        const before = (await req('/house-v2/neighborhoods/' + n, owner)).data;
+        const layout = (id: string, material: string) => {
+          const p = before.plots.find((p: any) => p.id === id);
+          return {
+            revision: p.revision,
+            house: p.house_id ? { x: p.house_x, y: p.house_y, rotation: p.house_rotation } : null,
+            items: before.items
+              .filter((i: any) => i.plot_id === id)
+              .map((i: any) => ({
+                id: i.id,
+                x: i.x,
+                y: i.y,
+                rotation: i.rotation,
+                scale: i.scale,
+              })),
+            ground: [{ material, width: 1, points: [{ x: p.x + 2, y: p.y + 2 }] }],
+          };
+        };
+        const first = layout(lot.id, 'grass-reference-light'),
+          neighbor = layout(second.id, 'earth');
+        const saves = await Promise.all([
+          req(`/house-v2/plots/${lot.id}/layout`, owner, 'PUT', first),
+          req(`/house-v2/plots/${second.id}/layout`, other, 'PUT', neighbor),
+        ]);
+        assert.deepEqual(
+          saves.map((r) => r.status),
+          [200, 200],
+        );
+        for (const account of [owner, other]) {
+          const after = (await req('/house-v2/neighborhoods/' + n, account)).data;
+          for (const [id, input] of [
+            [lot.id, first],
+            [second.id, neighbor],
+          ] as const) {
+            const p = after.plots.find((p: any) => p.id === id);
+            assert.equal(p.revision, input.revision + 1);
+            assert.deepEqual(p.ground, input.ground);
+            assert.deepEqual(
+              after.items.filter((i: any) => i.plot_id === id),
+              before.items.filter((i: any) => i.plot_id === id),
+            );
+          }
+          for (const p of after.plots.filter((p: any) => p.id !== lot.id && p.id !== second.id)) {
+            const old = before.plots.find((old: any) => old.id === p.id);
+            assert.equal(p.revision, old.revision);
+            assert.deepEqual(p.ground, old.ground);
+          }
+        }
+        const stale = await req(`/house-v2/plots/${lot.id}/layout`, owner, 'PUT', {
+          ...first,
+          ground: [{ ...first.ground[0], material: 'earth' }],
+        });
+        assert.equal(stale.status, 409);
+        const preserved = (await req('/house-v2/neighborhoods/' + n, owner)).data;
+        assert.deepEqual(preserved.plots.find((p: any) => p.id === lot.id).ground, first.ground);
+        assert.deepEqual(
+          preserved.plots.find((p: any) => p.id === second.id).ground,
+          neighbor.ground,
+        );
+      },
+    );
     await t.test('visita expõe proprietário e decoração, sem saldo ou coleção alheia', async () => {
       const visit = (await req('/house-v2/neighborhoods/' + n, other)).data;
       assert.equal(visit.plots[0].owner_name, 'Aurora');

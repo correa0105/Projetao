@@ -2,6 +2,8 @@
 
 ## Uso
 
+- **Brush do mapa → Grama fina clara** é a primeira textura da lista. As quatro gramas enviadas/derivadas ficam no início, com **Buscar textura** e prévia da seleção, como na House 2.0. A ordenação visual mantém os 42 materiais e seus IDs salvos.
+
 - **Camadas → Ordem de sobreposição dos itens** abre a lista de itens, do que aparece por cima para o que aparece por baixo. Selecionar pela lista permite alcançar uma peça coberta. Frente, Subir, Descer e Trás reorganizam a seleção dentro da camada atual; os mesmos comandos aparecem nas opções do objeto. O seletor permite mover itens entre Fundo, Objetos e personagens e Mestre. Grupos vinculados conservam o apoio e os vínculos.
 - **Fichas → Personagens da mesa**, para o mestre, lista os personagens dos participantes que entraram como jogadores, além dos personagens do próprio mestre. Clique para colocar/selecionar ou arraste até a posição desejada. Atualizar personagens da mesa recarrega a lista. O token conserva o controlador original, a ficha e a imagem disponíveis; repetir a operação seleciona o token existente. Personagens de outras contas fora da mesa e de espectadores ficam fora da lista.
 - **Ctrl + arraste**, sobre um item selecionado, gira em torno do seu centro; Ctrl + roda gira em passos de 15°. Esc cancela o gesto. O jogador também pode girar o próprio personagem. Sem uma peça selecionada sob o ponteiro, Ctrl + arraste conserva a navegação. Bloqueio de token e modo de visualização continuam respeitados.

@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { villageScenery, villageTextures } from '../shared/house-village-scenery';
+import {
+  villageScenery,
+  villageTextures,
+  villageTreeStyleIds,
+} from '../shared/house-village-scenery';
 import {
   villageLanes,
   nearestVillageLane,
@@ -69,5 +73,25 @@ test('all four grasses are accepted by both editors and the sparse reference is 
       house2GroundStrokeSchema.safeParse({ material: t.id, width: 1, points: [{ x: 10, y: 10 }] })
         .success,
     );
+  }
+});
+
+test('field trees are distributed using only the three reference styles, keeping roads and homes open', () => {
+  const plots = house2VillagePlots.map((p, i) => ({
+    ...p,
+    width: 12,
+    height: 12,
+    village_slot: i + 1,
+  }));
+  const scenery = villageScenery(plots),
+    trees = scenery.filter((s) => s.kind === 'tree');
+  const expected = villageTreeStyleIds.map((id) => `/vtt/trees-20261013/${id}.png`).sort();
+  assert.deepEqual([...new Set(trees.map((t) => t.image))].sort(), expected);
+  const field = trees.filter((t) => t.zone === 'field');
+  assert(field.length >= 15, `Only ${field.length} field trees`);
+  assert.deepEqual([...new Set(field.map((t) => t.image))].sort(), expected);
+  for (const tree of field) {
+    const lane = nearestVillageLane(tree);
+    assert(Math.hypot(tree.x - lane.x, tree.y - lane.y) >= tree.size / 2 + 3.9);
   }
 });

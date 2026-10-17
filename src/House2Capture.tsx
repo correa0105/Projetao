@@ -49,7 +49,7 @@ async function captureSvg(source: SVGSVGElement, width: number, height: number) 
   });
   clone
     .querySelectorAll(
-      '.h2-plot,.h2-item-border,.h2-owner-tooltip,[data-house2-border-piece],[data-house2-ground-editor],[role="button"]',
+      '.h2-plot,.h2-item-border,.h2-owner-tooltip,[data-house2-border-piece],[data-house2-ground-editor],[data-house2-ground-cursor],[role="button"]',
     )
     .forEach((node) => node.remove());
   clone.querySelectorAll('text').forEach((node) => {

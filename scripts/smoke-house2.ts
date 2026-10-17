@@ -100,6 +100,19 @@ try {
     );
   });
   await expect(page.locator('[data-grass-variant]')).toHaveCount(3);
+  const fieldTrees = page.locator('[data-nature-kind="tree"][data-nature-zone="field"]');
+  expect(await fieldTrees.count()).toBeGreaterThanOrEqual(15);
+  expect(
+    (
+      await page
+        .locator('[data-nature-kind="tree"]')
+        .evaluateAll((nodes) => [...new Set(nodes.map((n) => n.getAttribute('href')))])
+    ).sort(),
+  ).toEqual([
+    '/vtt/trees-20261013/birch.png',
+    '/vtt/trees-20261013/oak-young.png',
+    '/vtt/trees-20261013/spruce.png',
+  ]);
   await expect(page.locator('#h2-village-grass image')).toHaveAttribute(
     'href',
     house2DefaultGrassImage,
@@ -142,6 +155,7 @@ try {
     ['river-banks', '122 50 23 38'],
     ['well-and-paths', '47 67 30 20'],
     ['house-paths', '25 25 75 52'],
+    ['field-trees', '0 10 120 75'],
   ]) {
     await page
       .locator('.h2-map')
@@ -470,11 +484,36 @@ try {
   await page.getByRole('button', { name: 'Guardar', exact: true }).click();
   await page.getByRole('button', { name: 'Descartar', exact: true }).click();
   await page.getByRole('button', { name: 'Fechar Minha coleção', exact: true }).click();
+  await page.getByRole('button', { name: 'Sair da casa de Aurora', exact: true }).click();
+  const ownRoof = page.locator('[data-house2-fixed="true"] [data-house2-roof]');
+  await expect(ownRoof).toHaveCount(1);
+  const roofsBeforePainting = await page.locator('[data-house2-roof]').count();
   await tool('Pintar terreno');
+  await expect(ownRoof).toHaveCount(0);
+  await expect(page.locator('[data-house2-interior="orthographic"]')).toHaveCount(1);
+  await expect(page.locator('[data-house2-roof]')).toHaveCount(roofsBeforePainting - 1);
   await expect(page.locator('.h2-ground-textures button')).toHaveCount(terrainTextures.length);
+  await expect(page.locator('.h2-ground-textures button').first()).toHaveAccessibleName(
+    'Grama fina clara',
+  );
+  const textureSearch = page.getByRole('searchbox', {
+    name: 'Buscar textura de terreno',
+    exact: true,
+  });
+  await textureSearch.fill('fina clara');
+  await expect(page.locator('.h2-ground-textures button')).toHaveCount(1);
+  await expect(page.getByRole('button', { name: 'Grama fina clara', exact: true })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  await expect(page.locator('[aria-label="Textura selecionada"]')).toContainText(
+    'Grama fina clara',
+  );
+  await page.screenshot({ path: 'test-results/house2/grass-search.png' });
+  await textureSearch.fill('');
   for (const texture of referenceGrassTextures)
     await expect(page.getByRole('button', { name: texture.name, exact: true })).toHaveCount(1);
-  await page.getByRole('button', { name: 'Grama clara rala', exact: true }).click();
+  await page.getByRole('button', { name: 'Grama fina clara', exact: true }).click();
   const paintAt = await page.locator('.h2-map').evaluate((node, p) => {
     const svg = node as unknown as SVGSVGElement,
       at = svg.createSVGPoint();
@@ -486,22 +525,61 @@ try {
     const b = at.matrixTransform(svg.getScreenCTM()!);
     return { a: { x: a.x, y: a.y }, b: { x: b.x, y: b.y } };
   }, lot);
+  const brushCursor = page.locator('[data-house2-brush-footprint]');
+  await page.mouse.move(paintAt.b.x, paintAt.b.y);
+  await expect(brushCursor).toBeVisible();
+  await expect(brushCursor).toHaveAttribute('r', '0.5');
+  const brushSize = page.getByLabel('Tamanho do pincel', { exact: true });
+  await brushSize.fill('2');
+  await page.mouse.move(paintAt.b.x, paintAt.b.y);
+  await expect(brushCursor).toHaveAttribute('r', '1');
+  const cursorGeometry = () =>
+    brushCursor.evaluate((node) => {
+      const circle = node as SVGCircleElement,
+        box = circle.getBoundingClientRect(),
+        scale = circle.getScreenCTM()!.a;
+      return {
+        x: box.x + box.width / 2,
+        y: box.y + box.height / 2,
+        width: box.width,
+        diameter: 2 * circle.r.baseVal.value * scale,
+      };
+    });
+  const beforeZoom = await cursorGeometry();
+  expect(Math.abs(beforeZoom.width - beforeZoom.diameter)).toBeLessThan(1);
+  await page.mouse.wheel(0, -120);
+  await expect.poll(async () => (await cursorGeometry()).width).toBeGreaterThan(beforeZoom.width);
+  const afterZoom = await cursorGeometry();
+  expect(Math.abs(afterZoom.x - paintAt.b.x)).toBeLessThan(1);
+  expect(Math.abs(afterZoom.y - paintAt.b.y)).toBeLessThan(1);
+  expect(Math.abs(afterZoom.width - afterZoom.diameter)).toBeLessThan(1);
+  await page.screenshot({ path: 'test-results/house2/paint-brush-cursor.png' });
+  await page.mouse.wheel(0, 120);
+  await brushSize.fill('1');
   await page.mouse.move(paintAt.a.x, paintAt.a.y);
   await page.mouse.down();
   await page.mouse.move(paintAt.b.x, paintAt.b.y, { steps: 6 });
   await page.mouse.up();
+  await expect(brushCursor).toBeVisible();
   await page.getByRole('button', { name: 'Salvar', exact: true }).click();
   await expect(page.locator('.h2-world-notice')).toContainText('Terreno salvo');
   const painted = (
     await request(context, '/house-v2/neighborhoods/' + n, undefined, 'GET')
   ).plots.find((p: any) => p.id === plotId);
   expect(painted.ground.length).toBe(1);
-  expect(painted.ground[0].material).toBe('grass-reference-sparse');
+  expect(painted.ground[0].material).toBe('grass-reference-light');
   expect(painted.ground[0].points.length).toBeGreaterThan(1);
   await page.getByRole('button', { name: 'Desfazer traço', exact: true }).click();
   await page.getByRole('button', { name: 'Descartar', exact: true }).click();
-  await expect(page.locator('[data-house2-ground] path')).toHaveCount(3);
+  await expect(page.locator('[data-house2-ground-stroke]')).toHaveCount(1);
+  await expect(page.locator('[data-house2-ground-blended]')).toHaveCount(1);
   await page.getByRole('button', { name: 'Fechar Pintar terreno', exact: true }).click();
+  await expect(brushCursor).toHaveCount(0);
+  await expect(ownRoof).toHaveCount(1);
+  await page.getByRole('button', { name: 'Entrar na casa de Aurora', exact: true }).click();
+  await tool('Pintar terreno');
+  await page.getByRole('button', { name: 'Fechar Pintar terreno', exact: true }).click();
+  await expect(page.locator('[data-house2-interior="orthographic"]')).toHaveCount(1);
   const results = [];
   for (const viewport of [
     { width: 1920, height: 1080 },
@@ -615,6 +693,11 @@ try {
         freeRotation: true,
         connectedLandscape: true,
         referenceGrassBrushes: referenceGrassTextures.length,
+        paintingWithoutRoof: true,
+        brushCursorMatchesSizeAndZoom: true,
+        grassSearchAndPreview: true,
+        fieldTreesThreeStyles: true,
+        groundMaterialsFeathered: true,
         rotationControlCentered: true,
         headerNoOverlap: true,
         administratorCapture: true,
