@@ -4,9 +4,10 @@ import furniture from './vtt-home-furniture-catalog.json';
 import medievalFurniture from './vtt-medieval-furniture-catalog.json';
 import { terrainTextureIds } from './vtt-terrain';
 import { vttVisualSource } from './vtt-asset-visuals';
+import { house2DefaultGrassImage } from './reference-grass';
 
 export const house2Size = 200;
-export const house2Landscape = '/vtt/terrain-v4-20261013/grass.webp';
+export const house2Landscape = house2DefaultGrassImage;
 export const house2World = { x: -50, y: -15, width: 200, height: 200 };
 export const house2VillagePlots = [
   { x: 3, y: 35, rotation: 0, dx: -0.6, dy: 0.5 },
@@ -39,7 +40,7 @@ export const house2Furniture = [...furniture, ...medievalFurniture].map((f) => (
 }));
 export const house2Terrains = {
   earth: '/vtt/terrain-v3-20261013/earth.webp',
-  grass: '/vtt/terrain-v4-20261013/grass.webp',
+  grass: house2DefaultGrassImage,
   stone: '/vtt/terrain-v3-20261013/stone.webp',
 } as const;
 export type House2Neighborhood = {
@@ -125,7 +126,11 @@ export const house2LayoutSchema = z
     items: z
       .array(
         house2TransformSchema
-          .extend({ id: z.string().uuid(), scale: z.number().finite().min(0.25).max(3).optional() })
+          .extend({
+            id: z.string().uuid(),
+            rotation: z.number().finite().min(0).lt(360),
+            scale: z.number().finite().min(0.25).max(3).optional(),
+          })
           .strict(),
       )
       .max(200),
@@ -148,6 +153,12 @@ export function house2DoorPoint(x: number, y: number, rotation: number) {
 }
 
 /** Includes the complete rotated sprite, so nothing can extend onto a neighbor's land. */
+export function house2RotatedSize(width: number, height: number, rotation: number) {
+  const radians = (rotation * Math.PI) / 180;
+  const c = Math.abs(Math.cos(radians)),
+    s = Math.abs(Math.sin(radians));
+  return { width: c * width + s * height, height: s * width + c * height };
+}
 export function house2Within(
   plot: Pick<House2Plot, 'x' | 'y' | 'width' | 'height'>,
   piece: { x: number; y: number; rotation: number },
@@ -155,9 +166,7 @@ export function house2Within(
   height: number,
 ) {
   if (![piece.x, piece.y, piece.rotation, width, height].every(Number.isFinite)) return false;
-  const radians = (piece.rotation * Math.PI) / 180;
-  const w = Math.abs(Math.cos(radians)) * width + Math.abs(Math.sin(radians)) * height;
-  const h = Math.abs(Math.sin(radians)) * width + Math.abs(Math.cos(radians)) * height;
+  const { width: w, height: h } = house2RotatedSize(width, height, piece.rotation);
   const eps = 1e-7;
   return (
     piece.x - w / 2 >= plot.x - eps &&
@@ -172,9 +181,7 @@ export function house2Clamp(
   width: number,
   height: number,
 ) {
-  const rotated = piece.rotation % 180 !== 0,
-    w = rotated ? height : width,
-    h = rotated ? width : height;
+  const { width: w, height: h } = house2RotatedSize(width, height, piece.rotation);
   return {
     ...piece,
     x: Math.min(plot.x + plot.width - w / 2, Math.max(plot.x + w / 2, piece.x)),

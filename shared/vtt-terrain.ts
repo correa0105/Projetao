@@ -1,4 +1,5 @@
 import { medievalTerrainTextures } from './medieval-terrain';
+import { referenceGrassTextures } from './reference-grass';
 export const terrainTextures = [
   { id: 'grass', name: 'Grama', image: '/vtt/terrain-v4-20261013/grass.webp' },
   {
@@ -73,6 +74,7 @@ export const terrainTextures = [
     thumbnail: '/vtt/terrain-expansion-thumbs-20261015/dark-wood.webp',
   },
   ...medievalTerrainTextures,
+  ...referenceGrassTextures,
 ] as const;
 export type TerrainTextureId = (typeof terrainTextures)[number]['id'];
 export const terrainTextureIds = terrainTextures.map((t) => t.id) as [
@@ -84,4 +86,5 @@ export const woodlandFloorImage = '/vtt/terrain-v4-20261013/woodland-floor.webp'
 export const isGrassTexture = (id: string) =>
   id === 'grass' ||
   id === 'rocky-grass' ||
+  referenceGrassTextures.some((t) => t.id === id) ||
   medievalTerrainTextures.some((t) => t.id === id && t.group === 'grass');

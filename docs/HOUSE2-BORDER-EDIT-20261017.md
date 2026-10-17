@@ -1,5 +1,7 @@
 # House 2.0 — edição pela borda
 
+Atualização posterior de 17/10: o giro agora é livre em 360°, com alça centralizada, Shift para passos de 15° e ângulo decimal persistido pela migration 103. O registro abaixo descreve a primeira versão. Implementação e validação atuais em [HOUSE2-LANDSCAPE-CONTROLS-20261017.md](HOUSE2-LANDSCAPE-CONTROLS-20261017.md).
+
 Selecionar uma mobília própria mostra oito alças na moldura e um controle circular de giro. Arrastar a moldura move o item; arrastar uma alça redimensiona proporcionalmente, mantendo o lado ou canto oposto fixo. O giro continua em passos de 90°.
 
 As alças acompanham o zoom com tamanho constante na tela e aceitam mouse e toque. Pelo teclado, foque uma alça e use as setas ou +/− para mudar o tamanho em 5 pontos percentuais. No controle de giro, Enter/espaço ou as setas giram a peça. Esc cancela o gesto em andamento; cancelamento de ponteiro ou perda de captura também restaura o rascunho anterior.

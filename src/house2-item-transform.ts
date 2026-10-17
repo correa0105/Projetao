@@ -1,4 +1,9 @@
-import { house2Clamp, type House2Layout, type House2Plot } from '../shared/house-v2';
+import {
+  house2Clamp,
+  house2RotatedSize,
+  type House2Layout,
+  type House2Plot,
+} from '../shared/house-v2';
 
 type Item = House2Layout['items'][number];
 type Plot = Pick<House2Plot, 'x' | 'y' | 'width' | 'height'>;
@@ -37,10 +42,10 @@ export function house2ResizeFromBorder(
   const requested = scale + (local.x * vx + local.y * vy) / (vx * vx + vy * vy);
   const center = rotate({ x: vx / 2, y: vy / 2 }, item.rotation);
   const anchor = { x: item.x - center.x * scale, y: item.y - center.y * scale };
-  const turned = item.rotation % 180 !== 0;
+  const bounds = house2RotatedSize(size.width, size.height, item.rotation);
   const extent = {
-    x: (turned ? size.height : size.width) / 2,
-    y: (turned ? size.width : size.height) / 2,
+    x: bounds.width / 2,
+    y: bounds.height / 2,
   };
   let maximum = 3;
   for (const axis of ['x', 'y'] as const) {
@@ -63,17 +68,18 @@ export function house2RotateFromBorder(
   size: Size,
   start: Point,
   point: Point,
+  snap = false,
 ): Item {
   const angle =
     Math.atan2(point.y - item.y, point.x - item.x) - Math.atan2(start.y - item.y, start.x - item.x);
-  const rotation = ((item.rotation + Math.round(angle / (Math.PI / 2)) * 90 + 720) %
-    360) as Item['rotation'];
-  const turned = rotation % 180 !== 0;
-  const scale = Math.min(
-    item.scale ?? 1,
-    plot.width / (turned ? size.height : size.width),
-    plot.height / (turned ? size.width : size.height),
-  );
+  const degrees = item.rotation + (angle * 180) / Math.PI;
+  return house2SetItemRotation(plot, item, size, snap ? Math.round(degrees / 15) * 15 : degrees);
+}
+
+export function house2SetItemRotation(plot: Plot, item: Item, size: Size, degrees: number): Item {
+  const rotation = (Math.round((((degrees % 360) + 360) % 360) * 100) / 100) % 360;
+  const bounds = house2RotatedSize(size.width, size.height, rotation);
+  const scale = Math.min(item.scale ?? 1, plot.width / bounds.width, plot.height / bounds.height);
   const next = { ...item, rotation, scale };
   return { ...next, ...house2Clamp(plot, next, size.width * scale, size.height * scale) } as Item;
 }

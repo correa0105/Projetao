@@ -16,7 +16,7 @@ export function House2Ground({ plots }: { plots: House2Plot[] }) {
               width="4"
               height="4"
             >
-              <image href={t.image} width="4" height="4" />
+              <image href={t.image} width="4" height="4" preserveAspectRatio="xMidYMid slice" />
             </pattern>
           ))}
         {plots.map((p) => (

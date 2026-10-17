@@ -1,4 +1,6 @@
 import { house2BorderHandles, type House2BorderHandle } from './house2-item-transform';
+import { house2RotatedSize } from '../shared/house-v2';
+import { RotateCw } from 'lucide-react';
 
 const names: Record<House2BorderHandle, string> = {
   nw: 'superior esquerda',
@@ -24,10 +26,11 @@ export function House2ItemBorder({
   pixel: number;
   rotation: number;
   resize: (delta: number) => void;
-  turn: (direction: -1 | 1) => void;
+  turn: (degrees: number) => void;
 }) {
   const halfW = width / 2,
     halfH = height / 2;
+  const top = -house2RotatedSize(width, height, rotation).height / 2;
   return (
     <g className="h2-item-border" aria-label="Editar pelas bordas do item">
       <rect
@@ -39,7 +42,14 @@ export function House2ItemBorder({
         height={height}
       />
       <rect className="h2-item-border-line" x={-halfW} y={-halfH} width={width} height={height} />
-      <line className="h2-item-border-line" x1={0} y1={-halfH} x2={0} y2={-halfH - 28 * pixel} />
+      <line
+        className="h2-item-border-line"
+        transform={`rotate(${-rotation})`}
+        x1={0}
+        y1={top}
+        x2={0}
+        y2={top - 32 * pixel}
+      />
       {Object.entries(house2BorderHandles).map(([key, [sx, sy]]) => {
         const handle = key as House2BorderHandle;
         const angle = ((Math.atan2(sy, sx) * 180) / Math.PI + rotation + 360) % 180;
@@ -76,19 +86,19 @@ export function House2ItemBorder({
         role="button"
         tabIndex={0}
         aria-label="Girar pela borda do item"
-        transform={`translate(0 ${-halfH - 28 * pixel}) scale(${pixel})`}
+        transform={`rotate(${-rotation}) translate(0 ${top - 32 * pixel}) scale(${pixel})`}
         onKeyDown={(e) => {
           if (['ArrowLeft', 'ArrowDown', 'ArrowRight', 'ArrowUp', 'Enter', ' '].includes(e.key)) {
             e.preventDefault();
             e.stopPropagation();
-            turn(['ArrowLeft', 'ArrowDown'].includes(e.key) ? -1 : 1);
+            turn((['ArrowLeft', 'ArrowDown'].includes(e.key) ? -1 : 1) * (e.shiftKey ? 15 : 1));
           }
         }}
       >
-        <title>Arraste para girar em passos de 90°. Enter ou setas também giram.</title>
-        <circle className="h2-handle-hit" r={14} />
-        <circle className="h2-handle-mark" r={9} />
-        <path className="h2-turn-icon" d="M-4 1 A4.5 4.5 0 1 1 3 -3 M3 -6 V-3 H0" />
+        <title>Arraste para girar livremente em 360°. Setas: 1°. Shift: passos de 15°.</title>
+        <circle className="h2-handle-hit" r={18} />
+        <circle className="h2-handle-mark" r={12} />
+        <RotateCw className="h2-turn-icon" x={-7} y={-7} width={14} height={14} strokeWidth={1.8} />
       </g>
     </g>
   );

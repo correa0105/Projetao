@@ -290,6 +290,56 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
       },
     );
     await t.test(
+      'giro livre decimal persiste, respeita propriedade e não permite atravessar o lote',
+      async () => {
+        const current = (await req('/house-v2/neighborhoods/' + n, owner)).data;
+        const p = current.plots.find((p: any) => p.id === lot.id);
+        const body = {
+          revision: p.revision,
+          house: { x: p.house_x, y: p.house_y, rotation: p.house_rotation },
+          items: [{ id: item, x: p.x + 6, y: p.y + 6, rotation: 37.25, scale: 1.6 }],
+        };
+        assert.equal(
+          (await req(`/house-v2/plots/${lot.id}/layout`, other, 'PUT', body)).status,
+          403,
+        );
+        assert.equal(
+          (await req(`/house-v2/plots/${lot.id}/layout`, owner, 'PUT', body)).status,
+          200,
+        );
+        const saved = (await req('/house-v2', owner)).data.inventory.find(
+          (i: any) => i.id === item,
+        );
+        assert.equal(saved.rotation, 37.25);
+        assert.equal(typeof saved.rotation, 'number');
+        assert.equal(
+          (
+            await req(`/house-v2/plots/${lot.id}/layout`, owner, 'PUT', {
+              ...body,
+              revision: p.revision + 1,
+              items: [{ ...body.items[0], x: p.x + 0.8, rotation: 45 }],
+            })
+          ).status,
+          400,
+        );
+        for (const rotation of [-1, 360, 720])
+          assert.equal(
+            (
+              await req(`/house-v2/plots/${lot.id}/layout`, owner, 'PUT', {
+                ...body,
+                revision: p.revision + 1,
+                items: [{ ...body.items[0], rotation }],
+              })
+            ).status,
+            400,
+          );
+        assert.equal(
+          (await req('/house-v2', owner)).data.inventory.find((i: any) => i.id === item).rotation,
+          37.25,
+        );
+      },
+    );
+    await t.test(
       'pintura persiste, recorta no próprio terreno e mantém ownership e clientes antigos',
       async () => {
         scene = (await req('/house-v2/neighborhoods/' + n, owner)).data;

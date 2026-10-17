@@ -70,9 +70,9 @@ test('wagon preserves its offset and follows translation and rotation, then deta
   assert.equal(wagon.layer, 'tokens');
 });
 
-test('all 38 terrain materials persist, including the 20 medieval brushes and previous 18', () => {
-  assert.equal(terrainTextures.length, 38);
-  assert.equal(new Set(terrainTextures.map((t) => t.image)).size, 38);
+test('all 42 terrain materials persist, including four reference grasses and the previous 38', () => {
+  assert.equal(terrainTextures.length, 42);
+  assert.equal(new Set(terrainTextures.map((t) => t.image)).size, 42);
   for (const material of terrainTextures) {
     const stroke = terrainStrokeSchema.parse({
       id: randomUUID(),

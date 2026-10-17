@@ -5,10 +5,10 @@ import {
   villageTextures,
   villageScenery,
   villageRiver,
-  villageLanePoints,
   villageGrassVariants,
   villageGrassPatches,
 } from '../shared/house-village-scenery';
+import { villageLanePaths, villageConnection, villageWell } from '../shared/house-village-paths';
 import {
   house2World,
   house2DoorPoint,
@@ -17,12 +17,6 @@ import {
   type House2Plot,
 } from '../shared/house-v2';
 
-const lanes = [
-  'M 50 185 C 46 162 49 142 44 118 C 40 101 26 88 25 69 C 23 58 34 52 52 57 C 70 61 80 73 97 81 C 109 92 102 110 110 132 L 119 155',
-  'M 32 99 C 46 99 50 109 65 112 C 81 114 95 114 107 106',
-  'M 44 118 C 61 114 67 117 71 128',
-  'M 52 57 C 57 67 62 67 65 77',
-];
 export function House2Village({ plots }: { plots: House2Plot[] }) {
   const scenery = useMemo(() => villageScenery(plots), [plots]);
   return (
@@ -38,6 +32,7 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
           >
             <image
               href={image}
+              preserveAspectRatio="xMidYMid slice"
               width={name === 'grass' ? 10 : name === 'earth' ? 3.5 : 8}
               height={name === 'grass' ? 10 : name === 'earth' ? 3.5 : 8}
             />
@@ -50,7 +45,7 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
           <feGaussianBlur stdDeviation="2.6" />
         </filter>
         {villageGrassVariants.map((image, index) => (
-          <g key={image}>
+          <g key={index}>
             <pattern
               id={'h2-grass-detail-' + index}
               width={10 + index * 2}
@@ -58,7 +53,12 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
               patternUnits="userSpaceOnUse"
               patternTransform={`rotate(${index * 71 + 19})`}
             >
-              <image href={image} width={10 + index * 2} height={10 + index * 2} />
+              <image
+                href={image}
+                width={10 + index * 2}
+                height={10 + index * 2}
+                preserveAspectRatio="xMidYMid slice"
+              />
             </pattern>
             <mask
               id={'h2-grass-area-' + index}
@@ -100,12 +100,13 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
           height={200}
           fill={`url(#h2-grass-detail-${index})`}
           mask={`url(#h2-grass-area-${index})`}
+          opacity={index === 0 ? 0.12 : index === 1 ? 0.1 : 0.06}
         />
       ))}
-      <House2GroundPaint d={villageRiver} width={11} material="earth" opacity={0.8} />
+      <House2GroundPaint d={villageRiver} width={9.2} material="earth" opacity={0.55} />
       <House2GroundPaint d={villageRiver} width={7.5} material="water" />
       <g fill="none" strokeLinecap="round" strokeLinejoin="round">
-        {lanes.map((d) => (
+        {villageLanePaths.map((d) => (
           <House2GroundPaint key={d} d={d} width={2.7} material="earth" />
         ))}
         {plots.map((p) => {
@@ -116,21 +117,22 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
           const a = (placement.rotation * Math.PI) / 180,
             edge = { x: door.x - Math.sin(a) * 3, y: door.y + Math.cos(a) * 3 };
           // Paths are scenery; they do not move a fixed house or alter anyone's inventory.
-          const joins = villageLanePoints;
-          const nearest = joins.reduce((a, b) =>
-            Math.hypot(b[0] - edge.x, b[1] - edge.y) < Math.hypot(a[0] - edge.x, a[1] - edge.y)
-              ? b
-              : a,
-          );
           return (
             <House2GroundPaint
               key={p.id}
-              d={`M ${nearest[0]} ${nearest[1]} Q ${(nearest[0] + edge.x) / 2 + 0.5} ${(nearest[1] + edge.y) / 2 - 1} ${edge.x} ${edge.y} L ${door.x} ${door.y}`}
+              d={`${villageConnection(edge)} L ${door.x} ${door.y}`}
               material="earth"
               width={1.65}
             />
           );
         })}
+        <House2GroundPaint d={villageConnection(villageWell)} material="earth" width={1.65} />
+        <House2GroundPaint
+          d="M 59 78.2 Q 60 77.5 61 78"
+          material="earth"
+          width={3.4}
+          opacity={0.7}
+        />
       </g>
       <g data-house2-scenery="overhead">
         {scenery.map((s) => (
@@ -148,11 +150,18 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
           </g>
         ))}
       </g>
-      <g transform="translate(60 78)">
-        <circle r="2.1" fill="url(#h2-village-earth)" opacity={0.7} />
-        <circle r="1.05" fill="url(#h2-village-stone)" stroke="#514d40" strokeWidth=".13" />
-        <circle r=".66" fill="#172022" stroke="#c5c4ab" strokeWidth=".09" />
-        <path d="M-1.05 0H1.05" stroke="#53412a" strokeWidth=".18" />
+      <g
+        data-house2-well="true"
+        transform={`translate(${villageWell.x} ${villageWell.y})`}
+        filter="url(#h2-shadow-rock)"
+      >
+        <image
+          href="/vtt/medieval-expansion-20261017/outdoor-021.webp"
+          x={-1.55}
+          y={-1.55}
+          width={3.1}
+          height={3.1}
+        />
       </g>
     </g>
   );

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useId, useMemo } from 'react';
 
 const outlines = new Map<string, string>();
 function outline(d: string, width: number) {
@@ -19,12 +19,22 @@ function outline(d: string, width: number) {
     const magnitude = Math.hypot(b.x - a.x, b.y - a.y) || 1,
       nx = -(b.y - a.y) / magnitude,
       ny = (b.x - a.x) / magnitude;
-    const grit = Math.sin(p.x * 7.3 + p.y * 11.7) * 0.055 + Math.sin(p.x * 2.7 - p.y * 3.1) * 0.075;
+    // Broad, low-amplitude variation avoids the old repeating saw-tooth shoreline.
+    const grit = Math.sin(at * 0.73 + 1.4) * 0.025 + Math.sin(at * 1.31) * 0.015;
     const radius = width * (0.5 + grit);
     left.push(`${(p.x + nx * radius).toFixed(3)} ${(p.y + ny * radius).toFixed(3)}`);
     right.push(`${(p.x - nx * radius).toFixed(3)} ${(p.y - ny * radius).toFixed(3)}`);
   }
-  const result = 'M' + left.join(' L') + ' L' + right.reverse().join(' L') + ' Z';
+  // Semicircular caps extend beyond the centerline endpoints instead of cutting them square.
+  const endRadius =
+    width * (0.5 + Math.sin(length * 0.73 + 1.4) * 0.025 + Math.sin(length * 1.31) * 0.015);
+  const startRadius = width * (0.5 + Math.sin(1.4) * 0.025);
+  const result =
+    'M' +
+    left.join(' L') +
+    ` A ${endRadius} ${endRadius} 0 0 0 ` +
+    right.reverse().join(' L') +
+    ` A ${startRadius} ${startRadius} 0 0 0 ${left[0]} Z`;
   if (outlines.size > 500) outlines.clear();
   outlines.set(key, result);
   return result;
@@ -41,27 +51,37 @@ export function House2GroundPaint({
   material: string;
   opacity?: number;
 }) {
-  const rings = useMemo(
-    () =>
-      [
-        [1.24, 0.1],
-        [1.13, 0.18],
-        [1.03, 0.29],
-        [0.94, 0.55],
-        [0.85, 0.95],
-      ].map(([scale, alpha]) => ({ d: outline(d, width * scale), alpha })),
+  const id = useId().replaceAll(':', ''),
+    mask = 'h2-ground-mask-' + id,
+    filter = 'h2-ground-feather-' + id;
+  const shapes = useMemo(
+    () => ({ edge: outline(d, width), paint: outline(d, width * 1.6) }),
     [d, width],
   );
   return (
     <g
       data-ground-blend={material}
+      data-ground-centerline={d}
       opacity={opacity}
       fill={`url(#h2-village-${material})`}
       pointerEvents="none"
     >
-      {rings.map((ring, i) => (
-        <path key={i} d={ring.d} opacity={ring.alpha} />
-      ))}
+      <defs>
+        <filter
+          id={filter}
+          x="-30%"
+          y="-30%"
+          width="160%"
+          height="160%"
+          colorInterpolationFilters="sRGB"
+        >
+          <feGaussianBlur stdDeviation={Math.min(0.24, width * 0.085)} />
+        </filter>
+        <mask id={mask} style={{ maskType: 'alpha' }} x="-30%" y="-30%" width="160%" height="160%">
+          <path d={shapes.edge} fill="white" filter={`url(#${filter})`} />
+        </mask>
+      </defs>
+      <path d={shapes.paint} mask={`url(#${mask})`} />
     </g>
   );
 }

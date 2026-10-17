@@ -13,13 +13,13 @@ const item = {
   id: '65e2dc4d-b2ad-4ce9-818c-c432b7978861',
   x: 13,
   y: 16,
-  rotation: 0 as 0 | 90 | 180 | 270,
+  rotation: 0,
   scale: 1,
 };
 const size = { width: 4, height: 2 };
 
 test('corner resize preserves proportions and the opposite corner, including rotated items', () => {
-  for (const rotation of [0, 90, 180, 270] as const) {
+  for (const rotation of [0, 13, 37.25, 90, 127.25, 180, 270, 359.9]) {
     const radians = (rotation * Math.PI) / 180;
     const delta = {
       x: 2 * Math.cos(radians) - Math.sin(radians),
@@ -27,7 +27,7 @@ test('corner resize preserves proportions and the opposite corner, including rot
     };
     const initial = { ...item, rotation };
     const next = house2ResizeFromBorder(plot, initial, size, 'se', delta);
-    assert.equal(next.scale, 1.5);
+    assert(Math.abs(next.scale! - 1.5) < 1e-10);
     const corner = (p: typeof item) => ({
       x: p.x - 2 * p.scale * Math.cos(radians) + p.scale * Math.sin(radians),
       y: p.y - 2 * p.scale * Math.sin(radians) - p.scale * Math.cos(radians),
@@ -38,7 +38,7 @@ test('corner resize preserves proportions and the opposite corner, including rot
 });
 
 test('all eight borders stop at the lot limits and at the minimum size in every orientation', () => {
-  for (const rotation of [0, 90, 180, 270] as const)
+  for (const rotation of [0, 13, 37.25, 90, 127.25, 180, 270, 359.9])
     for (const handle of Object.keys(house2BorderHandles) as House2BorderHandle[]) {
       for (const delta of [
         { x: 500, y: 800 },
@@ -54,10 +54,18 @@ test('all eight borders stop at the lot limits and at the minimum size in every 
     }
 });
 
-test('rotation handle snaps by quarters, wraps across zero and keeps large items inside', () => {
+test('rotation handle is continuous, optionally snaps and keeps the rotated sprite inside', () => {
   const start = { x: item.x, y: item.y - 3 };
   const next = house2RotateFromBorder(plot, item, size, start, { x: item.x + 3, y: item.y });
   assert.equal(next.rotation, 90);
+  const angle = (37.25 * Math.PI) / 180;
+  const point = { x: item.x + 3 * Math.sin(angle), y: item.y - 3 * Math.cos(angle) };
+  assert.equal(house2RotateFromBorder(plot, item, size, start, point).rotation, 37.25);
+  assert.equal(house2RotateFromBorder(plot, item, size, start, point, true).rotation, 30);
+  assert.equal(
+    house2RotateFromBorder(plot, { ...item, rotation: 350 }, size, start, point).rotation,
+    27.25,
+  );
   assert.equal(
     house2RotateFromBorder(plot, { ...item, rotation: 270 }, size, start, {
       x: item.x + 3,

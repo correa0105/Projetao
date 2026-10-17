@@ -2,6 +2,9 @@ import 'dotenv/config';
 import { chromium, expect, type BrowserContext } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import sharp from 'sharp';
+import { referenceGrassTextures, house2DefaultGrassImage } from '../shared/reference-grass';
+import { terrainTextures } from '../shared/vtt-terrain';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco descartável obrigatório.');
 const origin = 'http://localhost:3074';
@@ -97,6 +100,57 @@ try {
     );
   });
   await expect(page.locator('[data-grass-variant]')).toHaveCount(3);
+  await expect(page.locator('#h2-village-grass image')).toHaveAttribute(
+    'href',
+    house2DefaultGrassImage,
+  );
+  await expect(page.locator('[data-house2-well] image')).toHaveAttribute(
+    'href',
+    '/vtt/medieval-expansion-20261017/outdoor-021.webp',
+  );
+  expect(
+    await page
+      .locator('[data-ground-blend] path')
+      .evaluateAll((paths) => paths.every((p) => (p.getAttribute('d') || '').includes(' A '))),
+  ).toBe(true);
+  const originalView = (await page.locator('.h2-map').getAttribute('viewBox'))!;
+  const connections = await page.locator('[data-ground-centerline]').evaluateAll((groups) => {
+    const lines = groups.map((g) => g.getAttribute('data-ground-centerline')!);
+    const lanes = lines.slice(2, 6).map((d) => {
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', d);
+      return path;
+    });
+    return lines.slice(6, 19).map((d) => {
+      const start = /^M ([\d.e+-]+) ([\d.e+-]+)/.exec(d)!;
+      const x = +start[1],
+        y = +start[2];
+      let distance = Infinity;
+      for (const lane of lanes) {
+        const length = lane.getTotalLength();
+        for (let at = 0; at <= length; at += 0.03) {
+          const p = lane.getPointAtLength(at);
+          distance = Math.min(distance, Math.hypot(x - p.x, y - p.y));
+        }
+      }
+      return distance;
+    });
+  });
+  expect(connections).toHaveLength(13);
+  expect(connections.every((distance) => distance < 0.04)).toBe(true);
+  for (const [name, viewBox] of [
+    ['river-banks', '122 50 23 38'],
+    ['well-and-paths', '47 67 30 20'],
+    ['house-paths', '25 25 75 52'],
+  ]) {
+    await page
+      .locator('.h2-map')
+      .evaluate((svg, view) => svg.setAttribute('viewBox', view), viewBox);
+    await page.screenshot({ path: `test-results/house2/${name}.png` });
+  }
+  await page
+    .locator('.h2-map')
+    .evaluate((svg, view) => svg.setAttribute('viewBox', view), originalView);
   const checkCamera = async () => {
     const [x, y, w, h] = (await page.locator('.h2-map').getAttribute('viewBox'))!
       .split(' ')
@@ -136,11 +190,61 @@ try {
     'data-house2-day-phase',
     'afternoon',
   );
+  await page.getByRole('button', { name: 'Fechar Vizinhança', exact: true }).click();
+  const printButton = page.getByRole('button', {
+    name: 'Print da House 2.0 em alta qualidade',
+    exact: true,
+  });
+  for (const viewport of [
+    { width: 1920, height: 1080 },
+    { width: 1440, height: 900 },
+    { width: 768, height: 1024 },
+    { width: 390, height: 844 },
+    { width: 320, height: 568 },
+  ]) {
+    await page.setViewportSize(viewport);
+    const boxes = await Promise.all(
+      [
+        page.locator('.h2-world-heading'),
+        page.locator('.h2-clock-display'),
+        printButton,
+        trigger,
+      ].map((node) => node.boundingBox()),
+    );
+    for (let i = 0; i < boxes.length; i++)
+      for (let j = i + 1; j < boxes.length; j++) {
+        const a = boxes[i]!,
+          b = boxes[j]!;
+        expect(
+          Math.max(0, Math.min(a.x + a.width, b.x + b.width) - Math.max(a.x, b.x)) *
+            Math.max(0, Math.min(a.y + a.height, b.y + b.height) - Math.max(a.y, b.y)),
+        ).toBe(0);
+      }
+    await expect(printButton).toBeVisible();
+    await page.screenshot({ path: `test-results/house2/header-${viewport.width}.png` });
+  }
+  await page.setViewportSize({ width: 1440, height: 900 });
+  let downloads = 0;
+  page.on('download', () => downloads++);
+  const downloadPromise = page.waitForEvent('download', { timeout: 45000 });
+  await printButton.click();
+  const download = await downloadPromise.catch(async (error) => {
+    console.error('House 2.0 capture:', await page.locator('.h2-world-notice').textContent());
+    throw error;
+  });
+  await download.saveAs('test-results/house2/capture.png');
+  const capture = await sharp('test-results/house2/capture.png').metadata();
+  expect([capture.width, capture.height, capture.format]).toEqual([5760, 3600, 'png']);
+  expect(
+    (await sharp('test-results/house2/capture.png').stats()).channels.some((c) => c.stdev > 10),
+  ).toBe(true);
   await pool.query(
     'UPDATE "user" SET administrador=0 WHERE id=(SELECT user_id FROM characters WHERE id=$1)',
     [hero.id],
   );
-  await page.getByRole('button', { name: 'Fechar Vizinhança', exact: true }).click();
+  await printButton.click();
+  await expect(page.locator('.h2-world-notice')).toContainText('exclusiva de administradores');
+  expect(downloads).toBe(1);
   const p = page.locator('.h2-plot').first(),
     plotId =
       (await p.getAttribute('data-house2-plot')) ||
@@ -252,13 +356,14 @@ try {
     `translate(${saved.x} ${saved.y}) rotate(90)`,
   );
   // Edit the actual SVG border, including the rotated corner and touch input.
-  await expect(item.locator('[data-house2-handle]')).toHaveCount(9);
+  const border = page.locator(`[data-house2-border-piece="${itemId}"]`);
+  await expect(border.locator('[data-house2-handle]')).toHaveCount(9);
   await page.getByLabel('Posição X', { exact: true }).fill(String(lot.x + lot.width / 2));
   await page.getByLabel('Posição Y', { exact: true }).fill(String(lot.y + lot.height / 2));
   await page.getByLabel('Tamanho do item', { exact: true }).fill('100');
   await page.getByRole('button', { name: 'Fechar Minha coleção', exact: true }).click();
   const image = item.locator('image'),
-    corner = item.locator('[data-house2-handle="se"]');
+    corner = border.locator('[data-house2-handle="se"]');
   const naturalWidth = Number(await image.getAttribute('width'));
   const center = async (locator: typeof item) => {
     const b = (await locator.boundingBox())!;
@@ -274,16 +379,26 @@ try {
   await page.mouse.up();
   const enlargedWidth = Number(await image.getAttribute('width'));
   expect(enlargedWidth).toBeGreaterThan(naturalWidth);
-  const turnHandle = item.locator('[data-house2-handle="rotate"]');
+  const turnHandle = border.locator('[data-house2-handle="rotate"]');
   const pivot = await center(image),
     turnFrom = await center(turnHandle);
+  expect(Math.abs(turnFrom.x - pivot.x)).toBeLessThan(0.5);
+  const icon = await center(turnHandle.locator('svg'));
+  expect(Math.hypot(icon.x - turnFrom.x, icon.y - turnFrom.y)).toBeLessThan(0.5);
+  const angle = (37.25 * Math.PI) / 180,
+    vx = turnFrom.x - pivot.x,
+    vy = turnFrom.y - pivot.y;
   await page.mouse.move(turnFrom.x, turnFrom.y);
   await page.mouse.down();
-  await page.mouse.move(pivot.x - (turnFrom.y - pivot.y), pivot.y + (turnFrom.x - pivot.x), {
-    steps: 8,
-  });
+  await page.mouse.move(
+    pivot.x + vx * Math.cos(angle) - vy * Math.sin(angle),
+    pivot.y + vx * Math.sin(angle) + vy * Math.cos(angle),
+    {
+      steps: 8,
+    },
+  );
   await page.mouse.up();
-  await expect(item).toHaveAttribute('transform', /rotate\(180\)/);
+  await expect(item).toHaveAttribute('transform', /rotate\(127.25\)/);
   // A real touch gesture must resize without panning the camera.
   const cdp = await context.newCDPSession(page);
   const touchFrom = await center(corner),
@@ -312,7 +427,7 @@ try {
     (i: any) => i.id === itemId,
   );
   expect(borderSaved.scale).toBeGreaterThan(1);
-  expect(borderSaved.rotation).toBe(180);
+  expect(borderSaved.rotation).toBe(127.25);
   // Interrupted gestures restore exactly the state from before the gesture.
   const beforeCancel = await image.getAttribute('width'),
     cancelFrom = await center(corner);
@@ -330,7 +445,7 @@ try {
   await page.getByRole('button', { name: 'Entrar na casa', exact: true }).click();
   await tool('Minha coleção');
   await page.getByRole('button', { name: /Cadeira de madeira.*Ajustar/ }).click();
-  await expect(page.getByLabel('Ângulo do objeto', { exact: true })).toHaveText('180°');
+  await expect(page.getByLabel('Ângulo do objeto', { exact: true })).toHaveText('127.25°');
   expect(Number(await image.getAttribute('width'))).toBeCloseTo(
     naturalWidth * borderSaved.scale,
     6,
@@ -338,7 +453,7 @@ try {
   await page.getByRole('button', { name: 'Fechar Minha coleção', exact: true }).click();
   await turnHandle.focus();
   await page.keyboard.press('ArrowLeft');
-  await expect(item).toHaveAttribute('transform', /rotate\(90\)/);
+  await expect(item).toHaveAttribute('transform', /rotate\(126.25\)/);
   await corner.focus();
   await page.keyboard.press('ArrowUp');
   expect(Number(await image.getAttribute('width'))).toBeGreaterThan(
@@ -349,12 +464,17 @@ try {
   await expect(page.locator('.h2-world-notice')).toContainText('Terreno salvo');
   await tool('Minha coleção');
   await page.getByRole('button', { name: /Cadeira de madeira.*Ajustar/ }).click();
+  await page.getByLabel('Rotação livre do item', { exact: true }).fill('90');
+  await page.getByRole('button', { name: 'Salvar', exact: true }).click();
+  await expect(page.locator('.h2-world-notice')).toContainText('Terreno salvo');
   await page.getByRole('button', { name: 'Guardar', exact: true }).click();
   await page.getByRole('button', { name: 'Descartar', exact: true }).click();
   await page.getByRole('button', { name: 'Fechar Minha coleção', exact: true }).click();
   await tool('Pintar terreno');
-  await expect(page.locator('.h2-ground-textures button')).toHaveCount(38);
-  await page.getByRole('button', { name: 'Grama de prado', exact: true }).click();
+  await expect(page.locator('.h2-ground-textures button')).toHaveCount(terrainTextures.length);
+  for (const texture of referenceGrassTextures)
+    await expect(page.getByRole('button', { name: texture.name, exact: true })).toHaveCount(1);
+  await page.getByRole('button', { name: 'Grama clara rala', exact: true }).click();
   const paintAt = await page.locator('.h2-map').evaluate((node, p) => {
     const svg = node as unknown as SVGSVGElement,
       at = svg.createSVGPoint();
@@ -376,7 +496,7 @@ try {
     await request(context, '/house-v2/neighborhoods/' + n, undefined, 'GET')
   ).plots.find((p: any) => p.id === plotId);
   expect(painted.ground.length).toBe(1);
-  expect(painted.ground[0].material).toBe('grass-meadow');
+  expect(painted.ground[0].material).toBe('grass-reference-sparse');
   expect(painted.ground[0].points.length).toBeGreaterThan(1);
   await page.getByRole('button', { name: 'Desfazer traço', exact: true }).click();
   await page.getByRole('button', { name: 'Descartar', exact: true }).click();
@@ -460,6 +580,9 @@ try {
   await expect(peer.getByText(/somente visita/)).toBeVisible();
   await expect(peer.getByRole('button', { name: 'Mover minha casa' })).toHaveCount(0);
   await expect(peer.locator('[data-house2-handle]')).toHaveCount(0);
+  await expect(
+    peer.getByRole('button', { name: 'Print da House 2.0 em alta qualidade', exact: true }),
+  ).toHaveCount(0);
   const forbidden = await visitor.request.put(origin + `/api/house-v2/plots/${plotId}/layout`, {
     headers: { Origin: origin },
     data: {
@@ -489,6 +612,13 @@ try {
         drag: true,
         borderResize: true,
         borderRotation: true,
+        freeRotation: true,
+        connectedLandscape: true,
+        referenceGrassBrushes: referenceGrassTextures.length,
+        rotationControlCentered: true,
+        headerNoOverlap: true,
+        administratorCapture: true,
+        capture: { width: capture.width, height: capture.height, format: capture.format },
         touchResize: true,
         borderKeyboard: true,
         borderCancellation: true,

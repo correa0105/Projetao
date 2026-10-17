@@ -1,5 +1,7 @@
 # House 2.0 — vizinhanças experimentais
 
+Atualização de 17/10: a hora global editada pelo administrador governa a iluminação. O relógio fica abaixo do título, ao lado de Print em alta qualidade (exclusivo de administrador). Mobília tem giro livre, e as duas gramas de referência mais duas variações estão nos dois editores; Grama clara rala forma o chão da vizinhança. Margens, trilhas, poço e distribuição das pedras/plantas foram revisados. O histórico abaixo conserva as etapas anteriores. Ver [HOUSE2-LANDSCAPE-CONTROLS-20261017.md](HOUSE2-LANDSCAPE-CONTROLS-20261017.md).
+
 ## Acabamento e câmera — 16/10/2026
 
 A câmera começa próxima do vilarejo e limita a janela inteira ao quadrado de

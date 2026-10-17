@@ -360,24 +360,65 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
 .h2-door:focus-visible {
   outline: none;
 }
-.h2-world-heading {
+.h2-world-header {
   position: absolute;
-  top: 24px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
+  width: min(700px, calc(100% - 340px));
+  display: grid;
+  gap: 5px;
+  z-index: 4;
+  pointer-events: none;
+}
+.h2-world-heading {
   padding: 10px 24px;
   display: grid;
   gap: 6px;
   text-align: center;
   background: linear-gradient(90deg, #15171000, #151710e8 20%, #151710e8 80%, #15171000);
   pointer-events: none;
-  max-width: 55%;
+  min-width: 0;
+}
+.h2-world-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.h2-capture-button {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 11px;
+  border: 1px solid #b0946077;
+  border-radius: 6px;
+  background: #15212bf2;
+  color: #ead6ae;
+  font-size: 12px;
+  cursor: pointer;
+}
+.h2-capture-button:hover,
+.h2-capture-button:focus-visible {
+  background: #3c3324;
+  border-color: #c7a666;
+}
+.h2-capture-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.h2-capture-short {
+  display: none;
 }
 .h2-world-heading strong {
   font:
     22px/1.15 Georgia,
     serif;
   color: #e4d8bd;
+  overflow-wrap: anywhere;
 }
 .h2-world-heading span {
   font-size: 9px;
@@ -658,12 +699,12 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
   .h2-neighborhoods {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .h2-world-header {
+    top: 72px;
+    width: calc(100% - 32px);
+  }
   .h2-world-heading {
-    left: auto;
-    right: 18px;
-    transform: none;
     padding: 6px 12px;
-    max-width: 50%;
   }
   .h2-world-heading strong {
     font-size: 17px;
@@ -707,10 +748,16 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
     top: 15px;
   }
   .h2-world-heading {
-    top: 15px;
-    right: 6px;
     padding: 4px;
-    max-width: 44%;
+  }
+  .h2-world-header {
+    top: 64px;
+  }
+  .h2-capture-full {
+    display: none;
+  }
+  .h2-capture-short {
+    display: inline;
   }
   .h2-world-heading strong {
     font-size: 14px;
@@ -760,7 +807,7 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('/vtt/terrain-v4-20261013/grass.webp') center/320px 320px;
+  background: url('/vtt/reference-grass-20261017/grass-reference-sparse.webp') center/320px 320px;
   z-index: -1;
   pointer-events: none;
 }
@@ -936,12 +983,7 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
   font: inherit;
 }
 .h2-clock-display {
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  max-width: calc(100vw - 22rem);
+  max-width: 100%;
   padding: 0.45rem 0.8rem;
   border: 1px solid #7d684b80;
   border-radius: 0.5rem;
@@ -1000,8 +1042,6 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
 }
 @media (max-width: 650px) {
   .h2-clock-display {
-    top: 4.4rem;
-    max-width: calc(100vw - 1.5rem);
     font-size: 0.8rem;
   }
   .h2-ground-textures {

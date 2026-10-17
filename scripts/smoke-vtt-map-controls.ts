@@ -5,6 +5,8 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { newScene, newToken } from '../shared/vtt';
 import { vttProtocolVersion } from '../shared/vtt-protocol';
+import { referenceGrassTextures } from '../shared/reference-grass';
+import { terrainTextures } from '../shared/vtt-terrain';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco UUID descartável obrigatório.');
 const origin = 'http://localhost:3075';
@@ -252,6 +254,23 @@ try {
     .poll(async () => (await current()).tokens.find((t: any) => t.id === red.id).layer)
     .toBe('map');
   await page.screenshot({ path: 'test-results/vtt-map-controls/layers.png' });
+  await page.getByRole('button', { name: 'Brush do mapa', exact: true }).click();
+  await expect(page.locator('.vtt-terrain-textures button')).toHaveCount(terrainTextures.length);
+  for (const [index, texture] of referenceGrassTextures.entries()) {
+    await page.getByRole('button', { name: 'Textura: ' + texture.name, exact: true }).click();
+    const from = await screen(150 + index * 180, 550),
+      to = await screen(220 + index * 180, 550);
+    await page.mouse.move(from.x, from.y);
+    await page.mouse.down();
+    await page.mouse.move(to.x, to.y, { steps: 5 });
+    await page.mouse.up();
+    await expect
+      .poll(async () =>
+        (await current()).terrain.some((stroke: any) => stroke.texture === texture.id),
+      )
+      .toBe(true);
+  }
+  await page.screenshot({ path: 'test-results/vtt-map-controls/grass-brushes.png' });
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Capturar mapa em alta qualidade', exact: true }).click();
   const download = await downloadPromise,
@@ -267,6 +286,9 @@ try {
   await page.reload();
   await expect(board).toBeVisible();
   expect((await current()).tokens.find((t: any) => t.id === red.id).rotation).toBeCloseTo(105, 1);
+  expect((await current()).terrain.map((stroke: any) => stroke.texture)).toEqual(
+    referenceGrassTextures.map((t) => t.id),
+  );
   await peer.goto(origin + '/#vtt');
   await expect(peer.getByLabel('Tabuleiro da mesa', { exact: true })).toBeVisible();
   await expect(
@@ -275,7 +297,11 @@ try {
   await expect(peer.getByLabel('Camadas', { exact: true })).toHaveCount(0);
   await peer.getByRole('button', { name: 'Fichas', exact: true }).click();
   await peer.getByRole('button', { name: 'Colocar Mira no mapa', exact: true }).click();
+  await expect(
+    peer.getByRole('button', { name: 'Colocar Mira no mapa', exact: true }),
+  ).toBeEnabled();
   const playerBoard = peer.getByLabel('Tabuleiro da mesa', { exact: true });
+  await expect(playerBoard).toHaveAttribute('data-selection-count', '1');
   const pb = (await playerBoard.boundingBox())!;
   await peer.mouse.move(pb.x + pb.width / 2, pb.y + pb.height / 2);
   await peer.keyboard.down('Control');
@@ -345,6 +371,7 @@ try {
         readOnlySpectator: true,
         rosterPrivacy: true,
         administratorCapture: true,
+        referenceGrassBrushes: referenceGrassTextures.length,
         capture: { width: metadata.width, height: metadata.height, format: metadata.format },
         siteCharacterPreserved: true,
         errors,

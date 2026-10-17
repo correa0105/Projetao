@@ -42,17 +42,20 @@ import { house2DayPhases } from '../shared/house2-lighting';
 import { worldClockPhase, worldClockLabel } from '../shared/world-clock';
 import { useWorldClock } from './useWorldClock';
 import { House2Clock } from './House2Clock';
+import { House2Capture } from './House2Capture';
 import { House2Ground, House2GroundEditor } from './House2Ground';
 import { House2ItemBorder } from './House2ItemBorder';
 import {
   house2BorderHandles,
   house2ResizeFromBorder,
   house2RotateFromBorder,
+  house2SetItemRotation,
   type House2BorderHandle,
 } from './house2-item-transform';
 import { terrainTextures, type TerrainTextureId } from '../shared/vtt-terrain';
 import {
   house2Clamp,
+  house2RotatedSize,
   house2Furniture,
   house2Houses,
   house2Terrains,
@@ -325,7 +328,7 @@ export function House2({ character, user }: { character?: Character; user: User 
           id: i.id,
           x: i.x!,
           y: i.y!,
-          rotation: i.rotation as 0 | 90 | 180 | 270,
+          rotation: i.rotation,
           scale: i.scale ?? 1,
         })),
       }
@@ -446,13 +449,9 @@ export function House2({ character, user }: { character?: Character; user: User 
       (f) => f.id === directory?.inventory.find((i) => i.id === selectedPiece)?.catalog_id,
     );
     if (!p || !spec) return;
-    const nextRotation = ((p.rotation + rotation * 90 + 360) % 360) as 0 | 90 | 180 | 270;
-    const turned = nextRotation % 180 !== 0;
-    const scale = Math.min(
-      p.scale ?? 1,
-      plot.width / (turned ? spec.height : spec.width),
-      plot.height / (turned ? spec.width : spec.height),
-    );
+    const nextRotation = (p.rotation + rotation * 90 + 360) % 360;
+    const bounds = house2RotatedSize(spec.width, spec.height, nextRotation);
+    const scale = Math.min(p.scale ?? 1, plot.width / bounds.width, plot.height / bounds.height);
     const next = { ...p, x: p.x + dx, y: p.y + dy, rotation: nextRotation, scale };
     Object.assign(p, house2Clamp(plot, next, spec.width * scale, spec.height * scale));
     setDraft(structuredClone(d));
@@ -464,20 +463,25 @@ export function House2({ character, user }: { character?: Character; user: User 
         (f) => f.id === directory?.inventory.find((i) => i.id === selectedPiece)?.catalog_id,
       );
     if (!d || !piece || !spec || !plot || !Number.isFinite(value)) return;
-    const turned = piece.rotation % 180 !== 0;
+    const bounds = house2RotatedSize(spec.width, spec.height, piece.rotation);
     piece.scale = Math.max(
       0.25,
-      Math.min(
-        3,
-        value,
-        plot.width / (turned ? spec.height : spec.width),
-        plot.height / (turned ? spec.width : spec.height),
-      ),
+      Math.min(3, value, plot.width / bounds.width, plot.height / bounds.height),
     );
     Object.assign(
       piece,
       house2Clamp(plot, piece, spec.width * piece.scale, spec.height * piece.scale),
     );
+    setDraft(structuredClone(d));
+  }
+  function rotateItem(degrees: number) {
+    const d = startDraft(),
+      piece = d?.items.find((i) => i.id === selectedPiece);
+    const spec = house2Furniture.find(
+      (f) => f.id === directory?.inventory.find((i) => i.id === selectedPiece)?.catalog_id,
+    );
+    if (!d || !piece || !plot || !spec || !Number.isFinite(degrees)) return;
+    Object.assign(piece, house2SetItemRotation(plot, piece, spec, degrees));
     setDraft(structuredClone(d));
   }
   function positionItem(axis: 'x' | 'y', value: number) {
@@ -512,8 +516,13 @@ export function House2({ character, user }: { character?: Character; user: User 
   function pointerDown(e: ReactPointerEvent<SVGSVGElement>) {
     if (e.button !== 0 || busy || drag.current) return;
     if ((e.target as Element).closest('[data-house2-fixed]')) return;
-    const pieceElement = (e.target as Element).closest('[data-house2-piece]');
-    const id = pieceElement?.getAttribute('data-house2-piece') || undefined;
+    const pieceElement = (e.target as Element).closest(
+      '[data-house2-piece], [data-house2-border-piece]',
+    );
+    const id =
+      pieceElement?.getAttribute('data-house2-piece') ||
+      pieceElement?.getAttribute('data-house2-border-piece') ||
+      undefined;
     const p = world(e.clientX, e.clientY);
     const value = shownItems.find((i) => i.id === id);
     const edit =
@@ -547,7 +556,7 @@ export function House2({ character, user }: { character?: Character; user: User 
               id: id!,
               x: value.x!,
               y: value.y!,
-              rotation: value.rotation as 0 | 90 | 180 | 270,
+              rotation: value.rotation,
               scale: (value as { scale?: number }).scale ?? 1,
             },
             before: draft ? structuredClone(draft) : null,
@@ -591,7 +600,7 @@ export function House2({ character, user }: { character?: Character; user: User 
       Object.assign(
         piece,
         a.handle === 'rotate'
-          ? house2RotateFromBorder(plot, a.initial, spec, a.origin, p)
+          ? house2RotateFromBorder(plot, a.initial, spec, a.origin, p, e.shiftKey)
           : house2ResizeFromBorder(plot, a.initial, spec, a.handle, {
               x: p.x - a.origin.x,
               y: p.y - a.origin.y,
@@ -674,6 +683,11 @@ export function House2({ character, user }: { character?: Character; user: User 
   const selectedTransform =
     draft?.items.find((i) => i.id === selectedPiece) ??
     shownItems.find((i) => i.id === selectedPiece);
+  const borderItem =
+    canEdit && !busy && tool !== 'ground'
+      ? shownItems.find((i) => i.id === selectedPiece && i.plot_id === selected)
+      : undefined;
+  const borderSpec = house2Furniture.find((f) => f.id === borderItem?.catalog_id);
   const editor = canEdit && selectedPiece && (
     <div className="h2-piece-controls">
       <strong>
@@ -695,7 +709,9 @@ export function House2({ character, user }: { character?: Character; user: User 
           <div className="h2-item-rotation" role="group" aria-label="Rotação do objeto">
             <span>
               Rotação{' '}
-              <output aria-label="Ângulo do objeto">{selectedTransform?.rotation ?? 0}°</output>
+              <output aria-label="Ângulo do objeto">
+                {Number((selectedTransform?.rotation ?? 0).toFixed(2))}°
+              </output>
             </span>
             <div>
               <button
@@ -714,6 +730,19 @@ export function House2({ character, user }: { character?: Character; user: User 
               </button>
             </div>
           </div>
+          <label>
+            Ângulo livre
+            <input
+              aria-label="Rotação livre do item"
+              type="number"
+              min={0}
+              max={359.99}
+              step={0.1}
+              value={Number((selectedTransform?.rotation ?? 0).toFixed(2))}
+              disabled={busy}
+              onChange={(e) => rotateItem(e.target.valueAsNumber)}
+            />
+          </label>
           <label>
             Tamanho do item <output>{Math.round((selectedTransform?.scale ?? 1) * 100)}%</output>
             <input
@@ -1056,20 +1085,25 @@ export function House2({ character, user }: { character?: Character; user: User 
                   width={spec.width * item.scale}
                   height={spec.height * item.scale}
                 />
-                {selectedPiece === item.id && editable && !busy && tool !== 'ground' && (
-                  <House2ItemBorder
-                    width={spec.width * item.scale}
-                    height={spec.height * item.scale}
-                    pixel={boundedCamera.span / viewport.height}
-                    rotation={item.rotation}
-                    resize={(delta) => resizeItem(item.scale + delta)}
-                    turn={(direction) => adjust(direction)}
-                  />
-                )}
               </g>
             );
           })}
         </g>
+        {borderItem && borderSpec && (
+          <g
+            data-house2-border-piece={borderItem.id}
+            transform={`translate(${borderItem.x} ${borderItem.y}) rotate(${borderItem.rotation})`}
+          >
+            <House2ItemBorder
+              width={borderSpec.width * borderItem.scale}
+              height={borderSpec.height * borderItem.scale}
+              pixel={boundedCamera.span / viewport.height}
+              rotation={borderItem.rotation}
+              resize={(delta) => resizeItem(borderItem.scale + delta)}
+              turn={(delta) => rotateItem(borderItem.rotation + delta)}
+            />
+          </g>
+        )}
         <House2VillageRoofs
           plots={scene?.plots ?? []}
           interior={interior}
@@ -1140,10 +1174,28 @@ export function House2({ character, user }: { character?: Character; user: User 
             );
           })()}
       </svg>
-      <div className="h2-world-heading">
-        <strong>{scene?.neighborhood.name || 'Vizinhança'}</strong>
-        <span>200 × 200 · House 2.0 · testes</span>
-      </div>
+      <header className="h2-world-header">
+        <div className="h2-world-heading">
+          <strong>{scene?.neighborhood.name || 'Vizinhança'}</strong>
+          <span>200 × 200 · House 2.0 · testes</span>
+        </div>
+        <div className="h2-world-meta">
+          <div className="h2-clock-display" aria-label="Horário do mundo">
+            <time dateTime={worldClockLabel(worldClock.timeMs)}>
+              {worldClock.clock ? worldClockLabel(worldClock.timeMs) : '—:—'}
+            </time>
+            {' · '}
+            {house2DayPhases[dayPhase].name}
+          </div>
+          <House2Capture
+            map={mapRef}
+            administrator={user.administrador === 1}
+            name={scene?.neighborhood.name ?? 'House 2.0'}
+            disabled={busy || !scene}
+            notice={setNotice}
+          />
+        </div>
+      </header>
       <div className="h2-unified" ref={menuRef}>
         <button
           className="h2-menu-trigger"
@@ -1198,12 +1250,6 @@ export function House2({ character, user }: { character?: Character; user: User 
             </button>
           </nav>
         )}
-      </div>
-      <div className="h2-clock-display" aria-label="Horário do mundo">
-        <time dateTime={worldClockLabel(worldClock.timeMs)}>
-          {worldClock.clock ? worldClockLabel(worldClock.timeMs) : '—:—'}
-        </time>{' '}
-        · {house2DayPhases[dayPhase].name}
       </div>
       <div className="h2-map-controls">
         <button aria-label="Aproximar mapa" onClick={() => zoom(0.75)}>

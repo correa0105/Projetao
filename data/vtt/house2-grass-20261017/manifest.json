@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-17",
+  "defaultHouse2": "grass-reference-sparse",
+  "assets": [
+    {
+      "id": "grass-reference-dense",
+      "image": "/vtt/reference-grass-20261017/grass-reference-dense.webp",
+      "thumbnail": "/vtt/reference-grass-20261017/grass-reference-dense-thumb.webp",
+      "width": 1448,
+      "height": 1086,
+      "source": "exec-485b60cc-6ee1-4559-9ab8-ec30e3f5499d.png",
+      "mode": "built-in-imagegen-edge-repair",
+      "prompt": "Repair this grass texture for use as a seamless tile in a medieval top-down virtual tabletop. Keep the SAME dark muted olive-green color, SAME dense coverage of tiny delicate fine drawn grass blades, SAME narrow blade scale and illustrated style. Remove the thin black screenshot line at the very top and every trace of screenshot edging. Remove the tiny brown cropped patch at the top right. Extend only the same grass evenly across the whole image so all four edges tile seamlessly. Keep it flat, orthographic, evenly lit and homogeneous, with no objects, no large patches, no border or text. Do not brighten, thicken, stylize or otherwise redesign the grass. Square texture filling all pixels.",
+      "sha256": "9cde869f89edcd5b75fc861603209607ee331a711f8e3eff1aa26d362e4ab1fd"
+    },
+    {
+      "id": "grass-reference-meadow",
+      "image": "/vtt/reference-grass-20261017/grass-reference-meadow.webp",
+      "thumbnail": "/vtt/reference-grass-20261017/grass-reference-meadow-thumb.webp",
+      "width": 1119,
+      "height": 822,
+      "source": "codex-clipboard-a71eac03-4329-420d-94f4-09c79974a949.png",
+      "mode": "user-attachment",
+      "prompt": null,
+      "sha256": "989bd5fbeefcdfcf709341af3838198e424e8846c94e0c20e7533755e08d0966"
+    },
+    {
+      "id": "grass-reference-light",
+      "image": "/vtt/reference-grass-20261017/grass-reference-light.webp",
+      "thumbnail": "/vtt/reference-grass-20261017/grass-reference-light-thumb.webp",
+      "width": 1254,
+      "height": 1254,
+      "source": "exec-bcfae0c4-67e0-4daf-87a0-ba01db204cb2.png",
+      "mode": "built-in-imagegen",
+      "prompt": "Edit the referenced grass texture into a high quality seamless square tile for a top-down medieval virtual tabletop. Preserve exactly its illustrated finely drawn short grass blade style, tiny narrow blade scale and natural irregular directions. Make the overall green distinctly lighter, fresh soft spring green and yellow-green highlights, with muted olive shadows; avoid neon green. Keep the same dense even coverage. Flat orthographic overhead view, diffuse even daylight, no directional cast shadow, no horizon, no border, no objects, no flowers, no text. A continuous uniformly detailed grass surface that tiles seamlessly on all four edges, without a large repetitive patch pattern. Fill the entire square image. 1024x1024.",
+      "sha256": "ca2fae22b6f18f61ef9078a840fdeddff2db180bd74063642ac4436b6f095104"
+    },
+    {
+      "id": "grass-reference-sparse",
+      "image": "/vtt/reference-grass-20261017/grass-reference-sparse.webp",
+      "thumbnail": "/vtt/reference-grass-20261017/grass-reference-sparse-thumb.webp",
+      "width": 1254,
+      "height": 1254,
+      "source": "exec-fb494a96-3827-42a0-86be-79968694179d.png",
+      "mode": "built-in-imagegen",
+      "prompt": "Edit the referenced dark finely drawn grass texture to make a seamless square top-down medieval VTT terrain tile. Retain its delicate short individual grass blade illustration style and small blade scale, but use a natural lighter soft spring green with muted olive shading. Reduce blade density by about forty percent: small spaced low tufts with fine earthy muted green-brown soil visible between blades, evenly distributed micro gaps, no big bald patches, no repeating large blotches. This is a slightly sparse light green lawn, not lush dense grass, not hay, not a photographic lawn. Restrained saturation, avoid fluorescent yellow. Diffuse even daylight, orthographic overhead, seamless all four edges. Fill entire square, no perspective, horizon, cast shadow, frame, plants or objects. 1024x1024.",
+      "sha256": "23b0cb34be2e028544b872de6bf836357e670153a0dc23698568557b0610d0eb"
+    }
+  ],
+  "references": {
+    "fineGrass": "codex-clipboard-8479aa84-46cb-4e68-a315-7da3ca55e8a1.png",
+    "meadowGrass": "codex-clipboard-a71eac03-4329-420d-94f4-09c79974a949.png"
+  }
+}

@@ -2,17 +2,19 @@ import trees from './vtt-tree-catalog.json';
 import rocks from './vtt-rock-catalog.json';
 import plants from './vtt-plants-catalog.json';
 import type { House2Plot } from './house-v2';
+import { house2DefaultGrassImage, referenceGrassTextures } from './reference-grass';
+import { villageLaneSamples } from './house-village-paths';
 
 export const villageTextures = {
-  grass: '/vtt/terrain-v4-20261013/grass.webp',
+  grass: house2DefaultGrassImage,
   earth: '/vtt/terrain-expansion-20261015/packed-earth.webp',
   water: '/vtt/terrain-water-20261013/water.webp',
   stone: '/vtt/terrain-v3-20261013/stone.webp',
 };
 export const villageGrassVariants = [
-  '/house2/grass-short-20261016.webp',
-  '/house2/grass-tufts-20261016.webp',
-  '/house2/grass-clover-20261016.webp',
+  house2DefaultGrassImage,
+  referenceGrassTextures[2].image,
+  referenceGrassTextures[1].image,
 ];
 export const villageRiver =
   'M 140 -25 C 124 5 145 20 133 48 C 125 66 141 81 132 104 C 120 130 140 151 127 190';
@@ -84,8 +86,11 @@ export function villageScenery(plots: Pick<House2Plot, 'x' | 'y' | 'width' | 'he
       const woodland =
         x < -5 + Math.sin(y * 0.045) * 10 || y < 20 || y > 150 + Math.sin(x * 0.06) * 7 || x > 114;
       const tree = woodland && noise(id, 2) > 0.24;
-      if (!woodland && noise(id, 2) > 0.14) continue;
+      // The inhabited clearing stays open. Decorative rocks and plants belong to the woodland.
+      if (!woodland) continue;
+      if (!tree && x >= -5 && x <= 114 && y >= 20 && y <= 158) continue;
       const rock = !tree && noise(id, 3) > 0.68;
+      if (rock && noise(id, 3) <= 0.96) continue;
       const source = tree ? crowns : rock ? stones : shrubs;
       const asset = source[Math.floor(noise(id, 4) * source.length)];
       const size = tree
@@ -97,14 +102,14 @@ export function villageScenery(plots: Pick<House2Plot, 'x' | 'y' | 'width' | 'he
       if (
         plots.some(
           (p) =>
-            x + size / 2 > p.x - 1 &&
-            x - size / 2 < p.x + p.width + 1 &&
-            y + size / 2 > p.y - 1 &&
-            y - size / 2 < p.y + p.height + 1,
+            x + size / 2 > p.x - 5 &&
+            x - size / 2 < p.x + p.width + 5 &&
+            y + size / 2 > p.y - 5 &&
+            y - size / 2 < p.y + p.height + 5,
         )
       )
         continue;
-      if (villageLanePoints.some((p) => Math.hypot(p[0] - x, p[1] - y) < size / 2 + 4)) continue;
+      if (villageLaneSamples.some((p) => Math.hypot(p.x - x, p.y - y) < size / 2 + 4)) continue;
       if (x > 126 && x < 141) continue;
       pieces.push({
         id,
