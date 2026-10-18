@@ -7,6 +7,7 @@ import { additionalBackgrounds, type BackgroundRule } from './character-backgrou
 import { classFightingStyles, fightingStyles } from './fighting-styles.js';
 import { sheetFeatureEntries } from './sheet-features.js';
 import { featRules } from './feat-choices.js';
+import { eberronSpecies, shifterBenefits } from './eberron-species.js';
 export const RULESET = 'D&D 2024 · Livro do Jogador e suplementos';
 export const { skills, skillAbilities, alignments } = base;
 export const languages = [
@@ -155,6 +156,7 @@ export const originFeats = [
 ];
 type RaceRule = { speed: number; size: string; traits: string[]; variants: string[] };
 export const raceRules: Record<string, RaceRule> = {
+  ...eberronSpecies,
   Humano: {
     speed: 9,
     size: 'Médio',
@@ -587,7 +589,50 @@ export function choiceFields(race: string, cls: string, c?: SheetChoices): Choic
     add('backgroundTool', 'Ferramenta do antecedente', 1, artisanTools);
   if (background.tool === 'Instrumento escolhido')
     add('backgroundTool', 'Instrumento do antecedente', 1, instruments);
-  if (['Humano', 'Tiefling'].includes(race)) add('size', 'Tamanho', 1, ['Médio', 'Pequeno']);
+  if (['Humano', 'Tiefling', 'Changeling', 'Khoravar', 'Shifter', 'Warforged'].includes(race))
+    add('size', 'Tamanho', 1, ['Médio', 'Pequeno']);
+  if (race === 'Changeling')
+    add('racialSkills', 'Instintos changeling', 2, [
+      'Atuação',
+      'Enganação',
+      'Intimidação',
+      'Intuição',
+      'Persuasão',
+    ]);
+  if (race === 'Shifter')
+    add('racialSkills', 'Instintos bestiais', 1, [
+      'Acrobacia',
+      'Atletismo',
+      'Intimidação',
+      'Sobrevivência',
+    ]);
+  if (race === 'Warforged') {
+    add('racialSkills', 'Perícia do projeto especializado', 1, skills);
+    add('racialTool', 'Ferramenta do projeto especializado', 1, tools);
+  }
+  if (race === 'Kalashtar')
+    add(
+      'dreamSkill',
+      'Perícia dos sonhos (descanso longo)',
+      1,
+      skills.filter((s) => !c || ![...c.backgroundSkills, ...c.classSkills].includes(s)),
+    );
+  if (race === 'Khoravar') {
+    add(
+      'versatileTraining',
+      'Versatilidade (descanso longo)',
+      1,
+      [...skills, ...tools].filter(
+        (s) => !c || ![...c.backgroundSkills, ...c.classSkills, backgroundTool(c)].includes(s),
+      ),
+    );
+    add('racialCantrip', 'Dom feérico (descanso longo)', 1, [
+      ...new Set([
+        'friends',
+        ...['Clérigo', 'Druida', 'Mago'].flatMap((cl) => spellOptions(cl, 0).map((s) => s.id)),
+      ]),
+    ]);
+  }
   if (race === 'Humano') {
     add('racialSkills', 'Perícia humana', 1, skills);
     add(
@@ -599,7 +644,7 @@ export function choiceFields(race: string, cls: string, c?: SheetChoices): Choic
   }
   if (race === 'Elfo')
     add('racialSkills', 'Sentidos aguçados', 1, ['Percepção', 'Intuição', 'Sobrevivência']);
-  if (['Elfo', 'Gnomo', 'Tiefling'].includes(race))
+  if (['Elfo', 'Gnomo', 'Tiefling', 'Khoravar'].includes(race))
     add('speciesAbility', 'Atributo das magias da espécie', 1, statNames.slice(3));
   if (race === 'Elfo' && (!c || c.subrace === 'Alto elfo'))
     add(
@@ -954,7 +999,11 @@ export function startingEquipment(cls: string, c: SheetChoices) {
   ];
 }
 export function racialSkills(_race: string, c: SheetChoices) {
-  return c.options.racialSkills || [];
+  return [
+    ...(c.options.racialSkills || []),
+    ...(c.options.dreamSkill || []),
+    ...(c.options.versatileTraining || []).filter((s) => skills.includes(s)),
+  ];
 }
 export function proficientSkills(race: string, c: SheetChoices) {
   return [
@@ -1024,14 +1073,15 @@ export function defaultChoices(race: string, cls: string, background = 'Acólito
   };
   c = normalizeOptions(species, cls, c);
   if (species === 'Elfo') c.options.racialCantrip = ['prestidigitation'];
-  if (c.options.racialSkills)
-    c.options.racialSkills = c.options.racialSkills.map((s) =>
-      b.skills.includes(s)
-        ? choiceFields(species, cls, c)
-            .find((f) => f.key === 'racialSkills')!
-            .options.find((x) => !b.skills.includes(x))!
-        : s,
-    );
+  if (c.options.racialSkills) {
+    const field = choiceFields(species, cls, c).find((f) => f.key === 'racialSkills')!;
+    c.options.racialSkills = [
+      ...new Set([
+        ...c.options.racialSkills.filter((s) => !b.skills.includes(s)),
+        ...field.options.filter((s) => !b.skills.includes(s)),
+      ]),
+    ].slice(0, field.count);
+  }
   const taken = new Set([
     ...b.skills,
     ...racialSkills(species, c),
@@ -1305,26 +1355,28 @@ function deriveOriginSheet(
           ? 11 + m[1]
           : bare;
   const speciesCantrips =
-    race === 'Elfo'
-      ? c.subrace === 'Drow'
-        ? ['dancing-lights']
-        : c.subrace === 'Elfo da floresta'
-          ? ['druidcraft']
-          : c.options.racialCantrip || []
-      : race === 'Gnomo'
-        ? c.subrace === 'Gnomo da floresta'
-          ? ['minor-illusion']
-          : ['mending', 'prestidigitation']
-        : race === 'Tiefling'
-          ? [
-              'thaumaturgy',
-              c.subrace === 'Abissal'
-                ? 'poison-spray'
-                : c.subrace === 'Ctônico'
-                  ? 'chill-touch'
-                  : 'fire-bolt',
-            ]
-          : [];
+    race === 'Khoravar'
+      ? c.options.racialCantrip || ['friends']
+      : race === 'Elfo'
+        ? c.subrace === 'Drow'
+          ? ['dancing-lights']
+          : c.subrace === 'Elfo da floresta'
+            ? ['druidcraft']
+            : c.options.racialCantrip || []
+        : race === 'Gnomo'
+          ? c.subrace === 'Gnomo da floresta'
+            ? ['minor-illusion']
+            : ['mending', 'prestidigitation']
+          : race === 'Tiefling'
+            ? [
+                'thaumaturgy',
+                c.subrace === 'Abissal'
+                  ? 'poison-spray'
+                  : c.subrace === 'Ctônico'
+                    ? 'chill-touch'
+                    : 'fire-bolt',
+              ]
+            : [];
   const spellGrants: {
     source: string;
     ability: number;
@@ -1377,6 +1429,7 @@ function deriveOriginSheet(
     featureGroups[group].push(...texts);
     features.push(...texts);
   };
+  if (race === 'Shifter') addFeature('race', shifterBenefits[c.subrace]);
   if (feats(c).includes('Alerta'))
     addFeature(
       'feats',
@@ -1475,8 +1528,12 @@ function deriveOriginSheet(
     modifiers: m,
     proficiency: prof,
     hp: Math.max(1, hitDice[cls] + m[2] + (race === 'Anão' ? 1 : 0)),
-    armorClass: armor + (shield ? 2 : 0) + (armored && c.options.style?.includes('Defesa') ? 1 : 0),
-    unarmored: bare,
+    armorClass:
+      armor +
+      (shield ? 2 : 0) +
+      (armored && c.options.style?.includes('Defesa') ? 1 : 0) +
+      (race === 'Warforged' ? 1 : 0),
+    unarmored: bare + (race === 'Warforged' ? 1 : 0),
     initiative: m[1] + (feats(c).includes('Alerta') ? prof : 0),
     speed:
       (race === 'Elfo' && c.subrace === 'Elfo da floresta' ? 10.5 : r.speed) -
@@ -1517,6 +1574,8 @@ function deriveOriginSheet(
     proficiencies: [
       ...k.proficiencies,
       backgroundTool(c),
+      ...(c.options.racialTool || []),
+      ...(c.options.versatileTraining || []).filter((v) => tools.includes(v)),
       ...(c.options.game || []),
       ...(c.options.instruments || []),
       ...(c.options.monkTool || []),
@@ -1679,7 +1738,14 @@ export type SheetResponse = {
 
 export function restChoiceFields(race: string, cls: string, c: SheetChoices) {
   return choiceFields(race, cls, c).filter((f) =>
-    ['mastery', 'racialCantrip', 'tomeCantrips', 'tomeRituals'].includes(f.key),
+    [
+      'mastery',
+      'racialCantrip',
+      'tomeCantrips',
+      'tomeRituals',
+      'dreamSkill',
+      'versatileTraining',
+    ].includes(f.key),
   );
 }
 export function validateRestChoices(
@@ -1713,26 +1779,28 @@ export function validateRestChoices(
 
 function nonTomeSpells(race: string, cls: string, c: SheetChoices) {
   const racial =
-    race === 'Elfo'
-      ? c.subrace === 'Drow'
-        ? ['dancing-lights']
-        : c.subrace === 'Elfo da floresta'
-          ? ['druidcraft']
-          : c.options.racialCantrip || []
-      : race === 'Gnomo'
-        ? c.subrace === 'Gnomo da floresta'
-          ? ['minor-illusion', 'speak-with-animals']
-          : ['mending', 'prestidigitation']
-        : race === 'Tiefling'
-          ? [
-              'thaumaturgy',
-              c.subrace === 'Abissal'
-                ? 'poison-spray'
-                : c.subrace === 'Ctônico'
-                  ? 'chill-touch'
-                  : 'fire-bolt',
-            ]
-          : [];
+    race === 'Khoravar'
+      ? c.options.racialCantrip || ['friends']
+      : race === 'Elfo'
+        ? c.subrace === 'Drow'
+          ? ['dancing-lights']
+          : c.subrace === 'Elfo da floresta'
+            ? ['druidcraft']
+            : c.options.racialCantrip || []
+        : race === 'Gnomo'
+          ? c.subrace === 'Gnomo da floresta'
+            ? ['minor-illusion', 'speak-with-animals']
+            : ['mending', 'prestidigitation']
+          : race === 'Tiefling'
+            ? [
+                'thaumaturgy',
+                c.subrace === 'Abissal'
+                  ? 'poison-spray'
+                  : c.subrace === 'Ctônico'
+                    ? 'chill-touch'
+                    : 'fire-bolt',
+              ]
+            : [];
   return [
     ...c.cantrips,
     ...c.spells,

@@ -21,6 +21,7 @@ import {
 } from '../shared/character-sheet';
 import { statNames, money } from '../shared/rules';
 import { SheetHelp } from './SheetHelp';
+import { eberronSpecies, EBERRON_SOURCE } from '../shared/eberron-species';
 export function ChoiceList({
   label,
   options,
@@ -89,7 +90,7 @@ export function SheetChoices({
     <div className="sheet-creation stack">
       <div className="form-grid">
         <label>
-          Linhagem (SRD 5.2.1)
+          Linhagem ({Object.hasOwn(eberronSpecies, race) ? EBERRON_SOURCE : 'SRD 5.2.1'})
           <select value={c.subrace} onChange={(e) => update({ subrace: e.target.value })}>
             {raceRules[race].variants.map((v) => (
               <option key={v}>{v}</option>

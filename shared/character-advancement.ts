@@ -1240,7 +1240,7 @@ export function applyAdvancement<
     unarmoredOptions.push(10 + modifier(character.stats[1]) + modifier(character.stats[5]));
   if (state('Paladino')?.subclass === 'noble-genies')
     unarmoredOptions.push(10 + modifier(character.stats[1]) + modifier(character.stats[5]));
-  const unarmored = Math.max(...unarmoredOptions);
+  const unarmored = Math.max(...unarmoredOptions) + (character.race === 'Warforged' ? 1 : 0);
   const armored = base.equipment.some((e) =>
       ['Cota de malha', 'Camisão de malha', 'Couro', 'Couro batido'].includes(e),
     ),

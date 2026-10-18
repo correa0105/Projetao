@@ -8,6 +8,11 @@ export const races = [
   'Golias',
   'Orc',
   'Tiefling',
+  'Changeling',
+  'Kalashtar',
+  'Khoravar',
+  'Shifter',
+  'Warforged',
 ] as const;
 export const classes = [
   'Artífice',

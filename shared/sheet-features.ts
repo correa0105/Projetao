@@ -5,6 +5,7 @@ import { featureNames, featureSummaries } from './class-advancement-text.js';
 import { feats, type SheetChoices } from './character-sheet.js';
 import { featRules } from './feat-choices.js';
 import { classFightingStyles } from './fighting-styles.js';
+import { eberronSpecies, EBERRON_SOURCE } from './eberron-species.js';
 export type SheetFeatureEntry = {
   id: string;
   category: 'class' | 'feat' | 'race' | 'background';
@@ -96,7 +97,14 @@ export function sheetFeatureEntries(
     });
   for (const text of groups.race) {
     const t = split(text);
-    add('race', t.title, t.description, 'Espécie · ' + (c.subrace || character.race));
+    add(
+      'race',
+      t.title,
+      t.description,
+      'Espécie · ' +
+        (c.subrace || character.race) +
+        (Object.hasOwn(eberronSpecies, character.race) ? ' · ' + EBERRON_SOURCE : ''),
+    );
   }
   for (const text of groups.background || []) {
     const t = split(text);

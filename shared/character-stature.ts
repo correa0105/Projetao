@@ -7,6 +7,26 @@ export const characterStature: Record<
   Race | 'Meio-elfo' | 'Meio-orc',
   { heightCm: number; anatomy: string }
 > = {
+  Changeling: {
+    heightCm: 175,
+    anatomy: 'Adulto metamorfo feérico, aparência conforme a referência.',
+  },
+  Kalashtar: {
+    heightCm: 195,
+    anatomy: 'Adulto alto de aparência humana, ligado a um espírito quori.',
+  },
+  Khoravar: {
+    heightCm: 170,
+    anatomy: 'Adulto com herança humana e élfica, orelhas levemente pontudas.',
+  },
+  Shifter: {
+    heightCm: 175,
+    anatomy: 'Adulto humanoide com traços bestiais sutis, sem transformação automática.',
+  },
+  Warforged: {
+    heightCm: 210,
+    anatomy: 'Constructo adulto de madeira, pedra e metal, articulado e consciente.',
+  },
   Golias: { heightCm: 230, anatomy: 'Adulto muito alto e robusto, herança de gigantes.' },
   Orc: { heightCm: 200, anatomy: 'Adulto alto e robusto, presas e anatomia orc.' },
   Humano: { heightCm: 175, anatomy: 'Anatomia humana adulta, constituição da referência.' },
@@ -43,6 +63,10 @@ export const characterStature: Record<
 };
 
 export function characterHeightScale(race: string, size?: string) {
-  if (size === 'Pequeno' && ['Humano', 'Tiefling'].includes(race)) return 0.55;
+  if (
+    size === 'Pequeno' &&
+    ['Humano', 'Tiefling', 'Changeling', 'Khoravar', 'Shifter', 'Warforged'].includes(race)
+  )
+    return 0.55;
   return (characterStature[race as Race]?.heightCm ?? 175) / 200;
 }

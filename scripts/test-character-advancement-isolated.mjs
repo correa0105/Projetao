@@ -14,7 +14,9 @@ try {
     ? [
         '--import',
         'tsx',
-        process.argv.includes('--choices')
+        process.argv.includes('--eberron')
+          ? 'scripts/smoke-eberron-species.ts'
+          : process.argv.includes('--choices')
             ? 'scripts/smoke-class-choices-camp.ts'
             : process.argv.includes('--expansion')
               ? 'scripts/smoke-character-rules-2024.ts'
@@ -28,16 +30,17 @@ try {
         ...(process.argv.includes('--choices-unit')
           ? ['tests/class-choices.test.ts']
           : process.argv.includes('--all')
-          ? ['tests/*.test.ts']
-          : [
-              'tests/character-advancement.test.ts',
-              'tests/class-choices.test.ts',
-              'tests/character-rules-2024.test.ts',
-              'tests/character-sheet.test.ts',
-              'tests/srd-2024.test.ts',
-              'tests/progression.test.ts',
-              'tests/equipped-attacks.test.ts',
-            ]),
+            ? ['tests/*.test.ts']
+            : [
+                'tests/character-advancement.test.ts',
+                'tests/class-choices.test.ts',
+                'tests/character-rules-2024.test.ts',
+                'tests/character-sheet.test.ts',
+                'tests/srd-2024.test.ts',
+                'tests/progression.test.ts',
+                'tests/equipped-attacks.test.ts',
+                'tests/eberron-species.test.ts',
+              ]),
       ];
   process.exitCode = await new Promise((resolve, reject) => {
     const child = spawn(process.execPath, args, {

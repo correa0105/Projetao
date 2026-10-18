@@ -381,7 +381,7 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
     <form className="sheet-form-reset character-creation-form" onSubmit={submit}>
       <p className="muted">
         Escolha sua origem e treinamento. Depois da arte, abra a Ficha para rolar e distribuir os
-        seis atributos. Regras de nível 1 do SRD 5.2.1 (2024).
+        seis atributos. Regras de 2024 e suplementos, com as espécies atualizadas de Eberron (2025).
       </p>
       <p className="muted small">
         Sua imagem de corpo inteiro é obrigatória; o personagem chega ao acampamento quando ela
