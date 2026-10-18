@@ -2,9 +2,17 @@ import { useState } from 'react';
 import { worldClockLabel, worldClockPhase } from '../shared/world-clock';
 import { house2DayPhases } from '../shared/house2-lighting';
 import { useWorldClock } from './useWorldClock';
-export function House2Clock({ world }: { world: ReturnType<typeof useWorldClock> }) {
-  const [editing, setEditing] = useState(false),
-    [time, setTime] = useState('12:00'),
+export function House2Clock({
+  world,
+  initiallyEditing = false,
+  saved,
+}: {
+  world: ReturnType<typeof useWorldClock>;
+  initiallyEditing?: boolean;
+  saved?: () => void;
+}) {
+  const [editing, setEditing] = useState(initiallyEditing),
+    [time, setTime] = useState(() => worldClockLabel(world.timeMs)),
     [busy, setBusy] = useState(false),
     [error, setError] = useState('');
   async function save() {
@@ -13,6 +21,7 @@ export function House2Clock({ world }: { world: ReturnType<typeof useWorldClock>
     try {
       await world.adjust(time);
       setEditing(false);
+      saved?.();
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Não foi possível ajustar o relógio.');
     } finally {

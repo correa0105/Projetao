@@ -145,6 +145,18 @@ try {
   await page.keyboard.press('Enter');
   await tool('Mobília');
   const shop = page.getByRole('region', { name: 'Revestimentos da casa' });
+  await expect(shop.locator('.h2-finishes-catalog')).toHaveCount(0);
+  await expect(shop.locator('.h2-finish-tabs button[aria-pressed="true"]')).toHaveCount(0);
+  for (const category of ['Telhados', 'Paredes', 'Pisos']) {
+    const button = shop.getByRole('button', { name: category, exact: true });
+    await button.click();
+    await expect(button).toHaveAttribute('aria-pressed', 'true');
+    await expect(shop.locator('.h2-finishes-catalog > button')).toHaveCount(26);
+    await button.click();
+    await expect(button).toHaveAttribute('aria-pressed', 'false');
+    await expect(shop.locator('.h2-finishes-catalog')).toHaveCount(0);
+  }
+  await shop.getByRole('button', { name: 'Telhados', exact: true }).click();
   await expect(shop.locator('.h2-finishes-catalog > button')).toHaveCount(26);
   const roof = shop
     .getByRole('button')
@@ -165,6 +177,17 @@ try {
   await floor.click();
   await expect(floor).toContainText('Em uso');
   await expect(page.locator('[data-house2-floor-finish="floor-dwarven-inlay"]')).toHaveCount(1);
+  await shop.getByRole('button', { name: 'Paredes', exact: true }).click();
+  await expect(shop.locator('.h2-finishes-catalog > button')).toHaveCount(26);
+  const wall = shop
+    .getByRole('button')
+    .filter({ has: page.getByText('Madeira de carvalho', { exact: true }) });
+  await wall.click();
+  await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
+  await expect(wall).toContainText('Aplicar na casa');
+  await wall.click();
+  await expect(wall).toContainText('Em uso');
+  await expect(page.locator('[data-house2-wall-finish="walls-oak"]')).toHaveCount(1);
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     await expect(shop.locator('.h2-finishes-catalog > button')).toHaveCount(26);
@@ -177,11 +200,16 @@ try {
   const applied = (await req(owner, base, undefined, 'GET')).plots.find(
     (p: any) => p.id === lot.id,
   ).finishes;
-  expect(applied).toEqual({ roof: 'roof-style-025', floor: 'floor-dwarven-inlay' });
+  expect(applied).toEqual({
+    roof: 'roof-style-025',
+    floor: 'floor-dwarven-inlay',
+    walls: 'walls-oak',
+  });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.locator(`g[data-house2-plot="${lot.id}"] > .h2-plot`).focus();
   await page.keyboard.press('Enter');
   await tool('Mobília');
+  await expect(shop.locator('.h2-finishes-catalog')).toHaveCount(0);
   await expect(page.locator('[data-house2-floor-finish="floor-dwarven-inlay"]')).toHaveCount(1);
   expect(errors).toEqual([]);
   await writeFile(
@@ -198,6 +226,9 @@ try {
         visitorReadOnly: true,
         roofOptions: 25,
         floorOptions: 25,
+        wallOptions: 25,
+        categoriesStartCollapsed: true,
+        clickAgainCollapses: true,
         shopPurchaseAndApply: true,
         viewports: [1440, 768, 390, 320],
         errors,

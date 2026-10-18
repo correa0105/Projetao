@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "reviewedAt": "2026-10-18",
+  "generator": "built-in image_gen",
+  "totalNewMaterials": 22,
+  "totalWallOptions": 25,
+  "materialContactSheet": "data/house2/walls-20261018/review.png",
+  "appliedContactSheet": "test-results/house2-walls-25/walls-25.png",
+  "automatedChecks": "test-results/house2-walls-25/result.json",
+  "checks": {
+    "individualMaterialArt": true,
+    "orthographicTopDown": true,
+    "distinctMaterials": true,
+    "noRoomOrFrameInTextures": true,
+    "nativeWallSilhouettePreserved": true,
+    "originalFloorPreserved": true,
+    "doorRotatesInFourDirections": true,
+    "all25HouseModels": true
+  },
+  "woodFloorFollowup": {
+    "reference": "User requested the smaller boards in their first attachment, avoiding oversized planks in the second.",
+    "implementation": "Eight wood finishes use fixed square world-space tiles instead of stretching the texture to the room dimensions.",
+    "all25HouseModels": true,
+    "furnishedSamplesReviewed": [
+      "test-results/house2-finishes/floor-wood-furnished.png",
+      "test-results/house2-finishes/floor-pine-planks-furnished.png"
+    ],
+    "automatedChecks": "test-results/house2-finishes/result.json"
+  }
+}

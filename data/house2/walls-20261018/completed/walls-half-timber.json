@@ -1,0 +1,18 @@
+{
+  "id": "walls-half-timber",
+  "name": "Enxaimel de carvalho",
+  "price": 350,
+  "kind": "walls",
+  "image": "/house2/walls-20261018/walls-half-timber.webp",
+  "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: warm ivory lime plaster divided by narrow aged oak timber strips in a simple repeating rectangular half-timber construction, top-down flat material, no architecture perspective.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-9dee6254-8819-4f46-993c-af9323b14062.png",
+  "localSource": ".local/house2-wall-sources/walls-half-timber.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T12:03:36.126Z",
+  "thumbnail": "/house2/wall-thumbs-20261018/walls-half-timber.webp",
+  "sha256": "7c5a3e320cafe71a418948dc13c0b97822ba5a7d3af540664fb55be84fc82706",
+  "sourceSha256": "ae7b50815a8abbc1ac8852be3ec11da04facb8406745b828d212698021b33ff1",
+  "width": 768,
+  "height": 768,
+  "opaque": true
+}

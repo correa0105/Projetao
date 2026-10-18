@@ -197,6 +197,19 @@ try {
   };
   await checkCamera();
   await page.screenshot({ path: 'test-results/house2/village.png' });
+  await page.getByRole('button', { name: 'Ajustar hora do dia', exact: true }).click();
+  const clockDialog = page.getByRole('dialog', { name: 'Horário do mundo', exact: true });
+  await expect(clockDialog.getByLabel('Hora do mundo', { exact: true })).toBeVisible();
+  await clockDialog.getByLabel('Hora do mundo', { exact: true }).fill('18:35');
+  await clockDialog.getByRole('button', { name: 'Salvar hora', exact: true }).click();
+  await expect(clockDialog).toHaveCount(0);
+  await expect(page.locator('[data-house2-day-phase]')).toHaveAttribute(
+    'data-house2-day-phase',
+    'dusk',
+  );
+  expect(
+    Math.floor((await request(context, '/world-clock', undefined, 'GET')).timeMs / 60000),
+  ).toBe(18 * 60 + 35);
   await tool('Vizinhança');
   const shadowDirections = [];
   for (const [phase, time] of [
@@ -241,6 +254,12 @@ try {
     { width: 320, height: 568 },
   ]) {
     await page.setViewportSize(viewport);
+    await page.getByRole('button', { name: 'Ajustar hora do dia', exact: true }).click();
+    await expect(clockDialog.getByLabel('Hora do mundo', { exact: true })).toBeVisible();
+    const clockBox = (await clockDialog.boundingBox())!;
+    expect(clockBox.x >= 0 && clockBox.x + clockBox.width <= viewport.width + 1).toBe(true);
+    await page.screenshot({ path: `test-results/house2/clock-${viewport.width}.png` });
+    await clockDialog.getByRole('button', { name: 'Fechar', exact: true }).click();
     const boxes = await Promise.all(
       [
         page.locator('.h2-world-heading'),
@@ -312,7 +331,15 @@ try {
     page.locator('[data-house2-fixed="true"] [data-house2-roof="house-empty-001"]'),
   ).toHaveCount(0);
   await tool('Mobília');
-  await expect(page.locator('.h2-catalog:not(.h2-finishes-catalog) button')).toHaveCount(352);
+  await expect(page.locator('.h2-catalog:not(.h2-finishes-catalog) button')).toHaveCount(350);
+  await expect(
+    page.getByRole('button').filter({ has: page.getByText('Cama de alcova', { exact: true }) }),
+  ).toHaveCount(0);
+  await expect(
+    page
+      .getByRole('button')
+      .filter({ has: page.getByText('Cama com dossel recolhido', { exact: true }) }),
+  ).toHaveCount(0);
   await page.getByRole('textbox', { name: 'Pesquisar mobília' }).fill('Cadeira de madeira');
   await expect(page.locator('.h2-catalog:not(.h2-finishes-catalog) button')).toHaveCount(1);
   await page.locator('.h2-catalog:not(.h2-finishes-catalog) button').first().click();
@@ -506,7 +533,17 @@ try {
   await page.getByRole('button', { name: 'Salvar', exact: true }).click();
   await expect(page.locator('.h2-world-notice')).toContainText('Terreno salvo');
   await page.getByRole('button', { name: 'Guardar', exact: true }).click();
-  await page.getByRole('button', { name: 'Descartar', exact: true }).click();
+  await expect(item).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Descartar', exact: true })).toHaveCount(0);
+  expect(
+    (await request(context, '/house-v2', undefined, 'GET')).inventory.find(
+      (i: any) => i.id === itemId,
+    ).plot_id,
+  ).toBeNull();
+  await page.getByRole('button', { name: /Cadeira de madeira.*Colocar/ }).click();
+  await page.getByLabel('Rotação livre do item', { exact: true }).fill('90');
+  await page.getByRole('button', { name: 'Salvar', exact: true }).click();
+  await expect(page.locator('.h2-save-bar')).toHaveCount(0);
   await page.getByRole('button', { name: 'Fechar Minha coleção', exact: true }).click();
   await page.getByRole('button', { name: 'Sair da casa de Aurora', exact: true }).click();
   const ownRoof = page.locator('[data-house2-fixed="true"] [data-house2-roof]');
@@ -679,6 +716,9 @@ try {
   await page.screenshot({ path: 'test-results/house2/owner-hover.png' });
   await peer.goto(origin + '/#house2');
   await peer.locator('.h2-neighborhood-card').first().click();
+  await expect(peer.getByRole('button', { name: 'Ajustar hora do dia', exact: true })).toHaveCount(
+    0,
+  );
   await expect(peer.locator('.h2-plot')).toHaveCount(12);
   await peer.locator(`g[data-house2-plot="${plotId}"] > .h2-plot`).focus();
   await peer.keyboard.press('Enter');
@@ -729,6 +769,7 @@ try {
         headerNoOverlap: true,
         afternoonObjectShadows: true,
         administratorCapture: true,
+        administratorClockShortcut: true,
         capture: { width: capture.width, height: capture.height, format: capture.format },
         touchResize: true,
         borderKeyboard: true,

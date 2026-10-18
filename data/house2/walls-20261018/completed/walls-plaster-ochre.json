@@ -1,0 +1,18 @@
+{
+  "id": "walls-plaster-ochre",
+  "name": "Reboco ocre",
+  "price": 200,
+  "kind": "walls",
+  "image": "/house2/walls-20261018/walls-plaster-ochre.webp",
+  "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: muted golden ochre lime plaster, fine hand-trowelled surface and subtle warm earthy mottling.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-b214272c-f1a8-435d-8b57-81d53ce03fdf.png",
+  "localSource": ".local/house2-wall-sources/walls-plaster-ochre.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T11:59:49.474Z",
+  "thumbnail": "/house2/wall-thumbs-20261018/walls-plaster-ochre.webp",
+  "sha256": "1a564ce75d9e8f07c3dde668a89632d144e1e17d916eda5a9ab4b6529612024b",
+  "sourceSha256": "044be3f9ef1ade8541990e4bd31e440420ceaec2dc664d5a36f47cf1a22ca000",
+  "width": 768,
+  "height": 768,
+  "opaque": true
+}

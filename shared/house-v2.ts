@@ -44,6 +44,10 @@ export const house2Furniture = [...furniture, ...medievalFurniture, ...house2Ext
     price: Math.max(15, Math.round(f.width * f.height * 30)),
   }),
 );
+// Retain historical pieces for collections, layout validation and rendering.
+export const house2FurnitureForSale = house2Furniture.filter(
+  (f) => !['furniture-113', 'furniture-115'].includes(f.id),
+);
 export const house2Terrains = {
   earth: '/vtt/terrain-v3-20261013/earth.webp',
   grass: house2DefaultGrassImage,

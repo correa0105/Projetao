@@ -1,0 +1,178 @@
+[
+  {
+    "id": "walls-oak",
+    "name": "Madeira de carvalho",
+    "price": 220,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-oak.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: honey oak timber, horizontal wood grain and subtle broad plank joints, worn natural golden brown."
+  },
+  {
+    "id": "walls-walnut",
+    "name": "Madeira de nogueira",
+    "price": 260,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-walnut.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: dark walnut timber, horizontal flowing fine grain, deep muted chocolate brown."
+  },
+  {
+    "id": "walls-pine",
+    "name": "Madeira de pinho",
+    "price": 190,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-pine.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: pale pine timber, horizontal fine grain with small knots and light honey cream tones."
+  },
+  {
+    "id": "walls-cedar",
+    "name": "Madeira de cedro",
+    "price": 240,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-cedar.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: muted reddish cedar timber, horizontal linear grain and restrained reddish copper brown tones."
+  },
+  {
+    "id": "walls-whitewood",
+    "name": "Madeira caiada",
+    "price": 210,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-whitewood.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: whitewashed old timber, horizontal grain, worn warm ivory lime paint revealing pale wood."
+  },
+  {
+    "id": "walls-charred",
+    "name": "Madeira carbonizada",
+    "price": 290,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-charred.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: charred black timber, horizontal grain, fine subtly cracked black wood surface, restrained silvery highlights."
+  },
+  {
+    "id": "walls-plaster-ivory",
+    "name": "Reboco de cal",
+    "price": 200,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-plaster-ivory.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: warm ivory lime plaster, finely hand-trowelled irregular surface with tiny pores, no cracks or stones."
+  },
+  {
+    "id": "walls-plaster-ochre",
+    "name": "Reboco ocre",
+    "price": 200,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-plaster-ochre.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: muted golden ochre lime plaster, fine hand-trowelled surface and subtle warm earthy mottling."
+  },
+  {
+    "id": "walls-plaster-clay",
+    "name": "Reboco de argila",
+    "price": 200,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-plaster-clay.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: warm muted dusty terracotta lime plaster, tiny pores and subtle hand-trowelled clay variations."
+  },
+  {
+    "id": "walls-plaster-sage",
+    "name": "Reboco verde-sálvia",
+    "price": 230,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-plaster-sage.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: muted sage green lime plaster, fine hand-trowelled surface and subtle old mineral-pigment mottling."
+  },
+  {
+    "id": "walls-plaster-blue",
+    "name": "Reboco azul mineral",
+    "price": 230,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-plaster-blue.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: muted blue gray lime plaster, fine hand-trowelled surface and subtle old blue mineral-pigment mottling."
+  },
+  {
+    "id": "walls-basalt",
+    "name": "Blocos de basalto",
+    "price": 340,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-basalt.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: dark charcoal basalt ashlar blocks in horizontal staggered courses, fine porous volcanic stone, thin dark mortar."
+  },
+  {
+    "id": "walls-limestone",
+    "name": "Blocos de calcário",
+    "price": 300,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-limestone.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: warm cream limestone ashlar blocks in horizontal staggered courses, tiny fossil flecks and thin muted joints."
+  },
+  {
+    "id": "walls-sandstone",
+    "name": "Blocos de arenito",
+    "price": 290,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-sandstone.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: honey and tan sandstone blocks in horizontal staggered courses, softly eroded edges and fine sandy grain."
+  },
+  {
+    "id": "walls-slate",
+    "name": "Pedra de ardósia",
+    "price": 340,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-slate.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: layered dark blue gray slate strips in horizontal dry-stacked courses, irregular natural split faces and fine shallow seams."
+  },
+  {
+    "id": "walls-granite",
+    "name": "Blocos de granito",
+    "price": 360,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-granite.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: strong medium gray granite ashlar blocks in horizontal courses, fine mineral speckles and restrained rough stone texture."
+  },
+  {
+    "id": "walls-fieldstone",
+    "name": "Pedra rústica com musgo",
+    "price": 280,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-fieldstone.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: irregular tightly fitted gray and muted brown fieldstone masonry, thin earthy mortar and sparse dark moss in joints."
+  },
+  {
+    "id": "walls-red-brick",
+    "name": "Tijolos vermelhos",
+    "price": 260,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-red-brick.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: weathered muted red clay bricks in horizontal running bond, thin warm gray mortar and old hand-fired texture."
+  },
+  {
+    "id": "walls-white-brick",
+    "name": "Tijolos caiados",
+    "price": 250,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-white-brick.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: whitewashed old brick masonry in horizontal running bond, warm ivory worn limewash and thin pale gray mortar."
+  },
+  {
+    "id": "walls-adobe",
+    "name": "Blocos de adobe",
+    "price": 220,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-adobe.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: old tan adobe mud bricks in horizontal courses, warm earthen color, subtle straw fibers and soft hand-shaped edges."
+  },
+  {
+    "id": "walls-dwarven",
+    "name": "Pedra com frisos anões",
+    "price": 440,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-dwarven.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: dark gray finely dressed stone blocks with narrow worn brass geometric inlay bands, restrained angular repeating design, no runes or text."
+  },
+  {
+    "id": "walls-half-timber",
+    "name": "Enxaimel de carvalho",
+    "price": 350,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-half-timber.webp",
+    "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: warm ivory lime plaster divided by narrow aged oak timber strips in a simple repeating rectangular half-timber construction, top-down flat material, no architecture perspective."
+  }
+]

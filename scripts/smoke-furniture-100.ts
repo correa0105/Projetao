@@ -98,7 +98,7 @@ try {
     .getByRole('navigation', { name: 'Controles da vizinhança' })
     .getByRole('button', { name: 'Mobília', exact: true })
     .click();
-  await expect(page.locator('.h2-catalog:not(.h2-finishes-catalog) button')).toHaveCount(352);
+  await expect(page.locator('.h2-catalog:not(.h2-finishes-catalog) button')).toHaveCount(350);
   for (const width of [1440, 768, 390]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.getByLabel('Pesquisar mobília', { exact: true }).fill('curul');
@@ -183,7 +183,7 @@ try {
       {
         passed: true,
         newAssets: 100,
-        house2Catalog: 352,
+        house2Catalog: 350,
         vttFurniture: 250,
         sameIdentities: true,
         housePurchaseAndPlacement: true,

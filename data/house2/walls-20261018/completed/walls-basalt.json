@@ -1,0 +1,18 @@
+{
+  "id": "walls-basalt",
+  "name": "Blocos de basalto",
+  "price": 340,
+  "kind": "walls",
+  "image": "/house2/walls-20261018/walls-basalt.webp",
+  "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: dark charcoal basalt ashlar blocks in horizontal staggered courses, fine porous volcanic stone, thin dark mortar.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-54edb268-c518-4221-8f45-6c4baf0fd1bd.png",
+  "localSource": ".local/house2-wall-sources/walls-basalt.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T12:00:09.587Z",
+  "thumbnail": "/house2/wall-thumbs-20261018/walls-basalt.webp",
+  "sha256": "4f2383ffc99096836f52e18bb0bd2ce11f557cdd0954a7c8ea266ce5fcfc048d",
+  "sourceSha256": "41a55f3a7bebcd1065c62db2673b968a8a8ac34f51ab7593166b84a7e95ba3e5",
+  "width": 768,
+  "height": 768,
+  "opaque": true
+}

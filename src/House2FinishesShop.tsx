@@ -26,12 +26,12 @@ export function House2FinishesShop({
   refresh: () => Promise<void>;
   notice: (s: string) => void;
 }) {
-  const [kind, setKind] = useState<House2FinishKind>('roof'),
+  const [kind, setKind] = useState<House2FinishKind | null>(null),
     [buy, setBuy] = useState<(typeof house2FinishesCatalog)[number] | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState('');
   async function apply(id: string | null) {
-    if (disabled || busy) return;
+    if (!kind || disabled || busy) return;
     setBusy(true);
     try {
       await post(`/house-v2/plots/${plot.id}/finish`, {
@@ -73,53 +73,59 @@ export function House2FinishesShop({
       <p>Desbloqueie e reutilize nas suas casas. A estrutura e a porta permanecem no lugar.</p>
       <div className="h2-finish-tabs" role="group" aria-label="Tipo de revestimento">
         {(Object.keys(house2FinishNames) as House2FinishKind[]).map((k) => (
-          <button key={k} aria-pressed={kind === k} onClick={() => setKind(k)}>
+          <button
+            key={k}
+            aria-pressed={kind === k}
+            onClick={() => setKind((current) => (current === k ? null : k))}
+          >
             {house2FinishNames[k]}
           </button>
         ))}
       </div>
       {disabled && <p>Salve os ajustes do terreno antes de trocar o revestimento.</p>}
-      <div className="h2-catalog h2-finishes-catalog">
-        <button
-          disabled={disabled || busy || !plot.house_id || !plot.finishes?.[kind]}
-          onClick={() => void apply(null)}
-        >
-          <strong>Original da casa</strong>
-          <small>{plot.finishes?.[kind] ? 'Restaurar original' : 'Em uso'}</small>
-        </button>
-        {house2FinishesCatalog
-          .filter((f) => f.kind === kind)
-          .map((f) => {
-            const purchased = owned.includes(f.id),
-              applied = plot.finishes?.[kind] === f.id;
-            return (
-              <button
-                key={f.id}
-                disabled={
-                  disabled ||
-                  busy ||
-                  applied ||
-                  (purchased ? !plot.house_id : !character || balance < f.price)
-                }
-                onClick={() => (purchased ? void apply(f.id) : (setError(''), setBuy(f)))}
-              >
-                <img
-                  src={vttVisualSource('thumbnail' in f ? f.thumbnail : f.image)}
-                  alt={'Prévia · ' + f.name}
-                  loading="lazy"
-                />
-                <strong>{f.name}</strong>
-                <small>
-                  {applied
-                    ? 'Em uso'
-                    : purchased
-                      ? 'Aplicar na casa'
-                      : `${f.price} créditos · comprar`}
-                </small>
-              </button>
-            );
-          })}
-      </div>
+      {kind && (
+        <div className="h2-catalog h2-finishes-catalog">
+          <button
+            disabled={disabled || busy || !plot.house_id || !plot.finishes?.[kind]}
+            onClick={() => void apply(null)}
+          >
+            <strong>Original da casa</strong>
+            <small>{plot.finishes?.[kind] ? 'Restaurar original' : 'Em uso'}</small>
+          </button>
+          {house2FinishesCatalog
+            .filter((f) => f.kind === kind)
+            .map((f) => {
+              const purchased = owned.includes(f.id),
+                applied = plot.finishes?.[kind] === f.id;
+              return (
+                <button
+                  key={f.id}
+                  disabled={
+                    disabled ||
+                    busy ||
+                    applied ||
+                    (purchased ? !plot.house_id : !character || balance < f.price)
+                  }
+                  onClick={() => (purchased ? void apply(f.id) : (setError(''), setBuy(f)))}
+                >
+                  <img
+                    src={vttVisualSource('thumbnail' in f ? f.thumbnail : f.image)}
+                    alt={'Prévia · ' + f.name}
+                    loading="lazy"
+                  />
+                  <strong>{f.name}</strong>
+                  <small>
+                    {applied
+                      ? 'Em uso'
+                      : purchased
+                        ? 'Aplicar na casa'
+                        : `${f.price} créditos · comprar`}
+                  </small>
+                </button>
+              );
+            })}
+        </div>
+      )}
       {buy && (
         <Modal
           title="Comprar revestimento"

@@ -6,8 +6,10 @@ import sharp from 'sharp';
 import { createHash } from 'node:crypto';
 import { house2Houses } from '../shared/house-v2';
 import { house2FinishesCatalog } from '../shared/house2-finishes';
+import { house2WoodFloorTileSizes } from '../src/house2-interior-surfaces';
 const out = 'test-results/house2-finishes';
 await mkdir(out, { recursive: true });
+await writeFile(out + '/result.json', JSON.stringify({ passed: false }));
 await build({
   entryPoints: ['scripts/house2-wall-surfaces-fixture.tsx'],
   bundle: true,
@@ -53,7 +55,7 @@ try {
     floors = house2FinishesCatalog.filter((f) => f.kind === 'floor');
   expect(roofs).toHaveLength(25);
   expect(floors).toHaveLength(25);
-  expect(new Set(house2FinishesCatalog.map((f) => f.id)).size).toBe(53);
+  expect(new Set(house2FinishesCatalog.map((f) => f.id)).size).toBe(75);
   const original = await sharp(await show({ house: house2Houses[0].id, walls: 'walls-wood' }))
     .removeAlpha()
     .raw()
@@ -102,8 +104,11 @@ try {
           height: el.getAttribute('height'),
         }));
         const pattern = page.locator('pattern[id$="-floor"]');
-        for (const key of ['x', 'y', 'width', 'height'] as const)
+        for (const key of ['x', 'y'] as const)
           await expect(pattern).toHaveAttribute(key, rect[key]!);
+        const tile = house2WoodFloorTileSizes[f.id];
+        for (const key of ['width', 'height'] as const)
+          await expect(pattern).toHaveAttribute(key, tile ? String(tile) : rect[key]!);
       }
     }
     expect(hashes.size).toBe(25);
@@ -134,7 +139,17 @@ try {
       'transparent',
     );
   }
+  for (const h of house2Houses) {
+    await show({ house: h.id, floor: 'floor-wood' });
+    const pattern = page.locator('pattern[id$="-floor"]');
+    await expect(pattern).toHaveAttribute('width', '3.6');
+    await expect(pattern).toHaveAttribute('height', '3.6');
+  }
   await page.setViewportSize({ width: 1200, height: 1200 });
+  for (const id of ['floor-wood', 'floor-dark', 'floor-pine-planks', 'floor-cedar-planks']) {
+    await show({ house: house2Houses[0].id, floor: id, furnished: 'true', rotation: '270' });
+    await page.screenshot({ path: out + '/' + id + '-furnished.png' });
+  }
   await show({
     house: house2Houses[0].id,
     floor: 'floor-dwarven-inlay',
@@ -155,6 +170,8 @@ try {
         roofFits: 625,
         distinctPreviews: 50,
         floorSingleSurface: true,
+        woodenFloorsUseWorldScale: true,
+        woodenFloorModels: 25,
         rotatedEaves: 25,
         errors,
         missing,

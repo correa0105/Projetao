@@ -1,0 +1,18 @@
+{
+  "id": "walls-charred",
+  "name": "Madeira carbonizada",
+  "price": 290,
+  "kind": "walls",
+  "image": "/house2/walls-20261018/walls-charred.webp",
+  "prompt": "Use case: stylized-concept. Create ONE square opaque material tile for the visible TOP surface of a medieval fantasy battlemap WALL. Camera exactly vertically above at 90 degrees, orthographic, absolutely no side view or perspective. Finely hand-painted realistic game art matching natural timber, plaster and stone from a detailed overhead VTT library. Small-scale crisp grain, restrained natural colors, even neutral overhead lighting across the whole tile, no cast shadows or vignette. Fill every pixel edge-to-edge with the same continuous material. Seamless repeat across all four edges. No wall silhouette, room, corner, frame, floor, furniture, characters, objects, text, watermark, grid or transparent margin. Material: charred black timber, horizontal grain, fine subtly cracked black wood surface, restrained silvery highlights.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-7b48b576-011e-4143-af43-d6c081727101.png",
+  "localSource": ".local/house2-wall-sources/walls-charred.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T11:58:59.869Z",
+  "thumbnail": "/house2/wall-thumbs-20261018/walls-charred.webp",
+  "sha256": "751c09f807ce51eda8ea0cdaf838265effe349c8ca4d4cad2c679af77b69fd06",
+  "sourceSha256": "71da9d75d01edcb4617bed87f5df55b6611038b68cb786a6327bf4de3ef5e08f",
+  "width": 768,
+  "height": 768,
+  "opaque": true
+}

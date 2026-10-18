@@ -9,6 +9,17 @@ type Item = House2Layout['items'][number];
 type Plot = Pick<House2Plot, 'x' | 'y' | 'width' | 'height'>;
 type Point = { x: number; y: number };
 type Size = { width: number; height: number };
+export function house2LayoutContentsEqual(a: House2Layout, b: House2Layout) {
+  const canonical = (layout: House2Layout) =>
+    JSON.stringify({
+      house: layout.house,
+      ground: layout.ground ?? [],
+      items: [...layout.items]
+        .sort((x, y) => x.id.localeCompare(y.id))
+        .map((i) => ({ id: i.id, x: i.x, y: i.y, rotation: i.rotation, scale: i.scale ?? 1 })),
+    });
+  return canonical(a) === canonical(b);
+}
 export const house2BorderHandles = {
   nw: [-1, -1],
   n: [0, -1],

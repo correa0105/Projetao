@@ -14,6 +14,7 @@ import {
   house2PlotExpansion,
   house2Houses,
   house2Furniture,
+  house2FurnitureForSale,
   house2LayoutSchema,
   house2Within,
   house2VillagePlots,
@@ -321,6 +322,8 @@ export function house2Router() {
         'furniture',
         [b.plot_id, b.character_id, b.catalog_id],
         async (db) => {
+          if (!house2FurnitureForSale.some((f) => f.id === spec.id))
+            throw new AppError(400, 'Esta mobília não está mais à venda.');
           await editPlot(db, b.plot_id, res.locals.user.id);
           const count = (
             await db.query('SELECT count(*)::int n FROM house2_items WHERE user_id=$1', [
@@ -338,6 +341,62 @@ export function house2Router() {
         },
       ),
     );
+  });
+  router.post('/house-v2/items/:id/store', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      user = res.locals.user.id;
+    const body = z
+      .object({ plot_id: uuid, revision: z.number().int().min(0) })
+      .strict()
+      .parse(req.body);
+    const result = await transaction(async (db) => {
+      await db.query('SELECT pg_advisory_xact_lock(hashtextextended($1,0))', [
+        'house2-layout:' + user,
+      ]);
+      const plot = await editPlot(db, body.plot_id, user);
+      const item = (
+        await db.query(
+          'SELECT id,plot_id FROM house2_items WHERE id=$1 AND user_id=$2 FOR UPDATE',
+          [id, user],
+        )
+      ).rows[0];
+      if (!item) throw new AppError(403, 'Você só pode guardar os seus próprios objetos.');
+      if (plot.revision !== body.revision)
+        throw new AppError(409, 'O terreno mudou em outra janela. Atualize antes de guardar.');
+      if (item.plot_id && item.plot_id !== plot.id)
+        throw new AppError(
+          409,
+          'Este objeto foi colocado em outro terreno. Atualize antes de guardar.',
+        );
+      let revision = plot.revision;
+      if (item.plot_id) {
+        await db.query('UPDATE house2_items SET plot_id=NULL,x=NULL,y=NULL WHERE id=$1', [id]);
+        revision = (
+          await db.query(
+            'UPDATE house2_plots SET revision=revision+1 WHERE id=$1 RETURNING revision',
+            [plot.id],
+          )
+        ).rows[0].revision;
+      }
+      const items = (
+        await db.query(
+          'SELECT id,x,y,rotation,scale FROM house2_items WHERE user_id=$1 AND plot_id=$2 ORDER BY created_at,id',
+          [user, plot.id],
+        )
+      ).rows;
+      return {
+        stored: true,
+        layout: {
+          revision,
+          ground: plot.ground ?? [],
+          house: plot.house_id
+            ? { x: plot.house_x, y: plot.house_y, rotation: plot.house_rotation }
+            : null,
+          items,
+        },
+      };
+    });
+    res.json(result);
   });
   router.put('/house-v2/plots/:id/layout', async (req, res) => {
     const id = uuid.parse(req.params.id),

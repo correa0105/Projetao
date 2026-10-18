@@ -1001,6 +1001,24 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
   border-radius: 0.5rem;
   background: #101923;
 }
+.house2-world .h2-clock-edit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin-left: 6px;
+  padding: 3px;
+  min-height: 24px;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  pointer-events: auto;
+}
+.house2-world .h2-clock-edit:hover,
+.house2-world .h2-clock-edit:focus-visible {
+  background: #b3985a33;
+  outline: 1px solid #b3985a;
+}
 .h2-world-clock > span {
   font-size: 0.75rem;
   color: #b5a88f;
@@ -1053,9 +1071,6 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
   transform-origin: center;
   animation: h2-light-breathe var(--light-period, 3s) ease-in-out var(--light-delay, 0s) infinite
     alternate;
-}
-.h2-item-unlit > image {
-  filter: grayscale(0.8) brightness(0.72);
 }
 @keyframes h2-light-breathe {
   0% {

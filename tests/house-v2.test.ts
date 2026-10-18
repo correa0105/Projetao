@@ -1,10 +1,15 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { randomUUID } from 'node:crypto';
+import { randomUUID, createHash } from 'node:crypto';
 import { pool } from '../server/db';
 import { migrate } from '../server/migrate';
 import { createLegacyTestCharacter } from './character-fixtures';
-import { house2Houses, house2Furniture, house2Within } from '../shared/house-v2';
+import {
+  house2Houses,
+  house2Furniture,
+  house2FurnitureForSale,
+  house2Within,
+} from '../shared/house-v2';
 
 test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terrenos comprados', async (t) => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
@@ -65,6 +70,7 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
       assert.equal(directory.balance, 20000);
       assert.equal(house2Houses.length, 25);
       assert.equal(house2Furniture.length, 352);
+      assert.equal(house2FurnitureForSale.length, 350);
       assert(scene.plots.every((p: any) => p.x + p.width <= 200 && p.y + p.height <= 200));
       assert.equal(
         (
@@ -646,6 +652,145 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
         403,
       );
     });
+    await t.test(
+      'camas retiradas da venda mantêm coleção, layout e replay de compras antigas',
+      async () => {
+        const before = (await req('/house-v2', owner)).data,
+          orders = (await pool.query('SELECT count(*)::int n FROM house2_orders')).rows[0].n;
+        const retired = ['furniture-113', 'furniture-115'];
+        for (const id of retired) {
+          assert(!house2FurnitureForSale.some((f) => f.id === id));
+          assert(house2Furniture.some((f) => f.id === id));
+          assert.equal(
+            (
+              await req('/house-v2/furniture', owner, 'POST', {
+                ...buy(a.id),
+                plot_id: lot.id,
+                catalog_id: id,
+              })
+            ).status,
+            400,
+          );
+        }
+        assert.deepEqual((await req('/house-v2', owner)).data.inventory, before.inventory);
+        assert.equal((await req('/house-v2', owner)).data.balance, before.balance);
+        assert.equal(
+          (await pool.query('SELECT count(*)::int n FROM house2_orders')).rows[0].n,
+          orders,
+        );
+        const legacy = [];
+        for (const id of retired)
+          legacy.push(
+            (
+              await pool.query(
+                'INSERT INTO house2_items(user_id,catalog_id)VALUES($1,$2)RETURNING id,catalog_id',
+                [owner.id, id],
+              )
+            ).rows[0],
+          );
+        const scene = (await req('/house-v2/neighborhoods/' + n, owner)).data,
+          p = scene.plots.find((p: any) => p.id === lot.id);
+        const items = [
+          ...scene.items
+            .filter((i: any) => i.plot_id === lot.id)
+            .map((i: any) => ({ id: i.id, x: i.x, y: i.y, rotation: i.rotation, scale: i.scale })),
+          ...legacy.map((i, index) => ({
+            id: i.id,
+            x: p.x + 3 + index * 4,
+            y: p.y + 3,
+            rotation: 0,
+            scale: 1,
+          })),
+        ];
+        assert.equal(
+          (
+            await req(`/house-v2/plots/${lot.id}/layout`, owner, 'PUT', {
+              revision: p.revision,
+              house: { x: p.house_x, y: p.house_y, rotation: p.house_rotation },
+              ground: p.ground,
+              items,
+            })
+          ).status,
+          200,
+        );
+        const placed = (await req('/house-v2/neighborhoods/' + n, owner)).data.items;
+        assert(legacy.every((i) => placed.some((p: any) => p.id === i.id && p.plot_id === lot.id)));
+        const key = randomUUID(),
+          fingerprint = createHash('sha256')
+            .update(JSON.stringify(['furniture', [lot.id, a.id, retired[0]]]))
+            .digest('hex');
+        await pool.query(
+          'INSERT INTO house2_orders(user_id,idempotency_key,fingerprint,amount,result)VALUES($1,$2,$3,$4,$5)',
+          [
+            owner.id,
+            key,
+            fingerprint,
+            house2Furniture.find((f) => f.id === retired[0])!.price,
+            JSON.stringify({ item_id: legacy[0].id }),
+          ],
+        );
+        const replay = await req('/house-v2/furniture', owner, 'POST', {
+          character_id: a.id,
+          idempotency_key: key,
+          plot_id: lot.id,
+          catalog_id: retired[0],
+        });
+        assert.equal(replay.status, 200);
+        assert.equal(replay.data.item_id, legacy[0].id);
+        assert.equal(replay.data.replay, true);
+        assert.equal((await req('/house-v2', owner)).data.balance, before.balance);
+      },
+    );
+    await t.test(
+      'guardar é imediato, restrito ao dono e mantém compra, escala e outros objetos',
+      async () => {
+        const scene = (await req('/house-v2/neighborhoods/' + n, owner)).data,
+          p = scene.plots.find((p: any) => p.id === lot.id);
+        const before = (await pool.query('SELECT * FROM house2_items ORDER BY id')).rows,
+          target = before.find((i) => i.plot_id === lot.id)!;
+        const input = { plot_id: lot.id, revision: p.revision },
+          balance = (await req('/house-v2', owner)).data.balance;
+        for (const account of [other, admin])
+          assert.equal(
+            (await req('/house-v2/items/' + target.id + '/store', account, 'POST', input)).status,
+            403,
+          );
+        assert.equal(
+          (
+            await req('/house-v2/items/' + target.id + '/store', owner, 'POST', {
+              ...input,
+              revision: p.revision - 1,
+            })
+          ).status,
+          409,
+        );
+        const stored = await req('/house-v2/items/' + target.id + '/store', owner, 'POST', input);
+        assert.equal(stored.status, 200);
+        assert.equal(stored.data.stored, true);
+        assert.equal(stored.data.layout.revision, p.revision + 1);
+        assert(!stored.data.layout.items.some((i: any) => i.id === target.id));
+        const after = (await pool.query('SELECT * FROM house2_items ORDER BY id')).rows;
+        assert.deepEqual(
+          after.filter((i) => i.id !== target.id),
+          before.filter((i) => i.id !== target.id),
+        );
+        assert.deepEqual(
+          after.find((i) => i.id === target.id),
+          { ...target, plot_id: null, x: null, y: null },
+        );
+        assert.equal((await req('/house-v2', owner)).data.balance, balance);
+        const repeated = await req('/house-v2/items/' + target.id + '/store', owner, 'POST', {
+          ...input,
+          revision: stored.data.layout.revision,
+        });
+        assert.equal(repeated.status, 200);
+        assert.equal(repeated.data.layout.revision, stored.data.layout.revision);
+        assert.equal(
+          (await req('/house-v2/items/' + target.id + '/store', owner, 'POST', input)).status,
+          409,
+        );
+      },
+    );
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
     await pool.end();

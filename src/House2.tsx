@@ -29,6 +29,7 @@ import {
   Undo2,
   Warehouse,
   Paintbrush,
+  Clock3,
   X,
   UsersRound,
 } from 'lucide-react';
@@ -69,6 +70,7 @@ import {
   house2ResizeFromBorder,
   house2RotateFromBorder,
   house2SetItemRotation,
+  house2LayoutContentsEqual,
   type House2BorderHandle,
 } from './house2-item-transform';
 import { type TerrainTextureId } from '../shared/vtt-terrain';
@@ -77,6 +79,7 @@ import {
   house2Clamp,
   house2RotatedSize,
   house2Furniture,
+  house2FurnitureForSale,
   house2Houses,
   house2Terrains,
   house2Landscape,
@@ -159,6 +162,7 @@ export function House2({ character, user }: { character?: Character; user: User 
   const [newName, setNewName] = useState(''),
     [newTerrain, setNewTerrain] = useState('earth');
   const [createOpen, setCreateOpen] = useState(false);
+  const [clockOpen, setClockOpen] = useState(false);
   const mapRef = useRef<SVGSVGElement>(null),
     menuRef = useRef<HTMLDivElement>(null),
     triggerRef = useRef<HTMLButtonElement>(null);
@@ -584,13 +588,86 @@ export function House2({ character, user }: { character?: Character; user: User 
     );
     setDraft(structuredClone(d));
   }
-  function storePiece() {
-    const d = startDraft();
-    if (!d || !selectedPiece || selectedPiece === 'house') return;
-    d.items = d.items.filter((i) => i.id !== selectedPiece);
-    setDraft(d);
-    setSelectedPiece(null);
+  async function storePiece() {
+    if (!plot?.can_edit || busy || !selectedPiece || selectedPiece === 'house' || drag.current)
+      return;
+    const id = selectedPiece,
+      pending = draft;
+    setBusy(true);
+    try {
+      const result = await post<{ stored: true; layout: House2Layout }>(
+        `/house-v2/items/${id}/store`,
+        { plot_id: plot.id, revision: pending?.revision ?? plot.revision },
+      );
+      setScene((s) =>
+        s
+          ? {
+              ...s,
+              items: s.items.filter((i) => i.id !== id),
+              plots: s.plots.map((p) =>
+                p.id === plot.id ? { ...p, revision: result.layout.revision } : p,
+              ),
+            }
+          : s,
+      );
+      setDirectory((d) =>
+        d
+          ? {
+              ...d,
+              inventory: d.inventory.map((i) =>
+                i.id === id ? { ...i, plot_id: null, x: null, y: null } : i,
+              ),
+            }
+          : d,
+      );
+      if (pending) {
+        const next = {
+          ...pending,
+          revision: result.layout.revision,
+          items: pending.items.filter((i) => i.id !== id),
+        };
+        setDraft(house2LayoutContentsEqual(next, result.layout) ? null : next);
+      }
+      setSelectedPiece(null);
+      setItemActions(null);
+      setNotice('Objeto guardado na coleção.');
+      await reload(sceneId, true);
+    } catch (e) {
+      setNotice((e as Error).message);
+      await reload(sceneId, true);
+    } finally {
+      setBusy(false);
+    }
   }
+  const storeShortcut = useRef<() => boolean>(() => false);
+  storeShortcut.current = () => {
+    if (!plot?.can_edit || busy || !selectedPiece || selectedPiece === 'house' || drag.current)
+      return false;
+    void storePiece();
+    return true;
+  };
+  useEffect(() => {
+    const key = (event: KeyboardEvent) => {
+      if (
+        !['Backspace', 'Delete'].includes(event.key) ||
+        event.repeat ||
+        event.defaultPrevented ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.altKey
+      )
+        return;
+      if (
+        (event.target as Element)?.closest?.(
+          'input,textarea,select,[contenteditable="true"],dialog',
+        )
+      )
+        return;
+      if (storeShortcut.current()) event.preventDefault();
+    };
+    document.addEventListener('keydown', key);
+    return () => document.removeEventListener('keydown', key);
+  }, []);
   function world(clientX: number, clientY: number) {
     const matrix = mapRef.current?.getScreenCTM()?.inverse();
     return matrix ? new DOMPoint(clientX, clientY).matrixTransform(matrix) : new DOMPoint();
@@ -956,7 +1033,11 @@ export function House2({ character, user }: { character?: Character; user: User 
           →
         </button>
         {selectedPiece !== 'house' && (
-          <button disabled={busy} onClick={storePiece}>
+          <button
+            disabled={busy}
+            onClick={() => void storePiece()}
+            title="Guardar na coleção · Backspace ou Delete"
+          >
             <Warehouse size={16} /> Guardar
           </button>
         )}
@@ -1438,6 +1519,17 @@ export function House2({ character, user }: { character?: Character; user: User 
             </time>
             {' · '}
             {house2DayPhases[dayPhase].name}
+            {worldClock.clock?.canEdit && (
+              <button
+                type="button"
+                className="h2-clock-edit"
+                aria-label="Ajustar hora do dia"
+                title="Ajustar hora do dia"
+                onClick={() => setClockOpen(true)}
+              >
+                <Clock3 size={14} />
+              </button>
+            )}
           </div>
           <House2Capture
             map={mapRef}
@@ -1805,8 +1897,8 @@ export function House2({ character, user }: { character?: Character; user: User 
                       />
                     )}
                     <p>
-                      {house2Furniture.length} peças para interiores, jardins e cidade. A compra
-                      entra na sua coleção de teste.
+                      {house2FurnitureForSale.length} peças para interiores, jardins e cidade. A
+                      compra entra na sua coleção de teste.
                     </p>
                     <label>
                       Categoria
@@ -1815,9 +1907,11 @@ export function House2({ character, user }: { character?: Character; user: User 
                         value={catalogCategory}
                         onChange={(e) => setCatalogCategory(e.target.value)}
                       >
-                        {['Todas', ...new Set(house2Furniture.map((f) => f.category))].map((c) => (
-                          <option key={c}>{c}</option>
-                        ))}
+                        {['Todas', ...new Set(house2FurnitureForSale.map((f) => f.category))].map(
+                          (c) => (
+                            <option key={c}>{c}</option>
+                          ),
+                        )}
                       </select>
                     </label>
                     <label className="h2-search">
@@ -1830,7 +1924,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                       />
                     </label>
                     <div className="h2-catalog">
-                      {house2Furniture
+                      {house2FurnitureForSale
                         .filter(
                           (f) =>
                             (catalogCategory === 'Todas' || f.category === catalogCategory) &&
@@ -1910,6 +2004,18 @@ export function House2({ character, user }: { character?: Character; user: User 
         </ScenePanel>
       )}
 
+      {clockOpen && worldClock.clock?.canEdit && (
+        <Modal title="Horário do mundo" close={() => setClockOpen(false)}>
+          <House2Clock
+            world={worldClock}
+            initiallyEditing
+            saved={() => {
+              setClockOpen(false);
+              setNotice('Horário do mundo atualizado.');
+            }}
+          />
+        </Modal>
+      )}
       {confirmation && (
         <Modal
           title="Confirmar compra"

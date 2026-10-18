@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { house2Houses } from '../shared/house-v2';
 import { house2CutawayImage } from './house2-architecture';
 import { house2Finish, type House2Finishes } from '../shared/house2-finishes';
-import { house2InteriorSurfaces } from './house2-interior-surfaces';
+import { house2InteriorSurfaces, house2WoodFloorTileSizes } from './house2-interior-surfaces';
 export { house2CutawayImage } from './house2-architecture';
 
 /** Empty interiors share the VTT vertical plan and matching roof footprint. */
@@ -60,6 +60,7 @@ export function House2Interior({
   const { left, right, top, bottom } = house2InteriorSurfaces(spec, width, height);
   const imageBox = { x: -width / 2, y: -height / 2, width, height };
   const floorBox = { x: left, y: top, width: right - left, height: bottom - top };
+  const floorTileSize = floor && house2WoodFloorTileSizes[floor.id];
   return (
     <g data-house2-interior="orthographic" data-house2-cutaway={Number(id.slice(-3))}>
       <defs>
@@ -71,16 +72,16 @@ export function House2Interior({
               id={tile + '-' + v!.kind}
               x={v!.kind === 'floor' ? left : 0}
               y={v!.kind === 'floor' ? top : 0}
-              width={v!.kind === 'floor' ? right - left : 1}
-              height={v!.kind === 'floor' ? bottom - top : 1}
+              width={v!.kind === 'floor' ? floorTileSize || right - left : 1}
+              height={v!.kind === 'floor' ? floorTileSize || bottom - top : 1}
               patternUnits="userSpaceOnUse"
             >
               <image
                 href={v!.image}
                 x={0}
                 y={0}
-                width={v!.kind === 'floor' ? right - left : 1}
-                height={v!.kind === 'floor' ? bottom - top : 1}
+                width={v!.kind === 'floor' ? floorTileSize || right - left : 1}
+                height={v!.kind === 'floor' ? floorTileSize || bottom - top : 1}
                 preserveAspectRatio="xMidYMid slice"
               />
             </pattern>

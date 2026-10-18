@@ -497,12 +497,13 @@ test('House 2.0: tokens próprios, pets, portas, concorrência e dados originais
       },
     );
     await t.test(
-      '25 telhados e 25 pisos: compra idempotente, categoria, aplicação e restauração',
+      '25 opções em cada revestimento: compra idempotente, categoria, aplicação e restauração',
       async () => {
         assert.equal(house2FinishesCatalog.filter((f) => f.kind === 'roof').length, 25);
         assert.equal(house2FinishesCatalog.filter((f) => f.kind === 'floor').length, 25);
+        assert.equal(house2FinishesCatalog.filter((f) => f.kind === 'walls').length, 25);
         const before = (await req('/house-v2', owner)).data.balance;
-        for (const id of ['roof-style-025', 'floor-dwarven-inlay']) {
+        for (const id of ['roof-style-025', 'floor-dwarven-inlay', 'walls-oak']) {
           const spec = house2FinishesCatalog.find((f) => f.id === id)!;
           const body = { character_id: a.id, catalog_id: id, idempotency_key: randomUUID() };
           const pair = await Promise.all([
@@ -523,7 +524,7 @@ test('House 2.0: tokens próprios, pets, portas, concorrência e dados originais
             (
               await req(`/house-v2/plots/${lot.id}/finish`, owner, 'POST', {
                 ...action,
-                kind: 'walls',
+                kind: spec.kind === 'walls' ? 'roof' : 'walls',
               })
             ).status,
             403,
@@ -552,11 +553,12 @@ test('House 2.0: tokens próprios, pets, portas, concorrência e dados originais
         const directory = (await req('/house-v2', owner)).data;
         assert.equal(
           directory.balance,
-          before - house2FinishesCatalog.find((f) => f.id === 'roof-style-025')!.price - 250,
+          before - house2FinishesCatalog.find((f) => f.id === 'roof-style-025')!.price - 250 - 220,
         );
         assert(
           directory.finishes.includes('roof-style-025') &&
-            directory.finishes.includes('floor-dwarven-inlay'),
+            directory.finishes.includes('floor-dwarven-inlay') &&
+            directory.finishes.includes('walls-oak'),
         );
       },
     );

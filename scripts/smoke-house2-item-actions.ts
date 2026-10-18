@@ -121,6 +121,8 @@ try {
   await enter();
   const item = page.locator(`[data-house2-piece="${lamp.item_id}"]`),
     popup = page.locator('[data-house2-item-actions]');
+  const originalImage = await item.locator('image').getAttribute('href');
+  await expect(item.locator('image')).toHaveCSS('filter', 'none');
   const pt = await item.evaluate((el) => {
     const p = new DOMPoint(0, 0).matrixTransform((el as SVGGraphicsElement).getScreenCTM()!);
     return { x: p.x, y: p.y };
@@ -166,6 +168,9 @@ try {
   await page.keyboard.press('Space');
   await popup.getByRole('button', { name: 'Apagar luz', exact: true }).click();
   await expect(glow).toHaveCount(0);
+  await expect(item.locator('image')).toHaveCSS('filter', 'none');
+  await expect(item.locator('image')).toHaveAttribute('href', originalImage!);
+  await page.screenshot({ path: 'test-results/house2-item-actions/unlit-original-colors.png' });
   await popup.getByRole('button', { name: 'Acender luz', exact: true }).click();
   await expect(glow).toHaveCount(1);
   await popup.getByRole('button', { name: 'Editar objeto', exact: true }).click();
@@ -192,6 +197,69 @@ try {
   await enter(peer);
   await expect(peer.locator('[data-house2-item-actions]')).toHaveCount(0);
   await expect(peer.locator('g[aria-label="Ações de Lamparina"]')).toHaveCount(0);
+  // Store from the side panel without a later Save, including a pending edit.
+  await item.focus();
+  await page.keyboard.press('Enter');
+  await popup.getByRole('button', { name: 'Editar objeto', exact: true }).click();
+  await page.getByRole('button', { name: 'Girar peça 90° à direita', exact: true }).click();
+  await page.getByRole('button', { name: 'Guardar', exact: true }).click();
+  await expect(item).toHaveCount(0);
+  await expect(page.locator('.h2-save-bar')).toHaveCount(0);
+  expect(
+    (await req(owner, '/house-v2')).inventory.find((i: any) => i.id === lamp.item_id).plot_id,
+  ).toBeNull();
+  const storedLamp = page
+    .locator('.h2-collection-list button')
+    .filter({ has: page.getByText('Lamparina', { exact: true }) });
+  await expect(storedLamp).toContainText('Guardado');
+  await storedLamp.click();
+  await page.getByRole('button', { name: 'Guardar', exact: true }).focus();
+  await page.keyboard.press('Backspace');
+  await expect(item).toHaveCount(0);
+  await expect(page.locator('.h2-save-bar')).toHaveCount(0);
+  // A placed object is saved back to the collection with Backspace too.
+  await storedLamp.click();
+  await page.getByRole('button', { name: 'Salvar', exact: true }).click();
+  await expect(page.locator('.h2-save-bar')).toHaveCount(0);
+  const position = page.getByLabel('Posição X', { exact: true }),
+    oldX = await position.inputValue();
+  await position.focus();
+  await position.press('Backspace');
+  await expect(item).toHaveCount(1);
+  expect(
+    (await req(owner, '/house-v2')).inventory.find((i: any) => i.id === lamp.item_id).plot_id,
+  ).toBe(lot.id);
+  await position.fill(oldX);
+  await position.press('Tab');
+  await page.getByRole('button', { name: 'Guardar', exact: true }).focus();
+  await page.keyboard.press('Backspace');
+  await expect(item).toHaveCount(0);
+  expect(
+    (await req(owner, '/house-v2')).inventory.find((i: any) => i.id === lamp.item_id).plot_id,
+  ).toBeNull();
+  // Storing another piece must retain unsaved moves of the table.
+  const tableNode = page.locator(`[data-house2-piece="${table.item_id}"]`),
+    fireNode = page.locator(`[data-house2-piece="${fire.item_id}"]`);
+  await tableNode.locator('image').click();
+  const tableBefore = (await req(owner, '/house-v2')).inventory.find(
+    (i: any) => i.id === table.item_id,
+  );
+  await page.getByLabel('Posição X', { exact: true }).fill(String(tableBefore.x + 0.25));
+  await page.getByLabel('Posição X', { exact: true }).press('Tab');
+  await fireNode.focus();
+  await page.keyboard.press('Enter');
+  await popup.getByRole('button', { name: 'Editar objeto', exact: true }).click();
+  await page.getByRole('button', { name: 'Guardar', exact: true }).click();
+  await expect(fireNode).toHaveCount(0);
+  await expect(page.locator('.h2-save-bar')).toHaveCount(1);
+  expect((await req(owner, '/house-v2')).inventory.find((i: any) => i.id === table.item_id).x).toBe(
+    tableBefore.x,
+  );
+  await page.getByRole('button', { name: 'Salvar', exact: true }).click();
+  await expect(page.locator('.h2-save-bar')).toHaveCount(0);
+  expect((await req(owner, '/house-v2')).inventory.find((i: any) => i.id === table.item_id).x).toBe(
+    tableBefore.x + 0.25,
+  );
   expect(errors).toEqual([]);
   await writeFile(
     'test-results/house2-item-actions/result.json',
@@ -201,6 +269,11 @@ try {
         directClick: true,
         lampAboveTable: true,
         noOpaqueCore: true,
+        unlitKeepsOriginalColors: true,
+        storeFromPanelPersists: true,
+        backspaceStores: true,
+        typingDoesNotStore: true,
+        otherDraftChangesPreserved: true,
         inlineActions: true,
         keyboard: true,
         drag: true,

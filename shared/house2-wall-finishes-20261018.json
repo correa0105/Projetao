@@ -1,0 +1,178 @@
+[
+  {
+    "id": "walls-oak",
+    "name": "Madeira de carvalho",
+    "price": 220,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-oak.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-oak.webp"
+  },
+  {
+    "id": "walls-walnut",
+    "name": "Madeira de nogueira",
+    "price": 260,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-walnut.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-walnut.webp"
+  },
+  {
+    "id": "walls-pine",
+    "name": "Madeira de pinho",
+    "price": 190,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-pine.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-pine.webp"
+  },
+  {
+    "id": "walls-cedar",
+    "name": "Madeira de cedro",
+    "price": 240,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-cedar.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-cedar.webp"
+  },
+  {
+    "id": "walls-whitewood",
+    "name": "Madeira caiada",
+    "price": 210,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-whitewood.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-whitewood.webp"
+  },
+  {
+    "id": "walls-charred",
+    "name": "Madeira carbonizada",
+    "price": 290,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-charred.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-charred.webp"
+  },
+  {
+    "id": "walls-plaster-ivory",
+    "name": "Reboco de cal",
+    "price": 200,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-plaster-ivory.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-plaster-ivory.webp"
+  },
+  {
+    "id": "walls-plaster-ochre",
+    "name": "Reboco ocre",
+    "price": 200,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-plaster-ochre.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-plaster-ochre.webp"
+  },
+  {
+    "id": "walls-plaster-clay",
+    "name": "Reboco de argila",
+    "price": 200,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-plaster-clay.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-plaster-clay.webp"
+  },
+  {
+    "id": "walls-plaster-sage",
+    "name": "Reboco verde-sálvia",
+    "price": 230,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-plaster-sage.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-plaster-sage.webp"
+  },
+  {
+    "id": "walls-plaster-blue",
+    "name": "Reboco azul mineral",
+    "price": 230,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-plaster-blue.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-plaster-blue.webp"
+  },
+  {
+    "id": "walls-basalt",
+    "name": "Blocos de basalto",
+    "price": 340,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-basalt.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-basalt.webp"
+  },
+  {
+    "id": "walls-limestone",
+    "name": "Blocos de calcário",
+    "price": 300,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-limestone.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-limestone.webp"
+  },
+  {
+    "id": "walls-sandstone",
+    "name": "Blocos de arenito",
+    "price": 290,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-sandstone.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-sandstone.webp"
+  },
+  {
+    "id": "walls-slate",
+    "name": "Pedra de ardósia",
+    "price": 340,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-slate.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-slate.webp"
+  },
+  {
+    "id": "walls-granite",
+    "name": "Blocos de granito",
+    "price": 360,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-granite.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-granite.webp"
+  },
+  {
+    "id": "walls-fieldstone",
+    "name": "Pedra rústica com musgo",
+    "price": 280,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-fieldstone.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-fieldstone.webp"
+  },
+  {
+    "id": "walls-red-brick",
+    "name": "Tijolos vermelhos",
+    "price": 260,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-red-brick.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-red-brick.webp"
+  },
+  {
+    "id": "walls-white-brick",
+    "name": "Tijolos caiados",
+    "price": 250,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-white-brick.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-white-brick.webp"
+  },
+  {
+    "id": "walls-adobe",
+    "name": "Blocos de adobe",
+    "price": 220,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-adobe.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-adobe.webp"
+  },
+  {
+    "id": "walls-dwarven",
+    "name": "Pedra com frisos anões",
+    "price": 440,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-dwarven.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-dwarven.webp"
+  },
+  {
+    "id": "walls-half-timber",
+    "name": "Enxaimel de carvalho",
+    "price": 350,
+    "kind": "walls",
+    "image": "/house2/walls-20261018/walls-half-timber.webp",
+    "thumbnail": "/house2/wall-thumbs-20261018/walls-half-timber.webp"
+  }
+]
