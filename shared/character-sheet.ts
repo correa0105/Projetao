@@ -822,7 +822,30 @@ export function choiceFields(race: string, cls: string, c?: SheetChoices): Choic
         );
       }
     }
-  return result;
+  // A proficiency choice cannot offer a skill already granted by another source.
+  // Expertise deliberately remains separate: it improves an existing proficiency.
+  return result.map((field) => {
+    if (
+      !['racialSkills', 'dreamSkill', 'versatileTraining'].includes(field.key) &&
+      !field.key.startsWith('skilled')
+    )
+      return field;
+    const taken = new Set(
+      [
+        ...(c?.backgroundSkills || background.skills),
+        ...(c?.classSkills || []),
+        ...Object.entries(c?.options || {})
+          .filter(([key]) => key !== field.key)
+          .flatMap(([, values]) => values),
+        ...(c?.advancement?.levels || []).flatMap((row) =>
+          Object.entries(row.choices)
+            .filter(([key]) => !/expertise/i.test(key))
+            .flatMap(([, values]) => values),
+        ),
+      ].filter((v) => skills.includes(v)),
+    );
+    return { ...field, options: field.options.filter((v) => !skills.includes(v) || !taken.has(v)) };
+  });
 }
 const loadouts: Record<string, { gear: string[][]; gold: number[]; cash: number }> = {
   Artífice: {
@@ -1027,13 +1050,19 @@ export function normalizeOptions(race: string, cls: string, c: SheetChoices) {
     c = {
       ...c,
       options: Object.fromEntries(
-        fields.map((f) => {
-          let v = (c.options[f.key] || []).filter((v) => f.options.includes(v));
-          v = [...new Set(v)];
-          return [f.key, v.concat(f.options.filter((x) => !v.includes(x))).slice(0, f.count)];
-        }),
+        Object.entries(c.options).filter(([key]) => fields.some((f) => f.key === key)),
       ),
     };
+    // Recompute after each choice so two proficiency fields cannot select the
+    // same automatic replacement during a background/species/class change.
+    for (const field of fields) {
+      const f = choiceFields(race, cls, c).find((f) => f.key === field.key);
+      if (!f) continue;
+      const selected = [...new Set((c.options[f.key] || []).filter((v) => f.options.includes(v)))];
+      c.options[f.key] = selected
+        .concat(f.options.filter((v) => !selected.includes(v)))
+        .slice(0, f.count);
+    }
   }
   return c;
 }

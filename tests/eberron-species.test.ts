@@ -4,6 +4,9 @@ import { classes, races } from '../shared/rules.js';
 import { eberronSpecies } from '../shared/eberron-species.js';
 import {
   backgroundRules,
+  choiceFields,
+  reconcileChoices,
+  skills,
   defaultChoices,
   deriveSheet,
   normalizeOptions,
@@ -12,6 +15,58 @@ import {
   proficientSkills,
 } from '../shared/character-sheet.js';
 import { characterHeightScale } from '../shared/character-stature.js';
+
+test('perícias: nenhuma fonte oferece novamente treinamento do antecedente, classe ou outra escolha', () => {
+  for (const race of races)
+    for (const cls of classes)
+      for (const background of Object.keys(backgroundRules)) {
+        const c = defaultChoices(race, cls, background);
+        validateChoices(race, cls, c);
+        for (const f of choiceFields(race, cls, c)) {
+          if (
+            !['racialSkills', 'dreamSkill', 'versatileTraining'].includes(f.key) &&
+            !f.key.startsWith('skilled')
+          )
+            continue;
+          const taken = new Set([
+            ...c.backgroundSkills,
+            ...c.classSkills,
+            ...Object.entries(c.options)
+              .filter(([key]) => key !== f.key)
+              .flatMap(([, v]) => v),
+          ]);
+          assert.ok(
+            f.options.every((v) => !skills.includes(v) || !taken.has(v)),
+            `${race}/${cls}/${background}/${f.key}`,
+          );
+          assert.ok((c.options[f.key] || []).every((v) => f.options.includes(v)));
+        }
+      }
+});
+
+test('Soldado: Atletismo e Intimidação somem do projeto especializado e servidor recusa repetição', () => {
+  for (const cls of classes) {
+    const c = defaultChoices('Warforged', cls, 'Soldado');
+    const field = choiceFields('Warforged', cls, c).find((f) => f.key === 'racialSkills')!;
+    assert.ok(!field.options.includes('Atletismo'));
+    assert.ok(!field.options.includes('Intimidação'));
+    assert.throws(() =>
+      validateChoices('Warforged', cls, {
+        ...c,
+        options: { ...c.options, racialSkills: ['Atletismo'] },
+      }),
+    );
+    const previous = defaultChoices('Warforged', cls, 'Acólito');
+    const next = reconcileChoices(
+      'Warforged',
+      cls,
+      { ...previous, options: { ...previous.options, racialSkills: ['Atletismo'] } },
+      'Soldado',
+    );
+    assert.ok(!next.options.racialSkills.includes('Atletismo'));
+    validateChoices('Warforged', cls, next);
+  }
+});
 
 test('Eberron: criação válida em todas as classes e antecedentes sem duplicar edições', () => {
   for (const race of Object.keys(eberronSpecies)) {

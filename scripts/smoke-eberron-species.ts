@@ -4,6 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { defaultChoices } from '../shared/character-sheet.js';
 import { eberronSpecies } from '../shared/eberron-species.js';
+import { classes } from '../shared/rules.js';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco UUID descartável requerido.');
 const origin = 'http://localhost:3054';
@@ -67,6 +68,19 @@ try {
     await expect(page.locator('.character-creation-form')).toContainText(
       'Eberron: Forge of the Artificer (2025)',
     );
+    if (race === 'Warforged') {
+      await page.getByLabel('Antecedente', { exact: true }).selectOption('Soldado');
+      for (const cls of classes) {
+        await page.getByLabel('Classe', { exact: true }).selectOption(cls);
+        const options = await page
+          .getByLabel('Perícia do projeto especializado', { exact: true })
+          .locator('option')
+          .allTextContents();
+        expect(options).not.toContain('Atletismo');
+        expect(options).not.toContain('Intimidação');
+      }
+      await page.getByLabel('Classe', { exact: true }).selectOption('Guerreiro');
+    }
     for (const width of [1440, 390]) {
       await page.setViewportSize({ width, height: 1000 });
       expect(
@@ -78,6 +92,24 @@ try {
     await pool.query(
       'INSERT INTO character_art_worker(id,available,heartbeat_at) VALUES(true,true,now()) ON CONFLICT(id) DO UPDATE SET available=true,heartbeat_at=now()',
     );
+    if (race === 'Warforged') {
+      const choices = defaultChoices(race, 'Guerreiro', 'Soldado');
+      const invalid = await context.request.post(origin + '/api/character-art', {
+        headers: { Origin: origin },
+        data: {
+          creation: {
+            name: 'Perícia repetida',
+            race,
+            class: 'Guerreiro',
+            background: 'Soldado',
+            choices: { ...choices, options: { ...choices.options, racialSkills: ['Atletismo'] } },
+          },
+          reference: (await testArtImage()).toString('base64'),
+          idempotency_key: randomUUID(),
+        },
+      });
+      expect(invalid.status()).toBe(400);
+    }
     const response = await context.request.post(origin + '/api/character-art', {
       headers: { Origin: origin },
       data: {
@@ -87,7 +119,7 @@ try {
           class: 'Guerreiro',
           background: 'Soldado',
           biography: '',
-          choices: defaultChoices(race, 'Guerreiro'),
+          choices: defaultChoices(race, 'Guerreiro', 'Soldado'),
         },
         reference: (await testArtImage()).toString('base64'),
         idempotency_key: randomUUID(),
@@ -100,7 +132,13 @@ try {
     expect(persisted.ok()).toBe(true);
     expect((await persisted.json()).sheet.choices.species).toBe(race);
     expect(errors).toEqual([]);
-    results.push({ race, persisted: true, desktop: true, mobile: true });
+    results.push({
+      race,
+      persisted: true,
+      desktop: true,
+      mobile: true,
+      duplicateSkillsHidden: race === 'Warforged',
+    });
     await context.close();
   }
   await writeFile(

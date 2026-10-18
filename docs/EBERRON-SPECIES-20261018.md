@@ -13,3 +13,9 @@ Publicação incremental deriva da imagem vigente, acrescenta novos bundles e su
 Fontes: [apresentação oficial das cinco espécies](https://www.dndbeyond.com/posts/2017-how-eberron-forge-of-the-artificer-reimagines), [catálogo oficial](https://www.dndbeyond.com/species), dados mecânicos no snapshot de raças `90d343cde64cf8dce1083ea0525a6b0b9e545f2e` utilizado pelo importador existente (EFA, páginas 34–38). Textos locais são resumos próprios em português; nenhuma arte dos livros foi copiada.
 
 Escopo pendente do histórico anterior: ampliação integral de Tasha, Xanathar e dos demais conteúdos de Eberron (talentos, subclasses e magias) deve ser auditada separadamente. A presença das cinco espécies não significa que todos esses livros já estejam implementados.
+
+## Escolhas de perícias sem repetição
+
+Correção solicitada em 18/10: todas as escolhas de proficiência excluem perícias concedidas pelo antecedente, classe e outras fontes. Exemplos: Soldado remove Atletismo e Intimidação do projeto especializado de Warforged; a mesma regra atende Humano, Elfo, Changeling, Shifter, Kalashtar, Khoravar e Habilidoso. O servidor usa o mesmo filtro. Especialização mantém a escolha de perícias conhecidas, pois melhora a proficiência.
+
+Normalização sequencial evita que dois campos recebam a mesma substituição automática ao trocar origem ou treinamento. Regressão percorre todas as espécies, classes e antecedentes e verifica opções e escolhas válidas; 101 testes aprovados. No navegador, o caso Warforged/Soldado foi verificado nas 13 classes, com recusa HTTP 400 para envio de Atletismo repetido e persistência das escolhas válidas. Build e publicação incremental sem migration; registro em `.local/skill-choices-*`.
