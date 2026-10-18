@@ -93,9 +93,9 @@ test('troca de estilo segue nível de Guerreiro e remove o bônus antigo, inclus
   );
 });
 
-test('capacidade de personagens acompanha privilégio atual', () => {
+test('capacidade de personagens voltou a dois para jogador e administrador', () => {
   assert.equal(characterLimit(false), 2);
-  assert.equal(characterLimit(true), 4);
+  assert.equal(characterLimit(true), 2);
 });
 
 test('API: concessões ADM creditam mínimo, estilo é idempotente, recursos são protegidos e backfill preserva recompensas', async () => {
@@ -242,13 +242,11 @@ test('API: concessões ADM creditam mínimo, estilo é idempotente, recursos sã
     assert.equal(rested.data.sheet.current_hp, rested.data.derived.hp);
     assert.equal(rested.data.sheet.temp_hp, 0);
     assert.equal(rested.data.sheet.hit_dice_used, 0);
-    await createLegacyTestCharacter(user, 'Segundo');
-    await createLegacyTestCharacter(user, 'Terceiro');
     await pool.query(
       'INSERT INTO character_art_worker(id,heartbeat_at,available)VALUES(true,now(),true)ON CONFLICT(id)DO UPDATE SET heartbeat_at=now(),available=true',
     );
     const creation = {
-        name: 'Quarto',
+        name: 'Segundo',
         race: 'Orc',
         class: 'Guerreiro',
         choices: defaultChoices('Orc', 'Guerreiro'),
@@ -260,9 +258,9 @@ test('API: concessões ADM creditam mínimo, estilo é idempotente, recursos sã
       ),
     );
     assert.deepEqual(jobs.map((r) => r.status).sort(), [202, 409, 409]);
-    assert.equal((await req('/character-art')).data.character_limit, 4);
+    assert.equal((await req('/character-art')).data.character_limit, 2);
     await finishTestArt(jobs.find((r) => r.status === 202)!.data.id);
-    assert.equal((await req('/characters')).data.length, 4);
+    assert.equal((await req('/characters')).data.length, 2);
     await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [user]);
     assert.equal((await req('/character-art')).data.character_limit, 2);
     assert.equal(

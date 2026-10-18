@@ -15,17 +15,19 @@ try {
         '--import',
         'tsx',
         process.argv.includes('--choices')
-          ? 'scripts/smoke-class-choices-camp.ts'
-          : process.argv.includes('--expansion')
-            ? 'scripts/smoke-character-rules-2024.ts'
-            : 'scripts/smoke-character-advancement.ts',
+            ? 'scripts/smoke-class-choices-camp.ts'
+            : process.argv.includes('--expansion')
+              ? 'scripts/smoke-character-rules-2024.ts'
+              : 'scripts/smoke-character-advancement.ts',
       ]
     : [
         '--import',
         'tsx',
         '--test',
         '--test-concurrency=1',
-        ...(process.argv.includes('--all')
+        ...(process.argv.includes('--choices-unit')
+          ? ['tests/class-choices.test.ts']
+          : process.argv.includes('--all')
           ? ['tests/*.test.ts']
           : [
               'tests/character-advancement.test.ts',

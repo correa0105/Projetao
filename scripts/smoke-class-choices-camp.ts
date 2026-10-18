@@ -56,7 +56,11 @@ try {
   });
   await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [user.id]);
   const heroes = [];
-  for (const name of ['Aurora', 'Bruma', 'Cinza', 'Dourado']) {
+  const realDirectory = process.env.CAMP_REAL_ART_DIRECTORY;
+  const realArt = realDirectory
+    ? JSON.parse(await readFile(realDirectory + '/metadata.json', 'utf8'))
+    : [];
+  for (const [index, name] of ['Aurora', 'Bruma'].entries()) {
     const hero = await createLegacyTestCharacter(user.id, name),
       f = originFixture('Guerreiro');
     f.choices.options.style = ['Arquearia'];
@@ -69,7 +73,11 @@ try {
     );
     await pool.query('INSERT INTO character_portraits(character_id,image)VALUES($1,$2)', [
       hero.id,
-      await readFile('public/character-silhouette-v2.png'),
+      await readFile(
+        realArt[index]
+          ? realDirectory + '/' + realArt[index].id + '.png'
+          : 'public/character-silhouette-v2.png',
+      ),
     ]);
     await pool.query(
       'INSERT INTO character_sheets(character_id,choices,rolls,assignment,finalized_at,current_hp)VALUES($1,$2,$3,$4,now(),$5)',
@@ -92,44 +100,30 @@ try {
     );
   }
   await page.goto(origin + '/#characters');
-  await expect(page.locator('.camp-capacity')).toHaveText('4 / 4 personagens');
-  await expect(page.locator('.camp-carousel .camp-character')).toHaveCount(4);
+  await expect(page.locator('.camp-capacity')).toHaveText('2 / 2 personagens');
+  await expect(page.locator('.camp-stage > .camp-character')).toHaveCount(2);
+  await expect(page.locator('.camp-carousel,.camp-carousel-arrow,.camp-create-slot')).toHaveCount(
+    0,
+  );
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 1000 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
       true,
     );
-    const positions = await page
-      .locator('.camp-carousel .camp-character')
-      .evaluateAll((nodes) => nodes.map((n) => n.getAttribute('data-camp-position')));
-    await page.getByRole('button', { name: 'Girar personagens à direita' }).click();
-    await expect
-      .poll(() =>
-        page
-          .locator('.camp-carousel .camp-character')
-          .evaluateAll((nodes) => nodes.map((n) => n.getAttribute('data-camp-position'))),
-      )
-      .toEqual(positions.map((n) => String((Number(n) + 1) % 4)));
-    const rects = await page.locator('.camp-carousel .camp-character').evaluateAll((nodes) =>
-      nodes.map((n) => ({
-        pos: n.getAttribute('data-camp-position'),
-        x: n.getBoundingClientRect().x,
-        w: n.getBoundingClientRect().width,
-      })),
-    );
-    const center = (pos: string) => {
-      const r = rects.find((r) => r.pos === pos)!;
-      return r.x + r.w / 2;
-    };
-    expect(center('0')).toBeLessThan(center('3'));
-    expect(center('1')).toBeGreaterThan(center('2'));
+    const rects = await page
+      .locator('.camp-stage > .camp-character .camp-figure')
+      .evaluateAll((nodes) =>
+        nodes.map((el) => {
+          const r = el.getBoundingClientRect();
+          return { x: r.x + r.width / 2, bottom: r.bottom };
+        }),
+      );
+    expect(rects[0].x).toBeLessThan(rects[1].x);
+    expect(Math.abs(rects[0].bottom - rects[1].bottom)).toBeLessThan(1);
     await page.screenshot({ path: `test-results/class-choices-camp/camp-${width}.png` });
   }
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page
-    .locator('.camp-character[data-camp-position="1"] a')
-    .filter({ hasText: 'Abrir ficha' })
-    .click();
+  await page.locator('.camp-character a').filter({ hasText: 'Abrir ficha' }).last().click();
   await expect(
     page.getByRole('button', { name: 'Conceder nível (ADM)', exact: true }),
   ).toBeVisible();
@@ -353,7 +347,10 @@ try {
     JSON.stringify({
       passed: true,
       errors,
-      fourPositions: true,
+      twoPositions: true,
+      noCarousel: true,
+      realPortraits: Boolean(realDirectory),
+      viewports: [1440, 768, 390, 320],
       globalAttributeBudget: true,
       featInsteadOfASI: true,
       featureClassLevels: true,
@@ -367,7 +364,7 @@ try {
     }),
   );
   console.log(
-    'PASS escolhas, atributos/talento, origem por nível, recursos e carrossel em quatro larguras.',
+    'PASS escolhas, atributos/talento, origem por nível, recursos e acampamento original em quatro larguras.',
   );
 } catch (e) {
   console.log('ALERTS', await page.locator('[role="alert"]').allTextContents());

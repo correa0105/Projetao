@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "errors": [],
+  "globalAttributeBudget": true,
+  "featInsteadOfASI": true,
+  "featureClassLevels": true,
+  "styleChoice": true,
+  "identityGrid": true,
+  "protectedResources": true,
+  "lightItems": true,
+  "soundControls": true,
+  "fireLoop": true,
+  "finishesPurchasedAndApplied": true,
+  "twoPositions": true,
+  "noCarousel": true,
+  "realPortraits": true,
+  "viewports": [
+    1440,
+    768,
+    390,
+    320
+  ],
+  "classChoiceTests": 4
+}

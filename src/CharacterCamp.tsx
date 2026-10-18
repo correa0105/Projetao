@@ -1,7 +1,7 @@
 import { FlashMessage } from './FlashMessage';
 import { CharacterTitleLabel } from './Titles';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Sparkles, Trash2, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Sparkles, Trash2, X } from 'lucide-react';
 import { api, post } from './api';
 import { Modal } from './components';
 import type { Character } from './types';
@@ -95,12 +95,6 @@ export function CharacterCamp({
   onRefresh: () => Promise<void>;
 }) {
   const [state, setState] = useState<ArtState>({ available: false, jobs: [], pending_new: 0 });
-  const [rotation, setRotation] = useState(0);
-  const capacity = state.character_limit ?? 2;
-  const carousel = capacity > 2;
-  const position = (index: number) => (((index + rotation) % 4) + 4) % 4;
-  const orbit = (index: number) =>
-    carousel ? ({ '--camp-angle': `${(index + rotation) * 90 - 45}deg` } as CSSProperties) : {};
   const [error, setError] = useState('');
   const [loadError, setLoadError] = useState('');
   const [availability, setAvailability] = useState<boolean | null>(null);
@@ -174,52 +168,24 @@ export function CharacterCamp({
       <div className="page-header-spacer" aria-hidden="true" />
       <div className="camp-capacity-row">
         <span className="camp-capacity">
-          {characters.length + state.pending_new} / {capacity} personagens
+          {characters.length + state.pending_new} / 2 personagens
         </span>
       </div>
-      <div
-        className={`camp-stage${carousel ? ' camp-carousel' : ''}`}
-        aria-roledescription={carousel ? 'carrossel' : undefined}
-        aria-label={carousel ? 'Personagens do acampamento' : undefined}
-      >
-        {carousel && (
-          <>
-            <button
-              className="camp-carousel-arrow is-left"
-              aria-label="Girar personagens à esquerda"
-              onClick={() => setRotation((v) => v - 1)}
-            >
-              <ChevronLeft />
-            </button>
-            <button
-              className="camp-carousel-arrow is-right"
-              aria-label="Girar personagens à direita"
-              onClick={() => setRotation((v) => v + 1)}
-            >
-              <ChevronRight />
-            </button>
-          </>
-        )}
-        {characters.map((character, index) => (
+      <div className="camp-stage">
+        {characters.map((character) => (
           <article
             key={character.id}
-            data-camp-position={carousel ? position(index) : undefined}
             className={`camp-character ${selectedId === character.id ? 'is-selected' : ''}`}
             style={
               {
                 '--stature-scale': characterHeightScale(character.race, character.species_size),
-                ...orbit(index),
               } as CSSProperties
             }
           >
             <button
               className="camp-figure"
               aria-label={`Selecionar ${character.name}`}
-              onClick={() => {
-                if (carousel && position(index) > 1)
-                  setRotation((v) => v + ((1 - position(index) + 4) % 4));
-                onSelect(character.id);
-              }}
+              onClick={() => onSelect(character.id)}
             >
               {character.portrait_revision > 0 ? (
                 <img
@@ -302,13 +268,8 @@ export function CharacterCamp({
         ))}
         {pending
           .filter((j) => !j.character_id)
-          .map((job, index) => (
-            <article
-              className="camp-character camp-pending"
-              key={job.id}
-              style={orbit(characters.length + index)}
-              data-camp-position={carousel ? position(characters.length + index) : undefined}
-            >
+          .map((job) => (
+            <article className="camp-character camp-pending" key={job.id}>
               <div className="camp-figure">
                 <CharacterSilhouette />
               </div>
@@ -322,32 +283,18 @@ export function CharacterCamp({
               </div>
             </article>
           ))}
-        {Array.from(
-          {
-            length: carousel
-              ? Math.max(0, capacity - characters.length - state.pending_new)
-              : Number(characters.length + state.pending_new < capacity),
-          },
-          (_, empty) => (
-            <article
-              key={'empty-' + empty}
-              className="camp-character camp-create-slot"
-              style={orbit(characters.length + state.pending_new + empty)}
-              data-camp-position={
-                carousel ? position(characters.length + state.pending_new + empty) : undefined
-              }
+        {characters.length + state.pending_new < 2 && (
+          <article className="camp-character camp-create-slot">
+            <button
+              className="camp-new camp-figure"
+              onClick={onCreate}
+              aria-label="Criar personagem"
+              title="Criar personagem"
             >
-              <button
-                className="camp-new camp-figure"
-                onClick={onCreate}
-                aria-label="Criar personagem"
-                title="Criar personagem"
-              >
-                <CharacterSilhouette />
-              </button>
-              <div aria-hidden="true" />
-            </article>
-          ),
+              <CharacterSilhouette />
+            </button>
+            <div aria-hidden="true" />
+          </article>
         )}
       </div>
       {loadError && (
