@@ -104,68 +104,26 @@
   place-items: center;
   width: 39px;
   height: 39px;
-  border: 1px solid #c49c4845;
-  border-radius: 50%;
+  border: 0;
+  border-radius: 0;
   color: #cfa35e;
-  background: #6b512622;
+  background: transparent;
 }
 .tag-total-symbol:has(img) {
   position: relative;
-  width: 48px;
-  height: 48px;
-  overflow: hidden;
-  background: #17130e;
-  box-shadow: 0 2px 7px #0006;
+  width: 58px;
+  height: 58px;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
 }
 .tag-total-symbol img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 114%;
-  height: 114%;
-  max-width: none;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-}
-.tag-total-symbol[data-monster='bugurso'] img {
-  width: 145%;
-  height: 145%;
-  transform: translate(-53%, -43%);
-}
-.tag-total-symbol[data-monster='esqueleto'] img {
-  width: 170%;
-  height: 170%;
-  transform: translate(-60%, -43%);
-}
-.tag-total-symbol[data-monster='gnoll'] img {
-  width: 170%;
-  height: 170%;
-  transform: translate(-32%, -43%);
-}
-.tag-total-symbol[data-monster='goblin'] img {
-  width: 160%;
-  height: 160%;
-  transform: translate(-59%, -47%);
-}
-.tag-total-symbol[data-monster='hobgoblin'] img {
-  width: 330%;
-  height: 330%;
-  transform: translate(-52%, -17%);
-}
-.tag-total-symbol[data-monster='kobold'] img {
-  width: 130%;
-  height: 130%;
-  transform: translate(-52%, -49%);
-}
-.tag-total-symbol[data-monster='ogro'] img {
-  width: 220%;
-  height: 220%;
-  transform: translate(-57%, -32%);
-}
-.tag-total-symbol[data-monster='zumbi'] img {
-  width: 145%;
-  height: 145%;
-  transform: translate(-60%, -43%);
+  position: static;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transform: none;
 }
 .tag-total {
   display: block;

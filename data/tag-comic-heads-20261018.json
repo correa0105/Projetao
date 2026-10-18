@@ -1,0 +1,87 @@
+{
+  "method": "built-in image_gen",
+  "reference": "docs/references/tag-head-style-20261018.png",
+  "assets": [
+    {
+      "id": "bugurso",
+      "prompt": "Create ONE standalone monster head UI icon. STYLE REFERENCE: the attached image defines the desired illustration technique and design only. Match its bold dark navy/black contour, angular exaggerated facial planes, hard-edged flat cel shading, 3-4 strong color blocks, very high readability, graphic fantasy comic illustration, subtle rough ink at outer silhouette. NOT photorealistic, NOT 3D, NOT a round portrait crop. SUBJECT: BUGBEAR head: shaggy burnt-umber fur, broad flat goblinoid nose, projecting lower fangs, tall pointed furry ears, coarse black hair. Clearly a hairy bugbear, NOT a bear animal. Composition: frontal or almost frontal, head and a tiny angular neck/shoulder termination only, fills 80-85% of square with 8% transparent margin around ears/horns/hair/chin. The face is the subject, no body, weapons, labels, scenery or decorative badge. BACKGROUND MUST BE REAL ALPHA TRANSPARENT: remove the reference's pale yellow background entirely. NO circle, NO ring, NO circular border, NO frame, NO medallion, NO square background, NO glow. Keep irregular natural head silhouette. Deliver a single image, one creature only, no sheet or variants.",
+      "url": "/tags/comic-heads-20261018/bugurso.webp",
+      "sha256": "2b748ead54b983b290f3e686b9bc277d511917d6f8b4d0ec953972968b6f321a",
+      "bytes": 30314,
+      "nativeFile": "exec-21f58487-ede5-483e-809b-cc01d0b914fa.png"
+    },
+    {
+      "id": "cubo-gelatinoso",
+      "prompt": "Create ONE standalone monster head UI icon. STYLE REFERENCE: the attached image defines the desired illustration technique and design only. Match its bold dark navy/black contour, angular exaggerated facial planes, hard-edged flat cel shading, 3-4 strong color blocks, very high readability, graphic fantasy comic illustration, subtle rough ink at outer silhouette. NOT photorealistic, NOT 3D, NOT a round portrait crop. SUBJECT: GELATINOUS CUBE monster icon: a single translucent teal cubic slime viewed in slight three-quarter perspective, angular cube silhouette, a few ivory bone fragments suspended inside. It has NO humanoid head, NO eyes, NO mouth. Adapt the reference's graphic cel-shaded linework to this cube. Composition: frontal or almost frontal, head and a tiny angular neck/shoulder termination only, fills 80-85% of square with 8% transparent margin around ears/horns/hair/chin. The face is the subject, no body, weapons, labels, scenery or decorative badge. BACKGROUND MUST BE REAL ALPHA TRANSPARENT: remove the reference's pale yellow background entirely. NO circle, NO ring, NO circular border, NO frame, NO medallion, NO square background, NO glow. Keep irregular natural head silhouette. Deliver a single image, one creature only, no sheet or variants.",
+      "url": "/tags/comic-heads-20261018/cubo-gelatinoso.webp",
+      "sha256": "b4aaa71024d3b92d36749211cc7ea6c71ff87035d0ce82c9285a97e5c93eb6e6",
+      "bytes": 27762,
+      "nativeFile": "exec-72b886f1-73da-4f40-afd9-d359d9e01cc7.png"
+    },
+    {
+      "id": "esqueleto",
+      "prompt": "Create ONE standalone monster head UI icon. STYLE REFERENCE: the attached image defines the desired illustration technique and design only. Match its bold dark navy/black contour, angular exaggerated facial planes, hard-edged flat cel shading, 3-4 strong color blocks, very high readability, graphic fantasy comic illustration, subtle rough ink at outer silhouette. NOT photorealistic, NOT 3D, NOT a round portrait crop. SUBJECT: SKELETON head: bare ivory human skull, dark empty eye sockets, prominent cheekbones and a slightly open grinning jaw, a few chipped teeth. No helmet, no flesh. Composition: frontal or almost frontal, head and a tiny angular neck/shoulder termination only, fills 80-85% of square with 8% transparent margin around ears/horns/hair/chin. The face is the subject, no body, weapons, labels, scenery or decorative badge. BACKGROUND MUST BE REAL ALPHA TRANSPARENT: remove the reference's pale yellow background entirely. NO circle, NO ring, NO circular border, NO frame, NO medallion, NO square background, NO glow. Keep irregular natural head silhouette. Deliver a single image, one creature only, no sheet or variants.",
+      "url": "/tags/comic-heads-20261018/esqueleto.webp",
+      "sha256": "9f92d193b03c43f4c5f8473d38bde331ea6da44275625ee98c23a3b8116d05df",
+      "bytes": 24020,
+      "nativeFile": "exec-849ce4c5-2128-4b81-9e5f-9a511b0da905.png"
+    },
+    {
+      "id": "gnoll",
+      "prompt": "Create ONE standalone monster head UI icon. STYLE REFERENCE: the attached image defines the desired illustration technique and design only. Match its bold dark navy/black contour, angular exaggerated facial planes, hard-edged flat cel shading, 3-4 strong color blocks, very high readability, graphic fantasy comic illustration, subtle rough ink at outer silhouette. NOT photorealistic, NOT 3D, NOT a round portrait crop. SUBJECT: GNOLL head: unmistakable snarling hyena humanoid, long broad black muzzle, sandy tan spotted fur, rounded upright hyena ears, dark upright mane, sharp uneven teeth. Not a wolf or goblin. Composition: frontal or almost frontal, head and a tiny angular neck/shoulder termination only, fills 80-85% of square with 8% transparent margin around ears/horns/hair/chin. The face is the subject, no body, weapons, labels, scenery or decorative badge. BACKGROUND MUST BE REAL ALPHA TRANSPARENT: remove the reference's pale yellow background entirely. NO circle, NO ring, NO circular border, NO frame, NO medallion, NO square background, NO glow. Keep irregular natural head silhouette. Deliver a single image, one creature only, no sheet or variants.",
+      "url": "/tags/comic-heads-20261018/gnoll.webp",
+      "sha256": "7646e600b3b21badded0aa8a5409df467e3ec316f83c4c9d255f50657bfd1d15",
+      "bytes": 29472,
+      "nativeFile": "exec-1c0b43fc-048d-4b54-af7a-81c72145b196.png"
+    },
+    {
+      "id": "goblin",
+      "prompt": "Create ONE standalone monster head UI icon. STYLE REFERENCE: the attached image defines the desired illustration technique and design only. Match its bold dark navy/black contour, angular exaggerated facial planes, hard-edged flat cel shading, 3-4 strong color blocks, very high readability, graphic fantasy comic illustration, subtle rough ink at outer silhouette. NOT photorealistic, NOT 3D, NOT a round portrait crop. SUBJECT: GOBLIN head: small sharp olive-green goblinoid face, enormous pointed ears, long hooked pointed nose, narrow reddish eyes, crooked small sharp teeth, short black hair. Narrower and more sly than the reference's massive orc. Composition: frontal or almost frontal, head and a tiny angular neck/shoulder termination only, fills 80-85% of square with 8% transparent margin around ears/horns/hair/chin. The face is the subject, no body, weapons, labels, scenery or decorative badge. BACKGROUND MUST BE REAL ALPHA TRANSPARENT: remove the reference's pale yellow background entirely. NO circle, NO ring, NO circular border, NO frame, NO medallion, NO square background, NO glow. Keep irregular natural head silhouette. Deliver a single image, one creature only, no sheet or variants.",
+      "url": "/tags/comic-heads-20261018/goblin.webp",
+      "sha256": "480dd46de7e333c06471d21cddcc665c221fd83273e95776abe4c54ab5b2c2df",
+      "bytes": 23502,
+      "nativeFile": "exec-60cca5b1-5ec1-4b99-9d94-cae39d808493.png"
+    },
+    {
+      "id": "hobgoblin",
+      "prompt": "Create ONE standalone monster head UI icon. STYLE REFERENCE: the attached image defines the desired illustration technique and design only. Match its bold dark navy/black contour, angular exaggerated facial planes, hard-edged flat cel shading, 3-4 strong color blocks, very high readability, graphic fantasy comic illustration, subtle rough ink at outer silhouette. NOT photorealistic, NOT 3D, NOT a round portrait crop. SUBJECT: HOBGOBLIN head: broad rust-red/orange humanoid goblinoid face, flattened dark red nose, pronounced heavy brow and strong jaw, pointed ears, slicked back black hair. Disciplined warrior expression, no helmet. Composition: frontal or almost frontal, head and a tiny angular neck/shoulder termination only, fills 80-85% of square with 8% transparent margin around ears/horns/hair/chin. The face is the subject, no body, weapons, labels, scenery or decorative badge. BACKGROUND MUST BE REAL ALPHA TRANSPARENT: remove the reference's pale yellow background entirely. NO circle, NO ring, NO circular border, NO frame, NO medallion, NO square background, NO glow. Keep irregular natural head silhouette. Deliver a single image, one creature only, no sheet or variants.",
+      "url": "/tags/comic-heads-20261018/hobgoblin.webp",
+      "sha256": "856042790a4a5ae308e23154488a3cdadf5edb15b4bc01662b5dfce13e0f93a0",
+      "bytes": 25694,
+      "nativeFile": "exec-6648728b-5321-46f5-b0c8-fb270161a7b6.png"
+    },
+    {
+      "id": "kobold",
+      "prompt": "Create ONE standalone monster head UI icon. STYLE REFERENCE: the attached image defines the desired illustration technique and design only. Match its bold dark navy/black contour, angular exaggerated facial planes, hard-edged flat cel shading, 3-4 strong color blocks, very high readability, graphic fantasy comic illustration, subtle rough ink at outer silhouette. NOT photorealistic, NOT 3D, NOT a round portrait crop. SUBJECT: KOBOLD head: red-orange draconic/reptilian humanoid face, elongated narrow snout, two small curved dark horns, pointed reptilian ears, yellow slit-pupil eyes, small needle teeth. No fur, not a dragon with a massive neck. Composition: frontal or almost frontal, head and a tiny angular neck/shoulder termination only, fills 80-85% of square with 8% transparent margin around ears/horns/hair/chin. The face is the subject, no body, weapons, labels, scenery or decorative badge. BACKGROUND MUST BE REAL ALPHA TRANSPARENT: remove the reference's pale yellow background entirely. NO circle, NO ring, NO circular border, NO frame, NO medallion, NO square background, NO glow. Keep irregular natural head silhouette. Deliver a single image, one creature only, no sheet or variants.",
+      "url": "/tags/comic-heads-20261018/kobold.webp",
+      "sha256": "fed71f74566fb9d0cd471b9eb2a11ecafb7faf77d834aab3ab0fa218872869f3",
+      "bytes": 25882,
+      "nativeFile": "exec-37847bf2-9068-428f-a49a-8db351f39db1.png"
+    },
+    {
+      "id": "ogro",
+      "prompt": "Create ONE standalone monster head UI icon. STYLE REFERENCE: the attached image defines the desired illustration technique and design only. Match its bold dark navy/black contour, angular exaggerated facial planes, hard-edged flat cel shading, 3-4 strong color blocks, very high readability, graphic fantasy comic illustration, subtle rough ink at outer silhouette. NOT photorealistic, NOT 3D, NOT a round portrait crop. SUBJECT: OGRE head: huge lumpy pale ochre/gray face, very broad bulbous nose, tiny mean eyes, heavy low brow, hanging lower lip, uneven lower fangs, sparse greasy dark hair. Massive blunt humanoid, not an orc. Composition: frontal or almost frontal, head and a tiny angular neck/shoulder termination only, fills 80-85% of square with 8% transparent margin around ears/horns/hair/chin. The face is the subject, no body, weapons, labels, scenery or decorative badge. BACKGROUND MUST BE REAL ALPHA TRANSPARENT: remove the reference's pale yellow background entirely. NO circle, NO ring, NO circular border, NO frame, NO medallion, NO square background, NO glow. Keep irregular natural head silhouette. Deliver a single image, one creature only, no sheet or variants.",
+      "url": "/tags/comic-heads-20261018/ogro.webp",
+      "sha256": "cb309c39ff5f2d8baf7b1c182735f985e14c3fe82ac12544ae194ea24e0d2e5a",
+      "bytes": 30266,
+      "nativeFile": "exec-766bb615-051b-49a6-96b7-6f459b556a3a.png"
+    },
+    {
+      "id": "orc",
+      "prompt": "Create ONE standalone monster head UI icon. STYLE REFERENCE: the attached image defines the desired illustration technique and design only. Match its bold dark navy/black contour, angular exaggerated facial planes, hard-edged flat cel shading, 3-4 strong color blocks, very high readability, graphic fantasy comic illustration, subtle rough ink at outer silhouette. NOT photorealistic, NOT 3D, NOT a round portrait crop. SUBJECT: ORC head: bold chartreuse/olive-green skin, massive square jaw, pointed ears, two large lower tusks, black short mohawk, deep navy-black shadows, tiny glowing red eyes. Match the ATTACHED REFERENCE's graphic comic design language especially closely. Composition: frontal or almost frontal, head and a tiny angular neck/shoulder termination only, fills 80-85% of square with 8% transparent margin around ears/horns/hair/chin. The face is the subject, no body, weapons, labels, scenery or decorative badge. BACKGROUND MUST BE REAL ALPHA TRANSPARENT: remove the reference's pale yellow background entirely. NO circle, NO ring, NO circular border, NO frame, NO medallion, NO square background, NO glow. Keep irregular natural head silhouette. Deliver a single image, one creature only, no sheet or variants.",
+      "url": "/tags/comic-heads-20261018/orc.webp",
+      "sha256": "18a6d13362488d861b92c9e4f4223fe677e6acb595c46b35e0683fdc8523c39a",
+      "bytes": 24854,
+      "nativeFile": "exec-236ca84d-09c7-4b0c-a348-7e655919a190.png"
+    },
+    {
+      "id": "zumbi",
+      "prompt": "Create ONE standalone monster head UI icon. STYLE REFERENCE: the attached image defines the desired illustration technique and design only. Match its bold dark navy/black contour, angular exaggerated facial planes, hard-edged flat cel shading, 3-4 strong color blocks, very high readability, graphic fantasy comic illustration, subtle rough ink at outer silhouette. NOT photorealistic, NOT 3D, NOT a round portrait crop. SUBJECT: ZOMBIE head: sickly desaturated green-gray humanoid face, sunken dead pale eyes, ragged thin dark hair, gaunt cheekbones, torn cheek showing crooked teeth. Stylized undead, no gore, no dangling organs. Composition: frontal or almost frontal, head and a tiny angular neck/shoulder termination only, fills 80-85% of square with 8% transparent margin around ears/horns/hair/chin. The face is the subject, no body, weapons, labels, scenery or decorative badge. BACKGROUND MUST BE REAL ALPHA TRANSPARENT: remove the reference's pale yellow background entirely. NO circle, NO ring, NO circular border, NO frame, NO medallion, NO square background, NO glow. Keep irregular natural head silhouette. Deliver a single image, one creature only, no sheet or variants.",
+      "url": "/tags/comic-heads-20261018/zumbi.webp",
+      "sha256": "b93a6676eff0c26df078fb957453be61ec4dfbc5d763477004514464fad14118",
+      "bytes": 25832,
+      "nativeFile": "exec-a8270034-81ed-4128-81bb-afcea5feffa3.png"
+    }
+  ],
+  "saved": true
+}

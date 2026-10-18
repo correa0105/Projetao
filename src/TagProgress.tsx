@@ -15,16 +15,16 @@ import {
 import './mission-tags.css';
 
 const monsterTagPortraits: Record<string, string> = {
-  bugurso: '/vtt/monsters/monster-bugbear-warrior.webp',
-  'cubo gelatinoso': '/vtt/monsters/monster-gelatinous-cube.webp',
-  esqueleto: '/vtt/monsters/monster-skeleton.webp',
-  gnoll: '/vtt/monsters/monster-gnoll-warrior.webp',
-  goblin: '/vtt/monsters/monster-goblin-warrior.webp',
-  hobgoblin: '/vtt/monsters/monster-hobgoblin-warrior.webp',
-  kobold: '/vtt/monsters/monster-kobold-warrior.webp',
-  ogro: '/vtt/monsters/monster-ogre.webp',
-  orc: '/tags/orc-head-20261018.png',
-  zumbi: '/vtt/monsters/monster-zombie.webp',
+  bugurso: '/tags/comic-heads-20261018/bugurso.webp',
+  'cubo gelatinoso': '/tags/comic-heads-20261018/cubo-gelatinoso.webp',
+  esqueleto: '/tags/comic-heads-20261018/esqueleto.webp',
+  gnoll: '/tags/comic-heads-20261018/gnoll.webp',
+  goblin: '/tags/comic-heads-20261018/goblin.webp',
+  hobgoblin: '/tags/comic-heads-20261018/hobgoblin.webp',
+  kobold: '/tags/comic-heads-20261018/kobold.webp',
+  ogro: '/tags/comic-heads-20261018/ogro.webp',
+  orc: '/tags/comic-heads-20261018/orc.webp',
+  zumbi: '/tags/comic-heads-20261018/zumbi.webp',
 };
 
 function tagPortrait(name: string) {
