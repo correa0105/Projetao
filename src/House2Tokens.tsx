@@ -30,7 +30,8 @@ export function useHouse2Tokens(neighborhood: string | null, notice: (message: s
     const version = ++epoch.current;
     try {
       const next = await api<Snapshot>('/house-v2/neighborhoods/' + neighborhood + '/tokens');
-      if (epoch.current === version && !active.current && !moving.current) setSnapshot(next);
+      if (epoch.current === version && !active.current && !moving.current)
+        setSnapshot((old) => (JSON.stringify(old) === JSON.stringify(next) ? old : next));
     } catch (error) {
       if (epoch.current === version) notice((error as Error).message);
     }

@@ -5,6 +5,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { referenceGrassTextures, house2DefaultGrassImage } from '../shared/reference-grass';
 import { terrainTextures } from '../shared/vtt-terrain';
+import { villageScenery } from '../shared/house-village-scenery';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco descartável obrigatório.');
 const origin = 'http://localhost:3074';
@@ -101,7 +102,17 @@ try {
   });
   await expect(page.locator('[data-grass-variant]')).toHaveCount(3);
   const fieldTrees = page.locator('[data-nature-kind="tree"][data-nature-zone="field"]');
-  expect(await fieldTrees.count()).toBeGreaterThanOrEqual(15);
+  const sceneryNeighborhood = (await request(context, '/house-v2', undefined, 'GET'))
+    .neighborhoods[0];
+  const landscape = villageScenery(
+    (await request(context, '/house-v2/neighborhoods/' + sceneryNeighborhood.id, undefined, 'GET'))
+      .plots,
+  );
+  expect(
+    landscape.filter((s) => s.kind === 'tree' && s.zone === 'field').length,
+  ).toBeGreaterThanOrEqual(15);
+  expect(await fieldTrees.count()).toBeGreaterThan(0);
+  expect(await page.locator('[data-nature-kind]').count()).toBeLessThan(landscape.length);
   expect(
     (
       await page
@@ -126,7 +137,6 @@ try {
       .locator('[data-ground-blend] path')
       .evaluateAll((paths) => paths.every((p) => (p.getAttribute('d') || '').includes(' A '))),
   ).toBe(true);
-  const originalView = (await page.locator('.h2-map').getAttribute('viewBox'))!;
   const connections = await page.locator('[data-ground-centerline]').evaluateAll((groups) => {
     const lines = groups.map((g) => g.getAttribute('data-ground-centerline')!);
     const lanes = lines.slice(2, 6).map((d) => {
@@ -151,20 +161,29 @@ try {
   });
   expect(connections).toHaveLength(13);
   expect(connections.every((distance) => distance < 0.04)).toBe(true);
-  for (const [name, viewBox] of [
-    ['river-banks', '122 50 23 38'],
-    ['well-and-paths', '47 67 30 20'],
-    ['house-paths', '25 25 75 52'],
-    ['field-trees', '0 10 120 75'],
-  ]) {
-    await page
-      .locator('.h2-map')
-      .evaluate((svg, view) => svg.setAttribute('viewBox', view), viewBox);
+  for (const [name, centerX, centerY, zoomSteps] of [
+    ['river-banks', 133, 69, 2],
+    ['well-and-paths', 62, 77, 3],
+    ['house-paths', 62, 51, 1],
+    ['field-trees', 60, 47, 0],
+  ] as const) {
+    await page.getByRole('button', { name: 'Centralizar vizinhança', exact: true }).click();
+    for (let i = 0; i < zoomSteps; i++)
+      await page.getByRole('button', { name: 'Aproximar mapa', exact: true }).click();
+    const [x, y, w, h] = (await page.locator('.h2-map').getAttribute('viewBox'))!
+      .split(' ')
+      .map(Number);
+    await page.mouse.move(25, 450);
+    await page.mouse.down();
+    await page.mouse.move(
+      25 + ((x + w / 2 - centerX) * 900) / h,
+      450 + ((y + h / 2 - centerY) * 900) / h,
+      { steps: 20 },
+    );
+    await page.mouse.up();
     await page.screenshot({ path: `test-results/house2/${name}.png` });
   }
-  await page
-    .locator('.h2-map')
-    .evaluate((svg, view) => svg.setAttribute('viewBox', view), originalView);
+  await page.getByRole('button', { name: 'Centralizar vizinhança', exact: true }).click();
   const checkCamera = async () => {
     const [x, y, w, h] = (await page.locator('.h2-map').getAttribute('viewBox'))!
       .split(' ')

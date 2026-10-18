@@ -1,0 +1,151 @@
+{
+  "passed": true,
+  "date": "2026-10-18",
+  "baselineCommit": "e5f5fe8e",
+  "method": "Edge headless, 4x CPU throttle during 100 pointer moves; identical synthetic neighborhood with 12 houses, 360 furniture items and full procedural scenery. Results measure main-thread task time, not FPS or download speed.",
+  "desktop": {
+    "before": {
+      "passed": true,
+      "label": "desktop-before",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "cpuThrottle": 4,
+      "loadedMs": 2816,
+      "overview": {
+        "nodes": 2354,
+        "scenery": 397,
+        "items": 360
+      },
+      "close": {
+        "nodes": 2358,
+        "scenery": 397,
+        "items": 360
+      },
+      "pan": {
+        "taskMs": 3346.4739999999997,
+        "scriptMs": 1194.95,
+        "layoutMs": 219.652,
+        "frameCount": 371,
+        "frameMedian": 5.600000000000364,
+        "frameP95": 22.299999999999727,
+        "longFrames": 0
+      },
+      "errors": []
+    },
+    "after": {
+      "passed": true,
+      "label": "desktop-after",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "cpuThrottle": 4,
+      "loadedMs": 3795,
+      "overview": {
+        "nodes": 1611,
+        "scenery": 63,
+        "items": 348
+      },
+      "close": {
+        "nodes": 702,
+        "scenery": 47,
+        "items": 79
+      },
+      "pan": {
+        "taskMs": 1380.8389999999997,
+        "scriptMs": 547.3139999999999,
+        "layoutMs": 63.989000000000004,
+        "frameCount": 158,
+        "frameMedian": 11.099999999999454,
+        "frameP95": 22.199999999999818,
+        "longFrames": 0
+      },
+      "errors": []
+    },
+    "taskReductionPercent": 58.737495047025625,
+    "scriptReductionPercent": 54.197748859784944,
+    "closeNodeReductionPercent": 70.2290076335878
+  },
+  "mobile": {
+    "before": {
+      "passed": true,
+      "label": "mobile-before",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "cpuThrottle": 4,
+      "loadedMs": 3683,
+      "overview": {
+        "nodes": 2354,
+        "scenery": 397,
+        "items": 360
+      },
+      "close": {
+        "nodes": 2358,
+        "scenery": 397,
+        "items": 360
+      },
+      "pan": {
+        "taskMs": 3278.421,
+        "scriptMs": 1185.9109999999998,
+        "layoutMs": 219.41,
+        "frameCount": 378,
+        "frameMedian": 5.600000000000364,
+        "frameP95": 22.300000000000182,
+        "longFrames": 0
+      },
+      "errors": []
+    },
+    "after": {
+      "passed": true,
+      "label": "mobile-after",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "cpuThrottle": 4,
+      "loadedMs": 3474,
+      "overview": {
+        "nodes": 1083,
+        "scenery": 1,
+        "items": 227
+      },
+      "close": {
+        "nodes": 705,
+        "scenery": 57,
+        "items": 75
+      },
+      "pan": {
+        "taskMs": 1264.1879999999999,
+        "scriptMs": 541.4269999999999,
+        "layoutMs": 58.33,
+        "frameCount": 260,
+        "frameMedian": 5.599999999999454,
+        "frameP95": 11.100000000000364,
+        "longFrames": 0
+      },
+      "errors": []
+    },
+    "taskReductionPercent": 61.4391196249658,
+    "scriptReductionPercent": 54.34505624789718,
+    "closeNodeReductionPercent": 70.10178117048346
+  },
+  "visualComparison": {
+    "overview": {
+      "meanDifference": 0.21315794871794871,
+      "changedPercent": 0.3232307692307692
+    },
+    "close": {
+      "meanDifference": 0.0005630769230769231,
+      "changedPercent": 0
+    }
+  },
+  "notes": [
+    "Overscan keeps rotated artwork and shadow bounds before removing offscreen sprites.",
+    "Full resolution images remain on the map and in HD capture.",
+    "No migrations or data changes."
+  ]
+}

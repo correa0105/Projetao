@@ -1,4 +1,5 @@
-import { useId, useMemo } from 'react';
+import { memo, useId, useMemo } from 'react';
+import type { House2RenderWindow } from './house2-render-window';
 
 const outlines = new Map<string, string>();
 function outline(d: string, width: number) {
@@ -40,16 +41,18 @@ function outline(d: string, width: number) {
   return result;
 }
 /** Feather only the irregular margin; each layer samples the original crisp material. */
-export function House2GroundPaint({
+export const House2GroundPaint = memo(function House2GroundPaint({
   d,
   width,
   material,
   opacity = 1,
+  view,
 }: {
   d: string;
   width: number;
   material: string;
   opacity?: number;
+  view?: House2RenderWindow;
 }) {
   const id = useId().replaceAll(':', ''),
     mask = 'h2-ground-mask-' + id,
@@ -58,6 +61,9 @@ export function House2GroundPaint({
     () => ({ edge: outline(d, width), paint: outline(d, width * 1.6) }),
     [d, width],
   );
+  const region = view
+    ? { ...view, filterUnits: 'userSpaceOnUse' as const }
+    : { x: '-30%', y: '-30%', width: '160%', height: '160%' };
   return (
     <g
       data-ground-blend={material}
@@ -67,21 +73,20 @@ export function House2GroundPaint({
       pointerEvents="none"
     >
       <defs>
-        <filter
-          id={filter}
-          x="-30%"
-          y="-30%"
-          width="160%"
-          height="160%"
-          colorInterpolationFilters="sRGB"
-        >
+        <filter id={filter} {...region} colorInterpolationFilters="sRGB">
           <feGaussianBlur stdDeviation={Math.min(0.24, width * 0.085)} />
         </filter>
-        <mask id={mask} style={{ maskType: 'alpha' }} x="-30%" y="-30%" width="160%" height="160%">
+        <mask
+          id={mask}
+          style={{ maskType: 'alpha' }}
+          {...(view
+            ? { maskUnits: 'userSpaceOnUse', ...view }
+            : { x: '-30%', y: '-30%', width: '160%', height: '160%' })}
+        >
           <path d={shapes.edge} fill="white" filter={`url(#${filter})`} />
         </mask>
       </defs>
       <path d={shapes.paint} mask={`url(#${mask})`} />
     </g>
   );
-}
+});

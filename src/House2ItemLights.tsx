@@ -1,25 +1,13 @@
-import { useMemo, type CSSProperties } from 'react';
-import { house2World, type House2Item, type House2Plot } from '../shared/house-v2';
+import { memo, useMemo, type CSSProperties } from 'react';
+import { type House2Item, type House2Plot } from '../shared/house-v2';
 import { house2LightItems } from '../shared/house2-items-lighting';
 import { house2Contains } from '../shared/house2-tokens';
 import { house2LightPolygon } from '../shared/house2-light-vision';
 import { house2DayPhases, type House2DayPhase } from '../shared/house2-lighting';
 type Source = House2Item & { x: number; y: number };
-function Light({
-  item,
-  plots,
-  mask = false,
-}: {
-  item: Source;
-  plots: House2Plot[];
-  mask?: boolean;
-}) {
+function Light({ item, path, mask = false }: { item: Source; path: string; mask?: boolean }) {
   const spec = house2LightItems[item.catalog_id],
     radius = spec.radius,
-    key = plots
-      .map((p) => [p.id, p.house_x, p.house_y, p.house_rotation, p.house_id, p.door_open].join(':'))
-      .join('|'),
-    path = useMemo(() => house2LightPolygon(item, radius, plots), [key, item.x, item.y, radius]),
     id = `h2-item-light-${item.id}${mask ? '-mask' : ''}`;
   return (
     <g data-house2-light={mask ? undefined : item.id} pointerEvents="none">
@@ -64,7 +52,7 @@ function Light({
     </g>
   );
 }
-export function House2ItemLights({
+export const House2ItemLights = memo(function House2ItemLights({
   items,
   plots,
   interior,
@@ -77,54 +65,54 @@ export function House2ItemLights({
   phase: House2DayPhase;
   view: { x: number; y: number; width: number; height: number };
 }) {
-  const lights = items
-    .filter(
-      (i): i is Source =>
-        !!i.light_on && !!house2LightItems[i.catalog_id] && i.x !== null && i.y !== null,
-    )
-    .filter((i) => {
-      const r = house2LightItems[i.catalog_id].radius;
-      return (
-        i.x + r > view.x &&
-        i.x - r < view.x + view.width &&
-        i.y + r > view.y &&
-        i.y - r < view.y + view.height
-      );
-    })
-    .filter((i) => !plots.some((p) => p.house_id && house2Contains(p, i) && p.id !== interior));
+  const lights = useMemo(
+    () =>
+      items
+        .filter(
+          (i): i is Source =>
+            !!i.light_on && !!house2LightItems[i.catalog_id] && i.x !== null && i.y !== null,
+        )
+        .filter((i) => {
+          const r = house2LightItems[i.catalog_id].radius;
+          return (
+            i.x + r > view.x &&
+            i.x - r < view.x + view.width &&
+            i.y + r > view.y &&
+            i.y - r < view.y + view.height
+          );
+        })
+        .filter((i) => !plots.some((p) => p.house_id && house2Contains(p, i) && p.id !== interior))
+        .map((item) => ({
+          item,
+          path: house2LightPolygon(item, house2LightItems[item.catalog_id].radius, plots),
+        })),
+    [items, plots, interior, view],
+  );
   const sun = house2DayPhases[phase];
   return (
     <g data-house2-item-lighting="true" pointerEvents="none">
-      <defs>
-        <mask
-          id="h2-local-lights-mask"
-          maskUnits="userSpaceOnUse"
-          x={house2World.x}
-          y={house2World.y}
-          width="200"
-          height="200"
-        >
-          <rect x={house2World.x} y={house2World.y} width="200" height="200" fill="white" />
-          {lights.map((item) => (
-            <Light key={item.id} item={item} plots={plots} mask />
-          ))}
-        </mask>
-      </defs>
+      {!!lights.length && (
+        <defs>
+          <mask id="h2-local-lights-mask" maskUnits="userSpaceOnUse" {...view}>
+            <rect {...view} fill="white" />
+            {lights.map(({ item, path }) => (
+              <Light key={item.id} item={item} path={path} mask />
+            ))}
+          </mask>
+        </defs>
+      )}
       <rect
         data-house2-day-phase={phase}
-        x={house2World.x}
-        y={house2World.y}
-        width="200"
-        height="200"
+        {...view}
         fill={sun.tint}
         opacity={sun.tintOpacity}
-        mask="url(#h2-local-lights-mask)"
+        mask={lights.length ? 'url(#h2-local-lights-mask)' : undefined}
       />
       <g opacity={phase === 'night' ? 0.8 : phase === 'dusk' ? 0.5 : 0.22}>
-        {lights.map((item) => (
-          <Light key={item.id} item={item} plots={plots} />
+        {lights.map(({ item, path }) => (
+          <Light key={item.id} item={item} path={path} />
         ))}
       </g>
     </g>
   );
-}
+});

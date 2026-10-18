@@ -1,9 +1,9 @@
-import { useLayoutEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
+import { memo, useLayoutEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { terrainTextures, type TerrainTextureId } from '../shared/vtt-terrain';
 import type { House2GroundStroke, House2Plot } from '../shared/house-v2';
 import { groundPaintRuns, groundPlotMargin } from './house2-ground-blend';
 
-function GroundPlot({ plot: p }: { plot: House2Plot }) {
+const GroundPlot = memo(function GroundPlot({ plot: p }: { plot: House2Plot }) {
   const runs = useMemo(() => groundPaintRuns(p.ground ?? []), [p.ground]),
     margin = useMemo(() => groundPlotMargin(p), [p.x, p.y, p.width, p.height]),
     id = 'h2-ground-' + p.id,
@@ -94,9 +94,9 @@ function GroundPlot({ plot: p }: { plot: House2Plot }) {
       </g>
     </g>
   );
-}
+});
 
-export function House2Ground({ plots }: { plots: House2Plot[] }) {
+export const House2Ground = memo(function House2Ground({ plots }: { plots: House2Plot[] }) {
   const materials = new Set(plots.flatMap((p) => (p.ground ?? []).map((s) => s.material)));
   return (
     <g pointerEvents="none" data-house2-ground="true">
@@ -120,7 +120,7 @@ export function House2Ground({ plots }: { plots: House2Plot[] }) {
       ))}
     </g>
   );
-}
+});
 export function House2GroundEditor({
   plot,
   strokes,

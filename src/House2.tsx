@@ -1,6 +1,7 @@
 import {
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
   type PointerEvent as ReactPointerEvent,
@@ -35,6 +36,8 @@ import { api, post } from './api';
 import { ScenePanel } from './ScenePanel';
 import { Modal } from './components';
 import { House2Village, House2VillageRoofs } from './House2Village';
+import { house2RenderWindow, house2InRenderWindow } from './house2-render-window';
+import { house2CatalogPreview } from './house2-catalog-preview';
 import { boundHouse2Camera, initialHouse2Camera, type House2Camera } from './house2-camera';
 import { House2Lighting } from './House2Lighting';
 import { House2ItemLights } from './House2ItemLights';
@@ -195,19 +198,22 @@ export function House2({ character, user }: { character?: Character; user: User 
           house_rotation: draft.house.rotation,
         }
       : plot;
-  const shownItems: House2Item[] =
-    draft && plot
-      ? [
-          ...(scene?.items.filter((i) => i.plot_id !== plot.id) || []),
-          ...draft.items.map((i) => ({
-            ...directory?.inventory.find((o) => o.id === i.id),
-            ...i,
-            plot_id: plot.id,
-            catalog_id: directory?.inventory.find((o) => o.id === i.id)?.catalog_id || '',
-            scale: i.scale ?? 1,
-          })),
-        ]
-      : scene?.items || [];
+  const shownItems: House2Item[] = useMemo(
+    () =>
+      draft && plot
+        ? [
+            ...(scene?.items.filter((i) => i.plot_id !== plot.id) || []),
+            ...draft.items.map((i) => ({
+              ...directory?.inventory.find((o) => o.id === i.id),
+              ...i,
+              plot_id: plot.id,
+              catalog_id: directory?.inventory.find((o) => o.id === i.id)?.catalog_id || '',
+              scale: i.scale ?? 1,
+            })),
+          ]
+        : scene?.items || [],
+    [draft, plot?.id, scene?.items, directory?.inventory],
+  );
   const aspect = viewport.width / viewport.height;
   const boundedCamera = boundHouse2Camera(camera, viewport);
   const view = {
@@ -216,6 +222,52 @@ export function House2({ character, user }: { character?: Character; user: User 
     width: boundedCamera.span * aspect,
     height: boundedCamera.span,
   };
+  const area = house2RenderWindow(view);
+  const renderWindow = useMemo(() => area, [area.x, area.y, area.width, area.height]);
+  const groundPlots = useMemo(
+    () =>
+      (scene?.plots ?? [])
+        .map((p) => (p.id === selected && draft ? { ...p, ground: draft.ground ?? p.ground } : p))
+        .filter((p) =>
+          house2InRenderWindow(
+            renderWindow,
+            p.x + p.width / 2,
+            p.y + p.height / 2,
+            Math.hypot(p.width, p.height) / 2 + 1,
+          ),
+        ),
+    [scene?.plots, selected, draft, renderWindow],
+  );
+  const renderedItems = useMemo(
+    () =>
+      house2ItemLayers(shownItems).filter((item) => {
+        const spec = house2Furniture.find((f) => f.id === item.catalog_id);
+        return (
+          !!spec &&
+          item.x !== null &&
+          item.y !== null &&
+          house2InRenderWindow(
+            renderWindow,
+            item.x,
+            item.y,
+            (Math.hypot(spec.width, spec.height) * item.scale) / 2 + 4,
+          )
+        );
+      }),
+    [shownItems, renderWindow],
+  );
+  const cameraFrame = useRef(0),
+    queuedCamera = useRef<Camera | null>(null);
+  useEffect(() => () => cancelAnimationFrame(cameraFrame.current), []);
+  function panCamera(next: Camera) {
+    queuedCamera.current = next;
+    if (cameraFrame.current) return;
+    cameraFrame.current = requestAnimationFrame(() => {
+      cameraFrame.current = 0;
+      if (queuedCamera.current) setCamera(queuedCamera.current);
+      queuedCamera.current = null;
+    });
+  }
 
   const reload = useCallback(async (id: string | null, silent = false) => {
     const version = ++epoch.current;
@@ -226,8 +278,8 @@ export function House2({ character, user }: { character?: Character; user: User 
         id ? api<House2Scene>('/house-v2/neighborhoods/' + id) : Promise.resolve(null),
       ]);
       if (!mounted.current || version !== epoch.current) return;
-      setDirectory(d);
-      setScene(s);
+      setDirectory((old) => (JSON.stringify(old) === JSON.stringify(d) ? old : d));
+      setScene((old) => (JSON.stringify(old) === JSON.stringify(s) ? old : s));
     } catch (e) {
       if (mounted.current && version === epoch.current) setNotice((e as Error).message);
     } finally {
@@ -606,7 +658,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     a.moved = true;
     setItemActions(null);
     if (a.kind === 'pan') {
-      setCamera(
+      panCamera(
         boundHouse2Camera(
           {
             ...a.camera,
@@ -661,6 +713,12 @@ export function House2({ character, user }: { character?: Character; user: User 
     const a = drag.current;
     if (!a || a.pointer !== e.pointerId) return;
     drag.current = null;
+    if (a.kind === 'pan' && queuedCamera.current) {
+      cancelAnimationFrame(cameraFrame.current);
+      cameraFrame.current = 0;
+      setCamera(queuedCamera.current);
+      queuedCamera.current = null;
+    }
     if (e.currentTarget.hasPointerCapture(e.pointerId))
       e.currentTarget.releasePointerCapture(e.pointerId);
     if (cancelled && a.handle) setDraft(a.before ?? null);
@@ -720,10 +778,14 @@ export function House2({ character, user }: { character?: Character; user: User 
   const selectedTransform =
     draft?.items.find((i) => i.id === selectedPiece) ??
     shownItems.find((i) => i.id === selectedPiece);
-  const actorPlots = (scene?.plots ?? []).map((p) => ({
-    ...p,
-    door_open: actors.doors[p.id] ?? p.door_open,
-  }));
+  const actorPlots = useMemo(
+    () =>
+      (scene?.plots ?? []).map((p) => ({
+        ...p,
+        door_open: actors.doors[p.id] ?? p.door_open,
+      })),
+    [scene?.plots, actors.doors],
+  );
   async function toggleItemLight(item: House2Item) {
     if (busy) return;
     setBusy(true);
@@ -1104,12 +1166,8 @@ export function House2({ character, user }: { character?: Character; user: User 
           </filter>
         </defs>
         <House2Lighting phase={dayPhase} />
-        <House2Village plots={scene?.plots ?? []} />
-        <House2Ground
-          plots={(scene?.plots ?? []).map((p) =>
-            p.id === selected && draft ? { ...p, ground: draft.ground ?? p.ground } : p,
-          )}
-        />
+        <House2Village plots={scene?.plots ?? []} view={renderWindow} />
+        <House2Ground plots={groundPlots} />
         {scene?.plots.map((p) => (
           <g
             key={p.id}
@@ -1195,7 +1253,7 @@ export function House2({ character, user }: { character?: Character; user: User 
             );
           })}
         <g filter="url(#h2-shadow-item)">
-          {house2ItemLayers(shownItems).map((item) => {
+          {renderedItems.map((item) => {
             const spec = house2Furniture.find((f) => f.id === item.catalog_id);
             if (!spec) return null;
             const editable = !!scene?.plots.some((p) => p.id === item.plot_id && p.can_edit);
@@ -1255,6 +1313,7 @@ export function House2({ character, user }: { character?: Character; user: User 
           </g>
         )}
         <House2VillageRoofs
+          view={renderWindow}
           plots={scene?.plots ?? []}
           actors={actors.tokens}
           interior={visibleInterior}
@@ -1286,7 +1345,7 @@ export function House2({ character, user }: { character?: Character; user: User 
           plots={actorPlots}
           interior={visibleInterior}
           phase={dayPhase}
-          view={view}
+          view={renderWindow}
         />
         <House2IndoorVision plot={visionPlot} />
         <House2Doors
@@ -1785,7 +1844,12 @@ export function House2({ character, user }: { character?: Character; user: User 
                             disabled={!character || busy || (directory?.balance ?? 0) < f.price}
                             onClick={() => requestPurchase('furniture', f.id)}
                           >
-                            <img src={f.image} alt="" loading="lazy" />
+                            <img
+                              src={house2CatalogPreview(f)}
+                              alt=""
+                              loading="lazy"
+                              decoding="async"
+                            />
                             <strong>{f.name}</strong>
                             <small>{number(f.price)} créditos · comprar</small>
                           </button>
@@ -1822,7 +1886,12 @@ export function House2({ character, user }: { character?: Character; user: User 
                               disabled={busy}
                               onClick={() => (placed ? setSelectedPiece(i.id) : place(i))}
                             >
-                              <img src={spec.image} alt="" />
+                              <img
+                                src={house2CatalogPreview(spec)}
+                                alt=""
+                                loading="lazy"
+                                decoding="async"
+                              />
                               <strong>{spec.name}</strong>
                               <span className="h2-owned-badge">
                                 {placed ? 'No terreno' : 'Guardado'}

@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
+import { house2InRenderWindow, type House2RenderWindow } from './house2-render-window';
 import { House2GroundPaint } from './House2GroundPaint';
 import { house2Architecture } from './house2-architecture';
 import { House2Roof } from './House2Roof';
@@ -20,8 +21,31 @@ import {
   type House2Plot,
 } from '../shared/house-v2';
 
-export function House2Village({ plots }: { plots: House2Plot[] }) {
-  const scenery = useMemo(() => villageScenery(plots), [plots]);
+export const House2Village = memo(function House2Village({
+  plots,
+  view,
+}: {
+  plots: House2Plot[];
+  view?: House2RenderWindow;
+}) {
+  const geometry = plots
+    .map((p) =>
+      [
+        p.id,
+        p.x,
+        p.y,
+        p.width,
+        p.height,
+        p.village_slot,
+        p.house_id,
+        p.house_x,
+        p.house_y,
+        p.house_rotation,
+      ].join(':'),
+    )
+    .join('|');
+  const scenery = useMemo(() => villageScenery(plots), [geometry]);
+  const area = view ?? { x: -50, y: -15, width: 200, height: 200 };
   return (
     <g className="h2-village-landscape" pointerEvents="none">
       <defs>
@@ -44,7 +68,7 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
         <filter id="h2-village-soft" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation=".35" />
         </filter>
-        <filter id="h2-grass-blend" x="-30%" y="-30%" width="160%" height="160%">
+        <filter id="h2-grass-blend" filterUnits="userSpaceOnUse" {...area}>
           <feGaussianBlur stdDeviation="2.6" />
         </filter>
         {villageGrassVariants.map((image, index) => (
@@ -63,17 +87,14 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
                 preserveAspectRatio="xMidYMid slice"
               />
             </pattern>
-            <mask
-              id={'h2-grass-area-' + index}
-              maskUnits="userSpaceOnUse"
-              x={-50}
-              y={-15}
-              width={200}
-              height={200}
-            >
+            <mask id={'h2-grass-area-' + index} maskUnits="userSpaceOnUse" {...area}>
               <g fill="white" filter="url(#h2-grass-blend)">
                 {villageGrassPatches
-                  .filter((p) => p.variant === index)
+                  .filter(
+                    (p) =>
+                      p.variant === index &&
+                      house2InRenderWindow(view, p.x, p.y, Math.hypot(p.rx, p.ry) + 9),
+                  )
                   .map((p) => (
                     <path
                       key={p.id}
@@ -97,20 +118,17 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
         <rect
           key={image}
           data-grass-variant={index}
-          x={house2World.x}
-          y={house2World.y}
-          width={200}
-          height={200}
+          {...area}
           fill={`url(#h2-grass-detail-${index})`}
           mask={`url(#h2-grass-area-${index})`}
           opacity={index === 0 ? 0.12 : index === 1 ? 0.1 : 0.06}
         />
       ))}
-      <House2GroundPaint d={villageRiver} width={9.2} material="earth" opacity={0.55} />
-      <House2GroundPaint d={villageRiver} width={7.5} material="water" />
+      <House2GroundPaint view={view} d={villageRiver} width={9.2} material="earth" opacity={0.55} />
+      <House2GroundPaint view={view} d={villageRiver} width={7.5} material="water" />
       <g fill="none" strokeLinecap="round" strokeLinejoin="round">
         {villageLanePaths.map((d) => (
-          <House2GroundPaint key={d} d={d} width={2.7} material="earth" />
+          <House2GroundPaint view={view} key={d} d={d} width={2.7} material="earth" />
         ))}
         {plots.map((p) => {
           const placement = p.house_id
@@ -123,36 +141,49 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
           return (
             <House2GroundPaint
               key={p.id}
+              view={view}
               d={`${villageConnection(edge)} L ${door.x} ${door.y}`}
               material="earth"
               width={1.65}
             />
           );
         })}
-        <House2GroundPaint d={villageConnection(villageWell)} material="earth" width={1.65} />
+        <House2GroundPaint
+          view={view}
+          d={villageConnection(villageWell)}
+          material="earth"
+          width={1.65}
+        />
         <House2GroundPaint
           d="M 59 78.2 Q 60 77.5 61 78"
+          view={view}
           material="earth"
           width={3.4}
           opacity={0.7}
         />
       </g>
       <g data-house2-scenery="overhead">
-        {scenery.map((s) => (
-          <g key={s.id} transform={`translate(${s.x} ${s.y})`} filter={`url(#h2-shadow-${s.kind})`}>
-            <image
-              data-nature-kind={s.kind}
-              data-nature-zone={s.zone}
-              href={s.image}
-              x={-s.size / 2}
-              y={-s.size / 2}
-              width={s.size}
-              height={s.size}
-              transform={`rotate(${s.rotation})`}
-              filter={s.kind === 'rock' ? 'url(#h2-rock-tone)' : undefined}
-            />
-          </g>
-        ))}
+        {scenery
+          .filter((s) => house2InRenderWindow(view, s.x, s.y, s.size / 2 + 5))
+          .map((s) => (
+            <g
+              key={s.id}
+              transform={`translate(${s.x} ${s.y})`}
+              filter={`url(#h2-shadow-${s.kind})`}
+            >
+              <image
+                data-nature-kind={s.kind}
+                data-nature-zone={s.zone}
+                href={s.image}
+                x={-s.size / 2}
+                y={-s.size / 2}
+                width={s.size}
+                height={s.size}
+                transform={`rotate(${s.rotation})`}
+                filter={s.kind === 'rock' ? 'url(#h2-rock-tone)' : undefined}
+              />
+            </g>
+          ))}
       </g>
       <g
         data-house2-well="true"
@@ -169,7 +200,7 @@ export function House2Village({ plots }: { plots: House2Plot[] }) {
       </g>
     </g>
   );
-}
+});
 export function House2VillageRoofs({
   plots,
   interior,
@@ -180,6 +211,7 @@ export function House2VillageRoofs({
   onHover,
   doorControls = true,
   actors = [],
+  view,
 }: {
   plots: House2Plot[];
   interior: string | null;
@@ -190,6 +222,7 @@ export function House2VillageRoofs({
   onHover: (id: string | null) => void;
   doorControls?: boolean;
   actors?: House2Token[];
+  view?: House2RenderWindow;
 }) {
   return (
     <>
@@ -208,6 +241,15 @@ export function House2VillageRoofs({
               ? house2HousePlacement(p)
               : { x: p.house_x!, y: p.house_y!, rotation: p.house_rotation },
             door = house2DoorPoint(position.x, position.y, position.rotation);
+          if (
+            !house2InRenderWindow(
+              view,
+              position.x,
+              position.y,
+              Math.hypot(roofWidth, roofHeight) / 2 + 5,
+            )
+          )
+            return null;
           return (
             <g
               key={p.id}
