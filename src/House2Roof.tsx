@@ -1,4 +1,4 @@
-import type { house2Houses } from '../shared/house-v2';
+import { house2Houses } from '../shared/house-v2';
 import { house2Finish, type House2Finishes } from '../shared/house2-finishes';
 import { vttVisualSource } from '../shared/vtt-asset-visuals';
 
@@ -20,6 +20,18 @@ export function House2Roof({
   fade: boolean;
   finishes?: House2Finishes;
 }) {
+  const finish = house2Finish(finishes, 'roof');
+  const source =
+    finish && 'sourceHouse' in finish
+      ? (house2Houses.find((h) => h.id === finish.sourceHouse) ?? house)
+      : house;
+  // Fit the painted roof bounds to this house, keeping its walls and entrance fixed.
+  const bounds = house.roofBounds,
+    from = source.roofBounds;
+  const imageWidth = (width * (bounds.right - bounds.left)) / (from.right - from.left);
+  const imageHeight = (height * (bounds.bottom - bounds.top)) / (from.bottom - from.top);
+  const imageX = -width / 2 + bounds.left * width - from.left * imageWidth;
+  const imageY = -height / 2 + bounds.top * height - from.top * imageHeight;
   const f = house.footprint,
     mask = 'h2-eaves-' + instance,
     blur = mask + '-soft',
@@ -108,12 +120,13 @@ export function House2Roof({
         className={preview ? 'h2-house-preview' : 'h2-house-fixed'}
         data-house2-roof={house.id}
         data-house2-roof-eaves={fade ? 'transparent' : 'solid'}
-        href={vttVisualSource(house2Finish(finishes, 'roof')?.image ?? house.image)}
+        href={vttVisualSource(finish?.image ?? house.image)}
         data-house2-roof-finish={finishes?.roof ?? 'original'}
-        x={-width / 2}
-        y={-height / 2}
-        width={width}
-        height={height}
+        x={imageX}
+        y={imageY}
+        width={imageWidth}
+        height={imageHeight}
+        preserveAspectRatio="none"
         mask={fade ? `url(#${mask})` : undefined}
       />
     </>

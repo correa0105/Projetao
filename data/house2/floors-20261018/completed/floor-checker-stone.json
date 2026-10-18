@@ -1,0 +1,18 @@
+{
+  "id": "floor-checker-stone",
+  "name": "Pedra xadrez",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: alternating charcoal and ivory polished stone squares, restrained wear, balanced black and white checker floor, sixteen squares across.",
+  "image": "/house2/floors-20261018/floor-checker-stone.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-1f39fa90-461c-430a-a34c-490b785f7294.png",
+  "localSource": ".local/house2-floor-sources/floor-checker-stone.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:05:01.055Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-checker-stone.webp",
+  "sourceSha256": "4e2909fb7e078e9cf6f411a3d17d268a72b921c3dadefb5ecb8f39c603bb1926",
+  "sha256": "e9e8845667bdc018a211b8905d15d13fd9aae2e0626f11a82224a503535f2ba3",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

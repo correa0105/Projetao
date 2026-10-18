@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { house2Houses } from '../shared/house-v2';
 import { house2CutawayImage } from './house2-architecture';
 import { house2Finish, type House2Finishes } from '../shared/house2-finishes';
+import { house2InteriorSurfaces } from './house2-interior-surfaces';
 export { house2CutawayImage } from './house2-architecture';
 
 /** Empty interiors share the VTT vertical plan and matching roof footprint. */
@@ -55,11 +56,10 @@ export function House2Interior({
     clip = 'h2-native-door-clip-' + instance;
   const floor = house2Finish(finishes, 'floor'),
     walls = house2Finish(finishes, 'walls'),
-    left = (f.left - 0.5) * width,
-    right = (f.right - 0.5) * width,
-    top = (f.top - 0.5) * height,
-    bottom = (f.bottom - 0.5) * height,
     tile = 'h2-finish-' + instance;
+  const { left, right, top, bottom } = house2InteriorSurfaces(spec, width, height);
+  const imageBox = { x: -width / 2, y: -height / 2, width, height };
+  const floorBox = { x: left, y: top, width: right - left, height: bottom - top };
   return (
     <g data-house2-interior="orthographic" data-house2-cutaway={Number(id.slice(-3))}>
       <defs>
@@ -69,17 +69,51 @@ export function House2Interior({
             <pattern
               key={v!.kind}
               id={tile + '-' + v!.kind}
-              width={v!.kind === 'floor' ? 2 : 1}
-              height={v!.kind === 'floor' ? 2 : 1}
+              x={v!.kind === 'floor' ? left : 0}
+              y={v!.kind === 'floor' ? top : 0}
+              width={v!.kind === 'floor' ? right - left : 1}
+              height={v!.kind === 'floor' ? bottom - top : 1}
               patternUnits="userSpaceOnUse"
             >
               <image
                 href={v!.image}
-                width={v!.kind === 'floor' ? 2 : 1}
-                height={v!.kind === 'floor' ? 2 : 1}
+                x={0}
+                y={0}
+                width={v!.kind === 'floor' ? right - left : 1}
+                height={v!.kind === 'floor' ? bottom - top : 1}
+                preserveAspectRatio="xMidYMid slice"
               />
             </pattern>
           ))}
+        {walls && (
+          <>
+            <pattern
+              id={tile + '-walls-vertical'}
+              width="1"
+              height="1"
+              patternUnits="userSpaceOnUse"
+              patternTransform="rotate(90)"
+            >
+              <image href={walls.image} width="1" height="1" />
+            </pattern>
+            <filter id={tile + '-wall-alpha'} colorInterpolationFilters="sRGB">
+              <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0" />
+            </filter>
+            <filter id={tile + '-wall-shading'} colorInterpolationFilters="sRGB">
+              <feColorMatrix type="saturate" values="0" />
+              <feComponentTransfer>
+                <feFuncR type="linear" slope=".65" intercept=".35" />
+                <feFuncG type="linear" slope=".65" intercept=".35" />
+                <feFuncB type="linear" slope=".65" intercept=".35" />
+              </feComponentTransfer>
+            </filter>
+            <mask id={tile + '-wall-surface'} maskUnits="userSpaceOnUse" {...imageBox}>
+              <image href={image} {...imageBox} filter={`url(#${tile}-wall-alpha)`} />
+              <rect {...floorBox} fill="black" />
+              <rect x={x} y={y} width={w} height={h} fill="black" />
+            </mask>
+          </>
+        )}
         <mask
           id={mask}
           maskUnits="userSpaceOnUse"
@@ -88,7 +122,8 @@ export function House2Interior({
           width={width}
           height={height}
         >
-          <rect x={-width / 2} y={-height / 2} width={width} height={height} fill="white" />
+          <rect {...imageBox} fill={walls ? 'black' : 'white'} />
+          {walls && <rect {...floorBox} fill="white" />}
           <rect x={x} y={y} width={w} height={h} fill="black" />
         </mask>
         <clipPath id={clip}>
@@ -104,26 +139,36 @@ export function House2Interior({
         mask={`url(#${mask})`}
       />
       {floor && (
-        <rect
-          data-house2-floor-finish={floor.id}
-          x={left + 0.13}
-          y={top + 0.13}
-          width={right - left - 0.26}
-          height={bottom - top - 0.26}
-          fill={`url(#${tile}-floor)`}
-          stroke="#21180e"
-          strokeWidth=".05"
-        />
+        <rect data-house2-floor-finish={floor.id} {...floorBox} fill={`url(#${tile}-floor)`} />
       )}
       {walls && (
-        <g mask={`url(#${mask})`} data-house2-wall-finish={walls.id}>
-          <path
-            d={`M${left - 0.09} ${top - 0.09}H${right + 0.09}V${bottom + 0.09}H${left - 0.09}Z M${left + 0.13} ${top + 0.13}V${bottom - 0.13}H${right - 0.13}V${top + 0.13}Z`}
-            fillRule="evenodd"
-            fill={`url(#${tile}-walls)`}
-            stroke="#2b2419"
-            strokeWidth=".035"
-          />
+        <g
+          mask={`url(#${tile}-wall-surface)`}
+          data-house2-wall-finish={walls.id}
+          data-house2-wall-replacement="native-silhouette"
+          style={{ isolation: 'isolate' }}
+        >
+          {walls.id === 'walls-wood' ? (
+            <image href={image} {...imageBox} />
+          ) : (
+            <>
+              <path
+                d={`M${-width / 2} ${-height / 2}H${width / 2}L${right} ${top}H${left}Z M${-width / 2} ${height / 2}H${width / 2}L${right} ${bottom}H${left}Z`}
+                fill={`url(#${tile}-walls)`}
+              />
+              <path
+                d={`M${-width / 2} ${-height / 2}V${height / 2}L${left} ${bottom}V${top}Z M${width / 2} ${-height / 2}V${height / 2}L${right} ${bottom}V${top}Z`}
+                fill={`url(#${tile}-walls-vertical)`}
+              />
+              <image
+                href={image}
+                {...imageBox}
+                filter={`url(#${tile}-wall-shading)`}
+                opacity=".85"
+                style={{ mixBlendMode: 'multiply' }}
+              />
+            </>
+          )}
         </g>
       )}
       <g transform={`translate(${x} ${y + h / 2})`}>

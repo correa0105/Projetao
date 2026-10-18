@@ -1,0 +1,15 @@
+# House 2.0: revestimentos e montarias — 18/10/2026
+
+A loja de Mobília oferece 25 telhados e 25 pisos. As quatro opções anteriores de telhado, cinco de piso e três de parede mantêm IDs, preços e compras. Os 21 telhados adicionais usam as ilustrações aprovadas das casas do catálogo comum, ajustadas aos limites visuais de cada casa. A troca conserva estrutura, colisão, porta e transparência dos beirais.
+
+Vinte pisos foram ilustrados individualmente com imagegen embutido. As artes opacas de 1280 × 1280 e miniaturas de 192 × 192 estão em `public/house2/floors-20261018` e `public/house2/floor-thumbs-20261018`. Prompts, fontes, hashes e revisão visual ficam em `data/house2/floors-20261018`. Cada material ocupa a superfície inteira do interior, sem repetir blocos quadrados. O recorte acompanha a borda interna das paredes.
+
+A correção das paredes elimina o anel genérico sobreposto. O material usa a silhueta alfa da arte nativa; a camada antiga é retirada dessa área. Madeira conserva a pintura original, enquanto pedra e terracota conservam relevo e postes por sombreamento da arte. A folha original da porta continua separada para a animação. Móveis, pintura externa e limites de circulação permanecem no lugar.
+
+“Meus tokens” inclui montarias dos personagens ativos da conta, além de personagens e pets. Usa a pelagem comprada ou o token gerado com equipamentos quando disponível. Arrastar ou Trazer para o mapa coloca um token independente; Localizar evita duplicação. Giro, seleção, movimento e retirada seguem os controles existentes. Cavalos têm tamanho inicial 1,9; pôneis e mulas, 1,35. Somente o dono controla a peça; retirar não exclui a montaria nem seus equipamentos.
+
+Migration 108 acrescenta `mount_id` opcional, chave estrangeira e índice único por vizinhança/montaria. O índice de personagens passa a excluir pets e montarias, permitindo os três tipos juntos. Tokens existentes recebem `mount_id = null`, preservando suas posições e revisões. Biblioteca e importação verificam a posse no servidor; revisões e trava transacional continuam protegendo movimentos simultâneos. Uma montaria visitante sozinha não concede permissão para abrir portas.
+
+Validação: TypeScript/build isolado; nove testes de tokens/revestimentos; 18 testes de compras, concorrência, ownership, camadas e visão de luz. Revisão no Edge de 25 telhados, 25 pisos e beirais dos 25 modelos; encaixe numérico das 625 combinações e cobertura de todos os quadrantes dos pisos. Paredes verificadas em 25 modelos, três materiais e quatro rotações. Fluxo real de arrastar montaria, imagem, pelagem, giro, desmarcação, recarga, coexistência com personagem, permissão de visitante, compra/aplicação/restauração e painéis em quatro larguras. Os testes usam bancos descartáveis.
+
+Publicação incremental sobre a imagem local existente, preservando arquivos antigos e o acabamento do cabeçalho. Backup PostgreSQL completo validado antes da migration; auditoria das 138 tabelas compara todos os dados anteriores, omitindo apenas a nova coluna nula e o novo registro de migration. Alterações independentes de VTT/loja permanecem fora desta entrega.

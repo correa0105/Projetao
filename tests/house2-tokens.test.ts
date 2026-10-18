@@ -6,6 +6,8 @@ import { pool } from '../server/db';
 import { migrate } from '../server/migrate';
 import { createLegacyTestCharacter } from './character-fixtures';
 import { house2Houses } from '../shared/house-v2';
+import { house2FinishesCatalog } from '../shared/house2-finishes';
+import sharp from 'sharp';
 import { house2Doorway, house2Floor, house2HouseWorld } from '../shared/house2-tokens';
 
 test('House 2.0: tokens próprios, pets, portas, concorrência e dados originais', async (t) => {
@@ -333,6 +335,229 @@ test('House 2.0: tokens próprios, pets, portas, concorrência e dados originais
         );
         assert.equal((await pool.query('SELECT count(*)::int n FROM house2_items')).rows[0].n, 0);
         assert.equal((await pool.query('SELECT count(*)::int n FROM house2_tokens')).rows[0].n, 2);
+      },
+    );
+    await t.test(
+      'montarias próprias usam pelagem e arte equipada, coexistem com personagens e respeitam controle',
+      async () => {
+        const mounts: Array<{ id: string; mount_id: string }> = [];
+        for (const [species, coat] of [
+          ['warhorse', 'alternate'],
+          ['pony', 'original'],
+          ['riding-horse', 'original'],
+          ['mule', 'alternate'],
+        ]) {
+          mounts.push(
+            (
+              await pool.query(
+                'INSERT INTO character_mounts(character_id,mount_id,name,price_cp,idempotency_key,coat)VALUES($1,$2,$3,100,$4,$5)RETURNING *',
+                [a.id, species, species, randomUUID(), coat],
+              )
+            ).rows[0],
+          );
+        }
+        const foreign = (
+          await pool.query(
+            "INSERT INTO character_mounts(character_id,mount_id,name,price_cp,idempotency_key)VALUES($1,'warhorse','Alheio',100,$2)RETURNING id",
+            [b.id, randomUUID()],
+          )
+        ).rows[0];
+        const custom = await sharp({
+          create: { width: 64, height: 64, channels: 4, background: '#c52d67' },
+        })
+          .png()
+          .toBuffer();
+        await pool.query(
+          "INSERT INTO companion_wardrobes(id,character_id,kind,mount_id,image_revision)VALUES($1,$2,'mount',$1,7)",
+          [mounts[1].id, a.id],
+        );
+        await pool.query(
+          'INSERT INTO companion_artworks(wardrobe_id,equipment_revision,image,token_image)VALUES($1,0,$2,$2)',
+          [mounts[1].id, custom],
+        );
+        const library = (await req('/house-v2/token-library', owner)).data.sources.filter(
+          (s: any) => s.kind === 'mount',
+        );
+        assert.deepEqual(library.map((s: any) => s.id).sort(), mounts.map((m) => m.id).sort());
+        assert.match(
+          library.find((s: any) => s.id === mounts[0].id).image_url,
+          /mount-warhorse-alternate-v1.webp$/,
+        );
+        assert.match(
+          library.find((s: any) => s.id === mounts[1].id).image_url,
+          /\/mount\/.*\/token\?v=7$/,
+        );
+        assert.equal(
+          (
+            await req(path + '/tokens', owner, 'POST', {
+              kind: 'mount',
+              source_id: foreign.id,
+              position: { x: 25, y: 25 },
+            })
+          ).status,
+          403,
+        );
+        const body = { kind: 'mount', source_id: mounts[0].id, position: { x: 25, y: 25 } };
+        const pair = await Promise.all([
+          req(path + '/tokens', owner, 'POST', body),
+          req(path + '/tokens', owner, 'POST', body),
+        ]);
+        assert.deepEqual(
+          pair.map((r) => r.status),
+          [201, 201],
+        );
+        assert.equal(pair[0].data.id, pair[1].data.id);
+        const horse = pair[0].data;
+        assert.equal(horse.kind, 'mount');
+        assert.equal(horse.size, 1.9);
+        assert.equal(horse.source_id, mounts[0].id);
+        assert.equal((await req(horse.image_url.replace('/api', ''), other)).status, 200);
+        assert.equal((await req(horse.image_url.replace('/api', ''))).status, 401);
+        for (const account of [other, admin]) {
+          assert.equal(
+            (
+              await req(path + '/tokens/' + horse.id, account, 'PATCH', {
+                revision: 0,
+                x: 25,
+                y: 24,
+                size: horse.size,
+                rotation: 90,
+              })
+            ).status,
+            403,
+          );
+          assert.equal(
+            (await req(path + '/tokens/' + horse.id, account, 'DELETE', { revision: 0 })).status,
+            403,
+          );
+        }
+        const moved = await req(path + '/tokens/' + horse.id, owner, 'PATCH', {
+          revision: 0,
+          x: 25,
+          y: 24,
+          size: horse.size,
+          rotation: 127,
+        });
+        assert.equal(moved.status, 200);
+        assert.equal(moved.data.rotation, 127);
+        assert.equal(
+          (
+            await req(path + '/tokens/' + horse.id, owner, 'PATCH', {
+              revision: 0,
+              x: 25,
+              y: 24,
+              size: horse.size,
+              rotation: 0,
+            })
+          ).status,
+          409,
+        );
+        const current = (await req(path + '/tokens', other)).data.tokens;
+        assert(current.some((s: any) => s.id === actor.id));
+        assert.equal(current.find((s: any) => s.id === horse.id).rotation, 127);
+        for (const mount of mounts.slice(1)) {
+          const placed = await req(path + '/tokens', owner, 'POST', {
+            kind: 'mount',
+            source_id: mount.id,
+            position: { x: 26, y: 24 },
+          });
+          assert.equal(placed.status, 201);
+          assert.equal(placed.data.size, mount.mount_id === 'riding-horse' ? 1.9 : 1.35);
+          const art = await req(placed.data.image_url.replace('/api', ''), other);
+          assert.equal(art.status, 200);
+          if (mount.id === mounts[1].id)
+            assert((await sharp(art.data).stats()).channels[0].mean > 190);
+          await req(path + '/tokens/' + placed.data.id, owner, 'DELETE', { revision: 0 });
+        }
+        assert.equal(
+          (
+            await req(path + '/tokens/' + horse.id, owner, 'DELETE', {
+              revision: moved.data.revision,
+            })
+          ).status,
+          200,
+        );
+        assert.equal((await req(horse.image_url.replace('/api', ''), other)).status, 404);
+        assert.deepEqual(
+          (
+            await pool.query('SELECT * FROM character_mounts WHERE character_id=$1 ORDER BY id', [
+              a.id,
+            ])
+          ).rows,
+          [...mounts].sort((a, b) => a.id.localeCompare(b.id)),
+        );
+        assert.deepEqual(
+          (
+            await pool.query(
+              'SELECT id,gold_cp,level,portrait_revision FROM characters ORDER BY id',
+            )
+          ).rows,
+          original,
+        );
+      },
+    );
+    await t.test(
+      '25 telhados e 25 pisos: compra idempotente, categoria, aplicação e restauração',
+      async () => {
+        assert.equal(house2FinishesCatalog.filter((f) => f.kind === 'roof').length, 25);
+        assert.equal(house2FinishesCatalog.filter((f) => f.kind === 'floor').length, 25);
+        const before = (await req('/house-v2', owner)).data.balance;
+        for (const id of ['roof-style-025', 'floor-dwarven-inlay']) {
+          const spec = house2FinishesCatalog.find((f) => f.id === id)!;
+          const body = { character_id: a.id, catalog_id: id, idempotency_key: randomUUID() };
+          const pair = await Promise.all([
+            req('/house-v2/finishes', owner, 'POST', body),
+            req('/house-v2/finishes', owner, 'POST', body),
+          ]);
+          assert.deepEqual(
+            pair.map((r) => r.status),
+            [200, 200],
+          );
+          let lotState = (await req(path, owner)).data.plots.find((p: any) => p.id === lot.id);
+          const action = { kind: spec.kind, catalog_id: id, revision: lotState.revision };
+          assert.equal(
+            (await req(`/house-v2/plots/${lot.id}/finish`, other, 'POST', action)).status,
+            403,
+          );
+          assert.equal(
+            (
+              await req(`/house-v2/plots/${lot.id}/finish`, owner, 'POST', {
+                ...action,
+                kind: 'walls',
+              })
+            ).status,
+            403,
+          );
+          assert.equal(
+            (await req(`/house-v2/plots/${lot.id}/finish`, owner, 'POST', action)).status,
+            200,
+          );
+          assert.equal(
+            (await req(`/house-v2/plots/${lot.id}/finish`, owner, 'POST', action)).status,
+            409,
+          );
+          lotState = (await req(path, owner)).data.plots.find((p: any) => p.id === lot.id);
+          assert.equal(lotState.finishes[spec.kind], id);
+          assert.equal(
+            (
+              await req(`/house-v2/plots/${lot.id}/finish`, owner, 'POST', {
+                kind: spec.kind,
+                catalog_id: null,
+                revision: lotState.revision,
+              })
+            ).status,
+            200,
+          );
+        }
+        const directory = (await req('/house-v2', owner)).data;
+        assert.equal(
+          directory.balance,
+          before - house2FinishesCatalog.find((f) => f.id === 'roof-style-025')!.price - 250,
+        );
+        assert(
+          directory.finishes.includes('roof-style-025') &&
+            directory.finishes.includes('floor-dwarven-inlay'),
+        );
       },
     );
   } finally {

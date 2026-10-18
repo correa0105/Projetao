@@ -341,7 +341,11 @@ export function House2TokensLayer({
               }
             }}
           >
-            <title>{t.kind === 'pet' ? `${t.name} · pet de ${t.character_name}` : t.name}</title>
+            <title>
+              {t.kind === 'character'
+                ? t.name
+                : `${t.name} · ${t.kind === 'mount' ? 'montaria' : 'pet'} de ${t.character_name}`}
+            </title>
             {!t.top_down && (
               <defs>
                 <clipPath id={'h2-actor-face-' + t.id}>
@@ -423,17 +427,17 @@ export function House2TokensPanel({
   return (
     <div className="h2-token-panel">
       <p>
-        Arraste um personagem ou pet desta lista para o mapa, ou use Trazer para o mapa. Clique
-        novamente no token para desmarcar. Ctrl + arraste gira livremente; solte para salvar.
+        Arraste um personagem, pet ou montaria desta lista para o mapa, ou use Trazer para o mapa.
+        Clique novamente no token para desmarcar. Ctrl + arraste gira livremente; solte para salvar.
       </p>
       <label>
-        Buscar personagem ou pet
+        Buscar personagem, pet ou montaria
         <input
           type="search"
           aria-label="Buscar meus tokens"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Nome do personagem ou pet…"
+          placeholder="Nome do personagem, pet ou montaria…"
         />
       </label>
       <button disabled={controls.busy || controls.loading} onClick={() => void controls.refresh()}>
@@ -441,7 +445,7 @@ export function House2TokensPanel({
       </button>
       {controls.loading && <p role="status">Carregando seus tokens…</p>}
       {!controls.loading && !controls.sources.length && (
-        <p>Você ainda não tem personagens ou pets cadastrados.</p>
+        <p>Você ainda não tem personagens, pets ou montarias cadastrados.</p>
       )}
       {controls.sources
         .filter((s) =>
@@ -474,7 +478,11 @@ export function House2TokensPanel({
               <img src={s.image_url} alt="" loading="lazy" draggable={false} />
               <div>
                 <strong>{s.name}</strong>
-                <span>{s.kind === 'pet' ? `Pet de ${s.character_name}` : 'Seu personagem'}</span>
+                <span>
+                  {s.kind === 'character'
+                    ? 'Seu personagem'
+                    : `${s.kind === 'mount' ? 'Montaria' : 'Pet'} de ${s.character_name}`}
+                </span>
                 <button
                   disabled={controls.busy}
                   aria-label={
@@ -489,7 +497,7 @@ export function House2TokensPanel({
                 >
                   {placed ? (
                     <Crosshair size={14} />
-                  ) : s.kind === 'pet' ? (
+                  ) : s.kind !== 'character' ? (
                     <PawPrint size={14} />
                   ) : (
                     <Plus size={14} />

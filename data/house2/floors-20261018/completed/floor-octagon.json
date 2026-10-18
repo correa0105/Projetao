@@ -1,0 +1,18 @@
+{
+  "id": "floor-octagon",
+  "name": "Ladrilhos octogonais",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: warm terracotta octagonal tiles with small cream square inserts, old medieval handmade ceramic texture, fourteen octagons across.",
+  "image": "/house2/floors-20261018/floor-octagon.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-3321bd8c-ab46-4096-9628-5a110b102f46.png",
+  "localSource": ".local/house2-floor-sources/floor-octagon.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:06:04.442Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-octagon.webp",
+  "sourceSha256": "5a66635fd65054f9d50ff51a4fa65e0db125aba04a1894303b4d8d08ed6f83be",
+  "sha256": "9db50fad5f5bd6239980f80138550027783649a7fd97073a504d1d86bea8310c",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

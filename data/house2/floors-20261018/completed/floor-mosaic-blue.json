@@ -1,0 +1,18 @@
+{
+  "id": "floor-mosaic-blue",
+  "name": "Mosaico azul",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: medieval blue and ivory ceramic mosaic tesserae forming repeating geometric eight-point stars, no writing, small dense pattern.",
+  "image": "/house2/floors-20261018/floor-mosaic-blue.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-fc1c7de5-2792-4d04-97b4-6dce92022bcc.png",
+  "localSource": ".local/house2-floor-sources/floor-mosaic-blue.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:05:19.809Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-mosaic-blue.webp",
+  "sourceSha256": "64c5eaa850d780e27e83ed70ad6201076bf2ca2f285561289cc5bab7e463c9db",
+  "sha256": "6fe2683d1b7f2e07c889db24317ed776d851c0146a1af5c1190d7452801c083b",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

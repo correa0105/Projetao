@@ -21,19 +21,22 @@ import type { House2Token, House2TokenSource } from '../shared/house2-tokens.js'
 const uuid = z.string().uuid();
 type DB = Pick<PoolClient, 'query'>;
 const select = `SELECT t.*,c.name AS character_name,c.user_id AS controller,
-  coalesce(p.name,c.name) AS name,CASE WHEN t.pet_id IS NULL THEN 'character' ELSE 'pet' END AS kind,
-  (t.pet_id IS NOT NULL OR ct.image IS NOT NULL) AS top_down,
-  CASE WHEN t.pet_id IS NULL THEN coalesce(ct.updated_at::text,c.portrait_revision::text,'0')
-    ELSE coalesce(w.image_revision::text,'0')||coalesce(p.appearance,'original') END AS art_version
+  coalesce(p.name,m.name,c.name) AS name,
+  CASE WHEN t.mount_id IS NOT NULL THEN 'mount' WHEN t.pet_id IS NOT NULL THEN 'pet' ELSE 'character' END AS kind,
+  (t.pet_id IS NOT NULL OR t.mount_id IS NOT NULL OR ct.image IS NOT NULL) AS top_down,
+  CASE WHEN t.pet_id IS NULL AND t.mount_id IS NULL THEN coalesce(ct.updated_at::text,c.portrait_revision::text,'0')
+    ELSE coalesce(w.image_revision::text,'0')||coalesce(p.appearance,m.coat,'original') END AS art_version
   FROM house2_tokens t JOIN characters c ON c.id=t.character_id
   LEFT JOIN character_pets p ON p.id=t.pet_id AND p.character_id=c.id
+  LEFT JOIN character_mounts m ON m.id=t.mount_id AND m.character_id=c.id
   LEFT JOIN character_tokens ct ON ct.character_id=c.id
-  LEFT JOIN companion_wardrobes w ON w.id=p.id
-  WHERE c.deleted_at IS NULL AND (t.pet_id IS NULL OR p.id IS NOT NULL)`;
+  LEFT JOIN companion_wardrobes w ON w.id=coalesce(p.id,m.id)
+  WHERE c.deleted_at IS NULL AND (t.pet_id IS NULL OR p.id IS NOT NULL)
+    AND (t.mount_id IS NULL OR m.id IS NOT NULL)`;
 function token(row: any, user: string): House2Token {
   return {
     id: row.id,
-    source_id: row.pet_id ?? row.character_id,
+    source_id: row.pet_id ?? row.mount_id ?? row.character_id,
     kind: row.kind,
     name: row.name,
     character_id: row.character_id,
@@ -117,6 +120,29 @@ export function house2TokensRouter() {
           : basicCompanionToken('pet', p.pet_id, p.appearance)!,
       })),
     ];
+    const mounts = (
+      await pool.query(
+        `SELECT m.id,m.name,m.mount_id,m.coat,c.id AS character_id,c.name AS character_name,
+       w.image_revision,(a.token_image IS NOT NULL) AS has_token FROM character_mounts m
+       JOIN characters c ON c.id=m.character_id LEFT JOIN companion_wardrobes w ON w.id=m.id
+       LEFT JOIN companion_artworks a ON a.wardrobe_id=m.id
+       WHERE c.user_id=$1 AND c.deleted_at IS NULL ORDER BY c.name,m.name,m.id`,
+        [user],
+      )
+    ).rows;
+    sources.push(
+      ...mounts.map((m) => ({
+        id: m.id,
+        kind: 'mount' as const,
+        name: m.name,
+        character_id: m.character_id,
+        character_name: m.character_name,
+        top_down: true,
+        image_url: m.has_token
+          ? `/api/companions/${m.character_id}/mount/${m.id}/token?v=${m.image_revision}`
+          : basicCompanionToken('mount', m.mount_id, m.coat)!,
+      })),
+    );
     res.set('Cache-Control', 'private, no-store').json({ sources });
   });
   router.get('/house-v2/neighborhoods/:id/tokens', async (req, res) => {
@@ -135,20 +161,26 @@ export function house2TokensRouter() {
       tid = uuid.parse(req.params.token);
     const row = (
       await pool.query(
-        `SELECT t.pet_id,p.pet_id AS species,p.appearance,
-      CASE WHEN t.pet_id IS NULL THEN coalesce(ct.image,cp.image) ELSE a.token_image END AS image
+        `SELECT t.pet_id,t.mount_id,coalesce(p.pet_id,m.mount_id) AS species,coalesce(p.appearance,m.coat) AS appearance,
+      CASE WHEN t.pet_id IS NULL AND t.mount_id IS NULL THEN coalesce(ct.image,cp.image) ELSE a.token_image END AS image
       FROM house2_tokens t JOIN characters c ON c.id=t.character_id
       LEFT JOIN character_pets p ON p.id=t.pet_id AND p.character_id=c.id
+      LEFT JOIN character_mounts m ON m.id=t.mount_id AND m.character_id=c.id
       LEFT JOIN character_tokens ct ON ct.character_id=c.id LEFT JOIN character_portraits cp ON cp.character_id=c.id
-      LEFT JOIN companion_artworks a ON a.wardrobe_id=p.id
-      WHERE t.neighborhood_id=$1 AND t.id=$2 AND c.deleted_at IS NULL AND (t.pet_id IS NULL OR p.id IS NOT NULL)`,
+      LEFT JOIN companion_artworks a ON a.wardrobe_id=coalesce(p.id,m.id)
+      WHERE t.neighborhood_id=$1 AND t.id=$2 AND c.deleted_at IS NULL AND (t.pet_id IS NULL OR p.id IS NOT NULL)
+        AND (t.mount_id IS NULL OR m.id IS NOT NULL)`,
         [id, tid],
       )
     ).rows[0];
     if (!row) throw new AppError(404, 'Token não encontrado nesta vizinhança.');
     let bytes: Buffer = row.image;
-    if (!bytes && row.pet_id)
-      bytes = await basicCompanionTokenBytes('pet', row.species, row.appearance);
+    if (!bytes && (row.pet_id || row.mount_id))
+      bytes = await basicCompanionTokenBytes(
+        row.mount_id ? 'mount' : 'pet',
+        row.species,
+        row.appearance,
+      );
     if (!bytes) {
       for (const root of ['public', 'dist/client']) {
         try {
@@ -174,7 +206,11 @@ export function house2TokensRouter() {
     const id = uuid.parse(req.params.id),
       user = res.locals.user.id;
     const b = z
-      .object({ kind: z.enum(['character', 'pet']), source_id: uuid, position: house2TokenPoint })
+      .object({
+        kind: z.enum(['character', 'pet', 'mount']),
+        source_id: uuid,
+        position: house2TokenPoint,
+      })
       .strict()
       .parse(req.body);
     const result = await transaction(async (db) => {
@@ -187,31 +223,57 @@ export function house2TokensRouter() {
                 [b.source_id, user],
               )
             ).rows[0]
-          : (
-              await db.query(
-                'SELECT c.id,p.pet_id FROM character_pets p JOIN characters c ON c.id=p.character_id WHERE p.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL FOR KEY SHARE OF c,p',
-                [b.source_id, user],
-              )
-            ).rows[0];
-      if (!source) throw new AppError(403, 'Escolha um personagem ou pet da sua conta.');
+          : b.kind === 'pet'
+            ? (
+                await db.query(
+                  'SELECT c.id,p.pet_id FROM character_pets p JOIN characters c ON c.id=p.character_id WHERE p.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL FOR KEY SHARE OF c,p',
+                  [b.source_id, user],
+                )
+              ).rows[0]
+            : (
+                await db.query(
+                  'SELECT c.id,m.mount_id FROM character_mounts m JOIN characters c ON c.id=m.character_id WHERE m.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL FOR KEY SHARE OF c,m',
+                  [b.source_id, user],
+                )
+              ).rows[0];
+      if (!source) throw new AppError(403, 'Escolha um personagem, pet ou montaria da sua conta.');
       const previous = (
         await db.query(
           select +
             (b.kind === 'character'
-              ? ' AND t.neighborhood_id=$1 AND t.character_id=$2 AND t.pet_id IS NULL'
-              : ' AND t.neighborhood_id=$1 AND t.pet_id=$2'),
+              ? ' AND t.neighborhood_id=$1 AND t.character_id=$2 AND t.pet_id IS NULL AND t.mount_id IS NULL'
+              : b.kind === 'pet'
+                ? ' AND t.neighborhood_id=$1 AND t.pet_id=$2'
+                : ' AND t.neighborhood_id=$1 AND t.mount_id=$2'),
           [id, b.source_id],
         )
       ).rows[0];
       if (previous) return token(previous, user);
-      const size = b.kind === 'character' ? 1.1 : source.pet_id === 'dog' ? 1 : 0.7;
+      const size =
+        b.kind === 'character'
+          ? 1.1
+          : b.kind === 'mount'
+            ? ['riding-horse', 'warhorse'].includes(source.mount_id)
+              ? 1.9
+              : 1.35
+            : source.pet_id === 'dog'
+              ? 1
+              : 0.7;
       const at = house2TokenClamp({ ...b.position, size });
       if (!house2TokenCanMove(await plots(db, id), at, at, size))
         throw new AppError(400, 'Escolha uma posição livre das paredes.');
       const inserted = (
         await db.query(
-          'INSERT INTO house2_tokens(neighborhood_id,character_id,pet_id,x,y,size) VALUES($1,$2,$3,$4,$5,$6) RETURNING id',
-          [id, source.id, b.kind === 'pet' ? b.source_id : null, at.x, at.y, size],
+          'INSERT INTO house2_tokens(neighborhood_id,character_id,pet_id,mount_id,x,y,size) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id',
+          [
+            id,
+            source.id,
+            b.kind === 'pet' ? b.source_id : null,
+            b.kind === 'mount' ? b.source_id : null,
+            at.x,
+            at.y,
+            size,
+          ],
         )
       ).rows[0];
       return token((await db.query(select + ' AND t.id=$1', [inserted.id])).rows[0], user);
@@ -286,12 +348,16 @@ export function house2TokensRouter() {
           (a) =>
             a.controller === user &&
             !a.pet_id &&
+            !a.mount_id &&
             Math.hypot(a.x - doorway.x, a.y - doorway.y) <= 2 + a.size / 2,
         )
       )
         throw new AppError(403, 'Aproxime seu personagem da porta para abri-la.');
       if (!open && house2DoorOccupied(house, actors))
-        throw new AppError(409, 'Afaste o personagem ou pet da passagem antes de fechar.');
+        throw new AppError(
+          409,
+          'Afaste os personagens, pets ou montarias da passagem antes de fechar.',
+        );
       await db.query('UPDATE house2_plots SET door_open=$2 WHERE id=$1', [pid, open]);
     });
     res.json({ plot_id: pid, open });

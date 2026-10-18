@@ -1,0 +1,18 @@
+{
+  "id": "floor-granite",
+  "name": "Granito cinzento",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: gray granite square slabs with finely speckled mineral grains and subtle pale seams, twelve slabs across.",
+  "image": "/house2/floors-20261018/floor-granite.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-4467c684-5ccb-4a93-b926-aeeaf8988a60.png",
+  "localSource": ".local/house2-floor-sources/floor-granite.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:04:44.163Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-granite.webp",
+  "sourceSha256": "7e01a2aa5f2fb9a75fbbbae9853702893b652e85c2f8aaafaa202d2e7f0cabf0",
+  "sha256": "ecd791a3e5494e2226c6bd7d68542d4b0545429c91e6c59bc382fb07410a4fd2",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

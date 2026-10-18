@@ -1,0 +1,18 @@
+{
+  "id": "floor-travertine",
+  "name": "Travertino",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: warm ivory travertine floor slabs with gentle pores and understated long pale veins, twelve slabs across.",
+  "image": "/house2/floors-20261018/floor-travertine.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-f14ebb0b-3527-40f1-b9a1-471ff408de2d.png",
+  "localSource": ".local/house2-floor-sources/floor-travertine.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:04:26.166Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-travertine.webp",
+  "sourceSha256": "617b051e0eebb23aa7172527de52b421140b85ef3380bb883c2ce138cb978bb1",
+  "sha256": "8a6fbd7c857c375f372af1c659bcedd4af2cbbaf674ae00c4b1db30bc1e85695",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

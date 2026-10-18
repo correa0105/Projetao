@@ -1,0 +1,18 @@
+{
+  "id": "floor-sandstone",
+  "name": "Lajes de arenito",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: honey and cream sandstone flagstones with gently worn edges and warm sandy fine grain, twelve slabs across.",
+  "image": "/house2/floors-20261018/floor-sandstone.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-51e420fd-7d06-4410-abe2-21730db4a592.png",
+  "localSource": ".local/house2-floor-sources/floor-sandstone.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:03:15.129Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-sandstone.webp",
+  "sourceSha256": "6e2953f5cd80f25d7c991b549e5a1f792dae84f746bfed255cbc0c6ee1a92100",
+  "sha256": "267b56b4a1dc5e838a934800f13c8b8f68c69054d4861ee0bf9d7ab664a9c389",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

@@ -1,0 +1,18 @@
+{
+  "id": "floor-limestone",
+  "name": "Calcário claro",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: pale creamy limestone rectangular floor slabs with delicate fossil flecks and thin warm gray joints, twelve slabs across.",
+  "image": "/house2/floors-20261018/floor-limestone.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-e0a8f5cf-b024-44b3-bd55-afe84eeecfc6.png",
+  "localSource": ".local/house2-floor-sources/floor-limestone.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:04:02.411Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-limestone.webp",
+  "sourceSha256": "3c71d6a7e8e68a0685014e1470e0f57be4f9cd760d53b64614c817be0cbab58a",
+  "sha256": "5f5f43c379cb094742603516a42197c01beb1c957c5d8df13482798657489b79",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

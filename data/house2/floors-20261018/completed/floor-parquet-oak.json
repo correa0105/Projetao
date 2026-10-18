@@ -1,0 +1,18 @@
+{
+  "id": "floor-parquet-oak",
+  "name": "Parquet de carvalho",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: dense oak parquet in herringbone arrangement, warm golden worn wood, approximately twenty narrow board widths across the square.",
+  "image": "/house2/floors-20261018/floor-parquet-oak.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-85ba985f-e235-4404-b4ad-fe9e3382dad0.png",
+  "localSource": ".local/house2-floor-sources/floor-parquet-oak.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:02:11.828Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-parquet-oak.webp",
+  "sourceSha256": "d2f89078a8b780fe77d3b088ad3484faedbd31c59cbbb03285d8f134ce285fa9",
+  "sha256": "c6fd9337d9486a8d0c7ae75707a369c48a503847afe81c8ae69267583e450022",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

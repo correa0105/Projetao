@@ -1,0 +1,18 @@
+{
+  "id": "floor-ash-white",
+  "name": "Madeira caiada",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: whitewashed ash floorboards, warm ivory worn paint revealing subtle pale grain, eighteen narrow board widths across.",
+  "image": "/house2/floors-20261018/floor-ash-white.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-36138f94-3a49-4df0-8b5b-c46c290962cc.png",
+  "localSource": ".local/house2-floor-sources/floor-ash-white.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:02:29.864Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-ash-white.webp",
+  "sourceSha256": "10a94940915e1fa4c7c7145d54580d42b0932216234048371b877f7d5a11b9a8",
+  "sha256": "feb37d50d38a2018bc4dbcb6bd465688362bdd9f83a39153f5767bd49c28b854",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

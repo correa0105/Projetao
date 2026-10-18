@@ -1,0 +1,18 @@
+{
+  "id": "floor-pine-planks",
+  "name": "Tábuas largas de pinho",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: pale honey pine floorboards in staggered long strips, fine knots and restrained worn grain, sixteen board widths across.",
+  "image": "/house2/floors-20261018/floor-pine-planks.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-69422319-c7cb-4372-bb8e-56691bed2a47.png",
+  "localSource": ".local/house2-floor-sources/floor-pine-planks.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:02:49.333Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-pine-planks.webp",
+  "sourceSha256": "9c1033abf3dbd313f3ba8d488fa35a294ce27c5b3cb8a8dec6e592e441671b31",
+  "sha256": "e623302cc6bb16525b75c040276e0ecb457e24aab2e4a80af41e709c6aa286ec",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

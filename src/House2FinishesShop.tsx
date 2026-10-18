@@ -103,7 +103,11 @@ export function House2FinishesShop({
                 }
                 onClick={() => (purchased ? void apply(f.id) : (setError(''), setBuy(f)))}
               >
-                <img src={vttVisualSource(f.image)} alt={'Prévia · ' + f.name} loading="lazy" />
+                <img
+                  src={vttVisualSource('thumbnail' in f ? f.thumbnail : f.image)}
+                  alt={'Prévia · ' + f.name}
+                  loading="lazy"
+                />
                 <strong>{f.name}</strong>
                 <small>
                   {applied

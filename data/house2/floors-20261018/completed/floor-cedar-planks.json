@@ -1,0 +1,18 @@
+{
+  "id": "floor-cedar-planks",
+  "name": "Tábuas de cedro",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: muted reddish cedar planks with finely visible grain and old hand-forged nail heads, eighteen board widths across.",
+  "image": "/house2/floors-20261018/floor-cedar-planks.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-d9e2d630-5154-48ae-9c0d-377ee4f7ead1.png",
+  "localSource": ".local/house2-floor-sources/floor-cedar-planks.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:03:07.059Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-cedar-planks.webp",
+  "sourceSha256": "dc931b3b01f0af5e6c145a2276694b045c3008b175cb305d636fd88d0e40cffa",
+  "sha256": "6d7a0e8fa866530bea35aad7cb9bde32265bb7285ee7d0e755b7eac436b156e5",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

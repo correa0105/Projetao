@@ -1,0 +1,162 @@
+[
+  {
+    "id": "floor-parquet-oak",
+    "name": "Parquet de carvalho",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-parquet-oak.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-parquet-oak.webp"
+  },
+  {
+    "id": "floor-walnut-weave",
+    "name": "Parquet trançado de nogueira",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-walnut-weave.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-walnut-weave.webp"
+  },
+  {
+    "id": "floor-pine-planks",
+    "name": "Tábuas largas de pinho",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-pine-planks.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-pine-planks.webp"
+  },
+  {
+    "id": "floor-cedar-planks",
+    "name": "Tábuas de cedro",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-cedar-planks.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-cedar-planks.webp"
+  },
+  {
+    "id": "floor-ash-white",
+    "name": "Madeira caiada",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-ash-white.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-ash-white.webp"
+  },
+  {
+    "id": "floor-endgrain",
+    "name": "Blocos de madeira",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-endgrain.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-endgrain.webp"
+  },
+  {
+    "id": "floor-basalt",
+    "name": "Lajes de basalto",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-basalt.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-basalt.webp"
+  },
+  {
+    "id": "floor-sandstone",
+    "name": "Lajes de arenito",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-sandstone.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-sandstone.webp"
+  },
+  {
+    "id": "floor-slate-rust",
+    "name": "Ardósia rústica",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-slate-rust.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-slate-rust.webp"
+  },
+  {
+    "id": "floor-limestone",
+    "name": "Calcário claro",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-limestone.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-limestone.webp"
+  },
+  {
+    "id": "floor-travertine",
+    "name": "Travertino",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-travertine.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-travertine.webp"
+  },
+  {
+    "id": "floor-granite",
+    "name": "Granito cinzento",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-granite.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-granite.webp"
+  },
+  {
+    "id": "floor-checker-stone",
+    "name": "Pedra xadrez",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-checker-stone.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-checker-stone.webp"
+  },
+  {
+    "id": "floor-mosaic-blue",
+    "name": "Mosaico azul",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-mosaic-blue.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-mosaic-blue.webp"
+  },
+  {
+    "id": "floor-ceramic-green",
+    "name": "Cerâmica verde",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-ceramic-green.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-ceramic-green.webp"
+  },
+  {
+    "id": "floor-hex-clay",
+    "name": "Terracota hexagonal",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-hex-clay.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-hex-clay.webp"
+  },
+  {
+    "id": "floor-brick-weave",
+    "name": "Tijolos em espinha",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-brick-weave.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-brick-weave.webp"
+  },
+  {
+    "id": "floor-octagon",
+    "name": "Ladrilhos octogonais",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-octagon.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-octagon.webp"
+  },
+  {
+    "id": "floor-pebble-mosaic",
+    "name": "Mosaico de seixos",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-pebble-mosaic.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-pebble-mosaic.webp"
+  },
+  {
+    "id": "floor-dwarven-inlay",
+    "name": "Pedra com entalhes anões",
+    "kind": "floor",
+    "price": 250,
+    "image": "/house2/floors-20261018/floor-dwarven-inlay.webp",
+    "thumbnail": "/house2/floor-thumbs-20261018/floor-dwarven-inlay.webp"
+  }
+]

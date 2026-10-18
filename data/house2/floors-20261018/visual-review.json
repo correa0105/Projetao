@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "date": "2026-10-18",
+  "generatedFloors": 20,
+  "floorOptions": 25,
+  "roofOptions": 25,
+  "reviewed": ["review.png", "test-results/house2-finishes/floor-25.png", "test-results/house2-finishes/roof-25.png", "test-results/house2-finishes/interior-270.png"],
+  "criteria": ["Overhead orthographic projection", "Distinct opaque material across the full floor", "No props, border or perspective", "Single floor surface without repeated patch boundaries", "Roof art fitted to the native roof bounds", "Existing doors and walls retained"],
+  "source": "Twenty individual built-in image_gen generations. Twenty-five roof artworks already approved in the shared house catalog."
+}

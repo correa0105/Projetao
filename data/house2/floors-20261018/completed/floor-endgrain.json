@@ -1,0 +1,18 @@
+{
+  "id": "floor-endgrain",
+  "name": "Blocos de madeira",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: wooden end-grain block paving with small irregular square oak and beech blocks, visible subtle growth rings, twenty blocks across.",
+  "image": "/house2/floors-20261018/floor-endgrain.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-e2fcf814-2b43-436f-ad15-9e263aa600f6.png",
+  "localSource": ".local/house2-floor-sources/floor-endgrain.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:02:54.564Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-endgrain.webp",
+  "sourceSha256": "242914379df4bafdab4908a3fb12fbf153f8378874f5ac005fc2812ac6122ac3",
+  "sha256": "3b771ab1680698c19252703f5b78dda5b70c3ea3aa61404faaece0b76b719bec",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

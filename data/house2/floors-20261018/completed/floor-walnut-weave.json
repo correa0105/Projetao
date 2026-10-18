@@ -1,0 +1,18 @@
+{
+  "id": "floor-walnut-weave",
+  "name": "Parquet trançado de nogueira",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: dark walnut basketweave parquet with natural alternating wood grain, small square joint pattern, twenty narrow board widths across.",
+  "image": "/house2/floors-20261018/floor-walnut-weave.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-8d415e1a-1aca-423d-9019-4b72375e31d6.png",
+  "localSource": ".local/house2-floor-sources/floor-walnut-weave.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:02:30.305Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-walnut-weave.webp",
+  "sourceSha256": "7299ac65b6fa64f64ca0d1b85aae84cd8844270657e59d9cb329a98bd2040f01",
+  "sha256": "629c7aaf661620ae99629fc73b93aff5bf4a5fd8c535bd0b8b7eeb15ef822a8e",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

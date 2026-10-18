@@ -1,0 +1,18 @@
+{
+  "id": "floor-dwarven-inlay",
+  "name": "Pedra com entalhes anões",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: dark gray fine-grained stone floor slabs with thin weathered brass inlay forming restrained repeating angular geometric bands, no runes or writing, dense elegant pattern.",
+  "image": "/house2/floors-20261018/floor-dwarven-inlay.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-76b4fa92-2eae-4a93-a248-a39f0681790b.png",
+  "localSource": ".local/house2-floor-sources/floor-dwarven-inlay.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:06:45.601Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-dwarven-inlay.webp",
+  "sourceSha256": "7365bc41d446604889911e938ed54bb5c965f106428d2cfa0d481d0f55a01150",
+  "sha256": "da27930048b24c3dcdcb741159dc41f2c161dc4d033d36bd4c74ee39365a8f9f",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

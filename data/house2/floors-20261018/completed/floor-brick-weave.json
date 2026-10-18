@@ -1,0 +1,18 @@
+{
+  "id": "floor-brick-weave",
+  "name": "Tijolos em espinha",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: small weathered brick floor pavers laid in herringbone, natural muted burnt orange and brown clay, twenty narrow brick widths across.",
+  "image": "/house2/floors-20261018/floor-brick-weave.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-826329eb-5440-4408-b9a0-50aa4a3add3b.png",
+  "localSource": ".local/house2-floor-sources/floor-brick-weave.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:05:40.797Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-brick-weave.webp",
+  "sourceSha256": "3b3ed10b5b6f11779d68a422d8e8c25159261a44ac8a13bc05d82e3a1227faab",
+  "sha256": "2187d076a637ebcd59754dd9ead968e178f8e29fe7d7e8cded00e151753ec062",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

@@ -1,0 +1,18 @@
+{
+  "id": "floor-pebble-mosaic",
+  "name": "Mosaico de seixos",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: flat polished river pebbles tightly bedded in pale mortar, small gray cream and muted brown oval stones forming gentle repeating wave motifs.",
+  "image": "/house2/floors-20261018/floor-pebble-mosaic.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-a10058a9-fc9e-43c8-af54-f65885bfa0f0.png",
+  "localSource": ".local/house2-floor-sources/floor-pebble-mosaic.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:06:25.999Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-pebble-mosaic.webp",
+  "sourceSha256": "f1e0bdfebf1ea07ee73d85f2f3bfa8e33c6fd2f55c7cd253dd26ceafaef8210d",
+  "sha256": "bcf2c79d71b6741aa5e2c41e6948dd2cc595a37d1644c9bb6de55e79dc510196",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

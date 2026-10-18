@@ -1,0 +1,18 @@
+{
+  "id": "floor-slate-rust",
+  "name": "Ardósia rústica",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: irregular fitted slate flagstones in muted blue gray and restrained rusty brown tones, natural layered texture, twelve slabs across.",
+  "image": "/house2/floors-20261018/floor-slate-rust.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-7bf483ab-d67b-4659-a05a-b03f7c3272e0.png",
+  "localSource": ".local/house2-floor-sources/floor-slate-rust.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:03:37.480Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-slate-rust.webp",
+  "sourceSha256": "c6335716050efb656cfcafb3976688b820f8634bb36e7cdf4b6d456256f2c6cb",
+  "sha256": "1d76581a8600868955c7ecb63947ed0fba5f6ed90819515eca7ce58342995a16",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

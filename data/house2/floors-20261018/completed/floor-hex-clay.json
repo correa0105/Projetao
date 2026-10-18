@@ -1,0 +1,18 @@
+{
+  "id": "floor-hex-clay",
+  "name": "Terracota hexagonal",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: small warm ochre and muted russet hexagonal clay floor tiles, subtle handmade wear, eighteen hexagons across.",
+  "image": "/house2/floors-20261018/floor-hex-clay.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-b4c42f8f-9f2e-43eb-b8e2-d58b5a5ec35b.png",
+  "localSource": ".local/house2-floor-sources/floor-hex-clay.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:05:21.424Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-hex-clay.webp",
+  "sourceSha256": "0d7bc9c52527e801c4b09d3700b23a9a4ecaf4c3aadf962fa0d385575381281b",
+  "sha256": "c45267c5a01b29d5e8328477cfd6ff7c751c9569b3f182286d92aac75b2886bd",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}

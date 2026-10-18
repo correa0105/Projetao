@@ -1,9 +1,13 @@
+import houses from './vtt-houses-catalog.json';
+import floors from './house2-floor-finishes-20261018.json';
+
 export type House2FinishKind = 'roof' | 'walls' | 'floor';
 export type House2Finishes = Partial<Record<House2FinishKind, string>>;
 export const house2FinishNames = { roof: 'Telhados', walls: 'Paredes', floor: 'Pisos' } as const;
 export const house2FinishesCatalog = [
   {
     id: 'roof-straw',
+    sourceHouse: 'house-empty-001',
     kind: 'roof',
     name: 'Telhado de palha',
     price: 220,
@@ -11,6 +15,7 @@ export const house2FinishesCatalog = [
   },
   {
     id: 'roof-red',
+    sourceHouse: 'house-empty-002',
     kind: 'roof',
     name: 'Telhas vermelhas',
     price: 320,
@@ -18,6 +23,7 @@ export const house2FinishesCatalog = [
   },
   {
     id: 'roof-wood',
+    sourceHouse: 'house-empty-003',
     kind: 'roof',
     name: 'Telhas de madeira',
     price: 280,
@@ -25,6 +31,7 @@ export const house2FinishesCatalog = [
   },
   {
     id: 'roof-slate',
+    sourceHouse: 'house-empty-013',
     kind: 'roof',
     name: 'Telhado de ardósia',
     price: 420,
@@ -86,6 +93,23 @@ export const house2FinishesCatalog = [
     price: 200,
     image: '/vtt/terrain-expansion-20261015/terracotta.webp',
   },
+  ...houses
+    .filter(
+      (h) =>
+        h.category === 'Casas vazias' &&
+        !['house-empty-001', 'house-empty-002', 'house-empty-003', 'house-empty-013'].includes(
+          h.id,
+        ),
+    )
+    .map((h, i) => ({
+      id: 'roof-style-' + h.id.slice(-3),
+      kind: 'roof' as const,
+      name: 'Telhado · ' + h.name.replace(' · vazia', ''),
+      price: 300 + i * 10,
+      image: h.image,
+      sourceHouse: h.id,
+    })),
+  ...floors.map((f) => ({ ...f, kind: 'floor' as const })),
 ] as const;
 export const house2Finish = (finishes: House2Finishes | undefined, kind: House2FinishKind) =>
   house2FinishesCatalog.find((f) => f.id === finishes?.[kind] && f.kind === kind);

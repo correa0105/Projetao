@@ -4,7 +4,7 @@ import { pointBoxDistance, sweptCircleHitsBox } from './vtt-collision';
 
 export type House2TokenSource = {
   id: string;
-  kind: 'character' | 'pet';
+  kind: 'character' | 'pet' | 'mount';
   name: string;
   character_id: string;
   character_name: string;

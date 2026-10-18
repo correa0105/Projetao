@@ -1,0 +1,162 @@
+[
+  {
+    "id": "floor-parquet-oak",
+    "name": "Parquet de carvalho",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: dense oak parquet in herringbone arrangement, warm golden worn wood, approximately twenty narrow board widths across the square.",
+    "image": "/house2/floors-20261018/floor-parquet-oak.webp"
+  },
+  {
+    "id": "floor-walnut-weave",
+    "name": "Parquet trançado de nogueira",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: dark walnut basketweave parquet with natural alternating wood grain, small square joint pattern, twenty narrow board widths across.",
+    "image": "/house2/floors-20261018/floor-walnut-weave.webp"
+  },
+  {
+    "id": "floor-pine-planks",
+    "name": "Tábuas largas de pinho",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: pale honey pine floorboards in staggered long strips, fine knots and restrained worn grain, sixteen board widths across.",
+    "image": "/house2/floors-20261018/floor-pine-planks.webp"
+  },
+  {
+    "id": "floor-cedar-planks",
+    "name": "Tábuas de cedro",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: muted reddish cedar planks with finely visible grain and old hand-forged nail heads, eighteen board widths across.",
+    "image": "/house2/floors-20261018/floor-cedar-planks.webp"
+  },
+  {
+    "id": "floor-ash-white",
+    "name": "Madeira caiada",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: whitewashed ash floorboards, warm ivory worn paint revealing subtle pale grain, eighteen narrow board widths across.",
+    "image": "/house2/floors-20261018/floor-ash-white.webp"
+  },
+  {
+    "id": "floor-endgrain",
+    "name": "Blocos de madeira",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: wooden end-grain block paving with small irregular square oak and beech blocks, visible subtle growth rings, twenty blocks across.",
+    "image": "/house2/floors-20261018/floor-endgrain.webp"
+  },
+  {
+    "id": "floor-basalt",
+    "name": "Lajes de basalto",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: dense rectangular charcoal basalt flagstones in staggered courses, fine porous volcanic texture, subtle dark mortar, twelve slabs across.",
+    "image": "/house2/floors-20261018/floor-basalt.webp"
+  },
+  {
+    "id": "floor-sandstone",
+    "name": "Lajes de arenito",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: honey and cream sandstone flagstones with gently worn edges and warm sandy fine grain, twelve slabs across.",
+    "image": "/house2/floors-20261018/floor-sandstone.webp"
+  },
+  {
+    "id": "floor-slate-rust",
+    "name": "Ardósia rústica",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: irregular fitted slate flagstones in muted blue gray and restrained rusty brown tones, natural layered texture, twelve slabs across.",
+    "image": "/house2/floors-20261018/floor-slate-rust.webp"
+  },
+  {
+    "id": "floor-limestone",
+    "name": "Calcário claro",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: pale creamy limestone rectangular floor slabs with delicate fossil flecks and thin warm gray joints, twelve slabs across.",
+    "image": "/house2/floors-20261018/floor-limestone.webp"
+  },
+  {
+    "id": "floor-travertine",
+    "name": "Travertino",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: warm ivory travertine floor slabs with gentle pores and understated long pale veins, twelve slabs across.",
+    "image": "/house2/floors-20261018/floor-travertine.webp"
+  },
+  {
+    "id": "floor-granite",
+    "name": "Granito cinzento",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: gray granite square slabs with finely speckled mineral grains and subtle pale seams, twelve slabs across.",
+    "image": "/house2/floors-20261018/floor-granite.webp"
+  },
+  {
+    "id": "floor-checker-stone",
+    "name": "Pedra xadrez",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: alternating charcoal and ivory polished stone squares, restrained wear, balanced black and white checker floor, sixteen squares across.",
+    "image": "/house2/floors-20261018/floor-checker-stone.webp"
+  },
+  {
+    "id": "floor-mosaic-blue",
+    "name": "Mosaico azul",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: medieval blue and ivory ceramic mosaic tesserae forming repeating geometric eight-point stars, no writing, small dense pattern.",
+    "image": "/house2/floors-20261018/floor-mosaic-blue.webp"
+  },
+  {
+    "id": "floor-ceramic-green",
+    "name": "Cerâmica verde",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: muted emerald and olive glazed ceramic square floor tiles, individually uneven handmade glazing and worn pale mortar, sixteen tiles across.",
+    "image": "/house2/floors-20261018/floor-ceramic-green.webp"
+  },
+  {
+    "id": "floor-hex-clay",
+    "name": "Terracota hexagonal",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: small warm ochre and muted russet hexagonal clay floor tiles, subtle handmade wear, eighteen hexagons across.",
+    "image": "/house2/floors-20261018/floor-hex-clay.webp"
+  },
+  {
+    "id": "floor-brick-weave",
+    "name": "Tijolos em espinha",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: small weathered brick floor pavers laid in herringbone, natural muted burnt orange and brown clay, twenty narrow brick widths across.",
+    "image": "/house2/floors-20261018/floor-brick-weave.webp"
+  },
+  {
+    "id": "floor-octagon",
+    "name": "Ladrilhos octogonais",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: warm terracotta octagonal tiles with small cream square inserts, old medieval handmade ceramic texture, fourteen octagons across.",
+    "image": "/house2/floors-20261018/floor-octagon.webp"
+  },
+  {
+    "id": "floor-pebble-mosaic",
+    "name": "Mosaico de seixos",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: flat polished river pebbles tightly bedded in pale mortar, small gray cream and muted brown oval stones forming gentle repeating wave motifs.",
+    "image": "/house2/floors-20261018/floor-pebble-mosaic.webp"
+  },
+  {
+    "id": "floor-dwarven-inlay",
+    "name": "Pedra com entalhes anões",
+    "kind": "floor",
+    "price": 250,
+    "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: dark gray fine-grained stone floor slabs with thin weathered brass inlay forming restrained repeating angular geometric bands, no runes or writing, dense elegant pattern.",
+    "image": "/house2/floors-20261018/floor-dwarven-inlay.webp"
+  }
+]

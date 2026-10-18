@@ -1,0 +1,18 @@
+{
+  "id": "floor-ceramic-green",
+  "name": "Cerâmica verde",
+  "kind": "floor",
+  "price": 250,
+  "prompt": "Create ONE opaque square material texture for a medieval fantasy battlemap FLOOR. Camera exactly vertically above at 90 degrees, orthographic, no perspective. Finely hand-painted realistic game art matching warm textured timber and natural stone from a high-quality overhead VTT library. Delicate material grain, crisp small-scale detail, natural muted colors. Neutral even overhead lighting across the entire image, no central highlight, vignette or directional shadow. Fill every pixel edge-to-edge with the SAME continuous floor material. Seamless repeat on all four edges. No frame, border, room, walls, furniture, objects, ground patch, text, watermark, grid overlay or transparency. Material: muted emerald and olive glazed ceramic square floor tiles, individually uneven handmade glazing and worn pale mortar, sixteen tiles across.",
+  "image": "/house2/floors-20261018/floor-ceramic-green.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-54865611-c02a-4b1f-b618-714ddcc29ffd.png",
+  "localSource": ".local/house2-floor-sources/floor-ceramic-green.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T10:05:02.545Z",
+  "thumbnail": "/house2/floor-thumbs-20261018/floor-ceramic-green.webp",
+  "sourceSha256": "afe0a5af2a060d33bcbce45894efb9aaca7193d84134a41519bb4544efc5c869",
+  "sha256": "a459002c129c23cc569591c505627329e12c70f99bff05f836530e25f36e32cc",
+  "width": 1280,
+  "height": 1280,
+  "opaque": true
+}
