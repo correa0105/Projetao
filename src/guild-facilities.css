@@ -1,0 +1,92 @@
+.guild-room .guild-facility {
+  display: block;
+  border-radius: 0;
+  position: absolute;
+  transform: translate(-50%, -100%);
+  z-index: 35;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  isolation: isolate;
+}
+.guild-room .guild-facility:active {
+  transform: translate(-50%, -100%);
+}
+.guild-room .guild-facility img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  pointer-events: none;
+  filter: drop-shadow(0 5px 3px #0007);
+}
+.guild-room .guild-facility > span {
+  position: absolute;
+  left: 50%;
+  bottom: -22px;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 240px;
+  padding: 5px 10px;
+  border: 1px solid #ac8a5055;
+  border-radius: 3px;
+  color: #e3d0a7;
+  background: #19150fe8;
+  font:
+    11px/1.4 Georgia,
+    serif;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.guild-room .guild-facility small {
+  display: block;
+  font-size: 10px;
+  color: #c6a66a;
+}
+.guild-room .guild-facility:hover > span,
+.guild-room .guild-facility:focus-visible > span {
+  opacity: 1;
+}
+.guild-room .guild-facility:focus-visible {
+  outline: 2px solid #d8b56f;
+  outline-offset: 5px;
+}
+.guild-facility-details {
+  display: grid;
+  gap: 12px;
+  color: #d4c7ae;
+}
+.guild-facility-details > img {
+  width: 220px;
+  height: 200px;
+  object-fit: contain;
+  justify-self: center;
+}
+.guild-facility-details p {
+  margin: 0;
+  line-height: 1.6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .guild-room .guild-facility > span {
+    transition: none;
+  }
+}
+
+.guild-room .guild-facility:hover {
+  background: none;
+  border: 0;
+}
+@media (max-width: 700px) {
+  body:has(.guild-facility) .page-header h1 {
+    position: fixed;
+    top: 22px;
+    left: 18px;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.2;
+  }
+}

@@ -67,7 +67,7 @@ const Rulebook = lazy(() => import('./Rulebook').then((module) => ({ default: mo
 const Vtt = lazy(() => import('./Vtt').then((module) => ({ default: module.Vtt })));
 const Tower = lazy(() => import('./Tower').then((module) => ({ default: module.Tower })));
 const GuildPage = lazy(() => import('./Guilds').then((module) => ({ default: module.Guilds })));
-const HousePage = lazy(() => import('./House').then((module) => ({ default: module.House })));
+const HousePage = lazy(() => import('./RPLobby').then((module) => ({ default: module.RPLobby })));
 const House2Page = lazy(() => import('./House2').then((module) => ({ default: module.House2 })));
 const HallOfFame = lazy(() =>
   import('./HallOfFame').then((module) => ({ default: module.HallOfFame })),
@@ -95,7 +95,7 @@ const titles: Record<Page, string> = {
   vtt: 'Mesa virtual',
   hall: 'Hall da Fama',
   profiles: 'Perfis da Alvorada',
-  house: 'House',
+  house: 'Lobby de RP',
   house2: 'House 2.0',
   guild: 'Guilda',
   world: 'Mapa Alvorada',

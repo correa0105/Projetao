@@ -1,0 +1,26 @@
+{
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "beach",
+      "prompt": "Create a wide 16:9 landscape background for a fantasy roleplay lobby: a sheltered medieval coastal town beach at late afternoon, pale sand in the foreground, calm sea and distant fishing boats, town seawall and small stone pier to the right, weathered driftwood at the far edges. Realistic high detail hand painted fantasy environment with grounded medieval materials, consistent cinematic warm light. View from standing eye level, slightly downward into a broad open foreground floor that fills the lower half; perspective coherent for placing character cutouts and movable furniture. Foreground and central 60% MUST be empty walkable ground, all large structures and scenery at sides or background. NO people, NO animals, NO characters, NO weapons, NO foreground furniture, NO text, NO UI, NO borders, NO logos. A beautiful welcoming place for social roleplay. Full scene background, opaque.",
+      "url": "/rp-lobby/20261018/beach.webp",
+      "sha256": "32c07e49c1733e9b9990a665c662afff4636c710f93c44ef66a3662022f4263b",
+      "nativeFile": "exec-f00a86f3-7887-4614-86ce-72fbe26807ff.png"
+    },
+    {
+      "id": "market",
+      "prompt": "Create a wide 16:9 landscape background for a fantasy roleplay lobby: the open market square inside a medieval coastal city, timber and stone houses and colorful modest cloth awnings around the rear and side edges, fruit and cloth stalls on the edges, warm daytime. Realistic high detail hand painted fantasy environment with grounded medieval materials, consistent cinematic warm light. View from standing eye level, slightly downward into a broad open foreground floor that fills the lower half; perspective coherent for placing character cutouts and movable furniture. Foreground and central 60% MUST be empty walkable ground, all large structures and scenery at sides or background. NO people, NO animals, NO characters, NO weapons, NO foreground furniture, NO text, NO UI, NO borders, NO logos. A beautiful welcoming place for social roleplay. Full scene background, opaque.",
+      "url": "/rp-lobby/20261018/market.webp",
+      "sha256": "f403abd86eae4f1553907ebec85b9965788e047a0cee67394d7ec06aecdecc82",
+      "nativeFile": "exec-d3f72748-04ab-4b0f-9671-fca0d70703b5.png"
+    },
+    {
+      "id": "plaza",
+      "prompt": "Create a wide 16:9 landscape background for a fantasy roleplay lobby: a tranquil medieval coastal city plaza, cobblestone paving, a low old stone fountain near the back left, stone arches and timber houses around the rear, a few benches and planters at the far edges, soft late afternoon light. Realistic high detail hand painted fantasy environment with grounded medieval materials, consistent cinematic warm light. View from standing eye level, slightly downward into a broad open foreground floor that fills the lower half; perspective coherent for placing character cutouts and movable furniture. Foreground and central 60% MUST be empty walkable ground, all large structures and scenery at sides or background. NO people, NO animals, NO characters, NO weapons, NO foreground furniture, NO text, NO UI, NO borders, NO logos. A beautiful welcoming place for social roleplay. Full scene background, opaque.",
+      "url": "/rp-lobby/20261018/plaza.webp",
+      "sha256": "5f9d28cff78dd3367c1872778dc09130d84bc29fba872d6ce88665d134ef5506",
+      "nativeFile": "exec-ce2abf16-1197-489f-898b-7f774effad29.png"
+    }
+  ]
+}

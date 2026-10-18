@@ -1,5 +1,9 @@
 # House — 07/10/2026
 
+## Substituição da primeira versão por Lobby de RP — 18/10/2026
+
+A entrada antiga House agora abre salas independentes de RP: locais fixos da cidade e salas temporárias de jogadores, por convite. A interface de casa com quatro cômodos foi substituída; dados e bens antigos continuam preservados. A House 2.0 permanece separada. Fluxo vigente, permissões, rascunhos e validação em `RP-LOBBY-AND-GUILD-FACILITIES-20261018.md`. As seções abaixo documentam a versão anterior e seus arquivos mantidos.
+
 A House 2.0 experimental é uma opção separada em Explorar. Usa terrenos em
 vizinhanças superiores, casas vazias e mobília do VTT com créditos de teste.
 Não altera esta versão ou suas compras. Guia: `HOUSE-2-EXPERIMENTAL.md`.

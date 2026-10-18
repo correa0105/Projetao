@@ -35,6 +35,7 @@ import { missionTagIds } from '../shared/mission-tags.js';
 import { inventoryRouter } from './inventory.js';
 import { inventoryBagsRouter } from './inventory-bags.js';
 import { companionEquipmentRouter } from './companion-equipment.js';
+import { rpLobbyRouter } from './rp-lobby.js';
 import { notificationsRouter } from './notifications.js';
 import { stableRouter } from './stable.js';
 import { petsRouter } from './pets.js';
@@ -244,6 +245,7 @@ export function createApp() {
   app.use('/api', characterArtRouter());
   app.use('/api', characterSheetRouter());
   app.use('/api', inventoryRouter());
+  app.use('/api', rpLobbyRouter());
   app.use('/api', inventoryBagsRouter());
   app.use('/api', companionEquipmentRouter());
   app.use('/api', notificationsRouter());

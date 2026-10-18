@@ -7,6 +7,7 @@ import { AppError } from './services.js';
 import { requireAdministrator, isAdministrator } from './administrators.js';
 import { currentGoldUnlimited, spendGold } from './gold.js';
 import { houseDefaultFacing } from '../shared/house.js';
+import { guildFacilities, guildFacilityCost, guildFacilityMaxLevel } from '../shared/guild-facilities.js';
 import {
   communitySettingsSchema,
   guildDocumentSchema,
@@ -246,6 +247,7 @@ export function guildsRouter() {
       owner_id: g.owner_id,
       is_owner: member && g.owner_id === uid,
       is_member: member,
+      facilities: (await pool.query('SELECT room,level FROM player_guild_room_facilities WHERE guild_id=$1', [id])).rows,
       members: members.rows,
       treasury_cp: member ? Number(g.treasury_cp) : null,
       weekly: member ? await weeks(pool, id) : null,
@@ -422,6 +424,51 @@ export function guildsRouter() {
           [id, uid, m.template.gold_po * 100, w.week + ':' + mid],
         );
         return { replayed: false };
+      }),
+    );
+  });
+  router.post('/guilds/:id/facilities/:room/upgrade', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      uid = res.locals.user.id;
+    const facility = guildFacilities.find((f) => f.room === req.params.room);
+    if (!facility) throw new AppError(404, 'Instalação não encontrada.');
+    const input = z
+      .object({ level: z.number().int().min(2).max(guildFacilityMaxLevel) })
+      .strict()
+      .parse(req.body);
+    res.json(
+      await transaction(async (db) => {
+        const g = await guild(db, id, uid, true, res.locals.guildCharacterId);
+        const room = guildRooms.find((r) => r.id === facility.room)!;
+        const settings = (await communitySettings(db)).document;
+        if (
+          !room.starter &&
+          guildLevel(g.prestige) <
+            settings.room_unlocks[room.id as keyof typeof settings.room_unlocks]
+        )
+          throw new AppError(403, 'Esta sala ainda não foi liberada pela guilda.');
+        const stored = (
+          await db.query(
+            'SELECT level FROM player_guild_room_facilities WHERE guild_id=$1 AND room=$2',
+            [id, facility.room],
+          )
+        ).rows[0];
+        const current = stored?.level || 1;
+        if (input.level <= current) return { level: current, replayed: true };
+        if (input.level !== current + 1) throw new AppError(409, 'Melhore um nível por vez.');
+        const cost = guildFacilityCost(current);
+        if (Number(g.treasury_cp) < cost)
+          throw new AppError(409, 'O tesouro da guilda não cobre esta melhoria.');
+        await db.query('UPDATE player_guilds SET treasury_cp=treasury_cp-$2 WHERE id=$1', [id, cost]);
+        await db.query(
+          'INSERT INTO player_guild_room_facilities(guild_id,room,level) VALUES($1,$2,$3) ON CONFLICT(guild_id,room) DO UPDATE SET level=excluded.level,updated_at=now()',
+          [id, facility.room, input.level],
+        );
+        await db.query(
+          "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference) VALUES($1,$2,'upgrade',$3,$4)",
+          [id, uid, -cost, 'facility:' + facility.room + ':' + input.level],
+        );
+        return { level: input.level, replayed: false };
       }),
     );
   });

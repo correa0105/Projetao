@@ -1,0 +1,61 @@
+{
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "main",
+      "prompt": "One standalone medieval fantasy guild room interactive facility, a ceremonial guild oath bell: bronze bell hanging in a carved dark oak freestanding frame on a broad low stone plinth, modest sun emblem, brass striker. Entire construction visible from feet/base to top. Photorealistic hand painted high detail game scene prop, old warm wood, natural iron and bronze, believable wear, soft neutral warm daylight, front three-quarter view from a standing person's eye level with slight downward angle. Match realistic medieval stone-and-timber room perspective, not top-down or isometric. Natural grounded proportions, coherent straight legs and base. Isolated real alpha transparent background, NO floor plane, NO room, NO background wall, NO character, NO writing, NO UI badge, NO frame, NO giant glow. One single cohesive functional construction only, centered with transparent margin, no cropped parts.",
+      "url": "/guild/facilities-20261018/main.webp",
+      "sha256": "4a1164e2f989b34adb231b3b480e9f3dccad5d27eeaa9fe798b1272aca7a2bcf",
+      "nativeFile": "exec-6b9e3c35-530f-4299-b9ff-0dbfee8b5cfa.png"
+    },
+    {
+      "id": "forge",
+      "prompt": "One standalone medieval fantasy guild room interactive facility, master blacksmith workbench: robust dark oak bench, iron vise on one end, a compact anvil, organized hammers and tongs, dark stone base, no fire. Entire construction visible from feet/base to top. Photorealistic hand painted high detail game scene prop, old warm wood, natural iron and bronze, believable wear, soft neutral warm daylight, front three-quarter view from a standing person's eye level with slight downward angle. Match realistic medieval stone-and-timber room perspective, not top-down or isometric. Natural grounded proportions, coherent straight legs and base. Isolated real alpha transparent background, NO floor plane, NO room, NO background wall, NO character, NO writing, NO UI badge, NO frame, NO giant glow. One single cohesive functional construction only, centered with transparent margin, no cropped parts.",
+      "url": "/guild/facilities-20261018/forge.webp",
+      "sha256": "005dab1730a93fa9bb4c4a7c6d63f356824fad92345ef66198cbcc84f537883f",
+      "nativeFile": "exec-bfdddf5a-fb65-4472-9971-838fdb17f411.png"
+    },
+    {
+      "id": "lounge",
+      "prompt": "One standalone medieval fantasy guild room interactive facility, hospitality sideboard: carved oak low cabinet with a large copper tea kettle, three simple pewter mugs, folded cloth and small bread basket, cozy medieval furniture. Entire construction visible from feet/base to top. Photorealistic hand painted high detail game scene prop, old warm wood, natural iron and bronze, believable wear, soft neutral warm daylight, front three-quarter view from a standing person's eye level with slight downward angle. Match realistic medieval stone-and-timber room perspective, not top-down or isometric. Natural grounded proportions, coherent straight legs and base. Isolated real alpha transparent background, NO floor plane, NO room, NO background wall, NO character, NO writing, NO UI badge, NO frame, NO giant glow. One single cohesive functional construction only, centered with transparent margin, no cropped parts.",
+      "url": "/guild/facilities-20261018/lounge.webp",
+      "sha256": "b4052c8a611be46cca09a3eabea77a672d65eee36e2ffba319c0c826168bd290",
+      "nativeFile": "exec-a21a1300-8530-4757-ba21-235058b27eb0.png"
+    },
+    {
+      "id": "meeting",
+      "prompt": "One standalone medieval fantasy guild room interactive facility, war council strategy table: broad sturdy low oak table with a hand drawn parchment terrain map and small wooden markers, rolled scrolls, no readable writing. Entire construction visible from feet/base to top. Photorealistic hand painted high detail game scene prop, old warm wood, natural iron and bronze, believable wear, soft neutral warm daylight, front three-quarter view from a standing person's eye level with slight downward angle. Match realistic medieval stone-and-timber room perspective, not top-down or isometric. Natural grounded proportions, coherent straight legs and base. Isolated real alpha transparent background, NO floor plane, NO room, NO background wall, NO character, NO writing, NO UI badge, NO frame, NO giant glow. One single cohesive functional construction only, centered with transparent margin, no cropped parts.",
+      "url": "/guild/facilities-20261018/meeting.webp",
+      "sha256": "6d85cc6bfa462ac384b0d94ad849be2f9647124f885cc98392ebb86febd66cdf",
+      "nativeFile": "exec-364e85c8-57c2-4524-845b-6932b33cd2ec.png"
+    },
+    {
+      "id": "alchemy",
+      "prompt": "One standalone medieval fantasy guild room interactive facility, alchemist workbench: rustic oak laboratory bench with one small copper alembic, three colored glass bottles, mortar and pestle, organized medieval equipment, no magical glow. Entire construction visible from feet/base to top. Photorealistic hand painted high detail game scene prop, old warm wood, natural iron and bronze, believable wear, soft neutral warm daylight, front three-quarter view from a standing person's eye level with slight downward angle. Match realistic medieval stone-and-timber room perspective, not top-down or isometric. Natural grounded proportions, coherent straight legs and base. Isolated real alpha transparent background, NO floor plane, NO room, NO background wall, NO character, NO writing, NO UI badge, NO frame, NO giant glow. One single cohesive functional construction only, centered with transparent margin, no cropped parts.",
+      "url": "/guild/facilities-20261018/alchemy.webp",
+      "sha256": "a7ca07cf1998c8eff88dbbacf74cec0a8b7a1389adf63e8ba652ca42fd45e7c9",
+      "nativeFile": "exec-b35dc3e0-0c5f-4ee5-a3dc-54f99158a22d.png"
+    },
+    {
+      "id": "training",
+      "prompt": "One standalone medieval fantasy guild room interactive facility, a medieval sparring training dummy with a padded straw torso and wooden arms on a heavy broad timber cross base, shield hanging at side, a practical freestanding construction. Entire construction visible from feet/base to top. Photorealistic hand painted high detail game scene prop, old warm wood, natural iron and bronze, believable wear, soft neutral warm daylight, front three-quarter view from a standing person's eye level with slight downward angle. Match realistic medieval stone-and-timber room perspective, not top-down or isometric. Natural grounded proportions, coherent straight legs and base. Isolated real alpha transparent background, NO floor plane, NO room, NO background wall, NO character, NO writing, NO UI badge, NO frame, NO giant glow. One single cohesive functional construction only, centered with transparent margin, no cropped parts.",
+      "url": "/guild/facilities-20261018/training.webp",
+      "sha256": "ee13e9652b6e0499522211750477399bc8d4b5765380033dd32b602c039612d3",
+      "nativeFile": "exec-78f7588c-ee39-4b92-9439-be2c7e6f846b.png"
+    },
+    {
+      "id": "library",
+      "prompt": "One standalone medieval fantasy guild room interactive facility, a beautiful freestanding carved dark oak bookcase with three shelves of old leather bound books, scroll bundles and one modest brass lamp, medieval scholarly furniture. Entire construction visible from feet/base to top. Photorealistic hand painted high detail game scene prop, old warm wood, natural iron and bronze, believable wear, soft neutral warm daylight, front three-quarter view from a standing person's eye level with slight downward angle. Match realistic medieval stone-and-timber room perspective, not top-down or isometric. Natural grounded proportions, coherent straight legs and base. Isolated real alpha transparent background, NO floor plane, NO room, NO background wall, NO character, NO writing, NO UI badge, NO frame, NO giant glow. One single cohesive functional construction only, centered with transparent margin, no cropped parts.",
+      "url": "/guild/facilities-20261018/library.webp",
+      "sha256": "6d23c632f63e1edc73df0420364fc11cdb7233720d5d67546cb962fd7179befb",
+      "nativeFile": "exec-0541d9b2-2310-4e3e-b6ab-dc73df6b1cc6.png"
+    },
+    {
+      "id": "leader",
+      "prompt": "One standalone medieval fantasy guild room interactive facility, guild command writing desk: a noble but restrained carved oak desk with parchment ledger, closed leather book, quill in inkpot, red wax seal kit and locked small chest. Entire construction visible from feet/base to top. Photorealistic hand painted high detail game scene prop, old warm wood, natural iron and bronze, believable wear, soft neutral warm daylight, front three-quarter view from a standing person's eye level with slight downward angle. Match realistic medieval stone-and-timber room perspective, not top-down or isometric. Natural grounded proportions, coherent straight legs and base. Isolated real alpha transparent background, NO floor plane, NO room, NO background wall, NO character, NO writing, NO UI badge, NO frame, NO giant glow. One single cohesive functional construction only, centered with transparent margin, no cropped parts.",
+      "url": "/guild/facilities-20261018/leader.webp",
+      "sha256": "f0df65aed5a24069badf8fd11cf93b62a553cd089815edbd5dd3c7df28f7aaf6",
+      "nativeFile": "exec-b5c9af85-398d-4582-a09b-1d15a4e9a42e.png"
+    }
+  ]
+}

@@ -50,6 +50,7 @@ import './guilds.css';
 import './guild-decor-editor.css';
 import './community-refinements.css';
 import { GuildLobby } from './GuildLobby';
+import { GuildFacility } from './GuildFacility';
 import { ScenePanel } from './ScenePanel';
 import './guild-immersive.css';
 import {
@@ -87,6 +88,7 @@ type Guild = {
   room_unlocks: CommunitySettings['room_unlocks'];
   members: { user_id: string; character_id: string; name: string; character_name: string }[];
   upgrades: { object_id: string; level: number }[];
+  facilities: { room: string; level: number }[];
   ledger: { kind: string; amount_cp: string; created_at: string }[];
   weekly: {
     week: string;
@@ -311,6 +313,7 @@ export function Guilds({
           aria-label={roomInfo.name}
         >
           <span className="guild-room-caption">{roomInfo.name}</span>
+          <GuildFacility key={g.id + ':' + room} guildId={g.id} room={room} levels={g.facilities || []} canUpgrade={g.is_owner} treasury={g.treasury_cp} characterId={activeCharacterId} changed={load} />
           {roomPlacements.map((p) => (
             <button
               className={`guild-furniture ${selected === p.id ? 'selected' : ''}`}

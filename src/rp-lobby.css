@@ -1,0 +1,461 @@
+.rp-directory {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 20px 100px;
+  color: #ddd2bd;
+}
+.rp-directory > header {
+  padding: 26px;
+  border: 1px solid #a98a4a45;
+  background: linear-gradient(#17130ece, #17130ece), url('/achievement-wood-v1.png');
+  background-size:
+    auto,
+    620px auto;
+  border-radius: 6px;
+}
+.rp-directory h1,
+.rp-directory h2,
+.rp-session h1,
+.rp-panel h2 {
+  font-family: Georgia, serif;
+  color: #e3d7c0;
+}
+.rp-directory h1 {
+  font-size: 34px;
+  margin: 9px 0;
+}
+.rp-directory p {
+  color: #bfb39f;
+  line-height: 1.6;
+}
+.rp-directory > section {
+  margin: 28px 0;
+}
+.rp-directory h2 {
+  font-size: 24px;
+}
+.rp-room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 18px;
+}
+.rp-room-card {
+  padding: 0;
+  text-align: left;
+  overflow: hidden;
+  background: #1b1914;
+  border: 1px solid #a88b4b55;
+  border-radius: 5px;
+  box-shadow: 0 5px 22px #0004;
+}
+.rp-room-card > img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.rp-room-card > div {
+  padding: 18px;
+}
+.rp-room-card h3 {
+  margin: 0;
+  font:
+    22px Georgia,
+    serif;
+  color: #e2d5bc;
+}
+.rp-room-card p {
+  margin: 9px 0;
+  font-size: 12px;
+}
+.rp-room-card small {
+  display: block;
+  color: #bcae91;
+  font-size: 11px;
+}
+.rp-room-card span {
+  display: block;
+  color: #d8b77b;
+  margin-top: 15px;
+  font-size: 12px;
+}
+.rp-room-card:hover {
+  border-color: #d0aa62;
+}
+.rp-invitations article {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  background: #211d16;
+  padding: 16px;
+  border: 1px solid #ad8b4a55;
+  margin: 9px 0;
+}
+.rp-invitations article > div {
+  flex: 1;
+  min-width: 150px;
+}
+.rp-invitations p {
+  margin: 5px 0;
+}
+.rp-form {
+  display: grid;
+  gap: 16px;
+  color: #cbbda5;
+}
+.rp-form label,
+.rp-panel label {
+  display: grid;
+  gap: 7px;
+  font-size: 12px;
+}
+.rp-form input,
+.rp-form select,
+.rp-panel input:not([type='checkbox']),
+.rp-panel select {
+  width: 100%;
+  min-width: 0;
+}
+.rp-form p {
+  line-height: 1.6;
+  font-size: 13px;
+}
+body.rp-lobby-mounted:has(.rp-session) {
+  overflow: hidden;
+}
+body.rp-lobby-mounted:has(.rp-session) .app-shell > .journey-dock,
+body.rp-lobby-mounted:has(.rp-session) .app-shell > .main-shell > .page-header {
+  display: none;
+}
+.rp-session {
+  position: fixed;
+  inset: 0;
+  background: #14120f;
+  isolation: isolate;
+  color: #dcd0ba;
+}
+.rp-scene-scroll {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.rp-stage {
+  position: relative;
+  width: max(100vw, calc(100dvh * 16 / 9));
+  aspect-ratio: 16/9;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  isolation: isolate;
+}
+.rp-prop,
+.rp-actor {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  touch-action: none;
+  user-select: none;
+  cursor: default;
+}
+.rp-prop:active,
+.rp-actor:active {
+  transform: translate(-50%, -100%);
+}
+.rp-prop img,
+.rp-actor img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: drop-shadow(0 5px 3px #0005);
+}
+.rp-prop.selected {
+  outline: 1px dashed #e4c487;
+  outline-offset: 4px;
+}
+.rp-actor.is-self {
+  cursor: grab;
+}
+.rp-actor span {
+  position: absolute;
+  left: 50%;
+  bottom: -24px;
+  transform: translateX(-50%);
+  font:
+    12px Georgia,
+    serif;
+  white-space: nowrap;
+  background: #19140edb;
+  border: 1px solid #a98a4a55;
+  padding: 3px 9px;
+  border-radius: 3px;
+  color: #efdfb9;
+}
+.rp-session-header {
+  position: fixed;
+  z-index: 1200;
+  top: 16px;
+  left: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  pointer-events: none;
+}
+.rp-session-header > *,
+.rp-session-header button {
+  pointer-events: auto;
+}
+.rp-session-header > div:not(.rp-tools) {
+  background: #19150fe8;
+  border: 1px solid #a98a4a55;
+  padding: 9px 15px;
+  border-radius: 4px;
+  max-width: 420px;
+}
+.rp-session-header h1 {
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+.rp-session-header small {
+  font-size: 10px;
+  color: #c3b18c;
+}
+.rp-tools {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+.rp-session-header button,
+.rp-panel button,
+.rp-chat button {
+  background: #252117ee;
+  border: 1px solid #ad8b4a66;
+  color: #e0d0af;
+  border-radius: 4px;
+  padding: 9px 12px;
+  font-size: 12px;
+}
+.rp-tools button[aria-pressed='true'] {
+  background: #6f532b;
+}
+.rp-feedbacks {
+  position: fixed;
+  z-index: 1250;
+  top: 115px;
+  left: 18px;
+  max-width: min(520px, calc(100vw - 36px));
+  pointer-events: none;
+}
+.rp-feedback {
+  padding: 10px 14px;
+  background: #19160feb;
+  border: 1px solid #a98a4a66;
+  color: #d9c59d;
+  font-size: 12px;
+  border-radius: 4px;
+}
+.rp-error {
+  border-color: #a94b4566;
+  color: #e6b6ad;
+  white-space: pre-wrap;
+}
+.rp-panel {
+  position: fixed;
+  right: 18px;
+  top: 115px;
+  bottom: 90px;
+  width: 320px;
+  max-width: calc(100vw - 36px);
+  z-index: 1300;
+  overflow: auto;
+  padding: 22px;
+  background: linear-gradient(#17130eef, #17130eef), url('/achievement-wood-v1.png');
+  border: 1px solid #ad8b4a77;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 8px 30px #0008;
+}
+.rp-panel h2 {
+  font-size: 22px;
+  margin: 0 30px 4px 0;
+}
+.rp-panel p {
+  font-size: 12px;
+  color: #bfb19a;
+  line-height: 1.6;
+  margin: 0;
+}
+.rp-panel .rp-panel-close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  padding: 4px 9px;
+  font-size: 18px;
+}
+.rp-panel fieldset {
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+  border: 1px solid #ad8b4a55;
+  padding: 12px;
+}
+.rp-panel legend {
+  font-size: 12px;
+  color: #d5b777;
+}
+.rp-panel .rp-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.rp-checkbox input {
+  width: 16px;
+}
+.rp-guest {
+  display: grid;
+  gap: 6px;
+  padding: 12px 0;
+  border-top: 1px solid #ad8b4a44;
+}
+.rp-guest small {
+  font-size: 11px;
+  color: #c2b292;
+}
+.rp-chat {
+  position: fixed;
+  left: 18px;
+  bottom: 80px;
+  width: 370px;
+  max-width: calc(100vw - 36px);
+  z-index: 1150;
+  border: 1px solid #ad8b4a66;
+  border-radius: 5px;
+  background: #18150feb;
+  box-shadow: 0 6px 25px #0008;
+}
+.rp-chat > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ad8b4a44;
+  font-size: 12px;
+}
+.rp-chat header button {
+  padding: 2px 8px;
+}
+.rp-messages {
+  max-height: 230px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 12px;
+}
+.rp-messages article {
+  margin: 0 0 12px;
+}
+.rp-messages strong {
+  font:
+    13px Georgia,
+    serif;
+  color: #d9b97c;
+}
+.rp-messages time {
+  font-size: 9px;
+  color: #97886f;
+  margin-left: 10px;
+}
+.rp-messages p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+  font-size: 12px;
+  margin: 4px 0;
+  color: #d1c5ae;
+}
+.rp-chat form {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid #ad8b4a44;
+}
+.rp-chat textarea {
+  resize: vertical;
+  width: 100%;
+  min-width: 0;
+  min-height: 55px;
+  max-height: 180px;
+  font-size: 12px;
+  background: #282218;
+  color: #e5d8bf;
+  border: 1px solid #ad8b4a55;
+}
+.rp-chat form button {
+  align-self: end;
+}
+@media (max-width: 700px) {
+  .rp-directory {
+    padding: 16px 12px 90px;
+  }
+  .rp-directory > header {
+    padding: 20px;
+  }
+  .rp-session-header {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    gap: 7px;
+  }
+  .rp-session-header > div:not(.rp-tools) {
+    max-width: calc(100vw - 130px);
+    padding: 6px 9px;
+  }
+  .rp-session-header h1 {
+    font-size: 16px;
+  }
+  .rp-session-header button {
+    padding: 7px;
+    font-size: 11px;
+  }
+  .rp-tools {
+    width: 100%;
+    margin-left: 0;
+  }
+  .rp-panel {
+    top: 135px;
+    right: 10px;
+    bottom: 85px;
+    max-width: calc(100vw - 20px);
+  }
+  .rp-chat {
+    left: 10px;
+    bottom: 75px;
+    max-width: calc(100vw - 20px);
+  }
+  .rp-messages {
+    max-height: 170px;
+  }
+  .rp-feedbacks {
+    left: 10px;
+    top: 145px;
+  }
+  .rp-feedback {
+    padding: 8px;
+    font-size: 11px;
+  }
+}
