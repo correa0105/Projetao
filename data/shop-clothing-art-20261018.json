@@ -1,0 +1,61 @@
+{
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "cosmetic-shirt-linen",
+      "prompt": "Fantasy RPG shop inventory product illustration. one natural ivory linen short sleeve shirt, simple split neckline with brown lacing, medieval hand sewn seams. Detailed hand painted realistic game item art with warm neutral light, material texture and crisp silhouette, consistent high fantasy merchant inventory artwork. Entire object centered, fills 80% square, front three-quarter view, natural fabric folds or leather, empty clothing without wearer, no mannequin, no body, no floating limbs. Real transparent alpha background, no floor, no scenery, no text, no labels, no logo, no frame, no badge, no magical effects. Single product only. For pairs show exactly two matching shoes or sandals. Garments fully visible with no cropped edges.",
+      "url": "/shop/clothing-20261018/cosmetic-shirt-linen.webp",
+      "sha256": "c4906ac6b4fbe6962a28c985f54c7078983c59efaacfbe54f1bd2ac23b417447",
+      "nativeFile": "exec-b12bbd73-a601-4159-a9b0-add7b48ac3b3.png"
+    },
+    {
+      "id": "cosmetic-shirt-cotton",
+      "prompt": "One medieval short sleeved cotton undertunic, muted forest green handwoven cloth, distinctly medieval loose rectangular cut reaching upper thigh, deep split V neckline tied with a thin natural cord, small ochre hand embroidery around split collar and hem, no round crew neck, no T-shirt ribbing, no modern stitching, no modern fashion. Empty garment without wearer, body or mannequin. Entire object isolated, generous transparent margin. High detail realistic hand painted fantasy RPG inventory item artwork, material weave and natural folds, neutral warm light. Actual transparent alpha background with no glow or haze, no scene, floor, text, frame or label. One garment only.",
+      "url": "/shop/clothing-20261018/cosmetic-shirt-cotton.webp",
+      "sha256": "46ec98898ee835c52d817c50cbde8fa39fbf375bb7c867348a17627d0e9b0cae",
+      "nativeFile": "exec-3b6e0a06-daab-44c6-9705-f150fe2f77da.png"
+    },
+    {
+      "id": "cosmetic-trousers-travel",
+      "prompt": "One pair of authentic medieval peasant traveler trousers, rough brown handwoven linen, loose straight legs, very simple drawstring waist made of folded linen, hand sewn seams, two legs fully visible, natural cloth folds. NO cargo pockets, NO side pouches, NO belt loops, NO fly, NO zipper, NO buttons, NO knee pads, NO modern outdoor clothing, NO jeans. Simple medieval braies/trousers from a fantasy RPG merchant. Detailed realistic hand painted inventory illustration, empty clothing without body or mannequin, centered entire object with transparent margin. Warm neutral light, real alpha transparent background, no floor, no scene, no writing, no frame. Single garment only.",
+      "url": "/shop/clothing-20261018/cosmetic-trousers-travel.webp",
+      "sha256": "0060accb515ad00dbd1af037bcda3ca4193c45af00841de356c38741dfde0336",
+      "nativeFile": "exec-8b2ad73f-2858-42da-a10b-1af82779053d.png"
+    },
+    {
+      "id": "cosmetic-trousers-wool",
+      "prompt": "Fantasy RPG shop inventory product illustration. one pair of charcoal gray wool trousers, simple stitched waistband, straight legs, medieval tailoring. Detailed hand painted realistic game item art with warm neutral light, material texture and crisp silhouette, consistent high fantasy merchant inventory artwork. Entire object centered, fills 80% square, front three-quarter view, natural fabric folds or leather, empty clothing without wearer, no mannequin, no body, no floating limbs. Real transparent alpha background, no floor, no scenery, no text, no labels, no logo, no frame, no badge, no magical effects. Single product only. For pairs show exactly two matching shoes or sandals. Garments fully visible with no cropped edges.",
+      "url": "/shop/clothing-20261018/cosmetic-trousers-wool.webp",
+      "sha256": "d365748ca4428b1f7c59e4a5898bfcfbeceec1062039151d9e6fc661ffe2bdfe",
+      "nativeFile": "exec-5f00d229-03c4-4bda-9dcb-1d140ab270e7.png"
+    },
+    {
+      "id": "cosmetic-shoes-leather",
+      "prompt": "Fantasy RPG shop inventory product illustration. one matched pair of low chestnut leather shoes, simple small brass buckles, coherent soles. Detailed hand painted realistic game item art with warm neutral light, material texture and crisp silhouette, consistent high fantasy merchant inventory artwork. Entire object centered, fills 80% square, front three-quarter view, natural fabric folds or leather, empty clothing without wearer, no mannequin, no body, no floating limbs. Real transparent alpha background, no floor, no scenery, no text, no labels, no logo, no frame, no badge, no magical effects. Single product only. For pairs show exactly two matching shoes or sandals. Garments fully visible with no cropped edges.",
+      "url": "/shop/clothing-20261018/cosmetic-shoes-leather.webp",
+      "sha256": "ae37af7eb9d04d0821f879c39eec1c912b027b7aef4a19a73995085981df4dd0",
+      "nativeFile": "exec-36e52b3e-7e16-43c7-b8da-6e66e2303008.png"
+    },
+    {
+      "id": "cosmetic-sandals-road",
+      "prompt": "Fantasy RPG shop inventory product illustration. one matched pair of worn tan leather travel sandals with crossed leather straps and sturdy layered soles. Detailed hand painted realistic game item art with warm neutral light, material texture and crisp silhouette, consistent high fantasy merchant inventory artwork. Entire object centered, fills 80% square, front three-quarter view, natural fabric folds or leather, empty clothing without wearer, no mannequin, no body, no floating limbs. Real transparent alpha background, no floor, no scenery, no text, no labels, no logo, no frame, no badge, no magical effects. Single product only. For pairs show exactly two matching shoes or sandals. Garments fully visible with no cropped edges.",
+      "url": "/shop/clothing-20261018/cosmetic-sandals-road.webp",
+      "sha256": "1f5b2a6d18b791c4938d4b18d5d22015ea40e3170df763d1480f8d8eab7986e5",
+      "nativeFile": "exec-e7410ec5-5d23-4fc5-bbfb-abc0ed5d3ddd.png"
+    },
+    {
+      "id": "cosmetic-outfit-traveler",
+      "prompt": "Fantasy RPG shop inventory product illustration. one coherent medieval traveler clothing outfit laid out: olive long sleeved tunic with brown belt, brown trousers and leather boots, NO cloak, no backpack, no weapon. Detailed hand painted realistic game item art with warm neutral light, material texture and crisp silhouette, consistent high fantasy merchant inventory artwork. Entire object centered, fills 80% square, front three-quarter view, natural fabric folds or leather, empty clothing without wearer, no mannequin, no body, no floating limbs. Real transparent alpha background, no floor, no scenery, no text, no labels, no logo, no frame, no badge, no magical effects. Single product only. For pairs show exactly two matching shoes or sandals. Garments fully visible with no cropped edges.",
+      "url": "/shop/clothing-20261018/cosmetic-outfit-traveler.webp",
+      "sha256": "a664841ccafeb406204088c511bcc3b9102704af3f94041527f2605c68a29afd",
+      "nativeFile": "exec-bae9fbc7-3eb6-457d-a43a-3f65c823e375.png"
+    },
+    {
+      "id": "cosmetic-tunic-road",
+      "prompt": "Fantasy RPG shop inventory product illustration. one slate blue long sleeve medieval tunic reaching mid thigh, simple brown belt, small cream neckline embroidery. Detailed hand painted realistic game item art with warm neutral light, material texture and crisp silhouette, consistent high fantasy merchant inventory artwork. Entire object centered, fills 80% square, front three-quarter view, natural fabric folds or leather, empty clothing without wearer, no mannequin, no body, no floating limbs. Real transparent alpha background, no floor, no scenery, no text, no labels, no logo, no frame, no badge, no magical effects. Single product only. For pairs show exactly two matching shoes or sandals. Garments fully visible with no cropped edges.",
+      "url": "/shop/clothing-20261018/cosmetic-tunic-road.webp",
+      "sha256": "766e2a02e526473ca7cc172bf32ddfdf921095de087a819844e90e5040c8226c",
+      "nativeFile": "exec-b0a3f630-6aae-4ebd-9120-1111c1db4c2f.png"
+    }
+  ]
+}

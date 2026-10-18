@@ -455,6 +455,14 @@ for (const line of fs
   x.source_url = '';
   x.weight_estimated = true;
 }
+// Keep the original medieval clothing collection when rebuilding the base catalog.
+if (fs.existsSync('data/shop-clothing-20261018.json')) {
+  const clothing = JSON.parse(fs.readFileSync('data/shop-clothing-20261018.json', 'utf8'));
+  for (const product of clothing.items) {
+    if (expansion.some((entry) => entry.id === product.id)) throw Error('Duplicate clothing item: ' + product.id);
+    expansion.push(product);
+  }
+}
 function save() {
   fs.mkdirSync('public/shop/expanded', { recursive: true });
   fs.mkdirSync('public/audio/emporium', { recursive: true });

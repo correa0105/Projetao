@@ -9137,5 +9137,53 @@
       "off_hand"
     ],
     "two_handed": false
+  },
+  "cosmetic-shirt-linen": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shirt-cotton": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-trousers-travel": {
+    "slots": [
+      "legs"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-trousers-wool": {
+    "slots": [
+      "legs"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shoes-leather": {
+    "slots": [
+      "feet"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-sandals-road": {
+    "slots": [
+      "feet"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-outfit-traveler": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-tunic-road": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
   }
 }

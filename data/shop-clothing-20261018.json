@@ -1,0 +1,205 @@
+{
+  "ready": true,
+  "items": [
+    {
+      "id": "cosmetic-shirt-linen",
+      "name": "Camiseta de linho",
+      "original_name": "Camiseta de linho",
+      "category": "Cosméticos",
+      "price_cp": 120,
+      "weight_lb": 0.5,
+      "weight_estimated": true,
+      "description": "Camiseta de linho cru, mangas curtas e gola com cordão. Costuras simples para o dia a dia. Roupa cosmética sem bônus de CA, resistência ou efeito mágico. Preço e peso definidos pelo Empório.",
+      "merchant_comment": "Linho leve para a estrada. A gola abre sem precisar lutar com os botões.",
+      "source": "Conteúdo original da Alvorada Cinzenta",
+      "source_url": "",
+      "image_path": "/shop/clothing-20261018/cosmetic-shirt-linen.webp",
+      "audio_path": "/audio/emporium/cosmetic-shirt-linen.wav",
+      "raw_data": {
+        "cosmetic": true,
+        "cosmetic_type": "armor",
+        "equipment_slots": [
+          "armor"
+        ],
+        "sound_material": "cloth",
+        "clothing_collection": "20261018",
+        "price_basis": "Preço próprio do Empório; não é valor de regra oficial."
+      }
+    },
+    {
+      "id": "cosmetic-shirt-cotton",
+      "name": "Camiseta de algodão",
+      "original_name": "Camiseta de algodão",
+      "category": "Cosméticos",
+      "price_cp": 180,
+      "weight_lb": 0.5,
+      "weight_estimated": true,
+      "description": "Camiseta verde de algodão, mangas curtas e acabamento ocre na bainha. Roupa cosmética sem bônus de CA, resistência ou efeito mágico. Preço e peso definidos pelo Empório.",
+      "merchant_comment": "Algodão macio e verde discreto. Combina com descanso depois de uma boa caminhada.",
+      "source": "Conteúdo original da Alvorada Cinzenta",
+      "source_url": "",
+      "image_path": "/shop/clothing-20261018/cosmetic-shirt-cotton.webp",
+      "audio_path": "/audio/emporium/cosmetic-shirt-cotton.wav",
+      "raw_data": {
+        "cosmetic": true,
+        "cosmetic_type": "armor",
+        "equipment_slots": [
+          "armor"
+        ],
+        "sound_material": "cloth",
+        "clothing_collection": "20261018",
+        "price_basis": "Preço próprio do Empório; não é valor de regra oficial."
+      }
+    },
+    {
+      "id": "cosmetic-trousers-travel",
+      "name": "Calça de viagem",
+      "original_name": "Calça de viagem",
+      "category": "Cosméticos",
+      "price_cp": 250,
+      "weight_lb": 1.5,
+      "weight_estimated": true,
+      "description": "Calça medieval de linho castanho, pernas soltas e cintura fechada por cordão. Roupa cosmética sem bônus de CA, resistência ou efeito mágico. Preço e peso definidos pelo Empório.",
+      "merchant_comment": "Linho castanho e cordão na cintura. Uma peça simples para seguir pela estrada.",
+      "source": "Conteúdo original da Alvorada Cinzenta",
+      "source_url": "",
+      "image_path": "/shop/clothing-20261018/cosmetic-trousers-travel.webp",
+      "audio_path": "/audio/emporium/cosmetic-trousers-travel.wav",
+      "raw_data": {
+        "cosmetic": true,
+        "cosmetic_type": "legs",
+        "equipment_slots": [
+          "legs"
+        ],
+        "sound_material": "cloth",
+        "clothing_collection": "20261018",
+        "price_basis": "Preço próprio do Empório; não é valor de regra oficial."
+      }
+    },
+    {
+      "id": "cosmetic-trousers-wool",
+      "name": "Calça de lã",
+      "original_name": "Calça de lã",
+      "category": "Cosméticos",
+      "price_cp": 300,
+      "weight_lb": 2,
+      "weight_estimated": true,
+      "description": "Calça de lã cinza escura, corte reto e costuras firmes. Roupa cosmética sem bônus de CA, resistência ou efeito mágico. Preço e peso definidos pelo Empório.",
+      "merchant_comment": "Lã cinza para uma manhã fresca. O barro costuma preferir a barra.",
+      "source": "Conteúdo original da Alvorada Cinzenta",
+      "source_url": "",
+      "image_path": "/shop/clothing-20261018/cosmetic-trousers-wool.webp",
+      "audio_path": "/audio/emporium/cosmetic-trousers-wool.wav",
+      "raw_data": {
+        "cosmetic": true,
+        "cosmetic_type": "legs",
+        "equipment_slots": [
+          "legs"
+        ],
+        "sound_material": "cloth",
+        "clothing_collection": "20261018",
+        "price_basis": "Preço próprio do Empório; não é valor de regra oficial."
+      }
+    },
+    {
+      "id": "cosmetic-shoes-leather",
+      "name": "Sapatos de couro",
+      "original_name": "Sapatos de couro",
+      "category": "Cosméticos",
+      "price_cp": 350,
+      "weight_lb": 1.5,
+      "weight_estimated": true,
+      "description": "Par de sapatos baixos de couro castanho, pequenas fivelas de latão e sola costurada. Roupa cosmética sem bônus de CA, resistência ou efeito mágico. Preço e peso definidos pelo Empório.",
+      "merchant_comment": "Couro castanho, fivela pequena e sola firme. Uma escova devolve a apresentação depois da viagem.",
+      "source": "Conteúdo original da Alvorada Cinzenta",
+      "source_url": "",
+      "image_path": "/shop/clothing-20261018/cosmetic-shoes-leather.webp",
+      "audio_path": "/audio/emporium/cosmetic-shoes-leather.wav",
+      "raw_data": {
+        "cosmetic": true,
+        "cosmetic_type": "feet",
+        "equipment_slots": [
+          "feet"
+        ],
+        "sound_material": "leather",
+        "clothing_collection": "20261018",
+        "price_basis": "Preço próprio do Empório; não é valor de regra oficial."
+      }
+    },
+    {
+      "id": "cosmetic-sandals-road",
+      "name": "Sandálias de estrada",
+      "original_name": "Sandálias de estrada",
+      "category": "Cosméticos",
+      "price_cp": 100,
+      "weight_lb": 1,
+      "weight_estimated": true,
+      "description": "Par de sandálias de couro com tiras cruzadas e sola de camadas costuradas. Roupa cosmética sem bônus de CA, resistência ou efeito mágico. Preço e peso definidos pelo Empório.",
+      "merchant_comment": "Sandálias leves para a estrada seca. Tire as pedrinhas antes do próximo trecho.",
+      "source": "Conteúdo original da Alvorada Cinzenta",
+      "source_url": "",
+      "image_path": "/shop/clothing-20261018/cosmetic-sandals-road.webp",
+      "audio_path": "/audio/emporium/cosmetic-sandals-road.wav",
+      "raw_data": {
+        "cosmetic": true,
+        "cosmetic_type": "feet",
+        "equipment_slots": [
+          "feet"
+        ],
+        "sound_material": "leather",
+        "clothing_collection": "20261018",
+        "price_basis": "Preço próprio do Empório; não é valor de regra oficial."
+      }
+    },
+    {
+      "id": "cosmetic-outfit-traveler",
+      "name": "Traje de viajante",
+      "original_name": "Traje de viajante",
+      "category": "Cosméticos",
+      "price_cp": 1200,
+      "weight_lb": 5,
+      "weight_estimated": true,
+      "description": "Conjunto visual com túnica verde-oliva, cinto, calça castanha e botas. Equipado como uma peça de traje no espaço do peitoral; não entrega peças avulsas. Roupa cosmética sem bônus de CA, resistência ou efeito mágico. Preço e peso definidos pelo Empório.",
+      "merchant_comment": "O traje reúne túnica, cinto, calça e botas numa só peça de aparência. A mochila fica por sua conta.",
+      "source": "Conteúdo original da Alvorada Cinzenta",
+      "source_url": "",
+      "image_path": "/shop/clothing-20261018/cosmetic-outfit-traveler.webp",
+      "audio_path": "/audio/emporium/cosmetic-outfit-traveler.wav",
+      "raw_data": {
+        "cosmetic": true,
+        "cosmetic_type": "armor",
+        "equipment_slots": [
+          "armor"
+        ],
+        "sound_material": "cloth",
+        "clothing_collection": "20261018",
+        "price_basis": "Preço próprio do Empório; não é valor de regra oficial."
+      }
+    },
+    {
+      "id": "cosmetic-tunic-road",
+      "name": "Túnica de estrada",
+      "original_name": "Túnica de estrada",
+      "category": "Cosméticos",
+      "price_cp": 450,
+      "weight_lb": 1.5,
+      "weight_estimated": true,
+      "description": "Túnica azul-ardósia de mangas compridas, cinto castanho e bordado claro na gola. Roupa cosmética sem bônus de CA, resistência ou efeito mágico. Preço e peso definidos pelo Empório.",
+      "merchant_comment": "Túnica azul com um bordado discreto. O cinto ajuda a manter o tecido fora do caminho.",
+      "source": "Conteúdo original da Alvorada Cinzenta",
+      "source_url": "",
+      "image_path": "/shop/clothing-20261018/cosmetic-tunic-road.webp",
+      "audio_path": "/audio/emporium/cosmetic-tunic-road.wav",
+      "raw_data": {
+        "cosmetic": true,
+        "cosmetic_type": "armor",
+        "equipment_slots": [
+          "armor"
+        ],
+        "sound_material": "cloth",
+        "clothing_collection": "20261018",
+        "price_basis": "Preço próprio do Empório; não é valor de regra oficial."
+      }
+    }
+  ]
+}

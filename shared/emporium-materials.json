@@ -1877,5 +1877,13 @@
   "drow-3-war-pick": "metal",
   "drow-3-warhammer": "metal",
   "drow-3-whip": "leather",
-  "drow-3-yklwa": "metal"
+  "drow-3-yklwa": "metal",
+  "cosmetic-shirt-linen": "cloth",
+  "cosmetic-shirt-cotton": "cloth",
+  "cosmetic-trousers-travel": "cloth",
+  "cosmetic-trousers-wool": "cloth",
+  "cosmetic-shoes-leather": "leather",
+  "cosmetic-sandals-road": "leather",
+  "cosmetic-outfit-traveler": "cloth",
+  "cosmetic-tunic-road": "cloth"
 }

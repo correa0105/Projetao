@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Crown, Shield, Feather, Star, Lock, Plus, Save, Trash2 } from 'lucide-react';
+import { Lock, Plus, Save, Trash2 } from 'lucide-react';
 import { api, post } from './api';
 import { Modal } from './components';
 import { achievementCatalog } from '../shared/achievements';
@@ -12,12 +12,10 @@ import {
   type TitlesResponse,
 } from '../shared/titles';
 import './titles.css';
-const symbols = { crown: Crown, shield: Shield, feather: Feather, star: Star };
 function TitleSeal({ title }: { title: TitleInput }) {
-  const Symbol = symbols[title.symbol];
   return (
-    <span className={'title-seal title-' + title.tone}>
-      <Symbol size={26} />
+    <span className={'title-seal title-' + title.tone} aria-hidden="true">
+      <img src="/titles/sealed-scroll-20261018.webp" alt="" />
     </span>
   );
 }
@@ -389,21 +387,7 @@ export function TitleManager({
             </label>
             <div className="event-editor-grid">
               <label>
-                Símbolo
-                <select
-                  value={draft.symbol}
-                  onChange={(e) =>
-                    setDraft((d) => ({ ...d, symbol: e.target.value as TitleInput['symbol'] }))
-                  }
-                >
-                  <option value="crown">Coroa</option>
-                  <option value="shield">Escudo</option>
-                  <option value="feather">Pena</option>
-                  <option value="star">Estrela</option>
-                </select>
-              </label>
-              <label>
-                Metal e cor
+                Cor do título
                 <select
                   value={draft.tone}
                   onChange={(e) =>
