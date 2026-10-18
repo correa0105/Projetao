@@ -13,7 +13,9 @@ import {
 import { basicCompanionToken } from '../shared/companion-token-art.js';
 import { magicalArtEquipment } from './armor-magic-appearance.js';
 
-type CharacterJob = Parameters<typeof generateCharacterArt>[0];
+type CharacterJob = Parameters<typeof generateCharacterArt>[0] & {
+  approved_portrait?: Buffer | null;
+};
 export type CharacterArtPair = { portrait: Buffer; token: Buffer };
 
 async function nativeResult(
@@ -147,9 +149,12 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
     for (let attempt = 0; attempt < 3; attempt++) {
       await unlink(result).catch(() => {});
       const refs = attempt ? [candidate, reference, style] : [reference, style];
-      const prompt = (attempt
-        ? `EDITE a imagem 1, o token reprovado. Imagem 2 define a identidade e os equipamentos; imagem 3 apenas o estilo e a câmera. Corrija somente os defeitos: ${JSON.stringify(issues)}. Preserve a identidade e a vista estritamente de cima a 90 graus. Silhueta inteira com 8% de margem, alfa real, sem círculo, chão ou cenário. Use referenced_image_paths=${JSON.stringify(refs)} e transparent_background=true. Entregue JSON image_path absoluto e error vazio apenas se houver imagem real.`
-        : `${instructions}\n${animal ? `Animal: ${animal.kind} / ${animal.species_id}. Aparência: ${animal.appearance}. Nome: ${animal.name}.` : `Raça: ${job.race}. Classe: ${job.class}.`} Referências, na ordem: ${JSON.stringify(refs)}. Gere agora e retorne JSON image_path absoluto e error vazio.`) + '\n' + magicInstructions;
+      const prompt =
+        (attempt
+          ? `EDITE a imagem 1, o token reprovado. Imagem 2 define a identidade e os equipamentos; imagem 3 apenas o estilo e a câmera. Corrija somente os defeitos: ${JSON.stringify(issues)}. Preserve a identidade e a vista estritamente de cima a 90 graus. Silhueta inteira com 8% de margem, alfa real, sem círculo, chão ou cenário. Use referenced_image_paths=${JSON.stringify(refs)} e transparent_background=true. Entregue JSON image_path absoluto e error vazio apenas se houver imagem real.`
+          : `${instructions}\n${animal ? `Animal: ${animal.kind} / ${animal.species_id}. Aparência: ${animal.appearance}. Nome: ${animal.name}.` : `Raça: ${job.race}. Classe: ${job.class}.`} Referências, na ordem: ${JSON.stringify(refs)}. Gere agora e retorne JSON image_path absoluto e error vazio.`) +
+        '\n' +
+        magicInstructions;
       const execution = await runCodex(command(refs, schema, result), prompt);
       const bytes = await nativeResult(execution, result, directory);
       await writeFile(candidate, bytes);
@@ -160,7 +165,9 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
           (animal
             ? 'É um animal: confira a mesma espécie, pelagem, manchas, crina, orelhas, cauda e equipamento da imagem 2. As patas ficam sob o tronco, nunca abertas uma para cada lado. A referência 3 define só pintura e câmera, nunca a anatomia da espécie. Corpos de aves precisam asas fechadas se pousados; serpentes não têm patas. '
             : '') +
-          (magicalEquipment.length ? `Reprove a ausência dos efeitos mágicos nas partes visíveis da armadura e sua substituição pelo acabamento mundano. ${magicInstructions} ` : '') +
+          (magicalEquipment.length
+            ? `Reprove a ausência dos efeitos mágicos nas partes visíveis da armadura e sua substituição pelo acabamento mundano. ${magicInstructions} `
+            : '') +
           'Retorne approved=true e issues=[] somente se cumprir; caso contrário descreva defeitos visíveis em português.',
         120_000,
       );
@@ -193,8 +200,12 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
   }
 }
 
-export async function generateCharacterArtPair(job: CharacterJob): Promise<CharacterArtPair> {
-  const portrait = await generateCharacterArt(job);
+export async function generateCharacterArtPair(
+  job: CharacterJob,
+  checkpoint?: (portrait: Buffer) => Promise<void>,
+): Promise<CharacterArtPair> {
+  const portrait = job.approved_portrait || (await generateCharacterArt(job));
+  if (checkpoint && !job.approved_portrait) await checkpoint(portrait);
   return { portrait, token: await generateCharacterToken(job, portrait) };
 }
 

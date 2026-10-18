@@ -642,7 +642,9 @@ body:has(.character-camp) {
   display: flex;
   justify-content: flex-start;
 }
-.camp-capacity-row .camp-capacity { display: inline-block; }
+.camp-capacity-row .camp-capacity {
+  display: inline-block;
+}
 /* Vaga de personagem representada pela mesma silhueta do acampamento. */
 :root .camp-create-slot .camp-new {
   position: relative;
@@ -675,7 +677,9 @@ body:has(.character-camp) {
   color: #d9bc88;
   filter: drop-shadow(0 2px 4px #000);
   pointer-events: none;
-  transition: color 180ms ease, filter 180ms ease;
+  transition:
+    color 180ms ease,
+    filter 180ms ease;
 }
 .camp-new:is(:hover, :focus-visible) .camp-create-plus {
   color: #ffedc6;
@@ -685,4 +689,15 @@ body:has(.character-camp) {
 .camp-create-slot .camp-figure img.character-silhouette {
   transform: translate(-12px, 18px) scale(0.7);
   transform-origin: center bottom;
+}
+.camp-saved-creation {
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid #ad895355;
+  border-radius: 6px;
+  background: #17130eee;
+}
+.camp-saved-creation h3 {
+  margin-top: 0;
+  color: #e6c589;
 }

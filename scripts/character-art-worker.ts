@@ -31,7 +31,7 @@ try {
   await checkCodexLogin();
   // A previous process may have stopped while rendering. Do not charge or retry invisibly.
   await pool.query(
-    "UPDATE character_art_jobs SET status='failed',reference=NULL,error='A geração foi interrompida. Envie a referência novamente; a tentativa não consumiu a cota.' WHERE status='running'",
+    "UPDATE character_art_jobs SET status='failed',reference=CASE WHEN character_id IS NULL THEN reference ELSE NULL END,error='A geração foi interrompida. Os dados da criação foram preservados; tente novamente. A tentativa não consumiu a cota.' WHERE status='running'",
   );
   await pool.query(
     "UPDATE companion_art_jobs SET status='failed',reference=NULL,error='A geração foi interrompida. A tentativa não consumiu a cota.' WHERE status='running'",
@@ -101,7 +101,20 @@ try {
               : `Arte concluída: ${job.id}`,
           );
         } else {
-          await completeArt(job.id, await generateCharacterArtPair(job));
+          await completeArt(
+            job.id,
+            await generateCharacterArtPair(
+              job,
+              !job.character_id
+                ? async (portrait) => {
+                    await pool.query(
+                      "UPDATE character_art_jobs SET approved_portrait=$2 WHERE id=$1 AND status='running' AND character_id IS NULL",
+                      [job.id, portrait],
+                    );
+                  }
+                : undefined,
+            ),
+          );
           console.log(`Arte concluída: ${job.id}`);
         }
       } catch (error) {
@@ -116,7 +129,7 @@ try {
             ? error.message
             : 'Não foi possível finalizar a arte. Tente novamente.';
         await pool.query(
-          `UPDATE ${job.queue_kind === 'companion' ? 'companion_art_jobs' : 'character_art_jobs'} SET status='failed',reference=NULL,error=$2 WHERE id=$1 AND status='running'`,
+          `UPDATE ${job.queue_kind === 'companion' ? 'companion_art_jobs' : 'character_art_jobs'} SET status='failed',reference=${job.queue_kind === 'companion' ? 'NULL' : 'CASE WHEN character_id IS NULL THEN reference ELSE NULL END'},error=$2 WHERE id=$1 AND status='running'`,
           [job.id, `${message} Sua cota foi preservada.`],
         );
         if (job.queue_kind === 'companion')

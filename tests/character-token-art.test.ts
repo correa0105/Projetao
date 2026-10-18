@@ -22,6 +22,7 @@ import {
 } from './character-fixtures.js';
 import { defaultChoices } from '../shared/character-sheet.js';
 import { vttAssetId } from '../shared/vtt-token-image.js';
+import { vttProtocolVersion } from '../shared/vtt-protocol.js';
 const hash = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 
 test('duas artes atômicas, perfil separado, atualização do token sem alterar posição e imagem personalizada preservada', async () => {
@@ -42,7 +43,7 @@ test('duas artes atômicas, perfil separado, atualização do token sem alterar 
         Origin: origin,
         Cookie: cookie,
         'Content-Type': 'application/json',
-        'X-Vtt-Schema-Version': '7',
+        'X-Vtt-Schema-Version': String(vttProtocolVersion),
       },
       ...(body ? { body: JSON.stringify(body) } : {}),
     });

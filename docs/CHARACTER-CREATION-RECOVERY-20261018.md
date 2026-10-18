@@ -1,0 +1,15 @@
+# Recuperação de criação — 18/10/2026
+
+Uma falha na revisão do token de VTT impedia a publicação do personagem inteiro. O pedido já conservava o JSON com nome, história e ficha, mas limpava a referência de imagem e a interface escondia a criação depois de um aviso temporário.
+
+Correção: pedidos de criação que falham mantêm referência e dados no PostgreSQL. A migration 109 acrescenta `approved_portrait` como checkpoint privado: o trabalhador salva a arte principal aprovada antes de gerar o token e a reaproveita ao tentar novamente. Conclusão continua atômica com ambas as artes aprovadas; não publicar token reprovado. Depois do sucesso, referência e checkpoint temporários são limpos. Interrupção do trabalhador também preserva os dados da criação.
+
+O acampamento mantém a criação que falhou visível, com Tentar novamente e Retomar preenchimento. A retomada carrega nome, história, espécie, classe, antecedente, todas as escolhas e referência; reenvia o mesmo pedido, sem duplicar personagem ou consumo de cota. Edição das escolhas invalida a arte em cache para evitar usar uma aparência antiga. Pedidos antigos sem referência ainda permitem restaurar o texto e a ficha e reenviar somente a imagem.
+
+Rotas `GET /api/character-art/:id/draft` e `POST /api/character-art/:id/retry` filtram pelo proprietário. Retry serializa pela conta e pedido, respeita o limite de dois personagens e a disponibilidade do ilustrador. Chamadas repetidas não duplicam o pedido.
+
+Validação: seis testes de API/ownership, retomada concorrente, conteúdo preservado, finalização atômica e gerador de duas artes; QA no navegador com recarga, restauração literal da história e ficha, imagem preservada e retry no mesmo pedido, em 1440 e 390 px. Fixture do teste de VTT passou a usar a constante vigente do protocolo em vez do valor antigo 7.
+
+Artorias foi recuperado do pedido original e da sessão exata da arte aprovada, preservando os 506 caracteres da história e as escolhas por comparação integral. Retrato e token estão privados no banco; cópia de recuperação e registro ficam em `.local/recovery-artorias-20261018`, fora do Git e dos arquivos públicos.
+
+O token recuperado foi gerado com ImageGen integrado a partir do retrato original e da referência de câmera. Prompt: mesmo Warforged de raízes avermelhadas e placas de ferro, camisa branca rasgada e calça cinza, mãos vazias, vista vertical de cima a 90 graus, cabeça orientada para baixo, sem armas, chão ou moldura, alfa transparente e margem de 8%. Conferidos câmera, anatomia, identidade e transparência antes da publicação pelo finalizador transacional existente.

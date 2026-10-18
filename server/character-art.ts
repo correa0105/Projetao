@@ -287,7 +287,7 @@ export async function completeArt(jobId: string, output: CharacterArtPair) {
       [characterId, job.user_id],
     );
     await client.query(
-      "UPDATE character_art_jobs SET status='completed',character_id=$2,reference=NULL,completed_at=now() WHERE id=$1",
+      "UPDATE character_art_jobs SET status='completed',character_id=$2,reference=NULL,approved_portrait=NULL,error=NULL,completed_at=now() WHERE id=$1",
       [jobId, characterId],
     );
     return characterId as string;
@@ -296,6 +296,69 @@ export async function completeArt(jobId: string, output: CharacterArtPair) {
 
 export function characterArtRouter() {
   const router = Router();
+  router.get('/character-art/:id/draft', async (req, res) => {
+    const { rows } = await pool.query(
+      'SELECT creation,reference FROM character_art_jobs WHERE id=$1 AND user_id=$2 AND character_id IS NULL',
+      [uuid.parse(req.params.id), res.locals.user.id],
+    );
+    if (!rows.length) throw new AppError(404, 'Criação não encontrada.');
+    res.json({
+      creation: rows[0].creation,
+      reference: rows[0].reference?.toString('base64') || '',
+    });
+  });
+  router.post('/character-art/:id/retry', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      user = res.locals.user.id;
+    const replacement = req.body?.creation
+      ? requestSchema.parse({ ...req.body, idempotency_key: id })
+      : null;
+    if (
+      replacement &&
+      (!replacement.creation?.choices ||
+        replacement.character_id ||
+        replacement.equipment_slots.length)
+    )
+      throw new AppError(400, 'Complete os dados da criação.');
+    const reference = replacement
+      ? await normalizeArtImage(Buffer.from(replacement.reference, 'base64'))
+      : null;
+    const result = await transaction(async (client) => {
+      await client.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE', [user]);
+      const {
+        rows: [job],
+      } = await client.query(
+        'SELECT id,status,character_id,creation,reference IS NOT NULL OR approved_portrait IS NOT NULL AS recoverable FROM character_art_jobs WHERE id=$1 AND user_id=$2 FOR UPDATE',
+        [id, user],
+      );
+      if (!job) throw new AppError(404, 'Criação não encontrada.');
+      if (job.status !== 'failed') return { id: job.id, status: job.status };
+      if (job.character_id || !job.creation)
+        throw new AppError(409, 'Este pedido não é uma criação pendente.');
+      if (!job.recoverable && !replacement)
+        throw new AppError(
+          409,
+          'Os dados estão salvos. Use Retomar preenchimento para reenviar a referência.',
+        );
+      if (!(await artWorkerAvailable()))
+        throw new AppError(503, 'O ilustrador está offline. Sua criação continua salva.');
+      const {
+        rows: [count],
+      } = await client.query(
+        "SELECT (SELECT count(*) FROM characters WHERE user_id=$1 AND deleted_at IS NULL)+(SELECT count(*) FROM character_art_jobs WHERE user_id=$1 AND character_id IS NULL AND status IN('queued','running')) AS total",
+        [user],
+      );
+      if (Number(count.total) >= characterLimit(false))
+        throw new AppError(409, 'Limite de personagens atingido. Sua criação continua salva.');
+      characterSchema.parse(replacement?.creation || job.creation);
+      await client.query(
+        "UPDATE character_art_jobs SET status='queued',error=NULL,started_at=NULL,completed_at=NULL,reference=COALESCE($2,reference),creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END WHERE id=$1",
+        [id, reference, replacement ? JSON.stringify(replacement.creation) : null],
+      );
+      return { id, status: 'queued' };
+    });
+    res.status(202).json(result);
+  });
   router.delete('/characters/:id', async (req, res) => {
     const id = uuid.parse(req.params.id);
     const userId = res.locals.user.id;
@@ -347,6 +410,7 @@ export function characterArtRouter() {
   router.get('/character-art', async (_req, res) => {
     const { rows: jobs } = await pool.query(
       `SELECT j.id,j.character_id,j.status,j.error,j.created_at,
+      (j.character_id IS NULL AND j.status='failed' AND (j.reference IS NOT NULL OR j.approved_portrait IS NOT NULL)) AS can_retry,
       COALESCE(c.name,j.creation->>'name') AS name FROM character_art_jobs j
       LEFT JOIN characters c ON c.id=j.character_id WHERE j.user_id=$1 AND (j.character_id IS NULL OR c.deleted_at IS NULL)
       ORDER BY j.created_at DESC LIMIT 30`,

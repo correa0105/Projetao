@@ -3,9 +3,9 @@ import { CharacterTitleLabel } from './Titles';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Sparkles, Trash2, X } from 'lucide-react';
 import { api, post } from './api';
-import { Modal } from './components';
+import { Modal, CharacterForm } from './components';
 import type { Character } from './types';
-import type { ArtJob, ArtState } from '../shared/character-art';
+import type { ArtJob, ArtState, CharacterCreation } from '../shared/character-art';
 import type { EquipmentSlot } from '../shared/equipment';
 import { ArtEquipmentChoices } from './ArtEquipmentChoices';
 import { CampMount } from './CharacterMount';
@@ -111,6 +111,11 @@ export function CharacterCamp({
   const snapshot = useRef('');
   const previousJobs = useRef(new Map<string, string>());
   const [notice, setNotice] = useState<ArtJob | null>(null);
+  const [savedDraft, setSavedDraft] = useState<{
+    id: string;
+    creation: CharacterCreation;
+    reference: string;
+  } | null>(null);
   useEffect(() => {
     if (!error || editing) return;
     const timer = setTimeout(() => setError(''), 5000);
@@ -301,6 +306,82 @@ export function CharacterCamp({
         <p className="camp-status" role="status">
           {loadError}
         </p>
+      )}
+      {state.jobs
+        .filter((job) => job.status === 'failed' && !job.character_id)
+        .map((job) => (
+          <section
+            className="camp-saved-creation"
+            key={job.id}
+            aria-label={`Criação salva de ${job.name}`}
+          >
+            <h3>{job.name}: criação salva</h3>
+            <p>
+              A arte não foi concluída. Seu nome, história e escolhas da ficha estão preservados.
+              Sua cota não foi descontada.
+            </p>
+            <p className="muted small">{job.error}</p>
+            <div className="tag-actions">
+              {job.can_retry && (
+                <button
+                  className="button primary"
+                  disabled={busy || availability !== true}
+                  onClick={async () => {
+                    setBusy(true);
+                    setError('');
+                    try {
+                      await post(`/character-art/${job.id}/retry`, {});
+                      await onRefresh();
+                    } catch (e) {
+                      setError((e as Error).message);
+                    } finally {
+                      setBusy(false);
+                    }
+                  }}
+                >
+                  Tentar novamente sem preencher tudo
+                </button>
+              )}
+              <button
+                className="button outline"
+                disabled={busy}
+                onClick={async () => {
+                  setBusy(true);
+                  setError('');
+                  try {
+                    const draft = await api<{ creation: CharacterCreation; reference: string }>(
+                      `/character-art/${job.id}/draft`,
+                    );
+                    setSavedDraft({ id: job.id, ...draft });
+                  } catch (e) {
+                    setError((e as Error).message);
+                  } finally {
+                    setBusy(false);
+                  }
+                }}
+              >
+                Retomar preenchimento
+              </button>
+            </div>
+          </section>
+        ))}
+      {savedDraft && (
+        <Modal
+          title={`Retomar ${savedDraft.creation.name}`}
+          close={() => setSavedDraft(null)}
+          dismissOnBackdrop={false}
+          dismissOnEscape={false}
+        >
+          <CharacterForm
+            initial={savedDraft.creation}
+            initialReference={savedDraft.reference}
+            initialJobId={savedDraft.id}
+            done={async () => {
+              setSavedDraft(null);
+              await onRefresh();
+            }}
+          />
+        </Modal>
       )}
       {error && !editing && <FlashMessage>{error}</FlashMessage>}
       {notice && (

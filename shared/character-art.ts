@@ -33,6 +33,7 @@ export const characterSchema = z
   });
 export type CharacterCreation = z.infer<typeof characterSchema>;
 export type ArtJob = {
+  can_retry?: boolean;
   id: string;
   character_id: string | null;
   name: string;

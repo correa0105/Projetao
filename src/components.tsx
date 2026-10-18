@@ -318,8 +318,18 @@ export function Login() {
     </div>
   );
 }
-export function CharacterForm({ done }: { done: () => Promise<void> }) {
-  const [reference, setReference] = useState('');
+export function CharacterForm({
+  done,
+  initial,
+  initialReference = '',
+  initialJobId,
+}: {
+  done: () => Promise<void>;
+  initial?: import('../shared/character-art').CharacterCreation;
+  initialReference?: string;
+  initialJobId?: string;
+}) {
+  const [reference, setReference] = useState(initialReference);
   const [available, setAvailable] = useState<boolean | null>(null);
   const [availabilityError, setAvailabilityError] = useState('');
   const requestKey = useRef(crypto.randomUUID());
@@ -348,9 +358,12 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
       window.removeEventListener('focus', update);
     };
   }, []);
-  const [race, setRace] = useState<string>('Humano');
-  const [cls, setCls] = useState<string>('Guerreiro');
-  const [choices, setChoices] = useState(() => defaultChoices('Humano', 'Guerreiro'));
+  const [race, setRace] = useState<string>(initial?.race || 'Humano');
+  const [cls, setCls] = useState<string>(initial?.class || 'Guerreiro');
+  const [choices, setChoices] = useState(
+    () =>
+      initial?.choices || defaultChoices(initial?.race || 'Humano', initial?.class || 'Guerreiro'),
+  );
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -359,7 +372,7 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
     setError('');
     const form = Object.fromEntries(new FormData(event.currentTarget));
     try {
-      await post('/character-art', {
+      await post(initialJobId ? `/character-art/${initialJobId}/retry` : '/character-art', {
         creation: {
           ...form,
           race,
@@ -403,6 +416,7 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
         Nome do personagem
         <input
           name="name"
+          defaultValue={initial?.name}
           minLength={2}
           maxLength={60}
           placeholder="Como sua lenda será lembrada?"
@@ -448,12 +462,18 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
         Sua história <span className="muted">(opcional)</span>
         <textarea
           name="biography"
+          defaultValue={initial?.biography}
           rows={3}
           maxLength={2000}
           placeholder="De onde você veio? O que procura?"
         />
       </label>
       <ReferenceInput onChange={setReference} disabled={busy} />
+      {initialReference && (
+        <p className="muted small">
+          A imagem enviada anteriormente está preservada. Você pode mantê-la ou enviar outra.
+        </p>
+      )}
       {error && <FlashMessage>{error}</FlashMessage>}
       <button className="button primary full" disabled={busy || !reference || !available}>
         {busy ? 'Criando personagem…' : 'Dar vida ao personagem'}
