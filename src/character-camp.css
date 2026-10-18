@@ -701,3 +701,18 @@ body:has(.character-camp) {
   margin-top: 0;
   color: #e6c589;
 }
+.camp-saved-trigger {
+  position: absolute;
+  top: 70px;
+  right: 24px;
+  z-index: 4;
+  max-width: 46%;
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .camp-saved-trigger {
+    right: 14px;
+    font-size: 11px;
+    padding: 8px;
+  }
+}

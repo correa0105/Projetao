@@ -116,6 +116,7 @@ export function CharacterCamp({
     creation: CharacterCreation;
     reference: string;
   } | null>(null);
+  const [showSavedCreations, setShowSavedCreations] = useState(false);
   useEffect(() => {
     if (!error || editing) return;
     const timer = setTimeout(() => setError(''), 5000);
@@ -307,64 +308,78 @@ export function CharacterCamp({
           {loadError}
         </p>
       )}
-      {state.jobs
-        .filter((job) => job.status === 'failed' && !job.character_id)
-        .map((job) => (
-          <section
-            className="camp-saved-creation"
-            key={job.id}
-            aria-label={`Criação salva de ${job.name}`}
-          >
-            <h3>{job.name}: criação salva</h3>
-            <p>
-              A arte não foi concluída. Seu nome, história e escolhas da ficha estão preservados.
-              Sua cota não foi descontada.
-            </p>
-            <p className="muted small">{job.error}</p>
-            <div className="tag-actions">
-              {job.can_retry && (
-                <button
-                  className="button primary"
-                  disabled={busy || availability !== true}
-                  onClick={async () => {
-                    setBusy(true);
-                    setError('');
-                    try {
-                      await post(`/character-art/${job.id}/retry`, {});
-                      await onRefresh();
-                    } catch (e) {
-                      setError((e as Error).message);
-                    } finally {
-                      setBusy(false);
-                    }
-                  }}
-                >
-                  Tentar novamente sem preencher tudo
-                </button>
-              )}
-              <button
-                className="button outline"
-                disabled={busy}
-                onClick={async () => {
-                  setBusy(true);
-                  setError('');
-                  try {
-                    const draft = await api<{ creation: CharacterCreation; reference: string }>(
-                      `/character-art/${job.id}/draft`,
-                    );
-                    setSavedDraft({ id: job.id, ...draft });
-                  } catch (e) {
-                    setError((e as Error).message);
-                  } finally {
-                    setBusy(false);
-                  }
-                }}
+      {state.jobs.some((job) => job.status === 'failed' && !job.character_id) && (
+        <button
+          className="button outline camp-saved-trigger"
+          onClick={() => setShowSavedCreations(true)}
+        >
+          Criações salvas (
+          {state.jobs.filter((job) => job.status === 'failed' && !job.character_id).length})
+        </button>
+      )}
+      {showSavedCreations && (
+        <Modal title="Criações salvas" close={() => setShowSavedCreations(false)}>
+          {state.jobs
+            .filter((job) => job.status === 'failed' && !job.character_id)
+            .map((job) => (
+              <section
+                className="camp-saved-creation"
+                key={job.id}
+                aria-label={`Criação salva de ${job.name}`}
               >
-                Retomar preenchimento
-              </button>
-            </div>
-          </section>
-        ))}
+                <h3>{job.name}: criação salva</h3>
+                <p>
+                  A arte não foi concluída. Seu nome, história e escolhas da ficha estão
+                  preservados. Sua cota não foi descontada.
+                </p>
+                <p className="muted small">{job.error}</p>
+                <div className="tag-actions">
+                  {job.can_retry && (
+                    <button
+                      className="button primary"
+                      disabled={busy || availability !== true}
+                      onClick={async () => {
+                        setBusy(true);
+                        setError('');
+                        try {
+                          await post(`/character-art/${job.id}/retry`, {});
+                          await onRefresh();
+                        } catch (e) {
+                          setError((e as Error).message);
+                        } finally {
+                          setBusy(false);
+                        }
+                      }}
+                    >
+                      Tentar novamente sem preencher tudo
+                    </button>
+                  )}
+                  <button
+                    className="button outline"
+                    disabled={busy}
+                    onClick={async () => {
+                      setBusy(true);
+                      setError('');
+                      try {
+                        const draft = await api<{ creation: CharacterCreation; reference: string }>(
+                          `/character-art/${job.id}/draft`,
+                        );
+                        setShowSavedCreations(false);
+                        setSavedDraft({ id: job.id, ...draft });
+                      } catch (e) {
+                        setError((e as Error).message);
+                      } finally {
+                        setBusy(false);
+                      }
+                    }}
+                  >
+                    Retomar preenchimento
+                  </button>
+                </div>
+              </section>
+            ))}
+        </Modal>
+      )}
       {savedDraft && (
         <Modal
           title={`Retomar ${savedDraft.creation.name}`}

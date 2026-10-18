@@ -1,7 +1,8 @@
 import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile, readFile, stat } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import { defaultChoices } from '../shared/character-sheet.js';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco descartável obrigatório.');
@@ -27,6 +28,14 @@ try {
     }),
     page = await context.newPage();
   page.setDefaultTimeout(15000);
+  await page.route('**/*', async (route) => {
+    const url = new URL(route.request().url());
+    if (url.origin !== origin || url.pathname.startsWith('/api/')) return route.continue();
+    const file = resolve('public', '.' + decodeURIComponent(url.pathname));
+    if (file.startsWith(resolve('public')) && (await stat(file).catch(() => null))?.isFile())
+      return route.fulfill({ path: file });
+    return route.continue();
+  });
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await context.addInitScript(() => {
@@ -70,10 +79,52 @@ try {
   await pool.query(
     'INSERT INTO character_art_worker(id,available,heartbeat_at)VALUES(true,true,now()) ON CONFLICT(id)DO UPDATE SET available=true,heartbeat_at=now()',
   );
+  const { createLegacyTestCharacter } = await import('../tests/character-fixtures.js');
+  const heroes = [
+    await createLegacyTestCharacter(account.response.user.id, 'Aurora'),
+    await createLegacyTestCharacter(account.response.user.id, 'Bruma'),
+  ];
+  for (const hero of heroes) {
+    await pool.query(
+      'INSERT INTO character_portraits(character_id,image) VALUES($1,$2) ON CONFLICT(character_id)DO UPDATE SET image=$2',
+      [hero.id, await readFile('public/character-silhouette-v2.png')],
+    );
+    await pool.query('UPDATE characters SET portrait_revision=1 WHERE id=$1', [hero.id]);
+  }
+  for (let i = 0; i < 5; i++)
+    await pool.query(
+      "INSERT INTO character_art_jobs(user_id,creation,status,idempotency_key,error) VALUES($1,$2,'failed',$3,'Falha antiga')",
+      [
+        account.response.user.id,
+        JSON.stringify({ ...creation, name: 'Rascunho ' + i }),
+        randomUUID(),
+      ],
+    );
   await page.goto(origin + '/#characters');
   await page.reload();
+  await mkdir('test-results/creation-recovery', { recursive: true });
+  await expect(
+    page.getByRole('button', { name: 'Criações salvas (6)', exact: true }),
+  ).toBeVisible();
+  await expect(page.locator('.camp-saved-creation')).toHaveCount(0);
+  for (const width of [1868, 1440, 768, 390]) {
+    await page.setViewportSize({ width, height: 1000 });
+    const bounds = await page.locator('.camp-stage').boundingBox();
+    expect(bounds!.height).toBeGreaterThan(200);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
+      true,
+    );
+    await page.screenshot({
+      path: 'test-results/creation-recovery/camp-' + width + '.png',
+      fullPage: true,
+    });
+  }
+  await page.getByRole('button', { name: 'Criações salvas (6)', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Artorias salvo: criação salva' })).toBeVisible();
-  await page.getByRole('button', { name: 'Retomar preenchimento' }).click();
+  await page
+    .getByRole('region', { name: 'Criação salva de Artorias salvo', exact: true })
+    .getByRole('button', { name: 'Retomar preenchimento' })
+    .click();
   await expect(page.getByLabel('Nome do personagem')).toHaveValue(creation.name);
   await expect(page.getByLabel('Sua história')).toHaveValue(creation.biography);
   await expect(page.getByLabel('Espécie', { exact: true })).toHaveValue('Warforged');
@@ -91,7 +142,13 @@ try {
     });
   }
   await page.getByRole('dialog').getByRole('button', { name: 'Fechar', exact: true }).click();
-  await page.getByRole('button', { name: 'Tentar novamente sem preencher tudo' }).click();
+  for (const hero of heroes)
+    await pool.query('UPDATE characters SET deleted_at=now() WHERE id=$1', [hero.id]);
+  await page.getByRole('button', { name: 'Criações salvas (6)', exact: true }).click();
+  await page
+    .getByRole('region', { name: 'Criação salva de Artorias salvo', exact: true })
+    .getByRole('button', { name: 'Tentar novamente sem preencher tudo' })
+    .click();
   await expect
     .poll(
       async () =>
@@ -118,6 +175,8 @@ try {
         choicesRestored: true,
         imagePreserved: true,
         retrySameJob: true,
+        multipleDraftsCollapsed: true,
+        twoCharactersVisible: true,
         widths: [1440, 390],
         errors,
       },
