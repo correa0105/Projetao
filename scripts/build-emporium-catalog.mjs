@@ -457,7 +457,7 @@ for (const line of fs
 }
 // Keep the original medieval clothing collection when rebuilding the base catalog.
 if (fs.existsSync('data/shop-clothing-20261018.json')) {
-  const clothing = JSON.parse(fs.readFileSync('data/shop-clothing-20261018.json', 'utf8'));
+  const clothing = JSON.parse(fs.readFileSync(fs.existsSync('data/shop-clothing-colors-20261018.json') ? 'data/shop-clothing-colors-20261018.json' : 'data/shop-clothing-20261018.json', 'utf8'));
   for (const product of clothing.items) {
     if (expansion.some((entry) => entry.id === product.id)) throw Error('Duplicate clothing item: ' + product.id);
     expansion.push(product);

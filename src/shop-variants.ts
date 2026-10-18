@@ -1,4 +1,6 @@
 import type { Item } from './types';
+import clothingColors from '../shared/clothing-colors.json';
+const clothing = clothingColors as Record<string, { model: string; name: string; color: string; label: string }>;
 
 export type ShopItemModel = { id: string; label: string; variants: Item[] };
 export type ShopItemGroup = {
@@ -6,7 +8,7 @@ export type ShopItemGroup = {
   id: string;
   name: string;
   family: string | null;
-  kind: 'weapon' | 'armor' | null;
+  kind: 'weapon' | 'armor' | 'clothing' | null;
   variants: Item[];
   models: ShopItemModel[];
   categories: string[];
@@ -81,6 +83,13 @@ export function groupShopItems(items: readonly Item[]): ShopItemGroup[] {
   const families = new Map<string, Item[]>();
   const familyKeys = new Map<Item, string>();
   for (const item of items) {
+    const garment = clothing[item.id];
+    if (garment && item.category === 'Cosméticos') {
+      const key = 'clothing:' + garment.model;
+      families.set(key, [...(families.get(key) || []), item]);
+      familyKeys.set(item, key);
+      continue;
+    }
     const kind = equipmentKind(item, catalog);
     if (!item.magic_family || !item.base_item || !kind) continue;
     const family = item.magic_family.startsWith('Enspelled Weapon')
@@ -111,6 +120,12 @@ export function groupShopItems(items: readonly Item[]): ShopItemGroup[] {
     }
     if (emitted.has(key!)) continue;
     emitted.add(key!);
+    if (key!.startsWith('clothing:')) {
+      const garment = clothing[item.id];
+      result.push({ id: key!, name: garment.name, family: 'Clothing', kind: 'clothing', variants: [...family],
+        models: [{ id: garment.model, label: garment.name, variants: [...family] }], categories: ['Cosméticos'] });
+      continue;
+    }
     const models = new Map<string, ShopItemModel>();
     for (const variant of family) {
       const id = variant.base_item!;
@@ -135,6 +150,7 @@ export function groupShopItems(items: readonly Item[]): ShopItemGroup[] {
 
 /** A concrete variant label: translated model/color/damage, bonus and rarity, never a new item. */
 export function getVariantLabel(item: Item, modelLabel?: string): string {
+  if (clothing[item.id]) return clothing[item.id].label;
   const binding = item.raw_data?.spell_binding as { level: number } | undefined;
   if (binding) return binding.level === 0 ? 'Truque (nível 0)' : 'Magia de nível ' + binding.level;
   let label = variantName(item) || item.name;

@@ -84,13 +84,13 @@ function item(id: string) {
 }
 
 test('Empório: 31 famílias reúnem 684 variantes sem perder ou duplicar os IDs reais', () => {
-  const grouped = groups.filter((group) => group.family);
+  const grouped = groups.filter((group) => group.family && group.kind !== 'clothing');
   assert.equal(grouped.length, 31);
   assert.equal(
     grouped.reduce((total, group) => total + group.variants.length, 0),
     684,
   );
-  assert.equal(groups.length, catalog.length - 684 + 31);
+  assert.equal(groups.length, catalog.length - 684 + 31 - 40 + 8);
   const offers = groups.flatMap((group) => group.variants);
   assert.equal(new Set(offers.map((offer) => offer.id)).size, catalog.length);
   assert.deepEqual(offers.map((offer) => offer.id).sort(), catalog.map((offer) => offer.id).sort());

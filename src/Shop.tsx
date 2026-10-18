@@ -71,6 +71,12 @@ type Point = { x: number; y: number };
 type OfferChoice = { model: string; variant: string; query: string };
 function chosenOffer(group: ShopItemGroup, choice: OfferChoice | undefined, query: string) {
   if (!group.family) return { model: null, item: group.variants[0] };
+  if (group.kind === 'clothing') {
+    const model = group.models[0];
+    const preferred = group.variants.find((item) => item.id === choice?.variant);
+    const matches = matchShopGroup(group, query);
+    return { model, item: preferred && (choice?.query === normalize(query) || matches.some(item => item.id === preferred.id)) ? preferred : null };
+  }
   const matches = matchShopGroup(group, query);
   const model = group.models.find((candidate) => candidate.id === choice?.model);
   if (
@@ -94,6 +100,7 @@ function chosenOffer(group: ShopItemGroup, choice: OfferChoice | undefined, quer
   return { model, item };
 }
 function variantHeading(group: ShopItemGroup) {
+  if (group.kind === 'clothing') return 'Cor';
   if (group.family === 'Enspelled Weapon') return 'Nível da magia';
   if (group.family === 'Armor of Resistance') return 'Resistência';
   if (group.variants.some((item) => item.damage_type)) return 'Tipo de dano';
@@ -711,6 +718,7 @@ export function Shop({
                 const { model, item: chosen } = chosenOffer(offer, offerChoices[offer.id], query);
                 const item = chosen || offer.variants[0];
                 const grouped = !!offer.family;
+                const clothing = offer.kind === 'clothing';
                 const familyTitle = offer.name.toLocaleUpperCase('pt-BR');
                 const title = grouped
                   ? `${familyTitle}${!model ? ` (ESCOLHER TIPO DA ${offer.kind === 'armor' ? 'ARMADURA' : 'ARMA'})` : ''}`
@@ -748,7 +756,7 @@ export function Shop({
                         say(chosen);
                       }}
                     >
-                      {grouped ? (
+                      {grouped && !clothing ? (
                         <span className="shop-family-display">
                           <img
                             className="shop-family-box"
@@ -781,7 +789,7 @@ export function Shop({
                       <h3>{title}</h3>
                       {grouped && (
                         <div className="shop-variant-selectors">
-                          <label>
+                          {!clothing && <label>
                             {modelHeading}
                             <select
                               aria-label={`${modelHeading} de ${familyTitle}`}
@@ -802,7 +810,7 @@ export function Shop({
                                 </option>
                               ))}
                             </select>
-                          </label>
+                          </label>}
                           {offer.models.some((choice) => choice.variants.length > 1) && (
                             <label>
                               {variantTitle}
@@ -833,6 +841,7 @@ export function Shop({
                       <p>
                         {chosen
                           ? item.description
+                          : clothing ? 'Escolha a cor para ver a peça e adicionar ao carrinho.'
                           : `Escolha o tipo ${offer.kind === 'armor' ? 'da armadura' : 'da arma'} para consultar seus detalhes e preço.`}
                       </p>
                       {chosen?.raw_data?.spell_binding ? (
@@ -865,7 +874,7 @@ export function Shop({
                         <span className="shop-price">
                           <strong>
                             {!chosen
-                              ? 'Escolha o tipo'
+                              ? clothing ? 'Escolha a cor' : 'Escolha o tipo'
                               : item.price_cp === null
                                 ? 'Preço a definir'
                                 : `${money(item.price_cp)} PO`}

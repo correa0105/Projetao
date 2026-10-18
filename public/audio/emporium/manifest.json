@@ -23926,5 +23926,261 @@
     "sha256": "34f3eceefa8304b0c83e5a40243c7bea135f256d99704c6dad60afefdc976d16",
     "source": "public/audio/shop-counter-cloth.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shirt-linen-forest",
+    "path": "public/audio/emporium/cosmetic-shirt-linen-forest.wav",
+    "kind": "cloth",
+    "sha256": "763fde338e6f05a1ef6b06d8172ea58e6f1d7a683801d04b250467c06c2a6eaf",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shirt-linen-blue",
+    "path": "public/audio/emporium/cosmetic-shirt-linen-blue.wav",
+    "kind": "cloth",
+    "sha256": "bbd7d4e17cdd290c7a67575ce7b30c181154845de24dab98fb76e4b68322e952",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shirt-linen-wine",
+    "path": "public/audio/emporium/cosmetic-shirt-linen-wine.wav",
+    "kind": "cloth",
+    "sha256": "56d7492a8d338e431cb1a7f4e3142cdc79a7373f30c3e943b82cce83b91b0b7a",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shirt-linen-charcoal",
+    "path": "public/audio/emporium/cosmetic-shirt-linen-charcoal.wav",
+    "kind": "cloth",
+    "sha256": "7bbb881f7411fe7f7017847985c3a58df29448f74d9d2a25e4638d3d2721691b",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shirt-cotton-ivory",
+    "path": "public/audio/emporium/cosmetic-shirt-cotton-ivory.wav",
+    "kind": "cloth",
+    "sha256": "3970867ff451e2867a43d88640bd8f50f3967c8f9d39371313012741e957afc2",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shirt-cotton-blue",
+    "path": "public/audio/emporium/cosmetic-shirt-cotton-blue.wav",
+    "kind": "cloth",
+    "sha256": "fafb0ce9fd6957d9fdac8f8f54106b7679e068fa05cfd9930dbed6d5541479ca",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shirt-cotton-wine",
+    "path": "public/audio/emporium/cosmetic-shirt-cotton-wine.wav",
+    "kind": "cloth",
+    "sha256": "7b22680657deca5070cca157c681a1d94b2dcf07192fa0a1e99f2c514fc3be5f",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shirt-cotton-charcoal",
+    "path": "public/audio/emporium/cosmetic-shirt-cotton-charcoal.wav",
+    "kind": "cloth",
+    "sha256": "84379f96190f969b2c263ba7eb673385b2a1614cc5d470296aa79adf5f8e3dc1",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-trousers-travel-forest",
+    "path": "public/audio/emporium/cosmetic-trousers-travel-forest.wav",
+    "kind": "cloth",
+    "sha256": "3cecd798de13586019ff38ef0a9dde183c8a6f76ad1015412600c38ea92f6af5",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-trousers-travel-blue",
+    "path": "public/audio/emporium/cosmetic-trousers-travel-blue.wav",
+    "kind": "cloth",
+    "sha256": "e68bc742a89f227734f46a4ed09034776a0207708c73277d00a200e70fa510b4",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-trousers-travel-wine",
+    "path": "public/audio/emporium/cosmetic-trousers-travel-wine.wav",
+    "kind": "cloth",
+    "sha256": "88c36f53a12d500397eefc310763f04e0a22bc9df96c6b99bbb85275057d2bcd",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-trousers-travel-charcoal",
+    "path": "public/audio/emporium/cosmetic-trousers-travel-charcoal.wav",
+    "kind": "cloth",
+    "sha256": "10abb2db91f5ac1f213946206f3ab7ab6ff56adfb95bf310f4573c81ed62279a",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-trousers-wool-ivory",
+    "path": "public/audio/emporium/cosmetic-trousers-wool-ivory.wav",
+    "kind": "cloth",
+    "sha256": "eafd5aaf02dbff7a1e1363f30bed83a8766b2443720233b897d7b275394a7e11",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-trousers-wool-forest",
+    "path": "public/audio/emporium/cosmetic-trousers-wool-forest.wav",
+    "kind": "cloth",
+    "sha256": "e63a0e999e62bd5147a58f52ec120cfb4dacd9cc9506e0fd7d0813fbfb4b8426",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-trousers-wool-blue",
+    "path": "public/audio/emporium/cosmetic-trousers-wool-blue.wav",
+    "kind": "cloth",
+    "sha256": "5b198c31d1993077eb65f583fb2ee3f378b01e9ca97d9798d78305e23c3c5b5e",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-trousers-wool-wine",
+    "path": "public/audio/emporium/cosmetic-trousers-wool-wine.wav",
+    "kind": "cloth",
+    "sha256": "b157548cee2104f660de04198ae04fda6e0e7e6727810addbb0bf1112c39b58a",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shoes-leather-forest",
+    "path": "public/audio/emporium/cosmetic-shoes-leather-forest.wav",
+    "kind": "leather",
+    "sha256": "f49337e49eb4a66ca826ff41fcaf58ae93285e0296dff20bb6195aeadd03240f",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shoes-leather-blue",
+    "path": "public/audio/emporium/cosmetic-shoes-leather-blue.wav",
+    "kind": "leather",
+    "sha256": "6287c052486d717024a88b599b7f5289a1681491832036b2dceded3356c63091",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shoes-leather-wine",
+    "path": "public/audio/emporium/cosmetic-shoes-leather-wine.wav",
+    "kind": "leather",
+    "sha256": "ba75d67dff82864453ba61e1c668b8974e396a4a1fb91440b4c17cddd07b46ea",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-shoes-leather-charcoal",
+    "path": "public/audio/emporium/cosmetic-shoes-leather-charcoal.wav",
+    "kind": "leather",
+    "sha256": "1d1dcce6e59937d50d2347f557c6497071b23223db9f7655948926a1c7ff75be",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-sandals-road-forest",
+    "path": "public/audio/emporium/cosmetic-sandals-road-forest.wav",
+    "kind": "leather",
+    "sha256": "ef928d6b13bd2c1f0b687ff6c2fdd4482ec665bdee88dd040832af900e6f312b",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-sandals-road-blue",
+    "path": "public/audio/emporium/cosmetic-sandals-road-blue.wav",
+    "kind": "leather",
+    "sha256": "8ea2ec86f333e109ce21ee40a16d8edd9f1d2f09c6610867d5bc0a40feef678a",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-sandals-road-wine",
+    "path": "public/audio/emporium/cosmetic-sandals-road-wine.wav",
+    "kind": "leather",
+    "sha256": "4e4fac134945f288f781fce25a47301c350a6b7dc1a5fa0a9224bf35c591f175",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-sandals-road-charcoal",
+    "path": "public/audio/emporium/cosmetic-sandals-road-charcoal.wav",
+    "kind": "leather",
+    "sha256": "359b54bec6c25bcf9e5db7727aeb212034236a38b3813cf034a7df19df106c3d",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-outfit-traveler-ivory",
+    "path": "public/audio/emporium/cosmetic-outfit-traveler-ivory.wav",
+    "kind": "cloth",
+    "sha256": "65b22f8b93c2c75c244ea8d8f557f499cde73e29540e4c2f8b2d0dc28003ed4c",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-outfit-traveler-blue",
+    "path": "public/audio/emporium/cosmetic-outfit-traveler-blue.wav",
+    "kind": "cloth",
+    "sha256": "89d7298d08d98e68379b38862bc7cb87a06c504a563b853a77fc1b33341096e1",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-outfit-traveler-wine",
+    "path": "public/audio/emporium/cosmetic-outfit-traveler-wine.wav",
+    "kind": "cloth",
+    "sha256": "48634518c329eca9bb428ca436db8f4c8954f5ba8998ad13162c5dfc7301e0cb",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-outfit-traveler-charcoal",
+    "path": "public/audio/emporium/cosmetic-outfit-traveler-charcoal.wav",
+    "kind": "cloth",
+    "sha256": "ce229c03ab428774e7e5bead5908a5ce8c18bd46f00ec969a76a462e396dfaa9",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-tunic-road-ivory",
+    "path": "public/audio/emporium/cosmetic-tunic-road-ivory.wav",
+    "kind": "cloth",
+    "sha256": "1bf15bc63903674794b6c75969aea3161f2bd61642202eb23ad773762bcc03e6",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-tunic-road-forest",
+    "path": "public/audio/emporium/cosmetic-tunic-road-forest.wav",
+    "kind": "cloth",
+    "sha256": "e46f1127cacecf14a006303cc1139759e9dae9f33bd2f397b5632932cc20bfa9",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-tunic-road-wine",
+    "path": "public/audio/emporium/cosmetic-tunic-road-wine.wav",
+    "kind": "cloth",
+    "sha256": "ec0a2c44f3ab74afc4ee5f5fce541185e786ccf4cd2e73930d1044eba88221d1",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cosmetic-tunic-road-charcoal",
+    "path": "public/audio/emporium/cosmetic-tunic-road-charcoal.wav",
+    "kind": "cloth",
+    "sha256": "39670b64770fb238d9d8072e1cc85cce3baeba3af5dc31cd2d2dbfe4d7709c89",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

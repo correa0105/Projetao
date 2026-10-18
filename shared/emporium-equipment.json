@@ -9185,5 +9185,197 @@
       "armor"
     ],
     "two_handed": false
+  },
+  "cosmetic-shirt-linen-forest": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shirt-linen-blue": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shirt-linen-wine": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shirt-linen-charcoal": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shirt-cotton-ivory": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shirt-cotton-blue": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shirt-cotton-wine": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shirt-cotton-charcoal": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-trousers-travel-forest": {
+    "slots": [
+      "legs"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-trousers-travel-blue": {
+    "slots": [
+      "legs"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-trousers-travel-wine": {
+    "slots": [
+      "legs"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-trousers-travel-charcoal": {
+    "slots": [
+      "legs"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-trousers-wool-ivory": {
+    "slots": [
+      "legs"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-trousers-wool-forest": {
+    "slots": [
+      "legs"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-trousers-wool-blue": {
+    "slots": [
+      "legs"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-trousers-wool-wine": {
+    "slots": [
+      "legs"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shoes-leather-forest": {
+    "slots": [
+      "feet"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shoes-leather-blue": {
+    "slots": [
+      "feet"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shoes-leather-wine": {
+    "slots": [
+      "feet"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-shoes-leather-charcoal": {
+    "slots": [
+      "feet"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-sandals-road-forest": {
+    "slots": [
+      "feet"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-sandals-road-blue": {
+    "slots": [
+      "feet"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-sandals-road-wine": {
+    "slots": [
+      "feet"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-sandals-road-charcoal": {
+    "slots": [
+      "feet"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-outfit-traveler-ivory": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-outfit-traveler-blue": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-outfit-traveler-wine": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-outfit-traveler-charcoal": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-tunic-road-ivory": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-tunic-road-forest": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-tunic-road-wine": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
+  },
+  "cosmetic-tunic-road-charcoal": {
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false
   }
 }

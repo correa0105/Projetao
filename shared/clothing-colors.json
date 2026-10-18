@@ -1,0 +1,242 @@
+{
+  "cosmetic-shirt-linen": {
+    "model": "cosmetic-shirt-linen",
+    "name": "Camiseta de linho",
+    "color": "ivory",
+    "label": "Cru"
+  },
+  "cosmetic-shirt-linen-forest": {
+    "model": "cosmetic-shirt-linen",
+    "name": "Camiseta de linho",
+    "color": "forest",
+    "label": "Verde-musgo"
+  },
+  "cosmetic-shirt-linen-blue": {
+    "model": "cosmetic-shirt-linen",
+    "name": "Camiseta de linho",
+    "color": "blue",
+    "label": "Azul-anil"
+  },
+  "cosmetic-shirt-linen-wine": {
+    "model": "cosmetic-shirt-linen",
+    "name": "Camiseta de linho",
+    "color": "wine",
+    "label": "Vinho"
+  },
+  "cosmetic-shirt-linen-charcoal": {
+    "model": "cosmetic-shirt-linen",
+    "name": "Camiseta de linho",
+    "color": "charcoal",
+    "label": "Carvão"
+  },
+  "cosmetic-shirt-cotton-ivory": {
+    "model": "cosmetic-shirt-cotton",
+    "name": "Camiseta de algodão",
+    "color": "ivory",
+    "label": "Cru"
+  },
+  "cosmetic-shirt-cotton": {
+    "model": "cosmetic-shirt-cotton",
+    "name": "Camiseta de algodão",
+    "color": "forest",
+    "label": "Verde-musgo"
+  },
+  "cosmetic-shirt-cotton-blue": {
+    "model": "cosmetic-shirt-cotton",
+    "name": "Camiseta de algodão",
+    "color": "blue",
+    "label": "Azul-anil"
+  },
+  "cosmetic-shirt-cotton-wine": {
+    "model": "cosmetic-shirt-cotton",
+    "name": "Camiseta de algodão",
+    "color": "wine",
+    "label": "Vinho"
+  },
+  "cosmetic-shirt-cotton-charcoal": {
+    "model": "cosmetic-shirt-cotton",
+    "name": "Camiseta de algodão",
+    "color": "charcoal",
+    "label": "Carvão"
+  },
+  "cosmetic-trousers-travel": {
+    "model": "cosmetic-trousers-travel",
+    "name": "Calça de viagem",
+    "color": "brown",
+    "label": "Castanho"
+  },
+  "cosmetic-trousers-travel-forest": {
+    "model": "cosmetic-trousers-travel",
+    "name": "Calça de viagem",
+    "color": "forest",
+    "label": "Verde-musgo"
+  },
+  "cosmetic-trousers-travel-blue": {
+    "model": "cosmetic-trousers-travel",
+    "name": "Calça de viagem",
+    "color": "blue",
+    "label": "Azul-anil"
+  },
+  "cosmetic-trousers-travel-wine": {
+    "model": "cosmetic-trousers-travel",
+    "name": "Calça de viagem",
+    "color": "wine",
+    "label": "Vinho"
+  },
+  "cosmetic-trousers-travel-charcoal": {
+    "model": "cosmetic-trousers-travel",
+    "name": "Calça de viagem",
+    "color": "charcoal",
+    "label": "Carvão"
+  },
+  "cosmetic-trousers-wool-ivory": {
+    "model": "cosmetic-trousers-wool",
+    "name": "Calça de lã",
+    "color": "ivory",
+    "label": "Cru"
+  },
+  "cosmetic-trousers-wool-forest": {
+    "model": "cosmetic-trousers-wool",
+    "name": "Calça de lã",
+    "color": "forest",
+    "label": "Verde-musgo"
+  },
+  "cosmetic-trousers-wool-blue": {
+    "model": "cosmetic-trousers-wool",
+    "name": "Calça de lã",
+    "color": "blue",
+    "label": "Azul-anil"
+  },
+  "cosmetic-trousers-wool-wine": {
+    "model": "cosmetic-trousers-wool",
+    "name": "Calça de lã",
+    "color": "wine",
+    "label": "Vinho"
+  },
+  "cosmetic-trousers-wool": {
+    "model": "cosmetic-trousers-wool",
+    "name": "Calça de lã",
+    "color": "charcoal",
+    "label": "Carvão"
+  },
+  "cosmetic-shoes-leather": {
+    "model": "cosmetic-shoes-leather",
+    "name": "Sapatos de couro",
+    "color": "brown",
+    "label": "Castanho"
+  },
+  "cosmetic-shoes-leather-forest": {
+    "model": "cosmetic-shoes-leather",
+    "name": "Sapatos de couro",
+    "color": "forest",
+    "label": "Verde-musgo"
+  },
+  "cosmetic-shoes-leather-blue": {
+    "model": "cosmetic-shoes-leather",
+    "name": "Sapatos de couro",
+    "color": "blue",
+    "label": "Azul-anil"
+  },
+  "cosmetic-shoes-leather-wine": {
+    "model": "cosmetic-shoes-leather",
+    "name": "Sapatos de couro",
+    "color": "wine",
+    "label": "Vinho"
+  },
+  "cosmetic-shoes-leather-charcoal": {
+    "model": "cosmetic-shoes-leather",
+    "name": "Sapatos de couro",
+    "color": "charcoal",
+    "label": "Carvão"
+  },
+  "cosmetic-sandals-road": {
+    "model": "cosmetic-sandals-road",
+    "name": "Sandálias de estrada",
+    "color": "tan",
+    "label": "Caramelo"
+  },
+  "cosmetic-sandals-road-forest": {
+    "model": "cosmetic-sandals-road",
+    "name": "Sandálias de estrada",
+    "color": "forest",
+    "label": "Verde-musgo"
+  },
+  "cosmetic-sandals-road-blue": {
+    "model": "cosmetic-sandals-road",
+    "name": "Sandálias de estrada",
+    "color": "blue",
+    "label": "Azul-anil"
+  },
+  "cosmetic-sandals-road-wine": {
+    "model": "cosmetic-sandals-road",
+    "name": "Sandálias de estrada",
+    "color": "wine",
+    "label": "Vinho"
+  },
+  "cosmetic-sandals-road-charcoal": {
+    "model": "cosmetic-sandals-road",
+    "name": "Sandálias de estrada",
+    "color": "charcoal",
+    "label": "Carvão"
+  },
+  "cosmetic-outfit-traveler-ivory": {
+    "model": "cosmetic-outfit-traveler",
+    "name": "Traje de viajante",
+    "color": "ivory",
+    "label": "Cru"
+  },
+  "cosmetic-outfit-traveler": {
+    "model": "cosmetic-outfit-traveler",
+    "name": "Traje de viajante",
+    "color": "forest",
+    "label": "Verde-musgo"
+  },
+  "cosmetic-outfit-traveler-blue": {
+    "model": "cosmetic-outfit-traveler",
+    "name": "Traje de viajante",
+    "color": "blue",
+    "label": "Azul-anil"
+  },
+  "cosmetic-outfit-traveler-wine": {
+    "model": "cosmetic-outfit-traveler",
+    "name": "Traje de viajante",
+    "color": "wine",
+    "label": "Vinho"
+  },
+  "cosmetic-outfit-traveler-charcoal": {
+    "model": "cosmetic-outfit-traveler",
+    "name": "Traje de viajante",
+    "color": "charcoal",
+    "label": "Carvão"
+  },
+  "cosmetic-tunic-road-ivory": {
+    "model": "cosmetic-tunic-road",
+    "name": "Túnica de estrada",
+    "color": "ivory",
+    "label": "Cru"
+  },
+  "cosmetic-tunic-road-forest": {
+    "model": "cosmetic-tunic-road",
+    "name": "Túnica de estrada",
+    "color": "forest",
+    "label": "Verde-musgo"
+  },
+  "cosmetic-tunic-road": {
+    "model": "cosmetic-tunic-road",
+    "name": "Túnica de estrada",
+    "color": "blue",
+    "label": "Azul-anil"
+  },
+  "cosmetic-tunic-road-wine": {
+    "model": "cosmetic-tunic-road",
+    "name": "Túnica de estrada",
+    "color": "wine",
+    "label": "Vinho"
+  },
+  "cosmetic-tunic-road-charcoal": {
+    "model": "cosmetic-tunic-road",
+    "name": "Túnica de estrada",
+    "color": "charcoal",
+    "label": "Carvão"
+  }
+}
