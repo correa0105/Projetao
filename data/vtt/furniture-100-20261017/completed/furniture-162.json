@@ -1,0 +1,23 @@
+{
+  "id": "furniture-162",
+  "name": "Mesa de cavaletes",
+  "category": "Mobílias",
+  "width": 2.2,
+  "height": 1.1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: portable rectangular trestle table with pale rough-sawn pine plank top and exposed wooden joinery at ends. Physical footprint ratio 2.2:1.1.",
+  "image": "/vtt/furniture-100-20261017/furniture-162.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-162.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-79026546-3443-4afd-a2b3-66b705dfdd1c.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:15:10.960Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-162.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "2e12afb6eae6a8545266e885b557f2ea54022d7f38b56bd9e55189e82d147f57",
+  "sha256": "479256eb98f762e9d7dc9d09b8e1172c632408460df12b535dd119c4f7e74d3d",
+  "dimensions": [
+    1280,
+    640
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-162.png"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "furniture-236",
+  "name": "Estrado de banho",
+  "category": "Mobílias",
+  "width": 1.2,
+  "height": 0.9,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular teak bath mat made from evenly spaced wooden slats with smooth rounded corners and worn water marks. Physical footprint ratio 1.2:0.9.",
+  "image": "/vtt/furniture-100-20261017/furniture-236.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-236.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-436539ea-4ab6-4dc3-9f7a-9df0fdf997f2.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:27:24.353Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-236.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "56c91a07d26b29299441cb28e311c11fd284a44c528c47c9bf751d00211e97c5",
+  "sha256": "a4651f846ca79c34de0fee0d63f2984a1f1f7091eb2796e8c67511a87057a230",
+  "dimensions": [
+    1280,
+    960
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-236.png"
+}

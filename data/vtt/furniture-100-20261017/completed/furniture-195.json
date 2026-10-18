@@ -1,0 +1,23 @@
+{
+  "id": "furniture-195",
+  "name": "Bancada de açougueiro",
+  "category": "Mobílias",
+  "width": 2,
+  "height": 1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: butchers thick end-grain chopping block counter with cleaver, clean linen and wooden bowls, no blood or carcass. Physical footprint ratio 2:1.",
+  "image": "/vtt/furniture-100-20261017/furniture-195.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-195.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-868fcddd-1fc6-413a-ba9e-117ecfab6ed2.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:21:45.905Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-195.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "897a8da0e62ed20422f8e22d935e987efbb618eebf28008bb5a595d1630e6a72",
+  "sha256": "7e328fbfd75d5b4115ae392f3494e537b6565c83a939ec81570ba0981d3d273d",
+  "dimensions": [
+    1280,
+    640
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-195.png"
+}

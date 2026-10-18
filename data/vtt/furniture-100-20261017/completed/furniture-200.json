@@ -1,0 +1,23 @@
+{
+  "id": "furniture-200",
+  "name": "Bancada de ceramista",
+  "category": "Mobílias",
+  "width": 2,
+  "height": 1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: potters clay-stained workbench with several unglazed bowls, damp clay blocks, carving tools and sponge. Physical footprint ratio 2:1.",
+  "image": "/vtt/furniture-100-20261017/furniture-200.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-200.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-e945dd92-032c-47a4-872e-44766c8438db.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:22:42.222Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-200.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "0f265db3da45639d1490a300642d947155198ea2d8e4e26762f35b6ed4a00fc7",
+  "sha256": "6e60dc0b6a0f7358909366bc0f91e9e90038267c2075c08042e25a6cb6e0882f",
+  "dimensions": [
+    1280,
+    640
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-200.png"
+}

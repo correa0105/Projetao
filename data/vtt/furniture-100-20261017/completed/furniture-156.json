@@ -1,0 +1,24 @@
+{
+  "id": "furniture-156",
+  "name": "Banco de oração",
+  "category": "Mobílias",
+  "width": 1.1,
+  "height": 0.9,
+  "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. A prayer kneeler in EXACT FLOOR PLAN: a blue rectangular kneeling cushion nearest south and narrow horizontal oak book ledge parallel at north. Between them transparent floor gap. Only top surfaces, two slim connecting side rails. All upright support panels and lattice faces are INVISIBLE from this camera. Physical footprint ratio 1.1:0.9.",
+  "image": "/vtt/furniture-100-20261017/furniture-156.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-156.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ef5c970a-565a-4535-9fb3-bd0c1d5d9712.png",
+  "tool": "built-in imagegen",
+  "revision": 2,
+  "localSource": ".local/furniture100-sources/furniture-156-v2.png",
+  "generatedAt": "2026-10-18T01:36:15.152Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-156.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "662f234b070078958cb2860297436b8d01bc0f3c3403cf9171736bfa67cb14ef",
+  "sha256": "72d89cd48173626c0bb3a45ef9cad9758b3e0e4569f594ed69678e5f180bc6c3",
+  "dimensions": [
+    1280,
+    1047
+  ],
+  "alpha": true
+}

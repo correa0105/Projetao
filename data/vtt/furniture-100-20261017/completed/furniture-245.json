@@ -1,0 +1,23 @@
+{
+  "id": "furniture-245",
+  "name": "Mesa de harpa portátil",
+  "category": "Mobílias",
+  "width": 1.5,
+  "height": 1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: small triangular lap harp resting flat on a dark linen-covered low oak table, delicate brass strings and carved frame. Physical footprint ratio 1.5:1.",
+  "image": "/vtt/furniture-100-20261017/furniture-245.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-245.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-86ac742c-afc1-4e3a-aa2d-1010172f78cd.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:31:05.501Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-245.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "f39abdecae5c3a6f368093db263e89641fb9b1b55a90bd594ff709ca10c30bf3",
+  "sha256": "7451fcca45c07130b976b2ec3bd17e21cef8a9852dd9a2cd8749c62ddd94a573",
+  "dimensions": [
+    1280,
+    853
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-245.png"
+}

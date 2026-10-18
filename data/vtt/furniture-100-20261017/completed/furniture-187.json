@@ -1,0 +1,24 @@
+{
+  "id": "furniture-187",
+  "name": "Baú de brinquedos aberto",
+  "category": "Mobílias",
+  "width": 1.3,
+  "height": 0.9,
+  "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. One OPEN rectangular oak toy chest in exact overhead plan, contents visible: tiny wooden horse lying flat, little cloth doll and carved colored blocks. LID REMOVED, not visible. Uniform very thin top rim, no exterior vertical wall faces or legs. A single flat filled rectangle. Physical footprint ratio 1.3:0.9.",
+  "image": "/vtt/furniture-100-20261017/furniture-187.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-187.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ef4b8d66-6dd5-49b6-a141-39fa6da7805d.png",
+  "tool": "built-in imagegen",
+  "revision": 2,
+  "localSource": ".local/furniture100-sources/furniture-187-v2.png",
+  "generatedAt": "2026-10-18T01:37:20.183Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-187.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "b8dd6312eaef8819fb3465040b1b7bb3ade0b46608578e0389445f4efd5af6a4",
+  "sha256": "9a492fd53707f1b7c7f6d8f07046bcc556a0d58f8a14ce5faf4286b1a2a59f59",
+  "dimensions": [
+    1280,
+    886
+  ],
+  "alpha": true
+}

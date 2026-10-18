@@ -1,0 +1,23 @@
+{
+  "id": "furniture-160",
+  "name": "Escabelo bordado",
+  "category": "Mobílias",
+  "width": 0.9,
+  "height": 0.65,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular walnut footstool with an ivory cushion embroidered with small forest leaves. Physical footprint ratio 0.9:0.65.",
+  "image": "/vtt/furniture-100-20261017/furniture-160.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-160.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-2ee73c5b-38ea-4229-bda8-ae61fe28ac53.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:14:50.320Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-160.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "fc6bec6a043d01394857f470aa21692b0615b6b64e113ed96525911784f320e4",
+  "sha256": "4aa57bfac2dd67112313aed1a62a24aaf7dd65b1a22ccbc1a8f012827c97fb69",
+  "dimensions": [
+    1280,
+    924
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-160.png"
+}

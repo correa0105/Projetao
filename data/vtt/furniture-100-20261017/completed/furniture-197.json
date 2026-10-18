@@ -1,0 +1,23 @@
+{
+  "id": "furniture-197",
+  "name": "Bancada de curtidor",
+  "category": "Mobílias",
+  "width": 2,
+  "height": 1.1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: leatherworkers oak bench with flat brown leather hides, awl, mallet, bronze punches and straps. Physical footprint ratio 2:1.1.",
+  "image": "/vtt/furniture-100-20261017/furniture-197.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-197.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-39d74501-8338-4c22-8b2b-5111eb01bdd2.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:21:51.874Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-197.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "10694dc69480554c148ff2758f65bb6c0fc47a861cf4297bb354be7eb9423ecf",
+  "sha256": "260c52956821b24e0f1ca8815dcecbfdeb8ef5e2e778cbe882ea3fa185c1d149",
+  "dimensions": [
+    1280,
+    704
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-197.png"
+}

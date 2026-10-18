@@ -1,0 +1,23 @@
+{
+  "id": "furniture-203",
+  "name": "Bancada de relojoeiro",
+  "category": "Mobílias",
+  "width": 1.8,
+  "height": 0.9,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: clockmakers walnut workbench with small exposed brass clockwork lying flat, hand tools, gears and a round magnifying lens. Physical footprint ratio 1.8:0.9.",
+  "image": "/vtt/furniture-100-20261017/furniture-203.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-203.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-10949914-09a6-47f6-86be-38ec989de698.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:23:31.887Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-203.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "f0fc5bd7dc6387d99e1bc3f5bc6934e76dc45293bfba862e9d373e90131ecae2",
+  "sha256": "a60c185b22b316eec02a7c75901edbaf78ae7c74952bef9b16d2968ace5deea1",
+  "dimensions": [
+    1280,
+    640
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-203.png"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "furniture-216",
+  "name": "Prensa de queijo",
+  "category": "Mobílias",
+  "width": 1.1,
+  "height": 1.1,
+  "prompt": "Create ONE isolated original finely hand-painted realistic medieval fantasy VTT furniture sprite. STRICT VERTICAL ORTHOGRAPHIC NADIR, camera exactly above at 90 degrees, no tilt. Show ONLY horizontal top surfaces. All vertical outside faces are invisible. True circular tops, parallel rectangular edges. Delicate crisp contours, fine small-scale material grain, warm worn wood, brass, leather, earthy muted colors matching our approved furniture library. Even overhead lighting, tight contact shading, narrow clear margin, real transparent alpha. No floor, people, text, watermark, isometric view or scene. North is image TOP. One compact cheese press in EXACT OVERHEAD FLOOR PLAN. A square oak base supports a round cheese mold with a flat oak circular pressing lid. A narrow horizontal oak crossbar spans east-west ABOVE the lid. At its center there is ONLY a small circular wooden END CAP of the vertical screw seen from above. The vertical screw SHAFT is occluded beneath its end cap and crossbar. NO vertical thread side surface, no front facade, no legs. Clear top shapes only. Physical footprint 1.1:1.1.",
+  "image": "/vtt/furniture-100-20261017/furniture-216.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-216.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-0114bbc1-d09b-4e9c-8e53-da6914755f3b.png",
+  "tool": "built-in imagegen",
+  "revision": 2,
+  "localSource": ".local/furniture100-sources/furniture-216-v2.png",
+  "generatedAt": "2026-10-18T01:42:24.324Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-216.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "066bfb6affa25a4c59b10f4345cc10dddfc07a6d5164bb13f9709fde4e8908ef",
+  "sha256": "877fee040546b5ed725f2d0b3e5b65140f5065a4c2cb0aff49d404e1fa1c8fe0",
+  "dimensions": [
+    1280,
+    1280
+  ],
+  "alpha": true
+}

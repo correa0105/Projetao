@@ -1,0 +1,23 @@
+{
+  "id": "furniture-211",
+  "name": "Forno de pão",
+  "category": "Mobílias",
+  "width": 2,
+  "height": 1.7,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: small medieval dome bread oven from strictly vertical overhead, warm soot-stained terracotta dome, stone rim, tiny chimney top hole, front opening not visible. Physical footprint ratio 2:1.7.",
+  "image": "/vtt/furniture-100-20261017/furniture-211.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-211.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-d7b5070c-d8b2-4d30-ac6c-5540b20abe97.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:26:14.666Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-211.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "8a4b67ee339182bee811ccc00827c67e5a6853071f95b902a57d93b319b7c760",
+  "sha256": "1f6df9f0974ee45908956c6ec406c3a1563f091626efff072d65c7449c1e71a6",
+  "dimensions": [
+    1280,
+    1088
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-211.png"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "furniture-238",
+  "name": "Lavatório de cobre",
+  "category": "Mobílias",
+  "width": 1.1,
+  "height": 1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: round hammered copper wash basin nested in a carved oak square stand top, with small water pitcher at upper corner. Physical footprint ratio 1.1:1.",
+  "image": "/vtt/furniture-100-20261017/furniture-238.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-238.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-e0b67f1b-a985-4298-8d25-3d1bd9a6459b.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:28:53.934Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-238.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "dd50418c478dc1474f52ecd486316ee4225cecfe071b2c226b7e697927b6a220",
+  "sha256": "d42693683ef1c6bd94f07a657fb8d13a7fae2d49e15589ba381ec08bd9ee00c9",
+  "dimensions": [
+    1280,
+    1164
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-238.png"
+}

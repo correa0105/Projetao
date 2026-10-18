@@ -38,6 +38,8 @@ import { House2Village, House2VillageRoofs } from './House2Village';
 import { boundHouse2Camera, initialHouse2Camera, type House2Camera } from './house2-camera';
 import { House2Lighting } from './House2Lighting';
 import { House2ItemLights } from './House2ItemLights';
+import { House2ItemActions } from './House2ItemActions';
+import { house2ItemLayers } from '../shared/house2-item-layers';
 import { useHouse2ItemSounds } from './House2ItemSounds';
 import { house2LightItems } from '../shared/house2-items-lighting';
 import { MusicControls } from './SiteMusic';
@@ -125,6 +127,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     [menu, setMenu] = useState(false);
   const [draft, setDraft] = useState<House2Layout | null>(null);
   const [selectedPiece, setSelectedPiece] = useState<string | null>(null);
+  const [itemActions, setItemActions] = useState<string | null>(null);
   const [interior, setInterior] = useState<string | null>(null);
   const [hideRoofOnEdit, setHideRoofOnEdit] = useState(true);
   const [camera, setCamera] = useState<Camera>(() =>
@@ -328,6 +331,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     if (busy || (p.id !== selected && guardDirty())) return;
     setSelected(p.id);
     setSelectedPiece(null);
+    setItemActions(null);
     if (p.id !== selected) setInterior(null);
     if (focus)
       setCamera({
@@ -551,11 +555,13 @@ export function House2({ character, user }: { character?: Character; user: User 
       undefined;
     const p = world(e.clientX, e.clientY);
     const value = shownItems.find((i) => i.id === id);
-    const edit =
-      !!id &&
-      id !== 'house' &&
-      canEdit &&
-      (id === 'house' || shownItems.some((i) => i.id === id && i.plot_id === plot?.id));
+    const itemPlot = scene?.plots.find((p) => p.id === value?.plot_id);
+    if (itemPlot?.can_edit && itemPlot.id !== selected) {
+      if (guardDirty()) return;
+      setSelected(itemPlot.id);
+      setInterior(null);
+    }
+    const edit = !!id && id !== 'house' && !!itemPlot?.can_edit;
     const handleValue = (e.target as Element)
       .closest('[data-house2-handle]')
       ?.getAttribute('data-house2-handle');
@@ -598,6 +604,7 @@ export function House2({ character, user }: { character?: Character; user: User 
       dy = e.clientY - a.startY;
     if (!a.moved && Math.hypot(dx, dy) < 4) return;
     a.moved = true;
+    setItemActions(null);
     if (a.kind === 'pan') {
       setCamera(
         boundHouse2Camera(
@@ -660,7 +667,11 @@ export function House2({ character, user }: { character?: Character; user: User 
     if (a.moved || cancelled) return;
     if (a.kind !== 'pan') {
       setSelectedPiece(a.id!);
-      if (a.kind === 'item') setTool('collection');
+      if (a.kind === 'item') {
+        const item = shownItems.find((i) => i.id === a.id);
+        if (item && house2LightItems[item.catalog_id]) openItemActions(item);
+        else setTool('collection');
+      }
       return;
     }
     const found = (e.target as Element)
@@ -736,6 +747,23 @@ export function House2({ character, user }: { character?: Character; user: User 
       setBusy(false);
     }
   }
+  function openItemActions(item: House2Item) {
+    if (busy || !scene?.plots.some((p) => p.id === item.plot_id && p.can_edit)) return;
+    if (item.plot_id !== selected && guardDirty()) return;
+    setSelected(item.plot_id);
+    setSelectedPiece(item.id);
+    setItemActions(item.id);
+    setTool(null);
+  }
+  const actionItem = shownItems.find(
+    (i) =>
+      i.id === itemActions &&
+      i.id === selectedPiece &&
+      i.plot_id === selected &&
+      canEdit &&
+      tool === null,
+  );
+  const actionSpec = house2Furniture.find((f) => f.id === actionItem?.catalog_id);
   const editingInterior =
     canEdit &&
     plot &&
@@ -759,7 +787,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     !!occupiedInterior,
   );
   const borderItem =
-    canEdit && !busy && tool !== 'ground'
+    canEdit && !busy && !itemActions && tool !== 'ground'
       ? shownItems.find((i) => i.id === selectedPiece && i.plot_id === selected)
       : undefined;
   const borderSpec = house2Furniture.find((f) => f.id === borderItem?.catalog_id);
@@ -781,15 +809,6 @@ export function House2({ character, user }: { character?: Character; user: User 
       </label>
       {selectedPiece !== 'house' && (
         <div className="h2-item-size">
-          {borderItem && house2LightItems[borderItem.catalog_id] && (
-            <button
-              disabled={busy}
-              aria-pressed={!!borderItem.light_on}
-              onClick={() => void toggleItemLight(borderItem)}
-            >
-              {borderItem.light_on ? 'Apagar luz' : 'Acender luz'}
-            </button>
-          )}
           <div className="h2-item-rotation" role="group" aria-label="Rotação do objeto">
             <span>
               Rotação{' '}
@@ -1176,15 +1195,32 @@ export function House2({ character, user }: { character?: Character; user: User 
             );
           })}
         <g filter="url(#h2-shadow-item)">
-          {shownItems.map((item) => {
+          {house2ItemLayers(shownItems).map((item) => {
             const spec = house2Furniture.find((f) => f.id === item.catalog_id);
             if (!spec) return null;
-            const editable = item.plot_id === selected && canEdit;
+            const editable = !!scene?.plots.some((p) => p.id === item.plot_id && p.can_edit);
+            const lightControl = editable && !!house2LightItems[item.catalog_id];
             return (
               <g
                 key={item.id}
                 data-house2-plot={item.plot_id!}
                 data-house2-piece={editable ? item.id : undefined}
+                data-house2-catalog={item.catalog_id}
+                role={lightControl ? 'button' : undefined}
+                tabIndex={lightControl ? 0 : undefined}
+                aria-label={lightControl ? `Ações de ${spec.name}` : undefined}
+                aria-expanded={lightControl ? itemActions === item.id : undefined}
+                onKeyDown={
+                  lightControl
+                    ? (e) => {
+                        if ((e.key === 'Enter' || e.key === ' ') && e.target === e.currentTarget) {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          openItemActions(item);
+                        }
+                      }
+                    : undefined
+                }
                 transform={`translate(${item.x} ${item.y}) rotate(${item.rotation})`}
                 className={
                   (editable ? 'h2-editable ' : '') +
@@ -1313,6 +1349,24 @@ export function House2({ character, user }: { character?: Character; user: User 
             );
           })()}
       </svg>
+      {actionItem && actionSpec && (
+        <House2ItemActions
+          item={actionItem}
+          spec={actionSpec}
+          map={mapRef}
+          view={view}
+          busy={busy}
+          toggle={() => void toggleItemLight(actionItem)}
+          close={() => {
+            setItemActions(null);
+            setSelectedPiece(null);
+          }}
+          edit={() => {
+            setItemActions(null);
+            setTool('collection');
+          }}
+        />
+      )}
       <header className="h2-world-header">
         <div className="h2-world-heading">
           <strong>{scene?.neighborhood.name || 'Vizinhança'}</strong>

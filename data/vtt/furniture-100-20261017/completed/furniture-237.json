@@ -1,0 +1,23 @@
+{
+  "id": "furniture-237",
+  "name": "Mala de banho",
+  "category": "Mobílias",
+  "width": 1,
+  "height": 0.7,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: open oval wooden bathing caddy with linen washcloth, pumice, olive soap, small ceramic oil bottle and natural sponge. Physical footprint ratio 1:0.7.",
+  "image": "/vtt/furniture-100-20261017/furniture-237.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-237.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-f72a48db-f6d7-4687-a6ad-5e03639fea1f.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:28:18.741Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-237.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "127d472c9cfa8b8ab04c017fc2dd839a82f275a63c1e23ae3d652da3ba35a894",
+  "sha256": "c30cc4dee56373c23ade223f8862aa2fd7ccaaa9e81af2e19a5fe3e2ce0a17ea",
+  "dimensions": [
+    1280,
+    896
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-237.png"
+}

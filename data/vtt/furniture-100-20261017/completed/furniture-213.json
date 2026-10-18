@@ -1,0 +1,23 @@
+{
+  "id": "furniture-213",
+  "name": "Grelha de cozinha",
+  "category": "Mobílias",
+  "width": 1.8,
+  "height": 1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular medieval kitchen hearth with iron grate over dark coals, small copper pan on one side, stone outer rim, no flames or glow halo. Physical footprint ratio 1.8:1.",
+  "image": "/vtt/furniture-100-20261017/furniture-213.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-213.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-bd87a49b-cffe-419e-abde-7d5cd1c36105.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:25:38.445Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-213.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "c089d0946315e1115e74b208a15dfaf6e2317a00daf8f2bd76613651abae0f15",
+  "sha256": "62c179360ca1cc714f748f66a3d4c58b36bb21ff04d06072cf9a9964eca027d9",
+  "dimensions": [
+    1280,
+    711
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-213.png"
+}

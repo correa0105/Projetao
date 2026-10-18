@@ -1,0 +1,23 @@
+{
+  "id": "furniture-190",
+  "name": "Porta-rolos horizontal",
+  "category": "Mobílias",
+  "width": 1.5,
+  "height": 0.8,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: low oak rack with six horizontal compartments holding rolled parchment scrolls seen from directly above. Physical footprint ratio 1.5:0.8.",
+  "image": "/vtt/furniture-100-20261017/furniture-190.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-190.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-7347eef5-e17a-44b9-a92e-e7b87f609d82.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:23:15.658Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-190.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "baeec179277a239cb4023fcbb38e87aebe922419792f27a2c3fa82fa3ee6ebed",
+  "sha256": "8f628b71c9abec41a77959f7324375445011d811a8bf1d4f3c982f4b0ede3aff",
+  "dimensions": [
+    1280,
+    683
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-190.png"
+}

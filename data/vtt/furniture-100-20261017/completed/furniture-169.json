@@ -1,0 +1,23 @@
+{
+  "id": "furniture-169",
+  "name": "Mesa de dissecção",
+  "category": "Mobílias",
+  "width": 2.5,
+  "height": 1.1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: empty pale stone examination table with rounded corners, a shallow edge groove and bronze drain, clean no body or blood. Physical footprint ratio 2.5:1.1.",
+  "image": "/vtt/furniture-100-20261017/furniture-169.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-169.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-59072efd-8254-42e6-9989-96bf245c92d8.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:17:11.526Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-169.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "9a81bb42afcd119c9cffbab6165e0a8567192d27ae1c67c1e8fdc6886ac501be",
+  "sha256": "e7b48b5fc3f133f4951fff93915f721634dafbdca781ff8f1c285dddce5b012a",
+  "dimensions": [
+    1280,
+    563
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-169.png"
+}

@@ -257,8 +257,8 @@ try {
   await expect(page.getByLabel('Volume das músicas', { exact: true })).toBeVisible();
   await page.getByLabel('Volume dos efeitos sonoros', { exact: true }).fill('22');
   await page.keyboard.press('Escape');
-  await tool('Minha coleção');
-  await page.getByRole('button', { name: /Fogueira de pedras.*Ajustar/ }).click();
+  await page.locator(`[data-house2-piece="${fire.item_id}"]`).focus();
+  await page.keyboard.press('Enter');
   await page.getByRole('button', { name: 'Acender luz', exact: true }).click();
   await expect(page.locator(`[data-house2-light="${fire.item_id}"]`)).toHaveCount(1);
   const wave = page.locator(`[data-house2-light="${fire.item_id}"] .h2-light-wave`);
@@ -301,7 +301,8 @@ try {
     ),
   ).toBe(true);
   await page.getByRole('button', { name: 'Acender luz', exact: true }).click();
-  await page.getByRole('button', { name: /Lamparina.*Ajustar/ }).click();
+  await page.locator(`[data-house2-piece="${lamp.item_id}"]`).focus();
+  await page.keyboard.press('Enter');
   await page.getByRole('button', { name: 'Acender luz', exact: true }).click();
   await expect(page.locator(`[data-house2-light="${lamp.item_id}"]`)).toHaveCount(1);
   await tool('Mobília');

@@ -1,0 +1,23 @@
+{
+  "id": "furniture-218",
+  "name": "Tina de salgadura",
+  "category": "Mobílias",
+  "width": 1.5,
+  "height": 1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: oval stave wood brining tub with coarse white salt, small folded linen sacks and wooden scoop resting on rim. Physical footprint ratio 1.5:1.",
+  "image": "/vtt/furniture-100-20261017/furniture-218.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-218.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-07a9025f-2248-471a-9f50-9e8a7c164abf.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:26:58.001Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-218.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "10111138d0b9ce88d5255b1591f327386342f45fd89971bde0b072b3163951a6",
+  "sha256": "83d1ecd8c2bc0c65329ded5a8eb06821bc75c7a2ca0a16469741b312cec3f93f",
+  "dimensions": [
+    1280,
+    853
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-218.png"
+}

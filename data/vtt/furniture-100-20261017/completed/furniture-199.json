@@ -1,0 +1,23 @@
+{
+  "id": "furniture-199",
+  "name": "Bancada de vidreiro",
+  "category": "Mobílias",
+  "width": 2.1,
+  "height": 1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: glassworkers stone-topped bench with colored glass lumps, long iron blowpipe laid horizontally and three small unfinished vessels. Physical footprint ratio 2.1:1.",
+  "image": "/vtt/furniture-100-20261017/furniture-199.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-199.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ed69eb1c-bddc-4fe0-a359-510234411657.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:22:12.937Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-199.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "89ceca3287a2e48d001b8f6b539409aa408ee3c4de330c9348af1f398223887e",
+  "sha256": "9bca18e1dc5566cebf28ba4e0f72f5ccfa46241cc266709cc947f8231c04cbdf",
+  "dimensions": [
+    1280,
+    610
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-199.png"
+}

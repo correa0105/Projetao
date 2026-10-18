@@ -1057,37 +1057,22 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
 .h2-item-unlit > image {
   filter: grayscale(0.8) brightness(0.72);
 }
-.h2-flame-core {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: h2-flame-flicker 1.1s ease-in-out infinite alternate;
-}
 @keyframes h2-light-breathe {
   0% {
-    opacity: 0.82;
-    transform: scale(0.965);
+    opacity: 0.9;
+    transform: scale(0.995);
   }
   35% {
     opacity: 0.96;
     transform: scale(1);
   }
   68% {
-    opacity: 0.87;
-    transform: scale(0.98);
+    opacity: 0.94;
+    transform: scale(0.998);
   }
   100% {
     opacity: 1;
-    transform: scale(1.025);
-  }
-}
-@keyframes h2-flame-flicker {
-  0% {
-    opacity: 0.7;
-    transform: scale(0.9) rotate(-7deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1.08) rotate(6deg);
+    transform: scale(1.008);
   }
 }
 .h2-finishes-shop {
@@ -1120,8 +1105,44 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
   pointer-events: auto;
 }
 @media (prefers-reduced-motion: reduce) {
-  .h2-light-wave,
-  .h2-flame-core {
+  .h2-light-wave {
     animation: none;
   }
+}
+.h2-item-actions {
+  position: fixed;
+  z-index: 7;
+  display: grid;
+  gap: 7px;
+  width: 216px;
+  max-width: calc(100vw - 16px);
+  padding: 12px;
+  border: 1px solid #9b7d46;
+  border-radius: 5px;
+  background: #191913f5;
+  color: #e0d4bc;
+  box-shadow: 0 4px 20px #0006;
+  font-size: 12px;
+}
+.h2-item-actions > strong {
+  padding-right: 22px;
+  font-size: 12px;
+}
+.house2-world .h2-item-actions > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 34px;
+}
+.house2-world .h2-item-actions > .h2-item-actions-close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  min-height: 24px;
+  padding: 4px;
+  border: 0;
+}
+.h2-map [data-house2-piece][role='button']:focus-visible {
+  outline: 1px solid #d9ba79;
 }

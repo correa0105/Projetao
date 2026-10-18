@@ -1,0 +1,23 @@
+{
+  "id": "furniture-167",
+  "name": "Mesa de corte de tecidos",
+  "category": "Mobílias",
+  "width": 2.5,
+  "height": 1.4,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: broad wooden tailoring cutting table with partially unrolled ochre cloth, iron shears and wooden measuring stick without markings. Physical footprint ratio 2.5:1.4.",
+  "image": "/vtt/furniture-100-20261017/furniture-167.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-167.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-702f0169-680f-4945-8071-d211ccbadee3.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:16:46.752Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-167.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "a990a5500328464af0229d3bc5add8c947429fef54722de14635c90b39aab1c7",
+  "sha256": "d236c7d8de209ab5b11a1e1ddda0fc289e486293172d074684f43b6b0176f2bd",
+  "dimensions": [
+    1280,
+    717
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-167.png"
+}

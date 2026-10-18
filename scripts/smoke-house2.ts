@@ -293,7 +293,7 @@ try {
     page.locator('[data-house2-fixed="true"] [data-house2-roof="house-empty-001"]'),
   ).toHaveCount(0);
   await tool('Mobília');
-  await expect(page.locator('.h2-catalog:not(.h2-finishes-catalog) button')).toHaveCount(252);
+  await expect(page.locator('.h2-catalog:not(.h2-finishes-catalog) button')).toHaveCount(352);
   await page.getByRole('textbox', { name: 'Pesquisar mobília' }).fill('Cadeira de madeira');
   await expect(page.locator('.h2-catalog:not(.h2-finishes-catalog) button')).toHaveCount(1);
   await page.locator('.h2-catalog:not(.h2-finishes-catalog) button').first().click();

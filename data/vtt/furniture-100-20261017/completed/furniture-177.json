@@ -1,0 +1,23 @@
+{
+  "id": "furniture-177",
+  "name": "Cama de mascote",
+  "category": "Mobílias",
+  "width": 1,
+  "height": 0.8,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: oval woven willow pet bed with raised woven rim and soft moss green cushion, empty no animal. Physical footprint ratio 1:0.8.",
+  "image": "/vtt/furniture-100-20261017/furniture-177.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-177.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ef5f32c3-c073-4781-a1a0-8fedb3ac9fd3.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:18:36.846Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-177.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "6bdaa8c57033020af4a96017a7c3abd239b7ca7baa4047f436e8b4e183ac8017",
+  "sha256": "c259f418bbe6e043d6d8e930ddd0585a51c0bfacb62f661ff1ea4f2fa0eea361",
+  "dimensions": [
+    1280,
+    1024
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-177.png"
+}

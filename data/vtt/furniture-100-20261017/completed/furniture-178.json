@@ -1,0 +1,23 @@
+{
+  "id": "furniture-178",
+  "name": "Cesto de bebê",
+  "category": "Mobílias",
+  "width": 0.8,
+  "height": 1.1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: oval hanging cradle basket viewed from above with folded ivory blanket, tiny pillow and two rope suspension loops laid on the rim. Physical footprint ratio 0.8:1.1.",
+  "image": "/vtt/furniture-100-20261017/furniture-178.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-178.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-de7c8868-63b7-42b7-a676-82eb2d41ca30.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:18:53.279Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-178.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "e2b0123c0143274b53e55e262cf608cd366417de969562a91aaa5e117ccf0a97",
+  "sha256": "1f894a0e939f7758af190676b6e121f9f50249b4f4dc7cba6571bce4144e29c7",
+  "dimensions": [
+    931,
+    1280
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-178.png"
+}

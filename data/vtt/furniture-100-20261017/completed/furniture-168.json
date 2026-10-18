@@ -1,0 +1,23 @@
+{
+  "id": "furniture-168",
+  "name": "Mesa de boticário",
+  "category": "Mobílias",
+  "width": 2,
+  "height": 1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: apothecary sorting table with shallow wooden compartments of dried roots, ceramic mortar and small corked brown bottles. Physical footprint ratio 2:1.",
+  "image": "/vtt/furniture-100-20261017/furniture-168.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-168.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-3c1d9dff-dd84-4d40-b3c3-6617fb761ad3.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:17:07.287Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-168.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "ed2156f428aad4a9383f442e8784e20217f25ee9b674eec35770a9aec57e579e",
+  "sha256": "7225cecf14fc1dab9d6b01e8baabfbd6fca419b1ea4d142caa18ad11d5c86271",
+  "dimensions": [
+    1280,
+    640
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-168.png"
+}

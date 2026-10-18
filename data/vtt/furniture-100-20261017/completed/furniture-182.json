@@ -1,0 +1,24 @@
+{
+  "id": "furniture-182",
+  "name": "Caixa de instrumentos cirúrgicos",
+  "category": "Mobílias",
+  "width": 1,
+  "height": 0.7,
+  "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. One open shallow rectangular walnut surgical-instrument case in exact overhead plan, with neat fitted rows of tiny steel scalpels, forceps, scissors and rolled linen bandages in brown velvet. LID REMOVED, not visible. Four very thin uniform rim edges, no vertical outside walls. A flat filled rectangle. Physical footprint ratio 1:0.7.",
+  "image": "/vtt/furniture-100-20261017/furniture-182.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-182.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-11e12757-b65d-4896-893e-c9ee177d4438.png",
+  "tool": "built-in imagegen",
+  "revision": 2,
+  "localSource": ".local/furniture100-sources/furniture-182-v2.png",
+  "generatedAt": "2026-10-18T01:35:46.040Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-182.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "8df93b7db4fc67c404b1f6129de5a9cea89ffb9a283555d24018b93230614f68",
+  "sha256": "30b6f8da5808719f5e0601ace90fe28f11979d4a0c603886bc67058d0f6f249d",
+  "dimensions": [
+    1280,
+    896
+  ],
+  "alpha": true
+}

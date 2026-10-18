@@ -1,0 +1,23 @@
+{
+  "id": "furniture-201",
+  "name": "Bancada de carpinteiro",
+  "category": "Mobílias",
+  "width": 2.4,
+  "height": 1.1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: carpenters worn oak bench with integrated wooden vise seen from above, hand plane, chisel, curled shavings and unfinished plank. Physical footprint ratio 2.4:1.1.",
+  "image": "/vtt/furniture-100-20261017/furniture-201.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-201.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-013b7be1-020c-442d-93e0-1cf9a90aa1e4.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:23:09.296Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-201.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "ac496c4a1e399bb399cd1641a349b2ab41429f9fb454f08113c41e04c2afc580",
+  "sha256": "638c8b798beb294970905300133edb95b84c01bad8cf697b6ca05fa6eaf2181d",
+  "dimensions": [
+    1280,
+    587
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-201.png"
+}

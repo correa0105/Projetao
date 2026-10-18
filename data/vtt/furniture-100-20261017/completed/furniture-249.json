@@ -1,0 +1,23 @@
+{
+  "id": "furniture-249",
+  "name": "Jardim zen de mesa",
+  "category": "Mobílias",
+  "width": 1.5,
+  "height": 1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: shallow rectangular walnut sand garden tray with raked cream sand, three smooth gray stones and tiny wooden rake. Physical footprint ratio 1.5:1.",
+  "image": "/vtt/furniture-100-20261017/furniture-249.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-249.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-1c1b713a-c9d7-4d5d-8b2f-6f9c03011e40.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:32:48.617Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-249.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "5bd5e3a4492f8b94ce3b125798a0d9906bd239607d4b8cd184101db09fcba004",
+  "sha256": "4b69a8b9a6f924881bb0b652d20d27264546bcf42df6b5f76c70cee57d4f604d",
+  "dimensions": [
+    1280,
+    853
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-249.png"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "furniture-212",
+  "name": "Forja de ferreiro",
+  "category": "Mobílias",
+  "width": 2,
+  "height": 1.5,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular stone forge seen directly overhead with recessed bed of dark coals, a few glowing embers, iron tongs on rim, no smoke or glow halo. Physical footprint ratio 2:1.5.",
+  "image": "/vtt/furniture-100-20261017/furniture-212.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-212.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-16f4511e-4568-4676-879f-8a09edc785bd.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:25:19.218Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-212.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "11eb2c1548c53313160141e060bb631c24e94829f1e450d0a0cdf5a1351d09ab",
+  "sha256": "7563956ee0450f53263ba2730328def33f82d1b4ddd9a821b803b953a1d5bf74",
+  "dimensions": [
+    1280,
+    960
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-212.png"
+}

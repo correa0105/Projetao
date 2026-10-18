@@ -28,16 +28,20 @@ function Light({
           <path d={path} />
         </clipPath>
         <radialGradient id={id + '-glow'}>
-          <stop offset="0" stopColor={mask ? 'black' : spec.color} stopOpacity={mask ? 1 : 0.55} />
           <stop
-            offset=".32"
+            offset="0"
             stopColor={mask ? 'black' : spec.color}
-            stopOpacity={mask ? 1 : 0.24}
+            stopOpacity={mask ? 0.96 : spec.strength * 0.5}
           />
           <stop
-            offset=".65"
+            offset=".2"
             stopColor={mask ? 'black' : spec.color}
-            stopOpacity={mask ? 0.65 : 0.07}
+            stopOpacity={mask ? 0.8 : spec.strength * 0.28}
+          />
+          <stop
+            offset=".55"
+            stopColor={mask ? 'black' : spec.color}
+            stopOpacity={mask ? 0.28 : spec.strength * 0.06}
           />
           <stop offset="1" stopColor={mask ? 'black' : spec.color} stopOpacity="0" />
         </radialGradient>
@@ -56,24 +60,6 @@ function Light({
           r={radius}
           fill={`url(#${id}-glow)`}
         />
-        {!mask && (
-          <g transform={`translate(${item.x} ${item.y})`} data-house2-flame={item.id}>
-            <circle
-              r={spec.sound === 'fire' ? 0.22 : 0.07}
-              fill="#fff0bd"
-              opacity=".8"
-              className="h2-flame-core"
-            />
-            {spec.sound === 'fire' && (
-              <path
-                className="h2-flame-core"
-                d="M-.18 .08Q-.38-.18-.1-.37Q.03-.48.04-.7Q.4-.3.19-.08Q.4.07.15.22Q-.1.37-.18.08Z"
-                fill="#f5a03d"
-                opacity=".8"
-              />
-            )}
-          </g>
-        )}
       </g>
     </g>
   );

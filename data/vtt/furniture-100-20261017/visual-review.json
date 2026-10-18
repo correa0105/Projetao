@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "total": 100,
+  "view": "orthographic nadir 90 degrees",
+  "transparent": true,
+  "style": "hand-painted medieval fantasy",
+  "reviewedSheets": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "refinedIds": [
+    "furniture-152",
+    "furniture-153",
+    "furniture-154",
+    "furniture-156",
+    "furniture-164",
+    "furniture-182",
+    "furniture-183",
+    "furniture-185",
+    "furniture-187",
+    "furniture-209",
+    "furniture-216",
+    "furniture-217",
+    "furniture-243"
+  ],
+  "finalAssetsSha256": "a511e7ced7cf440b9e4061f2bc58452f16665b4f1d00a1cd64a747c18f34a473",
+  "reviewedAt": "2026-10-18T01:45:37.207Z"
+}

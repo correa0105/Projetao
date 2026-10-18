@@ -1,0 +1,23 @@
+{
+  "id": "furniture-194",
+  "name": "Bancada de padeiro",
+  "category": "Mobílias",
+  "width": 2.2,
+  "height": 1.1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: bakers flour-dusted maple workbench with rolling pin, dough rounds and wicker proofing basket. Physical footprint ratio 2.2:1.1.",
+  "image": "/vtt/furniture-100-20261017/furniture-194.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-194.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-509befdd-91a2-43a8-97fd-62184c69222e.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:21:19.540Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-194.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "42532bab586f869d649616716fe5d529505ee2de42546c3a4716f30fb93cbb03",
+  "sha256": "ec6d1bbde77b1737e04adc31b4eaf78d2559b7f69c0ce31524ba44c08f3b8111",
+  "dimensions": [
+    1280,
+    640
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-194.png"
+}

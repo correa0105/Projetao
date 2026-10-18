@@ -1,0 +1,23 @@
+{
+  "id": "furniture-230",
+  "name": "Cobertores dobrados",
+  "category": "Mobílias",
+  "width": 1,
+  "height": 0.8,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: neat stack of three folded thick wool blankets in olive brown and faded burgundy with coarse woven edges. Physical footprint ratio 1:0.8.",
+  "image": "/vtt/furniture-100-20261017/furniture-230.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-230.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-edfa420b-506f-4cd2-9e54-62c62cd5158f.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:31:38.861Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-230.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "554c04449387b8cc9281cebda7387eb7c79e3b049e66004da7aeadcd361c587d",
+  "sha256": "5875b9067ec085936c7a4e3b2f9220aeafbaba96cceed4e1f21c9236baabbb54",
+  "dimensions": [
+    1280,
+    1024
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-230.png"
+}

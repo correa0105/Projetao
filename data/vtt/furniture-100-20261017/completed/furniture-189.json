@@ -1,0 +1,23 @@
+{
+  "id": "furniture-189",
+  "name": "Escaninho de moedas",
+  "category": "Mobílias",
+  "width": 1,
+  "height": 0.8,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: open tabletop coin sorting box with eight small wooden compartments of copper silver and gold coins. Physical footprint ratio 1:0.8.",
+  "image": "/vtt/furniture-100-20261017/furniture-189.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-189.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-7f7713cd-e17a-40f9-9e36-b1acc07bad15.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:22:49.890Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-189.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "af3230750c9d62ea51db0464f63792d6b6be056c8a9334e000e0cf199e3c7b59",
+  "sha256": "1b2beb141aed2531451559cf89005e8c5ebef0c3e979c012aa650fa738acb7e6",
+  "dimensions": [
+    1280,
+    1024
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-189.png"
+}

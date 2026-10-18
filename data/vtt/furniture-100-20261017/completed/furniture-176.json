@@ -1,0 +1,23 @@
+{
+  "id": "furniture-176",
+  "name": "Ninho de almofadas",
+  "category": "Mobílias",
+  "width": 1.7,
+  "height": 1.7,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: cozy oval floor nest made of five overlapping linen cushions in muted ochre, olive and brown with a rumpled wool throw. Physical footprint ratio 1.7:1.7.",
+  "image": "/vtt/furniture-100-20261017/furniture-176.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-176.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-33eddccd-b05b-4fa9-b5bb-0ab9f168d9e6.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:18:18.633Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-176.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "ea2bc74b4af30f9b57547be334d2eeb429fc944f3857916e412535011584ca8d",
+  "sha256": "61ba72cc146967a691785bc1e0be89928b9ff36f5ca1050076c51c132388297b",
+  "dimensions": [
+    1280,
+    1280
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-176.png"
+}

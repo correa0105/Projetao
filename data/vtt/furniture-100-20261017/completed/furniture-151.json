@@ -1,0 +1,23 @@
+{
+  "id": "furniture-151",
+  "name": "Cadeira curul dobrável",
+  "category": "Mobílias",
+  "width": 1,
+  "height": 1,
+  "prompt": "Create ONE isolated medieval fantasy VTT furniture sprite: a curule folding chair with a square saddle of richly textured dark oxblood leather, rounded carved oak rails at its left and right edges, tiny antique brass pins. STRICT ORTHOGRAPHIC NADIR PLAN: camera exactly vertically above at 90 degrees, zero tilt, no perspective convergence. Show only upward-facing seat and thin horizontal top edges; no visible vertical fronts, backrest face or legs. Footprint ratio 1:1. Original finely hand-painted realistic battlemap art: warm worn oak with delicate grain, weathered leather, crisp restrained dark contours and fine small-scale texture, muted earthy colors, even overhead light and tight contact shading. North/back is image TOP. Entire single chair centered with narrow empty margin, genuine transparent alpha outside. No floor, ground patch, text, labels, grid, watermark, people, scene, isometric view, cartoon or glossy 3D render.",
+  "image": "/vtt/furniture-100-20261017/furniture-151.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-151.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-2bacbe6f-cfee-4df8-86be-ab3325dc66fc.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:12:18.780Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-151.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "b48eca90853be1b371cf3d1c9256a69b0ff300b8bc26687724bb72ba8d44c290",
+  "sha256": "26dfe8d2b3b493bc78a48d77d9428c75f21ef1ffe302e133c9fe30d61650ab3d",
+  "dimensions": [
+    1280,
+    1280
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-151.png"
+}

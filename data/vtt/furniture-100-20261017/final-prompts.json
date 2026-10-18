@@ -1,0 +1,802 @@
+[
+  {
+    "id": "furniture-151",
+    "name": "Cadeira curul dobrável",
+    "prompt": "Create ONE isolated medieval fantasy VTT furniture sprite: a curule folding chair with a square saddle of richly textured dark oxblood leather, rounded carved oak rails at its left and right edges, tiny antique brass pins. STRICT ORTHOGRAPHIC NADIR PLAN: camera exactly vertically above at 90 degrees, zero tilt, no perspective convergence. Show only upward-facing seat and thin horizontal top edges; no visible vertical fronts, backrest face or legs. Footprint ratio 1:1. Original finely hand-painted realistic battlemap art: warm worn oak with delicate grain, weathered leather, crisp restrained dark contours and fine small-scale texture, muted earthy colors, even overhead light and tight contact shading. North/back is image TOP. Entire single chair centered with narrow empty margin, genuine transparent alpha outside. No floor, ground patch, text, labels, grid, watermark, people, scene, isometric view, cartoon or glossy 3D render.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-2bacbe6f-cfee-4df8-86be-ab3325dc66fc.png",
+    "sourceSha256": "b48eca90853be1b371cf3d1c9256a69b0ff300b8bc26687724bb72ba8d44c290",
+    "sha256": "26dfe8d2b3b493bc78a48d77d9428c75f21ef1ffe302e133c9fe30d61650ab3d"
+  },
+  {
+    "id": "furniture-152",
+    "name": "Trono de carvalho",
+    "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. A square deep green velvet throne SEAT seen straight down, with two carved oak armrest TOP rails along left and right and a VERY THIN 3% deep gold-inlaid oak backrest TOP EDGE along north. The backrest stands upright so its FRONT FACE is INVISIBLE from this camera. NO crown silhouette projecting upward in image; no carved vertical facade. Physical footprint ratio 1.2:1.2.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-e68675c7-7d77-417b-8644-eae51dd7f31c.png",
+    "sourceSha256": "07282ec289e2f74c3bc3a8b97c33fbaf1021bc406763749b5bbaff1948efb367",
+    "sha256": "9099cccce5a7efd5d7dc31bc6724b49f97cb3c89cc7bac92d2f77cf97bafe61e"
+  },
+  {
+    "id": "furniture-153",
+    "name": "Cadeira de balanço",
+    "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. A rocking chair in EXACT PLAN VIEW: square woven-rush seat, a VERY THIN curved oak backrest TOP EDGE along north, two slim armrest TOP rails along sides, two long parallel rocker rails extending slightly north and south. Backrest is upright so no spindles or front/back face visible. Seat fills most footprint. No legs visible. Physical footprint ratio 1:1.4.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-8bc526b6-7dd9-4e0a-9194-ca7eb8e153a9.png",
+    "sourceSha256": "04668a21ca0d9cf051a37109830c34e254c18ca695dc8192ea81e7f80c20bfdf",
+    "sha256": "cda3cdd1dc0f4457907a6a68f263f4e78c5f4e7aea9942ffba63dee34cf6ff6c"
+  },
+  {
+    "id": "furniture-154",
+    "name": "Cadeira de escriba",
+    "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. A circular worn leather scribes chair SEAT seen exactly from directly overhead. A thin crescent oak backrest TOP EDGE follows the north edge, thin curved armrest tops at left and right. No upright slats, no legs, no vertical face. Physical footprint ratio 0.9:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-7fc48a48-edda-4b29-911a-e6b4916eab77.png",
+    "sourceSha256": "650b91d69794ead597aebd50ac5d4d82e22ded33371343c3b9b1750d34a10335",
+    "sha256": "a7982919d770203ebdd4ecdd70d34438d6c0ab7c76c1b953fd87c17757279574"
+  },
+  {
+    "id": "furniture-155",
+    "name": "Banco de sapateiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: kidney-shaped cobblers stool with a round worn seat and integrated side trays of small wooden pegs. Physical footprint ratio 1.4:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-68ae694b-3fa0-46e4-9e69-8eefd2c35f4c.png",
+    "sourceSha256": "8862e5077f107831a438b3d33339e50ab05a5329cd09d0ebe234ce2f905c5a84",
+    "sha256": "317c523caa2678bcb3f98892e0e6edc16c0dcc7538868451f4802a8bd9ca55d9"
+  },
+  {
+    "id": "furniture-156",
+    "name": "Banco de oração",
+    "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. A prayer kneeler in EXACT FLOOR PLAN: a blue rectangular kneeling cushion nearest south and narrow horizontal oak book ledge parallel at north. Between them transparent floor gap. Only top surfaces, two slim connecting side rails. All upright support panels and lattice faces are INVISIBLE from this camera. Physical footprint ratio 1.1:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ef5c970a-565a-4535-9fb3-bd0c1d5d9712.png",
+    "sourceSha256": "662f234b070078958cb2860297436b8d01bc0f3c3403cf9171736bfa67cb14ef",
+    "sha256": "72d89cd48173626c0bb3a45ef9cad9758b3e0e4569f594ed69678e5f180bc6c3"
+  },
+  {
+    "id": "furniture-157",
+    "name": "Sofá de canto",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: L-shaped oak settle with separate moss-green wool cushions and carved narrow armrest rails. Physical footprint ratio 2.4:2.1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-84eb920b-23b9-4784-9842-74aa31bac9c0.png",
+    "sourceSha256": "30fd53d88369f78e824c662f0fdf173c5ced3ce7f119bcebc0073576a675f17f",
+    "sha256": "0b9d83ada5b21046cd49d31d306e3882f76b3f0f51302086bb4765cfe025079e"
+  },
+  {
+    "id": "furniture-158",
+    "name": "Divã de seda",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: low curved chaise with burgundy silk upholstery, brass end trim and small cylindrical bolster. Physical footprint ratio 2.3:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-3a32b6e3-b570-4a36-b518-2d97ebb27120.png",
+    "sourceSha256": "a1d58f46faf379b8024fae932d255c551dd4b3d6ca6b11f617761a31bc27fc79",
+    "sha256": "070a63920349d719ca04dbf21345d98b1fce399cffb00390ba421cc724b11116"
+  },
+  {
+    "id": "furniture-159",
+    "name": "Pufe de couro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: round stitched tan leather pouf with eight radial panels and a small central button. Physical footprint ratio 0.9:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-df8517b8-5597-40e0-b2e5-d4dca233051f.png",
+    "sourceSha256": "fc2fced4be52fd9b4afab75a4d4a77e4a150ec317b01adc798d626a32964d677",
+    "sha256": "e19c64f7be3f8d8bc5dae3817694e19de156da7c65c979df75dd9217cdc75074"
+  },
+  {
+    "id": "furniture-160",
+    "name": "Escabelo bordado",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular walnut footstool with an ivory cushion embroidered with small forest leaves. Physical footprint ratio 0.9:0.65.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-2ee73c5b-38ea-4229-bda8-ae61fe28ac53.png",
+    "sourceSha256": "fc6bec6a043d01394857f470aa21692b0615b6b64e113ed96525911784f320e4",
+    "sha256": "4aa57bfac2dd67112313aed1a62a24aaf7dd65b1a22ccbc1a8f012827c97fb69"
+  },
+  {
+    "id": "furniture-161",
+    "name": "Mesa de banquete",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: long rectangular banquet table made of heavy oak planks, iron corner straps, central faded linen runner, no chairs. Physical footprint ratio 4:1.3.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-619fa777-fffa-433a-aee2-dd41bbd4a7ae.png",
+    "sourceSha256": "b002653f06c8a9e843b9d90e73cf8eb42ac519c9ad06a54d2b62938f8e82e17f",
+    "sha256": "4c45f05794607d8e6b40fda2953add6f81bf3bc762ff5f91bc804ade5a67b958"
+  },
+  {
+    "id": "furniture-162",
+    "name": "Mesa de cavaletes",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: portable rectangular trestle table with pale rough-sawn pine plank top and exposed wooden joinery at ends. Physical footprint ratio 2.2:1.1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-79026546-3443-4afd-a2b3-66b705dfdd1c.png",
+    "sourceSha256": "2e12afb6eae6a8545266e885b557f2ea54022d7f38b56bd9e55189e82d147f57",
+    "sha256": "479256eb98f762e9d7dc9d09b8e1172c632408460df12b535dd119c4f7e74d3d"
+  },
+  {
+    "id": "furniture-163",
+    "name": "Mesa de jogo de dados",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: hexagonal walnut gaming table with recessed worn green felt and a few bone dice, no writing. Physical footprint ratio 1.5:1.5.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-b60e0e9d-5c4a-4141-864c-de57329892f6.png",
+    "sourceSha256": "2a2f530b563598ce6f1f68fc6653b9ecdbf11e5476f8af5c107d3c96e153adae",
+    "sha256": "751748d51606fe3d3a7513176887a242fe40f6b71075ef35002af11719655f8f"
+  },
+  {
+    "id": "furniture-164",
+    "name": "Mesa de refeição individual",
+    "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. One small rectangular oak dining TABLE ONLY in exact overhead plan, set for one with a pewter plate, folded linen and earthenware cup. Nothing outside the tabletop except thin oak corner caps. NO chair, stool, bench or additional furnishings. Table outline is a simple rectangle. Physical footprint ratio 1.1:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-31d55f7c-4b18-4be0-a1ee-e41414066176.png",
+    "sourceSha256": "e38179a657f524a938539de0ebb5ed37e9efd95134c4b703837ce85a4cffe241",
+    "sha256": "d7cd1426029e044469b4948cc9647e1311a84fa2af175ede0ccb18576d3ac058"
+  },
+  {
+    "id": "furniture-165",
+    "name": "Mesa de assembleia",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: horseshoe-shaped oak council table with open central cutout, a few rolled scrolls and candle-free brass inkwells. Physical footprint ratio 3:2.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-f95778bf-1fda-4d5d-9943-0d2ea2f36ea8.png",
+    "sourceSha256": "a15dcb8ff6e3e0e4a56de2159831d49c7223b06414bdf021dc9a3125aead8203",
+    "sha256": "07fa30cbdb590178bddbbf55aae4543111cff04c5883e37a50c25a0ec9e96294"
+  },
+  {
+    "id": "furniture-166",
+    "name": "Mesa de joalheiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: jewelers semi-circular work table with central curved cutout, tiny gemstones, hand tools and leather pad. Physical footprint ratio 1.8:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-316d4adb-718e-4b1b-8a4e-d81b48fe4613.png",
+    "sourceSha256": "72265b19d39211a4acabd5af636b461d85554a94f4b7593f3e48300c5c0b73ee",
+    "sha256": "ca3b8ec6fd92d7a62b65b1cf6cb34d56216e83b08d3f6d6253b1af7240f28868"
+  },
+  {
+    "id": "furniture-167",
+    "name": "Mesa de corte de tecidos",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: broad wooden tailoring cutting table with partially unrolled ochre cloth, iron shears and wooden measuring stick without markings. Physical footprint ratio 2.5:1.4.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-702f0169-680f-4945-8071-d211ccbadee3.png",
+    "sourceSha256": "a990a5500328464af0229d3bc5add8c947429fef54722de14635c90b39aab1c7",
+    "sha256": "d236c7d8de209ab5b11a1e1ddda0fc289e486293172d074684f43b6b0176f2bd"
+  },
+  {
+    "id": "furniture-168",
+    "name": "Mesa de boticário",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: apothecary sorting table with shallow wooden compartments of dried roots, ceramic mortar and small corked brown bottles. Physical footprint ratio 2:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-3c1d9dff-dd84-4d40-b3c3-6617fb761ad3.png",
+    "sourceSha256": "ed2156f428aad4a9383f442e8784e20217f25ee9b674eec35770a9aec57e579e",
+    "sha256": "7225cecf14fc1dab9d6b01e8baabfbd6fca419b1ea4d142caa18ad11d5c86271"
+  },
+  {
+    "id": "furniture-169",
+    "name": "Mesa de dissecção",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: empty pale stone examination table with rounded corners, a shallow edge groove and bronze drain, clean no body or blood. Physical footprint ratio 2.5:1.1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-59072efd-8254-42e6-9989-96bf245c92d8.png",
+    "sourceSha256": "9a81bb42afcd119c9cffbab6165e0a8567192d27ae1c67c1e8fdc6886ac501be",
+    "sha256": "e7b48b5fc3f133f4951fff93915f721634dafbdca781ff8f1c285dddce5b012a"
+  },
+  {
+    "id": "furniture-170",
+    "name": "Mesa de astronomia",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: round walnut astronomy table with inset brass circular star chart, small astrolabe laid flat and ivory dividers, no lettering. Physical footprint ratio 1.7:1.7.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-505a59f0-408d-4b90-bf54-ccfcd864c76d.png",
+    "sourceSha256": "38700d87879aa426a60fd4a08b601072469ef6fcea13ba5266199a9b0a357413",
+    "sha256": "fb9b90b13ed5b4d69be51a562017b1829eadc160dc65adead93e34a91631d6a7"
+  },
+  {
+    "id": "furniture-171",
+    "name": "Cama de quatro postes",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: four-post oak bed seen vertically from above, four small square post caps, indigo quilt and two ivory pillows, no canopy. Physical footprint ratio 1.6:2.4.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-034d1241-1371-4079-9843-3dd6d5962ca7.png",
+    "sourceSha256": "60b1ca7007e4e64bc45acf634c920ec0516226085ef90fbc2cf9175aa322846d",
+    "sha256": "b7f4032aa41e9e140685ea337b27f83e3ce3635158b8e6556455d59f2ff7f351"
+  },
+  {
+    "id": "furniture-172",
+    "name": "Cama redonda",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: round low bed with radial oak rim, thick rust wool blanket and two crescent linen pillows at north. Physical footprint ratio 2.2:2.2.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-029d500a-2eee-4e86-827b-f0bba2b131f1.png",
+    "sourceSha256": "7efb2010beeb2147310711f9f32d7823087f8131376181c642a168c9cf388e34",
+    "sha256": "72afaec54dc9fc09409df281f86249b10d9f4843c492c89c11fe0c2b8d7aa0c4"
+  },
+  {
+    "id": "furniture-173",
+    "name": "Cama de enfermeiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: simple hospital cot with white linen sheet, folded blue wool blanket at foot, narrow wrought iron top rims. Physical footprint ratio 1.2:2.2.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-0efc15fe-af21-41cd-b9e9-b4fb0ef66cdc.png",
+    "sourceSha256": "f8b7f2461c83b4f671e10bbe533939ec6054c2051b61d557e5bc4cd2298dce0d",
+    "sha256": "ccabb388a643785c8c7367cdf2d53d95d7daa5922f288df974773236a0eed806"
+  },
+  {
+    "id": "furniture-174",
+    "name": "Maca de cura",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: medieval portable stretcher with taut cream canvas bed, two oak poles and leather hand straps at both ends. Physical footprint ratio 1.1:2.5.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-25cccfee-662f-4b81-92e5-4c0a090b8778.png",
+    "sourceSha256": "7351acef6027f13590eb8f2f5f4f17c95840a5e67dd84ddb8869583ac5e9b9fa",
+    "sha256": "49499fbb8103dc775a6089bdc638be77f0bc3d4c9feba3e5c29170bbb3a04c05"
+  },
+  {
+    "id": "furniture-175",
+    "name": "Futon de viagem",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: thin rectangular travel sleeping mat with faded woven stripe pattern, small rolled pillow and folded green blanket. Physical footprint ratio 1.2:2.1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-b5b58cfe-7c0a-4905-9894-50d9adb39f95.png",
+    "sourceSha256": "f79a30680d62565e926f7952dd93a0825d2b2dca9aad57a3b2b8a422503e4510",
+    "sha256": "bd438a1809f409432c3731380da461584a4e3b86404d4d8fa2c59b2dd4c3d6bc"
+  },
+  {
+    "id": "furniture-176",
+    "name": "Ninho de almofadas",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: cozy oval floor nest made of five overlapping linen cushions in muted ochre, olive and brown with a rumpled wool throw. Physical footprint ratio 1.7:1.7.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-33eddccd-b05b-4fa9-b5bb-0ab9f168d9e6.png",
+    "sourceSha256": "ea2bc74b4af30f9b57547be334d2eeb429fc944f3857916e412535011584ca8d",
+    "sha256": "61ba72cc146967a691785bc1e0be89928b9ff36f5ca1050076c51c132388297b"
+  },
+  {
+    "id": "furniture-177",
+    "name": "Cama de mascote",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: oval woven willow pet bed with raised woven rim and soft moss green cushion, empty no animal. Physical footprint ratio 1:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ef5f32c3-c073-4781-a1a0-8fedb3ac9fd3.png",
+    "sourceSha256": "6bdaa8c57033020af4a96017a7c3abd239b7ca7baa4047f436e8b4e183ac8017",
+    "sha256": "c259f418bbe6e043d6d8e930ddd0585a51c0bfacb62f661ff1ea4f2fa0eea361"
+  },
+  {
+    "id": "furniture-178",
+    "name": "Cesto de bebê",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: oval hanging cradle basket viewed from above with folded ivory blanket, tiny pillow and two rope suspension loops laid on the rim. Physical footprint ratio 0.8:1.1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-de7c8868-63b7-42b7-a676-82eb2d41ca30.png",
+    "sourceSha256": "e2b0123c0143274b53e55e262cf608cd366417de969562a91aaa5e117ccf0a97",
+    "sha256": "1f894a0e939f7758af190676b6e121f9f50249b4f4dc7cba6571bce4144e29c7"
+  },
+  {
+    "id": "furniture-179",
+    "name": "Arca de navegador",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: closed dark teak sea chest with tar-darkened iron straps, rope handles and a brass compass medallion on lid. Physical footprint ratio 1.6:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-009e5850-79a2-4e37-af7a-b04c587cc7b9.png",
+    "sourceSha256": "babae9be71788831ddf66bd29c33f3da44de0b51d1ae716770bfd0c357e3c6ee",
+    "sha256": "84f11d8005850c2bc97dc2e8827c593f3993c1fa2ff7ac8fb47c2066b69b35f4"
+  },
+  {
+    "id": "furniture-180",
+    "name": "Arca de cedro entalhada",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: closed cedar linen chest with intricately carved leafy lid panels and two small bronze hinge plates. Physical footprint ratio 1.8:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ca501b19-a6b5-499f-b3ba-3247159b34b2.png",
+    "sourceSha256": "f1416282e87fcd4e4308d140284e3dec0fbc04c23e6a61cf7de7cb2136f2260e",
+    "sha256": "d34cd04f783541964f97b6bb76eedfd123fd4a4f5440b029e95446858efe7bd8"
+  },
+  {
+    "id": "furniture-181",
+    "name": "Baú de couro com fivelas",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: closed travel trunk wrapped in worn ochre leather with three wide buckled straps and reinforced dark corners. Physical footprint ratio 1.4:0.85.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-c9806f28-5dac-423a-9d0a-951a9a1412e4.png",
+    "sourceSha256": "fe279b60484f9ebc2f08d52e6e8a909d7c2856384db7f784c960387cd63a3a06",
+    "sha256": "d506164d3e69def9c7aa676d65076e41916edc604b996fd4e36853f06ec3679c"
+  },
+  {
+    "id": "furniture-182",
+    "name": "Caixa de instrumentos cirúrgicos",
+    "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. One open shallow rectangular walnut surgical-instrument case in exact overhead plan, with neat fitted rows of tiny steel scalpels, forceps, scissors and rolled linen bandages in brown velvet. LID REMOVED, not visible. Four very thin uniform rim edges, no vertical outside walls. A flat filled rectangle. Physical footprint ratio 1:0.7.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-11e12757-b65d-4896-893e-c9ee177d4438.png",
+    "sourceSha256": "8df93b7db4fc67c404b1f6129de5a9cea89ffb9a283555d24018b93230614f68",
+    "sha256": "30b6f8da5808719f5e0601ace90fe28f11979d4a0c603886bc67058d0f6f249d"
+  },
+  {
+    "id": "furniture-183",
+    "name": "Caixa de pigmentos",
+    "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. One open rectangular wooden artists pigment case in exact overhead plan with twelve little ceramic pigment cups, fine brushes and a small mixing stone. LID REMOVED, not visible. Four very thin uniform rim edges, no vertical outside walls. A flat filled rectangle. Physical footprint ratio 1.1:0.7.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-07d4190c-2571-4c3c-ba25-9154b00d959b.png",
+    "sourceSha256": "ed25d7f1eeffa364f66951c24c8159091fc7c36e7bbcd39b765e468ac8c440f2",
+    "sha256": "5d5f0c2f8ccfa00aedd5ac5cf1852b04afaa666c2d0c0793b890dc6871f44bb6"
+  },
+  {
+    "id": "furniture-184",
+    "name": "Maleta de cartógrafo",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: open leather cartographers case with brass dividers, rolled blank parchment, wooden straightedge and ink pot. Physical footprint ratio 1.2:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-63e1f2f8-e34d-4df1-8913-56a4c2a4a963.png",
+    "sourceSha256": "ec9c78aefdb4368802c40e681e8c47c8ab4fa3b9d895a925a263b89b1e8de791",
+    "sha256": "3fca9cc82b5966ece0a408d01d57a16f717f859c6ce2d63aa83d1f6e044d1324"
+  },
+  {
+    "id": "furniture-185",
+    "name": "Cesto de roupas com tampa",
+    "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. A round closed woven willow laundry hamper seen EXACTLY VERTICALLY ABOVE. Only the CIRCULAR WICKER LID is visible, with a spiral weave and small central woven knob. No sides or cylindrical basket walls visible at all. A folded ivory towel crosses a small part of its rim. Outer contour is a perfect circle. Physical footprint ratio 0.9:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-47b5e0e5-3057-4ba1-8a07-5c020b304b16.png",
+    "sourceSha256": "7b1abf70f66ed732be279964968c4d62305665dc1459e4a76c575a74d8b6424c",
+    "sha256": "9d3a15c78e08d83c30381f24995018c752bd2a6cc51a0277112a0b7cf90281f4"
+  },
+  {
+    "id": "furniture-186",
+    "name": "Cesto de lã",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: oval willow basket filled with coarse wool skeins and two wooden knitting needles resting across rim. Physical footprint ratio 1:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-e9dee375-6b96-4d67-b313-8263e62e25fa.png",
+    "sourceSha256": "ffdeda3d5a3452e19b34cd53cbebf0eac22139e27bacf2763ea9ec85538227b6",
+    "sha256": "565cf5967cd6656c858ac5de74d3b53155cdaeacc57b6f730697c45f0ee68699"
+  },
+  {
+    "id": "furniture-187",
+    "name": "Baú de brinquedos aberto",
+    "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. One OPEN rectangular oak toy chest in exact overhead plan, contents visible: tiny wooden horse lying flat, little cloth doll and carved colored blocks. LID REMOVED, not visible. Uniform very thin top rim, no exterior vertical wall faces or legs. A single flat filled rectangle. Physical footprint ratio 1.3:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ef4b8d66-6dd5-49b6-a141-39fa6da7805d.png",
+    "sourceSha256": "b8dd6312eaef8819fb3465040b1b7bb3ade0b46608578e0389445f4efd5af6a4",
+    "sha256": "9a492fd53707f1b7c7f6d8f07046bcc556a0d58f8a14ce5faf4286b1a2a59f59"
+  },
+  {
+    "id": "furniture-188",
+    "name": "Bandeja de correspondência",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: shallow dark walnut letter tray holding folded parchment envelopes with red wax seals and a feather quill. Physical footprint ratio 1.1:0.65.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-df43c566-ebd3-473e-aac1-3533ca1d7707.png",
+    "sourceSha256": "ebcdd7555dbe5fbbc3d8329f1934ca89039c3e3f60a648aded0a6d021813ee45",
+    "sha256": "a17e0939af39693dd92264380171ef634ecec7c966bcf9bfc4809ca9a76bd3f3"
+  },
+  {
+    "id": "furniture-189",
+    "name": "Escaninho de moedas",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: open tabletop coin sorting box with eight small wooden compartments of copper silver and gold coins. Physical footprint ratio 1:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-7f7713cd-e17a-40f9-9e36-b1acc07bad15.png",
+    "sourceSha256": "af3230750c9d62ea51db0464f63792d6b6be056c8a9334e000e0cf199e3c7b59",
+    "sha256": "1b2beb141aed2531451559cf89005e8c5ebef0c3e979c012aa650fa738acb7e6"
+  },
+  {
+    "id": "furniture-190",
+    "name": "Porta-rolos horizontal",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: low oak rack with six horizontal compartments holding rolled parchment scrolls seen from directly above. Physical footprint ratio 1.5:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-7347eef5-e17a-44b9-a92e-e7b87f609d82.png",
+    "sourceSha256": "baeec179277a239cb4023fcbb38e87aebe922419792f27a2c3fa82fa3ee6ebed",
+    "sha256": "8f628b71c9abec41a77959f7324375445011d811a8bf1d4f3c982f4b0ede3aff"
+  },
+  {
+    "id": "furniture-191",
+    "name": "Armário de boticário",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: long narrow apothecary cabinet top with inset divided tray of herbs and labeled-free ceramic jars, no visible front faces. Physical footprint ratio 2:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-38405772-97f6-42ae-b70a-f217766c0ca1.png",
+    "sourceSha256": "007e19fe184b06f0e3421beac1b26d51e528169b49d21439dcb0c5fdb0b04b46",
+    "sha256": "03a40a36099315417bd1edb502d1864d06720ed63da0af206ee203e0a0681a9a"
+  },
+  {
+    "id": "furniture-192",
+    "name": "Estante dupla de biblioteca",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: double-sided freestanding oak library shelf seen straight down, paired rows of book top edges along its long sides. Physical footprint ratio 2.4:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-14ec7b4c-21f6-48cf-978d-f9ff49734dbd.png",
+    "sourceSha256": "8a5306eca6cb51c5004364103d08e176bf443d816eae37a6b65a8443ad0b72cc",
+    "sha256": "b61d3a6d3c6372a36dca7d698c0194cd1cb4db65bcff4e26179ef1e3a99100f3"
+  },
+  {
+    "id": "furniture-193",
+    "name": "Bancada de cervejeiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: brewers oak workbench with copper fermenting pot lid, wooden funnels, malt sacks and tasting cups. Physical footprint ratio 2.2:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-1a1fa58b-349c-485d-8a23-e288f21dfa0b.png",
+    "sourceSha256": "fdca04128f482fa1648a46bbc0d63752dfa34b2540c443a1dd9495c0f09ac8ec",
+    "sha256": "97acafcd1d1b0672fb753489a2945caf3928f3607c222d87f14c449821654f64"
+  },
+  {
+    "id": "furniture-194",
+    "name": "Bancada de padeiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: bakers flour-dusted maple workbench with rolling pin, dough rounds and wicker proofing basket. Physical footprint ratio 2.2:1.1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-509befdd-91a2-43a8-97fd-62184c69222e.png",
+    "sourceSha256": "42532bab586f869d649616716fe5d529505ee2de42546c3a4716f30fb93cbb03",
+    "sha256": "ec6d1bbde77b1737e04adc31b4eaf78d2559b7f69c0ce31524ba44c08f3b8111"
+  },
+  {
+    "id": "furniture-195",
+    "name": "Bancada de açougueiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: butchers thick end-grain chopping block counter with cleaver, clean linen and wooden bowls, no blood or carcass. Physical footprint ratio 2:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-868fcddd-1fc6-413a-ba9e-117ecfab6ed2.png",
+    "sourceSha256": "897a8da0e62ed20422f8e22d935e987efbb618eebf28008bb5a595d1630e6a72",
+    "sha256": "7e328fbfd75d5b4115ae392f3494e537b6565c83a939ec81570ba0981d3d273d"
+  },
+  {
+    "id": "furniture-196",
+    "name": "Bancada de peixeiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: stone fish preparation counter with two silvery fish on crushed ice in a shallow copper tray, wooden cutting board and small knife. Physical footprint ratio 2:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-c4f86e3f-95de-465d-80ac-0da66ab074ec.png",
+    "sourceSha256": "0cb3f14177827ef8a223a2952444de30d6da99ed93b4afbaff8d451d400ccc77",
+    "sha256": "64262a838e744a89bc902880579a6923dfc315a285a6ed2ae8e0d6554c36c5c1"
+  },
+  {
+    "id": "furniture-197",
+    "name": "Bancada de curtidor",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: leatherworkers oak bench with flat brown leather hides, awl, mallet, bronze punches and straps. Physical footprint ratio 2:1.1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-39d74501-8338-4c22-8b2b-5111eb01bdd2.png",
+    "sourceSha256": "10694dc69480554c148ff2758f65bb6c0fc47a861cf4297bb354be7eb9423ecf",
+    "sha256": "260c52956821b24e0f1ca8815dcecbfdeb8ef5e2e778cbe882ea3fa185c1d149"
+  },
+  {
+    "id": "furniture-198",
+    "name": "Bancada de flecheiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: fletchers pine workbench with half-made wooden arrows, feathers, sinew spool and small carving knife. Physical footprint ratio 2.2:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-465eadd9-ccdc-4467-a995-d1abd8969a87.png",
+    "sourceSha256": "13bf0d958906596c4584d787e5c808ef682b38dc93135957b2ff8fc3ee29556f",
+    "sha256": "91da7efe05189564845b9742b33b80d561e806b82769719c2b1a4d2a08d8ceb9"
+  },
+  {
+    "id": "furniture-199",
+    "name": "Bancada de vidreiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: glassworkers stone-topped bench with colored glass lumps, long iron blowpipe laid horizontally and three small unfinished vessels. Physical footprint ratio 2.1:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ed69eb1c-bddc-4fe0-a359-510234411657.png",
+    "sourceSha256": "89ceca3287a2e48d001b8f6b539409aa408ee3c4de330c9348af1f398223887e",
+    "sha256": "9bca18e1dc5566cebf28ba4e0f72f5ccfa46241cc266709cc947f8231c04cbdf"
+  },
+  {
+    "id": "furniture-200",
+    "name": "Bancada de ceramista",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: potters clay-stained workbench with several unglazed bowls, damp clay blocks, carving tools and sponge. Physical footprint ratio 2:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-e945dd92-032c-47a4-872e-44766c8438db.png",
+    "sourceSha256": "0f265db3da45639d1490a300642d947155198ea2d8e4e26762f35b6ed4a00fc7",
+    "sha256": "6e60dc0b6a0f7358909366bc0f91e9e90038267c2075c08042e25a6cb6e0882f"
+  },
+  {
+    "id": "furniture-201",
+    "name": "Bancada de carpinteiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: carpenters worn oak bench with integrated wooden vise seen from above, hand plane, chisel, curled shavings and unfinished plank. Physical footprint ratio 2.4:1.1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-013b7be1-020c-442d-93e0-1cf9a90aa1e4.png",
+    "sourceSha256": "ac496c4a1e399bb399cd1641a349b2ab41429f9fb454f08113c41e04c2afc580",
+    "sha256": "638c8b798beb294970905300133edb95b84c01bad8cf697b6ca05fa6eaf2181d"
+  },
+  {
+    "id": "furniture-202",
+    "name": "Bancada de escultor",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: stone sculptors workbench with unfinished small carved stone relief laid flat, chisels, wooden mallet and stone chips. Physical footprint ratio 1.9:1.2.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-d5a36f17-9fc2-42b8-bcd6-7135b16fe50c.png",
+    "sourceSha256": "dd636350879aadb5d0c3f8e1b73eaebab30a1e7302bb27203b149b3a84184a6d",
+    "sha256": "91cdacdd0285dec7f2a43bbe856205156cedd1140c5a9bd224f66ae59976e485"
+  },
+  {
+    "id": "furniture-203",
+    "name": "Bancada de relojoeiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: clockmakers walnut workbench with small exposed brass clockwork lying flat, hand tools, gears and a round magnifying lens. Physical footprint ratio 1.8:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-10949914-09a6-47f6-86be-38ec989de698.png",
+    "sourceSha256": "f0fc5bd7dc6387d99e1bc3f5bc6934e76dc45293bfba862e9d373e90131ecae2",
+    "sha256": "a60c185b22b316eec02a7c75901edbaf78ae7c74952bef9b16d2968ace5deea1"
+  },
+  {
+    "id": "furniture-204",
+    "name": "Bancada de entomologia",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: naturalists oak desk with open shallow specimen trays holding preserved beetles and butterflies, no labels, closed leather journal. Physical footprint ratio 1.7:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ffdc08ff-7d2b-44af-8711-80988c6727ef.png",
+    "sourceSha256": "48b3d2865e3b424c33a3702db76dc5885f6202e2af7a75c6cbc93416a6ae201d",
+    "sha256": "38662a7716db582f47d7d16a82d794789d5d3a9267dab0b7c23eaf1d6e9254b7"
+  },
+  {
+    "id": "furniture-205",
+    "name": "Bancada de perfumista",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: perfumers marble-topped table with tiny colored glass perfume bottles, flower petals, copper funnel and two shallow mixing dishes. Physical footprint ratio 1.6:0.85.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-f2d2fbc8-2826-4de7-a7e6-3c4fa6331cd4.png",
+    "sourceSha256": "dfc793327edbcd977924171eb924498ac40a17337d041389f8bc4f71907e8218",
+    "sha256": "5028ed3f0684470b297f51b2520f95d93d2d43511968b368f543d6aea85af282"
+  },
+  {
+    "id": "furniture-206",
+    "name": "Bancada de velas",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: chandlers wax-spattered oak workbench with unlit bundled taper candles, braided wicks, copper wax pot and beeswax blocks. Physical footprint ratio 1.9:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-a98a7295-3214-429b-ab28-63fa3ea5079a.png",
+    "sourceSha256": "06d5071975d5c0a3e4b1e48b19433e77f2a5a904361f708bf9272f5500d7798c",
+    "sha256": "179b72ab7b58fe37db745914ec5073385b7f5990f63c67b3af6307bab7fabcf1"
+  },
+  {
+    "id": "furniture-207",
+    "name": "Bancada de saboeiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: soap makers rough oak bench with wooden rectangular soap molds, olive soap bars, dried lavender and a ceramic mixing bowl. Physical footprint ratio 1.9:0.95.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-a7698533-97de-41d8-8e4a-726b80dda680.png",
+    "sourceSha256": "f6dc99b2b5be19a4b7b46aeb8b9e0dbec40fa5096ceb03318876f21847396f2e",
+    "sha256": "1b0c0b122c6b923aad3e3eb5644830653ff8e54edb820d21b1212804937e068d"
+  },
+  {
+    "id": "furniture-208",
+    "name": "Bancada de gravador",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: engravers workbench with a copper printing plate laid flat, fine burin tools, ink brayer and blank parchment sheets. Physical footprint ratio 1.8:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-53f20643-80e6-4786-97f6-f7bb9914fa0e.png",
+    "sourceSha256": "e2c317242bf9108733d93315d1041f5dcbb05d4b3a53ef5352fc8901f050aa7f",
+    "sha256": "cb38deaaf9851669fd2e02026969b477191e1d2f91fc811827b0f753551bd9d6"
+  },
+  {
+    "id": "furniture-209",
+    "name": "Prensa de encadernação",
+    "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. A compact wooden bookbinding press in EXACT NADIR FLOOR PLAN. Visible top consists of a broad rectangular oak pressing PLATE covering a clamped book; to left and right are two round wooden screw END CAPS, viewed as circles from above. Screws stand vertically toward camera so NO threaded SIDE SHAFTS are visible. Only parallel horizontal top planes, no front elevation. Physical footprint ratio 1.2:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-c87cefa8-c099-4815-bfe2-98963496286e.png",
+    "sourceSha256": "7a58348d0c86ae367065f41c37ca849318cc61f050daed83ec824278332f04ba",
+    "sha256": "5ee4bb1bed8e1d28c6d0329d60b43f498b9ad92585b0df51191588b008c8dae1"
+  },
+  {
+    "id": "furniture-210",
+    "name": "Roda de oleiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: manual potters wheel seen straight down, round clay-smeared wooden disk with small centered clay bowl and low side tray of tools. Physical footprint ratio 1.2:1.2.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-11de24fb-d4a2-4063-ab4f-ef0fb8cea505.png",
+    "sourceSha256": "2ef08f62b5103c11e1ccafc0e16966deedddf566b91abe117965d8ca6e021299",
+    "sha256": "a35ada13447963f7b28577efa448a21bd815763d70e23acdb29fd6d429f25880"
+  },
+  {
+    "id": "furniture-211",
+    "name": "Forno de pão",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: small medieval dome bread oven from strictly vertical overhead, warm soot-stained terracotta dome, stone rim, tiny chimney top hole, front opening not visible. Physical footprint ratio 2:1.7.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-d7b5070c-d8b2-4d30-ac6c-5540b20abe97.png",
+    "sourceSha256": "8a4b67ee339182bee811ccc00827c67e5a6853071f95b902a57d93b319b7c760",
+    "sha256": "1f6df9f0974ee45908956c6ec406c3a1563f091626efff072d65c7449c1e71a6"
+  },
+  {
+    "id": "furniture-212",
+    "name": "Forja de ferreiro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular stone forge seen directly overhead with recessed bed of dark coals, a few glowing embers, iron tongs on rim, no smoke or glow halo. Physical footprint ratio 2:1.5.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-16f4511e-4568-4676-879f-8a09edc785bd.png",
+    "sourceSha256": "11eb2c1548c53313160141e060bb631c24e94829f1e450d0a0cdf5a1351d09ab",
+    "sha256": "7563956ee0450f53263ba2730328def33f82d1b4ddd9a821b803b953a1d5bf74"
+  },
+  {
+    "id": "furniture-213",
+    "name": "Grelha de cozinha",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular medieval kitchen hearth with iron grate over dark coals, small copper pan on one side, stone outer rim, no flames or glow halo. Physical footprint ratio 1.8:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-bd87a49b-cffe-419e-abde-7d5cd1c36105.png",
+    "sourceSha256": "c089d0946315e1115e74b208a15dfaf6e2317a00daf8f2bd76613651abae0f15",
+    "sha256": "62c179360ca1cc714f748f66a3d4c58b36bb21ff04d06072cf9a9964eca027d9"
+  },
+  {
+    "id": "furniture-214",
+    "name": "Churrasqueira portátil",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: small oval wrought iron charcoal grill seen vertically from above, blackened grate and tiny terracotta charcoal pieces, no smoke or glow. Physical footprint ratio 1.2:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-c3e80e09-84c4-44e3-bae8-26cba3d7be51.png",
+    "sourceSha256": "bae27756ea6da4009d619793f724029057a6b103999a3a2f7885067be1caf02c",
+    "sha256": "4bef6703fbe835ddb23e505c9c960fa143dd258fdeebcc678a665c3d470fcf67"
+  },
+  {
+    "id": "furniture-215",
+    "name": "Tacho de tinturaria",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: large round copper dye vat with muted blue liquid and folded linen draped across one rim, iron ring handles. Physical footprint ratio 1.3:1.3.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-da06fa08-dfc2-4d0a-b473-d75f5a72a58a.png",
+    "sourceSha256": "7657cfb44c688b5cb5c51cc5cf67d1cd845cb3e37d789ec8d29beb193b645a93",
+    "sha256": "6cdbab9150ba15a5ef9c435155bbef549cb7a413b2fea9ec4a41b54d92d709c7"
+  },
+  {
+    "id": "furniture-216",
+    "name": "Prensa de queijo",
+    "prompt": "Create ONE isolated original finely hand-painted realistic medieval fantasy VTT furniture sprite. STRICT VERTICAL ORTHOGRAPHIC NADIR, camera exactly above at 90 degrees, no tilt. Show ONLY horizontal top surfaces. All vertical outside faces are invisible. True circular tops, parallel rectangular edges. Delicate crisp contours, fine small-scale material grain, warm worn wood, brass, leather, earthy muted colors matching our approved furniture library. Even overhead lighting, tight contact shading, narrow clear margin, real transparent alpha. No floor, people, text, watermark, isometric view or scene. North is image TOP. One compact cheese press in EXACT OVERHEAD FLOOR PLAN. A square oak base supports a round cheese mold with a flat oak circular pressing lid. A narrow horizontal oak crossbar spans east-west ABOVE the lid. At its center there is ONLY a small circular wooden END CAP of the vertical screw seen from above. The vertical screw SHAFT is occluded beneath its end cap and crossbar. NO vertical thread side surface, no front facade, no legs. Clear top shapes only. Physical footprint 1.1:1.1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-0114bbc1-d09b-4e9c-8e53-da6914755f3b.png",
+    "sourceSha256": "066bfb6affa25a4c59b10f4345cc10dddfc07a6d5164bb13f9709fde4e8908ef",
+    "sha256": "877fee040546b5ed725f2d0b3e5b65140f5065a4c2cb0aff49d404e1fa1c8fe0"
+  },
+  {
+    "id": "furniture-217",
+    "name": "Barril de mel aberto",
+    "prompt": "Create ONE isolated original finely hand-painted realistic medieval fantasy VTT furniture sprite. STRICT VERTICAL ORTHOGRAPHIC NADIR, camera exactly above at 90 degrees, no tilt. Show ONLY horizontal top surfaces. All vertical outside faces are invisible. True circular tops, parallel rectangular edges. Delicate crisp contours, fine small-scale material grain, warm worn wood, brass, leather, earthy muted colors matching our approved furniture library. Even overhead lighting, tight contact shading, narrow clear margin, real transparent alpha. No floor, people, text, watermark, isometric view or scene. North is image TOP. One OPEN HONEY BARREL seen EXACTLY vertically down from directly above. The image is a PERFECT CIRCLE, showing ONLY a narrow concentric oak rim and its circular golden honey surface. ABSOLUTELY NO cylindrical exterior wall, barrel body or staves below the circular rim. A small carved honey dipper rests diagonally over this circular opening. Fine warm oak grain, iron rim ring, no glow, no background. Physical footprint 1.1:1.1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-11af9d1d-8965-4eea-b259-8983f52daac2.png",
+    "sourceSha256": "970be324c8faf0c4d3976fdb13c06546d1066a10e93693b7f54c8e2165f470f6",
+    "sha256": "5cc758d807e4a38506c8faf3c1e69414bc4b767c736d220752d709c923abd496"
+  },
+  {
+    "id": "furniture-218",
+    "name": "Tina de salgadura",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: oval stave wood brining tub with coarse white salt, small folded linen sacks and wooden scoop resting on rim. Physical footprint ratio 1.5:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-07a9025f-2248-471a-9f50-9e8a7c164abf.png",
+    "sourceSha256": "10111138d0b9ce88d5255b1591f327386342f45fd89971bde0b072b3163951a6",
+    "sha256": "83d1ecd8c2bc0c65329ded5a8eb06821bc75c7a2ca0a16469741b312cec3f93f"
+  },
+  {
+    "id": "furniture-219",
+    "name": "Cuba de cerveja",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: round oak brewing vat seen directly overhead with pale frothy malt liquid, iron hoop rim and long wooden stirring paddle laid across. Physical footprint ratio 1.4:1.4.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-1f81ba1f-08aa-4d82-b72e-d230779147e9.png",
+    "sourceSha256": "01025f61ce35441c7d43f7658f259b4d03e2bda20b05d42ffa5b255f5f765399",
+    "sha256": "5ec2e690c8f44a3fccf154858cd348d20c4fb2ed2773bcb3a931592289d218ba"
+  },
+  {
+    "id": "furniture-220",
+    "name": "Prateleira de queijos",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: low pine cheese aging shelf seen straight down with round yellow cheese wheels, wedge cuts and a few dried herb sprigs. Physical footprint ratio 1.7:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-180b971f-5d1d-4b56-942d-c7de71f3794f.png",
+    "sourceSha256": "a6a8246866d5a7502f73dedf3358524382eb7b2c042a9f20b0fad41f19219ee1",
+    "sha256": "0c88413bba054b4c30b9f9bea501a58048af2c06de884a885688a48d28dd688b"
+  },
+  {
+    "id": "furniture-221",
+    "name": "Bandeja de café da manhã",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: oval wooden breakfast serving tray with rustic bread loaf, small butter dish, ceramic cup and sliced apple. Physical footprint ratio 1.1:0.75.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-865f52d7-e745-4a4c-9963-71a1bc9f14b2.png",
+    "sourceSha256": "9e55e1b5c4bc4e9099db8ddb85718a6257f448a185f138997284494272358582",
+    "sha256": "47b23b3d910e8d65f8f4a21583b1c25503492497e2d428ae30f921b1b77b50c7"
+  },
+  {
+    "id": "furniture-222",
+    "name": "Bandeja de chá",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular carved walnut tea tray with squat ceramic teapot, two cups and little bowl of dried tea leaves. Physical footprint ratio 1:0.75.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-1ee9d9df-6bee-4f7a-8b32-c7693ad2912a.png",
+    "sourceSha256": "e92bd1d3091e1c54c6eefc19409a8de17aa1ec901bc4d4cf227b1a3fbdf726b1",
+    "sha256": "15a9248218a5dc965a5d20d5250c47adf4f4754b2eb0ddcffd8d4ed4d04d2518"
+  },
+  {
+    "id": "furniture-223",
+    "name": "Serviço de jantar",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: single compact table setting on a cream linen placemat, pewter platter with roast vegetables, two clay cups and small wooden utensils. Physical footprint ratio 1.5:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-724c3c50-1699-40c8-ad44-d4f64d7b5541.png",
+    "sourceSha256": "a2d6ec253353a90ffcb5b2cc83297da72df9317a27f8053b4c544576820917ef",
+    "sha256": "50b1969356eb60425a0025a3ceb75c5d2431b35f8d7a9ee22df58513eb01f282"
+  },
+  {
+    "id": "furniture-224",
+    "name": "Travessa de frutas",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: shallow oval hammered copper platter piled with pears apples grapes and a split fig, restrained earthy natural colors. Physical footprint ratio 1:0.65.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-750b1297-3e93-4105-b33e-dda45b057a03.png",
+    "sourceSha256": "0178af715bd7138001a6bb014211a05b6d5c8d4e8f2eb38a8ad4292f5dfdc672",
+    "sha256": "d52cea6254eb21379a69d5dfe17ee85947a7a7071be009da3115f4749ea7467c"
+  },
+  {
+    "id": "furniture-225",
+    "name": "Cesto de cogumelos",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: oval willow gathering basket full of varied edible brown and cream mushrooms, small pruning knife across handle. Physical footprint ratio 0.9:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-2d66b3f8-cad6-4e9b-abd0-ed0ea3ebe563.png",
+    "sourceSha256": "80f22fb6fd3a004f00aec2145d0246482c3197ae2475011b5b5ce1eecf9ea5de",
+    "sha256": "58729576c228b6174729563b52fb749584ac77387baa252e2288c39a26043ce3"
+  },
+  {
+    "id": "furniture-226",
+    "name": "Pote de especiarias",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: small carved rectangular spice caddy with six open ceramic bowls of pepper saffron cinnamon and dried herbs. Physical footprint ratio 0.85:0.7.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ac30ce90-c99e-4416-89b5-2248c637af33.png",
+    "sourceSha256": "fdf1e52cce3f4f6bf00ccfe500b07773190d5dd2ea70a2ac41d33fe9d48a94a7",
+    "sha256": "2d2deed222fb4df851f6762b555284ff87603433b9776e122dfb3e38353c087f"
+  },
+  {
+    "id": "furniture-227",
+    "name": "Balde de gelo e bebidas",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: round wooden bucket filled with rough ice chunks and two dark green glass wine bottles seen from above. Physical footprint ratio 0.8:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-929cfed7-5fd5-48ce-9431-828019a6ee35.png",
+    "sourceSha256": "bf1b74bb0a106bb61fcafa1c702fdf9f3999766688849aa69079741504248f15",
+    "sha256": "35a41d36bdd839ddce8aebe5001554c192f756c3217f0570ff1196a3a54efa4c"
+  },
+  {
+    "id": "furniture-228",
+    "name": "Tábua de pães",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: large wooden bread cutting board with round rustic loaf half sliced, small bread knife and scattered crumbs. Physical footprint ratio 1.2:0.7.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-768d8d96-bda0-4286-9974-12ebb8d16634.png",
+    "sourceSha256": "b337fa8ff3d1804bb4c7fd89d6acba60ba2bdf8e9976d07ecc8105347a048dbc",
+    "sha256": "b0bf96d08d5629c6a092de8a3eaf480cdf527ec8c625822d39e2db6c0484154a"
+  },
+  {
+    "id": "furniture-229",
+    "name": "Conjunto de travesseiros",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: three overlapping soft linen pillows in ivory dusty blue and muted ochre with hand-stitched hems. Physical footprint ratio 1.1:0.75.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-8b2179fb-1c4a-4dd5-b873-29f9b360936e.png",
+    "sourceSha256": "e1296071545078c889c9b3edfc8b74224a358f1a25d5d4abae4ae691775c9e99",
+    "sha256": "8e0404d6ff9d663c5dffe3ee16eacce4a1201a2f0cf57eeee85cf72e481910fb"
+  },
+  {
+    "id": "furniture-230",
+    "name": "Cobertores dobrados",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: neat stack of three folded thick wool blankets in olive brown and faded burgundy with coarse woven edges. Physical footprint ratio 1:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-edfa420b-506f-4cd2-9e54-62c62cd5158f.png",
+    "sourceSha256": "554c04449387b8cc9281cebda7387eb7c79e3b049e66004da7aeadcd361c587d",
+    "sha256": "5875b9067ec085936c7a4e3b2f9220aeafbaba96cceed4e1f21c9236baabbb54"
+  },
+  {
+    "id": "furniture-231",
+    "name": "Tapete de oração",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular woven prayer rug with worn indigo and terracotta geometric border, cream center, subtle fringe at short ends, no text. Physical footprint ratio 1.1:1.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-1b7b8785-137d-4f5a-908a-9d2456d41a1a.png",
+    "sourceSha256": "6eaa870eee34ee93ad91ccdc98c8eede6d7ccd46a9e8cb15955740cf0409cf70",
+    "sha256": "52e6d0922b4b558511d988d11aa6021593e002721b330d65c1c7e8e5ce38f9c9"
+  },
+  {
+    "id": "furniture-232",
+    "name": "Tapete de urso",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: flat brown bear hide rug spread symmetrically, soft coarse fur, four paws and flattened small head pointing north, no gore. Physical footprint ratio 2:2.5.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-18976d10-e516-4b8f-b327-54c5b4cfe1fb.png",
+    "sourceSha256": "7169944e6bfb442c47dee6abf57bba6cc581115738cf6c0dfffc0609aac7e532",
+    "sha256": "fe265f9b44da0bddb8ca7ef21d6f7c817b403d1d64bec8cd9a4c2b9046510360"
+  },
+  {
+    "id": "furniture-233",
+    "name": "Tapete de lobo",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: flat gray wolf pelt rug spread out with four paws, dense mottled gray fur and small flattened head pointing north, no gore. Physical footprint ratio 1.5:2.2.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-51427232-2967-409f-b4f8-9fca50f604e3.png",
+    "sourceSha256": "a918158a50b33d7f6bcf7fd0cde2798250ec3e2104d6366bf289309b016fff3d",
+    "sha256": "1ad31b933a93b3aa9371156843e18a223fb7e57dc9fe63c4b1af0f899a5da514"
+  },
+  {
+    "id": "furniture-234",
+    "name": "Passadeira de sisal",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: long narrow natural sisal runner with hand-braided edge and two faded dark brown border stripes. Physical footprint ratio 0.9:3.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-066e0907-65ee-4226-950c-39bd5896bf1d.png",
+    "sourceSha256": "32ff34bf460cb6ab41d25f70b100f4c25f920d40f90757a3d60acf431156fd07",
+    "sha256": "4ee31d88d5211bc1f947dcbfb23db7a433af0993cb3f359e9f4badee4ede46cb"
+  },
+  {
+    "id": "furniture-235",
+    "name": "Esteira de bambu",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular mat of narrow pale bamboo slats bound by dark woven threads with understated green cloth edging. Physical footprint ratio 1.5:2.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-794c8a04-54bc-47e6-b059-a823823f49e4.png",
+    "sourceSha256": "963c47bc29926b04057794ae7e71932d07defb02426367429c8ae5fdcf3d8d2f",
+    "sha256": "529b45a70478227c323d46177648ec32b7af4ff4f3c9c9a40f4c23a19f34e1f3"
+  },
+  {
+    "id": "furniture-236",
+    "name": "Estrado de banho",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular teak bath mat made from evenly spaced wooden slats with smooth rounded corners and worn water marks. Physical footprint ratio 1.2:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-436539ea-4ab6-4dc3-9f7a-9df0fdf997f2.png",
+    "sourceSha256": "56c91a07d26b29299441cb28e311c11fd284a44c528c47c9bf751d00211e97c5",
+    "sha256": "a4651f846ca79c34de0fee0d63f2984a1f1f7091eb2796e8c67511a87057a230"
+  },
+  {
+    "id": "furniture-237",
+    "name": "Mala de banho",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: open oval wooden bathing caddy with linen washcloth, pumice, olive soap, small ceramic oil bottle and natural sponge. Physical footprint ratio 1:0.7.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-f72a48db-f6d7-4687-a6ad-5e03639fea1f.png",
+    "sourceSha256": "127d472c9cfa8b8ab04c017fc2dd839a82f275a63c1e23ae3d652da3ba35a894",
+    "sha256": "c30cc4dee56373c23ade223f8862aa2fd7ccaaa9e81af2e19a5fe3e2ce0a17ea"
+  },
+  {
+    "id": "furniture-238",
+    "name": "Lavatório de cobre",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: round hammered copper wash basin nested in a carved oak square stand top, with small water pitcher at upper corner. Physical footprint ratio 1.1:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-e0b67f1b-a985-4298-8d25-3d1bd9a6459b.png",
+    "sourceSha256": "dd50418c478dc1474f52ecd486316ee4225cecfe071b2c226b7e697927b6a220",
+    "sha256": "d42693683ef1c6bd94f07a657fb8d13a7fae2d49e15589ba381ec08bd9ee00c9"
+  },
+  {
+    "id": "furniture-239",
+    "name": "Tina de pés",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: small oval cedar foot bath with clear shallow water and folded white towel over one short rim. Physical footprint ratio 0.9:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-11b22cfa-8442-4872-998b-84c9fc1e5898.png",
+    "sourceSha256": "b3f3faf072d75870e77ef37a4806824047dfb3958031d4064aba85ffa35e4680",
+    "sha256": "a0238c4e70c482d09c34a577318354deaf02e238535b4f2aec51aab953a0c75a"
+  },
+  {
+    "id": "furniture-240",
+    "name": "Biombo de treliça",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: three-panel folding oak lattice screen seen strictly from above as a shallow zigzag of narrow carved top rails with small ivory cloth folds, no vertical panel faces. Physical footprint ratio 2.3:0.55.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-6cb0e000-8bc4-46f8-be0b-f62f0047f044.png",
+    "sourceSha256": "a85c4e712f6be077ab501e46545a697eb6bbe3abe46b12897bd3a4dd89feb3d1",
+    "sha256": "8190e18d3daf893af13bae010a008ea331c5af80d512c80a2f0bfa1b1390e42b"
+  },
+  {
+    "id": "furniture-241",
+    "name": "Suporte de calçados",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: low wooden shoe rack seen directly overhead holding three pairs of worn medieval leather shoes and short boots. Physical footprint ratio 1.3:0.7.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-d3f24619-8ca2-4158-94ba-95c6521d6d25.png",
+    "sourceSha256": "9980e3a05cbd422f8f8d09c348819c4968452c8bcc17e3601adc9205b4f9a4fd",
+    "sha256": "4c17a383631bdf88f7e3e3ec54905dd947e69a865512bc1dde284d4b84baed7a"
+  },
+  {
+    "id": "furniture-242",
+    "name": "Caixa de lenha de ferro",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular blackened iron firewood basket filled with split oak logs and one small metal poker along edge. Physical footprint ratio 1.2:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-07bd0e86-7392-4760-b5f4-7223e57d23b7.png",
+    "sourceSha256": "e7e726ff0caccd7cb8e5ac911fd25e5230281ba3127ea6d251b73be299649d23",
+    "sha256": "c3a921985d87e514978e9cce4603a7c8e5f8e1fac2c0d87cc1d94254c8de286b"
+  },
+  {
+    "id": "furniture-243",
+    "name": "Porta-revistas de pergaminho",
+    "prompt": "Create ONE isolated original finely hand-painted realistic medieval fantasy VTT furniture sprite. STRICT VERTICAL ORTHOGRAPHIC NADIR, camera exactly above at 90 degrees, no tilt. Show ONLY horizontal top surfaces. All vertical outside faces are invisible. True circular tops, parallel rectangular edges. Delicate crisp contours, fine small-scale material grain, warm worn wood, brass, leather, earthy muted colors matching our approved furniture library. Even overhead lighting, tight contact shading, narrow clear margin, real transparent alpha. No floor, people, text, watermark, isometric view or scene. North is image TOP. One low oak map-and-journal rack in EXACT OVERHEAD FLOOR PLAN. Rectangular oak frame seen as four narrow horizontal top rails. Two parallel rolled parchment maps lie flat side-by-side inside at north, a small closed brown journal lies flat inside at south. The leather sling BELOW supports them, but NO upright leather front panel is visible. No vertical front faces, no side elevation, no legs. All visible paper and journal surfaces face upward. Physical footprint 0.9:0.65.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-eb85e181-3809-46e0-8e05-d44235e38c3c.png",
+    "sourceSha256": "bd49528eaa79c1943dd5933f956cbe809069f9cf0ff82c52564d2b3cdb3d8b93",
+    "sha256": "9b275526dde4bf3b02df0b0c6b543dd72565e86056f3de0647fcafe6b25e7341"
+  },
+  {
+    "id": "furniture-244",
+    "name": "Suporte de alaúdes",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: low oak instrument rack holding two medieval lutes laid flat parallel with visible pear-shaped wooden bodies and strings. Physical footprint ratio 1.5:0.8.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-65dfa7fb-9dbe-4a8a-93b3-f996190de344.png",
+    "sourceSha256": "aabec975fff94ed36a542f50dea4feb90ae9b73372f7d764baaf9ea729398e8a",
+    "sha256": "d469e76bbb5b4dfb8165f4fb1665341766b6f679c5fd5f704cedc4095bc54be4"
+  },
+  {
+    "id": "furniture-245",
+    "name": "Mesa de harpa portátil",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: small triangular lap harp resting flat on a dark linen-covered low oak table, delicate brass strings and carved frame. Physical footprint ratio 1.5:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-86ac742c-afc1-4e3a-aa2d-1010172f78cd.png",
+    "sourceSha256": "f39abdecae5c3a6f368093db263e89641fb9b1b55a90bd594ff709ca10c30bf3",
+    "sha256": "7451fcca45c07130b976b2ec3bd17e21cef8a9852dd9a2cd8749c62ddd94a573"
+  },
+  {
+    "id": "furniture-246",
+    "name": "Tabuleiro de estratégia",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular carved wooden strategy board with incised hexagonal terrain fields and tiny plain wood towers, no words numbers or grid outside object. Physical footprint ratio 1.5:1.1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-c9486872-1a45-4ba5-9868-0c97900dd9b6.png",
+    "sourceSha256": "1b2d4a9a865ebfe9bb660a4f22d3e43d3da6371a4643df5f44dd38ac00137f0d",
+    "sha256": "44365d4b3c3e06557037b16806a8eeee950d10bc934a65301d18e4269d8a68d6"
+  },
+  {
+    "id": "furniture-247",
+    "name": "Jogo de moinho",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: square dark walnut nine-mens-morris game board with inlaid ivory connected squares and small black and white counters. Physical footprint ratio 1:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-8090744b-9924-4fdc-8012-9967d452672b.png",
+    "sourceSha256": "2a6b9277f2fe1650087aeb816ff7e8c1f7d354476c1f6175b29945127c4d76b3",
+    "sha256": "e160da754582f7389ce249378f9b5002410162dcd91cf8b173dea6720451e43c"
+  },
+  {
+    "id": "furniture-248",
+    "name": "Altar de cura",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular pale stone domestic healing altar with folded linen, ceramic herbal bowls and small brass sun disk lying flat, no candles or writing. Physical footprint ratio 1.8:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-a4c6f5af-7d33-457c-a5f9-1c53bcf86204.png",
+    "sourceSha256": "4e59f9ed2b4edac9081e1f280eb963d7d7c1c7608ba81f6f86a71c8823ae06ae",
+    "sha256": "5a3091ff7d6e47bc1fccc6eea08002ae6285450809e40c219310fe9135cb4937"
+  },
+  {
+    "id": "furniture-249",
+    "name": "Jardim zen de mesa",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: shallow rectangular walnut sand garden tray with raked cream sand, three smooth gray stones and tiny wooden rake. Physical footprint ratio 1.5:1.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-1c1b713a-c9d7-4d5d-8b2f-6f9c03011e40.png",
+    "sourceSha256": "5bd5e3a4492f8b94ce3b125798a0d9906bd239607d4b8cd184101db09fcba004",
+    "sha256": "4b69a8b9a6f924881bb0b652d20d27264546bcf42df6b5f76c70cee57d4f604d"
+  },
+  {
+    "id": "furniture-250",
+    "name": "Viveiro de suculentas",
+    "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: low oval glazed ceramic planter filled with several small muted green succulents, pale stones and dark soil, seen exactly overhead. Physical footprint ratio 1.3:0.9.",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-2fc6ef00-12d5-4aaa-90a7-e5865c48f818.png",
+    "sourceSha256": "5840cebb6fe2e533507ae84ff0352180e78248d53dac4570af208f3847f9f8ad",
+    "sha256": "3a17ea97add6a9e869eefee2f655716a9fdc0368fe86682c220034fe00fd99d2"
+  }
+]

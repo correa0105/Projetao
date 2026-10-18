@@ -1,0 +1,24 @@
+{
+  "id": "furniture-243",
+  "name": "Porta-revistas de pergaminho",
+  "category": "Mobílias",
+  "width": 0.9,
+  "height": 0.65,
+  "prompt": "Create ONE isolated original finely hand-painted realistic medieval fantasy VTT furniture sprite. STRICT VERTICAL ORTHOGRAPHIC NADIR, camera exactly above at 90 degrees, no tilt. Show ONLY horizontal top surfaces. All vertical outside faces are invisible. True circular tops, parallel rectangular edges. Delicate crisp contours, fine small-scale material grain, warm worn wood, brass, leather, earthy muted colors matching our approved furniture library. Even overhead lighting, tight contact shading, narrow clear margin, real transparent alpha. No floor, people, text, watermark, isometric view or scene. North is image TOP. One low oak map-and-journal rack in EXACT OVERHEAD FLOOR PLAN. Rectangular oak frame seen as four narrow horizontal top rails. Two parallel rolled parchment maps lie flat side-by-side inside at north, a small closed brown journal lies flat inside at south. The leather sling BELOW supports them, but NO upright leather front panel is visible. No vertical front faces, no side elevation, no legs. All visible paper and journal surfaces face upward. Physical footprint 0.9:0.65.",
+  "image": "/vtt/furniture-100-20261017/furniture-243.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-243.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-eb85e181-3809-46e0-8e05-d44235e38c3c.png",
+  "tool": "built-in imagegen",
+  "revision": 2,
+  "localSource": ".local/furniture100-sources/furniture-243-v2.png",
+  "generatedAt": "2026-10-18T01:43:23.684Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-243.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "bd49528eaa79c1943dd5933f956cbe809069f9cf0ff82c52564d2b3cdb3d8b93",
+  "sha256": "9b275526dde4bf3b02df0b0c6b543dd72565e86056f3de0647fcafe6b25e7341",
+  "dimensions": [
+    1280,
+    924
+  ],
+  "alpha": true
+}

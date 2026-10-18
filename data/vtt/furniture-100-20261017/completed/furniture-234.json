@@ -1,0 +1,23 @@
+{
+  "id": "furniture-234",
+  "name": "Passadeira de sisal",
+  "category": "Mobílias",
+  "width": 0.9,
+  "height": 3,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: long narrow natural sisal runner with hand-braided edge and two faded dark brown border stripes. Physical footprint ratio 0.9:3.",
+  "image": "/vtt/furniture-100-20261017/furniture-234.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-234.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-066e0907-65ee-4226-950c-39bd5896bf1d.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:27:21.304Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-234.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "32ff34bf460cb6ab41d25f70b100f4c25f920d40f90757a3d60acf431156fd07",
+  "sha256": "4ee31d88d5211bc1f947dcbfb23db7a433af0993cb3f359e9f4badee4ede46cb",
+  "dimensions": [
+    384,
+    1280
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-234.png"
+}

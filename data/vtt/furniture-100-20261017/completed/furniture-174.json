@@ -1,0 +1,23 @@
+{
+  "id": "furniture-174",
+  "name": "Maca de cura",
+  "category": "Mobílias",
+  "width": 1.1,
+  "height": 2.5,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: medieval portable stretcher with taut cream canvas bed, two oak poles and leather hand straps at both ends. Physical footprint ratio 1.1:2.5.",
+  "image": "/vtt/furniture-100-20261017/furniture-174.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-174.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-25cccfee-662f-4b81-92e5-4c0a090b8778.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:18:16.059Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-174.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "7351acef6027f13590eb8f2f5f4f17c95840a5e67dd84ddb8869583ac5e9b9fa",
+  "sha256": "49499fbb8103dc775a6089bdc638be77f0bc3d4c9feba3e5c29170bbb3a04c05",
+  "dimensions": [
+    563,
+    1280
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-174.png"
+}

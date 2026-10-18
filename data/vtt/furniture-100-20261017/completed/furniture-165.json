@@ -1,0 +1,23 @@
+{
+  "id": "furniture-165",
+  "name": "Mesa de assembleia",
+  "category": "Mobílias",
+  "width": 3,
+  "height": 2,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: horseshoe-shaped oak council table with open central cutout, a few rolled scrolls and candle-free brass inkwells. Physical footprint ratio 3:2.",
+  "image": "/vtt/furniture-100-20261017/furniture-165.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-165.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-f95778bf-1fda-4d5d-9943-0d2ea2f36ea8.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:16:06.575Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-165.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "a15dcb8ff6e3e0e4a56de2159831d49c7223b06414bdf021dc9a3125aead8203",
+  "sha256": "07fa30cbdb590178bddbbf55aae4543111cff04c5883e37a50c25a0ec9e96294",
+  "dimensions": [
+    1280,
+    853
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-165.png"
+}

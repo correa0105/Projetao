@@ -1,0 +1,23 @@
+{
+  "id": "furniture-206",
+  "name": "Bancada de velas",
+  "category": "Mobílias",
+  "width": 1.9,
+  "height": 0.9,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: chandlers wax-spattered oak workbench with unlit bundled taper candles, braided wicks, copper wax pot and beeswax blocks. Physical footprint ratio 1.9:0.9.",
+  "image": "/vtt/furniture-100-20261017/furniture-206.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-206.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-a98a7295-3214-429b-ab28-63fa3ea5079a.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:24:38.220Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-206.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "06d5071975d5c0a3e4b1e48b19433e77f2a5a904361f708bf9272f5500d7798c",
+  "sha256": "179b72ab7b58fe37db745914ec5073385b7f5990f63c67b3af6307bab7fabcf1",
+  "dimensions": [
+    1280,
+    606
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-206.png"
+}

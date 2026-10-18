@@ -64,7 +64,7 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
       assert.equal(directory.neighborhoods.length, 3);
       assert.equal(directory.balance, 20000);
       assert.equal(house2Houses.length, 25);
-      assert.equal(house2Furniture.length, 252);
+      assert.equal(house2Furniture.length, 352);
       assert(scene.plots.every((p: any) => p.x + p.width <= 200 && p.y + p.height <= 200));
       assert.equal(
         (

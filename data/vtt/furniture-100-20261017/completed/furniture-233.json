@@ -1,0 +1,23 @@
+{
+  "id": "furniture-233",
+  "name": "Tapete de lobo",
+  "category": "Mobílias",
+  "width": 1.5,
+  "height": 2.2,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: flat gray wolf pelt rug spread out with four paws, dense mottled gray fur and small flattened head pointing north, no gore. Physical footprint ratio 1.5:2.2.",
+  "image": "/vtt/furniture-100-20261017/furniture-233.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-233.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-51427232-2967-409f-b4f8-9fca50f604e3.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:27:07.657Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-233.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "a918158a50b33d7f6bcf7fd0cde2798250ec3e2104d6366bf289309b016fff3d",
+  "sha256": "1ad31b933a93b3aa9371156843e18a223fb7e57dc9fe63c4b1af0f899a5da514",
+  "dimensions": [
+    873,
+    1280
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-233.png"
+}

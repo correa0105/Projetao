@@ -1,0 +1,23 @@
+{
+  "id": "furniture-246",
+  "name": "Tabuleiro de estratégia",
+  "category": "Mobílias",
+  "width": 1.5,
+  "height": 1.1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular carved wooden strategy board with incised hexagonal terrain fields and tiny plain wood towers, no words numbers or grid outside object. Physical footprint ratio 1.5:1.1.",
+  "image": "/vtt/furniture-100-20261017/furniture-246.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-246.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-c9486872-1a45-4ba5-9868-0c97900dd9b6.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:32:32.418Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-246.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "1b2d4a9a865ebfe9bb660a4f22d3e43d3da6371a4643df5f44dd38ac00137f0d",
+  "sha256": "44365d4b3c3e06557037b16806a8eeee950d10bc934a65301d18e4269d8a68d6",
+  "dimensions": [
+    1280,
+    939
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-246.png"
+}

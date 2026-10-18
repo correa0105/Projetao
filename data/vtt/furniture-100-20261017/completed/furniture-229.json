@@ -1,0 +1,23 @@
+{
+  "id": "furniture-229",
+  "name": "Conjunto de travesseiros",
+  "category": "Mobílias",
+  "width": 1.1,
+  "height": 0.75,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: three overlapping soft linen pillows in ivory dusty blue and muted ochre with hand-stitched hems. Physical footprint ratio 1.1:0.75.",
+  "image": "/vtt/furniture-100-20261017/furniture-229.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-229.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-8b2179fb-1c4a-4dd5-b873-29f9b360936e.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:31:31.720Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-229.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "e1296071545078c889c9b3edfc8b74224a358f1a25d5d4abae4ae691775c9e99",
+  "sha256": "8e0404d6ff9d663c5dffe3ee16eacce4a1201a2f0cf57eeee85cf72e481910fb",
+  "dimensions": [
+    1280,
+    873
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-229.png"
+}

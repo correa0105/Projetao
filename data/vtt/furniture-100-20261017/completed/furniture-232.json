@@ -1,0 +1,23 @@
+{
+  "id": "furniture-232",
+  "name": "Tapete de urso",
+  "category": "Mobílias",
+  "width": 2,
+  "height": 2.5,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: flat brown bear hide rug spread symmetrically, soft coarse fur, four paws and flattened small head pointing north, no gore. Physical footprint ratio 2:2.5.",
+  "image": "/vtt/furniture-100-20261017/furniture-232.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-232.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-18976d10-e516-4b8f-b327-54c5b4cfe1fb.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:26:47.136Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-232.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "7169944e6bfb442c47dee6abf57bba6cc581115738cf6c0dfffc0609aac7e532",
+  "sha256": "fe265f9b44da0bddb8ca7ef21d6f7c817b403d1d64bec8cd9a4c2b9046510360",
+  "dimensions": [
+    1024,
+    1280
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-232.png"
+}

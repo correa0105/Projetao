@@ -1,0 +1,24 @@
+{
+  "id": "furniture-152",
+  "name": "Trono de carvalho",
+  "category": "Mobílias",
+  "width": 1.2,
+  "height": 1.2,
+  "prompt": "Create ONE flat tactical battlemap furniture sprite in STRICT VERTICAL ORTHOGRAPHIC NADIR projection at exactly 90 DEGREES. This is a FLOOR PLAN, NOT an isometric drawing, NOT a front product view. The camera is directly over the center; show ONLY horizontal upward-facing top surfaces. All vertical outside faces, upright backrest faces, posts and legs are occluded and INVISIBLE. Precise parallel edges, circular tops truly circular. Finely hand-painted realistic medieval fantasy map art, worn warm timber, subtle brass and natural fabric texture, delicate crisp contours, muted earthy palette matching the existing library. Tight subtle contact shading only, NO long shadow, NO floor, NO scene. Fully isolated with real transparent alpha and narrow clear margin. No text, grid, watermark or people. North/back at image TOP. A square deep green velvet throne SEAT seen straight down, with two carved oak armrest TOP rails along left and right and a VERY THIN 3% deep gold-inlaid oak backrest TOP EDGE along north. The backrest stands upright so its FRONT FACE is INVISIBLE from this camera. NO crown silhouette projecting upward in image; no carved vertical facade. Physical footprint ratio 1.2:1.2.",
+  "image": "/vtt/furniture-100-20261017/furniture-152.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-152.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-e68675c7-7d77-417b-8644-eae51dd7f31c.png",
+  "tool": "built-in imagegen",
+  "revision": 2,
+  "localSource": ".local/furniture100-sources/furniture-152-v2.png",
+  "generatedAt": "2026-10-18T01:34:38.024Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-152.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "07282ec289e2f74c3bc3a8b97c33fbaf1021bc406763749b5bbaff1948efb367",
+  "sha256": "9099cccce5a7efd5d7dc31bc6724b49f97cb3c89cc7bac92d2f77cf97bafe61e",
+  "dimensions": [
+    1280,
+    1280
+  ],
+  "alpha": true
+}

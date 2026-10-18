@@ -1,0 +1,23 @@
+{
+  "id": "furniture-180",
+  "name": "Arca de cedro entalhada",
+  "category": "Mobílias",
+  "width": 1.8,
+  "height": 0.8,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: closed cedar linen chest with intricately carved leafy lid panels and two small bronze hinge plates. Physical footprint ratio 1.8:0.8.",
+  "image": "/vtt/furniture-100-20261017/furniture-180.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-180.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-ca501b19-a6b5-499f-b3ba-3247159b34b2.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:19:37.486Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-180.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "f1416282e87fcd4e4308d140284e3dec0fbc04c23e6a61cf7de7cb2136f2260e",
+  "sha256": "d34cd04f783541964f97b6bb76eedfd123fd4a4f5440b029e95446858efe7bd8",
+  "dimensions": [
+    1280,
+    569
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-180.png"
+}

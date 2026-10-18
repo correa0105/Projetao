@@ -1,0 +1,23 @@
+{
+  "id": "furniture-242",
+  "name": "Caixa de lenha de ferro",
+  "category": "Mobílias",
+  "width": 1.2,
+  "height": 0.8,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular blackened iron firewood basket filled with split oak logs and one small metal poker along edge. Physical footprint ratio 1.2:0.8.",
+  "image": "/vtt/furniture-100-20261017/furniture-242.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-242.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-07bd0e86-7392-4760-b5f4-7223e57d23b7.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:31:47.788Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-242.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "e7e726ff0caccd7cb8e5ac911fd25e5230281ba3127ea6d251b73be299649d23",
+  "sha256": "c3a921985d87e514978e9cce4603a7c8e5f8e1fac2c0d87cc1d94254c8de286b",
+  "dimensions": [
+    1280,
+    853
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-242.png"
+}

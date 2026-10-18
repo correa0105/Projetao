@@ -1,0 +1,23 @@
+{
+  "id": "furniture-157",
+  "name": "Sofá de canto",
+  "category": "Mobílias",
+  "width": 2.4,
+  "height": 2.1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: L-shaped oak settle with separate moss-green wool cushions and carved narrow armrest rails. Physical footprint ratio 2.4:2.1.",
+  "image": "/vtt/furniture-100-20261017/furniture-157.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-157.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-84eb920b-23b9-4784-9842-74aa31bac9c0.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:13:54.549Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-157.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "30fd53d88369f78e824c662f0fdf173c5ced3ce7f119bcebc0073576a675f17f",
+  "sha256": "0b9d83ada5b21046cd49d31d306e3882f76b3f0f51302086bb4765cfe025079e",
+  "dimensions": [
+    1280,
+    1120
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-157.png"
+}

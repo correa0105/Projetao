@@ -1,0 +1,23 @@
+{
+  "id": "furniture-219",
+  "name": "Cuba de cerveja",
+  "category": "Mobílias",
+  "width": 1.4,
+  "height": 1.4,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: round oak brewing vat seen directly overhead with pale frothy malt liquid, iron hoop rim and long wooden stirring paddle laid across. Physical footprint ratio 1.4:1.4.",
+  "image": "/vtt/furniture-100-20261017/furniture-219.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-219.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-1f81ba1f-08aa-4d82-b72e-d230779147e9.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:26:52.474Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-219.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "01025f61ce35441c7d43f7658f259b4d03e2bda20b05d42ffa5b255f5f765399",
+  "sha256": "5ec2e690c8f44a3fccf154858cd348d20c4fb2ed2773bcb3a931592289d218ba",
+  "dimensions": [
+    1280,
+    1280
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-219.png"
+}

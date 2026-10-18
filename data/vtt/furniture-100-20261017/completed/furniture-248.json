@@ -1,0 +1,23 @@
+{
+  "id": "furniture-248",
+  "name": "Altar de cura",
+  "category": "Mobílias",
+  "width": 1.8,
+  "height": 1,
+  "prompt": "Create ONE isolated medieval VTT furniture sprite. STRICT ORTHOGRAPHIC NADIR PLAN, camera exactly vertically above at 90 degrees with zero tilt and zero perspective convergence. Show ONLY upward-facing horizontal surfaces and thin top edges. Rectangles parallel, circles truly circular. No visible vertical fronts, legs, door faces, tall backrest faces or facades. Original finely hand-painted realistic medieval fantasy battlemap style: warm worn timber, stone, iron, linen, leather, delicate crisp contours, rich small-scale texture and earthy muted colors. Even overhead light with tight restrained contact shading. Complete object centered with narrow transparent margin. Actual transparent alpha outside the object. No text, grid, watermark, people, tokens, ruler, background ground patch, glossy plastic, cartoon or isometric render. North/back is image TOP. Subject: rectangular pale stone domestic healing altar with folded linen, ceramic herbal bowls and small brass sun disk lying flat, no candles or writing. Physical footprint ratio 1.8:1.",
+  "image": "/vtt/furniture-100-20261017/furniture-248.webp",
+  "thumbnail": "public/vtt/furniture-100-thumbs-20261017/furniture-248.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-a4c6f5af-7d33-457c-a5f9-1c53bcf86204.png",
+  "tool": "built-in imagegen",
+  "generatedAt": "2026-10-18T01:32:18.084Z",
+  "public": "public/vtt/furniture-100-20261017/furniture-248.webp",
+  "generator": "built-in image_gen",
+  "sourceSha256": "4e59f9ed2b4edac9081e1f280eb963d7d7c1c7608ba81f6f86a71c8823ae06ae",
+  "sha256": "5a3091ff7d6e47bc1fccc6eea08002ae6285450809e40c219310fe9135cb4937",
+  "dimensions": [
+    1280,
+    711
+  ],
+  "alpha": true,
+  "localSource": ".local/furniture100-sources/furniture-248.png"
+}
