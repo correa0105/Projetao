@@ -42,9 +42,14 @@
 .tag-progress-panel {
   padding: 24px;
   margin: 24px 0;
-  border: 1px solid #ad895340;
+  border: 1px solid #7c65443d;
   border-radius: 7px;
-  background: linear-gradient(135deg, #2b2318ed, #171b1bed);
+  background-color: #211b14;
+  background-image: linear-gradient(#17130ece, #17130ece), url('/achievement-wood-v1.png');
+  background-size:
+    auto,
+    620px auto;
+  background-blend-mode: normal;
 }
 .tag-progress-panel > header {
   display: flex;
@@ -78,7 +83,7 @@
   padding: 20px;
   border: 1px solid #c7a36330;
   border-radius: 6px;
-  background: radial-gradient(ellipse at 15% 0, #c59c4420, transparent 70%), #15191a;
+  background: #100e0b70;
   box-shadow: 0 6px 20px #0002;
 }
 .tag-total-card > div:first-child {
@@ -103,6 +108,64 @@
   border-radius: 50%;
   color: #cfa35e;
   background: #6b512622;
+}
+.tag-total-symbol:has(img) {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  background: #17130e;
+  box-shadow: 0 2px 7px #0006;
+}
+.tag-total-symbol img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 114%;
+  height: 114%;
+  max-width: none;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+.tag-total-symbol[data-monster='bugurso'] img {
+  width: 145%;
+  height: 145%;
+  transform: translate(-53%, -43%);
+}
+.tag-total-symbol[data-monster='esqueleto'] img {
+  width: 170%;
+  height: 170%;
+  transform: translate(-60%, -43%);
+}
+.tag-total-symbol[data-monster='gnoll'] img {
+  width: 170%;
+  height: 170%;
+  transform: translate(-32%, -43%);
+}
+.tag-total-symbol[data-monster='goblin'] img {
+  width: 160%;
+  height: 160%;
+  transform: translate(-59%, -47%);
+}
+.tag-total-symbol[data-monster='hobgoblin'] img {
+  width: 330%;
+  height: 330%;
+  transform: translate(-52%, -17%);
+}
+.tag-total-symbol[data-monster='kobold'] img {
+  width: 130%;
+  height: 130%;
+  transform: translate(-52%, -49%);
+}
+.tag-total-symbol[data-monster='ogro'] img {
+  width: 220%;
+  height: 220%;
+  transform: translate(-57%, -32%);
+}
+.tag-total-symbol[data-monster='zumbi'] img {
+  width: 145%;
+  height: 145%;
+  transform: translate(-60%, -43%);
 }
 .tag-total {
   display: block;

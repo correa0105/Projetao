@@ -14,6 +14,29 @@ import {
 } from '../shared/mission-tags';
 import './mission-tags.css';
 
+const monsterTagPortraits: Record<string, string> = {
+  bugurso: '/vtt/monsters/monster-bugbear-warrior.webp',
+  'cubo gelatinoso': '/vtt/monsters/monster-gelatinous-cube.webp',
+  esqueleto: '/vtt/monsters/monster-skeleton.webp',
+  gnoll: '/vtt/monsters/monster-gnoll-warrior.webp',
+  goblin: '/vtt/monsters/monster-goblin-warrior.webp',
+  hobgoblin: '/vtt/monsters/monster-hobgoblin-warrior.webp',
+  kobold: '/vtt/monsters/monster-kobold-warrior.webp',
+  ogro: '/vtt/monsters/monster-ogre.webp',
+  orc: '/tags/orc-head-20261018.png',
+  zumbi: '/vtt/monsters/monster-zombie.webp',
+};
+
+function tagPortrait(name: string) {
+  return monsterTagPortraits[
+    name
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .trim()
+      .toLowerCase()
+  ];
+}
+
 export function TagRewards({ rewards }: { rewards: TagReward[] }) {
   return (
     <ul className="tag-rewards">
@@ -125,8 +148,16 @@ export function TagProgress({
               return (
                 <article className="tag-total-card" key={t.id} data-tag-id={t.id}>
                   <div>
-                    <span className="tag-total-symbol">
-                      <Tag size={23} />
+                    <span
+                      className="tag-total-symbol"
+                      data-monster={t.name.trim().toLowerCase()}
+                      aria-hidden="true"
+                    >
+                      {tagPortrait(t.name) ? (
+                        <img src={tagPortrait(t.name)} alt="" loading="lazy" decoding="async" />
+                      ) : (
+                        <Tag size={23} />
+                      )}
                     </span>
                     <h3>{t.name}</h3>
                     {!t.active && <small>Arquivada</small>}
