@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { house2Furniture, house2FurnitureForSale } from './house-v2';
+import { house2RotatedSize, house2Furniture, house2FurnitureForSale } from './house-v2';
 export const guildEstateFurnitureCatalog = house2FurnitureForSale.filter(
   (f) => f.category === 'Mobílias' && f.width <= 5 && f.height <= 4,
 );
@@ -22,7 +22,7 @@ export const guildEstateFinishes = {
     {
       id: 'stone',
       name: 'Alvenaria de pedra',
-      image: '/vtt/terrain-expansion-20261015/cobblestone.webp',
+      image: '/house2/walls-20261018/walls-fieldstone.webp',
     },
     { id: 'brick', name: 'Tijolos', image: '/house2/walls-20261018/walls-red-brick.webp' },
     { id: 'wood', name: 'Madeira escura', image: '/house2/walls-20261018/walls-walnut.webp' },
@@ -42,8 +42,8 @@ export const guildEstateFurnitureSchema = z
     catalog: z.string().refine((id) => guildEstateFurnitureCatalog.some((f) => f.id === id)),
     x: z.number().finite().min(0).max(60).nullable(),
     y: z.number().finite().min(0).max(50).nullable(),
-    rotation: z.union([z.literal(0), z.literal(90), z.literal(180), z.literal(270)]),
-    scale: z.number().finite().min(0.5).max(2).default(1),
+    rotation: z.number().finite().min(0).lt(360),
+    scale: z.number().finite().min(0.25).max(3).default(1),
   })
   .strict()
   .refine((i) => (i.x === null) === (i.y === null), 'Posição incompleta.');
@@ -53,7 +53,8 @@ export function guildEstateFurnitureSize(i: GuildEstateFurniture) {
   if (!f) return { width: Infinity, height: Infinity };
   const w = f.width * 1.4 * i.scale,
     h = f.height * 1.4 * i.scale;
-  return i.rotation % 180 === 0 ? { width: w, height: h } : { width: h, height: w };
+  const size = house2RotatedSize(w, h, i.rotation);
+  return { width: size.width * 0.82, height: size.height * 0.82 };
 }
 export function guildEstateFurnitureFlat(catalog: string) {
   return /tapete|carpete|esteira|pele de|peles/i.test(
@@ -88,14 +89,21 @@ export const guildEstateItems = [
 export type GuildEstateItemId = (typeof guildEstateItems)[number]['id'];
 export const guildEstateArt = (id: string) =>
   house2Furniture.find((f) => f.id === guildEstateItems.find((i) => i.id === id)?.catalog)!;
-export function guildEstateItemSize(id: string, rotation: number) {
+export function guildEstateItemSize(id: string, rotation: number, scale = 1) {
   const f = guildEstateArt(id);
-  const w = f.width * 1.4,
-    h = f.height * 1.4;
-  return rotation % 180 === 0 ? { width: w, height: h } : { width: h, height: w };
+  const w = f.width * 1.4 * scale,
+    h = f.height * 1.4 * scale;
+  const size = house2RotatedSize(w, h, rotation);
+  return { width: size.width * 0.82, height: size.height * 0.82 };
 }
-export function guildEstateItemRoom(item: { id: string; x: number; y: number; rotation: number }) {
-  const size = guildEstateItemSize(item.id, item.rotation);
+export function guildEstateItemRoom(item: {
+  id: string;
+  x: number;
+  y: number;
+  rotation: number;
+  scale?: number;
+}) {
+  const size = guildEstateItemSize(item.id, item.rotation, item.scale);
   return guildEstateRooms.find(
     (r) =>
       item.x - size.width / 2 >= r.x &&
@@ -109,7 +117,8 @@ const item = z
     id: z.enum(['main', 'forge', 'lounge', 'meeting']),
     x: z.number().finite().min(0).max(60),
     y: z.number().finite().min(0).max(50),
-    rotation: z.union([z.literal(0), z.literal(90), z.literal(180), z.literal(270)]),
+    rotation: z.number().finite().min(0).lt(360),
+    scale: z.number().finite().min(0.25).max(3).default(1),
   })
   .strict();
 export const guildEstateSchema = z
@@ -136,8 +145,8 @@ export const guildEstateSchema = z
       for (let b = a + 1; b < v.items.length; b++) {
         const i = v.items[a],
           j = v.items[b],
-          s = guildEstateItemSize(i.id, i.rotation),
-          t = guildEstateItemSize(j.id, j.rotation);
+          s = guildEstateItemSize(i.id, i.rotation, i.scale),
+          t = guildEstateItemSize(j.id, j.rotation, j.scale);
         if (
           Math.abs(i.x - j.x) < (s.width + t.width) / 2 &&
           Math.abs(i.y - j.y) < (s.height + t.height) / 2
@@ -149,23 +158,6 @@ export const guildEstateSchema = z
     for (const i of v.furniture)
       if (i.x !== null && !guildEstateFurnitureRoom(i))
         ctx.addIssue({ code: 'custom', message: 'Mantenha o móvel dentro de um cômodo.' });
-    const solids = [
-      ...v.items.map((i) => ({ ...i, ...guildEstateItemSize(i.id, i.rotation) })),
-      ...v.furniture
-        .filter((i) => i.x !== null && !guildEstateFurnitureFlat(i.catalog))
-        .map((i) => ({ ...i, x: i.x!, y: i.y!, ...guildEstateFurnitureSize(i) })),
-    ];
-    for (let a = 0; a < solids.length; a++)
-      for (let b = a + 1; b < solids.length; b++) {
-        if (a < 4 && b < 4) continue;
-        const i = solids[a],
-          j = solids[b];
-        if (
-          Math.abs(i.x - j.x) < (i.width + j.width) / 2 &&
-          Math.abs(i.y - j.y) < (i.height + j.height) / 2
-        )
-          ctx.addIssue({ code: 'custom', message: 'Os móveis não podem ficar sobrepostos.' });
-      }
   });
 export type GuildEstateLayout = z.infer<typeof guildEstateSchema>;
 export function defaultGuildEstate(): GuildEstateLayout {

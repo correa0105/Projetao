@@ -2,6 +2,8 @@ import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } fr
 import { api, post } from './api';
 import { Modal } from './components';
 import { Send } from 'lucide-react';
+import { ItemPicker } from './ItemPicker';
+import { RpPersonalScene } from './RpPersonalScene';
 import { RpSpeechBubbles } from './RpSpeechBubbles';
 import { rpFloorScale, rpDragPosition } from '../shared/rp-perspective';
 import type { Character, User } from './types';
@@ -24,7 +26,7 @@ import {
 } from '../shared/house';
 import './rp-lobby.css';
 type Draft = { name: string; document: RpDocument; revision: number };
-const defaultPosition = { x: 0.5, y: 0.84, scale: 0.16, flip_x: false };
+const defaultPosition = { x: 0.5, y: 0.84, scale: 0.16, flip_x: false, depth_layer: 4 };
 const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n));
 const targetFromHash = () =>
   new URLSearchParams(location.hash.split('?')[1] || '').get('room') || '';
@@ -160,7 +162,13 @@ export function RPLobby({
         if (character) {
           const presence = current.presence.find((p) => p.user_id === user.id);
           const position = presence
-            ? { x: presence.x, y: presence.y, scale: presence.scale, flip_x: presence.flip_x }
+            ? {
+                x: presence.x,
+                y: presence.y,
+                scale: presence.scale,
+                flip_x: presence.flip_x,
+                depth_layer: presence.depth_layer ?? 4,
+              }
             : {
                 ...defaultPosition,
                 x: [0.5, 0.65, 0.35, 0.8, 0.2, 0.58, 0.42, 0.72, 0.28][current.presence.length % 9],
@@ -638,7 +646,7 @@ export function RPLobby({
                     left: position.x * 100 + '%',
                     top: position.y * 100 + '%',
                     width: position.scale * depth(position.y) * 100 + '%',
-                    zIndex: 300 + Math.round(position.y * 90),
+                    zIndex: (7 - (position.depth_layer ?? 4)) * 100 + Math.round(position.y * 90),
                   } as CSSProperties
                 }
                 onPointerDown={(e) =>
@@ -768,10 +776,14 @@ export function RPLobby({
               <p>Arraste as peças pela cena. A mobília de RP é decorativa.</p>
               <label>
                 Adicionar mobília
-                <select
-                  value=""
-                  onChange={(e) => {
-                    const spec = rpDecor.find((x) => x.id === e.target.value);
+                <ItemPicker
+                  items={rpDecor.map((x) => ({
+                    id: x.id,
+                    name: x.name,
+                    image: houseItemImage(x.id, houseDefaultFacing(x.id)),
+                  }))}
+                  onPick={(id) => {
+                    const spec = rpDecor.find((x) => x.id === id);
                     if (!spec) return;
                     const next: RpPlacement = {
                       id: crypto.randomUUID(),
@@ -791,15 +803,7 @@ export function RPLobby({
                     });
                     setSelected(next.id);
                   }}
-                  disabled={draft.document.placements.length >= 60}
-                >
-                  <option value="">Escolha uma peça</option>
-                  {rpDecor.map((x) => (
-                    <option key={x.id} value={x.id}>
-                      {x.name}
-                    </option>
-                  ))}
-                </select>
+                />
               </label>
               {piece && (
                 <fieldset>
@@ -962,6 +966,26 @@ export function RPLobby({
               <h2>{character?.name}</h2>
               <p>Arraste seu personagem para mudar de posição.</p>
               <label>
+                Camada do personagem
+                <select
+                  aria-label="Camada do personagem"
+                  value={self.depth_layer}
+                  onChange={(e) => {
+                    const value = { ...self, depth_layer: Number(e.target.value) };
+                    setSelf(value);
+                    selfRef.current = value;
+                    void sendPosition(value).catch((e) => setError(e.message));
+                  }}
+                >
+                  {[1, 2, 3, 4, 5, 6].map((n) => (
+                    <option key={n} value={n}>
+                      Camada {n}
+                      {n === 1 ? ' · frente' : n === 6 ? ' · fundo' : ''}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
                 Tamanho
                 <input
                   type="range"
@@ -994,6 +1018,14 @@ export function RPLobby({
           )}
         </aside>
       )}
+      <RpPersonalScene
+        room={room}
+        characterId={character?.id || ''}
+        userId={user.id}
+        stage={stage}
+        refresh={() => refreshRoom()}
+        notice={setNotice}
+      />
       {chat && (
         <section
           className={'rp-chat' + (chatActive ? ' chat-active' : '')}

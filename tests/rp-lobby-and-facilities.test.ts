@@ -1,3 +1,5 @@
+import { rpDecor } from '../shared/rp-lobby';
+import { houseDefaultFacing } from '../shared/house';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID, createHmac } from 'node:crypto';
@@ -164,6 +166,113 @@ test('Lobby de RP e instalações: acesso, edição, presença, convites e econo
         400,
       );
     });
+    await t.test(
+      'quatro peças públicas por jogador, acompanhantes próprios, camadas e sala privada sem limite de mobília',
+      async () => {
+        const position = {
+          character_id: hero.id,
+          x: 0.5,
+          y: 0.84,
+          scale: 0.16,
+          flip_x: false,
+          depth_layer: 2,
+        };
+        assert.equal(
+          (await request('/rp-lobby/' + fixed.id + '/presence', owner, 'PUT', position)).status,
+          200,
+        );
+        const spec = rpDecor[0];
+        const make = () => ({
+          id: randomUUID(),
+          kind: 'prop',
+          catalog: spec.id,
+          x: 0.5,
+          y: 0.84,
+          scale: 0.15,
+          facing: houseDefaultFacing(spec.id),
+          rotation: 0,
+          layer: 4,
+        });
+        const items = Array.from({ length: 4 }, make),
+          url = '/rp-lobby/' + fixed.id + '/scene-items';
+        assert.equal(
+          (await request(url, owner, 'PUT', { character_id: hero.id, items })).status,
+          200,
+        );
+        assert.equal(
+          (await request(url, owner, 'PUT', { character_id: hero.id, items: [...items, make()] }))
+            .status,
+          409,
+        );
+        assert.equal(
+          (await request(url, friend, 'PUT', { character_id: hero.id, items: [] })).status,
+          404,
+        );
+        const animal = (
+          await pool.query(
+            "INSERT INTO character_pets(character_id,pet_id,name,appearance,price_cp,idempotency_key) VALUES($1,'dog','Lobo','original',1000,$2) RETURNING id",
+            [hero.id, randomUUID()],
+          )
+        ).rows[0];
+        const pet = { ...make(), kind: 'pet', wardrobe_id: animal.id };
+        assert.equal(
+          (await request(url, owner, 'PUT', { character_id: hero.id, items: [...items, pet] }))
+            .status,
+          200,
+        );
+        assert.equal(
+          (
+            await request(url, owner, 'PUT', {
+              character_id: hero.id,
+              items: [{ ...pet, wardrobe_id: randomUUID() }],
+            })
+          ).status,
+          404,
+        );
+        const state = (await request('/rp-lobby/' + fixed.id, friend)).data.presence.find(
+          (p: any) => p.user_id === owner.id,
+        );
+        assert.equal(state.depth_layer, 2);
+        assert.equal(state.scene_items.length, 5);
+        assert.equal(state.scene_items[4].name, 'Lobo');
+        const image = await fetch(base + state.scene_items[4].image.replace('/api', ''), {
+          headers: { Cookie: friend.cookie },
+        });
+        assert.equal(image.status, 200);
+        assert.match(image.headers.get('content-type') || '', /image/);
+        const library = (
+          await request('/rp-lobby/companion-library?character_id=' + hero.id, owner)
+        ).data;
+        assert(library.sources.some((s: any) => s.id === animal.id));
+        assert.equal(
+          (await request('/rp-lobby/companion-library?character_id=' + hero.id, friend)).status,
+          404,
+        );
+        assert.equal(
+          (await request('/rp-lobby/' + privateId + '/presence', owner, 'PUT', position)).status,
+          200,
+        );
+        const room = (await request('/rp-lobby/' + privateId, owner)).data;
+        const placements = Array.from({ length: 65 }, () => {
+          const { kind, ...i } = make();
+          return i;
+        });
+        assert.equal(
+          (
+            await request('/rp-lobby/' + privateId, owner, 'PUT', {
+              name: room.name,
+              revision: room.revision,
+              document: { ...room.document, placements },
+            })
+          ).status,
+          200,
+        );
+        assert.equal(
+          (await request('/rp-lobby/' + privateId, owner)).data.document.placements.length,
+          65,
+        );
+      },
+    );
     await t.test(
       'presença e RP usam personagem próprio, com replay sem mensagem duplicada',
       async () => {

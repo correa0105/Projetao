@@ -16,13 +16,19 @@ const trees = [
   [18, 14, 4, 'juniper', 25],
   [43, 15, 4, 'juniper', 90],
 ] as const;
+const backgroundTrees = Array.from({ length: 19 * 19 }, (_, i) => {
+  const x = -33 + (i % 19) * 7 + Math.sin(i * 13.7) * 1.7,
+    y = -38 + Math.floor(i / 19) * 7 + Math.cos(i * 9.1) * 1.7,
+    size = 6.5 + (Math.sin(i * 4.3) + 1) * 1.1;
+  return [x, y, size, i % 4 === 0 ? 'oak-ancient' : 'oak-young', (i * 137) % 360] as const;
+}).filter(([x, y]) => (x < 1 || x > 59 || y < -1 || y > 51) && !(y > 43 && x > 23 && x < 41));
 const fence = '/vtt/medieval-expansion-20261017/outdoor-032.webp';
 export function GuildEstateScenery({ wooded }: { wooded: boolean }) {
   return (
     <g data-estate-landscape="garden" pointerEvents="none">
       <ellipse cx="30" cy="24" rx="12" ry="10.2" fill="#483b20" opacity=".14" />
       <path
-        d="M30 45C30 41 32 38 30 32"
+        d="M36 120C34 100 25 78 30 58C31 53 30 49 30 45C30 41 32 38 30 32"
         fill="none"
         stroke="#4d4b2d"
         strokeWidth="3.3"
@@ -30,7 +36,7 @@ export function GuildEstateScenery({ wooded }: { wooded: boolean }) {
         strokeLinecap="round"
       />
       <path
-        d="M30 45C30 41 32 38 30 32"
+        d="M36 120C34 100 25 78 30 58C31 53 30 49 30 45C30 41 32 38 30 32"
         fill="none"
         stroke="url(#ge-paving)"
         strokeWidth="2.1"
@@ -75,6 +81,10 @@ export function GuildEstateScenery({ wooded }: { wooded: boolean }) {
           </g>
         ))}
       </g>
+      <g data-estate-gate-joins="connected">
+        <image href={fence} x="27" y="44.7" width="1.65" height=".6" />
+        <image href={fence} x="31.35" y="44.7" width="1.75" height=".6" />
+      </g>
       <image
         href="/vtt/medieval-expansion-20261017/outdoor-030.webp"
         x="28.5"
@@ -83,8 +93,12 @@ export function GuildEstateScenery({ wooded }: { wooded: boolean }) {
         height=".8"
       />
       {wooded &&
-        trees.map(([x, y, size, id, rotation], i) => (
-          <g key={i} data-estate-tree={id}>
+        [...backgroundTrees, ...trees].map(([x, y, size, id, rotation], i) => (
+          <g
+            key={i}
+            data-estate-tree={id}
+            data-estate-background-tree={i < backgroundTrees.length ? 'true' : undefined}
+          >
             <ellipse
               cx={x + 0.7}
               cy={y + 1}

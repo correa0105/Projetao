@@ -308,6 +308,45 @@ test('API da sede conserva broche/economia, protege o dono e salva posições co
       ).status,
       400,
     );
+    const actorPath = `/guilds/${id}/estate/actors`,
+      actorQuery = '?character_id=' + hero.id;
+    const position = { x: 22.2, y: 19.1, rotation: 37, scale: 1.2 };
+    assert.equal(
+      (await request(actorPath + '/me' + actorQuery, owner, 'PATCH', position)).status,
+      200,
+    );
+    const actorList = (await request(actorPath + actorQuery, owner)).data;
+    assert.equal(actorList.actors.length, 1);
+    assert.equal(actorList.actors[0].id, hero.id);
+    assert.equal(actorList.actors[0].can_move, true);
+    assert.equal(actorList.actors[0].x, position.x);
+    assert.equal(
+      (await request(actorPath + '/me' + actorQuery, other, 'PATCH', position)).status,
+      404,
+    );
+    assert.equal((await request(actorPath, other)).status, 403);
+    assert.equal(
+      (await request(actorPath + '/me' + actorQuery, owner, 'PATCH', { ...position, x: 80 }))
+        .status,
+      400,
+    );
+    g = (await request('/guilds/' + id, owner)).data;
+    assert.equal(
+      (await request('/guilds/' + id, owner, 'PUT', { document: g.document, revision: g.revision }))
+        .status,
+      200,
+    );
+    assert.equal((await request(actorPath + actorQuery, owner)).data.actors[0].x, position.x);
+    assert.equal(
+      (
+        await request(actorPath + '/me' + actorQuery, owner, 'PATCH', {
+          ...position,
+          present: false,
+        })
+      ).status,
+      200,
+    );
+    assert.equal((await request(actorPath + actorQuery, owner)).data.actors.length, 0);
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
     await pool.end();

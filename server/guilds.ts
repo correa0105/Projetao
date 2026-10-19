@@ -258,7 +258,9 @@ export function guildsRouter() {
     );
     res.json({
       id,
-      document: guildDocumentSchema.parse(g.document),
+      document: guildDocumentSchema.parse(
+        Object.fromEntries(Object.entries(g.document).filter(([key]) => key !== '_estate_actors')),
+      ),
       revision: g.revision,
       prestige: g.prestige,
       rank: guildRank(g.prestige),
@@ -302,7 +304,11 @@ export function guildsRouter() {
     res.json(
       await transaction(async (db) => {
         const g = await guild(db, id, res.locals.user.id, true, res.locals.guildCharacterId);
-        const document = { ...input.document, estate: g.document.estate };
+        const document = {
+          ...input.document,
+          estate: g.document.estate,
+          _estate_actors: g.document._estate_actors || {},
+        };
         checkRooms(document, g.prestige, (await communitySettings(db)).document);
         if (g.revision !== input.revision)
           throw new AppError(409, 'A sede mudou. Reabra antes de salvar.');
@@ -348,6 +354,90 @@ export function guildsRouter() {
         return saved;
       }),
     );
+  });
+  router.get('/guilds/:id/estate/actors', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      uid = res.locals.user.id,
+      cid = res.locals.guildCharacterId;
+    const g = await transaction((db) => guild(db, id, uid, false, cid));
+    const members = (
+      await pool.query(
+        'SELECT c.id,c.name,c.user_id,(ct.image IS NOT NULL OR cp.image IS NOT NULL) AS has_image FROM player_guild_members m JOIN characters c ON c.id=m.character_id LEFT JOIN character_tokens ct ON ct.character_id=c.id LEFT JOIN character_portraits cp ON cp.character_id=c.id WHERE m.guild_id=$1 AND c.deleted_at IS NULL',
+        [id],
+      )
+    ).rows;
+    const image = (m: any) =>
+      m.has_image
+        ? '/api/guilds/' + id + '/estate/actors/' + m.id + '/image'
+        : '/character-silhouette-v2.png';
+    res.json({
+      source: members
+        .filter((m) => m.user_id === uid && (!cid || m.id === cid))
+        .map((m) => ({ id: m.id, name: m.name, image: image(m) })),
+      actors: members
+        .filter((m) => g.document._estate_actors?.[m.id])
+        .map((m) => ({
+          id: m.id,
+          name: m.name,
+          image: image(m),
+          can_move: m.user_id === uid && (!cid || m.id === cid),
+          ...g.document._estate_actors[m.id],
+        })),
+    });
+  });
+  router.get('/guilds/:id/estate/actors/:actor/image', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      actor = uuid.parse(req.params.actor);
+    await transaction((db) =>
+      guild(db, id, res.locals.user.id, false, res.locals.guildCharacterId),
+    );
+    const row = (
+      await pool.query(
+        'SELECT coalesce(ct.image,cp.image) AS image FROM player_guild_members m JOIN characters c ON c.id=m.character_id LEFT JOIN character_tokens ct ON ct.character_id=c.id LEFT JOIN character_portraits cp ON cp.character_id=c.id WHERE m.guild_id=$1 AND c.id=$2 AND c.deleted_at IS NULL',
+        [id, actor],
+      )
+    ).rows[0];
+    if (!row?.image) throw new AppError(404, 'Imagem não disponível.');
+    const sharp = (await import('sharp')).default;
+    res
+      .set('Cache-Control', 'private, no-store')
+      .type('webp')
+      .send(
+        await sharp(row.image)
+          .resize({ width: 512, height: 512, fit: 'inside', withoutEnlargement: true })
+          .webp()
+          .toBuffer(),
+      );
+  });
+  router.patch('/guilds/:id/estate/actors/me', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      cid = res.locals.guildCharacterId;
+    if (!cid) throw new AppError(400, 'Selecione seu personagem.');
+    const input = z
+      .object({
+        x: z.number().finite().min(7).max(53),
+        y: z.number().finite().min(5).max(45),
+        rotation: z.number().finite().min(0).lt(360),
+        scale: z.number().finite().min(0.5).max(3),
+        present: z.boolean().default(true),
+      })
+      .strict()
+      .parse(req.body);
+    await transaction(async (db) => {
+      await guild(db, id, res.locals.user.id, false, cid);
+      if (input.present) {
+        const { present, ...position } = input;
+        await db.query(
+          "UPDATE player_guilds SET document=jsonb_set(document,'{_estate_actors}',coalesce(document->'_estate_actors','{}'::jsonb)||jsonb_build_object($2::text,$3::jsonb)) WHERE id=$1",
+          [id, cid, JSON.stringify(position)],
+        );
+      } else
+        await db.query(
+          "UPDATE player_guilds SET document=document #- ARRAY['_estate_actors',$2::text] WHERE id=$1",
+          [id, cid],
+        );
+    });
+    res.json({ ok: true });
   });
   router.post('/guilds/:id/estate/furniture', async (req, res) => {
     const id = uuid.parse(req.params.id),

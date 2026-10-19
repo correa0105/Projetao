@@ -13,6 +13,10 @@ import {
   Paintbrush,
   Archive,
 } from 'lucide-react';
+import { GuildEstateActors } from './GuildEstateActors';
+import { House2ItemBorder } from './House2ItemBorder';
+import './house2.css';
+import { GuildEstateArchitecture } from './GuildEstateArchitecture';
 import { GuildEstateScenery } from './GuildEstateScenery';
 import { GuildEstateShop } from './GuildEstateShop';
 import { GuildEstateFurnitureLayer } from './GuildEstateFurnitureLayer';
@@ -48,6 +52,7 @@ type Props = {
   revision: number;
   estate?: GuildEstateLayout;
   owner: boolean;
+  member: boolean;
   levels: { room: string; level: number }[];
   treasury: number | null;
   focusRoom: string;
@@ -73,6 +78,17 @@ export function GuildEstate(p: Props) {
     [notice, setNotice] = useState('');
   const [shop, setShop] = useState(false),
     [placing, setPlacing] = useState<string | null>(null);
+  const [snap, setSnap] = useState(false);
+  const transformGesture = useRef<{
+    id: string;
+    kind: string;
+    x: number;
+    y: number;
+    scale: number;
+    rotation: number;
+    distance: number;
+    angle: number;
+  } | null>(null);
   const purchaseKeys = useRef<Record<string, string>>({});
   const gesture = useRef<{
     pointer: number;
@@ -139,6 +155,33 @@ export function GuildEstate(p: Props) {
   }
   function change(id: string, values: Record<string, unknown>) {
     if (busy || !p.owner) return false;
+    const existing =
+      layout.items.find((i) => i.id === id) || layout.furniture.find((i) => i.id === id);
+    if (existing) {
+      const proposed = { ...existing, ...values };
+      if (proposed.x !== null && proposed.y !== null) {
+        const size =
+          'catalog' in proposed
+            ? guildEstateFurnitureSize(proposed)
+            : guildEstateItemSize(proposed.id, proposed.rotation, proposed.scale);
+        const r = guildEstateRooms.find(
+          (r) =>
+            proposed.x! >= r.x - 0.35 &&
+            proposed.x! <= r.x + r.width + 0.35 &&
+            proposed.y! >= r.y - 0.35 &&
+            proposed.y! <= r.y + r.height + 0.35,
+        );
+        if (r && size.width <= r.width && size.height <= r.height)
+          values = {
+            ...values,
+            x: Math.max(r.x + size.width / 2, Math.min(r.x + r.width - size.width / 2, proposed.x)),
+            y: Math.max(
+              r.y + size.height / 2,
+              Math.min(r.y + r.height - size.height / 2, proposed.y),
+            ),
+          };
+      }
+    }
     const next = {
       ...layout,
       items: layout.items.map((i) => (i.id === id ? { ...i, ...values } : i)),
@@ -201,8 +244,8 @@ export function GuildEstate(p: Props) {
         url('/guilds/' + p.guildId + '/estate/furniture'),
         { catalog_id: catalog, request_id: key },
       );
-      delete purchaseKeys.current[catalog];
       await p.changed();
+      delete purchaseKeys.current[catalog];
       placeFurniture(r.item_id, r.estate, r.revision);
     } catch (e) {
       setError((e as Error).message);
@@ -253,7 +296,7 @@ export function GuildEstate(p: Props) {
   const h = guildEstateHouse,
     height = camera.width / ratio;
   const wallPaths =
-    'M21 17H39V31H30.8 M29.2 31H21V17 M30 17V19.8 M30 21.2V26.8 M30 28.2V29.2 M21 24H24.8 M26.2 24H33.8 M35.2 24H39';
+    'M21 17H39V31H30.8 M29.2 31H21V17 M30 17V19.8 M30 21.2V26.8 M21 24H24.8 M26.2 24H33.8 M35.2 24H39';
   const finishes = layout.finishes,
     roofArt = guildEstateFinishes.roof.find((f) => f.id === finishes.roof)!,
     floorArt = guildEstateFinishes.floor.find((f) => f.id === finishes.floor)!,
@@ -269,7 +312,12 @@ export function GuildEstate(p: Props) {
           if (e.button !== 0) return;
           if (placing && editing) {
             const q = point(e.clientX, e.clientY);
-            if (change(placing, { x: Math.round(q.x * 4) / 4, y: Math.round(q.y * 4) / 4 }))
+            if (
+              change(placing, {
+                x: snap ? Math.round(q.x * 4) / 4 : q.x,
+                y: snap ? Math.round(q.y * 4) / 4 : q.y,
+              })
+            )
               setPlacing(null);
             e.preventDefault();
             return;
@@ -286,13 +334,33 @@ export function GuildEstate(p: Props) {
           e.currentTarget.setPointerCapture(e.pointerId);
         }}
         onPointerMove={(e) => {
+          const t = transformGesture.current;
+          if (t) {
+            const q = point(e.clientX, e.clientY);
+            if (t.kind === 'rotate')
+              change(t.id, {
+                rotation:
+                  (((t.rotation + ((Math.atan2(q.y - t.y, q.x - t.x) - t.angle) * 180) / Math.PI) %
+                    360) +
+                    360) %
+                  360,
+              });
+            else
+              change(t.id, {
+                scale: Math.max(
+                  0.25,
+                  Math.min(3, (t.scale * Math.hypot(q.x - t.x, q.y - t.y)) / t.distance),
+                ),
+              });
+            return;
+          }
           const g = gesture.current;
           if (!g || g.pointer !== e.pointerId) return;
           if (g.id) {
             const q = point(e.clientX, e.clientY);
             change(g.id, {
-              x: Math.round((q.x - g.x) * 4) / 4,
-              y: Math.round((q.y - g.y) * 4) / 4,
+              x: snap ? Math.round((q.x - g.x) * 4) / 4 : q.x - g.x,
+              y: snap ? Math.round((q.y - g.y) * 4) / 4 : q.y - g.y,
             });
           } else {
             const b = e.currentTarget.getBoundingClientRect();
@@ -306,11 +374,13 @@ export function GuildEstate(p: Props) {
           }
         }}
         onPointerUp={(e) => {
+          transformGesture.current = null;
           if (gesture.current?.pointer === e.pointerId) gesture.current = null;
           if (e.currentTarget.hasPointerCapture(e.pointerId))
             e.currentTarget.releasePointerCapture(e.pointerId);
         }}
         onPointerCancel={() => {
+          transformGesture.current = null;
           gesture.current = null;
         }}
       >
@@ -318,8 +388,8 @@ export function GuildEstate(p: Props) {
           <pattern id="ge-paving" width="3" height="3" patternUnits="userSpaceOnUse">
             <image href="/vtt/terrain-expansion-20261015/cobblestone.webp" width="3" height="3" />
           </pattern>
-          <pattern id="ge-masonry" width="1.2" height="1.2" patternUnits="userSpaceOnUse">
-            <image href={wallArt.image} width="1.2" height="1.2" />
+          <pattern id="ge-masonry" width="2.4" height="2.4" patternUnits="userSpaceOnUse">
+            <image href={wallArt.image} width="2.4" height="2.4" />
           </pattern>
           <pattern id="ge-grass" width="8" height="8" patternUnits="userSpaceOnUse">
             <image
@@ -333,7 +403,7 @@ export function GuildEstate(p: Props) {
             <image href="/vtt/terrain-v3-20261013/earth.webp" width="3" height="3" />
           </pattern>
           <pattern id="ge-floor" width="3.6" height="3.6" patternUnits="userSpaceOnUse">
-            <image href={floorArt.image} width="3.6" height="3.6" />
+            <image href={floorArt.image} width="3.6" height="3.6" filter="url(#ge-floor-tone)" />
           </pattern>
           <pattern id="ge-grid" width="1" height="1" patternUnits="userSpaceOnUse">
             <path d="M1 0H0V1" fill="none" stroke="#e1d3aa" strokeWidth=".025" opacity=".32" />
@@ -342,6 +412,14 @@ export function GuildEstate(p: Props) {
             <path d="M0 .3H2.5M0 1H2.5" stroke="#59452c" strokeWidth=".16" />
             <path d="M.1 0V1.25" stroke="#2e2519" strokeWidth=".23" />
           </pattern>
+          <filter id="ge-floor-tone">
+            <feColorMatrix type="saturate" values=".52" />
+            <feComponentTransfer>
+              <feFuncR type="linear" slope=".84" />
+              <feFuncG type="linear" slope=".84" />
+              <feFuncB type="linear" slope=".84" />
+            </feComponentTransfer>
+          </filter>
           <filter id="ge-shadow" x="-30%" y="-30%" width="160%" height="160%">
             <feDropShadow
               dx=".12"
@@ -378,19 +456,12 @@ export function GuildEstate(p: Props) {
           <path
             d={wallPaths}
             fill="none"
-            stroke="#282624"
-            strokeWidth=".85"
+            stroke="#756e5b"
+            strokeWidth=".82"
             strokeLinejoin="miter"
           />
           <path d={wallPaths} fill="none" stroke="url(#ge-masonry)" strokeWidth=".62" />
-          <path
-            d="M29.2 31V29.4M30 19.8H28.6M30 26.8H31.4M24.8 24V22.6M33.8 24V25.4"
-            stroke="#70502e"
-            strokeWidth=".14"
-          />
-          <g stroke="#a7bdba" strokeWidth=".16">
-            <path d="M23 17H24.5M35.5 17H37M21 19.3V20.8M39 26.4V28" />
-          </g>
+          <GuildEstateArchitecture />
         </g>
         {!roof && (
           <>
@@ -439,8 +510,8 @@ export function GuildEstate(p: Props) {
             {layout.items.map((i) => {
               const spec = guildEstateItems.find((f) => f.id === i.id)!,
                 art = guildEstateArt(i.id),
-                w = art.width * 1.4,
-                hh = art.height * 1.4;
+                w = art.width * 1.4 * i.scale,
+                hh = art.height * 1.4 * i.scale;
               const lv = p.levels.find((f) => f.room === i.id)?.level || 1;
               return (
                 <g
@@ -536,6 +607,70 @@ export function GuildEstate(p: Props) {
             })}
           </>
         )}
+        {!roof &&
+          editing &&
+          chosen &&
+          chosen.x !== null &&
+          (() => {
+            const art =
+              'catalog' in chosen
+                ? guildEstateFurnitureCatalog.find((f) => f.id === chosen.catalog)!
+                : guildEstateArt(chosen.id);
+            const scale = chosen.scale ?? 1;
+            return (
+              <g
+                data-estate-interactive="transform"
+                transform={`translate(${chosen.x} ${chosen.y}) rotate(${chosen.rotation})`}
+                onPointerDown={(e) => {
+                  const handle = (e.target as Element)
+                    .closest('[data-house2-handle]')
+                    ?.getAttribute('data-house2-handle');
+                  if (busy) return;
+                  if (!handle) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const q = point(e.clientX, e.clientY);
+                    gesture.current = {
+                      pointer: e.pointerId,
+                      id: chosen.id,
+                      clientX: e.clientX,
+                      clientY: e.clientY,
+                      x: q.x - chosen.x!,
+                      y: q.y - chosen.y!,
+                      camera,
+                    };
+                    svg.current?.setPointerCapture(e.pointerId);
+                    return;
+                  }
+                  e.preventDefault();
+                  e.stopPropagation();
+                  const q = point(e.clientX, e.clientY);
+                  transformGesture.current = {
+                    id: chosen.id,
+                    kind: handle,
+                    x: chosen.x!,
+                    y: chosen.y!,
+                    scale,
+                    rotation: chosen.rotation,
+                    distance: Math.max(0.01, Math.hypot(q.x - chosen.x!, q.y - chosen.y!)),
+                    angle: Math.atan2(q.y - chosen.y!, q.x - chosen.x!),
+                  };
+                  svg.current?.setPointerCapture(e.pointerId);
+                }}
+              >
+                <House2ItemBorder
+                  width={art.width * 1.4 * scale}
+                  height={art.height * 1.4 * scale}
+                  pixel={camera.width / (stage.current?.clientWidth || 1000)}
+                  rotation={chosen.rotation}
+                  resize={(d) =>
+                    change(chosen.id, { scale: Math.max(0.25, Math.min(3, scale + d)) })
+                  }
+                  turn={(d) => change(chosen.id, { rotation: (chosen.rotation + d + 360) % 360 })}
+                />
+              </g>
+            );
+          })()}
         {roof && (
           <g
             role="button"
@@ -569,6 +704,15 @@ export function GuildEstate(p: Props) {
           <rect x="7" y="5" width="46" height="40" fill="url(#ge-grid)" pointerEvents="none" />
         )}
       </svg>
+      <GuildEstateActors
+        guildId={p.guildId}
+        characterId={p.characterId}
+        member={p.member}
+        svg={svg}
+        roof={roof}
+        focus={() => focus()}
+        notice={setNotice}
+      />
       {p.owner && (
         <div className="guild-estate-ownerbar" aria-label="Ferramentas da sede">
           <button type="button" onClick={beginEdit}>
@@ -618,7 +762,11 @@ export function GuildEstate(p: Props) {
             <Move size={16} />
             Editar sede <small>{4 + layout.furniture.length} itens</small>
           </h3>
-          <p>Selecione e arraste. Use as setas para ajustar e R para girar.</p>
+          <p>Arraste para mover. Use as bordas para redimensionar e o controle acima para girar.</p>
+          <label>
+            <input type="checkbox" checked={snap} onChange={(e) => setSnap(e.target.checked)} />{' '}
+            Encaixar na grade
+          </label>
           <select
             disabled={busy}
             aria-label="Selecionar instalação"
@@ -647,42 +795,69 @@ export function GuildEstate(p: Props) {
               </option>
             ))}
           </select>
-          {chosen && 'catalog' in chosen && (
+          {chosen && (
             <div className="guild-estate-furniture-options">
+              <label>
+                Ângulo livre
+                <input
+                  aria-label="Rotação livre do item"
+                  type="number"
+                  min="0"
+                  max="359.99"
+                  step="1"
+                  value={Number(chosen.rotation.toFixed(2))}
+                  onChange={(e) =>
+                    change(chosen.id, { rotation: (Number(e.target.value) + 360) % 360 })
+                  }
+                />
+              </label>
+              {(['x', 'y'] as const).map((axis) => (
+                <label key={axis}>
+                  Posição {axis.toUpperCase()}
+                  <input
+                    aria-label={'Posição ' + axis.toUpperCase()}
+                    type="number"
+                    step=".01"
+                    value={chosen[axis] === null ? '' : Number(chosen[axis]!.toFixed(2))}
+                    onChange={(e) => change(chosen.id, { [axis]: Number(e.target.value) })}
+                  />
+                </label>
+              ))}
               <label>
                 Tamanho
                 <input
                   aria-label="Tamanho do móvel"
                   type="range"
-                  min=".5"
-                  max="2"
+                  min=".25"
+                  max="3"
                   step=".1"
                   value={chosen.scale}
                   onChange={(e) => change(chosen.id, { scale: Number(e.target.value) })}
                 />
               </label>
-              {chosen.x === null ? (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setPlacing(chosen.id);
-                    setNotice('Clique no piso do cômodo para colocar o móvel.');
-                  }}
-                >
-                  Colocar no cômodo
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => {
-                    change(chosen.id, { x: null, y: null });
-                    setPlacing(null);
-                  }}
-                >
-                  <Archive size={14} />
-                  Guardar móvel
-                </button>
-              )}
+              {'catalog' in chosen &&
+                (chosen.x === null ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPlacing(chosen.id);
+                      setNotice('Clique no piso do cômodo para colocar o móvel.');
+                    }}
+                  >
+                    Colocar no cômodo
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      change(chosen.id, { x: null, y: null });
+                      setPlacing(null);
+                    }}
+                  >
+                    <Archive size={14} />
+                    Guardar móvel
+                  </button>
+                ))}
             </div>
           )}
           <details className="guild-estate-finishes">

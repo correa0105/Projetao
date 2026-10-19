@@ -26,7 +26,7 @@ export const rpPlacementSchema = z
 export const rpDocumentSchema = z
   .object({
     scene: z.string().refine((id) => rpScenes.some((x) => x.id === id)),
-    placements: z.array(rpPlacementSchema).max(60),
+    placements: z.array(rpPlacementSchema),
   })
   .strict()
   .refine(
@@ -45,7 +45,15 @@ export type RpEntry = {
   document: RpDocument;
   participants: number;
 };
+export type RpSceneItem = RpPlacement & {
+  kind: 'prop' | 'pet' | 'mount';
+  image?: string;
+  name?: string;
+  wardrobe_id?: string;
+};
 export type RpPresence = {
+  depth_layer?: number;
+  scene_items?: RpSceneItem[];
   user_id: string;
   character_id: string;
   name: string;

@@ -2,10 +2,14 @@ import { Router } from 'express';
 import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import sharp from 'sharp';
+import { petArtwork } from '../shared/pet-art.js';
+import { ownedMountImage } from '../shared/mounts.js';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { isAdministrator } from './administrators.js';
-import { rpDocumentSchema, rpScenes } from '../shared/rp-lobby.js';
+import { rpPlacementSchema, rpDocumentSchema, rpScenes } from '../shared/rp-lobby.js';
 const uuid = z.string().uuid(),
   userId = z.string().min(1).max(100);
 const active = 'r.closed_at IS NULL AND (r.expires_at IS NULL OR r.expires_at>now())';
@@ -67,7 +71,7 @@ async function ownCharacter(db: DB, id: string, uid: string) {
 async function state(db: DB, r: any, uid: string) {
   const presence = (
     await db.query(
-      `SELECT p.user_id,p.character_id,c.name,p.x,p.y,p.scale,p.flip_x FROM rp_room_presence p JOIN characters c ON c.id=p.character_id WHERE p.room_id=$1 AND p.updated_at>now()-interval '5 minutes' AND c.deleted_at IS NULL AND NOT EXISTS(SELECT 1 FROM social_blocks b WHERE (b.blocker_id=$2 AND b.blocked_id=p.user_id) OR (b.blocked_id=$2 AND b.blocker_id=p.user_id)) ORDER BY p.user_id`,
+      `SELECT p.user_id,p.character_id,c.name,p.x,p.y,p.scale,p.flip_x,p.depth_layer,p.scene_items FROM rp_room_presence p JOIN characters c ON c.id=p.character_id WHERE p.room_id=$1 AND p.updated_at>now()-interval '5 minutes' AND c.deleted_at IS NULL AND NOT EXISTS(SELECT 1 FROM social_blocks b WHERE (b.blocker_id=$2 AND b.blocked_id=p.user_id) OR (b.blocked_id=$2 AND b.blocker_id=p.user_id)) ORDER BY p.user_id`,
       [r.id, uid],
     )
   ).rows;
@@ -88,11 +92,42 @@ async function state(db: DB, r: any, uid: string) {
   return {
     ...r,
     document: rpDocumentSchema.parse(r.document),
-    presence,
+    presence: await Promise.all(
+      presence.map(async (p) => ({
+        ...p,
+        scene_items: await enrichItems(db, r.id, p.character_id, p.scene_items),
+      })),
+    ),
     messages,
     invites,
     participants: presence.length,
   };
+}
+async function companionSources(db: DB, cid: string) {
+  return (
+    await db.query(
+      "SELECT id,'pet' AS kind,name,pet_id AS species,appearance,NULL AS coat,NULL AS equipment FROM character_pets WHERE character_id=$1 UNION ALL SELECT id,'mount',name,mount_id,NULL,coat,equipment FROM character_mounts WHERE character_id=$1",
+      [cid],
+    )
+  ).rows;
+}
+async function enrichItems(db: DB, rid: string, cid: string, items: any[]) {
+  if (!items?.some((i) => i.kind !== 'prop')) return items || [];
+  const sources = await companionSources(db, cid);
+  return (items || [])
+    .filter(
+      (i) => i.kind === 'prop' || sources.some((s) => s.id === i.wardrobe_id && s.kind === i.kind),
+    )
+    .map((i) => {
+      const source = sources.find((s) => s.id === i.wardrobe_id);
+      return i.kind === 'prop'
+        ? i
+        : {
+            ...i,
+            name: source.name,
+            image: '/api/rp-lobby/' + rid + '/companions/' + cid + '/' + source.id + '/image',
+          };
+    });
 }
 export function rpLobbyRouter() {
   const router = Router();
@@ -157,6 +192,105 @@ export function rpLobbyRouter() {
         ).rows[0];
       }),
     );
+  });
+  router.get('/rp-lobby/companion-library', async (req, res) => {
+    const cid = uuid.parse(req.query.character_id);
+    await ownCharacter(pool, cid, res.locals.user.id);
+    res.json({
+      sources: (await companionSources(pool, cid)).map((s) => ({
+        ...s,
+        image: '/api/companions/' + cid + '/' + s.kind + '/' + s.id + '/base-image',
+      })),
+    });
+  });
+  router.put('/rp-lobby/:id/scene-items', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      uid = res.locals.user.id;
+    const itemSchema = rpPlacementSchema.safeExtend({
+      kind: z.enum(['prop', 'pet', 'mount']),
+      wardrobe_id: uuid.optional(),
+    });
+    const input = z
+      .object({ character_id: uuid, items: z.array(itemSchema) })
+      .strict()
+      .parse(req.body);
+    await transaction(async (db) => {
+      const r = await roomAccess(db, id, uid, false, true);
+      await ownCharacter(db, input.character_id, uid);
+      if (new Set(input.items.map((i) => i.id)).size !== input.items.length)
+        throw new AppError(400, 'Peças repetidas.');
+      if (
+        (r.kind === 'fixed' || !r.is_owner) &&
+        input.items.filter((i) => i.kind === 'prop').length > 4
+      )
+        throw new AppError(409, 'Cada jogador pode colocar até 4 itens neste lobby.');
+      if (input.items.filter((i) => i.kind !== 'prop').length > 20)
+        throw new AppError(400, 'Muitos acompanhantes na cena.');
+      const animals = input.items.filter((i) => i.kind !== 'prop');
+      if (new Set(animals.map((i) => i.kind + ':' + i.wardrobe_id)).size !== animals.length)
+        throw new AppError(400, 'Acompanhante repetido.');
+      const sources = await companionSources(db, input.character_id);
+      for (const i of input.items)
+        if (i.kind !== 'prop' && !sources.some((s) => s.id === i.wardrobe_id && s.kind === i.kind))
+          throw new AppError(404, 'Este acompanhante não pertence ao personagem.');
+      const saved = await db.query(
+        'UPDATE rp_room_presence SET scene_items=$4::jsonb,updated_at=now() WHERE room_id=$1 AND user_id=$2 AND character_id=$3',
+        [id, uid, input.character_id, JSON.stringify(input.items)],
+      );
+      if (!saved.rowCount) throw new AppError(409, 'Entre na sala com este personagem.');
+    });
+    res.json({ ok: true });
+  });
+  router.get('/rp-lobby/:id/companions/:character/:animal/image', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      cid = uuid.parse(req.params.character),
+      aid = uuid.parse(req.params.animal),
+      uid = res.locals.user.id;
+    await roomAccess(pool, id, uid);
+    const p = (
+      await pool.query(
+        "SELECT user_id,scene_items FROM rp_room_presence WHERE room_id=$1 AND character_id=$2 AND updated_at>now()-interval '5 minutes'",
+        [id, cid],
+      )
+    ).rows[0];
+    if (
+      !p ||
+      (await blocked(pool, uid, p.user_id)) ||
+      !p.scene_items.some((i: any) => i.wardrobe_id === aid)
+    )
+      throw new AppError(404, 'Acompanhante indisponível.');
+    const source = (await companionSources(pool, cid)).find((s) => s.id === aid);
+    if (!source) throw new AppError(404, 'Acompanhante indisponível.');
+    const art = (
+      await pool.query('SELECT image FROM companion_artworks WHERE wardrobe_id=$1', [aid])
+    ).rows[0];
+    let bytes = art?.image;
+    if (!bytes) {
+      const pet = source.kind === 'pet' ? petArtwork(source.species, source.appearance) : null;
+      const file = pet
+        ? pet.source
+        : ownedMountImage({
+            mount_id: source.species,
+            coat: source.coat,
+            equipment: source.equipment || [],
+          });
+      for (const root of ['public', 'dist/client'])
+        try {
+          bytes = await readFile(resolve(root, file.replace(/^\//, '')));
+          if (pet) {
+            const [left, top, width, height] = pet.frame;
+            bytes = await sharp(bytes).extract({ left, top, width, height }).png().toBuffer();
+          }
+          break;
+        } catch (e) {
+          if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
+        }
+    }
+    if (!bytes) throw new AppError(404, 'Imagem não disponível.');
+    res
+      .set('Cache-Control', 'private, no-store')
+      .type('webp')
+      .send(await sharp(bytes).webp().toBuffer());
   });
   router.get('/rp-lobby/:id', async (req, res) =>
     res.json(
@@ -279,6 +413,7 @@ export function rpLobbyRouter() {
           y: z.number().finite().min(0.4).max(0.98),
           scale: z.number().finite().min(0.06).max(0.35),
           flip_x: z.boolean(),
+          depth_layer: z.number().int().min(1).max(6).default(4),
         })
         .strict()
         .parse(req.body);
@@ -286,8 +421,17 @@ export function rpLobbyRouter() {
       await roomAccess(db, id, uid, false, true);
       await ownCharacter(db, input.character_id, uid);
       await db.query(
-        'INSERT INTO rp_room_presence(room_id,user_id,character_id,x,y,scale,flip_x) VALUES($1,$2,$3,$4,$5,$6,$7) ON CONFLICT(room_id,user_id) DO UPDATE SET character_id=excluded.character_id,x=excluded.x,y=excluded.y,scale=excluded.scale,flip_x=excluded.flip_x,updated_at=now()',
-        [id, uid, input.character_id, input.x, input.y, input.scale, input.flip_x],
+        'INSERT INTO rp_room_presence(room_id,user_id,character_id,x,y,scale,flip_x,depth_layer) VALUES($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT(room_id,user_id) DO UPDATE SET character_id=excluded.character_id,x=excluded.x,y=excluded.y,scale=excluded.scale,flip_x=excluded.flip_x,depth_layer=excluded.depth_layer,scene_items=CASE WHEN rp_room_presence.character_id=excluded.character_id THEN rp_room_presence.scene_items ELSE jsonb_build_array() END,updated_at=now()',
+        [
+          id,
+          uid,
+          input.character_id,
+          input.x,
+          input.y,
+          input.scale,
+          input.flip_x,
+          input.depth_layer,
+        ],
       );
     });
     res.json({ joined: true });

@@ -20,7 +20,7 @@ export function RpSpeechBubbles({
   const seen = useRef<{ room: string; ids: Set<string> }>({ room: '', ids: new Set() });
   const [speeches, setSpeeches] = useState<Record<string, Speech>>({});
   const [positions, setPositions] = useState<
-    Record<string, { x: number; y: number; width: number; tail: number }>
+    Record<string, { x: number; y: number; width: number; tail: number; scale: number }>
   >({});
   useEffect(() => {
     if (!room || seen.current.room !== room.id) {
@@ -38,7 +38,7 @@ export function RpSpeechBubbles({
             id: message.id,
             body: message.body,
             characterId: message.character_id,
-            expires: Date.now() + 12000,
+            expires: Date.now() + 5000,
           };
         return next;
       });
@@ -70,14 +70,17 @@ export function RpSpeechBubbles({
         const rect = image.getBoundingClientRect(),
           center = rect.left - bounds.left + rect.width / 2;
         if (rect.right < visible.left || rect.left > visible.right) continue;
-        const left = visible.left - bounds.left + width / 2 + 12,
-          right = visible.right - bounds.left - width / 2 - 12;
+        const scale = Math.max(0.3, Math.min(1.15, Number(actor.dataset.depthScale) || 1));
+        const visualWidth = width * scale;
+        const left = visible.left - bounds.left + visualWidth / 2 + 12,
+          right = visible.right - bounds.left - visualWidth / 2 - 12;
         const x = Math.max(left, Math.min(right, center));
         next[actor.dataset.rpActor!] = {
           x,
           y: Math.max(140, Math.min(scene.clientHeight - 16, rect.top - bounds.top - 12)),
           width,
-          tail: Math.max(16, Math.min(width - 16, center - x + width / 2)),
+          scale,
+          tail: Math.max(16, Math.min(width - 16, (center - x) / scale + width / 2)),
         };
       }
       setPositions(next);
@@ -111,6 +114,8 @@ export function RpSpeechBubbles({
                 left: position.x,
                 top: position.y,
                 width: position.width,
+                transform: `translate(-50%, -100%) scale(${position.scale})`,
+                transformOrigin: 'bottom center',
                 '--speech-tail': position.tail + 'px',
               } as CSSProperties
             }

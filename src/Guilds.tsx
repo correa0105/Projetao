@@ -203,6 +203,7 @@ export function Guilds({
       revision={g.revision}
       estate={g.document.estate}
       owner={g.is_owner}
+      member={g.is_member}
       levels={g.facilities || []}
       treasury={g.treasury_cp}
       focusRoom={room}

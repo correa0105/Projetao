@@ -383,4 +383,57 @@
   }
 }
 
-.guild-estate-feedback { pointer-events: none; }
+.guild-estate-feedback {
+  pointer-events: none;
+}
+.guild-estate-actors-tools {
+  position: absolute;
+  right: 22px;
+  top: 150px;
+  z-index: 22;
+}
+.guild-estate-actors-tools button {
+  background: #24271fee;
+  color: #e1d2ae;
+  border: 1px solid #8d774d;
+  padding: 10px;
+  cursor: pointer;
+}
+.guild-estate-actors-panel {
+  width: 250px;
+  padding: 12px;
+  background: #191e17f5;
+  border: 1px solid #8d774d;
+  color: #d6ccb5;
+}
+.guild-estate-actors-panel img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+.guild-estate-actors-panel > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  cursor: grab;
+}
+.guild-estate-editor input[type='number'] {
+  width: 90px;
+  background: #171d16;
+  color: #ded3b9;
+  border: 1px solid #6e654c;
+  padding: 6px;
+}
+@media (max-width: 600px) {
+  .guild-estate-actors-tools {
+    right: 12px;
+    top: 200px;
+  }
+  .guild-estate-actors-panel {
+    width: 220px;
+  }
+  .guild-estate-editor {
+    max-height: 230px;
+  }
+}
