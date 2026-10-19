@@ -9,6 +9,10 @@ export type EquipmentMetadata = {
   armor_bundle_model_image?: string;
   armor_bundle_name?: string;
   armor_piece_name?: string;
+  clothing_bundle_parent?: string;
+  clothing_piece_name?: string;
+  clothing_piece_image?: string;
+  clothing_piece_description?: string;
   [key: string]: unknown;
 };
 export type TargetedItem = { id: string; category: string; raw_data?: EquipmentMetadata | null };

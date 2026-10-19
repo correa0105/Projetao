@@ -19,6 +19,7 @@ import type { TitlesResponse, CharacterTitle } from '../shared/titles';
 import './achievements.css';
 import { TitleHall, TitleManager } from './Titles';
 import { AchievementEditor } from './AchievementEditor';
+import { reorderShelfPiece } from '../shared/shelf-layout';
 import { PortraitCabinet, type FramedCharacter } from './PortraitFrames';
 function Medal({ code }: { code: string }) {
   if (tagCodePattern.test(code))
@@ -91,7 +92,7 @@ export function AchievementShelf({
               style={{
                 left: positions[i] + '%',
                 bottom: [65.8, 44.4, 23.8][rows[i]] + '%',
-                zIndex: selected === i ? 100 : 30 + i,
+                zIndex: 30 + i,
               }}
               className={'cabinet-slot occupied ' + (selected === i ? 'selected' : '')}
               aria-label={`Posição ${i + 1}: ${title ?? 'vazia'}`}
@@ -362,7 +363,7 @@ export function Achievements({
                 ? undefined
                 : (index) => {
                     setSelectedShelf((config.rows ?? defaultShelfRows(config.slots.length))[index]);
-                    setSelected((current) => (current === index ? null : index));
+                    setSelected(index);
                   }
             }
           />
@@ -396,6 +397,57 @@ export function Achievements({
         </button>
         {saved && <span role="status">Estante salva.</span>}
       </div>
+      {config.slots.some(Boolean) && (
+        <div className="cabinet-piece-controls" role="group" aria-label="Editar peça da estante">
+          <label>
+            Peça na estante
+            <select
+              aria-label="Peça na estante"
+              value={selected ?? ''}
+              disabled={busy}
+              onChange={(event) => {
+                const index = event.target.value === '' ? null : Number(event.target.value);
+                setSelected(index);
+                if (index !== null)
+                  setSelectedShelf((config.rows ?? defaultShelfRows(config.slots.length))[index]);
+              }}
+            >
+              <option value="">Escolha uma peça</option>
+              {config.slots.map(
+                (code, index) =>
+                  code && (
+                    <option key={code} value={index}>
+                      {definitions.find((a) => a.code === code)?.title ?? code}
+                    </option>
+                  ),
+              )}
+            </select>
+          </label>
+          {(['back', 'front'] as const).map((direction) => (
+            <button
+              key={direction}
+              className="button outline"
+              disabled={busy || selected === null}
+              onClick={() => {
+                if (selected === null) return;
+                const next = reorderShelfPiece(config, selected, direction);
+                change(next.config);
+                setSelected(next.selected);
+              }}
+            >
+              {direction === 'front' ? 'Trazer para frente' : 'Enviar para trás'}
+            </button>
+          ))}
+          <button
+            className="button outline"
+            disabled={busy || selected === null}
+            onClick={() => place(null)}
+          >
+            Remover da prateleira
+          </button>
+          <span>Selecione na estante ou na lista. Salve para guardar os ajustes.</span>
+        </div>
+      )}
       {error && <FlashMessage>{error}</FlashMessage>}
       <details className="cabinet-personalization">
         <summary>

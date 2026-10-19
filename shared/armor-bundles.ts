@@ -1,4 +1,5 @@
 import catalog from './armor-bundle-catalog.json';
+import { clothingBundle } from './clothing-bundles.js';
 import type { EquipmentTarget } from './equipment-target.js';
 export const PLATE_PIECES = [
   'plate-helmet',
@@ -51,10 +52,12 @@ export function armorBundles() {
   return [...bundles.values()];
 }
 export function purchaseContents(itemId: string) {
-  return armorBundle(itemId)?.pieces.map((piece) => piece.id) || [itemId];
+  return (
+    (armorBundle(itemId) || clothingBundle(itemId))?.pieces.map((piece) => piece.id) || [itemId]
+  );
 }
 export function shopWeight(item: { id: string; weight_lb: string | number }) {
-  return armorBundle(item.id)?.weight_lb ?? Number(item.weight_lb);
+  return (armorBundle(item.id) || clothingBundle(item.id))?.weight_lb ?? Number(item.weight_lb);
 }
 export const ARMOR_PIECE_NAMES: Record<ArmorPieceSlot, string> = {
   armor: 'Peitoral',

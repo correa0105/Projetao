@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { api, post } from './api';
 import { Modal } from './components';
+import { Send } from 'lucide-react';
+import { RpSpeechBubbles } from './RpSpeechBubbles';
+import { rpFloorScale, rpDragPosition } from '../shared/rp-perspective';
 import type { Character, User } from './types';
 import {
   rpScenes,
@@ -22,7 +25,6 @@ import {
 import './rp-lobby.css';
 type Draft = { name: string; document: RpDocument; revision: number };
 const defaultPosition = { x: 0.5, y: 0.84, scale: 0.16, flip_x: false };
-const depth = (y: number) => 0.55 + (y - 0.4) * 0.9;
 const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n));
 const targetFromHash = () =>
   new URLSearchParams(location.hash.split('?')[1] || '').get('room') || '';
@@ -57,6 +59,7 @@ export function RPLobby({
     [joined, setJoined] = useState(false),
     [chat, setChat] = useState(() => innerWidth > 700),
     [message, setMessage] = useState('');
+  const [chatActive, setChatActive] = useState(false);
   const selfRef = useRef(self),
     dirtyRef = useRef(dirty),
     draftRef = useRef(draft),
@@ -67,13 +70,15 @@ export function RPLobby({
   targetRef.current = target;
   const stage = useRef<HTMLDivElement>(null),
     messages = useRef<HTMLDivElement>(null),
+    chatForm = useRef<HTMLFormElement>(null),
+    chatInput = useRef<HTMLInputElement>(null),
+    followChat = useRef(true),
     messageKey = useRef(crypto.randomUUID());
   const drag = useRef<{
     kind: 'actor' | 'object';
     id: string;
     pointer: number;
-    startX: number;
-    startY: number;
+    grab: { x: number; y: number };
     x: number;
     y: number;
   } | null>(null);
@@ -81,6 +86,7 @@ export function RPLobby({
   const messageDraftKey = (id: string) => 'rp-lobby-message:' + user.id + ':' + id;
   const activeDoc = draft?.document || room?.document;
   const scene = rpScenes.find((s) => s.id === activeDoc?.scene);
+  const depth = (y: number) => rpFloorScale(y, activeDoc?.scene);
   useEffect(() => {
     const center = () =>
       requestAnimationFrame(() => {
@@ -227,12 +233,24 @@ export function RPLobby({
   }, []);
   useEffect(() => {
     const list = messages.current;
-    if (
-      list &&
-      (list.scrollHeight - list.scrollTop - list.clientHeight < 180 || list.scrollTop === 0)
-    )
-      list.scrollTop = list.scrollHeight;
+    if (list && followChat.current) list.scrollTop = list.scrollHeight;
   }, [room?.messages.at(-1)?.id, chat]);
+  useEffect(() => {
+    const leaveChat = (event: Event) => {
+      const target = event.target as Node;
+      if (!chatForm.current?.contains(target) && !messages.current?.contains(target)) {
+        setChatActive(false);
+        followChat.current = true;
+        if (messages.current) messages.current.scrollTop = messages.current.scrollHeight;
+      }
+    };
+    document.addEventListener('pointerdown', leaveChat, true);
+    document.addEventListener('focusin', leaveChat, true);
+    return () => {
+      document.removeEventListener('pointerdown', leaveChat, true);
+      document.removeEventListener('focusin', leaveChat, true);
+    };
+  }, []);
   useEffect(() => {
     if (panel === 'guests')
       void api<{ items: { id: string; name: string; status: string }[] }>('/social/friends')
@@ -328,12 +346,16 @@ export function RPLobby({
     event.preventDefault();
     event.stopPropagation();
     event.currentTarget.setPointerCapture(event.pointerId);
+    const bounds = stage.current!.getBoundingClientRect(),
+      factor = depth(y);
     drag.current = {
       kind,
       id,
       pointer: event.pointerId,
-      startX: event.clientX,
-      startY: event.clientY,
+      grab: {
+        x: (event.clientX - bounds.left - x * bounds.width) / factor,
+        y: (event.clientY - bounds.top - y * bounds.height) / factor,
+      },
       x,
       y,
     };
@@ -343,8 +365,15 @@ export function RPLobby({
     const g = drag.current;
     if (!g || g.pointer !== event.pointerId || !stage.current) return;
     const bounds = stage.current.getBoundingClientRect(),
-      x = clamp(g.x + (event.clientX - g.startX) / bounds.width, 0.03, 0.97),
-      y = clamp(g.y + (event.clientY - g.startY) / bounds.height, 0.4, 0.98);
+      { x, y } = rpDragPosition(
+        { x: event.clientX - bounds.left, y: event.clientY - bounds.top },
+        g.grab,
+        bounds,
+        g.y,
+        activeDoc?.scene,
+      );
+    g.x = x;
+    g.y = y;
     if (g.kind === 'actor') {
       const next = { ...selfRef.current, x, y };
       selfRef.current = next;
@@ -366,16 +395,26 @@ export function RPLobby({
     if (g.kind === 'actor') void sendPosition().catch((e) => setError(e.message));
   }
   async function send() {
-    if (!character || !message.trim()) return;
+    if (!character || !message.trim() || !joined) return;
     const body = message;
-    await post('/rp-lobby/' + target + '/messages', {
-      character_id: character.id,
-      body,
-      request_id: messageKey.current,
-    });
-    messageKey.current = crypto.randomUUID();
-    setMessage('');
-    await refreshRoom();
+    const roomId = target,
+      requestId = messageKey.current;
+    try {
+      await post('/rp-lobby/' + roomId + '/messages', {
+        character_id: character.id,
+        body,
+        request_id: requestId,
+      });
+      if (targetRef.current !== roomId) return;
+      if (messageKey.current === requestId) {
+        messageKey.current = crypto.randomUUID();
+        setMessage((current) => (current === body ? '' : current));
+      }
+      followChat.current = true;
+      await refreshRoom(roomId);
+    } finally {
+      if (targetRef.current === roomId) chatInput.current?.focus({ preventScroll: true });
+    }
   }
   const errorBox = error && (
     <p role="alert" className="rp-feedback rp-error">
@@ -559,6 +598,7 @@ export function RPLobby({
               key={p.id}
               className={'rp-prop' + (selected === p.id ? ' selected' : '')}
               data-rp-piece={p.id}
+              data-depth-scale={depth(p.y)}
               aria-label={rpDecor.find((x) => x.id === p.catalog)?.name || p.catalog}
               style={
                 {
@@ -590,6 +630,8 @@ export function RPLobby({
                 key={p.user_id}
                 className={'rp-actor' + (own ? ' is-self' : '')}
                 data-rp-actor={p.user_id}
+                data-base-scale={position.scale}
+                data-depth-scale={depth(position.y)}
                 aria-label={p.name + (own ? ' · mover personagem' : '')}
                 style={
                   {
@@ -616,6 +658,7 @@ export function RPLobby({
               </button>
             );
           })}
+          <RpSpeechBubbles room={room} stage={stage} movement={self} />
         </div>
       </div>
       <header className="rp-session-header">
@@ -952,45 +995,63 @@ export function RPLobby({
         </aside>
       )}
       {chat && (
-        <section className="rp-chat" aria-label="Conversa de RP">
-          <header>
-            <strong>RP · {room?.name}</strong>
-            <button onClick={() => setChat(false)} aria-label="Recolher RP">
-              −
-            </button>
-          </header>
-          <div ref={messages} className="rp-messages" aria-live="polite">
+        <section
+          className={'rp-chat' + (chatActive ? ' chat-active' : '')}
+          aria-label="Conversa de RP"
+        >
+          <button className="rp-chat-close" onClick={() => setChat(false)} aria-label="Recolher RP">
+            −
+          </button>
+          <div
+            ref={messages}
+            className="rp-messages"
+            role="log"
+            aria-label="Histórico de RP"
+            aria-live="polite"
+            onPointerEnter={() => setChatActive(true)}
+            onFocus={() => setChatActive(true)}
+            tabIndex={0}
+            onScroll={(event) => {
+              const el = event.currentTarget;
+              followChat.current = el.scrollHeight - el.scrollTop - el.clientHeight < 24;
+            }}
+          >
             {room?.messages.map((m) => (
-              <article key={m.id}>
-                <strong>{m.name}</strong>
-                <time>
-                  {new Date(m.created_at).toLocaleTimeString('pt-BR', {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                  })}
-                </time>
-                <p>{m.body}</p>
-              </article>
+              <p key={m.id}>
+                <strong>{m.name}:</strong> {m.body}
+              </p>
             ))}
             {!room?.messages.length && <p>O cenário está pronto. Comece a interpretação.</p>}
           </div>
           <form
+            ref={chatForm}
             onSubmit={(e) => {
               e.preventDefault();
               void run(send);
             }}
           >
-            <textarea
+            <input
+              ref={chatInput}
               aria-label="Sua mensagem de RP"
               maxLength={2000}
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onFocus={() => setChatActive(true)}
+              onChange={(e) => {
+                setMessage(e.target.value);
+                messageKey.current = crypto.randomUUID();
+              }}
               placeholder={
                 joined ? 'Escreva sua fala ou ação…' : 'Selecione um personagem para participar.'
               }
               disabled={!joined}
             />
-            <button disabled={busy || !joined || !message.trim()}>Enviar</button>
+            <button
+              aria-label="Enviar"
+              title="Enviar mensagem de RP"
+              disabled={busy || !joined || !message.trim()}
+            >
+              <Send size={22} />
+            </button>
           </form>
         </section>
       )}

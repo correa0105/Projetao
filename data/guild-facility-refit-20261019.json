@@ -1,0 +1,85 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "id": "main",
+      "room": "/guild/rooms/main.webp",
+      "placement": "near the right wall beside (not across) the stairway, resting at floor point 90% across and 68% down the room image. A modest hip-high bell frame in nearly frontal view, with only very slight right side depth. Warm amber firelight from the left, much dimmer on its right.",
+      "prompt": "Use case: precise-object-edit. Edit target: Image 1, the isolated medieval guild facility. Image 2 is the exact destination room and is ONLY a perspective, materials and lighting reference. Redraw this same facility to fit the room's camera at the following intended placement: near the right wall beside (not across) the stairway, resting at floor point 90% across and 68% down the room image. A modest hip-high bell frame in nearly frontal view, with only very slight right side depth. Warm amber firelight from the left, much dimmer on its right. Preserve functional identity, materials and recognizable design from image 1. Correct all geometry using the room's actual eye level and vanishing directions: no arbitrary rotated/isometric tabletop or canted framework, no fisheye. Perspective and ambient illumination must match the room. Output ONLY the entire standalone facility as a clean cutout with true alpha transparency, no room, no background floor plane, no inset, no border, no labels or text, no characters. Very restrained tight contact shade immediately beneath the feet is okay; no detached oval shadow. Do not output the reference room. Full prop from highest point to all feet, centered, with transparent margins. Realistic painterly medieval room quality rather than bright studio product lighting.",
+      "source": "exec-fa4a4d3e-2438-4c1c-872b-bbdbc414b3e6.png",
+      "url": "/guild/facilities-20261019/main.webp",
+      "sha256": "21fa4414cd48df508455448cdc2f497a97eeffb03790060998a7c0c2d67e9583",
+      "nativeSha256": "38419f54b892d700b11f040bd36e1cfd48e589f9d5253013695fae045ed9d3b4"
+    },
+    {
+      "id": "forge",
+      "room": "/guild/rooms/forge.webp",
+      "placement": "along the back wall just to the right of the back window and left of the side doorway, floor point 62% across and 61% down. A waist-high artisan bench aligned parallel to the back wall, straight horizontal front crossbar, subtle top plane, straight legs, no diagonal tilt. Orange forge light from left, cooler rear window.",
+      "prompt": "Use case: precise-object-edit. Edit target: Image 1, the isolated medieval guild facility. Image 2 is the exact destination room and is ONLY a perspective, materials and lighting reference. Redraw this same facility to fit the room's camera at the following intended placement: along the back wall just to the right of the back window and left of the side doorway, floor point 62% across and 61% down. A waist-high artisan bench aligned parallel to the back wall, straight horizontal front crossbar, subtle top plane, straight legs, no diagonal tilt. Orange forge light from left, cooler rear window. Preserve functional identity, materials and recognizable design from image 1. Correct all geometry using the room's actual eye level and vanishing directions: no arbitrary rotated/isometric tabletop or canted framework, no fisheye. Perspective and ambient illumination must match the room. Output ONLY the entire standalone facility as a clean cutout with true alpha transparency, no room, no background floor plane, no inset, no border, no labels or text, no characters. Very restrained tight contact shade immediately beneath the feet is okay; no detached oval shadow. Do not output the reference room. Full prop from highest point to all feet, centered, with transparent margins. Realistic painterly medieval room quality rather than bright studio product lighting.",
+      "source": "exec-914dcf63-381f-4cd9-ad4a-13ac4900f2ea.png",
+      "url": "/guild/facilities-20261019/forge.webp",
+      "sha256": "5a128b5e368d46778699e7153ae85c7bdb1bf706caaa6081f4723fa87c1366d9",
+      "nativeSha256": "e21b1e3e136c7d161210c57d5335f4649b7ed1dd884a0e0d07e8cb0bc25d0c95"
+    },
+    {
+      "id": "lounge",
+      "room": "/guild/rooms/lounge.webp",
+      "placement": "against the back wall under the left of the two back windows, floor point 63% across and 65% down. A low hospitality sideboard with tea and mugs, aligned parallel to that wall, straight horizontal front, shallow visible countertop. Warm hearth light from left.",
+      "prompt": "Use case: precise-object-edit. Edit target: Image 1, the isolated medieval guild facility. Image 2 is the exact destination room and is ONLY a perspective, materials and lighting reference. Redraw this same facility to fit the room's camera at the following intended placement: against the back wall under the left of the two back windows, floor point 63% across and 65% down. A low hospitality sideboard with tea and mugs, aligned parallel to that wall, straight horizontal front, shallow visible countertop. Warm hearth light from left. Preserve functional identity, materials and recognizable design from image 1. Correct all geometry using the room's actual eye level and vanishing directions: no arbitrary rotated/isometric tabletop or canted framework, no fisheye. Perspective and ambient illumination must match the room. Output ONLY the entire standalone facility as a clean cutout with true alpha transparency, no room, no background floor plane, no inset, no border, no labels or text, no characters. Very restrained tight contact shade immediately beneath the feet is okay; no detached oval shadow. Do not output the reference room. Full prop from highest point to all feet, centered, with transparent margins. Realistic painterly medieval room quality rather than bright studio product lighting.",
+      "source": "exec-e657e29a-390b-49b5-b0ff-2244bd894c48.png",
+      "url": "/guild/facilities-20261019/lounge.webp",
+      "sha256": "a06e96c833acd258d57b171bd4267940e6629d728cf9f65593149ecdf42ba7ed",
+      "nativeSha256": "b2b1d5d7e7f4c6618e55b0c7d2414b95faea26c374744f666318ac9d7408f031"
+    },
+    {
+      "id": "meeting",
+      "room": "/guild/rooms/meeting.webp",
+      "placement": "centered on the wooden floor, feet at 52% across and 82% down, keeping the current strategy table design and details which the user likes. Correct the table's distorted/tilted camera: long front edge should be level horizontally, four vertical straight legs, back edge a little shorter, short side edges converge toward the room vanishing point at about x=51%, y=42%. It should naturally belong in this room, not an isometric item.",
+      "prompt": "Use case: precise-object-edit. Edit target: Image 1, the isolated medieval guild facility. Image 2 is the exact destination room and is ONLY a perspective, materials and lighting reference. Redraw this same facility to fit the room's camera at the following intended placement: centered on the wooden floor, feet at 52% across and 82% down, keeping the current strategy table design and details which the user likes. Correct the table's distorted/tilted camera: long front edge should be level horizontally, four vertical straight legs, back edge a little shorter, short side edges converge toward the room vanishing point at about x=51%, y=42%. It should naturally belong in this room, not an isometric item. Preserve functional identity, materials and recognizable design from image 1. Correct all geometry using the room's actual eye level and vanishing directions: no arbitrary rotated/isometric tabletop or canted framework, no fisheye. Perspective and ambient illumination must match the room. Output ONLY the entire standalone facility as a clean cutout with true alpha transparency, no room, no background floor plane, no inset, no border, no labels or text, no characters. Very restrained tight contact shade immediately beneath the feet is okay; no detached oval shadow. Do not output the reference room. Full prop from highest point to all feet, centered, with transparent margins. Realistic painterly medieval room quality rather than bright studio product lighting.",
+      "source": "exec-9ca484b5-e451-4f15-8e46-e0625ec9d2be.png",
+      "url": "/guild/facilities-20261019/meeting.webp",
+      "sha256": "4b99e1d9bd838b5f375b19620d25d8b35c8215f3b3641ddf5a353483886302d5",
+      "nativeSha256": "fabb8162ed65856be8a332d2d66c19be99f146da95134edfabcd717091717ceb"
+    },
+    {
+      "id": "alchemy",
+      "room": "/house/rooms/kitchen-herbal.webp",
+      "placement": "against the left back side wall, left of the central hearth, floor point 30% across and 66% down. A waist-high alchemy workbench aligned with the left wall's receding floor direction; coherent legs and level front crossbar, subtle top plane. Warm hearth light on its right and cool left window light.",
+      "prompt": "Use case: precise-object-edit. Edit target: Image 1, the isolated medieval guild facility. Image 2 is the exact destination room and is ONLY a perspective, materials and lighting reference. Redraw this same facility to fit the room's camera at the following intended placement: against the left back side wall, left of the central hearth, floor point 30% across and 66% down. A waist-high alchemy workbench aligned with the left wall's receding floor direction; coherent legs and level front crossbar, subtle top plane. Warm hearth light on its right and cool left window light. Preserve functional identity, materials and recognizable design from image 1. Correct all geometry using the room's actual eye level and vanishing directions: no arbitrary rotated/isometric tabletop or canted framework, no fisheye. Perspective and ambient illumination must match the room. Output ONLY the entire standalone facility as a clean cutout with true alpha transparency, no room, no background floor plane, no inset, no border, no labels or text, no characters. Very restrained tight contact shade immediately beneath the feet is okay; no detached oval shadow. Do not output the reference room. Full prop from highest point to all feet, centered, with transparent margins. Realistic painterly medieval room quality rather than bright studio product lighting.",
+      "source": "exec-4612e2d2-8132-4294-a6f9-dfa528d80b2e.png",
+      "url": "/guild/facilities-20261019/alchemy.webp",
+      "sha256": "07b0e68838eeff97257cb60c26f0e6fc489a0f737e28da0e5ee5550360bde73d",
+      "nativeSha256": "5d6e174f67d3aa606e418696a3a9fb54acd33fe4311c0d8b381ac370ee64f5d9"
+    },
+    {
+      "id": "training",
+      "room": "/house/rooms/hall-vault.webp",
+      "placement": "near the right column at the back of the hall, floor point 75% across and 67% down, leaving the center open. A standing practice dummy on a simple stable cross base, torso vertical, nearly frontal with subtle natural depth. Dim amber torches and blue moonlight matching the room.",
+      "prompt": "Use case: precise-object-edit. Edit target: Image 1, the isolated medieval guild facility. Image 2 is the exact destination room and is ONLY a perspective, materials and lighting reference. Redraw this same facility to fit the room's camera at the following intended placement: near the right column at the back of the hall, floor point 75% across and 67% down, leaving the center open. A standing practice dummy on a simple stable cross base, torso vertical, nearly frontal with subtle natural depth. Dim amber torches and blue moonlight matching the room. Preserve functional identity, materials and recognizable design from image 1. Correct all geometry using the room's actual eye level and vanishing directions: no arbitrary rotated/isometric tabletop or canted framework, no fisheye. Perspective and ambient illumination must match the room. Output ONLY the entire standalone facility as a clean cutout with true alpha transparency, no room, no background floor plane, no inset, no border, no labels or text, no characters. Very restrained tight contact shade immediately beneath the feet is okay; no detached oval shadow. Do not output the reference room. Full prop from highest point to all feet, centered, with transparent margins. Realistic painterly medieval room quality rather than bright studio product lighting.",
+      "source": "exec-55dac6c9-7d76-4857-bcb2-7a9763b0a1ec.png",
+      "url": "/guild/facilities-20261019/training.webp",
+      "sha256": "ecdf0ce2c6a720c72f9c403bcefaa6201e7e124a4e01e8e4e184fc654ca54223",
+      "nativeSha256": "00f1cac8f6ed1182bdfadbec5f6efc6614d397695f01c1dd56479ec061503d41"
+    },
+    {
+      "id": "library",
+      "room": "/house/rooms/hall-library.webp",
+      "placement": "against the back wall to the left of the middle bookcase bay, floor point 34% across and 55% down. A straight freestanding bookshelf with filled books, almost perfectly frontal and aligned to back wall, no diagonal top/bottom tilt, very shallow side depth. Dark warm wood, amber candlelight and cool blue window fill.",
+      "prompt": "Use case: precise-object-edit. Edit target: Image 1, the isolated medieval guild facility. Image 2 is the exact destination room and is ONLY a perspective, materials and lighting reference. Redraw this same facility to fit the room's camera at the following intended placement: against the back wall to the left of the middle bookcase bay, floor point 34% across and 55% down. A straight freestanding bookshelf with filled books, almost perfectly frontal and aligned to back wall, no diagonal top/bottom tilt, very shallow side depth. Dark warm wood, amber candlelight and cool blue window fill. Preserve functional identity, materials and recognizable design from image 1. Correct all geometry using the room's actual eye level and vanishing directions: no arbitrary rotated/isometric tabletop or canted framework, no fisheye. Perspective and ambient illumination must match the room. Output ONLY the entire standalone facility as a clean cutout with true alpha transparency, no room, no background floor plane, no inset, no border, no labels or text, no characters. Very restrained tight contact shade immediately beneath the feet is okay; no detached oval shadow. Do not output the reference room. Full prop from highest point to all feet, centered, with transparent margins. Realistic painterly medieval room quality rather than bright studio product lighting.",
+      "source": "exec-401874ec-2ebe-4c53-857d-ebdf91beddbe.png",
+      "url": "/guild/facilities-20261019/library.webp",
+      "sha256": "ea8b42000eaa6f092253a8d315dccfce6a28a9fc79e9787491d9da3f62126095",
+      "nativeSha256": "8c930e05a755f5e23ec92ee498025b48a2e047fd53c42b18cad92c1740219478"
+    },
+    {
+      "id": "leader",
+      "room": "/house/rooms/hall-manor.webp",
+      "placement": "under the central back window, floor point 53% across and 71% down. Preserve the ornate command desk design with papers and inkwell, correct to symmetric nearly frontal perspective: horizontal level front edge, subtle trapezoidal desktop converging to the center of the room, straight vertical legs. Warm left hearth and cool window light.",
+      "prompt": "Use case: precise-object-edit. Edit target: Image 1, the isolated medieval guild facility. Image 2 is the exact destination room and is ONLY a perspective, materials and lighting reference. Redraw this same facility to fit the room's camera at the following intended placement: under the central back window, floor point 53% across and 71% down. Preserve the ornate command desk design with papers and inkwell, correct to symmetric nearly frontal perspective: horizontal level front edge, subtle trapezoidal desktop converging to the center of the room, straight vertical legs. Warm left hearth and cool window light. Preserve functional identity, materials and recognizable design from image 1. Correct all geometry using the room's actual eye level and vanishing directions: no arbitrary rotated/isometric tabletop or canted framework, no fisheye. Perspective and ambient illumination must match the room. Output ONLY the entire standalone facility as a clean cutout with true alpha transparency, no room, no background floor plane, no inset, no border, no labels or text, no characters. Very restrained tight contact shade immediately beneath the feet is okay; no detached oval shadow. Do not output the reference room. Full prop from highest point to all feet, centered, with transparent margins. Realistic painterly medieval room quality rather than bright studio product lighting.",
+      "source": "exec-8d379f11-91f9-48bd-8d36-061dff477f5e.png",
+      "url": "/guild/facilities-20261019/leader.webp",
+      "sha256": "bd3dc0c1f1143889c465c5a29fb2dc132e5d5960633274472c1685bc36c7c2f5",
+      "nativeSha256": "cab7cf9c6f05f604a41946f7d1019bbdcec5f4f7d3840055832f9cf85bb63c9a"
+    }
+  ]
+}

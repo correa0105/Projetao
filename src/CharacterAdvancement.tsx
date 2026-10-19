@@ -409,6 +409,13 @@ export function CharacterAdvancement({
                       ))}
                     </select>
                   </label>
+                  <p>
+                    <strong>
+                      Escolha melhoria de atributos ou talento. As duas opções não se acumulam.
+                    </strong>{' '}
+                    Se o talento escolhido conceder um aumento de atributo, aplique somente o
+                    aumento previsto nele.
+                  </p>
                   {plan.feats.selected && (
                     <p>
                       <strong>{plan.feats.selected.name}</strong>: {plan.feats.selected.text}
@@ -422,7 +429,7 @@ export function CharacterAdvancement({
                     {boostBudget - boostSpent} de {boostBudget} pontos disponíveis.{' '}
                     {choice.feat
                       ? 'Use somente o atributo permitido pelo talento.'
-                      : 'Escolha +2 em um atributo ou +1 em dois.'}
+                      : 'Escolha +2 em um atributo ou +1 em dois.'}{' '}
                     O limite desta melhoria é {plan.feats.selected?.maximum ?? 20}. A Constituição
                     recalcula os PV dos níveis anteriores.
                   </p>

@@ -9,7 +9,7 @@ const descriptions = {
  'cosmetic-trousers-wool':'Calça medieval de lã, corte reto e costuras firmes.',
  'cosmetic-shoes-leather':'Par de sapatos baixos de couro, pequenas fivelas de latão e sola costurada.',
  'cosmetic-sandals-road':'Par de sandálias de couro com tiras cruzadas e sola de camadas costuradas.',
- 'cosmetic-outfit-traveler':'Conjunto visual com túnica, cinto, calça e botas. A cor escolhida se aplica à túnica; cinto, calça e botas permanecem castanhos. Equipado como uma peça no espaço do peitoral; não entrega peças avulsas.',
+ 'cosmetic-outfit-traveler':'Conjunto visual com túnica, cinto, calça e botas. A cor escolhida se aplica à túnica; cinto, calça e botas permanecem castanhos. Entrega quatro peças separadas no inventário: túnica, cinto, calça e botas, cada uma com seu ícone e espaço de equipamento.',
  'cosmetic-tunic-road':'Túnica medieval de mangas compridas, cinto castanho e bordado claro na gola.'
 };
 const source=JSON.parse(await fs.readFile('data/shop-clothing-20261018.json','utf8')),catalog=JSON.parse(await fs.readFile('data/emporium-expansion.json','utf8')),lookup={},items=[];

@@ -164,8 +164,8 @@ body.rp-lobby-mounted:has(.rp-session) .app-shell > .main-shell > .page-header {
   user-select: none;
   cursor: default;
 }
-.rp-prop:active,
-.rp-actor:active {
+.rp-stage .rp-prop:active,
+.rp-stage .rp-actor:active {
   transform: translate(-50%, -100%);
 }
 .rp-prop img,
@@ -338,75 +338,134 @@ body.rp-lobby-mounted:has(.rp-session) .app-shell > .main-shell > .page-header {
 }
 .rp-chat {
   position: fixed;
-  left: 18px;
+  left: 50%;
   bottom: 80px;
-  width: 370px;
-  max-width: calc(100vw - 36px);
+  transform: translateX(-50%);
+  width: 64%;
+  max-width: 740px;
+  min-width: 0;
+  color: #d6b879;
+  font:
+    16px Georgia,
+    serif;
+  text-shadow:
+    0 1px 3px #000,
+    0 1px 6px #000;
   z-index: 1150;
-  border: 1px solid #ad8b4a66;
-  border-radius: 5px;
-  background: #18150feb;
-  box-shadow: 0 6px 25px #0008;
 }
-.rp-chat > header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 8px 12px;
-  border-bottom: 1px solid #ad8b4a44;
-  font-size: 12px;
-}
-.rp-chat header button {
-  padding: 2px 8px;
+.rp-chat .rp-chat-close {
+  position: absolute;
+  right: -8px;
+  top: -25px;
+  padding: 1px 8px;
+  font-size: 15px;
 }
 .rp-messages {
-  max-height: 230px;
-  overflow: auto;
+  max-height: clamp(48px, 11vw, 180px);
+  overflow-y: hidden;
   overscroll-behavior: contain;
-  padding: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #9f8154 #0002;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, transparent, #0003, transparent);
 }
-.rp-messages article {
-  margin: 0 0 12px;
-}
-.rp-messages strong {
-  font:
-    13px Georgia,
-    serif;
-  color: #d9b97c;
-}
-.rp-messages time {
-  font-size: 9px;
-  color: #97886f;
-  margin-left: 10px;
+.rp-chat.chat-active .rp-messages {
+  overflow-y: auto;
 }
 .rp-messages p {
+  margin: 0 0 8px;
+  line-height: 1.4;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  line-height: 1.5;
-  font-size: 12px;
-  margin: 4px 0;
-  color: #d1c5ae;
+  font: inherit;
+  color: #d6b879;
+}
+.rp-messages strong {
+  color: #e0c58a;
 }
 .rp-chat form {
   display: flex;
   gap: 8px;
-  padding: 10px;
-  border-top: 1px solid #ad8b4a44;
+  padding: 6px;
+  border: 1px solid #ad8b53;
+  outline: 1px solid #614829;
+  outline-offset: 3px;
+  border-radius: 6px;
+  background: #17130cce;
+  box-shadow: inset 0 0 0 2px #46351f;
 }
-.rp-chat textarea {
-  resize: vertical;
-  width: 100%;
+.rp-chat input {
+  flex: 1;
   min-width: 0;
-  min-height: 55px;
-  max-height: 180px;
-  font-size: 12px;
-  background: #282218;
-  color: #e5d8bf;
-  border: 1px solid #ad8b4a55;
+  width: 0;
+  border: 1px solid #6c5433;
+  background: #0e0d0aaa;
+  color: #e0c58a;
+  font: inherit;
+  padding: 10px 12px;
+}
+.rp-chat input::placeholder {
+  color: #b29766;
+  opacity: 1;
 }
 .rp-chat form button {
-  align-self: end;
+  flex: 0 0 44px;
+  border: 1px solid #8b6d40;
+  background: #302719;
+  color: #d2ad6a;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+.rp-speech-bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+}
+.rp-speech-bubble {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  padding: 10px 13px;
+  border-radius: 12px;
+  border: 1px solid #b59862;
+  background: #f2e4c8f5;
+  color: #30251a;
+  box-shadow: 0 4px 12px #0005;
+  font:
+    14px/1.4 Georgia,
+    serif;
+  text-align: left;
+}
+.rp-speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: var(--speech-tail);
+  width: 11px;
+  height: 11px;
+  background: #f2e4c8;
+  border-right: 1px solid #b59862;
+  border-bottom: 1px solid #b59862;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.rp-speech-bubble strong {
+  display: block;
+  font-size: 11px;
+  margin-bottom: 3px;
+  color: #776039;
+}
+.rp-speech-bubble p {
+  margin: 0;
+  color: #30251a;
+  font: inherit;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 }
 @media (max-width: 700px) {
   .rp-directory {
@@ -443,12 +502,21 @@ body.rp-lobby-mounted:has(.rp-session) .app-shell > .main-shell > .page-header {
     max-width: calc(100vw - 20px);
   }
   .rp-chat {
-    left: 10px;
+    left: 50%;
+    width: 90%;
     bottom: 75px;
     max-width: calc(100vw - 20px);
+    font-size: 12px;
   }
-  .rp-messages {
-    max-height: 170px;
+  .rp-chat form {
+    padding: 4px;
+    gap: 4px;
+  }
+  .rp-chat input {
+    padding: 7px 6px;
+  }
+  .rp-chat form button {
+    flex-basis: 32px;
   }
   .rp-feedbacks {
     left: 10px;

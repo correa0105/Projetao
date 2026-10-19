@@ -314,6 +314,48 @@ test('Lobby de RP e instalações: acesso, edição, presença, convites e econo
         );
       },
     );
+    await t.test(
+      'textos e posição das oito instalações: só administrador vigente, revisão e seed preservados',
+      async () => {
+        const catalog = await request('/community/facilities', admin);
+        assert.equal(catalog.status, 200);
+        assert.equal(catalog.data.can_edit, true);
+        assert.equal(catalog.data.items.length, 8);
+        assert.equal((await request('/community/facilities', owner)).data.can_edit, false);
+        for (const definition of catalog.data.items) {
+          const { room, ...input } = definition,
+            path = '/community/facilities/' + room;
+          const changed = {
+            ...input,
+            name: input.name + ' revisado',
+            description: 'Texto editável do administrador.',
+            upgrade_description: 'Benefício futuro da instalação.',
+          };
+          assert.equal((await request(path, owner, 'PUT', changed)).status, 403);
+          assert.equal((await request(path, admin, 'PUT', { ...changed, x: 2 })).status, 400);
+          const replies = await Promise.all([
+            request(path, admin, 'PUT', changed),
+            request(path, admin, 'PUT', changed),
+          ]);
+          assert.deepEqual(replies.map((r) => r.status).sort(), [200, 409]);
+          assert.equal(
+            (await request('/community/facilities', friend)).data.items.find(
+              (x: any) => x.room === room,
+            ).name,
+            changed.name,
+          );
+        }
+        const saved = (await request('/community/facilities', admin)).data.items;
+        await seed();
+        assert.deepEqual((await request('/community/facilities', admin)).data.items, saved);
+        await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [admin.id]);
+        const { room, ...input } = saved[0];
+        assert.equal(
+          (await request('/community/facilities/' + room, admin, 'PUT', input)).status,
+          403,
+        );
+      },
+    );
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
     await pool.end();

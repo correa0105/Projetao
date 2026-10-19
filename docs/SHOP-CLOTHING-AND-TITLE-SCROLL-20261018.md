@@ -2,7 +2,7 @@
 
 Oito novas ofertas em Cosméticos: Camiseta de linho (1,2 PO), Camiseta de algodão (1,8 PO), Calça de viagem (2,5 PO), Calça de lã (3 PO), Sapatos de couro (3,5 PO), Sandálias de estrada (1 PO), Traje de viajante (12 PO) e Túnica de estrada (4,5 PO). Valores e pesos são próprios do Empório. Não concedem CA ou efeitos mágicos.
 
-Peitoral recebe camisetas, túnica e traje; pernas recebem calças e pés recebem calçados. Traje é uma única aparência com túnica, cinto, calça e botas, não uma entrega de peças separadas. Produtos avulsos continuam disponíveis. Não há zíperes, estampas modernas ou bolsos cargo. O catálogo anterior e suas edições administrativas de preço são preservados.
+Peitoral recebe camisetas e túnicas; pernas recebem calças e pés recebem calçados. Atualização de 19/10: o traje entrega túnica, cinto, calça e botas separadamente, cada uma com seu ícone e posição de equipamento. Detalhes e migração dos trajes antigos em `CHARACTER-RP-GUILD-REFINEMENTS-20261019.md`. Produtos avulsos continuam disponíveis. Não há zíperes, estampas modernas ou bolsos cargo. O catálogo anterior e suas edições administrativas de preço são preservados.
 
 Artes individuais criadas com ImageGen integrado e revisadas visualmente. PNGs originais permanecem no diretório de geração; arquivos finais transparentes de 512 px em `public/shop/clothing-20261018`. Prompts completos e hashes em `data/shop-clothing-art-20261018.json`. Cada oferta tem fala e WAV individual derivado dos sons de tecido/couro já licenciados, respeitando volume e mute.
 

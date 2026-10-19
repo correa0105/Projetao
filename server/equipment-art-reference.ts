@@ -2,6 +2,7 @@ import type { EquipmentMetadata } from '../shared/equipment-target.js';
 import sharp from 'sharp';
 import { AppError } from './services.js';
 import { withArmorMagicAppearance } from './armor-magic-appearance.js';
+import { clothingPieceAppearance } from '../shared/clothing-bundles.js';
 export function trustedEquipmentPath(path: unknown): path is string {
   return (
     typeof path === 'string' &&
@@ -37,6 +38,7 @@ export function equipmentArtReference(item: {
   image_path: string | null;
   raw_data?: EquipmentMetadata | null;
 }) {
+  item = clothingPieceAppearance(item);
   const raw = item.raw_data;
   const path = trustedEquipmentPath(item.image_path)
     ? item.image_path

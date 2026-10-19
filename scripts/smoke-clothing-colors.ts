@@ -3,6 +3,7 @@ import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, stat, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { purchaseContents } from '../shared/armor-bundles';
 if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
   throw Error('Banco descartável obrigatório.');
 const origin = 'http://localhost:3005';
@@ -111,7 +112,7 @@ const {readFile}=await import('node:fs/promises');
     total+=item.price_cp;
   }
   expect(Number((await pool.query('SELECT gold_cp FROM characters WHERE id=$1',[character.id])).rows[0].gold_cp)).toBe(100000-total);
-  const inventory=(await pool.query('SELECT * FROM inventory WHERE character_id=$1 ORDER BY item_id',[character.id])).rows;expect(inventory).toHaveLength(40);
+  const inventory=(await pool.query('SELECT * FROM inventory WHERE character_id=$1 ORDER BY item_id',[character.id])).rows;expect(inventory).toHaveLength(new Set(collection.items.flatMap((item: {id:string})=>purchaseContents(item.id))).size);
   await seed();expect((await pool.query('SELECT * FROM inventory WHERE character_id=$1 ORDER BY item_id',[character.id])).rows).toEqual(inventory);
   expect(errors).toEqual([]);
   await writeFile('test-results/clothing-colors-result.json',JSON.stringify({passed:true,models:8,colorsPerModel:5,items:40,separateCartLines:true,purchaseReplay:true,equipment:true,seedPreserved:true,widths:[1440,768,390],errors},null,2));

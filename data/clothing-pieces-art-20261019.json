@@ -1,0 +1,77 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "id": "tunic-forest",
+      "reference": "public/shop/clothing-20261018/cosmetic-outfit-traveler.webp",
+      "source": "exec-dadcf1e3-4209-46ec-8371-cb4ac2b6f887.png",
+      "prompt": "Use case: precise-object-edit. Asset type: medieval RPG inventory item icon on a genuinely transparent background. Input image is the edit target, a full traveler outfit. Extract and complete ONLY the forest green long sleeve tunic, including its embroidered neckline, cuffs and hem and laced chest. Remove the leather waist belt completely, reconstruct the continuous green fabric beneath it. Remove trousers and boots. Preserve exact original garment design, brown or colored materials, embroidery, lighting, painterly realistic fantasy product illustration style. Only the requested isolated garment, no wearer, mannequin, body, other clothes, background, ground, shadow plane, border, text or watermark. Center complete item with 8% transparent margins, enlarge to fill a square inventory icon clearly. This is one isolated product icon, not a sheet. True alpha transparency.",
+      "url": "/shop/clothing-pieces-20261019/tunic-forest.webp",
+      "nativeSha256": "b6c5175108bfd87751f6697586e7750e5fe39b91aef2a10088e8ff2c34ab8989",
+      "sha256": "5d0e9b2ce983eb251c932b4ff43020643fc59ef35fb6b38d2560d05e66109853"
+    },
+    {
+      "id": "tunic-ivory",
+      "reference": "public/shop/clothing-colors-20261018/cosmetic-outfit-traveler-ivory.webp",
+      "source": "exec-8fe85b9b-0a38-4f21-9f1a-854900697381.png",
+      "prompt": "Use case: precise-object-edit. Asset type: medieval RPG inventory item icon on a genuinely transparent background. Input image is the edit target, a full traveler outfit. Extract and complete ONLY the long sleeve tunic in the exact original color, including its embroidered neckline, cuffs and hem and laced chest. Remove the leather waist belt completely, reconstruct the continuous matching fabric beneath it. Remove trousers and boots. Preserve exact original garment design, brown or colored materials, embroidery, lighting, painterly realistic fantasy product illustration style. Only the requested isolated garment, no wearer, mannequin, body, other clothes, background, ground, shadow plane, border, text or watermark. Center complete item with 8% transparent margins, enlarge to fill a square inventory icon clearly. This is one isolated product icon, not a sheet. True alpha transparency.",
+      "url": "/shop/clothing-pieces-20261019/tunic-ivory.webp",
+      "nativeSha256": "b7bee2757a0c9e01d8d5d8bfe7e6a6b81976b28c35ef1f0685f06c75e3688458",
+      "sha256": "83bf597dd7cf510cb565903c465cd9d4f3bad6966ea46b7330003b7c66d47e89"
+    },
+    {
+      "id": "tunic-blue",
+      "reference": "public/shop/clothing-colors-20261018/cosmetic-outfit-traveler-blue.webp",
+      "source": "exec-ba131f5e-8f76-4e22-9f93-f7509deaad8f.png",
+      "prompt": "Use case: precise-object-edit. Asset type: medieval RPG inventory item icon on a genuinely transparent background. Input image is the edit target, a full traveler outfit. Extract and complete ONLY the long sleeve tunic in the exact original color, including its embroidered neckline, cuffs and hem and laced chest. Remove the leather waist belt completely, reconstruct the continuous matching fabric beneath it. Remove trousers and boots. Preserve exact original garment design, brown or colored materials, embroidery, lighting, painterly realistic fantasy product illustration style. Only the requested isolated garment, no wearer, mannequin, body, other clothes, background, ground, shadow plane, border, text or watermark. Center complete item with 8% transparent margins, enlarge to fill a square inventory icon clearly. This is one isolated product icon, not a sheet. True alpha transparency.",
+      "url": "/shop/clothing-pieces-20261019/tunic-blue.webp",
+      "nativeSha256": "6c653ad139ac6b8a570a4e83c329ad77287ef8afeead7ede5f010011d58c6ed1",
+      "sha256": "3533cddc71316a411d9dc493701addcee756ead5e9134f300b1d3fe58906f4a4"
+    },
+    {
+      "id": "tunic-wine",
+      "reference": "public/shop/clothing-colors-20261018/cosmetic-outfit-traveler-wine.webp",
+      "source": "exec-fd1788ba-59f9-4da0-bc77-b1364975d3a5.png",
+      "prompt": "Use case: precise-object-edit. Asset type: medieval RPG inventory item icon on a genuinely transparent background. Input image is the edit target, a full traveler outfit. Extract and complete ONLY the long sleeve tunic in the exact original color, including its embroidered neckline, cuffs and hem and laced chest. Remove the leather waist belt completely, reconstruct the continuous matching fabric beneath it. Remove trousers and boots. Preserve exact original garment design, brown or colored materials, embroidery, lighting, painterly realistic fantasy product illustration style. Only the requested isolated garment, no wearer, mannequin, body, other clothes, background, ground, shadow plane, border, text or watermark. Center complete item with 8% transparent margins, enlarge to fill a square inventory icon clearly. This is one isolated product icon, not a sheet. True alpha transparency.",
+      "url": "/shop/clothing-pieces-20261019/tunic-wine.webp",
+      "nativeSha256": "8b6426d0d32d6c52217f4a489288be91ba8de9d6e2b1523c12eca136b9777c36",
+      "sha256": "671a04b4ff7783ce1cffa8c64e1d4874368ae5d6844240929c4e621ef5232691"
+    },
+    {
+      "id": "tunic-charcoal",
+      "reference": "public/shop/clothing-colors-20261018/cosmetic-outfit-traveler-charcoal.webp",
+      "source": "exec-3b1dc06a-77d4-450c-96a3-7639004b07df.png",
+      "prompt": "Use case: precise-object-edit. Asset type: medieval RPG inventory item icon on a genuinely transparent background. Input image is the edit target, a full traveler outfit. Extract and complete ONLY the long sleeve tunic in the exact original color, including its embroidered neckline, cuffs and hem and laced chest. Remove the leather waist belt completely, reconstruct the continuous matching fabric beneath it. Remove trousers and boots. Preserve exact original garment design, brown or colored materials, embroidery, lighting, painterly realistic fantasy product illustration style. Only the requested isolated garment, no wearer, mannequin, body, other clothes, background, ground, shadow plane, border, text or watermark. Center complete item with 8% transparent margins, enlarge to fill a square inventory icon clearly. This is one isolated product icon, not a sheet. True alpha transparency.",
+      "url": "/shop/clothing-pieces-20261019/tunic-charcoal.webp",
+      "nativeSha256": "89f83b53d496d2d556383a7a0680b6d8c626c8946412a69f36646f0490dc3114",
+      "sha256": "ffd6c309b3a25f683d6e66ee2982db0ca9a7737361f63febebc57f61901a2dc5"
+    },
+    {
+      "id": "belt",
+      "reference": "public/shop/clothing-20261018/cosmetic-outfit-traveler.webp",
+      "source": "exec-c11d9c09-06f7-4824-8ecf-365276a19a10.png",
+      "prompt": "Use case: precise-object-edit. Asset type: medieval RPG inventory item icon on a genuinely transparent background. Input image is the edit target, a full traveler outfit. Extract and complete ONLY the brown leather belt with its brass buckle and hanging belt tip. Show this single belt separately in its existing curved worn shape with empty transparent center, complete outline. Remove all tunic fabric, trousers and boots. Preserve exact original garment design, brown or colored materials, embroidery, lighting, painterly realistic fantasy product illustration style. Only the requested isolated garment, no wearer, mannequin, body, other clothes, background, ground, shadow plane, border, text or watermark. Center complete item with 8% transparent margins, enlarge to fill a square inventory icon clearly. This is one isolated product icon, not a sheet. True alpha transparency.",
+      "url": "/shop/clothing-pieces-20261019/belt.webp",
+      "nativeSha256": "a01def05fdf14f82ce5e846b50b4247be300bfb95c867e97eef6a0be6c94f145",
+      "sha256": "4e21253f8f53af74b1f6bea8bbba8303496d0dd268e730c92be32ab7e9f7c898"
+    },
+    {
+      "id": "trousers",
+      "reference": "public/shop/clothing-20261018/cosmetic-outfit-traveler.webp",
+      "source": "exec-5660da2b-721d-4eda-89a0-5072a86e6389.png",
+      "prompt": "Use case: precise-object-edit. Asset type: medieval RPG inventory item icon on a genuinely transparent background. Input image is the edit target, a full traveler outfit. Extract and complete ONLY the brown medieval trousers. Recover the complete waistband hidden under the tunic and complete leg ends hidden inside the boots, matching their simple brown fabric. Remove tunic, belt and boots. Preserve exact original garment design, brown or colored materials, embroidery, lighting, painterly realistic fantasy product illustration style. Only the requested isolated garment, no wearer, mannequin, body, other clothes, background, ground, shadow plane, border, text or watermark. Center complete item with 8% transparent margins, enlarge to fill a square inventory icon clearly. This is one isolated product icon, not a sheet. True alpha transparency.",
+      "url": "/shop/clothing-pieces-20261019/trousers.webp",
+      "nativeSha256": "22f5db7babc0e5d10e9970e8ae9e0afe171041b7904e9ef7cdad28151f883264",
+      "sha256": "ae0d543c99214b01d3af73a289213ec67000128a8d3e0ce5b110f128dc0167c9"
+    },
+    {
+      "id": "boots",
+      "reference": "public/shop/clothing-20261018/cosmetic-outfit-traveler.webp",
+      "source": "exec-8c98cd8f-d957-4263-b5be-ce5946dfa55b.png",
+      "prompt": "Use case: precise-object-edit. Asset type: medieval RPG inventory item icon on a genuinely transparent background. Input image is the edit target, a full traveler outfit. Extract and complete ONLY the pair of tall brown leather medieval boots with their small buckle straps. Two boots as ONE inventory item, matching exact shape/material/colors. Remove all trousers, tunic and waist belt. Preserve exact original garment design, brown or colored materials, embroidery, lighting, painterly realistic fantasy product illustration style. Only the requested isolated garment, no wearer, mannequin, body, other clothes, background, ground, shadow plane, border, text or watermark. Center complete item with 8% transparent margins, enlarge to fill a square inventory icon clearly. This is one isolated product icon, not a sheet. True alpha transparency.",
+      "url": "/shop/clothing-pieces-20261019/boots.webp",
+      "nativeSha256": "afe74fbd90dd21836ea873331eee71a07ec17bfa515065252c282277007a4680",
+      "sha256": "28901cf821d6992a7e55bd78040e9ead1665042d5ec05f3d6badbe03e792f3cf"
+    }
+  ]
+}

@@ -43,5 +43,5 @@ export function armorSetOptions<T extends EquipmentItem>(
 }
 
 export function inventoryPieceName(item: EquipmentItem) {
-  return item.raw_data?.armor_piece_name || item.name;
+  return item.raw_data?.clothing_piece_name || item.raw_data?.armor_piece_name || item.name;
 }

@@ -12,6 +12,7 @@ import { Coins, Search, ShoppingCart, X, Plus, Pencil } from 'lucide-react';
 import type { Character, Item } from './types';
 import { money } from '../shared/rules';
 import { armorBundle, shopWeight } from '../shared/armor-bundles';
+import { clothingBundle } from '../shared/clothing-bundles';
 import { equipmentTarget } from '../shared/equipment-target';
 import type { CompanionEquipmentState, CompanionOutfit } from '../shared/companion-equipment';
 import { api, post } from './api';
@@ -726,6 +727,7 @@ export function Shop({
                 const modelHeading = offer.kind === 'armor' ? 'Tipo de armadura' : 'Tipo de arma';
                 const variantTitle = variantHeading(offer);
                 const armorSet = chosen && armorBundle(chosen.id);
+                const clothingSet = chosen && clothingBundle(chosen.id);
                 return (
                   <article
                     key={offer.id}
@@ -859,6 +861,9 @@ export function Shop({
                         <span className="shop-weight">
                           Conjunto completo com {armorSet.pieces.length} peças
                         </span>
+                      )}
+                      {clothingSet && (
+                        <span className="shop-weight">Entrega 4 peças separadas: túnica, cinto, calça e botas</span>
                       )}
                       {chosen && item.category !== 'Itens de House' && (
                         <span className="shop-weight">

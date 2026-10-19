@@ -646,13 +646,13 @@
   margin-bottom: 16px;
 }
 .lore-library .lore-stage-toolbar > div {
-  min-height: 62px;
-  padding-left: 64px;
+  min-height: 80px;
+  padding-left: 94px;
 }
 .lore-library .lore-stage-toolbar .lore-archive-emblem {
-  width: 48px;
-  height: 48px;
-  top: 1px;
+  width: 76px;
+  height: 76px;
+  top: -4px;
 }
 .lore-library .lore-stage-toolbar h2 {
   font-size: 25px;

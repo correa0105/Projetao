@@ -7,7 +7,7 @@ const rows=[
 ['cosmetic-trousers-wool','Calça de lã',300,2,'legs','cloth','Calça de lã cinza escura, corte reto e costuras firmes.','Lã cinza para uma manhã fresca. O barro costuma preferir a barra.'],
 ['cosmetic-shoes-leather','Sapatos de couro',350,1.5,'feet','leather','Par de sapatos baixos de couro castanho, pequenas fivelas de latão e sola costurada.','Couro castanho, fivela pequena e sola firme. Uma escova devolve a apresentação depois da viagem.'],
 ['cosmetic-sandals-road','Sandálias de estrada',100,1,'feet','leather','Par de sandálias de couro com tiras cruzadas e sola de camadas costuradas.','Sandálias leves para a estrada seca. Tire as pedrinhas antes do próximo trecho.'],
-['cosmetic-outfit-traveler','Traje de viajante',1200,5,'armor','cloth','Conjunto visual com túnica verde-oliva, cinto, calça castanha e botas. Equipado como uma peça de traje no espaço do peitoral; não entrega peças avulsas.','O traje reúne túnica, cinto, calça e botas numa só peça de aparência. A mochila fica por sua conta.'],
+['cosmetic-outfit-traveler','Traje de viajante',1200,5,'armor','cloth','Conjunto visual com túnica verde-oliva, cinto, calça castanha e botas. Entrega quatro peças separadas no inventário: túnica, cinto, calça e botas, cada uma com seu ícone e espaço de equipamento.','O traje entrega túnica, cinto, calça e botas separadamente. A mochila fica por sua conta.'],
 ['cosmetic-tunic-road','Túnica de estrada',450,1.5,'armor','cloth','Túnica azul-ardósia de mangas compridas, cinto castanho e bordado claro na gola.','Túnica azul com um bordado discreto. O cinto ajuda a manter o tecido fora do caminho.']
 ];
 const file='data/emporium-expansion.json',catalog=JSON.parse(await fs.readFile(file,'utf8')),before=structuredClone(catalog.items);

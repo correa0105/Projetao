@@ -1,11 +1,11 @@
 import { FlashMessage } from './FlashMessage';
 import { CharacterTitleLabel } from './Titles';
+import { CharacterLevelBadge } from './CharacterLevelBadge';
 import { useEffect, useState } from 'react';
 import {
   BookOpen,
   Dices,
   Shield,
-  Heart,
   Sparkles,
   Check,
   ChevronsUp,
@@ -16,7 +16,6 @@ import {
   Package,
   Sword,
   Backpack,
-  Hand,
 } from 'lucide-react';
 import { api, post } from './api';
 import {
@@ -262,10 +261,7 @@ export function CharacterSheet({
         aria-label="Patente e progressão"
       >
         <div className="sheet-rank-identity">
-          <div className="sheet-rank-level" aria-label={`Nível ${c.level}`}>
-            <small>Nível</small>
-            <strong>{c.level}</strong>
-          </div>
+          <CharacterLevelBadge className={c.class} level={c.level}/>
           <div>
             <span className="sheet-rank-eyebrow">Patente da guilda</span>
             <h3>
@@ -484,15 +480,14 @@ export function CharacterSheet({
         <>
           <div className="sheet-vitals">
             {[
-              [Heart, c.hp, 'PV máximos'],
-              [Shield, d.armorClass, 'Classe de armadura'],
-              [Sparkles, signed(d.proficiency), 'Proficiência'],
-              [Dices, signed(d.initiative), 'Iniciativa'],
-            ].map(([Icon, val, label], i) => {
-              const Glyph = Icon as typeof Heart;
+              ['health', c.hp, 'PV máximos'],
+              ['armor', d.armorClass, 'Classe de armadura'],
+              ['proficiency', signed(d.proficiency), 'Proficiência'],
+              ['initiative', signed(d.initiative), 'Iniciativa'],
+            ].map(([icon, val, label], i) => {
               return (
                 <div key={i}>
-                  <Glyph size={19} />
+                  <img className="sheet-realistic-icon" src={'/sheet/icons-20261019/'+icon+'.webp'} alt="" draggable={false}/>
                   <strong>{String(val)}</strong>
                   <span>{String(label)}</span>
                 </div>
@@ -711,7 +706,7 @@ export function CharacterSheet({
                   ))}
                   <li>
                     <header>
-                      <Hand size={22} aria-hidden="true" />
+                      <img className="sheet-realistic-icon" src="/sheet/icons-20261019/unarmed.webp" alt="" draggable={false}/>
                       <strong>Desarmado</strong>
                     </header>
                     <div className="sheet-attack-numbers">

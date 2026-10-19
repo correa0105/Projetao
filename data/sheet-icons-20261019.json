@@ -1,0 +1,45 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "id": "unarmed",
+      "prompt": "Asset type: polished medieval fantasy RPG interface icon. Primary request: One realistic human hand in a firm closed unarmed combat fist, knuckles facing viewer, believable anatomy with exactly five fingers folded correctly, naturally warm tan skin with subtle texture, clean wrist ending with no wound, no glove or jewelry. Photorealistic painterly high-detail item rendering with tactile materials and soft warm directional lighting from upper left. A single large, simple, bold silhouette that remains clear at 28 to 40 pixels. Centered, complete, with 8% transparent margin. Genuinely transparent alpha background, no circular badge, no background, no floor or pedestal, no UI tile, no border around the image, no caption or watermark. Avoid thin line art, cartoon/vector appearance, flat monochrome pictogram, noisy particles and excessive glow. Warm brass, natural skin, ruby, dark iron and ivory should harmonize with a dark medieval wood and parchment interface.",
+      "source": "exec-f17faa3f-cf86-4164-be41-0e0af1b37acb.png",
+      "url": "/sheet/icons-20261019/unarmed.webp",
+      "sha256": "e3413e9185e8abf0fb797698e151652ff3d35a54c703a764da222d93f307f932",
+      "nativeSha256": "bd3aa840a48cfb84bd203b2895e8f57cfc9ef5d120d92c5cf492390c6040dc7f"
+    },
+    {
+      "id": "health",
+      "prompt": "Asset type: polished medieval fantasy RPG interface icon. Primary request: One carved deep ruby red gemstone in a recognizable simple heart silhouette, realistic translucent polished red stone with subdued highlights and a thin worn antique gold edge, readable heart shape for maximum hit points. Photorealistic painterly high-detail item rendering with tactile materials and soft warm directional lighting from upper left. A single large, simple, bold silhouette that remains clear at 28 to 40 pixels. Centered, complete, with 8% transparent margin. Genuinely transparent alpha background, no circular badge, no background, no floor or pedestal, no UI tile, no border around the image, no caption or watermark. Avoid thin line art, cartoon/vector appearance, flat monochrome pictogram, noisy particles and excessive glow. Warm brass, natural skin, ruby, dark iron and ivory should harmonize with a dark medieval wood and parchment interface.",
+      "source": "exec-9cf5ed36-1642-49ea-bbc5-c850b21eb69d.png",
+      "url": "/sheet/icons-20261019/health.webp",
+      "sha256": "bf27d81ccaaa695f856f8441cad254c757977147fd32b568e9130faf1e1aac74",
+      "nativeSha256": "ec3f658375044071096f5caebcbca9512082b984493381801a241fc48d2d3027"
+    },
+    {
+      "id": "armor",
+      "prompt": "Asset type: polished medieval fantasy RPG interface icon. Primary request: One realistic medieval heater shield, dark steel face with discreet warm brass edging and worn brown leather center panel, thick believable rim, nearly frontal view, no heraldic text or emblem, for armor class. Photorealistic painterly high-detail item rendering with tactile materials and soft warm directional lighting from upper left. A single large, simple, bold silhouette that remains clear at 28 to 40 pixels. Centered, complete, with 8% transparent margin. Genuinely transparent alpha background, no circular badge, no background, no floor or pedestal, no UI tile, no border around the image, no caption or watermark. Avoid thin line art, cartoon/vector appearance, flat monochrome pictogram, noisy particles and excessive glow. Warm brass, natural skin, ruby, dark iron and ivory should harmonize with a dark medieval wood and parchment interface.",
+      "source": "exec-cc9c620b-e0f6-4081-852a-6b57bbbb1f38.png",
+      "url": "/sheet/icons-20261019/armor.webp",
+      "sha256": "04f2ef5c191b7e773735c1e5c97cda7915a2e1d0829674b374d4268f5bb8224b",
+      "nativeSha256": "dbec85b25b71b48efa6263a486036c15673dd2968560bfa8bd27abebf71777b5"
+    },
+    {
+      "id": "proficiency",
+      "prompt": "Asset type: polished medieval fantasy RPG interface icon. Primary request: One realistic small antique gold eight-point starburst medal, substantial softly beveled metal points and central circular polished bronze boss, two tiny twinkling highlights on the upper right, a clear symbol of skill mastery, no ribbons. Photorealistic painterly high-detail item rendering with tactile materials and soft warm directional lighting from upper left. A single large, simple, bold silhouette that remains clear at 28 to 40 pixels. Centered, complete, with 8% transparent margin. Genuinely transparent alpha background, no circular badge, no background, no floor or pedestal, no UI tile, no border around the image, no caption or watermark. Avoid thin line art, cartoon/vector appearance, flat monochrome pictogram, noisy particles and excessive glow. Warm brass, natural skin, ruby, dark iron and ivory should harmonize with a dark medieval wood and parchment interface.",
+      "source": "exec-7b1d7175-3904-449f-8b98-b4162cebe29a.png",
+      "url": "/sheet/icons-20261019/proficiency.webp",
+      "sha256": "7d1a982b4916f0948170afcdafa5ef1a1e5cdf909dfec70f7c715d4bc1a24059",
+      "nativeSha256": "9107dcb84c8ffdb5d9fcfa0e97841946d4378c9a6ecd8a3bd9325d1acd447798"
+    },
+    {
+      "id": "initiative",
+      "prompt": "Asset type: polished medieval fantasy RPG interface icon. Primary request: One realistic ivory bone twenty-sided gaming die with subtly engraved dark numerals and aged golden curved arrow looping above and to the right, one coherent compact symbol for initiative and turn order. Photorealistic painterly high-detail item rendering with tactile materials and soft warm directional lighting from upper left. A single large, simple, bold silhouette that remains clear at 28 to 40 pixels. Centered, complete, with 8% transparent margin. Genuinely transparent alpha background, no circular badge, no background, no floor or pedestal, no UI tile, no border around the image, no caption or watermark. Avoid thin line art, cartoon/vector appearance, flat monochrome pictogram, noisy particles and excessive glow. Warm brass, natural skin, ruby, dark iron and ivory should harmonize with a dark medieval wood and parchment interface.",
+      "source": "exec-91a95121-f01f-461e-9ddc-43606cec4673.png",
+      "url": "/sheet/icons-20261019/initiative.webp",
+      "sha256": "3ef2502c4cd391ff12865e08569fa3d2213f7bfa48b82734d17b2953a158b5c1",
+      "nativeSha256": "568928a4869e9d2677266701a271ffc1ab1bb2c99dee1dd1378af9aa368ff5f5"
+    }
+  ]
+}

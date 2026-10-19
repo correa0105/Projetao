@@ -6,7 +6,12 @@ import { seedLore } from './lore.js';
 import { ensureInitialRulebook } from './rulebook.js';
 import { lockCatalogPrices } from './shop-prices.js';
 import { seedArmorPieces } from './armor-catalog.js';
-import { withdrawnWeaponModels, withdrawnWeaponOffer, withdrawnBookOffer } from '../shared/shop-availability.js';
+import { seedClothingPieces } from './clothing-catalog.js';
+import {
+  withdrawnWeaponModels,
+  withdrawnWeaponOffer,
+  withdrawnBookOffer,
+} from '../shared/shop-availability.js';
 
 export async function seed() {
   const catalog = JSON.parse(await readFile(resolve('data/shop-export/loja.json'), 'utf8'));
@@ -113,7 +118,9 @@ export async function seed() {
           item.weight_estimated,
           item.audio_path,
           // Withdraw this offer without removing existing equipment or purchase history.
-          item.raw_data?.magic_family !== 'Drow Weapon' && !withdrawnWeaponOffer(item) && !withdrawnBookOffer(item),
+          item.raw_data?.magic_family !== 'Drow Weapon' &&
+            !withdrawnWeaponOffer(item) &&
+            !withdrawnBookOffer(item),
         ],
       );
     }
@@ -154,6 +161,7 @@ export async function seed() {
       await client.query('UPDATE armor_piece_backfills SET applied_at=now() WHERE id=$1', [row.id]);
     }
     await seedArmorPieces(client);
+    await seedClothingPieces(client);
     const entries = [
       [
         'dominios-da-alvorada',

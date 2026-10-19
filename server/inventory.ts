@@ -5,6 +5,7 @@ import { transaction } from './db.js';
 import { AppError } from './services.js';
 import { allocatedCopies, companionAllocated } from './companion-inventory.js';
 import { armorSetPieces } from './equipment-sets.js';
+import { clothingPieceAppearance } from '../shared/clothing-bundles.js';
 import {
   EQUIPMENT_SLOTS,
   compatibleSlots,
@@ -71,9 +72,9 @@ export async function storageState(client: PoolClient, userId: string, character
     [characterId, userId],
   );
   return {
-    inventory: inventory.rows,
-    vault: vault.rows,
-    equipped: equipped.rows,
+    inventory: inventory.rows.map(clothingPieceAppearance),
+    vault: vault.rows.map(clothingPieceAppearance),
+    equipped: equipped.rows.map(clothingPieceAppearance),
     companion_allocated: await companionAllocated(client, characterId),
     companions: await companionBags(client, characterId),
   };

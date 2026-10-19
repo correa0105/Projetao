@@ -379,6 +379,8 @@ dialog:has(.character-creation-form) {
   grid-row: span 2;
   color: #baa16f;
 }
+.sheet-realistic-icon { display: inline-block; width: 32px; height: 32px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 2px 2px #0007); }
+.sheet-vitals .sheet-realistic-icon { grid-row: span 2; width: 36px; height: 36px; }
 .sheet-vitals strong {
   font-size: 24px;
 }

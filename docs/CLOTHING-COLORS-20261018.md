@@ -1,5 +1,7 @@
 # Cinco cores por roupa medieval
 
+Atualização de 19/10: os trajes completos das cinco cores entregam quatro peças separadas com imagens próprias. A vitrine conserva a imagem do traje completo. Migração, entrega e auditoria em `CHARACTER-RP-GUILD-REFINEMENTS-20261019.md`.
+
 Cada um dos oito modelos ocupa um cartão em Cosméticos, com um único seletor Cor e cinco opções. A seleção muda a arte, nome, descrição, preço efetivo, áudio e ID real usado na compra. Comprar e arrastar ficam bloqueados até escolher uma cor. Cada cor fica separada no carrinho, inventário, baú e equipamento. A busca também encontra nomes de cores, mantendo todas as cinco escolhas disponíveis.
 
 Linho e algodão: Cru, Verde-musgo, Azul-anil, Vinho e Carvão. Calça de lã e túnica: mesma paleta. Calça de viagem, sapatos e traje de viajante conservam o Castanho ou Verde-musgo original e completam cinco opções; sandálias conservam Caramelo. No traje, somente a túnica muda de cor; calças, botas e cinto permanecem castanhos. Preços e propriedades não mudam pela cor. Os oito IDs originais continuam compráveis e preservam peças já adquiridas; há 32 novos IDs, totalizando 40 variantes em oito ofertas.

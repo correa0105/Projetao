@@ -6,7 +6,9 @@ import { rulebookRouter } from './rulebook.js';
 import { vttRouter } from './vtt.js';
 import { socialRouter } from './social.js';
 import { guildsRouter } from './guilds.js';
+import { guildFacilityDefinitionsRouter } from './guild-facility-definitions.js';
 import { towerRouter } from './tower.js';
+import { clothingPieceAppearance } from '../shared/clothing-bundles.js';
 import express from 'express';
 import { sendCatalog, compressedBundle } from './http-transfer.js';
 import helmet from 'helmet';
@@ -263,6 +265,7 @@ export function createApp() {
   app.use('/api', vttRouter());
   app.use('/api', socialRouter());
   app.use('/api', guildsRouter());
+  app.use('/api', guildFacilityDefinitionsRouter());
   app.use('/api', towerRouter());
   app.use('/api', houseRouter());
   app.use('/api', house2Router());
@@ -322,7 +325,11 @@ export function createApp() {
         [id],
       ),
     ]);
-    res.json({ inventory: inventory.rows, achievements: achievements.rows, history: history.rows });
+    res.json({
+      inventory: inventory.rows.map(clothingPieceAppearance),
+      achievements: achievements.rows,
+      history: history.rows,
+    });
   });
   app.get('/api/catalog', async (req, res) =>
     sendCatalog(
