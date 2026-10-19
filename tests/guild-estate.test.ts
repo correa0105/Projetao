@@ -316,6 +316,76 @@ test('API da sede conserva broche/economia, protege o dono e salva posições co
       ).status,
       400,
     );
+    const openingPath = `/guilds/${id}/estate/openings`,
+      openingQuery = '?character_id=' + hero.id;
+    assert.equal((await request(openingPath, other)).status, 403);
+    assert.equal((await request(openingPath + '?character_id=' + sibling.id, owner)).status, 403);
+    assert.equal(
+      (await request(openingPath + '/west-window' + openingQuery, other, 'PATCH', { open: false }))
+        .status,
+      404,
+    );
+    assert.equal(
+      (await request(openingPath + '/west-window' + openingQuery, owner, 'PATCH', { open: 'no' }))
+        .status,
+      400,
+    );
+    assert.equal(
+      (await request(openingPath + '/unknown' + openingQuery, owner, 'PATCH', { open: false }))
+        .status,
+      400,
+    );
+    const openingsBefore = (await request(openingPath + openingQuery, owner)).data.openings;
+    assert.equal(openingsBefore['west-window'], true);
+    assert.equal(
+      (await request(openingPath + '/west-window' + openingQuery, owner, 'PATCH', { open: false }))
+        .status,
+      200,
+    );
+    await Promise.all(
+      ['entry', 'main-forge'].map((opening) =>
+        request(openingPath + '/' + opening + openingQuery, owner, 'PATCH', {
+          open: opening !== 'entry',
+        }),
+      ),
+    );
+    const openingsSaved = (await request(openingPath + openingQuery, owner)).data.openings;
+    assert.equal(openingsSaved['west-window'], false);
+    assert.equal(openingsSaved.entry, false);
+    assert.equal(openingsSaved['main-forge'], true);
+    g = (await request('/guilds/' + id, owner)).data;
+    const illustrated = crestSchema.parse({
+      ...g.document.crest,
+      art: {
+        banner: 'ragged',
+        symbol: 'dragon-ring',
+        frame: 'war-horns',
+        order: ['frame', 'banner', 'symbol'],
+        symbolX: 12,
+        symbolRotation: 37,
+      },
+    });
+    assert.equal(
+      (
+        await request(`/guilds/${id}/crest`, owner, 'PATCH', {
+          crest: { ...illustrated, art: { ...illustrated.art, symbolX: 100 } },
+          revision: g.revision,
+        })
+      ).status,
+      400,
+    );
+    assert.equal(
+      (
+        await request(`/guilds/${id}/crest`, owner, 'PATCH', {
+          crest: illustrated,
+          revision: g.revision,
+        })
+      ).status,
+      200,
+    );
+    g = (await request('/guilds/' + id, owner)).data;
+    assert.deepEqual(g.document.crest, illustrated);
+    assert.equal(g.document._estate_openings, undefined);
     const actorPath = `/guilds/${id}/estate/actors`,
       actorQuery = '?character_id=' + hero.id;
     const position = { x: 22.2, y: 19.1, rotation: 37, scale: 1.2 };
@@ -345,6 +415,11 @@ test('API da sede conserva broche/economia, protege o dono e salva posições co
       200,
     );
     assert.equal((await request(actorPath + actorQuery, owner)).data.actors[0].x, position.x);
+    assert.deepEqual(
+      (await request(openingPath + openingQuery, owner)).data.openings,
+      openingsSaved,
+    );
+    assert.deepEqual((await request('/guilds/' + id, owner)).data.document.crest, illustrated);
     assert.equal(
       (
         await request(actorPath + '/me' + actorQuery, owner, 'PATCH', {

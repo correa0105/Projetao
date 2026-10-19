@@ -27,6 +27,7 @@ import {
   type CommunitySettings,
 } from '../shared/guilds';
 import { GuildCrest } from './GuildCrest';
+import { crestArtSchema } from '../shared/guild-crest-art';
 import { CrestEditor } from './GuildCrestEditor';
 import { Modal } from './components';
 import { visitProfile } from './HallOfFame';
@@ -204,6 +205,31 @@ export function Guilds({
       estate={g.document.estate}
       owner={g.is_owner}
       member={g.is_member}
+      guildActions={
+        <div className="guild-estate-guild-actions">
+          <button onClick={() => setPanel('members')}>
+            <Users size={17} />
+            Companhia · {g.members.length}/8
+          </button>
+          <button onClick={() => setPanel('missions')}>
+            <Trophy size={17} />
+            Missões e tesouro
+          </button>
+          <button onClick={() => setPanel('overview')}>
+            <Shield size={17} />
+            Informações e brasão
+          </button>
+          <button onClick={() => setPanel('rooms')}>
+            <Home size={17} />
+            Salas da sede
+          </button>
+          <button onClick={() => (location.hash = 'guild')}>
+            <ArrowLeft size={17} />
+            Todas as guildas
+          </button>
+        </div>
+      }
+
       levels={g.facilities || []}
       treasury={g.treasury_cp}
       focusRoom={room}
@@ -256,7 +282,12 @@ export function Guilds({
                   freeCharacters[0]?.id ||
                   '',
               );
-              setDoc(guildDocumentSchema.parse({ name: 'Nova guilda' }));
+              setDoc(
+                guildDocumentSchema.parse({
+                  name: 'Nova guilda',
+                  crest: crestSchema.parse({ art: {} }),
+                }),
+              );
               setFounding(true);
             }}
             onAdmin={
@@ -334,54 +365,6 @@ export function Guilds({
               </span>
               <ChevronDown size={15} />
             </button>
-            <div className="guild-scene-top-actions">
-              <button onClick={() => (location.hash = 'guild')} aria-label="Todas as guildas">
-                <ArrowLeft size={16} />
-                <span>Todas as guildas</span>
-              </button>
-              <button
-                aria-expanded={panel === 'rooms'}
-                aria-controls="scene-panel-rooms"
-                onClick={() => setPanel(panel === 'rooms' ? null : 'rooms')}
-              >
-                <Home size={16} />
-                Salas
-                <ChevronDown size={13} />
-              </button>
-            </div>
-          </div>
-          <nav className="guild-scene-dock" aria-label="Áreas da guilda">
-            <button
-              aria-expanded={panel === 'members'}
-              aria-controls="scene-panel-members"
-              onClick={() => setPanel(panel === 'members' ? null : 'members')}
-            >
-              <Users size={18} />
-              <span>Companhia</span>
-              <small>{g.members.length}/8</small>
-            </button>
-            <button
-              aria-expanded={panel === 'missions'}
-              aria-controls="scene-panel-missions"
-              onClick={() => setPanel(panel === 'missions' ? null : 'missions')}
-            >
-              <Trophy size={18} />
-              <span>Missões</span>
-            </button>
-          </nav>
-          <div className="guild-scene-tools">
-            {g.is_owner && (
-              <button
-                aria-expanded={panel === 'edit'}
-                onClick={() => {
-                  setPanel(null);
-                  setEstateEditRequest((n) => n + 1);
-                }}
-              >
-                <Palette size={17} />
-                <span>Reposicionar itens</span>
-              </button>
-            )}
           </div>
           {panel === 'overview' && (
             <ScenePanel
@@ -422,7 +405,10 @@ export function Guilds({
                     disabled={busy}
                     onClick={() =>
                       setCrestDraft({
-                        crest: structuredClone(current!.crest),
+                        crest: {
+                          ...structuredClone(current!.crest),
+                          art: current!.crest.art || crestArtSchema.parse({}),
+                        },
                         revision: g.revision,
                       })
                     }

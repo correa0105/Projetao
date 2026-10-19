@@ -1,3 +1,4 @@
+import { estateOpeningId, estateOpeningsSchema } from '../shared/guild-estate-vision.js';
 import express from 'express';
 import { z } from 'zod';
 import { randomUUID } from 'node:crypto';
@@ -259,7 +260,11 @@ export function guildsRouter() {
     res.json({
       id,
       document: guildDocumentSchema.parse(
-        Object.fromEntries(Object.entries(g.document).filter(([key]) => key !== '_estate_actors')),
+        Object.fromEntries(
+          Object.entries(g.document).filter(
+            ([key]) => !['_estate_actors', '_estate_openings'].includes(key),
+          ),
+        ),
       ),
       revision: g.revision,
       prestige: g.prestige,
@@ -308,6 +313,7 @@ export function guildsRouter() {
           ...input.document,
           estate: g.document.estate,
           _estate_actors: g.document._estate_actors || {},
+          _estate_openings: g.document._estate_openings || {},
         };
         checkRooms(document, g.prestige, (await communitySettings(db)).document);
         if (g.revision !== input.revision)
@@ -352,6 +358,29 @@ export function guildsRouter() {
           [id, JSON.stringify(input.estate)],
         );
         return saved;
+      }),
+    );
+  });
+  router.get('/guilds/:id/estate/openings', async (req, res) => {
+    const g = await transaction((db) =>
+      guild(db, uuid.parse(req.params.id), res.locals.user.id, false, res.locals.guildCharacterId),
+    );
+    res.json({ openings: estateOpeningsSchema.parse(g.document._estate_openings || {}) });
+  });
+  router.patch('/guilds/:id/estate/openings/:opening', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      opening = estateOpeningId.parse(req.params.opening),
+      input = z.object({ open: z.boolean() }).strict().parse(req.body);
+    res.json(
+      await transaction(async (db) => {
+        const g = await guild(db, id, res.locals.user.id, false, res.locals.guildCharacterId),
+          openings = estateOpeningsSchema.parse(g.document._estate_openings || {});
+        openings[opening] = input.open;
+        await db.query(
+          "UPDATE player_guilds SET document=jsonb_set(document,'{_estate_openings}',$2::jsonb) WHERE id=$1",
+          [id, JSON.stringify(openings)],
+        );
+        return { openings };
       }),
     );
   });

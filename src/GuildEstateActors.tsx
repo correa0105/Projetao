@@ -1,3 +1,8 @@
+import {
+  guildEstateCanSee,
+  type EstateOpenings,
+  type EstatePoint,
+} from '../shared/guild-estate-vision';
 import { useEffect, useRef, useState, type RefObject } from 'react';
 import { createPortal } from 'react-dom';
 import { api } from './api';
@@ -20,7 +25,15 @@ export function GuildEstateActors({
   roof,
   focus,
   notice,
+  onViewer,
+  openings,
+  editing,
+  panelTarget,
 }: {
+  panelTarget: HTMLDivElement | null;
+  onViewer: (at: EstatePoint | null) => void;
+  openings: EstateOpenings;
+  editing: boolean;
   guildId: string;
   characterId: string;
   member: boolean;
@@ -31,11 +44,15 @@ export function GuildEstateActors({
 }) {
   const [actors, setActors] = useState<Actor[]>([]),
     [sources, setSources] = useState<Source[]>([]),
-    [open, setOpen] = useState(false),
     [busy, setBusy] = useState(false);
   const drag = useRef<{ id: string; dx: number; dy: number; pointer: number } | null>(null),
     current = useRef(actors);
   current.current = actors;
+  const viewer = actors.find((a) => a.id === characterId) || null;
+  useEffect(
+    () => onViewer(viewer ? { x: viewer.x, y: viewer.y } : null),
+    [viewer?.x, viewer?.y, characterId],
+  );
   const url = '/guilds/' + guildId + '/estate/actors',
     query = '?character_id=' + encodeURIComponent(characterId);
   function point(x: number, y: number) {
@@ -117,11 +134,8 @@ export function GuildEstateActors({
   if (!member || !characterId) return null;
   return (
     <>
-      <div className="guild-estate-actors-tools">
-        <button type="button" onClick={() => setOpen(!open)}>
-          Meu personagem
-        </button>
-        {open && (
+      {panelTarget &&
+        createPortal(
           <div className="guild-estate-actors-panel">
             <p>Arraste seu personagem para a cena ou use Trazer. A posição é salva ao soltar.</p>
             {sources.map((s) => (
@@ -150,14 +164,21 @@ export function GuildEstateActors({
                 )}
               </div>
             ))}
-          </div>
+          </div>,
+          panelTarget,
         )}
-      </div>
       {svg.current &&
         createPortal(
           <g data-estate-actors="members">
             {actors
-              .filter((a) => !roof || a.x < 21 || a.x > 39 || a.y < 17 || a.y > 31)
+              .filter(
+                (a) =>
+                  (!roof || a.x < 21 || a.x > 39 || a.y < 17 || a.y > 31) &&
+                  (!viewer ||
+                    editing ||
+                    a.id === characterId ||
+                    guildEstateCanSee(viewer, a, openings)),
+              )
               .map((a) => (
                 <g
                   key={a.id}

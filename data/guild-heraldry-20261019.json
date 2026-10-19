@@ -1,0 +1,375 @@
+{
+  "generated_at": "2026-10-19",
+  "mode": "built-in imagegen",
+  "purpose": "60 modular guild heraldry assets; 20 banners, 20 frames, 20 emblems. Replaces rejected wolf/dragon designs.",
+  "reference": "User attached fantasy banner references; Pinterest pin 456693218469169079 could not be accessed.",
+  "packing": "Connected alpha components isolate each of ten subjects per source without cutting at nominal grid boundaries. Small detached details assigned to nearest main subject; extraneous neighbor fragments excluded. Each subject is fitted within 448px and centered in an individual transparent 512px sprite. Six 5×2 sheets are kept as source previews; runtime uses 60 individual sprites to prevent SVG color-filter bleed.",
+  "batches": [
+    {
+      "kind": "cloth-a",
+      "prompt": "Production fantasy guild crest modular asset sheet. Exactly FIVE equal columns and TWO equal rows: TEN separate objects, in the precise reading order below. Each object confined to its own equal rectangular cell and centered with at least 8% clear margin on every side. Genuine transparent alpha background, including holes within designs. No cell outlines, checkered backdrop, labels, numbers, letters, watermark, or extra objects. Straight frontal heraldic view. Professional hand-painted fantasy RPG craftsmanship, engraved edges, believable layered material and restrained fine detail. Strong clean silhouette legible at small 96-pixel size. No noisy micro-spikes or tangled scribbles. Original designs inspired by elaborate fantasy banners, never existing faction logos. Neutral ivory/silver/pewter monochrome materials for later tinting.\nONLY blank fabric bodies, no frames, poles, rods, badges, symbols, decoration or hanging metal. Detailed woven cloth, stitched seams and restrained folds. Large open center to receive an emblem. Off-white cloth. All ten distinct outer silhouettes; keep full banners visible.\nReading order: (1) battle banner with deliberately torn lower hem; (2) elegant swallowtail with two sharply separated tails; (3) long single pointed cathedral pennant; (4) rounded shield-shaped textile; (5) broad rectangular standard with three shallow bottom notches; (6) long three-tail ceremonial flag; (7) tapered kite-shaped fabric; (8) scalloped lower hem tapestry; (9) narrow lance pennant with one sweeping diagonal end; (10) five-tail long woven guild standard",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-c996fdf3-69e9-449d-a1e9-f4bb98170725.png",
+      "output": "public/guild/crests-20261019/cloth-a.webp",
+      "designs": [
+        "battle banner with deliberately torn lower hem",
+        "elegant swallowtail with two sharply separated tails",
+        "long single pointed cathedral pennant",
+        "rounded shield-shaped textile",
+        "broad rectangular standard with three shallow bottom notches",
+        "long three-tail ceremonial flag",
+        "tapered kite-shaped fabric",
+        "scalloped lower hem tapestry",
+        "narrow lance pennant with one sweeping diagonal end",
+        "five-tail long woven guild standard"
+      ],
+      "sha256": "abcc0eddab7ff496952487be5f8d690f304433400407767c0d0d7f8b98cb1993",
+      "sprites": [
+        {
+          "file": "public/guild/crests-20261019/cloth-1.webp",
+          "sha256": "2214ee7685d127db2f182c13ac1f61b9575276ee8a45c59086fcfa791442ea0c"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-2.webp",
+          "sha256": "368c774faa2436c5b579edf8f813131cb292b342768752e56b1bacaa002a8e67"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-3.webp",
+          "sha256": "0775ffb926f929f270a0004f2f1d38be2756b56b56fd65d3f97c55f6dd6b44f0"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-4.webp",
+          "sha256": "a6e4da74ac4e292fdcaf99ec269412e73669b6fc1ba643a182ea4200f75c89cd"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-5.webp",
+          "sha256": "667e25a0ed54d16478060486e3b41b155fc5fc8b882bc22a1a7fead5dc4788d4"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-6.webp",
+          "sha256": "ed9f22676c53ff4c411cdcddb3d42d6f28da6c82f919a4bfd7776451f9fb7cab"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-7.webp",
+          "sha256": "c6599cf69fb8b8d5e2707c4604800d6c6e23f951cb2709471618b8b73c691249"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-8.webp",
+          "sha256": "0c701e2e88be92d98f04ad66874dbf1f35807454ab5ac6aa8275591d064b81b9"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-9.webp",
+          "sha256": "374efe17729ba366530b99f7278f1feb843d35e8c96ea40176bf4c61a8cb879b"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-10.webp",
+          "sha256": "f943f2162bcfea5578fa9a66879d0d3511a57a437d1ce005c72839dcfc66d927"
+        }
+      ]
+    },
+    {
+      "kind": "cloth-b",
+      "prompt": "Production fantasy guild crest modular asset sheet. Exactly FIVE equal columns and TWO equal rows: TEN separate objects, in the precise reading order below. Each object confined to its own equal rectangular cell and centered with at least 8% clear margin on every side. Genuine transparent alpha background, including holes within designs. No cell outlines, checkered backdrop, labels, numbers, letters, watermark, or extra objects. Straight frontal heraldic view. Professional hand-painted fantasy RPG craftsmanship, engraved edges, believable layered material and restrained fine detail. Strong clean silhouette legible at small 96-pixel size. No noisy micro-spikes or tangled scribbles. Original designs inspired by elaborate fantasy banners, never existing faction logos. Neutral ivory/silver/pewter monochrome materials for later tinting.\nONLY blank fabric bodies, no frames, poles, rods, badges, symbols, decoration or hanging metal. Detailed woven cloth, stitched seams and restrained folds. Large open center to receive an emblem. Off-white cloth. All ten distinct outer silhouettes; keep full banners visible.\nReading order: (1) gothic fabric with deep V-notch and stepped shoulders; (2) long rounded-bottom ceremonial tabard; (3) wide short dwarven textile with squared bottom corners; (4) pointed silk banner with curled side cutouts; (5) long divided double pennant; (6) oval-bottom druidic woven fabric; (7) battle pennant with asymmetric ripped tail; (8) three-tier scalloped ceremonial textile; (9) narrow diamond-shaped hanging textile; (10) wide imperial banner with central long tail and short side tails",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-dd4b5ee5-6d63-4eeb-a677-a0f0735e2dab.png",
+      "output": "public/guild/crests-20261019/cloth-b.webp",
+      "designs": [
+        "gothic fabric with deep V-notch and stepped shoulders",
+        "long rounded-bottom ceremonial tabard",
+        "wide short dwarven textile with squared bottom corners",
+        "pointed silk banner with curled side cutouts",
+        "long divided double pennant",
+        "oval-bottom druidic woven fabric",
+        "battle pennant with asymmetric ripped tail",
+        "three-tier scalloped ceremonial textile",
+        "narrow diamond-shaped hanging textile",
+        "wide imperial banner with central long tail and short side tails"
+      ],
+      "sha256": "5d788658a4bdee75e821a420129b3285a36d2179ef04571ca764bb79ea207bf6",
+      "sprites": [
+        {
+          "file": "public/guild/crests-20261019/cloth-11.webp",
+          "sha256": "355d93769e9b547de64a257e46f28f532c202f363cdfff567909da11190f1e91"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-12.webp",
+          "sha256": "d220844fda30092d63ed86e3ee004b24d56770e6cb0cde31747341073789f976"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-13.webp",
+          "sha256": "4b41a5fd5aa025e8c2d957e693c0a0c92af517f8428973fa5be74f4d501737df"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-14.webp",
+          "sha256": "6f060b6cea9480116928814443151ab959f643e69bdad844e966fe4e0821ac5b"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-15.webp",
+          "sha256": "11efaa498a0b0c54fb8781f30bf1ea3b56c8551b7b0ad499391b89cbb0f76b1a"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-16.webp",
+          "sha256": "aa2957a780d093d52cf06f5f3ea713bb902fb7292ad1e9b6b912fad4f5f5842e"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-17.webp",
+          "sha256": "72966926038fc6854009abce21b7eadd7e25a7401c6bff3d601b8714ce0bd1da"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-18.webp",
+          "sha256": "2715133c32bfb9bb0f35bf3de2f8d5311522a0473b22f42756a85fdfa36768f7"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-19.webp",
+          "sha256": "29ddfa8b4c34c7244a493af8a1b63f64c380e3b418fdf1f3a095ea3733389769"
+        },
+        {
+          "file": "public/guild/crests-20261019/cloth-20.webp",
+          "sha256": "53aee5cf78381bfe40ab48620c94594280bd9288a1139fea968e5db913448502"
+        }
+      ]
+    },
+    {
+      "kind": "sigils-a",
+      "prompt": "Production fantasy guild crest modular asset sheet. Exactly FIVE equal columns and TWO equal rows: TEN separate objects, in the precise reading order below. Each object confined to its own equal rectangular cell and centered with at least 8% clear margin on every side. Genuine transparent alpha background, including holes within designs. No cell outlines, checkered backdrop, labels, numbers, letters, watermark, or extra objects. Straight frontal heraldic view. Professional hand-painted fantasy RPG craftsmanship, engraved edges, believable layered material and restrained fine detail. Strong clean silhouette legible at small 96-pixel size. No noisy micro-spikes or tangled scribbles. Original designs inspired by elaborate fantasy banners, never existing faction logos. Neutral ivory/silver/pewter monochrome materials for later tinting.\nONLY central emblem subjects, no backing plates, no fabric, no outer frame, no scene, no ground. Sculpted silver engraved emblem style with bold anatomy and large quiet shapes. Especially the wolf and dragon must be cleaner and less cluttered than over-spiked generic fantasy emblems. One single animal per cell.\nReading order: (1) NOBLE WOLF side-profile head, closed mouth, simple two ears and clear long muzzle, no extra mane, crown, armor or spikes; (2) RAVEN with broad spread wings, simple feather groups and clearly visible hooked beak; (3) PHOENIX rising with upward flame wings and three long tail feathers; (4) DRAGON complete side-profile body with two wings, long tail and clear slender head, no circle, no ring, no crown or extra heads; (5) LION profile walking with one raised forepaw and a strong mane; (6) STAG frontal head with clean symmetrical branching antlers; (7) BEAR standing profile with powerful rounded paws; (8) OWL frontal perched with large clear eyes and folded wings; (9) BOAR profile with obvious curved tusks and bristled back; (10) GRIFFIN rearing with eagle beak and two wings",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-1ed611f7-c024-48fc-b3c7-b18bd159428a.png",
+      "output": "public/guild/crests-20261019/sigils-a.webp",
+      "designs": [
+        "NOBLE WOLF side-profile head, closed mouth, simple two ears and clear long muzzle, no extra mane, crown, armor or spikes",
+        "RAVEN with broad spread wings, simple feather groups and clearly visible hooked beak",
+        "PHOENIX rising with upward flame wings and three long tail feathers",
+        "DRAGON complete side-profile body with two wings, long tail and clear slender head, no circle, no ring, no crown or extra heads",
+        "LION profile walking with one raised forepaw and a strong mane",
+        "STAG frontal head with clean symmetrical branching antlers",
+        "BEAR standing profile with powerful rounded paws",
+        "OWL frontal perched with large clear eyes and folded wings",
+        "BOAR profile with obvious curved tusks and bristled back",
+        "GRIFFIN rearing with eagle beak and two wings"
+      ],
+      "sha256": "1f80ffd40b66c7629aa939ab2f2c2e4cc5d9b9f0a99d13f2e1f1185ba205645d",
+      "sprites": [
+        {
+          "file": "public/guild/crests-20261019/sigils-1.webp",
+          "sha256": "f5bdea4bdf812ee655066e27f295bc9e2e3e4a96ae13fa9411353961d079ae6f"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-2.webp",
+          "sha256": "de2493ca689e37e1c3769184a9a31a3c5e99bcad8943a51d08d34096afccbb1a"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-3.webp",
+          "sha256": "0be33b63eb89298ad73f2746957bddfcbe8673b90dc528c3138a45df2d43c7fc"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-4.webp",
+          "sha256": "516f41820226ab2dabb5e6e07ae29873de152a138f23e23dac3d51ba94a6b8b1"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-5.webp",
+          "sha256": "8c74857a6a50e4f138eb22456f2c98e90cc2c6197be110eb5950f1e7e676c60c"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-6.webp",
+          "sha256": "b268509e93a6a9f974df63e43d1fb948241ac525e520f943816dd37beeadd28e"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-7.webp",
+          "sha256": "8362086c24514dfac7b4ab88a7eec2c13430fb0721ec8f52f326bb0277c18cb9"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-8.webp",
+          "sha256": "6141e055374b29a551fe0dc023bdbd2e89340b0b5f7acb9a80bb0e4b11650f7a"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-9.webp",
+          "sha256": "0386e44ebbb9403e48d8a40aa87666bfd8fbd8822aa07b953d1fb856e38ed9be"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-10.webp",
+          "sha256": "1ce48f25baf6213ffea536b8c6fad76cd548656d3e6416db81d3e8f2031b6c65"
+        }
+      ]
+    },
+    {
+      "kind": "sigils-b",
+      "prompt": "Production fantasy guild crest modular asset sheet. Exactly FIVE equal columns and TWO equal rows: TEN separate objects, in the precise reading order below. Each object confined to its own equal rectangular cell and centered with at least 8% clear margin on every side. Genuine transparent alpha background, including holes within designs. No cell outlines, checkered backdrop, labels, numbers, letters, watermark, or extra objects. Straight frontal heraldic view. Professional hand-painted fantasy RPG craftsmanship, engraved edges, believable layered material and restrained fine detail. Strong clean silhouette legible at small 96-pixel size. No noisy micro-spikes or tangled scribbles. Original designs inspired by elaborate fantasy banners, never existing faction logos. Neutral ivory/silver/pewter monochrome materials for later tinting.\nONLY central emblem subjects, no backing shields, no fabric, no outer frame, no scenes or ground. Sculpted silver engraved heraldic emblems, bold clean anatomy and large quiet shapes, delicate accents only along edges. Clearly distinguish each silhouette.\nReading order: (1) crossed battle axes, readable broad blades and wrapped handles; (2) upright sword with a small laurel crossing behind the hilt; (3) faceted vertical crystal within a simple six-point arcane star; (4) CRESCENT MOON with three large stars; (5) radiant SUN with distinct broad alternating rays; (6) ancient OAK TREE with clear crown and roots; (7) HERALDIC HORSE rearing, simple elegant mane; (8) COILED SERPENT with one clear head and open center; (9) KRAKEN with a central head and six readable curling arms; (10) tower fortress with three battlements and arched entrance",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-2b30436b-bb83-4e58-afde-0c4901a1ec86.png",
+      "output": "public/guild/crests-20261019/sigils-b.webp",
+      "designs": [
+        "crossed battle axes, readable broad blades and wrapped handles",
+        "upright sword with a small laurel crossing behind the hilt",
+        "faceted vertical crystal within a simple six-point arcane star",
+        "CRESCENT MOON with three large stars",
+        "radiant SUN with distinct broad alternating rays",
+        "ancient OAK TREE with clear crown and roots",
+        "HERALDIC HORSE rearing, simple elegant mane",
+        "COILED SERPENT with one clear head and open center",
+        "KRAKEN with a central head and six readable curling arms",
+        "tower fortress with three battlements and arched entrance"
+      ],
+      "sha256": "c619ea1204c1a23e6e3823ae076b478587c503b57b4ba7f6655719d968522e78",
+      "sprites": [
+        {
+          "file": "public/guild/crests-20261019/sigils-11.webp",
+          "sha256": "2bbe35a91278f1d71198f181a7f6e3a2a39b903cf4fb607ee6d28d1ca56c3be3"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-12.webp",
+          "sha256": "5b312c97c8b0c420c01d70b5cbd704e1739032caf13a0268f67c6f53296a941d"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-13.webp",
+          "sha256": "8dc84faf461981f262822b3d68098e171d968f2d01690871779c6a671fab1b6c"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-14.webp",
+          "sha256": "e81f4020e81a10c1a7702b4069f009b6012f5ff1bee9fb444a762442f71dd363"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-15.webp",
+          "sha256": "f9f97092ca7ddae33bfb42bdcb7567598f2406cb07100b266f3765f29aa304ba"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-16.webp",
+          "sha256": "b3e474de0c53cd70fc4a6d30ccd2a2c3afd104e72cd4e99911e28fd604545176"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-17.webp",
+          "sha256": "fb9cb67026332b520c13e389df84a7463c6f9ef49e12ecdc00fc31797822ded4"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-18.webp",
+          "sha256": "af24d6e3897f3af6580abb5e5f1436165cc52a117b5fa7cd16438d9f802edd8b"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-19.webp",
+          "sha256": "7d25e993e38a335cc3db73000667e82771ccedb951d02a8ac8b3f89101a8ef63"
+        },
+        {
+          "file": "public/guild/crests-20261019/sigils-20.webp",
+          "sha256": "20a1e31733b6d36de25938b3dd4c9fb26f0284280b9aae9a5e7f007ddcb12457"
+        }
+      ]
+    },
+    {
+      "kind": "ornaments-a",
+      "prompt": "Production fantasy guild crest modular asset sheet. Exactly FIVE equal columns and TWO equal rows: TEN separate objects, in the precise reading order below. Each object confined to its own equal rectangular cell and centered with at least 8% clear margin on every side. Genuine transparent alpha background, including holes within designs. No cell outlines, checkered backdrop, labels, numbers, letters, watermark, or extra objects. Straight frontal heraldic view. Professional hand-painted fantasy RPG craftsmanship, engraved edges, believable layered material and restrained fine detail. Strong clean silhouette legible at small 96-pixel size. No noisy micro-spikes or tangled scribbles. Original designs inspired by elaborate fantasy banners, never existing faction logos. Neutral ivory/silver/pewter monochrome materials for later tinting.\nONLY outer structural ornamental FRAMES with no fabric or center emblem. Every frame has a truly transparent large empty central opening between 27% and 73% of its cell width and 20% and 80% height. Do not fill centers with painted plates, darkness or symbols. Tall banner framing proportions. Detailed crafted structural metal, bone or carved wood translated to neutral silver/ivory.\nReading order: (1) warrior frame with two sweeping horns and axe heads; (2) elven frame of tall flowing leaves and a small gem finial; (3) arcane circular frame with crystals and two thin hanging chains; (4) raven frame with broad feathered wings framing an empty center; (5) druidic frame of paired antlers and oak branches; (6) bone frame with a modest single skull finial and hooked tips; (7) dwarven frame of heavy engraved angular iron; (8) royal frame with laurel branches and a small crown; (9) gothic frame with elegant pointed cathedral arches; (10) nautical frame of rope, two anchors and small shells",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-af559afe-25ed-4b56-bdd9-ae06cd6d2985.png",
+      "output": "public/guild/crests-20261019/ornaments-a.webp",
+      "designs": [
+        "warrior frame with two sweeping horns and axe heads",
+        "elven frame of tall flowing leaves and a small gem finial",
+        "arcane circular frame with crystals and two thin hanging chains",
+        "raven frame with broad feathered wings framing an empty center",
+        "druidic frame of paired antlers and oak branches",
+        "bone frame with a modest single skull finial and hooked tips",
+        "dwarven frame of heavy engraved angular iron",
+        "royal frame with laurel branches and a small crown",
+        "gothic frame with elegant pointed cathedral arches",
+        "nautical frame of rope, two anchors and small shells"
+      ],
+      "sha256": "6c530cd0dbfa3aadb791ebd2ee652998919f68a17f997ecb380f62db39be542c",
+      "sprites": [
+        {
+          "file": "public/guild/crests-20261019/ornaments-1.webp",
+          "sha256": "8f7b7c123a1ead766af2dedc33cda729d5a9bf55373a52c90193be5a8ccb3646"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-2.webp",
+          "sha256": "1ed819a0197e23d9f5ca7253c81aa08e4f7bec07c6aaecc6a37ee86029fce1bb"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-3.webp",
+          "sha256": "45a51f73bb67a549405bf88c4a46b49786315379deca76dac0da320f48d28e07"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-4.webp",
+          "sha256": "bf6e000e16b7e6a93bbee3bcaf537448018803b22ff9ed920bec350f92bbc82d"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-5.webp",
+          "sha256": "09f4fc332ed1936e22cb86f06720df91a638da6b6506198e2fc44db9aa597126"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-6.webp",
+          "sha256": "e76cc30c1f18d16977c574cd42d3e5d9c897cb268ce9aa7b4e88c0070b70927a"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-7.webp",
+          "sha256": "c0bf128f9d89346a82acaa4b950f4d8d7e0ff539294c632976ce04f2c995611a"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-8.webp",
+          "sha256": "437761c8df4a42031d5205f523579353116ecbf0fee5383f1524de42ff0d074d"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-9.webp",
+          "sha256": "fb9a76cce74ae74a345cec2fc9e71fb805ac7c2935afe6dfc2be61e044f04574"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-10.webp",
+          "sha256": "6d398c0102c4adc216e087df9f21b94762997eebd73c5cad86d6a09215c1d32e"
+        }
+      ]
+    },
+    {
+      "kind": "ornaments-b",
+      "prompt": "Production fantasy guild crest modular asset sheet. Exactly FIVE equal columns and TWO equal rows: TEN separate objects, in the precise reading order below. Each object confined to its own equal rectangular cell and centered with at least 8% clear margin on every side. Genuine transparent alpha background, including holes within designs. No cell outlines, checkered backdrop, labels, numbers, letters, watermark, or extra objects. Straight frontal heraldic view. Professional hand-painted fantasy RPG craftsmanship, engraved edges, believable layered material and restrained fine detail. Strong clean silhouette legible at small 96-pixel size. No noisy micro-spikes or tangled scribbles. Original designs inspired by elaborate fantasy banners, never existing faction logos. Neutral ivory/silver/pewter monochrome materials for later tinting.\nONLY outer structural ornamental FRAMES with no fabric or center emblem. Every frame has a truly transparent large empty central opening between 27% and 73% of its cell width and 20% and 80% height. Do not fill centers with painted plates, darkness or symbols. Tall banner framing proportions. Detailed crafted structural metal, bone or carved wood translated to neutral silver/ivory.\nReading order: (1) serpentine frame made from two elegant curling dragons, empty center; (2) solar frame with broad gold-tintable rays and hanging medallion; (3) lunar frame with paired crescent finials and three small chains; (4) rose frame of thorned vines and carved blossoms; (5) paladin frame of two long swords and winglike filigree; (6) ranger frame of two bows, feathers and leaf details; (7) forge frame with two hammers and riveted iron corners; (8) spider frame of four sweeping legs per side and web corners; (9) frost frame with angular ice crystal finials; (10) storm frame with lightning-shaped side blades and a cloudlike top flourish",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-c2d3d855-6555-4df9-a73e-13722a359ed0.png",
+      "output": "public/guild/crests-20261019/ornaments-b.webp",
+      "designs": [
+        "serpentine frame made from two elegant curling dragons, empty center",
+        "solar frame with broad gold-tintable rays and hanging medallion",
+        "lunar frame with paired crescent finials and three small chains",
+        "rose frame of thorned vines and carved blossoms",
+        "paladin frame of two long swords and winglike filigree",
+        "ranger frame of two bows, feathers and leaf details",
+        "forge frame with two hammers and riveted iron corners",
+        "spider frame of four sweeping legs per side and web corners",
+        "frost frame with angular ice crystal finials",
+        "storm frame with lightning-shaped side blades and a cloudlike top flourish"
+      ],
+      "sha256": "77f86e9088ac97359e14e1ea2524b3f95bdc7e00852dbe44d4fe4bb7ecc0a3e7",
+      "sprites": [
+        {
+          "file": "public/guild/crests-20261019/ornaments-11.webp",
+          "sha256": "c04dd3273474d313e957279b3d4bbb98483bfd448a526f23e7a2c830faa317b5"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-12.webp",
+          "sha256": "e4bc23b8f940229619bc2a1f4a289c032be8483a7bca24c8afce79490233395a"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-13.webp",
+          "sha256": "434ada7c5738185eae7c145d1f2d514ab566a2dfaf2693ebaaa5007b6442d325"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-14.webp",
+          "sha256": "bd9ec9a37413c2a9e3be864ee63f4028307ff541b956b9b88776b4ad705ea1cc"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-15.webp",
+          "sha256": "92ec55a5321072837db3e1ff87f94eb84feb9bb8dfac214f8a1aa040a58848e5"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-16.webp",
+          "sha256": "48ff611dea5d6e537794ee1b36e1caa12d841d1227a7f4aac5d94690ddc4e56d"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-17.webp",
+          "sha256": "ff00348d050e3cd7f6bfbf3b510bf86af9915b8094e1bee3ad2630a94a8f0052"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-18.webp",
+          "sha256": "893120b36f1b5a6fd0a4b3bdced9e3cf4ff29411063f0a889f15becff27925fc"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-19.webp",
+          "sha256": "7d7d454979917aaa51fa5764448695e504325acf7e4e3b2c369e4df78a2ba3ec"
+        },
+        {
+          "file": "public/guild/crests-20261019/ornaments-20.webp",
+          "sha256": "37752df596b671c8acf29a96f922f7b9706d6f7a7d4e55b441a579c03dc3c468"
+        }
+      ]
+    }
+  ]
+}

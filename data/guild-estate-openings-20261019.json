@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-10-19",
+  "mode": "built-in imagegen",
+  "purpose": "Open doorways for animated leaves in strictly overhead guild interior",
+  "prompt": "Precise VTT edit. Preserve this exact directly-overhead four-room timber house artwork, dimensions, wall posts, floors and empty-room layout. Remove ONLY the THREE fixed narrow door leaves inside the house: (1) the short vertical wooden leaf between the two posts on the upper vertical center divider, around x=50%,y=20%-28%; (2) short horizontal wooden leaf between posts on the left horizontal divider, around x=23%-28%,y=49%; (3) short horizontal leaf between posts on the right horizontal divider around x=73%-78%,y=49%. Leave the surrounding thick jamb posts intact and show unobstructed continuous floor through these three openings. At top-left-to-top-right doorway use matching stone/wood threshold without a wall or leaf across it. These are doorways for programmatically animated leaves, so no static bar may remain across them. Bottom external entrance already open: preserve it. Preserve both north-wall windows. No new doors, props, characters, shadows, words, perspective tilt, or furniture. The rest of the image should be unchanged, rich timber detailing intact. Retain genuine transparent outer background. Orthographic overhead 90 degrees.",
+  "source": "C:/Users/limaw/.codex/generated_images/01a1547a-eded-7260-b279-93b024bb9ada/exec-10a79520-aec9-4b42-8fb6-e60793aae996.png",
+  "output": "public/guild/estate-20261019/interior-openings-v3.webp",
+  "preparation": "Trim only transparent exterior padding; WebP quality 96, alpha quality 100.",
+  "roof_fit": [
+    {
+      "output": "public/guild/estate-20261019/roof-slate-fit.webp",
+      "preparation": "Trim transparent margin before fitting the same building footprint, preserving native roof illustration.",
+      "sha256": "5d8f890f3b3c921f0737072a4ca151980288a73013e9ed0088494afe482cd490"
+    },
+    {
+      "output": "public/guild/estate-20261019/roof-red-fit.webp",
+      "preparation": "Trim transparent margin before fitting the same building footprint, preserving native roof illustration.",
+      "sha256": "4d150b7b925557d6b1fd0100c15adc83b8908e229112d73ab83eb84c42aa9e36"
+    },
+    {
+      "output": "public/guild/estate-20261019/roof-wood-fit.webp",
+      "preparation": "Trim transparent margin before fitting the same building footprint, preserving native roof illustration.",
+      "sha256": "c98bce49d79708b83a8e5b4c22493297407c46697f83b7e8169165e7e9eaaeaf"
+    }
+  ],
+  "sha256": "a23b50f861e3765ac47b30e995d30a7ae97c4b659fa48bbc99a80688ad28f31a"
+}

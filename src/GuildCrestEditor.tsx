@@ -1,3 +1,5 @@
+import { IllustratedCrestWorkshop } from './IllustratedCrestWorkshop';
+import { crestArtSchema } from '../shared/guild-crest-art';
 import { useId, useState } from 'react';
 import { Check, Palette, Shield, Sparkles } from 'lucide-react';
 import {
@@ -36,12 +38,19 @@ export function CrestEditor({
   const [active, setActive] = useState<(typeof sections)[number]['key']>('ornament');
   const id = useId(),
     section = sections.find((s) => s.key === active)!;
+  if (value.art) return <IllustratedCrestWorkshop value={value} onChange={onChange} name={name} />;
   return (
     <section className="guild-crest-editor" aria-label="Oficina de brasões">
       <header className="crest-workshop-heading">
         <div>
           <span className="social-eyebrow">A marca da sua companhia</span>
           <h3>Oficina de brasões</h3>
+          <button
+            type="button"
+            onClick={() => onChange({ ...value, art: crestArtSchema.parse({}) })}
+          >
+            Usar brasão ilustrado
+          </button>
         </div>
         <span>
           <Sparkles size={15} /> Prévia ao vivo

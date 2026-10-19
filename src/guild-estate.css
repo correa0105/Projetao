@@ -437,3 +437,147 @@
     max-height: 230px;
   }
 }
+.guild-estate-menu {
+  position: absolute;
+  left: 22px;
+  top: 154px;
+  z-index: 30;
+  width: min(370px, calc(100vw - 28px));
+}
+.guild-estate-menu button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: #24281eee;
+  color: #e6d6b1;
+  border: 1px solid #968055;
+  border-radius: 4px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.guild-estate-menu-toggle {
+  box-shadow: 0 3px 12px #0004;
+}
+.guild-estate-menu-panel {
+  margin-top: 8px;
+  padding: 12px;
+  background: #1c2219f7;
+  border: 1px solid #8d774c;
+  border-radius: 7px;
+  max-height: calc(100dvh - 235px);
+  overflow: auto;
+  box-shadow: 0 10px 28px #0007;
+}
+.guild-estate-menu-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #e5d5ae;
+  margin-bottom: 10px;
+}
+.guild-estate-menu-title button {
+  padding: 3px 9px;
+  font-size: 20px;
+}
+.guild-estate-menu [role='tablist'] {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+.guild-estate-menu [role='tab'] {
+  flex: 1;
+  padding: 9px 4px;
+  font-size: 12px;
+  border-color: #625b45;
+}
+.guild-estate-menu [role='tab'][aria-selected='true'] {
+  background: #655433;
+  border-color: #c0a068;
+  color: #fff0c6;
+}
+.guild-estate-menu section[hidden] {
+  display: none;
+}
+.guild-estate-menu section > p {
+  color: #bfb8a5;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.guild-estate-menu .guild-estate-ownerbar,
+.guild-estate-menu .guild-estate-controls,
+.guild-estate-menu .guild-estate-editor {
+  position: static;
+  inset: auto;
+  transform: none;
+  translate: none;
+  width: auto;
+  max-height: none;
+  margin: 0 0 10px;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: none;
+}
+.guild-estate-menu .guild-estate-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.guild-estate-menu .guild-estate-ownerbar {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.guild-estate-menu .guild-estate-actors-panel {
+  width: auto;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+.guild-estate-menu label:has(input[type='checkbox']) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.guild-estate-menu input[type='checkbox'] {
+  width: auto;
+  margin: 0;
+}
+.guild-estate-guild-actions {
+  display: grid;
+  gap: 8px;
+}
+.guild-estate-guild-actions button {
+  justify-content: flex-start;
+}
+.guild-estate-opening-leaf {
+  transform-origin: 0 0;
+  transition: transform 0.35s ease;
+}
+.guild-estate-map [data-estate-interactive='opening'] {
+  outline: none;
+}
+.guild-estate-map [data-estate-interactive='opening']:focus-visible > circle + circle {
+  stroke: #fff0bd;
+}
+@media (max-width: 600px) {
+  .guild-estate-menu {
+    left: 12px;
+    top: 147px;
+    width: calc(100vw - 24px);
+    max-width: 355px;
+  }
+  .guild-estate-menu-panel {
+    max-height: calc(100dvh - 225px);
+  }
+  .guild-estate-menu .guild-estate-editor {
+    max-height: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guild-estate-opening-leaf {
+    transition: none;
+  }
+}

@@ -27,29 +27,26 @@ export function GuildEstateScenery({ wooded }: { wooded: boolean }) {
   return (
     <g data-estate-landscape="garden" pointerEvents="none">
       <ellipse cx="30" cy="24" rx="12" ry="10.2" fill="#483b20" opacity=".14" />
-      <path
-        d="M36 120C34 100 25 78 30 58C31 53 30 49 30 45C30 41 32 38 30 32"
-        fill="none"
-        stroke="#4d4b2d"
-        strokeWidth="3.3"
-        opacity=".28"
-        strokeLinecap="round"
-      />
-      <path
-        d="M36 120C34 100 25 78 30 58C31 53 30 49 30 45C30 41 32 38 30 32"
-        fill="none"
-        stroke="url(#ge-paving)"
-        strokeWidth="2.1"
-        strokeLinecap="round"
-      />
+      <defs>
+        <mask id="ge-access-mask" maskUnits="userSpaceOnUse" x="24" y="29" width="20" height="94">
+          <rect x="25.5" y="30" width="9" height="5.2" rx="1.6" fill="white" />
+          <path
+            d="M36 120C34 100 25 78 30 58C31 53 30 49 30 45C30 41 32 38 30 32"
+            fill="none"
+            stroke="white"
+            strokeWidth="2.1"
+            strokeLinecap="round"
+          />
+        </mask>
+      </defs>
       <rect
-        x="25.5"
-        y="30"
-        width="9"
-        height="5.2"
-        rx="1.6"
+        data-estate-access="continuous-paving"
+        x="24"
+        y="29"
+        width="20"
+        height="94"
         fill="url(#ge-paving)"
-        filter="url(#ge-shadow)"
+        mask="url(#ge-access-mask)"
       />
       <g data-estate-boundary="stone" filter="url(#ge-shadow)">
         {Array.from({ length: 23 }, (_, i) => (

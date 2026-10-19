@@ -17,7 +17,7 @@ export const guildFacilities = [
   },
   {
     room: 'lounge',
-    name: 'Aparador da Hospitalidade',
+    name: 'Sofá da Hospitalidade',
     description: 'Um ponto de acolhimento e descanso entre aventuras.',
     x: 0.64,
     y: 0.67,

@@ -5,12 +5,12 @@ export const guildEstateFurnitureCatalog = house2FurnitureForSale.filter(
 );
 export const guildEstateFinishes = {
   roof: [
-    { id: 'slate', name: 'Ardósia', image: '/vtt/houses-empty-20261014/house-013-roof.webp' },
-    { id: 'red', name: 'Telhas de barro', image: '/vtt/houses-empty-20261014/house-002-roof.webp' },
+    { id: 'slate', name: 'Ardósia', image: '/guild/estate-20261019/roof-slate-fit.webp' },
+    { id: 'red', name: 'Telhas de barro', image: '/guild/estate-20261019/roof-red-fit.webp' },
     {
       id: 'wood',
       name: 'Telhas de madeira',
-      image: '/vtt/houses-empty-20261014/house-003-roof.webp',
+      image: '/guild/estate-20261019/roof-wood-fit.webp',
     },
   ],
   floor: [
@@ -84,7 +84,7 @@ export function guildEstateRoomAt(x: number, y: number) {
 export const guildEstateItems = [
   { id: 'main', name: 'Sino dos Juramentos', catalog: 'urban-038', x: 25.5, y: 20.5 },
   { id: 'forge', name: 'Bancada do Mestre Ferreiro', catalog: 'furniture-212', x: 34.5, y: 20.5 },
-  { id: 'lounge', name: 'Aparador da Hospitalidade', catalog: 'furniture-023', x: 25.5, y: 27.5 },
+  { id: 'lounge', name: 'Sofá da Hospitalidade', catalog: 'furniture-015', x: 25.5, y: 27.5 },
   { id: 'meeting', name: 'Mesa de Estratégia', catalog: 'furniture-049', x: 34.5, y: 27.5 },
 ] as const;
 export type GuildEstateItemId = (typeof guildEstateItems)[number]['id'];

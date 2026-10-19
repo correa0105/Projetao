@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { GuildEstateDoors, GuildEstateVision, useGuildEstateAccess } from './GuildEstateAccess';
+import type { EstatePoint } from '../shared/guild-estate-vision';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import {
   Home,
   LandPlot,
@@ -46,6 +48,7 @@ import './guild-estate.css';
 
 type Camera = { x: number; y: number; width: number };
 type Props = {
+  guildActions: ReactNode;
   guildId: string;
   characterId: string;
   revision: number;
@@ -88,6 +91,11 @@ export function GuildEstate(p: Props) {
     distance: number;
     angle: number;
   } | null>(null);
+  const [viewer, setViewer] = useState<EstatePoint | null>(null);
+  const access = useGuildEstateAccess(p.guildId, p.characterId, p.member, setNotice);
+  const [menuOpen, setMenuOpen] = useState(false),
+    [menuTab, setMenuTab] = useState<'view' | 'decor' | 'character' | 'guild'>('view');
+  const [actorMenu, setActorMenu] = useState<HTMLDivElement | null>(null);
   const purchaseKeys = useRef<Record<string, string>>({});
   const gesture = useRef<{
     pointer: number;
@@ -174,6 +182,8 @@ export function GuildEstate(p: Props) {
   }
   function beginEdit() {
     if (!p.owner || busy) return;
+    setMenuOpen(true);
+    setMenuTab('decor');
     if (!editing) {
       editRevision.current = p.revision;
       setLayout(guildEstateSchema.parse(p.estate || defaultGuildEstate()));
@@ -192,6 +202,7 @@ export function GuildEstate(p: Props) {
     }
     setError('');
     setShop(true);
+    setMenuOpen(false);
   }
   function placeFurniture(id: string, next = layout, revision = p.revision) {
     setLayout(guildEstateSchema.parse(next));
@@ -255,6 +266,7 @@ export function GuildEstate(p: Props) {
       });
       await p.changed();
       setEditing(false);
+      setMenuOpen(false);
       setNotice('Sede, móveis e acabamentos salvos.');
     } catch (e) {
       setError((e as Error).message);
@@ -416,10 +428,13 @@ export function GuildEstate(p: Props) {
           opacity=".07"
         />
         <GuildEstateScenery wooded={finishes.trees} />
-        <g data-guild-estate-house="illustrated-four-rooms">
+        <g
+          data-guild-estate-house="illustrated-four-rooms"
+          visibility={roof ? 'hidden' : undefined}
+        >
           <image
             data-estate-interior="illustrated-overhead"
-            href="/guild/estate-20261019/interior-oak-v2.webp"
+            href="/guild/estate-20261019/interior-openings-v3.webp"
             x="20.65"
             y="16.65"
             width="18.7"
@@ -662,10 +677,10 @@ export function GuildEstate(p: Props) {
           >
             <image
               href={roofArt.image}
-              x="19.2"
-              y="14.8"
-              width="21.6"
-              height="18.4"
+              x="20"
+              y="14.9"
+              width="20"
+              height="18.7"
               preserveAspectRatio="none"
               filter="url(#ge-shadow)"
             />
@@ -673,6 +688,18 @@ export function GuildEstate(p: Props) {
               Entrar na sede
             </text>
           </g>
+        )}
+        {!roof && viewer && !editing && (
+          <GuildEstateVision at={viewer} openings={access.openings} />
+        )}
+        {!roof && (
+          <GuildEstateDoors
+            openings={access.openings}
+            member={p.member}
+            busy={access.busy}
+            toggle={(id) => void access.toggle(id)}
+            pixel={camera.width / (stage.current?.clientWidth || 1000)}
+          />
         )}
         {grid && (
           <rect x="7" y="5" width="46" height="40" fill="url(#ge-grid)" pointerEvents="none" />
@@ -684,233 +711,330 @@ export function GuildEstate(p: Props) {
         member={p.member}
         svg={svg}
         roof={roof}
-        focus={() => focus()}
+        focus={() => {
+          focus();
+          setMenuOpen(false);
+        }}
         notice={setNotice}
+        onViewer={setViewer}
+        openings={access.openings}
+        editing={editing}
+        panelTarget={actorMenu}
       />
-      {p.owner && (
-        <div className="guild-estate-ownerbar" aria-label="Ferramentas da sede">
-          <button type="button" onClick={beginEdit}>
-            <Paintbrush size={17} />
-            Editar sede
-          </button>
-          <button type="button" onClick={openShop}>
-            <ShoppingBasket size={17} />
-            Loja de móveis
-          </button>
-        </div>
-      )}
-      <div className="guild-estate-controls" aria-label="Controles do terreno">
+      <nav
+        className="guild-estate-menu"
+        aria-label="Menu da sede"
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') setMenuOpen(false);
+        }}
+      >
         <button
           type="button"
-          aria-label="Ver terreno completo"
-          onClick={() => {
-            setRoof(true);
-            setCamera({ x: 30, y: 25, width: Math.max(60, 50 * ratio) });
-          }}
+          className="guild-estate-menu-toggle"
+          aria-expanded={menuOpen}
+          aria-controls="guild-estate-menu-panel"
+          onClick={() => setMenuOpen(!menuOpen)}
         >
-          <LandPlot size={17} />
-          <span>Terreno</span>
+          <Grid2X2 size={17} /> Menu da sede
         </button>
-        <button type="button" aria-label="Ver os quatro cômodos" onClick={() => focus()}>
-          <Home size={17} />
-          <span>Casa</span>
-        </button>
-        <button type="button" aria-label="Aproximar sede" onClick={() => zoom(0.8)}>
-          <Plus size={17} />
-        </button>
-        <button type="button" aria-label="Afastar sede" onClick={() => zoom(1.25)}>
-          <Minus size={17} />
-        </button>
-        <button
-          type="button"
-          aria-label="Mostrar grade da sede"
-          aria-pressed={grid}
-          onClick={() => setGrid(!grid)}
-        >
-          <Grid2X2 size={17} />
-        </button>
-      </div>
-      {editing && (
-        <div className="guild-estate-editor" aria-label="Editar sede e mobília">
-          <h3>
-            <Move size={16} />
-            Editar sede <small>{4 + layout.furniture.length} itens</small>
-          </h3>
-          <p>Arraste para mover. Use as bordas para redimensionar e o controle acima para girar.</p>
-          <label>
-            <input type="checkbox" checked={snap} onChange={(e) => setSnap(e.target.checked)} />{' '}
-            Encaixar na grade
-          </label>
-          <select
-            disabled={busy}
-            aria-label="Selecionar instalação"
-            value={selected || ''}
-            onChange={(e) => {
-              const id = e.target.value as GuildEstateItemId;
-              setSelected(id);
-              const i = layout.items.find((i) => i.id === id);
-              if (i) focus(guildEstateItemRoom(i)?.id);
-              else {
-                const f = layout.furniture.find((i) => i.id === id);
-                if (f) focus(guildEstateFurnitureRoom(f)?.id);
-              }
-            }}
-          >
-            <option value="">Selecione uma instalação ou móvel</option>
-            {guildEstateItems.map((i) => (
-              <option key={i.id} value={i.id}>
-                {i.name}
-              </option>
-            ))}
-            {layout.furniture.map((i) => (
-              <option key={i.id} value={i.id}>
-                {guildEstateFurnitureCatalog.find((f) => f.id === i.catalog)?.name}
-                {i.x === null ? ' · guardado' : ''}
-              </option>
-            ))}
-          </select>
-          {chosen && (
-            <div className="guild-estate-furniture-options">
-              <label>
-                Ângulo livre
-                <input
-                  aria-label="Rotação livre do item"
-                  type="number"
-                  min="0"
-                  max="359.99"
-                  step="1"
-                  value={Number(chosen.rotation.toFixed(2))}
-                  onChange={(e) =>
-                    change(chosen.id, { rotation: (Number(e.target.value) + 360) % 360 })
-                  }
-                />
-              </label>
-              {(['x', 'y'] as const).map((axis) => (
-                <label key={axis}>
-                  Posição {axis.toUpperCase()}
-                  <input
-                    aria-label={'Posição ' + axis.toUpperCase()}
-                    type="number"
-                    step=".01"
-                    value={chosen[axis] === null ? '' : Number(chosen[axis]!.toFixed(2))}
-                    onChange={(e) => change(chosen.id, { [axis]: Number(e.target.value) })}
-                  />
-                </label>
-              ))}
-              <label>
-                Tamanho
-                <input
-                  aria-label="Tamanho do móvel"
-                  type="range"
-                  min=".25"
-                  max="3"
-                  step=".1"
-                  value={chosen.scale}
-                  onChange={(e) => change(chosen.id, { scale: Number(e.target.value) })}
-                />
-              </label>
-              {'catalog' in chosen &&
-                (chosen.x === null ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setPlacing(chosen.id);
-                      setNotice('Clique no piso do cômodo para colocar o móvel.');
-                    }}
-                  >
-                    Colocar no cômodo
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      change(chosen.id, { x: null, y: null });
-                      setPlacing(null);
-                    }}
-                  >
-                    <Archive size={14} />
-                    Guardar móvel
-                  </button>
-                ))}
-            </div>
-          )}
-          <details className="guild-estate-finishes">
-            <summary>Materiais da casa e jardim</summary>
-            {(['roof', 'floor'] as const).map((kind) => (
-              <label key={kind}>
-                {{ roof: 'Telhado', floor: 'Piso', walls: 'Paredes' }[kind]}
-                <select
-                  disabled={busy}
-                  aria-label={
-                    {
-                      roof: 'Material do telhado',
-                      floor: 'Material do piso',
-                      walls: 'Material das paredes',
-                    }[kind]
-                  }
-                  value={finishes[kind]}
-                  onChange={(e) =>
-                    setLayout((l) => ({
-                      ...l,
-                      finishes: { ...l.finishes, [kind]: e.target.value },
-                    }))
-                  }
-                >
-                  {guildEstateFinishes[kind].map((f) => (
-                    <option key={f.id} value={f.id}>
-                      {f.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            ))}
-            <label>
-              <input
-                type="checkbox"
-                disabled={busy}
-                checked={finishes.trees}
-                onChange={(e) =>
-                  setLayout((l) => ({ ...l, finishes: { ...l.finishes, trees: e.target.checked } }))
-                }
-              />
-              Árvores ao redor da sede
-            </label>
-          </details>
-          <div>
-            {chosen && (
+        {menuOpen && (
+          <div id="guild-estate-menu-panel" className="guild-estate-menu-panel">
+            <div className="guild-estate-menu-title">
+              <strong>Sede da guilda</strong>
               <button
                 type="button"
-                disabled={busy}
-                onClick={() =>
-                  change(chosen.id, {
-                    rotation: ((chosen.rotation + 90) % 360) as 0 | 90 | 180 | 270,
-                  })
-                }
+                aria-label="Fechar menu da sede"
+                onClick={() => setMenuOpen(false)}
               >
-                <RotateCw size={15} />
-                Girar item
+                ×
               </button>
-            )}
-            <button type="button" disabled={busy || !dirty} onClick={() => void save()}>
-              <Save size={15} />
-              {busy ? 'Salvando…' : 'Salvar posições'}
-            </button>
-            <button
-              type="button"
-              disabled={busy}
-              onClick={() => {
-                setLayout(guildEstateSchema.parse(p.estate || defaultGuildEstate()));
-                setEditing(false);
-                setPlacing(null);
-                setError('');
+            </div>
+            <div role="tablist" aria-label="Seções da sede">
+              {(
+                [
+                  ['view', 'Visão'],
+                  ['decor', 'Decoração'],
+                  ['character', 'Personagem'],
+                  ['guild', 'Guilda'],
+                ] as const
+              ).map(([id, label]) => (
+                <button
+                  key={id}
+                  role="tab"
+                  aria-selected={menuTab === id}
+                  onClick={() => setMenuTab(id)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <section hidden={menuTab !== 'view'} aria-label="Visão da sede">
+              {' '}
+              <div className="guild-estate-controls" aria-label="Controles do terreno">
+                <button
+                  type="button"
+                  aria-label="Ver terreno completo"
+                  onClick={() => {
+                    setRoof(true);
+                    setCamera({ x: 30, y: 25, width: Math.max(60, 50 * ratio) });
+                  }}
+                >
+                  <LandPlot size={17} />
+                  <span>Terreno</span>
+                </button>
+                <button type="button" aria-label="Ver os quatro cômodos" onClick={() => focus()}>
+                  <Home size={17} />
+                  <span>Casa</span>
+                </button>
+                <button type="button" aria-label="Aproximar sede" onClick={() => zoom(0.8)}>
+                  <Plus size={17} />
+                </button>
+                <button type="button" aria-label="Afastar sede" onClick={() => zoom(1.25)}>
+                  <Minus size={17} />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Mostrar grade da sede"
+                  aria-pressed={grid}
+                  onClick={() => setGrid(!grid)}
+                >
+                  <Grid2X2 size={17} />
+                </button>
+              </div>
+              <p>Explore o terreno, entre na casa ou ajuste a câmera.</p>
+              {viewer && (
+                <p>
+                  A visão acompanha seu personagem e respeita paredes, portas e janelas. Durante a
+                  edição, a planta fica visível.
+                </p>
+              )}
+            </section>
+            <section hidden={menuTab !== 'decor'} aria-label="Decoração da sede">
+              {' '}
+              {p.owner && (
+                <div className="guild-estate-ownerbar" aria-label="Ferramentas da sede">
+                  <button type="button" onClick={beginEdit}>
+                    <Paintbrush size={17} />
+                    Editar sede
+                  </button>
+                  <button type="button" onClick={openShop}>
+                    <ShoppingBasket size={17} />
+                    Loja de móveis
+                  </button>
+                </div>
+              )}
+              {editing && (
+                <div className="guild-estate-editor" aria-label="Editar sede e mobília">
+                  <h3>
+                    <Move size={16} />
+                    Editar sede <small>{4 + layout.furniture.length} itens</small>
+                  </h3>
+                  <p>
+                    Arraste para mover. Use as bordas para redimensionar e o controle acima para
+                    girar.
+                  </p>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={snap}
+                      onChange={(e) => setSnap(e.target.checked)}
+                    />{' '}
+                    Encaixar na grade
+                  </label>
+                  <select
+                    disabled={busy}
+                    aria-label="Selecionar instalação"
+                    value={selected || ''}
+                    onChange={(e) => {
+                      const id = e.target.value as GuildEstateItemId;
+                      setSelected(id);
+                      const i = layout.items.find((i) => i.id === id);
+                      if (i) focus(guildEstateItemRoom(i)?.id);
+                      else {
+                        const f = layout.furniture.find((i) => i.id === id);
+                        if (f) focus(guildEstateFurnitureRoom(f)?.id);
+                      }
+                    }}
+                  >
+                    <option value="">Selecione uma instalação ou móvel</option>
+                    {guildEstateItems.map((i) => (
+                      <option key={i.id} value={i.id}>
+                        {i.name}
+                      </option>
+                    ))}
+                    {layout.furniture.map((i) => (
+                      <option key={i.id} value={i.id}>
+                        {guildEstateFurnitureCatalog.find((f) => f.id === i.catalog)?.name}
+                        {i.x === null ? ' · guardado' : ''}
+                      </option>
+                    ))}
+                  </select>
+                  {chosen && (
+                    <div className="guild-estate-furniture-options">
+                      <label>
+                        Ângulo livre
+                        <input
+                          aria-label="Rotação livre do item"
+                          type="number"
+                          min="0"
+                          max="359.99"
+                          step="1"
+                          value={Number(chosen.rotation.toFixed(2))}
+                          onChange={(e) =>
+                            change(chosen.id, { rotation: (Number(e.target.value) + 360) % 360 })
+                          }
+                        />
+                      </label>
+                      {(['x', 'y'] as const).map((axis) => (
+                        <label key={axis}>
+                          Posição {axis.toUpperCase()}
+                          <input
+                            aria-label={'Posição ' + axis.toUpperCase()}
+                            type="number"
+                            step=".01"
+                            value={chosen[axis] === null ? '' : Number(chosen[axis]!.toFixed(2))}
+                            onChange={(e) => change(chosen.id, { [axis]: Number(e.target.value) })}
+                          />
+                        </label>
+                      ))}
+                      <label>
+                        Tamanho
+                        <input
+                          aria-label="Tamanho do móvel"
+                          type="range"
+                          min=".25"
+                          max="3"
+                          step=".1"
+                          value={chosen.scale}
+                          onChange={(e) => change(chosen.id, { scale: Number(e.target.value) })}
+                        />
+                      </label>
+                      {'catalog' in chosen &&
+                        (chosen.x === null ? (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setPlacing(chosen.id);
+                              setNotice('Clique no piso do cômodo para colocar o móvel.');
+                            }}
+                          >
+                            Colocar no cômodo
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              change(chosen.id, { x: null, y: null });
+                              setPlacing(null);
+                            }}
+                          >
+                            <Archive size={14} />
+                            Guardar móvel
+                          </button>
+                        ))}
+                    </div>
+                  )}
+                  <details className="guild-estate-finishes">
+                    <summary>Materiais da casa e jardim</summary>
+                    {(['roof', 'floor'] as const).map((kind) => (
+                      <label key={kind}>
+                        {{ roof: 'Telhado', floor: 'Piso', walls: 'Paredes' }[kind]}
+                        <select
+                          disabled={busy}
+                          aria-label={
+                            {
+                              roof: 'Material do telhado',
+                              floor: 'Material do piso',
+                              walls: 'Material das paredes',
+                            }[kind]
+                          }
+                          value={finishes[kind]}
+                          onChange={(e) =>
+                            setLayout((l) => ({
+                              ...l,
+                              finishes: { ...l.finishes, [kind]: e.target.value },
+                            }))
+                          }
+                        >
+                          {guildEstateFinishes[kind].map((f) => (
+                            <option key={f.id} value={f.id}>
+                              {f.name}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                    ))}
+                    <label>
+                      <input
+                        type="checkbox"
+                        disabled={busy}
+                        checked={finishes.trees}
+                        onChange={(e) =>
+                          setLayout((l) => ({
+                            ...l,
+                            finishes: { ...l.finishes, trees: e.target.checked },
+                          }))
+                        }
+                      />
+                      Árvores ao redor da sede
+                    </label>
+                  </details>
+                  <div>
+                    {chosen && (
+                      <button
+                        type="button"
+                        disabled={busy}
+                        onClick={() =>
+                          change(chosen.id, {
+                            rotation: ((chosen.rotation + 90) % 360) as 0 | 90 | 180 | 270,
+                          })
+                        }
+                      >
+                        <RotateCw size={15} />
+                        Girar item
+                      </button>
+                    )}
+                    <button type="button" disabled={busy || !dirty} onClick={() => void save()}>
+                      <Save size={15} />
+                      {busy ? 'Salvando…' : 'Salvar posições'}
+                    </button>
+                    <button
+                      type="button"
+                      disabled={busy}
+                      onClick={() => {
+                        setLayout(guildEstateSchema.parse(p.estate || defaultGuildEstate()));
+                        setEditing(false);
+                        setPlacing(null);
+                        setError('');
+                      }}
+                    >
+                      <Undo2 size={15} />
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              )}
+              {!p.owner && <p>Somente o fundador pode editar e comprar móveis para a sede.</p>}
+            </section>
+            <section hidden={menuTab !== 'character'} aria-label="Personagem na sede">
+              {p.member ? (
+                <div ref={setActorMenu} />
+              ) : (
+                <p>Entre com um personagem membro desta guilda.</p>
+              )}
+            </section>
+            <section
+              hidden={menuTab !== 'guild'}
+              aria-label="Companhia e missões"
+              onClick={(e) => {
+                if ((e.target as Element).closest('button')) setMenuOpen(false);
               }}
             >
-              <Undo2 size={15} />
-              Cancelar
-            </button>
+              {p.guildActions}
+            </section>
           </div>
-        </div>
-      )}
+        )}
+      </nav>
       {!editing && !roof && (
         <p className="guild-estate-hint">Arraste para explorar · use Editar sede para decorar</p>
       )}

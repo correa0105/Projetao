@@ -1,5 +1,11 @@
-import {additionalCrestNames} from '../shared/guild-crest-options';
-import {crestGlyphs,CrestFieldDefs,CrestExtraField,CrestRimDetails} from './guild-crest-designs';
+import { IllustratedGuildCrest } from './IllustratedGuildCrest';
+import { additionalCrestNames } from '../shared/guild-crest-options';
+import {
+  crestGlyphs,
+  CrestFieldDefs,
+  CrestExtraField,
+  CrestRimDetails,
+} from './guild-crest-designs';
 import { useId } from 'react';
 import { crestSchema, type Crest } from '../shared/guilds';
 
@@ -43,7 +49,7 @@ const shapes = {
   hexagon: 'M28 8 H72 L95 50 L72 92 H28 L5 50Z',
   laurel: 'M50 7 A43 43 0 1 1 49.99 7Z',
 };
-const symbols=crestGlyphs;
+const symbols = crestGlyphs;
 function mix(hex: string, target: number, amount: number) {
   return (
     '#' +
@@ -121,6 +127,7 @@ export function GuildCrest({
   const crest = crestSchema.parse(input),
     id = 'crest-' + useId().replaceAll(':', ''),
     d = shapes[crest.border];
+  if (crest.art) return <IllustratedGuildCrest crest={crest} size={size} decorative={decorative} />;
   const metal = (key: string, color: string) => (
     <linearGradient id={id + key} x1="0" y1="0" x2=".85" y2="1" gradientUnits="objectBoundingBox">
       {[
@@ -148,9 +155,9 @@ export function GuildCrest({
     >
       <defs>
         <clipPath id={id + 'clip'}>
-          <path d={d} transform="translate(50 50) scale(.84) translate(-50 -50)"/>
+          <path d={d} transform="translate(50 50) scale(.84) translate(-50 -50)" />
         </clipPath>
-        <CrestFieldDefs id={id} color={crest.fieldColor2}/>
+        <CrestFieldDefs id={id} color={crest.fieldColor2} />
         {metal('rim', crest.borderColor)}
         {metal('symbol', crest.iconColor)}
         <radialGradient id={id + 'enamel'} cx=".3" cy=".2" r=".85">
@@ -165,15 +172,14 @@ export function GuildCrest({
         </linearGradient>
         <pattern id={id + 'weave'} width="3" height="3" patternUnits="userSpaceOnUse">
           <path d="M0 0H3M0 0V3" stroke="#fff" strokeWidth=".18" opacity=".055" />
-
         </pattern>
       </defs>
       <path d={d} fill="#090a09" stroke="#090a09" strokeWidth="10" transform="translate(0 2)" />
-      <path data-crest-layer="rim" d={d} fill={`url(#${id}rim)`}/>
+      <path data-crest-layer="rim" d={d} fill={`url(#${id}rim)`} />
       <g data-crest-layer="field" clipPath={`url(#${id}clip)`}>
-        <path d={d} fill={`url(#${id}enamel)`}/>
+        <path d={d} fill={`url(#${id}enamel)`} />
         <g fill={crest.fieldColor2}>
-          <CrestExtraField field={crest.field} id={id} color={crest.fieldColor2}/>
+          <CrestExtraField field={crest.field} id={id} color={crest.fieldColor2} />
           {crest.field === 'quartered' && <path d="M0 0H50V50H100V100H50V50H0Z" />}
           {crest.field === 'diagonal' && <path d="M-15 3L3-15 115 97 97 115Z" />}
           {crest.field === 'stripes' &&
@@ -186,9 +192,21 @@ export function GuildCrest({
         </g>
         <path d={d} fill={`url(#${id}weave)`} />
         <path d={d} fill={`url(#${id}shade)`} />
-        <path d={d} fill="none" stroke="#080b0a" strokeWidth="1.2" transform="translate(50 50) scale(.84) translate(-50 -50)" opacity=".7"/>
+        <path
+          d={d}
+          fill="none"
+          stroke="#080b0a"
+          strokeWidth="1.2"
+          transform="translate(50 50) scale(.84) translate(-50 -50)"
+          opacity=".7"
+        />
       </g>
-      <CrestRimDetails ornament={crest.ornament} points={perimeter(crest.border)} id={id} dark={mix(crest.borderColor,0,.65)}/>
+      <CrestRimDetails
+        ornament={crest.ornament}
+        points={perimeter(crest.border)}
+        id={id}
+        dark={mix(crest.borderColor, 0, 0.65)}
+      />
       {crest.ornament === 'braided' && (
         <>
           <path
@@ -214,7 +232,10 @@ export function GuildCrest({
         perimeter(crest.border)
           .filter((_, i) => i % 2 === 0)
           .map(([x, y, a], i) => (
-            <g key={i} transform={`translate(${50+(x-50)*.92} ${50+(y-50)*.92}) rotate(${a})`}>
+            <g
+              key={i}
+              transform={`translate(${50 + (x - 50) * 0.92} ${50 + (y - 50) * 0.92}) rotate(${a})`}
+            >
               {crest.ornament === 'riveted' ? (
                 <>
                   <circle cy=".7" r="1.7" fill="#080909" />
@@ -238,7 +259,13 @@ export function GuildCrest({
             </g>
           ))}
       <g
-        transform={crest.border==='diamond'?'translate(29 29) scale(.42)':crest.border==='banner'?'translate(27 21) scale(.46)':'translate(25 24) scale(.5)'}
+        transform={
+          crest.border === 'diamond'
+            ? 'translate(29 29) scale(.42)'
+            : crest.border === 'banner'
+              ? 'translate(27 21) scale(.46)'
+              : 'translate(25 24) scale(.5)'
+        }
         fill={`url(#${id}symbol)`}
         stroke={mix(crest.iconColor, 0, 0.65)}
         strokeWidth="1.15"
@@ -277,7 +304,6 @@ export function GuildCrest({
           ))}
         </g>
       )}
-
     </svg>
   );
 }

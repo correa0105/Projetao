@@ -354,8 +354,93 @@ dialog:has(.guild-crest-editor) {
   }
 }
 
-.crest-display-ring { display:none; }
-.crest-choice-grid { grid-template-columns:repeat(4,minmax(0,1fr)); max-height:410px; overflow:auto; padding:2px; scrollbar-width:thin; }
-:root .crest-choice-grid button { min-height:106px; }
-.crest-choice-heading h4 { display:flex;align-items:center;gap:8px; }
-@media(max-width:650px){.crest-choice-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-height:360px;}}
+.crest-display-ring {
+  display: none;
+}
+.crest-choice-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-height: 410px;
+  overflow: auto;
+  padding: 2px;
+  scrollbar-width: thin;
+}
+:root .crest-choice-grid button {
+  min-height: 106px;
+}
+.crest-choice-heading h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 650px) {
+  .crest-choice-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-height: 360px;
+  }
+}
+.crest-illustrated-editor .crest-design-tabs {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+}
+.crest-illustrated-editor .crest-choice-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.crest-illustrated-editor .crest-design-tabs button {
+  padding: 10px 5px;
+  font-size: 12px;
+}
+.crest-art-display {
+  touch-action: none;
+  cursor: grab;
+  background: radial-gradient(ellipse, #4e422c33, transparent 70%);
+}
+.crest-art-transform {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+  border: 1px solid #a68b5155;
+  padding: 12px;
+}
+.crest-art-transform label {
+  display: grid;
+  gap: 5px;
+  color: #d2c5a9;
+  font-size: 12px;
+}
+.crest-art-layers > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 4px;
+  border-bottom: 1px solid #a68b5144;
+}
+.crest-art-layers label {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+.crest-art-layers button {
+  padding: 7px 12px;
+}
+.crest-illustrated-editor .crest-preview {
+  min-width: 0;
+}
+.crest-illustrated-editor select {
+  width: 100%;
+  background: #1e211b;
+  color: #e0d1b1;
+  border: 1px solid #9c8453;
+  padding: 9px;
+}
+@media (max-width: 600px) {
+  .crest-illustrated-editor .crest-choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .crest-illustrated-editor .crest-design-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .crest-illustrated-editor .crest-preview .guild-crest {
+    max-width: 210px;
+    height: auto;
+  }
+}

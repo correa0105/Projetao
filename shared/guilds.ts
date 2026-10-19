@@ -1,3 +1,4 @@
+import { crestArtSchema } from './guild-crest-art';
 import {
   additionalCrestIcons,
   additionalCrestFields,
@@ -73,6 +74,7 @@ export function guildLevel(prestige: number) {
 const color = z.string().regex(/^#[0-9a-f]{6}$/i);
 export const crestSchema = z
   .object({
+    art: crestArtSchema.optional(),
     icon: z.enum(crestIcons).default('sword'),
     field: z.enum(crestFields).default('quartered'),
     border: z.enum(crestBorders).default('shield'),
