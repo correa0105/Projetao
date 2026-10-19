@@ -1,5 +1,10 @@
-import {additionalCrestIcons,additionalCrestFields,additionalCrestOrnaments} from './guild-crest-options';
+import {
+  additionalCrestIcons,
+  additionalCrestFields,
+  additionalCrestOrnaments,
+} from './guild-crest-options';
 import { z } from 'zod';
+import { guildEstateSchema } from './guild-estate';
 import { houseCatalog, houseTemplates, houseSupportsFacing } from './house';
 import { guildPerspectiveSchema, guildPerspectiveGuidesSchema } from './guild-perspective';
 export const crestIcons = [
@@ -100,6 +105,7 @@ export const guildDocumentSchema = z
     crest: crestSchema.default(() => crestSchema.parse({})),
     ambience: z.enum(['natural', 'warm', 'moonlit']).default('natural'),
     placements: z.array(guildPlacementSchema).max(24).default([]),
+    estate: guildEstateSchema.optional(),
     perspectives: z.partialRecord(z.enum(roomIds), guildPerspectiveGuidesSchema).optional(),
   })
   .strict()

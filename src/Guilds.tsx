@@ -1,4 +1,5 @@
-import { useState, useEffect, useLayoutEffect, useRef, type CSSProperties } from 'react';
+import { GuildEstate } from './GuildEstate';
+import { useState, useEffect, useRef } from 'react';
 import {
   Shield,
   Users,
@@ -10,14 +11,9 @@ import {
   ArrowLeft,
   Save,
   Home,
-  X,
-  ChevronLeft,
-  ChevronRight,
   Search,
-  Trash2,
   Palette,
   ChevronDown,
-  Maximize2,
 } from 'lucide-react';
 import { api, post } from './api';
 import type { User, Character } from './types';
@@ -30,34 +26,15 @@ import {
   type GuildDocument,
   type CommunitySettings,
 } from '../shared/guilds';
-import {
-  houseItemImage,
-  houseFacingOptions,
-  houseDefaultFacing,
-  houseDefaultScale,
-  houseTurnFacing,
-} from '../shared/house';
 import { GuildCrest } from './GuildCrest';
 import { CrestEditor } from './GuildCrestEditor';
 import { Modal } from './components';
 import { visitProfile } from './HallOfFame';
-import { guildFurnitureGeometry, guildFurnitureVisibleRect } from './guild-furniture-geometry';
-import { GuildFurnitureArt } from './GuildFurnitureArt';
-import { GuildPerspectiveControls, type GuildPieceGeometry } from './GuildPerspectiveControls';
-import { guildRoomPerspective } from '../shared/guild-perspective';
-import './guild-perspective.css';
 import './guilds.css';
-import './guild-decor-editor.css';
 import './community-refinements.css';
 import { GuildLobby } from './GuildLobby';
-import { GuildFacility } from './GuildFacility';
 import { ScenePanel } from './ScenePanel';
 import './guild-immersive.css';
-import {
-  guildFloorScale,
-  guildFurnitureWidth,
-  guildFloorDragPosition,
-} from '../shared/guild-floor';
 type Settings = { document: CommunitySettings; revision: number; can_edit: boolean };
 type Entry = {
   id: string;
@@ -120,7 +97,6 @@ export function Guilds({
       new URLSearchParams(location.hash.split('?')[1] || '').get('id') || '',
     ),
     [panel, setPanel] = useState<string | null>(null),
-    [fitScene, setFitScene] = useState(() => innerWidth < 700),
     [room, setRoom] = useState('main'),
     [error, setError] = useState(''),
     [notice, setNotice] = useState(''),
@@ -129,30 +105,14 @@ export function Guilds({
     [character, setCharacter] = useState(activeCharacterId || characters[0]?.id || ''),
     [doc, setDoc] = useState<GuildDocument | null>(null),
     [config, setConfig] = useState<CommunitySettings | null>(null),
-    [selected, setSelected] = useState(''),
     [search, setSearch] = useState(''),
     [people, setPeople] = useState<{ id: string; name: string }[]>([]),
     [decor, setDecor] = useState(guildDecor[0]?.id || '');
+  const [estateFocusRequest, setEstateFocusRequest] = useState(0);
+  const [estateEditRequest, setEstateEditRequest] = useState(0);
   const request = useRef(crypto.randomUUID());
-  const scene = useRef<HTMLDivElement>(null);
-  const refreshTurnControls = useRef<(() => void) | null>(null);
-  const [perspectiveEditing, setPerspectiveEditing] = useState('');
-  const [pieceGeometry, setPieceGeometry] = useState<GuildPieceGeometry | null>(null);
   const [crestDraft, setCrestDraft] = useState<{ crest: Crest; revision: number } | null>(null);
   const loadTurn = useRef(0);
-  const grab = useRef<{
-    id: string;
-    pointer: number;
-    x: number;
-    y: number;
-    startX: number;
-    startY: number;
-  } | null>(null);
-  const [turnControls, setTurnControls] = useState<{
-    left: number;
-    right: number;
-    top: number;
-  } | null>(null);
   const memberUrl = (url: string) =>
     activeCharacterId ? url + '?character_id=' + encodeURIComponent(activeCharacterId) : url;
   async function load() {
@@ -180,9 +140,7 @@ export function Guilds({
     setDoc(null);
     setFounding(false);
     setCrestDraft(null);
-    setSelected('');
     setPanel(null);
-    setPerspectiveEditing('');
     setCharacter(activeCharacterId || characters[0]?.id || '');
   }, [activeCharacterId]);
   useEffect(() => {
@@ -231,257 +189,23 @@ export function Guilds({
       setBusy(false);
     }
   }
-  const current = doc || g?.document,
-    obj = current?.placements.find((p) => p.id === selected),
-    level = g?.upgrades.find((u) => u.object_id === selected)?.level || 1,
-    upgrade = settings?.document.upgrades.find((u) => u.catalog === obj?.catalog),
-    roomInfo = guildRooms.find((r) => r.id === room)!,
-    editable = Boolean(doc && g?.is_owner);
+  const current = doc || g?.document;
   const freeCharacters = characters.filter((c) => !directory?.linked_character_ids.includes(c.id));
-  const roomPlacements = current?.placements.filter((p) => p.room === room) || [];
-  const paintOrder = new Map(
-    [...roomPlacements].sort((a, b) => a.y - b.y).map((p, index) => [p.id, index + 1]),
-  );
-  useLayoutEffect(() => {
-    const stage = scene.current;
-    if (!stage || !editable || !obj || obj.room !== room) {
-      setTurnControls(null);
-      setPieceGeometry(null);
-      return;
-    }
-    const image = stage.querySelector<HTMLImageElement>('[data-guild-piece="' + obj.id + '"] img');
-    if (!image) return;
-    const update = () => {
-      const bounds = stage.getBoundingClientRect(),
-        r = guildFurnitureVisibleRect(image);
-      if (!r) {
-        setTurnControls(null);
-        return;
-      }
-      const width = stage.clientWidth,
-        height = stage.clientHeight,
-        originX = bounds.left + stage.clientLeft,
-        originY = bounds.top + stage.clientTop;
-      const geometry = guildFurnitureGeometry(image);
-      if (geometry)
-        setPieceGeometry({
-          width,
-          height,
-          base: {
-            ...geometry.base,
-            left: geometry.base.left - originX,
-            top: geometry.base.top - originY,
-          },
-          points: geometry.points.map((p) => ({ x: p.x - originX, y: p.y - originY })),
-        });
-      setTurnControls({
-        left: (Math.max(18, Math.min(width - 18, r.left - originX - 20)) / width) * 100,
-        right: (Math.max(18, Math.min(width - 18, r.right - originX + 20)) / width) * 100,
-        top: (Math.max(18, Math.min(height - 18, (r.top + r.bottom) / 2 - originY)) / height) * 100,
-      });
-    };
-    refreshTurnControls.current = update;
-    update();
-    const observer = new ResizeObserver(update);
-    observer.observe(stage);
-    observer.observe(image);
-    return () => {
-      observer.disconnect();
-      if (refreshTurnControls.current === update) refreshTurnControls.current = null;
-    };
-  }, [editable, obj?.id, obj?.x, obj?.y, obj?.scale, obj?.facing, obj?.perspective, room]);
-  function updateObject(values: Partial<GuildDocument['placements'][number]>) {
-    setDoc((d) =>
-      d
-        ? {
-            ...d,
-            placements: d.placements.map((p) => (p.id === selected ? { ...p, ...values } : p)),
-          }
-        : d,
-    );
-  }
   const headquarters = g ? (
-    <div
-      className={`guild-scene-viewport ${fitScene ? 'scene-fit' : ''}`}
-      style={{ '--guild-room-image': `url('${roomInfo.image}')` } as CSSProperties}
-    >
-      <div className={`guild-house-layout ${editable ? 'is-editing' : ''}`}>
-        <div
-          ref={scene}
-          className={`guild-room ambience-${current!.ambience}`}
-          style={{ backgroundImage: `url('${roomInfo.image}')` }}
-          aria-label={roomInfo.name}
-        >
-          <span className="guild-room-caption">{roomInfo.name}</span>
-          <GuildFacility key={g.id + ':' + room} guildId={g.id} room={room} levels={g.facilities || []} canUpgrade={g.is_owner} treasury={g.treasury_cp} characterId={activeCharacterId} changed={load} />
-          {roomPlacements.map((p) => (
-            <button
-              className={`guild-furniture ${selected === p.id ? 'selected' : ''}`}
-              key={p.id}
-              type="button"
-              data-guild-piece={p.id}
-              data-facing={p.facing}
-              data-base-scale={p.scale}
-              data-depth-scale={guildFloorScale(p.y, p.room)}
-              aria-label={guildDecor.find((i) => i.id === p.catalog)?.name || p.catalog}
-              style={
-                {
-                  left: p.x * 100 + '%',
-                  top: p.y * 100 + '%',
-                  width: guildFurnitureWidth(p) * 100 + '%',
-                  zIndex: paintOrder.get(p.id),
-                } as CSSProperties
-              }
-              onClick={() => {
-                setSelected(p.id);
-                if (g.is_member && !editable) setPanel('object');
-              }}
-              onPointerDown={(e) => {
-                if (!editable || busy || e.button !== 0) return;
-                e.preventDefault();
-                setSelected(p.id);
-                const r = scene.current!.getBoundingClientRect();
-                grab.current = {
-                  id: p.id,
-                  pointer: e.pointerId,
-                  x: (e.clientX - r.left - p.x * r.width) / guildFloorScale(p.y, p.room),
-                  y: (e.clientY - r.top - p.y * r.height) / guildFloorScale(p.y, p.room),
-                  startX: e.clientX,
-                  startY: e.clientY,
-                };
-                e.currentTarget.setPointerCapture(e.pointerId);
-              }}
-              onPointerMove={(e) => {
-                if (!editable || !e.currentTarget.hasPointerCapture(e.pointerId)) return;
-                const point = grab.current;
-                if (
-                  !point ||
-                  point.id !== p.id ||
-                  point.pointer !== e.pointerId ||
-                  Math.hypot(e.clientX - point.startX, e.clientY - point.startY) < 3
-                )
-                  return;
-                const r = scene.current!.getBoundingClientRect();
-                const position = guildFloorDragPosition(
-                  { x: e.clientX - r.left, y: e.clientY - r.top },
-                  point,
-                  r,
-                  p.y,
-                  p.room,
-                );
-                setDoc((d) =>
-                  d
-                    ? {
-                        ...d,
-                        placements: d.placements.map((o) =>
-                          o.id === p.id
-                            ? {
-                                ...o,
-                                ...position,
-                              }
-                            : o,
-                        ),
-                      }
-                    : d,
-                );
-              }}
-              onLostPointerCapture={() => {
-                grab.current = null;
-              }}
-              onPointerCancel={() => {
-                grab.current = null;
-              }}
-              onPointerUp={(e) => {
-                grab.current = null;
-                if (e.currentTarget.hasPointerCapture(e.pointerId))
-                  e.currentTarget.releasePointerCapture(e.pointerId);
-              }}
-              onKeyDown={(e) => {
-                if (
-                  !editable ||
-                  busy ||
-                  !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)
-                )
-                  return;
-                e.preventDefault();
-                setSelected(p.id);
-                setDoc((d) =>
-                  d
-                    ? {
-                        ...d,
-                        placements: d.placements.map((o) =>
-                          o.id === p.id
-                            ? {
-                                ...o,
-                                x: Math.max(
-                                  0.03,
-                                  Math.min(
-                                    0.97,
-                                    o.x +
-                                      (e.key === 'ArrowRight'
-                                        ? 0.01
-                                        : e.key === 'ArrowLeft'
-                                          ? -0.01
-                                          : 0),
-                                  ),
-                                ),
-                                y: Math.max(
-                                  0.1,
-                                  Math.min(
-                                    0.97,
-                                    o.y +
-                                      (e.key === 'ArrowDown'
-                                        ? 0.01
-                                        : e.key === 'ArrowUp'
-                                          ? -0.01
-                                          : 0),
-                                  ),
-                                ),
-                              }
-                            : o,
-                        ),
-                      }
-                    : d,
-                );
-              }}
-            >
-              <GuildFurnitureArt
-                source={houseItemImage(p.catalog, p.facing)}
-                perspective={p.perspective}
-                onReady={() => refreshTurnControls.current?.()}
-              />
-              {(g.upgrades.find((u) => u.object_id === p.id)?.level || 1) > 1 && (
-                <small>Nv. {g.upgrades.find((u) => u.object_id === p.id)!.level}</small>
-              )}
-            </button>
-          ))}
-          {editable && obj?.room === room && turnControls && (
-            <div className="guild-turn-controls" aria-label="Vistas do item selecionado">
-              {([-1, 1] as const).map((direction) => (
-                <button
-                  key={direction}
-                  type="button"
-                  disabled={busy}
-                  aria-label={direction < 0 ? 'Virar item à esquerda' : 'Virar item à direita'}
-                  style={{
-                    left: (direction < 0 ? turnControls.left : turnControls.right) + '%',
-                    top: turnControls.top + '%',
-                  }}
-                  onPointerDown={(e) => e.stopPropagation()}
-                  onClick={() =>
-                    updateObject({
-                      facing: houseTurnFacing(obj.catalog, obj.facing, direction),
-                    })
-                  }
-                >
-                  {direction < 0 ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
+    <GuildEstate
+      key={g.id}
+      guildId={g.id}
+      characterId={activeCharacterId}
+      revision={g.revision}
+      estate={g.document.estate}
+      owner={g.is_owner}
+      levels={g.facilities || []}
+      treasury={g.treasury_cp}
+      focusRoom={room}
+      focusRequest={estateFocusRequest}
+      editRequest={estateEditRequest}
+      changed={load}
+    />
   ) : null;
   return (
     <section className={`guild-page ${g ? 'guild-is-detail' : 'guild-is-lobby'}`}>
@@ -601,9 +325,7 @@ export function Guilds({
               <GuildCrest crest={current!.crest} size={52} />
               <span>
                 <h1>{g.document.name}</h1>
-                <small>
-                  {roomInfo.name} · {g.is_member ? 'Sua companhia' : 'Visitante'}
-                </small>
+                <small>Sede da guilda · {g.is_member ? 'Sua companhia' : 'Visitante'}</small>
               </span>
               <ChevronDown size={15} />
             </button>
@@ -643,26 +365,16 @@ export function Guilds({
             </button>
           </nav>
           <div className="guild-scene-tools">
-            <button
-              aria-label={fitScene ? 'Preencher tela' : 'Mostrar sala inteira'}
-              title={fitScene ? 'Preencher tela' : 'Mostrar sala inteira'}
-              onClick={() => setFitScene(!fitScene)}
-            >
-              <Maximize2 size={17} />
-            </button>
             {g.is_owner && (
               <button
                 aria-expanded={panel === 'edit'}
                 onClick={() => {
-                  if (!editable) setDoc(structuredClone(g.document));
-                  setPanel(panel === 'edit' ? null : 'edit');
+                  setPanel(null);
+                  setEstateEditRequest((n) => n + 1);
                 }}
               >
                 <Palette size={17} />
-                <span>{editable ? 'Edição em andamento' : 'Personalizar sede'}</span>
-                {editable && (
-                  <span className="guild-draft-dot" aria-label="Alterações não salvas" />
-                )}
+                <span>Reposicionar itens</span>
               </button>
             )}
           </div>
@@ -714,10 +426,16 @@ export function Guilds({
                     Editar brasão
                   </button>
                 )}
-                {g.is_owner && !editable && (
-                  <button disabled={busy} onClick={() => setDoc(structuredClone(g.document))}>
+                {g.is_owner && (
+                  <button
+                    disabled={busy}
+                    onClick={() => {
+                      setPanel(null);
+                      setEstateEditRequest((n) => n + 1);
+                    }}
+                  >
                     <Settings2 size={16} />
-                    Personalizar sede
+                    Reposicionar itens
                   </button>
                 )}
               </div>
@@ -742,35 +460,38 @@ export function Guilds({
           {panel === 'rooms' && (
             <ScenePanel id="rooms" title="Explore a sede" close={() => setPanel(null)}>
               <p className="guild-scene-description">
-                Novas salas são liberadas conforme a guilda sobe de nível.
+                Uma casa humilde, quatro cômodos e quatro instalações para evoluir.
               </p>{' '}
               <nav className="guild-room-tabs" aria-label="Salas da sede">
-                {guildRooms.map((r) => {
-                  const locked =
-                    !r.starter && g.level < g.room_unlocks[r.id as keyof typeof g.room_unlocks];
-                  return (
-                    <button
-                      key={r.id}
-                      disabled={locked}
-                      title={
-                        locked
-                          ? 'Libera no nível ' + g.room_unlocks[r.id as keyof typeof g.room_unlocks]
-                          : r.name
-                      }
-                      aria-pressed={room === r.id}
-                      onClick={() => {
-                        setRoom(r.id);
-                        setSelected('');
-                        setPanel(null);
-                      }}
-                    >
-                      {locked && <Lock size={13} />} {r.name}
-                      {locked && (
-                        <small>Nv. {g.room_unlocks[r.id as keyof typeof g.room_unlocks]}</small>
-                      )}
-                    </button>
-                  );
-                })}
+                {guildRooms
+                  .filter((r) => r.starter)
+                  .map((r) => {
+                    const locked =
+                      !r.starter && g.level < g.room_unlocks[r.id as keyof typeof g.room_unlocks];
+                    return (
+                      <button
+                        key={r.id}
+                        disabled={locked}
+                        title={
+                          locked
+                            ? 'Libera no nível ' +
+                              g.room_unlocks[r.id as keyof typeof g.room_unlocks]
+                            : r.name
+                        }
+                        aria-pressed={room === r.id}
+                        onClick={() => {
+                          setRoom(r.id);
+                          setEstateFocusRequest((n) => n + 1);
+                          setPanel(null);
+                        }}
+                      >
+                        {locked && <Lock size={13} />} {r.name}
+                        {locked && (
+                          <small>Nv. {g.room_unlocks[r.id as keyof typeof g.room_unlocks]}</small>
+                        )}
+                      </button>
+                    );
+                  })}
               </nav>
             </ScenePanel>
           )}
@@ -927,212 +648,6 @@ export function Guilds({
                         ))}
                       </div>
                     </>
-                  )}
-                </section>
-              )}
-            </ScenePanel>
-          )}
-          {editable && panel === 'edit' && (
-            <ScenePanel id="edit" title="Personalizar sede" close={() => setPanel(null)}>
-              <div className="guild-paper guild-house-editor" aria-label="Decoração da sala">
-                <header className="guild-decor-heading">
-                  <h2>Decorar</h2>
-                  <small>{roomInfo.name}</small>
-                </header>
-                <p>Arraste a peça. O tamanho acompanha a distância.</p>
-                <div className="guild-field-grid">
-                  <label>
-                    Objeto
-                    <select
-                      aria-label="Objeto"
-                      value={decor}
-                      onChange={(e) => setDecor(e.target.value)}
-                    >
-                      {guildDecor.map((i) => (
-                        <option key={i.id} value={i.id}>
-                          {i.name}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <button
-                    disabled={busy || current!.placements.length >= 24}
-                    onClick={() => {
-                      const id = crypto.randomUUID();
-                      setDoc((d) =>
-                        d
-                          ? {
-                              ...d,
-                              placements: [
-                                ...d.placements,
-                                {
-                                  id,
-                                  catalog: decor,
-                                  room: room as GuildDocument['placements'][number]['room'],
-                                  x: 0.5,
-                                  y: 0.84,
-                                  scale: Math.max(0.04, Math.min(0.6, houseDefaultScale(decor))),
-                                  facing: houseDefaultFacing(decor),
-                                },
-                              ],
-                            }
-                          : d,
-                      );
-                      setSelected(id);
-                    }}
-                  >
-                    <Plus size={16} />
-                    Adicionar peça
-                  </button>
-                  <label>
-                    Atmosfera
-                    <select
-                      aria-label="Atmosfera"
-                      value={current!.ambience}
-                      onChange={(e) =>
-                        setDoc((d) =>
-                          d ? { ...d, ambience: e.target.value as GuildDocument['ambience'] } : d,
-                        )
-                      }
-                    >
-                      <option value="natural">Luz natural</option>
-                      <option value="warm">À luz de velas</option>
-                      <option value="moonlit">Noite serena</option>
-                    </select>
-                  </label>
-                  {obj?.room === room && (
-                    <section className="guild-selected-settings" aria-label="Ajustes da peça">
-                      <h3>{guildDecor.find((i) => i.id === obj.catalog)?.name}</h3>
-                      <label>
-                        Tamanho
-                        <input
-                          type="range"
-                          min=".04"
-                          max=".6"
-                          step=".01"
-                          aria-label="Tamanho do objeto"
-                          value={obj.scale}
-                          onChange={(e) => updateObject({ scale: Number(e.target.value) })}
-                        />
-                      </label>
-                      <label>
-                        Vista
-                        <select
-                          aria-label="Vista do objeto"
-                          value={obj.facing}
-                          onChange={(e) => updateObject({ facing: Number(e.target.value) })}
-                        >
-                          {houseFacingOptions(obj.catalog).map((f) => (
-                            <option key={f.value} value={f.value}>
-                              {f.label}
-                            </option>
-                          ))}
-                        </select>
-                      </label>
-                      <GuildPerspectiveControls
-                        key={obj.id}
-                        stage={scene}
-                        geometry={pieceGeometry}
-                        perspective={obj.perspective}
-                        guides={current!.perspectives?.[room] ?? guildRoomPerspective(room)}
-                        changeGuides={(guides) =>
-                          setDoc((d) =>
-                            d
-                              ? {
-                                  ...d,
-                                  perspectives: { ...d.perspectives, [room]: guides },
-                                }
-                              : d,
-                          )
-                        }
-                        change={(perspective) => updateObject({ perspective })}
-                        active={perspectiveEditing === obj.id}
-                        toggle={() =>
-                          setPerspectiveEditing(perspectiveEditing === obj.id ? '' : obj.id)
-                        }
-                      />
-                      <button
-                        className="guild-remove-piece"
-                        disabled={busy}
-                        onClick={() =>
-                          setDoc((d) =>
-                            d
-                              ? {
-                                  ...d,
-                                  placements: d.placements.filter((p) => p.id !== selected),
-                                }
-                              : d,
-                          )
-                        }
-                      >
-                        <Trash2 size={13} />
-                        Remover peça
-                      </button>
-                    </section>
-                  )}
-                </div>
-                <div className="guild-actions">
-                  <button
-                    disabled={busy}
-                    onClick={() =>
-                      void run(async () => {
-                        await api(memberUrl('/guilds/' + g.id), {
-                          method: 'PUT',
-                          body: JSON.stringify({ document: doc, revision: g.revision }),
-                        });
-                        setDoc(null);
-                        await load();
-                        setNotice('Sede salva.');
-                      })
-                    }
-                  >
-                    <Save size={16} />
-                    Salvar sede
-                  </button>
-                  <button disabled={busy} onClick={() => setDoc(null)}>
-                    Descartar edição
-                  </button>
-                </div>
-              </div>
-            </ScenePanel>
-          )}
-          {panel === 'object' && obj && !editable && (
-            <ScenePanel
-              id="object"
-              title="Objeto da sede"
-              close={() => {
-                setSelected('');
-                setPanel(null);
-              }}
-            >
-              {' '}
-              {obj && g.is_member && !editable && (
-                <section className="guild-paper">
-                  <h3>
-                    {guildDecor.find((i) => i.id === obj.catalog)?.name} · nível {level}
-                  </h3>
-                  {upgrade ? (
-                    <p>
-                      Melhoria: {upgrade.gold_po} PO do tesouro · {upgrade.prestige} de prestígio ·{' '}
-                      {upgrade.missions} missões semanais concluídas.
-                    </p>
-                  ) : (
-                    <p>Requisitos de melhoria aguardam a definição do administrador.</p>
-                  )}
-                  {g.is_owner && (
-                    <button
-                      disabled={busy || !upgrade || level >= upgrade.max_level}
-                      onClick={() =>
-                        void run(async () => {
-                          await post(memberUrl('/guilds/' + g.id + '/upgrade/' + obj.id), {
-                            level: level + 1,
-                          });
-                          await load();
-                        })
-                      }
-                    >
-                      Melhorar objeto
-                    </button>
                   )}
                 </section>
               )}
