@@ -16,6 +16,7 @@ import { featureNames, featureSummaries } from '../shared/class-advancement-text
 import type { Character } from './types';
 import { Modal } from './components';
 import { ChoiceList } from './SheetChoices';
+import { SpellReference } from './SpellReference';
 import { post } from './api';
 import './character-advancement.css';
 
@@ -36,6 +37,7 @@ export function AdvancementSpells({
 }) {
   const [search, setSearch] = useState('');
   const [circle, setCircle] = useState('all');
+  const [reference, setReference] = useState<string | null>(null);
   const normalize = (v: string) =>
     v
       .normalize('NFD')
@@ -90,20 +92,55 @@ export function AdvancementSpells({
         </p>
       )}
       <div className="advancement-spell-list">
-        <ChoiceList
-          label={label}
-          count={count}
-          options={filtered.map((s) => s.id)}
-          value={value}
-          onChange={onChange}
-          help={
-            optional
-              ? 'Pode escolher até este limite. As escolhas ficam registradas na ficha.'
-              : undefined
-          }
-        />
+        <fieldset className="sheet-choice">
+          <legend>
+            {label}{' '}
+            <small>
+              Escolha {count} · {value.length}/{count}
+            </small>
+          </legend>
+          {optional && (
+            <p>Pode escolher até este limite. As escolhas ficam registradas na ficha.</p>
+          )}
+          <div className="sheet-checks advancement-spell-choices">
+            {filtered.map((s) => (
+              <div className="advancement-spell-choice" key={s.id}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={value.includes(s.id)}
+                    disabled={!value.includes(s.id) && value.length >= count}
+                    onChange={() =>
+                      onChange(
+                        value.includes(s.id) ? value.filter((v) => v !== s.id) : [...value, s.id],
+                      )
+                    }
+                  />
+                  <span>{s.label}</span>
+                </label>
+                <button
+                  type="button"
+                  className="spell-reference-open"
+                  aria-label={'Ver magia: ' + s.label}
+                  onClick={() => setReference(s.id)}
+                >
+                  <BookOpen size={13} aria-hidden="true" />
+                  Ver magia
+                </button>
+              </div>
+            ))}
+          </div>
+        </fieldset>
         {!filtered.length && <p>Nenhuma magia encontrada.</p>}
       </div>
+      {reference && (
+        <SpellReference
+          key={reference}
+          id={reference}
+          label={spells.find((s) => s.id === reference)?.label || reference}
+          close={() => setReference(null)}
+        />
+      )}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import {spellReference} from './spell-reference.js';
 import { grantBetaStartingGold } from './beta-accounts.js';
 import { randomInt } from 'node:crypto';
 import type { PoolClient } from 'pg';
@@ -130,6 +131,7 @@ function seedAdvancement(
 }
 export function characterSheetRouter() {
   const router = Router();
+  router.get('/spell-reference/:id',async(req,res)=>res.json(await spellReference(req.params.id)));
   router.get('/characters/:id/sheet', async (req, res) =>
     res.json(await result(z.string().uuid().parse(req.params.id), res.locals.user.id)),
   );

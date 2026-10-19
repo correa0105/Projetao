@@ -7,6 +7,7 @@ import {
   type CSSProperties,
 } from 'react';
 import {
+  MessagesSquare,
   Backpack,
   CalendarDays,
   Trophy,
@@ -79,7 +80,7 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     icon: MapIcon,
     items: [
       { page: 'world', label: 'Mundo', icon: Map },
-      { page: 'house', label: 'Lobby de RP', icon: House },
+      { page: 'house', label: 'Lobby de RP', icon: MessagesSquare },
       { page: 'house2', label: 'House 2.0 · testes', icon: House },
       { page: 'guild', label: 'Guilda', icon: Shield },
     ],

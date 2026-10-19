@@ -392,3 +392,85 @@
   padding-block: 0.75rem;
   border-block-end: 1px solid #74603b44;
 }
+.advancement-spell-choice {
+  min-width: 0;
+  border: 1px solid #62543d66;
+  border-radius: 3px;
+  background: #262924;
+}
+.advancement-spell-choice > label {
+  border: 0 !important;
+  margin: 0;
+  min-height: 38px;
+}
+.advancement-spell-choice > label span {
+  overflow-wrap: anywhere;
+}
+.spell-reference-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: calc(100% - 12px);
+  margin: 0 6px 6px;
+  padding: 5px;
+  font-size: 12px;
+  color: #e3c384;
+  background: #181e1a;
+  border: 1px solid #78603d;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.spell-reference-open:focus-visible {
+  outline: 2px solid #e3c384;
+  outline-offset: 2px;
+}
+.spell-reference-dialog {
+  width: min(660px, calc(100vw - 24px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  color: #e2d9c8;
+  background: #22251f;
+  border: 1px solid #a98a53;
+}
+.spell-reference-dialog::backdrop {
+  background: #000a;
+}
+.spell-reference-dialog .dialog-inner {
+  max-width: none;
+  padding: 20px;
+}
+.spell-reference-dialog .dialog-head {
+  gap: 12px;
+}
+.spell-reference-dialog .dialog-head h2 {
+  overflow-wrap: anywhere;
+}
+.spell-reference-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.spell-reference-facts dt {
+  font-size: 12px;
+  color: #c9b17d;
+}
+.spell-reference-facts dd {
+  margin: 3px 0 0;
+}
+.spell-reference-description {
+  line-height: 1.65;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.spell-reference-source {
+  font-size: 12px;
+  color: #bfb49e;
+}
+.spell-reference-source a { color: #ddbf7c; }
+.spell-reference-dialog .dialog-head button { color: #f3deaf; background: #34382f; border: 1px solid #a98a53; padding: 7px 12px; border-radius: 3px; cursor: pointer; }
+@media (max-width: 420px) {
+  .spell-reference-facts {
+    grid-template-columns: 1fr;
+  }
+}
