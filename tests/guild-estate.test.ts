@@ -13,20 +13,28 @@ import { migrate } from '../server/migrate';
 import { seed } from '../server/seed';
 import { createLegacyTestCharacter } from './character-fixtures';
 
-test('sede começa com quatro instalações em quatro cômodos; valida paredes, quantidade e colisões', () => {
+test('sede começa com quatro instalações em quatro cômodos; permite aproximar da parede e valida limite da casa e quantidade', () => {
   const layout = defaultGuildEstate();
   assert(guildEstateSchema.safeParse(layout).success);
   assert.equal(new Set(layout.items.map((i) => guildEstateItemRoom(i)?.id)).size, 4);
   for (const bad of [
     { ...layout, items: layout.items.slice(1) },
     { ...layout, items: layout.items.map((i) => ({ ...i, id: 'main' })) },
-    { ...layout, items: layout.items.map((i) => (i.id === 'main' ? { ...i, x: 30 } : i)) },
+    { ...layout, items: layout.items.map((i) => (i.id === 'main' ? { ...i, x: 45 } : i)) },
     {
       ...layout,
-      items: layout.items.map((i) => (i.id === 'forge' ? { ...i, x: 25.5, y: 20.5 } : i)),
+      items: layout.items.map((i) => (i.id === 'forge' ? { ...i, x: 42, y: 20.5 } : i)),
     },
   ])
     assert(!guildEstateSchema.safeParse(bad).success);
+  assert(
+    guildEstateSchema.safeParse({
+      ...layout,
+      items: layout.items.map((i) =>
+        i.id === 'forge' ? { ...i, x: 30.7, y: 17.3, rotation: 13 } : i,
+      ),
+    }).success,
+  );
   assert(
     guildEstateSchema.safeParse({
       ...layout,

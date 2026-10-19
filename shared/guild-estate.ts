@@ -63,14 +63,7 @@ export function guildEstateFurnitureFlat(catalog: string) {
 }
 export function guildEstateFurnitureRoom(i: GuildEstateFurniture) {
   if (i.x === null || i.y === null) return undefined;
-  const s = guildEstateFurnitureSize(i);
-  return guildEstateRooms.find(
-    (r) =>
-      i.x! - s.width / 2 >= r.x &&
-      i.x! + s.width / 2 <= r.x + r.width &&
-      i.y! - s.height / 2 >= r.y &&
-      i.y! + s.height / 2 <= r.y + r.height,
-  );
+  return guildEstateRoomAt(i.x, i.y);
 }
 export const guildEstateWorld = { width: 60, height: 50 };
 export const guildEstateHouse = { x: 21, y: 17, width: 18, height: 14 };
@@ -80,6 +73,14 @@ export const guildEstateRooms = [
   { id: 'lounge', name: 'Sala de estar', x: 21.6, y: 24.6, width: 7.8, height: 5.8 },
   { id: 'meeting', name: 'Sala de reunião', x: 30.6, y: 24.6, width: 7.8, height: 5.8 },
 ] as const;
+export function guildEstateRoomAt(x: number, y: number) {
+  if (x < 21.15 || x > 38.85 || y < 17.15 || y > 30.85) return undefined;
+  return [...guildEstateRooms].sort(
+    (a, b) =>
+      Math.hypot(x - a.x - a.width / 2, y - a.y - a.height / 2) -
+      Math.hypot(x - b.x - b.width / 2, y - b.y - b.height / 2),
+  )[0];
+}
 export const guildEstateItems = [
   { id: 'main', name: 'Sino dos Juramentos', catalog: 'urban-038', x: 25.5, y: 20.5 },
   { id: 'forge', name: 'Bancada do Mestre Ferreiro', catalog: 'furniture-212', x: 34.5, y: 20.5 },
@@ -103,14 +104,7 @@ export function guildEstateItemRoom(item: {
   rotation: number;
   scale?: number;
 }) {
-  const size = guildEstateItemSize(item.id, item.rotation, item.scale);
-  return guildEstateRooms.find(
-    (r) =>
-      item.x - size.width / 2 >= r.x &&
-      item.x + size.width / 2 <= r.x + r.width &&
-      item.y - size.height / 2 >= r.y &&
-      item.y + size.height / 2 <= r.y + r.height,
-  );
+  return guildEstateRoomAt(item.x, item.y);
 }
 const item = z
   .object({
@@ -141,18 +135,6 @@ export const guildEstateSchema = z
           code: 'custom',
           message: 'Mantenha as instalações dentro dos cômodos, sem atravessar as paredes.',
         });
-    for (let a = 0; a < v.items.length; a++)
-      for (let b = a + 1; b < v.items.length; b++) {
-        const i = v.items[a],
-          j = v.items[b],
-          s = guildEstateItemSize(i.id, i.rotation, i.scale),
-          t = guildEstateItemSize(j.id, j.rotation, j.scale);
-        if (
-          Math.abs(i.x - j.x) < (s.width + t.width) / 2 &&
-          Math.abs(i.y - j.y) < (s.height + t.height) / 2
-        )
-          ctx.addIssue({ code: 'custom', message: 'As instalações não podem ficar sobrepostas.' });
-      }
     if (new Set(v.furniture.map((i) => i.id)).size !== v.furniture.length)
       ctx.addIssue({ code: 'custom', message: 'Móveis repetidos.' });
     for (const i of v.furniture)

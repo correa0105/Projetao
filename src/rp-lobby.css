@@ -618,3 +618,6 @@ body.rp-lobby-mounted:has(.rp-session) .app-shell > .main-shell > .page-header {
     max-height: 52vh;
   }
 }
+.rp-character-companions{border-top:1px solid #8b774a66;margin-top:18px;padding-top:8px;}
+.rp-character-companions .rp-companion-source{padding:6px 0;border-bottom:1px solid #8b774a33;}
+.rp-character-companions fieldset{margin-top:12px;}

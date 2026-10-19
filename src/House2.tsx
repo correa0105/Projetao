@@ -1333,7 +1333,7 @@ export function House2({ character, user }: { character?: Character; user: User 
               </g>
             );
           })}
-        <g filter="url(#h2-shadow-item)">
+        <g>
           {renderedItems.map((item) => {
             const spec = house2Furniture.find((f) => f.id === item.catalog_id);
             if (!spec) return null;
@@ -1345,6 +1345,16 @@ export function House2({ character, user }: { character?: Character; user: User 
                 data-house2-plot={item.plot_id!}
                 data-house2-piece={editable ? item.id : undefined}
                 data-house2-catalog={item.catalog_id}
+                filter={
+                  scene?.plots.some(
+                    (p) =>
+                      p.id === item.plot_id &&
+                      p.house_id &&
+                      house2Contains(p, { x: item.x!, y: item.y! }),
+                  )
+                    ? undefined
+                    : 'url(#h2-shadow-item)'
+                }
                 role={lightControl ? 'button' : undefined}
                 tabIndex={lightControl ? 0 : undefined}
                 aria-label={lightControl ? `Ações de ${spec.name}` : undefined}

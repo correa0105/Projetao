@@ -16,7 +16,6 @@ import {
 import { GuildEstateActors } from './GuildEstateActors';
 import { House2ItemBorder } from './House2ItemBorder';
 import './house2.css';
-import { GuildEstateArchitecture } from './GuildEstateArchitecture';
 import { GuildEstateScenery } from './GuildEstateScenery';
 import { GuildEstateShop } from './GuildEstateShop';
 import { GuildEstateFurnitureLayer } from './GuildEstateFurnitureLayer';
@@ -155,33 +154,6 @@ export function GuildEstate(p: Props) {
   }
   function change(id: string, values: Record<string, unknown>) {
     if (busy || !p.owner) return false;
-    const existing =
-      layout.items.find((i) => i.id === id) || layout.furniture.find((i) => i.id === id);
-    if (existing) {
-      const proposed = { ...existing, ...values };
-      if (proposed.x !== null && proposed.y !== null) {
-        const size =
-          'catalog' in proposed
-            ? guildEstateFurnitureSize(proposed)
-            : guildEstateItemSize(proposed.id, proposed.rotation, proposed.scale);
-        const r = guildEstateRooms.find(
-          (r) =>
-            proposed.x! >= r.x - 0.35 &&
-            proposed.x! <= r.x + r.width + 0.35 &&
-            proposed.y! >= r.y - 0.35 &&
-            proposed.y! <= r.y + r.height + 0.35,
-        );
-        if (r && size.width <= r.width && size.height <= r.height)
-          values = {
-            ...values,
-            x: Math.max(r.x + size.width / 2, Math.min(r.x + r.width - size.width / 2, proposed.x)),
-            y: Math.max(
-              r.y + size.height / 2,
-              Math.min(r.y + r.height - size.height / 2, proposed.y),
-            ),
-          };
-      }
-    }
     const next = {
       ...layout,
       items: layout.items.map((i) => (i.id === id ? { ...i, ...values } : i)),
@@ -192,7 +164,9 @@ export function GuildEstate(p: Props) {
       setError('');
       return true;
     }
-    setError('Posicione o item dentro de um cômodo, sem atravessar paredes ou outro item.');
+    setError(
+      'Mantenha o centro da peça dentro da casa. O posicionamento junto às paredes é livre.',
+    );
     return false;
   }
   function zoom(factor: number) {
@@ -442,26 +416,27 @@ export function GuildEstate(p: Props) {
           opacity=".07"
         />
         <GuildEstateScenery wooded={finishes.trees} />
-        <g data-guild-estate-house="stone-four-rooms" filter="url(#ge-shadow)">
-          <rect
-            x={h.x - 0.55}
-            y={h.y - 0.55}
-            width={h.width + 1.1}
-            height={h.height + 1.1}
-            fill="url(#ge-paving)"
-            rx=".25"
+        <g data-guild-estate-house="illustrated-four-rooms">
+          <image
+            data-estate-interior="illustrated-overhead"
+            href="/guild/estate-20261019/interior-oak-v2.webp"
+            x="20.65"
+            y="16.65"
+            width="18.7"
+            height="14.7"
+            preserveAspectRatio="none"
           />
-          <rect x={h.x} y={h.y} width={h.width} height={h.height} fill="url(#ge-floor)" />
-          <rect x="30.4" y="17.4" width="8.2" height="6.2" fill="url(#ge-paving)" opacity=".9" />
-          <path
-            d={wallPaths}
-            fill="none"
-            stroke="#756e5b"
-            strokeWidth=".82"
-            strokeLinejoin="miter"
-          />
-          <path d={wallPaths} fill="none" stroke="url(#ge-masonry)" strokeWidth=".62" />
-          <GuildEstateArchitecture />
+          {finishes.floor !== 'oak' &&
+            guildEstateRooms.map((r) => (
+              <rect
+                key={r.id}
+                x={r.x + 0.15}
+                y={r.y + 0.15}
+                width={r.width - 0.3}
+                height={r.height - 0.3}
+                fill="url(#ge-floor)"
+              />
+            ))}
         </g>
         {!roof && (
           <>
@@ -591,7 +566,6 @@ export function GuildEstate(p: Props) {
                       width={w}
                       height={hh}
                       preserveAspectRatio="xMidYMid meet"
-                      filter="url(#ge-shadow)"
                     />
                   </g>
                   <text
@@ -862,7 +836,7 @@ export function GuildEstate(p: Props) {
           )}
           <details className="guild-estate-finishes">
             <summary>Materiais da casa e jardim</summary>
-            {(['roof', 'floor', 'walls'] as const).map((kind) => (
+            {(['roof', 'floor'] as const).map((kind) => (
               <label key={kind}>
                 {{ roof: 'Telhado', floor: 'Piso', walls: 'Paredes' }[kind]}
                 <select

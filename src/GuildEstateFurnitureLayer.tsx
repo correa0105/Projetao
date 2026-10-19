@@ -82,7 +82,6 @@ export function GuildEstateFurnitureLayer({
                   width={w}
                   height={h}
                   preserveAspectRatio="xMidYMid meet"
-                  filter={guildEstateFurnitureFlat(i.catalog) ? undefined : 'url(#ge-shadow)'}
                 />
               </g>
             </g>

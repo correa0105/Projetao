@@ -67,11 +67,11 @@ test('Lobby de RP e instalações: acesso, edição, presença, convites e econo
     assert.equal(index.data.rooms.filter((r: any) => r.kind === 'fixed').length, 4);
     const fixed = index.data.rooms[0];
     let privateId = '';
-    await t.test('salas fixas abertas e edição somente administrativa', async () => {
+    await t.test('salas fixas abertas com decoração do sistema e sem edição por jogadores', async () => {
       assert.equal((await request('/rp-lobby/' + fixed.id, outsider)).status, 200);
       const input = { name: fixed.name, document: fixed.document, revision: fixed.revision };
       assert.equal((await request('/rp-lobby/' + fixed.id, owner, 'PUT', input)).status, 403);
-      assert.equal((await request('/rp-lobby/' + fixed.id, admin, 'PUT', input)).status, 200);
+      assert.equal((await request('/rp-lobby/' + fixed.id, admin, 'PUT', input)).status, 403);
       assert.equal(
         (await request('/rp-lobby/' + fixed.id + '/close', admin, 'POST', {})).status,
         403,
@@ -167,7 +167,7 @@ test('Lobby de RP e instalações: acesso, edição, presença, convites e econo
       );
     });
     await t.test(
-      'quatro peças públicas por jogador, acompanhantes próprios, camadas e sala privada sem limite de mobília',
+      'públicos sem móveis pessoais, acompanhantes próprios, camadas e privados sem limite',
       async () => {
         const position = {
           character_id: hero.id,
@@ -197,12 +197,12 @@ test('Lobby de RP e instalações: acesso, edição, presença, convites e econo
           url = '/rp-lobby/' + fixed.id + '/scene-items';
         assert.equal(
           (await request(url, owner, 'PUT', { character_id: hero.id, items })).status,
-          200,
+          403,
         );
         assert.equal(
           (await request(url, owner, 'PUT', { character_id: hero.id, items: [...items, make()] }))
             .status,
-          409,
+          403,
         );
         assert.equal(
           (await request(url, friend, 'PUT', { character_id: hero.id, items: [] })).status,
@@ -216,8 +216,7 @@ test('Lobby de RP e instalações: acesso, edição, presença, convites e econo
         ).rows[0];
         const pet = { ...make(), kind: 'pet', wardrobe_id: animal.id };
         assert.equal(
-          (await request(url, owner, 'PUT', { character_id: hero.id, items: [...items, pet] }))
-            .status,
+          (await request(url, owner, 'PUT', { character_id: hero.id, items: [pet] })).status,
           200,
         );
         assert.equal(
@@ -233,9 +232,9 @@ test('Lobby de RP e instalações: acesso, edição, presença, convites e econo
           (p: any) => p.user_id === owner.id,
         );
         assert.equal(state.depth_layer, 2);
-        assert.equal(state.scene_items.length, 5);
-        assert.equal(state.scene_items[4].name, 'Lobo');
-        const image = await fetch(base + state.scene_items[4].image.replace('/api', ''), {
+        assert.equal(state.scene_items.length, 1);
+        assert.equal(state.scene_items[0].name, 'Lobo');
+        const image = await fetch(base + state.scene_items[0].image.replace('/api', ''), {
           headers: { Cookie: friend.cookie },
         });
         assert.equal(image.status, 200);

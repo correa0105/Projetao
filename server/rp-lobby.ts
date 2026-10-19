@@ -8,7 +8,6 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
-import { isAdministrator } from './administrators.js';
 import { rpPlacementSchema, rpDocumentSchema, rpScenes } from '../shared/rp-lobby.js';
 const uuid = z.string().uuid(),
   userId = z.string().min(1).max(100);
@@ -42,7 +41,7 @@ async function roomAccess(db: DB, id: string, uid: string, edit = false, lock = 
   if (!r) throw new AppError(404, 'Sala encerrada ou não encontrada.');
   const owner = r.owner_id === uid;
   let canEdit = owner;
-  if (r.kind === 'fixed') canEdit = await isAdministrator(uid, db as PoolClient);
+  if (r.kind === 'fixed') canEdit = false;
   else if (!owner) {
     const invite = (
       await db.query(
@@ -95,7 +94,12 @@ async function state(db: DB, r: any, uid: string) {
     presence: await Promise.all(
       presence.map(async (p) => ({
         ...p,
-        scene_items: await enrichItems(db, r.id, p.character_id, p.scene_items),
+        scene_items: await enrichItems(
+          db,
+          r.id,
+          p.character_id,
+          r.kind === 'fixed' ? p.scene_items.filter((i: any) => i.kind !== 'prop') : p.scene_items,
+        ),
       })),
     ),
     messages,
@@ -219,11 +223,14 @@ export function rpLobbyRouter() {
       await ownCharacter(db, input.character_id, uid);
       if (new Set(input.items.map((i) => i.id)).size !== input.items.length)
         throw new AppError(400, 'Peças repetidas.');
+      if (r.kind === 'fixed' && input.items.some((i) => i.kind === 'prop'))
+        throw new AppError(403, 'Lobbies públicos permitem apenas personagens, pets e montarias.');
       if (
-        (r.kind === 'fixed' || !r.is_owner) &&
+        r.kind !== 'fixed' &&
+        !r.is_owner &&
         input.items.filter((i) => i.kind === 'prop').length > 4
       )
-        throw new AppError(409, 'Cada jogador pode colocar até 4 itens neste lobby.');
+        throw new AppError(409, 'Convidados podem colocar até quatro peças.');
       if (input.items.filter((i) => i.kind !== 'prop').length > 20)
         throw new AppError(400, 'Muitos acompanhantes na cena.');
       const animals = input.items.filter((i) => i.kind !== 'prop');

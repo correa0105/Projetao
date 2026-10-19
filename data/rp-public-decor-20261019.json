@@ -1,0 +1,342 @@
+{
+  "beach": {
+    "scene": "beach",
+    "placements": [
+      {
+        "id": "11500000-0000-4000-8000-000000000001",
+        "catalog": "bench",
+        "x": 0.28,
+        "y": 0.81,
+        "scale": 0.17,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8000-000000000002",
+        "catalog": "ale-barrel",
+        "x": 0.2,
+        "y": 0.85,
+        "scale": 0.09,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8000-000000000003",
+        "catalog": "produce-crate",
+        "x": 0.23,
+        "y": 0.9,
+        "scale": 0.1,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8000-000000000004",
+        "catalog": "iron-lantern",
+        "x": 0.33,
+        "y": 0.83,
+        "scale": 0.055,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8000-000000000005",
+        "catalog": "round-hearth-table",
+        "x": 0.58,
+        "y": 0.85,
+        "scale": 0.15,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8000-000000000006",
+        "catalog": "round-stool",
+        "x": 0.52,
+        "y": 0.89,
+        "scale": 0.065,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8000-000000000007",
+        "catalog": "round-stool",
+        "x": 0.66,
+        "y": 0.86,
+        "scale": 0.065,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8000-000000000008",
+        "catalog": "herb-basket",
+        "x": 0.75,
+        "y": 0.87,
+        "scale": 0.07,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      }
+    ]
+  },
+  "market": {
+    "scene": "market",
+    "placements": [
+      {
+        "id": "11500000-0000-4000-8001-000000000001",
+        "catalog": "produce-crate",
+        "x": 0.26,
+        "y": 0.86,
+        "scale": 0.12,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8001-000000000002",
+        "catalog": "herb-basket",
+        "x": 0.34,
+        "y": 0.83,
+        "scale": 0.075,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8001-000000000003",
+        "catalog": "ale-barrel",
+        "x": 0.23,
+        "y": 0.91,
+        "scale": 0.095,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8001-000000000004",
+        "catalog": "round-hearth-table",
+        "x": 0.6,
+        "y": 0.84,
+        "scale": 0.14,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8001-000000000005",
+        "catalog": "round-stool",
+        "x": 0.53,
+        "y": 0.89,
+        "scale": 0.065,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8001-000000000006",
+        "catalog": "round-stool",
+        "x": 0.68,
+        "y": 0.86,
+        "scale": 0.065,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8001-000000000007",
+        "catalog": "flower-urn",
+        "x": 0.76,
+        "y": 0.86,
+        "scale": 0.09,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8001-000000000008",
+        "catalog": "bench",
+        "x": 0.83,
+        "y": 0.83,
+        "scale": 0.16,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      }
+    ]
+  },
+  "plaza": {
+    "scene": "plaza",
+    "placements": [
+      {
+        "id": "11500000-0000-4000-8002-000000000001",
+        "catalog": "stone-bench",
+        "x": 0.29,
+        "y": 0.84,
+        "scale": 0.17,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8002-000000000002",
+        "catalog": "flower-urn",
+        "x": 0.21,
+        "y": 0.85,
+        "scale": 0.09,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8002-000000000003",
+        "catalog": "flower-urn",
+        "x": 0.39,
+        "y": 0.81,
+        "scale": 0.07,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8002-000000000004",
+        "catalog": "chess-table",
+        "x": 0.57,
+        "y": 0.86,
+        "scale": 0.13,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8002-000000000005",
+        "catalog": "round-stool",
+        "x": 0.51,
+        "y": 0.9,
+        "scale": 0.065,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8002-000000000006",
+        "catalog": "round-stool",
+        "x": 0.65,
+        "y": 0.89,
+        "scale": 0.065,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8002-000000000007",
+        "catalog": "stone-bench",
+        "x": 0.79,
+        "y": 0.84,
+        "scale": 0.17,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8002-000000000008",
+        "catalog": "flower-urn",
+        "x": 0.88,
+        "y": 0.86,
+        "scale": 0.09,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      }
+    ]
+  },
+  "tavern": {
+    "scene": "tavern",
+    "placements": [
+      {
+        "id": "11500000-0000-4000-8003-000000000001",
+        "catalog": "banquet-table",
+        "x": 0.29,
+        "y": 0.85,
+        "scale": 0.2,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8003-000000000002",
+        "catalog": "bench",
+        "x": 0.28,
+        "y": 0.93,
+        "scale": 0.18,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8003-000000000003",
+        "catalog": "ale-barrel",
+        "x": 0.15,
+        "y": 0.84,
+        "scale": 0.09,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8003-000000000004",
+        "catalog": "iron-lantern",
+        "x": 0.41,
+        "y": 0.79,
+        "scale": 0.055,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8003-000000000005",
+        "catalog": "round-hearth-table",
+        "x": 0.64,
+        "y": 0.85,
+        "scale": 0.17,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      },
+      {
+        "id": "11500000-0000-4000-8003-000000000006",
+        "catalog": "chair",
+        "x": 0.56,
+        "y": 0.91,
+        "scale": 0.095,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8003-000000000007",
+        "catalog": "chair",
+        "x": 0.75,
+        "y": 0.9,
+        "scale": 0.095,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 3
+      },
+      {
+        "id": "11500000-0000-4000-8003-000000000008",
+        "catalog": "plant",
+        "x": 0.83,
+        "y": 0.83,
+        "scale": 0.1,
+        "facing": 1,
+        "rotation": 0,
+        "layer": 4
+      }
+    ]
+  }
+}

@@ -13,7 +13,11 @@ export function RpPersonalScene({
   stage,
   refresh,
   notice,
+  panelTarget,
+  showPanel,
 }: {
+  panelTarget: HTMLDivElement | null;
+  showPanel: () => void;
   room: RpState | null;
   characterId: string;
   userId: string;
@@ -21,8 +25,7 @@ export function RpPersonalScene({
   refresh: () => Promise<void>;
   notice: (s: string) => void;
 }) {
-  const [open, setOpen] = useState(false),
-    [sources, setSources] = useState<Source[]>([]),
+  const [sources, setSources] = useState<Source[]>([]),
     [items, setItems] = useState<RpSceneItem[]>([]),
     [selected, setSelected] = useState(''),
     [busy, setBusy] = useState(false);
@@ -69,12 +72,8 @@ export function RpPersonalScene({
   }
   function add(kind: 'prop' | 'pet' | 'mount', id: string, x = 0.5, y = 0.84) {
     if (busy || !own || !room) return;
-    if (
-      kind === 'prop' &&
-      (room.kind === 'fixed' || !room.is_owner) &&
-      items.filter((i) => i.kind === 'prop').length >= 4
-    ) {
-      notice('Você já colocou os 4 itens permitidos. Retire uma peça para trocar.');
+    if (kind === 'prop' && room.kind === 'fixed') {
+      notice('Lobbies públicos permitem apenas personagens, pets e montarias.');
       return;
     }
     if (kind !== 'prop' && items.some((i) => i.wardrobe_id === id)) return;
@@ -126,36 +125,36 @@ export function RpPersonalScene({
   }, [sources, items, own, busy]);
   const all =
     room?.presence.flatMap((p) =>
-      (p.user_id === userId ? items : p.scene_items || []).map((i) => ({
-        ...i,
-        controller: p.user_id,
-      })),
+      (p.user_id === userId ? items : p.scene_items || [])
+        .filter((i) => room.kind !== 'fixed' || i.kind !== 'prop')
+        .map((i) => ({
+          ...i,
+          controller: p.user_id,
+        })),
     ) || [];
   return (
     <>
-      <div className="rp-personal-tools">
-        <button onClick={() => setOpen(!open)}>Meus itens, pets e montarias</button>
-        {open && (
-          <aside className="rp-personal-panel" aria-label="Meus itens e acompanhantes">
-            <button onClick={() => setOpen(false)}>Fechar</button>
-            <p>
-              {room?.kind === 'temporary' && room.is_owner
-                ? 'Sala privada: mobília sem limite.'
-                : 'Até 4 itens por jogador. Pets e montarias não contam nesse limite.'}
-            </p>
+      {panelTarget &&
+        createPortal(
+          <section
+            className="rp-character-companions"
+            aria-label="Pets, montarias e itens do personagem"
+          >
             {!own ? (
               <p>Entre na sala com seu personagem.</p>
             ) : (
               <>
-                <ItemPicker
-                  disabled={busy}
-                  items={rpDecor.map((i) => ({
-                    id: i.id,
-                    name: i.name,
-                    image: houseItemImage(i.id, houseDefaultFacing(i.id)),
-                  }))}
-                  onPick={(id) => add('prop', id)}
-                />
+                {room?.kind !== 'fixed' && (
+                  <ItemPicker
+                    disabled={busy}
+                    items={rpDecor.map((i) => ({
+                      id: i.id,
+                      name: i.name,
+                      image: houseItemImage(i.id, houseDefaultFacing(i.id)),
+                    }))}
+                    onPick={(id) => add('prop', id)}
+                  />
+                )}
                 <h3>Pets e montarias</h3>
                 {sources.map((s) => (
                   <div
@@ -242,9 +241,9 @@ export function RpPersonalScene({
                 )}
               </>
             )}
-          </aside>
+          </section>,
+          panelTarget,
         )}
-      </div>
       {stage.current &&
         createPortal(
           all.map((i) => (
@@ -263,7 +262,7 @@ export function RpPersonalScene({
               onClick={() => {
                 if (i.controller === userId) {
                   setSelected(i.id);
-                  setOpen(true);
+                  showPanel();
                 }
               }}
               onPointerDown={(e) => {

@@ -62,6 +62,7 @@ export function RPLobby({
     [chat, setChat] = useState(() => innerWidth > 700),
     [message, setMessage] = useState('');
   const [chatActive, setChatActive] = useState(false);
+  const [companionPanel, setCompanionPanel] = useState<HTMLDivElement | null>(null);
   const selfRef = useRef(self),
     dirtyRef = useRef(dirty),
     draftRef = useRef(draft),
@@ -1014,6 +1015,7 @@ export function RPLobby({
               >
                 Virar personagem
               </button>
+              <div ref={setCompanionPanel} />
             </>
           )}
         </aside>
@@ -1025,6 +1027,8 @@ export function RPLobby({
         stage={stage}
         refresh={() => refreshRoom()}
         notice={setNotice}
+        panelTarget={companionPanel}
+        showPanel={() => setPanel('character')}
       />
       {chat && (
         <section
