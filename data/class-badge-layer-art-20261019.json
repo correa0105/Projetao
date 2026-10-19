@@ -47,14 +47,25 @@
     },
     {
       "id": "core-fighter-5",
-      "prompt": "Use case: precise-object-edit. Create a separate foreground CORE layer from this exact RPG emblem. REMOVE BOTH CROSSED SWORDS COMPLETELY: erase both upper grips, pommels, guards, all silver blade segments near the helmet and both bottom sword tips. No sword or fragment of a sword may remain anywhere. Preserve the central helmet, shield, red fabric, laurels, crown (if present), decorative frame and all nonweapon details, painterly style and colors. Restore shield/frame/cloth naturally where a sword overlapped it, transparent where outside silhouette. Do not replace weapons. This will be composited IN FRONT OF separate complete swords in the application. Keep composition centered, same framing, square canvas with TRUE alpha transparency. No text. ONLY shield/helmet/ornamental core; no weapons, no handles.",
-      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-54b9ff4e-0843-4352-99d1-4c28bfc17aab.png",
-      "url": "/sheet/badge-parts-20261019/core-fighter-5.webp",
-      "sourceSha256": "754ee7d762c80d0b411f917030bee249bd004711b9e68ab440237ec79e40e177",
-      "sha256": "d6dc3f9699ae14c964021fe250508c9a20a266af3627d45a415281a2ff792371",
+      "prompt": "Use case: precise-object-edit / premium fantasy game insignia. Image1 is the approved FOURTH-tier fighter badge and is the DESIGN FOUNDATION. Image2 is the existing fifth-tier badge which feels weaker and must be replaced. Create ONE new FINAL FIFTH-TIER FIGHTER badge CORE that is visibly a superior evolution of image1, with the SAME excellent broad powerful helmet design and painterly material quality. Keep image1's substantial front-facing closed silver greathelm, imposing gold brow and center ridge, black visor slit, rich red crest/plume and steel/gold/red palette. Upgrade it into a legendary martial champion insignia: a prominent sculpted gold crown with THREE tall spearpoint-shaped finials and deep ruby gemstones above the helmet, coherent thick gilded shield frame with layered engraved steel inlays, a fuller balanced silver-and-gold laurel wreath, rich crimson velvet drapery with restrained gold edging and substantial red ruby accents. The HELMET remains the dominant large central object, at least as visually substantial as image1; do not shrink it behind an oversized frame. Crown must be bolder and more prestigious than image1, not just one little round jewel as image2. Add sophisticated sculptural engraving/inlays while retaining clean broad forms readable at 124px. One strong coherent symmetrical silhouette, high-quality hand-painted fantasy RPG UI art, believable dimensional metal, controlled contrast, polished silver and warm gold highlights, refined and regal rather than cluttered. Clear progression beyond image1, NOT a recolor or weaker copy. Keep image1's wide strong composition and full-face helmet identity while giving this last tier distinctly richer construction. NO wings, no skulls, no animal heads, no extra central icons, no text, numbers or watermark. IMPORTANT: this is ONLY the shield/helmet/crown/laurel/drapery foreground CORE. NO SWORDS, no blade fragments, no handles or weapons anywhere; the two complete crossed swords already exist in separate UI layers BEHIND it. Square composition, entire silhouette fully visible with 5% clear outer padding, real alpha transparent background, no scene or ground.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-6af29610-555b-4ab0-b767-3eb418b5dde5.png",
+      "url": "/sheet/badge-parts-20261019/core-fighter-5-final-v2.webp",
+      "sourceSha256": "fb8f9c8e1320dee6afa2acbdeb24d9b0a9e2f725088206e22abc53c3151e3921",
+      "sha256": "c28a3ecd89c6c15d8dd07c583af4d68a492f4da9f7bccad893407865a49e3ad1",
       "width": 640,
       "height": 640,
-      "bytes": 133226
+      "bytes": 163424,
+      "previousVersions": [
+        {
+          "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-54b9ff4e-0843-4352-99d1-4c28bfc17aab.png",
+          "prompt": "Use case: precise-object-edit. Create a separate foreground CORE layer from this exact RPG emblem. REMOVE BOTH CROSSED SWORDS COMPLETELY: erase both upper grips, pommels, guards, all silver blade segments near the helmet and both bottom sword tips. No sword or fragment of a sword may remain anywhere. Preserve the central helmet, shield, red fabric, laurels, crown (if present), decorative frame and all nonweapon details, painterly style and colors. Restore shield/frame/cloth naturally where a sword overlapped it, transparent where outside silhouette. Do not replace weapons. This will be composited IN FRONT OF separate complete swords in the application. Keep composition centered, same framing, square canvas with TRUE alpha transparency. No text. ONLY shield/helmet/ornamental core; no weapons, no handles.",
+          "url": "/sheet/badge-parts-20261019/core-fighter-5.webp",
+          "sourceSha256": "754ee7d762c80d0b411f917030bee249bd004711b9e68ab440237ec79e40e177",
+          "sha256": "d6dc3f9699ae14c964021fe250508c9a20a266af3627d45a415281a2ff792371"
+        }
+      ],
+      "fileName": "core-fighter-5-final-v2.webp",
+      "revision": "Final fighter tier evolved from tier four, 2026-10-19"
     },
     {
       "id": "sword",

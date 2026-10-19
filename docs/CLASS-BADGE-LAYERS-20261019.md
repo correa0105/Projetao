@@ -19,3 +19,13 @@ As quatro cabeças do Bárbaro (estágios 2–5) e as cinco do Hunter/Patrulheir
 As nove novas imagens estão em `public/sheet/badge-parts-20261019/core-{barbarian,ranger}-*-wolf-v2.webp`; nomes novos evitam reutilizar a imagem anterior em cache. Prompts completos, fontes, hashes e versões anteriores ficam em `data/class-badge-layer-art-20261019.json`. O preparo respeita o nome versionado e reutiliza camadas cujos hashes já foram conferidos. Comparação de manifests confirma que somente esses nove núcleos mudaram; as outras 37 camadas permanecem iguais.
 
 Revisão visual das nove montagens, 260 estados de nível, carregamento/transformações, TypeScript e build aprovados. Prévia em `test-results/class-badge-layers/wolf-refit.png`. Publicação `wolf-refit-20261019` saudável: 202 arquivos conferidos por hash/HTTP, 16.509 arquivos anteriores preservados, servidor idêntico e nenhuma tabela alterada. Resultado em `test-results/class-badge-layers/wolf-deployment.json`.
+
+## Guerreiro — estágio final
+
+O quinto estágio foi refeito a partir do desenho do quarto: elmo fechado de prata e ouro, coroa de três pontas mais alta com rubis, relevos gravados na moldura, louros mais elaborados e tecido carmesim com bordas douradas. Mantém as duas espadas completas nas camadas anteriores. Somente o núcleo `core-fighter-5` mudou; as outras 45 camadas conservaram os hashes.
+
+Arquivo final: `public/sheet/badge-parts-20261019/core-fighter-5-final-v2.webp`. Geração/edição pelo ImageGen embutido; prompt completo, fonte nativa, hashes e versão anterior em `data/class-badge-layer-art-20261019.json`. Comparação do quarto e quinto estágios em tamanho ampliado e real em `test-results/class-badge-layers/fighter-final.png`.
+
+Carregamento dos 260 estados e transformações das camadas, revisão visual e build do cliente aprovados. Publicação `fighter-final-20261019` saudável: 202 arquivos por hash/HTTP e 16.544 arquivos anteriores preservados, servidor idêntico. A comparação registrou somente alterações operacionais em `character_art_worker` e `session`, correspondentes à recuperação do ilustrador e à consulta autenticada; dados de jogo preservados. Resultado em `test-results/class-badge-layers/fighter-final-deployment.json`.
+
+Na mesma retomada, o ilustrador estava sem processo ativo e com heartbeat vencido. Supervisor `scripts/keep-illustrator.ps1` reativado em segundo plano, com worker único e reinício supervisionado. Login validado pelo worker, heartbeat recente e `GET /api/character-art` autenticado retornando HTTP 200 com `available=true`. Nenhuma geração estava pendente; não foi disparada uma geração de teste. A interface consulta disponibilidade a cada quatro segundos.
