@@ -139,6 +139,8 @@ export function Guilds({
     setG(null);
     setDoc(null);
     setFounding(false);
+    setEstateFocusRequest(0);
+    setEstateEditRequest(0);
     setCrestDraft(null);
     setPanel(null);
     setCharacter(activeCharacterId || characters[0]?.id || '');
@@ -150,6 +152,8 @@ export function Guilds({
       setCrestDraft(null);
       setG(null);
       setRoom('main');
+      setEstateFocusRequest(0);
+      setEstateEditRequest(0);
       setPanel(null);
     };
     window.addEventListener('hashchange', fn);
@@ -570,6 +574,7 @@ export function Guilds({
                             foundation: 'Fundação',
                             weekly: 'Missão semanal',
                             upgrade: 'Melhoria de objeto',
+                            furniture: 'Compra de mobília',
                           }[l.kind] || l.kind}{' '}
                           · {Number(l.amount_cp) / 100} PO ·{' '}
                           {new Date(l.created_at).toLocaleDateString('pt-BR')}

@@ -11,7 +11,11 @@ import {
   guildFacilityCost,
   guildFacilityMaxLevel,
 } from '../shared/guild-facilities.js';
-import { guildEstateSchema, defaultGuildEstate } from '../shared/guild-estate.js';
+import {
+  guildEstateSchema,
+  defaultGuildEstate,
+  guildEstateFurnitureCatalog,
+} from '../shared/guild-estate.js';
 import {
   communitySettingsSchema,
   guildDocumentSchema,
@@ -38,7 +42,7 @@ async function reserveName(db: PoolClient, name: string, id?: string) {
     throw new AppError(409, 'Uma guilda já usa este nome.');
 }
 function initialDecor(doc: z.infer<typeof guildDocumentSchema>) {
-  return { ...doc, placements: [], estate: doc.estate || defaultGuildEstate() };
+  return { ...doc, placements: [], estate: defaultGuildEstate() };
 }
 export async function communitySettings(db: Pick<PoolClient, 'query'> = pool) {
   const {
@@ -298,7 +302,7 @@ export function guildsRouter() {
     res.json(
       await transaction(async (db) => {
         const g = await guild(db, id, res.locals.user.id, true, res.locals.guildCharacterId);
-        const document = { ...input.document, estate: input.document.estate ?? g.document.estate };
+        const document = { ...input.document, estate: g.document.estate };
         checkRooms(document, g.prestige, (await communitySettings(db)).document);
         if (g.revision !== input.revision)
           throw new AppError(409, 'A sede mudou. Reabra antes de salvar.');
@@ -324,6 +328,17 @@ export function guildsRouter() {
         const g = await guild(db, id, res.locals.user.id, true, res.locals.guildCharacterId);
         if (g.revision !== input.revision)
           throw new AppError(409, 'A sede mudou. Recarregue antes de salvar a posição dos itens.');
+        const owned = guildEstateSchema.parse(g.document.estate || defaultGuildEstate()).furniture;
+        if (
+          owned.length !== input.estate.furniture.length ||
+          owned.some(
+            (i) => !input.estate.furniture.some((n) => n.id === i.id && n.catalog === i.catalog),
+          )
+        )
+          throw new AppError(
+            409,
+            'O acervo da guilda mudou. Recarregue antes de salvar; novos móveis devem ser comprados na loja.',
+          );
         const {
           rows: [saved],
         } = await db.query(
@@ -331,6 +346,55 @@ export function guildsRouter() {
           [id, JSON.stringify(input.estate)],
         );
         return saved;
+      }),
+    );
+  });
+  router.post('/guilds/:id/estate/furniture', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      b = z.object({ catalog_id: z.string(), request_id: uuid }).strict().parse(req.body);
+    const catalog = guildEstateFurnitureCatalog.find((f) => f.id === b.catalog_id);
+    if (!catalog) throw new AppError(400, 'Móvel não disponível na loja da sede.');
+    res.json(
+      await transaction(async (db) => {
+        const g = await guild(db, id, res.locals.user.id, true, res.locals.guildCharacterId),
+          estate = guildEstateSchema.parse(g.document.estate || defaultGuildEstate());
+        const {
+          rows: [previous],
+        } = await db.query(
+          "SELECT reference FROM player_guild_ledger WHERE guild_id=$1 AND kind='furniture' AND reference LIKE $2",
+          [id, b.request_id + ':%'],
+        );
+        if (previous) {
+          const parts = previous.reference.split(':');
+          if (parts[1] !== b.catalog_id)
+            throw new AppError(409, 'Este pedido já foi usado para outro móvel.');
+          return { estate, revision: g.revision, item_id: parts[2], replayed: true };
+        }
+        if (estate.furniture.length >= 120)
+          throw new AppError(409, 'O acervo da sede já contém 120 móveis.');
+        const cost = catalog.price * 100;
+        if (Number(g.treasury_cp) < cost)
+          throw new AppError(409, 'O tesouro da guilda não cobre este móvel.');
+        const item = {
+          id: randomUUID(),
+          catalog: catalog.id,
+          x: null,
+          y: null,
+          rotation: 0 as const,
+          scale: 1,
+        };
+        estate.furniture.push(item);
+        const {
+          rows: [saved],
+        } = await db.query(
+          "UPDATE player_guilds SET document=jsonb_set(document,'{estate}',$2::jsonb),treasury_cp=treasury_cp-$3,revision=revision+1 WHERE id=$1 RETURNING revision",
+          [id, JSON.stringify(estate), cost],
+        );
+        await db.query(
+          "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference) VALUES($1,$2,'furniture',$3,$4)",
+          [id, res.locals.user.id, -cost, b.request_id + ':' + catalog.id + ':' + item.id],
+        );
+        return { estate, revision: saved.revision, item_id: item.id, replayed: false };
       }),
     );
   });

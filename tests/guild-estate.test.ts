@@ -1,7 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
-import { defaultGuildEstate, guildEstateSchema, guildEstateItemRoom } from '../shared/guild-estate';
+import {
+  defaultGuildEstate,
+  guildEstateSchema,
+  guildEstateItemRoom,
+  guildEstateFurnitureCatalog,
+} from '../shared/guild-estate';
 import { communitySettingsSchema, crestSchema } from '../shared/guilds';
 import { pool } from '../server/db';
 import { migrate } from '../server/migrate';
@@ -190,6 +195,119 @@ test('API da sede conserva broche/economia, protege o dono e salva posições co
     g = (await request('/guilds/' + id, owner)).data;
     assert.equal(g.document.crest.icon, 'tree');
     assert.equal(g.facilities[0].level, 2);
+    const catalog = guildEstateFurnitureCatalog.find((f) => f.id === 'furniture-004')!,
+      key = randomUUID();
+    await pool.query('UPDATE player_guilds SET treasury_cp=100000 WHERE id=$1', [id]);
+    const purchases = await Promise.all(
+      [1, 2].map(() =>
+        request(`/guilds/${id}/estate/furniture`, owner, 'POST', {
+          catalog_id: catalog.id,
+          request_id: key,
+        }),
+      ),
+    );
+    assert(purchases.every((r) => r.status === 200));
+    assert.equal(purchases[0].data.item_id, purchases[1].data.item_id);
+    g = (await request('/guilds/' + id, owner)).data;
+    assert.equal(g.treasury_cp, 100000 - catalog.price * 100);
+    assert.equal(g.document.estate.furniture.length, 1);
+    assert.equal(g.document.estate.furniture[0].x, null);
+    assert.equal(
+      (
+        await pool.query(
+          "SELECT count(*)::int n FROM player_guild_ledger WHERE guild_id=$1 AND kind='furniture'",
+          [id],
+        )
+      ).rows[0].n,
+      1,
+    );
+    assert.equal(
+      (
+        await request(`/guilds/${id}/estate/furniture`, other, 'POST', {
+          catalog_id: catalog.id,
+          request_id: randomUUID(),
+        })
+      ).status,
+      403,
+    );
+    assert.equal(
+      (
+        await request(`/guilds/${id}/estate/furniture`, owner, 'POST', {
+          catalog_id: 'furniture-005',
+          request_id: key,
+        })
+      ).status,
+      409,
+    );
+    const edited = structuredClone(g.document.estate);
+    edited.furniture[0].x = 23.5;
+    edited.furniture[0].y = 19;
+    edited.finishes = { roof: 'red', floor: 'pine', walls: 'brick', trees: true };
+    assert.equal(
+      (
+        await request(`/guilds/${id}/estate`, owner, 'PATCH', {
+          estate: edited,
+          revision: g.revision,
+        })
+      ).status,
+      200,
+    );
+    g = (await request('/guilds/' + id, owner)).data;
+    assert.deepEqual(g.document.estate, edited);
+    const forged = structuredClone(edited);
+    forged.furniture.push({ ...forged.furniture[0], id: randomUUID(), x: null, y: null });
+    assert.equal(
+      (
+        await request(`/guilds/${id}/estate`, owner, 'PATCH', {
+          estate: forged,
+          revision: g.revision,
+        })
+      ).status,
+      409,
+    );
+    assert.equal(
+      (
+        await request(`/guilds/${id}`, owner, 'PUT', {
+          document: { ...g.document, estate: forged },
+          revision: g.revision,
+        })
+      ).status,
+      200,
+    );
+    g = (await request('/guilds/' + id, owner)).data;
+    assert.equal(g.document.estate.furniture.length, 1);
+    assert.equal(g.document.crest.icon, 'tree');
+    const stored = structuredClone(g.document.estate);
+    stored.furniture[0].x = null;
+    stored.furniture[0].y = null;
+    assert.equal(
+      (
+        await request(`/guilds/${id}/estate`, owner, 'PATCH', {
+          estate: stored,
+          revision: g.revision,
+        })
+      ).status,
+      200,
+    );
+    await pool.query('UPDATE player_guilds SET treasury_cp=0 WHERE id=$1', [id]);
+    assert.equal(
+      (
+        await request(`/guilds/${id}/estate/furniture`, owner, 'POST', {
+          catalog_id: catalog.id,
+          request_id: randomUUID(),
+        })
+      ).status,
+      409,
+    );
+    assert.equal(
+      (
+        await request(`/guilds/${id}/estate/furniture`, owner, 'POST', {
+          catalog_id: 'fake',
+          request_id: randomUUID(),
+        })
+      ).status,
+      400,
+    );
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
     await pool.end();

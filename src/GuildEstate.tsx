@@ -1,5 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
-import { Home, LandPlot, Minus, Plus, Move, RotateCw, Save, Undo2, Grid2X2 } from 'lucide-react';
+import {
+  Home,
+  LandPlot,
+  Minus,
+  Plus,
+  Move,
+  RotateCw,
+  Save,
+  Undo2,
+  Grid2X2,
+  ShoppingBasket,
+  Paintbrush,
+  Archive,
+} from 'lucide-react';
+import { GuildEstateScenery } from './GuildEstateScenery';
+import { GuildEstateShop } from './GuildEstateShop';
+import { GuildEstateFurnitureLayer } from './GuildEstateFurnitureLayer';
 import {
   defaultGuildEstate,
   guildEstateHouse,
@@ -10,6 +26,11 @@ import {
   guildEstateItemSize,
   guildEstateItemRoom,
   guildEstateSchema,
+  guildEstateFurnitureCatalog,
+  guildEstateFurnitureRoom,
+  guildEstateFurnitureSize,
+  guildEstateFurnitureFlat,
+  guildEstateFinishes,
   type GuildEstateLayout,
   type GuildEstateItemId,
 } from '../shared/guild-estate';
@@ -43,16 +64,19 @@ export function GuildEstate(p: Props) {
     [grid, setGrid] = useState(false),
     [editing, setEditing] = useState(false);
   const [layout, setLayout] = useState<GuildEstateLayout>(() =>
-    structuredClone(p.estate || defaultGuildEstate()),
+    guildEstateSchema.parse(p.estate || defaultGuildEstate()),
   );
-  const [selected, setSelected] = useState<GuildEstateItemId | null>(null),
+  const [selected, setSelected] = useState<string | null>(null),
     [detail, setDetail] = useState<GuildEstateItemId | null>(null);
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
     [notice, setNotice] = useState('');
+  const [shop, setShop] = useState(false),
+    [placing, setPlacing] = useState<string | null>(null);
+  const purchaseKeys = useRef<Record<string, string>>({});
   const gesture = useRef<{
     pointer: number;
-    id?: GuildEstateItemId;
+    id?: string;
     clientX: number;
     clientY: number;
     x: number;
@@ -60,7 +84,9 @@ export function GuildEstate(p: Props) {
     camera: Camera;
   } | null>(null);
   const editRevision = useRef(p.revision);
-  const dirty = JSON.stringify(layout) !== JSON.stringify(p.estate || defaultGuildEstate());
+  const dirty =
+    JSON.stringify(layout) !==
+    JSON.stringify(guildEstateSchema.parse(p.estate || defaultGuildEstate()));
   const url = (path: string) =>
     path + (p.characterId ? '?character_id=' + encodeURIComponent(p.characterId) : '');
   useEffect(() => {
@@ -74,10 +100,10 @@ export function GuildEstate(p: Props) {
     return () => o.disconnect();
   }, []);
   useEffect(() => {
-    if (roof) setCamera({ x: 30, y: 25, width: Math.max(60, 50 * ratio) });
+    if (roof) setCamera({ x: 30, y: 25, width: Math.max(46, 34 * ratio) });
   }, [ratio]);
   useEffect(() => {
-    if (!editing) setLayout(structuredClone(p.estate || defaultGuildEstate()));
+    if (!editing) setLayout(guildEstateSchema.parse(p.estate || defaultGuildEstate()));
   }, [p.estate, p.revision, editing]);
   function focus(room?: string) {
     setRoof(false);
@@ -92,13 +118,7 @@ export function GuildEstate(p: Props) {
     if (p.focusRequest) focus(p.focusRoom);
   }, [p.focusRequest]);
   useEffect(() => {
-    if (p.editRequest && p.owner) {
-      editRevision.current = p.revision;
-      setEditing(true);
-      setError('');
-      setNotice('');
-      focus();
-    }
+    if (p.editRequest && p.owner) beginEdit();
   }, [p.editRequest, p.owner]);
   function bounded(c: Camera) {
     const width = Math.max(8, Math.min(85, c.width)),
@@ -117,11 +137,12 @@ export function GuildEstate(p: Props) {
     const matrix = node.getScreenCTM();
     return matrix ? q.matrixTransform(matrix.inverse()) : { x: 30, y: 25 };
   }
-  function change(id: GuildEstateItemId, values: Partial<GuildEstateLayout['items'][number]>) {
-    if(busy||!p.owner)return false;
+  function change(id: string, values: Record<string, unknown>) {
+    if (busy || !p.owner) return false;
     const next = {
       ...layout,
       items: layout.items.map((i) => (i.id === id ? { ...i, ...values } : i)),
+      furniture: layout.furniture.map((i) => (i.id === id ? { ...i, ...values } : i)),
     };
     if (guildEstateSchema.safeParse(next).success) {
       setLayout(next);
@@ -133,6 +154,61 @@ export function GuildEstate(p: Props) {
   }
   function zoom(factor: number) {
     setCamera((c) => bounded({ ...c, width: c.width * factor }));
+  }
+  function beginEdit() {
+    if (!p.owner || busy) return;
+    if (!editing) {
+      editRevision.current = p.revision;
+      setLayout(guildEstateSchema.parse(p.estate || defaultGuildEstate()));
+    }
+    setEditing(true);
+    setShop(false);
+    setError('');
+    setNotice('');
+    focus();
+  }
+  function openShop() {
+    if (busy) return;
+    if (dirty) {
+      setError('Salve ou cancele a edição antes de abrir a loja.');
+      return;
+    }
+    setError('');
+    setShop(true);
+  }
+  function placeFurniture(id: string, next = layout, revision = p.revision) {
+    setLayout(guildEstateSchema.parse(next));
+    editRevision.current = revision;
+    setShop(false);
+    setEditing(true);
+    setSelected(id);
+    const item = next.furniture.find((i) => i.id === id);
+    setPlacing(item?.x === null ? id : null);
+    focus(item && item.x !== null ? guildEstateFurnitureRoom(item)?.id : undefined);
+    setNotice(
+      item?.x === null
+        ? 'Clique no piso de um cômodo para colocar o móvel.'
+        : 'Arraste o móvel para reposicionar.',
+    );
+  }
+  async function buy(catalog: string) {
+    setBusy(true);
+    setError('');
+    const key = purchaseKeys.current[catalog] || crypto.randomUUID();
+    purchaseKeys.current[catalog] = key;
+    try {
+      const r = await post<{ estate: GuildEstateLayout; revision: number; item_id: string }>(
+        url('/guilds/' + p.guildId + '/estate/furniture'),
+        { catalog_id: catalog, request_id: key },
+      );
+      delete purchaseKeys.current[catalog];
+      await p.changed();
+      placeFurniture(r.item_id, r.estate, r.revision);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
   }
   useEffect(() => {
     const node = svg.current;
@@ -162,20 +238,26 @@ export function GuildEstate(p: Props) {
       });
       await p.changed();
       setEditing(false);
-      setNotice('Posições dos quatro itens salvas.');
+      setNotice('Sede, móveis e acabamentos salvos.');
     } catch (e) {
       setError((e as Error).message);
     } finally {
       setBusy(false);
     }
   }
-  const chosen = layout.items.find((i) => i.id === selected),
+  const chosen =
+      layout.items.find((i) => i.id === selected) ||
+      layout.furniture.find((i) => i.id === selected),
     definition = guildEstateItems.find((i) => i.id === detail),
     level = p.levels.find((i) => i.room === detail)?.level || 1;
   const h = guildEstateHouse,
     height = camera.width / ratio;
   const wallPaths =
-    'M21 17H39V31H26.9 M25.3 31H21V17 M30 17V19.8 M30 21.2V26.8 M30 28.2V31 M21 24H24.8 M26.2 24H33.8 M35.2 24H39';
+    'M21 17H39V31H30.8 M29.2 31H21V17 M30 17V19.8 M30 21.2V26.8 M30 28.2V29.2 M21 24H24.8 M26.2 24H33.8 M35.2 24H39';
+  const finishes = layout.finishes,
+    roofArt = guildEstateFinishes.roof.find((f) => f.id === finishes.roof)!,
+    floorArt = guildEstateFinishes.floor.find((f) => f.id === finishes.floor)!,
+    wallArt = guildEstateFinishes.walls.find((f) => f.id === finishes.walls)!;
   return (
     <div ref={stage} className="guild-estate" data-guild-estate="single-property">
       <svg
@@ -184,7 +266,15 @@ export function GuildEstate(p: Props) {
         viewBox={`${camera.x - camera.width / 2} ${camera.y - height / 2} ${camera.width} ${height}`}
         aria-label="Terreno da guilda com uma casa humilde de quatro cômodos"
         onPointerDown={(e) => {
-          if (e.button !== 0 || (e.target as Element).closest('[data-estate-interactive]')) return;
+          if (e.button !== 0) return;
+          if (placing && editing) {
+            const q = point(e.clientX, e.clientY);
+            if (change(placing, { x: Math.round(q.x * 4) / 4, y: Math.round(q.y * 4) / 4 }))
+              setPlacing(null);
+            e.preventDefault();
+            return;
+          }
+          if ((e.target as Element).closest('[data-estate-interactive]')) return;
           gesture.current = {
             pointer: e.pointerId,
             clientX: e.clientX,
@@ -225,6 +315,12 @@ export function GuildEstate(p: Props) {
         }}
       >
         <defs>
+          <pattern id="ge-paving" width="3" height="3" patternUnits="userSpaceOnUse">
+            <image href="/vtt/terrain-expansion-20261015/cobblestone.webp" width="3" height="3" />
+          </pattern>
+          <pattern id="ge-masonry" width="1.2" height="1.2" patternUnits="userSpaceOnUse">
+            <image href={wallArt.image} width="1.2" height="1.2" />
+          </pattern>
           <pattern id="ge-grass" width="8" height="8" patternUnits="userSpaceOnUse">
             <image
               href={house2Landscape}
@@ -237,7 +333,7 @@ export function GuildEstate(p: Props) {
             <image href="/vtt/terrain-v3-20261013/earth.webp" width="3" height="3" />
           </pattern>
           <pattern id="ge-floor" width="3.6" height="3.6" patternUnits="userSpaceOnUse">
-            <image href="/vtt/terrain-v3-20261013/wood.webp" width="3.6" height="3.6" />
+            <image href={floorArt.image} width="3.6" height="3.6" />
           </pattern>
           <pattern id="ge-grid" width="1" height="1" patternUnits="userSpaceOnUse">
             <path d="M1 0H0V1" fill="none" stroke="#e1d3aa" strokeWidth=".025" opacity=".32" />
@@ -267,35 +363,28 @@ export function GuildEstate(p: Props) {
           fill="#918350"
           opacity=".07"
         />
-        <path d="M26.1 45V31" stroke="url(#ge-earth)" strokeWidth="2.3" fill="none" />
-        <g aria-label="Limites do terreno" opacity=".85">
-          <path d="M7 45V5H53V45H28 M24.3 45H7" fill="none" stroke="#352b1d" strokeWidth=".25" />
-          <path
-            d="M7 5H53M7 45H24.3M28 45H53"
-            fill="none"
-            stroke="url(#ge-fence)"
-            strokeWidth=".9"
+        <GuildEstateScenery wooded={finishes.trees} />
+        <g data-guild-estate-house="stone-four-rooms" filter="url(#ge-shadow)">
+          <rect
+            x={h.x - 0.55}
+            y={h.y - 0.55}
+            width={h.width + 1.1}
+            height={h.height + 1.1}
+            fill="url(#ge-paving)"
+            rx=".25"
           />
-          {Array.from({ length: 17 }, (_, i) => (
-            <g key={i}>
-              <rect x="6.8" y={4.8 + i * 2.5} width=".4" height=".4" fill="#58402a" />
-              <rect x="52.8" y={4.8 + i * 2.5} width=".4" height=".4" fill="#58402a" />
-            </g>
-          ))}
-        </g>
-        <g data-guild-estate-house="humble-four-rooms" filter="url(#ge-shadow)">
           <rect x={h.x} y={h.y} width={h.width} height={h.height} fill="url(#ge-floor)" />
-          <rect x="30.4" y="17.4" width="8.2" height="6.2" fill="url(#ge-earth)" opacity=".38" />
+          <rect x="30.4" y="17.4" width="8.2" height="6.2" fill="url(#ge-paving)" opacity=".9" />
           <path
             d={wallPaths}
             fill="none"
-            stroke="#292016"
-            strokeWidth=".65"
+            stroke="#282624"
+            strokeWidth=".85"
             strokeLinejoin="miter"
           />
-          <path d={wallPaths} fill="none" stroke="#806141" strokeWidth=".36" />
+          <path d={wallPaths} fill="none" stroke="url(#ge-masonry)" strokeWidth=".62" />
           <path
-            d="M25.3 31V29.4M30 19.8H28.6M30 26.8H31.4M24.8 24V22.6M33.8 24V25.4"
+            d="M29.2 31V29.4M30 19.8H28.6M30 26.8H31.4M24.8 24V22.6M33.8 24V25.4"
             stroke="#70502e"
             strokeWidth=".14"
           />
@@ -316,6 +405,37 @@ export function GuildEstate(p: Props) {
                 {r.name}
               </text>
             ))}
+            <GuildEstateFurnitureLayer
+              items={layout.furniture}
+              selected={selected}
+              editing={editing}
+              change={change}
+              select={(id) => {
+                setSelected(id);
+                if (!editing && p.owner) {
+                  beginEdit();
+                  const i = layout.furniture.find((i) => i.id === id);
+                  if (i) focus(guildEstateFurnitureRoom(i)?.id);
+                }
+              }}
+              start={(i, e) => {
+                if (!editing || busy || !p.owner || e.button !== 0) return;
+                e.preventDefault();
+                e.stopPropagation();
+                setSelected(i.id);
+                const q = point(e.clientX, e.clientY);
+                gesture.current = {
+                  pointer: e.pointerId,
+                  id: i.id,
+                  clientX: e.clientX,
+                  clientY: e.clientY,
+                  x: q.x - i.x!,
+                  y: q.y - i.y!,
+                  camera,
+                };
+                svg.current?.setPointerCapture(e.pointerId);
+              }}
+            />
             {layout.items.map((i) => {
               const spec = guildEstateItems.find((f) => f.id === i.id)!,
                 art = guildEstateArt(i.id),
@@ -432,7 +552,7 @@ export function GuildEstate(p: Props) {
             }}
           >
             <image
-              href="/vtt/houses-empty-20261014/house-001-roof.webp"
+              href={roofArt.image}
               x="19.2"
               y="14.8"
               width="21.6"
@@ -449,6 +569,18 @@ export function GuildEstate(p: Props) {
           <rect x="7" y="5" width="46" height="40" fill="url(#ge-grid)" pointerEvents="none" />
         )}
       </svg>
+      {p.owner && (
+        <div className="guild-estate-ownerbar" aria-label="Ferramentas da sede">
+          <button type="button" onClick={beginEdit}>
+            <Paintbrush size={17} />
+            Editar sede
+          </button>
+          <button type="button" onClick={openShop}>
+            <ShoppingBasket size={17} />
+            Loja de móveis
+          </button>
+        </div>
+      )}
       <div className="guild-estate-controls" aria-label="Controles do terreno">
         <button
           type="button"
@@ -481,13 +613,14 @@ export function GuildEstate(p: Props) {
         </button>
       </div>
       {editing && (
-        <div className="guild-estate-editor" aria-label="Reposicionar instalações da guilda">
+        <div className="guild-estate-editor" aria-label="Editar sede e mobília">
           <h3>
             <Move size={16} />
-            Mobília da sede <small>4 itens</small>
+            Editar sede <small>{4 + layout.furniture.length} itens</small>
           </h3>
           <p>Selecione e arraste. Use as setas para ajustar e R para girar.</p>
           <select
+            disabled={busy}
             aria-label="Selecionar instalação"
             value={selected || ''}
             onChange={(e) => {
@@ -495,15 +628,105 @@ export function GuildEstate(p: Props) {
               setSelected(id);
               const i = layout.items.find((i) => i.id === id);
               if (i) focus(guildEstateItemRoom(i)?.id);
+              else {
+                const f = layout.furniture.find((i) => i.id === id);
+                if (f) focus(guildEstateFurnitureRoom(f)?.id);
+              }
             }}
           >
-            <option value="">Escolha um dos quatro itens</option>
+            <option value="">Selecione uma instalação ou móvel</option>
             {guildEstateItems.map((i) => (
               <option key={i.id} value={i.id}>
                 {i.name}
               </option>
             ))}
+            {layout.furniture.map((i) => (
+              <option key={i.id} value={i.id}>
+                {guildEstateFurnitureCatalog.find((f) => f.id === i.catalog)?.name}
+                {i.x === null ? ' · guardado' : ''}
+              </option>
+            ))}
           </select>
+          {chosen && 'catalog' in chosen && (
+            <div className="guild-estate-furniture-options">
+              <label>
+                Tamanho
+                <input
+                  aria-label="Tamanho do móvel"
+                  type="range"
+                  min=".5"
+                  max="2"
+                  step=".1"
+                  value={chosen.scale}
+                  onChange={(e) => change(chosen.id, { scale: Number(e.target.value) })}
+                />
+              </label>
+              {chosen.x === null ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPlacing(chosen.id);
+                    setNotice('Clique no piso do cômodo para colocar o móvel.');
+                  }}
+                >
+                  Colocar no cômodo
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    change(chosen.id, { x: null, y: null });
+                    setPlacing(null);
+                  }}
+                >
+                  <Archive size={14} />
+                  Guardar móvel
+                </button>
+              )}
+            </div>
+          )}
+          <details className="guild-estate-finishes">
+            <summary>Materiais da casa e jardim</summary>
+            {(['roof', 'floor', 'walls'] as const).map((kind) => (
+              <label key={kind}>
+                {{ roof: 'Telhado', floor: 'Piso', walls: 'Paredes' }[kind]}
+                <select
+                  disabled={busy}
+                  aria-label={
+                    {
+                      roof: 'Material do telhado',
+                      floor: 'Material do piso',
+                      walls: 'Material das paredes',
+                    }[kind]
+                  }
+                  value={finishes[kind]}
+                  onChange={(e) =>
+                    setLayout((l) => ({
+                      ...l,
+                      finishes: { ...l.finishes, [kind]: e.target.value },
+                    }))
+                  }
+                >
+                  {guildEstateFinishes[kind].map((f) => (
+                    <option key={f.id} value={f.id}>
+                      {f.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ))}
+            <label>
+              <input
+                type="checkbox"
+                disabled={busy}
+                checked={finishes.trees}
+                onChange={(e) =>
+                  setLayout((l) => ({ ...l, finishes: { ...l.finishes, trees: e.target.checked } }))
+                }
+              />
+              Árvores ao redor da sede
+            </label>
+          </details>
           <div>
             {chosen && (
               <button
@@ -527,8 +750,9 @@ export function GuildEstate(p: Props) {
               type="button"
               disabled={busy}
               onClick={() => {
-                setLayout(structuredClone(p.estate || defaultGuildEstate()));
+                setLayout(guildEstateSchema.parse(p.estate || defaultGuildEstate()));
                 setEditing(false);
+                setPlacing(null);
                 setError('');
               }}
             >
@@ -539,9 +763,7 @@ export function GuildEstate(p: Props) {
         </div>
       )}
       {!editing && !roof && (
-        <p className="guild-estate-hint">
-          Arraste o chão para explorar · clique em um dos quatro itens para evoluir
-        </p>
+        <p className="guild-estate-hint">Arraste para explorar · use Editar sede para decorar</p>
       )}
       {(error || notice) && (
         <p
@@ -550,6 +772,17 @@ export function GuildEstate(p: Props) {
         >
           {error || notice}
         </p>
+      )}
+      {shop && (
+        <GuildEstateShop
+          estate={layout}
+          treasury={p.treasury ?? 0}
+          busy={busy}
+          error={error}
+          close={() => setShop(false)}
+          buy={(catalog) => void buy(catalog)}
+          place={(id) => placeFurniture(id)}
+        />
       )}
       {definition && (
         <Modal title={definition.name + ' · nível ' + level} close={() => !busy && setDetail(null)}>
