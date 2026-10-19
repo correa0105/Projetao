@@ -1,7 +1,13 @@
 .sheet-rank-level.class-level-badge {
-  width: 102px;
-  height: 116px;
-  flex: 0 0 102px;
+  position: relative;
+  display: grid;
+  grid-template-rows: 116px 30px 10px;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  width: 132px;
+  height: 156px;
+  flex: 0 0 132px;
   border: 0;
   border-radius: 0;
   padding: 0;
@@ -9,35 +15,106 @@
   box-shadow: none;
   isolation: isolate;
 }
-.class-level-badge svg {
+.class-level-badge .level-badge-art {
+  display: block;
+  width: 124px;
+  height: 124px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 3px #0009);
+}
+.class-level-badge .level-badge-plaque {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  min-width: 66px;
+  padding: 0 9px 1px;
+  background: linear-gradient(
+    100deg,
+    #211e1700,
+    #29241be8 18%,
+    #191713f5 50%,
+    #29241be8 82%,
+    #211e1700
+  );
+  border-block: 1px solid #b8a17150;
+  color: #f4e6ca;
+  text-shadow: 0 2px 2px #000;
+}
+.class-level-badge .level-badge-layers {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+.level-badge-layers > img {
+  position: absolute;
+  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
-  overflow: visible;
-  filter: drop-shadow(0 3px 3px #000b);
+  object-fit: contain;
+  transform-origin: 50% 50%;
+}
+.level-badge-layers .level-badge-tool {
+  transform: rotate(var(--tool-angle)) scale(var(--tool-scale)) scaleX(var(--tool-width-scale));
+}
+.level-badge-layers .level-badge-core {
+  transform: scale(var(--core-scale));
+  filter: drop-shadow(0 2px 1px #0006);
 }
 .class-level-badge .level-badge-label {
   font:
-    8px 'DM Sans',
+    500 8px/1 'DM Sans',
     sans-serif;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #d5c4a3;
 }
-.class-level-badge .level-badge-number {
+.sheet-rank-level.class-level-badge .level-badge-number {
   font:
-    34px 'Marcellus',
+    400 26px/1.05 'Marcellus',
     Georgia,
     serif;
-  paint-order: stroke;
-  stroke: #19150e;
-  stroke-width: 0.6px;
+  color: #fff0d4;
 }
-.class-level-badge[data-tier='5'] svg {
-  filter: drop-shadow(0 3px 3px #000b) drop-shadow(0 0 3px #c4a76c30);
+.level-badge-milestones {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  padding-top: 3px;
+}
+.level-badge-milestones i {
+  display: block;
+  width: 5px;
+  height: 5px;
+  rotate: 45deg;
+  border: 1px solid #ab98745c;
+  background: #25221b;
+  box-shadow: inset 1px 1px 1px #0009;
+}
+.level-badge-milestones .is-filled {
+  border-color: #e3ce9b;
+  background: var(--badge-accent);
+  box-shadow:
+    inset 1px 1px #ffedbf80,
+    0 0 3px #e5c98638;
+}
+.class-level-badge[data-level='20'] .level-badge-art {
+  filter: drop-shadow(0 4px 3px #0009) drop-shadow(0 0 5px #c1a05a30);
 }
 @media (max-width: 600px) {
   .sheet-rank-level.class-level-badge {
-    width: 86px;
-    height: 98px;
-    flex-basis: 86px;
+    grid-template-rows: 94px 27px 10px;
+    width: 104px;
+    height: 131px;
+    flex-basis: 104px;
+  }
+  .class-level-badge .level-badge-art {
+    width: 102px;
+    height: 102px;
+  }
+  .sheet-rank-level.class-level-badge .level-badge-number {
+    font-size: 24px;
   }
 }

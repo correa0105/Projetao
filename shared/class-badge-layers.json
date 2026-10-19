@@ -1,0 +1,236 @@
+{
+  "fighter-1": {
+    "core": "/sheet/badge-parts-20261019/core-fighter-1.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/sword.webp",
+      "/sheet/badge-parts-20261019/sword.webp"
+    ]
+  },
+  "fighter-2": {
+    "core": "/sheet/badge-parts-20261019/core-fighter-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/sword.webp",
+      "/sheet/badge-parts-20261019/sword.webp"
+    ]
+  },
+  "fighter-3": {
+    "core": "/sheet/badge-parts-20261019/core-fighter-3.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/sword.webp",
+      "/sheet/badge-parts-20261019/sword.webp"
+    ]
+  },
+  "fighter-4": {
+    "core": "/sheet/badge-parts-20261019/core-fighter-4.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/sword.webp",
+      "/sheet/badge-parts-20261019/sword.webp"
+    ]
+  },
+  "fighter-5": {
+    "core": "/sheet/badge-parts-20261019/core-fighter-5.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/sword.webp",
+      "/sheet/badge-parts-20261019/sword.webp"
+    ]
+  },
+  "artificer-1": {
+    "core": "/sheet/badge-parts-20261019/core-artificer-1.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/hammer.webp",
+      "/sheet/badge-parts-20261019/wrench.webp"
+    ],
+    "toolScale": 1.1,
+    "toolWidthScale": 0.75
+  },
+  "artificer-2": {
+    "core": "/sheet/badge-parts-20261019/core-artificer-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/hammer.webp",
+      "/sheet/badge-parts-20261019/wrench.webp"
+    ],
+    "toolScale": 1.1,
+    "toolWidthScale": 0.75
+  },
+  "artificer-3": {
+    "core": "/sheet/badge-parts-20261019/core-artificer-3.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/hammer.webp",
+      "/sheet/badge-parts-20261019/wrench.webp"
+    ],
+    "toolScale": 1.1,
+    "toolWidthScale": 0.75
+  },
+  "artificer-5": {
+    "core": "/sheet/badge-parts-20261019/core-artificer-5.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/hammer.webp",
+      "/sheet/badge-parts-20261019/wrench.webp"
+    ],
+    "toolScale": 1.1,
+    "toolWidthScale": 0.75
+  },
+  "barbarian-1": {
+    "core": "/sheet/badge-parts-20261019/core-barbarian-1.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/axe.webp",
+      "/sheet/badge-parts-20261019/axe.webp"
+    ]
+  },
+  "barbarian-2": {
+    "core": "/sheet/badge-parts-20261019/core-barbarian-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/axe.webp",
+      "/sheet/badge-parts-20261019/axe.webp"
+    ]
+  },
+  "barbarian-3": {
+    "core": "/sheet/badge-parts-20261019/core-barbarian-3.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/axe.webp",
+      "/sheet/badge-parts-20261019/axe.webp"
+    ]
+  },
+  "barbarian-4": {
+    "core": "/sheet/badge-parts-20261019/core-barbarian-4.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/axe.webp",
+      "/sheet/badge-parts-20261019/axe.webp"
+    ]
+  },
+  "barbarian-5": {
+    "core": "/sheet/badge-parts-20261019/core-barbarian-5.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/axe.webp",
+      "/sheet/badge-parts-20261019/axe.webp"
+    ]
+  },
+  "warlock-2": {
+    "core": "/sheet/badge-parts-20261019/core-warlock-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/purple-staff.webp",
+      "/sheet/badge-parts-20261019/purple-staff.webp"
+    ]
+  },
+  "cleric-2": {
+    "core": "/sheet/badge-parts-20261019/core-cleric-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/holy-mace.webp",
+      "/sheet/badge-parts-20261019/holy-mace.webp"
+    ]
+  },
+  "druid-2": {
+    "core": "/sheet/badge-parts-20261019/core-druid-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/wood-staff.webp",
+      "/sheet/badge-parts-20261019/sickle.webp"
+    ]
+  },
+  "sorcerer-2": {
+    "core": "/sheet/badge-parts-20261019/core-sorcerer-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/fire-staff.webp",
+      "/sheet/badge-parts-20261019/fire-staff.webp"
+    ]
+  },
+  "rogue-1": {
+    "core": "/sheet/badge-parts-20261019/core-rogue-1.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/dagger.webp",
+      "/sheet/badge-parts-20261019/dagger.webp"
+    ]
+  },
+  "rogue-2": {
+    "core": "/sheet/badge-parts-20261019/core-rogue-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/dagger.webp",
+      "/sheet/badge-parts-20261019/dagger.webp"
+    ]
+  },
+  "rogue-3": {
+    "core": "/sheet/badge-parts-20261019/core-rogue-3.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/dagger.webp",
+      "/sheet/badge-parts-20261019/dagger.webp"
+    ]
+  },
+  "rogue-4": {
+    "core": "/sheet/badge-parts-20261019/core-rogue-4.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/dagger.webp",
+      "/sheet/badge-parts-20261019/dagger.webp"
+    ]
+  },
+  "rogue-5": {
+    "core": "/sheet/badge-parts-20261019/core-rogue-5.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/dagger.webp",
+      "/sheet/badge-parts-20261019/dagger.webp"
+    ]
+  },
+  "wizard-2": {
+    "core": "/sheet/badge-parts-20261019/core-wizard-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/blue-staff.webp",
+      "/sheet/badge-parts-20261019/blue-staff.webp"
+    ]
+  },
+  "monk-2": {
+    "core": "/sheet/badge-parts-20261019/core-monk-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/baton.webp",
+      "/sheet/badge-parts-20261019/baton.webp"
+    ]
+  },
+  "paladin-2": {
+    "core": "/sheet/badge-parts-20261019/core-paladin-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/warhammer.webp",
+      "/sheet/badge-parts-20261019/warhammer.webp"
+    ]
+  },
+  "ranger-1": {
+    "core": "/sheet/badge-parts-20261019/core-ranger-1.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/arrow.webp",
+      "/sheet/badge-parts-20261019/arrow.webp"
+    ]
+  },
+  "ranger-2": {
+    "core": "/sheet/badge-parts-20261019/core-ranger-2.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/arrow.webp",
+      "/sheet/badge-parts-20261019/arrow.webp"
+    ]
+  },
+  "ranger-3": {
+    "core": "/sheet/badge-parts-20261019/core-ranger-3.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/arrow.webp",
+      "/sheet/badge-parts-20261019/arrow.webp"
+    ]
+  },
+  "ranger-4": {
+    "core": "/sheet/badge-parts-20261019/core-ranger-4.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/arrow.webp",
+      "/sheet/badge-parts-20261019/arrow.webp"
+    ]
+  },
+  "ranger-5": {
+    "core": "/sheet/badge-parts-20261019/core-ranger-5.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/arrow.webp",
+      "/sheet/badge-parts-20261019/arrow.webp"
+    ]
+  },
+  "artificer-4": {
+    "core": "/sheet/badge-parts-20261019/core-artificer-4.webp",
+    "tools": [
+      "/sheet/badge-parts-20261019/hammer.webp",
+      "/sheet/badge-parts-20261019/wrench.webp"
+    ],
+    "toolScale": 1.1,
+    "toolWidthScale": 0.75
+  }
+}
