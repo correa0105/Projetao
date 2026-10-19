@@ -661,36 +661,53 @@ export function GuildEstate(p: Props) {
             );
           })()}
         {roof && (
-          <g
-            role="button"
-            tabIndex={0}
-            data-estate-interactive="roof"
-            aria-label="Entrar na sede da guilda"
-            className="guild-estate-roof"
-            onClick={() => focus()}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                focus();
-              }
-            }}
-          >
-            <image
-              href={roofArt.image}
-              x="20"
-              y="14.9"
-              width="20"
-              height="18.7"
-              preserveAspectRatio="none"
-              filter="url(#ge-shadow)"
-            />
-            <text x="30" y="33" textAnchor="middle" className="guild-estate-enter">
-              Entrar na sede
-            </text>
+          <g>
+            <g
+              role="button"
+              tabIndex={0}
+              data-estate-interactive="roof"
+              aria-label="Entrar na sede da guilda"
+              className="guild-estate-roof"
+              onClick={() => focus()}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  focus();
+                }
+              }}
+            >
+              <image
+                href={roofArt.image}
+                x="20"
+                y="14.9"
+                width="20"
+                height="18.7"
+                preserveAspectRatio="none"
+                filter="url(#ge-shadow)"
+              />
+            </g>
+            <g
+              role="button"
+              tabIndex={0}
+              data-estate-interactive="entry-action"
+              aria-label="Entrar na sede"
+              className="guild-estate-entry-action"
+              transform={`translate(30 34.2) scale(${camera.width / (stage.current?.clientWidth || 1000)})`}
+              onClick={() => focus()}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  focus();
+                }
+              }}
+            >
+              <rect x="-72" width="144" height="34" rx="5" />
+              <path d="M-54 24V10H-43V24M-49 17H-34M-38 13L-34 17-38 21" />
+              <text x="-24" y="17" dominantBaseline="middle">
+                Entrar na sede
+              </text>
+            </g>
           </g>
-        )}
-        {!roof && viewer && !editing && (
-          <GuildEstateVision at={viewer} openings={access.openings} />
         )}
         {!roof && (
           <GuildEstateDoors
@@ -699,10 +716,14 @@ export function GuildEstate(p: Props) {
             busy={access.busy}
             toggle={(id) => void access.toggle(id)}
             pixel={camera.width / (stage.current?.clientWidth || 1000)}
+            viewer={editing ? null : viewer}
           />
         )}
         {grid && (
           <rect x="7" y="5" width="46" height="40" fill="url(#ge-grid)" pointerEvents="none" />
+        )}
+        {!roof && viewer && !editing && (
+          <GuildEstateVision at={viewer} openings={access.openings} />
         )}
       </svg>
       <GuildEstateActors

@@ -53,14 +53,30 @@
   stroke-width: 0.05;
   pointer-events: none;
 }
-.guild-estate-enter {
-  font:
-    0.65px Georgia,
-    serif;
-  fill: #f2dfb4;
-  paint-order: stroke;
-  stroke: #1c2517;
-  stroke-width: 0.1;
+.guild-estate-entry-action {
+  cursor: pointer;
+  outline: none;
+}
+.guild-estate-entry-action rect {
+  fill: #20251ef2;
+  stroke: #a58c59;
+  stroke-width: 1;
+}
+.guild-estate-entry-action text {
+  font: 12px sans-serif;
+  fill: #e6d4ad;
+  pointer-events: none;
+}
+.guild-estate-entry-action path {
+  fill: none;
+  stroke: #dcc797;
+  stroke-width: 1.4;
+}
+.guild-estate-entry-action:hover rect,
+.guild-estate-entry-action:focus-visible rect {
+  fill: #353b2a;
+  stroke: #f1d594;
+  stroke-width: 2;
 }
 .guild-estate-roof:focus-visible image {
   filter: drop-shadow(0 0 0.2px #f3d486);

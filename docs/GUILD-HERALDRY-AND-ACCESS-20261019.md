@@ -15,15 +15,19 @@ Quatro portas têm folhas animadas; as duas janelas têm venezianas que abrem e 
 
 O estado das aberturas é compartilhado entre membros e armazenado em `player_guilds.document._estate_openings`, com bloqueio transacional. As rotas exigem membro/personagem correto, validam IDs e valores booleanos e preservam este estado nas demais edições da guilda. Não há migration nova nem alteração econômica para abrir e fechar.
 
+Revisão da entrada e da visão: removidos os dois canteiros circulares e o texto sobre o telhado. A ação Entrar na sede fica em um botão de tamanho constante abaixo da entrada, com mouse e teclado. Portas e venezianas são desenhadas antes da cobertura de visão; aberturas de cômodos ocultos não renderizam seus controles. O botão de cada abertura fica do lado do observador e também precisa estar visível. Tokens recebem o mesmo recorte de visão, além da filtragem de personagens ocultos. A grade também fica sob a cobertura; a edição continua mostrando a planta completa.
+
 Interior sem folhas estáticas: `public/guild/estate-20261019/interior-openings-v3.webp`; prompt e preparação em `data/guild-estate-openings-20261019.json`.
 
 Validação:
 
 - TypeScript e compilação de cliente/servidor aprovados.
-- Três testes de geometria de visão e contrato dos brasões.
+- Quatro testes de geometria de visão, aberturas ocultas e contrato dos brasões.
 - Dois testes da sede em PostgreSQL descartável, incluindo permissões, alterações concorrentes das aberturas, persistência e brasão ilustrado.
 - Doze regressões de guildas, economia e perfis em PostgreSQL descartável.
 - UI dos componentes reais com API simulada em 1440 e 390 px: menu, edição junto à parede, porta, janela, visão, arraste do emblema, 20 opções por categoria, ordem das camadas, cores e persistência.
 - Revisão das 60 miniaturas e remoção dos fragmentos apontados pelo usuário.
 
 Publicação: `alvorada-cinzenta-app:guild-access-heraldry-20261019`, sobre a versão RP anterior. Aplicação saudável, 170 arquivos conferidos por hash e 16.963 anteriores preservados; as 60 artes servidas por HTTP correspondem ao manifest. Porta local/Radmin e demais serviços mantidos. Alterações independentes do checkout não incluídas.
+
+Revisão publicada em `guild-entrance-visibility-20261019`: 99 arquivos do cliente conferidos e 17.072 anteriores preservados, servidor idêntico. Quatro testes de visão/brasão, TypeScript/build e UI em 1440/390 px aprovados; conferidos ausência dos canteiros, botão abaixo do telhado com tamanho constante e teclado, ocultação dos controles de outros cômodos, abertura/fechamento atualizando a visão e planta completa durante edição.

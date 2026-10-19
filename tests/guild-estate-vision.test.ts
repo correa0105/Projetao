@@ -6,6 +6,7 @@ import {
   guildEstateVisionPolygon,
 } from '../shared/guild-estate-vision';
 import { crestSchema } from '../shared/guilds';
+import { guildEstateCanSeeOpening } from '../shared/guild-estate-vision';
 import { crestArtBanners, crestArtFrames, crestArtSigils } from '../shared/guild-crest-art';
 
 test('paredes e portas fechadas bloqueiam visão; vãos abertos transmitem visão', () => {
@@ -33,6 +34,15 @@ test('fechar veneziana impede visão e polígono percorre ângulos sem voltar so
     (m) => (Math.atan2(+m[2] - at.y, +m[1] - at.x) + Math.PI * 2) % (Math.PI * 2),
   );
   for (let i = 1; i < angles.length; i++) assert(angles[i] >= angles[i - 1] - 0.0002);
+});
+test('aberturas de outros cômodos ficam ocultas atrás da porta fechada', () => {
+  const state = estateOpeningsSchema.parse({});
+  const at = { x: 25.4, y: 27 };
+  assert(guildEstateCanSeeOpening(at, 'main-lounge', state));
+  for (const id of ['west-window', 'east-window', 'main-forge', 'forge-meeting'] as const)
+    assert(!guildEstateCanSeeOpening(at, id, state), id);
+  assert(guildEstateCanSeeOpening(at, 'west-window', { ...state, 'main-lounge': true }));
+  assert(!guildEstateCanSeeOpening(at, 'east-window', { ...state, 'main-lounge': true }));
 });
 test('brasões antigos conservam estilo e ilustrados validam camadas e transformações', () => {
   for (const choices of [crestArtBanners, crestArtFrames, crestArtSigils]) {

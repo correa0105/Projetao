@@ -169,7 +169,10 @@ export function GuildEstateActors({
         )}
       {svg.current &&
         createPortal(
-          <g data-estate-actors="members">
+          <g
+            data-estate-actors="members"
+            clipPath={!roof && viewer && !editing ? 'url(#ge-visible-area)' : undefined}
+          >
             {actors
               .filter(
                 (a) =>

@@ -132,6 +132,24 @@ export function guildEstateCanSee(at: EstatePoint, target: EstatePoint, state: E
     distance - 0.02
   );
 }
+export function guildEstateCanSeeOpening(
+  at: EstatePoint,
+  id: EstateOpeningId,
+  state: EstateOpenings,
+) {
+  const o = guildEstateOpenings.find((opening) => opening.id === id)!,
+    angle = (o.rotation * Math.PI) / 180;
+  return [0.15, 0.5, 0.85].some((part) =>
+    guildEstateCanSee(
+      at,
+      {
+        x: o.x + Math.cos(angle) * o.length * part,
+        y: o.y + Math.sin(angle) * o.length * part,
+      },
+      state,
+    ),
+  );
+}
 export function guildEstateVisionPolygon(at: EstatePoint, state: EstateOpenings) {
   const lines = guildEstateVisionLines(state),
     angles = Array.from({ length: 128 }, (_, i) => (i * Math.PI * 2) / 128);

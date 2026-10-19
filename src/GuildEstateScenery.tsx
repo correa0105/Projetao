@@ -115,16 +115,6 @@ export function GuildEstateScenery({ wooded }: { wooded: boolean }) {
             />
           </g>
         ))}
-      {[22.5, 35.5].map((x) => (
-        <image
-          key={x}
-          href="/vtt/medieval-expansion-20261017/outdoor-019.webp"
-          x={x}
-          y="32"
-          width="2"
-          height="2"
-        />
-      ))}
     </g>
   );
 }
