@@ -1,3 +1,4 @@
+import { reuseVttAsset } from './vtt-assets.js';
 import sharp from 'sharp';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -50,12 +51,16 @@ export async function syncCompanionTokenArt(
           (!t.image || managed.has(vttAssetId(t.image))),
       );
     if (!tokens.length) continue;
-    const {
-      rows: [asset],
-    } = await db.query(
-      "INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height,companion_art_source)VALUES($1,$2,'image','image/webp',$3,$4,$5,$6)RETURNING id",
-      [room.id, tokens[0].name + ' · token', bytes, meta.width, meta.height, companionId],
-    );
+    const asset = await reuseVttAsset(db, {
+      roomId: room.id,
+      name: tokens[0].name + ' · token',
+      kind: 'image',
+      mime: 'image/webp',
+      bytes,
+      width: meta.width,
+      height: meta.height,
+      companionId,
+    });
     for (const token of tokens) token.image = vttAssetPath(asset.id, true);
     await db.query(
       'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',

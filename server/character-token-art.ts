@@ -1,3 +1,4 @@
+import { reuseVttAsset } from './vtt-assets.js';
 import sharp from 'sharp';
 import type { PoolClient } from 'pg';
 import type { VttDocument } from '../shared/vtt.js';
@@ -66,13 +67,16 @@ export async function syncCharacterTokenArt(
           (!t.image || managed.has(vttAssetId(t.image))),
       );
     if (!tokens.length) continue;
-    const {
-      rows: [asset],
-    } = await client.query(
-      `INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height,character_art_source)
-      VALUES($1,$2,'image','image/webp',$3,$4,$5,$6) RETURNING id`,
-      [room.id, tokens[0].name + ' · token', bytes, meta.width, meta.height, characterId],
-    );
+    const asset = await reuseVttAsset(client, {
+      roomId: room.id,
+      name: tokens[0].name + ' · token',
+      kind: 'image',
+      mime: 'image/webp',
+      bytes,
+      width: meta.width,
+      height: meta.height,
+      characterId,
+    });
     for (const token of tokens) token.image = vttAssetPath(asset.id, true);
     await client.query(
       'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',

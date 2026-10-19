@@ -1,3 +1,4 @@
+import { reuseVttAsset } from './vtt-assets.js';
 import express from 'express';
 import { z } from 'zod';
 import sharp from 'sharp';
@@ -14,7 +15,7 @@ import {
   documentSchema,
   type VttDocument,
 } from '../shared/vtt.js';
-import {tokenPlacement} from '../shared/vtt-placement';
+import { tokenPlacement } from '../shared/vtt-placement';
 import { movementBlocked, attachmentMovementError } from '../shared/vtt-movement.js';
 import { translateAttachmentGroup } from '../shared/vtt-attachments.js';
 import { vttAssetPath } from '../shared/vtt-token-image.js';
@@ -107,7 +108,7 @@ async function importCompanion(
   }
   if (existing && !position) return { token, changed: false };
   const at = position
-    ? tokenPlacement(position,token,scene)
+    ? tokenPlacement(position, token, scene)
     : {
         x:
           scene.width / 2 +
@@ -155,12 +156,16 @@ async function importCompanion(
       ],
     );
   const meta = await sharp(bytes).metadata();
-  const {
-    rows: [asset],
-  } = await db.query(
-    "INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height,companion_art_source) VALUES($1,$2,'image','image/webp',$3,$4,$5,$6) RETURNING id",
-    [room.id, animal.name + ' · token', bytes, meta.width, meta.height, animal.id],
-  );
+  const asset = await reuseVttAsset(db, {
+    roomId: room.id,
+    name: animal.name + ' · token',
+    kind: 'image',
+    mime: 'image/webp',
+    bytes,
+    width: meta.width,
+    height: meta.height,
+    companionId: animal.id,
+  });
   Object.assign(token, to, { image: vttAssetPath(asset.id, true) });
   scene.tokens.push(token);
   return { token, changed: true };

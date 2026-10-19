@@ -1,3 +1,4 @@
+import {reuseVttAsset,uniqueVttAssetsSql,duplicateVttAssetIds} from './vtt-assets.js';
 import {convertSceneryToToken} from '../shared/vtt-scenery-token.js';
 import express from 'express';
 import { randomInt, randomUUID, randomBytes } from 'node:crypto';
@@ -219,7 +220,7 @@ async function state(rid: string, user: string) {
   const document = isGm ? r.document : playerDocument(r.document, viewingUser || '', spectator);
   const [assets, members, messages] = await Promise.all([
     pool.query(
-      'SELECT id,name,kind,width,height FROM vtt_assets WHERE room_id=$1 ORDER BY created_at DESC',
+      uniqueVttAssetsSql,
       [rid],
     ),
     pool.query(
@@ -384,11 +385,8 @@ async function importCharacter(
       .webp({ quality: portrait.top_down ? 95 : 90, alphaQuality: 100 })
       .toBuffer();
     const meta = await sharp(bytes).metadata();
-    const a = await db.query(
-      "INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height,character_art_source)VALUES($1,$2,'image','image/webp',$3,$4,$5,$6)RETURNING id",
-      [r.id, c.name + ' · token', bytes, meta.width, meta.height, cid],
-    );
-    token.image = vttAssetPath(a.rows[0].id, portrait.top_down);
+    const a = await reuseVttAsset(db,{roomId:r.id,name:c.name+' · token',kind:'image',mime:'image/webp',bytes,width:meta.width,height:meta.height,characterId:cid});
+    token.image = vttAssetPath(a.id, portrait.top_down);
   }
   const offset = scene.tokens.filter((t) => t.characterId).length;
   token.x = Math.max(
@@ -492,16 +490,10 @@ export function vttRouter() {
       await validatePremiumImages(db, user, [token.image]);
       if (token.image.startsWith('/api/vtt/assets/')) {
         const aid = uuid.parse(vttAssetId(token.image));
-        const {
-          rows: [asset],
-        } = await db.query(
-          `INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height,character_art_source,companion_art_source)
-          SELECT $1,a.name,a.kind,a.mime,a.bytes,a.width,a.height,a.character_art_source,a.companion_art_source FROM vtt_assets a JOIN vtt_rooms source ON source.id=a.room_id
-          WHERE a.id=$2 AND source.owner_id=$3 AND a.kind='image' RETURNING id`,
-          [rid, aid, user],
-        );
-        if (!asset)
+        const {rows:[original]}=await db.query(`SELECT a.* FROM vtt_assets a JOIN vtt_rooms source ON source.id=a.room_id WHERE a.id=$1 AND source.owner_id=$2 AND a.kind='image'`,[aid,user]);
+        if (!original)
           throw new AppError(404, 'A imagem original do preset não está mais disponível.');
+        const asset=await reuseVttAsset(db,{roomId:rid,name:original.name,kind:original.kind,mime:original.mime,bytes:original.bytes,width:original.width,height:original.height,characterId:original.character_art_source,companionId:original.companion_art_source});
         token.image = vttAssetPath(asset.id, isTopDownTokenImage(token.image));
       }
       const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
@@ -1288,11 +1280,8 @@ export function vttRouter() {
         bytes.subarray(0, 4).equals(Buffer.from([26, 69, 223, 163]))
       ))
         throw new AppError(400, 'Envie MP3, WAV, OGG ou WebM válido.');
-      const r = await pool.query(
-        'INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height)VALUES($1,$2,$3,$4,$5,$6,$7)RETURNING id,name,kind,width,height',
-        [rid, name, kind, mime, bytes, width, height],
-      );
-      res.status(201).json({ ...r.rows[0], path: '/api/vtt/assets/' + r.rows[0].id });
+      const asset=await transaction(async db=>{await gm(db,rid,res.locals.user.id,true);return reuseVttAsset(db,{roomId:rid,name,kind,mime,bytes,width,height});});
+      res.status(201).json({ ...asset, path: '/api/vtt/assets/' + asset.id });
     },
   );
   router.get(['/vtt/assets/:id', '/vtt/assets/:id/top-down'], async (req, res) => {
@@ -1343,12 +1332,13 @@ export function vttRouter() {
       aid = uuid.parse(req.params.asset);
     await transaction(async (db) => {
       const r = await gm(db, rid, res.locals.user.id, true);
-      if (paths(r.document).some((p) => vttAssetId(p) === aid))
+      const copies=await duplicateVttAssetIds(db,rid,aid);
+      if (paths(r.document).some((p) => copies.includes(vttAssetId(p)||'')))
         throw new AppError(
           409,
           'Retire o arquivo dos mapas, tokens, diário ou música antes de excluí-lo.',
         );
-      await db.query('DELETE FROM vtt_assets WHERE id=$1 AND room_id=$2', [aid, rid]);
+      await db.query('DELETE FROM vtt_assets WHERE id=ANY($1::uuid[]) AND room_id=$2', [copies, rid]);
     });
     res.json({ ok: true });
   });
