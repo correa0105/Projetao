@@ -1,4 +1,7 @@
 /* Match the approved page header, charcoal surfaces and Cinzel/DM Sans typography. */
+:root .app-shell:is([data-page='profile'], [data-page='profiles']) > .main-shell {
+  padding-bottom: 0;
+}
 :root
   .app-shell:is(
     [data-page='character-cards'],

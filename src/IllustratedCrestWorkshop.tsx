@@ -29,7 +29,7 @@ export function IllustratedCrestWorkshop({
   onChange: (v: Crest) => void;
   name: string;
 }) {
-  const [tab, setTab] = useState<'banner' | 'symbol' | 'frame' | 'layers' | 'colors'>('banner');
+  const [tab, setTab] = useState<'banner' | 'symbol' | 'frame' | 'colors'>('banner');
   const a = value.art!,
     active = sections.find((s) => s.id === tab);
   const drag = useRef<{
@@ -47,7 +47,7 @@ export function IllustratedCrestWorkshop({
     >
       <header className="crest-workshop-heading">
         <div>
-          <span className="social-eyebrow">Estandartes e emblemas em camadas</span>
+          <span className="social-eyebrow">Estandartes e emblemas</span>
           <h3>Marca da companhia</h3>
         </div>
         <button
@@ -101,10 +101,9 @@ export function IllustratedCrestWorkshop({
           <small>Arraste o emblema na prévia ou ajuste os controles.</small>
         </aside>
         <div className="crest-design-controls">
-          <nav className="crest-design-tabs" aria-label="Camadas do brasão ilustrado">
+          <nav className="crest-design-tabs" aria-label="Personalizar brasão">
             {[
               ...sections.map((s) => ({ id: s.id, name: s.name })),
-              { id: 'layers', name: 'Camadas' },
               { id: 'colors', name: 'Cores' },
             ].map((s) => (
               <button
@@ -190,52 +189,6 @@ export function IllustratedCrestWorkshop({
                 Centralizar emblema
               </button>
             </fieldset>
-          )}
-          {tab === 'layers' && (
-            <div className="crest-art-layers">
-              <p>Ordem do fundo para a frente.</p>
-              {a.order.map((layer, index) => {
-                const key = (
-                  { banner: 'showBanner', frame: 'showFrame', symbol: 'showSymbol' } as const
-                )[layer];
-                return (
-                  <div key={layer}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={a[key]}
-                        onChange={(e) => edit({ [key]: e.target.checked })}
-                      />
-                      {crestArtNames[layer]}
-                    </label>
-                    <button
-                      type="button"
-                      aria-label={'Enviar ' + crestArtNames[layer] + ' para trás'}
-                      disabled={index === 0}
-                      onClick={() => {
-                        const order = [...a.order];
-                        [order[index - 1], order[index]] = [order[index], order[index - 1]];
-                        edit({ order });
-                      }}
-                    >
-                      ↑
-                    </button>
-                    <button
-                      type="button"
-                      aria-label={'Trazer ' + crestArtNames[layer] + ' para frente'}
-                      disabled={index === 2}
-                      onClick={() => {
-                        const order = [...a.order];
-                        [order[index + 1], order[index]] = [order[index], order[index + 1]];
-                        edit({ order });
-                      }}
-                    >
-                      ↓
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
           )}
           {tab === 'colors' && (
             <fieldset className="crest-colors">

@@ -407,7 +407,13 @@ export function Guilds({
                       setCrestDraft({
                         crest: {
                           ...structuredClone(current!.crest),
-                          art: current!.crest.art || crestArtSchema.parse({}),
+                          art: {
+                            ...(current!.crest.art || crestArtSchema.parse({})),
+                            order: ['banner', 'frame', 'symbol'],
+                            showBanner: true,
+                            showFrame: true,
+                            showSymbol: true,
+                          },
                         },
                         revision: g.revision,
                       })
