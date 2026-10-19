@@ -474,3 +474,10 @@
     grid-template-columns: 1fr;
   }
 }
+.sheet-spell-collection > ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.sheet-spell-collection li { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #8d734866; border-radius: 4px; background: #242820; }
+.sheet-spell-collection li > div { display: grid; gap: 5px; min-width: 0; flex: 1; }
+.sheet-spell-collection li small { color: #cbb780; }
+.sheet-spell-collection li span { font-size: 12px; color: #d3c9b5; }
+.sheet-spell-collection li .spell-reference-open { width: auto; margin: 0; flex-shrink: 0; padding: 8px; }
+@media(max-width:650px) { .sheet-spell-collection > ul { grid-template-columns: 1fr; } }

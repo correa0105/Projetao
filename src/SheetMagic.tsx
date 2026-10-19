@@ -64,14 +64,6 @@ export function SheetMagic({
             </b>{' '}
             · até círculo {m.maxSpell}
           </p>
-          <h4>Truques</h4>
-          <p>{m.cantrips.map(name).join(' · ') || 'Nenhum.'}</p>
-          {m.known.length > 0 && (
-            <>
-              <h4>{m.class === 'Mago' ? 'Grimório' : 'Magias da classe'}</h4>
-              <p>{m.known.map(name).join(' · ')}</p>
-            </>
-          )}
           {m.flexible && (
             <AdvancementSpells
               label={`Preparadas de ${m.class}`}

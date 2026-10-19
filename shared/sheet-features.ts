@@ -189,6 +189,7 @@ export function sheetFeatureEntries(
       if (['style', 'feats'].includes(key) || key.startsWith('feat')) continue;
       const grouped = new Map<number, string[]>();
       for (const value of values) {
+        if (rules.spells.some((s) => s.id === value)) continue;
         const lv = grantLevel(key, value);
         if (lv) grouped.set(lv, [...(grouped.get(lv) || []), spell(value)]);
       }
@@ -283,24 +284,6 @@ export function sheetFeatureEntries(
               .map(spell)
               .join(' · '),
           source(row.classLevel) + ' · talento escolhido na melhoria',
-          s.class,
-          row.classLevel,
-        );
-      if (row.newCantrips.length)
-        add(
-          'class',
-          'Truques aprendidos',
-          row.newCantrips.map(spell).join(' · '),
-          source(row.classLevel),
-          s.class,
-          row.classLevel,
-        );
-      if (row.newSpells.length)
-        add(
-          'class',
-          'Magias aprendidas',
-          row.newSpells.map(spell).join(' · '),
-          source(row.classLevel),
           s.class,
           row.classLevel,
         );

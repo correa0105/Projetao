@@ -1,4 +1,5 @@
 import { FlashMessage } from './FlashMessage';
+import {SheetSpellCollection}from './SheetSpellCollection';
 import { CharacterTitleLabel } from './Titles';
 import { CharacterLevelBadge } from './CharacterLevelBadge';
 import { useEffect, useState } from 'react';
@@ -787,6 +788,7 @@ export function CharacterSheet({
             )}
             {tab === 'Magias' && (
               <>
+                <SheetSpellCollection character={c} choices={choices}/>
                 <h3>
                   Conjuração
                   <SheetHelp label="Conjuração">
