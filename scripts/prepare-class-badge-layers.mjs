@@ -11,10 +11,17 @@ const base = '/sheet/badge-parts-20261019/';
 const available = new Set();
 for (const asset of manifest.assets) {
   const source = await fs.readFile(asset.nativePath);
-  const output = await sharp(source)
-    .resize(640, 640, { fit: 'contain', background: '#00000000' })
-    .webp({ quality: 95, alphaQuality: 100, effort: 6 })
-    .toBuffer();
+  const url = base + (asset.fileName || asset.id + '.webp');
+  let output;
+  if (asset.sourceSha256 === hash(source) && asset.url === url) {
+    output = await fs.readFile('public' + url);
+    assert.equal(hash(output), asset.sha256, 'Existing layer changed: ' + asset.id);
+  } else {
+    output = await sharp(source)
+      .resize(640, 640, { fit: 'contain', background: '#00000000' })
+      .webp({ quality: 95, alphaQuality: 100, effort: 6 })
+      .toBuffer();
+  }
   const { data, info } = await sharp(output)
     .ensureAlpha()
     .raw()
@@ -27,7 +34,6 @@ for (const asset of manifest.assets) {
   }
   assert(clear > info.width * info.height * 0.15, 'Alpha missing: ' + asset.id);
   assert(opaque > info.width * info.height * 0.015, 'Empty layer: ' + asset.id);
-  const url = base + asset.id + '.webp';
   await fs.mkdir(path.dirname('public' + url), { recursive: true });
   await fs.writeFile('public' + url, output);
   Object.assign(asset, {

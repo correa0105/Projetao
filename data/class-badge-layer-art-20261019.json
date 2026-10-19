@@ -245,47 +245,91 @@
     },
     {
       "id": "core-barbarian-2",
-      "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY both crossed axes, including both axe heads, all shafts, grips and endcaps. KEEP the drinking horn and decorative tusks. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
-      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-49113c1e-a313-45fe-bc4c-ae95b8d3a9d9.png",
-      "url": "/sheet/badge-parts-20261019/core-barbarian-2.webp",
-      "sourceSha256": "339ae2b9de136cc37786a7c66825bf398da88528a6111d07597fd2af78d0e493",
-      "sha256": "a10b9c17f8b0d1ca86bc98f455b2133428efb7200a33abd4885309cdff06a274",
+      "prompt": "Use case: precise-object-edit. Image1 is the exact EDIT TARGET barbarian badge CORE. Image2 is a DESIGN REFERENCE for the improved wolf head and pelt rendering only; do not copy image2's shield or ornaments. Completely redraw image1's wolf head and adjacent fur using the impressive natural gray-wolf anatomy of image2: strong elongated canine muzzle, broad dark nose, deep alert amber eyes under a stern brow, exactly two pointed wolf ears, coarse gray/charcoal and cream fur with believable volumes. A fierce proud wild wolf trophy pelt, never smiling, cute, tiny, squashed, foxlike or a domestic dog. Give the head sufficient visual presence above the shield, with muzzle resting naturally over its top rim, without covering the central shield boss or existing crown. Keep the draped pelt integrated into the existing silhouette. Preserve image1's EXACT round wooden shield, steel/gold boss, gems, horns/tusks, drinking horn if present, red cloth, fittings, pendant and all tier-specific objects/positions. Preserve gold forehead ornament if present without obscuring the natural wolf anatomy. Retain premium hand-painted fantasy game art and detailed materials, no photo collage, no generic angular fur spikes. Do not import image2's crown or shield design. NO AXES or new crossed weapons; those belong to separate layers. Same centered square framing, true alpha transparent background, no text.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-af22a17f-a493-4ebc-a3bb-f527fab01c0a.png",
+      "url": "/sheet/badge-parts-20261019/core-barbarian-2-wolf-v2.webp",
+      "sourceSha256": "6b73c8efc0a8b9488bb78c77fe74cabc0f821605b5256c6f611d3d934679cc8d",
+      "sha256": "7a180ac7d4ed768ff03319a86ce388be0bfa22eda748f53b8c2596da1de1a975",
       "width": 640,
       "height": 640,
-      "bytes": 157446
+      "bytes": 165582,
+      "previousVersions": [
+        {
+          "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-49113c1e-a313-45fe-bc4c-ae95b8d3a9d9.png",
+          "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY both crossed axes, including both axe heads, all shafts, grips and endcaps. KEEP the drinking horn and decorative tusks. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
+          "url": "/sheet/badge-parts-20261019/core-barbarian-2.webp",
+          "sourceSha256": "339ae2b9de136cc37786a7c66825bf398da88528a6111d07597fd2af78d0e493",
+          "sha256": "a10b9c17f8b0d1ca86bc98f455b2133428efb7200a33abd4885309cdff06a274"
+        }
+      ],
+      "fileName": "core-barbarian-2-wolf-v2.webp",
+      "revision": "Wolf anatomy and painted rendering revised, 2026-10-19"
     },
     {
       "id": "core-barbarian-3",
-      "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY both crossed axes, including both axe heads, all shafts, grips and endcaps. KEEP the drinking horn and decorative tusks. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
-      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-e56fe33a-68c0-4067-babf-0f994925bb91.png",
-      "url": "/sheet/badge-parts-20261019/core-barbarian-3.webp",
-      "sourceSha256": "22d16cd7cccb7ffeab816a9c2ed10b5f6e2933e537c7adfa0102c10b6a357b0d",
-      "sha256": "96b32b9825e1e54ea3a0a8746ec2e4893076d7d466abcdde78cdfb9cbbe8fbe3",
+      "prompt": "Use case: precise-object-edit. Edit target is this exact weapon-free barbarian RPG badge CORE. Completely REDRAW the WOLF HEAD and its immediately surrounding fur, with much better animal anatomy and premium painterly game art. Replace the tiny squashed smiling dog face with a convincing fierce GRAY WOLF trophy pelt head, front-facing: strong long canine muzzle with proper bridge and dark broad canine nose, narrow alert amber eyes under a strong brow, exactly two upright pointed ears, angular cheek bones, layered coarse charcoal-gray and off-white fur. Proud wild wolf, rugged and imposing, never cute, smiling, foxlike or a domestic husky. Make the head visibly substantial above the shield (about 1.4x current head height), naturally integrated into the existing draped pelt; muzzle can overlap the top shield rim a little, never the central boss. Keep the metal crest and ruby crown visible behind/above it. It is an illustrated wolf trophy integrated into a badge, NOT a living wolf body. Preserve the round wooden shield, steel boss, ruby, red cloth, ivory tusks, metalwork, silhouette and all other objects and their positions/materials. Keep the existing art style and convincing painted volume, avoid flat triangular fur spikes and porcelain-mask anatomy. No new weapons, no axes, no text. Same square framing and TRUE transparent alpha background.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-d8cc26af-6c16-4073-8337-9295c5e08a0f.png",
+      "url": "/sheet/badge-parts-20261019/core-barbarian-3-wolf-v2.webp",
+      "sourceSha256": "dc6a85b1d643a9276b95087ce6213907201a4278f72918480c3c48f26936e754",
+      "sha256": "828dad88ed62d013a76260c30836b99ef744581a34bdd15dec58d2fd2c83198a",
       "width": 640,
       "height": 640,
-      "bytes": 157992
+      "bytes": 160486,
+      "previousVersions": [
+        {
+          "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-e56fe33a-68c0-4067-babf-0f994925bb91.png",
+          "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY both crossed axes, including both axe heads, all shafts, grips and endcaps. KEEP the drinking horn and decorative tusks. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
+          "url": "/sheet/badge-parts-20261019/core-barbarian-3.webp",
+          "sourceSha256": "22d16cd7cccb7ffeab816a9c2ed10b5f6e2933e537c7adfa0102c10b6a357b0d",
+          "sha256": "96b32b9825e1e54ea3a0a8746ec2e4893076d7d466abcdde78cdfb9cbbe8fbe3"
+        }
+      ],
+      "fileName": "core-barbarian-3-wolf-v2.webp",
+      "revision": "Wolf anatomy and painted rendering revised, 2026-10-19"
     },
     {
       "id": "core-barbarian-4",
-      "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY both crossed axes, including both axe heads, all shafts, grips and endcaps. KEEP the drinking horn and decorative tusks. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
-      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-6ac1a652-1645-4b3e-a77b-8bd49fa8efcb.png",
-      "url": "/sheet/badge-parts-20261019/core-barbarian-4.webp",
-      "sourceSha256": "12baaca9ece1c98f7927cac5d1dbb0acd071d435b83410940f9efbec780798e7",
-      "sha256": "98a88e22d5033f2155f6b34287138bea871b6c5e9752f76de4a6756368905fed",
+      "prompt": "Use case: precise-object-edit. Image1 is the exact EDIT TARGET barbarian badge CORE. Image2 is a DESIGN REFERENCE for the improved wolf head and pelt rendering only; do not copy image2's shield or ornaments. Completely redraw image1's wolf head and adjacent fur using the impressive natural gray-wolf anatomy of image2: strong elongated canine muzzle, broad dark nose, deep alert amber eyes under a stern brow, exactly two pointed wolf ears, coarse gray/charcoal and cream fur with believable volumes. A fierce proud wild wolf trophy pelt, never smiling, cute, tiny, squashed, foxlike or a domestic dog. Give the head sufficient visual presence above the shield, with muzzle resting naturally over its top rim, without covering the central shield boss or existing crown. Keep the draped pelt integrated into the existing silhouette. Preserve image1's EXACT round wooden shield, steel/gold boss, gems, horns/tusks, drinking horn if present, red cloth, fittings, pendant and all tier-specific objects/positions. Preserve gold forehead ornament if present without obscuring the natural wolf anatomy. Retain premium hand-painted fantasy game art and detailed materials, no photo collage, no generic angular fur spikes. Do not import image2's crown or shield design. NO AXES or new crossed weapons; those belong to separate layers. Same centered square framing, true alpha transparent background, no text.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-c76a636f-097b-42c4-9abb-f5db1d862965.png",
+      "url": "/sheet/badge-parts-20261019/core-barbarian-4-wolf-v2.webp",
+      "sourceSha256": "c802f5be9bde568fe0fbbb1091afae2636c336c11de3dba1d8e09665cb64812d",
+      "sha256": "3f1228eade881f39593ba0d0f39582bfb1a9efe897ab08411a380fe0ffd63fb3",
       "width": 640,
       "height": 640,
-      "bytes": 163252
+      "bytes": 166630,
+      "previousVersions": [
+        {
+          "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-6ac1a652-1645-4b3e-a77b-8bd49fa8efcb.png",
+          "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY both crossed axes, including both axe heads, all shafts, grips and endcaps. KEEP the drinking horn and decorative tusks. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
+          "url": "/sheet/badge-parts-20261019/core-barbarian-4.webp",
+          "sourceSha256": "12baaca9ece1c98f7927cac5d1dbb0acd071d435b83410940f9efbec780798e7",
+          "sha256": "98a88e22d5033f2155f6b34287138bea871b6c5e9752f76de4a6756368905fed"
+        }
+      ],
+      "fileName": "core-barbarian-4-wolf-v2.webp",
+      "revision": "Wolf anatomy and painted rendering revised, 2026-10-19"
     },
     {
       "id": "core-barbarian-5",
-      "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY both crossed axes, including both axe heads, all shafts, grips and endcaps. KEEP the drinking horn and decorative tusks. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
-      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-212a305d-b429-42ac-82da-c77a74e7eb3e.png",
-      "url": "/sheet/badge-parts-20261019/core-barbarian-5.webp",
-      "sourceSha256": "6b1cb23caff2cef32b4a8a8a9a674efba5d63ca7360a57e3253d42eeb2d889fe",
-      "sha256": "1e0066abed180e4494fef2bf1fa2e97f1440c1be07ef78335108895d6027d4e2",
+      "prompt": "Use case: precise-object-edit. Image1 is the exact EDIT TARGET barbarian badge CORE. Image2 is a DESIGN REFERENCE for the improved wolf head and pelt rendering only; do not copy image2's shield or ornaments. Completely redraw image1's wolf head and adjacent fur using the impressive natural gray-wolf anatomy of image2: strong elongated canine muzzle, broad dark nose, deep alert amber eyes under a stern brow, exactly two pointed wolf ears, coarse gray/charcoal and cream fur with believable volumes. A fierce proud wild wolf trophy pelt, never smiling, cute, tiny, squashed, foxlike or a domestic dog. Give the head sufficient visual presence above the shield, with muzzle resting naturally over its top rim, without covering the central shield boss or existing crown. Keep the draped pelt integrated into the existing silhouette. For this highest tier, replace the unnatural skeletal dog mask with a natural powerful wolf face; retain its red forehead war-paint accents and a small ivory forehead crest, but do not turn the whole wolf into a skull. Keep the outer tusks and existing golden/red ornaments. Preserve image1's EXACT round wooden shield, steel/gold boss, gems, horns/tusks, drinking horn if present, red cloth, fittings, pendant and all tier-specific objects/positions. Preserve gold forehead ornament if present without obscuring the natural wolf anatomy. Retain premium hand-painted fantasy game art and detailed materials, no photo collage, no generic angular fur spikes. Do not import image2's crown or shield design. NO AXES or new crossed weapons; those belong to separate layers. Same centered square framing, true alpha transparent background, no text.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-3406d611-1542-4faa-89c4-7c8a1ae1e148.png",
+      "url": "/sheet/badge-parts-20261019/core-barbarian-5-wolf-v2.webp",
+      "sourceSha256": "bc5e26880083224209b5bc74c8c2186800ea2be1d5995a0fe2320deda08f10f8",
+      "sha256": "3020b9aa4bd705bb72d016dd7149d86d366ff340adb4e13ac64772a9b6884e7c",
       "width": 640,
       "height": 640,
-      "bytes": 173008
+      "bytes": 162978,
+      "previousVersions": [
+        {
+          "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-212a305d-b429-42ac-82da-c77a74e7eb3e.png",
+          "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY both crossed axes, including both axe heads, all shafts, grips and endcaps. KEEP the drinking horn and decorative tusks. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
+          "url": "/sheet/badge-parts-20261019/core-barbarian-5.webp",
+          "sourceSha256": "6b1cb23caff2cef32b4a8a8a9a674efba5d63ca7360a57e3253d42eeb2d889fe",
+          "sha256": "1e0066abed180e4494fef2bf1fa2e97f1440c1be07ef78335108895d6027d4e2"
+        }
+      ],
+      "fileName": "core-barbarian-5-wolf-v2.webp",
+      "revision": "Wolf anatomy and painted rendering revised, 2026-10-19"
     },
     {
       "id": "core-warlock-2",
@@ -421,58 +465,113 @@
     },
     {
       "id": "core-ranger-1",
-      "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY the TWO CROSSED ARROWS ONLY, including their upper-left and upper-right metal arrowheads, long diagonal shafts and opposite lower fletchings. KEEP any other arrows in the central quiver if present, keep antlers, bow, bowstring, wolf head, oak leaves, shield, green cloth, quiver and pouch. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
-      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-f00d8ffa-3f3b-4a95-a0ba-c40487368c49.png",
-      "url": "/sheet/badge-parts-20261019/core-ranger-1.webp",
-      "sourceSha256": "257130f63192145328123d853ece467b48de84eab7db202b8237557e00938f53",
-      "sha256": "fd8359d34d3ce03fd3ca9fd811475298d0b5efe9bfed21096d975b35e066ab6a",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EDIT TARGET ranger/hunter badge CORE. Image 2 is only the DESIGN REFERENCE for the new WOLF HEAD; do not copy image 2's frame or ornaments. Replace ONLY image 1's central wolf mask with a finely modeled natural WOLF HEAD in sculpted aged gold, using the convincing anatomical/painterly wolf design from image 2: strong long canine muzzle, proper dark bronze broad nose, exactly two upright wolf ears, deep alert amber eyes, coarse layered golden ruff, a serious wild wolf expression. It should read as a wolf instead of a generic angular fox/dog mask. Keep it a premium dimensional golden-metal heraldic relief, with realistic animal volumes translated into painted game art, not a photograph. Keep the head centered in the original emblem position and original size, no giant head. Preserve image 1's EXACT shield, antlers, bow and bowstring, feathers, leaves, green fabric, pouch, jewel and all remaining ornaments, framing, palette and tier-specific design. Do NOT import image2's antlers/bow. For highest tier keep its emerald forehead jewel integrated into the wolf's gold crown/forehead ornament, but make eyes natural amber, not neon green. No new crossed arrows or weapons. True transparent alpha background, square canvas, no text.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-efdbd746-c826-4db4-8f8a-62717c74ecdb.png",
+      "url": "/sheet/badge-parts-20261019/core-ranger-1-wolf-v2.webp",
+      "sourceSha256": "b337d0927fe280424ee75071761afe4205e8caab9102ead14a33c48f11469a1c",
+      "sha256": "2905ffb37c3dc064ea2b2aa876231ffe0444fd947a78ce44ab634b64ab7ae611",
       "width": 640,
       "height": 640,
-      "bytes": 131380
+      "bytes": 134292,
+      "previousVersions": [
+        {
+          "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-f00d8ffa-3f3b-4a95-a0ba-c40487368c49.png",
+          "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY the TWO CROSSED ARROWS ONLY, including their upper-left and upper-right metal arrowheads, long diagonal shafts and opposite lower fletchings. KEEP any other arrows in the central quiver if present, keep antlers, bow, bowstring, wolf head, oak leaves, shield, green cloth, quiver and pouch. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
+          "url": "/sheet/badge-parts-20261019/core-ranger-1.webp",
+          "sourceSha256": "257130f63192145328123d853ece467b48de84eab7db202b8237557e00938f53",
+          "sha256": "fd8359d34d3ce03fd3ca9fd811475298d0b5efe9bfed21096d975b35e066ab6a"
+        }
+      ],
+      "fileName": "core-ranger-1-wolf-v2.webp",
+      "revision": "Wolf anatomy and painted rendering revised, 2026-10-19"
     },
     {
       "id": "core-ranger-2",
-      "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY the TWO CROSSED ARROWS ONLY, including their upper-left and upper-right metal arrowheads, long diagonal shafts and opposite lower fletchings. KEEP any other arrows in the central quiver if present, keep antlers, bow, bowstring, wolf head, oak leaves, shield, green cloth, quiver and pouch. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
-      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-dd7cdda8-88f7-4116-ad6e-f6efb53fc503.png",
-      "url": "/sheet/badge-parts-20261019/core-ranger-2.webp",
-      "sourceSha256": "231e247e94c058fb419e714192024b8a5c6e3aa7801cc5d24b93571b033f6cb8",
-      "sha256": "e4d1a27d40b3e59d35eeb2dd19c1355a53b00a9ac0d7189790923044c3c2c1a7",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EDIT TARGET ranger/hunter badge CORE. Image 2 is only the DESIGN REFERENCE for the new WOLF HEAD; do not copy image 2's frame or ornaments. Replace ONLY image 1's central wolf mask with a finely modeled natural WOLF HEAD in sculpted aged gold, using the convincing anatomical/painterly wolf design from image 2: strong long canine muzzle, proper dark bronze broad nose, exactly two upright wolf ears, deep alert amber eyes, coarse layered golden ruff, a serious wild wolf expression. It should read as a wolf instead of a generic angular fox/dog mask. Keep it a premium dimensional golden-metal heraldic relief, with realistic animal volumes translated into painted game art, not a photograph. Keep the head centered in the original emblem position and original size, no giant head. Preserve image 1's EXACT shield, antlers, bow and bowstring, feathers, leaves, green fabric, pouch, jewel and all remaining ornaments, framing, palette and tier-specific design. Do NOT import image2's antlers/bow. For highest tier keep its emerald forehead jewel integrated into the wolf's gold crown/forehead ornament, but make eyes natural amber, not neon green. No new crossed arrows or weapons. True transparent alpha background, square canvas, no text.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-7a3e4f96-c169-4b4f-890b-819b738a5b0b.png",
+      "url": "/sheet/badge-parts-20261019/core-ranger-2-wolf-v2.webp",
+      "sourceSha256": "9e1848d755b1619cf2603e869dd2c1644d92490b28a85aef20f26e934f83ab4f",
+      "sha256": "13386ca8d68cccfdaef022123c4cbfa344681a7a022614b10320c0777b7f1e40",
       "width": 640,
       "height": 640,
-      "bytes": 152596
+      "bytes": 151904,
+      "previousVersions": [
+        {
+          "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-dd7cdda8-88f7-4116-ad6e-f6efb53fc503.png",
+          "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY the TWO CROSSED ARROWS ONLY, including their upper-left and upper-right metal arrowheads, long diagonal shafts and opposite lower fletchings. KEEP any other arrows in the central quiver if present, keep antlers, bow, bowstring, wolf head, oak leaves, shield, green cloth, quiver and pouch. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
+          "url": "/sheet/badge-parts-20261019/core-ranger-2.webp",
+          "sourceSha256": "231e247e94c058fb419e714192024b8a5c6e3aa7801cc5d24b93571b033f6cb8",
+          "sha256": "e4d1a27d40b3e59d35eeb2dd19c1355a53b00a9ac0d7189790923044c3c2c1a7"
+        }
+      ],
+      "fileName": "core-ranger-2-wolf-v2.webp",
+      "revision": "Wolf anatomy and painted rendering revised, 2026-10-19"
     },
     {
       "id": "core-ranger-3",
-      "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY the TWO CROSSED ARROWS ONLY, including their upper-left and upper-right metal arrowheads, long diagonal shafts and opposite lower fletchings. KEEP any other arrows in the central quiver if present, keep antlers, bow, bowstring, wolf head, oak leaves, shield, green cloth, quiver and pouch. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
-      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-80a2bb44-4b0e-46eb-88b8-3c06a328cbf3.png",
-      "url": "/sheet/badge-parts-20261019/core-ranger-3.webp",
-      "sourceSha256": "69d887f7c81c2e7c82ce7bdc8c3617cf46f68fedd8f349d40e35c81d2da27a07",
-      "sha256": "755a2ca9dd634267e75ce5e33cc4b6fe4b543db81331518ba35b77d728e47e26",
+      "prompt": "Use case: precise-object-edit. Edit target is this exact weapon-free ranger/hunter RPG badge CORE. Completely REDRAW ONLY the central GOLDEN WOLF HEAD emblem with better anatomical design and sculptural art. Replace the generic angular fox/dog mask with an elegant powerful recognizable GRAY WOLF HEAD rendered as a finely sculpted aged-gold metal relief: front-facing, long strong canine muzzle with a defined bridge, broad dark bronze canine nose, natural closed jaw, narrow alert amber inset eyes with deep eye sockets (NOT human eyes, not glowing green), exactly two pointed wolf ears, broad angular cheekbones, carefully modeled fur planes and neck ruff. Strong wild wolf character, sober premium fantasy heraldry. Avoid cute dog, fox, feline, teddy bear, flat polygon face, oversized forehead, tiny snout, smiling mouth and decorative face curls. Use refined realistic anatomy translated into painted sculpted gold, with clear small-size readability and dimensional light/shadow. Keep the wolf emblem in the same central area, roughly same size. Preserve the surrounding green shield, bow, bowstrings, antlers, feathers, leaves, gem, pouch, all other decoration, positions and palette exactly. No added crossed arrows or weapons; they are separate UI layers. Same square composition, TRUE alpha transparent background, no text.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-23181e33-ba97-4fd7-b3b5-5c4e85f0d357.png",
+      "url": "/sheet/badge-parts-20261019/core-ranger-3-wolf-v2.webp",
+      "sourceSha256": "4247d4e0fc1b986f8e3b606a47b72d530346bdd3741e8be2e8cdda1a966b47ab",
+      "sha256": "d6045938748acef0c0b9222224a5ccf62f95df1688154075fd99c6f6db40b731",
       "width": 640,
       "height": 640,
-      "bytes": 158126
+      "bytes": 154924,
+      "previousVersions": [
+        {
+          "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-80a2bb44-4b0e-46eb-88b8-3c06a328cbf3.png",
+          "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY the TWO CROSSED ARROWS ONLY, including their upper-left and upper-right metal arrowheads, long diagonal shafts and opposite lower fletchings. KEEP any other arrows in the central quiver if present, keep antlers, bow, bowstring, wolf head, oak leaves, shield, green cloth, quiver and pouch. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
+          "url": "/sheet/badge-parts-20261019/core-ranger-3.webp",
+          "sourceSha256": "69d887f7c81c2e7c82ce7bdc8c3617cf46f68fedd8f349d40e35c81d2da27a07",
+          "sha256": "755a2ca9dd634267e75ce5e33cc4b6fe4b543db81331518ba35b77d728e47e26"
+        }
+      ],
+      "fileName": "core-ranger-3-wolf-v2.webp",
+      "revision": "Wolf anatomy and painted rendering revised, 2026-10-19"
     },
     {
       "id": "core-ranger-4",
-      "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY the TWO CROSSED ARROWS ONLY, including their upper-left and upper-right metal arrowheads, long diagonal shafts and opposite lower fletchings. KEEP any other arrows in the central quiver if present, keep antlers, bow, bowstring, wolf head, oak leaves, shield, green cloth, quiver and pouch. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
-      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-df9a9e42-35bb-49fc-9a54-8eaf3056cc21.png",
-      "url": "/sheet/badge-parts-20261019/core-ranger-4.webp",
-      "sourceSha256": "a889daf9c89f4fb786bee1d80fd5d7ca8eeb2b2c79c53de2b1baf123f3d06b85",
-      "sha256": "a116d6fe2cc61469bddc921a7114a959eca1c4f43eb39bc49d3cf0fd2266894b",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EDIT TARGET ranger/hunter badge CORE. Image 2 is only the DESIGN REFERENCE for the new WOLF HEAD; do not copy image 2's frame or ornaments. Replace ONLY image 1's central wolf mask with a finely modeled natural WOLF HEAD in sculpted aged gold, using the convincing anatomical/painterly wolf design from image 2: strong long canine muzzle, proper dark bronze broad nose, exactly two upright wolf ears, deep alert amber eyes, coarse layered golden ruff, a serious wild wolf expression. It should read as a wolf instead of a generic angular fox/dog mask. Keep it a premium dimensional golden-metal heraldic relief, with realistic animal volumes translated into painted game art, not a photograph. Keep the head centered in the original emblem position and original size, no giant head. Preserve image 1's EXACT shield, antlers, bow and bowstring, feathers, leaves, green fabric, pouch, jewel and all remaining ornaments, framing, palette and tier-specific design. Do NOT import image2's antlers/bow. For highest tier keep its emerald forehead jewel integrated into the wolf's gold crown/forehead ornament, but make eyes natural amber, not neon green. No new crossed arrows or weapons. True transparent alpha background, square canvas, no text.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-3d23ba02-860d-40a6-a80c-1d7f68e65df3.png",
+      "url": "/sheet/badge-parts-20261019/core-ranger-4-wolf-v2.webp",
+      "sourceSha256": "721bcc82aafca08acb2760ab4abf8311ef158bac3a78f263af26f2c60b0090d2",
+      "sha256": "d5225013ba1848cf96582990a82e032322b9f5caf7524ac3257792ec61074e78",
       "width": 640,
       "height": 640,
-      "bytes": 159526
+      "bytes": 154992,
+      "previousVersions": [
+        {
+          "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-df9a9e42-35bb-49fc-9a54-8eaf3056cc21.png",
+          "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY the TWO CROSSED ARROWS ONLY, including their upper-left and upper-right metal arrowheads, long diagonal shafts and opposite lower fletchings. KEEP any other arrows in the central quiver if present, keep antlers, bow, bowstring, wolf head, oak leaves, shield, green cloth, quiver and pouch. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
+          "url": "/sheet/badge-parts-20261019/core-ranger-4.webp",
+          "sourceSha256": "a889daf9c89f4fb786bee1d80fd5d7ca8eeb2b2c79c53de2b1baf123f3d06b85",
+          "sha256": "a116d6fe2cc61469bddc921a7114a959eca1c4f43eb39bc49d3cf0fd2266894b"
+        }
+      ],
+      "fileName": "core-ranger-4-wolf-v2.webp",
+      "revision": "Wolf anatomy and painted rendering revised, 2026-10-19"
     },
     {
       "id": "core-ranger-5",
-      "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY the TWO CROSSED ARROWS ONLY, including their upper-left and upper-right metal arrowheads, long diagonal shafts and opposite lower fletchings. KEEP any other arrows in the central quiver if present, keep antlers, bow, bowstring, wolf head, oak leaves, shield, green cloth, quiver and pouch. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
-      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-402f7426-ebf4-41b1-b7a8-15e52fa4a031.png",
-      "url": "/sheet/badge-parts-20261019/core-ranger-5.webp",
-      "sourceSha256": "b2e7e2030cba164e0a99ee4b4f662e6beffe8e558578c5d1538b0e9b21406d61",
-      "sha256": "5673e8ae1fe36c50037d5162df331465b75cef677902e2bc8dbeed1f12888846",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EDIT TARGET ranger/hunter badge CORE. Image 2 is only the DESIGN REFERENCE for the new WOLF HEAD; do not copy image 2's frame or ornaments. Replace ONLY image 1's central wolf mask with a finely modeled natural WOLF HEAD in sculpted aged gold, using the convincing anatomical/painterly wolf design from image 2: strong long canine muzzle, proper dark bronze broad nose, exactly two upright wolf ears, deep alert amber eyes, coarse layered golden ruff, a serious wild wolf expression. It should read as a wolf instead of a generic angular fox/dog mask. Keep it a premium dimensional golden-metal heraldic relief, with realistic animal volumes translated into painted game art, not a photograph. Keep the head centered in the original emblem position and original size, no giant head. Preserve image 1's EXACT shield, antlers, bow and bowstring, feathers, leaves, green fabric, pouch, jewel and all remaining ornaments, framing, palette and tier-specific design. Do NOT import image2's antlers/bow. For highest tier keep its emerald forehead jewel integrated into the wolf's gold crown/forehead ornament, but make eyes natural amber, not neon green. No new crossed arrows or weapons. True transparent alpha background, square canvas, no text.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-798f9c26-c91d-40aa-abaa-f0ba384f2384.png",
+      "url": "/sheet/badge-parts-20261019/core-ranger-5-wolf-v2.webp",
+      "sourceSha256": "70edb090323cf3199408b7c9933ead0e6a7888b436ec2128af59504439b53ce8",
+      "sha256": "a654c57a1e1aa421f263f61784a32d55a48ae13137fc1f19d6161f1a91658409",
       "width": 640,
       "height": 640,
-      "bytes": 172660
+      "bytes": 165756,
+      "previousVersions": [
+        {
+          "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a1547a-eded-7260-b279-93b024bb9ada\\exec-402f7426-ebf4-41b1-b7a8-15e52fa4a031.png",
+          "prompt": "Use case: precise-object-edit. Extract a clean FOREGROUND CORE layer from the supplied exact fantasy RPG insignia. REMOVE COMPLETELY the TWO CROSSED ARROWS ONLY, including their upper-left and upper-right metal arrowheads, long diagonal shafts and opposite lower fletchings. KEEP any other arrows in the central quiver if present, keep antlers, bow, bowstring, wolf head, oak leaves, shield, green cloth, quiver and pouch. Do not leave ANY fragment or disconnected handle of the removed crossed objects. They will be replaced with separate full-length rigid tool layers BEHIND this core in the UI. Preserve every remaining central motif, framing, materials, color palette, painted quality, level of ornament, symmetry, lighting and composition. Naturally reconstruct underlying cloth/shield/frame where removed objects overlapped, and leave transparent alpha where outside the core silhouette. NO replacement weapons. Keep the badge centered, front view, square canvas, original visual style. TRUE transparent background, no text, no floor. Output ONLY the core without the specified crossed objects.",
+          "url": "/sheet/badge-parts-20261019/core-ranger-5.webp",
+          "sourceSha256": "b2e7e2030cba164e0a99ee4b4f662e6beffe8e558578c5d1538b0e9b21406d61",
+          "sha256": "5673e8ae1fe36c50037d5162df331465b75cef677902e2bc8dbeed1f12888846"
+        }
+      ],
+      "fileName": "core-ranger-5-wolf-v2.webp",
+      "revision": "Wolf anatomy and painted rendering revised, 2026-10-19"
     },
     {
       "id": "hammer",
