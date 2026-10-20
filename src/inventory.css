@@ -259,8 +259,14 @@
 }
 .loot-slot-name {
   font-size: 10px;
-  line-height: 1.25;
-  overflow-wrap: anywhere;
+  line-height: 13px;
+  height: 13px;
+  width: 100%;
+  min-width: 0;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .loot-quantity {
   position: absolute;
@@ -597,6 +603,25 @@
 }
 :root .loot-slot-wrap > .loot-slot {
   height: 100%;
+}
+:root .loot-slots button.loot-slot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) 13px;
+  align-items: center;
+  justify-items: center;
+  gap: 3px;
+  overflow: hidden;
+}
+.loot-slot > :is(.loot-item-art, svg) {
+  grid-row: 1;
+  grid-column: 1;
+  max-width: 100%;
+  max-height: 100%;
+}
+.loot-slot > .loot-slot-name {
+  grid-row: 2;
+  grid-column: 1;
 }
 .loot-layout .loot-slot .loot-item-art {
   width: 38px;

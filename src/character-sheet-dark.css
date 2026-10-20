@@ -145,7 +145,6 @@
     .sheet-training-cards li,
     .sheet-language-tags > span,
     .sheet-feature-cards > li,
-    .sheet-resource-grid label,
     .sheet-rest-choices
   ) {
   background: var(--sheet-inset);

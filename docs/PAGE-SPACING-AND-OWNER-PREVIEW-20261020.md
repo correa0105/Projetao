@@ -27,3 +27,25 @@ Publicação incremental no Docker local, imagem
 `alvorada-cinzenta-app:page-spacing-owner-20261020`, derivada da publicação de
 entrega de personagens. Sem migrations novas. Preservar chunks antigos para
 abas já abertas e manter alterações independentes fora desta publicação.
+
+## Refino posterior dos painéis e itens
+
+O painel de compra dos mascotes passa de 356 para 380 px nas telas maiores,
+começa 15 px mais acima e tem 64 px adicionais de altura disponível. A lista
+de espécies acompanha a altura da janela, eliminando a rolagem externa do
+painel nas telas de computador verificadas. Telas pequenas conservam acesso
+a todos os controles pela rolagem interna necessária.
+
+As labels dos recursos de Combate não recebem mais o fundo aplicado a cartões;
+campos numéricos e demais superfícies mantêm seus fundos.
+
+Em toda a mochila e cofre, o slot do item usa duas áreas de grade fixas: arte e
+nome. O nome ocupa uma linha de 13 px, com reticências no excedente, sem mudar
+a posição ou tamanho da imagem. Nome integral preservado no rótulo acessível
+e no painel de detalhes; quantidade e espaços vazios permanecem independentes.
+
+Build do cliente e conferência visual no Edge em 1440×908, 1280×720, 1024×768,
+860×640 e 390×844. Medidas relativas de imagem/nome iguais entre nomes curtos e
+longos, reticências, labels transparentes e campos opacos conferidos. Publicação
+`visual-refinements-20261020` somente do cliente, preservando o servidor e assets
+anteriores.

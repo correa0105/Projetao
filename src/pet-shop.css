@@ -30,7 +30,7 @@
   overflow: hidden;
 }
 :root .app-shell[data-page='pets'] .pet-shop-purchase {
-  max-height: calc(100dvh - 170px);
+  max-height: calc(100dvh - 106px);
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
@@ -39,7 +39,7 @@
   position: relative;
   isolation: isolate;
   min-height: 780px;
-  padding: 105px max(24px, 6.6vw) 36px;
+  padding: 90px max(24px, 6.6vw) 16px;
 }
 .pet-shop-background,
 .pet-shop-atmosphere {
@@ -59,7 +59,7 @@
 }
 .pet-shop-purchase {
   position: relative;
-  width: 356px;
+  width: 380px;
   padding: 17px;
   border: 1px solid #a68a4f60;
   border-radius: 6px;
@@ -221,7 +221,7 @@
     scrollbar-width: thin;
   }
   .pet-shop-animal-list {
-    max-height: clamp(190px, calc(100dvh - 535px), 320px);
+    max-height: clamp(54px, calc(100dvh - 592px), 320px);
   }
 }
 .pet-shop-price {
