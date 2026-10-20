@@ -48,7 +48,7 @@ import './guild-estate.css';
 
 type Camera = { x: number; y: number; width: number };
 type Props = {
-  identity: ReactNode;
+  menuRequest: number;
   guildActions: ReactNode;
   guildId: string;
   characterId: string;
@@ -101,6 +101,9 @@ export function GuildEstate(p: Props) {
   const [menuOpen, setMenuOpen] = useState(false),
     [menuTab, setMenuTab] = useState<'view' | 'decor' | 'character' | 'guild'>('view');
   const [actorMenu, setActorMenu] = useState<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (p.menuRequest) setMenuOpen(true);
+  }, [p.menuRequest]);
   const purchaseKeys = useRef<Record<string, string>>({});
   const gesture = useRef<{
     pointer: number;
@@ -753,18 +756,6 @@ export function GuildEstate(p: Props) {
           if (e.key === 'Escape') setMenuOpen(false);
         }}
       >
-        <div className="guild-estate-identity-card">
-        {p.identity}
-        <button
-          type="button"
-          className="guild-estate-menu-toggle"
-          aria-expanded={menuOpen}
-          aria-controls="guild-estate-menu-panel"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <Grid2X2 size={17} /> Menu da sede
-        </button>
-        </div>
         {menuOpen && (
           <div id="guild-estate-menu-panel" className="guild-estate-menu-panel">
             <div className="guild-estate-menu-title">

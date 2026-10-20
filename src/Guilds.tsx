@@ -111,6 +111,7 @@ export function Guilds({
     [decor, setDecor] = useState(guildDecor[0]?.id || '');
   const [estateFocusRequest, setEstateFocusRequest] = useState(0);
   const [estateEditRequest, setEstateEditRequest] = useState(0);
+  const [estateMenuRequest, setEstateMenuRequest] = useState(0);
   const request = useRef(crypto.randomUUID());
   const [crestDraft, setCrestDraft] = useState<{ crest: Crest; revision: number } | null>(null);
   const loadTurn = useRef(0);
@@ -199,20 +200,7 @@ export function Guilds({
   const headquarters = g ? (
     <GuildEstate
       key={g.id}
-      identity={<button
-              className="guild-scene-identity"
-              onClick={() => setPanel(panel === 'overview' ? null : 'overview')}
-              aria-expanded={panel === 'overview'}
-              aria-controls="scene-panel-overview"
-              aria-label="Informações da guilda"
-            >
-              <GuildCrest crest={current!.crest} size={52} />
-              <span>
-                <h1>{g.document.name}</h1>
-                <small>Sede da guilda · {g.is_member ? 'Sua companhia' : 'Visitante'}</small>
-              </span>
-              <ChevronDown size={15} />
-            </button>}
+      menuRequest={estateMenuRequest}
       guildId={g.id}
       characterId={activeCharacterId}
       revision={g.revision}
@@ -364,6 +352,20 @@ export function Guilds({
         <p role="status">Abrindo a sede…</p>
       ) : (
         <>
+<div className="guild-scene-topbar"><button
+              className="guild-scene-identity"
+              onClick={() => setPanel(panel === 'overview' ? null : 'overview')}
+              aria-expanded={panel === 'overview'}
+              aria-controls="scene-panel-overview"
+              aria-label="Informações da guilda"
+            >
+              <GuildCrest crest={current!.crest} size={52} />
+              <span>
+                <h1>{g.document.name}</h1>
+                <small>Sede da guilda · {g.is_member ? 'Sua companhia' : 'Visitante'}</small>
+              </span>
+              <ChevronDown size={15} />
+            </button></div>
           {panel === 'overview' && (
             <ScenePanel
               id="overview"
@@ -433,6 +435,7 @@ export function Guilds({
                     Reposicionar itens
                   </button>
                 )}
+                <button aria-controls="guild-estate-menu-panel" onClick={() => { setPanel(null); setEstateMenuRequest(n => n + 1); }}><Home size={16} />Menu da sede</button>
               </div>
               <p className="guild-membership" role="status">
                 <Users size={14} />

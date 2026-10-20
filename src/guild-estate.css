@@ -476,32 +476,6 @@
 .guild-estate-menu-toggle {
   box-shadow: 0 3px 12px #0004;
 }
-.guild-estate-identity-card {
-  background: #19180ff2;
-  border: 1px solid #96805577;
-  padding: 8px;
-  border-radius: 6px;
-  display: grid;
-  gap: 6px;
-}
-:root .guild-page .guild-estate-identity-card button.guild-scene-identity {
-  max-width: 100%;
-  width: 100%;
-  border: 0;
-  background: transparent;
-  justify-content: flex-start;
-  padding: 2px;
-}
-:root .guild-page .guild-estate-identity-card .guild-scene-identity h1 {
-  font-size: 22px;
-}
-.guild-estate-identity-card .guild-estate-menu-toggle {
-  width: 100%;
-  border-color: #96805544;
-  box-shadow: none;
-  font-size: 12px;
-  padding: 8px;
-}
 .guild-estate-menu-panel {
   margin-top: 8px;
   padding: 12px;
