@@ -2,6 +2,7 @@ import { z } from 'zod';
 import houses from './vtt-houses-catalog.json';
 import furniture from './vtt-home-furniture-catalog.json';
 import medievalFurniture from './vtt-medieval-furniture-catalog.json';
+import expandedFurniture from './house2-expansion-20261019.json';
 import { terrainTextureIds } from './vtt-terrain';
 import { vttVisualSource } from './vtt-asset-visuals';
 import { house2DefaultGrassImage } from './reference-grass';
@@ -37,7 +38,7 @@ export const house2Houses = houses
     interior: vttVisualSource(h.interior),
     price: 600 + Math.floor(i / 5) * 100,
   }));
-export const house2Furniture = [...furniture, ...medievalFurniture, ...house2ExtraLightItems].map(
+export const house2Furniture = [...furniture, ...medievalFurniture, ...expandedFurniture, ...house2ExtraLightItems].map(
   (f) => ({
     ...f,
     image: vttVisualSource(f.image),

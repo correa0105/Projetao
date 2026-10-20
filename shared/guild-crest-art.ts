@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import crestExpansion from './guild-crest-expansion-20261019.json';
 export const crestArtBanners = [
   'ragged',
   'swallowtail',
@@ -20,6 +21,7 @@ export const crestArtBanners = [
   'tiered',
   'diamond-cloth',
   'imperial-cloth',
+  ...crestExpansion.filter((x) => x.kind === 'banner').map((x) => x.id),
 ] as const;
 export const crestArtSigils = [
   'wolf-relief',
@@ -42,6 +44,7 @@ export const crestArtSigils = [
   'serpent',
   'kraken',
   'tower',
+  ...crestExpansion.filter((x) => x.kind === 'symbol').map((x) => x.id),
 ] as const;
 export const crestArtFrames = [
   'war-horns',
@@ -64,8 +67,14 @@ export const crestArtFrames = [
   'spider-web',
   'frost-crystal',
   'storm-blades',
+  ...crestExpansion.filter((x) => x.kind === 'frame').map((x) => x.id),
 ] as const;
 export const crestArtLayers = ['banner', 'frame', 'symbol'] as const;
+export function crestArtImageSource(kind: 'cloth' | 'sigils' | 'ornaments', index: number) {
+  const ids = kind === 'cloth' ? crestArtBanners : kind === 'sigils' ? crestArtSigils : crestArtFrames;
+  const expanded = crestExpansion.find((x) => x.id === ids[index]);
+  return expanded?.image ?? '/guild/crests-20261019/' + kind + '-' + (index + 1) + '.webp';
+}
 export const crestArtSchema = z
   .object({
     banner: z.enum(crestArtBanners).default('swallowtail'),
@@ -87,6 +96,7 @@ export const crestArtSchema = z
   .strict();
 export type CrestArt = z.infer<typeof crestArtSchema>;
 export const crestArtNames: Record<string, string> = {
+  ...Object.fromEntries(crestExpansion.map((x) => [x.id, x.name])),
   ragged: 'Pendão rasgado',
   swallowtail: 'Cauda de andorinha',
   cathedral: 'Flâmula da catedral',

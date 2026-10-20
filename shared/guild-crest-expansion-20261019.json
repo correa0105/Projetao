@@ -1,0 +1,362 @@
+[
+  {
+    "kind": "banner",
+    "id": "lily-tail",
+    "name": "Cauda de lírio",
+    "image": "/guild/crests-expansion-20261019/lily-tail.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "crescent-cut",
+    "name": "Recorte lunar",
+    "image": "/guild/crests-expansion-20261019/crescent-cut.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "falcon-tail",
+    "name": "Cauda de falcão",
+    "image": "/guild/crests-expansion-20261019/falcon-tail.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "ivory-gonfalon",
+    "name": "Gonfalão de marfim",
+    "image": "/guild/crests-expansion-20261019/ivory-gonfalon.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "sea-streamer",
+    "name": "Flâmula marítima",
+    "image": "/guild/crests-expansion-20261019/sea-streamer.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "bronze-chevron",
+    "name": "Pendão de bronze",
+    "image": "/guild/crests-expansion-20261019/bronze-chevron.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "seven-tongues",
+    "name": "Sete línguas",
+    "image": "/guild/crests-expansion-20261019/seven-tongues.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "crystal-cut",
+    "name": "Recorte de cristal",
+    "image": "/guild/crests-expansion-20261019/crystal-cut.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "rose-drape",
+    "name": "Véu das rosas",
+    "image": "/guild/crests-expansion-20261019/rose-drape.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "rune-fold",
+    "name": "Dobra do bastião",
+    "image": "/guild/crests-expansion-20261019/rune-fold.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "pilgrim-pennant",
+    "name": "Flâmula do peregrino",
+    "image": "/guild/crests-expansion-20261019/pilgrim-pennant.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "white-vigil",
+    "name": "Vigília branca",
+    "image": "/guild/crests-expansion-20261019/white-vigil.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "thorn-hem",
+    "name": "Bainha de espinhos",
+    "image": "/guild/crests-expansion-20261019/thorn-hem.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "forest-vellum",
+    "name": "Véu do bosque",
+    "image": "/guild/crests-expansion-20261019/forest-vellum.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "twilight-ribbon",
+    "name": "Fita do crepúsculo",
+    "image": "/guild/crests-expansion-20261019/twilight-ribbon.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "iron-tabard",
+    "name": "Tabardo de ferro",
+    "image": "/guild/crests-expansion-20261019/iron-tabard.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "saffron-scallops",
+    "name": "Ondas de açafrão",
+    "image": "/guild/crests-expansion-20261019/saffron-scallops.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "royal-pleats",
+    "name": "Pregas reais",
+    "image": "/guild/crests-expansion-20261019/royal-pleats.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "pearl-petals",
+    "name": "Pétalas de pérola",
+    "image": "/guild/crests-expansion-20261019/pearl-petals.webp"
+  },
+  {
+    "kind": "banner",
+    "id": "storm-tatter",
+    "name": "Pendão da tormenta",
+    "image": "/guild/crests-expansion-20261019/storm-tatter.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "lily-silver",
+    "name": "Lírios de prata",
+    "image": "/guild/crests-expansion-20261019/lily-silver.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "raven-feathers",
+    "name": "Penas do corvo",
+    "image": "/guild/crests-expansion-20261019/raven-feathers.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "phoenix-plumes",
+    "name": "Plumas da fênix",
+    "image": "/guild/crests-expansion-20261019/phoenix-plumes.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "ram-horns",
+    "name": "Chifres de carneiro",
+    "image": "/guild/crests-expansion-20261019/ram-horns.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "sea-serpents",
+    "name": "Serpentes marinhas",
+    "image": "/guild/crests-expansion-20261019/sea-serpents.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "oak-acorns",
+    "name": "Carvalho e bolotas",
+    "image": "/guild/crests-expansion-20261019/oak-acorns.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "silver-wheat",
+    "name": "Trigo de prata",
+    "image": "/guild/crests-expansion-20261019/silver-wheat.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "obsidian-spikes",
+    "name": "Espinhos de obsidiana",
+    "image": "/guild/crests-expansion-20261019/obsidian-spikes.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "pearl-shells",
+    "name": "Conchas e pérolas",
+    "image": "/guild/crests-expansion-20261019/pearl-shells.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "moon-filagree",
+    "name": "Filigrana lunar",
+    "image": "/guild/crests-expansion-20261019/moon-filagree.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "compass-rope",
+    "name": "Cordame da bússola",
+    "image": "/guild/crests-expansion-20261019/compass-rope.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "eagle-wings",
+    "name": "Asas da águia",
+    "image": "/guild/crests-expansion-20261019/eagle-wings.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "briar-iron",
+    "name": "Sarça de ferro",
+    "image": "/guild/crests-expansion-20261019/briar-iron.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "hammered-gears",
+    "name": "Engrenagens da forja",
+    "image": "/guild/crests-expansion-20261019/hammered-gears.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "arcane-orbits",
+    "name": "Órbitas arcanas",
+    "image": "/guild/crests-expansion-20261019/arcane-orbits.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "bone-laurel",
+    "name": "Louros de osso",
+    "image": "/guild/crests-expansion-20261019/bone-laurel.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "crane-wings",
+    "name": "Asas da garça",
+    "image": "/guild/crests-expansion-20261019/crane-wings.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "lion-mantle",
+    "name": "Manto leonino",
+    "image": "/guild/crests-expansion-20261019/lion-mantle.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "star-chain",
+    "name": "Corrente das estrelas",
+    "image": "/guild/crests-expansion-20261019/star-chain.webp"
+  },
+  {
+    "kind": "frame",
+    "id": "jade-vines",
+    "name": "Vinhas de jade",
+    "image": "/guild/crests-expansion-20261019/jade-vines.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "unicorn-relief",
+    "name": "Unicórnio da aurora",
+    "image": "/guild/crests-expansion-20261019/unicorn-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "pegasus-relief",
+    "name": "Pégaso alado",
+    "image": "/guild/crests-expansion-20261019/pegasus-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "basilisk-relief",
+    "name": "Basilisco ancestral",
+    "image": "/guild/crests-expansion-20261019/basilisk-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "manticore-relief",
+    "name": "Mantícora guardiã",
+    "image": "/guild/crests-expansion-20261019/manticore-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "wyvern-relief",
+    "name": "Serpe da muralha",
+    "image": "/guild/crests-expansion-20261019/wyvern-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "badger-relief",
+    "name": "Texugo do bastião",
+    "image": "/guild/crests-expansion-20261019/badger-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "lynx-relief",
+    "name": "Lince da vigília",
+    "image": "/guild/crests-expansion-20261019/lynx-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "fox-relief",
+    "name": "Raposa astuta",
+    "image": "/guild/crests-expansion-20261019/fox-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "crane-relief",
+    "name": "Garça dos rios",
+    "image": "/guild/crests-expansion-20261019/crane-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "shark-relief",
+    "name": "Tubarão das marés",
+    "image": "/guild/crests-expansion-20261019/shark-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "moth-relief",
+    "name": "Mariposa lunar",
+    "image": "/guild/crests-expansion-20261019/moth-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "scorpion-relief",
+    "name": "Escorpião de bronze",
+    "image": "/guild/crests-expansion-20261019/scorpion-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "anvil-relief",
+    "name": "Bigorna da forja",
+    "image": "/guild/crests-expansion-20261019/anvil-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "chalice-relief",
+    "name": "Cálice dos juramentos",
+    "image": "/guild/crests-expansion-20261019/chalice-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "hourglass-relief",
+    "name": "Ampulheta do destino",
+    "image": "/guild/crests-expansion-20261019/hourglass-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "scales-relief",
+    "name": "Balança da justiça",
+    "image": "/guild/crests-expansion-20261019/scales-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "lantern-relief",
+    "name": "Lanterna do caminho",
+    "image": "/guild/crests-expansion-20261019/lantern-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "quill-relief",
+    "name": "Pena do cronista",
+    "image": "/guild/crests-expansion-20261019/quill-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "ship-relief",
+    "name": "Nau da alvorada",
+    "image": "/guild/crests-expansion-20261019/ship-relief.webp"
+  },
+  {
+    "kind": "symbol",
+    "id": "rose-relief",
+    "name": "Rosa dos pactos",
+    "image": "/guild/crests-expansion-20261019/rose-relief.webp"
+  }
+]

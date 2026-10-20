@@ -1,0 +1,42 @@
+[
+  {
+    "id": "beach",
+    "name": "Praia do Porto",
+    "image": "/rp-lobby/20261019-integrated/beach.webp"
+  },
+  {
+    "id": "market",
+    "name": "Mercado da Cidade",
+    "image": "/rp-lobby/20261019-integrated/market.webp"
+  },
+  {
+    "id": "plaza",
+    "name": "Praça da Fonte",
+    "image": "/rp-lobby/20261019-integrated/plaza.webp"
+  },
+  {
+    "id": "tavern",
+    "name": "Taverna da Lareira",
+    "image": "/rp-lobby/20261019-integrated/tavern.webp"
+  },
+  {
+    "id": "hall-library",
+    "name": "Sala do Escriba",
+    "image": "/rp-lobby/20261019-integrated/hall-library.webp"
+  },
+  {
+    "id": "porch-pines",
+    "name": "Varanda dos Pinheiros",
+    "image": "/rp-lobby/20261019-integrated/porch-pines.webp"
+  },
+  {
+    "id": "garden-courtyard",
+    "name": "Pátio da Fonte",
+    "image": "/rp-lobby/20261019-integrated/garden-courtyard.webp"
+  },
+  {
+    "id": "garden-moon",
+    "name": "Jardim da Lua",
+    "image": "/rp-lobby/20261019-integrated/garden-moon.webp"
+  }
+]

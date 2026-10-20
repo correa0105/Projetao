@@ -1579,3 +1579,13 @@ body:has(.world-atlas.is-world) {
 .entry-page--auth .entry-atmosphere {
   filter: none;
 }
+
+/* Illustrated submenu icons share the parchment and copper of the main dock. */
+.dock-destination > .dock-destination-art {
+  display: block;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  pointer-events: none;
+}

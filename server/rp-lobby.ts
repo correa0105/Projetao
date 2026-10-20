@@ -90,7 +90,9 @@ async function state(db: DB, r: any, uid: string) {
     : [];
   return {
     ...r,
-    document: rpDocumentSchema.parse(r.document),
+    document: rpDocumentSchema.parse(
+      r.kind === 'fixed' ? { ...r.document, placements: [] } : r.document,
+    ),
     presence: await Promise.all(
       presence.map(async (p) => ({
         ...p,

@@ -7,25 +7,6 @@ import {
   type CSSProperties,
 } from 'react';
 import {
-  MessagesSquare,
-  Backpack,
-  CalendarDays,
-  Trophy,
-  Layers,
-  BookOpen,
-  Compass,
-  Feather,
-  House,
-  Map,
-  PawPrint,
-  ScrollText,
-  Shield,
-  Users,
-  Dices,
-  Crown,
-  Castle,
-} from 'lucide-react';
-import {
   CandleIcon,
   HelmetIcon,
   NoticeBoardIcon,
@@ -35,21 +16,26 @@ import {
 } from './GuildIcons';
 import type { Page } from './types';
 
-type Destination = { page: Page; label: string; icon: ComponentType<{ size?: number }> };
+type Destination = { page: Page; label: string };
 
-const packages: { id: string; label: string; icon: Destination['icon']; items: Destination[] }[] = [
+const packages: {
+  id: string;
+  label: string;
+  icon: ComponentType<{ size?: number }>;
+  items: Destination[];
+}[] = [
   {
     id: 'character',
     label: 'Personagem',
     icon: HelmetIcon,
     items: [
-      { page: 'characters', label: 'Personagens', icon: Users },
-      { page: 'profile', label: 'Ficha', icon: Shield },
-      { page: 'inventory', label: 'Inventário', icon: Backpack },
-      { page: 'achievements', label: 'Conquistas', icon: Trophy },
-      { page: 'character-cards', label: 'Cartas', icon: Layers },
-      { page: 'hall', label: 'Hall da Fama', icon: Crown },
-      { page: 'profiles', label: 'Perfis', icon: Users },
+      { page: 'characters', label: 'Personagens' },
+      { page: 'profile', label: 'Ficha' },
+      { page: 'inventory', label: 'Inventário' },
+      { page: 'achievements', label: 'Conquistas' },
+      { page: 'character-cards', label: 'Cartas' },
+      { page: 'hall', label: 'Hall da Fama' },
+      { page: 'profiles', label: 'Perfis' },
     ],
   },
   {
@@ -57,10 +43,10 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     label: 'Mural',
     icon: NoticeBoardIcon,
     items: [
-      { page: 'board', label: 'Mural', icon: ScrollText },
-      { page: 'events', label: 'Eventos', icon: CalendarDays },
-      { page: 'tower', label: 'Torre', icon: Castle },
-      { page: 'vtt', label: 'Mesa virtual', icon: Dices },
+      { page: 'board', label: 'Mural' },
+      { page: 'events', label: 'Eventos' },
+      { page: 'tower', label: 'Torre' },
+      { page: 'vtt', label: 'Mesa virtual' },
     ],
   },
   {
@@ -68,10 +54,10 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     label: 'Loja',
     icon: PouchIcon,
     items: [
-      { page: 'shop', label: 'Empório', icon: Backpack },
-      { page: 'stable', label: 'Estábulo', icon: House },
-      { page: 'pets', label: 'Mascotes', icon: PawPrint },
-      { page: 'cards', label: 'Salão das cartas', icon: Layers },
+      { page: 'shop', label: 'Empório' },
+      { page: 'stable', label: 'Estábulo' },
+      { page: 'pets', label: 'Mascotes' },
+      { page: 'cards', label: 'Salão das cartas' },
     ],
   },
   {
@@ -79,10 +65,10 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     label: 'Explorar',
     icon: MapIcon,
     items: [
-      { page: 'world', label: 'Mundo', icon: Map },
-      { page: 'house', label: 'Lobby de RP', icon: MessagesSquare },
-      { page: 'house2', label: 'House 2.0 · testes', icon: House },
-      { page: 'guild', label: 'Guilda', icon: Shield },
+      { page: 'world', label: 'Mundo' },
+      { page: 'house', label: 'Lobby de RP' },
+      { page: 'house2', label: 'House 2.0 · testes' },
+      { page: 'guild', label: 'Guilda' },
     ],
   },
   {
@@ -90,8 +76,8 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     label: 'Biblioteca',
     icon: BookIcon,
     items: [
-      { page: 'lore', label: 'Lore', icon: BookOpen },
-      { page: 'rules', label: 'Regras', icon: ScrollText },
+      { page: 'lore', label: 'Lore' },
+      { page: 'rules', label: 'Regras' },
     ],
   },
 ];
@@ -319,14 +305,22 @@ export function Navigation({ page, go }: { page: Page; go: (page: Page) => void 
             <span>{group.label}</span>
           </div>
           <div className="dock-destinations">
-            {group.items.map(({ page: target, label, icon: ItemIcon }) => (
+            {group.items.map(({ page: target, label }) => (
               <button
                 key={target}
                 className="dock-destination"
                 aria-current={page === target ? 'page' : undefined}
                 onClick={() => navigate(target)}
               >
-                <ItemIcon size={16.2} />
+                <img
+                  className="dock-destination-art"
+                  src={`/navigation/illustrated-20261020/${target}.webp`}
+                  alt=""
+                  aria-hidden="true"
+                  draggable={false}
+                  width={30}
+                  height={30}
+                />
                 <span>{label}</span>
               </button>
             ))}

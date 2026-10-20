@@ -16,8 +16,22 @@ TypeScript do checkout e da versão isolada; build de cliente e servidor; ficha 
 
 Publicação incremental sobre `profile-footer-20261019`, com fontes preservadas em `.local/ui-refinement-20261020/source`. A conferência verificou 102 arquivos publicados e preservou os outros 17.187 arquivos. Não foram publicadas as alterações independentes de VTT, treinamento ou a expansão de assets ainda incompleta.
 
-## Trabalho em andamento
+## Ícones e expansão de artes concluídos
 
-Ícones ilustrados para os 21 destinos dos submenus, solicitados após a publicação acima.
+Os 21 destinos dos submenus usam ilustrações individuais de pergaminho, cobre e couro. Torre, Salão das Cartas e Mascotes tiveram suas primeiras versões substituídas conforme a correção do usuário: torre esguia de pedra, cartas simples de fantasia e coleira com medalha de patinha. Os cinco menus foram conferidos em desktop e celular, incluindo imagens carregadas, navegação e Escape. Publicação incremental verificou os 21 hashes ao vivo.
 
-Expansão herdada do chat anterior: oito cenários de RP, 60 peças de brasão e 35/100 objetos de House 2.0 gerados. A peça 035 tem fonte e prompt salvos em `.local/asset-expansion-20261019/results/house2-new-035.json`; ainda faltam 65 objetos e a validação/integração do lote completo.
+A conferência dos registros locais recuperou mais peças do chat anterior do que constavam no manifesto parcial. O lote final tem **100 objetos novos de House 2.0**, com imagem e miniatura próprias; **20 tecidos, 20 bordas e 20 símbolos** adicionais para brasões, totalizando 40 opções em cada categoria; e **oito cenários completos de RP** com decoração pintada na imagem. Móveis anteriores, compras e brasões salvos mantêm seus IDs. A migration 116 remove apenas as sobreposições dos quatro lobbies públicos; salas privadas conservam sua decoração.
+
+### Arquivos finais e prompts
+
+- `public/navigation/illustrated-20261020/`: 21 ícones; prompts e hashes em `data/navigation-icons-20261020.json`.
+- `public/house2/expansion-20261019/` e `public/house2/expansion-thumbs-20261019/`: 100 objetos e 100 miniaturas.
+- `public/guild/crests-expansion-20261019/`: 60 peças de brasão.
+- `public/rp-lobby/20261019-integrated/`: oito cenários.
+- Prompts, fontes e hashes dos 168 assets acima em `data/asset-expansion-20261019-results.json`; plano em `data/asset-expansion-20261019.json`.
+
+Todas as artes foram produzidas com `image_gen` embutido. O preparo preserva o alfa original e converte para WebP. Um aviso de margem no original de Engrenagens da forja foi inspecionado visualmente; a moldura está íntegra e o arquivo final recebeu margem transparente.
+
+Validação final: hashes e arquivos dos 168 assets, transparência e 100 miniaturas; compras idempotentes de três peças novas; catálogo completo com 450 móveis à venda; fluxo real de House 2.0 em cinco larguras; RP com dois jogadores, quatro salas públicas sem sobreposições e oito cenários, convites, arraste e recuperação de falha ao salvar; editor de brasão em desktop/celular, 40 opções por categoria, preservação de brasões antigos e salvamento das três últimas opções novas. Testes de banco usam instâncias descartáveis. Fontes publicadas isoladas em `.local/asset-expansion-release-20261020/source`, sem incorporar os trabalhos independentes do checkout.
+
+Publicação final saudável: 371 arquivos conferidos, outros 17.286 arquivos preservados e 168 imagens verificadas por hash via HTTP. Os quatro lobbies públicos receberam a migration 116. Backup PostgreSQL anterior em `.local/backups/before-assets-20261020.dump`; não houve necessidade de restauração.

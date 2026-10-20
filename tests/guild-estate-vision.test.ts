@@ -66,8 +66,8 @@ test('aberturas de outros cômodos ficam ocultas atrás da porta fechada', () =>
 });
 test('brasões antigos conservam estilo e ilustrados validam camadas e transformações', () => {
   for (const choices of [crestArtBanners, crestArtFrames, crestArtSigils]) {
-    assert.equal(choices.length, 20);
-    assert.equal(new Set(choices).size, 20);
+    assert.equal(choices.length, 40);
+    assert.equal(new Set(choices).size, 40);
   }
   assert.equal(crestSchema.parse({ icon: 'wolf' }).art, undefined);
   const crest = crestSchema.parse({

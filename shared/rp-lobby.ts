@@ -1,14 +1,7 @@
 import { z } from 'zod';
-import { houseCatalog, houseTemplates, houseSupportsFacing } from './house';
-export const rpScenes = [
-  { id: 'beach', name: 'Praia do Porto', image: '/rp-lobby/20261018/beach.webp' },
-  { id: 'market', name: 'Mercado da Cidade', image: '/rp-lobby/20261018/market.webp' },
-  { id: 'plaza', name: 'Praça da Fonte', image: '/rp-lobby/20261018/plaza.webp' },
-  { id: 'tavern', name: 'Taverna da Lareira', image: '/house/rooms/hall-hearth.webp' },
-  ...houseTemplates.filter((t) =>
-    ['hall-library', 'porch-pines', 'garden-courtyard', 'garden-moon'].includes(t.id),
-  ),
-];
+import { houseCatalog, houseSupportsFacing } from './house';
+import integratedScenes from './rp-scenes-integrated-20261019.json';
+export const rpScenes = integratedScenes;
 export const rpDecor = houseCatalog.filter((x) => !['letter', 'frame'].includes(x.id));
 export const rpPlacementSchema = z
   .object({

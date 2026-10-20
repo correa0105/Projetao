@@ -1,0 +1,902 @@
+[
+  {
+    "id": "house2-new-001",
+    "name": "Escrivaninha do cartógrafo",
+    "category": "Cartografia",
+    "width": 2,
+    "height": 1.24,
+    "image": "/house2/expansion-20261019/001.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/001.webp"
+  },
+  {
+    "id": "house2-new-002",
+    "name": "Mesa de navegação",
+    "category": "Cartografia",
+    "width": 2,
+    "height": 1.77,
+    "image": "/house2/expansion-20261019/002.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/002.webp"
+  },
+  {
+    "id": "house2-new-003",
+    "name": "Bancada de pergaminhos",
+    "category": "Cartografia",
+    "width": 2,
+    "height": 0.74,
+    "image": "/house2/expansion-20261019/003.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/003.webp"
+  },
+  {
+    "id": "house2-new-004",
+    "name": "Baú de mapas",
+    "category": "Cartografia",
+    "width": 1.5,
+    "height": 0.93,
+    "image": "/house2/expansion-20261019/004.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/004.webp"
+  },
+  {
+    "id": "house2-new-005",
+    "name": "Tapete da rosa dos ventos",
+    "category": "Cartografia",
+    "width": 3,
+    "height": 2.98,
+    "image": "/house2/expansion-20261019/005.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/005.webp"
+  },
+  {
+    "id": "house2-new-006",
+    "name": "Mesa de caligrafia",
+    "category": "Biblioteca",
+    "width": 1.5,
+    "height": 0.91,
+    "image": "/house2/expansion-20261019/006.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/006.webp"
+  },
+  {
+    "id": "house2-new-007",
+    "name": "Mesa de encadernação",
+    "category": "Biblioteca",
+    "width": 2,
+    "height": 1.15,
+    "image": "/house2/expansion-20261019/007.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/007.webp"
+  },
+  {
+    "id": "house2-new-008",
+    "name": "Arca dos manuscritos",
+    "category": "Biblioteca",
+    "width": 1.5,
+    "height": 0.87,
+    "image": "/house2/expansion-20261019/008.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/008.webp"
+  },
+  {
+    "id": "house2-new-009",
+    "name": "Tapete do escriba",
+    "category": "Biblioteca",
+    "width": 2,
+    "height": 3.17,
+    "image": "/house2/expansion-20261019/009.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/009.webp"
+  },
+  {
+    "id": "house2-new-010",
+    "name": "Mesa de xadrez",
+    "category": "Biblioteca",
+    "width": 1.5,
+    "height": 1.47,
+    "image": "/house2/expansion-20261019/010.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/010.webp"
+  },
+  {
+    "id": "house2-new-011",
+    "name": "Bancada do alquimista",
+    "category": "Alquimia",
+    "width": 2.5,
+    "height": 1.06,
+    "image": "/house2/expansion-20261019/011.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/011.webp"
+  },
+  {
+    "id": "house2-new-012",
+    "name": "Mesa de ervas secas",
+    "category": "Alquimia",
+    "width": 1.8,
+    "height": 1.78,
+    "image": "/house2/expansion-20261019/012.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/012.webp"
+  },
+  {
+    "id": "house2-new-013",
+    "name": "Destilador de cobre",
+    "category": "Alquimia",
+    "width": 1.2,
+    "height": 0.78,
+    "image": "/house2/expansion-20261019/013.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/013.webp"
+  },
+  {
+    "id": "house2-new-014",
+    "name": "Bacia de cristais",
+    "category": "Alquimia",
+    "width": 1,
+    "height": 0.99,
+    "image": "/house2/expansion-20261019/014.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/014.webp"
+  },
+  {
+    "id": "house2-new-015",
+    "name": "Tapete do círculo alquímico",
+    "category": "Alquimia",
+    "width": 2.5,
+    "height": 2.46,
+    "image": "/house2/expansion-20261019/015.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/015.webp"
+  },
+  {
+    "id": "house2-new-016",
+    "name": "Maca da curandeira",
+    "category": "Enfermaria",
+    "width": 1.2,
+    "height": 2.09,
+    "image": "/house2/expansion-20261019/016.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/016.webp"
+  },
+  {
+    "id": "house2-new-017",
+    "name": "Mesa de curativos",
+    "category": "Enfermaria",
+    "width": 1.5,
+    "height": 0.77,
+    "image": "/house2/expansion-20261019/017.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/017.webp"
+  },
+  {
+    "id": "house2-new-018",
+    "name": "Bacia de lavagem",
+    "category": "Enfermaria",
+    "width": 1,
+    "height": 0.95,
+    "image": "/house2/expansion-20261019/018.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/018.webp"
+  },
+  {
+    "id": "house2-new-019",
+    "name": "Biombo de linho",
+    "category": "Enfermaria",
+    "width": 2.5,
+    "height": 0.91,
+    "image": "/house2/expansion-20261019/019.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/019.webp"
+  },
+  {
+    "id": "house2-new-020",
+    "name": "Arca de remédios",
+    "category": "Enfermaria",
+    "width": 1.2,
+    "height": 0.8,
+    "image": "/house2/expansion-20261019/020.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/020.webp"
+  },
+  {
+    "id": "house2-new-021",
+    "name": "Mesa de pão e queijo",
+    "category": "Cozinha",
+    "width": 2,
+    "height": 1.24,
+    "image": "/house2/expansion-20261019/021.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/021.webp"
+  },
+  {
+    "id": "house2-new-022",
+    "name": "Bancada de pastelaria",
+    "category": "Cozinha",
+    "width": 2,
+    "height": 1.19,
+    "image": "/house2/expansion-20261019/022.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/022.webp"
+  },
+  {
+    "id": "house2-new-023",
+    "name": "Fogareiro de barro",
+    "category": "Cozinha",
+    "width": 1.2,
+    "height": 0.99,
+    "image": "/house2/expansion-20261019/023.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/023.webp"
+  },
+  {
+    "id": "house2-new-024",
+    "name": "Mesa de conservas",
+    "category": "Cozinha",
+    "width": 1.8,
+    "height": 0.91,
+    "image": "/house2/expansion-20261019/024.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/024.webp"
+  },
+  {
+    "id": "house2-new-025",
+    "name": "Barril de maçãs",
+    "category": "Cozinha",
+    "width": 1,
+    "height": 1,
+    "image": "/house2/expansion-20261019/025.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/025.webp"
+  },
+  {
+    "id": "house2-new-026",
+    "name": "Cesto de pães",
+    "category": "Cozinha",
+    "width": 1,
+    "height": 0.67,
+    "image": "/house2/expansion-20261019/026.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/026.webp"
+  },
+  {
+    "id": "house2-new-027",
+    "name": "Cesto de cogumelos",
+    "category": "Cozinha",
+    "width": 0.9,
+    "height": 0.82,
+    "image": "/house2/expansion-20261019/027.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/027.webp"
+  },
+  {
+    "id": "house2-new-028",
+    "name": "Tina de sal",
+    "category": "Cozinha",
+    "width": 1,
+    "height": 1,
+    "image": "/house2/expansion-20261019/028.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/028.webp"
+  },
+  {
+    "id": "house2-new-029",
+    "name": "Mesa de especiarias",
+    "category": "Cozinha",
+    "width": 1.5,
+    "height": 1.49,
+    "image": "/house2/expansion-20261019/029.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/029.webp"
+  },
+  {
+    "id": "house2-new-030",
+    "name": "Prensa de frutas",
+    "category": "Cozinha",
+    "width": 1.5,
+    "height": 1.28,
+    "image": "/house2/expansion-20261019/030.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/030.webp"
+  },
+  {
+    "id": "house2-new-031",
+    "name": "Mesa de banquete redonda",
+    "category": "Salão",
+    "width": 3,
+    "height": 2.99,
+    "image": "/house2/expansion-20261019/031.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/031.webp"
+  },
+  {
+    "id": "house2-new-032",
+    "name": "Mesa de jogos de dados",
+    "category": "Salão",
+    "width": 1.5,
+    "height": 1.47,
+    "image": "/house2/expansion-20261019/032.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/032.webp"
+  },
+  {
+    "id": "house2-new-033",
+    "name": "Divã de veludo",
+    "category": "Salão",
+    "width": 2.5,
+    "height": 1.18,
+    "image": "/house2/expansion-20261019/033.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/033.webp"
+  },
+  {
+    "id": "house2-new-034",
+    "name": "Sofá de linho azul",
+    "category": "Salão",
+    "width": 2.5,
+    "height": 1.2,
+    "image": "/house2/expansion-20261019/034.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/034.webp"
+  },
+  {
+    "id": "house2-new-035",
+    "name": "Poltrona de carvalho entalhado",
+    "category": "Salão",
+    "width": 1.1,
+    "height": 1.03,
+    "image": "/house2/expansion-20261019/035.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/035.webp"
+  },
+  {
+    "id": "house2-new-036",
+    "name": "Banco de couro trançado",
+    "category": "Salão",
+    "width": 2.2,
+    "height": 0.87,
+    "image": "/house2/expansion-20261019/036.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/036.webp"
+  },
+  {
+    "id": "house2-new-037",
+    "name": "Mesa de chá com porcelana",
+    "category": "Salão",
+    "width": 1.4,
+    "height": 1.41,
+    "image": "/house2/expansion-20261019/037.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/037.webp"
+  },
+  {
+    "id": "house2-new-038",
+    "name": "Tapete dos nós antigos",
+    "category": "Salão",
+    "width": 3,
+    "height": 1.99,
+    "image": "/house2/expansion-20261019/038.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/038.webp"
+  },
+  {
+    "id": "house2-new-039",
+    "name": "Tapete de medalhão rubro",
+    "category": "Salão",
+    "width": 3,
+    "height": 3,
+    "image": "/house2/expansion-20261019/039.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/039.webp"
+  },
+  {
+    "id": "house2-new-040",
+    "name": "Tapete de estrelas azuis",
+    "category": "Salão",
+    "width": 2,
+    "height": 3.87,
+    "image": "/house2/expansion-20261019/040.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/040.webp"
+  },
+  {
+    "id": "house2-new-041",
+    "name": "Cama de dossel fechada",
+    "category": "Quarto",
+    "width": 2,
+    "height": 2,
+    "image": "/house2/expansion-20261019/041.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/041.webp"
+  },
+  {
+    "id": "house2-new-042",
+    "name": "Cama de palha camponesa",
+    "category": "Quarto",
+    "width": 1.3,
+    "height": 2.01,
+    "image": "/house2/expansion-20261019/042.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/042.webp"
+  },
+  {
+    "id": "house2-new-043",
+    "name": "Cama de carvalho nobre",
+    "category": "Quarto",
+    "width": 1.6,
+    "height": 1.88,
+    "image": "/house2/expansion-20261019/043.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/043.webp"
+  },
+  {
+    "id": "house2-new-044",
+    "name": "Cama de campanha enrolada",
+    "category": "Quarto",
+    "width": 0.9,
+    "height": 1.01,
+    "image": "/house2/expansion-20261019/044.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/044.webp"
+  },
+  {
+    "id": "house2-new-045",
+    "name": "Berço de vime",
+    "category": "Quarto",
+    "width": 1.1,
+    "height": 1.83,
+    "image": "/house2/expansion-20261019/045.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/045.webp"
+  },
+  {
+    "id": "house2-new-046",
+    "name": "Baú de viagem reforçado",
+    "category": "Quarto",
+    "width": 1.5,
+    "height": 0.88,
+    "image": "/house2/expansion-20261019/046.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/046.webp"
+  },
+  {
+    "id": "house2-new-047",
+    "name": "Mesa de toalete",
+    "category": "Quarto",
+    "width": 1.6,
+    "height": 1.04,
+    "image": "/house2/expansion-20261019/047.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/047.webp"
+  },
+  {
+    "id": "house2-new-048",
+    "name": "Tapete de lã de carneiro",
+    "category": "Quarto",
+    "width": 1.7,
+    "height": 1.51,
+    "image": "/house2/expansion-20261019/048.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/048.webp"
+  },
+  {
+    "id": "house2-new-049",
+    "name": "Tapete de pele cinzenta",
+    "category": "Quarto",
+    "width": 2,
+    "height": 1.63,
+    "image": "/house2/expansion-20261019/049.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/049.webp"
+  },
+  {
+    "id": "house2-new-050",
+    "name": "Cesto de roupas",
+    "category": "Quarto",
+    "width": 1,
+    "height": 0.99,
+    "image": "/house2/expansion-20261019/050.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/050.webp"
+  },
+  {
+    "id": "house2-new-051",
+    "name": "Bigorna de aço escurecido",
+    "category": "Oficinas",
+    "width": 1.5,
+    "height": 0.92,
+    "image": "/house2/expansion-20261019/051.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/051.webp"
+  },
+  {
+    "id": "house2-new-052",
+    "name": "Bancada de ferrador",
+    "category": "Oficinas",
+    "width": 2,
+    "height": 1.2,
+    "image": "/house2/expansion-20261019/052.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/052.webp"
+  },
+  {
+    "id": "house2-new-053",
+    "name": "Bancada de joalheiro",
+    "category": "Oficinas",
+    "width": 1.6,
+    "height": 0.98,
+    "image": "/house2/expansion-20261019/053.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/053.webp"
+  },
+  {
+    "id": "house2-new-054",
+    "name": "Tear de tapetes",
+    "category": "Oficinas",
+    "width": 2,
+    "height": 1.26,
+    "image": "/house2/expansion-20261019/054.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/054.webp"
+  },
+  {
+    "id": "house2-new-055",
+    "name": "Roda de oleiro",
+    "category": "Oficinas",
+    "width": 1.5,
+    "height": 1.49,
+    "image": "/house2/expansion-20261019/055.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/055.webp"
+  },
+  {
+    "id": "house2-new-056",
+    "name": "Bancada de escultor",
+    "category": "Oficinas",
+    "width": 2,
+    "height": 1.17,
+    "image": "/house2/expansion-20261019/056.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/056.webp"
+  },
+  {
+    "id": "house2-new-057",
+    "name": "Bancada de curtidor",
+    "category": "Oficinas",
+    "width": 2,
+    "height": 1.11,
+    "image": "/house2/expansion-20261019/057.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/057.webp"
+  },
+  {
+    "id": "house2-new-058",
+    "name": "Bancada de carpinteiro",
+    "category": "Oficinas",
+    "width": 2.5,
+    "height": 1.62,
+    "image": "/house2/expansion-20261019/058.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/058.webp"
+  },
+  {
+    "id": "house2-new-059",
+    "name": "Bancada de ourives",
+    "category": "Oficinas",
+    "width": 1.8,
+    "height": 1.18,
+    "image": "/house2/expansion-20261019/059.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/059.webp"
+  },
+  {
+    "id": "house2-new-060",
+    "name": "Bacia de têmpera",
+    "category": "Oficinas",
+    "width": 1.2,
+    "height": 0.81,
+    "image": "/house2/expansion-20261019/060.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/060.webp"
+  },
+  {
+    "id": "house2-new-061",
+    "name": "Jardineira de lavanda",
+    "category": "Jardim",
+    "width": 2,
+    "height": 0.84,
+    "image": "/house2/expansion-20261019/061.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/061.webp"
+  },
+  {
+    "id": "house2-new-062",
+    "name": "Canteiro de ervas aromáticas",
+    "category": "Jardim",
+    "width": 2,
+    "height": 1.43,
+    "image": "/house2/expansion-20261019/062.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/062.webp"
+  },
+  {
+    "id": "house2-new-063",
+    "name": "Vaso de roseira branca",
+    "category": "Jardim",
+    "width": 1.5,
+    "height": 1.47,
+    "image": "/house2/expansion-20261019/063.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/063.webp"
+  },
+  {
+    "id": "house2-new-064",
+    "name": "Vaso de roseira vermelha",
+    "category": "Jardim",
+    "width": 1.5,
+    "height": 1.5,
+    "image": "/house2/expansion-20261019/064.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/064.webp"
+  },
+  {
+    "id": "house2-new-065",
+    "name": "Banco de jardim curvo",
+    "category": "Jardim",
+    "width": 2.5,
+    "height": 1.4,
+    "image": "/house2/expansion-20261019/065.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/065.webp"
+  },
+  {
+    "id": "house2-new-066",
+    "name": "Fonte de lírios",
+    "category": "Jardim",
+    "width": 2,
+    "height": 2.02,
+    "image": "/house2/expansion-20261019/066.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/066.webp"
+  },
+  {
+    "id": "house2-new-067",
+    "name": "Espelho d’água octogonal",
+    "category": "Jardim",
+    "width": 3,
+    "height": 2.94,
+    "image": "/house2/expansion-20261019/067.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/067.webp"
+  },
+  {
+    "id": "house2-new-068",
+    "name": "Canteiro de samambaias",
+    "category": "Jardim",
+    "width": 2,
+    "height": 1.81,
+    "image": "/house2/expansion-20261019/068.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/068.webp"
+  },
+  {
+    "id": "house2-new-069",
+    "name": "Cesto de flores do campo",
+    "category": "Jardim",
+    "width": 1.3,
+    "height": 1.27,
+    "image": "/house2/expansion-20261019/069.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/069.webp"
+  },
+  {
+    "id": "house2-new-070",
+    "name": "Jardineira de morangos",
+    "category": "Jardim",
+    "width": 2,
+    "height": 1.07,
+    "image": "/house2/expansion-20261019/070.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/070.webp"
+  },
+  {
+    "id": "house2-new-071",
+    "name": "Mesa de piquenique",
+    "category": "Exterior",
+    "width": 3,
+    "height": 2.03,
+    "image": "/house2/expansion-20261019/071.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/071.webp"
+  },
+  {
+    "id": "house2-new-072",
+    "name": "Barraca de frutas",
+    "category": "Exterior",
+    "width": 3,
+    "height": 1.91,
+    "image": "/house2/expansion-20261019/072.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/072.webp"
+  },
+  {
+    "id": "house2-new-073",
+    "name": "Carroça de feno",
+    "category": "Exterior",
+    "width": 2,
+    "height": 3.31,
+    "image": "/house2/expansion-20261019/073.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/073.webp"
+  },
+  {
+    "id": "house2-new-074",
+    "name": "Carroça de barris",
+    "category": "Exterior",
+    "width": 2,
+    "height": 2.95,
+    "image": "/house2/expansion-20261019/074.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/074.webp"
+  },
+  {
+    "id": "house2-new-075",
+    "name": "Poço de pedra baixo",
+    "category": "Exterior",
+    "width": 2,
+    "height": 1.93,
+    "image": "/house2/expansion-20261019/075.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/075.webp"
+  },
+  {
+    "id": "house2-new-076",
+    "name": "Bebedouro de pedra",
+    "category": "Exterior",
+    "width": 2,
+    "height": 1.01,
+    "image": "/house2/expansion-20261019/076.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/076.webp"
+  },
+  {
+    "id": "house2-new-077",
+    "name": "Cocho de feno",
+    "category": "Exterior",
+    "width": 2,
+    "height": 0.92,
+    "image": "/house2/expansion-20261019/077.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/077.webp"
+  },
+  {
+    "id": "house2-new-078",
+    "name": "Pilha de lenha amarrada",
+    "category": "Exterior",
+    "width": 1.5,
+    "height": 1.08,
+    "image": "/house2/expansion-20261019/078.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/078.webp"
+  },
+  {
+    "id": "house2-new-079",
+    "name": "Braseiro de ferro",
+    "category": "Exterior",
+    "width": 1.2,
+    "height": 1.15,
+    "image": "/house2/expansion-20261019/079.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/079.webp"
+  },
+  {
+    "id": "house2-new-080",
+    "name": "Mesa de flores da feira",
+    "category": "Exterior",
+    "width": 2,
+    "height": 1.12,
+    "image": "/house2/expansion-20261019/080.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/080.webp"
+  },
+  {
+    "id": "house2-new-081",
+    "name": "Mesa de alaúde",
+    "category": "Música",
+    "width": 1.5,
+    "height": 1.48,
+    "image": "/house2/expansion-20261019/081.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/081.webp"
+  },
+  {
+    "id": "house2-new-082",
+    "name": "Tapete da dança",
+    "category": "Música",
+    "width": 3,
+    "height": 3,
+    "image": "/house2/expansion-20261019/082.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/082.webp"
+  },
+  {
+    "id": "house2-new-083",
+    "name": "Tambor cerimonial",
+    "category": "Música",
+    "width": 1,
+    "height": 0.99,
+    "image": "/house2/expansion-20261019/083.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/083.webp"
+  },
+  {
+    "id": "house2-new-084",
+    "name": "Mesa de harpista",
+    "category": "Música",
+    "width": 1.5,
+    "height": 1.06,
+    "image": "/house2/expansion-20261019/084.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/084.webp"
+  },
+  {
+    "id": "house2-new-085",
+    "name": "Banco dos músicos",
+    "category": "Música",
+    "width": 2.5,
+    "height": 1,
+    "image": "/house2/expansion-20261019/085.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/085.webp"
+  },
+  {
+    "id": "house2-new-086",
+    "name": "Altar de pedra lunar",
+    "category": "Santuário",
+    "width": 2,
+    "height": 1.07,
+    "image": "/house2/expansion-20261019/086.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/086.webp"
+  },
+  {
+    "id": "house2-new-087",
+    "name": "Altar de carvalho",
+    "category": "Santuário",
+    "width": 2,
+    "height": 1.37,
+    "image": "/house2/expansion-20261019/087.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/087.webp"
+  },
+  {
+    "id": "house2-new-088",
+    "name": "Bacia de oferendas",
+    "category": "Santuário",
+    "width": 1.2,
+    "height": 1.2,
+    "image": "/house2/expansion-20261019/088.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/088.webp"
+  },
+  {
+    "id": "house2-new-089",
+    "name": "Tapete do sol antigo",
+    "category": "Santuário",
+    "width": 2.5,
+    "height": 2.46,
+    "image": "/house2/expansion-20261019/089.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/089.webp"
+  },
+  {
+    "id": "house2-new-090",
+    "name": "Pedestal de cristal",
+    "category": "Santuário",
+    "width": 1.3,
+    "height": 1.3,
+    "image": "/house2/expansion-20261019/090.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/090.webp"
+  },
+  {
+    "id": "house2-new-091",
+    "name": "Tabuleiro de runas",
+    "category": "Decoração",
+    "width": 1,
+    "height": 1,
+    "image": "/house2/expansion-20261019/091.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/091.webp"
+  },
+  {
+    "id": "house2-new-092",
+    "name": "Bandeja de prata",
+    "category": "Decoração",
+    "width": 1.2,
+    "height": 0.82,
+    "image": "/house2/expansion-20261019/092.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/092.webp"
+  },
+  {
+    "id": "house2-new-093",
+    "name": "Bandeja de frutas secas",
+    "category": "Decoração",
+    "width": 1,
+    "height": 0.91,
+    "image": "/house2/expansion-20261019/093.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/093.webp"
+  },
+  {
+    "id": "house2-new-094",
+    "name": "Caixa de costura",
+    "category": "Decoração",
+    "width": 1,
+    "height": 0.8,
+    "image": "/house2/expansion-20261019/094.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/094.webp"
+  },
+  {
+    "id": "house2-new-095",
+    "name": "Cesta de fios de lã",
+    "category": "Decoração",
+    "width": 1,
+    "height": 1,
+    "image": "/house2/expansion-20261019/095.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/095.webp"
+  },
+  {
+    "id": "house2-new-096",
+    "name": "Mosaico de pedra azul",
+    "category": "Decoração",
+    "width": 2.5,
+    "height": 2.48,
+    "image": "/house2/expansion-20261019/096.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/096.webp"
+  },
+  {
+    "id": "house2-new-097",
+    "name": "Tapete de junco",
+    "category": "Decoração",
+    "width": 2,
+    "height": 3.1,
+    "image": "/house2/expansion-20261019/097.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/097.webp"
+  },
+  {
+    "id": "house2-new-098",
+    "name": "Tina de banho oval",
+    "category": "Banho",
+    "width": 1.5,
+    "height": 2.48,
+    "image": "/house2/expansion-20261019/098.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/098.webp"
+  },
+  {
+    "id": "house2-new-099",
+    "name": "Bancada de toalhas",
+    "category": "Banho",
+    "width": 1.5,
+    "height": 0.76,
+    "image": "/house2/expansion-20261019/099.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/099.webp"
+  },
+  {
+    "id": "house2-new-100",
+    "name": "Bacia de pétalas",
+    "category": "Banho",
+    "width": 1.2,
+    "height": 1.18,
+    "image": "/house2/expansion-20261019/100.webp",
+    "thumbnail": "/house2/expansion-thumbs-20261019/100.webp"
+  }
+]

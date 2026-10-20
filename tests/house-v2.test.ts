@@ -69,8 +69,12 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
       assert.equal(directory.neighborhoods.length, 3);
       assert.equal(directory.balance, 20000);
       assert.equal(house2Houses.length, 25);
-      assert.equal(house2Furniture.length, 352);
-      assert.equal(house2FurnitureForSale.length, 350);
+      assert.equal(house2Furniture.length, 452);
+      assert.equal(house2FurnitureForSale.length, 450);
+      assert.equal(
+        house2FurnitureForSale.filter((f) => f.id.startsWith('house2-new-')).length,
+        100,
+      );
       assert(scene.plots.every((p: any) => p.x + p.width <= 200 && p.y + p.height <= 200));
       assert.equal(
         (
@@ -791,6 +795,27 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
         );
       },
     );
+    await t.test('novos móveis usam compra idempotente e entram na coleção do dono', async () => {
+      // The owner wallet is deliberately exhausted by an earlier insufficient-balance case.
+      const buyer = other,
+        hero = b;
+      for (const catalog_id of ['house2-new-001', 'house2-new-050', 'house2-new-100']) {
+        const body = { ...buy(hero.id), plot_id: second.id, catalog_id };
+        const first = await req('/house-v2/furniture', buyer, 'POST', body);
+        const repeated = await req('/house-v2/furniture', buyer, 'POST', body);
+        assert.equal(first.status, 200, JSON.stringify(first.data));
+        assert.equal(repeated.status, 200);
+        assert.equal(repeated.data.item_id, first.data.item_id);
+        assert.equal(repeated.data.replay, true);
+        const row = (
+          await pool.query('SELECT user_id,catalog_id FROM house2_items WHERE id=$1', [
+            first.data.item_id,
+          ])
+        ).rows[0];
+        assert.equal(row.user_id, buyer.id);
+        assert.equal(row.catalog_id, catalog_id);
+      }
+    });
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
     await pool.end();

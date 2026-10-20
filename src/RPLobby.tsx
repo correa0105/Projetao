@@ -602,7 +602,7 @@ export function RPLobby({
           style={{ backgroundImage: scene ? 'url("' + scene.image + '")' : undefined }}
           aria-label={scene?.name || 'Cenário de RP'}
         >
-          {activeDoc?.placements.map((p) => (
+          {room?.kind !== 'fixed' && activeDoc?.placements.map((p) => (
             <button
               key={p.id}
               className={'rp-prop' + (selected === p.id ? ' selected' : '')}

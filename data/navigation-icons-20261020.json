@@ -1,0 +1,173 @@
+{
+  "method": "built-in image_gen; individual referenced illustrations; native alpha preserved",
+  "assets": [
+    {
+      "id": "characters",
+      "image": "/navigation/illustrated-20261020/characters.webp",
+      "source": "exec-eda876a6-1b7d-4554-a772-d3fa702104fb.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a pair of small distinct adventurer busts, a copper armored fighter helmet in front and a tan hooded ranger behind. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "85fac4a6f98620f911f2436bb4fe9452bad003ab709c74e2d1a221302cfbe066",
+      "sourceSha256": "9b8961e1280f9a8b74dbc5affff3945c8923829da495354dc86d2a00dcada92c"
+    },
+    {
+      "id": "profile",
+      "image": "/navigation/illustrated-20261020/profile.webp",
+      "source": "exec-35f77531-e527-429b-91ed-b9d57ad5ebe2.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a small warm parchment character sheet with a brass shield seal and a short feather quill, a few embossed marks but no readable lettering. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "ace343053eaf68c45c69b9d489fddc3f941ad27b31900d00b8c89594f3e31312",
+      "sourceSha256": "4ab5807177bf7851fae3298bd219330b8438cd9447337999276107f7b0347c23"
+    },
+    {
+      "id": "inventory",
+      "image": "/navigation/illustrated-20261020/inventory.webp",
+      "source": "exec-2385b331-34d6-486d-9064-9357fa3972be.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a handsome plump brown leather adventurer backpack with rolled parchment tucked in and brass buckles. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "ba519cddaae62f7bd2ee28c361fde904c7c6d7470911de9bdf959e94fe9dc1a7",
+      "sourceSha256": "9784c9cdcf44a34a5c9a3f79b04b7c5571b0736eb8a0d7794434cfd9e93a3968"
+    },
+    {
+      "id": "achievements",
+      "image": "/navigation/illustrated-20261020/achievements.webp",
+      "source": "exec-af50cb4a-ecd3-4ac0-b27d-31ef47d18db6.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: an ornate aged golden trophy cup with two handles and small laurel leaves. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "c58524c8046af766a74236224e7c64cd0c384cf4d7ef696357f7d00fb98f48a8",
+      "sourceSha256": "74f736f06898cc74f916d9c468c93660464dd527e9960f09b873fc833b87b518"
+    },
+    {
+      "id": "character-cards",
+      "image": "/navigation/illustrated-20261020/character-cards.webp",
+      "source": "exec-a289852d-aff1-4460-8401-63af200840ec.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: three overlapping fantasy collectible tarot cards with warm parchment faces, copper corner ornaments and a tiny ruby star on the front card. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "c18b75b4b3e328c8fdb21756d543bc26fbbc9c0c70d0d869f2999727deab58bd",
+      "sourceSha256": "05144a872d23b8748033ad7d6bf1f772b4379948ef5a067473df0eb38e5948c0"
+    },
+    {
+      "id": "hall",
+      "image": "/navigation/illustrated-20261020/hall.webp",
+      "source": "exec-c5dabb4c-1c6a-4a6d-8807-78dbff0a7caf.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: an elegant golden medieval crown nested in a compact laurel wreath. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "d4ea24240d49e13d059ea8c1d5b2a832723f4af1b0ad4968b25afa3e0b29176a",
+      "sourceSha256": "d319343a284a757e17c2432520be2bdfbc1da76de295987ff612cd9cc24d14c8"
+    },
+    {
+      "id": "profiles",
+      "image": "/navigation/illustrated-20261020/profiles.webp",
+      "source": "exec-bd4710b3-7b99-40f2-957a-3defbdb55b83.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a small ornate copper oval portrait frame containing a sculpted ivory adventurer bust cameo. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "5d226a2ad5a3193e12d729e0ef2ad4b271a62c4631cd29b5bb03528c76c018f5",
+      "sourceSha256": "f95ba08a0039286f20870215c2da2c7c6a405b8d21a9867078431df25e877ac2"
+    },
+    {
+      "id": "board",
+      "image": "/navigation/illustrated-20261020/board.webp",
+      "source": "exec-19218229-c73f-45b5-9b86-0e50dbb41735.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a rolled parchment mission notice with copper wax seal and feather quill. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "b85699c32be6ce39d058fae1cbd6324f88b8cb64e8cdca5f289cdc5d91636402",
+      "sourceSha256": "7866eb398b8f959d94cf5d8b3586327f89be0810f63ea9b05753893f1d8dfe5b"
+    },
+    {
+      "id": "events",
+      "image": "/navigation/illustrated-20261020/events.webp",
+      "source": "exec-591f906b-35ab-4b6b-97ed-6b8968978166.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a small medieval parchment calendar hanging from two brass rings, a ruby star marking one square, absolutely no letters or numbers. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "8a79f990a3edcc733d5b889a1ee7765a4764393b23c16e03a58a3a33a3c0206e",
+      "sourceSha256": "7ecd9934109eedd9bd341928466cda9ebe4768f3fa2be6baccff96aef4747d0a"
+    },
+    {
+      "id": "tower",
+      "image": "/navigation/illustrated-20261020/tower.webp",
+      "source": "exec-bfdb2fc1-ab8e-4455-a728-00628caf7787.png",
+      "prompt": "Use case: stylized-concept. Create ONE original polished medieval RPG submenu icon representing THE TOWER, a formidable ancient tall watchtower for a serious dark fantasy campaign. The attached image is ONLY the STYLE REFERENCE for the small parchment-and-copper navigation illustrations: restrained muted ochre, cream parchment, aged brown leather outlines, subtle painterly volume, no bright orange saturation. Subject: one slender imposing square stone keep, tall vertical silhouette about 2.5 times taller than wide, weathered neutral warm gray stone blocks with discreet parchment-toned highlights, three narrow dark arrow slits, a SIMPLE FLAT CRENELLATED TOP with four strong battlements, slight irregular chips, a tiny dark wooden arched entrance. Minimal base, no surrounding landscape. Avoid a short chunky turret, conical roof, golden spire, toy castle, plastic shiny gold or orange stone, excessive ornament, tiny masonry noise, smiling/cartoon feeling. Elegant clear readable silhouette at 30 pixels, hand-painted fantasy item illustration like the reference's book and map, not photorealism and not thin line art. Single isolated centered icon, complete shape, 10% clear margins, true transparent alpha background. No circular frame, badge, ground shadow, backdrop, floor, letters, numbers, watermark, UI, collage or neighboring objects.",
+      "sha256": "d7bd927d5291026493fbd748a7a2b8a01b7bb9f75febf871e92b7aa907e2d59c",
+      "sourceSha256": "0cc1419c942a5a99ced0e80c47b20cbd81dbee954e10cc1c40f1ae729dd4baf1"
+    },
+    {
+      "id": "vtt",
+      "image": "/navigation/illustrated-20261020/vtt.webp",
+      "source": "exec-01019baa-2e9d-400f-9e74-bc1091c774aa.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a handsome ivory twenty-sided die resting beside a small folded parchment battle map, engraved abstract facets without legible numbers. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "2d4473ba924f45e6a4b52def724d7211324a9188e137acf1c69e1a76af90fdef",
+      "sourceSha256": "10873cbc255e03123e3fb65c897f51bbd89e60e09165eb4a3a8eb81cc91ae214"
+    },
+    {
+      "id": "shop",
+      "image": "/navigation/illustrated-20261020/shop.webp",
+      "source": "exec-e68cd3f3-fd9b-42de-b68e-8bbfb9c646cd.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a plump tan leather merchant coin pouch with a few copper and gold coins spilling beside it. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "8830a5234baad6cfaa5c69ac4166bc993040ad43a73d76ec5c66e4a35971096d",
+      "sourceSha256": "df8ba498a9e6dfc738fd69220b70920f2ef07477d086b8c7a0a41c042611240d"
+    },
+    {
+      "id": "stable",
+      "image": "/navigation/illustrated-20261020/stable.webp",
+      "source": "exec-215ab5c4-5aaf-4bbb-95cc-a3ebf6061165.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a carved warm chestnut horse head nestled into a forged copper horseshoe. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "96502fb612db9e35c90683b8aec3f564b992d539b5ff5b057d3b867e37b51580",
+      "sourceSha256": "2329bc85f546759a0dd02e5e9234bce7c3a5bd33e0b6ad66d0d9a66c1786a387"
+    },
+    {
+      "id": "pets",
+      "image": "/navigation/illustrated-20261020/pets.webp",
+      "source": "exec-e967d070-6a89-4a25-9b64-eee4bb48a9a0.png",
+      "prompt": "Use case: stylized-concept. ONE original medieval RPG navigation submenu icon. The provided image is ONLY the visual STYLE REFERENCE: match its restrained warm parchment, aged copper, brown leather, ivory highlights, dark hand-painted outlines and subtle realistic dimensional volume. Serious elegant fantasy game object icon, readable at 30px. Subject: one handsome small aged-copper round pet collar tag with a clearly embossed paw print, attached to a short curved dark brown leather collar strap with a modest buckle. A tactile physical medieval animal-companion keepsake, no living animal, no puppy, no face, no character, no cartoon. Natural muted colors, softly painted materials, minimal ornament, clear bold silhouette. Avoid bright orange-gold saturation, shiny toy plastic, baby/cutesy cartoon styling, excessive engraving and tiny details. Single complete centered isolated object with 10% margins, genuine transparent alpha background, no circular UI badge or background disk, no external cast shadow, no floor, scenery, text, logo, watermark, sheet or collage.",
+      "sha256": "2ab8f0c39b03186ed4392facea2e415ce6d3d0fb1cbb1e0a06e73ee37b66e183",
+      "sourceSha256": "0de7e465aed5014db89b5b998cc9c0a9b08fbdae7c6114ca29ce73d0e8a196da"
+    },
+    {
+      "id": "cards",
+      "image": "/navigation/illustrated-20261020/cards.webp",
+      "source": "exec-ca9edacb-760d-4c54-958b-2ec526948d35.png",
+      "prompt": "Use case: stylized-concept. ONE original medieval RPG navigation submenu icon. The provided image is ONLY the visual STYLE REFERENCE: match its restrained warm parchment, aged copper, brown leather, ivory highlights, dark hand-painted outlines and subtle realistic dimensional volume. Serious elegant fantasy game object icon, readable at 30px. Subject: exactly three slightly overlapping aged parchment fantasy collectible cards, held in a simple compact fan. Front card has one bold aged-copper eight-point compass star, two cards behind show only brown leather corner details. No card case or box, no modern poker suits, no hearts spades clubs diamonds, no letters or numbers. Natural muted colors, softly painted materials, minimal ornament, clear bold silhouette. Avoid bright orange-gold saturation, shiny toy plastic, baby/cutesy cartoon styling, excessive engraving and tiny details. Single complete centered isolated object with 10% margins, genuine transparent alpha background, no circular UI badge or background disk, no external cast shadow, no floor, scenery, text, logo, watermark, sheet or collage.",
+      "sha256": "517e21c4e91d390cd3134beeb1db1c6410a0a52420732334d4d245cf6d197cfd",
+      "sourceSha256": "c3af6c2261957dd2c2319834ab469bb225408fa16713f78281d32214f1db339f"
+    },
+    {
+      "id": "world",
+      "image": "/navigation/illustrated-20261020/world.webp",
+      "source": "exec-f29a4129-066e-487c-944a-5c2c9b1d2943.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: an unfurled small aged parchment world map with brown coastlines and a brass compass rose. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "ab2e9278526e972321ef3ac1cc61e4e243e1fabb52a9f218fb8e09694866b6a9",
+      "sourceSha256": "ff5b542266fa45179f7288e75002f8dc8784106ef3fe21fecdf571c257374cc6"
+    },
+    {
+      "id": "house",
+      "image": "/navigation/illustrated-20261020/house.webp",
+      "source": "exec-996796db-0a1c-4a6c-ab7d-f3b00c134cda.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: two warm copper-rimmed wooden tankards clinking together, a little cream foam, medieval tavern conversation symbol. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "76486576b0727c9c6655b8e4fdf74cee3f4b0d27a7745c64fc3fd4e8ad1f9dcd",
+      "sourceSha256": "7bfc3ce39b52081c56e8330f7635a2edd799de821e9fbb754132ad945c298d3e"
+    },
+    {
+      "id": "house2",
+      "image": "/navigation/illustrated-20261020/house2.webp",
+      "source": "exec-d804d08d-10b1-4d2f-b304-76d682919a6f.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a small charming timber medieval cottage with copper-brown tiled roof and warm parchment walls. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "3704fac74658d4a4c3e55ca4a50d909fe14fda585193aef0a165e1dc96e827dc",
+      "sourceSha256": "bcc747e55c45fd61701b1e0609029457f78478c2b1685abebea7be081d38598a"
+    },
+    {
+      "id": "guild",
+      "image": "/navigation/illustrated-20261020/guild.webp",
+      "source": "exec-d51c2d4a-4c2b-4b10-95e8-e70447ca3b3d.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a warm bronze and honey oak heraldic shield with two crossed short swords behind it. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "0bed59fbda2ac98a916885a6b3d39f843cd13fc2e3568517b5f7e184772c526f",
+      "sourceSha256": "d085734b44e9ad871cda186f98f7e9ac0f511d05fed32d71f27573d9518b30ac"
+    },
+    {
+      "id": "lore",
+      "image": "/navigation/illustrated-20261020/lore.webp",
+      "source": "exec-64452dd1-3035-43e6-9434-b5f376021c77.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: an open thick aged parchment lore book with brown leather cover, little feather bookmark and copper corner fittings. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "0a6a175d752808565d4a3fd24692074f670ab72e5a5de075c5488d71fbe7c970",
+      "sourceSha256": "17d67ccd93d5046d6dff64c5f98aa2a62e5aeff3a08f5ac4b24daae3dedf6e54"
+    },
+    {
+      "id": "rules",
+      "image": "/navigation/illustrated-20261020/rules.webp",
+      "source": "exec-1a8793c8-f0b8-43c3-b2df-07370b7726b7.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE finished medieval fantasy RPG navigation submenu icon. The supplied image is ONLY a STYLE REFERENCE: match its hand-painted chunky readable silhouettes, warm golden parchment, aged copper and brown leather, cream highlights, thick warm dark outlines, subtle dimensional bevel and charming detailed game illustration. Primary subject: a closed handsome brown leather rulebook with brass corner protectors and a small golden balance-scale emblem embossed on its cover. Center one large coherent icon that reads clearly at 30 pixels, retain complete silhouette with 10% clear margins. Orthographic icon composition with subtle three-quarter volume as appropriate. Genuine transparent alpha background. No circular border, disk, dark tile, backdrop, pedestal or external shadow; no text, lettering, UI, watermark, unrelated objects, sheet or collage. Avoid thin line art, monochrome glyphs, photoreal photography, excessive tiny detail, electric glow and modern plastic.",
+      "sha256": "654d0b13f0ed6fdef56533f0fd6cf715ba67451e30eb87df80ec299deb759e0e",
+      "sourceSha256": "fc05359e22ed48093fd12e3d6c1c63a0be9024245d311b222f4503c06d3aba36"
+    }
+  ]
+}

@@ -68,7 +68,9 @@ test('Lobby de RP e instalações: acesso, edição, presença, convites e econo
     const fixed = index.data.rooms[0];
     let privateId = '';
     await t.test('salas fixas abertas com decoração do sistema e sem edição por jogadores', async () => {
-      assert.equal((await request('/rp-lobby/' + fixed.id, outsider)).status, 200);
+      const scene = await request('/rp-lobby/' + fixed.id, outsider);
+      assert.equal(scene.status, 200);
+      assert.deepEqual(scene.data.document.placements, []);
       const input = { name: fixed.name, document: fixed.document, revision: fixed.revision };
       assert.equal((await request('/rp-lobby/' + fixed.id, owner, 'PUT', input)).status, 403);
       assert.equal((await request('/rp-lobby/' + fixed.id, admin, 'PUT', input)).status, 403);

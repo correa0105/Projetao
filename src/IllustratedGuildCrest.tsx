@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import type { Crest } from '../shared/guilds';
-import { crestArtBanners, crestArtFrames, crestArtSigils } from '../shared/guild-crest-art';
+import { crestArtBanners, crestArtFrames, crestArtSigils, crestArtImageSource } from '../shared/guild-crest-art';
 import { CrestExtraField, CrestFieldDefs } from './guild-crest-designs';
 // Individual transparent sprites avoid atlas bleed when SVG color filters are applied.
 export function CrestArtImage({
@@ -26,7 +26,7 @@ export function CrestArtImage({
       y={y}
       width={width}
       height={height}
-      href={'/guild/crests-20261019/' + kind + '-' + (index + 1) + '.webp'}
+      href={crestArtImageSource(kind, index)}
       preserveAspectRatio="xMidYMid meet"
       filter={filter}
     />
