@@ -16,6 +16,7 @@ import { equippedAttacks, type CombatItem } from '../shared/equipped-attacks.js'
 import { consumableItems } from '../shared/vtt-sheet.js';
 import type { VttDocument } from '../shared/vtt.js';
 import { tokenMonsterActions } from '../shared/vtt-monster-presets.js';
+import { UNARMED_ATTACK_ID, UNARMED_ATTACK_IMAGE } from '../shared/unarmed-attack.js';
 type DB = Pick<PoolClient, 'query'>;
 async function withArt(state: HotbarState): Promise<HotbarState> {
   const actions = state.document.pages
@@ -29,6 +30,10 @@ async function withArt(state: HotbarState): Promise<HotbarState> {
   );
   const art: Record<string, string> = {};
   for (const action of actions) {
+    if (action?.kind === 'attack' && action.sourceId === UNARMED_ATTACK_ID) {
+      art[hotbarActionKey(action)] = UNARMED_ATTACK_IMAGE;
+      continue;
+    }
     const item =
       rows.find((i) => i.id === action!.sourceId) || rows.find((i) => i.name === action!.sourceId);
     if (item) art[hotbarActionKey(action!)] = item.image_path;
@@ -171,7 +176,8 @@ export function vttHotbarRouter(getRoom: Access) {
         for (const a of characterActions.filter((a) => a.characterId === cid)) {
           const valid =
             a.kind === 'attack'
-              ? weapons.some((w) => w.itemId === a.sourceId || w.name === a.sourceId)
+              ? a.sourceId === UNARMED_ATTACK_ID ||
+                weapons.some((w) => w.itemId === a.sourceId || w.name === a.sourceId)
               : a.kind === 'spell'
                 ? spells.some((s) => s.id === a.sourceId && known.has(s.id))
                 : consumableItems.has(a.sourceId) &&

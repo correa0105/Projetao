@@ -12,7 +12,25 @@ try {
   process.exitCode = await new Promise((resolve, reject) => {
     const child = spawn(
       process.execPath,
-      process.argv.includes('--unit') ? ['--import', 'tsx', '--test', 'tests/equipped-attacks.test.ts', 'tests/character-sheet.test.ts'] : ['--import', 'tsx', 'scripts/smoke-vtt-weapons-portrait.ts'],
+      process.argv.includes('--unarmed')
+        ? [
+            '--import',
+            'tsx',
+            '--test',
+            'tests/unarmed-attack.test.ts',
+            'tests/equipped-attacks.test.ts',
+          ]
+        : process.argv.includes('--unarmed-browser')
+          ? ['--import', 'tsx', 'scripts/smoke-vtt-unarmed.ts']
+          : process.argv.includes('--unit')
+            ? [
+                '--import',
+                'tsx',
+                '--test',
+                'tests/equipped-attacks.test.ts',
+                'tests/character-sheet.test.ts',
+              ]
+            : ['--import', 'tsx', 'scripts/smoke-vtt-weapons-portrait.ts'],
       {
         env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
         stdio: 'inherit',

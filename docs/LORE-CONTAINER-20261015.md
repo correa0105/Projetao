@@ -4,4 +4,9 @@ A Lore adota o enquadramento de Regras: conteúdo centralizado com largura máxi
 
 A biblioteca, navegação regional, linha temporal, pastas, busca, leitura e edição continuam nos componentes existentes. Nenhuma alteração de conteúdo, API, permissões ou banco de dados.
 
+Em 20/10, o subtítulo da crônica (por exemplo, Crônicas da Alvorada · Capítulo I)
+fica alinhado à direita e próximo, um pouco acima do losango dourado do cabeçalho.
+Título, pergaminho e conteúdo preservados. Apenas espaçamento/alinhamento no CSS
+do leitor; texto pode quebrar naturalmente no celular, sem posição absoluta.
+
 Validação em navegador nas larguras 1898, 1440, 768, 390 e 320 px: limites do contêiner comparados aos de Regras, cabeçalho sem sobreposição, ausência de rolagem horizontal, clique/teclado na linha temporal e abertura do editor.

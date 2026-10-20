@@ -2,11 +2,12 @@ import type { PoolClient } from 'pg';
 import type { SheetChoices } from '../shared/character-sheet.js';
 import { equippedAttacks, type CombatItem } from '../shared/equipped-attacks.js';
 import { readCharacterLoadout } from './character-attacks.js';
+import { unarmedAttack } from '../shared/unarmed-attack.js';
 
 export async function readVttLoadout(
   db: Pick<PoolClient, 'query'>,
   roomId: string,
-  character: { id: string; race: string; class: string; stats: number[] },
+  character: { id: string; race: string; class: string; stats: number[]; level?: number },
   choices?: SheetChoices | null,
 ) {
   const loadout = await readCharacterLoadout(db, character, choices);
@@ -44,5 +45,12 @@ export async function readVttLoadout(
       ...w,
       dice: w.itemId === weapon_slots.main_hand && twoHands ? w.versatileDice || w.dice : w.dice,
     }));
-  return { ...loadout, attacks, available_weapons, weapon_slots };
+  const emptyHand = !twoHands && (!weapon_slots.main_hand || !weapon_slots.off_hand);
+  return {
+    ...loadout,
+    attacks:
+      emptyHand || !attacks.length ? [...attacks, unarmedAttack(character, choices)] : attacks,
+    available_weapons,
+    weapon_slots,
+  };
 }

@@ -1,3 +1,5 @@
+20/10/2026 — VTT: mão vazia oferece Soco (desarmado) automaticamente, sem exigir arma/item; funciona na ficha e no atalho com ícone, acerto/dano e cálculo de monge existentes. Duas armas/arma de duas mãos ocupam as mãos. Trocas da sala e inventário do site permanecem separados. Sem migration; backup PostgreSQL atual validado antes da publicação. Lore: subtítulo da crônica à direita e logo acima do losango, com adaptação ao celular.
+
 20/10/2026 — VTT: removida a faixa de sucesso ao copiar o link fixo pelo cabeçalho/configurações, conforme pedido. A cópia continua funcionando e falhas continuam informadas; sem alteração de servidor ou banco.
 
 20/10/2026 — Cotas de arte separadas: personagem tem 4 gerações/mês civil UTC e a arte inicial da criação não conta, inclusive registros antigos; cada mascote e cada montaria têm 2 próprias. Falhas/stale liberam o uso, fila reserva e retrato+token custam um uso. Unlimited e ownership preservados; sem migration ou alteração do histórico. Inventário/Vestir e Nova imagem mostram limite mensal, usadas e restantes, inclusive quando esgotado; renovação dia 1 às 00h UTC. Guia docs/ART-QUOTAS-20261020.md.

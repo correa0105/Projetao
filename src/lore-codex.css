@@ -404,6 +404,11 @@
 .lore-library .lore-reader > header > p {
   font: 14px/1.8 var(--sans, 'DM Sans', sans-serif);
   color: #aaa08e;
+  text-align: right;
+  margin: 38px 0 0;
+}
+.lore-library .lore-reader > header > p + .lore-rule {
+  margin-top: 10px;
 }
 .lore-library .lore-reader-actions {
   justify-content: start;

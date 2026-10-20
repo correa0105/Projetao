@@ -13,6 +13,40 @@ A ficha do site mostra ataques das armas possuídas e equipadas no site. A ficha
 da mesa usa a escolha da sala. O cálculo existente de nível 1 foi conservado;
 este trabalho não amplia regras de níveis altos ou poderes de itens mágicos.
 
+## Mão vazia e Soco — 20/10/2026
+
+As seleções vazias das mãos mostram **Mão vazia · Soco**. O VTT oferece o ataque
+**Soco**, contundente/desarmado, quando há uma mão vazia: sem arma na mochila,
+sem arma selecionada, após remover a arma, ou com arma em apenas uma mão.
+Duas armas e arma de duas mãos não deixam mão vazia. O escudo, sozinho, não
+remove o soco da mão livre. Personagem sem origem finalizada também tem a ação.
+
+`shared/unarmed-attack.ts` reutiliza o cálculo já exibido na ficha: Força e
+proficiência para acerto, dano fixo de 1 + Força com mínimo zero; monge conserva
+seu dado marcial e o melhor atributo aplicável. Dano fixo não ganha dado no
+crítico. O ícone existente de punho é usado na ficha e no atalho; a animação
+existente reconhece Soco como pancada natural.
+
+É uma ação inata, identificada por `unarmed-strike`, sem item de catálogo,
+compra, reserva ou alteração do estoque. Fixar exige ownership da ficha; executar
+consulta os ataques atuais. Um atalho de Soco libera a mão secundária na seleção
+da sala se ambas estiverem armadas, ou libera as duas quando a arma ocupa ambas.
+Não modifica o equipamento do site. Fichas e salas antigas não são reescritas.
+
+Validação: `node scripts/test-vtt-weapons-portrait-isolated.mjs --unarmed`
+aprova seis testes de regras/armas e
+`node scripts/test-vtt-weapons-portrait-isolated.mjs --unarmed-browser` cobre
+inventário vazio, legado, escudo, mão livre, duas mãos/duas armas, troca/remoção,
+ficha, rolagem, atalho/ícone, estoque preservado e desktop/celular, sem provedor
+de imagens. Banco UUID descartável. Sem migration nova.
+
+Publicado junto ao ajuste do subtítulo da Lore em `vtt-unarmed-lore-20261020`.
+TypeScript, builds, seis testes e smoke de ficha/atalho aprovados. Backup atual
+PGDMP de 543.860.745 bytes validado; comparadas 146 tabelas, 143 idênticas, com
+avanço do heartbeat e uma edição de Lore/versionamento durante o uso do site
+preservados. Servidor e bundles conferidos em localhost/Radmin, sem interromper
+o ilustrador nem restaurar dados de jogadores.
+
 Miniaturas do catálogo aparecem antes dos nomes dos ataques e dos itens da
 mochila, incluindo armaduras e consumíveis. A barra rápida mostra essas imagens,
 a imagem de monstros ou uma prévia estática do efeito quando disponível. Sons

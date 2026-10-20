@@ -207,6 +207,8 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+20/10/2026 — No VTT, uma mão vazia oferece Soco (desarmado), com o ícone já existente na ficha. Sem arma, sem arma selecionada e arma removida têm esse ataque; duas armas ou uma arma de duas mãos não deixam mão vazia. A ação é inata, sem item/compra/reserva no inventário; atalho pode liberar uma mão apenas na sala. Usa o cálculo desarmado já exibido no site, incluindo monge. Lore: subtítulo da crônica alinhado à direita, próximo e acima do losango dourado. Guias VTT-WEAPONS-PORTRAIT-20261009.md e LORE-CONTAINER-20261015.md.
+
 Direção de 08/10: biblioteca de som ampliada para 155 arquivos (13 músicas,
 22 ambientes, 120 efeitos). Favoritos por estrela e Removidos por mesa,
 restauração sem apagar arquivos/ajustes/atalhos. Somente dono administrador

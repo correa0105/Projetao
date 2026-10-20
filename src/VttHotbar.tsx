@@ -31,6 +31,7 @@ import type { AttackVisualCommand } from '../shared/vtt-attack-visual';
 import { VttAttack } from './VttAttack';
 import { requestSpellCast } from './useVttSpells';
 import { breathProfile } from '../shared/vtt-spells';
+import { UNARMED_ATTACK_ID } from '../shared/unarmed-attack';
 import './vtt-hotbar.css';
 const signed = (n: number) => (n >= 0 ? '+' : '') + n;
 export function ActionShortcut({ action }: { action: HotbarAction }) {
@@ -244,32 +245,56 @@ export function VttHotbar({
       await refresh();
       let data = await api<VttSheetData>(`/vtt/rooms/${roomId}/sheets/${token.id}`);
       if (action.kind === 'attack') {
-        const weapon = data.available_weapons.find(
-          (w) => w.itemId === action.sourceId || w.name === action.sourceId,
-        );
-        if (!weapon) throw Error('Esta arma não está na mochila do personagem.');
-        if (!data.attacks.some((w) => w.itemId === weapon.itemId))
-          data = await api<VttSheetData>(`/vtt/rooms/${roomId}/sheets/${token.id}/weapons`, {
-            method: 'PUT',
-            body: JSON.stringify({
-              main_hand: weapon.itemId,
-              main_hand_two_handed: weapon.twoHanded,
-              off_hand:
-                weapon.twoHanded || data.weapon_slots.off_hand === weapon.itemId
+        if (action.sourceId === UNARMED_ATTACK_ID) {
+          if (!data.attacks.some((w) => w.itemId === UNARMED_ATTACK_ID))
+            data = await api<VttSheetData>(`/vtt/rooms/${roomId}/sheets/${token.id}/weapons`, {
+              method: 'PUT',
+              body: JSON.stringify({
+                main_hand: data.weapon_slots.main_hand_two_handed
                   ? null
-                  : data.weapon_slots.off_hand,
-            }),
+                  : data.weapon_slots.main_hand,
+                off_hand: null,
+                main_hand_two_handed: false,
+              }),
+            });
+          const punch = data.attacks.find((w) => w.itemId === UNARMED_ATTACK_ID);
+          if (!punch)
+            throw Error('O ataque desarmado não está disponível. Abra a ficha novamente.');
+          onAttack({
+            actorId: data.token.id,
+            weaponItemId: punch.itemId,
+            name: data.token.name + ' · ' + punch.name,
+            attack: '1d20' + signed(punch.attack),
+            damage: [punch.dice + signed(punch.ability)],
           });
-        const activeWeapon = data.attacks.find((w) => w.itemId === weapon.itemId);
-        if (!activeWeapon) throw Error('Selecione esta arma novamente em Armas na mesa.');
-        onAttack({
-          actorId: data.token.id,
-          weaponItemId: weapon.itemId,
-          name: data.token.name + ' · ' + weapon.name,
-          attack: '1d20' + signed(activeWeapon.attack),
-          damage:
-            activeWeapon.dice === '—' ? [] : [activeWeapon.dice + signed(activeWeapon.ability)],
-        });
+        } else {
+          const weapon = data.available_weapons.find(
+            (w) => w.itemId === action.sourceId || w.name === action.sourceId,
+          );
+          if (!weapon) throw Error('Esta arma não está na mochila do personagem.');
+          if (!data.attacks.some((w) => w.itemId === weapon.itemId))
+            data = await api<VttSheetData>(`/vtt/rooms/${roomId}/sheets/${token.id}/weapons`, {
+              method: 'PUT',
+              body: JSON.stringify({
+                main_hand: weapon.itemId,
+                main_hand_two_handed: weapon.twoHanded,
+                off_hand:
+                  weapon.twoHanded || data.weapon_slots.off_hand === weapon.itemId
+                    ? null
+                    : data.weapon_slots.off_hand,
+              }),
+            });
+          const activeWeapon = data.attacks.find((w) => w.itemId === weapon.itemId);
+          if (!activeWeapon) throw Error('Selecione esta arma novamente em Armas na mesa.');
+          onAttack({
+            actorId: data.token.id,
+            weaponItemId: weapon.itemId,
+            name: data.token.name + ' · ' + weapon.name,
+            attack: '1d20' + signed(activeWeapon.attack),
+            damage:
+              activeWeapon.dice === '—' ? [] : [activeWeapon.dice + signed(activeWeapon.ability)],
+          });
+        }
       }
       setSelected({ action, data, index });
     } catch (e) {

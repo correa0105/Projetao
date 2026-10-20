@@ -4,6 +4,8 @@ import { randomUUID } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { defaultChoices } from '../shared/character-sheet';
+import { UNARMED_ATTACK_ID } from '../shared/unarmed-attack';
+import { vttProtocolVersion } from '../shared/vtt-protocol';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable database required');
 const origin = 'http://localhost:3047';
@@ -22,7 +24,7 @@ const browser = await chromium.launch({ channel: 'msedge', headless: true }),
     [0, 1, 2].map(() =>
       browser.newContext({
         viewport: { width: 1440, height: 1000 },
-        extraHTTPHeaders: { 'X-Vtt-Schema-Version': '7' },
+        extraHTTPHeaders: { 'X-Vtt-Schema-Version': String(vttProtocolVersion) },
       }),
     ),
   ),
@@ -102,7 +104,7 @@ try {
   const token = imported.data.document.scenes[0].tokens.find((t: any) => t.characterId === c.id),
     url = root + '/sheets/' + token.id;
   let sheet = (await api(player, url)).data;
-  expect(sheet.attacks).toEqual([]);
+  expect(sheet.attacks.map((w: any) => w.itemId)).toEqual([UNARMED_ATTACK_ID]);
   expect(sheet.available_weapons).toEqual([]);
   expect((await api(player, '/characters/' + c.id + '/sheet')).data.attacks).toEqual([]);
   expect(
@@ -113,7 +115,7 @@ try {
     [c.id],
   );
   sheet = (await api(player, url)).data;
-  expect(sheet.attacks).toEqual([]);
+  expect(sheet.attacks.map((w: any) => w.itemId)).toEqual([UNARMED_ATTACK_ID]);
   expect(sheet.available_weapons.map((w: any) => w.itemId).sort()).toEqual([
     'dagger',
     'flail',
@@ -301,7 +303,7 @@ try {
   await expect(
     page.getByText('Esta arma não está na mochila do personagem.', { exact: true }),
   ).toBeVisible();
-  expect((await api(player, url)).data.attacks).toEqual([]);
+  expect((await api(player, url)).data.attacks.map((w: any) => w.itemId)).toEqual([UNARMED_ATTACK_ID]);
   await page.getByRole('button', { name: 'Fechar atalho', exact: true }).click();
   await page.getByRole('button', { name: 'Abrir folha completa', exact: true }).click();
   await weapons.selectOption('longsword');

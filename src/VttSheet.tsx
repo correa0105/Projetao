@@ -358,7 +358,10 @@ export function VttSheet({
                       {choices && (
                         <details className="vtt-sheet-weapons" open>
                           <summary>Armas na mesa</summary>
-                          <p>Troque entre as armas da mochila. A escolha vale nesta sala.</p>
+                          <p>
+                            Troque entre as armas da mochila. Com uma mão vazia, use Soco. A escolha
+                            vale nesta sala.
+                          </p>
                           <label>
                             Mão principal
                             <select
@@ -367,7 +370,7 @@ export function VttSheet({
                               value={data.weapon_slots.main_hand || ''}
                               onChange={(e) => selectWeapon('main_hand', e.target.value)}
                             >
-                              <option value="">Sem arma</option>
+                              <option value="">Mão vazia · Soco</option>
                               {data.available_weapons.map((w) => (
                                 <option key={w.itemId} value={w.itemId}>
                                   {w.name}
@@ -413,7 +416,11 @@ export function VttSheet({
                               value={data.weapon_slots.off_hand || ''}
                               onChange={(e) => selectWeapon('off_hand', e.target.value)}
                             >
-                              <option value="">Sem arma</option>
+                              <option value="">
+                                {data.weapon_slots.main_hand_two_handed
+                                  ? 'Ocupada pela arma de duas mãos'
+                                  : 'Mão vazia · Soco'}
+                              </option>
                               {data.available_weapons
                                 .filter(
                                   (w) => !w.twoHanded && w.itemId !== data.weapon_slots.main_hand,
@@ -427,7 +434,7 @@ export function VttSheet({
                           </label>
                         </details>
                       )}
-                      {choices ? (
+                      {data.attacks.length ? (
                         data.attacks.map((w) => (
                           <article key={w.itemId}>
                             <div className="vtt-sheet-attack-title">
@@ -472,12 +479,9 @@ export function VttSheet({
                           </article>
                         ))
                       ) : (
-                        <p>Finalize a origem do personagem no site para trazer seus ataques.</p>
+                        <p>Nenhum ataque disponível.</p>
                       )}
                     </div>,
-                  )}
-                  {choices && !data.attacks.length && (
-                    <p>Nenhuma arma selecionada. Escolha uma arma da mochila em Armas na mesa.</p>
                   )}
                   {box(
                     'Equipamento e consumíveis',
