@@ -71,6 +71,8 @@ export type StorageState = {
   }[];
 };
 export type Post = {
+  vtt_personal_id?: string | null;
+  vtt_personal_url?: string | null;
   tags?: { id: string; name: string }[];
   paper_style: import('../shared/notice-board').PaperStyle;
   paper_summary: string;

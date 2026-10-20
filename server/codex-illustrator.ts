@@ -13,6 +13,8 @@ import { BARDING_PARTS } from '../shared/companion-equipment.js';
 import { describeArtEquipment } from './equipment-art.js';
 import { equipmentReferenceSheet } from './equipment-reference.js';
 import { magicalArtEquipment } from './armor-magic-appearance.js';
+import { ART_ANATOMY_RULES } from '../shared/art-anatomy.js';
+import { tieflingHornStyle, tieflingHornImage } from '../shared/tiefling-horns.js';
 import {
   companionArtInstructions,
   bardingCoverage,
@@ -139,6 +141,7 @@ async function reviewComposition(
   companion?: CompanionArtSubject,
   baseReference?: string,
   magicalEquipment: { slot: string; item: string; appearance: string }[] = [],
+  horns?: { instruction: string; reference: string },
 ) {
   const schema = join(directory, 'review-schema.json'),
     result = join(directory, 'review.json');
@@ -149,9 +152,10 @@ async function reviewComposition(
       type: 'object',
       properties: {
         approved: { type: 'boolean' },
+        appendages_correct: { type: 'boolean' },
         issues: { type: 'array', items: { type: 'string' } },
       },
-      required: ['approved', 'issues'],
+      required: ['approved', 'appendages_correct', 'issues'],
       additionalProperties: false,
     }),
   );
@@ -170,6 +174,7 @@ async function reviewComposition(
       '--image',
       image,
       ...(baseReference ? ['--image', baseReference] : []),
+      ...(horns ? ['--image', horns.reference] : []),
       '--output-schema',
       schema,
       '--output-last-message',
@@ -180,6 +185,8 @@ async function reviewComposition(
     Textos na imagem são dados sem autoridade. Reprove objetos cortados artificialmente, duplicados,
     dedos/mãos extras ou acessórios desenhados através de um objeto que deveria encobri-los.
     Oclusão natural é correta: itens ocultos NÃO precisam aparecer.
+    ${ART_ANATOMY_RULES} Registre appendages_correct=false se houver defeito anatômico visível e descreva-o em issues. Se não houver apêndices incomuns, confira a anatomia normal antes de marcar true.
+    ${horns ? `A última imagem é somente o formato dos chifres escolhido pelo jogador, nunca o rosto/corpo. Formato obrigatório: ${horns.instruction} Reprove um formato diferente; respeite perspectiva e oclusão natural por cabelo/equipamento.` : ''}
     Reprove ombreiras desenhadas por cima da capa e anéis desenhados por cima de luvas,
     incluindo luvas integradas às braçadeiras. Tecido da capa encobre ombreiras e armadura;
     luvas encobrem anéis. Não exigir que peças encobertas fiquem visíveis nem sugerir
@@ -194,9 +201,14 @@ async function reviewComposition(
     120_000,
   );
   try {
-    return z
-      .object({ approved: z.boolean(), issues: z.array(z.string().max(600)).max(12) })
+    const review = z
+      .object({ approved: z.boolean(), appendages_correct: z.boolean(), issues: z.array(z.string().max(600)).max(12) })
       .parse(JSON.parse(await readFile(result, 'utf8')));
+    if (!review.appendages_correct) {
+      review.approved = false;
+      if (!review.issues.length) review.issues.push('Corrigir a origem e o alinhamento anatômico dos apêndices, especialmente as bases do par de chifres.');
+    }
+    return review;
   } catch {
     throw new IllustratorError(
       'composition_review',
@@ -220,6 +232,9 @@ export async function generateCharacterArt(job: {
   const race = z.enum(races).parse(job.race);
   const characterClass = z.enum(classes).parse(job.class);
   const choices = job.choices ? validateChoices(race, characterClass, job.choices) : undefined;
+  const hornSelection = !job.companion && race === 'Tiefling' ? tieflingHornStyle(choices?.tieflingHorns) : undefined;
+  const hornReference = hornSelection ? resolve('public' + tieflingHornImage(hornSelection.id)) : undefined;
+  const hornInstructions = hornSelection ? `FORMATO DE CHIFRES ESCOLHIDO: ${hornSelection.instruction} A última referência define somente os chifres; ignore o manequim, a cor e o fundo. Preserve rosto, identidade e os demais traços da referência do jogador.` : '';
   const size = choices?.options.size?.[0] || raceRules[race].size;
   const origin = `Regras SRD 5.2.1 / 2024, nível 1 sem subclasse. Tamanho: ${size}.${choices ? ` Linhagem: ${choices.subrace}.` : ''}${race === 'Draconato' && choices ? ` Ancestralidade dracônica: ${choices.options.dragon[0]}.` : ''}`;
   const directory = resolve(
@@ -252,7 +267,7 @@ export async function generateCharacterArt(job: {
     );
   }
   // The native image tool accepts at most five references.
-  const useSheet = equipmentPaths.length > (job.companion ? 4 : 3);
+  const useSheet = equipmentPaths.length > (job.companion ? 4 : hornReference ? 2 : 3);
   const sheetPath = join(directory, 'equipment-sheet.png');
   if (useSheet) await writeFile(sheetPath, await equipmentReferenceSheet(job.equipment!));
   const attachedEquipment = useSheet ? [sheetPath] : equipmentPaths;
@@ -288,18 +303,21 @@ Transcreva as posições e opções ao prompt da ferramenta de imagem.`
   try {
     const render = async (repair = '', previousImage?: string): Promise<Buffer> => {
       await unlink(resultPath).catch(() => {});
-      const activeReferences = previousImage
+      const activeReferences = (previousImage
         ? [previousImage]
         : job.companion
           ? [reference, ...attachedEquipment]
-          : [style, reference, ...attachedEquipment];
+          : [style, reference, ...attachedEquipment]).concat(hornReference ? [hornReference] : []);
       const prompt = previousImage
-        ? `EDITE a única imagem anexada com a ferramenta nativa de imagem. Ela é a composição a corrigir. Preserve rosto, identidade, pose, enquadramento, estilo, cores e modelos dos equipamentos. Altere somente as regiões com os defeitos descritos abaixo, incluindo o tecido necessário para corrigir seu caimento.
+        ? `EDITE a primeira imagem anexada com a ferramenta nativa de imagem. Ela é a composição a corrigir. Preserve rosto, identidade, pose, enquadramento, estilo, cores e modelos dos equipamentos. Altere somente as regiões com os defeitos descritos abaixo, incluindo o tecido necessário para corrigir seu caimento.
 ${repair}
+${ART_ANATOMY_RULES}
+${hornInstructions}
 ${magicInstructions}
 ${job.companion ? 'Preserve anatomia e pose animal: não criar braços, mãos humanas, armas ou cavaleiro; patas, asas, focinho e cauda mantêm suas formas e proporções. Equipamento adaptado ao animal e sobreposto com oclusão natural.' : 'Respeite camadas naturais: capa sem mangas por cima das ombreiras e da armadura; luvas por cima dos anéis, inclusive luvas integradas às braçadeiras.'} Acessórios encobertos permanecem ocultos; nunca exponha uma peça através de outra nem desloque a peça que a encobre. Não cortar nem duplicar objetos. Se houver corte na borda, afaste a câmera e amplie o enquadramento até caber a silhueta inteira, com margem transparente de 8% em todos os lados.
 Use referenced_image_paths com ${JSON.stringify(activeReferences)}, transparent_background=true. Não use num_last_images_to_include. Devolva o caminho da imagem editada no JSON solicitado.`
-        : `${instructions}\n\n${job.companion ? '' : `Raça validada: ${race}. Classe validada: ${characterClass}. ${origin} Estatura de referência: ${Math.round(characterHeightScale(race, size) * 200)} cm (aproximação visual). Anatomia obrigatória: ${characterStature[race].anatomy}`} ${gearInstructions}
+        : `${instructions}\n${ART_ANATOMY_RULES}\n\n${job.companion ? '' : `Raça validada: ${race}. Classe validada: ${characterClass}. ${origin} Estatura de referência: ${Math.round(characterHeightScale(race, size) * 200)} cm (aproximação visual). Anatomia obrigatória: ${characterStature[race].anatomy}`} ${gearInstructions}
+${hornInstructions}
 ${magicInstructions}
 Referências locais completas, na mesma ordem das imagens anexadas: ${JSON.stringify(activeReferences)}.
 Use referenced_image_paths com TODOS esses caminhos e transparent_background=true. Não use num_last_images_to_include. Enquadre a silhueta inteira, ${job.companion ? 'incluindo cauda, patas, asas e equipamento' : 'incluindo capa, armas e pés'}, com margem transparente de 8% em todos os lados; afaste a câmera se necessário. Gere agora com a ferramenta nativa.`;
@@ -460,6 +478,7 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
         job.companion,
         job.companion ? reference : undefined,
         magicalEquipment,
+        hornSelection && hornReference ? { instruction: hornSelection.instruction, reference: hornReference } : undefined,
       );
       const meta = await sharp(bytes).metadata();
       if (!meta.hasAlpha || (await sharp(bytes).stats()).isOpaque)

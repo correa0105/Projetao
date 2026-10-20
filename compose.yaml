@@ -31,6 +31,7 @@ services:
       BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?Configure BETTER_AUTH_SECRET in .env}
       BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3000}
       APP_ORIGIN: ${APP_ORIGIN:-http://localhost:3000}
+      APP_SHARE_ORIGIN: ${APP_SHARE_ORIGIN:-}
       PORT: 3000
       VTT_TRANSLATOR_URL: http://translator:5000
     ports:

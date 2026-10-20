@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { Focus, Minus, Plus } from 'lucide-react';
+import { Focus, Minus, Plus, Sparkles } from 'lucide-react';
 import * as THREE from 'three';
 import type { AtlasMarker } from './atlas-types';
 import { createWorldRelief, WORLD_WIDTH, WORLD_HEIGHT } from './world-relief';
@@ -17,12 +17,14 @@ type Controls = {
   reveal: (marker: AtlasMarker) => void;
   refresh: () => void;
   hover: (id: string | null) => void;
+  effects: (enabled: boolean) => void;
 };
 const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n));
 // The approved former 142% framing is now the physical 100% camera baseline.
 const ZOOM_REFERENCE = 1.42;
 const HOME_ZOOM = 1;
 const MAX_ZOOM = 3.5 / ZOOM_REFERENCE;
+const EFFECTS_KEY = 'alvorada-world-effects';
 
 /** A high-angle 3D atlas; regional navigation stays in its own renderer. */
 export function WorldMap({
@@ -43,8 +45,11 @@ export function WorldMap({
   const viewportRef = useRef<HTMLDivElement>(null);
   const markerRefs = useRef(new Map<string, HTMLButtonElement>());
   const controls = useRef<Controls | null>(null);
-  const latest = useRef({ markers, onSelect, onReady, paused });
-  latest.current = { markers, onSelect, onReady, paused };
+  const [visualEffects, setVisualEffects] = useState(() => {
+    try { return localStorage.getItem(EFFECTS_KEY) !== 'off'; } catch { return true; }
+  });
+  const latest = useRef({ markers, onSelect, onReady, paused, visualEffects });
+  latest.current = { markers, onSelect, onReady, paused, visualEffects };
   const ignoreClickUntil = useRef(0);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [retry, setRetry] = useState(0);
@@ -65,6 +70,7 @@ export function WorldMap({
       sceneTime = 0,
       previousSceneTick = 0,
       lastDraw = 0,
+      redrawRequested = true,
       loadExpired = false,
       visible = !document.hidden;
     let view: View = { zoom: HOME_ZOOM, x: 0, y: 0 };
@@ -119,7 +125,8 @@ export function WorldMap({
     viewport.prepend(renderer.domElement);
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('#102f3e');
-    scene.fog = new THREE.FogExp2('#173d4c', 0.009);
+    const atmosphere = new THREE.FogExp2('#173d4c', 0.009);
+    scene.fog = latest.current.visualEffects ? atmosphere : null;
     const camera = new THREE.OrthographicCamera(-16, 16, 10, -10, 0.1, 180);
     camera.up.set(0, 0, 1);
     const elevation = THREE.MathUtils.degToRad(67),
@@ -290,7 +297,8 @@ export function WorldMap({
       }
       setZoom(view.zoom);
     }
-    function requestDraw() {
+    function requestDraw(force = true) {
+      if (force) redrawRequested = true;
       if (!disposed && !contextLost && visible && !frame) frame = requestAnimationFrame(tick);
     }
     function tick(time: number) {
@@ -321,12 +329,15 @@ export function WorldMap({
         }
         updateCamera();
       }
-      if (ready && (time - lastDraw >= 32 || reducedMotion.matches || done)) {
-        relief?.update(reducedMotion.matches ? 0 : animationTime);
-        clouds?.update(reducedMotion.matches ? 0 : animationTime / 1000);
-        seascape?.update(reducedMotion.matches ? 0 : animationTime / 1000);
-        fleet?.update(animationTime / 1000, reducedMotion.matches || latest.current.paused);
-        dragon?.update(animationTime / 1000, reducedMotion.matches || latest.current.paused);
+      if (ready && (redrawRequested || time - lastDraw >= 32 || reducedMotion.matches || done)) {
+        const effects = latest.current.visualEffects;
+        relief?.update(reducedMotion.matches || !effects ? 0 : animationTime);
+        if (effects) {
+          clouds?.update(reducedMotion.matches ? 0 : animationTime / 1000);
+          seascape?.update(reducedMotion.matches ? 0 : animationTime / 1000);
+          fleet?.update(animationTime / 1000, reducedMotion.matches || latest.current.paused);
+          dragon?.update(animationTime / 1000, reducedMotion.matches || latest.current.paused);
+        }
         if (viewport) viewport.dataset.animationSeconds = String(animationTime / 1000);
         if (dragon && viewport) {
           viewport.dataset.dragonX = String(dragon.state.x);
@@ -342,10 +353,13 @@ export function WorldMap({
           viewport.dataset.krakenArmDepth = String(fleetState.krakenArmDepth);
         }
         renderer.render(scene, camera);
+        viewport!.dataset.renderFrames = String(renderer.info.render.frame);
+        viewport!.dataset.renderTriangles = String(renderer.info.render.triangles);
         lastDraw = time;
+        redrawRequested = false;
       }
       done?.();
-      if (animation || (ready && !reducedMotion.matches && !latest.current.paused)) requestDraw();
+      if (animation || (ready && latest.current.visualEffects && !reducedMotion.matches && !latest.current.paused)) requestDraw(false);
     }
     function stopAnimation() {
       animation = null;
@@ -471,8 +485,9 @@ export function WorldMap({
       height = Math.max(1, viewport!.clientHeight);
       baseWidth = overviewWidth() / ZOOM_REFERENCE;
       if (atHome) view = { zoom: HOME_ZOOM, x: homeX, y: homeY };
-      renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      if (renderer.getPixelRatio() !== pixelRatio) renderer.setPixelRatio(pixelRatio);
+      if (renderer.domElement.width !== Math.floor(width * pixelRatio) || renderer.domElement.height !== Math.floor(height * pixelRatio)) renderer.setSize(width, height);
       updateCamera();
       requestDraw();
     }
@@ -507,7 +522,16 @@ export function WorldMap({
       const p = surfaceAt(clientX, clientY);
       return relief?.territoryAt(p.x / WORLD_WIDTH + 0.5, 0.5 - p.y / WORLD_HEIGHT) ?? null;
     }
+    function effects(enabled: boolean) {
+      if (clouds) clouds.group.visible = enabled;
+      if (fleet) fleet.group.visible = enabled;
+      if (dragon) dragon.group.visible = enabled;
+      seascape?.setEffectsEnabled(enabled);
+      scene.fog = enabled ? atmosphere : null;
+      requestDraw();
+    }
     controls.current = {
+      effects,
       hover: highlight,
       zoom: (factor) => zoomAt(factor),
       reset: () => {
@@ -755,7 +779,14 @@ export function WorldMap({
         scene.add(fleet.group);
         dragon = createWorldDragon(result.sampleHeight);
         scene.add(dragon.group);
+        // These groups only change shader uniforms, never their transforms.
+        for (const group of [result.group, seascape.group]) {
+          group.updateMatrixWorld(true);
+          group.traverse(object => { object.matrixAutoUpdate = false; object.matrixWorldAutoUpdate = false; });
+        }
+        effects(latest.current.visualEffects);
         viewport.dataset.terrainVertices = String(result.vertexCount);
+        viewport.dataset.terrainTriangles = String(result.triangleCount);
         renderer.shadowMap.needsUpdate = true;
         ready = true;
         clearTimeout(loadTimer);
@@ -813,11 +844,17 @@ export function WorldMap({
     controls.current?.refresh();
   }, [paused]);
 
+  useEffect(() => {
+    controls.current?.effects(visualEffects);
+    try { localStorage.setItem(EFFECTS_KEY, visualEffects ? 'on' : 'off'); } catch { /* Preference remains available for this visit. */ }
+  }, [visualEffects]);
+
   return (
     <div
       className={`world-map${entering ? ' is-entering' : ''}`}
       data-renderer="relief"
       data-status={status}
+      data-visual-effects={visualEffects ? 'on' : 'off'}
       aria-busy={status === 'loading' || !!entering}
     >
       <div
@@ -892,6 +929,15 @@ export function WorldMap({
             <Focus size={16} />
           </button>
           <span className="world-map__zoom">{Math.round(zoom * 100)}%</span>
+          <button
+            aria-label="Efeitos visuais do mapa"
+            aria-pressed={visualEffects}
+            title={visualEffects ? 'Desligar todos os efeitos visuais' : 'Ligar efeitos visuais'}
+            onClick={() => setVisualEffects(enabled => !enabled)}
+          >
+            <Sparkles size={16} />
+            {!visualEffects && <span className="world-map__effects-off" aria-hidden="true" />}
+          </button>
         </div>
       )}
       <p id={hintId} className="sr-only">

@@ -503,6 +503,7 @@ export async function createWorldRelief(): Promise<{
   update: (time: number) => void;
   dispose: () => void;
   vertexCount: number;
+  triangleCount: number;
 }> {
   const { land, biome } = await readGeography();
   // Loading overlaps terrain generation. Original geography stays independent of
@@ -682,6 +683,19 @@ export async function createWorldRelief(): Promise<{
   terrainGeometry.setAttribute('color', new THREE.BufferAttribute(terrainColors, 3));
   terrainGeometry.setAttribute('woodlandCover', new THREE.BufferAttribute(woodlandCover, 1));
   terrainGeometry.computeVertexNormals();
+  // Preserve full-resolution normals/coastlines; omit only faces hidden below opaque water.
+  const fullIndex = terrainGeometry.index!.array;
+  const visibleIndices = new Uint32Array(fullIndex.length);
+  let visibleIndexCount = 0;
+  for (let i = 0; i < fullIndex.length; i += 3) {
+    const a = fullIndex[i], b = fullIndex[i + 1], c = fullIndex[i + 2];
+    if (heightField[a] >= -0.12 || heightField[b] >= -0.12 || heightField[c] >= -0.12) {
+      visibleIndices[visibleIndexCount++] = a;
+      visibleIndices[visibleIndexCount++] = b;
+      visibleIndices[visibleIndexCount++] = c;
+    }
+  }
+  terrainGeometry.setIndex(new THREE.BufferAttribute(visibleIndices.slice(0, visibleIndexCount), 1));
   // Exposed slopes show neutral gray rock even below the summit; calm plains retain
   // their biome colour. This uses actual geometry, not painted elevation cues.
   const normalAttribute = terrainGeometry.attributes.normal;
@@ -844,6 +858,7 @@ export async function createWorldRelief(): Promise<{
   }));
   const borderOverlay = new THREE.Mesh(terrainGeometry, borderMaterial);
   borderOverlay.name = 'world-hover-borders-above-canopy';
+  borderOverlay.visible = false;
   borderOverlay.renderOrder = 25;
   borderOverlay.raycast = () => {};
   group.add(borderOverlay);
@@ -1023,8 +1038,10 @@ export async function createWorldRelief(): Promise<{
     territoryAt,
     setHovered(id) {
       hoveredTerritory.value = WORLD_TERRITORIES.findIndex((t) => t.id === id) + 1;
+      borderOverlay.visible = hoveredTerritory.value > 0;
     },
     vertexCount: GRID_COUNT,
+    triangleCount: visibleIndexCount / 3,
     update(time) {
       if (!disposed && Number.isFinite(time)) timeUniform.value = time;
     },

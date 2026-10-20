@@ -1,3 +1,4 @@
+import { ensurePersonalVtt, personalVttUrl } from './vtt-accounts.js';
 import { homeUpdatesRouter } from './home-updates.js';
 import { calendarRouter } from './calendar.js';
 import { loreRouter } from './lore.js';
@@ -378,18 +379,18 @@ export function createApp() {
       })
       .parse(req.query);
     const { rows } = await pool.query(
-      `SELECT b.*,u.name AS author_name,
+      `SELECT b.*,u.name AS author_name,CASE WHEN b.kind='mission' THEN v.public_id END AS vtt_personal_id,
       (SELECT count(*)::int FROM mission_participants p WHERE p.post_id=b.id) AS participants,
       COALESCE((SELECT json_agg(p.character_id) FROM mission_participants p JOIN characters c ON c.id=p.character_id WHERE p.post_id=b.id AND c.user_id=$1),'[]') AS my_characters,
       (SELECT title FROM board_posts source WHERE source.id=b.source_mission_id) AS source_mission_title,
       COALESCE((SELECT json_agg(json_build_object('id',t.id,'name',t.name) ORDER BY t.name) FROM mission_post_tags mt JOIN mission_tags t ON t.id=mt.tag_id WHERE mt.post_id=b.id),'[]') AS tags,
       COALESCE((SELECT json_agg(json_build_object('name',c.name,'experience',r.experience,'gold_cp',r.gold_cp,'progression_credit',r.progression_credit,'level_after',r.level_after,'rank_promoted',r.rank_promoted)) FROM mission_rewards r JOIN characters c ON c.id=r.character_id WHERE r.post_id=b.id AND (c.user_id=$1 OR b.author_id=$1)),'[]') AS rewards
-      FROM board_posts b LEFT JOIN "user" u ON u.id=b.author_id
+      FROM board_posts b LEFT JOIN "user" u ON u.id=b.author_id LEFT JOIN vtt_personal_spaces v ON v.user_id=b.author_id
       WHERE ($2::text IS NULL OR b.region_id=$2) AND ($3::text IS NULL OR b.location_id=$3)
       ORDER BY b.created_at DESC`,
       [res.locals.user.id, filters.region_id || null, filters.location_id || null],
     );
-    res.json(rows);
+    res.json(rows.map(row=>({...row,vtt_personal_url:row.vtt_personal_id?personalVttUrl(row.vtt_personal_id):null})));
   });
   app.post('/api/board', async (req, res) => {
     const data = postSchema.parse(req.body);
@@ -419,6 +420,7 @@ export function createApp() {
             'Este evento não está ativo. O registro de missões de evento está bloqueado.',
           );
       }
+      const personal = data.kind === 'mission' ? await ensurePersonalVtt(client,res.locals.user.id) : null;
       const location = await resolvePostLocation(client, data);
       const {
         rows: [created],
@@ -444,7 +446,7 @@ export function createApp() {
         ],
       );
       if (data.kind === 'mission') await setMissionTags(client, created.id, data.tag_ids);
-      return created;
+      return { ...created, vtt_personal_id: personal?.public_id || null };
     });
     res.status(201).json(post);
   });
@@ -759,6 +761,10 @@ export function createApp() {
           error: 'Revise os campos informados.',
           details: error.issues.map((i) => i.message),
         });
+        return;
+      }
+      if (error && typeof error === 'object' && 'constraint' in error && error.constraint === 'vtt_account_storage_limit') {
+        res.status(413).json({error:'O limite de 100 MB de imagens externas desta conta foi atingido. Remova imagens não utilizadas antes de enviar outras.'});
         return;
       }
       if (error instanceof AppError) {

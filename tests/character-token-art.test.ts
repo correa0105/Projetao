@@ -277,7 +277,7 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
       const state=fs.existsSync(${JSON.stringify(statePath)})?JSON.parse(fs.readFileSync(${JSON.stringify(statePath)})):{renders:[],reviews:[]};
       const top=dir.includes('character-token-art'), review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
-      if(review){state.reviews.push({top,prompt});fs.writeFileSync(result,JSON.stringify({approved:!state.rejectToken||!top,issues:state.rejectToken&&top?['Câmera frontal incorreta.']:[]}));}
+      if(review){state.reviews.push({top,prompt});fs.writeFileSync(result,JSON.stringify({approved:!state.rejectToken||!top,appendages_correct:!state.rejectAnatomy,issues:state.rejectToken&&top?['Câmera frontal incorreta.']:[]}));}
       else{state.renders.push({top,prompt,hashes:images.map(p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex'))});const output=path.join(dir,'output.png');fs.copyFileSync(top?${JSON.stringify(join(temp, 'token.png'))}:${JSON.stringify(join(temp, 'portrait.png'))},output);fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));}
       fs.writeFileSync(${JSON.stringify(statePath)},JSON.stringify(state));
     });`,
@@ -302,11 +302,30 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     assert.match(state.renders[1].prompt, /90 graus/);
     assert.match(state.renders[1].prompt, /transparent_background=true/);
     assert.match(state.reviews[1].prompt, /mãos com pegada impossível/);
+    assert.match(state.reviews[0].prompt, /um chifre na testa e outro no alto da cabeça/);
+    assert.match(state.reviews[1].prompt, /mesma altura anatômica/);
+    await writeFile(statePath, JSON.stringify({ renders: [], reviews: [] }));
+    const hornChoices = { ...defaultChoices('Tiefling', 'Guerreiro'), tieflingHorns: 'short' as const };
+    await generateCharacterArtPair({ ...job, id: randomUUID(), race: 'Tiefling', choices: hornChoices });
+    const horns = JSON.parse(await readFile(statePath, 'utf8'));
+    assert.match(horns.renders[0].prompt, /FORMATO DE CHIFRES ESCOLHIDO:.*chifres curtos/);
+    assert.equal(horns.renders[0].hashes.at(-1), hash(await readFile('public/character-creation/tiefling-horns-short.webp')));
+    assert.match(horns.reviews[0].prompt, /Reprove um formato diferente/);
+    assert.match(horns.renders[1].prompt, /Formato de chifres escolhido.*chifres curtos/);
     await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], rejectToken: true }));
     await assert.rejects(generateCharacterToken({ ...job, id: randomUUID() }, portrait), /revisão/);
     const failed = JSON.parse(await readFile(statePath, 'utf8'));
     assert.equal(failed.renders.length, 3);
     assert.ok(failed.renders[1].prompt.includes('Câmera frontal incorreta.'));
+    await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], rejectAnatomy: true }));
+    await assert.rejects(generateCharacterArtPair({ ...job, id: randomUUID() }), /não passou/);
+    const anatomy = JSON.parse(await readFile(statePath, 'utf8'));
+    assert.equal(anatomy.renders.length, 3);
+    assert.equal(anatomy.renders.some((render: {top: boolean}) => render.top), false);
+    assert.ok(anatomy.renders[1].prompt.includes('bases do par de chifres'));
+    await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], rejectAnatomy: true }));
+    await assert.rejects(generateCharacterToken({ ...job, id: randomUUID() }, portrait), /revisão/);
+    assert.equal(JSON.parse(await readFile(statePath, 'utf8')).renders.length, 3);
   } finally {
     for (const [key, value] of Object.entries(env)) {
       if (value === undefined) delete process.env[key];

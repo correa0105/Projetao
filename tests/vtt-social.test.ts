@@ -87,10 +87,10 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
     ]);
     let room: any, privateAsset: string;
     await t.test(
-      'mesa: somente dono administrador edita, convite, conflito de revisão e revogação',
+      'mesa: dono edita sem depender de administrador, convite, revisão e revogação',
       async () => {
         assert.equal((await request('/vtt')).status, 401);
-        assert.equal((await request('/vtt', player, 'POST', { name: 'Teste' })).status, 403);
+        assert.equal((await request('/vtt', player, 'POST', { name: 'Teste' })).status, 201);
         const r = await request('/vtt', adm, 'POST', { name: 'A cripta' });
         assert.equal(r.status, 201, JSON.stringify(r.data));
         room = r.data;
@@ -118,12 +118,10 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
         assert.deepEqual(versions.map((r) => r.status).sort(), [200, 409]);
         room = versions.find((r) => r.status === 200)!.data;
         await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [adm.id]);
-        assert.equal((await request(path, adm)).data.is_gm, false);
-        assert.equal(
-          (await request(path, adm, 'PUT', { revision: room.revision, document: room.document }))
-            .status,
-          403,
-        );
+        assert.equal((await request(path, adm)).data.is_gm, true);
+        const stillOwner = await request(path, adm, 'PUT', { revision: room.revision, document: room.document });
+        assert.equal(stillOwner.status,200);
+        room=stillOwner.data;
         await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [adm.id]);
       },
     );

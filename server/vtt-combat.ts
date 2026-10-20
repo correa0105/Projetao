@@ -3,7 +3,6 @@ import { randomInt } from 'node:crypto';
 import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
-import { isAdministrator, requireAdministrator } from './administrators.js';
 import { AppError } from './services.js';
 import { combatSchema, sortCombat, type Combat, type CombatView } from '../shared/vtt-combat.js';
 import type { VttDocument, VttToken, VttScene } from '../shared/vtt.js';
@@ -69,7 +68,7 @@ export function vttCombatRouter(
   async function view(room: Room, user: string, db: DB = pool): Promise<CombatView> {
     const c = current(room),
       scene = room.document.scenes.find((s) => s.id === c.sceneId)!,
-      gm = room.owner_id === user && (await isAdministrator(user, db as PoolClient));
+      gm = room.owner_id === user;
     let viewer = user;
     if (room.role === 'spectator' && !gm) {
       const members = (
@@ -126,11 +125,10 @@ export function vttCombatRouter(
       const r = await getRoom(db, rid, user, true),
         c = current(r),
         scene = r.document.scenes.find((s) => s.id === c.sceneId)!,
-        gm = r.owner_id === user && (await isAdministrator(user, db as PoolClient));
+        gm = r.owner_id === user;
       if (r.role === 'spectator' && !gm)
         throw new AppError(403, 'Espectadores podem somente assistir.');
       if (input.kind !== 'roll') {
-        await requireAdministrator(user, db as PoolClient);
         if (!gm) throw new AppError(403, 'Somente o mestre controla a ordem dos turnos.');
       }
       if (input.kind === 'add') {

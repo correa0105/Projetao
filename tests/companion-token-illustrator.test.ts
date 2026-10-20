@@ -33,7 +33,7 @@ test('animal pair uses approved identity and its actual species/coat overhead gu
  let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
  const state=fs.existsSync(${JSON.stringify(capture)})?JSON.parse(fs.readFileSync(${JSON.stringify(capture)})):{renders:[],reviews:[]},top=dir.includes('companion-token-art'),review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
  const record={top,prompt,images:images.map(p=>({path:p,hash:crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')}))};
- if(review){state.reviews.push(record);fs.writeFileSync(result,JSON.stringify({approved:!(top&&state.reject),issues:top&&state.reject?['A câmera está frontal.']:[]}));}
+ if(review){state.reviews.push(record);fs.writeFileSync(result,JSON.stringify({approved:!(top&&state.reject),appendages_correct:true,issues:top&&state.reject?['A câmera está frontal.']:[]}));}
  else{state.renders.push(record);const file=path.join(dir,'output.png');fs.copyFileSync(top?${JSON.stringify(join(temp, 'token.png'))}:${JSON.stringify(join(temp, 'portrait.png'))},file);fs.writeFileSync(result,JSON.stringify({image_path:file,error:''}));}
  fs.writeFileSync(${JSON.stringify(capture)},JSON.stringify(state));
  });`,

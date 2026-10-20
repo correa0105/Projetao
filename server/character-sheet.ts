@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import {spellReference} from './spell-reference.js';
 import { grantBetaStartingGold } from './beta-accounts.js';
-import { randomInt } from 'node:crypto';
+import { rollCharacterAbilities } from './ability-rolls.js';
 import type { PoolClient } from 'pg';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
@@ -378,9 +378,7 @@ export function characterSheetRouter() {
       } = await client.query('SELECT * FROM character_sheets WHERE character_id=$1', [id]);
       if (!sheet?.choices) throw new AppError(409, 'Complete as escolhas da ficha antes de rolar.');
       if (sheet.rolls) return; // Retry/double click returns the same persisted dice, never a new draw.
-      const rolls = Array.from({ length: 6 }, () =>
-        Array.from({ length: 4 }, () => randomInt(1, 7)),
-      );
+      const rolls = rollCharacterAbilities();
       await client.query(
         'UPDATE character_sheets SET rolls=$2,updated_at=now() WHERE character_id=$1',
         [id, JSON.stringify(rolls)],

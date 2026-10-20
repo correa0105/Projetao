@@ -126,6 +126,31 @@
   white-space: nowrap;
   margin-right: 3px;
 }
+:root .app-shell .profile-menu .profile-home-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 5px 9px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  border: 1px solid #ad8c5866;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #30291d, #201c16);
+  box-shadow: inset 0 1px 0 #e6c58d12;
+  color: #e0c48f;
+  font: 500 11px/1.2 var(--sans);
+  cursor: pointer;
+}
+:root .app-shell .profile-menu .profile-home-button:hover {
+  background: #3a3021;
+  border-color: #c5a267;
+}
+:root .app-shell .profile-menu .profile-home-button:focus-visible {
+  outline: 2px solid #e4c07e;
+  outline-offset: 3px;
+}
 .profile-character-summary > :is(span, small) {
   overflow: hidden;
   text-overflow: ellipsis;

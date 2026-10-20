@@ -4,7 +4,6 @@ import { z } from 'zod';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { companionAllocated } from './companion-inventory.js';
-import { isAdministrator, requireAdministrator } from './administrators.js';
 import { deriveSheet, classRules } from '../shared/character-sheet.js';
 import { consumableItems } from '../shared/vtt-sheet.js';
 import { readVttLoadout } from './vtt-weapon-loadout.js';
@@ -29,7 +28,7 @@ export async function access(
   const scene = room.document.scenes.find((s) => s.id === room.document.activeScene)!;
   const token = scene.tokens.find((t) => t.id === tid);
   if (!token?.characterId) throw new AppError(404, 'Este token não tem personagem importado.');
-  const isGm = room.owner_id === user && (await isAdministrator(user, db as PoolClient));
+  const isGm = room.owner_id === user;
   const {
     rows: [character],
   } = await db.query(
@@ -202,7 +201,6 @@ export function vttSheetRouter(getRoom: RoomAccess) {
       .strict()
       .parse(req.body);
     await transaction(async (db) => {
-      await requireAdministrator(user, db as PoolClient);
       const a = await access(getRoom, db, rid, tid, user, true);
       if (!a.isGm) throw new AppError(403, 'Somente o mestre desta mesa pode curar manualmente.');
       const oldHp = a.token.hp;
@@ -346,7 +344,6 @@ export function vttSheetRouter(getRoom: RoomAccess) {
       .strict()
       .parse(req.body);
     await transaction(async (db) => {
-      await requireAdministrator(user, db as PoolClient);
       const a = await access(getRoom, db, rid, tid, user, true);
       if (!a.isGm) throw new AppError(403, 'Somente o mestre desta mesa pode restaurar recursos.');
       const cid = a.character.id,
@@ -423,7 +420,6 @@ export function vttSheetRouter(getRoom: RoomAccess) {
       user = res.locals.user.id;
     const input = z.object({ totals: nine }).strict().parse(req.body);
     await transaction(async (db) => {
-      await requireAdministrator(user, db as PoolClient);
       const a = await access(getRoom, db, rid, tid, user, true);
       if (!a.isGm) throw new AppError(403, 'Somente o mestre pode definir os espaços.');
       const r = await resources(db, a.character, a.sheet, true);

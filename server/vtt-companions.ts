@@ -5,7 +5,6 @@ import sharp from 'sharp';
 import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
-import { isAdministrator } from './administrators.js';
 import { mounts } from '../shared/mounts.js';
 import { pets } from '../shared/pets.js';
 import {
@@ -80,7 +79,7 @@ async function importCompanion(
   position?: { x: number; y: number },
 ) {
   const scene = room.document.scenes.find((s) => s.id === room.document.activeScene)!;
-  const isGm = room.owner_id === user && (await isAdministrator(user, db as PoolClient));
+  const isGm = room.owner_id === user;
   const existing = scene.tokens.find((t) => t.companionId === animal.id && t.controller === user);
   const token = existing || newToken(crypto.randomUUID(), scene);
   if (existing && (existing.locked || (existing.hidden && !isGm)))

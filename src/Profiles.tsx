@@ -388,9 +388,6 @@ export function Profiles({ user }: { user: User }) {
       {!target ? (
         <>
           <header className="profiles-directory-heading">
-            <button onClick={() => visitProfile(user.id)}>
-              Meu perfil <UserRound size={16} />
-            </button>
             <span className="social-eyebrow">Conheça os aventureiros de Alvorada</span>
             <h2>Encontre um viajante</h2>
             <p>Encontre amigos e descubra as histórias por trás dos personagens.</p>
@@ -440,11 +437,6 @@ export function Profiles({ user }: { user: User }) {
         <p className="social-empty">Abrindo o perfil…</p>
       ) : (
         <>
-          {overview && (
-            <nav className="player-profile-tabs" aria-label="Voltar ao personagem">
-              <button onClick={() => setOverview(false)}><ArrowLeft size={16} /> Voltar ao personagem</button>
-            </nav>
-          )}
           {overview && (
             <PlayerProfileOverview
               profile={profile}

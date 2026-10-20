@@ -1,3 +1,5 @@
+import { copyText } from './copy-text';
+import { vttPersonalHref } from '../shared/vtt-links';
 import { HomeJournal } from './HomeJournal';
 import { AccountPreview } from './AccountPreview';
 import { LoreLibrary } from './LoreLibrary';
@@ -39,6 +41,7 @@ import {
   Swords,
   Trophy,
   Users,
+  UserRound,
   X,
 } from 'lucide-react';
 import { authClient, api, post } from './api';
@@ -330,6 +333,10 @@ function Portal({ user }: { user: User }) {
         <MapPin size={14} />
         {item.location}
       </div>
+      {!compact && item.kind === 'mission' && item.vtt_personal_id && <div className="mission-vtt-link">
+        <a className="button outline small-button" href={vttPersonalHref(item.vtt_personal_id)}>Entrar na mesa <ArrowUpRight size={15}/></a>
+        {item.author_id === user.id && <button className="text-button" onClick={()=>void copyText(item.vtt_personal_url || new URL(vttPersonalHref(item.vtt_personal_id!),location.href).href).then(()=>setToast('Link fixo da sua mesa copiado.')).catch(error=>setToast(error.message))}>Copiar link da mesa</button>}
+      </div>}
       <div className="quest-bottom">
         <span>
           {item.reward_cp > 0 ? (
@@ -680,12 +687,13 @@ function Portal({ user }: { user: User }) {
             >
               <div className="topbar-right">
                 <button
+                  className="profile-home-button"
                   onClick={() => {
                     setCharacterMenuOpen(false);
                     location.hash = 'profiles?user=' + encodeURIComponent(user.id);
                   }}
                 >
-                  Meu perfil
+                  <UserRound size={14} aria-hidden="true" /> Meu perfil
                 </button>
                 {character && (
                   <span

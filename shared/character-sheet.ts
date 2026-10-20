@@ -8,6 +8,7 @@ import { classFightingStyles, fightingStyles } from './fighting-styles.js';
 import { sheetFeatureEntries } from './sheet-features.js';
 import { featRules } from './feat-choices.js';
 import { eberronSpecies, shifterBenefits } from './eberron-species.js';
+import { tieflingHornIds } from './tiefling-horns.js';
 export const RULESET = 'D&D 2024 · Livro do Jogador e suplementos';
 export const { skills, skillAbilities, alignments } = base;
 export const languages = [
@@ -553,6 +554,7 @@ export const choicesSchema = z.object({
   bonds: z.string().trim().max(800).default(''),
   flaws: z.string().trim().max(800).default(''),
   appearance: z.string().trim().max(800).default(''),
+  tieflingHorns: z.enum(tieflingHornIds).optional(),
   age: z.string().trim().max(40).default(''),
   height: z.string().trim().max(40).default(''),
   weight: z.string().trim().max(40).default(''),
@@ -1045,6 +1047,7 @@ export function racialBonuses(_race: string, c: SheetChoices) {
   return c.abilityBoosts;
 }
 export function normalizeOptions(race: string, cls: string, c: SheetChoices) {
+  if (race !== 'Tiefling' && c.tieflingHorns) { c = { ...c }; delete c.tieflingHorns; }
   for (let pass = 0; pass < 3; pass++) {
     const fields = choiceFields(race, cls, c);
     c = {
@@ -1096,6 +1099,7 @@ export function defaultChoices(race: string, cls: string, background = 'Acólito
     bonds: '',
     flaws: '',
     appearance: '',
+    ...(species === 'Tiefling' ? { tieflingHorns: 'curved' as const } : {}),
     age: '',
     height: '',
     weight: '',
@@ -1220,6 +1224,7 @@ export function validateChoices(race: string, cls: string, input: unknown): Shee
   const check = (ok: boolean, msg: string) => {
     if (!ok) throw new Error(msg);
   };
+  check(!c.tieflingHorns || race === 'Tiefling', 'O formato de chifres é uma escolha de aparência do Tiefling.');
   const list = (v: string[], n: number, a: string[], label: string) =>
     check(
       v.length === n && new Set(v).size === n && v.every((x) => a.includes(x)),

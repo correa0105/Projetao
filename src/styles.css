@@ -2597,3 +2597,12 @@ dialog::backdrop {
     scroll-behavior: auto !important;
   }
 }
+
+/* Personal VTT links in mission creation and mural cards. */
+.personal-vtt-link { min-width:0; border:1px solid rgba(170,145,100,.32); border-radius:8px; padding:14px; }
+.personal-vtt-link p { font-size:.85rem; line-height:1.5; }
+.personal-vtt-link input { min-width:0; width:100%; }
+.vtt-link-actions,.mission-vtt-link { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.mission-vtt-link { margin:12px 0; }
+
+@media (max-width:700px) { .vtt-top-actions .vtt-personal-share span { display:none; } }

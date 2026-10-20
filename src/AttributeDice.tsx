@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Dices } from 'lucide-react';
 import { createPortal } from 'react-dom';
+import { AttributeRollRule } from './AttributeRollRule';
 import './attribute-dice.css';
 
 const dots: Record<number, number[]> = {
@@ -70,6 +71,7 @@ function DiceThrow({ dice, index, onKeep }: { dice: number[]; index: number; onK
         <h2 id="dice-throw-title">Rolagem {index + 1} de 6</h2>
         <p>Quatro dados. Os três maiores formam seu resultado.</p>
       </header>
+      <AttributeRollRule />
       <div className="attribute-dice-stage">
         {dice.map((value, i) => (
           <Die key={i} value={value} index={i} discarded={i === discard} />

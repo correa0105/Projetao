@@ -17,7 +17,11 @@ Gere uma única ilustração usando a ferramenta nativa de imagem do Codex e a s
 - Manter camadas e oclusão naturais: acessórios encobertos podem ficar invisíveis. Não deformar escudos, tecido ou corpo para revelar um item. Capa é um manto sem mangas, solto sobre os ombros. Integrar os itens à pintura; não cole as imagens sobre o personagem.
 - A sobreposição física prevalece sobre a lista de equipamentos: capa por cima das ombreiras e da armadura; luvas por cima dos anéis, inclusive as luvas integradas às braçadeiras. Ombreiras jamais aparecem sobre a capa; anéis jamais aparecem sobre as luvas. Colares, cintos, bolsas e outros acessórios ficam atrás da roupa, armadura, tecido ou objeto que naturalmente os encobrir. Mostrar apenas as partes expostas na pose; uma peça completamente oculta continua equipada e não precisa aparecer. Não abrir, deslocar, tornar transparente ou atravessar outra peça para exibi-la.
 
-## Imagem final
+## Conferência de anatomia
+
+Confira anatomia e ligação dos apêndices antes de entregar. Chifres em par têm bases alinhadas dos dois lados do crânio, respeitando perspectiva e oclusão.
+
+## Composição final
 
 Figura única, central, de pé, frontal ou três quartos, corpo inteiro sem cortes, incluindo cabelos, equipamentos e pés. Composição vertical à altura dos olhos; corpo ocupa aproximadamente 90% da altura, com margens para os itens. Usar enquadramento uniforme: a aplicação ajusta a escala comparativa entre raças.
 

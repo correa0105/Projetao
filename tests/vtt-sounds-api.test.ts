@@ -1,3 +1,4 @@
+import { vttProtocolVersion } from '../shared/vtt-protocol';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
@@ -18,13 +19,17 @@ test('mixer e atalhos em PostgreSQL descartável: autorização, persistência e
     origin = (process.env.APP_ORIGIN || 'http://localhost:3000').split(',')[0];
   type Who = { id: string; cookie: string };
   async function req(path: string, who?: Who, method = 'GET', body?: unknown) {
+    if (method === 'PUT' && path.endsWith('/hotbar') && body) {
+      const current = body as {revision:number;document:unknown};
+      body = {revision:current.revision,document:current.document};
+    }
     const response = await fetch(base + path, {
       method,
       headers: {
         Origin: origin,
         Cookie: who?.cookie || '',
         'Content-Type': 'application/json',
-        'X-Vtt-Schema-Version': '7',
+        'X-Vtt-Schema-Version': String(vttProtocolVersion),
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
@@ -62,7 +67,7 @@ test('mixer e atalhos em PostgreSQL descartável: autorização, persistência e
         (await req('/vtt/join', who, 'POST', { invite: room.invite, role })).status,
         200,
       );
-    await t.test('somente o mestre com administrador vigente edita; membros ouvem', async () => {
+    await t.test('somente o dono da mesa edita; membros ouvem', async () => {
       assert.equal((await req(sounds)).status, 401);
       assert.equal((await req(sounds, player)).status, 200);
       assert.equal((await req(sounds, spectator)).status, 200);
@@ -299,14 +304,14 @@ test('mixer e atalhos em PostgreSQL descartável: autorização, persistência e
         await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [gm.id]);
         assert.equal(
           (await req(sounds, gm, 'POST', { kind: 'play', sourceId: 'music-old-inn' })).status,
-          403,
+          200,
         );
         assert.equal((await req(sounds, gm)).status, 200);
         for (const command of [
           { kind: 'favorite', sourceId: 'amb-hearth', favorite: true },
           { kind: 'hide', sourceId: 'amb-hearth', hidden: true },
         ])
-          assert.equal((await req(sounds, gm, 'POST', command)).status, 403);
+          assert.equal((await req(sounds, gm, 'POST', command)).status, 200);
       },
     );
   } finally {

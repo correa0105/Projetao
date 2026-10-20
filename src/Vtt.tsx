@@ -1,3 +1,6 @@
+import { copyText } from './copy-text';
+import { vttPersonalHref, vttInviteCode } from '../shared/vtt-links';
+import { vttStorageLabel } from '../shared/vtt-storage';
 import { VttHighQualityCapture, renderVttCaptureFrame, type VttCaptureFrame } from './VttHighQualityCapture';
 import { VttItemLayers, VttStackButtons } from './VttItemLayers';
 import { VttRoomCharacters } from './VttRoomCharacters';
@@ -365,6 +368,10 @@ function NumberField({
 }
 export function Vtt({ characters, user }: { characters: Character[]; user: User }) {
   const captureFrame = useRef<VttCaptureFrame | null>(null);
+  const [followingPersonal, setFollowingPersonal] = useState<string | null>(null);
+  const [personalId, setPersonalId] = useState<string | null>(null);
+  const [personalUrl, setPersonalUrl] = useState('');
+  const [storage, setStorage] = useState<import('../shared/vtt-storage').VttStorage | null>(null);
   const [rooms, setRooms] = useState<{ id: string; name: string; is_owner: boolean }[]>([]),
     [canCreate, setCanCreate] = useState(false),
     [state, setState] = useState<VttState | null>(null),
@@ -648,6 +655,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     stateRef.current = next;
     docRef.current = next.document;
     setState(next);
+    if (next.storage) setStorage(next.storage);
+    if (next.personal) {setPersonalId(next.personal.public_id);setPersonalUrl(next.personal.url || '');}
     setDoc(next.document);
     followSignal(next.focusSignal, next.id, next.document.activeScene);
     if (reset) resetDirty();
@@ -953,9 +962,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         ),
       });
   }
-  async function openRoom(id: string) {
+  async function openRoom(id: string, following: string | null = null) {
     await save();
     let next = await api<VttState>('/vtt/rooms/' + id);
+    if (next.is_gm) next = await post<VttState>(`/vtt/rooms/${id}/activate`, {});
+    setFollowingPersonal(following);
+    if (!following) window.history.replaceState(null,'','#vtt?room='+id);
     if (!next.is_gm && next.role === 'player')
       next = await post<VttState>(`/vtt/rooms/${id}/participation`, { role: 'player' });
     receive(next);
@@ -970,20 +982,53 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     });
   }
   useEffect(() => {
-    let live = true;
-    api<{ rooms: typeof rooms; can_create: boolean }>('/vtt')
-      .then((r) => {
-        if (live) {
-          setRooms(r.rooms);
-          setCanCreate(r.can_create);
-          if (r.rooms[0]) void openRoom(r.rooms[0].id).catch((e) => setNotice(e.message));
-        }
-      })
-      .catch((e) => setNotice(e.message));
-    return () => {
-      live = false;
+    let live = true, sequence = 0;
+    const load = async (initial = false) => {
+      if (location.hash.slice(1).split('?')[0] !== 'vtt') return;
+      const ticket = ++sequence;
+      const params = new URLSearchParams(location.hash.split('?')[1] || '');
+      const personal = params.get('table');
+      const code = params.get('invite');
+      const requested = params.get('room');
+      try {
+        const listing = await api<{ rooms: typeof rooms; can_create: boolean; personal: {public_id:string;room_id:string;url?:string}; storage: import('../shared/vtt-storage').VttStorage }>('/vtt');
+        if (!live || ticket !== sequence) return;
+        setRooms(listing.rooms); setCanCreate(listing.can_create); setPersonalId(listing.personal.public_id); setPersonalUrl(listing.personal.url || ''); setStorage(listing.storage);
+        if (personal) {
+          await save();
+          const next = await post<VttState>('/vtt/personal/' + encodeURIComponent(personal) + '/join', {role:'player'});
+          if (!live || ticket !== sequence) return;
+          receive(next); setFollowingPersonal(personal);
+        } else if (code) {
+          await save();
+          const invite = vttInviteCode(code);
+          if (!invite) throw new Error('Convite inválido.');
+          const next = await post<VttState>('/vtt/join', {invite,role:'player'});
+          if (live && ticket === sequence) {receive(next);setFollowingPersonal(null);}
+        } else if (requested || initial) await openRoom(requested || listing.personal.room_id);
+      } catch (e) { if (live && ticket === sequence) setNotice((e as Error).message); }
     };
+    void load(true);
+    const onHash = () => { void load(); };
+    window.addEventListener('hashchange',onHash);
+    return () => {live=false;sequence++;window.removeEventListener('hashchange',onHash);};
   }, []);
+  useEffect(() => {
+    if (!followingPersonal || state?.is_gm) return;
+    let live=true,pending=false;
+    const timer=window.setInterval(async()=>{
+      if(!live||pending||document.hidden)return;
+      pending=true;
+      try{
+        const current=await api<{room_id:string}>('/vtt/personal/'+followingPersonal);
+        if(live&&current.room_id!==stateRef.current?.id){
+          const next=await post<VttState>('/vtt/personal/'+followingPersonal+'/join',{role:stateRef.current?.role === 'spectator' ? 'spectator' : 'player'});
+          if(live)receive(next);
+        }
+      }catch(e){if(live)setNotice((e as Error).message);}finally{pending=false;}
+    },3000);
+    return()=>{live=false;window.clearInterval(timer);};
+  },[followingPersonal,state?.is_gm]);
   useEffect(() => {
     let live = true;
     api<typeof catalog>('/vtt/compendium')
@@ -1033,6 +1078,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 receive(next);
               else {
                 setState(next);
+                if (next.storage) setStorage(next.storage);
                 stateRef.current = next;
               }
             }
@@ -2101,6 +2147,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     );
     const a = await response.json();
     if (!response.ok) throw Error(a.error);
+    if (a.storage) setStorage(a.storage);
     setState((current) => (current ? { ...current, assets: [a, ...current.assets] } : current));
     return a as VttAsset;
   }
@@ -2613,7 +2660,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       <section className="vtt-lobby">
         <span className="vtt-eyebrow">A mesa está posta</span>
         <h1>Mesa virtual</h1>
-        <p>Mapas, personagens e histórias no mesmo lugar.</p>
+        <p>Prepare sua mesa a qualquer momento. O mesmo link acompanha todas as suas missões.</p>
         {notice && <p role="alert">{notice}</p>}
         <div className="vtt-lobby-card">
           <Swords size={40} />
@@ -2625,6 +2672,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 void act(async () => {
                   const next = await post<VttState>('/vtt', { name: roomName });
                   receive(next);
+                  setFollowingPersonal(null);
+                  window.history.replaceState(null,'','#vtt?room='+next.id);
                   setRooms((list) => [
                     ...list,
                     { id: next.id, name: next.document.name, is_owner: true },
@@ -2652,7 +2701,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               e.preventDefault();
               void act(async () => {
                 const next = await post<VttState>('/vtt/join', {
-                  invite: inviteInput.trim(),
+                  invite: vttInviteCode(inviteInput) || inviteInput.trim(),
                   role: joinRole,
                 });
                 receive(next);
@@ -2750,7 +2799,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           </div>
         )}
         <div className="vtt-top-actions">
-          <VttHighQualityCapture administrator={user.administrador === 1} frame={captureFrame} roomId={state.id}/>
+          {gm && personalId && <button className="vtt-personal-share" aria-label="Copiar link fixo do meu VTT" title="Copiar link fixo do meu VTT" onClick={()=>void copyText((personalUrl || new URL(vttPersonalHref(personalId),location.href).href)).then(()=>setNotice('Link fixo do VTT copiado.')).catch(e=>setNotice(e.message))}><Copy size={17}/><span>Link da mesa</span></button>}
+          <VttHighQualityCapture administrator={gm} frame={captureFrame} roomId={state.id}/>
           {gm && (
             <button
               aria-label="Biblioteca de mapas"
@@ -4251,6 +4301,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       placeholder={library === 'scenery' ? 'Nome da peça ou categoria…' : 'Nome, tipo, nível…'}
                     />
                   </label>}
+                  {gm && library === 'images' && storage && <p className="vtt-muted" role="status">Imagens externas: {vttStorageLabel(storage)}. O catálogo não ocupa esta cota.</p>}
                   {gm && library !== 'nature' && library !== 'terrain' && library !== 'presets' && library !== 'premium' && library !== 'animated' && library !== 'scenery' && (
                     <label className="vtt-file-button">
                       <Upload size={14} />
@@ -5122,15 +5173,20 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           onChange={(e) => edit((d) => (d.name = e.target.value || 'Mesa'))}
                         />
                       </label>
-                      <h3>Convite dos jogadores</h3>
+                      <h3>Link fixo do seu VTT</h3>
+                      <p className="vtt-muted">Use este mesmo link em todas as suas missões. Os jogadores entram no mapa ativo da sua mesa.</p>
+                      <label>Link da mesa<textarea aria-label="Link da mesa" readOnly value={personalId ? (personalUrl || new URL(vttPersonalHref(personalId),location.href).href) : ''} rows={3}/></label>
+                      <button onClick={()=>void copyText((personalUrl || new URL(vttPersonalHref(personalId!),location.href).href)).then(()=>setNotice('Link fixo copiado.')).catch(e=>setNotice(e.message))}>Copiar link fixo</button>
+                      <h3>Imagens externas</h3>
+                      {storage && <p role="status">{vttStorageLabel(storage)} usados para imagens externas. O catálogo e as artes dos personagens não ocupam essa cota.</p>}
+                      <h3>Convite avulso dos jogadores</h3>
                       <p className="vtt-muted">
                         Compartilhe o código. É necessário entrar no site para participar.
                       </p>
                       <textarea readOnly value={state.invite || ''} rows={2} />
                       <button
                         onClick={() =>
-                          void navigator.clipboard
-                            .writeText(state.invite || '')
+                          void copyText(state.invite || '')
                             .then(() => setNotice('Convite copiado.'))
                         }
                       >
@@ -5148,7 +5204,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           })
                         }
                       >
-                        Revogar convite e gerar outro
+                        Renovar código avulso
                       </button>
                     </>
                   )}

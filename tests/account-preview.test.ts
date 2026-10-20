@@ -107,7 +107,7 @@ test('Prévia global: capacidades básicas por requisição, rascunhos privados 
         assert.equal(preview.data.can_edit, false, path);
         assert.equal(normal.data.can_edit, true, path);
       }
-      if ('can_create' in preview.data) assert.equal(preview.data.can_create, false, path);
+      if ('can_create' in preview.data) assert.equal(preview.data.can_create, path === '/vtt', path);
       if (path === '/lore') {
         assert.equal(preview.data.can_manage_folders, false);
         assert.equal(normal.data.can_manage_folders, true);

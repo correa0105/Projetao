@@ -1,3 +1,4 @@
+import { createVttRoom, vttStorage, ensurePersonalVtt, setPersonalVttRoom, personalVttInfo } from './vtt-accounts.js';
 import {reuseVttAsset,uniqueVttAssetsSql,duplicateVttAssetIds} from './vtt-assets.js';
 import {convertSceneryToToken} from '../shared/vtt-scenery-token.js';
 import express from 'express';
@@ -9,7 +10,6 @@ import { z } from 'zod';
 import { atmosphereSchema } from '../shared/vtt-atmosphere.js';
 import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
-import { requireAdministrator, isAdministrator } from './administrators.js';
 import { AppError } from './services.js';
 import { vttAssetId, vttAssetPath, isTopDownTokenImage } from '../shared/vtt-token-image.js';
 import { deriveSheet } from '../shared/character-sheet.js';
@@ -48,7 +48,6 @@ import { attackVisualSchema } from '../shared/vtt-attack-visual.js';
 import { vttProtocolVersion, vttUpdateMessage } from '../shared/vtt-protocol.js';
 import {
   documentSchema,
-  newDocument,
   newToken,
   tokenSchema,
   pointSchema,
@@ -90,7 +89,6 @@ async function room(db: DB, id: string, user: string, lock = false) {
 }
 async function gm(db: DB, id: string, user: string, lock = false) {
   const r = await room(db, id, user, lock);
-  await requireAdministrator(user, db as PoolClient);
   if (r.owner_id !== user) throw new AppError(403, 'Somente o mestre desta mesa pode fazer isso.');
   return r;
 }
@@ -201,7 +199,7 @@ async function validateAssets(db: DB, rid: string, doc: VttDocument) {
 }
 async function state(rid: string, user: string) {
   const r = await room(pool, rid, user);
-  const isGm = r.owner_id === user && (await isAdministrator(user));
+  const isGm = r.owner_id === user;
   const spectator = r.role === 'spectator' && !isGm;
   const viewpoints = (
     await pool.query(
@@ -270,6 +268,8 @@ async function state(rid: string, user: string) {
     ...(await premiumSettings(user)),
     bossBars: sceneBossBars(r.document.scenes.find((s) => s.id === r.document.activeScene)!),
     focusSignal: r.focus_signal,
+    storage: await vttStorage(pool, user),
+    ...(isGm ? { personal: personalVttInfo((await pool.query('SELECT public_id,room_id FROM vtt_personal_spaces WHERE user_id=$1',[user])).rows[0]) } : {}),
   };
 }
 async function importCharacter(
@@ -520,7 +520,7 @@ export function vttRouter() {
       tid = uuid.parse(req.params.token),
       user = res.locals.user.id;
     const current = await room(pool, rid, user);
-    const isGm = current.owner_id === user && (await isAdministrator(user));
+    const isGm = current.owner_id === user;
     let viewAs = user;
     if (current.role === 'spectator') {
       const member = await pool.query(
@@ -557,27 +557,46 @@ export function vttRouter() {
     res.setHeader('Cache-Control', 'private, no-store');
     res.type('image/webp').send(bytes);
   });
-  router.get('/vtt', async (_req, res) =>
+  router.get('/vtt', async (_req, res) => {
+    const personal = await transaction(db=>ensurePersonalVtt(db,res.locals.user.id));
     res.json({
-      can_create: await isAdministrator(res.locals.user.id),
-      rooms: (
-        await pool.query(
-          `SELECT id,document->>'name' AS name,owner_id=$1 AS is_owner,updated_at FROM vtt_rooms r WHERE owner_id=$1 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$1) ORDER BY updated_at DESC`,
-          [res.locals.user.id],
-        )
-      ).rows,
-    }),
-  );
+      can_create: true, personal:personalVttInfo(personal),
+      storage: await vttStorage(pool,res.locals.user.id),
+      rooms: (await pool.query(
+        `SELECT id,document->>'name' AS name,owner_id=$1 AS is_owner,updated_at FROM vtt_rooms r WHERE owner_id=$1 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$1) ORDER BY updated_at DESC`,[res.locals.user.id])).rows,
+    });
+  });
+  router.get('/vtt/personal/:id', async (req,res)=>{
+    const {rows:[space]}=await pool.query('SELECT user_id FROM vtt_personal_spaces WHERE public_id=$1',[uuid.parse(req.params.id)]);
+    if(!space)throw new AppError(404,'Mesa pessoal não encontrada.');
+    const personal=await transaction(db=>ensurePersonalVtt(db,space.user_id));
+    res.json({room_id:personal.room_id});
+  });
+  router.post('/vtt/personal/:id/join', async (req,res)=>{
+    const publicId=uuid.parse(req.params.id),role=z.enum(['player','spectator']).default('player').parse(req.body.role);
+    const rid=await transaction(async db=>{
+      const {rows:[space]}=await db.query('SELECT user_id FROM vtt_personal_spaces WHERE public_id=$1',[publicId]);
+      if(!space)throw new AppError(404,'Mesa pessoal não encontrada.');
+      const personal=await ensurePersonalVtt(db,space.user_id);
+      const current=await room(db,personal.room_id,space.user_id,true);
+      await chooseParticipation(db,current,res.locals.user.id,role);
+      return current.id;
+    });
+    res.json(await state(rid,res.locals.user.id));
+  });
+  router.post('/vtt/rooms/:id/activate',async(req,res)=>{
+    const rid=uuid.parse(req.params.id);
+    await transaction(async db=>{await gm(db,rid,res.locals.user.id);await setPersonalVttRoom(db,res.locals.user.id,rid);});
+    res.json(await state(rid,res.locals.user.id));
+  });
   router.post('/vtt', async (req, res) => {
-    await requireAdministrator(res.locals.user.id);
     const name = z.string().trim().min(1).max(100).parse(req.body.name);
-    const document = newDocument(randomUUID());
-    document.name = name;
-    const r = await pool.query(
-      'INSERT INTO vtt_rooms(owner_id,document,invite)VALUES($1,$2,$3)RETURNING id',
-      [res.locals.user.id, JSON.stringify(document), randomBytes(24).toString('hex')],
-    );
-    res.status(201).json(await state(r.rows[0].id, res.locals.user.id));
+    const created = await transaction(async db=>{
+      const created=await createVttRoom(db,res.locals.user.id,name);
+      await setPersonalVttRoom(db,res.locals.user.id,created.id);
+      return created;
+    });
+    res.status(201).json(await state(created.id, res.locals.user.id));
   });
   router.post('/vtt/join', async (req, res) => {
     const input = z
@@ -873,7 +892,7 @@ export function vttRouter() {
       const r = await room(db, rid, res.locals.user.id, true),
         s = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
       const master =
-        r.owner_id === res.locals.user.id && (await isAdministrator(res.locals.user.id, db));
+        r.owner_id === res.locals.user.id;
       if (r.role === 'spectator' && !master)
         throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
       const child = s.tokens.find((t) => t.id === tid);
@@ -919,7 +938,7 @@ export function vttRouter() {
     const rid=uuid.parse(req.params.id),tid=uuid.parse(req.params.token),{open}=z.object({open:z.boolean()}).strict().parse(req.body);
     await transaction(async db=>{
       const r=await room(db,rid,res.locals.user.id,true),s=r.document.scenes.find(s=>s.id===r.document.activeScene)!,h=s.tokens.find(t=>t.id===tid);
-      const master=r.owner_id===res.locals.user.id&&await isAdministrator(res.locals.user.id,db);
+      const master=r.owner_id===res.locals.user.id;
       if(!h||!houseAsset(h))throw new AppError(404,'Casa não encontrada.');
       if(!master&&(r.role==='spectator'||!canReachHouseDoor(h,s,res.locals.user.id)||!canSee({...h,...houseDoorPoint(h),width:1,height:1},s,res.locals.user.id)))throw new AppError(403,'Aproxime seu personagem da porta para abri-la ou fechá-la.');
       if((h.houseDoorOpen===true)===open)return;
@@ -934,7 +953,7 @@ export function vttRouter() {
     await transaction(async db=>{
       const r=await room(db,rid,res.locals.user.id,true),s=r.document.scenes.find(s=>s.id===r.document.activeScene)!,h=s.tokens.find(t=>t.id===tid),w=h&&houseAsset(h)?.windows[index];
       if(!h||!w)throw new AppError(404,'Janela não encontrada.');
-      const master=r.owner_id===res.locals.user.id&&await isAdministrator(res.locals.user.id,db);
+      const master=r.owner_id===res.locals.user.id;
       if(!master&&(r.role==='spectator'||!canReachHouseWindow(h,index,s,res.locals.user.id)||!canSee({...h,...houseWorld(w,h),width:1,height:1},s,res.locals.user.id)))throw new AppError(403,'Aproxime seu personagem da janela para abri-la ou fechá-la.');
       if(houseWindowOpen(h,index)===open)return;
       h.houseWindowsClosed=open?(h.houseWindowsClosed??[]).filter(i=>i!==index):[...(h.houseWindowsClosed??[]),index];
@@ -1078,7 +1097,7 @@ export function vttRouter() {
             (t) => t.id === input.attack_visual!.target_id && t.layer === 'tokens',
           ),
           isGm =
-            r.owner_id === res.locals.user.id && (await isAdministrator(res.locals.user.id, db));
+            r.owner_id === res.locals.user.id;
         if (
           !actor ||
           !target ||
@@ -1107,7 +1126,7 @@ export function vttRouter() {
           (t) => t.id === input.damage!.target_id && t.layer === 'tokens',
         );
         const isGm =
-          r.owner_id === res.locals.user.id && (await isAdministrator(res.locals.user.id, db));
+          r.owner_id === res.locals.user.id;
         if (
           !actor ||
           !target ||
@@ -1145,7 +1164,7 @@ export function vttRouter() {
       .regex(/^\d{1,19}$/)
       .optional()
       .parse(req.query.before);
-    const isGm = current.owner_id === user && (await isAdministrator(user));
+    const isGm = current.owner_id === user;
     const { rows } = await pool.query(
       `SELECT id::text,author,text,roll,spell,private,created_at,damage,discarded,attack_visual AS "attackVisual",
         COALESCE((SELECT jsonb_agg(a.token_id) FROM vtt_damage_applications a WHERE a.message_id=vtt_messages.id),'[]'::jsonb) AS applied
@@ -1186,7 +1205,7 @@ export function vttRouter() {
   });
   router.get('/vtt/rooms/:id/capture-permission', async (req, res) => {
     await room(pool, uuid.parse(req.params.id), res.locals.user.id);
-    await requireAdministrator(res.locals.user.id);
+    await gm(pool, uuid.parse(req.params.id), res.locals.user.id);
     res.json({ allowed: true });
   });
   router.get('/vtt/rooms/:id/characters', async (req, res) => {
@@ -1283,7 +1302,7 @@ export function vttRouter() {
       ))
         throw new AppError(400, 'Envie MP3, WAV, OGG ou WebM válido.');
       const asset=await transaction(async db=>{await gm(db,rid,res.locals.user.id,true);return reuseVttAsset(db,{roomId:rid,name,kind,mime,bytes,width,height});});
-      res.status(201).json({ ...asset, path: '/api/vtt/assets/' + asset.id });
+      res.status(201).json({ ...asset, path: '/api/vtt/assets/' + asset.id, storage: await vttStorage(pool,res.locals.user.id) });
     },
   );
   router.get(['/vtt/assets/:id', '/vtt/assets/:id/top-down'], async (req, res) => {
@@ -1296,7 +1315,7 @@ export function vttRouter() {
     if (topDown && !a.character_art_source && !a.companion_art_source)
       throw new AppError(404, 'Token não encontrado.');
     const r = await room(pool, a.room_id, res.locals.user.id);
-    const isGm = r.owner_id === res.locals.user.id && (await isAdministrator(res.locals.user.id));
+    const isGm = r.owner_id === res.locals.user.id;
     let viewAs = res.locals.user.id;
     if (r.role === 'spectator') {
       const {

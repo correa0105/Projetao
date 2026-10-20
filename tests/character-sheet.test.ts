@@ -127,6 +127,8 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
     );
     const rolls = results[0].data.sheet.rolls;
     assert.equal(rolls.length, 6);
+    const total = rolls.reduce((sum: number, dice: number[]) => sum + dice.reduce((a, b) => a + b, 0) - Math.min(...dice), 0);
+    assert.ok(total >= 72 && total <= 90, 'Soma da rolagem deve ficar entre 72 e 90 antes dos bônus.');
     for (const result of results) {
       assert.equal(result.status, 200);
       assert.deepEqual(result.data.sheet.rolls, rolls);

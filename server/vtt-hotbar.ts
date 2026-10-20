@@ -4,7 +4,6 @@ import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
-import { isAdministrator } from './administrators.js';
 import {
   emptyHotbar,
   hotbarSchema,
@@ -46,7 +45,7 @@ export function vttHotbarRouter(getRoom: Access) {
   const router = Router();
   router.get('/vtt/rooms/:id/hotbar/monster/:token/:action', async (req, res) => {
     const r = await getRoom(pool, z.string().uuid().parse(req.params.id), res.locals.user.id);
-    if (r.owner_id !== res.locals.user.id || !(await isAdministrator(res.locals.user.id)))
+    if (r.owner_id !== res.locals.user.id)
       throw new AppError(403, 'Somente o mestre desta mesa usa ataques de monstros.');
     const tokenId = z.string().uuid().parse(req.params.token);
     const t = r.document.scenes
@@ -102,7 +101,7 @@ export function vttHotbarRouter(getRoom: Access) {
           throw new AppError(403, 'Destranque a aba antes de editar ou remover seus atalhos.');
       }
       const actions = input.document.pages.flatMap((p) => p.slots).filter((a) => a !== null);
-      const gm = room.owner_id === user && (await isAdministrator(user, db as PoolClient));
+      const gm = room.owner_id === user;
       const characterActions = actions.filter((a) => 'characterId' in a);
       for (const a of actions.filter((a) => a.kind === 'sound')) {
         if (!gm) throw new AppError(403, 'Sons compartilhados são exclusivos do mestre.');

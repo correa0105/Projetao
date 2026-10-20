@@ -232,6 +232,7 @@
   z-index: 4;
 }
 .world-map__tools button {
+  position: relative;
   display: grid;
   place-items: center;
   flex: 0 0 35px;
@@ -243,6 +244,16 @@
   background: #232220;
   color: #e0cfac;
   box-shadow: none;
+}
+.world-map__tools button[aria-pressed='false'] {
+  color: #a69a84;
+}
+.world-map__effects-off {
+  position: absolute;
+  width: 21px;
+  height: 1px;
+  background: currentColor;
+  transform: rotate(-45deg);
 }
 .world-map__tools button:hover:not(:disabled) {
   background: #3a3834;

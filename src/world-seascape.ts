@@ -176,6 +176,9 @@ export function createWorldSeascape() {
 
   return {
     group,
+    setEffectsEnabled(enabled: boolean) {
+      stormMesh.visible = enabled;
+    },
     setHovered(id: string | null) {
       hover.value = id === 'fulkushima' ? 1 : 0;
       stormMaterial.uniforms.uHover.value = id === 'olho-da-tormenta' ? 1 : 0;

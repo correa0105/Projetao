@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import { pool } from './db.js';
-import { requireAdministrator } from './administrators.js';
 import { AppError } from './services.js';
 import { tokenSchema, type VttDocument } from '../shared/vtt.js';
 import type { PoolClient } from 'pg';
@@ -21,7 +20,6 @@ export async function saveMonsterPresets(db: DB, user: string, roomId: string, d
 export function vttMonsterPresetRouter() {
   const router = Router();
   router.get('/vtt/monster-presets', async (_req, res) => {
-    await requireAdministrator(res.locals.user.id);
     const { rows } = await pool.query(
       'SELECT id,token,updated_at FROM vtt_monster_presets WHERE user_id=$1 ORDER BY updated_at DESC',
       [res.locals.user.id],
@@ -36,7 +34,6 @@ export function vttMonsterPresetRouter() {
     );
   });
   router.delete('/vtt/monster-presets/:id', async (req, res) => {
-    await requireAdministrator(res.locals.user.id);
     const { rowCount } = await pool.query(
       'DELETE FROM vtt_monster_presets WHERE id=$1 AND user_id=$2',
       [z.string().uuid().parse(req.params.id), res.locals.user.id],

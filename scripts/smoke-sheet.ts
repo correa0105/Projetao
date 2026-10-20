@@ -73,6 +73,7 @@ try {
     page.getByRole('heading', { name: 'Ficha de Personagem', exact: true }),
   ).toBeVisible();
   await expect(page.getByRole('button', { name: 'Rolar os seis atributos' })).toBeVisible();
+  await expect(page.locator('.attribute-roll-rule')).toHaveCount(0);
   await mkdir('test-results', { recursive: true });
   await page
     .locator('.sheet-panel details')
@@ -86,20 +87,29 @@ try {
   const persistedRolls = (
     await pool.query('SELECT rolls FROM character_sheets WHERE character_id=$1', [id])
   ).rows[0].rolls as number[][];
+  const total = persistedRolls.reduce((sum, dice) => sum + dice.reduce((a, b) => a + b, 0) - Math.min(...dice), 0);
+  expect(total).toBeGreaterThanOrEqual(72); expect(total).toBeLessThanOrEqual(90);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   for (let i = 0; i < 6; i++) {
     await page.getByRole('button', { name: `Lançar dados · resultado ${i + 1}` }).click();
     const diceDialog = page.getByRole('dialog', { name: `Rolagem ${i + 1} de 6` });
     await expect(diceDialog).toBeVisible();
+    const rule = diceDialog.locator('.attribute-roll-rule');
+    await expect(rule).toContainText('de 72 a 90');
+    await expect(rule).toHaveCSS('color', 'rgb(255, 143, 143)');
+    await expect(rule).toBeInViewport();
+    const ruleBox = (await rule.boundingBox())!, stageBox = (await diceDialog.locator('.attribute-dice-stage').boundingBox())!;
+    expect(ruleBox.y + ruleBox.height).toBeLessThanOrEqual(stageBox.y);
     await expect(diceDialog.locator('.attribute-die')).toHaveCount(4);
     await expect(diceDialog.getByRole('button', { name: 'Guardar resultado' })).toBeVisible();
     const dice = persistedRolls[i];
     await expect(diceDialog.locator('.attribute-dice-outcome strong')).toHaveText(
       String(dice.reduce((a, b) => a + b, 0) - Math.min(...dice)),
     );
-    if (i === 0) await page.screenshot({ path: 'test-results/sheet-dice-desktop.png' });
+    if (i === 0) { await page.screenshot({ path: 'test-results/sheet-dice-desktop.png' }); await page.screenshot({ path: 'test-results/attribute-rule-red.png' }); }
     if (i === 1) {
       await page.setViewportSize({ width: 390, height: 844 });
+      await expect(rule).toBeInViewport();
       await page.screenshot({ path: 'test-results/sheet-dice-mobile.png' });
     }
     await diceDialog.getByRole('button', { name: 'Guardar resultado' }).click();
@@ -145,6 +155,10 @@ try {
   ).rows[0];
   expect(savedBoosts.choices.abilityBoosts).toEqual([1, 1, 1, 0, 0, 0]);
   expect(savedBoosts.rolls).toEqual(persistedRolls);
+  if (process.env.SHEET_ROLL_RULE_ONLY === '1') {
+    expect(errors).toEqual([]);
+    console.log('PASS regra vermelha dentro da janela, acima dos dados em cada lançamento, soma entre 72 e 90, seis resultados, recarga e distribuição preservadas.');
+  } else {
   await expect(page.locator('.sheet-panel').first()).toHaveCSS(
     'background-color',
     'rgb(23, 27, 30)',
@@ -216,6 +230,7 @@ try {
   console.log(
     'Ficha no navegador: criação real, arte de teste, rolagem, recarga, distribuição, preparação, notas e cinco seções mobile OK.',
   );
+  }
 } catch (e) {
   await page.screenshot({ path: 'test-results/sheet-failure.png', fullPage: true });
   console.log((await page.locator('body').innerText()).slice(0, 1800));

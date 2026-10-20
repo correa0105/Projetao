@@ -1,0 +1,12 @@
+:root .attribute-roll-rule {
+  color: #ff8f8f !important;
+  background: #8d202033;
+  border: 1px solid #d94d4d;
+  border-left-width: 4px;
+  padding: 12px 15px;
+  margin: 16px 0;
+  line-height: 1.6;
+  font-size: 13px;
+}
+.attribute-roll-rule strong { font-weight: 700; color: inherit !important; }
+.attribute-dice-overlay .attribute-roll-rule { max-width: 660px; margin: 16px auto 4px; text-align: left; }

@@ -1,0 +1,18 @@
+.tiefling-horns {
+  min-width: 0;
+  border: 1px solid #a98a494d;
+  padding: 16px;
+}
+.tiefling-horns > p { margin: 0 0 14px; font-size: 12px; }
+.tiefling-horn-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.tiefling-horn-options label {
+  position: relative; display: flex; flex-direction: column; gap: 6px;
+  padding: 8px; cursor: pointer; border: 1px solid #a98a494d; background: #211b16;
+}
+.tiefling-horn-options label.is-selected { border-color: #d2ad68; box-shadow: inset 0 0 0 1px #d2ad68; }
+.tiefling-horn-options label:focus-within { outline: 2px solid #e4c07e; outline-offset: 3px; }
+.tiefling-horn-options input[type='radio'] { position: absolute; top: 13px; left: 13px; width: 16px; height: 16px; accent-color: #bf9854; }
+.tiefling-horn-options img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
+.tiefling-horn-options strong { font-size: 13px; }
+.tiefling-horn-options span { font-size: 11px; line-height: 1.5; }
+@media (max-width: 640px) { .tiefling-horn-options { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

@@ -78,7 +78,7 @@ test('ilustrador reprova ausência de magia, corrige o retrato e conserva o efei
     let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
       const s=fs.existsSync(file)?JSON.parse(fs.readFileSync(file)):{renders:[],reviews:[]};
       const output=args[args.indexOf('--output-last-message')+1],schema=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1]));
-      if(schema.properties.approved){s.reviews.push(prompt);fs.writeFileSync(output,JSON.stringify(s.reviews.length===1?{approved:false,issues:['Armadura sem encantamento visível; aplicar runas luminosas nas peças expostas.']}:{approved:true,issues:[]}));}
+      if(schema.properties.approved){s.reviews.push(prompt);fs.writeFileSync(output,JSON.stringify(s.reviews.length===1?{approved:false,appendages_correct:true,issues:['Armadura sem encantamento visível; aplicar runas luminosas nas peças expostas.']}:{approved:true,appendages_correct:true,issues:[]}));}
       else{s.renders.push(prompt);const destination=path.join(args[args.indexOf('--cd')+1],'output.png');fs.copyFileSync(${JSON.stringify(join(temp, 'output.png'))},destination);fs.writeFileSync(output,JSON.stringify({image_path:destination,error:''}));}
       fs.writeFileSync(file,JSON.stringify(s));
     });

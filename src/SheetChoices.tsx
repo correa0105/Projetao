@@ -23,6 +23,7 @@ import { statNames, money } from '../shared/rules';
 import { SheetHelp } from './SheetHelp';
 import { TrainingBadge } from './TrainingBadge';
 import { eberronSpecies, EBERRON_SOURCE } from '../shared/eberron-species';
+import { TieflingHorns } from './TieflingHorns';
 export function ChoiceList({
   label,
   options,
@@ -151,6 +152,7 @@ export function SheetChoices({
         options={languages.filter((v) => v !== 'Comum')}
         onChange={(v) => update({ backgroundExtras: v })}
       />
+      {race === 'Tiefling' && <TieflingHorns value={c.tieflingHorns} onChange={tieflingHorns => update({ tieflingHorns })} />}
       {c.originRules && feats(c).some((f) => f.startsWith('Iniciado em Magia')) && (
         <p className="muted small">
           Regra da mesa: Iniciado em Magia usa automaticamente Sabedoria para Clérigo/Druida e
@@ -158,9 +160,15 @@ export function SheetChoices({
         </p>
       )}
       {choiceFields(race, cls, c)
-        .filter((f) => !c.originRules || !f.key.startsWith('featAbility'))
         .map((f) =>
-          f.count === 1 ? (
+          f.count === 1 && f.options.length === 1 && f.key.startsWith('featAbility') ? (
+            <div className="sheet-field-group" key={f.key}>
+              <span>{f.label}</span>
+              <p className="muted small" aria-label={f.label}>
+                {f.options[0]} · {feats(c)[Number(f.key.slice('featAbility'.length))]}
+              </p>
+            </div>
+          ) : f.count === 1 ? (
             <label key={f.key}>
               {f.label}
               {spellFeatHelp(f.key) && (

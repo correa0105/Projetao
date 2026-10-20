@@ -1,3 +1,5 @@
+Atualização 20/10/2026: acesso e controles de mestre agora pertencem ao dono da mesa, inclusive conta básica. Link permanente por conta e 100 MB apenas para imagens externas: consulte VTT-PESSOAL-20261020.md.
+
 # Mesa virtual, perfis, amigos e Hall da Fama — 05/10/2026
 
 Refino de 07/10: visita com mesma grade/enquadramento/chão da aba padrão,
@@ -80,7 +82,7 @@ permanente. Arraste o efeito salvo ou Fixar para a barra; clique no atalho →
 Aplicar no token selecionado. Efeito usa cópia visual sincronizada no token,
 sem alterar PV/condições/recursos, e pode ser limpo pelo mestre. Biblioteca de
 presets é privada; jogadores veem somente a aparência dos tokens visíveis.
-Aplicação é transacional e exige dono da mesa + administrador no servidor.
+Aplicação é transacional e exige dono da mesa no servidor.
 Sem migração: campos legados recebem arrays vazios ao ler o documento.
 
 Ataques de monstros aparecem na ficha do token, com Fixar/arraste. Referência

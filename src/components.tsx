@@ -1,3 +1,4 @@
+import { PersonalVttLink } from './PersonalVttLink';
 import { MusicControls } from './SiteMusic';
 import { FlashMessage } from './FlashMessage';
 import { lazy, Suspense, useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
@@ -556,6 +557,7 @@ export function PostForm({
   }
   return (
     <form className="stack board-post-form" onSubmit={submit}>
+      {kind === 'mission' && <PersonalVttLink />}
       {initialEventId && (
         <p className="source-note">
           Esta missão será vinculada ao evento ativo. A disponibilidade será conferida novamente ao

@@ -1,3 +1,4 @@
+import { vttProtocolVersion } from '../shared/vtt-protocol';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID, createHash } from 'node:crypto';
@@ -27,7 +28,7 @@ test('VTT: artes básicas, acervo privado e dano verificado', async (t) => {
         Origin: (process.env.APP_ORIGIN || 'http://localhost:3000').split(',')[0],
         Cookie: account?.cookie || '',
         'Content-Type': 'application/json',
-        'X-Vtt-Schema-Version': '7',
+        'X-Vtt-Schema-Version': String(vttProtocolVersion),
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
@@ -271,7 +272,7 @@ test('VTT: artes básicas, acervo privado e dano verificado', async (t) => {
         assert.equal(preset.name, actor.name);
         assert.equal(preset.token.ac, 22);
         assert.equal((await request('/vtt/monster-presets', other)).data.length, 0);
-        assert.equal((await request('/vtt/monster-presets', player)).status, 403);
+        assert.equal((await request('/vtt/monster-presets', player)).status, 200);
         const visible = await request('/vtt/rooms/' + room.id, player);
         assert.equal(
           visible.data.document.scenes[0].tokens.find((t: any) => t.id === actor.id).monster,

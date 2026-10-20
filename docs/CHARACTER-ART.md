@@ -32,6 +32,10 @@ com a geração nativa do Codex. Não há editor de aparência.
 
 ## Agente e padrão visual
 
+Desde 20/10, a revisão do retrato e do token exige `appendages_correct=true`, além de aprovação geral e lista vazia de defeitos. A regra compartilhada em `shared/art-anatomy.ts` confere explicitamente bases dos chifres em par, perspectiva e ligação dos apêndices. Um resultado anatômico reprovado não passa mesmo que a aprovação geral venha como verdadeira. O fluxo tenta corrigir até três vezes e conserva arte anterior/cota se não conseguir. É uma revisão visual por modelo; não é um detector geométrico determinístico.
+
+Tiefling oferece oito formatos ilustrados durante a criação. `tieflingHorns` é opcional no JSON da origem para conservar fichas antigas; só admite identificadores do catálogo e não muda atributos, magias, linhagem ou equipamento. O ilustrador recebe a miniatura escolhida apenas como referência dos chifres, com agrupamento dos equipamentos quando necessário para manter no máximo cinco referências. A revisão confere o formato selecionado. O token segue a arte principal aprovada.
+
 O worker carrega sempre [CHARACTER-ART-PROMPT-v1.md](CHARACTER-ART-PROMPT-v1.md)
 e anexa as referências em ordem: `docs/references/character-style-v1.png`
 (estilo fornecido pelo usuário) e a referência privada do jogador (aparência).
