@@ -108,7 +108,7 @@ export function AccountPreview({
                 </span>
                 <p>
                   {active
-                    ? 'Prévia de consulta: conteúdo e controles disponíveis para uma conta básica.'
+                    ? 'Conta básica: você pode cuidar dos seus personagens e propriedades, sem privilégios administrativos.'
                     : 'Confira cada página sem os privilégios administrativos. Seus personagens e propriedades continuam sendo os seus.'}
                 </p>
                 {editing && (

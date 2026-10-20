@@ -14,6 +14,27 @@
 .pet-shop {
   color: #e6dac1;
 }
+:root .app-shell[data-page='pets'] > .main-shell {
+  height: 100dvh;
+  min-height: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+:root .app-shell[data-page='pets'] .main-content,
+:root .app-shell[data-page='pets'] .pet-shop,
+:root .app-shell[data-page='pets'] .pet-shop-garden {
+  height: 100dvh;
+  min-height: 0;
+}
+:root .app-shell[data-page='pets'] .pet-shop-garden {
+  overflow: hidden;
+}
+:root .app-shell[data-page='pets'] .pet-shop-purchase {
+  max-height: calc(100dvh - 170px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
 .pet-shop-garden {
   position: relative;
   isolation: isolate;
@@ -923,5 +944,32 @@
   .pet-shop * {
     animation: none !important;
     transition: none !important;
+  }
+}
+@media (max-width: 760px) {
+  :root .app-shell[data-page='pets'] .pet-shop-garden {
+    padding: 0;
+  }
+  :root .app-shell[data-page='pets'] .pet-shop-background {
+    height: 100%;
+  }
+  :root .app-shell[data-page='pets'] .pet-shop-purchase {
+    position: absolute;
+    inset: auto 12px calc(68px + env(safe-area-inset-bottom));
+    width: auto;
+    max-height: 48dvh;
+    margin: 0;
+  }
+  :root .app-shell[data-page='pets'] .pet-shop-preview {
+    top: 43dvh;
+    left: 6%;
+    bottom: auto;
+    width: min(130px, 32vw);
+  }
+  :root .app-shell[data-page='pets'] .garalho-scene {
+    top: 18dvh;
+    right: 3%;
+    bottom: auto;
+    width: min(190px, 46vw);
   }
 }

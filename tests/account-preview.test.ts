@@ -5,6 +5,7 @@ import { pool } from '../server/db';
 import { migrate } from '../server/migrate';
 import { seed } from '../server/seed';
 import { createLegacyTestCharacter } from './character-fixtures';
+import { pets } from '../shared/pets';
 
 test('Prévia global: capacidades básicas por requisição, rascunhos privados e conta preservada', async () => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
@@ -118,6 +119,59 @@ test('Prévia global: capacidades básicas por requisição, rascunhos privados 
     const characters = (await request('/characters', admin.cookie, true)).data;
     assert.equal(characters[0].id, character.id);
     assert.equal(characters[0].gold_unlimited, false);
+    assert.equal(
+      (await request(`/pets/${character.id}/display`, admin.cookie, true, 'PUT', { pet_id: null }))
+        .status,
+      200,
+    );
+    assert.equal(
+      (
+        await request(`/stable/${character.id}/display`, admin.cookie, true, 'PUT', {
+          mount_id: null,
+        })
+      ).status,
+      200,
+    );
+    const otherCharacter = await createLegacyTestCharacter(basic.data.user.id, 'Outro dono');
+    assert.equal(
+      (
+        await request(`/pets/${otherCharacter.id}/display`, admin.cookie, true, 'PUT', {
+          pet_id: null,
+        })
+      ).status,
+      404,
+    );
+    const { currentGoldUnlimited } = await import('../server/gold');
+    const { accountPreview } = await import('../server/account-preview');
+    assert.equal(await currentGoldUnlimited(pool, admin.data.user.id, false), true);
+    assert.equal(
+      await accountPreview.run(true, () => currentGoldUnlimited(pool, admin.data.user.id, false)),
+      false,
+    );
+    const pet = pets[0];
+    await pool.query('UPDATE characters SET gold_cp=$1 WHERE id=$2', [
+      pet.price_cp + 123,
+      character.id,
+    ]);
+    const purchase = {
+      character_id: character.id,
+      pet_id: pet.id,
+      name: 'Companheiro da Aurora',
+      idempotency_key: randomUUID(),
+    };
+    const bought = await request('/pets/purchase', admin.cookie, true, 'POST', purchase);
+    assert.equal(bought.status, 201);
+    assert.equal(bought.data.gold_unlimited, false);
+    assert.equal(bought.data.gold_cp, 123);
+    assert.equal(
+      (await request('/pets/purchase', admin.cookie, true, 'POST', purchase)).data.replayed,
+      true,
+    );
+    assert.equal(
+      (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [character.id])).rows[0]
+        .gold_cp,
+      123,
+    );
     const count = (await pool.query('SELECT count(*)::int n FROM house2_neighborhoods')).rows[0].n;
     assert.equal(
       (

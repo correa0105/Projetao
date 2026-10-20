@@ -188,11 +188,6 @@ export function createApp() {
     if (!session) throw new AppError(401, 'Entre na sua conta para continuar.');
     res.locals.user = session.user;
     if (req.get('X-Account-Preview') === 'basic' && (await isAdministrator(session.user.id))) {
-      if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method))
-        throw new AppError(
-          403,
-          'A prévia é somente para consulta. Volte à visão de administrador para fazer alterações.',
-        );
       res.locals.user = {
         ...session.user,
         administrador: 0,

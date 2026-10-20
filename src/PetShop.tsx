@@ -118,7 +118,6 @@ export function PetCollection({ characterId }: { characterId: string }) {
       <header>
         <PawPrint size={18} />
         <h3>Mascote</h3>
-        <a href="#pets">Visitar Garalho →</a>
       </header>
       {error && <p role="alert">{error}</p>}
       {!items.length && !error && <p>Os mascotes que você levar para casa aparecem aqui.</p>}
@@ -539,14 +538,6 @@ export function PetShop({
         )}
       </div>
 
-      <a
-        className="pet-sound-credits"
-        href="/audio/pets/CREDITS.md"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Créditos dos sons
-      </a>
       {reading && (
         <Modal title="Placa de Garalho" close={() => setReading(false)}>
           <div className="garalho-reading-board">

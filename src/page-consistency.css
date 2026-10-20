@@ -3,6 +3,37 @@
   padding-bottom: 0;
 }
 :root
+  .app-shell:is([data-page='profile'], [data-page='inventory'], [data-page='achievements'])
+  > .main-shell {
+  padding-bottom: calc(116.25px + env(safe-area-inset-bottom));
+}
+:root .app-shell[data-page='achievements'] .achievement-content {
+  padding-bottom: 0;
+}
+:root .app-shell[data-page='achievements'] .main-shell::before {
+  max-height: 100%;
+}
+@media (max-width: 760px) {
+  :root
+    .app-shell:is([data-page='profile'], [data-page='inventory'], [data-page='achievements'])
+    > .main-shell {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+}
+:root body .app-shell[data-page='character-cards'] > .main-shell {
+  background:
+    linear-gradient(90deg, #16161355, #16161317 25%, #14151230 75%, #16161355),
+    url('/cards/private-archive-20261012.webp') center / cover fixed;
+}
+:root .app-shell[data-page='character-cards'] .character-cards-page {
+  background: transparent;
+}
+@media (max-width: 720px) {
+  :root body .app-shell[data-page='character-cards'] > .main-shell {
+    background-position: 63% center;
+  }
+}
+:root
   .app-shell:is(
     [data-page='character-cards'],
     [data-page='hall'],

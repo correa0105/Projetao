@@ -24,6 +24,10 @@
   text-shadow: 0 2px 5px #000;
   opacity: 0;
   pointer-events: none;
+  padding: 7px 12px 10px;
+  line-height: 1.4;
+  min-height: 36px;
+  box-sizing: border-box;
 }
 .visiting .public-character-figure:is(:hover, :focus-visible) .profile-figure-name {
   opacity: 1;

@@ -1,5 +1,6 @@
 import type { PoolClient } from 'pg';
 import { AppError } from './services.js';
+import { isBasicPreview } from './account-preview.js';
 
 type Database = Pick<PoolClient, 'query'>;
 
@@ -15,7 +16,7 @@ export async function currentGoldUnlimited(
     'SELECT administrador FROM "user" WHERE id=$1' + (lock ? ' FOR SHARE' : ''),
     [userId],
   );
-  return account?.administrador === 1;
+  return !isBasicPreview() && account?.administrador === 1;
 }
 
 /** The purchase records its real price; an administrator's saved balance stays unchanged. */
