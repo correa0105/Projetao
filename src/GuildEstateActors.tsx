@@ -176,7 +176,7 @@ export function GuildEstateActors({
             {actors
               .filter(
                 (a) =>
-                  (!roof || a.x < 21 || a.x > 39 || a.y < 17 || a.y > 31) &&
+                  (a.id === characterId || !roof || a.x < 21.12 || a.x > 38.88 || a.y < 17.2 || a.y > 30.7) &&
                   (!viewer ||
                     editing ||
                     a.id === characterId ||

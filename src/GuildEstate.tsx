@@ -48,6 +48,7 @@ import './guild-estate.css';
 
 type Camera = { x: number; y: number; width: number };
 type Props = {
+  identity: ReactNode;
   guildActions: ReactNode;
   guildId: string;
   characterId: string;
@@ -706,11 +707,9 @@ export function GuildEstate(p: Props) {
                 }
               }}
             >
-              <rect x="-72" width="144" height="34" rx="5" />
-              <path d="M-54 24V10H-43V24M-49 17H-34M-38 13L-34 17-38 21" />
-              <text x="-24" y="17" dominantBaseline="middle">
-                {access.openings.entry ? 'Fechar porta' : 'Abrir porta'}
-              </text>
+              <title>{access.openings.entry ? 'Fechar porta de entrada' : 'Abrir porta de entrada'}</title>
+              <rect x="-18" width="36" height="36" rx="18" />
+              <path d={access.openings.entry ? 'M-5 13L5 23M5 13L-5 23' : 'M-6 18H6M0 12V24'} />
             </g>
           </g>
         )}
@@ -754,6 +753,8 @@ export function GuildEstate(p: Props) {
           if (e.key === 'Escape') setMenuOpen(false);
         }}
       >
+        <div className="guild-estate-identity-card">
+        {p.identity}
         <button
           type="button"
           className="guild-estate-menu-toggle"
@@ -763,6 +764,7 @@ export function GuildEstate(p: Props) {
         >
           <Grid2X2 size={17} /> Menu da sede
         </button>
+        </div>
         {menuOpen && (
           <div id="guild-estate-menu-panel" className="guild-estate-menu-panel">
             <div className="guild-estate-menu-title">

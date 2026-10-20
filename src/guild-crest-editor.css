@@ -409,6 +409,11 @@ dialog:has(.guild-crest-editor) {
 }
 .crest-illustrated-editor .crest-preview {
   min-width: 0;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  z-index: 3;
+  box-shadow: 0 8px 18px #0005;
 }
 .crest-illustrated-editor select {
   width: 100%;

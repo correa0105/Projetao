@@ -39,6 +39,19 @@
       "source": "exec-1665ead5-4b85-4be2-b4d4-1c65bcc220d2.png",
       "sourceSha256": "c330e9c53962019274cf3873a462edcba95077f4a6b1bf43b1a3ba6b5f230057",
       "prompt": "Use case: stylized-concept. Asset type: small medieval fantasy guild crest emblem. Subject: A heraldic manticore in clear side profile: strong lion body, dignified lion head with restrained mane, two simple bat wings lifted behind shoulders, four clear paws and a single arched scorpion tail. Entire coherent animal, no floating head, no surrounding flourishes. Style: refined hand-painted sculpted antique ivory and aged gold metal relief, dark engraved contours, soft upper-left highlights. Composition: one centered isolated emblem, clean bold silhouette readable at 64 pixels, restrained broad details, square canvas with 12 percent empty margin. True transparent background. No banner, no frame, no shield, no letters, no pedestal, no additional ornaments. Avoid excessive filigree, tiny spikes, intertwined anatomy, photorealism."
+    },
+    {
+      "id": "crest-wyvern-relief",
+      "kind": "symbol",
+      "name": "Serpe da muralha",
+      "image": "/guild/crest-repairs-20261020/wyvern-relief.webp",
+      "width": 768,
+      "height": 745,
+      "bytes": 213232,
+      "sha256": "d8f44b354e89eea2e4c48053da318defb0eb1d30bc9e2cf4edcf83c5e46b2474",
+      "source": "exec-b80b5513-e6a4-490e-8cc1-131346615579.png",
+      "sourceSha256": "4766930b89e9c863ed20a2f0b2fed9a7c38d119dddab5cd4c957819ca78dffff",
+      "prompt": "Use case: stylized-concept. Asset type: small fantasy guild crest symbol. One heraldic wyvern dragon, coherent full body, side profile head facing left, two strong legs, two broad raised bat wings forming a balanced upright silhouette, a single gently curved tail. Elegant sculpted antique ivory silver metal with restrained aged gold edges, dark engraved contours and broad readable details. Hand painted medieval RPG relief. Clearly recognizable at 64 pixels. Isolated centered complete animal on true transparent background, generous empty margin all edges. No frame, banner, shield, pedestal, text, filigree, tangled coils or extra limbs."
     }
   ]
 }

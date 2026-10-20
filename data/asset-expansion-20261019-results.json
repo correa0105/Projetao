@@ -1981,14 +1981,14 @@
       "id": "crest-wyvern-relief",
       "kind": "symbol",
       "name": "Serpe da muralha",
-      "image": "/guild/crests-expansion-20261019/wyvern-relief.webp",
-      "width": 913,
-      "height": 956,
-      "bytes": 302582,
-      "sha256": "8843280046f91c503ac6a03c039d4ca34b0c0494c6b3f1ef197e1f2fefdc9cad",
-      "source": "exec-15cac8ad-3f62-46fa-be7c-fdc0480cc326.png",
-      "sourceSha256": "6855eb800ddad98767d2300712f67508628304a9a346a063f72b972b9a5c057d",
-      "prompt": "Use case: stylized-concept. Create ONE finished original high quality game asset, not an asset sheet or collage. Medieval fantasy hand painted realism, crisp fine material detail, restrained elegant ornament, believable construction. Complete centered silhouette with at least 8% clear padding on all four edges. True alpha transparency outside the object. No background, floor, ground plane, cast shadow, ambient halo, checkerboard pattern, labels, text, UI, logo or watermark. No fragments or neighboring objects. Asset type: single layered guild crest symbol. Subject: winged wyvern curled around itself, two legs, long serpentine tail and a fierce recognizable dragon head. Frontal symmetric heraldic presentation, highly polished detailed fantasy RPG illustration, rich aged metal or woven textile workmanship. Single sculpted heraldic emblem in antique ivory silver metal with warm gold accents and dark patina in fine recessed detail. No frame, shield, banner, backing plate or scenery. Strong legible coherent silhouette with detailed expressive anatomy or craftsmanship, integrated sculptural form. No projected shadow. At least 8% transparent margin around every extremity."
+      "image": "/guild/crest-repairs-20261020/wyvern-relief.webp",
+      "width": 768,
+      "height": 745,
+      "bytes": 213232,
+      "sha256": "d8f44b354e89eea2e4c48053da318defb0eb1d30bc9e2cf4edcf83c5e46b2474",
+      "source": "exec-b80b5513-e6a4-490e-8cc1-131346615579.png",
+      "sourceSha256": "4766930b89e9c863ed20a2f0b2fed9a7c38d119dddab5cd4c957819ca78dffff",
+      "prompt": "Use case: stylized-concept. Asset type: small fantasy guild crest symbol. One heraldic wyvern dragon, coherent full body, side profile head facing left, two strong legs, two broad raised bat wings forming a balanced upright silhouette, a single gently curved tail. Elegant sculpted antique ivory silver metal with restrained aged gold edges, dark engraved contours and broad readable details. Hand painted medieval RPG relief. Clearly recognizable at 64 pixels. Isolated centered complete animal on true transparent background, generous empty margin all edges. No frame, banner, shield, pedestal, text, filigree, tangled coils or extra limbs."
     },
     {
       "id": "crest-badger-relief",

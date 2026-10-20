@@ -1,5 +1,7 @@
 # Brasões e acesso à sede — 20/10/2026
 
+Complemento: a Serpe da muralha também recebeu uma nova arte, com corpo e asas definidos (quatro emblemas revisados no total). A prévia ilustrada fica fixa durante a rolagem dos ajustes em desktop e celular. O cartão de identidade da guilda agora inclui o Menu da sede; a porta externa usa apenas um ícone circular com nome acessível. O token controlado permanece renderizado na passagem pela borda da casa, impedindo a perda de captura do arrasto antes da troca de telhado. Validação real de arrasto com trinta passos, entrada e saída, quatro artes e prévia visível em 1440 e 390 pixels aprovada.
+
 Basilisco, tubarão e mantícora receberam novas artes com anatomia completa e silhuetas mais legíveis. Os IDs existentes foram preservados; os arquivos novos em `public/guild/crest-repairs-20261020/` usam URLs próprias para evitar cache das versões anteriores. Prompts finais, modo imagegen embutido, dimensões e hashes estão em `data/crest-repairs-20261020.json`. Transparência original preservada na conversão WebP.
 
 O botão Estilo clássico foi removido da oficina de brasões ilustrados.
