@@ -130,8 +130,10 @@ export function CharacterCamp({
   const refreshRef = useRef(onRefresh);
   refreshRef.current = onRefresh;
   useEffect(() => {
-    let alive = true;
+    let alive = true, pending = false;
     const update = async () => {
+      if (!alive || pending || document.hidden) return;
+      pending = true;
       try {
         const result = await api<ArtState>('/character-art');
         if (!alive) return;
@@ -153,7 +155,7 @@ export function CharacterCamp({
           setAvailability(null);
           setLoadError('Não foi possível consultar o ilustrador. Tentando novamente…');
         }
-      }
+      } finally { pending = false; }
     };
     void update();
     const timer = setInterval(() => void update(), 4000);

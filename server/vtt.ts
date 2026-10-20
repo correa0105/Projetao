@@ -1,3 +1,4 @@
+import { sendCompressedJson } from './http-transfer.js';
 import {reuseVttAsset,uniqueVttAssetsSql,duplicateVttAssetIds} from './vtt-assets.js';
 import {convertSceneryToToken} from '../shared/vtt-scenery-token.js';
 import express from 'express';
@@ -638,7 +639,7 @@ export function vttRouter() {
     });
     res.json(await state(rid, user));
   });
-  router.get('/vtt/compendium', async (_req, res) => {
+  router.get('/vtt/compendium', async (req, res) => {
     const catalog = JSON.parse(await readFile('data/vtt/srd-2024.json', 'utf8'));
     if ((await premiumSettings(res.locals.user.id)).premiumTokens) {
       const available = new Set((await premiumAssets()).map((a) => a.id));
@@ -647,10 +648,10 @@ export function vttRouter() {
       );
     }
     catalog.monsters = appendMonsterTestCards(catalog.monsters);
-    res.json(catalog);
+    await sendCompressedJson(req, res, catalog);
   });
   router.get('/vtt/rooms/:id', async (req, res) =>
-    res.json(await state(uuid.parse(req.params.id), res.locals.user.id)),
+    sendCompressedJson(req, res, await state(uuid.parse(req.params.id), res.locals.user.id)),
   );
   router.get('/vtt/rooms/:id/signal', async (req, res) => {
     const {
