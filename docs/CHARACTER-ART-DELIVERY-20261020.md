@@ -1,0 +1,7 @@
+# Entrega da criação de personagem
+
+A criação estava condicionada à aprovação de duas imagens: arte de corpo inteiro e token visto de cima. Se a revisão do token falhava, o formulário e o retrato aprovado permaneciam guardados, mas o personagem não era criado. A recuperação do Irineu foi concluída: personagem, ficha, retrato e token confirmados no banco; o pedido está completed, sem duplicar a ficha. O token foi gerado com imagegen embutido a partir da arte já aprovada; fontes e prompt privados ficam em `.local/irineu-recovery/`, sem publicar imagens pessoais no Git.
+
+O worker agora publica a ficha e o retrato aprovados no checkpoint, mantendo a etapa do token pendente. O checkpoint também funciona com retrato recuperado. O término publica o token no mesmo personagem. Falhas conservam o retrato e permitem Concluir token no próprio cartão; a retomada não consome uma nova vaga, não duplica a ficha e respeita posse, exclusão e geração concorrente. O acampamento observa mudanças no vínculo do pedido e atualiza a lista mesmo sem mudança de status. O botão Criações salvas foi removido conforme solicitado, sem apagar dados.
+
+Verificação: testes isolados de entrega antes do token, retomada no limite de vagas e conclusão sem duplicação; validação e preservação de tokens existentes; geração/revisão simuladas, quatro testes aprovados. Navegador em desktop e celular confirmou atualização do retrato e ausência do botão. TypeScript e build aprovados. Worker reiniciado pelo supervisor e heartbeat conferido; nenhuma fila ativa foi interrompida.

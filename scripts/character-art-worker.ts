@@ -107,10 +107,7 @@ try {
               job,
               !job.character_id
                 ? async (portrait) => {
-                    await pool.query(
-                      "UPDATE character_art_jobs SET approved_portrait=$2 WHERE id=$1 AND status='running' AND character_id IS NULL",
-                      [job.id, portrait],
-                    );
+                    await completeArt(job.id, { portrait });
                   }
                 : undefined,
             ),

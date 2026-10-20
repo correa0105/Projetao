@@ -142,7 +142,7 @@ export function CharacterCamp({
         );
         previousJobs.current = new Map(result.jobs.map((job) => [job.id, job.status]));
         if (failed) setNotice(failed);
-        const signature = JSON.stringify(result.jobs.map((j) => [j.id, j.status]));
+        const signature = JSON.stringify(result.jobs.map((j) => [j.id, j.status, j.character_id]));
         if (snapshot.current && signature !== snapshot.current) await refreshRef.current();
         snapshot.current = signature;
         setState(result);
@@ -269,6 +269,15 @@ export function CharacterCamp({
                       : 'Gerar imagem'}
                 </button>
               </div>
+              {state.jobs.filter(job => job.character_id === character.id && job.status === 'failed' && job.can_retry).slice(0, 1).map(job => (
+                <button key={job.id} className="button outline small-button" disabled={busy || availability !== true}
+                  onClick={async () => {
+                    setBusy(true);
+                    try { await post(`/character-art/${job.id}/retry`, {}); await onRefresh(); }
+                    catch (error) { setError((error as Error).message); }
+                    finally { setBusy(false); }
+                  }}>Concluir token</button>
+              ))}
             </div>
           </article>
         ))}
@@ -307,15 +316,6 @@ export function CharacterCamp({
         <p className="camp-status" role="status">
           {loadError}
         </p>
-      )}
-      {state.jobs.some((job) => job.status === 'failed' && !job.character_id) && (
-        <button
-          className="button outline camp-saved-trigger"
-          onClick={() => setShowSavedCreations(true)}
-        >
-          Criações salvas (
-          {state.jobs.filter((job) => job.status === 'failed' && !job.character_id).length})
-        </button>
       )}
       {showSavedCreations && (
         <Modal title="Criações salvas" close={() => setShowSavedCreations(false)}>

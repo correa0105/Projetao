@@ -191,7 +191,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
     }
     throw new IllustratorError(
       'token_rejected',
-      'A vista de cima não passou pela revisão e as artes não foram publicadas.',
+      'A vista de cima não passou pela revisão. A arte principal aprovada foi preservada.',
     );
   } finally {
     await Promise.all(
@@ -205,7 +205,7 @@ export async function generateCharacterArtPair(
   checkpoint?: (portrait: Buffer) => Promise<void>,
 ): Promise<CharacterArtPair> {
   const portrait = job.approved_portrait || (await generateCharacterArt(job));
-  if (checkpoint && !job.approved_portrait) await checkpoint(portrait);
+  if (checkpoint) await checkpoint(portrait);
   return { portrait, token: await generateCharacterToken(job, portrait) };
 }
 

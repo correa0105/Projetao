@@ -214,10 +214,10 @@ export async function enqueueArt(userId: string, input: unknown) {
 }
 
 // Only the trusted local worker calls this function. No HTTP route can publish artwork.
-export async function completeArt(jobId: string, output: CharacterArtPair) {
+export async function completeArt(jobId: string, output: { portrait: Buffer; token?: Buffer }) {
   const [image, tokenImage] = await Promise.all([
     normalizeArtImage(output.portrait, true),
-    normalizeCharacterToken(output.token),
+    output.token ? normalizeCharacterToken(output.token) : Promise.resolve(null),
   ]);
   return transaction(async (client) => {
     const owner = await client.query('SELECT user_id FROM character_art_jobs WHERE id=$1', [jobId]);
@@ -231,7 +231,8 @@ export async function completeArt(jobId: string, output: CharacterArtPair) {
       rows: [job],
     } = await client.query('SELECT * FROM character_art_jobs WHERE id=$1 FOR UPDATE', [jobId]);
     if (job.status === 'completed') return job.character_id as string;
-    if (job.status !== 'running') throw new AppError(409, 'Pedido não está em processamento.');
+    if (job.status !== 'running' && !(job.status === 'failed' && !tokenImage))
+      throw new AppError(409, 'Pedido não está em processamento.');
     let characterId = job.character_id;
     if (!characterId) {
       const {
@@ -277,19 +278,28 @@ export async function completeArt(jobId: string, output: CharacterArtPair) {
       'INSERT INTO character_portraits(character_id,image) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET image=$2,updated_at=now()',
       [characterId, image],
     );
-    await client.query(
-      'INSERT INTO character_tokens(character_id,image) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET image=$2,updated_at=now()',
-      [characterId, tokenImage],
-    );
-    await syncCharacterTokenArt(client, characterId, job.user_id, tokenImage);
+    if (tokenImage) {
+      await client.query(
+        'INSERT INTO character_tokens(character_id,image) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET image=$2,updated_at=now()',
+        [characterId, tokenImage],
+      );
+      await syncCharacterTokenArt(client, characterId, job.user_id, tokenImage);
+    }
     await client.query(
       'UPDATE characters SET portrait_revision=portrait_revision+1 WHERE id=$1 AND user_id=$2',
       [characterId, job.user_id],
     );
-    await client.query(
-      "UPDATE character_art_jobs SET status='completed',character_id=$2,reference=NULL,approved_portrait=NULL,error=NULL,completed_at=now() WHERE id=$1",
-      [jobId, characterId],
-    );
+    if (tokenImage) {
+      await client.query(
+        "UPDATE character_art_jobs SET status='completed',character_id=$2,reference=NULL,approved_portrait=NULL,error=NULL,completed_at=now() WHERE id=$1",
+        [jobId, characterId],
+      );
+    } else {
+      await client.query(
+        "UPDATE character_art_jobs SET character_id=$2,approved_portrait=$3 WHERE id=$1",
+        [jobId, characterId, image],
+      );
+    }
     return characterId as string;
   });
 }
@@ -333,8 +343,20 @@ export function characterArtRouter() {
       );
       if (!job) throw new AppError(404, 'Criação não encontrada.');
       if (job.status !== 'failed') return { id: job.id, status: job.status };
-      if (job.character_id || !job.creation)
+      if (!job.creation || (job.character_id && (!job.recoverable || replacement)))
         throw new AppError(409, 'Este pedido não é uma criação pendente.');
+      if (job.character_id) {
+        const existing = await client.query(
+          'SELECT 1 FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL',
+          [job.character_id, user],
+        );
+        if (!existing.rowCount) throw new AppError(404, 'Personagem não encontrado.');
+        const pending = await client.query(
+          "SELECT 1 FROM character_art_jobs WHERE character_id=$1 AND status IN('queued','running')",
+          [job.character_id],
+        );
+        if (pending.rowCount) throw new AppError(409, 'Já há uma imagem em preparação para este personagem.');
+      }
       if (!job.recoverable && !replacement)
         throw new AppError(
           409,
@@ -348,7 +370,7 @@ export function characterArtRouter() {
         "SELECT (SELECT count(*) FROM characters WHERE user_id=$1 AND deleted_at IS NULL)+(SELECT count(*) FROM character_art_jobs WHERE user_id=$1 AND character_id IS NULL AND status IN('queued','running')) AS total",
         [user],
       );
-      if (Number(count.total) >= characterLimit(false))
+      if (!job.character_id && Number(count.total) >= characterLimit(false))
         throw new AppError(409, 'Limite de personagens atingido. Sua criação continua salva.');
       characterSchema.parse(replacement?.creation || job.creation);
       await client.query(
@@ -410,7 +432,7 @@ export function characterArtRouter() {
   router.get('/character-art', async (_req, res) => {
     const { rows: jobs } = await pool.query(
       `SELECT j.id,j.character_id,j.status,j.error,j.created_at,
-      (j.character_id IS NULL AND j.status='failed' AND (j.reference IS NOT NULL OR j.approved_portrait IS NOT NULL)) AS can_retry,
+      (j.status='failed' AND j.creation IS NOT NULL AND (j.reference IS NOT NULL OR j.approved_portrait IS NOT NULL)) AS can_retry,
       COALESCE(c.name,j.creation->>'name') AS name FROM character_art_jobs j
       LEFT JOIN characters c ON c.id=j.character_id WHERE j.user_id=$1 AND (j.character_id IS NULL OR c.deleted_at IS NULL)
       ORDER BY j.created_at DESC LIMIT 30`,
