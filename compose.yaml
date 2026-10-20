@@ -35,6 +35,7 @@ services:
       VTT_TRANSLATOR_URL: http://translator:5000
     ports:
       - '127.0.0.1:3000:3000'
+      - '${APP_NETWORK_IP:-127.0.0.1}:3000:3000'
     volumes:
       - ./data/vtt/premium-art:/app/data/vtt/premium-art:ro
     healthcheck:
