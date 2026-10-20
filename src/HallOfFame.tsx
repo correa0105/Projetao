@@ -126,17 +126,6 @@ export function HallOfFame({
   }
   return (
     <section className={`hall-of-fame ${embedded ? 'embedded' : ''}`}>
-      <button
-        className="hall-menu-trigger"
-        aria-label="Menu do Hall da Fama"
-        aria-expanded={menuOpen}
-        aria-controls="scene-panel-hall"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        <Menu size={18} />
-        <span>{rankings.find((r) => r.id === ranking)?.name}</span>
-        <ChevronRight size={14} />
-      </button>
       {menuOpen && (
         <ScenePanel id="hall" title="Hall da Fama" side="left" close={() => setMenuOpen(false)}>
           <p className="hall-menu-caption">Explore os registros da Alvorada</p>
@@ -255,6 +244,7 @@ export function HallOfFame({
           ))}
         </div>
       )}
+      <div className="hall-ranking-toolbar">
       <div className="hall-search">
         <Search size={16} />
         <input
@@ -269,6 +259,18 @@ export function HallOfFame({
         <span>
           {filtered.length} {ranking === 'rating' ? 'perfis' : 'personagens'}
         </span>
+      </div>
+      <button
+        className="hall-menu-trigger"
+        aria-label="Menu do Hall da Fama"
+        aria-expanded={menuOpen}
+        aria-controls="scene-panel-hall"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <Menu size={18} />
+        <span>{rankings.find((r) => r.id === ranking)?.name}</span>
+        <ChevronRight size={14} />
+      </button>
       </div>
       {data && data.entries.length === 0 && (
         <p className="social-empty">

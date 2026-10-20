@@ -49,3 +49,11 @@ Build do cliente e conferência visual no Edge em 1440×908, 1280×720, 1024×76
 longos, reticências, labels transparentes e campos opacos conferidos. Publicação
 `visual-refinements-20261020` somente do cliente, preservando o servidor e assets
 anteriores.
+
+Refino seguinte: nomes dos itens recebem 4 px de padding em cada lateral,
+preservando largura contida, linha fixa e reticências. O filtro do Hall da Fama
+passa para a seção inferior, ao lado da busca, em fluxo normal, tanto no Hall
+independente quanto no Hall dos perfis. Conferidos padding em 1440/390 px,
+posição, troca de categoria e busca em 1440/760/390 px nas duas versões do Hall;
+TypeScript e build aprovados. Publicação `item-padding-hall-filter-20261020`
+somente do cliente, com servidor e arquivos anteriores preservados.
