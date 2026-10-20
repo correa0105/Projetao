@@ -2799,7 +2799,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           </div>
         )}
         <div className="vtt-top-actions">
-          {gm && personalId && <button className="vtt-personal-share" aria-label="Copiar link fixo do meu VTT" title="Copiar link fixo do meu VTT" onClick={()=>void copyText((personalUrl || new URL(vttPersonalHref(personalId),location.href).href)).then(()=>setNotice('Link fixo do VTT copiado.')).catch(e=>setNotice(e.message))}><Copy size={17}/><span>Link da mesa</span></button>}
+          {gm && personalId && <button className="vtt-personal-share" aria-label="Copiar link fixo do meu VTT" title="Copiar link fixo do meu VTT" onClick={()=>void copyText((personalUrl || new URL(vttPersonalHref(personalId),location.href).href)).catch(e=>setNotice(e.message))}><Copy size={17}/><span>Link da mesa</span></button>}
           <VttHighQualityCapture administrator={gm} frame={captureFrame} roomId={state.id}/>
           {gm && (
             <button
@@ -5176,7 +5176,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       <h3>Link fixo do seu VTT</h3>
                       <p className="vtt-muted">Use este mesmo link em todas as suas missões. Os jogadores entram no mapa ativo da sua mesa.</p>
                       <label>Link da mesa<textarea aria-label="Link da mesa" readOnly value={personalId ? (personalUrl || new URL(vttPersonalHref(personalId),location.href).href) : ''} rows={3}/></label>
-                      <button onClick={()=>void copyText((personalUrl || new URL(vttPersonalHref(personalId!),location.href).href)).then(()=>setNotice('Link fixo copiado.')).catch(e=>setNotice(e.message))}>Copiar link fixo</button>
+                      <button onClick={()=>void copyText((personalUrl || new URL(vttPersonalHref(personalId!),location.href).href)).catch(e=>setNotice(e.message))}>Copiar link fixo</button>
                       <h3>Imagens externas</h3>
                       {storage && <p role="status">{vttStorageLabel(storage)} usados para imagens externas. O catálogo e as artes dos personagens não ocupam essa cota.</p>}
                       <h3>Convite avulso dos jogadores</h3>

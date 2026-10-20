@@ -10,6 +10,7 @@ Cada conta, inclusive básica, pode preparar e editar sua própria mesa virtual 
 - A criação de uma missão usa o endereço da conta; não cria uma mesa para cada missão nem pede escolha de mesa no formulário.
 - O formulário mostra o link e permite abrir a preparação em outra aba. O aviso da missão permite entrar na mesa, e seu autor pode copiar o endereço.
 - O identificador não muda ao publicar outra missão, renomear a mesa, mudar de mapa, abrir outro projeto salvo ou renovar um convite avulso.
+- Copiar o link fixo pelos controles do VTT não exibe faixa de confirmação, por pedido do usuário. A cópia e os avisos de eventual falha permanecem.
 - Quem chega sem sessão faz login e continua no mesmo link. A entrada é como jogador; ser dono da mesa continua sendo a única condição para mestrar.
 - O jogador recebe somente o mapa ativo e o conteúdo que pode ver. As trocas de mapa acompanham a sincronização da sala. Se o mestre abrir outra sala própria preservada, quem entrou pelo endereço pessoal acompanha essa sala também.
 
