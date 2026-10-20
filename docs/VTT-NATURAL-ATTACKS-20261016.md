@@ -20,6 +20,29 @@ geração a cada frame. Prompts, recortes, hashes e dimensões estão em
 `data/vtt/natural-attacks-20261016.json`; arquivos em
 `public/vtt/natural-attacks-20261016/`. Tokens e acervo de monstros preservados.
 
+Em 20/10, **Soco/Pancada (`slam`)** usa uma nova ilustração de **luva de couro
+fechada semirrealista**, conforme os ajustes do usuário. Sem mão nua nem estilo
+fotográfico. Arte original do imagegen embutido, com fundo realmente transparente,
+convertida para WebP 640×477 (85.526 bytes). Arquivo versionado em
+`public/vtt/natural-attacks-20261020/fist-leather-glove-v1.webp`; prompt completo,
+origem, dimensões e hashes em `data/vtt/fist-leather-glove-20261020.json`.
+
+Foi alterado somente o carregamento do sprite `slam`. Os arquivos de movimento
+natural/armas permanecem idênticos: avanço, direção, tempos (1300 ms), impacto,
+erro e crítico, sons e aplicação de dano conservados. A arte é pré-carregada e
+reutilizada, sem gerar textura nem fazer pedido de rede por frame. O desenho
+anterior continua como fallback se a imagem não carregar. Não concede luvas ao
+inventário e não exige luvas equipadas; é apenas a apresentação do golpe.
+
+QA do renderer real: comparação em quatro fases, quatro direções, acerto/erro e
+crítico, desktop/celular; 57 frames dos outros 19 tipos ficaram idênticos pixel
+a pixel. P95 de desenho em 100 amostras: 0,2 ms nesta máquina. Cinco testes de
+seleção/contrato e TypeScript/build aprovados. Sem migration ou edição de dados.
+
+Publicação `fist-leather-20261020` saudável: HTML, bundles e WebP conferidos em
+localhost/Radmin; servidor idêntico ao anterior. Auditoria de 146 tabelas manteve
+145 integralmente idênticas; somente o heartbeat do ilustrador avançou.
+
 Todos usam direção atacante → alvo, tamanho limitado pelo alvo, trajetória de
 erro deslocada, impacto somente no acerto e realce no crítico. São efeitos
 visuais: não aplicam PV/dano automaticamente. Preservam Sem animação e som,

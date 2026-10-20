@@ -7,7 +7,7 @@ const illustrations = new Map<string, HTMLImageElement>();
 export function preloadNaturalArt() {
   if (typeof Image === 'undefined') return Promise.resolve();
   return Promise.all(
-    ['bite', 'claw', 'tail', 'scale-material', 'bone-material'].map(
+    ['bite', 'claw', 'tail', 'slam', 'scale-material', 'bone-material'].map(
       (id) =>
         new Promise<void>((resolve) => {
           if (illustrations.has(id)) {
@@ -21,7 +21,9 @@ export function preloadNaturalArt() {
             resolve();
           };
           image.onerror = () => resolve();
-          image.src = '/vtt/natural-attacks-20261016/' + id + '.webp';
+          image.src = id === 'slam'
+            ? '/vtt/natural-attacks-20261020/fist-leather-glove-v1.webp'
+            : '/vtt/natural-attacks-20261016/' + id + '.webp';
         }),
     ),
   );

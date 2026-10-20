@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-20",
+  "method": "built-in image_gen",
+  "style": "semi-realistic digital painting",
+  "purpose": "Soco/pancada with a full leather glove; only artwork changes, preserving the approved animation, timing, audio, hit/miss, critical and damage.",
+  "editTarget": "exec-a65bc4e9-5088-495f-9659-b6fefa2a16ee.png",
+  "prompt": "Use case: precise-object-edit.\nImage 1 is the EDIT TARGET: the semi-realistic transparent closed-fist sprite.\nReplace the bare skin with a fitted FULL-FINGER LEATHER GLOVE on the exact same closed fist. Preserve the original compact anatomy, pose, silhouette, short wrist at LEFT and punching knuckles pointing RIGHT, overhead three-quarter view and transparent alpha.\nStyle: polished semi-realistic digital painting for an illustrated medieval fantasy game, with believable volume and softly simplified forms. Medium-dark warm brown leather, gently worn ochre edges, subtle natural leather grain, fine understated stitching along the folded fingers and around the thumb, supple leather creases where fingers bend, rounded covered knuckles. A short simple fitted leather cuff at the wrist, no straps extending away from the shape. Fully covered hand, fingers and thumb, no exposed skin, no cutout finger holes.\nMaintain coherent hand anatomy: four folded gloved fingers connected to one hand, one gloved thumb folded safely across the outside; no extra digits, no detached pieces.\nDo not change the direction, proportions or view. Do not add a long arm, metal plates, armor, spikes, studs, gems, symbols, weapons, a boxing-glove shape, blood, injuries, motion streaks, glow, magical effects, text or a background. No photorealistic pores or hairs, no cartoon outlines or low-poly geometry. Clean antialiased edges without red fringes. Genuine transparent background, no painted checkerboard and no external drop shadow.",
+  "source": "exec-019158c9-499b-4f2e-af97-232b24af28fe.png",
+  "sourceSha256": "b9bc263e15c61c1cce7ff1dbe509038f2ab9711d45191b08bb7481d4959d7d8b",
+  "sourceWidth": 1403,
+  "sourceHeight": 1121,
+  "image": "/vtt/natural-attacks-20261020/fist-leather-glove-v1.webp",
+  "width": 640,
+  "height": 477,
+  "bytes": 85526,
+  "sha256": "03dbd5c841bf0b7627d2c35057f989a0223e621ca6940e72c2b51dbca669e290",
+  "alpha": true
+}
