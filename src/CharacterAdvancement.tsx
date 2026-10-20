@@ -280,11 +280,11 @@ export function CharacterAdvancement({
                 : 'Conceder nível (ADM)'}
           </button>
         )}
+        <ClassProgressionReference
+          cls={character.class}
+          subclass={d.classLevels[0]?.subclass || ''}
+        />
       </section>
-      <ClassProgressionReference
-        cls={character.class}
-        subclass={d.classLevels[0]?.subclass || ''}
-      />
       {open && (
         <Modal
           title={`Evoluir para o nível ${target}`}
@@ -655,7 +655,7 @@ function ClassProgressionReference({ cls, subclass }: { cls: string; subclass: s
   return (
     <details className="advancement-reference">
       <summary>
-        <BookOpen size={16} /> Consultar evolução · níveis 1–20
+        <BookOpen size={15} /> Evolução 1–20
       </summary>
       <div className="advancement-reference-controls">
         <label>

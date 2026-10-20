@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { api, post } from './api';
-import { worldDayMs, type WorldClockSnapshot } from '../shared/world-clock';
+import { worldDayMs, worldClockRate, type WorldClockSnapshot } from '../shared/world-clock';
 export function useWorldClock() {
   const [clock, setClock] = useState<WorldClockSnapshot | null>(null),
     [now, setNow] = useState(performance.now()),
@@ -56,7 +56,7 @@ export function useWorldClock() {
   return {
     clock,
     timeMs: clock
-      ? (clock.timeMs + Math.max(0, now - received.current)) % worldDayMs
+      ? (clock.timeMs + Math.max(0, now - received.current) * worldClockRate) % worldDayMs
       : 14 * 3_600_000,
     error,
     adjust,

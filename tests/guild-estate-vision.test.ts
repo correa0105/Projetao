@@ -35,6 +35,26 @@ test('fechar veneziana impede visão e polígono percorre ângulos sem voltar so
   );
   for (let i = 1; i < angles.length; i++) assert(angles[i] >= angles[i - 1] - 0.0002);
 });
+
+test('raios nos encontros da porta fechada não revelam faixas do interior', () => {
+  const closed = estateOpeningsSchema.parse({ entry: false });
+  for (const at of [
+    { x: 27, y: 34.60999999999998 },
+    { x: 27.519999999999996, y: 34.22999999999998 },
+    { x: 28.689999999999987, y: 32.71 },
+    { x: 29.079999999999984, y: 31.19 },
+  ]) {
+    const polygon = guildEstateVisionPolygon(at, closed);
+    for (const point of polygon.matchAll(/(-?\d+\.\d+) (-?\d+\.\d+)/g)) {
+      const x = +point[1],
+        y = +point[2];
+      assert(
+        !(x > 21.13 && x < 38.87 && y > 17.21 && y < 30.69),
+        `Visão atravessou a entrada fechada: ${x}, ${y}`,
+      );
+    }
+  }
+});
 test('aberturas de outros cômodos ficam ocultas atrás da porta fechada', () => {
   const state = estateOpeningsSchema.parse({});
   const at = { x: 25.4, y: 27 };

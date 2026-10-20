@@ -6,7 +6,7 @@ import { migrate } from '../server/migrate';
 import { worldClockTime, worldClockLabel, worldClockPhase } from '../shared/world-clock';
 
 test('relógio avança, atravessa meia-noite e muda luz nos horários previstos', () => {
-  assert.equal(worldClockLabel(worldClockTime(1439, 1000, 121000)), '00:01');
+  assert.equal(worldClockLabel(worldClockTime(1439, 1000, 121000)), '00:07');
   assert.equal(worldClockLabel(worldClockTime(360, 2000, 1000)), '06:00');
   for (const [hour, phase] of [
     [0, 'night'],
@@ -21,6 +21,20 @@ test('relógio avança, atravessa meia-noite e muda luz nos horários previstos'
     [23, 'night'],
   ] as const)
     assert.equal(worldClockPhase(hour * 3600000), phase);
+});
+
+test('House 2.0 completa quatro ciclos por dia real, sem depender de abrir a página', () => {
+  const anchor = Date.UTC(2026, 9, 20, 3);
+  const hour = 3_600_000;
+  assert.equal(worldClockLabel(worldClockTime(0, anchor, anchor + hour)), '04:00');
+  assert.equal(worldClockPhase(worldClockTime(0, anchor, anchor + 1.5 * hour)), 'morning');
+  assert.equal(worldClockPhase(worldClockTime(0, anchor, anchor + 3 * hour)), 'afternoon');
+  assert.equal(worldClockPhase(worldClockTime(0, anchor, anchor + 4.5 * hour)), 'dusk');
+  assert.equal(worldClockPhase(worldClockTime(0, anchor, anchor + 5 * hour)), 'night');
+  for (const cycle of [1, 2, 3, 4]) {
+    assert.equal(worldClockTime(0, anchor, anchor + 6 * cycle * hour), 0);
+    assert.equal(worldClockLabel(worldClockTime(360, anchor, anchor + 6 * cycle * hour)), '06:00');
+  }
 });
 test('hora compartilhada: leitura autenticada, edição só por administrador e concorrência protegida', async () => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);

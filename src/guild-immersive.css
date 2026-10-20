@@ -704,11 +704,125 @@
   }
 }
 
-:root .app-shell[data-page='guild'] .main-content {padding:0;}
-:root .app-shell[data-page='guild'] .main-shell {width:100%;max-width:none;}
-:root .guild-page .guild-lobby-hero h1 {font-size:clamp(31px,3.1vw,46px);}
-:root .guild-page .guild-lobby-hero-copy {max-width:700px;}
-.notice-hanging-sign:disabled {cursor:default;filter:grayscale(.75) brightness(.6);}
-.notice-hanging-sign:disabled:hover {transform:none;}
-.notice-hook-form {border:1px solid #ac8c4b55;padding:22px;margin-top:20px;}
-.notice-hanging-sign > span {display:flex;align-items:center;justify-content:center;gap:8px;}
+:root .app-shell[data-page='guild'] .main-content {
+  padding: 0;
+}
+:root .app-shell[data-page='guild'] .main-shell {
+  width: 100%;
+  max-width: none;
+}
+:root .guild-page .guild-lobby-hero h1 {
+  font-size: clamp(31px, 3.1vw, 46px);
+}
+:root .guild-page .guild-lobby-hero-copy {
+  max-width: 700px;
+}
+
+/* A compact welcome, one personal destination, then the directory. */
+.guild-lobby-hero {
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: clamp(24px, 3vw, 42px);
+}
+:root .guild-page .guild-lobby-hero-copy {
+  padding: 0;
+  max-width: 540px;
+}
+:root .guild-page .guild-lobby-hero h1 {
+  font-size: clamp(27px, 3vw, 40px);
+  margin: 0 0 16px;
+}
+.guild-lobby-hero-copy > p {
+  margin: 0;
+  line-height: 1.6;
+}
+.guild-lobby-hero-actions:not(:empty) {
+  margin-top: 22px;
+}
+.guild-page button.guild-lobby-own {
+  position: static;
+  margin: 0;
+  flex-shrink: 0;
+  width: 290px;
+  max-width: 100%;
+  min-height: 92px;
+  backdrop-filter: blur(8px);
+}
+.guild-lobby-guide {
+  margin: 14px 0 30px;
+  border: 0;
+  padding: 0;
+  background: none;
+}
+.guild-lobby-guide > summary {
+  width: fit-content;
+  padding: 8px 0;
+  font-size: 12px;
+  color: #bba67b;
+  cursor: pointer;
+}
+.guild-lobby-guide .guild-lobby-benefits {
+  margin: 0;
+  padding: 18px 0;
+}
+.guild-lobby-register-heading {
+  margin-bottom: 16px;
+}
+.guild-lobby-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.guild-lobby-toolbar .guild-lobby-filters {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.guild-lobby-toolbar .guild-lobby-filters > label {
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .guild-lobby-hero {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .guild-page button.guild-lobby-own {
+    width: 100%;
+  }
+  .guild-lobby-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  :root .guild-page .guild-lobby-toolbar .guild-lobby-search {
+    width: 100%;
+  }
+  .guild-lobby-toolbar .guild-lobby-filters {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+.notice-hanging-sign:disabled {
+  cursor: default;
+  filter: grayscale(0.75) brightness(0.6);
+}
+.notice-hanging-sign:disabled:hover {
+  transform: none;
+}
+.notice-hook-form {
+  border: 1px solid #ac8c4b55;
+  padding: 22px;
+  margin-top: 20px;
+}
+.notice-hanging-sign > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}

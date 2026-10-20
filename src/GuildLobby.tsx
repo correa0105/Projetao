@@ -25,7 +25,6 @@ type Entry = {
 export function GuildLobby({
   entries,
   mine,
-  activeName,
   cost,
   canFound,
   foundingHint,
@@ -76,70 +75,41 @@ export function GuildLobby({
       </header>
       <section className="guild-lobby-hero" aria-labelledby="guild-lobby-title">
         <div className="guild-lobby-hero-copy">
-          <span className="social-eyebrow">Guildas da Alvorada</span>
-          <h1 id="guild-lobby-title">
-            Toda aventura merece
-            <br />
-            uma companhia.
-          </h1>
-          <p>
-            Um brasão para representar vocês. Uma sede para voltar. Encontre seu lugar entre as
-            companhias da Alvorada.
-          </p>
+          <h1 id="guild-lobby-title">Sua próxima aventura, em companhia.</h1>
+          <p>Encontre uma guilda e faça da sede o seu ponto de encontro.</p>
           <div className="guild-lobby-hero-actions">
-            {mine ? (
+            {mine && !own ? (
               <button className="guild-lobby-primary" onClick={() => visit(mine)}>
                 <Home size={17} />
                 Minha guilda
                 <ArrowRight size={16} />
               </button>
-            ) : (
+            ) : !mine ? (
               <button className="guild-lobby-primary" disabled={!canFound} onClick={onFound}>
                 <Plus size={17} />
                 Fundar uma guilda
               </button>
-            )}
-            <button
-              onClick={() =>
-                document
-                  .getElementById('guild-directory')
-                  ?.scrollIntoView({
-                    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
-                      ? 'instant'
-                      : 'smooth',
-                    block: 'start',
-                  })
-              }
-            >
-              <Search size={16} />
-              Procurar guildas
-            </button>
+            ) : null}
           </div>
-          <span className="guild-lobby-cost">
-            {mine ? (
-              `${activeName} já tem uma companhia.`
-            ) : cost === null || cost === undefined ? (
-              'Fundação aguardando configuração.'
-            ) : (
-              <>
-                <Coins size={14} />
-                {cost.toLocaleString('pt-BR')} PO para fundar · quatro salas iniciais
-              </>
-            )}
-          </span>
+          {!mine && (
+            <span className="guild-lobby-cost">
+              {cost === null || cost === undefined ? (
+                'Fundação aguardando configuração.'
+              ) : (
+                <>
+                  <Coins size={14} />
+                  {cost.toLocaleString('pt-BR')} PO para fundar · quatro salas iniciais
+                </>
+              )}
+            </span>
+          )}
           {!mine && !canFound && <span className="guild-lobby-hint">{foundingHint}</span>}
-        </div>
-        <div className="guild-lobby-scene-label">
-          <Home size={14} />
-          <span>
-            Seu próximo ponto de encontro<small>Salão principal · sede inicial</small>
-          </span>
         </div>
         {own && (
           <button className="guild-lobby-own" onClick={() => visit(own.id)}>
             <GuildCrest crest={own.crest} size={52} />
             <span>
-              <small>Sua companhia</small>
+              <small>Minha guilda</small>
               <strong>{own.name}</strong>
               <em>
                 {own.members}/8 jogadores · {own.rank}
@@ -149,39 +119,42 @@ export function GuildLobby({
           </button>
         )}
       </section>
-      <div className="guild-lobby-benefits">
-        <div>
-          <Shield />
-          <span>
-            <strong>Uma identidade em comum</strong>
-            <small>Crie seu brasão e personalize a sede.</small>
-          </span>
+      <details className="guild-lobby-guide">
+        <summary>Como funcionam as guildas</summary>
+        <div className="guild-lobby-benefits">
+          <div>
+            <Shield />
+            <span>
+              <strong>Uma identidade em comum</strong>
+              <small>Crie seu brasão e personalize a sede.</small>
+            </span>
+          </div>
+          <div>
+            <Users />
+            <span>
+              <strong>Até oito jogadores</strong>
+              <small>A entrada acontece por convite da companhia.</small>
+            </span>
+          </div>
+          <div>
+            <Trophy />
+            <span>
+              <strong>Histórias que rendem frutos</strong>
+              <small>Cumpram missões e conquistem novas salas.</small>
+            </span>
+          </div>
         </div>
-        <div>
-          <Users />
-          <span>
-            <strong>Até oito jogadores</strong>
-            <small>A entrada acontece por convite da companhia.</small>
-          </span>
-        </div>
-        <div>
-          <Trophy />
-          <span>
-            <strong>Histórias que rendem frutos</strong>
-            <small>Cumpram missões e conquistem novas salas.</small>
-          </span>
-        </div>
-      </div>
+      </details>
       {invites}
       <section className="guild-lobby-register" aria-labelledby="guild-directory">
         <header className="guild-lobby-register-heading">
           <div>
-            <span className="social-eyebrow">Encontre seu lugar</span>
             <h2 id="guild-directory">
-              Companhias da Alvorada <small>{entries.length}</small>
+              Guildas <small>{entries.length}</small>
             </h2>
-            <p>Visite uma sede, conheça os membros e combine seu convite.</p>
           </div>
+        </header>
+        <div className="guild-lobby-toolbar">
           <label className="guild-lobby-search">
             <Search size={17} />
             <input
@@ -192,27 +165,27 @@ export function GuildLobby({
               placeholder="Buscar pelo nome da guilda…"
             />
           </label>
-        </header>
-        <div className="guild-lobby-filters">
-          <div role="group" aria-label="Filtrar guildas">
-            <button aria-pressed={!vacancies} onClick={() => setVacancies(false)}>
-              Todas as guildas
-            </button>
-            <button aria-pressed={vacancies} onClick={() => setVacancies(true)}>
-              Com vagas
-            </button>
+          <div className="guild-lobby-filters">
+            <div role="group" aria-label="Filtrar guildas">
+              <button aria-pressed={!vacancies} onClick={() => setVacancies(false)}>
+                Todas
+              </button>
+              <button aria-pressed={vacancies} onClick={() => setVacancies(true)}>
+                Com vagas
+              </button>
+            </div>
+            <label>
+              Ordenar por
+              <select
+                aria-label="Ordenar guildas"
+                value={sort}
+                onChange={(e) => setSort(e.target.value)}
+              >
+                <option value="prestige">Prestígio</option>
+                <option value="name">Nome</option>
+              </select>
+            </label>
           </div>
-          <label>
-            Ordenar por
-            <select
-              aria-label="Ordenar guildas"
-              value={sort}
-              onChange={(e) => setSort(e.target.value)}
-            >
-              <option value="prestige">Prestígio</option>
-              <option value="name">Nome</option>
-            </select>
-          </label>
         </div>
         <div className="guild-directory guild-lobby-list">
           {filtered.map((e) => (

@@ -1,3 +1,4 @@
+import { startingEquipmentImage } from '../shared/starting-equipment-art';
 import { FlashMessage } from './FlashMessage';
 import {SheetSpellCollection}from './SheetSpellCollection';
 import { CharacterTitleLabel } from './Titles';
@@ -936,7 +937,8 @@ export function CharacterSheet({
                           name={v}
                           image={
                             data?.startingEquipment?.find((e) => e.name === v)?.image_path ||
-                            details?.inventory.find((e) => e.name === v)?.image_path
+                            details?.inventory.find((e) => e.name === v)?.image_path ||
+                            startingEquipmentImage(v)
                           }
                         />
                       ))}

@@ -88,11 +88,6 @@ export function GuildEstateDoors({
 }) {
   return (
     <g data-estate-access-controls="doors-and-windows">
-      <defs>
-        <pattern id="ge-access-wood" width=".8" height=".8" patternUnits="userSpaceOnUse">
-          <image href="/vtt/terrain-v3-20261013/wood.webp" width=".8" height=".8" />
-        </pattern>
-      </defs>
       {guildEstateOpenings
         .filter((o) => !viewer || guildEstateCanSeeOpening(viewer, o.id, openings))
         .map((o) => {
@@ -124,68 +119,57 @@ export function GuildEstateDoors({
               data-open={String(open)}
             >
               {o.kind === 'door' ? (
-                <g
-                  data-estate-leaf="door"
-                  className="guild-estate-opening-leaf"
-                  style={{ transform: `rotate(${open ? -92 : 0}deg)` }}
-                >
-                  <rect
-                    y="-.1"
-                    width={o.length}
-                    height=".2"
-                    rx=".025"
-                    fill="url(#ge-access-wood)"
-                    stroke="#473322"
-                    strokeWidth=".025"
-                  />
-                  <path
-                    d={`M.08 -.06H${o.length - 0.08}`}
-                    stroke="#d4ad70"
-                    strokeWidth=".018"
-                    opacity=".65"
-                  />
-                  <rect x=".05" y="-.12" width=".08" height=".24" fill="#48443a" />
-                  <circle cx={o.length - 0.12} cy=".025" r=".033" fill="#b2924e" />
+                <g transform={o.id === 'entry' ? 'translate(0 0)' : 'translate(.04 0)'}>
+                  <g
+                    data-estate-leaf="door"
+                    className="guild-estate-opening-leaf"
+                    style={{ transform: `rotate(${open ? -92 : 0}deg)` }}
+                  >
+                    <image
+                      href="/guild/openings-20261020/door-leaf.webp"
+                      x="-.025"
+                      y="-.145"
+                      width={o.id === 'entry' ? 1.78 : o.length - 0.06}
+                      height=".29"
+                      preserveAspectRatio="none"
+                    />
+                  </g>
                 </g>
               ) : (
-                <>
+                <g transform="translate(.1 0)">
                   <g
                     data-estate-leaf="left-shutter"
                     className="guild-estate-opening-leaf"
                     style={{ transform: `rotate(${open ? -95 : 0}deg)` }}
                   >
-                    <rect
-                      y="-.24"
-                      width={o.length / 2}
-                      height=".48"
-                      fill="url(#ge-access-wood)"
-                      stroke="#463322"
-                      strokeWidth=".025"
-                    />
-                    <path
-                      d={`M.06 -.12V.12M${o.length / 2 - 0.06} -.12V.12`}
-                      stroke="#5e543f"
-                      strokeWidth=".035"
+                    <image
+                      href="/guild/openings-20261020/shutter-leaf.webp"
+                      x="0"
+                      y="-.1"
+                      width={(o.length - 0.2) / 2}
+                      height=".2"
+                      preserveAspectRatio="none"
                     />
                   </g>
-                  <g transform={`translate(${o.length} 0)`}>
+                  <g transform={`translate(${o.length - 0.2} 0)`}>
                     <g
                       data-estate-leaf="right-shutter"
                       className="guild-estate-opening-leaf"
                       style={{ transform: `rotate(${open ? 95 : 0}deg)` }}
                     >
-                      <rect
-                        x={-o.length / 2}
-                        y="-.24"
-                        width={o.length / 2}
-                        height=".48"
-                        fill="url(#ge-access-wood)"
-                        stroke="#463322"
-                        strokeWidth=".025"
-                      />
+                      <g transform="scale(-1 1)">
+                        <image
+                          href="/guild/openings-20261020/shutter-leaf.webp"
+                          x="0"
+                          y="-.1"
+                          width={(o.length - 0.2) / 2}
+                          height=".2"
+                          preserveAspectRatio="none"
+                        />
+                      </g>
                     </g>
                   </g>
-                </>
+                </g>
               )}
               {member && controlVisible && (
                 <g

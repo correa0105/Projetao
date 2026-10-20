@@ -1,0 +1,19 @@
+{
+  "method": "built-in image_gen; individual transparent overhead sprites; alpha-preserving trim and WebP conversion",
+  "assets": [
+    {
+      "id": "door-leaf",
+      "source": "exec-46d0a1fa-0f81-4a7d-ad79-82ecd8bdeb97.png",
+      "prompt": "Use case: stylized-concept. Asset type: one original individual medieval fantasy wooden door leaf sprite for a richly painted overhead 2D tabletop house. Create a single CLOSED oak plank door viewed in perfectly orthographic plan from directly above: a long narrow HORIZONTAL bar, width to thickness ratio 6:1. We see its thick top edge, warm honey amber oak end grain, subtly bevelled irregular handmade edges, two small dark forged iron hinge collars at LEFT END and a tiny bronze latch at RIGHT END. Strong hand-painted game art with warm chestnut outlines, tactile soft brush detail, discreet bevel highlights, harmonious with an illustrated golden oak medieval floorplan. The object must read as a thick solid crafted DOOR FROM ABOVE, not an upright door face, not a photograph of wood and not a flat rectangle with a repeating texture. No floor or frame, no wall, no handle facing viewer, no vertical front face, no shadows outside the object. Complete centered silhouette with 10% transparent margins, genuine alpha transparency. One asset only, no sheet, text, labels, watermark, UI or other objects.",
+      "image": "/guild/openings-20261020/door-leaf.webp",
+      "sha256": "dfa205b07807ea683a16614c77f27352e71448d2ef7de694767480fb2d481ca4"
+    },
+    {
+      "id": "shutter-leaf",
+      "source": "exec-b3f1d8f6-5420-49a7-a663-fa319c7d53ee.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE individual medieval wooden WINDOW SHUTTER LEAF seen in perfectly orthographic architectural plan, directly from above at 90 degrees, for a polished hand-painted tabletop house. A long thin HORIZONTAL top edge of a solid honey oak shutter, width to thickness about 6:1. This is ONE half of a paired shutter. Small aged black iron hinge bracket at LEFT END, simple dark iron latch at RIGHT END, fine amber oak grain, slightly irregular bevel edges, darker warm brown outline matching golden oak illustrated walls. Restrained hand-painted detailed fantasy realism, no photo texture, no repeating plank pattern. It should look like a solid crafted shutter TOP EDGE that can swing on a pivot, NOT an upright rectangular face or broad flat fence. Complete centered isolated silhouette. Genuinely transparent background, no floor/wall/frame, no external drop shadow, no letters, no UI, no watermark, no collage or multiple views.",
+      "image": "/guild/openings-20261020/shutter-leaf.webp",
+      "sha256": "0ac63294883d0d1cc0eec220fd5c2068425564b224043705c0713d730f37e502"
+    }
+  ]
+}

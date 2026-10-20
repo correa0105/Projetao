@@ -1,7 +1,8 @@
 export const worldDayMs = 24 * 60 * 60 * 1000;
+export const worldClockRate = 4;
 export type WorldClockSnapshot = { timeMs: number; revision: number; canEdit: boolean };
 export function worldClockTime(anchorMinutes: number, anchorAt: number, now: number) {
-  return (anchorMinutes * 60_000 + Math.max(0, now - anchorAt)) % worldDayMs;
+  return (anchorMinutes * 60_000 + Math.max(0, now - anchorAt) * worldClockRate) % worldDayMs;
 }
 export function worldClockLabel(timeMs: number) {
   const minutes = Math.floor((((timeMs % worldDayMs) + worldDayMs) % worldDayMs) / 60_000);

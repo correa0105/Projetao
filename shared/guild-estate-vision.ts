@@ -120,7 +120,9 @@ function ray(at: EstatePoint, angle: number, lines: EstateLine[], limit = 200) {
       ay = a.y - at.y,
       t = (ax * sy - ay * sx) / den,
       u = (ax * dy - ay * dx) / den;
-    if (t > 0.0001 && t < distance && u >= 0 && u <= 1) distance = t;
+    // Rays aimed at a shared wall/door endpoint can round just outside [0, 1].
+    // Missing both segments creates a long, thin reveal through a closed door.
+    if (t > 0.0001 && t < distance && u >= -1e-9 && u <= 1 + 1e-9) distance = t;
   }
   return { x: at.x + dx * distance, y: at.y + dy * distance, distance };
 }

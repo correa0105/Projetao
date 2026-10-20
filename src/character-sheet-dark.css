@@ -1,5 +1,17 @@
-/* The sheet retains its tactile paper, now with charcoal pigment and light ink. */
+/* Shared warm charcoal material for the complete character sheet. */
+:root dialog.character-creation-dialog {
+  background: #111314;
+}
+:root .character-creation-dialog .dialog-inner.sheet-panel {
+  background: linear-gradient(145deg, #17191a, #101213);
+}
+:root .character-creation-dialog .dialog-head :is(h2, button) {
+  color: var(--accent);
+}
 :root .character-sheet {
+  --sheet-surface: #363530 url('/character-parchment-v2.png') center / 760px auto;
+  --sheet-inset: #111310b3;
+  --sheet-edge: #9b80534d;
   --ink: #e5dac3;
   --secondary-ink: #d3c8b3;
   --muted: #afa18d;
@@ -7,16 +19,26 @@
   color: var(--ink);
   color-scheme: dark;
 }
-:root .character-sheet .sheet-panel,
-:root .character-sheet .sheet-vitals > div {
-  background:
-    linear-gradient(#171b1eef, #171b1eef),
-    url('/character-parchment-mirrored.svg') left top/1520px 1520px repeat;
-  background-color: #171b1e;
-  border-color: #a18b6055;
+:root
+  .character-sheet
+  :is(
+    .sheet-panel,
+    .sheet-vitals > div,
+    .sheet-rank-banner,
+    .sheet-advancement,
+    .advancement-reference
+  ) {
+  background: var(--sheet-surface);
+  background-blend-mode: multiply;
+  border: 1px solid var(--sheet-edge);
+  border-radius: 5px;
   box-shadow:
     inset 0 0 22px #0004,
     0 12px 30px #0006;
+}
+:root .character-sheet :is(.sheet-vitals > div, .sheet-rank-banner, .sheet-advancement) {
+  background: linear-gradient(145deg, #17191ac7, #101213b8);
+  background-blend-mode: normal;
 }
 :root .character-sheet .sheet-panel :is(h3, h4, summary, strong, b),
 :root .character-sheet .sheet-vitals strong {
@@ -33,7 +55,7 @@
   color: #a99e89;
 }
 :root .character-sheet .sheet-panel :is(input:not([type='checkbox']), select, textarea) {
-  background-color: #0d1216;
+  background-color: #141511;
   color: #eadfc9;
   border-color: #a88b565a;
   color-scheme: dark;
@@ -43,7 +65,7 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23d3c8b3' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
 }
 :root .character-sheet .sheet-panel option {
-  background: #14191e;
+  background: #191a16;
   color: #eadfc9;
 }
 :root .character-sheet .sheet-panel :is(input, textarea)::placeholder {
@@ -65,11 +87,11 @@
     .sheet-equipment-card,
     .sheet-attack-cards li
   ) {
-  background: #0c111580;
+  background: var(--sheet-inset);
   border-color: #a48a5340;
 }
 :root .character-sheet .sheet-tabs button {
-  background: #11171dde;
+  background: #1b1c17ed;
   color: #bfb4a0;
   border-color: #a58a5555;
 }
@@ -117,9 +139,74 @@
   margin-bottom: 13px;
   font-size: 14px;
 }
+:root
+  .character-sheet
+  :is(
+    .sheet-training-cards li,
+    .sheet-language-tags > span,
+    .sheet-feature-cards > li,
+    .sheet-resource-grid label,
+    .sheet-rest-choices
+  ) {
+  background: var(--sheet-inset);
+  border-color: var(--sheet-edge);
+}
+:root .character-sheet .sheet-values li.is-trained {
+  background: #29281d9e;
+  border-color: #a58b5966;
+}
+:root .character-sheet .sheet-values li.is-expert {
+  background: #3830229e;
+  border-color: #c3a16d99;
+  box-shadow: inset 3px 0 #b3935f;
+}
+:root .character-sheet .sheet-panel::before {
+  border-color: #b09a6c15;
+  background: none;
+}
+:root .character-sheet .sheet-panel .button {
+  background: #51452f;
+  border-color: #9f85565c;
+  color: #eddfc2;
+}
+:root .character-sheet .sheet-panel .button:hover:not(:disabled) {
+  background: #655437;
+}
 @media (forced-colors: active) {
   :root .character-sheet .sheet-panel select:not([multiple]) {
     appearance: auto;
     background-image: none;
+  }
+}
+
+:root .character-sheet .sheet-advancement {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 20px;
+}
+:root .character-sheet .sheet-advancement > .advancement-reference {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.sheet-advancement > .advancement-reference > summary {
+  width: fit-content;
+  padding: 6px 10px;
+  border: 1px solid #9b80534d;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.sheet-advancement > .advancement-reference[open] > summary {
+  margin-bottom: 16px;
+}
+@media (max-width: 560px) {
+  :root .character-sheet .sheet-advancement {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sheet-advancement > .button {
+    width: fit-content;
   }
 }

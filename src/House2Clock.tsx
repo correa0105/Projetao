@@ -37,6 +37,7 @@ export function House2Clock({
         </time>{' '}
         · {house2DayPhases[worldClockPhase(world.timeMs)].name}
       </strong>
+      <p className="muted small">Um dia no jogo a cada 6 horas reais · 4 ciclos por dia real.</p>
       {world.clock?.canEdit && !editing && (
         <button
           onClick={() => {
