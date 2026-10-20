@@ -419,7 +419,7 @@ export function rpLobbyRouter() {
         .object({
           character_id: uuid,
           x: z.number().finite().min(0.03).max(0.97),
-          y: z.number().finite().min(0.4).max(0.98),
+          y: z.number().finite().min(0.18).max(0.98),
           scale: z.number().finite().min(0.06).max(0.35),
           flip_x: z.boolean(),
           depth_layer: z.number().int().min(1).max(6).default(4),

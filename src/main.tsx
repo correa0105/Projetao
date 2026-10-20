@@ -1,4 +1,5 @@
 import './browser-crypto';
+import './recover-page-load';
 import {AppErrorBoundary} from './AppErrorBoundary';
 import React from 'react';
 import { createRoot } from 'react-dom/client';

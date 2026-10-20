@@ -205,19 +205,26 @@ body.rp-lobby-mounted:has(.rp-session) .app-shell > .main-shell > .page-header {
   position: fixed;
   z-index: 1200;
   top: 16px;
-  left: 18px;
+  left: 8px;
   right: 18px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, max-content) 1fr;
+  align-items: start;
+  gap: 8px 16px;
   pointer-events: none;
 }
 .rp-session-header > *,
 .rp-session-header button {
   pointer-events: auto;
 }
+.rp-session-header .rp-back-to-lobby {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+}
 .rp-session-header > div:not(.rp-tools) {
+  grid-column: 1;
+  grid-row: 1;
   background: #19150fe8;
   border: 1px solid #a98a4a55;
   padding: 9px 15px;
@@ -233,6 +240,9 @@ body.rp-lobby-mounted:has(.rp-session) .app-shell > .main-shell > .page-header {
   color: #c3b18c;
 }
 .rp-tools {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-self: end;
   display: flex;
   gap: 7px;
   flex-wrap: wrap;
@@ -338,11 +348,10 @@ body.rp-lobby-mounted:has(.rp-session) .app-shell > .main-shell > .page-header {
 }
 .rp-chat {
   position: fixed;
-  left: 50%;
+  left: 12px;
   bottom: 80px;
-  transform: translateX(-50%);
-  width: 64%;
-  max-width: 740px;
+  width: min(420px, calc(100vw - 24px));
+  max-width: 420px;
   min-width: 0;
   color: #d6b879;
   font:
@@ -467,6 +476,16 @@ body.rp-lobby-mounted:has(.rp-session) .app-shell > .main-shell > .page-header {
   -webkit-line-clamp: 4;
   overflow: hidden;
 }
+:root .rp-session .rp-speech-bubbles .rp-speech-bubble p {
+  color: #24180e;
+  font-weight: 500;
+  opacity: 1;
+  text-shadow: none;
+}
+:root .rp-session .rp-speech-bubbles .rp-speech-bubble strong {
+  color: #493015;
+  opacity: 1;
+}
 @media (max-width: 700px) {
   .rp-directory {
     padding: 16px 12px 90px;
@@ -492,6 +511,9 @@ body.rp-lobby-mounted:has(.rp-session) .app-shell > .main-shell > .page-header {
     font-size: 11px;
   }
   .rp-tools {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    justify-self: start;
     width: 100%;
     margin-left: 0;
   }
@@ -502,8 +524,8 @@ body.rp-lobby-mounted:has(.rp-session) .app-shell > .main-shell > .page-header {
     max-width: calc(100vw - 20px);
   }
   .rp-chat {
-    left: 50%;
-    width: 90%;
+    left: 10px;
+    width: calc(100vw - 20px);
     bottom: 75px;
     max-width: calc(100vw - 20px);
     font-size: 12px;

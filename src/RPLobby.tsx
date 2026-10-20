@@ -671,7 +671,7 @@ export function RPLobby({
         </div>
       </div>
       <header className="rp-session-header">
-        <button disabled={busy} onClick={() => void run(leave)}>
+        <button className="rp-back-to-lobby" disabled={busy} onClick={() => void run(leave)}>
           ← Lobby de RP
         </button>
         <div>
@@ -714,7 +714,7 @@ export function RPLobby({
             </button>
           )}
           <button aria-pressed={chat} onClick={() => setChat(!chat)}>
-            RP · {room?.presence.length || 0}
+            Chat de RP
           </button>
           {room?.is_owner && <button onClick={() => setClosing(true)}>Encerrar sala</button>}
         </div>
@@ -1035,7 +1035,7 @@ export function RPLobby({
           className={'rp-chat' + (chatActive ? ' chat-active' : '')}
           aria-label="Conversa de RP"
         >
-          <button className="rp-chat-close" onClick={() => setChat(false)} aria-label="Recolher RP">
+          <button className="rp-chat-close" onClick={() => setChat(false)} aria-label="Recolher chat de RP">
             −
           </button>
           <div

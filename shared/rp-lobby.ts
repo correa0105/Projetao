@@ -8,7 +8,7 @@ export const rpPlacementSchema = z
     id: z.string().uuid(),
     catalog: z.string().refine((id) => rpDecor.some((x) => x.id === id)),
     x: z.number().finite().min(0.03).max(0.97),
-    y: z.number().finite().min(0.4).max(0.98),
+    y: z.number().finite().min(0.18).max(0.98),
     scale: z.number().finite().min(0.04).max(0.5),
     facing: z.number().int().min(0).max(15),
     rotation: z.number().finite().min(-180).max(180),
