@@ -6,6 +6,8 @@ import { api, post } from './api';
 import { Modal, CharacterForm } from './components';
 import type { Character } from './types';
 import type { ArtJob, ArtState, CharacterCreation } from '../shared/character-art';
+import { ART_MONTHLY_LIMIT } from '../shared/character-art';
+import { ArtQuotaNotice } from './ArtQuotaNotice';
 import type { EquipmentSlot } from '../shared/equipment';
 import { ArtEquipmentChoices } from './ArtEquipmentChoices';
 import { CampMount } from './CharacterMount';
@@ -107,6 +109,7 @@ export function CharacterCamp({
   const [helmetMode, setHelmetMode] = useState<'open' | 'closed'>('closed');
   const [equipmentReady, setEquipmentReady] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [checkingQuota, setCheckingQuota] = useState(false);
   const key = useRef(crypto.randomUUID());
   const snapshot = useRef('');
   const previousJobs = useRef(new Map<string, string>());
@@ -166,6 +169,11 @@ export function CharacterCamp({
     };
   }, []);
   const pending = state.jobs.filter((j) => ['queued', 'running'].includes(j.status));
+  const editingQuota = editing ? state.quotas?.[editing.id] ?? {
+    used: editing.art_used,
+    limit: editing.art_unlimited ? null : ART_MONTHLY_LIMIT,
+  } : null;
+  const quotaFull = editingQuota?.limit !== null && editingQuota !== null && editingQuota.used >= editingQuota.limit;
   return (
     <section className="character-camp" aria-label="Acampamento dos personagens">
       <CampBackdrop />
@@ -245,20 +253,25 @@ export function CharacterCamp({
                 </a>
                 <button
                   className="button outline small-button"
-                  disabled={character.art_pending || availability !== true}
-                  onClick={() => {
-                    if (!character.art_unlimited && character.art_used >= 2) {
-                      setError(
-                        'Este personagem já usou as duas imagens deste mês. Tente novamente no próximo mês.',
-                      );
-                      return;
-                    }
+                  disabled={character.art_pending}
+                  onClick={async () => {
                     setEditing(character);
                     setEquipmentReady(false);
                     setEquipmentSlots([]);
                     setReference('');
                     setError('');
                     key.current = crypto.randomUUID();
+                    setCheckingQuota(true);
+                    try {
+                      const result = await api<ArtState>('/character-art');
+                      setState(result);
+                      setAvailability(result.available);
+                    } catch {
+                      setAvailability(null);
+                      setError('Não foi possível atualizar a cota. Feche e abra novamente para tentar.');
+                    } finally {
+                      setCheckingQuota(false);
+                    }
                   }}
                 >
                   <Sparkles size={15} />
@@ -415,6 +428,7 @@ export function CharacterCamp({
             className="stack"
             onSubmit={async (e) => {
               e.preventDefault();
+              if (checkingQuota || quotaFull || availability !== true || busy) return;
               setBusy(true);
               setError('');
               try {
@@ -436,6 +450,8 @@ export function CharacterCamp({
           >
             <p>A imagem atual permanece até a nova ficar pronta.</p>
             <p>A geração inclui a arte do personagem e um token visto de cima para o VTT.</p>
+            {checkingQuota ? <p role="status">Consultando a cota mensal…</p> :
+              editingQuota && <ArtQuotaNotice quota={editingQuota} subject="Personagem" initialFree />}
             <span
               className={`illustrator-status ${state.available ? 'is-online' : 'is-offline'}`}
               role="status"
@@ -460,7 +476,7 @@ export function CharacterCamp({
             {error && <FlashMessage>{error}</FlashMessage>}
             <button
               className="button primary"
-              disabled={busy || !reference || !equipmentReady || availability !== true}
+              disabled={busy || checkingQuota || quotaFull || !reference || !equipmentReady || availability !== true}
             >
               {busy ? 'Enviando…' : 'Gerar imagem'}
             </button>

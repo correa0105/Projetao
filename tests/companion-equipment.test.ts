@@ -376,14 +376,14 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
           idempotency_key: randomUUID(),
         })
       ).status,
-      409,
+      202,
     );
     const human = await request('/character-art', owner.cookie, {
       character_id: hero.id,
       reference: baseBytes.toString('base64'),
       idempotency_key: randomUUID(),
     });
-    assert.equal(human.status, 409);
+    assert.equal(human.status, 202);
     assert.equal(
       (await request(`/characters/${hero.id}`, owner.cookie, { name: hero.name }, 'DELETE')).status,
       409,
@@ -391,7 +391,7 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
     assert.equal((await request(`/companions/${hero.id}/art/jobs`, outsider.cookie)).status, 404);
     assert.equal(
       (await request(`/companions/${hero.id}/art/jobs`, owner.cookie)).data.jobs.length,
-      3,
+      4,
     );
   } finally {
     await new Promise<void>((resolve) => server.close(() => resolve()));

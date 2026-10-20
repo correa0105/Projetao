@@ -9,13 +9,18 @@ com a geração nativa do Codex. Não há editor de aparência.
 
 - Até **dois personagens por conta**, contando criações em fila. Contas antigas
   com mais personagens mantêm todos os registros; não podem criar outros.
-- Até **duas imagens por personagem por mês civil UTC**, renovadas no dia 1.
+- Até **4 gerações por personagem por mês civil UTC**, renovadas no dia 1 às 00h UTC.
+  Cada mascote e cada montaria têm **2 gerações próprias por mês**, separadas
+  do personagem e dos demais animais.
   Contas com liberação explícita em `character_art_allowances` não possuem esse
   limite mensal; a interface informa **Geração de imagens sem limite**. Essa
   liberação vale para todos os personagens da conta e é conferida no servidor.
   Não altera os limites do provedor de geração nem permite duas imagens
   simultâneas para o mesmo personagem.
-  A imagem inicial também conta. Uma solicitação aceita reserva a cota; falhas
+  A arte inicial da criação **não conta**, inclusive para pedidos antigos com
+  `creation` preenchido. Retrato e token juntos usam uma única geração.
+  Vestir mostra limite, usadas e restantes, inclusive quando a cota acaba.
+  Uma solicitação aceita reserva a cota; falhas
   liberam a tentativa. A data vem do PostgreSQL, nunca do navegador.
 - Cada envio de referência corresponde a uma geração. A referência é obrigatória
   (PNG/JPEG/WebP, até 8 MB e 40 megapixels). Não há upload direto de arte final.

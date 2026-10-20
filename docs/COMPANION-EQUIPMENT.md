@@ -60,8 +60,11 @@ saldo e imagens anteriores não são apagados. As fontes de 72 imagens de partes
 foram aposentadas antes da publicação e não integram o catálogo.
 
 O worker existente processa pedidos humanos e de companheiros em ordem de criação,
-com a sessão ChatGPT do Codex e sem API key. A cota existente de duas imagens por
-personagem/mês UTC é compartilhada pelos dois tipos de pedido. A liberação existente
+com a sessão ChatGPT do Codex e sem API key. Desde 20/10, cada mascote e cada
+montaria possuem **2 gerações por mês civil UTC**, por animal (`wardrobe_id`),
+separadas dos **4 usos do personagem**. A arte inicial da criação do personagem
+não consome cota. O inventário informa limite e gerações restantes junto a Vestir.
+A liberação existente
 `character_art_allowances.unlimited` continua valendo. Falhas e resultados de
 equipamento desatualizado não consomem cota. Nenhum histórico humano foi reescrito.
 Trocar o equipamento durante uma geração invalida sua aplicação; a última imagem
@@ -89,7 +92,7 @@ referências e imagens privadas em PostgreSQL. As rotas são:
 
 Verificação: `scripts/test-companion-equipment-isolated.mjs` cobre ownership,
 reservas concorrentes, legado, anatomia, base confiável, referências, idempotência,
-cota compartilhada, resultados desatualizados e privacidade. O smoke
+cotas independentes, resultados desatualizados e privacidade. O smoke
 `scripts/test-companion-equipment-browser-isolated.mjs` cobre o fluxo completo em
 1440/768/390/320 px, concluindo arte por fixture interna sem gastar o provedor.
 

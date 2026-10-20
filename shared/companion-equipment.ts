@@ -91,7 +91,7 @@ export type CompanionOutfit = {
   art_pending: boolean;
   art_used: number;
   art_limit: number | null;
-  quota_scope: 'character';
+  quota_scope: 'companion';
   legacy_equipment: string[];
   legacy_options: CompanionLegacyOption[];
   equipped: CompanionEquipmentItem[];

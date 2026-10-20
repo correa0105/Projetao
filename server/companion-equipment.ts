@@ -19,7 +19,8 @@ import {
   trustedEquipmentPath,
   rasterizeEquipmentArt,
 } from './equipment-art-reference.js';
-import { ART_MONTHLY_LIMIT } from '../shared/character-art.js';
+import { COMPANION_ART_MONTHLY_LIMIT } from '../shared/character-art.js';
+import { companionArtUsedSql } from './art-quota.js';
 import {
   COMPANION_SLOTS,
   BARDING_PARTS,
@@ -38,8 +39,6 @@ import type { CharacterArtPair } from './character-token-illustrator.js';
 type DB = Pick<PoolClient, 'query'>;
 const uuid = z.string().uuid(),
   kindSchema = z.enum(['mount', 'pet']);
-const monthStart = "date_trunc('month',now() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC'";
-export const companionQuotaSql = `(SELECT count(*) FROM companion_art_jobs WHERE character_id=$1 AND status NOT IN('failed','stale') AND created_at>=${monthStart})`;
 const equipSchema = z
   .object({
     kind: kindSchema,
@@ -203,16 +202,16 @@ async function localImage(path: string) {
     }
   }
 }
-async function quota(db: DB, userId: string, characterId: string) {
+async function quota(db: DB, userId: string, wardrobeId: string) {
   const {
     rows: [row],
   } = await db.query(
     `SELECT
     EXISTS(SELECT 1 FROM character_art_allowances WHERE user_id=$2 AND unlimited) AS unlimited,
-    (SELECT count(*) FROM character_art_jobs WHERE character_id=$1 AND status<>'failed' AND created_at>=${monthStart}) + ${companionQuotaSql} AS used`,
-    [characterId, userId],
+    ${companionArtUsedSql('$1')} AS used`,
+    [wardrobeId, userId],
   );
-  return { used: Number(row.used), limit: row.unlimited ? null : ART_MONTHLY_LIMIT };
+  return { used: Number(row.used), limit: row.unlimited ? null : COMPANION_ART_MONTHLY_LIMIT };
 }
 async function state(db: DB, userId: string, characterId: string) {
   const animals = [
@@ -229,9 +228,9 @@ async function state(db: DB, userId: string, characterId: string) {
       )
     ).rows,
   ];
-  const budget = await quota(db, userId, characterId),
-    companions = [];
+  const companions = [];
   for (const animal of animals) {
+    const budget = await quota(db, userId, animal.id);
     const wardrobe = await ensureWardrobe(db, animal),
       art = (
         await db.query('SELECT equipment_revision FROM companion_artworks WHERE wardrobe_id=$1', [
@@ -261,7 +260,7 @@ async function state(db: DB, userId: string, characterId: string) {
       ).rowCount,
       art_used: budget.used,
       art_limit: budget.limit,
-      quota_scope: 'character',
+      quota_scope: 'companion',
       legacy_equipment: animal.equipment || [],
       legacy_options: legacyOptions(animal),
       equipped: await equipment(db, animal),
@@ -345,11 +344,11 @@ export async function enqueueCompanionArt(userId: string, characterId: string, i
       ).rowCount
     )
       throw new AppError(409, 'Já há uma arte em preparação para este companheiro.');
-    const budget = await quota(db, userId, characterId);
+    const budget = await quota(db, userId, animal.id);
     if (budget.limit !== null && budget.used >= budget.limit)
       throw new AppError(
         409,
-        'Este personagem já usou as duas imagens deste mês, incluindo seus companheiros.',
+        `Este ${animal.kind === 'pet' ? 'mascote' : 'animal de montaria'} já usou as ${COMPANION_ART_MONTHLY_LIMIT} gerações deste mês. A cota renova no dia 1 (00h UTC).`,
       );
     const reference = await trustedCompanionBase(animal),
       equipped = await equipment(db, animal, true),

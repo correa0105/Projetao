@@ -1,0 +1,17 @@
+.art-quota-notice {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid #a581465e;
+  border-left: 3px solid #ba965a;
+  border-radius: 4px;
+  background: #201d16b3;
+  color: #e4d2ad;
+  line-height: 1.45;
+}
+.art-quota-notice small {
+  color: #c0b59f;
+}
+.art-quota-notice.is-exhausted {
+  border-left-color: #cb7768;
+}

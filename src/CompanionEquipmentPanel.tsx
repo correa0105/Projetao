@@ -20,6 +20,7 @@ import { INVENTORY_DRAG_TYPE, type InventoryDrag } from './inventory-drag';
 import './companion-equipment.css';
 import { ArmorSetPicker } from './ArmorSetPicker';
 import { armorSetOptions, inventoryPieceName } from './armor-set-options';
+import { ArtQuotaNotice } from './ArtQuotaNotice';
 
 export function CompanionEquipmentPanel({
   characterId,
@@ -216,7 +217,7 @@ export function CompanionEquipmentPanel({
           current && {
             ...current,
             companions: current.companions.map((c) =>
-              c.id === selected.id ? { ...c, art_pending: true } : c,
+              c.id === selected.id ? { ...c, art_pending: true, art_used: c.art_used + 1 } : c,
             ),
           },
       );
@@ -487,11 +488,10 @@ export function CompanionEquipmentPanel({
                     ? 'A aparência será refeita a partir da imagem base, substituindo os equipamentos anteriores.'
                     : 'A aparência está atualizada.'}
             </p>
-            <p className="equipment-note">
-              {selected.art_limit === null
-                ? 'Geração de imagens sem limite.'
-                : `${selected.art_used} de ${selected.art_limit} imagens do personagem usadas neste mês.`}
-            </p>
+            <ArtQuotaNotice
+              quota={{ used: selected.art_used, limit: selected.art_limit }}
+              subject={kind === 'pet' ? 'Mascote' : 'Montaria'}
+            />
             {latest?.status === 'failed' && (
               <FlashMessage>
                 {latest.error || 'A arte não foi concluída. Tente novamente.'}

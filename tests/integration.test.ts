@@ -389,6 +389,11 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
       409,
     );
     await finishTestArt(first.data.id);
+    for (let i = 0; i < 3; i++) {
+      const extra = await request('/api/character-art', alice, { ...order, idempotency_key: randomUUID() });
+      assert.equal(extra.status, 202);
+      await finishTestArt(extra.data.id);
+    }
     assert.equal(
       (await request('/api/character-art', alice, { ...order, idempotency_key: randomUUID() }))
         .status,
@@ -397,7 +402,7 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
     assert.equal(
       (await request('/api/characters', alice)).data.find((c: { id: string }) => c.id === arden.id)
         .art_used,
-      2,
+      4,
     );
     // Previous calendar months do not consume the current month; client timestamps have no effect.
     await pool.query(

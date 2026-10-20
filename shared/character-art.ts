@@ -4,7 +4,8 @@ import { choicesSchema, validateChoices } from './character-sheet.js';
 
 export const CHARACTER_LIMIT = 2;
 export const characterLimit = (_administrator: boolean) => CHARACTER_LIMIT;
-export const ART_MONTHLY_LIMIT = 2;
+export const ART_MONTHLY_LIMIT = 4;
+export const COMPANION_ART_MONTHLY_LIMIT = 2;
 export const ART_MAX_BYTES = 8 * 1024 * 1024;
 export const characterSchema = z
   .object({
@@ -46,4 +47,6 @@ export type ArtState = {
   jobs: ArtJob[];
   pending_new: number;
   character_limit?: number;
+  quotas?: Record<string, ArtQuota>;
 };
+export type ArtQuota = { used: number; limit: number | null };

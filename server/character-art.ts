@@ -18,6 +18,7 @@ import { characterSchema, ART_MAX_BYTES, ART_MONTHLY_LIMIT } from '../shared/cha
 import { hitDice, modifier } from '../shared/rules.js';
 import { isAdministrator } from './administrators.js';
 import { characterLimit } from '../shared/character-art.js';
+import { characterArtUsedSql } from './art-quota.js';
 
 const uuid = z.string().uuid();
 const requestSchema = z
@@ -40,7 +41,6 @@ const requestSchema = z
       ),
   })
   .refine((data) => Boolean(data.character_id) !== Boolean(data.creation));
-const monthStart = "date_trunc('month',now() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC'";
 
 export async function normalizeArtImage(bytes: Buffer, cutout = false) {
   if (!bytes.length || bytes.length > (cutout ? 24 * 1024 * 1024 : ART_MAX_BYTES))
@@ -129,12 +129,14 @@ export async function enqueueArt(userId: string, input: unknown) {
       );
       if (pending.rowCount)
         throw new AppError(409, 'Já há uma imagem em preparação para este personagem.');
-      const count = await client.query(
-        `SELECT ((SELECT count(*) FROM character_art_jobs WHERE character_id=$1 AND status <> 'failed' AND created_at >= ${monthStart}) + (SELECT count(*) FROM companion_art_jobs WHERE character_id=$1 AND status NOT IN('failed','stale') AND created_at >= ${monthStart}))::int AS used`,
-        [data.character_id],
-      );
+      const count = await client.query(`SELECT ${characterArtUsedSql('$1')} AS used`, [
+        data.character_id,
+      ]);
       if (!account?.art_unlimited && count.rows[0].used >= ART_MONTHLY_LIMIT)
-        throw new AppError(409, 'Este personagem já usou as duas imagens deste mês.');
+        throw new AppError(
+          409,
+          `Este personagem já usou as ${ART_MONTHLY_LIMIT} gerações deste mês. A cota renova no dia 1 (00h UTC).`,
+        );
     } else {
       const {
         rows: [counts],
@@ -296,7 +298,7 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
       );
     } else {
       await client.query(
-        "UPDATE character_art_jobs SET character_id=$2,approved_portrait=$3 WHERE id=$1",
+        'UPDATE character_art_jobs SET character_id=$2,approved_portrait=$3 WHERE id=$1',
         [jobId, characterId, image],
       );
     }
@@ -355,7 +357,8 @@ export function characterArtRouter() {
           "SELECT 1 FROM character_art_jobs WHERE character_id=$1 AND status IN('queued','running')",
           [job.character_id],
         );
-        if (pending.rowCount) throw new AppError(409, 'Já há uma imagem em preparação para este personagem.');
+        if (pending.rowCount)
+          throw new AppError(409, 'Já há uma imagem em preparação para este personagem.');
       }
       if (!job.recoverable && !replacement)
         throw new AppError(
@@ -430,6 +433,13 @@ export function characterArtRouter() {
     res.json({ ok: true });
   });
   router.get('/character-art', async (_req, res) => {
+    const { rows: quotas } = await pool.query(
+      `SELECT c.id,${characterArtUsedSql('c.id')} AS used,
+        CASE WHEN EXISTS(SELECT 1 FROM character_art_allowances a WHERE a.user_id=c.user_id AND a.unlimited)
+          THEN NULL ELSE ${ART_MONTHLY_LIMIT} END AS limit
+       FROM characters c WHERE c.user_id=$1 AND c.deleted_at IS NULL`,
+      [res.locals.user.id],
+    );
     const { rows: jobs } = await pool.query(
       `SELECT j.id,j.character_id,j.status,j.error,j.created_at,
       (j.status='failed' AND j.creation IS NOT NULL AND (j.reference IS NOT NULL OR j.approved_portrait IS NOT NULL)) AS can_retry,
@@ -442,6 +452,7 @@ export function characterArtRouter() {
       available: await artWorkerAvailable(),
       character_limit: characterLimit(await isAdministrator(res.locals.user.id)),
       jobs,
+      quotas: Object.fromEntries(quotas.map(({ id, used, limit }) => [id, { used, limit }])),
       pending_new: jobs.filter((j) => !j.character_id && ['queued', 'running'].includes(j.status))
         .length,
     });
@@ -475,6 +486,6 @@ export const characterListSql = `SELECT c.*,
   EXISTS(SELECT 1 FROM "user" u WHERE u.id=c.user_id AND u.administrador=1) AS gold_unlimited,
   EXISTS(SELECT 1 FROM character_art_allowances a WHERE a.user_id=c.user_id AND a.unlimited) AS art_unlimited,
   (SELECT s.choices->'options'->'size'->>0 FROM character_sheets s WHERE s.character_id=c.id) AS species_size,
-  ((SELECT count(*) FROM character_art_jobs j WHERE j.character_id=c.id AND j.status <> 'failed' AND j.created_at >= ${monthStart}) + (SELECT count(*) FROM companion_art_jobs j WHERE j.character_id=c.id AND j.status NOT IN('failed','stale') AND j.created_at >= ${monthStart}))::int AS art_used,
+  ${characterArtUsedSql('c.id')} AS art_used,
   EXISTS(SELECT 1 FROM character_art_jobs j WHERE j.character_id=c.id AND j.status IN ('queued','running')) AS art_pending
   FROM characters c WHERE c.user_id=$1 AND c.deleted_at IS NULL ORDER BY c.created_at`;

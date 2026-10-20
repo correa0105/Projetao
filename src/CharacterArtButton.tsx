@@ -5,7 +5,8 @@ import { api, post } from './api';
 import { Modal } from './components';
 import { ReferenceInput } from './CharacterCamp';
 import { ArtEquipmentChoices } from './ArtEquipmentChoices';
-import type { ArtState } from '../shared/character-art';
+import { ART_MONTHLY_LIMIT, type ArtState } from '../shared/character-art';
+import { ArtQuotaNotice } from './ArtQuotaNotice';
 import type { EquipmentSlot } from '../shared/equipment';
 import type { Character } from './types';
 
@@ -21,6 +22,7 @@ export function CharacterArtButton({
   const [availabilityError, setAvailabilityError] = useState('');
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [checkingQuota, setCheckingQuota] = useState(false);
   const [error, setError] = useState('');
   const [reference, setReference] = useState('');
   const [equipmentSlots, setEquipmentSlots] = useState<EquipmentSlot[]>([]);
@@ -83,18 +85,17 @@ export function CharacterArtButton({
       (job) => job.character_id === character.id && ['queued', 'running'].includes(job.status),
     );
   const latestJob = state.jobs.find((job) => job.character_id === character.id);
+  const quota = state.quotas?.[character.id] ?? {
+    used: character.art_used,
+    limit: character.art_unlimited ? null : ART_MONTHLY_LIMIT,
+  };
+  const quotaFull = quota.limit !== null && quota.used >= quota.limit;
   return (
     <div className="equipment-generate">
       <button
         className="button outline small-button"
-        disabled={pending || availability !== true}
-        onClick={() => {
-          if (!character.art_unlimited && character.art_used >= 2) {
-            setError(
-              'Este personagem já usou as duas imagens deste mês. Tente novamente no próximo mês.',
-            );
-            return;
-          }
+        disabled={pending}
+        onClick={async () => {
           key.current = crypto.randomUUID();
           setReference('');
           setEquipmentSlots([]);
@@ -102,6 +103,18 @@ export function CharacterArtButton({
           setHelmetMode('closed');
           setError('');
           setOpen(true);
+          setCheckingQuota(true);
+          try {
+            const result = await api<ArtState>('/character-art');
+            setState(result);
+            setAvailability(result.available);
+            setAvailabilityError('');
+          } catch {
+            setAvailability(null);
+            setError('Não foi possível atualizar a cota. Feche e abra novamente para tentar.');
+          } finally {
+            setCheckingQuota(false);
+          }
         }}
       >
         <Sparkles size={15} />
@@ -136,6 +149,7 @@ export function CharacterArtButton({
             className="stack"
             onSubmit={async (event) => {
               event.preventDefault();
+              if (checkingQuota || quotaFull || pending || availability !== true || busy) return;
               setBusy(true);
               setError('');
               try {
@@ -157,6 +171,11 @@ export function CharacterArtButton({
           >
             <p>A imagem atual permanece até a nova ficar pronta.</p>
             <p>A geração inclui a arte do personagem e um token visto de cima para o VTT.</p>
+            {checkingQuota ? (
+              <p role="status">Consultando a cota mensal…</p>
+            ) : (
+              <ArtQuotaNotice quota={quota} subject="Personagem" initialFree />
+            )}
             <span
               className={`illustrator-status ${state.available ? 'is-online' : 'is-offline'}`}
               role="status"
@@ -182,7 +201,15 @@ export function CharacterArtButton({
             {error && <FlashMessage>{error}</FlashMessage>}
             <button
               className="button primary"
-              disabled={busy || !reference || !equipmentReady || availability !== true}
+              disabled={
+                busy ||
+                checkingQuota ||
+                quotaFull ||
+                pending ||
+                !reference ||
+                !equipmentReady ||
+                availability !== true
+              }
             >
               {busy ? 'Vestindo...' : 'Vestir'}
             </button>
