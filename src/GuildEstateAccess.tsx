@@ -73,6 +73,7 @@ export function useGuildEstateAccess(
 }
 export function GuildEstateDoors({
   exterior = false,
+  layer = 'both',
   openings,
   member,
   busy,
@@ -81,6 +82,7 @@ export function GuildEstateDoors({
   viewer,
 }: {
   exterior?: boolean;
+  layer?: 'both' | 'leaves' | 'controls';
   viewer: EstatePoint | null;
   openings: EstateOpenings;
   member: boolean;
@@ -121,7 +123,7 @@ export function GuildEstateDoors({
               data-estate-opening={o.id}
               data-open={String(open)}
             >
-              {o.kind === 'door' ? (
+              {layer !== 'controls' && (o.kind === 'door' ? (
                 <g transform={o.id === 'entry' ? 'translate(0 0)' : 'translate(.04 0)'}>
                   <g
                     data-estate-leaf="door"
@@ -173,8 +175,8 @@ export function GuildEstateDoors({
                     </g>
                   </g>
                 </g>
-              )}
-              {member && controlVisible && (
+              ))}
+              {member && layer !== 'leaves' && controlVisible && (
                 <g
                   data-estate-interactive="opening"
                   role="button"

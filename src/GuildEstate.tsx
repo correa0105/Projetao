@@ -669,6 +669,7 @@ export function GuildEstate(p: Props) {
               </g>
             );
           })()}
+        {roof && <GuildEstateDoors exterior layer="leaves" openings={access.openings} member={p.member} busy={access.busy} toggle={id => void access.toggle(id)} pixel={camera.width / (stage.current?.clientWidth || 1000)} viewer={editing ? null : viewer} />}
         {roof && (
           <g role="button" tabIndex={0} data-estate-interactive="roof" aria-label="Ver interior da sede" className="guild-estate-roof"
             onClick={() => { if (!viewer) focus(); }}
@@ -677,7 +678,7 @@ export function GuildEstate(p: Props) {
             <GuildEstateRoof image={roofArt.image} viewer={viewer} />
           </g>
         )}
-        <GuildEstateDoors exterior={roof} openings={access.openings} member={p.member} busy={access.busy} toggle={id => void access.toggle(id)} pixel={camera.width / (stage.current?.clientWidth || 1000)} viewer={editing ? null : viewer} />
+        <GuildEstateDoors exterior={roof} layer={roof ? 'controls' : 'both'} openings={access.openings} member={p.member} busy={access.busy} toggle={id => void access.toggle(id)} pixel={camera.width / (stage.current?.clientWidth || 1000)} viewer={editing ? null : viewer} />
         {grid && (
           <rect x="7" y="5" width="46" height="40" fill="url(#ge-grid)" pointerEvents="none" />
         )}
