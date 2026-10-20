@@ -1,0 +1,38 @@
+{
+  "method": "built-in image_gen; alpha-preserving WebP",
+  "assets": [
+    {
+      "id": "slate",
+      "image": "/guild/roof-overhead-20261020/slate.webp",
+      "width": 1400,
+      "height": 1120,
+      "bytes": 616346,
+      "sha256": "a8b29ffc6c5117071a1da92461a9a502776b3c7f4c57102bcc01e6ac5cecfaba",
+      "source": "exec-e6de60b8-ddef-48e4-ba58-647b19d093bf.png",
+      "sourceSha256": "6fd823b4740069c17b2072cb1a73c3a499631e838fc440a35eee50f955ec2965",
+      "prompt": "Use case: stylized-concept. Asset type: orthographic overhead medieval fantasy battlemap roof sprite. Camera EXACTLY vertical top down, ninety degrees, flat plan view, parallel projection. One rectangular hipped roof with a long horizontal central ridge and four clean slopes; footprint ratio 20 wide by 16 high. Straight rectangular eaves, no porch protrusion. Roof only, no walls or visible facades, no doors, no windows, no chimney, no ground, no perspective, no isometric angle, no horizon. Hand painted realistic RPG textures with crisp individual shingles and restrained weathering, soft neutral diffuse light, no cast shadow. Isolated complete silhouette on genuine transparent background. Square canvas, centered roof occupying 90 percent width, clear transparent margins. Material: weathered charcoal blue gray slate shingles with stone ridge caps."
+    },
+    {
+      "id": "red",
+      "image": "/guild/roof-overhead-20261020/red.webp",
+      "width": 1400,
+      "height": 1120,
+      "bytes": 795452,
+      "sha256": "cd7888c7170b0b69a6ebc70689ac66d7ee67e6ede1c8f7beb0867cb8a7cf21e3",
+      "source": "exec-9a15ca54-6ae4-4111-8df7-def513826e1e.png",
+      "sourceSha256": "63633e6b5f1809809021bff4236c8f7bd060cba7f01ad64eaf015f7201528797",
+      "prompt": "Use case: stylized-concept. Asset type: orthographic overhead medieval fantasy battlemap roof sprite. Camera EXACTLY vertical top down, ninety degrees, flat plan view, parallel projection. One rectangular hipped roof with a long horizontal central ridge and four clean slopes; footprint ratio 20 wide by 16 high. Straight rectangular eaves, no porch protrusion. Roof only, no walls or visible facades, no doors, no windows, no chimney, no ground, no perspective, no isometric angle, no horizon. Hand painted realistic RPG textures with crisp individual shingles and restrained weathering, soft neutral diffuse light, no cast shadow. Isolated complete silhouette on genuine transparent background. Square canvas, centered roof occupying 90 percent width, clear transparent margins. Material: warm aged reddish terracotta barrel tiles with terracotta ridge caps."
+    },
+    {
+      "id": "wood",
+      "image": "/guild/roof-overhead-20261020/wood.webp",
+      "width": 1400,
+      "height": 1120,
+      "bytes": 757322,
+      "sha256": "eca315e40994e8ad703eb45103dd113f42e4cfbc350eef92a4967baca5ff6a2b",
+      "source": "exec-7ea4e81e-5a26-4a41-84b4-6c73690cbbd4.png",
+      "sourceSha256": "1c9ca4a20a01c7ff7a59568e2168916a77f4338e0ec6e27c10f484b422d41d89",
+      "prompt": "Use case: stylized-concept. Asset type: orthographic overhead medieval fantasy battlemap roof sprite. Camera EXACTLY vertical top down, ninety degrees, flat plan view, parallel projection. One rectangular hipped roof with a long horizontal central ridge and four clean slopes; footprint ratio 20 wide by 16 high. Straight rectangular eaves, no porch protrusion. Roof only, no walls or visible facades, no doors, no windows, no chimney, no ground, no perspective, no isometric angle, no horizon. Hand painted realistic RPG textures with crisp individual shingles and restrained weathering, soft neutral diffuse light, no cast shadow. Isolated complete silhouette on genuine transparent background. Square canvas, centered roof occupying 90 percent width, clear transparent margins. Material: aged brown split wooden shingles with dark timber ridge caps."
+    }
+  ]
+}

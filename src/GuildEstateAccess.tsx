@@ -72,6 +72,7 @@ export function useGuildEstateAccess(
   return { openings, busy, toggle };
 }
 export function GuildEstateDoors({
+  exterior = false,
   openings,
   member,
   busy,
@@ -79,6 +80,7 @@ export function GuildEstateDoors({
   pixel,
   viewer,
 }: {
+  exterior?: boolean;
   viewer: EstatePoint | null;
   openings: EstateOpenings;
   member: boolean;
@@ -89,6 +91,7 @@ export function GuildEstateDoors({
   return (
     <g data-estate-access-controls="doors-and-windows">
       {guildEstateOpenings
+        .filter((o) => !exterior || o.id === 'entry')
         .filter((o) => !viewer || guildEstateCanSeeOpening(viewer, o.id, openings))
         .map((o) => {
           const angle = (o.rotation * Math.PI) / 180,

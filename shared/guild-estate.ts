@@ -5,12 +5,12 @@ export const guildEstateFurnitureCatalog = house2FurnitureForSale.filter(
 );
 export const guildEstateFinishes = {
   roof: [
-    { id: 'slate', name: 'Ardósia', image: '/guild/estate-20261019/roof-slate-fit.webp' },
-    { id: 'red', name: 'Telhas de barro', image: '/guild/estate-20261019/roof-red-fit.webp' },
+    { id: 'slate', name: 'Ardósia', image: '/guild/roof-overhead-20261020/slate.webp' },
+    { id: 'red', name: 'Telhas de barro', image: '/guild/roof-overhead-20261020/red.webp' },
     {
       id: 'wood',
       name: 'Telhas de madeira',
-      image: '/guild/estate-20261019/roof-wood-fit.webp',
+      image: '/guild/roof-overhead-20261020/wood.webp',
     },
   ],
   floor: [
