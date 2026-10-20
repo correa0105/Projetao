@@ -1,0 +1,44 @@
+{
+  "method": "built-in image_gen; transparent alpha-preserving WebP",
+  "assets": [
+    {
+      "id": "crest-basilisk-relief",
+      "kind": "symbol",
+      "name": "Basilisco ancestral",
+      "image": "/guild/crest-repairs-20261020/basilisk-relief.webp",
+      "width": 768,
+      "height": 692,
+      "bytes": 168536,
+      "sha256": "d52747bd55c3cca70a112792553cdb3f74b839aad82a6a90f608caf00323c4c2",
+      "source": "exec-ad5ed2f9-7816-4c85-853b-be5e200888c4.png",
+      "sourceSha256": "66611b21eef8cb29f3e0ada2e2ccc8c1aa8dd1d9d15a961876840a5ec260501f",
+      "prompt": "Use case: stylized-concept. Asset type: small medieval fantasy guild crest emblem. Subject: A heraldic basilisk in clear side profile: recognizable reptile head with a short crown-like crest, stout scaled body, four distinct legs and one gently curved tail. No wings, no feathers, no tangled coils. Style: refined hand-painted sculpted antique ivory and aged gold metal relief, dark engraved contours, soft upper-left highlights. Composition: one centered isolated emblem, clean bold silhouette readable at 64 pixels, restrained broad details, square canvas with 12 percent empty margin. True transparent background. No banner, no frame, no shield, no letters, no pedestal, no additional ornaments. Avoid excessive filigree, tiny spikes, intertwined anatomy, photorealism."
+    },
+    {
+      "id": "crest-shark-relief",
+      "kind": "symbol",
+      "name": "Tubarão das marés",
+      "image": "/guild/crest-repairs-20261020/shark-relief.webp",
+      "width": 768,
+      "height": 493,
+      "bytes": 82716,
+      "sha256": "e3086f6968d162ad0daef805bf755644b39ba78affb380e007f6007ddd7feebd",
+      "source": "exec-e686d096-62a6-4ae3-848b-928098fcdbdf.png",
+      "sourceSha256": "6e526785c9f1a8bb31a90dde03d25d3844ceca45cd0c85f3d92a13f666bb77a7",
+      "prompt": "Use case: stylized-concept. Asset type: small medieval fantasy guild crest emblem. Subject: A heraldic shark in clear side profile swimming left: recognizable streamlined shark body, broad triangular dorsal fin, two pectoral fins and clean crescent tail. Closed mouth, no spikes, no helmet-like shapes, no curled decorative tail. Style: refined hand-painted sculpted antique ivory and aged gold metal relief, dark engraved contours, soft upper-left highlights. Composition: one centered isolated emblem, clean bold silhouette readable at 64 pixels, restrained broad details, square canvas with 12 percent empty margin. True transparent background. No banner, no frame, no shield, no letters, no pedestal, no additional ornaments. Avoid excessive filigree, tiny spikes, intertwined anatomy, photorealism."
+    },
+    {
+      "id": "crest-manticore-relief",
+      "kind": "symbol",
+      "name": "Mantícora guardiã",
+      "image": "/guild/crest-repairs-20261020/manticore-relief.webp",
+      "width": 768,
+      "height": 695,
+      "bytes": 194202,
+      "sha256": "094883dd49cdae946db64b20fec38b04cb304daf9f921cd9196caa78971d0b8a",
+      "source": "exec-1665ead5-4b85-4be2-b4d4-1c65bcc220d2.png",
+      "sourceSha256": "c330e9c53962019274cf3873a462edcba95077f4a6b1bf43b1a3ba6b5f230057",
+      "prompt": "Use case: stylized-concept. Asset type: small medieval fantasy guild crest emblem. Subject: A heraldic manticore in clear side profile: strong lion body, dignified lion head with restrained mane, two simple bat wings lifted behind shoulders, four clear paws and a single arched scorpion tail. Entire coherent animal, no floating head, no surrounding flourishes. Style: refined hand-painted sculpted antique ivory and aged gold metal relief, dark engraved contours, soft upper-left highlights. Composition: one centered isolated emblem, clean bold silhouette readable at 64 pixels, restrained broad details, square canvas with 12 percent empty margin. True transparent background. No banner, no frame, no shield, no letters, no pedestal, no additional ornaments. Avoid excessive filigree, tiny spikes, intertwined anatomy, photorealism."
+    }
+  ]
+}

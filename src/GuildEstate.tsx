@@ -92,6 +92,10 @@ export function GuildEstate(p: Props) {
     angle: number;
   } | null>(null);
   const [viewer, setViewer] = useState<EstatePoint | null>(null);
+  useEffect(() => {
+    if (!viewer || editing) return;
+    setRoof(!(viewer.x >= 21.12 && viewer.x <= 38.88 && viewer.y >= 17.2 && viewer.y <= 30.7));
+  }, [viewer?.x, viewer?.y, editing]);
   const access = useGuildEstateAccess(p.guildId, p.characterId, p.member, setNotice);
   const [menuOpen, setMenuOpen] = useState(false),
     [menuTab, setMenuTab] = useState<'view' | 'decor' | 'character' | 'guild'>('view');
@@ -668,11 +672,11 @@ export function GuildEstate(p: Props) {
               data-estate-interactive="roof"
               aria-label="Entrar na sede da guilda"
               className="guild-estate-roof"
-              onClick={() => focus()}
+              onClick={() => { if (!viewer) focus(); }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
-                  focus();
+                  if (!viewer) focus();
                 }
               }}
             >
@@ -690,21 +694,22 @@ export function GuildEstate(p: Props) {
               role="button"
               tabIndex={0}
               data-estate-interactive="entry-action"
-              aria-label="Entrar na sede"
+              aria-label={access.openings.entry ? 'Fechar porta de entrada' : 'Abrir porta de entrada'}
               className="guild-estate-entry-action"
               transform={`translate(30 34.2) scale(${camera.width / (stage.current?.clientWidth || 1000)})`}
-              onClick={() => focus()}
+              aria-disabled={!p.member || access.busy}
+              onClick={() => void access.toggle('entry')}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
-                  focus();
+                  void access.toggle('entry');
                 }
               }}
             >
               <rect x="-72" width="144" height="34" rx="5" />
               <path d="M-54 24V10H-43V24M-49 17H-34M-38 13L-34 17-38 21" />
               <text x="-24" y="17" dominantBaseline="middle">
-                Entrar na sede
+                {access.openings.entry ? 'Fechar porta' : 'Abrir porta'}
               </text>
             </g>
           </g>

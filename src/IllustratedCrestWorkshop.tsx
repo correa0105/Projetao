@@ -50,15 +50,6 @@ export function IllustratedCrestWorkshop({
           <span className="social-eyebrow">Estandartes e emblemas</span>
           <h3>Marca da companhia</h3>
         </div>
-        <button
-          type="button"
-          onClick={() => {
-            const { art, ...old } = value;
-            onChange(old);
-          }}
-        >
-          Estilo clássico
-        </button>
       </header>
       <div className="crest-workshop-body">
         <aside className="crest-preview">
