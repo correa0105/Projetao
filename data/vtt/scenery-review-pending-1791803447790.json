@@ -1,0 +1,137 @@
+[
+  {
+    "id": "scenery-0043",
+    "name": "Estante — peça de cabana",
+    "sha256": "d9519934dada49f7bd638d1aae58a9d60523790be2ab8d899b3aec931b76c9d9"
+  },
+  {
+    "id": "scenery-0044",
+    "name": "Estante — peça danificada",
+    "sha256": "ca4631f6f02491028dcb802e426a499ee58143cc462d065470e451fa65715fc6"
+  },
+  {
+    "id": "scenery-0045",
+    "name": "Estante — peça de estalagem",
+    "sha256": "4734cfd97ef71b6dca9cfe51de0a5a28febc831d679b3615ee54b46922056a3c"
+  },
+  {
+    "id": "scenery-0046",
+    "name": "Estante — peça de oficina",
+    "sha256": "4bf16756bb891e2c84c797d321699d94b215524495d8ee11ba46d25fe3649d11"
+  },
+  {
+    "id": "scenery-0116",
+    "name": "Fogueira — lenhador",
+    "sha256": "41f00639590eb9a9fb6b1b528b351337119878a42e426095e28b3e19fe9846b6"
+  },
+  {
+    "id": "scenery-0117",
+    "name": "Fogueira — nômade",
+    "sha256": "ea511d0486221aa31d78aef021421179505b0d8d35b89977da2d2673309d1b38"
+  },
+  {
+    "id": "scenery-0216",
+    "name": "Pinheiro — bosque queimado",
+    "sha256": "ee2103d048b6d29e9c37abb63c45f30abc7fea24bbad1b12c2d2b4008af0e858"
+  },
+  {
+    "id": "scenery-0217",
+    "name": "Pinheiro — bosque nevado",
+    "sha256": "60b36bee37b07cd64605dbb1ade622f1e044e8236445f396446ad69ef33670df"
+  },
+  {
+    "id": "scenery-0315",
+    "name": "Sarcófago — prisão",
+    "sha256": "d07d0bd4a6e0201d27f76322c3783301af9b960520e853219ef9576638f4f87b"
+  },
+  {
+    "id": "scenery-0316",
+    "name": "Sarcófago — mina",
+    "sha256": "f2acd69af56ff36f39627566012ac448005fe6625ff3d5c37664b924c18d668e"
+  },
+  {
+    "id": "scenery-0317",
+    "name": "Sarcófago — ruína arcana",
+    "sha256": "3c3a3374878f41ed254134cbf831fad65c2d4896222245fe30627e21acfa9535"
+  },
+  {
+    "id": "scenery-0415",
+    "name": "Cabana — pântano",
+    "sha256": "52077085c87506370785e6e8f33afef038d937f8498aa42dce342bd35b655fe1"
+  },
+  {
+    "id": "scenery-0416",
+    "name": "Cabana — costa",
+    "sha256": "badc18d2b95970997d6261f3d29ae39fe025b656baa4bfc70e19467099df0c5f"
+  },
+  {
+    "id": "scenery-0417",
+    "name": "Cabana — deserto",
+    "sha256": "d8ad4883df1208389e1afc1dbebb19e3c9d5ec04d894d05dd86ceb05488ac906"
+  },
+  {
+    "id": "scenery-0515",
+    "name": "Balcão — cervejaria",
+    "sha256": "ee98558d1c3bb796f8f7384cf0fcb6bfea23c7c031a433d68a78736e5cfd9131"
+  },
+  {
+    "id": "scenery-0516",
+    "name": "Balcão — salão anão",
+    "sha256": "61fce0fcd2d7bce30a27097a63e5207f1ca9d5353519c8e6ac99f4bde72e6bde"
+  },
+  {
+    "id": "scenery-0517",
+    "name": "Balcão — taberna feérica",
+    "sha256": "d02252f951b75ed498615a23ad1d3f2fb7ee381e22308c6f4b42236f064523b1"
+  },
+  {
+    "id": "scenery-0615",
+    "name": "Fonte — bairro nobre",
+    "sha256": "93d0d6c9112475f4e4a5ae58d6d80a4640dbcb782b76ad3f9593239d18b21281"
+  },
+  {
+    "id": "scenery-0616",
+    "name": "Fonte — bairro pobre",
+    "sha256": "da5a7a5ff8a91984b142416bd776795ae72bd18700392bfc6c867b027c2a3c71"
+  },
+  {
+    "id": "scenery-0617",
+    "name": "Fonte — oficina",
+    "sha256": "e2f4496092d2d7fc68676eab7c3f98aa55e1b596177143785cd34b3d08f3035d"
+  },
+  {
+    "id": "scenery-0715",
+    "name": "Poça — estreito",
+    "sha256": "14ea660bb81c16d2e642615a669c3f71fb8cdbd412677e3d25b72c57a3b4f1ca"
+  },
+  {
+    "id": "scenery-0716",
+    "name": "Poça — amplo",
+    "sha256": "29497d17a250265ba05dcbfba5cf724a622e5478163fea103b64408378bfadfd"
+  },
+  {
+    "id": "scenery-0717",
+    "name": "Poça — irregular",
+    "sha256": "7026ee835bcf09464166cfb4adf8710348abff6fb1048844ec20fa45f8dcc1c3"
+  },
+  {
+    "id": "scenery-0815",
+    "name": "Sacos — guarda",
+    "sha256": "725b70a586e9b6db588a34aebd22724b45efc7f99a445c525d29040083f8a5e1"
+  },
+  {
+    "id": "scenery-0816",
+    "name": "Sacos — ruína",
+    "sha256": "3817764caa1562ae7a9496371bf86d67cd990d0b1fbff82ab2053a2d76a10f09"
+  },
+  {
+    "id": "scenery-0915",
+    "name": "Altar sagrado — mar",
+    "sha256": "07b90f14c4f52ba3ff4a13acdae70d8aca0ee0eb484e09eff7b0f4252502939d"
+  },
+  {
+    "id": "scenery-0916",
+    "name": "Altar sagrado — terra",
+    "sha256": "d63138c045b8c67bcba45abd9766bca8194f17daafb673b583ac18e9ec71b9de"
+  }
+]

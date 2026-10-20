@@ -1,0 +1,66 @@
+[
+  {
+    "id": "oak-table",
+    "name": "Mesa de carvalho",
+    "category": "Casa",
+    "width": 2,
+    "height": 2,
+    "image": "/vtt/scenery-assets-20261012/oak-table.webp"
+  },
+  {
+    "id": "supply-crates",
+    "name": "Caixas de provisões",
+    "category": "Objetos",
+    "width": 2,
+    "height": 1.77,
+    "image": "/vtt/scenery-assets-20261012/supply-crates.webp"
+  },
+  {
+    "id": "stone-well",
+    "name": "Poço de pedra",
+    "category": "Construções",
+    "width": 2,
+    "height": 1.94,
+    "image": "/vtt/scenery-assets-20261012/stone-well.webp"
+  },
+  {
+    "id": "forest-oak",
+    "name": "Carvalho frondoso",
+    "category": "Floresta",
+    "width": 3.88,
+    "height": 4,
+    "image": "/vtt/scenery-assets-20261012/forest-oak.webp"
+  },
+  {
+    "id": "moss-rock",
+    "name": "Rocha musgosa",
+    "category": "Floresta",
+    "width": 2,
+    "height": 1.55,
+    "image": "/vtt/scenery-assets-20261012/moss-rock.webp"
+  },
+  {
+    "id": "dungeon-altar",
+    "name": "Altar antigo",
+    "category": "Masmorra",
+    "width": 3,
+    "height": 1.8,
+    "image": "/vtt/scenery-assets-20261012/dungeon-altar.webp"
+  },
+  {
+    "id": "camp-bedroll",
+    "name": "Saco de dormir",
+    "category": "Acampamento",
+    "width": 2,
+    "height": 0.87,
+    "image": "/vtt/scenery-assets-20261012/camp-bedroll.webp"
+  },
+  {
+    "id": "iron-chest",
+    "name": "Baú reforçado",
+    "category": "Objetos",
+    "width": 1,
+    "height": 0.58,
+    "image": "/vtt/scenery-assets-20261012/iron-chest.webp"
+  }
+]

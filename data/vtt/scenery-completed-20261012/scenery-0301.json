@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0301",
+  "name": "Altar — catacumba",
+  "category": "Masmorra",
+  "width": 1.97,
+  "height": 2,
+  "image": "/vtt/scenery-assets-20261012/scenery-0301.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: ancient ritual stone altar; rough crypt structure with cracked limestone and dusty surfaces. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-612d9a31-b98e-4527-b171-0fe6e190e7ba.png",
+  "sha256": "4cb72e99b4d1ea5cba5647f172d0cf0bf6686fa11d8cd2d9ab196f78e6514f7d",
+  "pixelWidth": 756,
+  "pixelHeight": 768
+}

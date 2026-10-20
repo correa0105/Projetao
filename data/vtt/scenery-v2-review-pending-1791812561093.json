@@ -1,0 +1,57 @@
+[
+  {
+    "id": "scenery-v2-0029",
+    "name": "Fogueira pequena circular",
+    "sha256": "a7df68375f0aa5447f7f82565ccbf096b163b67c8eb6d493ce0bea5a00883e24"
+  },
+  {
+    "id": "scenery-v2-0032",
+    "name": "Cadeira de acampamento",
+    "sha256": "4a422a3fd43a08690fb634e7789e52c662a1a64ac192c429b129704edb4a54f9"
+  },
+  {
+    "id": "scenery-v2-0057",
+    "name": "Arbusto verde compacto",
+    "sha256": "d43617ecb122251ac2b639da7f903ff8b1ba3ed1db7e66441360a4b4fee919c7"
+  },
+  {
+    "id": "scenery-v2-0082",
+    "name": "Escada de corda estendida",
+    "sha256": "74c88d1d1beb4088a300912ea6e650f5a6c55c6c2537cb7c8492b070810400fb"
+  },
+  {
+    "id": "scenery-v2-0107",
+    "name": "Canto de muro de pedra",
+    "sha256": "a566a39af24ba453ebf92b176daf78f6182058b55ca8cef8eb21eec7ddb8d61c"
+  },
+  {
+    "id": "scenery-v2-0132",
+    "name": "Caneca de cerveja",
+    "sha256": "8dc4d905338f568fb99070755c9b207095212b3ce6ce4f097e5a4bcb948fdee3"
+  },
+  {
+    "id": "scenery-v2-0157",
+    "name": "Caixote de mercado vazio",
+    "sha256": "a138b795307d427d9f61d8c17462e0f7b1b2d033a7b67fa74f36890428f8102c"
+  },
+  {
+    "id": "scenery-v2-0182",
+    "name": "Cristal de quartzo individual",
+    "sha256": "76e42d0c2f385c9e4d639be701693b612039778081d684ee9df6f341f8460c08"
+  },
+  {
+    "id": "scenery-v2-0207",
+    "name": "Tinteiro de vidro",
+    "sha256": "a1741cb47a7e3c7a5c78d652fcc93c758cfc586e46020aba086ddf6d3eae2696"
+  },
+  {
+    "id": "scenery-v2-0228",
+    "name": "Mesa de oferendas vazia",
+    "sha256": "31af16188c69b1095098c2785eaf405f74ab61d11514f3b866a2f20f2ea79661"
+  },
+  {
+    "id": "scenery-v2-0232",
+    "name": "Tigela de incenso",
+    "sha256": "302bdd20019b19ce419d05114a5ebb8caacbf04e19b6ac3fa1e83016125be890"
+  }
+]

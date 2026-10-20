@@ -1,0 +1,29 @@
+{
+  "id": "biome-forest-ground-10",
+  "name": "Raiz velha com brotos",
+  "biome": "forest",
+  "type": "ground",
+  "sizeMetres": 1.3,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: one gnarled detached root with three very small green shoots. Entire silhouette safely inside the canvas. The largest physical extent is 1.3 metres. This is one distinct asset, not a sheet or multiple variations.",
+  "status": "reviewed",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-forest-ground-10.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-10-thumb.webp",
+      "pixelWidth": 768,
+      "pixelHeight": 735,
+      "sha256": "2c99fd134df456da9a1a6b9db16e1d41e5048aac20a4fedfc8e29847b19bdc80",
+      "sourceBasename": "exec-9febdf97-9e50-497f-aee4-6034b4846607.png",
+      "generator": "built-in image_gen",
+      "width": 0.8667,
+      "height": 0.8294,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

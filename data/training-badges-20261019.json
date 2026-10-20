@@ -1,0 +1,835 @@
+{
+  "generator": "built-in image_gen",
+  "styleReference": "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-eb0c457a-5656-4046-baea-44a19e87e091.png",
+  "assets": [
+    {
+      "id": "alchemy",
+      "labels": [
+        "Ferramentas de alquimista"
+      ],
+      "url": "/sheet/training-badges-20261019/alchemy.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de alquimista. Objects: A round glass flask with rose-colored liquid, a copper distillation coil and two golden medicinal leaves.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-5487fdcd-b2e0-43fd-88e7-0325c8af6bf8.png",
+      "sourceSha256": "837c0c13072934a0b12dcfa73fd8ef824ba0c2c4f904601d09ff829df7710aa4",
+      "sha256": "21780f274ff41198f46883599d50499f15f7401d9f3e721451747f59f38255ea",
+      "bytes": 27788,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4766998291015625
+    },
+    {
+      "id": "brewing",
+      "labels": [
+        "Ferramentas de cervejeiro"
+      ],
+      "url": "/sheet/training-badges-20261019/brewing.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de cervejeiro. Objects: A small oak beer barrel with iron hoops, a wooden tankard and broad golden barley stalks.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-b413a3d9-e1fd-4544-8313-9c46fc7ea46c.png",
+      "sourceSha256": "1ddb99f1c9d39b9cea9555d1917f46af7bd1fd8d4c186347b7e7edd988a86498",
+      "sha256": "6988224fd947a530c9a5eec53f35f27759d661597b557042f2a016b75db9f580",
+      "bytes": 32990,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.40625
+    },
+    {
+      "id": "calligraphy",
+      "labels": [
+        "Suprimentos de caligrafia"
+      ],
+      "url": "/sheet/training-badges-20261019/calligraphy.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Suprimentos de caligrafia. Objects: A cream parchment scroll, elegant white feather quill and dark blue ink pot with copper lid.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-d4f853cc-f834-434d-9907-fa90e1d5c3b3.png",
+      "sourceSha256": "5df4acf7e7d6a53f8b071b849b1f9a748154e5e5ab0df3f9024f2b1857722219",
+      "sha256": "d0dc83fad7746a42b53c84d12ab64f0a880232434afb5eb7dcc0fa66df2c75cd",
+      "bytes": 30220,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.415313720703125
+    },
+    {
+      "id": "carpentry",
+      "labels": [
+        "Ferramentas de carpinteiro"
+      ],
+      "url": "/sheet/training-badges-20261019/carpentry.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de carpinteiro. Objects: A compact cross-cut wood saw with brass handle laid across a thick fresh-cut oak log and a carpenter square.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-aee44790-deb3-4e4d-9f7d-d33581a33ec8.png",
+      "sourceSha256": "17a215606de7101ecc673478838e33721a90ebb5f88be674ce6be29c0ce307ec",
+      "sha256": "8059c41835a66f1a40b55fe87362a646fb848b3eccddad210fb0f852d05d2ca1",
+      "bytes": 29138,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.418060302734375
+    },
+    {
+      "id": "cartography",
+      "labels": [
+        "Ferramentas de cartógrafo"
+      ],
+      "url": "/sheet/training-badges-20261019/cartography.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de cartógrafo. Objects: A rolled cream map with blank abstract coastline, a brass drawing compass and a little blue compass rose medallion.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-07b1346f-1e75-4a1c-a4e9-c5980e1c35c3.png",
+      "sourceSha256": "7a59f6eb184fb3a297d2e38d3a857580a5f580fe59a14065ff28a81ba5dedbb4",
+      "sha256": "e1cb6e69d1aa7bb8af6129ec38b71e11e76181a1ffea1f2fecac376325d56370",
+      "bytes": 30922,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4236907958984375
+    },
+    {
+      "id": "cobbling",
+      "labels": [
+        "Ferramentas de sapateiro"
+      ],
+      "url": "/sheet/training-badges-20261019/cobbling.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de sapateiro. Objects: One chestnut leather medieval ankle boot, an awl, curved leather needle and a small wooden shoe last.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-aa4430d7-e825-4739-903c-d0eb34bdcd0a.png",
+      "sourceSha256": "31badafcd38141365f74275ee33272d2d1aeb69ac27ced9b06d77d099014286e",
+      "sha256": "a515977f49a8e270396090cea5f5b1e3c453b4cee5f081ea1d389d27ce192a67",
+      "bytes": 28084,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4862823486328125
+    },
+    {
+      "id": "cooking",
+      "labels": [
+        "Ferramentas de cozinheiro"
+      ],
+      "url": "/sheet/training-badges-20261019/cooking.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de cozinheiro. Objects: A blackened bronze cooking pot, a broad wooden spoon and a chef knife with a sprig of thyme.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-f2ca0a34-d2db-4c88-bb7f-d92da127bb5d.png",
+      "sourceSha256": "b05c1254633510083f66f0336d5bb410ac7c35370d249a2d0701bc54d5775f6e",
+      "sha256": "8c91e03cd2f0428896dd71f3a8919108dfb64560fcfff6cb2ed3857936bdd4c7",
+      "bytes": 29174,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4391632080078125
+    },
+    {
+      "id": "glassblowing",
+      "labels": [
+        "Ferramentas de vidreiro"
+      ],
+      "url": "/sheet/training-badges-20261019/glassblowing.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de vidreiro. Objects: A turquoise blown-glass goblet, a long medieval blowpipe and a glowing amber glass bead.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-99c058f1-21a9-47ec-8e24-e9c4b4a0c289.png",
+      "sourceSha256": "e7277d00ff77f0b23b4857eda602e30f3eeccd79ee454ca11f16c9d151cb6198",
+      "sha256": "42ad0155b98800c8fc92e4d60155ffb713323c6a51ad8cf043e9e416fb1c5f2b",
+      "bytes": 32472,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.42144775390625
+    },
+    {
+      "id": "jewelry",
+      "labels": [
+        "Ferramentas de joalheiro"
+      ],
+      "url": "/sheet/training-badges-20261019/jewelry.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de joalheiro. Objects: A faceted ruby in a golden ring setting, jeweler pliers and a small brass magnifying lens.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-82b6ff61-86e7-49e8-b32a-9a2d22ae6e4d.png",
+      "sourceSha256": "b72f5f970e8b651c07b53f2ba2af1926bab063ca0689cb54d10451b19c7cff61",
+      "sha256": "18a3dbaf7390ebc6715dda5ad254b3a8f2f6ee8e5d19e1c989b50faa6f9231d9",
+      "bytes": 27952,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4654541015625
+    },
+    {
+      "id": "leatherwork",
+      "labels": [
+        "Ferramentas de couro"
+      ],
+      "url": "/sheet/training-badges-20261019/leatherwork.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de couro. Objects: A curled thick chestnut leather hide, steel leatherworking knife and brass rivets on a hand-stitched strap.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-3fcab62c-e673-4686-beb3-bd114922f5f1.png",
+      "sourceSha256": "b4b0ee7cd94542b3155a9beb9a608a70fec30e15bc20d2802e294125219bcd75",
+      "sha256": "9aee1282f4173200078b85ecc13ba16f965517665ed46f90bc27c76b06e84ca7",
+      "bytes": 28156,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4561767578125
+    },
+    {
+      "id": "masonry",
+      "labels": [
+        "Ferramentas de pedreiro"
+      ],
+      "url": "/sheet/training-badges-20261019/masonry.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original fantasy RPG MASON / STONEWORKING profession badge, matching the polished, clean hand-painted game emblem style of the supplied professions reference. Revise the composition completely: a SINGLE modest pale limestone ashlar block as the small central anchor, a slender steel masonry chisel angled up-left, and a NORMAL PROPORTION carpenter-like wooden mason mallet angled up-right. The mallet has a short cylindrical HARDWOOD head, not a giant cracked metal sledgehammer. The chisel and mallet cross behind the stone. Only a compact dark slate diamond backing with thin bronze edge; no large bulging leather shield, no pile of stone cubes, no oversized hammer. Clear elegant hierarchy, generous negative space, small cohesive badge silhouette, clean controlled painted shading, attractive lavender-gray steel, warm walnut and cream stone. Thick readable shapes with convincing subtle volume, no excessive scratches, no photoreal texture noise. Whole badge visible centered square with8% safe padding, TRUE TRANSPARENT background, no text, no letters, no watermarks. It should read as a crafted profession INSIGNIA like the example, not a random pile of large tools.",
+      "originalPrompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de pedreiro. Objects: Two pale roughly dressed masonry blocks, a thick steel chisel and mason mallet.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-0301f2df-fad7-42b8-91c9-e7cf714979e4.png",
+      "sourceSha256": "1704cb04850c5cd2f73e9d3c4e50e580eac2ef386b77352c782037e9190ca332",
+      "sha256": "03697783bbe1a93eddf73fcc0344ca0ec2caa17bd2dbad113c600c099f4e6b28",
+      "bytes": 22544,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.5561981201171875,
+      "replacesNativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-0301f2df-fad7-42b8-91c9-e7cf714979e4.png"
+    },
+    {
+      "id": "painting",
+      "labels": [
+        "Ferramentas de pintor"
+      ],
+      "url": "/sheet/training-badges-20261019/painting.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de pintor. Objects: A warm wooden painter palette with three thick pigment daubs, two crossed natural-bristle paintbrushes.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-9fc22718-d470-4c7a-968f-51fa68c0c68c.png",
+      "sourceSha256": "89ac760f2a25cd7f55585c0b040eb175e229203b9f58471f96f12952e021d110",
+      "sha256": "02a2df6dba92ab689a173fc0b9acb56d434d323dff8f3a9fa35f2a684ba5bdc6",
+      "bytes": 28244,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.49078369140625
+    },
+    {
+      "id": "pottery",
+      "labels": [
+        "Ferramentas de oleiro"
+      ],
+      "url": "/sheet/training-badges-20261019/pottery.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de oleiro. Objects: A round warm terracotta jug and glazed blue bowl resting over a small wooden pottery turntable.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-8464654c-09ad-44b3-931c-ff637b7fae98.png",
+      "sourceSha256": "78f787e14ad32d316566c69227b782e59c16f3059559b7ce96893f405cc7a17a",
+      "sha256": "cf4f40d9e16fd18b2a73fc6f70e666e1278b0f6ba464054ac522794a5d3a28f1",
+      "bytes": 27690,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.406951904296875
+    },
+    {
+      "id": "smithing",
+      "labels": [
+        "Ferramentas de ferreiro"
+      ],
+      "url": "/sheet/training-badges-20261019/smithing.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de ferreiro. Objects: A heavy worn steel anvil, a short wooden-handled smith hammer and curved metal tongs.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-20c00118-703b-4854-bd19-8c35ef170885.png",
+      "sourceSha256": "0a0ae8efa5ea9e7b0516edae5692bb9efeb4a0962be646401e536bf6bc47aa8d",
+      "sha256": "ede86d43b639fe856421e77b3d28c82f3a76fd6c207ff3b505bb66818d03bd52",
+      "bytes": 29958,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.422088623046875
+    },
+    {
+      "id": "tinkering",
+      "labels": [
+        "Ferramentas de funileiro"
+      ],
+      "url": "/sheet/training-badges-20261019/tinkering.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de funileiro. Objects: A large brass clockwork gear, smaller copper gears and a precision hand screwdriver beside a tiny spring.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-0774d361-6654-4ed3-9858-01e16c6ee30a.png",
+      "sourceSha256": "81adc46b8ef28d88756215052c066c1b779402bb884e09631170d2ac379c78a9",
+      "sha256": "419f46b7236427437aee0862977cf92e8933b5a43ac920cc49ee79b5655c4be4",
+      "bytes": 28236,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.460174560546875
+    },
+    {
+      "id": "weaving",
+      "labels": [
+        "Ferramentas de tecelão"
+      ],
+      "url": "/sheet/training-badges-20261019/weaving.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de tecelão. Objects: A warm red thread spool pierced diagonally by a large steel sewing needle, cream thread loops and a wooden weaving shuttle.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-aea20157-4853-4a5e-ae3e-9a3f5bdd8c14.png",
+      "sourceSha256": "1c45e889aeaedc1faeaabf521ffc8fb3cf25e1a4bc83da874d69fbf7631ab11d",
+      "sha256": "677193c9cf7816bc5aa49e5d7a100ab16f10322a1c2480197624b53e67712259",
+      "bytes": 30632,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.3974761962890625
+    },
+    {
+      "id": "woodcarving",
+      "labels": [
+        "Ferramentas de entalhador"
+      ],
+      "url": "/sheet/training-badges-20261019/woodcarving.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de entalhador. Objects: A partially carved wooden oak leaf, thick curled wood shaving and sharp steel carving gouge.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-572b3b3c-faf4-4e3f-ad0e-4382ee085ffc.png",
+      "sourceSha256": "bdb3f550de466b41b5eb1765558953de6c4e938cdec8faa23da43e904dfa215a",
+      "sha256": "3f65e21824ca882e02f5516b9b0e0cbb6e6c63effc60c9fcef891c6e36bc9321",
+      "bytes": 30878,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.399688720703125
+    },
+    {
+      "id": "thieves-tools",
+      "labels": [
+        "Ferramentas de ladrão"
+      ],
+      "url": "/sheet/training-badges-20261019/thieves-tools.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de ladrão. Objects: A heavy brass padlock, two different thin curved lockpicks and a small dark leather tool roll.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-415492cf-032d-4824-a18f-60ffecf1c897.png",
+      "sourceSha256": "7ed76eeb95d782fd7c1a9b5fef7af88433f07b5fb8defc6273f7f1e7d6f8b370",
+      "sha256": "3a703caed66ca0ec470434d0252e045dcb1a51eb066ae742847ea5ad0f32eb88",
+      "bytes": 28826,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.493377685546875
+    },
+    {
+      "id": "navigation",
+      "labels": [
+        "Ferramentas de navegador"
+      ],
+      "url": "/sheet/training-badges-20261019/navigation.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Ferramentas de navegador. Objects: A golden nautical sextant, dark blue compass face and a short coiled hemp rope.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-30a94130-748a-4e54-bf27-4e31167e1175.png",
+      "sourceSha256": "87ec65e2b98b428fe736efe0f79036ab870e83f80ba56e3db2440e157363e602",
+      "sha256": "8c5e8795bbd80db605a55824dad8da1c3a7bfc5e3f7d9d94537373601ab17474",
+      "bytes": 32248,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.3765869140625
+    },
+    {
+      "id": "disguise",
+      "labels": [
+        "Kit de disfarce"
+      ],
+      "url": "/sheet/training-badges-20261019/disguise.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Kit de disfarce. Objects: An ivory theatrical half-mask, burgundy fabric drape and a small bronze cosmetic brush.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-5a9e4019-c44b-4449-aec1-16376c9ab5ae.png",
+      "sourceSha256": "82103211604d769533c4e8a6322b76212109bba7689c432662e577b59a325ebf",
+      "sha256": "9b07155dfd8e649a95803c716a3dfc4314c3cd7f21d2b29d381499b198e769ef",
+      "bytes": 27480,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4309844970703125
+    },
+    {
+      "id": "forgery",
+      "labels": [
+        "Kit de falsificação"
+      ],
+      "url": "/sheet/training-badges-20261019/forgery.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Kit de falsificação. Objects: A partially rolled parchment, wax seal stamp and dark red wax seal beside a black quill.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-c3b10269-8840-49bb-81fa-d58393081443.png",
+      "sourceSha256": "079d765691ee0a52f2d90775e95f7774b2acd5feb550ee5e3d0519790c99dfdf",
+      "sha256": "565c5b8c6ec4bb29f585b241b08105ba7cc9648eca49222b92447a1026339970",
+      "bytes": 28668,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.437255859375
+    },
+    {
+      "id": "herbalism",
+      "labels": [
+        "Kit de herbalismo"
+      ],
+      "url": "/sheet/training-badges-20261019/herbalism.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Kit de herbalismo. Objects: A thick gray stone mortar and wooden pestle filled with broad sage leaves and small crimson berries.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-e107ae59-46a3-478a-b7da-d77f0183b5e1.png",
+      "sourceSha256": "14995a9288c6ea46bacbbe9086b043681e3893e5c4ecdcc24737eeb18c15acbb",
+      "sha256": "19814e8957eab46ac0e107d5240f459c7d0ca3e3304efd6c5470d94fc9f0d85d",
+      "bytes": 30032,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.40753173828125
+    },
+    {
+      "id": "poison",
+      "labels": [
+        "Kit de venenos"
+      ],
+      "url": "/sheet/training-badges-20261019/poison.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Kit de venenos. Objects: A small stoppered smoky-green glass vial, a tiny horned skull-shaped bottle charm and two dark violet leaves.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-e6100c3d-5488-413c-b7a7-7a7708e49e43.png",
+      "sourceSha256": "6b96b817c3f25b127782667f4aad14f665c8895a360c17bbb7c84814d5d8e197",
+      "sha256": "85417cc8f4ceb36719f988e024fca18dafee1b538ad7cf823c77ce4afc0ad404",
+      "bytes": 29326,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4504547119140625
+    },
+    {
+      "id": "dice",
+      "labels": [
+        "Dados de jogo"
+      ],
+      "url": "/sheet/training-badges-20261019/dice.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Dados de jogo. Objects: Three large antique ivory dice with carved dark pips on a burgundy leather dice cup.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-5224ab02-3590-41d7-82e4-bca3c8b7a0df.png",
+      "sourceSha256": "1c757fc801c4d1fb6b428ab32ee77e379c279e37158e7a2363d6fd491babbbae",
+      "sha256": "e642ea549cdcdc4ee7200b93350295b645ab5c9d48f833afc1f5372d9884a261",
+      "bytes": 25534,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4654083251953125
+    },
+    {
+      "id": "cards",
+      "labels": [
+        "Baralho",
+        "Três dragões"
+      ],
+      "url": "/sheet/training-badges-20261019/cards.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Baralho|Três dragões. Objects: A fan of three worn medieval playing cards with a small red dragon emblem and a dark leather card pouch.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-613d65e2-10aa-4109-9edd-62a1e4fcab13.png",
+      "sourceSha256": "82c0abe17f16ae71276c59661071d1bf06b884beefae73ca831ac3c984da3659",
+      "sha256": "9da6a86951c093a00965de4a03a82bf61a67fe142f347da108a6da48819019fc",
+      "bytes": 29146,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4339141845703125
+    },
+    {
+      "id": "chess",
+      "labels": [
+        "Xadrez de dragão"
+      ],
+      "url": "/sheet/training-badges-20261019/chess.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Xadrez de dragão. Objects: A carved ivory dragon chess knight, ebony rook and a small square corner of a wood-and-ivory chessboard.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-a9ae4851-d21b-4e82-81e8-61908db5b9b1.png",
+      "sourceSha256": "15a831da243400e5ed0cd057489767be22b9380fb6e5280b3557088a178c9b06",
+      "sha256": "749d2565e208a39b1f41e162d60ebfd785e239b5a372051bf9010759e14e48bc",
+      "bytes": 31936,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.372589111328125
+    },
+    {
+      "id": "lute",
+      "labels": [
+        "Alaúde"
+      ],
+      "url": "/sheet/training-badges-20261019/lute.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Alaúde. Objects: A warm walnut medieval lute with a pear-shaped body and a short burgundy silk ribbon.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-e1472a76-63fe-4b65-a474-cd14ed78a3f4.png",
+      "sourceSha256": "c02fe11c6da8f0d36a7c8851915df90b598f31ea8b3af4126d07a1960d467e0a",
+      "sha256": "e5a2b042d71bbf109a8d355b65cb143a8e12c135a82626bcdf6434e154fe9866",
+      "bytes": 28582,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.442291259765625
+    },
+    {
+      "id": "flute",
+      "labels": [
+        "Flauta"
+      ],
+      "url": "/sheet/training-badges-20261019/flute.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Flauta. Objects: A carved wooden transverse flute with finger holes crossing a curled cream music parchment with no legible writing.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-17216c68-7221-4147-8d77-57808113e353.png",
+      "sourceSha256": "9f164556acafd3718ee031758b8abdc4c5337778470ffb7da585bde79913e9ff",
+      "sha256": "9827bf73864f4f0dc2b02d1e2666e2984a464f610542f87ee89f770528bcc96b",
+      "bytes": 28536,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4202423095703125
+    },
+    {
+      "id": "drum",
+      "labels": [
+        "Tambor"
+      ],
+      "url": "/sheet/training-badges-20261019/drum.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Tambor. Objects: A medieval rope-tension wooden drum with pale leather head and two crossed wooden drumsticks.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-5bc5da14-f75a-4336-a862-9b8ead7a0072.png",
+      "sourceSha256": "cd2d13715e1cf7f3d932974cbfd1deb950ca7aaf923bb59862dc003072abe53a",
+      "sha256": "352eeec7d4adefe7bf953ae094a73677eb0d1a6fdce9f7f3584a03e44671e7b2",
+      "bytes": 31746,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.3858489990234375
+    },
+    {
+      "id": "lyre",
+      "labels": [
+        "Lira"
+      ],
+      "url": "/sheet/training-badges-20261019/lyre.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Lira. Objects: An elegant bronze and walnut lyre with thick golden strings and blue cloth ties.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-e614ead1-0d74-4493-8a3e-cb29f833cf29.png",
+      "sourceSha256": "6edc554309e3ea084e5caca1e0093764285b214269f98977ee6270857a740187",
+      "sha256": "152fefab18d49d9ea6fbcebb81fc9c314601a87be0c82eb4d6fa5fde85de2e3a",
+      "bytes": 29884,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4345855712890625
+    },
+    {
+      "id": "bagpipes",
+      "labels": [
+        "Gaita de foles"
+      ],
+      "url": "/sheet/training-badges-20261019/bagpipes.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Gaita de foles. Objects: Medieval burgundy leather bagpipes with three carved dark wooden drones, cream bone fittings and gold cord.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-1c6dfd3a-3e9e-419b-a9c6-78fe76f891cc.png",
+      "sourceSha256": "de544db691afbe2b9d9e91750b1db432185bd05001fabb7f32e032939d19577a",
+      "sha256": "b841b715d637fde1a297a705ced86efa04a2eec92e888d162c6f06c7ae885fd8",
+      "bytes": 30598,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4723358154296875
+    },
+    {
+      "id": "horn",
+      "labels": [
+        "Trombeta"
+      ],
+      "url": "/sheet/training-badges-20261019/horn.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Trombeta. Objects: A polished brass medieval straight trumpet with broad flared bell and a wine-red cloth pennant.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-d6a4b39b-12e7-4fbf-a9d6-547c7b4958c3.png",
+      "sourceSha256": "75a327bc0f69f99eb9327b4732032bd76e57bf4efdb9d7ad5937e5f194e526fe",
+      "sha256": "aca9109a81e2b51775e71ccf25234cd3eb0cce1114414c71842a1103e924454f",
+      "bytes": 23994,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.5529937744140625
+    },
+    {
+      "id": "violin",
+      "labels": [
+        "Violino"
+      ],
+      "url": "/sheet/training-badges-20261019/violin.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Violino. Objects: A warm amber wood violin with ebony fingerboard and a crossed bow.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-a25e0f01-ee99-4fb1-baf4-0de1b6e072b8.png",
+      "sourceSha256": "d27ab52d559ffcc3988ebb78cc438b5e90c9f1a82181e6aec552d7175839f150",
+      "sha256": "494619b6443a2e774f9b7fd8258eec40c646be0226de99c88f996f9bad5fe4e7",
+      "bytes": 32120,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.40936279296875
+    },
+    {
+      "id": "dulcimer",
+      "labels": [
+        "Dulcimer"
+      ],
+      "url": "/sheet/training-badges-20261019/dulcimer.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Dulcimer. Objects: A small trapezoid hammered dulcimer with walnut frame, golden strings and two wooden beaters.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-67257798-824c-4067-b2f1-69bfe60d2fb7.png",
+      "sourceSha256": "0ec21a9f5a3fb2cd653129829b25256464c6084fe1ab1d0ceb08c5174c0f0d62",
+      "sha256": "07b3afa6d5ceba721d6772419d73e5ba1173d168e5797244b17ef69b265663c1",
+      "bytes": 30754,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.408966064453125
+    },
+    {
+      "id": "panflute",
+      "labels": [
+        "Flauta de pã"
+      ],
+      "url": "/sheet/training-badges-20261019/panflute.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Flauta de pã. Objects: A graduated row of golden bamboo panpipes bound with dark red leather and bronze bands.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-a40fcce3-4626-4bd2-acd3-7df82af1338a.png",
+      "sourceSha256": "14ab3ab57c20e4507d81eb2eada7bf970ef5f50db2862751d7c679d1b2266913",
+      "sha256": "8a00f2e64963093d6b2d58557245e33050911044de02adcd1cbd0df1fdfa1741",
+      "bytes": 28784,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.42950439453125
+    },
+    {
+      "id": "shawm",
+      "labels": [
+        "Charamela"
+      ],
+      "url": "/sheet/training-badges-20261019/shawm.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Charamela. Objects: A medieval carved wooden shawm reed instrument with broad flared bell and warm bronze fittings.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-a37631d7-f46e-4d6f-8ffb-200892f85803.png",
+      "sourceSha256": "7f202f9728cdaac446c8178c6e38f225340daa2181c5ccab869d7c81968c9270",
+      "sha256": "0a4356a6a8e7678d8576daad1238549954cf696861eb43ac3e788f1c1e227f0f",
+      "bytes": 25668,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.5188446044921875
+    },
+    {
+      "id": "healing",
+      "labels": [
+        "Kit de curandeiro"
+      ],
+      "url": "/sheet/training-badges-20261019/healing.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Kit de curandeiro. Objects: A rolled linen bandage, small bronze scissors and a clay salve jar with a red cloth cover.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-61791728-a863-426c-923b-5ec42138c6c2.png",
+      "sourceSha256": "76a628dde702f44075c17d1b58f89b54b1cd49a1f881cc38ce51299948af3dee",
+      "sha256": "6c95aca9334ac3761adafbb85a1c857115eab14d192fd03300a39e9090c106dc",
+      "bytes": 29472,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.457550048828125
+    },
+    {
+      "id": "acrobatics",
+      "labels": [
+        "Acrobacia"
+      ],
+      "url": "/sheet/training-badges-20261019/acrobatics.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Acrobacia. Objects: A supple acrobat leather boot balanced on a loop of rope, with a long blue balancing ribbon.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-aac4258a-f0aa-4a5e-94c2-8f57e32bbc0b.png",
+      "sourceSha256": "862d61c73d1c987ecd22b3b52f21ccdea875bbfcf054b48869ab408a55e8e9a2",
+      "sha256": "3be331d712bb8fdba548a6d07e93a8ed312215e51c6878b75eebde740face218",
+      "bytes": 29774,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.507568359375
+    },
+    {
+      "id": "animal-handling",
+      "labels": [
+        "Adestrar Animais"
+      ],
+      "url": "/sheet/training-badges-20261019/animal-handling.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Adestrar Animais. Objects: A calm carved chestnut horse head, a curved leather bridle strap and a small brass hand bell.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-5b535ddb-00a7-4ed7-b510-87bc4ddf6437.png",
+      "sourceSha256": "e4053cd21d40acbd12b0c040616e99fdc77c69736caffe02fb6eaaa3e4059c38",
+      "sha256": "498f41e7f8a0cb4840a901e5353794a71daaad1b2a71b16d08eafae93efc7c84",
+      "bytes": 26052,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.47308349609375
+    },
+    {
+      "id": "arcana",
+      "labels": [
+        "Arcanismo"
+      ],
+      "url": "/sheet/training-badges-20261019/arcana.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Arcanismo. Objects: An open little dark blue grimoire, a broad purple crystal and a silver crescent arc.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-ea999908-fdd5-44f2-97da-25962b331ede.png",
+      "sourceSha256": "6d34f0c3eb0ef46177644f40c028c92cf35e6c958dad6843381bb0c55e284cef",
+      "sha256": "97e16299458353bcf9625f47cf9e0b094a092bfcaca6d1b7b0ad005683b4159f",
+      "bytes": 27828,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.478485107421875
+    },
+    {
+      "id": "athletics",
+      "labels": [
+        "Atletismo"
+      ],
+      "url": "/sheet/training-badges-20261019/athletics.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Atletismo. Objects: A strong clenched bronze fist with leather wrist wrap, a climbing rope loop and a broad iron hook.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-cddad49a-7c47-4755-b3e1-bf6e0a7e595d.png",
+      "sourceSha256": "8972f66acece5a7ba98fa8a50bd7fc5f6c767c62a021fad739fd1bad1dd3f9ee",
+      "sha256": "54aeb6c2454e8e9f94e89ffc2d25acba42a77f3db56a7090f88b6884f6f1e113",
+      "bytes": 32774,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.40203857421875
+    },
+    {
+      "id": "performance",
+      "labels": [
+        "Atuação"
+      ],
+      "url": "/sheet/training-badges-20261019/performance.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Atuação. Objects: Two small expressive ivory theatrical masks, a burgundy feather and a gold lyre string arc.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-86b8ff37-ebb3-4954-a33f-976c18d85b04.png",
+      "sourceSha256": "36e30a364c8d87eeac31c1860eb15ff6f5956fa76b020424d65d9c8d8cab461a",
+      "sha256": "46ba56719dcb488071b3e07a166b530754d867e8bb0c8b49751d0ca1fecdf9bf",
+      "bytes": 26560,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.483917236328125
+    },
+    {
+      "id": "deception",
+      "labels": [
+        "Enganação"
+      ],
+      "url": "/sheet/training-badges-20261019/deception.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Enganação. Objects: An ivory smiling theatrical mask half covered by a dark burgundy cloak and a silver coin.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-44ad966d-a291-4cf2-9d07-57a52bff48f7.png",
+      "sourceSha256": "083f0af123ce377b93b4a59185aa356fba6b027c246168b3b1a54719c55b0e12",
+      "sha256": "e73ee318be92fb8b474308ef60d883b04285c47284e2db666e042dd40bc81ca8",
+      "bytes": 26690,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4367828369140625
+    },
+    {
+      "id": "stealth",
+      "labels": [
+        "Furtividade"
+      ],
+      "url": "/sheet/training-badges-20261019/stealth.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Furtividade. Objects: A dark hood with a shadowed face opening, a small silent leather boot and a silver dagger.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-598d6a55-c32f-46aa-8f3e-1125e6d9fd45.png",
+      "sourceSha256": "26edb54325e03d82582873aa1a57db0c931f2b70ad95f40d4e51af31a76d7262",
+      "sha256": "668eae63247d6a32aa2916fb2a5a172f60b6135b6885e19bce7d246a2d591801",
+      "bytes": 26266,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.45556640625
+    },
+    {
+      "id": "history",
+      "labels": [
+        "História"
+      ],
+      "url": "/sheet/training-badges-20261019/history.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: História. Objects: Two worn leather-bound books, a cream scroll and an antique bronze hourglass.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-18a853b0-e3c6-4eb0-b9a6-38fe335d0ba7.png",
+      "sourceSha256": "c7ef0630bbfd0c44a7e510536431d5c5c55dadc30407f14678879479cf2198ac",
+      "sha256": "1ef584b56d189a9909e88959a7adefa50a100247ced1db5871f4174f07eb9ee5",
+      "bytes": 30440,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4125213623046875
+    },
+    {
+      "id": "intimidation",
+      "labels": [
+        "Intimidação"
+      ],
+      "url": "/sheet/training-badges-20261019/intimidation.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Intimidação. Objects: A snarling bronze wolf-head crest over a dark iron gauntlet with red leather wraps.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-e8d77805-07ec-423f-a647-0d6d1942e6a3.png",
+      "sourceSha256": "b62f56de34e5f38f35a005d8c249862a61c4191d6729586417483c490ce34e8e",
+      "sha256": "2702a1e847a1d3402144e65315108505c1699b5f37adad5a054845aa03bc3fed",
+      "bytes": 28964,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.481719970703125
+    },
+    {
+      "id": "insight",
+      "labels": [
+        "Intuição"
+      ],
+      "url": "/sheet/training-badges-20261019/insight.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Intuição. Objects: A faceted amber eye set inside a thick silver frame, with two small balanced bronze scale pans.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-072bb467-eef4-48db-bcae-fd2c45422ddd.png",
+      "sourceSha256": "ce9696186e3281038939b954bd0eee73531029033aff4d6e50210b6931011252",
+      "sha256": "c54f6ebe2ffeaa4220464d645a70d6adcabba0bf2a9739e8c98f662401efd1bb",
+      "bytes": 26064,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4981231689453125
+    },
+    {
+      "id": "investigation",
+      "labels": [
+        "Investigação"
+      ],
+      "url": "/sheet/training-badges-20261019/investigation.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Investigação. Objects: A large brass magnifying lens held over a folded cream parchment and an old iron key.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-bbe89e27-218c-447f-9ee9-e917f23cdd45.png",
+      "sourceSha256": "104ac3637cccc2cdebff921418002789386b7d90752104736741e4ad461dc486",
+      "sha256": "398c7d9f3981c0111cc8d4cf8ea5c72d51a43ed21041b3a7b4f57f4b65aaabec",
+      "bytes": 29702,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4225616455078125
+    },
+    {
+      "id": "medicine",
+      "labels": [
+        "Medicina"
+      ],
+      "url": "/sheet/training-badges-20261019/medicine.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Medicina. Objects: A copper medical bowl, clean linen bandage and a small bronze healing staff charm with one curled serpent.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-17df9d88-bb2f-4893-ac87-5db2806c3e9e.png",
+      "sourceSha256": "9b218e487df34faf13782ab9731b013ffa2f04e99a157bcd13ded947384676e5",
+      "sha256": "27e9ca216c6f4735cef8df07dcc3094569c06ea521f190c41e664f279e718def",
+      "bytes": 30970,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4168243408203125
+    },
+    {
+      "id": "nature",
+      "labels": [
+        "Natureza"
+      ],
+      "url": "/sheet/training-badges-20261019/nature.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Natureza. Objects: A broad oak leaf, an ivory antler fork and a small amber mushroom over a dark oak medallion.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-2eb1c863-4927-4f06-8545-80b929e5c2a4.png",
+      "sourceSha256": "f7987a1695a4860bbdd8ca50c957743162858c27712f18bb3301f03d1e0122b5",
+      "sha256": "78ce7c65cf43e808a63b821da1c49f9bff8f65232ced0c20c57b43f4fb049d02",
+      "bytes": 29068,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.462890625
+    },
+    {
+      "id": "perception",
+      "labels": [
+        "Percepção"
+      ],
+      "url": "/sheet/training-badges-20261019/perception.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Percepção. Objects: A large sculpted golden hawk eye, spread dark feathers and a silver telescope lens.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-140d6c94-81fb-4963-9611-0073493b0eee.png",
+      "sourceSha256": "d7b946e3e91d393760c342d3bf7eb8b80ea0a280d7d0b8c8ae5c9a0b15d7d54e",
+      "sha256": "c16f343a9e1e66576c4ecfcda88c71cb89c79398df9807e4686c790f01e92f12",
+      "bytes": 31028,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4499359130859375
+    },
+    {
+      "id": "persuasion",
+      "labels": [
+        "Persuasão"
+      ],
+      "url": "/sheet/training-badges-20261019/persuasion.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Persuasão. Objects: Two clasped hands sculpted in bronze over a cream sealed agreement scroll and a blue ribbon.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-dc8773fc-ccea-4dc8-bd63-660d5539b3a7.png",
+      "sourceSha256": "76e970ba806823b27ac3d1a873f422b7067678e158158fab92cb24f84a6a98c2",
+      "sha256": "cdd3ba295d6c9edd1347786825a69afdfaa039b806824b0812adc75ab10c0cb6",
+      "bytes": 28728,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.439361572265625
+    },
+    {
+      "id": "sleight-of-hand",
+      "labels": [
+        "Prestidigitação"
+      ],
+      "url": "/sheet/training-badges-20261019/sleight-of-hand.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Prestidigitação. Objects: A leather-gloved dexterous hand holding a bright gold coin, a hidden silver card and a red ribbon.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-a15bd75d-2e4a-45d5-97a0-cf5cb8de92b4.png",
+      "sourceSha256": "8b77b5729d3a24e3e08d4ee20da84934f19f42346a64dc0c3c5d442a406b0069",
+      "sha256": "8089e2514b66893869dd36cc92ade8ac7618186ece6b63500469bff3855d9953",
+      "bytes": 29856,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.4054718017578125
+    },
+    {
+      "id": "religion",
+      "labels": [
+        "Religião"
+      ],
+      "url": "/sheet/training-badges-20261019/religion.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Religião. Objects: A golden radiant sun holy symbol above a closed ivory prayer book and a white folded cloth.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-56c44302-7d2d-4ad9-9c39-ebcac90f9369.png",
+      "sourceSha256": "99e6e185d5240a49d616be43e68b85a444e47eb453fb006cc9480bad13dadca7",
+      "sha256": "8c3565c78addcdf0659e71c0afdce95d925f3f3c568fc4bad74479d7d69c30cf",
+      "bytes": 28856,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.450958251953125
+    },
+    {
+      "id": "survival",
+      "labels": [
+        "Sobrevivência"
+      ],
+      "url": "/sheet/training-badges-20261019/survival.webp",
+      "prompt": "Use case: stylized-concept. Create ONE original premium hand-painted fantasy RPG profession/training insignia, with the polished illustrated game icon finish of the supplied RPG professions example. Thick sculpted beveled edges, realistic material volume translated into hand-painted stylization, rich wood, steel, cloth and leather, layered physical objects with deep soft contact shadows and clear upper-left painted highlights. Distinct warm restrained colors. Bold clean readable composition with 2–3 coherent tools dominating a small irregular dark metal-and-leather backing; do NOT enclose it in a round button or a circular border. Transparent background, fully visible silhouette with6% empty padding, centered square icon, no scene, no ground, no labels, no text, no letters, no numbers, no watermark. Original art, not a copy. Broad shapes readable at40px, not thin line art.\nSpecific training: Sobrevivência. Objects: A steel hunting knife, a small bronze compass, a coiled rope and one broad forest leaf.",
+      "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-eab6d1c0-4187-40e8-97df-aa8eaa8eab97.png",
+      "sourceSha256": "3ad138937c7d072ccc40b12d5ced9a3fa72adf5f82a9289fc633e5e69d1dec9c",
+      "sha256": "018a41655963d73acfa15fcc0fec6e5bab7be1ffaec4bf4bc3adb5d466f66da7",
+      "bytes": 33360,
+      "width": 256,
+      "height": 256,
+      "transparentFraction": 0.385711669921875
+    }
+  ],
+  "ready": true
+}

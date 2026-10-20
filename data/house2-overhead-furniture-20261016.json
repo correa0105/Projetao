@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-16",
+  "method": "built-in image_gen",
+  "purpose": "True overhead seating for House 2.0; catalog IDs, purchases and saved placement remain unchanged",
+  "assets": [
+    {
+      "id": "furniture-001",
+      "image": "/house2/furniture-overhead-001-20261016.webp",
+      "width": 1000,
+      "height": 1000,
+      "sha256": "f23e3663e9f2eaea4f98ad86658f5bd89f89d00d320f795a59e4e2f0a02b3206",
+      "bytes": 385530,
+      "source": "exec-c2d4542e-8c42-40a1-aaf5-05bfc1506f9a.png",
+      "sourceSha256": "968637eec0f03cb63c5d707a4525ed17aef3da8b5072d846966a9dae650878ac",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent VTT furniture token. The attached image is the edit target and material/style reference. REDRAW its camera, keeping its object identity, material, colors and excellent grain detail. Subject: single simple medieval wooden chair with a square wooden plank seat, iron rivets and plain wooden backrest. CRITICAL: true vertical NADIR plan view, exactly 90 degrees straight down, perfectly orthographic parallel projection. The previous asset was rejected for showing the FRONT of the furniture. Show ONLY horizontal TOP surfaces. The seat occupies most of the footprint; the BACKREST is seen edge-on from above as a narrow horizontal strip at the TOP of the token. Armrests are narrow vertical strips down either side, seen only on their top faces. No visible front apron, NO VISIBLE LEGS, no vertical front of the backrest, no frontal upholstery panels, no isometric, no 3/4 view, no vanishing point, no tilted camera. All sides parallel with no taper. For backless bench: just its top seat planks and iron straps; legs entirely hidden beneath. Texture is realistic and tack-sharp: wood grain, stitching, leather pores or fabric weave, restrained tiny highlights. Diffuse neutral overhead illumination, no long cast shadows and no ground plane because the game adds dynamic shadows. One centered complete object, 5% transparent margin on every side, no crop. Real alpha transparent background, no checker pattern, no floor, no border, no text or watermark. This MUST read as a plan symbol rendered with realistic materials, NOT a front-facing furniture catalog photo."
+    },
+    {
+      "id": "furniture-002",
+      "image": "/house2/furniture-overhead-002-20261016.webp",
+      "width": 1000,
+      "height": 1000,
+      "sha256": "75932e270ede8cbc62f5f201de5b9e40ef45f6459c46f86a26a027a7f9c907ac",
+      "bytes": 508558,
+      "source": "exec-af58bd11-7aed-41ed-8962-ddce9b6d23a8.png",
+      "sourceSha256": "719df62350a9c0df60086a616fd2e622857f7b051e4214422324708a5d297f84",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent VTT furniture token. The attached image is the edit target and material/style reference. REDRAW its camera, keeping its object identity, material, colors and excellent grain detail. Subject: single richly textured worn brown leather armchair with a large square seat cushion, two thick padded armrests and a padded backrest. CRITICAL: true vertical NADIR plan view, exactly 90 degrees straight down, perfectly orthographic parallel projection. The previous asset was rejected for showing the FRONT of the furniture. Show ONLY horizontal TOP surfaces. The seat occupies most of the footprint; the BACKREST is seen edge-on from above as a narrow horizontal strip at the TOP of the token. Armrests are narrow vertical strips down either side, seen only on their top faces. No visible front apron, NO VISIBLE LEGS, no vertical front of the backrest, no frontal upholstery panels, no isometric, no 3/4 view, no vanishing point, no tilted camera. All sides parallel with no taper. For backless bench: just its top seat planks and iron straps; legs entirely hidden beneath. Texture is realistic and tack-sharp: wood grain, stitching, leather pores or fabric weave, restrained tiny highlights. Diffuse neutral overhead illumination, no long cast shadows and no ground plane because the game adds dynamic shadows. One centered complete object, 5% transparent margin on every side, no crop. Real alpha transparent background, no checker pattern, no floor, no border, no text or watermark. This MUST read as a plan symbol rendered with realistic materials, NOT a front-facing furniture catalog photo."
+    },
+    {
+      "id": "furniture-003",
+      "image": "/house2/furniture-overhead-003-20261016.webp",
+      "width": 1000,
+      "height": 1000,
+      "sha256": "f2c49f1b6ebfcd502230f14d67d064f4f529d8cff57e256c2f26e4d3cf17de78",
+      "bytes": 495228,
+      "source": "exec-a5978e90-61d5-4d02-860f-0b6795c2dca1.png",
+      "sourceSha256": "83d111b703007c08124ec608d988976fc289c28dd8f9660d72fdac9b5721d3fe",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent VTT furniture token. The attached image is the edit target and material/style reference. REDRAW its camera, keeping its object identity, material, colors and excellent grain detail. Subject: single medieval carved wood upholstered chair with an olive-green square seat cushion, carved wooden frame and narrow wooden backrest. CRITICAL: true vertical NADIR plan view, exactly 90 degrees straight down, perfectly orthographic parallel projection. The previous asset was rejected for showing the FRONT of the furniture. Show ONLY horizontal TOP surfaces. The seat occupies most of the footprint; the BACKREST is seen edge-on from above as a narrow horizontal strip at the TOP of the token. Armrests are narrow vertical strips down either side, seen only on their top faces. No visible front apron, NO VISIBLE LEGS, no vertical front of the backrest, no frontal upholstery panels, no isometric, no 3/4 view, no vanishing point, no tilted camera. All sides parallel with no taper. For backless bench: just its top seat planks and iron straps; legs entirely hidden beneath. Texture is realistic and tack-sharp: wood grain, stitching, leather pores or fabric weave, restrained tiny highlights. Diffuse neutral overhead illumination, no long cast shadows and no ground plane because the game adds dynamic shadows. One centered complete object, 5% transparent margin on every side, no crop. Real alpha transparent background, no checker pattern, no floor, no border, no text or watermark. This MUST read as a plan symbol rendered with realistic materials, NOT a front-facing furniture catalog photo."
+    },
+    {
+      "id": "furniture-004",
+      "image": "/house2/furniture-overhead-004-20261016.webp",
+      "width": 1000,
+      "height": 1000,
+      "sha256": "240ed915cd5bf6b96db0358f46744b27d0d26d550302c335cc6695d4926b7ac2",
+      "bytes": 158432,
+      "source": "exec-da643c2f-48de-4df9-a75e-d84ac6f1884e.png",
+      "sourceSha256": "11bfc71b3959f0036cee9180b292070428ee50e9d72c350f2c18009493e5e90e",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent VTT furniture token. The attached image is the edit target and material/style reference. REDRAW its camera, keeping its object identity, material, colors and excellent grain detail. Subject: short rustic backless wooden bench with a rectangular plank seat and dark iron straps, seen only from above. CRITICAL: true vertical NADIR plan view, exactly 90 degrees straight down, perfectly orthographic parallel projection. The previous asset was rejected for showing the FRONT of the furniture. Show ONLY horizontal TOP surfaces. The seat occupies most of the footprint; the BACKREST is seen edge-on from above as a narrow horizontal strip at the TOP of the token. Armrests are narrow vertical strips down either side, seen only on their top faces. No visible front apron, NO VISIBLE LEGS, no vertical front of the backrest, no frontal upholstery panels, no isometric, no 3/4 view, no vanishing point, no tilted camera. All sides parallel with no taper. For backless bench: just its top seat planks and iron straps; legs entirely hidden beneath. Texture is realistic and tack-sharp: wood grain, stitching, leather pores or fabric weave, restrained tiny highlights. Diffuse neutral overhead illumination, no long cast shadows and no ground plane because the game adds dynamic shadows. One centered complete object, 5% transparent margin on every side, no crop. Real alpha transparent background, no checker pattern, no floor, no border, no text or watermark. This MUST read as a plan symbol rendered with realistic materials, NOT a front-facing furniture catalog photo."
+    },
+    {
+      "id": "furniture-005",
+      "image": "/house2/furniture-overhead-005-20261016.webp",
+      "width": 1600,
+      "height": 1000,
+      "sha256": "a182eb29ffded37475557cfbf8c83f472fb3b3707d4cb14989b07e042400928f",
+      "bytes": 365188,
+      "source": "exec-813e0c4c-0970-4b44-939e-58f42e3037ec.png",
+      "sourceSha256": "7b98ba4a12af3f3a060ffda2acbc1474b12d0e5c77f04a02c5191b4e14cb0c5f",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent VTT furniture token. The attached image is the edit target and material/style reference. REDRAW its camera, keeping its object identity, material, colors and excellent grain detail. Subject: long rustic wooden bench with a wide plank seat and wooden backrest, long horizontal footprint twice as wide as deep. CRITICAL: true vertical NADIR plan view, exactly 90 degrees straight down, perfectly orthographic parallel projection. The previous asset was rejected for showing the FRONT of the furniture. Show ONLY horizontal TOP surfaces. The seat occupies most of the footprint; the BACKREST is seen edge-on from above as a narrow horizontal strip at the TOP of the token. Armrests are narrow vertical strips down either side, seen only on their top faces. No visible front apron, NO VISIBLE LEGS, no vertical front of the backrest, no frontal upholstery panels, no isometric, no 3/4 view, no vanishing point, no tilted camera. All sides parallel with no taper. For backless bench: just its top seat planks and iron straps; legs entirely hidden beneath. Texture is realistic and tack-sharp: wood grain, stitching, leather pores or fabric weave, restrained tiny highlights. Diffuse neutral overhead illumination, no long cast shadows and no ground plane because the game adds dynamic shadows. One centered complete object, 5% transparent margin on every side, no crop. Real alpha transparent background, no checker pattern, no floor, no border, no text or watermark. This MUST read as a plan symbol rendered with realistic materials, NOT a front-facing furniture catalog photo."
+    },
+    {
+      "id": "furniture-015",
+      "image": "/house2/furniture-overhead-015-20261016.webp",
+      "width": 1600,
+      "height": 1000,
+      "sha256": "cfe94a8d010d82b78d76c0cde4c773ee1fe5af59c97bfcd0ea4b61c58979fc85",
+      "bytes": 492120,
+      "source": "exec-2216b678-8a76-42de-b1f0-46cb8f02e7c8.png",
+      "sourceSha256": "a25684beb8b9ac9c51b129bc95d0219260029c906df287b7f0d2a9f34dee9610",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent VTT furniture token. The attached image is the edit target and material/style reference. REDRAW its camera, keeping its object identity, material, colors and excellent grain detail. Subject: two-seat rustic wooden sofa with two indigo-blue fabric seat cushions, wood armrests and upholstered backrest, horizontal footprint twice as wide as deep. CRITICAL: true vertical NADIR plan view, exactly 90 degrees straight down, perfectly orthographic parallel projection. The previous asset was rejected for showing the FRONT of the furniture. Show ONLY horizontal TOP surfaces. The seat occupies most of the footprint; the BACKREST is seen edge-on from above as a narrow horizontal strip at the TOP of the token. Armrests are narrow vertical strips down either side, seen only on their top faces. No visible front apron, NO VISIBLE LEGS, no vertical front of the backrest, no frontal upholstery panels, no isometric, no 3/4 view, no vanishing point, no tilted camera. All sides parallel with no taper. For backless bench: just its top seat planks and iron straps; legs entirely hidden beneath. Texture is realistic and tack-sharp: wood grain, stitching, leather pores or fabric weave, restrained tiny highlights. Diffuse neutral overhead illumination, no long cast shadows and no ground plane because the game adds dynamic shadows. One centered complete object, 5% transparent margin on every side, no crop. Real alpha transparent background, no checker pattern, no floor, no border, no text or watermark. This MUST read as a plan symbol rendered with realistic materials, NOT a front-facing furniture catalog photo."
+    }
+  ]
+}

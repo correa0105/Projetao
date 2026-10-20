@@ -1,0 +1,19 @@
+{
+  "id": "resident-039",
+  "name": "Nélia · Cartógrafa",
+  "species": "elfa",
+  "bodyScale": 1,
+  "reference": "data/vtt/residents-25-20261018/reference-topdown.png",
+  "image": "/vtt/residents-25-20261018/resident-039-topdown-v3.webp",
+  "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-039-topdown-v3.webp",
+  "prompt": "Create ONE distinct medieval fantasy villager token for an overhead VTT battlemap. The attached reference defines the exact directly-above camera and finely painted realistic quality, NOT the identity, hair, clothing or occupation. Camera is exactly vertical at 90 degrees, orthographic plan view. Top of head, shoulders and arms dominate, lower body strongly foreshortened. The person stands naturally, neck upright and chin LEVEL, looking straight FORWARD PARALLEL TO THE GROUND toward the BOTTOM EDGE of the canvas. Never look up or make eye contact with the overhead viewer, never bow the head to look down at the hands. Render the actual face in its natural narrow top-down projection: visible forehead, brow ridge and nose extending beyond the front hairline, with appropriate beard glimpsed below; do not replace the face with scalp, and do not tilt the head upward to expose a frontal portrait. Face remains naturally occluded by the crown in true overhead projection. Exactly two arms and hands with convincing grips. Entire compact silhouette with tiny boot glimpses inside generous transparent margins. Crisp painted cloth grain, worn leather, subtle metal, warm natural colors and soft neutral illumination matching the reference. Single square canvas, genuine transparent alpha. No floor, backdrop, base, shadow, ring, grid, text, border or watermark. New character: female elf cartographer, braided dark chestnut crown and subtle pointed ears, muted turquoise traveling coat, holding an unlettered rolled parchment and a small brass compass, no readable writing.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-b4c82fa4-b2cf-45f4-b716-fdd5a53512dc.png",
+  "localSource": ".local/residents-25-sources-20261018/resident-039-topdown-v3.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T14:17:15.910Z",
+  "sourceSha256": "fce24029be81e93fd3b8750e614af94421a791fbdb657e8adabc71cf19da9d98",
+  "sha256": "711acaee9112998f63dbd4ce32c29ee97fba42a553c05540548b27c2ef4b3ccc",
+  "width": 768,
+  "height": 768,
+  "alpha": true
+}

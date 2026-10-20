@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0910",
+  "name": "Círculo ritual — ancestrais",
+  "category": "Templo",
+  "width": 1.98,
+  "height": 2,
+  "image": "/vtt/scenery-assets-20261012/scenery-0910.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: ritual stone circle; ancestral motif with timeworn ceremonial patterns and ivory stone. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-71ad9611-97c0-4f4f-9d48-07202e8ff014.png",
+  "sha256": "2be8447c6544bb8494ff64b647d47da6a03952d869996916c7ff81b9662ccb04",
+  "pixelWidth": 759,
+  "pixelHeight": 768
+}

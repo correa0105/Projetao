@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0029",
+  "name": "Cama — peça abandonada",
+  "category": "Casa",
+  "width": 1.24,
+  "height": 2,
+  "image": "/vtt/scenery-assets-20261012/scenery-0029.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: medieval bed with pillow and folded quilt; abandoned dust-covered design with cobwebs and uneven worn edges. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-480f620f-bd17-462d-801f-ca2fd8ae920d.png",
+  "sha256": "9e00db0bc6311e348c0b70dbe1906914ae8a3609326dd7a31e8eec72f2acb4c0",
+  "pixelWidth": 477,
+  "pixelHeight": 768
+}

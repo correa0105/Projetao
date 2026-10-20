@@ -5,6 +5,8 @@ import { monsterActions, type MonsterAction } from '../shared/vtt-monster-action
 import { monsterSections } from '../shared/vtt-compendium';
 import { VttSheetWindow } from './VttSheetWindow';
 import { ActionShortcut } from './VttHotbar';
+import { VttMonsterTestCard } from './VttMonsterTestCard';
+import { monsterVariantFilter, overheadMonsterImage, type MonsterVariant } from '../shared/vtt-monster-variants';
 import './vtt-monster-sheet.css';
 
 export type MonsterProfile = {
@@ -12,6 +14,7 @@ export type MonsterProfile = {
   details: string;
   actionDetails?: string;
   image?: string;
+  artVariant?: MonsterVariant;
   hp: number;
   maxHp?: number;
   ac: number;
@@ -131,10 +134,12 @@ export function VttMonsterStatblock({
     ));
   return (
     <div className={'vtt-monster-sheet ' + (compact ? 'compact' : '')}>
+      <VttMonsterTestCard monster={monster} />
       <header className="vtt-monster-banner">
         {monster.image && (
           <img
-            className={monster.image.startsWith('/api/vtt/premium-art/') ? 'overhead' : undefined}
+            className={overheadMonsterImage(monster.image) ? 'overhead' : undefined}
+            style={{ filter: monsterVariantFilter(monster.artVariant) }}
             src={monster.image}
             alt=""
             draggable={false}

@@ -1,0 +1,147 @@
+[
+  {
+    "id": "scenery-0032",
+    "name": "Armário — peça nobre",
+    "sha256": "411336c4950200b30ca4241c4a9b2fdd678492d2106e837753bde004975977bb"
+  },
+  {
+    "id": "scenery-0033",
+    "name": "Armário — peça de cabana",
+    "sha256": "afdc273c5b73190abc0acb5a4e03667582fa661828306566f7f87906a4f153f0"
+  },
+  {
+    "id": "scenery-0101",
+    "name": "Barraca — explorador",
+    "sha256": "0bca47948c7fa02754ad38058a5c6b5b1798a2c1a4fd39d4e1232c30eb8e979e"
+  },
+  {
+    "id": "scenery-0102",
+    "name": "Barraca — caçador",
+    "sha256": "d12d9b40e7e7a59b3683666351b2814bfc63a509c65db2f55382eb6b9602f3a1"
+  },
+  {
+    "id": "scenery-0103",
+    "name": "Barraca — mercador",
+    "sha256": "ab6ca6eec6a348c9b8d478f638045775f50485549af8711a09cf7e686207267a"
+  },
+  {
+    "id": "scenery-0201",
+    "name": "Carvalho — bosque jovem",
+    "sha256": "0e90f72c9145c6e54aa1d467687dec8212cdaff61c91092c21654cf3188d63e4"
+  },
+  {
+    "id": "scenery-0202",
+    "name": "Carvalho — bosque antigo",
+    "sha256": "1b02c17f42dbbc374d0a0bf1198a07325facf55f8dc1f4834a89bb0ef6dd0a4f"
+  },
+  {
+    "id": "scenery-0203",
+    "name": "Carvalho — bosque úmido",
+    "sha256": "f298c10106203ea8e5e4dd939f7b1baf9e5f9cc7f7d64dc479b82851f1505cc6"
+  },
+  {
+    "id": "scenery-0301",
+    "name": "Altar — catacumba",
+    "sha256": "4cb72e99b4d1ea5cba5647f172d0cf0bf6686fa11d8cd2d9ab196f78e6514f7d"
+  },
+  {
+    "id": "scenery-0302",
+    "name": "Altar — cripta real",
+    "sha256": "9bfe4e3bde13717db50263a0e8dcb066251c9bc98052592317f77a6aaeffda7a"
+  },
+  {
+    "id": "scenery-0303",
+    "name": "Altar — templo perdido",
+    "sha256": "70d45bdbaef0b74c03f05dfb56a9ef93cbb6d9b08e61c0537ff7488cdf39c72c"
+  },
+  {
+    "id": "scenery-0401",
+    "name": "Casa pequena — vila",
+    "sha256": "3096b2945f042e836da461430fb756bb235f8b0e565b18abd010f2aab663eb18"
+  },
+  {
+    "id": "scenery-0402",
+    "name": "Casa pequena — cidade antiga",
+    "sha256": "74089a725e6ab6fbd6f508bfbf86d40cc0790767dbe9cf8e52695bd18fbedb3b"
+  },
+  {
+    "id": "scenery-0403",
+    "name": "Casa pequena — fronteira",
+    "sha256": "925c5cc999b18806bbcb78d04ccbef125c1fcd3efd0a70f5226ddc84515b29db"
+  },
+  {
+    "id": "scenery-0501",
+    "name": "Mesa posta — estalagem humilde",
+    "sha256": "38370a76dc2b9d17590e4f25a62dfee4f070870c9ed6cabd75ef9404ac7fca99"
+  },
+  {
+    "id": "scenery-0502",
+    "name": "Mesa posta — salão rico",
+    "sha256": "76fcce34444e5d52e79fce6448741b5187f2068a5e870037c4813e92b5fa4329"
+  },
+  {
+    "id": "scenery-0503",
+    "name": "Mesa posta — porto",
+    "sha256": "2f01acb85b0ba90a86e8e639603003fd349988e8cb6b1c1bd45decc9fba94c9c"
+  },
+  {
+    "id": "scenery-0601",
+    "name": "Banca de feira — praça",
+    "sha256": "409429aa386ec84cb862f3199eb786682319e6e1afba4c8a0db09496430ef56c"
+  },
+  {
+    "id": "scenery-0602",
+    "name": "Banca de feira — beco",
+    "sha256": "d383c7e258e87f0b24efe9357cd633631fe65d883ddfbd12463d829fa71113cf"
+  },
+  {
+    "id": "scenery-0603",
+    "name": "Banca de feira — mercado",
+    "sha256": "240647a701d87428be67aeeb058b08e10f16e83a17379407d866c03297302c6b"
+  },
+  {
+    "id": "scenery-0701",
+    "name": "Rochedo — pequeno",
+    "sha256": "3dc6ebce581798726e357cf862a843fb9984fb52eb47e813d55dc3b870af941b"
+  },
+  {
+    "id": "scenery-0702",
+    "name": "Rochedo — alongado",
+    "sha256": "f62a29f3da933fd45181ce79434d5747d56c19bd049fd17bd4c0187526a6dda8"
+  },
+  {
+    "id": "scenery-0703",
+    "name": "Rochedo — circular",
+    "sha256": "266524511de85aeed5d0b682c4d81a55472ffbd461f4efde4bb1dd65856f21e6"
+  },
+  {
+    "id": "scenery-0801",
+    "name": "Baú — artesão",
+    "sha256": "e1c457f249eb4a22262b73ccbbe63bf512a5fa786c8b3e6ce417403e6b59af32"
+  },
+  {
+    "id": "scenery-0802",
+    "name": "Baú — mercador",
+    "sha256": "6fbc30327e69992269af5b8aaec0e713f769337e890e41599a07c7280dc1e743"
+  },
+  {
+    "id": "scenery-0803",
+    "name": "Baú — nobre",
+    "sha256": "5aa7a99bd67d72c548f5d1c512c217ed484ead12f5ef3e9c621f439ba972ed9e"
+  },
+  {
+    "id": "scenery-0901",
+    "name": "Círculo ritual — sol",
+    "sha256": "bf686d631f2af14a5bbd3ef8ce7a0d2572ac13d13e2bd98d7dbc0b6c1e085618"
+  },
+  {
+    "id": "scenery-0902",
+    "name": "Círculo ritual — lua",
+    "sha256": "851cf29a33feb92c435f6d60eef31ba3385f78ccb39581c507c08853432af966"
+  },
+  {
+    "id": "scenery-0903",
+    "name": "Círculo ritual — natureza",
+    "sha256": "a430123f3a4ca35fd346a0ad7fd5b6a4db321a25765778b8a77fe58a31f49d0e"
+  }
+]

@@ -1,0 +1,230 @@
+.vtt-scenery {
+  color: #e9dfc9;
+  padding: 6px 0 20px;
+}
+.vtt-scenery header {
+  padding: 16px;
+  background: linear-gradient(135deg, #302c23, #171b18);
+  border: 1px solid #62583d;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.vtt-scenery header small {
+  letter-spacing: 0.18em;
+  color: #c9ae74;
+  font-size: 10px;
+}
+.vtt-scenery h3 {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  margin: 8px 0;
+}
+.vtt-scenery p {
+  font-size: 12px;
+  color: #c1b9a6;
+  line-height: 1.5;
+}
+.vtt-scenery nav {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.vtt-scenery nav button {
+  font-size: 11px;
+  border-radius: 20px;
+  padding: 6px 10px;
+}
+.vtt-scenery button[aria-pressed='true'] {
+  border-color: #d7b773;
+  background: #413725;
+}
+.vtt-scenery-count {
+  margin: 12px 0;
+}
+.vtt-scenery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+.vtt-scenery-card {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 0 !important;
+  overflow: hidden;
+  border: 1px solid #4a483a !important;
+  border-radius: 7px;
+  background: #232720 !important;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.vtt-scenery-card:hover,
+.vtt-scenery-card:focus-visible {
+  border-color: #d7b773 !important;
+  background: #34372b !important;
+}
+.vtt-scenery-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  background-color: #343930;
+  background-image:
+    linear-gradient(#b8b4940c 1px, transparent 1px),
+    linear-gradient(90deg, #b8b4940c 1px, transparent 1px),
+    radial-gradient(ellipse, #74735a33, transparent 72%);
+  background-size:
+    24px 24px,
+    24px 24px,
+    100% 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.vtt-scenery-stage img {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 3px #0005);
+}
+.vtt-scenery-stage span {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  background: #141912cc;
+  padding: 3px 5px;
+  color: #c9c2ae;
+  font-size: 10px;
+  border-radius: 3px;
+}
+.vtt-scenery-card strong {
+  font-size: 12px;
+  padding: 9px 9px 2px;
+  white-space: normal;
+}
+.vtt-scenery-card small {
+  padding: 0 9px 9px;
+  font-size: 10px;
+  color: #aba78f;
+}
+.vtt-scenery-detail {
+  position: relative;
+  padding: 12px;
+  margin-bottom: 14px;
+  border: 1px solid #9b8455;
+  border-radius: 8px;
+  background: #20261f;
+}
+.vtt-scenery-detail .vtt-scenery-stage {
+  max-height: 220px;
+  aspect-ratio: auto;
+  height: 210px;
+}
+.vtt-scenery-detail h4 {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  margin: 12px 0 4px;
+}
+.vtt-scenery-detail label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+.vtt-scenery-close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  z-index: 1;
+}
+.vtt-scenery-place {
+  width: 100%;
+  margin-bottom: 7px;
+  background: #554629 !important;
+}
+.vtt-scenery button:focus-visible {
+  outline: 2px solid #e4c587;
+  outline-offset: 2px;
+}
+
+.vtt-terrain-brush {
+  padding: 14px;
+  background: #24291f;
+  border: 1px solid #696044;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+.vtt-terrain-brush h3 {
+  font-family: Georgia, serif;
+  margin: 0 0 8px;
+  color: #e6d8b8;
+}
+.vtt-terrain-brush p {
+  font-size: 12px;
+  color: #bcb59f;
+  line-height: 1.5;
+}
+.vtt-terrain-textures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+.vtt-terrain-textures button {
+  padding: 0 !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.vtt-terrain-textures img {
+  width: 100%;
+  aspect-ratio: 1.5;
+  object-fit: cover;
+}
+.vtt-terrain-textures span {
+  font-size: 11px;
+  padding: 5px;
+}
+.vtt-terrain-textures button[aria-pressed='true'],
+.vtt-terrain-modes button[aria-pressed='true'] {
+  outline: 2px solid #c5a265;
+}
+.vtt-terrain-modes {
+  display: flex;
+  gap: 8px;
+  margin: 14px 0;
+}
+.vtt-terrain-modes button {
+  flex: 1;
+}
+.vtt-terrain-brush label {
+  display: block;
+  font-size: 12px;
+  color: #d5cab0;
+  margin: 12px 0;
+}
+.vtt-terrain-brush input {
+  width: 100%;
+  accent-color: #c5a265;
+}
+.vtt-terrain-brush summary {
+  cursor: pointer;
+  color: #d7bb85;
+  font-size: 12px;
+  padding: 8px 0;
+  border-top: 1px solid #48483b;
+}
+.vtt-scenery-more {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+}
+.vtt-panel .vtt-terrain-brush h3 {
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+}
+.vtt-panel .vtt-scenery h3 {
+  margin: 8px 0;
+  padding: 0;
+  border: 0;
+}

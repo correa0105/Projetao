@@ -1,0 +1,19 @@
+{
+  "id": "resident-045",
+  "name": "Teresa · Queijeira",
+  "species": "humana",
+  "bodyScale": 1,
+  "reference": "data/vtt/residents-25-20261018/reference-topdown.png",
+  "image": "/vtt/residents-25-20261018/resident-045-topdown-v3.webp",
+  "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-045-topdown-v3.webp",
+  "prompt": "Create ONE distinct medieval fantasy villager token for an overhead VTT battlemap. The attached reference defines the exact directly-above camera and finely painted realistic quality, NOT the identity, hair, clothing or occupation. Camera is exactly vertical at 90 degrees, orthographic plan view. Top of head, shoulders and arms dominate, lower body strongly foreshortened. The person stands naturally, neck upright and chin LEVEL, looking straight FORWARD PARALLEL TO THE GROUND toward the BOTTOM EDGE of the canvas. Never look up or make eye contact with the overhead viewer, never bow the head to look down at the hands. Render the actual face in its natural narrow top-down projection: visible forehead, brow ridge and nose extending beyond the front hairline, with appropriate beard glimpsed below; do not replace the face with scalp, and do not tilt the head upward to expose a frontal portrait. Face remains naturally occluded by the crown in true overhead projection. Exactly two arms and hands with convincing grips. Entire compact silhouette with tiny boot glimpses inside generous transparent margins. Crisp painted cloth grain, worn leather, subtle metal, warm natural colors and soft neutral illumination matching the reference. Single square canvas, genuine transparent alpha. No floor, backdrop, base, shadow, ring, grid, text, border or watermark. New character: middle-aged female cheesemaker, fair skin, blond crown wrapped in white linen, pale blue dress and cream apron, carrying a small round cheese wheel against the waist with both hands.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-d9f6a8f5-9d3a-4e36-892b-6b7bf19b2232.png",
+  "localSource": ".local/residents-25-sources-20261018/resident-045-topdown-v3.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T14:17:18.828Z",
+  "sourceSha256": "8575ba94696eaaacb5f8b25e750113eadff0caab1e331a4d7f2e4d42cddb3ae5",
+  "sha256": "0e518cef9eb3f99971a39f557f0f60ac770b95ca4c3d4c0ceb2d691fb0ba184c",
+  "width": 768,
+  "height": 768,
+  "alpha": true
+}

@@ -1,0 +1,13 @@
+{
+  "id": "scenery-v2-0033",
+  "name": "Cobertura de lona estendida",
+  "category": "Acampamento",
+  "width": 3,
+  "height": 2.3828,
+  "prompt": "Create ONE original premium fantasy virtual tabletop map asset: Cobertura de lona estendida. Category context: Acampamento. This is ONE individual usable object, plant, tree, rock or coherent building, NEVER a group, pile, furnished scene, room, bundle or collection of props. For a book produce ONE book; for a bench ONE bench; for a tree ONE tree. Strict orthographic overhead plan view: the camera points vertically down at 90 degrees, parallel to gravity. No perspective, no isometric view, no front elevation. Vertical sides are hidden; furniture legs are hidden, chair backs appear only as narrow top edges; buildings show roof only. Rich highly detailed realistic hand-painted fantasy cartography, fine precise dark contours, tactile wood grain, worn stone, fibers, believable material variation, carefully painted highlights and restrained contact shadow. Natural earthy palette, clean distinct silhouette and premium artisan finish inspired by professional top-down map libraries. No ground, surrounding scenery, extra props, frame, labels, lettering or watermark. The entire object fits inside a square 1024x1024 image with transparent margin on every side. Genuine transparent alpha background.",
+  "image": "/vtt/scenery-v2-20261012/scenery-v2-0033.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-17e87479-d110-456e-8719-157d855c341a.png",
+  "sha256": "a9e09db08979efa2e6be241d3f67591d6781b22df2f8c3c2a6ac252eb6aff536",
+  "pixelWidth": 768,
+  "pixelHeight": 610
+}

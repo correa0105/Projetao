@@ -1,0 +1,14 @@
+{
+  "id": "scenery-v2-0230",
+  "name": "Vela ritual individual",
+  "category": "Templo",
+  "width": 0.5953,
+  "height": 0.6,
+  "prompt": "Create ONE original premium fantasy virtual tabletop map asset: Vela ritual individual. Category context: Templo. This is ONE individual usable object, plant, tree, rock or coherent building, NEVER a group, pile, furnished scene, room, bundle or collection of props. For a book produce ONE book; for a bench ONE bench; for a tree ONE tree. Strict orthographic overhead plan view: the camera points vertically down at 90 degrees, parallel to gravity. No perspective, no isometric view, no front elevation. Vertical sides are hidden; furniture legs are hidden, chair backs appear only as narrow top edges; buildings show roof only. Rich highly detailed realistic hand-painted fantasy cartography, fine precise dark contours, tactile wood grain, worn stone, fibers, believable material variation, carefully painted highlights and restrained contact shadow. Natural earthy palette, clean distinct silhouette and premium artisan finish inspired by professional top-down map libraries. No ground, surrounding scenery, extra props, frame, labels, lettering or watermark. The entire object fits inside a square 1024x1024 image with transparent margin on every side. Genuine transparent alpha background. Exact overhead geometry: ONE simple wax pillar candle viewed straight vertically down. Show only its circular upper wax disk with a tiny flame/wick in the center, subtle melted wax rim. All vertical cylindrical sides are hidden below this disk. NO candlestick, NO brass holder, NO decorative base, no tall candle silhouette, no side elevation. One circular wax candle top, alone.",
+  "repaired": true,
+  "image": "/vtt/scenery-v2-20261012/scenery-v2-0230.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-f0f6b60c-5c27-4edc-bc7a-74e976ac4ea1.png",
+  "sha256": "21a9200d152d2f73a1af05c5020b6b7ba4bce58e98eab25254392e65b7ef3c0d",
+  "pixelWidth": 762,
+  "pixelHeight": 768
+}

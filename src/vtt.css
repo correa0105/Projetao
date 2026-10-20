@@ -1235,6 +1235,13 @@
   overflow-wrap: anywhere;
   font-size: 11px;
 }
+.vtt-monster-variants { margin: 10px 0; padding: 6px; border: 1px solid #9c814a55; min-width: 0; }
+.vtt-monster-variants legend { color: #d0bc8d; font-size: 11px; padding: 0 4px; }
+.vtt-monster-variants > div { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+.vtt-monster-variants button { display: flex; flex-direction: column; align-items: center; padding: 5px 2px; min-width: 0; }
+.vtt-monster-variants button[aria-pressed=true] { outline: 1px solid #d1aa62; background: #382e20; }
+.vtt-monster-variants img { width: 100%; height: 58px; object-fit: contain; }
+.vtt-monster-variants small { font-size: 10px; }
 .vtt-movement-distance {
   position: absolute;
   z-index: 9;

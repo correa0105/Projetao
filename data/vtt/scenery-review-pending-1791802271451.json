@@ -1,0 +1,67 @@
+[
+  {
+    "id": "scenery-0041",
+    "name": "Estante — peça rústica",
+    "sha256": "0740a2b584ca364c6b4ed327f9546cdfadcb3d65f454f0ed6835c5cecfa873cb"
+  },
+  {
+    "id": "scenery-0042",
+    "name": "Estante — peça nobre",
+    "sha256": "a26852fefacd58836c1d139e2e5026812976b704bacb57e05afa5b12e593e957"
+  },
+  {
+    "id": "scenery-0114",
+    "name": "Fogueira — soldado",
+    "sha256": "298f5a2da6e7134102991b3005225151dbdf9635d96f6aa085a16cba094582c7"
+  },
+  {
+    "id": "scenery-0115",
+    "name": "Fogueira — peregrino",
+    "sha256": "a2fb1205b819c99df7c661c17e9228540eb6a14ad85c453b8e01cd73f5a08a3c"
+  },
+  {
+    "id": "scenery-0214",
+    "name": "Pinheiro — bosque seco",
+    "sha256": "047133cffdbd798414b4c390d2d0caa037eb532ea4207e7e11956b2a30d6a3e6"
+  },
+  {
+    "id": "scenery-0215",
+    "name": "Pinheiro — bosque outonal",
+    "sha256": "fa3db3b527afc2fded5a3e0a48bca1268c9612482f5553670d00cde6c23e3f8c"
+  },
+  {
+    "id": "scenery-0314",
+    "name": "Sarcófago — fortaleza",
+    "sha256": "100f7315aae661e855ef6f13030db8a66756001bccd27aa79096b2b93966ec1c"
+  },
+  {
+    "id": "scenery-0414",
+    "name": "Cabana — montanha",
+    "sha256": "710e5be6b01da3512fa41caae26f08296c7d6eae4b9525a949ed78f9504b6ca0"
+  },
+  {
+    "id": "scenery-0514",
+    "name": "Balcão — encruzilhada",
+    "sha256": "26b2b148330ee4b8556cdd10764f1aaa9a8dd67c16df3fd7e34f1095daf85b77"
+  },
+  {
+    "id": "scenery-0614",
+    "name": "Fonte — porto",
+    "sha256": "c67223c243e10298d066dc7dcff0ccf69c55ff71d16bef6f5adcd6208bedcaf5"
+  },
+  {
+    "id": "scenery-0714",
+    "name": "Poça — fragmentado",
+    "sha256": "44a9b711a43596c6a878e105903b09b9fb34e7ee21b6d3b030475b54316c928e"
+  },
+  {
+    "id": "scenery-0814",
+    "name": "Sacos — viajante",
+    "sha256": "d6aa913a0e1205e69380200c951fdbd1d112c04c2c57ea81e78f2e715d8036c5"
+  },
+  {
+    "id": "scenery-0914",
+    "name": "Altar sagrado — tempestade",
+    "sha256": "ded77ad032ab64e69178b4354eec4546d4303331025f3a9a9196c22e1a7f2fec"
+  }
+]

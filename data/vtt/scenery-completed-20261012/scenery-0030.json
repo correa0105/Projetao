@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0030",
+  "name": "Cama — peça compacta",
+  "category": "Casa",
+  "width": 1.26,
+  "height": 2,
+  "image": "/vtt/scenery-assets-20261012/scenery-0030.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: medieval bed with pillow and folded quilt; compact small-space design with simplified distinctive silhouette. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-00cc3ce3-e861-4e50-b036-5424ab9b0931.png",
+  "sha256": "fa8c8e4e7be8d6d698dabbf6c50d3918a2ceec4a3de455705de5744dfbfafbd7",
+  "pixelWidth": 484,
+  "pixelHeight": 768
+}

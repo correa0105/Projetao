@@ -1,0 +1,29 @@
+{
+  "id": "biome-snow-tree-09",
+  "name": "Abeto jovem com neve",
+  "biome": "snow",
+  "type": "tree",
+  "sizeMetres": 4.5,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: young fir with distinct sparse radial branches, dark green needles and lightly frosted tips. Entire silhouette safely inside the canvas. The largest physical extent is 4.5 metres. This is one distinct asset, not a sheet or multiple variations. Final camera constraint: a strict flat plan view from a camera exactly at the zenith (90 degrees to the ground). No visible front or side elevation. For foliage show the crown from directly above, not a side-facing plant illustration; mushroom stalks are entirely hidden beneath their caps.",
+  "status": "reviewed",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-snow-tree-09.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-snow-tree-09-thumb.webp",
+      "pixelWidth": 749,
+      "pixelHeight": 768,
+      "sha256": "3103cf45286a29c36d51144b290f4e10daac89264e8b5b20065a14d4562193a1",
+      "sourceBasename": "exec-e6f5b9af-7c93-4072-ad8f-91c9ab5b6b07.png",
+      "generator": "built-in image_gen",
+      "width": 2.9258,
+      "height": 3,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "scenery-v2-0227",
+  "name": "Genuflexório individual",
+  "category": "Templo",
+  "width": 1,
+  "height": 0.5938,
+  "prompt": "Create ONE original premium fantasy virtual tabletop map asset: Genuflexório individual. Category context: Templo. This is ONE individual usable object, plant, tree, rock or coherent building, NEVER a group, pile, furnished scene, room, bundle or collection of props. For a book produce ONE book; for a bench ONE bench; for a tree ONE tree. Strict orthographic overhead plan view: the camera points vertically down at 90 degrees, parallel to gravity. No perspective, no isometric view, no front elevation. Vertical sides are hidden; furniture legs are hidden, chair backs appear only as narrow top edges; buildings show roof only. Rich highly detailed realistic hand-painted fantasy cartography, fine precise dark contours, tactile wood grain, worn stone, fibers, believable material variation, carefully painted highlights and restrained contact shadow. Natural earthy palette, clean distinct silhouette and premium artisan finish inspired by professional top-down map libraries. No ground, surrounding scenery, extra props, frame, labels, lettering or watermark. The entire object fits inside a square 1024x1024 image with transparent margin on every side. Genuine transparent alpha background. Exact overhead geometry: ONE prayer kneeler, seen as two narrow parallel horizontal rectangles: a wooden elbow shelf above, a red kneeling cushion below, connected by short side rails. Its vertical front board is hidden; show only its thin upper edge. NO broad decorated vertical panel, no visible front legs or side elevation. Flat floorplan view.",
+  "repaired": true,
+  "image": "/vtt/scenery-v2-20261012/scenery-v2-0227.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-24696c5d-a32f-463f-9ff9-5d4a3408a625.png",
+  "sha256": "ffe095e6eab3bc1fe5cbd0cc2b3ce1515f02abc32f565d81aeb8fb6624c6bd7e",
+  "pixelWidth": 768,
+  "pixelHeight": 456
+}

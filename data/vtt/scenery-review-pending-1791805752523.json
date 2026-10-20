@@ -1,0 +1,202 @@
+[
+  {
+    "id": "scenery-0043",
+    "name": "Estante — peça de cabana",
+    "sha256": "d9519934dada49f7bd638d1aae58a9d60523790be2ab8d899b3aec931b76c9d9"
+  },
+  {
+    "id": "scenery-0044",
+    "name": "Estante — peça danificada",
+    "sha256": "ca4631f6f02491028dcb802e426a499ee58143cc462d065470e451fa65715fc6"
+  },
+  {
+    "id": "scenery-0045",
+    "name": "Estante — peça de estalagem",
+    "sha256": "4734cfd97ef71b6dca9cfe51de0a5a28febc831d679b3615ee54b46922056a3c"
+  },
+  {
+    "id": "scenery-0046",
+    "name": "Estante — peça de oficina",
+    "sha256": "4bf16756bb891e2c84c797d321699d94b215524495d8ee11ba46d25fe3649d11"
+  },
+  {
+    "id": "scenery-0047",
+    "name": "Estante — peça antiga",
+    "sha256": "8ba4e2aee109b0dc79ec15a75df437dedbfb1f984db255cfd26a21dea1987734"
+  },
+  {
+    "id": "scenery-0048",
+    "name": "Estante — peça ornamentada",
+    "sha256": "db56900e11601f58df1b47b6e50c0c6f43f09125f25830d09944f3da6db9379b"
+  },
+  {
+    "id": "scenery-0049",
+    "name": "Estante — peça abandonada",
+    "sha256": "48686b6db614de9aeaab822e360083199c3c106b71bc8dee6966ab6e070c77d9"
+  },
+  {
+    "id": "scenery-0050",
+    "name": "Estante — peça compacta",
+    "sha256": "23f49f9a38edec776807dfee357e357bf7bbe4c0c8ee7c3bdb48299198d722f4"
+  },
+  {
+    "id": "scenery-0051",
+    "name": "Tapete — peça rústica",
+    "sha256": "93a05391632258272b0258dde6ff4873c14eef2c7d53059b6a28c514b0296387"
+  },
+  {
+    "id": "scenery-0116",
+    "name": "Fogueira — lenhador",
+    "sha256": "41f00639590eb9a9fb6b1b528b351337119878a42e426095e28b3e19fe9846b6"
+  },
+  {
+    "id": "scenery-0117",
+    "name": "Fogueira — nômade",
+    "sha256": "ea511d0486221aa31d78aef021421179505b0d8d35b89977da2d2673309d1b38"
+  },
+  {
+    "id": "scenery-0118",
+    "name": "Fogueira — alquimista",
+    "sha256": "db4b7c1bfba7a4243e0f5e338a6981b878aab2b5e709b211f7a96a62b20318dd"
+  },
+  {
+    "id": "scenery-0119",
+    "name": "Fogueira — pescador",
+    "sha256": "267fe5f8538d9938ee15e9647644b1e44db51cf78aa02d80442efc09614f4394"
+  },
+  {
+    "id": "scenery-0120",
+    "name": "Fogueira — aventureiro",
+    "sha256": "8dcd50ebfba4459c291e9ab8f6b43f85736dc204b14db3138ec62e627179e5f5"
+  },
+  {
+    "id": "scenery-0121",
+    "name": "Mochila — explorador",
+    "sha256": "f53c7382385d7912e05dc39495307954f2cabf280fa06f8b8a9595ef43bb0fa2"
+  },
+  {
+    "id": "scenery-0122",
+    "name": "Mochila — caçador",
+    "sha256": "674c692e67d007d23393dc5589b593ca14f7943e9049e9fb5634b9b536530fd2"
+  },
+  {
+    "id": "scenery-0216",
+    "name": "Pinheiro — bosque queimado",
+    "sha256": "ee2103d048b6d29e9c37abb63c45f30abc7fea24bbad1b12c2d2b4008af0e858"
+  },
+  {
+    "id": "scenery-0217",
+    "name": "Pinheiro — bosque nevado",
+    "sha256": "60b36bee37b07cd64605dbb1ade622f1e044e8236445f396446ad69ef33670df"
+  },
+  {
+    "id": "scenery-0218",
+    "name": "Pinheiro — bosque encantado",
+    "sha256": "a99a05201fe9191cdce39d6fb87a4348de603ed84df19ba938a232e00aa77442"
+  },
+  {
+    "id": "scenery-0219",
+    "name": "Pinheiro — bosque cerrado",
+    "sha256": "78331ea446fbf3d48b77e5a3537a9225f5d42a619955cbd988dade7a8497cfbc"
+  },
+  {
+    "id": "scenery-0220",
+    "name": "Pinheiro — bosque retorcido",
+    "sha256": "9cfb44de974004f8729573f878b433c4caf527072c2ac100efb6e64bf34c3f51"
+  },
+  {
+    "id": "scenery-0221",
+    "name": "Arbusto — bosque jovem",
+    "sha256": "f646ced515605b433e82f86d9f072a6461e60e73c005a5a6f974233a8bf58bc7"
+  },
+  {
+    "id": "scenery-0222",
+    "name": "Arbusto — bosque antigo",
+    "sha256": "d1bc00e6a0e2e105af157f365ca6de6ed10f362730c2b4f7bb9fdd151d7fa8dc"
+  },
+  {
+    "id": "scenery-0315",
+    "name": "Sarcófago — prisão",
+    "sha256": "d07d0bd4a6e0201d27f76322c3783301af9b960520e853219ef9576638f4f87b"
+  },
+  {
+    "id": "scenery-0316",
+    "name": "Sarcófago — mina",
+    "sha256": "f2acd69af56ff36f39627566012ac448005fe6625ff3d5c37664b924c18d668e"
+  },
+  {
+    "id": "scenery-0317",
+    "name": "Sarcófago — ruína arcana",
+    "sha256": "3c3a3374878f41ed254134cbf831fad65c2d4896222245fe30627e21acfa9535"
+  },
+  {
+    "id": "scenery-0318",
+    "name": "Sarcófago — covil",
+    "sha256": "a044956478fd291c9d11cb0b2a6ce835dde59e18cdd411727fdf50e5e0b84763"
+  },
+  {
+    "id": "scenery-0319",
+    "name": "Sarcófago — santuário",
+    "sha256": "36b56ec75870848127ded393161349706e4e65d677e3637b2f34fd5621d58be2"
+  },
+  {
+    "id": "scenery-0320",
+    "name": "Sarcófago — câmara inundada",
+    "sha256": "4fe7a1d0abd2da73dcbe632e8b6cf56df476b868710b5301ce1695c5fe1dbc4d"
+  },
+  {
+    "id": "scenery-0321",
+    "name": "Grades — catacumba",
+    "sha256": "827673ba1067f2766937e1bea73efb833e691b76e1e165c5c468d44618e329f5"
+  },
+  {
+    "id": "scenery-0322",
+    "name": "Grades — cripta real",
+    "sha256": "5ad0aea57ccd9aa8543109d54edfed151526d4f7bd76e02467aead03d7ab2d5a"
+  },
+  {
+    "id": "scenery-0415",
+    "name": "Cabana — pântano",
+    "sha256": "52077085c87506370785e6e8f33afef038d937f8498aa42dce342bd35b655fe1"
+  },
+  {
+    "id": "scenery-0416",
+    "name": "Cabana — costa",
+    "sha256": "badc18d2b95970997d6261f3d29ae39fe025b656baa4bfc70e19467099df0c5f"
+  },
+  {
+    "id": "scenery-0417",
+    "name": "Cabana — deserto",
+    "sha256": "d8ad4883df1208389e1afc1dbebb19e3c9d5ec04d894d05dd86ceb05488ac906"
+  },
+  {
+    "id": "scenery-0418",
+    "name": "Cabana — neve",
+    "sha256": "b97ff6e29a2b048d760fe0b7602ff4bd821bf6a93e2becc339b47debceab5879"
+  },
+  {
+    "id": "scenery-0419",
+    "name": "Cabana — jardim",
+    "sha256": "f02823f81d1ea14c3bc40857967b3240094167462e807438c03969d0a5432d6a"
+  },
+  {
+    "id": "scenery-0420",
+    "name": "Cabana — aldeia",
+    "sha256": "9e5bdf9c048d78977bf9ae8c705533b1889aafa5428f2e5a9931f2a6feb3619d"
+  },
+  {
+    "id": "scenery-0421",
+    "name": "Torre — vila",
+    "sha256": "91f95b6dbbd026728281d6eb8eefd86c3f02a0470c571bb0bdb98d3362b39857"
+  },
+  {
+    "id": "scenery-0422",
+    "name": "Torre — cidade antiga",
+    "sha256": "d4ca804e7b73500a5931859ee06710a8af267424b29a72e4c1227163be8eed10"
+  },
+  {
+    "id": "scenery-0515",
+    "name": "Balcão — cervejaria",
+    "sha256": "ee98558d1c3bb796f8f7384cf0fcb6bfea23c7c031a433d68a78736e5cfd9131"
+  }
+]

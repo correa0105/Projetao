@@ -21,6 +21,7 @@ import {
 } from '../shared/character-sheet';
 import { statNames, money } from '../shared/rules';
 import { SheetHelp } from './SheetHelp';
+import { TrainingBadge } from './TrainingBadge';
 import { eberronSpecies, EBERRON_SOURCE } from '../shared/eberron-species';
 export function ChoiceList({
   label,
@@ -58,7 +59,7 @@ export function ChoiceList({
                 onChange(value.includes(v) ? value.filter((x) => x !== v) : [...value, v])
               }
             />
-            <span>{name(v)}</span>
+            <span className="sheet-choice-name"><TrainingBadge name={v} /><span>{name(v)}</span></span>
           </label>
         ))}
       </div>

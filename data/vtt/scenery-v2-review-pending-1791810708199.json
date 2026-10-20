@@ -1,0 +1,72 @@
+[
+  {
+    "id": "scenery-v2-0002",
+    "name": "Mesa retangular de pinho",
+    "sha256": "de471b3436ac5020bd87d6771e23a6c93417bd26e767f3acd607f96f7f997ddf"
+  },
+  {
+    "id": "scenery-v2-0005",
+    "name": "Banquinho de três pés",
+    "sha256": "d06e65d3a3c6e11bf63abe346ad350b4a38494cb3412a28c76a75727dbc584ef"
+  },
+  {
+    "id": "scenery-v2-0027",
+    "name": "Saco de dormir enrolado",
+    "sha256": "ca03ee09f5f00d3f916102e5ee1ec8810d6b34abe94d35c5cebafb08092b2621"
+  },
+  {
+    "id": "scenery-v2-0030",
+    "name": "Banquinho dobrável",
+    "sha256": "04863c79cc8793b4a04ab141928fb008cc2a8710fc8a6491dbd409f5af2eebec"
+  },
+  {
+    "id": "scenery-v2-0052",
+    "name": "Pinheiro alto",
+    "sha256": "dafed7504e316cb76e3bbcf91f139fa8101d70e14dddd93ab1b142f2e4c100c5"
+  },
+  {
+    "id": "scenery-v2-0055",
+    "name": "Árvore morta retorcida",
+    "sha256": "e656784899d0b9aa61bb30e90e386ca6fdd16ad402de02e52811977093479282"
+  },
+  {
+    "id": "scenery-v2-0077",
+    "name": "Banco de pedra",
+    "sha256": "7864f10f19d1d69eded2cd8ccfba36383090f7afe3c6ad5f0903d080b24827ff"
+  },
+  {
+    "id": "scenery-v2-0080",
+    "name": "Porta de madeira reforçada deitada",
+    "sha256": "337581f65413458424b49a32c65790ae3e5c1e73535fbfc797e4716853fd2cbb"
+  },
+  {
+    "id": "scenery-v2-0105",
+    "name": "Passarela estreita de pedra",
+    "sha256": "51d5757d15f0942037b0e982d9f9169eaf01b8c390f8897b691963e056554c6c"
+  },
+  {
+    "id": "scenery-v2-0126",
+    "name": "Mesa redonda de taverna vazia",
+    "sha256": "2d6e66fde5a22f0592a262fc27e93276c0575a0c5b28519ae133b50463e75243"
+  },
+  {
+    "id": "scenery-v2-0130",
+    "name": "Banqueta alta de taverna",
+    "sha256": "88aa09ac306563f9376b7492ad4ee3d1940dd2b117f8c4819b441a68a9bac775"
+  },
+  {
+    "id": "scenery-v2-0201",
+    "name": "Livro fechado de capa de couro",
+    "sha256": "28101daae838eb241b12cc56d967b52e48e0dab8ce847d215d86106d58415d50"
+  },
+  {
+    "id": "scenery-v2-0226",
+    "name": "Banco de oração de madeira",
+    "sha256": "5d36e84febdf03d3c94b9214b530482f8fa27a2bf32679c2e0bd472e929ca204"
+  },
+  {
+    "id": "scenery-v2-0229",
+    "name": "Castiçal alto individual",
+    "sha256": "6261d82adc18184d7964a55966499ac679fd4fa3f2097327e78b231975cbda62"
+  }
+]

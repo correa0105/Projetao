@@ -1,0 +1,56 @@
+{
+  "id": "biome-swamp-cabana",
+  "name": "Cabana do pescador",
+  "biome": "swamp",
+  "type": "building",
+  "sizeMetres": 7.5,
+  "footprint": {
+    "left": 0.1,
+    "right": 0.9,
+    "top": 0.1,
+    "bottom": 0.9,
+    "doorStart": 0.43,
+    "doorEnd": 0.5700000000000001
+  },
+  "roofBounds": {
+    "left": 0.065,
+    "right": 0.935,
+    "top": 0.065,
+    "bottom": 0.935
+  },
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: a compact fishing cabin built from weathered timber, repaired reed thatch roof, simple rectangular square building on short stilts. ONE closed-roof building only. Geometry must be precise: square building walls lie at normalized canvas x=0.10 to 0.90 and y=0.10 to 0.90; modest eaves reach at most 0.065–0.935. Entry is centered on the BOTTOM wall, width 1.05 m. No side wings, no boats, no props outside, no raised camera, no tall side walls. Canvas corresponds to a 7.5 m × 7.5 m square; actual building inside is 6 m × 6 m. Keep the door approach entirely unobstructed. Surrounding space fully transparent. Final camera constraint: a strict flat plan view from a camera exactly at the zenith (90 degrees to the ground). No visible front or side elevation. For foliage show the crown from directly above, not a side-facing plant illustration; mushroom stalks are entirely hidden beneath their caps.",
+  "interiorPrompt": "Use case: precise-object-edit. The attached roof image is the EDIT TARGET. Create the matching usable cutaway interior for this EXACT same Cabana do pescador building. Remove the roof only; preserve the 1024-square transparent canvas, rotation, exact exterior wall footprint (x/y=0.10 to 0.90), material style and tight overhead camera. This building frame is 7.5 metres square. The bottom-center entry gap is 1.05 metres wide, completely clear. Show coherent floor and low wall tops; furnish sparingly with context-appropriate period objects, keeping all walking lanes at least 1.05 m wide. Human 1.8 m scale: single bed about 0.90×2.0 m, double bed 1.40×2.0 m, stool seat 0.40 m, chair footprint 0.45 m, table depth 0.75 m; never enlarge small furniture to fill the room. Use one modest sleeping place, one appropriately sized work table, one stool and one small supply chest; all aligned to the same human scale. Same neutral lighting; no characters, no text/grid, no opaque outside terrain, no food or furniture in the doorway. The SINGLE bed, if present, must occupy exactly 12.00 percent of the square canvas width and 26.67 percent of its height; a horizontal bed swaps these dimensions. Its aspect ratio is 2.22:1. Stool seat diameter 5.33 percent of canvas. Preserve accurate physical proportions.",
+  "status": "reviewed",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-swamp-cabana.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-swamp-cabana-thumb.webp",
+      "pixelWidth": 1024,
+      "pixelHeight": 1024,
+      "sha256": "e8539176b26eb96ceeb87899ff1f3a90264837228398fee240a53e1dfcdfe04e",
+      "sourceBasename": "exec-405cabbd-042f-4ce7-996d-24328fc01d23.png",
+      "generator": "built-in image_gen",
+      "width": 5,
+      "height": 5,
+      "hasAlpha": true
+    },
+    "interior": {
+      "image": "/vtt/biomes-20261015/biome-swamp-cabana-interior.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-swamp-cabana-interior-thumb.webp",
+      "pixelWidth": 1024,
+      "pixelHeight": 1024,
+      "sha256": "d2aa5d4098c8b123e7b50c70975f21210096fb12fa83cff28bb0c55c6d9042a9",
+      "sourceBasename": "exec-18d8f400-1f28-4de9-b8c9-55b37c71320d.png",
+      "generator": "built-in image_gen",
+      "width": 5,
+      "height": 5,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

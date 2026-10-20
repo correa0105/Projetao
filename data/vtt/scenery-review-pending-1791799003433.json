@@ -1,0 +1,32 @@
+[
+  {
+    "id": "scenery-0039",
+    "name": "Armário — peça abandonada",
+    "sha256": "416386a58a87b4f7a72023125705483a4f75f9e1bfd076efc1c16defe5e8de97"
+  },
+  {
+    "id": "scenery-0110",
+    "name": "Barraca — aventureiro",
+    "sha256": "a5170c795353b2ee4ffb00b88c8dabba84a98c6d14607ecc112a9fe4aee040cf"
+  },
+  {
+    "id": "scenery-0210",
+    "name": "Carvalho — bosque retorcido",
+    "sha256": "dc0687e72a281d47ed5483f90f9f6f53a64245d655133c46af0a2379a97b7062"
+  },
+  {
+    "id": "scenery-0310",
+    "name": "Altar — câmara inundada",
+    "sha256": "b58988f05edb7fd85ef97a26e6f255ceb124594d2a7ab722dc70de2037173f88"
+  },
+  {
+    "id": "scenery-0809",
+    "name": "Baú — mago",
+    "sha256": "b085c3e9b58e274bc5c048c07ebf5060430f0a941678eefff22a8298568d7895"
+  },
+  {
+    "id": "scenery-0909",
+    "name": "Círculo ritual — estrelas",
+    "sha256": "bac58f1c27ad7d83508dc80b81ceaadf50359b27db3b260168415cd7b2f37c03"
+  }
+]

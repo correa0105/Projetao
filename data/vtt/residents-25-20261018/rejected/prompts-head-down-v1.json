@@ -1,0 +1,252 @@
+[
+  {
+    "id": "resident-026",
+    "name": "Abrão · Sapateiro",
+    "species": "humano",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-026.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-026.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: older male cobbler, dark brown skin, balding gray crown, ochre shirt and brown leather apron, holding one leather shoe and a small awl close in front."
+  },
+  {
+    "id": "resident-027",
+    "name": "Beatriz · Boticária",
+    "species": "humana",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-027.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-027.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: adult woman apothecary, light brown skin, dark braided crown, muted plum dress and green apron, cradling a small ceramic medicine jar with a bundle of herbs."
+  },
+  {
+    "id": "resident-028",
+    "name": "Caio · Guarda da vila",
+    "species": "humano",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-028.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-028.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: young male village watchman, tan skin, iron kettle helmet seen from above, faded blue padded gambeson and leather belt, one hand resting on a compact wood shield at his side, empty other hand."
+  },
+  {
+    "id": "resident-029",
+    "name": "Dalva · Lavadeira",
+    "species": "humana",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-029.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-029.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: middle-aged washerwoman, dark skin, gray hair wrapped in a pale blue kerchief, rolled sleeves and faded rose work dress, holding folded white linen close to her waist."
+  },
+  {
+    "id": "resident-030",
+    "name": "Estevão · Tanoeiro",
+    "species": "humano",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-030.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-030.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: stocky male cooper, pale skin and curly auburn crown, mustard tunic and patched brown work apron, holding a small wooden mallet and a short curved barrel stave."
+  },
+  {
+    "id": "resident-031",
+    "name": "Fátima · Vendedora de especiarias",
+    "species": "humana",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-031.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-031.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: woman spice merchant, medium brown skin, dark hair covered by a warm saffron headwrap, teal robe and rust sash, holding a shallow tiny tray with three colored spice pouches."
+  },
+  {
+    "id": "resident-032",
+    "name": "Gilberto · Coveiro",
+    "species": "humano",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-032.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-032.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: older male gravedigger, pale weathered hands, gray crown under a soft charcoal cap, worn olive work coat, holding a short spade vertically close beside his shoulder without extending past the image."
+  },
+  {
+    "id": "resident-033",
+    "name": "Helena · Relojoeira",
+    "species": "gnoma",
+    "bodyScale": 0.72,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-033.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-033.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: short adult female gnome clockmaker, copper curly crown and pointed ears barely glimpsed, navy vest over cream sleeves, small brass goggles resting on the crown, holding a tiny brass clockwork and a fine tool."
+  },
+  {
+    "id": "resident-034",
+    "name": "Ivo · Vidreiro",
+    "species": "elfo",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-034.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-034.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: slender male elf glassworker, silver hair in a short tied crown and subtle pointed ears, dark green work tunic with leather apron and wrist guards, carefully holding a small translucent blue glass bottle."
+  },
+  {
+    "id": "resident-035",
+    "name": "Jaci · Apicultora",
+    "species": "humana",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-035.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-035.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: woman beekeeper, warm brown skin, pale linen hood with fine folded veil above the shoulders, tan work smock and gloves, carrying a compact wicker honey basket and a small smoking pot with no large smoke plume."
+  },
+  {
+    "id": "resident-036",
+    "name": "Klaus · Mineiro",
+    "species": "anão",
+    "bodyScale": 0.85,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-036.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-036.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: broad adult male dwarf miner, brown crown beneath a dark leather cap with a small brass lamp, slate work jacket and russet belt, compact pickaxe held diagonally close across the torso, natural thick hands."
+  },
+  {
+    "id": "resident-037",
+    "name": "Luzia · Médica",
+    "species": "humana",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-037.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-037.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: older woman physician, dark brown skin, tightly coiled gray crown, muted blue linen robe with cream apron and leather satchel, holding a neatly rolled clean bandage and a small pouch."
+  },
+  {
+    "id": "resident-038",
+    "name": "Miguel · Carvoeiro",
+    "species": "humano",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-038.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-038.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: lean male charcoal burner, tan skin, black hair under a worn brown hood folded behind the neck, charcoal-stained gray tunic and leather gloves, holding a small sack of charcoal close in front."
+  },
+  {
+    "id": "resident-039",
+    "name": "Nélia · Cartógrafa",
+    "species": "elfa",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-039.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-039.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: female elf cartographer, braided dark chestnut crown and subtle pointed ears, muted turquoise traveling coat, holding an unlettered rolled parchment and a small brass compass, no readable writing."
+  },
+  {
+    "id": "resident-040",
+    "name": "Otávio · Cervejeiro",
+    "species": "humano",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-040.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-040.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: large male brewer, pale skin, short sandy hair crown, rolled cream sleeves and green vest with brown apron, holding a small wooden beer tankard and a folded cloth, no foam effects."
+  },
+  {
+    "id": "resident-041",
+    "name": "Pilar · Peleira",
+    "species": "humana",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-041.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-041.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: adult woman leatherworker, olive skin, black hair tied in a compact bun, rust-red sleeves and worn tan leather apron, holding a small folded hide and a compact stitching tool safely close together."
+  },
+  {
+    "id": "resident-042",
+    "name": "Quirino · Vigia noturno",
+    "species": "meio-orc",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-042.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-042.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: broad male half-orc night watchman, muted olive green skin, short black crown, weathered indigo hooded cloak folded off the head, carrying a closed brass lantern close beside one hip, no light aura."
+  },
+  {
+    "id": "resident-043",
+    "name": "Rita · Florista",
+    "species": "halfling",
+    "bodyScale": 0.72,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-043.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-043.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: short halfling woman florist, warm brown skin and curly black crown with a cream headscarf, sage-green dress and burgundy apron, cradling a compact basket of small colorful cut flowers."
+  },
+  {
+    "id": "resident-044",
+    "name": "Saulo · Açougueiro",
+    "species": "humano",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-044.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-044.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: middle-aged male butcher, dark brown skin, shaved crown, burgundy work shirt and clean off-white heavy apron, holding wrapped butcher paper parcel tied with string and a small scale weight, no gore."
+  },
+  {
+    "id": "resident-045",
+    "name": "Teresa · Queijeira",
+    "species": "humana",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-045.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-045.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: middle-aged female cheesemaker, fair skin, blond crown wrapped in white linen, pale blue dress and cream apron, carrying a small round cheese wheel against the waist with both hands."
+  },
+  {
+    "id": "resident-046",
+    "name": "Urias · Encadernador",
+    "species": "anão",
+    "bodyScale": 0.85,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-046.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-046.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: older male dwarf bookbinder, gray braided crown with a bald central patch, dark plum tunic and embossed brown apron, holding a closed small leather book and a short spool of thread, no text."
+  },
+  {
+    "id": "resident-047",
+    "name": "Valéria · Alfaiate",
+    "species": "humana",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-047.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-047.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: young woman tailor, medium brown skin, black crown in two neat braids, moss-green fitted work dress and pale belt, holding a folded piece of crimson fabric and small closed scissors in separate hands."
+  },
+  {
+    "id": "resident-048",
+    "name": "Wesley · Mercador ambulante",
+    "species": "humano",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-048.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-048.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: male traveling peddler, brown skin, dark curls under a soft teal cap, layered russet coat and leather shoulder straps, carrying a compact bundle of two rolled cloths and a small tied pouch."
+  },
+  {
+    "id": "resident-049",
+    "name": "Xênia · Acrobata",
+    "species": "elfa",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-049.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-049.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: slender female elf street acrobat, warm olive skin and red braided crown, fitted burgundy and muted gold medieval stage costume with soft boots, holding three compact juggling balls together in natural lowered hands, no motion trails."
+  },
+  {
+    "id": "resident-050",
+    "name": "Zeca · Barqueiro",
+    "species": "humano",
+    "bodyScale": 1,
+    "reference": "public/vtt/overhead-20261015/resident-001.webp",
+    "image": "/vtt/residents-25-20261018/resident-050.webp",
+    "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-050.webp",
+    "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: older male boatman, tan weathered skin, gray crown beneath a dark blue knit cap, faded cream shirt and brown vest, carrying a compact coil of rope and a short wooden boat hook close against his side."
+  }
+]

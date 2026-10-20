@@ -1,0 +1,1637 @@
+[
+  {
+    "id": "oak-table",
+    "name": "Mesa de carvalho",
+    "sha256": "129b0957521b82426b26ff1e623305a1e32fd2a3375c2f66c3cf2ee3cdabb6a4"
+  },
+  {
+    "id": "supply-crates",
+    "name": "Caixas de provisões",
+    "sha256": "72f5011c50cf7d05419ccb856754c275979385abc8165d4749aa57c4ada2c5cb"
+  },
+  {
+    "id": "stone-well",
+    "name": "Poço de pedra",
+    "sha256": "406c15bb6174c1f88a2a6fa4690aaba74eb0a824a0d2a15d6c73fe9cc5b49236"
+  },
+  {
+    "id": "forest-oak",
+    "name": "Carvalho frondoso",
+    "sha256": "6b701cf65b610dba1bc822e9174355bfe1df75090f55e438649680fc188b4a25"
+  },
+  {
+    "id": "moss-rock",
+    "name": "Rocha musgosa",
+    "sha256": "962ff214fd165e20ccba8d1e9171136dba826073a739100d69aa562eb0c09c51"
+  },
+  {
+    "id": "dungeon-altar",
+    "name": "Altar antigo",
+    "sha256": "e6c2760a782b11d08172a678f756dec2a121633a9ab97cf6db57556cc959d0ed"
+  },
+  {
+    "id": "camp-bedroll",
+    "name": "Saco de dormir",
+    "sha256": "126a5a98ea46a5309df051bc4e830b1554804ec43ca0c8574a6c9535eb8c3c74"
+  },
+  {
+    "id": "iron-chest",
+    "name": "Baú reforçado",
+    "sha256": "3aebe1c744a52dc55ac073de1aeab7c8b94e3d7bad5853fd68ba0bedfb9e23e1"
+  },
+  {
+    "id": "scenery-0009",
+    "name": "Mesa retangular — peça abandonada",
+    "sha256": "87df6accd1f5f3cc47a4a0e8cc8bfad69ba23c4aa4d77b1366a087f4fa5a9ce6"
+  },
+  {
+    "id": "scenery-0010",
+    "name": "Mesa retangular — peça compacta",
+    "sha256": "0ead2aaa4dab7ef6666d14e2125506c42b18831bc83c0f4354c7246edadd7577"
+  },
+  {
+    "id": "scenery-0011",
+    "name": "Cadeira — peça rústica",
+    "sha256": "099bf2f632a1b465ead4ce58885dad9cbc3d9911fe12e25595f4e98550d6e606"
+  },
+  {
+    "id": "scenery-0012",
+    "name": "Cadeira — peça nobre",
+    "sha256": "9e9867a44401bb66f2ba983e937cae9d035e7ae2934259b30cf568f093153f48"
+  },
+  {
+    "id": "scenery-0013",
+    "name": "Cadeira — peça de cabana",
+    "sha256": "3310529b0b74390cee72b6fcb6d8b1ff6177fd30d3126c34411622d6834d0cf4"
+  },
+  {
+    "id": "scenery-0014",
+    "name": "Cadeira — peça danificada",
+    "sha256": "924b99f20107deb8f10baef938a5f3db57c08d5c3f70e0afb6df95090e5a8a5b"
+  },
+  {
+    "id": "scenery-0015",
+    "name": "Cadeira — peça de estalagem",
+    "sha256": "f7f22f9134a44344b4ec6a09ca6d1ca7b18e1d9aeb9d7aac5bf4115a830f1370"
+  },
+  {
+    "id": "scenery-0016",
+    "name": "Cadeira — peça de oficina",
+    "sha256": "bbd9ba9fb709ce7d1f499472018712b2e6d03f78952f8fb0aab8f6a38998edb4"
+  },
+  {
+    "id": "scenery-0017",
+    "name": "Cadeira — peça antiga",
+    "sha256": "1140968e6e11d6b21c995df12ec462477a9ab6e67ece5d300c07dc3cee809203"
+  },
+  {
+    "id": "scenery-0021",
+    "name": "Cama — peça rústica",
+    "sha256": "6446ef453fb77da344d68219bb587bfed597c1234904b5276ce9ca55f453184d"
+  },
+  {
+    "id": "scenery-0022",
+    "name": "Cama — peça nobre",
+    "sha256": "cd85d46c28867db99f5991dbd1d2eb01c2c9e7f6204cfdd9a26d0299640ea2a0"
+  },
+  {
+    "id": "scenery-0023",
+    "name": "Cama — peça de cabana",
+    "sha256": "409f8639e16fbac95be67f74e5308d08df59a00884236746aa0d6e4194685f7a"
+  },
+  {
+    "id": "scenery-0024",
+    "name": "Cama — peça danificada",
+    "sha256": "7707f137dafca54ef97d5c7e13d27cf7e1c4ce8c7f65459949ed0cf5cee14a6e"
+  },
+  {
+    "id": "scenery-0025",
+    "name": "Cama — peça de estalagem",
+    "sha256": "c5bfec3cd811ad2cb1a3517652615d342d2730084539f1a62f2896474c335e2e"
+  },
+  {
+    "id": "scenery-0026",
+    "name": "Cama — peça de oficina",
+    "sha256": "8418c6cdff5571b066da88dee7f90996f7aae9c0bb141f99105f5acdb3591e7c"
+  },
+  {
+    "id": "scenery-0027",
+    "name": "Cama — peça antiga",
+    "sha256": "9643416003e7ff1e10c6b3f13ec77815a359a8ebab1e698efc4bebe7a40d523e"
+  },
+  {
+    "id": "scenery-0028",
+    "name": "Cama — peça ornamentada",
+    "sha256": "5163190daed7cdaf259f0b71fa14aad733907d7e6b334337696425a9f2065b29"
+  },
+  {
+    "id": "scenery-0029",
+    "name": "Cama — peça abandonada",
+    "sha256": "9e00db0bc6311e348c0b70dbe1906914ae8a3609326dd7a31e8eec72f2acb4c0"
+  },
+  {
+    "id": "scenery-0601",
+    "name": "Banca de feira — praça",
+    "sha256": "409429aa386ec84cb862f3199eb786682319e6e1afba4c8a0db09496430ef56c"
+  },
+  {
+    "id": "scenery-0701",
+    "name": "Rochedo — pequeno",
+    "sha256": "3dc6ebce581798726e357cf862a843fb9984fb52eb47e813d55dc3b870af941b"
+  },
+  {
+    "id": "scenery-0801",
+    "name": "Baú — artesão",
+    "sha256": "e1c457f249eb4a22262b73ccbbe63bf512a5fa786c8b3e6ce417403e6b59af32"
+  },
+  {
+    "id": "scenery-0901",
+    "name": "Círculo ritual — sol",
+    "sha256": "bf686d631f2af14a5bbd3ef8ce7a0d2572ac13d13e2bd98d7dbc0b6c1e085618"
+  },
+  {
+    "id": "scenery-0101",
+    "name": "Barraca — explorador",
+    "sha256": "0bca47948c7fa02754ad38058a5c6b5b1798a2c1a4fd39d4e1232c30eb8e979e"
+  },
+  {
+    "id": "scenery-0102",
+    "name": "Barraca — caçador",
+    "sha256": "d12d9b40e7e7a59b3683666351b2814bfc63a509c65db2f55382eb6b9602f3a1"
+  },
+  {
+    "id": "scenery-0103",
+    "name": "Barraca — mercador",
+    "sha256": "ab6ca6eec6a348c9b8d478f638045775f50485549af8711a09cf7e686207267a"
+  },
+  {
+    "id": "scenery-0201",
+    "name": "Carvalho — bosque jovem",
+    "sha256": "0e90f72c9145c6e54aa1d467687dec8212cdaff61c91092c21654cf3188d63e4"
+  },
+  {
+    "id": "scenery-0202",
+    "name": "Carvalho — bosque antigo",
+    "sha256": "1b02c17f42dbbc374d0a0bf1198a07325facf55f8dc1f4834a89bb0ef6dd0a4f"
+  },
+  {
+    "id": "scenery-0203",
+    "name": "Carvalho — bosque úmido",
+    "sha256": "f298c10106203ea8e5e4dd939f7b1baf9e5f9cc7f7d64dc479b82851f1505cc6"
+  },
+  {
+    "id": "scenery-0301",
+    "name": "Altar — catacumba",
+    "sha256": "4cb72e99b4d1ea5cba5647f172d0cf0bf6686fa11d8cd2d9ab196f78e6514f7d"
+  },
+  {
+    "id": "scenery-0302",
+    "name": "Altar — cripta real",
+    "sha256": "9bfe4e3bde13717db50263a0e8dcb066251c9bc98052592317f77a6aaeffda7a"
+  },
+  {
+    "id": "scenery-0303",
+    "name": "Altar — templo perdido",
+    "sha256": "70d45bdbaef0b74c03f05dfb56a9ef93cbb6d9b08e61c0537ff7488cdf39c72c"
+  },
+  {
+    "id": "scenery-0401",
+    "name": "Casa pequena — vila",
+    "sha256": "3096b2945f042e836da461430fb756bb235f8b0e565b18abd010f2aab663eb18"
+  },
+  {
+    "id": "scenery-0402",
+    "name": "Casa pequena — cidade antiga",
+    "sha256": "74089a725e6ab6fbd6f508bfbf86d40cc0790767dbe9cf8e52695bd18fbedb3b"
+  },
+  {
+    "id": "scenery-0403",
+    "name": "Casa pequena — fronteira",
+    "sha256": "925c5cc999b18806bbcb78d04ccbef125c1fcd3efd0a70f5226ddc84515b29db"
+  },
+  {
+    "id": "scenery-0501",
+    "name": "Mesa posta — estalagem humilde",
+    "sha256": "38370a76dc2b9d17590e4f25a62dfee4f070870c9ed6cabd75ef9404ac7fca99"
+  },
+  {
+    "id": "scenery-0502",
+    "name": "Mesa posta — salão rico",
+    "sha256": "76fcce34444e5d52e79fce6448741b5187f2068a5e870037c4813e92b5fa4329"
+  },
+  {
+    "id": "scenery-0503",
+    "name": "Mesa posta — porto",
+    "sha256": "2f01acb85b0ba90a86e8e639603003fd349988e8cb6b1c1bd45decc9fba94c9c"
+  },
+  {
+    "id": "scenery-0602",
+    "name": "Banca de feira — beco",
+    "sha256": "d383c7e258e87f0b24efe9357cd633631fe65d883ddfbd12463d829fa71113cf"
+  },
+  {
+    "id": "scenery-0603",
+    "name": "Banca de feira — mercado",
+    "sha256": "240647a701d87428be67aeeb058b08e10f16e83a17379407d866c03297302c6b"
+  },
+  {
+    "id": "scenery-0702",
+    "name": "Rochedo — alongado",
+    "sha256": "f62a29f3da933fd45181ce79434d5747d56c19bd049fd17bd4c0187526a6dda8"
+  },
+  {
+    "id": "scenery-0703",
+    "name": "Rochedo — circular",
+    "sha256": "266524511de85aeed5d0b682c4d81a55472ffbd461f4efde4bb1dd65856f21e6"
+  },
+  {
+    "id": "scenery-0802",
+    "name": "Baú — mercador",
+    "sha256": "6fbc30327e69992269af5b8aaec0e713f769337e890e41599a07c7280dc1e743"
+  },
+  {
+    "id": "scenery-0803",
+    "name": "Baú — nobre",
+    "sha256": "5aa7a99bd67d72c548f5d1c512c217ed484ead12f5ef3e9c621f439ba972ed9e"
+  },
+  {
+    "id": "scenery-0902",
+    "name": "Círculo ritual — lua",
+    "sha256": "851cf29a33feb92c435f6d60eef31ba3385f78ccb39581c507c08853432af966"
+  },
+  {
+    "id": "scenery-0903",
+    "name": "Círculo ritual — natureza",
+    "sha256": "a430123f3a4ca35fd346a0ad7fd5b6a4db321a25765778b8a77fe58a31f49d0e"
+  },
+  {
+    "id": "scenery-0018",
+    "name": "Cadeira — peça ornamentada",
+    "sha256": "894b5fb283d0b370f2274537b0bdb38aa5aad3bce111a9c94bf96c56970284b3"
+  },
+  {
+    "id": "scenery-0019",
+    "name": "Cadeira — peça abandonada",
+    "sha256": "3bca2a8f4e8d56691b13acf70bdf38de349f3f4ae5d9471987fe75aeab4b50b4"
+  },
+  {
+    "id": "scenery-0020",
+    "name": "Cadeira — peça compacta",
+    "sha256": "004e3d5753a5a414ef2e11670349281431feee88773200f6ca4bcfc64879eef5"
+  },
+  {
+    "id": "scenery-0030",
+    "name": "Cama — peça compacta",
+    "sha256": "fa8c8e4e7be8d6d698dabbf6c50d3918a2ceec4a3de455705de5744dfbfafbd7"
+  },
+  {
+    "id": "scenery-0104",
+    "name": "Barraca — soldado",
+    "sha256": "0090db917124f14f8059151da3183f85ff9d8f423fa06c52583bf3e37d716123"
+  },
+  {
+    "id": "scenery-0105",
+    "name": "Barraca — peregrino",
+    "sha256": "182b531d02b98c084253a261cda66d062907edfb8f5467d26a50e4bbeb87d179"
+  },
+  {
+    "id": "scenery-0106",
+    "name": "Barraca — lenhador",
+    "sha256": "ca2783f18448a183c56f1ce8e71f4a6991aaa89087b929ba8dc042ac8586ee4e"
+  },
+  {
+    "id": "scenery-0107",
+    "name": "Barraca — nômade",
+    "sha256": "dfd93461f17cda909e09de196641225a784a7784d571ac901e89f11e9cfc3538"
+  },
+  {
+    "id": "scenery-0108",
+    "name": "Barraca — alquimista",
+    "sha256": "6c4c2d44edbd19b94847dbaffd3c5b6ad117873a4540dcdbb6faf28a68988267"
+  },
+  {
+    "id": "scenery-0204",
+    "name": "Carvalho — bosque seco",
+    "sha256": "b2ff965ad9472e7a4290fc228ee2e4c3c597e14bf51ddd9cfe33d39fd3fc995f"
+  },
+  {
+    "id": "scenery-0205",
+    "name": "Carvalho — bosque outonal",
+    "sha256": "d2c051fbcfa59b9f16f5680ceb2af0b5db0ce71d5e246b19c5b22f6ae4585dfa"
+  },
+  {
+    "id": "scenery-0206",
+    "name": "Carvalho — bosque queimado",
+    "sha256": "8ab0aaca5e6d283092d3d759e6547ba1c3ea06f3effad1bdf1373e1d9bc779fd"
+  },
+  {
+    "id": "scenery-0207",
+    "name": "Carvalho — bosque nevado",
+    "sha256": "197c1b477d43c999f4790009b35f9d7124f21da6525711847e09ac3359bba8a1"
+  },
+  {
+    "id": "scenery-0208",
+    "name": "Carvalho — bosque encantado",
+    "sha256": "5d49ac946f11e0e7443f269d6a4d0a9b8622af1cab3c0ba7ddfcc98fbc6c6348"
+  },
+  {
+    "id": "scenery-0304",
+    "name": "Altar — fortaleza",
+    "sha256": "d8cefb092cb67f2f03d1db0110198159639fc5a0754d2f740d89d6a7921f9aff"
+  },
+  {
+    "id": "scenery-0305",
+    "name": "Altar — prisão",
+    "sha256": "d01a958fc8815df82f31183d4c6f11bd378a68c4f39772d7c49c555c9078bb88"
+  },
+  {
+    "id": "scenery-0306",
+    "name": "Altar — mina",
+    "sha256": "b26ab8fd21e511922c35c8cb48398d55ceeb3e5048f9e8f7177963d38d0a56ad"
+  },
+  {
+    "id": "scenery-0307",
+    "name": "Altar — ruína arcana",
+    "sha256": "f5d6cc26f93d8aae98d27b291c19040473a9fd84ae91f001411631dc2c15311d"
+  },
+  {
+    "id": "scenery-0404",
+    "name": "Casa pequena — montanha",
+    "sha256": "cee60bf4b140b690f0bc8c8c8bd466a435f267b447985f96dfbd6a4a8022fa7a"
+  },
+  {
+    "id": "scenery-0405",
+    "name": "Casa pequena — pântano",
+    "sha256": "a18227ca1462bd64a2a7821bea00b0a228dfdb8f44fae2b26b3b0d66ae246d26"
+  },
+  {
+    "id": "scenery-0406",
+    "name": "Casa pequena — costa",
+    "sha256": "19d6bb66a44b0aa02ef6515a2c6cf7976c1222fd979d84d5fc6dd936729a1905"
+  },
+  {
+    "id": "scenery-0407",
+    "name": "Casa pequena — deserto",
+    "sha256": "ea53d62c94d42c872fdd606e2fd9d939c52ade4741197ae6f6e7892b21960ee4"
+  },
+  {
+    "id": "scenery-0504",
+    "name": "Mesa posta — encruzilhada",
+    "sha256": "2e1f454a7428b5a3614f41863a02a9ac3299692134e45698238da9ddb15b25ad"
+  },
+  {
+    "id": "scenery-0505",
+    "name": "Mesa posta — cervejaria",
+    "sha256": "1fb1c9bbf7ce092ddcc51e4d311e87becd0d8666e6b41ad0aab648d9ef6e6f0d"
+  },
+  {
+    "id": "scenery-0506",
+    "name": "Mesa posta — salão anão",
+    "sha256": "b034b919c71306d6ffd375df9551fa75877cf49a3e021c7b08fe5f6f80172ff5"
+  },
+  {
+    "id": "scenery-0507",
+    "name": "Mesa posta — taberna feérica",
+    "sha256": "607fd761eeaae59d342913fac8fdbef9c488eb816f8dbf4a076649c823ae5e3a"
+  },
+  {
+    "id": "scenery-0604",
+    "name": "Banca de feira — porto",
+    "sha256": "5f570f18ea1e1873825971dfcec3a3b1c1baefe5c911e3e8e0d569ab6c235550"
+  },
+  {
+    "id": "scenery-0605",
+    "name": "Banca de feira — bairro nobre",
+    "sha256": "15e9a663be553abe47c6f56d64b988ec528ebda7ea067150a6b0d015a6bce51a"
+  },
+  {
+    "id": "scenery-0606",
+    "name": "Banca de feira — bairro pobre",
+    "sha256": "9ec8f30615a33bd3a610aa522646c4b8594366059292b1aed37572d6ae270fd5"
+  },
+  {
+    "id": "scenery-0607",
+    "name": "Banca de feira — oficina",
+    "sha256": "cfae8c942d067549e6c6b3c344312536a1b51b64388af42767968a9a0f0be1ff"
+  },
+  {
+    "id": "scenery-0704",
+    "name": "Rochedo — fragmentado",
+    "sha256": "a48d2dc62999c2330ef6668e4c80a8e1d7be4c39e104bafe951a20791922ecc1"
+  },
+  {
+    "id": "scenery-0705",
+    "name": "Rochedo — estreito",
+    "sha256": "69afd5893308d0e83be49a20c6dc70e9f2c5113c5604411d1c9995481da89b7a"
+  },
+  {
+    "id": "scenery-0706",
+    "name": "Rochedo — amplo",
+    "sha256": "e671a5ce50fe74385500af36f2c0d93462577d821535151e13c5eaf413063622"
+  },
+  {
+    "id": "scenery-0031",
+    "name": "Armário — peça rústica",
+    "sha256": "48be13bc0675ca0f4d0de18d6ac857820ca27fe1556f4eb542d84c0f42e71915"
+  },
+  {
+    "id": "scenery-0032",
+    "name": "Armário — peça nobre",
+    "sha256": "b43ae452e238f0dbffc166f47d59392711188d898d54137f9dd3a94d2e8e2b52"
+  },
+  {
+    "id": "scenery-0033",
+    "name": "Armário — peça de cabana",
+    "sha256": "cf836d6b868cb5270fe3fd0ed9d56e91da5894ea5696162ff9e7bc0e649341be"
+  },
+  {
+    "id": "scenery-0034",
+    "name": "Armário — peça danificada",
+    "sha256": "5c52697100a0945b039fe9d7ca44936c7bef33e59e8192e20b9635a22e556cc0"
+  },
+  {
+    "id": "scenery-0035",
+    "name": "Armário — peça de estalagem",
+    "sha256": "bf6b9cad857711a0c4e3ad6bd5c505393bde2ebb98abdd7f1f632f9ff5286679"
+  },
+  {
+    "id": "scenery-0036",
+    "name": "Armário — peça de oficina",
+    "sha256": "4d0bc019b676da691fdb14e0c7a52188536c2dc8dc1fb7d4c3df9975f362153b"
+  },
+  {
+    "id": "scenery-0037",
+    "name": "Armário — peça antiga",
+    "sha256": "8df4ff8317c074fd66eef92c543d42b01caa0757feeb7d43148bce752c17a207"
+  },
+  {
+    "id": "scenery-0109",
+    "name": "Barraca — pescador",
+    "sha256": "4620c97cd22abd2e2c541e51df7d6bf635c039fc4d4c3ea27a4214a2c32278c0"
+  },
+  {
+    "id": "scenery-0038",
+    "name": "Armário — peça ornamentada",
+    "sha256": "6222eb5298577ded544f690787ebddcbe02fa05b5295da146c61e8eca5b9c560"
+  },
+  {
+    "id": "scenery-0209",
+    "name": "Carvalho — bosque cerrado",
+    "sha256": "145f85eba72761e48af66a2b888583f0f73fc8dd4d02a0b260af52afdbf16cbb"
+  },
+  {
+    "id": "scenery-0308",
+    "name": "Altar — covil",
+    "sha256": "a367fd3164ed2c696407047f18e90e49141e13aba617044d0900eeaddfb162c6"
+  },
+  {
+    "id": "scenery-0309",
+    "name": "Altar — santuário",
+    "sha256": "500d5c6cea0464863743573476c8c677218cca25d3d8309731beba635650bbda"
+  },
+  {
+    "id": "scenery-0408",
+    "name": "Casa pequena — neve",
+    "sha256": "fa852cffddb6369a1438a194f0d721543124c36a56d01f8da55a385296887bbc"
+  },
+  {
+    "id": "scenery-0409",
+    "name": "Casa pequena — jardim",
+    "sha256": "66a9e5d280a528fe2fc068d6d0c4a87c19175e20627dd3fb44a76fc92f1bd2b1"
+  },
+  {
+    "id": "scenery-0508",
+    "name": "Mesa posta — refúgio",
+    "sha256": "bcba657a599c270bb40eb837f272f53c963f2fed8dc3406920330f39658c6570"
+  },
+  {
+    "id": "scenery-0608",
+    "name": "Banca de feira — templo",
+    "sha256": "054ea7c2e15b2efb8136c2fbf4bca2d814b39b40cae925f73ae3d6d08f55ab4a"
+  },
+  {
+    "id": "scenery-0707",
+    "name": "Rochedo — irregular",
+    "sha256": "fcac9f770723d8f7d4e33711d6d68fdb65d31b26668105f305f87a55ea54f481"
+  },
+  {
+    "id": "scenery-0708",
+    "name": "Rochedo — duplo",
+    "sha256": "10676dcaad229b258463e3a1d087fb601bcf857f0ae873f43924a2bc9d7913c8"
+  },
+  {
+    "id": "scenery-0804",
+    "name": "Baú — viajante",
+    "sha256": "eb61aa4706c364c6c11e53498363f1a8df1ea26f639058555ea4db5a12530c52"
+  },
+  {
+    "id": "scenery-0805",
+    "name": "Baú — guarda",
+    "sha256": "9b40740182a720b39636d4e4074e7a9a2122b3855af9e2d78a70c6b1bc5dc23d"
+  },
+  {
+    "id": "scenery-0806",
+    "name": "Baú — ruína",
+    "sha256": "153e7c2264bfdd1a1118890637d5052ce3a0639a2039232f2a0849a55eb30d85"
+  },
+  {
+    "id": "scenery-0807",
+    "name": "Baú — pirata",
+    "sha256": "810a59ebe1b919353b97c1558345346751ec475903cb2e37ebf73c82a9bd1157"
+  },
+  {
+    "id": "scenery-0808",
+    "name": "Baú — mineiro",
+    "sha256": "a97a18b8c5a8914d1f248ab10fdcd95ff4ffd18fb6112a50a4da5df9123754b9"
+  },
+  {
+    "id": "scenery-0904",
+    "name": "Círculo ritual — tempestade",
+    "sha256": "57c3a69287d7b87ce235e1496d84215a03e3c7961ce82b302beff6f3742bc32b"
+  },
+  {
+    "id": "scenery-0905",
+    "name": "Círculo ritual — mar",
+    "sha256": "dde39219361e30953b8ac017e2dcec8b80652375cbbf2bc1b23940eed3d90244"
+  },
+  {
+    "id": "scenery-0906",
+    "name": "Círculo ritual — terra",
+    "sha256": "0b347a502bc3d674f9ceef67b3a43c5f409f633a5e64de385a2b09d70b49ff8b"
+  },
+  {
+    "id": "scenery-0907",
+    "name": "Círculo ritual — fogo",
+    "sha256": "102e769746924ad44842fb4a16fb13a3799c19832c9d4c305b3c3f6ad1190dee"
+  },
+  {
+    "id": "scenery-0908",
+    "name": "Círculo ritual — gelo",
+    "sha256": "6ee7ca39164f013247858ec76319cd019fb21edae8917ac2d60d9714afcd244a"
+  },
+  {
+    "id": "scenery-0509",
+    "name": "Mesa posta — salão de caça",
+    "sha256": "726bcb3e90384813f6c3dfbc26c1269186b2757f9f281baed26607a34b05f5e8"
+  },
+  {
+    "id": "scenery-0609",
+    "name": "Banca de feira — guarda",
+    "sha256": "c669e5dbb80cc5d3226d23fcce546eac120d9851baa281958c459177d97bc0d1"
+  },
+  {
+    "id": "scenery-0709",
+    "name": "Rochedo — compacto",
+    "sha256": "c3c3e923683704ffa6125d437ca4a149201613809728acc3fa7ddf0baa51e22a"
+  },
+  {
+    "id": "scenery-0039",
+    "name": "Armário — peça abandonada",
+    "sha256": "416386a58a87b4f7a72023125705483a4f75f9e1bfd076efc1c16defe5e8de97"
+  },
+  {
+    "id": "scenery-0110",
+    "name": "Barraca — aventureiro",
+    "sha256": "a5170c795353b2ee4ffb00b88c8dabba84a98c6d14607ecc112a9fe4aee040cf"
+  },
+  {
+    "id": "scenery-0210",
+    "name": "Carvalho — bosque retorcido",
+    "sha256": "dc0687e72a281d47ed5483f90f9f6f53a64245d655133c46af0a2379a97b7062"
+  },
+  {
+    "id": "scenery-0310",
+    "name": "Altar — câmara inundada",
+    "sha256": "b58988f05edb7fd85ef97a26e6f255ceb124594d2a7ab722dc70de2037173f88"
+  },
+  {
+    "id": "scenery-0809",
+    "name": "Baú — mago",
+    "sha256": "b085c3e9b58e274bc5c048c07ebf5060430f0a941678eefff22a8298568d7895"
+  },
+  {
+    "id": "scenery-0909",
+    "name": "Círculo ritual — estrelas",
+    "sha256": "bac58f1c27ad7d83508dc80b81ceaadf50359b27db3b260168415cd7b2f37c03"
+  },
+  {
+    "id": "scenery-0410",
+    "name": "Casa pequena — aldeia",
+    "sha256": "f0a8f625d8340276e7d0c106c75b275e1986e1b1f6161eb4ec41328410170c8f"
+  },
+  {
+    "id": "scenery-0510",
+    "name": "Mesa posta — posto mercantil",
+    "sha256": "98c60a78e63b27ab1660c8a4d99fcb298908238ac48e224fa9c483de0e7ba676"
+  },
+  {
+    "id": "scenery-0610",
+    "name": "Banca de feira — jardim",
+    "sha256": "3cf464969c5ab68a06907a2a0605ce626024023c413927ed6ab01e77982f839a"
+  },
+  {
+    "id": "scenery-0710",
+    "name": "Rochedo — disperso",
+    "sha256": "d7058bedf5c724bfd94319ab1f42be67cdb508d474ef7e7f7fdfd5e9a5ce6f14"
+  },
+  {
+    "id": "scenery-0810",
+    "name": "Baú — camponês",
+    "sha256": "87bbb27390d469ddf6fa9623945b0086034fa820c50ae63177e45f26c76e500a"
+  },
+  {
+    "id": "scenery-0910",
+    "name": "Círculo ritual — ancestrais",
+    "sha256": "2be8447c6544bb8494ff64b647d47da6a03952d869996916c7ff81b9662ccb04"
+  },
+  {
+    "id": "scenery-0040",
+    "name": "Armário — peça compacta",
+    "sha256": "50d41584d9227db277eb1243c60deb630b22248d58fbe98d7305fd8ee6fd854c"
+  },
+  {
+    "id": "scenery-0111",
+    "name": "Fogueira — explorador",
+    "sha256": "d8b6a7561686e50054759808bddd1a98fb53b7d7d9523c54e7a2dad4cd1a2fb6"
+  },
+  {
+    "id": "scenery-0211",
+    "name": "Pinheiro — bosque jovem",
+    "sha256": "9f573d035cae3c88ea2108c879447f43c2ec1cc1bf9b6f68b372c8a9cf407038"
+  },
+  {
+    "id": "scenery-0311",
+    "name": "Sarcófago — catacumba",
+    "sha256": "ae915088d72e9ba280175c5498b847d5f178707bf94836925160478b2f2d23f4"
+  },
+  {
+    "id": "scenery-0312",
+    "name": "Sarcófago — cripta real",
+    "sha256": "19d2022263b46db67c8a2533f22c6f78c2907c6d94d403c7e99ea95cd5987bbe"
+  },
+  {
+    "id": "scenery-0412",
+    "name": "Cabana — cidade antiga",
+    "sha256": "affaa418f6052370dcc7eaadd4e4390e7b2e481cf76a9142e0f07ab14bcbd109"
+  },
+  {
+    "id": "scenery-0411",
+    "name": "Cabana — vila",
+    "sha256": "3d20cf26e32f74bd550d9cb39ffb6e1fb260f6e1d5eb997619bc85e663dc6c70"
+  },
+  {
+    "id": "scenery-0512",
+    "name": "Balcão — salão rico",
+    "sha256": "91cf89abd54704074acf191f0c0784e541c6a02d280969cf1b03ce39902a8950"
+  },
+  {
+    "id": "scenery-0611",
+    "name": "Fonte — praça",
+    "sha256": "e01f97b81b71da09c5d180dd7a62b76901bbe1687029656390860603201a9c8d"
+  },
+  {
+    "id": "scenery-0112",
+    "name": "Fogueira — caçador",
+    "sha256": "72753452a2a494deecdd4ab90c6056a23fb9d9ff5fe14d1bf25daa348bcf5426"
+  },
+  {
+    "id": "scenery-0113",
+    "name": "Fogueira — mercador",
+    "sha256": "8714ab8f3829a52bb4378674fcbc3244de640d2bbf8d24e9411420fa58185dfe"
+  },
+  {
+    "id": "scenery-0212",
+    "name": "Pinheiro — bosque antigo",
+    "sha256": "9ef2633367744c818f7f7e6c66451d4f46b7f87321bd46ab1953713d36e4b7a2"
+  },
+  {
+    "id": "scenery-0213",
+    "name": "Pinheiro — bosque úmido",
+    "sha256": "222f3fc3a2c1bdb5d36e79c405810ae86f7d0d6078a002427c61b4573eb41eef"
+  },
+  {
+    "id": "scenery-0313",
+    "name": "Sarcófago — templo perdido",
+    "sha256": "4dd5b0c45c0c8a6532051bff7baae35b2ec513a7074d3199d0b84a8dfd1ab4d3"
+  },
+  {
+    "id": "scenery-0413",
+    "name": "Cabana — fronteira",
+    "sha256": "3651a9bea0ecec49d12f8b4050f280c4da8fec733be510039ab386612a54290d"
+  },
+  {
+    "id": "scenery-0511",
+    "name": "Balcão — estalagem humilde",
+    "sha256": "56aaca309e9647b16f078ac240636083b00ec8daab237bbe1647d9e86c5caca3"
+  },
+  {
+    "id": "scenery-0513",
+    "name": "Balcão — porto",
+    "sha256": "7d0ce212e3342a9e7c8189fc0bc4e3ab774d95bdc942fa8cad5686173f76ab25"
+  },
+  {
+    "id": "scenery-0612",
+    "name": "Fonte — beco",
+    "sha256": "c40a053b7102ccec8f4f5ca7e6560eb93c8e0b392ef4320ac677876120c3de5d"
+  },
+  {
+    "id": "scenery-0613",
+    "name": "Fonte — mercado",
+    "sha256": "54c38c82591de6775523ef492193d2d7dd3bc29a37d0a95e2a1914b19abaa9c3"
+  },
+  {
+    "id": "scenery-0711",
+    "name": "Poça — pequeno",
+    "sha256": "9a402aae8eacedfeecb552bfbf8d624725c9a594256fdf6beebdbeee1a2211a9"
+  },
+  {
+    "id": "scenery-0712",
+    "name": "Poça — alongado",
+    "sha256": "2a4a1280108d4a01cdd7e53f81c510afb07e1945e7523382cf8f7a5e645c08c1"
+  },
+  {
+    "id": "scenery-0713",
+    "name": "Poça — circular",
+    "sha256": "b02d7c4c26f92c092ce641aa90ec9dd4ce12a5d1f34f381de7830316ccd30bc0"
+  },
+  {
+    "id": "scenery-0811",
+    "name": "Sacos — artesão",
+    "sha256": "b6c5716446a7ae19b6d1751208a18688df0b11b642f888f2c891a3af2b0515c9"
+  },
+  {
+    "id": "scenery-0812",
+    "name": "Sacos — mercador",
+    "sha256": "49e834f1aab27a2281940fb3bee6057838e27915a58f8f39cb8cb569dc1ca01d"
+  },
+  {
+    "id": "scenery-0813",
+    "name": "Sacos — nobre",
+    "sha256": "652f4159e89c5dedf06134467d9798f43da937ca954e126e350dabd3c2cd772a"
+  },
+  {
+    "id": "scenery-0911",
+    "name": "Altar sagrado — sol",
+    "sha256": "1d6456cf6bd0ac5e119445d63d5badc6bc6acdce41e5221ce1cc9cb4b33a42f6"
+  },
+  {
+    "id": "scenery-0912",
+    "name": "Altar sagrado — lua",
+    "sha256": "e778eeac074462094811772bb3bac6ce1a24e78c4e00b6bb0700eb49143c426e"
+  },
+  {
+    "id": "scenery-0913",
+    "name": "Altar sagrado — natureza",
+    "sha256": "25e1cd0aca483cda809f2513eb380b1a15c22aac5a470cdc11fcc7081c3370aa"
+  },
+  {
+    "id": "scenery-0041",
+    "name": "Estante — peça rústica",
+    "sha256": "0740a2b584ca364c6b4ed327f9546cdfadcb3d65f454f0ed6835c5cecfa873cb"
+  },
+  {
+    "id": "scenery-0042",
+    "name": "Estante — peça nobre",
+    "sha256": "a26852fefacd58836c1d139e2e5026812976b704bacb57e05afa5b12e593e957"
+  },
+  {
+    "id": "scenery-0114",
+    "name": "Fogueira — soldado",
+    "sha256": "298f5a2da6e7134102991b3005225151dbdf9635d96f6aa085a16cba094582c7"
+  },
+  {
+    "id": "scenery-0115",
+    "name": "Fogueira — peregrino",
+    "sha256": "a2fb1205b819c99df7c661c17e9228540eb6a14ad85c453b8e01cd73f5a08a3c"
+  },
+  {
+    "id": "scenery-0214",
+    "name": "Pinheiro — bosque seco",
+    "sha256": "047133cffdbd798414b4c390d2d0caa037eb532ea4207e7e11956b2a30d6a3e6"
+  },
+  {
+    "id": "scenery-0215",
+    "name": "Pinheiro — bosque outonal",
+    "sha256": "fa3db3b527afc2fded5a3e0a48bca1268c9612482f5553670d00cde6c23e3f8c"
+  },
+  {
+    "id": "scenery-0314",
+    "name": "Sarcófago — fortaleza",
+    "sha256": "100f7315aae661e855ef6f13030db8a66756001bccd27aa79096b2b93966ec1c"
+  },
+  {
+    "id": "scenery-0414",
+    "name": "Cabana — montanha",
+    "sha256": "710e5be6b01da3512fa41caae26f08296c7d6eae4b9525a949ed78f9504b6ca0"
+  },
+  {
+    "id": "scenery-0514",
+    "name": "Balcão — encruzilhada",
+    "sha256": "26b2b148330ee4b8556cdd10764f1aaa9a8dd67c16df3fd7e34f1095daf85b77"
+  },
+  {
+    "id": "scenery-0614",
+    "name": "Fonte — porto",
+    "sha256": "c67223c243e10298d066dc7dcff0ccf69c55ff71d16bef6f5adcd6208bedcaf5"
+  },
+  {
+    "id": "scenery-0714",
+    "name": "Poça — fragmentado",
+    "sha256": "44a9b711a43596c6a878e105903b09b9fb34e7ee21b6d3b030475b54316c928e"
+  },
+  {
+    "id": "scenery-0814",
+    "name": "Sacos — viajante",
+    "sha256": "d6aa913a0e1205e69380200c951fdbd1d112c04c2c57ea81e78f2e715d8036c5"
+  },
+  {
+    "id": "scenery-0914",
+    "name": "Altar sagrado — tempestade",
+    "sha256": "ded77ad032ab64e69178b4354eec4546d4303331025f3a9a9196c22e1a7f2fec"
+  },
+  {
+    "id": "scenery-0043",
+    "name": "Estante — peça de cabana",
+    "sha256": "d9519934dada49f7bd638d1aae58a9d60523790be2ab8d899b3aec931b76c9d9"
+  },
+  {
+    "id": "scenery-0044",
+    "name": "Estante — peça danificada",
+    "sha256": "ca4631f6f02491028dcb802e426a499ee58143cc462d065470e451fa65715fc6"
+  },
+  {
+    "id": "scenery-0045",
+    "name": "Estante — peça de estalagem",
+    "sha256": "4734cfd97ef71b6dca9cfe51de0a5a28febc831d679b3615ee54b46922056a3c"
+  },
+  {
+    "id": "scenery-0046",
+    "name": "Estante — peça de oficina",
+    "sha256": "4bf16756bb891e2c84c797d321699d94b215524495d8ee11ba46d25fe3649d11"
+  },
+  {
+    "id": "scenery-0047",
+    "name": "Estante — peça antiga",
+    "sha256": "8ba4e2aee109b0dc79ec15a75df437dedbfb1f984db255cfd26a21dea1987734"
+  },
+  {
+    "id": "scenery-0048",
+    "name": "Estante — peça ornamentada",
+    "sha256": "db56900e11601f58df1b47b6e50c0c6f43f09125f25830d09944f3da6db9379b"
+  },
+  {
+    "id": "scenery-0049",
+    "name": "Estante — peça abandonada",
+    "sha256": "48686b6db614de9aeaab822e360083199c3c106b71bc8dee6966ab6e070c77d9"
+  },
+  {
+    "id": "scenery-0050",
+    "name": "Estante — peça compacta",
+    "sha256": "23f49f9a38edec776807dfee357e357bf7bbe4c0c8ee7c3bdb48299198d722f4"
+  },
+  {
+    "id": "scenery-0051",
+    "name": "Tapete — peça rústica",
+    "sha256": "93a05391632258272b0258dde6ff4873c14eef2c7d53059b6a28c514b0296387"
+  },
+  {
+    "id": "scenery-0052",
+    "name": "Tapete — peça nobre",
+    "sha256": "be603ef61fb10ab30e6b18e989eddc0faa36f86cf3e0f51f0ef5966b93078ecb"
+  },
+  {
+    "id": "scenery-0116",
+    "name": "Fogueira — lenhador",
+    "sha256": "41f00639590eb9a9fb6b1b528b351337119878a42e426095e28b3e19fe9846b6"
+  },
+  {
+    "id": "scenery-0117",
+    "name": "Fogueira — nômade",
+    "sha256": "ea511d0486221aa31d78aef021421179505b0d8d35b89977da2d2673309d1b38"
+  },
+  {
+    "id": "scenery-0118",
+    "name": "Fogueira — alquimista",
+    "sha256": "db4b7c1bfba7a4243e0f5e338a6981b878aab2b5e709b211f7a96a62b20318dd"
+  },
+  {
+    "id": "scenery-0119",
+    "name": "Fogueira — pescador",
+    "sha256": "267fe5f8538d9938ee15e9647644b1e44db51cf78aa02d80442efc09614f4394"
+  },
+  {
+    "id": "scenery-0120",
+    "name": "Fogueira — aventureiro",
+    "sha256": "8dcd50ebfba4459c291e9ab8f6b43f85736dc204b14db3138ec62e627179e5f5"
+  },
+  {
+    "id": "scenery-0121",
+    "name": "Mochila — explorador",
+    "sha256": "f53c7382385d7912e05dc39495307954f2cabf280fa06f8b8a9595ef43bb0fa2"
+  },
+  {
+    "id": "scenery-0122",
+    "name": "Mochila — caçador",
+    "sha256": "674c692e67d007d23393dc5589b593ca14f7943e9049e9fb5634b9b536530fd2"
+  },
+  {
+    "id": "scenery-0123",
+    "name": "Mochila — mercador",
+    "sha256": "d867b32eb9b70625c89983417f1cb4dee01fb40dd9c4cb0e555b9756b0c849a1"
+  },
+  {
+    "id": "scenery-0216",
+    "name": "Pinheiro — bosque queimado",
+    "sha256": "ee2103d048b6d29e9c37abb63c45f30abc7fea24bbad1b12c2d2b4008af0e858"
+  },
+  {
+    "id": "scenery-0217",
+    "name": "Pinheiro — bosque nevado",
+    "sha256": "60b36bee37b07cd64605dbb1ade622f1e044e8236445f396446ad69ef33670df"
+  },
+  {
+    "id": "scenery-0218",
+    "name": "Pinheiro — bosque encantado",
+    "sha256": "a99a05201fe9191cdce39d6fb87a4348de603ed84df19ba938a232e00aa77442"
+  },
+  {
+    "id": "scenery-0219",
+    "name": "Pinheiro — bosque cerrado",
+    "sha256": "78331ea446fbf3d48b77e5a3537a9225f5d42a619955cbd988dade7a8497cfbc"
+  },
+  {
+    "id": "scenery-0220",
+    "name": "Pinheiro — bosque retorcido",
+    "sha256": "9cfb44de974004f8729573f878b433c4caf527072c2ac100efb6e64bf34c3f51"
+  },
+  {
+    "id": "scenery-0221",
+    "name": "Arbusto — bosque jovem",
+    "sha256": "f646ced515605b433e82f86d9f072a6461e60e73c005a5a6f974233a8bf58bc7"
+  },
+  {
+    "id": "scenery-0222",
+    "name": "Arbusto — bosque antigo",
+    "sha256": "d1bc00e6a0e2e105af157f365ca6de6ed10f362730c2b4f7bb9fdd151d7fa8dc"
+  },
+  {
+    "id": "scenery-0223",
+    "name": "Arbusto — bosque úmido",
+    "sha256": "0e8f7e8d40ff348c6001abb7f55828a3764d4ceb8a9ffc0ddcd611b45ee372e8"
+  },
+  {
+    "id": "scenery-0315",
+    "name": "Sarcófago — prisão",
+    "sha256": "d07d0bd4a6e0201d27f76322c3783301af9b960520e853219ef9576638f4f87b"
+  },
+  {
+    "id": "scenery-0316",
+    "name": "Sarcófago — mina",
+    "sha256": "f2acd69af56ff36f39627566012ac448005fe6625ff3d5c37664b924c18d668e"
+  },
+  {
+    "id": "scenery-0317",
+    "name": "Sarcófago — ruína arcana",
+    "sha256": "3c3a3374878f41ed254134cbf831fad65c2d4896222245fe30627e21acfa9535"
+  },
+  {
+    "id": "scenery-0318",
+    "name": "Sarcófago — covil",
+    "sha256": "a044956478fd291c9d11cb0b2a6ce835dde59e18cdd411727fdf50e5e0b84763"
+  },
+  {
+    "id": "scenery-0319",
+    "name": "Sarcófago — santuário",
+    "sha256": "36b56ec75870848127ded393161349706e4e65d677e3637b2f34fd5621d58be2"
+  },
+  {
+    "id": "scenery-0320",
+    "name": "Sarcófago — câmara inundada",
+    "sha256": "4fe7a1d0abd2da73dcbe632e8b6cf56df476b868710b5301ce1695c5fe1dbc4d"
+  },
+  {
+    "id": "scenery-0321",
+    "name": "Grades — catacumba",
+    "sha256": "827673ba1067f2766937e1bea73efb833e691b76e1e165c5c468d44618e329f5"
+  },
+  {
+    "id": "scenery-0322",
+    "name": "Grades — cripta real",
+    "sha256": "5ad0aea57ccd9aa8543109d54edfed151526d4f7bd76e02467aead03d7ab2d5a"
+  },
+  {
+    "id": "scenery-0323",
+    "name": "Grades — templo perdido",
+    "sha256": "f672ace1ac72f1717e5ba0cdb7cc1ff335025eba35c173a983c1588a0b038a7b"
+  },
+  {
+    "id": "scenery-0415",
+    "name": "Cabana — pântano",
+    "sha256": "52077085c87506370785e6e8f33afef038d937f8498aa42dce342bd35b655fe1"
+  },
+  {
+    "id": "scenery-0416",
+    "name": "Cabana — costa",
+    "sha256": "badc18d2b95970997d6261f3d29ae39fe025b656baa4bfc70e19467099df0c5f"
+  },
+  {
+    "id": "scenery-0417",
+    "name": "Cabana — deserto",
+    "sha256": "d8ad4883df1208389e1afc1dbebb19e3c9d5ec04d894d05dd86ceb05488ac906"
+  },
+  {
+    "id": "scenery-0418",
+    "name": "Cabana — neve",
+    "sha256": "b97ff6e29a2b048d760fe0b7602ff4bd821bf6a93e2becc339b47debceab5879"
+  },
+  {
+    "id": "scenery-0419",
+    "name": "Cabana — jardim",
+    "sha256": "f02823f81d1ea14c3bc40857967b3240094167462e807438c03969d0a5432d6a"
+  },
+  {
+    "id": "scenery-0053",
+    "name": "Tapete — peça de cabana",
+    "sha256": "e4b3e483e5e6b44504ba3e86dcf0cf1d76d5cc054d05e92bd173c488b938e4d4"
+  },
+  {
+    "id": "scenery-0054",
+    "name": "Tapete — peça danificada",
+    "sha256": "35506d9e4a437d538e5e9e0f918a51c3256f74c2b10a2c00cc2b56ac84f3c1b9"
+  },
+  {
+    "id": "scenery-0055",
+    "name": "Tapete — peça de estalagem",
+    "sha256": "b34db7aae06490fb18edc4bc2eaea6e018e6ba6355935e869310739668f909bf"
+  },
+  {
+    "id": "scenery-0124",
+    "name": "Mochila — soldado",
+    "sha256": "b1469f65f642ddf885040014b673f74583babc3b70093503d263ca42af5742e2"
+  },
+  {
+    "id": "scenery-0125",
+    "name": "Mochila — peregrino",
+    "sha256": "34d4cbd9bf5dd2606f884e7c8eec678fddcdbabb7950b16a17292ed6dbfd6484"
+  },
+  {
+    "id": "scenery-0126",
+    "name": "Mochila — lenhador",
+    "sha256": "7df04b7f87d95042ee3e8333c908cd196dccc4275b65c45d4a86fca9ecbe261e"
+  },
+  {
+    "id": "scenery-0224",
+    "name": "Arbusto — bosque seco",
+    "sha256": "ec32037cbbb785bade0323d8f539bfdd96a1cf983441cad46afc33197e5c7a84"
+  },
+  {
+    "id": "scenery-0225",
+    "name": "Arbusto — bosque outonal",
+    "sha256": "ad6884a3182d2d419987de5f571be810f11b130989b68eee900e4608d5566f8e"
+  },
+  {
+    "id": "scenery-0226",
+    "name": "Arbusto — bosque queimado",
+    "sha256": "03fe6eef9a06c458faa264ea61278506e9acf740a132694936efbde863cd22d8"
+  },
+  {
+    "id": "scenery-0324",
+    "name": "Grades — fortaleza",
+    "sha256": "7d8186ce4c302ac9a57b44a4644ca415941d8603db42b9ffb4677c4b5c5c6e7a"
+  },
+  {
+    "id": "scenery-0325",
+    "name": "Grades — prisão",
+    "sha256": "1d55bf67037751d3f16b54f3e59742d29d660e9f5eaa5fae12548bec3cfa50d0"
+  },
+  {
+    "id": "scenery-0326",
+    "name": "Grades — mina",
+    "sha256": "9a420a11ed6e49c0ae2ee459aca02da694fe81ca1b66b1bb36e9e4b3eef622ca"
+  },
+  {
+    "id": "scenery-0420",
+    "name": "Cabana — aldeia",
+    "sha256": "9e5bdf9c048d78977bf9ae8c705533b1889aafa5428f2e5a9931f2a6feb3619d"
+  },
+  {
+    "id": "scenery-0421",
+    "name": "Torre — vila",
+    "sha256": "91f95b6dbbd026728281d6eb8eefd86c3f02a0470c571bb0bdb98d3362b39857"
+  },
+  {
+    "id": "scenery-0422",
+    "name": "Torre — cidade antiga",
+    "sha256": "d4ca804e7b73500a5931859ee06710a8af267424b29a72e4c1227163be8eed10"
+  },
+  {
+    "id": "scenery-0423",
+    "name": "Torre — fronteira",
+    "sha256": "6c441c623f77397d133626077f3989811099cb8a46e6f39259b8df104b9a9c33"
+  },
+  {
+    "id": "scenery-0424",
+    "name": "Torre — montanha",
+    "sha256": "f1fddfa7aadd5cfc0b263e2c27d267294695cdf790a1e86746a01d42bcc7b0ea"
+  },
+  {
+    "id": "scenery-0425",
+    "name": "Torre — pântano",
+    "sha256": "e13daf44e13a3172a54ab562c03ee5304738a046bc19b937f33d302fbbc14eda"
+  },
+  {
+    "id": "scenery-0426",
+    "name": "Torre — costa",
+    "sha256": "7fc26ab27200685624016d530f7a1b703be1bb2936d807127acc5e019eaeb4ca"
+  },
+  {
+    "id": "scenery-0515",
+    "name": "Balcão — cervejaria",
+    "sha256": "ee98558d1c3bb796f8f7384cf0fcb6bfea23c7c031a433d68a78736e5cfd9131"
+  },
+  {
+    "id": "scenery-0516",
+    "name": "Balcão — salão anão",
+    "sha256": "61fce0fcd2d7bce30a27097a63e5207f1ca9d5353519c8e6ac99f4bde72e6bde"
+  },
+  {
+    "id": "scenery-0517",
+    "name": "Balcão — taberna feérica",
+    "sha256": "d02252f951b75ed498615a23ad1d3f2fb7ee381e22308c6f4b42236f064523b1"
+  },
+  {
+    "id": "scenery-0518",
+    "name": "Balcão — refúgio",
+    "sha256": "b7a4bff2cb25ae97e06c7f4e9763ec23439eb3dc3cbfcc786042dc13c47adc3f"
+  },
+  {
+    "id": "scenery-0519",
+    "name": "Balcão — salão de caça",
+    "sha256": "ea409c66c3acbf2ea2c26ab3fd852a201d2f57d54ac3aadbc3c6c659dc91735a"
+  },
+  {
+    "id": "scenery-0520",
+    "name": "Balcão — posto mercantil",
+    "sha256": "b72ac432b92791dba1f17b90ef1eb2131a99e82f55ba1e3af7b6b1405a7794e1"
+  },
+  {
+    "id": "scenery-0521",
+    "name": "Barril — estalagem humilde",
+    "sha256": "b1d5586a33b2dc53b695e7afdb8746900304d548b2da7bcb8f25dc4516c51283"
+  },
+  {
+    "id": "scenery-0522",
+    "name": "Barril — salão rico",
+    "sha256": "31a8f2742b1a383fa98ee47413ced63108986814bc1622747aa0eb61c817eb33"
+  },
+  {
+    "id": "scenery-0523",
+    "name": "Barril — porto",
+    "sha256": "9cc438ea07b3a5fa6862561620a36aa8a461943dea25512641c4b293dbc3bb84"
+  },
+  {
+    "id": "scenery-0524",
+    "name": "Barril — encruzilhada",
+    "sha256": "4d1e61bc92b37fbaeb1565c6f21b9c999b7fed98abbcdf0c66d49920f1b47861"
+  },
+  {
+    "id": "scenery-0525",
+    "name": "Barril — cervejaria",
+    "sha256": "cbf9e07a6623d7d2132e45a71e5a0750cdc51d3b7d619c72d964ef81c41e8b72"
+  },
+  {
+    "id": "scenery-0526",
+    "name": "Barril — salão anão",
+    "sha256": "5c106c38abadd2297034d1def575b37b8b7e38979d954a65f05e0030843fb28b"
+  },
+  {
+    "id": "scenery-0615",
+    "name": "Fonte — bairro nobre",
+    "sha256": "93d0d6c9112475f4e4a5ae58d6d80a4640dbcb782b76ad3f9593239d18b21281"
+  },
+  {
+    "id": "scenery-0616",
+    "name": "Fonte — bairro pobre",
+    "sha256": "da5a7a5ff8a91984b142416bd776795ae72bd18700392bfc6c867b027c2a3c71"
+  },
+  {
+    "id": "scenery-0617",
+    "name": "Fonte — oficina",
+    "sha256": "e2f4496092d2d7fc68676eab7c3f98aa55e1b596177143785cd34b3d08f3035d"
+  },
+  {
+    "id": "scenery-0618",
+    "name": "Fonte — templo",
+    "sha256": "f711c5fd7c6522a2e361f4f37004f03a3ac63086b7c7b1cecd0a8c62f150895e"
+  },
+  {
+    "id": "scenery-0619",
+    "name": "Fonte — guarda",
+    "sha256": "8161e5cd79cadb738ad2e231cb563b54cc49859918fed34cd68b8de78bf8d942"
+  },
+  {
+    "id": "scenery-0620",
+    "name": "Fonte — jardim",
+    "sha256": "b27bbc8acb2189a3b4a051c4bdadcdc08c145ac1127dca7197f594bb3734afcc"
+  },
+  {
+    "id": "scenery-0621",
+    "name": "Carrinho — praça",
+    "sha256": "d59c7620ad6d4257f3d9d5e9d02a4c65aad25d0d0761ec403fa04575c8e8f27f"
+  },
+  {
+    "id": "scenery-0622",
+    "name": "Carrinho — beco",
+    "sha256": "ec6e751bf2ee73e96a3b6f5abfff844a612b4feea3439938de11ba1ce5222172"
+  },
+  {
+    "id": "scenery-0623",
+    "name": "Carrinho — mercado",
+    "sha256": "459d5ecac4ffcd4667a5d56b35f29ca4f3625b1f36c3af85aff1cc6422b70b1a"
+  },
+  {
+    "id": "scenery-0056",
+    "name": "Tapete — peça de oficina",
+    "sha256": "ce77b8a61cb5275128ad47e8becdb22061964b3d0252b0d9bbb8ad56d4679150"
+  },
+  {
+    "id": "scenery-0127",
+    "name": "Mochila — nômade",
+    "sha256": "022b65d177c9b88ebc13cfaf3e6b0c176156cdde396c09750f79fddc6baf691a"
+  },
+  {
+    "id": "scenery-0624",
+    "name": "Carrinho — porto",
+    "sha256": "2295f3159f2e4648434e2e770afe0287c4e6e998f384f82956548cba7500e077"
+  },
+  {
+    "id": "scenery-0625",
+    "name": "Carrinho — bairro nobre",
+    "sha256": "ae9c4ee497c6c81df7be9969ab5978bc03c327605459596c290476d587226d4f"
+  },
+  {
+    "id": "scenery-0626",
+    "name": "Carrinho — bairro pobre",
+    "sha256": "3ccc0dcf05cd4cfed15aed865dd14a6f8814928dcddc1f9007a5bebc58bb95b5"
+  },
+  {
+    "id": "scenery-0715",
+    "name": "Poça — estreito",
+    "sha256": "14ea660bb81c16d2e642615a669c3f71fb8cdbd412677e3d25b72c57a3b4f1ca"
+  },
+  {
+    "id": "scenery-0716",
+    "name": "Poça — amplo",
+    "sha256": "29497d17a250265ba05dcbfba5cf724a622e5478163fea103b64408378bfadfd"
+  },
+  {
+    "id": "scenery-0717",
+    "name": "Poça — irregular",
+    "sha256": "7026ee835bcf09464166cfb4adf8710348abff6fb1048844ec20fa45f8dcc1c3"
+  },
+  {
+    "id": "scenery-0718",
+    "name": "Poça — duplo",
+    "sha256": "c2389165dccc7308fd5127bf5252ae1c6d20af68b1afe4c8e692a73806576a7d"
+  },
+  {
+    "id": "scenery-0719",
+    "name": "Poça — compacto",
+    "sha256": "f519a88490d32984533bbe4e04a2b131215517b31ba4b709472bacdee34b3d17"
+  },
+  {
+    "id": "scenery-0720",
+    "name": "Poça — disperso",
+    "sha256": "12146456075894e115cd4ad49e4b399d4086ce25cbb01c5d2be12f419cac0aca"
+  },
+  {
+    "id": "scenery-0721",
+    "name": "Cristais — pequeno",
+    "sha256": "93a70011c924f394a5f214a1d9c6b7a07321cbf9b868b221c40d282e0fd84792"
+  },
+  {
+    "id": "scenery-0722",
+    "name": "Cristais — alongado",
+    "sha256": "6e25bc211cc9d38b4f5b4d99e735e61704a59dcd849ddf86b7794b09d56531ce"
+  },
+  {
+    "id": "scenery-0723",
+    "name": "Cristais — circular",
+    "sha256": "6b748a5923a5e3768bdf06340dadab9609ef4296a7421643cb845a06fb7e64c5"
+  },
+  {
+    "id": "scenery-0724",
+    "name": "Cristais — fragmentado",
+    "sha256": "0c8aad3305e5acec65c081319caa5233513e84bc70863962a5beaf88c27667cf"
+  },
+  {
+    "id": "scenery-0725",
+    "name": "Cristais — estreito",
+    "sha256": "4baea819b0f4416ec51abf3749453cbca1e57026e524b1da869019f59a83bb99"
+  },
+  {
+    "id": "scenery-0726",
+    "name": "Cristais — amplo",
+    "sha256": "dac0a5f58c3b1c2d0fcaebe51ce085b92be107a94d931ccc7c65096f5a48c558"
+  },
+  {
+    "id": "scenery-0815",
+    "name": "Sacos — guarda",
+    "sha256": "725b70a586e9b6db588a34aebd22724b45efc7f99a445c525d29040083f8a5e1"
+  },
+  {
+    "id": "scenery-0816",
+    "name": "Sacos — ruína",
+    "sha256": "3817764caa1562ae7a9496371bf86d67cd990d0b1fbff82ab2053a2d76a10f09"
+  },
+  {
+    "id": "scenery-0817",
+    "name": "Sacos — pirata",
+    "sha256": "e2be73be0e891bde67c6137689ec6d0db95554f84694ab6e544bb358c48aa0cc"
+  },
+  {
+    "id": "scenery-0818",
+    "name": "Sacos — mineiro",
+    "sha256": "5e697f87e99b81901d10ad1040617a25154099009b8c55a7942d4b14657f4045"
+  },
+  {
+    "id": "scenery-0819",
+    "name": "Sacos — mago",
+    "sha256": "6f698d485bd6ddd7473acca55cd3b82f9acff33c3bb80edf8a8096354bfe0362"
+  },
+  {
+    "id": "scenery-0820",
+    "name": "Sacos — camponês",
+    "sha256": "e924838ef6e8953208bda357a2769c34db694049e2e7661bf8112bdfeb8052a0"
+  },
+  {
+    "id": "scenery-0821",
+    "name": "Ânforas — artesão",
+    "sha256": "3d26b1c7889e6b37b0fbf49dd19db98019239ad29b1ff1f54f9985c2f60bf37b"
+  },
+  {
+    "id": "scenery-0822",
+    "name": "Ânforas — mercador",
+    "sha256": "996501b9ea20485cf33bdc42344574832f048824a9277912f06018a01ebd9567"
+  },
+  {
+    "id": "scenery-0823",
+    "name": "Ânforas — nobre",
+    "sha256": "654f13e326b1473d35b68fb6ef9dd965a0dd5260b9c750b2175103997d27f0d9"
+  },
+  {
+    "id": "scenery-0824",
+    "name": "Ânforas — viajante",
+    "sha256": "8cf971105ae7e86f35342957e3d59a09a2076663a68792ce0e1c49501cb0167d"
+  },
+  {
+    "id": "scenery-0825",
+    "name": "Ânforas — guarda",
+    "sha256": "c4bb47c875a90a8b88e114dd227031da67d5453c6f1943d2ff0147132868c761"
+  },
+  {
+    "id": "scenery-0826",
+    "name": "Ânforas — ruína",
+    "sha256": "7581202c81b9e08ed58a0b6437a37b5f73b9e5f233ca638f3a1c4dd380dedf8f"
+  },
+  {
+    "id": "scenery-0915",
+    "name": "Altar sagrado — mar",
+    "sha256": "07b90f14c4f52ba3ff4a13acdae70d8aca0ee0eb484e09eff7b0f4252502939d"
+  },
+  {
+    "id": "scenery-0916",
+    "name": "Altar sagrado — terra",
+    "sha256": "d63138c045b8c67bcba45abd9766bca8194f17daafb673b583ac18e9ec71b9de"
+  },
+  {
+    "id": "scenery-0917",
+    "name": "Altar sagrado — fogo",
+    "sha256": "ca74e698b72d71e1b06b122c960a2862eff2531a2c879ec09bb4d10f15c1e418"
+  },
+  {
+    "id": "scenery-0918",
+    "name": "Altar sagrado — gelo",
+    "sha256": "d7a4a275f41c3033fc63b7cdea669de418e0399b82101615f1eeb76bb15f707a"
+  },
+  {
+    "id": "scenery-0919",
+    "name": "Altar sagrado — estrelas",
+    "sha256": "612f0dc8d5e43980e1ff0290cbe442f71e9916cd19d27740905aeea666af9d5b"
+  },
+  {
+    "id": "scenery-0920",
+    "name": "Altar sagrado — ancestrais",
+    "sha256": "a8e6bb568dbab2b01582cfec7f8baf8490f73c799aca984c5827772d0fc40cd3"
+  },
+  {
+    "id": "scenery-0921",
+    "name": "Incensário — sol",
+    "sha256": "87873b437e1c9ba4ff3460054d7a3307d53e0ebe07892d2bb9445ee40f5b83c8"
+  },
+  {
+    "id": "scenery-0922",
+    "name": "Incensário — lua",
+    "sha256": "9eba42f72f4948df7e999fc5db24bac1152bcf09e4e8e78ac9502ed125cc2eee"
+  },
+  {
+    "id": "scenery-0923",
+    "name": "Incensário — natureza",
+    "sha256": "f1fc2dd007849a2bd8a425fb721fc21c9a7e2e13c173b0bc14e7412ee79313cb"
+  },
+  {
+    "id": "scenery-0924",
+    "name": "Incensário — tempestade",
+    "sha256": "016e600a2a8fdad2b148bd4f2da7ebaff28fe14d0811da222b3891dc510f15a2"
+  },
+  {
+    "id": "scenery-0925",
+    "name": "Incensário — mar",
+    "sha256": "b90c759df529dfb7377ee8560bc30aa88b29d65cd5ca932bc24b4fa0a603f521"
+  },
+  {
+    "id": "scenery-0227",
+    "name": "Arbusto — bosque nevado",
+    "sha256": "0d76cd6a827928623bdd6efcbc1b6f339ca610d45a508364aff23099f7cf938d"
+  },
+  {
+    "id": "scenery-0926",
+    "name": "Incensário — terra",
+    "sha256": "c145c045b463296f84dc0f2604db997323e6e5c34b509b23d62b2397fd03f6b7"
+  },
+  {
+    "id": "scenery-0327",
+    "name": "Grades — ruína arcana",
+    "sha256": "f096fcef03b8ceabcb092e9f417b625ffdebb09e4d27f569cfe2cbf85163674f"
+  },
+  {
+    "id": "scenery-0427",
+    "name": "Torre — deserto",
+    "sha256": "27dddfa89d748189ff1b8c59b4b87ba826bb11e1cca49552e3eb51210a624e90"
+  },
+  {
+    "id": "scenery-0527",
+    "name": "Barril — taberna feérica",
+    "sha256": "f73cfc6a9af162537857f94f7970e80e0585eda7c1cd6ff6488ed11719b0e463"
+  },
+  {
+    "id": "scenery-0627",
+    "name": "Carrinho — oficina",
+    "sha256": "9515a86077e707e73e1d37634c4d94b7eb08c9d0a46412bbf65de895b22dc353"
+  },
+  {
+    "id": "scenery-0727",
+    "name": "Cristais — irregular",
+    "sha256": "b7b78ba5fcbd704af6e0653c707fd858e2b218165cd1b423b654cb5f86c77e2c"
+  },
+  {
+    "id": "scenery-0827",
+    "name": "Ânforas — pirata",
+    "sha256": "6dcf66b270e9d9a48cb68fd2095155965ed8c524b30de511b1b1f8b45da081bc"
+  },
+  {
+    "id": "scenery-0927",
+    "name": "Incensário — fogo",
+    "sha256": "185f7aef571ff7d25f3a71f4cb8d661fe3280dc5be3077dc1174b90c8b5c2673"
+  },
+  {
+    "id": "scenery-0057",
+    "name": "Tapete — peça antiga",
+    "sha256": "71ffc8a538736cab2530861f697c56e8b4eac3841a52a240f8e71dfd0b555634"
+  },
+  {
+    "id": "scenery-0128",
+    "name": "Mochila — alquimista",
+    "sha256": "6cc7f197081f17417f275b9433d5d15a8c63788ced1526b0701570f2e62b4ebe"
+  },
+  {
+    "id": "scenery-0228",
+    "name": "Arbusto — bosque encantado",
+    "sha256": "29ce2fa6bfd0a9a3761bf63dd1c17191bf62fe626907be45c86e55770b6bf88d"
+  },
+  {
+    "id": "scenery-0328",
+    "name": "Grades — covil",
+    "sha256": "b3ac1836327c0063625240aedb4a95e56a6b0c8ef8d3073067ab02ee793109e9"
+  },
+  {
+    "id": "scenery-0428",
+    "name": "Torre — neve",
+    "sha256": "5b53efdd984c0a7ab130ea9fee30ee4ab1004a9ea86cd78135dc85b8cedf7674"
+  },
+  {
+    "id": "scenery-0528",
+    "name": "Barril — refúgio",
+    "sha256": "b2e3245d7f2c3acfce62384d8a00b8cb2a0396336195db51f7a745c1a81a2fbe"
+  },
+  {
+    "id": "scenery-0628",
+    "name": "Carrinho — templo",
+    "sha256": "cba1deda1410f7d7a9e95287d70d0d5ca10eae2d6edea708ffd72960749de2a4"
+  },
+  {
+    "id": "scenery-0728",
+    "name": "Cristais — duplo",
+    "sha256": "baa6b83f5dc880acc92d86e848662e08c955be8e9dd32ef65c8e5d5c8c43f6c3"
+  },
+  {
+    "id": "scenery-0828",
+    "name": "Ânforas — mineiro",
+    "sha256": "2c2d418988c7468045f31daee14e7b9072cfe11ebf83839c2550dbf70e1a8aa7"
+  },
+  {
+    "id": "scenery-0058",
+    "name": "Tapete — peça ornamentada",
+    "sha256": "d496ecf0a36092654f5da27299c16426e8dcb75cb2cdb8989a452246751ede55"
+  },
+  {
+    "id": "scenery-0061",
+    "name": "Lareira — peça rústica",
+    "sha256": "90cc3cc33beb8f009990d0901e65e80fb6de797374a56a22e93547c58b4258c3"
+  },
+  {
+    "id": "scenery-0129",
+    "name": "Mochila — pescador",
+    "sha256": "eccc1ad003cabbb2a6464453cb42824bc800f6d7127edd9c0742b18dff61dbd0"
+  },
+  {
+    "id": "scenery-0132",
+    "name": "Saco de dormir — caçador",
+    "sha256": "473ab1ac70403fdbb421385aad1ea7eca722346bbda3acf0251652944bdc7f79"
+  },
+  {
+    "id": "scenery-0232",
+    "name": "Tronco caído — bosque antigo",
+    "sha256": "c1e9309ae8aea01a56bb85619b1203843b6ab4abac10539b64576c028aca77d9"
+  },
+  {
+    "id": "scenery-0928",
+    "name": "Incensário — gelo",
+    "sha256": "6a042e1423549c1d2b98a0e12121e9ef79fe3be2d0adbba0509e517caecd6a2a"
+  },
+  {
+    "id": "scenery-0229",
+    "name": "Arbusto — bosque cerrado",
+    "sha256": "10b9425d099c69992455296520a94f9d4a15639f470e9e0a3b1d736af2889ddd"
+  },
+  {
+    "id": "scenery-0329",
+    "name": "Grades — santuário",
+    "sha256": "7b5e5db0794c703dc57c6d4d554e534e9c67eaca099e531787be2b33ac4657f0"
+  },
+  {
+    "id": "scenery-0332",
+    "name": "Correntes — cripta real",
+    "sha256": "5dc1fb40075c9bdbdc55734d91f6152933cd3e01bf38db3c494a6cd90343f940"
+  },
+  {
+    "id": "scenery-0429",
+    "name": "Torre — jardim",
+    "sha256": "9bb2b5389e571dc92a0eb987d9689ce874147f38026d6c3a3f057dddfa73ead5"
+  },
+  {
+    "id": "scenery-0432",
+    "name": "Poço — cidade antiga",
+    "sha256": "a710125bef24a342230937db04e496eb88454f69ee33b83486cbaa07253c7379"
+  },
+  {
+    "id": "scenery-0529",
+    "name": "Barril — salão de caça",
+    "sha256": "e172d770eb50c430e698d6f86b0a3cc7fcc51c6550e8ac1db7c1c1ccf44bf0c1"
+  },
+  {
+    "id": "scenery-0532",
+    "name": "Banco — salão rico",
+    "sha256": "9aac8983f5eefd64f5295060ffa67030dcd78056dfb17cf88ecab6fcb5e32e58"
+  },
+  {
+    "id": "scenery-0632",
+    "name": "Placa — beco",
+    "sha256": "bca6a7281aa18f0d20c7bd917082a3a6639642df604ced40e7984c61e9a8b46b"
+  },
+  {
+    "id": "scenery-0629",
+    "name": "Carrinho — guarda",
+    "sha256": "c88e3e50dd0ebc6d251469f13012d11ecc2b2d9f73b1be82bd5a6b85dbf41e6a"
+  },
+  {
+    "id": "scenery-0729",
+    "name": "Cristais — compacto",
+    "sha256": "63cb4ee8263ae0a5b396f54f98ab4507a6f329316cd47371c7092686ed64f2ca"
+  },
+  {
+    "id": "scenery-0732",
+    "name": "Duna — alongado",
+    "sha256": "4589232237c36c6b36da0cbf0b248862cd3939e281137f539ecdf4c098574bb6"
+  },
+  {
+    "id": "scenery-0829",
+    "name": "Ânforas — mago",
+    "sha256": "0491a9fd4b455361d7e3cace6e683518ca7501506207be1b422d77585de26288"
+  },
+  {
+    "id": "scenery-0832",
+    "name": "Livros — mercador",
+    "sha256": "60f51b5bdefb9bd406c6ff124b2b4d8aa7b0b1e49470c84462c75d0e81456c44"
+  }
+]

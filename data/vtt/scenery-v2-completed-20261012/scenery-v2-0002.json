@@ -1,0 +1,13 @@
+{
+  "id": "scenery-v2-0002",
+  "name": "Mesa retangular de pinho",
+  "category": "Casa",
+  "width": 2,
+  "height": 1.0938,
+  "prompt": "Create ONE original premium fantasy virtual tabletop map asset: Mesa retangular de pinho. Category context: Casa. This is ONE individual usable object, plant, tree, rock or coherent building, NEVER a group, pile, furnished scene, room, bundle or collection of props. For a book produce ONE book; for a bench ONE bench; for a tree ONE tree. Strict orthographic overhead plan view: the camera points vertically down at 90 degrees, parallel to gravity. No perspective, no isometric view, no front elevation. Vertical sides are hidden; furniture legs are hidden, chair backs appear only as narrow top edges; buildings show roof only. Rich highly detailed realistic hand-painted fantasy cartography, fine precise dark contours, tactile wood grain, worn stone, fibers, believable material variation, carefully painted highlights and restrained contact shadow. Natural earthy palette, clean distinct silhouette and premium artisan finish inspired by professional top-down map libraries. No ground, surrounding scenery, extra props, frame, labels, lettering or watermark. The entire object fits inside a square 1024x1024 image with transparent margin on every side. Genuine transparent alpha background.",
+  "image": "/vtt/scenery-v2-20261012/scenery-v2-0002.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-0bfd4f96-f861-4204-bed9-ffc51e6cb566.png",
+  "sha256": "de471b3436ac5020bd87d6771e23a6c93417bd26e767f3acd607f96f7f997ddf",
+  "pixelWidth": 768,
+  "pixelHeight": 420
+}

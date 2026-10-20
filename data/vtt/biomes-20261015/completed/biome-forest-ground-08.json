@@ -1,0 +1,29 @@
+{
+  "id": "biome-forest-ground-08",
+  "name": "Casca enrolada de bétula",
+  "biome": "forest",
+  "type": "ground",
+  "sizeMetres": 0.6,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: one curled sheet of white birch bark beside two small chips. Entire silhouette safely inside the canvas. The largest physical extent is 0.6 metres. This is one distinct asset, not a sheet or multiple variations.",
+  "status": "reviewed",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-forest-ground-08.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-08-thumb.webp",
+      "pixelWidth": 697,
+      "pixelHeight": 768,
+      "sha256": "85115a0c9cb7cd6ea8eaaf3a3c75376213f957222167ff45794f0f91423e450a",
+      "sourceBasename": "exec-b222e2c9-faf5-430f-bf63-b0eba9936d73.png",
+      "generator": "built-in image_gen",
+      "width": 0.363,
+      "height": 0.4,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

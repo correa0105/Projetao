@@ -1,0 +1,27 @@
+[
+  {
+    "id": "scenery-0111",
+    "name": "Fogueira — explorador",
+    "sha256": "d8b6a7561686e50054759808bddd1a98fb53b7d7d9523c54e7a2dad4cd1a2fb6"
+  },
+  {
+    "id": "scenery-0211",
+    "name": "Pinheiro — bosque jovem",
+    "sha256": "9f573d035cae3c88ea2108c879447f43c2ec1cc1bf9b6f68b372c8a9cf407038"
+  },
+  {
+    "id": "scenery-0311",
+    "name": "Sarcófago — catacumba",
+    "sha256": "ae915088d72e9ba280175c5498b847d5f178707bf94836925160478b2f2d23f4"
+  },
+  {
+    "id": "scenery-0312",
+    "name": "Sarcófago — cripta real",
+    "sha256": "19d2022263b46db67c8a2533f22c6f78c2907c6d94d403c7e99ea95cd5987bbe"
+  },
+  {
+    "id": "scenery-0412",
+    "name": "Cabana — cidade antiga",
+    "sha256": "affaa418f6052370dcc7eaadd4e4390e7b2e481cf76a9142e0f07ab14bcbd109"
+  }
+]

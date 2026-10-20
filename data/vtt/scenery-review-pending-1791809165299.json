@@ -1,0 +1,27 @@
+[
+  {
+    "id": "scenery-0629",
+    "name": "Carrinho — guarda",
+    "sha256": "c88e3e50dd0ebc6d251469f13012d11ecc2b2d9f73b1be82bd5a6b85dbf41e6a"
+  },
+  {
+    "id": "scenery-0729",
+    "name": "Cristais — compacto",
+    "sha256": "63cb4ee8263ae0a5b396f54f98ab4507a6f329316cd47371c7092686ed64f2ca"
+  },
+  {
+    "id": "scenery-0732",
+    "name": "Duna — alongado",
+    "sha256": "4589232237c36c6b36da0cbf0b248862cd3939e281137f539ecdf4c098574bb6"
+  },
+  {
+    "id": "scenery-0829",
+    "name": "Ânforas — mago",
+    "sha256": "0491a9fd4b455361d7e3cace6e683518ca7501506207be1b422d77585de26288"
+  },
+  {
+    "id": "scenery-0832",
+    "name": "Livros — mercador",
+    "sha256": "60f51b5bdefb9bd406c6ff124b2b4d8aa7b0b1e49470c84462c75d0e81456c44"
+  }
+]

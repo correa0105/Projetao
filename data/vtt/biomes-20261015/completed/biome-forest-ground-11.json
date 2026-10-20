@@ -1,0 +1,29 @@
+{
+  "id": "biome-forest-ground-11",
+  "name": "Cogumelos vermelhos da mata",
+  "biome": "forest",
+  "type": "ground",
+  "sizeMetres": 0.65,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: a single natural colony of seven small red fly agaric mushroom caps with white spots, varied sizes. Entire silhouette safely inside the canvas. The largest physical extent is 0.65 metres. This is one distinct asset, not a sheet or multiple variations.",
+  "status": "reviewed",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-forest-ground-11.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-11-thumb.webp",
+      "pixelWidth": 664,
+      "pixelHeight": 768,
+      "sha256": "6a0146270abedf27835a978ed85a4e6271934c849a661385323ebd94f6604a65",
+      "sourceBasename": "exec-b5b93c44-8f27-4821-9146-aee9d2fc0bb7.png",
+      "generator": "built-in image_gen",
+      "width": 0.3747,
+      "height": 0.4333,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

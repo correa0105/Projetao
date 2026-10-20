@@ -1,0 +1,29 @@
+{
+  "id": "biome-forest-ground-34",
+  "name": "Pinhas abertas",
+  "biome": "forest",
+  "type": "ground",
+  "sizeMetres": 0.55,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: three opened pine cones of different sizes, true overhead view. Entire silhouette safely inside the canvas. The largest physical extent is 0.55 metres. This is one distinct asset, not a sheet or multiple variations. Final camera constraint: a strict flat plan view from a camera exactly at the zenith (90 degrees to the ground). No visible front or side elevation. For foliage show the crown from directly above, not a side-facing plant illustration; mushroom stalks are entirely hidden beneath their caps.",
+  "status": "reviewed",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-forest-ground-34.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-34-thumb.webp",
+      "pixelWidth": 768,
+      "pixelHeight": 739,
+      "sha256": "b2cd6c2e2731db4ff5e4ea05eba5064b60236d99ef772a4d4d5bb148f11b7e49",
+      "sourceBasename": "exec-7b74ec9d-c2ec-4a7c-880f-f03c60db1fd5.png",
+      "generator": "built-in image_gen",
+      "width": 0.3667,
+      "height": 0.3528,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

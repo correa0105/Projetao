@@ -1,0 +1,107 @@
+[
+  {
+    "id": "scenery-0041",
+    "name": "Estante — peça rústica",
+    "sha256": "f07c9a35982c78b79e4094e1e344893642b40b433d02418c2739b9e959cf0b24"
+  },
+  {
+    "id": "scenery-0042",
+    "name": "Estante — peça nobre",
+    "sha256": "7fb60d8a7556704035ddf3a74696bd0627041ebca358383b9641ef4f79e3dcc6"
+  },
+  {
+    "id": "scenery-0112",
+    "name": "Fogueira — caçador",
+    "sha256": "72753452a2a494deecdd4ab90c6056a23fb9d9ff5fe14d1bf25daa348bcf5426"
+  },
+  {
+    "id": "scenery-0113",
+    "name": "Fogueira — mercador",
+    "sha256": "8714ab8f3829a52bb4378674fcbc3244de640d2bbf8d24e9411420fa58185dfe"
+  },
+  {
+    "id": "scenery-0212",
+    "name": "Pinheiro — bosque antigo",
+    "sha256": "9ef2633367744c818f7f7e6c66451d4f46b7f87321bd46ab1953713d36e4b7a2"
+  },
+  {
+    "id": "scenery-0213",
+    "name": "Pinheiro — bosque úmido",
+    "sha256": "222f3fc3a2c1bdb5d36e79c405810ae86f7d0d6078a002427c61b4573eb41eef"
+  },
+  {
+    "id": "scenery-0313",
+    "name": "Sarcófago — templo perdido",
+    "sha256": "4dd5b0c45c0c8a6532051bff7baae35b2ec513a7074d3199d0b84a8dfd1ab4d3"
+  },
+  {
+    "id": "scenery-0413",
+    "name": "Cabana — fronteira",
+    "sha256": "3651a9bea0ecec49d12f8b4050f280c4da8fec733be510039ab386612a54290d"
+  },
+  {
+    "id": "scenery-0511",
+    "name": "Balcão — estalagem humilde",
+    "sha256": "56aaca309e9647b16f078ac240636083b00ec8daab237bbe1647d9e86c5caca3"
+  },
+  {
+    "id": "scenery-0513",
+    "name": "Balcão — porto",
+    "sha256": "7d0ce212e3342a9e7c8189fc0bc4e3ab774d95bdc942fa8cad5686173f76ab25"
+  },
+  {
+    "id": "scenery-0612",
+    "name": "Fonte — beco",
+    "sha256": "c40a053b7102ccec8f4f5ca7e6560eb93c8e0b392ef4320ac677876120c3de5d"
+  },
+  {
+    "id": "scenery-0613",
+    "name": "Fonte — mercado",
+    "sha256": "54c38c82591de6775523ef492193d2d7dd3bc29a37d0a95e2a1914b19abaa9c3"
+  },
+  {
+    "id": "scenery-0711",
+    "name": "Poça — pequeno",
+    "sha256": "9a402aae8eacedfeecb552bfbf8d624725c9a594256fdf6beebdbeee1a2211a9"
+  },
+  {
+    "id": "scenery-0712",
+    "name": "Poça — alongado",
+    "sha256": "2a4a1280108d4a01cdd7e53f81c510afb07e1945e7523382cf8f7a5e645c08c1"
+  },
+  {
+    "id": "scenery-0713",
+    "name": "Poça — circular",
+    "sha256": "b02d7c4c26f92c092ce641aa90ec9dd4ce12a5d1f34f381de7830316ccd30bc0"
+  },
+  {
+    "id": "scenery-0811",
+    "name": "Sacos — artesão",
+    "sha256": "b6c5716446a7ae19b6d1751208a18688df0b11b642f888f2c891a3af2b0515c9"
+  },
+  {
+    "id": "scenery-0812",
+    "name": "Sacos — mercador",
+    "sha256": "49e834f1aab27a2281940fb3bee6057838e27915a58f8f39cb8cb569dc1ca01d"
+  },
+  {
+    "id": "scenery-0813",
+    "name": "Sacos — nobre",
+    "sha256": "652f4159e89c5dedf06134467d9798f43da937ca954e126e350dabd3c2cd772a"
+  },
+  {
+    "id": "scenery-0911",
+    "name": "Altar sagrado — sol",
+    "sha256": "1d6456cf6bd0ac5e119445d63d5badc6bc6acdce41e5221ce1cc9cb4b33a42f6"
+  },
+  {
+    "id": "scenery-0912",
+    "name": "Altar sagrado — lua",
+    "sha256": "e778eeac074462094811772bb3bac6ce1a24e78c4e00b6bb0700eb49143c426e"
+  },
+  {
+    "id": "scenery-0913",
+    "name": "Altar sagrado — natureza",
+    "sha256": "25e1cd0aca483cda809f2513eb380b1a15c22aac5a470cdc11fcc7081c3370aa"
+  }
+]

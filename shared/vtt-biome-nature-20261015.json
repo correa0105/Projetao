@@ -1,0 +1,1012 @@
+[
+  {
+    "id": "biome-forest-ground-01",
+    "name": "Galho bifurcado seco",
+    "category": "Floresta",
+    "width": 1.1672,
+    "height": 1.2,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-01.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-01-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,8 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-02",
+    "name": "Galho coberto de líquen",
+    "category": "Floresta",
+    "width": 0.9333,
+    "height": 0.8847,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-02.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-02-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,4 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-03",
+    "name": "Conjunto de gravetos",
+    "category": "Floresta",
+    "width": 0.4012,
+    "height": 0.4333,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-03.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-03-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,65 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-04",
+    "name": "Galho retorcido com folhas",
+    "category": "Floresta",
+    "width": 1.0667,
+    "height": 1.0556,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-04.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-04-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,6 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-05",
+    "name": "Tronco caído com musgo",
+    "category": "Floresta",
+    "width": 1.8,
+    "height": 1.2422,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-05.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-05-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 2,7 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-06",
+    "name": "Tronco oco quebrado",
+    "category": "Floresta",
+    "width": 1.6,
+    "height": 1.5292,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-06.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-06-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 2,4 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-07",
+    "name": "Lasca de madeira apodrecida",
+    "category": "Floresta",
+    "width": 0.5852,
+    "height": 0.6,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-07.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-07-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,9 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-08",
+    "name": "Casca enrolada de bétula",
+    "category": "Floresta",
+    "width": 0.363,
+    "height": 0.4,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-08.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-08-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,6 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-09",
+    "name": "Raízes expostas da mata",
+    "category": "Floresta",
+    "width": 1.1333,
+    "height": 1.1333,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-09.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-09-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,7 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-10",
+    "name": "Raiz velha com brotos",
+    "category": "Floresta",
+    "width": 0.8667,
+    "height": 0.8294,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-10.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-10-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,3 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-11",
+    "name": "Cogumelos vermelhos da mata",
+    "category": "Floresta",
+    "width": 0.3747,
+    "height": 0.4333,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-11.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-11-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,65 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-12",
+    "name": "Cogumelos castanhos",
+    "category": "Floresta",
+    "width": 0.3667,
+    "height": 0.3495,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-12.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-12-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,55 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-13",
+    "name": "Cogumelos brancos delicados",
+    "category": "Floresta",
+    "width": 0.2883,
+    "height": 0.3,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-13.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-13-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,45 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-14",
+    "name": "Cogumelos alaranjados",
+    "category": "Floresta",
+    "width": 0.3667,
+    "height": 0.3652,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-14.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-14-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,55 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-15",
+    "name": "Cogumelo solitário largo",
+    "category": "Floresta",
+    "width": 0.2,
+    "height": 0.1914,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-15.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-15-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,3 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-16",
+    "name": "Fungos de tronco",
+    "category": "Floresta",
+    "width": 0.4667,
+    "height": 0.463,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-16.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-16-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,7 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-17",
+    "name": "Cogumelos violetas discretos",
+    "category": "Floresta",
+    "width": 0.3333,
+    "height": 0.332,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-17.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-17-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-18",
+    "name": "Cogumelos e folhas úmidas",
+    "category": "Floresta",
+    "width": 0.4333,
+    "height": 0.4209,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-18.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-18-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,65 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-19",
+    "name": "Tufo de capim fino",
+    "category": "Floresta",
+    "width": 0.4333,
+    "height": 0.4316,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-19.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-19-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,65 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-20",
+    "name": "Tufo de capim largo",
+    "category": "Floresta",
+    "width": 0.5333,
+    "height": 0.5326,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-20.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-20-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,8 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-21",
+    "name": "Capim rasteiro esparso",
+    "category": "Floresta",
+    "width": 0.8622,
+    "height": 0.8667,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-21.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-21-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,3 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-22",
+    "name": "Conjunto de capins altos",
+    "category": "Floresta",
+    "width": 1.0375,
+    "height": 1.0667,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-22.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-22-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,6 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-23",
+    "name": "Grama seca quebradiça",
+    "category": "Floresta",
+    "width": 0.7037,
+    "height": 0.7333,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-23.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-23-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,1 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-24",
+    "name": "Grama úmida de sombra",
+    "category": "Floresta",
+    "width": 0.9635,
+    "height": 1,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-24.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-24-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-25",
+    "name": "Grama com pequenas flores brancas",
+    "category": "Floresta",
+    "width": 0.7917,
+    "height": 0.8,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-25.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-25-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,2 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-26",
+    "name": "Grama com sementes",
+    "category": "Floresta",
+    "width": 0.8333,
+    "height": 0.8225,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-26.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-26-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,25 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-27",
+    "name": "Samambaia pequena aberta",
+    "category": "Floresta",
+    "width": 0.5711,
+    "height": 0.6,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-27.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-27-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,9 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-28",
+    "name": "Conjunto de samambaias",
+    "category": "Floresta",
+    "width": 1.1719,
+    "height": 1.2,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-28.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-28-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,8 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-29",
+    "name": "Musgo em almofadas",
+    "category": "Floresta",
+    "width": 0.8871,
+    "height": 0.9,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-29.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-29-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,35 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-30",
+    "name": "Musgo em galho baixo",
+    "category": "Floresta",
+    "width": 0.9321,
+    "height": 0.9333,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-30.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-30-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,4 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-31",
+    "name": "Folhas secas de carvalho",
+    "category": "Floresta",
+    "width": 0.9333,
+    "height": 0.9285,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-31.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-31-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,4 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-32",
+    "name": "Folhas de faia úmidas",
+    "category": "Floresta",
+    "width": 0.8,
+    "height": 0.7562,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-32.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-32-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,2 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-33",
+    "name": "Agulhas e pinhas",
+    "category": "Floresta",
+    "width": 0.6333,
+    "height": 0.6078,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-33.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-33-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,95 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-34",
+    "name": "Pinhas abertas",
+    "category": "Floresta",
+    "width": 0.3667,
+    "height": 0.3528,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-34.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-34-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,55 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-35",
+    "name": "Brotos de hera rasteira",
+    "category": "Floresta",
+    "width": 0.8786,
+    "height": 0.9333,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-35.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-35-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,4 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-36",
+    "name": "Ramo de amoreira silvestre",
+    "category": "Floresta",
+    "width": 1,
+    "height": 0.9674,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-36.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-36-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-37",
+    "name": "Pedra pequena com líquen",
+    "category": "Floresta",
+    "width": 0.498,
+    "height": 0.5,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-37.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-37-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 0,75 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-38",
+    "name": "Conjunto de seixos da mata",
+    "category": "Floresta",
+    "width": 0.8667,
+    "height": 0.8441,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-38.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-38-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,3 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-39",
+    "name": "Cupinzeiro de madeira morta",
+    "category": "Floresta",
+    "width": 0.8667,
+    "height": 0.7121,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-39.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-39-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,3 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-forest-ground-40",
+    "name": "Touceira de folhas largas",
+    "category": "Floresta",
+    "width": 0.7066,
+    "height": 0.7333,
+    "image": "/vtt/biomes-20261015/biome-forest-ground-40.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-40-thumb.webp",
+    "notes": "Floresta · Chão da floresta e vegetação rasteira · 1,1 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-01",
+    "name": "Junco fino do brejo",
+    "category": "Pântano",
+    "width": 0.858,
+    "height": 0.9333,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-01.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-01-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,4 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-02",
+    "name": "Taboas do pântano",
+    "category": "Pântano",
+    "width": 1.1937,
+    "height": 1.2,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-02.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-02-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,8 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-03",
+    "name": "Capim encharcado",
+    "category": "Pântano",
+    "width": 0.9922,
+    "height": 1,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-03.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-03-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-04",
+    "name": "Touceira de ciperáceas",
+    "category": "Pântano",
+    "width": 0.8667,
+    "height": 0.8294,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-04.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-04-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,3 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-05",
+    "name": "Lírios do brejo",
+    "category": "Pântano",
+    "width": 0.8333,
+    "height": 0.8236,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-05.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-05-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,25 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-06",
+    "name": "Juncos quebrados",
+    "category": "Pântano",
+    "width": 1.0486,
+    "height": 1.0667,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-06.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-06-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,6 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-07",
+    "name": "Samambaia de mangue",
+    "category": "Pântano",
+    "width": 0.9333,
+    "height": 0.9285,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-07.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-07-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,4 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-08",
+    "name": "Samambaias do brejo",
+    "category": "Pântano",
+    "width": 1.3021,
+    "height": 1.3333,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-08.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-08-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 2 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-09",
+    "name": "Raízes de mangue expostas",
+    "category": "Pântano",
+    "width": 1.5777,
+    "height": 1.6667,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-09.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-09-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 2,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-10",
+    "name": "Raiz submersa retorcida",
+    "category": "Pântano",
+    "width": 1.5333,
+    "height": 1.5333,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-10.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-10-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 2,3 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-11",
+    "name": "Tronco de cipreste apodrecido",
+    "category": "Pântano",
+    "width": 2.1333,
+    "height": 2.125,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-11.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-11-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 3,2 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-12",
+    "name": "Galho escuro do brejo",
+    "category": "Pântano",
+    "width": 1.4304,
+    "height": 1.4667,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-12.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-12-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 2,2 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-13",
+    "name": "Toco apodrecido do pântano",
+    "category": "Pântano",
+    "width": 1.1289,
+    "height": 1.1333,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-13.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-13-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,7 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-14",
+    "name": "Fragmentos de madeira alagada",
+    "category": "Pântano",
+    "width": 1.0667,
+    "height": 1.0431,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-14.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-14-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,6 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-15",
+    "name": "Cogumelos âmbar do brejo",
+    "category": "Pântano",
+    "width": 0.4271,
+    "height": 0.4333,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-15.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-15-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 0,65 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-16",
+    "name": "Fungos brancos de madeira molhada",
+    "category": "Pântano",
+    "width": 0.5401,
+    "height": 0.5667,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-16.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-16-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 0,85 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-17",
+    "name": "Cogumelos negros do lodo",
+    "category": "Pântano",
+    "width": 0.3667,
+    "height": 0.3619,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-17.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-17-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 0,55 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-18",
+    "name": "Cogumelos ocres do brejo",
+    "category": "Pântano",
+    "width": 0.498,
+    "height": 0.5,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-18.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-18-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 0,75 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-19",
+    "name": "Musgo esponjoso",
+    "category": "Pântano",
+    "width": 1.0569,
+    "height": 1.0667,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-19.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-19-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,6 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-20",
+    "name": "Musgo escuro em raízes",
+    "category": "Pântano",
+    "width": 1.2667,
+    "height": 1.265,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-20.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-20-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,9 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-21",
+    "name": "Folhas de nenúfar",
+    "category": "Pântano",
+    "width": 1.1984,
+    "height": 1.2,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-21.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-21-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,8 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-22",
+    "name": "Nenúfar branco",
+    "category": "Pântano",
+    "width": 0.8667,
+    "height": 0.8339,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-22.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-22-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,3 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-23",
+    "name": "Tapete de lentilhas d’água",
+    "category": "Pântano",
+    "width": 1.4,
+    "height": 1.2943,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-23.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-23-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 2,1 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-24",
+    "name": "Algas filamentosas",
+    "category": "Pântano",
+    "width": 0.9883,
+    "height": 1,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-24.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-24-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-25",
+    "name": "Folhagem aquática rasteira",
+    "category": "Pântano",
+    "width": 1.1333,
+    "height": 1.1186,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-25.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-25-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,7 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-26",
+    "name": "Pedra lodosa",
+    "category": "Pântano",
+    "width": 0.8,
+    "height": 0.7687,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-26.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-26-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,2 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-27",
+    "name": "Conjunto de pedras do brejo",
+    "category": "Pântano",
+    "width": 1.3333,
+    "height": 1.2344,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-27.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-27-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 2 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-28",
+    "name": "Folhas em decomposição",
+    "category": "Pântano",
+    "width": 0.9948,
+    "height": 1,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-28.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-28-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-29",
+    "name": "Sementes e vagens do brejo",
+    "category": "Pântano",
+    "width": 0.6923,
+    "height": 0.7333,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-29.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-29-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,1 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-ground-30",
+    "name": "Ervas da margem alagada",
+    "category": "Pântano",
+    "width": 1.2667,
+    "height": 1.2254,
+    "image": "/vtt/biomes-20261015/biome-swamp-ground-30.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-30-thumb.webp",
+    "notes": "Pântano · Chão da floresta e vegetação rasteira · 1,9 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-ground-01",
+    "name": "Tufo de capim congelado",
+    "category": "Neve",
+    "width": 0.5789,
+    "height": 0.6,
+    "image": "/vtt/biomes-20261015/biome-snow-ground-01.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-01-thumb.webp",
+    "notes": "Neve · Chão da floresta e vegetação rasteira · 0,9 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-ground-02",
+    "name": "Conjunto de gramíneas nevadas",
+    "category": "Neve",
+    "width": 0.9844,
+    "height": 1,
+    "image": "/vtt/biomes-20261015/biome-snow-ground-02.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-02-thumb.webp",
+    "notes": "Neve · Chão da floresta e vegetação rasteira · 1,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-ground-03",
+    "name": "Capim rasteiro sob geada",
+    "category": "Neve",
+    "width": 0.8599,
+    "height": 0.8667,
+    "image": "/vtt/biomes-20261015/biome-snow-ground-03.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-03-thumb.webp",
+    "notes": "Neve · Chão da floresta e vegetação rasteira · 1,3 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-ground-04",
+    "name": "Ervas alpinas com neve",
+    "category": "Neve",
+    "width": 0.7333,
+    "height": 0.7305,
+    "image": "/vtt/biomes-20261015/biome-snow-ground-04.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-04-thumb.webp",
+    "notes": "Neve · Chão da floresta e vegetação rasteira · 1,1 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-ground-05",
+    "name": "Junco de lago congelado",
+    "category": "Neve",
+    "width": 1.1719,
+    "height": 1.2,
+    "image": "/vtt/biomes-20261015/biome-snow-ground-05.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-05-thumb.webp",
+    "notes": "Neve · Chão da floresta e vegetação rasteira · 1,8 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-ground-06",
+    "name": "Urze de inverno",
+    "category": "Neve",
+    "width": 0.9333,
+    "height": 0.9333,
+    "image": "/vtt/biomes-20261015/biome-snow-ground-06.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-06-thumb.webp",
+    "notes": "Neve · Chão da floresta e vegetação rasteira · 1,4 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-ground-07",
+    "name": "Arbusto rasteiro de tundra",
+    "category": "Neve",
+    "width": 1.2,
+    "height": 1.1391,
+    "image": "/vtt/biomes-20261015/biome-snow-ground-07.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-07-thumb.webp",
+    "notes": "Neve · Chão da floresta e vegetação rasteira · 1,8 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-ground-08",
+    "name": "Samambaia congelada",
+    "category": "Neve",
+    "width": 0.7896,
+    "height": 0.8,
+    "image": "/vtt/biomes-20261015/biome-snow-ground-08.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-08-thumb.webp",
+    "notes": "Neve · Chão da floresta e vegetação rasteira · 1,2 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-ground-09",
+    "name": "Líquen das renas",
+    "category": "Neve",
+    "width": 1,
+    "height": 0.9818,
+    "image": "/vtt/biomes-20261015/biome-snow-ground-09.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-09-thumb.webp",
+    "notes": "Neve · Chão da floresta e vegetação rasteira · 1,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-ground-10",
+    "name": "Musgo sob cristais de gelo",
+    "category": "Neve",
+    "width": 0.8,
+    "height": 0.7667,
+    "image": "/vtt/biomes-20261015/biome-snow-ground-10.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-10-thumb.webp",
+    "notes": "Neve · Chão da floresta e vegetação rasteira · 1,2 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-ground-11",
+    "name": "Galho de abeto caído",
+    "category": "Neve",
+    "width": 1.4667,
+    "height": 1.438,
+    "image": "/vtt/biomes-20261015/biome-snow-ground-11.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-11-thumb.webp",
+    "notes": "Neve · Chão da floresta e vegetação rasteira · 2,2 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-tree-01",
+    "name": "Salgueiro chorão do brejo",
+    "category": "Pântano",
+    "width": 5.7969,
+    "height": 6,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-01.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-tree-01-thumb.webp",
+    "notes": "Pântano · Árvore · 9 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-tree-02",
+    "name": "Cipreste calvo antigo",
+    "category": "Pântano",
+    "width": 5.2708,
+    "height": 5.3333,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-02.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-tree-02-thumb.webp",
+    "notes": "Pântano · Árvore · 8 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-tree-03",
+    "name": "Mangue de raízes largas",
+    "category": "Pântano",
+    "width": 4.9935,
+    "height": 5,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-03.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-tree-03-thumb.webp",
+    "notes": "Pântano · Árvore · 7,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-tree-04",
+    "name": "Amieiro do pântano",
+    "category": "Pântano",
+    "width": 3.875,
+    "height": 4,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-04.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-tree-04-thumb.webp",
+    "notes": "Pântano · Árvore · 6 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-tree-05",
+    "name": "Tupelo do brejo",
+    "category": "Pântano",
+    "width": 4.6302,
+    "height": 4.6667,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-05.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-tree-05-thumb.webp",
+    "notes": "Pântano · Árvore · 7 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-tree-06",
+    "name": "Pinheiro do brejo",
+    "category": "Pântano",
+    "width": 4.3333,
+    "height": 4.2318,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-06.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-tree-06-thumb.webp",
+    "notes": "Pântano · Árvore · 6,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-tree-07",
+    "name": "Salgueiro podado",
+    "category": "Pântano",
+    "width": 3.5998,
+    "height": 3.6667,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-07.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-tree-07-thumb.webp",
+    "notes": "Pântano · Árvore · 5,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-tree-08",
+    "name": "Árvore morta alagada",
+    "category": "Pântano",
+    "width": 4.9674,
+    "height": 5,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-08.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-tree-08-thumb.webp",
+    "notes": "Pântano · Árvore · 7,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-tree-09",
+    "name": "Carvalho encharcado",
+    "category": "Pântano",
+    "width": 6.4583,
+    "height": 6.6667,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-09.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-tree-09-thumb.webp",
+    "notes": "Pântano · Árvore · 10 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-tree-10",
+    "name": "Bétula do brejo",
+    "category": "Pântano",
+    "width": 3.5807,
+    "height": 3.6667,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-10.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-tree-10-thumb.webp",
+    "notes": "Pântano · Árvore · 5,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-tree-01",
+    "name": "Abeto nevado alto",
+    "category": "Neve",
+    "width": 5.2847,
+    "height": 5.3333,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-01.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-tree-01-thumb.webp",
+    "notes": "Neve · Árvore · 8 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-tree-02",
+    "name": "Pinheiro de neve irregular",
+    "category": "Neve",
+    "width": 5.6445,
+    "height": 5.6667,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-02.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-tree-02-thumb.webp",
+    "notes": "Neve · Árvore · 8,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-tree-03",
+    "name": "Pícea azul congelada",
+    "category": "Neve",
+    "width": 4.6667,
+    "height": 4.6363,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-03.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-tree-03-thumb.webp",
+    "notes": "Neve · Árvore · 7 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-tree-04",
+    "name": "Larício de inverno",
+    "category": "Neve",
+    "width": 5,
+    "height": 4.8958,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-04.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-tree-04-thumb.webp",
+    "notes": "Neve · Árvore · 7,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-tree-05",
+    "name": "Bétula nevada",
+    "category": "Neve",
+    "width": 3.9375,
+    "height": 4,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-05.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-tree-05-thumb.webp",
+    "notes": "Neve · Árvore · 6 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-tree-06",
+    "name": "Pinheiro alpino baixo",
+    "category": "Neve",
+    "width": 3.2899,
+    "height": 3.3333,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-06.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-tree-06-thumb.webp",
+    "notes": "Neve · Árvore · 5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-tree-07",
+    "name": "Cedro nevado",
+    "category": "Neve",
+    "width": 5.875,
+    "height": 6,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-07.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-tree-07-thumb.webp",
+    "notes": "Neve · Árvore · 9 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-tree-08",
+    "name": "Salgueiro congelado",
+    "category": "Neve",
+    "width": 4.6667,
+    "height": 4.6424,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-08.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-tree-08-thumb.webp",
+    "notes": "Neve · Árvore · 7 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-tree-09",
+    "name": "Abeto jovem com neve",
+    "category": "Neve",
+    "width": 2.9258,
+    "height": 3,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-09.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-tree-09-thumb.webp",
+    "notes": "Neve · Árvore · 4,5 m. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-snow-tree-10",
+    "name": "Árvore morta de tundra",
+    "category": "Neve",
+    "width": 4.3164,
+    "height": 4.3333,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-10.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-snow-tree-10-thumb.webp",
+    "notes": "Neve · Árvore · 6,5 m. Escala: 1 quadrado = 1,5 m."
+  }
+]

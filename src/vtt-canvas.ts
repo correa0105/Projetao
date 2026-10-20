@@ -1,9 +1,6 @@
 import {vttVisualSource} from '../shared/vtt-asset-visuals';
 import {lightAnimationState,sceneHasAnimatedLights} from '../shared/vtt-lighting';
 import {drawMapObject} from './vtt-object-sprites';
-import { drawTerrain } from './vtt-terrain-canvas';
-import { renderBuffer, renderWorkCache, tokenOnScreen } from './vtt-render-cache';
-import type { TerrainStroke } from '../shared/vtt';
 import {houseAsset,houseContains,houseOccupied,houseRoofOccluded,houseWalls,houseWindowViews,houseWindowPolygon} from '../shared/vtt-houses';
 import furniture from '../shared/vtt-home-furniture-catalog.json';
 import medievalFurniture from '../shared/vtt-medieval-furniture-catalog.json';
@@ -18,7 +15,10 @@ import { tokenRotationHandle, tokenResizeHandles } from '../shared/vtt-token-res
 import { isTreeCanopy, canopyActor } from '../shared/vtt-canopies';
 import { captureCanopyAreas, drawCanopyForeground, clipCanopyBase } from './vtt-canopies-canvas';
 import { drawMapAtmosphere } from './vtt-atmosphere';
-import {
+import { drawTerrain } from './vtt-terrain-canvas';
+import { renderBuffer, renderWorkCache, tokenOnScreen } from './vtt-render-cache';
+import type { TerrainStroke } from '../shared/vtt';
+import { 
   sightPolygon,
   rulerLabel,
   visiblePoint,
@@ -45,7 +45,7 @@ import type { SpellEffect } from '../shared/vtt-spells';
 export type VttCamera = { x: number; y: number; zoom: number };
 export type RenderOptions = {
   terrainDraft?: TerrainStroke | null;
-  terrainCursor?: {x:number;y:number;radius:number;erase:boolean} | null;
+  terrainCursor?: { x: number; y: number; radius: number; erase: boolean } | null;
   visualEffects?: boolean;
   bloodEnabled?: boolean;
   spellEffects?: SpellEffect[];
@@ -270,7 +270,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
   c.clip();
   if (background?.complete && background.naturalWidth)
     c.drawImage(background, 0, 0, s.width, s.height);
-  drawTerrain(c,s,o);
+  drawTerrain(c, s, o);
   const g = s.grid;
   const drawGrid = () => {
     c.save();
@@ -391,12 +391,13 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         drawDeath(c, t);
       }
       c.save();
+      c.filter = monsterVariantFilter(t.artVariant);
       if (t.deathAt && layer !== 'map')
         c.filter = 'brightness(.42) sepia(1) saturate(4) hue-rotate(320deg)';
       c.scale(t.flipX ? -1 : 1, t.flipY ? -1 : 1);
       const house=houseAsset(t),img=images.get(house&&houseOccupied(t,houseActors)?house.interior:t.image);
       if (t.animatedAsset) {
-        drawAnimatedAsset(c, t, img, now, reduced, o.visualEffects !== false);
+        drawAnimatedAsset(c, t, img, performance.now(), false, o.visualEffects !== false);
       } else if (layer === 'map') {
         if (img?.complete && img.naturalWidth) {
           const floor=house&&images.get(house.interior);
@@ -417,9 +418,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       } else if (t.sceneryToken && img?.complete && img.naturalWidth) {
         drawMapObject(c,t,img);
       } else if (
-        (t.image.startsWith('/vtt/monsters/') ||
-          t.image.startsWith('/api/vtt/premium-art/') ||
-          !!vttAssetId(t.image) || !!residentAsset(t)) &&
+        (overheadMonsterImage(t.image) || !!vttAssetId(t.image) || !!residentAsset(t)) &&
         img?.complete &&
         img.naturalWidth
       ) {
@@ -817,3 +816,5 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
   c.strokeRect(0, 0, s.width, s.height);
   c.restore();
 }
+import { monsterVariantFilter, overheadMonsterImage } from '../shared/vtt-monster-variants';
+

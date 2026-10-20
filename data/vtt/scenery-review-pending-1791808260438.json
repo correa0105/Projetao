@@ -1,0 +1,22 @@
+[
+  {
+    "id": "scenery-0428",
+    "name": "Torre — neve",
+    "sha256": "5b53efdd984c0a7ab130ea9fee30ee4ab1004a9ea86cd78135dc85b8cedf7674"
+  },
+  {
+    "id": "scenery-0528",
+    "name": "Barril — refúgio",
+    "sha256": "b2e3245d7f2c3acfce62384d8a00b8cb2a0396336195db51f7a745c1a81a2fbe"
+  },
+  {
+    "id": "scenery-0628",
+    "name": "Carrinho — templo",
+    "sha256": "cba1deda1410f7d7a9e95287d70d0d5ca10eae2d6edea708ffd72960749de2a4"
+  },
+  {
+    "id": "scenery-0728",
+    "name": "Cristais — duplo",
+    "sha256": "baa6b83f5dc880acc92d86e848662e08c955be8e9dd32ef65c8e5d5c8c43f6c3"
+  }
+]

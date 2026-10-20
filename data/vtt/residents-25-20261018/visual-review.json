@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "total": 25,
+  "camera": "90-degree overhead",
+  "forwardGaze": true,
+  "reference": "reference-user.png",
+  "contactSheet": "review.png",
+  "reviewed": ["overhead face projection", "head and shoulder angle", "hands and held tools", "transparent margins", "distinct occupations", "consistent painted detail"],
+  "rejected": "Looking-up face-v2 candidates excluded from the catalog and release. Final topdown-v3 assets follow the user's silver-haired glassworker reference; the face has a naturally narrow overhead projection and no eye contact with the camera.",
+  "generator": "built-in image_gen"
+}

@@ -1,0 +1,277 @@
+[
+  {
+    "id": "scenery-v2-0001",
+    "name": "Mesa redonda de carvalho",
+    "sha256": "13619aca2fbd4b1b9a9c4cb9e879bc340dafb9b887be517517071d5ca868e772"
+  },
+  {
+    "id": "scenery-v2-0051",
+    "name": "Carvalho frondoso",
+    "sha256": "59f4927ad3f64cd8710e3227fc94f8c5a6c70c83e8463b6862ec6d6d8737e7f1"
+  },
+  {
+    "id": "scenery-v2-0054",
+    "name": "Salgueiro de copa larga",
+    "sha256": "622d09d4d566ee85be78a919a89baa93861b6a87a9c812e1cb79360d7cdfe7cb"
+  },
+  {
+    "id": "scenery-v2-0076",
+    "name": "Mesa quadrada de pedra",
+    "sha256": "655fae097052849af61bfb07047cf3cedf481efb630bee7272ee7b51c5a24028"
+  },
+  {
+    "id": "scenery-v2-0079",
+    "name": "Coluna quebrada de granito",
+    "sha256": "9a0edd970f29437c4b9b347fce88df908f311826dbdb8af4ae75300c9c06a579"
+  },
+  {
+    "id": "scenery-v2-0104",
+    "name": "Ponte curta de madeira",
+    "sha256": "6f3a6e3ff06f059aa72f40da7d0015ad3d84986ad0f7869fb1b1a46b528d437d"
+  },
+  {
+    "id": "scenery-v2-0101",
+    "name": "Cabana quadrada de telhado de palha",
+    "sha256": "14310d6ebf2e82b3262ddd7c43e56259879c3a900bf1f30be0fb4c2494acc8c4"
+  },
+  {
+    "id": "scenery-v2-0129",
+    "name": "Cadeira com encosto arredondado",
+    "sha256": "fc482583f28064046484f3bebd7a42b0255d3d4486ad8d1ee95365fa09871220"
+  },
+  {
+    "id": "scenery-v2-0151",
+    "name": "Banco de praça de madeira",
+    "sha256": "6fd8e6eda51db2157434de4c96ae07dfce78926c88cf6c9ed8aade39e9b1c8b8"
+  },
+  {
+    "id": "scenery-v2-0154",
+    "name": "Placa de rua deitada",
+    "sha256": "37ef4a109335abc7a6aa8cb92ed6f8cc0af2a1f7d2a0a00bb0fee999331aa416"
+  },
+  {
+    "id": "scenery-v2-0176",
+    "name": "Rocha grande de granito",
+    "sha256": "77bdfa4dac3ae6b7d80bef0dac0f43e78b4643145fb5c79a408269b755754ac4"
+  },
+  {
+    "id": "scenery-v2-0179",
+    "name": "Pedra porosa vulcânica",
+    "sha256": "91e60e7b6ba99d76cf07056a7982f9837336da69e999f618abeabeba3db25bca"
+  },
+  {
+    "id": "scenery-v2-0204",
+    "name": "Pergaminho aberto",
+    "sha256": "219611bb58a089d26d9f169cb543f90b11a3a7076e3f77ff6ffa6eafb5a57a3b"
+  },
+  {
+    "id": "scenery-v2-0002",
+    "name": "Mesa retangular de pinho",
+    "sha256": "de471b3436ac5020bd87d6771e23a6c93417bd26e767f3acd607f96f7f997ddf"
+  },
+  {
+    "id": "scenery-v2-0005",
+    "name": "Banquinho de três pés",
+    "sha256": "d06e65d3a3c6e11bf63abe346ad350b4a38494cb3412a28c76a75727dbc584ef"
+  },
+  {
+    "id": "scenery-v2-0027",
+    "name": "Saco de dormir enrolado",
+    "sha256": "ca03ee09f5f00d3f916102e5ee1ec8810d6b34abe94d35c5cebafb08092b2621"
+  },
+  {
+    "id": "scenery-v2-0052",
+    "name": "Pinheiro alto",
+    "sha256": "dafed7504e316cb76e3bbcf91f139fa8101d70e14dddd93ab1b142f2e4c100c5"
+  },
+  {
+    "id": "scenery-v2-0055",
+    "name": "Árvore morta retorcida",
+    "sha256": "e656784899d0b9aa61bb30e90e386ca6fdd16ad402de02e52811977093479282"
+  },
+  {
+    "id": "scenery-v2-0077",
+    "name": "Banco de pedra",
+    "sha256": "7864f10f19d1d69eded2cd8ccfba36383090f7afe3c6ad5f0903d080b24827ff"
+  },
+  {
+    "id": "scenery-v2-0080",
+    "name": "Porta de madeira reforçada deitada",
+    "sha256": "337581f65413458424b49a32c65790ae3e5c1e73535fbfc797e4716853fd2cbb"
+  },
+  {
+    "id": "scenery-v2-0105",
+    "name": "Passarela estreita de pedra",
+    "sha256": "51d5757d15f0942037b0e982d9f9169eaf01b8c390f8897b691963e056554c6c"
+  },
+  {
+    "id": "scenery-v2-0126",
+    "name": "Mesa redonda de taverna vazia",
+    "sha256": "2d6e66fde5a22f0592a262fc27e93276c0575a0c5b28519ae133b50463e75243"
+  },
+  {
+    "id": "scenery-v2-0201",
+    "name": "Livro fechado de capa de couro",
+    "sha256": "28101daae838eb241b12cc56d967b52e48e0dab8ce847d215d86106d58415d50"
+  },
+  {
+    "id": "scenery-v2-0102",
+    "name": "Casa retangular de telhado de cerâmica",
+    "sha256": "be90df0f0df0e0a8b75ce3e37bcbeca0f65493927f7c9e143fce2e92d0f3e8ca"
+  },
+  {
+    "id": "scenery-v2-0152",
+    "name": "Banco de praça de pedra",
+    "sha256": "e293009f9eed6dec3049eff5812bc10278c2824e613f6fe14c1a94faf90bace1"
+  },
+  {
+    "id": "scenery-v2-0155",
+    "name": "Carro de mão vazio",
+    "sha256": "d46f6ca6d6d1a0b4d8e1a3353a1a3b1fbd1dde86cc9dde2ad9c6abae85cbffa6"
+  },
+  {
+    "id": "scenery-v2-0180",
+    "name": "Seixo branco individual",
+    "sha256": "e2de8fe22f81e65964e906645a0949d53c1239e43ea033b7a2046aa0a6d40f8f"
+  },
+  {
+    "id": "scenery-v2-0006",
+    "name": "Cama de solteiro com colcha",
+    "sha256": "0b02bcf8a5d63c84ea6c2916a57d10624b577f4f241f876d11768fc7f99f34fe"
+  },
+  {
+    "id": "scenery-v2-0028",
+    "name": "Mochila fechada de couro",
+    "sha256": "85975adcf8ca4ffd1bb311abacfbf74ed1b06487a0c83968b1363629bbf32a5d"
+  },
+  {
+    "id": "scenery-v2-0030",
+    "name": "Banquinho dobrável",
+    "sha256": "3047c74545837364d9250b9518176eef8c8c2ce84db4ff7dc1ead26b88c82c29"
+  },
+  {
+    "id": "scenery-v2-0056",
+    "name": "Muda de árvore",
+    "sha256": "ea19d4e895cc5a51f0af0b413eeace18ebac4f143541e1309bcf83b7fa101a5b"
+  },
+  {
+    "id": "scenery-v2-0130",
+    "name": "Banqueta alta de taverna",
+    "sha256": "1c55212aa3ff4fef6e9818de96918dc858b1b35b0eb08b91794a1134d2b891ec"
+  },
+  {
+    "id": "scenery-v2-0177",
+    "name": "Pedra oval de rio",
+    "sha256": "4ebbe109a3dd7babd23827d98600238f85c2c4adcfab3a67ce02f6763cd679e4"
+  },
+  {
+    "id": "scenery-v2-0202",
+    "name": "Livro aberto de páginas amareladas",
+    "sha256": "6020e527980bb4e028ecfc0820b976def0e0df5b8928640065c5a591158ffd81"
+  },
+  {
+    "id": "scenery-v2-0205",
+    "name": "Mapa dobrado de papel",
+    "sha256": "d519f89f514d0823aa9f027fad1669383fe3fd66d3720624a753e05588265e26"
+  },
+  {
+    "id": "scenery-v2-0229",
+    "name": "Castiçal alto individual",
+    "sha256": "748bd6792981c72230a02861468258b030c43665d66f21bee41aa6f557350db3"
+  },
+  {
+    "id": "scenery-v2-0026",
+    "name": "Barraca triangular de lona",
+    "sha256": "d53da2138f622be8ec2445b08bd89e35f05414ab7a948c8964dbfe6b82d7ee60"
+  },
+  {
+    "id": "scenery-v2-0053",
+    "name": "Bétula de folhas claras",
+    "sha256": "8a27b733e11f806a467621005044e3ac0428f0a9493cbd4eea11bbdcfc31b640"
+  },
+  {
+    "id": "scenery-v2-0081",
+    "name": "Grade circular de ferro",
+    "sha256": "329d7de558870ae0b0d355fc828cb414d2e225aa129faa915540529742c1e0a0"
+  },
+  {
+    "id": "scenery-v2-0103",
+    "name": "Torre circular de telhado de ardósia",
+    "sha256": "e484f7b80f70d4ded9470e4479315a91ee603feea81f103eb318fedcb3ba3f81"
+  },
+  {
+    "id": "scenery-v2-0127",
+    "name": "Mesa comprida de taverna vazia",
+    "sha256": "724b83fcacb395f75a53f52cc713ab2d8bdbffa202f37cc308de92138232ec6d"
+  },
+  {
+    "id": "scenery-v2-0128",
+    "name": "Banco longo de taverna",
+    "sha256": "d71a989004ab3bb485c8e6bed095babd0b3976580c54496d08b41f92cd46c591"
+  },
+  {
+    "id": "scenery-v2-0131",
+    "name": "Barril individual fechado",
+    "sha256": "2bdbff8e56a8f4fcc5225f1441ef13c5cf3d6305f4d045fbffc3458c81b63fd4"
+  },
+  {
+    "id": "scenery-v2-0156",
+    "name": "Carrinho de feira vazio",
+    "sha256": "e571ca6c5e650c785343c237a6fcd00b673fdef5836bb3895d81ba092b86a6cc"
+  },
+  {
+    "id": "scenery-v2-0181",
+    "name": "Rocha de arenito vermelho",
+    "sha256": "3d0e9e6f183516ed06999e6da9c3bb8423cae8d80b77b98c530a3dfa1d5c7e9c"
+  },
+  {
+    "id": "scenery-v2-0206",
+    "name": "Pena de escrita individual",
+    "sha256": "350ce1a83545410e5319edd758093167d5791a535fbe2b6a525be77364e7842f"
+  },
+  {
+    "id": "scenery-v2-0003",
+    "name": "Cadeira simples de madeira",
+    "sha256": "d2f3e3158ff676276787913be0d4091372e00943fc9c77f507e31ed3bb719973"
+  },
+  {
+    "id": "scenery-v2-0004",
+    "name": "Banco comprido de madeira",
+    "sha256": "566207d38749ac5b882a76f2bd8b83912b3eae6bc9cd56a972e0ccd0dea02256"
+  },
+  {
+    "id": "scenery-v2-0031",
+    "name": "Mesa dobrável de viagem",
+    "sha256": "29a45d564f1d4990c0770a7cb31c9a0d3c155ccb9c3d90fb59e6e23fc93bf6d2"
+  },
+  {
+    "id": "scenery-v2-0178",
+    "name": "Pedra angular de ardósia",
+    "sha256": "d26ea7d139b73e4dc8a9323ed6386bc2467e6f5f548949e6215ea0fe470be830"
+  },
+  {
+    "id": "scenery-v2-0203",
+    "name": "Pergaminho enrolado",
+    "sha256": "99d2652d1e3b264c101068fa5068d1910f12329869fc709f3b7c3fc806d267b7"
+  },
+  {
+    "id": "scenery-v2-0226",
+    "name": "Banco de oração de madeira",
+    "sha256": "20f4c164aff40e89a1b802f8946704db2b8b7eb76cb2fec96dfb8dccf99c700e"
+  },
+  {
+    "id": "scenery-v2-0227",
+    "name": "Genuflexório individual",
+    "sha256": "ffe095e6eab3bc1fe5cbd0cc2b3ce1515f02abc32f565d81aeb8fb6624c6bd7e"
+  },
+  {
+    "id": "scenery-v2-0230",
+    "name": "Vela ritual individual",
+    "sha256": "21a9200d152d2f73a1af05c5020b6b7ba4bce58e98eab25254392e65b7ef3c0d"
+  },
+  {
+    "id": "scenery-v2-0231",
+    "name": "Incensário pequeno individual",
+    "sha256": "5a861177ca4b70dc69a3130999125e51d1069df368444ae555035e8d0c22a9cc"
+  }
+]

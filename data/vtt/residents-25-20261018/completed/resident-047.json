@@ -1,0 +1,19 @@
+{
+  "id": "resident-047",
+  "name": "Valéria · Alfaiate",
+  "species": "humana",
+  "bodyScale": 1,
+  "reference": "data/vtt/residents-25-20261018/reference-topdown.png",
+  "image": "/vtt/residents-25-20261018/resident-047-topdown-v3.webp",
+  "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-047-topdown-v3.webp",
+  "prompt": "Create ONE distinct medieval fantasy villager token for an overhead VTT battlemap. The attached reference defines the exact directly-above camera and finely painted realistic quality, NOT the identity, hair, clothing or occupation. Camera is exactly vertical at 90 degrees, orthographic plan view. Top of head, shoulders and arms dominate, lower body strongly foreshortened. The person stands naturally, neck upright and chin LEVEL, looking straight FORWARD PARALLEL TO THE GROUND toward the BOTTOM EDGE of the canvas. Never look up or make eye contact with the overhead viewer, never bow the head to look down at the hands. Render the actual face in its natural narrow top-down projection: visible forehead, brow ridge and nose extending beyond the front hairline, with appropriate beard glimpsed below; do not replace the face with scalp, and do not tilt the head upward to expose a frontal portrait. Face remains naturally occluded by the crown in true overhead projection. Exactly two arms and hands with convincing grips. Entire compact silhouette with tiny boot glimpses inside generous transparent margins. Crisp painted cloth grain, worn leather, subtle metal, warm natural colors and soft neutral illumination matching the reference. Single square canvas, genuine transparent alpha. No floor, backdrop, base, shadow, ring, grid, text, border or watermark. New character: young woman tailor, medium brown skin, black crown in two neat braids, moss-green fitted work dress and pale belt, holding a folded piece of crimson fabric and small closed scissors in separate hands.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-a75ddfa6-895e-4446-9fc8-26562fc018fa.png",
+  "localSource": ".local/residents-25-sources-20261018/resident-047-topdown-v3.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T14:17:19.812Z",
+  "sourceSha256": "b3f7cd1208bbc319cbb0959edd451132e2acec18c09d0979402cf5a64066dd9c",
+  "sha256": "85acad30544ccd23a12f54e3d79cecefeef289db29ce5c3bc5456453b089b05f",
+  "width": 768,
+  "height": 768,
+  "alpha": true
+}

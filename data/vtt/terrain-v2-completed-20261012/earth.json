@@ -1,0 +1,9 @@
+{
+  "id": "earth",
+  "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Rich compact brown earthen soil, fine organic grains, faint worn patches, no large stones. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-ba426e30-a172-475d-bbce-a9a6d1003174.png",
+  "image": "/vtt/scenery-v2-20261012/terrain-earth.webp",
+  "sha256": "1821b20afe897b86719d60a47b45c3832618e82b16d19bcd136968ed8ae1a01f",
+  "pixelWidth": 768,
+  "pixelHeight": 768
+}

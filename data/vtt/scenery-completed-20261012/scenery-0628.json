@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0628",
+  "name": "Carrinho — templo",
+  "category": "Cidade",
+  "width": 2,
+  "height": 1.2161,
+  "image": "/vtt/scenery-assets-20261012/scenery-0628.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: merchant handcart; temple quarter design with limestone and restrained ceremonial patterns. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-90791e56-20a2-47b5-9a5a-ac03ed5cac3e.png",
+  "sha256": "cba1deda1410f7d7a9e95287d70d0d5ca10eae2d6edea708ffd72960749de2a4",
+  "pixelWidth": 768,
+  "pixelHeight": 467
+}

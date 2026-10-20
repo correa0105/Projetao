@@ -1,4 +1,7 @@
 /* Public visits share the camp's viewport, figure grid and ground alignment. */
+:root .app-shell[data-page='profiles']:has(.visiting) > .main-shell {
+  padding-bottom: 0;
+}
 :root .app-shell[data-page='profiles']:has(.visiting) > .main-shell > .page-header {
   display: none;
 }

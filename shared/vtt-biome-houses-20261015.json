@@ -1,0 +1,106 @@
+[
+  {
+    "id": "biome-swamp-cabana",
+    "name": "Cabana do pescador",
+    "category": "Pântano",
+    "width": 5,
+    "height": 5,
+    "image": "/vtt/biomes-20261015/biome-swamp-cabana.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-cabana-thumb.webp",
+    "interior": "/vtt/biomes-20261015/biome-swamp-cabana-interior.webp",
+    "footprint": {
+      "left": 0.1,
+      "right": 0.9,
+      "top": 0.1,
+      "bottom": 0.9,
+      "doorStart": 0.43,
+      "doorEnd": 0.5700000000000001
+    },
+    "roofBounds": {
+      "left": 0.065,
+      "right": 0.935,
+      "top": 0.065,
+      "bottom": 0.935
+    },
+    "windows": [],
+    "notes": "Pântano · Construção com interior e entrada livre. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-cabana-ervas",
+    "name": "Casa do curandeiro",
+    "category": "Pântano",
+    "width": 6,
+    "height": 6,
+    "image": "/vtt/biomes-20261015/biome-swamp-cabana-ervas.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-cabana-ervas-thumb.webp",
+    "interior": "/vtt/biomes-20261015/biome-swamp-cabana-ervas-interior.webp",
+    "footprint": {
+      "left": 0.1,
+      "right": 0.9,
+      "top": 0.1,
+      "bottom": 0.9,
+      "doorStart": 0.44166666666666665,
+      "doorEnd": 0.5583333333333333
+    },
+    "roofBounds": {
+      "left": 0.065,
+      "right": 0.935,
+      "top": 0.065,
+      "bottom": 0.935
+    },
+    "windows": [],
+    "notes": "Pântano · Construção com interior e entrada livre. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-cabana-lodo",
+    "name": "Casa das palafitas",
+    "category": "Pântano",
+    "width": 6,
+    "height": 6,
+    "image": "/vtt/biomes-20261015/biome-swamp-cabana-lodo.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-cabana-lodo-thumb.webp",
+    "interior": "/vtt/biomes-20261015/biome-swamp-cabana-lodo-interior.webp",
+    "footprint": {
+      "left": 0.1,
+      "right": 0.9,
+      "top": 0.1,
+      "bottom": 0.9,
+      "doorStart": 0.44166666666666665,
+      "doorEnd": 0.5583333333333333
+    },
+    "roofBounds": {
+      "left": 0.065,
+      "right": 0.935,
+      "top": 0.065,
+      "bottom": 0.935
+    },
+    "windows": [],
+    "notes": "Pântano · Construção com interior e entrada livre. Escala: 1 quadrado = 1,5 m."
+  },
+  {
+    "id": "biome-swamp-casa-vigia",
+    "name": "Abrigo de patrulha",
+    "category": "Pântano",
+    "width": 6,
+    "height": 6,
+    "image": "/vtt/biomes-20261015/biome-swamp-casa-vigia.webp",
+    "thumbnail": "/vtt/biomes-20261015/biome-swamp-casa-vigia-thumb.webp",
+    "interior": "/vtt/biomes-20261015/biome-swamp-casa-vigia-interior.webp",
+    "footprint": {
+      "left": 0.1,
+      "right": 0.9,
+      "top": 0.1,
+      "bottom": 0.9,
+      "doorStart": 0.44166666666666665,
+      "doorEnd": 0.5583333333333333
+    },
+    "roofBounds": {
+      "left": 0.065,
+      "right": 0.935,
+      "top": 0.065,
+      "bottom": 0.935
+    },
+    "windows": [],
+    "notes": "Pântano · Construção com interior e entrada livre. Escala: 1 quadrado = 1,5 m."
+  }
+]

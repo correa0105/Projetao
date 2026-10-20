@@ -1,0 +1,17 @@
+[
+  {
+    "id": "scenery-0410",
+    "name": "Casa pequena — aldeia",
+    "sha256": "f0a8f625d8340276e7d0c106c75b275e1986e1b1f6161eb4ec41328410170c8f"
+  },
+  {
+    "id": "scenery-0510",
+    "name": "Mesa posta — posto mercantil",
+    "sha256": "98c60a78e63b27ab1660c8a4d99fcb298908238ac48e224fa9c483de0e7ba676"
+  },
+  {
+    "id": "scenery-0610",
+    "name": "Banca de feira — jardim",
+    "sha256": "3cf464969c5ab68a06907a2a0605ce626024023c413927ed6ab01e77982f839a"
+  }
+]

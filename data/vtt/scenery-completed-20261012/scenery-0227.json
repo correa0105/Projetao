@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0227",
+  "name": "Arbusto — bosque nevado",
+  "category": "Floresta",
+  "width": 2.8672,
+  "height": 3,
+  "image": "/vtt/scenery-assets-20261012/scenery-0227.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: dense leafy shrub; lightly snow-dusted form with frost on upper surfaces. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-b65f46d0-94ca-4511-a59c-3d555ca1c52c.png",
+  "sha256": "0d76cd6a827928623bdd6efcbc1b6f339ca610d45a508364aff23099f7cf938d",
+  "pixelWidth": 734,
+  "pixelHeight": 768
+}

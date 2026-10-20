@@ -1,0 +1,85 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "id": "main",
+      "url": "/guild/facilities-roomfit-20261019/main.webp",
+      "prompt": "Use case: compositing. Generate ONE transparent-background medieval guild hall prop designed specifically for the attached room reference. Reference image is ONLY camera/material/lighting reference, DO NOT output the room. Subject: a modest working bronze gathering bell hanging in a plain upright dark rough-oak timber frame with iron joints, worn practical medieval construction matching the room's wall timbers, no carved ornament, no pedestal or stone plinth. The bell stand is at the RIGHT side of this room near the right wall, not a tabletop miniature. Camera absolutely level with the reference room, vertical posts straight upright, bottom horizontal support level; see the FRONT and LEFT side slightly because it sits to viewer's right; depth edges recede toward room center at x48%, horizon around y43%. Standing eye-level view, shallow view of top surfaces, NOT isometric, NOT high-angle product photography. Dark desaturated aged brown wood, subdued weathered bronze, broad soft warm firelight from LEFT, weak cool window light from right, dark soft ambient shadows. Match the room's softly painted realistic texture and softness; no crispy hyperdetail, glossy catalog polish, bright rim, toy appearance, diagonal rotation or decorative gold. Entire structure visible from feet to top, physically plausible proportions. Only this bell stand cutout, centered, tight small transparent margin, ground contact at feet, no floor pixels, no room pixels, no text, genuine alpha transparency.",
+      "source": "exec-10e5ecf9-4d7b-4d9a-a4e9-3387c3c3008d.png",
+      "sha256": "3834b08bda69151ae2f6ee1963788dbcb6f1cb0303e93e9e3d92891dff8c7084",
+      "nativeSha256": "6085683cb553f063b65a3f14ce079b12822b154e7095d1a9212f69c7ab595eed",
+      "width": 836,
+      "height": 1000
+    },
+    {
+      "id": "forge",
+      "url": "/guild/facilities-roomfit-20261019/forge.webp",
+      "prompt": "Use case: compositing. The attached room is the exact camera, materials, lighting and style reference ONLY. Create ONE isolated game scenery furniture cutout on genuine transparent alpha. It must look extracted from this room's actual painted environment, NOT an inventory icon or a photoreal product shot. Simple thick old dark oak and dull black iron, rough low contrast worn surfaces with broad softly painted details. No elaborate carving, brass ornamental bands, glow, white rim, dramatic studio lighting, stone pedestal, ground patch, backdrop or room pixels. Straight upright vertical legs, no object tilt. Eye-level camera matching the reference, see a shallow amount of tabletop, not top down or isometric. Entire object and all feet visible with minimal transparent margin. Subject: a full-size practical medieval smith's workbench, thick plank tabletop, four straight square timber legs, plain iron vise at LEFT edge, a few ordinary dark hammers and tongs resting on top and a low shelf with iron billets. No miniature anvil, no ornamental stands, no chair. Located near the back wall RIGHT of center, roughly at the same depth as the forge's barrel by the door. Long front edge LEVEL and parallel to rear window sill, FRONT face visible with only a little LEFT side; back edges converge toward central window. Broad soft amber forge light from LEFT, muted cool window rim from behind. Keep the tabletop clutter sparse and realistically sized. Plain working-class joinery like the reference bench.",
+      "source": "exec-0b3d3307-ac71-4665-91d4-4904a2664521.png",
+      "sha256": "6ff97e68c7a556d83d934890c832a3b4eb0a8051c8a721ffa6bc5c25bc6b88a9",
+      "nativeSha256": "0df4d139c2a652aab9b0f0683f5fa297c9e2853b09d53095dd502c225f206162",
+      "width": 1000,
+      "height": 481
+    },
+    {
+      "id": "lounge",
+      "url": "/guild/facilities-roomfit-20261019/lounge.webp",
+      "prompt": "Use case: compositing. The attached room is the exact camera, materials, lighting and style reference ONLY. Create ONE isolated game scenery furniture cutout on genuine transparent alpha. It must look extracted from this room's actual painted environment, NOT an inventory icon or a photoreal product shot. Simple thick old dark oak and dull black iron, rough low contrast worn surfaces with broad softly painted details. No elaborate carving, brass ornamental bands, glow, white rim, dramatic studio lighting, stone pedestal, ground patch, backdrop or room pixels. Straight upright vertical legs, no object tilt. Eye-level camera matching the reference, see a shallow amount of tabletop, not top down or isometric. Entire object and all feet visible with minimal transparent margin. Subject: a modest low rustic hospitality cupboard, plain dark plank oak double doors with small iron ring handles, straight stout feet; a single dull copper kettle, two plain pewter mugs and a folded linen cloth on top. NO chair or armchair attached, no carved gothic tracery, no book, basket, gold, jewel, shiny finish, pedestal. It will stand near the back wall right of center below the window, the same room depth as the existing chest left of the windows. Front edge LEVEL matching the sill, shallow tabletop plane, see FRONT and slight LEFT end. Warm firelight from left, quiet neutral cool light from right window. Make it visually the same simple carpenter's furniture as the existing chest.",
+      "source": "exec-6cd13614-b834-4f85-b5b6-85d4069e4e15.png",
+      "sha256": "88a7349954b49e93805e154bb7461733e72aa5d3f74744afb6382de86f584178",
+      "nativeSha256": "84a538308baed3791ec83e722e0486fc226d4d7fc77b6cd9a6777c0ae0ae8c7e",
+      "width": 1000,
+      "height": 834
+    },
+    {
+      "id": "meeting",
+      "url": "/guild/facilities-roomfit-20261019/meeting.webp",
+      "prompt": "Use case: compositing. The attached room is the exact camera, materials, lighting and style reference ONLY. Create ONE isolated game scenery furniture cutout on genuine transparent alpha. It must look extracted from this room's actual painted environment, NOT an inventory icon or a photoreal product shot. Simple thick old dark oak and dull black iron, rough low contrast worn surfaces with broad softly painted details. No elaborate carving, brass ornamental bands, glow, white rim, dramatic studio lighting, stone pedestal, ground patch, backdrop or room pixels. Straight upright vertical legs, no object tilt. Eye-level camera matching the reference, see a shallow amount of tabletop, not top down or isometric. Entire object and all feet visible with minimal transparent margin. Subject: a sturdy ordinary rectangular medieval oak strategy table for four people, plain thick plank top, four straight rectangular legs with simple low straight stretchers, one worn flat parchment map and a few small rough wooden markers on it. NO heraldic plates, carved legs, fancy ornaments, cross-shaped beams, giant lantern, celestial globe, gilding or attached chairs. The table stands at center of the reference room, slightly back from foreground, level and facing the viewer squarely; symmetric FRONT legs, tabletop back edge and front edge HORIZONTAL; both depth edges converge toward the window just LEFT of image center at standing eye level. Modest shallow tabletop visibility, not overhead board-game shot. Subdued warm candlelight from above and right, broad soft cool window light from left. Match the battered plain tables in reference.",
+      "source": "exec-c27b28b8-ff35-4a63-a863-38af94c33d05.png",
+      "sha256": "34baf5177105bb7ce7171ff56911e5ca437ee3c1e02148236f2fc6b121317ae3",
+      "nativeSha256": "ce0078d464c0da2138ca52aab5da4edb5bf0867fbe6bb37283d7c98297226b12",
+      "width": 1000,
+      "height": 432
+    },
+    {
+      "id": "alchemy",
+      "url": "/guild/facilities-roomfit-20261019/alchemy.webp",
+      "prompt": "Use case: compositing. Create ONE isolated transparent alpha game scenery installation designed for the exact attached room reference. The room image supplies camera, painted realism, materials and lighting; do NOT output any room, wall or floor. Full object with all feet visible, tight small transparent border. Standing eye-level camera matching the reference, no isometric view, no exaggerated overhead tabletop, front horizontal edges LEVEL, vertical legs perfectly upright, no rotation or leaning. Real life full-size medieval working furniture, natural worn material, matte softly painted detail like the room, subdued low contrast, no studio highlights, no glowing outline, no stone pedestal, no modern parts, no text. Subject: a simple worn dark oak herbal alchemy worktable with straight legs, a low shelf holding two earth-brown ceramic pots, a small stone mortar and pestle, a modest copper alembic and three small smoky green glass bottles on the tabletop, one bundle of dried herbs. It stands left of the room center and faces the camera squarely, slight RIGHT end visible. Plain practical carpentry matching the reference room. Warm reflected hearth light from back RIGHT, cool soft window light from LEFT. Nothing ornate, fantastical glow or sprawling pipes. No fire on table.",
+      "source": "exec-f81dfff3-6193-4e30-acad-83febdc2a5db.png",
+      "sha256": "0a893d8e23b08cee4ba56bf43053ed912c73775e9d051d79fee379358e65d356",
+      "nativeSha256": "dd77fe7be275673bc85d13822e1a75b6e635f75d45d0089411b9b322f9841c57",
+      "width": 1000,
+      "height": 719
+    },
+    {
+      "id": "training",
+      "url": "/guild/facilities-roomfit-20261019/training.webp",
+      "prompt": "Use case: compositing. Create ONE isolated transparent alpha game scenery installation designed for the exact attached room reference. The room image supplies camera, painted realism, materials and lighting; do NOT output any room, wall or floor. Full object with all feet visible, tight small transparent border. Standing eye-level camera matching the reference, no isometric view, no exaggerated overhead tabletop, front horizontal edges LEVEL, vertical legs perfectly upright, no rotation or leaning. Real life full-size medieval working furniture, natural worn material, matte softly painted detail like the room, subdued low contrast, no studio highlights, no glowing outline, no stone pedestal, no modern parts, no text. Subject: one functional medieval straw practice dummy, tightly bound unbleached straw torso on a straight dark oak vertical post with a stout wooden crossfoot; one short horizontal wood arm each side, simple old dark hide patch on the chest. No weapons, no armor, helmet, shield, archery disk, plinth, exaggerated human face or decorative fittings. It stands RIGHT of center in this large vaulted stone training hall, seen mostly FRONT with slight LEFT side, shoulders and crossfoot LEVEL, vertical post straight. Match this darker blue-gray moonlit room: cool muted blue light from rear LEFT, faint warm torch highlights from right, deep soft natural shadows.",
+      "source": "exec-11e6b5a2-dd43-4b9f-a8dc-b26e6475d081.png",
+      "sha256": "877a5c9d33ab15eb50f734590874fef213a620b13b568bd776a9dd9876a03da3",
+      "nativeSha256": "dca0c3f0375ff3ee9faa2928a6419dd5da495eeaf036bd11cf91142a92f0ea76",
+      "width": 520,
+      "height": 901
+    },
+    {
+      "id": "library",
+      "url": "/guild/facilities-roomfit-20261019/library.webp",
+      "prompt": "Use case: compositing. Generate ONE isolated medieval guild furniture cutout on genuine transparent alpha, designed to belong in the exact attached room image. Reference is CAMERA, LIGHTING, ROOM STYLE only; do not output room, walls, floor, a ground plane, text, watermark or symbols. Whole object and feet visible with minimal transparent margin. Standing eye-level camera, shallow top surfaces, front long edges perfectly horizontal, vertical legs upright, not tilted or isometric, no product-photo perspective. Dark old oak, matte rubbed iron, broad softly painted surfaces matching reference, subdued natural contrast rather than crispy miniature detail, no glossy golden highlights or bright rim. Subject: a modest freestanding reading-book cabinet, rectangular old dark oak bookshelf with 3 shelves, around two dozen muted earth-tone worn books grouped with empty spaces, two small plain lower cupboard doors and short straight square feet. No candles, statues, scrolls on floor, fancy carvings or gilding. The cabinet is against the LEFT third of the back wall in the reference, like a practical extension to the existing library shelving, primarily FRONT face with a tiny RIGHT end showing. Dark walnut-brown wood identical to built-in shelves, faint cool blue window light from left, quiet amber candlelight from right. Restrained Gothic proportion without decorative turrets, appropriate real full-size furniture.",
+      "source": "exec-67b3b5a5-96fe-4572-89c2-8d178a5182b3.png",
+      "sha256": "62c7ad40fac04ff23600c63ca928b40f9a1f8cb3e6be9264f180bc260a7bfc90",
+      "nativeSha256": "a3769456baafb6d649a378f66f9a312826c214ed1ed0f4d0db49aedea7322a4b",
+      "width": 729,
+      "height": 1000
+    },
+    {
+      "id": "leader",
+      "url": "/guild/facilities-roomfit-20261019/leader.webp",
+      "prompt": "Use case: compositing. Generate ONE isolated medieval guild furniture cutout on genuine transparent alpha, designed to belong in the exact attached room image. Reference is CAMERA, LIGHTING, ROOM STYLE only; do not output room, walls, floor, a ground plane, text, watermark or symbols. Whole object and feet visible with minimal transparent margin. Standing eye-level camera, shallow top surfaces, front long edges perfectly horizontal, vertical legs upright, not tilted or isometric, no product-photo perspective. Dark old oak, matte rubbed iron, broad softly painted surfaces matching reference, subdued natural contrast rather than crispy miniature detail, no glossy golden highlights or bright rim. Subject: a practical medieval command desk with plain dark oak plank rectangular top and two small drawer pedestals on square feet, plain iron ring drawer handles. A closed worn brown ledger, one rolled parchment and a small dull iron inkwell on the desktop, nothing else. NO tall chair, no throne, no carved heraldic motifs, no elaborate gilt trim, no astrolabe, no lamps or magical glow. The desk sits slightly RIGHT of center in this noble hall, square FRONT facing viewer, tabletop front horizontal, slightly see LEFT end, modest shallow top view toward rear central window. Match aged dark wooden wall panels, soft warm light from left hearth, cool daylight from right windows, subtle reflection on top without polished product shine.",
+      "source": "exec-0b1e6568-1473-4716-a13c-43a3b0bc22da.png",
+      "sha256": "0facd673993fb5b1c4d8ab16796b08063da4124bafca7bcf10323a848173a4df",
+      "nativeSha256": "0f1010af550551f8896d5fe97f36a5af5cbfeff6f9dc5e20dbcfdabaf5f7b670",
+      "width": 1000,
+      "height": 390
+    }
+  ]
+}

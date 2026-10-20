@@ -1,0 +1,14 @@
+{
+  "id": "scenery-v2-0031",
+  "name": "Mesa dobrável de viagem",
+  "category": "Acampamento",
+  "width": 1.5,
+  "height": 0.832,
+  "prompt": "Create ONE original premium fantasy virtual tabletop map asset: Mesa dobrável de viagem. Category context: Acampamento. This is ONE individual usable object, plant, tree, rock or coherent building, NEVER a group, pile, furnished scene, room, bundle or collection of props. For a book produce ONE book; for a bench ONE bench; for a tree ONE tree. Strict orthographic overhead plan view: the camera points vertically down at 90 degrees, parallel to gravity. No perspective, no isometric view, no front elevation. Vertical sides are hidden; furniture legs are hidden, chair backs appear only as narrow top edges; buildings show roof only. Rich highly detailed realistic hand-painted fantasy cartography, fine precise dark contours, tactile wood grain, worn stone, fibers, believable material variation, carefully painted highlights and restrained contact shadow. Natural earthy palette, clean distinct silhouette and premium artisan finish inspired by professional top-down map libraries. No ground, surrounding scenery, extra props, frame, labels, lettering or watermark. The entire object fits inside a square 1024x1024 image with transparent margin on every side. Genuine transparent alpha background. Exact overhead geometry: ONE empty rectangular folding wood table, horizontal planked tabletop seen straight down. ALL crossed folding legs and underside supports are hidden under the tabletop. No exposed X frame under the table, no vertical front face. Draw only the bare rectangular top with its hinges and tiny edge handles.",
+  "repaired": true,
+  "image": "/vtt/scenery-v2-20261012/scenery-v2-0031.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-9c4062ab-c535-4196-a4dd-311a134c3805.png",
+  "sha256": "29a45d564f1d4990c0770a7cb31c9a0d3c155ccb9c3d90fb59e6e23fc93bf6d2",
+  "pixelWidth": 768,
+  "pixelHeight": 426
+}

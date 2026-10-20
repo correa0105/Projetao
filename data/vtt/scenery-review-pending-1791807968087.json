@@ -1,0 +1,37 @@
+[
+  {
+    "id": "scenery-0327",
+    "name": "Grades — ruína arcana",
+    "sha256": "f096fcef03b8ceabcb092e9f417b625ffdebb09e4d27f569cfe2cbf85163674f"
+  },
+  {
+    "id": "scenery-0427",
+    "name": "Torre — deserto",
+    "sha256": "27dddfa89d748189ff1b8c59b4b87ba826bb11e1cca49552e3eb51210a624e90"
+  },
+  {
+    "id": "scenery-0527",
+    "name": "Barril — taberna feérica",
+    "sha256": "f73cfc6a9af162537857f94f7970e80e0585eda7c1cd6ff6488ed11719b0e463"
+  },
+  {
+    "id": "scenery-0627",
+    "name": "Carrinho — oficina",
+    "sha256": "9515a86077e707e73e1d37634c4d94b7eb08c9d0a46412bbf65de895b22dc353"
+  },
+  {
+    "id": "scenery-0727",
+    "name": "Cristais — irregular",
+    "sha256": "b7b78ba5fcbd704af6e0653c707fd858e2b218165cd1b423b654cb5f86c77e2c"
+  },
+  {
+    "id": "scenery-0827",
+    "name": "Ânforas — pirata",
+    "sha256": "6dcf66b270e9d9a48cb68fd2095155965ed8c524b30de511b1b1f8b45da081bc"
+  },
+  {
+    "id": "scenery-0927",
+    "name": "Incensário — fogo",
+    "sha256": "185f7aef571ff7d25f3a71f4cb8d661fe3280dc5be3077dc1174b90c8b5c2673"
+  }
+]

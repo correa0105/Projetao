@@ -1,0 +1,23 @@
+{
+  "id": "biome-snow-ground-14",
+  "name": "Raiz de árvore congelada",
+  "biome": "snow",
+  "type": "ground",
+  "sizeMetres": 2.4,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: one gnarled exposed root coated irregularly in clear ice and granular snow. Entire silhouette safely inside the canvas. The largest physical extent is 2.4 metres. This is one distinct asset, not a sheet or multiple variations. Final camera constraint: a strict flat plan view from a camera exactly at the zenith (90 degrees to the ground). No visible front or side elevation. For foliage show the crown from directly above, not a side-facing plant illustration; mushroom stalks are entirely hidden beneath their caps.",
+  "status": "generated",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-snow-ground-14.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-snow-ground-14-thumb.webp",
+      "pixelWidth": 745,
+      "pixelHeight": 768,
+      "sha256": "242cca24c43bb04516807bb57eb9277c38b19bbb239dd1d9e726b69d46d139fd",
+      "sourceBasename": "exec-f3710b8f-5dec-41f3-a929-7cd6986e9fc9.png",
+      "generator": "built-in image_gen",
+      "width": 1.5521,
+      "height": 1.6,
+      "hasAlpha": true
+    }
+  }
+}

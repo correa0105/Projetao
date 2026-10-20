@@ -1,0 +1,14 @@
+{
+  "id": "scenery-0043",
+  "name": "Estante — peça de cabana",
+  "category": "Casa",
+  "width": 2,
+  "height": 0.56,
+  "image": "/vtt/scenery-assets-20261012/scenery-0043.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: LOW OPEN-TOP wooden bookcase viewed exactly vertically from above. Show only a long rectangular wooden rim and one row of upright books as small horizontal page-edge rectangles; books stand vertically so only their TOP edges are visible. No visible shelf interiors, book spines, front panels, side panels, legs or vertical faces. Narrow floorplan footprint, aspect ratio about 4:1; simple cabin design using rough logs and natural woven fabrics. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "repaired": true,
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-83c87327-d29f-4f7f-a2ac-b69c4b72b56d.png",
+  "sha256": "d9519934dada49f7bd638d1aae58a9d60523790be2ab8d899b3aec931b76c9d9",
+  "pixelWidth": 768,
+  "pixelHeight": 215
+}

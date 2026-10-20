@@ -1,0 +1,29 @@
+{
+  "id": "biome-forest-ground-02",
+  "name": "Galho coberto de líquen",
+  "biome": "forest",
+  "type": "ground",
+  "sizeMetres": 1.4,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: one slender bent branch encrusted with pale gray lichen. Entire silhouette safely inside the canvas. The largest physical extent is 1.4 metres. This is one distinct asset, not a sheet or multiple variations.",
+  "status": "reviewed",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-forest-ground-02.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-02-thumb.webp",
+      "pixelWidth": 768,
+      "pixelHeight": 728,
+      "sha256": "e72a464ba0af576b82183e7deb32a29c1cef37ecca80cd65d96be26e50b1804e",
+      "sourceBasename": "exec-78e97dd3-595e-49c9-be49-977a7a7ea64b.png",
+      "generator": "built-in image_gen",
+      "width": 0.9333,
+      "height": 0.8847,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

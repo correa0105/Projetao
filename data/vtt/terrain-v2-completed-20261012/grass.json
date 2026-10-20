@@ -1,0 +1,9 @@
+{
+  "id": "grass",
+  "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Dense fine natural meadow grass, layered tiny blades, subdued olive and fresh green, small dry blade variation, evenly dense. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-f20c1aa9-5b9f-430f-b1ce-30fb6ae73a68.png",
+  "image": "/vtt/scenery-v2-20261012/terrain-grass.webp",
+  "sha256": "b57016ba05b023c031560863ce8792e66a63779e39909cdc5ac44ead07f1f2f2",
+  "pixelWidth": 768,
+  "pixelHeight": 768
+}

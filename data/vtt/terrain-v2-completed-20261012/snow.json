@@ -1,0 +1,9 @@
+{
+  "id": "snow",
+  "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Soft fresh white snow with subtle pale blue granular shading and tiny natural surface variation. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-1dcbdd25-9ac4-4bfc-a617-75c60427029e.png",
+  "image": "/vtt/scenery-v2-20261012/terrain-snow.webp",
+  "sha256": "9994b9b90498a288ddd8f11b7f7b872b966685e917e23ea7368461c092430201",
+  "pixelWidth": 768,
+  "pixelHeight": 768
+}

@@ -1,0 +1,19 @@
+{
+  "id": "resident-034",
+  "name": "Ivo · Vidreiro",
+  "species": "elfo",
+  "bodyScale": 1,
+  "reference": "data/vtt/residents-25-20261018/reference-user.png",
+  "image": "/vtt/residents-25-20261018/resident-034-topdown-v3.webp",
+  "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-034-topdown-v3.webp",
+  "prompt": "Edit target: the attached silver-haired elf glassworker. Keep the exact true 90-degree overhead orthographic camera, body silhouette, green tunic, leather apron, glass bottle, hands, detailed realistic painted textures, transparent background and lighting. Correct only the head posture: his neck is upright and his chin is level, looking straight forward parallel to the ground toward the BOTTOM EDGE of the picture, as a person standing naturally. He is NOT bowing to look at the bottle, and NOT looking up at the camera. From this directly-above viewpoint the top of his head remains dominant, with anatomically correct narrow foreshortened forehead/brow and projecting nose visible just beyond the front hairline; hair must not erase the face. Do not show a frontal face or make eye contact with the viewer. The face must be viewed from above, never pasted onto the crown. Preserve pointed ears, tied silver hair, original identity, tool-free hands and bottle. Single character on genuine transparent alpha, no floor, ring, shadow, text or border.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-b33c1bdd-c0db-40ff-aa71-f2632955485b.png",
+  "localSource": ".local/residents-25-sources-20261018/resident-034-topdown-v3.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T14:17:13.515Z",
+  "sourceSha256": "531a4171b16158b24b5a505f0954a81f87f1798ffbbee3153878d4b4f4838d72",
+  "sha256": "b1936212c02983b9ef431141ef96950140489898e8ee0d1fb48b0193263e3753",
+  "width": 768,
+  "height": 768,
+  "alpha": true
+}

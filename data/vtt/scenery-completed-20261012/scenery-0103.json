@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0103",
+  "name": "Barraca — mercador",
+  "category": "Acampamento",
+  "width": 1.9,
+  "height": 2,
+  "image": "/vtt/scenery-assets-20261012/scenery-0103.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: canvas tent with visible overhead triangular roof; merchant arrangement with folded canvas and packed goods. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-75c0b6c4-915d-4a5c-8102-5a74939a4ab0.png",
+  "sha256": "ab6ca6eec6a348c9b8d478f638045775f50485549af8711a09cf7e686207267a",
+  "pixelWidth": 729,
+  "pixelHeight": 768
+}

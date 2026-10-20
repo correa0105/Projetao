@@ -1,0 +1,23 @@
+.sheet-training-badge {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 1px #2e1b1640);
+}
+.sheet-skill-name, .sheet-choice-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.sheet-skill-name .sheet-training-badge, .sheet-choice-name .sheet-training-badge {
+  width: 34px;
+  height: 34px;
+  flex-basis: 34px;
+}
+.sheet-training-cards li > span { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .sheet-training-badge { width: 38px; height: 38px; flex-basis: 38px; }
+}

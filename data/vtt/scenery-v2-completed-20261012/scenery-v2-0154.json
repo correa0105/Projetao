@@ -1,0 +1,13 @@
+{
+  "id": "scenery-v2-0154",
+  "name": "Placa de rua deitada",
+  "category": "Cidade",
+  "width": 1.5,
+  "height": 1.4219,
+  "prompt": "Create ONE original premium fantasy virtual tabletop map asset: Placa de rua deitada. Category context: Cidade. This is ONE individual usable object, plant, tree, rock or coherent building, NEVER a group, pile, furnished scene, room, bundle or collection of props. For a book produce ONE book; for a bench ONE bench; for a tree ONE tree. Strict orthographic overhead plan view: the camera points vertically down at 90 degrees, parallel to gravity. No perspective, no isometric view, no front elevation. Vertical sides are hidden; furniture legs are hidden, chair backs appear only as narrow top edges; buildings show roof only. Rich highly detailed realistic hand-painted fantasy cartography, fine precise dark contours, tactile wood grain, worn stone, fibers, believable material variation, carefully painted highlights and restrained contact shadow. Natural earthy palette, clean distinct silhouette and premium artisan finish inspired by professional top-down map libraries. No ground, surrounding scenery, extra props, frame, labels, lettering or watermark. The entire object fits inside a square 1024x1024 image with transparent margin on every side. Genuine transparent alpha background.",
+  "image": "/vtt/scenery-v2-20261012/scenery-v2-0154.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-d1878410-ada5-4853-ae18-67897ecf2e98.png",
+  "sha256": "37ef4a109335abc7a6aa8cb92ed6f8cc0af2a1f7d2a0a00bb0fee999331aa416",
+  "pixelWidth": 768,
+  "pixelHeight": 728
+}

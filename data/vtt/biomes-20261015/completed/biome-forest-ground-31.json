@@ -1,0 +1,29 @@
+{
+  "id": "biome-forest-ground-31",
+  "name": "Folhas secas de carvalho",
+  "biome": "forest",
+  "type": "ground",
+  "sizeMetres": 1.4,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: an organic scattered patch of curled brown oak leaves, no underlying terrain. Entire silhouette safely inside the canvas. The largest physical extent is 1.4 metres. This is one distinct asset, not a sheet or multiple variations. Final camera constraint: a strict flat plan view from a camera exactly at the zenith (90 degrees to the ground). No visible front or side elevation. For foliage show the crown from directly above, not a side-facing plant illustration; mushroom stalks are entirely hidden beneath their caps.",
+  "status": "reviewed",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-forest-ground-31.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-31-thumb.webp",
+      "pixelWidth": 768,
+      "pixelHeight": 764,
+      "sha256": "35a27c083bdf337fb7912aab6eb7095ecbaef773c7298e4ee6e45b7e58a3eb3b",
+      "sourceBasename": "exec-7d417478-ec12-4e26-9554-07b8cfa44010.png",
+      "generator": "built-in image_gen",
+      "width": 0.9333,
+      "height": 0.9285,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "scenery-0229",
+    "name": "Arbusto — bosque cerrado",
+    "sha256": "10b9425d099c69992455296520a94f9d4a15639f470e9e0a3b1d736af2889ddd"
+  },
+  {
+    "id": "scenery-0329",
+    "name": "Grades — santuário",
+    "sha256": "7b5e5db0794c703dc57c6d4d554e534e9c67eaca099e531787be2b33ac4657f0"
+  },
+  {
+    "id": "scenery-0332",
+    "name": "Correntes — cripta real",
+    "sha256": "5dc1fb40075c9bdbdc55734d91f6152933cd3e01bf38db3c494a6cd90343f940"
+  }
+]

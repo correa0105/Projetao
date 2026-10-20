@@ -1,6 +1,6 @@
 .vtt-subtabs.vtt-library-tabs {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 4px;
 }
 .vtt-subtabs.vtt-library-tabs button {
@@ -9,8 +9,8 @@
   padding: 6px 3px;
   font-size: 12px;
   line-height: 1.2;
-  white-space: nowrap;
+  white-space: normal;
 }
 .vtt-subtabs.vtt-library-tabs button:last-child {
-  grid-column: 1 / -1;
+  grid-column: auto;
 }

@@ -1,0 +1,14 @@
+{
+  "id": "scenery-0034",
+  "name": "Armário — peça danificada",
+  "category": "Casa",
+  "width": 2,
+  "height": 0.67,
+  "image": "/vtt/scenery-assets-20261012/scenery-0034.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: CLOSED cupboard seen vertically from zenith: show ONLY the long horizontal opaque wooden top panel, thin upper rim and iron corner fittings. Show no interiors, shelves, drawer fronts, door faces, legs or side panels. The cupboard must look like a flat floorplan footprint, not a product photograph; broken damaged design with missing sections and visible splintered edges. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Object aspect ratio approximately 2:1. Strict 90 degree overhead camera. Only the cupboard's upper horizontal surface is visible. Detailed woodgrain, fine dark contours, hand-painted cartographic realism, compact contact shadow. Transparent background.",
+  "repaired": true,
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-240ca17c-1bc0-4ef0-b4f9-1ed8d0e34abc.png",
+  "sha256": "5c52697100a0945b039fe9d7ca44936c7bef33e59e8192e20b9635a22e556cc0",
+  "pixelWidth": 768,
+  "pixelHeight": 257
+}

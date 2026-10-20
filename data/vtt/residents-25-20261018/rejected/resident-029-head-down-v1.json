@@ -1,0 +1,19 @@
+{
+  "id": "resident-029",
+  "name": "Dalva · Lavadeira",
+  "species": "humana",
+  "bodyScale": 1,
+  "reference": "public/vtt/overhead-20261015/resident-001.webp",
+  "image": "/vtt/residents-25-20261018/resident-029.webp",
+  "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-029.webp",
+  "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: middle-aged washerwoman, dark skin, gray hair wrapped in a pale blue kerchief, rolled sleeves and faded rose work dress, holding folded white linen close to her waist.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-52b63dc3-3c86-46bd-8ee9-23e5ffb386c3.png",
+  "localSource": ".local/residents-25-sources-20261018/resident-029.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T13:00:17.917Z",
+  "sourceSha256": "06c42f80d6878c031ed817d51fac47d633785f2c39b13378d4496ad5c5e0ec8b",
+  "sha256": "05a6c1b73f52ea7637e1105de43a44890c879851c22a71d56e03c66a2977b6aa",
+  "width": 768,
+  "height": 768,
+  "alpha": true
+}

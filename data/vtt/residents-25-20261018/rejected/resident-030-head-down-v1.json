@@ -1,0 +1,19 @@
+{
+  "id": "resident-030",
+  "name": "Estevão · Tanoeiro",
+  "species": "humano",
+  "bodyScale": 1,
+  "reference": "public/vtt/overhead-20261015/resident-001.webp",
+  "image": "/vtt/residents-25-20261018/resident-030.webp",
+  "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-030.webp",
+  "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: stocky male cooper, pale skin and curly auburn crown, mustard tunic and patched brown work apron, holding a small wooden mallet and a short curved barrel stave.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-6e9b6243-ad20-4934-add3-71111dd0451a.png",
+  "localSource": ".local/residents-25-sources-20261018/resident-030.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T13:00:59.007Z",
+  "sourceSha256": "e1cebe9dbe276aace9305ed2f57fc5fc68f2bcbf7c489d976a79bf570119dedf",
+  "sha256": "dd571c29abafffda041fd88f7d03ee66f2018e56f639e383610fd73d5d9488ce",
+  "width": 768,
+  "height": 768,
+  "alpha": true
+}

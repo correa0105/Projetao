@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0419",
+  "name": "Cabana — jardim",
+  "category": "Construções",
+  "width": 4,
+  "height": 3.73,
+  "image": "/vtt/scenery-assets-20261012/scenery-0419.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: wooden cabin roof; garden structure with flowering vines and stone details. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-4a456a06-71f4-4fd3-bd1b-b4b61a0bd67b.png",
+  "sha256": "f02823f81d1ea14c3bc40857967b3240094167462e807438c03969d0a5432d6a",
+  "pixelWidth": 768,
+  "pixelHeight": 716
+}

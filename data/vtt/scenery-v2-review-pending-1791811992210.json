@@ -1,0 +1,57 @@
+[
+  {
+    "id": "scenery-v2-0003",
+    "name": "Cadeira simples de madeira",
+    "sha256": "d2f3e3158ff676276787913be0d4091372e00943fc9c77f507e31ed3bb719973"
+  },
+  {
+    "id": "scenery-v2-0004",
+    "name": "Banco comprido de madeira",
+    "sha256": "566207d38749ac5b882a76f2bd8b83912b3eae6bc9cd56a972e0ccd0dea02256"
+  },
+  {
+    "id": "scenery-v2-0007",
+    "name": "Armário fechado de madeira",
+    "sha256": "6a0ec2c524c197598ab20c54f4f229ba51366686f22fdab67625ef63ea7ba402"
+  },
+  {
+    "id": "scenery-v2-0031",
+    "name": "Mesa dobrável de viagem",
+    "sha256": "29a45d564f1d4990c0770a7cb31c9a0d3c155ccb9c3d90fb59e6e23fc93bf6d2"
+  },
+  {
+    "id": "scenery-v2-0153",
+    "name": "Poste de iluminação",
+    "sha256": "27cc06fafec86a002184ac89fe09a690a15cb46b4089ebb84c08f7e194024712"
+  },
+  {
+    "id": "scenery-v2-0178",
+    "name": "Pedra angular de ardósia",
+    "sha256": "d26ea7d139b73e4dc8a9323ed6386bc2467e6f5f548949e6215ea0fe470be830"
+  },
+  {
+    "id": "scenery-v2-0203",
+    "name": "Pergaminho enrolado",
+    "sha256": "99d2652d1e3b264c101068fa5068d1910f12329869fc709f3b7c3fc806d267b7"
+  },
+  {
+    "id": "scenery-v2-0226",
+    "name": "Banco de oração de madeira",
+    "sha256": "20f4c164aff40e89a1b802f8946704db2b8b7eb76cb2fec96dfb8dccf99c700e"
+  },
+  {
+    "id": "scenery-v2-0227",
+    "name": "Genuflexório individual",
+    "sha256": "ffe095e6eab3bc1fe5cbd0cc2b3ce1515f02abc32f565d81aeb8fb6624c6bd7e"
+  },
+  {
+    "id": "scenery-v2-0230",
+    "name": "Vela ritual individual",
+    "sha256": "21a9200d152d2f73a1af05c5020b6b7ba4bce58e98eab25254392e65b7ef3c0d"
+  },
+  {
+    "id": "scenery-v2-0231",
+    "name": "Incensário pequeno individual",
+    "sha256": "5a861177ca4b70dc69a3130999125e51d1069df368444ae555035e8d0c22a9cc"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "scenery-v2-0001",
+    "name": "Mesa redonda de carvalho",
+    "sha256": "13619aca2fbd4b1b9a9c4cb9e879bc340dafb9b887be517517071d5ca868e772"
+  },
+  {
+    "id": "scenery-v2-0026",
+    "name": "Barraca triangular de lona",
+    "sha256": "663e67f210643b99cd535e62f6562bd595568d8997eaf358e481d3c7054844d9"
+  },
+  {
+    "id": "scenery-v2-0051",
+    "name": "Carvalho frondoso",
+    "sha256": "59f4927ad3f64cd8710e3227fc94f8c5a6c70c83e8463b6862ec6d6d8737e7f1"
+  },
+  {
+    "id": "scenery-v2-0054",
+    "name": "Salgueiro de copa larga",
+    "sha256": "622d09d4d566ee85be78a919a89baa93861b6a87a9c812e1cb79360d7cdfe7cb"
+  },
+  {
+    "id": "scenery-v2-0076",
+    "name": "Mesa quadrada de pedra",
+    "sha256": "655fae097052849af61bfb07047cf3cedf481efb630bee7272ee7b51c5a24028"
+  },
+  {
+    "id": "scenery-v2-0079",
+    "name": "Coluna quebrada de granito",
+    "sha256": "9a0edd970f29437c4b9b347fce88df908f311826dbdb8af4ae75300c9c06a579"
+  },
+  {
+    "id": "scenery-v2-0104",
+    "name": "Ponte curta de madeira",
+    "sha256": "6f3a6e3ff06f059aa72f40da7d0015ad3d84986ad0f7869fb1b1a46b528d437d"
+  }
+]

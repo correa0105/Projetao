@@ -1,0 +1,27 @@
+[
+  {
+    "id": "scenery-0429",
+    "name": "Torre — jardim",
+    "sha256": "9bb2b5389e571dc92a0eb987d9689ce874147f38026d6c3a3f057dddfa73ead5"
+  },
+  {
+    "id": "scenery-0432",
+    "name": "Poço — cidade antiga",
+    "sha256": "a710125bef24a342230937db04e496eb88454f69ee33b83486cbaa07253c7379"
+  },
+  {
+    "id": "scenery-0529",
+    "name": "Barril — salão de caça",
+    "sha256": "e172d770eb50c430e698d6f86b0a3cc7fcc51c6550e8ac1db7c1c1ccf44bf0c1"
+  },
+  {
+    "id": "scenery-0532",
+    "name": "Banco — salão rico",
+    "sha256": "9aac8983f5eefd64f5295060ffa67030dcd78056dfb17cf88ecab6fcb5e32e58"
+  },
+  {
+    "id": "scenery-0632",
+    "name": "Placa — beco",
+    "sha256": "bca6a7281aa18f0d20c7bd917082a3a6639642df604ced40e7984c61e9a8b46b"
+  }
+]

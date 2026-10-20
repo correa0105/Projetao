@@ -1,0 +1,9 @@
+{
+  "id": "wood",
+  "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Parallel honey brown worn oak floorboards, fine wood grain and subtle joints, no furniture. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-6f81f17b-b8ed-49f5-be36-04497f7f5dc4.png",
+  "image": "/vtt/scenery-v2-20261012/terrain-wood.webp",
+  "sha256": "dd850f8b90f39fdc2d29879e0f058dec05a3a618d2e8cb14db097e6ebbf0d207",
+  "pixelWidth": 768,
+  "pixelHeight": 768
+}

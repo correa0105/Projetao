@@ -1,0 +1,19 @@
+{
+  "id": "resident-040",
+  "name": "Otávio · Cervejeiro",
+  "species": "humano",
+  "bodyScale": 1,
+  "reference": "data/vtt/residents-25-20261018/reference-topdown.png",
+  "image": "/vtt/residents-25-20261018/resident-040-topdown-v3.webp",
+  "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-040-topdown-v3.webp",
+  "prompt": "Create ONE distinct medieval fantasy villager token for an overhead VTT battlemap. The attached reference defines the exact directly-above camera and finely painted realistic quality, NOT the identity, hair, clothing or occupation. Camera is exactly vertical at 90 degrees, orthographic plan view. Top of head, shoulders and arms dominate, lower body strongly foreshortened. The person stands naturally, neck upright and chin LEVEL, looking straight FORWARD PARALLEL TO THE GROUND toward the BOTTOM EDGE of the canvas. Never look up or make eye contact with the overhead viewer, never bow the head to look down at the hands. Render the actual face in its natural narrow top-down projection: visible forehead, brow ridge and nose extending beyond the front hairline, with appropriate beard glimpsed below; do not replace the face with scalp, and do not tilt the head upward to expose a frontal portrait. Face remains naturally occluded by the crown in true overhead projection. Exactly two arms and hands with convincing grips. Entire compact silhouette with tiny boot glimpses inside generous transparent margins. Crisp painted cloth grain, worn leather, subtle metal, warm natural colors and soft neutral illumination matching the reference. Single square canvas, genuine transparent alpha. No floor, backdrop, base, shadow, ring, grid, text, border or watermark. New character: large male brewer, pale skin, short sandy hair crown, rolled cream sleeves and green vest with brown apron, holding a small wooden beer tankard and a folded cloth, no foam effects.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-0e5948c1-4d94-4ead-8405-d390c88ee7f8.png",
+  "localSource": ".local/residents-25-sources-20261018/resident-040-topdown-v3.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T14:17:16.368Z",
+  "sourceSha256": "5112dec6c8dfab89ea05ae041da014d757165b296467c607ccc97884f7b88ce2",
+  "sha256": "9b4c2153152f79f831464696df9d5abefd30a805b6e5dfbe82303a1573fc4760",
+  "width": 768,
+  "height": 768,
+  "alpha": true
+}

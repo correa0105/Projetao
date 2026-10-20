@@ -1,0 +1,14 @@
+{
+  "id": "scenery-v2-0130",
+  "name": "Banqueta alta de taverna",
+  "category": "Taverna",
+  "width": 0.7896,
+  "height": 0.8,
+  "prompt": "Create ONE original premium fantasy virtual tabletop map asset: Banqueta alta de taverna. Category context: Taverna. This is ONE individual usable object, plant, tree, rock or coherent building, NEVER a group, pile, furnished scene, room, bundle or collection of props. For a book produce ONE book; for a bench ONE bench; for a tree ONE tree. Strict orthographic overhead plan view: the camera points vertically down at 90 degrees, parallel to gravity. No perspective, no isometric view, no front elevation. Vertical sides are hidden; furniture legs are hidden, chair backs appear only as narrow top edges; buildings show roof only. Rich highly detailed realistic hand-painted fantasy cartography, fine precise dark contours, tactile wood grain, worn stone, fibers, believable material variation, carefully painted highlights and restrained contact shadow. Natural earthy palette, clean distinct silhouette and premium artisan finish inspired by professional top-down map libraries. No ground, surrounding scenery, extra props, frame, labels, lettering or watermark. The entire object fits inside a square 1024x1024 image with transparent margin on every side. Genuine transparent alpha background. Subject geometry override: ONE high wooden tavern stool seen from directly vertically above. Show ONLY its round wooden seat surface and compact contact shadow. All tall legs and rungs are entirely hidden under the seat. No side elevation, no lower legs, no bottom rung. The silhouette is a simple circular disc.",
+  "repaired": true,
+  "image": "/vtt/scenery-v2-20261012/scenery-v2-0130.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-684cb4a6-ac99-4df6-b4f7-4abdd9f9419e.png",
+  "sha256": "1c55212aa3ff4fef6e9818de96918dc858b1b35b0eb08b91794a1134d2b891ec",
+  "pixelWidth": 758,
+  "pixelHeight": 768
+}

@@ -6,13 +6,15 @@ import { createHash } from 'node:crypto';
 const dir = 'data/shop-magic-completion-20261009';
 const manifest = JSON.parse(await fs.readFile(dir + '/art-manifest.json'));
 const editorial = JSON.parse(await fs.readFile(dir + '/editorial.json'));
-const ids = Object.keys(editorial).filter((id) => editorial[id].family === 'Drow Weapon');
-assert.equal(ids.length, 153);
+const armor = process.argv.includes('--armor');
+const family = armor ? 'Drow Armor' : 'Drow Weapon';
+const ids = Object.keys(editorial).filter((id) => editorial[id].family === family);
+assert.equal(ids.length, armor ? 39 : 153);
 const hashes = new Set(manifest.assets.filter((a) => !ids.includes(a.id)).map((a) => a.sha256));
 await fs.mkdir('test-results', { recursive: true });
 for (let bonus = 1; bonus <= 3; bonus++) {
   const rows = ids.filter((id) => editorial[id].name.endsWith(` +${bonus})`));
-  assert.equal(rows.length, 51);
+  assert.equal(rows.length, armor ? 13 : 51);
   const layers = [];
   for (let i = 0; i < rows.length; i++) {
     const id = rows[i],
@@ -54,16 +56,14 @@ for (let bonus = 1; bonus <= 3; bonus++) {
     if (process.argv.includes('--approve')) {
       a.review = 'approved';
       a.review_notes =
-        'Complete physical model and original Drow bonus material inspected on the dark shop background at 160px. Handles, blades, bowstrings and firearm anatomy remain legible and transparent; unique artwork SHA and distinct silver-web, chitin or carved-mithral structure reviewed.';
+        'Complete physical model and original Drow bonus material inspected on the dark shop background at 160px. Physical anatomy remains legible and transparent; unique artwork SHA and distinct silver-web, chitin or carved-mithral structure reviewed.';
     }
   }
-  await sharp({ create: { width: 1440, height: 1295, channels: 4, background: '#142129' } })
+  await sharp({ create: { width: 1440, height: Math.ceil(rows.length / 8) * 185, channels: 4, background: '#142129' } })
     .composite(layers)
     .png()
-    .toFile(`test-results/drow-bonus-${bonus}-models.png`);
+    .toFile(`test-results/drow-${armor ? 'armor-' : ''}bonus-${bonus}-models.png`);
 }
 if (process.argv.includes('--approve'))
   await fs.writeFile(dir + '/art-manifest.json', JSON.stringify(manifest, null, 2) + '\n');
-console.log(
-  'PASS 153 unique complete Drow skins, source hashes and alpha; three sheets prepared for visual review.',
-);
+console.log(`PASS ${ids.length} unique complete Drow ${armor ? 'armor' : 'weapon'} skins, source hashes and alpha; three sheets prepared for visual review.`);

@@ -1,0 +1,9 @@
+{
+  "id": "stone",
+  "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Weathered pale gray stone paving with irregular medium stones, tight cracks, muted fine mineral grain. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-9bab12dc-dff2-40c3-8dbd-e7970d771ed2.png",
+  "image": "/vtt/scenery-v2-20261012/terrain-stone.webp",
+  "sha256": "4265d3e5ff4319c1b0220e2791dab9ed737498f54bc5dbcb868e6ed2d9760354",
+  "pixelWidth": 768,
+  "pixelHeight": 768
+}

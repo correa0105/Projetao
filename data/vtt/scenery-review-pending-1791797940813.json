@@ -1,0 +1,202 @@
+[
+  {
+    "id": "scenery-0018",
+    "name": "Cadeira — peça ornamentada",
+    "sha256": "894b5fb283d0b370f2274537b0bdb38aa5aad3bce111a9c94bf96c56970284b3"
+  },
+  {
+    "id": "scenery-0019",
+    "name": "Cadeira — peça abandonada",
+    "sha256": "3bca2a8f4e8d56691b13acf70bdf38de349f3f4ae5d9471987fe75aeab4b50b4"
+  },
+  {
+    "id": "scenery-0020",
+    "name": "Cadeira — peça compacta",
+    "sha256": "004e3d5753a5a414ef2e11670349281431feee88773200f6ca4bcfc64879eef5"
+  },
+  {
+    "id": "scenery-0030",
+    "name": "Cama — peça compacta",
+    "sha256": "fa8c8e4e7be8d6d698dabbf6c50d3918a2ceec4a3de455705de5744dfbfafbd7"
+  },
+  {
+    "id": "scenery-0031",
+    "name": "Armário — peça rústica",
+    "sha256": "fc0b86e609e0dc17c44be0feace480ecd565ace00250721aed87aa078a4d766f"
+  },
+  {
+    "id": "scenery-0032",
+    "name": "Armário — peça nobre",
+    "sha256": "411336c4950200b30ca4241c4a9b2fdd678492d2106e837753bde004975977bb"
+  },
+  {
+    "id": "scenery-0033",
+    "name": "Armário — peça de cabana",
+    "sha256": "afdc273c5b73190abc0acb5a4e03667582fa661828306566f7f87906a4f153f0"
+  },
+  {
+    "id": "scenery-0034",
+    "name": "Armário — peça danificada",
+    "sha256": "ff6133f6e251b9ffff4b523711bc6b4170a2bfe8deaacb0f87a5f7cfaba2ec6d"
+  },
+  {
+    "id": "scenery-0035",
+    "name": "Armário — peça de estalagem",
+    "sha256": "f7b3c2a7f8d58268aa11c2b206c5f6b57b5588267530b489334e621bc33ff218"
+  },
+  {
+    "id": "scenery-0036",
+    "name": "Armário — peça de oficina",
+    "sha256": "6f2bc117b4028c04300a82890aaa38f3d24b2092c713108c6e046677bb62f802"
+  },
+  {
+    "id": "scenery-0037",
+    "name": "Armário — peça antiga",
+    "sha256": "cb53dcbb097f6c5d90a4c3fa358168ff9f7de92d8db5e36a1c1ea333de89daa5"
+  },
+  {
+    "id": "scenery-0104",
+    "name": "Barraca — soldado",
+    "sha256": "0090db917124f14f8059151da3183f85ff9d8f423fa06c52583bf3e37d716123"
+  },
+  {
+    "id": "scenery-0105",
+    "name": "Barraca — peregrino",
+    "sha256": "182b531d02b98c084253a261cda66d062907edfb8f5467d26a50e4bbeb87d179"
+  },
+  {
+    "id": "scenery-0106",
+    "name": "Barraca — lenhador",
+    "sha256": "ca2783f18448a183c56f1ce8e71f4a6991aaa89087b929ba8dc042ac8586ee4e"
+  },
+  {
+    "id": "scenery-0107",
+    "name": "Barraca — nômade",
+    "sha256": "dfd93461f17cda909e09de196641225a784a7784d571ac901e89f11e9cfc3538"
+  },
+  {
+    "id": "scenery-0108",
+    "name": "Barraca — alquimista",
+    "sha256": "6c4c2d44edbd19b94847dbaffd3c5b6ad117873a4540dcdbb6faf28a68988267"
+  },
+  {
+    "id": "scenery-0204",
+    "name": "Carvalho — bosque seco",
+    "sha256": "b2ff965ad9472e7a4290fc228ee2e4c3c597e14bf51ddd9cfe33d39fd3fc995f"
+  },
+  {
+    "id": "scenery-0205",
+    "name": "Carvalho — bosque outonal",
+    "sha256": "d2c051fbcfa59b9f16f5680ceb2af0b5db0ce71d5e246b19c5b22f6ae4585dfa"
+  },
+  {
+    "id": "scenery-0206",
+    "name": "Carvalho — bosque queimado",
+    "sha256": "8ab0aaca5e6d283092d3d759e6547ba1c3ea06f3effad1bdf1373e1d9bc779fd"
+  },
+  {
+    "id": "scenery-0207",
+    "name": "Carvalho — bosque nevado",
+    "sha256": "197c1b477d43c999f4790009b35f9d7124f21da6525711847e09ac3359bba8a1"
+  },
+  {
+    "id": "scenery-0208",
+    "name": "Carvalho — bosque encantado",
+    "sha256": "5d49ac946f11e0e7443f269d6a4d0a9b8622af1cab3c0ba7ddfcc98fbc6c6348"
+  },
+  {
+    "id": "scenery-0304",
+    "name": "Altar — fortaleza",
+    "sha256": "d8cefb092cb67f2f03d1db0110198159639fc5a0754d2f740d89d6a7921f9aff"
+  },
+  {
+    "id": "scenery-0305",
+    "name": "Altar — prisão",
+    "sha256": "d01a958fc8815df82f31183d4c6f11bd378a68c4f39772d7c49c555c9078bb88"
+  },
+  {
+    "id": "scenery-0306",
+    "name": "Altar — mina",
+    "sha256": "b26ab8fd21e511922c35c8cb48398d55ceeb3e5048f9e8f7177963d38d0a56ad"
+  },
+  {
+    "id": "scenery-0307",
+    "name": "Altar — ruína arcana",
+    "sha256": "f5d6cc26f93d8aae98d27b291c19040473a9fd84ae91f001411631dc2c15311d"
+  },
+  {
+    "id": "scenery-0404",
+    "name": "Casa pequena — montanha",
+    "sha256": "cee60bf4b140b690f0bc8c8c8bd466a435f267b447985f96dfbd6a4a8022fa7a"
+  },
+  {
+    "id": "scenery-0405",
+    "name": "Casa pequena — pântano",
+    "sha256": "a18227ca1462bd64a2a7821bea00b0a228dfdb8f44fae2b26b3b0d66ae246d26"
+  },
+  {
+    "id": "scenery-0406",
+    "name": "Casa pequena — costa",
+    "sha256": "19d6bb66a44b0aa02ef6515a2c6cf7976c1222fd979d84d5fc6dd936729a1905"
+  },
+  {
+    "id": "scenery-0407",
+    "name": "Casa pequena — deserto",
+    "sha256": "ea53d62c94d42c872fdd606e2fd9d939c52ade4741197ae6f6e7892b21960ee4"
+  },
+  {
+    "id": "scenery-0504",
+    "name": "Mesa posta — encruzilhada",
+    "sha256": "2e1f454a7428b5a3614f41863a02a9ac3299692134e45698238da9ddb15b25ad"
+  },
+  {
+    "id": "scenery-0505",
+    "name": "Mesa posta — cervejaria",
+    "sha256": "1fb1c9bbf7ce092ddcc51e4d311e87becd0d8666e6b41ad0aab648d9ef6e6f0d"
+  },
+  {
+    "id": "scenery-0506",
+    "name": "Mesa posta — salão anão",
+    "sha256": "b034b919c71306d6ffd375df9551fa75877cf49a3e021c7b08fe5f6f80172ff5"
+  },
+  {
+    "id": "scenery-0507",
+    "name": "Mesa posta — taberna feérica",
+    "sha256": "607fd761eeaae59d342913fac8fdbef9c488eb816f8dbf4a076649c823ae5e3a"
+  },
+  {
+    "id": "scenery-0604",
+    "name": "Banca de feira — porto",
+    "sha256": "5f570f18ea1e1873825971dfcec3a3b1c1baefe5c911e3e8e0d569ab6c235550"
+  },
+  {
+    "id": "scenery-0605",
+    "name": "Banca de feira — bairro nobre",
+    "sha256": "15e9a663be553abe47c6f56d64b988ec528ebda7ea067150a6b0d015a6bce51a"
+  },
+  {
+    "id": "scenery-0606",
+    "name": "Banca de feira — bairro pobre",
+    "sha256": "9ec8f30615a33bd3a610aa522646c4b8594366059292b1aed37572d6ae270fd5"
+  },
+  {
+    "id": "scenery-0607",
+    "name": "Banca de feira — oficina",
+    "sha256": "cfae8c942d067549e6c6b3c344312536a1b51b64388af42767968a9a0f0be1ff"
+  },
+  {
+    "id": "scenery-0704",
+    "name": "Rochedo — fragmentado",
+    "sha256": "a48d2dc62999c2330ef6668e4c80a8e1d7be4c39e104bafe951a20791922ecc1"
+  },
+  {
+    "id": "scenery-0705",
+    "name": "Rochedo — estreito",
+    "sha256": "69afd5893308d0e83be49a20c6dc70e9f2c5113c5604411d1c9995481da89b7a"
+  },
+  {
+    "id": "scenery-0706",
+    "name": "Rochedo — amplo",
+    "sha256": "e671a5ce50fe74385500af36f2c0d93462577d821535151e13c5eaf413063622"
+  }
+]

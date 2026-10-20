@@ -1,0 +1,19 @@
+{
+  "id": "resident-031",
+  "name": "Fátima · Vendedora de especiarias",
+  "species": "humana",
+  "bodyScale": 1,
+  "reference": "data/vtt/residents-25-20261018/reference-topdown.png",
+  "image": "/vtt/residents-25-20261018/resident-031-topdown-v3.webp",
+  "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-031-topdown-v3.webp",
+  "prompt": "Create ONE distinct medieval fantasy villager token for an overhead VTT battlemap. The attached reference defines the exact directly-above camera and finely painted realistic quality, NOT the identity, hair, clothing or occupation. Camera is exactly vertical at 90 degrees, orthographic plan view. Top of head, shoulders and arms dominate, lower body strongly foreshortened. The person stands naturally, neck upright and chin LEVEL, looking straight FORWARD PARALLEL TO THE GROUND toward the BOTTOM EDGE of the canvas. Never look up or make eye contact with the overhead viewer, never bow the head to look down at the hands. Render the actual face in its natural narrow top-down projection: visible forehead, brow ridge and nose extending beyond the front hairline, with appropriate beard glimpsed below; do not replace the face with scalp, and do not tilt the head upward to expose a frontal portrait. Face remains naturally occluded by the crown in true overhead projection. Exactly two arms and hands with convincing grips. Entire compact silhouette with tiny boot glimpses inside generous transparent margins. Crisp painted cloth grain, worn leather, subtle metal, warm natural colors and soft neutral illumination matching the reference. Single square canvas, genuine transparent alpha. No floor, backdrop, base, shadow, ring, grid, text, border or watermark. New character: woman spice merchant, medium brown skin, dark hair covered by a warm saffron headwrap, teal robe and rust sash, holding a shallow tiny tray with three colored spice pouches.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-fea73242-4599-4357-ba43-9aea04362631.png",
+  "localSource": ".local/residents-25-sources-20261018/resident-031-topdown-v3.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T14:17:12.107Z",
+  "sourceSha256": "bc9e1b8319863e749e218060cf1bdc16564ebec4c94a86daaf114caaae759a51",
+  "sha256": "856cf7f08a2839566c4f9fb08a4d4997b99ba93e7df329768822de8866c6e570",
+  "width": 768,
+  "height": 768,
+  "alpha": true
+}

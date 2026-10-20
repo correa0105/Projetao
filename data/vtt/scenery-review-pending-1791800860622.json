@@ -1,0 +1,17 @@
+[
+  {
+    "id": "scenery-0411",
+    "name": "Cabana — vila",
+    "sha256": "3d20cf26e32f74bd550d9cb39ffb6e1fb260f6e1d5eb997619bc85e663dc6c70"
+  },
+  {
+    "id": "scenery-0512",
+    "name": "Balcão — salão rico",
+    "sha256": "91cf89abd54704074acf191f0c0784e541c6a02d280969cf1b03ce39902a8950"
+  },
+  {
+    "id": "scenery-0611",
+    "name": "Fonte — praça",
+    "sha256": "e01f97b81b71da09c5d180dd7a62b76901bbe1687029656390860603201a9c8d"
+  }
+]

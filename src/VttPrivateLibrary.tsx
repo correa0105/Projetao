@@ -3,6 +3,7 @@ import { api } from './api';
 import type { MonsterPreset } from '../shared/vtt-monster-presets';
 import type { MonsterProfile } from './VttMonsterSheet';
 import { VttMonsterStatblock } from './VttMonsterSheet';
+import { monsterVariantFilter, type MonsterVariant } from '../shared/vtt-monster-variants';
 export type PremiumMonster = MonsterProfile & {
   id: string;
   image: string;
@@ -18,6 +19,7 @@ export function VttPrivateLibrary({
   importPreset,
   importPremium,
   drag,
+  variant,
 }: {
   kind: 'premium' | 'presets';
   gm: boolean;
@@ -27,6 +29,7 @@ export function VttPrivateLibrary({
   importPreset: (id: string) => Promise<void>;
   importPremium: (monster: PremiumMonster) => void;
   drag: (event: React.DragEvent<HTMLElement>, id: string) => void;
+  variant: MonsterVariant;
 }) {
   const [presets, setPresets] = useState<MonsterPreset[]>([]);
   const [catalog, setCatalog] = useState<{
@@ -79,8 +82,8 @@ export function VttPrivateLibrary({
       {selected ? (
         <>
           <button onClick={() => setSelected(null)}>Voltar ao acervo</button>
-          <VttMonsterStatblock monster={selected} compact />
-          {gm && <button onClick={() => importPremium(selected)}>Trazer à mesa</button>}
+          <VttMonsterStatblock monster={{ ...selected, artVariant: variant }} compact />
+          {gm && <button onClick={() => importPremium({ ...selected, artVariant: variant })}>Trazer à mesa</button>}
         </>
       ) : kind === 'premium' ? (
         <div className="vtt-premium-grid">
@@ -94,7 +97,7 @@ export function VttPrivateLibrary({
                 onClick={() => setSelected(m)}
                 title={gm ? 'Arraste para a mesa ou abra a ficha' : 'Ver ficha'}
               >
-                <img loading="lazy" src={m.image} alt="" draggable={false} />
+                <img loading="lazy" src={m.image} alt="" draggable={false} style={{ filter: monsterVariantFilter(variant) }} />
                 <span>{m.name}</span>
                 <small>ND {m.cr}</small>
               </button>
@@ -106,7 +109,7 @@ export function VttPrivateLibrary({
             .filter((p) => p.name.toLowerCase().includes(query.toLowerCase()))
             .map((p) => (
               <article key={p.id} draggable={gm} onDragStart={(e) => drag(e, 'preset:' + p.id)}>
-                <img loading="lazy" src={p.image || undefined} alt="" draggable={false} />
+                <img loading="lazy" src={p.image || undefined} alt="" draggable={false} style={{ filter: monsterVariantFilter(p.token.artVariant) }} />
                 <strong>{p.name}</strong>
                 <small>
                   CA {p.token.ac} · PV {p.token.maxHp}

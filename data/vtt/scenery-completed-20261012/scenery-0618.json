@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0618",
+  "name": "Fonte — templo",
+  "category": "Cidade",
+  "width": 1.99,
+  "height": 2,
+  "image": "/vtt/scenery-assets-20261012/scenery-0618.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: stone fountain with visible water; temple quarter design with limestone and restrained ceremonial patterns. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-232169bb-ba2f-410e-afd9-5b119221b169.png",
+  "sha256": "f711c5fd7c6522a2e361f4f37004f03a3ac63086b7c7b1cecd0a8c62f150895e",
+  "pixelWidth": 765,
+  "pixelHeight": 768
+}

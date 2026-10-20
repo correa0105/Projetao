@@ -1,0 +1,29 @@
+{
+  "id": "biome-swamp-paint",
+  "name": "Chão de pântano",
+  "biome": "swamp",
+  "type": "paint",
+  "prompt": "Use case: stylized-concept. Asset type: seamless repeatable top-down battlemap terrain painting texture. ONE square 1024 x 1024 edge-to-edge texture of dark damp peat, shallow olive brown water films, fine silt, small organic fragments, subtle wet moss and tiny roots. True orthographic overhead, realistic hand-painted material at a consistent physical scale: the tile represents 3 m by 3 m of ground. Absolutely seamless tile: all four opposite edges must match in tone, material, lighting and detail; no directional shadow, no vignetting, no border, no horizon, no large objects, no figures, no text, no grid, no focal subject, no transparent pixels. Subtle low-frequency variation, rich small material detail. Suitable for repeated large brush strokes without a visible patchwork pattern.",
+  "status": "reviewed",
+  "sizeMetres": 3,
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-swamp-paint.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-swamp-paint-thumb.webp",
+      "pixelWidth": 1024,
+      "pixelHeight": 1024,
+      "sha256": "b33bca6e6c0ea9654801fff64a441603e4546d55bb5c0fb9a3bfef572d1515a1",
+      "sourceBasename": "exec-4c0ce946-1eab-4865-83b2-f567d1e4a183.png",
+      "generator": "built-in image_gen",
+      "width": 2,
+      "height": 2,
+      "hasAlpha": false
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": false,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

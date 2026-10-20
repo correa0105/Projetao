@@ -1,0 +1,29 @@
+{
+  "id": "biome-swamp-ground-15",
+  "name": "Cogumelos âmbar do brejo",
+  "biome": "swamp",
+  "type": "ground",
+  "sizeMetres": 0.65,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: a colony of small amber mushroom caps with wet speckled surfaces. Entire silhouette safely inside the canvas. The largest physical extent is 0.65 metres. This is one distinct asset, not a sheet or multiple variations. Final camera constraint: a strict flat plan view from a camera exactly at the zenith (90 degrees to the ground). No visible front or side elevation. For foliage show the crown from directly above, not a side-facing plant illustration; mushroom stalks are entirely hidden beneath their caps.",
+  "status": "reviewed",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-swamp-ground-15.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-15-thumb.webp",
+      "pixelWidth": 757,
+      "pixelHeight": 768,
+      "sha256": "c5acb4e071e3eaed6f2aa7380b9db90e924bff0f8160cf2a6ca977cd10c21250",
+      "sourceBasename": "exec-68256eea-2522-496d-b8cd-33614067d843.png",
+      "generator": "built-in image_gen",
+      "width": 0.4271,
+      "height": 0.4333,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

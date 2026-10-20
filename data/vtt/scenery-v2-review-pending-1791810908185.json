@@ -1,0 +1,27 @@
+[
+  {
+    "id": "scenery-v2-0102",
+    "name": "Casa retangular de telhado de cerâmica",
+    "sha256": "be90df0f0df0e0a8b75ce3e37bcbeca0f65493927f7c9e143fce2e92d0f3e8ca"
+  },
+  {
+    "id": "scenery-v2-0127",
+    "name": "Mesa comprida de taverna vazia",
+    "sha256": "fa5dc091446bcbbfa42787808427a595dd05456128daeddb03949ced91d155a6"
+  },
+  {
+    "id": "scenery-v2-0152",
+    "name": "Banco de praça de pedra",
+    "sha256": "e293009f9eed6dec3049eff5812bc10278c2824e613f6fe14c1a94faf90bace1"
+  },
+  {
+    "id": "scenery-v2-0155",
+    "name": "Carro de mão vazio",
+    "sha256": "d46f6ca6d6d1a0b4d8e1a3353a1a3b1fbd1dde86cc9dde2ad9c6abae85cbffa6"
+  },
+  {
+    "id": "scenery-v2-0180",
+    "name": "Seixo branco individual",
+    "sha256": "e2de8fe22f81e65964e906645a0949d53c1239e43ea033b7a2046aa0a6d40f8f"
+  }
+]

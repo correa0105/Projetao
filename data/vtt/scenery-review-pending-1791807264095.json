@@ -1,0 +1,202 @@
+[
+  {
+    "id": "scenery-0053",
+    "name": "Tapete — peça de cabana",
+    "sha256": "e4b3e483e5e6b44504ba3e86dcf0cf1d76d5cc054d05e92bd173c488b938e4d4"
+  },
+  {
+    "id": "scenery-0054",
+    "name": "Tapete — peça danificada",
+    "sha256": "35506d9e4a437d538e5e9e0f918a51c3256f74c2b10a2c00cc2b56ac84f3c1b9"
+  },
+  {
+    "id": "scenery-0055",
+    "name": "Tapete — peça de estalagem",
+    "sha256": "b34db7aae06490fb18edc4bc2eaea6e018e6ba6355935e869310739668f909bf"
+  },
+  {
+    "id": "scenery-0124",
+    "name": "Mochila — soldado",
+    "sha256": "b1469f65f642ddf885040014b673f74583babc3b70093503d263ca42af5742e2"
+  },
+  {
+    "id": "scenery-0125",
+    "name": "Mochila — peregrino",
+    "sha256": "34d4cbd9bf5dd2606f884e7c8eec678fddcdbabb7950b16a17292ed6dbfd6484"
+  },
+  {
+    "id": "scenery-0126",
+    "name": "Mochila — lenhador",
+    "sha256": "7df04b7f87d95042ee3e8333c908cd196dccc4275b65c45d4a86fca9ecbe261e"
+  },
+  {
+    "id": "scenery-0224",
+    "name": "Arbusto — bosque seco",
+    "sha256": "ec32037cbbb785bade0323d8f539bfdd96a1cf983441cad46afc33197e5c7a84"
+  },
+  {
+    "id": "scenery-0225",
+    "name": "Arbusto — bosque outonal",
+    "sha256": "ad6884a3182d2d419987de5f571be810f11b130989b68eee900e4608d5566f8e"
+  },
+  {
+    "id": "scenery-0226",
+    "name": "Arbusto — bosque queimado",
+    "sha256": "03fe6eef9a06c458faa264ea61278506e9acf740a132694936efbde863cd22d8"
+  },
+  {
+    "id": "scenery-0324",
+    "name": "Grades — fortaleza",
+    "sha256": "7d8186ce4c302ac9a57b44a4644ca415941d8603db42b9ffb4677c4b5c5c6e7a"
+  },
+  {
+    "id": "scenery-0325",
+    "name": "Grades — prisão",
+    "sha256": "1d55bf67037751d3f16b54f3e59742d29d660e9f5eaa5fae12548bec3cfa50d0"
+  },
+  {
+    "id": "scenery-0326",
+    "name": "Grades — mina",
+    "sha256": "9a420a11ed6e49c0ae2ee459aca02da694fe81ca1b66b1bb36e9e4b3eef622ca"
+  },
+  {
+    "id": "scenery-0420",
+    "name": "Cabana — aldeia",
+    "sha256": "9e5bdf9c048d78977bf9ae8c705533b1889aafa5428f2e5a9931f2a6feb3619d"
+  },
+  {
+    "id": "scenery-0421",
+    "name": "Torre — vila",
+    "sha256": "91f95b6dbbd026728281d6eb8eefd86c3f02a0470c571bb0bdb98d3362b39857"
+  },
+  {
+    "id": "scenery-0422",
+    "name": "Torre — cidade antiga",
+    "sha256": "d4ca804e7b73500a5931859ee06710a8af267424b29a72e4c1227163be8eed10"
+  },
+  {
+    "id": "scenery-0423",
+    "name": "Torre — fronteira",
+    "sha256": "6c441c623f77397d133626077f3989811099cb8a46e6f39259b8df104b9a9c33"
+  },
+  {
+    "id": "scenery-0424",
+    "name": "Torre — montanha",
+    "sha256": "f1fddfa7aadd5cfc0b263e2c27d267294695cdf790a1e86746a01d42bcc7b0ea"
+  },
+  {
+    "id": "scenery-0425",
+    "name": "Torre — pântano",
+    "sha256": "e13daf44e13a3172a54ab562c03ee5304738a046bc19b937f33d302fbbc14eda"
+  },
+  {
+    "id": "scenery-0426",
+    "name": "Torre — costa",
+    "sha256": "7fc26ab27200685624016d530f7a1b703be1bb2936d807127acc5e019eaeb4ca"
+  },
+  {
+    "id": "scenery-0515",
+    "name": "Balcão — cervejaria",
+    "sha256": "ee98558d1c3bb796f8f7384cf0fcb6bfea23c7c031a433d68a78736e5cfd9131"
+  },
+  {
+    "id": "scenery-0516",
+    "name": "Balcão — salão anão",
+    "sha256": "61fce0fcd2d7bce30a27097a63e5207f1ca9d5353519c8e6ac99f4bde72e6bde"
+  },
+  {
+    "id": "scenery-0517",
+    "name": "Balcão — taberna feérica",
+    "sha256": "d02252f951b75ed498615a23ad1d3f2fb7ee381e22308c6f4b42236f064523b1"
+  },
+  {
+    "id": "scenery-0518",
+    "name": "Balcão — refúgio",
+    "sha256": "b7a4bff2cb25ae97e06c7f4e9763ec23439eb3dc3cbfcc786042dc13c47adc3f"
+  },
+  {
+    "id": "scenery-0519",
+    "name": "Balcão — salão de caça",
+    "sha256": "ea409c66c3acbf2ea2c26ab3fd852a201d2f57d54ac3aadbc3c6c659dc91735a"
+  },
+  {
+    "id": "scenery-0520",
+    "name": "Balcão — posto mercantil",
+    "sha256": "b72ac432b92791dba1f17b90ef1eb2131a99e82f55ba1e3af7b6b1405a7794e1"
+  },
+  {
+    "id": "scenery-0521",
+    "name": "Barril — estalagem humilde",
+    "sha256": "b1d5586a33b2dc53b695e7afdb8746900304d548b2da7bcb8f25dc4516c51283"
+  },
+  {
+    "id": "scenery-0522",
+    "name": "Barril — salão rico",
+    "sha256": "31a8f2742b1a383fa98ee47413ced63108986814bc1622747aa0eb61c817eb33"
+  },
+  {
+    "id": "scenery-0523",
+    "name": "Barril — porto",
+    "sha256": "9cc438ea07b3a5fa6862561620a36aa8a461943dea25512641c4b293dbc3bb84"
+  },
+  {
+    "id": "scenery-0524",
+    "name": "Barril — encruzilhada",
+    "sha256": "4d1e61bc92b37fbaeb1565c6f21b9c999b7fed98abbcdf0c66d49920f1b47861"
+  },
+  {
+    "id": "scenery-0525",
+    "name": "Barril — cervejaria",
+    "sha256": "cbf9e07a6623d7d2132e45a71e5a0750cdc51d3b7d619c72d964ef81c41e8b72"
+  },
+  {
+    "id": "scenery-0526",
+    "name": "Barril — salão anão",
+    "sha256": "5c106c38abadd2297034d1def575b37b8b7e38979d954a65f05e0030843fb28b"
+  },
+  {
+    "id": "scenery-0615",
+    "name": "Fonte — bairro nobre",
+    "sha256": "93d0d6c9112475f4e4a5ae58d6d80a4640dbcb782b76ad3f9593239d18b21281"
+  },
+  {
+    "id": "scenery-0616",
+    "name": "Fonte — bairro pobre",
+    "sha256": "da5a7a5ff8a91984b142416bd776795ae72bd18700392bfc6c867b027c2a3c71"
+  },
+  {
+    "id": "scenery-0617",
+    "name": "Fonte — oficina",
+    "sha256": "e2f4496092d2d7fc68676eab7c3f98aa55e1b596177143785cd34b3d08f3035d"
+  },
+  {
+    "id": "scenery-0618",
+    "name": "Fonte — templo",
+    "sha256": "f711c5fd7c6522a2e361f4f37004f03a3ac63086b7c7b1cecd0a8c62f150895e"
+  },
+  {
+    "id": "scenery-0619",
+    "name": "Fonte — guarda",
+    "sha256": "8161e5cd79cadb738ad2e231cb563b54cc49859918fed34cd68b8de78bf8d942"
+  },
+  {
+    "id": "scenery-0620",
+    "name": "Fonte — jardim",
+    "sha256": "b27bbc8acb2189a3b4a051c4bdadcdc08c145ac1127dca7197f594bb3734afcc"
+  },
+  {
+    "id": "scenery-0621",
+    "name": "Carrinho — praça",
+    "sha256": "d59c7620ad6d4257f3d9d5e9d02a4c65aad25d0d0761ec403fa04575c8e8f27f"
+  },
+  {
+    "id": "scenery-0622",
+    "name": "Carrinho — beco",
+    "sha256": "ec6e751bf2ee73e96a3b6f5abfff844a612b4feea3439938de11ba1ce5222172"
+  },
+  {
+    "id": "scenery-0623",
+    "name": "Carrinho — mercado",
+    "sha256": "459d5ecac4ffcd4667a5d56b35f29ca4f3625b1f36c3af85aff1cc6422b70b1a"
+  }
+]

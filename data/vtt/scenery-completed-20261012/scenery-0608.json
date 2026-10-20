@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0608",
+  "name": "Banca de feira — templo",
+  "category": "Cidade",
+  "width": 2,
+  "height": 1.92,
+  "image": "/vtt/scenery-assets-20261012/scenery-0608.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: market stall roof and countertop; temple quarter design with limestone and restrained ceremonial patterns. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-c840c288-6c3d-4038-a065-79c3276fa5d4.png",
+  "sha256": "054ea7c2e15b2efb8136c2fbf4bca2d814b39b40cae925f73ae3d6d08f55ab4a",
+  "pixelWidth": 768,
+  "pixelHeight": 739
+}

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "biome-swamp-tree-01",
+    "name": "Salgueiro chorão do brejo",
+    "group": "Pântano",
+    "squares": 6,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-01.webp"
+  },
+  {
+    "id": "biome-swamp-tree-02",
+    "name": "Cipreste calvo antigo",
+    "group": "Pântano",
+    "squares": 5.3333,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-02.webp"
+  },
+  {
+    "id": "biome-swamp-tree-03",
+    "name": "Mangue de raízes largas",
+    "group": "Pântano",
+    "squares": 5,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-03.webp"
+  },
+  {
+    "id": "biome-swamp-tree-04",
+    "name": "Amieiro do pântano",
+    "group": "Pântano",
+    "squares": 4,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-04.webp"
+  },
+  {
+    "id": "biome-swamp-tree-05",
+    "name": "Tupelo do brejo",
+    "group": "Pântano",
+    "squares": 4.6667,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-05.webp"
+  },
+  {
+    "id": "biome-swamp-tree-06",
+    "name": "Pinheiro do brejo",
+    "group": "Pântano",
+    "squares": 4.3333,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-06.webp"
+  },
+  {
+    "id": "biome-swamp-tree-07",
+    "name": "Salgueiro podado",
+    "group": "Pântano",
+    "squares": 3.6667,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-07.webp"
+  },
+  {
+    "id": "biome-swamp-tree-08",
+    "name": "Árvore morta alagada",
+    "group": "Pântano",
+    "squares": 5,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-08.webp"
+  },
+  {
+    "id": "biome-swamp-tree-09",
+    "name": "Carvalho encharcado",
+    "group": "Pântano",
+    "squares": 6.6667,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-09.webp"
+  },
+  {
+    "id": "biome-swamp-tree-10",
+    "name": "Bétula do brejo",
+    "group": "Pântano",
+    "squares": 3.6667,
+    "image": "/vtt/biomes-20261015/biome-swamp-tree-10.webp"
+  },
+  {
+    "id": "biome-snow-tree-01",
+    "name": "Abeto nevado alto",
+    "group": "Neve",
+    "squares": 5.3333,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-01.webp"
+  },
+  {
+    "id": "biome-snow-tree-02",
+    "name": "Pinheiro de neve irregular",
+    "group": "Neve",
+    "squares": 5.6667,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-02.webp"
+  },
+  {
+    "id": "biome-snow-tree-03",
+    "name": "Pícea azul congelada",
+    "group": "Neve",
+    "squares": 4.6667,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-03.webp"
+  },
+  {
+    "id": "biome-snow-tree-04",
+    "name": "Larício de inverno",
+    "group": "Neve",
+    "squares": 5,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-04.webp"
+  },
+  {
+    "id": "biome-snow-tree-05",
+    "name": "Bétula nevada",
+    "group": "Neve",
+    "squares": 4,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-05.webp"
+  },
+  {
+    "id": "biome-snow-tree-06",
+    "name": "Pinheiro alpino baixo",
+    "group": "Neve",
+    "squares": 3.3333,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-06.webp"
+  },
+  {
+    "id": "biome-snow-tree-07",
+    "name": "Cedro nevado",
+    "group": "Neve",
+    "squares": 6,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-07.webp"
+  },
+  {
+    "id": "biome-snow-tree-08",
+    "name": "Salgueiro congelado",
+    "group": "Neve",
+    "squares": 4.6667,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-08.webp"
+  },
+  {
+    "id": "biome-snow-tree-09",
+    "name": "Abeto jovem com neve",
+    "group": "Neve",
+    "squares": 3,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-09.webp"
+  },
+  {
+    "id": "biome-snow-tree-10",
+    "name": "Árvore morta de tundra",
+    "group": "Neve",
+    "squares": 4.3333,
+    "image": "/vtt/biomes-20261015/biome-snow-tree-10.webp"
+  }
+]

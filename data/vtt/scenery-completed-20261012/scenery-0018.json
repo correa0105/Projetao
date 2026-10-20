@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0018",
+  "name": "Cadeira — peça ornamentada",
+  "category": "Casa",
+  "width": 2,
+  "height": 1.98,
+  "image": "/vtt/scenery-assets-20261012/scenery-0018.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: wooden chair with padded seat; ornamental geometric inlays and distinctive shaped framing. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-2d916323-c36b-4f18-aac9-2e4de3c1a6da.png",
+  "sha256": "894b5fb283d0b370f2274537b0bdb38aa5aad3bce111a9c94bf96c56970284b3",
+  "pixelWidth": 768,
+  "pixelHeight": 762
+}

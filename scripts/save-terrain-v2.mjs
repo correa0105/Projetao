@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import sharp from 'sharp';
+const [id,source]=process.argv.slice(2);
+const spec=JSON.parse(fs.readFileSync('data/vtt/terrain-v2-plan-20261012.json')).find(a=>a.id===id);if(!spec)throw Error('Unknown terrain');
+const directory='public/vtt/scenery-v2-20261012',records='data/vtt/terrain-v2-completed-20261012';
+fs.mkdirSync(directory,{recursive:true});fs.mkdirSync(records,{recursive:true});
+const bytes=await sharp(source).resize(768,768).removeAlpha().webp({quality:95}).toBuffer();
+fs.writeFileSync(directory+'/terrain-'+id+'.webp',bytes);
+fs.writeFileSync(records+'/'+id+'.json',JSON.stringify({...spec,source,image:'/vtt/scenery-v2-20261012/terrain-'+id+'.webp',sha256:crypto.createHash('sha256').update(bytes).digest('hex'),pixelWidth:768,pixelHeight:768},null,2)+'\n');
+console.log(JSON.stringify({id,width:768,height:768}));

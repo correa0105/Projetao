@@ -1,0 +1,9 @@
+{
+  "id": "sand",
+  "prompt": "Create an entirely new seamless tileable premium fantasy tabletop ground texture: Fine warm golden sand grains with very subtle soft wind ripples, small-scale homogeneous surface. Strict orthographic top-down at 90 degrees. Fill the entire square 1024x1024 image edge to edge. Opposite edges must match seamlessly in BOTH axes for infinite repeated tiling; uniform scale, illumination and density. Highly detailed realistic hand-painted cartography, refined tactile material, natural restrained colors. No isolated objects, plants, footprints, scenery, horizon, perspective, border, text or watermark. Opaque full surface, no transparency.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-2a31862a-5a0a-4674-92a9-f16c3c328707.png",
+  "image": "/vtt/scenery-v2-20261012/terrain-sand.webp",
+  "sha256": "83600d32c280cf5b4fee04aa409606fba9689d1613d5efe9be31fc932b00a914",
+  "pixelWidth": 768,
+  "pixelHeight": 768
+}

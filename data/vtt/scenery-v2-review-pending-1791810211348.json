@@ -1,0 +1,47 @@
+[
+  {
+    "id": "scenery-v2-0026",
+    "name": "Barraca triangular de lona",
+    "sha256": "663e67f210643b99cd535e62f6562bd595568d8997eaf358e481d3c7054844d9"
+  },
+  {
+    "id": "scenery-v2-0101",
+    "name": "Cabana quadrada de telhado de palha",
+    "sha256": "14310d6ebf2e82b3262ddd7c43e56259879c3a900bf1f30be0fb4c2494acc8c4"
+  },
+  {
+    "id": "scenery-v2-0126",
+    "name": "Mesa redonda de taverna vazia",
+    "sha256": "509e5be5e8b8fa82c53af7135be5e69745a212c952111c3a30e68687e20929d7"
+  },
+  {
+    "id": "scenery-v2-0129",
+    "name": "Cadeira com encosto arredondado",
+    "sha256": "fc482583f28064046484f3bebd7a42b0255d3d4486ad8d1ee95365fa09871220"
+  },
+  {
+    "id": "scenery-v2-0151",
+    "name": "Banco de praça de madeira",
+    "sha256": "6fd8e6eda51db2157434de4c96ae07dfce78926c88cf6c9ed8aade39e9b1c8b8"
+  },
+  {
+    "id": "scenery-v2-0154",
+    "name": "Placa de rua deitada",
+    "sha256": "37ef4a109335abc7a6aa8cb92ed6f8cc0af2a1f7d2a0a00bb0fee999331aa416"
+  },
+  {
+    "id": "scenery-v2-0176",
+    "name": "Rocha grande de granito",
+    "sha256": "77bdfa4dac3ae6b7d80bef0dac0f43e78b4643145fb5c79a408269b755754ac4"
+  },
+  {
+    "id": "scenery-v2-0179",
+    "name": "Pedra porosa vulcânica",
+    "sha256": "91e60e7b6ba99d76cf07056a7982f9837336da69e999f618abeabeba3db25bca"
+  },
+  {
+    "id": "scenery-v2-0204",
+    "name": "Pergaminho aberto",
+    "sha256": "219611bb58a089d26d9f169cb543f90b11a3a7076e3f77ff6ffa6eafb5a57a3b"
+  }
+]

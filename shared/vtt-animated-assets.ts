@@ -43,14 +43,14 @@ export const animatedAssets = [
   ['bush', 'Vegetação', 'Folhagem movida pelo vento com folhas soltas.', 2],
   ['steam-vent', 'Saída de vapor', 'Plumas que sobem e se dissipam sobre a grade.', 2],
   ['magic-pool', 'Lago mágico', 'Reflexos e pequenas ondas na superfície.', 3],
-  ['windmill', 'Moinho', 'Rotor de madeira girando continuamente.', 3],
-  ['banner', 'Estandarte', 'Tecido com ondulações suaves ao vento.', 2],
+  ['windmill', 'Moinho', 'Vista de cima com hélice lateral girando junto à torre.', 3],
   ['wind', 'Vento', 'Corrente de ar, névoa tênue e folhas carregadas.', 3],
 ].map(([id, name, description, squares]) => ({
   id: id as AnimatedAsset['id'],
   name: name as string,
   description: description as string,
   squares: squares as number,
-  image: id === 'wind' ? '' : '/vtt/animated-assets-20261009/' + id + '.webp',
+  image: id === 'wind' ? '' : id === 'windmill' ? '/vtt/animated-assets-20261009/windmill-side-v5.webp' : '/vtt/animated-assets-20261009/' + id + '.webp',
 }));
 export const animatedAssetMime = 'application/x-alvorada-animated-asset';
+

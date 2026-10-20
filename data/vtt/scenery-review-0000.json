@@ -1,0 +1,117 @@
+[
+  {
+    "id": "scenery-0009",
+    "name": "Mesa retangular — peça abandonada",
+    "sha256": "87df6accd1f5f3cc47a4a0e8cc8bfad69ba23c4aa4d77b1366a087f4fa5a9ce6"
+  },
+  {
+    "id": "scenery-0010",
+    "name": "Mesa retangular — peça compacta",
+    "sha256": "0ead2aaa4dab7ef6666d14e2125506c42b18831bc83c0f4354c7246edadd7577"
+  },
+  {
+    "id": "scenery-0011",
+    "name": "Cadeira — peça rústica",
+    "sha256": "099bf2f632a1b465ead4ce58885dad9cbc3d9911fe12e25595f4e98550d6e606"
+  },
+  {
+    "id": "scenery-0012",
+    "name": "Cadeira — peça nobre",
+    "sha256": "9e9867a44401bb66f2ba983e937cae9d035e7ae2934259b30cf568f093153f48"
+  },
+  {
+    "id": "scenery-0013",
+    "name": "Cadeira — peça de cabana",
+    "sha256": "3310529b0b74390cee72b6fcb6d8b1ff6177fd30d3126c34411622d6834d0cf4"
+  },
+  {
+    "id": "scenery-0014",
+    "name": "Cadeira — peça danificada",
+    "sha256": "924b99f20107deb8f10baef938a5f3db57c08d5c3f70e0afb6df95090e5a8a5b"
+  },
+  {
+    "id": "scenery-0015",
+    "name": "Cadeira — peça de estalagem",
+    "sha256": "f7f22f9134a44344b4ec6a09ca6d1ca7b18e1d9aeb9d7aac5bf4115a830f1370"
+  },
+  {
+    "id": "scenery-0016",
+    "name": "Cadeira — peça de oficina",
+    "sha256": "bbd9ba9fb709ce7d1f499472018712b2e6d03f78952f8fb0aab8f6a38998edb4"
+  },
+  {
+    "id": "scenery-0017",
+    "name": "Cadeira — peça antiga",
+    "sha256": "1140968e6e11d6b21c995df12ec462477a9ab6e67ece5d300c07dc3cee809203"
+  },
+  {
+    "id": "scenery-0021",
+    "name": "Cama — peça rústica",
+    "sha256": "6446ef453fb77da344d68219bb587bfed597c1234904b5276ce9ca55f453184d"
+  },
+  {
+    "id": "scenery-0022",
+    "name": "Cama — peça nobre",
+    "sha256": "cd85d46c28867db99f5991dbd1d2eb01c2c9e7f6204cfdd9a26d0299640ea2a0"
+  },
+  {
+    "id": "scenery-0023",
+    "name": "Cama — peça de cabana",
+    "sha256": "409f8639e16fbac95be67f74e5308d08df59a00884236746aa0d6e4194685f7a"
+  },
+  {
+    "id": "scenery-0024",
+    "name": "Cama — peça danificada",
+    "sha256": "7707f137dafca54ef97d5c7e13d27cf7e1c4ce8c7f65459949ed0cf5cee14a6e"
+  },
+  {
+    "id": "scenery-0025",
+    "name": "Cama — peça de estalagem",
+    "sha256": "c5bfec3cd811ad2cb1a3517652615d342d2730084539f1a62f2896474c335e2e"
+  },
+  {
+    "id": "scenery-0026",
+    "name": "Cama — peça de oficina",
+    "sha256": "8418c6cdff5571b066da88dee7f90996f7aae9c0bb141f99105f5acdb3591e7c"
+  },
+  {
+    "id": "scenery-0027",
+    "name": "Cama — peça antiga",
+    "sha256": "9643416003e7ff1e10c6b3f13ec77815a359a8ebab1e698efc4bebe7a40d523e"
+  },
+  {
+    "id": "scenery-0028",
+    "name": "Cama — peça ornamentada",
+    "sha256": "5163190daed7cdaf259f0b71fa14aad733907d7e6b334337696425a9f2065b29"
+  },
+  {
+    "id": "scenery-0029",
+    "name": "Cama — peça abandonada",
+    "sha256": "9e00db0bc6311e348c0b70dbe1906914ae8a3609326dd7a31e8eec72f2acb4c0"
+  },
+  {
+    "id": "scenery-0031",
+    "name": "Armário — peça rústica",
+    "sha256": "fc0b86e609e0dc17c44be0feace480ecd565ace00250721aed87aa078a4d766f"
+  },
+  {
+    "id": "scenery-0601",
+    "name": "Banca de feira — praça",
+    "sha256": "409429aa386ec84cb862f3199eb786682319e6e1afba4c8a0db09496430ef56c"
+  },
+  {
+    "id": "scenery-0701",
+    "name": "Rochedo — pequeno",
+    "sha256": "3dc6ebce581798726e357cf862a843fb9984fb52eb47e813d55dc3b870af941b"
+  },
+  {
+    "id": "scenery-0801",
+    "name": "Baú — artesão",
+    "sha256": "e1c457f249eb4a22262b73ccbbe63bf512a5fa786c8b3e6ce417403e6b59af32"
+  },
+  {
+    "id": "scenery-0901",
+    "name": "Círculo ritual — sol",
+    "sha256": "bf686d631f2af14a5bbd3ef8ce7a0d2572ac13d13e2bd98d7dbc0b6c1e085618"
+  }
+]

@@ -3,6 +3,7 @@ import { VttItemLayers, VttStackButtons } from './VttItemLayers';
 import { VttRoomCharacters } from './VttRoomCharacters';
 import { reorderVttItems } from '../shared/vtt-stacking';
 import {vttVisualSource} from '../shared/vtt-asset-visuals';
+import { VttSceneryAssets } from './VttSceneryAssets';
 import {VttNatureAssets} from './VttNatureAssets';
 import {natureAssets,natureAssetMime} from '../shared/vtt-nature-assets';
 import {houseInteriorImages,houseAsset,houseDoorObstructed,fitHouseToGrid,housePlacement} from '../shared/vtt-houses';
@@ -15,9 +16,10 @@ import {houseDoorsAnimating} from './vtt-house-doors';
 import {VttLightPresets,VttLightEffectFields} from './VttLightingControls';
 import {lightPresetValues,sceneHasAnimatedLights,type LightPresetId} from '../shared/vtt-lighting';
 import { VttTerrainBrush, type TerrainBrushSettings } from './VttTerrainBrush';
+import { sceneryAssets, sceneryAssetMime } from '../shared/vtt-scenery-assets';
 import { terrainTextures, woodlandFloorImage } from '../shared/vtt-terrain';
 import {createVttImageLoader} from './vtt-image-loader';
-import type { TerrainStroke, TerrainLayer } from '../shared/vtt';
+import type { TerrainStroke } from '../shared/vtt';
 import { VttTokenMenu } from './VttTokenMenu';
 import {VttSceneryActions} from './VttSceneryActions';
 import {convertSceneryToToken} from '../shared/vtt-scenery-token';
@@ -28,6 +30,7 @@ import type { MapAtmosphere } from '../shared/vtt-atmosphere';
 import { VttTokenScaleControl } from './VttTokenScaleControl';
 import { isAttackCheck } from '../shared/vtt-roll-purpose';
 import { VttAttackRollAction } from './VttAttackRollAction';
+import { VttAnimatedAssetControls } from './VttAnimatedAssetControls';
 import { effectMaterialsReady } from './vtt-effects-materials';
 import { physicalPropsReady } from './vtt-effects-physical';
 import { animatedAssets, animatedAssetMime, type AnimatedAsset } from '../shared/vtt-animated-assets';
@@ -96,6 +99,8 @@ import {
 import { api, post } from './api';
 import { VttPrivateLibrary } from './VttPrivateLibrary';
 import { VttCharacterToken } from './VttCharacterToken';
+import { VttMonsterVariants } from './VttMonsterVariants';
+import { monsterVariantFilter, type MonsterVariant } from '../shared/vtt-monster-variants';
 import { VttCompanions } from './VttCompanions';
 import { companionMime } from '../shared/vtt-companions';
 import { VttSelectionPortrait } from './VttSelectionPortrait';
@@ -245,6 +250,7 @@ type Entry = {
   legacyDetails?: string;
   information?: { label: string; value: string }[];
   image?: string;
+  artVariant?: MonsterVariant;
 };
 const monsterMime = 'application/x-alvorada-monster';
 const characterMime = 'application/x-alvorada-character';
@@ -433,12 +439,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       setTerrainDraft(terrainActive.current);
     });
   }
-  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium' | 'nature' | 'animated' | 'terrain'>(
+  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium' | 'nature' | 'animated' | 'scenery' | 'terrain'>(
       'images',
     ),
     [presetVersion, setPresetVersion] = useState(0),
     [query, setQuery] = useState(''),
     [entry, setEntry] = useState<Entry | null>(null),
+    [monsterVariant, setMonsterVariant] = useState<MonsterVariant>(0),
     [catalog, setCatalog] = useState<{ monsters: Entry[]; spells: Entry[] }>({
       monsters: [],
       spells: [],
@@ -1069,7 +1076,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     // Load painted materials first so refreshing a large scene restores its ground promptly.
     const used=new Set(scene.terrain.map(t=>t.texture));
     const textures=[...terrainTextures].sort((a,b)=>Number(used.has(b.id))-Number(used.has(a.id)));
-    for (const path of [...textures.map(t=>t.image), scene.background, ...scene.tokens.map(t=>t.image), ...houseInteriorImages(scene), '/vtt/house-parts-20261014/door-vertical.webp'])mapImages.current?.load(path);
+    for (const path of [...textures.map(t=>t.image), scene.background, ...scene.tokens.map(t=>t.image), ...houseInteriorImages(scene), '/vtt/house-parts-20261014/door-vertical.webp', woodlandFloorImage])mapImages.current?.load(path);
   }, [scene]);
   useEffect(() => {
     const c = canvas.current;
@@ -1159,11 +1166,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         )
       : 0;
     const timers = ends.map((at) => window.setTimeout(draw, Math.max(0, at - Date.now() + 10)));
-    const infinite =
-      visualEffects &&
-      (atmosphereAnimated(atmosphereScene.atmosphere) ||
-        ((scene.lighting||(scene.fog&&scene.fogMode==='vision'))&&sceneHasAnimatedLights(scene)) ||
-        !!combat.state?.active ||
+    const infinite = visualEffects && (
+      atmosphereAnimated(atmosphereScene.atmosphere) ||
+      ((scene.lighting||(scene.fog&&scene.fogMode==='vision'))&&sceneHasAnimatedLights(scene)) ||
+      !!combat.state?.active ||
         !!effectPreview ||
         spellcasting.effects.some((e) => e.persistent && (!e.expires || e.expires > Date.now())) ||
         scene.tokens.some((t) => t.animatedAsset?.playing) ||
@@ -1172,7 +1178,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const restartAnimation = () => {
       cancelAnimationFrame(frame);
       draw();
-      if (!(houseDoorsAnimating(c,scene.id) || infinite || until > Date.now() || (visualEffects && atmosphereTransitioning(c, scene.id))) || motionPreference.matches) return;
+      if (!(houseDoorsAnimating(c,scene.id) || infinite || until > Date.now() || (visualEffects && atmosphereTransitioning(c, scene.id))) || (motionPreference.matches && !scene.tokens.some(t => t.animatedAsset?.playing))) return;
       let lastDraw = 0;
       const animate = (now: number) => {
         if (now - lastDraw >= 1000 / 60 - 1 && !document.hidden) {
@@ -1303,6 +1309,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         setAttackTargetId(null);
         if (!attackBusy) setAttack(null);
         setDraft(null);
+        terrainActive.current = null; setTerrainDraft(null);
         setRuler([]);
         setLasso([]);
         if (
@@ -1420,11 +1427,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               if ((e.shiftKey || e.ctrlKey) && token) {
                 if (canToken && !preview && !busy && !token.locked && e.deltaY) {
                   const step = Math.sign(e.deltaY) * 15;
-                  if (gm)
-                    editSelected((t) => {
-                      t.rotation = (((t.rotation + step) % 360) + 360) % 360;
-                    });
-                  else editToken({ rotation: (((token.rotation + step) % 360) + 360) % 360 });
+                  if (gm) editSelected((t) => {
+                    t.rotation = ((t.rotation + step) % 360 + 360) % 360;
+                  });
+                  else editToken({ rotation: ((token.rotation + step) % 360 + 360) % 360 });
                 }
                 return;
               }
@@ -1717,13 +1723,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         setSelection([drawing.id]);
         if (!preview) {
           drag.current = {
-            kind: 'drawing',
-            start: p,
-            last: p,
-            screen: { x: e.clientX, y: e.clientY },
-            camera,
-            original: structuredClone(doc),
-            tokens: [],
+            kind: 'drawing', start: p, last: p,
+            screen: { x: e.clientX, y: e.clientY }, camera,
+            original: structuredClone(doc), tokens: [],
             drawing: structuredClone(drawing),
           };
         }
@@ -1907,18 +1909,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       const anchor = original.points[0];
       const to = { x: anchor.x + p.x - d.start.x, y: anchor.y + p.y - d.start.y };
       const dest = e.altKey ? to : snapPoint(to, scene.grid);
-      const dx = Math.max(
-        -Math.min(...original.points.map((q) => q.x)),
-        Math.min(scene.width - Math.max(...original.points.map((q) => q.x)), dest.x - anchor.x),
-      );
-      const dy = Math.max(
-        -Math.min(...original.points.map((q) => q.y)),
-        Math.min(scene.height - Math.max(...original.points.map((q) => q.y)), dest.y - anchor.y),
-      );
+      const dx = Math.max(-Math.min(...original.points.map((q) => q.x)),
+        Math.min(scene.width - Math.max(...original.points.map((q) => q.x)), dest.x - anchor.x));
+      const dy = Math.max(-Math.min(...original.points.map((q) => q.y)),
+        Math.min(scene.height - Math.max(...original.points.map((q) => q.y)), dest.y - anchor.y));
       const next = structuredClone(docRef.current!);
-      const current = next.scenes
-        .find((s) => s.id === next.activeScene)
-        ?.drawings.find((q) => q.id === original.id);
+      const current = next.scenes.find((s) => s.id === next.activeScene)?.drawings.find((q) => q.id === original.id);
       if (!current) return;
       current.points = original.points.map((q) => ({ x: q.x + dx, y: q.y + dy }));
       docRef.current = next;
@@ -2011,18 +2007,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (d.kind === 'drawing') {
-      const current = docRef
-        .current!.scenes.find((s) => s.id === docRef.current!.activeScene)
-        ?.drawings.find((q) => q.id === d.drawing?.id);
-      if (
-        !gm ||
-        !d.drawing ||
-        !current ||
-        current.points.every(
-          (q, i) => q.x === d.drawing!.points[i].x && q.y === d.drawing!.points[i].y,
-        )
-      )
-        return;
+      const current = docRef.current!.scenes.find((s) => s.id === docRef.current!.activeScene)?.drawings.find((q) => q.id === d.drawing?.id);
+      if (!gm || !d.drawing || !current || current.points.every((q, i) => q.x === d.drawing!.points[i].x && q.y === d.drawing!.points[i].y)) return;
       undo.current.push(d.original);
       redo.current = [];
       serial.current++;
@@ -2149,6 +2135,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setSelection([t.id]);
     setTab('token');
   }
+  function addSceneryAsset(id: string, scale = 1, at?: Point) {
+    if (!gm || !scene || preview || !Number.isFinite(scale) || scale < .25 || scale > 3) return;
+    if (scene.tokens.length >= 1000) { setNotice('Limite de 1.000 peças neste mapa.'); return; }
+    const a = sceneryAssets.find(a => a.id === id); if (!a) return;
+    const t = newToken(crypto.randomUUID(),scene);
+    const minFactor = Math.max(1,8/(a.width*scene.grid.size*scale),8/(a.height*scene.grid.size*scale));
+    const factor = Math.min(minFactor, scene.width/(a.width*scene.grid.size*scale),scene.height/(a.height*scene.grid.size*scale),8000/(a.width*scene.grid.size*scale),8000/(a.height*scene.grid.size*scale));
+    const width = Math.max(8,a.width*scene.grid.size*scale*factor), height = Math.max(8,a.height*scene.grid.size*scale*factor);
+    const p = at ? snapPoint(at,scene.grid) : camera;
+    Object.assign(t,{name:a.name,image:a.image,width,height,layer:'map',vision:0,bleeds:false,
+      x:Math.max(width/2,Math.min(scene.width-width/2,p.x)),y:Math.max(height/2,Math.min(scene.height-height/2,p.y))});
+    editScene(s=>s.tokens.push(t)); changeLayer('map'); setSelection([t.id]); setTool('select');
+  }
   function addNatureAsset(id:string,scale=1,at?:Point) {
     if(!gm||!scene||preview||busy)return;
     if(scene.tokens.length>=1000){setNotice('Limite de 1.000 peças neste mapa.');return;}
@@ -2188,6 +2187,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (!gm || !scene || preview) return;
     const asset = animatedAssets.find(a => a.id === id);
     if (!asset) return;
+    media.update({visualEffects:true});
     const t = newToken(crypto.randomUUID(), scene);
     const size = Math.min(scene.width, scene.height, scene.grid.size * asset.squares);
     Object.assign(t, { name: asset.name, image: asset.image, layer: 'map',
@@ -2205,6 +2205,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     Object.assign(t, {
       name: e.name,
       image: e.image || monsterArt(e.id, e.name),
+      artVariant: e.artVariant ?? monsterVariant,
       monster: customMonster(entryProfile(e), e.id),
       width: scene.grid.size * (size[e.size || 'M'] || 1),
       height: scene.grid.size * (size[e.size || 'M'] || 1),
@@ -2249,9 +2250,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       const position = at || (!alreadyPlaced ? {x:camera.x,y:camera.y} : undefined);
       const next = await post<VttState>(`/vtt/rooms/${state.id}/characters/${id}`, position ? { position } : {});
       receive(next);
-      const imported = next.document.scenes
-        .find((s) => s.id === next.document.activeScene)
-        ?.tokens.find((t) => t.characterId === id && (gm || t.controller === user.id));
+      const imported = next.document.scenes.find((s) => s.id === next.document.activeScene)?.tokens.find((t) => t.characterId === id && (gm || t.controller === user.id));
       if (imported && !at) setCamera(c => ({...c,x:imported.x,y:imported.y}));
       if (imported) {
         changeLayer('tokens', [imported.id]);
@@ -2304,6 +2303,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     event.dataTransfer.setData(monsterMime, id);
+    event.dataTransfer.setData('application/x-alvorada-monster-variant', String(monsterVariant));
     event.dataTransfer.effectAllowed = 'copy';
   }
   function entryProfile(e: Entry): MonsterProfile {
@@ -2313,6 +2313,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       ac: e.ac ?? 10,
       stats: e.stats ?? [10, 10, 10, 10, 10, 10],
       image: e.image || monsterArt(e.id, e.name),
+      artVariant: e.artVariant ?? monsterVariant,
     };
   }
   function tokenProfile(t: VttToken): MonsterProfile {
@@ -2325,6 +2326,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       ...(source ? entryProfile(source) : {}),
       name: t.name,
       image: t.image,
+      artVariant: t.artVariant as MonsterVariant | undefined,
       hp: t.hp,
       maxHp: t.maxHp,
       ac: t.ac,
@@ -2678,11 +2680,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       </section>
     );
   return (
-    <section
-      className="vtt-workspace"
-      data-visual-effects={visualEffects ? 'on' : 'off'}
-      aria-label="Mesa virtual"
-    >
+    <section className="vtt-workspace" data-visual-effects={visualEffects ? 'on' : 'off'} aria-label="Mesa virtual">
       <header className="vtt-top">
         <div className="vtt-brand">
           <Swords size={22} />
@@ -3050,32 +3048,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             volume={media.soundVolume}
           />
           <VttDice messages={state.messages} roomId={state.id} enabled={dice3d && visualEffects} />
-          <VttAttackVisuals
-            roomId={state.id}
-            messages={state.messages}
-            scene={scene}
-            camera={camera}
-            bounds={bounds}
-            enabled={visualEffects}
-            gm={gm}
-            preview={preview}
-            viewer={viewer}
-            soundEnabled={media.soundEnabled}
-            soundVolume={media.soundVolume}
-          />
-          <VttEffectSounds
-            roomId={state.id}
-            scene={scene}
-            gm={gm}
-            preview={preview}
-            viewer={viewer}
-            enabled={media.soundEnabled}
-            volume={media.soundVolume}
-          />
-          <VttBossBars
-            bars={gm ? sceneBossBars(scene) : state.bossBars}
-            visualEffects={visualEffects}
-          />
+          <VttAttackVisuals roomId={state.id} messages={state.messages} scene={scene} camera={camera} bounds={bounds} enabled={visualEffects} gm={gm} preview={preview} viewer={viewer} soundEnabled={media.soundEnabled} soundVolume={media.soundVolume} />
+          <VttEffectSounds roomId={state.id} scene={scene} gm={gm} preview={preview} viewer={viewer} enabled={media.soundEnabled} volume={media.soundVolume} />
+          <VttBossBars bars={gm ? sceneBossBars(scene) : state.bossBars} visualEffects={visualEffects} />
           {!spectator && (
             <VttHotbar
               key={state.id}
@@ -3083,9 +3058,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               tokens={scene.tokens}
               effects={doc.effects}
               sheetOpen={!!sheetId}
-              roll={(formula, label, damage, visual) =>
-                send(formula, label, undefined, damage, visual)
-              }
+              roll={(formula, label, damage, visual) => send(formula, label, undefined, damage, visual)}
               shareSpell={shareSpell}
               refresh={refreshRoom}
               gm={gm}
@@ -3129,7 +3102,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 !busy &&
                 (e.dataTransfer.types.includes(characterMime) ||
                   e.dataTransfer.types.includes(companionMime) ||
-                  (gm && (e.dataTransfer.types.includes(monsterMime) || e.dataTransfer.types.includes(animatedAssetMime) || e.dataTransfer.types.includes(natureAssetMime) || e.dataTransfer.types.includes(treeAssetMime))))
+                  (gm && (e.dataTransfer.types.includes(monsterMime) || e.dataTransfer.types.includes(animatedAssetMime) || e.dataTransfer.types.includes(natureAssetMime) || e.dataTransfer.types.includes(treeAssetMime) || e.dataTransfer.types.includes(sceneryAssetMime))))
               ) {
                 e.preventDefault();
                 e.dataTransfer.dropEffect = 'copy';
@@ -3139,6 +3112,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               if(gm&&!preview&&!busy&&e.dataTransfer.types.includes(natureAssetMime)){
                 e.preventDefault();
                 try{const a=JSON.parse(e.dataTransfer.getData(natureAssetMime));addNatureAsset(a.id,a.scale,point(e));}catch{setNotice('Não foi possível colocar a peça.');}
+                return;
+              }
+              if (gm && !preview && !busy && e.dataTransfer.types.includes(sceneryAssetMime)) {
+                e.preventDefault();
+                try { const a = JSON.parse(e.dataTransfer.getData(sceneryAssetMime)); addSceneryAsset(a.id,a.scale,point(e)); } catch { setNotice('Não foi possível colocar a peça.'); }
                 return;
               }
               if(gm && !preview && e.dataTransfer.types.includes(treeAssetMime)) {
@@ -3158,13 +3136,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               if (!spectator && !preview && e.dataTransfer.types.includes(characterMime)) {
                 e.preventDefault();
                 const id = e.dataTransfer.getData(characterMime);
-                if (gm || characters.some((c) => c.id === id))
-                  void act(() => bringCharacter(id, point(e)));
+                if (gm || characters.some((c) => c.id === id)) void act(() => bringCharacter(id, point(e)));
                 return;
               }
               if (!gm || preview || !e.dataTransfer.types.includes(monsterMime)) return;
               e.preventDefault();
               const id = e.dataTransfer.getData(monsterMime);
+              const rawVariant = Number(e.dataTransfer.getData('application/x-alvorada-monster-variant'));
+              const variant = [0, 1, 2, 3].includes(rawVariant) ? rawVariant as MonsterVariant : monsterVariant;
               if (id.startsWith('preset:')) {
                 void act(() => importMonsterPreset(id.slice(7), point(e)));
                 return;
@@ -3173,7 +3152,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 const monster = catalog.monsters.find((m) => m.id === id.slice(8));
                 if (monster)
                   addMonster(
-                    { ...monster, image: '/api/vtt/premium-art/' + monster.id },
+                    { ...monster, artVariant: variant },
                     point(e),
                     true,
                   );
@@ -3183,7 +3162,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 ...catalog.monsters,
                 ...doc.custom.filter((e) => e.kind === 'monster'),
               ].find((e) => e.id === id);
-              if (monster) addMonster(monster, point(e), true);
+              if (monster) addMonster({ ...monster, artVariant: variant }, point(e), true);
             }}
             data-attacker-id={token?.layer === 'tokens' ? token.id : undefined}
             data-camera-x={camera.x}
@@ -3270,6 +3249,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }
             }}
           />
+          {gm && !preview && token?.animatedAsset && <VttAnimatedAssetControls token={token} gridSize={scene.grid.size} edit={editToken} effectsEnabled={visualEffects} enableEffects={()=>media.update({visualEffects:true})}/>}
           {!spectator&&!preview&&<VttHouseDoors scene={scene} camera={camera} width={bounds.width} height={bounds.height} gm={gm} userId={user.id} selected={selection} disabled={busy} toggle={h=>void act(()=>toggleHouseDoor(h))} toggleWindow={(h,index)=>void act(()=>toggleHouseWindow(h,index))}/>}
           <VttTurnCarousel
             controls={combat}
@@ -3990,6 +3970,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       {gm && (
                         <>
                           {token.animatedAsset && <fieldset><legend>Animação do ambiente</legend>
+                            <NumberField label="Tamanho do asset (quadrados)" value={Number((token.width / scene.grid.size).toFixed(2))} min={Math.max(.1, 8 / scene.grid.size)} max={8000 / scene.grid.size} onChange={v=>{const width=Math.max(8,Math.min(8000,v*scene.grid.size)); const ratio=token.height/token.width; editToken({width,height:Math.max(8,Math.min(8000,width*ratio))});}}/>
+                            <div className="vtt-two">
+                              <button type="button" onClick={()=>{const factor=Math.max(.8,8/Math.min(token.width,token.height));editToken({width:token.width*factor,height:token.height*factor});}}>Diminuir asset</button>
+                              <button type="button" onClick={()=>{const factor=Math.min(1.25,8000/Math.max(token.width,token.height));editToken({width:token.width*factor,height:token.height*factor});}}>Aumentar asset</button>
+                            </div>
                             <label className="vtt-check"><input type="checkbox" checked={token.animatedAsset.playing} onChange={e=>editToken({animatedAsset:{...token.animatedAsset!,playing:e.target.checked}})}/>Animar asset</label>
                             <NumberField label="Velocidade da animação" value={token.animatedAsset.speed} min={.25} max={2} onChange={v=>editToken({animatedAsset:{...token.animatedAsset!,speed:v}})}/>
                             <label>Intensidade<input aria-label="Intensidade do asset" type="range" min={.2} max={1} step={.05} value={token.animatedAsset.intensity} onChange={e=>editToken({animatedAsset:{...token.animatedAsset!,intensity:Number(e.target.value)}})}/></label>
@@ -4200,12 +4185,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               )}
               {(tab === 'library' || tab === 'art') && (
                 <>
+                  {library !== 'spells' && library !== 'presets' && library !== 'scenery' && library !== 'animated' && gm && (
+                    <VttMonsterVariants value={monsterVariant} change={setMonsterVariant}
+                      image={entry ? monsterImage(entry) : undefined} />
+                  )}
                   {tab === 'library' && (
                     <div
                       className="vtt-subtabs vtt-library-tabs"
                       aria-label="Categorias da biblioteca"
                     >
-                      {(['monsters', 'presets', 'premium', 'spells', 'nature', 'animated'] as const).map((k) => (
+                      {(['monsters', 'presets', 'premium', 'spells', 'nature', 'scenery', 'animated'] as const).map((k) => (
                         <button
                           key={k}
                           aria-label={
@@ -4215,6 +4204,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               premium: 'Assets',
                               spells: 'Magias',
                               nature: 'Cenários',
+                              scenery: 'Assets',
                               animated: 'Assets animados',
                             }[k]
                           }
@@ -4225,6 +4215,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               premium: 'Assets',
                               spells: 'Magias',
                               nature: 'Cenários',
+                              scenery: 'Assets',
                               animated: 'Assets animados',
                             }[k]
                           }
@@ -4243,6 +4234,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               premium: 'Assets',
                               spells: 'Magias',
                               nature: 'Cenários',
+                              scenery: 'Assets',
                               animated: 'Assets animados',
                             }[k]
                           }
@@ -4256,10 +4248,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       aria-label="Buscar na biblioteca"
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
-                      placeholder="Nome, tipo, nível…"
+                      placeholder={library === 'scenery' ? 'Nome da peça ou categoria…' : 'Nome, tipo, nível…'}
                     />
                   </label>}
-                  {gm && library !== 'nature' && library !== 'terrain' && library !== 'presets' && library !== 'premium' && library !== 'animated' && (
+                  {gm && library !== 'nature' && library !== 'terrain' && library !== 'presets' && library !== 'premium' && library !== 'animated' && library !== 'scenery' && (
                     <label className="vtt-file-button">
                       <Upload size={14} />
                       {library === 'images' ? 'Enviar imagem' : 'Importar JSON do 5etools'}
@@ -4284,7 +4276,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       />
                     </label>
                   )}
-                  {library === 'terrain' ? terrainPanel() : library === 'nature' ? (<VttNatureAssets query={query} gm={gm&&!preview} add={addNatureAsset}/>) : library === 'animated' ? (
+                  {library === 'terrain' ? terrainPanel() : library === 'nature' ? (<VttNatureAssets query={query} gm={gm&&!preview} add={addNatureAsset}/>) : library === 'scenery' ? (
+                    <>{terrainPanel()}
+                    <VttSceneryAssets query={query} gm={gm && !preview} add={addSceneryAsset} /></>
+                  ) : library === 'animated' ? (
                     <VttAnimatedAssets query={query} gm={gm && !preview} add={addAnimatedAsset} />
                   ) : library === 'presets' || library === 'premium' ? (
                     <VttAssets enabled={library === 'premium'} gm={gm && !preview} query={query} add={addTreeAsset} addNature={addNatureAsset}><VttPrivateLibrary
@@ -4300,6 +4295,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       importPreset={importMonsterPreset}
                       importPremium={(m) => addMonster(m as Entry)}
                       drag={dragMonster}
+                      variant={monsterVariant}
                     /></VttAssets>
                   ) : library === 'images' ? (
                     <>
@@ -4319,6 +4315,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                                 <img
                                   loading="lazy"
                                   src={e.image || monsterArt(e.id, e.name)}
+                                  style={{ filter: monsterVariantFilter(monsterVariant) }}
                                   alt={e.name}
                                   draggable={false}
                                 />
@@ -4477,18 +4474,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           )}
                           {library === 'spells' && (
                             <>
-                              {spellProfile(entry.id) && (
-                                <button
-                                  className="vtt-gold"
-                                  disabled={!canToken || !token || preview}
-                                  onClick={() => requestSpellCast(token!.id, entry.id)}
-                                >
-                                  Preparar conjuração
-                                </button>
-                              )}
-                              <button onClick={() => void act(() => send('', '', entry.id))}>
-                                Compartilhar no chat
-                              </button>
+                            {spellProfile(entry.id) && <button className="vtt-gold" disabled={!canToken || !token || preview} onClick={() => requestSpellCast(token!.id, entry.id)}>
+                              Preparar conjuração
+                            </button>}
+                            <button onClick={() => void act(() => send('', '', entry.id))}>
+                              Compartilhar no chat
+                            </button>
                             </>
                           )}
                         </div>
@@ -4526,6 +4517,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                                           ? ' premium'
                                           : '')
                                       }
+                                      style={{ filter: monsterVariantFilter(monsterVariant) }}
                                       loading="lazy"
                                       src={monsterImage(e)}
                                       alt=""
@@ -4575,8 +4567,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 <>
                   <h3>Trazer personagem do site</h3>
                   <p className="vtt-muted">
-                    Cria uma cópia de sessão com ficha e token. PV e condições da mesa não alteram o
-                    personagem do site.
+                    Cria uma cópia de sessão com ficha e token. PV e condições da mesa não alteram
+                    o personagem do site.
                   </p>
                   {gm && !preview ? <VttRoomCharacters roomId={state.id} scene={scene} busy={busy}
                     place={id => void act(() => bringCharacter(id))} drag={dragCharacter}/> : characters.map((c) => (
@@ -4594,9 +4586,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       <VttCharacterToken character={c} />
                       <span className="vtt-character-label">
                         {c.name}
-                        <small>
-                          {c.class} · {c.level}
-                        </small>
+                        <small>{c.class} · {c.level}</small>
                       </span>
                     </button>
                   ))}
@@ -5031,41 +5021,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               {tab === 'table' && (
                 <>
                   <h3>Personalização</h3>
-                  <label className="vtt-check">
-                    <input
-                      type="checkbox"
-                      checked={visualEffects}
-                      onChange={(e) => media.update({ visualEffects: e.target.checked })}
-                    />
-                    Mostrar efeitos visuais
-                  </label>
-                  <p className="vtt-muted">
-                    Desative para reduzir o uso do computador. Preferência deste navegador; os
-                    demais participantes continuam vendo os efeitos.
-                  </p>
-                  <label className="vtt-check">
-                    <input
-                      type="checkbox"
-                      checked={media.soundEnabled}
-                      onChange={(e) => media.update({ soundEnabled: e.target.checked })}
-                    />
-                    Som dos efeitos e ataques
-                  </label>
-                  <label>
-                    Volume dos efeitos e ataques · {Math.round(media.soundVolume * 100)}%
-                    <input
-                      aria-label="Volume dos efeitos e ataques"
-                      type="range"
-                      min="0"
-                      max="100"
-                      value={Math.round(media.soundVolume * 100)}
-                      onChange={(e) => media.update({ soundVolume: Number(e.target.value) / 100 })}
-                    />
-                  </label>
-                  <p className="vtt-muted">
-                    O controle de efeitos sonoros do site também se aplica. Ative o áudio neste
-                    navegador na aba Som se ele estiver bloqueado.
-                  </p>
+                  <label className="vtt-check"><input type="checkbox" checked={visualEffects} onChange={e=>media.update({visualEffects:e.target.checked})} />Mostrar efeitos visuais</label>
+                  <p className="vtt-muted">Desative para reduzir o uso do computador. Preferência deste navegador; os demais participantes continuam vendo os efeitos.</p>
+                  <label className="vtt-check"><input type="checkbox" checked={media.soundEnabled} onChange={e=>media.update({soundEnabled:e.target.checked})} />Som dos efeitos e ataques</label>
+                  <label>Volume dos efeitos e ataques · {Math.round(media.soundVolume*100)}%<input aria-label="Volume dos efeitos e ataques" type="range" min="0" max="100" value={Math.round(media.soundVolume*100)} onChange={e=>media.update({soundVolume:Number(e.target.value)/100})} /></label>
+                  <p className="vtt-muted">O controle de efeitos sonoros do site também se aplica. Ative o áudio neste navegador na aba Som se ele estiver bloqueado.</p>
                   <label className="vtt-check">
                     <input
                       type="checkbox"
@@ -5296,10 +5256,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </ol>
                   <h3>Atalhos</h3>
                   <p>
-                    V selecionar · R régua · P lápis. Roda do mouse: zoom no cursor. Ctrl+arraste: girar o item selecionado. Ctrl+roda:
-                    girar seleção em 15°. Shift+clique: seleção múltipla. Alt+arraste: movimento sem
-                    grade. Delete: excluir. Ctrl+D: duplicar. Ctrl+Z: desfazer. Ctrl+S: salvar. Esc:
-                    encerrar ferramenta.
+                    V selecionar · R régua · P lápis. Roda do mouse: zoom no cursor. Ctrl+arraste: girar o item selecionado. Ctrl+roda: girar seleção em 15°. Shift+clique:
+                    seleção múltipla. Alt+arraste: movimento sem grade. Delete: excluir. Ctrl+D:
+                    duplicar. Ctrl+Z: desfazer. Ctrl+S: salvar. Esc: encerrar ferramenta.
                   </p>
                   <h3>Portas e luz</h3>
                   <p>

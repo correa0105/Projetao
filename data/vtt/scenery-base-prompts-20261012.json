@@ -1,0 +1,63 @@
+{
+  "mode": "built-in imagegen",
+  "props": [
+    {
+      "id": "oak-table",
+      "prompt": "Use case: stylized-concept. Asset type: original premium virtual tabletop scenery sprite. Subject: one round medieval oak tabletop, thick irregular weathered planks, iron pegs, subtle scratches. Strict orthographic TOP DOWN camera at 90 degrees, only upper surfaces visible, no isometric or side view. Highly detailed hand-painted realistic fantasy cartography, restrained earthy colors, intricate material texture, fine dark contours, subtle ambient occlusion and compact contact shadow. Single isolated complete object centered with 8% transparent margin, no scenery, no ground tile, no text or watermark. Real transparent alpha background. Original design."
+    },
+    {
+      "id": "supply-crates",
+      "prompt": "Use case: stylized-concept. Asset type: original premium virtual tabletop scenery sprite. Subject: one cluster of three wooden supply crates, two closed with diagonal slats and one open with straw, iron nails. Strict orthographic TOP DOWN camera at 90 degrees, only upper surfaces visible, no isometric or side view. Highly detailed hand-painted realistic fantasy cartography, restrained earthy colors, intricate material texture, fine dark contours, subtle ambient occlusion and compact contact shadow. Single isolated complete object centered with 8% transparent margin, no scenery, no ground tile, no text or watermark. Real transparent alpha background. Original design."
+    },
+    {
+      "id": "stone-well",
+      "prompt": "Use case: stylized-concept. Asset type: original premium virtual tabletop scenery sprite. Subject: one circular medieval stone well, rough limestone rim, dark water visible inside, wooden crossbeam across opening. Strict orthographic TOP DOWN camera at 90 degrees, only upper surfaces visible, no isometric or side view. Highly detailed hand-painted realistic fantasy cartography, restrained earthy colors, intricate material texture, fine dark contours, subtle ambient occlusion and compact contact shadow. Single isolated complete object centered with 8% transparent margin, no scenery, no ground tile, no text or watermark. Real transparent alpha background. Original design."
+    },
+    {
+      "id": "forest-oak",
+      "prompt": "Use case: stylized-concept. Asset type: original premium virtual tabletop scenery sprite. Subject: one dense oak tree canopy, natural asymmetrical clusters of tiny olive green leaves, branches partially visible. Strict orthographic TOP DOWN camera at 90 degrees, only upper surfaces visible, no isometric or side view. Highly detailed hand-painted realistic fantasy cartography, restrained earthy colors, intricate material texture, fine dark contours, subtle ambient occlusion and compact contact shadow. Single isolated complete object centered with 8% transparent margin, no scenery, no ground tile, no text or watermark. Real transparent alpha background. Original design."
+    },
+    {
+      "id": "moss-rock",
+      "prompt": "Use case: stylized-concept. Asset type: original premium virtual tabletop scenery sprite. Subject: one irregular cluster of weathered granite boulders, fissures and patches of deep green moss. Strict orthographic TOP DOWN camera at 90 degrees, only upper surfaces visible, no isometric or side view. Highly detailed hand-painted realistic fantasy cartography, restrained earthy colors, intricate material texture, fine dark contours, subtle ambient occlusion and compact contact shadow. Single isolated complete object centered with 8% transparent margin, no scenery, no ground tile, no text or watermark. Real transparent alpha background. Original design."
+    },
+    {
+      "id": "dungeon-altar",
+      "prompt": "Use case: stylized-concept. Asset type: original premium virtual tabletop scenery sprite. Subject: one rectangular ancient carved stone altar, eroded runes, fractured corners, dark red worn cloth down center. Strict orthographic TOP DOWN camera at 90 degrees, only upper surfaces visible, no isometric or side view. Highly detailed hand-painted realistic fantasy cartography, restrained earthy colors, intricate material texture, fine dark contours, subtle ambient occlusion and compact contact shadow. Single isolated complete object centered with 8% transparent margin, no scenery, no ground tile, no text or watermark. Real transparent alpha background. Original design."
+    },
+    {
+      "id": "camp-bedroll",
+      "prompt": "Use case: stylized-concept. Asset type: original premium virtual tabletop scenery sprite. Subject: one unrolled olive wool bedroll with beige pillow, leather straps, realistic folds and stitching. Strict orthographic TOP DOWN camera at 90 degrees, only upper surfaces visible, no isometric or side view. Highly detailed hand-painted realistic fantasy cartography, restrained earthy colors, intricate material texture, fine dark contours, subtle ambient occlusion and compact contact shadow. Single isolated complete object centered with 8% transparent margin, no scenery, no ground tile, no text or watermark. Real transparent alpha background. Original design."
+    },
+    {
+      "id": "iron-chest",
+      "prompt": "Use case: stylized-concept. Asset type: original premium virtual tabletop scenery sprite. Subject: one closed medieval oak treasure chest strictly seen from directly above, heavy dark iron bands and rivets, weathered wood. Strict orthographic TOP DOWN camera at 90 degrees, only upper surfaces visible, no isometric or side view. Highly detailed hand-painted realistic fantasy cartography, restrained earthy colors, intricate material texture, fine dark contours, subtle ambient occlusion and compact contact shadow. Single isolated complete object centered with 8% transparent margin, no scenery, no ground tile, no text or watermark. Real transparent alpha background. Original design."
+    }
+  ],
+  "terrain": [
+    {
+      "id": "grass",
+      "prompt": "Use case: stylized-concept. Asset type: seamless repeatable square terrain texture for a high quality fantasy virtual tabletop map brush. Subject: dense short natural olive green grass, fine individual blades, subtle dry patches. Strict flat orthographic overhead at 90 degrees. Detailed realistic hand-painted cartography material, matching richly textured tabletop scenery sprites. Entire image filled edge to edge with the same material. Seamless tiling in both axes, uniform neutral diffuse lighting, no central focal point, no vignette, no border, no objects, no horizon, no text."
+    },
+    {
+      "id": "earth",
+      "prompt": "Use case: stylized-concept. Asset type: seamless repeatable square terrain texture for a high quality fantasy virtual tabletop map brush. Subject: warm brown packed earth, small pebbles, fine irregular gritty soil. Strict flat orthographic overhead at 90 degrees. Detailed realistic hand-painted cartography material, matching richly textured tabletop scenery sprites. Entire image filled edge to edge with the same material. Seamless tiling in both axes, uniform neutral diffuse lighting, no central focal point, no vignette, no border, no objects, no horizon, no text."
+    },
+    {
+      "id": "sand",
+      "prompt": "Use case: stylized-concept. Asset type: seamless repeatable square terrain texture for a high quality fantasy virtual tabletop map brush. Subject: pale warm sand, tiny grains, very faint organic wind ripples. Strict flat orthographic overhead at 90 degrees. Detailed realistic hand-painted cartography material, matching richly textured tabletop scenery sprites. Entire image filled edge to edge with the same material. Seamless tiling in both axes, uniform neutral diffuse lighting, no central focal point, no vignette, no border, no objects, no horizon, no text."
+    },
+    {
+      "id": "stone",
+      "prompt": "Use case: stylized-concept. Asset type: seamless repeatable square terrain texture for a high quality fantasy virtual tabletop map brush. Subject: rough gray irregular medieval flagstone paving, narrow dark joints, worn chipped surfaces. Strict flat orthographic overhead at 90 degrees. Detailed realistic hand-painted cartography material, matching richly textured tabletop scenery sprites. Entire image filled edge to edge with the same material. Seamless tiling in both axes, uniform neutral diffuse lighting, no central focal point, no vignette, no border, no objects, no horizon, no text."
+    },
+    {
+      "id": "wood",
+      "prompt": "Use case: stylized-concept. Asset type: seamless repeatable square terrain texture for a high quality fantasy virtual tabletop map brush. Subject: weathered oak floorboards, rich wood grain, narrow seams, subtle iron nail heads. Strict flat orthographic overhead at 90 degrees. Detailed realistic hand-painted cartography material, matching richly textured tabletop scenery sprites. Entire image filled edge to edge with the same material. Seamless tiling in both axes, uniform neutral diffuse lighting, no central focal point, no vignette, no border, no objects, no horizon, no text."
+    },
+    {
+      "id": "snow",
+      "prompt": "Use case: stylized-concept. Asset type: seamless repeatable square terrain texture for a high quality fantasy virtual tabletop map brush. Subject: fresh granular snow, soft icy blue shadows, fine crystalline frosty texture. Strict flat orthographic overhead at 90 degrees. Detailed realistic hand-painted cartography material, matching richly textured tabletop scenery sprites. Entire image filled edge to edge with the same material. Seamless tiling in both axes, uniform neutral diffuse lighting, no central focal point, no vignette, no border, no objects, no horizon, no text."
+    }
+  ]
+}

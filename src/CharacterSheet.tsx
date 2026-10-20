@@ -1,8 +1,9 @@
-import { startingEquipmentImage } from '../shared/starting-equipment-art';
 import { FlashMessage } from './FlashMessage';
+import { startingEquipmentImage } from '../shared/starting-equipment-art';
 import {SheetSpellCollection}from './SheetSpellCollection';
 import { CharacterTitleLabel } from './Titles';
 import { CharacterLevelBadge } from './CharacterLevelBadge';
+import { TrainingBadge, hasTrainingBadge } from './TrainingBadge';
 import { useEffect, useState } from 'react';
 import {
   BookOpen,
@@ -574,7 +575,7 @@ export function CharacterSheet({
                     <ul className="sheet-training-cards">
                       {d.proficiencies.map((v, i) => (
                         <li key={i}>
-                          <Shield size={17} aria-hidden="true" />
+                          {hasTrainingBadge(v) ? <TrainingBadge name={v} /> : <Shield size={17} aria-hidden="true" />}
                           <span>{v}</span>
                         </li>
                       ))}
@@ -596,7 +597,10 @@ export function CharacterSheet({
                           className={v.expert ? 'is-expert' : v.trained ? 'is-trained' : ''}
                         >
                           <TrainingMark trained={v.trained} expert={v.expert} />
-                          <span>{v.name}</span>
+                          <span className="sheet-skill-name">
+                            {v.expert && <TrainingBadge name={v.name} />}
+                            <span>{v.name}</span>
+                          </span>
                           <b>{signed(v.value)}</b>
                         </li>
                       ))}

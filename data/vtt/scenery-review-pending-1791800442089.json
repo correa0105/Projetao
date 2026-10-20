@@ -1,0 +1,17 @@
+[
+  {
+    "id": "scenery-0710",
+    "name": "Rochedo — disperso",
+    "sha256": "e2bb12a69b047e2068151d0d2e70aa5fa7ab3f56907e851dd601ad9ca5c7d955"
+  },
+  {
+    "id": "scenery-0810",
+    "name": "Baú — camponês",
+    "sha256": "87bbb27390d469ddf6fa9623945b0086034fa820c50ae63177e45f26c76e500a"
+  },
+  {
+    "id": "scenery-0910",
+    "name": "Círculo ritual — ancestrais",
+    "sha256": "2be8447c6544bb8494ff64b647d47da6a03952d869996916c7ff81b9662ccb04"
+  }
+]

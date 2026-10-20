@@ -1,0 +1,32 @@
+[
+  {
+    "id": "scenery-0058",
+    "name": "Tapete — peça ornamentada",
+    "sha256": "d496ecf0a36092654f5da27299c16426e8dcb75cb2cdb8989a452246751ede55"
+  },
+  {
+    "id": "scenery-0061",
+    "name": "Lareira — peça rústica",
+    "sha256": "90cc3cc33beb8f009990d0901e65e80fb6de797374a56a22e93547c58b4258c3"
+  },
+  {
+    "id": "scenery-0129",
+    "name": "Mochila — pescador",
+    "sha256": "eccc1ad003cabbb2a6464453cb42824bc800f6d7127edd9c0742b18dff61dbd0"
+  },
+  {
+    "id": "scenery-0132",
+    "name": "Saco de dormir — caçador",
+    "sha256": "473ab1ac70403fdbb421385aad1ea7eca722346bbda3acf0251652944bdc7f79"
+  },
+  {
+    "id": "scenery-0232",
+    "name": "Tronco caído — bosque antigo",
+    "sha256": "c1e9309ae8aea01a56bb85619b1203843b6ab4abac10539b64576c028aca77d9"
+  },
+  {
+    "id": "scenery-0928",
+    "name": "Incensário — gelo",
+    "sha256": "6a042e1423549c1d2b98a0e12121e9ef79fe3be2d0adbba0509e517caecd6a2a"
+  }
+]

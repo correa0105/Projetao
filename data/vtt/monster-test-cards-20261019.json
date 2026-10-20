@@ -1,0 +1,151 @@
+{
+  "generator": "built-in image_gen",
+  "styleReference": "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-8e4e98a3-fa51-4f19-973f-d30751e16f79.png",
+  "assets": [
+    {
+      "id": "giant-spider",
+      "name": "Aranha gigante",
+      "sourceId": "monster-giant-spider",
+      "bodyUrl": "/vtt/monsters/bonus-test-20261019/giant-spider-body.webp",
+      "tokenUrl": "/vtt/monsters/bonus-test-20261019/giant-spider-token.webp",
+      "prompt": "Use case: stylized-concept. ONE original fantasy bestiary creature display cutout. Premium dramatic realistic 3D miniature illustration, detailed hand-painted textures, believable anatomy and physical material shading, strong sculptural volume, softly directional warm upper-left key light, cool subtle fill and deep ambient occlusion. Full body, entire silhouette visible with 7% safe transparent padding, centered square canvas. Monster isolated on TRUE TRANSPARENT background with a soft semitransparent natural contact shadow immediately below its feet; no opaque floor plane, no scenery, no pedestal, no card frame, no token rim, no text or symbols. Inspired only by the supplied spider card's dimensional creature that projects toward the viewer; do not copy the card design, typography, spider or its exact pose. Camera slightly above subject, three-quarter front view with dynamic foreshortening. Beautiful highly readable anatomy at small game-token size.\nSubject: An enormous hunting spider with EXACTLY EIGHT long articulated legs and two small pedipalps, indigo-black chitin, dense brown abdomen hairs, clustered small ruby-red eyes and dark hooked fangs. Anatomically coherent arachnid, no extra limbs. Alert low lunging stance, body angled three-quarters toward viewer, foremost legs reaching toward us.",
+      "body": {
+        "id": "giant-spider",
+        "kind": "body",
+        "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-623de6ac-0cc4-4255-b399-3c54556ddf5b.png",
+        "reference": "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-8e4e98a3-fa51-4f19-973f-d30751e16f79.png",
+        "prompt": "Use case: stylized-concept. ONE original fantasy bestiary creature display cutout. Premium dramatic realistic 3D miniature illustration, detailed hand-painted textures, believable anatomy and physical material shading, strong sculptural volume, softly directional warm upper-left key light, cool subtle fill and deep ambient occlusion. Full body, entire silhouette visible with 7% safe transparent padding, centered square canvas. Monster isolated on TRUE TRANSPARENT background with a soft semitransparent natural contact shadow immediately below its feet; no opaque floor plane, no scenery, no pedestal, no card frame, no token rim, no text or symbols. Inspired only by the supplied spider card's dimensional creature that projects toward the viewer; do not copy the card design, typography, spider or its exact pose. Camera slightly above subject, three-quarter front view with dynamic foreshortening. Beautiful highly readable anatomy at small game-token size.\nSubject: An enormous hunting spider with EXACTLY EIGHT long articulated legs and two small pedipalps, indigo-black chitin, dense brown abdomen hairs, clustered small ruby-red eyes and dark hooked fangs. Anatomically coherent arachnid, no extra limbs. Alert low lunging stance, body angled three-quarters toward viewer, foremost legs reaching toward us.",
+        "sourceSha256": "18412e1714477e0b6162f99c9e261025b8d9854d5522127bbd38604a61477366",
+        "sha256": "8ea2f50bd0f6df6cc47ef16eb6d26dd43370432af114c53a43e7cf1bf6dabdb6",
+        "width": 900,
+        "height": 900,
+        "bytes": 400896,
+        "transparentFraction": 0.3632148148148148,
+        "softAlphaPixels": 226945
+      },
+      "token": {
+        "id": "giant-spider",
+        "kind": "token",
+        "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-8f540755-9e33-4fff-8cdc-da5c322f17ac.png",
+        "prompt": "Use case: compositing. Use the provided creature cutout as the LOCKED identity reference. Create a premium fantasy VTT POP-OUT TOKEN of this EXACT same Aranha gigante: same face, colors, anatomy, gear and sculptural 3D rendering. Add a clean upright HEXAGONAL dark bronze frame with double thin engraved gold edges and a subtly dark desaturated parchment interior. The creature's body sits partly INSIDE the hexagon, but its head, nearest claws/arms or front legs project prominently IN FRONT OF and BEYOND the frame. Clear three-dimensional overlap: rear frame behind the monster, selected bottom/front frame segments pass IN FRONT OF lower rear body; closest limb and face are fully above the frame. Frame occupies roughly middle70% of square; creature pop-out reaches to outer7% safe margins, whole shape fully visible. Preserve coherent original creature proportions and every limb, no extra legs or hands. Soft transparent contact/drop shadow falling from creature onto frame. TRUE TRANSPARENT background outside the hexagonal token and projecting creature. No opaque square, no scene, no floor, no labels, no numbers, no typography, no watermark. Readable as one compact token at80px. Original art, not a copy of another artist's card.",
+        "reference": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-623de6ac-0cc4-4255-b399-3c54556ddf5b.png",
+        "sourceSha256": "931314ea03b6738e4570c3b72b73912b500df49d8dc84c0749e8e9808393c5f8",
+        "sha256": "8be5ab46a144086d7e64f9ee5f685400d77d6f9187b7e249fac0d44a30a4c0fc",
+        "width": 640,
+        "height": 640,
+        "bytes": 184122,
+        "transparentFraction": 0.37188232421875,
+        "softAlphaPixels": 11329
+      }
+    },
+    {
+      "id": "goblin-warrior",
+      "name": "Goblin guerreiro",
+      "sourceId": "monster-goblin-warrior",
+      "bodyUrl": "/vtt/monsters/bonus-test-20261019/goblin-warrior-body.webp",
+      "tokenUrl": "/vtt/monsters/bonus-test-20261019/goblin-warrior-token.webp",
+      "prompt": "Use case: stylized-concept. ONE original fantasy bestiary creature display cutout. Premium dramatic realistic 3D miniature illustration, detailed hand-painted textures, believable anatomy and physical material shading, strong sculptural volume, softly directional warm upper-left key light, cool subtle fill and deep ambient occlusion. Full body, entire silhouette visible with 7% safe transparent padding, centered square canvas. Monster isolated on TRUE TRANSPARENT background with a soft semitransparent natural contact shadow immediately below its feet; no opaque floor plane, no scenery, no pedestal, no card frame, no token rim, no text or symbols. Inspired only by the supplied spider card's dimensional creature that projects toward the viewer; do not copy the card design, typography, spider or its exact pose. Camera slightly above subject, three-quarter front view with dynamic foreshortening. Beautiful highly readable anatomy at small game-token size.\nSubject: A wiry green-skinned goblin warrior with pointed ears, cunning yellow eyes, stitched dark brown leather armor, a small battered wooden round shield in left hand and a short curved iron sword in right. Whole body with exactly two arms and two legs, forward crouching guard pose, broad expressive face.",
+      "body": {
+        "id": "goblin-warrior",
+        "kind": "body",
+        "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-ac19ffb8-ff72-404a-96a7-55397d105284.png",
+        "reference": "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-8e4e98a3-fa51-4f19-973f-d30751e16f79.png",
+        "prompt": "Use case: stylized-concept. ONE original fantasy bestiary creature display cutout. Premium dramatic realistic 3D miniature illustration, detailed hand-painted textures, believable anatomy and physical material shading, strong sculptural volume, softly directional warm upper-left key light, cool subtle fill and deep ambient occlusion. Full body, entire silhouette visible with 7% safe transparent padding, centered square canvas. Monster isolated on TRUE TRANSPARENT background with a soft semitransparent natural contact shadow immediately below its feet; no opaque floor plane, no scenery, no pedestal, no card frame, no token rim, no text or symbols. Inspired only by the supplied spider card's dimensional creature that projects toward the viewer; do not copy the card design, typography, spider or its exact pose. Camera slightly above subject, three-quarter front view with dynamic foreshortening. Beautiful highly readable anatomy at small game-token size.\nSubject: A wiry green-skinned goblin warrior with pointed ears, cunning yellow eyes, stitched dark brown leather armor, a small battered wooden round shield in left hand and a short curved iron sword in right. Whole body with exactly two arms and two legs, forward crouching guard pose, broad expressive face.",
+        "sourceSha256": "2bfa78121e3abf08fdb8b2c0988a63d6c31cae0376ff89d78e86df97e2d2585c",
+        "sha256": "e3d17d8255239ca530ffeae683494f67421a5f0000f3fc8053e6d8ebddb5c052",
+        "width": 900,
+        "height": 900,
+        "bytes": 283314,
+        "transparentFraction": 0.49206172839506174,
+        "softAlphaPixels": 113201
+      },
+      "token": {
+        "id": "goblin-warrior",
+        "kind": "token",
+        "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-5b0a0cd4-9ffb-4b4a-8f97-6f055989e71f.png",
+        "prompt": "Use case: compositing. Use the provided creature cutout as the LOCKED identity reference. Create a premium fantasy VTT POP-OUT TOKEN of this EXACT same Goblin guerreiro: same face, colors, anatomy, gear and sculptural 3D rendering. Add a clean upright HEXAGONAL dark bronze frame with double thin engraved gold edges and a subtly dark desaturated parchment interior. The creature's body sits partly INSIDE the hexagon, but its head, nearest claws/arms or front legs project prominently IN FRONT OF and BEYOND the frame. Clear three-dimensional overlap: rear frame behind the monster, selected bottom/front frame segments pass IN FRONT OF lower rear body; closest limb and face are fully above the frame. Frame occupies roughly middle70% of square; creature pop-out reaches to outer7% safe margins, whole shape fully visible. Preserve coherent original creature proportions and every limb, no extra legs or hands. Soft transparent contact/drop shadow falling from creature onto frame. TRUE TRANSPARENT background outside the hexagonal token and projecting creature. No opaque square, no scene, no floor, no labels, no numbers, no typography, no watermark. Readable as one compact token at80px. Original art, not a copy of another artist's card.",
+        "reference": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-ac19ffb8-ff72-404a-96a7-55397d105284.png",
+        "sourceSha256": "38f9f75021155d2a269d8edc07be6ff5c425950bc1e4e23013a4bd127fd606f7",
+        "sha256": "9334daea74d1ca7202f029cb6f562ead2b550704c07042934fbaf70dab60dc6e",
+        "width": 640,
+        "height": 640,
+        "bytes": 185614,
+        "transparentFraction": 0.32268310546875,
+        "softAlphaPixels": 7126
+      }
+    },
+    {
+      "id": "owlbear",
+      "name": "Urso-coruja",
+      "sourceId": "monster-owlbear",
+      "bodyUrl": "/vtt/monsters/bonus-test-20261019/owlbear-body.webp",
+      "tokenUrl": "/vtt/monsters/bonus-test-20261019/owlbear-token.webp",
+      "prompt": "Use case: stylized-concept. ONE original fantasy bestiary creature display cutout. Premium dramatic realistic 3D miniature illustration, detailed hand-painted textures, believable anatomy and physical material shading, strong sculptural volume, softly directional warm upper-left key light, cool subtle fill and deep ambient occlusion. Full body, entire silhouette visible with 7% safe transparent padding, centered square canvas. Monster isolated on TRUE TRANSPARENT background with a soft semitransparent natural contact shadow immediately below its feet; no opaque floor plane, no scenery, no pedestal, no card frame, no token rim, no text or symbols. Inspired only by the supplied spider card's dimensional creature that projects toward the viewer; do not copy the card design, typography, spider or its exact pose. Camera slightly above subject, three-quarter front view with dynamic foreshortening. Beautiful highly readable anatomy at small game-token size.\nSubject: A powerful owlbear monster with a massive dark brown bear body, warm tan feathered owl face, sharp hooked pale beak and two great forepaws with long black claws. Four limbs total, natural hind paws, thick realistic fur and feather transitions. Rearing slightly forward, whole creature in a three-quarter dynamic stance.",
+      "body": {
+        "id": "owlbear",
+        "kind": "body",
+        "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-d0c720cf-36f2-4948-817e-afd50c055866.png",
+        "reference": "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-8e4e98a3-fa51-4f19-973f-d30751e16f79.png",
+        "prompt": "Use case: stylized-concept. ONE original fantasy bestiary creature display cutout. Premium dramatic realistic 3D miniature illustration, detailed hand-painted textures, believable anatomy and physical material shading, strong sculptural volume, softly directional warm upper-left key light, cool subtle fill and deep ambient occlusion. Full body, entire silhouette visible with 7% safe transparent padding, centered square canvas. Monster isolated on TRUE TRANSPARENT background with a soft semitransparent natural contact shadow immediately below its feet; no opaque floor plane, no scenery, no pedestal, no card frame, no token rim, no text or symbols. Inspired only by the supplied spider card's dimensional creature that projects toward the viewer; do not copy the card design, typography, spider or its exact pose. Camera slightly above subject, three-quarter front view with dynamic foreshortening. Beautiful highly readable anatomy at small game-token size.\nSubject: A powerful owlbear monster with a massive dark brown bear body, warm tan feathered owl face, sharp hooked pale beak and two great forepaws with long black claws. Four limbs total, natural hind paws, thick realistic fur and feather transitions. Rearing slightly forward, whole creature in a three-quarter dynamic stance.",
+        "sourceSha256": "fc4a361a2e806dac949a43a74397819cb3a88ee0d96a9e6f7eea8f1759285fd9",
+        "sha256": "2d499009572d63d462b29655d52b7b9ad69a96ba5c27fabf1056dbbde4388138",
+        "width": 900,
+        "height": 900,
+        "bytes": 324298,
+        "transparentFraction": 0.40542469135802467,
+        "softAlphaPixels": 77574
+      },
+      "token": {
+        "id": "owlbear",
+        "kind": "token",
+        "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-64f78d72-1cc2-47e8-8fea-2eeaf9e7bc13.png",
+        "prompt": "Use case: compositing. Use the provided creature cutout as the LOCKED identity reference. Create a premium fantasy VTT POP-OUT TOKEN of this EXACT same Urso-coruja: same face, colors, anatomy, gear and sculptural 3D rendering. Add a clean upright HEXAGONAL dark bronze frame with double thin engraved gold edges and a subtly dark desaturated parchment interior. The creature's body sits partly INSIDE the hexagon, but its head, nearest claws/arms or front legs project prominently IN FRONT OF and BEYOND the frame. Clear three-dimensional overlap: rear frame behind the monster, selected bottom/front frame segments pass IN FRONT OF lower rear body; closest limb and face are fully above the frame. Frame occupies roughly middle70% of square; creature pop-out reaches to outer7% safe margins, whole shape fully visible. Preserve coherent original creature proportions and every limb, no extra legs or hands. Soft transparent contact/drop shadow falling from creature onto frame. TRUE TRANSPARENT background outside the hexagonal token and projecting creature. No opaque square, no scene, no floor, no labels, no numbers, no typography, no watermark. Readable as one compact token at80px. Original art, not a copy of another artist's card.",
+        "reference": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-d0c720cf-36f2-4948-817e-afd50c055866.png",
+        "sourceSha256": "ac90c3d4a03b75dd93c608b7fe5d87ebe4d74062c00b33945851c836636a6344",
+        "sha256": "058060f7a34f2b0f963bd2a63fbf8f8108861f1be305f76c2164f8a85ab88978",
+        "width": 640,
+        "height": 640,
+        "bytes": 175604,
+        "transparentFraction": 0.326904296875,
+        "softAlphaPixels": 7214
+      }
+    },
+    {
+      "id": "mimic",
+      "name": "Mímico",
+      "sourceId": "monster-mimic",
+      "bodyUrl": "/vtt/monsters/bonus-test-20261019/mimic-body.webp",
+      "tokenUrl": "/vtt/monsters/bonus-test-20261019/mimic-token.webp",
+      "prompt": "Use case: stylized-concept. ONE original fantasy bestiary creature display cutout. Premium dramatic realistic 3D miniature illustration, detailed hand-painted textures, believable anatomy and physical material shading, strong sculptural volume, softly directional warm upper-left key light, cool subtle fill and deep ambient occlusion. Full body, entire silhouette visible with 7% safe transparent padding, centered square canvas. Monster isolated on TRUE TRANSPARENT background with a soft semitransparent natural contact shadow immediately below its feet; no opaque floor plane, no scenery, no pedestal, no card frame, no token rim, no text or symbols. Inspired only by the supplied spider card's dimensional creature that projects toward the viewer; do not copy the card design, typography, spider or its exact pose. Camera slightly above subject, three-quarter front view with dynamic foreshortening. Beautiful highly readable anatomy at small game-token size.\nSubject: A living mimic disguised as a battered medieval oak treasure chest with black iron bands. Chest lid open into a broad monstrous maw lined with irregular ivory teeth, a single long curling purple tongue reaching forward, two fleshy pseudopod arms gripping the ground. Clearly one chest monster, detailed oak grain and aged iron.",
+      "body": {
+        "id": "mimic",
+        "kind": "body",
+        "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-fbd5b38c-21ef-4f78-9446-ed93644de6a5.png",
+        "reference": "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-8e4e98a3-fa51-4f19-973f-d30751e16f79.png",
+        "prompt": "Use case: stylized-concept. ONE original fantasy bestiary creature display cutout. Premium dramatic realistic 3D miniature illustration, detailed hand-painted textures, believable anatomy and physical material shading, strong sculptural volume, softly directional warm upper-left key light, cool subtle fill and deep ambient occlusion. Full body, entire silhouette visible with 7% safe transparent padding, centered square canvas. Monster isolated on TRUE TRANSPARENT background with a soft semitransparent natural contact shadow immediately below its feet; no opaque floor plane, no scenery, no pedestal, no card frame, no token rim, no text or symbols. Inspired only by the supplied spider card's dimensional creature that projects toward the viewer; do not copy the card design, typography, spider or its exact pose. Camera slightly above subject, three-quarter front view with dynamic foreshortening. Beautiful highly readable anatomy at small game-token size.\nSubject: A living mimic disguised as a battered medieval oak treasure chest with black iron bands. Chest lid open into a broad monstrous maw lined with irregular ivory teeth, a single long curling purple tongue reaching forward, two fleshy pseudopod arms gripping the ground. Clearly one chest monster, detailed oak grain and aged iron.",
+        "sourceSha256": "069e1eca1746e4dba811a956c11238de30064df7a2b6a36727eab8ea1ad605e2",
+        "sha256": "cacd831a1b2fb6c6659794577c048fbb67abc7f77fd61b88b497a77bbbaa64c1",
+        "width": 900,
+        "height": 900,
+        "bytes": 342472,
+        "transparentFraction": 0.4180074074074074,
+        "softAlphaPixels": 95229
+      },
+      "token": {
+        "id": "mimic",
+        "kind": "token",
+        "nativePath": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-b4c895fd-8f1a-4839-87b4-dab1373eda12.png",
+        "prompt": "Use case: compositing. Use the provided creature cutout as the LOCKED identity reference. Create a premium fantasy VTT POP-OUT TOKEN of this EXACT same Mímico: same face, colors, anatomy, gear and sculptural 3D rendering. Add a clean upright HEXAGONAL dark bronze frame with double thin engraved gold edges and a subtly dark desaturated parchment interior. The creature's body sits partly INSIDE the hexagon, but its head, nearest claws/arms or front legs project prominently IN FRONT OF and BEYOND the frame. Clear three-dimensional overlap: rear frame behind the monster, selected bottom/front frame segments pass IN FRONT OF lower rear body; closest limb and face are fully above the frame. Frame occupies roughly middle70% of square; creature pop-out reaches to outer7% safe margins, whole shape fully visible. Preserve coherent original creature proportions and every limb, no extra legs or hands. Soft transparent contact/drop shadow falling from creature onto frame. TRUE TRANSPARENT background outside the hexagonal token and projecting creature. No opaque square, no scene, no floor, no labels, no numbers, no typography, no watermark. Readable as one compact token at80px. Original art, not a copy of another artist's card.",
+        "reference": "C:\\Users\\limaw\\.codex\\generated_images\\01a14f9a-926e-7310-9980-9fd2bfb2ff93\\exec-fbd5b38c-21ef-4f78-9446-ed93644de6a5.png",
+        "sourceSha256": "98e8f1d109e8af8345c10c961a7dcd1d6361209c1c5dc5a3e22059dd5774b474",
+        "sha256": "395c6240a5dc93582287ea753d94637ee6bee2f31ca096e410a043b6397f45c9",
+        "width": 640,
+        "height": 640,
+        "bytes": 189500,
+        "transparentFraction": 0.3212841796875,
+        "softAlphaPixels": 7626
+      }
+    }
+  ],
+  "ready": true
+}

@@ -3,6 +3,7 @@ import {convertSceneryToToken} from '../shared/vtt-scenery-token.js';
 import express from 'express';
 import { randomInt, randomUUID, randomBytes } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
+import { appendMonsterTestCards } from '../shared/vtt-monster-test-cards.js';
 import sharp from 'sharp';
 import { z } from 'zod';
 import { atmosphereSchema } from '../shared/vtt-atmosphere.js';
@@ -645,6 +646,7 @@ export function vttRouter() {
         available.has(m.id) ? { ...m, image: '/api/vtt/premium-art/' + m.id } : m,
       );
     }
+    catalog.monsters = appendMonsterTestCards(catalog.monsters);
     res.json(catalog);
   });
   router.get('/vtt/rooms/:id', async (req, res) =>

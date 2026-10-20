@@ -1,0 +1,18 @@
+{
+  "expected": 250,
+  "available": 250,
+  "reviewed": 327,
+  "categories": {
+    "Casa": 25,
+    "Objetos": 25,
+    "Construções": 25,
+    "Floresta": 25,
+    "Masmorra": 25,
+    "Acampamento": 25,
+    "Taverna": 25,
+    "Cidade": 25,
+    "Natureza": 25,
+    "Templo": 25
+  },
+  "errors": []
+}

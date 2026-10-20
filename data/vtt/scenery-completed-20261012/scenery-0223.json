@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0223",
+  "name": "Arbusto — bosque úmido",
+  "category": "Floresta",
+  "width": 2.95,
+  "height": 3,
+  "image": "/vtt/scenery-assets-20261012/scenery-0223.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: dense leafy shrub; wet forest form with rich moss and dew. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-2f697c1b-e490-4d32-b284-fa64ae4b4427.png",
+  "sha256": "0e8f7e8d40ff348c6001abb7f55828a3764d4ceb8a9ffc0ddcd611b45ee372e8",
+  "pixelWidth": 756,
+  "pixelHeight": 768
+}

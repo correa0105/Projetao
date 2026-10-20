@@ -1,0 +1,22 @@
+[
+  {
+    "id": "scenery-0057",
+    "name": "Tapete — peça antiga",
+    "sha256": "71ffc8a538736cab2530861f697c56e8b4eac3841a52a240f8e71dfd0b555634"
+  },
+  {
+    "id": "scenery-0128",
+    "name": "Mochila — alquimista",
+    "sha256": "6cc7f197081f17417f275b9433d5d15a8c63788ced1526b0701570f2e62b4ebe"
+  },
+  {
+    "id": "scenery-0228",
+    "name": "Arbusto — bosque encantado",
+    "sha256": "29ce2fa6bfd0a9a3761bf63dd1c17191bf62fe626907be45c86e55770b6bf88d"
+  },
+  {
+    "id": "scenery-0328",
+    "name": "Grades — covil",
+    "sha256": "b3ac1836327c0063625240aedb4a95e56a6b0c8ef8d3073067ab02ee793109e9"
+  }
+]

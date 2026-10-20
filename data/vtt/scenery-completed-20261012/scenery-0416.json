@@ -1,0 +1,13 @@
+{
+  "id": "scenery-0416",
+  "name": "Cabana — costa",
+  "category": "Construções",
+  "width": 3.74,
+  "height": 4,
+  "image": "/vtt/scenery-assets-20261012/scenery-0416.webp",
+  "prompt": "Use case: stylized-concept. Asset type: individual original premium virtual tabletop scenery sprite. Subject: wooden cabin roof; coastal structure with salt-worn stone and timber. Create a physically distinct construction and silhouette, not just a recolor. Strict orthographic TOP DOWN camera at 90 degrees; only upper surfaces visible; no side or isometric view. Highly detailed realistic hand-painted fantasy cartography with fine dark contours, material grain, subtle ambient occlusion, compact contact shadow. Single isolated complete prop or coherent cluster, centered with 8% transparent margin. Earthy natural color palette. No scenery, ground tile, border, text, labels or watermark. Genuine transparent alpha background. Output square 1024x1024. Camera points vertically down parallel to gravity, the object sits on a horizontal plane. All vertical sides completely hidden by their top surfaces. No elevated viewpoint, no front facade, no upright surface visible. Chair backs are only their thin upper horizontal edges, no visible tall vertical slats or backrest front panels. Building sprites show roof only unless explicitly a roofless ruin. Furniture has no visible legs below its tabletop or seat. Keep every asset in a true overhead floorplan projection.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-cccf181b-b273-4b94-9559-af0c5fe0d31b.png",
+  "sha256": "badc18d2b95970997d6261f3d29ae39fe025b656baa4bfc70e19467099df0c5f",
+  "pixelWidth": 719,
+  "pixelHeight": 768
+}

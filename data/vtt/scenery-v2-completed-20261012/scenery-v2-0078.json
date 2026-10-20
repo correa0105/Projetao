@@ -1,0 +1,14 @@
+{
+  "id": "scenery-v2-0078",
+  "name": "Cadeira de ferro",
+  "category": "Masmorra",
+  "width": 0.9766,
+  "height": 1,
+  "prompt": "Create ONE original premium fantasy virtual tabletop map asset: Cadeira de ferro. Category context: Masmorra. This is ONE individual usable object, plant, tree, rock or coherent building, NEVER a group, pile, furnished scene, room, bundle or collection of props. For a book produce ONE book; for a bench ONE bench; for a tree ONE tree. Strict orthographic overhead plan view: the camera points vertically down at 90 degrees, parallel to gravity. No perspective, no isometric view, no front elevation. Vertical sides are hidden; furniture legs are hidden, chair backs appear only as narrow top edges; buildings show roof only. Rich highly detailed realistic hand-painted fantasy cartography, fine precise dark contours, tactile wood grain, worn stone, fibers, believable material variation, carefully painted highlights and restrained contact shadow. Natural earthy palette, clean distinct silhouette and premium artisan finish inspired by professional top-down map libraries. No ground, surrounding scenery, extra props, frame, labels, lettering or watermark. The entire object fits inside a square 1024x1024 image with transparent margin on every side. Genuine transparent alpha background. Exact overhead geometry: ONE iron chair, square flat metal seat seen vertically from above. Its upright back is visible ONLY as a thin upper rail against the far seat edge. Hide the broad back panel, vertical slats and all legs. No front elevation or isometric view. Only upper horizontal surfaces.",
+  "repaired": true,
+  "image": "/vtt/scenery-v2-20261012/scenery-v2-0078.webp",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-b860b09d-51c4-489f-99a3-c19a1af5f6f2.png",
+  "sha256": "f82e97b478f07a27abcfc2678711000a805ff2010d0520d91385e3cc51e05b42",
+  "pixelWidth": 750,
+  "pixelHeight": 768
+}

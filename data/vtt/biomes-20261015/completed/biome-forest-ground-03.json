@@ -1,0 +1,30 @@
+{
+  "id": "biome-forest-ground-03",
+  "name": "Conjunto de gravetos",
+  "biome": "forest",
+  "type": "ground",
+  "sizeMetres": 0.65,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: ONE compact, messy, heavily overlapping pile of nine pencil-thin woodland twigs, each only 0.5–1.5 cm in diameter and 20–45 cm long, with a few tiny bark crumbs. Every twig touches or crosses another. One irregular untidy clustered silhouette with organic gaps. Total pile largest extent 1.1 m. No large logs, no thick branch, no separate arranged specimens, no tidy rows, no layout sheet.",
+  "status": "reviewed",
+  "calibration": "Após inspeção, o monte foi calibrado para 0,65 m de extensão, preservando gravetos pequenos em relação ao token humano.",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-forest-ground-03.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-03-thumb.webp",
+      "pixelWidth": 711,
+      "pixelHeight": 768,
+      "sha256": "8736f75c1d3be08712fef8043938534ae976b6d0f1c25d0d03be27fe2338b1c8",
+      "sourceBasename": "exec-38e6bd68-b983-4da7-a7b4-ce2f8a674f6f.png",
+      "generator": "built-in image_gen",
+      "width": 0.4012,
+      "height": 0.4333,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

@@ -5,6 +5,7 @@ import { FlashMessage } from './FlashMessage';
 import { PageHeader } from './PageHeader';
 import { ProfileMenu } from './ProfileMenu';
 import { NoticeBoard } from './NoticeBoard';
+import { lazyPage } from './lazy-page';
 import {
   lazy,
   Suspense,
@@ -63,7 +64,7 @@ import type { AtlasLocation, Character, Details, Entry, Item, Page, Post, User }
 const WorldAtlas = lazy(() =>
   import('./WorldAtlas').then((module) => ({ default: module.WorldAtlas })),
 );
-const Rulebook = lazy(() => import('./Rulebook').then((module) => ({ default: module.Rulebook })));
+const Rulebook = lazyPage(() => import('./Rulebook').then((module) => ({ default: module.Rulebook })), 'Rulebook');
 const Vtt = lazy(() => import('./Vtt').then((module) => ({ default: module.Vtt })));
 const Tower = lazy(() => import('./Tower').then((module) => ({ default: module.Tower })));
 const GuildPage = lazy(() => import('./Guilds').then((module) => ({ default: module.Guilds })));

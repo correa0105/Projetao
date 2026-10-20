@@ -1,0 +1,29 @@
+{
+  "id": "biome-forest-ground-12",
+  "name": "Cogumelos castanhos",
+  "biome": "forest",
+  "type": "ground",
+  "sizeMetres": 0.55,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: a cluster of uneven chestnut brown woodland mushrooms, some cracked caps. Entire silhouette safely inside the canvas. The largest physical extent is 0.55 metres. This is one distinct asset, not a sheet or multiple variations.",
+  "status": "reviewed",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-forest-ground-12.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-forest-ground-12-thumb.webp",
+      "pixelWidth": 768,
+      "pixelHeight": 732,
+      "sha256": "9251226aa7c7b5c408fc6e42d3ec608b373dae8306b162bdf4da1a212d3d0f8b",
+      "sourceBasename": "exec-c4392e91-7933-4f4c-b9ec-be8a21e7f6c7.png",
+      "generator": "built-in image_gen",
+      "width": 0.3667,
+      "height": 0.3495,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

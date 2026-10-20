@@ -1,0 +1,29 @@
+{
+  "id": "biome-swamp-ground-25",
+  "name": "Folhagem aquática rasteira",
+  "biome": "swamp",
+  "type": "ground",
+  "sizeMetres": 1.7,
+  "prompt": "Use case: stylized-concept. Asset type: one premium tabletop battlemap cutout for Alvorada Cinzenta. Camera: absolutely orthographic 90 degree straight down, all upper surfaces, no horizon, no isometric or side perspective. Hand-painted realistic medieval fantasy cartography with extremely detailed natural materials, subtle restrained colors, crisp organic edges, soft neutral overhead illumination and only very tight contact shadow. Square 1024 x 1024 composition, centered object occupying 80–88 percent of the frame. True transparent alpha outside the object, including natural gaps within foliage. No terrain rectangle, no display plinth, no scenery background, no characters, no grid, no text, no labels, no border, no watermark. Human size reference only (do not draw): one standard player occupies a 1.5 metre square; believable true physical proportions. Subject: one spreading colony of small round wet marsh leaves on delicate runners. Entire silhouette safely inside the canvas. The largest physical extent is 1.7 metres. This is one distinct asset, not a sheet or multiple variations. Final camera constraint: a strict flat plan view from a camera exactly at the zenith (90 degrees to the ground). No visible front or side elevation. For foliage show the crown from directly above, not a side-facing plant illustration; mushroom stalks are entirely hidden beneath their caps.",
+  "status": "reviewed",
+  "outputs": {
+    "main": {
+      "image": "/vtt/biomes-20261015/biome-swamp-ground-25.webp",
+      "thumbnail": "/vtt/biomes-20261015/biome-swamp-ground-25-thumb.webp",
+      "pixelWidth": 768,
+      "pixelHeight": 758,
+      "sha256": "1c959185b971508a9b1fb54b0f9a00c73c2c8de08c6a5353aeaf7124f02c5504",
+      "sourceBasename": "exec-3266b98e-14ce-4e38-b537-d718db262032.png",
+      "generator": "built-in image_gen",
+      "width": 1.1333,
+      "height": 1.1186,
+      "hasAlpha": true
+    }
+  },
+  "review": {
+    "perspective": "overhead",
+    "alpha": true,
+    "subject": true,
+    "scaleChecked": true
+  }
+}

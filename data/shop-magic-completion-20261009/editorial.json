@@ -33098,5 +33098,746 @@
     "review": "approved",
     "project_price_cp": 4000100,
     "price_basis": "Estimativa do Empório por equivalência com arma +3; raridade não informada no Monster Manual."
+  },
+  "drow-1-breastplate": {
+    "name": "Armadura drow (Peitoral +1)",
+    "description": "Forma: Peitoral. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Peitoral drow +1: o encanto melhora a defesa enquanto você veste o conjunto. Uma hora de sol pode apagar esse bônus para sempre.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1 enquanto vestida. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 440000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-chain-mail": {
+    "name": "Armadura drow (Cota de malha +1)",
+    "description": "Forma: Cota de malha. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Cota de malha drow +1: não exige sintonia, mas exige cuidado na superfície. A luz solar pode remover permanentemente o encantamento.",
+    "rules_summary": "Armadura pesada. CA base 16, acrescida do bônus mágico +1 enquanto vestida. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 407500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-chain-shirt": {
+    "name": "Armadura drow (Camisão de malha +1)",
+    "description": "Forma: Camisão de malha. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Camisão de malha drow +1: confira o acabamento da peça inteira junto ao baú. A compra entrega as seis proteções do conjunto, com seu peso total.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1 enquanto vestida. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 405000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-half-plate-armor": {
+    "name": "Armadura drow (Meia armadura de placas +1)",
+    "description": "Forma: Meia armadura de placas. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Meia armadura de placas drow +1: o bônus soma à CA do modelo. Não elimina o peso nem a limitação de Furtividade da construção física.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 475000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-hide-armor": {
+    "name": "Armadura drow (Armadura de peles +1)",
+    "description": "Forma: Armadura de peles. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de peles drow +1: a fonte não define a raridade. Este valor é uma avaliação do Empório, e o risco do sol está nos detalhes.",
+    "rules_summary": "Armadura média. CA base 12 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1 enquanto vestida. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 401000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-leather-armor": {
+    "name": "Armadura drow (Armadura de couro +1)",
+    "description": "Forma: Armadura de couro. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de couro drow +1: o encanto melhora a defesa enquanto você veste o conjunto. Uma hora de sol pode apagar esse bônus para sempre.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +1 enquanto vestida. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 401000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-padded-armor": {
+    "name": "Armadura drow (Armadura acolchoada +1)",
+    "description": "Forma: Armadura acolchoada. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura acolchoada drow +1: não exige sintonia, mas exige cuidado na superfície. A luz solar pode remover permanentemente o encantamento.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +1 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Drow Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 400500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-plate-armor": {
+    "name": "Armadura drow (Armadura de placas +1)",
+    "description": "Forma: Armadura de placas. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de placas drow +1: confira o acabamento da peça inteira junto ao baú. A compra entrega as seis proteções do conjunto, com seu peso total.",
+    "rules_summary": "Armadura pesada. CA base 18, acrescida do bônus mágico +1 enquanto vestida. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 550000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-ring-mail": {
+    "name": "Armadura drow (Cota de anéis +1)",
+    "description": "Forma: Cota de anéis. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Cota de anéis drow +1: o bônus soma à CA do modelo. Não elimina o peso nem a limitação de Furtividade da construção física.",
+    "rules_summary": "Armadura pesada. CA base 14, acrescida do bônus mágico +1 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 403000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-scale-mail": {
+    "name": "Armadura drow (Cota de escamas +1)",
+    "description": "Forma: Cota de escamas. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Cota de escamas drow +1: a fonte não define a raridade. Este valor é uma avaliação do Empório, e o risco do sol está nos detalhes.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 405000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-spiked-armor": {
+    "name": "Armadura drow (Armadura de espinhos +1)",
+    "description": "Forma: Armadura de espinhos. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de espinhos drow +1: o encanto melhora a defesa enquanto você veste o conjunto. Uma hora de sol pode apagar esse bônus para sempre.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2014",
+    "project_price_cp": 407500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-splint-armor": {
+    "name": "Armadura drow (Armadura de talas +1)",
+    "description": "Forma: Armadura de talas. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de talas drow +1: não exige sintonia, mas exige cuidado na superfície. A luz solar pode remover permanentemente o encantamento.",
+    "rules_summary": "Armadura pesada. CA base 17, acrescida do bônus mágico +1 enquanto vestida. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 420000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-1-studded-leather-armor": {
+    "name": "Armadura drow (Couro batido +1)",
+    "description": "Forma: Couro batido. +1 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Couro batido drow +1: confira o acabamento da peça inteira junto ao baú. A compra entrega as seis proteções do conjunto, com seu peso total.",
+    "rules_summary": "Armadura leve. CA base 12 + modificador de Destreza, acrescida do bônus mágico +1 enquanto vestida. Encanto drow: +1 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +1, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 404500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +1; raridade não informada no Monster Manual."
+  },
+  "drow-2-breastplate": {
+    "name": "Armadura drow (Peitoral +2)",
+    "description": "Forma: Peitoral. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Peitoral drow +2: o encanto melhora a defesa enquanto você veste o conjunto. Uma hora de sol pode apagar esse bônus para sempre.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +2 enquanto vestida. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4040000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-chain-mail": {
+    "name": "Armadura drow (Cota de malha +2)",
+    "description": "Forma: Cota de malha. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Cota de malha drow +2: não exige sintonia, mas exige cuidado na superfície. A luz solar pode remover permanentemente o encantamento.",
+    "rules_summary": "Armadura pesada. CA base 16, acrescida do bônus mágico +2 enquanto vestida. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4007500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-chain-shirt": {
+    "name": "Armadura drow (Camisão de malha +2)",
+    "description": "Forma: Camisão de malha. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Camisão de malha drow +2: confira o acabamento da peça inteira junto ao baú. A compra entrega as seis proteções do conjunto, com seu peso total.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +2 enquanto vestida. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4005000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-half-plate-armor": {
+    "name": "Armadura drow (Meia armadura de placas +2)",
+    "description": "Forma: Meia armadura de placas. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Meia armadura de placas drow +2: o bônus soma à CA do modelo. Não elimina o peso nem a limitação de Furtividade da construção física.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +2 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4075000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-hide-armor": {
+    "name": "Armadura drow (Armadura de peles +2)",
+    "description": "Forma: Armadura de peles. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de peles drow +2: a fonte não define a raridade. Este valor é uma avaliação do Empório, e o risco do sol está nos detalhes.",
+    "rules_summary": "Armadura média. CA base 12 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +2 enquanto vestida. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4001000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-leather-armor": {
+    "name": "Armadura drow (Armadura de couro +2)",
+    "description": "Forma: Armadura de couro. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de couro drow +2: o encanto melhora a defesa enquanto você veste o conjunto. Uma hora de sol pode apagar esse bônus para sempre.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +2 enquanto vestida. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4001000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-padded-armor": {
+    "name": "Armadura drow (Armadura acolchoada +2)",
+    "description": "Forma: Armadura acolchoada. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura acolchoada drow +2: não exige sintonia, mas exige cuidado na superfície. A luz solar pode remover permanentemente o encantamento.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +2 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Drow Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4000500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-plate-armor": {
+    "name": "Armadura drow (Armadura de placas +2)",
+    "description": "Forma: Armadura de placas. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de placas drow +2: confira o acabamento da peça inteira junto ao baú. A compra entrega as seis proteções do conjunto, com seu peso total.",
+    "rules_summary": "Armadura pesada. CA base 18, acrescida do bônus mágico +2 enquanto vestida. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4150000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-ring-mail": {
+    "name": "Armadura drow (Cota de anéis +2)",
+    "description": "Forma: Cota de anéis. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Cota de anéis drow +2: o bônus soma à CA do modelo. Não elimina o peso nem a limitação de Furtividade da construção física.",
+    "rules_summary": "Armadura pesada. CA base 14, acrescida do bônus mágico +2 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4003000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-scale-mail": {
+    "name": "Armadura drow (Cota de escamas +2)",
+    "description": "Forma: Cota de escamas. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Cota de escamas drow +2: a fonte não define a raridade. Este valor é uma avaliação do Empório, e o risco do sol está nos detalhes.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +2 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4005000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-spiked-armor": {
+    "name": "Armadura drow (Armadura de espinhos +2)",
+    "description": "Forma: Armadura de espinhos. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de espinhos drow +2: o encanto melhora a defesa enquanto você veste o conjunto. Uma hora de sol pode apagar esse bônus para sempre.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +2 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2014",
+    "project_price_cp": 4007500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-splint-armor": {
+    "name": "Armadura drow (Armadura de talas +2)",
+    "description": "Forma: Armadura de talas. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de talas drow +2: não exige sintonia, mas exige cuidado na superfície. A luz solar pode remover permanentemente o encantamento.",
+    "rules_summary": "Armadura pesada. CA base 17, acrescida do bônus mágico +2 enquanto vestida. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4020000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-2-studded-leather-armor": {
+    "name": "Armadura drow (Couro batido +2)",
+    "description": "Forma: Couro batido. +2 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Couro batido drow +2: confira o acabamento da peça inteira junto ao baú. A compra entrega as seis proteções do conjunto, com seu peso total.",
+    "rules_summary": "Armadura leve. CA base 12 + modificador de Destreza, acrescida do bônus mágico +2 enquanto vestida. Encanto drow: +2 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +2, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 4004500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +2; raridade não informada no Monster Manual."
+  },
+  "drow-3-breastplate": {
+    "name": "Armadura drow (Peitoral +3)",
+    "description": "Forma: Peitoral. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Peitoral drow +3: o encanto melhora a defesa enquanto você veste o conjunto. Uma hora de sol pode apagar esse bônus para sempre.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +3 enquanto vestida. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20040000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-chain-mail": {
+    "name": "Armadura drow (Cota de malha +3)",
+    "description": "Forma: Cota de malha. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Cota de malha drow +3: não exige sintonia, mas exige cuidado na superfície. A luz solar pode remover permanentemente o encantamento.",
+    "rules_summary": "Armadura pesada. CA base 16, acrescida do bônus mágico +3 enquanto vestida. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20007500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-chain-shirt": {
+    "name": "Armadura drow (Camisão de malha +3)",
+    "description": "Forma: Camisão de malha. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Camisão de malha drow +3: confira o acabamento da peça inteira junto ao baú. A compra entrega as seis proteções do conjunto, com seu peso total.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +3 enquanto vestida. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20005000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-half-plate-armor": {
+    "name": "Armadura drow (Meia armadura de placas +3)",
+    "description": "Forma: Meia armadura de placas. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Meia armadura de placas drow +3: o bônus soma à CA do modelo. Não elimina o peso nem a limitação de Furtividade da construção física.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +3 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20075000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-hide-armor": {
+    "name": "Armadura drow (Armadura de peles +3)",
+    "description": "Forma: Armadura de peles. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de peles drow +3: a fonte não define a raridade. Este valor é uma avaliação do Empório, e o risco do sol está nos detalhes.",
+    "rules_summary": "Armadura média. CA base 12 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +3 enquanto vestida. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20001000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-leather-armor": {
+    "name": "Armadura drow (Armadura de couro +3)",
+    "description": "Forma: Armadura de couro. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de couro drow +3: o encanto melhora a defesa enquanto você veste o conjunto. Uma hora de sol pode apagar esse bônus para sempre.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +3 enquanto vestida. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20001000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-padded-armor": {
+    "name": "Armadura drow (Armadura acolchoada +3)",
+    "description": "Forma: Armadura acolchoada. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura acolchoada drow +3: não exige sintonia, mas exige cuidado na superfície. A luz solar pode remover permanentemente o encantamento.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +3 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Drow Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20000500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-plate-armor": {
+    "name": "Armadura drow (Armadura de placas +3)",
+    "description": "Forma: Armadura de placas. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de placas drow +3: confira o acabamento da peça inteira junto ao baú. A compra entrega as seis proteções do conjunto, com seu peso total.",
+    "rules_summary": "Armadura pesada. CA base 18, acrescida do bônus mágico +3 enquanto vestida. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20150000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-ring-mail": {
+    "name": "Armadura drow (Cota de anéis +3)",
+    "description": "Forma: Cota de anéis. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Cota de anéis drow +3: o bônus soma à CA do modelo. Não elimina o peso nem a limitação de Furtividade da construção física.",
+    "rules_summary": "Armadura pesada. CA base 14, acrescida do bônus mágico +3 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20003000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-scale-mail": {
+    "name": "Armadura drow (Cota de escamas +3)",
+    "description": "Forma: Cota de escamas. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Cota de escamas drow +3: a fonte não define a raridade. Este valor é uma avaliação do Empório, e o risco do sol está nos detalhes.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +3 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20005000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-spiked-armor": {
+    "name": "Armadura drow (Armadura de espinhos +3)",
+    "description": "Forma: Armadura de espinhos. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de espinhos drow +3: o encanto melhora a defesa enquanto você veste o conjunto. Uma hora de sol pode apagar esse bônus para sempre.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +3 enquanto vestida. Impõe desvantagem em Furtividade. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2014",
+    "project_price_cp": 20007500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-splint-armor": {
+    "name": "Armadura drow (Armadura de talas +3)",
+    "description": "Forma: Armadura de talas. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Armadura de talas drow +3: não exige sintonia, mas exige cuidado na superfície. A luz solar pode remover permanentemente o encantamento.",
+    "rules_summary": "Armadura pesada. CA base 17, acrescida do bônus mágico +3 enquanto vestida. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Drow Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20020000,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
+  },
+  "drow-3-studded-leather-armor": {
+    "name": "Armadura drow (Couro batido +3)",
+    "description": "Forma: Couro batido. +3 à CA enquanto vestida. Uma hora de sol remove permanentemente o bônus. Sem sintonia; raridade não informada. Valor estimado pelo Empório.",
+    "merchant_comment": "Couro batido drow +3: confira o acabamento da peça inteira junto ao baú. A compra entrega as seis proteções do conjunto, com seu peso total.",
+    "rules_summary": "Armadura leve. CA base 12 + modificador de Destreza, acrescida do bônus mágico +3 enquanto vestida. Encanto drow: +3 à CA enquanto você veste esta armadura. Se exposta à luz do sol durante uma hora ou mais, perde permanentemente esse bônus de encantamento. Não exige sintonia. A fonte não informa uma raridade. O preço do Empório é uma estimativa por equivalência com armadura +3, acrescida do modelo físico, e pode ser ajustado pelo administrador; não é um preço oficial do livro. Monster Manual (2014), p. 126. As propriedades físicas seguem o modelo escolhido; perda por luz solar é resolvida pelo mestre. A compra entrega um conjunto de seis peças, com peso total igual ao do modelo.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Drow Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "Encanto: D&D 5e (2014); modelo: 2024",
+    "project_price_cp": 20004500,
+    "price_basis": "Estimativa do Empório por equivalência com armadura +3; raridade não informada no Monster Manual."
   }
 }

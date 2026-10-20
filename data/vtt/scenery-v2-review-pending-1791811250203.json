@@ -1,0 +1,52 @@
+[
+  {
+    "id": "scenery-v2-0006",
+    "name": "Cama de solteiro com colcha",
+    "sha256": "0b02bcf8a5d63c84ea6c2916a57d10624b577f4f241f876d11768fc7f99f34fe"
+  },
+  {
+    "id": "scenery-v2-0030",
+    "name": "Banquinho dobrável",
+    "sha256": "3047c74545837364d9250b9518176eef8c8c2ce84db4ff7dc1ead26b88c82c29"
+  },
+  {
+    "id": "scenery-v2-0031",
+    "name": "Mesa dobrável de viagem",
+    "sha256": "dec7cd7dca37715d8bee9c3a41c23b3ccae507f638001e1282802b50169dab72"
+  },
+  {
+    "id": "scenery-v2-0130",
+    "name": "Banqueta alta de taverna",
+    "sha256": "1c55212aa3ff4fef6e9818de96918dc858b1b35b0eb08b91794a1134d2b891ec"
+  },
+  {
+    "id": "scenery-v2-0177",
+    "name": "Pedra oval de rio",
+    "sha256": "4ebbe109a3dd7babd23827d98600238f85c2c4adcfab3a67ce02f6763cd679e4"
+  },
+  {
+    "id": "scenery-v2-0202",
+    "name": "Livro aberto de páginas amareladas",
+    "sha256": "6020e527980bb4e028ecfc0820b976def0e0df5b8928640065c5a591158ffd81"
+  },
+  {
+    "id": "scenery-v2-0205",
+    "name": "Mapa dobrado de papel",
+    "sha256": "d519f89f514d0823aa9f027fad1669383fe3fd66d3720624a753e05588265e26"
+  },
+  {
+    "id": "scenery-v2-0226",
+    "name": "Banco de oração de madeira",
+    "sha256": "4d019541bf73a44578c6b7d70b85b0c11e05e48bca700313e020e12b02fe36f7"
+  },
+  {
+    "id": "scenery-v2-0227",
+    "name": "Genuflexório individual",
+    "sha256": "4a42a3b8a19ce21e379e37c9382eb10a84a7c542fba66d2b373a1cec7187e884"
+  },
+  {
+    "id": "scenery-v2-0230",
+    "name": "Vela ritual individual",
+    "sha256": "20f157b74dcdabf61bdeb88e71b16effc34f00f15f649618b3677df4a75947dc"
+  }
+]

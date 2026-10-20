@@ -76,6 +76,7 @@ export const tokenSchema = z
     id,
     name: z.string().trim().min(1).max(100),
     image: media.default(''),
+    artVariant: z.number().int().min(0).max(3).optional(),
     x: coordinate,
     y: coordinate,
     width: z.number().min(8).max(8000),

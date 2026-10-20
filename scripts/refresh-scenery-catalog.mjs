@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+const dir='data/vtt/scenery-v2-completed-20261012';
+const reviews=JSON.parse(fs.readFileSync('data/vtt/scenery-v2-reviewed-20261012.json'));
+const pending=JSON.parse(fs.readFileSync('data/vtt/scenery-v2-pending-repairs-20261012.json'));
+const rows=fs.existsSync(dir)?fs.readdirSync(dir).filter(f=>f.endsWith('.json')).map(f=>JSON.parse(fs.readFileSync(dir+'/'+f))):[];
+const catalog=rows.sort((a,b)=>a.id.localeCompare(b.id)).filter(a=>!pending.includes(a.id)&&reviews.some(r=>r.id===a.id&&r.sha256===crypto.createHash('sha256').update(fs.readFileSync('public'+a.image)).digest('hex'))).map(({id,name,category,width,height,image})=>({id,name,category,width,height,image}));
+fs.mkdirSync('public/vtt/scenery-v2-20261012',{recursive:true});
+fs.writeFileSync('shared/vtt-scenery-catalog.json',JSON.stringify(catalog,null,2)+'\n');
+fs.writeFileSync('public/vtt/scenery-v2-20261012/catalog.json',JSON.stringify(catalog)+'\n');
+console.log(JSON.stringify({available:catalog.length,categories:Object.fromEntries([...new Set(catalog.map(a=>a.category))].map(c=>[c,catalog.filter(a=>a.category===c).length]))}));

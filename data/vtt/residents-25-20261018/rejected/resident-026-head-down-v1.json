@@ -1,0 +1,19 @@
+{
+  "id": "resident-026",
+  "name": "Abrão · Sapateiro",
+  "species": "humano",
+  "bodyScale": 1,
+  "reference": "public/vtt/overhead-20261015/resident-001.webp",
+  "image": "/vtt/residents-25-20261018/resident-026.webp",
+  "thumbnail": "/vtt/residents-25-thumbs-20261018/resident-026.webp",
+  "prompt": "Use case: stylized-concept. Create ONE new medieval fantasy villager token, one character only, for an overhead VTT battlemap. Use the attached reference ONLY for the finely painted realistic art quality, anatomical foreshortening and exact camera angle; invent the new character described below. Camera exactly vertically above at 90 degrees, orthographic bird's-eye view: top of head/hair/hat, shoulders, forearms and hands dominate; face points toward the bottom of the canvas and is naturally hidden by the crown, never front-facing or isometric. The complete compact human-shaped silhouette stays inside the canvas; naturally foreshortened lower body, small glimpses of boots below the hem. Exactly two anatomically correct arms and two hands, believable grips and separate fingers, natural relaxed standing working pose. Rich crisp hand-painted cloth grain, worn leather, subtle metal, restrained warm natural colors, soft neutral light. The character faces the bottom of the image, centered at consistent scale. Genuine transparent alpha background with generous clear margin, no floor, terrain, backdrop, cast shadow, pedestal, token ring, border, grid, labels, lettering or watermark. A single square canvas. Character: older male cobbler, dark brown skin, balding gray crown, ochre shirt and brown leather apron, holding one leather shoe and a small awl close in front.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a149b7-d8b5-7cc2-970a-5e6b6ac684ae\\exec-363ef6c9-18d4-4f8b-866a-ba3c70367a75.png",
+  "localSource": ".local/residents-25-sources-20261018/resident-026.png",
+  "generator": "built-in image_gen",
+  "generatedAt": "2026-10-18T12:57:39.885Z",
+  "sourceSha256": "53a752d9215395430d5a9926f4b0a7e314fdbd1b793bb2bb27546199490b14a4",
+  "sha256": "c3fac69e3405b49e090cf59c86aca1fc29f13680214d0a0b1ce14cefb4b5b4ac",
+  "width": 768,
+  "height": 768,
+  "alpha": true
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "scenery-0031",
+    "name": "Armário — peça rústica",
+    "sha256": "48be13bc0675ca0f4d0de18d6ac857820ca27fe1556f4eb542d84c0f42e71915"
+  },
+  {
+    "id": "scenery-0032",
+    "name": "Armário — peça nobre",
+    "sha256": "b43ae452e238f0dbffc166f47d59392711188d898d54137f9dd3a94d2e8e2b52"
+  },
+  {
+    "id": "scenery-0033",
+    "name": "Armário — peça de cabana",
+    "sha256": "cf836d6b868cb5270fe3fd0ed9d56e91da5894ea5696162ff9e7bc0e649341be"
+  },
+  {
+    "id": "scenery-0034",
+    "name": "Armário — peça danificada",
+    "sha256": "5c52697100a0945b039fe9d7ca44936c7bef33e59e8192e20b9635a22e556cc0"
+  },
+  {
+    "id": "scenery-0035",
+    "name": "Armário — peça de estalagem",
+    "sha256": "bf6b9cad857711a0c4e3ad6bd5c505393bde2ebb98abdd7f1f632f9ff5286679"
+  },
+  {
+    "id": "scenery-0036",
+    "name": "Armário — peça de oficina",
+    "sha256": "4d0bc019b676da691fdb14e0c7a52188536c2dc8dc1fb7d4c3df9975f362153b"
+  },
+  {
+    "id": "scenery-0037",
+    "name": "Armário — peça antiga",
+    "sha256": "8df4ff8317c074fd66eef92c543d42b01caa0757feeb7d43148bce752c17a207"
+  },
+  {
+    "id": "scenery-0038",
+    "name": "Armário — peça ornamentada",
+    "sha256": "8f7a536fd195c1a05b382a01c9baced7c693def01c466f9a746daf50a2fe09c7"
+  },
+  {
+    "id": "scenery-0101",
+    "name": "Barraca — explorador",
+    "sha256": "0bca47948c7fa02754ad38058a5c6b5b1798a2c1a4fd39d4e1232c30eb8e979e"
+  },
+  {
+    "id": "scenery-0102",
+    "name": "Barraca — caçador",
+    "sha256": "d12d9b40e7e7a59b3683666351b2814bfc63a509c65db2f55382eb6b9602f3a1"
+  },
+  {
+    "id": "scenery-0103",
+    "name": "Barraca — mercador",
+    "sha256": "ab6ca6eec6a348c9b8d478f638045775f50485549af8711a09cf7e686207267a"
+  },
+  {
+    "id": "scenery-0104",
+    "name": "Barraca — soldado",
+    "sha256": "0090db917124f14f8059151da3183f85ff9d8f423fa06c52583bf3e37d716123"
+  },
+  {
+    "id": "scenery-0105",
+    "name": "Barraca — peregrino",
+    "sha256": "182b531d02b98c084253a261cda66d062907edfb8f5467d26a50e4bbeb87d179"
+  },
+  {
+    "id": "scenery-0106",
+    "name": "Barraca — lenhador",
+    "sha256": "ca2783f18448a183c56f1ce8e71f4a6991aaa89087b929ba8dc042ac8586ee4e"
+  },
+  {
+    "id": "scenery-0107",
+    "name": "Barraca — nômade",
+    "sha256": "dfd93461f17cda909e09de196641225a784a7784d571ac901e89f11e9cfc3538"
+  },
+  {
+    "id": "scenery-0108",
+    "name": "Barraca — alquimista",
+    "sha256": "6c4c2d44edbd19b94847dbaffd3c5b6ad117873a4540dcdbb6faf28a68988267"
+  },
+  {
+    "id": "scenery-0109",
+    "name": "Barraca — pescador",
+    "sha256": "4620c97cd22abd2e2c541e51df7d6bf635c039fc4d4c3ea27a4214a2c32278c0"
+  },
+  {
+    "id": "scenery-0201",
+    "name": "Carvalho — bosque jovem",
+    "sha256": "0e90f72c9145c6e54aa1d467687dec8212cdaff61c91092c21654cf3188d63e4"
+  }
+]
