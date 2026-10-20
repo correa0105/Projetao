@@ -19,7 +19,6 @@ export function VttAssetImage({ src, fallback, ...props }: Props) {
     : src;
   return (
     <img
-      decoding="async"
       {...props}
       src={source}
       onError={() => {

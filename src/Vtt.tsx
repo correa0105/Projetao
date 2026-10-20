@@ -1019,14 +1019,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }, [doc, dirty, save]);
   useEffect(() => {
     if (!state?.id) return;
-    let pending = false, live = true;
     const id = state.id,
       timer = setInterval(() => {
-        if (!live || pending || document.hidden || dirtyRef.current || savePromise.current || drag.current) return;
-        pending = true;
+        if (document.hidden || dirtyRef.current || savePromise.current || drag.current) return;
         void api<VttState>('/vtt/rooms/' + id)
           .then((next) => {
-            if (live && stateRef.current?.id === id && !dirtyRef.current && !drag.current) {
+            if (stateRef.current?.id === id && !dirtyRef.current && !drag.current) {
               if (
                 next.revision !== stateRef.current.revision ||
                 next.role !== stateRef.current.role ||
@@ -1039,10 +1037,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }
             }
           })
-          .catch(() => {})
-          .finally(() => { pending = false; });
+          .catch(() => {});
       }, 3000);
-    return () => { live = false; clearInterval(timer); };
+    return () => clearInterval(timer);
   }, [state?.id]);
   useEffect(() => {
     if (!state?.id) return;
@@ -1078,12 +1075,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (!scene) return;
     // Load painted materials first so refreshing a large scene restores its ground promptly.
     const used=new Set(scene.terrain.map(t=>t.texture));
-    if (tool === 'terrain-paint') used.add(terrainBrush.texture);
-    const textures=terrainTextures.filter(t=>used.has(t.id));
-    const paths = [...textures.map(t=>t.image), scene.background, ...scene.tokens.map(t=>t.image), ...houseInteriorImages(scene), '/vtt/house-parts-20261014/door-vertical.webp', woodlandFloorImage];
-    mapImages.current?.retain(paths);
-    for (const path of paths) mapImages.current?.load(path);
-  }, [scene, tool, terrainBrush.texture]);
+    const textures=[...terrainTextures].sort((a,b)=>Number(used.has(b.id))-Number(used.has(a.id)));
+    for (const path of [...textures.map(t=>t.image), scene.background, ...scene.tokens.map(t=>t.image), ...houseInteriorImages(scene), '/vtt/house-parts-20261014/door-vertical.webp', woodlandFloorImage])mapImages.current?.load(path);
+  }, [scene]);
   useEffect(() => {
     const c = canvas.current;
     if (!c || !scene) return;
@@ -1183,7 +1177,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
     const restartAnimation = () => {
       cancelAnimationFrame(frame);
-      if (document.hidden || disposed) return;
       draw();
       if (!(houseDoorsAnimating(c,scene.id) || infinite || until > Date.now() || (visualEffects && atmosphereTransitioning(c, scene.id))) || (motionPreference.matches && !scene.tokens.some(t => t.animatedAsset?.playing))) return;
       let lastDraw = 0;
@@ -1201,11 +1194,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       if (!disposed) draw();
     });
     motionPreference.addEventListener('change', restartAnimation);
-    document.addEventListener('visibilitychange', restartAnimation);
     return () => {
       cancelAnimationFrame(frame);
       motionPreference.removeEventListener('change', restartAnimation);
-      document.removeEventListener('visibilitychange', restartAnimation);
       disposed = true;
       timers.forEach(clearTimeout);
     };

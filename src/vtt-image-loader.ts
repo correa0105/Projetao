@@ -22,17 +22,6 @@ export function createVttImageLoader(images:Map<string,HTMLImageElement>,source:
   pending.set(path,{attempt:0});start(path);
  }
  function retry(){for(const [path,task]of pending){task.attempt=0;start(path);}}
- /** Release decoded images and pending retries that no longer belong to the active scene. */
- function retain(paths:Iterable<string>){
-  const keep=new Set(paths);
-  for(const [path,task] of pending){
-   if(keep.has(path))continue;
-   if(task.timer)clearTimeout(task.timer);
-   if(task.image){task.image.onload=null;task.image.onerror=null;task.image=undefined;}
-   pending.delete(path);
-  }
-  for(const path of images.keys())if(!keep.has(path))images.delete(path);
- }
  function dispose(){disposed=true;for(const task of pending.values()){if(task.timer)clearTimeout(task.timer);if(task.image){task.image.onload=null;task.image.onerror=null;}}pending.clear();}
- return{load,retry,retain,dispose};
+ return{load,retry,dispose};
 }

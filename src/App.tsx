@@ -1,7 +1,10 @@
+import { HomeJournal } from './HomeJournal';
 import { AccountPreview } from './AccountPreview';
+import { LoreLibrary } from './LoreLibrary';
 import { FlashMessage } from './FlashMessage';
 import { PageHeader } from './PageHeader';
 import { ProfileMenu } from './ProfileMenu';
+import { NoticeBoard } from './NoticeBoard';
 import { lazyPage } from './lazy-page';
 import {
   lazy,
@@ -45,7 +48,17 @@ import { Navigation } from './Navigation';
 import { CharacterSelector } from './CharacterSelector';
 import { MissionCompletion } from './MissionCompletion';
 import { MissionTags } from './MissionTags';
+import { CharacterSheet } from './CharacterSheet';
 import { Notifications } from './Notifications';
+import { Stable } from './Stable';
+import { PetShop } from './PetShop';
+import { Events } from './Events';
+import { Achievements } from './Achievements';
+import { Cards } from './Cards';
+import { CharacterCards } from './CharacterCards';
+import { Shop } from './Shop';
+import { Inventory } from './Inventory';
+import { CharacterCamp } from './CharacterCamp';
 import { money, modifier, statNames } from '../shared/rules';
 import type { AtlasLocation, Character, Details, Entry, Item, Page, Post, User } from './types';
 const WorldAtlas = lazy(() =>
@@ -61,20 +74,6 @@ const HallOfFame = lazy(() =>
   import('./HallOfFame').then((module) => ({ default: module.HallOfFame })),
 );
 const Profiles = lazy(() => import('./Profiles').then((module) => ({ default: module.Profiles })));
-
-const HomeJournal = lazyPage(() => import('./HomeJournal').then(module => ({ default: module.HomeJournal })), 'HomeJournal');
-const LoreLibrary = lazyPage(() => import('./LoreLibrary').then(module => ({ default: module.LoreLibrary })), 'LoreLibrary');
-const NoticeBoard = lazyPage(() => import('./NoticeBoard').then(module => ({ default: module.NoticeBoard })), 'NoticeBoard');
-const CharacterSheet = lazyPage(() => import('./CharacterSheet').then(module => ({ default: module.CharacterSheet })), 'CharacterSheet');
-const Stable = lazyPage(() => import('./Stable').then(module => ({ default: module.Stable })), 'Stable');
-const PetShop = lazyPage(() => import('./PetShop').then(module => ({ default: module.PetShop })), 'PetShop');
-const Events = lazyPage(() => import('./Events').then(module => ({ default: module.Events })), 'Events');
-const Achievements = lazyPage(() => import('./Achievements').then(module => ({ default: module.Achievements })), 'Achievements');
-const Cards = lazyPage(() => import('./Cards').then(module => ({ default: module.Cards })), 'Cards');
-const CharacterCards = lazyPage(() => import('./CharacterCards').then(module => ({ default: module.CharacterCards })), 'CharacterCards');
-const Shop = lazyPage(() => import('./Shop').then(module => ({ default: module.Shop })), 'Shop');
-const Inventory = lazyPage(() => import('./Inventory').then(module => ({ default: module.Inventory })), 'Inventory');
-const CharacterCamp = lazyPage(() => import('./CharacterCamp').then(module => ({ default: module.CharacterCamp })), 'CharacterCamp');
 
 type Icon = ComponentType<{ size?: number; className?: string }>;
 const titles: Record<Page, string> = {
@@ -169,32 +168,15 @@ function Portal({ user }: { user: User }) {
   const [postKind, setPostKind] = useState<'mission' | 'event'>('mission');
   const rulesActive = page === 'rules' && !loading && !loadError;
   const character = characters.find((item) => item.id === selectedId) || characters[0];
-  const catalogRequested = useRef(false);
-  const catalogLoadedAt = useRef(0);
-  const catalogRequest = useRef<Promise<void> | null>(null);
-  const loadCatalog = useCallback(() => {
-    catalogRequested.current = true;
-    if (catalogRequest.current) return catalogRequest.current;
-    const request = api<Item[]>('/catalog')
-      .then(items => { setCatalog(items); setCatalogError(''); catalogLoadedAt.current = Date.now(); })
-      .catch(error => { setCatalogError(error.message); throw error; })
-      .finally(() => { setCatalogLoading(false); catalogRequest.current = null; });
-    catalogRequest.current = request;
-    return request;
-  }, []);
-  useEffect(() => {
-    if ((page === 'shop' || page === 'tower') && (!catalogRequested.current || Date.now() - catalogLoadedAt.current >= 60000))
-      void loadCatalog().catch(() => {});
-  }, [page, loadCatalog]);
-  const refresh = useCallback(async (options?:{backgroundCatalog?:boolean; skipCatalog?:boolean}) => {
-    const catalogue = catalogRequested.current && !options?.skipCatalog ? loadCatalog() : Promise.resolve();
+  const refresh = useCallback(async (options?:{backgroundCatalog?:boolean}) => {
+    const catalogue=api<Item[]>('/catalog').then(items=>{setCatalog(items);setCatalogError('');}).catch(error=>{setCatalogError(error.message);throw error;}).finally(()=>setCatalogLoading(false));
     const essentials=Promise.all([api<Character[]>('/characters'),api<Post[]>('/board'),api<Entry[]>('/world'),api<User>('/me')]).then(([nextCharacters,nextPosts,nextEntries,me])=>{
       setCharacters(nextCharacters);setPosts(nextPosts);setEntries(nextEntries);setAdministrator(me.administrador===1);setCanEditKingdom(me.canEditKingdom===true);
     });
     // Opening camp or the journal never waits for the multi-megabyte shop catalogue.
     if(options?.backgroundCatalog){void catalogue.catch(()=>{});await essentials;}
     else await Promise.all([essentials,catalogue]);
-  }, [loadCatalog]);
+  }, []);
   useEffect(() => {
     refresh({backgroundCatalog:true})
       .catch((error) => setLoadError(error.message))
@@ -202,12 +184,11 @@ function Portal({ user }: { user: User }) {
   }, [refresh]);
   useEffect(() => {
     const timer = window.setInterval(() => {
-      if (document.visibilityState !== 'visible') return;
       setNow(Date.now());
-      refresh({skipCatalog:page !== 'shop' && page !== 'tower'}).catch(() => {});
+      if (document.visibilityState === 'visible') refresh().catch(() => {});
     }, 60000);
     return () => window.clearInterval(timer);
-  }, [refresh, page]);
+  }, [refresh]);
   useEffect(() => {
     const onHash = () => {
       const next = initialPage();
@@ -760,7 +741,7 @@ function Portal({ user }: { user: User }) {
           </PageHeader>
         )}
         <main className="main-content" id="main-content">
-          <Suspense fallback={<div className="loading-content" role="status">Abrindo a página…</div>}>{renderContent()}</Suspense>
+          {renderContent()}
           {rulesVisited && (
             <div hidden={!rulesActive} style={{ display: rulesActive ? undefined : 'none' }}>
               <div className="page-header-spacer" aria-hidden="true" />
