@@ -1,5 +1,16 @@
 # Diagramação dos textos da Lore — 20/10/2026
 
+Direção vigente após correção do usuário: a diagramação anterior foi restaurada
+integralmente, incluindo alinhamentos, largura, entrelinha, espaços, quebras e
+controle “Alinhamento” no editor. A única diferença em relação à versão anterior
+ao experimento é a inicial Cinzel ampliada de 54 para 68 px, com o float e as
+margens originais. Não reaplicar a coluna de 74ch ou o corpo forçado à esquerda.
+Conferidos leitura/prévia, alinhamento central e esquerdo em 1440/760/390/320 px,
+conteúdo preservado e ausência de overflow horizontal. Build aprovado; publicação
+`lore-initial-20261020` somente do cliente, conservando servidor e arquivos antigos.
+
+## Experimento anterior — desfeito a pedido do usuário
+
 Após as referências do usuário, o texto livre da crônica passa a ter coluna de
 leitura limitada a 74ch, corpo alinhado à esquerda, entrelinha de 1,85 e intervalo
 regular entre parágrafos. O título continua respeitando seu alinhamento salvo,

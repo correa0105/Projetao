@@ -138,7 +138,6 @@ export function LoreImage({ block }: { block: Extract<LoreBlock, { type: 'image'
 
 export function LoreBlocks({ blocks }: { blocks: LoreBlock[] }) {
   const root = useRef<HTMLDivElement>(null);
-  const openingProseId = blocks.find((block) => block.type === 'text' && block.style === 'prose')?.id;
   const rows: LoreBlock[][] = [];
   for (let index = 0; index < blocks.length; index++) {
     const block = blocks[index];
@@ -191,7 +190,6 @@ export function LoreBlocks({ blocks }: { blocks: LoreBlock[] }) {
               <section
                 className={`lore-block lore-text lore-text--${block.style} lore-align--${block.alignment}`}
                 key={block.id}
-                data-opening={block.id === openingProseId || undefined}
               >
                 {block.title && <h3>{block.title}</h3>}
                 {block.text
@@ -1353,7 +1351,7 @@ function LoreEditor({
                         </select>
                       </label>
                       <label>
-                        {block.style === 'prose' ? 'Alinhamento do título' : 'Alinhamento'}
+                        Alinhamento
                         <select
                           value={block.alignment}
                           onChange={(event) =>
