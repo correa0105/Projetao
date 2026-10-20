@@ -1,5 +1,6 @@
 import {
   guildEstateCanSee,
+  guildEstateMove,
   type EstateOpenings,
   type EstatePoint,
 } from '../shared/guild-estate-vision';
@@ -82,6 +83,8 @@ export function GuildEstateActors({
     };
   }, [guildId, characterId, member]);
   async function save(a: Actor, present = true) {
+    const before = current.current.find(t => t.id === a.id);
+    if (before && present) a = { ...a, ...guildEstateMove(before, a, openings) };
     setBusy(true);
     try {
       await api(url + '/me' + query, {
@@ -210,8 +213,10 @@ export function GuildEstateActors({
                         t.id === a.id
                           ? {
                               ...t,
-                              x: Math.max(7, Math.min(53, p.x - d.dx)),
-                              y: Math.max(5, Math.min(45, p.y - d.dy)),
+                              ...guildEstateMove(t, {
+                                x: Math.max(7, Math.min(53, p.x - d.dx)),
+                                y: Math.max(5, Math.min(45, p.y - d.dy)),
+                              }, openings),
                             }
                           : t,
                       ),

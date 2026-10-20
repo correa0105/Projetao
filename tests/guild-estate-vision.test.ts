@@ -3,11 +3,22 @@ import assert from 'node:assert/strict';
 import {
   estateOpeningsSchema,
   guildEstateCanSee,
+  guildEstateMove,
   guildEstateVisionPolygon,
 } from '../shared/guild-estate-vision';
 import { crestSchema } from '../shared/guilds';
 import { guildEstateCanSeeOpening } from '../shared/guild-estate-vision';
 import { crestArtBanners, crestArtFrames, crestArtSigils } from '../shared/guild-crest-art';
+
+test('movimento bloqueia paredes, janelas abertas e portas fechadas sem saltar obstáculos', () => {
+  const state = estateOpeningsSchema.parse({});
+  assert(guildEstateMove({x:28,y:33},{x:28,y:28},state).y > 30.7);
+  assert(guildEstateMove({x:29.9,y:33},{x:29.9,y:29},{...state,entry:false}).y > 30.7);
+  assert(guildEstateMove({x:29.9,y:33},{x:29.9,y:29},state).y === 29);
+  assert(guildEstateMove({x:25,y:20},{x:25,y:15},state).y > 17.2);
+  assert(guildEstateMove({x:26,y:20},{x:34,y:20},state).x < 30);
+  assert(guildEstateMove({x:26,y:20},{x:34,y:20},{...state,'main-forge':true}).x === 34);
+});
 
 test('paredes e portas fechadas bloqueiam visão; vãos abertos transmitem visão', () => {
   const closed = estateOpeningsSchema.parse({});

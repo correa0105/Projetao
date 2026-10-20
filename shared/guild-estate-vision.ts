@@ -134,6 +134,20 @@ export function guildEstateCanSee(at: EstatePoint, target: EstatePoint, state: E
     distance - 0.02
   );
 }
+export function guildEstateMove(at: EstatePoint, target: EstatePoint, state: EstateOpenings) {
+  // Windows transmit light, but always remain solid for movement.
+  const solid = guildEstateVisionLines({ ...state, 'west-window': false, 'east-window': false });
+  const dx = target.x - at.x, dy = target.y - at.y, distance = Math.hypot(dx, dy);
+  if (!distance) return at;
+  const angle = Math.atan2(dy, dx), radius = 0.18;
+  let allowed = distance;
+  for (const offset of [-radius, 0, radius]) {
+    const start = { x: at.x - Math.sin(angle) * offset, y: at.y + Math.cos(angle) * offset };
+    const hit = ray(start, angle, solid, distance + radius);
+    if (hit.distance < distance + radius) allowed = Math.min(allowed, Math.max(0, hit.distance - radius));
+  }
+  return { x: at.x + dx * allowed / distance, y: at.y + dy * allowed / distance };
+}
 export function guildEstateCanSeeOpening(
   at: EstatePoint,
   id: EstateOpeningId,

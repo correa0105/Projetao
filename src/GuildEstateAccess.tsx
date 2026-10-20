@@ -103,7 +103,7 @@ export function GuildEstateDoors({
                 : -1;
           const open = openings[o.id],
             r = Math.max(0.16, pixel * 12),
-            controlY = (o.kind === 'window' ? 0.55 : 0.38) * side,
+            controlY = (o.kind === 'window' ? 0.55 : Math.max(0.22, r * 1.15)) * side,
             controlVisible =
               !viewer ||
               guildEstateCanSee(
@@ -197,7 +197,11 @@ export function GuildEstateDoors({
                   <circle r={r * 1.45} fill="transparent" />
                   <circle r={r} fill="#29271cee" stroke="#bca574" strokeWidth={pixel * 1.2} />
                   <path
-                    d={open ? 'M-.32-.32L.32.32M.32-.32L-.32.32' : 'M-.4 0H.4M0-.4V.4'}
+                    d={o.kind === 'window'
+                      ? 'M-.5-.5H.5V.5H-.5ZM0-.5V.5M-.5 0H.5'
+                      : open
+                        ? 'M-.5.6V-.6H.1V.6M.1-.6L.5-.4V.6L.1.4M.28 0V.1'
+                        : 'M-.45.6V-.6H.45V.6M-.6.6H.6M.2 0V.1'}
                     transform={`scale(${r})`}
                     fill="none"
                     stroke="#e2cf9e"
@@ -228,7 +232,7 @@ export function GuildEstateVision({ at, openings }: { at: EstatePoint; openings:
           maskUnits="userSpaceOnUse"
         >
           <rect x="-60" y="-60" width="180" height="180" fill="white" />
-          <path d={path} fill="black" stroke="black" strokeWidth=".32" strokeLinejoin="round" />
+          <path d={path} fill="black" />
         </mask>
       </defs>
       <rect x="-60" y="-60" width="180" height="180" fill="#0a0d09" mask="url(#ge-wall-vision)" />

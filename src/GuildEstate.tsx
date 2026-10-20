@@ -670,6 +670,20 @@ export function GuildEstate(p: Props) {
           })()}
         {roof && (
           <g>
+            <defs>
+              <mask id="ge-porch-roof" maskUnits="userSpaceOnUse" x="20" y="14" width="20" height="21">
+                <rect x="20" y="14" width="20" height="21" fill="white" />
+                <path
+                  data-estate-porch-cover="true"
+                  d="M30 25.3L33.3 28.6V33.1L30 31.3L26.7 33.1V28.6Z"
+                  fill={viewer && viewer.x >= 27.15 && viewer.x <= 32.85 && viewer.y >= 30.7 && viewer.y <= 34.5 ? '#444' : '#fff'}
+                  style={{ transition: 'fill .25s ease' }}
+                />
+              </mask>
+            </defs>
+            {viewer && viewer.x >= 27.15 && viewer.x <= 32.85 && viewer.y >= 30.7 && viewer.y <= 34.5 && (
+              <path d="M30 25.3L33.3 28.6V33.1L30 31.3L26.7 33.1V28.6Z" fill="#30271b" pointerEvents="none" />
+            )}
             <g
               role="button"
               tabIndex={0}
@@ -692,7 +706,14 @@ export function GuildEstate(p: Props) {
                 height="18.7"
                 preserveAspectRatio="none"
                 filter="url(#ge-shadow)"
+                mask="url(#ge-porch-roof)"
               />
+            </g>
+            <g data-estate-exterior-door="entry" transform="translate(29.325 32.6)" pointerEvents="none">
+              <rect width="1.2" height=".65" rx=".05" fill="#100e0a" />
+              <g className="guild-estate-opening-leaf" style={{ transform: `scaleX(${access.openings.entry ? 0.12 : 1})` }}>
+                <image href="/guild/openings-20261020/door-leaf.webp" width="1.2" height=".65" preserveAspectRatio="none" />
+              </g>
             </g>
             <g
               role="button"
@@ -700,7 +721,7 @@ export function GuildEstate(p: Props) {
               data-estate-interactive="entry-action"
               aria-label={access.openings.entry ? 'Fechar porta de entrada' : 'Abrir porta de entrada'}
               className="guild-estate-entry-action"
-              transform={`translate(30 34.2) scale(${camera.width / (stage.current?.clientWidth || 1000)})`}
+              transform={`translate(31.2 32.3) scale(${camera.width / (stage.current?.clientWidth || 1000)})`}
               aria-disabled={!p.member || access.busy}
               onClick={() => void access.toggle('entry')}
               onKeyDown={(e) => {
@@ -712,7 +733,7 @@ export function GuildEstate(p: Props) {
             >
               <title>{access.openings.entry ? 'Fechar porta de entrada' : 'Abrir porta de entrada'}</title>
               <rect x="-18" width="36" height="36" rx="18" />
-              <path d={access.openings.entry ? 'M-5 13L5 23M5 13L-5 23' : 'M-6 18H6M0 12V24'} />
+              <path d={access.openings.entry ? 'M-7 27V9H2V27M2 9L8 12V27L2 24M5 18V20' : 'M-7 27V9H7V27M-9 27H9M3 18V20'} />
             </g>
           </g>
         )}
