@@ -1,4 +1,9 @@
-21/10/2026 — Em preparação: editor antigo do reino retirado do site e botão
+21/10/2026 — Publicação pin-delete-20261021 aplicada e saudável na Hostinger,
+código e75389d99b9788b78934daad8c236b5cce14749e. Backup
+pin-delete-before-20261021T210827Z.dump. TypeScript/builds, API e navegador em banco
+descartável passaram; frontend HTTPS e verificações somente leitura em produção
+aprovados. Ilustrador online e tarefa local sem console com retorno 0.
+Editor antigo do reino retirado do site e botão
 Editar mapa removido; rascunhos/fundos privados existentes guardados. Admin ganha
 Excluir pin com confirmação e revisão, sem apagar local, História, missões ou
 vínculos das mesas. Teste API confirma administrador/preview/jogador, conflito de
