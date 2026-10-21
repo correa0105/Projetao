@@ -1,4 +1,13 @@
-21/10/2026 — Novos pedidos: pins administrativos com história Lore e prévias aquarela,
+21/10/2026 — Publicação world-pins-20261021 aplicada e saudável na Hostinger, código
+c56083461c5eb5a58bd22a4eecbbad62736afb08. Backup antes da atualização em
+/opt/alvorada/backups/world-pins-before-20261021T191449Z.dump. Migration 120 aplicada;
+1 conta/1 admin/16 personagens/9 publicações/1 mesa e saldos conservados. Hashes dos
+bundles por HTTPS, mapa original, permissões de admin/preview, referência de magia
+em português e disponibilidade autenticada do ilustrador conferidos. API de pins,
+navegador de pins/VTT/loading/portal/criação de magias/sede e TypeScript/builds
+aprovados em base descartável; sem teste ou geração de arte em produção.
+
+21/10/2026 — Implementados: pins administrativos com história Lore e prévias aquarela,
 área geográfica nas missões/mesas, preferências separadas de efeitos do VTT antes
 de entrar, iluminação/dia obrigatórios e preparação das texturas usadas no piso.
 Loading deixa de reaparecer após a página abrir e ganha aviso da primeira visita.
