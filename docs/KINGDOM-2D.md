@@ -2,7 +2,22 @@
 
 ## Fundo publicado do Reino do Norte
 
-A visão pública agora usa a imagem fornecida pelo usuário em `public/kingdom/north-sonnenberg.png` (1154 × 866), com proporção original, zoom e arraste. Sonnenberg é o único ponto para abrir o registro de missões do reino, incluindo publicação e histórico; o botão acompanha a projeção do mapa. Nenhum local SQL foi renomeado ou removido. O editor continua privado: ao abri-lo, carrega seu próprio fundo, rascunho e câmera; ao fechá-lo, volta ao mapa publicado. As descrições de área vazia abaixo se aplicam somente ao rascunho privado sem upload.
+A visão pública usa a imagem definitiva enviada em 21/10/2026, em
+`public/kingdom/reino-do-norte-20261021.jpg` (4096 × 2633), com os mesmos bytes do
+arquivo original e proporção preservada. Substitui o mapa de teste Sonnenberg.
+O clique em **Reino do Norte** no Mundo abre esse mapa; zoom, arraste e retorno ao
+mundo continuam disponíveis. **Missões do reino** abre o registro, incluindo
+publicação e histórico, sem prender o acesso às coordenadas do mapa de teste.
+Nenhum local SQL foi renomeado ou removido. O editor continua privado: ao abri-lo,
+carrega seu próprio fundo, rascunho e câmera; ao fechá-lo, volta ao mapa publicado.
+As descrições de área vazia abaixo se aplicam somente ao rascunho privado sem upload.
+
+Arquivo original `mapa 1 alvorada copia.jpg`: SHA-256
+`49fe342adf41f87ff7f92dd12d534aba8cc4cf7b20a65ceef9199e2e57c29673`.
+O arquivo publicado mantém esse mesmo hash. Verificação de navegador em
+1440×900 e 390×844 cobriu o clique no território no Mundo, bytes da imagem servida,
+metadados 4096×2633, projeção sem compressão vertical, abertura do registro de missões
+e retorno ao Mundo. Capturas em `test-results/portal-controls/north-map-*.png`.
 
 ## Cena
 

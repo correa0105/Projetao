@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
-import { randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { createServer } from 'node:net';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
   throw Error('Banco descartável obrigatório.');
 const reserve = createServer();
@@ -26,6 +26,7 @@ await new Promise<void>((resolve) => server.once('listening', resolve));
 const browser = await chromium.launch({
   channel: process.env.BROWSER_CHANNEL || 'msedge',
   headless: true,
+  args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'],
 });
 const page = await browser.newPage({
   viewport: { width: 1440, height: 900 },
@@ -118,6 +119,47 @@ try {
       path: `test-results/portal-controls/cards-${width}.png`,
       fullPage: true,
     });
+  }
+  const mapFile = await readFile('public/kingdom/reino-do-norte-20261021.jpg');
+  expect(createHash('sha256').update(mapFile).digest('hex')).toBe(
+    '49fe342adf41f87ff7f92dd12d534aba8cc4cf7b20a65ceef9199e2e57c29673',
+  );
+  for (const [width, height] of [
+    [1440, 900],
+    [390, 844],
+  ]) {
+    await page.setViewportSize({ width, height });
+    await page.goto(origin + '/#world');
+    await expect(page.locator('.world-map')).toHaveAttribute('data-status', 'ready', {
+      timeout: 60000,
+    });
+    const imageResponse = page.waitForResponse(
+      (response) =>
+        response.url().endsWith('/kingdom/reino-do-norte-20261021.jpg') &&
+        response.status() === 200,
+    );
+    await page.getByRole('button', { name: 'Reino do Norte', exact: true }).click();
+    const region = page.getByRole('region', { name: 'Mapa do Reino do Norte', exact: true });
+    await expect(region).toHaveAttribute('data-status', 'ready', { timeout: 60000 });
+    await expect(region).toHaveAttribute('data-image-width', '4096');
+    await expect(region).toHaveAttribute('data-image-height', '2633');
+    await expect(region).toHaveAttribute('data-tilt', '1');
+    const response = await imageResponse;
+    expect(
+      createHash('sha256')
+        .update(await response.body())
+        .digest('hex'),
+    ).toBe(createHash('sha256').update(mapFile).digest('hex'));
+    await expect(
+      page.getByRole('button', { name: 'Abrir missões do Reino do Norte', exact: true }),
+    ).toBeVisible();
+    await page.screenshot({ path: `test-results/portal-controls/north-map-${width}.png` });
+    await page
+      .getByRole('button', { name: 'Abrir missões do Reino do Norte', exact: true })
+      .click();
+    await expect(page.locator('.atlas-missions-drawer')).toBeVisible();
+    await page.getByRole('button', { name: 'Voltar ao mundo', exact: true }).click();
+    await expect(page.locator('.world-map')).toBeVisible();
   }
   expect(errors).toEqual([]);
   console.log(

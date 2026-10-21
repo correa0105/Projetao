@@ -37,10 +37,15 @@ Validação específica:
   cartas em 1440×900, 1024×768, 813×600 e 390×844, sem sobreposição ou largura excedente.
 - Todos esses testes usam bases descartáveis. Capturas em
   `test-results/portal-controls/`, fora do Git.
+- Suíte geral em banco isolado: **681 testes, 642 aprovados, 39 falhas**. Os nomes
+  das falhas coincidem com a execução anterior; nenhum nome de falha novo.
+  `integration.test.ts` e `mission-tags.test.ts` repetiram o problema antigo de
+  encerramento após seus casos, e seus workers isolados precisaram ser encerrados.
+  As verificações específicas desta mudança passaram, incluindo mídia do calendário.
 
-Publicado na VPS com a imagem `alvorada-cinzenta:controls-20261021`, compilada no
-servidor a partir do commit `83a4be6a`. Backup anterior preservado em
-`/opt/alvorada/backups/portal-controls-before-20261021T164017Z.dump`.
+Publicado na VPS com a imagem `alvorada-cinzenta:controls2-20261021`, compilada no
+servidor a partir do commit `e89d964f`. Backup anterior preservado em
+`/opt/alvorada/backups/portal-controls-before-20261021T165133Z.dump`.
 Verificação autenticada somente de leitura confirmou administrador, mural e
 HTTP 503 nas alas fechadas. Permaneceram uma conta administradora, 16 personagens,
 nove avisos, uma mesa e 1.366.070 PC de saldo total. Nenhuma missão real foi removida

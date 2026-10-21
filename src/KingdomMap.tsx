@@ -71,7 +71,7 @@ const EDITOR_MIN_ZOOM = 0.03;
 const EDITOR_MAX_ZOOM = 32;
 const defaultHome: KingdomView = { x: 0, y: 0, zoom: 1, angle: 0 };
 const publishedConfig = {
-  background: { exists: true, width: 1154, height: 866, revision: 0 },
+  background: { exists: true, width: 4096, height: 2633, revision: 0 },
   home: defaultHome,
 };
 const directions = [
@@ -146,7 +146,6 @@ export function KingdomMap({
   onReady,
   onOpenRegistry,
 }: KingdomMapProps) {
-  const registryRef = useRef<HTMLButtonElement>(null);
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasHostRef = useRef<HTMLDivElement>(null);
   const controlsRef = useRef<Controls | null>(null);
@@ -517,14 +516,6 @@ export function KingdomMap({
         sync();
       }
       if (dirty) {
-        if (registryRef.current) {
-          const point = projectPoint(
-            (0.15 - 0.5) * viewport.mapWidth,
-            (0.64 - 0.5) * viewport.mapHeight,
-          );
-          registryRef.current.style.left = point.x + 'px';
-          registryRef.current.style.top = point.y + 'px';
-        }
         paintKingdom(
           ctx!,
           assets,
@@ -1050,7 +1041,7 @@ export function KingdomMap({
           ? await loadIllustration(
               editorOpen
                 ? `/api/kingdom/editor-background/image?v=${background.revision}`
-                : '/kingdom/north-sonnenberg.png',
+                : '/kingdom/reino-do-norte-20261021.jpg',
               abort.signal,
             )
           : null;
@@ -1124,16 +1115,15 @@ export function KingdomMap({
       <div ref={canvasHostRef} className="kingdom-map__canvas" />
       {!editorOpen && (
         <button
-          ref={registryRef}
           className="kingdom-registry"
           type="button"
           style={{ visibility: status === 'ready' ? 'visible' : 'hidden' }}
-          aria-label="Sonnenberg — abrir registro de missões"
+          aria-label="Abrir missões do Reino do Norte"
           onClick={onOpenRegistry}
         >
           <ScrollText size={20} aria-hidden="true" />
           <span>
-            Sonnenberg<small>Registro de missões</small>
+            Missões do reino<small>Registro de missões</small>
           </span>
         </button>
       )}
