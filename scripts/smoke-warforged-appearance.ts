@@ -131,6 +131,8 @@ try {
   await creationDesign.getByLabel('Acabamento', { exact: true }).selectOption('rusted');
   await creationDesign.getByLabel('Cor secundária personalizada', { exact: true }).fill('#123abc');
   await upload.check();
+  await expect(creationDesign).toHaveCount(0);
+  await expect(form).toContainText('desative a montagem');
   await expect(submit).toBeDisabled();
   const { testArtImage } = await import('../tests/character-fixtures');
   await form
@@ -138,6 +140,11 @@ try {
     .setInputFiles({ name: 'referencia.png', mimeType: 'image/png', buffer: await testArtImage() });
   await expect(submit).toBeEnabled();
   await without.check();
+  await creationDesign.getByRole('radio', { name: /Braços reforçados/ }).check();
+  await creationDesign.getByRole('radio', { name: /^Cavaleiro/ }).check();
+  await creationDesign.getByLabel('Cor metálica principal', { exact: true }).selectOption('copper');
+  await creationDesign.getByLabel('Acabamento', { exact: true }).selectOption('rusted');
+  await creationDesign.getByLabel('Cor secundária personalizada', { exact: true }).fill('#123abc');
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 950 });
     await without.scrollIntoViewIfNeeded();
@@ -171,6 +178,59 @@ try {
   await expect(without).toBeChecked();
   await expect(submit).toBeEnabled();
   await expect(form.getByRole('radio', { name: /Braços reforçados/ })).toBeChecked();
+  await page.getByRole('dialog').getByRole('button', { name: 'Fechar', exact: true }).click();
+  const identity = await testArtImage();
+  await pool.query(
+    'INSERT INTO character_portraits(character_id,image,construction_base)VALUES($1,$2,$2) ON CONFLICT(character_id)DO UPDATE SET image=$2,construction_base=$2',
+    [hero.id, identity],
+  );
+  await pool.query('UPDATE characters SET portrait_revision=1 WHERE id=$1', [hero.id]);
+  await page.goto(origin + '/#characters');
+  await page.reload();
+  await page.getByRole('button', { name: 'Nova imagem', exact: true }).click();
+  let outfit = page.getByRole('dialog', { name: 'Imagem de Forjado', exact: true });
+  await expect(outfit.locator('input[type=file]')).toHaveCount(0);
+  await expect(outfit).toContainText('identidade salva');
+  const campResponse = page.waitForResponse(
+    (r) => r.url().endsWith('/character-art') && r.request().method() === 'POST',
+  );
+  await outfit.getByRole('button', { name: 'Gerar imagem', exact: true }).click();
+  const campJob = await campResponse;
+  expect(campJob.status()).toBe(202);
+  expect(campJob.request().postDataJSON().reference).toBeUndefined();
+  await pool.query("UPDATE character_art_jobs SET status='failed' WHERE id=$1", [
+    (await campJob.json()).id,
+  ]);
+  await page.goto(origin + '/#inventory');
+  await page.reload();
+  await page
+    .getByRole('region', { name: 'Itens equipados', exact: true })
+    .getByRole('button', { name: 'Vestir', exact: true })
+    .click();
+  outfit = page.getByRole('dialog', { name: 'Imagem de Forjado', exact: true });
+  await expect(outfit.locator('input[type=file]')).toHaveCount(0);
+  await expect(outfit).toContainText('cores serão preservados');
+  await expect(outfit.getByRole('button', { name: 'Vestir', exact: true })).toBeEnabled();
+  await page.screenshot({
+    path: 'test-results/warforged-appearance/outfit-no-reference-mobile.png',
+  });
+  await outfit.getByRole('button', { name: 'Fechar', exact: true }).click();
+  const byReference = {
+    ...defaultChoices('Warforged', 'Guerreiro'),
+    warforgedArtMode: 'reference',
+    warforgedAppearance: undefined,
+  };
+  await pool.query('UPDATE character_sheets SET choices=$2 WHERE character_id=$1', [
+    hero.id,
+    byReference,
+  ]);
+  await page.reload();
+  await page
+    .getByRole('region', { name: 'Itens equipados', exact: true })
+    .getByRole('button', { name: 'Vestir', exact: true })
+    .click();
+  await expect(outfit.locator('input[type=file]')).toHaveCount(1);
+  await expect(outfit.getByRole('button', { name: 'Vestir', exact: true })).toBeDisabled();
   expect(errors).toEqual([]);
   console.log(
     'PASS: construção e retomada sem referência, upload opcional, escolhas persistidas e layout em quatro larguras.',

@@ -29,6 +29,7 @@ import { TrainingBadge } from './TrainingBadge';
 import { eberronSpecies, EBERRON_SOURCE } from '../shared/eberron-species';
 import { TieflingHorns } from './TieflingHorns';
 import { WarforgedAppearance } from './WarforgedAppearance';
+import { warforgedArtMode } from '../shared/warforged-appearance';
 export function ChoiceList({
   label,
   options,
@@ -222,7 +223,7 @@ export function SheetChoices({
           onChange={(tieflingHorns) => update({ tieflingHorns })}
         />
       )}
-      {race === 'Warforged' && (
+      {race === 'Warforged' && warforgedArtMode(c) === 'construction' && (
         <WarforgedAppearance value={c.warforgedAppearance}
           onChange={warforgedAppearance => update({ warforgedAppearance })} />
       )}

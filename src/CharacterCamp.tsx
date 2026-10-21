@@ -171,6 +171,7 @@ export function CharacterCamp({
     };
   }, []);
   const pending = state.jobs.filter((j) => ['queued', 'running'].includes(j.status));
+  const constructed = editing?.race === 'Warforged' && editing.art_reference_mode === 'construction';
   const editingQuota = editing ? state.quotas?.[editing.id] ?? {
     used: editing.art_used,
     limit: editing.art_unlimited ? null : ART_MONTHLY_LIMIT,
@@ -441,7 +442,7 @@ export function CharacterCamp({
               try {
                 await post('/character-art', {
                   character_id: editing.id,
-                  reference,
+                  reference: constructed ? undefined : reference,
                   idempotency_key: key.current,
                   equipment_slots: equipmentSlots,
                   helmet_mode: equipmentSlots.includes('head') ? helmetMode : 'closed',
@@ -470,7 +471,7 @@ export function CharacterCamp({
                   ? 'Ilustrador disponível'
                   : 'Ilustrador offline'}
             </span>
-            <ReferenceInput onChange={setReference} disabled={busy} />
+            {constructed ? <p className="muted">Warforged montado: a identidade salva será usada automaticamente, preservando corpo, cabeça, metal, acabamento e cores.</p> : <ReferenceInput onChange={setReference} disabled={busy} />}
             <ArtEquipmentChoices
               characterId={editing.id}
               selected={equipmentSlots}
@@ -483,7 +484,7 @@ export function CharacterCamp({
             {error && <FlashMessage>{error}</FlashMessage>}
             <button
               className="button primary"
-              disabled={busy || checkingQuota || quotaFull || !reference || !equipmentReady || availability !== true}
+              disabled={busy || checkingQuota || quotaFull || (!constructed && !reference) || !equipmentReady || availability !== true}
             >
               {busy ? 'Enviando…' : 'Gerar imagem'}
             </button>

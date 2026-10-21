@@ -558,6 +558,7 @@ export const choicesSchema = z.object({
   appearance: z.string().trim().max(800).default(''),
   tieflingHorns: z.enum(tieflingHornIds).optional(),
   warforgedAppearance: warforgedAppearanceSchema.optional(),
+  warforgedArtMode: z.enum(['construction','reference']).optional(),
   age: z.string().trim().max(40).default(''),
   height: z.string().trim().max(40).default(''),
   weight: z.string().trim().max(40).default(''),
@@ -1052,6 +1053,7 @@ export function racialBonuses(_race: string, c: SheetChoices) {
 export function normalizeOptions(race: string, cls: string, c: SheetChoices) {
   if (race !== 'Tiefling' && c.tieflingHorns) { c = { ...c }; delete c.tieflingHorns; }
   if (race !== 'Warforged' && c.warforgedAppearance) { c = { ...c }; delete c.warforgedAppearance; }
+  if (race !== 'Warforged' && c.warforgedArtMode) { c = { ...c }; delete c.warforgedArtMode; }
   for (let pass = 0; pass < 3; pass++) {
     const fields = choiceFields(race, cls, c);
     c = {
@@ -1104,7 +1106,7 @@ export function defaultChoices(race: string, cls: string, background = 'Acólito
     flaws: '',
     appearance: '',
     ...(species === 'Tiefling' ? { tieflingHorns: 'curved' as const } : {}),
-    ...(species === 'Warforged' ? { warforgedAppearance: { ...defaultWarforgedAppearance } } : {}),
+    ...(species === 'Warforged' ? { warforgedArtMode: 'construction' as const, warforgedAppearance: { ...defaultWarforgedAppearance } } : {}),
     age: '',
     height: '',
     weight: '',
@@ -1156,6 +1158,7 @@ export function reconcileChoices(
   let c = normalizeOptions(race, cls, {
     ...defaults,
     ...current,
+    ...(race === 'Warforged' && current.warforgedArtMode === 'reference' ? {warforgedAppearance:undefined} : {}),
     species: defaults.species,
     subrace: raceRules[race].variants.includes(current.subrace)
       ? current.subrace
@@ -1231,6 +1234,9 @@ export function validateChoices(race: string, cls: string, input: unknown): Shee
   };
   check(!c.tieflingHorns || race === 'Tiefling', 'O formato de chifres é uma escolha de aparência do Tiefling.');
   check(!c.warforgedAppearance || race === 'Warforged', 'A estrutura de constructo é uma escolha de aparência do Warforged.');
+  check(!c.warforgedArtMode || race === 'Warforged', 'O modo de arte é exclusivo do Warforged.');
+  check(c.warforgedArtMode !== 'reference' || !c.warforgedAppearance, 'Desative as opções de montagem para usar uma imagem de referência.');
+  check(c.warforgedArtMode !== 'construction' || Boolean(c.warforgedAppearance), 'Escolha a estrutura, a cabeça e as cores da montagem.');
   const list = (v: string[], n: number, a: string[], label: string) =>
     check(
       v.length === n && new Set(v).size === n && v.every((x) => a.includes(x)),

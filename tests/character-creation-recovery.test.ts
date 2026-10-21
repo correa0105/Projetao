@@ -49,6 +49,7 @@ test('criação recuperável: texto, ficha, imagem e arte aprovada sobrevivem à
       reference = await testArtImage();
     const legacyChoices = defaultChoices('Warforged', 'Bárbaro', 'Soldado');
     delete legacyChoices.warforgedAppearance;
+    delete legacyChoices.warforgedArtMode;
     const creation = {
       name: 'Artorias teste',
       race: 'Warforged',

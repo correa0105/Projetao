@@ -30,6 +30,7 @@ import {
   type SheetRecord,
 } from '../shared/character-sheet.js';
 import { fightingStyles } from '../shared/fighting-styles.js';
+import { warforgedArtMode } from '../shared/warforged-appearance.js';
 import { MISSION_THRESHOLDS } from '../shared/progression.js';
 import { modifier } from '../shared/rules.js';
 
@@ -361,6 +362,8 @@ export function characterSheetRouter() {
         throw new AppError(409, 'As escolhas ficam fixas após a rolagem.');
       const species = sheet && !sheet.choices ? req.body.species : c.race;
       const choices = validated(species, c.class, req.body);
+      if (c.race === 'Warforged' && sheet?.choices && warforgedArtMode(sheet.choices) !== warforgedArtMode(choices))
+        throw new AppError(409, 'O modo de criação do Warforged fica salvo com o personagem e não pode ser trocado ao vestir.');
       await client.query('UPDATE characters SET race=$2,background=$3 WHERE id=$1', [
         id,
         choices.species,

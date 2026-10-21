@@ -227,6 +227,19 @@ export const warforgedAppearanceSchema = z
   })
   .strict();
 export type WarforgedAppearance = z.infer<typeof warforgedAppearanceSchema>;
+export function warforgedArtMode(
+  choices:
+    | { warforgedArtMode?: 'construction' | 'reference'; warforgedAppearance?: unknown }
+    | undefined
+    | null,
+) {
+  return (
+    choices?.warforgedArtMode ??
+    (warforgedAppearanceSchema.safeParse(choices?.warforgedAppearance).success
+      ? 'construction'
+      : 'reference')
+  );
+}
 export const defaultWarforgedAppearance: WarforgedAppearance = {
   body: 'balanced',
   head: 'sentinel',

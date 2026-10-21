@@ -60,6 +60,7 @@ test('Warforged: aparência persiste sem alterar regras; fichas antigas e outras
     }
   const legacy = { ...base };
   delete legacy.warforgedAppearance;
+  delete legacy.warforgedArtMode;
   assert.equal(validateChoices('Warforged', 'Guerreiro', legacy).warforgedAppearance, undefined);
   assert.equal(warforgedArtInstructions(undefined), '');
   assert.equal(normalizedOther().warforgedAppearance, undefined);

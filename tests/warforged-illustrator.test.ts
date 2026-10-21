@@ -125,11 +125,61 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
       before,
       'Pranchas originais inalteradas',
     );
-    await writeFile(capture,JSON.stringify({renders:[],reviews:[],rejectClothing:true}));
-    await assert.rejects(()=>generateCharacterArt({id:randomUUID(),race:'Warforged',class:'Guerreiro',reference:null,choices}),/verificação/);
-    assert.equal(JSON.parse(await readFile(capture,'utf8')).reviews.length,3);
-    await writeFile(capture,JSON.stringify({renders:[],reviews:[],omitClothing:true}));
-    await assert.rejects(()=>generateCharacterArt({id:randomUUID(),race:'Warforged',class:'Guerreiro',reference:null,choices}),/conferir a composição/);
+    await writeFile(capture, JSON.stringify({ renders: [], reviews: [] }));
+    await generateCharacterArt({
+      id: randomUUID(),
+      character_id: randomUUID(),
+      race: 'Warforged',
+      class: 'Guerreiro',
+      reference: image,
+      reference_mode: 'construction',
+      choices,
+    });
+    const dressed = JSON.parse(await readFile(capture, 'utf8'));
+    assert.match(dressed.renders[0].prompt, /IDENTIDADE MONTADA SALVA/);
+    assert.equal(dressed.renders[0].images.length, 4);
+    assert(
+      dressed.reviews.some((p: string) =>
+        p.includes('Compare rosto, estrutura e proporções do corpo'),
+      ),
+    );
+    await writeFile(capture, JSON.stringify({ renders: [], reviews: [] }));
+    await generateCharacterArt({
+      id: randomUUID(),
+      race: 'Warforged',
+      class: 'Guerreiro',
+      reference: image,
+      reference_mode: 'reference',
+      choices: { ...choices, warforgedArtMode: 'reference', warforgedAppearance: undefined },
+    });
+    const byReference = JSON.parse(await readFile(capture, 'utf8'));
+    assert.equal(byReference.renders[0].images.length, 2);
+    assert.doesNotMatch(byReference.renders[0].prompt, /APARÊNCIA DO WARFORGED ESCOLHIDA/);
+    await writeFile(capture, JSON.stringify({ renders: [], reviews: [], rejectClothing: true }));
+    await assert.rejects(
+      () =>
+        generateCharacterArt({
+          id: randomUUID(),
+          race: 'Warforged',
+          class: 'Guerreiro',
+          reference: null,
+          choices,
+        }),
+      /verificação/,
+    );
+    assert.equal(JSON.parse(await readFile(capture, 'utf8')).reviews.length, 3);
+    await writeFile(capture, JSON.stringify({ renders: [], reviews: [], omitClothing: true }));
+    await assert.rejects(
+      () =>
+        generateCharacterArt({
+          id: randomUUID(),
+          race: 'Warforged',
+          class: 'Guerreiro',
+          reference: null,
+          choices,
+        }),
+      /conferir a composição/,
+    );
     await assert.rejects(
       () =>
         generateCharacterArt({

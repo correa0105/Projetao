@@ -14,7 +14,7 @@ import { basicCompanionToken } from '../shared/companion-token-art.js';
 import { magicalArtEquipment } from './armor-magic-appearance.js';
 import { ART_ANATOMY_RULES, ART_CLOTHING_RULES } from '../shared/art-anatomy.js';
 import { tieflingHornStyle } from '../shared/tiefling-horns.js';
-import { warforgedArtInstructions } from '../shared/warforged-appearance.js';
+import { warforgedArtInstructions, warforgedArtMode } from '../shared/warforged-appearance.js';
 
 type CharacterJob = Parameters<typeof generateCharacterArt>[0] & {
   approved_portrait?: Buffer | null;
@@ -74,7 +74,10 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
   z.string().uuid().parse(job.id);
   const animal = job.companion;
   const warforgedInstructions =
-    !animal && job.race === 'Warforged'
+    !animal &&
+    job.race === 'Warforged' &&
+    (job.reference_mode ??
+      warforgedArtMode(job.choices as Parameters<typeof warforgedArtMode>[0])) === 'construction'
       ? warforgedArtInstructions(
           (job.choices as { warforgedAppearance?: unknown } | undefined)?.warforgedAppearance,
         )

@@ -24,6 +24,7 @@ import { hitDice, modifier } from '../shared/rules.js';
 import { isAdministrator } from './administrators.js';
 import { characterLimit } from '../shared/character-art.js';
 import { characterArtUsedSql } from './art-quota.js';
+import { warforgedArtMode } from '../shared/warforged-appearance.js';
 
 const uuid = z.string().uuid();
 const requestSchema = z
@@ -47,11 +48,21 @@ const requestSchema = z
       ),
   })
   .refine((data) => Boolean(data.character_id) !== Boolean(data.creation))
-  .refine((data) => Boolean(data.reference) || canConstructWithoutReference(data.creation), {
+  .refine((data) => !canConstructWithoutReference(data.creation) || !data.reference, {
     path: ['reference'],
-    message:
-      'Envie uma imagem de referência. Para criar um Warforged sem imagem, escolha sua aparência.',
-  });
+    message: 'Desative as opções de montagem para usar uma imagem de referência.',
+  })
+  .refine(
+    (data) =>
+      Boolean(data.reference) ||
+      Boolean(data.character_id) ||
+      canConstructWithoutReference(data.creation),
+    {
+      path: ['reference'],
+      message:
+        'Envie uma imagem de referência. Para criar um Warforged sem imagem, escolha sua aparência.',
+    },
+  );
 
 async function requestReference(reference: string | undefined) {
   if (reference === undefined) return null;
@@ -112,7 +123,12 @@ export async function enqueueArt(userId: string, input: unknown) {
   if (data.creation && data.equipment_slots.length)
     throw new AppError(400, 'Equipe os itens após criar o personagem.');
   // Normalize before taking locks; arbitrary base64 is never passed to the agent.
-  const reference = await requestReference(data.reference);
+  let reference = await requestReference(data.reference);
+  let referenceMode: 'construction' | 'reference' = canConstructWithoutReference(data.creation)
+    ? 'construction'
+    : 'reference';
+  if (referenceMode === 'construction' && reference)
+    throw new AppError(400, 'Desative as opções de montagem para usar uma imagem de referência.');
   return transaction(async (client) => {
     const {
       rows: [account],
@@ -135,10 +151,28 @@ export async function enqueueArt(userId: string, input: unknown) {
       );
     if (data.character_id) {
       const owned = await client.query(
-        'SELECT id FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL FOR UPDATE',
+        'SELECT c.id,c.race,s.choices,p.image,p.construction_base FROM characters c LEFT JOIN character_sheets s ON s.character_id=c.id LEFT JOIN character_portraits p ON p.character_id=c.id WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL FOR UPDATE OF c',
         [data.character_id, userId],
       );
       if (!owned.rowCount) throw new AppError(404, 'Personagem não encontrado.');
+      const subject = owned.rows[0];
+      referenceMode =
+        subject.race === 'Warforged' ? warforgedArtMode(subject.choices) : 'reference';
+      if (referenceMode === 'construction') {
+        if (reference)
+          throw new AppError(
+            400,
+            'Este Warforged foi montado. Vestir usa a identidade salva e não aceita upload de referência.',
+          );
+        reference = subject.construction_base || subject.image;
+        if (!reference) throw new AppError(409, 'Aguarde a arte inicial da montagem ficar pronta.');
+        if (!subject.construction_base)
+          await client.query(
+            'UPDATE character_portraits SET construction_base=image WHERE character_id=$1 AND construction_base IS NULL',
+            [data.character_id],
+          );
+      } else if (!reference)
+        throw new AppError(400, 'Envie a imagem de referência deste personagem.');
       const pending = await client.query(
         "SELECT 1 FROM character_art_jobs WHERE character_id=$1 AND status IN ('queued','running')",
         [data.character_id],
@@ -211,8 +245,8 @@ export async function enqueueArt(userId: string, input: unknown) {
     const {
       rows: [job],
     } = await client.query(
-      `INSERT INTO character_art_jobs(user_id,character_id,creation,reference,idempotency_key,helmet_mode)
-      VALUES($1,$2,$3,$4,$5,$6) RETURNING id,status,character_id`,
+      `INSERT INTO character_art_jobs(user_id,character_id,creation,reference,idempotency_key,helmet_mode,reference_mode)
+      VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id,status,character_id`,
       [
         userId,
         data.character_id || null,
@@ -220,6 +254,7 @@ export async function enqueueArt(userId: string, input: unknown) {
         reference,
         data.idempotency_key,
         data.helmet_mode,
+        referenceMode,
       ],
     );
     for (const item of equipment)
@@ -293,8 +328,8 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
       );
     }
     await client.query(
-      'INSERT INTO character_portraits(character_id,image) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET image=$2,updated_at=now()',
-      [characterId, image],
+      'INSERT INTO character_portraits(character_id,image,construction_base) VALUES($1,$2,$3) ON CONFLICT(character_id) DO UPDATE SET image=$2,construction_base=COALESCE(character_portraits.construction_base,$3),updated_at=now()',
+      [characterId, image, job.reference_mode === 'construction' && job.creation ? image : null],
     );
     if (tokenImage) {
       await client.query(
@@ -390,9 +425,12 @@ export function characterArtRouter() {
       if (!job.character_id && Number(count.total) >= characterLimit(false))
         throw new AppError(409, 'Limite de personagens atingido. Sua criação continua salva.');
       characterSchema.parse(replacement?.creation || job.creation);
+      const retryMode = canConstructWithoutReference(replacement?.creation || job.creation)
+        ? 'construction'
+        : 'reference';
       await client.query(
-        "UPDATE character_art_jobs SET status='queued',error=NULL,started_at=NULL,completed_at=NULL,reference=CASE WHEN $3::jsonb IS NULL THEN reference ELSE $2::bytea END,creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END WHERE id=$1",
-        [id, reference, replacement ? JSON.stringify(replacement.creation) : null],
+        "UPDATE character_art_jobs SET status='queued',error=NULL,started_at=NULL,completed_at=NULL,reference=CASE WHEN $3::jsonb IS NULL THEN CASE WHEN $4='construction' AND reference_mode='reference' AND character_id IS NULL THEN NULL ELSE reference END ELSE $2::bytea END,creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END,reference_mode=$4 WHERE id=$1",
+        [id, reference, replacement ? JSON.stringify(replacement.creation) : null, retryMode],
       );
       return { id, status: 'queued' };
     });
@@ -505,6 +543,7 @@ export function characterArtRouter() {
 }
 
 export const characterListSql = `SELECT c.*,
+  CASE WHEN c.race='Warforged' THEN COALESCE((SELECT s.choices->>'warforgedArtMode' FROM character_sheets s WHERE s.character_id=c.id),CASE WHEN EXISTS(SELECT 1 FROM character_sheets s WHERE s.character_id=c.id AND s.choices->'warforgedAppearance' IS NOT NULL) THEN 'construction' ELSE 'reference' END) ELSE 'reference' END AS art_reference_mode,
   EXISTS(SELECT 1 FROM "user" u WHERE u.id=c.user_id AND u.administrador=1) AS gold_unlimited,
   EXISTS(SELECT 1 FROM character_art_allowances a WHERE a.user_id=c.user_id AND a.unlimited) AS art_unlimited,
   (SELECT s.choices->'options'->'size'->>0 FROM character_sheets s WHERE s.character_id=c.id) AS species_size,

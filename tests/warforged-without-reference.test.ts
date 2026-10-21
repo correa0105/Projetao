@@ -1,4 +1,5 @@
 import { test } from 'node:test';
+import sharp from 'sharp';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import { pool } from '../server/db.js';
@@ -80,9 +81,19 @@ test('Warforged sem referência: fila, escolhas, privacidade, retomada e entrega
     assert.equal((await req(route + '/retry', owner.cookie, {})).status, 202);
     await pool.query("UPDATE character_art_jobs SET status='failed' WHERE id=$1", [id]);
     const image = await testArtImage();
+    const referenceChoices = {
+      ...choices,
+      warforgedArtMode: 'reference' as const,
+      warforgedAppearance: undefined,
+    };
+    const referenceCreation = { ...creation, choices: referenceChoices };
     assert.equal(
-      (await req(route + '/retry', owner.cookie, { creation, reference: image.toString('base64') }))
-        .status,
+      (
+        await req(route + '/retry', owner.cookie, {
+          creation: referenceCreation,
+          reference: image.toString('base64'),
+        })
+      ).status,
       202,
     );
     assert(
@@ -114,13 +125,21 @@ test('Warforged sem referência: fila, escolhas, privacidade, retomada e entrega
         },
       },
       { creation, reference: 'not_an_image' },
-      { character_id: randomUUID() },
     ])
       assert.equal(
         (await req('/character-art', owner.cookie, { ...payload, idempotency_key: randomUUID() }))
           .status,
         400,
       );
+    assert.equal(
+      (
+        await req('/character-art', owner.cookie, {
+          character_id: randomUUID(),
+          idempotency_key: randomUUID(),
+        })
+      ).status,
+      404,
+    );
     await pool.query("UPDATE character_art_jobs SET status='running' WHERE id=$1", [id]);
     const cid = await completeArt(id, { portrait: image });
     await pool.query("UPDATE character_art_jobs SET status='failed' WHERE id=$1", [id]);
@@ -138,6 +157,91 @@ test('Warforged sem referência: fila, escolhas, privacidade, retomada e entrega
     assert.deepEqual(saved.choices.warforgedAppearance, choices.warforgedAppearance);
     const state = (await req('/character-art', owner.cookie)).data;
     assert.equal(state.quotas[cid].used, 0, 'Arte inicial continua gratuita');
+    assert.equal(row.reference, null);
+    const base = (
+      await pool.query('SELECT construction_base FROM character_portraits WHERE character_id=$1', [
+        cid,
+      ])
+    ).rows[0].construction_base;
+    assert.deepEqual(base, image);
+    assert.equal(
+      (
+        await req('/character-art', owner.cookie, {
+          character_id: cid,
+          reference: image.toString('base64'),
+          idempotency_key: randomUUID(),
+        })
+      ).status,
+      400,
+      'Montagem não recebe referência externa',
+    );
+    assert.equal(
+      (await req('/characters/' + cid + '/sheet/choices', owner.cookie, referenceChoices)).status,
+      409,
+      'Modo de criação não pode ser trocado na ficha',
+    );
+    const dressed = await req('/character-art', owner.cookie, {
+      character_id: cid,
+      idempotency_key: randomUUID(),
+    });
+    assert.equal(dressed.status, 202, JSON.stringify(dressed.data));
+    const dressJob = (
+      await pool.query('SELECT reference,reference_mode FROM character_art_jobs WHERE id=$1', [
+        dressed.data.id,
+      ])
+    ).rows[0];
+    assert.equal(dressJob.reference_mode, 'construction');
+    assert.deepEqual(dressJob.reference, base);
+    const different = await sharp({
+      create: { width: 512, height: 768, channels: 4, background: '#403020cc' },
+    })
+      .png()
+      .toBuffer();
+    await pool.query("UPDATE character_art_jobs SET status='running' WHERE id=$1", [
+      dressed.data.id,
+    ]);
+    await completeArt(dressed.data.id, { portrait: different, token: await testTokenImage() });
+    assert.deepEqual(
+      (
+        await pool.query(
+          'SELECT construction_base FROM character_portraits WHERE character_id=$1',
+          [cid],
+        )
+      ).rows[0].construction_base,
+      base,
+    );
+    const referenceJob = await req('/character-art', owner.cookie, {
+      creation: { ...referenceCreation, name: 'Forjado por referência' },
+      reference: image.toString('base64'),
+      idempotency_key: randomUUID(),
+    });
+    assert.equal(referenceJob.status, 202, JSON.stringify(referenceJob.data));
+    await pool.query("UPDATE character_art_jobs SET status='running' WHERE id=$1", [
+      referenceJob.data.id,
+    ]);
+    const referenceId = await completeArt(referenceJob.data.id, {
+      portrait: image,
+      token: await testTokenImage(),
+    });
+    assert.equal(
+      (
+        await req('/character-art', owner.cookie, {
+          character_id: referenceId,
+          idempotency_key: randomUUID(),
+        })
+      ).status,
+      400,
+    );
+    assert.equal(
+      (
+        await req('/character-art', owner.cookie, {
+          character_id: referenceId,
+          reference: image.toString('base64'),
+          idempotency_key: randomUUID(),
+        })
+      ).status,
+      202,
+    );
   } finally {
     server.closeAllConnections();
     await new Promise<void>((r) => server.close(() => r()));

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { races, classes } from './rules.js';
 import { choicesSchema, validateChoices } from './character-sheet.js';
-import { warforgedAppearanceSchema } from './warforged-appearance.js';
+import { warforgedAppearanceSchema, warforgedArtMode } from './warforged-appearance.js';
 
 export const CHARACTER_LIMIT = 2;
 export const characterLimit = (_administrator: boolean) => CHARACTER_LIMIT;
@@ -39,13 +39,17 @@ export function canConstructWithoutReference(
   creation:
     | {
         race?: string;
-        choices?: { warforgedAppearance?: unknown };
+        choices?: {
+          warforgedAppearance?: unknown;
+          warforgedArtMode?: 'construction' | 'reference';
+        };
       }
     | null
     | undefined,
 ) {
   return (
     creation?.race === 'Warforged' &&
+    warforgedArtMode(creation.choices) === 'construction' &&
     warforgedAppearanceSchema.safeParse(creation.choices?.warforgedAppearance).success
   );
 }

@@ -90,6 +90,8 @@ export function CharacterArtButton({
     limit: character.art_unlimited ? null : ART_MONTHLY_LIMIT,
   };
   const quotaFull = quota.limit !== null && quota.used >= quota.limit;
+  const constructed =
+    character.race === 'Warforged' && character.art_reference_mode === 'construction';
   return (
     <div className="equipment-generate">
       <button
@@ -155,7 +157,7 @@ export function CharacterArtButton({
               try {
                 await post('/character-art', {
                   character_id: character.id,
-                  reference,
+                  reference: constructed ? undefined : reference,
                   idempotency_key: key.current,
                   equipment_slots: equipmentSlots,
                   helmet_mode: equipmentSlots.includes('head') ? helmetMode : 'closed',
@@ -188,7 +190,15 @@ export function CharacterArtButton({
                     ? 'Ilustrador disponível'
                     : 'Ilustrador offline')}
             </span>
-            <ReferenceInput onChange={setReference} disabled={busy} />
+            {constructed ? (
+              <p className="muted">
+                Warforged montado: a identidade salva será usada automaticamente. Corpo, cabeça,
+                metal, acabamento e cores serão preservados; somente as roupas e os equipamentos
+                selecionados mudam.
+              </p>
+            ) : (
+              <ReferenceInput onChange={setReference} disabled={busy} />
+            )}
             <ArtEquipmentChoices
               characterId={character.id}
               selected={equipmentSlots}
@@ -206,7 +216,7 @@ export function CharacterArtButton({
                 checkingQuota ||
                 quotaFull ||
                 pending ||
-                !reference ||
+                (!constructed && !reference) ||
                 !equipmentReady ||
                 availability !== true
               }

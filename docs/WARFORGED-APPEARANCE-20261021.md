@@ -20,13 +20,28 @@ no servidor. Novas criações recebem um padrão editável. Registros antigos se
 chave não são reescritos nem ganham instruções cosméticas automaticamente; troca
 de espécie remove a escolha incompatível. Salvar e recarregar conserva as opções.
 
-Na criação, o jogador pode escolher **Criar apenas com as características escolhidas**
-ou **Enviar uma imagem de referência**. Sem upload, o servidor aceita somente
-uma nova criação Warforged com construção validada. A fila salva referência NULL,
+Na criação, os modos **Criar apenas com as características escolhidas** e
+**Enviar uma imagem de referência** são exclusivos. Escolher referência desmarca e
+oculta toda a montagem; um aviso explica essa exigência. `warforgedArtMode` guarda
+o modo na ficha e não pode ser trocado posteriormente. Referência com montagem
+ativa é rejeitada pela API. Sem upload, o servidor aceita uma construção validada. A fila salva referência NULL,
 mantém todas as escolhas e permite retomar o mesmo pedido após falha. Trocar de
 uma referência enviada para construção sem imagem remove a referência anterior e
-invalida o retrato já aprovado. Outras espécies e novas artes de personagens
-existentes mantêm suas exigências anteriores. Arte inicial continua gratuita.
+invalida o retrato já aprovado. Arte inicial continua gratuita.
+
+**Vestir** e **Nova imagem** de um Warforged montado não pedem nem aceitam upload.
+A API copia a identidade BASE privada para o pedido; a revisão compara estrutura,
+rosto e proporções com essa base e exige a paleta/metal/acabamento salvos. Apenas
+roupas e itens selecionados podem mudar. A cor das roupas não recolore o corpo.
+Robôs criados por referência continuam usando referência e não anexam as pranchas
+de montagem. Outras espécies mantêm o fluxo anterior.
+
+Migration 123 adiciona `character_portraits.construction_base` e o modo protegido
+de cada pedido. Na criação montada, a primeira arte aprovada vira a base e vestir
+nunca a substitui. Fichas legadas com montagem salva seguem o modo construction;
+sem montagem, reference. A base legada é preservada no primeiro pedido de vestir.
+Pedidos pendentes sem referência da versão anterior são identificados pela própria
+criação Warforged validada; não reescrever escolhas de fichas ou cotas históricas.
 
 Retrato usa a prancha do corpo e a prancha da cabeça escolhida como referências
 somente das células selecionadas, com o estilo existente e, opcionalmente, a imagem
@@ -74,3 +89,7 @@ API em banco descartável cobre fila sem upload, troca de modo, privacidade,
 retry, entrega em duas etapas e cota inicial. CLI simulada captura anexos e prompts
 reais sem gerar arte paga, força reprovação de tecido atravessando pernas e
 confirma a correção/revisão, escolhas e limite de cinco referências.
+Também cobre referência/montagem incompatíveis, modo fixo, vestir sem upload,
+base imutável após trocar a arte, snapshot da paleta e ambos os acessos no navegador.
+XD 2 foi excluído pelo proprietário antes da correção preparada ser aplicada;
+os guardas preservaram os demais personagens e nenhuma cota foi cobrada.

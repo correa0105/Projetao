@@ -1,4 +1,5 @@
 import { WorldPlacePicker } from './WorldPlacePicker';
+import { defaultWarforgedAppearance, warforgedArtMode } from '../shared/warforged-appearance';
 import { RecoveryRequest } from './PasswordRecovery';
 import { passwordMinimumLength, passwordPattern, passwordRule, validNewPassword } from '../shared/password-policy';
 import { PersonalVttLink } from './PersonalVttLink';
@@ -344,7 +345,6 @@ export function CharacterForm({
   initialJobId?: string;
 }) {
   const [reference, setReference] = useState(initialReference);
-  const [useWarforgedReference, setUseWarforgedReference] = useState(Boolean(initialReference));
   const [available, setAvailable] = useState<boolean | null>(null);
   const [availabilityError, setAvailabilityError] = useState('');
   const requestKey = useRef(crypto.randomUUID());
@@ -379,6 +379,7 @@ export function CharacterForm({
     () =>
       initial?.choices || defaultChoices(initial?.race || 'Humano', initial?.class || 'Guerreiro'),
   );
+  const useWarforgedReference = warforgedArtMode(choices) === 'reference';
   const needsReference = race !== 'Warforged' || useWarforgedReference;
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -474,6 +475,34 @@ export function CharacterForm({
           </select>
         </label>
       </div>
+      {race === 'Warforged' && (
+        <fieldset className="character-reference-choices" disabled={busy}>
+          <legend>Como criar a aparência</legend>
+          <label className="check">
+            <input
+              type="radio"
+              name="warforged-reference-mode"
+              checked={!useWarforgedReference}
+              onChange={() => setChoices(current => ({...current,warforgedArtMode:'construction',warforgedAppearance:current.warforgedAppearance || {...defaultWarforgedAppearance}}))}
+            />
+            Criar apenas com as características escolhidas
+          </label>
+          <label className="check">
+            <input
+              type="radio"
+              name="warforged-reference-mode"
+              checked={useWarforgedReference}
+              onChange={() => setChoices(current => ({...current,warforgedArtMode:'reference',warforgedAppearance:undefined}))}
+            />
+            Enviar uma imagem de referência
+          </label>
+          <p className="muted small">
+            Para usar uma imagem de referência, desative a montagem. Ao escolher essa opção,
+            corpo, cabeça, cores e acabamento da montagem ficam desmarcados e não são usados.
+            Um Warforged montado usa somente suas escolhas e guarda essa identidade ao vestir.
+          </p>
+        </fieldset>
+      )}
       <SheetChoices race={race} cls={cls} value={choices} onChange={setChoices} />
       <label>
         Sua história <span className="muted">(opcional)</span>
@@ -485,33 +514,6 @@ export function CharacterForm({
           placeholder="De onde você veio? O que procura?"
         />
       </label>
-      {race === 'Warforged' && (
-        <fieldset className="character-reference-choices" disabled={busy}>
-          <legend>Como criar a aparência</legend>
-          <label className="check">
-            <input
-              type="radio"
-              name="warforged-reference-mode"
-              checked={!useWarforgedReference}
-              onChange={() => setUseWarforgedReference(false)}
-            />
-            Criar apenas com as características escolhidas
-          </label>
-          <label className="check">
-            <input
-              type="radio"
-              name="warforged-reference-mode"
-              checked={useWarforgedReference}
-              onChange={() => setUseWarforgedReference(true)}
-            />
-            Enviar uma imagem de referência
-          </label>
-          <p className="muted small">
-            A estrutura, a cabeça, o metal, o acabamento e a cor secundária escolhidos serão usados
-            na arte em qualquer opção.
-          </p>
-        </fieldset>
-      )}
       {(race !== 'Warforged' || useWarforgedReference) && (
         <ReferenceInput onChange={setReference} disabled={busy} required={!reference} />
       )}
