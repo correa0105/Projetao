@@ -73,23 +73,72 @@ try {
     page.getByRole('button', { name: 'Abrir aviso: Missão para moderação', exact: true }),
   ).toHaveCount(0);
   await page.getByRole('button', { name: 'Dispensar aviso', exact: true }).click();
+  const eventId = randomUUID();
+  await pool.query(
+    "INSERT INTO board_posts(id,kind,title,description,location,difficulty,status) VALUES($1,'event','Evento para moderação','Evento sem autor para revisão.','Bastião','Tranquila','active')",
+    [eventId],
+  );
+  await page.reload();
+  await page
+    .getByRole('button', { name: 'Abrir aviso: Evento para moderação', exact: true })
+    .click();
+  await page.getByRole('button', { name: 'Excluir evento', exact: true }).click();
+  const eventConfirmation = page.getByRole('dialog', {
+    name: 'Excluir evento do mural',
+    exact: true,
+  });
+  await eventConfirmation.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  expect(
+    (await pool.query('SELECT deleted_at FROM board_posts WHERE id=$1', [eventId])).rows[0]
+      .deleted_at,
+  ).toBeNull();
+  await page.getByRole('button', { name: 'Excluir evento', exact: true }).click();
+  await page.screenshot({ path: 'test-results/portal-controls/event-admin-delete.png' });
+  await eventConfirmation.getByRole('button', { name: 'Excluir evento', exact: true }).click();
+  await expect(eventConfirmation).toHaveCount(0);
+  await expect(
+    page.getByRole('button', { name: 'Abrir aviso: Evento para moderação', exact: true }),
+  ).toHaveCount(0);
+  await page.getByRole('button', { name: 'Dispensar aviso', exact: true }).click();
   await page.getByRole('button', { name: 'Abrir navegação', exact: true }).click();
   await page.getByRole('button', { name: 'Mural', exact: true }).click();
   await expect(
-    page.getByRole('button', { name: 'Eventos Em manutenção', exact: true }),
-  ).toBeDisabled();
+    page
+      .getByRole('navigation', { name: 'Navegação principal' })
+      .getByRole('button', { name: 'Eventos', exact: true }),
+  ).toBeEnabled();
   await expect(
-    page.getByRole('button', { name: 'Torre Em manutenção', exact: true }),
-  ).toBeDisabled();
+    page
+      .getByRole('navigation', { name: 'Navegação principal' })
+      .getByRole('button', { name: 'Torre', exact: true }),
+  ).toBeEnabled();
   await page.screenshot({ path: 'test-results/portal-controls/maintenance-menu.png' });
+  await page.goto(origin + '/#events');
+  await expect(page.getByRole('button', { name: 'Editar cenário', exact: true })).toBeVisible();
+  await page.goto(origin + '/#tower');
+  await expect(page.locator('.tower-page')).toBeVisible();
+  const playerContext = await browser.newContext();
+  const signupPlayer = await playerContext.request.post(origin + '/api/auth/sign-up/email', {
+    headers: { Origin: origin },
+    data: {
+      name: 'Jogador em manutenção',
+      email: randomUUID() + '@example.test',
+      password: randomUUID(),
+    },
+  });
+  expect(signupPlayer.status()).toBe(200);
+  const playerPage = await playerContext.newPage();
   for (const [route, title] of [
     ['events', 'Eventos em manutenção'],
     ['tower', 'Torre em manutenção'],
   ]) {
-    await page.goto(origin + '/#' + route);
-    await expect(page.getByRole('heading', { name: title, exact: true })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Voltar ao mural', exact: true })).toBeVisible();
+    await playerPage.goto(origin + '/#' + route);
+    await expect(playerPage.getByRole('heading', { name: title, exact: true })).toBeVisible();
+    await expect(
+      playerPage.getByRole('button', { name: 'Voltar ao mural', exact: true }),
+    ).toBeVisible();
   }
+  await playerContext.close();
   for (const [width, height] of [
     [1440, 900],
     [1024, 768],

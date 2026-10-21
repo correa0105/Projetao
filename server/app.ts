@@ -201,17 +201,18 @@ export function createApp() {
     }
     next();
   });
-  app.use('/api', (req, _res, next) => {
+  app.use('/api', async (req, res, next) => {
     const area = req.path.split('/')[1];
     const eventMediaWrite = area === 'event-images' && !['GET', 'HEAD'].includes(req.method);
-    if (['events', 'events-scene'].includes(area) || eventMediaWrite) requireAreaAvailable('events');
-    if (area === 'tower') requireAreaAvailable('tower');
+    if (['events', 'events-scene'].includes(area) || eventMediaWrite)
+      await requireAreaAvailable('events', res.locals.user.id);
+    if (area === 'tower') await requireAreaAvailable('tower', res.locals.user.id);
     next();
   });
-  app.use('/api/board/:id', async (req, _res, next) => {
+  app.use('/api/board/:id', async (req, res, next) => {
     if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method) && maintenanceAreas().includes('events')) {
       const post = await pool.query("SELECT 1 FROM board_posts WHERE id=$1 AND kind='event'", [uuid.parse(req.params.id)]);
-      if (post.rowCount) requireAreaAvailable('events');
+      if (post.rowCount) await requireAreaAvailable('events', res.locals.user.id);
     }
     next();
   });
@@ -297,7 +298,7 @@ export function createApp() {
             ? 'staff'
             : 'player',
       canEditKingdom: permission?.administrador === 1,
-      maintenance_areas: maintenanceAreas(),
+      maintenance_areas: (await isAdministrator(res.locals.user.id)) ? [] : maintenanceAreas(),
     });
   });
   app.get('/api/characters', async (_req, res) => {
@@ -408,7 +409,8 @@ export function createApp() {
   });
   app.post('/api/board', async (req, res) => {
     const data = postSchema.parse(req.body);
-    if (data.kind === 'event' || data.event_source_id) requireAreaAvailable('events');
+    if (data.kind === 'event' || data.event_source_id)
+      await requireAreaAvailable('events', res.locals.user.id);
     if (data.kind !== 'mission' && data.tag_ids.length)
       throw new AppError(400, 'Somente missões concedem tags.');
     if (data.rank_test_level !== null && rankName(data.rank_test_level) !== data.mission_rank)
@@ -474,8 +476,9 @@ export function createApp() {
     const id = uuid.parse(req.params.id);
     await transaction(async (client) => {
       await requireAdministrator(res.locals.user.id, client);
-      const { rows: [mission] } = await client.query('SELECT kind FROM board_posts WHERE id=$1 FOR UPDATE', [id]);
-      if (!mission || mission.kind !== 'mission') throw new AppError(404, 'Missão não encontrada.');
+      const { rows: [post] } = await client.query('SELECT kind FROM board_posts WHERE id=$1 FOR UPDATE', [id]);
+      if (!post || !['mission', 'event'].includes(post.kind))
+        throw new AppError(404, 'Missão ou evento não encontrado.');
       await client.query('UPDATE board_posts SET deleted_at=now(),deleted_by=$2 WHERE id=$1 AND deleted_at IS NULL', [id, res.locals.user.id]);
     });
     res.json({ ok: true });

@@ -1,6 +1,6 @@
 # Controles do portal — 21/10/2026
 
-Administradores podem excluir qualquer missão do mural, inclusive registros de outro
+Administradores podem excluir qualquer missão ou evento do mural, inclusive registros de outro
 autor ou sem autor. O botão **Excluir missão** aparece nos detalhes e pede confirmação.
 O servidor consulta a permissão atual; contas básicas e a prévia básica são recusadas.
 Uma nova tentativa da mesma exclusão mantém a data e o responsável originais.
@@ -13,7 +13,9 @@ Nenhuma missão real foi excluída automaticamente ao publicar este recurso.
 
 Eventos e Torre ficam em manutenção na configuração de produção da Hostinger.
 `MAINTENANCE_AREAS=events,tower` bloqueia as APIs dessas alas com HTTP 503 para
-todos, inclusive administradores. A lista é exposta em `/api/me`; o menu mostra
+jogadores. Administradores conservam acesso e gestão durante a manutenção; a prévia
+básica continua bloqueada. O servidor consulta a permissão atual no banco em cada
+acesso protegido. A lista efetiva é exposta em `/api/me` (vazia para administradores); o menu mostra
 **Em manutenção** e desativa os destinos. Links diretos exibem o aviso e o retorno
 ao mural. O servidor também bloqueia alterações de eventos feitas pelo mural.
 Para reabrir, definir `MAINTENANCE_AREAS=` no `.env.hostinger` e recriar o serviço app.
@@ -21,6 +23,16 @@ Configurações locais sem essa variável continuam permitindo testar essas áre
 Imagens já publicadas permanecem acessíveis pelas permissões existentes para não
 quebrar fundos do calendário que reutilizam a mídia de eventos; novos uploads ficam bloqueados.
 Dados, créditos, expedições e eventos existentes não são alterados pela manutenção.
+
+Correção solicitada após a publicação: o aviso “Vigília do primeiro inverno” é um
+evento sem autor, e agora também oferece **Excluir evento** em seus detalhes no mural.
+A confirmação usa o tipo correto. Remover pela ala Eventos também registra
+`deleted_at`/`deleted_by`, preservando missões vinculadas e impedindo sua edição ou
+reaparição em Eventos, mural e calendário. Nenhum aviso real é removido automaticamente.
+API em banco descartável: três testes aprovados, incluindo manutenção com exceção
+administrativa, prévia básica, evento sem autor, repetição e missão vinculada intacta.
+Navegador confirmou a exclusão com cancelamento e acesso do administrador a Eventos
+e Torre, com bloqueio dos mesmos caminhos para outro jogador.
 
 O Salão das Cartas mantém cabeçalho e painel no fluxo normal. O painel acompanha
 a altura real do título e respeita o cabeçalho da página em duas linhas nos tamanhos

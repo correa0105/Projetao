@@ -170,7 +170,7 @@ test('administrador remove missão alheia sem desfazer recompensas; jogador e pr
   );
 });
 
-test('manutenção bloqueia Eventos e Torre por API para jogadores e administradores sem alterar dados', async () => {
+test('manutenção bloqueia jogadores e prévia básica, preservando acesso administrativo e mídia do calendário', async () => {
   const previous = process.env.MAINTENANCE_AREAS;
   await request('/calendar?month=2030-01', admin);
   const calendarBefore = (await pool.query('SELECT document FROM guild_calendar WHERE id=1'))
@@ -195,8 +195,14 @@ test('manutenção bloqueia Eventos e Torre por API para jogadores e administrad
   ).rows[0];
   process.env.MAINTENANCE_AREAS = 'events,tower';
   try {
-    for (const client of [admin, player]) {
-      assert.deepEqual((await request('/me', client)).data.maintenance_areas, ['events', 'tower']);
+    for (const [client, preview] of [
+      [player, false],
+      [admin, true],
+    ] as const) {
+      assert.deepEqual(
+        (await request('/me', client, 'GET', undefined, preview)).data.maintenance_areas,
+        ['events', 'tower'],
+      );
       for (const [path, method] of [
         ['/events', 'GET'],
         ['/events-scene', 'GET'],
@@ -205,12 +211,18 @@ test('manutenção bloqueia Eventos e Torre por API para jogadores e administrad
         ['/tower/expeditions', 'POST'],
         ['/tower/expeditions/' + randomUUID() + '/treasure', 'POST'],
       ]) {
-        const response = await request(path, client, method, method === 'POST' ? {} : undefined);
+        const response = await request(
+          path,
+          client,
+          method,
+          method === 'POST' ? {} : undefined,
+          preview,
+        );
         assert.equal(response.status, 503, path);
         assert.match(response.data.error, /manutenção/);
       }
       const asset = await fetch(base + '/api/event-images/' + image.id, {
-        headers: { Cookie: client.cookie },
+        headers: { Cookie: client.cookie, ...(preview ? { 'X-Account-Preview': 'basic' } : {}) },
       });
       assert.equal(
         asset.status,
@@ -221,7 +233,7 @@ test('manutenção bloqueia Eventos e Torre por API para jogadores e administrad
     }
     assert.equal(
       (
-        await request('/board', admin, 'POST', {
+        await request('/board', player, 'POST', {
           kind: 'event',
           title: 'Evento bloqueado',
           description: 'Um evento que não deve ser criado.',
@@ -234,7 +246,7 @@ test('manutenção bloqueia Eventos e Torre por API para jogadores e administrad
     const event = (await pool.query("SELECT id FROM board_posts WHERE kind='event' LIMIT 1"))
       .rows[0];
     assert.equal(
-      (await request(`/board/${event.id}`, admin, 'PATCH', { status: 'active' })).status,
+      (await request(`/board/${event.id}`, player, 'PATCH', { status: 'active' })).status,
       503,
     );
     assert.deepEqual(
@@ -245,11 +257,74 @@ test('manutenção bloqueia Eventos e Torre por API para jogadores e administrad
       ).rows[0],
       before,
     );
-    process.env.MAINTENANCE_AREAS = '';
-    assert.equal((await request('/events', admin)).status, 200);
+    assert.deepEqual((await request('/me', admin)).data.maintenance_areas, []);
+    for (const path of ['/events', '/events-scene', '/tower'])
+      assert.equal((await request(path, admin)).status, 200, path);
   } finally {
     await pool.query('UPDATE guild_calendar SET document=$1 WHERE id=1', [calendarBefore]);
     await pool.query('DELETE FROM event_images WHERE id=$1', [image.id]);
+    if (previous === undefined) delete process.env.MAINTENANCE_AREAS;
+    else process.env.MAINTENANCE_AREAS = previous;
+  }
+});
+
+test('administrador remove evento sem autor durante manutenção e preserva missões vinculadas', async () => {
+  const previous = process.env.MAINTENANCE_AREAS;
+  process.env.MAINTENANCE_AREAS = 'events,tower';
+  try {
+    const eventId = randomUUID(),
+      missionId = randomUUID();
+    missions.push(eventId, missionId);
+    await pool.query(
+      "INSERT INTO board_posts(id,kind,title,description,location,difficulty,status,starts_at) VALUES($1,'event','Evento sem autor','Evento de demonstração para remover.','Bastião','Tranquila','active','2030-01-03T18:00:00Z')",
+      [eventId],
+    );
+    await pool.query(
+      "INSERT INTO board_posts(id,kind,title,description,location,difficulty,event_source_id) VALUES($1,'mission','Missão vinculada','Missão que deve permanecer.','Bastião','Tranquila',$2)",
+      [missionId, eventId],
+    );
+    assert.equal((await request(`/board/${eventId}`, player, 'DELETE')).status, 503);
+    assert.equal(
+      (await request(`/board/${eventId}`, admin, 'DELETE', undefined, true)).status,
+      503,
+    );
+    assert.equal((await request(`/board/${eventId}`, admin, 'DELETE')).status, 200);
+    const audit = (
+      await pool.query('SELECT deleted_at,deleted_by FROM board_posts WHERE id=$1', [eventId])
+    ).rows[0];
+    assert(audit.deleted_at);
+    assert.equal(audit.deleted_by, admin.id);
+    assert.equal((await request(`/board/${eventId}`, admin, 'DELETE')).status, 200);
+    assert.deepEqual(
+      (await pool.query('SELECT deleted_at,deleted_by FROM board_posts WHERE id=$1', [eventId]))
+        .rows[0],
+      audit,
+    );
+    assert(
+      !(await request('/board', admin)).data.some((post: { id: string }) => post.id === eventId),
+    );
+    assert(
+      !(await request('/events', admin)).data.items.some(
+        (post: { id: string }) => post.id === eventId,
+      ),
+    );
+    assert(
+      !(await request('/calendar?month=2030-01', admin)).data.entries.some(
+        (post: { id: string }) => post.id === eventId,
+      ),
+    );
+    const linked = (
+      await pool.query('SELECT event_source_id,deleted_at FROM board_posts WHERE id=$1', [
+        missionId,
+      ])
+    ).rows[0];
+    assert.equal(linked.event_source_id, eventId);
+    assert.equal(linked.deleted_at, null);
+    assert.equal(
+      (await request('/events/' + eventId, admin, 'DELETE', { revision: 1 })).status,
+      409,
+    );
+  } finally {
     if (previous === undefined) delete process.env.MAINTENANCE_AREAS;
     else process.env.MAINTENANCE_AREAS = previous;
   }

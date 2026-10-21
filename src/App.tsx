@@ -489,9 +489,9 @@ function Portal({ user }: { user: User }) {
                 </button>
               </div>
             )}
-          {administrator && item.kind === 'mission' && (
+          {administrator && ['mission', 'event'].includes(item.kind) && (
             <button disabled={busy} onClick={() => { setDeletionError(''); setDeletingMission(item); }}>
-              Excluir missão
+              Excluir {item.kind === 'event' ? 'evento' : 'missão'}
             </button>
           )}
         </div>
@@ -817,9 +817,9 @@ function Portal({ user }: { user: User }) {
         </Modal>
       )}
       {deletingMission && (
-        <Modal title="Excluir missão do mural" close={() => { if (!busy) setDeletingMission(null); }}>
+        <Modal title={`Excluir ${deletingMission.kind === 'event' ? 'evento' : 'missão'} do mural`} close={() => { if (!busy) setDeletingMission(null); }}>
           <p>Excluir “{deletingMission.title}” do mural?</p>
-          <p>O ouro, a progressão e as recompensas já entregues serão mantidos.</p>
+          <p>{deletingMission.kind === 'event' ? 'As missões vinculadas e seus registros serão mantidos.' : 'O ouro, a progressão e as recompensas já entregues serão mantidos.'}</p>
           {deletionError && <FlashMessage>{deletionError}</FlashMessage>}
           <div className="dialog-actions">
             <button className="button" disabled={busy} onClick={() => setDeletingMission(null)}>Cancelar</button>
@@ -827,10 +827,10 @@ function Portal({ user }: { user: User }) {
               setBusy(true); setDeletionError('');
               try {
                 await api(`/board/${deletingMission.id}`, { method: 'DELETE' });
-                await refresh(); setDeletingMission(null); setToast('Missão excluída do mural.');
+                await refresh(); setDeletingMission(null); setToast(deletingMission.kind === 'event' ? 'Evento excluído do mural.' : 'Missão excluída do mural.');
               } catch (error) { setDeletionError((error as Error).message); }
               finally { setBusy(false); }
-            }}>{busy ? 'Excluindo…' : 'Excluir missão'}</button>
+            }}>{busy ? 'Excluindo…' : `Excluir ${deletingMission.kind === 'event' ? 'evento' : 'missão'}`}</button>
           </div>
         </Modal>
       )}

@@ -38,7 +38,7 @@ export function eventsRouter() {
       can_edit: await isAdministrator(res.locals.user.id),
       items: (
         await pool.query(
-          'SELECT b.id,b.title,b.description,b.starts_at,b.location,b.status,b.created_at,b.event_revision,b.event_presentation AS presentation,u.name AS author_name FROM board_posts b LEFT JOIN "user" u ON u.id=b.author_id WHERE b.kind=\'event\' ORDER BY b.starts_at NULLS LAST,b.created_at DESC',
+          'SELECT b.id,b.title,b.description,b.starts_at,b.location,b.status,b.created_at,b.event_revision,b.event_presentation AS presentation,u.name AS author_name FROM board_posts b LEFT JOIN "user" u ON u.id=b.author_id WHERE b.kind=\'event\' AND b.deleted_at IS NULL ORDER BY b.starts_at NULLS LAST,b.created_at DESC',
         )
       ).rows,
     }),
@@ -95,7 +95,7 @@ export function eventsRouter() {
       d = eventInputSchema.parse(raw);
     await checkImages([d.presentation.image]);
     const r = await pool.query(
-      `UPDATE board_posts SET title=$1,description=$2,starts_at=$3,location=$4,status=$5,event_presentation=$6,event_revision=event_revision+1,closed_at=CASE WHEN $5 IN ('completed','closed') THEN now() ELSE NULL END WHERE id=$7 AND kind='event' AND event_revision=$8 AND ${administratorPredicate(9)} RETURNING id,event_revision`,
+      `UPDATE board_posts SET title=$1,description=$2,starts_at=$3,location=$4,status=$5,event_presentation=$6,event_revision=event_revision+1,closed_at=CASE WHEN $5 IN ('completed','closed') THEN now() ELSE NULL END WHERE id=$7 AND kind='event' AND deleted_at IS NULL AND event_revision=$8 AND ${administratorPredicate(9)} RETURNING id,event_revision`,
       [
         d.title,
         d.description,
@@ -118,7 +118,7 @@ export function eventsRouter() {
     const id = uuid.parse(req.params.id),
       revision = z.number().int().min(1).parse(req.body?.revision);
     const r = await pool.query(
-      `DELETE FROM board_posts WHERE id=$1 AND kind='event' AND event_revision=$2 AND ${administratorPredicate(3)} RETURNING id`,
+      `UPDATE board_posts SET deleted_at=now(),deleted_by=$3 WHERE id=$1 AND kind='event' AND deleted_at IS NULL AND event_revision=$2 AND ${administratorPredicate(3)} RETURNING id`,
       [id, revision, res.locals.user.id],
     );
     if (!r.rowCount)
