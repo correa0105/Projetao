@@ -277,7 +277,7 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
       const state=fs.existsSync(${JSON.stringify(statePath)})?JSON.parse(fs.readFileSync(${JSON.stringify(statePath)})):{renders:[],reviews:[]};
       const top=dir.includes('character-token-art'), review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
-      if(review){state.reviews.push({top,prompt});fs.writeFileSync(result,JSON.stringify({approved:!state.rejectToken||!top,appendages_correct:!state.rejectAnatomy,issues:state.rejectToken&&top?['Câmera frontal incorreta.']:[]}));}
+      if(review){state.reviews.push({top,prompt});fs.writeFileSync(result,JSON.stringify({approved:!state.rejectToken||!top,clothing_correct:!state.rejectClothing,appendages_correct:!state.rejectAnatomy,issues:state.rejectToken&&top?['Câmera frontal incorreta.']:[]}));}
       else{state.renders.push({top,prompt,hashes:images.map(p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex'))});const output=path.join(dir,'output.png');fs.copyFileSync(top?${JSON.stringify(join(temp, 'token.png'))}:${JSON.stringify(join(temp, 'portrait.png'))},output);fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));}
       fs.writeFileSync(${JSON.stringify(statePath)},JSON.stringify(state));
     });`,
@@ -331,6 +331,9 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     const failed = JSON.parse(await readFile(statePath, 'utf8'));
     assert.equal(failed.renders.length, 3);
     assert.ok(failed.renders[1].prompt.includes('Câmera frontal incorreta.'));
+    await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], rejectClothing: true }));
+    await assert.rejects(generateCharacterToken({ ...job, id: randomUUID() }, portrait), /revisão/);
+    assert.equal(JSON.parse(await readFile(statePath, 'utf8')).reviews.length, 3);
     await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], rejectAnatomy: true }));
     await assert.rejects(generateCharacterArtPair({ ...job, id: randomUUID() }), /não passou/);
     const anatomy = JSON.parse(await readFile(statePath, 'utf8'));

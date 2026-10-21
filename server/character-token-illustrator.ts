@@ -121,9 +121,10 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
       properties: {
         approved: { type: 'boolean' },
         appendages_correct: { type: 'boolean' },
+        clothing_correct: { type: 'boolean' },
         issues: { type: 'array', items: { type: 'string' } },
       },
-      required: ['approved', 'appendages_correct', 'issues'],
+      required: ['approved', 'appendages_correct', 'clothing_correct', 'issues'],
       additionalProperties: false,
     }),
   );
@@ -194,7 +195,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
           '\n' +
           ART_ANATOMY_RULES +
           (animal ? '' : '\n' + ART_CLOTHING_RULES) +
-          ' Registre appendages_correct=false para qualquer defeito anatômico visível. Retorne approved=true, appendages_correct=true e issues=[] somente se cumprir; caso contrário descreva defeitos visíveis em português.',
+          ' Registre clothing_correct=false se houver roupa interpenetrada ou mangas/punhos desconectados. Oclusão pela câmera superior é correta; não inventar defeito oculto. Registre appendages_correct=false para qualquer defeito anatômico visível. Retorne approved=true, appendages_correct=true, clothing_correct=true e issues=[] somente se cumprir; caso contrário descreva defeitos visíveis em português.',
         120_000,
       );
       let review;
@@ -203,6 +204,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
           .object({
             approved: z.boolean(),
             appendages_correct: z.boolean(),
+            clothing_correct: z.boolean(),
             issues: z.array(z.string().max(600)).max(12),
           })
           .parse(JSON.parse(await readFile(reviewPath, 'utf8')));
@@ -211,6 +213,8 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
       }
       const meta = await sharp(bytes, { limitInputPixels: 40_000_000 }).metadata();
       issues = review.issues;
+      if (!review.clothing_correct && !issues.length)
+        issues.push('Corrigir interpenetração da roupa e conexão física das mangas e punhos.');
       if (!review.appendages_correct && !issues.length)
         issues.push(
           'Corrigir o alinhamento anatômico dos apêndices, incluindo as bases do par de chifres.',
@@ -221,7 +225,8 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
         issues.push(
           'Entregar composição quadrada de pelo menos 512 pixels, sem cortar o personagem.',
         );
-      if (review.approved && review.appendages_correct && !issues.length) return bytes;
+      if (review.approved && review.appendages_correct && review.clothing_correct && !issues.length)
+        return bytes;
     }
     throw new IllustratorError(
       'token_rejected',

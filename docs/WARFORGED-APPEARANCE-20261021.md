@@ -36,8 +36,13 @@ Token e revisão também recebem estrutura, cabeça, acabamento e paleta; oclus�
 natural e revisão anatômica continuam obrigatórias. Nenhuma geração real de
 personagem é consumida pelos testes.
 
-Geração, correção e revisão do retrato/token recebem a regra de caimento da calça:
-tecido envolve o corpo e nunca atravessa pernas ou articulações metálicas. Rasgos
+Geração, correção e revisão do retrato/token recebem a regra de caimento da roupa:
+tecido envolve o corpo e nunca atravessa pernas ou articulações metálicas. Mangas
+precisam ligar-se ao ombro; uma camisa sem mangas não pode criar punhos soltos nos
+antebraços. O resultado exige `clothing_correct=true` na revisão visual, além de
+anatomia aprovada e nenhum defeito pendente. Ausência desse campo falha a revisão;
+false força correção mesmo que `approved=true`. Após três reprovações, não publicar.
+Testes simulam essas contradições e ausência de resposta tanto no retrato como no token. Rasgos
 com bordas e volume coerentes são permitidos. Reprovação usa o ciclo existente de
 até três correções, sem publicar imagem reprovada. Isso se aplica às próximas
 gerações; imagens já entregues não são alteradas automaticamente.

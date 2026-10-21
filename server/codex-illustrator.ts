@@ -141,7 +141,7 @@ export async function checkCodexLogin() {
     throw new Error('Use codex login com sua conta ChatGPT.');
 }
 
-async function reviewComposition(
+export async function reviewComposition(
   image: string,
   directory: string,
   hasCape: boolean,
@@ -162,9 +162,10 @@ async function reviewComposition(
       properties: {
         approved: { type: 'boolean' },
         appendages_correct: { type: 'boolean' },
+        clothing_correct: { type: 'boolean' },
         issues: { type: 'array', items: { type: 'string' } },
       },
-      required: ['approved', 'appendages_correct', 'issues'],
+      required: ['approved', 'appendages_correct', 'clothing_correct', 'issues'],
       additionalProperties: false,
     }),
   );
@@ -197,6 +198,7 @@ async function reviewComposition(
     Oclusão natural é correta: itens ocultos NÃO precisam aparecer.
     ${ART_ANATOMY_RULES} Registre appendages_correct=false se houver defeito anatômico visível e descreva-o em issues. Se não houver apêndices incomuns, confira a anatomia normal antes de marcar true.
     ${companion ? '' : ART_CLOTHING_RULES}
+    Julgue clothing_correct separadamente: false para roupa interpenetrada, mangas ou punhos sem ligação física, mesmo que anatomia e estilo estejam corretos; true se não houver esses defeitos visíveis. Nunca aprovar com clothing_correct=false.
     ${horns ? `A última imagem é somente o formato dos chifres escolhido pelo jogador, nunca o rosto/corpo. Formato obrigatório: ${horns.instruction} Reprove um formato diferente; respeite perspectiva e oclusão natural por cabelo/equipamento.` : ''}
     ${warforgedInstructions ? `${warforgedInstructions} Confira estrutura, cabeça, acabamento e cores nas partes visíveis. Reprove divergências visíveis, sem exigir que roupas ou equipamentos sejam removidos.` : ''}
     Reprove ombreiras desenhadas por cima da capa e anéis desenhados por cima de luvas,
@@ -217,6 +219,7 @@ async function reviewComposition(
       .object({
         approved: z.boolean(),
         appendages_correct: z.boolean(),
+        clothing_correct: z.boolean(),
         issues: z.array(z.string().max(600)).max(12),
       })
       .parse(JSON.parse(await readFile(result, 'utf8')));
@@ -225,6 +228,13 @@ async function reviewComposition(
       if (!review.issues.length)
         review.issues.push(
           'Corrigir a origem e o alinhamento anatômico dos apêndices, especialmente as bases do par de chifres.',
+        );
+    }
+    if (!review.clothing_correct) {
+      review.approved = false;
+      if (!review.issues.length)
+        review.issues.push(
+          'Corrigir tecido atravessando as pernas e mangas ou punhos desconectados, com caimento e costuras coerentes.',
         );
     }
     return review;

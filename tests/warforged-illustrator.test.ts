@@ -66,7 +66,7 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
       const review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
       const images=args.flatMap((v,i)=>v==='--image'?[args[i+1]]:[]);
       if(images.length>5||images.some(p=>!fs.existsSync(p)))process.exit(1);
-      if(review){state.reviews.push(prompt);fs.writeFileSync(result,JSON.stringify({approved:state.reviews.length>1,appendages_correct:true,issues:state.reviews.length>1?[]:['Tecido atravessando as pernas metálicas. Corrigir caimento.']}));}
+      if(review){state.reviews.push(prompt);fs.writeFileSync(result,JSON.stringify({approved:true,clothing_correct:state.omitClothing?undefined:(state.reviews.length>1&&!state.rejectClothing),appendages_correct:true,issues:[]}));}
       else {state.renders.push({prompt,images});const output=path.join(args[args.indexOf('--cd')+1],'output.png');fs.copyFileSync(${JSON.stringify(fixture)},output);fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));}
       fs.writeFileSync(${JSON.stringify(capture)},JSON.stringify(state));
     });
@@ -112,7 +112,7 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
     assert.match(state.renders[0].images[0], /character-style-v1\.png$/);
     assert(state.renders[0].images.every((p: string) => !p.endsWith('reference.png')));
     assert.match(state.renders[0].prompt, /CONSTRUÇÃO SEM IMAGEM DO JOGADOR/);
-    assert.match(state.renders[1].prompt, /Tecido atravessando as pernas metálicas/);
+    assert.match(state.renders[1].prompt, /tecido atravessando as pernas/i);
     for (const prompt of [
       ...state.renders.map((r: { prompt: string }) => r.prompt),
       ...state.reviews,
@@ -125,6 +125,11 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
       before,
       'Pranchas originais inalteradas',
     );
+    await writeFile(capture,JSON.stringify({renders:[],reviews:[],rejectClothing:true}));
+    await assert.rejects(()=>generateCharacterArt({id:randomUUID(),race:'Warforged',class:'Guerreiro',reference:null,choices}),/verificação/);
+    assert.equal(JSON.parse(await readFile(capture,'utf8')).reviews.length,3);
+    await writeFile(capture,JSON.stringify({renders:[],reviews:[],omitClothing:true}));
+    await assert.rejects(()=>generateCharacterArt({id:randomUUID(),race:'Warforged',class:'Guerreiro',reference:null,choices}),/conferir a composição/);
     await assert.rejects(
       () =>
         generateCharacterArt({

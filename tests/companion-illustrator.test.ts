@@ -19,7 +19,7 @@ test('animal veste referências reais sobre BASE sem estilo humano ou mistura de
     `
     const fs=require('node:fs'),path=require('node:path');const args=process.argv.slice(2),images=args.flatMap((v,i)=>v==='--image'?[args[i+1]]:[]),result=args[args.indexOf('--output-last-message')+1];
     let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
-      if(JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1],'utf8')).properties.approved){const saved=JSON.parse(fs.readFileSync(${JSON.stringify(capture)},'utf8'));saved.review=prompt;fs.writeFileSync(${JSON.stringify(capture)},JSON.stringify(saved));fs.writeFileSync(result,JSON.stringify({approved:true,appendages_correct:true,issues:[]}));return;}
+      if(JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1],'utf8')).properties.approved){const saved=JSON.parse(fs.readFileSync(${JSON.stringify(capture)},'utf8'));saved.review=prompt;fs.writeFileSync(${JSON.stringify(capture)},JSON.stringify(saved));fs.writeFileSync(result,JSON.stringify({approved:true,clothing_correct:true,appendages_correct:true,issues:[]}));return;}
       if(images.length>5)process.exit(1);
       fs.writeFileSync(${JSON.stringify(capture)},JSON.stringify({prompt,images:images.map(p=>({path:p,bytes:fs.readFileSync(p).toString('base64')}))}));
       const out=path.join(args[args.indexOf('--cd')+1],'output.png');fs.copyFileSync(images[0],out);fs.writeFileSync(result,JSON.stringify({image_path:out,error:''}));

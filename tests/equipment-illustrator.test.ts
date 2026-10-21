@@ -24,7 +24,7 @@ test('recupera último arquivo da sessão e corrige fundo opaco sem confiar no J
     const args=process.argv.slice(2), result=args[args.indexOf('--output-last-message')+1];
     let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
       if(JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved){
-        fs.writeFileSync(result,JSON.stringify({approved:true,appendages_correct:true,issues:[]}));return;
+        fs.writeFileSync(result,JSON.stringify({approved:true,clothing_correct:true,appendages_correct:true,issues:[]}));return;
       }
       const statePath=${JSON.stringify(statePath)};
       const state=fs.existsSync(statePath)?JSON.parse(fs.readFileSync(statePath)):{renders:0};
@@ -75,7 +75,7 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     process.stdin.on('end', () => {
       if (images.length > 5) process.exit(1);
       if (JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1], 'utf8')).properties.approved) {
-        fs.writeFileSync(args[args.indexOf('--output-last-message')+1], JSON.stringify({approved:true,appendages_correct:true,issues:[]}));
+        fs.writeFileSync(args[args.indexOf('--output-last-message')+1], JSON.stringify({approved:true,clothing_correct:true,appendages_correct:true,issues:[]}));
         return;
       }
       const directory = args[args.indexOf('--cd')+1], output = path.join(directory, 'output.png');
@@ -280,7 +280,7 @@ test('revisão visual corrige resultado reprovado e rejeita arte que continua er
       const review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
       if(review){
         state.reviews++; const approved=state.reviews>1 && !state.alwaysReject;
-        fs.writeFileSync(result,JSON.stringify({approved,appendages_correct:true,issues:approved?[]:['A capa está enrolada no braço; soltar o manto sobre as ombreiras.']}));
+        fs.writeFileSync(result,JSON.stringify({approved,clothing_correct:true,appendages_correct:true,issues:approved?[]:['A capa está enrolada no braço; soltar o manto sobre as ombreiras.']}));
       }else{
         state.renders++;state.prompt=prompt;state.images=images;
         const output=path.join(directory,'output.png');fs.copyFileSync(images.length===1?images[0]:images[1],output);
