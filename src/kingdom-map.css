@@ -610,3 +610,8 @@
   border-color: #f0d59e;
   background: #29352e;
 }
+@media (max-width: 900px) {
+  .kingdom-map .kingdom-map__editor-toggle {
+    top: calc(2 * var(--page-header-height) + 20px);
+  }
+}

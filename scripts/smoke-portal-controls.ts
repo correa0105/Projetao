@@ -144,6 +144,10 @@ try {
     await expect(region).toHaveAttribute('data-image-width', '4096');
     await expect(region).toHaveAttribute('data-image-height', '2633');
     await expect(region).toHaveAttribute('data-tilt', '1');
+    const regionalHeading = await page.locator('.world-atlas-heading').boundingBox();
+    const pageHeading = await page.locator('.page-header').boundingBox();
+    await page.screenshot({ path: `test-results/portal-controls/north-map-${width}.png` });
+    expect(regionalHeading!.y - (pageHeading!.y + pageHeading!.height)).toBeGreaterThanOrEqual(width <= 900 ? 8 : 0);
     const response = await imageResponse;
     expect(
       createHash('sha256')
@@ -153,7 +157,6 @@ try {
     await expect(
       page.getByRole('button', { name: 'Abrir missões do Reino do Norte', exact: true }),
     ).toBeVisible();
-    await page.screenshot({ path: `test-results/portal-controls/north-map-${width}.png` });
     await page
       .getByRole('button', { name: 'Abrir missões do Reino do Norte', exact: true })
       .click();
