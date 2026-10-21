@@ -42,7 +42,7 @@ async function signup(administrator = false): Promise<Client> {
     body: JSON.stringify({
       name: 'Moderação de teste',
       email: randomUUID() + '@example.test',
-      password: randomUUID(),
+      password: 'Test-' + randomUUID(),
     }),
   });
   assert.equal(response.status, 200);

@@ -34,7 +34,7 @@ try {
     data: {
       name: 'Carregamento de teste',
       email: randomUUID() + '@example.test',
-      password: randomUUID(),
+      password: 'Test-' + randomUUID(),
     },
   });
   expect(signup.status()).toBe(200);

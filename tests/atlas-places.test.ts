@@ -23,7 +23,7 @@ test('pins e histórias: somente admin escreve; rascunhos privados, três prévi
       body: JSON.stringify({
         name: 'Viajante',
         email: randomUUID() + '@example.test',
-        password: randomUUID(),
+        password: 'Test-' + randomUUID(),
       }),
     });
     assert.equal(r.status, 200);

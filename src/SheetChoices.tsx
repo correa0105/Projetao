@@ -20,6 +20,7 @@ import {
   startingEquipment,
   startingGold,
   feats,
+  originFeats,
   type SheetChoices as Choices,
 } from '../shared/character-sheet';
 import { statNames, money } from '../shared/rules';
@@ -53,7 +54,7 @@ export function ChoiceList({
         {help && <SheetHelp label={label}>{help}</SheetHelp>}
       </legend>
       <div className="sheet-checks">
-        {options.map((v) => {
+        {[...new Set([...options, ...value])].map((v) => {
           const spell = spells.find((s) => s.id === v);
           const choice = (
             <label key={v}>
@@ -68,6 +69,9 @@ export function ChoiceList({
               <span className="sheet-choice-name">
                 <TrainingBadge name={v} />
                 <span>{spell?.label || v}</span>
+                {!options.includes(v) && (
+                  <small>Desmarque para escolher outra opção disponível.</small>
+                )}
               </span>
             </label>
           );
@@ -158,7 +162,7 @@ export function SheetChoices({
           Antecedente
           <SheetHelp label="Antecedente">
             O antecedente concede bônus de atributos, duas perícias, uma ferramenta e um talento de
-            origem. Inclui os 16 antecedentes básicos de 2024.
+            origem à sua escolha. Inclui os 16 antecedentes básicos de 2024.
           </SheetHelp>
           <select
             aria-label="Antecedente"
@@ -176,10 +180,28 @@ export function SheetChoices({
           <p className="muted small">
             {b.skills.join(' · ')} · {backgroundTool(c)} · {feats(c)[0]}
           </p>
-          {b.feat.startsWith('Iniciado em Magia') && (
+          <label>
+            Talento de origem
+            <select
+              aria-label="Talento de origem"
+              value={feats(c)[0]}
+              onChange={(event) => update({ backgroundFeat: event.target.value })}
+            >
+              {originFeats.map((feat) => (
+                <option key={feat} value={feat}>
+                  {feat}
+                </option>
+              ))}
+            </select>
+          </label>
+          <p className="muted small">
+            Escolha qualquer talento de origem, independente do antecedente. O talento adicional de
+            Humano é escolhido separadamente.
+          </p>
+          {feats(c)[0].startsWith('Iniciado em Magia') && (
             <p className="muted small">
-              O antecedente {c.backgroundType} concede {feats(c)[0]}: 2 truques e 1 magia de nível
-              1, mesmo para {cls}. Essas escolhas vêm do antecedente e são adicionais às da classe.
+              O talento escolhido, {feats(c)[0]}, concede 2 truques e 1 magia de nível 1, mesmo para{' '}
+              {cls}. Essas escolhas vêm do antecedente e são adicionais às da classe.
               {cls === 'Bárbaro' &&
                 ' Durante a Fúria, não é possível conjurar nem manter concentração.'}
             </p>

@@ -1,4 +1,6 @@
 import { WorldPlacePicker } from './WorldPlacePicker';
+import { RecoveryRequest } from './PasswordRecovery';
+import { passwordMinimumLength, passwordPattern, passwordRule, validNewPassword } from '../shared/password-policy';
 import { PersonalVttLink } from './PersonalVttLink';
 import { MusicControls } from './SiteMusic';
 import { FlashMessage } from './FlashMessage';
@@ -116,6 +118,7 @@ export function Login() {
     return () => window.clearTimeout(timer);
   }, [started]);
   const [register, setRegister] = useState(false);
+  const [recover, setRecover] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   useEffect(() => {
@@ -129,6 +132,7 @@ export function Login() {
         if (!opening) {
           setError('');
           setRegister(false);
+          setRecover(false);
           setShowPassword(false);
           requestAnimationFrame(() => startRef.current?.focus({ preventScroll: true }));
         }
@@ -151,6 +155,7 @@ export function Login() {
         email: String(form.get('email')).trim(),
         password: String(form.get('password')),
       };
+      if(register&&!validNewPassword(credentials.password)){setError(passwordRule);return;}
       const result = register
         ? await authClient.signUp.email({
             ...credentials,
@@ -208,8 +213,8 @@ export function Login() {
             inert={transition === 'closing'}
           >
             <div className="login-form">
-              <h1 id="auth-heading">{register ? 'Criar conta' : 'Entrar'}</h1>
-              <form onSubmit={submit}>
+              <h1 id="auth-heading">{recover?'Recuperar senha':register ? 'Criar conta' : 'Entrar'}</h1>
+              {recover?<RecoveryRequest onBack={()=>setRecover(false)}/>:<form onSubmit={submit}>
                 {register && (
                   <label>
                     <span className="auth-field-name">Como podemos chamar você?</span>
@@ -246,9 +251,12 @@ export function Login() {
                       name="password"
                       type={showPassword ? 'text' : 'password'}
                       autoComplete={register ? 'new-password' : 'current-password'}
-                      minLength={register ? 10 : 1}
+                      minLength={register ? passwordMinimumLength : 1}
+                      pattern={register ? passwordPattern : undefined}
+                      title={register ? passwordRule : undefined}
+                      aria-describedby={register ? 'signup-password-rule' : undefined}
                       maxLength={128}
-                      placeholder={register ? 'Pelo menos 10 caracteres' : 'Sua senha'}
+                      placeholder={register ? 'Pelo menos 6 caracteres' : 'Sua senha'}
                       required
                     />
                     <button
@@ -266,6 +274,7 @@ export function Login() {
                     </button>
                   </span>
                 </label>
+                {register&&<p id="signup-password-rule" className="auth-password-rule">{passwordRule}</p>}
                 {error && <FlashMessage>{error}</FlashMessage>}
                 <button className="button primary full" disabled={busy}>
                   {busy ? (
@@ -276,8 +285,9 @@ export function Login() {
                     'Entrar'
                   )}
                 </button>
-              </form>
-              <p className="auth-switch">
+              </form>}
+              {!register&&!recover&&<button className="auth-forgot" type="button" disabled={busy} onClick={()=>{setRecover(true);setError('');}}>Esqueci minha senha</button>}
+              {!recover&&<p className="auth-switch">
                 {register ? 'Já faz parte da guilda?' : 'Sua primeira visita?'}{' '}
                 <button
                   disabled={busy}
@@ -289,7 +299,7 @@ export function Login() {
                 >
                   {register ? 'Entrar' : 'Criar uma conta'}
                 </button>
-              </p>
+              </p>}
             </div>
           </section>
         ) : (

@@ -10,7 +10,7 @@ test('beta gold is granted once to the first character, preserving regular users
  assert.equal(await transaction(db=>grantBetaStartingGold(db,regular,normal)),false);
  assert.equal(await transaction(db=>grantBetaStartingGold(db,user,first)),true);
  assert.equal(await transaction(db=>grantBetaStartingGold(db,user,first)),false);
- const beta=(await pool.query('SELECT gold_cp,starting_wealth_granted FROM characters WHERE id=$1',[first])).rows[0];assert.equal(beta.gold_cp,2000000);assert(beta.starting_wealth_granted);
+ const beta=(await pool.query('SELECT gold_cp,starting_wealth_granted FROM characters WHERE id=$1',[first])).rows[0];assert.equal(beta.gold_cp,600000);assert(beta.starting_wealth_granted);
  assert.equal((await pool.query('SELECT gold_cp FROM characters WHERE id=$1',[normal])).rows[0].gold_cp,15000);
  await pool.query('DELETE FROM characters WHERE id=$1',[first]);
  const next=(await pool.query("INSERT INTO characters(user_id,name,race,class,hp,gold_cp) VALUES($1,'Outro','Humano','Guerreiro',10,0) RETURNING id",[user])).rows[0].id;

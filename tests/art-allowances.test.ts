@@ -53,7 +53,7 @@ test('imagens sem limite: todos os personagens da conta, cota comum, posse e fil
       [second, alice],
       [normal, bob],
     ])
-      for (let i = 0; i < 4; i++)
+      for (let i = 0; i < 10; i++)
         await pool.query(
           "INSERT INTO character_art_jobs(user_id,character_id,idempotency_key,status) VALUES($1,$2,$3,'completed')",
           [owner.id, character.id, randomUUID()],
@@ -92,7 +92,7 @@ test('imagens sem limite: todos os personagens da conta, cota comum, posse e fil
     assert.equal(
       (await req('/characters', alice.cookie)).data.find((c: { id: string }) => c.id === first.id)
         .art_used,
-      6,
+      12,
     );
   } finally {
     await pool.query('DELETE FROM "user" WHERE id=ANY($1::text[])', [users]);

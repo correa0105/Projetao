@@ -1,4 +1,5 @@
 import { atlasPlacesRouter } from './atlas-places.js';
+import { recoveryMailSettingsRouter } from './recovery-mail-settings.js';
 import { ensurePersonalVtt, personalVttUrl } from './vtt-accounts.js';
 import { maintenanceAreas, requireAreaAvailable } from './maintenance.js';
 import { homeUpdatesRouter } from './home-updates.js';
@@ -210,6 +211,7 @@ export function createApp() {
     if (area === 'tower') await requireAreaAvailable('tower', res.locals.user.id);
     next();
   });
+  app.use('/api', recoveryMailSettingsRouter());
   app.use('/api/board/:id', async (req, res, next) => {
     if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method) && maintenanceAreas().includes('events')) {
       const post = await pool.query("SELECT 1 FROM board_posts WHERE id=$1 AND kind='event'", [uuid.parse(req.params.id)]);

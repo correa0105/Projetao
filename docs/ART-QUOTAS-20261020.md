@@ -1,6 +1,6 @@
 # Cotas mensais de arte — 20/10/2026
 
-Decisão do usuário: **4 gerações por personagem**, **2 por mascote** e **2 por
+Revisão de 21/10/2026, até segunda ordem do usuário: **10 gerações por personagem**, **2 por mascote** e **2 por
 montaria** a cada mês civil UTC. Cada animal possui uma cota independente, por
 `wardrobe_id`; trocar de animal não desconta a cota dos outros. A arte inicial
 de criação do personagem é gratuita. Renovação no dia 1 às 00h UTC (21h do dia
@@ -26,7 +26,7 @@ O worker continua com sua fila; a cobrança é decidida ao aceitar o pedido no
 servidor e não exige interromper gerações em andamento.
 
 Validação isolada: `node scripts/test-art-quota-isolated.mjs` cobre criação
-gratuita real, quatro usos, esgotamento, concorrência, três animais independentes,
+gratuita real, dez usos, esgotamento, concorrência, três animais independentes,
 falha/stale, virada UTC, liberação unlimited, fila/idempotência/ownership e entrega.
 `--browser` cobre contadores em Vestir, desconto e devolução para animais, estado
 esgotado, unlimited e larguras 1440/768/390/320 px. Usa banco UUID descartável,

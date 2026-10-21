@@ -70,8 +70,8 @@ try {
   await equipment.getByRole('button', { name: 'Vestir', exact: true }).click();
   const modal = page.getByRole('dialog');
   const quota = modal.locator('.art-quota-notice');
-  await expect(quota).toContainText('Personagem: 4 gerações por mês');
-  await expect(quota).toContainText('1 usada · 3 restantes neste mês');
+  await expect(quota).toContainText('Personagem: 10 gerações por mês');
+  await expect(quota).toContainText('1 usada · 9 restantes neste mês');
   await expect(quota).toContainText('A arte inicial do personagem não desconta');
   const referenceFile = {
     name: 'reference.png',
@@ -114,14 +114,14 @@ try {
     );
   }
   await subjects.getByRole('button', { name: 'Personagem', exact: true }).click();
-  for (let i = 0; i < 3; i++)
+  for (let i = 0; i < 9; i++)
     await pool.query(
       "INSERT INTO character_art_jobs(user_id,character_id,idempotency_key,status) VALUES($1,$2,$3,'completed')",
       [uid, hero.id, randomUUID()],
     );
   // Clicking still opens the budget when exhausted, then generation is disabled.
   await equipment.getByRole('button', { name: 'Vestir', exact: true }).click();
-  await expect(quota).toContainText('4 usadas · 0 restantes neste mês');
+  await expect(quota).toContainText('10 usadas · 0 restantes neste mês');
   await expect(quota).toContainText('Cota esgotada');
   await modal.locator('input[type="file"]').setInputFiles(referenceFile);
   await expect(modal.getByRole('button', { name: 'Vestir', exact: true })).toBeDisabled();
@@ -140,7 +140,7 @@ try {
   await page.screenshot({ path: 'test-results/art-quota-mobile.png' });
   expect(errors).toEqual([]);
   console.log(
-    'Cotas no inventário: personagem 4, mascote/montaria 2 separados, atualização após clique/falha, inicial grátis, esgotada, ilimitada e celular OK.',
+    'Cotas no inventário: personagem 10, mascote/montaria 2 separados, atualização após clique/falha, inicial grátis, esgotada, ilimitada e celular OK.',
   );
 } finally {
   await browser.close();

@@ -128,7 +128,7 @@ export function VttHotbar({
     closeAttack();
   }, [page?.id]);
   async function mutate(fn: (d: HotbarDocument) => void) {
-    if (!state || inFlight.current || attackBusy) return;
+    if (!state || inFlight.current || attackBusy) return false;
     inFlight.current = true;
     setBusy(true);
     setError('');
@@ -141,12 +141,14 @@ export function VttHotbar({
         body: JSON.stringify({ revision: state.revision, document }),
       });
       if (live.current) setState(next);
+      return true;
     } catch (e) {
       if (live.current) {
         setError((e as Error).message);
         const next = await api<HotbarState>(url).catch(() => null);
         if (next) setState(next);
       }
+      return false;
     } finally {
       inFlight.current = false;
       if (live.current) setBusy(false);
@@ -546,12 +548,14 @@ export function VttHotbar({
             <button
               className="vtt-hotbar-remove"
               disabled={busy || attackBusy}
-              onClick={() => {
-                void mutate((d) => {
+              onClick={async () => {
+                const removed = await mutate((d) => {
                   d.pages.find((p) => p.id === d.active)!.slots[selected.index] = null;
                 });
-                setSelected(null);
-                closeAttack();
+                if (removed) {
+                  setSelected(null);
+                  closeAttack();
+                }
               }}
             >
               <Trash2 size={12} /> Remover atalho

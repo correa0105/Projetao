@@ -7,7 +7,7 @@ import { seed } from '../server/seed.js';
 import { defaultChoices } from '../shared/character-sheet.js';
 import { finishTestArt, testArtImage } from './character-fixtures.js';
 
-test('cotas mensais: inicial grátis, personagem 4, cada mascote/montaria 2, falhas e renovação', async () => {
+test('cotas mensais: inicial grátis, personagem 10, cada mascote/montaria 2, falhas e renovação', async () => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
   await migrate();
   await seed();
@@ -61,14 +61,14 @@ test('cotas mensais: inicial grátis, personagem 4, cada mascote/montaria 2, fal
     assert.equal(initial.status, 202, JSON.stringify(initial.data));
     const cid = await finishTestArt(initial.data.id);
     const budget = async () => (await req('/character-art')).data.quotas[cid];
-    assert.deepEqual(await budget(), { used: 0, limit: 4 });
+    assert.deepEqual(await budget(), { used: 0, limit: 10 });
     assert.equal((await req('/characters')).data.find((c: any) => c.id === cid).art_used, 0);
     const dress = () =>
       req('/character-art', { character_id: cid, reference, idempotency_key: randomUUID() });
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 10; i++) {
       const job = await dress();
       assert.equal(job.status, 202, JSON.stringify(job.data));
-      assert.deepEqual(await budget(), { used: i + 1, limit: 4 });
+      assert.deepEqual(await budget(), { used: i + 1, limit: 10 });
       await finishTestArt(job.data.id);
     }
     assert.equal((await dress()).status, 409);
@@ -115,7 +115,7 @@ test('cotas mensais: inicial grátis, personagem 4, cada mascote/montaria 2, fal
         [2, 2, 'companion'],
       ],
     );
-    assert.deepEqual(await budget(), { used: 4, limit: 4 });
+    assert.deepEqual(await budget(), { used: 10, limit: 10 });
     // Failed and stale companion jobs release only their own budget.
     await pool.query(
       "UPDATE companion_art_jobs SET status='failed' WHERE id=(SELECT id FROM companion_art_jobs WHERE wardrobe_id=$1 ORDER BY created_at LIMIT 1)",
@@ -132,7 +132,7 @@ test('cotas mensais: inicial grátis, personagem 4, cada mascote/montaria 2, fal
       "UPDATE character_art_jobs SET status='failed' WHERE id=(SELECT id FROM character_art_jobs WHERE character_id=$1 AND creation IS NULL ORDER BY created_at LIMIT 1)",
       [cid],
     );
-    assert.equal((await budget()).used, 3);
+    assert.equal((await budget()).used, 9);
     const concurrent = await Promise.all([dress(), dress()]);
     assert.deepEqual(concurrent.map((j) => j.status).sort(), [202, 409]);
     const accepted = concurrent.find((j) => j.status === 202)!;
@@ -143,7 +143,7 @@ test('cotas mensais: inicial grátis, personagem 4, cada mascote/montaria 2, fal
         `UPDATE ${table} SET created_at=(date_trunc('month',now() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC')-interval '1 second' WHERE character_id=$1`,
         [cid],
       );
-    assert.deepEqual(await budget(), { used: 0, limit: 4 });
+    assert.deepEqual(await budget(), { used: 0, limit: 10 });
     assert.ok((await animalState()).every((a: any) => a.art_used === 0));
     // Unlimited is read from the account, and is preserved for all three subjects.
     await pool.query('INSERT INTO character_art_allowances(user_id,unlimited) VALUES($1,true)', [

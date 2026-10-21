@@ -78,6 +78,34 @@ Correção de compatibilidade de 09/10: protocolo VTT 4 rejeita leituras/comando
 
 # Alvorada Cinzenta — instruções para continuidade
 
+21/10/2026 — Durante o beta, novas contas recebem 6.000 PO uma única vez no primeiro
+personagem. Usar beta_accounts/grantBetaStartingGold e inscrição automática da
+migration 122, ativada explicitamente em beta_registration_settings no deploy.
+Não zerar saldos antigos nem recreditar ao apagar/recriar personagens. Não criar
+contas temporárias para isso. Atalhos antigos do VTT podem ser mantidos/movidos/
+removidos sem bloquear a barra; validar novas referências, execução e abas trancadas.
+
+21/10/2026 — Talento de origem do antecedente passa a ser escolhido livremente na
+criação, entre originFeats. `backgroundFeat` opcional no JSON substitui o talento
+fixo apenas quando escolhido; sem a chave, preservar fichas antigas. Talento
+extra de Humano é separado. Servidor valida e cálculos/magias/perícias usam o
+talento escolhido. Não trocar retroativamente fichas finalizadas.
+
+21/10/2026 — Por novo pedido explícito, a cota mensal de imagens por personagem
+passa de 4 para 10 até segunda ordem. Substitui a decisão anterior de 4; sem data
+de expiração automática e sem zerar usos já registrados. Criação inicial gratuita,
+duas gerações próprias por mascote/montaria e unlimited permanecem preservados.
+
+21/10/2026 — Cadastro e novas senhas: mínimo 6 caracteres, maiúscula, minúscula e
+número, regra visível. Não impor a novas regras ao login de contas antigas.
+Esqueci minha senha usa e-mail e link único de 30 minutos, com sessões antigas
+revogadas após redefinir. Remetente temporário é o Gmail do administrador; só
+ele configura a senha de aplicativo no campo protegido do site, nunca pelo chat.
+Sem autorização do Gmail, não afirmar envio ativo. Migration 121 e Nodemailer
+10.2.0; credencial cifrada, SMTP/TLS e privacidade da API preservados. No celular,
+todas as perícias selecionadas devem aparecer e permitir desmarcar, inclusive
+valores antigos filtrados por mudança de origem. Guia ACCOUNT-ACCESS-20261021.
+
 21/10/2026 — Direção vigente: loading geral só na entrada/troca de aba, nunca ao
 enviar imagem ou usar funções após abrir a página; primeira visita traz aviso em
 destaque. Nenhuma compressão de imagens autorizada. House 2.0 passa a se chamar

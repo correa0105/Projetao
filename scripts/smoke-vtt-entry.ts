@@ -41,7 +41,7 @@ try {
   const account = await api('/auth/sign-up/email', {
     name: 'Viajante dos efeitos',
     email: randomUUID() + '@example.test',
-    password: randomUUID(),
+    password: 'Test-' + randomUUID(),
   });
   const { createLegacyTestCharacter } = await import('../tests/character-fixtures');
   await createLegacyTestCharacter(account.user.id, 'Viajante');

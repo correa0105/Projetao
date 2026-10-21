@@ -40,7 +40,7 @@ try {
   const account = await api('/auth/sign-up/email', {
     name: 'Fundador',
     email: randomUUID() + '@example.test',
-    password: randomUUID(),
+    password: 'Test-' + randomUUID(),
   });
   const { createLegacyTestCharacter } = await import('../tests/character-fixtures');
   const character = await createLegacyTestCharacter(account.user.id, 'Guardião');

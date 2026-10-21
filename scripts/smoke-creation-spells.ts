@@ -33,7 +33,7 @@ try {
     data: {
       name: 'Magias de criação',
       email: randomUUID() + '@example.test',
-      password: randomUUID(),
+      password: 'Test-' + randomUUID(),
     },
   });
   expect(signup.ok()).toBe(true);

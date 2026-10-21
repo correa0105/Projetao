@@ -41,7 +41,7 @@ try {
     data: {
       name: 'Administrador de revisão',
       email: randomUUID() + '@example.test',
-      password: randomUUID(),
+      password: 'Test-' + randomUUID(),
     },
   });
   expect(response.status()).toBe(200);
@@ -123,7 +123,7 @@ try {
     data: {
       name: 'Jogador em manutenção',
       email: randomUUID() + '@example.test',
-      password: randomUUID(),
+      password: 'Test-' + randomUUID(),
     },
   });
   expect(signupPlayer.status()).toBe(200);

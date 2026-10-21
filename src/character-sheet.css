@@ -279,6 +279,13 @@ dialog:has(.character-creation-form) {
 .sheet-creation .form-grid {
   gap: 12px;
 }
+.sheet-creation { container-type: inline-size; }
+.sheet-creation .sheet-checks label { min-width: 0; }
+.sheet-creation .sheet-choice-name { min-width: 0; flex-wrap: wrap; }
+.sheet-creation .sheet-choice-name small { width: 100%; font-size: 11px; color: #c9b990; }
+@container (max-width: 560px) {
+  .sheet-creation .sheet-checks { grid-template-columns: 1fr; }
+}
 .sheet-form-reset {
   border: 0;
   padding: 0;

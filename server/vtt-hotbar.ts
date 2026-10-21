@@ -105,7 +105,20 @@ export function vttHotbarRouter(getRoom: Access) {
         )
           throw new AppError(403, 'Destranque a aba antes de editar ou remover seus atalhos.');
       }
-      const actions = input.document.pages.flatMap((p) => p.slots).filter((a) => a !== null);
+      // Existing shortcuts may outlive an import, spell or character. Keeping,
+      // moving or removing them must remain possible. Execution validates the
+      // current room/loadout independently; only new references are checked here.
+      const previousKeys = new Set(
+        hotbarSchema
+          .parse(old.document)
+          .pages.flatMap((p) => p.slots)
+          .filter((a) => a !== null)
+          .map(hotbarActionKey),
+      );
+      const actions = input.document.pages
+        .flatMap((p) => p.slots)
+        .filter((a) => a !== null)
+        .filter((a) => !previousKeys.has(hotbarActionKey(a)));
       const gm = room.owner_id === user;
       const characterActions = actions.filter((a) => 'characterId' in a);
       for (const a of actions.filter((a) => a.kind === 'sound')) {

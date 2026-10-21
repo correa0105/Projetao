@@ -1,4 +1,6 @@
 import { copyText } from './copy-text';
+import { PasswordRecovery } from './PasswordRecovery';
+import { RecoveryMailSettings } from './RecoveryMailSettings';
 import { AssetGate, AssetLoading, usePreparedAssets } from './AssetLoading';
 import { primaryPageAssets, siteBootAssets } from './page-assets';
 import { maintenanceMessage, type MaintenanceArea } from '../shared/maintenance';
@@ -124,7 +126,9 @@ const initialPage = (): Page => {
 
 export default function App() {
   const { data: session, isPending, error, refetch } = authClient.useSession();
-  const prepared = usePreparedAssets(siteBootAssets);
+  const recovering=new URLSearchParams(location.search).get('recover')==='1';
+  const prepared = usePreparedAssets(recovering?[]:siteBootAssets);
+  if(recovering)return <PasswordRecovery/>;
   if (!prepared.ready) return <AssetLoading {...prepared} />;
   if (isPending)
     return (
@@ -169,7 +173,12 @@ function Portal({ user }: { user: User }) {
   const [details, setDetails] = useState<Details | null>(null);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
-  const [modal, setModal] = useState<'character' | 'post' | null>(null);
+  const [modal, setModal] = useState<'character' | 'post' | 'recovery-mail' | null>(null);
+  useEffect(()=>{
+    const openMail=()=>{if(administrator&&location.hash.split('?')[0]==='#recovery-mail')setModal('recovery-mail');};
+    openMail();window.addEventListener('hashchange',openMail);
+    return()=>window.removeEventListener('hashchange',openMail);
+  },[administrator]);
   const [postLocation, setPostLocation] = useState<AtlasLocation | undefined>();
   const [postFromAtlas, setPostFromAtlas] = useState(false);
   const [postEventId, setPostEventId] = useState<string | undefined>();
@@ -723,6 +732,7 @@ function Portal({ user }: { user: User }) {
                 >
                   <UserRound size={14} aria-hidden="true" /> Meu perfil
                 </button>
+                {administrator&&<button className="profile-home-button" onClick={()=>{setCharacterMenuOpen(false);setModal('recovery-mail');}}>Recuperação por e-mail</button>}
                 {character && (
                   <span
                     className="profile-character-summary"
@@ -790,6 +800,7 @@ function Portal({ user }: { user: User }) {
       </div>
       <Navigation page={page} go={go} maintenanceAreas={maintenanceAreas} />
       {toast && <FlashMessage kind="info">{toast}</FlashMessage>}
+      {modal==='recovery-mail'&&administrator&&<RecoveryMailSettings close={()=>setModal(null)}/>}
       {modal === 'character' && (
         <Modal
           title="Uma nova história"

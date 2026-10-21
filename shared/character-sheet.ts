@@ -540,6 +540,7 @@ export const choicesSchema = z.object({
   subrace: z.string().max(40),
   alignment: z.enum(alignments as [string, ...string[]]),
   backgroundType: z.enum(Object.keys(backgroundRules) as [string, ...string[]]),
+  backgroundFeat: z.enum(originFeats as [string, ...string[]]).optional(),
   backgroundSkills: z.array(z.string()).length(2),
   backgroundExtras: z.array(z.string()).length(2),
   abilityBoosts: z.array(z.number().int().min(0).max(2)).length(6),
@@ -561,9 +562,9 @@ export const choicesSchema = z.object({
 });
 export type SheetChoices = z.infer<typeof choicesSchema> & { advancement?: AdvancementState };
 export function feats(c: SheetChoices) {
-  const background = backgroundRules[c.backgroundType].feat;
+  const background = c.backgroundFeat || backgroundRules[c.backgroundType].feat;
   return [
-    c.originRules && background.startsWith('Iniciado em Magia: ')
+    !c.backgroundFeat && c.originRules && background.startsWith('Iniciado em Magia: ')
       ? 'Iniciado em Magia: ' + (c.options.featClass0?.[0] || background.split(': ')[1])
       : background,
     ...(c.options.humanFeat || []),
@@ -582,7 +583,7 @@ export function choiceFields(race: string, cls: string, c?: SheetChoices): Choic
   const add = (key: string, label: string, count: number, options: string[]) =>
     result.push({ key, label, count, options });
   const background = backgroundRules[c?.backgroundType || 'Acólito'];
-  if (c?.originRules && background.feat.startsWith('Iniciado em Magia: '))
+  if (c?.originRules && !c.backgroundFeat && background.feat.startsWith('Iniciado em Magia: '))
     add('featClass0', 'Classe de Iniciado em Magia do antecedente', 1, [
       background.feat.split(': ')[1],
       ...['Clérigo', 'Druida', 'Mago'].filter((v) => v !== background.feat.split(': ')[1]),

@@ -41,7 +41,7 @@ try {
   const account = await api('/auth/sign-up/email', {
     name: 'Cartógrafo',
     email: randomUUID() + '@example.test',
-    password: randomUUID(),
+    password: 'Test-' + randomUUID(),
   });
   await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [account.user.id]);
   const { createLegacyTestCharacter } = await import('../tests/character-fixtures');

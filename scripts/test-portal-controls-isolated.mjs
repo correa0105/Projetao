@@ -11,21 +11,27 @@ const database = 'alvorada_test_' + randomUUID().replaceAll('-', '');
 await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
-  const args = process.argv.includes('--creation-spells')
-    ? ['scripts/smoke-creation-spells.ts']
-    : process.argv.includes('--pins-browser')
-      ? ['scripts/smoke-world-pins.ts']
-      : process.argv.includes('--atlas-places')
-        ? ['--test', 'tests/atlas-places.test.ts']
-        : process.argv.includes('--guild-door')
-          ? ['scripts/smoke-guild-door.ts']
-          : process.argv.includes('--vtt-entry')
-            ? ['scripts/smoke-vtt-entry.ts']
-            : process.argv.includes('--assets')
-              ? ['scripts/smoke-site-loading.ts']
-              : process.argv.includes('--browser')
-                ? ['scripts/smoke-portal-controls.ts']
-                : ['--test', 'tests/board-moderation.test.ts'];
+  const args = process.argv.includes('--beta-gold')
+    ? ['--test','--test-concurrency=1','tests/beta-accounts.test.ts','tests/open-beta-starting-gold.test.ts']
+    : process.argv.includes('--shortcuts')
+    ? ['scripts/smoke-vtt-shortcuts.ts']
+    : process.argv.includes('--account-access')
+    ? ['scripts/smoke-account-access.ts']
+    : process.argv.includes('--creation-spells')
+      ? ['scripts/smoke-creation-spells.ts']
+      : process.argv.includes('--pins-browser')
+        ? ['scripts/smoke-world-pins.ts']
+        : process.argv.includes('--atlas-places')
+          ? ['--test', 'tests/atlas-places.test.ts']
+          : process.argv.includes('--guild-door')
+            ? ['scripts/smoke-guild-door.ts']
+            : process.argv.includes('--vtt-entry')
+              ? ['scripts/smoke-vtt-entry.ts']
+              : process.argv.includes('--assets')
+                ? ['scripts/smoke-site-loading.ts']
+                : process.argv.includes('--browser')
+                  ? ['scripts/smoke-portal-controls.ts']
+                  : ['--test', 'tests/board-moderation.test.ts'];
   process.exitCode = await new Promise((resolve, reject) => {
     const child = spawn(process.execPath, ['--import', 'tsx', ...args], {
       env: {
@@ -35,6 +41,8 @@ try {
           process.argv.includes('--browser') ||
           process.argv.includes('--assets') ||
           process.argv.includes('--creation-spells') ||
+          process.argv.includes('--account-access') ||
+          process.argv.includes('--shortcuts') ||
           process.argv.includes('--vtt-entry') ||
           process.argv.includes('--guild-door') ||
           process.argv.includes('--pins-browser')

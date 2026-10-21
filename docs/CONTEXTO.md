@@ -1,3 +1,22 @@
+21/10/2026 — Em preparação: novas contas durante o beta recebem 6.000 PO uma vez
+no primeiro personagem. Migration 122 inscreve novas contas quando explicitamente
+ativada; transação existente conserva auditoria após exclusão/recriação, sem alterar
+saldos antigos. Dois testes isolados de concorrência/valor/exclusão/desativação passaram.
+Remoção de atalhos validada no navegador para mestre sem administrador, inclusive
+referência antiga que bloqueava a barra. Referências novas e abas trancadas protegidas.
+TypeScript, builds e testes específicos de conta/perícias/talento/cota/atalhos passaram.
+A suíte social ampla mantém duas falhas anteriores: contagem antiga de monstros
+(330 esperado/334 atual) e expectativa legada da rota de avatar; sem regressão nova.
+Cadastro com mínimo 6 caracteres/maiúscula/minúscula/número
+e regra escrita; recuperação por e-mail com link único de 30 minutos e revogação de
+sessões; Gmail do administrador configurável por campo protegido (senha de aplicativo
+cifrada). Autorização do Gmail ainda depende do usuário, que já confirmou a verificação
+em duas etapas; página de Senhas de app aberta, nome Alvorada Cinzenta preenchido.
+Perícias antigas selecionadas sempre visíveis/removíveis e coluna única no celular.
+Talento de origem livre no antecedente, preservando fichas antigas sem nova chave.
+Cota mensal por personagem elevada de 4 para 10 até segunda ordem, sem zerar usos;
+pet/montaria continuam 2 e criação inicial gratuita. Detalhes em ACCOUNT-ACCESS-20261021.
+
 21/10/2026 — Publicação world-pins-20261021 aplicada e saudável na Hostinger, código
 c56083461c5eb5a58bd22a4eecbbad62736afb08. Backup antes da atualização em
 /opt/alvorada/backups/world-pins-before-20261021T191449Z.dump. Migration 120 aplicada;

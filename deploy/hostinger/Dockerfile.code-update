@@ -1,6 +1,8 @@
 # For code-only releases over an already validated full image.
-# Packages, public/, data/ and existing migrations must match the base exactly.
+# Public/, data/ and existing migrations must match the base exactly.
 # New additive numbered migrations are included in the verified release manifest.
+# runtime-additions contains only the audited Nodemailer package and package locks;
+# every pre-existing dependency remains identical to the full validated base.
 ARG BASE_IMAGE=alvorada-cinzenta:hostinger
 FROM ${BASE_IMAGE}
 ARG SOURCE_COMMIT
@@ -11,3 +13,4 @@ COPY --chown=node:node dist/server/ /app/dist/server/
 COPY --chown=node:node release.json /app/release.json
 
 COPY --chown=node:node db/migrations/ /app/db/migrations/
+COPY --chown=node:node runtime-additions/ /app/
