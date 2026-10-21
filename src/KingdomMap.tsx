@@ -30,8 +30,7 @@ import {
 } from '../shared/kingdom-editor';
 import {
   KINGDOM_CAMERA_Y,
-  KINGDOM_MAX_ZOOM,
-  KINGDOM_MIN_ZOOM,
+  KINGDOM_PUBLIC_ZOOM,
   KINGDOM_TILT,
   kingdomDirection,
   frames,
@@ -406,7 +405,7 @@ export function KingdomMap({
       mapHeight: background.height * KINGDOM_UNITS_PER_PIXEL,
     };
     const home: KingdomView = { ...activeConfig.home };
-    const view: KingdomView = { ...home };
+    const view: KingdomView = { ...home, zoom: editorOpen ? home.zoom : KINGDOM_PUBLIC_ZOOM };
     let animation: { start: number; from: KingdomView; to: KingdomView; duration: number } | null =
       null;
     const pointers = new Map<number, { x: number; y: number }>();
@@ -433,7 +432,7 @@ export function KingdomMap({
     function zoomBounds() {
       return editorRef.current.open
         ? { min: EDITOR_MIN_ZOOM, max: EDITOR_MAX_ZOOM }
-        : { min: home.zoom * KINGDOM_MIN_ZOOM, max: home.zoom * KINGDOM_MAX_ZOOM };
+        : { min: KINGDOM_PUBLIC_ZOOM, max: KINGDOM_PUBLIC_ZOOM };
     }
 
     function sync() {
@@ -459,7 +458,11 @@ export function KingdomMap({
     }
     function constrained(next: KingdomView): KingdomView {
       const bounds = zoomBounds();
-      const normalized = { ...next, zoom: clamp(next.zoom, bounds.min, bounds.max) };
+      const normalized = {
+        ...next,
+        zoom: clamp(next.zoom, bounds.min, bounds.max),
+        angle: editorOpen ? next.angle : 0,
+      };
       const zero = { ...normalized, x: 0, y: 0 };
       const corners = [
         [0, 0],
@@ -493,6 +496,7 @@ export function KingdomMap({
       x = viewport.width / 2,
       y = viewport.height * KINGDOM_CAMERA_Y,
     ) {
+      if (!editorOpen) return;
       animation = null;
       const before = unprojectPoint(x, y);
       const bounds = zoomBounds();
@@ -540,7 +544,7 @@ export function KingdomMap({
         height,
         scale: editorOpen
           ? Math.min(1.05, Math.max(0.27, width / 3800)) * 0.384 * 0.85
-          : Math.min(width / viewport.mapWidth, height / viewport.mapHeight),
+          : Math.max(width / viewport.mapWidth, height / viewport.mapHeight),
         tilt: viewport.tilt,
         mapWidth: viewport.mapWidth,
         mapHeight: viewport.mapHeight,
@@ -552,7 +556,7 @@ export function KingdomMap({
       ctx!.imageSmoothingEnabled = true;
       ctx!.imageSmoothingQuality = 'high';
       Object.assign(view, constrained(view));
-      dirty = true;
+      sync();
     }
     const observer = new ResizeObserver(resize);
     observer.observe(host);
@@ -752,8 +756,8 @@ export function KingdomMap({
         const bounds = constrained(proposed);
         const elastic = (value: number, limit: number) =>
           limit + Math.tanh((value - limit) / 200) * 90;
-        view.x = elastic(proposed.x, bounds.x);
-        view.y = elastic(proposed.y, bounds.y);
+        view.x = editorOpen ? elastic(proposed.x, bounds.x) : bounds.x;
+        view.y = editorOpen ? elastic(proposed.y, bounds.y) : bounds.y;
         sync();
       }
       host!.dataset.dragging = 'true';
@@ -925,10 +929,11 @@ export function KingdomMap({
       )
         return;
       const key = event.key.toLowerCase();
-      if (key === 'q' || key === 'e') controlsRef.current?.rotate(key === 'q' ? -1 : 1);
+      if (editorOpen && (key === 'q' || key === 'e'))
+        controlsRef.current?.rotate(key === 'q' ? -1 : 1);
       else if (key === 'home') controlsRef.current?.reset();
-      else if (key === '+' || key === '=') zoomAt(1.15);
-      else if (key === '-') zoomAt(1 / 1.15);
+      else if (editorOpen && (key === '+' || key === '=')) zoomAt(1.15);
+      else if (editorOpen && key === '-') zoomAt(1 / 1.15);
       else if (['arrowleft', 'arrowright', 'arrowup', 'arrowdown'].includes(key)) {
         const dx = key === 'arrowleft' ? -105 : key === 'arrowright' ? 105 : 0;
         const dy = key === 'arrowup' ? -90 : key === 'arrowdown' ? 90 : 0;
@@ -945,6 +950,7 @@ export function KingdomMap({
       zoom: (amount) => zoomAt(amount),
       setZoom: (absolute) => zoomAt(absolute / view.zoom),
       rotate: (amount) => {
+        if (!editorOpen) return;
         const target = animation?.to.angle ?? view.angle;
         animateTo(
           { ...view, angle: ((Math.round(target / (Math.PI / 4)) + amount) * Math.PI) / 4 },
@@ -1108,9 +1114,9 @@ export function KingdomMap({
       aria-describedby="kingdom-instructions"
     >
       <p id="kingdom-instructions" className="sr-only">
-        Arraste para explorar. Use a roda do mouse ou dois dedos para aproximar. Q e E giram o mapa
-        em oito direções; setas deslocam e Home volta ao centro do reino. No editor, Ctrl + arrastar
-        seleciona uma área.
+        {editorOpen
+          ? 'Arraste para explorar. Use a roda do mouse ou dois dedos para aproximar. Q e E giram o mapa em oito direções; setas deslocam e Home volta ao centro. Ctrl + arrastar seleciona uma área.'
+          : 'Mapa em tela inteira com aproximação fixa de 150%. Arraste ou use as setas para explorar; Home volta ao centro do reino.'}
       </p>
       <div ref={canvasHostRef} className="kingdom-map__canvas" />
       {!editorOpen && (
@@ -1493,11 +1499,7 @@ export function KingdomMap({
               </button>
             </div>
           )}
-          {editorMessage && (
-            <FlashMessage kind="info">
-              {editorMessage}
-            </FlashMessage>
-          )}
+          {editorMessage && <FlashMessage kind="info">{editorMessage}</FlashMessage>}
           <div className="kingdom-editor__footer">
             <button
               type="button"
@@ -1523,60 +1525,56 @@ export function KingdomMap({
           </div>
         </aside>
       )}
-      <div className="kingdom-map__controls" aria-label="Navegação pelo reino">
-        <div className="kingdom-map__turns">
-          <button
-            aria-label="Girar mapa para a esquerda"
-            title="Girar à esquerda · Q"
-            disabled={status !== 'ready'}
-            onClick={() => controlsRef.current?.rotate(-1)}
-          >
-            <RotateCcw size={16} />
-          </button>
-          <output className="kingdom-map__direction" aria-label="Direção da visão">
-            {directions[direction]}
-          </output>
-          <button
-            aria-label="Girar mapa para a direita"
-            title="Girar à direita · E"
-            disabled={status !== 'ready'}
-            onClick={() => controlsRef.current?.rotate(1)}
-          >
-            <RotateCw size={16} />
-          </button>
+      {editorOpen && (
+        <div className="kingdom-map__controls" aria-label="Navegação pelo reino">
+          <div className="kingdom-map__turns">
+            <button
+              aria-label="Girar mapa para a esquerda"
+              title="Girar à esquerda · Q"
+              disabled={status !== 'ready'}
+              onClick={() => controlsRef.current?.rotate(-1)}
+            >
+              <RotateCcw size={16} />
+            </button>
+            <output className="kingdom-map__direction" aria-label="Direção da visão">
+              {directions[direction]}
+            </output>
+            <button
+              aria-label="Girar mapa para a direita"
+              title="Girar à direita · E"
+              disabled={status !== 'ready'}
+              onClick={() => controlsRef.current?.rotate(1)}
+            >
+              <RotateCw size={16} />
+            </button>
+          </div>
+          <div className="kingdom-map__zoom">
+            <button
+              aria-label="Afastar mapa"
+              disabled={status !== 'ready' || zoom <= EDITOR_MIN_ZOOM + 0.001}
+              onClick={() => controlsRef.current?.zoom(1 / 1.18)}
+            >
+              <Minus size={16} />
+            </button>
+            <output aria-label="Aproximação do mapa">{Math.round((zoom / homeZoom) * 100)}%</output>
+            <button
+              aria-label="Aproximar mapa"
+              disabled={status !== 'ready' || zoom >= EDITOR_MAX_ZOOM - 0.001}
+              onClick={() => controlsRef.current?.zoom(1.18)}
+            >
+              <Plus size={16} />
+            </button>
+            <button
+              aria-label="Centralizar mapa"
+              title="Voltar à visão de 100% · Home"
+              disabled={status !== 'ready'}
+              onClick={() => controlsRef.current?.reset()}
+            >
+              <Focus size={17} />
+            </button>
+          </div>
         </div>
-        <div className="kingdom-map__zoom">
-          <button
-            aria-label="Afastar mapa"
-            disabled={
-              status !== 'ready' ||
-              zoom <= (editorOpen ? EDITOR_MIN_ZOOM : homeZoom * KINGDOM_MIN_ZOOM) + 0.001
-            }
-            onClick={() => controlsRef.current?.zoom(1 / 1.18)}
-          >
-            <Minus size={16} />
-          </button>
-          <output aria-label="Aproximação do mapa">{Math.round((zoom / homeZoom) * 100)}%</output>
-          <button
-            aria-label="Aproximar mapa"
-            disabled={
-              status !== 'ready' ||
-              zoom >= (editorOpen ? EDITOR_MAX_ZOOM : homeZoom * KINGDOM_MAX_ZOOM) - 0.001
-            }
-            onClick={() => controlsRef.current?.zoom(1.18)}
-          >
-            <Plus size={16} />
-          </button>
-          <button
-            aria-label="Centralizar mapa"
-            title="Voltar à visão de 100% · Home"
-            disabled={status !== 'ready'}
-            onClick={() => controlsRef.current?.reset()}
-          >
-            <Focus size={17} />
-          </button>
-        </div>
-      </div>
+      )}
       {status !== 'ready' && (
         <div className="kingdom-map__status" role={status === 'error' ? 'alert' : 'status'}>
           <span>

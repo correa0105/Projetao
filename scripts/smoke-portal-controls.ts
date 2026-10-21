@@ -126,6 +126,7 @@ try {
   );
   for (const [width, height] of [
     [1440, 900],
+    [813, 600],
     [390, 844],
   ]) {
     await page.setViewportSize({ width, height });
@@ -144,16 +145,86 @@ try {
     await expect(region).toHaveAttribute('data-image-width', '4096');
     await expect(region).toHaveAttribute('data-image-height', '2633');
     await expect(region).toHaveAttribute('data-tilt', '1');
+    await expect(region).toHaveAttribute('data-zoom', '1.5000');
+    await expect(region).toHaveAttribute('data-min-zoom', '1.5000');
+    await expect(region).toHaveAttribute('data-max-zoom', '1.5000');
+    await expect(region.locator('.kingdom-map__controls')).toHaveCount(0);
+    const expectFilledViewport = async () => {
+      await expect
+        .poll(async () =>
+          region.evaluate((element) => {
+            const box = element.getBoundingClientRect();
+            return [box.x, box.y, box.width, box.height];
+          }),
+        )
+        .toEqual([0, 0, (await page.viewportSize())!.width, (await page.viewportSize())!.height]);
+      await page.evaluate(
+        () =>
+          new Promise<void>((resolve) =>
+            requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+          ),
+      );
+      const corners = await region.locator('canvas').evaluate((canvas) => {
+        const image = canvas as HTMLCanvasElement;
+        const context = image.getContext('2d')!;
+        return [
+          [2, 2],
+          [image.width - 3, 2],
+          [2, image.height - 3],
+          [image.width - 3, image.height - 3],
+        ].map(([x, y]) => [...context.getImageData(x, y, 1, 1).data].slice(0, 3).join(','));
+      });
+      for (const color of corners)
+        expect(color, 'A imagem deve cobrir todos os cantos.').not.toBe('23,31,32');
+    };
+    await expectFilledViewport();
     const regionalHeading = await page.locator('.world-atlas-heading').boundingBox();
     const pageHeading = await page.locator('.page-header').boundingBox();
     await page.screenshot({ path: `test-results/portal-controls/north-map-${width}.png` });
-    expect(regionalHeading!.y - (pageHeading!.y + pageHeading!.height)).toBeGreaterThanOrEqual(width <= 900 ? 8 : 0);
+    expect(regionalHeading!.y - (pageHeading!.y + pageHeading!.height)).toBeGreaterThanOrEqual(
+      width <= 900 ? 8 : 0,
+    );
     const response = await imageResponse;
     expect(
       createHash('sha256')
         .update(await response.body())
         .digest('hex'),
     ).toBe(createHash('sha256').update(mapFile).digest('hex'));
+    await page.mouse.move(width * 0.5, height * 0.6);
+    await page.mouse.wheel(0, -2400);
+    await page.mouse.wheel(0, 2400);
+    await region.focus();
+    for (const key of ['+', '-', 'q', 'e', 'Home']) await page.keyboard.press(key);
+    await expect(region).toHaveAttribute('data-zoom', '1.5000');
+    await expect(region).toHaveAttribute('data-angle', '0.000000');
+    const beforePan = await region.getAttribute('data-pan-x');
+    await page.mouse.move(width * 0.5, height * 0.6);
+    await page.mouse.down();
+    await page.mouse.move(width * 0.7, height * 0.7, { steps: 8 });
+    await page.mouse.up();
+    await expect(region).not.toHaveAttribute('data-pan-x', beforePan!);
+    await expectFilledViewport();
+    if (width === 390) {
+      const touch = await page.context().newCDPSession(page);
+      const points = (spread: number) => [
+        { x: width * (0.5 - spread), y: height * 0.6, id: 0 },
+        { x: width * (0.5 + spread), y: height * 0.6, id: 1 },
+      ];
+      await touch.send('Input.dispatchTouchEvent', {
+        type: 'touchStart',
+        touchPoints: points(0.12),
+      });
+      await touch.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: points(0.3) });
+      await touch.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+      await touch.detach();
+      await expect(region).toHaveAttribute('data-zoom', '1.5000');
+      await expectFilledViewport();
+    }
+    await page.setViewportSize({ width: width + 25, height: height + 35 });
+    await expectFilledViewport();
+    await expect(region).toHaveAttribute('data-zoom', '1.5000');
+    await page.setViewportSize({ width, height });
+    await expectFilledViewport();
     await expect(
       page.getByRole('button', { name: 'Abrir missões do Reino do Norte', exact: true }),
     ).toBeVisible();

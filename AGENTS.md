@@ -582,6 +582,8 @@ Não são necessários subagentes para alterações rotineiras; nenhum fluxo de 
 
 ## Fluxo Git autorizado pelo usuário (30/09/2026)
 
+Atualização de 21/10/2026 — O Reino do Norte publicado usa a imagem definitiva enviada pelo proprietário, em tela inteira e com aproximação fixa de 150% sobre cobertura da viewport. Sem controles públicos de zoom/giro/centralização, roda/pinça/atalhos não alteram a escala nem a orientação; arraste e setas navegam com limites sem revelar faixas vazias. Preservar o Mundo 3D e os rascunhos, fundos e câmeras privadas do editor, que mantém suas ferramentas. Especificação e verificações em docs/KINGDOM-2D.md. Publicação vigente em alvoradacinzenta.com; o hostname anterior redireciona preservando links de mesas.
+
 Neste checkout, trabalhar na branch Welson e enviar para origin/Welson as alterações solicitadas pelo usuário após validação. Autorização contínua dada nesta conversa. Não enviar para main. Preservar alterações de outras pessoas e backups locais.
 
 ## Acabamento inspirado no Inkarnate (30/09/2026)

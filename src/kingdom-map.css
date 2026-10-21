@@ -44,7 +44,7 @@
 .kingdom-map__editor-toggle {
   position: absolute;
   z-index: 4;
-  top: 20px;
+  top: calc(var(--page-header-height) + 40px);
   right: 20px;
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@
 .kingdom-editor {
   position: absolute;
   z-index: 5;
-  top: 68px;
+  top: calc(var(--page-header-height) + 88px);
   right: 20px;
   display: flex;
   flex-direction: column;
@@ -612,6 +612,6 @@
 }
 @media (max-width: 900px) {
   .kingdom-map .kingdom-map__editor-toggle {
-    top: calc(2 * var(--page-header-height) + 20px);
+    top: calc(2 * var(--page-header-height) + 60px);
   }
 }

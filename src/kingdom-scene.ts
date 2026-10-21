@@ -5,8 +5,7 @@ export const KINGDOM_WIDTH = 15000;
 export const KINGDOM_HEIGHT = 15000;
 export const KINGDOM_TILT = 0.58;
 export const KINGDOM_CAMERA_Y = 0.57;
-export const KINGDOM_MIN_ZOOM = 1;
-export const KINGDOM_MAX_ZOOM = 1.3;
+export const KINGDOM_PUBLIC_ZOOM = 1.5;
 
 export type KingdomView = { x: number; y: number; zoom: number; angle: number };
 export type KingdomViewport = {

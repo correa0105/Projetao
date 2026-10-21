@@ -22,6 +22,14 @@ Publicado em `https://alvoradacinzenta.com` com a imagem Docker
 `alvorada-cinzenta:north-map-20261021`; os bytes servidos em producao conservam
 o hash original. Backup anterior: `/opt/alvorada/backups/north-map-before-20261021T171001Z.dump`.
 
+Atualização de enquadramento em 21/10/2026: verificação real em 1440×900, 813×600
+e 390×844 confirmou preenchimento dos quatro cantos, região com as dimensões
+exatas da viewport, zoom fixo após roda/teclado/pinça e redimensionamento, arraste,
+ausência dos controles públicos e abertura/fechamento do registro de missões.
+O painel de missões começa abaixo do cabeçalho da conta, mantendo o botão de fechar
+acessível. TypeScript e build aprovados; testes em banco descartável, sem alteração
+de contas, fichas ou dados do editor em produção.
+
 ## Cena
 
 O mapa regional usa Canvas 2D e começa com um retângulo vazio de 4096 × 3072 px virtuais. Não há fundo predefinido, terreno costeiro, árvores automáticas, trilhas ou névoa. Fora da área, uma cor neutra indica o limite navegável. O Mundo em Three.js/WebGL é independente.
@@ -34,7 +42,18 @@ O editor autorizado pode enviar um fundo PNG, JPEG ou WebP com até 128 MB, 12.2
 
 Os 22 tipos de objeto vêm de `public/kingdom/nature.png` e das sete pranchas em `public/kingdom/structures/atlases/`. A câmera gira em passos de 45°; cada objeto usa o quadro correspondente e continua em pé na tela. `src/kingdom-scene.ts` contém projeção, recortes e ordem de desenho. `src/KingdomMap.tsx` controla gestos, editor e carregamento.
 
-Arrastar o chão navega. No editor, clicar adiciona, arrastar um sprite move, Ctrl + clique alterna seleção e Ctrl + arraste marca ou desloca grupos. Há setas de movimento, duplicação, tamanho, giro, exclusão, desfazer e salvamento. O zoom de trabalho vai de 0,03 a 32, por roda, botões ou controle deslizante. **Definir visão atual como 100%** salva zoom, centro e giro; fora do editor, a navegação vai de 100 a 130% relativos a essa visão.
+O mapa publicado ocupa toda a viewport, sem moldura ou faixas vazias, com escala
+de cobertura da tela e aproximação fixa em **150%**. O arraste e as setas navegam
+pela imagem, com limites que mantêm a tela preenchida. Home centraliza novamente.
+Roda, pinça e teclas de zoom não alteram essa aproximação. Os controles de zoom,
+giro e centralização foram retirados da visão pública; a orientação é fixa.
+Redimensionar a janela ou girar o celular recalcula a cobertura, mantendo 150%.
+
+No editor, clicar adiciona, arrastar um sprite move, Ctrl + clique alterna seleção e
+Ctrl + arraste marca ou desloca grupos. Há setas de movimento, duplicação, tamanho,
+giro, exclusão, desfazer e salvamento. O zoom de trabalho continua de 0,03 a 32, por
+roda, botões ou controle deslizante. **Definir visão atual como 100%** salva zoom,
+centro e giro do editor; rascunhos e enquadramentos privados são preservados.
 
 ## Acesso e persistência
 

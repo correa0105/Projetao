@@ -326,19 +326,19 @@
   max-width: 1600px;
   margin-inline: auto;
 }
-/* The world is the page itself, with the guild controls floating above it. */
-body:has(.world-atlas.is-world) {
+/* The world and the kingdom fill the page, with guild controls floating above. */
+body:has(.world-atlas) {
   overflow: hidden;
 }
-.app-shell:has(.world-atlas.is-world) .main-shell {
+.app-shell:has(.world-atlas) .main-shell {
   padding-bottom: 0;
 }
-.app-shell:has(.world-atlas.is-world) .main-content {
+.app-shell:has(.world-atlas) .main-content {
   max-width: none;
   margin: 0;
   padding: 0;
 }
-.app-shell .world-atlas.is-world {
+.app-shell .world-atlas {
   position: fixed;
   inset: 0;
   width: 100%;
