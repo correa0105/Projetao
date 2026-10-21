@@ -68,7 +68,7 @@ const packages: {
     items: [
       { page: 'world', label: 'Mundo' },
       { page: 'house', label: 'Lobby de RP' },
-      { page: 'house2', label: 'House 2.0 · testes' },
+      { page: 'house2', label: 'House' },
       { page: 'guild', label: 'Guilda' },
     ],
   },

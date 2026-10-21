@@ -1,3 +1,4 @@
+import { WorldPlacePicker } from './WorldPlacePicker';
 import { PersonalVttLink } from './PersonalVttLink';
 import { MusicControls } from './SiteMusic';
 import { FlashMessage } from './FlashMessage';
@@ -505,30 +506,8 @@ export function PostForm({
   const [tagIds, setTagIds] = useState<string[]>([]);
   const [rankTest, setRankTest] = useState('');
   const [paperStyle, setPaperStyle] = useState<PaperStyle>('parchment');
-  const [locations, setLocations] = useState<AtlasLocation[]>(
-    initialLocation ? [initialLocation] : [],
-  );
   const [locationId, setLocationId] = useState(initialLocation?.id || '');
-  const [placesError, setPlacesError] = useState('');
-  useEffect(() => {
-    let alive = true;
-    api<AtlasData>('/atlas')
-      .then((data) => {
-        if (alive)
-          setLocations(
-            data.locations.filter((place) =>
-              data.regions.some((region) => region.id === place.region_id && region.available),
-            ),
-          );
-      })
-      .catch(() => {
-        if (alive)
-          setPlacesError('Não foi possível carregar os locais do mapa. Feche e tente novamente.');
-      });
-    return () => {
-      alive = false;
-    };
-  }, []);
+  const [regionId, setRegionId] = useState(initialLocation?.region_id || (requireMappedLocation ? 'reino-do-norte' : ''));
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -648,26 +627,8 @@ export function PostForm({
       {kind === 'mission' && (
         <MissionTagPicker value={tagIds} onChange={setTagIds} disabled={busy} />
       )}
-      <label>
-        Local no mapa
-        <select
-          aria-label="Local no mapa"
-          value={locationId}
-          required={requireMappedLocation}
-          onChange={(event) => setLocationId(event.target.value)}
-        >
-          <option value="">
-            {requireMappedLocation ? 'Escolha um local do reino' : 'Outro local (informar abaixo)'}
-          </option>
-          {locations.map((place) => (
-            <option key={place.id} value={place.id}>
-              {place.name} · Reino do Norte
-            </option>
-          ))}
-        </select>
-      </label>
-      {placesError && <FlashMessage>{placesError}</FlashMessage>}
-      {!locationId && !requireMappedLocation && (
+      <WorldPlacePicker regionId={regionId} locationId={locationId} onRegionChange={setRegionId} onLocationChange={setLocationId} required={requireMappedLocation}/>
+      {!locationId && !regionId && !requireMappedLocation && (
         <label>
           Local
           <input

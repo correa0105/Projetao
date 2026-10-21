@@ -5,4 +5,5 @@ export type AtlasMarker = {
   x: number;
   y: number;
   available?: boolean;
+  preview?: Extract<import('../shared/lore').LoreBlock, {type:'image'}>[];
 };

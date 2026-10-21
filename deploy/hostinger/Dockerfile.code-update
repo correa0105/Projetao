@@ -1,5 +1,6 @@
 # For code-only releases over an already validated full image.
-# Packages, public/, data/ and db/ must match the base release exactly.
+# Packages, public/, data/ and existing migrations must match the base exactly.
+# New additive numbered migrations are included in the verified release manifest.
 ARG BASE_IMAGE=alvorada-cinzenta:hostinger
 FROM ${BASE_IMAGE}
 ARG SOURCE_COMMIT
@@ -8,3 +9,5 @@ COPY --chown=node:node dist/client/assets/ /app/dist/client/assets/
 COPY --chown=node:node dist/client/index.html /app/dist/client/index.html
 COPY --chown=node:node dist/server/ /app/dist/server/
 COPY --chown=node:node release.json /app/release.json
+
+COPY --chown=node:node db/migrations/ /app/db/migrations/

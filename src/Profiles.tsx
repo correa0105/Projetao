@@ -114,6 +114,7 @@ const panels: { id: Panel; name: string; icon: typeof Users }[] = [
   { id: 'cards', name: 'Cartas', icon: Layers },
 ];
 export function Profiles({ user }: { user: User }) {
+  const [directoryReady,setDirectoryReady]=useState(false);
   const [uploads, setUploads] = useState(0);
   const uploading = uploads > 0;
   const [overview, setOverview] = useState(false);
@@ -203,6 +204,7 @@ export function Profiles({ user }: { user: User }) {
         .then((r) => {
           if (active) {
             setItems(r.items);
+            setDirectoryReady(true);
             setMore(r.has_more);
           }
         })
@@ -367,6 +369,7 @@ export function Profiles({ user }: { user: User }) {
   }
   return (
     <section
+      data-page-preparing={!target && !directoryReady && !error || undefined}
       className={`profiles-page ${profile ? 'visiting' : ''} ${overview && profile ? 'user-overview' : ''}`}
       style={
         profile
@@ -434,7 +437,7 @@ export function Profiles({ user }: { user: User }) {
           )}
         </>
       ) : !profile ? (
-        <p className="social-empty">Abrindo o perfil…</p>
+        <p className="social-empty" data-page-preparing={!error || undefined}>Abrindo o perfil…</p>
       ) : (
         <>
           {overview && (

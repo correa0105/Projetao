@@ -1,27 +1,76 @@
 /** A transient request failure must not leave saved terrain permanently blank. */
-export function createVttImageLoader(images:Map<string,HTMLImageElement>,source:(path:string)=>string,changed:()=>void,failed:()=>void){
- const pending=new Map<string,{attempt:number;timer?:ReturnType<typeof setTimeout>;image?:HTMLImageElement}>();
- let disposed=false;
- function start(path:string){
-  if(disposed)return;
-  const task=pending.get(path);if(!task)return;
-  if(task.timer)clearTimeout(task.timer);task.timer=undefined;
-  const image=new Image();task.image=image;images.set(path,image);
-  image.onload=()=>{if(disposed||task.image!==image)return;pending.delete(path);changed();};
-  image.onerror=()=>{
-   if(disposed||task.image!==image)return;
-   changed();
-   if(task.attempt<4){const delay=[300,800,2000,5000][task.attempt++];task.timer=setTimeout(()=>start(path),delay);}
-   else failed();
+export function createVttImageLoader(
+  images: Map<string, HTMLImageElement>,
+  source: (path: string) => string,
+  changed: () => void,
+  failed: () => void,
+) {
+  type Task = {
+    attempt: number;
+    timer?: ReturnType<typeof setTimeout>;
+    timeout?: ReturnType<typeof setTimeout>;
+    image?: HTMLImageElement;
   };
-  image.src=source(path);
- }
- function load(path:string){
-  if(!path||disposed||pending.has(path))return;
-  const existing=images.get(path);if(existing?.naturalWidth)return;
-  pending.set(path,{attempt:0});start(path);
- }
- function retry(){for(const [path,task]of pending){task.attempt=0;start(path);}}
- function dispose(){disposed=true;for(const task of pending.values()){if(task.timer)clearTimeout(task.timer);if(task.image){task.image.onload=null;task.image.onerror=null;}}pending.clear();}
- return{load,retry,dispose};
+  const pending = new Map<string, Task>();
+  let disposed = false;
+  function start(path: string) {
+    if (disposed) return;
+    const task = pending.get(path);
+    if (!task) return;
+    clearTimeout(task.timer);
+    clearTimeout(task.timeout);
+    task.timer = undefined;
+    const image = new Image();
+    task.image = image;
+    images.set(path, image);
+    const current = () => !disposed && task.image === image && pending.get(path) === task;
+    const fail = () => {
+      if (!current()) return;
+      clearTimeout(task.timeout);
+      image.onload = image.onerror = null;
+      changed();
+      if (task.attempt < 4) {
+        const delay = [300, 800, 2000, 5000][task.attempt++];
+        task.timer = setTimeout(() => start(path), delay);
+      } else failed();
+    };
+    const done = () => {
+      if (!current()) return;
+      clearTimeout(task.timeout);
+      image.onload = image.onerror = null;
+      pending.delete(path);
+      changed();
+    };
+    image.onload = () => {
+      if (typeof image.decode === 'function') void image.decode().then(done, fail);
+      else done();
+    };
+    image.onerror = fail;
+    task.timeout = setTimeout(fail, 45000);
+    image.src = source(path);
+  }
+  function ready(path: string) {
+    return !path || (!pending.has(path) && !!images.get(path)?.naturalWidth);
+  }
+  function load(path: string) {
+    if (!path || disposed || pending.has(path) || ready(path)) return;
+    pending.set(path, { attempt: 0 });
+    start(path);
+  }
+  function retry() {
+    for (const [path, task] of pending) {
+      task.attempt = 0;
+      start(path);
+    }
+  }
+  function dispose() {
+    disposed = true;
+    for (const task of pending.values()) {
+      clearTimeout(task.timer);
+      clearTimeout(task.timeout);
+      if (task.image) task.image.onload = task.image.onerror = null;
+    }
+    pending.clear();
+  }
+  return { load, retry, dispose, ready };
 }

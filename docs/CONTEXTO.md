@@ -1,3 +1,15 @@
+21/10/2026 — Novos pedidos: pins administrativos com história Lore e prévias aquarela,
+área geográfica nas missões/mesas, preferências separadas de efeitos do VTT antes
+de entrar, iluminação/dia obrigatórios e preparação das texturas usadas no piso.
+Loading deixa de reaparecer após a página abrir e ganha aviso da primeira visita.
+House 2.0 passa a House; criação da ficha recebe Ver magia. Duplo clique no ator
+da sede bloqueia seleção/arraste nativo sem impedir movimento. A falha do círculo
+foi observada no vídeo, mas não reproduzida localmente; pedir verificação somente
+após publicação. Ilustrador recuperado de lease órfão sem jobs em andamento;
+autostart e recuperação do supervisor no Windows, heartbeat na conexão da lease
+e expiração ociosa de 60 s evitam bloqueio indefinido. Operação ainda depende do
+PC/sessão Codex. Migration 120 somente aditiva, nenhum arquivo de imagem alterado.
+
 20/10/2026 — Soco/pancada ganhou luva de couro semirrealista original via imagegen, substituindo o desenho geométrico. Pedidos de ajuste substituíram a primeira mão nua fotorrealista pela luva ilustrada; somente a versão final entra no site. Sprite WebP transparente de 640×477, 85.526 bytes, em cache; animação aprovada e regras/sons preservados. 57 frames dos outros 19 tipos idênticos, direção/acerto/erro/crítico, desktop/celular e desempenho conferidos. Prompt/hashes em data/vtt/fist-leather-glove-20261020.json. Apenas frontend, sem servidor/migration/dados.
 
 20/10/2026 — VTT: mão vazia oferece Soco (desarmado) automaticamente, sem exigir arma/item; funciona na ficha e no atalho com ícone, acerto/dano e cálculo de monge existentes. Duas armas/arma de duas mãos ocupam as mãos. Trocas da sala e inventário do site permanecem separados. Sem migration; backup PostgreSQL atual validado antes da publicação. Lore: subtítulo da crônica à direita e logo acima do losango, com adaptação ao celular.

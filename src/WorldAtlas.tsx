@@ -1,3 +1,6 @@
+import { AtlasPinEditor } from './AtlasPinEditor';
+import { AtlasPlaceStory } from './AtlasPlaceStory';
+import './atlas-places.css';
 import { FlashMessage } from './FlashMessage';
 import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ArrowLeft, Compass, MapPin, Plus, ScrollText, X } from 'lucide-react';
@@ -31,6 +34,16 @@ export function WorldAtlas({
   const [drawer, setDrawer] = useState(false);
   const [filter, setFilter] = useState<'active' | 'history' | 'all'>('active');
   const [notice, setNotice] = useState('');
+  const [pinMode, setPinMode] = useState(false);
+  const [movingPin, setMovingPin] = useState<AtlasLocation | undefined>();
+  const [pinDraft, setPinDraft] = useState<{
+    position: { x: number; y: number };
+    place?: AtlasLocation;
+  } | null>(null);
+  const [panelTab, setPanelTab] = useState<'missions' | 'story'>('missions');
+  async function refreshAtlas() {
+    setAtlas(await api<AtlasData>('/atlas'));
+  }
   const closeRef = useRef<HTMLButtonElement>(null);
   const region = atlas?.regions.find((r) => r.id === regionId);
   const location = atlas?.locations.find((l) => l.id === locationId);
@@ -40,15 +53,23 @@ export function WorldAtlas({
         ? []
         : regionId
           ? atlas.locations
-              .filter((l) => l.region_id === regionId)
-              .map((l) => ({ id: l.id, name: l.name, x: Number(l.map_x), y: Number(l.map_y) }))
-          : atlas.regions.filter((r) => r.id !== 'fulkushima').map((r) => ({
-              id: r.id,
-              name: r.name,
-              available: r.available,
-              x: continentPositions[r.id]?.[0] ?? 0.5,
-              y: continentPositions[r.id]?.[1] ?? 0.5,
-            })),
+              .filter((l) => l.region_id === regionId && l.pin_visible)
+              .map((l) => ({
+                id: l.id,
+                name: l.name,
+                x: Number(l.map_x),
+                y: Number(l.map_y),
+                preview: l.history_preview,
+              }))
+          : atlas.regions
+              .filter((r) => r.id !== 'fulkushima')
+              .map((r) => ({
+                id: r.id,
+                name: r.name,
+                available: r.available,
+                x: continentPositions[r.id]?.[0] ?? 0.5,
+                y: continentPositions[r.id]?.[1] ?? 0.5,
+              })),
     [atlas, regionId],
   );
   const regionMissions = posts.filter((p) => p.kind === 'mission' && p.region_id === regionId);
@@ -78,6 +99,9 @@ export function WorldAtlas({
     if (drawer) closeRef.current?.focus({ preventScroll: true });
   }, [drawer, locationId]);
   function back() {
+    setPinMode(false);
+    setMovingPin(undefined);
+    setPanelTab('missions');
     setDrawer(false);
     setRegionId(null);
     setLocationId(null);
@@ -93,11 +117,13 @@ export function WorldAtlas({
       setNotice('');
       setRegionId(id);
       setLocationId(null);
+      setPanelTab('missions');
       setFilter('active');
     } else {
+      setPanelTab('missions');
       setLocationId(id);
       setDrawer(true);
-      setFilter('active');
+      setFilter('history');
     }
   }
   return (
@@ -122,10 +148,23 @@ export function WorldAtlas({
           >
             <KingdomMap
               canEdit={canEditKingdom}
+              canManagePins={!!atlas.can_manage_pins}
+              pinMode={pinMode}
+              onPinMode={() => {
+                setPinMode((mode) => !mode);
+                setMovingPin(undefined);
+                setDrawer(false);
+              }}
+              onPinPosition={(position) => {
+                setPinDraft({ position, place: movingPin });
+                setPinMode(false);
+                setMovingPin(undefined);
+              }}
               markers={markers}
               selectedId={locationId}
               onSelect={select}
               onOpenRegistry={() => {
+                setPanelTab('missions');
                 setLocationId(null);
                 setDrawer(true);
                 setFilter('active');
@@ -183,45 +222,104 @@ export function WorldAtlas({
           <button className="button primary atlas-create" onClick={() => onPublish(location)}>
             <Plus size={16} /> Registrar missão aqui
           </button>
-          <div className="atlas-mission-tabs" aria-label="Filtrar missões do mapa">
-            {(
-              [
-                ['active', 'Ativas'],
-                ['history', 'Histórico'],
-                ['all', 'Todas'],
-              ] as const
-            ).map(([value, label]) => (
+          <div className="atlas-place-tabs" aria-label="Conteúdo do local">
+            <button aria-pressed={panelTab === 'missions'} onClick={() => setPanelTab('missions')}>
+              Missões
+            </button>
+            <button aria-pressed={panelTab === 'story'} onClick={() => setPanelTab('story')}>
+              História
+            </button>
+          </div>
+          {atlas?.can_manage_pins && location && (
+            <div className="atlas-pin-actions">
               <button
-                key={value}
-                aria-pressed={filter === value}
-                onClick={() => setFilter(value)}
-                onPointerUp={(event) => {
-                  // In a scrollable mobile drawer Chromium can consume the
-                  // compatibility click after a pan; a completed tap still
-                  // changes this idempotent filter.
-                  if (event.pointerType === 'touch') setFilter(value);
+                onClick={() =>
+                  setPinDraft({
+                    place: location,
+                    position: { x: Number(location.map_x), y: Number(location.map_y) },
+                  })
+                }
+              >
+                Editar pin
+              </button>
+              <button
+                onClick={() => {
+                  setMovingPin(location);
+                  setPinMode(true);
+                  setDrawer(false);
                 }}
               >
-                {label}
+                Mover pin
               </button>
-            ))}
-          </div>
-          <div className="atlas-mission-list">
-            {visibleMissions.length ? (
-              visibleMissions.map(renderMission)
-            ) : (
-              <div className="atlas-empty">
-                <ScrollText size={26} />
-                <h3>Nenhum chamado por aqui</h3>
-                <p>
-                  {filter === 'history'
-                    ? 'As aventuras concluídas nesta região aparecerão aqui.'
-                    : 'Abra o primeiro capítulo desta região.'}
-                </p>
+            </div>
+          )}
+          {panelTab === 'story' ? (
+            <AtlasPlaceStory
+              key={location?.id || region.id}
+              region={region}
+              place={location}
+              admin={!!atlas?.can_manage_pins}
+              onChanged={refreshAtlas}
+            />
+          ) : (
+            <>
+              <div className="atlas-mission-tabs" aria-label="Filtrar missões do mapa">
+                {(
+                  [
+                    ['active', 'Ativas'],
+                    ['history', 'Histórico'],
+                    ['all', 'Todas'],
+                  ] as const
+                ).map(([value, label]) => (
+                  <button
+                    key={value}
+                    aria-pressed={filter === value}
+                    onClick={() => setFilter(value)}
+                    onPointerUp={(event) => {
+                      // In a scrollable mobile drawer Chromium can consume the
+                      // compatibility click after a pan; a completed tap still
+                      // changes this idempotent filter.
+                      if (event.pointerType === 'touch') setFilter(value);
+                    }}
+                  >
+                    {label}
+                  </button>
+                ))}
               </div>
-            )}
-          </div>
+              <div className="atlas-mission-list">
+                {visibleMissions.length ? (
+                  visibleMissions.map(renderMission)
+                ) : (
+                  <div className="atlas-empty">
+                    <ScrollText size={26} />
+                    <h3>Nenhum chamado por aqui</h3>
+                    <p>
+                      {filter === 'history'
+                        ? 'As aventuras concluídas nesta região aparecerão aqui.'
+                        : 'Abra o primeiro capítulo desta região.'}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
         </aside>
+      )}
+      {pinDraft && region && (
+        <AtlasPinEditor
+          places={atlas?.locations || []}
+          regionId={region.id}
+          position={pinDraft.position}
+          place={pinDraft.place}
+          close={() => setPinDraft(null)}
+          saved={async (id) => {
+            await refreshAtlas();
+            setPinDraft(null);
+            setLocationId(id);
+            setPanelTab('missions');
+            setDrawer(true);
+          }}
+        />
       )}
     </section>
   );

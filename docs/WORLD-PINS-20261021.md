@@ -1,0 +1,35 @@
+# Locais e histórias no mapa
+
+Administrador usa Adicionar pin no Reino do Norte e clica no ponto desejado. Pode
+criar local ou aproveitar um já cadastrado, editar nome/descrição, mover e ocultar.
+Ocultar preserva o local, suas missões e história. Coordenadas normalizadas seguem
+o pan/resize do mapa com zoom público fixo de 150%. Os seis locais antigos seguem
+cadastrados, inicialmente sem pin visível; não se inventam posições novas para eles.
+
+Click no pin abre o histórico das missões daquele local. Criação de missão e mesa
+oferece Reino e Área específica da missão. A área é obrigatória se houver reino e
+validada no servidor; clientes antigos sem vínculo geográfico continuam aceitos.
+Dono pode mudar o local da própria mesa; mapa pendente é salvo antes da alteração.
+
+Aba História no painel reutiliza os blocos e todas as opções do editor Lore em
+formato compacto: texto, materiais, imagens, efeitos, alinhamento, formato,
+legenda, reordenação, prévia e publicação. Páginas são criadas em rascunho sob a
+pasta História do reino. Jogadores recebem somente conteúdo publicado; preview
+de conta básica não herda as permissões administrativas.
+
+Hover ou foco do pin mostra até três primeiros blocos de imagem publicados na
+ordem da história, em pequenos balões aquarela. São montados só durante hover/foco
+e não integram o loading geral. Respeitam teclado, toque e movimento reduzido.
+
+Migration 120 adiciona vínculos em world_regions/world_locations/vtt_rooms,
+visibilidade e revisão do pin. Escritas verificam administrador atual no banco;
+conflitos de revisão devolvem 409. Páginas ligadas não podem ser movidas para outro
+reino. Remoção de página permite criar nova história, sem apagar missões.
+
+Validação em banco local UUID descartável:
+
+- `node scripts/test-portal-controls-isolated.mjs --atlas-places`: autorização,
+  preview, publicação, três prévias, revisão, persistência, missão e VTT.
+- `node scripts/test-portal-controls-isolated.mjs --pins-browser`: criação real,
+  história com três uploads, edição, pan, formulário, reload, mobile e upload lento
+  sem reabrir loading global. Capturas em test-results/world-pins.

@@ -139,7 +139,7 @@ export function Events() {
     visible.find((e) => e.presentation.featured) ||
     visible[0];
   return (
-    <section className="events-page" data-paused={hidden}>
+    <section data-page-preparing={!scene && !error || undefined} className="events-page" data-paused={hidden}>
       <div
         className="events-backdrop"
         style={{

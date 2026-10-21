@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { BookOpen } from 'lucide-react';
+import { SpellReference } from './SpellReference';
 import {
   alignments,
   choiceFields,
@@ -39,7 +42,7 @@ export function ChoiceList({
   count: number;
   onChange: (v: string[]) => void;
 }) {
-  const name = (v: string) => spells.find((s) => s.id === v)?.label || v;
+  const [reference, setReference] = useState<string | null>(null);
   return (
     <fieldset className="sheet-choice">
       <legend>
@@ -50,20 +53,49 @@ export function ChoiceList({
         {help && <SheetHelp label={label}>{help}</SheetHelp>}
       </legend>
       <div className="sheet-checks">
-        {options.map((v) => (
-          <label key={v}>
-            <input
-              type="checkbox"
-              checked={value.includes(v)}
-              disabled={!value.includes(v) && value.length >= count}
-              onChange={() =>
-                onChange(value.includes(v) ? value.filter((x) => x !== v) : [...value, v])
-              }
-            />
-            <span className="sheet-choice-name"><TrainingBadge name={v} /><span>{name(v)}</span></span>
-          </label>
-        ))}
+        {options.map((v) => {
+          const spell = spells.find((s) => s.id === v);
+          const choice = (
+            <label key={v}>
+              <input
+                type="checkbox"
+                checked={value.includes(v)}
+                disabled={!value.includes(v) && value.length >= count}
+                onChange={() =>
+                  onChange(value.includes(v) ? value.filter((x) => x !== v) : [...value, v])
+                }
+              />
+              <span className="sheet-choice-name">
+                <TrainingBadge name={v} />
+                <span>{spell?.label || v}</span>
+              </span>
+            </label>
+          );
+          return spell ? (
+            <div className="sheet-creation-spell" key={v}>
+              {choice}
+              <button
+                type="button"
+                className="spell-reference-open"
+                aria-label={'Ver magia: ' + spell.label}
+                onClick={() => setReference(v)}
+              >
+                <BookOpen size={13} aria-hidden="true" /> Ver magia
+              </button>
+            </div>
+          ) : (
+            choice
+          );
+        })}
       </div>
+      {reference && (
+        <SpellReference
+          key={reference}
+          id={reference}
+          label={spells.find((s) => s.id === reference)?.label || reference}
+          close={() => setReference(null)}
+        />
+      )}
     </fieldset>
   );
 }
@@ -78,6 +110,7 @@ export function SheetChoices({
   value: Choices;
   onChange: (v: Choices) => void;
 }) {
+  const [reference, setReference] = useState<string | null>(null);
   const k = classRules[cls],
     b = backgroundRules[c.backgroundType],
     used = racialSkills(race, c);
@@ -90,6 +123,14 @@ export function SheetChoices({
   };
   return (
     <div className="sheet-creation stack">
+      {reference && (
+        <SpellReference
+          key={reference}
+          id={reference}
+          label={spells.find((s) => s.id === reference)?.label || reference}
+          close={() => setReference(null)}
+        />
+      )}
       <div className="form-grid">
         <label>
           Linhagem ({Object.hasOwn(eberronSpecies, race) ? EBERRON_SOURCE : 'SRD 5.2.1'})
@@ -152,24 +193,29 @@ export function SheetChoices({
         options={languages.filter((v) => v !== 'Comum')}
         onChange={(v) => update({ backgroundExtras: v })}
       />
-      {race === 'Tiefling' && <TieflingHorns value={c.tieflingHorns} onChange={tieflingHorns => update({ tieflingHorns })} />}
+      {race === 'Tiefling' && (
+        <TieflingHorns
+          value={c.tieflingHorns}
+          onChange={(tieflingHorns) => update({ tieflingHorns })}
+        />
+      )}
       {c.originRules && feats(c).some((f) => f.startsWith('Iniciado em Magia')) && (
         <p className="muted small">
           Regra da mesa: Iniciado em Magia usa automaticamente Sabedoria para Clérigo/Druida e
           Inteligência para Mago.
         </p>
       )}
-      {choiceFields(race, cls, c)
-        .map((f) =>
-          f.count === 1 && f.options.length === 1 && f.key.startsWith('featAbility') ? (
-            <div className="sheet-field-group" key={f.key}>
-              <span>{f.label}</span>
-              <p className="muted small" aria-label={f.label}>
-                {f.options[0]} · {feats(c)[Number(f.key.slice('featAbility'.length))]}
-              </p>
-            </div>
-          ) : f.count === 1 ? (
-            <label key={f.key}>
+      {choiceFields(race, cls, c).map((f) =>
+        f.count === 1 && f.options.length === 1 && f.key.startsWith('featAbility') ? (
+          <div className="sheet-field-group" key={f.key}>
+            <span>{f.label}</span>
+            <p className="muted small" aria-label={f.label}>
+              {f.options[0]} · {feats(c)[Number(f.key.slice('featAbility'.length))]}
+            </p>
+          </div>
+        ) : f.count === 1 ? (
+          <div className="sheet-field-group" key={f.key}>
+            <label>
               {f.label}
               {spellFeatHelp(f.key) && (
                 <SheetHelp label={f.label}>{spellFeatHelp(f.key)}</SheetHelp>
@@ -186,18 +232,31 @@ export function SheetChoices({
                 ))}
               </select>
             </label>
-          ) : (
-            <ChoiceList
-              key={f.key}
-              label={f.label}
-              help={spellFeatHelp(f.key)}
-              count={f.count}
-              value={c.options[f.key] || []}
-              options={f.options}
-              onChange={(v) => onChange({ ...c, options: { ...c.options, [f.key]: v } })}
-            />
-          ),
-        )}
+            {spells.some((s) => s.id === c.options[f.key]?.[0]) && (
+              <button
+                type="button"
+                className="spell-reference-open sheet-choice-reference"
+                aria-label={
+                  'Ver magia: ' + spells.find((s) => s.id === c.options[f.key]?.[0])!.label
+                }
+                onClick={() => setReference(c.options[f.key][0])}
+              >
+                <BookOpen size={13} aria-hidden="true" /> Ver magia
+              </button>
+            )}
+          </div>
+        ) : (
+          <ChoiceList
+            key={f.key}
+            label={f.label}
+            help={spellFeatHelp(f.key)}
+            count={f.count}
+            value={c.options[f.key] || []}
+            options={f.options}
+            onChange={(v) => onChange({ ...c, options: { ...c.options, [f.key]: v } })}
+          />
+        ),
+      )}
       <ChoiceList
         label={'Perícias de ' + cls}
         count={k.count}

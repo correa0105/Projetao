@@ -325,7 +325,7 @@ export function Achievements({
             <button onClick={() => setRetry((v) => v + 1)}>Tentar novamente</button>
           </>
         ) : (
-          <p role="status">Abrindo as conquistas…</p>
+          <p role="status" data-page-preparing="true">Abrindo as conquistas…</p>
         )}
       </div>
     );

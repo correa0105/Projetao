@@ -1,0 +1,56 @@
+.vtt-entry {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 32px 22px 110px;
+  background: radial-gradient(ellipse at top, #263330, #101719 70%);
+  color: #ede1c7;
+}
+.vtt-entry form {
+  width: min(520px, 100%);
+}
+.vtt-entry-brand {
+  color: #bfa875;
+  font:
+    11px/1.6 system-ui,
+    sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.vtt-entry h1 {
+  margin: 20px 0;
+  font:
+    400 clamp(27px, 5vw, 36px)/1.2 Georgia,
+    serif;
+}
+.vtt-entry p {
+  color: #c4c8bd;
+  line-height: 1.65;
+  font-size: 14px;
+}
+.vtt-visual-choices {
+  margin-block: 24px;
+}
+.vtt-visual-choices label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+.vtt-visual-choices input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  accent-color: #c4a360;
+}
+.vtt-visual-choices > p {
+  font-size: 12px;
+  margin: 8px 0 20px;
+}
+.vtt-visual-choices .vtt-required-visuals {
+  margin: 22px 0;
+  padding: 14px;
+  border: 1px solid #a78f544f;
+  border-radius: 6px;
+  background: #c9ae6810;
+}

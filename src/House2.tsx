@@ -1115,7 +1115,7 @@ export function House2({ character, user }: { character?: Character; user: User 
           </p>
         )}
         {loading && !directory ? (
-          <p>Carregando vizinhanças…</p>
+          <p data-page-preparing="true">Carregando vizinhanças…</p>
         ) : (
           <div className="h2-neighborhoods">
             {directory?.neighborhoods
@@ -1181,7 +1181,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     );
 
   return (
-    <section className="house2-world" aria-label="Vizinhança House 2.0">
+    <section className="house2-world" aria-label="Vizinhança House">
       <svg
         ref={mapRef}
         className="h2-map"
@@ -1520,7 +1520,7 @@ export function House2({ character, user }: { character?: Character; user: User 
       <header className="h2-world-header">
         <div className="h2-world-heading">
           <strong>{scene?.neighborhood.name || 'Vizinhança'}</strong>
-          <span>200 × 200 · House 2.0 · testes</span>
+          <span>200 × 200 · House</span>
         </div>
         <div className="h2-world-meta">
           <div className="h2-clock-display" aria-label="Horário do mundo">
@@ -1544,7 +1544,7 @@ export function House2({ character, user }: { character?: Character; user: User 
           <House2Capture
             map={mapRef}
             administrator={user.administrador === 1}
-            name={scene?.neighborhood.name ?? 'House 2.0'}
+            name={scene?.neighborhood.name ?? 'House'}
             disabled={busy || !scene}
             notice={setNotice}
           />
@@ -1562,7 +1562,7 @@ export function House2({ character, user }: { character?: Character; user: User 
             setTool(null);
           }}
         >
-          <Menu size={18} /> House 2.0 <ChevronDown size={14} />
+          <Menu size={18} /> House <ChevronDown size={14} />
         </button>
         {menu && (
           <nav className="h2-controls" id="h2-controls" aria-label="Controles da vizinhança">
@@ -1623,7 +1623,7 @@ export function House2({ character, user }: { character?: Character; user: User 
       <div className="h2-map-hint">
         <Move size={14} /> Arraste para explorar · role para aproximar
       </div>
-      {loading && !scene && <div className="h2-map-loading">Abrindo a vizinhança…</div>}
+      {loading && !scene && <div className="h2-map-loading" data-page-preparing="true">Abrindo a vizinhança…</div>}
       {notice && (
         <div className="h2-world-notice" role="status">
           {notice}

@@ -78,6 +78,22 @@ Correção de compatibilidade de 09/10: protocolo VTT 4 rejeita leituras/comando
 
 # Alvorada Cinzenta — instruções para continuidade
 
+21/10/2026 — Direção vigente: loading geral só na entrada/troca de aba, nunca ao
+enviar imagem ou usar funções após abrir a página; primeira visita traz aviso em
+destaque. Nenhuma compressão de imagens autorizada. House 2.0 passa a se chamar
+House (rotas/dados internos preservados). Criação da ficha oferece Ver magia nos
+truques, magias de classe e talentos, usando a mesma consulta da evolução, sem
+alterar seleções. Pins administrativos do mapa possuem História com o editor Lore
+completo e até três prévias aquarela ao passar o mouse; missões/mesas escolhem
+reino e área. Migration 120 aditiva; autoria/publicação/privacidade preservadas.
+VTT pergunta efeitos do mapa e do mestre antes da entrada; iluminação dinâmica e
+horário do dia são obrigatórios. Preparar somente texturas usadas e não reabrir
+loading ao acrescentar imagens na cena já aberta. Ilustrador deve recuperar quedas
+automaticamente: supervisor, inicialização no Windows e lease com heartbeat na
+mesma conexão, expiração ociosa de 60 s. A sessão atual depende deste computador;
+não prometer funcionamento com PC desligado nem transferir credenciais pessoais
+para a VPS. Guias WORLD-PINS-20261021, VTT-MEDIA-20261021 e ASSET-LOADING-20261021.
+
 Correção posterior 09/10: sangue só cria pequenos respingos em impactos; nunca
 novos rastros no movimento. Marcas legacy de movimento são conservadas mas
 ocultadas. Mesa guarda bloodEnabled/automaticDeath; morte automática inicia

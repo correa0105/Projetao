@@ -13,11 +13,16 @@ uma hora; HTML, autenticação e APIs mantêm suas políticas de não armazename
 Nenhuma imagem foi comprimida, redimensionada ou substituída.
 
 `AssetGate` prepara fundos CSS, pseudo-elementos, imagens e texturas SVG da primeira
-viewport antes de revelar uma aba. Mudanças de imagem são observadas; transformações
-de animação não disparam varreduras. A geometria do cenário é montada oculta, preservando
+viewport antes de revelar uma aba. O observador atua somente até a primeira abertura;
+depois é desconectado. Imagens enviadas, hover, funções internas e redimensionamento
+não podem cobrir novamente uma página já aberta com loading geral. A geometria é montada oculta, preservando
 medidas, responsividade e controles. Imagens visíveis com carregamento lazy são
 promovidas só nessa viewport; o restante do catálogo continua sob demanda.
 Modais conservam seus próprios fluxos, sem esconder diálogos no topo da página.
+Dados iniciais assíncronos aguardam `data-page-preparing`/`aria-busy` antes da primeira
+varredura completa. Imagens de prévias de pins ficam fora dessa preparação. A mensagem
+em destaque explica que a primeira visita demora mais e que o navegador poderá
+reutilizar imagens nas próximas visitas; não garante cache permanente.
 
 Verificação: `node scripts/test-portal-controls-isolated.mjs --assets` usa uma base
 descartável e atrasos/falhas de rede controlados. Confirma que o Estábulo fica oculto
@@ -36,6 +41,10 @@ O mapa regional não mostra mais “Mapa Alvorada”; nome do reino e Voltar ao 
 ficam no topo, com espaço para o menu da conta no celular.
 
 Atualizações que alteram apenas código podem usar `deploy/hostinger/Dockerfile.code-update`
-sobre uma imagem completa validada, copiando bundles e servidor. Isso exige que
-`public/`, `data/`, `db/` e dependências sejam idênticos à base. Uma alteração nesses
-diretórios exige nova imagem completa. Preservar volumes e a imagem anterior.
+sobre uma imagem completa validada, copiando bundles, servidor e migrations. Isso exige
+`public/`, `data/`, dependências e migrations existentes idênticos à base; são permitidas
+novas migrations SQL numeradas aditivas, incluídas no manifesto de hashes. Mudanças de
+acervo/dependências exigem imagem completa. Preservar volumes e a imagem anterior.
+
+O teste de pins também atrasa uma imagem enviada no editor e confirma que o loading
+geral não reaparece. House mantém identificadores/API `house2`, com rótulo público House.

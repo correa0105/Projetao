@@ -1,0 +1,5815 @@
+import { isTreeCanopy } from '../shared/vtt-canopies';
+import { WorldPlacePicker } from './WorldPlacePicker';
+import { Modal } from './components';
+import { VttPlaceSettings } from './VttPlaceSettings';
+import { copyText } from './copy-text';
+import { vttPersonalHref, vttInviteCode } from '../shared/vtt-links';
+import { vttStorageLabel } from '../shared/vtt-storage';
+import { VttHighQualityCapture, renderVttCaptureFrame, type VttCaptureFrame } from './VttHighQualityCapture';
+import { VttItemLayers, VttStackButtons } from './VttItemLayers';
+import { VttRoomCharacters } from './VttRoomCharacters';
+import { reorderVttItems } from '../shared/vtt-stacking';
+import {vttVisualSource} from '../shared/vtt-asset-visuals';
+import { VttSceneryAssets } from './VttSceneryAssets';
+import {VttNatureAssets} from './VttNatureAssets';
+import {natureAssets,natureAssetMime} from '../shared/vtt-nature-assets';
+import {houseInteriorImages,houseAsset,houseDoorObstructed,fitHouseToGrid,housePlacement} from '../shared/vtt-houses';
+import {tokenPlacement} from '../shared/vtt-placement';
+import {createNatureToken} from '../shared/vtt-nature-placement';
+import {VttHouseDoors} from './VttHouseDoors';
+import {VttHouseSounds} from './VttHouseSounds';
+import {houseWindowOpen} from '../shared/vtt-houses';
+import {houseDoorsAnimating} from './vtt-house-doors';
+import {VttLightPresets,VttLightEffectFields} from './VttLightingControls';
+import {lightPresetValues,sceneHasAnimatedLights,type LightPresetId} from '../shared/vtt-lighting';
+import { VttTerrainBrush, type TerrainBrushSettings } from './VttTerrainBrush';
+import { sceneryAssets, sceneryAssetMime } from '../shared/vtt-scenery-assets';
+import { terrainTextures, woodlandFloorImage } from '../shared/vtt-terrain';
+import {createVttImageLoader} from './vtt-image-loader';
+import type { TerrainStroke } from '../shared/vtt';
+import { VttTokenMenu } from './VttTokenMenu';
+import {VttSceneryActions} from './VttSceneryActions';
+import {convertSceneryToToken} from '../shared/vtt-scenery-token';
+import { VttAtmosphereMenu } from './VttAtmosphereMenu';
+import { livingEffectReady } from './vtt-effects-living';
+import { atmosphereAnimated, atmosphereTransitioning } from './vtt-atmosphere';
+import type { MapAtmosphere } from '../shared/vtt-atmosphere';
+import { VttTokenScaleControl } from './VttTokenScaleControl';
+import { isAttackCheck } from '../shared/vtt-roll-purpose';
+import { VttAttackRollAction } from './VttAttackRollAction';
+import { VttAnimatedAssetControls } from './VttAnimatedAssetControls';
+import { effectMaterialsReady } from './vtt-effects-materials';
+import { physicalPropsReady } from './vtt-effects-physical';
+import { animatedAssets, animatedAssetMime, type AnimatedAsset } from '../shared/vtt-animated-assets';
+import { VttAnimatedAssets } from './VttAnimatedAssets';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type PointerEvent as ReactPointerEvent,
+  type DragEvent as ReactDragEvent,
+} from 'react';
+import {
+  MousePointer2,
+  Hand,
+  LassoSelect,
+  ArrowDown,
+  Ruler,
+  Pencil,
+  Paintbrush,
+  Square,
+  Circle,
+  Triangle,
+  Slash,
+  Type,
+  BrickWall,
+  DoorOpen,
+  PanelsTopLeft,
+  Sun,
+  Eye,
+  EyeOff,
+  Undo2,
+  Redo2,
+  Download,
+  Upload,
+  Plus,
+  Trash2,
+  Copy,
+  RotateCw,
+  Lock,
+  Unlock,
+  Swords,
+  Dices,
+  BookOpen,
+  Music,
+  Settings2,
+  HelpCircle,
+  MessageSquare,
+  Image,
+  Users,
+  Scan,
+  Maximize2,
+  Save,
+  X,
+  Layers,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  ChevronUp,
+  Lightbulb,
+  Map as MapIcon,
+  FlipHorizontal2,
+  FlipVertical2,
+} from 'lucide-react';
+import { api, post } from './api';
+import { VttPrivateLibrary } from './VttPrivateLibrary';
+import { VttCharacterToken } from './VttCharacterToken';
+import { VttMonsterVariants } from './VttMonsterVariants';
+import { monsterVariantFilter, type MonsterVariant } from '../shared/vtt-monster-variants';
+import { VttCompanions } from './VttCompanions';
+import { companionMime } from '../shared/vtt-companions';
+import { VttSelectionPortrait } from './VttSelectionPortrait';
+import { VttChatText } from './VttChatText';
+import { VttChatComposer } from './VttChatComposer';
+import { VttMonsterEditor, customMonster } from './VttMonsterEditor';
+import { monsterCustomDetails } from '../shared/vtt-monster-presets';
+import type { Character, User } from './types';
+import {
+  documentSchema,
+  newScene,
+  newToken,
+  snapPoint,
+  distance,
+  rulerLabel,
+  blockingWalls,
+  activateScene,
+  lightSchema,
+  carveOpening,
+  intersection,
+  activateTokenVision,
+  applyTokenDeath,
+  viewerSees,
+  sceneBossBars,
+  bossStyles,
+  bossStyleNames,
+  visibleBossStyle,
+  type VttMessage,
+  type VttState,
+  type VttDocument,
+  type VttToken,
+  type VttDrawing,
+  type VttScene,
+  type Point,
+  type VttAsset,
+  type VttFocusSignal,
+} from '../shared/vtt';
+import { tokenRotationHandleAt, rotationFromDrag, tokenResizeHandleAt, tokenResizeCursor, resizeTokenRectangle, type ResizeHandle } from '../shared/vtt-token-resize';
+import './vtt-token-editing.css';
+import { renderVtt, tokenAt, drawingAt, segmentDistance, type VttCamera } from './vtt-canvas';
+import type { AttackRequest } from '../shared/vtt-attack';
+import { vttUpdateMessage } from '../shared/vtt-protocol';
+import { pingDuration, type VttPing } from './vtt-ping';
+import { VttSheet } from './VttSheet';
+import { VttMonsterSheet, VttMonsterStatblock, type MonsterProfile } from './VttMonsterSheet';
+import { VttDice } from './VttDice';
+import { VttToolGroup } from './VttToolGroup';
+import { VttHotbar, ActionShortcut } from './VttHotbar';
+import { VttEffects } from './VttEffects';
+import { VttAttackVisuals } from './VttAttackVisuals';
+import { VttEffectSounds } from './VttEffectSounds';
+import { VttCanopyEditor } from './VttCanopyEditor';
+import { rockAssets } from '../shared/vtt-rock-assets';
+import { treeAssets, treeAssetMime } from '../shared/vtt-tree-assets';
+import { VttAssets } from './VttAssets';
+import type { useVttMediaPreferences } from './vtt-media-preferences';
+import { VttVisualChoices } from './VttVisualChoices';
+import { AssetLoading } from './AssetLoading';
+import { useVttSpells, requestSpellCast } from './useVttSpells';
+import { VttSpellControls } from './VttSpellControls';
+import { VttSpellSounds } from './VttSpellSounds';
+import { VttRollSounds } from './VttRollSounds';
+import { spellProfile, breathProfile } from '../shared/vtt-spells';
+import type { AttackVisualCommand } from '../shared/vtt-attack-visual';
+import { VttSoundboard } from './VttSoundboard';
+import { VttSoundCredits } from './VttSoundCredits';
+import { useVttSounds } from './useVttSounds';
+import { soundSettings, type SoundCommand } from '../shared/vtt-sounds';
+import { VttRollHelp } from './VttRollHelp';
+import { useVttCombat, VttTurnCarousel, VttCombatPanel } from './VttCombat';
+import { effectEnds, type EffectPreset } from '../shared/vtt-effects';
+import type { MonsterAction } from '../shared/vtt-monster-actions';
+import { compendiumText, monsterDetails } from '../shared/vtt-compendium';
+import { monsterArt } from '../shared/vtt-monster-art';
+import { hpCommand } from '../shared/vtt-hp';
+import { lassoSelection } from '../shared/vtt-selection';
+import { movementBlocked,constrainMovement } from '../shared/vtt-movement';
+import { attachmentMovementError } from '../shared/vtt-movement';
+import {
+  attachmentError,
+  attachmentRoot,
+  attachmentUnavailable,
+  syncAttachmentPositions,
+  translateAttachmentGroup,
+  movementFacing,
+} from '../shared/vtt-attachments';
+import { Link2 } from 'lucide-react';
+import { VttHpControl } from './VttHpControl';
+import { VttConditionMenu } from './VttConditionMenu';
+import { VttBossBars } from './VttBossBars';
+import { MapLibrary, MapSettings } from './VttMaps';
+import { useMusicInterlude } from './SiteMusic';
+import './vtt.css';
+import './vtt-library-tabs.css';
+type Tool =
+  | 'select'
+  | 'terrain-paint'
+  | 'terrain-erase'
+  | 'lasso'
+  | 'pan'
+  | 'ruler'
+  | 'attach'
+  | 'pen'
+  | 'rect'
+  | 'circle'
+  | 'cone'
+  | 'line'
+  | 'text'
+  | 'wall'
+  | 'door'
+  | 'window'
+  | 'reveal'
+  | 'hide'
+  | 'light'
+  | 'ping';
+const barrierTools = new Set<Tool>(['wall', 'door', 'window', 'light']);
+type Tab =
+  | 'art'
+  | 'scene'
+  | 'token'
+  | 'library'
+  | 'sheet'
+  | 'mounts'
+  | 'pets'
+  | 'chat'
+  | 'combat'
+  | 'journal'
+  | 'music'
+  | 'table'
+  | 'help';
+type Entry = {
+  id: string;
+  name: string;
+  details: string;
+  hp?: number;
+  ac?: number;
+  stats?: number[];
+  size?: string;
+  cr?: string;
+  level?: number;
+  type?: string;
+  source?: string;
+  school?: string;
+  range?: string;
+  time?: string;
+  duration?: string;
+  components?: string;
+  speed?: string;
+  legacyDetails?: string;
+  information?: { label: string; value: string }[];
+  image?: string;
+  artVariant?: MonsterVariant;
+};
+const monsterMime = 'application/x-alvorada-monster';
+const characterMime = 'application/x-alvorada-character';
+function monsterImage(entry: Entry) {
+  return entry.image || monsterArt(entry.id, entry.name);
+}
+const tabs: { id: Tab; name: string; icon: typeof Sun }[] = [
+  { id: 'chat', name: 'Chat', icon: MessageSquare },
+  { id: 'art', name: 'Biblioteca de arte', icon: Image },
+  { id: 'sheet', name: 'Fichas', icon: Users },
+  { id: 'library', name: 'Biblioteca', icon: BookOpen },
+  { id: 'music', name: 'Som', icon: Music },
+  { id: 'combat', name: 'Combate', icon: Swords },
+  { id: 'table', name: 'Configurações e ajuda', icon: Settings2 },
+];
+const toolList: { id: Tool; name: string; icon: typeof Sun; gm?: boolean }[] = [
+  { id: 'select', name: 'Selecionar (V)', icon: MousePointer2 },
+  { id: 'pan', name: 'Mover mapa (H)', icon: Hand },
+  { id: 'lasso', name: 'Seleção livre (L)', icon: LassoSelect, gm: true },
+  { id: 'ruler', name: 'Régua (R)', icon: Ruler },
+  { id: 'attach', name: 'Vincular sobre outro token', icon: Link2 },
+  { id: 'ping', name: 'Sinalizar ponto', icon: ArrowDown },
+  { id: 'pen', name: 'Desenhar (P)', icon: Pencil, gm: true },
+  { id: 'rect', name: 'Retângulo', icon: Square, gm: true },
+  { id: 'circle', name: 'Área circular', icon: Circle, gm: true },
+  { id: 'cone', name: 'Área de cone', icon: Triangle, gm: true },
+  { id: 'line', name: 'Linha', icon: Slash, gm: true },
+  { id: 'text', name: 'Texto', icon: Type, gm: true },
+  { id: 'wall', name: 'Barreira de luz', icon: BrickWall, gm: true },
+  { id: 'door', name: 'Porta', icon: DoorOpen, gm: true },
+  { id: 'window', name: 'Janela', icon: PanelsTopLeft, gm: true },
+  { id: 'light', name: 'Fonte de luz', icon: Lightbulb, gm: true },
+  { id: 'reveal', name: 'Revelar névoa', icon: Eye, gm: true },
+  { id: 'hide', name: 'Ocultar área', icon: EyeOff, gm: true },
+];
+function download(name: string, bytes: Blob) {
+  const url = URL.createObjectURL(bytes),
+    a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+function tagText(value: unknown): string {
+  return compendiumText(value);
+}
+function DiceIcon({ sides }: { sides: number }) {
+  const path =
+    sides === 4
+      ? 'M12 2 22 21H2Z M12 2 12 15 2 21 M12 15 22 21'
+      : sides === 6
+        ? 'M4 4H20V20H4Z M4 4 8 8H20 M8 8V20'
+        : sides === 8
+          ? 'M12 2 22 12 12 22 2 12Z M2 12H22 M12 2V22'
+          : sides === 10 || sides === 100
+            ? 'M12 2 22 11 18 20 6 20 2 11Z M12 2 8 12 6 20 M8 12 18 20 M8 12 22 11'
+            : sides === 12
+              ? 'M7 2H17L23 10 19 21H5L1 10Z M7 2 9 8H16L17 2 M9 8 6 15 5 21 M6 15H18L19 21 M16 8 18 15 23 10 M1 10 6 15'
+              : 'M12 1 22 7V17L12 23 2 17V7Z M12 1 7 8 2 7 M7 8 17 8 22 7 M7 8 6 17 2 17 M17 8 18 17 22 17 M6 17H18L12 23 M7 8 12 18 17 8';
+  return (
+    <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+      <path
+        d={path}
+        fill="#81776c"
+        fillOpacity=".28"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+function NumberField({
+  label,
+  value,
+  onChange,
+  min = 0,
+  max = 16000,
+  step = 1,
+  disabled = false,
+}: {
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+  min?: number;
+  max?: number;
+  step?: number;
+  disabled?: boolean;
+}) {
+  const [draftValue, setDraftValue] = useState(String(value));
+  useEffect(() => setDraftValue(String(value)), [value]);
+  return (
+    <label>
+      {label}
+      <input
+        aria-label={label}
+        type="number"
+        value={draftValue}
+        min={min}
+        max={max}
+        step={step}
+        disabled={disabled}
+        onChange={(e) => {
+          setDraftValue(e.currentTarget.value);
+          const n = e.currentTarget.valueAsNumber;
+          if (Number.isFinite(n)) onChange(Math.min(max, Math.max(min, n)));
+        }}
+        onBlur={() => setDraftValue(String(value))}
+      />
+    </label>
+  );
+}
+export function VttSession({ characters, user, media }: { characters: Character[]; user: User; media: ReturnType<typeof useVttMediaPreferences> }) {
+  const captureFrame = useRef<VttCaptureFrame | null>(null);
+  const [followingPersonal, setFollowingPersonal] = useState<string | null>(null);
+  const [personalId, setPersonalId] = useState<string | null>(null);
+  const [personalUrl, setPersonalUrl] = useState('');
+  const [storage, setStorage] = useState<import('../shared/vtt-storage').VttStorage | null>(null);
+  const [rooms, setRooms] = useState<{ id: string; name: string; is_owner: boolean }[]>([]),
+    [canCreate, setCanCreate] = useState(false),
+    [state, setState] = useState<VttState | null>(null),
+    [doc, setDoc] = useState<VttDocument | null>(null),
+    [notice, setNotice] = useState(''),
+    [busy, setBusy] = useState(false),
+    [dirty, setDirty] = useState(false);
+  const visualEffects = media.masterEffects;
+  const mapEffects = media.mapEffects;
+  const [sceneImageError, setSceneImageError] = useState(false);
+  const [newRoomOpen,setNewRoomOpen]=useState(false);
+  const [createRegion,setCreateRegion]=useState(''),[createPlace,setCreatePlace]=useState('');
+  const [canopyEditing, setCanopyEditing] = useState(false);
+  const [tool, setTool] = useState<Tool>('select'),
+    [tab, setTab] = useState<Tab>('chat'),
+    [layer, setLayer] = useState('tokens'),
+    [selection, setSelection] = useState<string[]>([]),
+    [attackTargetId, setAttackTargetId] = useState<string | null>(null),
+    [attackBusy, setAttackBusy] = useState(false),
+    [camera, setCamera] = useState<VttCamera>({ x: 1120, y: 840, zoom: 0.45 }),
+    [bounds, setBounds] = useState({ width: 900, height: 700 }),
+    [preview, setPreview] = useState(false),
+    [previewViewerId, setPreviewViewerId] = useState<string | null>(null),
+    [effectPreview, setEffectPreview] = useState<{
+      tokenIds: string[];
+      preset: EffectPreset;
+      at: number;
+    } | null>(null),
+    [attack, setAttack] = useState<AttackRequest | null>(null),
+    [joinRole, setJoinRole] = useState<'player' | 'spectator'>('player'),
+    [showWalls, setShowWalls] = useState(true),
+    [lightPreset,setLightPreset]=useState<LightPresetId>('torch'),
+    [ruler, setRuler] = useState<Point[]>([]),
+    [lasso, setLasso] = useState<Point[]>([]),
+    [fogShape, setFogShape] = useState<'rect' | 'polygon' | 'brush'>('rect'),
+    [fogPoints, setFogPoints] = useState<Point[]>([]),
+    [fogPointer, setFogPointer] = useState<Point | null>(null),
+    [draft, setDraft] = useState<VttDrawing | null>(null),
+    [ping, setPing] = useState<VttPing | null>(null),
+    [brushColor, setBrushColor] = useState('#dac28e'),
+    [brushWidth, setBrushWidth] = useState(3),
+    [brushFill, setBrushFill] = useState(true),
+    [text, setText] = useState(''),
+    [textEdit, setTextEdit] = useState<{
+      point: Point;
+      x: number;
+      y: number;
+      value: string;
+    } | null>(null),
+    [brushRadius, setBrushRadius] = useState(140),
+    [panelOpen, setPanelOpen] = useState(true),
+    [mapsOpen, setMapsOpen] = useState(false),
+    [sheetId, setSheetId] = useState<string | null>(null),
+    [diceOpen, setDiceOpen] = useState(false),
+    [dice3d, setDice3d] = useState(true),
+    [diceCount, setDiceCount] = useState(1),
+    [diceSides, setDiceSides] = useState(20),
+    [diceModifier, setDiceModifier] = useState(0),
+    [olderMessages, setOlderMessages] = useState<VttMessage[]>([]),
+    [historyEnd, setHistoryEnd] = useState(false),
+    [settingsId, setSettingsId] = useState<string | null>(null),
+    [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
+  const [terrainBrush, setTerrainBrush] = useState<TerrainBrushSettings>({texture:'grass',radius:45,softness:.5,opacity:1,textureScale:280,shape:'round',layer:'base'});
+  const [terrainDraft, setTerrainDraft] = useState<TerrainStroke | null>(null);
+  const [terrainCursor, setTerrainCursor] = useState<Point | null>(null);
+  const terrainActive = useRef<TerrainStroke | null>(null);
+  const terrainFrame = useRef(0), terrainPointer = useRef<Point | null>(null);
+  useEffect(() => () => cancelAnimationFrame(terrainFrame.current), []);
+  function scheduleTerrainRender(p: Point) {
+    terrainPointer.current = p;
+    if (terrainFrame.current) return;
+    terrainFrame.current = requestAnimationFrame(() => {
+      terrainFrame.current = 0;
+      setTerrainCursor(terrainPointer.current);
+      setTerrainDraft(terrainActive.current);
+    });
+  }
+  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium' | 'nature' | 'animated' | 'scenery' | 'terrain'>(
+      'images',
+    ),
+    [presetVersion, setPresetVersion] = useState(0),
+    [query, setQuery] = useState(''),
+    [entry, setEntry] = useState<Entry | null>(null),
+    [monsterVariant, setMonsterVariant] = useState<MonsterVariant>(0),
+    [catalog, setCatalog] = useState<{ monsters: Entry[]; spells: Entry[] }>({
+      monsters: [],
+      spells: [],
+    }),
+    [chat, setChat] = useState(''),
+    [formula, setFormula] = useState('1d20'),
+    [privateRoll, setPrivateRoll] = useState(false),
+    [chatControlsCollapsed, setChatControlsCollapsed] = useState(() => {
+      try {
+        return localStorage.getItem(`vtt-chat-controls:${user.id}`) === 'collapsed';
+      } catch {
+        return false;
+      }
+    }),
+    [inviteInput, setInviteInput] = useState(''),
+    [roomName, setRoomName] = useState('Mesa da Alvorada'),
+    [journalId, setJournalId] = useState('');
+  const characterImportBusy = useRef(false);
+  const canvas = useRef<HTMLCanvasElement>(null),
+    chatLog = useRef<HTMLDivElement>(null),
+    chatStick = useRef(true),
+    chatTop = useRef(0),
+    chatHistoryAnchor = useRef<{ height: number; top: number } | null>(null),
+    stage = useRef<HTMLDivElement>(null),
+    images = useRef(new Map<string, HTMLImageElement>()),
+    [imageVersion, setImageVersion] = useState(0),
+    stateRef = useRef(state),
+    docRef = useRef(doc),
+    dirtyRef = useRef(false),
+    serial = useRef(0),
+    savePromise = useRef<Promise<void> | null>(null),
+    undo = useRef<VttDocument[]>([]),
+    redo = useRef<VttDocument[]>([]),
+    drag = useRef<{
+      start: Point;
+      last: Point;
+      screen: Point;
+      camera: VttCamera;
+      original: VttDocument;
+      kind: 'pan' | 'tokens' | 'drawing' | 'shape' | 'lasso' | 'resize' | 'rotate';
+      resizeHandle?: ResizeHandle;
+      tool?: Tool;
+      layer?: string;
+      tokens: VttToken[];
+      drawing?: VttDrawing;
+      lasso?: Point[];
+      additive?: boolean;
+      baseSelection?: string[];
+      path?: Point[];
+      measured?: boolean;
+      moved?: boolean;
+    } | null>(null),
+    focusSeen = useRef<{ roomId: string; at: number; id: string } | null>(null),
+    focusFrame = useRef(0),
+    contextRef = useRef<HTMLDivElement>(null);
+  const tokenClick = useRef<{id: string; x: number; y: number} | null>(null);
+  const contextDrag = useRef<{ id: number; dx: number; dy: number } | null>(null);
+  const suppressContextUntil = useRef(0);
+  const panHeld = useRef(false);
+  useEffect(() => {
+    const down=(e:KeyboardEvent)=>{if(e.code==='Space' && !(e.target as HTMLElement).closest('input,textarea,select,[contenteditable]')) {e.preventDefault();panHeld.current=true;}};
+    const up=(e:KeyboardEvent)=>{if(e.code==='Space')panHeld.current=false;};
+    const blur=()=>{panHeld.current=false;
+      const d=drag.current;drag.current=null;
+      if(d && d.kind!=='pan'){docRef.current=d.original;setDoc(d.original);}
+      cancelAnimationFrame(terrainFrame.current);terrainFrame.current=0;terrainPointer.current=null;
+      terrainActive.current=null;setTerrainDraft(null);setRuler([]);setLasso([]);setDraft(null);
+    };
+    window.addEventListener('keydown',down);window.addEventListener('keyup',up);window.addEventListener('blur',blur);
+    return ()=>{window.removeEventListener('keydown',down);window.removeEventListener('keyup',up);window.removeEventListener('blur',blur);};
+  }, []);
+  const music = useMusicInterlude();
+  const sounds = useVttSounds(state?.id),
+    soundQueue = useRef(Promise.resolve());
+  function customizeChatControls(collapsed: boolean) {
+    setChatControlsCollapsed(collapsed);
+    try {
+      localStorage.setItem(`vtt-chat-controls:${user.id}`, collapsed ? 'collapsed' : 'expanded');
+    } catch {
+      /* The controls still work when browser storage is unavailable. */
+    }
+  }
+  useEffect(() => music.beginInterlude(), [music.beginInterlude]);
+  stateRef.current = state;
+  docRef.current = doc;
+  const [atmospherePreview, setAtmospherePreview] = useState<{sceneId: string; value: MapAtmosphere} | null>(null);
+  const scene = doc?.scenes.find((s) => s.id === doc.activeScene),
+    token = scene?.tokens.find((t) => t.id === selection[0]),
+    selectedEffectTokens =
+      scene?.tokens.filter((t) => selection.includes(t.id) && t.layer !== 'map') || [],
+    attackTarget =
+      token?.layer === 'tokens' && selection.length === 1
+        ? scene?.tokens.find(
+            (t) =>
+              t.id === attackTargetId &&
+              t.id !== token.id &&
+              t.layer === 'tokens' &&
+              !t.hidden &&
+              (!preview ||
+                !!viewerSees(
+                  scene.tokens.find((v) => v.id === previewViewerId) || token,
+                  t,
+                  scene,
+                )),
+          )
+        : undefined,
+    gm = state?.is_gm === true,
+    barrierEditing = gm && !preview && layer === 'lighting',
+    selectedLight = barrierEditing ? scene?.lights.find((l) => l.id === selection[0]) : undefined,
+    selectedWall =
+      barrierEditing && showWalls ? scene?.walls.find((w) => w.id === selection[0]) : undefined,
+    selectedDrawing = scene?.drawings.find((d) => d.id === selection[0]),
+    spectator = state?.role === 'spectator',
+    canToken = !spectator && (gm || token?.controller === user.id),
+    viewer =
+      scene?.tokens.find((t) => t.id === previewViewerId && t.layer === 'tokens' && !t.hidden) ||
+      scene?.tokens.find(
+        (t) =>
+          t.controller === (spectator ? state?.viewingUser : user.id) &&
+          t.layer === 'tokens' &&
+          !t.hidden,
+      ) ||
+      (gm ? scene?.tokens.find((t) => t.layer === 'tokens' && !t.hidden) : null) ||
+      null;
+  useEffect(() => {
+    const element = canvas.current;
+    if (!element) return;
+    const preventScroll = (event: WheelEvent) => event.preventDefault();
+    element.addEventListener('wheel', preventScroll, { passive: false });
+    return () => element.removeEventListener('wheel', preventScroll);
+  }, [state?.id, scene?.id]);
+  function changeLayer(next: string, nextSelection: string[] = []) {
+    if (next === layer) return;
+    if (drag.current?.kind === 'shape' || drag.current?.kind === 'lasso') {
+      drag.current = null;
+      setDraft(null);
+      setRuler([]);
+      setLasso([]);
+    }
+    if (next !== 'lighting' && barrierTools.has(tool)) setTool('select');
+    setContextMenu(null);
+    setSelection(nextSelection);
+    setLayer(next);
+  }
+  useEffect(() => {
+    if (barrierEditing) return;
+    if (barrierTools.has(tool)) {
+      setTool('select');
+      drag.current = null;
+      setDraft(null);
+      setRuler([]);
+    }
+    if (scene) {
+      const editingIds = new Set([...scene.walls, ...scene.lights].map((v) => v.id));
+      setSelection((current) =>
+        current.some((id) => editingIds.has(id))
+          ? current.filter((id) => !editingIds.has(id))
+          : current,
+      );
+    }
+  }, [barrierEditing, tool, scene?.id]);
+  const resetDirty = () => {
+    dirtyRef.current = false;
+    setDirty(false);
+  };
+  function receive(next: VttState, reset = true) {
+    if (stateRef.current?.id === next.id && next.revision < stateRef.current.revision) return;
+    if (stateRef.current?.id !== next.id) {
+      focusSeen.current = {
+        roomId: next.id,
+        at: next.focusSignal?.at || 0,
+        id: next.focusSignal?.id || '',
+      };
+      setOlderMessages([]);
+      chatStick.current = true;
+      chatTop.current = 0;
+      chatHistoryAnchor.current = null;
+      setAttack(null);
+      setPreview(false);
+      setPreviewViewerId(null);
+      setEffectPreview(null);
+      setHistoryEnd(false);
+      setSheetId(null);
+    }
+    if (
+      stateRef.current?.id !== next.id ||
+      stateRef.current?.document.activeScene !== next.document.activeScene
+    ) {
+      const s = next.document.scenes.find((s) => s.id === next.document.activeScene)!;
+      setCamera({
+        x: s.width / 2,
+        y: s.height / 2,
+        zoom: Math.min(bounds.width / (s.width + 100), bounds.height / (s.height + 100)),
+      });
+      setSelection([]);
+      setAttackTargetId(null);
+      setAttack(null);
+      setSheetId(null);
+    }
+    stateRef.current = next;
+    docRef.current = next.document;
+    setState(next);
+    if (next.storage) setStorage(next.storage);
+    if (next.personal) {setPersonalId(next.personal.public_id);setPersonalUrl(next.personal.url || '');}
+    setDoc(next.document);
+    followSignal(next.focusSignal, next.id, next.document.activeScene);
+    if (reset) resetDirty();
+  }
+  function followSignal(
+    signal: VttFocusSignal | null,
+    roomId = stateRef.current?.id,
+    sceneId = docRef.current?.activeScene,
+  ) {
+    if (
+      !signal ||
+      !roomId ||
+      signal.sceneId !== sceneId ||
+      focusSeen.current?.roomId !== roomId ||
+      signal.id === focusSeen.current?.id ||
+      signal.at < (focusSeen.current?.at || 0)
+    )
+      return;
+    focusSeen.current = { roomId, at: signal.at, id: signal.id };
+    setPing({ x: signal.x, y: signal.y, at: Date.now() });
+    cancelAnimationFrame(focusFrame.current);
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setCamera((c) => ({ ...c, x: signal.x, y: signal.y }));
+      return;
+    }
+    const start = performance.now();
+    let from: VttCamera | null = null;
+    const animate = (now: number) => {
+      const p = Math.min(1, Math.max(0, (now - start) / 550)),
+        ease = 1 - Math.pow(1 - p, 3);
+      setCamera((c) => {
+        from ||= c;
+        return {
+          ...c,
+          x: from.x + (signal.x - from.x) * ease,
+          y: from.y + (signal.y - from.y) * ease,
+        };
+      });
+      if (p < 1) focusFrame.current = requestAnimationFrame(animate);
+    };
+    focusFrame.current = requestAnimationFrame(animate);
+  }
+  useEffect(() => () => cancelAnimationFrame(focusFrame.current), []);
+  useEffect(() => {
+    if (!ping) return;
+    const timer = setTimeout(() => setPing((p) => (p?.at === ping.at ? null : p)), pingDuration);
+    return () => clearTimeout(timer);
+  }, [ping]);
+  function edit(fn: (d: VttDocument) => void, remember = true) {
+    if (!gm || !docRef.current) return;
+    if (remember) {
+      undo.current.push(structuredClone(docRef.current));
+      if (undo.current.length > 30) undo.current.shift();
+      redo.current = [];
+    }
+    const next = structuredClone(docRef.current);
+    fn(next);
+    docRef.current = next;
+    serial.current++;
+    dirtyRef.current = true;
+    setDirty(true);
+    setDoc(next);
+  }
+  function editScene(fn: (s: VttScene) => void, remember = true) {
+    edit((d) => {
+      const scene = d.scenes.find((s) => s.id === d.activeScene)!;
+      const previous = structuredClone(scene);
+      fn(scene);
+      for (const member of scene.tokens)
+        if (member.attachment) {
+          const parent = scene.tokens.find((t) => t.id === member.attachment!.tokenId);
+          if (!parent || member.layer !== 'tokens' || parent.layer !== 'tokens')
+            member.attachment = null;
+        }
+      syncAttachmentPositions(scene, previous);
+    }, remember);
+  }
+  function movementTokens(ids: string[]) {
+    if (!scene) return [];
+    const roots = [
+      ...new Map(
+        scene.tokens
+          .filter((t) => ids.includes(t.id))
+          .map((t) => {
+            const root = attachmentRoot(scene.tokens, t);
+            return [root.id, root] as const;
+          }),
+      ).values(),
+    ].filter(
+      (t) =>
+        !t.locked && (gm || (t.controller === user.id && !attachmentUnavailable(scene.tokens, t))),
+    );
+    return gm ? roots : roots.slice(0, 1);
+  }
+  async function bindToken(parentId: string | null) {
+    if (!state || !token || !canToken || preview || busy) return;
+    const selected = token.id;
+    await save();
+    const next = await post<VttState>(`/vtt/rooms/${state.id}/tokens/${selected}/attachment`, {
+      tokenId: parentId,
+    });
+    receive(next);
+    if(token.layer==='map'||token.sceneryToken)changeLayer('tokens',[selected]);
+    setSelection([selected]);
+    setContextMenu(null);
+    setTool('select');
+    setAttackTargetId(null);
+  }
+  async function toggleHouseWindow(house:VttToken,index:number) {
+    if(!state||!scene||preview||spectator||busy)return;
+    await save();
+    receive(await api<VttState>(`/vtt/rooms/${state.id}/houses/${house.id}/windows/${index}`,{method:'PATCH',body:JSON.stringify({open:!houseWindowOpen(house,index)})}));
+  }
+  async function toggleHouseDoor(house:VttToken) {
+    if(!state||!scene||preview||spectator||busy)return;
+    if(house.houseDoorOpen&&houseDoorObstructed(house,scene.tokens)){setNotice('A passagem está ocupada. Afaste o personagem antes de fechar a porta.');return;}
+    await save();
+    receive(await api<VttState>(`/vtt/rooms/${state.id}/houses/${house.id}/door`,{method:'PATCH',body:JSON.stringify({open:!house.houseDoorOpen})}));
+  }
+  function moveSelectedToken(to: Point) {
+    if (!scene || !token) return;
+    const root = attachmentRoot(scene.tokens, token);
+    if (!movementTokens([token.id]).length) {
+      setNotice(
+        'O movimento pertence ao token de apoio, que está bloqueado ou sob outro controle.',
+      );
+      return;
+    }
+    const destination = constrainMovement(scene,root,{ x: root.x + to.x - token.x, y: root.y + to.y - token.y });
+    const error = attachmentMovementError(scene, root, [destination]);
+    if (error) {
+      setNotice(error);
+      return;
+    }
+    if (gm)
+      editScene((s) => {
+        const base = s.tokens.find(t => t.id === root.id)!;
+        if (docRef.current?.autoRotateTokens !== false) base.rotation = movementFacing(base, base, [destination]);
+        translateAttachmentGroup(s, base, destination);
+      });
+    else
+      void act(async () =>
+        receive(
+          await api<VttState>(`/vtt/rooms/${state!.id}/tokens/${root.id}`, {
+            method: 'PATCH',
+            body: JSON.stringify(destination),
+          }),
+        ),
+      );
+  }
+  function editToken(patch: Partial<VttToken>) {
+    if (!token) return;
+    if (gm)
+      editScene((s) => {
+        const target = s.tokens.find((t) => t.id === token.id)!;
+        const oldHp = target.hp;
+        Object.assign(
+          s.tokens.find((t) => t.id === token.id)!,
+          patch,
+        );
+        applyTokenDeath(target, oldHp, Date.now(), docRef.current?.automaticDeath);
+        if (['vision', 'light', 'dimLight'].some((key) => key in patch)) activateTokenVision(s);
+      });
+    else if (canToken) {
+      void act(async () => {
+        receive(
+          await api<VttState>(`/vtt/rooms/${state!.id}/tokens/${token.id}`, {
+            method: 'PATCH',
+            body: JSON.stringify(patch),
+          }),
+        );
+      });
+    }
+  }
+  function changeTokenConditions(conditions: string[]) {
+    if (!canToken || busy || preview) return;
+    editToken({ conditions });
+    if (gm) void act(save);
+  }
+  function terrainPanel() {
+    const layers = scene?.terrainLayers || [{id:'base',name:'Chão',visible:true,opacity:1}];
+    const active = layers.some(l=>l.id===terrainBrush.layer) ? terrainBrush.layer : 'base';
+    return <VttTerrainBrush value={{...terrainBrush,layer:active}} change={setTerrainBrush} mode={tool}
+      gm={gm && !preview} busy={busy} layers={layers}
+      hasPaint={!!scene?.terrain.some(t=>t.layer===active)}
+      updateLayers={layers=>editScene(s=>{s.terrainLayers=layers;})}
+      removeLayer={id=>editScene(s=>{s.terrain=s.terrain.filter(t=>t.layer!==id);s.terrainLayers=s.terrainLayers.filter(l=>l.id!==id);})}
+      clear={()=>{terrainActive.current=null;setTerrainDraft(null);editScene(s=>{s.terrain=s.terrain.filter(t=>t.layer!==active);});}}
+      activate={erase=>{terrainActive.current=null;setTerrainDraft(null);setTerrainBrush(v=>({...v,layer:active}));changeLayer('map');setTool(erase?'terrain-erase':'terrain-paint');}}/>;
+  }
+  function editSelected(fn: (t: VttToken) => void) {
+    if (!gm) return;
+    editScene((s) => s.tokens.filter((t) => selection.includes(t.id)).forEach(fn));
+  }
+  function openMap(id: string) {
+    edit((d) => activateScene(d, id));
+    setSelection([]);
+    setContextMenu(null);
+    setMapsOpen(false);
+    fit(docRef.current?.scenes.find((s) => s.id === id));
+  }
+  function createMap(folderId: string | null = null) {
+    const next = newScene(crypto.randomUUID());
+    next.folderId = folderId;
+    edit((d) => {
+      d.scenes.push(next);
+      activateScene(d, next.id);
+    });
+    setSelection([]);
+    setMapsOpen(false);
+    fit(next);
+    setSettingsId(next.id);
+  }
+  function saveMap(next: VttScene) {
+    edit((d) => {
+      d.scenes[d.scenes.findIndex((s) => s.id === next.id)] = next;
+      if (next.archived && d.activeScene === next.id)
+        activateScene(d, d.scenes.find((s) => !s.archived)!.id);
+    });
+    setSettingsId(null);
+    setSelection([]);
+    fit(docRef.current?.scenes.find((s) => s.id === docRef.current?.activeScene));
+  }
+  function removeMap(id: string) {
+    edit((d) => {
+      d.scenes = d.scenes.filter((s) => s.id !== id);
+      if (d.activeScene === id) {
+        activateScene(d, d.scenes.find((s) => !s.archived)!.id);
+        d.initiative = [];
+      }
+    });
+    setSettingsId(null);
+    setSelection([]);
+    fit(docRef.current?.scenes.find((s) => s.id === docRef.current?.activeScene));
+  }
+  useEffect(() => {
+    if (!contextMenu) return;
+    const outside = (e: PointerEvent) => {
+      if ((e.target as Element)?.closest?.('canvas[data-selection-count]')) return;
+      if (!contextRef.current?.contains(e.target as Node)) setContextMenu(null);
+    };
+    document.addEventListener('pointerdown', outside);
+    return () => document.removeEventListener('pointerdown', outside);
+  }, [contextMenu]);
+  useEffect(() => {
+    setTextEdit(null);
+    setContextMenu(null);
+    cancelAnimationFrame(focusFrame.current);
+  }, [scene?.id, state?.id, tool, gm]);
+  const save = useCallback(async () => {
+    if (savePromise.current) return savePromise.current;
+    if (!stateRef.current?.is_gm || !dirtyRef.current) return;
+    const promise = (async () => {
+      setBusy(true);
+      try {
+        while (dirtyRef.current && docRef.current && stateRef.current) {
+          const at = serial.current;
+          const response = await api<VttState>(`/vtt/rooms/${stateRef.current.id}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+              revision: stateRef.current.revision,
+              document: documentSchema.parse(docRef.current),
+            }),
+          });
+          stateRef.current = response;
+          setState(response);
+          if (at === serial.current) {
+            docRef.current = response.document;
+            setDoc(response.document);
+            dirtyRef.current = false;
+            setDirty(false);
+          }
+        }
+      } finally {
+        setBusy(false);
+        savePromise.current = null;
+      }
+    })();
+    savePromise.current = promise;
+    return promise;
+  }, []);
+  const combat = useVttCombat(state?.id, scene?.id, save, refreshRoom);
+  const spellcasting = useVttSpells(state?.id, scene, user.id, gm && !preview, save, refreshRoom);
+  const resizeToken = gm && !preview && !sheetId && !canopyEditing && !busy && !attackBusy &&
+    !spellcasting.pending && tool === 'select' && selection.length === 1 && token &&
+    !token.locked && token.layer === layer ? token : undefined;
+  async function act(fn: () => Promise<unknown>) {
+    try {
+      setNotice('');
+      await fn();
+    } catch (error) {
+      setNotice((error as Error).name === 'ZodError' ? vttUpdateMessage : (error as Error).message);
+    }
+  }
+  function fit(s = scene) {
+    if (s)
+      setCamera({
+        x: s.width / 2,
+        y: s.height / 2,
+        zoom: Math.max(
+          0.03,
+          Math.min(bounds.width / (s.width + 100), bounds.height / (s.height + 100)),
+        ),
+      });
+  }
+  async function openRoom(id: string, following: string | null = null) {
+    await save();
+    let next = await api<VttState>('/vtt/rooms/' + id);
+    if (next.is_gm) next = await post<VttState>(`/vtt/rooms/${id}/activate`, {});
+    setFollowingPersonal(following);
+    if (!following) window.history.replaceState(null,'','#vtt?room='+id);
+    if (!next.is_gm && next.role === 'player')
+      next = await post<VttState>(`/vtt/rooms/${id}/participation`, { role: 'player' });
+    receive(next);
+    setSelection([]);
+    undo.current = [];
+    redo.current = [];
+    const s = next.document.scenes.find((s) => s.id === next.document.activeScene)!;
+    setCamera({
+      x: s.width / 2,
+      y: s.height / 2,
+      zoom: Math.min(bounds.width / (s.width + 100), bounds.height / (s.height + 100)),
+    });
+  }
+  useEffect(() => {
+    let live = true, sequence = 0;
+    const load = async (initial = false) => {
+      if (location.hash.slice(1).split('?')[0] !== 'vtt') return;
+      const ticket = ++sequence;
+      const params = new URLSearchParams(location.hash.split('?')[1] || '');
+      const personal = params.get('table');
+      const code = params.get('invite');
+      const requested = params.get('room');
+      try {
+        const listing = await api<{ rooms: typeof rooms; can_create: boolean; personal: {public_id:string;room_id:string;url?:string}; storage: import('../shared/vtt-storage').VttStorage }>('/vtt');
+        if (!live || ticket !== sequence) return;
+        setRooms(listing.rooms); setCanCreate(listing.can_create); setPersonalId(listing.personal.public_id); setPersonalUrl(listing.personal.url || ''); setStorage(listing.storage);
+        if (personal) {
+          await save();
+          const next = await post<VttState>('/vtt/personal/' + encodeURIComponent(personal) + '/join', {role:'player'});
+          if (!live || ticket !== sequence) return;
+          receive(next); setFollowingPersonal(personal);
+        } else if (code) {
+          await save();
+          const invite = vttInviteCode(code);
+          if (!invite) throw new Error('Convite inválido.');
+          const next = await post<VttState>('/vtt/join', {invite,role:'player'});
+          if (live && ticket === sequence) {receive(next);setFollowingPersonal(null);}
+        } else if (requested || initial) await openRoom(requested || listing.personal.room_id);
+      } catch (e) { if (live && ticket === sequence) setNotice((e as Error).message); }
+    };
+    void load(true);
+    const onHash = () => { void load(); };
+    window.addEventListener('hashchange',onHash);
+    return () => {live=false;sequence++;window.removeEventListener('hashchange',onHash);};
+  }, []);
+  useEffect(() => {
+    if (!followingPersonal || state?.is_gm) return;
+    let live=true,pending=false;
+    const timer=window.setInterval(async()=>{
+      if(!live||pending||document.hidden)return;
+      pending=true;
+      try{
+        const current=await api<{room_id:string}>('/vtt/personal/'+followingPersonal);
+        if(live&&current.room_id!==stateRef.current?.id){
+          const next=await post<VttState>('/vtt/personal/'+followingPersonal+'/join',{role:stateRef.current?.role === 'spectator' ? 'spectator' : 'player'});
+          if(live)receive(next);
+        }
+      }catch(e){if(live)setNotice((e as Error).message);}finally{pending=false;}
+    },3000);
+    return()=>{live=false;window.clearInterval(timer);};
+  },[followingPersonal,state?.is_gm]);
+  useEffect(() => {
+    let live = true;
+    api<typeof catalog>('/vtt/compendium')
+      .then((c) => {
+        if (!live) return;
+        setCatalog(c);
+        setEntry((current) =>
+          current ? c.monsters.find((m) => m.id === current.id) || current : null,
+        );
+      })
+      .catch((e) => live && setNotice(e.message));
+    return () => {
+      live = false;
+    };
+  }, [state?.premiumAccess, state?.premiumTokens]);
+  useEffect(() => {
+    if (!stage.current) return;
+    const observer = new ResizeObserver(([entry]) =>
+      setBounds({
+        width: Math.max(1, entry.contentRect.width),
+        height: Math.max(1, entry.contentRect.height),
+      }),
+    );
+    observer.observe(stage.current);
+    return () => observer.disconnect();
+  }, [Boolean(state), panelOpen]);
+  useEffect(() => {
+    if (!dirty || drag.current) return;
+    const timer = setTimeout(() => {
+      void save().catch((e) => setNotice(e.message));
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, [doc, dirty, save]);
+  useEffect(() => {
+    if (!state?.id) return;
+    const id = state.id,
+      timer = setInterval(() => {
+        if (document.hidden || dirtyRef.current || savePromise.current || drag.current) return;
+        void api<VttState>('/vtt/rooms/' + id)
+          .then((next) => {
+            if (stateRef.current?.id === id && !dirtyRef.current && !drag.current) {
+              if (
+                next.revision !== stateRef.current.revision ||
+                next.role !== stateRef.current.role ||
+                next.viewingUser !== stateRef.current.viewingUser
+              )
+                receive(next);
+              else {
+                setState(next);
+                if (next.storage) setStorage(next.storage);
+                stateRef.current = next;
+              }
+            }
+          })
+          .catch(() => {});
+      }, 3000);
+    return () => clearInterval(timer);
+  }, [state?.id]);
+  useEffect(() => {
+    if (!state?.id) return;
+    let live = true,
+      pending = false;
+    const id = state.id,
+      timer = setInterval(async () => {
+        if (!live || pending || document.hidden) return;
+        pending = true;
+        try {
+          const signal = await api<VttFocusSignal | null>(`/vtt/rooms/${id}/signal`);
+          if (live && stateRef.current?.id === id) followSignal(signal);
+        } catch {
+          /* The regular room poll reports participation and connection changes. */
+        } finally {
+          pending = false;
+        }
+      }, 750);
+    return () => {
+      live = false;
+      clearInterval(timer);
+      cancelAnimationFrame(focusFrame.current);
+    };
+  }, [state?.id]);
+  const mapImages = useRef<ReturnType<typeof createVttImageLoader> | null>(null);
+  const sceneImagePaths = scene ? [...new Set([
+    ...terrainTextures.filter(t => scene.terrain.some(stroke => stroke.texture === t.id) || (tool.startsWith('terrain-') && terrainBrush.texture === t.id)).map(t => t.image),
+    scene.background, ...scene.tokens.map(t => t.image), ...houseInteriorImages(scene),
+    ...(scene.tokens.some(t => houseAsset(t)) ? ['/vtt/house-parts-20261014/door-vertical.webp'] : []),
+    ...(scene.terrain.length || scene.tokens.some(isTreeCanopy) ? [woodlandFloorImage] : []),
+  ].filter(Boolean))] : [];
+  const sceneImageKey = JSON.stringify(sceneImagePaths);
+  useEffect(() => {
+    const loader = createVttImageLoader(images.current, vttVisualSource,
+      () => setImageVersion(v => v + 1), () => setSceneImageError(true));
+    mapImages.current = loader;
+    window.addEventListener('online', loader.retry);
+    return () => { window.removeEventListener('online', loader.retry); loader.dispose(); mapImages.current = null; };
+  }, []);
+  useEffect(() => {
+    setSceneImageError(false);
+    for (const path of JSON.parse(sceneImageKey) as string[]) mapImages.current?.load(path);
+  }, [sceneImageKey]);
+  const sceneImagesDone = sceneImagePaths.filter(path => mapImages.current?.ready(path)).length;
+  const sceneEntryKey = state && scene ? state.id + ':' + scene.id : '';
+  const [readyScene,setReadyScene] = useState('');
+  const initialSceneImagesReady = sceneImagesDone === sceneImagePaths.length;
+  const sceneImagesReady = readyScene === sceneEntryKey || initialSceneImagesReady;
+  useEffect(()=>{if(sceneEntryKey&&initialSceneImagesReady)setReadyScene(sceneEntryKey);},[sceneEntryKey,initialSceneImagesReady]);
+  useEffect(() => {
+    const c = canvas.current;
+    if (!c || !scene) return;
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    const width = Math.round(bounds.width * dpr), height = Math.round(bounds.height * dpr);
+    if (c.width !== width) c.width = width;
+    if (c.height !== height) c.height = height;
+    const atmosphereScene = atmospherePreview?.sceneId === scene.id ? { ...scene, atmosphere: atmospherePreview.value } : scene;
+    const draw = () =>
+      renderVttCaptureFrame(captureFrame,
+        c.getContext('2d')!,
+        spectator && !scene.fog && !state?.viewingUser
+          ? { ...atmosphereScene, lighting: false }
+          : effectPreview && gm
+            ? {
+                ...atmosphereScene,
+                tokens: scene.tokens.map((t) =>
+                  !effectPreview.tokenIds.includes(t.id)
+                    ? t
+                    : effectPreview.preset.kind === 'death'
+                      ? { ...t, deathAt: effectPreview.at }
+                      : {
+                          ...t,
+                          effects: [
+                            ...t.effects.filter((e) => e.kind !== effectPreview.preset.kind),
+                            { ...effectPreview.preset, duration: 0, at: effectPreview.at },
+                          ],
+                        },
+                ),
+              }
+            : atmosphereScene,
+        {
+          camera,
+          width: bounds.width,
+          height: bounds.height,
+          dpr,
+          visualEffects,
+          mapEffects,
+          bloodEnabled: doc?.bloodEnabled,
+          spellEffects: spellcasting.effects,
+          spellPreview: spellcasting.preview,
+          images: images.current,
+          terrainDraft,
+          terrainCursor: tool.startsWith('terrain-') && terrainCursor ? {...terrainCursor,radius:terrainBrush.radius,erase:tool==='terrain-erase'} : null,
+          selected: selection,
+          resizeTokenId: resizeToken?.id,
+          target: attackTarget?.id,
+          currentTurn: combat.state?.active ? combat.state.currentId || undefined : undefined,
+          nextTurn: combat.state?.active ? combat.state.nextId || undefined : undefined,
+          gm,
+          preview,
+          viewer,
+          layer,
+          ruler,
+          lasso,
+          draft: fogPoints.length
+            ? {
+                id: 'fog-preview',
+                kind: 'pen',
+                points: [...fogPoints, ...(fogPointer ? [fogPointer] : [])],
+                color: tool === 'reveal' ? '#96c9aa' : '#d29283',
+                width: 2,
+                fill: false,
+                text: '',
+                layer: 'tokens',
+              }
+            : draft,
+          showWalls,
+          ping,
+          userId: spectator ? state?.viewingUser || '' : user.id,
+        },
+      );
+    let disposed = false,
+      frame = 0;
+    const ends = visualEffects
+      ? [
+          ...scene.tokens.flatMap((t) => t.effects.map(effectEnds)),
+          ...spellcasting.effects.filter((e) => !e.persistent && e.expires).map((e) => e.expires!),
+        ].filter((at) => at > Date.now())
+      : [];
+    const until = visualEffects
+      ? Math.max(
+          0,
+          ...scene.tokens.map((t) => (t.deathAt ? t.deathAt + 1300 : 0)),
+          ...ends,
+          ping ? ping.at + pingDuration : 0,
+        )
+      : 0;
+    const timers = ends.map((at) => window.setTimeout(draw, Math.max(0, at - Date.now() + 10)));
+    const infinite = (mapEffects && atmosphereAnimated(atmosphereScene.atmosphere)) ||
+      ((scene.lighting || (scene.fog && scene.fogMode === 'vision')) && sceneHasAnimatedLights(scene)) ||
+      scene.tokens.some(t => t.animatedAsset?.playing && (t.layer === 'map' ? mapEffects : visualEffects)) ||
+      (visualEffects && (!!combat.state?.active || !!effectPreview ||
+        spellcasting.effects.some(e => e.persistent && (!e.expires || e.expires > Date.now())) ||
+        scene.tokens.some(t => t.effects.some(e => e.duration === 0 && e.kind !== 'death'))));
+    const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+    const restartAnimation = () => {
+      cancelAnimationFrame(frame);
+      draw();
+      if (!(houseDoorsAnimating(c,scene.id) || infinite || until > Date.now() || atmosphereTransitioning(c, scene.id)) || (motionPreference.matches && !scene.tokens.some(t => t.animatedAsset?.playing))) return;
+      let lastDraw = 0;
+      const animate = (now: number) => {
+        if (now - lastDraw >= 1000 / 60 - 1 && !document.hidden) {
+          draw();
+          lastDraw = now;
+        }
+        if (houseDoorsAnimating(c,scene.id) || infinite || Date.now() < until || atmosphereTransitioning(c, scene.id)) frame = requestAnimationFrame(animate);
+      };
+      frame = requestAnimationFrame(animate);
+    };
+    restartAnimation();
+    void Promise.all([effectMaterialsReady, physicalPropsReady, ...scene.tokens.flatMap(t => t.effects.map(e => livingEffectReady(e.kind))), livingEffectReady(effectPreview?.preset.kind || '')]).then(() => {
+      if (!disposed) draw();
+    });
+    motionPreference.addEventListener('change', restartAnimation);
+    return () => {
+      cancelAnimationFrame(frame);
+      motionPreference.removeEventListener('change', restartAnimation);
+      disposed = true;
+      timers.forEach(clearTimeout);
+    };
+  }, [
+    doc,
+    camera,
+    bounds,
+    selection,
+    attackTarget?.id,
+    resizeToken,
+    combat.state,
+    preview,
+    previewViewerId,
+    state?.viewingUser,
+    effectPreview,
+    spellcasting.effects,
+    spellcasting.preview,
+    visualEffects,
+    mapEffects,
+    imageVersion,
+    terrainDraft,
+    terrainCursor,
+    terrainBrush,
+    tool,
+    atmospherePreview,
+    layer,
+    ruler,
+    lasso,
+    draft,
+    fogPoints,
+    fogPointer,
+    showWalls,
+    ping,
+    gm,
+  ]);
+  useEffect(() => {
+    const unload = (event: BeforeUnloadEvent) => {
+      if (dirtyRef.current) {
+        event.preventDefault();
+        event.returnValue = '';
+      }
+    };
+    window.addEventListener('beforeunload', unload);
+    return () => window.removeEventListener('beforeunload', unload);
+  }, []);
+  function history(back: boolean) {
+    if (!gm || !docRef.current) return;
+    const from = back ? undo.current : redo.current,
+      to = back ? redo.current : undo.current;
+    const next = from.pop();
+    if (next) {
+      to.push(structuredClone(docRef.current));
+      docRef.current = next;
+      setDoc(next);
+      serial.current++;
+      dirtyRef.current = true;
+      setDirty(true);
+    }
+  }
+  function removeSelected() {
+    if (!gm) return;
+    editScene((s) => {
+      s.tokens = s.tokens.filter((t) => !selection.includes(t.id));
+      s.walls = s.walls.filter((w) => !(barrierEditing && showWalls && selection.includes(w.id)));
+      s.lights = s.lights.filter((l) => !(barrierEditing && selection.includes(l.id)));
+      s.drawings = s.drawings.filter((d) => !selection.includes(d.id));
+    });
+    setSelection([]);
+    setContextMenu(null);
+  }
+  function duplicate() {
+    if (!gm || !scene) return;
+    const originals = scene.tokens.filter((t) => selection.includes(t.id));
+    const copies = originals.map((t) => ({
+      ...structuredClone(t),
+      id: crypto.randomUUID(),
+      x: t.x + scene.grid.size,
+      y: t.y + scene.grid.size,
+      bossStyle: null,
+      deathAt: null,
+      attachment: null,
+    }));
+    editScene((s) => s.tokens.push(...copies));
+    setSelection(copies.map((t) => t.id));
+  }
+  useEffect(() => {
+    function key(e: KeyboardEvent) {
+      if (drag.current?.kind === 'resize' || drag.current?.kind === 'rotate') {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          const original = drag.current.original;
+          drag.current = null;
+          docRef.current = original;
+          setDoc(original);
+          if (canvas.current) canvas.current.style.cursor = 'default';
+        } else if (e.ctrlKey || e.metaKey) e.preventDefault();
+        return;
+      }
+      if (e.key === 'Escape' && (tool === 'terrain-paint' || tool === 'terrain-erase')) {
+        if (mapsOpen || settingsId || sheetId) return;
+        cancelAnimationFrame(terrainFrame.current); terrainFrame.current = 0; terrainPointer.current = null;
+        terrainActive.current = null; setTerrainDraft(null); setTerrainCursor(null);
+        setTool('select'); e.preventDefault(); return;
+      }
+      if ((e.target as HTMLElement).closest('input,textarea,select,button,[contenteditable]'))
+        return;
+      if (e.key === 'Escape') {
+        if (mapsOpen || settingsId || sheetId) return;
+        setContextMenu(null);
+        setSelection([]);
+        setAttackTargetId(null);
+        if (!attackBusy) setAttack(null);
+        setDraft(null);
+        terrainActive.current = null; setTerrainDraft(null);
+        setRuler([]);
+        setLasso([]);
+        if (
+          drag.current?.kind === 'lasso' ||
+          (drag.current?.kind === 'shape' && barrierTools.has(drag.current.tool!))
+        )
+          drag.current = null;
+        setTool('select');
+        setFogPoints([]);
+        setFogPointer(null);
+      }
+      if (e.key === 'Enter' && fogPoints.length >= 3) {
+        e.preventDefault();
+        commitFog(fogPoints);
+      }
+      if (e.key === 'Delete' || e.key === 'Backspace') {
+        e.preventDefault();
+        removeSelected();
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
+        e.preventDefault();
+        history(!e.shiftKey);
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        void act(save);
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'd') {
+        e.preventDefault();
+        duplicate();
+      }
+      const shortcuts: Record<string, Tool> = { v: 'select', h: 'pan', l: 'lasso', r: 'ruler', p: 'pen' };
+      const shortcut = shortcuts[e.key.toLowerCase()];
+      if (shortcut && !e.ctrlKey && !e.metaKey && (shortcut !== 'lasso' || (gm && !preview))) {
+        setTool(shortcut);
+        setLasso([]);
+        if (
+          drag.current?.kind === 'lasso' ||
+          (drag.current?.kind === 'shape' && barrierTools.has(drag.current.tool!))
+        ) {
+          drag.current = null;
+          setRuler([]);
+          setDraft(null);
+        }
+      }
+      if (e.key.startsWith('Arrow') && token && canToken) {
+        e.preventDefault();
+        const step = e.shiftKey ? 1 : scene?.grid.size || 70,
+          p = {
+            x: Math.max(
+              0,
+              token.x + (e.key === 'ArrowLeft' ? -step : e.key === 'ArrowRight' ? step : 0),
+            ),
+            y: Math.max(
+              0,
+              token.y + (e.key === 'ArrowUp' ? -step : e.key === 'ArrowDown' ? step : 0),
+            ),
+          };
+        moveSelectedToken(p);
+      }
+    }
+    window.addEventListener('keydown', key);
+    return () => window.removeEventListener('keydown', key);
+  }, [
+    doc,
+    selection,
+    gm,
+    token,
+    mapsOpen,
+    settingsId,
+    sheetId,
+    fogPoints,
+    tool,
+    preview,
+    layer,
+    showWalls,
+  ]);
+  function commitFog(points: Point[], remember = true) {
+    if (points.length < 3 || !gm) return;
+    editScene((s) => {
+      s.fog = true;
+      s.fogMode = 'manual';
+      s.lighting = false;
+      if (s.fogAreas.length < 3000)
+        s.fogAreas.push({
+          id: crypto.randomUUID(),
+          points: points.slice(0, 1000),
+          reveal: tool === 'reveal',
+        });
+    }, remember);
+    setFogPoints([]);
+    setFogPointer(null);
+  }
+  function fogCircle(p: Point) {
+    return Array.from({ length: 32 }, (_, i) => ({
+      x: p.x + Math.cos((i * Math.PI) / 16) * brushRadius,
+      y: p.y + Math.sin((i * Math.PI) / 16) * brushRadius,
+    }));
+  }
+  function point(e: { clientX: number; clientY: number }): Point {
+    const rect = canvas.current!.getBoundingClientRect();
+    return {
+      x:
+        (((e.clientX - rect.left) / Math.max(1, rect.width) - 0.5) * bounds.width) / camera.zoom +
+        camera.x,
+      y:
+        (((e.clientY - rect.top) / Math.max(1, rect.height) - 0.5) * bounds.height) / camera.zoom +
+        camera.y,
+    };
+  }
+  function wheel(e:React.WheelEvent<HTMLCanvasElement | SVGSVGElement>) {
+              if (!e.defaultPrevented) e.preventDefault();
+              if (drag.current?.kind === 'resize' || drag.current?.kind === 'rotate') return;
+              cancelAnimationFrame(focusFrame.current);
+              if ((e.shiftKey || e.ctrlKey) && token) {
+                if (canToken && !preview && !busy && !token.locked && e.deltaY) {
+                  const step = Math.sign(e.deltaY) * 15;
+                  if (gm) editSelected((t) => {
+                    t.rotation = ((t.rotation + step) % 360 + 360) % 360;
+                  });
+                  else editToken({ rotation: ((token.rotation + step) % 360 + 360) % 360 });
+                }
+                return;
+              }
+              const p = point(e),
+                zoom = Math.min(5, Math.max(0.03, camera.zoom * Math.exp(-e.deltaY * 0.0015)));
+              const rect = e.currentTarget.getBoundingClientRect(),
+                dx = e.clientX - rect.left - bounds.width / 2,
+                dy = e.clientY - rect.top - bounds.height / 2;
+              setCamera({ zoom, x: p.x - dx / zoom, y: p.y - dy / zoom });
+  }
+  function pointerDown(e: ReactPointerEvent<HTMLCanvasElement>, forcePan = false) {
+    tokenClick.current = null;
+    cancelAnimationFrame(focusFrame.current);
+    if (!scene || !doc) return;
+    const p = point(e),
+      snap = e.altKey ? p : snapPoint(p, scene.grid);
+    if (!forcePan && e.button === 0 && e.ctrlKey && !panHeld.current && tool !== 'pan' &&
+      token && canToken && !preview && !busy && !token.locked && token.layer === layer &&
+      tokenAt(p, {...scene,tokens:[token]}, layer, gm && !preview)?.id === token.id) {
+      e.preventDefault(); e.currentTarget.focus({preventScroll:true}); e.currentTarget.setPointerCapture(e.pointerId);
+      setContextMenu(null); e.currentTarget.style.cursor = 'grabbing';
+      drag.current = {kind:'rotate',start:p,last:p,screen:{x:e.clientX,y:e.clientY},camera,
+        original:structuredClone(docRef.current!),tokens:[structuredClone(token)]};
+      return;
+    }
+    if (forcePan || e.button === 1 || (e.button === 0 && (e.ctrlKey || panHeld.current || tool === 'pan'))) {
+      e.preventDefault();e.currentTarget.focus({preventScroll:true});e.currentTarget.setPointerCapture(e.pointerId);
+      setContextMenu(null);terrainActive.current=null;setTerrainDraft(null);
+      drag.current={kind:'pan',start:p,last:p,screen:{x:e.clientX,y:e.clientY},camera,original:doc,tokens:[]};
+      e.currentTarget.style.cursor='grabbing';return;
+    }
+    if (barrierTools.has(tool) && !barrierEditing) return;
+    if(e.button===0&&resizeToken&&resizeToken.layer==='map'&&tokenRotationHandleAt(resizeToken,p,camera.zoom)){
+      e.preventDefault();e.currentTarget.focus({preventScroll:true});e.currentTarget.setPointerCapture(e.pointerId);setContextMenu(null);
+      drag.current={kind:'rotate',start:p,last:p,screen:{x:e.clientX,y:e.clientY},camera,original:structuredClone(docRef.current!),tokens:[structuredClone(resizeToken)]};return;
+    }
+    if (e.button === 0 && resizeToken) {
+      const handle = tokenResizeHandleAt(resizeToken, p, camera.zoom);
+      if (handle) {
+        e.preventDefault();
+        e.currentTarget.focus({ preventScroll: true });
+        e.currentTarget.setPointerCapture(e.pointerId);
+        setContextMenu(null);
+        drag.current = { kind: 'resize', resizeHandle: handle, start: p, last: p,
+          screen: { x: e.clientX, y: e.clientY }, camera,
+          original: structuredClone(docRef.current!), tokens: [structuredClone(resizeToken)] };
+        return;
+      }
+    }
+    if (e.button === 0 && (tool === 'terrain-paint' || tool === 'terrain-erase')) {
+      if (!gm || preview || spectator || busy) return;
+      if (!scene.terrainLayers.find(l=>l.id===terrainBrush.layer)?.visible) return;
+      if (scene.terrain.length >= 1000) { setNotice('Limite de 1.000 traços neste mapa.'); return; }
+      e.preventDefault(); e.currentTarget.focus({ preventScroll: true }); e.currentTarget.setPointerCapture(e.pointerId);
+      const stroke: TerrainStroke = { id: crypto.randomUUID(), ...terrainBrush, erase: tool === 'terrain-erase', points: [p] };
+      terrainActive.current = stroke; setTerrainDraft(stroke); return;
+    }
+    if (e.button === 2) {
+      if (spectator || preview || attackBusy || busy) return;
+      const hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
+      if (!hit || hit.layer !== 'tokens' || (!gm && hit.controller !== user.id)) return;
+      const roots = movementTokens([hit.id]);
+      if (!roots.length) return;
+      e.preventDefault();
+      e.currentTarget.setPointerCapture(e.pointerId);
+      suppressContextUntil.current = Date.now() + 600;
+      setContextMenu(null);
+      setTool('select');
+      setSelection([hit.id]);
+      changeLayer(hit.layer, [hit.id]);
+      setAttackTargetId(null);
+      drag.current = {
+        kind: 'tokens',
+        start: p,
+        last: p,
+        screen: { x: e.clientX, y: e.clientY },
+        camera,
+        original: structuredClone(doc),
+        tokens: roots,
+        measured: true,
+        moved: false,
+        path: [],
+      };
+      return;
+    }
+    if (tool === 'attach' && e.button === 0 && !spectator && !preview) {
+      const hit = tokenAt(p, scene, gm && !token ? '*' : 'tokens', gm);
+      if (!hit || (!gm && (hit.sceneryToken || token?.sceneryToken))) return;
+      if (!token || hit.id === token.id) {
+        if (gm || hit.controller === user.id) {
+          setSelection([hit.id]);
+          setNotice(
+            'Agora escolha o token de apoio. Você também pode escolhê-lo pelo menu do botão direito.',
+          );
+        }
+      } else void act(() => bindToken(hit.id));
+      return;
+    }
+    if (!spectator && !preview && spellcasting.pending && e.button === 0) {
+      spellcasting.choose(snap, tokenAt(p, scene, '*', gm));
+      return;
+    }
+    e.currentTarget.setPointerCapture(e.pointerId);
+    if (spectator) {
+      drag.current = {
+        kind: 'pan',
+        start: p,
+        last: p,
+        screen: { x: e.clientX, y: e.clientY },
+        camera,
+        original: doc,
+        tokens: [],
+      };
+      return;
+    }
+    if (tool === 'lasso' && e.button === 0) {
+      if (!gm || preview) return;
+      drag.current = {
+        kind: 'lasso',
+        start: p,
+        last: p,
+        screen: { x: e.clientX, y: e.clientY },
+        camera,
+        original: doc,
+        tokens: [],
+        lasso: [p],
+        additive: e.shiftKey,
+        baseSelection: selection,
+      };
+      setLasso([p]);
+      setAttackTargetId(null);
+      return;
+    }
+    if (tool === 'ping') {
+      const position = {
+        x: Math.max(0, Math.min(scene.width, p.x)),
+        y: Math.max(0, Math.min(scene.height, p.y)),
+      };
+      if (gm)
+        void act(async () => {
+          await save();
+          const signal = await post<VttFocusSignal>(`/vtt/rooms/${state!.id}/signal`, {
+            ...position,
+            sceneId: scene.id,
+          });
+          followSignal(signal);
+        });
+      else setPing({ ...position, at: Date.now() });
+      return;
+    }
+    if (tool === 'text' && gm) {
+      if (layer === 'lighting') changeLayer('tokens');
+      const rect = e.currentTarget.getBoundingClientRect();
+      setTextEdit({
+        point: snap,
+        x: Math.max(
+          8,
+          Math.min(rect.width - Math.min(244, rect.width - 16) - 8, e.clientX - rect.left),
+        ),
+        y: Math.max(8, Math.min(rect.height - 170, e.clientY - rect.top)),
+        value: text,
+      });
+      setDraft(null);
+      return;
+    }
+    if (tool === 'light' && gm) {
+      const l = lightSchema.parse({
+        id: crypto.randomUUID(),
+        ...lightPresetValues(lightPreset,scene.grid.unit),
+        x: snap.x,
+        y: snap.y,
+      });
+      editScene((s) => {
+        s.lights.push(l);
+        s.lighting = true;
+      });
+      changeLayer('lighting');
+      setSelection([l.id]);
+      setTab('scene');
+      return;
+    }
+    if (gm && (tool === 'reveal' || tool === 'hide')) {
+      if (fogShape === 'polygon') {
+        setFogPoints((points) =>
+          points.length >= 1000 ||
+          (points.length && Math.hypot(points.at(-1)!.x - p.x, points.at(-1)!.y - p.y) < 3)
+            ? points
+            : [...points, p],
+        );
+        setFogPointer(p);
+      } else {
+        drag.current = {
+          kind: 'shape',
+          start: p,
+          last: p,
+          screen: { x: e.clientX, y: e.clientY },
+          camera,
+          tokens: [],
+          original: structuredClone(doc),
+        };
+        if (fogShape === 'brush') commitFog(fogCircle(p));
+        else
+          setDraft({
+            id: crypto.randomUUID(),
+            kind: 'rect',
+            points: [p, p],
+            color: tool === 'reveal' ? '#96c9aa' : '#d29283',
+            width: 2,
+            fill: false,
+            text: '',
+            layer: 'tokens',
+          });
+      }
+      return;
+    }
+    if (tool === 'select') {
+      if (barrierEditing) {
+        const light = [...scene.lights]
+          .reverse()
+          .find((l) => Math.hypot(p.x - l.x, p.y - l.y) < 18 / camera.zoom);
+        const wall = showWalls
+          ? [...scene.walls].reverse().find((w) => segmentDistance(p, w.a, w.b) < 9 / camera.zoom)
+          : undefined;
+        if (light || wall) {
+          setSelection([(light || wall)!.id]);
+          setTab('scene');
+          return;
+        }
+      }
+      const hitScene =
+        gm && preview
+          ? {
+              ...scene,
+              tokens: scene.tokens.filter(
+                (t) =>
+                  !t.hidden &&
+                  t.layer !== 'gm' &&
+                  (!viewer ? t.layer === 'map' : t.layer === 'map' || viewerSees(viewer, t, scene)),
+              ),
+            }
+          : scene;
+      const hit = spectator ? null : tokenAt(p, hitScene, layer, gm && !preview);
+      if (hit) {
+        if (attackBusy) return;
+        if (
+          !e.shiftKey &&
+          !e.ctrlKey &&
+          !e.metaKey &&
+          token &&
+          token.layer === 'tokens' &&
+          selection.length === 1 &&
+          (gm || token.controller === user.id) &&
+          hit.layer === 'tokens' &&
+          !hit.hidden &&
+          hit.id !== token.id &&
+          attachmentRoot(scene.tokens, hit).id !== attachmentRoot(scene.tokens, token).id
+        ) {
+          setAttackTargetId((id) => (id === hit.id ? null : hit.id));
+          return;
+        }
+        const ids = e.shiftKey
+          ? selection.includes(hit.id)
+            ? selection.filter((id) => id !== hit.id)
+            : [...selection, hit.id]
+          : selection.includes(hit.id)
+            ? selection
+            : [hit.id];
+        setSelection(ids);
+        if (!preview && !e.shiftKey && !e.ctrlKey && !e.metaKey && ids.length === 1) {
+          tokenClick.current = {id: hit.id, x: e.clientX, y: e.clientY};
+        }
+        if (ids[0] !== token?.id || ids.length !== 1) setAttackTargetId(null);
+        if (!preview && !hit.locked && (gm || hit.controller === user.id)) {
+          drag.current = {
+            kind: 'tokens',
+            start: p,
+            last: p,
+            screen: { x: e.clientX, y: e.clientY },
+            camera,
+            original: structuredClone(doc),
+            tokens: movementTokens(ids),
+          };
+        }
+        if (hit.layer !== 'map' || (!hit.locked && !preview && (gm || hit.controller === user.id))) return;
+        drag.current={kind:'pan',start:p,last:p,screen:{x:e.clientX,y:e.clientY},camera,original:doc,tokens:[]};
+        setContextMenu(null);return;
+      }
+      const drawing = gm ? drawingAt(p, scene, layer, 8 / camera.zoom) : null;
+      if (drawing) {
+        setSelection([drawing.id]);
+        if (!preview) {
+          drag.current = {
+            kind: 'drawing', start: p, last: p,
+            screen: { x: e.clientX, y: e.clientY }, camera,
+            original: structuredClone(doc), tokens: [],
+            drawing: structuredClone(drawing),
+          };
+        }
+        return;
+      }
+      setSelection([]);
+      setAttackTargetId(null);
+    }
+    if (tool === 'pan' || tool === 'select' || e.button === 1) {
+      drag.current = {
+        kind: 'pan',
+        start: p,
+        last: p,
+        screen: { x: e.clientX, y: e.clientY },
+        camera,
+        original: doc,
+        tokens: [],
+      };
+      return;
+    }
+    if (tool === 'ruler') {
+      setRuler([snap, snap]);
+      drag.current = {
+        kind: 'shape',
+        start: snap,
+        last: snap,
+        screen: p,
+        camera,
+        original: doc,
+        tokens: [],
+      };
+      return;
+    }
+    if (!gm) return;
+    drag.current = {
+      kind: 'shape',
+      tool,
+      layer,
+      start: snap,
+      last: snap,
+      screen: p,
+      camera,
+      original: doc,
+      tokens: [],
+    };
+    if (!['wall', 'door', 'window'].includes(tool))
+      setDraft({
+        id: crypto.randomUUID(),
+        kind: tool as VttDrawing['kind'],
+        points: [snap, snap],
+        color: brushColor,
+        width: brushWidth,
+        fill: brushFill,
+        text,
+        layer: layer === 'map' || layer === 'gm' ? layer : 'tokens',
+      });
+    else setRuler([snap, snap]);
+  }
+  function pointerMove(e: ReactPointerEvent<HTMLCanvasElement>) {
+    const navigation=drag.current;
+    if(navigation?.kind==='pan') {
+      setCamera({...navigation.camera,x:navigation.camera.x-(e.clientX-navigation.screen.x)/navigation.camera.zoom,
+        y:navigation.camera.y-(e.clientY-navigation.screen.y)/navigation.camera.zoom});return;
+    }
+    if (tool.startsWith('terrain-') && gm && !preview) scheduleTerrainRender(point(e));
+    if (terrainActive.current && gm && !preview && scene) {
+      const p = point(e), stroke = terrainActive.current;
+      const last = stroke.points.at(-1)!;
+      if (Math.hypot(p.x-last.x,p.y-last.y) >= Math.max(1,stroke.radius*.08)) {
+        const points = stroke.points.length >= 1499 ? stroke.points.filter((_,i)=>i%2===0) : stroke.points;
+        terrainActive.current = {...stroke,points:[...points,p]};
+      }
+      return;
+    }
+    if (spellcasting.pending && !preview) {
+      const p = point(e);
+      spellcasting.hover(e.altKey || !scene ? p : snapPoint(p, scene.grid));
+      return;
+    }
+    const d = drag.current;
+    if (fogPoints.length) {
+      setFogPointer(point(e));
+      return;
+    }
+    if (!d || !scene || !doc) {
+      if (e.ctrlKey && token && canToken && !preview && !token.locked) {
+        e.currentTarget.style.cursor = 'grab'; return;
+      }
+      if (resizeToken) {
+        const handle = tokenResizeHandleAt(resizeToken, point(e), camera.zoom);
+        e.currentTarget.style.cursor = resizeToken.layer==='map'&&tokenRotationHandleAt(resizeToken,point(e),camera.zoom)?'grab':handle ? tokenResizeCursor(handle, resizeToken.rotation) : 'default';
+      }
+      return;
+    }
+    if (
+      d.kind === 'shape' &&
+      barrierTools.has(d.tool!) &&
+      (!barrierEditing || d.layer !== layer || d.tool !== tool)
+    ) {
+      drag.current = null;
+      setDraft(null);
+      setRuler([]);
+      return;
+    }
+    const p = point(e);
+    if(d.kind==='rotate'&&canToken&&!preview){
+      const original=d.tokens[0],next=structuredClone(docRef.current!),s=next.scenes.find(s=>s.id===next.activeScene)!,target=s.tokens.find(t=>t.id===original.id);
+      if(!target||target.locked)return;
+      target.rotation=rotationFromDrag(original,d.start,p,e.shiftKey);d.moved=true;docRef.current=next;setDoc(next);return;
+    }
+    if (d.kind === 'resize' && gm && !preview && d.resizeHandle) {
+      const original = d.tokens[0];
+      if (Math.hypot(e.clientX - d.screen.x, e.clientY - d.screen.y) < 2 && !d.moved) return;
+      d.moved = true;
+      const next = structuredClone(docRef.current!);
+      const s = next.scenes.find(s => s.id === next.activeScene)!;
+      const target = s.tokens.find(t => t.id === original.id);
+      if (!target || target.locked) return;
+      Object.assign(target, resizeTokenRectangle(original, d.resizeHandle, d.start, p, s, e.shiftKey));
+      if (target.attachment) {
+        const parent = s.tokens.find(t => t.id === target.attachment!.tokenId);
+        if (parent) { target.attachment.offsetX = target.x - parent.x; target.attachment.offsetY = target.y - parent.y; }
+      }
+      syncAttachmentPositions(s, d.original.scenes.find(s => s.id === next.activeScene));
+      if (s.tokens.some(t => t.attachment && (t.x < 0 || t.y < 0 || t.x > s.width || t.y > s.height))) return;
+      docRef.current = next;
+      setDoc(next);
+      return;
+    }
+    if (d.kind === 'lasso') {
+      const path = d.lasso!;
+      if (Math.hypot(p.x - path.at(-1)!.x, p.y - path.at(-1)!.y) >= 3 / d.camera.zoom) {
+        d.lasso = path.length >= 1500 ? path.filter((_, i) => i % 2 === 0) : path;
+        d.lasso = [...d.lasso, p];
+        setLasso(d.lasso);
+      }
+      return;
+    }
+    if (gm && ['reveal', 'hide'].includes(tool) && fogShape === 'brush') {
+      if (Math.hypot(p.x - d.start.x, p.y - d.start.y) > brushRadius * 0.3) {
+        commitFog(fogCircle(p), false);
+        d.start = p;
+      }
+      return;
+    }
+    d.last = p;
+    if (d.kind === 'pan') {
+      setCamera({
+        ...d.camera,
+        x: d.camera.x - (e.clientX - d.screen.x) / d.camera.zoom,
+        y: d.camera.y - (e.clientY - d.screen.y) / d.camera.zoom,
+      });
+      return;
+    }
+    if (d.kind === 'tokens') {
+      if (d.measured && !d.moved) {
+        if (Math.hypot(e.clientX - d.screen.x, e.clientY - d.screen.y) < 4) return;
+        d.moved = true;
+        setContextMenu(null);
+      }
+      const next = structuredClone(docRef.current!);
+      const s = next.scenes.find((s) => s.id === next.activeScene)!;
+      for (const original of d.tokens) {
+        const t = s.tokens.find((t) => t.id === original.id)!,
+          to = { x: original.x + p.x - d.start.x, y: original.y + p.y - d.start.y };
+        const placed=tokenPlacement(to,t,s,e.altKey);
+        const destination = houseAsset(t)?housePlacement({...t,...placed},s,e.altKey):constrainMovement(s,t,placed);
+        if (attachmentMovementError(s, t, [destination])) continue;
+        if ((d.path?.length || 0) >= 2000) continue;
+        if (t.x !== destination.x || t.y !== destination.y)
+          d.path = [...(d.path || []), destination];
+        translateAttachmentGroup(s, t, destination);
+      }
+      if (d.measured) setRuler([{ x: d.tokens[0].x, y: d.tokens[0].y }, ...(d.path || [])]);
+      docRef.current = next;
+      setDoc(next);
+      return;
+    }
+    if (d.kind === 'drawing' && gm && !preview && d.drawing) {
+      const original = d.drawing;
+      const anchor = original.points[0];
+      const to = { x: anchor.x + p.x - d.start.x, y: anchor.y + p.y - d.start.y };
+      const dest = e.altKey ? to : snapPoint(to, scene.grid);
+      const dx = Math.max(-Math.min(...original.points.map((q) => q.x)),
+        Math.min(scene.width - Math.max(...original.points.map((q) => q.x)), dest.x - anchor.x));
+      const dy = Math.max(-Math.min(...original.points.map((q) => q.y)),
+        Math.min(scene.height - Math.max(...original.points.map((q) => q.y)), dest.y - anchor.y));
+      const next = structuredClone(docRef.current!);
+      const current = next.scenes.find((s) => s.id === next.activeScene)?.drawings.find((q) => q.id === original.id);
+      if (!current) return;
+      current.points = original.points.map((q) => ({ x: q.x + dx, y: q.y + dy }));
+      docRef.current = next;
+      setDoc(next);
+      return;
+    }
+    const snap = e.altKey ? p : snapPoint(p, scene.grid);
+    if (['ruler', 'wall', 'door', 'window'].includes(tool)) setRuler([d.start, snap]);
+    else
+      setDraft((current) =>
+        current
+          ? {
+              ...current,
+              points: tool === 'pen' ? [...current.points.slice(0, 1499), p] : [d.start, snap],
+            }
+          : null,
+      );
+  }
+  function pointerUp(e: ReactPointerEvent<HTMLCanvasElement>) {
+    if(drag.current?.kind==='pan') {drag.current=null;e.currentTarget.style.cursor=tool==='pan'?'grab':'default';
+      if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);return;}
+    if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);
+    if (terrainActive.current) {
+      cancelAnimationFrame(terrainFrame.current); terrainFrame.current = 0;
+      const stroke = terrainActive.current; terrainActive.current = null; setTerrainDraft(null);
+      if (gm && !preview && scene) { const p = point(e); editScene(s => s.terrain.push({...stroke,points:[...stroke.points,p]})); void act(save); }
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
+      return;
+    }
+    tokenClick.current = null;
+    const d = drag.current;
+    if (!d || !scene) return;
+    drag.current = null;
+    if (d.kind === 'resize' || d.kind === 'rotate') {
+      e.currentTarget.style.cursor = 'default';
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
+      const original = d.tokens[0];
+      const resized = docRef.current?.scenes.find(s => s.id === scene.id)?.tokens.find(t => t.id === original.id);
+      if (d.kind === 'rotate' && !gm && canToken && resized && resized.rotation !== original.rotation) {
+        const rotation = resized.rotation;
+        docRef.current = d.original; setDoc(d.original);
+        editToken({rotation});
+        return;
+      }
+      if (!gm || !resized || ['x','y','width','height','rotation'].every(k => resized[k as 'x'] === original[k as 'x'])) return;
+      undo.current.push(d.original);
+      if (undo.current.length > 30) undo.current.shift();
+      redo.current = [];
+      serial.current++;
+      dirtyRef.current = true;
+      setDirty(true);
+      setDoc(structuredClone(docRef.current!));
+      return;
+    }
+    if (d.measured) {
+      suppressContextUntil.current = Date.now() + 600;
+      setRuler([]);
+      if (!d.moved) {
+        setContextMenu({
+          x: Math.max(8, Math.min(e.clientX, innerWidth - 270)),
+          y: Math.max(8, Math.min(e.clientY, innerHeight - 520)),
+        });
+        return;
+      }
+    }
+    if (d.kind === 'lasso') {
+      if (gm && !preview) {
+        const ids = lassoSelection(showWalls ? scene : { ...scene, walls: [] }, layer, [
+          ...d.lasso!,
+          point(e),
+        ]);
+        setSelection(d.additive ? [...new Set([...d.baseSelection!, ...ids])] : ids);
+        setAttackTargetId(null);
+      }
+      setLasso([]);
+      return;
+    }
+    if (gm && ['reveal', 'hide'].includes(tool)) {
+      if (fogShape === 'rect' && draft) {
+        const a = d.start,
+          b = point(e);
+        if (Math.hypot(b.x - a.x, b.y - a.y) > 3)
+          commitFog([a, { x: b.x, y: a.y }, b, { x: a.x, y: b.y }]);
+      }
+      setDraft(null);
+      return;
+    }
+    if (tool === 'ruler' && d.kind === 'shape') {
+      setRuler([]);
+      return;
+    }
+    if (d.kind === 'drawing') {
+      const current = docRef.current!.scenes.find((s) => s.id === docRef.current!.activeScene)?.drawings.find((q) => q.id === d.drawing?.id);
+      if (!gm || !d.drawing || !current || current.points.every((q, i) => q.x === d.drawing!.points[i].x && q.y === d.drawing!.points[i].y)) return;
+      undo.current.push(d.original);
+      redo.current = [];
+      serial.current++;
+      dirtyRef.current = true;
+      setDirty(true);
+      setDoc(structuredClone(docRef.current!));
+      return;
+    }
+    if (d.kind === 'tokens') {
+      const current = docRef.current!.scenes.find((s) => s.id === docRef.current!.activeScene)!;
+      if (
+        !d.tokens.some((t) => {
+          const next = current.tokens.find((n) => n.id === t.id);
+          return next && (next.x !== t.x || next.y !== t.y);
+        })
+      )
+        return;
+      const previous = d.original.scenes.find(s => s.id === current.id)!;
+      for (const start of d.tokens) {
+        const moved = current.tokens.find(t => t.id === start.id);
+        if (moved && moved.layer !== 'map' && docRef.current?.autoRotateTokens !== false) moved.rotation = movementFacing(moved, start, d.path?.length ? d.path : [{x:moved.x,y:moved.y}]);
+      }
+      syncAttachmentPositions(current, previous);
+      if (gm) {
+        undo.current.push(d.original);
+        redo.current = [];
+        serial.current++;
+        dirtyRef.current = true;
+        setDirty(true);
+        setDoc(structuredClone(docRef.current!));
+      } else {
+        const moved = docRef
+          .current!.scenes.find((s) => s.id === docRef.current!.activeScene)!
+          .tokens.find((t) => t.id === d.tokens[0]?.id);
+        if (moved) {
+          const p = { x: moved.x, y: moved.y, ...(d.path?.length ? { path: d.path } : {}) };
+          void api<VttState>(`/vtt/rooms/${state!.id}/tokens/${moved.id}`, {
+            method: 'PATCH',
+            body: JSON.stringify(p),
+          })
+            .then(receive)
+            .catch((error) => {
+              docRef.current = d.original;
+              setDoc(d.original);
+              setNotice(error.message);
+            });
+        }
+      }
+      return;
+    }
+    if (d.kind === 'shape' && ['wall', 'door', 'window'].includes(d.tool || '')) {
+      if (!barrierEditing || d.layer !== layer || d.tool !== tool) {
+        setRuler([]);
+        setDraft(null);
+        return;
+      }
+      const b = e.altKey ? point(e) : snapPoint(point(e), scene.grid);
+      if (Math.hypot(b.x - d.start.x, b.y - d.start.y) > 3)
+        editScene((s) => {
+          const opening = {
+            id: crypto.randomUUID(),
+            a: d.start,
+            b,
+            kind: tool as 'wall' | 'door' | 'window',
+            open: false,
+          };
+          carveOpening(s, opening, () => crypto.randomUUID());
+          s.walls.push(opening);
+          if (!s.lighting) s.ambient = 0;
+          s.lighting = true;
+        });
+      setRuler([]);
+    } else if (d.kind === 'shape' && draft && gm) {
+      editScene((s) => s.drawings.push(draft));
+      setDraft(null);
+    }
+  }
+  async function uploadAsset(file: File) {
+    await save();
+    const type =
+      file.type ||
+      (/\.mp3$/i.test(file.name)
+        ? 'audio/mpeg'
+        : /\.wav$/i.test(file.name)
+          ? 'audio/wav'
+          : 'application/octet-stream');
+    const response = await fetch(
+      `/api/vtt/rooms/${state!.id}/assets?name=${encodeURIComponent(file.name.slice(0, 120))}`,
+      { method: 'POST', headers: { 'Content-Type': type }, body: file },
+    );
+    const a = await response.json();
+    if (!response.ok) throw Error(a.error);
+    if (a.storage) setStorage(a.storage);
+    setState((current) => (current ? { ...current, assets: [a, ...current.assets] } : current));
+    return a as VttAsset;
+  }
+  function commitText() {
+    if (!gm || !textEdit?.value.trim()) return;
+    const value = textEdit.value.trim().slice(0, 500);
+    const id = crypto.randomUUID();
+    editScene((s) =>
+      s.drawings.push({
+        id,
+        kind: 'text',
+        points: [textEdit.point],
+        text: value,
+        color: brushColor,
+        width: brushWidth,
+        fill: false,
+        layer: layer === 'map' || layer === 'gm' ? layer : 'tokens',
+      }),
+    );
+    setTextEdit(null);
+    setText('');
+    setTool('select');
+    setSelection([id]);
+  }
+  function newMarker() {
+    if (!scene) return;
+    const t = newToken(crypto.randomUUID(), scene);
+    Object.assign(t,tokenPlacement(camera,t,scene));
+    t.layer = layer === 'lighting' ? 'tokens' : (layer as VttToken['layer']);
+    editScene((s) => s.tokens.push(t));
+    changeLayer(t.layer);
+    setSelection([t.id]);
+    setTab('token');
+  }
+  function addSceneryAsset(id: string, scale = 1, at?: Point) {
+    if (!gm || !scene || preview || !Number.isFinite(scale) || scale < .25 || scale > 3) return;
+    if (scene.tokens.length >= 1000) { setNotice('Limite de 1.000 peças neste mapa.'); return; }
+    const a = sceneryAssets.find(a => a.id === id); if (!a) return;
+    const t = newToken(crypto.randomUUID(),scene);
+    const minFactor = Math.max(1,8/(a.width*scene.grid.size*scale),8/(a.height*scene.grid.size*scale));
+    const factor = Math.min(minFactor, scene.width/(a.width*scene.grid.size*scale),scene.height/(a.height*scene.grid.size*scale),8000/(a.width*scene.grid.size*scale),8000/(a.height*scene.grid.size*scale));
+    const width = Math.max(8,a.width*scene.grid.size*scale*factor), height = Math.max(8,a.height*scene.grid.size*scale*factor);
+    const p = at ? snapPoint(at,scene.grid) : camera;
+    Object.assign(t,{name:a.name,image:a.image,width,height,layer:'map',vision:0,bleeds:false,
+      x:Math.max(width/2,Math.min(scene.width-width/2,p.x)),y:Math.max(height/2,Math.min(scene.height-height/2,p.y))});
+    editScene(s=>s.tokens.push(t)); changeLayer('map'); setSelection([t.id]); setTool('select');
+  }
+  function addNatureAsset(id:string,scale=1,at?:Point) {
+    if(!gm||!scene||preview||busy)return;
+    if(scene.tokens.length>=1000){setNotice('Limite de 1.000 peças neste mapa.');return;}
+    const t=createNatureToken(crypto.randomUUID(),id,scene,at||camera,scale);if(!t)return;
+    editScene(s=>s.tokens.push(t));changeLayer(t.layer);setSelection([t.id]);setTool('select');
+  }
+  function addTreeAsset(id: string, scale = 1, at?: Point) {
+    if (!gm || !scene || preview) return;
+    const asset = [...treeAssets,...rockAssets].find((a) => a.id === id);
+    if (!asset || ![0.5, 1, 1.5, 2].includes(scale)) return;
+    const token = newToken(crypto.randomUUID(), scene),
+      size = Math.max(
+        8,
+        Math.min(scene.width, scene.height, scene.grid.size * asset.squares * scale),
+      );
+    const center = tokenPlacement(at||camera,{width:size,height:size},scene);
+    Object.assign(token, {
+      name: asset.name,
+      image: asset.image,
+      layer: 'map',
+      width: size,
+      height: size,
+      x: Math.max(size / 2, Math.min(scene.width - size / 2, center.x)),
+      y: Math.max(size / 2, Math.min(scene.height - size / 2, center.y)),
+      vision: 0,
+      bleeds: false,
+      hp: 0,
+      maxHp: 1,
+      ac: 0,
+    });
+    editScene((s) => s.tokens.push(token));
+    changeLayer('map');
+    setSelection([token.id]);
+    setTool('select');
+  }
+  function addAnimatedAsset(id: AnimatedAsset['id'], at?: Point) {
+    if (!gm || !scene || preview) return;
+    const asset = animatedAssets.find(a => a.id === id);
+    if (!asset) return;
+    const t = newToken(crypto.randomUUID(), scene);
+    const size = Math.min(scene.width, scene.height, scene.grid.size * asset.squares);
+    Object.assign(t, { name: asset.name, image: asset.image, layer: 'map',
+      width: size, height: size, animatedAsset: { id, speed: 1, intensity: .8, playing: true } });
+    const p = tokenPlacement(at||camera,t,scene);
+    t.x = Math.max(size / 2, Math.min(scene.width - size / 2, p.x));
+    t.y = Math.max(size / 2, Math.min(scene.height - size / 2, p.y));
+    editScene(s => s.tokens.push(t));
+    changeLayer('map'); setSelection([t.id]); setTool('select');
+  }
+  function addMonster(e: Entry, at?: Point, keepLibrary = false) {
+    if (!scene || !gm || preview) return;
+    const t = newToken(crypto.randomUUID(), scene);
+    const size: Record<string, number> = { T: 0.5, S: 1, M: 1, L: 2, H: 3, G: 4 };
+    Object.assign(t, {
+      name: e.name,
+      image: e.image || monsterArt(e.id, e.name),
+      artVariant: e.artVariant ?? monsterVariant,
+      monster: customMonster(entryProfile(e), e.id),
+      width: scene.grid.size * (size[e.size || 'M'] || 1),
+      height: scene.grid.size * (size[e.size || 'M'] || 1),
+      hp: e.hp || 10,
+      maxHp: e.hp || 10,
+      ac: e.ac || 10,
+      color: '#ae6158',
+      sheet: {
+        source: e.source || 'Compêndio importado',
+        race: e.type || '',
+        class: '',
+        level: 0,
+        stats: e.stats || [10, 10, 10, 10, 10, 10],
+        speed: Number(e.speed?.match(/\bwalk:\s*(\d+)/)?.[1] ?? 30),
+        biography: '',
+        details: e.details,
+      },
+    });
+    const origin = tokenPlacement(at||camera,t,scene);
+    t.x = Math.max(
+      Math.min(t.width / 2, scene.width / 2),
+      Math.min(scene.width - t.width / 2, origin.x),
+    );
+    t.y = Math.max(
+      Math.min(t.height / 2, scene.height / 2),
+      Math.min(scene.height - t.height / 2, origin.y),
+    );
+    editScene((s) => s.tokens.push(t));
+    changeLayer('tokens');
+    setSelection([t.id]);
+    setAttackTargetId(null);
+    if (!keepLibrary) setTab('sheet');
+  }
+  async function bringCharacter(id: string, at?: Point) {
+    if (!state || spectator || preview || busy || characterImportBusy.current) return;
+    characterImportBusy.current = true;
+    setBusy(true);
+    try {
+      await save();
+      setBusy(true);
+      const alreadyPlaced = scene?.tokens.some(t => t.characterId === id);
+      const position = at || (!alreadyPlaced ? {x:camera.x,y:camera.y} : undefined);
+      const next = await post<VttState>(`/vtt/rooms/${state.id}/characters/${id}`, position ? { position } : {});
+      receive(next);
+      const imported = next.document.scenes.find((s) => s.id === next.document.activeScene)?.tokens.find((t) => t.characterId === id && (gm || t.controller === user.id));
+      if (imported && !at) setCamera(c => ({...c,x:imported.x,y:imported.y}));
+      if (imported) {
+        changeLayer('tokens', [imported.id]);
+        setSelection([imported.id]);
+        setAttackTargetId(null);
+        setTool('select');
+      }
+    } finally {
+      characterImportBusy.current = false;
+      setBusy(false);
+    }
+  }
+  async function bringCompanion(id: string, at?: Point) {
+    if (!state || spectator || preview || busy || characterImportBusy.current) return;
+    characterImportBusy.current = true;
+    setBusy(true);
+    try {
+      await save();
+      setBusy(true);
+      const next = await post<VttState>(
+        `/vtt/rooms/${state.id}/companions/${id}`,
+        at ? { position: at } : {},
+      );
+      receive(next);
+      const imported = next.document.scenes
+        .find((s) => s.id === next.document.activeScene)
+        ?.tokens.find((t) => t.companionId === id && t.controller === user.id);
+      if (imported) {
+        changeLayer('tokens', [imported.id]);
+        setSelection([imported.id]);
+        setAttackTargetId(null);
+        setTool('select');
+      }
+    } finally {
+      characterImportBusy.current = false;
+      setBusy(false);
+    }
+  }
+  function dragCharacter(event: ReactDragEvent<HTMLElement>, id: string) {
+    if (spectator || preview || busy || characterImportBusy.current) {
+      event.preventDefault();
+      return;
+    }
+    event.dataTransfer.setData(characterMime, id);
+    event.dataTransfer.effectAllowed = 'copy';
+  }
+  function dragMonster(event: ReactDragEvent<HTMLElement>, id: string) {
+    if (!gm || preview) {
+      event.preventDefault();
+      return;
+    }
+    event.dataTransfer.setData(monsterMime, id);
+    event.dataTransfer.setData('application/x-alvorada-monster-variant', String(monsterVariant));
+    event.dataTransfer.effectAllowed = 'copy';
+  }
+  function entryProfile(e: Entry): MonsterProfile {
+    return {
+      ...e,
+      hp: e.hp ?? 10,
+      ac: e.ac ?? 10,
+      stats: e.stats ?? [10, 10, 10, 10, 10, 10],
+      image: e.image || monsterArt(e.id, e.name),
+      artVariant: e.artVariant ?? monsterVariant,
+    };
+  }
+  function tokenProfile(t: VttToken): MonsterProfile {
+    const source = catalog.monsters.find(
+      (e) =>
+        (e.name === t.name || monsterArt(e.id, e.name) === t.image) &&
+        (e.details === t.sheet?.details || e.legacyDetails === t.sheet?.details),
+    );
+    return {
+      ...(source ? entryProfile(source) : {}),
+      name: t.name,
+      image: t.image,
+      artVariant: t.artVariant as MonsterVariant | undefined,
+      hp: t.hp,
+      maxHp: t.maxHp,
+      ac: t.ac,
+      stats: t.sheet?.stats || [10, 10, 10, 10, 10, 10],
+      source: t.sheet?.source,
+      type: t.sheet?.race,
+      details: t.monster
+        ? monsterCustomDetails(t.monster)
+        : (source?.details ?? t.sheet?.details ?? ''),
+      actionDetails: t.sheet?.details,
+      speed: t.monster?.speed || source?.speed || `${t.sheet?.speed ?? 30} ft`,
+      ...(t.monster
+        ? {
+            size: t.monster.size,
+            cr: t.monster.cr,
+            information: t.monster.information,
+            actions: t.monster.actions,
+          }
+        : {}),
+    };
+  }
+  function useMonsterAction(t: VttToken, action: MonsterAction) {
+    if (!gm || preview) return;
+    setSheetId(null);
+    if (breathProfile(action)) {
+      requestSpellCast(t.id, undefined, action);
+      return;
+    }
+    if (action.attack)
+      beginAttack({
+        actorId: t.id,
+        name: t.name + ' · ' + action.name,
+        attack: action.attack,
+        damage: action.damage,
+      });
+    else void act(() => send(action.damage.join('+'), t.name + ' · ' + action.name));
+  }
+  async function exportImage() {
+    if (!scene) return;
+    const factor = Math.min(1, 4096 / Math.max(scene.width, scene.height)),
+      out = document.createElement('canvas');
+    out.width = Math.round(scene.width * factor);
+    out.height = Math.round(scene.height * factor);
+    renderVtt(out.getContext('2d')!, scene, {
+      camera: { x: scene.width / 2, y: scene.height / 2, zoom: factor },
+      width: out.width,
+      height: out.height,
+      dpr: 1,
+      bloodEnabled: doc?.bloodEnabled,
+      images: images.current,
+      selected: [],
+      gm,
+      preview,
+      viewer: token || null,
+      layer,
+      ruler: [],
+      draft: null,
+      showWalls: false,
+      ping: null,
+      userId: user.id,
+    });
+    await new Promise<void>((resolve) =>
+      out.toBlob((blob) => {
+        if (blob) download(scene.name + '.png', blob);
+        else setNotice('Não foi possível exportar a imagem.');
+        resolve();
+      }, 'image/png'),
+    );
+  }
+  async function importJson(file: File) {
+    if (file.size > 10 * 1024 * 1024) throw Error('JSON deve ter até 10 MB.');
+    const raw = JSON.parse(await file.text());
+    if (raw.document || raw.version === 1) {
+      const next = documentSchema.parse(raw.document || raw);
+      edit((d) => Object.assign(d, next));
+      setNotice('Mesa importada. Arquivos usam as referências da biblioteca desta mesa.');
+      return;
+    }
+    const entries: VttDocument['custom'] = [];
+    for (const [kind, key] of [
+      ['monster', 'monster'],
+      ['spell', 'spell'],
+    ] as const)
+      for (const e of raw[key] || []) {
+        if (e._copy) continue;
+        entries.push({
+          id: crypto.randomUUID(),
+          kind,
+          name: String(e.name).slice(0, 150),
+          details: (kind === 'monster'
+            ? monsterDetails(e)
+            : tagText([e.entries, e.entriesHigherLevel])
+          ).slice(0, 40000),
+          hp: Math.max(1, Number(e.hp?.average) || 10),
+          ac: Number(typeof e.ac?.[0] === 'number' ? e.ac[0] : e.ac?.[0]?.ac) || 10,
+          stats: [e.str, e.dex, e.con, e.int, e.wis, e.cha].map((v) => Number(v) || 10),
+          size: e.size?.[0] || 'M',
+          level: Number(e.level) || 0,
+          type: typeof e.type === 'string' ? e.type : e.type?.type || '',
+          cr: String(e.cr?.cr ?? e.cr ?? '0'),
+        });
+      }
+    if (!entries.length)
+      throw Error(
+        'JSON precisa de monster/spell do 5etools ou uma mesa exportada. Entradas _copy precisam estar resolvidas.',
+      );
+    edit((d) => {
+      d.custom.push(...entries);
+      documentSchema.parse(d);
+    });
+    setNotice(`${entries.length} entradas adicionadas à biblioteca da mesa.`);
+  }
+  function openSheet(t = token) {
+    if (spectator) return;
+    tokenClick.current = null;
+    setContextMenu(null);
+    if (t && (t.characterId || t.sheet)) setSheetId(t.id);
+    else {
+      setTab('sheet');
+      setPanelOpen(true);
+    }
+  }
+  async function refreshRoom() {
+    await save();
+    receive(await api<VttState>(`/vtt/rooms/${state!.id}`));
+  }
+  function soundCommand(command: SoundCommand, roomId = stateRef.current?.id): Promise<void> {
+    if (!roomId) return Promise.reject(Error('Abra uma mesa.'));
+    const task = soundQueue.current
+      .catch(() => {})
+      .then(async () => {
+        await save();
+        const next = await post<VttState & { soundTime: number }>(
+          `/vtt/rooms/${roomId}/sounds`,
+          command,
+        );
+        if (stateRef.current?.id !== roomId) return;
+        sounds.accept({
+          revision: next.revision,
+          serverTime: next.soundTime,
+          soundboard: next.document.soundboard,
+          music: next.document.music,
+        });
+        if (dirtyRef.current && docRef.current) {
+          const merged = {
+            ...docRef.current,
+            soundboard: next.document.soundboard,
+            music: next.document.music,
+          };
+          stateRef.current = next;
+          setState(next);
+          docRef.current = merged;
+          setDoc(merged);
+        } else receive(next);
+      });
+    soundQueue.current = task;
+    return task;
+  }
+  async function playSound(sourceId: string) {
+    if (!gm) throw Error('Somente o mestre controla os sons da mesa.');
+    sounds.unlock();
+    const board = sounds.snapshot?.soundboard || docRef.current!.soundboard,
+      settings = soundSettings(sourceId, board);
+    await soundCommand(
+      sounds.active(sourceId) && settings.loop
+        ? { kind: 'stop', sourceId }
+        : { kind: 'play', sourceId },
+    );
+  }
+  async function saveEffect(preset: EffectPreset) {
+    edit((d) => {
+      const i = d.effects.findIndex((e) => e.id === preset.id);
+      if (i < 0) d.effects.push(preset);
+      else d.effects[i] = preset;
+    });
+    await save();
+  }
+  async function applyEffect(id: string) {
+    if (!gm || !selectedEffectTokens.length)
+      throw Error('Selecione um ou mais tokens para aplicar o efeito.');
+    await save();
+    receive(
+      await post<VttState>(`/vtt/rooms/${state!.id}/effects/${id}/apply`, {
+        tokenIds: selectedEffectTokens.map((t) => t.id),
+      }),
+    );
+  }
+  async function shareSpell(name: string) {
+    const found =
+      catalog.spells.find((s) => s.name.toLowerCase() === name.toLowerCase()) ||
+      doc?.custom.find((s) => s.kind === 'spell' && s.name.toLowerCase() === name.toLowerCase());
+    if (!found) throw Error('Magia não encontrada na biblioteca da mesa.');
+    await send('', '', found.id);
+    setTab('chat');
+  }
+  function beginAttack(request: AttackRequest) {
+    if (attackBusy || spectator) return;
+    const actor = scene?.tokens.find((t) => t.id === request.actorId);
+    if (!actor || (!gm && actor.controller !== user.id)) {
+      setNotice('Você precisa controlar o token atacante.');
+      return;
+    }
+    if (attackTargetId === actor.id) setAttackTargetId(null);
+    changeLayer('tokens');
+    setSelection([actor.id]);
+    setTool('select');
+    setSheetId(null);
+    setAttack(request);
+  }
+  async function send(
+    formulaValue = '',
+    textValue = chat,
+    spellId?: string,
+    damage?: { actor_id: string; target_id: string },
+    attackVisual?: AttackVisualCommand,
+  ) {
+    if (spectator) throw Error('Espectadores podem somente assistir à mesa.');
+    await save();
+    const next = await post<VttState & { createdMessageId: string }>(
+      `/vtt/rooms/${state!.id}/messages`,
+      {
+        ...(spellId ? { spell_id: spellId } : {}),
+        ...(damage ? { damage } : {}),
+        ...(attackVisual ? { attack_visual: attackVisual } : {}),
+        text: textValue,
+        formula: formulaValue,
+        private: privateRoll,
+      },
+    );
+    setState(next);
+    stateRef.current = next;
+    setChat('');
+    const rolled = next.messages.find((m) => m.id === next.createdMessageId)?.roll;
+    return rolled ? { ...rolled, messageId: next.createdMessageId } : null;
+  }
+  async function applyRolledDamage(messageIds: string[], tokenId: string) {
+    await save();
+    const next = await post<VttState>(`/vtt/rooms/${state!.id}/damage`, {
+      message_ids: messageIds,
+      token_id: tokenId,
+    });
+    receive(next);
+    const applied = new Set(messageIds);
+    setOlderMessages((old) =>
+      old.map((m) =>
+        applied.has(m.id) ? { ...m, applied: [...new Set([...(m.applied || []), tokenId])] } : m,
+      ),
+    );
+  }
+  async function discardRolledDamage(messageIds: string[]) {
+    await save();
+    receive(
+      await post<VttState>(`/vtt/rooms/${state!.id}/damage/discard`, { message_ids: messageIds }),
+    );
+  }
+  async function importMonsterPreset(id: string, at: Point = camera) {
+    await save();
+    const before = new Set(scene?.tokens.map((t) => t.id));
+    const next = await post<VttState>(
+      `/vtt/rooms/${state!.id}/monster-presets/${id}/import`,
+      snapPoint(at, scene!.grid),
+    );
+    receive(next);
+    setPresetVersion((v) => v + 1);
+    const added = next.document.scenes
+      .find((s) => s.id === next.document.activeScene)
+      ?.tokens.find((t) => !before.has(t.id));
+    if (added) setSelection([added.id]);
+  }
+  useLayoutEffect(() => {
+    const element = chatLog.current;
+    if (!element) return;
+    if (chatHistoryAnchor.current) {
+      const anchor = chatHistoryAnchor.current;
+      element.scrollTop = anchor.top + element.scrollHeight - anchor.height;
+      chatHistoryAnchor.current = null;
+    } else if (chatStick.current) element.scrollTop = element.scrollHeight;
+    else element.scrollTop = chatTop.current;
+    chatTop.current = element.scrollTop;
+  }, [state?.id, state?.messages, olderMessages, tab, panelOpen]);
+  const journal = doc?.journal.find((j) => j.id === journalId);
+  if (!state || !doc || !scene)
+    return (
+      <section className="vtt-lobby">
+        <span className="vtt-eyebrow">A mesa está posta</span>
+        <h1>Mesa virtual</h1>
+        <p>Prepare sua mesa a qualquer momento. O mesmo link acompanha todas as suas missões.</p>
+        {notice && <p role="alert">{notice}</p>}
+        <div className="vtt-lobby-card">
+          <Swords size={40} />
+          <h2>Preparar uma aventura</h2>
+          {canCreate ? (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                void act(async () => {
+                  const next = await post<VttState>('/vtt', { name: roomName,region_id:createRegion||undefined,location_id:createPlace||undefined });
+                  receive(next);
+                  setFollowingPersonal(null);
+                  window.history.replaceState(null,'','#vtt?room='+next.id);
+                  setRooms((list) => [
+                    ...list,
+                    { id: next.id, name: next.document.name, is_owner: true },
+                  ]);
+                });
+              }}
+            >
+              <label>
+                Nome da mesa
+                <input
+                  value={roomName}
+                  onChange={(e) => setRoomName(e.target.value)}
+                  maxLength={100}
+                />
+              </label>
+              <WorldPlacePicker regionId={createRegion} locationId={createPlace} onRegionChange={setCreateRegion} onLocationChange={setCreatePlace}/>
+              <button className="vtt-gold" type="submit">
+                Criar mesa
+              </button>
+            </form>
+          ) : (
+            <p>Peça ao mestre o código de convite para entrar.</p>
+          )}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              void act(async () => {
+                const next = await post<VttState>('/vtt/join', {
+                  invite: vttInviteCode(inviteInput) || inviteInput.trim(),
+                  role: joinRole,
+                });
+                receive(next);
+              });
+            }}
+          >
+            <label>
+              Código de convite
+              <input value={inviteInput} onChange={(e) => setInviteInput(e.target.value)} />
+            </label>
+            <label>
+              Entrar como
+              <select
+                aria-label="Entrar como"
+                value={joinRole}
+                onChange={(e) => setJoinRole(e.target.value as 'player' | 'spectator')}
+              >
+                <option value="player">Jogador · trazer meus personagens</option>
+                <option value="spectator">Espectador · somente assistir</option>
+              </select>
+            </label>
+            <button>Entrar na mesa</button>
+          </form>
+        </div>
+      </section>
+    );
+  return (
+    <>
+    {newRoomOpen&&<Modal title="Preparar nova mesa" close={()=>setNewRoomOpen(false)}><form className="stack" onSubmit={e=>{e.preventDefault();void act(async()=>{await save();const next=await post<VttState>('/vtt',{name:roomName,region_id:createRegion||undefined,location_id:createPlace||undefined});receive(next);setFollowingPersonal(null);window.history.replaceState(null,'','#vtt?room='+next.id);setRooms(list=>[...list,{id:next.id,name:next.document.name,is_owner:true}]);setNewRoomOpen(false);});}}>
+      <label>Nome da mesa<input required maxLength={100} value={roomName} onChange={e=>setRoomName(e.target.value)}/></label>
+      <WorldPlacePicker regionId={createRegion} locationId={createPlace} onRegionChange={setCreateRegion} onLocationChange={setCreatePlace}/><button className="button primary" disabled={busy}>Criar mesa</button>
+    </form></Modal>}
+    {!sceneImagesReady && <AssetLoading title="Preparando o mapa" done={sceneImagesDone} total={sceneImagePaths.length} error={sceneImageError ? 'Uma imagem do mapa não carregou. A pintura continua salva. Tente novamente.' : ''} retry={() => {setSceneImageError(false);mapImages.current?.retry();}}/>}
+    <section inert={!sceneImagesReady} style={{visibility: sceneImagesReady ? 'visible' : 'hidden'}} data-map-effects={mapEffects ? 'on' : 'off'} className="vtt-workspace" data-visual-effects={visualEffects ? 'on' : 'off'} aria-label="Mesa virtual">
+      <header className="vtt-top">
+        <div className="vtt-brand">
+          <Swords size={22} />
+          <div>
+            <span>MESA VIRTUAL</span>
+            <strong>{doc.name}</strong>
+          </div>
+        </div>
+        <select
+          aria-label="Escolher mesa"
+          value={state.id}
+          onChange={(e) => void act(() => openRoom(e.target.value))}
+        >
+          {rooms.map((r) => (
+            <option key={r.id} value={r.id}>
+              {r.name}
+            </option>
+          ))}
+          {!rooms.some((r) => r.id === state.id) && <option value={state.id}>{doc.name}</option>}
+        </select>
+        {!gm && (
+          <div className="vtt-participation">
+            {!gm && (
+              <select
+                aria-label="Participação na mesa"
+                value={state.role}
+                disabled={busy}
+                onChange={(e) =>
+                  void act(async () => {
+                    receive(
+                      await post<VttState>(`/vtt/rooms/${state.id}/participation`, {
+                        role: e.target.value,
+                      }),
+                    );
+                    setSelection([]);
+                    setSheetId(null);
+                  })
+                }
+              >
+                <option value="player">Jogador</option>
+                <option value="spectator">Espectador</option>
+              </select>
+            )}
+            {spectator && (
+              <select
+                aria-label="Ver pela visão de"
+                value={state.viewingUser || ''}
+                onChange={(e) =>
+                  void act(async () =>
+                    receive(
+                      await api<VttState>(`/vtt/rooms/${state.id}/viewpoint`, {
+                        method: 'PUT',
+                        body: JSON.stringify({ userId: e.target.value || null }),
+                      }),
+                    ),
+                  )
+                }
+              >
+                <option value="">Escolher visão do jogador</option>
+                {state.viewpoints.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
+        )}
+        <div className="vtt-top-actions">
+          {gm && personalId && <button className="vtt-personal-share" aria-label="Copiar link fixo do meu VTT" title="Copiar link fixo do meu VTT" onClick={()=>void copyText((personalUrl || new URL(vttPersonalHref(personalId),location.href).href)).catch(e=>setNotice(e.message))}><Copy size={17}/><span>Link da mesa</span></button>}
+          <VttHighQualityCapture administrator={gm} frame={captureFrame} roomId={state.id}/>
+          {gm && (
+            <button
+              aria-label="Biblioteca de mapas"
+              title="Biblioteca de mapas"
+              onClick={() => setMapsOpen(true)}
+            >
+              <MapIcon size={18} />
+            </button>
+          )}
+          <span className={dirty ? 'vtt-unsaved' : 'vtt-saved'}>
+            {busy ? 'Salvando…' : dirty ? 'Alterações pendentes' : 'Salvo'}
+          </span>
+          {gm && (
+            <button title="Salvar (Ctrl+S)" aria-label="Salvar mesa" onClick={() => void act(save)}>
+              <Save size={17} />
+            </button>
+          )}
+          <button
+            title="Exportar imagem PNG"
+            aria-label="Exportar imagem PNG"
+            onClick={() => void act(exportImage)}
+          >
+            <Download size={17} />
+          </button>
+          <button
+            title="Tela cheia"
+            aria-label="Tela cheia"
+            onClick={() => {
+              if (document.fullscreenElement) void document.exitFullscreen();
+              else void stage.current?.parentElement?.requestFullscreen();
+            }}
+          >
+            <Maximize2 size={17} />
+          </button>
+          <button aria-label="Alternar painel" onClick={() => setPanelOpen((v) => !v)}>
+            <Settings2 size={17} />
+          </button>
+        </div>
+      </header>
+      {notice && (
+        <div className="vtt-notice" role="alert">
+          {notice}
+          {notice === vttUpdateMessage && (
+            <button onClick={() => window.location.reload()}>Recarregar VTT</button>
+          )}
+          <button aria-label="Fechar aviso" onClick={() => setNotice('')}>
+            <X size={14} />
+          </button>
+        </div>
+      )}
+      <div className={`vtt-layout ${!panelOpen ? 'panel-closed' : ''}`}>
+        <nav className="vtt-tools" aria-label="Ferramentas da mesa">
+          {toolList.filter(t => ['select', 'lasso', 'ruler'].includes(t.id) && !spectator && (gm || !t.gm)).map(({id,name,icon:Icon}) => (
+            <button key={id} title={name} aria-label={name} aria-pressed={tool === id} disabled={id === 'lasso' && preview}
+              onClick={() => {setLasso([]);drag.current=null;setFogPoints([]);setFogPointer(null);setContextMenu(null);setDraft(null);setTool(id);}}><Icon size={19}/></button>
+          ))}
+          {gm && !preview && <button title="Áreas de transparência" aria-label="Áreas de transparência" aria-pressed={canopyEditing} onClick={()=>{if(!canopyEditing)setPanelOpen(false);setCanopyEditing(v=>!v);}}><Eye size={20}/></button>}
+          {gm && !preview && <button aria-label="Brush do mapa" title="Brush do mapa" aria-pressed={tool.startsWith('terrain-')}
+            onClick={()=>{setLibrary('terrain');setTab('art');setPanelOpen(true);setContextMenu(null);setQuery('');changeLayer('map');setTool('terrain-paint');}}><Paintbrush size={20}/></button>}
+          {toolList
+            .filter(
+              (t) =>
+                !['select', 'lasso', 'ruler'].includes(t.id) && (spectator ? t.id === 'pan' : gm || !t.gm) &&
+                (!barrierTools.has(t.id) || barrierEditing),
+            )
+            .map(({ id, name, icon: Icon }) =>
+              ['rect', 'circle', 'cone', 'line', 'text', 'hide'].includes(id) ? null : id === 'pen' ? (
+                <VttToolGroup
+                  key="drawing"
+                  label="Desenho"
+                  options={[
+                    toolList.find(t => t.id === 'pen')!,
+                    {id:'forms',name:'Formas',icon:Square,options:toolList.filter(t => ['rect','circle','cone','line'].includes(t.id))},
+                    toolList.find(t => t.id === 'text')!,
+                  ]}
+                  selected={tool}
+                  choose={(id) => {
+                    setLasso([]);drag.current=null;setFogPoints([]);setFogPointer(null);setContextMenu(null);setDraft(null);
+                    if (layer === 'lighting') changeLayer('tokens');
+                    setTool(id as Tool);
+                  }}
+                />
+              ) : id === 'reveal' ? (
+                <VttToolGroup
+                  key="fog"
+                  label="Névoa"
+                  selected={['reveal', 'hide'].includes(tool) ? tool + '-' + fogShape : ''}
+                  options={[
+                    { id: 'reveal-rect', name: 'Revelar área', icon: Eye },
+                    { id: 'reveal-polygon', name: 'Revelar polígono', icon: Triangle },
+                    { id: 'hide-rect', name: 'Ocultar área', icon: EyeOff },
+                    { id: 'hide-polygon', name: 'Ocultar polígono', icon: Triangle },
+                    { id: 'reveal-brush', name: 'Revelar com pincel', icon: Circle },
+                    { id: 'hide-brush', name: 'Ocultar com pincel', icon: Circle },
+                    { id: 'automatic', name: 'Visão automática dos tokens', icon: Eye },
+                    { id: 'reset', name: 'Reiniciar névoa', icon: Trash2 },
+                  ]}
+                  choose={(id) => {
+                    setFogPoints([]);
+                    setFogPointer(null);
+                    setDraft(null);
+                    if (id === 'automatic') {
+                      editScene(activateTokenVision);
+                      setTool('select');
+                    } else if (id === 'reset') {
+                      editScene((s) => {
+                        s.fog = true;
+                        s.fogMode = 'manual';
+                        s.lighting = false;
+                        s.reveals = [];
+                        s.fogAreas = [];
+                      });
+                      setTool('select');
+                    } else {
+                      const [mode, shape] = id.split('-');
+                      setTool(mode as Tool);
+                      setFogShape(shape as typeof fogShape);
+                    }
+                  }}
+                />
+              ) : (
+                <button
+                  key={id}
+                  title={
+                    id === 'lasso'
+                      ? 'Seleção livre (L) · Arraste um contorno. Shift adiciona à seleção.'
+                      : name
+                  }
+                  aria-label={name}
+                  aria-pressed={tool === id}
+                  disabled={id === 'lasso' && preview}
+                  onClick={() => {
+                    setLasso([]);
+                    drag.current = null;
+                    setFogPoints([]);
+                    setFogPointer(null);
+                    setContextMenu(null);
+                    if (['wall', 'door', 'window', 'light'].includes(id)) {
+                      setSelection([]);
+                    } else if (
+                      layer === 'lighting' &&
+                      ['pen', 'rect', 'circle', 'cone', 'line', 'text'].includes(id)
+                    )
+                      changeLayer('tokens');
+                    setTool(id);
+                    setDraft(null);
+                  }}
+                >
+                  <Icon size={19} />
+                </button>
+              ),
+            )}
+          {!spectator && (
+            <button
+              aria-label="Escolher dados"
+              title="Escolher dados"
+              aria-pressed={diceOpen}
+              onClick={() => setDiceOpen((v) => !v)}
+            >
+              <Dices size={20} />
+            </button>
+          )}
+          {gm && (
+            <VttToolGroup
+              label="Camadas"
+              selected={layer}
+              icon={Layers}
+              options={[
+                { id: 'map', name: 'Fundo · visível aos jogadores', icon: Image },
+                { id: 'tokens', name: 'Tokens · jogadores', icon: Users },
+                { id: 'gm', name: 'Mestre · oculto', icon: EyeOff },
+                { id: 'lighting', name: 'Iluminação e barreiras', icon: Lightbulb },
+                { id: 'order', name: 'Ordem de sobreposição dos itens', icon: Layers },
+              ]}
+              choose={next => {
+                if(next === 'order') {
+                  setTab('scene'); setPanelOpen(true);
+                  requestAnimationFrame(() => document.getElementById('vtt-item-layers')?.scrollIntoView({block:'nearest'}));
+                } else changeLayer(next);
+              }}
+            />
+          )}
+          {gm && (
+            <>
+              <div className="vtt-tool-separator" />
+              <button
+                aria-label="Excluir objetos selecionados"
+                title="Excluir seleção (Delete)"
+                disabled={!selection.length}
+                onClick={removeSelected}
+              >
+                <Trash2 size={18} />
+              </button>
+              <button aria-label="Desfazer" title="Desfazer (Ctrl+Z)" onClick={() => history(true)}>
+                <Undo2 size={18} />
+              </button>
+              <button
+                aria-label="Refazer"
+                title="Refazer (Ctrl+Shift+Z)"
+                onClick={() => history(false)}
+              >
+                <Redo2 size={18} />
+              </button>
+            </>
+          )}
+          {gm && !preview && !sheetId && (
+            <VttAtmosphereMenu
+              key={state.id + scene.id}
+              effectsEnabled={mapEffects} enableEffects={() => media.update({mapEffects:true})}
+              value={scene.atmosphere} busy={busy}
+              preview={(value) => setAtmospherePreview(value ? {sceneId:scene.id,value} : null)}
+              change={async (value) => {
+                await save();
+                const next = await api<VttState>('/vtt/rooms/' + state.id + '/atmosphere', {method:'PUT',body:JSON.stringify({sceneId:scene.id,atmosphere:value})});
+                if (stateRef.current && next.revision < stateRef.current.revision) return;
+                if (dirtyRef.current && docRef.current) {
+                  stateRef.current = next; setState(next);
+                  const merged = structuredClone(docRef.current);
+                  const target = merged.scenes.find(s => s.id === scene.id);
+                  const saved = next.document.scenes.find(s => s.id === scene.id);
+                  if (target && saved) target.atmosphere = saved.atmosphere;
+                  docRef.current = merged; setDoc(merged);
+                } else receive(next);
+              }}
+            />
+          )}
+          {gm && !sheetId && (
+            <VttEffects
+              presets={doc.effects}
+              visualEffects={visualEffects}
+              tokens={selectedEffectTokens}
+              busy={busy}
+              preview={(preset) =>
+                setEffectPreview(
+                  preset && selectedEffectTokens.length
+                    ? { tokenIds: selectedEffectTokens.map((t) => t.id), preset, at: Date.now() }
+                    : null,
+                )
+              }
+              save={saveEffect}
+              remove={async (id) => {
+                edit((d) => {
+                  d.effects = d.effects.filter((e) => e.id !== id);
+                });
+                await save();
+              }}
+              apply={applyEffect}
+              clear={async () => {
+                if (selectedEffectTokens.length) {
+                  await save();
+                  editSelected((t) => {
+                    if (t.layer !== 'map') {
+                      t.deathAt = null;
+                      t.effects = [];
+                    }
+                  });
+                  await save();
+                }
+              }}
+            />
+          )}
+        </nav>
+        <div className="vtt-stage" ref={stage}>
+          {ruler.length > 1 && (
+            <output className="vtt-movement-distance" aria-label="Distância medida">
+              {rulerLabel(ruler, scene.grid)}
+            </output>
+          )}
+          {!preview && !sheetId && token && token.layer === 'tokens' && selection.length === 1 && (
+            <VttSelectionPortrait
+              key={token.id}
+              roomId={state.id}
+              token={token}
+              visualEffects={visualEffects}
+            />
+          )}
+          <VttSpellControls
+            spells={spellcasting}
+            scene={scene}
+            gm={gm && !preview}
+            userId={user.id}
+          />
+          <VttSpellSounds
+            roomId={state.id}
+            loaded={spellcasting.loaded}
+            effects={spellcasting.effects}
+            enabled={media.soundEnabled && !preview}
+            volume={media.soundVolume}
+          />
+          <VttHouseSounds roomId={state.id} scene={scene} enabled={media.soundEnabled && !preview} volume={media.soundVolume}/>
+          <VttRollSounds
+            roomId={state.id}
+            messages={state.messages}
+            enabled={media.soundEnabled && !preview}
+            volume={media.soundVolume}
+          />
+          <VttDice messages={state.messages} roomId={state.id} enabled={dice3d && visualEffects} />
+          <VttAttackVisuals roomId={state.id} messages={state.messages} scene={scene} camera={camera} bounds={bounds} enabled={visualEffects} gm={gm} preview={preview} viewer={viewer} soundEnabled={media.soundEnabled} soundVolume={media.soundVolume} />
+          <VttEffectSounds roomId={state.id} scene={scene} gm={gm} preview={preview} viewer={viewer} enabled={media.soundEnabled} volume={media.soundVolume} />
+          <VttBossBars bars={gm ? sceneBossBars(scene) : state.bossBars} visualEffects={visualEffects} />
+          {!spectator && (
+            <VttHotbar
+              key={state.id}
+              roomId={state.id}
+              tokens={scene.tokens}
+              effects={doc.effects}
+              sheetOpen={!!sheetId}
+              roll={(formula, label, damage, visual) => send(formula, label, undefined, damage, visual)}
+              shareSpell={shareSpell}
+              refresh={refreshRoom}
+              gm={gm}
+              applyEffect={applyEffect}
+              playSound={playSound}
+              soundActive={sounds.active}
+              openSound={() => {
+                setTab('music');
+                setPanelOpen(true);
+              }}
+              onAttack={beginAttack}
+              attack={attack}
+              target={attackTarget}
+              selectedTokenId={token?.id}
+              attackBusy={attackBusy}
+              onAttackBusy={setAttackBusy}
+              applyDamage={
+                gm || attackTarget?.controller === user.id ? applyRolledDamage : undefined
+              }
+              discardDamage={discardRolledDamage}
+              closeAttack={() => setAttack(null)}
+            />
+          )}
+          {gm && !preview && canopyEditing && <VttCanopyEditor key={scene.id} scene={scene} camera={camera} bounds={bounds} busy={busy} selectedItemId={selection[0]} navigation={{wheel,holding:()=>panHeld.current,down:e=>pointerDown(e as unknown as ReactPointerEvent<HTMLCanvasElement>,true),move:e=>pointerMove(e as unknown as ReactPointerEvent<HTMLCanvasElement>),up:e=>pointerUp(e as unknown as ReactPointerEvent<HTMLCanvasElement>)}} close={()=>setCanopyEditing(false)} save={()=>void act(save)} update={(areas,opacity)=>editScene(s=>{s.canopyAreas=areas;if(opacity!==undefined)s.canopyOpacity=opacity;})}/>}
+          <canvas
+            ref={canvas}
+            aria-label="Tabuleiro da mesa"
+            tabIndex={0}
+            style={{
+              cursor: tool.startsWith('terrain-') ? 'crosshair' : tool === 'pan' ? 'grab' : tool === 'select' ? 'default' : 'crosshair',
+            }}
+            onPointerDown={e=>pointerDown(e)}
+            onPointerMove={pointerMove}
+            onPointerUp={pointerUp}
+            onPointerLeave={() => {terrainPointer.current=null;setTerrainCursor(null);}}
+            onLostPointerCapture={()=>{if(drag.current?.kind==='pan')drag.current=null;}}
+            onDragOver={(e) => {
+              if (
+                !preview &&
+                !spectator &&
+                !busy &&
+                (e.dataTransfer.types.includes(characterMime) ||
+                  e.dataTransfer.types.includes(companionMime) ||
+                  (gm && (e.dataTransfer.types.includes(monsterMime) || e.dataTransfer.types.includes(animatedAssetMime) || e.dataTransfer.types.includes(natureAssetMime) || e.dataTransfer.types.includes(treeAssetMime) || e.dataTransfer.types.includes(sceneryAssetMime))))
+              ) {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'copy';
+              }
+            }}
+            onDrop={(e) => {
+              if(gm&&!preview&&!busy&&e.dataTransfer.types.includes(natureAssetMime)){
+                e.preventDefault();
+                try{const a=JSON.parse(e.dataTransfer.getData(natureAssetMime));addNatureAsset(a.id,a.scale,point(e));}catch{setNotice('Não foi possível colocar a peça.');}
+                return;
+              }
+              if (gm && !preview && !busy && e.dataTransfer.types.includes(sceneryAssetMime)) {
+                e.preventDefault();
+                try { const a = JSON.parse(e.dataTransfer.getData(sceneryAssetMime)); addSceneryAsset(a.id,a.scale,point(e)); } catch { setNotice('Não foi possível colocar a peça.'); }
+                return;
+              }
+              if(gm && !preview && e.dataTransfer.types.includes(treeAssetMime)) {
+                e.preventDefault();
+                try {const payload=JSON.parse(e.dataTransfer.getData(treeAssetMime));addTreeAsset(payload.id,payload.scale,point(e));} catch { /* Ignore malformed external drops. */ }
+                return;
+              }
+              if (gm && !preview && e.dataTransfer.types.includes(animatedAssetMime)) {
+                e.preventDefault(); addAnimatedAsset(e.dataTransfer.getData(animatedAssetMime) as AnimatedAsset['id'], point(e)); return;
+              }
+              if (!spectator && !preview && e.dataTransfer.types.includes(companionMime)) {
+                e.preventDefault();
+                const id = e.dataTransfer.getData(companionMime);
+                void act(() => bringCompanion(id, point(e)));
+                return;
+              }
+              if (!spectator && !preview && e.dataTransfer.types.includes(characterMime)) {
+                e.preventDefault();
+                const id = e.dataTransfer.getData(characterMime);
+                if (gm || characters.some((c) => c.id === id)) void act(() => bringCharacter(id, point(e)));
+                return;
+              }
+              if (!gm || preview || !e.dataTransfer.types.includes(monsterMime)) return;
+              e.preventDefault();
+              const id = e.dataTransfer.getData(monsterMime);
+              const rawVariant = Number(e.dataTransfer.getData('application/x-alvorada-monster-variant'));
+              const variant = [0, 1, 2, 3].includes(rawVariant) ? rawVariant as MonsterVariant : monsterVariant;
+              if (id.startsWith('preset:')) {
+                void act(() => importMonsterPreset(id.slice(7), point(e)));
+                return;
+              }
+              if (id.startsWith('premium:')) {
+                const monster = catalog.monsters.find((m) => m.id === id.slice(8));
+                if (monster)
+                  addMonster(
+                    { ...monster, artVariant: variant },
+                    point(e),
+                    true,
+                  );
+                return;
+              }
+              const monster = [
+                ...catalog.monsters,
+                ...doc.custom.filter((e) => e.kind === 'monster'),
+              ].find((e) => e.id === id);
+              if (monster) addMonster({ ...monster, artVariant: variant }, point(e), true);
+            }}
+            data-attacker-id={token?.layer === 'tokens' ? token.id : undefined}
+            data-camera-x={camera.x}
+            data-camera-y={camera.y}
+            data-camera-zoom={camera.zoom}
+            data-target-id={attackTarget?.id}
+            data-selection-count={selection.length}
+            data-selection-ids={selection.join(',')}
+            onPointerCancel={() => {
+              terrainActive.current = null; setTerrainDraft(null);
+              tokenClick.current = null;
+              setLasso([]);
+              setFogPoints([]);
+              setFogPointer(null);
+              setRuler([]);
+              const d = drag.current;
+              drag.current = null;
+              if (d) {
+                docRef.current = d.original;
+                setDoc(d.original);
+              }
+              setDraft(null);
+            }}
+            onContextMenu={(e) => {
+              e.preventDefault();
+              if (drag.current?.measured ? drag.current.moved : Date.now() < suppressContextUntil.current) return;
+              if (spectator || preview || attackBusy) return;
+              setTool('select');
+              const p = point(e),
+                hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
+              if (hit) {
+                changeLayer(hit.layer, selection.includes(hit.id) ? selection : [hit.id]);
+                if (!selection.includes(hit.id)) setSelection([hit.id]);
+                setAttackTargetId(null);
+              } else if (gm) {
+                const light = barrierEditing
+                  ? scene.lights.find((l) => Math.hypot(p.x - l.x, p.y - l.y) < 18 / camera.zoom)
+                  : null;
+                const wall =
+                  barrierEditing && showWalls
+                    ? scene.walls.find((w) => segmentDistance(p, w.a, w.b) < 9 / camera.zoom)
+                    : null;
+                const drawing = drawingAt(p, scene, layer, 8 / camera.zoom);
+                if (!(light || wall || drawing)) {
+                  setContextMenu(null);
+                  return;
+                }
+                setSelection([(light || wall || drawing)!.id]);
+                setTab('scene');
+              } else return;
+              setContextMenu({
+                x: Math.max(8, Math.min(e.clientX, innerWidth - 270)),
+                y: Math.max(8, Math.min(e.clientY, innerHeight - 520)),
+              });
+            }}
+            onWheel={wheel}
+            onDoubleClick={(e) => {
+              if (spectator || attackBusy) return;
+              if (['reveal', 'hide'].includes(tool) && fogPoints.length >= 3) {
+                commitFog(fogPoints);
+                return;
+              }
+              const p = point(e);
+              const door =
+                barrierEditing && showWalls
+                  ? scene.walls.find(
+                      (w) =>
+                        w.kind === 'door' &&
+                        Math.hypot((w.a.x + w.b.x) / 2 - p.x, (w.a.y + w.b.y) / 2 - p.y) <
+                          30 / camera.zoom,
+                    )
+                  : undefined;
+              if (gm && door)
+                editScene((s) => {
+                  s.walls.find((w) => w.id === door.id)!.open = !door.open;
+                });
+              else {
+                const hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
+                if (hit) {
+                  setSelection([hit.id]);
+                  setAttackTargetId(null);
+                  openSheet(hit);
+                }
+              }
+            }}
+          />
+          {gm && !preview && token?.animatedAsset && <VttAnimatedAssetControls token={token} gridSize={scene.grid.size} edit={editToken} effectsEnabled={token.layer === 'map' ? mapEffects : visualEffects} enableEffects={()=>media.update(token.layer === 'map' ? {mapEffects:true} : {masterEffects:true})}/>}
+          {!spectator&&!preview&&<VttHouseDoors scene={scene} camera={camera} width={bounds.width} height={bounds.height} gm={gm} userId={user.id} selected={selection} disabled={busy} toggle={h=>void act(()=>toggleHouseDoor(h))} toggleWindow={(h,index)=>void act(()=>toggleHouseWindow(h,index))}/>}
+          <VttTurnCarousel
+            controls={combat}
+            gm={gm}
+            open={() => {
+              setTab('combat');
+              setPanelOpen(true);
+            }}
+          />
+          {diceOpen && !spectator && (
+            <div className="vtt-dice-picker" role="dialog" aria-label="Lançador de dados">
+              <header>
+                <strong>Lançar dados</strong>
+                <button aria-label="Fechar lançador" onClick={() => setDiceOpen(false)}>
+                  <X size={15} />
+                </button>
+              </header>
+              <div className="vtt-dice-buttons">
+                {[4, 6, 8, 10, 12, 20, 100].map((n) => (
+                  <div className="vtt-dice-row" key={n}>
+                    <button
+                      aria-label={'Rolar 1d' + n}
+                      disabled={busy || spectator}
+                      onClick={() => {
+                        setDiceSides(n);
+                        setDiceCount(1);
+                        void act(() =>
+                          send(
+                            '1d' +
+                              n +
+                              (diceModifier ? (diceModifier > 0 ? '+' : '') + diceModifier : ''),
+                            '',
+                          ),
+                        );
+                      }}
+                    >
+                      <DiceIcon sides={n} />D{n}
+                    </button>
+                    {[2, 3, 4, 5, 6].map((count) => (
+                      <button
+                        key={count}
+                        aria-label={'Rolar ' + count + 'd' + n}
+                        disabled={busy}
+                        onClick={() => {
+                          setDiceSides(n);
+                          setDiceCount(count);
+                          void act(() =>
+                            send(
+                              count +
+                                'd' +
+                                n +
+                                (diceModifier ? (diceModifier > 0 ? '+' : '') + diceModifier : ''),
+                              '',
+                            ),
+                          );
+                        }}
+                      >
+                        {count}
+                      </button>
+                    ))}
+                  </div>
+                ))}
+              </div>
+              <label>
+                Fórmula personalizada
+                <input
+                  aria-label="Fórmula personalizada"
+                  value={formula}
+                  maxLength={100}
+                  onChange={(e) => setFormula(e.target.value)}
+                  placeholder="4d6kh3"
+                />
+              </label>
+              <button
+                disabled={busy || !formula.trim()}
+                onClick={() => void act(() => send(formula, ''))}
+              >
+                Rolar fórmula
+              </button>
+              <VttRollHelp />
+              <label>
+                Tipo de dado
+                <select
+                  aria-label="Tipo de dado manual"
+                  value={diceSides}
+                  onChange={(e) => setDiceSides(Number(e.target.value))}
+                >
+                  {[4, 6, 8, 10, 12, 20, 100].map((n) => (
+                    <option key={n} value={n}>
+                      D{n}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <NumberField
+                label="Quantidade de dados"
+                value={diceCount}
+                min={1}
+                max={100}
+                onChange={setDiceCount}
+              />
+              <NumberField
+                label="Modificador dos dados"
+                value={diceModifier}
+                min={-9999}
+                max={9999}
+                onChange={setDiceModifier}
+              />
+              <label className="vtt-check">
+                <input
+                  type="checkbox"
+                  checked={dice3d}
+                  onChange={(e) => setDice3d(e.target.checked)}
+                />
+                Dados 3D no tabuleiro
+              </label>
+              <label className="vtt-check">
+                <input
+                  type="checkbox"
+                  checked={privateRoll}
+                  onChange={(e) => setPrivateRoll(e.target.checked)}
+                />
+                Somente você e o mestre
+              </label>
+              <button
+                className="vtt-gold"
+                disabled={busy}
+                onClick={() =>
+                  void act(() =>
+                    send(
+                      diceCount +
+                        'd' +
+                        diceSides +
+                        (diceModifier ? (diceModifier > 0 ? '+' : '') + diceModifier : ''),
+                      '',
+                    ),
+                  )
+                }
+              >
+                Rolar {diceCount}d{diceSides}
+              </button>
+              {diceSides === 100 && <small>Percentual: dois d10, dezenas e unidades.</small>}
+            </div>
+          )}
+          <div className="vtt-scene-pills">
+            {gm && tool === 'lasso' && !preview && (
+              <span role="status">
+                Seleção livre · {selection.length} {selection.length === 1 ? 'objeto' : 'objetos'} ·
+                Arraste o contorno · Shift adiciona · Delete exclui
+              </span>
+            )}
+            {['reveal', 'hide'].includes(tool) && fogShape === 'polygon' && (
+              <span>
+                Clique nos vértices · Enter ou duplo clique para concluir · Esc para cancelar
+              </span>
+            )}
+            <span>{scene.name}</span>
+            {gm && (
+              <button
+                className={preview ? 'is-active' : ''}
+                aria-pressed={preview}
+                onClick={() => {
+                  setPreviewViewerId(
+                    preview
+                      ? null
+                      : token?.layer === 'tokens' && !token.hidden
+                        ? token.id
+                        : viewer?.id || null,
+                  );
+                  setPreview((v) => !v);
+                }}
+              >
+                <Eye size={14} />
+                Visão do jogador
+              </button>
+            )}
+          </div>
+          {gm && ['pen', 'rect', 'circle', 'cone', 'line', 'text'].includes(tool) && (
+            <div className="vtt-draw-controls" aria-label="Opções de desenho">
+              {['#dac28e', '#f0f0e7', '#22262e', '#de665b', '#72a586', '#71add1', '#ad83cd'].map(
+                (color, i) => (
+                  <button
+                    key={color}
+                    aria-label={
+                      'Cor ' +
+                      ['dourada', 'branca', 'escura', 'vermelha', 'verde', 'azul', 'roxa'][i]
+                    }
+                    aria-pressed={brushColor === color}
+                    style={{ background: color }}
+                    onClick={() => setBrushColor(color)}
+                  />
+                ),
+              )}
+              <label>
+                Cor livre
+                <input
+                  aria-label="Cor livre da caneta"
+                  type="color"
+                  value={brushColor}
+                  onChange={(e) => setBrushColor(e.target.value)}
+                />
+              </label>
+              <NumberField
+                label="Traço"
+                value={brushWidth}
+                min={1}
+                max={100}
+                onChange={setBrushWidth}
+              />
+            </div>
+          )}
+          <div className="vtt-map-footer">
+            {(spectator || effectPreview) && (
+              <span>
+                {spectator
+                  ? 'Espectador · somente visualização'
+                  : 'Prévia do efeito · ainda não aplicado'}
+              </span>
+            )}
+            <div style={{ marginLeft: 'auto' }}>
+              <button
+                aria-label="Diminuir zoom"
+                onClick={() => setCamera((c) => ({ ...c, zoom: Math.max(0.03, c.zoom * 0.8) }))}
+              >
+                −
+              </button>
+              <span>{Math.round(camera.zoom * 100)}%</span>
+              <button
+                aria-label="Aumentar zoom"
+                onClick={() => setCamera((c) => ({ ...c, zoom: Math.min(5, c.zoom * 1.25) }))}
+              >
+                +
+              </button>
+              <button onClick={() => fit()} title="Enquadrar mapa">
+                <Scan size={15} />
+              </button>
+            </div>
+          </div>
+          {gm && textEdit && (
+            <div
+              className="vtt-text-editor"
+              style={{ left: textEdit.x, top: textEdit.y }}
+              role="group"
+              aria-label="Inserir texto no mapa"
+            >
+              <textarea
+                autoFocus
+                aria-label="Texto no mapa"
+                placeholder="Digite o texto…"
+                maxLength={500}
+                rows={3}
+                value={textEdit.value}
+                onChange={(e) => setTextEdit({ ...textEdit, value: e.target.value })}
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') {
+                    e.stopPropagation();
+                    setTextEdit(null);
+                  }
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    commitText();
+                  }
+                }}
+              />
+              <div>
+                <button disabled={!textEdit.value.trim()} onClick={commitText}>
+                  Inserir texto
+                </button>
+                <button onClick={() => setTextEdit(null)}>Cancelar</button>
+              </div>
+              <small>Enter para inserir · Shift + Enter para nova linha</small>
+            </div>
+          )}
+        </div>
+        {panelOpen && (
+          <aside className="vtt-panel">
+            <nav className="vtt-panel-tabs" aria-label="Painéis da mesa">
+              {tabs.map(({ id, name, icon: Icon }) => (
+                <button
+                  key={id}
+                  aria-label={name}
+                  title={name}
+                  aria-pressed={
+                    tab === id ||
+                    (id === 'sheet' && ['token', 'journal', 'mounts', 'pets'].includes(tab)) ||
+                    (id === 'table' && (tab === 'scene' || tab === 'help'))
+                  }
+                  onClick={() => {
+                    setTab(id);
+                    if (id === 'art') {
+                      setLibrary('images');
+                      setQuery('');
+                      setEntry(null);
+                    }
+                    if (id === 'library' && library === 'images') {
+                      setLibrary('monsters');
+                      setQuery('');
+                      setEntry(null);
+                    }
+                  }}
+                >
+                  <Icon size={17} />
+                </button>
+              ))}
+            </nav>
+            <div className={'vtt-panel-content' + (tab === 'chat' ? ' vtt-chat-panel' : '')}>
+              <div className="vtt-panel-heading">
+                <h2 hidden={tab === 'chat' && chatControlsCollapsed}>
+                  {
+                    tabs.find(
+                      (t) =>
+                        t.id ===
+                        (['token', 'journal', 'mounts', 'pets'].includes(tab)
+                          ? 'sheet'
+                          : tab === 'scene' || tab === 'help'
+                            ? 'table'
+                            : tab),
+                    )?.name
+                  }
+                </h2>
+                {tab === 'chat' && (
+                  <button
+                    className="vtt-chat-collapse"
+                    aria-expanded={!chatControlsCollapsed}
+                    aria-controls="vtt-chat-controls"
+                    onClick={() => customizeChatControls(!chatControlsCollapsed)}
+                    title={
+                      chatControlsCollapsed
+                        ? 'Mostrar controles do chat'
+                        : 'Minimizar controles do chat'
+                    }
+                  >
+                    {chatControlsCollapsed ? <ChevronDown size={14} /> : <ChevronUp size={14} />}
+                    {chatControlsCollapsed ? 'Mostrar controles do chat' : 'Minimizar'}
+                  </button>
+                )}
+              </div>
+              {['sheet', 'mounts', 'pets', 'token', 'journal'].includes(tab) && (
+                <div className="vtt-subtabs vtt-companion-tabs">
+                  <button aria-pressed={tab === 'sheet'} onClick={() => setTab('sheet')}>
+                    Personagens
+                  </button>
+                  <button aria-pressed={tab === 'mounts'} onClick={() => setTab('mounts')}>
+                    Montarias
+                  </button>
+                  <button aria-pressed={tab === 'pets'} onClick={() => setTab('pets')}>
+                    Mascotes
+                  </button>
+                  <button aria-pressed={tab === 'token'} onClick={() => setTab('token')}>
+                    Token selecionado
+                  </button>
+                  <button aria-pressed={tab === 'journal'} onClick={() => setTab('journal')}>
+                    Diário
+                  </button>
+                </div>
+              )}
+              {['table', 'scene', 'help'].includes(tab) && (
+                <div className="vtt-subtabs">
+                  <button aria-pressed={tab === 'table'} onClick={() => setTab('table')}>
+                    Mesa
+                  </button>
+                  <button aria-pressed={tab === 'scene'} onClick={() => setTab('scene')}>
+                    Mapa
+                  </button>
+                  <button aria-pressed={tab === 'help'} onClick={() => setTab('help')}>
+                    <HelpCircle size={13} /> Ajuda
+                  </button>
+                </div>
+              )}
+              {tab === 'scene' && (
+                <>
+                  <label>
+                    Mapa ativo
+                    <select
+                      value={scene.id}
+                      onChange={(e) => openMap(e.target.value)}
+                      disabled={!gm}
+                    >
+                      {doc.scenes
+                        .filter((s) => !s.archived)
+                        .map((s) => (
+                          <option key={s.id} value={s.id}>
+                            {s.name}
+                          </option>
+                        ))}
+                    </select>
+                  </label>
+                  <p className="vtt-muted">
+                    {scene.width} × {scene.height} px ·{' '}
+                    {scene.grid.type === 'none' ? 'sem grade' : scene.grid.size + ' px por célula'}
+                  </p>
+                  {gm && (
+                    <>
+                      <label className="vtt-check"><input type="checkbox" checked={scene.grid.type!=='none'&&scene.grid.opacity>0} onChange={e=>editScene(s=>{if(e.target.checked){if(s.grid.type==='none')s.grid.type='square';s.grid.opacity=Math.max(.38,s.grid.opacity);}else s.grid.opacity=0;})}/>Mostrar grade</label>
+                      <label className="vtt-check"><input type="checkbox" checked={scene.grid.snap} onChange={e=>editScene(s=>{s.grid.snap=e.target.checked;})}/>Encaixar objetos na grade</label>
+                      <div className="vtt-row">
+                        <button onClick={() => setMapsOpen(true)}>
+                          <MapIcon size={15} />
+                          Biblioteca de mapas
+                        </button>
+                        <button onClick={() => setSettingsId(scene.id)}>
+                          <Settings2 size={15} />
+                          Configurar mapa
+                        </button>
+                        <button onClick={() => createMap()}>
+                          <Plus size={14} />
+                          Novo mapa
+                        </button>
+                      </div>
+                      <button onClick={()=>{setPanelOpen(false);setCanopyEditing(true);}}><Eye size={15}/>Editar áreas de transparência</button>
+                      <h3>Camadas</h3>
+                      <VttItemLayers scene={scene} selection={selection} disabled={busy || preview} edit={editScene}
+                        select={item => {changeLayer(item.layer,[item.id]);setSelection([item.id]);setAttackTargetId(null);}}/>
+                      <label>
+                        Opacidade da camada do mestre
+                        <input
+                          aria-label="Opacidade da camada do mestre"
+                          type="range"
+                          min=".05"
+                          max="1"
+                          step=".01"
+                          value={scene.gmOpacity}
+                          onChange={(e) =>
+                            editScene((s) => {
+                              s.gmOpacity = Number(e.target.value);
+                            })
+                          }
+                        />
+                        <span>{Math.round(scene.gmOpacity * 100)}%</span>
+                      </label>
+                      {(layer==='lighting'||tool==='light')&&<VttLightPresets value={lightPreset} unit={scene.grid.unit} onChange={setLightPreset} onPlace={()=>{changeLayer('lighting');setTool('light');setSelection([]);}} onApply={selectedLight?()=>editScene(s=>{Object.assign(s.lights.find(l=>l.id===selectedLight.id)!,lightPresetValues(lightPreset,s.grid.unit));}):undefined}/>}
+                      {selectedLight && (
+                        <div className="vtt-object-detail">
+                          <h3>Fonte de luz</h3>
+                          <label>
+                            Nome da luz
+                            <input
+                              value={selectedLight.name}
+                              onChange={(e) =>
+                                editScene((s) => {
+                                  s.lights.find((l) => l.id === selectedLight.id)!.name =
+                                    e.target.value || 'Fonte de luz';
+                                })
+                              }
+                            />
+                          </label>
+                          <div className="vtt-two">
+                            {(['bright', 'dim', 'x', 'y', 'angle', 'rotation'] as const).map(
+                              (key) => (
+                                <NumberField
+                                  key={key}
+                                  label={
+                                    {
+                                      bright: 'Luz forte',
+                                      dim: 'Luz fraca adicional',
+                                      x: 'Posição X da luz',
+                                      y: 'Posição Y da luz',
+                                      angle: 'Ângulo da luz',
+                                      rotation: 'Rotação da luz',
+                                    }[key]
+                                  }
+                                  value={selectedLight[key]}
+                                  min={key === 'rotation' ? -360 : key === 'angle' ? 1 : 0}
+                                  max={
+                                    key === 'rotation' || key === 'angle'
+                                      ? 360
+                                      : key === 'bright' || key === 'dim'
+                                        ? 10000
+                                        : 16000
+                                  }
+                                  onChange={(n) =>
+                                    editScene((s) => {
+                                      s.lights.find((l) => l.id === selectedLight.id)![key] = n;
+                                    })
+                                  }
+                                />
+                              ),
+                            )}
+                          </div>
+                          <label>
+                            Cor da luz
+                            <input
+                              type="color"
+                              value={selectedLight.color}
+                              onChange={(e) =>
+                                editScene((s) => {
+                                  s.lights.find((l) => l.id === selectedLight.id)!.color =
+                                    e.target.value;
+                                })
+                              }
+                            />
+                          </label>
+                          <label className="vtt-check">
+                            <input
+                              type="checkbox"
+                              checked={selectedLight.enabled}
+                              onChange={(e) =>
+                                editScene((s) => {
+                                  s.lights.find((l) => l.id === selectedLight.id)!.enabled =
+                                    e.target.checked;
+                                })
+                              }
+                            />
+                            Luz acesa
+                          </label>
+                          <VttLightEffectFields animation={selectedLight.animation} speed={selectedLight.effectSpeed} onChange={v=>editScene(s=>{Object.assign(s.lights.find(l=>l.id===selectedLight.id)!,v);})}/>
+                          <button onClick={removeSelected}>
+                            <Trash2 size={14} />
+                            Excluir luz selecionada
+                          </button>
+                        </div>
+                      )}
+                      {(selectedDrawing || selectedWall) && (
+                        <div className="vtt-object-detail">
+                          <h3>{selectedWall ? 'Barreira selecionada' : 'Desenho selecionado'}</h3>
+                          {selectedWall?.kind === 'door' && (
+                            <button
+                              onClick={() =>
+                                editScene((s) => {
+                                  s.walls.find((w) => w.id === selectedWall.id)!.open =
+                                    !selectedWall.open;
+                                })
+                              }
+                            >
+                              {selectedWall.open ? 'Fechar porta' : 'Abrir porta'}
+                            </button>
+                          )}
+                          <button onClick={removeSelected}>
+                            <Trash2 size={14} />
+                            Excluir objeto selecionado
+                          </button>
+                        </div>
+                      )}
+                      {barrierEditing && (
+                        <label className="vtt-check">
+                          <input
+                            type="checkbox"
+                            checked={showWalls}
+                            onChange={(e) => {
+                              setShowWalls(e.target.checked);
+                              if (!e.target.checked)
+                                setSelection((ids) =>
+                                  ids.filter((id) => !scene.walls.some((w) => w.id === id)),
+                                );
+                            }}
+                          />
+                          Mostrar barreiras do mestre
+                        </label>
+                      )}
+                      <div className="vtt-row">
+                        <button
+                          onClick={() =>
+                            editScene((s) => {
+                              s.fog = true;
+                              s.fogMode = 'manual';
+                              s.lighting = false;
+                              s.fogAreas = [];
+                              s.reveals = [
+                                {
+                                  x: s.width / 2,
+                                  y: s.height / 2,
+                                  radius: Math.hypot(s.width, s.height),
+                                },
+                              ];
+                            })
+                          }
+                        >
+                          Revelar tudo
+                        </button>
+                        <button
+                          onClick={() =>
+                            editScene((s) => {
+                              s.reveals = [];
+                              s.fogAreas = [];
+                              s.lighting = false;
+                              s.fog = true;
+                              s.fogMode = 'manual';
+                            })
+                          }
+                        >
+                          Ocultar tudo
+                        </button>
+                      </div>
+                      {barrierEditing && (
+                        <>
+                          <h3>Paredes, portas e janelas</h3>
+                          {scene.walls.map((w, i) => (
+                            <div className="vtt-list-row" key={w.id}>
+                              <span>
+                                {w.kind === 'wall'
+                                  ? 'Parede'
+                                  : w.kind === 'door'
+                                    ? 'Porta'
+                                    : 'Janela'}{' '}
+                                {i + 1}
+                              </span>
+                              {w.kind === 'door' && (
+                                <button
+                                  onClick={() =>
+                                    editScene(
+                                      (s) => (s.walls.find((v) => v.id === w.id)!.open = !w.open),
+                                    )
+                                  }
+                                >
+                                  {w.open ? 'Fechar' : 'Abrir'}
+                                </button>
+                              )}
+                              <button
+                                aria-label={`Excluir barreira ${i + 1}`}
+                                onClick={() =>
+                                  editScene((s) => (s.walls = s.walls.filter((v) => v.id !== w.id)))
+                                }
+                              >
+                                <Trash2 size={13} />
+                              </button>
+                            </div>
+                          ))}
+                        </>
+                      )}
+                      <h3>Desenho e áreas</h3>
+                      <label>
+                        Cor
+                        <input
+                          type="color"
+                          value={brushColor}
+                          onChange={(e) => setBrushColor(e.target.value)}
+                        />
+                      </label>
+                      <NumberField
+                        label="Espessura"
+                        value={brushWidth}
+                        min={1}
+                        max={100}
+                        onChange={setBrushWidth}
+                      />
+                      <label className="vtt-check">
+                        <input
+                          type="checkbox"
+                          checked={brushFill}
+                          onChange={(e) => setBrushFill(e.target.checked)}
+                        />
+                        Preencher áreas
+                      </label>
+                      <label>
+                        Texto da ferramenta
+                        <input
+                          value={text}
+                          onChange={(e) => setText(e.target.value)}
+                          maxLength={500}
+                        />
+                      </label>
+                      <NumberField
+                        label="Raio do pincel de névoa"
+                        value={brushRadius}
+                        min={5}
+                        max={5000}
+                        onChange={setBrushRadius}
+                      />
+                      <button onClick={() => editScene((s) => (s.drawings = []))}>
+                        Limpar desenhos desta cena
+                      </button>
+                    </>
+                  )}
+                </>
+              )}
+              {tab === 'token' && (
+                <>
+                  {!token ? (
+                    <p className="vtt-muted">
+                      Selecione um token no tabuleiro ou adicione um pela biblioteca.
+                    </p>
+                  ) : (
+                    <>
+                      <label>
+                        Nome
+                        <input
+                          value={token.name}
+                          disabled={!gm}
+                          onChange={(e) => editToken({ name: e.target.value || 'Token' })}
+                        />
+                      </label>
+                      <div className="vtt-two">
+                        {!token.sceneryToken && <>
+                        <NumberField
+                          label="PV atual"
+                          value={token.hp}
+                          min={-10000}
+                          max={gm ? 100000 : token.hp}
+                          disabled={!canToken}
+                          onChange={(v) => editToken({ hp: v })}
+                        />
+                        <NumberField
+                          label="PV máximo"
+                          value={token.maxHp}
+                          min={1}
+                          max={100000}
+                          disabled={!gm}
+                          onChange={(v) => editToken({ maxHp: v })}
+                        />
+                        <NumberField
+                          label="Classe de armadura"
+                          value={token.ac}
+                          max={100}
+                          disabled={!gm}
+                          onChange={(v) => editToken({ ac: v })}
+                        />
+                        </>}
+                        <NumberField
+                          label="Rotação"
+                          value={token.rotation}
+                          min={-360}
+                          max={360}
+                          disabled={!gm}
+                          onChange={(v) => editToken({ rotation: v })}
+                        />
+                      </div>
+                      {gm && (
+                        <>
+                          {token.animatedAsset && <fieldset><legend>Animação do ambiente</legend>
+                            <NumberField label="Tamanho do asset (quadrados)" value={Number((token.width / scene.grid.size).toFixed(2))} min={Math.max(.1, 8 / scene.grid.size)} max={8000 / scene.grid.size} onChange={v=>{const width=Math.max(8,Math.min(8000,v*scene.grid.size)); const ratio=token.height/token.width; editToken({width,height:Math.max(8,Math.min(8000,width*ratio))});}}/>
+                            <div className="vtt-two">
+                              <button type="button" onClick={()=>{const factor=Math.max(.8,8/Math.min(token.width,token.height));editToken({width:token.width*factor,height:token.height*factor});}}>Diminuir asset</button>
+                              <button type="button" onClick={()=>{const factor=Math.min(1.25,8000/Math.max(token.width,token.height));editToken({width:token.width*factor,height:token.height*factor});}}>Aumentar asset</button>
+                            </div>
+                            <label className="vtt-check"><input type="checkbox" checked={token.animatedAsset.playing} onChange={e=>editToken({animatedAsset:{...token.animatedAsset!,playing:e.target.checked}})}/>Animar asset</label>
+                            <NumberField label="Velocidade da animação" value={token.animatedAsset.speed} min={.25} max={2} onChange={v=>editToken({animatedAsset:{...token.animatedAsset!,speed:v}})}/>
+                            <label>Intensidade<input aria-label="Intensidade do asset" type="range" min={.2} max={1} step={.05} value={token.animatedAsset.intensity} onChange={e=>editToken({animatedAsset:{...token.animatedAsset!,intensity:Number(e.target.value)}})}/></label>
+                          </fieldset>}
+                          {houseAsset(token)&&<><button onClick={()=>void act(()=>toggleHouseDoor(token))}>{token.houseDoorOpen?'Fechar':'Abrir'} porta principal</button>{houseAsset(token)!.windows.map((_,index)=><button key={index} onClick={()=>void act(()=>toggleHouseWindow(token,index))}>{houseWindowOpen(token,index)?'Fechar':'Abrir'} janela {index+1}</button>)}<button onClick={()=>editScene(s=>fitHouseToGrid(s.tokens.find(t=>t.id===token.id)!,s))}>Ajustar casa à escala dos personagens</button><p className="vtt-muted">Corrige a proporção da casa e alinha a porta à grade, mantendo o tamanho dos personagens.</p></>}
+                          {!token.sceneryToken && <>
+                          <h3>Barra de boss</h3>
+                          <label>
+                            Barra de boss
+                            <select
+                              aria-label="Estilo da barra de boss"
+                              value={token.bossStyle ? visibleBossStyle(token.bossStyle) : ''}
+                              onChange={(e) =>
+                                editToken({
+                                  bossStyle: e.target.value
+                                    ? (e.target.value as VttToken['bossStyle'])
+                                    : null,
+                                })
+                              }
+                            >
+                              <option value="">Não mostrar barra</option>
+                              {bossStyles.map((style, i) => (
+                                <option key={style} value={style}>
+                                  {bossStyleNames[i]}
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+                          </>}
+                          {monsterArt('', token.name) && (
+                            <button
+                              onClick={() => editToken({ image: monsterArt('', token.name) })}
+                            >
+                              Usar arte do monstro
+                            </button>
+                          )}
+                          <div className="vtt-two">
+                            <NumberField
+                              label="Largura do token"
+                              value={token.width}
+                              min={8}
+                              max={8000}
+                              onChange={(v) => editToken({ width: v })}
+                            />
+                            <NumberField
+                              label="Altura do token"
+                              value={token.height}
+                              min={8}
+                              max={8000}
+                              onChange={(v) => editToken({ height: v })}
+                            />
+                          </div>
+                          <p className="vtt-token-resize-hint">Arraste os cantos ou as bordas do quadrado no mapa. Os cantos preservam a proporção; Shift permite ajustar livremente. A alça redonda gira o asset; Ctrl + arraste gira o item selecionado. Ctrl ou Shift + rolagem gira em passos de 15°.</p>
+                          <VttStackButtons disabled={busy || preview} apply={action => editScene(s => reorderVttItems(s.tokens,selection,action))}/>
+                          <label>
+                            Camada do token
+                            <select
+                              value={token.layer}
+                              onChange={(e) =>
+                                editToken({ layer: e.target.value as VttToken['layer'] })
+                              }
+                            >
+                              <option value="tokens">Tokens</option>
+                              <option value="map">Mapa</option>
+                              <option value="gm">Mestre</option>
+                            </select>
+                          </label>
+                          <NumberField
+                            label="Nível de profundidade"
+                            value={token.level}
+                            min={-10000}
+                            max={10000}
+                            step={0.1}
+                            onChange={(n) => editToken({ level: n })}
+                          />
+                          <p className="vtt-muted">0,1 à frente de 0; −0,1 atrás de 0.</p>
+                          <div className="vtt-row">
+                            <button onClick={() => editToken({ flipX: !token.flipX })}>
+                              <FlipHorizontal2 size={15} />
+                              Espelhar horizontal
+                            </button>
+                            <button onClick={() => editToken({ flipY: !token.flipY })}>
+                              <FlipVertical2 size={15} />
+                              Espelhar vertical
+                            </button>
+                          </div>
+                          <label>
+                            Controlado por
+                            <select
+                              value={token.controller || ''}
+                              onChange={(e) => editToken({ controller: e.target.value || null })}
+                            >
+                              <option value="">Somente mestre</option>
+                              {state.members
+                                .filter((m) => m.id === user.id || m.role !== 'spectator')
+                                .map((m) => (
+                                  <option key={m.id} value={m.id}>
+                                    {m.name}
+                                  </option>
+                                ))}
+                            </select>
+                          </label>
+                          <label className="vtt-check">
+                            <input
+                              type="checkbox"
+                              checked={token.locked}
+                              onChange={(e) => editToken({ locked: e.target.checked })}
+                            />
+                            Bloquear movimento
+                          </label>
+                          <label className="vtt-check">
+                            <input
+                              type="checkbox"
+                              checked={token.hidden}
+                              onChange={(e) => editToken({ hidden: e.target.checked })}
+                            />
+                            Ocultar dos jogadores
+                          </label>
+                          <label className="vtt-file-button">
+                            Trocar imagem
+                            <input
+                              type="file"
+                              accept="image/png,image/jpeg,image/webp"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file)
+                                  void act(async () => {
+                                    const a = await uploadAsset(file);
+                                    editToken({ image: a.path });
+                                  });
+                                e.target.value = '';
+                              }}
+                            />
+                          </label>
+                          <button
+                            onClick={() => {
+                              setLibrary('images');
+                              setTab('art');
+                            }}
+                          >
+                            Usar imagem da biblioteca
+                          </button>
+                          <h3>Visão e iluminação</h3>
+                          <NumberField
+                            label={`Visão no escuro (${scene.grid.unit})`}
+                            value={token.vision}
+                            max={10000}
+                            onChange={(v) => editToken({ vision: v })}
+                          />
+                          <div className="vtt-two">
+                            <NumberField
+                              label={`Luz forte (${scene.grid.unit})`}
+                              value={token.light}
+                              max={10000}
+                              onChange={(v) => editToken({ light: v })}
+                            />
+                            <NumberField
+                              label={`Luz fraca adicional (${scene.grid.unit})`}
+                              value={token.dimLight}
+                              max={10000}
+                              onChange={(v) => editToken({ dimLight: v })}
+                            />
+                          </div>
+                          <NumberField
+                            label="Ângulo da luz"
+                            value={token.lightAngle}
+                            min={1}
+                            max={360}
+                            onChange={(v) => editToken({ lightAngle: v })}
+                          />
+                          <label>
+                            Cor da luz
+                            <input
+                              type="color"
+                              value={token.lightColor}
+                              onChange={(e) => editToken({ lightColor: e.target.value })}
+                            />
+                          </label>
+                          <VttLightEffectFields animation={token.lightAnimation} speed={token.lightEffectSpeed} onChange={v=>editToken({lightAnimation:v.animation,lightEffectSpeed:v.effectSpeed})}/>
+                          <label>
+                            Notas do mestre
+                            <textarea
+                              value={token.notes}
+                              onChange={(e) => editToken({ notes: e.target.value })}
+                              maxLength={4000}
+                            />
+                          </label>
+                          <div className="vtt-row">
+                            <button onClick={duplicate}>
+                              <Copy size={14} />
+                              Duplicar
+                            </button>
+                            <button onClick={removeSelected}>
+                              <Trash2 size={14} />
+                              Excluir
+                            </button>
+                          </div>
+                        </>
+                      )}
+                      <VttConditionMenu expanded conditions={token.conditions} gm={gm}
+                        enabled={canToken} busy={busy} onChange={changeTokenConditions} />
+                      <div className="vtt-token-sheet-action">
+                        <button onClick={() => openSheet()}><BookOpen size={15} />Abrir ficha do token</button>
+                      </div>
+                    </>
+                  )}
+                </>
+              )}
+              {(tab === 'library' || tab === 'art') && (
+                <>
+                  {library !== 'spells' && library !== 'presets' && library !== 'scenery' && library !== 'animated' && gm && (
+                    <VttMonsterVariants value={monsterVariant} change={setMonsterVariant}
+                      image={entry ? monsterImage(entry) : undefined} />
+                  )}
+                  {tab === 'library' && (
+                    <div
+                      className="vtt-subtabs vtt-library-tabs"
+                      aria-label="Categorias da biblioteca"
+                    >
+                      {(['monsters', 'presets', 'premium', 'spells', 'nature', 'scenery', 'animated'] as const).map((k) => (
+                        <button
+                          key={k}
+                          aria-label={
+                            {
+                              monsters: 'Monstros',
+                              presets: 'Presets de monstros',
+                              premium: 'Assets',
+                              spells: 'Magias',
+                              nature: 'Cenários',
+                              scenery: 'Assets',
+                              animated: 'Assets animados',
+                            }[k]
+                          }
+                          title={
+                            {
+                              monsters: 'Monstros',
+                              presets: 'Presets de monstros',
+                              premium: 'Assets',
+                              spells: 'Magias',
+                              nature: 'Cenários',
+                              scenery: 'Assets',
+                              animated: 'Assets animados',
+                            }[k]
+                          }
+                          aria-pressed={library === k}
+                          onClick={() => {
+                            setLibrary(k);
+                            setQuery('');
+                            setEntry(null);
+                            if (k === 'presets' || k === 'premium') setPresetVersion((v) => v + 1);
+                          }}
+                        >
+                          {
+                            {
+                              monsters: 'Monstros',
+                              presets: 'Presets',
+                              premium: 'Assets',
+                              spells: 'Magias',
+                              nature: 'Cenários',
+                              scenery: 'Assets',
+                              animated: 'Assets animados',
+                            }[k]
+                          }
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  {library !== 'terrain' && <label className="vtt-search">
+                    Buscar na biblioteca
+                    <input
+                      aria-label="Buscar na biblioteca"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder={library === 'scenery' ? 'Nome da peça ou categoria…' : 'Nome, tipo, nível…'}
+                    />
+                  </label>}
+                  {gm && library === 'images' && storage && <p className="vtt-muted" role="status">Imagens externas: {vttStorageLabel(storage)}. O catálogo não ocupa esta cota.</p>}
+                  {gm && library !== 'nature' && library !== 'terrain' && library !== 'presets' && library !== 'premium' && library !== 'animated' && library !== 'scenery' && (
+                    <label className="vtt-file-button">
+                      <Upload size={14} />
+                      {library === 'images' ? 'Enviar imagem' : 'Importar JSON do 5etools'}
+                      <input
+                        type="file"
+                        accept={
+                          library === 'images'
+                            ? 'image/png,image/jpeg,image/webp'
+                            : '.json,application/json'
+                        }
+                        multiple={library === 'images'}
+                        onChange={(e) => {
+                          const files = Array.from(e.target.files || []);
+                          void act(async () => {
+                            for (const file of files)
+                              library === 'images'
+                                ? await uploadAsset(file)
+                                : await importJson(file);
+                          });
+                          e.target.value = '';
+                        }}
+                      />
+                    </label>
+                  )}
+                  {library === 'terrain' ? terrainPanel() : library === 'nature' ? (<VttNatureAssets query={query} gm={gm&&!preview} add={addNatureAsset}/>) : library === 'scenery' ? (
+                    <>{terrainPanel()}
+                    <VttSceneryAssets query={query} gm={gm && !preview} add={addSceneryAsset} /></>
+                  ) : library === 'animated' ? (
+                    <VttAnimatedAssets query={query} gm={gm && !preview} add={addAnimatedAsset} />
+                  ) : library === 'presets' || library === 'premium' ? (
+                    <VttAssets enabled={library === 'premium'} gm={gm && !preview} query={query} add={addTreeAsset} addNature={addNatureAsset}><VttPrivateLibrary
+                      kind={library}
+                      gm={gm && !preview}
+                      viewMonsters={() => {
+                        setLibrary('monsters');
+                        setQuery('');
+                        setEntry(null);
+                      }}
+                      query={query}
+                      loadKey={presetVersion}
+                      importPreset={importMonsterPreset}
+                      importPremium={(m) => addMonster(m as Entry)}
+                      drag={dragMonster}
+                      variant={monsterVariant}
+                    /></VttAssets>
+                  ) : library === 'images' ? (
+                    <>
+                      <details className="vtt-monster-gallery">
+                        <summary>Tokens dos monstros · {catalog.monsters.length}</summary>
+                        <div className="vtt-asset-grid">
+                          {catalog.monsters
+                            .filter((e) => e.name.toLowerCase().includes(query.toLowerCase()))
+                            .map((e) => (
+                              <div
+                                className="vtt-asset"
+                                key={e.id}
+                                draggable={gm && !preview}
+                                onDragStart={(event) => dragMonster(event, e.id)}
+                                title={gm ? 'Arraste para a mesa' : ''}
+                              >
+                                <img
+                                  loading="lazy"
+                                  src={e.image || monsterArt(e.id, e.name)}
+                                  style={{ filter: monsterVariantFilter(monsterVariant) }}
+                                  alt={e.name}
+                                  draggable={false}
+                                />
+                                <span>{e.name}</span>
+                                {gm && (
+                                  <button onClick={() => addMonster(e)}>Adicionar token</button>
+                                )}
+                              </div>
+                            ))}
+                        </div>
+                      </details>
+                      <div className="vtt-asset-grid">
+                        <div className="vtt-asset">
+                          <img src="/vtt/crypt.svg" alt="Mapa da cripta" />
+                          <span>Cripta esquecida</span>
+                          {gm && (
+                            <button
+                              onClick={() =>
+                                editScene((s) => {
+                                  s.background = '/vtt/crypt.svg';
+                                  s.width = 2240;
+                                  s.height = 1680;
+                                })
+                              }
+                            >
+                              Usar como mapa
+                            </button>
+                          )}
+                        </div>
+                        {state.assets
+                          .filter(
+                            (a) =>
+                              a.kind === 'image' &&
+                              a.name.toLowerCase().includes(query.toLowerCase()),
+                          )
+                          .map((a) => (
+                            <div className="vtt-asset" key={a.id}>
+                              <img src={a.path} alt={a.name} />
+                              <span>{a.name}</span>
+                              {gm && (
+                                <>
+                                  <button
+                                    onClick={() => {
+                                      editScene((s) => {
+                                        s.background = a.path;
+                                        if (a.width && a.height) {
+                                          s.width = Math.max(280, a.width);
+                                          s.height = Math.max(280, a.height);
+                                        }
+                                      });
+                                    }}
+                                  >
+                                    Mapa
+                                  </button>
+                                  <button
+                                    onClick={() => {
+                                      if (token) editToken({ image: a.path });
+                                      else {
+                                        const t = newToken(crypto.randomUUID(), scene);
+                                        t.name = a.name.replace(/\.[^.]+$/, '');
+                                        t.image = a.path;
+                                        Object.assign(t,tokenPlacement(camera,t,scene));
+                                        editScene((s) => s.tokens.push(t));
+                                        setSelection([t.id]);
+                                      }
+                                    }}
+                                  >
+                                    Token
+                                  </button>
+                                  <button
+                                    aria-label={`Excluir ${a.name}`}
+                                    onClick={() =>
+                                      void act(async () => {
+                                        await save();
+                                        await api(`/vtt/rooms/${state.id}/assets/${a.id}`, {
+                                          method: 'DELETE',
+                                        });
+                                        setState((s) =>
+                                          s
+                                            ? {
+                                                ...s,
+                                                assets: s.assets.filter((v) => v.id !== a.id),
+                                              }
+                                            : s,
+                                        );
+                                      })
+                                    }
+                                  >
+                                    <Trash2 size={12} />
+                                  </button>
+                                </>
+                              )}
+                            </div>
+                          ))}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {entry ? (
+                        <div className="vtt-statblock">
+                          <button onClick={() => setEntry(null)}>
+                            <ChevronLeft size={14} />
+                            Voltar à lista
+                          </button>
+                          {library === 'spells' && <h3>{entry.name}</h3>}
+                          {library === 'spells' && (
+                            <p>
+                              {entry.source || 'Importação da mesa'} ·{' '}
+                              {`Nível ${entry.level} · ${entry.school || ''}`}
+                            </p>
+                          )}
+                          {entry.range && (
+                            <p>
+                              Alcance: {entry.range} · {entry.time}
+                            </p>
+                          )}
+                          {entry.duration && (
+                            <p>
+                              Duração: {entry.duration} · {entry.components}
+                            </p>
+                          )}
+                          {library === 'spells' && entry.stats && (
+                            <div className="vtt-stats">
+                              {entry.stats.map((v, i) => (
+                                <span key={i}>
+                                  {['FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'][i]}
+                                  <b>{v}</b>
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          {library === 'monsters' ? (
+                            <VttMonsterStatblock
+                              compact
+                              monster={{
+                                ...entryProfile(entry),
+                                actionDetails:
+                                  token?.name === entry.name ? token.sheet?.details : undefined,
+                              }}
+                              tokenId={token?.name === entry.name ? token.id : undefined}
+                              gm={gm && !preview}
+                              roll={send}
+                              useAction={
+                                token?.name === entry.name
+                                  ? (action) => useMonsterAction(token, action)
+                                  : undefined
+                              }
+                            />
+                          ) : (
+                            <pre>{entry.details}</pre>
+                          )}
+                          {gm && library === 'monsters' && (
+                            <button className="vtt-gold" onClick={() => addMonster(entry)}>
+                              Adicionar ao tabuleiro
+                            </button>
+                          )}
+                          {library === 'spells' && (
+                            <>
+                            {spellProfile(entry.id) && <button className="vtt-gold" disabled={!canToken || !token || preview} onClick={() => requestSpellCast(token!.id, entry.id)}>
+                              Preparar conjuração
+                            </button>}
+                            <button onClick={() => void act(() => send('', '', entry.id))}>
+                              Compartilhar no chat
+                            </button>
+                            </>
+                          )}
+                        </div>
+                      ) : (
+                        <>
+                          <div className="vtt-compendium">
+                            {[
+                              ...catalog[library],
+                              ...doc.custom.filter(
+                                (e) => e.kind === (library === 'monsters' ? 'monster' : 'spell'),
+                              ),
+                            ]
+                              .filter((e) =>
+                                `${e.name} ${e.type || ''} ${e.level ?? ''} ${e.cr || ''}`
+                                  .toLowerCase()
+                                  .includes(query.toLowerCase()),
+                              )
+                              .map((e) => (
+                                <button
+                                  key={e.id}
+                                  onClick={() => setEntry(e)}
+                                  draggable={library === 'monsters' && gm && !preview}
+                                  onDragStart={(event) => dragMonster(event, e.id)}
+                                  title={
+                                    library === 'monsters' && gm
+                                      ? 'Arraste para a mesa ou clique para ver a ficha'
+                                      : undefined
+                                  }
+                                >
+                                  {library === 'monsters' && monsterImage(e) && (
+                                    <img
+                                      className={
+                                        'vtt-monster-thumbnail' +
+                                        (monsterImage(e).startsWith('/api/vtt/premium-art/')
+                                          ? ' premium'
+                                          : '')
+                                      }
+                                      style={{ filter: monsterVariantFilter(monsterVariant) }}
+                                      loading="lazy"
+                                      src={monsterImage(e)}
+                                      alt=""
+                                      draggable={false}
+                                    />
+                                  )}
+                                  <span>{e.name}</span>
+                                  <small>
+                                    {library === 'monsters'
+                                      ? `ND ${e.cr}`
+                                      : e.level === 0
+                                        ? 'Truque'
+                                        : `Nível ${e.level}`}
+                                  </small>
+                                </button>
+                              ))}
+                          </div>
+                        </>
+                      )}
+                    </>
+                  )}
+                  <a
+                    className="vtt-credits"
+                    href="https://www.dndbeyond.com/srd"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    SRD 5.2.1 · Wizards of the Coast · CC BY 4.0
+                  </a>
+                </>
+              )}
+              {(tab === 'mounts' || tab === 'pets') && (
+                <VttCompanions
+                  roomId={state.id}
+                  kind={tab === 'mounts' ? 'mount' : 'pet'}
+                  disabled={spectator || preview || busy}
+                  bring={(id) => void act(() => bringCompanion(id))}
+                />
+              )}
+              {spectator && tab === 'sheet' && (
+                <p className="vtt-muted">
+                  Espectadores acompanham a mesa sem trazer fichas. Escolha a visão de um jogador no
+                  topo.
+                </p>
+              )}
+              {tab === 'sheet' && !spectator && (
+                <>
+                  <h3>Trazer personagem do site</h3>
+                  <p className="vtt-muted">
+                    Cria uma cópia de sessão com ficha e token. PV e condições da mesa não alteram
+                    o personagem do site.
+                  </p>
+                  {gm && !preview ? <VttRoomCharacters roomId={state.id} scene={scene} busy={busy}
+                    place={id => void act(() => bringCharacter(id))} drag={dragCharacter}/> : characters.map((c) => (
+                    <button
+                      className="vtt-list-row vtt-character-row"
+                      key={c.id}
+                      disabled={busy}
+                      data-character-id={c.id}
+                      aria-label={`Colocar ${c.name} no mapa`}
+                      title="Arraste para o mapa; clique para colocar ou selecionar."
+                      draggable={!busy && !preview}
+                      onDragStart={(event) => dragCharacter(event, c.id)}
+                      onClick={() => void act(() => bringCharacter(c.id))}
+                    >
+                      <VttCharacterToken character={c} />
+                      <span className="vtt-character-label">
+                        {c.name}
+                        <small>{c.class} · {c.level}</small>
+                      </span>
+                    </button>
+                  ))}
+                  {token && (
+                    <>
+                      {(token.characterId || !token.sheet) && <h3>{token.name}</h3>}
+                      {token.characterId && (
+                        <button className="vtt-gold" onClick={() => openSheet()}>
+                          Abrir folha completa
+                        </button>
+                      )}
+                      {(token.characterId || !token.sheet) && (
+                        <p>
+                          PV {token.hp}/{token.maxHp} · CA {token.ac}
+                        </p>
+                      )}
+                      {token.sheet ? (
+                        <>
+                          {token.characterId ? (
+                            <>
+                              <p>
+                                {token.sheet.race} · {token.sheet.class} · Nível {token.sheet.level}
+                              </p>
+                              <div className="vtt-stats">
+                                {token.sheet.stats.map((v, i) => (
+                                  <button
+                                    key={i}
+                                    title={`Rolar ${['Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'][i]}`}
+                                    onClick={() =>
+                                      void act(() =>
+                                        send(
+                                          `1d20${Math.floor((v - 10) / 2) >= 0 ? '+' : ''}${Math.floor((v - 10) / 2)}`,
+                                          `${token.name} · ${['Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'][i]}`,
+                                        ),
+                                      )
+                                    }
+                                  >
+                                    {['FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'][i]}
+                                    <b>{v}</b>
+                                  </button>
+                                ))}
+                              </div>
+                              <p>Deslocamento: {token.sheet.speed} ft</p>
+                              <p>{token.sheet.biography}</p>
+                              <details>
+                                <summary>Ficha completa e ações</summary>
+                                <pre className="vtt-sheet-details">{token.sheet.details}</pre>
+                              </details>
+                            </>
+                          ) : (
+                            <>
+                              <button className="vtt-gold" onClick={() => openSheet()}>
+                                Abrir folha completa
+                              </button>
+                              <VttMonsterStatblock
+                                compact
+                                monster={tokenProfile(token)}
+                                tokenId={token.id}
+                                gm={gm && !preview}
+                                roll={send}
+                                useAction={(action) => useMonsterAction(token, action)}
+                              />
+                            </>
+                          )}
+                          <button
+                            onClick={() =>
+                              download(
+                                token.name + '-ficha.json',
+                                new Blob([JSON.stringify(token.sheet, null, 2)], {
+                                  type: 'application/json',
+                                }),
+                              )
+                            }
+                          >
+                            Exportar ficha JSON
+                          </button>
+                        </>
+                      ) : (
+                        <p className="vtt-muted">
+                          Marcador sem ficha. Use a importação ou um monstro do compêndio.
+                        </p>
+                      )}
+                    </>
+                  )}
+                </>
+              )}
+              {tab === 'chat' && (
+                <>
+                  <section id="vtt-chat-controls" hidden={chatControlsCollapsed}>
+                    {!spectator && (
+                      <>
+                        <div className="vtt-dice-buttons">
+                          {[4, 6, 8, 10, 12, 20, 100].map((n) => (
+                            <button key={n} onClick={() => void act(() => send('1d' + n, ''))}>
+                              d{n}
+                            </button>
+                          ))}
+                        </div>
+                        <form
+                          onSubmit={(e) => {
+                            e.preventDefault();
+                            void act(() => send(formula, ''));
+                          }}
+                        >
+                          <label>
+                            Rolagem
+                            <input
+                              value={formula}
+                              onChange={(e) => setFormula(e.target.value)}
+                              placeholder="2d6+3 ou 2d20kh1"
+                              maxLength={100}
+                            />
+                          </label>
+                          <button className="vtt-gold">Rolar dados</button>
+                        </form>
+                        <label className="vtt-check">
+                          <input
+                            type="checkbox"
+                            checked={privateRoll}
+                            onChange={(e) => setPrivateRoll(e.target.checked)}
+                          />
+                          Somente você e o mestre
+                        </label>
+                      </>
+                    )}
+                    {!historyEnd && (
+                      <button
+                        onClick={() =>
+                          void act(async () => {
+                            const all = [...olderMessages, ...state.messages];
+                            const first = all.reduce(
+                              (a, b) => (BigInt(a.id) < BigInt(b.id) ? a : b),
+                              all[0],
+                            );
+                            const next = await api<{ messages: VttMessage[]; has_more: boolean }>(
+                              `/vtt/rooms/${state.id}/messages${first ? '?before=' + first.id : ''}`,
+                            );
+                            if (chatLog.current)
+                              chatHistoryAnchor.current = {
+                                height: chatLog.current.scrollHeight,
+                                top: chatLog.current.scrollTop,
+                              };
+                            setOlderMessages((v) => [...next.messages, ...v]);
+                            setHistoryEnd(!next.has_more);
+                          })
+                        }
+                      >
+                        Carregar histórico anterior
+                      </button>
+                    )}
+                  </section>
+                  <div
+                    className="vtt-chat-log"
+                    aria-live="polite"
+                    ref={chatLog}
+                    onScroll={(e) => {
+                      const el = e.currentTarget;
+                      chatStick.current = el.scrollHeight - el.clientHeight - el.scrollTop <= 2;
+                      chatTop.current = el.scrollTop;
+                    }}
+                  >
+                    {[
+                      ...new Map(
+                        [...olderMessages, ...state.messages].map((m) => [m.id, m]),
+                      ).values(),
+                    ]
+                      .sort((a, b) => Number(BigInt(a.id) - BigInt(b.id)))
+                      .map((m) => (
+                        <article key={m.id}>
+                          <header>
+                            <strong>{m.author}</strong>
+                            <small>
+                              {m.private
+                                ? 'Privado'
+                                : new Date(m.created_at).toLocaleTimeString('pt-BR', {
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                  })}
+                            </small>
+                          </header>
+                          <VttChatText
+                            text={m.text}
+                            onMediaLoad={() => {
+                              const log = chatLog.current;
+                              if (log && chatStick.current) log.scrollTop = log.scrollHeight;
+                            }}
+                          />
+                          {m.spell && (
+                            <section className="vtt-spell-message">
+                              <h3>{m.spell.name}</h3>
+                              <small>
+                                {m.spell.level === 0 ? 'Truque' : 'Nível ' + m.spell.level} ·{' '}
+                                {m.spell.school}
+                              </small>
+                              <dl>
+                                {[
+                                  ['Conjuração', m.spell.time],
+                                  ['Alcance', m.spell.range],
+                                  ['Componentes', m.spell.components],
+                                  ['Duração', m.spell.duration],
+                                ]
+                                  .filter(([, v]) => v)
+                                  .map(([k, v]) => (
+                                    <div key={k}>
+                                      <dt>{k}</dt>
+                                      <dd>{v}</dd>
+                                    </div>
+                                  ))}
+                              </dl>
+                              <p>{m.spell.details}</p>
+                            </section>
+                          )}
+                          {m.roll && (
+                            <div className="vtt-roll">
+                              <span>
+                                {m.roll.formula}
+                                <small>{m.roll.dice.join(' · ')}</small>
+                                {!!m.roll.highlights?.length && (
+                                  <small>
+                                    {m.roll.highlights
+                                      .map(
+                                        (h) =>
+                                          (h.kind === 'surge'
+                                            ? 'Resultado excepcional'
+                                            : h.kind === 'mishap'
+                                              ? 'Contratempo'
+                                              : 'Repetição') +
+                                          ': ' +
+                                          h.value,
+                                      )
+                                      .join(' · ')}
+                                  </small>
+                                )}
+                              </span>
+                              <b>{m.roll.total}</b>
+                            </div>
+                          )}
+                          {m.roll && isAttackCheck(m) && !spectator && <VttAttackRollAction messageId={m.id} />}
+                          {m.roll &&
+                            !isAttackCheck(m) &&
+                            m.roll.total > 0 &&
+                            !m.discarded &&
+                            !spectator &&
+                            (() => {
+                              const target = m.damage
+                                ? scene.tokens.find((t) => t.id === m.damage!.target_id)
+                                : attackTarget || token;
+                              if (
+                                !target ||
+                                target.layer !== 'tokens' ||
+                                (!gm && target.controller !== user.id)
+                              )
+                                return null;
+                              const applied = m.applied?.includes(target.id);
+                              return (
+                                <button
+                                  className="vtt-chat-damage"
+                                  disabled={busy || applied}
+                                  onClick={() =>
+                                    void act(() => applyRolledDamage([m.id], target.id))
+                                  }
+                                >
+                                  {applied ? 'Dano aplicado em ' : 'Aplicar dano em '}
+                                  {target.name}
+                                </button>
+                              );
+                            })()}
+                          {m.discarded && <small>Dano descartado</small>}
+                        </article>
+                      ))}
+                  </div>
+                  {!spectator && (
+                    <VttChatComposer
+                      text={chat}
+                      onChange={setChat}
+                      onSend={(text) => void act(() => send('', text))}
+                      busy={busy}
+                    />
+                  )}
+                </>
+              )}
+              {tab === 'combat' && (
+                <VttCombatPanel
+                  controls={combat}
+                  gm={gm}
+                  tokens={scene.tokens}
+                  selected={selection}
+                  selectAll={() => {
+                    changeLayer('tokens');
+                    setSelection(
+                      scene.tokens
+                        .filter((t) => t.layer === 'tokens' && !t.hidden)
+                        .map((t) => t.id),
+                    );
+                    setAttackTargetId(null);
+                    setTool('select');
+                  }}
+                />
+              )}
+              {tab === 'journal' && (
+                <>
+                  {gm && (
+                    <button
+                      onClick={() => {
+                        const id = crypto.randomUUID();
+                        edit((d) =>
+                          d.journal.push({
+                            id,
+                            title: 'Nova anotação',
+                            text: '',
+                            image: '',
+                            public: false,
+                          }),
+                        );
+                        setJournalId(id);
+                      }}
+                    >
+                      <Plus size={14} />
+                      Anotação ou handout
+                    </button>
+                  )}
+                  {doc.journal.map((j) => (
+                    <button className="vtt-list-row" key={j.id} onClick={() => setJournalId(j.id)}>
+                      {j.title}
+                      <small>{j.public ? 'Compartilhado' : 'Mestre'}</small>
+                    </button>
+                  ))}
+                  {journal && (
+                    <>
+                      <label>
+                        Título
+                        <input
+                          value={journal.title}
+                          disabled={!gm}
+                          onChange={(e) =>
+                            edit(
+                              (d) =>
+                                (d.journal.find((j) => j.id === journal.id)!.title =
+                                  e.target.value || 'Anotação'),
+                            )
+                          }
+                        />
+                      </label>
+                      <label>
+                        Texto
+                        <textarea
+                          value={journal.text}
+                          disabled={!gm}
+                          onChange={(e) =>
+                            edit(
+                              (d) =>
+                                (d.journal.find((j) => j.id === journal.id)!.text = e.target.value),
+                            )
+                          }
+                          maxLength={40000}
+                          rows={12}
+                        />
+                      </label>
+                      {journal.image && (
+                        <img className="vtt-handout" src={journal.image} alt={journal.title} />
+                      )}{' '}
+                      {gm && (
+                        <>
+                          <label>
+                            Imagem
+                            <select
+                              value={journal.image}
+                              onChange={(e) =>
+                                edit(
+                                  (d) =>
+                                    (d.journal.find((j) => j.id === journal.id)!.image =
+                                      e.target.value),
+                                )
+                              }
+                            >
+                              <option value="">Sem imagem</option>
+                              {state.assets
+                                .filter((a) => a.kind === 'image')
+                                .map((a) => (
+                                  <option key={a.id} value={a.path}>
+                                    {a.name}
+                                  </option>
+                                ))}
+                            </select>
+                          </label>
+                          <label className="vtt-check">
+                            <input
+                              type="checkbox"
+                              checked={journal.public}
+                              onChange={(e) =>
+                                edit(
+                                  (d) =>
+                                    (d.journal.find((j) => j.id === journal.id)!.public =
+                                      e.target.checked),
+                                )
+                              }
+                            />
+                            Mostrar aos jogadores
+                          </label>
+                          <button
+                            onClick={() => {
+                              edit(
+                                (d) => (d.journal = d.journal.filter((j) => j.id !== journal.id)),
+                              );
+                              setJournalId('');
+                            }}
+                          >
+                            Excluir anotação
+                          </button>
+                        </>
+                      )}
+                    </>
+                  )}
+                </>
+              )}
+              {tab === 'music' && (
+                <VttSoundboard
+                  key={state.id}
+                  snapshot={sounds.snapshot}
+                  assets={state.assets}
+                  gm={gm}
+                  command={(c) => soundCommand(c, state.id)}
+                  upload={uploadAsset}
+                  error={sounds.error}
+                  unlock={sounds.unlock}
+                  active={sounds.active}
+                  preview={sounds.preview}
+                  stopPreview={sounds.stopPreview}
+                  previewing={sounds.previewing}
+                />
+              )}
+              {tab === 'table' && (
+                <>
+                  <h3>Personalização</h3>
+                  <VttVisualChoices media={media} />
+                  <p className="vtt-muted">Desative para reduzir o uso do computador. Preferência deste navegador; os demais participantes continuam vendo os efeitos.</p>
+                  <label className="vtt-check"><input type="checkbox" checked={media.soundEnabled} onChange={e=>media.update({soundEnabled:e.target.checked})} />Som dos efeitos e ataques</label>
+                  <label>Volume dos efeitos e ataques · {Math.round(media.soundVolume*100)}%<input aria-label="Volume dos efeitos e ataques" type="range" min="0" max="100" value={Math.round(media.soundVolume*100)} onChange={e=>media.update({soundVolume:Number(e.target.value)/100})} /></label>
+                  <p className="vtt-muted">O controle de efeitos sonoros do site também se aplica. Ative o áudio neste navegador na aba Som se ele estiver bloqueado.</p>
+                  <label className="vtt-check">
+                    <input
+                      type="checkbox"
+                      checked={chatControlsCollapsed}
+                      onChange={(e) => customizeChatControls(e.target.checked)}
+                    />
+                    Recolher controles do chat
+                  </label>
+                  {gm && (
+                    <>
+                      <h3>Movimento dos tokens</h3>
+                      <label className="vtt-check"><input type="checkbox" checked={doc.autoRotateTokens} disabled={busy} onChange={e=>{const value=e.target.checked; edit(d=>{d.autoRotateTokens=value;}); void act(save);}} />Girar tokens automaticamente ao mover</label>
+                      <p className="vtt-muted">Vale para a mesa inteira. Desligado, cada token mantém a direção escolhida manualmente.</p>
+                      <h3>Efeitos da sala</h3>
+                      <label className="vtt-check">
+                        <input
+                          type="checkbox"
+                          checked={doc.bloodEnabled}
+                          disabled={busy}
+                          onChange={(e) => {
+                            const enabled = e.target.checked;
+                            edit((d) => {
+                              d.bloodEnabled = enabled;
+                            });
+                            void act(save);
+                          }}
+                        />
+                        Respingos de sangue
+                      </label>
+                      <p className="vtt-muted">
+                        Vale para todos. Com metade dos PV ou menos, a criatura deixa uma pequena poça a cada 15 ft percorridos. Parada, não cria poças.
+                      </p>
+                      <fieldset className="vtt-effects-death" disabled={busy}>
+                        <legend>Efeito de morte</legend>
+                        <label className="vtt-check">
+                          <input
+                            type="checkbox"
+                            checked={doc.automaticDeath}
+                            onChange={(e) => {
+                              const enabled = e.target.checked;
+                              edit((d) => {
+                                d.automaticDeath = enabled;
+                              });
+                              void act(save);
+                            }}
+                          />
+                          Automático ao zerar PV
+                        </label>
+                        <div className="vtt-row">
+                          <button
+                            disabled={!selectedEffectTokens.length}
+                            onClick={() =>
+                              void act(async () => {
+                                editSelected((t) => {
+                                  if (t.layer !== 'map') t.deathAt = Date.now();
+                                });
+                                await save();
+                              })
+                            }
+                          >
+                            Aplicar efeito de morte
+                          </button>
+                          <button
+                            disabled={!selectedEffectTokens.some((t) => t.deathAt)}
+                            onClick={() =>
+                              void act(async () => {
+                                editSelected((t) => {
+                                  if (t.layer !== 'map') t.deathAt = null;
+                                });
+                                await save();
+                              })
+                            }
+                          >
+                            Limpar efeito de morte
+                          </button>
+                        </div>
+                      </fieldset>
+                      <button
+                        disabled={busy || !scene.blood.length}
+                        onClick={() =>
+                          void act(async () => {
+                            await save();
+                            receive(await post<VttState>(`/vtt/rooms/${state.id}/blood/clear`, {}));
+                            setNotice('Sangue removido do chão deste mapa.');
+                          })
+                        }
+                      >
+                        Limpar sangue do mapa
+                      </button>
+                      <label>
+                        Nome da mesa
+                        <input
+                          value={doc.name}
+                          onChange={(e) => edit((d) => (d.name = e.target.value || 'Mesa'))}
+                        />
+                      </label>
+                      <h3>Link fixo do seu VTT</h3>
+                      <p className="vtt-muted">Use este mesmo link em todas as suas missões. Os jogadores entram no mapa ativo da sua mesa.</p>
+                      <label>Link da mesa<textarea aria-label="Link da mesa" readOnly value={personalId ? (personalUrl || new URL(vttPersonalHref(personalId),location.href).href) : ''} rows={3}/></label>
+                      <button onClick={()=>void copyText((personalUrl || new URL(vttPersonalHref(personalId!),location.href).href)).catch(e=>setNotice(e.message))}>Copiar link fixo</button>
+                      <h3>Imagens externas</h3>
+                      {storage && <p role="status">{vttStorageLabel(storage)} usados para imagens externas. O catálogo e as artes dos personagens não ocupam essa cota.</p>}
+                      <h3>Convite avulso dos jogadores</h3>
+                      <p className="vtt-muted">
+                        Compartilhe o código. É necessário entrar no site para participar.
+                      </p>
+                      <textarea readOnly value={state.invite || ''} rows={2} />
+                      <button
+                        onClick={() =>
+                          void copyText(state.invite || '')
+                            .then(() => setNotice('Convite copiado.'))
+                        }
+                      >
+                        Copiar código
+                      </button>
+                      <button
+                        onClick={() =>
+                          void act(async () => {
+                            await save();
+                            const next = await post<{ invite: string }>(
+                              `/vtt/rooms/${state.id}/invite`,
+                              {},
+                            );
+                            setState((s) => (s ? { ...s, invite: next.invite } : s));
+                          })
+                        }
+                      >
+                        Renovar código avulso
+                      </button>
+                    </>
+                  )}
+                  <h3>Participantes</h3>
+                  {state.members.map((m) => (
+                    <div className="vtt-list-row" key={m.id}>
+                      <span>
+                        {m.name}
+                        {m.id === user.id ? ' · você' : ''}
+                      </span>
+                      {gm && m.id !== user.id && (
+                        <button
+                          aria-label={'Remover participante ' + m.name}
+                          onClick={() =>
+                            void act(async () => {
+                              await save();
+                              receive(
+                                await api<VttState>(`/vtt/rooms/${state.id}/members/${m.id}`, {
+                                  method: 'DELETE',
+                                }),
+                              );
+                            })
+                          }
+                        >
+                          <X size={12} />
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                  {gm && (
+                    <>
+                      <h3>Arquivo da mesa</h3>
+                      <button
+                        onClick={() =>
+                          download(
+                            doc.name + '.json',
+                            new Blob([JSON.stringify(doc, null, 2)], { type: 'application/json' }),
+                          )
+                        }
+                      >
+                        Exportar mesa JSON
+                      </button>
+                      <label className="vtt-file-button">
+                        Importar mesa JSON
+                        <input
+                          type="file"
+                          accept=".json"
+                          onChange={(e) => {
+                            const f = e.target.files?.[0];
+                            if (f) void act(() => importJson(f));
+                            e.target.value = '';
+                          }}
+                        />
+                      </label>
+                      <p className="vtt-muted">
+                        O JSON preserva as configurações e referências aos arquivos desta
+                        biblioteca; o PNG exporta a cena renderizada.
+                      </p>
+                      <VttPlaceSettings key={state.id} beforeSave={save} state={state} changed={next=>receive(next,false)}/>
+                      <button onClick={()=>{setCreateRegion(state.region_id||'');setCreatePlace(state.location_id||'');setNewRoomOpen(true);}}>Criar outra mesa</button>
+                    </>
+                  )}
+                  <button
+                    onClick={() =>
+                      void act(async () => {
+                        const next = await api<VttState>('/vtt/rooms/' + state.id);
+                        if (
+                          dirty &&
+                          !confirm('Descartar alterações pendentes e carregar a mesa salva?')
+                        )
+                          return;
+                        receive(next);
+                      })
+                    }
+                  >
+                    Recarregar versão salva
+                  </button>
+                  <VttSoundCredits />
+                </>
+              )}
+              {tab === 'help' && (
+                <div className="vtt-help">
+                  <h3>Comece por aqui</h3>
+                  <ol>
+                    <li>Em Biblioteca de arte, envie o mapa e clique em Mapa.</li>
+                    <li>Em Configurações e ajuda → Mapa, ajuste a grade e a iluminação.</li>
+                    <li>Importe seu personagem em Fichas ou adicione monstros na Biblioteca.</li>
+                    <li>Escolha a camada em Camadas, na barra à esquerda.</li>
+                    <li>Desenhe paredes, portas e janelas; ative a iluminação.</li>
+                    <li>Selecione um token e confira a Visão do jogador.</li>
+                    <li>Compartilhe o convite e escolha quem controla cada token.</li>
+                  </ol>
+                  <h3>Atalhos</h3>
+                  <p>
+                    V selecionar · R régua · P lápis. Roda do mouse: zoom no cursor. Ctrl+arraste: girar o item selecionado. Ctrl+roda: girar seleção em 15°. Shift+clique:
+                    seleção múltipla. Alt+arraste: movimento sem grade. Delete: excluir. Ctrl+D:
+                    duplicar. Ctrl+Z: desfazer. Ctrl+S: salvar. Esc: encerrar ferramenta.
+                  </p>
+                  <h3>Portas e luz</h3>
+                  <p>
+                    Paredes e portas fechadas bloqueiam luz. Janelas deixam a luz passar e impedem
+                    movimento. Clique duas vezes no centro de uma porta para abri-la. Raios de visão
+                    e luz usam a unidade configurada na cena.
+                  </p>
+                  <h3>Dados</h3>
+                  <p>
+                    Use 2d6+3, 2d20kh1 (vantagem) ou 2d20kl1 (desvantagem). Rolagens são feitas no
+                    servidor e ficam no histórico da mesa.
+                  </p>
+                  <VttRollHelp />
+                  <h3>Salvamento</h3>
+                  <p>
+                    Alterações do mestre são salvas automaticamente. Se outra sessão editar a mesma
+                    mesa, exporte seu rascunho ou recarregue a versão salva pelo painel Mesa.
+                  </p>
+                </div>
+              )}
+            </div>
+          </aside>
+        )}
+      </div>
+      {!spectator &&
+        sheetId &&
+        scene.tokens.find((t) => t.id === sheetId) &&
+        (scene.tokens.find((t) => t.id === sheetId)!.characterId ? (
+          <VttSheet
+            roomId={state.id}
+            token={scene.tokens.find((t) => t.id === sheetId)!}
+            close={() => setSheetId(null)}
+            roll={send}
+            onAttack={beginAttack}
+            refresh={refreshRoom}
+            shareSpell={shareSpell}
+          />
+        ) : (
+          <VttMonsterSheet
+            monster={tokenProfile(scene.tokens.find((t) => t.id === sheetId)!)}
+            tokenId={sheetId}
+            gm={gm && !preview}
+            biography={scene.tokens.find((t) => t.id === sheetId)!.sheet?.biography || ''}
+            close={() => setSheetId(null)}
+            roll={send}
+            useAction={(action) =>
+              useMonsterAction(
+                scene.tokens.find((t) => t.id === sheetId)!,
+                action,
+              )
+            }
+            editor={
+              gm && !preview
+                ? (done) => (
+                    <VttMonsterEditor
+                      key={sheetId}
+                      roomId={state.id}
+                      token={scene.tokens.find((t) => t.id === sheetId)!}
+                      profile={tokenProfile(scene.tokens.find((t) => t.id === sheetId)!)}
+                      done={done}
+                      upload={async (file) => (await uploadAsset(file)).path}
+                      save={async (next) => {
+                        editScene((s) => {
+                          const t = s.tokens.find((t) => t.id === sheetId);
+                          if (t) Object.assign(t, next);
+                        });
+                        await save();
+                        setPresetVersion((v) => v + 1);
+                      }}
+                    />
+                  )
+                : undefined
+            }
+          />
+        ))}
+      {gm && mapsOpen && (
+        <MapLibrary
+          doc={doc}
+          edit={edit}
+          activate={openMap}
+          create={createMap}
+          configure={(id) => setSettingsId(id)}
+          close={() => {
+            setSettingsId(null);
+            setMapsOpen(false);
+          }}
+        />
+      )}
+      {gm && settingsId && doc.scenes.some((s) => s.id === settingsId) && (
+        <MapSettings
+          key={settingsId}
+          scene={doc.scenes.find((s) => s.id === settingsId)!}
+          doc={doc}
+          assets={state.assets}
+          close={() => setSettingsId(null)}
+          save={saveMap}
+          remove={() => removeMap(settingsId)}
+          upload={uploadAsset}
+        />
+      )}
+      {contextMenu && token && !sheetId && !preview && !spectator && (
+        <VttTokenMenu key={token.id} ref={contextRef} token={token} board={canvas} camera={camera}
+          layoutKey={bounds.width + ':' + bounds.height + ':' + panelOpen}
+          gm={gm} busy={busy} speed={tokenProfile(token).speed || '30 ft'}
+          close={() => setContextMenu(null)}
+          openSheet={() => {openSheet(); setContextMenu(null);}}
+          completeSettings={() => {setTab('token'); setPanelOpen(true); setContextMenu(null);}}
+          edit={patch => {editToken(patch); if(gm) void act(save);}}
+          hp={gm && !token.sceneryToken ? (                  <VttHpControl
+                    key={token.id}
+                    token={token}
+                    busy={busy}
+                    apply={async (value) => {
+                      editToken({ hp: hpCommand(value, token.hp, token.maxHp) });
+                      await save();
+                    }}
+                  />) : null}
+          conditions={<VttConditionMenu expanded conditions={token.conditions} gm={gm} enabled={canToken}
+            busy={busy} onChange={changeTokenConditions} />}
+        >
+              {gm && (token.layer === 'map' || token.sceneryToken) && <VttSceneryActions token={token} tokens={scene.tokens} busy={busy} convert={() => { editScene(s => {const placed=s.tokens.find(t=>t.id===token.id);if(placed)convertSceneryToToken(placed);}); changeLayer('tokens', [token.id]); void act(save);}} bind={id=>void act(()=>bindToken(id))} />}
+              {!token.sceneryToken && <button
+                onClick={() => {
+                  openSheet();
+                  setContextMenu(null);
+                }}
+              >
+                <Users size={14} />
+                Abrir ficha
+              </button>}
+              {gm && !token.sceneryToken && (
+                <>
+                  <VttHpControl
+                    key={token.id}
+                    token={token}
+                    busy={busy}
+                    apply={async (value) => {
+                      editToken({ hp: hpCommand(value, token.hp, token.maxHp) });
+                      await save();
+                    }}
+                  />
+                </>
+              )}
+              {canToken && <VttTokenScaleControl key={token.id} token={token} gridSize={scene.grid.size} busy={busy} change={size=>{editToken(size);if(gm)void act(save);}} />}
+              {gm && token.layer === 'tokens' && !token.sceneryToken && <label className="vtt-check"><input type="checkbox" checked={token.bleeds} disabled={busy} onChange={e=>{editToken({bleeds:e.target.checked});void act(save);}} />Esta criatura sangra</label>}
+              <details className="vtt-context-options" key={token.id}>
+                <summary>Mais opções</summary>
+                {gm && (<>
+                  {!token.sceneryToken && <details>
+                    <summary>Combate</summary>
+                  <button
+                    disabled={
+                      combat.busy ||
+                      combat.state?.active ||
+                      !selection.some((id) =>
+                        scene.tokens.some((t) => t.id === id && t.layer === 'tokens' && !t.hidden),
+                      )
+                    }
+                    onClick={() => {
+                      void combat.send({
+                        kind: 'add',
+                        tokenIds: selection.filter((id) =>
+                          scene.tokens.some(
+                            (t) => t.id === id && t.layer === 'tokens' && !t.hidden,
+                          ),
+                        ),
+                      });
+                      setTab('combat');
+                      setPanelOpen(true);
+                      setContextMenu(null);
+                    }}
+                  >
+                    Adicionar selecionados à ordem
+                  </button>
+                  </details>}
+                  <VttStackButtons disabled={busy || preview} apply={action => editScene(s => reorderVttItems(s.tokens,selection,action))}/>
+                  <details>
+                    <summary>Camada e profundidade</summary>
+                  <label>
+                    Camada do objeto
+                    <select
+                      aria-label="Camada no menu"
+                      value={token.layer}
+                      onChange={(e) => {
+                        const to = e.target.value as VttToken['layer'];
+                        editSelected((t) => {
+                          t.layer = to;
+                        });
+                        changeLayer(to, selection);
+                      }}
+                    >
+                      <option value="map">Fundo · visível aos jogadores</option>
+                      <option value="tokens">Tokens · jogadores</option>
+                      <option value="gm">Mestre · somente você</option>
+                    </select>
+                  </label>
+                  <NumberField
+                    label="Nível de profundidade"
+                    value={token.level}
+                    min={-10000}
+                    max={10000}
+                    step={0.1}
+                    onChange={(n) =>
+                      editSelected((t) => {
+                        t.level = n;
+                      })
+                    }
+                  />
+                  <p>
+                    0,1 fica à frente de 0. −0,1 fica atrás. A ordem vale dentro da mesma camada.
+                  </p>
+                  </details>
+                </>
+              )}
+              {canToken && (
+                <>
+                  {token.layer === 'tokens' && !token.sceneryToken && (
+                    <details>
+                    <summary>Movimento vinculado</summary>
+                    <fieldset className="vtt-token-attachment">
+                      <legend>Movimento vinculado</legend>
+                      <label>
+                        Token de apoio
+                        <select
+                          aria-label="Token de apoio"
+                          value={token.attachment?.tokenId || ''}
+                          disabled={busy || preview}
+                          onChange={(e) => void act(() => bindToken(e.target.value || null))}
+                        >
+                          <option value="">Independente</option>
+                          {token.attachment &&
+                            scene.tokens.some(
+                              (parent) =>
+                                parent.id === token.attachment?.tokenId &&
+                                !gm &&
+                                parent.controller !== user.id,
+                            ) && (
+                              <option value={token.attachment.tokenId} disabled>
+                                {
+                                  scene.tokens.find(
+                                    (parent) => parent.id === token.attachment?.tokenId,
+                                  )?.name
+                                }{' '}
+                                · apoio definido pelo mestre
+                              </option>
+                            )}
+                          {scene.tokens
+                            .filter(
+                              (parent) =>
+                                parent.id !== token.id &&
+                                parent.layer === 'tokens' &&
+                                (gm ||
+                                  (parent.controller === user.id &&
+                                    !parent.locked &&
+                                    !attachmentUnavailable(scene.tokens, parent))) &&
+                                !attachmentError(
+                                  scene.tokens.map((t) =>
+                                    t.id === token.id
+                                      ? {
+                                          ...t,
+                                          attachment: {
+                                            tokenId: parent.id,
+                                            offsetX: 0,
+                                            offsetY: 0,
+                                          },
+                                        }
+                                      : t,
+                                  ),
+                                ),
+                            )
+                            .map((parent) => (
+                              <option key={parent.id} value={parent.id}>
+                                {parent.name}
+                              </option>
+                            ))}
+                        </select>
+                      </label>
+                      {token.attachment && (
+                        <button
+                          disabled={busy || preview}
+                          onClick={() => void act(() => bindToken(null))}
+                        >
+                          Soltar do token
+                        </button>
+                      )}
+                      <small>
+                        {token.attachment
+                          ? 'Acompanha o apoio. Seleção, ficha e ataques continuam próprios.'
+                          : 'Escolha um apoio para prender este token por cima dele.'}
+                      </small>
+                    </fieldset>
+                    </details>
+                  )}
+                  <details>
+                  <summary>Orientação</summary>
+                  <div className="vtt-two">
+                    <button
+                      onClick={() =>
+                        gm
+                          ? editSelected((t) => {
+                              t.flipX = !t.flipX;
+                            })
+                          : editToken({ flipX: !token.flipX })
+                      }
+                    >
+                      <FlipHorizontal2 size={15} />
+                      Horizontal
+                    </button>
+                    <button
+                      onClick={() =>
+                        gm
+                          ? editSelected((t) => {
+                              t.flipY = !t.flipY;
+                            })
+                          : editToken({ flipY: !token.flipY })
+                      }
+                    >
+                      <FlipVertical2 size={15} />
+                      Vertical
+                    </button>
+                    <button
+                      onClick={() =>
+                        gm
+                          ? editSelected((t) => {
+                              t.rotation = (t.rotation + 45) % 360;
+                            })
+                          : editToken({ rotation: (token.rotation + 45) % 360 })
+                      }
+                    >
+                      <RotateCw size={14} />
+                      Girar 45°
+                    </button>
+                    <button
+                      onClick={() =>
+                        gm
+                          ? editSelected((t) => {
+                              t.rotation = (t.rotation + 90) % 360;
+                            })
+                          : editToken({ rotation: (token.rotation + 90) % 360 })
+                      }
+                    >
+                      <RotateCw size={14} />
+                      Girar 90°
+                    </button>
+                  </div>
+                  <button
+                    onClick={() =>
+                      gm
+                        ? editSelected((t) => {
+                            t.flipX = false;
+                            t.flipY = false;
+                            t.rotation = 0;
+                          })
+                        : editToken({ flipX: false, flipY: false, rotation: 0 })
+                    }
+                  >
+                    Redefinir orientação
+                  </button>
+                  </details>
+                </>
+              )}
+              {gm && (
+                <details>
+                  <summary>Visibilidade e organização</summary>
+                  <button
+                    onClick={() =>
+                      editSelected((t) => {
+                        t.locked = !t.locked;
+                      })
+                    }
+                  >
+                    {token.locked ? <Unlock size={14} /> : <Lock size={14} />}
+                    {token.locked ? 'Desbloquear' : 'Bloquear'} movimento
+                  </button>
+                  <button
+                    onClick={() =>
+                      editSelected((t) => {
+                        t.hidden = !t.hidden;
+                      })
+                    }
+                  >
+                    <EyeOff size={14} />
+                    {token.hidden ? 'Mostrar aos jogadores' : 'Ocultar dos jogadores'}
+                  </button>
+                  <button onClick={duplicate}>
+                    <Copy size={14} />
+                    Duplicar seleção
+                  </button>
+                  <button className="vtt-delete" onClick={removeSelected}>
+                    <Trash2 size={14} /> Excluir seleção
+                  </button>
+                </details>
+              )}
+              </details>
+
+        </VttTokenMenu>
+      )}
+      {contextMenu && !token && (selectedLight || selectedWall || selectedDrawing) && (
+        <div
+          className="vtt-context-menu"
+          ref={contextRef}
+          role="dialog"
+          aria-label="Ações do objeto"
+          style={{
+            left: contextMenu.x,
+            top: contextMenu.y,
+            maxHeight: `calc(100dvh - ${Math.max(12, contextMenu.y + 12)}px)`,
+          }}
+        >
+          <header
+            tabIndex={0}
+            aria-label="Mover janela de ações"
+            title="Arraste para mover"
+            onPointerDown={(e) => {
+              if (e.button !== 0 || (e.target as Element).closest('button')) return;
+              e.preventDefault();
+              contextDrag.current = {
+                id: e.pointerId,
+                dx: e.clientX - contextMenu.x,
+                dy: e.clientY - contextMenu.y,
+              };
+              e.currentTarget.setPointerCapture(e.pointerId);
+            }}
+            onPointerMove={(e) => {
+              const drag = contextDrag.current,
+                rect = contextRef.current?.getBoundingClientRect();
+              if (!drag || drag.id !== e.pointerId || !rect) return;
+              setContextMenu({
+                x: Math.max(8, Math.min(e.clientX - drag.dx, innerWidth - rect.width - 8)),
+                y: Math.max(8, Math.min(e.clientY - drag.dy, innerHeight - rect.height - 8)),
+              });
+            }}
+            onPointerUp={(e) => {
+              contextDrag.current = null;
+              if (e.currentTarget.hasPointerCapture(e.pointerId))
+                e.currentTarget.releasePointerCapture(e.pointerId);
+            }}
+            onPointerCancel={() => {
+              contextDrag.current = null;
+            }}
+            onKeyDown={(e) => {
+              if (e.target !== e.currentTarget || !e.key.startsWith('Arrow')) return;
+              e.preventDefault();
+              e.stopPropagation();
+              const rect = contextRef.current!.getBoundingClientRect(),
+                step = e.shiftKey ? 40 : 10;
+              setContextMenu({
+                x: Math.max(
+                  8,
+                  Math.min(
+                    contextMenu.x +
+                      (e.key === 'ArrowLeft' ? -step : e.key === 'ArrowRight' ? step : 0),
+                    innerWidth - rect.width - 8,
+                  ),
+                ),
+                y: Math.max(
+                  8,
+                  Math.min(
+                    contextMenu.y +
+                      (e.key === 'ArrowUp' ? -step : e.key === 'ArrowDown' ? step : 0),
+                    innerHeight - rect.height - 8,
+                  ),
+                ),
+              });
+            }}
+          >
+            <span>
+              {selectedLight?.name || (selectedWall ? 'Barreira' : 'Desenho')}
+            </span>
+            <button aria-label="Fechar ações" onClick={() => setContextMenu(null)}>
+              <X size={13} />
+            </button>
+          </header>
+          {gm && !token && (
+            <button className="vtt-delete" onClick={removeSelected}>
+              <Trash2 size={14} />
+              Excluir seleção
+            </button>
+          )}
+        </div>
+      )}
+    </section>
+    </>
+  );
+}

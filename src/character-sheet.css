@@ -254,6 +254,28 @@ dialog:has(.character-creation-form) {
   margin: 0;
   accent-color: #a48a5a;
 }
+.sheet-creation-spell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.sheet-creation-spell > label {
+  flex: 1;
+  min-width: 0;
+}
+.sheet-creation-spell .spell-reference-open,
+.sheet-choice-reference.spell-reference-open {
+  width: auto;
+  margin: 0;
+  padding: 5px 8px;
+  flex-shrink: 0;
+}
+@media (max-width: 650px) {
+  .sheet-creation .sheet-checks {
+    grid-template-columns: 1fr;
+  }
+}
 .sheet-creation .form-grid {
   gap: 12px;
 }
@@ -379,8 +401,19 @@ dialog:has(.character-creation-form) {
   grid-row: span 2;
   color: #baa16f;
 }
-.sheet-realistic-icon { display: inline-block; width: 32px; height: 32px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 2px 2px #0007); }
-.sheet-vitals .sheet-realistic-icon { grid-row: span 2; width: 36px; height: 36px; }
+.sheet-realistic-icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 2px 2px #0007);
+}
+.sheet-vitals .sheet-realistic-icon {
+  grid-row: span 2;
+  width: 36px;
+  height: 36px;
+}
 .sheet-vitals strong {
   font-size: 24px;
 }

@@ -1,3 +1,4 @@
+import { atlasPlacesRouter } from './atlas-places.js';
 import { ensurePersonalVtt, personalVttUrl } from './vtt-accounts.js';
 import { maintenanceAreas, requireAreaAvailable } from './maintenance.js';
 import { homeUpdatesRouter } from './home-updates.js';
@@ -590,17 +591,7 @@ export function createApp() {
   app.get('/api/world', async (_req, res) =>
     res.json((await pool.query('SELECT * FROM world_entries ORDER BY id')).rows),
   );
-  app.get('/api/atlas', async (_req, res) => {
-    const [regions, locations] = await Promise.all([
-      pool.query(
-        'SELECT id,name,description,available FROM world_regions ORDER BY available DESC,name',
-      ),
-      pool.query(
-        'SELECT id,region_id,name,description,map_x,map_y FROM world_locations ORDER BY name',
-      ),
-    ]);
-    res.json({ regions: regions.rows, locations: locations.rows });
-  });
+  app.use('/api', atlasPlacesRouter());
   app.use(
     ['/api/kingdom/editor-draft', '/api/kingdom/editor-background', '/api/kingdom/editor-view'],
     async (_req, res, next) => {

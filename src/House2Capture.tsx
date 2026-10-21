@@ -198,7 +198,7 @@ export function House2Capture({
     <button
       type="button"
       className="h2-capture-button"
-      aria-label="Print da House 2.0 em alta qualidade"
+      aria-label="Print da House em alta qualidade"
       title="Baixar PNG da vizinhança em alta qualidade, sem painéis de edição"
       disabled={disabled || busy}
       onClick={() => void capture()}

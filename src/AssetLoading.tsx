@@ -27,6 +27,13 @@ export function AssetLoading({
         <h1>{title}</h1>
         <p>{error || 'Preparando os cenários e as imagens para você entrar.'}</p>
         {!error && (
+          <p className="asset-loading__first-visit">
+            <strong>Na primeira visita, o carregamento pode demorar mais.</strong>
+            <br />
+            Nas próximas visitas, o navegador poderá reutilizar as imagens já salvas.
+          </p>
+        )}
+        {!error && (
           <>
             <progress max={Math.max(1, total)} value={done} aria-label="Imagens preparadas" />
             <span className="asset-loading__count">
@@ -93,7 +100,7 @@ function imagePaths(root: HTMLElement) {
   const urls = new Set<string>();
   const images: HTMLImageElement[] = [];
   for (const element of root.querySelectorAll<HTMLElement>('*')) {
-    if (element.closest('[hidden], dialog')) continue;
+    if (element.closest('[hidden], dialog, [data-asset-deferred]')) continue;
     if (element instanceof SVGImageElement && element.href.baseVal) urls.add(element.href.baseVal);
     const box = element.getBoundingClientRect();
     if (
@@ -143,29 +150,47 @@ export function AssetGate({
   busy?: boolean;
 }) {
   const root = useRef<HTMLDivElement>(null);
+  const opened = useRef(false);
   const prepared = usePreparedAssets(assets);
   const [visible, setVisible] = useState(false),
     [error, setError] = useState(''),
     [attempt, setAttempt] = useState(0);
   useLayoutEffect(() => {
+    if (opened.current) return;
     const node = root.current;
     if (!node) return;
     let alive = true,
       revision = 0,
       frame = 0;
     const check = () => {
+      if (opened.current) return;
       const current = ++revision;
       const found = imagePaths(node);
       const pending =
         found.urls.some((path) => !assetReady(path)) ||
         found.images.some((image) => !image.complete || !image.naturalWidth);
-      if (pending || busy || !prepared.ready) setVisible(false);
-      if (busy || !prepared.ready) return;
-      void Promise.all([preloadImages(found.urls), ...found.images.map((image) => image.decode())])
+      const waiting =
+        !!node.querySelector('[data-page-preparing="true"]') ||
+        [...node.querySelectorAll('[aria-busy="true"], .loading-content')].some((element) => {
+          const box = element.getBoundingClientRect();
+          return box.width > 0 && box.height > 0;
+        });
+      if (pending || busy || waiting || !prepared.ready) setVisible(false);
+      if (busy || waiting || !prepared.ready) return;
+      void Promise.all([
+        document.fonts.ready,
+        preloadImages(found.urls),
+        ...found.images.map((image) => image.decode()),
+      ])
         .then(() => {
           if (alive && revision === current)
             frame = requestAnimationFrame(() => {
-              if (alive) setVisible(true);
+              if (alive && revision === current) {
+                opened.current = true;
+                observer.disconnect();
+                window.removeEventListener('resize', check);
+                setVisible(true);
+              }
             });
         })
         .catch(() => {
@@ -193,7 +218,7 @@ export function AssetGate({
       subtree: true,
       attributes: true,
       attributeOldValue: true,
-      attributeFilter: ['src', 'srcset', 'href', 'style'],
+      attributeFilter: ['src', 'srcset', 'href', 'style', 'aria-busy', 'data-page-preparing'],
     });
     window.addEventListener('resize', check);
     return () => {
@@ -203,7 +228,7 @@ export function AssetGate({
       cancelAnimationFrame(frame);
     };
   }, [busy, prepared.ready, attempt]);
-  const ready = prepared.ready && visible && !busy && !error;
+  const ready = opened.current || (prepared.ready && visible && !busy && !error);
   return (
     <>
       <div

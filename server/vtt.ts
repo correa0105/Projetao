@@ -1,3 +1,4 @@
+import { atlasId, resolvePostLocation } from './atlas.js';
 import { createVttRoom, vttStorage, ensurePersonalVtt, setPersonalVttRoom, personalVttInfo } from './vtt-accounts.js';
 import {reuseVttAsset,uniqueVttAssetsSql,duplicateVttAssetIds} from './vtt-assets.js';
 import {convertSceneryToToken} from '../shared/vtt-scenery-token.js';
@@ -79,6 +80,8 @@ async function room(db: DB, id: string, user: string, lock = false) {
   return r as {
     id: string;
     owner_id: string;
+    region_id: string | null;
+    location_id: string | null;
     document: VttDocument;
     revision: number;
     invite: string;
@@ -236,6 +239,8 @@ async function state(rid: string, user: string) {
   const visible = new Set(paths(document));
   return {
     id: rid,
+    region_id: r.region_id,
+    location_id: r.location_id,
     revision: r.revision,
     document,
     is_gm: isGm,
@@ -590,13 +595,23 @@ export function vttRouter() {
     res.json(await state(rid,res.locals.user.id));
   });
   router.post('/vtt', async (req, res) => {
-    const name = z.string().trim().min(1).max(100).parse(req.body.name);
+    const {name,region_id,location_id} = z.object({name:z.string().trim().min(1).max(100),region_id:atlasId.optional(),location_id:atlasId.optional()}).strict().parse(req.body);
     const created = await transaction(async db=>{
+      const place=location_id?await resolvePostLocation(db,{location_id}):null;
+      if(region_id&&(!place||place.region_id!==region_id))throw new AppError(400,'Escolha uma área específica do reino informado.');
       const created=await createVttRoom(db,res.locals.user.id,name);
+      if(place)await db.query('UPDATE vtt_rooms SET region_id=$2,location_id=$3 WHERE id=$1',[created.id,place.region_id,place.location_id]);
       await setPersonalVttRoom(db,res.locals.user.id,created.id);
       return created;
     });
     res.status(201).json(await state(created.id, res.locals.user.id));
+  });
+  router.put('/vtt/rooms/:id/location',async(req,res)=>{
+    const id=uuid.parse(req.params.id),data=z.object({region_id:atlasId.optional(),location_id:atlasId.optional()}).strict().parse(req.body);
+    await transaction(async db=>{await gm(db,id,res.locals.user.id,true);const place=data.location_id?await resolvePostLocation(db,data):null;
+      if(data.region_id&&(!place||place.region_id!==data.region_id))throw new AppError(400,'Escolha uma área específica do reino informado.');
+      await db.query('UPDATE vtt_rooms SET region_id=$2,location_id=$3 WHERE id=$1',[id,place?.region_id||null,place?.location_id||null]);
+    });res.json(await state(id,res.locals.user.id));
   });
   router.post('/vtt/join', async (req, res) => {
     const input = z

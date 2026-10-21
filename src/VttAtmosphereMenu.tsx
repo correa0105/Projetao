@@ -61,7 +61,6 @@ export function VttAtmosphereMenu({
     return () => document.removeEventListener('pointerdown', close);
   }, [open]);
   function select(next: MapAtmosphere) {
-    if (next.enabled && !effectsEnabled) enableEffects();
     setDraft(next);
     queue.current!.select(next);
   }
@@ -113,7 +112,7 @@ export function VttAtmosphereMenu({
             </header>
             {!effectsEnabled && (
               <p className="vtt-atmosphere-muted">
-                Efeitos pausados nesta tela.{' '}
+                Clima e partículas pausados nesta tela. Iluminação e horário permanecem ativos.{' '}
                 <button onClick={enableEffects}>Mostrar efeitos</button>
               </p>
             )}

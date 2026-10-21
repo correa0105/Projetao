@@ -254,7 +254,7 @@ export function Guilds({
         </p>
       )}
       {!directory ? (
-        <p role="status">Abrindo o registro das guildas…</p>
+        <p role="status" data-page-preparing={!error || undefined}>Abrindo o registro das guildas…</p>
       ) : !target ? (
         <>
           <GuildLobby
@@ -349,7 +349,7 @@ export function Guilds({
           />
         </>
       ) : !g ? (
-        <p role="status">Abrindo a sede…</p>
+        <p role="status" data-page-preparing={!error || undefined}>Abrindo a sede…</p>
       ) : (
         <>
 <div className="guild-scene-topbar"><button

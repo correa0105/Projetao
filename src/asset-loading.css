@@ -47,6 +47,18 @@
 .asset-loading button {
   margin-top: 20px;
 }
+.asset-loading p.asset-loading__first-visit {
+  margin-top: 22px;
+  padding: 14px;
+  border: 1px solid #b59b5c70;
+  border-radius: 6px;
+  background: #c5ad7712;
+  color: #e2d5b9;
+  font-size: 13px;
+}
+.asset-loading__first-visit strong {
+  color: #ead39d;
+}
 .asset-gate-content {
   display: contents;
 }

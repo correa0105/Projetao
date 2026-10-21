@@ -47,6 +47,7 @@ export type RenderOptions = {
   terrainDraft?: TerrainStroke | null;
   terrainCursor?: { x: number; y: number; radius: number; erase: boolean } | null;
   visualEffects?: boolean;
+  mapEffects?: boolean;
   bloodEnabled?: boolean;
   spellEffects?: SpellEffect[];
   spellPreview?: SpellPreview | null;
@@ -397,7 +398,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       c.scale(t.flipX ? -1 : 1, t.flipY ? -1 : 1);
       const house=houseAsset(t),img=images.get(house&&houseOccupied(t,houseActors)?house.interior:t.image);
       if (t.animatedAsset) {
-        drawAnimatedAsset(c, t, img, performance.now(), false, o.visualEffects !== false);
+        drawAnimatedAsset(c, t, img, performance.now(), false, (t.layer === 'map' ? o.mapEffects ?? o.visualEffects : o.visualEffects) !== false);
       } else if (layer === 'map') {
         if (img?.complete && img.naturalWidth) {
           const floor=house&&images.get(house.interior);
@@ -551,7 +552,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       images,
     );
   if (o.spellPreview) drawSpellPreview(c, s, o.spellPreview, spellView, cam.zoom);
-  if (o.visualEffects !== false) drawMapAtmosphere(c, s, spellView, cam.zoom, width, height);
+  drawMapAtmosphere(c, s, spellView, cam.zoom, width, height, now, reduced, (o.mapEffects ?? o.visualEffects) !== false);
   if (s.lighting || (s.fog && s.fogMode === 'vision')) {
     const master = o.gm && !o.preview;
     const darkness = master ? s.gmDarkness : 1;
@@ -563,7 +564,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
           : []
         : s.tokens.filter((t) => t.controller === o.userId && t.layer === 'tokens' && !t.hidden);
     const cache = renderWorkCache(c.canvas), sources = sceneLights(s);
-    const lightTick=!reduced&&o.visualEffects!==false&&sceneHasAnimatedLights(s)?Math.floor(now/80)*80:0;
+    const lightTick=!reduced&&sceneHasAnimatedLights(s)?Math.floor(now/80)*80:0;
     const lightingKey = JSON.stringify([s.id,width,height,dpr,cam,master,s.ambient,s.grid.size,s.grid.unit,s.grid.scale,
       viewers.map(v=>[v.x,v.y,v.vision]),s.walls,houseWalls(s),s.tokens.filter(h=>houseAsset(h)).map(h=>[h.id,h.houseWindowsClosed]),sources,lightTick]);
     const rebuild = cache.lightingKey !== lightingKey;
@@ -588,7 +589,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         const r=visionPixels(source.bright+source.dim,s);if(r<=0)continue;
         // Both light and tint use exactly the same visibility polygon.
         const shape=sightPolygon(source,r,s,source.rotation,source.angle);
-        const pulse=lightAnimationState(source,lightTick,reduced||o.visualEffects===false);
+        const pulse=lightAnimationState(source,lightTick,reduced);
         lc.save();polygon(lc,shape);lc.clip();lc.globalAlpha=pulse.intensity;
         const gradient=lc.createRadialGradient(source.x,source.y,0,source.x,source.y,r);
         gradient.addColorStop(0,'#fff');gradient.addColorStop(Math.min(.99,source.bright/(source.bright+source.dim)*pulse.core),'#fff');gradient.addColorStop(1,'#ffffff70');

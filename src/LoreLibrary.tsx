@@ -1115,12 +1115,14 @@ function LoreCreateDialog({
   );
 }
 
-function LoreEditor({
+export function LoreEditor({
   page,
   index,
   onSaved,
   onCancel,
+  compact = false,
 }: {
+  compact?: boolean;
   page: LorePage;
   index: LoreIndex;
   onSaved: (page: LorePage) => Promise<void>;
@@ -1252,7 +1254,7 @@ function LoreEditor({
                 onChange={(event) => change({ ...draft, subtitle: event.target.value })}
               />
             </label>
-            <label>
+            <label hidden={compact}>
               Região
               <select
                 value={draft.region_id}
@@ -1273,7 +1275,7 @@ function LoreEditor({
                 ))}
               </select>
             </label>
-            <label>
+            <label hidden={compact}>
               Pasta
               <select
                 value={draft.folder_id}

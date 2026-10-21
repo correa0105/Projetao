@@ -60,6 +60,9 @@ try {
   await expect(page.locator('.stable-page')).toHaveCount(0);
   expect(shopRequests).toBe(0);
   expect(catalogueRequests).toBe(0);
+  await expect(page.locator('.asset-loading__first-visit')).toContainText(
+    'Na primeira visita, o carregamento pode demorar mais.',
+  );
   await page.screenshot({ path: 'test-results/site-loading/boot-waiting.png' });
   release();
   await expect(page.locator('[data-asset-loading]')).toHaveCount(0, { timeout: 60000 });

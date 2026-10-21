@@ -103,7 +103,7 @@ const titles: Record<Page, string> = {
   hall: 'Hall da Fama',
   profiles: 'Perfis da Alvorada',
   house: 'Lobby de RP',
-  house2: 'House 2.0',
+  house2: 'House',
   guild: 'Guilda',
   world: 'Mapa Alvorada',
   lore: 'Crônicas & lore',

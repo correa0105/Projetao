@@ -43,6 +43,7 @@ export function Cards({
   character?: Character;
   onPurchased: () => Promise<void>;
 }) {
+  const [collectionReady,setCollectionReady]=useState(!character);
   const [owned, setOwned] = useState<OwnedCard[]>([]),
     [selected, setSelected] = useState<Card>(cards[0]),
     [slot, setSlot] = useState(1),
@@ -72,7 +73,7 @@ export function Cards({
     if (character)
       void api<OwnedCard[]>('/cards/' + character.id)
         .then((cards) => { if (!cancelled) setOwned(cards); })
-        .catch((e) => { if (!cancelled) setError(e.message); });
+        .catch((e) => { if (!cancelled) setError(e.message); }).finally(()=>{if(!cancelled)setCollectionReady(true);});
     return () => {
       cancelled = true;
       live.current = false;
@@ -164,7 +165,7 @@ export function Cards({
     }
   }
   return (
-    <section className="cards-room" aria-label="Salão das cartas">
+    <section data-page-preparing={!collectionReady && !error || undefined} className="cards-room" aria-label="Salão das cartas">
       <div className="cards-scene">
         <div className="cards-room-backdrop" aria-hidden="true" />
         <div className="cards-room-shade" aria-hidden="true" />

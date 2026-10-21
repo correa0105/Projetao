@@ -108,8 +108,12 @@ export type Post = {
     rank_promoted: boolean;
   }[];
 };
-export type AtlasRegion = { id: string; name: string; description: string; available: boolean };
+export type AtlasRegion = { id: string; name: string; description: string; available: boolean; history_page_id?: string | null };
 export type AtlasLocation = {
+  pin_visible?: boolean;
+  revision?: number;
+  history_page_id?: string | null;
+  history_preview?: Extract<import('../shared/lore').LoreBlock, {type:'image'}>[];
   id: string;
   region_id: string;
   name: string;
@@ -117,7 +121,7 @@ export type AtlasLocation = {
   map_x: number;
   map_y: number;
 };
-export type AtlasData = { regions: AtlasRegion[]; locations: AtlasLocation[] };
+export type AtlasData = { regions: AtlasRegion[]; locations: AtlasLocation[]; can_manage_pins?: boolean };
 export type Entry = {
   id: string;
   section: string;

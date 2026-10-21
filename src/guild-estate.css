@@ -572,6 +572,12 @@
   transform-origin: 0 0;
   transition: transform 0.35s ease;
 }
+.guild-estate-map [data-estate-actor],
+.guild-estate-map [data-estate-actor] image {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
 .guild-estate-map [data-estate-interactive='opening'] {
   outline: none;
 }

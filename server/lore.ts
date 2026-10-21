@@ -419,6 +419,8 @@ export function loreRouter() {
       if (!page) throw new AppError(404, 'Crônica não encontrada ou indisponível para edição.');
       if (page.revision !== revision)
         throw new AppError(409, 'Esta crônica mudou em outra janela. Recarregue antes de salvar.');
+      const place = await client.query('SELECT region_id FROM world_locations WHERE history_page_id=$1 UNION ALL SELECT id AS region_id FROM world_regions WHERE history_page_id=$1',[id]);
+      if(place.rows.some(row=>row.region_id!==data.region_id))throw new AppError(400,'A história deste local deve permanecer no mesmo reino.');
       if (
         !(
           await client.query(

@@ -37,6 +37,30 @@ try {
   Set-Content -LiteralPath (Join-Path $stateDirectory 'hostinger-illustrator-supervisor.pid') -Value $PID
   $tunnel = $null
   $supervisor = $null
+  # Recover the children after an outer supervisor restart; starting a second
+  # tunnel would fail to bind its port while the surviving one is still healthy.
+  $tunnelPidFile = Join-Path $stateDirectory 'hostinger-tunnel.pid'
+  if (Test-Path -LiteralPath $tunnelPidFile) {
+    $savedTunnelId = 0
+    [int]::TryParse((Get-Content -LiteralPath $tunnelPidFile -Raw).Trim(), [ref]$savedTunnelId) | Out-Null
+    if ($savedTunnelId -gt 0) {
+      $candidate = Get-CimInstance Win32_Process -Filter "ProcessId = $savedTunnelId"
+      if ($candidate -and $candidate.Name -eq 'ssh.exe' -and $candidate.CommandLine -match '127\.0\.0\.1:5437:127\.0\.0\.1:5436' -and $candidate.CommandLine.Contains('root@' + $settings.HostName)) {
+        $tunnel = Get-Process -Id $savedTunnelId
+      }
+    }
+  }
+  $supervisorPidFile = Join-Path $stateDirectory 'hostinger-worker-supervisor.pid'
+  if (Test-Path -LiteralPath $supervisorPidFile) {
+    $savedSupervisorId = 0
+    [int]::TryParse((Get-Content -LiteralPath $supervisorPidFile -Raw).Trim(), [ref]$savedSupervisorId) | Out-Null
+    if ($savedSupervisorId -gt 0) {
+      $candidate = Get-CimInstance Win32_Process -Filter "ProcessId = $savedSupervisorId"
+      if ($candidate -and $candidate.Name -match '^(pwsh|powershell)\.exe$' -and $candidate.CommandLine -match 'keep-illustrator\.ps1') {
+        $supervisor = Get-Process -Id $savedSupervisorId
+      }
+    }
+  }
   while ($true) {
     if ($tunnel) { $tunnel.Refresh() }
     if (!$tunnel -or $tunnel.HasExited) {

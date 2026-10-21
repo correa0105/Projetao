@@ -163,6 +163,7 @@ function grade(
   reduced: boolean,
   w: number,
   h: number,
+  showWeather = true,
 ) {
   let scenes = transitions.get(c.canvas);
   if (!scenes) {
@@ -207,7 +208,7 @@ function grade(
     c.fillRect(0, 0, w, h);
   }
   c.globalAlpha = 1;
-  if (a.enabled && a.weather === 'eclipse') {
+  if (showWeather && a.enabled && a.weather === 'eclipse') {
     c.globalCompositeOperation = 'multiply';
     c.globalAlpha = a.intensity * 0.6;
     c.fillStyle = '#494157';
@@ -407,6 +408,7 @@ export function drawMapAtmosphere(
   height: number,
   now = Date.now(),
   reduced = matchMedia('(prefers-reduced-motion: reduce)').matches,
+  showWeather = true,
 ) {
   const a = s.atmosphere;
   if (!a) return;
@@ -417,8 +419,8 @@ export function drawMapAtmosphere(
   // Work in CSS screen pixels so drops remain visible at every map scale.
   c.translate(view.left, view.top);
   c.scale(1 / zoom, 1 / zoom);
-  grade(c, a, s, now, reduced, width, height);
-  if (a.enabled && a.intensity > 0 && a.weather !== 'meteors') {
+  grade(c, a, s, now, reduced, width, height, showWeather);
+  if (showWeather && a.enabled && a.intensity > 0 && a.weather !== 'meteors') {
     const t = reduced ? 12.5 : (now % 86400000) / 1000;
     if(a.weather==='wind'||a.weather==='gale') drawMapWind(c,s.id,a,t,width,height);
     else { haze(c, a, view, t, width, height);drawWeatherFlows(c, s.id, a, t, width, height); }

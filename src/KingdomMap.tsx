@@ -2,6 +2,7 @@ import { FlashMessage } from './FlashMessage';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   Focus,
+  MapPin,
   ScrollText,
   Copy,
   Minus,
@@ -50,6 +51,10 @@ type KingdomMapProps = {
   selectedId: string | null;
   onSelect: (id: string) => void;
   onReady?: () => void;
+  canManagePins?: boolean;
+  pinMode?: boolean;
+  onPinMode?: () => void;
+  onPinPosition?: (position: { x: number; y: number }) => void;
   onOpenRegistry?: () => void;
 };
 type Controls = {
@@ -144,12 +149,18 @@ export function KingdomMap({
   onSelect,
   onReady,
   onOpenRegistry,
+  canManagePins = false,
+  pinMode = false,
+  onPinMode,
+  onPinPosition,
 }: KingdomMapProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasHostRef = useRef<HTMLDivElement>(null);
   const controlsRef = useRef<Controls | null>(null);
-  const latest = useRef({ markers, selectedId, onSelect, onReady });
-  latest.current = { markers, selectedId, onSelect, onReady };
+  const pinNodes = useRef(new Map<string, HTMLButtonElement>());
+  const [hoveredPin, setHoveredPin] = useState<string | null>(null);
+  const latest = useRef({ markers, selectedId, onSelect, onReady, pinMode, onPinPosition });
+  latest.current = { markers, selectedId, onSelect, onReady, pinMode, onPinPosition };
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [retry, setRetry] = useState(0);
   const [zoom, setZoom] = useState(1);
@@ -520,6 +531,29 @@ export function KingdomMap({
         sync();
       }
       if (dirty) {
+        for (const marker of latest.current.markers) {
+          const node = pinNodes.current.get(marker.id);
+          if (!node) continue;
+          const point = projectPoint(
+            (marker.x - 0.5) * viewport.mapWidth,
+            (marker.y - 0.5) * viewport.mapHeight,
+          );
+          node.style.left = point.x + 'px';
+          node.style.top = point.y + 'px';
+          node.dataset.visible = String(
+            point.x >= 0 && point.x <= viewport.width && point.y >= 0 && point.y <= viewport.height,
+          );
+          node.style.setProperty(
+            '--bubble-offset',
+            clamp(
+              point.x,
+              Math.min(172, viewport.width / 2),
+              Math.max(viewport.width - 172, viewport.width / 2),
+            ) -
+              point.x +
+              'px',
+          );
+        }
         paintKingdom(
           ctx!,
           assets,
@@ -631,7 +665,7 @@ export function KingdomMap({
         !ready ||
         event.button > 0 ||
         (event.target as Element).closest(
-          '.kingdom-map__controls, .kingdom-editor, .kingdom-map__editor-toggle, .kingdom-registry',
+          '.kingdom-map__controls, .kingdom-editor, .kingdom-map__editor-toggle, .kingdom-registry, .kingdom-pin-toggle, .kingdom-place',
         )
       )
         return;
@@ -767,6 +801,20 @@ export function KingdomMap({
       if (!pointers.has(event.pointerId)) return;
       pointers.delete(event.pointerId);
       if (host!.hasPointerCapture(event.pointerId)) host!.releasePointerCapture(event.pointerId);
+      if (!editorRef.current.open && latest.current.pinMode && !dragging && !hadMultiTouch) {
+        const at = local(event),
+          point = unprojectPoint(at.x, at.y);
+        if (
+          Math.abs(point.x) <= viewport.mapWidth / 2 &&
+          Math.abs(point.y) <= viewport.mapHeight / 2
+        )
+          latest.current.onPinPosition?.({
+            x: point.x / viewport.mapWidth + 0.5,
+            y: point.y / viewport.mapHeight + 0.5,
+          });
+        event.preventDefault();
+        return;
+      }
       if (pendingPlace && !dragging && !hadMultiTouch) {
         const point = unprojectPoint(pendingPlace.at.x, pendingPlace.at.y);
         if (
@@ -1107,6 +1155,7 @@ export function KingdomMap({
       data-renderer="canvas2d"
       data-status={status}
       data-editor-open={editorOpen}
+      data-pin-mode={pinMode}
       data-direction={direction}
       tabIndex={0}
       role="region"
@@ -1119,6 +1168,59 @@ export function KingdomMap({
           : 'Mapa em tela inteira com aproximação fixa de 150%. Arraste ou use as setas para explorar; Home volta ao centro do reino.'}
       </p>
       <div ref={canvasHostRef} className="kingdom-map__canvas" />
+      {!editorOpen && (
+        <div className="kingdom-map__places">
+          {markers.map((marker) => (
+            <button
+              key={marker.id}
+              ref={(node) => {
+                if (node) pinNodes.current.set(marker.id, node);
+                else pinNodes.current.delete(marker.id);
+              }}
+              className={
+                'kingdom-place atlas-pin' + (selectedId === marker.id ? ' is-selected' : '')
+              }
+              type="button"
+              aria-label={'Missões de ' + marker.name}
+              onClick={() => onSelect(marker.id)}
+              onPointerEnter={() => setHoveredPin(marker.id)}
+              onPointerLeave={() => setHoveredPin(null)}
+              onFocus={() => setHoveredPin(marker.id)}
+              onBlur={() => setHoveredPin(null)}
+            >
+              <MapPin size={30} aria-hidden="true" />
+              <span className="kingdom-place__name">{marker.name}</span>
+              {hoveredPin === marker.id && !!marker.preview?.length && (
+                <span className="atlas-pin-previews" data-asset-deferred="true" aria-hidden="true">
+                  {marker.preview.slice(0, 3).map((block) => (
+                    <span className="atlas-pin-bubble" key={block.id}>
+                      <img src={'/api/lore/images/' + block.asset_id} alt="" loading="lazy" />
+                      <span />
+                    </span>
+                  ))}
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+      {!editorOpen && canManagePins && (
+        <button
+          className="kingdom-pin-toggle"
+          type="button"
+          aria-pressed={pinMode}
+          onClick={onPinMode}
+        >
+          <MapPin size={16} />
+          {pinMode ? 'Cancelar posicionamento' : 'Adicionar pin'}
+        </button>
+      )}
+      {pinMode && (
+        <p className="atlas-pin-instructions" role="status">
+          Clique no mapa para marcar o local. Arraste para navegar.
+        </p>
+      )}
+
       {!editorOpen && (
         <button
           className="kingdom-registry"

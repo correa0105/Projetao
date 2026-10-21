@@ -10,6 +10,9 @@ import { checkCodexLogin, IllustratorError } from '../server/codex-illustrator.j
 import { AppError } from '../server/services.js';
 
 const lock = await pool.connect();
+await lock.query(
+  "SET application_name='alvorada-illustrator-lease'; SET idle_session_timeout='60s'",
+);
 const {
   rows: [locked],
 } = await lock.query('SELECT pg_try_advisory_lock(71503215) AS acquired');
@@ -20,6 +23,9 @@ if (!locked.acquired) {
   process.exit(1);
 }
 let stopping = false;
+lock.on('error', () => {
+  stopping = true;
+});
 process.on('SIGINT', () => {
   stopping = true;
 });
@@ -39,10 +45,13 @@ try {
   await pool.query(
     "DELETE FROM companion_art_equipment WHERE job_id IN(SELECT id FROM companion_art_jobs WHERE status IN('failed','stale'))",
   );
-  const beat = () =>
-    pool.query(
-      'INSERT INTO character_art_worker(id,heartbeat_at,available) VALUES(true,now(),true) ON CONFLICT(id) DO UPDATE SET heartbeat_at=now(),available=true',
-    );
+  // Keep the lease connection alive too: a pooled heartbeat could otherwise
+  // advertise availability while the session holding the worker lock is stale.
+  const heartbeatQuery = {
+    text: 'INSERT INTO character_art_worker(id,heartbeat_at,available) VALUES(true,now(),true) ON CONFLICT(id) DO UPDATE SET heartbeat_at=now(),available=true',
+    query_timeout: 15000,
+  };
+  const beat = () => lock.query(heartbeatQuery);
   await beat();
   heartbeat = setInterval(
     () =>

@@ -125,7 +125,7 @@ export function HallOfFame({
     );
   }
   return (
-    <section className={`hall-of-fame ${embedded ? 'embedded' : ''}`}>
+    <section data-page-preparing={!data && !error || undefined} className={`hall-of-fame ${embedded ? 'embedded' : ''}`}>
       {menuOpen && (
         <ScenePanel id="hall" title="Hall da Fama" side="left" close={() => setMenuOpen(false)}>
           <p className="hall-menu-caption">Explore os registros da Alvorada</p>

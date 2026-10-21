@@ -43,6 +43,7 @@ export function GuildEstateActors({
   focus: () => void;
   notice: (s: string) => void;
 }) {
+  const [actorsReady, setActorsReady] = useState(false);
   const [actors, setActors] = useState<Actor[]>([]),
     [sources, setSources] = useState<Source[]>([]),
     [busy, setBusy] = useState(false);
@@ -72,8 +73,14 @@ export function GuildEstateActors({
   useEffect(() => {
     if (!member || !characterId) return;
     let stop = false;
+    setActorsReady(false);
     const load = () => {
-      if (!stop && !drag.current) void refresh().catch((e) => notice(e.message));
+      if (!stop && !drag.current)
+        void refresh()
+          .catch((e) => notice(e.message))
+          .finally(() => {
+            if (!stop) setActorsReady(true);
+          });
     };
     load();
     const timer = setInterval(load, 5000);
@@ -83,7 +90,7 @@ export function GuildEstateActors({
     };
   }, [guildId, characterId, member]);
   async function save(a: Actor, present = true) {
-    const before = current.current.find(t => t.id === a.id);
+    const before = current.current.find((t) => t.id === a.id);
     if (before && present) a = { ...a, ...guildEstateMove(before, a, openings) };
     setBusy(true);
     try {
@@ -137,6 +144,7 @@ export function GuildEstateActors({
   if (!member || !characterId) return null;
   return (
     <>
+      {!actorsReady && <span hidden data-page-preparing="true" />}
       {panelTarget &&
         createPortal(
           <div className="guild-estate-actors-panel">
@@ -179,7 +187,12 @@ export function GuildEstateActors({
             {actors
               .filter(
                 (a) =>
-                  (a.id === characterId || !roof || a.x < 21.12 || a.x > 38.88 || a.y < 17.2 || a.y > 30.7) &&
+                  (a.id === characterId ||
+                    !roof ||
+                    a.x < 21.12 ||
+                    a.x > 38.88 ||
+                    a.y < 17.2 ||
+                    a.y > 30.7) &&
                   (!viewer ||
                     editing ||
                     a.id === characterId ||
@@ -195,10 +208,15 @@ export function GuildEstateActors({
                   aria-label={'Mover ' + a.name}
                   transform={`translate(${a.x} ${a.y})`}
                   style={{ cursor: a.can_move ? 'grab' : 'default', touchAction: 'none' }}
-                  onPointerDown={(e) => {
-                    if (!a.can_move || busy) return;
+                  onDoubleClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                  }}
+                  onDragStart={(e) => e.preventDefault()}
+                  onPointerDown={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (e.button !== 0 || !a.can_move || busy) return;
                     const p = point(e.clientX, e.clientY);
                     drag.current = { id: a.id, dx: p.x - a.x, dy: p.y - a.y, pointer: e.pointerId };
                     e.currentTarget.setPointerCapture(e.pointerId);
@@ -213,10 +231,14 @@ export function GuildEstateActors({
                         t.id === a.id
                           ? {
                               ...t,
-                              ...guildEstateMove(t, {
-                                x: Math.max(7, Math.min(53, p.x - d.dx)),
-                                y: Math.max(5, Math.min(45, p.y - d.dy)),
-                              }, openings),
+                              ...guildEstateMove(
+                                t,
+                                {
+                                  x: Math.max(7, Math.min(53, p.x - d.dx)),
+                                  y: Math.max(5, Math.min(45, p.y - d.dy)),
+                                },
+                                openings,
+                              ),
                             }
                           : t,
                       ),
@@ -252,6 +274,14 @@ export function GuildEstateActors({
                     }
                   }}
                 >
+                  <rect
+                    x={-a.scale}
+                    y={-a.scale}
+                    width={a.scale * 2}
+                    height={a.scale * 2}
+                    fill="transparent"
+                    pointerEvents="all"
+                  />
                   <ellipse
                     cy={a.scale * 0.65}
                     rx={a.scale * 0.65}
@@ -260,6 +290,7 @@ export function GuildEstateActors({
                     opacity=".4"
                   />
                   <image
+                    pointerEvents="none"
                     href={a.image}
                     x={-a.scale}
                     y={-a.scale}

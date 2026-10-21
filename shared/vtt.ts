@@ -403,6 +403,8 @@ export type VttMessage = {
   created_at: string;
 };
 export type VttState = {
+  region_id?: string | null;
+  location_id?: string | null;
   storage?: import('./vtt-storage').VttStorage;
   personal?: { public_id: string; room_id: string; url?: string };
   id: string;

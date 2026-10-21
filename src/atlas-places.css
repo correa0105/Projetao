@@ -1,0 +1,236 @@
+.kingdom-map__places {
+  z-index: 3;
+  pointer-events: none;
+}
+.kingdom-map .atlas-pin {
+  width: 34px;
+  height: 38px;
+  filter: drop-shadow(0 2px 3px #000c);
+}
+.atlas-pin > svg {
+  fill: #27241e;
+  stroke: #e3c281;
+  stroke-width: 1.5;
+}
+.atlas-pin.is-selected > svg {
+  fill: #73572c;
+  stroke: #fff0c8;
+}
+.atlas-pin-previews {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: calc(50% + var(--bubble-offset, 0px));
+  transform: translateX(-50%) translateY(8px);
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  width: max-content;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+.atlas-pin:hover .atlas-pin-previews,
+.atlas-pin:focus-visible .atlas-pin-previews {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%);
+}
+.atlas-pin-bubble {
+  position: relative;
+  display: block;
+  width: clamp(76px, 9vw, 106px);
+  height: 82px;
+  border-radius: 45% 45% 35% 40%;
+  background: #e1d2ad;
+  box-shadow: 0 3px 12px #0008;
+}
+.atlas-pin-bubble:nth-child(2) {
+  margin-bottom: 15px;
+}
+.atlas-pin-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 44%;
+  width: 14px;
+  height: 14px;
+  background: #d4bf94;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+.atlas-pin-bubble img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mask: url('/lore-watercolor-mask.svg') center/100% 100% no-repeat;
+}
+.atlas-pin-bubble > span {
+  position: absolute;
+  inset: 0;
+  background: url('/lore-watercolor-paper.svg') center/110px;
+  mix-blend-mode: soft-light;
+  opacity: 0.3;
+  border-radius: inherit;
+}
+.kingdom-map .kingdom-pin-toggle {
+  position: absolute;
+  right: 20px;
+  top: 124px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  background: #201e18ef;
+  border: 1px solid #ab8d53;
+  border-radius: 5px;
+  color: #e7d6b1;
+  font-size: 12px;
+}
+.kingdom-map[data-pin-mode='true'] {
+  cursor: crosshair;
+}
+.atlas-pin-instructions {
+  position: absolute;
+  z-index: 6;
+  bottom: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100% - 32px);
+  padding: 12px 18px;
+  background: #171914ee;
+  border: 1px solid #ad965b;
+  border-radius: 6px;
+  color: #ead9b5;
+  font-size: 12px;
+  text-align: center;
+  pointer-events: none;
+}
+.atlas-place-tabs {
+  display: flex;
+  gap: 8px;
+  margin-block: 18px;
+  border-bottom: 1px solid #af925440;
+  padding-bottom: 12px;
+}
+.atlas-place-tabs button,
+.atlas-pin-actions button {
+  flex: 1;
+  background: transparent;
+  border: 1px solid #af925440;
+  border-radius: 4px;
+  color: #dbcaab;
+  padding: 8px;
+  font-size: 12px;
+}
+.atlas-place-tabs button[aria-pressed='true'] {
+  background: #af92542b;
+  border-color: #af9254;
+}
+.atlas-pin-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.atlas-place-story.lore-library {
+  background: transparent;
+  max-width: 100%;
+  margin: 0;
+  font-size: 13px;
+}
+.atlas-place-story .lore-reader {
+  padding: 18px 0;
+  width: 100%;
+}
+.atlas-place-story .lore-reader p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.atlas-place-story .lore-reader h3 {
+  font-size: 21px;
+}
+.atlas-place-story .lore-editor {
+  padding: 0;
+}
+.atlas-place-story .lore-editor-toolbar {
+  display: block;
+  position: static;
+  padding: 8px 0;
+}
+.atlas-place-story .lore-editor-toolbar > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+.atlas-place-story .lore-editor-toolbar button {
+  font-size: 11px;
+  padding: 7px;
+}
+.atlas-place-story .lore-editor-meta,
+.atlas-place-story .lore-edit-block {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 12px 0;
+}
+.atlas-place-story .lore-editor-meta > [hidden] {
+  display: none;
+}
+.atlas-place-story :is(input, select, textarea) {
+  min-width: 0;
+  max-width: 100%;
+  font-size: 12px;
+}
+.atlas-place-story .lore-edit-block header {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.atlas-place-story .lore-edit-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+.atlas-place-story .lore-block-pair {
+  display: block;
+}
+.atlas-place-story .lore-block {
+  float: none;
+  width: 100%;
+  margin: 14px 0;
+}
+.atlas-visible-check {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.atlas-visible-check input {
+  width: auto;
+}
+@media (max-width: 600px) {
+  .kingdom-map .kingdom-pin-toggle {
+    top: 126px;
+    right: 12px;
+  }
+  .atlas-pin-bubble {
+    width: 88px;
+    height: 68px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atlas-pin-previews {
+    transition: none;
+  }
+}
+.atlas-place-story .lore-image-settings {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+.atlas-place-story .lore-upload-preview {
+  max-height: 180px;
+}
+.atlas-place-story .lore-block-options {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
