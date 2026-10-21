@@ -11,6 +11,7 @@ import { guildFacilityDefinitionsRouter } from './guild-facility-definitions.js'
 import { towerRouter } from './tower.js';
 import { clothingPieceAppearance } from '../shared/clothing-bundles.js';
 import express from 'express';
+import { authenticationClientIp, configureReverseProxy } from './reverse-proxy.js';
 import { sendCatalog, compressedBundle } from './http-transfer.js';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
@@ -113,6 +114,7 @@ const kingdomViewSchema = z.object({
 
 export function createApp() {
   const app = express();
+  configureReverseProxy(app);
   app.disable('x-powered-by');
   app.use(
     helmet({
@@ -134,11 +136,7 @@ export function createApp() {
   });
   app.all(
     '/api/auth/*splat',
-    (req, res, next) => {
-      // Never accept a caller-supplied forwarded IP for authentication limits.
-      req.headers['x-guild-client-ip'] = req.socket.remoteAddress || '127.0.0.1';
-      next();
-    },
+    authenticationClientIp,
     toNodeHandler(auth),
   );
   app.use((req, res, next) =>

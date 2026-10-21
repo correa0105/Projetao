@@ -1,10 +1,11 @@
-import { createApp } from './app.js';
 import { migrate } from './migrate.js';
 import { seed } from './seed.js';
 import { pool } from './db.js';
 
 await migrate();
 await seed();
+// Better Auth validates its schema when imported; initialize it after migrations.
+const { createApp } = await import('./app.js');
 const app = createApp();
 const server = app.listen(Number(process.env.PORT || 3000), '0.0.0.0', () =>
   console.log('Alvorada Cinzenta disponível em http://localhost:3000'),

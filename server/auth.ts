@@ -17,7 +17,7 @@ export const auth = betterAuth({
   session: { expiresIn: 60 * 60 * 24 * 7, updateAge: 60 * 60 * 24 },
   rateLimit: { enabled: true, window: 60, max: 30 },
   advanced: {
-    // This header is overwritten from the socket by our Express middleware.
+    // Overwritten by Express using its explicitly configured proxy trust policy.
     ipAddress: { ipAddressHeaders: ['x-guild-client-ip'] },
     defaultCookieAttributes: { httpOnly: true, sameSite: 'lax' },
   },

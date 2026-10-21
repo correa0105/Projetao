@@ -616,6 +616,10 @@ Depois de editar, volte à versão Docker com `docker compose up -d --build`.
 
 ## Arquitetura
 
+Publicacao na Hostinger: [Alvorada Cinzenta](https://srv2083419.hstgr.cloud).
+Configuracao, backups, ilustrador e resultados da verificacao em
+[docs/HOSTINGER-20261021.md](docs/HOSTINGER-20261021.md).
+
 Monólito modular: React/Vite no frontend, Express 5 no backend, TypeScript em ambos.
 O container da aplicação serve a interface e a API na mesma origem. PostgreSQL 17 usa
 pool de conexões, chaves estrangeiras, índices, constraints e migrations SQL versionadas.

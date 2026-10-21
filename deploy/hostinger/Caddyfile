@@ -1,0 +1,9 @@
+{$SITE_HOST} {
+  encode zstd gzip
+  reverse_proxy app:3000 {
+    header_up -X-Guild-Client-IP
+    header_up X-Forwarded-For {remote_host}
+    header_up X-Forwarded-Proto {scheme}
+    header_up X-Forwarded-Host {host}
+  }
+}

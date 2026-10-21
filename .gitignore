@@ -9,4 +9,5 @@ test-results/
 *.dump
 .DS_Store
 .local/
+backups/
 public/kingdom/terrain-square*.png

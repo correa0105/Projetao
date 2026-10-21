@@ -14,6 +14,7 @@
     "catalog:import": "tsx scripts/import-catalog.ts",
     "test": "tsx --test --test-concurrency=1 tests/*.test.ts",
     "test:browser": "tsx scripts/smoke-browser.ts",
+    "test:deployment": "node scripts/test-deployment-isolated.mjs",
     "test:sheet": "node scripts/test-sheet-isolated.mjs",
     "test:inventory": "node scripts/test-inventory-isolated.mjs",
     "test:equipment": "node scripts/test-equipment-isolated.mjs",
