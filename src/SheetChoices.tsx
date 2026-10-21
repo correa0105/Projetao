@@ -28,6 +28,7 @@ import { SheetHelp } from './SheetHelp';
 import { TrainingBadge } from './TrainingBadge';
 import { eberronSpecies, EBERRON_SOURCE } from '../shared/eberron-species';
 import { TieflingHorns } from './TieflingHorns';
+import { WarforgedAppearance } from './WarforgedAppearance';
 export function ChoiceList({
   label,
   options,
@@ -220,6 +221,10 @@ export function SheetChoices({
           value={c.tieflingHorns}
           onChange={(tieflingHorns) => update({ tieflingHorns })}
         />
+      )}
+      {race === 'Warforged' && (
+        <WarforgedAppearance value={c.warforgedAppearance}
+          onChange={warforgedAppearance => update({ warforgedAppearance })} />
       )}
       {c.originRules && feats(c).some((f) => f.startsWith('Iniciado em Magia')) && (
         <p className="muted small">

@@ -14,6 +14,7 @@ import { basicCompanionToken } from '../shared/companion-token-art.js';
 import { magicalArtEquipment } from './armor-magic-appearance.js';
 import { ART_ANATOMY_RULES } from '../shared/art-anatomy.js';
 import { tieflingHornStyle } from '../shared/tiefling-horns.js';
+import { warforgedArtInstructions } from '../shared/warforged-appearance.js';
 
 type CharacterJob = Parameters<typeof generateCharacterArt>[0] & {
   approved_portrait?: Buffer | null;
@@ -72,7 +73,16 @@ async function nativeResult(
 export async function generateCharacterToken(job: CharacterJob, portrait: Buffer): Promise<Buffer> {
   z.string().uuid().parse(job.id);
   const animal = job.companion;
-  const horns = !animal && job.race === 'Tiefling' ? tieflingHornStyle((job.choices as { tieflingHorns?: unknown } | undefined)?.tieflingHorns) : undefined;
+  const warforgedInstructions =
+    !animal && job.race === 'Warforged'
+      ? warforgedArtInstructions(
+          (job.choices as { warforgedAppearance?: unknown } | undefined)?.warforgedAppearance,
+        )
+      : '';
+  const horns =
+    !animal && job.race === 'Tiefling'
+      ? tieflingHornStyle((job.choices as { tieflingHorns?: unknown } | undefined)?.tieflingHorns)
+      : undefined;
   const directory = resolve(
     animal ? '.local/companion-token-art' : '.local/character-token-art',
     job.id,
@@ -154,11 +164,18 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
       await unlink(result).catch(() => {});
       const refs = attempt ? [candidate, reference, style] : [reference, style];
       const prompt =
-        ART_ANATOMY_RULES + (horns ? '\nFormato de chifres escolhido, preservado na vista superior: ' + horns.instruction : '') + '\n' + (attempt
+        ART_ANATOMY_RULES +
+        (horns
+          ? '\nFormato de chifres escolhido, preservado na vista superior: ' + horns.instruction
+          : '') +
+        '\n' +
+        (attempt
           ? `EDITE a imagem 1, o token reprovado. Imagem 2 define a identidade e os equipamentos; imagem 3 apenas o estilo e a câmera. Corrija somente os defeitos: ${JSON.stringify(issues)}. Preserve a identidade e a vista estritamente de cima a 90 graus. Silhueta inteira com 8% de margem, alfa real, sem círculo, chão ou cenário. Use referenced_image_paths=${JSON.stringify(refs)} e transparent_background=true. Entregue JSON image_path absoluto e error vazio apenas se houver imagem real.`
           : `${instructions}\n${animal ? `Animal: ${animal.kind} / ${animal.species_id}. Aparência: ${animal.appearance}. Nome: ${animal.name}.` : `Raça: ${job.race}. Classe: ${job.class}.`} Referências, na ordem: ${JSON.stringify(refs)}. Gere agora e retorne JSON image_path absoluto e error vazio.`) +
         '\n' +
-        magicInstructions;
+        magicInstructions +
+        '\n' +
+        warforgedInstructions;
       const execution = await runCodex(command(refs, schema, result), prompt);
       const bytes = await nativeResult(execution, result, directory);
       await writeFile(candidate, bytes);
@@ -172,20 +189,30 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
           (magicalEquipment.length
             ? `Reprove a ausência dos efeitos mágicos nas partes visíveis da armadura e sua substituição pelo acabamento mundano. ${magicInstructions} `
             : '') +
-          ART_ANATOMY_RULES + ' Registre appendages_correct=false para qualquer defeito anatômico visível. Retorne approved=true, appendages_correct=true e issues=[] somente se cumprir; caso contrário descreva defeitos visíveis em português.',
+          warforgedInstructions +
+          '\n' +
+          ART_ANATOMY_RULES +
+          ' Registre appendages_correct=false para qualquer defeito anatômico visível. Retorne approved=true, appendages_correct=true e issues=[] somente se cumprir; caso contrário descreva defeitos visíveis em português.',
         120_000,
       );
       let review;
       try {
         review = z
-          .object({ approved: z.boolean(), appendages_correct: z.boolean(), issues: z.array(z.string().max(600)).max(12) })
+          .object({
+            approved: z.boolean(),
+            appendages_correct: z.boolean(),
+            issues: z.array(z.string().max(600)).max(12),
+          })
           .parse(JSON.parse(await readFile(reviewPath, 'utf8')));
       } catch {
         throw new IllustratorError('token_review', 'Não foi possível conferir a vista de cima.');
       }
       const meta = await sharp(bytes, { limitInputPixels: 40_000_000 }).metadata();
       issues = review.issues;
-      if (!review.appendages_correct && !issues.length) issues.push('Corrigir o alinhamento anatômico dos apêndices, incluindo as bases do par de chifres.');
+      if (!review.appendages_correct && !issues.length)
+        issues.push(
+          'Corrigir o alinhamento anatômico dos apêndices, incluindo as bases do par de chifres.',
+        );
       if (!meta.hasAlpha || (await sharp(bytes).stats()).isOpaque)
         issues.push('Remover o fundo com transparência alfa real.');
       if (!meta.width || !meta.height || meta.width !== meta.height || meta.width < 512)

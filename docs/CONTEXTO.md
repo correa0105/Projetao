@@ -1,4 +1,20 @@
-21/10/2026 — Em preparação: novas contas durante o beta recebem 6.000 PO uma vez
+21/10/2026 — Botão Recuperação por e-mail retirado do menu por pedido posterior;
+Esqueci minha senha no login e configuração administrativa restrita preservados.
+Aparência Warforged em preparação: seis estruturas, seis cabeças,
+oito tons metálicos, quatro acabamentos e cor secundária sugerida/personalizada.
+Escolha opcional no JSON da ficha; retrato/token e revisão recebem as opções,
+sem alterar regras/equipamento nem reescrever fichas antigas. Pranchas originais
+image_gen consultam a referência Pinterest enviada; PNGs originais preservados.
+Guia WARFORGED-APPEARANCE-20261021 e prompts/hashes em data/character-creation.
+
+21/10/2026 — Publicação account-access-20261021 aplicada e saudável na Hostinger,
+código 6b97970fb1c88b2cdafeaf5653f9daab812bf525. HTTPS/bundles, imagem original do
+Norte, permissões, intérprete de magias e ilustrador ativo conferidos; contas e
+registros existentes preservados. Backup account-access-before-20261021T201727Z.dump.
+Remetente Gmail do administrador ATIVADO: credencial salva cifrada após verificar
+SMTP/TLS e e-mail de teste aceito pelo Gmail. Não confundir aceite SMTP com leitura
+da caixa de entrada. Nenhuma credencial em arquivos de projeto, docs ou logs.
+Novas contas durante o beta recebem 6.000 PO uma vez
 no primeiro personagem. Migration 122 inscreve novas contas quando explicitamente
 ativada; transação existente conserva auditoria após exclusão/recriação, sem alterar
 saldos antigos. Dois testes isolados de concorrência/valor/exclusão/desativação passaram.
@@ -10,8 +26,7 @@ A suíte social ampla mantém duas falhas anteriores: contagem antiga de monstro
 Cadastro com mínimo 6 caracteres/maiúscula/minúscula/número
 e regra escrita; recuperação por e-mail com link único de 30 minutos e revogação de
 sessões; Gmail do administrador configurável por campo protegido (senha de aplicativo
-cifrada). Autorização do Gmail ainda depende do usuário, que já confirmou a verificação
-em duas etapas; página de Senhas de app aberta, nome Alvorada Cinzenta preenchido.
+cifrada). Autorização real concluída pelo usuário e configurada no site.
 Perícias antigas selecionadas sempre visíveis/removíveis e coluna única no celular.
 Talento de origem livre no antecedente, preservando fichas antigas sem nova chave.
 Cota mensal por personagem elevada de 4 para 10 até segunda ordem, sem zerar usos;

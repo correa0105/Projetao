@@ -16,6 +16,13 @@ import { magicalArtEquipment } from './armor-magic-appearance.js';
 import { ART_ANATOMY_RULES } from '../shared/art-anatomy.js';
 import { tieflingHornStyle, tieflingHornImage } from '../shared/tiefling-horns.js';
 import {
+  warforgedArtInstructions,
+  warforgedBodies,
+  warforgedHeads,
+  warforgedBodyAtlas,
+  warforgedHeadAtlas,
+} from '../shared/warforged-appearance.js';
+import {
   companionArtInstructions,
   bardingCoverage,
   describeCompanionEquipment,
@@ -142,6 +149,8 @@ async function reviewComposition(
   baseReference?: string,
   magicalEquipment: { slot: string; item: string; appearance: string }[] = [],
   horns?: { instruction: string; reference: string },
+  warforgedInstructions = '',
+  warforgedReferences: string[] = [],
 ) {
   const schema = join(directory, 'review-schema.json'),
     result = join(directory, 'review.json');
@@ -175,6 +184,7 @@ async function reviewComposition(
       image,
       ...(baseReference ? ['--image', baseReference] : []),
       ...(horns ? ['--image', horns.reference] : []),
+      ...warforgedReferences.flatMap((path) => ['--image', path]),
       '--output-schema',
       schema,
       '--output-last-message',
@@ -187,6 +197,7 @@ async function reviewComposition(
     Oclusão natural é correta: itens ocultos NÃO precisam aparecer.
     ${ART_ANATOMY_RULES} Registre appendages_correct=false se houver defeito anatômico visível e descreva-o em issues. Se não houver apêndices incomuns, confira a anatomia normal antes de marcar true.
     ${horns ? `A última imagem é somente o formato dos chifres escolhido pelo jogador, nunca o rosto/corpo. Formato obrigatório: ${horns.instruction} Reprove um formato diferente; respeite perspectiva e oclusão natural por cabelo/equipamento.` : ''}
+    ${warforgedInstructions ? `${warforgedInstructions} Confira estrutura, cabeça, acabamento e cores nas partes visíveis. Reprove divergências visíveis, sem exigir que roupas ou equipamentos sejam removidos.` : ''}
     Reprove ombreiras desenhadas por cima da capa e anéis desenhados por cima de luvas,
     incluindo luvas integradas às braçadeiras. Tecido da capa encobre ombreiras e armadura;
     luvas encobrem anéis. Não exigir que peças encobertas fiquem visíveis nem sugerir
@@ -202,11 +213,18 @@ async function reviewComposition(
   );
   try {
     const review = z
-      .object({ approved: z.boolean(), appendages_correct: z.boolean(), issues: z.array(z.string().max(600)).max(12) })
+      .object({
+        approved: z.boolean(),
+        appendages_correct: z.boolean(),
+        issues: z.array(z.string().max(600)).max(12),
+      })
       .parse(JSON.parse(await readFile(result, 'utf8')));
     if (!review.appendages_correct) {
       review.approved = false;
-      if (!review.issues.length) review.issues.push('Corrigir a origem e o alinhamento anatômico dos apêndices, especialmente as bases do par de chifres.');
+      if (!review.issues.length)
+        review.issues.push(
+          'Corrigir a origem e o alinhamento anatômico dos apêndices, especialmente as bases do par de chifres.',
+        );
     }
     return review;
   } catch {
@@ -232,9 +250,27 @@ export async function generateCharacterArt(job: {
   const race = z.enum(races).parse(job.race);
   const characterClass = z.enum(classes).parse(job.class);
   const choices = job.choices ? validateChoices(race, characterClass, job.choices) : undefined;
-  const hornSelection = !job.companion && race === 'Tiefling' ? tieflingHornStyle(choices?.tieflingHorns) : undefined;
-  const hornReference = hornSelection ? resolve('public' + tieflingHornImage(hornSelection.id)) : undefined;
-  const hornInstructions = hornSelection ? `FORMATO DE CHIFRES ESCOLHIDO: ${hornSelection.instruction} A última referência define somente os chifres; ignore o manequim, a cor e o fundo. Preserve rosto, identidade e os demais traços da referência do jogador.` : '';
+  const warforgedInstructions =
+    !job.companion && race === 'Warforged'
+      ? warforgedArtInstructions(choices?.warforgedAppearance)
+      : '';
+  const warforgedReferences = warforgedInstructions
+    ? [warforgedBodyAtlas, warforgedHeadAtlas].map((path) => resolve('public' + path))
+    : [];
+  const selectionCell = (index: number) =>
+    `${index < 3 ? 'primeira' : 'segunda'} linha, ${['primeira', 'segunda', 'terceira'][index % 3]} coluna`;
+  const warforgedReferenceInstructions =
+    warforgedInstructions && choices?.warforgedAppearance
+      ? `As duas últimas referências são pranchas 3×2: penúltima define SOMENTE a estrutura do corpo na ${selectionCell(warforgedBodies.findIndex((v) => v.id === choices.warforgedAppearance!.body))}; última define SOMENTE a cabeça na ${selectionCell(warforgedHeads.findIndex((v) => v.id === choices.warforgedAppearance!.head))}. Ignore os outros cinco modelos de cada prancha. As cores dessas pranchas são demonstrativas: usar a paleta escolhida. Gere apenas UM personagem, nunca a prancha.`
+      : '';
+  const hornSelection =
+    !job.companion && race === 'Tiefling' ? tieflingHornStyle(choices?.tieflingHorns) : undefined;
+  const hornReference = hornSelection
+    ? resolve('public' + tieflingHornImage(hornSelection.id))
+    : undefined;
+  const hornInstructions = hornSelection
+    ? `FORMATO DE CHIFRES ESCOLHIDO: ${hornSelection.instruction} A última referência define somente os chifres; ignore o manequim, a cor e o fundo. Preserve rosto, identidade e os demais traços da referência do jogador.`
+    : '';
   const size = choices?.options.size?.[0] || raceRules[race].size;
   const origin = `Regras SRD 5.2.1 / 2024, nível 1 sem subclasse. Tamanho: ${size}.${choices ? ` Linhagem: ${choices.subrace}.` : ''}${race === 'Draconato' && choices ? ` Ancestralidade dracônica: ${choices.options.dragon[0]}.` : ''}`;
   const directory = resolve(
@@ -267,7 +303,9 @@ export async function generateCharacterArt(job: {
     );
   }
   // The native image tool accepts at most five references.
-  const useSheet = equipmentPaths.length > (job.companion ? 4 : hornReference ? 2 : 3);
+  const useSheet =
+    equipmentPaths.length >
+    (job.companion ? 4 : 3 - (hornReference ? 1 : warforgedReferences.length));
   const sheetPath = join(directory, 'equipment-sheet.png');
   if (useSheet) await writeFile(sheetPath, await equipmentReferenceSheet(job.equipment!));
   const attachedEquipment = useSheet ? [sheetPath] : equipmentPaths;
@@ -303,21 +341,27 @@ Transcreva as posições e opções ao prompt da ferramenta de imagem.`
   try {
     const render = async (repair = '', previousImage?: string): Promise<Buffer> => {
       await unlink(resultPath).catch(() => {});
-      const activeReferences = (previousImage
-        ? [previousImage]
-        : job.companion
-          ? [reference, ...attachedEquipment]
-          : [style, reference, ...attachedEquipment]).concat(hornReference ? [hornReference] : []);
+      const activeReferences = (
+        previousImage
+          ? [previousImage]
+          : job.companion
+            ? [reference, ...attachedEquipment]
+            : [style, reference, ...attachedEquipment]
+      ).concat(hornReference ? [hornReference] : [], warforgedReferences);
       const prompt = previousImage
         ? `EDITE a primeira imagem anexada com a ferramenta nativa de imagem. Ela é a composição a corrigir. Preserve rosto, identidade, pose, enquadramento, estilo, cores e modelos dos equipamentos. Altere somente as regiões com os defeitos descritos abaixo, incluindo o tecido necessário para corrigir seu caimento.
 ${repair}
 ${ART_ANATOMY_RULES}
 ${hornInstructions}
+${warforgedInstructions}
+${warforgedReferenceInstructions}
 ${magicInstructions}
 ${job.companion ? 'Preserve anatomia e pose animal: não criar braços, mãos humanas, armas ou cavaleiro; patas, asas, focinho e cauda mantêm suas formas e proporções. Equipamento adaptado ao animal e sobreposto com oclusão natural.' : 'Respeite camadas naturais: capa sem mangas por cima das ombreiras e da armadura; luvas por cima dos anéis, inclusive luvas integradas às braçadeiras.'} Acessórios encobertos permanecem ocultos; nunca exponha uma peça através de outra nem desloque a peça que a encobre. Não cortar nem duplicar objetos. Se houver corte na borda, afaste a câmera e amplie o enquadramento até caber a silhueta inteira, com margem transparente de 8% em todos os lados.
 Use referenced_image_paths com ${JSON.stringify(activeReferences)}, transparent_background=true. Não use num_last_images_to_include. Devolva o caminho da imagem editada no JSON solicitado.`
         : `${instructions}\n${ART_ANATOMY_RULES}\n\n${job.companion ? '' : `Raça validada: ${race}. Classe validada: ${characterClass}. ${origin} Estatura de referência: ${Math.round(characterHeightScale(race, size) * 200)} cm (aproximação visual). Anatomia obrigatória: ${characterStature[race].anatomy}`} ${gearInstructions}
 ${hornInstructions}
+${warforgedInstructions}
+${warforgedReferenceInstructions}
 ${magicInstructions}
 Referências locais completas, na mesma ordem das imagens anexadas: ${JSON.stringify(activeReferences)}.
 Use referenced_image_paths com TODOS esses caminhos e transparent_background=true. Não use num_last_images_to_include. Enquadre a silhueta inteira, ${job.companion ? 'incluindo cauda, patas, asas e equipamento' : 'incluindo capa, armas e pés'}, com margem transparente de 8% em todos os lados; afaste a câmera se necessário. Gere agora com a ferramenta nativa.`;
@@ -478,7 +522,11 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
         job.companion,
         job.companion ? reference : undefined,
         magicalEquipment,
-        hornSelection && hornReference ? { instruction: hornSelection.instruction, reference: hornReference } : undefined,
+        hornSelection && hornReference
+          ? { instruction: hornSelection.instruction, reference: hornReference }
+          : undefined,
+        warforgedInstructions + '\n' + warforgedReferenceInstructions,
+        warforgedReferences,
       );
       const meta = await sharp(bytes).metadata();
       if (!meta.hasAlpha || (await sharp(bytes).stats()).isOpaque)

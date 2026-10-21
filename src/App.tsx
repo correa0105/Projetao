@@ -732,7 +732,6 @@ function Portal({ user }: { user: User }) {
                 >
                   <UserRound size={14} aria-hidden="true" /> Meu perfil
                 </button>
-                {administrator&&<button className="profile-home-button" onClick={()=>{setCharacterMenuOpen(false);setModal('recovery-mail');}}>Recuperação por e-mail</button>}
                 {character && (
                   <span
                     className="profile-character-summary"

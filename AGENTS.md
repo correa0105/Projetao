@@ -78,6 +78,13 @@ Correção de compatibilidade de 09/10: protocolo VTT 4 rejeita leituras/comando
 
 # Alvorada Cinzenta — instruções para continuidade
 
+21/10/2026 — Criação de Warforged permite seis estruturas e seis cabeças ilustradas,
+oito cores metálicas/quatro acabamentos, secundária sugerida ou personalizada.
+warforgedAppearance opcional no JSON existente; sem bônus mecânico ou reescrita
+de fichas antigas. Retrato/token e revisão preservam a escolha e os equipamentos.
+Artes originais PNG sem compressão; guia WARFORGED-APPEARANCE-20261021 e manifest
+de prompts em data/character-creation. Gmail de recuperação já ativado/testado.
+
 21/10/2026 — Durante o beta, novas contas recebem 6.000 PO uma única vez no primeiro
 personagem. Usar beta_accounts/grantBetaStartingGold e inscrição automática da
 migration 122, ativada explicitamente em beta_registration_settings no deploy.

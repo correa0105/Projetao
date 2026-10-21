@@ -1,0 +1,153 @@
+.warforged-appearance {
+  min-width: 0;
+  container-type: inline-size;
+  border: 1px solid #a98a494d;
+  padding: 16px;
+}
+.warforged-appearance > h3 {
+  margin: 0 0 8px;
+}
+.warforged-appearance > p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.warforged-appearance fieldset {
+  min-width: 0;
+  margin: 16px 0 0;
+  padding: 0;
+  border: 0;
+}
+.warforged-appearance legend {
+  padding: 0 0 10px;
+  font-weight: 600;
+}
+.warforged-design-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.warforged-design-options label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid #a98a494d;
+  background: #211d19;
+  cursor: pointer;
+}
+.warforged-design-options label.is-selected {
+  border-color: #d2ad68;
+  box-shadow: inset 0 0 0 1px #d2ad68;
+}
+.warforged-design-options label:focus-within {
+  outline: 2px solid #e4c07e;
+  outline-offset: 3px;
+}
+.warforged-design-options input[type='radio'] {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  left: 12px;
+  width: 18px;
+  height: 18px;
+  accent-color: #bf9854;
+}
+.warforged-design-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+.warforged-design-options strong {
+  font-size: 13px;
+}
+.warforged-design-options label > span:last-child {
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.warforged-material-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.warforged-material-fields label {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.warforged-material-fields select {
+  width: 100%;
+  min-width: 0;
+}
+.warforged-metal-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+.warforged-metal-preview > span {
+  width: 26px;
+  height: 26px;
+  border: 1px solid #a98a4970;
+  border-radius: 50%;
+}
+.warforged-accent-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.warforged-color-options {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+.warforged-color-options button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  padding: 8px 4px;
+  font-size: 11px;
+}
+.warforged-color-options button[aria-pressed='true'] {
+  outline: 2px solid #d2ad68;
+  outline-offset: -2px;
+}
+.warforged-color-options button > span:first-child {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #ffffff40;
+}
+.warforged-custom-color {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 12px;
+}
+.warforged-custom-color input[type='color'] {
+  width: 48px;
+  height: 36px;
+  padding: 3px;
+  cursor: pointer;
+}
+@container (max-width: 560px) {
+  .warforged-design-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .warforged-material-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .warforged-color-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

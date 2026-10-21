@@ -29,7 +29,7 @@ mesma forma que conhecidos. Limites de 3 pedidos/minuto e 5 redefinições/minut
 por IP, além dos demais controles de autenticação e origem.
 
 Remetente inicial é o Gmail da própria conta de administrador, por pedido do
-usuário. Menu do avatar → Recuperação por e-mail permite informar a senha de
+usuário. Configuração administrativa em `/#recovery-mail` permite informar a senha de
 aplicativo do Google, verificar a conexão antes de salvar e enviar teste somente
 ao próprio administrador. Nenhuma credencial é pedida pelo chat. Endereço vem
 da sessão autenticada; cliente não escolhe remetente nem destinatário do teste.
@@ -45,6 +45,11 @@ Sem a autorização do Gmail, recuperação devolve indisponibilidade explícita
 não fingir que um e-mail foi enviado. Ativação real depende do usuário concluir
 a verificação em duas etapas e criar a senha de aplicativo no Google. Não
 automatizar criação/alteração dessa credencial por UI.
+
+Ativação na Hostinger concluída em 21/10: Gmail verificou a credencial e aceitou
+o envio do teste para o administrador. A pedido posterior, retirar o botão
+“Recuperação por e-mail” do menu do perfil; conservar Esqueci minha senha no login
+e o acesso restrito à configuração para manutenção. Nunca publicar a credencial.
 
 O release incremental inclui pacote Nodemailer oficial após conferir SHA-512
 com o lock e hashes de todos os arquivos do payload. Manifesto admite somente

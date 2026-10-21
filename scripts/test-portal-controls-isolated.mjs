@@ -11,7 +11,9 @@ const database = 'alvorada_test_' + randomUUID().replaceAll('-', '');
 await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
-  const args = process.argv.includes('--beta-gold')
+  const args = process.argv.includes('--warforged')
+    ? ['scripts/smoke-warforged-appearance.ts']
+    : process.argv.includes('--beta-gold')
     ? ['--test','--test-concurrency=1','tests/beta-accounts.test.ts','tests/open-beta-starting-gold.test.ts']
     : process.argv.includes('--shortcuts')
     ? ['scripts/smoke-vtt-shortcuts.ts']
@@ -43,6 +45,7 @@ try {
           process.argv.includes('--creation-spells') ||
           process.argv.includes('--account-access') ||
           process.argv.includes('--shortcuts') ||
+          process.argv.includes('--warforged') ||
           process.argv.includes('--vtt-entry') ||
           process.argv.includes('--guild-door') ||
           process.argv.includes('--pins-browser')
