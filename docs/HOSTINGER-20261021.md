@@ -1,6 +1,8 @@
 # Publicação na VPS Hostinger
 
-Publicado em **https://srv2083419.hstgr.cloud** em 21/10/2026.
+Publicado em **https://alvoradacinzenta.com** em 21/10/2026.
+O hostname anterior `srv2083419.hstgr.cloud` e `www.alvoradacinzenta.com`
+redirecionam para esse endereço, preservando caminhos, parâmetros e links de mesas.
 
 VPS KVM 2, **Brasil — Campinas**, Ubuntu 24.04 LTS, IP `200.141.20.34`.
 Plano contratado ate 21/11/2026. A oferta mensal consultada indicava renovacao de
@@ -38,9 +40,19 @@ contas removidas acompanham a exclusao. O backup imediatamente anterior ficou em
 Sessoes, credenciais e registros beta das contas removidas ficaram zerados.
 HTTPS e a saude do app e banco foram conferidos depois da limpeza.
 
-O dominio proprio ainda depende da escolha do proprietario. `.cinzenta` nao existe
-na raiz DNS da IANA. O painel mostrou `alvoradacinzenta.tech` disponivel, gratis por
-um ano no beneficio da VPS, com renovacao paga posterior; o dominio nao foi registrado.
+O proprietario comprou `alvoradacinzenta.com` na Hostinger, com validade exibida ate
+21/10/2029, e confirmou o e-mail de registro. O registro A de `@` foi alterado de
+`2.57.91.91` para `200.141.20.34`, TTL 300; o CNAME de `www` para o dominio raiz
+foi preservado. Nameservers e outros servicos nao foram alterados. Caddy emitiu
+certificados Let's Encrypt validos para o dominio raiz e `www`; o hostname antigo
+conserva seu certificado e encaminha para o novo dominio. Better Auth, origem do app
+e origem dos links de compartilhamento usam o novo endereco. Ao mudar de dominio,
+o navegador pode pedir login novamente; a conta e a mesa continuam as mesmas.
+
+O link antigo real da mesa foi aberto no navegador e chegou a
+`https://alvoradacinzenta.com/#vtt?room=94266d3e-ebcd-40c5-b344-5afdb138b6d5`,
+com o fragmento completo preservado. HTTP redireciona para HTTPS; os aliases
+respondem com 301 e preservam tambem os parametros enviados ao servidor.
 
 ## Validacao executada
 
@@ -53,17 +65,19 @@ um ano no beneficio da VPS, com renovacao paga posterior; o dominio nao foi regi
   autenticadas de perfil, personagens e sincronizacao VTT; zero erros em 20,6 s.
   P50 179 ms, P95 300 ms, P99 447 ms. Isto mede o backend nessa simulacao, nao a
   renderizacao 3D em 60 computadores nem todas as combinacoes de uso real.
-- A suite geral foi executada separadamente: 639 aprovados e 39 falhas entre 678
+- A suite geral foi executada separadamente: 642 aprovados e 39 falhas entre 681
   testes. Ha falhas em cenarios de armaduras, catalogo, House, guildas, VTT e efeitos
   e dois processos de teste que nao encerraram. Nao considerar a suite geral verde;
   as partes relacionadas a esta publicacao tiveram verificacao especifica aprovada.
+  Os nomes das falhas coincidem com a execucao anterior, sem novos nomes de falha.
 - Pagina inicial, imagem do mundo e `/api/health` respondem por HTTPS.
 
 ## Configuração no servidor
 
 Usar `/opt/alvorada` como diretório do projeto. O hostname público da VPS pode
 servir como endereço temporário, desde que seu DNS aponte para o servidor e
-permita a emissão de certificado. Um domínio próprio pode ser configurado depois.
+permita a emissão de certificado. Um domínio próprio deve apontar para o IP da VPS
+antes da troca.
 
 Copiar `deploy/hostinger/env.example` para `.env.hostinger`, definir `SITE_HOST`
 (somente hostname, sem protocolo ou caminho) e gerar novos segredos aleatórios
@@ -76,12 +90,31 @@ docker compose --env-file .env.hostinger -f compose.hostinger.yaml config --quie
 docker compose --env-file .env.hostinger -f compose.hostinger.yaml up -d db
 ```
 
-A imagem foi construida em `/opt/alvorada/source`, a partir do commit `3e7f9ebb`
-da branch `Welson`, acrescido dos ajustes desta publicacao. Tag em uso:
-`alvorada-cinzenta:hostinger-20261021`. Para novas versoes, construir uma tag validada
+A primeira imagem foi construida em `/opt/alvorada/source`, a partir do commit
+`3e7f9ebb` da branch `Welson`, acrescido dos ajustes desta publicacao, com a tag
+`alvorada-cinzenta:hostinger-20261021`. A versao atual e
+`alvorada-cinzenta:north-map-20261021`, construida a partir de `d7827efb`, incluindo
+os controles do portal e o mapa definitivo do Reino do Norte. Para novas versoes, construir uma tag validada
 e atualizar `ALVORADA_IMAGE`, preservando a possibilidade de retorno.
 `data/vtt/premium-art` foi inicializado a partir do codigo e montado para leitura. Os demais
 arquivos de cliente e de dados fazem parte da imagem.
+
+Para trocar de dominio, atualizar `SITE_HOST` no `.env.hostinger`. Os aliases
+opcionais ficam em `deploy/hostinger/redirects/*.caddy`, fora do Git; o exemplo
+`deploy/hostinger/redirect.example` mostra o formato. Usar apenas nomes diferentes
+do dominio principal e com DNS apontado para a VPS. O diretorio pode ficar vazio
+em uma instalacao nova. O Compose monta esses arquivos somente para leitura.
+Validar o Caddyfile antes de publicar; recriar `app` e `proxy` para atualizar as
+origens do Better Auth e os certificados. Manter os volumes do Caddy.
+
+A configuracao com e sem aliases foi aprovada pelo `caddy validate` da imagem
+fixada no Compose. Backup anterior ao mapa:
+`/opt/alvorada/backups/north-map-before-20261021T171001Z.dump`. Configuracoes
+anteriores ao dominio: prefixo `/opt/alvorada/backups/domain-before-20261021T171132Z`.
+A verificacao somente de leitura confirmou os mesmos registros e saldos apos
+ambas as publicacoes, alem do mapa original por SHA-256 e das alas em manutencao.
+O HTML e os tres bundles iniciais servidos pelo dominio novo correspondem
+exatamente ao build validado localmente.
 
 ## Banco e passagem para o servidor
 

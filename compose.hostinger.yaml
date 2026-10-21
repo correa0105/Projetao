@@ -72,6 +72,7 @@ services:
       - '443:443/udp'
     volumes:
       - ./deploy/hostinger/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./deploy/hostinger/redirects:/etc/caddy/redirects:ro
       - caddy_data:/data
       - caddy_config:/config
     logging: *logging

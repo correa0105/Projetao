@@ -18,6 +18,9 @@ O arquivo publicado mantém esse mesmo hash. Verificação de navegador em
 1440×900 e 390×844 cobriu o clique no território no Mundo, bytes da imagem servida,
 metadados 4096×2633, projeção sem compressão vertical, abertura do registro de missões
 e retorno ao Mundo. Capturas em `test-results/portal-controls/north-map-*.png`.
+Publicado em `https://alvoradacinzenta.com` com a imagem Docker
+`alvorada-cinzenta:north-map-20261021`; os bytes servidos em producao conservam
+o hash original. Backup anterior: `/opt/alvorada/backups/north-map-before-20261021T171001Z.dump`.
 
 ## Cena
 

@@ -7,3 +7,6 @@
     header_up X-Forwarded-Host {host}
   }
 }
+
+# Optional aliases are configured per deployment; an empty directory is valid.
+import redirects/*.caddy

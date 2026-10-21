@@ -1,0 +1,5 @@
+# Copy to redirects/aliases.caddy and replace these example hostnames.
+# Only include aliases distinct from SITE_HOST, with DNS pointing to this VPS.
+www.seu-dominio.com, seu-antigo-hostname.hstgr.cloud {
+  redir https://{$SITE_HOST}{uri} permanent
+}
