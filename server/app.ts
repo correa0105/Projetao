@@ -203,7 +203,8 @@ export function createApp() {
   });
   app.use('/api', (req, _res, next) => {
     const area = req.path.split('/')[1];
-    if (['events', 'events-scene', 'event-images'].includes(area)) requireAreaAvailable('events');
+    const eventMediaWrite = area === 'event-images' && !['GET', 'HEAD'].includes(req.method);
+    if (['events', 'events-scene'].includes(area) || eventMediaWrite) requireAreaAvailable('events');
     if (area === 'tower') requireAreaAvailable('tower');
     next();
   });

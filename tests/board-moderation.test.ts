@@ -2,10 +2,11 @@ import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import type { Server } from 'node:http';
+import sharp from 'sharp';
 import { pool } from '../server/db.js';
 import { migrate } from '../server/migrate.js';
 import { seed } from '../server/seed.js';
-import { createLegacyTestCharacter } from './character-fixtures.js';
+import { createLegacyTestCharacter, testArtImage } from './character-fixtures.js';
 
 if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
   throw Error('Banco descartável obrigatório.');
@@ -162,10 +163,31 @@ test('administrador remove missão alheia sem desfazer recompensas; jogador e pr
   missions.push(seeded.id);
   assert(seeded);
   assert.equal((await request(`/board/${seeded.id}`, admin, 'DELETE')).status, 200);
+  assert.equal(
+    (await request(`/board/${seeded.id}/join`, player, 'POST', { character_id: character.id }))
+      .status,
+    409,
+  );
 });
 
 test('manutenção bloqueia Eventos e Torre por API para jogadores e administradores sem alterar dados', async () => {
   const previous = process.env.MAINTENANCE_AREAS;
+  await request('/calendar?month=2030-01', admin);
+  const calendarBefore = (await pool.query('SELECT document FROM guild_calendar WHERE id=1'))
+    .rows[0].document;
+  const bytes = await sharp(await testArtImage())
+    .webp()
+    .toBuffer();
+  const image = (
+    await pool.query('INSERT INTO event_images(author_id,bytes)VALUES($1,$2)RETURNING id', [
+      admin.id,
+      bytes,
+    ])
+  ).rows[0];
+  await pool.query(
+    "UPDATE guild_calendar SET document=jsonb_set(document,'{background}',to_jsonb($1::text)) WHERE id=1",
+    ['/api/event-images/' + image.id],
+  );
   const before = (
     await pool.query(
       "SELECT (SELECT count(*) FROM board_posts WHERE kind='event')::int AS events,(SELECT count(*) FROM tower_expeditions)::int AS expeditions",
@@ -178,7 +200,7 @@ test('manutenção bloqueia Eventos e Torre por API para jogadores e administrad
       for (const [path, method] of [
         ['/events', 'GET'],
         ['/events-scene', 'GET'],
-        ['/event-images/' + randomUUID(), 'GET'],
+        ['/event-images', 'POST'],
         ['/tower', 'GET'],
         ['/tower/expeditions', 'POST'],
         ['/tower/expeditions/' + randomUUID() + '/treasure', 'POST'],
@@ -187,6 +209,15 @@ test('manutenção bloqueia Eventos e Torre por API para jogadores e administrad
         assert.equal(response.status, 503, path);
         assert.match(response.data.error, /manutenção/);
       }
+      const asset = await fetch(base + '/api/event-images/' + image.id, {
+        headers: { Cookie: client.cookie },
+      });
+      assert.equal(
+        asset.status,
+        200,
+        'A imagem compartilhada com o calendário continua disponível',
+      );
+      assert.deepEqual(Buffer.from(await asset.arrayBuffer()), bytes);
     }
     assert.equal(
       (
@@ -217,6 +248,8 @@ test('manutenção bloqueia Eventos e Torre por API para jogadores e administrad
     process.env.MAINTENANCE_AREAS = '';
     assert.equal((await request('/events', admin)).status, 200);
   } finally {
+    await pool.query('UPDATE guild_calendar SET document=$1 WHERE id=1', [calendarBefore]);
+    await pool.query('DELETE FROM event_images WHERE id=$1', [image.id]);
     if (previous === undefined) delete process.env.MAINTENANCE_AREAS;
     else process.env.MAINTENANCE_AREAS = previous;
   }
