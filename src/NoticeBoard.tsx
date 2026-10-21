@@ -31,6 +31,7 @@ export function NoticeBoard({
   userId,
   renderPost,
   canCreateEvent,
+  eventsInMaintenance = false,
   onPublish,
   onPaperChange,
   feedback,
@@ -39,6 +40,7 @@ export function NoticeBoard({
   userId: string;
   renderPost: (post: Post) => ReactNode;
   canCreateEvent: boolean;
+  eventsInMaintenance?: boolean;
   onPublish: (kind: 'mission' | 'event', eventId?: string) => void;
   onPaperChange: () => Promise<void>;
   feedback?: string;
@@ -256,9 +258,9 @@ export function NoticeBoard({
           {categories.map((c) => (
             <button
               key={c.kind}
-              disabled={c.kind === 'event' && activeEvents.length === 0 && !canCreateEvent}
+              disabled={c.kind === 'event' && (eventsInMaintenance || (activeEvents.length === 0 && !canCreateEvent))}
               title={
-                c.kind === 'event' && activeEvents.length === 0
+                c.kind === 'event' && eventsInMaintenance ? 'Eventos em manutenção' : c.kind === 'event' && activeEvents.length === 0
                   ? 'Nenhum evento ativo no servidor'
                   : undefined
               }

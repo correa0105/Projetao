@@ -6,6 +6,7 @@ export type User = {
   administrador?: 0 | 1;
   gold_unlimited?: boolean;
   canEditKingdom?: boolean;
+  maintenance_areas?: import('../shared/maintenance').MaintenanceArea[];
 };
 export type Character = {
   species_size?: string;

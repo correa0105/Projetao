@@ -1,4 +1,5 @@
 import { ensurePersonalVtt, personalVttUrl } from './vtt-accounts.js';
+import { maintenanceAreas, requireAreaAvailable } from './maintenance.js';
 import { homeUpdatesRouter } from './home-updates.js';
 import { calendarRouter } from './calendar.js';
 import { loreRouter } from './lore.js';
@@ -200,6 +201,19 @@ export function createApp() {
     }
     next();
   });
+  app.use('/api', (req, _res, next) => {
+    const area = req.path.split('/')[1];
+    if (['events', 'events-scene', 'event-images'].includes(area)) requireAreaAvailable('events');
+    if (area === 'tower') requireAreaAvailable('tower');
+    next();
+  });
+  app.use('/api/board/:id', async (req, _res, next) => {
+    if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method) && maintenanceAreas().includes('events')) {
+      const post = await pool.query("SELECT 1 FROM board_posts WHERE id=$1 AND kind='event'", [uuid.parse(req.params.id)]);
+      if (post.rowCount) requireAreaAvailable('events');
+    }
+    next();
+  });
   // Frequent read-only updates have their own authenticated-user budget. Players
   // on one connection must not exhaust each other's chat and mutation allowance.
   // The 330-art compendium also needs an independent budget: loading thumbnails
@@ -282,6 +296,7 @@ export function createApp() {
             ? 'staff'
             : 'player',
       canEditKingdom: permission?.administrador === 1,
+      maintenance_areas: maintenanceAreas(),
     });
   });
   app.get('/api/characters', async (_req, res) => {
@@ -384,7 +399,7 @@ export function createApp() {
       COALESCE((SELECT json_agg(json_build_object('id',t.id,'name',t.name) ORDER BY t.name) FROM mission_post_tags mt JOIN mission_tags t ON t.id=mt.tag_id WHERE mt.post_id=b.id),'[]') AS tags,
       COALESCE((SELECT json_agg(json_build_object('name',c.name,'experience',r.experience,'gold_cp',r.gold_cp,'progression_credit',r.progression_credit,'level_after',r.level_after,'rank_promoted',r.rank_promoted)) FROM mission_rewards r JOIN characters c ON c.id=r.character_id WHERE r.post_id=b.id AND (c.user_id=$1 OR b.author_id=$1)),'[]') AS rewards
       FROM board_posts b LEFT JOIN "user" u ON u.id=b.author_id LEFT JOIN vtt_personal_spaces v ON v.user_id=b.author_id
-      WHERE ($2::text IS NULL OR b.region_id=$2) AND ($3::text IS NULL OR b.location_id=$3)
+      WHERE b.deleted_at IS NULL AND ($2::text IS NULL OR b.region_id=$2) AND ($3::text IS NULL OR b.location_id=$3)
       ORDER BY b.created_at DESC`,
       [res.locals.user.id, filters.region_id || null, filters.location_id || null],
     );
@@ -392,6 +407,7 @@ export function createApp() {
   });
   app.post('/api/board', async (req, res) => {
     const data = postSchema.parse(req.body);
+    if (data.kind === 'event' || data.event_source_id) requireAreaAvailable('events');
     if (data.kind !== 'mission' && data.tag_ids.length)
       throw new AppError(400, 'Somente missões concedem tags.');
     if (data.rank_test_level !== null && rankName(data.rank_test_level) !== data.mission_rank)
@@ -409,7 +425,7 @@ export function createApp() {
         if (data.kind !== 'mission')
           throw new AppError(400, 'Somente missões podem pertencer a um evento.');
         const event = await client.query(
-          "SELECT id FROM board_posts WHERE id=$1 AND kind='event' AND status='active' FOR SHARE",
+          "SELECT id FROM board_posts WHERE id=$1 AND kind='event' AND status='active' AND deleted_at IS NULL FOR SHARE",
           [data.event_source_id],
         );
         if (!event.rowCount)
@@ -453,6 +469,16 @@ export function createApp() {
       .status(201)
       .json(await publishMissionHook(uuid.parse(req.params.id), res.locals.user.id, req.body));
   });
+  app.delete('/api/board/:id', async (req, res) => {
+    const id = uuid.parse(req.params.id);
+    await transaction(async (client) => {
+      await requireAdministrator(res.locals.user.id, client);
+      const { rows: [mission] } = await client.query('SELECT kind FROM board_posts WHERE id=$1 FOR UPDATE', [id]);
+      if (!mission || mission.kind !== 'mission') throw new AppError(404, 'Missão não encontrada.');
+      await client.query('UPDATE board_posts SET deleted_at=now(),deleted_by=$2 WHERE id=$1 AND deleted_at IS NULL', [id, res.locals.user.id]);
+    });
+    res.json({ ok: true });
+  });
   app.patch('/api/board/:id/paper', async (req, res) => {
     const id = uuid.parse(req.params.id);
     const data = z
@@ -465,7 +491,7 @@ export function createApp() {
       .parse(req.body);
     const result = await pool.query(
       `UPDATE board_posts SET paper_x=$3,paper_y=$4,paper_style=$5
-       WHERE id=$1 AND ((kind='event' AND ${administratorPredicate(2)}) OR (kind<>'event' AND author_id=$2)) RETURNING id,paper_x,paper_y,paper_style`,
+       WHERE id=$1 AND deleted_at IS NULL AND ((kind='event' AND ${administratorPredicate(2)}) OR (kind<>'event' AND author_id=$2)) RETURNING id,paper_x,paper_y,paper_style`,
       [id, res.locals.user.id, data.paper_x, data.paper_y, data.paper_style],
     );
     if (!result.rowCount) throw new AppError(403, 'Somente o autor pode alterar este papel.');
@@ -477,7 +503,7 @@ export function createApp() {
     await transaction(async (client) => {
       const {
         rows: [post],
-      } = await client.query('SELECT * FROM board_posts WHERE id=$1 FOR UPDATE', [id]);
+      } = await client.query('SELECT * FROM board_posts WHERE id=$1 AND deleted_at IS NULL FOR UPDATE', [id]);
       if (!post || post.kind !== 'mission' || post.status !== 'open')
         throw new AppError(409, 'Esta missão não está aberta para inscrições.');
       const {
@@ -513,7 +539,7 @@ export function createApp() {
     if (
       !(
         await pool.query(
-          "SELECT 1 FROM board_posts WHERE id=$1 AND author_id=$2 AND kind='mission'",
+          "SELECT 1 FROM board_posts WHERE id=$1 AND author_id=$2 AND kind='mission' AND deleted_at IS NULL",
           [id, res.locals.user.id],
         )
       ).rowCount
@@ -548,7 +574,7 @@ export function createApp() {
       rows: [post],
     } = await pool.query(
       `UPDATE board_posts SET status=$1,event_revision=event_revision+CASE WHEN kind='event' THEN 1 ELSE 0 END,closed_at=CASE WHEN $1 IN ('completed','closed') THEN now() ELSE NULL END
-      WHERE id=$2 AND author_id=$3 AND status=ANY($4::text[]) AND kind <> 'hook'
+      WHERE id=$2 AND deleted_at IS NULL AND author_id=$3 AND status=ANY($4::text[]) AND kind <> 'hook'
       AND NOT (kind='mission' AND $1='completed')
       AND (kind <> 'event' OR ${administratorPredicate(3)}) RETURNING *`,
       [status, id, res.locals.user.id, allowed],

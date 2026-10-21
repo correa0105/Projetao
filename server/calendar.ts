@@ -22,7 +22,7 @@ export function calendarRouter() {
     const [settings, posts, publications] = await Promise.all([
       pool.query('SELECT document,revision FROM guild_calendar WHERE id=1'),
       pool.query(
-        `SELECT b.id,b.kind,b.title,b.description,b.starts_at,b.location,b.status,b.created_at,b.event_revision,b.event_presentation AS presentation,u.name AS author_name FROM board_posts b LEFT JOIN "user" u ON u.id=b.author_id WHERE b.kind IN ('event','mission') AND (b.starts_at AT TIME ZONE 'America/Sao_Paulo')::date >= $1::date AND (b.starts_at AT TIME ZONE 'America/Sao_Paulo')::date < ($1::date+interval '1 month') ORDER BY b.starts_at,b.id`,
+        `SELECT b.id,b.kind,b.title,b.description,b.starts_at,b.location,b.status,b.created_at,b.event_revision,b.event_presentation AS presentation,u.name AS author_name FROM board_posts b LEFT JOIN "user" u ON u.id=b.author_id WHERE b.deleted_at IS NULL AND b.kind IN ('event','mission') AND (b.starts_at AT TIME ZONE 'America/Sao_Paulo')::date >= $1::date AND (b.starts_at AT TIME ZONE 'America/Sao_Paulo')::date < ($1::date+interval '1 month') ORDER BY b.starts_at,b.id`,
         [month + '-01'],
       ),
       pool.query(

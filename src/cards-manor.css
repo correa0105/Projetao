@@ -216,3 +216,40 @@
   :root .app-shell[data-page='cards'] .cards-room .cards-pagination { margin-top: 10px; padding-top: 8px; }
   :root .app-shell[data-page='cards'] .cards-room .cards-pagination button { min-height: 32px; }
 }
+
+/* Keep the heading and panel in one flow so wrapped titles cannot be covered. */
+:root .app-shell[data-page='cards'] .cards-room {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding-bottom: 78px;
+}
+:root .app-shell[data-page='cards'] .cards-room > .cards-room-content {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  width: min(720px, 59vw);
+  margin: 100px 0 0 var(--page-header-edge);
+}
+:root .app-shell[data-page='cards'] .cards-room > .cards-room-content > header {
+  position: static;
+  max-width: 100%;
+}
+:root .app-shell[data-page='cards'] .cards-room > .cards-workbench {
+  position: relative;
+  inset: auto;
+  flex: 1 1 auto;
+  margin-top: 18px;
+}
+@media (max-width: 1000px) {
+  :root .app-shell[data-page='cards'] .cards-room > .cards-room-content { width: min(640px, 72vw); margin-left: 22px; }
+}
+@media (max-width: 900px) {
+  :root .app-shell[data-page='cards'] .cards-room > .cards-room-content { margin-top: calc(2 * var(--page-header-height) + 58px); }
+}
+@media (max-width: 650px) {
+  :root .app-shell[data-page='cards'] .cards-room { padding-bottom: 90px; }
+  :root .app-shell[data-page='cards'] .cards-room > .cards-room-content { align-self: stretch; width: auto; margin: calc(2 * var(--page-header-height) + 58px) 18px 0; }
+  :root .app-shell[data-page='cards'] .cards-room > .cards-workbench { align-self: stretch; flex: 0 0 auto; margin-top: 18px; }
+}

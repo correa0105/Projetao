@@ -40,6 +40,7 @@ services:
       APP_ORIGIN: https://${SITE_HOST:?Configure SITE_HOST}
       APP_SHARE_ORIGIN: https://${SITE_HOST:?Configure SITE_HOST}
       TRUST_REVERSE_PROXY: '1'
+      MAINTENANCE_AREAS: ${MAINTENANCE_AREAS-events,tower}
       PORT: '3000'
       VTT_TRANSLATOR_URL: http://translator:5000
     # Only Caddy can receive public requests; do not publish the app's port.

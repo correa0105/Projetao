@@ -25,7 +25,7 @@ async function insertHook(
   // Both publication paths serialize on the source mission, including concurrent requests.
   const {
     rows: [mission],
-  } = await client.query('SELECT * FROM board_posts WHERE id=$1 FOR UPDATE', [id]);
+  } = await client.query('SELECT * FROM board_posts WHERE id=$1 AND deleted_at IS NULL FOR UPDATE', [id]);
   if (!mission || mission.kind !== 'mission' || mission.author_id !== userId)
     throw new AppError(403, 'Somente o criador da missão pode registrar seu gancho.');
   if (mission.status !== 'completed')
@@ -86,7 +86,7 @@ export async function completeMission(
     // Same lock as inscriptions/status changes: the roster cannot change during settlement.
     const {
       rows: [mission],
-    } = await client.query('SELECT * FROM board_posts WHERE id=$1 FOR UPDATE', [id]);
+    } = await client.query('SELECT * FROM board_posts WHERE id=$1 AND deleted_at IS NULL FOR UPDATE', [id]);
     if (!mission || mission.author_id !== userId)
       throw new AppError(403, 'Somente o criador pode concluir esta missão.');
     if (mission.kind !== 'mission' || mission.status !== 'active')

@@ -169,13 +169,6 @@ export function Cards({
         <div className="cards-room-backdrop" aria-hidden="true" />
         <div className="cards-room-shade" aria-hidden="true" />
 
-        <div className="cards-room-content">
-          <header>
-            <span className="eyebrow">O SALÃO DA MEIA-NOITE</span>
-            <h2>Histórias que escolhem companhia.</h2>
-            <p>Escolha as cartas que seguirão com {character?.name || 'seu personagem'}.</p>
-          </header>
-        </div>
         <CardsHost
           expanded={conversation && questions}
           onTalk={() =>
@@ -209,6 +202,13 @@ export function Cards({
             )}
           </aside>
         )}
+      </div>
+      <div className="cards-room-content">
+        <header>
+          <span className="eyebrow">O SALÃO DA MEIA-NOITE</span>
+          <h2>Histórias que escolhem companhia.</h2>
+          <p>Escolha as cartas que seguirão com {character?.name || 'seu personagem'}.</p>
+        </header>
       </div>
       <div className="cards-workbench">
         <div className="cards-playset">

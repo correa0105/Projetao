@@ -265,7 +265,7 @@ export function missionTagsRouter() {
       id = uuid.parse(req.params.id);
     await transaction(async (db) => {
       const mission = (
-        await db.query('SELECT author_id,kind,status FROM board_posts WHERE id=$1 FOR UPDATE', [id])
+        await db.query('SELECT author_id,kind,status FROM board_posts WHERE id=$1 AND deleted_at IS NULL FOR UPDATE', [id])
       ).rows[0];
       if (
         !mission ||

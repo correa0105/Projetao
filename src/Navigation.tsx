@@ -15,6 +15,7 @@ import {
   BookIcon,
 } from './GuildIcons';
 import type { Page } from './types';
+import type { MaintenanceArea } from '../shared/maintenance';
 
 type Destination = { page: Page; label: string };
 
@@ -82,7 +83,7 @@ const packages: {
   },
 ];
 
-export function Navigation({ page, go }: { page: Page; go: (page: Page) => void }) {
+export function Navigation({ page, go, maintenanceAreas = [] }: { page: Page; go: (page: Page) => void; maintenanceAreas?: MaintenanceArea[] }) {
   const [open, setOpen] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [caption, setCaption] = useState<string | null>(null);
@@ -309,6 +310,8 @@ export function Navigation({ page, go }: { page: Page; go: (page: Page) => void 
               <button
                 key={target}
                 className="dock-destination"
+                disabled={maintenanceAreas.includes(target as MaintenanceArea)}
+                title={maintenanceAreas.includes(target as MaintenanceArea) ? 'Em manutenção' : undefined}
                 aria-current={page === target ? 'page' : undefined}
                 onClick={() => navigate(target)}
               >
@@ -321,7 +324,7 @@ export function Navigation({ page, go }: { page: Page; go: (page: Page) => void 
                   width={30}
                   height={30}
                 />
-                <span>{label}</span>
+                <span>{label}{maintenanceAreas.includes(target as MaintenanceArea) && <small style={{ display: 'block', fontSize: '0.75em' }}>Em manutenção</small>}</span>
               </button>
             ))}
           </div>

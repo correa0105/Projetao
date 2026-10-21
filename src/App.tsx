@@ -1,4 +1,5 @@
 import { copyText } from './copy-text';
+import { maintenanceMessage, type MaintenanceArea } from '../shared/maintenance';
 import { vttPersonalHref } from '../shared/vtt-links';
 import { HomeJournal } from './HomeJournal';
 import { AccountPreview } from './AccountPreview';
@@ -143,6 +144,9 @@ export default function App() {
 
 function Portal({ user }: { user: User }) {
   const [administrator, setAdministrator] = useState(false);
+  const [maintenanceAreas, setMaintenanceAreas] = useState<MaintenanceArea[]>([]);
+  const [deletingMission, setDeletingMission] = useState<Post | null>(null);
+  const [deletionError, setDeletionError] = useState('');
   const [canEditKingdom, setCanEditKingdom] = useState(false);
   const [completingMission, setCompletingMission] = useState<Post | null>(null);
   const [now, setNow] = useState(Date.now());
@@ -175,6 +179,7 @@ function Portal({ user }: { user: User }) {
     const catalogue=api<Item[]>('/catalog').then(items=>{setCatalog(items);setCatalogError('');}).catch(error=>{setCatalogError(error.message);throw error;}).finally(()=>setCatalogLoading(false));
     const essentials=Promise.all([api<Character[]>('/characters'),api<Post[]>('/board'),api<Entry[]>('/world'),api<User>('/me')]).then(([nextCharacters,nextPosts,nextEntries,me])=>{
       setCharacters(nextCharacters);setPosts(nextPosts);setEntries(nextEntries);setAdministrator(me.administrador===1);setCanEditKingdom(me.canEditKingdom===true);
+      setMaintenanceAreas(me.maintenance_areas || []);
     });
     // Opening camp or the journal never waits for the multi-megabyte shop catalogue.
     if(options?.backgroundCatalog){void catalogue.catch(()=>{});await essentials;}
@@ -428,7 +433,7 @@ function Portal({ user }: { user: User }) {
           </span>
           {item.author_id === user.id &&
             item.kind !== 'hook' &&
-            (item.kind !== 'event' || administrator) &&
+            (item.kind !== 'event' || (administrator && !maintenanceAreas.includes('events'))) &&
             ['open', 'active'].includes(item.status) && (
               <div>
                 {item.status === 'open' && (
@@ -484,6 +489,11 @@ function Portal({ user }: { user: User }) {
                 </button>
               </div>
             )}
+          {administrator && item.kind === 'mission' && (
+            <button disabled={busy} onClick={() => { setDeletionError(''); setDeletingMission(item); }}>
+              Excluir missão
+            </button>
+          )}
         </div>
       )}
     </article>
@@ -539,6 +549,10 @@ function Portal({ user }: { user: User }) {
         </Suspense>
       );
     if (page === 'overview') return <HomeJournal upcoming={upcoming} canEdit={administrator} />;
+    if ((page === 'events' || page === 'tower') && maintenanceAreas.includes(page))
+      return <Empty title={page === 'events' ? 'Eventos em manutenção' : 'Torre em manutenção'} action={<button className="button" onClick={() => go('board')}>Voltar ao mural</button>}>
+        {maintenanceMessage(page)}
+      </Empty>;
     if (page === 'events') return <Events />;
     if (page === 'tower')
       return (
@@ -647,7 +661,8 @@ function Portal({ user }: { user: User }) {
             onPaperChange={refresh}
             feedback={toast}
             renderPost={(item) => postCard(item, false)}
-            canCreateEvent={administrator}
+            canCreateEvent={administrator && !maintenanceAreas.includes('events')}
+            eventsInMaintenance={maintenanceAreas.includes('events')}
             onPublish={(kind, eventId) => {
               setPostEventId(eventId);
               setPostKind(kind);
@@ -760,7 +775,7 @@ function Portal({ user }: { user: User }) {
           )}
         </main>
       </div>
-      <Navigation page={page} go={go} />
+      <Navigation page={page} go={go} maintenanceAreas={maintenanceAreas} />
       {toast && <FlashMessage kind="info">{toast}</FlashMessage>}
       {modal === 'character' && (
         <Modal
@@ -784,7 +799,7 @@ function Portal({ user }: { user: User }) {
         <Modal title="Um chamado à guilda" close={() => setModal(null)}>
           <PostForm
             initialKind={postFromAtlas ? 'mission' : postKind}
-            canCreateEvent={!postFromAtlas && !postEventId && administrator}
+            canCreateEvent={!postFromAtlas && !postEventId && administrator && !maintenanceAreas.includes('events')}
             initialLocation={postLocation}
             initialEventId={postEventId}
             requireMappedLocation={postFromAtlas}
@@ -799,6 +814,24 @@ function Portal({ user }: { user: User }) {
               );
             }}
           />
+        </Modal>
+      )}
+      {deletingMission && (
+        <Modal title="Excluir missão do mural" close={() => { if (!busy) setDeletingMission(null); }}>
+          <p>Excluir “{deletingMission.title}” do mural?</p>
+          <p>O ouro, a progressão e as recompensas já entregues serão mantidos.</p>
+          {deletionError && <FlashMessage>{deletionError}</FlashMessage>}
+          <div className="dialog-actions">
+            <button className="button" disabled={busy} onClick={() => setDeletingMission(null)}>Cancelar</button>
+            <button className="button primary" disabled={busy} onClick={async () => {
+              setBusy(true); setDeletionError('');
+              try {
+                await api(`/board/${deletingMission.id}`, { method: 'DELETE' });
+                await refresh(); setDeletingMission(null); setToast('Missão excluída do mural.');
+              } catch (error) { setDeletionError((error as Error).message); }
+              finally { setBusy(false); }
+            }}>{busy ? 'Excluindo…' : 'Excluir missão'}</button>
+          </div>
         </Modal>
       )}
       {completingMission && (
