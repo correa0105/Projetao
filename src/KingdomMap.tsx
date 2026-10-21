@@ -1,7 +1,10 @@
 import { FlashMessage } from './FlashMessage';
+import { KingdomPinIcon } from './KingdomPinIcon';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   Focus,
+  Eye,
+  EyeOff,
   MapPin,
   ScrollText,
   Copy,
@@ -159,6 +162,16 @@ export function KingdomMap({
   const controlsRef = useRef<Controls | null>(null);
   const pinNodes = useRef(new Map<string, HTMLButtonElement>());
   const [hoveredPin, setHoveredPin] = useState<string | null>(null);
+  const [pinsVisible, setPinsVisible] = useState(() => {
+    try { return localStorage.getItem('alvorada-kingdom-pins-visible') !== 'false'; }
+    catch { return true; }
+  });
+  const changePinsVisible = (visible: boolean) => {
+    setPinsVisible(visible);
+    setHoveredPin(null);
+    if (!visible && pinMode) onPinMode?.();
+    try { localStorage.setItem('alvorada-kingdom-pins-visible', String(visible)); } catch { /* Preference remains usable without storage. */ }
+  };
   const latest = useRef({ markers, selectedId, onSelect, onReady, pinMode, onPinPosition });
   latest.current = { markers, selectedId, onSelect, onReady, pinMode, onPinPosition };
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
@@ -1146,7 +1159,7 @@ export function KingdomMap({
 
   useEffect(() => {
     controlsRef.current?.refresh();
-  }, [markers, selectedId]);
+  }, [markers, selectedId, pinsVisible]);
   return (
     <div
       ref={hostRef}
@@ -1168,7 +1181,7 @@ export function KingdomMap({
           : 'Mapa em tela inteira com aproximação fixa de 150%. Arraste ou use as setas para explorar; Home volta ao centro do reino.'}
       </p>
       <div ref={canvasHostRef} className="kingdom-map__canvas" />
-      {!editorOpen && (
+      {!editorOpen && pinsVisible && (
         <div className="kingdom-map__places">
           {markers.map((marker) => (
             <button
@@ -1188,7 +1201,7 @@ export function KingdomMap({
               onFocus={() => setHoveredPin(marker.id)}
               onBlur={() => setHoveredPin(null)}
             >
-              <MapPin size={30} aria-hidden="true" />
+              <KingdomPinIcon />
               <span className="kingdom-place__name">{marker.name}</span>
               {hoveredPin === marker.id && !!marker.preview?.length && (
                 <span className="atlas-pin-previews" data-asset-deferred="true" aria-hidden="true">
@@ -1204,17 +1217,25 @@ export function KingdomMap({
           ))}
         </div>
       )}
-      {!editorOpen && canManagePins && (
+      {!editorOpen && <div className="kingdom-pin-tools">
+        <button className="kingdom-pin-toggle" type="button"
+          aria-label={pinsVisible ? 'Ocultar todos os pins' : 'Mostrar todos os pins'}
+          onClick={() => changePinsVisible(!pinsVisible)}>
+          {pinsVisible ? <EyeOff size={16} aria-hidden="true" /> : <Eye size={16} aria-hidden="true" />}
+          {pinsVisible ? 'Ocultar todos os pins' : 'Mostrar todos os pins'}
+        </button>
+        {canManagePins && (
         <button
           className="kingdom-pin-toggle"
           type="button"
           aria-pressed={pinMode}
-          onClick={onPinMode}
+          onClick={() => { if (!pinsVisible) changePinsVisible(true); onPinMode?.(); }}
         >
           <MapPin size={16} />
           {pinMode ? 'Cancelar posicionamento' : 'Adicionar pin'}
         </button>
-      )}
+        )}
+      </div>}
       {pinMode && (
         <p className="atlas-pin-instructions" role="status">
           Clique no mapa para marcar o local. Arraste para navegar.

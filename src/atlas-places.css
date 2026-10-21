@@ -3,22 +3,37 @@
   pointer-events: none;
 }
 .kingdom-map .atlas-pin {
-  width: 34px;
-  height: 38px;
-  filter: drop-shadow(0 2px 3px #000c);
+  width: 44px;
+  height: 46px;
 }
 .atlas-pin > svg {
-  fill: #27241e;
-  stroke: #e3c281;
-  stroke-width: 1.5;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 1px #000b);
 }
-.atlas-pin.is-selected > svg {
-  fill: #73572c;
-  stroke: #fff0c8;
+.atlas-pin.is-selected .kingdom-pin-icon__body {
+  stroke: #fff8dd;
+  stroke-width: 2;
+}
+.atlas-pin.is-selected .kingdom-pin-icon__core {
+  fill: #fff8df;
+}
+.kingdom-map .atlas-pin[data-visible='false'] .kingdom-place__name {
+  opacity: 0;
+}
+.kingdom-map .atlas-pin .kingdom-place__name {
+  padding: 6px 12px;
+  border: 1px solid #c7a76b66;
+  border-radius: 4px;
+  background: #1e211bef;
+  color: #f7e4b9;
+  font-weight: 600;
+  opacity: 1;
+  text-shadow: 0 1px 1px #000;
 }
 .atlas-pin-previews {
   position: absolute;
-  bottom: calc(100% + 14px);
+  bottom: calc(100% + 58px);
   left: calc(50% + var(--bubble-offset, 0px));
   transform: translateX(-50%) translateY(8px);
   display: flex;
@@ -76,11 +91,17 @@
   opacity: 0.3;
   border-radius: inherit;
 }
-.kingdom-map .kingdom-pin-toggle {
+.kingdom-pin-tools {
   position: absolute;
   right: 20px;
   top: 124px;
   z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.kingdom-map .kingdom-pin-toggle {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -209,7 +230,7 @@
   width: auto;
 }
 @media (max-width: 600px) {
-  .kingdom-map .kingdom-pin-toggle {
+  .kingdom-pin-tools {
     top: 126px;
     right: 12px;
   }

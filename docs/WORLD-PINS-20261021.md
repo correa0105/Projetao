@@ -1,5 +1,14 @@
 # Locais e histórias no mapa
 
+Acabamento posterior: nome acima de cada marcador, pin vetorial próprio com aro
+metálico/miolo contrastante e área de toque de 44 px. Nenhuma imagem do mapa é
+recomprimida. Prévia aquarela fica acima do nome, sem cobrir a legenda. Todo jogador
+tem Ocultar todos os pins / Mostrar todos os pins; preferência por navegador
+persistida, sem excluir registros nem ocultar os locais para outras pessoas.
+Ao mostrar de novo, marcadores são reprojetados na câmera atual; o modo de
+adicionar pin volta a exibi-los. Teste de navegador confirma legenda acima do
+símbolo, ocultar/mostrar, reload, três balões e missões/História preservados.
+
 Administrador usa Adicionar pin no Reino do Norte e clica no ponto desejado. Pode
 criar local ou aproveitar um já cadastrado, editar nome/descrição, mover e ocultar.
 Ocultar preserva o local, suas missões e história. Coordenadas normalizadas seguem

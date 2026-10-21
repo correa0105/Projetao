@@ -1,6 +1,17 @@
-21/10/2026 — Botão Recuperação por e-mail retirado do menu por pedido posterior;
+21/10/2026 — Pins em acabamento: nomes acima do marcador, símbolo vetorial próprio
+com aro/volume/contraste e controle Ocultar todos os pins para todo jogador.
+Preferência local persiste e não apaga locais, missões ou História; mostrar de novo
+reprojeta posições. Balões aquarela acima do nome. Supervisor da VPS detecta túnel
+SSH vivo sem listener local e reconecta; ConnectTimeout/ConnectionAttempts limitam
+handshakes travados. Recuperação real do ilustrador e heartbeat conferidos online.
+
+21/10/2026 — Publicação warforged-20261021 aplicada e saudável, código
+4a8a65b9de6ebabc042999e8e4999b99b7f563e1. Backup warforged-before-20261021T204017Z.dump.
+Original das duas pranchas, frontend público, Gmail configurado, beta 6.000 PO,
+intérprete de magias e ilustrador online conferidos. Contas/dados/saldos preservados.
+Botão Recuperação por e-mail retirado do menu por pedido posterior;
 Esqueci minha senha no login e configuração administrativa restrita preservados.
-Aparência Warforged em preparação: seis estruturas, seis cabeças,
+Aparência Warforged publicada: seis estruturas, seis cabeças,
 oito tons metálicos, quatro acabamentos e cor secundária sugerida/personalizada.
 Escolha opcional no JSON da ficha; retrato/token e revisão recebem as opções,
 sem alterar regras/equipamento nem reescrever fichas antigas. Pranchas originais

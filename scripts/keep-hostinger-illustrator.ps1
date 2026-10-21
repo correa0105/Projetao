@@ -61,12 +61,27 @@ try {
       }
     }
   }
+  $missingTunnelChecks = 0
   while ($true) {
     if ($tunnel) { $tunnel.Refresh() }
+    if ($tunnel -and !$tunnel.HasExited) {
+      $hasTunnelListener = [bool]([System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties().GetActiveTcpListeners() | Where-Object { $_.Port -eq 5437 })
+      if ($hasTunnelListener) { $missingTunnelChecks = 0 } else { $missingTunnelChecks++ }
+      if ($missingTunnelChecks -ge 2) {
+        $stalledTunnel = Get-CimInstance Win32_Process -Filter "ProcessId = $($tunnel.Id)"
+        if ($stalledTunnel -and $stalledTunnel.Name -eq 'ssh.exe' -and $stalledTunnel.CommandLine -match '127\.0\.0\.1:5437:127\.0\.0\.1:5436' -and $stalledTunnel.CommandLine.Contains('root@' + $settings.HostName)) {
+          Stop-Process -Id $tunnel.Id
+          $tunnel = $null
+          Write-Output 'Tunel sem porta local; reconectando o ilustrador.'
+        }
+        $missingTunnelChecks = 0
+      }
+    }
     if (!$tunnel -or $tunnel.HasExited) {
       $arguments = @(
         '-N', '-L', '127.0.0.1:5437:127.0.0.1:5436',
         '-o', 'ExitOnForwardFailure=yes', '-o', 'BatchMode=yes',
+        '-o', 'ConnectTimeout=15', '-o', 'ConnectionAttempts=1',
         '-o', 'ServerAliveInterval=20', '-o', 'ServerAliveCountMax=3',
         '-o', 'KexAlgorithms=curve25519-sha256', '-o', 'HostKeyAlgorithms=ssh-ed25519',
         '-o', ('"UserKnownHostsFile=' + $settings.KnownHostsFile + '"'),
@@ -74,6 +89,7 @@ try {
         ('root@' + $settings.HostName)
       )
       $tunnel = Start-Process -FilePath $sshExecutable -ArgumentList $arguments -WindowStyle Hidden -RedirectStandardOutput (Join-Path $stateDirectory 'hostinger-tunnel.out.log') -RedirectStandardError (Join-Path $stateDirectory 'hostinger-tunnel.err.log') -PassThru
+      $missingTunnelChecks = 0
       Set-Content -LiteralPath (Join-Path $stateDirectory 'hostinger-tunnel.pid') -Value $tunnel.Id
       Start-Sleep -Seconds 1
       $tunnel.Refresh()

@@ -78,6 +78,12 @@ Correção de compatibilidade de 09/10: protocolo VTT 4 rejeita leituras/comando
 
 # Alvorada Cinzenta — instruções para continuidade
 
+21/10/2026 — Pins do reino: nome acima, marcador vetorial nítido, ocultar/mostrar
+todos os pins por preferência do navegador sem alterar registros ou missões.
+Previews da História ficam acima do nome; mostrar novamente reprojeta marcadores.
+Supervisor Hostinger também recupera SSH vivo sem listener 5437 e limita timeout
+de conexão; não confundir processo ativo com túnel/ilustrador realmente disponível.
+
 21/10/2026 — Criação de Warforged permite seis estruturas e seis cabeças ilustradas,
 oito cores metálicas/quatro acabamentos, secundária sugerida ou personalizada.
 warforgedAppearance opcional no JSON existente; sem bônus mecânico ou reescrita

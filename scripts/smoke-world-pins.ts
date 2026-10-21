@@ -124,6 +124,9 @@ try {
   await page.getByRole('button', { name: 'Fechar lista de missões', exact: true }).click();
   const pin = page.getByRole('button', { name: 'Missões de Portão das histórias', exact: true });
   await pin.hover();
+  const nameBox = await pin.locator('.kingdom-place__name').boundingBox();
+  const iconBox = await pin.locator('.kingdom-pin-icon').boundingBox();
+  expect(nameBox!.y + nameBox!.height).toBeLessThan(iconBox!.y);
   await expect(pin.locator('.atlas-pin-bubble')).toHaveCount(3);
   await expect
     .poll(() =>
@@ -143,6 +146,9 @@ try {
   await page.mouse.move(900, 680, { steps: 8 });
   await page.mouse.up();
   await expect.poll(async () => (await pin.boundingBox())!.x).not.toBe(before!.x);
+  await page.getByRole('button', { name: 'Ocultar todos os pins', exact: true }).click();
+  await expect(page.locator('.kingdom-place')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Mostrar todos os pins', exact: true })).toBeVisible();
   await pool.query(
     "INSERT INTO board_posts(author_id,kind,status,title,description,location,difficulty,region_id,location_id) VALUES($1,'mission','completed','Retorno ao portão','Uma aventura que já foi concluída neste local.',$2,'Tranquila',$3,$4)",
     [account.user.id, place.name, place.region_id, place.id],
@@ -158,6 +164,9 @@ try {
     { timeout: 60000 },
   );
   await expect(page.locator('[data-asset-loading]')).toHaveCount(0, { timeout: 60000 });
+  await expect(page.locator('.kingdom-place')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Mostrar todos os pins', exact: true }).click();
+  await expect(pin).toBeVisible();
   await pin.click();
   await expect(
     drawer.getByRole('heading', { name: 'Retorno ao portão', exact: true }),
@@ -179,7 +188,7 @@ try {
   await page.screenshot({ path: 'test-results/world-pins/story-mobile.png' });
   expect(errors).toEqual([]);
   console.log(
-    'PASS: administrador posiciona pin, publica texto e imagens da Lore, três balões, filtro geográfico e celular.',
+    'PASS: pin vetorial com nome acima, ocultar/mostrar todos persiste após recarregar; História, três balões, missões e celular preservados.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/world-pins/failure.png' });

@@ -400,7 +400,7 @@
 .kingdom-place__name {
   position: absolute;
   left: 50%;
-  top: calc(100% + 2px);
+  bottom: calc(100% + 5px);
   transform: translate(-50%, 0);
   padding: 7px 15px 8px;
   width: max-content;
@@ -427,7 +427,7 @@
 .kingdom-place.is-selected .kingdom-place__name {
   opacity: 1;
   color: #fff3d3;
-  transform: translate(-50%, 3px);
+  transform: translate(-50%, -2px);
 }
 .kingdom-place:focus-visible .kingdom-place__name {
   outline: 1px solid #dcb976;
