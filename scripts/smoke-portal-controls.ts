@@ -161,6 +161,7 @@ try {
       .getByRole('button', { name: 'Abrir missões do Reino do Norte', exact: true })
       .click();
     await expect(page.locator('.atlas-missions-drawer')).toBeVisible();
+    await page.getByRole('button', { name: 'Fechar lista de missões', exact: true }).click();
     await page.getByRole('button', { name: 'Voltar ao mundo', exact: true }).click();
     await expect(page.locator('.world-map')).toBeVisible();
   }
