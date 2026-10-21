@@ -23,6 +23,25 @@ Arquitetura preservada: React/Vite + Express/Node 24 + PostgreSQL 17 e tradutor 
 - Versao local do app e ilustrador antigo parados para evitar duas bases divergentes.
   O PostgreSQL local e seus volumes foram preservados como retorno e backup.
 
+## Limpeza de contas em 21/10/2026
+
+Por pedido do proprietario, as dez outras contas foram removidas da base publicada,
+incluindo oito contas beta e seus acessos. Permanece uma conta, administradora,
+com seus 16 personagens e a mesma mesa pessoal. Cadastros futuros continuam disponiveis.
+
+A operacao foi validada em uma base descartavel restaurada de backup antes de ser
+aplicada em transacao na producao. Assinaturas e contagens dos registros vinculados
+a conta, personagens e mesa preservados foram comparadas em 115 tabelas; qualquer
+alteracao nesses registros cancelaria a transacao. Relacoes sociais e avaliacoes de
+contas removidas acompanham a exclusao. O backup imediatamente anterior ficou em
+`/opt/alvorada/backups/accounts-before-cleanup-20261021.dump`, fora da rotacao diaria.
+Sessoes, credenciais e registros beta das contas removidas ficaram zerados.
+HTTPS e a saude do app e banco foram conferidos depois da limpeza.
+
+O dominio proprio ainda depende da escolha do proprietario. `.cinzenta` nao existe
+na raiz DNS da IANA. O painel mostrou `alvoradacinzenta.tech` disponivel, gratis por
+um ano no beneficio da VPS, com renovacao paga posterior; o dominio nao foi registrado.
+
 ## Validacao executada
 
 - Imagem Docker construida e testada localmente e novamente na VPS.
