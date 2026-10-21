@@ -1,5 +1,17 @@
 # Reino do Norte — área editável
 
+## Decisão posterior de 21/10/2026
+
+Por solicitação explícita, o editor antigo foi retirado da interface para todos,
+incluindo administrador. O botão Editar mapa e o painel Editor do reino não são
+mais montados. A tela usa sempre o mapa publicado em 150%, com navegação e pins.
+O cliente não consulta os rascunhos/fundos privados durante essa navegação.
+Os dados privados e suas APIs administrativas anteriores permanecem guardados,
+sem apagar uploads, câmeras ou rascunhos. As seções históricas abaixo descrevem
+essa implementação preservada, não uma ferramenta disponível na interface atual.
+O antigo smoke-editor, que pressupõe abrir o builder, é histórico; o smoke de
+pins valida a ausência do editor e as ferramentas atuais de mapa.
+
 ## Fundo publicado do Reino do Norte
 
 A visão pública usa a imagem definitiva enviada em 21/10/2026, em

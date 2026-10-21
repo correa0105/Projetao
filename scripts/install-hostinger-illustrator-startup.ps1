@@ -7,7 +7,26 @@ $nodeExecutable = if ($NodePath) { (Resolve-Path -LiteralPath $NodePath).Path } 
 $shellExecutable = (Get-Process -Id $PID).Path
 $supervisor = Join-Path $PSScriptRoot 'keep-hostinger-illustrator.ps1'
 $arguments = '-NoProfile -WindowStyle Hidden -File "' + $supervisor + '" -NodePath "' + $nodeExecutable + '"'
-$action = New-ScheduledTaskAction -Execute $shellExecutable -Argument $arguments -WorkingDirectory $projectRoot
+# A console executable as the task action can flash a window before PowerShell
+# processes -WindowStyle. WScript is windowless and starts the console hidden.
+$launcher = Join-Path $projectRoot '.local/hostinger-illustrator-hidden.vbs'
+New-Item -ItemType Directory -Path (Split-Path -Parent $launcher) -Force | Out-Null
+$command = '"' + $shellExecutable + '" -NonInteractive ' + $arguments
+$escapedCommand = $command.Replace('"', '""')
+$escapedRoot = $projectRoot.Replace('"', '""')
+$launcherSource = @"
+Option Explicit
+Dim shell, result
+Set shell = CreateObject("WScript.Shell")
+shell.CurrentDirectory = "$escapedRoot"
+result = shell.Run("$escapedCommand", 0, True)
+WScript.Quit result
+"@
+# UTF-16 keeps project paths with accented/non-ASCII names intact in WSH.
+[IO.File]::WriteAllText($launcher, $launcherSource, [Text.Encoding]::Unicode)
+$windowlessHost = Join-Path $env:SystemRoot 'System32/wscript.exe'
+if (!(Test-Path -LiteralPath $windowlessHost)) { throw 'Windows Script Host indisponivel; tarefa anterior preservada.' }
+$action = New-ScheduledTaskAction -Execute $windowlessHost -Argument ('//B //NoLogo "' + $launcher + '"') -WorkingDirectory $projectRoot
 $identity = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 $triggers = @(
   (New-ScheduledTaskTrigger -AtLogOn -User $identity),

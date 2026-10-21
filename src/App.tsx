@@ -155,7 +155,6 @@ function Portal({ user }: { user: User }) {
   const [maintenanceAreas, setMaintenanceAreas] = useState<MaintenanceArea[]>([]);
   const [deletingMission, setDeletingMission] = useState<Post | null>(null);
   const [deletionError, setDeletionError] = useState('');
-  const [canEditKingdom, setCanEditKingdom] = useState(false);
   const [completingMission, setCompletingMission] = useState<Post | null>(null);
   const [now, setNow] = useState(Date.now());
   const [page, setPage] = useState<Page>(initialPage);
@@ -192,7 +191,7 @@ function Portal({ user }: { user: User }) {
   const refresh = useCallback(async (options?:{backgroundCatalog?:boolean}) => {
     const catalogue=catalogNeeded.current ? api<Item[]>('/catalog').then(items=>{setCatalog(items);setCatalogError('');}).catch(error=>{setCatalogError(error.message);throw error;}).finally(()=>setCatalogLoading(false)) : Promise.resolve();
     const essentials=Promise.all([api<Character[]>('/characters'),api<Post[]>('/board'),api<Entry[]>('/world'),api<User>('/me')]).then(([nextCharacters,nextPosts,nextEntries,me])=>{
-      setCharacters(nextCharacters);setPosts(nextPosts);setEntries(nextEntries);setAdministrator(me.administrador===1);setCanEditKingdom(me.canEditKingdom===true);
+      setCharacters(nextCharacters);setPosts(nextPosts);setEntries(nextEntries);setAdministrator(me.administrador===1);
       setMaintenanceAreas(me.maintenance_areas || []);
     });
     // Opening camp or the journal never waits for the multi-megabyte shop catalogue.
@@ -557,7 +556,6 @@ function Portal({ user }: { user: User }) {
       return (
         <Suspense fallback={<div className="loading-content">Desdobrando o atlas…</div>}>
           <WorldAtlas
-            canEditKingdom={canEditKingdom}
             posts={posts}
             renderMission={(item) => postCard(item)}
             onPublish={(place) => {

@@ -64,6 +64,20 @@ export function atlasPlacesRouter() {
       throw new AppError(409, 'Este local mudou em outra janela. Recarregue antes de salvar.');
     res.json(updated.rows[0]);
   });
+  router.delete('/atlas/locations/:id/pin', async (req, res) => {
+    const id = atlasId.parse(req.params.id);
+    const { revision } = z
+      .object({ revision: z.number().int().min(0) })
+      .strict()
+      .parse(req.body);
+    const removed = await pool.query(
+      'UPDATE world_locations SET pin_visible=false,revision=revision+1 WHERE id=$1 AND revision=$2 RETURNING id,revision',
+      [id, revision],
+    );
+    if (!removed.rowCount)
+      throw new AppError(409, 'Este pin mudou em outra janela. Recarregue antes de excluir.');
+    res.json(removed.rows[0]);
+  });
   router.post('/atlas/history', async (req, res) => {
     const data = z
       .object({ region_id: atlasId, location_id: atlasId.optional() })

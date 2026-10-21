@@ -223,6 +223,44 @@ test('pins e histórias: somente admin escreve; rascunhos privados, três prévi
       ).status,
       400,
     );
+    const pinEndpoint = '/atlas/locations/' + id + '/pin';
+    assert.equal((await request(pinEndpoint, player, 'DELETE', { revision: 1 })).status, 403);
+    assert.equal((await request(pinEndpoint, admin, 'DELETE', { revision: 1 }, true)).status, 403);
+    assert.equal((await request(pinEndpoint, admin, 'DELETE', { revision: 0 })).status, 409);
+    assert.equal((await request(pinEndpoint, admin, 'DELETE', { revision: -1 })).status, 400);
+    const deleted = await request(pinEndpoint, admin, 'DELETE', { revision: 1 });
+    assert.equal(deleted.status, 200);
+    assert.equal(deleted.data.revision, 2);
+    const afterDelete = (await request('/atlas', player)).data.locations.find(
+      (p: any) => p.id === id,
+    );
+    assert.equal(afterDelete.pin_visible, false);
+    assert.equal(afterDelete.history_page_id, pageId);
+    assert.equal(afterDelete.history_preview.length, 3);
+    assert.equal((await request('/board?location_id=' + id, player)).data.length, 1);
+    assert.equal(
+      (await pool.query('SELECT location_id FROM vtt_rooms WHERE id=$1', [room.data.id])).rows[0]
+        .location_id,
+      id,
+    );
+    assert.equal((await request('/lore/pages/' + pageId, player)).status, 200);
+    assert.equal(
+      (
+        await request('/atlas/locations/' + id, admin, 'PUT', {
+          name: input.name,
+          description: input.description,
+          map_x: 0.6,
+          map_y: 0.5,
+          pin_visible: true,
+          revision: deleted.data.revision,
+        })
+      ).status,
+      200,
+    );
+    assert.equal(
+      (await request('/atlas', player)).data.locations.find((p: any) => p.id === id).pin_visible,
+      true,
+    );
   } finally {
     server.closeAllConnections();
     await new Promise<void>((r) => server.close(() => r()));

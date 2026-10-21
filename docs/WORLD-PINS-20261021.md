@@ -1,5 +1,13 @@
 # Locais e histórias no mapa
 
+Admin pode clicar no pin e usar Excluir pin no painel. Há confirmação com nome e
+opção Cancelar. DELETE /atlas/locations/:id/pin valida administrador atual e a
+revisão enviada; jogador/preview não podem excluir. A ação retira o marcador para
+todos, mantendo local, História, missões e vínculos do VTT. É possível recolocá-lo
+por Adicionar pin escolhendo o local existente. Falha de rede/revisão mantém a
+confirmação aberta e exibe o erro. O antigo editor de objetos do reino foi retirado
+da interface; administração de pins permanece independente dele.
+
 Acabamento posterior: nome acima de cada marcador, pin vetorial próprio com aro
 metálico/miolo contrastante e área de toque de 44 px. Nenhuma imagem do mapa é
 recomprimida. Prévia aquarela fica acima do nome, sem cobrir a legenda. Todo jogador

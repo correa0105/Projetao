@@ -78,6 +78,15 @@ Correção de compatibilidade de 09/10: protocolo VTT 4 rejeita leituras/comando
 
 # Alvorada Cinzenta — instruções para continuidade
 
+21/10/2026 — Retirar do site o editor antigo do reino e seu botão, inclusive
+para administrador. Mapa publicado fixo e administração dos pins continuam.
+Excluir pin é ação administrativa confirmada que remove o marcador público,
+mantendo local/História/missões/mesas e permitindo recolocá-lo. DELETE /atlas/
+locations/:id/pin valida administrador atual e revisão; preview básico bloqueado.
+Inicialização do ilustrador no Windows usa WScript sem console e Run(...,0,True),
+pois chamar PowerShell direto a cada minuto causava flash de terminal antes de
+processar WindowStyle. Não desativar ilustrador nem a recuperação automática.
+
 21/10/2026 — Pins do reino: nome acima, marcador vetorial nítido, ocultar/mostrar
 todos os pins por preferência do navegador sem alterar registros ou missões.
 Previews da História ficam acima do nome; mostrar novamente reprojeta marcadores.

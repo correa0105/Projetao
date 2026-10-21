@@ -5,6 +5,7 @@ import { FlashMessage } from './FlashMessage';
 import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ArrowLeft, Compass, MapPin, Plus, ScrollText, X } from 'lucide-react';
 import { api } from './api';
+import { Modal } from './components';
 import type { AtlasMarker } from './atlas-types';
 import { WorldMap } from './WorldMap';
 import { WORLD_TERRITORIES } from './world-territories';
@@ -16,12 +17,10 @@ const KingdomMap = lazy(() =>
   import('./KingdomMap').then((module) => ({ default: module.KingdomMap })),
 );
 export function WorldAtlas({
-  canEditKingdom,
   posts,
   onPublish,
   renderMission,
 }: {
-  canEditKingdom: boolean;
   posts: Post[];
   onPublish: (location?: AtlasLocation) => void;
   renderMission: (post: Post) => ReactNode;
@@ -36,6 +35,9 @@ export function WorldAtlas({
   const [notice, setNotice] = useState('');
   const [pinMode, setPinMode] = useState(false);
   const [movingPin, setMovingPin] = useState<AtlasLocation | undefined>();
+  const [pinToDelete, setPinToDelete] = useState<AtlasLocation | null>(null);
+  const [deletingPin, setDeletingPin] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
   const [pinDraft, setPinDraft] = useState<{
     position: { x: number; y: number };
     place?: AtlasLocation;
@@ -43,6 +45,39 @@ export function WorldAtlas({
   const [panelTab, setPanelTab] = useState<'missions' | 'story'>('missions');
   async function refreshAtlas() {
     setAtlas(await api<AtlasData>('/atlas'));
+  }
+  async function deletePin() {
+    if (!pinToDelete || deletingPin) return;
+    setDeletingPin(true);
+    setDeleteError('');
+    try {
+      const removed = await api<{ id: string; revision: number }>(
+        '/atlas/locations/' + pinToDelete.id + '/pin',
+        { method: 'DELETE', body: JSON.stringify({ revision: pinToDelete.revision }) },
+      );
+      setAtlas((previous) =>
+        previous
+          ? {
+              ...previous,
+              locations: previous.locations.map((place) =>
+                place.id === removed.id
+                  ? { ...place, pin_visible: false, revision: removed.revision }
+                  : place,
+              ),
+            }
+          : previous,
+      );
+      setPinToDelete(null);
+      setLocationId(null);
+      setMovingPin(undefined);
+      setPinMode(false);
+      setDrawer(false);
+      setNotice('Pin excluído do mapa.');
+    } catch (error) {
+      setDeleteError((error as Error).message);
+    } finally {
+      setDeletingPin(false);
+    }
   }
   const closeRef = useRef<HTMLButtonElement>(null);
   const region = atlas?.regions.find((r) => r.id === regionId);
@@ -147,7 +182,7 @@ export function WorldAtlas({
             }
           >
             <KingdomMap
-              canEdit={canEditKingdom}
+              canEdit={false}
               canManagePins={!!atlas.can_manage_pins}
               pinMode={pinMode}
               onPinMode={() => {
@@ -251,6 +286,17 @@ export function WorldAtlas({
               >
                 Mover pin
               </button>
+              {location.pin_visible && (
+                <button
+                  className="atlas-pin-delete"
+                  onClick={() => {
+                    setDeleteError('');
+                    setPinToDelete(location);
+                  }}
+                >
+                  Excluir pin
+                </button>
+              )}
             </div>
           )}
           {panelTab === 'story' ? (
@@ -320,6 +366,41 @@ export function WorldAtlas({
             setDrawer(true);
           }}
         />
+      )}
+      {pinToDelete && (
+        <Modal
+          title="Excluir pin do mapa"
+          close={() => {
+            if (!deletingPin) setPinToDelete(null);
+          }}
+        >
+          <div className="stack">
+            <p>
+              Excluir o pin de <strong>{pinToDelete.name}</strong>?
+            </p>
+            <p className="muted">
+              O marcador será removido do mapa. As missões e a História do local permanecem no
+              registro do reino.
+            </p>
+            {deleteError && <p role="alert">{deleteError}</p>}
+            <div className="actions">
+              <button
+                className="button outline"
+                disabled={deletingPin}
+                onClick={() => setPinToDelete(null)}
+              >
+                Cancelar
+              </button>
+              <button
+                className="button danger"
+                disabled={deletingPin}
+                onClick={() => void deletePin()}
+              >
+                {deletingPin ? 'Excluindo…' : 'Excluir pin'}
+              </button>
+            </div>
+          </div>
+        </Modal>
       )}
     </section>
   );

@@ -157,6 +157,10 @@
   gap: 8px;
   margin-bottom: 16px;
 }
+.atlas-pin-actions .atlas-pin-delete {
+  color: #f2bba9;
+  border-color: #9a6654;
+}
 .atlas-place-story.lore-library {
   background: transparent;
   max-width: 100%;

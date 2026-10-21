@@ -1,3 +1,11 @@
+21/10/2026 — Em preparação: editor antigo do reino retirado do site e botão
+Editar mapa removido; rascunhos/fundos privados existentes guardados. Admin ganha
+Excluir pin com confirmação e revisão, sem apagar local, História, missões ou
+vínculos das mesas. Teste API confirma administrador/preview/jogador, conflito de
+revisão, preservação e recolocação. Inicializador local do ilustrador atualizado
+para wscript.exe sem console, que inicia PowerShell oculto desde a criação.
+Tarefa executou com resultado 0 e ilustrador seguiu online; sem trocar credenciais.
+
 21/10/2026 — Publicação pin-visibility-20261021 aplicada e saudável na Hostinger,
 código e5fefffeb9830c6a60204cd470bbc440aea47c1c. Backup
 pin-visibility-before-20261021T205325Z.dump. Frontend HTTPS, permissões, registros e

@@ -57,6 +57,8 @@ try {
     { timeout: 60000 },
   );
   await expect(page.locator('[data-asset-loading]')).toHaveCount(0, { timeout: 60000 });
+  await expect(page.getByRole('button', { name: 'Editar mapa', exact: true })).toHaveCount(0);
+  await expect(page.locator('.kingdom-editor')).toHaveCount(0);
   await page.getByRole('button', { name: 'Adicionar pin', exact: true }).click();
   await page.mouse.click(520, 460);
   const modal = page.getByRole('dialog', { name: 'Novo pin do mapa', exact: true });
@@ -148,7 +150,9 @@ try {
   await expect.poll(async () => (await pin.boundingBox())!.x).not.toBe(before!.x);
   await page.getByRole('button', { name: 'Ocultar todos os pins', exact: true }).click();
   await expect(page.locator('.kingdom-place')).toHaveCount(0);
-  await expect(page.getByRole('button', { name: 'Mostrar todos os pins', exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: 'Mostrar todos os pins', exact: true }),
+  ).toBeVisible();
   await pool.query(
     "INSERT INTO board_posts(author_id,kind,status,title,description,location,difficulty,region_id,location_id) VALUES($1,'mission','completed','Retorno ao portão','Uma aventura que já foi concluída neste local.',$2,'Tranquila',$3,$4)",
     [account.user.id, place.name, place.region_id, place.id],
@@ -186,9 +190,33 @@ try {
   ).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'test-results/world-pins/story-mobile.png' });
+  await regionDrawer.getByRole('button', { name: 'Fechar lista de missões', exact: true }).click();
+  await page.setViewportSize({ width: 1440, height: 960 });
+  await pin.click();
+  await drawer.getByRole('button', { name: 'Excluir pin', exact: true }).click();
+  const confirmation = page.getByRole('dialog', { name: 'Excluir pin do mapa', exact: true });
+  await expect(confirmation).toBeVisible();
+  await confirmation.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await expect(pin).toBeVisible();
+  await drawer.getByRole('button', { name: 'Excluir pin', exact: true }).click();
+  const [deletion] = await Promise.all([
+    page.waitForResponse((r) => r.url().endsWith('/pin') && r.request().method() === 'DELETE'),
+    confirmation.getByRole('button', { name: 'Excluir pin', exact: true }).click(),
+  ]);
+  expect(deletion.status()).toBe(200);
+  await expect(pin).toHaveCount(0);
+  await expect(confirmation).toHaveCount(0);
+  const preservedPlace = (await api('/atlas')).locations.find((p: any) => p.id === place.id);
+  expect(preservedPlace.pin_visible).toBe(false);
+  expect(preservedPlace.history_preview).toHaveLength(3);
+  expect(
+    (await pool.query('SELECT count(*)::int n FROM board_posts WHERE location_id=$1', [place.id]))
+      .rows[0].n,
+  ).toBe(1);
+  await page.screenshot({ path: 'test-results/world-pins/pin-deleted.png' });
   expect(errors).toEqual([]);
   console.log(
-    'PASS: pin vetorial com nome acima, ocultar/mostrar todos persiste após recarregar; História, três balões, missões e celular preservados.',
+    'PASS: editor antigo ausente; administrador cancela/confirma exclusão do pin sem perder História ou missão; visibilidade, prévias e celular preservados.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/world-pins/failure.png' });
