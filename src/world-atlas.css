@@ -32,15 +32,17 @@
   display: none;
 }
 .world-atlas.is-regional .world-atlas-heading {
-  top: calc(var(--page-header-height) + 40px);
+  top: 20px;
 }
 .world-atlas.is-regional .atlas-missions-drawer {
   top: calc(var(--page-header-height) + 40px);
 }
 @media (max-width: 900px) {
-  .world-atlas.is-regional .world-atlas-heading,
   .world-atlas.is-regional .atlas-missions-drawer {
     top: calc(2 * var(--page-header-height) + 60px);
+  }
+  .world-atlas.is-regional .world-atlas-heading {
+    top: 14px;
   }
 }
 .world-atlas-heading::before {
@@ -50,6 +52,11 @@
   inset: -28px -80px -38px -28px;
   background: radial-gradient(ellipse at 15% 0, #11100ff2, #111110ba 40%, transparent 72%);
   pointer-events: none;
+}
+@media (max-width: 600px) {
+  .world-atlas.is-regional .world-atlas-heading {
+    top: 70px;
+  }
 }
 .world-atlas-heading h1 {
   margin: 9px 0;

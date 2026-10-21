@@ -11,15 +11,20 @@ const database = 'alvorada_test_' + randomUUID().replaceAll('-', '');
 await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
-  const args = process.argv.includes('--browser')
-    ? ['scripts/smoke-portal-controls.ts']
-    : ['--test', 'tests/board-moderation.test.ts'];
+  const args = process.argv.includes('--assets')
+    ? ['scripts/smoke-site-loading.ts']
+    : process.argv.includes('--browser')
+      ? ['scripts/smoke-portal-controls.ts']
+      : ['--test', 'tests/board-moderation.test.ts'];
   process.exitCode = await new Promise((resolve, reject) => {
     const child = spawn(process.execPath, ['--import', 'tsx', ...args], {
       env: {
         ...process.env,
         DATABASE_URL: url.toString(),
-        NODE_ENV: process.argv.includes('--browser') ? 'production' : 'test',
+        NODE_ENV:
+          process.argv.includes('--browser') || process.argv.includes('--assets')
+            ? 'production'
+            : 'test',
         MAINTENANCE_AREAS: '',
       },
       stdio: 'inherit',

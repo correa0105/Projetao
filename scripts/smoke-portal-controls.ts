@@ -228,11 +228,11 @@ try {
     };
     await expectFilledViewport();
     const regionalHeading = await page.locator('.world-atlas-heading').boundingBox();
-    const pageHeading = await page.locator('.page-header').boundingBox();
+    const hud = await page.locator('.page-header .player-hud').boundingBox();
     await page.screenshot({ path: `test-results/portal-controls/north-map-${width}.png` });
-    expect(regionalHeading!.y - (pageHeading!.y + pageHeading!.height)).toBeGreaterThanOrEqual(
-      width <= 900 ? 8 : 0,
-    );
+    await expect(page.getByRole('heading', { name: 'Mapa Alvorada', exact: true })).toHaveCount(0);
+    expect(regionalHeading!.y).toBeLessThanOrEqual(width <= 600 ? 70 : 20);
+    expect(regionalHeading!.x + regionalHeading!.width <= hud!.x || regionalHeading!.y >= hud!.y + hud!.height).toBe(true);
     const response = await imageResponse;
     expect(
       createHash('sha256')

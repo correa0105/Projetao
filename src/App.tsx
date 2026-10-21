@@ -1,4 +1,6 @@
 import { copyText } from './copy-text';
+import { AssetGate, AssetLoading, usePreparedAssets } from './AssetLoading';
+import { primaryPageAssets, siteBootAssets } from './page-assets';
 import { maintenanceMessage, type MaintenanceArea } from '../shared/maintenance';
 import { vttPersonalHref } from '../shared/vtt-links';
 import { HomeJournal } from './HomeJournal';
@@ -47,7 +49,7 @@ import {
 } from 'lucide-react';
 import { authClient, api, post } from './api';
 import { CharacterForm, Empty, Login, Modal, PostForm } from './components';
-import { rankName, progressionLabel, testEligible } from '../shared/progression';
+import { rankName, rankTitle, rankLabel, progressionLabel, testEligible } from '../shared/progression';
 import { Navigation } from './Navigation';
 import { CharacterSelector } from './CharacterSelector';
 import { MissionCompletion } from './MissionCompletion';
@@ -122,6 +124,8 @@ const initialPage = (): Page => {
 
 export default function App() {
   const { data: session, isPending, error, refetch } = authClient.useSession();
+  const prepared = usePreparedAssets(siteBootAssets);
+  if (!prepared.ready) return <AssetLoading {...prepared} />;
   if (isPending)
     return (
       <div className="boot">
@@ -157,6 +161,7 @@ function Portal({ user }: { user: User }) {
   useEffect(() => {if(selectedId)sessionStorage.setItem('alvorada-selected-character:' + user.id,selectedId);}, [selectedId,user.id]);
   const [characterMenuOpen, setCharacterMenuOpen] = useState(false);
   const [catalog, setCatalog] = useState<Item[]>([]);
+  const catalogNeeded = useRef(false);
   const [catalogLoading,setCatalogLoading]=useState(true);
   const [catalogError,setCatalogError]=useState('');
   const [posts, setPosts] = useState<Post[]>([]);
@@ -176,7 +181,7 @@ function Portal({ user }: { user: User }) {
   const rulesActive = page === 'rules' && !loading && !loadError;
   const character = characters.find((item) => item.id === selectedId) || characters[0];
   const refresh = useCallback(async (options?:{backgroundCatalog?:boolean}) => {
-    const catalogue=api<Item[]>('/catalog').then(items=>{setCatalog(items);setCatalogError('');}).catch(error=>{setCatalogError(error.message);throw error;}).finally(()=>setCatalogLoading(false));
+    const catalogue=catalogNeeded.current ? api<Item[]>('/catalog').then(items=>{setCatalog(items);setCatalogError('');}).catch(error=>{setCatalogError(error.message);throw error;}).finally(()=>setCatalogLoading(false)) : Promise.resolve();
     const essentials=Promise.all([api<Character[]>('/characters'),api<Post[]>('/board'),api<Entry[]>('/world'),api<User>('/me')]).then(([nextCharacters,nextPosts,nextEntries,me])=>{
       setCharacters(nextCharacters);setPosts(nextPosts);setEntries(nextEntries);setAdministrator(me.administrador===1);setCanEditKingdom(me.canEditKingdom===true);
       setMaintenanceAreas(me.maintenance_areas || []);
@@ -190,6 +195,13 @@ function Portal({ user }: { user: User }) {
       .catch((error) => setLoadError(error.message))
       .finally(() => setLoading(false));
   }, [refresh]);
+  useEffect(() => {
+    if (page !== 'shop' && page !== 'tower') return;
+    if (catalogNeeded.current) return;
+    catalogNeeded.current = true;
+    setCatalogLoading(true);
+    void refresh({ backgroundCatalog: true }).catch(() => {});
+  }, [page, refresh]);
   useEffect(() => {
     const timer = window.setInterval(() => {
       setNow(Date.now());
@@ -288,7 +300,7 @@ function Portal({ user }: { user: User }) {
       <div className="quest-top">
         <span className={`badge ${item.kind}`}>
           {item.rank_test_level
-            ? `Teste de patente · ${rankName(item.rank_test_level + 1)}`
+            ? `Teste de patente · ${rankTitle(item.rank_test_level + 1)}`
             : kindLabel[item.kind]}
         </span>
         <span className="small muted">
@@ -298,7 +310,7 @@ function Portal({ user }: { user: User }) {
       <h3>{item.title}</h3>
       {item.kind === 'mission' && (
         <p className="mission-rank-label">
-          <Shield size={15} aria-hidden="true" /> Patente {item.mission_rank}
+          <Shield size={15} aria-hidden="true" /> Patente {rankLabel(item.mission_rank)}
         </p>
       )}
       <p>{item.description}</p>
@@ -397,7 +409,7 @@ function Portal({ user }: { user: User }) {
             ) : !character ? (
               'Crie um personagem'
             ) : rankName(character.level) !== item.mission_rank ? (
-              `Exclusiva para ${item.mission_rank}`
+              `Exclusiva para ${rankLabel(item.mission_rank)}`
             ) : item.rank_test_level &&
               !testEligible(
                 character.level,
@@ -421,8 +433,8 @@ function Portal({ user }: { user: User }) {
         item.status === 'open' &&
         rankName(character.level) !== item.mission_rank && (
           <p className="small muted">
-            Esta missão não é da sua patente. Seu personagem é {rankName(character.level)}; a missão
-            exige {item.mission_rank}.
+            Esta missão não é da sua patente. Seu personagem é {rankTitle(character.level)}; a missão
+            exige {rankLabel(item.mission_rank)}.
           </p>
         )}
       {!compact && (
@@ -687,6 +699,7 @@ function Portal({ user }: { user: User }) {
       <div className="main-shell">
         {page !== 'vtt' && (
           <PageHeader
+            showTitle={page !== 'world'}
             title={
               page === 'characters'
                 ? 'Seu acampamento'
@@ -713,9 +726,9 @@ function Portal({ user }: { user: User }) {
                 {character && (
                   <span
                     className="profile-character-summary"
-                    title={`${rankName(character.level)} · ${character.class}`}
+                    title={`${rankTitle(character.level)} · ${character.class}`}
                   >
-                    <span>{rankName(character.level)}</span>
+                    <span>{rankTitle(character.level)}</span>
                     <small>{character.class}</small>
                   </span>
                 )}
@@ -764,7 +777,7 @@ function Portal({ user }: { user: User }) {
           </PageHeader>
         )}
         <main className="main-content" id="main-content">
-          {renderContent()}
+          <AssetGate key={page} title={`Preparando ${titles[page]}`} assets={primaryPageAssets[page]} busy={loading || (page === 'shop' && catalogLoading)}>{renderContent()}</AssetGate>
           {rulesVisited && (
             <div hidden={!rulesActive} style={{ display: rulesActive ? undefined : 'none' }}>
               <div className="page-header-spacer" aria-hidden="true" />

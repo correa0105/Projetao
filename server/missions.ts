@@ -7,6 +7,7 @@ import {
   progressMission,
   testEligible,
   rankName,
+  rankLabel,
   RANK_REWARD_CP,
   type Rank,
 } from '../shared/progression.js';
@@ -116,7 +117,7 @@ export async function completeMission(
       if (rankName(character.level) !== mission.mission_rank)
         throw new AppError(
           409,
-          `${character.name} não pertence mais à patente ${mission.mission_rank} desta missão.`,
+          `${character.name} não pertence mais à patente ${rankLabel(mission.mission_rank as Rank)} desta missão.`,
         );
       if (
         mission.rank_test_level !== null &&

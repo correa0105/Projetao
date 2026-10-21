@@ -50,7 +50,7 @@ import { cardsRouter } from './cards.js';
 import { shopRouter } from './shop.js';
 import { shopItemRulesRouter } from './shop-item-rules.js';
 import { PAPER_STYLES } from '../shared/notice-board.js';
-import { testEligible, rankName, RANKS, RANK_REWARD_CP } from '../shared/progression.js';
+import { testEligible, rankName, rankTitle, rankLabel, RANKS, RANK_REWARD_CP } from '../shared/progression.js';
 import {
   KINGDOM_BACKGROUND_MAX_BYTES,
   KINGDOM_BACKGROUND_MAX_EDGE,
@@ -520,7 +520,7 @@ export function createApp() {
       if (rankName(character.level) !== post.mission_rank)
         throw new AppError(
           409,
-          `Esta missão é exclusiva da patente ${post.mission_rank}. Seu personagem é ${rankName(character.level)}; não pode se inscrever em patentes superiores ou inferiores.`,
+          `Esta missão é exclusiva da patente ${rankLabel(post.mission_rank)}. Seu personagem é ${rankTitle(character.level)}; não pode se inscrever em patentes superiores ou inferiores.`,
         );
       if (
         post.rank_test_level !== null &&
@@ -775,6 +775,8 @@ export function createApp() {
           if (file.endsWith('.html')) res.setHeader('Cache-Control', 'no-store');
           else if (file.startsWith(resolve('dist/client/assets')))
             res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+          else if (/\.(png|jpe?g|webp|avif|svg|woff2?|ttf)$/i.test(file))
+            res.setHeader('Cache-Control', 'public, max-age=3600');
         },
       }),
     );

@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { pool } from './db.js';
 import { AppError } from './services.js';
-import { rankName, testEligible } from '../shared/progression.js';
+import { rankTitle, testEligible } from '../shared/progression.js';
 import type { PlayerNotification } from '../shared/notifications.js';
 
 export function notificationsRouter() {
@@ -63,7 +63,7 @@ export function notificationsRouter() {
       if (testEligible(c.level, c.progression_missions)) {
         add(
           'rank',
-          `Teste para ${rankName(c.level + 1)} liberado`,
+          `Teste para ${rankTitle(c.level + 1)} liberado`,
           `Você atingiu ${c.progression_missions} missões válidas. Conclua um teste de patente para avançar; missões normais agora concedem somente ouro.`,
           'board',
           'Procurar teste no mural',

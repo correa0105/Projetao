@@ -4,6 +4,20 @@ export const MISSION_THRESHOLDS = [
 ] as const;
 export const RANKS = ['Ferro', 'Bronze', 'Adamantium', 'Ametista', 'Obsidiana'] as const;
 export type Rank = (typeof RANKS)[number];
+// Persisted mission identifiers stay stable; these are the names shown to players.
+export const RANK_LABELS: Record<Rank, string> = {
+  Ferro: 'Iniciante',
+  Bronze: 'Intermediário',
+  Adamantium: 'Profissional',
+  Ametista: 'Mestre',
+  Obsidiana: 'Heroico',
+};
+export function rankLabel(rank: Rank) {
+  return RANK_LABELS[rank];
+}
+export function rankTitle(level: number) {
+  return rankLabel(rankName(level));
+}
 export const RANK_REWARD_CP: Record<Rank, number> = {
   Ferro: 15000,
   Bronze: 23000,
@@ -39,8 +53,8 @@ export function progressMission(level: number, missions: number, testLevel: numb
   return { level: nextLevel, missions: next, credited: next - missions, promoted: false };
 }
 export function progressionLabel(level: number, missions: number) {
-  if (level === 20) return 'Nível máximo · Obsidiana';
+  if (level === 20) return 'Nível máximo · Heroico';
   if (testEligible(level, missions))
-    return `Teste para ${rankName(level + 1)} disponível · ${missions} missões válidas`;
+    return `Teste para ${rankTitle(level + 1)} disponível · ${missions} missões válidas`;
   return `${missions}/${MISSION_THRESHOLDS[level]} missões válidas · ${level === rankCeiling(level) ? 'liberar teste de patente' : `nível ${level + 1}`}`;
 }

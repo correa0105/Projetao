@@ -1762,6 +1762,7 @@ export type SheetRecord = {
   rules_version?: string;
 };
 export type SheetResponse = {
+  guild?: { id: string; name: string } | null;
   equipped?: { id: string; name: string; image_path: string | null; slots: string[] }[];
   startingEquipment?: { name: string; image_path: string | null }[];
   sheet: SheetRecord | null;

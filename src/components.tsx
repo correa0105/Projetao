@@ -20,6 +20,8 @@ import {
   RANK_TEST_LEVELS,
   MISSION_THRESHOLDS,
   rankName,
+  rankTitle,
+  rankLabel,
   type Rank,
 } from '../shared/progression';
 import { authClient, api, post } from './api';
@@ -609,7 +611,7 @@ export function PostForm({
           >
             {RANKS.map((rank) => (
               <option key={rank} value={rank}>
-                {rank} · {RANK_REWARD_CP[rank] / 100} PO
+                {rankLabel(rank)} · {RANK_REWARD_CP[rank] / 100} PO
               </option>
             ))}
           </select>
@@ -629,7 +631,7 @@ export function PostForm({
             <option value="">Missão normal</option>
             {RANK_TEST_LEVELS.filter((level) => rankName(level) === missionRank).map((level) => (
               <option key={level} value={level}>
-                Teste de patente · {missionRank} → {rankName(level + 1)} (
+                Teste de patente · {rankLabel(missionRank)} → {rankTitle(level + 1)} (
                 {MISSION_THRESHOLDS[level]} missões)
               </option>
             ))}

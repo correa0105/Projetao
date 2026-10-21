@@ -1,6 +1,6 @@
 import { FlashMessage } from './FlashMessage';
 import { startingEquipmentImage } from '../shared/starting-equipment-art';
-import {SheetSpellCollection}from './SheetSpellCollection';
+import { SheetSpellCollection } from './SheetSpellCollection';
 import { CharacterTitleLabel } from './Titles';
 import { CharacterLevelBadge } from './CharacterLevelBadge';
 import { TrainingBadge, hasTrainingBadge } from './TrainingBadge';
@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import { api, post } from './api';
 import {
-  rankName,
+  rankTitle,
   progressionLabel,
   MISSION_THRESHOLDS,
   testEligible,
@@ -169,6 +169,7 @@ export function CharacterSheet({
                   ? {
                       ...previous,
                       attacks: r.attacks,
+                      guild: r.guild,
                       equipped: r.equipped,
                       startingEquipment: r.startingEquipment,
                       capabilities: r.capabilities,
@@ -264,11 +265,17 @@ export function CharacterSheet({
         aria-label="Patente e progressão"
       >
         <div className="sheet-rank-identity">
-          <CharacterLevelBadge className={c.class} level={c.level}/>
+          <CharacterLevelBadge className={c.class} level={c.level} />
           <div>
-            <span className="sheet-rank-eyebrow">Patente da guilda</span>
+            <span className="sheet-rank-eyebrow">
+              {!data
+                ? 'Consultando vínculo…'
+                : data.guild
+                  ? `Membro da Guilda — ${data.guild.name}`
+                  : 'Mercenário'}
+            </span>
             <h3>
-              {rankName(c.level)}
+              {rankTitle(c.level)}
               <SheetHelp label="progressão de patente">
                 Missões concluídas contam até o requisito da próxima patente. Nesse limite, missões
                 normais concedem apenas ouro; conclua o teste para ser promovido.
@@ -490,7 +497,12 @@ export function CharacterSheet({
             ].map(([icon, val, label], i) => {
               return (
                 <div key={i}>
-                  <img className="sheet-realistic-icon" src={'/sheet/icons-20261019/'+icon+'.webp'} alt="" draggable={false}/>
+                  <img
+                    className="sheet-realistic-icon"
+                    src={'/sheet/icons-20261019/' + icon + '.webp'}
+                    alt=""
+                    draggable={false}
+                  />
                   <strong>{String(val)}</strong>
                   <span>{String(label)}</span>
                 </div>
@@ -575,7 +587,11 @@ export function CharacterSheet({
                     <ul className="sheet-training-cards">
                       {d.proficiencies.map((v, i) => (
                         <li key={i}>
-                          {hasTrainingBadge(v) ? <TrainingBadge name={v} /> : <Shield size={17} aria-hidden="true" />}
+                          {hasTrainingBadge(v) ? (
+                            <TrainingBadge name={v} />
+                          ) : (
+                            <Shield size={17} aria-hidden="true" />
+                          )}
                           <span>{v}</span>
                         </li>
                       ))}
@@ -712,7 +728,12 @@ export function CharacterSheet({
                   ))}
                   <li>
                     <header>
-                      <img className="sheet-realistic-icon" src="/sheet/icons-20261019/unarmed.webp" alt="" draggable={false}/>
+                      <img
+                        className="sheet-realistic-icon"
+                        src="/sheet/icons-20261019/unarmed.webp"
+                        alt=""
+                        draggable={false}
+                      />
                       <strong>Desarmado</strong>
                     </header>
                     <div className="sheet-attack-numbers">
@@ -793,7 +814,7 @@ export function CharacterSheet({
             )}
             {tab === 'Magias' && (
               <>
-                <SheetSpellCollection character={c} choices={choices}/>
+                <SheetSpellCollection character={c} choices={choices} />
                 <h3>
                   Conjuração
                   <SheetHelp label="Conjuração">
@@ -959,7 +980,7 @@ export function CharacterSheet({
                       ))}
                     </ul>
                     <p>
-                      {c.gold_unlimited ? '∞' : money(c.gold_cp)} PO · {rankName(c.level)} · Nível{' '}
+                      {c.gold_unlimited ? '∞' : money(c.gold_cp)} PO · {rankTitle(c.level)} · Nível{' '}
                       {c.level}
                       <br />
                       {progressionLabel(c.level, c.progression_missions)}

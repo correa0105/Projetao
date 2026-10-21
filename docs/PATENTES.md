@@ -4,32 +4,32 @@ Regra própria da Alvorada Cinzenta, definida pelo usuário em 28/09/2026. Não 
 
 | Nível | Patente | Total de missões válidas |
 |---|---|---|
-| 1 | Ferro | 0 |
-| 2 | Ferro | 2 |
-| 3 | Ferro | 6 |
-| 4 | Ferro | 14 |
-| 5 | Bronze | 22 |
-| 6 | Bronze | 30 |
-| 7 | Bronze | 38 |
-| 8 | Bronze | 46 |
-| 9 | Adamantium | 53 |
-| 10 | Adamantium | 60 |
-| 11 | Adamantium | 67 |
-| 12 | Adamantium | 74 |
-| 13 | Ametista | 80 |
-| 14 | Ametista | 86 |
-| 15 | Ametista | 92 |
-| 16 | Ametista | 98 |
-| 17 | Obsidiana | 102 |
-| 18 | Obsidiana | 106 |
-| 19 | Obsidiana | 110 |
-| 20 | Obsidiana | 114 |
+| 1 | Iniciante | 0 |
+| 2 | Iniciante | 2 |
+| 3 | Iniciante | 6 |
+| 4 | Iniciante | 14 |
+| 5 | Intermediário | 22 |
+| 6 | Intermediário | 30 |
+| 7 | Intermediário | 38 |
+| 8 | Intermediário | 46 |
+| 9 | Profissional | 53 |
+| 10 | Profissional | 60 |
+| 11 | Profissional | 67 |
+| 12 | Profissional | 74 |
+| 13 | Mestre | 80 |
+| 14 | Mestre | 86 |
+| 15 | Mestre | 92 |
+| 16 | Mestre | 98 |
+| 17 | Heroico | 102 |
+| 18 | Heroico | 106 |
+| 19 | Heroico | 110 |
+| 20 | Heroico | 114 |
 
 ## Esclarecimento do usuário: quando libera o teste
 
 **14 missões deixam o personagem no nível 4, mas NÃO liberam o teste.** Ele continua
 contando missões normais até 22. Com 22 permanece no nível 4, torna-se apto ao teste
-Ferro → Bronze e para de acumular progresso em missões normais. Ao concluir o teste,
+Iniciante → Intermediário e para de acumular progresso em missões normais. Ao concluir o teste,
 sobe ao nível 5 com as mesmas 22 missões válidas. Depois precisa de mais 8 para chegar ao nível 6.
 
 O mesmo se aplica a nível 8/53 missões, nível 12/80 e nível 16/102.
@@ -53,21 +53,21 @@ pode impedir a conclusão conjunta até resolver a participação incompatível.
 
 | Patente | PO por participante |
 |---|---|
-| Ferro | 150 |
-| Bronze | 230 |
-| Adamantium | 300 |
-| Ametista | 390 |
-| Obsidiana | 500 |
+| Iniciante | 150 |
+| Intermediário | 230 |
+| Profissional | 300 |
+| Mestre | 390 |
+| Heroico | 500 |
 
 O formulário preenche o ouro automaticamente, sem edição. Servidor calcula criação
 e pagamento pela tabela, nunca pelo valor enviado pelo navegador. Teste de patente
-pertence à patente de **origem** (Ferro → Bronze exige Ferro e paga 150 PO), além
+pertence à patente de **origem** (Iniciante → Intermediário exige Iniciante e paga 150 PO), além
 dos requisitos de nível/missões já definidos. Eventos e ganchos não usam essa restrição.
 
-Migration 030 atribui Ferro às missões legadas sem teste, e a patente de origem aos
+Migration 030 atribui Iniciante às missões legadas sem teste, e a patente de origem aos
 testes. Atualiza ouro de missões abertas/em andamento; pagamentos e valores de missões
 concluídas/encerradas são preservados. Não remove inscrições antigas; incompatibilidades
-são rejeitadas na conclusão, sem pagamento parcial. API assume Ferro para clientes
+são rejeitadas na conclusão, sem pagamento parcial. API assume Iniciante para clientes
 antigos que omitam a patente; valores desconhecidos são rejeitados.
 
 - `shared/progression.ts`: tabela, patentes derivadas do nível, elegibilidade e cálculo.
@@ -99,3 +99,7 @@ mas os demais recursos seguem a cobertura descrita em `ROADMAP-REGRAS.md`.
 Testes da tabela inteira até 114, bloqueio e quatro promoções; API em PostgreSQL descartável
 cobre ownership, elegibilidade, concorrência entre missões/testes, idempotência, ouro,
 tentativas de enviar nível/XP/recompensa e rollback por limite de saldo.
+
+## Nomes e vínculo em 21/10/2026
+
+Patentes exibidas: Iniciante, Intermediário, Profissional, Mestre e Heroico. Os identificadores históricos Ferro/Bronze/Adamantium/Ametista/Obsidiana continuam no banco e na API para manter compatibilidade; rankLabel/rankTitle resolvem a apresentação. Ouro, elegibilidade e requisitos permanecem iguais. O cabeçalho da ficha mostra Mercenário sem associação ou Membro da Guilda — nome da guilda, consultando a associação do personagem (não de outro personagem da mesma conta).

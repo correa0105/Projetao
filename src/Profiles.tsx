@@ -21,7 +21,7 @@ import { api, post } from './api';
 import type { User } from './types';
 import type { DirectoryEntry, ProfileSettings, DirectMessage } from '../shared/social';
 import { profileSettingsSchema } from '../shared/social';
-import { rankName, progressionLabel } from '../shared/progression';
+import { rankTitle, progressionLabel } from '../shared/progression';
 import { AchievementShelf } from './Achievements';
 import { PortraitCabinet } from './PortraitFrames';
 import { CardCollection } from './CharacterCards';
@@ -762,7 +762,7 @@ export function Profiles({ user }: { user: User }) {
                       <>
                         <p>
                           {current.race} · {current.class} · Nível {current.level} ·{' '}
-                          {rankName(current.level)}
+                          {rankTitle(current.level)}
                         </p>
                         <div className="public-stat-cards">
                           <span>

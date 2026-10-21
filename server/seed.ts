@@ -224,7 +224,7 @@ export async function seed() {
         'rules',
         'Do mural à aventura',
         'Um registro, toda a história',
-        'Missões são agendadas com data e hora e aceitam inscrições enquanto abertas. Nas próximas 24 horas aparecem no Início, com aviso para o criador mestrar. Só o criador inicia ou conclui a missão; na conclusão registra o resumo, credita o ouro por inscrito, calcula a progressão e pode criar um gancho. Ganchos são apenas consultados. Só a staff publica eventos. Patentes: Ferro, Bronze, Adamantium, Ametista e Obsidiana. Testes liberados com nível 4/22 missões, 8/53, 12/80 e 16/102. Nesses limites missões normais dão apenas ouro; o teste promove sem aumentar a contagem. Missões concluídas permanecem no histórico.',
+        'Missões são agendadas com data e hora e aceitam inscrições enquanto abertas. Nas próximas 24 horas aparecem no Início, com aviso para o criador mestrar. Só o criador inicia ou conclui a missão; na conclusão registra o resumo, credita o ouro por inscrito, calcula a progressão e pode criar um gancho. Ganchos são apenas consultados. Só a staff publica eventos. Patentes: Iniciante, Intermediário, Profissional, Mestre e Heroico. Testes liberados com nível 4/22 missões, 8/53, 12/80 e 16/102. Nesses limites missões normais dão apenas ouro; o teste promove sem aumentar a contagem. Missões concluídas permanecem no histórico.',
         'Aventuras',
       ],
       [

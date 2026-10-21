@@ -1,3 +1,4 @@
+import { rankLabel } from '../shared/progression';
 import { FlashMessage } from './FlashMessage';
 import { useEffect, useRef, useState, type ReactNode, type PointerEvent } from 'react';
 import { Plus, Search, X, Lock } from 'lucide-react';
@@ -237,7 +238,7 @@ export function NoticeBoard({
                 <img src={`/notices/paper-${p.paper_style}.png`} alt="" draggable={false} />
                 <span className="board-paper-copy">
                   <small>
-                    {p.kind === 'mission' ? `Patente ${p.mission_rank}` : kindLabel[p.kind]}
+                    {p.kind === 'mission' ? `Patente ${rankLabel(p.mission_rank)}` : kindLabel[p.kind]}
                   </small>
                   <strong>{p.title}</strong>
                   <span>{p.paper_summary || p.description}</span>

@@ -3,7 +3,7 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { api, post } from './api';
 import { Modal } from './components';
 import type { Post } from './types';
-import { progressionLabel, rankName } from '../shared/progression';
+import { progressionLabel, rankTitle } from '../shared/progression';
 import { money } from '../shared/rules';
 
 type Participant = {
@@ -106,7 +106,7 @@ export function MissionCompletion({
                 <span>
                   <strong>{p.name}</strong>
                   <small>
-                    {rankName(p.level)} · Nível {p.level} · {p.race} · {p.class}
+                    {rankTitle(p.level)} · Nível {p.level} · {p.race} · {p.class}
                   </small>
                 </span>
                 <small>{progressionLabel(p.level, p.progression_missions)}</small>

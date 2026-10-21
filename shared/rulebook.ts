@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { classes, races, statNames } from './rules.js';
-import { MISSION_THRESHOLDS, RANKS, RANK_REWARD_CP, rankName } from './progression.js';
+import { MISSION_THRESHOLDS, RANKS, RANK_REWARD_CP, rankTitle, rankLabel } from './progression.js';
 
 export const RULEBOOK_MAX_DOCUMENT_BYTES = 2 * 1024 * 1024;
 export const RULEBOOK_MAX_IMAGE_BYTES = 8 * 1024 * 1024;
@@ -288,7 +288,7 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
             {
               id: 'evolucao-caminho-texto',
               type: 'text',
-              text: 'A progressão é própria da Alvorada Cinzenta e não utiliza a tabela de XP do SRD. As patentes são Ferro, Bronze, Adamantium, Ametista e Obsidiana. Novas conclusões não concedem XP; o XP legado permanece no histórico.',
+              text: 'A progressão é própria da Alvorada Cinzenta e não utiliza a tabela de XP do SRD. As patentes são Iniciante, Intermediário, Profissional, Mestre e Heroico. Novas conclusões não concedem XP; o XP legado permanece no histórico.',
             },
             {
               id: 'evolucao-caminho-tabela',
@@ -296,7 +296,7 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
               columns: ['Nível', 'Patente', 'Total de missões válidas'],
               rows: MISSION_THRESHOLDS.map((missions, index) => [
                 String(index + 1),
-                rankName(index + 1),
+                rankTitle(index + 1),
                 String(missions),
               ]),
             },
@@ -313,10 +313,10 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
               type: 'table',
               columns: ['Teste', 'Nível necessário', 'Missões necessárias'],
               rows: [
-                ['Ferro → Bronze', '4', '22'],
-                ['Bronze → Adamantium', '8', '53'],
-                ['Adamantium → Ametista', '12', '80'],
-                ['Ametista → Obsidiana', '16', '102'],
+                ['Iniciante → Intermediário', '4', '22'],
+                ['Intermediário → Profissional', '8', '53'],
+                ['Profissional → Mestre', '12', '80'],
+                ['Mestre → Heroico', '16', '102'],
               ],
             },
             {
@@ -324,7 +324,7 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
               type: 'callout',
               title: 'Exemplo: nível 4',
               tone: 'note',
-              text: '14 missões deixam o personagem no nível 4. Ele continua contando missões normais até 22; só então libera o teste para Bronze. O teste promove ao nível 5 com as mesmas 22 missões, sem aumentar o contador.',
+              text: '14 missões deixam o personagem no nível 4. Ele continua contando missões normais até 22; só então libera o teste para Intermediário. O teste promove ao nível 5 com as mesmas 22 missões, sem aumentar o contador.',
             },
             {
               id: 'evolucao-testes-limite',
@@ -433,7 +433,7 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
               id: 'missoes-recompensas-tabela',
               type: 'table',
               columns: ['Patente da missão', 'PO por participante'],
-              rows: RANKS.map((rank) => [rank, String(RANK_REWARD_CP[rank] / 100)]),
+              rows: RANKS.map((rank) => [rankLabel(rank), String(RANK_REWARD_CP[rank] / 100)]),
             },
             {
               id: 'missoes-recompensas-texto',

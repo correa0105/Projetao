@@ -91,7 +91,12 @@ async function result(id: string, user: string) {
       ).rows
     : [];
   const administrator = await isAdministrator(user);
+  const membership = await pool.query(
+    `SELECT g.id,g.document->>'name' AS name FROM player_guild_members m JOIN player_guilds g ON g.id=m.guild_id WHERE m.character_id=$1 AND m.user_id=$2`,
+    [id, user],
+  );
   return {
+    guild: membership.rows[0] || null,
     attacks,
     equipped: inventory
       .filter((i) => i.equipped?.length)

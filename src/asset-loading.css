@@ -1,0 +1,52 @@
+.asset-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(ellipse at 50% 35%, #283029, #121614 68%);
+  color: #efe6d3;
+}
+.asset-loading__panel {
+  width: min(440px, 100%);
+  text-align: center;
+  font-family: Georgia, serif;
+}
+.asset-loading__brand {
+  display: block;
+  color: #c5ad77;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.asset-loading h1 {
+  margin: 22px 0 12px;
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 400;
+}
+.asset-loading p {
+  font:
+    14px/1.7 system-ui,
+    sans-serif;
+  color: #c3c2b3;
+}
+.asset-loading progress {
+  display: block;
+  width: 100%;
+  height: 7px;
+  margin: 28px 0 12px;
+  accent-color: #c5ad77;
+}
+.asset-loading__count {
+  font:
+    12px system-ui,
+    sans-serif;
+  color: #b8b4a3;
+}
+.asset-loading button {
+  margin-top: 20px;
+}
+.asset-gate-content {
+  display: contents;
+}
