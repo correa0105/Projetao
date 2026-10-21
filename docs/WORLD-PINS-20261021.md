@@ -9,6 +9,10 @@ Ao mostrar de novo, marcadores são reprojetados na câmera atual; o modo de
 adicionar pin volta a exibi-los. Teste de navegador confirma legenda acima do
 símbolo, ocultar/mostrar, reload, três balões e missões/História preservados.
 
+Publicado na Hostinger em pin-visibility-20261021; TypeScript, build e navegador
+passaram. Conferência somente leitura em produção preservou contas, personagens,
+missões e saldos; bundles e artes originais conferidos por hash. Ilustrador online.
+
 Administrador usa Adicionar pin no Reino do Norte e clica no ponto desejado. Pode
 criar local ou aproveitar um já cadastrado, editar nome/descrição, mover e ocultar.
 Ocultar preserva o local, suas missões e história. Coordenadas normalizadas seguem

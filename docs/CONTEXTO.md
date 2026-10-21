@@ -1,4 +1,9 @@
-21/10/2026 — Pins em acabamento: nomes acima do marcador, símbolo vetorial próprio
+21/10/2026 — Publicação pin-visibility-20261021 aplicada e saudável na Hostinger,
+código e5fefffeb9830c6a60204cd470bbc440aea47c1c. Backup
+pin-visibility-before-20261021T205325Z.dump. Frontend HTTPS, permissões, registros e
+saldos anteriores conferidos; beta ativo em 6.000 PO, Gmail configurado e ilustrador
+online com heartbeat/lease corretos. Teste de navegador com reload passou.
+Pins publicados: nomes acima do marcador, símbolo vetorial próprio
 com aro/volume/contraste e controle Ocultar todos os pins para todo jogador.
 Preferência local persiste e não apaga locais, missões ou História; mostrar de novo
 reprojeta posições. Balões aquarela acima do nome. Supervisor da VPS detecta túnel
