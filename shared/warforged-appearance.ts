@@ -84,6 +84,48 @@ export const warforgedHeads = [
     instruction:
       'Cabeça cilíndrica larga com coroa em cúpula rebitada, pequenas fendas de olhos e face inferior plana e larga.',
   },
+  {
+    id: 'sentinel',
+    name: 'Sentinela',
+    description: 'Face alongada com visor em T e maçãs angulares.',
+    instruction:
+      'Cabeça alongada com visor escuro em T, maçãs angulares e coroa sólida arredondada, sem chifres; expressão imponente.',
+  },
+  {
+    id: 'cavalier',
+    name: 'Cavaleiro',
+    description: 'Face afilada e crista baixa integrada ao crânio.',
+    instruction:
+      'Cabeça de face afilada inspirada em bacinete medieval, duas fendas de olhos, arcos nas maçãs e crista central baixa integrada ao crânio.',
+  },
+  {
+    id: 'oracle',
+    name: 'Oráculo',
+    description: 'Máscara serena, testa gravada e têmporas circulares.',
+    instruction:
+      'Rosto metálico esculpido e sereno, dois olhos estreitos, sulcos geométricos na testa e discos circulares rentes nas têmporas; sem texto legível.',
+  },
+  {
+    id: 'warden',
+    name: 'Guardião',
+    description: 'Cabeça larga com mandíbula e placas reforçadas.',
+    instruction:
+      'Cabeça larga e quadrada, têmporas e mandíbula formadas por placas sobrepostas, olhos pequenos recuados e queixo forte afilado; sem dentes.',
+  },
+  {
+    id: 'artificer',
+    name: 'Artífice',
+    description: 'Uma lente circular e mecanismos integrados à face.',
+    instruction:
+      'Cabeça compacta assimétrica, uma lente circular embutida e um olho em fenda, pequenas engrenagens integradas a uma têmpora e mandíbula fina articulada; sem óculos externos.',
+  },
+  {
+    id: 'veteran',
+    name: 'Veterano',
+    description: 'Máscara de batalha com marcas de reparo e emendas.',
+    instruction:
+      'Máscara angular marcada por batalhas, emenda diagonal reparada, placa remendada na sobrancelha, dois olhos estreitos íntegros e mandíbula articulada forte.',
+  },
 ] as const;
 export const warforgedMetals = [
   { id: 'iron', name: 'Ferro cinza', color: '#777570', instruction: 'ferro cinza neutro' },
@@ -155,7 +197,20 @@ export const warforgedAccentColors = [
 export const warforgedAppearanceSchema = z
   .object({
     body: z.enum(['balanced', 'slender', 'robust', 'reinforced-arms', 'long-legs', 'compact']),
-    head: z.enum(['mask', 'visor', 'angular', 'round-eyes', 'segmented', 'domed']),
+    head: z.enum([
+      'mask',
+      'visor',
+      'angular',
+      'round-eyes',
+      'segmented',
+      'domed',
+      'sentinel',
+      'cavalier',
+      'oracle',
+      'warden',
+      'artificer',
+      'veteran',
+    ]),
     metal: z.enum([
       'iron',
       'steel',
@@ -174,7 +229,7 @@ export const warforgedAppearanceSchema = z
 export type WarforgedAppearance = z.infer<typeof warforgedAppearanceSchema>;
 export const defaultWarforgedAppearance: WarforgedAppearance = {
   body: 'balanced',
-  head: 'mask',
+  head: 'sentinel',
   metal: 'iron',
   finish: 'brushed',
   accentEnabled: true,
@@ -182,6 +237,12 @@ export const defaultWarforgedAppearance: WarforgedAppearance = {
 };
 export const warforgedBodyAtlas = '/character-creation/warforged-bodies-20261021.png';
 export const warforgedHeadAtlas = '/character-creation/warforged-heads-20261021.png';
+export const warforgedDetailedHeadAtlas =
+  '/character-creation/warforged-heads-detailed-20261021.png';
+export function warforgedHeadReference(head: WarforgedAppearance['head']) {
+  const index = warforgedHeads.findIndex((option) => option.id === head);
+  return { atlas: index < 6 ? warforgedHeadAtlas : warforgedDetailedHeadAtlas, index: index % 6 };
+}
 export function warforgedArtInstructions(value: unknown) {
   const parsed = warforgedAppearanceSchema.safeParse(value);
   if (!parsed.success) return '';

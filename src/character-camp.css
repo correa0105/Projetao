@@ -641,6 +641,35 @@ body:has(.character-camp) {
   margin-inline: auto;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.camp-saved-creations-toggle {
+  margin-left: auto;
+  font-size: 12px;
+}
+.character-reference-choices {
+  min-width: 0;
+  border: 1px solid #a98a4955;
+  padding: 12px;
+}
+.character-reference-choices label {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  margin: 0;
+  cursor: pointer;
+}
+.character-reference-choices input[type='radio'] {
+  flex: 0 0 18px;
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: #bf9854;
 }
 .camp-capacity-row .camp-capacity {
   display: inline-block;

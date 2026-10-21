@@ -14,7 +14,12 @@ import { resolve } from 'node:path';
 import { EQUIPMENT_SLOTS, isHelmet } from '../shared/equipment.js';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
-import { characterSchema, ART_MAX_BYTES, ART_MONTHLY_LIMIT } from '../shared/character-art.js';
+import {
+  characterSchema,
+  canConstructWithoutReference,
+  ART_MAX_BYTES,
+  ART_MONTHLY_LIMIT,
+} from '../shared/character-art.js';
 import { hitDice, modifier } from '../shared/rules.js';
 import { isAdministrator } from './administrators.js';
 import { characterLimit } from '../shared/character-art.js';
@@ -28,7 +33,8 @@ const requestSchema = z
     reference: z
       .string()
       .min(1)
-      .max(Math.ceil((ART_MAX_BYTES * 4) / 3) + 4),
+      .max(Math.ceil((ART_MAX_BYTES * 4) / 3) + 4)
+      .optional(),
     idempotency_key: uuid,
     helmet_mode: z.enum(['open', 'closed']).default('closed'),
     equipment_slots: z
@@ -40,7 +46,18 @@ const requestSchema = z
         'Não repita posições de equipamento.',
       ),
   })
-  .refine((data) => Boolean(data.character_id) !== Boolean(data.creation));
+  .refine((data) => Boolean(data.character_id) !== Boolean(data.creation))
+  .refine((data) => Boolean(data.reference) || canConstructWithoutReference(data.creation), {
+    path: ['reference'],
+    message:
+      'Envie uma imagem de referência. Para criar um Warforged sem imagem, escolha sua aparência.',
+  });
+
+async function requestReference(reference: string | undefined) {
+  if (reference === undefined) return null;
+  if (!/^[A-Za-z0-9+/]+={0,2}$/.test(reference)) throw new AppError(400, 'Imagem inválida.');
+  return normalizeArtImage(Buffer.from(reference, 'base64'));
+}
 
 export async function normalizeArtImage(bytes: Buffer, cutout = false) {
   if (!bytes.length || bytes.length > (cutout ? 24 * 1024 * 1024 : ART_MAX_BYTES))
@@ -95,8 +112,7 @@ export async function enqueueArt(userId: string, input: unknown) {
   if (data.creation && data.equipment_slots.length)
     throw new AppError(400, 'Equipe os itens após criar o personagem.');
   // Normalize before taking locks; arbitrary base64 is never passed to the agent.
-  if (!/^[A-Za-z0-9+/]+={0,2}$/.test(data.reference)) throw new AppError(400, 'Imagem inválida.');
-  const reference = await normalizeArtImage(Buffer.from(data.reference, 'base64'));
+  const reference = await requestReference(data.reference);
   return transaction(async (client) => {
     const {
       rows: [account],
@@ -332,9 +348,7 @@ export function characterArtRouter() {
         replacement.equipment_slots.length)
     )
       throw new AppError(400, 'Complete os dados da criação.');
-    const reference = replacement
-      ? await normalizeArtImage(Buffer.from(replacement.reference, 'base64'))
-      : null;
+    const reference = replacement ? await requestReference(replacement.reference) : null;
     const result = await transaction(async (client) => {
       await client.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE', [user]);
       const {
@@ -360,7 +374,7 @@ export function characterArtRouter() {
         if (pending.rowCount)
           throw new AppError(409, 'Já há uma imagem em preparação para este personagem.');
       }
-      if (!job.recoverable && !replacement)
+      if (!job.recoverable && !replacement && !canConstructWithoutReference(job.creation))
         throw new AppError(
           409,
           'Os dados estão salvos. Use Retomar preenchimento para reenviar a referência.',
@@ -377,7 +391,7 @@ export function characterArtRouter() {
         throw new AppError(409, 'Limite de personagens atingido. Sua criação continua salva.');
       characterSchema.parse(replacement?.creation || job.creation);
       await client.query(
-        "UPDATE character_art_jobs SET status='queued',error=NULL,started_at=NULL,completed_at=NULL,reference=COALESCE($2,reference),creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END WHERE id=$1",
+        "UPDATE character_art_jobs SET status='queued',error=NULL,started_at=NULL,completed_at=NULL,reference=CASE WHEN $3::jsonb IS NULL THEN reference ELSE $2::bytea END,creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END WHERE id=$1",
         [id, reference, replacement ? JSON.stringify(replacement.creation) : null],
       );
       return { id, status: 'queued' };
@@ -443,6 +457,7 @@ export function characterArtRouter() {
     const { rows: jobs } = await pool.query(
       `SELECT j.id,j.character_id,j.status,j.error,j.created_at,
       (j.status='failed' AND j.creation IS NOT NULL AND (j.reference IS NOT NULL OR j.approved_portrait IS NOT NULL)) AS can_retry,
+      j.creation AS saved_creation,
       COALESCE(c.name,j.creation->>'name') AS name FROM character_art_jobs j
       LEFT JOIN characters c ON c.id=j.character_id WHERE j.user_id=$1 AND (j.character_id IS NULL OR c.deleted_at IS NULL)
       ORDER BY j.created_at DESC LIMIT 30`,
@@ -451,7 +466,14 @@ export function characterArtRouter() {
     res.json({
       available: await artWorkerAvailable(),
       character_limit: characterLimit(await isAdministrator(res.locals.user.id)),
-      jobs,
+      jobs: jobs.map(({ saved_creation, ...job }) => ({
+        ...job,
+        can_retry:
+          job.can_retry ||
+          (job.status === 'failed' &&
+            !job.character_id &&
+            canConstructWithoutReference(saved_creation)),
+      })),
       quotas: Object.fromEntries(quotas.map(({ id, used, limit }) => [id, { used, limit }])),
       pending_new: jobs.filter((j) => !j.character_id && ['queued', 'running'].includes(j.status))
         .length,

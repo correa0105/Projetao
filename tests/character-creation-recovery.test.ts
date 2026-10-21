@@ -47,13 +47,15 @@ test('criação recuperável: texto, ficha, imagem e arte aprovada sobrevivem à
       other = await signup(),
       id = randomUUID(),
       reference = await testArtImage();
+    const legacyChoices = defaultChoices('Warforged', 'Bárbaro', 'Soldado');
+    delete legacyChoices.warforgedAppearance;
     const creation = {
       name: 'Artorias teste',
       race: 'Warforged',
       class: 'Bárbaro',
       background: 'Soldado',
       biography: 'Uma história extensa.\nSegunda linha com acentos: coração e memória.',
-      choices: defaultChoices('Warforged', 'Bárbaro', 'Soldado'),
+      choices: legacyChoices,
       stats: [15, 14, 13, 12, 10, 8],
     };
     await pool.query(

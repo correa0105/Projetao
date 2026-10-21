@@ -31,9 +31,11 @@ export async function readArtReference(file: File) {
 export function ReferenceInput({
   onChange,
   disabled = false,
+  required = true,
 }: {
   onChange: (value: string) => void;
   disabled?: boolean;
+  required?: boolean;
 }) {
   const [preview, setPreview] = useState('');
   const [error, setError] = useState('');
@@ -44,7 +46,7 @@ export function ReferenceInput({
         <input
           type="file"
           accept="image/png,image/jpeg,image/webp"
-          required
+          required={required}
           disabled={disabled}
           onChange={async (e) => {
             onChange('');
@@ -184,6 +186,11 @@ export function CharacterCamp({
         <span className="camp-capacity">
           {characters.length + state.pending_new} / 2 personagens
         </span>
+        {state.jobs.some(job => job.status === 'failed' && !job.character_id) && (
+          <button className="button outline camp-saved-creations-toggle" onClick={() => setShowSavedCreations(true)}>
+            Criações salvas ({state.jobs.filter(job => job.status === 'failed' && !job.character_id).length})
+          </button>
+        )}
       </div>
       <div className="camp-stage">
         {characters.map((character) => (

@@ -12,7 +12,7 @@ import {
 } from './codex-illustrator.js';
 import { basicCompanionToken } from '../shared/companion-token-art.js';
 import { magicalArtEquipment } from './armor-magic-appearance.js';
-import { ART_ANATOMY_RULES } from '../shared/art-anatomy.js';
+import { ART_ANATOMY_RULES, ART_CLOTHING_RULES } from '../shared/art-anatomy.js';
 import { tieflingHornStyle } from '../shared/tiefling-horns.js';
 import { warforgedArtInstructions } from '../shared/warforged-appearance.js';
 
@@ -165,6 +165,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
       const refs = attempt ? [candidate, reference, style] : [reference, style];
       const prompt =
         ART_ANATOMY_RULES +
+        (animal ? '' : '\n' + ART_CLOTHING_RULES) +
         (horns
           ? '\nFormato de chifres escolhido, preservado na vista superior: ' + horns.instruction
           : '') +
@@ -192,6 +193,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
           warforgedInstructions +
           '\n' +
           ART_ANATOMY_RULES +
+          (animal ? '' : '\n' + ART_CLOTHING_RULES) +
           ' Registre appendages_correct=false para qualquer defeito anatômico visível. Retorne approved=true, appendages_correct=true e issues=[] somente se cumprir; caso contrário descreva defeitos visíveis em português.',
         120_000,
       );

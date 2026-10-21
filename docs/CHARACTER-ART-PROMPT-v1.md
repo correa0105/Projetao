@@ -6,8 +6,8 @@ Gere uma única ilustração usando a ferramenta nativa de imagem do Codex e a s
 
 1. A ficha validada define raça, linhagem, tamanho e classe. Sua anatomia prevalece sobre a referência: humano não recebe asas; draconato não recebe orelhas élficas. Não acrescentar capacidades futuras ou traços incompatíveis com a ficha.
 2. A primeira imagem define somente o estilo: fantasia medieval semirrealista, anatomia convincente, pintura detalhada de RPG, luz suave e cores sóbrias.
-3. A segunda imagem fornece somente características físicas compatíveis: rosto, idade aparente, pele, cabelo, barba, constituição e marcas. Adaptar essas características à anatomia racial; ignorar roupas, equipamentos, pose e cenário da referência.
-4. As demais imagens definem os equipamentos selecionados, nas posições informadas. Reproduzir seus modelos, materiais e cores, integrados à pintura do personagem.
+3. Quando houver imagem do jogador, ela vem após a referência de estilo e fornece somente características físicas compatíveis: rosto, idade aparente, pele, cabelo, barba, constituição e marcas. Adaptar à anatomia racial; ignorar roupas, equipamentos, pose e cenário. Sem ela, construir a aparência pelas escolhas validadas.
+4. As imagens identificadas como equipamentos definem as peças selecionadas, nas posições e números informados. Reproduzir seus modelos, materiais e cores, integrados à pintura do personagem.
 
 ## Personagem e equipamentos
 

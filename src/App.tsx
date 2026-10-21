@@ -811,7 +811,7 @@ function Portal({ user }: { user: User }) {
               await refresh();
               setModal(null);
               go('characters');
-              setToast('Referência enviada. Seu personagem chegará quando a arte estiver pronta.');
+              setToast('Criação enviada ao ilustrador. Seu personagem chegará quando a arte estiver pronta.');
             }}
           />
         </Modal>

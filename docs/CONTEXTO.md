@@ -1,3 +1,13 @@
+21/10/2026 — Warforged: construção sem referência opcional implementada na criação,
+fila, ilustrador e retomada; conserva escolhas validadas, arte inicial gratuita,
+ownership e entrega retrato/token em duas etapas. Doze cabeças, seis novas detalhadas
+exibidas primeiro; Sentinela como padrão somente de novas criações. Cavaleiro teve
+a orientação corrigida por image_gen. PNG original preservado, prompts/hashes em
+data/character-creation/warforged-heads-detailed-20261021.json. Geração, correção e
+revisão conferem tecido sem atravessar pernas; rasgos coerentes permitidos. O jogador
+excluiu o personagem antigo do exemplo; não há retrato existente a substituir.
+Botão Criações salvas restaurado no acampamento. Guia WARFORGED-APPEARANCE-20261021.
+
 21/10/2026 — Publicação pin-delete-20261021 aplicada e saudável na Hostinger,
 código e75389d99b9788b78934daad8c236b5cce14749e. Backup
 pin-delete-before-20261021T210827Z.dump. TypeScript/builds, API e navegador em banco

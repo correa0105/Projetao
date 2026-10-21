@@ -1,0 +1,29 @@
+{
+  "tool": "image_gen built-in",
+  "date": "2026-10-21",
+  "asset": "/character-creation/warforged-heads-detailed-20261021.png",
+  "source": "Original image generated for this project",
+  "transforms": "None; original PNG bytes preserved",
+  "grid": {
+    "columns": 3,
+    "rows": 2,
+    "width": 1536,
+    "height": 1024
+  },
+  "order": [
+    "sentinel",
+    "cavalier",
+    "oracle",
+    "warden",
+    "artificer",
+    "veteran"
+  ],
+  "prompt": "Use case: stylized-concept. Asset type: production UI selection atlas for six original Warforged HEAD DESIGNS for a dark medieval fantasy RPG character creator, clearly differentiated, handsome imposing craftsmanship and much more refined than generic simple robot faces. Create one landscape 1536 x 1024 PNG contact sheet in a STRICT 3-column by 2-row grid, each cell exactly 512x512, NO visible panel borders and NO TEXT. Each cell contains ONE complete head and short mechanical neck, front three-quarter view with both sides legible, no shoulders or torso, all head outlines comfortably inside their cell with 10% padding. Every cell has the same plain very dark charcoal-brown background, same scale, same warm soft studio lighting, crisp intricately painted metal, believable depth, restrained weathering, rich medieval fantasy semi-realistic concept illustration. Anatomy: these are living-construct HEADS, integrated wood fibers/metal joints at neck; no human face hiding inside, no removable helmet, no floating parts. Neutral aged silver steel and aged brass accents, paired dim amber eye lights, materials easy to recolor. Exactly six DISTINCT designs in reading order: TOP LEFT SENTINEL: elongated knight-like faceplate with a clean T-shaped recessed visor and angular cheek guards, solid domed crown, intimidating elegant silhouette, no horns; TOP MIDDLE CAVALIER: classical medieval bascinet-inspired integral head, gently pointed face and small paired eye slits, layered brass cheek arcs, swept low central crest integrated into skull, noble precise craftsmanship; TOP RIGHT ORACLE: serene sculpted metal face with two luminous narrow eyes, forehead geometric inlaid runic grooves (abstract ornament, no readable writing), broad circular temple discs integrated flush, thoughtful magical construct; BOTTOM LEFT WARDEN: heavy broad squared face with layered overlapping temple and jaw plates, deep-set small eye slits, muscular armored cranial silhouette, sturdy tapered chin, no mouth teeth; BOTTOM MIDDLE ARTIFICER: compact clever asymmetrical mechanical face with one round recessed optical lens and one narrow recessed eye, exposed tiny gearing at one temple and an articulated slim jaw, all coherent and integrated, no modern goggles; BOTTOM RIGHT VETERAN: angular scarred war-worn mask with diagonal repaired seam, one patched brow plate, intact paired narrow eyes and strong articulated lower jaw, dents and patina, dignified not monstrous. Avoid sci-fi plastic, modern military, gas masks, Darth Vader, stormtroopers, recognizable franchise designs, skull teeth, spikes, horns, cartoon, chibi, gradients as placeholders, textures pasted flat. The six head silhouettes must be immediately distinguishable even at thumbnail size. No labels, captions, symbols outside the heads, weapons, bodies, shadows crossing cells, or panels merged together.",
+  "sha256": "69067b16557229d383a53c69f91339234dbcbe39b213d3fa56218bde7e3beb10",
+  "initialSha256": "5b66b040b5f0880ab3cbda2d68721d3db3071d6b5f46fc6d6dcf3e32fac74bf8",
+  "correction": {
+    "tool": "image_gen built-in",
+    "request": "Top middle head faces the same direction as the other five",
+    "prompt": "Edit the attached six-head Warforged concept atlas. Correct ONLY the TOP MIDDLE head, the knight/bascinet design with swept engraved crest: it currently faces LEFT while the other five face RIGHT. Make this SAME head face RIGHT in the SAME three-quarter direction as the top-left head and all the bottom heads. Preserve its exact design, pointed face, engraved brass crest, metallic materials, eye shape and scale. The near temple and neck must have anatomically coherent right-facing orientation. Keep the other FIVE heads unchanged, and preserve all six positions, 3x2 cell geometry, dark background, lighting, colors, layout, 1536x1024 resolution, no text, no new elements. Do not redesign the other heads. Keep the complete crest inside the top-middle 512x512 cell with a small margin."
+  }
+}

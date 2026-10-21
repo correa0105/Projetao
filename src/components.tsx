@@ -344,6 +344,7 @@ export function CharacterForm({
   initialJobId?: string;
 }) {
   const [reference, setReference] = useState(initialReference);
+  const [useWarforgedReference, setUseWarforgedReference] = useState(Boolean(initialReference));
   const [available, setAvailable] = useState<boolean | null>(null);
   const [availabilityError, setAvailabilityError] = useState('');
   const requestKey = useRef(crypto.randomUUID());
@@ -378,6 +379,7 @@ export function CharacterForm({
     () =>
       initial?.choices || defaultChoices(initial?.race || 'Humano', initial?.class || 'Guerreiro'),
   );
+  const needsReference = race !== 'Warforged' || useWarforgedReference;
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -394,7 +396,7 @@ export function CharacterForm({
           background: choices.backgroundType,
           choices: validateChoices(race, cls, choices),
         },
-        reference,
+        reference: race === 'Warforged' && !useWarforgedReference ? undefined : reference,
         idempotency_key: requestKey.current,
       });
       await done();
@@ -411,8 +413,9 @@ export function CharacterForm({
         seis atributos. Regras de 2024 e suplementos, com as espécies atualizadas de Eberron (2025).
       </p>
       <p className="muted small">
-        Sua imagem de corpo inteiro é obrigatória; o personagem chega ao acampamento quando ela
-        estiver pronta.
+        {race === 'Warforged'
+          ? 'O ilustrador cria seu Warforged com a estrutura, a cabeça, as cores e o acabamento escolhidos. A imagem de referência é opcional.'
+          : 'Envie uma imagem de referência; o personagem chega ao acampamento quando a arte de corpo inteiro estiver pronta.'}
       </p>
       <p
         className="muted small"
@@ -482,14 +485,46 @@ export function CharacterForm({
           placeholder="De onde você veio? O que procura?"
         />
       </label>
-      <ReferenceInput onChange={setReference} disabled={busy} />
-      {initialReference && (
+      {race === 'Warforged' && (
+        <fieldset className="character-reference-choices" disabled={busy}>
+          <legend>Como criar a aparência</legend>
+          <label className="check">
+            <input
+              type="radio"
+              name="warforged-reference-mode"
+              checked={!useWarforgedReference}
+              onChange={() => setUseWarforgedReference(false)}
+            />
+            Criar apenas com as características escolhidas
+          </label>
+          <label className="check">
+            <input
+              type="radio"
+              name="warforged-reference-mode"
+              checked={useWarforgedReference}
+              onChange={() => setUseWarforgedReference(true)}
+            />
+            Enviar uma imagem de referência
+          </label>
+          <p className="muted small">
+            A estrutura, a cabeça, o metal, o acabamento e a cor secundária escolhidos serão usados
+            na arte em qualquer opção.
+          </p>
+        </fieldset>
+      )}
+      {(race !== 'Warforged' || useWarforgedReference) && (
+        <ReferenceInput onChange={setReference} disabled={busy} required={!reference} />
+      )}
+      {initialReference && (race !== 'Warforged' || useWarforgedReference) && (
         <p className="muted small">
           A imagem enviada anteriormente está preservada. Você pode mantê-la ou enviar outra.
         </p>
       )}
       {error && <FlashMessage>{error}</FlashMessage>}
-      <button className="button primary full" disabled={busy || !reference || !available}>
+      <button
+        className="button primary full"
+        disabled={busy || (needsReference && !reference) || !available}
+      >
         {busy ? 'Criando personagem…' : 'Dar vida ao personagem'}
         <Sparkles size={17} />
       </button>

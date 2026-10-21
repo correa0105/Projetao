@@ -4,6 +4,8 @@ import {
   warforgedHeads,
   warforgedBodyAtlas,
   warforgedHeadAtlas,
+  warforgedDetailedHeadAtlas,
+  warforgedHeadReference,
   warforgedMetals,
   warforgedFinishes,
   warforgedAccentColors,
@@ -46,7 +48,11 @@ export function WarforgedAppearance({
   onChange: (value: Appearance) => void;
 }) {
   const selected = value || defaultWarforgedAppearance;
-  const prepared = usePreparedAssets([warforgedBodyAtlas, warforgedHeadAtlas]);
+  const prepared = usePreparedAssets([
+    warforgedBodyAtlas,
+    warforgedHeadAtlas,
+    warforgedDetailedHeadAtlas,
+  ]);
   const update = (patch: Partial<Appearance>) => onChange({ ...selected, ...patch });
   return (
     <section className="warforged-appearance" aria-label="Aparência do Warforged">
@@ -71,21 +77,25 @@ export function WarforgedAppearance({
             {
               title: 'Estrutura do corpo',
               key: 'body',
-              atlas: warforgedBodyAtlas,
-              options: warforgedBodies,
+              options: warforgedBodies.map((option, index) => ({
+                ...option,
+                atlas: warforgedBodyAtlas,
+                index,
+              })),
             },
             {
               title: 'Formato da cabeça',
               key: 'head',
-              atlas: warforgedHeadAtlas,
-              options: warforgedHeads,
+              options: [...warforgedHeads.slice(6), ...warforgedHeads.slice(0, 6)].map(
+                (option) => ({ ...option, ...warforgedHeadReference(option.id) }),
+              ),
             },
           ] as const
         ).map((group) => (
           <fieldset key={group.key}>
             <legend>{group.title}</legend>
             <div className="warforged-design-options">
-              {group.options.map((option, index) => (
+              {group.options.map((option) => (
                 <label
                   key={option.id}
                   className={selected[group.key] === option.id ? 'is-selected' : ''}
@@ -97,7 +107,7 @@ export function WarforgedAppearance({
                     checked={selected[group.key] === option.id}
                     onChange={() => update({ [group.key]: option.id })}
                   />
-                  <AtlasImage kind={group.key} atlas={group.atlas} index={index} />
+                  <AtlasImage kind={group.key} atlas={option.atlas} index={option.index} />
                   <strong>{option.name}</strong>
                   <span>{option.description}</span>
                 </label>

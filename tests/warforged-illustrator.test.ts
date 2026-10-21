@@ -1,0 +1,156 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, mkdir, readFile, writeFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join, delimiter } from 'node:path';
+import { randomUUID, createHash } from 'node:crypto';
+import sharp from 'sharp';
+import { generateCharacterArt } from '../server/codex-illustrator.js';
+import { characterArtReferences } from '../server/character-art-references.js';
+import { defaultChoices } from '../shared/character-sheet.js';
+import { ART_CLOTHING_RULES } from '../shared/art-anatomy.js';
+import {
+  warforgedArtInstructions,
+  warforgedBodyAtlas,
+  warforgedHeadReference,
+} from '../shared/warforged-appearance.js';
+
+test('referências mantêm papéis, índices dos equipamentos e limite de cinco imagens', () => {
+  for (const companion of [false, true])
+    for (const uploaded of [false, true]) {
+      if (companion && !uploaded) continue;
+      for (const details of [[], ['body', 'head']])
+        for (let count = 0; count <= 15; count++) {
+          const equipmentPaths = Array.from({ length: count }, (_, i) => 'gear-' + i);
+          const plan = characterArtReferences({
+            style: 'style',
+            reference: uploaded ? 'player' : undefined,
+            companion,
+            equipmentPaths,
+            sheetPath: 'sheet',
+            warforgedReferences: details,
+          });
+          assert(plan.references.length <= 5);
+          assert.equal(plan.equipmentImageStart, companion || !uploaded ? 2 : 3);
+          if (count)
+            assert.equal(
+              plan.references[plan.equipmentImageStart - 1],
+              plan.useSheet ? 'sheet' : 'gear-0',
+            );
+          if (details.length) assert.deepEqual(plan.references.slice(-2), details);
+          assert.equal(plan.references.includes('player'), uploaded);
+        }
+    }
+});
+
+test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido atravessando pernas', async () => {
+  const temp = await mkdtemp(join(tmpdir(), 'warforged-cli-'));
+  const entry = join(temp, 'node_modules/@openai/codex/bin');
+  await mkdir(entry, { recursive: true });
+  const fixture = join(temp, 'fixture.png'),
+    capture = join(temp, 'capture.json');
+  const image = await sharp({
+    create: { width: 512, height: 768, channels: 4, background: '#00000000' },
+  })
+    .png()
+    .toBuffer();
+  await writeFile(fixture, image);
+  // Exercise real CLI attachments, both review passes and the repair prompt without paid generation.
+  await writeFile(
+    join(entry, 'codex.js'),
+    `
+    const fs=require('node:fs'),path=require('node:path');
+    const args=process.argv.slice(2), result=args[args.indexOf('--output-last-message')+1];
+    let prompt=''; process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
+      const state=fs.existsSync(${JSON.stringify(capture)})?JSON.parse(fs.readFileSync(${JSON.stringify(capture)})):{renders:[],reviews:[]};
+      const review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
+      const images=args.flatMap((v,i)=>v==='--image'?[args[i+1]]:[]);
+      if(images.length>5||images.some(p=>!fs.existsSync(p)))process.exit(1);
+      if(review){state.reviews.push(prompt);fs.writeFileSync(result,JSON.stringify({approved:state.reviews.length>1,appendages_correct:true,issues:state.reviews.length>1?[]:['Tecido atravessando as pernas metálicas. Corrigir caimento.']}));}
+      else {state.renders.push({prompt,images});const output=path.join(args[args.indexOf('--cd')+1],'output.png');fs.copyFileSync(${JSON.stringify(fixture)},output);fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));}
+      fs.writeFileSync(${JSON.stringify(capture)},JSON.stringify(state));
+    });
+  `,
+  );
+  const originalPath = process.env.PATH,
+    originalBin = process.env.CODEX_BIN;
+  const choices = defaultChoices('Warforged', 'Guerreiro');
+  choices.warforgedAppearance = {
+    body: 'reinforced-arms',
+    head: 'cavalier',
+    metal: 'copper',
+    finish: 'rusted',
+    accentEnabled: true,
+    accentColor: '#123abc',
+  };
+  const hash = async (p: string) =>
+    createHash('sha256')
+      .update(await readFile(p))
+      .digest('hex');
+  const atlases = [
+    warforgedBodyAtlas,
+    warforgedHeadReference(choices.warforgedAppearance.head).atlas,
+  ].map((p) => 'public' + p);
+  const before = await Promise.all(atlases.map(hash));
+  try {
+    process.env.PATH = temp + delimiter + (originalPath || '');
+    delete process.env.CODEX_BIN;
+    assert.deepEqual(
+      await generateCharacterArt({
+        id: randomUUID(),
+        race: 'Warforged',
+        class: 'Guerreiro',
+        reference: null,
+        choices,
+      }),
+      image,
+    );
+    const state = JSON.parse(await readFile(capture, 'utf8'));
+    assert.equal(state.renders.length, 2);
+    assert.equal(state.reviews.length, 2);
+    assert.equal(state.renders[0].images.length, 3);
+    assert.match(state.renders[0].images[0], /character-style-v1\.png$/);
+    assert(state.renders[0].images.every((p: string) => !p.endsWith('reference.png')));
+    assert.match(state.renders[0].prompt, /CONSTRUÇÃO SEM IMAGEM DO JOGADOR/);
+    assert.match(state.renders[1].prompt, /Tecido atravessando as pernas metálicas/);
+    for (const prompt of [
+      ...state.renders.map((r: { prompt: string }) => r.prompt),
+      ...state.reviews,
+    ]) {
+      assert(prompt.includes(ART_CLOTHING_RULES));
+      assert(prompt.includes(warforgedArtInstructions(choices.warforgedAppearance)));
+    }
+    assert.deepEqual(
+      await Promise.all(atlases.map(hash)),
+      before,
+      'Pranchas originais inalteradas',
+    );
+    await assert.rejects(
+      () =>
+        generateCharacterArt({
+          id: randomUUID(),
+          race: 'Humano',
+          class: 'Guerreiro',
+          reference: null,
+        }),
+      /referência/,
+    );
+    await assert.rejects(
+      () =>
+        generateCharacterArt({
+          id: randomUUID(),
+          race: 'Warforged',
+          class: 'Guerreiro',
+          reference: null,
+        }),
+      /referência/,
+    );
+  } finally {
+    if (originalPath === undefined) delete process.env.PATH;
+    else process.env.PATH = originalPath;
+    if (originalBin === undefined) delete process.env.CODEX_BIN;
+    else process.env.CODEX_BIN = originalBin;
+    assert(temp.startsWith(join(tmpdir(), 'warforged-cli-')));
+    await rm(temp, { recursive: true, force: true });
+  }
+});

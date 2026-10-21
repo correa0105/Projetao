@@ -11,6 +11,9 @@ import {
   warforgedBodies,
   warforgedHeads,
   warforgedArtInstructions,
+  warforgedHeadReference,
+  warforgedHeadAtlas,
+  warforgedDetailedHeadAtlas,
 } from '../shared/warforged-appearance';
 
 test('Warforged: aparência persiste sem alterar regras; fichas antigas e outras espécies são protegidas', () => {
@@ -22,6 +25,13 @@ test('Warforged: aparência persiste sem alterar regras; fichas antigas e outras
     level: 1,
   };
   const rules = deriveSheet(character, base);
+  assert.equal(warforgedHeads.length, 12);
+  for (const [index, head] of warforgedHeads.entries()) {
+    assert.deepEqual(warforgedHeadReference(head.id), {
+      atlas: index < 6 ? warforgedHeadAtlas : warforgedDetailedHeadAtlas,
+      index: index % 6,
+    });
+  }
   for (const body of warforgedBodies)
     for (const head of warforgedHeads) {
       const appearance = {

@@ -312,6 +312,20 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     assert.equal(horns.renders[0].hashes.at(-1), hash(await readFile('public/character-creation/tiefling-horns-short.webp')));
     assert.match(horns.reviews[0].prompt, /Reprove um formato diferente/);
     assert.match(horns.renders[1].prompt, /Formato de chifres escolhido.*chifres curtos/);
+    await writeFile(statePath, JSON.stringify({ renders: [], reviews: [] }));
+    const warforgedChoices = defaultChoices('Warforged', 'Guerreiro');
+    warforgedChoices.warforgedAppearance!.head = 'cavalier';
+    const constructed = await generateCharacterArtPair({ ...job, id: randomUUID(), reference: null, race: 'Warforged', choices: warforgedChoices });
+    assert.equal(hash(constructed.portrait), hash(portrait));
+    assert.equal(hash(constructed.token), hash(token));
+    const warforged = JSON.parse(await readFile(statePath, 'utf8'));
+    assert.equal(warforged.renders[0].hashes.length, 3);
+    assert.equal(warforged.renders[0].hashes.at(-1), hash(await readFile('public/character-creation/warforged-heads-detailed-20261021.png')));
+    assert.equal(warforged.renders[1].hashes[0], hash(portrait));
+    for (const stage of [...warforged.renders, ...warforged.reviews]) {
+      assert.match(stage.prompt, /Cabeça Cavaleiro/);
+      assert.match(stage.prompt, /Reprove tecido atravessando as pernas/);
+    }
     await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], rejectToken: true }));
     await assert.rejects(generateCharacterToken({ ...job, id: randomUUID() }, portrait), /revisão/);
     const failed = JSON.parse(await readFile(statePath, 'utf8'));

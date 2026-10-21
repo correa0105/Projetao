@@ -52,9 +52,9 @@ try {
   const bodies = design.getByRole('group', { name: 'Estrutura do corpo', exact: true });
   const heads = design.getByRole('group', { name: 'Formato da cabeça', exact: true });
   await expect(bodies.getByRole('radio')).toHaveCount(6);
-  await expect(heads.getByRole('radio')).toHaveCount(6);
+  await expect(heads.getByRole('radio')).toHaveCount(12);
   await bodies.getByRole('radio', { name: /Braços reforçados/ }).check();
-  await heads.getByRole('radio', { name: /^Angular/ }).check();
+  await heads.getByRole('radio', { name: /^Cavaleiro/ }).check();
   await design.getByLabel('Cor metálica principal', { exact: true }).selectOption('copper');
   await design.getByLabel('Acabamento', { exact: true }).selectOption('rusted');
   await design.getByRole('button', { name: 'Detalhes em Azul', exact: true }).click();
@@ -84,7 +84,7 @@ try {
   ).rows[0].choices.warforgedAppearance;
   expect(persisted).toEqual({
     body: 'reinforced-arms',
-    head: 'angular',
+    head: 'cavalier',
     metal: 'copper',
     finish: 'rusted',
     accentEnabled: true,
@@ -94,7 +94,7 @@ try {
   await expect(design.getByRole('radio', { name: /Braços reforçados/ })).toBeChecked({
     timeout: 60000,
   });
-  await expect(design.getByRole('radio', { name: /^Angular/ })).toBeChecked();
+  await expect(design.getByRole('radio', { name: /^Cavaleiro/ })).toBeChecked();
   await expect(design.getByLabel('Cor secundária personalizada', { exact: true })).toHaveValue(
     '#123abc',
   );
@@ -104,9 +104,76 @@ try {
   await expect(design.getByLabel('Cor secundária personalizada', { exact: true })).toHaveValue(
     '#123abc',
   );
+  await pool.query(
+    'INSERT INTO character_art_worker(id,available,heartbeat_at)VALUES(true,true,now()) ON CONFLICT(id)DO UPDATE SET available=true,heartbeat_at=now()',
+  );
+  await page.goto(origin + '/#characters');
+  await page.getByRole('button', { name: 'Criar personagem', exact: true }).click();
+  const form = page.locator('.character-creation-form');
+  await form.getByLabel('Nome do personagem').fill('Construído sem foto');
+  await form.getByLabel('Espécie', { exact: true }).selectOption('Warforged');
+  const without = form.getByRole('radio', {
+    name: 'Criar apenas com as características escolhidas',
+    exact: true,
+  });
+  const upload = form.getByRole('radio', { name: 'Enviar uma imagem de referência', exact: true });
+  const submit = form.getByRole('button', { name: 'Dar vida ao personagem' });
+  await expect(without).toBeChecked();
+  await expect(form.locator('input[type=file]')).toHaveCount(0);
+  await expect(submit).toBeEnabled();
+  await form.getByLabel('Espécie', { exact: true }).selectOption('Humano');
+  await expect(submit).toBeDisabled();
+  await form.getByLabel('Espécie', { exact: true }).selectOption('Warforged');
+  const creationDesign = form.getByRole('region', { name: 'Aparência do Warforged' });
+  await creationDesign.getByRole('radio', { name: /Braços reforçados/ }).check();
+  await creationDesign.getByRole('radio', { name: /^Cavaleiro/ }).check();
+  await creationDesign.getByLabel('Cor metálica principal', { exact: true }).selectOption('copper');
+  await creationDesign.getByLabel('Acabamento', { exact: true }).selectOption('rusted');
+  await creationDesign.getByLabel('Cor secundária personalizada', { exact: true }).fill('#123abc');
+  await upload.check();
+  await expect(submit).toBeDisabled();
+  const { testArtImage } = await import('../tests/character-fixtures');
+  await form
+    .locator('input[type=file]')
+    .setInputFiles({ name: 'referencia.png', mimeType: 'image/png', buffer: await testArtImage() });
+  await expect(submit).toBeEnabled();
+  await without.check();
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 950 });
+    await without.scrollIntoViewIfNeeded();
+    await page.screenshot({
+      path: `test-results/warforged-appearance/creation-no-reference-${width}.png`,
+    });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
+  const responsePromise = page.waitForResponse(
+    (r) => r.url().endsWith('/character-art') && r.request().method() === 'POST',
+  );
+  await submit.click();
+  const response = await responsePromise;
+  expect(response.status()).toBe(202);
+  const job = await response.json();
+  expect(response.request().postDataJSON().reference).toBeUndefined();
+  const queued = (
+    await pool.query('SELECT reference,creation FROM character_art_jobs WHERE id=$1', [job.id])
+  ).rows[0];
+  expect(queued.reference).toBeNull();
+  expect(queued.creation.choices.warforgedAppearance).toEqual(persisted);
+  await pool.query(
+    "UPDATE character_art_jobs SET status='failed',error='Falha simulada' WHERE id=$1",
+    [job.id],
+  );
+  await page.reload();
+  await page.getByRole('button', { name: 'Criações salvas (1)', exact: true }).click();
+  await page.getByRole('button', { name: 'Retomar preenchimento', exact: true }).click();
+  await expect(without).toBeChecked();
+  await expect(submit).toBeEnabled();
+  await expect(form.getByRole('radio', { name: /Braços reforçados/ })).toBeChecked();
   expect(errors).toEqual([]);
   console.log(
-    'PASS: seis corpos, seis cabeças, metais/acabamentos/cor personalizada, salvar/recarregar e layout em quatro larguras.',
+    'PASS: construção e retomada sem referência, upload opcional, escolhas persistidas e layout em quatro larguras.',
   );
 } finally {
   await browser.close();
