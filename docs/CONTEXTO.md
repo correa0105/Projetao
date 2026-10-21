@@ -1,3 +1,17 @@
+21/10/2026 — Publicação warforged-identity-20261021 aplicada e saudável na Hostinger,
+código 4d6ee2aeec8e8d936a883d6fec6e527bb371c036. Backup /opt/alvorada/backups/warforged-identity-before-20261021T221341Z.dump.
+Montagem e referência exclusivas, modo salvo e protegido; referência desmarca montagem
+e não usa suas pranchas. Vestir/Nova imagem de montagem usa BASE privada e não pede
+upload, preservando paleta/corpo/cabeça/acabamento. Migration 123 aplicada; base não
+é sobrescrita por nova roupa. Cotas e entrega em duas etapas preservadas.
+Doze cabeças no site, seis novas detalhadas primeiro, orientação do Cavaleiro corrigida.
+Retrato/token exigem aprovação explícita da roupa e anatomia; não publicar interpenetração
+ou mangas/punhos desconectados. TypeScript/builds, API, regressão da criação/cotas,
+CLI simulada e navegador em quatro larguras e nos dois acessos de vestir passaram.
+Frontend HTTPS e verificações somente leitura em produção passaram; contas, ouro,
+missões, salas, imagens originais, Gmail e ilustrador online preservados. XD 2 foi
+excluído antes da correção manual; guardas impediram escrever em outro personagem.
+
 21/10/2026 — Warforged: construção sem referência opcional implementada na criação,
 fila, ilustrador e retomada; conserva escolhas validadas, arte inicial gratuita,
 ownership e entrega retrato/token em duas etapas. Doze cabeças, seis novas detalhadas

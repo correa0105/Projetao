@@ -43,9 +43,10 @@ sem montagem, reference. A base legada é preservada no primeiro pedido de vesti
 Pedidos pendentes sem referência da versão anterior são identificados pela própria
 criação Warforged validada; não reescrever escolhas de fichas ou cotas históricas.
 
-Retrato usa a prancha do corpo e a prancha da cabeça escolhida como referências
-somente das células selecionadas, com o estilo existente e, opcionalmente, a imagem
-do jogador. Sem ela, cria uma identidade original pelas escolhas validadas. Equipamentos múltiplos
+No modo montagem, o retrato usa a prancha do corpo e da cabeça escolhida somente
+nas células selecionadas, com o estilo existente. A criação usa as escolhas
+validadas; vestir usa a identidade BASE privada, sem imagem do jogador. No modo
+referência, usa o estilo e a imagem enviada, sem pranchas de montagem. Equipamentos múltiplos
 usam a prancha de equipamento já existente para respeitar cinco referências.
 Token e revisão também recebem estrutura, cabeça, acabamento e paleta; oclusão
 natural e revisão anatômica continuam obrigatórias. Nenhuma geração real de
