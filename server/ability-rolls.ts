@@ -1,7 +1,11 @@
 import { randomInt } from 'node:crypto';
-import { ABILITY_ROLL_MIN_TOTAL, ABILITY_ROLL_MAX_TOTAL, abilityRollTotal } from '../shared/ability-rolls.js';
+import {
+  ABILITY_ROLL_MIN_TOTAL,
+  ABILITY_ROLL_MAX_TOTAL,
+  abilityRollTotal,
+} from '../shared/ability-rolls.js';
 
-/** Rejection sampling of whole 4d6-drop-lowest sets; never adjusts individual dice. */
+/** Keep the original dice; apply the score floor before checking the whole set. */
 export function rollCharacterAbilities(die: () => number = () => randomInt(1, 7)) {
   for (let attempt = 0; attempt < 10000; attempt++) {
     const rolls = Array.from({ length: 6 }, () => Array.from({ length: 4 }, die));

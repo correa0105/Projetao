@@ -1758,6 +1758,7 @@ export function deriveSheet(
   return { ...sheet, featureEntries: sheetFeatureEntries(character, c, sheet.featureGroups) };
 }
 export type SheetRecord = {
+  ability_roll_floor?: number;
   choices: SheetChoices | null;
   rolls: number[][] | null;
   assignment: number[] | null;

@@ -1,3 +1,4 @@
+import { abilityRollTotal, abilityRollResult } from '../shared/ability-rolls';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
@@ -127,7 +128,8 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
     );
     const rolls = results[0].data.sheet.rolls;
     assert.equal(rolls.length, 6);
-    const total = rolls.reduce((sum: number, dice: number[]) => sum + dice.reduce((a, b) => a + b, 0) - Math.min(...dice), 0);
+    const total = abilityRollTotal(rolls);
+    assert.equal(results[0].data.sheet.ability_roll_floor,8);
     assert.ok(total >= 72 && total <= 90, 'Soma da rolagem deve ficar entre 72 e 90 antes dos bônus.');
     for (const result of results) {
       assert.equal(result.status, 200);
@@ -162,8 +164,7 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
     assert.equal(done.status, 200);
     const expected = assignment.map(
       (j, i) =>
-        rolls[j].reduce((a: number, b: number) => a + b, 0) -
-        Math.min(...rolls[j]) +
+        abilityRollResult(rolls[j]) +
         racialBonuses(character.race, choices)[i],
     );
     const db = (await pool.query('SELECT * FROM characters WHERE id=$1', [character.id])).rows[0];

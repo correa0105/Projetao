@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Dices } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { AttributeRollRule } from './AttributeRollRule';
+import { abilityRollRaw, abilityRollResult } from '../shared/ability-rolls';
 import './attribute-dice.css';
 
 const dots: Record<number, number[]> = {
@@ -37,12 +38,23 @@ function Die({ value, index, discarded }: { value: number; index: number; discar
   );
 }
 
-function DiceThrow({ dice, index, onKeep }: { dice: number[]; index: number; onKeep: () => void }) {
+function DiceThrow({
+  dice,
+  index,
+  minimum,
+  onKeep,
+}: {
+  dice: number[];
+  index: number;
+  minimum: number;
+  onKeep: () => void;
+}) {
   const dialog = useRef<HTMLDialogElement>(null);
   const button = useRef<HTMLButtonElement>(null);
   const [settled, setSettled] = useState(false);
   const discard = dice.indexOf(Math.min(...dice));
-  const total = dice.reduce((a, b) => a + b, 0) - dice[discard];
+  const raw = abilityRollRaw(dice);
+  const total = abilityRollResult(dice, minimum);
   useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
     dialog.current?.showModal();
@@ -71,7 +83,7 @@ function DiceThrow({ dice, index, onKeep }: { dice: number[]; index: number; onK
         <h2 id="dice-throw-title">Rolagem {index + 1} de 6</h2>
         <p>Quatro dados. Os três maiores formam seu resultado.</p>
       </header>
-      <AttributeRollRule />
+      <AttributeRollRule minimum={minimum} />
       <div className="attribute-dice-stage">
         {dice.map((value, i) => (
           <Die key={i} value={value} index={i} discarded={i === discard} />
@@ -83,6 +95,12 @@ function DiceThrow({ dice, index, onKeep }: { dice: number[]; index: number; onK
             <strong>{total}</strong>
             <p>
               {dice.join(' + ')} − {dice[discard]} descartado
+              {raw < total && (
+                <>
+                  <br />
+                  {raw} ajustado para {total} · mínimo por atributo
+                </>
+              )}
             </p>
           </>
         ) : (
@@ -104,10 +122,12 @@ export function AttributeDice({
   rolls,
   revealed,
   onReveal,
+  minimum = 0,
 }: {
   rolls: number[][];
   revealed: number;
   onReveal: (count: number) => void;
+  minimum?: number;
 }) {
   const [throwing, setThrowing] = useState(false);
   return (
@@ -116,9 +136,7 @@ export function AttributeDice({
         {rolls.map((dice, i) => (
           <div key={i} className={i >= revealed ? 'roll-unrevealed' : ''}>
             <small>Resultado {i + 1}</small>
-            <strong>
-              {i < revealed ? dice.reduce((a, b) => a + b, 0) - Math.min(...dice) : '—'}
-            </strong>
+            <strong>{i < revealed ? abilityRollResult(dice, minimum) : '—'}</strong>
             {i < revealed ? (
               <span>
                 {dice.map((v, j) => (
@@ -129,6 +147,9 @@ export function AttributeDice({
               </span>
             ) : (
               <small>{i === revealed ? 'Sua próxima rolagem' : 'Aguardando'}</small>
+            )}
+            {i < revealed && abilityRollRaw(dice) < minimum && (
+              <small>Mínimo {minimum} aplicado</small>
             )}
           </div>
         ))}
@@ -151,6 +172,7 @@ export function AttributeDice({
           <DiceThrow
             dice={rolls[revealed]}
             index={revealed}
+            minimum={minimum}
             onKeep={() => {
               setThrowing(false);
               onReveal(revealed + 1);

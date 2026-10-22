@@ -2,6 +2,7 @@ import { Router } from 'express';
 import {spellReference} from './spell-reference.js';
 import { grantBetaStartingGold } from './beta-accounts.js';
 import { rollCharacterAbilities } from './ability-rolls.js';
+import { ABILITY_ROLL_MIN_SCORE, abilityRollResult } from '../shared/ability-rolls.js';
 import type { PoolClient } from 'pg';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
@@ -388,8 +389,8 @@ export function characterSheetRouter() {
       if (sheet.rolls) return; // Retry/double click returns the same persisted dice, never a new draw.
       const rolls = rollCharacterAbilities();
       await client.query(
-        'UPDATE character_sheets SET rolls=$2,updated_at=now() WHERE character_id=$1',
-        [id, JSON.stringify(rolls)],
+        'UPDATE character_sheets SET rolls=$2,ability_roll_floor=$3,updated_at=now() WHERE character_id=$1',
+        [id, JSON.stringify(rolls), ABILITY_ROLL_MIN_SCORE],
       );
     });
     res.json(await result(id, user));
@@ -433,9 +434,7 @@ export function characterSheetRouter() {
       const bonuses = racialBonuses(c.race, finalChoices);
       const stats = assignment.map(
         (roll, i) =>
-          sheet.rolls![roll].reduce((a, b) => a + b, 0) -
-          Math.min(...sheet.rolls![roll]) +
-          bonuses[i],
+          abilityRollResult(sheet.rolls![roll], sheet.ability_roll_floor ?? 0) + bonuses[i],
       );
       const d = deriveSheet({ ...c, stats }, finalChoices);
       const betaGold = await grantBetaStartingGold(client, user, id);

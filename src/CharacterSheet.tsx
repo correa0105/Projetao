@@ -1,4 +1,5 @@
 import { FlashMessage } from './FlashMessage';
+import { abilityRollResult } from '../shared/ability-rolls';
 import { startingEquipmentImage } from '../shared/starting-equipment-art';
 import { SheetSpellCollection } from './SheetSpellCollection';
 import { CharacterTitleLabel } from './Titles';
@@ -226,7 +227,7 @@ export function CharacterSheet({
     field.key === 'mastery' ? tab === 'Combate' : tab === 'Magias',
   );
   const bonuses = racialBonuses(c.race, choices);
-  const rolls = s?.rolls?.map((v) => v.reduce((a, b) => a + b, 0) - Math.min(...v));
+  const rolls = s?.rolls?.map((v) => abilityRollResult(v, s?.ability_roll_floor ?? 0));
   const change = (v: Partial<SheetRecord>) =>
     setDraft((current) => (current ? { ...current, ...v } : current));
   function saveState() {
@@ -337,7 +338,8 @@ export function CharacterSheet({
           <h3>
             <BookOpen size={20} /> {s ? 'Suas escolhas' : 'Complete sua origem'}
             <SheetHelp label="rolagem de atributos">
-              4d6 por atributo, descartando o menor. Uma rolagem permanente por personagem; depois
+              4d6 por atributo, descartando o menor. Resultados abaixo de 8 são ajustados para 8,
+              antes dos bônus. Uma rolagem permanente por personagem; depois
               você distribui os seis resultados.
             </SheetHelp>
           </h3>
@@ -416,6 +418,7 @@ export function CharacterSheet({
           <AttributeDice
             key={c.id}
             rolls={s!.rolls!}
+            minimum={s?.ability_roll_floor ?? 0}
             revealed={revealedRolls}
             onReveal={setRevealedRolls}
           />

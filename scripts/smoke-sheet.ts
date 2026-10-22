@@ -1,3 +1,4 @@
+import { abilityRollTotal, abilityRollResult, abilityRollRaw } from '../shared/ability-rolls';
 import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
@@ -84,10 +85,16 @@ try {
   await expect(page.locator('.ability-boost-choices')).toHaveCount(0);
   await expect(page.locator('.sheet-rolls>div')).toHaveCount(6);
   await expect(page.getByLabel('Resultado para Inteligência')).toHaveCount(0);
+  // Deterministic accepted set exercises a real 6 -> 8 adjustment through the UI.
+  const floorRolls=[[3,1,2,1],[6,6,5,1],[5,5,4,1],[4,4,4,1],[4,4,3,1],[4,3,3,1]];
+  await pool.query('UPDATE character_sheets SET rolls=$2 WHERE character_id=$1',[id,JSON.stringify(floorRolls)]);
+  await page.reload();
+  await expect(page.locator('.sheet-rolls>div')).toHaveCount(6);
+  await page.getByRole('button', { name: 'Rever rolagens em 3D' }).click();
   const persistedRolls = (
     await pool.query('SELECT rolls FROM character_sheets WHERE character_id=$1', [id])
   ).rows[0].rolls as number[][];
-  const total = persistedRolls.reduce((sum, dice) => sum + dice.reduce((a, b) => a + b, 0) - Math.min(...dice), 0);
+  const total = abilityRollTotal(persistedRolls);
   expect(total).toBeGreaterThanOrEqual(72); expect(total).toBeLessThanOrEqual(90);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   for (let i = 0; i < 6; i++) {
@@ -96,6 +103,7 @@ try {
     await expect(diceDialog).toBeVisible();
     const rule = diceDialog.locator('.attribute-roll-rule');
     await expect(rule).toContainText('de 72 a 90');
+    await expect(rule).toContainText('abaixo de 8 é ajustado para 8');
     await expect(rule).toHaveCSS('color', 'rgb(255, 143, 143)');
     await expect(rule).toBeInViewport();
     const ruleBox = (await rule.boundingBox())!, stageBox = (await diceDialog.locator('.attribute-dice-stage').boundingBox())!;
@@ -104,8 +112,9 @@ try {
     await expect(diceDialog.getByRole('button', { name: 'Guardar resultado' })).toBeVisible();
     const dice = persistedRolls[i];
     await expect(diceDialog.locator('.attribute-dice-outcome strong')).toHaveText(
-      String(dice.reduce((a, b) => a + b, 0) - Math.min(...dice)),
+      String(abilityRollResult(dice)),
     );
+    if (abilityRollRaw(dice)<8) await expect(diceDialog.locator('.attribute-dice-outcome')).toContainText('6 ajustado para 8');
     if (i === 0) { await page.screenshot({ path: 'test-results/sheet-dice-desktop.png' }); await page.screenshot({ path: 'test-results/attribute-rule-red.png' }); }
     if (i === 1) {
       await page.setViewportSize({ width: 390, height: 844 });
