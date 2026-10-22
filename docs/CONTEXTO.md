@@ -1,3 +1,24 @@
+22/10/2026 — Cache dos animais e proporção de cabeça de Warforged publicados:
+camp-cache-head-scale-20261022, código 0683c09ac3a187702ac8b2ea3f1103bf9d8ae61e, saudável na Hostinger.
+Backup /opt/alvorada/backups/camp-cache-head-scale-before-20261022T165618Z.dump. Artes geradas do dono com revisão correta usam
+cache privado de 1 h, immutable e Vary Cookie; revisão ausente/velha revalida e
+convidados da House continuam no-store com autorização/revogação/bloqueios atuais.
+Originais sem compressão ou transformação. Acampamento aguarda metadados/decode
+dos animais antes de abrir; seleções preparadas reaproveitadas entre abas,
+metadados revalidados e arte anterior mantida até revisão nova pronta, sem loading
+global depois da abertura. Teste real retém respostas do servidor e confirmou
+animais completos, navegação/reload sem novo download e troca de revisão atômica.
+Warforged usa escala do corpo e cerca de 7–8 cabeças em corpo inteiro; close-up
+define modelo/detalhes, não tamanho. Revisão selected_head_correct reprova escala
+desproporcional; token conserva escala 3D e encurtamento da câmera superior.
+Ilustrador recarregado com filas vazias (38056 -> 34944), sem interromper jobs.
+TypeScript/builds, quatro testes de API/animais/barda/cache/House, três de
+Warforged e navegador 390 px passaram. HTTPS/bundles, cache privado/304/bytes reais,
+mapas/atlases, Gmail, tradutor e ilustrador online conferidos em produção somente
+leitura. Mínimo 8, Ubel 6→8, cotas 5/admin ilimitado e dados dos jogadores preservados.
+Nenhuma imagem pronta foi substituída automaticamente nem houve cobrança de arte.
+Guia CAMP-CACHE-AND-HEAD-SCALE-20261022.
+
 22/10/2026 — Mínimo de 8 por resultado de atributo publicado, código 7df1453ad14e8c95ed5e691e57c55ea245dec587, imagem ability-floor-eight-20261022. Migration 124 aplicada com snapshot por ficha; novas rolagens gravam floor 8, antigas ficam 0. Soma ajustada 72–90 antes dos bônus e d6 reais preservados. Ubel Abuto (314b26d4-cb9c-4503-80f6-f157b085bff2) corrigido explicitamente de [14,6,15,15,10,13] para [14,8,15,15,10,13], sem refazer dados, alterar distribuição/escolhas ou outras fichas. Auditoria privada em .local/ubel-ability-floor-audit-20261022.json. Reparo transacional testado também finalizado/PV zero, idempotente e por dono exato. TypeScript/builds, seis testes de API/reparo e smoke visual 6→8 desktop/celular passaram. Produção somente leitura e frontend HTTPS conferidos; ouro/contas e demais dados preservados. Backup /opt/alvorada/backups/ability-floor-eight-before-20261022T164154Z.dump. Guia ABILITY-ROLL-FLOOR-20261022.
 
 22/10/2026 — Ícone luminoso de prévia do token restrito SOMENTE a Personagens
