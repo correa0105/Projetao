@@ -7,7 +7,7 @@ import { seed } from '../server/seed.js';
 import { defaultChoices } from '../shared/character-sheet.js';
 import { finishTestArt, testArtImage } from './character-fixtures.js';
 
-test('cotas mensais: inicial grátis, personagem 10, cada mascote/montaria 2, falhas e renovação', async () => {
+test('cotas mensais: conta 5 entre personagens, inicial grátis, adm ilimitado e animais independentes', async () => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
   await migrate();
   await seed();
@@ -61,17 +61,30 @@ test('cotas mensais: inicial grátis, personagem 10, cada mascote/montaria 2, fa
     assert.equal(initial.status, 202, JSON.stringify(initial.data));
     const cid = await finishTestArt(initial.data.id);
     const budget = async () => (await req('/character-art')).data.quotas[cid];
-    assert.deepEqual(await budget(), { used: 0, limit: 10 });
+    assert.deepEqual(await budget(), { used: 0, limit: 5 });
     assert.equal((await req('/characters')).data.find((c: any) => c.id === cid).art_used, 0);
-    const dress = () =>
-      req('/character-art', { character_id: cid, reference, idempotency_key: randomUUID() });
-    for (let i = 0; i < 10; i++) {
-      const job = await dress();
+    const secondInitial = await req('/character-art', {
+      creation: { ...creation, name: 'Segundo herói' },
+      reference,
+      idempotency_key: randomUUID(),
+    });
+    assert.equal(secondInitial.status, 202);
+    const second = await finishTestArt(secondInitial.data.id);
+    const dress = (characterId = cid) =>
+      req('/character-art', {
+        character_id: characterId,
+        reference,
+        idempotency_key: randomUUID(),
+      });
+    for (let i = 0; i < 5; i++) {
+      const job = await dress(i % 2 ? second : cid);
       assert.equal(job.status, 202, JSON.stringify(job.data));
-      assert.deepEqual(await budget(), { used: i + 1, limit: 10 });
+      assert.deepEqual(await budget(), { used: i + 1, limit: 5 });
+      assert.deepEqual((await req('/character-art')).data.quotas[second], await budget());
       await finishTestArt(job.data.id);
     }
     assert.equal((await dress()).status, 409);
+    assert.equal((await dress(second)).status, 409);
     // An exhausted character still has independent budgets for all its animals.
     await pool.query('UPDATE characters SET gold_cp=1000000 WHERE id=$1', [cid]);
     const animals: { kind: string; id: string }[] = [];
@@ -115,7 +128,7 @@ test('cotas mensais: inicial grátis, personagem 10, cada mascote/montaria 2, fa
         [2, 2, 'companion'],
       ],
     );
-    assert.deepEqual(await budget(), { used: 10, limit: 10 });
+    assert.deepEqual(await budget(), { used: 5, limit: 5 });
     // Failed and stale companion jobs release only their own budget.
     await pool.query(
       "UPDATE companion_art_jobs SET status='failed' WHERE id=(SELECT id FROM companion_art_jobs WHERE wardrobe_id=$1 ORDER BY created_at LIMIT 1)",
@@ -132,25 +145,41 @@ test('cotas mensais: inicial grátis, personagem 10, cada mascote/montaria 2, fa
       "UPDATE character_art_jobs SET status='failed' WHERE id=(SELECT id FROM character_art_jobs WHERE character_id=$1 AND creation IS NULL ORDER BY created_at LIMIT 1)",
       [cid],
     );
-    assert.equal((await budget()).used, 9);
-    const concurrent = await Promise.all([dress(), dress()]);
+    assert.equal((await budget()).used, 4);
+    const concurrent = await Promise.all([dress(), dress(second)]);
     assert.deepEqual(concurrent.map((j) => j.status).sort(), [202, 409]);
     const accepted = concurrent.find((j) => j.status === 202)!;
     await finishTestArt(accepted.data.id);
+    // Deleting a character does not erase the account's five uses.
+    await pool.query('UPDATE characters SET deleted_at=now() WHERE id=$1', [second]);
+    assert.deepEqual(await budget(), { used: 5, limit: 5 });
+    const replacementInitial = await req('/character-art', {
+      creation: { ...creation, name: 'Novo inicial gratuito' },
+      reference,
+      idempotency_key: randomUUID(),
+    });
+    assert.equal(replacementInitial.status, 202);
+    await finishTestArt(replacementInitial.data.id);
+    assert.deepEqual(await budget(), { used: 5, limit: 5 });
     // Previous UTC calendar months do not consume this month, including for companions.
     for (const table of ['character_art_jobs', 'companion_art_jobs'])
       await pool.query(
-        `UPDATE ${table} SET created_at=(date_trunc('month',now() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC')-interval '1 second' WHERE character_id=$1`,
-        [cid],
+        `UPDATE ${table} SET created_at=(date_trunc('month',now() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC')-interval '1 second' WHERE user_id=$1`,
+        [account.data.user.id],
       );
-    assert.deepEqual(await budget(), { used: 0, limit: 10 });
+    assert.deepEqual(await budget(), { used: 0, limit: 5 });
     assert.ok((await animalState()).every((a: any) => a.art_used === 0));
-    // Unlimited is read from the account, and is preserved for all three subjects.
+    // Old custom allowances do not bypass the new character cap; animal rules are unchanged.
     await pool.query('INSERT INTO character_art_allowances(user_id,unlimited) VALUES($1,true)', [
       account.data.user.id,
     ]);
-    assert.equal((await budget()).limit, null);
+    assert.equal((await budget()).limit, 5);
     assert.ok((await animalState()).every((a: any) => a.art_limit === null));
+    await pool.query('DELETE FROM character_art_allowances WHERE user_id=$1', [
+      account.data.user.id,
+    ]);
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [account.data.user.id]);
+    assert.equal((await budget()).limit, null, 'Administrador is exempt without an allowance');
     cookie = '';
     assert.equal((await req('/character-art')).status, 401);
   } finally {

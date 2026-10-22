@@ -1,0 +1,119 @@
+.character-token-preview {
+  position: fixed;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 40;
+}
+.character-token-preview::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  width: 100%;
+  height: 10px;
+}
+.character-token-preview-trigger {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #aa8950;
+  border-radius: 50%;
+  color: #e8c989;
+  background: #171e1aee;
+  box-shadow:
+    0 0 13px #d3a75230,
+    inset 0 0 10px #cda25213;
+}
+.character-token-preview-trigger:is(:hover, :focus-visible) {
+  color: #fff0c5;
+  border-color: #efd293;
+  outline: 2px solid #e1bd6866;
+  outline-offset: 3px;
+}
+.character-token-preview-light {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  right: 3px;
+  top: 3px;
+  border-radius: 50%;
+  background: #ebcc83;
+  box-shadow: 0 0 7px 2px #e6b94e88;
+  animation: character-token-glow 2.8s ease-in-out infinite;
+}
+@keyframes character-token-glow {
+  50% {
+    opacity: 0.55;
+    box-shadow: 0 0 4px 1px #e6b94e44;
+  }
+}
+.character-token-preview-card {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  width: min(240px, calc(100vw - 24px));
+  padding: 12px;
+  border: 1px solid #aa895080;
+  border-radius: 9px;
+  background: #151c18f7;
+  color: #e7dfca;
+  box-shadow: 0 12px 35px #0009;
+}
+.character-token-preview-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.character-token-preview-heading strong {
+  display: block;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.character-token-preview-heading small {
+  display: block;
+  margin-top: 4px;
+  color: #b9ac8f;
+  font-size: 10px;
+}
+.character-token-preview-heading button {
+  padding: 4px;
+  align-self: start;
+}
+.character-token-preview-image {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #b19b5a28;
+  border-radius: 5px;
+  background-color: #111813;
+  background-image:
+    linear-gradient(#d4c7910b 1px, transparent 1px),
+    linear-gradient(90deg, #d4c7910b 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.character-token-preview-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.character-token-preview-image p {
+  padding: 12px;
+  margin: 0;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.character-token-preview-image > div {
+  text-align: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .character-token-preview-light {
+    animation: none;
+  }
+}

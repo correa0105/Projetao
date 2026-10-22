@@ -23,7 +23,7 @@ import {
 import { hitDice, modifier } from '../shared/rules.js';
 import { isAdministrator } from './administrators.js';
 import { characterLimit } from '../shared/character-art.js';
-import { characterArtUsedSql } from './art-quota.js';
+import { characterAccountArtUsedSql } from './art-quota.js';
 import { warforgedArtMode } from '../shared/warforged-appearance.js';
 
 const uuid = z.string().uuid();
@@ -132,10 +132,9 @@ export async function enqueueArt(userId: string, input: unknown) {
   return transaction(async (client) => {
     const {
       rows: [account],
-    } = await client.query(
-      'SELECT u.id,u.administrador,COALESCE((SELECT unlimited FROM character_art_allowances a WHERE a.user_id=u.id),false) AS art_unlimited FROM "user" u WHERE u.id=$1 FOR UPDATE',
-      [userId],
-    );
+    } = await client.query('SELECT u.id,u.administrador FROM "user" u WHERE u.id=$1 FOR UPDATE', [
+      userId,
+    ]);
     const previous = await client.query(
       'SELECT id,status,character_id FROM character_art_jobs WHERE user_id=$1 AND idempotency_key=$2',
       [userId, data.idempotency_key],
@@ -179,13 +178,13 @@ export async function enqueueArt(userId: string, input: unknown) {
       );
       if (pending.rowCount)
         throw new AppError(409, 'Já há uma imagem em preparação para este personagem.');
-      const count = await client.query(`SELECT ${characterArtUsedSql('$1')} AS used`, [
-        data.character_id,
+      const count = await client.query(`SELECT ${characterAccountArtUsedSql('$1')} AS used`, [
+        userId,
       ]);
-      if (!account?.art_unlimited && count.rows[0].used >= ART_MONTHLY_LIMIT)
+      if (account?.administrador !== 1 && count.rows[0].used >= ART_MONTHLY_LIMIT)
         throw new AppError(
           409,
-          `Este personagem já usou as ${ART_MONTHLY_LIMIT} gerações deste mês. A cota renova no dia 1 (00h UTC).`,
+          `Esta conta já usou as ${ART_MONTHLY_LIMIT} gerações de personagens deste mês. A cota é compartilhada entre seus personagens e renova no dia 1 (00h UTC).`,
         );
     } else {
       const {
@@ -486,8 +485,8 @@ export function characterArtRouter() {
   });
   router.get('/character-art', async (_req, res) => {
     const { rows: quotas } = await pool.query(
-      `SELECT c.id,${characterArtUsedSql('c.id')} AS used,
-        CASE WHEN EXISTS(SELECT 1 FROM character_art_allowances a WHERE a.user_id=c.user_id AND a.unlimited)
+      `SELECT c.id,${characterAccountArtUsedSql('c.user_id')} AS used,
+        CASE WHEN EXISTS(SELECT 1 FROM "user" u WHERE u.id=c.user_id AND u.administrador=1)
           THEN NULL ELSE ${ART_MONTHLY_LIMIT} END AS limit
        FROM characters c WHERE c.user_id=$1 AND c.deleted_at IS NULL`,
       [res.locals.user.id],
@@ -530,7 +529,7 @@ export function characterArtRouter() {
   });
   router.get('/characters/:id/token', async (req, res) => {
     const { rows } = await pool.query(
-      `SELECT COALESCE(t.image,p.image) AS image FROM characters c
+      `SELECT ${req.query.preview === '1' ? 't.image' : 'COALESCE(t.image,p.image)'} AS image FROM characters c
       LEFT JOIN character_tokens t ON t.character_id=c.id
       LEFT JOIN character_portraits p ON p.character_id=c.id
       WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL`,
@@ -543,10 +542,11 @@ export function characterArtRouter() {
 }
 
 export const characterListSql = `SELECT c.*,
+  EXISTS(SELECT 1 FROM character_tokens t WHERE t.character_id=c.id) AS token_available,
   CASE WHEN c.race='Warforged' THEN COALESCE((SELECT s.choices->>'warforgedArtMode' FROM character_sheets s WHERE s.character_id=c.id),CASE WHEN EXISTS(SELECT 1 FROM character_sheets s WHERE s.character_id=c.id AND s.choices->'warforgedAppearance' IS NOT NULL) THEN 'construction' ELSE 'reference' END) ELSE 'reference' END AS art_reference_mode,
   EXISTS(SELECT 1 FROM "user" u WHERE u.id=c.user_id AND u.administrador=1) AS gold_unlimited,
-  EXISTS(SELECT 1 FROM character_art_allowances a WHERE a.user_id=c.user_id AND a.unlimited) AS art_unlimited,
+  EXISTS(SELECT 1 FROM "user" u WHERE u.id=c.user_id AND u.administrador=1) AS art_unlimited,
   (SELECT s.choices->'options'->'size'->>0 FROM character_sheets s WHERE s.character_id=c.id) AS species_size,
-  ${characterArtUsedSql('c.id')} AS art_used,
+  ${characterAccountArtUsedSql('c.user_id')} AS art_used,
   EXISTS(SELECT 1 FROM character_art_jobs j WHERE j.character_id=c.id AND j.status IN ('queued','running')) AS art_pending
   FROM characters c WHERE c.user_id=$1 AND c.deleted_at IS NULL ORDER BY c.created_at`;

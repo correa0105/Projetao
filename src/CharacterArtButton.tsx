@@ -176,7 +176,7 @@ export function CharacterArtButton({
             {checkingQuota ? (
               <p role="status">Consultando a cota mensal…</p>
             ) : (
-              <ArtQuotaNotice quota={quota} subject="Personagem" initialFree />
+              <ArtQuotaNotice quota={quota} subject="Personagem" initialFree accountWide />
             )}
             <span
               className={`illustrator-status ${state.available ? 'is-online' : 'is-offline'}`}

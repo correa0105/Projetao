@@ -1,4 +1,35 @@
-# Cotas mensais de arte — 20/10/2026
+# Cotas mensais de arte
+
+Decisão vigente de 22/10/2026: **5 gerações de personagens por conta**, compartilhadas
+entre todos os seus personagens, a cada mês civil UTC. Administradores reais do
+banco (`administrador=1`) ficam sem limite, independentemente de liberação manual.
+Campos enviados pelo navegador não concedem a exceção. Liberações antigas de
+`character_art_allowances` não removem o limite de personagens de contas comuns;
+seus registros são preservados e continuam seguindo as regras anteriores para animais.
+
+O usuário confirmou que a mudança vale **somente para personagens**. Cada mascote
+e montaria continua com sua própria cota de 2 por mês, por `wardrobe_id`. A arte
+inicial de criação do personagem permanece gratuita. Retrato e token juntos
+consomem um uso; pedidos aceitos reservam a cota, falhas devolvem o uso e a renovação
+ocorre no dia 1 às 00h UTC. Nenhum histórico ou saldo é reescrito.
+
+`characterAccountArtUsedSql` conta por `user_id`: jobs sem `creation`, não falhos
+e do mês atual, incluindo personagens excluídos. Excluir ou trocar a ficha não
+reinicia a cota. A trava transacional do usuário serializa pedidos simultâneos
+entre fichas. `GET /api/character-art` mantém `quotas` por ID para compatibilidade,
+com o mesmo total compartilhado e `limit=null` somente para administradores.
+`/api/characters` expõe o mesmo uso e a exceção real de administrador no fallback.
+Vestir/Nova imagem exibem **Personagens da conta**, 5 por mês, compartilhamento,
+usadas/restantes e a isenção inicial. Não há migration nem mudanças nas imagens.
+
+Validação atual: `node scripts/test-art-quota-isolated.mjs` em banco UUID descartável
+cobre cinco usos entre dois personagens, concorrência entre fichas, exclusão sem
+reinício, criação inicial gratuita com cota esgotada, falha, virada UTC, administrador
+sem allowance e rejeição do antigo bypass comum. Animais, ownership, idempotência
+e entrega continuam cobertos. `--browser` confere a cota compartilhada, animais,
+esgotamento, administrador e larguras 1440/768/390/320 px.
+
+## Registro histórico de 20 e 21/10 — substituído pela decisão acima
 
 Revisão de 21/10/2026, até segunda ordem do usuário: **10 gerações por personagem**, **2 por mascote** e **2 por
 montaria** a cada mês civil UTC. Cada animal possui uma cota independente, por

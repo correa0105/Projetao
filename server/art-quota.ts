@@ -2,8 +2,9 @@
 // also frees the initial artwork for existing characters without rewriting jobs.
 const monthStart = "date_trunc('month',now() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC'";
 
-export const characterArtUsedSql = (characterId: string) =>
-  `(SELECT count(*)::int FROM character_art_jobs j WHERE j.character_id=${characterId}
+// Include deleted characters: removing a sheet must not reset its account's usage.
+export const characterAccountArtUsedSql = (userId: string) =>
+  `(SELECT count(*)::int FROM character_art_jobs j WHERE j.user_id=${userId}
     AND j.creation IS NULL AND j.status <> 'failed' AND j.created_at >= ${monthStart})`;
 
 export const companionArtUsedSql = (wardrobeId: string) =>

@@ -6,7 +6,7 @@ import { migrate } from '../server/migrate.js';
 import { seed } from '../server/seed.js';
 import { createLegacyTestCharacter, finishTestArt, testArtImage } from './character-fixtures.js';
 
-test('imagens sem limite: todos os personagens da conta, cota comum, posse e fila', async () => {
+test('somente administrador tem imagens de personagens sem limite; conta, posse, fila e idempotência', async () => {
   await migrate();
   await seed();
   const { createApp } = await import('../server/app.js');
@@ -68,11 +68,12 @@ test('imagens sem limite: todos os personagens da conta, cota comum, posse e fil
       idempotency_key: randomUUID(),
       art_unlimited: true,
     });
+    await pool.query('INSERT INTO character_art_allowances(user_id,unlimited) VALUES($1,true)', [
+      bob.id,
+    ]);
     assert.equal((await req('/character-art', bob.cookie, body(normal.id))).status, 409);
     assert.equal((await req('/characters', bob.cookie)).data[0].art_unlimited, false);
-    await pool.query('INSERT INTO character_art_allowances(user_id,unlimited) VALUES($1,true)', [
-      alice.id,
-    ]);
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [alice.id]);
     assert.ok(
       (await req('/characters', alice.cookie)).data.every(
         (c: { art_unlimited: boolean }) => c.art_unlimited,
@@ -92,7 +93,7 @@ test('imagens sem limite: todos os personagens da conta, cota comum, posse e fil
     assert.equal(
       (await req('/characters', alice.cookie)).data.find((c: { id: string }) => c.id === first.id)
         .art_used,
-      12,
+      23,
     );
   } finally {
     await pool.query('DELETE FROM "user" WHERE id=ANY($1::text[])', [users]);

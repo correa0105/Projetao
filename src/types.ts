@@ -9,6 +9,7 @@ export type User = {
   maintenance_areas?: import('../shared/maintenance').MaintenanceArea[];
 };
 export type Character = {
+  token_available?: boolean;
   art_reference_mode?: 'construction' | 'reference';
   species_size?: string;
   portrait_revision: number;

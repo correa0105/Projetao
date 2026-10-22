@@ -459,7 +459,7 @@ export function CharacterCamp({
             <p>A imagem atual permanece até a nova ficar pronta.</p>
             <p>A geração inclui a arte do personagem e um token visto de cima para o VTT.</p>
             {checkingQuota ? <p role="status">Consultando a cota mensal…</p> :
-              editingQuota && <ArtQuotaNotice quota={editingQuota} subject="Personagem" initialFree />}
+              editingQuota && <ArtQuotaNotice quota={editingQuota} subject="Personagem" initialFree accountWide />}
             <span
               className={`illustrator-status ${state.available ? 'is-online' : 'is-offline'}`}
               role="status"

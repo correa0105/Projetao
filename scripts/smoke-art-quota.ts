@@ -39,6 +39,7 @@ try {
   expect(signup.status()).toBe(200);
   const uid = (await signup.json()).user.id;
   const hero = await createLegacyTestCharacter(uid, 'Aurora');
+  const second = await createLegacyTestCharacter(uid, 'Bruma');
   await pool.query('UPDATE characters SET gold_cp=1000000 WHERE id=$1', [hero.id]);
   for (const [path, speciesKey, species] of [
     ['/pets/purchase', 'pet_id', 'dog'],
@@ -63,6 +64,7 @@ try {
     "INSERT INTO character_art_jobs(user_id,character_id,creation,idempotency_key,status) VALUES($1,$2,$3,$4,'completed'),($1,$2,NULL,$5,'completed')",
     [uid, hero.id, JSON.stringify({ name: hero.name }), randomUUID(), randomUUID()],
   );
+  await pool.query('UPDATE character_art_jobs SET character_id=$2 WHERE user_id=$1 AND creation IS NULL',[uid,second.id]);
   await page.goto(origin + '/#inventory');
   await page.reload();
   const equipment = page.getByRole('region', { name: 'Itens equipados', exact: true });
@@ -70,8 +72,9 @@ try {
   await equipment.getByRole('button', { name: 'Vestir', exact: true }).click();
   const modal = page.getByRole('dialog');
   const quota = modal.locator('.art-quota-notice');
-  await expect(quota).toContainText('Personagem: 10 gerações por mês');
-  await expect(quota).toContainText('1 usada · 9 restantes neste mês');
+  await expect(quota).toContainText('Personagens da conta: 5 gerações por mês');
+  await expect(quota).toContainText('1 usada · 4 restantes neste mês');
+  await expect(quota).toContainText('Cota compartilhada entre todos os personagens');
   await expect(quota).toContainText('A arte inicial do personagem não desconta');
   const referenceFile = {
     name: 'reference.png',
@@ -114,24 +117,22 @@ try {
     );
   }
   await subjects.getByRole('button', { name: 'Personagem', exact: true }).click();
-  for (let i = 0; i < 9; i++)
+  for (let i = 0; i < 4; i++)
     await pool.query(
       "INSERT INTO character_art_jobs(user_id,character_id,idempotency_key,status) VALUES($1,$2,$3,'completed')",
       [uid, hero.id, randomUUID()],
     );
   // Clicking still opens the budget when exhausted, then generation is disabled.
   await equipment.getByRole('button', { name: 'Vestir', exact: true }).click();
-  await expect(quota).toContainText('10 usadas · 0 restantes neste mês');
+  await expect(quota).toContainText('5 usadas · 0 restantes neste mês');
   await expect(quota).toContainText('Cota esgotada');
   await modal.locator('input[type="file"]').setInputFiles(referenceFile);
   await expect(modal.getByRole('button', { name: 'Vestir', exact: true })).toBeDisabled();
   await page.screenshot({ path: 'test-results/art-quota-exhausted.png' });
   await page.keyboard.press('Escape');
-  await pool.query('INSERT INTO character_art_allowances(user_id,unlimited) VALUES($1,true)', [
-    uid,
-  ]);
+  await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [uid]);
   await equipment.getByRole('button', { name: 'Vestir', exact: true }).click();
-  await expect(quota).toContainText('Personagem: gerações sem limite');
+  await expect(quota).toContainText('Personagens da conta: gerações sem limite');
   for (const width of [768, 390, 320]) {
     await page.setViewportSize({ width, height: 950 });
     await expect(quota).toBeVisible();
@@ -140,7 +141,7 @@ try {
   await page.screenshot({ path: 'test-results/art-quota-mobile.png' });
   expect(errors).toEqual([]);
   console.log(
-    'Cotas no inventário: personagem 10, mascote/montaria 2 separados, atualização após clique/falha, inicial grátis, esgotada, ilimitada e celular OK.',
+    'Cotas: conta 5 personagens, administrador ilimitado, animais 2 independentes, inicial grátis, esgotamento e celular OK.',
   );
 } finally {
   await browser.close();
