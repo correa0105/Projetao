@@ -1,3 +1,19 @@
+22/10/2026 — Publicação account-five-token-preview-20261022 aplicada e saudável na Hostinger,
+código b7a8967cbfac55a5521ee7c780c2ce1538a8091b. Backup /opt/alvorada/backups/account-five-token-preview-before-20261022T153618Z.dump.
+Personagens têm 5 gerações mensais POR CONTA, compartilhadas entre todas as fichas;
+administrador real ilimitado. Criação inicial gratuita e animais com cota própria
+de 2 preservados. Exclusão de ficha não reinicia usos. Sem migration ou reescrita
+de histórico, imagens, saldos ou allowances antigos; cobrança decidida no servidor.
+Ícone com luz suave no canto inferior direito abre o token real do personagem
+selecionado por hover/foco/toque; troca e revisão atualizam a imagem. Prévia privada
+sem fallback de retrato, loading global ou compressão. Movimento reduzido respeitado.
+TypeScript/builds, quatro testes de API/entrega e dois smokes de navegador passaram;
+cotas em 1440/768/390/320 px e token em desktop/390/320, privacidade e bytes reais.
+Frontend público HTTPS idêntico ao build; leitura autenticada em produção confirmou
+5 por conta comum, administrador ilimitado, total compartilhado e bytes do token.
+Contas, ouro, missões, salas, mapas, atlases, Gmail, tradutor e ilustrador preservados.
+Guias ART-QUOTAS-20261020 e CHARACTER-TOKEN-PREVIEW-20261022.
+
 21/10/2026 — Publicação warforged-identity-20261021 aplicada e saudável na Hostinger,
 código 4d6ee2aeec8e8d936a883d6fec6e527bb371c036. Backup /opt/alvorada/backups/warforged-identity-before-20261021T221341Z.dump.
 Montagem e referência exclusivas, modo salvo e protegido; referência desmarca montagem
