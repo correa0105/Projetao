@@ -1,3 +1,11 @@
+22/10/2026 — Ícone luminoso de prévia do token restrito SOMENTE a Personagens
+(characters) e Inventário (inventory), com personagem selecionado. As demais telas
+não montam botão/painel. Hover, toque, identidade/token privado e revisão preservados.
+TypeScript/build e smoke existente da prévia desktop/390/320 px passaram.
+Publicação token-preview-pages-20261022, código 69e5c98ba65dffffcf701f67676abc1ddb586fea, saudável na
+Hostinger. Backup /opt/alvorada/backups/token-preview-pages-before-20261022T161752Z.dump. HTTPS/bundles, dados, imagens,
+prompt da roupa, cotas 5/admin ilimitado, Gmail e ilustrador online preservados.
+
 22/10/2026 — Qualidade da roupa e fidelidade da cabeça do Warforged: publicação
 character-clothes-head-20261022, código 6e7502697fe37ef18e475f6276e18632aa9725c0, saudável na Hostinger.
 Backup /opt/alvorada/backups/character-clothes-head-before-20261022T160420Z.dump. Roupa inicial trocou instruções antigas de
