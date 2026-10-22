@@ -289,6 +289,12 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
     assert.equal(animal.image_revision, 1);
     assert.equal(animal.art_equipment_revision, animal.equipment_revision);
     const imagePath = animal.image_url.replace('/api', '');
+    const cachedImage=await fetch(base+imagePath,{headers:{Cookie:owner.cookie}});
+    assert.equal(cachedImage.status,200);assert.equal(cachedImage.headers.get('cache-control'),'private, max-age=3600, immutable');
+    assert(cachedImage.headers.get('vary')?.includes('Cookie'));
+    const etag=cachedImage.headers.get('etag');assert(etag);
+    assert.equal((await fetch(base+imagePath,{headers:{Cookie:owner.cookie,'If-None-Match':etag,'Cache-Control':'max-age=0'}})).status,304);
+    assert.equal((await fetch(base+imagePath.replace('v=1','v=0'),{headers:{Cookie:owner.cookie}})).headers.get('cache-control'),'private, no-cache');
     assert.equal(
       (await fetch(base + imagePath, { headers: { Cookie: owner.cookie } })).status,
       200,
@@ -337,6 +343,7 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
       (await fetch(base + imagePath, { headers: { Cookie: outsider.cookie } })).status,
       200,
     );
+    assert.equal((await fetch(base+imagePath,{headers:{Cookie:outsider.cookie}})).headers.get('cache-control'),'private, no-store');
     assert.equal(
       (await request(`/house/${homeId}`, outsider.cookie)).data.companions[0].image_revision,
       1,

@@ -4,9 +4,10 @@ import { api } from './api';
 import { mounts, mountCoats, ownedMountImage, type OwnedMount } from '../shared/mounts';
 import './character-mount.css';
 import { useCampMountSize } from './useCampMountSize';
+import { preloadImage } from './asset-preloader';
+import { useCampCompanion } from './useCampCompanion';
 
 export function CampMount({ characterId }: { characterId: string }) {
-  const [mount, setMount] = useState<OwnedMount | null>(null);
   const [artRefresh, setArtRefresh] = useState(0);
   useEffect(() => {
     const changed = (event: Event) => {
@@ -16,21 +17,14 @@ export function CampMount({ characterId }: { characterId: string }) {
     return () => window.removeEventListener('companion-art-updated', changed);
   }, [characterId]);
   const host = useRef<HTMLDivElement>(null);
+  const { value: mount, ready } = useCampCompanion(`mount:${characterId}`, artRefresh, async () => {
+    const items = await api<OwnedMount[]>(`/stable/${characterId}`);
+    const selected = items.find((item) => item.displayed) || null;
+    if (selected) await preloadImage(ownedMountImage(selected));
+    return selected;
+  });
   useCampMountSize(host, mount?.id);
-  useEffect(() => {
-    let active = true;
-    void api<OwnedMount[]>(`/stable/${characterId}`)
-      .then((items) => {
-        if (active) setMount(items.find((item) => item.displayed) || null);
-      })
-      .catch(() => {
-        if (active) setMount(null);
-      });
-    return () => {
-      active = false;
-    };
-  }, [characterId, artRefresh]);
-  if (!mount) return null;
+  if (!mount) return <span hidden data-page-preparing={!ready} />;
   const animal = mounts.find((item) => item.id === mount.mount_id);
   return (
     <div

@@ -5,10 +5,10 @@ import { petArtwork } from './pet-art';
 import { pets, type OwnedPet, type PetBreedCatalog } from '../shared/pets';
 import './character-pet.css';
 import { useCampPetPosition } from './useCampMountSize';
+import { preloadImage } from './asset-preloader';
+import { useCampCompanion } from './useCampCompanion';
 
 export function CampPet({ characterId }: { characterId: string }) {
-  const [pet, setPet] = useState<OwnedPet | null>(null),
-    [breed, setBreed] = useState('');
   const host = useRef<HTMLDivElement>(null);
   const [artRefresh, setArtRefresh] = useState(0);
   useEffect(() => {
@@ -18,36 +18,29 @@ export function CampPet({ characterId }: { characterId: string }) {
     window.addEventListener('companion-art-updated', changed);
     return () => window.removeEventListener('companion-art-updated', changed);
   }, [characterId]);
-  useEffect(() => {
-    let active = true;
-    setPet(null);
-    void Promise.all([
+  const { value, ready } = useCampCompanion(`pet:${characterId}`, artRefresh, async () => {
+    const [items, catalog] = await Promise.all([
       api<OwnedPet[]>(`/pets/${characterId}`),
       api<PetBreedCatalog>('/pets/catalog'),
-    ])
-      .then(([items, catalog]) => {
-        if (!active) return;
-        const selected = items.find((item) => item.displayed) || null;
-        setPet(selected);
-        setBreed(
-          selected
-            ? catalog.breeds.find(
-                (breed) =>
-                  breed.pet_id === selected.pet_id && breed.appearance === selected.appearance,
-              )?.name || ''
-            : '',
-        );
-      })
-      .catch(() => {
-        if (active) setPet(null);
-      });
-    return () => {
-      active = false;
+    ]);
+    const selected = items.find((item) => item.displayed) || null;
+    if (!selected) return null;
+    await preloadImage(
+      selected.image_url || petArtwork(selected.pet_id, selected.appearance).source,
+    );
+    return {
+      pet: selected,
+      breed:
+        catalog.breeds.find(
+          (b) => b.pet_id === selected.pet_id && b.appearance === selected.appearance,
+        )?.name || '',
     };
-  }, [characterId, artRefresh]);
+  });
+  const pet = value?.pet,
+    breed = value?.breed || '';
   useCampPetPosition(host, pet?.id);
   const species = pet && pets.find((animal) => animal.id === pet.pet_id);
-  if (!pet || !species) return null;
+  if (!pet || !species) return <span hidden data-page-preparing={!ready} />;
   return (
     <div
       ref={host}

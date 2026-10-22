@@ -220,7 +220,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
           '\n' +
           headInstructions +
           (selectedHead
-            ? ' Compare os detalhes visíveis da cabeça com a última imagem e registre selected_head_correct=false se o formato foi trocado, simplificado ou perdeu seus mecanismos. Não exigir detalhes ocultos pela câmera superior ou equipamento.'
+            ? ' Compare os detalhes visíveis da cabeça com a última imagem e registre selected_head_correct=false se a escala tridimensional da cabeça ficou desproporcional ao corpo, o formato foi trocado, simplificado ou perdeu seus mecanismos. Não exigir detalhes ocultos pela câmera superior ou equipamento.'
             : '') +
           '\n' +
           ART_ANATOMY_RULES +

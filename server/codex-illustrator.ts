@@ -204,7 +204,7 @@ export async function reviewComposition(
     ${companion ? '' : ART_CLOTHING_RULES}
     Julgue clothing_correct separadamente: false para roupa interpenetrada, calça encurtada, barra assimétrica ou rasgada expondo canela, mangas ou punhos sem ligação física, mesmo que anatomia e estilo estejam corretos. Inspecione separadamente o comprimento e a continuidade do tecido em CADA perna. Nunca aprovar com clothing_correct=false.
     ${horns ? `A última imagem é somente o formato dos chifres escolhido pelo jogador, nunca o rosto/corpo. Formato obrigatório: ${horns.instruction} Reprove um formato diferente; respeite perspectiva e oclusão natural por cabelo/equipamento.` : ''}
-    ${warforgedInstructions ? `${warforgedInstructions} As duas últimas imagens isolam SOMENTE corpo e cabeça escolhidos. Compare a cabeça da composição com a ÚLTIMA imagem: silhueta, placas, olhos/visor/lente, mandíbula e mecanismos. Registre selected_head_correct=false se simplificou, apagou mecanismos, alterou proporções ou trocou o modelo por uma cabeça genérica, mesmo com anatomia válida e approved=true. A cabeça escolhida prevalece sobre uma cabeça divergente na BASE antiga; preserve a paleta validada. Compare os detalhes visíveis, sem exigir a face oculta nem remover equipamento.` : ''}
+    ${warforgedInstructions ? `${warforgedInstructions} As duas últimas imagens isolam SOMENTE corpo e cabeça escolhidos. Compare a cabeça da composição com a ÚLTIMA imagem: silhueta, placas, olhos/visor/lente, mandíbula e mecanismos. Registre selected_head_correct=false se a cabeça ficou grande ou pequena demais para o corpo, se simplificou, apagou mecanismos, alterou proporções ou trocou o modelo por uma cabeça genérica, mesmo com anatomia válida e approved=true. A cabeça escolhida prevalece sobre uma cabeça divergente na BASE antiga; preserve a paleta validada. Compare os detalhes visíveis, sem exigir a face oculta nem remover equipamento.` : ''}
     Reprove ombreiras desenhadas por cima da capa e anéis desenhados por cima de luvas,
     incluindo luvas integradas às braçadeiras. Tecido da capa encobre ombreiras e armadura;
     luvas encobrem anéis. Não exigir que peças encobertas fiquem visíveis nem sugerir
@@ -245,7 +245,7 @@ export async function reviewComposition(
     if (review.selected_head_correct === false) {
       review.approved = false;
       review.issues.push(
-        'Restaurar fielmente a cabeça escolhida na última referência isolada: formato, placas, lente/visor, mandíbula e mecanismos, com a paleta validada; não simplificar para uma cabeça genérica.',
+        'Restaurar fielmente a cabeça escolhida na última referência isolada: formato, placas, lente/visor, mandíbula e mecanismos, com a paleta validada e escala adulta proporcional ao corpo; o close-up não define o tamanho. Não simplificar para uma cabeça genérica.',
       );
     }
     return review;

@@ -14,7 +14,7 @@ try {
   process.exitCode = await new Promise((resolve, reject) => {
     const child = spawn(
       process.execPath,
-      ['--import', 'tsx', 'scripts/smoke-companion-equipment.ts'],
+      ['--import', 'tsx', process.argv.includes('--cache') ? 'scripts/smoke-camp-cache.ts' : 'scripts/smoke-companion-equipment.ts'],
       {
         env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
         stdio: 'inherit',

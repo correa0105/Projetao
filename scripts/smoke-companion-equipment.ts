@@ -277,7 +277,7 @@ try {
     await validateImage(panel.locator('.companion-outfit-image img'), updated.image_url!);
     const privateImage = await context.request.get(origin + updated.image_url);
     expect(privateImage.status()).toBe(200);
-    expect(privateImage.headers()['cache-control']).toBe('private, no-store');
+    expect(privateImage.headers()['cache-control']).toBe('private, max-age=3600, immutable');
     const outputMeta = await sharp(await privateImage.body()).metadata();
     const sourceMeta = await sharp(record.reference).metadata();
     expect(outputMeta.width! / outputMeta.height!).toBeCloseTo(

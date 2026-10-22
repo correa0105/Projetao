@@ -125,6 +125,8 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
       ...state.reviews,
     ]) {
       assert(prompt.includes(ART_CLOTHING_RULES));
+      assert.match(prompt,/close-up isolado define apenas o modelo/);
+      assert.match(prompt,/7 a 8 cabeças/);
       assert.match(prompt, /ambas as pernas.*tornozelos/);
       assert.match(prompt, /calça curta, três-quartos, barra assimétrica/);
       assert(prompt.includes(warforgedArtInstructions(choices.warforgedAppearance)));

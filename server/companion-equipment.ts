@@ -646,11 +646,19 @@ export function companionEquipmentRouter() {
     const {
       rows: [art],
     } = await pool.query(
-      `SELECT a.image FROM companion_artworks a JOIN companion_wardrobes w ON w.id=a.wardrobe_id JOIN characters c ON c.id=w.character_id WHERE w.id=$1 AND w.character_id=$2 AND w.kind=$3 AND c.deleted_at IS NULL AND (c.user_id=$4 OR EXISTS(SELECT 1 FROM house_homes h JOIN house_invites i ON i.home_id=h.id WHERE h.character_id=c.id AND i.user_id=$4 AND i.status='accepted' AND jsonb_path_exists(h.rooms,'$[*].placements[*] ? (@.ref == $id)',jsonb_build_object('id',w.id::text)) AND NOT EXISTS(SELECT 1 FROM social_blocks b WHERE(b.blocker_id=$4 AND b.blocked_id=c.user_id)OR(b.blocker_id=c.user_id AND b.blocked_id=$4))))`,
+      `SELECT a.image,c.user_id AS owner_id,w.image_revision FROM companion_artworks a JOIN companion_wardrobes w ON w.id=a.wardrobe_id JOIN characters c ON c.id=w.character_id WHERE w.id=$1 AND w.character_id=$2 AND w.kind=$3 AND c.deleted_at IS NULL AND (c.user_id=$4 OR EXISTS(SELECT 1 FROM house_homes h JOIN house_invites i ON i.home_id=h.id WHERE h.character_id=c.id AND i.user_id=$4 AND i.status='accepted' AND jsonb_path_exists(h.rooms,'$[*].placements[*] ? (@.ref == $id)',jsonb_build_object('id',w.id::text)) AND NOT EXISTS(SELECT 1 FROM social_blocks b WHERE(b.blocker_id=$4 AND b.blocked_id=c.user_id)OR(b.blocker_id=c.user_id AND b.blocked_id=$4))))`,
       [companionId, characterId, kind, userId],
     );
     if (!art) throw new AppError(404, 'Imagem não encontrada.');
-    res.setHeader('Cache-Control', 'private, no-store');
+    res.vary('Cookie');
+    res.setHeader(
+      'Cache-Control',
+      art.owner_id === userId
+        ? req.query.v === String(art.image_revision)
+          ? 'private, max-age=3600, immutable'
+          : 'private, no-cache'
+        : 'private, no-store',
+    );
     res.type('png').send(art.image);
   });
   return router;
