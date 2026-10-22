@@ -475,7 +475,7 @@ export function CharacterForm({
           </select>
         </label>
       </div>
-      {race === 'Warforged' && (
+      <SheetChoices race={race} cls={cls} value={choices} onChange={setChoices} warforgedModeControl={race === 'Warforged' && (
         <fieldset className="character-reference-choices" disabled={busy}>
           <legend>Como criar a aparência</legend>
           <label className="check">
@@ -502,8 +502,7 @@ export function CharacterForm({
             Um Warforged montado usa somente suas escolhas e guarda essa identidade ao vestir.
           </p>
         </fieldset>
-      )}
-      <SheetChoices race={race} cls={cls} value={choices} onChange={setChoices} />
+      )} />
       <label>
         Sua história <span className="muted">(opcional)</span>
         <textarea

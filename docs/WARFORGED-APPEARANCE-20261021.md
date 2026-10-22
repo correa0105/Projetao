@@ -20,6 +20,11 @@ no servidor. Novas criações recebem um padrão editável. Registros antigos se
 chave não são reescritos nem ganham instruções cosméticas automaticamente; troca
 de espécie remove a escolha incompatível. Salvar e recarregar conserva as opções.
 
+O seletor **Como criar a aparência** aparece imediatamente acima de **Construa seu
+Warforged**, junto das opções de estrutura/cabeça/cores. Ele permanece nesse local
+quando o modo de referência oculta a montagem; outras espécies e fichas salvas
+não recebem o seletor de modo da criação.
+
 Na criação, os modos **Criar apenas com as características escolhidas** e
 **Enviar uma imagem de referência** são exclusivos. Escolher referência desmarca e
 oculta toda a montagem; um aviso explica essa exigência. `warforgedArtMode` guarda

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { BookOpen } from 'lucide-react';
 import { SpellReference } from './SpellReference';
 import {
@@ -110,11 +110,13 @@ export function SheetChoices({
   cls,
   value: c,
   onChange,
+  warforgedModeControl,
 }: {
   race: string;
   cls: string;
   value: Choices;
   onChange: (v: Choices) => void;
+  warforgedModeControl?: ReactNode;
 }) {
   const [reference, setReference] = useState<string | null>(null);
   const k = classRules[cls],
@@ -223,6 +225,7 @@ export function SheetChoices({
           onChange={(tieflingHorns) => update({ tieflingHorns })}
         />
       )}
+      {race === 'Warforged' && warforgedModeControl}
       {race === 'Warforged' && warforgedArtMode(c) === 'construction' && (
         <WarforgedAppearance value={c.warforgedAppearance}
           onChange={warforgedAppearance => update({ warforgedAppearance })} />
