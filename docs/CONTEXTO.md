@@ -1,3 +1,13 @@
+22/10/2026 — Seletor “Como criar a aparência” da criação de Warforged movido
+para imediatamente acima de “Construa seu Warforged”, no bloco de escolhas da ficha.
+Continua visível quando a referência oculta a montagem. Usa os mesmos estados,
+regras de exclusividade e envio; não acrescenta troca de modo nas fichas salvas.
+TypeScript/build, smoke real de Warforged (quatro larguras, criação sem referência,
+upload, retomada, escolhas salvas e vestir) e inspeção visual desktop/celular passaram.
+Publicação warforged-mode-position-20261022, código 329e7431e5c7a977a997fbc30ac4d43edeb6a295, saudável na
+Hostinger. Backup /opt/alvorada/backups/warforged-mode-position-before-20261022T154428Z.dump. HTTPS/bundles, dados, imagens,
+cota 5 por conta/admin ilimitado, token privado, Gmail e ilustrador preservados.
+
 22/10/2026 — Publicação account-five-token-preview-20261022 aplicada e saudável na Hostinger,
 código b7a8967cbfac55a5521ee7c780c2ce1538a8091b. Backup /opt/alvorada/backups/account-five-token-preview-before-20261022T153618Z.dump.
 Personagens têm 5 gerações mensais POR CONTA, compartilhadas entre todas as fichas;
