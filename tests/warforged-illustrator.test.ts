@@ -66,8 +66,8 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
       const review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
       const images=args.flatMap((v,i)=>v==='--image'?[args[i+1]]:[]);
       if(images.length>5||images.some(p=>!fs.existsSync(p)))process.exit(1);
-      if(review){state.reviews.push(prompt);fs.writeFileSync(result,JSON.stringify({approved:true,clothing_correct:state.omitClothing?undefined:(state.reviews.length>1&&!state.rejectClothing),appendages_correct:true,issues:[]}));}
-      else {state.renders.push({prompt,images});const output=path.join(args[args.indexOf('--cd')+1],'output.png');fs.copyFileSync(${JSON.stringify(fixture)},output);fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));}
+      if(review){state.reviews.push(prompt);fs.writeFileSync(result,JSON.stringify({approved:true,clothing_correct:state.omitClothing?undefined:(state.acceptClothing||(state.reviews.length>1&&!state.rejectClothing)),selected_head_correct:state.omitHead?undefined:!state.rejectHead,appendages_correct:true,issues:[]}));}
+      else {state.renders.push({prompt,images,hashes:images.map(p=>require('node:crypto').createHash('sha256').update(fs.readFileSync(p)).digest('hex'))});const output=path.join(args[args.indexOf('--cd')+1],'output.png');fs.copyFileSync(${JSON.stringify(fixture)},output);fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));}
       fs.writeFileSync(${JSON.stringify(capture)},JSON.stringify(state));
     });
   `,
@@ -77,7 +77,7 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
   const choices = defaultChoices('Warforged', 'Guerreiro');
   choices.warforgedAppearance = {
     body: 'reinforced-arms',
-    head: 'cavalier',
+    head: 'artificer',
     metal: 'copper',
     finish: 'rusted',
     accentEnabled: true,
@@ -112,12 +112,21 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
     assert.match(state.renders[0].images[0], /character-style-v1\.png$/);
     assert(state.renders[0].images.every((p: string) => !p.endsWith('reference.png')));
     assert.match(state.renders[0].prompt, /CONSTRUÇÃO SEM IMAGEM DO JOGADOR/);
+    const expectedHead = await sharp('public' + warforgedHeadReference('artificer').atlas).extract({left:512,top:512,width:512,height:512}).png().toBuffer();
+    assert.equal(state.renders[0].hashes.at(-1), createHash('sha256').update(expectedHead).digest('hex'));
+    assert.match(state.renders[0].images.at(-1), /selected-warforged-head\.png$/);
+    assert.match(state.renders[0].prompt, /seleções ISOLADAS/);
+    assert.match(state.renders[0].prompt, /amplo conjunto de engrenagens/);
+    assert.match(state.renders[0].prompt, /túnica de linho/);
+    assert.doesNotMatch(state.renders[0].prompt, /trapos velhos|pijama rudimentar/);
     assert.match(state.renders[1].prompt, /tecido atravessando as pernas/i);
     for (const prompt of [
       ...state.renders.map((r: { prompt: string }) => r.prompt),
       ...state.reviews,
     ]) {
       assert(prompt.includes(ART_CLOTHING_RULES));
+      assert.match(prompt, /ambas as pernas.*tornozelos/);
+      assert.match(prompt, /calça curta, três-quartos, barra assimétrica/);
       assert(prompt.includes(warforgedArtInstructions(choices.warforgedAppearance)));
     }
     assert.deepEqual(
@@ -168,6 +177,14 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
       /verificação/,
     );
     assert.equal(JSON.parse(await readFile(capture, 'utf8')).reviews.length, 3);
+    await writeFile(capture, JSON.stringify({ renders: [], reviews: [], acceptClothing: true, rejectHead: true }));
+    await assert.rejects(() => generateCharacterArt({ id:randomUUID(),race:'Warforged',class:'Guerreiro',reference:null,choices }), /verificação/);
+    const wrongHead=JSON.parse(await readFile(capture,'utf8'));
+    assert.equal(wrongHead.reviews.length,3);
+    assert.match(wrongHead.renders[1].prompt,/Restaurar fielmente a cabeça escolhida/);
+    assert(wrongHead.reviews.every((prompt:string)=>prompt.includes('selected_head_correct=false')));
+    await writeFile(capture, JSON.stringify({ renders: [], reviews: [], acceptClothing: true, omitHead: true }));
+    await assert.rejects(() => generateCharacterArt({ id:randomUUID(),race:'Warforged',class:'Guerreiro',reference:null,choices }), /conferir a composição/);
     await writeFile(capture, JSON.stringify({ renders: [], reviews: [], omitClothing: true }));
     await assert.rejects(
       () =>

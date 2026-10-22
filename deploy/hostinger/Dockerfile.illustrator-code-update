@@ -1,0 +1,12 @@
+# Code and versioned illustrator prompts over a verified runtime, preserving original assets.
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+ARG SOURCE_COMMIT
+LABEL org.opencontainers.image.revision=${SOURCE_COMMIT}
+COPY --chown=node:node dist/client/assets/ /app/dist/client/assets/
+COPY --chown=node:node dist/client/index.html /app/dist/client/index.html
+COPY --chown=node:node dist/server/ /app/dist/server/
+COPY --chown=node:node release.json /app/release.json
+COPY --chown=node:node db/migrations/ /app/db/migrations/
+COPY --chown=node:node static-additions/ /app/dist/client/
+COPY --chown=node:node docs/CHARACTER-ART-PROMPT-v1.md /app/docs/CHARACTER-ART-PROMPT-v1.md

@@ -117,7 +117,7 @@ export const warforgedHeads = [
     name: 'Artífice',
     description: 'Uma lente circular e mecanismos integrados à face.',
     instruction:
-      'Cabeça compacta assimétrica, uma lente circular embutida e um olho em fenda, pequenas engrenagens integradas a uma têmpora e mandíbula fina articulada; sem óculos externos.',
+      'Cabeça assimétrica com uma grande lente ocular circular saliente e o outro olho em fenda; amplo conjunto de engrenagens expostas na lateral e parte posterior do crânio, recorte aberto mostrando mecanismos, placa superior arqueada e mandíbula fina facetada articulada. Preserve a proporção da lente e o volume dos mecanismos do modelo, sem reduzir a cabeça a uma máscara lisa ou robô genérico; sem óculos externos.',
   },
   {
     id: 'veteran',

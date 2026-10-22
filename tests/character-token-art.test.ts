@@ -277,7 +277,7 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
       const state=fs.existsSync(${JSON.stringify(statePath)})?JSON.parse(fs.readFileSync(${JSON.stringify(statePath)})):{renders:[],reviews:[]};
       const top=dir.includes('character-token-art'), review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
-      if(review){state.reviews.push({top,prompt});fs.writeFileSync(result,JSON.stringify({approved:!state.rejectToken||!top,clothing_correct:!state.rejectClothing,appendages_correct:!state.rejectAnatomy,issues:state.rejectToken&&top?['Câmera frontal incorreta.']:[]}));}
+      if(review){state.reviews.push({top,prompt});fs.writeFileSync(result,JSON.stringify({approved:!state.rejectToken||!top,clothing_correct:!state.rejectClothing,selected_head_correct:!state.rejectHead,appendages_correct:!state.rejectAnatomy,issues:state.rejectToken&&top?['Câmera frontal incorreta.']:[]}));}
       else{state.renders.push({top,prompt,hashes:images.map(p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex'))});const output=path.join(dir,'output.png');fs.copyFileSync(top?${JSON.stringify(join(temp, 'token.png'))}:${JSON.stringify(join(temp, 'portrait.png'))},output);fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));}
       fs.writeFileSync(${JSON.stringify(statePath)},JSON.stringify(state));
     });`,
@@ -320,12 +320,19 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     assert.equal(hash(constructed.token), hash(token));
     const warforged = JSON.parse(await readFile(statePath, 'utf8'));
     assert.equal(warforged.renders[0].hashes.length, 3);
-    assert.equal(warforged.renders[0].hashes.at(-1), hash(await readFile('public/character-creation/warforged-heads-detailed-20261021.png')));
+    assert.equal(warforged.renders[0].hashes.at(-1), hash(await sharp('public/character-creation/warforged-heads-detailed-20261021.png').extract({left:512,top:0,width:512,height:512}).png().toBuffer()));
     assert.equal(warforged.renders[1].hashes[0], hash(portrait));
+    assert.equal(warforged.renders[1].hashes.at(-1),warforged.renders[0].hashes.at(-1));
+    assert.equal(warforged.renders[1].hashes.length,3);
     for (const stage of [...warforged.renders, ...warforged.reviews]) {
       assert.match(stage.prompt, /Cabeça Cavaleiro/);
       assert.match(stage.prompt, /Reprove tecido atravessando as pernas/);
     }
+    await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], rejectHead: true }));
+    await assert.rejects(generateCharacterToken({...job,id:randomUUID(),race:'Warforged',choices:warforgedChoices},portrait), /revisão/);
+    const headRejected=JSON.parse(await readFile(statePath,'utf8'));
+    assert.equal(headRejected.reviews.length,3);
+    assert.match(headRejected.renders[1].prompt,/Restaurar o modelo exato da cabeça isolada/);
     await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], rejectToken: true }));
     await assert.rejects(generateCharacterToken({ ...job, id: randomUUID() }, portrait), /revisão/);
     const failed = JSON.parse(await readFile(statePath, 'utf8'));

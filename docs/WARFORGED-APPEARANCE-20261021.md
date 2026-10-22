@@ -1,5 +1,30 @@
 # Aparência do Warforged
 
+22/10: a geração/revisão de montagem recebe referências privadas isoladas do corpo
+e da cabeça selecionados, extraídas das mesmas células mostradas na criação.
+Os PNGs originais ficam intactos, sem redimensionamento ou recompressão. A cabeça
+do modelo de corpo não vale como referência de rosto. O token também recebe a
+cabeça isolada, mantendo câmera superior, paleta e oclusão. Limite de cinco anexos
+e limpeza dos arquivos temporários preservados.
+
+Retrato e token de montagem exigem `selected_head_correct=true`, separado da
+aprovação geral, da anatomia e da roupa; falta do campo ou divergência bloqueia
+entrega. Revisão compara silhueta, placas, lente/visor, mandíbula e mecanismos
+visíveis. O Artífice exige a lente saliente e o amplo mecanismo lateral/posterior
+do modelo, em lugar da antiga descrição de pequenas engrenagens. A cabeça escolhida
+prevalece sobre erro de cabeça em uma BASE antiga; corpo, identidade e paleta
+continuam preservados. Modo de referência não recebe referências de montagem.
+
+Roupa inicial comum às espécies agora é traje simples de aventureiro medieval:
+túnica de linho cru até o quadril, gola com cordão, debrum verde-musgo discreto,
+faixa de tecido e calça castanho-escura inteira até os tornozelos. Equipamento
+escolhido substitui apenas sua posição, sem conceder itens novos. Prompt antigo
+de trapos/pijama removido, incluindo a orientação de copiar roupa da imagem de
+estilo. Geração, correção e revisão de retrato/token exigem tecido por fora de
+ambas as pernas até os tornozelos/calçado, barras inteiras e simétricas, sem
+rasgos expondo canelas nem interpenetração. Oclusão natural permanece correta.
+`clothing_correct=false` sempre impede entrega, com até três tentativas.
+
 Na criação da ficha, Warforged oferece seis estruturas ilustradas: Equilibrado,
 Esguio, Robusto, Braços reforçados, Pernas alongadas e Compacto. As seis cabeças
 são Máscara lisa, Visor, Angular, Olhos circulares, Mandíbula segmentada e Cúpula

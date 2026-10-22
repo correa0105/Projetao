@@ -169,7 +169,10 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     assert.match(captured.prompt, /"reference_image":3/);
     assert.match(captured.prompt, /Espada longa/);
     assert.match(captured.prompt, /SOMENTE os equipamentos listados/);
-    assert.match(captured.prompt, /trapos velhos de tecido: camisa branca e calça cinza/);
+    assert.match(captured.prompt, /Roupa inicial de aventureiro: túnica de linho cru/);
+    assert.match(captured.prompt, /calça de tecido castanho-escuro/);
+    assert.match(captured.prompt, /CALÇAS COMPRIDAS OBRIGATÓRIAS/);
+    assert.doesNotMatch(captured.prompt, /trapos velhos|pijama rudimentar/);
     assert.match(captured.prompt, /humano não recebe asas/);
     assert.match(captured.prompt, /draconato não recebe orelhas élficas/);
     assert.match(captured.prompt, /imagem do jogador, ela vem após a referência de estilo e fornece somente características físicas/);
@@ -190,7 +193,7 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
       describeArtEquipment({ slot: 'cloak', item_id: 'cosmetic-cape', name: 'Capa', image: itemImage }, 0).wearing,
       /capa desdobrada, como manto sem mangas/,
     );
-    assert.ok(captured.prompt.length < 8500, `Prompt completo deve permanecer compacto mesmo com vários equipamentos (${captured.prompt.length} caracteres).`);
+    assert.ok(captured.prompt.length < 10000, `Prompt completo deve permanecer compacto mesmo com vários equipamentos (${captured.prompt.length} caracteres).`);
     for (const slot of ['ring_left', 'ring_right'] as const) {
       assert.match(describeArtEquipment({ slot, item_id: 'ring-of-protection', name: 'Anel', image: itemImage }, 0).wearing, /pode ficar oculto/);
     }
