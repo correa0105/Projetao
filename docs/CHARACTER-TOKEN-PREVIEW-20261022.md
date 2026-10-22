@@ -1,7 +1,8 @@
 # Prévia do token no canto da tela
 
 Um botão circular com mira e pequeno brilho dourado fica no canto inferior direito
-quando há um personagem selecionado. Hover e foco abrem a prévia; clique/toque a
+somente nas telas Personagens e Inventário, quando há um personagem selecionado.
+As demais telas não montam o componente nem seu painel. Hover e foco abrem a prévia; clique/toque a
 mantém aberta. Escape, fechar, clique externo e saída do hover sem fixação fecham.
 O brilho respeita movimento reduzido e a posição respeita as áreas seguras do celular.
 

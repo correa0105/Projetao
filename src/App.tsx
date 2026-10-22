@@ -797,7 +797,7 @@ function Portal({ user }: { user: User }) {
         </main>
       </div>
       <Navigation page={page} go={go} maintenanceAreas={maintenanceAreas} />
-      {character && <CharacterTokenPreview key={`${character.id}:${character.portrait_revision}`} character={character} />}
+      {character && (page === 'characters' || page === 'inventory') && <CharacterTokenPreview key={`${character.id}:${character.portrait_revision}`} character={character} />}
       {toast && <FlashMessage kind="info">{toast}</FlashMessage>}
       {modal==='recovery-mail'&&administrator&&<RecoveryMailSettings close={()=>setModal(null)}/>}
       {modal === 'character' && (
