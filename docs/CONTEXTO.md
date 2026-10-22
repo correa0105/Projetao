@@ -1,3 +1,26 @@
+22/10/2026 — Qualidade da roupa e fidelidade da cabeça do Warforged: publicação
+character-clothes-head-20261022, código 6e7502697fe37ef18e475f6276e18632aa9725c0, saudável na Hostinger.
+Backup /opt/alvorada/backups/character-clothes-head-before-20261022T160420Z.dump. Roupa inicial trocou instruções antigas de
+trapos/pijama por túnica medieval de linho com gola/cordão, debrum verde-musgo,
+faixa e calça castanho-escura inteira até tornozelos. Nenhum item novo concedido.
+Regras de TODAS as artes de personagem exigem tecido por fora de ambas as pernas,
+comprimento até tornozelos/calçado e barras inteiras simétricas; reprovar encurtamento,
+rasgos expondo canela/juntas e interpenetração no retrato/token, respeitando oclusão.
+Montagem usa seleções privadas isoladas de corpo e cabeça, mesmas células da UI,
+sem alterar pranchas originais; token também recebe cabeça isolada. Retrato/token
+exigem selected_head_correct=true separado de anatomia/roupa; ausência ou false
+impedem entrega mesmo com approved=true. Artífice preserva grande lente e mecanismo
+lateral/posterior; modelo escolhido prevalece sobre cabeça errada em BASE antiga,
+mantendo identidade, estrutura, paleta, acabamento e modo exclusivo. Até três tentativas.
+TypeScript/builds e testes de renderer/entrega em banco UUID descartável passaram,
+incluindo rejeição independente da cabeça, roupa e campo ausente, hashes da seleção,
+limite de anexos, equipamento e animais. Sem provedor pago nem testes em produção.
+Ilustrador recarregado SOMENTE com ambas as filas vazias (PID 34444 -> 38056),
+supervisor/heartbeat confirmados. HTTPS/build e prompt versionado por SHA-256
+conferidos; dados, cotas 5/admin ilimitado, mapas, atlases, Gmail e tradutor preservados.
+Guia WARFORGED-APPEARANCE-20261021. Mudanças aplicadas às novas gerações e vestir;
+nenhuma arte existente substituída automaticamente, nenhum uso de cota acrescentado.
+
 22/10/2026 — Seletor “Como criar a aparência” da criação de Warforged movido
 para imediatamente acima de “Construa seu Warforged”, no bloco de escolhas da ficha.
 Continua visível quando a referência oculta a montagem. Usa os mesmos estados,
