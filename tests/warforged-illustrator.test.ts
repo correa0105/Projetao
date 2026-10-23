@@ -166,13 +166,13 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
     const byReference = JSON.parse(await readFile(capture, 'utf8'));
     assert.equal(byReference.renders[0].images.length, 2);
     assert.doesNotMatch(byReference.renders[0].prompt, /APARÊNCIA DO WARFORGED ESCOLHIDA/);
-    const physicalChoices = { ...choices, warforgedArtMode: 'reference' as const, warforgedAppearance: undefined, warforgedBody: 'long-legs' as const, physicalTraits: { height: 'short' as const, build: 'slim' as const, age: 'old' as const } };
+    const physicalChoices = { ...choices, warforgedArtMode: 'reference' as const, warforgedAppearance: undefined, warforgedBody: 'long-legs' as const, physicalTraits: { height: 'short' as const, build: 'slim' as const, age: 'old' as const, gender: 'female' as const } };
     await writeFile(capture, JSON.stringify({ renders: [], reviews: [], acceptClothing: true }));
     await generateCharacterArt({ id: randomUUID(), race: 'Warforged', class: 'Guerreiro', reference: image, reference_mode: 'reference', choices: physicalChoices });
     const physical = JSON.parse(await readFile(capture, 'utf8'));
     assert.equal(physical.renders[0].images.length, 3);
     assert.match(physical.renders[0].images.at(-1), /selected-warforged-body/);
-    assert(physical.renders.every((r: { prompt: string }) => r.prompt.includes('PERSONALIZAÇÃO FÍSICA')));
+    assert(physical.renders.every((r: { prompt: string }) => r.prompt.includes('PERSONALIZAÇÃO FÍSICA') && r.prompt.includes('Personagem mulher')));
     assert(physical.reviews.every((prompt: string) => prompt.includes('physical_traits_correct=false')));
     assert.doesNotMatch(physical.renders[0].prompt, /APARÊNCIA DO WARFORGED ESCOLHIDA|Cabeça Sentinela/);
     for (const flags of [{ rejectPhysical: true }, { omitPhysical: true }]) {

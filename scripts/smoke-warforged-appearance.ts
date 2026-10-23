@@ -113,14 +113,16 @@ try {
   await form.getByLabel('Nome do personagem').fill('Construído sem foto');
   for (const race of (await import('../shared/rules')).races) {
     await form.getByLabel('Espécie', { exact: true }).selectOption(race);
-    for (const label of ['Altura', 'Porte físico', 'Idade aparente']) {
+    for (const label of ['Gênero do personagem', 'Altura', 'Porte físico', 'Idade aparente']) {
       await expect(form.getByRole('combobox', { name: label, exact: true })).toHaveValue('');
       expect(await form.getByRole('combobox', { name: label, exact: true }).evaluate((el: HTMLSelectElement) => el.required)).toBe(true);
     }
   }
+  await form.getByRole('combobox', { name: 'Gênero do personagem', exact: true }).selectOption('female');
   await form.getByRole('combobox', { name: 'Altura', exact: true }).selectOption('tall');
   await form.getByRole('combobox', { name: 'Porte físico', exact: true }).selectOption('slim');
-  await form.getByRole('combobox', { name: 'Idade aparente', exact: true }).selectOption('old');
+  expect(await form.getByRole('combobox', { name: 'Idade aparente', exact: true }).locator('option:not([disabled])').allTextContents()).toEqual(['Jovem', 'Adulto', 'Meia-idade', 'Idoso']);
+  await form.getByRole('combobox', { name: 'Idade aparente', exact: true }).selectOption('middle-aged');
   await form.getByLabel('Espécie', { exact: true }).selectOption('Warforged');
   const without = form.getByRole('radio', {
     name: 'Criar apenas com as características escolhidas',
@@ -189,7 +191,7 @@ try {
   ).rows[0];
   expect(queued.reference).toBeNull();
   expect(queued.creation.choices.warforgedAppearance).toEqual(persisted);
-  expect(queued.creation.choices.physicalTraits).toEqual({ height: 'tall', build: 'slim', age: 'old' });
+  expect(queued.creation.choices.physicalTraits).toEqual({ height: 'tall', build: 'slim', age: 'middle-aged', gender: 'female' });
   await pool.query(
     "UPDATE character_art_jobs SET status='failed',error='Falha simulada' WHERE id=$1",
     [job.id],
@@ -198,7 +200,8 @@ try {
   await page.getByRole('button', { name: 'Criações salvas (1)', exact: true }).click();
   await page.getByRole('button', { name: 'Retomar preenchimento', exact: true }).click();
   await expect(without).toBeChecked();
-  await expect(form.getByRole('combobox', { name: 'Idade aparente', exact: true })).toHaveValue('old');
+  await expect(form.getByRole('combobox', { name: 'Gênero do personagem', exact: true })).toHaveValue('female');
+  await expect(form.getByRole('combobox', { name: 'Idade aparente', exact: true })).toHaveValue('middle-aged');
   await expect(submit).toBeEnabled();
   await expect(form.getByRole('radio', { name: /Braços reforçados/ })).toBeChecked();
   await page.getByRole('dialog').getByRole('button', { name: 'Fechar', exact: true }).click();

@@ -199,7 +199,7 @@ test('duas artes atômicas, perfil separado, atualização do token sem alterar 
         name: 'Novo token',
         race: 'Humano',
         class: 'Guerreiro',
-        choices: { ...defaultChoices('Humano', 'Guerreiro'), physicalTraits: { height: 'average', build: 'athletic', age: 'adult' } },
+        choices: { ...defaultChoices('Humano', 'Guerreiro'), physicalTraits: { height: 'average', build: 'athletic', age: 'adult', gender: 'male' } },
         stats: [15, 14, 13, 12, 10, 8],
       },
       reference: portrait.toString('base64'),
@@ -304,11 +304,11 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     assert.match(state.reviews[1].prompt, /mãos com pegada impossível/);
     assert.match(state.reviews[0].prompt, /um chifre na testa e outro no alto da cabeça/);
     assert.match(state.reviews[1].prompt, /mesma altura anatômica/);
-    const physicalJob = { ...job, choices: { ...defaultChoices('Humano', 'Guerreiro'), physicalTraits: { height: 'tall' as const, build: 'slim' as const, age: 'old' as const } } };
+    const physicalJob = { ...job, choices: { ...defaultChoices('Humano', 'Guerreiro'), physicalTraits: { height: 'tall' as const, build: 'slim' as const, age: 'old' as const, gender: 'female' as const } } };
     await writeFile(statePath, JSON.stringify({ renders: [], reviews: [] }));
     await generateCharacterArtPair({ ...physicalJob, id: randomUUID() });
     const physical = JSON.parse(await readFile(statePath, 'utf8'));
-    for (const stage of [...physical.renders, ...physical.reviews]) assert.match(stage.prompt, /PERSONALIZAÇÃO FÍSICA/);
+    for (const stage of [...physical.renders, ...physical.reviews]) { assert.match(stage.prompt, /PERSONALIZAÇÃO FÍSICA/); assert.match(stage.prompt, /Personagem mulher/); }
     assert.match(physical.reviews[1].prompt, /physical_traits_correct=false/);
     for (const flags of [{ rejectPhysical: true }, { omitPhysical: true }]) {
       await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], ...flags }));

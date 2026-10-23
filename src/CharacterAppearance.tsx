@@ -2,6 +2,7 @@ import {
   characterHeights,
   characterBuilds,
   characterAges,
+  characterGenders,
   type AppearanceChoices,
 } from '../shared/character-appearance';
 
@@ -24,6 +25,7 @@ export function CharacterAppearance({
       <div className="form-grid">
         {(
           [
+            ['gender', 'Gênero do personagem', characterGenders],
             ['height', 'Altura', characterHeights],
             ['build', 'Porte físico', characterBuilds],
             ['age', 'Idade aparente', characterAges],
@@ -32,7 +34,7 @@ export function CharacterAppearance({
           <label key={key}>
             {label}
             <select
-              required={required || Boolean(value)}
+              required={required || Boolean(key === 'gender' ? value?.gender : value)}
               aria-label={label}
               value={value?.[key] || ''}
               onChange={(e) => onChange({ ...value, [key]: e.target.value })}

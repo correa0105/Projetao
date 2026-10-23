@@ -1,6 +1,21 @@
 import { z } from 'zod';
 import { warforgedBodies } from './warforged-appearance.js';
 
+export const characterGenders = [
+  {
+    id: 'male',
+    name: 'Homem',
+    instruction:
+      'Personagem homem, com aparência masculina compatível com a raça, a idade e o porte físico escolhidos.',
+  },
+  {
+    id: 'female',
+    name: 'Mulher',
+    instruction:
+      'Personagem mulher, com aparência feminina compatível com a raça, a idade e o porte físico escolhidos.',
+  },
+] as const;
+
 export const characterHeights = [
   {
     id: 'short',
@@ -63,6 +78,12 @@ export const characterAges = [
     instruction: 'Aparência adulta para a raça, traços maduros sem envelhecimento acentuado.',
   },
   {
+    id: 'middle-aged',
+    name: 'Meia-idade',
+    instruction:
+      'Aparência de meia-idade para a raça, traços maduros e marcas moderadas de idade, sem envelhecimento avançado.',
+  },
+  {
     id: 'old',
     name: 'Idoso',
     instruction:
@@ -73,7 +94,9 @@ export const physicalTraitsSchema = z
   .object({
     height: z.enum(['short', 'average', 'tall']),
     build: z.enum(['slim', 'average', 'athletic', 'muscular', 'broad', 'heavy']),
-    age: z.enum(['young', 'adult', 'old']),
+    age: z.enum(['young', 'adult', 'middle-aged', 'old']),
+    // Existing sheets and queued jobs predate this choice; require it on new submissions only.
+    gender: z.enum(['male', 'female']).optional(),
   })
   .strict();
 export type PhysicalTraits = z.infer<typeof physicalTraitsSchema>;
@@ -98,8 +121,10 @@ export function validateCreationAppearance(
     warforgedAppearance?: { body: string };
   },
 ) {
-  if (!physicalTraitsSchema.safeParse(choices?.physicalTraits).success)
+  const traits = physicalTraitsSchema.safeParse(choices?.physicalTraits);
+  if (!traits.success)
     throw new Error('Escolha a altura, o porte físico e a idade aparente do personagem.');
+  if (!traits.data.gender) throw new Error('Escolha se o personagem é homem ou mulher.');
   if (race === 'Warforged' && !choices?.warforgedAppearance && !choices?.warforgedBody)
     throw new Error(
       'Escolha a estrutura do corpo do Warforged, mesmo usando uma imagem de referência.',
@@ -113,10 +138,13 @@ export function characterAppearanceInstructions(race: string, choices?: Appearan
   return `PERSONALIZAÇÃO FÍSICA ESCOLHIDA PELO JOGADOR (${race}). ${
     traits.success
       ? [
+          characterGenders.find((v) => v.id === traits.data.gender)?.instruction,
           characterHeights.find((v) => v.id === traits.data.height)!.instruction,
           characterBuilds.find((v) => v.id === traits.data.build)!.instruction,
           characterAges.find((v) => v.id === traits.data.age)!.instruction,
-        ].join(' ')
+        ]
+          .filter(Boolean)
+          .join(' ')
       : ''
-  } ${body ? `Estrutura do Warforged: ${body.name}. ${body.instruction} A estrutura define a distribuição e as proporções das placas e articulações; o porte físico define os volumes dentro dessa estrutura. Rosto, cabeça, materiais, cores e detalhes continuam seguindo a referência do jogador; não copiar a cabeça ou a paleta do manequim do corpo.` : ''} ${race === 'Warforged' && traits.success ? 'A idade aparente do constructo é expressa pela maturidade do desenho e marcas discretas de uso compatíveis com os materiais; não criar pele humana, barba, ferrugem ou mudar o acabamento escolhido automaticamente.' : ''} Essas escolhas prevalecem sobre a idade, altura e porte genéricos da raça, da classe ou das imagens. Preserve a identidade, cabelo, rosto, cores e marcas compatíveis da referência, adaptando somente as características escolhidas. Altura é relativa à própria raça: um halfling alto continua halfling, não um humano esticado. Preserve a anatomia racial, a categoria de tamanho da ficha e o equipamento; não conceder bônus ou penalidades. Mantenha essas características no retrato, ao vestir, nas correções e no token, respeitando o encurtamento e a oclusão da câmera superior. Não exigir medidas absolutas ou idade visível quando estiverem ocultas.`;
+  } ${body ? `Estrutura do Warforged: ${body.name}. ${body.instruction} A estrutura define a distribuição e as proporções das placas e articulações; o porte físico define os volumes dentro dessa estrutura. Rosto, cabeça, materiais, cores e detalhes continuam seguindo a referência do jogador; não copiar a cabeça ou a paleta do manequim do corpo.` : ''} ${race === 'Warforged' && traits.success ? 'A idade aparente e a aparência masculina ou feminina do constructo são expressas pelo desenho das formas, proporções e marcas discretas de uso compatíveis com os materiais; não criar pele humana, barba, ferrugem ou mudar o acabamento escolhido automaticamente.' : ''} Essas escolhas, incluindo homem ou mulher quando informado, prevalecem sobre a aparência genérica da raça, da classe ou das imagens. Preserve a identidade, cabelo, rosto, cores e marcas compatíveis da referência, adaptando somente as características escolhidas. Altura é relativa à própria raça: um halfling alto continua halfling, não um humano esticado. Preserve a anatomia racial, a categoria de tamanho da ficha e o equipamento; não conceder bônus ou penalidades. Não sexualizar o personagem nem substituir seu porte físico por estereótipos de gênero. Mantenha essas características no retrato, ao vestir, nas correções e no token, respeitando o encurtamento e a oclusão da câmera superior. Não exigir medidas absolutas ou características ocultas.`;
 }

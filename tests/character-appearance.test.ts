@@ -13,6 +13,7 @@ import {
   characterHeights,
   characterBuilds,
   characterAges,
+  characterGenders,
 } from '../shared/character-appearance.js';
 import { characterHeightScale, characterArtAnatomy } from '../shared/character-stature.js';
 
@@ -25,25 +26,36 @@ test('todas as espécies exigem personalização na criação; escolhas são cos
     const rules = deriveSheet(character, legacy);
     for (const height of characterHeights)
       for (const build of characterBuilds)
-        for (const age of characterAges) {
-          const choices = {
-            ...legacy,
-            physicalTraits: { height: height.id, build: build.id, age: age.id },
-          };
-          assert.doesNotThrow(() => validateCreationAppearance(race, choices));
-          assert.deepEqual(
-            validateChoices(race, 'Guerreiro', choices).physicalTraits,
-            choices.physicalTraits,
-          );
-          assert.deepEqual(
-            reconcileChoices(race, 'Guerreiro', choices, 'Soldado').physicalTraits,
-            choices.physicalTraits,
-          );
-          assert.deepEqual(deriveSheet(character, choices), rules);
-          const instructions = characterAppearanceInstructions(race, choices);
-          for (const part of [height.instruction, build.instruction, age.instruction])
-            assert(instructions.includes(part));
-        }
+        for (const age of characterAges)
+          for (const gender of characterGenders) {
+            const choices = {
+              ...legacy,
+              physicalTraits: {
+                height: height.id,
+                build: build.id,
+                age: age.id,
+                gender: gender.id,
+              },
+            };
+            assert.doesNotThrow(() => validateCreationAppearance(race, choices));
+            assert.deepEqual(
+              validateChoices(race, 'Guerreiro', choices).physicalTraits,
+              choices.physicalTraits,
+            );
+            assert.deepEqual(
+              reconcileChoices(race, 'Guerreiro', choices, 'Soldado').physicalTraits,
+              choices.physicalTraits,
+            );
+            assert.deepEqual(deriveSheet(character, choices), rules);
+            const instructions = characterAppearanceInstructions(race, choices);
+            for (const part of [
+              height.instruction,
+              build.instruction,
+              age.instruction,
+              gender.instruction,
+            ])
+              assert(instructions.includes(part));
+          }
     assert.doesNotMatch(
       characterArtAnatomy(race, { age: 'young', build: 'slim' }),
       /Adulto|adulta|robusto|robusta/,
@@ -56,7 +68,12 @@ test('todas as espécies exigem personalização na criação; escolhas são cos
     ...base,
     warforgedArtMode: 'reference' as const,
     warforgedAppearance: undefined,
-    physicalTraits: { height: 'short' as const, build: 'slim' as const, age: 'old' as const },
+    physicalTraits: {
+      height: 'short' as const,
+      build: 'slim' as const,
+      age: 'old' as const,
+      gender: 'female' as const,
+    },
   };
   assert.throws(() => validateCreationAppearance('Warforged', reference), /estrutura/);
   const selected = { ...reference, warforgedBody: 'long-legs' as const };
@@ -73,6 +90,20 @@ test('todas as espécies exigem personalização na criação; escolhas são cos
     { height: 'tall' },
     { height: 'unknown', build: 'slim', age: 'adult' },
     { ...selected.physicalTraits, extra: 'injected' },
+    { ...selected.physicalTraits, gender: 'invalid' },
   ])
     assert.throws(() => validateChoices('Warforged', 'Guerreiro', { ...selected, physicalTraits }));
+});
+
+test('fichas e jobs da versão anterior não recebem gênero automático; novas criações exigem a escolha', () => {
+  const legacy = {
+    ...defaultChoices('Humano', 'Guerreiro'),
+    physicalTraits: { height: 'tall' as const, build: 'slim' as const, age: 'old' as const },
+  };
+  assert.equal(validateChoices('Humano', 'Guerreiro', legacy).physicalTraits?.gender, undefined);
+  assert.throws(() => validateCreationAppearance('Humano', legacy), /homem ou mulher/);
+  const prompt = characterAppearanceInstructions('Humano', legacy);
+  assert(!prompt.includes('Personagem homem'));
+  assert(!prompt.includes('Personagem mulher'));
+  assert(prompt.includes(characterHeights[2].instruction));
 });

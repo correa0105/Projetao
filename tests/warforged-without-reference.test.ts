@@ -48,7 +48,7 @@ test('Warforged sem referência: fila, escolhas, privacidade, retomada e entrega
       'INSERT INTO character_art_worker(id,available,heartbeat_at) VALUES(true,true,now()) ON CONFLICT(id) DO UPDATE SET available=true,heartbeat_at=now()',
     );
     const choices = defaultChoices('Warforged', 'Guerreiro');
-    choices.physicalTraits = { height: 'tall', build: 'slim', age: 'old' };
+    choices.physicalTraits = { height: 'tall', build: 'slim', age: 'old', gender: 'female' };
     choices.warforgedAppearance = {
       body: 'robust',
       head: 'angular',
@@ -58,7 +58,7 @@ test('Warforged sem referência: fila, escolhas, privacidade, retomada e entrega
       accentColor: '#123abc',
     };
     const creation = { name: 'Forjado sem foto', race: 'Warforged', class: 'Guerreiro', choices };
-    for (const patch of [{ physicalTraits: undefined }, { physicalTraits: { height: 'short' } }, { physicalTraits: { height: 'invalid', build: 'slim', age: 'old' } }]) {
+    for (const patch of [{ physicalTraits: { ...choices.physicalTraits, gender: undefined } }, { physicalTraits: { ...choices.physicalTraits, gender: 'invalid' } }, { physicalTraits: undefined }, { physicalTraits: { height: 'short' } }, { physicalTraits: { height: 'invalid', build: 'slim', age: 'old' } }]) {
       assert.equal((await req('/character-art', owner.cookie, { creation: { ...creation, choices: { ...choices, ...patch } }, idempotency_key: randomUUID() })).status, 400);
     }
     const key = randomUUID();

@@ -222,7 +222,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
             ? `Reprove a ausência dos efeitos mágicos nas partes visíveis da armadura e sua substituição pelo acabamento mundano. ${magicInstructions} `
             : '') +
           warforgedInstructions +
-          '\n' + physicalInstructions + (physicalInstructions ? ' Registre physical_traits_correct=false se os volumes, a estrutura ou os traços de idade VISÍVEIS contrariarem a personalização. Preserve as proporções tridimensionais; não julgar altura em centímetros nem pedir detalhes encobertos pela câmera superior.' : '') +
+          '\n' + physicalInstructions + (physicalInstructions ? ' Registre physical_traits_correct=false se os volumes, a estrutura, a aparência de homem ou mulher informada ou os traços de idade VISÍVEIS contrariarem a personalização. Preserve as proporções tridimensionais; não julgar altura em centímetros nem pedir detalhes encobertos pela câmera superior.' : '') +
           '\n' +
           headInstructions +
           (selectedHead

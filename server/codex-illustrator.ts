@@ -205,7 +205,7 @@ export async function reviewComposition(
     Oclusão natural é correta: itens ocultos NÃO precisam aparecer.
     ${baseReference && !companion ? 'Imagem 2 é a identidade montada BASE aprovada. Compare rosto, estrutura e proporções do corpo; só roupas e equipamentos podem mudar, salvo corrigir cabeça divergente para o modelo escolhido na última imagem. Confira metal, acabamento e detalhes pela paleta validada abaixo; reprove clarear metal escurecido, apagar ferrugem ou recolorir o corpo com a cor das roupas.' : ''}
     ${ART_ANATOMY_RULES} Registre appendages_correct=false se houver defeito anatômico visível e descreva-o em issues. Se não houver apêndices incomuns, confira a anatomia normal antes de marcar true.
-    ${physicalInstructions} ${physicalInstructions ? 'Confira altura relativa à raça, porte físico, idade aparente e estrutura escolhida nas partes visíveis. Registre physical_traits_correct=false se a arte contrariar essas escolhas. Não exigir medidas absolutas ou características ocultas.' : ''}
+    ${physicalInstructions} ${physicalInstructions ? 'Confira a escolha de homem ou mulher quando informada, altura relativa à raça, porte físico, idade aparente e estrutura escolhida nas partes visíveis. Registre physical_traits_correct=false se a arte contrariar essas escolhas. Não exigir medidas absolutas ou características ocultas.' : ''}
     ${companion ? '' : ART_CLOTHING_RULES}
     Julgue clothing_correct separadamente: false para roupa interpenetrada, calça encurtada, barra assimétrica ou rasgada expondo canela, mangas ou punhos sem ligação física, mesmo que anatomia e estilo estejam corretos. Inspecione separadamente o comprimento e a continuidade do tecido em CADA perna. Nunca aprovar com clothing_correct=false.
     ${horns ? `A última imagem é somente o formato dos chifres escolhido pelo jogador, nunca o rosto/corpo. Formato obrigatório: ${horns.instruction} Reprove um formato diferente; respeite perspectiva e oclusão natural por cabelo/equipamento.` : ''}
@@ -236,7 +236,7 @@ export async function reviewComposition(
       .parse(JSON.parse(await readFile(result, 'utf8')));
     if (review.physical_traits_correct === false) {
       review.approved = false;
-      review.issues.push('Corrigir altura relativa à raça, porte físico, idade aparente e estrutura conforme a personalização escolhida, preservando identidade e equipamento.');
+      review.issues.push('Corrigir a aparência de homem ou mulher quando informada, altura relativa à raça, porte físico, idade aparente e estrutura conforme a personalização escolhida, preservando identidade e equipamento.');
     }
     if (!review.appendages_correct) {
       review.approved = false;
