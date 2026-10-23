@@ -8,12 +8,14 @@ export function AssetLoading({
   total = 0,
   error = '',
   retry,
+  waitingForData = false,
 }: {
   title?: string;
   done?: number;
   total?: number;
   error?: string;
   retry?: () => void;
+  waitingForData?: boolean;
 }) {
   return (
     <div
@@ -25,8 +27,8 @@ export function AssetLoading({
       <div className="asset-loading__panel">
         <span className="asset-loading__brand">Alvorada Cinzenta</span>
         <h1>{title}</h1>
-        <p>{error || 'Preparando os cenários e as imagens para você entrar.'}</p>
-        {!error && (
+        <p>{error || (waitingForData ? 'Consultando os dados desta área.' : 'Preparando os cenários e as imagens para você entrar.')}</p>
+        {!error && !waitingForData && done < total && (
           <p className="asset-loading__first-visit">
             <strong>Na primeira visita, o carregamento pode demorar mais.</strong>
             <br />
@@ -35,9 +37,9 @@ export function AssetLoading({
         )}
         {!error && (
           <>
-            <progress max={Math.max(1, total)} value={done} aria-label="Imagens preparadas" />
+            {!waitingForData && <progress max={Math.max(1, total)} value={done} aria-label="Imagens preparadas" />}
             <span className="asset-loading__count">
-              {total ? `${done} de ${total} imagens prontas` : 'Organizando a entrada…'}
+              {waitingForData ? 'Aguardando personagens e informações atualizadas…' : total ? `${done} de ${total} imagens prontas` : 'Organizando a entrada…'}
             </span>
           </>
         )}
@@ -53,13 +55,13 @@ export function AssetLoading({
 export function usePreparedAssets(paths: readonly string[]) {
   const key = JSON.stringify([...new Set(paths)]);
   const [attempt, setAttempt] = useState(0);
-  const [state, setState] = useState({
-    key: '',
-    ready: false,
-    done: 0,
+  const [state, setState] = useState(() => ({
+    key,
+    ready: paths.every(assetReady),
+    done: paths.filter(assetReady).length,
     total: paths.length,
     error: '',
-  });
+  }));
   useEffect(() => {
     let alive = true;
     const list: string[] = JSON.parse(key);
@@ -70,6 +72,7 @@ export function usePreparedAssets(paths: readonly string[]) {
       total: list.length,
       error: '',
     });
+    if (list.every(assetReady)) return;
     void preloadImages(list, (done, total) => {
       if (alive) setState({ key, ready: false, done, total, error: '' });
     })
@@ -155,6 +158,8 @@ export function AssetGate({
   const [visible, setVisible] = useState(false),
     [error, setError] = useState(''),
     [attempt, setAttempt] = useState(0);
+  const [scene, setScene] = useState<{ done: number; total: number; waiting: boolean } | null>(null);
+  const [showLoading, setShowLoading] = useState(false);
   useLayoutEffect(() => {
     if (opened.current) return;
     const node = root.current;
@@ -166,6 +171,7 @@ export function AssetGate({
       if (opened.current) return;
       const current = ++revision;
       const found = imagePaths(node);
+      const paths = [...new Set([...assets, ...found.urls].map((path) => new URL(path, location.href).href))];
       const pending =
         found.urls.some((path) => !assetReady(path)) ||
         found.images.some((image) => !image.complete || !image.naturalWidth);
@@ -175,21 +181,32 @@ export function AssetGate({
           const box = element.getBoundingClientRect();
           return box.width > 0 && box.height > 0;
         });
+      setScene({ done: paths.filter(assetReady).length, total: paths.length, waiting: busy || waiting });
       if (pending || busy || waiting || !prepared.ready) setVisible(false);
       if (busy || waiting || !prepared.ready) return;
+      const reveal = () => {
+        opened.current = true;
+        observer.disconnect();
+        window.removeEventListener('resize', check);
+        setVisible(true);
+      };
+      // Re-enter an already decoded scene before paint, without flashing a new loading screen.
+      if (!pending && document.fonts.status === 'loaded') {
+        reveal();
+        return;
+      }
       void Promise.all([
         document.fonts.ready,
-        preloadImages(found.urls),
+        preloadImages(paths, (done, total) => {
+          if (alive && revision === current) setScene({ done, total, waiting: false });
+        }),
         ...found.images.map((image) => image.decode()),
       ])
         .then(() => {
           if (alive && revision === current)
             frame = requestAnimationFrame(() => {
               if (alive && revision === current) {
-                opened.current = true;
-                observer.disconnect();
-                window.removeEventListener('resize', check);
-                setVisible(true);
+                reveal();
               }
             });
         })
@@ -199,7 +216,6 @@ export function AssetGate({
         });
     };
     setError('');
-    check();
     const urlsIn = (value: string | null) =>
       [...(value || '').matchAll(/url\([^)]+\)/g)].map((match) => match[0]).join('|');
     const observer = new MutationObserver((records) => {
@@ -221,6 +237,7 @@ export function AssetGate({
       attributeFilter: ['src', 'srcset', 'href', 'style', 'aria-busy', 'data-page-preparing'],
     });
     window.addEventListener('resize', check);
+    check();
     return () => {
       alive = false;
       observer.disconnect();
@@ -229,6 +246,14 @@ export function AssetGate({
     };
   }, [busy, prepared.ready, attempt]);
   const ready = opened.current || (prepared.ready && visible && !busy && !error);
+  useEffect(() => {
+    if (ready) {
+      setShowLoading(false);
+      return;
+    }
+    const timer = setTimeout(() => setShowLoading(true), 180);
+    return () => clearTimeout(timer);
+  }, [ready]);
   return (
     <>
       <div
@@ -240,11 +265,12 @@ export function AssetGate({
       >
         {children}
       </div>
-      {!ready && (
+      {!ready && (showLoading || prepared.error || error) && (
         <AssetLoading
           title={title}
-          done={prepared.done}
-          total={prepared.total}
+          done={scene?.done ?? prepared.done}
+          total={scene?.total ?? prepared.total}
+          waitingForData={scene?.waiting ?? busy}
           error={prepared.error || error}
           retry={() => {
             for (const image of root.current?.querySelectorAll('img') || [])

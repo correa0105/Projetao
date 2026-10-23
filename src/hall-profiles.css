@@ -551,7 +551,7 @@
   position: relative;
   background:
     linear-gradient(#070d1399, #090f1650 55%, #0d151ee0),
-    var(--profile-background, url('/character-camp-v2.png')) center/cover;
+    url('/character-camp-v2.png') center/cover;
   padding-bottom: 24px;
 }
 .public-camp-heading {
@@ -1430,7 +1430,7 @@
   padding: 180px clamp(24px, 5vw, 90px) 45px;
   background:
     linear-gradient(#050b1435, transparent 60%, #08101b85),
-    var(--profile-background, url('/character-camp-v2.png')) center top/cover;
+    url('/character-camp-v2.png') center top/cover;
 }
 .visiting .public-camp-stage {
   height: clamp(430px, calc(100dvh - 315px), 720px);

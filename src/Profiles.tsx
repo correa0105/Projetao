@@ -375,7 +375,6 @@ export function Profiles({ user }: { user: User }) {
         profile
           ? ({
               '--profile-accent': profile.document.accent,
-              '--profile-background': `url('${profile.document.background}')`,
             } as CSSProperties)
           : undefined
       }

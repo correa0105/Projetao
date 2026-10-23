@@ -521,10 +521,14 @@ export function characterArtRouter() {
   );
   router.get('/characters/:id/portrait', async (req, res) => {
     const { rows } = await pool.query(
-      'SELECT p.image FROM character_portraits p JOIN characters c ON c.id=p.character_id WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL',
+      'SELECT p.image,c.portrait_revision FROM character_portraits p JOIN characters c ON c.id=p.character_id WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL',
       [uuid.parse(req.params.id), res.locals.user.id],
     );
     if (!rows.length) throw new AppError(404, 'Imagem não encontrada.');
+    res.vary('Cookie');
+    res.setHeader('Cache-Control', req.query.v === String(rows[0].portrait_revision)
+      ? 'private, max-age=3600, immutable'
+      : 'private, no-cache');
     res.type('png').send(rows[0].image);
   });
   router.get('/characters/:id/token', async (req, res) => {

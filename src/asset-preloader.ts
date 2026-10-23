@@ -60,10 +60,10 @@ export async function preloadImages(
   progress?: (done: number, total: number) => void,
 ) {
   const unique = [...new Set(paths.filter(Boolean))];
-  let done = 0;
-  progress?.(0, unique.length);
+  let done = unique.filter(assetReady).length;
+  progress?.(done, unique.length);
   const results = await Promise.allSettled(
-    unique.map(async (path) => {
+    unique.filter((path) => !assetReady(path)).map(async (path) => {
       await preloadImage(path);
       progress?.(++done, unique.length);
     }),

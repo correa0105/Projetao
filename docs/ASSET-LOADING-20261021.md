@@ -48,3 +48,22 @@ acervo/dependências exigem imagem completa. Preservar volumes e a imagem anteri
 
 O teste de pins também atrasa uma imagem enviada no editor e confirma que o loading
 geral não reaparece. House mantém identificadores/API `house2`, com rótulo público House.
+## Correção de 23/10/2026
+
+O fundo escolhido pelo jogador fica somente no perfil do viajante. A visita ao
+acampamento usa sempre o cenário original da fogueira, inclusive sem personagens.
+O enquadramento do chão não depende da imagem personalizada do perfil.
+
+O progresso inclui retratos e demais imagens visíveis descobertas na área, além
+do cenário inicial. Espera por metadados mostra uma mensagem de consulta dos dados,
+sem uma barra de imagens completa sugerir que há um novo download. Conteúdo já
+preparado abre antes da pintura; esperas menores que 180 ms não piscam a tela geral.
+Os retratos autenticados do dono usam cache privado de uma hora quando `v` é a
+revisão atual, `Vary: Cookie` e bytes originais. Sem revisão ou com revisão antiga,
+o navegador revalida. Autorização e personagem excluído continuam conferidos no servidor.
+
+`scripts/smoke-camp-cache.ts` verifica downloads reais de retratos e animais ao
+navegar/recarregar, versões antigas, bytes, visitante anônimo, atualização de arte
+e separação entre fundo de perfil e acampamento em 1440/390 px. O smoke de
+carregamento mantém os casos de atraso, falha, nova tentativa e Empório separado.
+
