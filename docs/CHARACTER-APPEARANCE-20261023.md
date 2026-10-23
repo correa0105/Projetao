@@ -16,4 +16,4 @@ Validação: nove testes em PostgreSQL local descartável (`scripts/test-portal-
 
 Navegador (`--warforged`): criação completa, troca entre os modos, opções obrigatórias em todas as espécies, upload, retomada e vestir; QA visual em 1440/768/390/320 px, sem overflow ou erros de JavaScript. Capturas em `test-results/warforged-appearance/`.
 
-Publicação: pendente da etapa de release e verificação por HTTPS. Recarregar o ilustrador somente com ambas as filas ociosas.
+Publicação concluída: `physical-appearance-20261023`, código `895d0bfb7fa17933c803c1431a0fdbeaf7db5570`. Backup: `/opt/alvorada/backups/physical-appearance-before-20261023T174421Z.dump`. Os 45 arquivos do release e o bundle servido por HTTPS foram conferidos por hash, com os controles novos presentes. APIs de consulta, cache privado de retratos e três magias revisadas preservados. Verificação de produção somente por leitura; nenhuma geração real consumida. Ilustrador recarregado após confirmar zero jobs pendentes/em execução em ambas as filas.
