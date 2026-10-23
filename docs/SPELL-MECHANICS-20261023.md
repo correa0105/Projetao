@@ -24,3 +24,9 @@ Validação: TypeScript, builds, quatro testes de catálogo/integridade/traduç�
 consulta real do componente em 1440/390 px. Raio de Bruxa, Escudo Cacofônico e
 Tempestade de Fogo Mágico foram conferidos visualmente, inclusive texto longo,
 salvaguardas, dados, progressão, fonte, rolagem do diálogo e fechamento por Escape.
+
+Publicado em alvoradacinzenta.com como `spell-mechanics-20261023`, código
+`0bc1b671a0dbc42828a59643fe320b0d24d06575`. Os 72 retornos autenticados da API
+foram comparados com as descrições revisadas. HTTPS e cliente atualizado, cache
+privado dos retratos e ilustrador online foram conferidos após a publicação.
+Backup: `/opt/alvorada/backups/spell-mechanics-before-20261023T164152Z.dump`.
