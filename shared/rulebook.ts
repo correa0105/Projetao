@@ -350,13 +350,13 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
         {
           id: 'economia-moedas',
           title: 'Moedas e riqueza inicial',
-          summary: 'O ouro inicial é entregue uma vez ao concluir a ficha.',
+          summary: 'Cada personagem novo começa com 6.000 PO, até nova ordem.',
           tag: 'Economia',
           blocks: [
             {
               id: 'economia-moedas-texto',
               type: 'text',
-              text: '1 PO equivale a 10 PP ou 100 PC. Novos personagens recebem a riqueza das escolhas de equipamento da classe e do antecedente ao concluir a ficha, uma única vez. Conversões de fichas preservam o saldo e as compras existentes. Valores monetários são registrados em peças de cobre inteiras.',
+              text: '1 PO equivale a 10 PP ou 100 PC. Cada personagem novo recebe 6.000 PO uma única vez, até nova ordem, independente da conta, classe, antecedente ou conjunto de equipamento. O valor fixo substitui o ouro inicial de classe/antecedente e o bônus beta por conta. Conversões de fichas preservam o saldo e as compras existentes. Valores monetários são registrados em peças de cobre inteiras.',
             },
             {
               id: 'economia-moedas-tabela',

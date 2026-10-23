@@ -110,6 +110,7 @@ try {
   await page.goto(origin + '/#characters');
   await page.getByRole('button', { name: 'Criar personagem', exact: true }).click();
   const form = page.locator('.character-creation-form');
+  await expect(form).toContainText('Ouro inicial: 6.000 PO por personagem novo');
   await form.getByLabel('Nome do personagem').fill('Construído sem foto');
   for (const race of (await import('../shared/rules')).races) {
     await form.getByLabel('Espécie', { exact: true }).selectOption(race);

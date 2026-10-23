@@ -11,7 +11,9 @@ const database = 'alvorada_test_' + randomUUID().replaceAll('-', '');
 await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
-  const args = process.argv.includes('--appearance')
+  const args = process.argv.includes('--starting-gold')
+    ? ['--test', '--test-concurrency=1', 'tests/character-starting-gold.test.ts', 'tests/character-sheet.test.ts', 'tests/srd-2024.test.ts', 'tests/beta-accounts.test.ts', 'tests/open-beta-starting-gold.test.ts', 'tests/character-creation-recovery.test.ts', 'tests/warforged-without-reference.test.ts']
+    : process.argv.includes('--appearance')
     ? ['--test', '--test-concurrency=1', 'tests/character-appearance.test.ts', 'tests/facial-hair.test.ts', 'tests/warforged-appearance.test.ts', 'tests/warforged-illustrator.test.ts', 'tests/warforged-without-reference.test.ts', 'tests/character-creation-recovery.test.ts', 'tests/character-token-art.test.ts']
     : process.argv.includes('--token-preview')
     ? ['scripts/smoke-token-preview.ts']

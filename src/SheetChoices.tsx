@@ -341,7 +341,9 @@ export function SheetChoices({
                 }
               >
                 {f.options.map((v) => (
-                  <option key={v}>{v}</option>
+                  <option key={v} value={v}>
+                    {v === 'Ouro da classe' ? 'Sem conjunto da classe' : v === '50 PO' ? 'Sem conjunto do antecedente' : v}
+                  </option>
                 ))}
               </select>
             </label>
@@ -351,8 +353,8 @@ export function SheetChoices({
           {startingEquipment(cls, c).join(' · ') || 'Sem conjunto inicial de itens.'}
         </p>
         <p className="muted small">
-          Ouro inicial: {money(startingGold(cls, c))} PO. Creditado uma única vez ao concluir uma
-          ficha nova. Conversões preservam o saldo existente.
+          Ouro inicial: {money(startingGold(cls, c))} PO por personagem novo, até nova ordem.
+          As escolhas de equipamento não aumentam esse valor. O crédito acontece uma única vez.
         </p>
       </details>
       {!!k.cantrips && (

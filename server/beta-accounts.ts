@@ -1,5 +1,5 @@
 import type {PoolClient} from 'pg';
-/** Called inside character creation's transaction and user lock; one grant per beta account. */
+/** Historical beta grant only. New creation/finalization use grantCharacterStartingGold. */
 export async function grantBetaStartingGold(db:PoolClient,userId:string,characterId:string){
  const {rows:[grant]}=await db.query('UPDATE beta_accounts SET granted_at=now(),granted_character_id=$2 WHERE user_id=$1 AND granted_at IS NULL RETURNING initial_gold_cp',[userId,characterId]);
  if(!grant)return false;

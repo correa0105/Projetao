@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import {spellReference} from './spell-reference.js';
-import { grantBetaStartingGold } from './beta-accounts.js';
+import { grantCharacterStartingGold } from './character-starting-gold.js';
 import { rollCharacterAbilities } from './ability-rolls.js';
 import { ABILITY_ROLL_MIN_SCORE, abilityRollResult } from '../shared/ability-rolls.js';
 import type { PoolClient } from 'pg';
@@ -24,7 +24,6 @@ import {
   validateChoices,
   deriveSheet,
   racialBonuses,
-  startingGold,
   validateRestChoices,
   classRules,
   spellOptions,
@@ -437,12 +436,7 @@ export function characterSheetRouter() {
           abilityRollResult(sheet.rolls![roll], sheet.ability_roll_floor ?? 0) + bonuses[i],
       );
       const d = deriveSheet({ ...c, stats }, finalChoices);
-      const betaGold = await grantBetaStartingGold(client, user, id);
-      if (!betaGold && !c.starting_wealth_granted)
-        await client.query(
-          'UPDATE characters SET gold_cp=gold_cp+$2,starting_wealth_granted=true WHERE id=$1',
-          [id, startingGold(c.class, finalChoices)],
-        );
+      await grantCharacterStartingGold(client, user, id);
       await client.query(
         'UPDATE characters SET stats=$3,hp=$4,armor_class=$5 WHERE id=$1 AND user_id=$2',
         [id, user, JSON.stringify(stats), d.hp, d.armorClass],

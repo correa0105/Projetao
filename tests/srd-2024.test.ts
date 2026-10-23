@@ -98,11 +98,11 @@ test('SRD 5.2.1: cálculos, magias e restrições revisadas', () => {
   assert.ok(!spellOptions('Bruxo', 1).some((s) => s.id === 'burning-hands'));
   assert.ok(spellOptions('Bruxo', 1).some((s) => s.id === 'hex'));
   assert.ok(spellOptions('Feiticeiro', 0).some((s) => s.id === 'sorcerous-burst'));
-  assert.equal(startingGold('Guerreiro', defaultChoices('Orc', 'Guerreiro')), 1200);
+  assert.equal(startingGold('Guerreiro', defaultChoices('Orc', 'Guerreiro')), 600000);
   const c = defaultChoices('Orc', 'Guerreiro');
   c.equipment.package = ['Ouro da classe'];
   c.equipment.background = ['50 PO'];
-  assert.equal(startingGold('Guerreiro', c), 20500);
+  assert.equal(startingGold('Guerreiro', c), 600000);
   assert.throws(() => validateChoices('Orc', 'Guerreiro', { ...c, version: 1 }));
   const legacy = { ...c, options: { ...c.options } };
   delete legacy.originRules;

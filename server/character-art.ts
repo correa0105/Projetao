@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { grantBetaStartingGold } from './beta-accounts.js';
+import { grantCharacterStartingGold } from './character-starting-gold.js';
 import type { CharacterArtPair } from './character-token-illustrator.js';
 import { normalizeCharacterToken, syncCharacterTokenArt } from './character-token-art.js';
 import {
@@ -322,7 +322,6 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
         ],
       );
       characterId = character.id;
-      await grantBetaStartingGold(client, job.user_id, character.id);
       if (data.choices) {
         await client.query('INSERT INTO character_sheets(character_id,choices) VALUES($1,$2)', [
           characterId,
@@ -334,6 +333,7 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
         [characterId],
       );
     }
+    if (job.creation) await grantCharacterStartingGold(client, job.user_id, characterId);
     await client.query(
       'INSERT INTO character_portraits(character_id,image,construction_base) VALUES($1,$2,$3) ON CONFLICT(character_id) DO UPDATE SET image=$2,construction_base=COALESCE(character_portraits.construction_base,$3),updated_at=now()',
       [characterId, image, job.reference_mode === 'construction' && job.creation ? image : null],

@@ -257,7 +257,7 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
     assert.ok(confirmations.every((r) => r.status === 200));
     assert.equal(
       (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [fresh.id])).rows[0].gold_cp,
-      1200,
+      600000,
     );
     await pool.query('UPDATE characters SET deleted_at=now() WHERE id=$1', [character.id]);
     assert.equal((await req(path, alice.cookie)).status, 404);

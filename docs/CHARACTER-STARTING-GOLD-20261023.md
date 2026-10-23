@@ -1,0 +1,13 @@
+# Ouro inicial por personagem — 23/10/2026
+
+Decisão do proprietário: **cada personagem novo começa com 6.000 PO, até nova ordem**. A regra não tem vencimento automático e vale também para novas fichas de contas antigas e para o segundo personagem da mesma conta. O limite de personagens da conta continua igual.
+
+`shared/character-starting-gold.ts` concentra o valor em 600.000 PC. Ele substitui o ouro de classe/antecedente e o antigo bônus beta por conta; não há soma desses valores nem dinheiro extra ao abrir mão de um conjunto de equipamento. Os itens dos conjuntos continuam disponíveis. A interface mantém os valores serializados antigos das opções, mas apresenta as alternativas sem itens como “Sem conjunto da classe” e “Sem conjunto do antecedente”.
+
+`grantCharacterStartingGold` credita uma única vez por ficha com UPDATE condicional em `starting_wealth_granted`, dentro da transação de criação/finalização e com conferência do dono. O crédito acontece assim que o primeiro retrato aprovado cria a ficha, inclusive se o token ficar pendente. A finalização cobre fichas ainda sem crédito; retomar, repetir, concorrer, vestir ou gerar arte novamente não repõe dinheiro gasto. Fichas com riqueza inicial já concedida conservam o saldo.
+
+Uma reserva beta antiga ainda não utilizada é encerrada na mesma transação, registrando os 6.000 PO efetivamente concedidos e a primeira ficha beneficiada. Isso evita um segundo pagamento se uma versão anterior da API finalizar uma criação durante a atualização do ilustrador. Concessões beta já registradas mantêm valor, data e personagem. Nenhuma atualização em massa de saldos, redefinição de históricos ou migration é necessária.
+
+Validação em PostgreSQL local descartável: 12 testes passaram, cobrindo todas as classes/antecedentes/conjuntos, contas comuns e beta, segundo personagem, exclusão seguida de nova criação, retomada parcial, concorrência, idempotência, preservação de gasto/saldo anterior e titularidade. TypeScript, builds de cliente/servidor e navegador real passaram; o formulário mostra “Ouro inicial: 6.000 PO por personagem novo” e mantém as escolhas de aparência em 1440/768/390/320 px. Sem contas de teste, crédito ou geração paga em produção.
+
+Publicação preparada junto com barba/bigode, que ficaram pendentes durante a manutenção da Hostinger. Registrar abaixo a imagem, código e backup somente após ativação e verificação.

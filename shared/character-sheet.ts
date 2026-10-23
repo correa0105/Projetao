@@ -12,6 +12,7 @@ import { tieflingHornIds } from './tiefling-horns.js';
 import { warforgedAppearanceSchema, defaultWarforgedAppearance } from './warforged-appearance.js';
 import { physicalTraitsSchema, warforgedBodySchema } from './character-appearance.js';
 import { facialHairSchema, supportsFacialHair } from './facial-hair.js';
+import { CHARACTER_STARTING_GOLD_CP } from './character-starting-gold.js';
 export const RULESET = 'D&D 2024 · Livro do Jogador e suplementos';
 export const { skills, skillAbilities, alignments } = base;
 export const languages = [
@@ -1002,15 +1003,8 @@ export function equipmentFields(cls: string): ChoiceField[] {
     },
   ];
 }
-export function startingGold(cls: string, c: SheetChoices) {
-  const l = loadouts[cls],
-    v = c.equipment.package?.[0],
-    i = Number(v?.split(' ')[1]) - 1;
-  return (
-    ((v === 'Ouro da classe' ? l.cash : l.gold[i] || 0) +
-      (c.equipment.background?.[0] === '50 PO' ? 50 : backgroundRules[c.backgroundType].gold)) *
-    100
-  );
+export function startingGold(_cls: string, _c: SheetChoices) {
+  return CHARACTER_STARTING_GOLD_CP;
 }
 export function startingEquipment(cls: string, c: SheetChoices) {
   const i = Number(c.equipment.package?.[0]?.split(' ')[1]) - 1;

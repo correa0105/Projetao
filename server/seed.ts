@@ -216,7 +216,7 @@ export async function seed() {
         'rules',
         'Ouro, mochila e boas escolhas',
         'Regras de teste da guilda',
-        'Novos personagens recebem o ouro da combinação de equipamento de classe e antecedente ao concluir a ficha, uma única vez. 1 PO = 10 PP = 100 PC. Conversões de fichas preservam o saldo existente. Itens iniciais são registros da ficha; compras ficam no inventário. Equipar, vender, consumir e resolver efeitos permanecem na mesa.',
+        'Cada personagem novo recebe 6.000 PO uma única vez, até nova ordem, independente da conta, classe, antecedente ou conjunto de equipamento. Esse valor substitui o ouro inicial de classe/antecedente e o bônus beta por conta. 1 PO = 10 PP = 100 PC. Conversões de fichas preservam o saldo existente. Itens iniciais são registros da ficha; compras ficam no inventário. Equipar, vender, consumir e resolver efeitos permanecem na mesa.',
         'Economia',
       ],
       [
