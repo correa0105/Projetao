@@ -66,7 +66,7 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
       const review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
       const images=args.flatMap((v,i)=>v==='--image'?[args[i+1]]:[]);
       if(images.length>5||images.some(p=>!fs.existsSync(p)))process.exit(1);
-      if(review){state.reviews.push(prompt);fs.writeFileSync(result,JSON.stringify({approved:true,clothing_correct:state.omitClothing?undefined:(state.acceptClothing||(state.reviews.length>1&&!state.rejectClothing)),physical_traits_correct:state.omitPhysical?undefined:!state.rejectPhysical,selected_head_correct:state.omitHead?undefined:!state.rejectHead,appendages_correct:true,issues:[]}));}
+      if(review){state.reviews.push(prompt);fs.writeFileSync(result,JSON.stringify({approved:true,clothing_correct:state.omitClothing?undefined:(state.acceptClothing||(state.reviews.length>1&&!state.rejectClothing)),facial_hair_correct:state.omitFacialHair?undefined:!state.rejectFacialHair,physical_traits_correct:state.omitPhysical?undefined:!state.rejectPhysical,selected_head_correct:state.omitHead?undefined:!state.rejectHead,appendages_correct:true,issues:[]}));}
       else {state.renders.push({prompt,images,hashes:images.map(p=>require('node:crypto').createHash('sha256').update(fs.readFileSync(p)).digest('hex'))});const output=path.join(args[args.indexOf('--cd')+1],'output.png');fs.copyFileSync(${JSON.stringify(fixture)},output);fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));}
       fs.writeFileSync(${JSON.stringify(capture)},JSON.stringify(state));
     });
@@ -178,6 +178,20 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
     for (const flags of [{ rejectPhysical: true }, { omitPhysical: true }]) {
       await writeFile(capture, JSON.stringify({ renders: [], reviews: [], acceptClothing: true, ...flags }));
       await assert.rejects(() => generateCharacterArt({ id: randomUUID(), race: 'Warforged', class: 'Guerreiro', reference: image, reference_mode: 'reference', choices: physicalChoices }), /verificação|conferir a composição/);
+    }
+    const facialChoices = { ...defaultChoices('Tiefling', 'Guerreiro'), physicalTraits: { gender: 'male' as const, age: 'elder' as const, height: 'average' as const, build: 'average' as const }, facialHair: { beard: 'braided' as const, mustache: 'none' as const, color: 'black' as const, graying: true } };
+    await writeFile(capture, JSON.stringify({ renders: [], reviews: [], acceptClothing: true }));
+    await generateCharacterArt({ id: randomUUID(), race: 'Tiefling', class: 'Guerreiro', reference: image, choices: facialChoices });
+    const facial = JSON.parse(await readFile(capture, 'utf8'));
+    assert.equal(facial.renders[0].images.length, 4);
+    assert.match(facial.renders[0].images.at(-2), /selected-facial-hair/);
+    assert.match(facial.renders[0].images.at(-1), /tiefling-horns/);
+    assert.match(facial.renders[0].prompt, /Bigode Sem bigode/);
+    assert.match(facial.renders[0].prompt, /Adicionar fios grisalhos/);
+    assert.match(facial.reviews[0], /facial_hair_correct/);
+    for (const flags of [{ rejectFacialHair: true }, { omitFacialHair: true }]) {
+      await writeFile(capture, JSON.stringify({ renders: [], reviews: [], acceptClothing: true, ...flags }));
+      await assert.rejects(() => generateCharacterArt({ id: randomUUID(), race: 'Tiefling', class: 'Guerreiro', reference: image, choices: facialChoices }), /verificação|conferir a composição/);
     }
     await writeFile(capture, JSON.stringify({ renders: [], reviews: [], rejectClothing: true }));
     await assert.rejects(

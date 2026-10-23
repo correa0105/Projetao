@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-23",
+  "generationMode": "built-in image_gen",
+  "artifacts": [
+    {
+      "kind": "beard",
+      "path": "public/character-creation/beards-20261023.png",
+      "sourceFile": "exec-e27025fc-2a26-488d-b3fe-65b5520dbc7e.png",
+      "width": 1536,
+      "height": 1024,
+      "columns": 3,
+      "rows": 2,
+      "sha256": "7e9c79b0d0adfa979cd293a69f8c6c4477913bede0fca0f6d6675889735c9afd",
+      "prompt": "Use case: stylized-concept. Asset type: a production fantasy RPG character creation selector atlas, one single flat rectangular sprite sheet, EXACT 3 columns by 2 rows of SIX equal square cells, ideally 1536x1024 px. All cells have the same muted warm dark gray plain background, generous internal padding. No text, no labels, no numbers, no borders, no extra inset images. Style: highly readable semi-realistic hand-painted medieval fantasy concept art, restrained brown/gold palette, soft even front lighting. Each cell shows the SAME front-facing bald adult masculine display mannequin bust with neutral warm stone-gray skin, neutral expression, same face, same face size and position, cropped to upper chest. Head/face fully inside its cell. Only facial hair changes. All beard hair is dark brown. Crucial: ALL SIX mannequins have a COMPLETELY SHAVED upper lip: NO moustache in ANY cell. Do not add metal clasps, beads or jewelry. EXACT row-major ordering: top left 1 clean-shaven NO beard and NO moustache; top middle 2 light uniform short stubble on jaw cheeks chin, shaved upper lip; top right 3 short neatly trimmed full jaw/cheeks beard about 2cm, shaved upper lip; bottom left 4 dense full medium rounded beard about 8cm extending under chin, no moustache; bottom middle 5 pointed goatee on CHIN ONLY, bare cheeks and bare upper lip; bottom right 6 long full beard ending in ONE plain hair braid hanging onto upper chest, bare upper lip. Clearly distinguish these six beard silhouettes. This atlas will be sliced by grid cells in code, so exact regular grid, identical background, no shape may cross between cells. Facial hair is the subject, not a portrait or decorative poster."
+    },
+    {
+      "kind": "mustache",
+      "path": "public/character-creation/mustaches-20261023.png",
+      "sourceFile": "exec-3c96a645-2056-4a7f-950d-ad6afda52666.png",
+      "width": 1774,
+      "height": 887,
+      "columns": 4,
+      "rows": 2,
+      "sha256": "14f10b89e9d8a35d281ea6f2f2bc0062f11699f615c09b581d18d1abfe5369c7",
+      "prompt": "Use case: stylized-concept. Asset type: production fantasy RPG character creation selector atlas, one flat rectangular sprite sheet, EXACT 4 columns by 2 rows of EIGHT equal cells, ideally 2048x1024 px, first SEVEN contain moustache designs, bottom right eighth completely empty background. No text, labels, numbers, borders, framing or extra inset images. Uniform muted warm dark gray plain background. Style: highly readable semi-realistic hand-painted medieval fantasy concept art, soft even front lighting. In each of the first seven cells show the SAME front-facing bald adult masculine display mannequin face with neutral warm stone-gray skin, neutral expression, identical face size/position, visible head and neck, generous internal padding, looking straight ahead. Every jaw, cheek and chin completely CLEAN SHAVEN: NO beard, no goatee, no stubble, no sideburns. Only upper lip moustache changes. Moustache hair dark brown. EXACT row-major order: top left 1 NO moustache clean-shaven upper lip; top second 2 FINE PENCIL moustache, thin narrow horizontal strip above upper lip, short and precise; top third 3 CHEVRON moustache, thick full natural inverted V covering upper lip, ends short near lip corners; top fourth 4 HANDLEBAR moustache, medium thick center and two narrow long ends CURLED UP in distinct loops, no beard. Bottom left 5 WALRUS moustache, extremely thick wide hanging hair draping down over upper lip with ends drooping, no hair on chin/jaw; bottom second 6 HORSESHOE moustache with two long vertical strips descending from mouth corners to sides of chin, EMPTY bare central chin and bare jaw; bottom third 7 ENGLISH moustache parted in center, narrow straight slender pointed ends extending widely HORIZONTALLY to both sides, no curl and no droop. Bottom fourth cell 8 completely EMPTY dark gray background. Designs must be distinct, consistent scale, entirely contained in each equal grid cell. This atlas is a usable sprite sheet, not a decorative poster."
+    }
+  ]
+}

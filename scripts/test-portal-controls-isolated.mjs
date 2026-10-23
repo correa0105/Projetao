@@ -12,7 +12,7 @@ await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
   const args = process.argv.includes('--appearance')
-    ? ['--test', '--test-concurrency=1', 'tests/character-appearance.test.ts', 'tests/warforged-appearance.test.ts', 'tests/warforged-illustrator.test.ts', 'tests/warforged-without-reference.test.ts', 'tests/character-creation-recovery.test.ts', 'tests/character-token-art.test.ts']
+    ? ['--test', '--test-concurrency=1', 'tests/character-appearance.test.ts', 'tests/facial-hair.test.ts', 'tests/warforged-appearance.test.ts', 'tests/warforged-illustrator.test.ts', 'tests/warforged-without-reference.test.ts', 'tests/character-creation-recovery.test.ts', 'tests/character-token-art.test.ts']
     : process.argv.includes('--token-preview')
     ? ['scripts/smoke-token-preview.ts']
     : process.argv.includes('--warforged-reference-api')

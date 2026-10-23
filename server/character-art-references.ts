@@ -6,11 +6,13 @@ export function characterArtReferences(input: {
   equipmentPaths: string[];
   sheetPath: string;
   hornReference?: string;
+  facialHairReference?: string;
   warforgedReferences: string[];
 }) {
   const subject = input.companion ? [] : [input.style];
   if (input.reference) subject.push(input.reference);
   const details = [
+    ...(input.facialHairReference ? [input.facialHairReference] : []),
     ...(input.hornReference ? [input.hornReference] : []),
     ...input.warforgedReferences,
   ];

@@ -30,6 +30,8 @@ import { eberronSpecies, EBERRON_SOURCE } from '../shared/eberron-species';
 import { TieflingHorns } from './TieflingHorns';
 import { WarforgedAppearance, WarforgedBodyChoices } from './WarforgedAppearance';
 import { CharacterAppearance } from './CharacterAppearance';
+import { FacialHairChoices } from './FacialHairChoices';
+import { supportsFacialHair } from '../shared/facial-hair';
 import { warforgedArtMode } from '../shared/warforged-appearance';
 export function ChoiceList({
   label,
@@ -230,6 +232,9 @@ export function SheetChoices({
       )}
       {race === 'Warforged' && warforgedModeControl}
       <CharacterAppearance required={requireAppearance} value={c.physicalTraits} onChange={physicalTraits => update({ physicalTraits })} />
+      {supportsFacialHair(race, c.physicalTraits?.gender) && (
+        <FacialHairChoices value={c.facialHair} onChange={facialHair => update({ facialHair })} />
+      )}
       {race === 'Warforged' && warforgedArtMode(c) === 'reference' && (
         <section className="warforged-appearance" aria-label="Corpo do Warforged com referência">
           <h3>Corpo do Warforged</h3>

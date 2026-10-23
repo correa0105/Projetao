@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { warforgedBodies } from './warforged-appearance.js';
+import { facialHairArtInstructions, type FacialHair } from './facial-hair.js';
 
 export const characterGenders = [
   {
@@ -116,6 +117,7 @@ export const warforgedBodySchema = z.enum([
 ]);
 export type AppearanceChoices = {
   physicalTraits?: Partial<PhysicalTraits>;
+  facialHair?: FacialHair;
   warforgedBody?: z.infer<typeof warforgedBodySchema>;
 };
 
@@ -138,9 +140,10 @@ export function validateCreationAppearance(
 }
 
 export function characterAppearanceInstructions(race: string, choices?: AppearanceChoices | null) {
+  const hairInstructions = facialHairArtInstructions(race, choices);
   const traits = physicalTraitsSchema.safeParse(choices?.physicalTraits);
   const body = race === 'Warforged' && warforgedBodies.find((b) => b.id === choices?.warforgedBody);
-  if (!traits.success && !body) return '';
+  if (!traits.success && !body && !hairInstructions) return '';
   return `PERSONALIZAÇÃO FÍSICA ESCOLHIDA PELO JOGADOR (${race}). ${
     traits.success
       ? [
@@ -152,5 +155,5 @@ export function characterAppearanceInstructions(race: string, choices?: Appearan
           .filter(Boolean)
           .join(' ')
       : ''
-  } ${body ? `Estrutura do Warforged: ${body.name}. ${body.instruction} A estrutura define a distribuição e as proporções das placas e articulações; o porte físico define os volumes dentro dessa estrutura. Rosto, cabeça, materiais, cores e detalhes continuam seguindo a referência do jogador; não copiar a cabeça ou a paleta do manequim do corpo.` : ''} ${race === 'Warforged' && traits.success ? 'A idade aparente e a aparência masculina ou feminina do constructo são expressas pelo desenho das formas, proporções e marcas de uso coerentes com a faixa etária escolhida e compatíveis com os materiais; não criar pele humana, barba, ferrugem ou mudar o acabamento escolhido automaticamente.' : ''} Essas escolhas, incluindo homem ou mulher quando informado, prevalecem sobre a aparência genérica da raça, da classe ou das imagens. Preserve a identidade, cabelo, rosto, cores e marcas compatíveis da referência, adaptando somente as características escolhidas. Altura é relativa à própria raça: um halfling alto continua halfling, não um humano esticado. Preserve a anatomia racial, a categoria de tamanho da ficha e o equipamento; não conceder bônus ou penalidades. Não sexualizar o personagem nem substituir seu porte físico por estereótipos de gênero. Mantenha essas características no retrato, ao vestir, nas correções e no token, respeitando o encurtamento e a oclusão da câmera superior. Não exigir medidas absolutas ou características ocultas.`;
+  } ${body ? `Estrutura do Warforged: ${body.name}. ${body.instruction} A estrutura define a distribuição e as proporções das placas e articulações; o porte físico define os volumes dentro dessa estrutura. Rosto, cabeça, materiais, cores e detalhes continuam seguindo a referência do jogador; não copiar a cabeça ou a paleta do manequim do corpo.` : ''} ${race === 'Warforged' && traits.success ? 'A idade aparente e a aparência masculina ou feminina do constructo são expressas pelo desenho das formas, proporções e marcas de uso coerentes com a faixa etária escolhida e compatíveis com os materiais; não criar pele humana, barba, ferrugem ou mudar o acabamento escolhido automaticamente.' : ''} Essas escolhas, incluindo homem ou mulher quando informado, prevalecem sobre a aparência genérica da raça, da classe ou das imagens. Preserve a identidade, cabelo, rosto, cores e marcas compatíveis da referência, adaptando somente as características escolhidas. Altura é relativa à própria raça: um halfling alto continua halfling, não um humano esticado. Preserve a anatomia racial, a categoria de tamanho da ficha e o equipamento; não conceder bônus ou penalidades. Não sexualizar o personagem nem substituir seu porte físico por estereótipos de gênero. Mantenha essas características no retrato, ao vestir, nas correções e no token, respeitando o encurtamento e a oclusão da câmera superior. Não exigir medidas absolutas ou características ocultas. ${hairInstructions}`;
 }

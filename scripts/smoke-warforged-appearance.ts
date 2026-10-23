@@ -257,6 +257,65 @@ try {
     .click();
   await expect(outfit.locator('input[type=file]')).toHaveCount(1);
   await expect(outfit.getByRole('button', { name: 'Vestir', exact: true })).toBeDisabled();
+  await outfit.getByRole('button', { name: 'Fechar', exact: true }).click();
+  await pool.query('UPDATE character_art_worker SET available=true,heartbeat_at=now() WHERE id=true');
+  await page.goto(origin + '/#characters'); await page.reload();
+  await page.getByRole('button', { name: 'Criar personagem', exact: true }).click();
+  await form.getByLabel('Nome do personagem').fill('Barba e bigode QA');
+  const facial = form.getByRole('region', { name: 'Barba e bigode', exact: true });
+  await expect(facial).toHaveCount(0);
+  await form.getByRole('combobox', { name: 'Gênero do personagem', exact: true }).selectOption('male');
+  for (const race of (await import('../shared/rules')).races) {
+    await form.getByLabel('Espécie', { exact: true }).selectOption(race);
+    await expect(facial).toHaveCount(race === 'Warforged' ? 0 : 1);
+    if (race !== 'Warforged') {
+      await expect(facial.getByRole('group', { name: 'Modelo de barba', exact: true }).getByRole('radio')).toHaveCount(6);
+      await expect(facial.getByRole('group', { name: 'Modelo de bigode', exact: true }).getByRole('radio')).toHaveCount(7);
+    }
+  }
+  await form.getByLabel('Espécie', { exact: true }).selectOption('Humano');
+  await facial.getByRole('radio', { name: /Longa trançada/ }).check();
+  await facial.getByRole('radio', { name: /Pontas curvadas/ }).check();
+  await form.getByRole('combobox', { name: 'Gênero do personagem', exact: true }).selectOption('female');
+  await expect(facial).toHaveCount(0);
+  await form.getByRole('combobox', { name: 'Gênero do personagem', exact: true }).selectOption('male');
+  await expect(facial.locator('input:checked')).toHaveCount(1); // Only the illustrative default color; no saved models.
+  await facial.getByRole('radio', { name: /Sem barba/ }).check();
+  await expect(facial.getByRole('radio', { name: 'Preto', exact: true })).toBeDisabled();
+  await facial.getByRole('radio', { name: /^Cheio / }).check();
+  await expect(facial.getByRole('radio', { name: 'Preto', exact: true })).toBeEnabled();
+  await facial.getByRole('radio', { name: /Longa trançada/ }).check();
+  await facial.getByRole('radio', { name: /Pontas curvadas/ }).check();
+  for (const color of ['Marrom', 'Preto', 'Branco', 'Loiro', 'Preto']) await facial.getByRole('radio', { name: color, exact: true }).check();
+  await facial.getByLabel('Adicionar fios grisalhos', { exact: true }).check();
+  await expect(facial.getByRole('radio', { name: 'Preto', exact: true })).toBeChecked();
+  for (const width of [1440, 768, 390, 320]) {
+    await page.setViewportSize({ width, height: 950 });
+    for (const [group, file] of [['Modelo de barba', 'beards'], ['Modelo de bigode', 'mustaches']] as const) {
+      await facial.getByRole('group', { name: group, exact: true }).scrollIntoViewIfNeeded();
+      await page.screenshot({ path: `test-results/warforged-appearance/${file}-${width}.png` });
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    for (const label of await facial.locator('.facial-hair-options > label').all()) { const box = await label.boundingBox(); expect(box!.x).toBeGreaterThanOrEqual(0); expect(box!.x + box!.width).toBeLessThanOrEqual(width); }
+  }
+  await form.getByRole('combobox', { name: 'Altura', exact: true }).selectOption('average');
+  await form.getByRole('combobox', { name: 'Porte físico', exact: true }).selectOption('average');
+  await form.getByRole('combobox', { name: 'Idade aparente', exact: true }).selectOption('elder');
+  await form.locator('input[type=file]').setInputFiles({ name: 'referencia.png', mimeType: 'image/png', buffer: await testArtImage() });
+  await pool.query('UPDATE character_art_worker SET available=true,heartbeat_at=now() WHERE id=true');
+  const facialResponsePromise = page.waitForResponse(r => r.url().endsWith('/character-art') && r.request().method() === 'POST');
+  await submit.click(); const facialResponse = await facialResponsePromise; expect(facialResponse.status()).toBe(202);
+  const facialJob = await facialResponse.json();
+  const savedFacial = (await pool.query('SELECT creation FROM character_art_jobs WHERE id=$1', [facialJob.id])).rows[0].creation.choices.facialHair;
+  expect(savedFacial).toEqual({ beard: 'braided', mustache: 'handlebar', color: 'black', graying: true });
+  await pool.query("UPDATE character_art_jobs SET status='failed',error='Falha simulada' WHERE id=$1", [facialJob.id]);
+  await page.reload();
+  await page.getByRole('button', { name: /Criações salvas/ }).click();
+  await page.getByRole('region', { name: 'Criação salva de Barba e bigode QA', exact: true }).getByRole('button', { name: 'Retomar preenchimento', exact: true }).click();
+  await expect(facial.getByRole('radio', { name: /Longa trançada/ })).toBeChecked();
+  await expect(facial.getByRole('radio', { name: /Pontas curvadas/ })).toBeChecked();
+  await expect(facial.getByRole('radio', { name: 'Preto', exact: true })).toBeChecked();
+  await expect(facial.getByLabel('Adicionar fios grisalhos', { exact: true })).toBeChecked();
   expect(errors).toEqual([]);
   console.log(
     'PASS: construção e retomada sem referência, upload opcional, escolhas persistidas e layout em quatro larguras.',

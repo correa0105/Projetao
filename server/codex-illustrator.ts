@@ -9,6 +9,8 @@ import { races, classes } from '../shared/rules.js';
 import { raceRules, validateChoices } from '../shared/character-sheet.js';
 import { characterHeightScale, characterArtAnatomy } from '../shared/character-stature.js';
 import { characterAppearanceInstructions } from '../shared/character-appearance.js';
+import { facialHairArtInstructions } from '../shared/facial-hair.js';
+import { prepareFacialHairReference } from './facial-hair-references.js';
 import { type ArtEquipment, type HelmetMode } from '../shared/equipment.js';
 import { BARDING_PARTS } from '../shared/companion-equipment.js';
 import { describeArtEquipment } from './equipment-art.js';
@@ -149,6 +151,8 @@ export async function reviewComposition(
   warforgedInstructions = '',
   warforgedReferences: string[] = [],
   physicalInstructions = '',
+  facialHairReference?: string,
+  facialHairInstructions = '',
 ) {
   const schema = join(directory, 'review-schema.json'),
     result = join(directory, 'review.json');
@@ -163,6 +167,7 @@ export async function reviewComposition(
         clothing_correct: { type: 'boolean' },
         ...(warforgedInstructions ? { selected_head_correct: { type: 'boolean' } } : {}),
         ...(physicalInstructions ? { physical_traits_correct: { type: 'boolean' } } : {}),
+        ...(facialHairInstructions ? { facial_hair_correct: { type: 'boolean' } } : {}),
         issues: { type: 'array', items: { type: 'string' } },
       },
       required: [
@@ -172,6 +177,7 @@ export async function reviewComposition(
         'issues',
         ...(warforgedInstructions ? ['selected_head_correct'] : []),
         ...(physicalInstructions ? ['physical_traits_correct'] : []),
+        ...(facialHairInstructions ? ['facial_hair_correct'] : []),
       ],
       additionalProperties: false,
     }),
@@ -191,6 +197,7 @@ export async function reviewComposition(
       '--image',
       image,
       ...(baseReference ? ['--image', baseReference] : []),
+      ...(facialHairReference ? ['--image', facialHairReference] : []),
       ...(horns ? ['--image', horns.reference] : []),
       ...warforgedReferences.flatMap((path) => ['--image', path]),
       '--output-schema',
@@ -206,6 +213,7 @@ export async function reviewComposition(
     ${baseReference && !companion ? 'Imagem 2 é a identidade montada BASE aprovada. Compare rosto, estrutura e proporções do corpo; só roupas e equipamentos podem mudar, salvo corrigir cabeça divergente para o modelo escolhido na última imagem. Confira metal, acabamento e detalhes pela paleta validada abaixo; reprove clarear metal escurecido, apagar ferrugem ou recolorir o corpo com a cor das roupas.' : ''}
     ${ART_ANATOMY_RULES} Registre appendages_correct=false se houver defeito anatômico visível e descreva-o em issues. Se não houver apêndices incomuns, confira a anatomia normal antes de marcar true.
     ${physicalInstructions} ${physicalInstructions ? 'Confira a escolha de homem ou mulher quando informada, altura relativa à raça, porte físico, idade aparente e estrutura escolhida nas partes visíveis. Registre physical_traits_correct=false se a arte contrariar essas escolhas. Não exigir medidas absolutas ou características ocultas.' : ''}
+    ${facialHairInstructions ? 'PRANCHA DE BARBA E BIGODE: painel esquerdo define só a barba; painel direito define só o bigode. Ignore o manequim e as cores demonstrativas. Julgue facial_hair_correct separadamente: false se formato, ausência escolhida, cor base ou mistura de grisalho estiverem errados nas partes expostas. Não copiar o bigode do painel da barba, nem a barba do painel do bigode. Não exigir pelos ocultos por elmo ou pose. ' + facialHairInstructions : ''}
     ${companion ? '' : ART_CLOTHING_RULES}
     Julgue clothing_correct separadamente: false para roupa interpenetrada, calça encurtada, barra assimétrica ou rasgada expondo canela, mangas ou punhos sem ligação física, mesmo que anatomia e estilo estejam corretos. Inspecione separadamente o comprimento e a continuidade do tecido em CADA perna. Nunca aprovar com clothing_correct=false.
     ${horns ? `A última imagem é somente o formato dos chifres escolhido pelo jogador, nunca o rosto/corpo. Formato obrigatório: ${horns.instruction} Reprove um formato diferente; respeite perspectiva e oclusão natural por cabelo/equipamento.` : ''}
@@ -231,9 +239,14 @@ export async function reviewComposition(
         clothing_correct: z.boolean(),
         selected_head_correct: warforgedInstructions ? z.boolean() : z.boolean().optional(),
         physical_traits_correct: physicalInstructions ? z.boolean() : z.boolean().optional(),
+        facial_hair_correct: facialHairInstructions ? z.boolean() : z.boolean().optional(),
         issues: z.array(z.string().max(600)).max(12),
       })
       .parse(JSON.parse(await readFile(result, 'utf8')));
+    if (review.facial_hair_correct === false) {
+      review.approved = false;
+      review.issues.push('Corrigir os modelos independentes de barba e bigode, incluindo Sem barba/Sem bigode, a cor base e a opção de fios grisalhos nas partes visíveis, sem alterar a identidade ou o equipamento.');
+    }
     if (review.physical_traits_correct === false) {
       review.approved = false;
       review.issues.push('Corrigir a aparência de homem ou mulher quando informada, altura relativa à raça, porte físico, idade aparente e estrutura conforme a personalização escolhida, preservando identidade e equipamento.');
@@ -284,6 +297,7 @@ export async function generateCharacterArt(job: {
   const characterClass = z.enum(classes).parse(job.class);
   const choices = job.choices ? validateChoices(race, characterClass, job.choices) : undefined;
   const physicalInstructions = job.companion ? '' : characterAppearanceInstructions(race, choices);
+  const facialHairInstructions = job.companion ? '' : facialHairArtInstructions(race, choices);
   const warforgedInstructions =
     !job.companion &&
     race === 'Warforged' &&
@@ -316,6 +330,7 @@ export async function generateCharacterArt(job: {
     job.id,
   );
   await mkdir(directory, { recursive: true });
+  const facialHairReference = job.companion ? undefined : await prepareFacialHairReference(race, choices, directory);
   const warforgedReferences = warforgedInstructions
     ? await prepareWarforgedReferences(choices?.warforgedAppearance, directory)
     : race === 'Warforged' && choices?.warforgedBody
@@ -358,6 +373,7 @@ export async function generateCharacterArt(job: {
     equipmentPaths,
     sheetPath,
     hornReference,
+    facialHairReference,
     warforgedReferences,
   });
   if (useSheet) await writeFile(sheetPath, await equipmentReferenceSheet(job.equipment!));
@@ -394,7 +410,7 @@ Transcreva as posições e opções ao prompt da ferramenta de imagem.`
     const render = async (repair = '', previousImage?: string): Promise<Buffer> => {
       await unlink(resultPath).catch(() => {});
       const activeReferences = previousImage
-        ? [previousImage, ...(hornReference ? [hornReference] : []), ...warforgedReferences]
+        ? [previousImage, ...(facialHairReference ? [facialHairReference] : []), ...(hornReference ? [hornReference] : []), ...warforgedReferences]
         : initialReferences;
       const prompt = previousImage
         ? `EDITE a primeira imagem anexada com a ferramenta nativa de imagem. Ela é a composição a corrigir. Preserve rosto, identidade, pose, enquadramento, estilo, cores e modelos dos equipamentos, exceto a correção explícita da cabeça escolhida quando indicada na revisão. Altere somente as regiões com os defeitos descritos abaixo, incluindo o tecido necessário para corrigir seu caimento.
@@ -583,6 +599,8 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
         warforgedInstructions ? warforgedInstructions + '\n' + warforgedReferenceInstructions : '',
         warforgedReferences,
         physicalInstructions + (choices?.warforgedBody ? '\n' + warforgedReferenceInstructions : ''),
+        facialHairReference,
+        facialHairInstructions,
       );
       const meta = await sharp(bytes).metadata();
       if (!meta.hasAlpha || (await sharp(bytes).stats()).isOpaque)
@@ -601,6 +619,7 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
     await Promise.all(equipmentPaths.map((path) => unlink(path).catch(() => {})));
     if (useSheet) await unlink(sheetPath).catch(() => {});
     await Promise.all(warforgedReferences.map((path) => unlink(path).catch(() => {})));
+    if (facialHairReference) await unlink(facialHairReference).catch(() => {});
     await unlink(resultPath).catch(() => {});
     await Promise.all(
       [candidatePath, join(directory, 'review.json')].map((path) => unlink(path).catch(() => {})),

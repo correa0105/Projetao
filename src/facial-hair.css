@@ -1,0 +1,102 @@
+.facial-hair-choices {
+  min-width: 0;
+  border: 1px solid #a98a494d;
+  padding: 16px;
+}
+.facial-hair-choices > p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.facial-hair-choices fieldset {
+  min-width: 0;
+  margin-top: 18px;
+}
+.facial-hair-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.facial-hair-options > label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid #a98a494d;
+  background: #211b16;
+}
+.facial-hair-options > label.is-selected,
+.facial-hair-colors > label.is-selected {
+  border-color: #d2ad68;
+  box-shadow: inset 0 0 0 1px #d2ad68;
+}
+.facial-hair-options > label:focus-within,
+.facial-hair-colors > label:focus-within {
+  outline: 2px solid #e4c07e;
+  outline-offset: 3px;
+}
+.facial-hair-options input[type='radio'] {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  width: 17px;
+  height: 17px;
+  accent-color: #bf9854;
+}
+.facial-hair-model {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+.facial-hair-options strong {
+  font-size: 13px;
+}
+.facial-hair-options span {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.facial-hair-colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.facial-hair-colors > label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #a98a494d;
+  cursor: pointer;
+}
+.facial-hair-swatch {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #bca473;
+  border-radius: 50%;
+}
+.facial-hair-graying {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+.facial-hair-graying input {
+  width: 18px;
+  height: 18px;
+}
+.facial-hair-loading {
+  padding: 14px;
+  border: 1px solid #a98a494d;
+}
+@media (max-width: 640px) {
+  .facial-hair-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .facial-hair-choices {
+    padding: 12px;
+  }
+}

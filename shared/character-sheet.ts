@@ -11,6 +11,7 @@ import { eberronSpecies, shifterBenefits } from './eberron-species.js';
 import { tieflingHornIds } from './tiefling-horns.js';
 import { warforgedAppearanceSchema, defaultWarforgedAppearance } from './warforged-appearance.js';
 import { physicalTraitsSchema, warforgedBodySchema } from './character-appearance.js';
+import { facialHairSchema, supportsFacialHair } from './facial-hair.js';
 export const RULESET = 'D&D 2024 · Livro do Jogador e suplementos';
 export const { skills, skillAbilities, alignments } = base;
 export const languages = [
@@ -561,6 +562,7 @@ export const choicesSchema = z.object({
   warforgedAppearance: warforgedAppearanceSchema.optional(),
   warforgedArtMode: z.enum(['construction','reference']).optional(),
   physicalTraits: physicalTraitsSchema.partial().optional(),
+  facialHair: facialHairSchema.optional(),
   warforgedBody: warforgedBodySchema.optional(),
   age: z.string().trim().max(40).default(''),
   height: z.string().trim().max(40).default(''),
@@ -1054,6 +1056,7 @@ export function racialBonuses(_race: string, c: SheetChoices) {
   return c.abilityBoosts;
 }
 export function normalizeOptions(race: string, cls: string, c: SheetChoices) {
+  if (c.facialHair && !supportsFacialHair(race, c.physicalTraits?.gender)) { c = { ...c }; delete c.facialHair; }
   if (race !== 'Tiefling' && c.tieflingHorns) { c = { ...c }; delete c.tieflingHorns; }
   if (race !== 'Warforged' && c.warforgedAppearance) { c = { ...c }; delete c.warforgedAppearance; }
   if (race !== 'Warforged' && c.warforgedArtMode) { c = { ...c }; delete c.warforgedArtMode; }
@@ -1242,6 +1245,7 @@ export function validateChoices(race: string, cls: string, input: unknown): Shee
   check(!c.warforgedBody || race === 'Warforged', 'A estrutura de constructo é exclusiva do Warforged.');
   check(!c.warforgedBody || !c.warforgedAppearance, 'Escolha a estrutura no modo de aparência selecionado.');
   check(!c.physicalTraits || physicalTraitsSchema.safeParse(c.physicalTraits).success, 'Complete a altura, o porte físico e a idade aparente.');
+  check(!c.facialHair || supportsFacialHair(race, c.physicalTraits?.gender), 'Barba e bigode são escolhas de personagens masculinos, exceto Warforged.');
   check(c.warforgedArtMode !== 'reference' || !c.warforgedAppearance, 'Desative as opções de montagem para usar uma imagem de referência.');
   check(c.warforgedArtMode !== 'construction' || Boolean(c.warforgedAppearance), 'Escolha a estrutura, a cabeça e as cores da montagem.');
   const list = (v: string[], n: number, a: string[], label: string) =>
