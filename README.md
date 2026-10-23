@@ -1,3 +1,5 @@
+23/10/2026 — Novas criações de TODAS as espécies exigem altura, porte físico e idade aparente em choices.physicalTraits. Warforged com referência também escolhe as seis estruturas via choices.warforgedBody; cabeça/cores/acabamento continuam da referência. Esta decisão substitui somente a regra anterior de ocultar o corpo no modo referência: montagem completa e upload continuam separados. Retrato/token/correções/revisão usam as escolhas e exigem physical_traits_correct. Fichas e jobs antigos sem campos continuam válidos; sem mudança mecânica ou reescrita de artes antigas. Guia docs/CHARACTER-APPEARANCE-20261023.md.
+
 Atualização 15/10/2026 — Fumaça escura nas margens da Lore com volumes que se transformam lentamente, mantendo leitura e controles livres. Pausa com aba oculta e movimento reduzido. Guia LORE-SMOKE-20261015.md.
 
 Atualização 15/10/2026 — Lore centralizada como Regras (1380 px, margens e cabeçalho); janelas com visão ancorada no vão, abertura/fechamento persistido e quatro sons de interação; vegetação externa à frente das paredes e abaixo dos telhados. Protocolo VTT 21. Guias LORE-CONTAINER-20261015.md e VTT-WINDOWS-PLANTS-20261015.md.

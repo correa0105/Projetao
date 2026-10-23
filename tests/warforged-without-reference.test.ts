@@ -48,6 +48,7 @@ test('Warforged sem referência: fila, escolhas, privacidade, retomada e entrega
       'INSERT INTO character_art_worker(id,available,heartbeat_at) VALUES(true,true,now()) ON CONFLICT(id) DO UPDATE SET available=true,heartbeat_at=now()',
     );
     const choices = defaultChoices('Warforged', 'Guerreiro');
+    choices.physicalTraits = { height: 'tall', build: 'slim', age: 'old' };
     choices.warforgedAppearance = {
       body: 'robust',
       head: 'angular',
@@ -57,6 +58,9 @@ test('Warforged sem referência: fila, escolhas, privacidade, retomada e entrega
       accentColor: '#123abc',
     };
     const creation = { name: 'Forjado sem foto', race: 'Warforged', class: 'Guerreiro', choices };
+    for (const patch of [{ physicalTraits: undefined }, { physicalTraits: { height: 'short' } }, { physicalTraits: { height: 'invalid', build: 'slim', age: 'old' } }]) {
+      assert.equal((await req('/character-art', owner.cookie, { creation: { ...creation, choices: { ...choices, ...patch } }, idempotency_key: randomUUID() })).status, 400);
+    }
     const key = randomUUID();
     const queued = await req('/character-art', owner.cookie, { creation, idempotency_key: key });
     assert.equal(queued.status, 202, JSON.stringify(queued.data));
@@ -85,8 +89,10 @@ test('Warforged sem referência: fila, escolhas, privacidade, retomada e entrega
       ...choices,
       warforgedArtMode: 'reference' as const,
       warforgedAppearance: undefined,
+      warforgedBody: 'long-legs' as const,
     };
     const referenceCreation = { ...creation, choices: referenceChoices };
+    assert.equal((await req('/character-art', owner.cookie, { creation: { ...referenceCreation, choices: { ...referenceChoices, warforgedBody: undefined } }, reference: image.toString('base64'), idempotency_key: randomUUID() })).status, 400);
     assert.equal(
       (
         await req(route + '/retry', owner.cookie, {
@@ -223,6 +229,9 @@ test('Warforged sem referência: fila, escolhas, privacidade, retomada e entrega
       portrait: image,
       token: await testTokenImage(),
     });
+    const referenceSaved = (await pool.query('SELECT choices FROM character_sheets WHERE character_id=$1', [referenceId])).rows[0].choices;
+    assert.deepEqual(referenceSaved.physicalTraits, choices.physicalTraits);
+    assert.equal(referenceSaved.warforgedBody, 'long-legs');
     assert.equal(
       (
         await req('/character-art', owner.cookie, {

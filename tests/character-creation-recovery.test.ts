@@ -93,7 +93,7 @@ test('criação recuperável: texto, ficha, imagem e arte aprovada sobrevivem à
     );
     assert.equal((await req(route + '/retry', owner.cookie, {})).status, 409);
     assert.deepEqual((await req(route + '/draft', owner.cookie)).data.creation, creation);
-    const edited = { ...creation, biography: creation.biography + '\nCapítulo recuperado.' };
+    const edited = { ...creation, biography: creation.biography + '\nCapítulo recuperado.', choices: { ...legacyChoices, physicalTraits: { height: 'short', build: 'slim', age: 'adult' }, warforgedBody: 'compact' } };
     assert.equal(
       (
         await req(route + '/retry', owner.cookie, {
@@ -119,7 +119,7 @@ test('criação recuperável: texto, ficha, imagem e arte aprovada sobrevivem à
       )
     ).rows[0];
     assert.equal(saved.biography, edited.biography);
-    assert.deepEqual(saved.choices, creation.choices);
+    assert.deepEqual(saved.choices, edited.choices);
     const done = await req(route + '/retry', owner.cookie, {});
     assert.equal(done.status, 202);
     assert.equal(done.data.status, 'completed');

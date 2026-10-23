@@ -1,4 +1,5 @@
 import sharp from 'sharp';
+import { warforgedBodySchema } from '../shared/character-appearance.js';
 import { join, resolve } from 'node:path';
 import {
   warforgedAppearanceSchema,
@@ -23,7 +24,16 @@ export async function prepareWarforgedHeadReference(value: unknown, directory: s
 export async function prepareWarforgedReferences(value: unknown, directory: string) {
   const parsed = warforgedAppearanceSchema.safeParse(value);
   if (!parsed.success) return [];
-  const index = warforgedBodies.findIndex((body) => body.id === parsed.data.body);
+  return [
+    (await prepareWarforgedBodyReference(parsed.data.body, directory))!,
+    (await prepareWarforgedHeadReference(parsed.data, directory))!,
+  ];
+}
+
+export async function prepareWarforgedBodyReference(value: unknown, directory: string) {
+  const parsed = warforgedBodySchema.safeParse(value);
+  if (!parsed.success) return undefined;
+  const index = warforgedBodies.findIndex((body) => body.id === parsed.data);
   const path = join(directory, 'selected-warforged-body.png');
   await sharp(resolve('public' + warforgedBodyAtlas))
     .extract({
@@ -34,5 +44,5 @@ export async function prepareWarforgedReferences(value: unknown, directory: stri
     })
     .png()
     .toFile(path);
-  return [path, (await prepareWarforgedHeadReference(parsed.data, directory))!];
+  return path;
 }

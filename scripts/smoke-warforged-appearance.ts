@@ -111,6 +111,16 @@ try {
   await page.getByRole('button', { name: 'Criar personagem', exact: true }).click();
   const form = page.locator('.character-creation-form');
   await form.getByLabel('Nome do personagem').fill('Construído sem foto');
+  for (const race of (await import('../shared/rules')).races) {
+    await form.getByLabel('Espécie', { exact: true }).selectOption(race);
+    for (const label of ['Altura', 'Porte físico', 'Idade aparente']) {
+      await expect(form.getByRole('combobox', { name: label, exact: true })).toHaveValue('');
+      expect(await form.getByRole('combobox', { name: label, exact: true }).evaluate((el: HTMLSelectElement) => el.required)).toBe(true);
+    }
+  }
+  await form.getByRole('combobox', { name: 'Altura', exact: true }).selectOption('tall');
+  await form.getByRole('combobox', { name: 'Porte físico', exact: true }).selectOption('slim');
+  await form.getByRole('combobox', { name: 'Idade aparente', exact: true }).selectOption('old');
   await form.getByLabel('Espécie', { exact: true }).selectOption('Warforged');
   const without = form.getByRole('radio', {
     name: 'Criar apenas com as características escolhidas',
@@ -132,13 +142,24 @@ try {
   await creationDesign.getByLabel('Cor secundária personalizada', { exact: true }).fill('#123abc');
   await upload.check();
   await expect(creationDesign).toHaveCount(0);
-  await expect(form).toContainText('desative a montagem');
+  await expect(form).toContainText('a cabeça, as cores e o acabamento vêm da imagem enviada');
+  const referenceBody = form.getByRole('region', { name: 'Corpo do Warforged com referência' });
+  await expect(referenceBody.getByRole('radio')).toHaveCount(6);
+  await expect(referenceBody.getByRole('radio', { name: /Braços reforçados/ })).toBeChecked();
+  await referenceBody.getByRole('radio', { name: /Pernas alongadas/ }).check();
+  await expect(form.getByLabel('Cor metálica principal', { exact: true })).toHaveCount(0);
   await expect(submit).toBeDisabled();
   const { testArtImage } = await import('../tests/character-fixtures');
   await form
     .locator('input[type=file]')
     .setInputFiles({ name: 'referencia.png', mimeType: 'image/png', buffer: await testArtImage() });
   await expect(submit).toBeEnabled();
+  for (const width of [1440, 390, 320]) {
+    await page.setViewportSize({ width, height: 950 });
+    await referenceBody.scrollIntoViewIfNeeded();
+    await page.screenshot({ path: `test-results/warforged-appearance/reference-body-${width}.png` });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
   await without.check();
   await creationDesign.getByRole('radio', { name: /Braços reforçados/ }).check();
   await creationDesign.getByRole('radio', { name: /^Cavaleiro/ }).check();
@@ -168,6 +189,7 @@ try {
   ).rows[0];
   expect(queued.reference).toBeNull();
   expect(queued.creation.choices.warforgedAppearance).toEqual(persisted);
+  expect(queued.creation.choices.physicalTraits).toEqual({ height: 'tall', build: 'slim', age: 'old' });
   await pool.query(
     "UPDATE character_art_jobs SET status='failed',error='Falha simulada' WHERE id=$1",
     [job.id],
@@ -176,6 +198,7 @@ try {
   await page.getByRole('button', { name: 'Criações salvas (1)', exact: true }).click();
   await page.getByRole('button', { name: 'Retomar preenchimento', exact: true }).click();
   await expect(without).toBeChecked();
+  await expect(form.getByRole('combobox', { name: 'Idade aparente', exact: true })).toHaveValue('old');
   await expect(submit).toBeEnabled();
   await expect(form.getByRole('radio', { name: /Braços reforçados/ })).toBeChecked();
   await page.getByRole('dialog').getByRole('button', { name: 'Fechar', exact: true }).click();

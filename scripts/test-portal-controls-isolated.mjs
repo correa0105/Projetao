@@ -4,14 +4,16 @@ import { randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
 
 const url = new URL(process.env.DATABASE_URL);
-if (!['localhost', '127.0.0.1'].includes(url.hostname))
+if (!['localhost', '127.0.0.1'].includes(url.hostname) || url.port === '5437')
   throw Error('Os controles devem ser testados em PostgreSQL local.');
 const admin = new pg.Pool({ connectionString: url.toString() });
 const database = 'alvorada_test_' + randomUUID().replaceAll('-', '');
 await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
-  const args = process.argv.includes('--token-preview')
+  const args = process.argv.includes('--appearance')
+    ? ['--test', '--test-concurrency=1', 'tests/character-appearance.test.ts', 'tests/warforged-appearance.test.ts', 'tests/warforged-illustrator.test.ts', 'tests/warforged-without-reference.test.ts', 'tests/character-creation-recovery.test.ts', 'tests/character-token-art.test.ts']
+    : process.argv.includes('--token-preview')
     ? ['scripts/smoke-token-preview.ts']
     : process.argv.includes('--warforged-reference-api')
       ? [

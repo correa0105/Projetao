@@ -66,7 +66,7 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
       const review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
       const images=args.flatMap((v,i)=>v==='--image'?[args[i+1]]:[]);
       if(images.length>5||images.some(p=>!fs.existsSync(p)))process.exit(1);
-      if(review){state.reviews.push(prompt);fs.writeFileSync(result,JSON.stringify({approved:true,clothing_correct:state.omitClothing?undefined:(state.acceptClothing||(state.reviews.length>1&&!state.rejectClothing)),selected_head_correct:state.omitHead?undefined:!state.rejectHead,appendages_correct:true,issues:[]}));}
+      if(review){state.reviews.push(prompt);fs.writeFileSync(result,JSON.stringify({approved:true,clothing_correct:state.omitClothing?undefined:(state.acceptClothing||(state.reviews.length>1&&!state.rejectClothing)),physical_traits_correct:state.omitPhysical?undefined:!state.rejectPhysical,selected_head_correct:state.omitHead?undefined:!state.rejectHead,appendages_correct:true,issues:[]}));}
       else {state.renders.push({prompt,images,hashes:images.map(p=>require('node:crypto').createHash('sha256').update(fs.readFileSync(p)).digest('hex'))});const output=path.join(args[args.indexOf('--cd')+1],'output.png');fs.copyFileSync(${JSON.stringify(fixture)},output);fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));}
       fs.writeFileSync(${JSON.stringify(capture)},JSON.stringify(state));
     });
@@ -166,6 +166,19 @@ test('ilustrador constrói Warforged sem foto, confere escolhas e corrige tecido
     const byReference = JSON.parse(await readFile(capture, 'utf8'));
     assert.equal(byReference.renders[0].images.length, 2);
     assert.doesNotMatch(byReference.renders[0].prompt, /APARÊNCIA DO WARFORGED ESCOLHIDA/);
+    const physicalChoices = { ...choices, warforgedArtMode: 'reference' as const, warforgedAppearance: undefined, warforgedBody: 'long-legs' as const, physicalTraits: { height: 'short' as const, build: 'slim' as const, age: 'old' as const } };
+    await writeFile(capture, JSON.stringify({ renders: [], reviews: [], acceptClothing: true }));
+    await generateCharacterArt({ id: randomUUID(), race: 'Warforged', class: 'Guerreiro', reference: image, reference_mode: 'reference', choices: physicalChoices });
+    const physical = JSON.parse(await readFile(capture, 'utf8'));
+    assert.equal(physical.renders[0].images.length, 3);
+    assert.match(physical.renders[0].images.at(-1), /selected-warforged-body/);
+    assert(physical.renders.every((r: { prompt: string }) => r.prompt.includes('PERSONALIZAÇÃO FÍSICA')));
+    assert(physical.reviews.every((prompt: string) => prompt.includes('physical_traits_correct=false')));
+    assert.doesNotMatch(physical.renders[0].prompt, /APARÊNCIA DO WARFORGED ESCOLHIDA|Cabeça Sentinela/);
+    for (const flags of [{ rejectPhysical: true }, { omitPhysical: true }]) {
+      await writeFile(capture, JSON.stringify({ renders: [], reviews: [], acceptClothing: true, ...flags }));
+      await assert.rejects(() => generateCharacterArt({ id: randomUUID(), race: 'Warforged', class: 'Guerreiro', reference: image, reference_mode: 'reference', choices: physicalChoices }), /verificação|conferir a composição/);
+    }
     await writeFile(capture, JSON.stringify({ renders: [], reviews: [], rejectClothing: true }));
     await assert.rejects(
       () =>

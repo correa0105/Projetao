@@ -40,6 +40,27 @@ function AtlasImage({
   );
 }
 
+export function WarforgedBodyChoices({ value, onChange, required = false }: {
+  value?: Appearance['body']; onChange: (value: Appearance['body']) => void; required?: boolean;
+}) {
+  const prepared = usePreparedAssets([warforgedBodyAtlas]);
+  return <fieldset>
+    <legend>Estrutura do corpo</legend>
+    {!prepared.ready && <div className="warforged-models-loading" role={prepared.error ? 'alert' : 'status'}>
+      {prepared.error || 'Preparando os modelos de corpo…'}
+      {prepared.error && <button type="button" onClick={prepared.retry}>Tentar novamente</button>}
+    </div>}
+    <div className="warforged-design-options" hidden={!prepared.ready}>
+      {warforgedBodies.map((option, index) => <label key={option.id} className={value === option.id ? 'is-selected' : ''}>
+        <input type="radio" required={required} name="warforged-body" value={option.id}
+          checked={value === option.id} onChange={() => onChange(option.id)} />
+        <AtlasImage kind="body" atlas={warforgedBodyAtlas} index={index} />
+        <strong>{option.name}</strong><span>{option.description}</span>
+      </label>)}
+    </div>
+  </fieldset>;
+}
+
 export function WarforgedAppearance({
   value,
   onChange,

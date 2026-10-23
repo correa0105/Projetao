@@ -1,5 +1,6 @@
 import { WorldPlacePicker } from './WorldPlacePicker';
 import { defaultWarforgedAppearance, warforgedArtMode } from '../shared/warforged-appearance';
+import { validateCreationAppearance } from '../shared/character-appearance';
 import { RecoveryRequest } from './PasswordRecovery';
 import { passwordMinimumLength, passwordPattern, passwordRule, validNewPassword } from '../shared/password-policy';
 import { PersonalVttLink } from './PersonalVttLink';
@@ -389,6 +390,7 @@ export function CharacterForm({
     setError('');
     const form = Object.fromEntries(new FormData(event.currentTarget));
     try {
+      validateCreationAppearance(race, choices);
       await post(initialJobId ? `/character-art/${initialJobId}/retry` : '/character-art', {
         creation: {
           ...form,
@@ -475,7 +477,7 @@ export function CharacterForm({
           </select>
         </label>
       </div>
-      <SheetChoices race={race} cls={cls} value={choices} onChange={setChoices} warforgedModeControl={race === 'Warforged' && (
+      <SheetChoices race={race} cls={cls} value={choices} onChange={setChoices} requireAppearance warforgedModeControl={race === 'Warforged' && (
         <fieldset className="character-reference-choices" disabled={busy}>
           <legend>Como criar a aparência</legend>
           <label className="check">
@@ -483,7 +485,7 @@ export function CharacterForm({
               type="radio"
               name="warforged-reference-mode"
               checked={!useWarforgedReference}
-              onChange={() => setChoices(current => ({...current,warforgedArtMode:'construction',warforgedAppearance:current.warforgedAppearance || {...defaultWarforgedAppearance}}))}
+              onChange={() => setChoices(current => ({...current,warforgedArtMode:'construction',warforgedAppearance:current.warforgedAppearance || {...defaultWarforgedAppearance,body:current.warforgedBody || defaultWarforgedAppearance.body},warforgedBody:undefined}))}
             />
             Criar apenas com as características escolhidas
           </label>
@@ -492,14 +494,14 @@ export function CharacterForm({
               type="radio"
               name="warforged-reference-mode"
               checked={useWarforgedReference}
-              onChange={() => setChoices(current => ({...current,warforgedArtMode:'reference',warforgedAppearance:undefined}))}
+              onChange={() => setChoices(current => ({...current,warforgedArtMode:'reference',warforgedBody:current.warforgedAppearance?.body || current.warforgedBody,warforgedAppearance:undefined}))}
             />
             Enviar uma imagem de referência
           </label>
           <p className="muted small">
-            Para usar uma imagem de referência, desative a montagem. Ao escolher essa opção,
-            corpo, cabeça, cores e acabamento da montagem ficam desmarcados e não são usados.
-            Um Warforged montado usa somente suas escolhas e guarda essa identidade ao vestir.
+            Nos dois modos, escolha as características físicas e a estrutura do corpo.
+            Com referência, a cabeça, as cores e o acabamento vêm da imagem enviada.
+            Sem referência, escolha também a cabeça e os materiais da montagem.
           </p>
         </fieldset>
       )} />

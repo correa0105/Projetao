@@ -25,6 +25,7 @@ import { isAdministrator } from './administrators.js';
 import { characterLimit } from '../shared/character-art.js';
 import { characterAccountArtUsedSql } from './art-quota.js';
 import { warforgedArtMode } from '../shared/warforged-appearance.js';
+import { validateCreationAppearance } from '../shared/character-appearance.js';
 
 const uuid = z.string().uuid();
 const requestSchema = z
@@ -48,6 +49,13 @@ const requestSchema = z
       ),
   })
   .refine((data) => Boolean(data.character_id) !== Boolean(data.creation))
+  .superRefine((data, ctx) => {
+    if (data.creation) try {
+      validateCreationAppearance(data.creation.race, data.creation.choices);
+    } catch (error) {
+      ctx.addIssue({ code: 'custom', path: ['creation', 'choices'], message: (error as Error).message });
+    }
+  })
   .refine((data) => !canConstructWithoutReference(data.creation) || !data.reference, {
     path: ['reference'],
     message: 'Desative as opções de montagem para usar uma imagem de referência.',

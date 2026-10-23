@@ -199,7 +199,7 @@ test('duas artes atômicas, perfil separado, atualização do token sem alterar 
         name: 'Novo token',
         race: 'Humano',
         class: 'Guerreiro',
-        choices: defaultChoices('Humano', 'Guerreiro'),
+        choices: { ...defaultChoices('Humano', 'Guerreiro'), physicalTraits: { height: 'average', build: 'athletic', age: 'adult' } },
         stats: [15, 14, 13, 12, 10, 8],
       },
       reference: portrait.toString('base64'),
@@ -277,7 +277,7 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
       const state=fs.existsSync(${JSON.stringify(statePath)})?JSON.parse(fs.readFileSync(${JSON.stringify(statePath)})):{renders:[],reviews:[]};
       const top=dir.includes('character-token-art'), review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
-      if(review){state.reviews.push({top,prompt});fs.writeFileSync(result,JSON.stringify({approved:!state.rejectToken||!top,clothing_correct:!state.rejectClothing,selected_head_correct:!state.rejectHead,appendages_correct:!state.rejectAnatomy,issues:state.rejectToken&&top?['Câmera frontal incorreta.']:[]}));}
+      if(review){state.reviews.push({top,prompt});fs.writeFileSync(result,JSON.stringify({approved:!state.rejectToken||!top,clothing_correct:!state.rejectClothing,physical_traits_correct:state.omitPhysical?undefined:!state.rejectPhysical,selected_head_correct:!state.rejectHead,appendages_correct:!state.rejectAnatomy,issues:state.rejectToken&&top?['Câmera frontal incorreta.']:[]}));}
       else{state.renders.push({top,prompt,hashes:images.map(p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex'))});const output=path.join(dir,'output.png');fs.copyFileSync(top?${JSON.stringify(join(temp, 'token.png'))}:${JSON.stringify(join(temp, 'portrait.png'))},output);fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));}
       fs.writeFileSync(${JSON.stringify(statePath)},JSON.stringify(state));
     });`,
@@ -304,6 +304,16 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     assert.match(state.reviews[1].prompt, /mãos com pegada impossível/);
     assert.match(state.reviews[0].prompt, /um chifre na testa e outro no alto da cabeça/);
     assert.match(state.reviews[1].prompt, /mesma altura anatômica/);
+    const physicalJob = { ...job, choices: { ...defaultChoices('Humano', 'Guerreiro'), physicalTraits: { height: 'tall' as const, build: 'slim' as const, age: 'old' as const } } };
+    await writeFile(statePath, JSON.stringify({ renders: [], reviews: [] }));
+    await generateCharacterArtPair({ ...physicalJob, id: randomUUID() });
+    const physical = JSON.parse(await readFile(statePath, 'utf8'));
+    for (const stage of [...physical.renders, ...physical.reviews]) assert.match(stage.prompt, /PERSONALIZAÇÃO FÍSICA/);
+    assert.match(physical.reviews[1].prompt, /physical_traits_correct=false/);
+    for (const flags of [{ rejectPhysical: true }, { omitPhysical: true }]) {
+      await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], ...flags }));
+      await assert.rejects(generateCharacterToken({ ...physicalJob, id: randomUUID() }, portrait), /revisão|conferir/);
+    }
     await writeFile(statePath, JSON.stringify({ renders: [], reviews: [] }));
     const hornChoices = { ...defaultChoices('Tiefling', 'Guerreiro'), tieflingHorns: 'short' as const };
     await generateCharacterArtPair({ ...job, id: randomUUID(), race: 'Tiefling', choices: hornChoices });

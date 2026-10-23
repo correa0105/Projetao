@@ -7,13 +7,14 @@ import { homedir } from 'node:os';
 import { z } from 'zod';
 import { races, classes } from '../shared/rules.js';
 import { raceRules, validateChoices } from '../shared/character-sheet.js';
-import { characterHeightScale, characterStature } from '../shared/character-stature.js';
+import { characterHeightScale, characterArtAnatomy } from '../shared/character-stature.js';
+import { characterAppearanceInstructions } from '../shared/character-appearance.js';
 import { type ArtEquipment, type HelmetMode } from '../shared/equipment.js';
 import { BARDING_PARTS } from '../shared/companion-equipment.js';
 import { describeArtEquipment } from './equipment-art.js';
 import { equipmentReferenceSheet } from './equipment-reference.js';
 import { characterArtReferences } from './character-art-references.js';
-import { prepareWarforgedReferences } from './warforged-art-references.js';
+import { prepareWarforgedReferences, prepareWarforgedBodyReference } from './warforged-art-references.js';
 import { magicalArtEquipment } from './armor-magic-appearance.js';
 import { ART_ANATOMY_RULES, ART_CLOTHING_RULES } from '../shared/art-anatomy.js';
 import { tieflingHornStyle, tieflingHornImage } from '../shared/tiefling-horns.js';
@@ -147,6 +148,7 @@ export async function reviewComposition(
   horns?: { instruction: string; reference: string },
   warforgedInstructions = '',
   warforgedReferences: string[] = [],
+  physicalInstructions = '',
 ) {
   const schema = join(directory, 'review-schema.json'),
     result = join(directory, 'review.json');
@@ -160,6 +162,7 @@ export async function reviewComposition(
         appendages_correct: { type: 'boolean' },
         clothing_correct: { type: 'boolean' },
         ...(warforgedInstructions ? { selected_head_correct: { type: 'boolean' } } : {}),
+        ...(physicalInstructions ? { physical_traits_correct: { type: 'boolean' } } : {}),
         issues: { type: 'array', items: { type: 'string' } },
       },
       required: [
@@ -168,6 +171,7 @@ export async function reviewComposition(
         'clothing_correct',
         'issues',
         ...(warforgedInstructions ? ['selected_head_correct'] : []),
+        ...(physicalInstructions ? ['physical_traits_correct'] : []),
       ],
       additionalProperties: false,
     }),
@@ -201,6 +205,7 @@ export async function reviewComposition(
     Oclusão natural é correta: itens ocultos NÃO precisam aparecer.
     ${baseReference && !companion ? 'Imagem 2 é a identidade montada BASE aprovada. Compare rosto, estrutura e proporções do corpo; só roupas e equipamentos podem mudar, salvo corrigir cabeça divergente para o modelo escolhido na última imagem. Confira metal, acabamento e detalhes pela paleta validada abaixo; reprove clarear metal escurecido, apagar ferrugem ou recolorir o corpo com a cor das roupas.' : ''}
     ${ART_ANATOMY_RULES} Registre appendages_correct=false se houver defeito anatômico visível e descreva-o em issues. Se não houver apêndices incomuns, confira a anatomia normal antes de marcar true.
+    ${physicalInstructions} ${physicalInstructions ? 'Confira altura relativa à raça, porte físico, idade aparente e estrutura escolhida nas partes visíveis. Registre physical_traits_correct=false se a arte contrariar essas escolhas. Não exigir medidas absolutas ou características ocultas.' : ''}
     ${companion ? '' : ART_CLOTHING_RULES}
     Julgue clothing_correct separadamente: false para roupa interpenetrada, calça encurtada, barra assimétrica ou rasgada expondo canela, mangas ou punhos sem ligação física, mesmo que anatomia e estilo estejam corretos. Inspecione separadamente o comprimento e a continuidade do tecido em CADA perna. Nunca aprovar com clothing_correct=false.
     ${horns ? `A última imagem é somente o formato dos chifres escolhido pelo jogador, nunca o rosto/corpo. Formato obrigatório: ${horns.instruction} Reprove um formato diferente; respeite perspectiva e oclusão natural por cabelo/equipamento.` : ''}
@@ -225,9 +230,14 @@ export async function reviewComposition(
         appendages_correct: z.boolean(),
         clothing_correct: z.boolean(),
         selected_head_correct: warforgedInstructions ? z.boolean() : z.boolean().optional(),
+        physical_traits_correct: physicalInstructions ? z.boolean() : z.boolean().optional(),
         issues: z.array(z.string().max(600)).max(12),
       })
       .parse(JSON.parse(await readFile(result, 'utf8')));
+    if (review.physical_traits_correct === false) {
+      review.approved = false;
+      review.issues.push('Corrigir altura relativa à raça, porte físico, idade aparente e estrutura conforme a personalização escolhida, preservando identidade e equipamento.');
+    }
     if (!review.appendages_correct) {
       review.approved = false;
       if (!review.issues.length)
@@ -273,6 +283,7 @@ export async function generateCharacterArt(job: {
   const race = z.enum(races).parse(job.race);
   const characterClass = z.enum(classes).parse(job.class);
   const choices = job.choices ? validateChoices(race, characterClass, job.choices) : undefined;
+  const physicalInstructions = job.companion ? '' : characterAppearanceInstructions(race, choices);
   const warforgedInstructions =
     !job.companion &&
     race === 'Warforged' &&
@@ -287,7 +298,9 @@ export async function generateCharacterArt(job: {
   const warforgedReferenceInstructions =
     warforgedInstructions && choices?.warforgedAppearance
       ? 'As duas últimas referências são seleções ISOLADAS: penúltima define SOMENTE a estrutura do corpo, nunca sua cabeça; última define EXATAMENTE a cabeça escolhida. Preserve silhueta, placas, olhos, lente/visor, mandíbula e volume dos mecanismos da última imagem; não simplifique nem misture outra cabeça. As cores das referências são demonstrativas: usar a paleta validada. A primeira imagem define só pintura, sem fornecer cabeça ou roupa. Gere apenas UM personagem.'
-      : '';
+      : race === 'Warforged' && choices?.warforgedBody
+        ? 'A última referência isola SOMENTE a estrutura escolhida do corpo. Ignore cabeça, materiais, cores e roupa do manequim: esses traços vêm da referência do jogador. Aplique altura, porte e idade aparentes escolhidos à estrutura, preservando identidade e anatomia racial.'
+        : '';
   const hornSelection =
     !job.companion && race === 'Tiefling' ? tieflingHornStyle(choices?.tieflingHorns) : undefined;
   const hornReference = hornSelection
@@ -305,7 +318,9 @@ export async function generateCharacterArt(job: {
   await mkdir(directory, { recursive: true });
   const warforgedReferences = warforgedInstructions
     ? await prepareWarforgedReferences(choices?.warforgedAppearance, directory)
-    : [];
+    : race === 'Warforged' && choices?.warforgedBody
+      ? [(await prepareWarforgedBodyReference(choices.warforgedBody, directory))!]
+      : [];
   const reference = join(directory, 'reference.png');
   const style = resolve('docs/references/character-style-v1.png');
   const resultPath = join(directory, 'result.json');
@@ -386,13 +401,15 @@ Transcreva as posições e opções ao prompt da ferramenta de imagem.`
 ${repair}
 ${ART_ANATOMY_RULES}
 ${job.companion ? '' : ART_CLOTHING_RULES}
+${physicalInstructions}
 ${hornInstructions}
 ${warforgedInstructions}
 ${warforgedReferenceInstructions}
 ${magicInstructions}
 ${job.companion ? 'Preserve anatomia e pose animal: não criar braços, mãos humanas, armas ou cavaleiro; patas, asas, focinho e cauda mantêm suas formas e proporções. Equipamento adaptado ao animal e sobreposto com oclusão natural.' : 'Respeite camadas naturais: capa sem mangas por cima das ombreiras e da armadura; luvas por cima dos anéis, inclusive luvas integradas às braçadeiras.'} Acessórios encobertos permanecem ocultos; nunca exponha uma peça através de outra nem desloque a peça que a encobre. Não cortar nem duplicar objetos. Se houver corte na borda, afaste a câmera e amplie o enquadramento até caber a silhueta inteira, com margem transparente de 8% em todos os lados.
 Use referenced_image_paths com ${JSON.stringify(activeReferences)}, transparent_background=true. Não use num_last_images_to_include. Devolva o caminho da imagem editada no JSON solicitado.`
-        : `${instructions}\n${ART_ANATOMY_RULES}\n${job.companion ? '' : ART_CLOTHING_RULES}\n\n${job.companion ? '' : `Raça validada: ${race}. Classe validada: ${characterClass}. ${origin} Estatura de referência: ${Math.round(characterHeightScale(race, size) * 200)} cm (aproximação visual). Anatomia obrigatória: ${characterStature[race].anatomy}`} ${gearInstructions}
+        : `${instructions}\n${ART_ANATOMY_RULES}\n${job.companion ? '' : ART_CLOTHING_RULES}\n\n${job.companion ? '' : `Raça validada: ${race}. Classe validada: ${characterClass}. ${origin} Estatura de referência: ${Math.round(characterHeightScale(race, size, choices?.physicalTraits) * 200)} cm (aproximação visual). Anatomia obrigatória: ${characterArtAnatomy(race, choices?.physicalTraits)}`} ${gearInstructions}
+${physicalInstructions}
 ${!job.companion && !job.reference ? 'CONSTRUÇÃO SEM IMAGEM DO JOGADOR: crie uma identidade original a partir das características validadas abaixo. A primeira imagem define somente o estilo. Não existe imagem de rosto ou corpo do jogador a preservar; as seleções finais isoladas definem os modelos exatos de corpo e cabeça. A paleta e o acabamento escolhidos prevalecem sobre as cores ilustrativas.' : ''}
 ${job.reference_mode === 'construction' && job.reference ? 'IDENTIDADE MONTADA SALVA: imagem 2 é a BASE aprovada do próprio personagem, não uma nova referência do jogador. Preserve rosto, estrutura, proporções, placas, juntas e paleta da montagem. Altere roupa e equipamentos selecionados; se a BASE antiga tiver cabeça divergente, corrija somente essa cabeça para o modelo exato da última referência isolada. Metal escurecido ou enferrujado nunca vira aço prateado por vestir. Cores da roupa e imagens de itens não recolorem o corpo; a paleta validada da montagem prevalece.' : ''}
 ${hornInstructions}
@@ -565,6 +582,7 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
           : undefined,
         warforgedInstructions ? warforgedInstructions + '\n' + warforgedReferenceInstructions : '',
         warforgedReferences,
+        physicalInstructions + (choices?.warforgedBody ? '\n' + warforgedReferenceInstructions : ''),
       );
       const meta = await sharp(bytes).metadata();
       if (!meta.hasAlpha || (await sharp(bytes).stats()).isOpaque)

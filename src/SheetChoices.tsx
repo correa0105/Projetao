@@ -28,7 +28,8 @@ import { SheetHelp } from './SheetHelp';
 import { TrainingBadge } from './TrainingBadge';
 import { eberronSpecies, EBERRON_SOURCE } from '../shared/eberron-species';
 import { TieflingHorns } from './TieflingHorns';
-import { WarforgedAppearance } from './WarforgedAppearance';
+import { WarforgedAppearance, WarforgedBodyChoices } from './WarforgedAppearance';
+import { CharacterAppearance } from './CharacterAppearance';
 import { warforgedArtMode } from '../shared/warforged-appearance';
 export function ChoiceList({
   label,
@@ -111,12 +112,14 @@ export function SheetChoices({
   value: c,
   onChange,
   warforgedModeControl,
+  requireAppearance = false,
 }: {
   race: string;
   cls: string;
   value: Choices;
   onChange: (v: Choices) => void;
   warforgedModeControl?: ReactNode;
+  requireAppearance?: boolean;
 }) {
   const [reference, setReference] = useState<string | null>(null);
   const k = classRules[cls],
@@ -226,6 +229,14 @@ export function SheetChoices({
         />
       )}
       {race === 'Warforged' && warforgedModeControl}
+      <CharacterAppearance required={requireAppearance} value={c.physicalTraits} onChange={physicalTraits => update({ physicalTraits })} />
+      {race === 'Warforged' && warforgedArtMode(c) === 'reference' && (
+        <section className="warforged-appearance" aria-label="Corpo do Warforged com referência">
+          <h3>Corpo do Warforged</h3>
+          <p>Escolha a estrutura do corpo. A cabeça, os materiais e as cores seguem sua imagem de referência.</p>
+          <WarforgedBodyChoices required={requireAppearance} value={c.warforgedBody} onChange={warforgedBody => update({ warforgedBody })} />
+        </section>
+      )}
       {race === 'Warforged' && warforgedArtMode(c) === 'construction' && (
         <WarforgedAppearance value={c.warforgedAppearance}
           onChange={warforgedAppearance => update({ warforgedAppearance })} />
@@ -374,7 +385,7 @@ export function SheetChoices({
         <div className="form-grid">
           {(['age', 'height', 'weight'] as const).map((key, i) => (
             <label key={key}>
-              {['Idade', 'Altura', 'Peso'][i]}
+              {['Idade em anos (opcional)', 'Altura em medida (opcional)', 'Peso (opcional)'][i]}
               <input
                 maxLength={40}
                 value={c[key]}

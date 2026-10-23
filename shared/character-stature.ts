@@ -1,8 +1,9 @@
 import { races } from './rules.js';
+import type { PhysicalTraits } from './character-appearance.js';
 
 type Race = (typeof races)[number];
 // Visual reference heights within the 2024 species descriptions, not fixed rules
-// for every individual. The sheet does not yet store an individual height.
+// for every individual. Visual height choices vary this baseline without changing size rules.
 export const characterStature: Record<
   Race | 'Meio-elfo' | 'Meio-orc',
   { heightCm: number; anatomy: string }
@@ -62,11 +63,39 @@ export const characterStature: Record<
   },
 };
 
-export function characterHeightScale(race: string, size?: string) {
+export function characterHeightScale(
+  race: string,
+  size?: string,
+  traits?: Partial<PhysicalTraits>,
+) {
+  const variation = traits?.height === 'short' ? 0.88 : traits?.height === 'tall' ? 1.12 : 1;
   if (
     size === 'Pequeno' &&
     ['Humano', 'Tiefling', 'Changeling', 'Khoravar', 'Shifter', 'Warforged'].includes(race)
   )
-    return 0.55;
-  return (characterStature[race as Race]?.heightCm ?? 175) / 200;
+    return 0.55 * variation;
+  return ((characterStature[race as Race]?.heightCm ?? 175) / 200) * variation;
+}
+
+export function characterArtAnatomy(race: string, traits?: Partial<PhysicalTraits>) {
+  if (!traits) return characterStature[race as Race]?.anatomy || '';
+  const anatomy: Record<string, string> = {
+    Changeling: 'Metamorfo feérico, traços compatíveis com a referência.',
+    Kalashtar: 'Aparência humana, ligado a um espírito quori.',
+    Khoravar: 'Herança humana e élfica, orelhas levemente pontudas.',
+    Shifter: 'Humanoide com traços bestiais sutis, sem transformação automática.',
+    Warforged: 'Constructo consciente de madeira, pedra e metal, articulações coerentes.',
+    Golias: 'Anatomia humanoide com herança de gigantes.',
+    Orc: 'Anatomia orc, presas raciais.',
+    Humano: 'Anatomia humana.',
+    Elfo: 'Anatomia élfica, orelhas pontudas.',
+    Anão: 'Anatomia anã: tronco e membros com proporções raciais, nunca um humano achatado.',
+    Halfling:
+      'Anatomia halfling: pernas proporcionalmente curtas e pés largos; não um humano em miniatura ou chibi.',
+    Draconato: 'Anatomia dracônica com escamas, sem traços élficos ou humanos incompatíveis.',
+    Gnomo:
+      'Anatomia gnômica: traços faciais e orelhas marcantes, membros coerentes com a espécie, sem chibi.',
+    Tiefling: 'Anatomia tiefling, chifres e cauda coerentes.',
+  };
+  return anatomy[race] || characterStature[race as Race]?.anatomy || '';
 }

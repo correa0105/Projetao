@@ -13,6 +13,7 @@ import {
 import { basicCompanionToken } from '../shared/companion-token-art.js';
 import { magicalArtEquipment } from './armor-magic-appearance.js';
 import { ART_ANATOMY_RULES, ART_CLOTHING_RULES } from '../shared/art-anatomy.js';
+import { characterAppearanceInstructions, type AppearanceChoices } from '../shared/character-appearance.js';
 import { tieflingHornStyle } from '../shared/tiefling-horns.js';
 import { warforgedArtInstructions, warforgedArtMode } from '../shared/warforged-appearance.js';
 import { prepareWarforgedHeadReference } from './warforged-art-references.js';
@@ -74,6 +75,7 @@ async function nativeResult(
 export async function generateCharacterToken(job: CharacterJob, portrait: Buffer): Promise<Buffer> {
   z.string().uuid().parse(job.id);
   const animal = job.companion;
+  const physicalInstructions = animal ? '' : characterAppearanceInstructions(job.race, job.choices as AppearanceChoices | undefined);
   const warforgedInstructions =
     !animal &&
     job.race === 'Warforged' &&
@@ -137,6 +139,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
         appendages_correct: { type: 'boolean' },
         clothing_correct: { type: 'boolean' },
         ...(selectedHead ? { selected_head_correct: { type: 'boolean' } } : {}),
+        ...(physicalInstructions ? { physical_traits_correct: { type: 'boolean' } } : {}),
         issues: { type: 'array', items: { type: 'string' } },
       },
       required: [
@@ -145,6 +148,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
         'clothing_correct',
         'issues',
         ...(selectedHead ? ['selected_head_correct'] : []),
+        ...(physicalInstructions ? ['physical_traits_correct'] : []),
       ],
       additionalProperties: false,
     }),
@@ -189,6 +193,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
         : [reference, style, ...headReferences];
       const prompt =
         ART_ANATOMY_RULES +
+        '\n' + physicalInstructions +
         (animal ? '' : '\n' + ART_CLOTHING_RULES) +
         (horns
           ? '\nFormato de chifres escolhido, preservado na vista superior: ' + horns.instruction
@@ -217,6 +222,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
             ? `Reprove a ausência dos efeitos mágicos nas partes visíveis da armadura e sua substituição pelo acabamento mundano. ${magicInstructions} `
             : '') +
           warforgedInstructions +
+          '\n' + physicalInstructions + (physicalInstructions ? ' Registre physical_traits_correct=false se os volumes, a estrutura ou os traços de idade VISÍVEIS contrariarem a personalização. Preserve as proporções tridimensionais; não julgar altura em centímetros nem pedir detalhes encobertos pela câmera superior.' : '') +
           '\n' +
           headInstructions +
           (selectedHead
@@ -236,6 +242,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
             appendages_correct: z.boolean(),
             clothing_correct: z.boolean(),
             selected_head_correct: selectedHead ? z.boolean() : z.boolean().optional(),
+            physical_traits_correct: physicalInstructions ? z.boolean() : z.boolean().optional(),
             issues: z.array(z.string().max(600)).max(12),
           })
           .parse(JSON.parse(await readFile(reviewPath, 'utf8')));
@@ -244,6 +251,8 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
       }
       const meta = await sharp(bytes, { limitInputPixels: 40_000_000 }).metadata();
       issues = review.issues;
+      if (review.physical_traits_correct === false)
+        issues.push('Corrigir a personalização física escolhida nas partes visíveis, preservando identidade, equipamento e câmera superior.');
       if (!review.clothing_correct && !issues.length)
         issues.push(
           'Corrigir interpenetração da roupa, calças encurtadas ou assimétricas: ambas inteiras até os tornozelos ou dentro do calçado; conectar mangas e punhos.',
@@ -267,6 +276,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
         review.appendages_correct &&
         review.clothing_correct &&
         (!selectedHead || review.selected_head_correct) &&
+        (!physicalInstructions || review.physical_traits_correct) &&
         !issues.length
       )
         return bytes;
