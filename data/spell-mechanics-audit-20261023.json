@@ -1,0 +1,754 @@
+[
+  {
+    "id": "alustriels-mooncloak",
+    "source": "FRHoF",
+    "page": 142,
+    "numericTokens": [
+      "20",
+      "4d10"
+    ]
+  },
+  {
+    "id": "arcane-gate",
+    "source": "XPHB",
+    "page": 242,
+    "numericTokens": [
+      "10"
+    ]
+  },
+  {
+    "id": "arcane-vigor",
+    "source": "XPHB",
+    "page": 242,
+    "numericTokens": [
+      "2"
+    ]
+  },
+  {
+    "id": "armor-of-agathys",
+    "source": "XPHB",
+    "page": 243,
+    "numericTokens": [
+      "1",
+      "5",
+      "5",
+      "5"
+    ]
+  },
+  {
+    "id": "arms-of-hadar",
+    "source": "XPHB",
+    "page": 243,
+    "numericTokens": [
+      "1",
+      "10",
+      "1d6",
+      "2d6"
+    ]
+  },
+  {
+    "id": "aura-of-purity",
+    "source": "XPHB",
+    "page": 244,
+    "numericTokens": [
+      "30"
+    ]
+  },
+  {
+    "id": "aura-of-vitality",
+    "source": "XPHB",
+    "page": 244,
+    "numericTokens": [
+      "2d6",
+      "30"
+    ]
+  },
+  {
+    "id": "backlash",
+    "source": "FRHoF",
+    "page": 142,
+    "numericTokens": [
+      "1d6",
+      "4",
+      "4d6",
+      "4d6"
+    ]
+  },
+  {
+    "id": "banishing-smite",
+    "source": "XPHB",
+    "page": 245,
+    "numericTokens": [
+      "50",
+      "5d10"
+    ]
+  },
+  {
+    "id": "beast-sense",
+    "source": "XPHB",
+    "page": 245,
+    "numericTokens": []
+  },
+  {
+    "id": "blade-of-disaster",
+    "source": "FRHoF",
+    "page": 143,
+    "numericTokens": [
+      "10d6",
+      "18",
+      "3",
+      "5",
+      "5",
+      "60",
+      "d20"
+    ]
+  },
+  {
+    "id": "blade-ward",
+    "source": "XPHB",
+    "page": 247,
+    "numericTokens": [
+      "1d4"
+    ]
+  },
+  {
+    "id": "blinding-smite",
+    "source": "XPHB",
+    "page": 247,
+    "numericTokens": [
+      "1d8",
+      "3",
+      "3d8"
+    ]
+  },
+  {
+    "id": "cacophonic-shield",
+    "source": "FRHoF",
+    "page": 143,
+    "numericTokens": [
+      "10",
+      "1d6",
+      "3",
+      "3d6"
+    ]
+  },
+  {
+    "id": "circle-of-power",
+    "source": "XPHB",
+    "page": 250,
+    "numericTokens": [
+      "30"
+    ]
+  },
+  {
+    "id": "cloud-of-daggers",
+    "source": "XPHB",
+    "page": 251,
+    "numericTokens": [
+      "2",
+      "2d4",
+      "30",
+      "4d4",
+      "5"
+    ]
+  },
+  {
+    "id": "compelled-duel",
+    "source": "XPHB",
+    "page": 252,
+    "numericTokens": [
+      "30",
+      "30"
+    ]
+  },
+  {
+    "id": "conjure-barrage",
+    "source": "XPHB",
+    "page": 254,
+    "numericTokens": [
+      "1d8",
+      "3",
+      "5d8",
+      "60"
+    ]
+  },
+  {
+    "id": "conjure-constructs",
+    "source": "FRHoF",
+    "page": 143,
+    "numericTokens": [
+      "1d6",
+      "1d6",
+      "3",
+      "30",
+      "3d6",
+      "5"
+    ]
+  },
+  {
+    "id": "conjure-volley",
+    "source": "XPHB",
+    "page": 255,
+    "numericTokens": [
+      "20",
+      "40",
+      "8d8"
+    ]
+  },
+  {
+    "id": "cordon-of-arrows",
+    "source": "XPHB",
+    "page": 258,
+    "numericTokens": [
+      "2",
+      "2d4",
+      "30"
+    ]
+  },
+  {
+    "id": "crown-of-madness",
+    "source": "XPHB",
+    "page": 259,
+    "numericTokens": []
+  },
+  {
+    "id": "crusaders-mantle",
+    "source": "XPHB",
+    "page": 259,
+    "numericTokens": [
+      "1d4",
+      "30"
+    ]
+  },
+  {
+    "id": "death-armor",
+    "source": "FRHoF",
+    "page": 143,
+    "numericTokens": [
+      "2d4",
+      "5"
+    ]
+  },
+  {
+    "id": "deryans-helpful-homunculi",
+    "source": "FRHoF",
+    "page": 143,
+    "numericTokens": []
+  },
+  {
+    "id": "destructive-wave",
+    "source": "XPHB",
+    "page": 261,
+    "numericTokens": [
+      "30",
+      "5d6",
+      "5d6"
+    ]
+  },
+  {
+    "id": "dirge",
+    "source": "FRHoF",
+    "page": 144,
+    "numericTokens": [
+      "1",
+      "10",
+      "3d10",
+      "4",
+      "60"
+    ]
+  },
+  {
+    "id": "doomtide",
+    "source": "FRHoF",
+    "page": 144,
+    "numericTokens": [
+      "1",
+      "10",
+      "1d6",
+      "20",
+      "3",
+      "5d6"
+    ]
+  },
+  {
+    "id": "elemental-weapon",
+    "source": "XPHB",
+    "page": 267,
+    "numericTokens": [
+      "-6",
+      "1",
+      "1d4",
+      "2",
+      "2d4",
+      "3",
+      "3d4",
+      "5",
+      "7"
+    ]
+  },
+  {
+    "id": "elminsters-effulgent-spheres",
+    "source": "FRHoF",
+    "page": 144,
+    "numericTokens": [
+      "1",
+      "120",
+      "3d6",
+      "6"
+    ]
+  },
+  {
+    "id": "elminsters-elusion",
+    "source": "FRHoF",
+    "page": 144,
+    "numericTokens": []
+  },
+  {
+    "id": "feign-death",
+    "source": "XPHB",
+    "page": 271,
+    "numericTokens": [
+      "0"
+    ]
+  },
+  {
+    "id": "fount-of-moonlight",
+    "source": "XPHB",
+    "page": 277,
+    "numericTokens": [
+      "20",
+      "20",
+      "2d6",
+      "60"
+    ]
+  },
+  {
+    "id": "friends",
+    "source": "XPHB",
+    "page": 277,
+    "numericTokens": [
+      "24"
+    ]
+  },
+  {
+    "id": "grasping-vine",
+    "source": "XPHB",
+    "page": 280,
+    "numericTokens": [
+      "30",
+      "30",
+      "30",
+      "4",
+      "4d8"
+    ]
+  },
+  {
+    "id": "hail-of-thorns",
+    "source": "XPHB",
+    "page": 283,
+    "numericTokens": [
+      "1",
+      "1d10",
+      "1d10",
+      "5"
+    ]
+  },
+  {
+    "id": "holy-star-of-mystra",
+    "source": "FRHoF",
+    "page": 145,
+    "numericTokens": [
+      "120",
+      "4d10",
+      "5",
+      "5",
+      "7"
+    ]
+  },
+  {
+    "id": "homunculus-servant",
+    "source": "EFA",
+    "page": 21,
+    "numericTokens": []
+  },
+  {
+    "id": "hunger-of-hadar",
+    "source": "XPHB",
+    "page": 286,
+    "numericTokens": [
+      "1d6",
+      "20",
+      "2d6",
+      "2d6",
+      "3",
+      "30"
+    ]
+  },
+  {
+    "id": "jallarzis-storm-of-radiance",
+    "source": "XPHB",
+    "page": 289,
+    "numericTokens": [
+      "10",
+      "1d10",
+      "2d10",
+      "2d10",
+      "40",
+      "5"
+    ]
+  },
+  {
+    "id": "laerals-silver-lance",
+    "source": "FRHoF",
+    "page": 145,
+    "numericTokens": [
+      "120",
+      "1d10",
+      "3",
+      "3d10",
+      "5"
+    ]
+  },
+  {
+    "id": "lightning-arrow",
+    "source": "XPHB",
+    "page": 292,
+    "numericTokens": [
+      "10",
+      "1d8",
+      "2d8",
+      "3",
+      "4d8"
+    ]
+  },
+  {
+    "id": "mind-sliver",
+    "source": "XPHB",
+    "page": 298,
+    "numericTokens": [
+      "11",
+      "17",
+      "1d4",
+      "1d6",
+      "1d6",
+      "2d6",
+      "3d6",
+      "4d6",
+      "5"
+    ]
+  },
+  {
+    "id": "power-word-fortify",
+    "source": "XPHB",
+    "page": 306,
+    "numericTokens": [
+      "120"
+    ]
+  },
+  {
+    "id": "simbuls-synostodweomer",
+    "source": "FRHoF",
+    "page": 145,
+    "numericTokens": []
+  },
+  {
+    "id": "songals-elemental-suffusion",
+    "source": "FRHoF",
+    "page": 145,
+    "numericTokens": [
+      "1",
+      "10",
+      "15",
+      "2",
+      "2d6",
+      "30"
+    ]
+  },
+  {
+    "id": "spellfire-flare",
+    "source": "FRHoF",
+    "page": 146,
+    "numericTokens": [
+      "1",
+      "2d10"
+    ]
+  },
+  {
+    "id": "spellfire-storm",
+    "source": "FRHoF",
+    "page": 146,
+    "numericTokens": [
+      "-3",
+      "-6",
+      "1",
+      "1",
+      "1",
+      "100",
+      "100",
+      "1d10",
+      "20",
+      "20",
+      "24",
+      "25000",
+      "3",
+      "4",
+      "4",
+      "40",
+      "40",
+      "4d10",
+      "60",
+      "60",
+      "7",
+      "8"
+    ]
+  },
+  {
+    "id": "staggering-smite",
+    "source": "XPHB",
+    "page": 320,
+    "numericTokens": [
+      "1d6",
+      "4",
+      "4d6"
+    ]
+  },
+  {
+    "id": "steel-wind-strike",
+    "source": "XPHB",
+    "page": 320,
+    "numericTokens": [
+      "5",
+      "6d10"
+    ]
+  },
+  {
+    "id": "summon-aberration",
+    "source": "XPHB",
+    "page": 322,
+    "numericTokens": [
+      "0"
+    ]
+  },
+  {
+    "id": "summon-beast",
+    "source": "XPHB",
+    "page": 322,
+    "numericTokens": [
+      "0"
+    ]
+  },
+  {
+    "id": "summon-celestial",
+    "source": "XPHB",
+    "page": 323,
+    "numericTokens": [
+      "0"
+    ]
+  },
+  {
+    "id": "summon-construct",
+    "source": "XPHB",
+    "page": 324,
+    "numericTokens": [
+      "0"
+    ]
+  },
+  {
+    "id": "summon-elemental",
+    "source": "XPHB",
+    "page": 325,
+    "numericTokens": [
+      "0"
+    ]
+  },
+  {
+    "id": "summon-fey",
+    "source": "XPHB",
+    "page": 326,
+    "numericTokens": [
+      "0"
+    ]
+  },
+  {
+    "id": "summon-fiend",
+    "source": "XPHB",
+    "page": 326,
+    "numericTokens": [
+      "0"
+    ]
+  },
+  {
+    "id": "summon-undead",
+    "source": "XPHB",
+    "page": 328,
+    "numericTokens": [
+      "0"
+    ]
+  },
+  {
+    "id": "swift-quiver",
+    "source": "XPHB",
+    "page": 329,
+    "numericTokens": []
+  },
+  {
+    "id": "sylunes-viper",
+    "source": "FRHoF",
+    "page": 147,
+    "numericTokens": [
+      "15",
+      "1d6",
+      "1d6",
+      "3",
+      "5",
+      "50"
+    ]
+  },
+  {
+    "id": "synaptic-static",
+    "source": "XPHB",
+    "page": 330,
+    "numericTokens": [
+      "1",
+      "1d6",
+      "20",
+      "8d6"
+    ]
+  },
+  {
+    "id": "tashas-bubbling-cauldron",
+    "source": "XPHB",
+    "page": 330,
+    "numericTokens": [
+      "1",
+      "5"
+    ]
+  },
+  {
+    "id": "telepathy",
+    "source": "XPHB",
+    "page": 331,
+    "numericTokens": []
+  },
+  {
+    "id": "thorn-whip",
+    "source": "XPHB",
+    "page": 333,
+    "numericTokens": [
+      "10",
+      "11",
+      "17",
+      "1d6",
+      "1d6",
+      "2d6",
+      "3d6",
+      "4d6",
+      "5"
+    ]
+  },
+  {
+    "id": "thunderclap",
+    "source": "XPHB",
+    "page": 333,
+    "numericTokens": [
+      "100",
+      "11",
+      "17",
+      "1d6",
+      "1d6",
+      "2d6",
+      "3d6",
+      "4d6",
+      "5",
+      "5"
+    ]
+  },
+  {
+    "id": "thunderous-smite",
+    "source": "XPHB",
+    "page": 334,
+    "numericTokens": [
+      "1",
+      "10",
+      "1d6",
+      "2d6",
+      "300"
+    ]
+  },
+  {
+    "id": "toll-the-dead",
+    "source": "XPHB",
+    "page": 334,
+    "numericTokens": [
+      "10",
+      "11",
+      "17",
+      "1d12",
+      "1d8",
+      "2d12",
+      "2d8",
+      "3d12",
+      "3d8",
+      "4d12",
+      "4d8",
+      "5"
+    ]
+  },
+  {
+    "id": "wardaway",
+    "source": "FRHoF",
+    "page": 147,
+    "numericTokens": [
+      "1",
+      "2d4",
+      "2d4"
+    ]
+  },
+  {
+    "id": "witch-bolt",
+    "source": "XPHB",
+    "page": 343,
+    "numericTokens": [
+      "1",
+      "1d12",
+      "1d12",
+      "2d12"
+    ]
+  },
+  {
+    "id": "word-of-radiance",
+    "source": "XPHB",
+    "page": 343,
+    "numericTokens": [
+      "11",
+      "17",
+      "1d6",
+      "1d6",
+      "2d6",
+      "3d6",
+      "4d6",
+      "5",
+      "5"
+    ]
+  },
+  {
+    "id": "wrathful-smite",
+    "source": "XPHB",
+    "page": 343,
+    "numericTokens": [
+      "1",
+      "1d6",
+      "1d6"
+    ]
+  },
+  {
+    "id": "yolandes-regal-presence",
+    "source": "XPHB",
+    "page": 343,
+    "numericTokens": [
+      "10",
+      "10",
+      "4d6"
+    ]
+  }
+]

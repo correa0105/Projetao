@@ -109,9 +109,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 142,
-    "description": "Cria uma proteção de luar para o grupo, oferecendo cobertura e resistência a frio, eletricidade e dano radiante. Pode ser encerrada para cura ou libertação de condições.",
+    "description": "Durante a duração, uma emanação de 20 pés ao seu redor fica iluminada por luz fraca de luar. Você e seus aliados na área recebem meia cobertura e resistência a dano de frio, elétrico e radiante.\n\nVocê pode usar uma das opções abaixo, encerrando a magia imediatamente:\n\nLibertação: ao falhar em uma salvaguarda para evitar ou encerrar a condição Amedrontado, Agarrado ou Impedido, use uma reação para obter sucesso nessa salvaguarda.\n\nRepouso: com uma ação de Magia, você ou um aliado na área recupera pontos de vida iguais a 4d10 + seu modificador do atributo de conjuração.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "animal-friendship",
@@ -299,9 +300,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 242,
-    "description": "Abre dois portais conectados para transportar criaturas entre pontos visíveis.",
+    "description": "Escolha dois espaços Grandes desocupados no chão e visíveis para você: um dentro do alcance e outro a até 10 pés de você. Um portal circular surge em cada espaço e permanece durante a duração. Os portais são anéis luminosos bidimensionais, preenchidos por névoa que bloqueia a visão; flutuam a poucas polegadas do chão, perpendicularmente a ele.\n\nCada portal só se abre de um lado, escolhido por você. Tudo que entrar pelo lado aberto de um portal sai pelo lado aberto do outro, como se os espaços fossem adjacentes. Com uma ação bônus, você pode mudar a orientação dos lados abertos.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "arcane-hand",
@@ -375,9 +377,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 242,
-    "description": "Permite gastar Dados de Vida para recuperar pontos de vida durante o combate.",
+    "description": "Role um ou dois de seus Dados de Vida ainda não gastos. Você recupera pontos de vida iguais à soma dos resultados + seu modificador do atributo de conjuração. Os dados rolados são gastos.\n\nEm círculos superiores: para cada círculo do espaço acima do 2º, você pode rolar mais um Dado de Vida não gasto.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "arcanists-magic-aura",
@@ -413,9 +416,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 243,
-    "description": "Concede pontos de vida temporários e causa dano de frio em quem acertar você com ataques corpo a corpo enquanto a proteção durar.",
+    "description": "Uma geada mágica protetora envolve você e concede 5 pontos de vida temporários. Enquanto a magia durar, uma criatura que acertar você com uma rolagem de ataque corpo a corpo sofre 5 de dano de frio. A magia termina antecipadamente se você ficar sem pontos de vida temporários.\n\nEm círculos superiores: os pontos de vida temporários e o dano de frio aumentam em 5 para cada círculo do espaço acima do 1º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "arms-of-hadar",
@@ -432,9 +436,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 243,
-    "description": "Tentáculos atingem criaturas próximas com dano necrótico e podem impedir suas reações.",
+    "description": "Tentáculos irrompem de seu corpo. Cada criatura em uma emanação de 10 pés ao seu redor faz uma salvaguarda de Força. Em caso de falha, sofre 2d6 de dano necrótico e não pode usar reações até o início do próximo turno dela. Em caso de sucesso, sofre somente metade do dano.\n\nEm círculos superiores: o dano aumenta em 1d6 para cada círculo do espaço acima do 1º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "astral-projection",
@@ -508,9 +513,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 244,
-    "description": "Protege aliados próximos contra doenças, veneno e diversas condições debilitantes.",
+    "description": "Durante a duração, uma aura forma uma emanação de 30 pés ao seu redor. Você e seus aliados dentro dela recebem resistência a dano de veneno e vantagem nas salvaguardas para evitar ou encerrar efeitos que incluam as condições Cego, Enfeitiçado, Surdo, Amedrontado, Paralisado, Envenenado ou Atordoado.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "aura-of-vitality",
@@ -527,9 +533,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 244,
-    "description": "Mantém uma aura de cura que restaura pontos de vida ao longo da duração.",
+    "description": "Durante a duração, uma aura forma uma emanação de 30 pés ao seu redor. Ao criar a aura e no início de cada um dos seus turnos enquanto ela persistir, você pode restaurar 2d6 pontos de vida de uma criatura dentro dela.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "awaken",
@@ -565,9 +572,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 142,
-    "description": "Reduz o dano recebido e permite retaliar contra a criatura responsável com dano de força.",
+    "description": "Você se protege da energia destrutiva, reduzindo o dano recebido em 4d6 + seu modificador do atributo de conjuração.\n\nSe o dano que acionou a magia veio de uma criatura dentro do alcance, você pode obrigá-la a fazer uma salvaguarda de Constituição. Ela sofre 4d6 de dano de força em caso de falha, ou metade em caso de sucesso.\n\nEm círculos superiores: a redução de dano e o dano de força aumentam em 1d6 para cada círculo do espaço acima do 4º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "bane",
@@ -603,9 +611,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 245,
-    "description": "Acrescenta dano de força a um acerto e pode banir temporariamente o alvo.",
+    "description": "O alvo atingido pelo ataque sofre mais 5d10 de dano de força. Se o ataque o deixar com 50 pontos de vida ou menos, ele deve obter sucesso em uma salvaguarda de Carisma ou será transportado para um semiplano inofensivo durante a duração. Nesse semiplano, fica Incapacitado. Quando a magia termina, retorna ao espaço que deixou ou, se esse espaço estiver ocupado, ao espaço desocupado mais próximo.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "banishment",
@@ -679,9 +688,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 245,
-    "description": "Permite perceber o mundo pelos sentidos de uma fera voluntária.",
+    "description": "Você toca uma Fera voluntária. Durante a duração, pode perceber o ambiente pelos sentidos dela e também pelos seus próprios sentidos. Ao usar os sentidos da Fera, recebe os benefícios dos sentidos especiais que ela possuir.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "befuddlement",
@@ -774,9 +784,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 143,
-    "description": "Cria uma lâmina planar móvel que realiza ataques de força, com maior chance de crítico, atravessando barreiras.",
+    "description": "Você cria uma fenda planar em forma de lâmina, com 3 pés de comprimento, em um espaço escolhido dentro do alcance. Ela permanece durante a duração. Imediatamente, você pode fazer até dois ataques corpo a corpo com magia, cada um contra uma criatura ou objeto a até 5 pés da fenda. Cada acerto causa 10d6 de dano de força. O ataque é um acerto crítico se o resultado do d20 for 18 ou mais.\n\nCom uma ação bônus nos turnos seguintes, você pode mover a fenda até 60 pés e repetir os dois ataques contra criaturas ou objetos a até 5 pés dela. Os ataques podem atingir o mesmo alvo ou alvos diferentes.\n\nA lâmina atravessa qualquer barreira sem danificá-la, inclusive barreiras de magias como Muralha de Força.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "blade-ward",
@@ -793,9 +804,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 247,
-    "description": "Dificulta ataques contra você durante a concentração.",
+    "description": "Até a magia terminar, sempre que uma criatura fizer uma rolagem de ataque contra você, ela subtrai 1d4 do resultado dessa rolagem.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "bless",
@@ -850,9 +862,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 247,
-    "description": "Acrescenta dano radiante a um acerto e pode cegar o alvo.",
+    "description": "O alvo atingido sofre mais 3d8 de dano radiante e fica Cego até a magia terminar. No final de cada turno dele, faz uma salvaguarda de Constituição; em caso de sucesso, a magia termina para ele.\n\nEm círculos superiores: o dano adicional aumenta em 1d8 para cada círculo do espaço acima do 3º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "blindness-deafness",
@@ -945,9 +958,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 143,
-    "description": "Cria uma zona de estrondo que fere e pode ensurdecer inimigos. Também concede resistência a dano trovejante e dificulta ataques à distância contra você.",
+    "description": "Reverberações trovejantes preenchem uma emanação de 10 pés ao seu redor durante a duração. Sempre que a emanação entrar no espaço de uma criatura, ou uma criatura entrar na emanação ou terminar o turno nela, essa criatura faz uma salvaguarda de Constituição. Em caso de falha, sofre 3d6 de dano trovejante e fica Surda até o início do seu próximo turno. Em caso de sucesso, sofre somente metade do dano. Cada criatura faz essa salvaguarda apenas uma vez por turno. Ao conjurar, você pode escolher criaturas que não serão afetadas.\n\nVocê também recebe resistência a dano trovejante, e ataques à distância contra você têm desvantagem.\n\nEm círculos superiores: o dano aumenta em 1d6 para cada círculo do espaço acima do 3º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "call-lightning",
@@ -1116,9 +1130,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 250,
-    "description": "Ajuda aliados próximos em salvaguardas contra magia e pode evitar completamente danos que normalmente seriam reduzidos pela metade.",
+    "description": "Durante a duração, uma aura forma uma emanação de 30 pés ao seu redor. Você e seus aliados na aura têm vantagem em salvaguardas contra magias e outros efeitos mágicos. Se uma criatura afetada fizer uma salvaguarda contra uma magia ou efeito mágico que normalmente cause metade do dano em caso de sucesso, ela não sofre dano ao obter sucesso.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "clairvoyance",
@@ -1173,9 +1188,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 251,
-    "description": "Mantém uma área cortante que causa dano a quem a atravessa ou permanece nela.",
+    "description": "Você conjura adagas giratórias em um cubo de 5 pés, centrado em um ponto dentro do alcance. Cada criatura nessa área sofre 4d4 de dano cortante. Uma criatura também sofre esse dano se entrar no cubo, terminar o turno nele ou se o cubo entrar no espaço dela. Esse dano ocorre apenas uma vez por turno para cada criatura.\n\nNos turnos seguintes, você pode usar uma ação de Magia para teleportar o cubo até 30 pés.\n\nEm círculos superiores: o dano aumenta em 2d4 para cada círculo do espaço acima do 2º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "cloudkill",
@@ -1287,9 +1303,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 252,
-    "description": "Desafia uma criatura a enfrentar você, dificultando ataques contra outros e restringindo seu afastamento.",
+    "description": "Uma criatura visível dentro do alcance faz uma salvaguarda de Sabedoria. Em caso de falha, tem desvantagem nas rolagens de ataque contra criaturas que não sejam você e não pode se mover voluntariamente para um espaço a mais de 30 pés de você.\n\nA magia termina se você atacar outra criatura, conjurar uma magia sobre outro inimigo, se um aliado seu causar dano ao alvo ou se você terminar seu turno a mais de 30 pés do alvo.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "comprehend-languages",
@@ -1401,9 +1418,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 254,
-    "description": "Projeta uma rajada de armas ou munições em cone, causando dano de força.",
+    "description": "Você ergue a arma usada na conjuração e cria armas espectrais semelhantes, ou munição apropriada, que avançam e desaparecem. Cada criatura à sua escolha que você possa ver em um cone de 60 pés faz uma salvaguarda de Destreza. Sofre 5d8 de dano de força em caso de falha, ou metade em caso de sucesso.\n\nEm círculos superiores: o dano aumenta em 1d8 para cada círculo do espaço acima do 3º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "conjure-celestial",
@@ -1439,9 +1457,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 143,
-    "description": "Invoca espíritos de constructos que podem causar dano de força ou conceder pontos de vida temporários.",
+    "description": "Você conjura espíritos intangíveis e ordeiros, com aparência de um grupo Médio de modrons ou outros Constructos, em um espaço desocupado e visível dentro do alcance. Eles permanecem durante a duração. Ao conjurar e, nos turnos seguintes, com uma ação de Magia, você pode comandá-los a afetar uma criatura ou objeto visível a até 5 pés deles:\n\nForça mecânica: o alvo faz uma salvaguarda de Destreza. Sofre 3d6 de dano de força em caso de falha, ou metade em caso de sucesso.\n\nProteção ordeira: o alvo recebe pontos de vida temporários iguais a 1d6 + seu modificador do atributo de conjuração.\n\nAo se mover no seu turno, você também pode mover os espíritos até 30 pés, para um espaço desocupado que possa ver.\n\nEm círculos superiores: o dano e os pontos de vida temporários aumentam em 1d6 para cada círculo do espaço acima do 3º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "conjure-elemental",
@@ -1515,9 +1534,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 255,
-    "description": "Cria uma chuva de projéteis em uma área ampla, causando dano de força.",
+    "description": "Você ergue a arma usada na conjuração e escolhe um ponto dentro do alcance. Centenas de armas espectrais semelhantes, ou munição apropriada, caem e desaparecem. Cada criatura à sua escolha que você possa ver em um cilindro de 40 pés de raio e 20 pés de altura, centrado nesse ponto, faz uma salvaguarda de Destreza. Sofre 8d8 de dano de força em caso de falha, ou metade em caso de sucesso.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "conjure-woodland-beings",
@@ -1667,9 +1687,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 258,
-    "description": "Prepara munições que atacam criaturas que se aproximam do ponto protegido.",
+    "description": "Você toca até quatro flechas ou virotes não mágicos e os finca no chão do seu espaço. Até a magia terminar, essa munição não pode ser arrancada fisicamente. Quando outra criatura entrar pela primeira vez em um turno em um espaço a até 30 pés da munição, ou terminar o turno ali, um projétil voa para atingi-la. Ela deve obter sucesso em uma salvaguarda de Destreza ou sofre 2d4 de dano perfurante. O projétil é destruído em seguida. A magia termina quando não restar munição fincada no chão.\n\nAo conjurar, você pode designar criaturas que serão ignoradas pela magia.\n\nEm círculos superiores: você pode afetar mais dois projéteis para cada círculo do espaço acima do 2º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "counterspell",
@@ -1781,9 +1802,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 259,
-    "description": "Pode enfeitiçar um humanoide e obrigá-lo a atacar outra criatura próxima.",
+    "description": "Uma criatura visível dentro do alcance deve obter sucesso em uma salvaguarda de Sabedoria ou fica Enfeitiçada durante a duração. Se não for Humanoide, obtém sucesso automaticamente.\n\nUma coroa espectral surge na cabeça do alvo. Em cada turno dele, antes de se mover, deve usar sua ação para fazer um ataque corpo a corpo contra outra criatura escolhida mentalmente por você. Se você não escolher uma criatura, ou se nenhuma estiver ao alcance dele, o alvo pode agir normalmente. Ele repete a salvaguarda ao final de cada turno, encerrando a magia sobre si em caso de sucesso.\n\nNos seus turnos seguintes, você deve usar uma ação de Magia para manter o controle; caso contrário, a magia termina.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "crusaders-mantle",
@@ -1800,9 +1822,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 259,
-    "description": "Fortalece ataques de aliados na aura com dano radiante adicional.",
+    "description": "Você irradia uma aura em uma emanação de 30 pés. Você e seus aliados dentro dela causam mais 1d4 de dano radiante sempre que acertarem com uma arma ou um ataque desarmado.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "cure-wounds",
@@ -1914,9 +1937,10 @@
     "materialConsumed": true,
     "source": "FRHoF",
     "page": 143,
-    "description": "Facilita salvaguardas contra a morte e pune atacantes próximos com dano necrótico.",
+    "description": "Uma aura de tinta envolve uma criatura que você tocar durante a duração. O alvo recebe vantagem nas salvaguardas contra a morte. Uma vez por turno, quando uma criatura a até 5 pés dele o acertar com uma rolagem de ataque corpo a corpo, o atacante sofre 2d4 de dano necrótico.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "death-ward",
@@ -1990,9 +2014,10 @@
     "materialConsumed": true,
     "source": "FRHoF",
     "page": 143,
-    "description": "Invoca ajudantes espirituais para trabalhos de fabricação, reduzindo o tempo necessário.",
+    "description": "Você invoca um grupo de espíritos prestativos durante a duração. Eles têm a aparência de homúnculos ou de outro Constructo escolhido por você, mas são intangíveis e invulneráveis. São considerados proficientes em Arcanismo e nas ferramentas de artesão usadas na conjuração.\n\nAo fabricar um item, os espíritos funcionam como um único assistente e reduzem o tempo de fabricação pela metade.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "destructive-wave",
@@ -2009,9 +2034,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 261,
-    "description": "Uma onda ao seu redor causa dano trovejante e radiante ou necrótico, podendo derrubar os alvos.",
+    "description": "Uma onda de energia se espalha em uma emanação de 30 pés ao seu redor. Cada criatura escolhida por você na área faz uma salvaguarda de Constituição. Em caso de falha, sofre 5d6 de dano trovejante e 5d6 de dano radiante ou necrótico, à sua escolha, e fica Caída. Em caso de sucesso, sofre somente metade do dano.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "detect-evil-and-good",
@@ -2123,9 +2149,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 144,
-    "description": "Cria uma aura que impede cura e atinge inimigos com energia necrótica, podendo derrubá-los ou reduzir seu deslocamento.",
+    "description": "Durante a duração, uma emanação de 60 pés ao seu redor é preenchida por poder mortífero. Ao conjurar, você pode escolher criaturas que não serão afetadas. As demais não podem recuperar pontos de vida enquanto estiverem na área.\n\nQuando a emanação entrar no espaço de uma criatura, ou uma criatura entrar nela ou terminar o turno ali, a criatura faz uma salvaguarda de Constituição. Em caso de falha, sofre 3d10 de dano necrótico e fica Caída. Em caso de sucesso, sofre metade do dano e tem seu deslocamento reduzido pela metade. Cada criatura faz essa salvaguarda apenas uma vez por turno.\n\nConjuração em círculo: exige pelo menos dois conjuradores secundários e muda a duração para concentração, até 10 minutos. Uma criatura que falhar na salvaguarda também recebe 1 nível de Exaustão. Enquanto possuir níveis de Exaustão, concluir um descanso longo não restaura seus pontos de vida nem reduz sua Exaustão. Cada conjurador secundário deve gastar um espaço de magia de círculo 4 ou superior no momento da conjuração; caso contrário, a magia falha.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "disguise-self",
@@ -2370,9 +2397,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 144,
-    "description": "Produz uma névoa de escuridão mágica que causa dano psíquico e pode prejudicar salvaguardas.",
+    "description": "Você cria uma esfera de névoa negra com 20 pés de raio dentro do alcance. A névoa é escuridão mágica e permanece durante a duração ou até ser dispersada por vento forte, como o de Lufada de Vento, encerrando a magia.\n\nCada criatura na esfera quando ela surge faz uma salvaguarda de Sabedoria. Em caso de falha, sofre 5d6 de dano psíquico e subtrai 1d6 das próprias salvaguardas até o final do próximo turno dela. Em caso de sucesso, sofre somente metade do dano. A salvaguarda também ocorre quando a esfera entra no espaço da criatura, quando ela entra na esfera ou termina o turno dentro dela, no máximo uma vez por turno para cada criatura.\n\nNo início de cada um dos seus turnos, a esfera se move 10 pés para longe de você.\n\nConjuração em círculo: exige pelo menos cinco conjuradores secundários e um componente adicional consumido pela magia: um cordão com três pérolas negras de Pandemônio. O alcance passa a 1 milha e a duração passa a ser até ser dissipada, sem concentração. A magia termina antecipadamente se qualquer participante contribuir para outra conjuração em círculo de Maré da Perdição. Cada conjurador secundário deve gastar um espaço de magia de círculo 3 ou superior na conjuração; caso contrário, a magia falha.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "dragons-breath",
@@ -2484,9 +2512,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 267,
-    "description": "Encanta uma arma com bônus em ataques e dano elemental adicional.",
+    "description": "Uma arma não mágica que você tocar se torna mágica durante a duração. Escolha dano ácido, de frio, de fogo, elétrico ou trovejante. A arma recebe +1 nas rolagens de ataque e causa mais 1d4 de dano do tipo escolhido em cada acerto.\n\nEm círculos superiores: com um espaço de círculo 5-6, o bônus de ataque passa a +2 e o dano adicional passa a 2d4. Com um espaço de círculo 7 ou superior, o bônus passa a +3 e o dano adicional passa a 3d4.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "elementalism",
@@ -2522,9 +2551,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 144,
-    "description": "Cria esferas consumíveis para resistir a energia elemental ou realizar ataques à distância.",
+    "description": "Seis esferas cromáticas orbitam você durante a duração. Enquanto existirem esferas, você pode gastá-las das seguintes maneiras:\n\nAbsorver energia: ao sofrer dano ácido, de frio, de fogo, elétrico ou trovejante, use uma reação e gaste uma esfera para receber resistência ao tipo de dano que acionou a reação até o início do seu próximo turno.\n\nRajada de energia: com uma ação bônus, lance uma esfera contra um alvo a até 120 pés de você e faça um ataque à distância com magia. Se acertar, causa 3d6 de dano ácido, de frio, de fogo, elétrico ou trovejante, à sua escolha. A esfera é gasta mesmo se o ataque errar.\n\nA magia termina antecipadamente quando todas as esferas forem gastas.\n\nEm círculos superiores: o número de esferas aumenta em 1 para cada círculo do espaço acima do 6º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "elminsters-elusion",
@@ -2541,9 +2571,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 144,
-    "description": "Concede vantagem contra efeitos mágicos e evita danos ao obter sucesso em salvaguardas que normalmente reduziriam o dano à metade.",
+    "description": "Durante a duração, você recebe vantagem nas salvaguardas contra magias e efeitos mágicos. Além disso, quando obtiver sucesso em uma dessas salvaguardas e normalmente sofreria metade do dano, você não sofre dano.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "enhance-ability",
@@ -2826,9 +2857,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 271,
-    "description": "Coloca uma criatura voluntária em um estado que imita a morte e reduz danos recebidos.",
+    "description": "Você toca uma criatura voluntária e a coloca em um estado de catalepsia indistinguível da morte. Durante a duração, ela parece morta tanto à inspeção comum quanto a magias que determinem seu estado. Fica Cega e Incapacitada, e seu deslocamento se torna 0.\n\nO alvo recebe resistência a todo dano, exceto psíquico, e imunidade à condição Envenenado.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "find-familiar",
@@ -3206,9 +3238,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 277,
-    "description": "Envolve você em luz lunar, fortalecendo ataques e permitindo ofuscar quem o atingir.",
+    "description": "Uma luz fria envolve seu corpo durante a duração, emitindo luz plena em um raio de 20 pés e luz fraca por mais 20 pés. Você recebe resistência a dano radiante, e seus ataques corpo a corpo causam mais 2d6 de dano radiante em cada acerto.\n\nImediatamente após sofrer dano de uma criatura que você possa ver a até 60 pés, pode usar uma reação para obrigá-la a fazer uma salvaguarda de Constituição. Em caso de falha, ela fica Cega até o final do seu próximo turno.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "freedom-of-movement",
@@ -3263,9 +3296,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 277,
-    "description": "Pode enfeitiçar uma criatura para facilitar interações sociais; ela percebe a influência quando o efeito termina.",
+    "description": "Uma criatura que você possa ver dentro do alcance deve obter sucesso em uma salvaguarda de Sabedoria ou fica Enfeitiçada durante a duração. Ela obtém sucesso automaticamente se não for Humanoide, se estiver lutando contra você ou se você tiver conjurado esta magia sobre ela nas últimas 24 horas.\n\nA magia termina antecipadamente se o alvo sofrer dano ou se você fizer uma rolagem de ataque, causar dano ou obrigar alguém a fazer uma salvaguarda. Ao terminar, o alvo sabe que foi Enfeitiçado por você.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "gaseous-form",
@@ -3453,9 +3487,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 280,
-    "description": "Invoca uma vinha que pode puxar criaturas e causar dano.",
+    "description": "Você conjura uma vinha que brota de uma superfície em um espaço desocupado e visível dentro do alcance. Ela permanece durante a duração.\n\nFaça um ataque corpo a corpo com magia contra uma criatura a até 30 pés da vinha. Se acertar, causa 4d8 de dano contundente e puxa o alvo até 30 pés em direção à vinha. Se for Enorme ou menor, o alvo também fica Agarrado; a CD para escapar é igual à sua CD de salvaguarda de magia. A vinha pode agarrar somente uma criatura por vez, e você pode soltá-la sem gastar ação.\n\nNos turnos seguintes, pode usar uma ação bônus para repetir o ataque contra uma criatura a até 30 pés da vinha.\n\nEm círculos superiores: a vinha pode agarrar mais uma criatura para cada círculo do espaço acima do 4º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "grease",
@@ -3624,9 +3659,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 283,
-    "description": "Transforma um acerto à distância em uma explosão de espinhos ao redor do alvo.",
+    "description": "Quando seu ataque acerta a criatura, espinhos brotam de sua arma à distância ou munição. O alvo do ataque e cada criatura a até 5 pés dele fazem uma salvaguarda de Destreza. Sofrem 1d10 de dano perfurante em caso de falha, ou metade em caso de sucesso.\n\nEm círculos superiores: o dano aumenta em 1d10 para cada círculo do espaço acima do 1º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "hallow",
@@ -3928,9 +3964,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 145,
-    "description": "Uma estrela protetora oferece cobertura, dispara energia radiante ou de força e pode devolver determinadas magias ao conjurador.",
+    "description": "Você cria um ponto de energia luminosa que flutua sobre você durante a duração. Ele emite luz plena em um raio de 5 pés e luz fraca por mais 5 pés.\n\nAo conjurar e, nos turnos seguintes, com uma ação bônus, você pode disparar um raio contra uma criatura a até 120 pés de você. Faça um ataque à distância com magia. Se acertar, causa dano de força ou radiante, à sua escolha, igual a 4d10 + seu modificador do atributo de conjuração.\n\nEnquanto a estrela existir, você recebe cobertura de três quartos. Se obtiver sucesso em uma salvaguarda contra uma magia de círculo 7 ou inferior que tenha somente você como alvo e não crie uma área de efeito, pode usar uma reação para refletir essa magia contra o conjurador. Ele faz a salvaguarda usando a própria CD de salvaguarda de magia.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "homunculus-servant",
@@ -3947,9 +3984,10 @@
     "materialConsumed": false,
     "source": "EFA",
     "page": 21,
-    "description": "Invoca um homúnculo aliado que obedece às suas ordens e age logo após você.",
+    "description": "Você invoca um homúnculo em um espaço desocupado dentro do alcance. Ele usa o bloco de estatísticas de Servo Homúnculo. Se já possuir um homúnculo criado por esta magia, o novo substitui o anterior. Você escolhe sua aparência, como um pássaro mecânico, um frasco alado ou um pequeno caldeirão animado.\n\nCombate: o homúnculo é aliado seu e de seus aliados. Usa sua contagem de iniciativa, mas age imediatamente depois de você. Obedece aos seus comandos, sem exigir ação sua. Sem comandos, usa a ação Esquivar e seu movimento para evitar perigo.\n\nEm círculos superiores: use o círculo do espaço gasto como o círculo da magia no bloco de estatísticas.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "hunger-of-hadar",
@@ -3966,9 +4004,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 286,
-    "description": "Cria uma região de escuridão e terreno difícil que causa dano de frio e ácido.",
+    "description": "Você abre uma passagem para o Reino Distante. Uma esfera de escuridão com 20 pés de raio surge em um ponto dentro do alcance e permanece durante a duração. A área é terreno difícil e produz sussurros e ruídos audíveis a até 30 pés. Nenhuma luz, mágica ou comum, ilumina a área; criaturas totalmente dentro dela ficam Cegas.\n\nUma criatura que começar o turno na área sofre 2d6 de dano de frio. Se terminar o turno ali, deve obter sucesso em uma salvaguarda de Destreza ou sofre 2d6 de dano ácido dos tentáculos.\n\nEm círculos superiores: escolha o dano de frio ou o dano ácido; o dano escolhido aumenta em 1d6 para cada círculo do espaço acima do 3º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "hunters-mark",
@@ -4232,9 +4271,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 289,
-    "description": "Mantém uma tempestade radiante que causa dano e interfere na conjuração de quem estiver na área.",
+    "description": "Uma tempestade de luz e trovões ocupa um cilindro de 10 pés de raio e 40 pés de altura, centrado em um ponto visível dentro do alcance. Enquanto estiverem na área, as criaturas ficam Cegas e Surdas e não podem conjurar magias com componente verbal.\n\nCada criatura na tempestade quando ela surge faz uma salvaguarda de Constituição. Em caso de falha, sofre 2d10 de dano radiante e 2d10 de dano trovejante; em caso de sucesso, sofre metade. A salvaguarda também ocorre quando uma criatura entra na área pela primeira vez em um turno ou termina o turno ali, no máximo uma vez por turno para cada criatura.\n\nEm círculos superiores: os danos radiante e trovejante aumentam em 1d10 para cada círculo do espaço acima do 5º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "jump",
@@ -4289,9 +4329,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 145,
-    "description": "Dispara energia de força em linha, podendo derrubar as criaturas atingidas.",
+    "description": "Energia prateada sai de você em uma linha de 120 pés de comprimento e 5 pés de largura. Cada criatura à sua escolha na linha faz uma salvaguarda de Força. Em caso de falha, sofre 3d10 de dano de força e fica Caída. Em caso de sucesso, sofre somente metade do dano.\n\nEm círculos superiores: o dano aumenta em 1d10 para cada círculo do espaço acima do 3º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "legend-lore",
@@ -4384,9 +4425,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 292,
-    "description": "Converte um disparo em eletricidade que também pode atingir criaturas próximas ao alvo.",
+    "description": "Ao acertar ou errar o alvo, sua arma ou munição se transforma em um relâmpago. O dano e os demais efeitos normais do ataque são substituídos: o alvo sofre 4d8 de dano elétrico se o ataque acertar, ou metade desse dano se errar.\n\nEm seguida, cada criatura a até 10 pés do alvo faz uma salvaguarda de Destreza. Sofre 2d8 de dano elétrico em caso de falha, ou metade em caso de sucesso. A arma ou munição volta à forma normal.\n\nEm círculos superiores: o dano dos dois efeitos aumenta em 1d8 para cada círculo do espaço acima do 3º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "lightning-bolt",
@@ -4859,9 +4901,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 298,
-    "description": "Causa dano psíquico e pode reduzir a próxima salvaguarda do alvo.",
+    "description": "Uma criatura que você possa ver dentro do alcance deve obter sucesso em uma salvaguarda de Inteligência ou sofre 1d6 de dano psíquico e subtrai 1d4 da próxima salvaguarda que fizer antes do final do seu próximo turno.\n\nEvolução do truque: o dano aumenta em 1d6 quando você atinge os níveis 5 (2d6), 11 (3d6) e 17 (4d6).",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "mind-spike",
@@ -5277,9 +5320,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 306,
-    "description": "Distribui uma grande reserva de pontos de vida temporários entre criaturas escolhidas.",
+    "description": "Escolha até seis criaturas que você possa ver dentro do alcance. A magia concede um total de 120 pontos de vida temporários, distribuídos por você entre essas criaturas.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "power-word-heal",
@@ -6189,9 +6233,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 145,
-    "description": "Permite que uma criatura gaste Dados de Vida para se curar quando conjurar usando espaços de magia.",
+    "description": "Você toca uma criatura e a preenche de energia curativa durante a duração. Sempre que ela conjurar uma magia usando um espaço, pode imediatamente rolar uma quantidade de Dados de Vida não gastos igual ao círculo desse espaço. Recupera pontos de vida iguais à soma dos resultados + seu modificador do atributo de conjuração. Os dados rolados são gastos.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "simulacrum",
@@ -6284,9 +6329,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 145,
-    "description": "Concede resistência elemental, voo e pulsos de energia que podem derrubar inimigos.",
+    "description": "Você recebe os seguintes benefícios até a magia terminar:\n\nResistência elemental: ao conjurar, escolha dano ácido, de frio, de fogo, elétrico ou trovejante. Você recebe resistência ao tipo escolhido.\n\nPulso elemental: ao conjurar e no início de cada um dos seus turnos seguintes, libere uma emanação de 15 pés ao seu redor. Cada criatura à sua escolha na área faz uma salvaguarda de Destreza. Em caso de falha, sofre 2d6 de dano ácido, de frio, de fogo, elétrico ou trovejante, à sua escolha, e fica Caída. Em caso de sucesso, sofre somente metade do dano.\n\nVoo: você recebe deslocamento de voo de 30 pés e pode pairar.\n\nConjuração em círculo: o tempo de conjuração passa a 1 minuto e a duração passa a concentração, até 10 minutos. Para cada conjurador secundário participante, você pode escolher mais uma criatura, até o máximo de nove criaturas adicionais. Elas também recebem os benefícios durante a duração. Cada conjurador secundário deve gastar um espaço de círculo 2 ou superior ao conjurar; caso contrário, a magia falha.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "sorcerous-burst",
@@ -6398,9 +6444,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 146,
-    "description": "Realiza um ataque radiante à distância que ignora meia cobertura e cobertura de três quartos.",
+    "description": "Faça um ataque à distância com magia contra um alvo dentro do alcance. Para esse ataque, o alvo não recebe os benefícios de meia cobertura nem de cobertura de três quartos. Se acertar, causa 2d10 de dano radiante.\n\nEm círculos superiores: crie mais uma rajada para cada círculo do espaço acima do 1º. Faça uma rolagem de ataque separada para cada rajada; elas podem atingir o mesmo alvo ou alvos diferentes.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "spellfire-storm",
@@ -6417,9 +6464,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 146,
-    "description": "Cria uma coluna de energia radiante que causa dano e pode impedir conjurações dentro dela.",
+    "description": "Uma coluna de fogo mágico ocupa um cilindro de 20 pés de raio e 20 pés de altura, centrado em um ponto dentro do alcance. A área fica iluminada por luz plena. Cada criatura na área quando a coluna surge faz uma salvaguarda de Constituição. Sofre 4d10 de dano radiante em caso de falha, ou metade em caso de sucesso. A salvaguarda também ocorre ao entrar na área pela primeira vez em um turno ou terminar o turno ali, no máximo uma vez por turno para cada criatura.\n\nAlém disso, sempre que uma criatura na área conjurar uma magia, deve fazer uma salvaguarda de Constituição. Em caso de falha, a magia se dissipa sem efeito e a ação, ação bônus ou reação usada é desperdiçada. Se tiver usado um espaço de magia, esse espaço não é gasto. Ao conjurar a tempestade, você pode designar criaturas que não serão afetadas.\n\nConjuração em círculo: exige também uma safira-estrela azul de pelo menos 25.000 PO, consumida pela magia. O alcance passa a 1 milha e a magia deixa de exigir concentração. Cada conjurador secundário deve gastar um espaço de círculo 3 ou superior; caso contrário, a magia falha.\n\nEm círculos superiores: o dano aumenta em 1d10 para cada círculo do espaço acima do 4º.\n\nO número de conjuradores secundários define a área e a duração:\n\n1-3 conjuradores: cilindro de 40 pés de raio e 40 pés de altura; duração de 1 hora.\n\n4-6 conjuradores: cilindro de 60 pés de raio e 60 pés de altura; duração de 8 horas.\n\n7 ou mais conjuradores: cilindro de 100 pés de raio e 100 pés de altura; duração de 24 horas.\n\nA magia termina antecipadamente se qualquer participante contribuir para outra conjuração em círculo de Tempestade de Fogo Mágico.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "spider-climb",
@@ -6512,9 +6560,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 320,
-    "description": "Acrescenta dano psíquico a um acerto e pode atordoar o alvo.",
+    "description": "O alvo sofre mais 4d6 de dano psíquico do ataque e deve obter sucesso em uma salvaguarda de Sabedoria ou fica Atordoado até o final do seu próximo turno.\n\nEm círculos superiores: o dano adicional aumenta em 1d6 para cada círculo do espaço acima do 4º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "starry-wisp",
@@ -6550,9 +6599,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 320,
-    "description": "Combina ataques de força contra vários alvos com teletransporte.",
+    "description": "Você brande a arma usada na conjuração e desaparece para atacar com a rapidez do vento. Escolha até cinco criaturas que você possa ver dentro do alcance. Faça um ataque corpo a corpo com magia contra cada alvo; cada acerto causa 6d10 de dano de força.\n\nEm seguida, você se teleporta para um espaço desocupado que possa ver a até 5 pés de um dos alvos.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "stinking-cloud",
@@ -6664,9 +6714,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 322,
-    "description": "Invoca uma aberração aliada. A forma escolhida define suas habilidades e os espaços superiores fortalecem a criatura.",
+    "description": "Você invoca um espírito aberrante em um espaço desocupado e visível dentro do alcance. Ele usa o bloco de estatísticas de Espírito Aberrante. Ao conjurar, escolha sua forma: semelhante a um Observador, Devorador de Mentes ou Slaad. A criatura tem a aparência de uma Aberração desse tipo; a escolha determina características do bloco de estatísticas. A criatura desaparece quando fica com 0 pontos de vida ou quando a magia termina.\n\nA criatura é aliada sua e de seus aliados. Em combate, usa sua contagem de iniciativa, mas age imediatamente depois de você. Obedece aos seus comandos verbais, sem exigir ação sua. Sem comandos, usa a ação Esquivar e seu movimento para evitar perigo.\n\nEm círculos superiores: use o círculo do espaço gasto como o círculo da magia no bloco de estatísticas.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "summon-beast",
@@ -6683,9 +6734,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 322,
-    "description": "Invoca uma fera aliada com características adequadas ao ambiente escolhido.",
+    "description": "Você invoca um espírito bestial em um espaço desocupado e visível dentro do alcance. Ele usa o bloco de estatísticas de Espírito Bestial. Ao conjurar, escolha um ambiente: ar, terra ou água. A criatura se parece com um animal escolhido por você e nativo do ambiente selecionado; essa escolha determina características do bloco de estatísticas. A criatura desaparece quando fica com 0 pontos de vida ou quando a magia termina.\n\nA criatura é aliada sua e de seus aliados. Em combate, usa sua contagem de iniciativa, mas age imediatamente depois de você. Obedece aos seus comandos verbais, sem exigir ação sua. Sem comandos, usa a ação Esquivar e seu movimento para evitar perigo.\n\nEm círculos superiores: use o círculo do espaço gasto como o círculo da magia no bloco de estatísticas.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "summon-celestial",
@@ -6702,9 +6754,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 323,
-    "description": "Invoca um celestial aliado com funções ofensivas ou protetoras.",
+    "description": "Você invoca um espírito Celestial de forma angelical em um espaço desocupado e visível dentro do alcance. Ele usa o bloco de estatísticas de Espírito Celestial. Ao conjurar, escolha Vingador ou Defensor; essa escolha determina características do bloco de estatísticas. A criatura desaparece quando fica com 0 pontos de vida ou quando a magia termina.\n\nA criatura é aliada sua e de seus aliados. Em combate, usa sua contagem de iniciativa, mas age imediatamente depois de você. Obedece aos seus comandos verbais, sem exigir ação sua. Sem comandos, usa a ação Esquivar e seu movimento para evitar perigo.\n\nEm círculos superiores: use o círculo do espaço gasto como o círculo da magia no bloco de estatísticas.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "summon-construct",
@@ -6721,9 +6774,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 324,
-    "description": "Invoca um constructo aliado cuja forma determina seus recursos de combate.",
+    "description": "Você invoca o espírito de um Constructo em um espaço desocupado e visível dentro do alcance. Ele usa o bloco de estatísticas de Espírito de Constructo. Ao conjurar, escolha argila, metal ou pedra. A criatura se parece com uma estátua animada do material escolhido, com aparência definida por você; o material determina características do bloco de estatísticas. A criatura desaparece quando fica com 0 pontos de vida ou quando a magia termina.\n\nA criatura é aliada sua e de seus aliados. Em combate, usa sua contagem de iniciativa, mas age imediatamente depois de você. Obedece aos seus comandos verbais, sem exigir ação sua. Sem comandos, usa a ação Esquivar e seu movimento para evitar perigo.\n\nEm círculos superiores: use o círculo do espaço gasto como o círculo da magia no bloco de estatísticas.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "summon-dragon",
@@ -6759,9 +6813,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 325,
-    "description": "Invoca um elemental aliado do tipo escolhido.",
+    "description": "Você invoca um espírito Elemental em um espaço desocupado e visível dentro do alcance. Ele usa o bloco de estatísticas de Espírito Elemental. Ao conjurar, escolha ar, terra, fogo ou água. A criatura tem forma bípede envolvida pelo elemento escolhido; o elemento determina características do bloco de estatísticas. A criatura desaparece quando fica com 0 pontos de vida ou quando a magia termina.\n\nA criatura é aliada sua e de seus aliados. Em combate, usa sua contagem de iniciativa, mas age imediatamente depois de você. Obedece aos seus comandos verbais, sem exigir ação sua. Sem comandos, usa a ação Esquivar e seu movimento para evitar perigo.\n\nEm círculos superiores: use o círculo do espaço gasto como o círculo da magia no bloco de estatísticas.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "summon-fey",
@@ -6778,9 +6833,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 326,
-    "description": "Invoca um espírito feérico aliado com poderes de combate e teletransporte.",
+    "description": "Você invoca um espírito Feérico em um espaço desocupado e visível dentro do alcance. Ele usa o bloco de estatísticas de Espírito Feérico. Ao conjurar, escolha um temperamento: Furioso, Alegre ou Travesso. A criatura se parece com um ser Feérico escolhido por você, marcado por esse temperamento; a escolha determina características do bloco de estatísticas. A criatura desaparece quando fica com 0 pontos de vida ou quando a magia termina.\n\nA criatura é aliada sua e de seus aliados. Em combate, usa sua contagem de iniciativa, mas age imediatamente depois de você. Obedece aos seus comandos verbais, sem exigir ação sua. Sem comandos, usa a ação Esquivar e seu movimento para evitar perigo.\n\nEm círculos superiores: use o círculo do espaço gasto como o círculo da magia no bloco de estatísticas.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "summon-fiend",
@@ -6797,9 +6853,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 326,
-    "description": "Invoca um espírito ínfero aliado com características da forma escolhida.",
+    "description": "Você invoca um espírito Ínfero em um espaço desocupado e visível dentro do alcance. Ele usa o bloco de estatísticas de Espírito Ínfero. Ao conjurar, escolha Demônio, Diabo ou Yugoloth. A criatura se parece com um Ínfero do tipo escolhido; essa escolha determina características do bloco de estatísticas. A criatura desaparece quando fica com 0 pontos de vida ou quando a magia termina.\n\nA criatura é aliada sua e de seus aliados. Em combate, usa sua contagem de iniciativa, mas age imediatamente depois de você. Obedece aos seus comandos verbais, sem exigir ação sua. Sem comandos, usa a ação Esquivar e seu movimento para evitar perigo.\n\nEm círculos superiores: use o círculo do espaço gasto como o círculo da magia no bloco de estatísticas.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "summon-undead",
@@ -6816,9 +6873,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 328,
-    "description": "Invoca um espírito morto-vivo aliado com ataques e condições próprios da forma escolhida.",
+    "description": "Você invoca um espírito Morto-Vivo em um espaço desocupado e visível dentro do alcance. Ele usa o bloco de estatísticas de Espírito Morto-Vivo. Ao conjurar, escolha a forma Fantasmagórica, Pútrida ou Esquelética. A criatura se parece com um Morto-Vivo dessa forma; essa escolha determina características do bloco de estatísticas. A criatura desaparece quando fica com 0 pontos de vida ou quando a magia termina.\n\nA criatura é aliada sua e de seus aliados. Em combate, usa sua contagem de iniciativa, mas age imediatamente depois de você. Obedece aos seus comandos verbais, sem exigir ação sua. Sem comandos, usa a ação Esquivar e seu movimento para evitar perigo.\n\nEm círculos superiores: use o círculo do espaço gasto como o círculo da magia no bloco de estatísticas.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "sunbeam",
@@ -6873,9 +6931,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 329,
-    "description": "Encanta sua aljava para permitir disparos adicionais com ação bônus.",
+    "description": "Ao conjurar e, até a magia terminar, com uma ação bônus, você pode fazer dois ataques com uma arma que dispare flechas ou virotes, como um arco longo ou uma besta leve. A magia cria a munição necessária para cada ataque. Cada projétil causa o dano de uma munição não mágica do seu tipo e se desintegra imediatamente após acertar ou errar.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "sylunes-viper",
@@ -6892,9 +6951,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 147,
-    "description": "Uma serpente espectral concede pontos de vida temporários e escalada; seu ataque pode envenenar e incapacitar.",
+    "description": "Uma serpente espectral envolve seu corpo durante a duração. Você recebe 15 pontos de vida temporários; a magia termina antecipadamente quando você ficar sem pontos de vida temporários.\n\nEnquanto a magia estiver ativa, recebe os seguintes benefícios:\n\nEscalada: seu deslocamento de escalada é igual ao seu deslocamento.\n\nMordida venenosa: com uma ação de Magia, faça um ataque à distância com magia usando a serpente contra uma criatura a até 50 pés. Se acertar, o alvo sofre 1d6 de dano de força e fica Envenenado até o início do seu próximo turno. Enquanto estiver Envenenado dessa forma, também fica Incapacitado.\n\nEm círculos superiores: para cada círculo do espaço acima do 3º, os pontos de vida temporários aumentam em 5 e o dano da mordida aumenta em 1d6.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "symbol",
@@ -6930,9 +6990,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 330,
-    "description": "Uma explosão psíquica fere criaturas e pode prejudicar ataques, testes e concentração.",
+    "description": "Energia psíquica explode em uma esfera de 20 pés de raio, centrada em um ponto dentro do alcance. Cada criatura na área faz uma salvaguarda de Inteligência. Sofre 8d6 de dano psíquico em caso de falha, ou metade em caso de sucesso.\n\nSe falhar, o alvo também fica com os pensamentos confusos por 1 minuto. Nesse período, subtrai 1d6 de todas as rolagens de ataque e testes de atributo, além das salvaguardas de Constituição para manter concentração. No final de cada turno dele, faz uma salvaguarda de Inteligência, encerrando esse efeito sobre si em caso de sucesso.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "tashas-bubbling-cauldron",
@@ -6949,9 +7010,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 330,
-    "description": "Cria um caldeirão mágico do qual podem ser retiradas poções temporárias.",
+    "description": "Você conjura um caldeirão cheio de líquido borbulhante em um espaço desocupado no chão a até 5 pés de você. Ele permanece durante a duração, não pode ser movido e desaparece com o líquido quando a magia termina.\n\nO líquido reproduz as propriedades de uma poção Comum ou Incomum escolhida por você, como uma Poção de Cura. Com uma ação bônus, você ou um aliado pode retirar do caldeirão uma poção desse tipo, em um frasco que desaparece ao ser consumida. O caldeirão produz uma quantidade de poções igual ao seu modificador do atributo de conjuração, no mínimo 1. Ao retirar a última poção, o caldeirão desaparece e a magia termina.\n\nAs poções retiradas e ainda não consumidas desaparecem quando você conjurar esta magia novamente.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "telekinesis",
@@ -7006,9 +7068,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 331,
-    "description": "Estabelece comunicação mental a longa distância com uma criatura voluntária.",
+    "description": "Você cria um vínculo telepático com uma criatura voluntária e familiar a você. Ela pode estar em qualquer lugar do mesmo plano de existência. A magia termina se você ou o alvo deixar de estar no mesmo plano.\n\nAté a magia terminar, vocês podem compartilhar instantaneamente palavras, imagens, sons e outras mensagens sensoriais. O alvo reconhece você como seu interlocutor. A magia permite que ele compreenda o significado de suas palavras e das mensagens sensoriais enviadas.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "teleport",
@@ -7082,9 +7145,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 333,
-    "description": "Um chicote vegetal causa dano perfurante e pode puxar o alvo.",
+    "description": "Faça um ataque corpo a corpo com magia contra uma criatura dentro do alcance, usando um chicote de vinhas cobertas de espinhos. Se acertar, causa 1d6 de dano perfurante. Se o alvo for Grande ou menor, você também pode puxá-lo até 10 pés em sua direção.\n\nEvolução do truque: o dano aumenta em 1d6 quando você atinge os níveis 5 (2d6), 11 (3d6) e 17 (4d6).",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "thunderclap",
@@ -7101,9 +7165,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 333,
-    "description": "Um estrondo atinge criaturas próximas com dano trovejante e produz ruído audível à distância.",
+    "description": "Cada criatura em uma emanação de 5 pés ao seu redor deve obter sucesso em uma salvaguarda de Constituição ou sofre 1d6 de dano trovejante. O estrondo pode ser ouvido a até 100 pés de distância.\n\nEvolução do truque: o dano aumenta em 1d6 quando você atinge os níveis 5 (2d6), 11 (3d6) e 17 (4d6).",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "thunderous-smite",
@@ -7120,9 +7185,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 334,
-    "description": "Acrescenta dano trovejante a um acerto, podendo empurrar e derrubar o alvo.",
+    "description": "Seu golpe produz um trovão audível a até 300 pés de você, e o alvo sofre mais 2d6 de dano trovejante do ataque. Se o alvo for uma criatura, deve obter sucesso em uma salvaguarda de Força ou é empurrado 10 pés para longe de você e fica Caído.\n\nEm círculos superiores: o dano aumenta em 1d6 para cada círculo do espaço acima do 1º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "thunderwave",
@@ -7196,9 +7262,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 334,
-    "description": "Um toque fúnebre causa dano necrótico, mais intenso contra um alvo já ferido.",
+    "description": "Escolha uma criatura que você possa ver dentro do alcance. Um sino fúnebre é ouvido a até 10 pés dela. O alvo deve obter sucesso em uma salvaguarda de Sabedoria ou sofre 1d8 de dano necrótico. Se já tiver perdido qualquer quantidade de pontos de vida, sofre 1d12 de dano necrótico em vez disso.\n\nEvolução do truque: o dano aumenta em um dado quando você atinge os níveis 5 (2d8 ou 2d12), 11 (3d8 ou 3d12) e 17 (4d8 ou 4d12).",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "tongues",
@@ -7538,9 +7605,10 @@
     "materialConsumed": false,
     "source": "FRHoF",
     "page": 147,
-    "description": "Uma força desorientadora fere o alvo e pode limitar seu deslocamento e suas ações. Constructos e mortos-vivos resistem automaticamente.",
+    "description": "Você lança uma força mágica desorientadora contra uma criatura dentro do alcance. Ela faz uma salvaguarda de Constituição; Constructos e Mortos-Vivos obtêm sucesso automaticamente.\n\nEm caso de falha, o alvo sofre 2d4 de dano de força e tem seu deslocamento reduzido pela metade até o início do seu próximo turno. No próximo turno dele, pode usar somente uma ação ou uma ação bônus, mas não ambas. Em caso de sucesso, sofre somente metade do dano.\n\nEm círculos superiores: o dano aumenta em 2d4 para cada círculo do espaço acima do 1º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "warding-bond",
@@ -7709,9 +7777,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 343,
-    "description": "Liga você ao alvo por um arco elétrico que pode causar dano repetido enquanto a magia se mantiver.",
+    "description": "Faça um ataque à distância com magia contra uma criatura dentro do alcance, formando um arco elétrico entre você e ela. Se acertar, o alvo sofre 2d12 de dano elétrico.\n\nEm cada um dos seus turnos seguintes, você pode usar uma ação bônus para causar automaticamente 1d12 de dano elétrico ao alvo, mesmo que o ataque inicial tenha errado.\n\nA magia termina se o alvo ficar fora do alcance dela ou tiver cobertura total em relação a você.\n\nEm círculos superiores: o dano inicial aumenta em 1d12 para cada círculo do espaço acima do 1º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "word-of-radiance",
@@ -7728,9 +7797,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 343,
-    "description": "Uma palavra de poder atinge criaturas próximas escolhidas com dano radiante.",
+    "description": "Uma emanação de 5 pés ao seu redor irrompe em luz radiante. Cada criatura à sua escolha que você possa ver na área deve obter sucesso em uma salvaguarda de Constituição ou sofre 1d6 de dano radiante.\n\nEvolução do truque: o dano aumenta em 1d6 quando você atinge os níveis 5 (2d6), 11 (3d6) e 17 (4d6).",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "word-of-recall",
@@ -7766,9 +7836,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 343,
-    "description": "Acrescenta dano necrótico a um acerto e pode amedrontar o alvo.",
+    "description": "O alvo sofre mais 1d6 de dano necrótico do ataque e deve obter sucesso em uma salvaguarda de Sabedoria ou fica Amedrontado até a magia terminar. No final de cada turno dele, o alvo Amedrontado repete a salvaguarda, encerrando a magia sobre si em caso de sucesso.\n\nEm círculos superiores: o dano aumenta em 1d6 para cada círculo do espaço acima do 1º.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "yolandes-regal-presence",
@@ -7785,9 +7856,10 @@
     "materialConsumed": false,
     "source": "XPHB",
     "page": 343,
-    "description": "Uma presença majestosa afeta inimigos próximos, causando dano psíquico e podendo obrigá-los a se ajoelhar e afastar-se.",
+    "description": "Você se envolve em uma majestade sobrenatural que forma uma emanação de 10 pés. Quando ela entrar no espaço de uma criatura que você possa ver, ou uma criatura visível entrar na emanação ou terminar o turno ali, você pode obrigá-la a fazer uma salvaguarda de Sabedoria.\n\nEm caso de falha, o alvo sofre 4d6 de dano psíquico, fica Caído e pode ser empurrado por você até 10 pés para longe. Em caso de sucesso, sofre somente metade do dano. Cada criatura faz essa salvaguarda apenas uma vez por turno.",
     "translated": true,
-    "summary": true
+    "summary": false,
+    "srd": false
   },
   {
     "id": "zone-of-truth",

@@ -17,6 +17,7 @@ type Reference = {
   page: number;
   description: string;
   summary: boolean;
+  srd?: boolean;
 };
 const loaded = new Map<string, Reference>();
 export function SpellReference({
@@ -128,7 +129,7 @@ export function SpellReference({
             <p className="spell-reference-source">
               Fonte: {data.source}, p. {data.page}. Regras de 2024.
             </p>
-            {!data.summary && (
+            {!data.summary && data.srd !== false && (
               <p className="spell-reference-source">
                 Tradução do SRD 5.2.1, Wizards of the Coast LLC, sob{' '}
                 <a

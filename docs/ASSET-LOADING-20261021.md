@@ -66,4 +66,3 @@ o navegador revalida. Autorização e personagem excluído continuam conferidos 
 navegar/recarregar, versões antigas, bytes, visitante anônimo, atualização de arte
 e separação entre fundo de perfil e acampamento em 1440/390 px. O smoke de
 carregamento mantém os casos de atraso, falha, nova tentativa e Empório separado.
-

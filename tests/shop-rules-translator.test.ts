@@ -47,3 +47,29 @@ test('tradutor mantém o contrato anterior e protege o glossário adicional com 
     await new Promise<void>((resolve) => server.close(() => resolve()));
   }
 });
+
+test('tradutor recupera números e dados quando a resposta duplica marcadores ou inventa valores', async () => {
+  const server = createServer(async (req, res) => {
+    const chunks: Buffer[] = [];
+    for await (const chunk of req) chunks.push(Buffer.from(chunk));
+    const {q} = JSON.parse(Buffer.concat(chunks).toString());
+    res.setHeader('Content-Type','application/json');
+    res.end(JSON.stringify({translatedText:q.map((line: string) => line.includes('ZZNUMBER')
+      ? line.replace(/ZZNUMBER0000ZZ/g, 'ZZNUMBER0000ZZ ZZNUMBER0000ZZ') + ' 999'
+      : line)}));
+  });
+  await new Promise<void>(resolve=>server.listen(0,'127.0.0.1',resolve));
+  const address=server.address();assert(address && typeof address!=='string');
+  const previous=process.env.VTT_TRANSLATOR_URL;
+  process.env.VTT_TRANSLATOR_URL=`http://127.0.0.1:${address.port}`;
+  try {
+    const [translated]=await translateMonsterLines(['The target takes 2d6 Fire damage at level 5 and 3d6 at level 11.']);
+    assert.match(translated,/2d6/);assert.match(translated,/3d6/);
+    assert.match(translated,/\b5\b/);assert.match(translated,/\b11\b/);
+    assert.doesNotMatch(translated,/999|ZZNUMBER/);
+    assert.equal((translated.match(/2d6/g)||[]).length,1);
+  } finally {
+    if(previous===undefined)delete process.env.VTT_TRANSLATOR_URL;else process.env.VTT_TRANSLATOR_URL=previous;
+    await new Promise<void>(resolve=>server.close(()=>resolve()));
+  }
+});

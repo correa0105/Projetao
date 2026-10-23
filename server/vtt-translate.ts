@@ -131,14 +131,19 @@ export async function translateMonsterLines(
           'ZZ\\s*NUMBER\\s*' + String(n).padStart(4, '0') + '\\s*ZZ',
           'gi',
         );
-        if (!pattern.test(line)) {
+        if ([...line.matchAll(pattern)].length !== 1) {
           missing = true;
           break;
         }
         line = line.replace(pattern, replacements[index][n]);
       }
+      const numericTokens = (text: string) => (text.match(/\b\d*d\d+(?:[+-]\d+)?\b|[+-]?\d+(?:\.\d+)?/gi) || []).map(value => value.toLowerCase()).sort();
+      if (JSON.stringify(numericTokens(line)) !== JSON.stringify(numericTokens(batch[index]))) missing = true;
+      const complete = missing ? await protectedFallback(batch[index]) : line;
+      if (JSON.stringify(numericTokens(complete)) !== JSON.stringify(numericTokens(batch[index])))
+        throw new AppError(503, 'A tradução não preservou os valores da regra. Tente novamente.');
       result.push(
-        (missing ? await protectedFallback(batch[index]) : line).replace(
+        complete.replace(
           /\b(contundente|perfurante|cortante|psíquico|trovejante|elétrico|necrótico|radiante|frio|fogo|ácido)\s+dano\b/gi,
           'dano $1',
         ),
