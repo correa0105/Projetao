@@ -121,8 +121,8 @@ try {
   await form.getByRole('combobox', { name: 'Gênero do personagem', exact: true }).selectOption('female');
   await form.getByRole('combobox', { name: 'Altura', exact: true }).selectOption('tall');
   await form.getByRole('combobox', { name: 'Porte físico', exact: true }).selectOption('slim');
-  expect(await form.getByRole('combobox', { name: 'Idade aparente', exact: true }).locator('option:not([disabled])').allTextContents()).toEqual(['Jovem', 'Adulto', 'Meia-idade', 'Idoso']);
-  await form.getByRole('combobox', { name: 'Idade aparente', exact: true }).selectOption('middle-aged');
+  expect(await form.getByRole('combobox', { name: 'Idade aparente', exact: true }).locator('option:not([disabled])').allTextContents()).toEqual(['Jovem', 'Adulto', 'Meia-idade', 'Idoso', 'Ancião']);
+  await form.getByRole('combobox', { name: 'Idade aparente', exact: true }).selectOption('elder');
   await form.getByLabel('Espécie', { exact: true }).selectOption('Warforged');
   const without = form.getByRole('radio', {
     name: 'Criar apenas com as características escolhidas',
@@ -191,7 +191,7 @@ try {
   ).rows[0];
   expect(queued.reference).toBeNull();
   expect(queued.creation.choices.warforgedAppearance).toEqual(persisted);
-  expect(queued.creation.choices.physicalTraits).toEqual({ height: 'tall', build: 'slim', age: 'middle-aged', gender: 'female' });
+  expect(queued.creation.choices.physicalTraits).toEqual({ height: 'tall', build: 'slim', age: 'elder', gender: 'female' });
   await pool.query(
     "UPDATE character_art_jobs SET status='failed',error='Falha simulada' WHERE id=$1",
     [job.id],
@@ -201,7 +201,7 @@ try {
   await page.getByRole('button', { name: 'Retomar preenchimento', exact: true }).click();
   await expect(without).toBeChecked();
   await expect(form.getByRole('combobox', { name: 'Gênero do personagem', exact: true })).toHaveValue('female');
-  await expect(form.getByRole('combobox', { name: 'Idade aparente', exact: true })).toHaveValue('middle-aged');
+  await expect(form.getByRole('combobox', { name: 'Idade aparente', exact: true })).toHaveValue('elder');
   await expect(submit).toBeEnabled();
   await expect(form.getByRole('radio', { name: /Braços reforçados/ })).toBeChecked();
   await page.getByRole('dialog').getByRole('button', { name: 'Fechar', exact: true }).click();
