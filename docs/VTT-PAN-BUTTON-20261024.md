@@ -32,3 +32,9 @@ regra de acesso do produto foi modificada. O runner rejeita o túnel de produç�
 Publicação somente do cliente sobre `horns-balanced-20261024`, preservando o
 servidor, os arquivos públicos, dados e ilustrador. Recarregar uma aba antiga do
 VTT carrega os novos controles.
+
+Publicado como `vtt-pan-button-20261024`, código
+`a27290677cfced7f83c83d3db8ab5038a089d6d4`. Os 39 arquivos do pacote e 20
+retornos HTTPS conferem por SHA-256. Opção presente no cliente servido, PNG
+original Anelados preservado e ilustrador online. Backup anterior ao deploy:
+`/opt/alvorada/backups/vtt-pan-button-before-20261024T221438Z.dump`.
