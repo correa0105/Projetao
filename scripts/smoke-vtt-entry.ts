@@ -102,6 +102,15 @@ try {
   await expect(page.locator('.vtt-workspace')).toHaveAttribute('data-map-effects', 'off');
   await expect(page.locator('.vtt-workspace')).toHaveAttribute('data-visual-effects', 'off');
   expect([...terrainRequests]).toEqual([terrainTextures[0].image]);
+  const paintedPixels = await page.getByLabel('Tabuleiro da mesa', { exact: true }).evaluate((canvas) => {
+    const board = canvas as HTMLCanvasElement;
+    const pixels = board.getContext('2d')!.getImageData(0, 0, board.width, board.height).data;
+    let grass = 0;
+    for (let i = 0; i < pixels.length; i += 16)
+      if (pixels[i + 1] > pixels[i] + 4 && pixels[i + 1] > pixels[i + 2] + 6) grass++;
+    return grass;
+  });
+  expect(paintedPixels, 'A brush salva deve estar desenhada ao revelar a mesa').toBeGreaterThan(500);
   await page.screenshot({ path: 'test-results/vtt-entry/terrain-ready.png' });
   const saved = await page.evaluate(
     (id) => JSON.parse(localStorage.getItem('alvorada-vtt-media:' + id) || '{}'),

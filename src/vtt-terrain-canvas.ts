@@ -73,7 +73,12 @@ function update(cache: Cache, scene: VttScene, images: RenderOptions['images']) 
   const layerChange = layers.length !== cache.layers.length || layers.some((l, i) => {
     const old = cache.layers[i]; return !old || l.id !== old.id || l.visible !== old.visible || l.opacity !== old.opacity;
   });
-  const loaded = terrainTextures.map(t => images.get(t.image));
+  // Dimensions can arrive before the response finishes. Only snapshot drawable
+  // images so completion invalidates tiles that were cached without this paint.
+  const loaded = terrainTextures.map(t => {
+    const image = images.get(t.image);
+    return image?.complete && image.naturalWidth ? image : undefined;
+  });
   const imageChange = loaded.some((img, i) => img !== cache.images[i] || (img?.naturalWidth || 0) !== cache.imageWidths[i]);
   const source = scene.terrain || [];
   if (layerChange || imageChange) cache.epoch++;
