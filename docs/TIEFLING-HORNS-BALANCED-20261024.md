@@ -27,3 +27,12 @@ TypeScript, builds, cinco testes de modelos/resolução do CLI e revisão visual
 real aprovados. Publicação incremental inclui cliente, PNG original e registro,
 sem migration ou alteração de dependências. Ilustrador recarregado ocioso antes
 de retomar o token; publicação web conserva o worker e os demais pedidos.
+
+Publicado em `alvoradacinzenta.com` como `horns-balanced-20261024`, código
+`65523bc7703aa7f2aef2c492c10128e99ecbc094`. Os 83 arquivos do pacote, os 21
+arquivos públicos acessados por HTTPS e o espelho do PNG conferem por SHA-256.
+Retrato corrigido do Asterios e personagem original conferidos no banco somente
+por leitura; token em processamento no momento da publicação. O pedido ia
+concluiu retrato e token. Ambas as criações iniciais mantêm sua gratuidade.
+Backup anterior ao deploy:
+`/opt/alvorada/backups/vtt-brush-loading-before-20261024T212912Z.dump`.
