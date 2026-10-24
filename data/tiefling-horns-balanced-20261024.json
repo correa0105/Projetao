@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen",
+  "date": "2026-10-24",
+  "model": "ridged",
+  "request": "O modelo Anelados deve ser menos grosso e proporcional em geral; o refinamento muito fino foi rejeitado. Usar espessura intermediária, mantendo volume, anéis e curvatura compacta.",
+  "artifact": {
+    "path": "public/character-creation/tiefling-horns-ridged-balanced-20261024.png",
+    "sha256": "aa1dfdb914d22640ad92bdda703435f783917d35bd6caed8a2d880090bd23a0f",
+    "originalPng": true
+  },
+  "prompt": "Use case: precise-object-edit. Edit target: the attached square horn-option illustration of a featureless charcoal mannequin. Change ONLY the two ridged burgundy horns. Make each horn visibly slender and proportionate to a humanoid skull: reduce its cross-sectional shaft and root thickness by approximately 50 percent relative to the input. Keep the same overall upward and backward curved silhouette, height, paired root attachment locations, inward pointed tips, burgundy/red keratin colors and detailed ringed texture. The annular ridges should be fine, closely fitting the shaft, NOT huge protruding shelves or stacked armored discs; reduce their lateral flare too. The result must read as two elegant tapered ringed horns, not bulky columns, ram curls or antlers. Match both horns anatomically in size and thickness while respecting the existing perspective. Precisely preserve the mannequin head, neck, head size, position, neutral facial surface, framing, lighting, dark background and painterly style. Do not add ears, face, hair, text, symbols or border. Keep both entire horns inside the existing composition. This is the corrected general reference for this specific horn model.",
+  "selection": "A primeira variante mantém volume intermediário. A variante posterior extremamente fina e a variante que voltou a engrossar foram descartadas. A direção final salva no código exige espessura moderada; a correção individual do Asterios reduz a largura somente cerca de 25–30%."
+}
