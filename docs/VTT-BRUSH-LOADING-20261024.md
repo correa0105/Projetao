@@ -31,3 +31,9 @@ Sem migration ou alteração do documento da mesa. Publicação somente do clien
 sobre a imagem `starting-gold-20261023`, com manifesto de hashes e imagem anterior
 preservada. Evidências e cópia privada ficam fora do Git, em `.local/` e
 `test-results/`.
+
+Publicado em `alvoradacinzenta.com` como `vtt-brush-loading-20261024`, código
+`7ab84c513fbaf5a68860985fb0a3e14377ef111d`. Os 111 arquivos do pacote e os 56
+arquivos sem gzip acessados por HTTPS conferem por SHA-256. Histórico dos 75 traços
+idêntico ao snapshot anterior e ilustrador online, verificados somente por leitura.
+Backup: `/opt/alvorada/backups/vtt-brush-loading-before-20261024T195138Z.dump`.
