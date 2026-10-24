@@ -36,3 +36,7 @@ por leitura; token em processamento no momento da publicação. O pedido ia
 concluiu retrato e token. Ambas as criações iniciais mantêm sua gratuidade.
 Backup anterior ao deploy:
 `/opt/alvorada/backups/vtt-brush-loading-before-20261024T212912Z.dump`.
+
+Conferência final: o pedido do Asterios concluiu retrato e token com a espessura
+intermediária. O pedido ia também está concluído com ambas as artes. Disponibilidade
+do worker e hash do retrato corrigido foram conferidos após a conclusão.
