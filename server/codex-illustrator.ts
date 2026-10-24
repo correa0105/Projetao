@@ -1,8 +1,9 @@
 import { spawn } from 'node:child_process';
+import { resolveCodexCommand } from './codex-command.js';
 import { existsSync } from 'node:fs';
 import { mkdir, readFile, writeFile, realpath, unlink, readdir, stat } from 'node:fs/promises';
 import sharp from 'sharp';
-import { delimiter, isAbsolute, join, relative, resolve } from 'node:path';
+import { isAbsolute, join, relative, resolve } from 'node:path';
 import { homedir } from 'node:os';
 import { z } from 'zod';
 import { races, classes } from '../shared/rules.js';
@@ -38,19 +39,9 @@ export class IllustratorError extends Error {
   }
 }
 
-function codexCommand() {
-  // Invoke executable or Node entry point directly. Never pass prompts through a shell.
-  if (process.env.CODEX_BIN) return { command: process.env.CODEX_BIN, prefix: [] as string[] };
-  for (const directory of (process.env.PATH || '').split(delimiter)) {
-    const entry = join(directory, 'node_modules', '@openai', 'codex', 'bin', 'codex.js');
-    if (existsSync(entry)) return { command: process.execPath, prefix: [entry] };
-    const executable = join(directory, process.platform === 'win32' ? 'codex.exe' : 'codex');
-    if (existsSync(executable)) return { command: executable, prefix: [] as string[] };
-  }
-  throw new Error('Codex CLI não encontrado. Instale o Codex e execute codex login.');
-}
 export async function runCodex(args: string[], prompt?: string, timeout = 15 * 60_000) {
-  const { command, prefix } = codexCommand();
+  // Invoke executable or Node entry point directly. Never pass prompts through a shell.
+  const { command, prefix } = resolveCodexCommand();
   const env = { ...process.env };
   delete env.OPENAI_API_KEY;
   delete env.CODEX_API_KEY;

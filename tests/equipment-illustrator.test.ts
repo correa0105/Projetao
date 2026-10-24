@@ -175,7 +175,7 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     assert.doesNotMatch(captured.prompt, /trapos velhos|pijama rudimentar/);
     assert.match(captured.prompt, /humano não recebe asas/);
     assert.match(captured.prompt, /draconato não recebe orelhas élficas/);
-    assert.match(captured.prompt, /imagem do jogador, ela vem após a referência de estilo e fornece somente características físicas/);
+    assert.match(captured.prompt, /imagem do jogador, ela vem após a referência de estilo e fornece características físicas compatíveis: rosto, pele, cabelo, barba e marcas/);
     assert.match(captured.prompt, /Tamanho: Médio/);
     assert.match(captured.prompt, /fundo transparente real/);
     assert.match(captured.prompt, /viseira fechada/);

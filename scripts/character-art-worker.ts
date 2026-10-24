@@ -48,10 +48,23 @@ try {
   // Keep the lease connection alive too: a pooled heartbeat could otherwise
   // advertise availability while the session holding the worker lock is stale.
   const heartbeatQuery = {
-    text: 'INSERT INTO character_art_worker(id,heartbeat_at,available) VALUES(true,now(),true) ON CONFLICT(id) DO UPDATE SET heartbeat_at=now(),available=true',
+    text: 'INSERT INTO character_art_worker(id,heartbeat_at,available) VALUES(true,now(),$1) ON CONFLICT(id) DO UPDATE SET heartbeat_at=now(),available=EXCLUDED.available',
     query_timeout: 15000,
   };
-  const beat = () => lock.query(heartbeatQuery);
+  let available = true;
+  let checking: Promise<void> | undefined;
+  const beat = () => {
+    if (checking) return checking;
+    checking = (async () => {
+      let ready = false;
+      try { await checkCodexLogin(); ready = true; } catch { /* Keep queued requests until the CLI recovers. */ }
+      await lock.query({ ...heartbeatQuery, values: [ready] });
+      if (ready !== available)
+        console.log(ready ? 'Ilustrador reconectado.' : 'Ilustrador indisponível; fila preservada.');
+      available = ready;
+    })().finally(() => { checking = undefined; });
+    return checking;
+  };
   await beat();
   heartbeat = setInterval(
     () =>
@@ -62,6 +75,11 @@ try {
   );
   console.log('Ilustrador ativo — sessão ChatGPT do Codex, sem API key. Ctrl+C para parar.');
   do {
+    if (!available) {
+      if (process.argv.includes('--once')) break;
+      await new Promise(resolve => setTimeout(resolve, 2500));
+      continue;
+    }
     const job = await transaction(async (client) => {
       const candidate = (
         await client.query(
