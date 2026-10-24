@@ -63,6 +63,11 @@ try {
   const master = await signup(gm, 'Mestre'),
     owner = await signup(player, 'Jogadora'),
     outsider = await signup(visitor, 'Visitante');
+  for (const [context, account] of [[gm, master], [player, owner]] as const)
+    await context.addInitScript(id => {
+      const key = 'alvorada-vtt-media:' + id;
+      if (!localStorage.getItem(key)) localStorage.setItem(key, JSON.stringify({ mapEffects: false, masterEffects: false, soundEnabled: false }));
+    }, account.id);
   await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [master.id]);
   const masterHero = await createLegacyTestCharacter(master.id, 'Arden'),
     hero = await createLegacyTestCharacter(owner.id, 'Mira'),
@@ -128,7 +133,8 @@ try {
   room.document.scenes.push(scene);
   room.document.activeScene = scene.id;
   await request(gm, path, 'PUT', { revision: room.revision, document: room.document });
-  await page.goto(origin + '/#vtt');
+  await page.goto(origin + '/#vtt?room=' + room.id);
+  await page.getByRole('button', { name: 'Entrar no VTT', exact: true }).click();
   const board = page.getByLabel('Tabuleiro da mesa', { exact: true });
   await expect(board).toBeVisible();
   await page.getByRole('button', { name: 'Fichas', exact: true }).click();
@@ -302,13 +308,108 @@ try {
   expect(metadata.width! <= 8192 && metadata.height! <= 8192).toBe(true);
   expect((await sharp(imagePath).stats()).channels.some((c) => c.stdev > 5)).toBe(true);
   await page.reload();
+  await page.getByRole('button', { name: 'Entrar no VTT', exact: true }).click();
   await expect(board).toBeVisible();
   expect((await current()).tokens.find((t: any) => t.id === red.id).rotation).toBeCloseTo(105, 1);
   expect((await current()).terrain.map((stroke: any) => stroke.texture)).toEqual(
     referenceGrassTextures.map((t) => t.id),
   );
-  await peer.goto(origin + '/#vtt');
+  // Navigation is local to the viewer: dragging must not edit the saved map.
+  await board.focus();
+  await page.keyboard.press('v');
+  await page.getByRole('button', { name: 'Configurações e ajuda', exact: true }).click();
+  const panSetting = page.getByLabel('Botão para mover o mapa', { exact: true });
+  await expect(panSetting).toHaveValue('right');
+  const pan = async (button: 'left' | 'right' | 'middle', dx: number, dy: number, start?: { x: number; y: number }) => {
+    const from = start || await screen(850, 100);
+    await page.mouse.move(from.x, from.y);
+    await page.mouse.down({ button });
+    await page.mouse.move(from.x + dx, from.y + dy, { steps: 6 });
+    await page.mouse.up({ button });
+  };
+  const unchangedMap = await current();
+  let beforePan = await camera();
+  await pan('left', 60, 30);
+  expect(await camera()).toEqual(beforePan);
+  await pan('right', 60, 30);
+  await expect.poll(async () => (await camera()).x).toBeCloseTo(beforePan.x - 60 / beforePan.zoom, 3);
+  await expect.poll(async () => (await camera()).y).toBeCloseTo(beforePan.y - 30 / beforePan.zoom, 3);
+  expect(await current()).toEqual(unchangedMap);
+  await expect(page.locator('.vtt-token-hud')).toHaveCount(0);
+  beforePan = await camera();
+  await pan('middle', -30, 15);
+  await expect.poll(async () => (await camera()).x).toBeCloseTo(beforePan.x + 30 / beforePan.zoom, 3);
+  beforePan = await camera();
+  await board.focus();
+  await page.keyboard.down('Space');
+  await pan('left', 25, -20);
+  await page.keyboard.up('Space');
+  await expect.poll(async () => (await camera()).x).toBeCloseTo(beforePan.x - 25 / beforePan.zoom, 3);
+  // Pan over a map object without changing it or opening its context menu.
+  beforePan = await camera();
+  await pan('right', 40, 15, await screen(red.x, red.y));
+  await expect.poll(async () => (await camera()).x).toBeCloseTo(beforePan.x - 40 / beforePan.zoom, 3);
+  await expect(page.locator('.vtt-token-hud')).toHaveCount(0);
+  expect(await current()).toEqual(unchangedMap);
+  await panSetting.selectOption('left');
+  beforePan = await camera();
+  await pan('right', 40, 20);
+  expect(await camera()).toEqual(beforePan);
+  await pan('left', 40, 20);
+  await expect.poll(async () => (await camera()).x).toBeCloseTo(beforePan.x - 40 / beforePan.zoom, 3);
+  await page.reload();
+  await page.getByRole('button', { name: 'Entrar no VTT', exact: true }).click();
+  await expect(board).toBeVisible();
+  await page.getByRole('button', { name: 'Configurações e ajuda', exact: true }).click();
+  await expect(panSetting).toHaveValue('left');
+  await page.screenshot({ path: 'test-results/vtt-map-controls/pan-button-preference.png' });
+  await panSetting.selectOption('right');
+  const touch = await gm.newCDPSession(page), touchStart = await screen(850, 100);
+  beforePan = await camera();
+  await touch.send('Emulation.setTouchEmulationEnabled', { enabled: true });
+  await touch.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [touchStart] });
+  await touch.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: touchStart.x + 45, y: touchStart.y + 20 }] });
+  await touch.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await expect.poll(async () => (await camera()).x).toBeCloseTo(beforePan.x - 45 / beforePan.zoom, 3);
+  await touch.send('Emulation.setTouchEmulationEnabled', { enabled: false });
+  await touch.detach();
+  expect(await current()).toEqual(unchangedMap);
+  await page.getByRole('button', { name: 'Brush do mapa', exact: true }).click();
+  beforePan = await camera();
+  await pan('right', 30, 10);
+  await expect.poll(async () => (await camera()).x).toBeCloseTo(beforePan.x - 30 / beforePan.zoom, 3);
+  expect(await current()).toEqual(unchangedMap);
+  await board.focus();
+  await page.keyboard.press('v');
+  await page.getByRole('button', { name: 'Áreas de transparência', exact: true }).click();
+  await expect(page.getByLabel('Editor de áreas de transparência', { exact: true })).toBeVisible();
+  const canopyBoard = (await board.boundingBox())!;
+  const canopyBlank = { x: canopyBoard.x + canopyBoard.width * .3, y: canopyBoard.y + canopyBoard.height * .2 };
+  beforePan = await camera();
+  await pan('left', 20, 10, canopyBlank);
+  expect(await camera()).toEqual(beforePan);
+  await pan('right', 20, 10, canopyBlank);
+  await expect.poll(async () => (await camera()).x).toBeCloseTo(beforePan.x - 20 / beforePan.zoom, 3);
+  expect(await current()).toEqual(unchangedMap);
+  await page.getByRole('button', { name: 'Áreas de transparência', exact: true }).click();
+  // Right dragging an actor retains its measured movement; a right click opens its menu.
+  const actor = (await current()).tokens.find((t: any) => t.characterId === hero.id);
+  beforePan = await camera();
+  await pan('right', 25, 15, await screen(actor.x, actor.y));
+  expect(await camera()).toEqual(beforePan);
+  await expect.poll(async () => (await current()).tokens.find((t: any) => t.id === actor.id).x).not.toBe(actor.x);
+  const movedActor = (await current()).tokens.find((t: any) => t.id === actor.id);
+  await expect(page.locator('.vtt-token-hud')).toHaveCount(0);
+  const actorPoint = await screen(movedActor.x, movedActor.y);
+  await page.mouse.click(actorPoint.x, actorPoint.y, { button: 'right' });
+  await expect(page.locator('.vtt-token-hud')).toBeVisible();
+  await board.focus();
+  await page.keyboard.press('Escape');
+  await peer.goto(origin + '/#vtt?room=' + room.id);
+  await peer.getByRole('button', { name: 'Entrar no VTT', exact: true }).click();
   await expect(peer.getByLabel('Tabuleiro da mesa', { exact: true })).toBeVisible();
+  await peer.getByRole('button', { name: 'Configurações e ajuda', exact: true }).click();
+  await expect(peer.getByLabel('Botão para mover o mapa', { exact: true })).toHaveValue('right');
   await expect(
     peer.getByRole('button', { name: 'Capturar mapa em alta qualidade', exact: true }),
   ).toHaveCount(0);
@@ -321,13 +422,14 @@ try {
   const playerBoard = peer.getByLabel('Tabuleiro da mesa', { exact: true });
   await expect(playerBoard).toHaveAttribute('data-selection-count', '1');
   const pb = (await playerBoard.boundingBox())!;
+  const rotationBeforeWheel = (await current()).tokens.find((t: any) => t.characterId === hero.id).rotation;
   await peer.mouse.move(pb.x + pb.width / 2, pb.y + pb.height / 2);
   await peer.keyboard.down('Control');
   await peer.mouse.wheel(0, 120);
   await peer.keyboard.up('Control');
   await expect
     .poll(async () => (await current()).tokens.find((t: any) => t.characterId === hero.id).rotation)
-    .toBe(15);
+    .toBeCloseTo((rotationBeforeWheel + 15) % 360, 3);
   const playerCamera = await playerBoard.evaluate((e) => ({
     x: +e.dataset.cameraX!,
     y: +e.dataset.cameraY!,
@@ -348,7 +450,7 @@ try {
   await peer.keyboard.up('Control');
   await expect
     .poll(async () => (await current()).tokens.find((t: any) => t.characterId === hero.id).rotation)
-    .toBeCloseTo(105, 1);
+    .toBeCloseTo((rotationBeforeWheel + 105) % 360, 1);
   expect(
     (await raw(visitor, path + '/tokens/' + placed.id, 'PATCH', { rotation: 60 })).status(),
   ).toBe(403);
@@ -366,9 +468,10 @@ try {
     viewports.push(width);
   }
   await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [master.id]);
-  expect((await raw(gm, path + '/capture-permission')).status()).toBe(403);
-  expect((await raw(gm, path + '/characters')).status()).toBe(403);
-  expect((await raw(gm, path + '/characters/' + hero.id, 'POST', {})).status()).toBe(403);
+  // Personal VTT ownership, rather than site administration, grants these controls.
+  expect((await raw(gm, path + '/capture-permission')).status()).toBe(200);
+  expect((await raw(gm, path + '/characters')).status()).toBe(200);
+  expect((await raw(gm, path + '/characters/' + hero.id, 'POST', {})).status()).toBe(201);
   expect((await pool.query('SELECT * FROM characters WHERE id=$1', [hero.id])).rows[0]).toEqual(
     siteBefore,
   );
@@ -383,12 +486,18 @@ try {
         ctrlDrag: true,
         ctrlWheel: true,
         ctrlCancellation: true,
+        rightButtonPan: true,
+        leftButtonOptionAndPersistence: true,
+        navigationDoesNotEditMap: true,
+        touchAndNavigationShortcuts: true,
+        brushAndCanopyNavigation: true,
+        rightTokenMovementAndMenu: true,
         playerControl: true,
         participantImport: true,
         importIdempotent: true,
         readOnlySpectator: true,
         rosterPrivacy: true,
-        administratorCapture: true,
+        ownerCapture: true,
         referenceGrassBrushes: referenceGrassTextures.length,
         grassSearchAndPreview: true,
         capture: { width: metadata.width, height: metadata.height, format: metadata.format },

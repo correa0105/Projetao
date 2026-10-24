@@ -513,6 +513,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
       path?: Point[];
       measured?: boolean;
       moved?: boolean;
+      button?: number;
     } | null>(null),
     focusSeen = useRef<{ roomId: string; at: number; id: string } | null>(null),
     focusFrame = useRef(0),
@@ -1513,6 +1514,21 @@ export function VttSession({ characters, user, media }: { characters: Character[
     if (!scene || !doc) return;
     const p = point(e),
       snap = e.altKey ? p : snapPoint(p, scene.grid);
+    const leftPan = media.mapPanButton === 'left' || e.pointerType === 'touch';
+    const panButton = leftPan ? 0 : 2;
+    const startPan = () => {
+      e.preventDefault(); e.currentTarget.focus({ preventScroll: true });
+      e.currentTarget.setPointerCapture(e.pointerId);
+      setContextMenu(null); terrainActive.current = null; setTerrainDraft(null);
+      drag.current = { kind: 'pan', start: p, last: p,
+        screen: { x: e.clientX, y: e.clientY }, camera, original: doc, tokens: [],
+        button: e.button, moved: false };
+      e.currentTarget.style.cursor = 'grabbing';
+    };
+    const rightHit = e.button === 2 && !spectator && !preview && !attackBusy && !busy
+      ? tokenAt(p, scene, gm ? '*' : 'tokens', gm) : null;
+    const rightTokens = rightHit?.layer === 'tokens' && (gm || rightHit.controller === user.id)
+      ? movementTokens([rightHit.id]) : [];
     if (!forcePan && e.button === 0 && e.ctrlKey && !panHeld.current && tool !== 'pan' &&
       token && canToken && !preview && !busy && !token.locked && token.layer === layer &&
       tokenAt(p, {...scene,tokens:[token]}, layer, gm && !preview)?.id === token.id) {
@@ -1522,11 +1538,10 @@ export function VttSession({ characters, user, media }: { characters: Character[
         original:structuredClone(docRef.current!),tokens:[structuredClone(token)]};
       return;
     }
-    if (forcePan || e.button === 1 || (e.button === 0 && (e.ctrlKey || panHeld.current || tool === 'pan'))) {
-      e.preventDefault();e.currentTarget.focus({preventScroll:true});e.currentTarget.setPointerCapture(e.pointerId);
-      setContextMenu(null);terrainActive.current=null;setTerrainDraft(null);
-      drag.current={kind:'pan',start:p,last:p,screen:{x:e.clientX,y:e.clientY},camera,original:doc,tokens:[]};
-      e.currentTarget.style.cursor='grabbing';return;
+    if (forcePan || e.button === 1 || (e.button === 0 && (e.ctrlKey || panHeld.current)) ||
+      (tool === 'pan' && e.button === panButton) ||
+      (e.button === 2 && panButton === 2 && !rightTokens.length)) {
+      startPan(); return;
     }
     if (barrierTools.has(tool) && !barrierEditing) return;
     if(e.button===0&&resizeToken&&resizeToken.layer==='map'&&tokenRotationHandleAt(resizeToken,p,camera.zoom)){
@@ -1555,11 +1570,8 @@ export function VttSession({ characters, user, media }: { characters: Character[
       terrainActive.current = stroke; setTerrainDraft(stroke); return;
     }
     if (e.button === 2) {
-      if (spectator || preview || attackBusy || busy) return;
-      const hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
-      if (!hit || hit.layer !== 'tokens' || (!gm && hit.controller !== user.id)) return;
-      const roots = movementTokens([hit.id]);
-      if (!roots.length) return;
+      const hit = rightHit;
+      if (!hit || !rightTokens.length) return;
       e.preventDefault();
       e.currentTarget.setPointerCapture(e.pointerId);
       suppressContextUntil.current = Date.now() + 600;
@@ -1575,13 +1587,14 @@ export function VttSession({ characters, user, media }: { characters: Character[
         screen: { x: e.clientX, y: e.clientY },
         camera,
         original: structuredClone(doc),
-        tokens: roots,
+        tokens: rightTokens,
         measured: true,
         moved: false,
         path: [],
       };
       return;
     }
+    if (e.button !== 0) return;
     if (tool === 'attach' && e.button === 0 && !spectator && !preview) {
       const hit = tokenAt(p, scene, gm && !token ? '*' : 'tokens', gm);
       if (!hit || (!gm && (hit.sceneryToken || token?.sceneryToken))) return;
@@ -1601,15 +1614,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
     }
     e.currentTarget.setPointerCapture(e.pointerId);
     if (spectator) {
-      drag.current = {
-        kind: 'pan',
-        start: p,
-        last: p,
-        screen: { x: e.clientX, y: e.clientY },
-        camera,
-        original: doc,
-        tokens: [],
-      };
+      if (leftPan) startPan();
       return;
     }
     if (tool === 'lasso' && e.button === 0) {
@@ -1781,8 +1786,8 @@ export function VttSession({ characters, user, media }: { characters: Character[
           };
         }
         if (hit.layer !== 'map' || (!hit.locked && !preview && (gm || hit.controller === user.id))) return;
-        drag.current={kind:'pan',start:p,last:p,screen:{x:e.clientX,y:e.clientY},camera,original:doc,tokens:[]};
-        setContextMenu(null);return;
+        if (leftPan) startPan();
+        return;
       }
       const drawing = gm ? drawingAt(p, scene, layer, 8 / camera.zoom) : null;
       if (drawing) {
@@ -1800,16 +1805,8 @@ export function VttSession({ characters, user, media }: { characters: Character[
       setSelection([]);
       setAttackTargetId(null);
     }
-    if (tool === 'pan' || tool === 'select' || e.button === 1) {
-      drag.current = {
-        kind: 'pan',
-        start: p,
-        last: p,
-        screen: { x: e.clientX, y: e.clientY },
-        camera,
-        original: doc,
-        tokens: [],
-      };
+    if (tool === 'pan' || tool === 'select') {
+      if (leftPan) startPan();
       return;
     }
     if (tool === 'ruler') {
@@ -1853,6 +1850,10 @@ export function VttSession({ characters, user, media }: { characters: Character[
   function pointerMove(e: ReactPointerEvent<HTMLCanvasElement>) {
     const navigation=drag.current;
     if(navigation?.kind==='pan') {
+      if (!navigation.moved && Math.hypot(e.clientX-navigation.screen.x,e.clientY-navigation.screen.y) >= 4) {
+        navigation.moved = true; setContextMenu(null);
+      }
+      if (navigation.moved && navigation.button === 2) suppressContextUntil.current = Date.now() + 600;
       setCamera({...navigation.camera,x:navigation.camera.x-(e.clientX-navigation.screen.x)/navigation.camera.zoom,
         y:navigation.camera.y-(e.clientY-navigation.screen.y)/navigation.camera.zoom});return;
     }
@@ -2000,7 +2001,9 @@ export function VttSession({ characters, user, media }: { characters: Character[
       );
   }
   function pointerUp(e: ReactPointerEvent<HTMLCanvasElement>) {
-    if(drag.current?.kind==='pan') {drag.current=null;e.currentTarget.style.cursor=tool==='pan'?'grab':'default';
+    if(drag.current?.kind==='pan') {
+      if (drag.current.moved && drag.current.button === 2) suppressContextUntil.current = Date.now() + 600;
+      drag.current=null;e.currentTarget.style.cursor=tool.startsWith('terrain-')?'crosshair':tool==='pan'?'grab':'default';
       if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);return;}
     if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);
     if (terrainActive.current) {
@@ -3158,7 +3161,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
               closeAttack={() => setAttack(null)}
             />
           )}
-          {gm && !preview && canopyEditing && <VttCanopyEditor key={scene.id} scene={scene} camera={camera} bounds={bounds} busy={busy} selectedItemId={selection[0]} navigation={{wheel,holding:()=>panHeld.current,down:e=>pointerDown(e as unknown as ReactPointerEvent<HTMLCanvasElement>,true),move:e=>pointerMove(e as unknown as ReactPointerEvent<HTMLCanvasElement>),up:e=>pointerUp(e as unknown as ReactPointerEvent<HTMLCanvasElement>)}} close={()=>setCanopyEditing(false)} save={()=>void act(save)} update={(areas,opacity)=>editScene(s=>{s.canopyAreas=areas;if(opacity!==undefined)s.canopyOpacity=opacity;})}/>}
+          {gm && !preview && canopyEditing && <VttCanopyEditor key={scene.id} scene={scene} camera={camera} bounds={bounds} busy={busy} selectedItemId={selection[0]} navigation={{button:media.mapPanButton,wheel,holding:()=>panHeld.current,down:e=>pointerDown(e as unknown as ReactPointerEvent<HTMLCanvasElement>,true),move:e=>pointerMove(e as unknown as ReactPointerEvent<HTMLCanvasElement>),up:e=>pointerUp(e as unknown as ReactPointerEvent<HTMLCanvasElement>)}} close={()=>setCanopyEditing(false)} save={()=>void act(save)} update={(areas,opacity)=>editScene(s=>{s.canopyAreas=areas;if(opacity!==undefined)s.canopyOpacity=opacity;})}/>}
           <canvas
             ref={canvas}
             aria-label="Tabuleiro da mesa"
@@ -3264,6 +3267,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
             }}
             onContextMenu={(e) => {
               e.preventDefault();
+              if (drag.current?.kind === 'pan' && drag.current.moved) return;
               if (drag.current?.measured ? drag.current.moved : Date.now() < suppressContextUntil.current) return;
               if (spectator || preview || attackBusy) return;
               setTool('select');
@@ -5098,6 +5102,15 @@ export function VttSession({ characters, user, media }: { characters: Character[
               {tab === 'table' && (
                 <>
                   <h3>Personalização</h3>
+                  <label>
+                    Botão para mover o mapa
+                    <select aria-label="Botão para mover o mapa" value={media.mapPanButton}
+                      onChange={e=>media.update({mapPanButton:e.target.value === 'left' ? 'left' : 'right'})}>
+                      <option value="right">Botão direito (padrão)</option>
+                      <option value="left">Botão esquerdo</option>
+                    </select>
+                  </label>
+                  <p className="vtt-muted">Arraste o fundo com o botão escolhido. Espaço + arraste e o botão do meio também movem o mapa. Preferência deste usuário neste navegador.</p>
                   <VttVisualChoices media={media} />
                   <p className="vtt-muted">Desative para reduzir o uso do computador. Preferência deste navegador; os demais participantes continuam vendo os efeitos.</p>
                   <label className="vtt-check"><input type="checkbox" checked={media.soundEnabled} onChange={e=>media.update({soundEnabled:e.target.checked})} />Som dos efeitos e ataques</label>
@@ -5325,7 +5338,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   </ol>
                   <h3>Atalhos</h3>
                   <p>
-                    V selecionar · R régua · P lápis. Roda do mouse: zoom no cursor. Ctrl+arraste: girar o item selecionado. Ctrl+roda: girar seleção em 15°. Shift+clique:
+                    V selecionar · H mover mapa · R régua · P lápis. Arraste o fundo com o botão {media.mapPanButton === 'right' ? 'direito' : 'esquerdo'} para mover o mapa; altere em Mesa → Botão para mover o mapa. Espaço+arraste ou botão do meio também navegam. Roda do mouse: zoom no cursor. Ctrl+arraste: girar o item selecionado. Ctrl+roda: girar seleção em 15°. Shift+clique:
                     seleção múltipla. Alt+arraste: movimento sem grade. Delete: excluir. Ctrl+D:
                     duplicar. Ctrl+Z: desfazer. Ctrl+S: salvar. Esc: encerrar ferramenta.
                   </p>

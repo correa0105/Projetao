@@ -1,11 +1,13 @@
 import { useState } from 'react';
 type Preferences = {
+  mapPanButton: 'right' | 'left';
   mapEffects: boolean;
   masterEffects: boolean;
   soundEnabled: boolean;
   soundVolume: number;
 };
 const defaults: Preferences = {
+  mapPanButton: 'right',
   mapEffects: true,
   masterEffects: true,
   soundEnabled: true,
@@ -17,6 +19,7 @@ export function useVttMediaPreferences(userId: string) {
     try {
       const saved = JSON.parse(localStorage.getItem(key) || '{}');
       return {
+        mapPanButton: saved.mapPanButton === 'left' ? 'left' : 'right',
         mapEffects:
           typeof saved.mapEffects === 'boolean' ? saved.mapEffects : saved.visualEffects !== false,
         masterEffects:

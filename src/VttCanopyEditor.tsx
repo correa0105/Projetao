@@ -30,6 +30,7 @@ export function VttCanopyEditor({
   save: () => void;
   busy: boolean;
   navigation: {
+    button: 'right' | 'left';
     holding: () => boolean;
     wheel: (e: React.WheelEvent<SVGSVGElement>) => void;
     down: (e: PointerEvent<SVGSVGElement>) => void;
@@ -139,8 +140,10 @@ export function VttCanopyEditor({
           const corner = target.dataset.corner;
           if (
             e.button === 1 ||
-            (e.button === 0 &&
-              (navigation.holding() || (!creating && !target.dataset.area && corner === undefined)))
+            (e.button === 0 && (navigation.holding() || e.ctrlKey)) ||
+            (e.button === 2 && navigation.button === 'right') ||
+            (e.button === 0 && (navigation.button === 'left' || e.pointerType === 'touch') &&
+              !creating && !target.dataset.area && corner === undefined)
           ) {
             navigating.current = true;
             navigation.down(e);
@@ -170,6 +173,7 @@ export function VttCanopyEditor({
           setPoints([p]);
           e.currentTarget.setPointerCapture(e.pointerId);
         }}
+        onContextMenu={e => e.preventDefault()}
         onPointerMove={(e) => {
           if (navigating.current) {
             navigation.move(e);
