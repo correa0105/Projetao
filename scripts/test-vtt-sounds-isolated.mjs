@@ -3,7 +3,7 @@ import pg from 'pg';
 import { randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
 const url = new URL(process.env.DATABASE_URL);
-if (!['localhost', '127.0.0.1'].includes(url.hostname))
+if (!['localhost', '127.0.0.1'].includes(url.hostname) || url.port === '5437')
   throw Error('PostgreSQL local obrigatório.');
 const admin = new pg.Pool({ connectionString: url.toString() }),
   database = 'alvorada_test_' + randomUUID().replaceAll('-', '');
@@ -13,7 +13,9 @@ try {
   process.exitCode = await new Promise((resolve, reject) => {
     const child = spawn(
       process.execPath,
-      process.argv.includes('--browser') ? ['--import','tsx','scripts/smoke-vtt-sounds.ts'] : ['--import','tsx','--test','tests/vtt-sounds-api.test.ts'],
+      process.argv.includes('--browser')
+        ? ['--import', 'tsx', 'scripts/smoke-vtt-sounds.ts']
+        : ['--import', 'tsx', '--test', 'tests/vtt-sounds-api.test.ts'],
       {
         env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
         stdio: 'inherit',

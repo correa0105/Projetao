@@ -35,3 +35,12 @@ Todas as bases abaixo são CC0 1.0. Preservados os 75 arquivos originais.
 - Alvorada Cinzenta: nove efeitos compostos de foley e doze ambientes, com bases CC0 já identificadas e síntese original de bordões. Porta de aço, lamparina e tocha são composições de foley; os ecos são reflexões estéreo adicionadas. Novas composições também CC0.
 
 Build explícita em scripts/expand-vtt-sound-library.py: preservação dos hashes anteriores, validação das fontes baixadas, leitura segura de ZIP/7z, picos sem clipping, fades e ciclos sobrepostos. Não executada no deploy/startup.
+
+## Masmorras — 24/10/2026
+
+40 composições novas de Alvorada Cinzenta, também CC0 1.0: 36 efeitos de estruturas, passagens secretas, armadilhas, tremores e criaturas; quatro ambientes contínuos. Preservados os 155 arquivos anteriores.
+
+- Kenney: [Impact Sounds](https://kenney.nl/assets/impact-sounds), CC0. Impactos de pedra/mineração, madeira, metal, passos e tecidos do pacote RPG já identificado acima.
+- rubberduck: [100 CC0 Metal and Wood SFX](https://opengameart.org/content/100-cc0-metal-and-wood-sfx), CC0; [40 CC0 Water Splash Slime SFX](https://opengameart.org/content/40-cc0-water-splash-slime-sfx), CC0; novas tomadas do pacote de criaturas já identificado acima.
+- pauliuw: [Stone, rock or wood moved sound](https://opengameart.org/content/stone-rock-or-wood-moved-sound), CC0.
+- Alvorada Cinzenta: montagem, filtragem, panorâmica, reflexões estéreo, ruído filtrado de vento/pressão/tremor e ciclos sobrepostos. Fontes individuais, hashes e medições em manifest.json e data/vtt/dungeon-sounds-20261024.json. Gerador offline scripts/expand-vtt-dungeon-sounds-20261024.py.

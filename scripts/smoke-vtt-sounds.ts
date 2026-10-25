@@ -3,6 +3,7 @@ import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { soundCatalog } from '../shared/vtt-sounds';
+import { vttProtocolVersion } from '../shared/vtt-protocol';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco descartável obrigatório.');
 const origin = 'http://localhost:3004';
@@ -17,8 +18,14 @@ const { createApp } = await import('../server/app');
 const server = createApp().listen(3004, '127.0.0.1');
 await new Promise<void>((r) => server.once('listening', r));
 const browser = await chromium.launch({ channel: 'msedge', headless: true }),
-  gmctx = await browser.newContext({ viewport: { width: 1440, height: 950 } }),
-  pc = await browser.newContext({ viewport: { width: 1280, height: 850 } });
+  gmctx = await browser.newContext({
+    viewport: { width: 1440, height: 950 },
+    extraHTTPHeaders: { 'X-Vtt-Schema-Version': String(vttProtocolVersion) },
+  }),
+  pc = await browser.newContext({
+    viewport: { width: 1280, height: 850 },
+    extraHTTPHeaders: { 'X-Vtt-Schema-Version': String(vttProtocolVersion) },
+  });
 const errors: string[] = [];
 await mkdir('test-results', { recursive: true });
 for (const c of [gmctx, pc])
@@ -56,24 +63,31 @@ try {
   }
   const gm = await signup(gmctx, 'Mestre dos sons'),
     player = await signup(pc, 'Viajante');
-  await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [gm.id]);
   await createLegacyTestCharacter(gm.id, 'Arden');
   await createLegacyTestCharacter(player.id, 'Mira');
-  await page.goto(origin + '/#vtt');
-  await page.getByLabel('Nome da mesa', { exact: true }).fill('O abrigo da Alvorada');
-  await page.getByRole('button', { name: 'Criar mesa', exact: true }).click();
-  await expect(page.getByRole('region', { name: 'Mesa virtual', exact: true })).toBeVisible();
-  const rows = await pool.query('SELECT id,invite FROM vtt_rooms WHERE owner_id=$1', [gm.id]);
-  const rid = rows.rows[0].id,
-    invite = rows.rows[0].invite;
+  const created = await gmctx.request.post(origin + '/api/vtt', {
+    headers: { Origin: origin },
+    data: { name: 'O abrigo da Alvorada' },
+  });
+  expect(created.ok(), await created.text()).toBe(true);
+  const { id: rid, invite } = await created.json();
+  async function enter(p: typeof page) {
+    const entry = p.getByRole('region', { name: 'Preferências de entrada da mesa' });
+    await expect(entry).toBeVisible({ timeout: 30000 });
+    await entry.getByRole('button', { name: 'Entrar no VTT', exact: true }).click();
+    await expect(p.locator('.vtt-workspace')).toBeVisible({ timeout: 60000 });
+  }
+  await page.goto(origin + '/#vtt?room=' + rid);
+  await enter(page);
   const snapshot = async (c = gmctx) =>
     await (await c.request.get(origin + `/api/vtt/rooms/${rid}/sounds`)).json();
-  await pc.request.post(origin + '/api/vtt/join', {
+  const joined = await pc.request.post(origin + '/api/vtt/join', {
     headers: { Origin: origin },
     data: { invite, role: 'player' },
   });
-  await peer.goto(origin + '/#vtt');
-  await expect(peer.locator('.vtt-workspace')).toBeVisible();
+  expect(joined.ok(), await joined.text()).toBe(true);
+  await peer.goto(origin + '/#vtt?room=' + rid);
+  await enter(peer);
   for (const p of [page, peer]) {
     await p.getByRole('button', { name: 'Som', exact: true }).click();
     await p.getByRole('button', { name: 'Ativar áudio neste navegador', exact: true }).click();
@@ -195,6 +209,7 @@ try {
     (await snapshot()).soundboard.settings.find((s: any) => s.sourceId === 'amb-hearth').volume,
   ).toBe(0.31);
   await page.reload();
+  await enter(page);
   await page.getByRole('button', { name: 'Som', exact: true }).click();
   await expect(
     page.getByRole('button', { name: 'Atalho 1 · Lareira acesa', exact: true }),
@@ -259,6 +274,7 @@ try {
   await expect(stepShortcut).toBeVisible();
   await step.getByRole('button', { name: 'Restaurar Passo 3', exact: true }).click();
   await page.reload();
+  await enter(page);
   await page.getByRole('button', { name: 'Som', exact: true }).click();
   await page.getByRole('button', { name: 'Favoritos', exact: true }).click();
   await expect(step).toBeVisible();
@@ -273,6 +289,109 @@ try {
   await page.getByLabel('Buscar sons').fill('');
   await page.getByRole('button', { name: 'Ambientes', exact: true }).click();
   await expect(card('amb-tense-dungeon')).toBeVisible();
+
+  // Decode every new file in the browser, then exercise actual shared playback.
+  const dungeon = soundCatalog.filter(
+    (s) => s.id.startsWith('sfx-dungeon-') || s.id.startsWith('amb-dungeon-'),
+  );
+  expect(dungeon).toHaveLength(40);
+  const decoded = await page.evaluate(async (entries) => {
+    const audio = new AudioContext();
+    try {
+      const results = [];
+      for (const e of entries) {
+        const response = await fetch(e.path);
+        if (!response.ok) throw Error('Audio HTTP ' + e.id);
+        const buffer = await audio.decodeAudioData(await response.arrayBuffer());
+        results.push({ id: e.id, channels: buffer.numberOfChannels, duration: buffer.duration });
+      }
+      return results;
+    } finally {
+      await audio.close();
+    }
+  }, dungeon);
+  for (const result of decoded) {
+    expect(result.channels).toBe(2);
+    expect(
+      Math.abs(result.duration - dungeon.find((s) => s.id === result.id)!.duration),
+    ).toBeLessThan(0.01);
+  }
+  await page.getByRole('button', { name: 'Efeitos', exact: true }).click();
+  await page.getByLabel('Categoria de som').selectOption('Desabamentos');
+  await expect(page.locator('[data-sound-id]')).toHaveCount(7);
+  await page.getByLabel('Categoria de som').selectOption('Armadilhas');
+  await expect(page.locator('[data-sound-id]')).toHaveCount(9);
+  await page.getByLabel('Categoria de som').selectOption('Todas');
+  await page.getByLabel('Buscar sons').fill('masmorra');
+  for (const e of dungeon.filter((s) => s.kind === 'effect'))
+    await expect(card(e.id)).toHaveCount(1);
+  await page.getByLabel('Buscar sons').fill('teto desabando');
+  const collapse = card('sfx-dungeon-ceiling-collapse');
+  const privateBefore = (await snapshot()).revision;
+  await collapse.getByRole('button', { name: 'Ouvir prévia de Teto desabando' }).click();
+  await expect
+    .poll(async () =>
+      (await media(page, 'sfx-dungeon-ceiling-collapse')).some(
+        (a: any) => a.ready >= 3 && a.time > 0.1,
+      ),
+    )
+    .toBe(true);
+  expect((await snapshot()).revision).toBe(privateBefore);
+  expect(await media(peer, 'sfx-dungeon-ceiling-collapse')).toHaveLength(0);
+  await page.getByRole('button', { name: 'Parar prévia', exact: true }).click();
+  await collapse.getByRole('button', { name: 'Fixar Teto desabando', exact: true }).click();
+  await collapse
+    .getByRole('button', { name: 'Marcar favorito Teto desabando', exact: true })
+    .click();
+  await page.getByRole('button', { name: 'Atalho 4 · Teto desabando', exact: true }).click();
+  await expect
+    .poll(
+      async () =>
+        (await media(peer, 'sfx-dungeon-ceiling-collapse')).some(
+          (a: any) => a.ready >= 3 && a.time > 0.1,
+        ),
+      { timeout: 12000 },
+    )
+    .toBe(true);
+  await page.getByRole('button', { name: 'Parar todos', exact: true }).click();
+  for (const id of ['secret-door-open', 'pressure-plate', 'earthquake', 'giant-roar']) {
+    const e = dungeon.find((s) => s.id === 'sfx-dungeon-' + id)!;
+    await page.getByLabel('Buscar sons').fill(e.name);
+    await card(e.id)
+      .getByRole('button', { name: 'Tocar ' + e.name, exact: true })
+      .click();
+    await expect
+      .poll(async () => (await media(peer, e.id)).some((a: any) => a.ready >= 3 && a.time > 0.1), {
+        timeout: 12000,
+      })
+      .toBe(true);
+    await page.getByRole('button', { name: 'Parar todos', exact: true }).click();
+  }
+  await page.getByLabel('Buscar sons').fill('');
+  await page.getByRole('button', { name: 'Ambientes', exact: true }).click();
+  await page.getByLabel('Categoria de som').selectOption('Masmorras');
+  await expect(page.locator('[data-sound-id]')).toHaveCount(4);
+  await card('amb-dungeon-dripping-cells')
+    .getByRole('button', { name: 'Tocar Masmorra úmida com goteiras', exact: true })
+    .click();
+  await expect
+    .poll(
+      async () =>
+        (await media(peer, 'amb-dungeon-dripping-cells')).some(
+          (a: any) => a.ready >= 3 && a.time > 0.1 && a.loop,
+        ),
+      { timeout: 12000 },
+    )
+    .toBe(true);
+  await page.getByRole('button', { name: 'Parar todos', exact: true }).click();
+  await page.reload();
+  await enter(page);
+  await page.getByRole('button', { name: 'Som', exact: true }).click();
+  await page.getByRole('button', { name: 'Favoritos', exact: true }).click();
+  await expect(collapse).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: 'Atalho 4 · Teto desabando', exact: true }),
+  ).toBeVisible();
 
   await page.getByRole('button', { name: 'Chat', exact: true }).click();
   await page
@@ -324,6 +443,8 @@ try {
     JSON.stringify(
       {
         catalog: soundCatalog.length,
+        dungeonDecoded: decoded,
+        dungeonSharedPlayback: true,
         sharedPlayback: true,
         previewPrivate: true,
         hotbarClickKeyboardDrag: true,

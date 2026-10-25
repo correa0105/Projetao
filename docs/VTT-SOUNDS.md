@@ -109,3 +109,8 @@ Regressão VTT/perfis/comunidade 23/23. As 43 tabelas monitoradas conservaram
 exatamente contagens e hashes antes/depois do deploy, inclusive bens, ouro,
 House, personagens, mensagens e salas VTT. Sete artes de monstros conferidas
 no container e rota privada ainda 401 para anônimo.
+
+
+## Masmorras — 24/10/2026
+
+Acervo ampliado para 195 arquivos (13 músicas, 26 ambientes, 156 efeitos): 36 novos efeitos e quatro ambientes de masmorra, todos com bases CC0. Os 155 arquivos anteriores foram conservados. Categorias, fontes, gerador offline e evidências em [VTT-DUNGEON-SOUNDS-20261024.md](VTT-DUNGEON-SOUNDS-20261024.md).

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-24",
   "assets": [
     {
       "id": "music-old-inn",
@@ -2201,6 +2201,721 @@
         "fireplace-sound-loop",
         "short-wind-sound-0"
       ]
+    },
+    {
+      "id": "sfx-dungeon-ceiling-collapse",
+      "file": "sfx-dungeon-ceiling-collapse.ogg",
+      "sha256": "89a0f68c7fa9ff6023782fa315228a380b23d436e76a4bd4808a07a43711aabd",
+      "bytes": 120395,
+      "duration": 11.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.01,
+      "peakDb": -2.11,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-metal-wood-20261024/wood_breaking_01.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_01.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_02.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_03.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-falling-rubble",
+      "file": "sfx-dungeon-falling-rubble.ogg",
+      "sha256": "a1cc7f70e0ac5f69242ab3b27d106cb7ed37ce9bee25c6120cea98154360c68c",
+      "bytes": 42206,
+      "duration": 5.799977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -26.61,
+      "peakDb": -2.25,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-pillar-cracking",
+      "file": "sfx-dungeon-pillar-cracking.ogg",
+      "sha256": "1df8ae94ddf234c958cb09b3fe76488f74a4c67245b68ce8b2c872007abf4682",
+      "bytes": 70341,
+      "duration": 7.099977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -28.04,
+      "peakDb": -2.01,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_01.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_03.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-pillar-collapse",
+      "file": "sfx-dungeon-pillar-collapse.ogg",
+      "sha256": "ca6db833d70c6546871597831e6bbfe4e40d74d66b18ffd106834107615c677d",
+      "bytes": 83248,
+      "duration": 9.099977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -26.02,
+      "peakDb": -2.16,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-wall-collapse",
+      "file": "sfx-dungeon-wall-collapse.ogg",
+      "sha256": "be7d12437553118afb51bc449b5406d21d4e69157b770e56bd812b255ce482c7",
+      "bytes": 91936,
+      "duration": 8.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.26,
+      "peakDb": -2.11,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-wooden-bridge-break",
+      "file": "sfx-dungeon-wooden-bridge-break.ogg",
+      "sha256": "33d0e158cc3bc2818e3b1090465ad956dc56829f52dc4061058c3b874db7a249",
+      "bytes": 92535,
+      "duration": 8.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -27.52,
+      "peakDb": -2.42,
+      "sources": [
+        "dungeon-metal-wood-20261024/wood_breaking_01.ogg",
+        "dungeon-metal-wood-20261024/wood_breaking_02.ogg",
+        "dungeon-metal-wood-20261024/wood_falling_01.ogg",
+        "dungeon-metal-wood-20261024/wood_falling_02.ogg",
+        "dungeon-metal-wood-20261024/wood_falling_03.ogg",
+        "dungeon-metal-wood-20261024/wood_falling_04.ogg",
+        "dungeon-metal-wood-20261024/wood_falling_05.ogg",
+        "dungeon-metal-wood-20261024/wood_falling_06.ogg",
+        "dungeon-metal-wood-20261024/wood_squeak_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-rubble-slide",
+      "file": "sfx-dungeon-rubble-slide.ogg",
+      "sha256": "22a4f1170d870f65158f2ce854085146c2f3eced236d90ccbdb7acb8f795b7b4",
+      "bytes": 104003,
+      "duration": 9.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -20.35,
+      "peakDb": -2.15,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-secret-door-open",
+      "file": "sfx-dungeon-secret-door-open.ogg",
+      "sha256": "ae5c3438ca7f3665ab928b57da8ca4abf6fc0bbfa40e41ded6d6ff6b5bdfe37b",
+      "bytes": 69589,
+      "duration": 7.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -27.8,
+      "peakDb": -2.54,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-metal-wood-20261024/lock_open_01.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-secret-door-close",
+      "file": "sfx-dungeon-secret-door-close.ogg",
+      "sha256": "76551c9b54207021a4752734be5ff6cea8a6471ccab483ad9e3cc3f8e171c064",
+      "bytes": 69020,
+      "duration": 7.199977324263038,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -26.6,
+      "peakDb": -2.18,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-metal-wood-20261024/metal_close_01.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-hidden-lever",
+      "file": "sfx-dungeon-hidden-lever.ogg",
+      "sha256": "06af289e7a02e8ab4bf5558e2d1c6a6c3b79b542e0242406972ae37516e5f17c",
+      "bytes": 47266,
+      "duration": 4.799977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -30.15,
+      "peakDb": -2.69,
+      "sources": [
+        "dungeon-metal-wood-20261024/lock_open_01.ogg",
+        "dungeon-metal-wood-20261024/metal_spring_01.ogg",
+        "dungeon-metal-wood-20261024/tools_04.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-stone-slab",
+      "file": "sfx-dungeon-stone-slab.ogg",
+      "sha256": "0155e916684501ca6822873a0a6495ee724662195f659bb494cce0a64498ae84",
+      "bytes": 80305,
+      "duration": 8.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -28.71,
+      "peakDb": -2.17,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-portcullis-rise",
+      "file": "sfx-dungeon-portcullis-rise.ogg",
+      "sha256": "9da0ca27ad45bddeeca31baaba75792180f9f92ac65ee06e1e02955a31088898",
+      "bytes": 96229,
+      "duration": 7.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -27.46,
+      "peakDb": -1.77,
+      "sources": [
+        "dungeon-metal-wood-20261024/metal_close_01.ogg",
+        "dungeon-metal-wood-20261024/metal_hit_03.ogg",
+        "dungeon-metal-wood-20261024/metal_open_01.ogg",
+        "dungeon-metal-wood-20261024/metal_sheet_03.ogg",
+        "dungeon-metal-wood-20261024/metal_sheet_05.ogg",
+        "dungeon-metal-wood-20261024/tools_01.ogg",
+        "dungeon-metal-wood-20261024/tools_03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-portcullis-drop",
+      "file": "sfx-dungeon-portcullis-drop.ogg",
+      "sha256": "cdcffd5576c5af8b08b4f2c0984d2b0ad82c77686a8152f35b55040c74afee8a",
+      "bytes": 36031,
+      "duration": 5.3999773242630384,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -30.44,
+      "peakDb": -2.06,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMetal_heavy_004.ogg",
+        "dungeon-metal-wood-20261024/metal_open_01.ogg",
+        "dungeon-metal-wood-20261024/metal_sheet_06.ogg",
+        "dungeon-metal-wood-20261024/metal_slam_01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-pressure-plate",
+      "file": "sfx-dungeon-pressure-plate.ogg",
+      "sha256": "717341e475c81dfbb07cff3ab90d7ca43ac6d6b58196dac2c2af4dc2cad5e70f",
+      "bytes": 36341,
+      "duration": 3.7999773242630384,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -30.35,
+      "peakDb": -2.23,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-metal-wood-20261024/metal_spring_02.ogg",
+        "kenney-rpg/metalClick.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-dart-volley",
+      "file": "sfx-dungeon-dart-volley.ogg",
+      "sha256": "da10124a70ef2ac092e88cdea0aa10b7f2b99cc957d8d50591b20612e4c84413",
+      "bytes": 45264,
+      "duration": 4.799977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -24.29,
+      "peakDb": -1.8,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactWood_light_000.ogg",
+        "dungeon-kenney-impact-20261024/impactWood_light_003.ogg",
+        "kenney-rpg/metalClick.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-sliding-blades",
+      "file": "sfx-dungeon-sliding-blades.ogg",
+      "sha256": "fbc1e36587e718ebafde3f7273ad4c225fa56f00ffb8b64aee72955827a2aacc",
+      "bytes": 43365,
+      "duration": 5.3999773242630384,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -29.72,
+      "peakDb": -3.39,
+      "sources": [
+        "dungeon-metal-wood-20261024/metal_hit_02.ogg",
+        "dungeon-metal-wood-20261024/metal_sheet_02.ogg",
+        "dungeon-metal-wood-20261024/metal_spring_01.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-trapdoor-open",
+      "file": "sfx-dungeon-trapdoor-open.ogg",
+      "sha256": "c0589b624537799dc41182c391016d8c95a1b64bcaef31acf4d921efe16f8f8d",
+      "bytes": 52046,
+      "duration": 5.3999773242630384,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -28.1,
+      "peakDb": -1.43,
+      "sources": [
+        "dungeon-metal-wood-20261024/lock_open_01.ogg",
+        "dungeon-metal-wood-20261024/wood_slam_02.ogg",
+        "dungeon-metal-wood-20261024/wood_squeak_01.ogg",
+        "kenney-rpg/doorOpen_1.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-pitfall",
+      "file": "sfx-dungeon-pitfall.ogg",
+      "sha256": "5551d1ed12842ba3013a5b3e1a52be4f22bc48eb9187d3e99392e5020a6ba7d9",
+      "bytes": 53222,
+      "duration": 6.3999773242630384,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -24.04,
+      "peakDb": -2.03,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-kenney-impact-20261024/impactSoft_heavy_001.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-jaw-trap",
+      "file": "sfx-dungeon-jaw-trap.ogg",
+      "sha256": "eba41137be4d24484c180b15f590576a7583758dc5ffd9d3d86cd5d9f6f5c04b",
+      "bytes": 30157,
+      "duration": 4.199977324263038,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -32.02,
+      "peakDb": -1.9,
+      "sources": [
+        "dungeon-metal-wood-20261024/metal_close_01.ogg",
+        "dungeon-metal-wood-20261024/metal_hit_01.ogg",
+        "dungeon-metal-wood-20261024/metal_spring_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-pendulum-blade",
+      "file": "sfx-dungeon-pendulum-blade.ogg",
+      "sha256": "4a72834da09edcf4567e507a45ba74a5f321517fc804c5d2f7dc977d6109f390",
+      "bytes": 101880,
+      "duration": 8.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.02,
+      "peakDb": -2.32,
+      "sources": [
+        "dungeon-metal-wood-20261024/metal_sheet_04.ogg",
+        "kenney-rpg/creak2.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-rolling-boulder",
+      "file": "sfx-dungeon-rolling-boulder.ogg",
+      "sha256": "9d55c457bbf5e872043ab8fb94f8e8c4b4e38c76dcaf1d2728414a9b000eda1c",
+      "bytes": 110138,
+      "duration": 11.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.62,
+      "peakDb": -3.18,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-poison-gas",
+      "file": "sfx-dungeon-poison-gas.ogg",
+      "sha256": "a3ee1badd9565e35f89f0e5c6d600ace4cf8e143cdd376a521bda084458dc3e6",
+      "bytes": 104884,
+      "duration": 8.099977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.85,
+      "peakDb": -2.64,
+      "sources": [
+        "80-cc0-creature-sfx/spit_02.ogg",
+        "dungeon-metal-wood-20261024/metal_open_01.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-distant-tremor",
+      "file": "sfx-dungeon-distant-tremor.ogg",
+      "sha256": "426af02f21eb441751e764733822b851fa0073731d2d6011bbf565b32fc5a2c5",
+      "bytes": 58496,
+      "duration": 10.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.54,
+      "peakDb": -5.34,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-earthquake",
+      "file": "sfx-dungeon-earthquake.ogg",
+      "sha256": "bedd458a8edaf944abda1a5c1d491f2988ab693ec9a4a57e3c35d70c4d100a13",
+      "bytes": 137543,
+      "duration": 13.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.6,
+      "peakDb": -3.83,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_01.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_03.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_04.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-giant-footsteps",
+      "file": "sfx-dungeon-giant-footsteps.ogg",
+      "sha256": "a5f137b44b4292e634066b55db71a08b13e71a91786247c548174ca0e262f69f",
+      "bytes": 53175,
+      "duration": 10.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.55,
+      "peakDb": -2.21,
+      "sources": [
+        "dungeon-kenney-impact-20261024/footstep_concrete_000.ogg",
+        "dungeon-kenney-impact-20261024/footstep_concrete_001.ogg",
+        "dungeon-kenney-impact-20261024/footstep_concrete_002.ogg",
+        "dungeon-kenney-impact-20261024/footstep_concrete_003.ogg",
+        "dungeon-kenney-impact-20261024/footstep_concrete_004.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-floor-fissure",
+      "file": "sfx-dungeon-floor-fissure.ogg",
+      "sha256": "e8d2d0d40638c6e4758a2d914809ab39cc1db3103c630d16ae1d7c1be66917e1",
+      "bytes": 72299,
+      "duration": 8.39997732426304,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.41,
+      "peakDb": -2.73,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_04.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-beast-growl",
+      "file": "sfx-dungeon-beast-growl.ogg",
+      "sha256": "844eb9268847a3a84fc09504ade0d3c9d97c61d5cc6d850a82247b3fdeb4b449",
+      "bytes": 52451,
+      "duration": 6.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -30.54,
+      "peakDb": -2.24,
+      "sources": [
+        "80-cc0-creature-sfx/alien_02.ogg",
+        "80-cc0-creature-sfx/burble_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-giant-roar",
+      "file": "sfx-dungeon-giant-roar.ogg",
+      "sha256": "b0842203afb08a619c1f3af3ab1695b4c1e903d7bb669ba1ba98075ea0f1e3a3",
+      "bytes": 49512,
+      "duration": 7.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -25.18,
+      "peakDb": -2.16,
+      "sources": [
+        "80-cc0-creature-sfx/alien_06.ogg",
+        "80-cc0-creature-sfx/scream_02.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-undead-moan",
+      "file": "sfx-dungeon-undead-moan.ogg",
+      "sha256": "e9cb1883971b5c4f72039db687b4718a5ada9a7b555d0e3f6d2d119f2dd87ede",
+      "bytes": 42451,
+      "duration": 7.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -27.48,
+      "peakDb": -2.91,
+      "sources": [
+        "80-cc0-creature-sfx/misc_07.ogg",
+        "80-cc0-creature-sfx/ooh.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-specter-wail",
+      "file": "sfx-dungeon-specter-wail.ogg",
+      "sha256": "d9e166a4b1fcd1b48392de8854315453de0bd2d3ffa567571e8672d5fd5c187b",
+      "bytes": 40141,
+      "duration": 8.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -27.63,
+      "peakDb": -2.6,
+      "sources": [
+        "80-cc0-creature-sfx/scream_01.ogg",
+        "80-cc0-creature-sfx/weird_05.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-cavern-insect",
+      "file": "sfx-dungeon-cavern-insect.ogg",
+      "sha256": "29d5925fd898916818dd9149b5980f4e085de864a2310e416c3175fa5e2157f2",
+      "bytes": 56824,
+      "duration": 6.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -31.56,
+      "peakDb": -2.34,
+      "sources": [
+        "80-cc0-creature-sfx/bug_04.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-ooze-movement",
+      "file": "sfx-dungeon-ooze-movement.ogg",
+      "sha256": "1fc40e5659f98801fe572893b1a4f10b99f8d20f4768871a437e0b540f282a29",
+      "bytes": 69403,
+      "duration": 8.099977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -30.33,
+      "peakDb": -1.72,
+      "sources": [
+        "dungeon-water-slime-20261024/bubble_02.ogg",
+        "dungeon-water-slime-20261024/slime_03.ogg",
+        "dungeon-water-slime-20261024/slime_08.ogg",
+        "dungeon-water-slime-20261024/slime_15.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-reptile-hiss",
+      "file": "sfx-dungeon-reptile-hiss.ogg",
+      "sha256": "ad39508d93dd5e0df4706e46b69e3a3f7901ee8c5d0c2be95250e7fc433b76e6",
+      "bytes": 64354,
+      "duration": 6.3999773242630384,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.93,
+      "peakDb": -1.73,
+      "sources": [
+        "80-cc0-creature-sfx/alien_01.ogg",
+        "80-cc0-creature-sfx/spit_03.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-bat-swarm",
+      "file": "sfx-dungeon-bat-swarm.ogg",
+      "sha256": "1fa959bb69576ee2160b3ce2c0bce6f5eb13fc4934499853a101d18176d370a1",
+      "bytes": 100146,
+      "duration": 8.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -26.16,
+      "peakDb": -2.52,
+      "sources": [
+        "80-cc0-creature-sfx/cute_08.ogg",
+        "80-cc0-creature-sfx/cute_09.ogg",
+        "kenney-rpg/cloth1.ogg",
+        "kenney-rpg/cloth2.ogg",
+        "kenney-rpg/cloth3.ogg",
+        "kenney-rpg/cloth4.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-claws-on-stone",
+      "file": "sfx-dungeon-claws-on-stone.ogg",
+      "sha256": "54b036e91c3883f7a31c63463f00dd4e5828b3647518069545358cbf5a75be7e",
+      "bytes": 62235,
+      "duration": 7.099977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -28.29,
+      "peakDb": -1.57,
+      "sources": [
+        "80-cc0-creature-sfx/alien_03.ogg",
+        "dungeon-metal-wood-20261024/tools_08.ogg",
+        "dungeon-metal-wood-20261024/tools_11.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
+      ]
+    },
+    {
+      "id": "sfx-dungeon-lurking-breath",
+      "file": "sfx-dungeon-lurking-breath.ogg",
+      "sha256": "ba5a6b15efc6ac9af638545464dd1f317be34727964917edc0407f107229e042",
+      "bytes": 61649,
+      "duration": 9.599977324263039,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -29.66,
+      "peakDb": -2.34,
+      "sources": [
+        "80-cc0-creature-sfx/burble_01.ogg",
+        "80-cc0-creature-sfx/snore.ogg"
+      ]
+    },
+    {
+      "id": "amb-dungeon-dripping-cells",
+      "file": "amb-dungeon-dripping-cells.ogg",
+      "sha256": "2223f57e75f72dee9085a0719d76327e0b5b8b2cfecb7010dc23b4aee1c1d2cd",
+      "bytes": 530548,
+      "duration": 37.39997732426304,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.69,
+      "peakDb": -2.54,
+      "sources": [
+        "dungeon-water-slime-20261024/bubble_01.ogg",
+        "dungeon-water-slime-20261024/splash_03.ogg",
+        "dungeon-water-slime-20261024/splash_09.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "amb-dungeon-unstable-tunnel",
+      "file": "amb-dungeon-unstable-tunnel.ogg",
+      "sha256": "e39d933a84aa43e19f3f34909a72f9a1f3c492828c3d6b17a4b3f806d202feb1",
+      "bytes": 482362,
+      "duration": 37.39997732426304,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.65,
+      "peakDb": -8.07,
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_01.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_03.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_04.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "amb-dungeon-creature-den",
+      "file": "amb-dungeon-creature-den.ogg",
+      "sha256": "46a7621a2f600e35585b98bc2c7f44b6d0cde0a10763b4973ef8c011d1a9eefa",
+      "bytes": 484975,
+      "duration": 37.39997732426304,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.61,
+      "peakDb": -4.35,
+      "sources": [
+        "80-cc0-creature-sfx/alien_04.ogg",
+        "80-cc0-creature-sfx/burble_01.ogg",
+        "80-cc0-creature-sfx/snore.ogg",
+        "dungeon-water-slime-20261024/bubble_03.ogg",
+        "dungeon-water-slime-20261024/slime_11.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
+    },
+    {
+      "id": "amb-dungeon-ancient-mechanism",
+      "file": "amb-dungeon-ancient-mechanism.ogg",
+      "sha256": "1ff082ccc6ab43d80c3eff82f4766067072ac6a0633f37b591874f0549e95df4",
+      "bytes": 482551,
+      "duration": 37.39997732426304,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.57,
+      "peakDb": -7.59,
+      "sources": [
+        "dungeon-metal-wood-20261024/metal_hit_01.ogg",
+        "dungeon-metal-wood-20261024/metal_hit_02.ogg",
+        "dungeon-metal-wood-20261024/metal_hit_03.ogg",
+        "dungeon-metal-wood-20261024/metal_hit_04.ogg",
+        "dungeon-metal-wood-20261024/metal_hit_05.ogg",
+        "dungeon-metal-wood-20261024/metal_sheet_01.ogg",
+        "dungeon-metal-wood-20261024/metal_spring_01.ogg",
+        "dungeon-metal-wood-20261024/tools_06.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ]
     }
   ],
   "sources": [
@@ -2464,6 +3179,50 @@
       "license": "CC0-1.0",
       "bytes": 849709,
       "sha256": "5b7a47df7c02e2ce67e8be35abe7bb6363531be03caeed73a108b8156bc6fc08"
+    },
+    {
+      "slug": "dungeon-kenney-impact-20261024",
+      "page": "https://kenney.nl/assets/impact-sounds",
+      "url": "https://kenney.nl/media/pages/assets/impact-sounds/87b4ddecda-1677589768/kenney_impact-sounds.zip",
+      "file": ".local/dungeon-sound-sources-20261024/kenney-impact.zip",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "bytes": 800850,
+      "sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "licenseVerified": "2026-10-24"
+    },
+    {
+      "slug": "dungeon-metal-wood-20261024",
+      "page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+      "url": "https://opengameart.org/sites/default/files/100-CC0-wood-metal-SFX.zip",
+      "file": ".local/dungeon-sound-sources-20261024/metal-wood.zip",
+      "author": "rubberduck",
+      "license": "CC0-1.0",
+      "bytes": 1990361,
+      "sha256": "be6eba63b03409ac0c77787a956b1503a7c186403d04aef9725c52644a4b7878",
+      "licenseVerified": "2026-10-24"
+    },
+    {
+      "slug": "dungeon-water-slime-20261024",
+      "page": "https://opengameart.org/content/40-cc0-water-splash-slime-sfx",
+      "url": "https://opengameart.org/sites/default/files/water-splash-slime-sfx.zip",
+      "file": ".local/dungeon-sound-sources-20261024/water-slime.zip",
+      "author": "rubberduck",
+      "license": "CC0-1.0",
+      "bytes": 2259262,
+      "sha256": "7cd39abb49d4362a37ba18dc0e454c7dc1d08029d4e5b683149046bc237b2eba",
+      "licenseVerified": "2026-10-24"
+    },
+    {
+      "slug": "dungeon-stone-move-20261024",
+      "page": "https://opengameart.org/content/stone-rock-or-wood-moved-sound",
+      "url": "https://opengameart.org/sites/default/files/stone_rock_or_wood_moved.mp3",
+      "file": ".local/dungeon-sound-sources-20261024/stone-move.mp3",
+      "author": "pauliuw",
+      "license": "CC0-1.0",
+      "bytes": 22464,
+      "sha256": "29ad885546136ecda48beb960f66ad16ce39f69b8079993c7502d14dfc79dbf8",
+      "licenseVerified": "2026-10-24"
     }
   ]
 }

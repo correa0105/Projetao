@@ -20,8 +20,8 @@ test('mixer e atalhos em PostgreSQL descartável: autorização, persistência e
   type Who = { id: string; cookie: string };
   async function req(path: string, who?: Who, method = 'GET', body?: unknown) {
     if (method === 'PUT' && path.endsWith('/hotbar') && body) {
-      const current = body as {revision:number;document:unknown};
-      body = {revision:current.revision,document:current.document};
+      const current = body as { revision: number; document: unknown };
+      body = { revision: current.revision, document: current.document };
     }
     const response = await fetch(base + path, {
       method,
@@ -312,6 +312,31 @@ test('mixer e atalhos em PostgreSQL descartável: autorização, persistência e
           { kind: 'hide', sourceId: 'amb-hearth', hidden: true },
         ])
           assert.equal((await req(sounds, gm, 'POST', command)).status, 200);
+      },
+    );
+    await t.test(
+      '40 sons de masmorra aceitos pelo servidor e compartilhados com membros',
+      async () => {
+        const entries = soundCatalog.filter((s) => /^(sfx|amb)-dungeon-/.test(s.id));
+        assert.equal(entries.length, 40);
+        await req(sounds, gm, 'POST', { kind: 'stopAll' });
+        for (const [i, entry] of entries.entries()) {
+          if (i && i % 8 === 0) await req(sounds, gm, 'POST', { kind: 'stopAll' });
+          const r = await req(sounds, gm, 'POST', { kind: 'play', sourceId: entry.id });
+          assert.equal(r.status, 200, entry.id + ': ' + JSON.stringify(r.data));
+          const board = (await req(sounds, player)).data.soundboard;
+          assert.ok(
+            board.voices.some(
+              (v: any) =>
+                v.sourceId === entry.id && v.channel === entry.kind && v.loop === entry.loop,
+            ),
+          );
+        }
+        assert.equal(
+          (await req(sounds, player, 'POST', { kind: 'play', sourceId: entries[0].id })).status,
+          403,
+        );
+        await req(sounds, gm, 'POST', { kind: 'stopAll' });
       },
     );
   } finally {
