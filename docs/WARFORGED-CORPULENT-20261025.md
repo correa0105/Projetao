@@ -44,4 +44,28 @@ na cota da conta, sem criar outro job. Backups privados no servidor:
 `/opt/alvorada/backups/jackpot-recovery-before-20261025.dump` e
 `/opt/alvorada/backups/jackpot-before-20261025.json`.
 
-Publicação da opção de corpo: pendente de verificação do release.
+Publicação concluída: imagem `alvorada-cinzenta:warforged-corpulent-20261025`,
+código `ca07ef7432848c73696aa5e36fe51f11fc9d5f89`, a partir de
+`vtt-shift-selection-20261025`. Release de 46 arquivos, 22 respostas HTTPS e 68
+assets anteriores conferidos por hash; os 195 sons, três documentos de sala,
+três hotbars, o PNG privado da Caverna e o par corrigido do Jackpot permaneceram
+iguais. Backup `/opt/alvorada/backups/warforged-corpulent-before-20261025T184558Z.dump`.
+Ilustrador recarregado somente com as duas filas vazias, sob trava que impede
+claim/enqueue durante a conferência e parada: PID 3664 → 41944. Login/heartbeat
+online, contêiner saudável. O shell de transporte devolveu um CR final depois
+da conclusão; inspeção independente confirmou a imagem correta e todas as
+verificações de produção passaram. Não foi necessário repetir o deploy.
+
+## Estrutura padrão do Budah
+
+Pedido explícito posterior: o Budah, criado antes da disponibilidade deste
+modelo, passa de `warforgedBody=robust` para `corpulent`. Ele permanece no modo
+`reference`; cabeça, metal dourado e identidade continuam vindo da referência
+dele. Altura alta, porte corpulento, idade adulta e gênero masculino preservados.
+
+Aplicação privada após a publicação, em transação com dono/ficha/seleção anterior
+conferidos e sem pedido de arte pendente para essa ficha. Validação pelo schema e
+pelas instruções físicas vigentes. Apenas a estrutura e a data de atualização da
+ficha mudaram; demais campos, ouro, retrato/token, revisão de arte e jobs iguais.
+Vale para próximas gerações; nenhuma imagem foi solicitada nem cota consumida.
+Snapshot privado em `/opt/alvorada/backups/budah-structure-before-20261025.json`.
