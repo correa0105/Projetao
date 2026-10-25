@@ -44,5 +44,22 @@ retratos locais via `CHARACTER_ART_CHOICE_QA_DIRECTORY`; fallback portátil usa
 fixtures. Nenhuma geração paga ou conta de teste em produção. TypeScript e builds
 cliente/servidor aprovados.
 
-Publicação: em preparação. Recarregar ilustrador somente com filas ociosas;
-aceitar jobs legados sem a nova coluna antes da migration é compatível.
+Publicado: imagem `alvorada-cinzenta:character-art-choice-20261025`, código
+`a1a6d39324fb761d50fc57a990704785661b3a79`, baseada em
+`camp-portrait-ground-20261025`. Release de 45 arquivos, 21 respostas HTTPS e
+688 arquivos anteriores conferidos por hash. Migration 126 aplicada, índice de
+pendência única ativo, controles presentes no cliente e finalizador no servidor;
+rotas privadas de proposta/decisão retornam 401 sem sessão.
+
+Conferência de produção apenas por leitura: artes/revisões/BASE de 39 registros
+de personagens e metadados dos 108 jobs anteriores integralmente iguais. Nenhum
+job antigo foi convertido em proposta. House, coleções, saldos/compras de House,
+salas e hotbars do VTT conservados. Ilustrador recarregado com filas vazias sob
+trava de claim/enqueue (PID 41944 → 4188), login/heartbeat online. A compatibilidade
+de jobs sem a coluna antes da migration permite preparar o worker sem trocar
+imagens existentes. Nenhuma geração de validação foi feita em produção.
+
+Backup completo e baseline privados:
+`/opt/alvorada/backups/art-choice-before-20261025.dump` e
+`/opt/alvorada/backups/art-choice-before-20261025.json`.
+Pacote SHA-256 `d17f67d1dc66f31c8d8851a4afee08d3c6ccfff6f06407736f76adba3b2a0d58`.
