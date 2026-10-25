@@ -57,6 +57,8 @@ test('excluir personagem: confirmação, titularidade, vaga livre e auditoria pr
     const alice = await signup(),
       bob = await signup();
     const character = await createLegacyTestCharacter(alice.id, 'Arden');
+    const plot = (await pool.query('SELECT id,x,y FROM house2_plots WHERE retired_at IS NULL AND character_id IS NULL ORDER BY id LIMIT 1')).rows[0];
+    await pool.query("UPDATE house2_plots SET character_id=$2,house_id='house-empty-002',house_x=x+6,house_y=y+6 WHERE id=$1",[plot.id,character.id]);
     const path = `/characters/${character.id}`;
     const confirmation = { name: 'Arden' };
     assert.equal((await request(path, '', 'DELETE', confirmation)).status, 401);
@@ -66,6 +68,7 @@ test('excluir personagem: confirmação, titularidade, vaga livre e auditoria pr
       (await request(path, alice.cookie, 'DELETE', confirmation, 'https://invalid.example')).status,
       403,
     );
+    assert.equal((await pool.query('SELECT character_id FROM house2_plots WHERE id=$1',[plot.id])).rows[0].character_id,character.id);
     assert.equal(
       (
         await request('/purchases', alice.cookie, 'POST', {
@@ -90,7 +93,11 @@ test('excluir personagem: confirmação, titularidade, vaga livre e auditoria pr
     assert.equal((await request(path, alice.cookie, 'DELETE', confirmation)).status, 409);
     await pool.query("UPDATE character_art_jobs SET status='completed' WHERE id=$1", [job.id]);
     assert.equal((await request(path, alice.cookie, 'DELETE', confirmation)).status, 200);
+    const released=(await pool.query('SELECT character_id,house_id,revision FROM house2_plots WHERE id=$1',[plot.id])).rows[0];
+    assert.equal(released.character_id,null);
+    assert.equal(released.house_id,null);
     assert.equal((await request(path, alice.cookie, 'DELETE', confirmation)).status, 200);
+    assert.equal((await pool.query('SELECT revision FROM house2_plots WHERE id=$1',[plot.id])).rows[0].revision,released.revision);
     assert.equal((await request('/characters', alice.cookie)).data.length, 0);
     assert.equal((await request(path + '/details', alice.cookie)).status, 404);
     assert.equal((await request(path + '/portrait', alice.cookie)).status, 404);
@@ -138,7 +145,7 @@ test('excluir personagem: confirmação, titularidade, vaga livre e auditoria pr
             race: 'Elfo',
             class: 'Mago',
             stats: [15, 14, 13, 12, 10, 8],
-            choices: defaultChoices('Elfo', 'Mago'),
+            choices: {...defaultChoices('Elfo', 'Mago'),physicalTraits:{height:'average',build:'average',age:'adult',gender:'male'}},
           },
           reference,
           idempotency_key: randomUUID(),

@@ -3,7 +3,7 @@ import pg from 'pg';
 import { randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
 const url = new URL(process.env.DATABASE_URL);
-if (!['localhost', '127.0.0.1'].includes(url.hostname))
+if (!['localhost', '127.0.0.1'].includes(url.hostname) || url.port === '5437')
   throw Error('PostgreSQL local obrigatório.');
 const admin = new pg.Pool({ connectionString: url.toString() }),
   database = 'alvorada_test_' + randomUUID().replaceAll('-', '');
@@ -11,7 +11,9 @@ await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
   process.exitCode = await new Promise((resolve, reject) => {
-    const args = process.argv.includes('--migration')
+    const args = process.argv.includes('--character-cleanup')
+      ? ['--import', 'tsx', '--test', '--test-concurrency=1', 'tests/house-character-cleanup.test.ts', 'tests/character-deletion.test.ts', 'tests/house-v2.test.ts']
+      : process.argv.includes('--migration')
       ? ['--import', 'tsx', '--test', 'tests/house-v2-village.test.ts']
       : process.argv.includes('--furniture')
         ? ['--import', 'tsx', 'scripts/smoke-furniture-100.ts']

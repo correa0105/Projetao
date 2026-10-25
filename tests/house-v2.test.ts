@@ -613,7 +613,7 @@ test('House 2.0: compras isoladas, concorrência e edição exclusiva dos terren
           null,
         );
         assert(
-          (await pool.query('SELECT gold_cp FROM characters')).rows.every(
+          (await pool.query('SELECT gold_cp FROM characters WHERE id=ANY($1::uuid[])',[[a.id,b.id,c.id]])).rows.every(
             (c) => c.gold_cp === 76543,
           ),
         );
