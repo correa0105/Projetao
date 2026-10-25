@@ -1,8 +1,32 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
-import { newScene, wallSchema } from '../shared/vtt.js';
-import { movementBlocked } from '../shared/vtt-movement.js';
+import { newScene, newToken, wallSchema } from '../shared/vtt.js';
+import { movementBlocked, attachmentMovementError } from '../shared/vtt-movement.js';
+
+test('bypass explícito conserva limites de mapa e não altera colisão padrão', () => {
+  const s = newScene(randomUUID());
+  s.width = s.height = 700;
+  s.walls = [
+    wallSchema.parse({
+      id: randomUUID(),
+      kind: 'wall',
+      a: { x: 350, y: 0 },
+      b: { x: 350, y: 700 },
+    }),
+  ];
+  const t = newToken(randomUUID(), s);
+  t.x = 200;
+  t.y = 350;
+  s.tokens = [t];
+  assert.ok(attachmentMovementError(s, t, [{ x: 500, y: 350 }]));
+  assert.equal(attachmentMovementError(s, t, [{ x: 500, y: 350 }], true), null);
+  assert.equal(
+    attachmentMovementError(s, t, [{ x: 750, y: 350 }], true),
+    'Movimento fora do mapa.',
+  );
+  assert.ok(attachmentMovementError(s, t, [{ x: 500, y: 350 }]));
+});
 
 test('paredes e aberturas fechadas bloqueiam mesmo sem iluminação ou opção legada', () => {
   const scene = newScene(randomUUID());

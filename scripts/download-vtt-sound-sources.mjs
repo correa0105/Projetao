@@ -8,11 +8,13 @@ for (const source of sources) {
   const url = new URL(source.url);
   if (
     url.protocol !== 'https:' ||
-    !['opengameart.org', 'kenney.nl'].includes(url.hostname) ||
+    !['opengameart.org', 'kenney.nl', 'cdn.freesound.org'].includes(url.hostname) ||
+    (url.hostname === 'cdn.freesound.org' &&
+      !/^\/previews\/\d+\/\d+_\d+-hq\.mp3$/.test(url.pathname)) ||
     !/^[a-z0-9-]+$/.test(source.slug)
   )
     throw Error('Invalid source.');
-  const extension = url.pathname.match(/\.(mp3|wav|ogg|zip|7z)$/)?.[0];
+  const extension = url.pathname.match(/\.(mp3|wav|ogg|flac|zip|7z)$/)?.[0];
   if (!extension) throw Error('Invalid audio format.');
   const response = await fetch(url);
   if (!response.ok) throw Error('Download failed: ' + source.slug);

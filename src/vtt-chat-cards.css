@@ -41,6 +41,12 @@
   gap: 6px;
   margin-top: 8px;
 }
+.vtt-chat-keyboard-hint {
+  display: block;
+  margin-top: 6px;
+  color: #b9b7aa;
+  font-size: 10px;
+}
 .vtt-chat-command-help {
   color: #b9b7aa;
   font-size: 11px;

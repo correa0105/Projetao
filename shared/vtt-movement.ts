@@ -40,6 +40,7 @@ export function attachmentMovementError(
   scene: VttScene,
   base: VttToken,
   path: Point[],
+  ignoreBarriers = false,
 ): string | null {
   const root = attachmentRoot(scene.tokens, base);
   for (const member of attachedGroup(scene.tokens, root)) {
@@ -50,7 +51,7 @@ export function attachmentMovementError(
       const to = { x: point.x + dx, y: point.y + dy };
       if (to.x < 0 || to.y < 0 || to.x > scene.width || to.y > scene.height)
         return 'Movimento fora do mapa.';
-      if (member.layer === 'tokens' && movementBlocked(scene, from, to, member))
+      if (!ignoreBarriers && member.layer === 'tokens' && movementBlocked(scene, from, to, member))
         return 'Uma parede, porta fechada ou janela fechada bloqueia o movimento.';
       from = to;
     }

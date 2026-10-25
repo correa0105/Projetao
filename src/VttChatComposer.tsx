@@ -25,10 +25,26 @@ export function VttChatComposer({
           aria-label="Mensagem"
           value={text}
           onChange={(event) => onChange(event.target.value)}
+          onKeyDown={(event) => {
+            if (
+              event.key !== 'Enter' ||
+              event.shiftKey ||
+              event.nativeEvent.isComposing ||
+              event.nativeEvent.keyCode === 229
+            )
+              return;
+            event.preventDefault();
+            event.stopPropagation();
+            if (!event.repeat && !busy && text.trim()) event.currentTarget.form?.requestSubmit();
+          }}
+          aria-describedby="vtt-chat-keyboard-hint"
           maxLength={2000}
           rows={2}
         />
       </label>
+      <small id="vtt-chat-keyboard-hint" className="vtt-chat-keyboard-hint">
+        Enter envia · Shift + Enter pula uma linha
+      </small>
       <details className="vtt-chat-command-help">
         <summary>Comandos do chat</summary>
         <div>

@@ -49,3 +49,12 @@ Build explícita em scripts/expand-vtt-sound-library.py: preservação dos hashe
 ## Revisão de 25/10/2026
 
 14 misturas corrigidas por pedido do proprietário: dez reconstruções com foley CC0 já creditado acima (Kenney RPG/Impact, metal/madeira de rubberduck e pedra de pauliuw) e quatro remasters. Sem novas fontes/licenças. Originais preservados; novas versões terminam em -r2-20261025.ogg. Proveniência, hashes e medições em data/vtt/dungeon-audio-refinement-20261025.json; gerador offline scripts/refine-vtt-dungeon-audio-20261025.py.
+
+
+## Quatro substituições r3 — 25/10/2026
+
+- gmason: [Underwater or space engine rumble](https://opengameart.org/content/underwater-or-space-engine-rumble), CC0, gravação de oceano tratada pelo autor; trecho de deep_rumble.ogg para tremor distante.
+- mieki256: [Earthquake and Open sesame](https://opengameart.org/content/earthquake-and-open-sesame), CC0, shake.flac para terremoto.
+- aroth4: [Giant footsteps running](https://freesound.org/people/aroth4/sounds/133891/), CC0; preview HQ público, cinco pisadas de origem organizadas em seis passos de aproximação.
+- rubberduck: [75 CC0 breaking/falling/hit SFX](https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx), CC0; rocha partindo e caindo para fratura.
+- Alvorada Cinzenta: seleção/edição, fades, progressão de distância e montagem. As quatro versões usam novas URLs; os arquivos anteriores foram conservados. Dados/hashes e fontes em data/vtt/tremor-replacement-20261025.json.

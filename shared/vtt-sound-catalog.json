@@ -2128,48 +2128,48 @@
     "name": "Tremor distante",
     "kind": "effect",
     "category": "Tremores",
-    "path": "/audio/vtt/sfx-dungeon-distant-tremor-r2-20261025.ogg",
-    "duration": 10.6,
+    "path": "/audio/vtt/sfx-dungeon-distant-tremor-r3-20261025.ogg",
+    "duration": 9.0,
     "loop": false,
     "volume": 0.6,
-    "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Pedra vibrando ao longe, um abalo contido e poucos fragmentos no fim; sem bordão de subgrave. Masmorra; foley CC0, revisão suave de 25/10/2026."
+    "credit": "gmason · CC0 · edição Alvorada Cinzenta",
+    "description": "Masmorra: um ronco grave e distante cresce lentamente, atravessa a galeria e desaparece."
   },
   {
     "id": "sfx-dungeon-earthquake",
     "name": "Terremoto na masmorra",
     "kind": "effect",
     "category": "Tremores",
-    "path": "/audio/vtt/sfx-dungeon-earthquake-r2-20261025.ogg",
-    "duration": 13.6,
+    "path": "/audio/vtt/sfx-dungeon-earthquake-r3-20261025.ogg",
+    "duration": 5.2593,
     "loop": false,
     "volume": 0.6,
-    "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Abalo irregular com atrito de pedra, juntas estalando e entulho leve, sem parede de ruído. Masmorra; foley CC0, revisão suave de 25/10/2026."
+    "credit": "mieki256 · CC0 · edição Alvorada Cinzenta",
+    "description": "Masmorra: abalo forte e contínuo, com vibração irregular e um fim definido."
   },
   {
     "id": "sfx-dungeon-giant-footsteps",
     "name": "Passos de gigante se aproximando",
     "kind": "effect",
     "category": "Tremores",
-    "path": "/audio/vtt/sfx-dungeon-giant-footsteps-r2-20261025.ogg",
-    "duration": 10.6,
+    "path": "/audio/vtt/sfx-dungeon-giant-footsteps-r3-20261025.ogg",
+    "duration": 7.9,
     "loop": false,
     "volume": 0.6,
-    "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Seis passos pesados se aproximam, com o contato do pé e o eco legível, sem pulsos artificiais de grave. Masmorra; foley CC0, revisão suave de 25/10/2026."
+    "credit": "aroth4 · CC0 · edição Alvorada Cinzenta",
+    "description": "Masmorra: seis pisadas profundas e espaçadas ficam mais próximas, cada uma com impacto e cauda próprios."
   },
   {
     "id": "sfx-dungeon-floor-fissure",
     "name": "Rachadura se abrindo no chão",
     "kind": "effect",
     "category": "Tremores",
-    "path": "/audio/vtt/sfx-dungeon-floor-fissure-r2-20261025.ogg",
-    "duration": 8.4,
+    "path": "/audio/vtt/sfx-dungeon-floor-fissure-r3-20261025.ogg",
+    "duration": 3.0,
     "loop": false,
     "volume": 0.6,
-    "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Uma fratura avança por estalos curtos e raspagem de pedra, com fragmentos caindo nos intervalos. Masmorra; foley CC0, revisão suave de 25/10/2026."
+    "credit": "rubberduck · CC0 · edição Alvorada Cinzenta",
+    "description": "Masmorra: a pedra se parte em estalos secos sucessivos, seguida por fragmentos caindo. Evento curto."
   },
   {
     "id": "sfx-dungeon-beast-growl",

@@ -383,7 +383,15 @@ try {
     )
     .toBe(true);
   await page.getByRole('button', { name: 'Parar todos', exact: true }).click();
-  for (const id of ['secret-door-open', 'pressure-plate', 'earthquake', 'giant-roar']) {
+  for (const id of [
+    'secret-door-open',
+    'pressure-plate',
+    'distant-tremor',
+    'earthquake',
+    'giant-footsteps',
+    'floor-fissure',
+    'giant-roar',
+  ]) {
     const e = dungeon.find((s) => s.id === 'sfx-dungeon-' + id)!;
     await page.getByLabel('Buscar sons').fill(e.name);
     await card(e.id)

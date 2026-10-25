@@ -6,6 +6,7 @@ import { soundCatalog } from '../shared/vtt-sounds';
 import batch from '../data/vtt/dungeon-sounds-20261024.json';
 import manifest from '../public/audio/vtt/manifest.json';
 import repair from '../data/vtt/dungeon-audio-refinement-20261025.json';
+import replacements from '../data/vtt/tremor-replacement-20261025.json';
 import { soundPath } from '../shared/vtt-sounds';
 
 test('40 áudios de masmorra têm arquivos íntegros, licença rastreável e loops medidos', async () => {
@@ -45,9 +46,10 @@ test('áudios revistos mantêm IDs e originais, usam nova URL e têm graves/agud
   assert.equal(repair.sounds.length, 14);
   for (const entry of repair.sounds) {
     const current = manifest.assets.find((a) => a.id === entry.id)!;
-    assert.equal(current.file, entry.after.file);
-    assert.equal(current.sha256, entry.after.sha256);
-    assert.equal(soundPath(entry.id), '/audio/vtt/' + entry.after.file);
+    const latest = replacements.sounds.find((s) => s.id === entry.id)?.after ?? entry.after;
+    assert.equal(current.file, latest.file);
+    assert.equal(current.sha256, latest.sha256);
+    assert.equal(soundPath(entry.id), '/audio/vtt/' + latest.file);
     assert.match(entry.after.file, /-r2-20261025\.ogg$/);
     assert.equal(
       createHash('sha256')
@@ -60,5 +62,27 @@ test('áudios revistos mantêm IDs e originais, usam nova URL e têm graves/agud
     assert.ok(entry.after.bassRatio < 0.35);
     assert.ok(entry.after.trebleRatio < 0.2);
     assert.ok(entry.after.maxSampleStep < 0.18);
+  }
+});
+
+test('quatro efeitos rejeitados usam fontes dedicadas e nova revisão sem limitar o grave do tremor', async () => {
+  assert.equal(replacements.sounds.length, 4);
+  assert.equal(replacements.sources.length, 4);
+  for (const e of replacements.sounds) {
+    const current = manifest.assets.find((a) => a.id === e.id)!;
+    assert.equal(current.file, e.after.file);
+    assert.equal(current.sha256, e.after.sha256);
+    assert.match(e.after.file, /-r3-20261025\.ogg$/);
+    assert.ok(e.after.truePeakDb < -5);
+    assert.ok(e.after.duration >= 3 && e.after.duration <= 10);
+    assert.equal(
+      createHash('sha256')
+        .update(await readFile('public/audio/vtt/' + e.before.file))
+        .digest('hex'),
+      e.before.sha256,
+    );
+    assert.ok(
+      e.sources.every((s) => !s.includes('stone-move') && !s.includes('footstep_concrete')),
+    );
   }
 });

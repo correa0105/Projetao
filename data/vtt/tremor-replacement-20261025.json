@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-25",
+  "revision": "r3",
+  "reason": "Owner rejected distant tremor, earthquake, giant steps and ground fracture after r2.",
+  "build": "scripts/replace-vtt-tremors-20261025.py",
+  "license": "CC0-1.0",
+  "sources": [
+    {
+      "slug": "quake-shake-20261025",
+      "page": "https://opengameart.org/content/earthquake-and-open-sesame",
+      "url": "https://opengameart.org/sites/default/files/shake.flac",
+      "file": ".local/vtt-tremor-replacement-20261025/shake.flac",
+      "author": "mieki256",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-25",
+      "bytes": 485127,
+      "sha256": "344a5703ac9ee0b7cf28e007f522d6ec24426447c4ff3cae8e57dec48eda1ba9"
+    },
+    {
+      "slug": "quake-breaking-pack-20261025",
+      "page": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx",
+      "url": "https://opengameart.org/sites/default/files/sfx_breaking_and_falling.zip",
+      "file": ".local/vtt-tremor-replacement-20261025/breaking.zip",
+      "author": "rubberduck",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-25",
+      "bytes": 1624406,
+      "sha256": "e6ee04d91c5f4d30cfda1260d2c9d1faf96fda36319287215fbd07bcb1a80451"
+    },
+    {
+      "slug": "quake-deep-rumble-20261025",
+      "page": "https://opengameart.org/content/underwater-or-space-engine-rumble",
+      "url": "https://opengameart.org/sites/default/files/deep_rumble.ogg",
+      "file": ".local/vtt-tremor-replacement-20261025/deep-rumble.ogg",
+      "author": "gmason",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-25",
+      "bytes": 553831,
+      "sha256": "fd107cd69bb2204e07325a2505ef2be74d7ba2432b0f3a8763f46c0c1cee4e12"
+    },
+    {
+      "slug": "quake-giant-run-20261025",
+      "page": "https://freesound.org/people/aroth4/sounds/133891/",
+      "url": "https://cdn.freesound.org/previews/133/133891_2064945-hq.mp3",
+      "file": ".local/vtt-tremor-replacement-20261025/giant-run.mp3",
+      "author": "aroth4",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-25",
+      "preview": "public high-quality preview of the CC0 recording",
+      "bytes": 50715,
+      "sha256": "574d7e05e3d9226ab9c93b9fd567353aa7267ab39f7604af92d5351c3db1d510"
+    }
+  ],
+  "sounds": [
+    {
+      "id": "sfx-dungeon-distant-tremor",
+      "name": "Tremor distante",
+      "sources": [
+        "quake-deep-rumble-20261025/deep-rumble.ogg"
+      ],
+      "description": "Masmorra: um ronco grave e distante cresce lentamente, atravessa a galeria e desaparece.",
+      "before": {
+        "file": "sfx-dungeon-distant-tremor-r2-20261025.ogg",
+        "sha256": "1f9898913377763b0b7808af3cc0273a33027fe06f25cf79efd035abcd77d5ea",
+        "duration": 10.599977324263039
+      },
+      "after": {
+        "file": "sfx-dungeon-distant-tremor-r3-20261025.ogg",
+        "sha256": "1dcd09805d5b477ec514dc972639b0006b59496acd7901986700cd780f243734",
+        "duration": 9.0,
+        "rmsDb": -28.61,
+        "peakDb": -16.25,
+        "truePeakDb": -16.24
+      }
+    },
+    {
+      "id": "sfx-dungeon-earthquake",
+      "name": "Terremoto na masmorra",
+      "sources": [
+        "quake-shake-20261025/shake.flac"
+      ],
+      "description": "Masmorra: abalo forte e contínuo, com vibração irregular e um fim definido.",
+      "before": {
+        "file": "sfx-dungeon-earthquake-r2-20261025.ogg",
+        "sha256": "997e5c5712aff5f5a76fa113ccf55c15eb87238371e01a378d3522b423ef8e6a",
+        "duration": 13.599977324263039
+      },
+      "after": {
+        "file": "sfx-dungeon-earthquake-r3-20261025.ogg",
+        "sha256": "9ce35d58d8b2c3dbd61efd4dbff8c879cb523c3957c25fd3edba41bb18d53a17",
+        "duration": 5.259251700680272,
+        "rmsDb": -22.57,
+        "peakDb": -12.06,
+        "truePeakDb": -12.06
+      }
+    },
+    {
+      "id": "sfx-dungeon-giant-footsteps",
+      "name": "Passos de gigante se aproximando",
+      "sources": [
+        "quake-giant-run-20261025/giant-run.mp3"
+      ],
+      "description": "Masmorra: seis pisadas profundas e espaçadas ficam mais próximas, cada uma com impacto e cauda próprios.",
+      "before": {
+        "file": "sfx-dungeon-giant-footsteps-r2-20261025.ogg",
+        "sha256": "5eadf5e314b48f79fbe5bd6df90e2baee7b790471cf6bfa61886d30cdc550496",
+        "duration": 10.599977324263039
+      },
+      "after": {
+        "file": "sfx-dungeon-giant-footsteps-r3-20261025.ogg",
+        "sha256": "0ae9d2df580d0e8d0f261bbe4f3890c3580e1deef23c73f51fafad725fad4762",
+        "duration": 7.9,
+        "rmsDb": -29.11,
+        "peakDb": -6.49,
+        "truePeakDb": -6.48
+      }
+    },
+    {
+      "id": "sfx-dungeon-floor-fissure",
+      "name": "Rachadura se abrindo no chão",
+      "sources": [
+        "quake-breaking-pack-20261025/bfh1_rock_breaking_01.ogg",
+        "quake-breaking-pack-20261025/bfh1_rock_breaking_02.ogg",
+        "quake-breaking-pack-20261025/bfh1_rock_breaking_03.ogg",
+        "quake-breaking-pack-20261025/bfh1_rock_falling_03.ogg",
+        "quake-breaking-pack-20261025/bfh1_rock_falling_08.ogg"
+      ],
+      "description": "Masmorra: a pedra se parte em estalos secos sucessivos, seguida por fragmentos caindo. Evento curto.",
+      "before": {
+        "file": "sfx-dungeon-floor-fissure-r2-20261025.ogg",
+        "sha256": "3f0ac69b1292c62b23c5ba91b681277ff41c3073fae919e1692b3e1dbc5d5ada",
+        "duration": 8.39997732426304
+      },
+      "after": {
+        "file": "sfx-dungeon-floor-fissure-r3-20261025.ogg",
+        "sha256": "61711a0b443013baaafbced35edcbb2cefd8626510795e84cd96a2440b470749",
+        "duration": 3.0,
+        "rmsDb": -37.69,
+        "peakDb": -6.67,
+        "truePeakDb": -6.58
+      }
+    }
+  ],
+  "unchangedCatalogAssets": 191,
+  "totalCatalog": 195
+}

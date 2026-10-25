@@ -510,6 +510,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
       lasso?: Point[];
       additive?: boolean;
       baseSelection?: string[];
+      clickSelection?: string[];
       path?: Point[];
       measured?: boolean;
       moved?: boolean;
@@ -1762,13 +1763,14 @@ export function VttSession({ characters, user, media }: { characters: Character[
           setAttackTargetId((id) => (id === hit.id ? null : hit.id));
           return;
         }
-        const ids = e.shiftKey
+        const clickSelection = e.shiftKey
           ? selection.includes(hit.id)
             ? selection.filter((id) => id !== hit.id)
             : [...selection, hit.id]
           : selection.includes(hit.id)
             ? selection
             : [hit.id];
+        const ids = gm && e.shiftKey && selection.includes(hit.id) ? selection : clickSelection;
         setSelection(ids);
         if (!preview && !e.shiftKey && !e.ctrlKey && !e.metaKey && ids.length === 1) {
           tokenClick.current = {id: hit.id, x: e.clientX, y: e.clientY};
@@ -1783,6 +1785,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
             camera,
             original: structuredClone(doc),
             tokens: movementTokens(ids),
+            clickSelection: gm && e.shiftKey ? clickSelection : undefined,
           };
         }
         if (hit.layer !== 'map' || (!hit.locked && !preview && (gm || hit.controller === user.id))) return;
@@ -1959,8 +1962,9 @@ export function VttSession({ characters, user, media }: { characters: Character[
         const t = s.tokens.find((t) => t.id === original.id)!,
           to = { x: original.x + p.x - d.start.x, y: original.y + p.y - d.start.y };
         const placed=tokenPlacement(to,t,s,e.altKey);
-        const destination = houseAsset(t)?housePlacement({...t,...placed},s,e.altKey):constrainMovement(s,t,placed);
-        if (attachmentMovementError(s, t, [destination])) continue;
+        const ignoreBarriers = gm && !preview && e.shiftKey;
+        const destination = houseAsset(t)?housePlacement({...t,...placed},s,e.altKey):ignoreBarriers?placed:constrainMovement(s,t,placed);
+        if (attachmentMovementError(s, t, [destination], ignoreBarriers)) continue;
         if ((d.path?.length || 0) >= 2000) continue;
         if (t.x !== destination.x || t.y !== destination.y)
           d.path = [...(d.path || []), destination];
@@ -2093,8 +2097,10 @@ export function VttSession({ characters, user, media }: { characters: Character[
           const next = current.tokens.find((n) => n.id === t.id);
           return next && (next.x !== t.x || next.y !== t.y);
         })
-      )
+      ) {
+        if (d.clickSelection) setSelection(d.clickSelection);
         return;
+      }
       const previous = d.original.scenes.find(s => s.id === current.id)!;
       for (const start of d.tokens) {
         const moved = current.tokens.find(t => t.id === start.id);
@@ -5338,7 +5344,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   </ol>
                   <h3>Atalhos</h3>
                   <p>
-                    V selecionar · H mover mapa · R régua · P lápis. Arraste o fundo com o botão {media.mapPanButton === 'right' ? 'direito' : 'esquerdo'} para mover o mapa; altere em Mesa → Botão para mover o mapa. Espaço+arraste ou botão do meio também navegam. Roda do mouse: zoom no cursor. Ctrl+arraste: girar o item selecionado. Ctrl+roda: girar seleção em 15°. Shift+clique:
+                    V selecionar · H mover mapa · R régua · P lápis. Arraste o fundo com o botão {media.mapPanButton === 'right' ? 'direito' : 'esquerdo'} para mover o mapa; altere em Mesa → Botão para mover o mapa. Espaço+arraste ou botão do meio também navegam. Roda do mouse: zoom no cursor. Ctrl+arraste: girar o item selecionado. Ctrl+roda: girar seleção em 15°. Mestre: segure Shift durante o arraste do token para atravessar paredes. Shift+clique:
                     seleção múltipla. Alt+arraste: movimento sem grade. Delete: excluir. Ctrl+D:
                     duplicar. Ctrl+Z: desfazer. Ctrl+S: salvar. Esc: encerrar ferramenta.
                   </p>
