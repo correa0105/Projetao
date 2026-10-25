@@ -132,7 +132,7 @@ try {
             job.id,
             await generateCharacterArtPair(
               job,
-              !job.character_id
+              !job.character_id || job.replacement_revision != null
                 ? async (portrait) => {
                     await completeArt(job.id, { portrait });
                   }

@@ -572,6 +572,7 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
       return await readFile(file);
     };
     let repair = '';
+    let lastIssues: string[] = [];
     for (let attempt = 0; attempt < 3; attempt++) {
       const bytes = await render(repair, attempt ? candidatePath : undefined);
       await writeFile(candidatePath, bytes);
@@ -598,12 +599,20 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
         review.issues.push(
           'Remover completamente o fundo e entregar PNG com canal alfa realmente transparente, usando transparent_background=true.',
         );
+      lastIssues = review.issues;
+      await writeFile(
+        join(directory, 'composition-review-summary.json'),
+        JSON.stringify({ attempt: attempt + 1, ...review, width: meta.width, height: meta.height }),
+      );
       if (review.approved && review.issues.length === 0) return bytes;
       repair = `CORREÇÃO OBRIGATÓRIA: a primeira imagem anexada é o resultado REPROVADO. Edite os defeitos visuais identificados: ${JSON.stringify(review.issues)}. Preserve a identidade e os modelos dos itens. Corrija a composição nas regiões afetadas; não repita o defeito anterior.`;
     }
     throw new IllustratorError(
       'composition_rejected',
-      'A arte não passou pela verificação de composição ou fundo transparente após as correções e não foi salva.',
+      'A arte não passou pela verificação de composição ou fundo transparente após as correções e não foi salva.' +
+        (lastIssues.length
+          ? ' Motivo: ' + lastIssues.slice(0, 2).join(' ').replace(/\s+/g, ' ').slice(0, 450)
+          : ''),
     );
   } finally {
     await unlink(reference).catch(() => {});

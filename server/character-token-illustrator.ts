@@ -3,6 +3,7 @@ import { existsSync } from 'node:fs';
 import { resolve, join, relative, isAbsolute } from 'node:path';
 import { homedir } from 'node:os';
 import sharp from 'sharp';
+import { squareTokenCanvas } from './token-canvas.js';
 import { z } from 'zod';
 import {
   generateCharacterArt,
@@ -216,7 +217,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
         '\n' +
         headInstructions;
       const execution = await runCodex(command(refs, schema, result), prompt);
-      const bytes = await nativeResult(execution, result, directory);
+      const bytes = await squareTokenCanvas(await nativeResult(execution, result, directory));
       await writeFile(candidate, bytes);
       await unlink(reviewPath).catch(() => {});
       await runCodex(
@@ -282,6 +283,16 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
         issues.push(
           'Entregar composição quadrada de pelo menos 512 pixels, sem cortar o personagem.',
         );
+      await writeFile(
+        join(directory, 'review-summary.json'),
+        JSON.stringify({
+          attempt: attempt + 1,
+          ...review,
+          width: meta.width,
+          height: meta.height,
+          issues,
+        }),
+      );
       if (
         review.approved &&
         review.appendages_correct &&
@@ -295,7 +306,10 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
     }
     throw new IllustratorError(
       'token_rejected',
-      'A vista de cima não passou pela revisão. A arte principal aprovada foi preservada.',
+      'A vista de cima não passou pela revisão. A arte principal aprovada foi preservada.' +
+        (issues.length
+          ? ' Motivo: ' + issues.slice(0, 2).join(' ').replace(/\s+/g, ' ').slice(0, 450)
+          : ''),
     );
   } finally {
     await Promise.all(

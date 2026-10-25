@@ -20,6 +20,7 @@ try {
           '--test',
           '--test-concurrency=1',
           'tests/character-token-art.test.ts',
+          'tests/token-canvas.test.ts',
           'tests/character-art-choice.test.ts',
           'tests/equipment.test.ts',
           'tests/equipment-illustrator.test.ts',
