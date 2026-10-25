@@ -2,7 +2,8 @@ import {
   defaultWarforgedAppearance,
   warforgedBodies,
   warforgedHeads,
-  warforgedBodyAtlas,
+  warforgedBodyImages,
+  warforgedBodyReference,
   warforgedHeadAtlas,
   warforgedDetailedHeadAtlas,
   warforgedHeadReference,
@@ -22,9 +23,10 @@ function AtlasImage({
 }: {
   kind: 'body' | 'head';
   atlas: string;
-  index: number;
+  index: number | null;
 }) {
   const id = useId();
+  if (index === null) return <img className="warforged-design-image" src={atlas} alt="" aria-hidden="true" />;
   const x = (index % 3) * 512;
   const y = index < 3 ? 0 : kind === 'body' ? 490 : 512;
   const height = kind === 'body' ? (index < 3 ? 490 : 534) : 512;
@@ -43,7 +45,7 @@ function AtlasImage({
 export function WarforgedBodyChoices({ value, onChange, required = false }: {
   value?: Appearance['body']; onChange: (value: Appearance['body']) => void; required?: boolean;
 }) {
-  const prepared = usePreparedAssets([warforgedBodyAtlas]);
+  const prepared = usePreparedAssets(warforgedBodyImages);
   return <fieldset>
     <legend>Estrutura do corpo</legend>
     {!prepared.ready && <div className="warforged-models-loading" role={prepared.error ? 'alert' : 'status'}>
@@ -51,10 +53,10 @@ export function WarforgedBodyChoices({ value, onChange, required = false }: {
       {prepared.error && <button type="button" onClick={prepared.retry}>Tentar novamente</button>}
     </div>}
     <div className="warforged-design-options" hidden={!prepared.ready}>
-      {warforgedBodies.map((option, index) => <label key={option.id} className={value === option.id ? 'is-selected' : ''}>
+      {warforgedBodies.map((option) => <label key={option.id} className={value === option.id ? 'is-selected' : ''}>
         <input type="radio" required={required} name="warforged-body" value={option.id}
           checked={value === option.id} onChange={() => onChange(option.id)} />
-        <AtlasImage kind="body" atlas={warforgedBodyAtlas} index={index} />
+        <AtlasImage kind="body" {...warforgedBodyReference(option.id)} />
         <strong>{option.name}</strong><span>{option.description}</span>
       </label>)}
     </div>
@@ -70,7 +72,7 @@ export function WarforgedAppearance({
 }) {
   const selected = value || defaultWarforgedAppearance;
   const prepared = usePreparedAssets([
-    warforgedBodyAtlas,
+    ...warforgedBodyImages,
     warforgedHeadAtlas,
     warforgedDetailedHeadAtlas,
   ]);
@@ -98,10 +100,9 @@ export function WarforgedAppearance({
             {
               title: 'Estrutura do corpo',
               key: 'body',
-              options: warforgedBodies.map((option, index) => ({
+              options: warforgedBodies.map((option) => ({
                 ...option,
-                atlas: warforgedBodyAtlas,
-                index,
+                ...warforgedBodyReference(option.id),
               })),
             },
             {

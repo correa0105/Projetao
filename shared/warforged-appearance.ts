@@ -41,6 +41,13 @@ export const warforgedBodies = [
     instruction:
       'Tronco compacto e largo com braços e pernas proporcionalmente curtos e espessos; manter aspecto adulto e tamanho Médio.',
   },
+  {
+    id: 'corpulent',
+    name: 'Corpulento',
+    description: 'Barriga arredondada, tronco volumoso, braços grossos e pernas fortes.',
+    instruction:
+      'Tronco muito largo e volumoso, abdômen arredondado e saliente formado por placas curvas, cintura cheia, braços e antebraços grossos, coxas fortes e pernas proporcionalmente mais curtas e firmes; centro de gravidade baixo e proporções adultas. A barriga faz parte da construção do corpo, não de uma armadura vestida. Preservar esse volume arredondado sob as roupas e manter o tamanho Médio.',
+  },
 ] as const;
 export const warforgedHeads = [
   {
@@ -194,9 +201,12 @@ export const warforgedAccentColors = [
   { name: 'Violeta', color: '#78618b' },
   { name: 'Âmbar', color: '#c2893e' },
 ] as const;
+export const warforgedBodySchema = z.enum([
+  'balanced', 'slender', 'robust', 'reinforced-arms', 'long-legs', 'compact', 'corpulent',
+]);
 export const warforgedAppearanceSchema = z
   .object({
-    body: z.enum(['balanced', 'slender', 'robust', 'reinforced-arms', 'long-legs', 'compact']),
+    body: warforgedBodySchema,
     head: z.enum([
       'mask',
       'visor',
@@ -249,6 +259,13 @@ export const defaultWarforgedAppearance: WarforgedAppearance = {
   accentColor: '#b58c50',
 };
 export const warforgedBodyAtlas = '/character-creation/warforged-bodies-20261021.png';
+export const warforgedCorpulentBodyImage = '/character-creation/warforged-body-corpulent-20261025.png';
+export function warforgedBodyReference(body: WarforgedAppearance['body']) {
+  return body === 'corpulent'
+    ? { atlas: warforgedCorpulentBodyImage, index: null }
+    : { atlas: warforgedBodyAtlas, index: warforgedBodies.findIndex((option) => option.id === body) };
+}
+export const warforgedBodyImages = [warforgedBodyAtlas, warforgedCorpulentBodyImage];
 export const warforgedHeadAtlas = '/character-creation/warforged-heads-20261021.png';
 export const warforgedDetailedHeadAtlas =
   '/character-creation/warforged-heads-detailed-20261021.png';

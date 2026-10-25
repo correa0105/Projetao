@@ -1,5 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import sharp from 'sharp';
+import { prepareWarforgedBodyReference } from '../server/warforged-art-references';
+import { warforgedBodySchema, characterAppearanceInstructions } from '../shared/character-appearance';
 import {
   defaultChoices,
   validateChoices,
@@ -14,6 +20,9 @@ import {
   warforgedHeadReference,
   warforgedHeadAtlas,
   warforgedDetailedHeadAtlas,
+  warforgedBodyReference,
+  warforgedBodyAtlas,
+  warforgedCorpulentBodyImage,
 } from '../shared/warforged-appearance';
 
 test('Warforged: aparência persiste sem alterar regras; fichas antigas e outras espécies são protegidas', () => {
@@ -88,4 +97,32 @@ test('Warforged: aparência persiste sem alterar regras; fichas antigas e outras
       warforgedAppearance: base.warforgedAppearance,
     }),
   );
+});
+
+test('Corpulento usa o PNG original inteiro; seis estruturas anteriores mantêm suas células', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'warforged-body-'));
+  try {
+    assert.equal(warforgedBodies.length, 7);
+    for (const [index, body] of warforgedBodies.entries()) {
+      assert.equal(warforgedBodySchema.parse(body.id), body.id);
+      const path = await prepareWarforgedBodyReference(body.id, dir);
+      assert(path);
+      const reference = warforgedBodyReference(body.id);
+      if (index < 6) {
+        assert.deepEqual(reference, { atlas: warforgedBodyAtlas, index });
+        const expected = await sharp('public' + reference.atlas).extract({
+          left: (index % 3) * 512, top: index < 3 ? 0 : 490,
+          width: 512, height: index < 3 ? 490 : 534,
+        }).png().toBuffer();
+        assert.deepEqual(await readFile(path), expected);
+      } else {
+        assert.deepEqual(reference, { atlas: warforgedCorpulentBodyImage, index: null });
+        assert.deepEqual(await readFile(path), await readFile('public' + reference.atlas));
+        assert(characterAppearanceInstructions('Warforged', { warforgedBody: body.id }).includes(body.instruction));
+      }
+    }
+    assert.equal(await prepareWarforgedBodyReference('unknown', dir), undefined);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
 });

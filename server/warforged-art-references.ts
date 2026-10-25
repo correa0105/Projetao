@@ -1,10 +1,10 @@
 import sharp from 'sharp';
 import { warforgedBodySchema } from '../shared/character-appearance.js';
 import { join, resolve } from 'node:path';
+import { copyFile } from 'node:fs/promises';
 import {
   warforgedAppearanceSchema,
-  warforgedBodies,
-  warforgedBodyAtlas,
+  warforgedBodyReference,
   warforgedHeadReference,
 } from '../shared/warforged-appearance.js';
 
@@ -33,9 +33,13 @@ export async function prepareWarforgedReferences(value: unknown, directory: stri
 export async function prepareWarforgedBodyReference(value: unknown, directory: string) {
   const parsed = warforgedBodySchema.safeParse(value);
   if (!parsed.success) return undefined;
-  const index = warforgedBodies.findIndex((body) => body.id === parsed.data);
+  const { atlas, index } = warforgedBodyReference(parsed.data);
   const path = join(directory, 'selected-warforged-body.png');
-  await sharp(resolve('public' + warforgedBodyAtlas))
+  if (index === null) {
+    await copyFile(resolve('public' + atlas), path);
+    return path;
+  }
+  await sharp(resolve('public' + atlas))
     .extract({
       left: (index % 3) * 512,
       top: index < 3 ? 0 : 490,

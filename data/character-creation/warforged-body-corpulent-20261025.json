@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-25",
+  "tool": "image_gen (built-in)",
+  "id": "corpulent",
+  "path": "public/character-creation/warforged-body-corpulent-20261025.png",
+  "prompt": "Use case: character-creation selectable body structure, stylized dark medieval fantasy concept art. Generate ONE NEW FULL-BODY WARFORGED MODEL, name Corpulento (do not write any text). FIRST reference supplies BODY PROPORTIONS ONLY: very broad rounded protruding belly, barrel-shaped wide torso, powerful thick upper arms and forearms, sturdy thick thighs and shorter strong lower legs, weighty low center of gravity, large adult hands and feet. The belly should be visibly rounded and generous like the first reference, not a muscular V-shaped body and not merely wide shoulder armor. SECOND reference supplies exact rendering language and neutral materials of the existing comparison models: aged neutral gray iron plates, small aged brass fasteners and wood-fiber joints, painted realistic fantasy illustration on uniform warm charcoal background. Create one coherent standalone model in a near-front three-quarter relaxed standing pose, both arms naturally relaxed down at the sides, hands open and neutral. Keep an ADULT proportionate small simple mask head with about 7 heads total height, same head simplicity as the atlas. NO beard, no expressive human face, no raised fingers or gestures. All bulk comes from the constructed body underneath segmented curved plates, not removable armor or padding. Expose the full body construction so the silhouette and round abdominal plates can be seen: no clothing, no belt, no tabard, no helmet, no weapons, no costume, no accessories. Exactly two attached arms/hands and two legs/feet with correct joints. Entire head and both complete feet inside canvas with generous margins (8 percent). Single character centered, portrait aspect ratio roughly 2:3. No scenery, floor features, gold palette, glow, labels, collage, frames, letters or watermark. Neutral soft studio side light; no dramatic foreshortening. This is a new seventh body option; it must read unmistakably as corpulent and round-bellied, different from the athletic robust and compact bodies of the atlas. The head and material colors are placeholders which players choose independently.",
+  "references": [
+    {
+      "name": "codex-clipboard-8766c143-ebcb-4528-954f-53f9bdcf5d31.png",
+      "role": "Owner supplied body proportions only"
+    },
+    {
+      "path": "public/character-creation/warforged-bodies-20261021.png",
+      "role": "Existing neutral material/style comparison atlas"
+    }
+  ],
+  "sha256": "c1124bcd845e51861fd139bb65f8c239b3abf20955ce27a49a040fb80c25f77f",
+  "width": 1024,
+  "height": 1536,
+  "note": "Native original PNG preserved byte-for-byte. Standalone seventh body model; all six atlas cells unchanged. Head, material, colors, clothes and equipment are separate selections. No existing character art changed by adding this option."
+}

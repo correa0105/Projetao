@@ -4,7 +4,8 @@ import { randomUUID } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
 import { createServer } from 'node:net';
 import { defaultChoices } from '../shared/character-sheet';
-if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
+const databaseUrl = new URL(process.env.DATABASE_URL!);
+if (!['localhost', '127.0.0.1'].includes(databaseUrl.hostname) || databaseUrl.port === '5437' || !databaseUrl.pathname.startsWith('/alvorada_test_'))
   throw Error('Banco descartável obrigatório.');
 const probe = createServer();
 await new Promise<void>((r) => probe.listen(0, '127.0.0.1', r));
@@ -51,9 +52,12 @@ try {
   await expect(design).toBeVisible({ timeout: 60000 });
   const bodies = design.getByRole('group', { name: 'Estrutura do corpo', exact: true });
   const heads = design.getByRole('group', { name: 'Formato da cabeça', exact: true });
-  await expect(bodies.getByRole('radio')).toHaveCount(6);
+  await expect(bodies.getByRole('radio')).toHaveCount(7);
   await expect(heads.getByRole('radio')).toHaveCount(12);
-  await bodies.getByRole('radio', { name: /Braços reforçados/ }).check();
+  await bodies.getByRole('radio', { name: /^Corpulento/ }).check();
+  const bodyImage = bodies.locator('label.is-selected img');
+  await expect(bodyImage).toHaveJSProperty('complete', true);
+  expect(await bodyImage.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(500);
   await heads.getByRole('radio', { name: /^Cavaleiro/ }).check();
   await design.getByLabel('Cor metálica principal', { exact: true }).selectOption('copper');
   await design.getByLabel('Acabamento', { exact: true }).selectOption('rusted');
@@ -83,7 +87,7 @@ try {
     await pool.query('SELECT choices FROM character_sheets WHERE character_id=$1', [hero.id])
   ).rows[0].choices.warforgedAppearance;
   expect(persisted).toEqual({
-    body: 'reinforced-arms',
+    body: 'corpulent',
     head: 'cavalier',
     metal: 'copper',
     finish: 'rusted',
@@ -91,7 +95,7 @@ try {
     accentColor: '#123abc',
   });
   await page.reload();
-  await expect(design.getByRole('radio', { name: /Braços reforçados/ })).toBeChecked({
+  await expect(design.getByRole('radio', { name: /^Corpulento/ })).toBeChecked({
     timeout: 60000,
   });
   await expect(design.getByRole('radio', { name: /^Cavaleiro/ })).toBeChecked();
@@ -138,7 +142,7 @@ try {
   await expect(submit).toBeDisabled();
   await form.getByLabel('Espécie', { exact: true }).selectOption('Warforged');
   const creationDesign = form.getByRole('region', { name: 'Aparência do Warforged' });
-  await creationDesign.getByRole('radio', { name: /Braços reforçados/ }).check();
+  await creationDesign.getByRole('radio', { name: /^Corpulento/ }).check();
   await creationDesign.getByRole('radio', { name: /^Cavaleiro/ }).check();
   await creationDesign.getByLabel('Cor metálica principal', { exact: true }).selectOption('copper');
   await creationDesign.getByLabel('Acabamento', { exact: true }).selectOption('rusted');
@@ -147,9 +151,9 @@ try {
   await expect(creationDesign).toHaveCount(0);
   await expect(form).toContainText('a cabeça, as cores e o acabamento vêm da imagem enviada');
   const referenceBody = form.getByRole('region', { name: 'Corpo do Warforged com referência' });
-  await expect(referenceBody.getByRole('radio')).toHaveCount(6);
-  await expect(referenceBody.getByRole('radio', { name: /Braços reforçados/ })).toBeChecked();
-  await referenceBody.getByRole('radio', { name: /Pernas alongadas/ }).check();
+  await expect(referenceBody.getByRole('radio')).toHaveCount(7);
+  await expect(referenceBody.getByRole('radio', { name: /^Corpulento/ })).toBeChecked();
+  await referenceBody.getByRole('radio', { name: /^Corpulento/ }).check();
   await expect(form.getByLabel('Cor metálica principal', { exact: true })).toHaveCount(0);
   await expect(submit).toBeDisabled();
   const { testArtImage } = await import('../tests/character-fixtures');
@@ -164,7 +168,7 @@ try {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
   await without.check();
-  await creationDesign.getByRole('radio', { name: /Braços reforçados/ }).check();
+  await creationDesign.getByRole('radio', { name: /^Corpulento/ }).check();
   await creationDesign.getByRole('radio', { name: /^Cavaleiro/ }).check();
   await creationDesign.getByLabel('Cor metálica principal', { exact: true }).selectOption('copper');
   await creationDesign.getByLabel('Acabamento', { exact: true }).selectOption('rusted');
@@ -204,7 +208,7 @@ try {
   await expect(form.getByRole('combobox', { name: 'Gênero do personagem', exact: true })).toHaveValue('female');
   await expect(form.getByRole('combobox', { name: 'Idade aparente', exact: true })).toHaveValue('elder');
   await expect(submit).toBeEnabled();
-  await expect(form.getByRole('radio', { name: /Braços reforçados/ })).toBeChecked();
+  await expect(form.getByRole('radio', { name: /^Corpulento/ })).toBeChecked();
   await page.getByRole('dialog').getByRole('button', { name: 'Fechar', exact: true }).click();
   const identity = await testArtImage();
   await pool.query(

@@ -1,5 +1,6 @@
 import { z } from 'zod';
-import { warforgedBodies } from './warforged-appearance.js';
+import { warforgedBodies, warforgedBodySchema } from './warforged-appearance.js';
+export { warforgedBodySchema };
 import { facialHairArtInstructions, type FacialHair } from './facial-hair.js';
 
 export const characterGenders = [
@@ -107,14 +108,6 @@ export const physicalTraitsSchema = z
   })
   .strict();
 export type PhysicalTraits = z.infer<typeof physicalTraitsSchema>;
-export const warforgedBodySchema = z.enum([
-  'balanced',
-  'slender',
-  'robust',
-  'reinforced-arms',
-  'long-legs',
-  'compact',
-]);
 export type AppearanceChoices = {
   physicalTraits?: Partial<PhysicalTraits>;
   facialHair?: FacialHair;

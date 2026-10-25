@@ -59,6 +59,7 @@
   width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
+  object-fit: contain;
 }
 .warforged-design-options strong {
   font-size: 13px;
