@@ -1,0 +1,15 @@
+# Mapa privado Caverna — 25/10/2026
+
+Pedido explícito do proprietário: criar somente em seu VTT, na cena já existente Caverna, uma caverna original com qualidade inspirada na imagem anexada, mais túneis, barreiras de iluminação dinâmica em todas as paredes e configuração 50 × 50.
+
+Aplicado na cena existente vazia, sem alterar seus identificadores ou torná-la um modelo global. Imagem original gerada com a ferramenta image_gen embutida; composição nova, rocha cinza-azulada, poças e túneis em laços. Arquivo nativo 1254 × 1254 PNG, 3.189.576 bytes, preservado exatamente, sem recompressão ou ampliação artificial. Armazenado como asset privado da própria sala; sem arte em public/, sem catálogo global nem imagem no Git. Original, prompt exato, geometria, scripts de manutenção, snapshot privado e QA estão em .local/vtt-cave-map-20261025/ deste workspace.
+
+Dimensões do mapa: 3500 × 3500 unidades de canvas, grade original de 70, resultando em 50 × 50 células. Outras preferências da grade foram preservadas. Iluminação dinâmica habilitada; névoa/visão e demais preferências anteriores conservadas. Nenhum token, som ou fonte de luz artificial foi adicionado à cena.
+
+754 segmentos kind=wall/open=false, em contornos fechados. Traçado deriva da borda real da arte com simplificação dentro da espessura rochosa; 12 colunas receberam contornos conferidos visualmente. Tolerância da simplificação 5,5 pixels nativos, recuo de borda de 6 pixels, com passagens verificadas após rasterizar os polígonos. Não há segmentos cruzados ou pontas abertas. Componente principal contém mais de 99,99% do piso, com todos os túneis conectados.
+
+QA no renderer real do VTT, usando Chromium/Edge local sem banco de produção: visão próxima permanece livre; três câmaras separadas bloqueiam linha de visão; render iluminado de uma câmara vizinha escurece de 357 para 19 na soma RGB com paredes, mantendo 317 no piso próximo. Capturas qa-gm-render.png e qa-player-light-blocking.png; relatório qa-results.json. Barreira também participa da colisão normal de paredes existente.
+
+Aplicação transacional sob lock da sala, validando dono, ID/nome e hash da cena vazia preparada. Releitura do documento atual preservou edições concorrentes das outras cenas. Inserção do PNG passa pelo limite de armazenamento privado vigente. Snapshot privado persistido antes da aplicação e cópia adicional da linha exata anterior em /opt/alvorada/backups/vtt-cave-room-fresh-before-20261025.json (permissão 600). Nenhuma edição de contas, tokens, missões, hotbars, áudio, outros mapas ou outras mesas. Revisão da sala após operação: 2999.
+
+Conferência pós-aplicação aprovou dimensões, 754 paredes, iluminação, integridade byte a byte do PNG, associação privada correta e preservação das outras cenas/estado em relação ao snapshot sob lock. A rota do asset devolve 401 a visitante anônimo; saúde do site e heartbeat do ilustrador normais. Sem deploy, migration ou reinício do aplicativo. Não distribuir o mapa automaticamente nem copiar os dados privados para documentação ou catálogo públicos.
