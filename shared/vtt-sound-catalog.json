@@ -1864,12 +1864,12 @@
     "name": "Teto desabando",
     "kind": "effect",
     "category": "Desabamentos",
-    "path": "/audio/vtt/sfx-dungeon-ceiling-collapse.ogg",
+    "path": "/audio/vtt/sfx-dungeon-ceiling-collapse-r2-20261025.ogg",
     "duration": 11.6,
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Estalos de sustentação, queda súbita do teto e uma cascata de pedras e poeira. Masmorra; composição de foley e ecos."
+    "description": "O suporte racha e o teto cede em impactos de pedra separados, seguidos de pequenos fragmentos. Masmorra; foley CC0, revisão suave de 25/10/2026."
   },
   {
     "id": "sfx-dungeon-falling-rubble",
@@ -1912,12 +1912,12 @@
     "name": "Parede de alvenaria desmoronando",
     "kind": "effect",
     "category": "Desabamentos",
-    "path": "/audio/vtt/sfx-dungeon-wall-collapse.ogg",
+    "path": "/audio/vtt/sfx-dungeon-wall-collapse-r2-20261025.ogg",
     "duration": 8.6,
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "A parede cede em vários blocos sucessivos, com rolagem de entulho. Masmorra; composição de foley e ecos."
+    "description": "Blocos de alvenaria se soltam em sequência, com queda de cascalho e pausas entre os impactos. Masmorra; foley CC0, revisão suave de 25/10/2026."
   },
   {
     "id": "sfx-dungeon-wooden-bridge-break",
@@ -1936,12 +1936,12 @@
     "name": "Avalanche de entulho",
     "kind": "effect",
     "category": "Desabamentos",
-    "path": "/audio/vtt/sfx-dungeon-rubble-slide.ogg",
+    "path": "/audio/vtt/sfx-dungeon-rubble-slide-r2-20261025.ogg",
     "duration": 9.6,
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Uma massa de pedras desliza pelo túnel, cresce e se dispersa. Masmorra; composição de foley e ecos."
+    "description": "Uma cascata de cascalho cruza o piso, cresce e diminui sem o sopro artificial de graves. Masmorra; foley CC0, revisão suave de 25/10/2026."
   },
   {
     "id": "sfx-dungeon-secret-door-open",
@@ -2032,7 +2032,7 @@
     "name": "Rajada de dardos da parede",
     "kind": "effect",
     "category": "Armadilhas",
-    "path": "/audio/vtt/sfx-dungeon-dart-volley.ogg",
+    "path": "/audio/vtt/sfx-dungeon-dart-volley-r2-20261025.ogg",
     "duration": 4.8,
     "loop": false,
     "volume": 0.6,
@@ -2044,12 +2044,12 @@
     "name": "Lâminas saindo da parede",
     "kind": "effect",
     "category": "Armadilhas",
-    "path": "/audio/vtt/sfx-dungeon-sliding-blades.ogg",
+    "path": "/audio/vtt/sfx-dungeon-sliding-blades-r2-20261025.ogg",
     "duration": 5.4,
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Um mecanismo arma e uma fileira de lâminas atravessa o corredor. Masmorra; composição de foley e ecos."
+    "description": "Trava curta, lâminas deslizando nos trilhos e um encaixe leve; metal sem rajada de chiado. Masmorra; foley CC0, revisão suave de 25/10/2026."
   },
   {
     "id": "sfx-dungeon-trapdoor-open",
@@ -2068,7 +2068,7 @@
     "name": "Queda no fosso",
     "kind": "effect",
     "category": "Armadilhas",
-    "path": "/audio/vtt/sfx-dungeon-pitfall.ogg",
+    "path": "/audio/vtt/sfx-dungeon-pitfall-r2-20261025.ogg",
     "duration": 6.4,
     "loop": false,
     "volume": 0.6,
@@ -2092,31 +2092,31 @@
     "name": "Pêndulo de lâmina oscilando",
     "kind": "effect",
     "category": "Armadilhas",
-    "path": "/audio/vtt/sfx-dungeon-pendulum-blade.ogg",
+    "path": "/audio/vtt/sfx-dungeon-pendulum-blade-r2-20261025.ogg",
     "duration": 8.6,
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Quatro passagens de uma lâmina pendular, com eixo rangendo e ar cortado. Masmorra; composição de foley e ecos."
+    "description": "Quatro passagens espaçadas de lâmina, com corte de ar curto e rangido discreto do eixo. Masmorra; foley CC0, revisão suave de 25/10/2026."
   },
   {
     "id": "sfx-dungeon-rolling-boulder",
     "name": "Pedra gigante rolando",
     "kind": "effect",
     "category": "Armadilhas",
-    "path": "/audio/vtt/sfx-dungeon-rolling-boulder.ogg",
+    "path": "/audio/vtt/sfx-dungeon-rolling-boulder-r2-20261025.ogg",
     "duration": 11.6,
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Um bloco de pedra ganha velocidade no corredor, rolando e golpeando as juntas do piso. Masmorra; composição de foley e ecos."
+    "description": "Um bloco pesado rola em solavancos, com atrito de pedra e impactos separados, sem ruído grave contínuo. Masmorra; foley CC0, revisão suave de 25/10/2026."
   },
   {
     "id": "sfx-dungeon-poison-gas",
     "name": "Gás venenoso escapando",
     "kind": "effect",
     "category": "Armadilhas",
-    "path": "/audio/vtt/sfx-dungeon-poison-gas.ogg",
+    "path": "/audio/vtt/sfx-dungeon-poison-gas-r2-20261025.ogg",
     "duration": 8.1,
     "loop": false,
     "volume": 0.6,
@@ -2128,48 +2128,48 @@
     "name": "Tremor distante",
     "kind": "effect",
     "category": "Tremores",
-    "path": "/audio/vtt/sfx-dungeon-distant-tremor.ogg",
+    "path": "/audio/vtt/sfx-dungeon-distant-tremor-r2-20261025.ogg",
     "duration": 10.6,
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Um abalo grave e distante percorre as galerias sem desmoronar o teto. Masmorra; composição de foley e ecos."
+    "description": "Pedra vibrando ao longe, um abalo contido e poucos fragmentos no fim; sem bordão de subgrave. Masmorra; foley CC0, revisão suave de 25/10/2026."
   },
   {
     "id": "sfx-dungeon-earthquake",
     "name": "Terremoto na masmorra",
     "kind": "effect",
     "category": "Tremores",
-    "path": "/audio/vtt/sfx-dungeon-earthquake.ogg",
+    "path": "/audio/vtt/sfx-dungeon-earthquake-r2-20261025.ogg",
     "duration": 13.6,
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Abalo prolongado, paredes vibrando e pedras soltas caindo ao redor. Masmorra; composição de foley e ecos."
+    "description": "Abalo irregular com atrito de pedra, juntas estalando e entulho leve, sem parede de ruído. Masmorra; foley CC0, revisão suave de 25/10/2026."
   },
   {
     "id": "sfx-dungeon-giant-footsteps",
     "name": "Passos de gigante se aproximando",
     "kind": "effect",
     "category": "Tremores",
-    "path": "/audio/vtt/sfx-dungeon-giant-footsteps.ogg",
+    "path": "/audio/vtt/sfx-dungeon-giant-footsteps-r2-20261025.ogg",
     "duration": 10.6,
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Seis passadas pesadas ficam mais próximas e fazem o piso vibrar. Masmorra; composição de foley e ecos."
+    "description": "Seis passos pesados se aproximam, com o contato do pé e o eco legível, sem pulsos artificiais de grave. Masmorra; foley CC0, revisão suave de 25/10/2026."
   },
   {
     "id": "sfx-dungeon-floor-fissure",
     "name": "Rachadura se abrindo no chão",
     "kind": "effect",
     "category": "Tremores",
-    "path": "/audio/vtt/sfx-dungeon-floor-fissure.ogg",
+    "path": "/audio/vtt/sfx-dungeon-floor-fissure-r2-20261025.ogg",
     "duration": 8.4,
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "A pedra se parte em linha, a fissura se alarga e fragmentos despencam. Masmorra; composição de foley e ecos."
+    "description": "Uma fratura avança por estalos curtos e raspagem de pedra, com fragmentos caindo nos intervalos. Masmorra; foley CC0, revisão suave de 25/10/2026."
   },
   {
     "id": "sfx-dungeon-beast-growl",
@@ -2248,7 +2248,7 @@
     "name": "Serpente monstruosa sibilando",
     "kind": "effect",
     "category": "Monstros",
-    "path": "/audio/vtt/sfx-dungeon-reptile-hiss.ogg",
+    "path": "/audio/vtt/sfx-dungeon-reptile-hiss-r2-20261025.ogg",
     "duration": 6.4,
     "loop": false,
     "volume": 0.6,

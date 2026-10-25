@@ -44,3 +44,8 @@ Build explícita em scripts/expand-vtt-sound-library.py: preservação dos hashe
 - rubberduck: [100 CC0 Metal and Wood SFX](https://opengameart.org/content/100-cc0-metal-and-wood-sfx), CC0; [40 CC0 Water Splash Slime SFX](https://opengameart.org/content/40-cc0-water-splash-slime-sfx), CC0; novas tomadas do pacote de criaturas já identificado acima.
 - pauliuw: [Stone, rock or wood moved sound](https://opengameart.org/content/stone-rock-or-wood-moved-sound), CC0.
 - Alvorada Cinzenta: montagem, filtragem, panorâmica, reflexões estéreo, ruído filtrado de vento/pressão/tremor e ciclos sobrepostos. Fontes individuais, hashes e medições em manifest.json e data/vtt/dungeon-sounds-20261024.json. Gerador offline scripts/expand-vtt-dungeon-sounds-20261024.py.
+
+
+## Revisão de 25/10/2026
+
+14 misturas corrigidas por pedido do proprietário: dez reconstruções com foley CC0 já creditado acima (Kenney RPG/Impact, metal/madeira de rubberduck e pedra de pauliuw) e quatro remasters. Sem novas fontes/licenças. Originais preservados; novas versões terminam em -r2-20261025.ogg. Proveniência, hashes e medições em data/vtt/dungeon-audio-refinement-20261025.json; gerador offline scripts/refine-vtt-dungeon-audio-20261025.py.

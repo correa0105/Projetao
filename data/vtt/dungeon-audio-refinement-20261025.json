@@ -1,0 +1,489 @@
+{
+  "date": "2026-10-25",
+  "reason": "Owner reported harsh, distorted-sounding blade traps and earthquakes.",
+  "build": "scripts/refine-vtt-dungeon-audio-20261025.py",
+  "license": "CC0-1.0",
+  "sounds": [
+    {
+      "id": "sfx-dungeon-sliding-blades",
+      "method": "rebuild-recorded-foley",
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMetal_light_002.ogg",
+        "dungeon-metal-wood-20261024/lock_open_01.ogg",
+        "kenney-rpg/drawKnife2.ogg",
+        "kenney-rpg/drawKnife3.ogg",
+        "kenney-rpg/knifeSlice.ogg"
+      ],
+      "description": "Trava curta, lâminas deslizando nos trilhos e um encaixe leve; metal sem rajada de chiado.",
+      "before": {
+        "file": "sfx-dungeon-sliding-blades.ogg",
+        "sha256": "fbc1e36587e718ebafde3f7273ad4c225fa56f00ffb8b64aee72955827a2aacc",
+        "rmsDb": -29.72,
+        "peakDb": -3.39,
+        "truePeakDb": -3.17,
+        "shortRmsDb": -16.38,
+        "bassRatio": 0.0008,
+        "trebleRatio": 0.5408,
+        "maxSampleStep": 0.74425
+      },
+      "after": {
+        "file": "sfx-dungeon-sliding-blades-r2-20261025.ogg",
+        "sha256": "8fd30fabbd3ae8634775354e64040a0eb8578fa9d42c7423d50fe28254ad0a7e",
+        "rmsDb": -34.23,
+        "peakDb": -10.36,
+        "truePeakDb": -10.31,
+        "shortRmsDb": -22.53,
+        "bassRatio": 0.0,
+        "trebleRatio": 0.0719,
+        "maxSampleStep": 0.09911
+      }
+    },
+    {
+      "id": "sfx-dungeon-pendulum-blade",
+      "method": "rebuild-recorded-foley",
+      "sources": [
+        "kenney-rpg/creak3.ogg",
+        "kenney-rpg/knifeSlice.ogg"
+      ],
+      "description": "Quatro passagens espaçadas de lâmina, com corte de ar curto e rangido discreto do eixo.",
+      "before": {
+        "file": "sfx-dungeon-pendulum-blade.ogg",
+        "sha256": "4a72834da09edcf4567e507a45ba74a5f321517fc804c5d2f7dc977d6109f390",
+        "rmsDb": -21.02,
+        "peakDb": -2.32,
+        "truePeakDb": -2.22,
+        "shortRmsDb": -15.01,
+        "bassRatio": 0.0001,
+        "trebleRatio": 0.1985,
+        "maxSampleStep": 0.47273
+      },
+      "after": {
+        "file": "sfx-dungeon-pendulum-blade-r2-20261025.ogg",
+        "sha256": "39f11d701394383b7e0fb1269c72e56d71eea88374bea0f9f7a475c868b69cef",
+        "rmsDb": -32.17,
+        "peakDb": -10.88,
+        "truePeakDb": -10.88,
+        "shortRmsDb": -21.36,
+        "bassRatio": 0.0,
+        "trebleRatio": 0.0675,
+        "maxSampleStep": 0.11774
+      }
+    },
+    {
+      "id": "sfx-dungeon-distant-tremor",
+      "method": "rebuild-recorded-foley",
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
+      ],
+      "description": "Pedra vibrando ao longe, um abalo contido e poucos fragmentos no fim; sem bordão de subgrave.",
+      "before": {
+        "file": "sfx-dungeon-distant-tremor.ogg",
+        "sha256": "426af02f21eb441751e764733822b851fa0073731d2d6011bbf565b32fc5a2c5",
+        "rmsDb": -19.54,
+        "peakDb": -5.34,
+        "truePeakDb": -5.33,
+        "shortRmsDb": -13.3,
+        "bassRatio": 0.9793,
+        "trebleRatio": 0.0,
+        "maxSampleStep": 0.00934
+      },
+      "after": {
+        "file": "sfx-dungeon-distant-tremor-r2-20261025.ogg",
+        "sha256": "1f9898913377763b0b7808af3cc0273a33027fe06f25cf79efd035abcd77d5ea",
+        "rmsDb": -29.39,
+        "peakDb": -11.52,
+        "truePeakDb": -11.5,
+        "shortRmsDb": -21.49,
+        "bassRatio": 0.0034,
+        "trebleRatio": 0.0,
+        "maxSampleStep": 0.05694
+      }
+    },
+    {
+      "id": "sfx-dungeon-earthquake",
+      "method": "rebuild-recorded-foley",
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_01.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_04.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
+      ],
+      "description": "Abalo irregular com atrito de pedra, juntas estalando e entulho leve, sem parede de ruído.",
+      "before": {
+        "file": "sfx-dungeon-earthquake.ogg",
+        "sha256": "bedd458a8edaf944abda1a5c1d491f2988ab693ec9a4a57e3c35d70c4d100a13",
+        "rmsDb": -19.6,
+        "peakDb": -3.83,
+        "truePeakDb": -3.82,
+        "shortRmsDb": -13.32,
+        "bassRatio": 0.5919,
+        "trebleRatio": 0.0005,
+        "maxSampleStep": 0.13093
+      },
+      "after": {
+        "file": "sfx-dungeon-earthquake-r2-20261025.ogg",
+        "sha256": "997e5c5712aff5f5a76fa113ccf55c15eb87238371e01a378d3522b423ef8e6a",
+        "rmsDb": -27.99,
+        "peakDb": -12.01,
+        "truePeakDb": -11.98,
+        "shortRmsDb": -21.49,
+        "bassRatio": 0.0131,
+        "trebleRatio": 0.0,
+        "maxSampleStep": 0.05078
+      }
+    },
+    {
+      "id": "sfx-dungeon-giant-footsteps",
+      "method": "rebuild-recorded-foley",
+      "sources": [
+        "dungeon-kenney-impact-20261024/footstep_concrete_000.ogg",
+        "dungeon-kenney-impact-20261024/footstep_concrete_001.ogg",
+        "dungeon-kenney-impact-20261024/footstep_concrete_002.ogg",
+        "dungeon-kenney-impact-20261024/footstep_concrete_003.ogg",
+        "dungeon-kenney-impact-20261024/footstep_concrete_004.ogg"
+      ],
+      "description": "Seis passos pesados se aproximam, com o contato do pé e o eco legível, sem pulsos artificiais de grave.",
+      "before": {
+        "file": "sfx-dungeon-giant-footsteps.ogg",
+        "sha256": "a5f137b44b4292e634066b55db71a08b13e71a91786247c548174ca0e262f69f",
+        "rmsDb": -22.55,
+        "peakDb": -2.21,
+        "truePeakDb": -2.2,
+        "shortRmsDb": -11.71,
+        "bassRatio": 0.79,
+        "trebleRatio": 0.0,
+        "maxSampleStep": 0.01305
+      },
+      "after": {
+        "file": "sfx-dungeon-giant-footsteps-r2-20261025.ogg",
+        "sha256": "5eadf5e314b48f79fbe5bd6df90e2baee7b790471cf6bfa61886d30cdc550496",
+        "rmsDb": -39.83,
+        "peakDb": -9.77,
+        "truePeakDb": -9.77,
+        "shortRmsDb": -21.46,
+        "bassRatio": 0.0016,
+        "trebleRatio": 0.0,
+        "maxSampleStep": 0.01106
+      }
+    },
+    {
+      "id": "sfx-dungeon-floor-fissure",
+      "method": "rebuild-recorded-foley",
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_03.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_04.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
+      ],
+      "description": "Uma fratura avança por estalos curtos e raspagem de pedra, com fragmentos caindo nos intervalos.",
+      "before": {
+        "file": "sfx-dungeon-floor-fissure.ogg",
+        "sha256": "e8d2d0d40638c6e4758a2d914809ab39cc1db3103c630d16ae1d7c1be66917e1",
+        "rmsDb": -22.41,
+        "peakDb": -2.73,
+        "truePeakDb": -2.63,
+        "shortRmsDb": -14.39,
+        "bassRatio": 0.7319,
+        "trebleRatio": 0.0033,
+        "maxSampleStep": 0.24901
+      },
+      "after": {
+        "file": "sfx-dungeon-floor-fissure-r2-20261025.ogg",
+        "sha256": "3f0ac69b1292c62b23c5ba91b681277ff41c3073fae919e1692b3e1dbc5d5ada",
+        "rmsDb": -30.95,
+        "peakDb": -11.54,
+        "truePeakDb": -11.54,
+        "shortRmsDb": -21.42,
+        "bassRatio": 0.0141,
+        "trebleRatio": 0.0,
+        "maxSampleStep": 0.05181
+      }
+    },
+    {
+      "id": "sfx-dungeon-rolling-boulder",
+      "method": "rebuild-recorded-foley",
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
+      ],
+      "description": "Um bloco pesado rola em solavancos, com atrito de pedra e impactos separados, sem ruído grave contínuo.",
+      "before": {
+        "file": "sfx-dungeon-rolling-boulder.ogg",
+        "sha256": "9d55c457bbf5e872043ab8fb94f8e8c4b4e38c76dcaf1d2728414a9b000eda1c",
+        "rmsDb": -19.62,
+        "peakDb": -3.18,
+        "truePeakDb": -3.18,
+        "shortRmsDb": -13.54,
+        "bassRatio": 0.6526,
+        "trebleRatio": 0.0003,
+        "maxSampleStep": 0.06019
+      },
+      "after": {
+        "file": "sfx-dungeon-rolling-boulder-r2-20261025.ogg",
+        "sha256": "8c32859d96c3a5099429ab9d3ac819866fbeac00c7ba92dcb163f9a1d503af61",
+        "rmsDb": -28.64,
+        "peakDb": -11.54,
+        "truePeakDb": -11.53,
+        "shortRmsDb": -21.43,
+        "bassRatio": 0.0108,
+        "trebleRatio": 0.0,
+        "maxSampleStep": 0.05026
+      }
+    },
+    {
+      "id": "sfx-dungeon-ceiling-collapse",
+      "method": "rebuild-recorded-foley",
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-metal-wood-20261024/wood_breaking_01.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_02.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
+      ],
+      "description": "O suporte racha e o teto cede em impactos de pedra separados, seguidos de pequenos fragmentos.",
+      "before": {
+        "file": "sfx-dungeon-ceiling-collapse.ogg",
+        "sha256": "89a0f68c7fa9ff6023782fa315228a380b23d436e76a4bd4808a07a43711aabd",
+        "rmsDb": -22.01,
+        "peakDb": -2.11,
+        "truePeakDb": -2.1,
+        "shortRmsDb": -8.56,
+        "bassRatio": 0.7778,
+        "trebleRatio": 0.0025,
+        "maxSampleStep": 0.14728
+      },
+      "after": {
+        "file": "sfx-dungeon-ceiling-collapse-r2-20261025.ogg",
+        "sha256": "3320953242845c80b7e23677e5f39d455f56656b64a271440f18c5a4d9aeedbd",
+        "rmsDb": -29.08,
+        "peakDb": -11.78,
+        "truePeakDb": -11.78,
+        "shortRmsDb": -21.46,
+        "bassRatio": 0.0508,
+        "trebleRatio": 0.0001,
+        "maxSampleStep": 0.06423
+      }
+    },
+    {
+      "id": "sfx-dungeon-wall-collapse",
+      "method": "rebuild-recorded-foley",
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_03.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
+      ],
+      "description": "Blocos de alvenaria se soltam em sequência, com queda de cascalho e pausas entre os impactos.",
+      "before": {
+        "file": "sfx-dungeon-wall-collapse.ogg",
+        "sha256": "be7d12437553118afb51bc449b5406d21d4e69157b770e56bd812b255ce482c7",
+        "rmsDb": -21.26,
+        "peakDb": -2.11,
+        "truePeakDb": -2.11,
+        "shortRmsDb": -12.02,
+        "bassRatio": 0.6989,
+        "trebleRatio": 0.0011,
+        "maxSampleStep": 0.08815
+      },
+      "after": {
+        "file": "sfx-dungeon-wall-collapse-r2-20261025.ogg",
+        "sha256": "48e34836da3a4778de7fc89373bee6c01330819554c2ad30546c9ea265f09c39",
+        "rmsDb": -27.81,
+        "peakDb": -11.59,
+        "truePeakDb": -11.56,
+        "shortRmsDb": -21.48,
+        "bassRatio": 0.0402,
+        "trebleRatio": 0.0001,
+        "maxSampleStep": 0.05571
+      }
+    },
+    {
+      "id": "sfx-dungeon-rubble-slide",
+      "method": "rebuild-recorded-foley",
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_001.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_002.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
+      ],
+      "description": "Uma cascata de cascalho cruza o piso, cresce e diminui sem o sopro artificial de graves.",
+      "before": {
+        "file": "sfx-dungeon-rubble-slide.ogg",
+        "sha256": "22a4f1170d870f65158f2ce854085146c2f3eced236d90ccbdb7acb8f795b7b4",
+        "rmsDb": -20.35,
+        "peakDb": -2.15,
+        "truePeakDb": -2.14,
+        "shortRmsDb": -11.18,
+        "bassRatio": 0.5587,
+        "trebleRatio": 0.001,
+        "maxSampleStep": 0.07192
+      },
+      "after": {
+        "file": "sfx-dungeon-rubble-slide-r2-20261025.ogg",
+        "sha256": "f4eb16f8312a57a625b76f8ef9c82dd5d4e68d89b4a07f473a805a0abc51c460",
+        "rmsDb": -28.17,
+        "peakDb": -11.58,
+        "truePeakDb": -11.56,
+        "shortRmsDb": -21.47,
+        "bassRatio": 0.0342,
+        "trebleRatio": 0.0001,
+        "maxSampleStep": 0.05353
+      }
+    },
+    {
+      "id": "sfx-dungeon-dart-volley",
+      "method": "remaster",
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactWood_light_000.ogg",
+        "dungeon-kenney-impact-20261024/impactWood_light_003.ogg",
+        "kenney-rpg/metalClick.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ],
+      "description": "",
+      "before": {
+        "file": "sfx-dungeon-dart-volley.ogg",
+        "sha256": "da10124a70ef2ac092e88cdea0aa10b7f2b99cc957d8d50591b20612e4c84413",
+        "rmsDb": -24.29,
+        "peakDb": -1.8,
+        "truePeakDb": -1.8,
+        "shortRmsDb": -15.32,
+        "bassRatio": 0.0021,
+        "trebleRatio": 0.6118,
+        "maxSampleStep": 0.52173
+      },
+      "after": {
+        "file": "sfx-dungeon-dart-volley-r2-20261025.ogg",
+        "sha256": "2e10678b0e62f85b815d67fb439be28af7b02b749d514c598d7f527a33302c6c",
+        "rmsDb": -29.2,
+        "peakDb": -9.29,
+        "truePeakDb": -9.27,
+        "shortRmsDb": -21.53,
+        "bassRatio": 0.0001,
+        "trebleRatio": 0.0035,
+        "maxSampleStep": 0.07748
+      }
+    },
+    {
+      "id": "sfx-dungeon-poison-gas",
+      "method": "remaster",
+      "sources": [
+        "80-cc0-creature-sfx/spit_02.ogg",
+        "dungeon-metal-wood-20261024/metal_open_01.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ],
+      "description": "",
+      "before": {
+        "file": "sfx-dungeon-poison-gas.ogg",
+        "sha256": "a3ee1badd9565e35f89f0e5c6d600ace4cf8e143cdd376a521bda084458dc3e6",
+        "rmsDb": -19.85,
+        "peakDb": -2.64,
+        "truePeakDb": -2.43,
+        "shortRmsDb": -16.14,
+        "bassRatio": 0.0,
+        "trebleRatio": 0.6931,
+        "maxSampleStep": 0.61713
+      },
+      "after": {
+        "file": "sfx-dungeon-poison-gas-r2-20261025.ogg",
+        "sha256": "3a632a6d828b756f4a55756475a65f9e80eeb3301ca56dcd972488240bfe10f4",
+        "rmsDb": -27.62,
+        "peakDb": -13.18,
+        "truePeakDb": -13.13,
+        "shortRmsDb": -24.38,
+        "bassRatio": 0.0,
+        "trebleRatio": 0.0027,
+        "maxSampleStep": 0.06048
+      }
+    },
+    {
+      "id": "sfx-dungeon-reptile-hiss",
+      "method": "remaster",
+      "sources": [
+        "80-cc0-creature-sfx/alien_01.ogg",
+        "80-cc0-creature-sfx/spit_03.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ],
+      "description": "",
+      "before": {
+        "file": "sfx-dungeon-reptile-hiss.ogg",
+        "sha256": "ad39508d93dd5e0df4706e46b69e3a3f7901ee8c5d0c2be95250e7fc433b76e6",
+        "rmsDb": -22.93,
+        "peakDb": -1.73,
+        "truePeakDb": -1.73,
+        "shortRmsDb": -14.77,
+        "bassRatio": 0.001,
+        "trebleRatio": 0.7153,
+        "maxSampleStep": 0.79953
+      },
+      "after": {
+        "file": "sfx-dungeon-reptile-hiss-r2-20261025.ogg",
+        "sha256": "2a4bc685791ed8f9721f21f7405ef6b9db7c7ee7398cf7b353367a32acc57d3b",
+        "rmsDb": -30.27,
+        "peakDb": -11.74,
+        "truePeakDb": -11.71,
+        "shortRmsDb": -21.46,
+        "bassRatio": 0.0003,
+        "trebleRatio": 0.0089,
+        "maxSampleStep": 0.05901
+      }
+    },
+    {
+      "id": "sfx-dungeon-pitfall",
+      "method": "remaster",
+      "sources": [
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-kenney-impact-20261024/impactSoft_heavy_001.ogg",
+        "original:dungeon-filtered-noise-envelope"
+      ],
+      "description": "",
+      "before": {
+        "file": "sfx-dungeon-pitfall.ogg",
+        "sha256": "5551d1ed12842ba3013a5b3e1a52be4f22bc48eb9187d3e99392e5020a6ba7d9",
+        "rmsDb": -24.04,
+        "peakDb": -2.03,
+        "truePeakDb": -2.02,
+        "shortRmsDb": -8.16,
+        "bassRatio": 0.6471,
+        "trebleRatio": 0.147,
+        "maxSampleStep": 0.20651
+      },
+      "after": {
+        "file": "sfx-dungeon-pitfall-r2-20261025.ogg",
+        "sha256": "f8bb58ee362ced1ee3be42aeb205981fc0672f0a90f8a9a843ac4c665c501cba",
+        "rmsDb": -28.36,
+        "peakDb": -10.98,
+        "truePeakDb": -10.93,
+        "shortRmsDb": -21.75,
+        "bassRatio": 0.0057,
+        "trebleRatio": 0.0014,
+        "maxSampleStep": 0.06713
+      }
+    }
+  ],
+  "preservedCatalogAssets": 181,
+  "preservedOriginalFiles": 195,
+  "totalCatalog": 195
+}

@@ -95,11 +95,11 @@ try {
   const card = (id: string) => page.locator(`[data-sound-id="${id}"]`);
   const media = (p: typeof page, id: string) =>
     p.evaluate(
-      (id) =>
+      (path) =>
         (window as any).__vttAudios
           .filter((a: HTMLAudioElement) => {
             if (a.src.includes('/audio/vtt/')) (a as any).__original = a.src;
-            return (a.src || (a as any).__original || '').endsWith('/' + id + '.ogg');
+            return (a.src || (a as any).__original || '').endsWith(path);
           })
           .map((a: HTMLAudioElement) => ({
             src: a.src,
@@ -110,7 +110,7 @@ try {
             ready: a.readyState,
             plays: (a as any).__plays as number[],
           })),
-      id,
+      soundCatalog.find((s) => s.id === id)!.path,
     );
   const before = await snapshot();
   await card('music-old-inn')
@@ -303,7 +303,32 @@ try {
         const response = await fetch(e.path);
         if (!response.ok) throw Error('Audio HTTP ' + e.id);
         const buffer = await audio.decodeAudioData(await response.arrayBuffer());
-        results.push({ id: e.id, channels: buffer.numberOfChannels, duration: buffer.duration });
+        let peak = 0,
+          shortRms = 0;
+        const frame = Math.round(buffer.sampleRate * 0.05);
+        for (let i = 0; i < buffer.length; i += frame) {
+          let power = 0,
+            count = 0;
+          for (let c = 0; c < buffer.numberOfChannels; c++) {
+            const samples = buffer.getChannelData(c);
+            for (let j = i; j < Math.min(i + frame, buffer.length); j++) {
+              const sample = samples[j];
+              if (!Number.isFinite(sample)) throw Error('Invalid PCM ' + e.id);
+              peak = Math.max(peak, Math.abs(sample));
+              power += sample * sample;
+              count++;
+            }
+          }
+          shortRms = Math.max(shortRms, Math.sqrt(power / count));
+        }
+        results.push({
+          id: e.id,
+          channels: buffer.numberOfChannels,
+          duration: buffer.duration,
+          peak,
+          shortRms,
+          path: e.path,
+        });
       }
       return results;
     } finally {
@@ -315,6 +340,10 @@ try {
     expect(
       Math.abs(result.duration - dungeon.find((s) => s.id === result.id)!.duration),
     ).toBeLessThan(0.01);
+    if (result.path.includes('-r2-20261025')) {
+      expect(result.peak).toBeLessThan(0.4);
+      expect(result.shortRms).toBeLessThan(0.1);
+    }
   }
   await page.getByRole('button', { name: 'Efeitos', exact: true }).click();
   await page.getByLabel('Categoria de som').selectOption('Desabamentos');

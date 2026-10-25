@@ -61,17 +61,16 @@
         "dungeon-kenney-impact-20261024/impactMining_003.ogg",
         "dungeon-kenney-impact-20261024/impactMining_004.ogg",
         "dungeon-metal-wood-20261024/wood_breaking_01.ogg",
-        "dungeon-metal-wood-20261024/wood_cracking_01.ogg",
         "dungeon-metal-wood-20261024/wood_cracking_02.ogg",
-        "dungeon-metal-wood-20261024/wood_cracking_03.ogg",
-        "original:dungeon-filtered-noise-envelope"
+        "dungeon-stone-move-20261024/stone-move.mp3"
       ],
-      "arrangement": "Estalos de sustentação, queda súbita do teto e uma cascata de pedras e poeira.",
-      "sha256": "89a0f68c7fa9ff6023782fa315228a380b23d436e76a4bd4808a07a43711aabd",
+      "arrangement": "O suporte racha e o teto cede em impactos de pedra separados, seguidos de pequenos fragmentos.",
+      "sha256": "3320953242845c80b7e23677e5f39d455f56656b64a271440f18c5a4d9aeedbd",
       "duration": 11.599977324263039,
-      "rmsDb": -22.01,
-      "peakDb": -2.11,
-      "loopSeam": 0.0
+      "rmsDb": -29.08,
+      "peakDb": -11.78,
+      "loopSeam": 0.0,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-falling-rubble",
@@ -144,15 +143,16 @@
         "dungeon-kenney-impact-20261024/impactMining_002.ogg",
         "dungeon-kenney-impact-20261024/impactMining_003.ogg",
         "dungeon-kenney-impact-20261024/impactMining_004.ogg",
-        "dungeon-stone-move-20261024/stone-move.mp3",
-        "original:dungeon-filtered-noise-envelope"
+        "dungeon-metal-wood-20261024/wood_cracking_03.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
       ],
-      "arrangement": "A parede cede em vários blocos sucessivos, com rolagem de entulho.",
-      "sha256": "be7d12437553118afb51bc449b5406d21d4e69157b770e56bd812b255ce482c7",
+      "arrangement": "Blocos de alvenaria se soltam em sequência, com queda de cascalho e pausas entre os impactos.",
+      "sha256": "48e34836da3a4778de7fc89373bee6c01330819554c2ad30546c9ea265f09c39",
       "duration": 8.599977324263039,
-      "rmsDb": -21.26,
-      "peakDb": -2.11,
-      "loopSeam": 0.0
+      "rmsDb": -27.81,
+      "peakDb": -11.59,
+      "loopSeam": 0.0,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-wooden-bridge-break",
@@ -188,14 +188,15 @@
         "dungeon-kenney-impact-20261024/impactMining_002.ogg",
         "dungeon-kenney-impact-20261024/impactMining_003.ogg",
         "dungeon-kenney-impact-20261024/impactMining_004.ogg",
-        "original:dungeon-filtered-noise-envelope"
+        "dungeon-stone-move-20261024/stone-move.mp3"
       ],
-      "arrangement": "Uma massa de pedras desliza pelo túnel, cresce e se dispersa.",
-      "sha256": "22a4f1170d870f65158f2ce854085146c2f3eced236d90ccbdb7acb8f795b7b4",
+      "arrangement": "Uma cascata de cascalho cruza o piso, cresce e diminui sem o sopro artificial de graves.",
+      "sha256": "f4eb16f8312a57a625b76f8ef9c82dd5d4e68d89b4a07f473a805a0abc51c460",
       "duration": 9.599977324263039,
-      "rmsDb": -20.35,
-      "peakDb": -2.15,
-      "loopSeam": 0.0
+      "rmsDb": -28.17,
+      "peakDb": -11.58,
+      "loopSeam": 0.0,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-secret-door-open",
@@ -337,11 +338,12 @@
         "original:dungeon-filtered-noise-envelope"
       ],
       "arrangement": "Sete dardos passam em rajada e se cravam no lado oposto do corredor.",
-      "sha256": "da10124a70ef2ac092e88cdea0aa10b7f2b99cc957d8d50591b20612e4c84413",
+      "sha256": "2e10678b0e62f85b815d67fb439be28af7b02b749d514c598d7f527a33302c6c",
       "duration": 4.799977324263039,
-      "rmsDb": -24.29,
-      "peakDb": -1.8,
-      "loopSeam": 2.2e-05
+      "rmsDb": -29.2,
+      "peakDb": -9.29,
+      "loopSeam": 2e-05,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-sliding-blades",
@@ -349,17 +351,19 @@
       "category": "Armadilhas",
       "loop": false,
       "sources": [
-        "dungeon-metal-wood-20261024/metal_hit_02.ogg",
-        "dungeon-metal-wood-20261024/metal_sheet_02.ogg",
-        "dungeon-metal-wood-20261024/metal_spring_01.ogg",
-        "original:dungeon-filtered-noise-envelope"
+        "dungeon-kenney-impact-20261024/impactMetal_light_002.ogg",
+        "dungeon-metal-wood-20261024/lock_open_01.ogg",
+        "kenney-rpg/drawKnife2.ogg",
+        "kenney-rpg/drawKnife3.ogg",
+        "kenney-rpg/knifeSlice.ogg"
       ],
-      "arrangement": "Um mecanismo arma e uma fileira de lâminas atravessa o corredor.",
-      "sha256": "fbc1e36587e718ebafde3f7273ad4c225fa56f00ffb8b64aee72955827a2aacc",
+      "arrangement": "Trava curta, lâminas deslizando nos trilhos e um encaixe leve; metal sem rajada de chiado.",
+      "sha256": "8fd30fabbd3ae8634775354e64040a0eb8578fa9d42c7423d50fe28254ad0a7e",
       "duration": 5.3999773242630384,
-      "rmsDb": -29.72,
-      "peakDb": -3.39,
-      "loopSeam": 0.0
+      "rmsDb": -34.23,
+      "peakDb": -10.36,
+      "loopSeam": 0.0,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-trapdoor-open",
@@ -390,11 +394,12 @@
         "original:dungeon-filtered-noise-envelope"
       ],
       "arrangement": "Ar passando durante a queda e um impacto profundo no fundo de um fosso.",
-      "sha256": "5551d1ed12842ba3013a5b3e1a52be4f22bc48eb9187d3e99392e5020a6ba7d9",
+      "sha256": "f8bb58ee362ced1ee3be42aeb205981fc0672f0a90f8a9a843ac4c665c501cba",
       "duration": 6.3999773242630384,
-      "rmsDb": -24.04,
-      "peakDb": -2.03,
-      "loopSeam": 4e-06
+      "rmsDb": -28.36,
+      "peakDb": -10.98,
+      "loopSeam": 3e-06,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-jaw-trap",
@@ -419,16 +424,16 @@
       "category": "Armadilhas",
       "loop": false,
       "sources": [
-        "dungeon-metal-wood-20261024/metal_sheet_04.ogg",
-        "kenney-rpg/creak2.ogg",
-        "original:dungeon-filtered-noise-envelope"
+        "kenney-rpg/creak3.ogg",
+        "kenney-rpg/knifeSlice.ogg"
       ],
-      "arrangement": "Quatro passagens de uma lâmina pendular, com eixo rangendo e ar cortado.",
-      "sha256": "4a72834da09edcf4567e507a45ba74a5f321517fc804c5d2f7dc977d6109f390",
+      "arrangement": "Quatro passagens espaçadas de lâmina, com corte de ar curto e rangido discreto do eixo.",
+      "sha256": "39f11d701394383b7e0fb1269c72e56d71eea88374bea0f9f7a475c868b69cef",
       "duration": 8.599977324263039,
-      "rmsDb": -21.02,
-      "peakDb": -2.32,
-      "loopSeam": 6e-06
+      "rmsDb": -32.17,
+      "peakDb": -10.88,
+      "loopSeam": 0.0,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-rolling-boulder",
@@ -441,15 +446,15 @@
         "dungeon-kenney-impact-20261024/impactMining_002.ogg",
         "dungeon-kenney-impact-20261024/impactMining_003.ogg",
         "dungeon-kenney-impact-20261024/impactMining_004.ogg",
-        "dungeon-stone-move-20261024/stone-move.mp3",
-        "original:dungeon-filtered-noise-envelope"
+        "dungeon-stone-move-20261024/stone-move.mp3"
       ],
-      "arrangement": "Um bloco de pedra ganha velocidade no corredor, rolando e golpeando as juntas do piso.",
-      "sha256": "9d55c457bbf5e872043ab8fb94f8e8c4b4e38c76dcaf1d2728414a9b000eda1c",
+      "arrangement": "Um bloco pesado rola em solavancos, com atrito de pedra e impactos separados, sem ruído grave contínuo.",
+      "sha256": "8c32859d96c3a5099429ab9d3ac819866fbeac00c7ba92dcb163f9a1d503af61",
       "duration": 11.599977324263039,
-      "rmsDb": -19.62,
-      "peakDb": -3.18,
-      "loopSeam": 5.1e-05
+      "rmsDb": -28.64,
+      "peakDb": -11.54,
+      "loopSeam": 0.0,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-poison-gas",
@@ -462,11 +467,12 @@
         "original:dungeon-filtered-noise-envelope"
       ],
       "arrangement": "Uma válvula libera um jato prolongado de gás sob pressão.",
-      "sha256": "a3ee1badd9565e35f89f0e5c6d600ace4cf8e143cdd376a521bda084458dc3e6",
+      "sha256": "3a632a6d828b756f4a55756475a65f9e80eeb3301ca56dcd972488240bfe10f4",
       "duration": 8.099977324263039,
-      "rmsDb": -19.85,
-      "peakDb": -2.64,
-      "loopSeam": 4e-06
+      "rmsDb": -27.62,
+      "peakDb": -13.18,
+      "loopSeam": 1e-06,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-distant-tremor",
@@ -477,15 +483,16 @@
         "dungeon-kenney-impact-20261024/impactMining_000.ogg",
         "dungeon-kenney-impact-20261024/impactMining_001.ogg",
         "dungeon-kenney-impact-20261024/impactMining_002.ogg",
-        "dungeon-kenney-impact-20261024/impactMining_003.ogg",
-        "original:dungeon-filtered-noise-envelope"
+        "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-stone-move-20261024/stone-move.mp3"
       ],
-      "arrangement": "Um abalo grave e distante percorre as galerias sem desmoronar o teto.",
-      "sha256": "426af02f21eb441751e764733822b851fa0073731d2d6011bbf565b32fc5a2c5",
+      "arrangement": "Pedra vibrando ao longe, um abalo contido e poucos fragmentos no fim; sem bordão de subgrave.",
+      "sha256": "1f9898913377763b0b7808af3cc0273a33027fe06f25cf79efd035abcd77d5ea",
       "duration": 10.599977324263039,
-      "rmsDb": -19.54,
-      "peakDb": -5.34,
-      "loopSeam": 0.0
+      "rmsDb": -29.39,
+      "peakDb": -11.52,
+      "loopSeam": 0.0,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-earthquake",
@@ -499,16 +506,16 @@
         "dungeon-kenney-impact-20261024/impactMining_003.ogg",
         "dungeon-kenney-impact-20261024/impactMining_004.ogg",
         "dungeon-metal-wood-20261024/wood_cracking_01.ogg",
-        "dungeon-metal-wood-20261024/wood_cracking_03.ogg",
         "dungeon-metal-wood-20261024/wood_cracking_04.ogg",
-        "original:dungeon-filtered-noise-envelope"
+        "dungeon-stone-move-20261024/stone-move.mp3"
       ],
-      "arrangement": "Abalo prolongado, paredes vibrando e pedras soltas caindo ao redor.",
-      "sha256": "bedd458a8edaf944abda1a5c1d491f2988ab693ec9a4a57e3c35d70c4d100a13",
+      "arrangement": "Abalo irregular com atrito de pedra, juntas estalando e entulho leve, sem parede de ruído.",
+      "sha256": "997e5c5712aff5f5a76fa113ccf55c15eb87238371e01a378d3522b423ef8e6a",
       "duration": 13.599977324263039,
-      "rmsDb": -19.6,
-      "peakDb": -3.83,
-      "loopSeam": 2e-06
+      "rmsDb": -27.99,
+      "peakDb": -12.01,
+      "loopSeam": 0.0,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-giant-footsteps",
@@ -520,15 +527,15 @@
         "dungeon-kenney-impact-20261024/footstep_concrete_001.ogg",
         "dungeon-kenney-impact-20261024/footstep_concrete_002.ogg",
         "dungeon-kenney-impact-20261024/footstep_concrete_003.ogg",
-        "dungeon-kenney-impact-20261024/footstep_concrete_004.ogg",
-        "original:dungeon-filtered-noise-envelope"
+        "dungeon-kenney-impact-20261024/footstep_concrete_004.ogg"
       ],
-      "arrangement": "Seis passadas pesadas ficam mais próximas e fazem o piso vibrar.",
-      "sha256": "a5f137b44b4292e634066b55db71a08b13e71a91786247c548174ca0e262f69f",
+      "arrangement": "Seis passos pesados se aproximam, com o contato do pé e o eco legível, sem pulsos artificiais de grave.",
+      "sha256": "5eadf5e314b48f79fbe5bd6df90e2baee7b790471cf6bfa61886d30cdc550496",
       "duration": 10.599977324263039,
-      "rmsDb": -22.55,
-      "peakDb": -2.21,
-      "loopSeam": 0.0
+      "rmsDb": -39.83,
+      "peakDb": -9.77,
+      "loopSeam": 0.0,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-floor-fissure",
@@ -536,21 +543,21 @@
       "category": "Tremores",
       "loop": false,
       "sources": [
-        "dungeon-kenney-impact-20261024/impactMining_000.ogg",
         "dungeon-kenney-impact-20261024/impactMining_001.ogg",
         "dungeon-kenney-impact-20261024/impactMining_002.ogg",
         "dungeon-kenney-impact-20261024/impactMining_003.ogg",
         "dungeon-kenney-impact-20261024/impactMining_004.ogg",
+        "dungeon-metal-wood-20261024/wood_cracking_03.ogg",
         "dungeon-metal-wood-20261024/wood_cracking_04.ogg",
-        "dungeon-stone-move-20261024/stone-move.mp3",
-        "original:dungeon-filtered-noise-envelope"
+        "dungeon-stone-move-20261024/stone-move.mp3"
       ],
-      "arrangement": "A pedra se parte em linha, a fissura se alarga e fragmentos despencam.",
-      "sha256": "e8d2d0d40638c6e4758a2d914809ab39cc1db3103c630d16ae1d7c1be66917e1",
+      "arrangement": "Uma fratura avança por estalos curtos e raspagem de pedra, com fragmentos caindo nos intervalos.",
+      "sha256": "3f0ac69b1292c62b23c5ba91b681277ff41c3073fae919e1692b3e1dbc5d5ada",
       "duration": 8.39997732426304,
-      "rmsDb": -22.41,
-      "peakDb": -2.73,
-      "loopSeam": 3e-06
+      "rmsDb": -30.95,
+      "peakDb": -11.54,
+      "loopSeam": 0.0,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-beast-growl",
@@ -661,11 +668,12 @@
         "original:dungeon-filtered-noise-envelope"
       ],
       "arrangement": "Sibilo áspero, vibração da garganta e um estalo curto de mandíbulas.",
-      "sha256": "ad39508d93dd5e0df4706e46b69e3a3f7901ee8c5d0c2be95250e7fc433b76e6",
+      "sha256": "2a4bc685791ed8f9721f21f7405ef6b9db7c7ee7398cf7b353367a32acc57d3b",
       "duration": 6.3999773242630384,
-      "rmsDb": -22.93,
-      "peakDb": -1.73,
-      "loopSeam": 0.0
+      "rmsDb": -30.27,
+      "peakDb": -11.74,
+      "loopSeam": 0.0,
+      "revision": "2026-10-25"
     },
     {
       "id": "sfx-dungeon-bat-swarm",
@@ -806,5 +814,6 @@
     }
   ],
   "preservedAssets": 155,
-  "totalCatalog": 195
+  "totalCatalog": 195,
+  "latestAudioRevision": "2026-10-25"
 }

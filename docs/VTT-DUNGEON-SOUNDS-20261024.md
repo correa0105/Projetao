@@ -28,3 +28,8 @@ TypeScript e builds cliente/servidor. Dez testes de engine/schema/integridade e 
 Runner de API/navegador recusa o túnel de produção 5437. Smoke atualizado para entrada atual do VTT e dono comum: decodifica os 40 arquivos no navegador, testa categorias e busca, prévia privada, compartilhamento de desabamento/porta/armadilha/tremor/monstro e ambiente em loop, favoritos/atalhos persistentes, regressões do mixer e responsividade 320/390/768/1440 px. Evidências em test-results/vtt-sounds-browser.json e vtt-sound-library-*.png.
 
 Navegador aprovado: os 40 arquivos decodificados; prévia privada e seis reproduções compartilhadas novas confirmadas; categorias, favoritos, hotbar, volumes/intervalos antigos e quatro larguras aprovados, sem erros de página. Publicado em https://alvoradacinzenta.com, release vtt-dungeon-sounds-20261024, código 339ada1c07f38080cbe4b8559bf9e8d2a6c98fe5. Verificados 84 arquivos do release e 62 respostas HTTPS (incluindo os 40 áudios e o manifest). Catálogo cliente/servidor compatível; os 155 arquivos antigos, documentos das duas salas e seus dois hotbars conservaram os hashes. Ilustrador online e saúde HTTP aprovada. Backup anterior em /opt/alvorada/backups/vtt-dungeon-sounds-before-20261025T010851Z.dump.
+
+
+## Revisão de qualidade de 25/10/2026
+
+Após relato do proprietário, 14 efeitos ásperos foram refeitos/tratados, conservando IDs, durações, configurações e originais. A versão revisada usa novas URLs de mídia. Ver [VTT-DUNGEON-AUDIO-REFINEMENT-20261025.md](VTT-DUNGEON-AUDIO-REFINEMENT-20261025.md). A validação de reprodução original não deve ser tratada como aprovação de qualidade sonora.
