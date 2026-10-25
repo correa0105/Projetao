@@ -1770,7 +1770,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
           : selection.includes(hit.id)
             ? selection
             : [hit.id];
-        const ids = gm && e.shiftKey && selection.includes(hit.id) ? selection : clickSelection;
+        const ids = gm && !preview && !hit.locked && e.shiftKey && selection.includes(hit.id) ? selection : clickSelection;
         setSelection(ids);
         if (!preview && !e.shiftKey && !e.ctrlKey && !e.metaKey && ids.length === 1) {
           tokenClick.current = {id: hit.id, x: e.clientX, y: e.clientY};
