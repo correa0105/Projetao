@@ -60,6 +60,7 @@
   min-height: 610px;
 }
 .camp-character {
+  --camp-portrait-drop: clamp(10px, 2.4dvh, 24px);
   width: min(36vw, 400px);
   min-width: 0;
   text-align: center;
@@ -380,11 +381,11 @@ body:has(.character-camp) {
   filter: brightness(0);
 }
 .camp-character .camp-figure img {
-  transform: scale(calc(var(--stature-scale, 1) * 0.8));
+  transform: translateY(var(--camp-portrait-drop)) scale(calc(var(--stature-scale, 1) * 0.8));
   transform-origin: center bottom;
 }
 .camp-character .camp-figure::after {
-  transform: scaleX(calc(var(--stature-scale, 1) * 0.8));
+  transform: translateY(var(--camp-portrait-drop)) scaleX(calc(var(--stature-scale, 1) * 0.8));
 }
 .camp-figure:hover img.character-silhouette,
 .camp-figure:focus-visible img.character-silhouette {
@@ -397,6 +398,7 @@ body:has(.character-camp) {
   width: 85%;
   justify-self: center;
   zoom: 0.85;
+  transform: translateY(calc(var(--camp-portrait-drop) / 0.85));
 }
 .camp-character-info h2 {
   font-size: clamp(16px, 1.7vw, 23px);

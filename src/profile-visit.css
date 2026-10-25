@@ -107,7 +107,7 @@
   height: 100%;
   object-fit: contain;
   object-position: center bottom;
-  transform: scale(calc(var(--stature-scale, 1) * 0.8));
+  transform: translateY(var(--camp-portrait-drop)) scale(calc(var(--stature-scale, 1) * 0.8));
   transform-origin: center bottom;
 }
 :root .visiting .public-character-info h2 {
