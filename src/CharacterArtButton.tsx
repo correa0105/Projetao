@@ -73,10 +73,12 @@ export function CharacterArtButton({
     const timer = setInterval(() => void update(), 4000);
     const focus = () => void update();
     window.addEventListener('focus', focus);
+    window.addEventListener('character-art-choice-updated', focus);
     return () => {
       alive = false;
       clearInterval(timer);
       window.removeEventListener('focus', focus);
+      window.removeEventListener('character-art-choice-updated', focus);
     };
   }, [character.id]);
   const pending =
@@ -85,6 +87,7 @@ export function CharacterArtButton({
       (job) => job.character_id === character.id && ['queued', 'running'].includes(job.status),
     );
   const latestJob = state.jobs.find((job) => job.character_id === character.id);
+  const awaitingChoice=state.reviews?.some(review=>review.character_id===character.id);
   const quota = state.quotas?.[character.id] ?? {
     used: character.art_used,
     limit: character.art_unlimited ? null : ART_MONTHLY_LIMIT,
@@ -96,7 +99,7 @@ export function CharacterArtButton({
     <div className="equipment-generate">
       <button
         className="button outline small-button"
-        disabled={pending}
+        disabled={pending||awaitingChoice}
         onClick={async () => {
           key.current = crypto.randomUUID();
           setReference('');
@@ -120,7 +123,7 @@ export function CharacterArtButton({
         }}
       >
         <Sparkles size={15} />
-        {pending ? 'Vestindo...' : 'Vestir'}
+        {pending ? 'Vestindo...' : awaitingChoice ? 'Imagem pronta para escolher' : 'Vestir'}
       </button>
       {!pending && availability !== true && (
         <p
@@ -171,7 +174,7 @@ export function CharacterArtButton({
               }
             }}
           >
-            <p>A imagem atual permanece até a nova ficar pronta.</p>
+            <p>Quando a nova imagem ficar pronta, você poderá compará-la com a atual e escolher qual manter.</p>
             <p>A geração inclui a arte do personagem e um token visto de cima para o VTT.</p>
             {checkingQuota ? (
               <p role="status">Consultando a cota mensal…</p>

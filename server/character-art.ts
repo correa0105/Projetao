@@ -13,6 +13,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { EQUIPMENT_SLOTS, isHelmet } from '../shared/equipment.js';
 import { pool, transaction } from './db.js';
+import type { PoolClient } from 'pg';
 import { AppError } from './services.js';
 import {
   characterSchema,
@@ -50,11 +51,16 @@ const requestSchema = z
   })
   .refine((data) => Boolean(data.character_id) !== Boolean(data.creation))
   .superRefine((data, ctx) => {
-    if (data.creation) try {
-      validateCreationAppearance(data.creation.race, data.creation.choices);
-    } catch (error) {
-      ctx.addIssue({ code: 'custom', path: ['creation', 'choices'], message: (error as Error).message });
-    }
+    if (data.creation)
+      try {
+        validateCreationAppearance(data.creation.race, data.creation.choices);
+      } catch (error) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['creation', 'choices'],
+          message: (error as Error).message,
+        });
+      }
   })
   .refine((data) => !canConstructWithoutReference(data.creation) || !data.reference, {
     path: ['reference'],
@@ -135,6 +141,7 @@ export async function enqueueArt(userId: string, input: unknown) {
   let referenceMode: 'construction' | 'reference' = canConstructWithoutReference(data.creation)
     ? 'construction'
     : 'reference';
+  let replacementRevision: number | null = null;
   if (referenceMode === 'construction' && reference)
     throw new AppError(400, 'Desative as opções de montagem para usar uma imagem de referência.');
   return transaction(async (client) => {
@@ -158,11 +165,12 @@ export async function enqueueArt(userId: string, input: unknown) {
       );
     if (data.character_id) {
       const owned = await client.query(
-        'SELECT c.id,c.race,s.choices,p.image,p.construction_base FROM characters c LEFT JOIN character_sheets s ON s.character_id=c.id LEFT JOIN character_portraits p ON p.character_id=c.id WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL FOR UPDATE OF c',
+        'SELECT c.id,c.race,c.portrait_revision,s.choices,p.image,p.construction_base FROM characters c LEFT JOIN character_sheets s ON s.character_id=c.id LEFT JOIN character_portraits p ON p.character_id=c.id WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL FOR UPDATE OF c',
         [data.character_id, userId],
       );
       if (!owned.rowCount) throw new AppError(404, 'Personagem não encontrado.');
       const subject = owned.rows[0];
+      replacementRevision = subject.image ? subject.portrait_revision : null;
       referenceMode =
         subject.race === 'Warforged' ? warforgedArtMode(subject.choices) : 'reference';
       if (referenceMode === 'construction') {
@@ -181,11 +189,16 @@ export async function enqueueArt(userId: string, input: unknown) {
       } else if (!reference)
         throw new AppError(400, 'Envie a imagem de referência deste personagem.');
       const pending = await client.query(
-        "SELECT 1 FROM character_art_jobs WHERE character_id=$1 AND status IN ('queued','running')",
+        "SELECT art_decision FROM character_art_jobs WHERE character_id=$1 AND (status IN ('queued','running') OR art_decision='pending')",
         [data.character_id],
       );
       if (pending.rowCount)
-        throw new AppError(409, 'Já há uma imagem em preparação para este personagem.');
+        throw new AppError(
+          409,
+          pending.rows[0].art_decision === 'pending'
+            ? 'A nova imagem está pronta. Atualize a página para comparar e escolher qual manter.'
+            : 'Já há uma imagem em preparação para este personagem.',
+        );
       const count = await client.query(`SELECT ${characterAccountArtUsedSql('$1')} AS used`, [
         userId,
       ]);
@@ -252,8 +265,8 @@ export async function enqueueArt(userId: string, input: unknown) {
     const {
       rows: [job],
     } = await client.query(
-      `INSERT INTO character_art_jobs(user_id,character_id,creation,reference,idempotency_key,helmet_mode,reference_mode)
-      VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id,status,character_id`,
+      `INSERT INTO character_art_jobs(user_id,character_id,creation,reference,idempotency_key,helmet_mode,reference_mode,replacement_revision)
+      VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING id,status,character_id`,
       [
         userId,
         data.character_id || null,
@@ -262,6 +275,7 @@ export async function enqueueArt(userId: string, input: unknown) {
         data.idempotency_key,
         data.helmet_mode,
         referenceMode,
+        replacementRevision,
       ],
     );
     for (const item of equipment)
@@ -273,7 +287,78 @@ export async function enqueueArt(userId: string, input: unknown) {
   });
 }
 
-// Only the trusted local worker calls this function. No HTTP route can publish artwork.
+async function publishCharacterImages(
+  client: PoolClient,
+  characterId: string,
+  userId: string,
+  image: Buffer,
+  tokenImage: Buffer | null,
+  constructionBase: Buffer | null = null,
+) {
+  await client.query(
+    'INSERT INTO character_portraits(character_id,image,construction_base) VALUES($1,$2,$3) ON CONFLICT(character_id) DO UPDATE SET image=$2,construction_base=COALESCE(character_portraits.construction_base,$3),updated_at=now()',
+    [characterId, image, constructionBase],
+  );
+  if (tokenImage) {
+    await client.query(
+      'INSERT INTO character_tokens(character_id,image) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET image=$2,updated_at=now()',
+      [characterId, tokenImage],
+    );
+    await syncCharacterTokenArt(client, characterId, userId, tokenImage);
+  }
+  await client.query(
+    'UPDATE characters SET portrait_revision=portrait_revision+1 WHERE id=$1 AND user_id=$2',
+    [characterId, userId],
+  );
+}
+
+export async function decideCharacterArt(
+  userId: string,
+  jobId: string,
+  decision: 'accepted' | 'kept',
+) {
+  return transaction(async (client) => {
+    await client.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE', [userId]);
+    const job = (
+      await client.query('SELECT * FROM character_art_jobs WHERE id=$1 AND user_id=$2 FOR UPDATE', [
+        jobId,
+        userId,
+      ])
+    ).rows[0];
+    if (!job || !job.character_id) throw new AppError(404, 'Imagem não encontrada.');
+    const character = (
+      await client.query(
+        'SELECT id,portrait_revision FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL FOR UPDATE',
+        [job.character_id, userId],
+      )
+    ).rows[0];
+    if (!character) throw new AppError(404, 'Personagem não encontrado.');
+    if (job.art_decision === decision) return { character_id: character.id, decision };
+    if (job.art_decision !== 'pending')
+      throw new AppError(409, 'Esta imagem já foi resolvida. Atualize a página.');
+    if (decision === 'accepted') {
+      if (character.portrait_revision !== job.replacement_revision)
+        throw new AppError(
+          409,
+          'A imagem atual mudou. Mantenha a atual e gere outra imagem para comparar.',
+        );
+      await publishCharacterImages(
+        client,
+        character.id,
+        userId,
+        job.proposed_portrait,
+        job.proposed_token,
+      );
+    }
+    await client.query(
+      'UPDATE character_art_jobs SET art_decision=$2,decided_at=now(),proposed_portrait=NULL,proposed_token=NULL WHERE id=$1',
+      [jobId, decision],
+    );
+    return { character_id: character.id, decision };
+  });
+}
+
+// Only the trusted worker supplies image bytes. The owner may choose an already validated pair.
 export async function completeArt(jobId: string, output: { portrait: Buffer; token?: Buffer }) {
   const [image, tokenImage] = await Promise.all([
     normalizeArtImage(output.portrait, true),
@@ -294,6 +379,27 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
     if (job.status !== 'running' && !(job.status === 'failed' && !tokenImage))
       throw new AppError(409, 'Pedido não está em processamento.');
     let characterId = job.character_id;
+    if (job.replacement_revision != null) {
+      const character = (
+        await client.query(
+          'SELECT id FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL FOR UPDATE',
+          [characterId, job.user_id],
+        )
+      ).rows[0];
+      if (!character) throw new AppError(404, 'Personagem não encontrado.');
+      if (!tokenImage) {
+        await client.query('UPDATE character_art_jobs SET approved_portrait=$2 WHERE id=$1', [
+          jobId,
+          image,
+        ]);
+      } else {
+        await client.query(
+          "UPDATE character_art_jobs SET status='completed',art_decision='pending',proposed_portrait=$2,proposed_token=$3,reference=NULL,approved_portrait=NULL,error=NULL,completed_at=now() WHERE id=$1",
+          [jobId, image, tokenImage],
+        );
+      }
+      return characterId as string;
+    }
     if (!characterId) {
       const {
         rows: [counts],
@@ -334,20 +440,13 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
       );
     }
     if (job.creation) await grantCharacterStartingGold(client, job.user_id, characterId);
-    await client.query(
-      'INSERT INTO character_portraits(character_id,image,construction_base) VALUES($1,$2,$3) ON CONFLICT(character_id) DO UPDATE SET image=$2,construction_base=COALESCE(character_portraits.construction_base,$3),updated_at=now()',
-      [characterId, image, job.reference_mode === 'construction' && job.creation ? image : null],
-    );
-    if (tokenImage) {
-      await client.query(
-        'INSERT INTO character_tokens(character_id,image) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET image=$2,updated_at=now()',
-        [characterId, tokenImage],
-      );
-      await syncCharacterTokenArt(client, characterId, job.user_id, tokenImage);
-    }
-    await client.query(
-      'UPDATE characters SET portrait_revision=portrait_revision+1 WHERE id=$1 AND user_id=$2',
-      [characterId, job.user_id],
+    await publishCharacterImages(
+      client,
+      characterId,
+      job.user_id,
+      image,
+      tokenImage,
+      job.reference_mode === 'construction' && job.creation ? image : null,
     );
     if (tokenImage) {
       await client.query(
@@ -366,6 +465,25 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
 
 export function characterArtRouter() {
   const router = Router();
+  router.get('/character-art/:id/proposed/:kind', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      kind = z.enum(['portrait', 'token']).parse(req.params.kind);
+    const row = (
+      await pool.query(
+        `SELECT ${kind === 'portrait' ? 'j.proposed_portrait' : 'j.proposed_token'} AS image FROM character_art_jobs j JOIN characters c ON c.id=j.character_id WHERE j.id=$1 AND j.user_id=$2 AND c.user_id=$2 AND c.deleted_at IS NULL AND j.art_decision='pending'`,
+        [id, res.locals.user.id],
+      )
+    ).rows[0];
+    if (!row) throw new AppError(404, 'Imagem não encontrada.');
+    res.set('Cache-Control', 'private, no-store').set('Vary', 'Cookie').type('png').send(row.image);
+  });
+  router.post('/character-art/:id/decision', async (req, res) => {
+    const { decision } = z
+      .object({ decision: z.enum(['accepted', 'kept']) })
+      .strict()
+      .parse(req.body);
+    res.json(await decideCharacterArt(res.locals.user.id, uuid.parse(req.params.id), decision));
+  });
   router.get('/character-art/:id/draft', async (req, res) => {
     const { rows } = await pool.query(
       'SELECT creation,reference FROM character_art_jobs WHERE id=$1 AND user_id=$2 AND character_id IS NULL',
@@ -478,6 +596,10 @@ export function characterArtRouter() {
         id,
       ]);
       await client.query(
+        "UPDATE character_art_jobs SET art_decision='kept',decided_at=now(),proposed_portrait=NULL,proposed_token=NULL WHERE character_id=$1 AND art_decision='pending'",
+        [id],
+      );
+      await client.query(
         'DELETE FROM companion_artworks WHERE wardrobe_id IN(SELECT id FROM companion_wardrobes WHERE character_id=$1)',
         [id],
       );
@@ -492,6 +614,16 @@ export function characterArtRouter() {
     res.json({ ok: true });
   });
   router.get('/character-art', async (_req, res) => {
+    const reviews = (
+      await pool.query(
+        `SELECT j.id,j.character_id,c.name,c.portrait_revision AS current_revision,
+      EXISTS(SELECT 1 FROM character_tokens t WHERE t.character_id=c.id) AS has_current_token
+      FROM character_art_jobs j JOIN characters c ON c.id=j.character_id
+      WHERE j.user_id=$1 AND c.user_id=$1 AND c.deleted_at IS NULL AND j.art_decision='pending'
+      ORDER BY j.completed_at,j.id`,
+        [res.locals.user.id],
+      )
+    ).rows;
     const { rows: quotas } = await pool.query(
       `SELECT c.id,${characterAccountArtUsedSql('c.user_id')} AS used,
         CASE WHEN EXISTS(SELECT 1 FROM "user" u WHERE u.id=c.user_id AND u.administrador=1)
@@ -509,6 +641,7 @@ export function characterArtRouter() {
       [res.locals.user.id],
     );
     res.json({
+      reviews,
       available: await artWorkerAvailable(),
       character_limit: characterLimit(await isAdministrator(res.locals.user.id)),
       jobs: jobs.map(({ saved_creation, ...job }) => ({
@@ -534,9 +667,12 @@ export function characterArtRouter() {
     );
     if (!rows.length) throw new AppError(404, 'Imagem não encontrada.');
     res.vary('Cookie');
-    res.setHeader('Cache-Control', req.query.v === String(rows[0].portrait_revision)
-      ? 'private, max-age=3600, immutable'
-      : 'private, no-cache');
+    res.setHeader(
+      'Cache-Control',
+      req.query.v === String(rows[0].portrait_revision)
+        ? 'private, max-age=3600, immutable'
+        : 'private, no-cache',
+    );
     res.type('png').send(rows[0].image);
   });
   router.get('/characters/:id/token', async (req, res) => {

@@ -164,10 +164,12 @@ export function CharacterCamp({
     const timer = setInterval(() => void update(), 4000);
     const focus = () => void update();
     window.addEventListener('focus', focus);
+    window.addEventListener('character-art-choice-updated', focus);
     return () => {
       alive = false;
       clearInterval(timer);
       window.removeEventListener('focus', focus);
+      window.removeEventListener('character-art-choice-updated', focus);
     };
   }, []);
   const pending = state.jobs.filter((j) => ['queued', 'running'].includes(j.status));
@@ -261,7 +263,7 @@ export function CharacterCamp({
                 </a>
                 <button
                   className="button outline small-button"
-                  disabled={character.art_pending}
+                  disabled={character.art_pending || state.reviews?.some(review=>review.character_id===character.id)}
                   onClick={async () => {
                     setEditing(character);
                     setEquipmentReady(false);
@@ -285,6 +287,8 @@ export function CharacterCamp({
                   <Sparkles size={15} />
                   {character.art_pending
                     ? 'Preparando arte…'
+                    : state.reviews?.some(review=>review.character_id===character.id)
+                      ? 'Imagem pronta para escolher'
                     : character.portrait_revision
                       ? 'Nova imagem'
                       : 'Gerar imagem'}

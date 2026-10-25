@@ -139,6 +139,17 @@ test('duas artes atômicas, perfil separado, atualização do token sem alterar 
     );
     const portrait = await sharp(oldPortrait).modulate({ brightness: 0.6 }).png().toBuffer();
     assert.equal(await completeArt(job.data.id, { portrait, token }), character.id);
+    assert.equal((await pool.query('SELECT portrait_revision FROM characters WHERE id=$1',[character.id])).rows[0].portrait_revision,0);
+    assert.deepEqual((await pool.query('SELECT image FROM character_portraits WHERE character_id=$1',[character.id])).rows[0].image,oldPortrait);
+    assert.equal((await media(`/character-art/${job.data.id}/proposed/portrait`)).status,401);
+    assert.equal((await media(`/character-art/${job.data.id}/proposed/token`,outsider.cookie)).status,404);
+    const proposed=await media(`/character-art/${job.data.id}/proposed/portrait`,alice.cookie);
+    assert.equal(proposed.status,200);assert.match(proposed.headers.get('Cache-Control')||'',/private, no-store/);
+    const waiting=await request('/character-art',alice.cookie);assert.equal(waiting.data.reviews[0].id,job.data.id);
+    assert.equal((await request(`/character-art/${job.data.id}/decision`,outsider.cookie,'POST',{decision:'accepted'})).status,404);
+    assert.equal((await request(`/character-art/${job.data.id}/decision`,alice.cookie,'POST',{decision:'accepted'})).status,200);
+    assert.equal((await request(`/character-art/${job.data.id}/decision`,alice.cookie,'POST',{decision:'accepted'})).status,200);
+    assert.equal((await request(`/character-art/${job.data.id}/decision`,alice.cookie,'POST',{decision:'kept'})).status,409);
     const revision = (
       await pool.query('SELECT portrait_revision FROM characters WHERE id=$1', [character.id])
     ).rows[0].portrait_revision;

@@ -68,5 +68,13 @@ export type ArtState = {
   pending_new: number;
   character_limit?: number;
   quotas?: Record<string, ArtQuota>;
+  reviews?: ArtReview[];
+};
+export type ArtReview = {
+  id: string;
+  character_id: string;
+  name: string;
+  current_revision: number;
+  has_current_token: boolean;
 };
 export type ArtQuota = { used: number; limit: number | null };

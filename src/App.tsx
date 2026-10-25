@@ -55,6 +55,7 @@ import { rankName, rankTitle, rankLabel, progressionLabel, testEligible } from '
 import { Navigation } from './Navigation';
 import { CharacterSelector } from './CharacterSelector';
 import { CharacterTokenPreview } from './CharacterTokenPreview';
+import { CharacterArtChoice } from './CharacterArtChoice';
 import { MissionCompletion } from './MissionCompletion';
 import { MissionTags } from './MissionTags';
 import { CharacterSheet } from './CharacterSheet';
@@ -798,6 +799,7 @@ function Portal({ user }: { user: User }) {
       </div>
       <Navigation page={page} go={go} maintenanceAreas={maintenanceAreas} />
       {character && (page === 'characters' || page === 'inventory') && <CharacterTokenPreview key={`${character.id}:${character.portrait_revision}`} character={character} />}
+      {(page === 'characters' || page === 'inventory') && <CharacterArtChoice onRefresh={refresh} />}
       {toast && <FlashMessage kind="info">{toast}</FlashMessage>}
       {modal==='recovery-mail'&&administrator&&<RecoveryMailSettings close={()=>setModal(null)}/>}
       {modal === 'character' && (
