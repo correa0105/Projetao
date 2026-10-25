@@ -35,4 +35,23 @@ Backup completo e snapshot privado antes da alteração:
 `/opt/alvorada/backups/house-ownership-before-20261025.dump` e
 `/opt/alvorada/backups/house-ownership-before-20261025.json` (permissão 600).
 
-Publicação e conferência da limpeza: em andamento.
+Publicado em `alvorada-cinzenta:house-ownership-cleanup-20261025`, código
+`fdc77bd1351d54f1ca4876d8164f8b395f81e6a8`. Release acrescenta somente a migration;
+115 arquivos anteriores de cliente, servidor, arte, dados e áudio conferidos por
+hash, sem reconstruir ou recomprimir imagens. Migration registrada e trigger
+habilitado. Ilustrador permaneceu online sem precisar ser recarregado.
+
+Aplicação confirmada: quatro terrenos liberados e 22 móveis guardados. O terreno
+do Ubel Abuto excluído foi liberado e a casa antiga do Irineu excluído removida.
+Todas as demais linhas de terrenos e móveis, incluindo a outra casa do nana,
+ficaram integralmente iguais. Comparação das coleções, saldos, compras e
+auditorias passou. Nenhum terreno ou casa antiga continua vinculado a personagem
+excluído. VTT, hotbars e PNG privado da Caverna preservados; saúde HTTPS 200,
+acesso anônimo à House 401. Verificação de produção apenas por leitura após a
+limpeza autorizada.
+
+Resultado pontual no host:
+`/opt/alvorada/releases/house-ownership-cleanup-20261025/reset-result.json`.
+Scripts privados de manutenção e conferência em `.local/house-cleanup-*.mjs`
+e `.local/verify-house-cleanup-20261025.mjs`; não reaplicar o reset a terrenos
+que já tenham sido comprados novamente.
