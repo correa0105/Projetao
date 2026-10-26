@@ -1278,5 +1278,3 @@
 .vtt-vehicle-row .vtt-character-row>span{display:flex;flex-direction:column;gap:5px;min-width:0;overflow-wrap:anywhere;}
 .vtt-vehicle-row .vtt-character-row strong{font-size:13px;color:#ead8b4;}
 .vtt-vehicle-row .vtt-character-row small{display:block;font-size:11px;line-height:1.45;color:#bcb6a6;}
-.vtt-vehicle-row>label{display:flex;align-items:center;gap:10px;}
-.vtt-vehicle-row>label input{width:85px;}

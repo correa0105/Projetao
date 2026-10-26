@@ -76,9 +76,8 @@ function VehicleRow({
   disabled: boolean;
   bring: (pick: VehiclePick) => void;
 }) {
-  const [copy, setCopy] = useState(0),
-    d = vehicleDefinitions[v.itemId],
-    pick = { characterId: v.characterId, itemId: v.itemId, copy };
+  const d = vehicleDefinitions[v.itemId],
+    pick = { characterId: v.characterId, itemId: v.itemId, copy: 0 };
   return (
     <div className="vtt-vehicle-row">
       <button
@@ -105,22 +104,6 @@ function VehicleRow({
           {d.covered && <small>Cobertura transparente com personagem embaixo</small>}
         </span>
       </button>
-      {v.quantity > 1 && (
-        <label>
-          Exemplar
-          <input
-            aria-label={`Exemplar de ${d.name}`}
-            type="number"
-            min={1}
-            max={Math.min(v.quantity, 10000)}
-            value={copy + 1}
-            disabled={disabled}
-            onChange={(e) =>
-              setCopy(Math.max(0, Math.min(v.quantity - 1, 9999, Number(e.target.value) - 1)))
-            }
-          />
-        </label>
-      )}
     </div>
   );
 }

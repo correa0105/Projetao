@@ -4,7 +4,7 @@ Pedido: os veículos da loja devem poder ser puxados pelo mestre para o VTT, com
 
 ## Uso
 
-Comprar no Empório deposita o veículo no inventário do personagem, usando a compra transacional existente. No VTT, abrir **Fichas → Veículos**, junto de Personagens, Montarias e Mascotes. O mestre vê os veículos de seus personagens e dos jogadores participantes da mesa; clique coloca ou seleciona, arraste escolhe a posição. Atualizar compras consulta novamente os inventários. Várias unidades oferecem Exemplar; puxar a mesma unidade novamente seleciona/reposiciona a existente. Não consome nem concede itens.
+Comprar no Empório deposita o veículo no inventário do personagem, usando a compra transacional existente. No VTT, abrir **Fichas → Veículos**, junto de Personagens, Montarias e Mascotes. O mestre vê os veículos de seus personagens e dos jogadores participantes da mesa; clique coloca ou seleciona, arraste escolhe a posição. Atualizar compras consulta novamente os inventários. Por pedido explícito de 26/10, removido o campo numérico Exemplar; clicar/arrastar usa o exemplar principal e seleciona/reposiciona o existente. Não consome nem concede itens; outros exemplares já colocados nas mesas permanecem intactos.
 
 A aba de equipamentos da ficha também mostra os veículos adquiridos, sua vista superior e o caminho para o mestre. Inventários de outras mesas e de espectadores não são expostos. Jogadores/espectadores não importam veículos; permissões verificadas no servidor, independente de administrador global.
 
