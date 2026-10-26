@@ -37,3 +37,9 @@ Migration `127_character_slot_rolls.sql` reconstrói os slots cronologicamente i
 `scripts/test-vehicles-slots-isolated.mjs --browser`: navegador real em 1440/1024/768/390 px, retomada na terceira rolagem, mesmos dados ao concluir, bloqueio da aparência e troca de slot, 12 artes carregadas, importação real pelo mestre e cobertura com personagens, rotação/ocultos e alfa do renderer. Evidências em `test-results/vehicles-slots/`.
 
 Protocolo VTT 26 requer recarregar clientes antigos antes de editar o novo campo opcional `token.vehicle`. Documentos e assets anteriores continuam válidos. Publicação incremental deve conservar todos os arquivos das releases anteriores, fazer backup completo, aplicar 127 e recarregar o ilustrador somente com as duas filas ociosas. Conferir hashes de mesas/hotbars/arquivos privados, fichas/imagens/inventário e o heartbeat antes/depois.
+
+## Publicação confirmada
+
+Ativo em https://alvoradacinzenta.com/ como `vtt-vehicles-slots-20261026`, fonte `cf8b823fc56a10fbfab1a61c68a9226045a3c9d8`. Arquivo de release SHA-256 `1d3dd7277d95bc39209b02d76c2d2d8d2dd87e61b1edafd3afb9db82f89e532b`; 60 arquivos novos, 949 anteriores e 55 respostas HTTPS verificados. Doze PNGs originais e 241 áudios íntegros. Migration 127 aplicada, 26 slots em 13 contas, todas as fichas ativas associadas.
+
+Backup completo em `/opt/alvorada/backups/vehicles-slots-before-20261026.dump`, configuração e snapshots privados antes/depois. Cinco mesas, quatro hotbars, 35 assets privados, 39 personagens/fichas, 183 linhas de inventário, 145 compras, oito retratos, sete tokens e 110 jobs anteriores conservaram seus hashes. Filas ociosas na recarga supervisionada do ilustrador (PID 35264 → 34352); heartbeat recente e disponível confirmado. Nenhuma geração real ou compra em nome de usuário foi criada durante a publicação. Atualizar a página para o protocolo 26.
