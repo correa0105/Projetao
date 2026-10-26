@@ -41,3 +41,9 @@ Testes de engine/schema, integridade/proveniência, DSP de dez vozes (sinal real
 Comandos: `node --import tsx --test tests/vtt-sounds.test.ts tests/vtt-dungeon-sounds.test.ts tests/vtt-immersive-audio.test.ts`; `node scripts/test-vtt-sounds-isolated.mjs`; `--browser` para regressão completa, ou `--immersive` para a nova experiência. Evidências em test-results (ignoradas pelo Git).
 
 Resultado local: TypeScript, builds de cliente/servidor, 16 testes de engine/DSP/integridade, 11 testes de API e os dois smokes de navegador aprovados. A regressão completa confirma 40 decodes antigos, reprodução real em outro participante, filtros, favoritos, upload/compartilhamento de fala gravada, ganho/repetição, atalhos por clique/teclado/arraste, persistência, limpeza, sete efeitos e dez vozes. Quatro larguras sem overflow ou erros de página; conversa verificada nos dois sentidos.
+
+## Publicação
+
+Publicado em alvoradacinzenta.com como `vtt-immersive-audio-20261026`, fonte `ae49fd3bb3f17432836c19e11ce1e7dbfed2a9ac`. Conferidos 93 arquivos novos/atualizados, 727 arquivos anteriores preservados, 70 respostas HTTPS e os hashes dos 241 áudios. Os 195 arquivos anteriores continuam intactos. Cliente e servidor carregam o catálogo e os comandos novos; módulo AudioWorklet servido corretamente e conversa privada exige autenticação.
+
+Comparação antes/depois da troca: cinco documentos de mesas, quatro hotbars e os 35 arquivos privados de VTT com hashes idênticos. Ilustrador online; sem migration e sem reescrita de dados de jogo. Backup em `/opt/alvorada/backups/vtt-immersive-audio-before-20261026.dump`. Atualizar a página para carregar o protocolo 25; em Som → Microfone, cada participante entra explicitamente na conversa para ouvir/falar.
