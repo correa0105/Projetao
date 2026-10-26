@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "assets": [
     {
       "id": "music-old-inn",
@@ -2893,6 +2893,751 @@
         "dungeon-metal-wood-20261024/tools_06.ogg",
         "original:dungeon-filtered-noise-envelope"
       ]
+    },
+    {
+      "id": "music-scene-market-day",
+      "file": "music-scene-market-day.ogg",
+      "sha256": "e029a7005c20c0ffbd13979875c9a4814cdf404723054495a739f9471d08d06d",
+      "bytes": 1127340,
+      "duration": 64.86489583333334,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.05,
+      "truePeakDb": -12.39,
+      "sources": [
+        "audio-20261026-market-day"
+      ],
+      "rmsDb": -23.68,
+      "peakDb": -12.43
+    },
+    {
+      "id": "music-scene-minstrel-dance",
+      "file": "music-scene-minstrel-dance.ogg",
+      "sha256": "1264af8429bfaccda1e1f42ab4e5ad3345b8f2f836938b06b1d11bb97886a335",
+      "bytes": 847252,
+      "duration": 56.30772916666667,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.05,
+      "truePeakDb": -9.59,
+      "sources": [
+        "audio-20261026-minstrel-dance"
+      ],
+      "rmsDb": -23.1,
+      "peakDb": -9.61
+    },
+    {
+      "id": "music-scene-rejoicing",
+      "file": "music-scene-rejoicing.ogg",
+      "sha256": "b1498847282a5fc709c35f388750ce75fd1016a8aaea233889a1be33363aae9f",
+      "bytes": 716586,
+      "duration": 41.7959375,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.02,
+      "truePeakDb": -10.0,
+      "sources": [
+        "audio-20261026-rejoicing"
+      ],
+      "rmsDb": -24.25,
+      "peakDb": -10.01
+    },
+    {
+      "id": "music-scene-harvest",
+      "file": "music-scene-harvest.ogg",
+      "sha256": "d6cf0316594a0c2233b4847f275936ac82a7ed0ab0985b4e26f321d936981496",
+      "bytes": 3178273,
+      "duration": 214.20408333333333,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.03,
+      "truePeakDb": -9.38,
+      "sources": [
+        "audio-20261026-harvest"
+      ],
+      "rmsDb": -23.46,
+      "peakDb": -9.4
+    },
+    {
+      "id": "music-scene-final-battle",
+      "file": "music-scene-final-battle.ogg",
+      "sha256": "5e84515758721acdf478ae2c929b20c2b542df13cd7827e4e2cb8c29b02979d1",
+      "bytes": 2287376,
+      "duration": 145.82133333333334,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.1,
+      "truePeakDb": -7.29,
+      "sources": [
+        "audio-20261026-final-battle"
+      ],
+      "rmsDb": -24.59,
+      "peakDb": -7.33
+    },
+    {
+      "id": "music-scene-hope",
+      "file": "music-scene-hope.ogg",
+      "sha256": "0f96527b66805dd5b581bbe7d2d4358825511f6f9ca9e3c51ca403396fa49f32",
+      "bytes": 1072990,
+      "duration": 69.8181875,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.08,
+      "truePeakDb": -11.49,
+      "sources": [
+        "audio-20261026-hope"
+      ],
+      "rmsDb": -23.69,
+      "peakDb": -11.5
+    },
+    {
+      "id": "music-scene-orchestral-theme",
+      "file": "music-scene-orchestral-theme.ogg",
+      "sha256": "1958da13ebf8be0603e9cb49f6b3faefd86539c0a88ae241d1e82247ad4b722a",
+      "bytes": 2643988,
+      "duration": 191.68654166666667,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.06,
+      "truePeakDb": -6.54,
+      "sources": [
+        "audio-20261026-orchestral-theme"
+      ],
+      "rmsDb": -23.8,
+      "peakDb": -6.55
+    },
+    {
+      "id": "music-scene-home",
+      "file": "music-scene-home.ogg",
+      "sha256": "759276a72eaff3ad4d2f67723a80c5eeaff25af02a10621f115ec581f59bbc14",
+      "bytes": 1264774,
+      "duration": 74.318125,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.98,
+      "truePeakDb": -6.09,
+      "sources": [
+        "audio-20261026-home"
+      ],
+      "rmsDb": -23.83,
+      "peakDb": -6.1
+    },
+    {
+      "id": "music-scene-dungeon",
+      "file": "music-scene-dungeon.ogg",
+      "sha256": "9ded971d1e9258d447d3ddb1c915ab36e8a7d21715739c8ec1a022079705eab0",
+      "bytes": 2629756,
+      "duration": 206.0001875,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -22.86,
+      "truePeakDb": -3.59,
+      "sources": [
+        "audio-20261026-dungeon"
+      ],
+      "rmsDb": -25.1,
+      "peakDb": -3.72
+    },
+    {
+      "id": "music-scene-evil-approach",
+      "file": "music-scene-evil-approach.ogg",
+      "sha256": "07c6643a6b38674ca5576cff0a7fb43c2bbe1e1057c74f957fcc6df57a53554d",
+      "bytes": 1070047,
+      "duration": 67.85045833333334,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.09,
+      "truePeakDb": -7.61,
+      "sources": [
+        "audio-20261026-evil-approach"
+      ],
+      "rmsDb": -24.2,
+      "peakDb": -7.61
+    },
+    {
+      "id": "music-scene-dark-shrine",
+      "file": "music-scene-dark-shrine.ogg",
+      "sha256": "74a843af6ccdc0d55ad6f5396b943156c2d767623b0ae93e69e64b1f32b8978a",
+      "bytes": 766299,
+      "duration": 56.572520833333336,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.01,
+      "truePeakDb": -6.04,
+      "sources": [
+        "audio-20261026-dark-shrine"
+      ],
+      "rmsDb": -22.06,
+      "peakDb": -6.04
+    },
+    {
+      "id": "music-scene-serpents",
+      "file": "music-scene-serpents.ogg",
+      "sha256": "d5a9abd4025a14a7ac81596aa101d31ce104538c1d3b58fbb16ecbe7dece0885",
+      "bytes": 1638701,
+      "duration": 108.826125,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.06,
+      "truePeakDb": -6.26,
+      "sources": [
+        "audio-20261026-serpents"
+      ],
+      "rmsDb": -23.45,
+      "peakDb": -6.27
+    },
+    {
+      "id": "amb-scene-park-birds",
+      "file": "amb-scene-park-birds.ogg",
+      "sha256": "443db090f6e1c647ed4aa17e5e3ffb6a47d46615a2e5332b33f018fb123dd847",
+      "bytes": 1038044,
+      "duration": 70.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -24.28,
+      "truePeakDb": -7.84,
+      "sources": [
+        "audio-20261026-park-birds"
+      ],
+      "rmsDb": -27.57,
+      "peakDb": -7.84
+    },
+    {
+      "id": "amb-scene-park-river",
+      "file": "amb-scene-park-river.ogg",
+      "sha256": "5a86f0d2c81ee07d55d5ce335fa2925a4fd68306373a241eb626960c5b493d9f",
+      "bytes": 971150,
+      "duration": 70.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -24.35,
+      "truePeakDb": -12.19,
+      "sources": [
+        "audio-20261026-park-river"
+      ],
+      "rmsDb": -28.64,
+      "peakDb": -12.24
+    },
+    {
+      "id": "amb-scene-park-wind",
+      "file": "amb-scene-park-wind.ogg",
+      "sha256": "cb1fd71243d11e821999f0b3562d8da069007043a6e516ff141ec5d5bc3fc107",
+      "bytes": 1010174,
+      "duration": 70.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -30.6,
+      "truePeakDb": -2.54,
+      "sources": [
+        "audio-20261026-park-wind"
+      ],
+      "rmsDb": -25.52,
+      "peakDb": -2.54
+    },
+    {
+      "id": "sfx-scene-thunder-01",
+      "file": "sfx-scene-thunder-01.ogg",
+      "sha256": "5ccede689ec6e846e0345cff14826919103ae6f75761424f5443c142c551cda0",
+      "bytes": 47255,
+      "duration": 5.26475,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.1,
+      "truePeakDb": -3.84,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -25.62,
+      "peakDb": -3.85
+    },
+    {
+      "id": "sfx-scene-air-01",
+      "file": "sfx-scene-air-01.ogg",
+      "sha256": "ffe7edbb5cb4ff28da2b2395346a4a6ca7a744c549e07c5ec751d2de9eb21927",
+      "bytes": 28092,
+      "duration": 2.637583333333333,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -19.67,
+      "truePeakDb": -10.91,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -27.51,
+      "peakDb": -11.14
+    },
+    {
+      "id": "sfx-scene-air-02",
+      "file": "sfx-scene-air-02.ogg",
+      "sha256": "c836468c27c14a50d928e6b22dbecb5197ddfb14ab5646eddd5fc823db969a36",
+      "bytes": 15406,
+      "duration": 1.105375,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.39,
+      "truePeakDb": -11.86,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -27.25,
+      "peakDb": -11.91
+    },
+    {
+      "id": "sfx-scene-footstep-wet-01",
+      "file": "sfx-scene-footstep-wet-01.ogg",
+      "sha256": "ee3453d368609dfa67fbd6f7e2ff8821ae9e885f64ed880bd619865e850b9d60",
+      "bytes": 7569,
+      "duration": 0.2829375,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.96,
+      "truePeakDb": -2.34,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -24.41,
+      "peakDb": -2.35
+    },
+    {
+      "id": "sfx-scene-footstep-wet-02",
+      "file": "sfx-scene-footstep-wet-02.ogg",
+      "sha256": "9908a269e48b60af33041cd11dc86be7eeb9cc1adeab889081f7049448739164",
+      "bytes": 8512,
+      "duration": 0.4018125,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -19.82,
+      "truePeakDb": -3.36,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -24.12,
+      "peakDb": -3.44
+    },
+    {
+      "id": "sfx-scene-footstep-wet-03",
+      "file": "sfx-scene-footstep-wet-03.ogg",
+      "sha256": "34369bae63ac3249733b8e3acc3a350ae1a98ac8de886a2c31866e98bcc8e0ff",
+      "bytes": 8438,
+      "duration": 0.38525,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.73,
+      "truePeakDb": -3.27,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -25.41,
+      "peakDb": -3.42
+    },
+    {
+      "id": "sfx-scene-footstep-wood-01",
+      "file": "sfx-scene-footstep-wood-01.ogg",
+      "sha256": "e25c597063a7c1647e792baf00469f4d224dad7a87df0b265a22acbe18588f8d",
+      "bytes": 6974,
+      "duration": 0.2648125,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -19.98,
+      "truePeakDb": -4.83,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -18.45,
+      "peakDb": -4.84
+    },
+    {
+      "id": "sfx-scene-footstep-wood-02",
+      "file": "sfx-scene-footstep-wood-02.ogg",
+      "sha256": "2ed670286cf8e5e85481eb9f90ec1b1bc46086e4a8063ab6f945ae860808f72c",
+      "bytes": 7566,
+      "duration": 0.24685416666666668,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.51,
+      "truePeakDb": -2.47,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -19.23,
+      "peakDb": -2.47
+    },
+    {
+      "id": "sfx-scene-glass-01",
+      "file": "sfx-scene-glass-01.ogg",
+      "sha256": "235b02f1f38c2d3da7c1101729512fc95e03402f5660fa48b424a76f72ec16ab",
+      "bytes": 6988,
+      "duration": 0.36395833333333333,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.11,
+      "truePeakDb": -8.27,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -25.69,
+      "peakDb": -8.39
+    },
+    {
+      "id": "sfx-scene-glass-02",
+      "file": "sfx-scene-glass-02.ogg",
+      "sha256": "9e4c7e4b8b1774ee2281cd409f78684cd8b02c8b1cbc210f8a80217b599d534d",
+      "bytes": 9652,
+      "duration": 0.6651458333333333,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.21,
+      "truePeakDb": -5.85,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -25.98,
+      "peakDb": -6.05
+    },
+    {
+      "id": "sfx-scene-glass-03",
+      "file": "sfx-scene-glass-03.ogg",
+      "sha256": "a6e68197122c360fc5798b2153524e70d6bca0f2d3c190208b92f09045bf1638",
+      "bytes": 8970,
+      "duration": 0.6086666666666667,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.41,
+      "truePeakDb": -5.63,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -25.27,
+      "peakDb": -5.63
+    },
+    {
+      "id": "sfx-scene-glass-04",
+      "file": "sfx-scene-glass-04.ogg",
+      "sha256": "73e11a3d205a7647f68e1471577dce5c1d131f4d53fe00e7a40888fa4c2879ca",
+      "bytes": 6184,
+      "duration": 0.2355,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.34,
+      "truePeakDb": -4.45,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -24.26,
+      "peakDb": -4.78
+    },
+    {
+      "id": "sfx-scene-lock-open-01",
+      "file": "sfx-scene-lock-open-01.ogg",
+      "sha256": "e9e169e5e668aa32763e805f79974a31cbee42030ba66eeb38caf0221f00930f",
+      "bytes": 10658,
+      "duration": 0.6431666666666667,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -25.11,
+      "truePeakDb": -2.23,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -31.88,
+      "peakDb": -2.34
+    },
+    {
+      "id": "sfx-scene-metal-01",
+      "file": "sfx-scene-metal-01.ogg",
+      "sha256": "724f28ce7da512ec268096e522a3648685f83fb056c40cd7344c10e22e7b22ae",
+      "bytes": 9556,
+      "duration": 0.5799583333333334,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.39,
+      "truePeakDb": -8.26,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -25.8,
+      "peakDb": -8.46
+    },
+    {
+      "id": "sfx-scene-metal-02",
+      "file": "sfx-scene-metal-02.ogg",
+      "sha256": "ae5e825df49d3f751d97bc670afad53b1b0fd06bc491358336f312f7f0f2fd0a",
+      "bytes": 8018,
+      "duration": 0.31933333333333336,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.14,
+      "truePeakDb": -4.57,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -23.77,
+      "peakDb": -4.65
+    },
+    {
+      "id": "sfx-scene-metal-03",
+      "file": "sfx-scene-metal-03.ogg",
+      "sha256": "dc711d85d0356b45e2041bed79571d7cde84a9f99ac4b28f4ca5e1680bad7129",
+      "bytes": 7157,
+      "duration": 0.28510416666666666,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -19.33,
+      "truePeakDb": -2.96,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -22.45,
+      "peakDb": -3.34
+    },
+    {
+      "id": "sfx-scene-metal-hit-01",
+      "file": "sfx-scene-metal-hit-01.ogg",
+      "sha256": "f96934c660d790dd05feeb0b372555febfb2373cf3543dc40415639fecaa9049",
+      "bytes": 11746,
+      "duration": 0.8113541666666667,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -24.02,
+      "truePeakDb": -2.25,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -26.86,
+      "peakDb": -2.28
+    },
+    {
+      "id": "sfx-scene-metal-hit-02",
+      "file": "sfx-scene-metal-hit-02.ogg",
+      "sha256": "0aaebc3acc66b538f8aa748da43992e6108a80c6e36a8fc22b6ac42b839603c4",
+      "bytes": 6478,
+      "duration": 0.20975,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -27.19,
+      "truePeakDb": -3.29,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -30.69,
+      "peakDb": -3.81
+    },
+    {
+      "id": "sfx-scene-stones-01",
+      "file": "sfx-scene-stones-01.ogg",
+      "sha256": "5166ad2814329a9f9eabba283b20c19318ed4edd2d150312950f675ef90bbaaa",
+      "bytes": 10607,
+      "duration": 0.48904166666666665,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -25.83,
+      "truePeakDb": -2.45,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -32.73,
+      "peakDb": -2.45
+    },
+    {
+      "id": "sfx-scene-stones-02",
+      "file": "sfx-scene-stones-02.ogg",
+      "sha256": "d1f405d6c59d8c9056269e60f27f15881834049770ea9cab402b38599e65a408",
+      "bytes": 10259,
+      "duration": 0.555375,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.73,
+      "truePeakDb": -2.59,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -29.29,
+      "peakDb": -2.59
+    },
+    {
+      "id": "sfx-scene-stones-03",
+      "file": "sfx-scene-stones-03.ogg",
+      "sha256": "34c99ec45a646b315adbf87de213b54a2bb329f1a5d4fab446bbb6ce8464b02c",
+      "bytes": 10826,
+      "duration": 0.5345,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -29.84,
+      "truePeakDb": -3.74,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -33.13,
+      "peakDb": -3.79
+    },
+    {
+      "id": "sfx-scene-wood-hit-01",
+      "file": "sfx-scene-wood-hit-01.ogg",
+      "sha256": "be4a8521509ae3272c3f04f394b020d15763a7198bfce8e9a42d3be8bfa0249c",
+      "bytes": 7180,
+      "duration": 0.34972916666666665,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.44,
+      "truePeakDb": -2.68,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -19.97,
+      "peakDb": -2.69
+    },
+    {
+      "id": "sfx-scene-wood-hit-02",
+      "file": "sfx-scene-wood-hit-02.ogg",
+      "sha256": "e9f399aa9591e484b2b7656d94df59b650fdee045dcf7592c2421c237d630d2d",
+      "bytes": 7518,
+      "duration": 0.3573125,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.05,
+      "truePeakDb": -3.48,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -21.7,
+      "peakDb": -3.52
+    },
+    {
+      "id": "sfx-scene-wood-hit-03",
+      "file": "sfx-scene-wood-hit-03.ogg",
+      "sha256": "d67b123c64640f3445161ff4a3ff57f7a5b260e9d2b56a7e14ec078c30efb9a1",
+      "bytes": 7761,
+      "duration": 0.46927083333333336,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -22.11,
+      "truePeakDb": -2.74,
+      "sources": [
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -26.85,
+      "peakDb": -2.78
+    },
+    {
+      "id": "sfx-screen-earthquake",
+      "file": "sfx-screen-earthquake.ogg",
+      "sha256": "c2e81dc60b0d0c346e7143160e508c17578616996208f1bacd749614e2e41f73",
+      "bytes": 143048,
+      "duration": 24.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.41,
+      "truePeakDb": -3.19,
+      "sources": [
+        "audio-local:distant-tremor",
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -20.92,
+      "peakDb": -3.2
+    },
+    {
+      "id": "sfx-screen-cave-in",
+      "file": "sfx-screen-cave-in.ogg",
+      "sha256": "800a55072437f8850407a59a80a78ed01b50a1e4875005b3607f2f31892b654b",
+      "bytes": 215533,
+      "duration": 24.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -21.62,
+      "truePeakDb": -2.48,
+      "sources": [
+        "audio-local:falling-rubble",
+        "audio-20261026-foley"
+      ],
+      "rmsDb": -22.28,
+      "peakDb": -2.5
+    },
+    {
+      "id": "sfx-screen-thunderstorm",
+      "file": "sfx-screen-thunderstorm.ogg",
+      "sha256": "61956b5739828f7b1af2ad6abdd5640d47376a8c951cbb6abb7f68d5530d211f",
+      "bytes": 353722,
+      "duration": 24.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.34,
+      "truePeakDb": -5.7,
+      "sources": [
+        "audio-local:rain",
+        "audio-20261026-foley",
+        "audio-20261026-park-wind"
+      ],
+      "rmsDb": -24.98,
+      "peakDb": -5.71
+    },
+    {
+      "id": "sfx-screen-blizzard",
+      "file": "sfx-screen-blizzard.ogg",
+      "sha256": "735b2be9864ac8bd262319aca9af68f915a7d98fe39bd91a46250be679ee5f13",
+      "bytes": 252040,
+      "duration": 24.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.03,
+      "truePeakDb": -5.11,
+      "sources": [
+        "audio-20261026-park-wind",
+        "audio-local:wind"
+      ],
+      "rmsDb": -25.5,
+      "peakDb": -5.13
+    },
+    {
+      "id": "sfx-screen-embers",
+      "file": "sfx-screen-embers.ogg",
+      "sha256": "4f655e14824a196a3e1333bed0313c70651cf709a136b61d734e2ddc324d5b66",
+      "bytes": 401754,
+      "duration": 24.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -27.91,
+      "truePeakDb": -2.54,
+      "sources": [
+        "audio-local:hearth",
+        "audio-20261026-park-wind"
+      ],
+      "rmsDb": -29.07,
+      "peakDb": -2.98
+    },
+    {
+      "id": "sfx-screen-haunting",
+      "file": "sfx-screen-haunting.ogg",
+      "sha256": "2615a9d6d3f2bafe972d461accd9ec2d0f457cd2b0ccee8b4c268913ce38d4a1",
+      "bytes": 270827,
+      "duration": 24.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.67,
+      "truePeakDb": -2.68,
+      "sources": [
+        "audio-local:specter-wail",
+        "audio-20261026-park-wind"
+      ],
+      "rmsDb": -24.36,
+      "peakDb": -2.7
+    },
+    {
+      "id": "sfx-screen-arcane",
+      "file": "sfx-screen-arcane.ogg",
+      "sha256": "5a0869f70ac01047c1c00322eda3686f8474bf3128468bcbfa3f69eddfe7e3aa",
+      "bytes": 317399,
+      "duration": 24.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "lufs": -20.07,
+      "truePeakDb": -9.19,
+      "sources": [
+        "audio-local:magic-4",
+        "audio-local:magic-7",
+        "audio-20261026-park-wind"
+      ],
+      "rmsDb": -28.05,
+      "peakDb": -9.28
     }
   ],
   "sources": [
@@ -3245,6 +3990,198 @@
       "preview": "public high-quality preview of the CC0 recording",
       "bytes": 50715,
       "sha256": "574d7e05e3d9226ab9c93b9fd567353aa7267ab39f7604af92d5351c3db1d510"
+    },
+    {
+      "slug": "audio-20261026-market-day",
+      "page": "https://opengameart.org/content/medieval-market-day",
+      "url": "https://opengameart.org/sites/default/files/Loop_Market_Day.wav",
+      "file": ".local/vtt-audio-sources-20261026/market-day.wav",
+      "author": "RandomMind",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 22884474,
+      "sha256": "6962bd27f75ebfdf773e3d541e7f21faa6de8974432ced2cd49c2594f7504f36",
+      "pageSha256": "9e05335a6f87c3c28b794191cfa966196a82eba30b102d76481faafa80dd2a0c"
+    },
+    {
+      "slug": "audio-20261026-minstrel-dance",
+      "page": "https://opengameart.org/content/medieval-minstrel-dance",
+      "url": "https://opengameart.org/sites/default/files/Loop_Minstrel_Dance_0.wav",
+      "file": ".local/vtt-audio-sources-20261026/minstrel-dance.wav",
+      "author": "RandomMind",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 19865506,
+      "sha256": "0b6d0447f4cd8c5023fee0f24b77b0d5a5ff53f9f9da13f0905783d82c84ccee",
+      "pageSha256": "b8a4553dd0c4829488eaf12bd6ab52483ae7c66f9227e5ee7627170adf9455d7"
+    },
+    {
+      "slug": "audio-20261026-rejoicing",
+      "page": "https://opengameart.org/content/medieval-rejoicing",
+      "url": "https://opengameart.org/sites/default/files/Loop_Rejoicing.wav",
+      "file": ".local/vtt-audio-sources-20261026/rejoicing.wav",
+      "author": "RandomMind",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 14745896,
+      "sha256": "15bc2e9dc3c9a1b6a3c7348342a77866262ad8096e76db47ee31c518a5978136",
+      "pageSha256": "d9ad4c951b66b26be393323af50888195ef22602da89426476c8476fe0592429"
+    },
+    {
+      "slug": "audio-20261026-harvest",
+      "page": "https://opengameart.org/content/medieval-harvest-season",
+      "url": "https://opengameart.org/sites/default/files/harvestseason.wav",
+      "file": ".local/vtt-audio-sources-20261026/harvest.wav",
+      "author": "RandomMind",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 37785722,
+      "sha256": "3c98cd854f5e40bf3edc281422247fd12f19f6eff33bc13818e316fa0be21bb6",
+      "pageSha256": "ca73be5f2fdb12d52dd0811ed1b15fbdd61684a60a1fc8adc883a1cf265c3682"
+    },
+    {
+      "slug": "audio-20261026-final-battle",
+      "page": "https://opengameart.org/content/the-final-battle",
+      "url": "https://opengameart.org/sites/default/files/the_final_battle.ogg",
+      "file": ".local/vtt-audio-sources-20261026/final-battle.ogg",
+      "author": "skrjablin",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 2822466,
+      "sha256": "401fa62b9ed9bb2eea5821bdbe245e3eb991a89ecd1509c3742f7b5393b0df1c",
+      "pageSha256": "505266c677bf9feb1ed8f4f9bb17ef2d6da4c76fcd6f427b888a76c754308b50"
+    },
+    {
+      "slug": "audio-20261026-hope",
+      "page": "https://opengameart.org/content/hopeorchestral-battle-music",
+      "url": "https://opengameart.org/sites/default/files/hope_orchestral_battle_music_bpm165.flac",
+      "file": ".local/vtt-audio-sources-20261026/hope.flac",
+      "author": "MintoDog",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 7592473,
+      "sha256": "5da6876e90fb07cd6e7a28fb03b436bbd1ada4d24b9f6cf6284a2104063c4cc3",
+      "pageSha256": "63ec16c7b3969f1e33d1db2f48c45a013cfc13e13c627fdf85490b2478ca444c"
+    },
+    {
+      "slug": "audio-20261026-orchestral-theme",
+      "page": "https://opengameart.org/content/fantasy-orchestral-theme",
+      "url": "https://opengameart.org/sites/default/files/FantasyOrchestralTheme_1.mp3",
+      "file": ".local/vtt-audio-sources-20261026/orchestral-theme.mp3",
+      "author": "Joth",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 3837827,
+      "sha256": "add1de5eae0771c4ce5b3782a6eae9c01f321d32446421691426587000e50cdc",
+      "pageSha256": "fcfe17d4dceb20d3fb9cc6ea59526809fc08f552d7f18d063d7237a01e3f3cbb"
+    },
+    {
+      "slug": "audio-20261026-home",
+      "page": "https://opengameart.org/content/at-home-orchestral",
+      "url": "https://opengameart.org/sites/default/files/cinematic-calm.wav",
+      "file": ".local/vtt-audio-sources-20261026/home.wav",
+      "author": "Wolfgang_",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 13109760,
+      "sha256": "2977b4e410edc2d21269406b0d464f3602c4678fbd81d81d6b8b36e30963360f",
+      "pageSha256": "b4dd2c63e5428b85cf56571a802511f80115d9630fb2da087e585cc3229f0a0e"
+    },
+    {
+      "slug": "audio-20261026-dungeon",
+      "page": "https://opengameart.org/content/dungeon-ambience",
+      "url": "https://opengameart.org/sites/default/files/dungeon002_0.ogg",
+      "file": ".local/vtt-audio-sources-20261026/dungeon.ogg",
+      "author": "yd",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 1202848,
+      "sha256": "18da6d6c4492d744f5ebde5bb128a636770df4197d2d4a0b5e8d65df6e27f57b",
+      "pageSha256": "e620716142e875b6c94663fe00a6cbf8f2288debd863e6bd5eec701fcf32c46d"
+    },
+    {
+      "slug": "audio-20261026-evil-approach",
+      "page": "https://opengameart.org/content/evil-approach",
+      "url": "https://opengameart.org/sites/default/files/Evil%20Approach.wav",
+      "file": ".local/vtt-audio-sources-20261026/evil-approach.wav",
+      "author": "nene",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 19541668,
+      "sha256": "83d7026741ec6a34922acc39d1b1562caff2387bcea5f50cea676c96856ca5b3",
+      "pageSha256": "f22b3887c1ec01c7290a34e76afc477b23de9d2ca051b4dac6c4d36ea7ad7d0a"
+    },
+    {
+      "slug": "audio-20261026-dark-shrine",
+      "page": "https://opengameart.org/content/dark-shrine-loop",
+      "url": "https://opengameart.org/sites/default/files/qubodup-yd-DarkShrineLoop-OpenGameArt.flac",
+      "file": ".local/vtt-audio-sources-20261026/dark-shrine.flac",
+      "author": "qubodup",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 2997779,
+      "sha256": "ff2df07dae6157c9416027fe935077348026d94ed20513f0b3c79f78a519ba0f",
+      "pageSha256": "a95a7c4e15a2fc3885317cb35f7da561d4c53c7450b468419244f4b86925d289"
+    },
+    {
+      "slug": "audio-20261026-serpents",
+      "page": "https://opengameart.org/content/ancient-power-of-serpents",
+      "url": "https://opengameart.org/sites/default/files/Ancient_Power_Of_Serpents_0.ogg",
+      "file": ".local/vtt-audio-sources-20261026/serpents.ogg",
+      "author": "josepharaoh99",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 1509799,
+      "sha256": "69edf7f7d89c8f993f3d1a1169b34cefcd10ad3c19fd8e073446c7d496dd6ac5",
+      "pageSha256": "c1cd32bcc43baff1e7d8ff69122e9864c6b4d4c00baad8e5cac84eafb08beef4"
+    },
+    {
+      "slug": "audio-20261026-foley",
+      "page": "https://opengameart.org/content/100-cc0-sfx-2",
+      "url": "https://opengameart.org/sites/default/files/sfx_100_v2.zip",
+      "file": ".local/vtt-audio-sources-20261026/foley.zip",
+      "author": "rubberduck",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 2367871,
+      "sha256": "0fc61b4494e2e893c0c015ced4877b3f689c7d84a48cb61daecd7ddb52db797b",
+      "pageSha256": "b23d9ef15f7465fd56c382975cfc4f6de6fcbbebca2fe5d83ab6f50b76406c13"
+    },
+    {
+      "slug": "audio-20261026-park-birds",
+      "page": "https://opengameart.org/content/park-ambiences",
+      "url": "https://opengameart.org/sites/default/files/park_ambience_birds.wav",
+      "file": ".local/vtt-audio-sources-20261026/park-birds.wav",
+      "author": "Thimras",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 86190432,
+      "sha256": "dc1a5ac34b89cab7f8f261b53a23da7c1c5e3cc895aae4cb6fb4a1a04001b2af",
+      "pageSha256": "962127e13b4e520d254543c67e46fc7a53a5a158670e2b69bc73bdbb71f6fb20"
+    },
+    {
+      "slug": "audio-20261026-park-river",
+      "page": "https://opengameart.org/content/park-ambiences",
+      "url": "https://opengameart.org/sites/default/files/park_ambience_river.wav",
+      "file": ".local/vtt-audio-sources-20261026/park-river.wav",
+      "author": "Thimras",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 99072736,
+      "sha256": "da0c0c9b1249a83a1611cc116d5737b0864a8db9f45f1ae8dcc079d0f7c0bbbf",
+      "pageSha256": "1d0b50f75ae637b5b057db1bcef937b1b46b0f72ff110b75fb2a1359c67e21b8"
+    },
+    {
+      "slug": "audio-20261026-park-wind",
+      "page": "https://opengameart.org/content/park-ambiences",
+      "url": "https://opengameart.org/sites/default/files/park_ambience_wind.wav",
+      "file": ".local/vtt-audio-sources-20261026/park-wind.wav",
+      "author": "Thimras",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "bytes": 73960096,
+      "sha256": "5c381856745b4706e7eba55eb9271a61a530e90c05df8126adb2db89ecfa6c5a",
+      "pageSha256": "5f39dea3d57492778e01851b48e45e1a53a3090a88725267e51e56480b520bf1"
     }
   ]
 }

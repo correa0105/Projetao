@@ -3,8 +3,10 @@ export function VttSoundCredits() {
     <details className="vtt-sound-credits">
       <summary>Créditos e licenças de áudio</summary>
       <p>
-        Músicas: RandomMind. Efeitos: Kenney e JaggedStone. Ambientes: TinyWorlds, PagDev, Ylmir,
-        remaxim e RandomMind. Composições de ambientes: Alvorada Cinzenta.
+        Músicas: RandomMind, skrjablin, MintoDog, Joth, Wolfgang_, yd, nene, qubodup,
+        josepharaoh99 e demais autores do acervo. Efeitos: Kenney, JaggedStone e rubberduck.
+        Ambientes: TinyWorlds, PagDev, Ylmir, remaxim, RandomMind e Thimras.
+        Composições de ambientes e efeitos de tela: Alvorada Cinzenta.
       </p>
       <a href="/audio/vtt/CREDITS.md" target="_blank" rel="noreferrer">
         Fontes e licenças

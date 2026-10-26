@@ -58,3 +58,27 @@ Build explícita em scripts/expand-vtt-sound-library.py: preservação dos hashe
 - aroth4: [Giant footsteps running](https://freesound.org/people/aroth4/sounds/133891/), CC0; preview HQ público, cinco pisadas de origem organizadas em seis passos de aproximação.
 - rubberduck: [75 CC0 breaking/falling/hit SFX](https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx), CC0; rocha partindo e caindo para fratura.
 - Alvorada Cinzenta: seleção/edição, fades, progressão de distância e montagem. As quatro versões usam novas URLs; os arquivos anteriores foram conservados. Dados/hashes e fontes em data/vtt/tremor-replacement-20261025.json.
+
+
+## Ampliação de 26/10/2026
+
+Fontes CC0 verificadas nas páginas dos autores em 26/10/2026.
+
+- RandomMind: [audio-20261026-market-day](https://opengameart.org/content/medieval-market-day) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- RandomMind: [audio-20261026-minstrel-dance](https://opengameart.org/content/medieval-minstrel-dance) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- RandomMind: [audio-20261026-rejoicing](https://opengameart.org/content/medieval-rejoicing) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- RandomMind: [audio-20261026-harvest](https://opengameart.org/content/medieval-harvest-season) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- skrjablin: [audio-20261026-final-battle](https://opengameart.org/content/the-final-battle) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- MintoDog: [audio-20261026-hope](https://opengameart.org/content/hopeorchestral-battle-music) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- Joth: [audio-20261026-orchestral-theme](https://opengameart.org/content/fantasy-orchestral-theme) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- Wolfgang_: [audio-20261026-home](https://opengameart.org/content/at-home-orchestral) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- yd: [audio-20261026-dungeon](https://opengameart.org/content/dungeon-ambience) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- nene: [audio-20261026-evil-approach](https://opengameart.org/content/evil-approach) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- qubodup: [audio-20261026-dark-shrine](https://opengameart.org/content/dark-shrine-loop) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- josepharaoh99: [audio-20261026-serpents](https://opengameart.org/content/ancient-power-of-serpents) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- rubberduck: [audio-20261026-foley](https://opengameart.org/content/100-cc0-sfx-2) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- Thimras: [audio-20261026-park-birds](https://opengameart.org/content/park-ambiences) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- Thimras: [audio-20261026-park-river](https://opengameart.org/content/park-ambiences) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+- Thimras: [audio-20261026-park-wind](https://opengameart.org/content/park-ambiences) — CC0-1.0. SHA-256 e arquivo em manifest.json.
+
+As sete composições de tela usam estas bases e os efeitos CC0 já creditados acima. Músicas preservam os arranjos completos dos autores. Novos arquivos: estéreo 48 kHz, volume integrado medido e pico verdadeiro com margem antes/depois da codificação. Originais anteriores preservados.

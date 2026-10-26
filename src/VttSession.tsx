@@ -173,6 +173,9 @@ import { VttRollSounds } from './VttRollSounds';
 import { spellProfile, breathProfile } from '../shared/vtt-spells';
 import type { AttackVisualCommand } from '../shared/vtt-attack-visual';
 import { VttSoundboard } from './VttSoundboard';
+import { VttScreenEffects } from './VttScreenEffects';
+import { useVttVoice } from './useVttVoice';
+import { VttVoiceStatus } from './VttVoicePanel';
 import { VttSoundCredits } from './VttSoundCredits';
 import { useVttSounds } from './useVttSounds';
 import { soundSettings, type SoundCommand } from '../shared/vtt-sounds';
@@ -536,8 +539,9 @@ export function VttSession({ characters, user, media }: { characters: Character[
     return ()=>{window.removeEventListener('keydown',down);window.removeEventListener('keyup',up);window.removeEventListener('blur',blur);};
   }, []);
   const music = useMusicInterlude();
-  const sounds = useVttSounds(state?.id),
+  const sounds = useVttSounds(state?.id, media),
     soundQueue = useRef(Promise.resolve());
+  const voice = useVttVoice(state?.id);
   function customizeChatControls(collapsed: boolean) {
     setChatControlsCollapsed(collapsed);
     try {
@@ -2764,6 +2768,8 @@ export function VttSession({ characters, user, media }: { characters: Character[
       <WorldPlacePicker regionId={createRegion} locationId={createPlace} onRegionChange={setCreateRegion} onLocationChange={setCreatePlace}/><button className="button primary" disabled={busy}>Criar mesa</button>
     </form></Modal>}
     {!sceneImagesReady && <AssetLoading title="Preparando o mapa" done={sceneImagesDone} total={sceneImagePaths.length} error={sceneImageError ? 'Uma imagem do mapa não carregou. A pintura continua salva. Tente novamente.' : ''} retry={() => {setSceneImageError(false);mapImages.current?.retry();}}/>}
+    <VttScreenEffects event={sounds.snapshot?.soundboard.screenEffect} serverTime={sounds.snapshot?.serverTime || Date.now()} sceneId={scene.id} enabled={visualEffects && sceneImagesReady}/>
+    <VttVoiceStatus voice={voice}/>
     <section inert={!sceneImagesReady} style={{visibility: sceneImagesReady ? 'visible' : 'hidden'}} data-map-effects={mapEffects ? 'on' : 'off'} className="vtt-workspace" data-visual-effects={visualEffects ? 'on' : 'off'} aria-label="Mesa virtual">
       <header className="vtt-top">
         <div className="vtt-brand">
@@ -5093,6 +5099,9 @@ export function VttSession({ characters, user, media }: { characters: Character[
                 <VttSoundboard
                   key={state.id}
                   snapshot={sounds.snapshot}
+                  sceneId={scene.id}
+                  voice={voice}
+                  shareVoice={async (file) => { const asset=await uploadAsset(file); await soundCommand({kind:'play',sourceId:'asset:'+asset.id,settings:{sourceId:'asset:'+asset.id,channel:'effect',volume:.75,loop:false}},state.id); }}
                   assets={state.assets}
                   gm={gm}
                   command={(c) => soundCommand(c, state.id)}

@@ -4,6 +4,7 @@ import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
+import { screenEffectPreset } from '../shared/vtt-screen-effects.js';
 import { documentSchema, type VttDocument } from '../shared/vtt.js';
 import {
   soundCommandSchema,
@@ -67,6 +68,10 @@ export function vttSoundsRouter(
         b = d.soundboard,
         now = Date.now();
       b.voices = b.voices.filter((v) => soundAlive(v, now));
+      if (b.screenEffect && now >= b.screenEffect.startedAt + b.screenEffect.duration * 1000) {
+        b.voices = b.voices.filter((v) => v.id !== b.screenEffect?.id);
+        b.screenEffect = null;
+      }
       const config =
         command.kind === 'settings'
           ? command.settings
@@ -97,7 +102,33 @@ export function vttSoundsRouter(
           d.music.playing = false;
         }
       }
-      if (command.kind === 'play') {
+      if (command.kind === 'screenPlay') {
+        if (command.settings.sceneId !== d.activeScene)
+          throw new AppError(400, 'Escolha a cena ativa para o efeito de tela.');
+        const previous = b.screenEffect;
+        b.voices = b.voices.filter((v) => v.id !== previous?.id);
+        if (b.voices.length >= 16)
+          throw new AppError(400, 'Há 16 sons ativos. Pare um deles antes de iniciar o efeito.');
+        const event = { ...command.settings, id: randomUUID(), startedAt: now + 1200 };
+        b.screenEffect = event;
+        b.voices.push({
+          id: event.id,
+          sourceId: screenEffectPreset(event.preset).sound,
+          channel: 'effect',
+          volume: event.muted ? 0 : event.volume,
+          loop: true,
+          startedAt: event.startedAt,
+        });
+      } else if (command.kind === 'screenStop') {
+        b.voices = b.voices.filter((v) => v.id !== b.screenEffect?.id);
+        b.screenEffect = null;
+      } else if (command.kind === 'screenAudio') {
+        if (b.screenEffect) {
+          b.screenEffect.muted = command.muted;
+          const voice = b.voices.find((v) => v.id === b.screenEffect?.id);
+          if (voice) voice.volume = command.muted ? 0 : b.screenEffect.volume;
+        }
+      } else if (command.kind === 'play') {
         if (b.hiddenSources.includes(command.sourceId))
           throw new AppError(
             400,
@@ -119,6 +150,7 @@ export function vttSoundsRouter(
       } else if (command.kind === 'volume') b.volume = command.volume;
       else if (command.kind === 'stopAll') {
         b.voices = [];
+        b.screenEffect = null;
         d.music.playing = false;
       } else if (command.kind === 'favorite') {
         b.favorites = b.favorites.filter((id) => id !== command.sourceId);

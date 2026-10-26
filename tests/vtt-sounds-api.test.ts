@@ -150,10 +150,17 @@ test('mixer e atalhos em PostgreSQL descartável: autorização, persistência e
               Buffer.from([1, 2, 3]),
             ],
           );
+        const audioStatus = async (id:string,who=player) => {const response=await fetch(base+'/vtt/assets/'+id,{headers:{Cookie:who.cookie,'X-Vtt-Schema-Version':String(vttProtocolVersion)}});await response.body?.cancel();return response.status;};
+        assert.equal(await audioStatus(audio),404);
+        assert.equal(await audioStatus(foreign),404);
         assert.equal(
           (await req(sounds, gm, 'POST', { kind: 'play', sourceId: 'asset:' + audio })).status,
           200,
         );
+        assert.equal(await audioStatus(audio),200);
+        assert.equal(await audioStatus(audio,spectator),200);
+        await req(sounds,gm,'POST',{kind:'stop',sourceId:'asset:'+audio});
+        assert.equal(await audioStatus(audio),404);
         const legacy = (await req(path, gm)).data;
         legacy.document.music = { assetId: audio, playing: true, loop: true, volume: 0.44 };
         legacy.document.soundboard.voices = [];
@@ -339,6 +346,34 @@ test('mixer e atalhos em PostgreSQL descartável: autorização, persistência e
         await req(sounds, gm, 'POST', { kind: 'stopAll' });
       },
     );
+    await t.test('efeito de tela: dono comum dispara, jogadores recebem, mute e parada preservam músicas', async () => {
+      const sceneId=(await req(path,gm)).data.document.activeScene;
+      const settings={preset:'earthquake',sceneId,duration:12,intensity:.6,volume:.55,muted:false};
+      assert.equal((await req(sounds,player,'POST',{kind:'screenPlay',settings})).status,403);
+      assert.equal((await req(sounds,gm,'POST',{kind:'screenPlay',settings:{...settings,sceneId:randomUUID()}})).status,400);
+      await req(sounds,gm,'POST',{kind:'play',sourceId:'music-scene-market-day'});
+      assert.equal((await req(sounds,gm,'POST',{kind:'screenPlay',settings})).status,200);
+      const before=(await req(sounds,player)).data.soundboard,event=before.screenEffect;
+      assert.equal(event.preset,'earthquake');assert(before.voices.some((v:any)=>v.id===event.id&&v.loop));
+      assert.equal((await req(sounds,gm,'POST',{kind:'screenAudio',muted:true})).status,200);
+      const muted=(await req(sounds,player)).data.soundboard;assert(muted.screenEffect.muted);assert.equal(muted.voices.find((v:any)=>v.id===event.id).volume,0);
+      await req(sounds,gm,'POST',{kind:'screenStop'});const stopped=(await req(sounds,player)).data.soundboard;assert.equal(stopped.screenEffect,null);assert(stopped.voices.some((v:any)=>v.sourceId==='music-scene-market-day'));
+      await req(sounds,gm,'POST',{kind:'stopAll'});
+    });
+    await t.test('conversa de voz: sessões privadas, sinalização por membro e bloqueio de falsificação', async () => {
+      const voice=path+'/voice',a=randomUUID(),b=randomUUID();
+      assert.equal((await req(voice,gm,'POST',{sessionId:a,muted:true,listening:true})).status,200);
+      assert.equal((await req(voice,player,'POST',{sessionId:b,muted:false,listening:true})).status,200);
+      assert.equal((await req(voice,player,'POST',{sessionId:a,muted:false,listening:true})).status,403);
+      assert.equal((await req(voice+'/signal',player,'POST',{sessionId:a,to:b,description:{type:'offer',sdp:'test'}})).status,409);
+      assert.equal((await req(voice+'/signal',gm,'POST',{sessionId:a,to:b,description:{type:'offer',sdp:'v=0\r\n'}})).status,200);
+      const state=(await req(voice+'?sessionId='+b+'&cursor=0',player)).data;
+      assert.equal(state.signals.length,1);assert.equal(state.signals[0].from,a);assert.equal(state.peers.length,2);assert(!JSON.stringify(state.peers).includes(gm.id));
+      assert.equal((await req(voice+'?sessionId='+a+'&cursor=0',player)).status,409);
+      await req(voice+'?sessionId='+a,gm,'DELETE');
+      assert.equal((await req(voice+'?sessionId='+a+'&cursor=0',gm)).status,409);
+      await req(voice+'?sessionId='+b,player,'DELETE');
+    });
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
     await pool.end();

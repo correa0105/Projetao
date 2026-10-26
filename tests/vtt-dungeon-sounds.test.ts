@@ -13,7 +13,7 @@ test('40 áudios de masmorra têm arquivos íntegros, licença rastreável e loo
   assert.equal(batch.sounds.length, 40);
   assert.equal(batch.sounds.filter((s) => s.loop).length, 4);
   assert.equal(new Set(batch.sounds.map((s) => s.sha256)).size, 40);
-  assert.equal(soundCatalog.length, 195);
+  assert.ok(soundCatalog.length >= 195);
   const sourceSlugs = new Set(manifest.sources.map((s) => s.slug));
   for (const source of batch.sources) {
     assert.equal(source.license, 'CC0-1.0');

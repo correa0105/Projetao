@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import catalog from './vtt-sound-catalog.json';
+import { screenEffectSchema, screenEffectSettingsSchema } from './vtt-screen-effects.js';
 export type SoundKind = 'music' | 'ambience' | 'effect';
 export type SoundEntry = {
   id: string;
@@ -12,6 +13,8 @@ export type SoundEntry = {
   volume: number;
   credit: string;
   description: string;
+  tags?: string[];
+  scenarios?: string[];
 };
 export const soundCatalog = catalog as SoundEntry[];
 const byId = new Map(soundCatalog.map((s) => [s.id, s]));
@@ -44,6 +47,7 @@ export const soundboardSchema = z
     voices: z.array(soundVoiceSchema).max(16).default([]),
     favorites: z.array(soundSourceSchema).max(300).default([]),
     hiddenSources: z.array(soundSourceSchema).max(300).default([]),
+    screenEffect: screenEffectSchema.nullable().optional(),
   })
   .strict()
   .superRefine((s, ctx) => {
@@ -95,6 +99,9 @@ export function soundAlive(v: SoundVoice, now = Date.now()) {
   return v.loop || now - v.startedAt < (byId.get(v.sourceId)?.duration ?? 300) * 1000 + 1500;
 }
 export const soundCommandSchema = z.discriminatedUnion('kind', [
+  z.object({ kind: z.literal('screenPlay'), settings: screenEffectSettingsSchema }).strict(),
+  z.object({ kind: z.literal('screenStop') }).strict(),
+  z.object({ kind: z.literal('screenAudio'), muted: z.boolean() }).strict(),
   z
     .object({
       kind: z.literal('play'),

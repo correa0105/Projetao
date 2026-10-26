@@ -4,6 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { soundCatalog } from '../shared/vtt-sounds';
 import { vttProtocolVersion } from '../shared/vtt-protocol';
+import { smokeImmersiveAudio } from './smoke-vtt-immersive';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco descartável obrigatório.');
 const origin = 'http://localhost:3004';
@@ -17,7 +18,7 @@ await seed();
 const { createApp } = await import('../server/app');
 const server = createApp().listen(3004, '127.0.0.1');
 await new Promise<void>((r) => server.once('listening', r));
-const browser = await chromium.launch({ channel: 'msedge', headless: true }),
+const browser = await chromium.launch({ channel: 'msedge', headless: true, args:['--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream','--autoplay-policy=no-user-gesture-required'] }),
   gmctx = await browser.newContext({
     viewport: { width: 1440, height: 950 },
     extraHTTPHeaders: { 'X-Vtt-Schema-Version': String(vttProtocolVersion) },
@@ -26,6 +27,8 @@ const browser = await chromium.launch({ channel: 'msedge', headless: true }),
     viewport: { width: 1280, height: 850 },
     extraHTTPHeaders: { 'X-Vtt-Schema-Version': String(vttProtocolVersion) },
   });
+await gmctx.grantPermissions(['microphone']);
+await pc.grantPermissions(['microphone']);
 const errors: string[] = [];
 await mkdir('test-results', { recursive: true });
 for (const c of [gmctx, pc])
@@ -462,6 +465,7 @@ try {
     await page.screenshot({ path: `test-results/vtt-sound-library-${width}.png` });
   }
   await page.setViewportSize({ width: 1440, height: 950 });
+  const immersive = await smokeImmersiveAudio(page,peer);
   await page.getByRole('button', { name: 'Atalho 1 · Lareira acesa', exact: true }).click();
   await expect.poll(async () => (await snapshot()).soundboard.voices.length).toBe(1);
   await page.goto(origin + '/#characters');
@@ -480,6 +484,7 @@ try {
     JSON.stringify(
       {
         catalog: soundCatalog.length,
+        immersive,
         dungeonDecoded: decoded,
         dungeonSharedPlayback: true,
         sharedPlayback: true,

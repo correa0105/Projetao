@@ -30,6 +30,8 @@ type Voice = {
   target: number;
   cycle: number;
   ready: boolean;
+  scheduled?: ReturnType<typeof setTimeout>;
+  endsAt?: number;
 };
 export class VttSoundEngine {
   private voices = new Map<string, Voice>();
@@ -55,6 +57,13 @@ export class VttSoundEngine {
   ) {
     this.timer = setInterval(() => {
       for (const v of this.voices.values()) {
+        if (v.endsAt && this.clock() + this.serverOffset >= v.endsAt && !v.finished) {
+          if (v.scheduled) clearTimeout(v.scheduled);
+          this.release(v.audio);
+          v.finished = true;
+          this.changed();
+        }
+        if (v.finished) continue;
         v.audio.volume += (v.target - v.audio.volume) * 0.3;
         this.repeat(v);
       }
@@ -77,6 +86,15 @@ export class VttSoundEngine {
     audio.load();
   }
   private start(v: Voice) {
+    if (v.scheduled) clearTimeout(v.scheduled);
+    const delay = v.data.startedAt - this.clock() - this.serverOffset;
+    if (delay > 20) {
+      v.scheduled = setTimeout(() => {
+        v.scheduled = undefined;
+        if (!this.disposed && this.voices.has(v.data.id)) this.start(v);
+      }, delay);
+      return;
+    }
     void v.audio
       .play()
       .then(() => {
@@ -118,13 +136,25 @@ export class VttSoundEngine {
     v.audio.currentTime = phase;
     this.start(v);
   }
-  sync(snapshot: SoundSnapshot, music: Channel, effects: Channel) {
+  sync(
+    snapshot: SoundSnapshot,
+    music: Channel,
+    effects: Channel,
+    screen: Channel = { volume: 1, muted: false },
+  ) {
     if (this.disposed) return;
     this.mix = { volume: snapshot.soundboard.volume, music, effects };
     this.serverOffset = snapshot.serverTime - this.clock();
-    const list = snapshot.soundboard.voices.filter(
-      (v) => !snapshot.soundboard.hiddenSources.includes(v.sourceId),
-    );
+    const event = snapshot.soundboard.screenEffect;
+    const list = snapshot.soundboard.voices
+      .filter(
+        (v) =>
+          (!snapshot.soundboard.hiddenSources.includes(v.sourceId) || v.id === event?.id) &&
+          (v.id !== event?.id || snapshot.serverTime < event.startedAt + event.duration * 1000),
+      )
+      .map((v) =>
+        v.id === event?.id ? { ...v, volume: v.volume * (screen.muted ? 0 : screen.volume) } : v,
+      );
     if (snapshot.music.playing && snapshot.music.assetId)
       list.push({
         id: 'legacy:' + snapshot.music.assetId,
@@ -138,6 +168,7 @@ export class VttSoundEngine {
     if (this.preview && this.previewSettings) this.preview.volume = this.gain(this.previewSettings);
     for (const [id, v] of this.voices)
       if (!ids.has(id)) {
+        if (v.scheduled) clearTimeout(v.scheduled);
         if (v.data.loop && !v.finished && v.audio.volume > 0.002) {
           v.audio.onloadedmetadata = null;
           v.audio.onended = null;
@@ -183,6 +214,7 @@ export class VttSoundEngine {
           target: this.gain(data),
           cycle: -1,
           ready: false,
+          endsAt: data.id === event?.id ? event.startedAt + event.duration * 1000 : undefined,
         };
       audio.preload = 'auto';
       audio.src = path;
@@ -276,7 +308,10 @@ export class VttSoundEngine {
     this.disposed = true;
     clearInterval(this.timer);
     this.stopPreview();
-    for (const v of this.voices.values()) this.release(v.audio);
+    for (const v of this.voices.values()) {
+      if (v.scheduled) clearTimeout(v.scheduled);
+      this.release(v.audio);
+    }
     for (const a of this.retiring) this.release(a);
     this.retiring = [];
     this.voices.clear();

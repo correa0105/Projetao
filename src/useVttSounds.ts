@@ -3,7 +3,10 @@ import { api } from './api';
 import { useMusicInterlude, useSoundEffects } from './SiteMusic';
 import { VttSoundEngine } from './vtt-sound-engine';
 import type { SoundSnapshot, SoundSettings } from '../shared/vtt-sounds';
-export function useVttSounds(roomId: string | undefined) {
+export function useVttSounds(
+  roomId: string | undefined,
+  screen = { soundEnabled: true, soundVolume: 1 },
+) {
   const [snapshot, setSnapshot] = useState<SoundSnapshot | null>(null),
     [error, setError] = useState(''),
     [, redraw] = useState(0);
@@ -11,13 +14,26 @@ export function useVttSounds(roomId: string | undefined) {
     effects = useSoundEffects(),
     engine = useRef<VttSoundEngine | null>(null),
     latest = useRef<SoundSnapshot | null>(null);
-  const volumes = useRef({ music, effects });
-  volumes.current = { music, effects };
+  const volumes = useRef({
+    music,
+    effects,
+    screen: { volume: screen.soundVolume, muted: !screen.soundEnabled },
+  });
+  volumes.current = {
+    music,
+    effects,
+    screen: { volume: screen.soundVolume, muted: !screen.soundEnabled },
+  };
   function accept(next: SoundSnapshot) {
     if (latest.current && next.revision < latest.current.revision) return;
     latest.current = next;
     setSnapshot(next);
-    engine.current?.sync(next, volumes.current.music, volumes.current.effects);
+    engine.current?.sync(
+      next,
+      volumes.current.music,
+      volumes.current.effects,
+      volumes.current.screen,
+    );
   }
   useEffect(() => {
     latest.current = null;
@@ -54,6 +70,7 @@ export function useVttSounds(roomId: string | undefined) {
             },
             volumes.current.music,
             volumes.current.effects,
+            volumes.current.screen,
           );
           setError('A conexão com os sons da mesa foi interrompida. Tentando reconectar.');
         }
@@ -73,8 +90,16 @@ export function useVttSounds(roomId: string | undefined) {
     };
   }, [roomId]);
   useEffect(() => {
-    if (latest.current) engine.current?.sync(latest.current, music, effects);
-  }, [music.volume, music.muted, effects.volume, effects.muted]);
+    if (latest.current)
+      engine.current?.sync(latest.current, music, effects, volumes.current.screen);
+  }, [
+    music.volume,
+    music.muted,
+    effects.volume,
+    effects.muted,
+    screen.soundEnabled,
+    screen.soundVolume,
+  ]);
   return {
     snapshot,
     error,

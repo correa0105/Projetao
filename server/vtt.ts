@@ -18,6 +18,8 @@ import { vttSheetRouter } from './vtt-sheet.js';
 import { vttSpellsRouter } from './vtt-spells.js';
 import { vttHotbarRouter } from './vtt-hotbar.js';
 import { vttSoundsRouter, validateSoundAssets } from './vtt-sounds.js';
+import { soundAlive } from '../shared/vtt-sounds.js';
+import { vttVoiceRouter } from './vtt-voice.js';
 import { vttCombatRouter } from './vtt-combat.js';
 import {
   vttPremiumRouter,
@@ -459,6 +461,7 @@ export function vttRouter() {
   router.use(vttSpellsRouter(room, canSee));
   router.use(vttHotbarRouter(room));
   router.use(vttSoundsRouter(room, gm, state));
+  router.use(vttVoiceRouter(room));
   router.use(vttCombatRouter(room, canSee));
   router.use(vttDamageRouter(room, canSee, state));
   router.use(vttMonsterPresetRouter());
@@ -1341,8 +1344,10 @@ export function vttRouter() {
       );
       viewAs = member?.user_id || '';
     }
+    const sharedAudio = a.kind === 'audio' && !r.document.soundboard.hiddenSources.includes('asset:' + id) &&
+      r.document.soundboard.voices.some(v => v.sourceId === 'asset:' + id && soundAlive(v));
     if (
-      !isGm &&
+      !isGm && !sharedAudio &&
       !paths(playerDocument(r.document, viewAs, r.role === 'spectator')).includes(
         vttAssetPath(id, topDown),
       )

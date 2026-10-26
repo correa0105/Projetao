@@ -9,7 +9,11 @@
     "loop": true,
     "volume": 0.55,
     "credit": "RandomMind",
-    "description": "Uma trilha tranquila para encontros e histórias."
+    "description": "Uma trilha tranquila para encontros e histórias.",
+    "tags": [
+      "taverna",
+      "trilha"
+    ]
   },
   {
     "id": "music-bards-tale",
@@ -21,7 +25,11 @@
     "loop": true,
     "volume": 0.55,
     "credit": "RandomMind",
-    "description": "Música medieval para conversa e descanso."
+    "description": "Música medieval para conversa e descanso.",
+    "tags": [
+      "taverna",
+      "trilha"
+    ]
   },
   {
     "id": "music-battle",
@@ -33,7 +41,11 @@
     "loop": true,
     "volume": 0.55,
     "credit": "RandomMind",
-    "description": "Uma trilha de batalha para confrontos e perseguições."
+    "description": "Uma trilha de batalha para confrontos e perseguições.",
+    "tags": [
+      "batalha",
+      "trilha"
+    ]
   },
   {
     "id": "music-exploration",
@@ -45,7 +57,11 @@
     "loop": true,
     "volume": 0.55,
     "credit": "RandomMind",
-    "description": "Exploração de estradas, ruínas e terras desconhecidas."
+    "description": "Exploração de estradas, ruínas e terras desconhecidas.",
+    "tags": [
+      "viagem",
+      "trilha"
+    ]
   },
   {
     "id": "music-kings-feast",
@@ -57,7 +73,11 @@
     "loop": true,
     "volume": 0.55,
     "credit": "RandomMind",
-    "description": "Música para festas, salões e grandes celebrações."
+    "description": "Música para festas, salões e grandes celebrações.",
+    "tags": [
+      "castelo",
+      "trilha"
+    ]
   },
   {
     "id": "music-rising-moon",
@@ -69,7 +89,11 @@
     "loop": true,
     "volume": 0.55,
     "credit": "RandomMind",
-    "description": "Uma noite de fantasia, silêncio e expectativa."
+    "description": "Uma noite de fantasia, silêncio e expectativa.",
+    "tags": [
+      "mistério",
+      "trilha"
+    ]
   },
   {
     "id": "music-warriors-lament",
@@ -81,7 +105,11 @@
     "loop": true,
     "volume": 0.55,
     "credit": "RandomMind",
-    "description": "Uma trilha melancólica para perdas e despedidas."
+    "description": "Uma trilha melancólica para perdas e despedidas.",
+    "tags": [
+      "drama",
+      "trilha"
+    ]
   },
   {
     "id": "sfx-belthandle1",
@@ -93,7 +121,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "O couro e a fivela se movem ao manusear uma correia ou peça de equipamento.",
+    "tags": [
+      "couro",
+      "equipamento"
+    ]
   },
   {
     "id": "sfx-belthandle2",
@@ -105,7 +137,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "O couro e a fivela se movem ao manusear uma correia ou peça de equipamento.",
+    "tags": [
+      "couro",
+      "equipamento"
+    ]
   },
   {
     "id": "sfx-bookclose",
@@ -117,7 +153,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Um livro é fechado, com contato seco da capa e das páginas.",
+    "tags": [
+      "livro",
+      "biblioteca"
+    ]
   },
   {
     "id": "sfx-bookflip1",
@@ -129,7 +169,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma página é virada; use ao ler um grimório, diário ou documento.",
+    "tags": [
+      "livro",
+      "página"
+    ]
   },
   {
     "id": "sfx-bookflip2",
@@ -141,7 +185,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma página é virada; use ao ler um grimório, diário ou documento.",
+    "tags": [
+      "livro",
+      "página"
+    ]
   },
   {
     "id": "sfx-bookflip3",
@@ -153,7 +201,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma página é virada; use ao ler um grimório, diário ou documento.",
+    "tags": [
+      "livro",
+      "página"
+    ]
   },
   {
     "id": "sfx-bookopen",
@@ -165,7 +217,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Um livro é aberto para leitura ou consulta de um grimório.",
+    "tags": [
+      "livro",
+      "grimório"
+    ]
   },
   {
     "id": "sfx-bookplace1",
@@ -177,7 +233,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Um livro é apoiado numa superfície; útil em bibliotecas e estudos.",
+    "tags": [
+      "livro",
+      "biblioteca"
+    ]
   },
   {
     "id": "sfx-bookplace2",
@@ -189,7 +249,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Um livro é apoiado numa superfície; útil em bibliotecas e estudos.",
+    "tags": [
+      "livro",
+      "biblioteca"
+    ]
   },
   {
     "id": "sfx-bookplace3",
@@ -201,7 +265,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Um livro é apoiado numa superfície; útil em bibliotecas e estudos.",
+    "tags": [
+      "livro",
+      "biblioteca"
+    ]
   },
   {
     "id": "sfx-chop",
@@ -213,7 +281,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Golpe curto de machado ou ferramenta cortante.",
+    "tags": [
+      "arma",
+      "machado"
+    ]
   },
   {
     "id": "sfx-cloth1",
@@ -225,7 +297,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Movimento curto de tecido, para roupas, capas e bolsas.",
+    "tags": [
+      "tecido",
+      "roupa"
+    ]
   },
   {
     "id": "sfx-cloth2",
@@ -237,7 +313,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Movimento curto de tecido, para roupas, capas e bolsas.",
+    "tags": [
+      "tecido",
+      "roupa"
+    ]
   },
   {
     "id": "sfx-cloth3",
@@ -249,7 +329,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Movimento curto de tecido, para roupas, capas e bolsas.",
+    "tags": [
+      "tecido",
+      "roupa"
+    ]
   },
   {
     "id": "sfx-cloth4",
@@ -261,7 +345,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Movimento curto de tecido, para roupas, capas e bolsas.",
+    "tags": [
+      "tecido",
+      "roupa"
+    ]
   },
   {
     "id": "sfx-clothbelt",
@@ -273,7 +361,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma correia ou cinto de tecido é ajustado junto ao equipamento.",
+    "tags": [
+      "tecido",
+      "equipamento"
+    ]
   },
   {
     "id": "sfx-clothbelt2",
@@ -285,7 +377,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma correia ou cinto de tecido é ajustado junto ao equipamento.",
+    "tags": [
+      "tecido",
+      "equipamento"
+    ]
   },
   {
     "id": "sfx-creak1",
@@ -297,7 +393,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Rangido de madeira; pontua tábuas antigas, portas e móveis sob pressão.",
+    "tags": [
+      "madeira",
+      "rangido"
+    ]
   },
   {
     "id": "sfx-creak2",
@@ -309,7 +409,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Rangido de madeira; pontua tábuas antigas, portas e móveis sob pressão.",
+    "tags": [
+      "madeira",
+      "rangido"
+    ]
   },
   {
     "id": "sfx-creak3",
@@ -321,7 +425,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Rangido de madeira; pontua tábuas antigas, portas e móveis sob pressão.",
+    "tags": [
+      "madeira",
+      "rangido"
+    ]
   },
   {
     "id": "sfx-doorclose-1",
@@ -333,7 +441,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma porta de madeira se fecha com batente curto.",
+    "tags": [
+      "porta",
+      "fechar"
+    ]
   },
   {
     "id": "sfx-doorclose-2",
@@ -345,7 +457,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma porta de madeira se fecha com batente curto.",
+    "tags": [
+      "porta",
+      "fechar"
+    ]
   },
   {
     "id": "sfx-doorclose-3",
@@ -357,7 +473,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma porta de madeira se fecha com batente curto.",
+    "tags": [
+      "porta",
+      "fechar"
+    ]
   },
   {
     "id": "sfx-doorclose-4",
@@ -369,7 +489,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma porta de madeira se fecha com batente curto.",
+    "tags": [
+      "porta",
+      "fechar"
+    ]
   },
   {
     "id": "sfx-dooropen-1",
@@ -381,7 +505,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma porta de madeira é aberta; combine com um rangido para uma passagem antiga.",
+    "tags": [
+      "porta",
+      "abrir"
+    ]
   },
   {
     "id": "sfx-dooropen-2",
@@ -393,7 +521,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma porta de madeira é aberta; combine com um rangido para uma passagem antiga.",
+    "tags": [
+      "porta",
+      "abrir"
+    ]
   },
   {
     "id": "sfx-drawknife1",
@@ -405,7 +537,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma lâmina curta é sacada antes de um ataque ou ameaça.",
+    "tags": [
+      "arma",
+      "adaga"
+    ]
   },
   {
     "id": "sfx-drawknife2",
@@ -417,7 +553,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma lâmina curta é sacada antes de um ataque ou ameaça.",
+    "tags": [
+      "arma",
+      "adaga"
+    ]
   },
   {
     "id": "sfx-drawknife3",
@@ -429,7 +569,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma lâmina curta é sacada antes de um ataque ou ameaça.",
+    "tags": [
+      "arma",
+      "adaga"
+    ]
   },
   {
     "id": "sfx-dropleather",
@@ -441,7 +585,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma bolsa ou peça de couro é largada sobre uma superfície.",
+    "tags": [
+      "couro",
+      "bolsa"
+    ]
   },
   {
     "id": "sfx-footstep00",
@@ -453,7 +601,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Passo isolado para acompanhar a movimentação. Ative um intervalo para repetir a caminhada.",
+    "tags": [
+      "passos",
+      "caminhada"
+    ]
   },
   {
     "id": "sfx-footstep01",
@@ -465,7 +617,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Passo isolado para acompanhar a movimentação. Ative um intervalo para repetir a caminhada.",
+    "tags": [
+      "passos",
+      "caminhada"
+    ]
   },
   {
     "id": "sfx-footstep02",
@@ -477,7 +633,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Passo isolado para acompanhar a movimentação. Ative um intervalo para repetir a caminhada.",
+    "tags": [
+      "passos",
+      "caminhada"
+    ]
   },
   {
     "id": "sfx-footstep03",
@@ -489,7 +649,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Passo isolado para acompanhar a movimentação. Ative um intervalo para repetir a caminhada.",
+    "tags": [
+      "passos",
+      "caminhada"
+    ]
   },
   {
     "id": "sfx-footstep04",
@@ -501,7 +665,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Passo isolado para acompanhar a movimentação. Ative um intervalo para repetir a caminhada.",
+    "tags": [
+      "passos",
+      "caminhada"
+    ]
   },
   {
     "id": "sfx-footstep05",
@@ -513,7 +681,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Passo isolado para acompanhar a movimentação. Ative um intervalo para repetir a caminhada.",
+    "tags": [
+      "passos",
+      "caminhada"
+    ]
   },
   {
     "id": "sfx-footstep06",
@@ -525,7 +697,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Passo isolado para acompanhar a movimentação. Ative um intervalo para repetir a caminhada.",
+    "tags": [
+      "passos",
+      "caminhada"
+    ]
   },
   {
     "id": "sfx-footstep07",
@@ -537,7 +713,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Passo isolado para acompanhar a movimentação. Ative um intervalo para repetir a caminhada.",
+    "tags": [
+      "passos",
+      "caminhada"
+    ]
   },
   {
     "id": "sfx-footstep08",
@@ -549,7 +729,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Passo isolado para acompanhar a movimentação. Ative um intervalo para repetir a caminhada.",
+    "tags": [
+      "passos",
+      "caminhada"
+    ]
   },
   {
     "id": "sfx-footstep09",
@@ -561,7 +745,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Passo isolado para acompanhar a movimentação. Ative um intervalo para repetir a caminhada.",
+    "tags": [
+      "passos",
+      "caminhada"
+    ]
   },
   {
     "id": "sfx-handlecoins",
@@ -573,7 +761,12 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Moedas tilintam ao manusear uma bolsa; para pagamento, saque ou tesouro.",
+    "tags": [
+      "moedas",
+      "ouro",
+      "tesouro"
+    ]
   },
   {
     "id": "sfx-handlecoins2",
@@ -585,7 +778,12 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Moedas tilintam ao manusear uma bolsa; para pagamento, saque ou tesouro.",
+    "tags": [
+      "moedas",
+      "ouro",
+      "tesouro"
+    ]
   },
   {
     "id": "sfx-handlesmallleather",
@@ -597,7 +795,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma pequena bolsa de couro é manuseada; útil para inventário e ferramentas.",
+    "tags": [
+      "couro",
+      "bolsa"
+    ]
   },
   {
     "id": "sfx-handlesmallleather2",
@@ -609,7 +811,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma pequena bolsa de couro é manuseada; útil para inventário e ferramentas.",
+    "tags": [
+      "couro",
+      "bolsa"
+    ]
   },
   {
     "id": "sfx-knifeslice",
@@ -621,7 +827,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma lâmina corta o ar em um movimento rápido de ataque.",
+    "tags": [
+      "arma",
+      "corte"
+    ]
   },
   {
     "id": "sfx-knifeslice2",
@@ -633,7 +843,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma lâmina corta o ar em um movimento rápido de ataque.",
+    "tags": [
+      "arma",
+      "corte"
+    ]
   },
   {
     "id": "sfx-metalclick",
@@ -645,7 +859,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Duas peças metálicas se encaixam com um clique curto.",
+    "tags": [
+      "metal",
+      "mecanismo"
+    ]
   },
   {
     "id": "sfx-metallatch",
@@ -657,7 +875,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma tranca de metal é acionada; para portas, baús ou grades.",
+    "tags": [
+      "tranca",
+      "fechadura"
+    ]
   },
   {
     "id": "sfx-metalpot1",
@@ -669,7 +891,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma panela ou recipiente metálico é tocado e movimentado.",
+    "tags": [
+      "metal",
+      "cozinha"
+    ]
   },
   {
     "id": "sfx-metalpot2",
@@ -681,7 +907,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma panela ou recipiente metálico é tocado e movimentado.",
+    "tags": [
+      "metal",
+      "cozinha"
+    ]
   },
   {
     "id": "sfx-metalpot3",
@@ -693,7 +923,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "Kenney",
-    "description": "Efeito individual para pontuar a cena."
+    "description": "Uma panela ou recipiente metálico é tocado e movimentado.",
+    "tags": [
+      "metal",
+      "cozinha"
+    ]
   },
   {
     "id": "sfx-magic-1",
@@ -705,7 +939,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "JaggedStone",
-    "description": "Um efeito mágico curto, com cauda de energia."
+    "description": "Um efeito mágico curto, com cauda de energia.",
+    "tags": [
+      "magia",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-magic-2",
@@ -717,7 +955,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "JaggedStone",
-    "description": "Um efeito mágico curto, com cauda de energia."
+    "description": "Um efeito mágico curto, com cauda de energia.",
+    "tags": [
+      "magia",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-magic-3",
@@ -729,7 +971,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "JaggedStone",
-    "description": "Um efeito mágico curto, com cauda de energia."
+    "description": "Um efeito mágico curto, com cauda de energia.",
+    "tags": [
+      "magia",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-magic-4",
@@ -741,7 +987,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "JaggedStone",
-    "description": "Um efeito mágico curto, com cauda de energia."
+    "description": "Um efeito mágico curto, com cauda de energia.",
+    "tags": [
+      "magia",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-magic-5",
@@ -753,7 +1003,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "JaggedStone",
-    "description": "Um efeito mágico curto, com cauda de energia."
+    "description": "Um efeito mágico curto, com cauda de energia.",
+    "tags": [
+      "magia",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-magic-6",
@@ -765,7 +1019,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "JaggedStone",
-    "description": "Um efeito mágico curto, com cauda de energia."
+    "description": "Um efeito mágico curto, com cauda de energia.",
+    "tags": [
+      "magia",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-magic-7",
@@ -777,7 +1035,11 @@
     "loop": false,
     "volume": 0.65,
     "credit": "JaggedStone",
-    "description": "Um efeito mágico curto, com cauda de energia."
+    "description": "Um efeito mágico curto, com cauda de energia.",
+    "tags": [
+      "magia",
+      "efeito"
+    ]
   },
   {
     "id": "amb-forest",
@@ -789,7 +1051,11 @@
     "loop": true,
     "volume": 0.6,
     "credit": "TinyWorlds",
-    "description": "Pássaros e atmosfera de floresta."
+    "description": "Pássaros e atmosfera de floresta.",
+    "tags": [
+      "natureza",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-hearth",
@@ -801,7 +1067,11 @@
     "loop": true,
     "volume": 0.6,
     "credit": "PagDev",
-    "description": "Lenha e brasas estalando."
+    "description": "Lenha e brasas estalando.",
+    "tags": [
+      "interiores",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-river",
@@ -809,11 +1079,15 @@
     "kind": "ambience",
     "category": "Natureza",
     "path": "/audio/vtt/amb-river.ogg",
-    "duration": 74.0,
+    "duration": 74,
     "loop": true,
     "volume": 0.6,
     "credit": "RandomMind",
-    "description": "Ondas leves junto à margem."
+    "description": "Ondas leves junto à margem.",
+    "tags": [
+      "natureza",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-rain",
@@ -821,11 +1095,15 @@
     "kind": "ambience",
     "category": "Natureza",
     "path": "/audio/vtt/amb-rain.ogg",
-    "duration": 26.0,
+    "duration": 26,
     "loop": true,
     "volume": 0.6,
     "credit": "Ylmir",
-    "description": "Chuva em um ciclo contínuo."
+    "description": "Chuva em um ciclo contínuo.",
+    "tags": [
+      "natureza",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-wind",
@@ -833,11 +1111,15 @@
     "kind": "ambience",
     "category": "Ruínas",
     "path": "/audio/vtt/amb-wind.ogg",
-    "duration": 35.0,
+    "duration": 35,
     "loop": true,
     "volume": 0.6,
     "credit": "remaxim",
-    "description": "Correntes de vento e rajadas suaves."
+    "description": "Correntes de vento e rajadas suaves.",
+    "tags": [
+      "ruínas",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-forest-camp",
@@ -845,11 +1127,15 @@
     "kind": "ambience",
     "category": "Cenas compostas",
     "path": "/audio/vtt/amb-forest-camp.ogg",
-    "duration": 58.0,
+    "duration": 58,
     "loop": true,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Fogueira próxima e floresta ao redor."
+    "description": "Fogueira próxima e floresta ao redor.",
+    "tags": [
+      "cenas compostas",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-rainy-shelter",
@@ -857,11 +1143,15 @@
     "kind": "ambience",
     "category": "Cenas compostas",
     "path": "/audio/vtt/amb-rainy-shelter.ogg",
-    "duration": 58.0,
+    "duration": 58,
     "loop": true,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Chuva ao fundo, lenha estalando no abrigo."
+    "description": "Chuva ao fundo, lenha estalando no abrigo.",
+    "tags": [
+      "cenas compostas",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-riverside-camp",
@@ -869,11 +1159,15 @@
     "kind": "ambience",
     "category": "Cenas compostas",
     "path": "/audio/vtt/amb-riverside-camp.ogg",
-    "duration": 58.0,
+    "duration": 58,
     "loop": true,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Água na margem e fogo junto ao acampamento."
+    "description": "Água na margem e fogo junto ao acampamento.",
+    "tags": [
+      "cenas compostas",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-ruins-rain",
@@ -881,11 +1175,15 @@
     "kind": "ambience",
     "category": "Cenas compostas",
     "path": "/audio/vtt/amb-ruins-rain.ogg",
-    "duration": 58.0,
+    "duration": 58,
     "loop": true,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Vento entre pedras antigas e chuva constante."
+    "description": "Vento entre pedras antigas e chuva constante.",
+    "tags": [
+      "cenas compostas",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-steps",
@@ -893,11 +1191,15 @@
     "kind": "ambience",
     "category": "Interiores",
     "path": "/audio/vtt/amb-steps.ogg",
-    "duration": 23.0,
+    "duration": 23,
     "loop": true,
     "volume": 0.5,
     "credit": "Alvorada Cinzenta · Kenney",
-    "description": "Uma sequência de passos para exploração de corredores."
+    "description": "Uma sequência de passos para exploração de corredores.",
+    "tags": [
+      "interiores",
+      "ambiente"
+    ]
   },
   {
     "id": "music-unexplored",
@@ -909,7 +1211,11 @@
     "loop": true,
     "volume": 0.55,
     "credit": "Bo Jingles / TAD",
-    "description": "Exploração com instrumental orquestral."
+    "description": "Exploração com instrumental orquestral.",
+    "tags": [
+      "viagem",
+      "trilha"
+    ]
   },
   {
     "id": "music-treasure-hunter",
@@ -921,7 +1227,11 @@
     "loop": true,
     "volume": 0.55,
     "credit": "TAD",
-    "description": "Orquestra para descobertas e expedições."
+    "description": "Orquestra para descobertas e expedições.",
+    "tags": [
+      "aventura",
+      "trilha"
+    ]
   },
   {
     "id": "music-pursuit",
@@ -929,11 +1239,15 @@
     "kind": "music",
     "category": "Batalha",
     "path": "/audio/vtt/music-pursuit.ogg",
-    "duration": 108.0,
+    "duration": 108,
     "loop": true,
     "volume": 0.55,
     "credit": "Emma_MA",
-    "description": "Cordas, metais e percussão em perseguição."
+    "description": "Cordas, metais e percussão em perseguição.",
+    "tags": [
+      "batalha",
+      "trilha"
+    ]
   },
   {
     "id": "music-cave",
@@ -941,11 +1255,15 @@
     "kind": "music",
     "category": "Mistério",
     "path": "/audio/vtt/music-cave.ogg",
-    "duration": 280.0,
+    "duration": 280,
     "loop": true,
     "volume": 0.55,
     "credit": "Brandon75689 / HaelDB",
-    "description": "Trilha de exploração subterrânea."
+    "description": "Trilha de exploração subterrânea.",
+    "tags": [
+      "mistério",
+      "trilha"
+    ]
   },
   {
     "id": "music-legend",
@@ -957,7 +1275,11 @@
     "loop": true,
     "volume": 0.55,
     "credit": "CodeManu",
-    "description": "Orquestra para momentos de triunfo."
+    "description": "Orquestra para momentos de triunfo.",
+    "tags": [
+      "épico",
+      "trilha"
+    ]
   },
   {
     "id": "music-sunrise",
@@ -969,7 +1291,11 @@
     "loop": true,
     "volume": 0.55,
     "credit": "nene",
-    "description": "Cordas, coro e metais para uma nova jornada."
+    "description": "Cordas, coro e metais para uma nova jornada.",
+    "tags": [
+      "épico",
+      "trilha"
+    ]
   },
   {
     "id": "sfx-creature-monster-1",
@@ -981,7 +1307,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Voz gutural de monstro para uma presença próxima ou uma reação da criatura.",
+    "tags": [
+      "monstro",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-monster-2",
@@ -993,7 +1323,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Voz gutural de monstro para uma presença próxima ou uma reação da criatura.",
+    "tags": [
+      "monstro",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-monster-3",
@@ -1005,7 +1339,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Voz gutural de monstro para uma presença próxima ou uma reação da criatura.",
+    "tags": [
+      "monstro",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-monster-4",
@@ -1017,7 +1355,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Voz gutural de monstro para uma presença próxima ou uma reação da criatura.",
+    "tags": [
+      "monstro",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-monster-5",
@@ -1029,7 +1371,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Voz gutural de monstro para uma presença próxima ou uma reação da criatura.",
+    "tags": [
+      "monstro",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-monster-6",
@@ -1041,7 +1387,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Voz gutural de monstro para uma presença próxima ou uma reação da criatura.",
+    "tags": [
+      "monstro",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-monster-7",
@@ -1053,7 +1403,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Voz gutural de monstro para uma presença próxima ou uma reação da criatura.",
+    "tags": [
+      "monstro",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-roar-1",
@@ -1065,7 +1419,12 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Rugido de criatura para ameaça, desafio ou início de confronto.",
+    "tags": [
+      "monstro",
+      "rugido",
+      "dragão"
+    ]
   },
   {
     "id": "sfx-creature-roar-2",
@@ -1077,7 +1436,12 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Rugido de criatura para ameaça, desafio ou início de confronto.",
+    "tags": [
+      "monstro",
+      "rugido",
+      "dragão"
+    ]
   },
   {
     "id": "sfx-creature-roar-3",
@@ -1089,7 +1453,12 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Rugido de criatura para ameaça, desafio ou início de confronto.",
+    "tags": [
+      "monstro",
+      "rugido",
+      "dragão"
+    ]
   },
   {
     "id": "sfx-creature-troll-1",
@@ -1101,7 +1470,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Vocalização grave de troll para fala bestial ou reação em combate.",
+    "tags": [
+      "troll",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-troll-2",
@@ -1113,7 +1486,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Vocalização grave de troll para fala bestial ou reação em combate.",
+    "tags": [
+      "troll",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-troll-3",
@@ -1125,7 +1502,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Vocalização grave de troll para fala bestial ou reação em combate.",
+    "tags": [
+      "troll",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-grunt-1",
@@ -1137,7 +1518,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Rosnado curto de criatura, para hostilidade e esforço.",
+    "tags": [
+      "monstro",
+      "rosnado"
+    ]
   },
   {
     "id": "sfx-creature-grunt-2",
@@ -1149,7 +1534,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Rosnado curto de criatura, para hostilidade e esforço.",
+    "tags": [
+      "monstro",
+      "rosnado"
+    ]
   },
   {
     "id": "sfx-creature-grunt-3",
@@ -1161,7 +1550,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Rosnado curto de criatura, para hostilidade e esforço.",
+    "tags": [
+      "monstro",
+      "rosnado"
+    ]
   },
   {
     "id": "sfx-creature-grunt-4",
@@ -1173,7 +1566,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Rosnado curto de criatura, para hostilidade e esforço.",
+    "tags": [
+      "monstro",
+      "rosnado"
+    ]
   },
   {
     "id": "sfx-creature-grunt-5",
@@ -1185,7 +1582,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Rosnado curto de criatura, para hostilidade e esforço.",
+    "tags": [
+      "monstro",
+      "rosnado"
+    ]
   },
   {
     "id": "sfx-creature-hurt-1",
@@ -1197,7 +1598,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Reação vocal de uma criatura ferida ou atingida.",
+    "tags": [
+      "monstro",
+      "dor"
+    ]
   },
   {
     "id": "sfx-creature-hurt-2",
@@ -1209,7 +1614,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Reação vocal de uma criatura ferida ou atingida.",
+    "tags": [
+      "monstro",
+      "dor"
+    ]
   },
   {
     "id": "sfx-creature-hurt-3",
@@ -1221,7 +1630,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Reação vocal de uma criatura ferida ou atingida.",
+    "tags": [
+      "monstro",
+      "dor"
+    ]
   },
   {
     "id": "sfx-creature-bug-1",
@@ -1233,7 +1646,13 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Vocalização de inseto monstruoso, para túneis, colmeias e encontros.",
+    "tags": [
+      "inseto",
+      "criatura",
+      "insetos",
+      "enxame"
+    ]
   },
   {
     "id": "sfx-creature-bug-2",
@@ -1245,7 +1664,13 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Vocalização de inseto monstruoso, para túneis, colmeias e encontros.",
+    "tags": [
+      "inseto",
+      "criatura",
+      "insetos",
+      "enxame"
+    ]
   },
   {
     "id": "sfx-creature-bug-3",
@@ -1257,7 +1682,13 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Vocalização de inseto monstruoso, para túneis, colmeias e encontros.",
+    "tags": [
+      "inseto",
+      "criatura",
+      "insetos",
+      "enxame"
+    ]
   },
   {
     "id": "sfx-creature-cute-1",
@@ -1269,7 +1700,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Pequena vocalização aguda de criatura fictícia ou familiar.",
+    "tags": [
+      "familiar",
+      "criatura pequena"
+    ]
   },
   {
     "id": "sfx-creature-cute-2",
@@ -1281,7 +1716,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Pequena vocalização aguda de criatura fictícia ou familiar.",
+    "tags": [
+      "familiar",
+      "criatura pequena"
+    ]
   },
   {
     "id": "sfx-creature-cute-3",
@@ -1293,7 +1732,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Pequena vocalização aguda de criatura fictícia ou familiar.",
+    "tags": [
+      "familiar",
+      "criatura pequena"
+    ]
   },
   {
     "id": "sfx-creature-cute-4",
@@ -1305,7 +1748,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Pequena vocalização aguda de criatura fictícia ou familiar.",
+    "tags": [
+      "familiar",
+      "criatura pequena"
+    ]
   },
   {
     "id": "sfx-creature-weird-1",
@@ -1317,7 +1764,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Voz estranha e não humana para aberrações e presenças sobrenaturais.",
+    "tags": [
+      "aberração",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-weird-2",
@@ -1329,7 +1780,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Voz estranha e não humana para aberrações e presenças sobrenaturais.",
+    "tags": [
+      "aberração",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-weird-3",
@@ -1341,7 +1796,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Voz estranha e não humana para aberrações e presenças sobrenaturais.",
+    "tags": [
+      "aberração",
+      "voz"
+    ]
   },
   {
     "id": "sfx-creature-barking-1",
@@ -1353,7 +1812,12 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Latido isolado de cão para alerta, resposta ou encontro com animais.",
+    "tags": [
+      "cachorro",
+      "cão",
+      "latido"
+    ]
   },
   {
     "id": "sfx-creature-barking-2",
@@ -1365,7 +1829,12 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização de criatura para encontros e ações."
+    "description": "Latido isolado de cão para alerta, resposta ou encontro com animais.",
+    "tags": [
+      "cachorro",
+      "cão",
+      "latido"
+    ]
   },
   {
     "id": "sfx-creature-howl",
@@ -1377,7 +1846,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização curta para pontuar a cena."
+    "description": "Uivo de animal para uma alcateia, ameaça distante ou floresta noturna.",
+    "tags": [
+      "lobo",
+      "uivo"
+    ]
   },
   {
     "id": "sfx-creature-breath",
@@ -1389,7 +1862,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck",
-    "description": "Vocalização curta para pontuar a cena."
+    "description": "Respiração audível de uma fera próxima, para pausa e tensão.",
+    "tags": [
+      "fera",
+      "respiração"
+    ]
   },
   {
     "id": "sfx-beast-growl-1",
@@ -1401,7 +1878,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "pauliuw",
-    "description": "Voz de uma fera ameaçadora."
+    "description": "Rosnado animal grave para uma fera ameaçando ou protegendo seu território.",
+    "tags": [
+      "fera",
+      "rosnado"
+    ]
   },
   {
     "id": "sfx-beast-growl-2",
@@ -1413,11 +1894,15 @@
     "loop": false,
     "volume": 0.6,
     "credit": "pauliuw",
-    "description": "Voz de uma fera ameaçadora."
+    "description": "Rosnado animal grave para uma fera ameaçando ou protegendo seu território.",
+    "tags": [
+      "fera",
+      "rosnado"
+    ]
   },
   {
     "id": "sfx-beast-growl",
-    "name": "Rosnado de fera growl",
+    "name": "Rosnado de fera 3",
     "kind": "effect",
     "category": "Monstros",
     "path": "/audio/vtt/sfx-beast-growl.ogg",
@@ -1425,7 +1910,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "pauliuw",
-    "description": "Voz de uma fera ameaçadora."
+    "description": "Rosnado animal grave para uma fera ameaçando ou protegendo seu território.",
+    "tags": [
+      "fera",
+      "rosnado"
+    ]
   },
   {
     "id": "sfx-beast-voice-1",
@@ -1437,7 +1926,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "pauliuw",
-    "description": "Voz de uma fera ameaçadora."
+    "description": "Vocalização bestial para grandes animais ou criaturas de um covil.",
+    "tags": [
+      "fera",
+      "voz"
+    ]
   },
   {
     "id": "sfx-beast-voice-2",
@@ -1449,7 +1942,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "pauliuw",
-    "description": "Voz de uma fera ameaçadora."
+    "description": "Vocalização bestial para grandes animais ou criaturas de um covil.",
+    "tags": [
+      "fera",
+      "voz"
+    ]
   },
   {
     "id": "sfx-beast-voice-3",
@@ -1461,11 +1958,15 @@
     "loop": false,
     "volume": 0.6,
     "credit": "pauliuw",
-    "description": "Voz de uma fera ameaçadora."
+    "description": "Vocalização bestial para grandes animais ou criaturas de um covil.",
+    "tags": [
+      "fera",
+      "voz"
+    ]
   },
   {
     "id": "sfx-beast-voice",
-    "name": "Voz de fera voice",
+    "name": "Voz de fera 4",
     "kind": "effect",
     "category": "Monstros",
     "path": "/audio/vtt/sfx-beast-voice.ogg",
@@ -1473,7 +1974,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "pauliuw",
-    "description": "Voz de uma fera ameaçadora."
+    "description": "Vocalização bestial para grandes animais ou criaturas de um covil.",
+    "tags": [
+      "fera",
+      "voz"
+    ]
   },
   {
     "id": "sfx-door-open-1",
@@ -1481,11 +1986,15 @@
     "kind": "effect",
     "category": "Portas",
     "path": "/audio/vtt/sfx-door-open-1.ogg",
-    "duration": 1.0,
+    "duration": 1,
     "loop": false,
     "volume": 0.6,
     "credit": "qubodup",
-    "description": "Porta articulada com trinco, rangido e impacto."
+    "description": "Porta articulada com trinco, rangido e impacto.",
+    "tags": [
+      "portas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-door-open-3",
@@ -1493,11 +2002,15 @@
     "kind": "effect",
     "category": "Portas",
     "path": "/audio/vtt/sfx-door-open-3.ogg",
-    "duration": 1.0,
+    "duration": 1,
     "loop": false,
     "volume": 0.6,
     "credit": "qubodup",
-    "description": "Porta articulada com trinco, rangido e impacto."
+    "description": "Porta articulada com trinco, rangido e impacto.",
+    "tags": [
+      "portas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-door-open-5",
@@ -1505,11 +2018,15 @@
     "kind": "effect",
     "category": "Portas",
     "path": "/audio/vtt/sfx-door-open-5.ogg",
-    "duration": 1.0,
+    "duration": 1,
     "loop": false,
     "volume": 0.6,
     "credit": "qubodup",
-    "description": "Porta articulada com trinco, rangido e impacto."
+    "description": "Porta articulada com trinco, rangido e impacto.",
+    "tags": [
+      "portas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-door-open-7",
@@ -1517,11 +2034,15 @@
     "kind": "effect",
     "category": "Portas",
     "path": "/audio/vtt/sfx-door-open-7.ogg",
-    "duration": 1.0,
+    "duration": 1,
     "loop": false,
     "volume": 0.6,
     "credit": "qubodup",
-    "description": "Porta articulada com trinco, rangido e impacto."
+    "description": "Porta articulada com trinco, rangido e impacto.",
+    "tags": [
+      "portas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-door-close-1",
@@ -1529,11 +2050,15 @@
     "kind": "effect",
     "category": "Portas",
     "path": "/audio/vtt/sfx-door-close-1.ogg",
-    "duration": 1.0,
+    "duration": 1,
     "loop": false,
     "volume": 0.6,
     "credit": "qubodup",
-    "description": "Porta articulada com trinco, rangido e impacto."
+    "description": "Porta articulada com trinco, rangido e impacto.",
+    "tags": [
+      "portas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-door-close-3",
@@ -1541,11 +2066,15 @@
     "kind": "effect",
     "category": "Portas",
     "path": "/audio/vtt/sfx-door-close-3.ogg",
-    "duration": 1.0,
+    "duration": 1,
     "loop": false,
     "volume": 0.6,
     "credit": "qubodup",
-    "description": "Porta articulada com trinco, rangido e impacto."
+    "description": "Porta articulada com trinco, rangido e impacto.",
+    "tags": [
+      "portas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-door-close-5",
@@ -1553,11 +2082,15 @@
     "kind": "effect",
     "category": "Portas",
     "path": "/audio/vtt/sfx-door-close-5.ogg",
-    "duration": 1.0,
+    "duration": 1,
     "loop": false,
     "volume": 0.6,
     "credit": "qubodup",
-    "description": "Porta articulada com trinco, rangido e impacto."
+    "description": "Porta articulada com trinco, rangido e impacto.",
+    "tags": [
+      "portas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-door-close-7",
@@ -1565,11 +2098,15 @@
     "kind": "effect",
     "category": "Portas",
     "path": "/audio/vtt/sfx-door-close-7.ogg",
-    "duration": 1.0,
+    "duration": 1,
     "loop": false,
     "volume": 0.6,
     "credit": "qubodup",
-    "description": "Porta articulada com trinco, rangido e impacto."
+    "description": "Porta articulada com trinco, rangido e impacto.",
+    "tags": [
+      "portas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-animal-raven",
@@ -1581,7 +2118,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Bidone",
-    "description": "Gravação de animal; fonte CC0 identificada em CREDITS.md."
+    "description": "Gravação de animal; fonte CC0 identificada em CREDITS.md.",
+    "tags": [
+      "animais",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-animal-rat",
@@ -1593,7 +2134,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Zabuhailo",
-    "description": "Gravação de animal; fonte CC0 identificada em CREDITS.md."
+    "description": "Gravação de animal; fonte CC0 identificada em CREDITS.md.",
+    "tags": [
+      "animais",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-animal-guinea-pig",
@@ -1605,7 +2150,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Breviceps",
-    "description": "Gravação de animal; fonte CC0 identificada em CREDITS.md."
+    "description": "Gravação de animal; fonte CC0 identificada em CREDITS.md.",
+    "tags": [
+      "animais",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-steel-door-open",
@@ -1617,7 +2166,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Foley composto: tranca, dobradiça pesada e ressonância metálica."
+    "description": "Foley composto: tranca, dobradiça pesada e ressonância metálica.",
+    "tags": [
+      "portas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-steel-door-close",
@@ -1629,7 +2182,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Foley composto: impacto, trava e cauda metálica."
+    "description": "Foley composto: impacto, trava e cauda metálica.",
+    "tags": [
+      "portas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-lantern-light",
@@ -1641,7 +2198,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Foley próprio com mecanismo, sopro e transição do fogo."
+    "description": "Foley próprio com mecanismo, sopro e transição do fogo.",
+    "tags": [
+      "fogo e luz",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-lantern-out",
@@ -1653,7 +2214,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Foley próprio com mecanismo, sopro e transição do fogo."
+    "description": "Foley próprio com mecanismo, sopro e transição do fogo.",
+    "tags": [
+      "fogo e luz",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-torch-light",
@@ -1665,7 +2230,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Foley próprio com mecanismo, sopro e transição do fogo."
+    "description": "Foley próprio com mecanismo, sopro e transição do fogo.",
+    "tags": [
+      "fogo e luz",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-torch-out",
@@ -1677,7 +2246,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Foley próprio com mecanismo, sopro e transição do fogo."
+    "description": "Foley próprio com mecanismo, sopro e transição do fogo.",
+    "tags": [
+      "fogo e luz",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-echo-step",
@@ -1689,7 +2262,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Passo com reflexões estéreo de um salão de pedra."
+    "description": "Passo com reflexões estéreo de um salão de pedra.",
+    "tags": [
+      "eco",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-echo-door",
@@ -1697,11 +2274,15 @@
     "kind": "effect",
     "category": "Eco",
     "path": "/audio/vtt/sfx-echo-door.ogg",
-    "duration": 4.0,
+    "duration": 4,
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Impacto de porta com reverberação de pedra."
+    "description": "Impacto de porta com reverberação de pedra.",
+    "tags": [
+      "eco",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-distant-beast",
@@ -1713,7 +2294,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Voz de fera mais grave com reverberação distante."
+    "description": "Voz de fera mais grave com reverberação distante.",
+    "tags": [
+      "dragão",
+      "rugido"
+    ]
   },
   {
     "id": "amb-torch",
@@ -1721,11 +2306,15 @@
     "kind": "ambience",
     "category": "Fogo e luz",
     "path": "/audio/vtt/amb-torch.ogg",
-    "duration": 31.0,
+    "duration": 31,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Fogo próximo com estalos e ar suave."
+    "description": "Fogo próximo com estalos e ar suave.",
+    "tags": [
+      "fogo e luz",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-oil-lamp",
@@ -1733,11 +2322,15 @@
     "kind": "ambience",
     "category": "Fogo e luz",
     "path": "/audio/vtt/amb-oil-lamp.ogg",
-    "duration": 27.0,
+    "duration": 27,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Chama suave com crepitação discreta."
+    "description": "Chama suave com crepitação discreta.",
+    "tags": [
+      "fogo e luz",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-tense-dungeon",
@@ -1745,11 +2338,15 @@
     "kind": "ambience",
     "category": "Tensão",
     "path": "/audio/vtt/amb-tense-dungeon.ogg",
-    "duration": 61.0,
+    "duration": 61,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Bordão dissonante original e ar subterrâneo."
+    "description": "Bordão dissonante original e ar subterrâneo.",
+    "tags": [
+      "tensão",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-haunted-crypt",
@@ -1757,11 +2354,15 @@
     "kind": "ambience",
     "category": "Tensão",
     "path": "/audio/vtt/amb-haunted-crypt.ogg",
-    "duration": 61.0,
+    "duration": 61,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Baixas frequências oscilantes para um lugar inquietante."
+    "description": "Baixas frequências oscilantes para um lugar inquietante.",
+    "tags": [
+      "tensão",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-deep-cave",
@@ -1769,11 +2370,15 @@
     "kind": "ambience",
     "category": "Subterrâneos",
     "path": "/audio/vtt/amb-deep-cave.ogg",
-    "duration": 61.0,
+    "duration": 61,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Ar profundo e água com reflexões entre pedras."
+    "description": "Ar profundo e água com reflexões entre pedras.",
+    "tags": [
+      "subterrâneos",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-forest-night",
@@ -1781,11 +2386,15 @@
     "kind": "ambience",
     "category": "Natureza",
     "path": "/audio/vtt/amb-forest-night.ogg",
-    "duration": 61.0,
+    "duration": 61,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Mata ao longe, vento e bordão sutil de tensão."
+    "description": "Mata ao longe, vento e bordão sutil de tensão.",
+    "tags": [
+      "natureza",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-ruin-crows",
@@ -1793,11 +2402,15 @@
     "kind": "ambience",
     "category": "Ruínas",
     "path": "/audio/vtt/amb-ruin-crows.ogg",
-    "duration": 61.0,
+    "duration": 61,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Grasnados espaçados entre rajadas de vento."
+    "description": "Grasnados espaçados entre rajadas de vento.",
+    "tags": [
+      "ruínas",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-beast-lair",
@@ -1805,11 +2418,15 @@
     "kind": "ambience",
     "category": "Tensão",
     "path": "/audio/vtt/amb-beast-lair.ogg",
-    "duration": 61.0,
+    "duration": 61,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Rosnados distantes, ar e tensão de um covil."
+    "description": "Rosnados distantes, ar e tensão de um covil.",
+    "tags": [
+      "tensão",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-wind-fortress",
@@ -1817,11 +2434,15 @@
     "kind": "ambience",
     "category": "Castelo",
     "path": "/audio/vtt/amb-wind-fortress.ogg",
-    "duration": 61.0,
+    "duration": 61,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Rajadas entre muralhas com braseiro ao fundo."
+    "description": "Rajadas entre muralhas com braseiro ao fundo.",
+    "tags": [
+      "castelo",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-underground-river",
@@ -1829,11 +2450,15 @@
     "kind": "ambience",
     "category": "Subterrâneos",
     "path": "/audio/vtt/amb-underground-river.ogg",
-    "duration": 61.0,
+    "duration": 61,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Água próxima e reflexões de uma galeria subterrânea."
+    "description": "Água próxima e reflexões de uma galeria subterrânea.",
+    "tags": [
+      "subterrâneos",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-echo-hall",
@@ -1841,11 +2466,15 @@
     "kind": "ambience",
     "category": "Interiores",
     "path": "/audio/vtt/amb-echo-hall.ogg",
-    "duration": 61.0,
+    "duration": 61,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Passos em grupos com ecos e longas pausas."
+    "description": "Passos em grupos com ecos e longas pausas.",
+    "tags": [
+      "interiores",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-dark-ritual",
@@ -1853,11 +2482,15 @@
     "kind": "ambience",
     "category": "Tensão",
     "path": "/audio/vtt/amb-dark-ritual.ogg",
-    "duration": 61.0,
+    "duration": 61,
     "loop": true,
     "volume": 0.55,
     "credit": "Alvorada Cinzenta · bases CC0",
-    "description": "Bordões originais em camadas e braseiro de ritual."
+    "description": "Bordões originais em camadas e braseiro de ritual.",
+    "tags": [
+      "tensão",
+      "ambiente"
+    ]
   },
   {
     "id": "sfx-dungeon-ceiling-collapse",
@@ -1869,7 +2502,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "O suporte racha e o teto cede em impactos de pedra separados, seguidos de pequenos fragmentos. Masmorra; foley CC0, revisão suave de 25/10/2026."
+    "description": "O suporte racha e o teto cede em impactos de pedra separados, seguidos de pequenos fragmentos. Masmorra; foley CC0, revisão suave de 25/10/2026.",
+    "tags": [
+      "desabamentos",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-falling-rubble",
@@ -1881,7 +2518,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Pequenos fragmentos ricocheteiam no piso e param aos poucos. Masmorra; composição de foley e ecos."
+    "description": "Pequenos fragmentos ricocheteiam no piso e param aos poucos. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "desabamentos",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-pillar-cracking",
@@ -1893,7 +2534,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Três rachaduras profundas sob tensão, com lascas de pedra se soltando. Masmorra; composição de foley e ecos."
+    "description": "Três rachaduras profundas sob tensão, com lascas de pedra se soltando. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "desabamentos",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-pillar-collapse",
@@ -1905,7 +2550,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Uma coluna se inclina, atinge o chão com um impacto pesado e se fragmenta. Masmorra; composição de foley e ecos."
+    "description": "Uma coluna se inclina, atinge o chão com um impacto pesado e se fragmenta. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "desabamentos",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-wall-collapse",
@@ -1917,7 +2566,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Blocos de alvenaria se soltam em sequência, com queda de cascalho e pausas entre os impactos. Masmorra; foley CC0, revisão suave de 25/10/2026."
+    "description": "Blocos de alvenaria se soltam em sequência, com queda de cascalho e pausas entre os impactos. Masmorra; foley CC0, revisão suave de 25/10/2026.",
+    "tags": [
+      "desabamentos",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-wooden-bridge-break",
@@ -1929,7 +2582,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "A ponte range, as vigas partem e tábuas despencam em sequência. Masmorra; composição de foley e ecos."
+    "description": "A ponte range, as vigas partem e tábuas despencam em sequência. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "desabamentos",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-rubble-slide",
@@ -1941,7 +2598,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Uma cascata de cascalho cruza o piso, cresce e diminui sem o sopro artificial de graves. Masmorra; foley CC0, revisão suave de 25/10/2026."
+    "description": "Uma cascata de cascalho cruza o piso, cresce e diminui sem o sopro artificial de graves. Masmorra; foley CC0, revisão suave de 25/10/2026.",
+    "tags": [
+      "desabamentos",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-secret-door-open",
@@ -1953,7 +2614,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "A trava oculta solta, o painel de pedra desliza e encaixa no fim do curso. Masmorra; composição de foley e ecos."
+    "description": "A trava oculta solta, o painel de pedra desliza e encaixa no fim do curso. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "passagens secretas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-secret-door-close",
@@ -1965,7 +2630,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "O painel volta pelo trilho, bate na parede e trava com um clique abafado. Masmorra; composição de foley e ecos."
+    "description": "O painel volta pelo trilho, bate na parede e trava com um clique abafado. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "passagens secretas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-hidden-lever",
@@ -1977,7 +2646,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Alavanca antiga acionada, mola tensionada e destravamento no interior da parede. Masmorra; composição de foley e ecos."
+    "description": "Alavanca antiga acionada, mola tensionada e destravamento no interior da parede. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "passagens secretas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-stone-slab",
@@ -1989,7 +2662,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Uma laje pesada raspa lentamente o piso, com cascalho preso sob a pedra. Masmorra; composição de foley e ecos."
+    "description": "Uma laje pesada raspa lentamente o piso, com cascalho preso sob a pedra. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "passagens secretas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-portcullis-rise",
@@ -2001,7 +2678,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Engrenagens e corrente erguem uma grade pesada até o engate superior. Masmorra; composição de foley e ecos."
+    "description": "Engrenagens e corrente erguem uma grade pesada até o engate superior. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "passagens secretas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-portcullis-drop",
@@ -2013,7 +2694,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "A trava solta, a grade despenca rapidamente e ressoa ao bater no chão. Masmorra; composição de foley e ecos."
+    "description": "A trava solta, a grade despenca rapidamente e ressoa ao bater no chão. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "passagens secretas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-pressure-plate",
@@ -2025,7 +2710,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Um piso afunda com um clique e uma mola dispara sob a placa. Masmorra; composição de foley e ecos."
+    "description": "Um piso afunda com um clique e uma mola dispara sob a placa. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "armadilhas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-dart-volley",
@@ -2037,7 +2726,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Sete dardos passam em rajada e se cravam no lado oposto do corredor. Masmorra; composição de foley e ecos."
+    "description": "Sete dardos passam em rajada e se cravam no lado oposto do corredor. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "armadilhas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-sliding-blades",
@@ -2049,7 +2742,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Trava curta, lâminas deslizando nos trilhos e um encaixe leve; metal sem rajada de chiado. Masmorra; foley CC0, revisão suave de 25/10/2026."
+    "description": "Trava curta, lâminas deslizando nos trilhos e um encaixe leve; metal sem rajada de chiado. Masmorra; foley CC0, revisão suave de 25/10/2026.",
+    "tags": [
+      "armadilhas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-trapdoor-open",
@@ -2061,7 +2758,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "A trava estala, a tampa de madeira abre bruscamente e bate nas dobradiças. Masmorra; composição de foley e ecos."
+    "description": "A trava estala, a tampa de madeira abre bruscamente e bate nas dobradiças. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "armadilhas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-pitfall",
@@ -2073,7 +2774,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Ar passando durante a queda e um impacto profundo no fundo de um fosso. Masmorra; composição de foley e ecos."
+    "description": "Ar passando durante a queda e um impacto profundo no fundo de um fosso. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "armadilhas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-jaw-trap",
@@ -2085,7 +2790,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Uma mola forte dispara e dentes de ferro se fecham com um golpe seco. Masmorra; composição de foley e ecos."
+    "description": "Uma mola forte dispara e dentes de ferro se fecham com um golpe seco. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "armadilhas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-pendulum-blade",
@@ -2097,7 +2806,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Quatro passagens espaçadas de lâmina, com corte de ar curto e rangido discreto do eixo. Masmorra; foley CC0, revisão suave de 25/10/2026."
+    "description": "Quatro passagens espaçadas de lâmina, com corte de ar curto e rangido discreto do eixo. Masmorra; foley CC0, revisão suave de 25/10/2026.",
+    "tags": [
+      "armadilhas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-rolling-boulder",
@@ -2109,7 +2822,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Um bloco pesado rola em solavancos, com atrito de pedra e impactos separados, sem ruído grave contínuo. Masmorra; foley CC0, revisão suave de 25/10/2026."
+    "description": "Um bloco pesado rola em solavancos, com atrito de pedra e impactos separados, sem ruído grave contínuo. Masmorra; foley CC0, revisão suave de 25/10/2026.",
+    "tags": [
+      "armadilhas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-poison-gas",
@@ -2121,7 +2838,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Uma válvula libera um jato prolongado de gás sob pressão. Masmorra; composição de foley e ecos."
+    "description": "Uma válvula libera um jato prolongado de gás sob pressão. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "armadilhas",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-distant-tremor",
@@ -2129,11 +2850,15 @@
     "kind": "effect",
     "category": "Tremores",
     "path": "/audio/vtt/sfx-dungeon-distant-tremor-r3-20261025.ogg",
-    "duration": 9.0,
+    "duration": 9,
     "loop": false,
     "volume": 0.6,
     "credit": "gmason · CC0 · edição Alvorada Cinzenta",
-    "description": "Masmorra: um ronco grave e distante cresce lentamente, atravessa a galeria e desaparece."
+    "description": "Masmorra: um ronco grave e distante cresce lentamente, atravessa a galeria e desaparece.",
+    "tags": [
+      "tremores",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-earthquake",
@@ -2145,7 +2870,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "mieki256 · CC0 · edição Alvorada Cinzenta",
-    "description": "Masmorra: abalo forte e contínuo, com vibração irregular e um fim definido."
+    "description": "Masmorra: abalo forte e contínuo, com vibração irregular e um fim definido.",
+    "tags": [
+      "tremores",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-giant-footsteps",
@@ -2157,7 +2886,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "aroth4 · CC0 · edição Alvorada Cinzenta",
-    "description": "Masmorra: seis pisadas profundas e espaçadas ficam mais próximas, cada uma com impacto e cauda próprios."
+    "description": "Masmorra: seis pisadas profundas e espaçadas ficam mais próximas, cada uma com impacto e cauda próprios.",
+    "tags": [
+      "tremores",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-floor-fissure",
@@ -2165,11 +2898,15 @@
     "kind": "effect",
     "category": "Tremores",
     "path": "/audio/vtt/sfx-dungeon-floor-fissure-r3-20261025.ogg",
-    "duration": 3.0,
+    "duration": 3,
     "loop": false,
     "volume": 0.6,
     "credit": "rubberduck · CC0 · edição Alvorada Cinzenta",
-    "description": "Masmorra: a pedra se parte em estalos secos sucessivos, seguida por fragmentos caindo. Evento curto."
+    "description": "Masmorra: a pedra se parte em estalos secos sucessivos, seguida por fragmentos caindo. Evento curto.",
+    "tags": [
+      "tremores",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-beast-growl",
@@ -2181,7 +2918,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Rosnado gutural baixo com vibração da garganta e respiração áspera. Masmorra; composição de foley e ecos."
+    "description": "Rosnado gutural baixo com vibração da garganta e respiração áspera. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "monstros",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-giant-roar",
@@ -2193,7 +2934,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Um rugido longo e grave preenche uma câmara de pedra. Masmorra; composição de foley e ecos."
+    "description": "Um rugido longo e grave preenche uma câmara de pedra. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "dragão",
+      "rugido"
+    ]
   },
   {
     "id": "sfx-dungeon-undead-moan",
@@ -2205,7 +2950,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Voz arrastada e rouca de um morto-vivo surgindo da cripta. Masmorra; composição de foley e ecos."
+    "description": "Voz arrastada e rouca de um morto-vivo surgindo da cripta. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "morto-vivo",
+      "fantasma"
+    ]
   },
   {
     "id": "sfx-dungeon-specter-wail",
@@ -2217,7 +2966,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Um grito espectral distante sobe de intensidade e deixa um eco difuso. Masmorra; composição de foley e ecos."
+    "description": "Um grito espectral distante sobe de intensidade e deixa um eco difuso. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "morto-vivo",
+      "fantasma"
+    ]
   },
   {
     "id": "sfx-dungeon-cavern-insect",
@@ -2229,7 +2982,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Mandíbulas e carapaça de um inseto gigante estalam em três movimentos. Masmorra; composição de foley e ecos."
+    "description": "Mandíbulas e carapaça de um inseto gigante estalam em três movimentos. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "insetos",
+      "enxame"
+    ]
   },
   {
     "id": "sfx-dungeon-ooze-movement",
@@ -2241,7 +2998,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Um corpo viscoso avança, borbulha e se desprende do piso úmido. Masmorra; composição de foley e ecos."
+    "description": "Um corpo viscoso avança, borbulha e se desprende do piso úmido. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "monstros",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-reptile-hiss",
@@ -2253,7 +3014,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Sibilo áspero, vibração da garganta e um estalo curto de mandíbulas. Masmorra; composição de foley e ecos."
+    "description": "Sibilo áspero, vibração da garganta e um estalo curto de mandíbulas. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "monstros",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-bat-swarm",
@@ -2265,7 +3030,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Dezenas de asas batem e pequenos guinchos cruzam o túnel em direções diferentes. Masmorra; composição de foley e ecos."
+    "description": "Dezenas de asas batem e pequenos guinchos cruzam o túnel em direções diferentes. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "insetos",
+      "enxame"
+    ]
   },
   {
     "id": "sfx-dungeon-claws-on-stone",
@@ -2277,7 +3046,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Três garras riscam uma superfície de pedra, seguidas de uma voz baixa. Masmorra; composição de foley e ecos."
+    "description": "Três garras riscam uma superfície de pedra, seguidas de uma voz baixa. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "monstros",
+      "efeito"
+    ]
   },
   {
     "id": "sfx-dungeon-lurking-breath",
@@ -2289,7 +3062,11 @@
     "loop": false,
     "volume": 0.6,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Inspirações profundas e irregulares, com borbulho na garganta atrás da parede. Masmorra; composição de foley e ecos."
+    "description": "Inspirações profundas e irregulares, com borbulho na garganta atrás da parede. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "monstros",
+      "efeito"
+    ]
   },
   {
     "id": "amb-dungeon-dripping-cells",
@@ -2301,7 +3078,11 @@
     "loop": true,
     "volume": 0.5,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Gotas espaçadas, pequenas poças e ar baixo em celas vazias. Masmorra; composição de foley e ecos."
+    "description": "Gotas espaçadas, pequenas poças e ar baixo em celas vazias. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "masmorras",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-dungeon-unstable-tunnel",
@@ -2313,7 +3094,11 @@
     "loop": true,
     "volume": 0.5,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Vento passa pelas frestas enquanto cascalho e suportes estalam ao longe. Masmorra; composição de foley e ecos."
+    "description": "Vento passa pelas frestas enquanto cascalho e suportes estalam ao longe. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "masmorras",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-dungeon-creature-den",
@@ -2325,7 +3110,11 @@
     "loop": true,
     "volume": 0.5,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Respirações e murmúrios de várias criaturas ecoam em um covil profundo. Masmorra; composição de foley e ecos."
+    "description": "Respirações e murmúrios de várias criaturas ecoam em um covil profundo. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "masmorras",
+      "ambiente"
+    ]
   },
   {
     "id": "amb-dungeon-ancient-mechanism",
@@ -2337,6 +3126,909 @@
     "loop": true,
     "volume": 0.5,
     "credit": "Alvorada Cinzenta · foley CC0: Kenney, rubberduck e pauliuw",
-    "description": "Engrenagens lentas, correntes tensionadas e batidas regulares de uma máquina subterrânea. Masmorra; composição de foley e ecos."
+    "description": "Engrenagens lentas, correntes tensionadas e batidas regulares de uma máquina subterrânea. Masmorra; composição de foley e ecos.",
+    "tags": [
+      "masmorras",
+      "ambiente"
+    ]
+  },
+  {
+    "id": "music-scene-market-day",
+    "name": "Dia de feira",
+    "kind": "music",
+    "category": "Cidade e taverna",
+    "path": "/audio/vtt/music-scene-market-day.ogg",
+    "duration": 64.8649,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "RandomMind",
+    "description": "Melodia medieval animada para compras, feiras e encontros na vila.",
+    "scenarios": [
+      "Taverna e cidade"
+    ],
+    "tags": [
+      "mercado",
+      "comércio",
+      "alegre"
+    ]
+  },
+  {
+    "id": "music-scene-minstrel-dance",
+    "name": "Dança dos menestréis",
+    "kind": "music",
+    "category": "Cidade e taverna",
+    "path": "/audio/vtt/music-scene-minstrel-dance.ogg",
+    "duration": 56.3077,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "RandomMind",
+    "description": "Dança medieval para bardos, festas populares e uma taverna movimentada.",
+    "scenarios": [
+      "Taverna e cidade"
+    ],
+    "tags": [
+      "bardo",
+      "dança",
+      "festa"
+    ]
+  },
+  {
+    "id": "music-scene-rejoicing",
+    "name": "Celebração na vila",
+    "kind": "music",
+    "category": "Celebração",
+    "path": "/audio/vtt/music-scene-rejoicing.ogg",
+    "duration": 41.7959,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "RandomMind",
+    "description": "Música festiva para o retorno dos aventureiros, banquetes e boas notícias.",
+    "scenarios": [
+      "Taverna e cidade"
+    ],
+    "tags": [
+      "alegria",
+      "vitória",
+      "festa"
+    ]
+  },
+  {
+    "id": "music-scene-harvest",
+    "name": "Tempo de colheita",
+    "kind": "music",
+    "category": "Viagem",
+    "path": "/audio/vtt/music-scene-harvest.ogg",
+    "duration": 214.2041,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "RandomMind",
+    "description": "Tema campestre para aldeias, fazendas e travessias tranquilas.",
+    "scenarios": [
+      "Viagem e natureza"
+    ],
+    "tags": [
+      "campo",
+      "aldeia",
+      "tranquilo"
+    ]
+  },
+  {
+    "id": "music-scene-final-battle",
+    "name": "O confronto final",
+    "kind": "music",
+    "category": "Batalha",
+    "path": "/audio/vtt/music-scene-final-battle.ogg",
+    "duration": 145.8213,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "skrjablin",
+    "description": "Orquestra dramática para o guardião final e combates decisivos.",
+    "scenarios": [
+      "Combate e perigos"
+    ],
+    "tags": [
+      "chefe",
+      "boss",
+      "épico"
+    ]
+  },
+  {
+    "id": "music-scene-hope",
+    "name": "Resistir até o amanhecer",
+    "kind": "music",
+    "category": "Batalha",
+    "path": "/audio/vtt/music-scene-hope.ogg",
+    "duration": 69.8182,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "MintoDog",
+    "description": "Tema orquestral de batalha com energia e esperança, em ciclo musical.",
+    "scenarios": [
+      "Combate e perigos"
+    ],
+    "tags": [
+      "heroico",
+      "orquestra",
+      "ação"
+    ]
+  },
+  {
+    "id": "music-scene-orchestral-theme",
+    "name": "O chamado da aventura",
+    "kind": "music",
+    "category": "Épico",
+    "path": "/audio/vtt/music-scene-orchestral-theme.ogg",
+    "duration": 191.6865,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "Joth",
+    "description": "Abertura orquestral que cresce de uma passagem serena a um clímax.",
+    "scenarios": [
+      "Viagem e natureza"
+    ],
+    "tags": [
+      "abertura",
+      "jornada",
+      "orquestra"
+    ]
+  },
+  {
+    "id": "music-scene-home",
+    "name": "De volta ao lar",
+    "kind": "music",
+    "category": "Drama",
+    "path": "/audio/vtt/music-scene-home.ogg",
+    "duration": 74.3181,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "Wolfgang_",
+    "description": "Peça orquestral calma para abrigo, reconciliação e descanso.",
+    "scenarios": [
+      "Drama e celebração"
+    ],
+    "tags": [
+      "calmo",
+      "descanso",
+      "melancolia"
+    ]
+  },
+  {
+    "id": "music-scene-dungeon",
+    "name": "Nas profundezas",
+    "kind": "music",
+    "category": "Mistério",
+    "path": "/audio/vtt/music-scene-dungeon.ogg",
+    "duration": 206.0002,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "yd",
+    "description": "Texturas musicais escuras para explorar uma masmorra desconhecida.",
+    "scenarios": [
+      "Masmorras e ruínas"
+    ],
+    "tags": [
+      "subterrâneo",
+      "tensão",
+      "exploração"
+    ]
+  },
+  {
+    "id": "music-scene-evil-approach",
+    "name": "O mal se aproxima",
+    "kind": "music",
+    "category": "Tensão",
+    "path": "/audio/vtt/music-scene-evil-approach.ogg",
+    "duration": 67.8505,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "nene",
+    "description": "Cordas e tensão crescente para revelar uma ameaça ou preparar uma emboscada.",
+    "scenarios": [
+      "Combate e perigos"
+    ],
+    "tags": [
+      "ameaça",
+      "suspense",
+      "sombrio"
+    ]
+  },
+  {
+    "id": "music-scene-dark-shrine",
+    "name": "Santuário nas sombras",
+    "kind": "music",
+    "category": "Mistério",
+    "path": "/audio/vtt/music-scene-dark-shrine.ogg",
+    "duration": 56.5725,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "qubodup",
+    "description": "Tema sombrio de santuário para criptas, cultos e lugares abandonados.",
+    "scenarios": [
+      "Magia e sobrenatural"
+    ],
+    "tags": [
+      "ritual",
+      "templo",
+      "terror"
+    ]
+  },
+  {
+    "id": "music-scene-serpents",
+    "name": "O poder das serpentes",
+    "kind": "music",
+    "category": "Mistério",
+    "path": "/audio/vtt/music-scene-serpents.ogg",
+    "duration": 108.8261,
+    "loop": true,
+    "volume": 0.55,
+    "credit": "josepharaoh99",
+    "description": "Tema misterioso para ruínas antigas, descobertas e segredos de um templo.",
+    "scenarios": [
+      "Masmorras e ruínas"
+    ],
+    "tags": [
+      "templo",
+      "antigo",
+      "mistério"
+    ]
+  },
+  {
+    "id": "amb-scene-park-birds",
+    "name": "Bosque com pássaros",
+    "kind": "ambience",
+    "category": "Natureza",
+    "path": "/audio/vtt/amb-scene-park-birds.ogg",
+    "duration": 70,
+    "loop": true,
+    "volume": 0.6,
+    "credit": "Thimras",
+    "description": "Gravação de campo: pássaros conversando entre árvores antes da chuva; sem música.",
+    "scenarios": [
+      "Viagem e natureza"
+    ],
+    "tags": [
+      "exterior",
+      "campo",
+      "real",
+      "paisagem"
+    ]
+  },
+  {
+    "id": "amb-scene-park-river",
+    "name": "Córrego e vida silvestre",
+    "kind": "ambience",
+    "category": "Natureza",
+    "path": "/audio/vtt/amb-scene-park-river.ogg",
+    "duration": 70,
+    "loop": true,
+    "volume": 0.6,
+    "credit": "Thimras",
+    "description": "Gravação de campo: água corrente, pássaros e fauna próxima; sem música.",
+    "scenarios": [
+      "Viagem e natureza"
+    ],
+    "tags": [
+      "exterior",
+      "campo",
+      "real",
+      "paisagem"
+    ]
+  },
+  {
+    "id": "amb-scene-park-wind",
+    "name": "Campo aberto ao vento",
+    "kind": "ambience",
+    "category": "Natureza",
+    "path": "/audio/vtt/amb-scene-park-wind.ogg",
+    "duration": 70,
+    "loop": true,
+    "volume": 0.6,
+    "credit": "Thimras",
+    "description": "Gravação de campo: rajadas atravessam uma área aberta; sem música.",
+    "scenarios": [
+      "Viagem e natureza"
+    ],
+    "tags": [
+      "exterior",
+      "campo",
+      "real",
+      "paisagem"
+    ]
+  },
+  {
+    "id": "sfx-scene-thunder-01",
+    "name": "Trovão próximo",
+    "kind": "effect",
+    "category": "Clima",
+    "path": "/audio/vtt/sfx-scene-thunder-01.ogg",
+    "duration": 5.2648,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Um trovão grave e prolongado, para tempestade ou presságio.",
+    "scenarios": [
+      "Viagem e natureza"
+    ],
+    "tags": [
+      "clima",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-air-01",
+    "name": "Rajada de ar",
+    "kind": "effect",
+    "category": "Clima",
+    "path": "/audio/vtt/sfx-scene-air-01.ogg",
+    "duration": 2.6376,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Sopro de ar em passagem curta, para uma fresta ou abertura repentina.",
+    "scenarios": [
+      "Viagem e natureza"
+    ],
+    "tags": [
+      "clima",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-air-02",
+    "name": "Ar escapando",
+    "kind": "effect",
+    "category": "Clima",
+    "path": "/audio/vtt/sfx-scene-air-02.ogg",
+    "duration": 1.1054,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Ar sob pressão sendo liberado; serve a válvulas e mecanismos.",
+    "scenarios": [
+      "Masmorras e ruínas"
+    ],
+    "tags": [
+      "clima",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-footstep-wet-01",
+    "name": "Passo em solo molhado",
+    "kind": "effect",
+    "category": "Passos",
+    "path": "/audio/vtt/sfx-scene-footstep-wet-01.ogg",
+    "duration": 0.2829,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Passada curta sobre uma superfície úmida, com respingo.",
+    "scenarios": [
+      "Viagem e natureza"
+    ],
+    "tags": [
+      "passos",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-footstep-wet-02",
+    "name": "Passo pesado na água",
+    "kind": "effect",
+    "category": "Passos",
+    "path": "/audio/vtt/sfx-scene-footstep-wet-02.ogg",
+    "duration": 0.4018,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Contato mais pesado com o chão encharcado.",
+    "scenarios": [
+      "Viagem e natureza"
+    ],
+    "tags": [
+      "passos",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-footstep-wet-03",
+    "name": "Passo com respingo",
+    "kind": "effect",
+    "category": "Passos",
+    "path": "/audio/vtt/sfx-scene-footstep-wet-03.ogg",
+    "duration": 0.3852,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Um respingo isolado de pé em superfície molhada.",
+    "scenarios": [
+      "Viagem e natureza"
+    ],
+    "tags": [
+      "passos",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-footstep-wood-01",
+    "name": "Passo no assoalho",
+    "kind": "effect",
+    "category": "Passos",
+    "path": "/audio/vtt/sfx-scene-footstep-wood-01.ogg",
+    "duration": 0.2648,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Passada sobre tábuas, para casas, tavernas e pontes.",
+    "scenarios": [
+      "Taverna e cidade"
+    ],
+    "tags": [
+      "passos",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-footstep-wood-02",
+    "name": "Passo na ponte de madeira",
+    "kind": "effect",
+    "category": "Passos",
+    "path": "/audio/vtt/sfx-scene-footstep-wood-02.ogg",
+    "duration": 0.2469,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Contato de pé com madeira, para uma travessia sobre tábuas.",
+    "scenarios": [
+      "Viagem e natureza"
+    ],
+    "tags": [
+      "passos",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-glass-01",
+    "name": "Vidro quebrando",
+    "kind": "effect",
+    "category": "Vidro e cerâmica",
+    "path": "/audio/vtt/sfx-scene-glass-01.ogg",
+    "duration": 0.364,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Quebra de vidro para frascos, copos e pequenos objetos.",
+    "scenarios": [
+      "Objetos e ações"
+    ],
+    "tags": [
+      "vidro e cerâmica",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-glass-02",
+    "name": "Estilhaços de vidro",
+    "kind": "effect",
+    "category": "Vidro e cerâmica",
+    "path": "/audio/vtt/sfx-scene-glass-02.ogg",
+    "duration": 0.6651,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Impacto seguido de pequenos fragmentos de vidro.",
+    "scenarios": [
+      "Objetos e ações"
+    ],
+    "tags": [
+      "vidro e cerâmica",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-glass-03",
+    "name": "Frasco se partindo",
+    "kind": "effect",
+    "category": "Vidro e cerâmica",
+    "path": "/audio/vtt/sfx-scene-glass-03.ogg",
+    "duration": 0.6087,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Vidro se parte em um impacto curto; útil para poções e alquimia.",
+    "scenarios": [
+      "Objetos e ações"
+    ],
+    "tags": [
+      "vidro e cerâmica",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-glass-04",
+    "name": "Vidro atingido",
+    "kind": "effect",
+    "category": "Vidro e cerâmica",
+    "path": "/audio/vtt/sfx-scene-glass-04.ogg",
+    "duration": 0.2355,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Outro impacto em vidro, para variar o material da cena.",
+    "scenarios": [
+      "Objetos e ações"
+    ],
+    "tags": [
+      "vidro e cerâmica",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-lock-open-01",
+    "name": "Destrancar fechadura",
+    "kind": "effect",
+    "category": "Fechaduras",
+    "path": "/audio/vtt/sfx-scene-lock-open-01.ogg",
+    "duration": 0.6432,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Clique de uma fechadura sendo aberta, para baús e portas.",
+    "scenarios": [
+      "Masmorras e ruínas"
+    ],
+    "tags": [
+      "fechaduras",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-metal-01",
+    "name": "Metal sendo manuseado",
+    "kind": "effect",
+    "category": "Metal",
+    "path": "/audio/vtt/sfx-scene-metal-01.ogg",
+    "duration": 0.58,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Pequeno movimento de peças metálicas, para ferramentas e mecanismos.",
+    "scenarios": [
+      "Objetos e ações"
+    ],
+    "tags": [
+      "metal",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-metal-02",
+    "name": "Peças de metal",
+    "kind": "effect",
+    "category": "Metal",
+    "path": "/audio/vtt/sfx-scene-metal-02.ogg",
+    "duration": 0.3193,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Contato e vibração de peças metálicas soltas.",
+    "scenarios": [
+      "Objetos e ações"
+    ],
+    "tags": [
+      "metal",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-metal-03",
+    "name": "Raspagem metálica",
+    "kind": "effect",
+    "category": "Metal",
+    "path": "/audio/vtt/sfx-scene-metal-03.ogg",
+    "duration": 0.2851,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Movimento de metal com ressonância curta.",
+    "scenarios": [
+      "Objetos e ações"
+    ],
+    "tags": [
+      "metal",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-metal-hit-01",
+    "name": "Impacto em metal",
+    "kind": "effect",
+    "category": "Combate",
+    "path": "/audio/vtt/sfx-scene-metal-hit-01.ogg",
+    "duration": 0.8114,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Batida seca e ressonante em uma superfície de metal.",
+    "scenarios": [
+      "Combate e perigos"
+    ],
+    "tags": [
+      "combate",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-metal-hit-02",
+    "name": "Pancada metálica",
+    "kind": "effect",
+    "category": "Combate",
+    "path": "/audio/vtt/sfx-scene-metal-hit-02.ogg",
+    "duration": 0.2097,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Pancada alternativa para escudos, grades e estruturas metálicas.",
+    "scenarios": [
+      "Combate e perigos"
+    ],
+    "tags": [
+      "combate",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-stones-01",
+    "name": "Pedras pequenas caindo",
+    "kind": "effect",
+    "category": "Pedra e entulho",
+    "path": "/audio/vtt/sfx-scene-stones-01.ogg",
+    "duration": 0.489,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Pedras se chocam e se acomodam, para trilhas e ruínas.",
+    "scenarios": [
+      "Masmorras e ruínas"
+    ],
+    "tags": [
+      "pedra e entulho",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-stones-02",
+    "name": "Cascalho deslocado",
+    "kind": "effect",
+    "category": "Pedra e entulho",
+    "path": "/audio/vtt/sfx-scene-stones-02.ogg",
+    "duration": 0.5554,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Fragmentos de pedra em um movimento curto.",
+    "scenarios": [
+      "Masmorras e ruínas"
+    ],
+    "tags": [
+      "pedra e entulho",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-stones-03",
+    "name": "Pedras se chocando",
+    "kind": "effect",
+    "category": "Pedra e entulho",
+    "path": "/audio/vtt/sfx-scene-stones-03.ogg",
+    "duration": 0.5345,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Contato de pedras com pequenos impactos sucessivos.",
+    "scenarios": [
+      "Masmorras e ruínas"
+    ],
+    "tags": [
+      "pedra e entulho",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-wood-hit-01",
+    "name": "Batida em madeira",
+    "kind": "effect",
+    "category": "Madeira",
+    "path": "/audio/vtt/sfx-scene-wood-hit-01.ogg",
+    "duration": 0.3497,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Impacto curto em tábuas ou mobiliário de madeira.",
+    "scenarios": [
+      "Objetos e ações"
+    ],
+    "tags": [
+      "madeira",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-wood-hit-02",
+    "name": "Pancada na porta",
+    "kind": "effect",
+    "category": "Madeira",
+    "path": "/audio/vtt/sfx-scene-wood-hit-02.ogg",
+    "duration": 0.3573,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Batida ressonante para porta, barril ou caixa de madeira.",
+    "scenarios": [
+      "Taverna e cidade"
+    ],
+    "tags": [
+      "madeira",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-scene-wood-hit-03",
+    "name": "Golpe em estrutura de madeira",
+    "kind": "effect",
+    "category": "Madeira",
+    "path": "/audio/vtt/sfx-scene-wood-hit-03.ogg",
+    "duration": 0.4693,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Pancada alternativa sobre uma peça de madeira.",
+    "scenarios": [
+      "Combate e perigos"
+    ],
+    "tags": [
+      "madeira",
+      "ação"
+    ]
+  },
+  {
+    "id": "sfx-screen-earthquake",
+    "name": "Tremor com terra e cascalho",
+    "kind": "effect",
+    "category": "Efeitos de tela",
+    "path": "/audio/vtt/sfx-screen-earthquake.ogg",
+    "duration": 24,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Tremor grave, cascalho e terra caindo em camadas, com espaço para a narração.",
+    "scenarios": [
+      "Efeitos imersivos"
+    ],
+    "tags": [
+      "tela inteira",
+      "cinemático",
+      "earthquake"
+    ]
+  },
+  {
+    "id": "sfx-screen-cave-in",
+    "name": "Desabamento com poeira",
+    "kind": "effect",
+    "category": "Efeitos de tela",
+    "path": "/audio/vtt/sfx-screen-cave-in.ogg",
+    "duration": 24,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "rubberduck",
+    "description": "Ruptura de pedra, fragmentos em queda e uma cauda grave controlada.",
+    "scenarios": [
+      "Efeitos imersivos"
+    ],
+    "tags": [
+      "tela inteira",
+      "cinemático",
+      "cave-in"
+    ]
+  },
+  {
+    "id": "sfx-screen-thunderstorm",
+    "name": "Tormenta com trovões",
+    "kind": "effect",
+    "category": "Efeitos de tela",
+    "path": "/audio/vtt/sfx-screen-thunderstorm.ogg",
+    "duration": 24,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "Thimras / rubberduck",
+    "description": "Chuva contínua com dois trovões espaçados e vento discreto.",
+    "scenarios": [
+      "Efeitos imersivos"
+    ],
+    "tags": [
+      "tela inteira",
+      "cinemático",
+      "thunderstorm"
+    ]
+  },
+  {
+    "id": "sfx-screen-blizzard",
+    "name": "Vento de nevasca",
+    "kind": "effect",
+    "category": "Efeitos de tela",
+    "path": "/audio/vtt/sfx-screen-blizzard.ogg",
+    "duration": 24,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "Thimras",
+    "description": "Camadas de vento filtrado para uma nevasca, sem frequências agudas agressivas.",
+    "scenarios": [
+      "Efeitos imersivos"
+    ],
+    "tags": [
+      "tela inteira",
+      "cinemático",
+      "blizzard"
+    ]
+  },
+  {
+    "id": "sfx-screen-embers",
+    "name": "Fogo, cinzas e brasas",
+    "kind": "effect",
+    "category": "Efeitos de tela",
+    "path": "/audio/vtt/sfx-screen-embers.ogg",
+    "duration": 24,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "Thimras",
+    "description": "Crepitar natural e ar em movimento para cinzas e brasas flutuantes.",
+    "scenarios": [
+      "Efeitos imersivos"
+    ],
+    "tags": [
+      "tela inteira",
+      "cinemático",
+      "embers"
+    ]
+  },
+  {
+    "id": "sfx-screen-haunting",
+    "name": "Presença espectral distante",
+    "kind": "effect",
+    "category": "Efeitos de tela",
+    "path": "/audio/vtt/sfx-screen-haunting.ogg",
+    "duration": 24,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "Thimras",
+    "description": "Vento frio e lamentos distantes, com reverberação e volume contido.",
+    "scenarios": [
+      "Efeitos imersivos"
+    ],
+    "tags": [
+      "tela inteira",
+      "cinemático",
+      "haunting"
+    ]
+  },
+  {
+    "id": "sfx-screen-arcane",
+    "name": "Pulso e ruptura arcana",
+    "kind": "effect",
+    "category": "Efeitos de tela",
+    "path": "/audio/vtt/sfx-screen-arcane.ogg",
+    "duration": 24,
+    "loop": false,
+    "volume": 0.6,
+    "credit": "Thimras",
+    "description": "Pulsos arcanos em camadas e ressonância suave para uma ruptura de energia.",
+    "scenarios": [
+      "Efeitos imersivos"
+    ],
+    "tags": [
+      "tela inteira",
+      "cinemático",
+      "arcane"
+    ]
   }
 ]
