@@ -1,4 +1,4 @@
-export const vttProtocolVersion = 26;
+export const vttProtocolVersion = 27;
 export const vttUpdateMessage =
   'A mesa foi atualizada. Recarregue a página para usar a versão atual. Os dados salvos continuam preservados.';
 

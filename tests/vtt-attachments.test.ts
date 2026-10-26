@@ -17,6 +17,7 @@ import {
   syncAttachmentPositions,
   translateAttachmentGroup,
   movementFacing,
+  attachmentCandidates,
 } from '../shared/vtt-attachments';
 import { attachmentMovementError, attachmentRotationError } from '../shared/vtt-movement';
 function fixture() {
@@ -77,6 +78,30 @@ test('nested tokens translate once, preserve offsets and always draw above their
     orderedTokens(scene.tokens).map((t) => t.id),
     [base.id, rider.id, third.id],
   );
+});
+test('passageiro mantém posição e orientação com apoio de veículo na camada do mapa', () => {
+  const { document, scene, base, rider } = fixture();
+  base.layer = 'map';
+  base.vehicle = { characterId: randomUUID(), itemId: 'carriage', copy: 0 };
+  rider.x = base.x + 37;
+  rider.y = base.y - 22;
+  rider.rotation = 19;
+  rider.attachment = { tokenId: base.id, offsetX: 37, offsetY: -22, baseRotation: base.rotation };
+  assert.equal(attachmentError(scene.tokens), null);
+  assert.equal(documentSchema.safeParse(document).success, true);
+  assert.deepEqual(
+    attachmentCandidates(scene.tokens, rider).map((t) => t.id),
+    [base.id],
+  );
+  syncAttachmentPositions(scene);
+  assert.deepEqual([rider.x, rider.y, rider.rotation], [337, 278, 19]);
+  base.rotation = 90;
+  syncAttachmentPositions(scene);
+  assert.ok(Math.abs(rider.x - 322) < 0.00001);
+  assert.ok(Math.abs(rider.y - 337) < 0.00001);
+  assert.equal(rider.rotation, 109);
+  delete base.vehicle;
+  assert.ok(attachmentError(scene.tokens));
 });
 test('invalid, missing, self and circular attachments are rejected without damaging old documents', () => {
   const { document, scene, base, rider } = fixture();
@@ -249,13 +274,14 @@ test('drop facing follows the last real leg, including flips, without rotating s
   assert.equal(movementFacing(base, base, [{ x: 300, y: 100 }]), 0);
 });
 test('horse art points its head toward travel, including vertical flips', () => {
-  const {base}=fixture();base.companionId=randomUUID();
-  assert.equal(movementFacing(base,base,[{x:300,y:100}]),0);
-  assert.equal(movementFacing(base,base,[{x:300,y:500}]),180);
-  assert.equal(movementFacing(base,base,[{x:100,y:300}]),270);
-  assert.equal(movementFacing(base,base,[{x:500,y:300}]),90);
-  base.flipY=true;
-  assert.equal(movementFacing(base,base,[{x:300,y:100}]),180);
+  const { base } = fixture();
+  base.companionId = randomUUID();
+  assert.equal(movementFacing(base, base, [{ x: 300, y: 100 }]), 0);
+  assert.equal(movementFacing(base, base, [{ x: 300, y: 500 }]), 180);
+  assert.equal(movementFacing(base, base, [{ x: 100, y: 300 }]), 270);
+  assert.equal(movementFacing(base, base, [{ x: 500, y: 300 }]), 90);
+  base.flipY = true;
+  assert.equal(movementFacing(base, base, [{ x: 300, y: 100 }]), 180);
 });
 
 test('carried rotational arcs cannot bypass walls or map limits', () => {

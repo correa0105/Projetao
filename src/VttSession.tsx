@@ -35,6 +35,7 @@ import { livingEffectReady } from './vtt-effects-living';
 import { atmosphereAnimated, atmosphereTransitioning } from './vtt-atmosphere';
 import type { MapAtmosphere } from '../shared/vtt-atmosphere';
 import { VttTokenScaleControl } from './VttTokenScaleControl';
+import {VttAttachmentGuide} from './VttAttachmentGuide';
 import { isAttackCheck } from '../shared/vtt-roll-purpose';
 import { VttAttackRollAction } from './VttAttackRollAction';
 import { VttAnimatedAssetControls } from './VttAnimatedAssetControls';
@@ -110,7 +111,7 @@ import { VttMonsterVariants } from './VttMonsterVariants';
 import { monsterVariantFilter, type MonsterVariant } from '../shared/vtt-monster-variants';
 import { VttCompanions } from './VttCompanions';
 import {VttVehicles,type VehiclePick} from './VttVehicles';
-import {vehicleMime} from '../shared/vtt-vehicles';
+import {vehicleMime,vehicleCoverImages} from '../shared/vtt-vehicles';
 import { companionMime } from '../shared/vtt-companions';
 import { VttSelectionPortrait } from './VttSelectionPortrait';
 import { VttChatText } from './VttChatText';
@@ -192,7 +193,7 @@ import { lassoSelection } from '../shared/vtt-selection';
 import { movementBlocked,constrainMovement } from '../shared/vtt-movement';
 import { attachmentMovementError } from '../shared/vtt-movement';
 import {
-  attachmentError,
+  attachmentCandidates,
   attachmentRoot,
   attachmentUnavailable,
   syncAttachmentPositions,
@@ -769,6 +770,8 @@ export function VttSession({ characters, user, media }: { characters: Character[
     );
     return gm ? roots : roots.slice(0, 1);
   }
+  const attachmentParents=scene&&token&&(tool==='attach'||contextMenu)?attachmentCandidates(scene.tokens,token).filter(p=>gm||p.id===token.attachment?.tokenId||p.controller===user.id&&!p.locked&&!p.hidden&&!attachmentUnavailable(scene.tokens,p)):[];
+  function beginAttachment(){setContextMenu(null);setTool('attach');if(token&&(token.vehicle||token.sceneryToken))setSelection([]);}
   async function bindToken(parentId: string | null) {
     if (!state || !token || !canToken || preview || busy) return;
     const selected = token.id;
@@ -782,6 +785,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
     setContextMenu(null);
     setTool('select');
     setAttackTargetId(null);
+    setNotice(parentId?'Vínculo criado na posição atual. O token acompanha o apoio.':'Vínculo removido. A posição foi mantida.');
   }
   async function toggleHouseWindow(house:VttToken,index:number) {
     if(!state||!scene||preview||spectator||busy)return;
@@ -1132,6 +1136,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
   const sceneImagePaths = scene ? [...new Set([
     ...terrainTextures.filter(t => scene.terrain.some(stroke => stroke.texture === t.id) || (tool.startsWith('terrain-') && terrainBrush.texture === t.id)).map(t => t.image),
     scene.background, ...scene.tokens.map(t => t.image), ...houseInteriorImages(scene),
+    ...vehicleCoverImages(scene.tokens),
     ...(scene.tokens.some(t => houseAsset(t)) ? ['/vtt/house-parts-20261014/door-vertical.webp'] : []),
     ...(scene.terrain.length || scene.tokens.some(isTreeCanopy) ? [woodlandFloorImage] : []),
   ].filter(Boolean))] : [];
@@ -1604,13 +1609,14 @@ export function VttSession({ characters, user, media }: { characters: Character[
     }
     if (e.button !== 0) return;
     if (tool === 'attach' && e.button === 0 && !spectator && !preview) {
-      const hit = tokenAt(p, scene, gm && !token ? '*' : 'tokens', gm);
+      const choices=token?scene.tokens.filter(t=>attachmentParents.some(p=>p.id===t.id)):scene.tokens;
+      const hit = tokenAt(p, {...scene,tokens:choices}, gm ? '*' : 'tokens', gm);
       if (!hit || (!gm && (hit.sceneryToken || token?.sceneryToken))) return;
-      if (!token || hit.id === token.id) {
+      if (!token) {
         if (gm || hit.controller === user.id) {
           setSelection([hit.id]);
           setNotice(
-            'Agora escolha o token de apoio. Você também pode escolhê-lo pelo menu do botão direito.',
+            'Escolha agora o veículo ou token de apoio. A posição será mantida.',
           );
         }
       } else void act(() => bindToken(hit.id));
@@ -2995,6 +3001,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                       ['pen', 'rect', 'circle', 'cone', 'line', 'text'].includes(id)
                     )
                       changeLayer('tokens');
+                    if(id==='attach'){beginAttachment();return;}
                     setTool(id);
                     setDraft(null);
                   }}
@@ -3185,6 +3192,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
             />
           )}
           {gm && !preview && canopyEditing && <VttCanopyEditor key={scene.id} scene={scene} camera={camera} bounds={bounds} busy={busy} selectedItemId={selection[0]} navigation={{button:media.mapPanButton,wheel,holding:()=>panHeld.current,down:e=>pointerDown(e as unknown as ReactPointerEvent<HTMLCanvasElement>,true),move:e=>pointerMove(e as unknown as ReactPointerEvent<HTMLCanvasElement>),up:e=>pointerUp(e as unknown as ReactPointerEvent<HTMLCanvasElement>)}} close={()=>setCanopyEditing(false)} save={()=>void act(save)} update={(areas,opacity)=>editScene(s=>{s.canopyAreas=areas;if(opacity!==undefined)s.canopyOpacity=opacity;})}/>}
+          {tool==='attach'&&!preview&&!spectator&&<VttAttachmentGuide token={canToken?token:undefined} parents={attachmentParents} busy={busy} bind={id=>void act(()=>bindToken(id))} change={()=>setSelection([])} cancel={()=>setTool('select')}/>}
           <canvas
             ref={canvas}
             aria-label="Tabuleiro da mesa"
@@ -5492,7 +5500,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
           conditions={<VttConditionMenu expanded conditions={token.conditions} gm={gm} enabled={canToken}
             busy={busy} onChange={changeTokenConditions} />}
         >
-              {gm && (token.layer === 'map' || token.sceneryToken) && <VttSceneryActions token={token} tokens={scene.tokens} busy={busy} convert={() => { editScene(s => {const placed=s.tokens.find(t=>t.id===token.id);if(placed)convertSceneryToToken(placed);}); changeLayer('tokens', [token.id]); void act(save);}} bind={id=>void act(()=>bindToken(id))} />}
+              {canToken && <VttSceneryActions token={token} candidates={attachmentParents} busy={busy} convert={() => { editScene(s => {const placed=s.tokens.find(t=>t.id===token.id);if(placed)convertSceneryToToken(placed);}); changeLayer('tokens', [token.id]); void act(save);}} bind={id=>void act(()=>bindToken(id))} chooseOnMap={()=>{setContextMenu(null);setTool('attach');}}/>}
               {!token.sceneryToken && <button
                 onClick={() => {
                   openSheet();
@@ -5515,9 +5523,9 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   />
                 </>
               )}
-              {canToken && <VttTokenScaleControl key={token.id} token={token} gridSize={scene.grid.size} busy={busy} change={size=>{editToken(size);if(gm)void act(save);}} />}
+              {canToken && <VttTokenScaleControl key={`scale-${token.id}`} token={token} gridSize={scene.grid.size} busy={busy} change={size=>{editToken(size);if(gm)void act(save);}} />}
               {gm && token.layer === 'tokens' && !token.sceneryToken && <label className="vtt-check"><input type="checkbox" checked={token.bleeds} disabled={busy} onChange={e=>{editToken({bleeds:e.target.checked});void act(save);}} />Esta criatura sangra</label>}
-              <details className="vtt-context-options" key={token.id}>
+              <details className="vtt-context-options" key={`options-${token.id}`}>
                 <summary>Mais opções</summary>
                 {gm && (<>
                   {!token.sceneryToken && <details>
@@ -5588,83 +5596,6 @@ export function VttSession({ characters, user, media }: { characters: Character[
               )}
               {canToken && (
                 <>
-                  {token.layer === 'tokens' && !token.sceneryToken && (
-                    <details>
-                    <summary>Movimento vinculado</summary>
-                    <fieldset className="vtt-token-attachment">
-                      <legend>Movimento vinculado</legend>
-                      <label>
-                        Token de apoio
-                        <select
-                          aria-label="Token de apoio"
-                          value={token.attachment?.tokenId || ''}
-                          disabled={busy || preview}
-                          onChange={(e) => void act(() => bindToken(e.target.value || null))}
-                        >
-                          <option value="">Independente</option>
-                          {token.attachment &&
-                            scene.tokens.some(
-                              (parent) =>
-                                parent.id === token.attachment?.tokenId &&
-                                !gm &&
-                                parent.controller !== user.id,
-                            ) && (
-                              <option value={token.attachment.tokenId} disabled>
-                                {
-                                  scene.tokens.find(
-                                    (parent) => parent.id === token.attachment?.tokenId,
-                                  )?.name
-                                }{' '}
-                                · apoio definido pelo mestre
-                              </option>
-                            )}
-                          {scene.tokens
-                            .filter(
-                              (parent) =>
-                                parent.id !== token.id &&
-                                parent.layer === 'tokens' &&
-                                (gm ||
-                                  (parent.controller === user.id &&
-                                    !parent.locked &&
-                                    !attachmentUnavailable(scene.tokens, parent))) &&
-                                !attachmentError(
-                                  scene.tokens.map((t) =>
-                                    t.id === token.id
-                                      ? {
-                                          ...t,
-                                          attachment: {
-                                            tokenId: parent.id,
-                                            offsetX: 0,
-                                            offsetY: 0,
-                                          },
-                                        }
-                                      : t,
-                                  ),
-                                ),
-                            )
-                            .map((parent) => (
-                              <option key={parent.id} value={parent.id}>
-                                {parent.name}
-                              </option>
-                            ))}
-                        </select>
-                      </label>
-                      {token.attachment && (
-                        <button
-                          disabled={busy || preview}
-                          onClick={() => void act(() => bindToken(null))}
-                        >
-                          Soltar do token
-                        </button>
-                      )}
-                      <small>
-                        {token.attachment
-                          ? 'Acompanha o apoio. Seleção, ficha e ataques continuam próprios.'
-                          : 'Escolha um apoio para prender este token por cima dele.'}
-                      </small>
-                    </fieldset>
-                    </details>
-                  )}
                   <details>
                   <summary>Orientação</summary>
                   <div className="vtt-two">

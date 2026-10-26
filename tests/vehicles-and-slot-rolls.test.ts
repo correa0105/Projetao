@@ -275,6 +275,63 @@ test('slots e veículos em banco descartável: exclusão, retomada, nível 4, co
       const next = await req(path, gm, { ...body, copy: 1 });
       s = next.data.document.scenes.find((s: any) => s.id === next.data.document.activeScene);
       assert.equal(s.tokens.filter((t: any) => t.vehicle).length, 2);
+      const base = s.tokens.find((t: any) => t.id === token.id),
+        rider = newToken(randomUUID(), s);
+      Object.assign(rider, {
+        name: 'Passageiro no assento',
+        x: base.x + 31,
+        y: base.y + 47,
+        rotation: 37,
+        controller: owner.id,
+      });
+      s.tokens.push(rider);
+      const roomPath = `/vtt/rooms/${room.id}`,
+        attachmentPath = `${roomPath}/tokens/${rider.id}/attachment`;
+      assert.equal(
+        (
+          await req(
+            roomPath,
+            gm,
+            { revision: next.data.revision, document: next.data.document },
+            'PUT',
+          )
+        ).status,
+        200,
+      );
+      assert.equal((await req(attachmentPath, owner, { tokenId: base.id })).status, 403);
+      const linked = await req(attachmentPath, gm, { tokenId: base.id });
+      assert.equal(linked.status, 200, JSON.stringify(linked.data));
+      const linkedScene = linked.data.document.scenes.find(
+          (s: any) => s.id === linked.data.document.activeScene,
+        ),
+        passenger = linkedScene.tokens.find((t: any) => t.id === rider.id);
+      assert.deepEqual([passenger.x, passenger.y, passenger.rotation], [rider.x, rider.y, 37]);
+      assert.deepEqual([passenger.attachment.offsetX, passenger.attachment.offsetY], [31, 47]);
+      assert.equal(linkedScene.tokens.find((t: any) => t.id === base.id).layer, 'map');
+      const moving = linkedScene.tokens.find((t: any) => t.id === base.id);
+      moving.x += 100;
+      moving.y += 50;
+      moving.rotation = 90;
+      const moved = await req(
+        roomPath,
+        gm,
+        { revision: linked.data.revision, document: linked.data.document },
+        'PUT',
+      );
+      assert.equal(moved.status, 200, JSON.stringify(moved.data));
+      const after = moved.data.document.scenes
+        .find((s: any) => s.id === moved.data.document.activeScene)
+        .tokens.find((t: any) => t.id === rider.id);
+      assert.ok(Math.abs(after.x - (moving.x - 47)) < 0.00001);
+      assert.ok(Math.abs(after.y - (moving.y + 31)) < 0.00001);
+      assert.equal(after.rotation, 127);
+      const unlinked = await req(attachmentPath, gm, { tokenId: null });
+      assert.equal(unlinked.status, 200);
+      const free = unlinked.data.document.scenes
+        .find((s: any) => s.id === unlinked.data.document.activeScene)
+        .tokens.find((t: any) => t.id === rider.id);
+      assert.deepEqual([free.x, free.y, free.rotation], [after.x, after.y, after.rotation]);
+      assert.equal(free.attachment, null);
       assert.equal(
         (
           await pool.query(

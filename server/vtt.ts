@@ -36,6 +36,7 @@ import {
 } from '../shared/vtt-movement.js';
 import {
   attachmentError,
+  attachmentParent,
   attachmentRoot,
   attachmentUnavailable,
   syncAttachmentPositions,
@@ -930,7 +931,7 @@ export function vttRouter() {
         const parent = s.tokens.find((t) => t.id === tokenId);
         if (
           !parent ||
-          parent.layer !== 'tokens' ||
+          !attachmentParent(parent) ||
           (parent.sceneryToken && !master) ||
           (!master &&
             (parent.controller !== res.locals.user.id ||
@@ -939,7 +940,7 @@ export function vttRouter() {
         )
           throw new AppError(403, 'Escolha um token de apoio que você possa mover.');
         if (child.layer === 'map') convertSceneryToToken(child);
-        child.attachment = { tokenId, offsetX: child.sceneryToken ? child.x-parent.x : 0, offsetY: child.sceneryToken ? child.y-parent.y : 0, baseRotation: parent.rotation };
+        child.attachment = { tokenId, offsetX: child.x-parent.x, offsetY: child.y-parent.y, baseRotation: parent.rotation };
         const error = attachmentError(s.tokens);
         if (error) throw new AppError(400, error);
         syncAttachmentPositions(s);

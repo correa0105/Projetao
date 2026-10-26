@@ -3,47 +3,55 @@ import { api } from './api';
 import {
   vehicleDefinitions,
   vehicleImage,
+  vehicleCoverImage,
   vehicleMime,
+  vehicleDrawParts,
   type OwnedVttVehicle,
   type VehicleId,
-  type VehicleArt,
 } from '../shared/vtt-vehicles';
-import art from '../shared/vtt-vehicle-art.json';
 export type VehiclePick = { characterId: string; itemId: VehicleId; copy: number };
 export function VehiclePreview({ id }: { id: VehicleId }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     let live = true;
-    const img = new Image();
-    img.onload = () => {
+    const img = new Image(),
+      cover = new Image();
+    const draw = () => {
       const c = canvas.current?.getContext('2d');
-      if (!c || !live) return;
-      const d = vehicleDefinitions[id],
-        a: VehicleArt = art[id];
+      if (
+        !c ||
+        !live ||
+        !img.complete ||
+        !img.naturalWidth ||
+        !cover.complete ||
+        !cover.naturalWidth
+      )
+        return;
+      const d = vehicleDefinitions[id];
       c.clearRect(0, 0, 180, 180);
       const scale = Math.min(164 / d.widthFt, 164 / d.lengthFt),
         w = d.widthFt * scale,
         h = d.lengthFt * scale;
       for (const part of ['base', 'cover'] as const) {
-        const r = a[part];
-        if (!r) continue;
-        const width = w * (part === 'base' ? d.baseWidth : 1),
-          q = part === 'cover' ? a.coverTarget : undefined;
-        c.drawImage(
-          img,
-          r[0] * img.width,
-          r[1] * img.height,
-          r[2] * img.width,
-          r[3] * img.height,
-          q ? (180 - w) / 2 + q[0] * w : (180 - width) / 2,
-          q ? (180 - h) / 2 + q[1] * h : (180 - h) / 2,
-          q ? q[2] * w : width,
-          q ? q[3] * h : h,
-        );
+        const source = part === 'cover' ? cover : img;
+        for (const { source: r, target: q } of vehicleDrawParts(id, part))
+          c.drawImage(
+            source,
+            r[0] * source.width,
+            r[1] * source.height,
+            r[2] * source.width,
+            r[3] * source.height,
+            (180 - w) / 2 + q[0] * w,
+            (180 - h) / 2 + q[1] * h,
+            q[2] * w,
+            q[3] * h,
+          );
       }
       canvas.current!.dataset.ready = 'true';
     };
+    img.onload = cover.onload = draw;
     img.src = vehicleImage(id);
+    cover.src = vehicleCoverImage(id);
     return () => {
       live = false;
     };

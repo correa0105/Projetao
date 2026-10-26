@@ -1,0 +1,55 @@
+{
+  "generator": "built-in image_gen; original transparent PNGs preserved",
+  "assets": [
+    {
+      "id": "galley",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-ef47b055-a70d-4f47-a042-4a5f5e3e394a.png",
+      "prompt": "Create a transparent PNG game sprite of a sailboat's upper rigging only, for a map seen straight down from above. Realistic painted wood and cream canvas. Exactly perpendicular overhead plan view. One upright mast appears ONLY as a small circular wooden top and round crow's nest rim at the center. Its vertical height is invisible from this viewpoint. Across this circular point is a single horizontal wooden yard and a narrow curved crescent of cream cloth seen along its upper edge. Cloth forms a shallow crescent 80% as wide as the canvas but only 12% as tall. Thin ropes radiate from the circular point toward the four corners. Mostly empty transparent background. No long wood pole running from top to bottom of image, no big rectangle of fabric facing the viewer, no hull, no deck, no people, no background, no text. The result must look like looking straight DOWN a flagpole from directly ABOVE its tip. Tall portrait canvas, delicate details and beautiful natural materials.",
+      "path": "/vtt/vehicles-rigging-20261026/galley-cover-v2.png",
+      "sha256": "62f205dc089e17a849b325069f737cf4808b7c9b6ed1a61fe7110c862c17c0e3",
+      "width": 1024,
+      "height": 1536,
+      "clearFraction": 0.8780765533447266
+    },
+    {
+      "id": "keelboat",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-bb057b2c-3e1a-44d3-88bb-fb670be35cfc.png",
+      "prompt": "Create ONE transparent PNG game overlay sprite of a medieval sailboat's upper rigging only, for a map seen straight DOWN from directly above. Beautiful realistic painted oak, fine brass fittings, stitched canvas, delicate ropes. one tiny round wooden mast top in the middle of the canvas; one narrow curved crescent of tan canvas cloth going left-to-right beside that point, modest riverboat rig. Exactly perpendicular overhead orthographic PLAN view. There are 1 upright mast(s), pointing toward the camera: their vertical height is invisible. Each mast is seen ONLY as its tiny circular end cap and a round crow's nest rim, NEVER as a long wooden pole along the image. The sails are vertical in the world: from this camera they look like thin curved crescents/ribbons seen along their top edges, each ribbon only 7% of canvas height and 75% of canvas width. Upper and lower sails at different heights overlap in the same short footprint. Thin ropes extend diagonally to side attachment points with a generous 6% transparent margin. Mostly empty transparent background. No long central timber connecting the circular points; only fine rope can connect them. No frontal rectangular sheets of fabric, no side view, no visible long side of a mast. No ship hull, no deck, no people, no water, no text, no backdrop, no glow. Portrait canvas. Physically the view of looking down an upright flagpole from directly over its tip.",
+      "path": "/vtt/vehicles-rigging-20261026/keelboat-cover-v2.png",
+      "sha256": "23f48e8521ae057f6c8c92bd2dadefc8a263b88fb5725504f50868ce2c839381",
+      "width": 1024,
+      "height": 1536,
+      "clearFraction": 0.9142602284749349
+    },
+    {
+      "id": "longship",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-e2e3daea-84fe-44b4-936a-cfd56c67a175.png",
+      "prompt": "Create ONE transparent PNG game overlay sprite of a medieval sailboat's upper rigging only, for a map seen straight DOWN from directly above. Beautiful realistic painted oak, fine brass fittings, stitched canvas, delicate ropes. one small round wooden mast top and circular nest in the middle of the canvas; one narrow curved crescent of burgundy and cream striped cloth going left-to-right beside that point. Exactly perpendicular overhead orthographic PLAN view. There are 1 upright mast(s), pointing toward the camera: their vertical height is invisible. Each mast is seen ONLY as its tiny circular end cap and a round crow's nest rim, NEVER as a long wooden pole along the image. The sails are vertical in the world: from this camera they look like thin curved crescents/ribbons seen along their top edges, each ribbon only 7% of canvas height and 75% of canvas width. Upper and lower sails at different heights overlap in the same short footprint. Thin ropes extend diagonally to side attachment points with a generous 6% transparent margin. Mostly empty transparent background. No long central timber connecting the circular points; only fine rope can connect them. No frontal rectangular sheets of fabric, no side view, no visible long side of a mast. No ship hull, no deck, no people, no water, no text, no backdrop, no glow. Portrait canvas. Physically the view of looking down an upright flagpole from directly over its tip.",
+      "path": "/vtt/vehicles-rigging-20261026/longship-cover-v2.png",
+      "sha256": "8e7a88dfee32c993cdd95775af15d25feffed55feb23ab896af808cb894c7849",
+      "width": 1024,
+      "height": 1536,
+      "clearFraction": 0.9076588948567709
+    },
+    {
+      "id": "sailing-ship",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-04aa3013-93b8-4be6-922e-c2d6552aa2a1.png",
+      "prompt": "Create ONE transparent PNG game overlay sprite of a medieval sailboat's upper rigging only, for a map seen straight DOWN from directly above. Beautiful realistic painted oak, fine brass fittings, stitched canvas, delicate ropes. THREE separate small circular wooden mast tops along the centerline, at 25%, 50%, 75% of image height; at each point a horizontal wooden yard and a narrow curved crescent of cream cloth viewed along its upper edge. Exactly perpendicular overhead orthographic PLAN view. There are 3 upright mast(s), pointing toward the camera: their vertical height is invisible. Each mast is seen ONLY as its tiny circular end cap and a round crow's nest rim, NEVER as a long wooden pole along the image. The sails are vertical in the world: from this camera they look like thin curved crescents/ribbons seen along their top edges, each ribbon only 7% of canvas height and 75% of canvas width. Upper and lower sails at different heights overlap in the same short footprint. Thin ropes extend diagonally to side attachment points with a generous 6% transparent margin. Mostly empty transparent background. No long central timber connecting the circular points; only fine rope can connect them. No frontal rectangular sheets of fabric, no side view, no visible long side of a mast. No ship hull, no deck, no people, no water, no text, no backdrop, no glow. Portrait canvas. Physically the view of looking down an upright flagpole from directly over its tip.",
+      "path": "/vtt/vehicles-rigging-20261026/sailing-ship-cover-v2.png",
+      "sha256": "c3824751da8f6f5412cc5190e647bee51e21b110a1906b1f3e6c8f7010a2f728",
+      "width": 1024,
+      "height": 1536,
+      "clearFraction": 0.7520732879638672
+    },
+    {
+      "id": "warship",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-fd75e28d-d432-4fb6-9828-8a8d2f09188e.png",
+      "prompt": "Create ONE transparent PNG game overlay sprite of a medieval sailboat's upper rigging only, for a map seen straight DOWN from directly above. Beautiful realistic painted oak, fine brass fittings, stitched canvas, delicate ropes. TWO separate small circular wooden mast tops along the centerline, at 30% and 70% of image height; at each point a sturdy horizontal wooden yard and a narrow curved crescent of weathered ivory cloth viewed along its upper edge. Exactly perpendicular overhead orthographic PLAN view. There are 2 upright mast(s), pointing toward the camera: their vertical height is invisible. Each mast is seen ONLY as its tiny circular end cap and a round crow's nest rim, NEVER as a long wooden pole along the image. The sails are vertical in the world: from this camera they look like thin curved crescents/ribbons seen along their top edges, each ribbon only 7% of canvas height and 75% of canvas width. Upper and lower sails at different heights overlap in the same short footprint. Thin ropes extend diagonally to side attachment points with a generous 6% transparent margin. Mostly empty transparent background. No long central timber connecting the circular points; only fine rope can connect them. No frontal rectangular sheets of fabric, no side view, no visible long side of a mast. No ship hull, no deck, no people, no water, no text, no backdrop, no glow. Portrait canvas. Physically the view of looking down an upright flagpole from directly over its tip.",
+      "path": "/vtt/vehicles-rigging-20261026/warship-cover-v2.png",
+      "sha256": "2fb9fbd76849a2710b338fe54ae536c9ef53b7103d58cb493435b778df129187",
+      "width": 1024,
+      "height": 1536,
+      "clearFraction": 0.8125642140706381
+    }
+  ]
+}

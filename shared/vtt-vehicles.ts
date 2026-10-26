@@ -25,7 +25,13 @@ export const vehicleSourceSchema = z
   .strict();
 export const vehicleMime = 'application/x-alvorada-vehicle';
 export type VehicleId = (typeof vehicleIds)[number];
-export type VehicleArt = { base: number[]; cover?: number[]; coverTarget?: number[] };
+export type VehicleArt = {
+  base: number[];
+  cover?: number[];
+  coverTarget?: number[];
+  coverImage?: string;
+  coverPieces?: { source: number[]; target: number[] }[];
+};
 export const vehicleDefinitions: Record<
   VehicleId,
   { name: string; widthFt: number; lengthFt: number; baseWidth: number; covered: boolean }
@@ -57,6 +63,29 @@ export const vehicleDefinitions: Record<
 };
 export function vehicleImage(id: VehicleId) {
   return `/vtt/vehicles-20261026/${id}-v1.png`;
+}
+export function vehicleCoverImage(id: VehicleId) {
+  return (art[id] as VehicleArt).coverImage ?? vehicleImage(id);
+}
+export function vehicleDrawParts(id: VehicleId, part: 'base' | 'cover') {
+  const a: VehicleArt = art[id];
+  if (part === 'cover' && a.coverPieces) return a.coverPieces;
+  const source = a[part];
+  if (!source) return [];
+  const width = part === 'base' ? vehicleDefinitions[id].baseWidth : 1;
+  return [
+    {
+      source,
+      target: part === 'cover' && a.coverTarget ? a.coverTarget : [(1 - width) / 2, 0, width, 1],
+    },
+  ];
+}
+export function vehicleCoverImages(tokens: VttToken[]) {
+  return [
+    ...new Set(
+      tokens.filter((t) => !!vehicleArt(t)?.cover).map((t) => vehicleCoverImage(t.vehicle!.itemId)),
+    ),
+  ];
 }
 export function vehicleArt(t: VttToken) {
   return t.vehicle && t.image === vehicleImage(t.vehicle.itemId)

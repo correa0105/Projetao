@@ -1,4 +1,30 @@
 import type { Point, VttScene, VttToken } from './vtt.js';
+export const attachmentParent = (token: VttToken) =>
+  token.layer === 'tokens' || (token.layer === 'map' && !!token.vehicle);
+/** Only the follower changes layer; a vehicle can remain below passengers on the map. */
+export function attachmentCandidates(tokens: VttToken[], child: VttToken) {
+  return tokens.filter(
+    (parent) =>
+      parent.id !== child.id &&
+      attachmentParent(parent) &&
+      !attachmentError(
+        tokens.map((t) =>
+          t.id === child.id
+            ? {
+                ...t,
+                layer: 'tokens',
+                attachment: {
+                  tokenId: parent.id,
+                  offsetX: t.x - parent.x,
+                  offsetY: t.y - parent.y,
+                  baseRotation: parent.rotation,
+                },
+              }
+            : t,
+        ),
+      ),
+  );
+}
 
 /** A rider stays a complete token. Only translation belongs to its base. */
 export function attachmentRoot(tokens: VttToken[], token: VttToken): VttToken {
@@ -22,8 +48,8 @@ export function attachmentError(tokens: VttToken[]): string | null {
     while (current.attachment) {
       const parent = byId.get(current.attachment.tokenId);
       if (!parent) return 'O token de apoio precisa existir no mesmo mapa.';
-      if (current.layer !== 'tokens' || parent.layer !== 'tokens')
-        return 'O vínculo só pode unir itens na camada de tokens.';
+      if (current.layer !== 'tokens' || !attachmentParent(parent))
+        return 'Escolha um token ou um veículo como apoio; a peça que acompanha precisa estar na camada de tokens.';
       if (seen.has(parent.id) || seen.size >= 8)
         return 'O vínculo entre tokens é circular ou profundo demais.';
       seen.add(parent.id);
@@ -88,7 +114,10 @@ export function movementFacing(token: VttToken, start: Point, path: Point[]) {
     if (Math.hypot(to.x - from.x, to.y - from.y) > 0.5)
       result =
         ((((Math.atan2(to.y - from.y, to.x - from.x) * 180) / Math.PI +
-          (token.companionId || /\/vtt\/companions\/companion-mount-(?:warhorse|riding-horse)-/.test(token.image) ? 90 : -90) +
+          (token.companionId ||
+          /\/vtt\/companions\/companion-mount-(?:warhorse|riding-horse)-/.test(token.image)
+            ? 90
+            : -90) +
           (token.flipY ? 180 : 0)) %
           360) +
           360) %

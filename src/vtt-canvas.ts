@@ -1,5 +1,6 @@
 import {vttVisualSource} from '../shared/vtt-asset-visuals';
 import {drawVehiclePart,drawVehicleCovers} from './vtt-vehicles-canvas';
+import {vehicleCoverImage} from '../shared/vtt-vehicles';
 import {lightAnimationState,sceneHasAnimatedLights} from '../shared/vtt-lighting';
 import {drawMapObject} from './vtt-object-sprites';
 import {houseAsset,houseContains,houseOccupied,houseRoofOccluded,houseWalls,houseWindowViews,houseWindowPolygon} from '../shared/vtt-houses';
@@ -401,7 +402,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       c.scale(t.flipX ? -1 : 1, t.flipY ? -1 : 1);
       const house=houseAsset(t),img=images.get(house&&houseOccupied(t,houseActors)?house.interior:t.image);
       if (t.vehicle && drawVehiclePart(c,t,img,'base')) {
-        if(layer==='gm')drawVehiclePart(c,t,img,'cover');
+        if(layer==='gm')drawVehiclePart(c,t,images.get(vehicleCoverImage(t.vehicle.itemId)),'cover');
       } else if (t.animatedAsset) {
         drawAnimatedAsset(c, t, img, performance.now(), false, (t.layer === 'map' ? o.mapEffects ?? o.visualEffects : o.visualEffects) !== false);
       } else if (layer === 'map') {

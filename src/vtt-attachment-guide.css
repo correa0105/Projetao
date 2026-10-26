@@ -1,0 +1,57 @@
+.vtt-attachment-guide {
+  position: absolute;
+  left: 50%;
+  top: 62px;
+  transform: translateX(-50%);
+  z-index: 45;
+  width: min(370px, calc(100% - 28px));
+  padding: 13px;
+  border: 1px solid #af925d;
+  border-radius: 8px;
+  background: #16222bf5;
+  box-shadow: 0 8px 24px #0008;
+  color: #e5d6ba;
+  pointer-events: auto;
+  font: 12px/1.5 var(--sans);
+}
+.vtt-attachment-guide header,
+.vtt-attachment-guide strong,
+.vtt-attachment-guide footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+}
+.vtt-attachment-guide header button {
+  padding: 4px;
+  line-height: 0;
+}
+.vtt-attachment-guide p {
+  margin: 10px 0;
+}
+.vtt-attachment-guide label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.vtt-attachment-guide select {
+  width: 100%;
+  min-width: 0;
+}
+.vtt-attachment-guide footer {
+  justify-content: flex-start;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.vtt-attachment-guide small {
+  display: block;
+  color: #bbae94;
+  margin-top: 8px;
+}
+@media (max-width: 600px) {
+  .vtt-attachment-guide {
+    top: 54px;
+    padding: 10px;
+    font-size: 11px;
+  }
+}

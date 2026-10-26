@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
-import { vehicleIds, vehicleDefinitions } from '../shared/vtt-vehicles';
+import { vehicleIds, vehicleDefinitions, vehicleCoverImage } from '../shared/vtt-vehicles';
 import { vttProtocolVersion } from '../shared/vtt-protocol';
 import { newToken } from '../shared/vtt';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
@@ -232,64 +232,84 @@ try {
     Buffer.from(qa.png.split(',')[1], 'base64'),
   );
   expect(errors).toEqual([]);
-  const overview = await page.evaluate(async ({definitions,ship}) => {
-    const lib = (window as any).VehicleRender,
-      canvas = document.createElement('canvas');
-    canvas.width = 1200;
-    canvas.height = 1400;
-    const c = canvas.getContext('2d')!;
-    c.fillStyle = '#1c282f';
-    c.fillRect(0, 0, 1200, 1400);
-    let i = 0;
-    for (const [id, d] of Object.entries(definitions)) {
-      const img = new Image();
-      img.src = `/vtt/vehicles-20261026/${id}-v1.png`;
-      await img.decode();
-      const scale = Math.min(160 / d.widthFt, 275 / d.lengthFt),
-        t = {
-          ...ship,
+  const overview = await page.evaluate(
+    async ({ definitions, ship, covers }) => {
+      const lib = (window as any).VehicleRender,
+        canvas = document.createElement('canvas');
+      canvas.width = 1200;
+      canvas.height = 1400;
+      const c = canvas.getContext('2d')!;
+      c.fillStyle = '#1c282f';
+      c.fillRect(0, 0, 1200, 1400);
+      let i = 0;
+      for (const [id, d] of Object.entries(definitions)) {
+        const img = new Image();
+        img.src = `/vtt/vehicles-20261026/${id}-v1.png`;
+        await img.decode();
+        const cover = new Image();
+        cover.src = covers[id];
+        await cover.decode();
+        const scale = Math.min(160 / d.widthFt, 275 / d.lengthFt),
+          t = {
+            ...ship,
+            id: crypto.randomUUID(),
+            image: img.src.replace(location.origin, ''),
+            vehicle: { ...ship.vehicle, itemId: id },
+            width: d.widthFt * scale,
+            height: d.lengthFt * scale,
+            x: (i % 3) * 400 + 120,
+            y: Math.floor(i / 3) * 350 + 170,
+            rotation: 0,
+            flipX: false,
+            flipY: false,
+          };
+        c.save();
+        c.translate(t.x, t.y);
+        lib.drawVehiclePart(c, t, img, 'base');
+        lib.drawVehiclePart(c, t, cover, 'cover');
+        c.restore();
+        t.x += 170;
+        const actor = {
+          ...t,
           id: crypto.randomUUID(),
-          image: img.src.replace(location.origin, ''),
-          vehicle: { ...ship.vehicle, itemId: id },
-          width: d.widthFt * scale,
-          height: d.lengthFt * scale,
-          x: (i % 3) * 400 + 120,
-          y: Math.floor(i / 3) * 350 + 170,
-          rotation: 0,
-          flipX: false,
-          flipY: false,
+          x: t.x,
+          y: t.y,
+          width: 25,
+          height: 25,
+          layer: 'tokens',
+          sceneryToken: false,
+          hidden: false,
         };
-      c.save();
-      c.translate(t.x, t.y);
-      lib.drawVehiclePart(c, t, img, 'base');
-      lib.drawVehiclePart(c, t, img, 'cover');
-      c.restore();
-      t.x += 170;
-      const actor = {
-        ...t,
-        id: crypto.randomUUID(),
-        x: t.x,
-        y: t.y,
-        width: 25,
-        height: 25,
-        layer: 'tokens',
-        sceneryToken: false,
-        hidden: false,
-      };
-      c.save();
-      c.translate(t.x, t.y);
-      lib.drawVehiclePart(c, t, img, 'base');
-      c.restore();
-      c.fillStyle = '#57dbad';
-      c.fillRect(actor.x - 12, actor.y - 12, 24, 24);
-      lib.drawVehicleCovers(c, [t], [actor], new Map([[t.image, img]]), () => true, 0.45);
-      c.fillStyle = '#e4d2b0';
-      c.font = '16px sans-serif';
-      c.fillText(d.name, (i % 3) * 400 + 20, Math.floor(i / 3) * 350 + 330);
-      i++;
-    }
-    return canvas.toDataURL();
-  }, {definitions:vehicleDefinitions,ship});
+        c.save();
+        c.translate(t.x, t.y);
+        lib.drawVehiclePart(c, t, img, 'base');
+        c.restore();
+        c.fillStyle = '#57dbad';
+        c.fillRect(actor.x - 12, actor.y - 12, 24, 24);
+        lib.drawVehicleCovers(
+          c,
+          [t],
+          [actor],
+          new Map([
+            [t.image, img],
+            [covers[id], cover],
+          ]),
+          () => true,
+          0.45,
+        );
+        c.fillStyle = '#e4d2b0';
+        c.font = '16px sans-serif';
+        c.fillText(d.name, (i % 3) * 400 + 20, Math.floor(i / 3) * 350 + 330);
+        i++;
+      }
+      return canvas.toDataURL();
+    },
+    {
+      definitions: vehicleDefinitions,
+      ship,
+      covers: Object.fromEntries(vehicleIds.map((id) => [id, vehicleCoverImage(id)])),
+    },
+  );
   await writeFile(
     'test-results/vehicles-slots/all-vehicles.png',
     Buffer.from(overview.split(',')[1], 'base64'),
