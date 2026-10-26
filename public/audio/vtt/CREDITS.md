@@ -82,3 +82,8 @@ Fontes CC0 verificadas nas páginas dos autores em 26/10/2026.
 - Thimras: [audio-20261026-park-wind](https://opengameart.org/content/park-ambiences) — CC0-1.0. SHA-256 e arquivo em manifest.json.
 
 As sete composições de tela usam estas bases e os efeitos CC0 já creditados acima. Músicas preservam os arranjos completos dos autores. Novos arquivos: estéreo 48 kHz, volume integrado medido e pico verdadeiro com margem antes/depois da codificação. Originais anteriores preservados.
+
+
+## Mar e ondas na costa (26/10/2026)
+
+Beach Ocean Waves — jasinski, CC0-1.0. Fonte: https://opengameart.org/content/beach-ocean-waves . Quatro ondas unidas com transições e loop circular de 0,5 s; normalização para -21 LUFS, estéreo 48 kHz. Dados e hashes em data/vtt/naval-audio-20261026.json.

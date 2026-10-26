@@ -1,4 +1,8 @@
 import { isTreeCanopy } from '../shared/vtt-canopies';
+import {navalAtlas,navalAnimated,sailMasts,rowing,rowingImage,oceanImage,oceanSchema} from '../shared/vtt-naval';
+import {tokenOnScreen} from './vtt-render-cache';
+import {VttNavalControls,VttOceanControls} from './VttNavalControls';
+import {VttOceanSounds} from './VttOceanSounds';
 import { WorldPlacePicker } from './WorldPlacePicker';
 import { Modal } from './components';
 import { VttPlaceSettings } from './VttPlaceSettings';
@@ -880,8 +884,9 @@ export function VttSession({ characters, user, media }: { characters: Character[
     setMapsOpen(false);
     fit(docRef.current?.scenes.find((s) => s.id === id));
   }
-  function createMap(folderId: string | null = null) {
+  function createMap(folderId: string | null = null,ocean=false) {
     const next = newScene(crypto.randomUUID());
+    if(ocean){next.name='Oceano';next.ocean=oceanSchema.parse({});next.backgroundColor='#124c59';next.lighting=false;next.fog=false;next.ambient=1;}
     next.folderId = folderId;
     edit((d) => {
       d.scenes.push(next);
@@ -1137,6 +1142,8 @@ export function VttSession({ characters, user, media }: { characters: Character[
     ...terrainTextures.filter(t => scene.terrain.some(stroke => stroke.texture === t.id) || (tool.startsWith('terrain-') && terrainBrush.texture === t.id)).map(t => t.image),
     scene.background, ...scene.tokens.map(t => t.image), ...houseInteriorImages(scene),
     ...vehicleCoverImages(scene.tokens),
+    ...(scene.tokens.some(t=>t.vehicle&&rowing[t.vehicle.itemId])?[rowingImage]:[]),
+    ...(scene.ocean?.enabled?[oceanImage]:[]),
     ...(scene.tokens.some(t => houseAsset(t)) ? ['/vtt/house-parts-20261014/door-vertical.webp'] : []),
     ...(scene.terrain.length || scene.tokens.some(isTreeCanopy) ? [woodlandFloorImage] : []),
   ].filter(Boolean))] : [];
@@ -1247,24 +1254,27 @@ export function VttSession({ characters, user, media }: { characters: Character[
         )
       : 0;
     const timers = ends.map((at) => window.setTimeout(draw, Math.max(0, at - Date.now() + 10)));
-    const infinite = (mapEffects && atmosphereAnimated(atmosphereScene.atmosphere)) ||
+    const navalMoving=mapEffects&&(scene.ocean?.enabled&&scene.ocean.animated||scene.tokens.some(t=>navalAnimated(t)&&!((!gm||preview)&&t.hidden)&&tokenOnScreen(t,{left:camera.x-bounds.width/2/camera.zoom,top:camera.y-bounds.height/2/camera.zoom,right:camera.x+bounds.width/2/camera.zoom,bottom:camera.y+bounds.height/2/camera.zoom},camera.zoom)));
+    const otherInfinite = (mapEffects && atmosphereAnimated(atmosphereScene.atmosphere)) ||
       ((scene.lighting || (scene.fog && scene.fogMode === 'vision')) && sceneHasAnimatedLights(scene)) ||
       scene.tokens.some(t => t.animatedAsset?.playing && (t.layer === 'map' ? mapEffects : visualEffects)) ||
       (visualEffects && (!!combat.state?.active || !!effectPreview ||
         spellcasting.effects.some(e => e.persistent && (!e.expires || e.expires > Date.now())) ||
         scene.tokens.some(t => t.effects.some(e => e.duration === 0 && e.kind !== 'death'))));
+    const infinite=otherInfinite||navalMoving;
     const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
     const restartAnimation = () => {
       cancelAnimationFrame(frame);
       draw();
+      if(document.hidden)return;
       if (!(houseDoorsAnimating(c,scene.id) || infinite || until > Date.now() || atmosphereTransitioning(c, scene.id)) || (motionPreference.matches && !scene.tokens.some(t => t.animatedAsset?.playing))) return;
       let lastDraw = 0;
       const animate = (now: number) => {
-        if (now - lastDraw >= 1000 / 60 - 1 && !document.hidden) {
+        if (now - lastDraw >= 1000 / (navalMoving&&!otherInfinite?30:60) - 1 && !document.hidden) {
           draw();
           lastDraw = now;
         }
-        if (houseDoorsAnimating(c,scene.id) || infinite || Date.now() < until || atmosphereTransitioning(c, scene.id)) frame = requestAnimationFrame(animate);
+        if (!document.hidden&&(houseDoorsAnimating(c,scene.id) || infinite || Date.now() < until || atmosphereTransitioning(c, scene.id))) frame = requestAnimationFrame(animate);
       };
       frame = requestAnimationFrame(animate);
     };
@@ -1273,9 +1283,11 @@ export function VttSession({ characters, user, media }: { characters: Character[
       if (!disposed) draw();
     });
     motionPreference.addEventListener('change', restartAnimation);
+    document.addEventListener('visibilitychange',restartAnimation);
     return () => {
       cancelAnimationFrame(frame);
       motionPreference.removeEventListener('change', restartAnimation);
+      document.removeEventListener('visibilitychange',restartAnimation);
       disposed = true;
       timers.forEach(clearTimeout);
     };
@@ -3150,6 +3162,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
             volume={media.soundVolume}
           />
           <VttHouseSounds roomId={state.id} scene={scene} enabled={media.soundEnabled && !preview} volume={media.soundVolume}/>
+          <VttOceanSounds roomId={state.id} scene={scene} enabled={media.soundEnabled&&!preview} volume={media.soundVolume}/>
           <VttRollSounds
             roomId={state.id}
             messages={state.messages}
@@ -3775,7 +3788,9 @@ export function VttSession({ characters, user, media }: { characters: Character[
                           <Plus size={14} />
                           Novo mapa
                         </button>
+                        <button onClick={()=>createMap(null,true)}>Novo oceano</button>
                       </div>
+                      {scene.ocean?.enabled&&<VttOceanControls value={scene.ocean} change={patch=>editScene(s=>{Object.assign(s.ocean!,patch);})}/>}
                       <button onClick={()=>{setPanelOpen(false);setCanopyEditing(true);}}><Eye size={15}/>Editar áreas de transparência</button>
                       <h3>Camadas</h3>
                       <VttItemLayers scene={scene} selection={selection} disabled={busy || preview} edit={editScene}
@@ -4085,6 +4100,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                       </div>
                       {gm && (
                         <>
+                          <VttNavalControls token={token} disabled={busy} edit={editToken}/>
                           {token.animatedAsset && <fieldset><legend>Animação do ambiente</legend>
                             <NumberField label="Tamanho do asset (quadrados)" value={Number((token.width / scene.grid.size).toFixed(2))} min={Math.max(.1, 8 / scene.grid.size)} max={8000 / scene.grid.size} onChange={v=>{const width=Math.max(8,Math.min(8000,v*scene.grid.size)); const ratio=token.height/token.width; editToken({width,height:Math.max(8,Math.min(8000,width*ratio))});}}/>
                             <div className="vtt-two">
@@ -5501,6 +5517,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
             busy={busy} onChange={changeTokenConditions} />}
         >
               {canToken && <VttSceneryActions token={token} candidates={attachmentParents} busy={busy} convert={() => { editScene(s => {const placed=s.tokens.find(t=>t.id===token.id);if(placed)convertSceneryToToken(placed);}); changeLayer('tokens', [token.id]); void act(save);}} bind={id=>void act(()=>bindToken(id))} chooseOnMap={()=>{setContextMenu(null);setTool('attach');}}/>}
+              {gm&&<VttNavalControls key={`naval-${token.id}`} token={token} disabled={busy} edit={editToken} commit={()=>void act(save)}/>}
               {!token.sceneryToken && <button
                 onClick={() => {
                   openSheet();

@@ -1,0 +1,49 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-26",
+  "originalsPreserved": true,
+  "processing": "Original generated PNG bytes copied unchanged. Source rectangles and animation are applied only by Canvas at render time; no image conversion, resize or recompression.",
+  "assets": [
+    {
+      "file": "ivory-rig-v4.png",
+      "prompt": "Use case: precise-object-edit. Fix ONLY THE MIDDLE ROW sail in this three-row transparent VTT atlas. Preserve the top row wooden transverse yard/circular mast and bottom row furled cloth exactly, preserve 1024x1536 canvas and transparency. The middle sail must be a shallow overhead CRESCENT with both OUTER CORNERS PULLED DOWNWARD to the straight LOWER hem: corner tips at x40,y970 and x985,y970, center bulges UP to x512,y590. There must be NO raised outer tips at y560. Its UPPER outline must be a continuous CONVEX ARCH, highest at center, smoothly descending to both corners near the lower hem. The resulting silhouette is like a filled semicircle / low dome with a nearly straight horizontal bottom edge, no horns, no upward side points. Ivory linen triangular panel stitching follows the billowing volume, realistic warm softly weathered fine cloth, strict overhead projection. Include a tiny reinforced rope eye at each LOWER corner, no long loose ropes, no wood or masts within middle row. Physical lower clew corners are tensioned down near the ship's gunwales rather than flying up in the air. No text, no scene, true transparent background. Keep the row separated from upper and lower rows.",
+      "path": "/vtt/naval-20261026/ivory-rig-v4.png",
+      "sha256": "71815739142e39c6c7449c013fb8f30547ea2a920fc167462a04ded2f2a3505c",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1912569,
+      "clearFraction": 0.6718393961588541,
+      "referenceDraft": {
+        "sha256": "3fbb1db6c6bdad8b3c3474aa48b728bb2a8a752ecc6c4d6a37e9541ad2cb6378",
+        "prompt": "Use case: stylized-concept. Asset type: production VTT sailing animation sprite atlas, realistic medieval fantasy painted 3D detail. Create ONE transparent PNG atlas portrait 1024x1536 with THREE completely separate sprites, one centered in each equal 512px-high row, no text or frame. Camera is strict 90-degree zenith straight down, orthographic, all sprites aligned for a ship pointing UP. Top row: only a transverse honey-oak yardarm running horizontally left-to-right, 900px wide, metal bindings, seen from directly above; at its middle a SMALL circular wooden crow's nest with the round end of a VERTICAL mast in its center, truly circular in top view; NO long vertical mast anywhere, no diagonal rigging. Middle row: ONLY a richly textured ivory linen square-rig sail filled with wind, the overhead projection is a broad rounded crescent/billow shaped like an upside-down shallow bowl: straight lower hem from x100 to924 at y~1000, center of sail BULGES UPWARD toward the bow near y~580. Convex upper curved fabric edge, narrower tips and seam stitching, realistic volume and fine folds, entirely seen from above. No spar, no mast, no ropes in this row. Bottom row: ONLY a loosely furled/deflated ivory sail bundle, long horizontal rolled cloth 880px wide and 110px tall centered, fabric tied at intervals, no wood or metal. Weathered clean premium linen, warm neutral daylight, consistent scale of material, delicate contact shadows only inside the objects. Every row has at least 35px transparent margin, no sprite crosses its row. True transparent background, no background paint, no water, no deck, no labels, no checkerboard. CRITICAL: camera directly above; mast is perpendicular to image plane so it appears only as a circular cap. All fabric billows toward TOP of image, not downward. Yardarm is perpendicular to direction of travel, across the ship."
+      },
+      "reference": "ivory-rig-v3 draft"
+    },
+    {
+      "file": "striped-rig-v4.png",
+      "reference": "ivory-rig-v4.png",
+      "prompt": "Use case: precise-object-edit. Production Viking longship VTT animation atlas. Preserve the exact 1024x1536 transparent atlas layout, top row mast/yard, all object outlines and positions. Change ONLY cloth color in middle inflated sail and bottom furled bundle to alternating broad vertical deep oxblood red and ivory stripes with natural woven linen texture. CRITICAL: preserve the corrected dome silhouette: center bows up, BOTH outer corner rope eyes remain DOWN at the lower straight hem, no raised flying tips, no horns. Middle sail is strict overhead projection, physically tensioned low at both outside corners. Keep material volume and warm realistic weathered fine texture. Top wooden yardarm/circular vertical mast remain unchanged. No text, no extra objects, no scenery, true transparent background.",
+      "path": "/vtt/naval-20261026/striped-rig-v4.png",
+      "sha256": "3795307c14944d18f2260e377dcdf600f59918ff1e75d3f2a6c87151aec80d4e",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1905011,
+      "clearFraction": 0.6720733642578125,
+      "referenceDraft": {
+        "sha256": "67b98c7533d693f8bb43ab2fafa46b860edd9d5165d108a9872e6faf901ede8b",
+        "prompt": "Use case: precise-object-edit. Production VTT atlas variant for a Viking longship. Preserve this exact 1024x1536 transparent three-row atlas layout, positions, zenith camera, outlines, wood yardarm and circular vertical mast/crow's-nest top view. Change ONLY the sail cloth color in the middle row and rolled bundle in the bottom row to alternating broad vertical oxblood red and ivory linen stripes, weathered elegant natural dye, stitching and fabric volume. Keep the middle cloth bowing toward TOP. Keep the top wooden yardarm and nest unchanged, all objects separate on genuine transparent background. No letters, deck, water or background. No extra mast or ropes, no shadows outside silhouettes. Preserve original resolution and alpha."
+      }
+    },
+    {
+      "file": "rowboat-oar-v3.png",
+      "reference": "/vtt/vehicles-20261026/rowboat-v1.png",
+      "prompt": "Use case: precise-object-edit. Make a production animation sprite sheet from the reference. Genuine transparent background. 1536x1536 square image. LEFT TWO THIRDS (x0..1024): keep the same premium weathered wooden rowboat, strict top-down, bow upward, preserve hull proportions, boards, seats and metal fittings. Remove ONLY the two loose oars resting in the boat, reconstructing the empty wooden floor naturally. The boat should fill almost the full image height, centered at x512. RIGHT THIRD (x1100..1536): put ONE completely separate straight wooden oar pointing upward, seen straight down, narrow handle upward and broad paddle blade downward, matching the reference oak material and dark iron ferrule. Leave a clear transparent gutter of 70px between boat and oar. Do not include oar shadow beneath on background. No text or labels, no water, no ropes crossing the gap. Preserve true original-style transparent alpha, clean realistic painted details, no scenery. This will be cut into two independent moving sprites.",
+      "path": "/vtt/naval-20261026/rowboat-oar-v3.png",
+      "sha256": "dad939b1ed98aaf4e4cb6e212da86b6cd1c3960a2735436998065a0eeea4f8be",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1397557,
+      "clearFraction": 0.6320151909424133
+    }
+  ]
+}

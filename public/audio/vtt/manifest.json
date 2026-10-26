@@ -3638,6 +3638,25 @@
       ],
       "rmsDb": -28.05,
       "peakDb": -9.28
+    },
+    {
+      "id": "amb-ocean-waves",
+      "file": "amb-ocean-waves.ogg",
+      "sha256": "a0400a690ec1a03d5f7cd9180e3dd141429dcb31c52683704bb46166d5dda6e5",
+      "bytes": 199733,
+      "duration": 9.46,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rmsDb": -21.42,
+      "peakDb": -5.85,
+      "lufs": -21.42,
+      "truePeakDb": -5.85,
+      "sources": [
+        "jasinski-ocean-wave-01",
+        "jasinski-ocean-wave-02",
+        "jasinski-ocean-wave-03",
+        "jasinski-ocean-wave-04"
+      ]
     }
   ],
   "sources": [
@@ -4182,6 +4201,46 @@
       "bytes": 73960096,
       "sha256": "5c381856745b4706e7eba55eb9271a61a530e90c05df8126adb2db89ecfa6c5a",
       "pageSha256": "5f39dea3d57492778e01851b48e45e1a53a3090a88725267e51e56480b520bf1"
+    },
+    {
+      "slug": "jasinski-ocean-wave-01",
+      "page": "https://opengameart.org/content/beach-ocean-waves",
+      "url": "https://opengameart.org/sites/default/files/wave_01_cc0-18363__jasinski__alkaibeach.flac",
+      "file": ".local/naval-audio-20261026/wave_01_cc0-18363__jasinski__alkaibeach.flac",
+      "author": "jasinski",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "sha256": "fcfca178eca2eac536e8c2a4ed5cf8096e44c921acd587047b3d9f1d7845435c"
+    },
+    {
+      "slug": "jasinski-ocean-wave-02",
+      "page": "https://opengameart.org/content/beach-ocean-waves",
+      "url": "https://opengameart.org/sites/default/files/wave_02_cc0-18363__jasinski__alkaibeach.flac",
+      "file": ".local/naval-audio-20261026/wave_02_cc0-18363__jasinski__alkaibeach.flac",
+      "author": "jasinski",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "sha256": "53b5c28c0edc36f049e77e65f2cf8a86135103328c44c1507c416e6469d18096"
+    },
+    {
+      "slug": "jasinski-ocean-wave-03",
+      "page": "https://opengameart.org/content/beach-ocean-waves",
+      "url": "https://opengameart.org/sites/default/files/wave_03_cc0-18363__jasinski__alkaibeach.flac",
+      "file": ".local/naval-audio-20261026/wave_03_cc0-18363__jasinski__alkaibeach.flac",
+      "author": "jasinski",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "sha256": "fc795f95f352b354867d69a587daecb8815334e28e3b56a7798c5f3005349054"
+    },
+    {
+      "slug": "jasinski-ocean-wave-04",
+      "page": "https://opengameart.org/content/beach-ocean-waves",
+      "url": "https://opengameart.org/sites/default/files/wave_04_cc0-18363__jasinski__alkaibeach.flac",
+      "file": ".local/naval-audio-20261026/wave_04_cc0-18363__jasinski__alkaibeach.flac",
+      "author": "jasinski",
+      "license": "CC0-1.0",
+      "licenseVerified": "2026-10-26",
+      "sha256": "3c490e736365fdd617ce8405470d8878fc6146d9a8dba448d622addb01cfff3b"
     }
   ]
 }

@@ -776,9 +776,11 @@ export function vttRouter() {
         if (previous && submittedScene?.canopyOpacity === undefined) scene.canopyOpacity = previous.canopyOpacity;
         if (previous && submittedScene?.terrain === undefined) scene.terrain = previous.terrain || [];
         if (previous && submittedScene?.terrainLayers === undefined) scene.terrainLayers = previous.terrainLayers || [{id:'base',name:'Chão',visible:true,opacity:1}];
+        if(previous&&submittedScene?.ocean===undefined)scene.ocean=previous.ocean;
         scene.blood = previous ? structuredClone(previous.blood) : [];
         for (const token of scene.tokens) {
           const old = previous?.tokens.find((t) => t.id === token.id);
+          if(old&&submittedScene?.tokens.find((t:VttToken)=>t.id===token.id)?.vehicleMotion===undefined)token.vehicleMotion=old.vehicleMotion;
           if (old && typeof req.body.document.scenes.find((s: VttScene) => s.id === scene.id)?.tokens.find((t: VttToken) => t.id === token.id)?.bleeds !== 'boolean') token.bleeds = old.bleeds;
           applyTokenBlood(
             scene,

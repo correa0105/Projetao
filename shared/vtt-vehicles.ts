@@ -2,6 +2,7 @@ import { z } from 'zod';
 import type { VttScene, VttToken, Point } from './vtt.js';
 import { canopyActor, canopyTokenSamples } from './vtt-canopies.js';
 import art from './vtt-vehicle-art.json';
+import { navalAtlas, sailMasts } from './vtt-naval.js';
 export const vehicleIds = [
   'carriage',
   'cart',
@@ -83,7 +84,13 @@ export function vehicleDrawParts(id: VehicleId, part: 'base' | 'cover') {
 export function vehicleCoverImages(tokens: VttToken[]) {
   return [
     ...new Set(
-      tokens.filter((t) => !!vehicleArt(t)?.cover).map((t) => vehicleCoverImage(t.vehicle!.itemId)),
+      tokens
+        .filter((t) => !!vehicleArt(t)?.cover)
+        .map((t) =>
+          sailMasts[t.vehicle!.itemId]
+            ? navalAtlas(t.vehicle!.itemId)
+            : vehicleCoverImage(t.vehicle!.itemId),
+        ),
     ),
   ];
 }

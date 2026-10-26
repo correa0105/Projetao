@@ -16,9 +16,9 @@ import manifest from '../public/audio/vtt/manifest.json';
 import { VttSoundEngine } from '../src/vtt-sound-engine';
 
 test('46 novos áudios têm mídia íntegra, volumes medidos, fontes CC0 e metadados úteis', async () => {
-  assert.equal(soundCatalog.length, 241);
+  assert.equal(soundCatalog.length, 242);
   assert.equal(soundCatalog.filter((e) => e.kind === 'music').length, 25);
-  assert.equal(soundCatalog.filter((e) => e.kind === 'ambience').length, 29);
+  assert.equal(soundCatalog.filter((e) => e.kind === 'ambience').length, 30);
   const added = soundCatalog.filter((e) =>
     /^(music-scene|amb-scene|sfx-scene|sfx-screen)-/.test(e.id),
   );

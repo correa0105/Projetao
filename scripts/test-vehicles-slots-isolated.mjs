@@ -16,7 +16,7 @@ try {
       [
         '--import',
         'tsx',
-        ...(process.argv.includes('--rigging')?['scripts/smoke-vtt-rigging-controls.ts']:process.argv.includes('--browser')
+        ...(process.argv.includes('--naval')?['scripts/smoke-vtt-naval.ts']:process.argv.includes('--rigging')?['scripts/smoke-vtt-rigging-controls.ts']:process.argv.includes('--browser')
           ? ['scripts/smoke-vehicles-slots.ts']
           : ['--test', 'tests/vehicles-and-slot-rolls.test.ts']),
       ],

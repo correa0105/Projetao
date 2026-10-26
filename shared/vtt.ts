@@ -11,6 +11,7 @@ import { effectPresetSchema, tokenEffectSchema } from './vtt-effects.js';
 import { monsterCustomizationSchema } from './vtt-monster-presets.js';
 import { bloodStateSchema, bloodDecalSchema, MAX_BLOOD_DECALS } from './vtt-blood.js';
 import { attachmentError, orderedAttachmentTokens } from './vtt-attachments.js';
+import {vehicleMotionSchema,oceanSchema} from './vtt-naval.js';
 const id = z.string().uuid();
 const coordinate = z.number().finite().min(-50000).max(50000);
 const color = z.string().regex(/^#[0-9a-f]{6}$/i);
@@ -129,6 +130,7 @@ export const tokenSchema = z
     assetScaleVersion: z.literal(2).optional(),
     sceneryToken: z.boolean().optional(),
     vehicle: vehicleSourceSchema.optional(),
+    vehicleMotion: vehicleMotionSchema.optional(),
   })
   .strict();
 export type VttToken = z.infer<typeof tokenSchema>;
@@ -195,6 +197,7 @@ export const sceneSchema = z
     background: media,
     backgroundColor: color,
     atmosphere: atmosphereSchema.default(() => atmosphereSchema.parse({})),
+    ocean: oceanSchema.optional(),
     backdropColor: color.default('#0e151d'),
     dominantBackdrop: z.boolean().default(false),
     folderId: id.nullable().default(null),

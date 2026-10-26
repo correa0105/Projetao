@@ -1,6 +1,9 @@
 import {vttVisualSource} from '../shared/vtt-asset-visuals';
 import {drawVehiclePart,drawVehicleCovers} from './vtt-vehicles-canvas';
 import {vehicleCoverImage} from '../shared/vtt-vehicles';
+import {navalAtlas,sailMasts,rowingImage} from '../shared/vtt-naval';
+import {drawSailingRig} from './vtt-naval-canvas';
+import {drawOcean} from './vtt-ocean-canvas';
 import {lightAnimationState,sceneHasAnimatedLights} from '../shared/vtt-lighting';
 import {drawMapObject} from './vtt-object-sprites';
 import {houseAsset,houseContains,houseOccupied,houseRoofOccluded,houseWalls,houseWindowViews,houseWindowPolygon} from '../shared/vtt-houses';
@@ -273,6 +276,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
   c.clip();
   if (background?.complete && background.naturalWidth)
     c.drawImage(background, 0, 0, s.width, s.height);
+  drawOcean(c,s,o,now,reduced);
   drawTerrain(c, s, o);
   const g = s.grid;
   const drawGrid = () => {
@@ -341,7 +345,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
   const closedHouses=s.tokens.filter(h=>houseAsset(h)&&!houseOccupied(h,houseActors));
   let canopyCover: HTMLCanvasElement | null = null;
   for (const layer of ['map', 'tokens', 'gm']) {
-    if (layer === 'gm') {drawVehicleCovers(c,sortedTokens.filter(t=>t.layer!=='gm'),vehicleActors,images,visibleCanopyToken,s.gmOpacity);drawCanopiesBelowRoofs(c,closedHouses.filter(visibleCanopyToken),images,ctx=>drawCanopyForeground(ctx,s,images,canopyActors,canopyCover,visibleCanopyToken,o.selected,cam.zoom));}
+    if (layer === 'gm') {drawVehicleCovers(c,sortedTokens.filter(t=>t.layer!=='gm'&&tokenOnScreen(t,view,cam.zoom)),vehicleActors,images,visibleCanopyToken,s.gmOpacity,{time:now,animate:!reduced&&o.mapEffects!==false});drawCanopiesBelowRoofs(c,closedHouses.filter(visibleCanopyToken),images,ctx=>drawCanopyForeground(ctx,s,images,canopyActors,canopyCover,visibleCanopyToken,o.selected,cam.zoom));}
     if (layer === 'tokens' && o.visualEffects !== false && o.bloodEnabled !== false)
       drawBloodDecals(
         c,
@@ -401,8 +405,12 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.filter = 'brightness(.42) sepia(1) saturate(4) hue-rotate(320deg)';
       c.scale(t.flipX ? -1 : 1, t.flipY ? -1 : 1);
       const house=houseAsset(t),img=images.get(house&&houseOccupied(t,houseActors)?house.interior:t.image);
-      if (t.vehicle && drawVehiclePart(c,t,img,'base')) {
-        if(layer==='gm')drawVehiclePart(c,t,images.get(vehicleCoverImage(t.vehicle.itemId)),'cover');
+      if (t.vehicle && drawVehiclePart(c,t,img,'base',{time:now,animate:!reduced&&o.mapEffects!==false,oar:images.get(rowingImage)})) {
+        if(layer==='gm'){
+          const rig=sailMasts[t.vehicle.itemId]&&images.get(navalAtlas(t.vehicle.itemId));
+          if(rig)drawSailingRig(c,t,rig,now,!reduced&&o.mapEffects!==false);
+          else drawVehiclePart(c,t,images.get(vehicleCoverImage(t.vehicle.itemId)),'cover');
+        }
       } else if (t.animatedAsset) {
         drawAnimatedAsset(c, t, img, performance.now(), false, (t.layer === 'map' ? o.mapEffects ?? o.visualEffects : o.visualEffects) !== false);
       } else if (layer === 'map') {

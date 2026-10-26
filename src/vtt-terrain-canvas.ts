@@ -27,7 +27,8 @@ type Tile = {
   shore?: { revision: number; canvas: HTMLCanvasElement };
 };
 type Cache = {
-  epoch: number; flat?: {key:string;canvas:HTMLCanvasElement;filled:Set<string>;density:number};
+  ocean?:boolean;
+  epoch: number; flat?: {key:string;canvas:HTMLCanvasElement;filled:Set<string>;density:number;extent?:Bounds};
   scene: string; source?: TerrainStroke[]; strokes: Stroke[]; layers: TerrainLayer[];
   images: (HTMLImageElement | undefined)[]; imageWidths: number[];
   tiles: Map<string, Tile>; mask: HTMLCanvasElement; piece: HTMLCanvasElement; layer: HTMLCanvasElement; work: HTMLCanvasElement;
@@ -69,8 +70,9 @@ export function terrainCacheStats(c: HTMLCanvasElement) {
 // Immutable documents may clone the paint during token movement. Compare only when
 // that array changes; animation and cursor frames never serialize the stroke history.
 function update(cache: Cache, scene: VttScene, images: RenderOptions['images']) {
+  const oceanChange=cache.ocean!==!!scene.ocean?.enabled;cache.ocean=!!scene.ocean?.enabled;
   const layers = scene.terrainLayers || defaultLayers;
-  const layerChange = layers.length !== cache.layers.length || layers.some((l, i) => {
+  const layerChange = oceanChange || layers.length !== cache.layers.length || layers.some((l, i) => {
     const old = cache.layers[i]; return !old || l.id !== old.id || l.visible !== old.visible || l.opacity !== old.opacity;
   });
   // Dimensions can arrive before the response finishes. Only snapshot drawable
@@ -100,7 +102,7 @@ function update(cache: Cache, scene: VttScene, images: RenderOptions['images']) 
     const additions = appended ? next.slice(cache.strokes.length) : [];
     cache.layers = layers.map(l => ({ ...l })); cache.images = loaded; cache.imageWidths = loaded.map(img => img?.naturalWidth || 0);
     for (const tile of cache.tiles.values()) {
-      if (!changed.some(b => overlaps(b, tile.bounds))) continue;
+      if (!changed.some(b => overlaps({left:b.left-26,top:b.top-26,right:b.right+26,bottom:b.bottom+26},tile.bounds))) continue;
       // Commit into the draft's cached layer without replaying older paint.
       if (tile.valid && tile.split && appended && additions.every(s => (s.value.layer || 'base') === tile.split!.layer)) {
         for (const s of additions) if (overlaps(s.bounds, tile.bounds)) apply(cache, tile, s.value, tile.split.active);
@@ -281,13 +283,14 @@ function draftTile(cache: Cache, tile: Tile, draft: TerrainStroke) {
 
 function shoreline(cache: Cache, tile: Tile) {
   if(tile.shore?.revision === tile.revision) return tile.shore.canvas;
-  if(!cache.strokes.some(s=>s.value.texture==='water'&&!s.value.erase&&overlaps(s.bounds,tile.bounds))) {tile.shore=undefined;return null;}
+  if(!cache.ocean&&!cache.strokes.some(s=>s.value.texture==='water'&&!s.value.erase&&overlaps(s.bounds,tile.bounds))) {tile.shore=undefined;return null;}
   // A small mask with a 24-world-pixel neighbour margin; native water texture
   // remains full resolution. Reusing alphaMask avoids replaying geometry/blur.
   const density=Math.min(tile.density,.5),padding=26;
   const area={left:Math.floor((tile.bounds.left-padding)*density)/density,top:Math.floor((tile.bounds.top-padding)*density)/density,right:Math.ceil((tile.bounds.right+padding)*density)/density,bottom:Math.ceil((tile.bounds.bottom+padding)*density)/density};
   const w=Math.round((area.right-area.left)*density),h=Math.round((area.bottom-area.top)*density);
   const coverage=clear(cache.coverage,w,h);
+  if(cache.ocean){coverage.fillStyle='#fff';coverage.fillRect(0,0,w,h);}
   for(const layer of cache.layers) {
     if(!layer.visible||layer.opacity<=0)continue;
     const gc=clear(cache.layerCoverage,w,h),ac=clear(cache.layerAlpha,w,h);
@@ -347,7 +350,8 @@ export function drawTerrain(c: CanvasRenderingContext2D, scene: VttScene, o: Ren
       if (!tile) {
         const padding = GUTTER / density;
         const area = { left: x * world - padding, top: y * world - padding, right: (x + 1) * world + padding, bottom: (y + 1) * world + padding };
-        if (!cache.strokes.some(s => overlaps(s.bounds, area)) && !(draftBounds && overlaps(draftBounds, area))) continue;
+        const shoreArea={left:area.left-26,top:area.top-26,right:area.right+26,bottom:area.bottom+26};
+        if (!cache.strokes.some(s => overlaps(s.bounds,shoreArea)) && !(draftBounds && overlaps(draftBounds,shoreArea))) continue;
         tile = { bounds: area, density, canvas: canvas(), valid: false, revision:0 }; cache.tiles.set(key, tile);
       }
       const affected = draftBounds && overlaps(draftBounds, tile.bounds);
@@ -369,11 +373,17 @@ export function drawTerrain(c: CanvasRenderingContext2D, scene: VttScene, o: Ren
       target.beginPath();target.rect(x*world,y*world,world,world);target.clip();
       const size=RASTER/density;target.drawImage(combined,tile.bounds.left,tile.bounds.top,size,size);
       if(o.terrainDraft&&!affected){const shore=shoreline(cache,tile);if(shore)target.drawImage(shore,tile.bounds.left,tile.bounds.top,size,size);if(trees.length){const ground=woodlandGround(cache,tile,trees,floorImage!);if(ground)target.drawImage(ground,tile.bounds.left,tile.bounds.top,size,size);}}
-      target.restore();if(intoAtlas)flat.filled.add(key);
+      target.restore();if(intoAtlas){
+        flat.filled.add(key);
+        const b={left:Math.max(0,x*world-2),top:Math.max(0,y*world-2),right:Math.min(scene.width,(x+1)*world+2),bottom:Math.min(scene.height,(y+1)*world+2)};
+        const old=flat.extent;flat.extent=old?{left:Math.min(old.left,b.left),top:Math.min(old.top,b.top),right:Math.max(old.right,b.right),bottom:Math.max(old.bottom,b.bottom)}:b;
+      }
       cache.tiles.delete(key); cache.tiles.set(key, tile);
     }
   }
-  if(!o.terrainDraft&&consolidate)c.drawImage(flat.canvas,0,0,flat.canvas.width/density,flat.canvas.height/density);
+  if(!o.terrainDraft&&consolidate&&flat.extent){
+    const b=flat.extent;c.drawImage(flat.canvas,b.left,b.top,b.right-b.left,b.bottom-b.top,b.left/density,b.top/density,(b.right-b.left)/density,(b.bottom-b.top)/density);
+  }
   c.restore();
   let memory = [...cache.tiles.values()].reduce((n, t) => n + bytes(t), 0);
   for (const [key, tile] of cache.tiles) {

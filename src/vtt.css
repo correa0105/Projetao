@@ -1278,3 +1278,11 @@
 .vtt-vehicle-row .vtt-character-row>span{display:flex;flex-direction:column;gap:5px;min-width:0;overflow-wrap:anywhere;}
 .vtt-vehicle-row .vtt-character-row strong{font-size:13px;color:#ead8b4;}
 .vtt-vehicle-row .vtt-character-row small{display:block;font-size:11px;line-height:1.45;color:#bcb6a6;}
+.vtt-naval-controls,.vtt-ocean-controls{min-width:0;margin:12px 0;padding:12px;border:1px solid #8c75494f;border-radius:6px;background:#101a2180;display:grid;gap:12px;}
+.vtt-naval-controls legend,.vtt-ocean-controls legend{color:#d7b875;font-size:12px;font-weight:700;padding:0 6px;}
+.vtt-naval-controls label,.vtt-ocean-controls label{font-size:12px;line-height:1.4;}
+.vtt-naval-controls label:not(.vtt-check),.vtt-ocean-controls label:not(.vtt-check){display:grid;gap:7px;}
+.vtt-naval-controls input[type=range],.vtt-ocean-controls input[type=range]{width:100%;min-width:0;accent-color:#bd9858;}
+.vtt-naval-controls .vtt-check,.vtt-ocean-controls .vtt-check{display:flex;align-items:center;gap:9px;margin:0;}
+.vtt-naval-controls input[type=checkbox],.vtt-ocean-controls input[type=checkbox]{width:auto;accent-color:#bd9858;}
+.vtt-naval-controls output,.vtt-ocean-controls output{font-size:11px;color:#c7b894;}

@@ -1,0 +1,36 @@
+{
+  "license": "CC0-1.0",
+  "licenseVerified": "2026-10-26",
+  "author": "jasinski",
+  "sourcePage": "https://opengameart.org/content/beach-ocean-waves",
+  "sources": [
+    {
+      "file": "wave_01_cc0-18363__jasinski__alkaibeach.flac",
+      "url": "https://opengameart.org/sites/default/files/wave_01_cc0-18363__jasinski__alkaibeach.flac",
+      "sha256": "fcfca178eca2eac536e8c2a4ed5cf8096e44c921acd587047b3d9f1d7845435c"
+    },
+    {
+      "file": "wave_02_cc0-18363__jasinski__alkaibeach.flac",
+      "url": "https://opengameart.org/sites/default/files/wave_02_cc0-18363__jasinski__alkaibeach.flac",
+      "sha256": "53b5c28c0edc36f049e77e65f2cf8a86135103328c44c1507c416e6469d18096"
+    },
+    {
+      "file": "wave_03_cc0-18363__jasinski__alkaibeach.flac",
+      "url": "https://opengameart.org/sites/default/files/wave_03_cc0-18363__jasinski__alkaibeach.flac",
+      "sha256": "fc795f95f352b354867d69a587daecb8815334e28e3b56a7798c5f3005349054"
+    },
+    {
+      "file": "wave_04_cc0-18363__jasinski__alkaibeach.flac",
+      "url": "https://opengameart.org/sites/default/files/wave_04_cc0-18363__jasinski__alkaibeach.flac",
+      "sha256": "3c490e736365fdd617ce8405470d8878fc6146d9a8dba448d622addb01cfff3b"
+    }
+  ],
+  "asset": {
+    "path": "/audio/vtt/amb-ocean-waves.ogg",
+    "sha256": "a0400a690ec1a03d5f7cd9180e3dd141429dcb31c52683704bb46166d5dda6e5",
+    "bytes": 199733,
+    "lufs": -21.42,
+    "truePeakDb": -5.85
+  },
+  "processing": "Four real waves with 0.7s equal-gain crossfades, circular 0.5s seam, 48 kHz stereo Vorbis q6, -21 LUFS target; no prior audio changed."
+}

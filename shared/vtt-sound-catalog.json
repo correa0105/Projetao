@@ -4030,5 +4030,27 @@
       "cinemático",
       "arcane"
     ]
+  },
+  {
+    "id": "amb-ocean-waves",
+    "name": "Mar e ondas na costa",
+    "kind": "ambience",
+    "category": "Natureza",
+    "path": "/audio/vtt/amb-ocean-waves.ogg",
+    "duration": 9.46,
+    "loop": true,
+    "volume": 0.6,
+    "credit": "jasinski · CC0",
+    "description": "Ondas reais se aproximam, quebram e recuam na costa; ciclo contínuo para viagens marítimas e ilhas.",
+    "tags": [
+      "mar",
+      "oceano",
+      "ondas",
+      "praia",
+      "navios"
+    ],
+    "scenarios": [
+      "Viagem e natureza"
+    ]
   }
 ]

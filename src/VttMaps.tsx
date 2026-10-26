@@ -20,6 +20,8 @@ import {
   type VttAsset,
 } from '../shared/vtt';
 import './vtt-maps.css';
+import {oceanSchema} from '../shared/vtt-naval';
+import {VttOceanControls} from './VttNavalControls';
 
 export function VttModal({
   title,
@@ -124,7 +126,7 @@ export function MapLibrary({
   doc: VttDocument;
   edit: (fn: (d: VttDocument) => void) => void;
   activate: (id: string) => void;
-  create: (folderId: string | null) => void;
+  create: (folderId: string | null,ocean?:boolean) => void;
   configure: (id: string) => void;
   close: () => void;
 }) {
@@ -200,6 +202,7 @@ export function MapLibrary({
           <Plus size={16} />
           Novo mapa
         </button>
+        <button onClick={()=>create(folderId,true)} disabled={doc.scenes.length>=50}>Novo oceano</button>
       </div>
       <div className="vtt-map-browser">
         <nav aria-label="Pastas dos mapas">
@@ -582,6 +585,8 @@ export function MapSettings({
           </section>
           <section>
             <h3>Fundo e entorno</h3>
+            {toggle('Mapa de oceano',!!draft.ocean?.enabled,n=>change(s=>{s.ocean={...(s.ocean??oceanSchema.parse({})),enabled:n};}))}
+            {draft.ocean?.enabled&&<VttOceanControls value={draft.ocean} change={patch=>change(s=>Object.assign(s.ocean!,patch))}/>}
             <div className="vtt-two">
               <label>
                 Cor do tabuleiro

@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { api } from './api';
+import { navalAtlas, sailMasts, rowing, rowingImage } from '../shared/vtt-naval';
+import { drawSailingRig } from './vtt-naval-canvas';
+import { drawVehiclePart } from './vtt-vehicles-canvas';
+import type { VttToken } from '../shared/vtt';
 import {
   vehicleDefinitions,
   vehicleImage,
@@ -15,7 +19,8 @@ export function VehiclePreview({ id }: { id: VehicleId }) {
   useEffect(() => {
     let live = true;
     const img = new Image(),
-      cover = new Image();
+      cover = new Image(),
+      oar = new Image();
     const draw = () => {
       const c = canvas.current?.getContext('2d');
       if (
@@ -32,6 +37,22 @@ export function VehiclePreview({ id }: { id: VehicleId }) {
       const scale = Math.min(164 / d.widthFt, 164 / d.lengthFt),
         w = d.widthFt * scale,
         h = d.lengthFt * scale;
+      if (sailMasts[id] || rowing[id]) {
+        const t = {
+          width: w,
+          height: h,
+          rotation: 0,
+          image: vehicleImage(id),
+          vehicle: { itemId: id },
+        } as VttToken;
+        c.save();
+        c.translate(90, 90);
+        drawVehiclePart(c, t, img, 'base', { time: 0, animate: false, oar });
+        if (sailMasts[id]) drawSailingRig(c, t, cover);
+        c.restore();
+        canvas.current!.dataset.ready = 'true';
+        return;
+      }
       for (const part of ['base', 'cover'] as const) {
         const source = part === 'cover' ? cover : img;
         for (const { source: r, target: q } of vehicleDrawParts(id, part))
@@ -49,9 +70,10 @@ export function VehiclePreview({ id }: { id: VehicleId }) {
       }
       canvas.current!.dataset.ready = 'true';
     };
-    img.onload = cover.onload = draw;
+    img.onload = cover.onload = oar.onload = draw;
     img.src = vehicleImage(id);
-    cover.src = vehicleCoverImage(id);
+    cover.src = sailMasts[id] ? navalAtlas(id) : vehicleCoverImage(id);
+    if (rowing[id]) oar.src = rowingImage;
     return () => {
       live = false;
     };
