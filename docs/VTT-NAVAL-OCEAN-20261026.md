@@ -31,3 +31,9 @@ Campos opcionais `scene.ocean` e `token.vehicleMotion`, validados estritamente, 
 `scripts/test-vehicles-slots-isolated.mjs --naval`: PostgreSQL descartável, controle rápido salvando sem mover o barco, menus em 1440/1024/768/390 px, novo oceano/configurações/volumes, reprodução real de dois loops e encerramento ao trocar a cena. Renderer completo com seis barcos e ilha: máscaras, pintura/borracha/camada oculta, estado estático e contadores de cache. Evidências em `test-results/naval/` (não versionadas). TypeScript e builds de cliente/servidor obrigatórios antes da publicação.
 
 Resultado local: 20 testes aprovados; navegador sem erros em quatro larguras, dois áudios reproduzidos/encerrados, máscaras e cache estáveis. Seis barcos/ilha em 1440×1000: mediana 1 ms, p95 2,9 ms no navegador de teste; resultado não constitui garantia de desempenho em qualquer dispositivo.
+
+## Publicação
+
+26/10/2026 — PUBLICADO vtt-naval-ocean-20261026 (4b6abfb3): pontas das velas baixas e presas por escotas, mastros superiores circulares, inflar/recolher e animações de pano/remos independentes; novo oceano animado opcional, costa reconhecendo pintura e mar/vento com volumes. Protocolo 28. 20 testes + navegador em quatro larguras/áudio real aprovados; seis barcos/ilha: mediana 1 ms, p95 2,9 ms. Conferidos 51 arquivos novos, 1.107 anteriores e 47 respostas HTTPS; três PNGs novos e 12+5 antigos/241 áudios preservados, um mar novo. Cinco mesas, hotbars, 35 assets privados, fichas/artes/inventários/compras e 26 slots idênticos por hash; ilustrador online. Atualizar a página. Guia VTT-NAVAL-OCEAN-20261026.
+
+Imagem `alvorada-cinzenta:vtt-naval-ocean-20261026`; fonte `4b6abfb386e079924cb1d84b81d96e0ce9bec8fd`. Backup completo antes da troca, nenhum migration/reparo de dados ou reinício do ilustrador. Hashes integrais dos grupos privados idênticos antes/depois. Recibo/manifesto e verificadores em `.local/`, sem credenciais versionadas.
