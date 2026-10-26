@@ -12,7 +12,11 @@ export async function smokeImmersiveAudio(page: Page, peer: Page) {
   expect(expanded!.width).toBeGreaterThan(600);
   await page.screenshot({ path: 'test-results/vtt-audio-expanded-20261026.png' });
   await page.getByRole('button', { name: 'Recolher biblioteca de sons' }).click();
-  await page.getByRole('button', { name: 'Efeitos de tela', exact: true }).click();
+  await expect(page.locator('.vtt-sound-tabs').getByRole('button',{name:'Efeitos de tela',exact:true})).toHaveCount(0);
+  await page.getByRole('button', { name: 'Efeitos do mapa', exact: true }).click();
+  const mapEffects=page.getByRole('dialog',{name:'Efeitos do mapa',exact:true});
+  await mapEffects.getByRole('button',{name:'Tela inteira',exact:true}).click();
+  await expect(mapEffects.getByRole('region',{name:'Efeitos imersivos de tela'})).toBeVisible();
   if (!(await peer.locator('.vtt-soundboard').isVisible()))
     await peer.getByRole('button', { name: 'Som', exact: true }).click();
   for (const preset of screenEffectPresets) {
@@ -53,6 +57,15 @@ export async function smokeImmersiveAudio(page: Page, peer: Page) {
       .poll(() => peer.locator('.vtt-workspace').evaluate((e) => e.style.translate))
       .toBe('');
   }
+  for(const width of [320,390,768,1440]){
+    await page.setViewportSize({width,height:900});
+    const bounds=await mapEffects.evaluate(e=>({width:e.clientWidth,scroll:e.scrollWidth,right:e.getBoundingClientRect().right}));
+    expect(bounds.scroll).toBeLessThanOrEqual(bounds.width+1);
+    expect(bounds.right).toBeLessThanOrEqual(width);
+    await page.screenshot({path:`test-results/vtt-screen-map-menu-${width}-20261026.png`});
+  }
+  await page.setViewportSize({width:1440,height:950});
+  await mapEffects.getByRole('button',{name:'Fechar efeitos do mapa',exact:true}).click();
   await page.getByRole('button', { name: 'Microfone', exact: true }).click();
   const panel = page.getByRole('region', { name: 'Microfone e vozes de monstros' }),
     other = peer.getByRole('region', { name: 'Microfone e vozes de monstros' });

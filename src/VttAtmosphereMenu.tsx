@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { CloudSun, RotateCcw, X } from 'lucide-react';
+import { CloudSun, RotateCcw, Sparkles, X } from 'lucide-react';
+import { VttScreenEffectControls } from './VttScreenEffects';
+import type { SoundCommand, SoundSnapshot } from '../shared/vtt-sounds';
 import {
   atmosphereSchema,
   dayPresets,
@@ -16,6 +18,10 @@ export function VttAtmosphereMenu({
   effectsEnabled,
   enableEffects,
   preview,
+  soundSnapshot,
+  sceneId,
+  soundCommand,
+  unlockAudio,
 }: {
   value: MapAtmosphere;
   busy: boolean;
@@ -23,9 +29,13 @@ export function VttAtmosphereMenu({
   effectsEnabled: boolean;
   enableEffects: () => void;
   preview: (value: MapAtmosphere | null) => void;
+  soundSnapshot: SoundSnapshot | null;
+  sceneId: string;
+  soundCommand: (command: SoundCommand) => Promise<void>;
+  unlockAudio: () => void;
 }) {
   const [open, setOpen] = useState(false),
-    [tab, setTab] = useState<'natural' | 'magic'>('natural'),
+    [tab, setTab] = useState<'natural' | 'magic' | 'screen'>('natural'),
     [draft, setDraft] = useState(value),
     [saving, setSaving] = useState(false),
     [error, setError] = useState('');
@@ -110,24 +120,26 @@ export function VttAtmosphereMenu({
                 <X size={15} />
               </button>
             </header>
-            {!effectsEnabled && (
+            {!effectsEnabled && tab !== 'screen' && (
               <p className="vtt-atmosphere-muted">
                 Clima e partículas pausados nesta tela. Iluminação e horário permanecem ativos.{' '}
                 <button onClick={enableEffects}>Mostrar efeitos</button>
               </p>
             )}
-            <div className="vtt-atmosphere-days" aria-label="Horário da cena">
-              {dayPresets.map((p) => (
-                <button
-                  key={p.id}
-                  title={p.hint}
-                  aria-pressed={draft.day === p.id}
-                  onClick={() => patch({ day: p.id })}
-                >
-                  {p.name}
-                </button>
-              ))}
-            </div>
+            {tab !== 'screen' && (
+              <div className="vtt-atmosphere-days" aria-label="Horário da cena">
+                {dayPresets.map((p) => (
+                  <button
+                    key={p.id}
+                    title={p.hint}
+                    aria-pressed={draft.day === p.id}
+                    onClick={() => patch({ day: p.id })}
+                  >
+                    {p.name}
+                  </button>
+                ))}
+              </div>
+            )}
             <nav aria-label="Categorias de clima">
               <button aria-pressed={tab === 'natural'} onClick={() => setTab('natural')}>
                 Clima
@@ -135,71 +147,89 @@ export function VttAtmosphereMenu({
               <button aria-pressed={tab === 'magic'} onClick={() => setTab('magic')}>
                 Fantasia
               </button>
-            </nav>
-            <div className="vtt-atmosphere-presets">
-              {weatherPresets
-                .filter((p) => p[2] === tab && p[0] !== 'meteors')
-                .map((p) => (
-                  <button
-                    key={p[0]}
-                    aria-pressed={draft.weather === p[0]}
-                    data-weather={p[0]}
-                    onClick={() => patch({ weather: p[0] })}
-                  >
-                    <i className={'atmosphere-swatch ' + p[3]} aria-hidden="true" />
-                    {p[1]}
-                  </button>
-                ))}
-            </div>
-            <label className="vtt-atmosphere-range">
-              Intensidade <output>{Math.round(draft.intensity * 100)}%</output>
-              <input
-                aria-label="Intensidade do clima"
-                type="range"
-                min="0"
-                max="1"
-                step=".05"
-                value={draft.intensity}
-                onChange={(e) => patch({ intensity: Number(e.target.value) })}
-              />
-            </label>
-            <details>
-              <summary>Movimento e direção</summary>
-              <label className="vtt-atmosphere-range">
-                Velocidade <output>{draft.speed.toFixed(1)}×</output>
-                <input
-                  aria-label="Velocidade do clima"
-                  type="range"
-                  min=".1"
-                  max="2"
-                  step=".1"
-                  value={draft.speed}
-                  onChange={(e) => patch({ speed: Number(e.target.value) })}
-                />
-              </label>
-              <label className="vtt-atmosphere-range">
-                Direção do vento <output>{draft.wind}°</output>
-                <input
-                  aria-label="Direção do vento"
-                  type="range"
-                  min="0"
-                  max="360"
-                  step="5"
-                  value={draft.wind}
-                  onChange={(e) => patch({ wind: Number(e.target.value) })}
-                />
-              </label>
-            </details>
-            {error && <p role="alert">{error}</p>}
-            <footer>
-              <button disabled={busy} onClick={() => select(atmosphereSchema.parse({}))}>
-                <RotateCcw size={12} />
-                Limpar
+              <button aria-pressed={tab === 'screen'} onClick={() => setTab('screen')}>
+                <Sparkles size={13} /> Tela inteira
               </button>
-              <span className="vtt-atmosphere-status" role="status">
-                {saving ? 'Salvando…' : 'Seleção automática'}
-              </span>
-            </footer>
+            </nav>
+            {tab === 'screen' ? (
+              soundSnapshot ? (
+                <VttScreenEffectControls
+                  snapshot={soundSnapshot}
+                  sceneId={sceneId}
+                  command={soundCommand}
+                  unlock={unlockAudio}
+                />
+              ) : (
+                <p>Carregando efeitos de tela…</p>
+              )
+            ) : (
+              <>
+                <div className="vtt-atmosphere-presets">
+                  {weatherPresets
+                    .filter((p) => p[2] === tab && p[0] !== 'meteors')
+                    .map((p) => (
+                      <button
+                        key={p[0]}
+                        aria-pressed={draft.weather === p[0]}
+                        data-weather={p[0]}
+                        onClick={() => patch({ weather: p[0] })}
+                      >
+                        <i className={'atmosphere-swatch ' + p[3]} aria-hidden="true" />
+                        {p[1]}
+                      </button>
+                    ))}
+                </div>
+                <label className="vtt-atmosphere-range">
+                  Intensidade <output>{Math.round(draft.intensity * 100)}%</output>
+                  <input
+                    aria-label="Intensidade do clima"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step=".05"
+                    value={draft.intensity}
+                    onChange={(e) => patch({ intensity: Number(e.target.value) })}
+                  />
+                </label>
+                <details>
+                  <summary>Movimento e direção</summary>
+                  <label className="vtt-atmosphere-range">
+                    Velocidade <output>{draft.speed.toFixed(1)}×</output>
+                    <input
+                      aria-label="Velocidade do clima"
+                      type="range"
+                      min=".1"
+                      max="2"
+                      step=".1"
+                      value={draft.speed}
+                      onChange={(e) => patch({ speed: Number(e.target.value) })}
+                    />
+                  </label>
+                  <label className="vtt-atmosphere-range">
+                    Direção do vento <output>{draft.wind}°</output>
+                    <input
+                      aria-label="Direção do vento"
+                      type="range"
+                      min="0"
+                      max="360"
+                      step="5"
+                      value={draft.wind}
+                      onChange={(e) => patch({ wind: Number(e.target.value) })}
+                    />
+                  </label>
+                </details>
+                {error && <p role="alert">{error}</p>}
+                <footer>
+                  <button disabled={busy} onClick={() => select(atmosphereSchema.parse({}))}>
+                    <RotateCcw size={12} />
+                    Limpar
+                  </button>
+                  <span className="vtt-atmosphere-status" role="status">
+                    {saving ? 'Salvando…' : 'Seleção automática'}
+                  </span>
+                </footer>
+              </>
+            )}
             <small>Visível para a mesa. Só o mestre altera.</small>
           </section>,
           document.body,

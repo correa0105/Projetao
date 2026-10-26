@@ -3050,6 +3050,8 @@ export function VttSession({ characters, user, media }: { characters: Character[
           {gm && !preview && !sheetId && (
             <VttAtmosphereMenu
               key={state.id + scene.id}
+              soundSnapshot={sounds.snapshot} sceneId={scene.id}
+              soundCommand={c=>soundCommand(c,state.id)} unlockAudio={sounds.unlock}
               effectsEnabled={mapEffects} enableEffects={() => media.update({mapEffects:true})}
               value={scene.atmosphere} busy={busy}
               preview={(value) => setAtmospherePreview(value ? {sceneId:scene.id,value} : null)}
@@ -5099,7 +5101,6 @@ export function VttSession({ characters, user, media }: { characters: Character[
                 <VttSoundboard
                   key={state.id}
                   snapshot={sounds.snapshot}
-                  sceneId={scene.id}
                   voice={voice}
                   shareVoice={async (file) => { const asset=await uploadAsset(file); await soundCommand({kind:'play',sourceId:'asset:'+asset.id,settings:{sourceId:'asset:'+asset.id,channel:'effect',volume:.75,loop:false}},state.id); }}
                   assets={state.assets}

@@ -14,7 +14,7 @@ Manutenção: `prepare-vtt-audio-20261026.mjs` verifica CC0 e fixa download/hash
 
 ## Efeitos de tela
 
-Em Som → Efeitos de tela: Tremor de terra, Desabamento, Tormenta, Nevasca, Cinzas e brasas, Presença espectral e Ruptura arcana. Terra e fragmentos entram pelo alto, com profundidades, aceleração, rotação, facetas e poeira. A sobreposição não captura cliques; controles continuam disponíveis. Tremor desloca a apresentação, sem alterar câmera, tokens, mapas, paredes ou dados de jogo.
+Em Efeitos do mapa → Tela inteira: Tremor de terra, Desabamento, Tormenta, Nevasca, Cinzas e brasas, Presença espectral e Ruptura arcana. A localização foi corrigida após o usuário indicar o painel de clima; a aba de efeitos de tela foi retirada de Som. Volume e mute permanecem junto dos controles visuais. Terra e fragmentos entram pelo alto, com profundidades, aceleração, rotação, facetas e poeira. A sobreposição não captura cliques; controles continuam disponíveis. Tremor desloca a apresentação, sem alterar câmera, tokens, mapas, paredes ou dados de jogo.
 
 O dono da mesa dispara/encerra, escolhe intensidade, duração de 5–60 s e volume. Silenciar som do efeito para todos funciona antes e durante a execução, sem parar a imagem ou a música. Volumes locais do site e a preferência de som dos efeitos do VTT são respeitados. Quem desativou efeitos do mestre conserva a escolha. Movimento reduzido elimina tremor/clarões e reduz animação; aba oculta não renderiza partículas.
 

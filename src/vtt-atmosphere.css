@@ -65,6 +65,46 @@
   gap: 6px;
   margin-bottom: 9px;
 }
+.vtt-atmosphere-menu nav button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+.vtt-atmosphere-menu .vtt-screen-controls,
+.vtt-atmosphere-menu .vtt-screen-controls * {
+  box-sizing: border-box;
+}
+.vtt-atmosphere-menu .vtt-screen-controls > label:not(.vtt-check) {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 4px 0;
+  font-size: 11px;
+  color: #c4c7bd;
+}
+.vtt-atmosphere-menu .vtt-screen-controls > .vtt-check {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.vtt-atmosphere-menu .vtt-screen-controls input[type='checkbox'] {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+}
+.vtt-atmosphere-menu .vtt-screen-presets button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+.vtt-atmosphere-menu .vtt-screen-running {
+  margin-bottom: 8px;
+}
 .vtt-atmosphere-presets {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

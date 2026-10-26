@@ -16,7 +16,6 @@ import {
   Search,
 } from 'lucide-react';
 import { soundScenarios, soundMatches, soundDuration } from '../shared/vtt-sound-library';
-import { VttScreenEffectControls } from './VttScreenEffects';
 import { VttVoicePanel } from './VttVoicePanel';
 import type { useVttVoice } from './useVttVoice';
 import {
@@ -32,7 +31,6 @@ import type { VttAsset } from '../shared/vtt';
 import './vtt-soundboard.css';
 type Props = {
   snapshot: SoundSnapshot | null;
-  sceneId: string;
   voice: ReturnType<typeof useVttVoice>;
   shareVoice: (file: File) => Promise<void>;
   assets: VttAsset[];
@@ -48,7 +46,6 @@ type Props = {
 };
 export function VttSoundboard({
   snapshot,
-  sceneId,
   voice,
   shareVoice,
   assets,
@@ -253,7 +250,9 @@ export function VttSoundboard({
             </label>
             <button
               className="vtt-stop-all"
-              disabled={busy || (!board.voices.length && !snapshot.music.playing && !playing.length)}
+              disabled={
+                busy || (!board.voices.length && !snapshot.music.playing && !playing.length)
+              }
               onClick={() => void run(() => command({ kind: 'stopAll' }))}
             >
               <Square size={12} /> Parar todos
@@ -303,7 +302,6 @@ export function VttSoundboard({
               ['uploads', 'Enviados'],
               ['favorites', 'Favoritos'],
               ['removed', 'Removidos'],
-              ['screen', 'Efeitos de tela'],
               ['voice', 'Microfone'],
             ].map(([id, label]) => (
               <button
@@ -322,13 +320,6 @@ export function VttSoundboard({
           </nav>
           {kind === 'voice' ? (
             <VttVoicePanel voice={voice} gm={gm} share={shareVoice} />
-          ) : kind === 'screen' ? (
-            <VttScreenEffectControls
-              snapshot={snapshot}
-              sceneId={sceneId}
-              command={command}
-              unlock={unlock}
-            />
           ) : (
             <>
               <div className="vtt-sound-search">
