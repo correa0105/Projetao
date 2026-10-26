@@ -10,7 +10,18 @@ import {
   rowingPose,
   vehicleMotionSchema,
   oceanSchema,
+  oceanAnimationEnabled,
 } from '../shared/vtt-naval';
+test('ocean playback follows master pause and local preferences with explicit reduced-motion opt-in', () => {
+  const ocean = oceanSchema.parse({});
+  assert.equal(oceanAnimationEnabled(ocean, true, 'system', false), true);
+  assert.equal(oceanAnimationEnabled(ocean, true, 'system', true), false);
+  assert.equal(oceanAnimationEnabled(ocean, true, 'on', true), true);
+  assert.equal(oceanAnimationEnabled(ocean, true, 'off', false), false);
+  assert.equal(oceanAnimationEnabled(ocean, false, 'on', false), false);
+  assert.equal(oceanAnimationEnabled({ ...ocean, animated: false }, true, 'on', false), false);
+  assert.equal(oceanAnimationEnabled(undefined, true, 'on', false), false);
+});
 test('ocean and ship options remain optional for saved rooms and accept independent switches', () => {
   const scene = newScene(randomUUID()),
     t = newToken(randomUUID(), scene);

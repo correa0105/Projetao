@@ -49,6 +49,7 @@ import { spellTokenOpacity } from './vtt-spell-cinematic';
 import type { SpellEffect } from '../shared/vtt-spells';
 export type VttCamera = { x: number; y: number; zoom: number };
 export type RenderOptions = {
+  oceanMotion?:import('../shared/vtt-naval').OceanMotionPreference;
   terrainDraft?: TerrainStroke | null;
   terrainCursor?: { x: number; y: number; radius: number; erase: boolean } | null;
   visualEffects?: boolean;

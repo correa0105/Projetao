@@ -22,6 +22,21 @@ export const oceanSchema = z
   })
   .strict();
 export type Ocean = z.infer<typeof oceanSchema>;
+export type OceanMotionPreference = 'system' | 'on' | 'off';
+export function oceanAnimationEnabled(
+  ocean: Ocean | undefined,
+  mapEffects: boolean,
+  preference: OceanMotionPreference = 'system',
+  reduced = false,
+) {
+  return !!(
+    ocean?.enabled &&
+    ocean.animated &&
+    mapEffects &&
+    preference !== 'off' &&
+    (!reduced || preference === 'on')
+  );
+}
 export const oceanImage = '/vtt/terrain-water-20261013/water.webp';
 export const navalAtlas = (id: VehicleId) =>
   '/vtt/naval-20261026/' + (id === 'longship' ? 'striped' : 'ivory') + '-rig-v4.png';

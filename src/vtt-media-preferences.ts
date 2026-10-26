@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import type { OceanMotionPreference } from '../shared/vtt-naval';
 type Preferences = {
   mapPanButton: 'right' | 'left';
   mapEffects: boolean;
+  oceanMotion: OceanMotionPreference;
   masterEffects: boolean;
   soundEnabled: boolean;
   soundVolume: number;
@@ -9,6 +11,7 @@ type Preferences = {
 const defaults: Preferences = {
   mapPanButton: 'right',
   mapEffects: true,
+  oceanMotion: 'system',
   masterEffects: true,
   soundEnabled: true,
   soundVolume: 0.65,
@@ -22,6 +25,8 @@ export function useVttMediaPreferences(userId: string) {
         mapPanButton: saved.mapPanButton === 'left' ? 'left' : 'right',
         mapEffects:
           typeof saved.mapEffects === 'boolean' ? saved.mapEffects : saved.visualEffects !== false,
+        oceanMotion:
+          saved.oceanMotion === 'on' || saved.oceanMotion === 'off' ? saved.oceanMotion : 'system',
         masterEffects:
           typeof saved.masterEffects === 'boolean'
             ? saved.masterEffects

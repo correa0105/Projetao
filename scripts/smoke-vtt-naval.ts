@@ -30,6 +30,7 @@ await new Promise<void>((r) => server.once('listening', r));
 const browser = await chromium.launch({ channel: 'msedge', headless: true }),
   ctx = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
+    reducedMotion: 'reduce',
     extraHTTPHeaders: { 'X-Vtt-Schema-Version': String(vttProtocolVersion) },
   }),
   page = await ctx.newPage(),
@@ -131,6 +132,44 @@ try {
   await expect(page.locator('.vtt-workspace')).toBeVisible({ timeout: 60000 });
   const board = page.getByLabel('Tabuleiro da mesa', { exact: true });
   await page.waitForTimeout(1500);
+  const playback = page.getByRole('group', { name: 'Reprodução das ondas' });
+  await expect(playback).toContainText('Ondas pausadas neste dispositivo');
+  await playback.getByRole('button', { name: 'Ativar ondas neste dispositivo' }).click();
+  await expect(playback).toContainText('Ondas em movimento');
+  const waveZoom =
+    Number(
+      (
+        await page
+          .getByText(/^\d+%$/)
+          .last()
+          .innerText()
+      ).replace('%', ''),
+    ) / 100;
+  const waterFrame = () =>
+    board.evaluate(
+      (node, { zoom, height }) => {
+        const c = node as HTMLCanvasElement,
+          ratio = c.width / c.getBoundingClientRect().width;
+        const x = Math.floor(c.width / 2 - 32),
+          y = Math.floor(c.height / 2 + (200 - height / 2) * zoom * ratio - 32);
+        return Array.from(c.getContext('2d')!.getImageData(x, y, 64, 64).data);
+      },
+      { zoom: waveZoom, height: s.height },
+    );
+  const waveA = await waterFrame();
+  await page.waitForTimeout(1000);
+  const waveB = await waterFrame();
+  const waveDifference = waveA.reduce((n, v, i) => n + Math.abs(v - waveB[i]), 0) / waveA.length;
+  expect(waveDifference).toBeGreaterThan(2);
+  await page.screenshot({ path: 'test-results/naval/waves-active.png' });
+  await playback.getByRole('button', { name: 'Pausar ondas neste dispositivo' }).click();
+  await page.waitForTimeout(100);
+  const pausedA = await waterFrame();
+  await page.waitForTimeout(600);
+  const pausedB = await waterFrame();
+  expect(pausedA).toEqual(pausedB);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await playback.getByRole('button', { name: 'Ativar ondas neste dispositivo' }).click();
   async function menu() {
     const box = await board.boundingBox(),
       zoom =
@@ -190,6 +229,37 @@ try {
   await page.getByRole('button', { name: 'Biblioteca de mapas', exact: true }).click();
   await page.getByRole('button', { name: 'Configurar mapa ' + s.name, exact: true }).click();
   const settings = page.getByRole('dialog', { name: 'Configurações do mapa', exact: true });
+  const oceanSwitch = settings.getByRole('switch', { name: 'Mapa de oceano', exact: true });
+  for (const width of [1440, 1024, 768, 390]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await oceanSwitch.scrollIntoViewIfNeeded();
+    for (const checked of [false, true]) {
+      await oceanSwitch.setChecked(checked);
+      const geometry = await oceanSwitch.evaluate((node) => {
+        const e = node as HTMLInputElement,
+          r = e.getBoundingClientRect(),
+          s = getComputedStyle(e),
+          b = getComputedStyle(e, '::before'),
+          shift = new DOMMatrix(b.transform === 'none' ? undefined : b.transform).e;
+        return {
+          width: r.width,
+          height: r.height,
+          left: parseFloat(s.borderLeftWidth) + parseFloat(b.left) + shift,
+          right: parseFloat(s.borderLeftWidth) + parseFloat(b.left) + shift + parseFloat(b.width),
+        };
+      });
+      expect(geometry.width).toBe(40);
+      expect(geometry.height).toBe(24);
+      expect(geometry.left).toBeGreaterThanOrEqual(1);
+      expect(geometry.right).toBeLessThanOrEqual(39);
+    }
+    await page.screenshot({ path: `test-results/naval/map-switch-${width}.png` });
+  }
+  await oceanSwitch.focus();
+  await oceanSwitch.press('Space');
+  await expect(oceanSwitch).not.toBeChecked();
+  await oceanSwitch.press('Space');
+  await expect(oceanSwitch).toBeChecked();
   await expect(settings.getByRole('switch', { name: 'Mapa de oceano', exact: true })).toBeChecked();
   await settings.getByRole('checkbox', { name: 'Animar água', exact: true }).uncheck();
   for (const name of ['Som do mar', 'Som do vento'])
@@ -415,7 +485,9 @@ try {
   expect(render.landPixel).not.toEqual(render.waterPixel);
   // Canvas may switch GPU/CPU sampling after getImageData; permit only the
   // tiny channel rounding difference, never retained sand or shoreline opacity.
-  expect(Math.max(...render.erasedPixel.map((v,i)=>Math.abs(v-render.waterPixel[i])))).toBeLessThanOrEqual(3);
+  expect(
+    Math.max(...render.erasedPixel.map((v, i) => Math.abs(v - render.waterPixel[i]))),
+  ).toBeLessThanOrEqual(3);
   for (const o of render.occupation) {
     expect(o.occupied, o.id).toBe(true);
     expect(o.hidden).toBe(false);
@@ -425,7 +497,20 @@ try {
   expect(errors).toEqual([]);
   await writeFile(
     'test-results/naval/results.json',
-    JSON.stringify({ ...render, png: undefined, widths: [1440, 1024, 768, 390], errors }, null, 2),
+    JSON.stringify(
+      {
+        ...render,
+        png: undefined,
+        waveDifference,
+        mainLoopPaused: true,
+        reducedMotionOptIn: true,
+        switchThumbContained: true,
+        widths: [1440, 1024, 768, 390],
+        errors,
+      },
+      null,
+      2,
+    ),
   );
   console.log(
     JSON.stringify({

@@ -1286,3 +1286,6 @@
 .vtt-naval-controls .vtt-check,.vtt-ocean-controls .vtt-check{display:flex;align-items:center;gap:9px;margin:0;}
 .vtt-naval-controls input[type=checkbox],.vtt-ocean-controls input[type=checkbox]{width:auto;accent-color:#bd9858;}
 .vtt-naval-controls output,.vtt-ocean-controls output{font-size:11px;color:#c7b894;}
+.vtt-ocean-playback{position:absolute;right:12px;top:66px;z-index:18;display:flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:calc(100% - 24px);padding:7px 9px;border:1px solid #8c754966;border-radius:7px;background:#101a22ed;color:#d4c6a8;box-shadow:0 3px 12px #0005;font-size:11px;line-height:1.4;}
+.vtt-ocean-playback>svg{color:#8bbed0;flex-shrink:0;}
+.vtt-ocean-playback button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:32px;padding:5px 9px;border-color:#967b49;color:#ead3a2;}

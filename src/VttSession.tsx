@@ -3,6 +3,7 @@ import {navalAtlas,navalAnimated,sailMasts,rowing,rowingImage,oceanImage,oceanSc
 import {tokenOnScreen} from './vtt-render-cache';
 import {VttNavalControls,VttOceanControls} from './VttNavalControls';
 import {VttOceanSounds} from './VttOceanSounds';
+import {VttOceanPlayback} from './VttOceanPlayback';
 import { WorldPlacePicker } from './WorldPlacePicker';
 import { Modal } from './components';
 import { VttPlaceSettings } from './VttPlaceSettings';
@@ -1203,6 +1204,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
           dpr,
           visualEffects,
           mapEffects,
+          oceanMotion:media.oceanMotion,
           bloodEnabled: doc?.bloodEnabled,
           spellEffects: spellcasting.effects,
           spellPreview: spellcasting.preview,
@@ -1254,7 +1256,8 @@ export function VttSession({ characters, user, media }: { characters: Character[
         )
       : 0;
     const timers = ends.map((at) => window.setTimeout(draw, Math.max(0, at - Date.now() + 10)));
-    const navalMoving=mapEffects&&(scene.ocean?.enabled&&scene.ocean.animated||scene.tokens.some(t=>navalAnimated(t)&&!((!gm||preview)&&t.hidden)&&tokenOnScreen(t,{left:camera.x-bounds.width/2/camera.zoom,top:camera.y-bounds.height/2/camera.zoom,right:camera.x+bounds.width/2/camera.zoom,bottom:camera.y+bounds.height/2/camera.zoom},camera.zoom)));
+    const oceanRequested=!!(mapEffects&&scene.ocean?.enabled&&scene.ocean.animated&&media.oceanMotion!=='off');
+    const navalMoving=mapEffects&&(oceanRequested||scene.tokens.some(t=>navalAnimated(t)&&!((!gm||preview)&&t.hidden)&&tokenOnScreen(t,{left:camera.x-bounds.width/2/camera.zoom,top:camera.y-bounds.height/2/camera.zoom,right:camera.x+bounds.width/2/camera.zoom,bottom:camera.y+bounds.height/2/camera.zoom},camera.zoom)));
     const otherInfinite = (mapEffects && atmosphereAnimated(atmosphereScene.atmosphere)) ||
       ((scene.lighting || (scene.fog && scene.fogMode === 'vision')) && sceneHasAnimatedLights(scene)) ||
       scene.tokens.some(t => t.animatedAsset?.playing && (t.layer === 'map' ? mapEffects : visualEffects)) ||
@@ -1267,7 +1270,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
       cancelAnimationFrame(frame);
       draw();
       if(document.hidden)return;
-      if (!(houseDoorsAnimating(c,scene.id) || infinite || until > Date.now() || atmosphereTransitioning(c, scene.id)) || (motionPreference.matches && !scene.tokens.some(t => t.animatedAsset?.playing))) return;
+      if (!(houseDoorsAnimating(c,scene.id) || infinite || until > Date.now() || atmosphereTransitioning(c, scene.id)) || (motionPreference.matches && !(oceanRequested&&media.oceanMotion==='on') && !scene.tokens.some(t => t.animatedAsset?.playing))) return;
       let lastDraw = 0;
       const animate = (now: number) => {
         if (now - lastDraw >= 1000 / (navalMoving&&!otherInfinite?30:60) - 1 && !document.hidden) {
@@ -1307,6 +1310,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
     spellcasting.preview,
     visualEffects,
     mapEffects,
+    media.oceanMotion,
     imageVersion,
     terrainDraft,
     terrainCursor,
@@ -3135,6 +3139,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
           )}
         </nav>
         <div className="vtt-stage" ref={stage}>
+          {scene.ocean?.enabled&&!preview&&<VttOceanPlayback ocean={scene.ocean} mapEffects={mapEffects} preference={media.oceanMotion} change={next=>media.update({oceanMotion:next,...(next==='on'?{mapEffects:true}:{})})}/>}
           {ruler.length > 1 && (
             <output className="vtt-movement-distance" aria-label="Distância medida">
               {rulerLabel(ruler, scene.grid)}
