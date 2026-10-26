@@ -4,7 +4,8 @@ import { z } from 'zod';
 import type { Pool, PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
-import { administratorPredicate, isAdministrator } from './administrators.js';
+import { administrationFor } from './administrators.js';
+const { predicate: scopePredicate, has: hasScope } = administrationFor('rules');
 import {
   INITIAL_RULEBOOK,
   RULEBOOK_MAX_IMAGE_BYTES,
@@ -18,7 +19,7 @@ import {
 } from '../shared/rulebook.js';
 
 type Database = Pool | PoolClient;
-const editorPredicate = () => administratorPredicate();
+const editorPredicate = () => scopePredicate();
 const initialDocument = JSON.stringify(rulebookDocumentSchema.parse(INITIAL_RULEBOOK));
 const writeSchema = z
   .object({
@@ -40,7 +41,7 @@ const historyRevision = z
   .pipe(z.number().int().max(2_147_483_647));
 
 export async function canEditRulebook(userId: string, database: Database = pool): Promise<boolean> {
-  return isAdministrator(userId, database);
+  return hasScope(userId, database);
 }
 
 async function requireEditor(userId: string, database: Database = pool) {

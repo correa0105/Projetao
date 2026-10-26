@@ -5,7 +5,7 @@ export const calendarSettingsSchema = z
   .object({
     title: z.string().trim().min(1).max(100),
     subtitle: z.string().trim().max(500),
-    background: eventImagePathSchema,
+    background: eventImagePathSchema.or(z.string().regex(/^\/api\/home-images\/[0-9a-f-]{36}$/)),
     accent: z.string().regex(/^#[0-9a-f]{6}$/i),
     week_start: z.enum(['monday', 'sunday']),
   })
@@ -33,6 +33,7 @@ export type CalendarResponse = {
   document: CalendarSettings;
   revision: number;
   can_edit: boolean;
+  can_edit_events: boolean;
   entries: CalendarEntry[];
 };
 export function calendarDate(value: string | Date) {

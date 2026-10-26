@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
-import { isAdministrator, requireAdministrator } from './administrators.js';
+import { administrationFor } from './administrators.js';
+const { has: hasScope, require: requireScope } = administrationFor('world');
 import { AppError } from './services.js';
 import { worldClockTime } from '../shared/world-clock.js';
 type State = { anchor_minutes: number; anchor_at: Date; revision: number };
@@ -28,12 +29,12 @@ export function worldClockRouter() {
       pool.query<State>(
         'SELECT anchor_minutes,anchor_at,revision FROM world_clock_state WHERE singleton',
       ),
-      isAdministrator(res.locals.user.id),
+      hasScope(res.locals.user.id),
     ]);
     res.json(snapshot(row, canEdit));
   });
   router.post('/world-clock', async (req, res) => {
-    await requireAdministrator(res.locals.user.id);
+    await requireScope(res.locals.user.id);
     const body = update.parse(req.body),
       [hour, minute] = body.time.split(':').map(Number);
     const result = await transaction(async (db) => {

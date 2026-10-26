@@ -148,9 +148,11 @@ export function GuildCalendar({
               <button className="button outline" onClick={() => setSettings(true)}>
                 <Settings2 size={15} /> Editar calendário
               </button>
-              <button className="button primary" onClick={() => setEditing('new')}>
-                <Plus size={15} /> Novo compromisso
-              </button>
+              {data.can_edit_events && (
+                <button className="button primary" onClick={() => setEditing('new')}>
+                  <Plus size={15} /> Novo compromisso
+                </button>
+              )}
             </div>
           )}
         </div>
@@ -260,7 +262,7 @@ export function GuildCalendar({
             <div className="calendar-empty">
               <CalendarDays size={30} strokeWidth={1} />
               <p>A página deste dia ainda está em branco.</p>
-              {data?.can_edit && (
+              {data?.can_edit_events && (
                 <button className="text-button" onClick={() => setEditing('new')}>
                   <Plus size={14} /> Marcar um encontro
                 </button>
@@ -271,7 +273,11 @@ export function GuildCalendar({
             <CalendarAppointment
               key={item.source + item.id}
               item={item}
-              canEdit={Boolean(data?.can_edit)}
+              canEdit={
+                item.source === 'publication'
+                  ? Boolean(data?.can_edit)
+                  : Boolean(data?.can_edit_events)
+              }
               selected={featured?.id === item.id && featured.source === item.source}
               select={() => setFocusedEntry(item.source + item.id)}
               edit={() => {
@@ -282,7 +288,7 @@ export function GuildCalendar({
           ))}
         </aside>
       </div>
-      {editing && data?.can_edit && (
+      {editing && data?.can_edit_events && (
         <EventEditor
           item={editing === 'new' ? undefined : editing}
           initialDate={selected + 'T19:00:00-03:00'}
@@ -402,6 +408,7 @@ function CalendarSettingsEditor({
             />
           </label>
           <EventImageField
+            uploadPath="/home-images"
             value={draft.background}
             label="Fundo para compromissos sem imagem"
             gallery={calendarBackgrounds}

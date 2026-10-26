@@ -154,6 +154,7 @@ export default function App() {
 
 function Portal({ user }: { user: User }) {
   const [administrator, setAdministrator] = useState(false);
+  const [contentScopes, setContentScopes] = useState(user.admin_scopes || []);
   const [maintenanceAreas, setMaintenanceAreas] = useState<MaintenanceArea[]>([]);
   const [deletingMission, setDeletingMission] = useState<Post | null>(null);
   const [deletionError, setDeletionError] = useState('');
@@ -194,6 +195,7 @@ function Portal({ user }: { user: User }) {
     const catalogue=catalogNeeded.current ? api<Item[]>('/catalog').then(items=>{setCatalog(items);setCatalogError('');}).catch(error=>{setCatalogError(error.message);throw error;}).finally(()=>setCatalogLoading(false)) : Promise.resolve();
     const essentials=Promise.all([api<Character[]>('/characters'),api<Post[]>('/board'),api<Entry[]>('/world'),api<User>('/me')]).then(([nextCharacters,nextPosts,nextEntries,me])=>{
       setCharacters(nextCharacters);setPosts(nextPosts);setEntries(nextEntries);setAdministrator(me.administrador===1);
+      setContentScopes(me.admin_scopes || []);
       setMaintenanceAreas(me.maintenance_areas || []);
     });
     // Opening camp or the journal never waits for the multi-megabyte shop catalogue.
@@ -569,7 +571,7 @@ function Portal({ user }: { user: User }) {
           />
         </Suspense>
       );
-    if (page === 'overview') return <HomeJournal upcoming={upcoming} canEdit={administrator} />;
+    if (page === 'overview') return <HomeJournal upcoming={upcoming} canEdit={administrator || contentScopes.includes('home')} />;
     if ((page === 'events' || page === 'tower') && maintenanceAreas.includes(page))
       return <Empty title={page === 'events' ? 'Eventos em manutenção' : 'Torre em manutenção'} action={<button className="button" onClick={() => go('board')}>Voltar ao mural</button>}>
         {maintenanceMessage(page)}

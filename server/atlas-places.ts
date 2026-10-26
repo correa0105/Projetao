@@ -4,7 +4,8 @@ import { randomUUID } from 'node:crypto';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { atlasId } from './atlas.js';
-import { isAdministrator, requireAdministrator } from './administrators.js';
+import { administrationFor } from './administrators.js';
+const { has: hasScope, require: requireScope } = administrationFor('world');
 const pinInput = z
   .object({
     name: z.string().trim().min(2).max(100),
@@ -17,21 +18,21 @@ const pinInput = z
 export function atlasPlacesRouter() {
   const router = Router();
   router.use('/atlas', async (req, res, next) => {
-    if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method))
-      await requireAdministrator(res.locals.user.id);
+    if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method)) await requireScope(res.locals.user.id);
     next();
   });
   router.get('/atlas', async (_req, res) => {
-    const admin = await isAdministrator(res.locals.user.id);
+    const admin = await hasScope(res.locals.user.id);
+    const loreEditor = await administrationFor('lore').has(res.locals.user.id);
     const visibility = 'p.deleted_at IS NULL AND (p.published OR $1)';
     const [regions, locations] = await Promise.all([
       pool.query(
         `SELECT r.id,r.name,r.description,r.available,CASE WHEN ${visibility} THEN p.id END AS history_page_id FROM world_regions r LEFT JOIN lore_pages p ON p.id=r.history_page_id ORDER BY r.available DESC,r.name`,
-        [admin],
+        [loreEditor],
       ),
       pool.query(
         `SELECT l.id,l.region_id,l.name,l.description,l.map_x,l.map_y,l.pin_visible,l.revision,CASE WHEN ${visibility} THEN p.id END AS history_page_id,CASE WHEN ${visibility} THEN (SELECT coalesce(jsonb_agg(b),'[]'::jsonb) FROM (SELECT value AS b FROM jsonb_array_elements(p.blocks) WITH ORDINALITY WHERE value->>'type'='image' ORDER BY ordinality LIMIT 3) previews) ELSE '[]'::jsonb END AS history_preview FROM world_locations l LEFT JOIN lore_pages p ON p.id=l.history_page_id ORDER BY l.name`,
-        [admin],
+        [loreEditor],
       ),
     ]);
     res.json({ regions: regions.rows, locations: locations.rows, can_manage_pins: admin });
@@ -79,6 +80,7 @@ export function atlasPlacesRouter() {
     res.json(removed.rows[0]);
   });
   router.post('/atlas/history', async (req, res) => {
+    await administrationFor('lore').require(res.locals.user.id);
     const data = z
       .object({ region_id: atlasId, location_id: atlasId.optional() })
       .strict()

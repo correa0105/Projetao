@@ -4,7 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
 
 const url = new URL(process.env.DATABASE_URL);
-if (!['localhost', '127.0.0.1'].includes(url.hostname))
+if (!['localhost', '127.0.0.1'].includes(url.hostname) || url.port === '5437')
   throw new Error('Use PostgreSQL local para testes isolados.');
 const admin = new pg.Pool({ connectionString: url.toString() });
 const database = 'alvorada_test_' + randomUUID().replaceAll('-', '');
@@ -14,17 +14,24 @@ try {
   process.exitCode = await new Promise((resolve, reject) => {
     const child = spawn(
       process.execPath,
-      [
-        '--import',
-        'tsx',
-        '--test',
-        '--test-concurrency=1',
-        'tests/administrators.test.ts',
-        'tests/mount-selection.test.ts',
-        'tests/integration.test.ts',
-        'tests/lore.test.ts',
-        'tests/rulebook.test.ts',
-      ],
+      process.argv.includes('--scopes-browser')
+        ? ['--import', 'tsx', 'scripts/smoke-administrator-scopes.ts']
+        : [
+            '--import',
+            'tsx',
+            '--test',
+            '--test-concurrency=1',
+            ...(process.argv.includes('--scopes')
+              ? ['tests/administrator-scopes.test.ts']
+              : [
+                  'tests/administrators.test.ts',
+                  'tests/administrator-scopes.test.ts',
+                  'tests/mount-selection.test.ts',
+                  'tests/integration.test.ts',
+                  'tests/lore.test.ts',
+                  'tests/rulebook.test.ts',
+                ]),
+          ],
       {
         env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
         stdio: 'inherit',

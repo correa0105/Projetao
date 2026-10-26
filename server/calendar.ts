@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
-import { requireAdministrator, isAdministrator } from './administrators.js';
+import { administrationFor } from './administrators.js';
+import { isAdministrator, administratorPredicate } from './administrators.js';
+const { require: requireScope, has: hasScope } = administrationFor('home');
 import { AppError } from './services.js';
 import {
   calendarSettingsSchema,
@@ -54,22 +56,41 @@ export function calendarRouter() {
       })),
     ];
     entries.sort((a, b) => new Date(a.starts_at).getTime() - new Date(b.starts_at).getTime());
-    res.json({ ...settings.rows[0], can_edit: await isAdministrator(res.locals.user.id), entries });
+    res.json({
+      ...settings.rows[0],
+      can_edit: await hasScope(res.locals.user.id),
+      can_edit_events: await isAdministrator(res.locals.user.id),
+      entries,
+    });
   });
   router.put('/calendar/settings', async (req, res) => {
-    await requireAdministrator(res.locals.user.id);
+    await requireScope(res.locals.user.id);
     const input = z
       .object({ document: calendarSettingsSchema, revision: z.number().int().min(1) })
       .strict()
       .parse(req.body);
     const result = await transaction(async (client) => {
-      await requireAdministrator(res.locals.user.id, client);
+      await requireScope(res.locals.user.id, client);
+      if (
+        input.document.background.startsWith('/api/home-images/') &&
+        !(
+          await client.query('SELECT id FROM home_images WHERE id=$1', [
+            input.document.background.split('/').at(-1),
+          ])
+        ).rowCount
+      )
+        throw new AppError(400, 'Imagem não encontrada.');
       if (
         input.document.background.startsWith('/api/event-images/') &&
         !(
-          await client.query('SELECT id FROM event_images WHERE id=$1', [
-            input.document.background.split('/').at(-1),
-          ])
+          await client.query(
+            `SELECT id FROM event_images i WHERE id=$1 AND (
+            ${administratorPredicate(2)} OR i.author_id=$2
+            OR EXISTS(SELECT 1 FROM guild_calendar WHERE document->>'background'='/api/event-images/'||i.id::text)
+            OR EXISTS(SELECT 1 FROM event_scene WHERE document->>'background'='/api/event-images/'||i.id::text OR EXISTS(SELECT 1 FROM jsonb_array_elements(document->'layers') l WHERE l->>'path'='/api/event-images/'||i.id::text))
+            OR EXISTS(SELECT 1 FROM board_posts WHERE kind='event' AND event_presentation->>'image'='/api/event-images/'||i.id::text))`,
+            [input.document.background.split('/').at(-1), res.locals.user.id],
+          )
         ).rowCount
       )
         throw new AppError(400, 'Imagem não encontrada.');

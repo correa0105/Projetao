@@ -77,6 +77,7 @@ export function AccountPreview({
         role: 'player' as const,
         gold_unlimited: false,
         canEditKingdom: false,
+        admin_scopes: [],
       }
     : account;
   return (

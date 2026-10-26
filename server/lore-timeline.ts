@@ -1,7 +1,12 @@
 import express from 'express';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
-import { requireAdministrator, isAdministrator, administratorPredicate } from './administrators.js';
+import { administrationFor } from './administrators.js';
+const {
+  require: requireScope,
+  has: hasScope,
+  predicate: scopePredicate,
+} = administrationFor('lore');
 import { AppError } from './services.js';
 import { INITIAL_LORE_TIMELINE, loreTimelineSchema } from '../shared/lore-timeline.js';
 
@@ -18,7 +23,7 @@ export function loreTimelineRouter() {
     const {
       rows: [timeline],
     } = await pool.query('SELECT document,revision FROM lore_timeline WHERE id=1');
-    const canEdit = await isAdministrator(res.locals.user.id);
+    const canEdit = await hasScope(res.locals.user.id);
     const document = canEdit
       ? timeline.document
       : {
@@ -31,7 +36,7 @@ export function loreTimelineRouter() {
   });
   router.put('/lore-timeline', async (req, res) => {
     const userId = res.locals.user.id;
-    await requireAdministrator(userId);
+    await requireScope(userId);
     const input = inputSchema.parse(req.body);
     const result = await transaction(async (client) => {
       // Serialize with folder moves/deletions, so new links cannot point at deleted folders.
@@ -49,11 +54,11 @@ export function loreTimelineRouter() {
       );
       const saved = await client.query(
         `UPDATE lore_timeline SET document=$1,revision=revision+1,updated_by=$2,updated_at=now()
-        WHERE id=1 AND revision=$3 AND ${administratorPredicate(2)} RETURNING document,revision`,
+        WHERE id=1 AND revision=$3 AND ${scopePredicate(2)} RETURNING document,revision`,
         [JSON.stringify(input.document), userId, input.revision],
       );
       if (!saved.rowCount) {
-        await requireAdministrator(userId, client);
+        await requireScope(userId, client);
         throw new AppError(
           409,
           'A linha do tempo foi alterada. Reabra o editor para carregar a versão atual.',

@@ -4,16 +4,21 @@ import { z } from 'zod';
 import { randomUUID } from 'node:crypto';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
-import { administratorPredicate, isAdministrator, requireAdministrator } from './administrators.js';
+import { administrationFor } from './administrators.js';
+const {
+  predicate: scopePredicate,
+  has: hasScope,
+  require: requireScope,
+} = administrationFor('lore');
 import { lorePageInput, LORE_MAX_IMAGE_BYTES } from '../shared/lore.js';
 
 const uuid = z.string().uuid();
 const folderWriteLock = (client: import('pg').PoolClient) =>
   client.query('SELECT pg_advisory_xact_lock(74261925)');
 async function requireFolderManager(userId: string) {
-  await requireAdministrator(userId);
+  await requireScope(userId);
 }
-const editable = () => `(p.deleted_at IS NULL AND ${administratorPredicate()})`;
+const editable = () => `(p.deleted_at IS NULL AND ${scopePredicate()})`;
 const visible = () => `(p.deleted_at IS NULL AND (p.published OR ${editable()}))`;
 const summary = () => `p.id,p.region_id,p.folder_id,p.title,p.subtitle,p.published,p.revision,
   ${editable()} AS can_edit,
@@ -44,8 +49,7 @@ async function getPage(id: string, userId: string, edit = false) {
 export function loreRouter() {
   const router = express.Router();
   router.use('/lore', async (req, res, next) => {
-    if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method))
-      await requireAdministrator(res.locals.user.id);
+    if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method)) await requireScope(res.locals.user.id);
     next();
   });
   router.get('/lore', async (_req, res) => {
@@ -59,7 +63,7 @@ export function loreRouter() {
         `SELECT ${summary()} FROM lore_pages p WHERE ${visible()} ORDER BY p.created_at,p.id`,
         [userId],
       ),
-      isAdministrator(userId),
+      hasScope(userId),
     ]);
     res.json({
       regions: regions.rows,
@@ -419,8 +423,12 @@ export function loreRouter() {
       if (!page) throw new AppError(404, 'Crônica não encontrada ou indisponível para edição.');
       if (page.revision !== revision)
         throw new AppError(409, 'Esta crônica mudou em outra janela. Recarregue antes de salvar.');
-      const place = await client.query('SELECT region_id FROM world_locations WHERE history_page_id=$1 UNION ALL SELECT id AS region_id FROM world_regions WHERE history_page_id=$1',[id]);
-      if(place.rows.some(row=>row.region_id!==data.region_id))throw new AppError(400,'A história deste local deve permanecer no mesmo reino.');
+      const place = await client.query(
+        'SELECT region_id FROM world_locations WHERE history_page_id=$1 UNION ALL SELECT id AS region_id FROM world_regions WHERE history_page_id=$1',
+        [id],
+      );
+      if (place.rows.some((row) => row.region_id !== data.region_id))
+        throw new AppError(400, 'A história deste local deve permanecer no mesmo reino.');
       if (
         !(
           await client.query(

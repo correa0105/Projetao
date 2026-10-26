@@ -73,15 +73,12 @@ function Countdown({ starts }: { starts: string | null }) {
     </span>
   );
 }
-async function upload(file: File) {
-  const response = await fetch('/api/event-images', {
+async function upload(file: File, path = '/event-images') {
+  const value = await api<{ path: string }>(path, {
     method: 'POST',
-    credentials: 'include',
     headers: { 'Content-Type': file.type },
     body: file,
   });
-  const value = await response.json();
-  if (!response.ok) throw new Error(value.error);
   return value.path as string;
 }
 export function Events() {
@@ -139,7 +136,11 @@ export function Events() {
     visible.find((e) => e.presentation.featured) ||
     visible[0];
   return (
-    <section data-page-preparing={!scene && !error || undefined} className="events-page" data-paused={hidden}>
+    <section
+      data-page-preparing={(!scene && !error) || undefined}
+      className="events-page"
+      data-paused={hidden}
+    >
       <div
         className="events-backdrop"
         style={{
@@ -321,6 +322,7 @@ export function EventImageField({
   onError,
   gallery = eventBackgrounds,
   emptyLabel = 'Sem imagem',
+  uploadPath = '/event-images',
 }: {
   value: string;
   onChange: (value: string) => void;
@@ -330,6 +332,7 @@ export function EventImageField({
   onError: (error: string) => void;
   gallery?: { path: string; label: string }[];
   emptyLabel?: string;
+  uploadPath?: '/event-images' | '/home-images';
 }) {
   return (
     <div className="event-image-field">
@@ -366,7 +369,7 @@ export function EventImageField({
             onBusy(true);
             onError('');
             try {
-              onChange(await upload(file));
+              onChange(await upload(file, uploadPath));
             } catch (error) {
               onError((error as Error).message);
             } finally {

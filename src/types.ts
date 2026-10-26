@@ -2,7 +2,8 @@ export type User = {
   id: string;
   name: string;
   email: string;
-  role?: 'player' | 'staff' | 'admin';
+  role?: 'player' | 'staff' | 'admin' | 'content-admin';
+  admin_scopes?: import('../shared/admin-scopes').AdminScope[];
   administrador?: 0 | 1;
   gold_unlimited?: boolean;
   canEditKingdom?: boolean;
@@ -110,12 +111,18 @@ export type Post = {
     rank_promoted: boolean;
   }[];
 };
-export type AtlasRegion = { id: string; name: string; description: string; available: boolean; history_page_id?: string | null };
+export type AtlasRegion = {
+  id: string;
+  name: string;
+  description: string;
+  available: boolean;
+  history_page_id?: string | null;
+};
 export type AtlasLocation = {
   pin_visible?: boolean;
   revision?: number;
   history_page_id?: string | null;
-  history_preview?: Extract<import('../shared/lore').LoreBlock, {type:'image'}>[];
+  history_preview?: Extract<import('../shared/lore').LoreBlock, { type: 'image' }>[];
   id: string;
   region_id: string;
   name: string;
@@ -123,7 +130,11 @@ export type AtlasLocation = {
   map_x: number;
   map_y: number;
 };
-export type AtlasData = { regions: AtlasRegion[]; locations: AtlasLocation[]; can_manage_pins?: boolean };
+export type AtlasData = {
+  regions: AtlasRegion[];
+  locations: AtlasLocation[];
+  can_manage_pins?: boolean;
+};
 export type Entry = {
   id: string;
   section: string;

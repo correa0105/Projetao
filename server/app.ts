@@ -25,7 +25,7 @@ import { existsSync } from 'node:fs';
 import sharp from 'sharp';
 import { auth, origins } from './auth.js';
 import { pool, transaction } from './db.js';
-import { administratorPredicate, isAdministrator, requireAdministrator } from './administrators.js';
+import { administratorPredicate, isAdministrator, requireAdministrator, administrativeScopes, administrationFor } from './administrators.js';
 import { AppError, purchase } from './services.js';
 import { completeMission, completionSchema, publishMissionHook } from './missions.js';
 import { houseRouter } from './house.js';
@@ -197,6 +197,7 @@ export function createApp() {
         role: 'player',
         gold_unlimited: false,
         canEditKingdom: false,
+        admin_scopes: [],
       };
       const json = res.json.bind(res);
       res.json = (body) => json(basicPreviewPayload(body, session.user.id));
@@ -292,17 +293,21 @@ export function createApp() {
       'SELECT u.administrador,s.role FROM "user" u LEFT JOIN guild_staff s ON s.user_id=u.id WHERE u.id=$1',
       [res.locals.user.id],
     );
+    const scopes = await administrativeScopes(res.locals.user.id);
     res.json({
       ...res.locals.user,
       administrador: permission?.administrador ?? 0,
       gold_unlimited: permission?.administrador === 1,
+      admin_scopes: scopes,
       role:
         permission?.administrador === 1
           ? 'admin'
+          : scopes.length
+            ? 'content-admin'
           : permission?.role === 'staff'
             ? 'staff'
             : 'player',
-      canEditKingdom: permission?.administrador === 1,
+      canEditKingdom: scopes.includes('world'),
       maintenance_areas: (await isAdministrator(res.locals.user.id)) ? [] : maintenanceAreas(),
     });
   });
@@ -599,7 +604,7 @@ export function createApp() {
   app.use(
     ['/api/kingdom/editor-draft', '/api/kingdom/editor-background', '/api/kingdom/editor-view'],
     async (_req, res, next) => {
-      await requireAdministrator(res.locals.user.id);
+      await administrationFor('world').require(res.locals.user.id);
       next();
     },
   );
