@@ -38,17 +38,17 @@
 }
 .vtt-screen-presets {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 9px;
 }
 .vtt-screen-presets button {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  align-items: center;
+  gap: 11px;
   text-align: left;
   white-space: normal;
-  padding: 10px;
+  padding: 0;
   min-width: 0;
 }
 .vtt-screen-presets button[aria-pressed='true'] {
@@ -56,40 +56,41 @@
   background: #b99a6122;
 }
 .vtt-screen-presets strong {
-  font-size: 11px;
+  display: block;
+  font-size: 13px;
+  color: #e7ddc8;
 }
 .vtt-screen-presets small {
+  display: block;
+  margin-top: 6px;
   font-size: 10px;
-  line-height: 1.4;
+  line-height: 1.5;
   color: #b0aca4;
 }
-.vtt-screen-swatch {
+.vtt-screen-preview {
   display: block;
-  width: 100%;
-  height: 30px;
-  border-radius: 3px;
-  background:
-    radial-gradient(ellipse at bottom, #99826766, transparent 70%),
-    repeating-linear-gradient(118deg, transparent 0 16px, #b5a58a33 17px 19px);
+  width: 112px;
+  height: 104px;
+  border-radius: 4px 0 0 4px;
+  object-fit: cover;
+  background: #11191f;
 }
-.vtt-screen-swatch.thunderstorm,
-.vtt-screen-swatch.blizzard {
-  background:
-    repeating-linear-gradient(115deg, transparent 0 14px, #b2c5dc55 15px 16px),
-    linear-gradient(#19242c, #344650);
+.vtt-screen-preset-copy {
+  min-width: 0;
+  padding: 9px 8px 9px 0;
 }
-.vtt-screen-swatch.embers {
-  background:
-    radial-gradient(ellipse at bottom, #c96c3c99, transparent 75%),
-    radial-gradient(circle at 25% 40%, #ffc677 1px, transparent 2px);
-}
-.vtt-screen-swatch.haunting {
-  background:
-    radial-gradient(ellipse at 20% 80%, #819da855, transparent 40%),
-    radial-gradient(ellipse at 80% 20%, #b7c4cd55, transparent 40%);
-}
-.vtt-screen-swatch.arcane {
-  background: radial-gradient(ellipse, #d0b5ef44, transparent 50%, #a390cc55 52%, transparent 57%);
+@media (max-width: 450px) {
+  .vtt-screen-presets button {
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 8px;
+  }
+  .vtt-screen-preview {
+    width: 82px;
+    height: 112px;
+  }
+  .vtt-screen-presets strong {
+    font-size: 12px;
+  }
 }
 .vtt-screen-controls input[type='range'] {
   width: 100%;

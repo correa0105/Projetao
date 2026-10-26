@@ -61,6 +61,7 @@ test('46 novos áudios têm mídia íntegra, volumes medidos, fontes CC0 e metad
 });
 
 test('efeitos de tela só aceitam presets, cenas, intensidade e duração válidos', () => {
+  assert.deepEqual(screenEffectPresets.map(p=>p.id),['cave-in','embers']);
   for (const p of screenEffectPresets) {
     assert(soundCatalog.some((e) => e.id === p.sound));
     assert(
@@ -79,6 +80,7 @@ test('efeitos de tela só aceitam presets, cenas, intensidade e duração válid
   }
   for (const bad of [
     { preset: 'script' },
+    ...['earthquake','thunderstorm','blizzard','haunting','arcane'].map(preset=>({preset})),
     { duration: 3600 },
     { volume: 8 },
     { sceneId: 'other' },
@@ -88,7 +90,7 @@ test('efeitos de tela só aceitam presets, cenas, intensidade e duração válid
       !soundCommandSchema.safeParse({
         kind: 'screenPlay',
         settings: {
-          preset: 'earthquake',
+          preset: 'cave-in',
           sceneId: randomUUID(),
           intensity: 0.65,
           duration: 12,

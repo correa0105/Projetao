@@ -1,6 +1,10 @@
 import { z } from 'zod';
 import catalog from './vtt-sound-catalog.json';
-import { screenEffectSchema, screenEffectSettingsSchema } from './vtt-screen-effects.js';
+import {
+  activeScreenEffectIdSchema,
+  screenEffectSchema,
+  screenEffectSettingsSchema,
+} from './vtt-screen-effects.js';
 export type SoundKind = 'music' | 'ambience' | 'effect';
 export type SoundEntry = {
   id: string;
@@ -99,7 +103,12 @@ export function soundAlive(v: SoundVoice, now = Date.now()) {
   return v.loop || now - v.startedAt < (byId.get(v.sourceId)?.duration ?? 300) * 1000 + 1500;
 }
 export const soundCommandSchema = z.discriminatedUnion('kind', [
-  z.object({ kind: z.literal('screenPlay'), settings: screenEffectSettingsSchema }).strict(),
+  z
+    .object({
+      kind: z.literal('screenPlay'),
+      settings: screenEffectSettingsSchema.extend({ preset: activeScreenEffectIdSchema }),
+    })
+    .strict(),
   z.object({ kind: z.literal('screenStop') }).strict(),
   z.object({ kind: z.literal('screenAudio'), muted: z.boolean() }).strict(),
   z

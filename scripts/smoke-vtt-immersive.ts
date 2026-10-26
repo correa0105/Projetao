@@ -17,6 +17,9 @@ export async function smokeImmersiveAudio(page: Page, peer: Page) {
   const mapEffects=page.getByRole('dialog',{name:'Efeitos do mapa',exact:true});
   await mapEffects.getByRole('button',{name:'Tela inteira',exact:true}).click();
   await expect(mapEffects.getByRole('region',{name:'Efeitos imersivos de tela'})).toBeVisible();
+  await expect(mapEffects.locator('.vtt-screen-presets button')).toHaveCount(2);
+  await expect(mapEffects.locator('.vtt-screen-presets strong')).toHaveText(['Desabamento','Cinzas e brasas']);
+  await expect.poll(()=>page.evaluate(()=>[...performance.getEntriesByType('resource')].some(e=>e.name.includes('debris-embers-atlas-v1.png')))).toBe(true);
   if (!(await peer.locator('.vtt-soundboard').isVisible()))
     await peer.getByRole('button', { name: 'Som', exact: true }).click();
   for (const preset of screenEffectPresets) {
@@ -35,18 +38,18 @@ export async function smokeImmersiveAudio(page: Page, peer: Page) {
         }),
       )
       .toBe(true);
-    if (preset.id === 'earthquake') {
+    if (preset.id === 'cave-in') {
       await expect
         .poll(() => peer.locator('.vtt-workspace').evaluate((e) => e.style.translate))
         .not.toBe('');
-      await page.screenshot({ path: 'test-results/vtt-screen-earthquake-20261026.png' });
+      await page.screenshot({ path: 'test-results/vtt-screen-cave-in-20261026.png' });
       await page.getByRole('button', { name: 'Mutar som', exact: true }).click();
       await expect(page.getByRole('button', { name: 'Ativar som', exact: true })).toBeVisible();
       await expect
         .poll(() =>
           peer.evaluate(() =>
             (window as any).__vttAudios
-              .filter((a: HTMLAudioElement) => a.src.includes('sfx-screen-earthquake'))
+              .filter((a: HTMLAudioElement) => a.src.includes('sfx-screen-cave-in'))
               .every((a: HTMLAudioElement) => a.volume < 0.004),
           ),
         )
@@ -59,6 +62,7 @@ export async function smokeImmersiveAudio(page: Page, peer: Page) {
   }
   for(const width of [320,390,768,1440]){
     await page.setViewportSize({width,height:900});
+    await mapEffects.evaluate(e=>{e.scrollTop=0;});
     const bounds=await mapEffects.evaluate(e=>({width:e.clientWidth,scroll:e.scrollWidth,right:e.getBoundingClientRect().right}));
     expect(bounds.scroll).toBeLessThanOrEqual(bounds.width+1);
     expect(bounds.right).toBeLessThanOrEqual(width);

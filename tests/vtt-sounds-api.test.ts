@@ -348,13 +348,14 @@ test('mixer e atalhos em PostgreSQL descartável: autorização, persistência e
     );
     await t.test('efeito de tela: dono comum dispara, jogadores recebem, mute e parada preservam músicas', async () => {
       const sceneId=(await req(path,gm)).data.document.activeScene;
-      const settings={preset:'earthquake',sceneId,duration:12,intensity:.6,volume:.55,muted:false};
+      const settings={preset:'cave-in',sceneId,duration:12,intensity:.6,volume:.55,muted:false};
       assert.equal((await req(sounds,player,'POST',{kind:'screenPlay',settings})).status,403);
       assert.equal((await req(sounds,gm,'POST',{kind:'screenPlay',settings:{...settings,sceneId:randomUUID()}})).status,400);
       await req(sounds,gm,'POST',{kind:'play',sourceId:'music-scene-market-day'});
       assert.equal((await req(sounds,gm,'POST',{kind:'screenPlay',settings})).status,200);
       const before=(await req(sounds,player)).data.soundboard,event=before.screenEffect;
-      assert.equal(event.preset,'earthquake');assert(before.voices.some((v:any)=>v.id===event.id&&v.loop));
+      assert.equal(event.preset,'cave-in');assert(before.voices.some((v:any)=>v.id===event.id&&v.loop));
+      for(const removed of ['earthquake','thunderstorm','blizzard','haunting','arcane'])assert.equal((await req(sounds,gm,'POST',{kind:'screenPlay',settings:{...settings,preset:removed}})).status,400);
       assert.equal((await req(sounds,gm,'POST',{kind:'screenAudio',muted:true})).status,200);
       const muted=(await req(sounds,player)).data.soundboard;assert(muted.screenEffect.muted);assert.equal(muted.voices.find((v:any)=>v.id===event.id).volume,0);
       await req(sounds,gm,'POST',{kind:'screenStop'});const stopped=(await req(sounds,player)).data.soundboard;assert.equal(stopped.screenEffect,null);assert(stopped.voices.some((v:any)=>v.sourceId==='music-scene-market-day'));

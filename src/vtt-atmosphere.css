@@ -97,10 +97,10 @@
   margin: 0;
 }
 .vtt-atmosphere-menu .vtt-screen-presets button {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  align-items: center;
   text-align: left;
+  padding: 0;
 }
 .vtt-atmosphere-menu .vtt-screen-running {
   margin-bottom: 8px;

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const screenEffectPresets = [
+const legacyScreenEffectPresets = [
   {
     id: 'earthquake',
     name: 'Tremor de terra',
@@ -58,7 +58,12 @@ export const screenEffectPresets = [
     color: '#baa4da',
   },
 ] as const;
-export type ScreenEffectId = (typeof screenEffectPresets)[number]['id'];
+export type ScreenEffectId = (typeof legacyScreenEffectPresets)[number]['id'];
+export const screenEffectPresets = legacyScreenEffectPresets.filter(
+  (p) => p.id === 'cave-in' || p.id === 'embers',
+);
+export type ActiveScreenEffectId = (typeof screenEffectPresets)[number]['id'];
+export const activeScreenEffectIdSchema = z.enum(['cave-in', 'embers']);
 export const screenEffectIdSchema = z.enum([
   'earthquake',
   'cave-in',
@@ -87,4 +92,4 @@ export const screenEffectSchema = screenEffectSettingsSchema
 export type ScreenEffect = z.infer<typeof screenEffectSchema>;
 export type ScreenEffectSettings = z.infer<typeof screenEffectSettingsSchema>;
 export const screenEffectPreset = (id: ScreenEffectId) =>
-  screenEffectPresets.find((p) => p.id === id)!;
+  legacyScreenEffectPresets.find((p) => p.id === id)!;

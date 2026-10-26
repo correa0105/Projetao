@@ -4,10 +4,12 @@ import {
   screenEffectPresets,
   screenEffectPreset,
   type ScreenEffect,
-  type ScreenEffectId,
+  type ActiveScreenEffectId,
 } from '../shared/vtt-screen-effects';
 import type { SoundCommand, SoundSnapshot } from '../shared/vtt-sounds';
 import './vtt-screen-effects.css';
+import { VttScreenPreview } from './VttScreenPreview';
+import { screenAtlas, drawScreenSprite } from './vtt-screen-materials';
 
 export function VttScreenEffectControls({
   snapshot,
@@ -20,8 +22,8 @@ export function VttScreenEffectControls({
   command: (c: SoundCommand) => Promise<void>;
   unlock: () => void;
 }) {
-  const [preset, setPreset] = useState<ScreenEffectId>('earthquake'),
-    [duration, setDuration] = useState(12),
+  const [preset, setPreset] = useState<ActiveScreenEffectId>('cave-in'),
+    [duration, setDuration] = useState(10),
     [intensity, setIntensity] = useState(0.65),
     [volume, setVolume] = useState(0.65),
     [muted, setMuted] = useState(false),
@@ -72,9 +74,11 @@ export function VttScreenEffectControls({
               setDuration(p.duration);
             }}
           >
-            <span className={'vtt-screen-swatch ' + p.id} aria-hidden="true" />
-            <strong>{p.name}</strong>
-            <small>{p.description}</small>
+            <VttScreenPreview preset={p.id} />
+            <span className="vtt-screen-preset-copy">
+              <strong>{p.name}</strong>
+              <small>{p.description}</small>
+            </span>
           </button>
         ))}
       </div>
@@ -143,7 +147,10 @@ export function VttScreenEffectControls({
           <strong>{screenEffectPreset(event.preset).name} na mesa</strong>
           <button
             disabled={busy}
-            onClick={() => { setMuted(!event.muted); void send({ kind: 'screenAudio', muted: !event.muted }); }}
+            onClick={() => {
+              setMuted(!event.muted);
+              void send({ kind: 'screenAudio', muted: !event.muted });
+            }}
           >
             {event.muted ? <VolumeX size={14} /> : <Volume2 size={14} />}{' '}
             {event.muted ? 'Ativar som' : 'Mutar som'}
@@ -194,6 +201,7 @@ export function VttScreenEffects({
     if (!target || !event || event.sceneId !== sceneId || !enabled) return;
     const context = target.getContext('2d');
     if (!context) return;
+    screenAtlas();
     const workspace = document.querySelector<HTMLElement>('.vtt-workspace');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     let width = 0,
@@ -279,6 +287,19 @@ export function VttScreenEffects({
             y = debris ? height * (0.08 + p.y * 0.75) + Math.sin(t * 0.4 + i) * 40 : p.y * height;
           const radius = (110 + p.depth * 200) * Math.min(width / 700, 1.4),
             mist = context.createRadialGradient(x, y, 0, x, y, radius);
+          if (debris) {
+            context.save();
+            context.globalAlpha = alpha * 0.1;
+            const painted = drawScreenSprite(
+              context,
+              8 + (i % 4),
+              x - radius,
+              y - radius,
+              radius * 2,
+            );
+            context.restore();
+            if (painted) continue;
+          }
           mist.addColorStop(
             0,
             debris ? `rgba(155,133,106,${0.12 * alpha})` : `rgba(152,181,193,${0.08 * alpha})`,
@@ -312,6 +333,10 @@ export function VttScreenEffects({
           context.translate(x, y);
           context.rotate(p.phase + motion * p.spin);
           context.globalAlpha = opacity;
+          if (drawScreenSprite(context, i % 8, -size * 1.35, -size * 1.35, size * 2.7)) {
+            context.restore();
+            continue;
+          }
           context.beginPath();
           p.shape.forEach((r, j) => {
             const a = (j / 7) * Math.PI * 2;
@@ -356,6 +381,21 @@ export function VttScreenEffects({
         } else if (event.preset === 'embers') {
           y = (y - motion * (18 + p.depth * 75) + height * 100) % height;
           x += Math.sin(motion * 0.6 + p.phase) * 40;
+          context.save();
+          context.translate(x, y);
+          context.rotate(p.phase);
+          context.globalAlpha = opacity * (i % 4 ? 0.5 : 1);
+          const flake = i % 4 ? 2 + p.depth * 8 : 5 + p.depth * 13;
+          const painted = drawScreenSprite(
+            context,
+            i % 4 ? i % 8 : 12 + (Math.floor(i / 4) % 4),
+            -flake / 2,
+            -flake / 2,
+            flake,
+            flake * (i % 4 ? 1.5 : 1),
+          );
+          context.restore();
+          if (painted) continue;
           context.fillStyle =
             i % 4 ? `rgba(170,163,150,${opacity * 0.3})` : `rgba(255,174,86,${opacity})`;
           context.beginPath();

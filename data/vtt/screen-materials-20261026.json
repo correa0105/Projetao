@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-26",
+  "tool": "built-in image_gen.imagegen",
+  "file": "public/vtt/screen-effects-20261026/debris-embers-atlas-v1.png",
+  "sha256": "b2f60088827c19d152043dc1e9dad6b18786ac8825fecc9a731bde50cfb9ae1a",
+  "width": 1254,
+  "height": 1254,
+  "alpha": true,
+  "originalPngUnmodified": true,
+  "layout": {"columns":4,"rows":4,"stoneCells":[0,1,2,3,4,5,6,7],"dustCells":[8,9,10,11],"emberCells":[12,13,14,15]},
+  "prompt": "Use case: stylized-concept. Asset type: a production VFX SPRITE ATLAS for an immersive medieval fantasy virtual tabletop, transparent RGBA PNG. Create ONE square image arranged as an EXACT 4 by 4 evenly spaced grid of 16 isolated sprites, no visible grid. Each sprite must be centred in its own equal cell, with at least 15 percent transparent padding, no overlap between cells, fully transparent background, no shadows on any ground, no text or labels. Rows 1 and 2 (8 cells): eight DIFFERENT irregular chunks of crumbling dark limestone, shale and earthy masonry, in varied three-quarter views. Natural fracture planes, tiny grit, stratified rough surfaces, chipped uneven edges, believable fine mineral texture, restrained gray-brown and dusty ochre, soft directional light from upper left with real volume. They must look like authentic cinematic falling debris, NOT regular low-poly polygons or geometric crystals. Row 3 (4 cells): four isolated airy clouds of beige/gray stone dust, realistic fine particulate smoke, delicate wispy irregular shapes, extremely soft alpha feathering, differing silhouettes, no opaque white background. Row 4 (4 cells): four DIFFERENT small irregular glowing charcoal embers and flakes, blackened craggy centres with orange-red incandescent cracks and tiny warm halos, realistic fire particles, no stars or lens flares. Overall: premium naturalistic game VFX textures, legible surfaces, restrained cinematic lighting, NOT cartoons, no logos, no decorative frame. Each of the 16 sprites separate and completely contained inside its equal cell. Preserve genuine transparency."
+}
