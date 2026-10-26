@@ -93,7 +93,7 @@ export class VttVoiceProcessor {
     let input: MediaStream | undefined;
     try {
       await context.resume();
-      await context.audioWorklet.addModule('/audio/vtt-monster-voice-worklet.js');
+      await context.audioWorklet.addModule('/audio/vtt-monster-voice-worklet.js?v=20261026-2');
       input = await navigator.mediaDevices.getUserMedia({
         audio: {
           deviceId: deviceId ? { exact: deviceId } : undefined,
@@ -128,6 +128,8 @@ export class VttVoiceProcessor {
       drive: p?.drive || 0,
       ring: p?.ring || 0,
       ringHz: p?.ringHz || 0,
+      whisper: p && 'whisper' in p ? p.whisper : 0,
+      drift: p && 'drift' in p ? p.drift : 0,
       mix: id === 'natural' ? 0 : mix,
     });
     this.high.frequency.setTargetAtTime(p?.highpass || 70, now, 0.04);

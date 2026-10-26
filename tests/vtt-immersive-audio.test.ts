@@ -61,7 +61,10 @@ test('46 novos áudios têm mídia íntegra, volumes medidos, fontes CC0 e metad
 });
 
 test('efeitos de tela só aceitam presets, cenas, intensidade e duração válidos', () => {
-  assert.deepEqual(screenEffectPresets.map(p=>p.id),['cave-in','embers']);
+  assert.deepEqual(
+    screenEffectPresets.map((p) => p.id),
+    ['cave-in', 'embers'],
+  );
   for (const p of screenEffectPresets) {
     assert(soundCatalog.some((e) => e.id === p.sound));
     assert(
@@ -80,7 +83,9 @@ test('efeitos de tela só aceitam presets, cenas, intensidade e duração válid
   }
   for (const bad of [
     { preset: 'script' },
-    ...['earthquake','thunderstorm','blizzard','haunting','arcane'].map(preset=>({preset})),
+    ...['earthquake', 'thunderstorm', 'blizzard', 'haunting', 'arcane'].map((preset) => ({
+      preset,
+    })),
     { duration: 3600 },
     { volume: 8 },
     { sceneId: 'other' },
@@ -203,14 +208,13 @@ test('dez vozes processam áudio real com alturas distintas, saída finita e sem
     sampleRate: 48000,
   });
   const hashes = new Set<string>();
-  const render = (params: object) => {
+  const render = (params: object, silence = false) => {
     const p = new Processor();
     p.port.onmessage({ data: params });
     const result = new Float32Array(48000);
     for (let at = 0; at < result.length; at += 128) {
-      const input = Float32Array.from(
-          { length: 128 },
-          (_, i) => 0.15 * Math.sin(((at + i) * 2 * Math.PI * 200) / 48000),
+      const input = Float32Array.from({ length: 128 }, (_, i) =>
+          silence ? 0 : 0.15 * Math.sin(((at + i) * 2 * Math.PI * 200) / 48000),
         ),
         out = new Float32Array(128);
       p.process([[input]], [[out]]);
@@ -246,12 +250,24 @@ test('dez vozes processam áudio real com alturas distintas, saída finita e sem
       drive: p.drive,
       ring: p.ring,
       ringHz: p.ringHz,
+      whisper: 'whisper' in p ? p.whisper : 0,
+      drift: 'drift' in p ? p.drift : 0,
       mix: 1,
     });
     assert(a.every(Number.isFinite));
     assert(Math.max(...a) < 0.95);
     assert(a.some((x) => Math.abs(x) > 0.01));
     hashes.add(createHash('sha256').update(Buffer.from(a.buffer)).digest('hex'));
+    if (p.id === 'specter' || p.id === 'aberration') {
+      assert(
+        Math.abs(dominant(a) - 200 * 2 ** (p.semitones / 12)) < 20,
+        p.id + ' preserves a clear fundamental',
+      );
+      assert(
+        render({ whisper: p.whisper, drift: p.drift, mix: 1 }, true).every((x) => x === 0),
+        p.id + ' adds no hiss in silence',
+      );
+    }
   }
   assert.equal(hashes.size, 10);
   assert(Math.abs(dominant(render({ ratio: 2 ** (-7 / 12), mix: 1 })) - 200 * 2 ** (-7 / 12)) < 16);

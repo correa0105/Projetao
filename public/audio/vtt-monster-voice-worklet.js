@@ -9,7 +9,21 @@ class MonsterVoiceProcessor extends AudioWorkletProcessor {
     this.ringPhase = 0;
     this.envelope = 0;
     this.gate = 0;
-    this.target = { ratio: 1, layerRatio: 1, layerMix: 0, drive: 0, ring: 0, ringHz: 0, mix: 1 };
+    this.motionPhase = 0;
+    this.noiseSeed = 713;
+    this.noiseLow = 0;
+    this.breathBand = 0;
+    this.target = {
+      ratio: 1,
+      layerRatio: 1,
+      layerMix: 0,
+      drive: 0,
+      ring: 0,
+      ringHz: 0,
+      mix: 1,
+      whisper: 0,
+      drift: 0,
+    };
     this.params = { ...this.target };
     this.port.onmessage = (e) => {
       for (const k of Object.keys(this.target))
@@ -50,8 +64,12 @@ class MonsterVoiceProcessor extends AudioWorkletProcessor {
       this.envelope = Math.max(Math.abs(x), this.envelope * 0.999);
       const gateTarget = this.envelope > 0.006 ? 1 : 0;
       this.gate += (gateTarget - this.gate) * 0.003;
-      this.phase = (this.phase + (1 - p.ratio) / (sampleRate * 0.065) + 1) % 1;
-      this.secondPhase = (this.secondPhase + (1 - p.layerRatio) / (sampleRate * 0.065) + 1) % 1;
+      const drift = p.drift ? Math.sin(this.motionPhase) * p.drift * 0.015 : 0;
+      if (p.drift)
+        this.motionPhase = (this.motionPhase + (2 * Math.PI * 0.43) / sampleRate) % (2 * Math.PI);
+      this.phase = (this.phase + (1 - p.ratio * (1 + drift)) / (sampleRate * 0.065) + 1) % 1;
+      this.secondPhase =
+        (this.secondPhase + (1 - p.layerRatio * (1 - drift * 0.7)) / (sampleRate * 0.065) + 1) % 1;
       let processed = this.pitch(p.ratio, this.phase),
         layer = this.pitch(p.layerRatio, this.secondPhase);
       processed = (processed + layer * p.layerMix) / (1 + p.layerMix * 0.65);
@@ -59,6 +77,15 @@ class MonsterVoiceProcessor extends AudioWorkletProcessor {
       processed *= 1 - p.ring + p.ring * Math.sin(this.ringPhase);
       const drive = 1 + p.drive * 5;
       processed = Math.tanh(processed * drive) / Math.sqrt(drive);
+      if (p.whisper) {
+        this.noiseSeed = (Math.imul(this.noiseSeed, 1664525) + 1013904223) | 0;
+        const noise = ((this.noiseSeed >>> 0) / 4294967296) * 2 - 1;
+        this.noiseLow += (noise - this.noiseLow) * 0.16;
+        this.breathBand += (noise - this.noiseLow - this.breathBand) * 0.27;
+        // Breath follows the syllable envelope; silence never adds a constant hiss.
+        processed =
+          processed * (1 - p.whisper * 0.4) + this.breathBand * this.envelope * p.whisper * 1.2;
+      }
       output[i] = ((1 - p.mix) * this.tap(sampleRate * 0.04) + p.mix * processed) * this.gate;
       this.write = (this.write + 1) % this.buffer.length;
     }

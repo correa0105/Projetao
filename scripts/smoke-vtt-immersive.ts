@@ -133,6 +133,13 @@ export async function smokeImmersiveAudio(page: Page, peer: Page) {
     await expect(panel.locator('.vtt-voice-presets button[aria-pressed="true"] strong')).toHaveText(
       p.name,
     );
+    if(p.id==='specter'||p.id==='aberration'){
+      await expect.poll(()=>panel.getByRole('meter').getAttribute('aria-valuenow')).not.toBe('0');
+      await panel.getByRole('button',{name:'Gravar fala',exact:true}).click();
+      await page.waitForTimeout(800);
+      await panel.getByRole('button',{name:'Parar gravação',exact:true}).click();
+      await expect.poll(()=>panel.locator('audio').evaluate((a:HTMLAudioElement)=>a.readyState)).toBeGreaterThanOrEqual(1);
+    }
   }
   await panel.getByRole('button', { name: 'Gravar fala', exact: true }).click();
   await page.waitForTimeout(1500);
