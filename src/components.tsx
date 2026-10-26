@@ -1,4 +1,5 @@
 import { WorldPlacePicker } from './WorldPlacePicker';
+import {CharacterSlotDice} from './CharacterSlotDice';
 import { defaultWarforgedAppearance, warforgedArtMode } from '../shared/warforged-appearance';
 import { validateCreationAppearance } from '../shared/character-appearance';
 import { RecoveryRequest } from './PasswordRecovery';
@@ -346,6 +347,7 @@ export function CharacterForm({
   initialJobId?: string;
 }) {
   const [reference, setReference] = useState(initialReference);
+  const [creationSlot,setCreationSlot]=useState<number|null>(null);
   const [available, setAvailable] = useState<boolean | null>(null);
   const [availabilityError, setAvailabilityError] = useState('');
   const requestKey = useRef(crypto.randomUUID());
@@ -390,10 +392,12 @@ export function CharacterForm({
     setError('');
     const form = Object.fromEntries(new FormData(event.currentTarget));
     try {
+      if(!creationSlot)throw new Error('Confirme os seis atributos do slot antes de criar a aparência.');
       validateCreationAppearance(race, choices);
       await post(initialJobId ? `/character-art/${initialJobId}/retry` : '/character-art', {
         creation: {
           ...form,
+          creation_slot:creationSlot,
           race,
           class: cls,
           background: choices.backgroundType,
@@ -412,9 +416,11 @@ export function CharacterForm({
   return (
     <form className="sheet-form-reset character-creation-form" onSubmit={submit}>
       <p className="muted">
-        Escolha sua origem e treinamento. Depois da arte, abra a Ficha para rolar e distribuir os
-        seis atributos. Regras de 2024 e suplementos, com as espécies atualizadas de Eberron (2025).
+        Role os seis atributos antes de criar sua aparência. Depois da arte, abra a Ficha para
+        distribuí-los. Regras de 2024 e suplementos, com as espécies atualizadas de Eberron (2025).
       </p>
+      <CharacterSlotDice initialSlot={initial?.creation_slot} onReady={setCreationSlot}/>
+      <fieldset disabled={!creationSlot||busy} style={{border:0,padding:0,minWidth:0}}>
       <p className="muted small">
         {race === 'Warforged'
           ? 'O ilustrador cria seu Warforged com a estrutura, a cabeça, as cores e o acabamento escolhidos. A imagem de referência é opcional.'
@@ -526,11 +532,12 @@ export function CharacterForm({
       {error && <FlashMessage>{error}</FlashMessage>}
       <button
         className="button primary full"
-        disabled={busy || (needsReference && !reference) || !available}
+        disabled={busy || !creationSlot || (needsReference && !reference) || !available}
       >
         {busy ? 'Criando personagem…' : 'Dar vida ao personagem'}
         <Sparkles size={17} />
       </button>
+      </fieldset>
     </form>
   );
 }

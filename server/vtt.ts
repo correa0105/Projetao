@@ -44,6 +44,7 @@ import {
 } from '../shared/vtt-attachments.js';
 import { applyTokenBlood } from '../shared/vtt-blood.js';
 import { vttCompanionsRouter } from './vtt-companions.js';
+import {vttVehiclesRouter} from './vtt-vehicles.js';
 import { translateMonsterLines } from './vtt-translate.js';
 import { rollFormula } from '../shared/vtt-roll.js';
 import { attackOutcome } from '../shared/vtt-attack.js';
@@ -446,6 +447,7 @@ export function vttRouter() {
     next();
   });
   router.use(vttCompanionsRouter(room, state));
+  router.use(vttVehiclesRouter(room,state));
   router.use('/vtt', express.json({ limit: '12mb' }));
   router.use('/vtt/rooms/:id', async (req, res, next) => {
     const roleChange = req.path === '/participation' || req.path === '/viewpoint';

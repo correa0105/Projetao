@@ -1273,3 +1273,10 @@
 .vtt-animated-grid p,.vtt-animated-library>p{font-size:11px;line-height:1.5;color:#c5c2b7}
 .vtt-animated-grid p{flex:1}
 .vtt-animated-grid button{width:100%}
+.vtt-vehicle-row{margin-top:10px;}
+.vtt-vehicle-row .vtt-character-row{display:flex;width:100%;align-items:center;gap:10px;text-align:left;white-space:normal;}
+.vtt-vehicle-row .vtt-character-row>span{display:flex;flex-direction:column;gap:5px;min-width:0;overflow-wrap:anywhere;}
+.vtt-vehicle-row .vtt-character-row strong{font-size:13px;color:#ead8b4;}
+.vtt-vehicle-row .vtt-character-row small{display:block;font-size:11px;line-height:1.45;color:#bcb6a6;}
+.vtt-vehicle-row>label{display:flex;align-items:center;gap:10px;}
+.vtt-vehicle-row>label input{width:85px;}

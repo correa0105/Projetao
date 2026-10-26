@@ -140,6 +140,8 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
       for (const n of row) assert.ok(Number.isInteger(n) && n >= 1 && n <= 6);
     }
     assert.equal((await req(path + '/choices', alice.cookie, choices)).status, 409);
+    assert.equal((await req(path+'/finalize',alice.cookie,{assignment:[0,1,2,3,4,5]})).status,409);
+    for(let revealed=1;revealed<=6;revealed++)assert.equal((await req(path+'/reveal',alice.cookie,{revealed})).status,200);
     assert.equal(
       (await req(path + '/finalize', alice.cookie, { assignment: [0, 0, 0, 0, 0, 0] })).status,
       400,
@@ -251,6 +253,7 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
     const freshPath = '/characters/' + fresh.id + '/sheet';
     await req(freshPath + '/choices', alice.cookie, defaultChoices(fresh.race, fresh.class));
     await req(freshPath + '/roll', alice.cookie, {});
+    for(let revealed=1;revealed<=6;revealed++)assert.equal((await req(freshPath+'/reveal',alice.cookie,{revealed})).status,200);
     const confirmations = await Promise.all(
       Array.from({ length: 4 }, () => req(freshPath + '/finalize', alice.cookie, { assignment })),
     );

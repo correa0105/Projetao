@@ -71,6 +71,7 @@ export const sheetSchema = z
     details: z.string().max(40000).default(''),
   })
   .strict();
+import {vehicleSourceSchema} from './vtt-vehicles.js';
 export const tokenSchema = z
   .object({
     id,
@@ -127,6 +128,7 @@ export const tokenSchema = z
     houseWindowsClosed: z.array(z.number().int().min(0).max(31)).max(32).optional(),
     assetScaleVersion: z.literal(2).optional(),
     sceneryToken: z.boolean().optional(),
+    vehicle: vehicleSourceSchema.optional(),
   })
   .strict();
 export type VttToken = z.infer<typeof tokenSchema>;

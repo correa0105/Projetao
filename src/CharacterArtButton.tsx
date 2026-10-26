@@ -95,6 +95,7 @@ export function CharacterArtButton({
   const quotaFull = quota.limit !== null && quota.used >= quota.limit;
   const constructed =
     character.race === 'Warforged' && character.art_reference_mode === 'construction';
+  const rollsReady=!!state.ready_characters?.includes(character.id);
   return (
     <div className="equipment-generate">
       <button
@@ -154,7 +155,7 @@ export function CharacterArtButton({
             className="stack"
             onSubmit={async (event) => {
               event.preventDefault();
-              if (checkingQuota || quotaFull || pending || availability !== true || busy) return;
+              if (!rollsReady || checkingQuota || quotaFull || pending || availability !== true || busy) return;
               setBusy(true);
               setError('');
               try {
@@ -176,6 +177,7 @@ export function CharacterArtButton({
           >
             <p>Quando a nova imagem ficar pronta, você poderá compará-la com a atual e escolher qual manter.</p>
             <p>A geração inclui a arte do personagem e um token visto de cima para o VTT.</p>
+            {!checkingQuota&&!rollsReady&&<p role="status">Primeiro, abra a Ficha e confirme os seis resultados dos atributos. Seus dados ficam salvos no slot.</p>}
             {checkingQuota ? (
               <p role="status">Consultando a cota mensal…</p>
             ) : (
@@ -216,6 +218,7 @@ export function CharacterArtButton({
               className="button primary"
               disabled={
                 busy ||
+                !rollsReady ||
                 checkingQuota ||
                 quotaFull ||
                 pending ||

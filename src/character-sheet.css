@@ -142,6 +142,11 @@
 .character-creation-form p.muted.small {
   color: #96866f;
 }
+.character-slot-dice {padding:20px;margin-block:12px 24px;border:1px solid #ad8e5066;border-radius:8px;background:#161a1be8;}
+.character-slot-dice h3 {margin-top:0;}
+.character-slot-dice .sheet-rolls {grid-template-columns:repeat(3,minmax(0,1fr));margin-block:18px;}
+.character-creation-form>fieldset:disabled {opacity:.48;}
+@media(max-width:600px){.character-slot-dice{padding:14px;}.character-slot-dice .sheet-rolls{grid-template-columns:repeat(2,minmax(0,1fr));}}
 .app-shell[data-page='profile'] .page-title {
   width: 100%;
   margin-inline: auto;

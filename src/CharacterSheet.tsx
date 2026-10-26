@@ -1,4 +1,6 @@
 import { FlashMessage } from './FlashMessage';
+import {vehicleDefinitions,type VehicleId} from '../shared/vtt-vehicles';
+import {VehiclePreview} from './VttVehicles';
 import { abilityRollResult } from '../shared/ability-rolls';
 import { startingEquipmentImage } from '../shared/starting-equipment-art';
 import { SheetSpellCollection } from './SheetSpellCollection';
@@ -136,6 +138,7 @@ export function CharacterSheet({
   const [draft, setDraft] = useState<SheetRecord | null>(null);
   const [revealedRolls, setRevealedRolls] = useState(6);
   function receive(r: SheetResponse) {
+    setRevealedRolls(r.sheet?.rolls_revealed ?? 6);
     setData(r);
     setDraft(r.sheet);
     if (r.sheet?.choices) {
@@ -210,7 +213,6 @@ export function CharacterSheet({
     setError('');
     try {
       const r = await post<SheetResponse>(`/characters/${c.id}/sheet/${path}`, body);
-      if (path === 'roll') setRevealedRolls(0);
       receive(r);
       if (refresh) await onRefresh();
       setSaved(true);
@@ -420,7 +422,8 @@ export function CharacterSheet({
             rolls={s!.rolls!}
             minimum={s?.ability_roll_floor ?? 0}
             revealed={revealedRolls}
-            onReveal={setRevealedRolls}
+            disabled={busy}
+            onReveal={count=>{if(count<=(s?.rolls_revealed??6))setRevealedRolls(count);else void action('reveal',{revealed:count});}}
           />
           {revealedRolls === 6 && (
             <>
@@ -972,6 +975,7 @@ export function CharacterSheet({
                       ))}
                     </ul>
                     <h3>Inventário adquirido</h3>
+                    {!!details?.inventory.some(item=>item.id in vehicleDefinitions)&&<section aria-label="Veículos na ficha"><h3>Veículos para a mesa</h3><p className="muted small">O mestre pode puxar estes veículos em VTT → Fichas → Veículos.</p>{details.inventory.filter(item=>item.id in vehicleDefinitions).map(item=><div key={item.id} style={{display:'flex',alignItems:'center',gap:12}}><VehiclePreview id={item.id as VehicleId}/><span>{item.name} · {item.quantity??1} exemplar(es)</span></div>)}</section>}
                     <ul className="sheet-equipment-grid">
                       {details?.inventory.map((item) => (
                         <EquipmentCard

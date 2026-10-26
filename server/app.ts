@@ -36,6 +36,7 @@ import { atlasId, resolvePostLocation } from './atlas.js';
 import { characterArtRouter, characterListSql } from './character-art.js';
 import { characterSchema } from '../shared/character-art.js';
 import { characterSheetRouter } from './character-sheet.js';
+import { characterSlotRollsRouter } from './character-slot-rolls.js';
 import { achievementsRouter } from './achievements.js';
 import { missionTagsRouter, setMissionTags } from './mission-tags.js';
 import { missionTagIds } from '../shared/mission-tags.js';
@@ -259,6 +260,7 @@ export function createApp() {
   app.use('/api', loreTimelineRouter());
   app.use('/api', characterArtRouter());
   app.use('/api', characterSheetRouter());
+  app.use('/api', characterSlotRollsRouter());
   app.use('/api', inventoryRouter());
   app.use('/api', rpLobbyRouter());
   app.use('/api', inventoryBagsRouter());

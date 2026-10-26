@@ -1,4 +1,5 @@
 import {vttVisualSource} from '../shared/vtt-asset-visuals';
+import {drawVehiclePart,drawVehicleCovers} from './vtt-vehicles-canvas';
 import {lightAnimationState,sceneHasAnimatedLights} from '../shared/vtt-lighting';
 import {drawMapObject} from './vtt-object-sprites';
 import {houseAsset,houseContains,houseOccupied,houseRoofOccluded,houseWalls,houseWindowViews,houseWindowPolygon} from '../shared/vtt-houses';
@@ -333,11 +334,13 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
   };
   const visibleCanopyToken = (t: VttToken) => !((!o.gm || o.preview) && t.hidden) && !(o.preview && o.viewer && t.id !== o.viewer.id && !viewerSees(o.viewer,t,s));
   const canopyActors = s.tokens.filter(t=>canopyActor(t) && visibleCanopyToken(t));
+  const vehicleViewers=o.preview&&o.viewer?[o.viewer]:s.tokens.filter(t=>canopyActor(t)&&t.controller===o.userId);
+  const vehicleActors=canopyActors.filter(t=>o.gm&&!o.preview||(!s.lighting&&!s.fog)||vehicleViewers.some(v=>v.id===t.id||viewerSees(v,t,s)));
   const houseActors=houseViewActors(canopyActors,o.gm&&!o.preview,o.userId??'',o.selected,o.preview?o.viewer?.id:undefined);
   const closedHouses=s.tokens.filter(h=>houseAsset(h)&&!houseOccupied(h,houseActors));
   let canopyCover: HTMLCanvasElement | null = null;
   for (const layer of ['map', 'tokens', 'gm']) {
-    if (layer === 'gm') drawCanopiesBelowRoofs(c,closedHouses.filter(visibleCanopyToken),images,ctx=>drawCanopyForeground(ctx,s,images,canopyActors,canopyCover,visibleCanopyToken,o.selected,cam.zoom));
+    if (layer === 'gm') {drawVehicleCovers(c,sortedTokens.filter(t=>t.layer!=='gm'),vehicleActors,images,visibleCanopyToken,s.gmOpacity);drawCanopiesBelowRoofs(c,closedHouses.filter(visibleCanopyToken),images,ctx=>drawCanopyForeground(ctx,s,images,canopyActors,canopyCover,visibleCanopyToken,o.selected,cam.zoom));}
     if (layer === 'tokens' && o.visualEffects !== false && o.bloodEnabled !== false)
       drawBloodDecals(
         c,
@@ -397,7 +400,9 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.filter = 'brightness(.42) sepia(1) saturate(4) hue-rotate(320deg)';
       c.scale(t.flipX ? -1 : 1, t.flipY ? -1 : 1);
       const house=houseAsset(t),img=images.get(house&&houseOccupied(t,houseActors)?house.interior:t.image);
-      if (t.animatedAsset) {
+      if (t.vehicle && drawVehiclePart(c,t,img,'base')) {
+        if(layer==='gm')drawVehiclePart(c,t,img,'cover');
+      } else if (t.animatedAsset) {
         drawAnimatedAsset(c, t, img, performance.now(), false, (t.layer === 'map' ? o.mapEffects ?? o.visualEffects : o.visualEffects) !== false);
       } else if (layer === 'map') {
         if (img?.complete && img.naturalWidth) {

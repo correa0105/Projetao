@@ -2,7 +2,8 @@ import { Router } from 'express';
 import {spellReference} from './spell-reference.js';
 import { grantCharacterStartingGold } from './character-starting-gold.js';
 import { rollCharacterAbilities } from './ability-rolls.js';
-import { ABILITY_ROLL_MIN_SCORE, abilityRollResult } from '../shared/ability-rolls.js';
+import {characterSlotPool} from './character-slot-rolls.js';
+import { abilityRollResult } from '../shared/ability-rolls.js';
 import type { PoolClient } from 'pg';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
@@ -380,19 +381,35 @@ export function characterSheetRouter() {
     const id = z.string().uuid().parse(req.params.id),
       user = res.locals.user.id;
     await transaction(async (client) => {
-      await owned(client, id, user, true);
+      await client.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE',[user]);
+      const character = await owned(client, id, user, true);
       const {
         rows: [sheet],
       } = await client.query('SELECT * FROM character_sheets WHERE character_id=$1', [id]);
       if (!sheet?.choices) throw new AppError(409, 'Complete as escolhas da ficha antes de rolar.');
       if (sheet.rolls) return; // Retry/double click returns the same persisted dice, never a new draw.
-      const rolls = rollCharacterAbilities();
+      const saved = await characterSlotPool(client,character);
+      const rolls = saved.rolls || rollCharacterAbilities();
+      await client.query('UPDATE character_slot_rolls SET rolls=$3,minimum=$4,character_id=$5,updated_at=now() WHERE user_id=$1 AND slot=$2',[user,saved.slot,JSON.stringify(rolls),saved.minimum,id]);
       await client.query(
-        'UPDATE character_sheets SET rolls=$2,ability_roll_floor=$3,updated_at=now() WHERE character_id=$1',
-        [id, JSON.stringify(rolls), ABILITY_ROLL_MIN_SCORE],
+        'UPDATE character_sheets SET rolls=$2,ability_roll_floor=$3,rolls_revealed=$4,updated_at=now() WHERE character_id=$1',
+        [id, JSON.stringify(rolls), saved.minimum,saved.revealed],
       );
     });
     res.json(await result(id, user));
+  });
+  router.post('/characters/:id/sheet/reveal',async(req,res)=>{
+    const id=z.string().uuid().parse(req.params.id),user=res.locals.user.id;
+    const {revealed}=z.object({revealed:z.number().int().min(0).max(6)}).strict().parse(req.body);
+    await transaction(async db=>{
+      await db.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE',[user]);
+      const c=await owned(db,id,user,true);
+      const s=(await db.query('SELECT rolls,rolls_revealed FROM character_sheets WHERE character_id=$1',[id])).rows[0];
+      if(!s?.rolls||revealed>s.rolls_revealed+1)throw new AppError(409,'Confirme uma rolagem por vez.');
+      await db.query('UPDATE character_sheets SET rolls_revealed=greatest(rolls_revealed,$2),updated_at=now() WHERE character_id=$1',[id,revealed]);
+      if(c.creation_slot)await db.query('UPDATE character_slot_rolls SET revealed=greatest(revealed,$3),updated_at=now() WHERE user_id=$1 AND slot=$2 AND character_id=$4',[user,c.creation_slot,revealed,id]);
+    });
+    res.json(await result(id,user));
   });
   router.post('/characters/:id/sheet/finalize', async (req, res) => {
     const id = z.string().uuid().parse(req.params.id),
@@ -414,6 +431,7 @@ export function characterSheetRouter() {
         id,
       ]);
       if (!sheet?.rolls || !sheet.choices) throw new AppError(409, 'Role os atributos primeiro.');
+      if(sheet.rolls_revealed!==6)throw new AppError(409,'Confirme os seis resultados antes de distribuir os atributos.');
       if (sheet.finalized_at) {
         if (
           JSON.stringify(sheet.assignment) !== JSON.stringify(assignment) ||

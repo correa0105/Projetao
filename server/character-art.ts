@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import {freeCharacterSlot} from './character-slot-rolls.js';
 import { grantCharacterStartingGold } from './character-starting-gold.js';
 import type { CharacterArtPair } from './character-token-illustrator.js';
 import { normalizeCharacterToken, syncCharacterTokenArt } from './character-token-art.js';
@@ -165,11 +166,12 @@ export async function enqueueArt(userId: string, input: unknown) {
       );
     if (data.character_id) {
       const owned = await client.query(
-        'SELECT c.id,c.race,c.portrait_revision,s.choices,p.image,p.construction_base FROM characters c LEFT JOIN character_sheets s ON s.character_id=c.id LEFT JOIN character_portraits p ON p.character_id=c.id WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL FOR UPDATE OF c',
+        'SELECT c.id,c.race,c.portrait_revision,s.choices,s.rolls,s.rolls_revealed,p.image,p.construction_base FROM characters c LEFT JOIN character_sheets s ON s.character_id=c.id LEFT JOIN character_portraits p ON p.character_id=c.id WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL FOR UPDATE OF c',
         [data.character_id, userId],
       );
       if (!owned.rowCount) throw new AppError(404, 'Personagem não encontrado.');
       const subject = owned.rows[0];
+      if(!subject.rolls||subject.rolls_revealed!==6)throw new AppError(409,'Abra a Ficha e role e confirme os seis atributos antes de Vestir ou gerar outra imagem.');
       replacementRevision = subject.image ? subject.portrait_revision : null;
       referenceMode =
         subject.race === 'Warforged' ? warforgedArtMode(subject.choices) : 'reference';
@@ -222,6 +224,8 @@ export async function enqueueArt(userId: string, input: unknown) {
           `Esta conta pode ter até ${characterLimit(account.administrador === 1)} personagens, incluindo os que estão em preparação.`,
         );
     }
+    const creationSlot = data.creation ? await freeCharacterSlot(client,userId,data.creation.creation_slot,undefined,true) : null;
+    if(data.creation && creationSlot)data.creation.creation_slot=creationSlot.slot;
     const equipment: { slot: string; item_id: string; name: string; image: Buffer }[] = [];
     if (data.character_id && data.equipment_slots.length) {
       const { rows } = await client.query(
@@ -265,8 +269,8 @@ export async function enqueueArt(userId: string, input: unknown) {
     const {
       rows: [job],
     } = await client.query(
-      `INSERT INTO character_art_jobs(user_id,character_id,creation,reference,idempotency_key,helmet_mode,reference_mode,replacement_revision)
-      VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING id,status,character_id`,
+      `INSERT INTO character_art_jobs(user_id,character_id,creation,reference,idempotency_key,helmet_mode,reference_mode,replacement_revision,creation_slot,roll_generation)
+      VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING id,status,character_id`,
       [
         userId,
         data.character_id || null,
@@ -276,6 +280,8 @@ export async function enqueueArt(userId: string, input: unknown) {
         data.helmet_mode,
         referenceMode,
         replacementRevision,
+        creationSlot?.slot ?? null,
+        creationSlot?.generation ?? null,
       ],
     );
     for (const item of equipment)
@@ -410,11 +416,13 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
       if (counts.total >= characterLimit(account.administrador === 1))
         throw new AppError(409, 'Limite de personagens atingido.');
       const data = characterSchema.parse(job.creation);
+      const savedSlot = await freeCharacterSlot(client,job.user_id,job.creation_slot??data.creation_slot,jobId,Boolean(data.creation_slot));
+      if(job.roll_generation && savedSlot.generation!==job.roll_generation)throw new AppError(409,'Este pedido pertence a uma criação anterior do slot. Retome o preenchimento.');
       const {
         rows: [character],
       } = await client.query(
-        `INSERT INTO characters(user_id,name,race,class,background,biography,stats,hp,armor_class,gold_cp,starting_wealth_granted)
-        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,0,false) RETURNING id`,
+        `INSERT INTO characters(user_id,name,race,class,background,biography,stats,hp,armor_class,gold_cp,starting_wealth_granted,creation_slot)
+        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,0,false,$10) RETURNING id`,
         [
           job.user_id,
           data.name,
@@ -425,13 +433,18 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
           JSON.stringify(data.stats),
           hitDice[data.class] + modifier(data.stats[2]),
           10 + modifier(data.stats[1]),
+          savedSlot.slot,
         ],
       );
       characterId = character.id;
+      await client.query('UPDATE character_slot_rolls SET character_id=$3,updated_at=now() WHERE user_id=$1 AND slot=$2',[job.user_id,savedSlot.slot,characterId]);
       if (data.choices) {
-        await client.query('INSERT INTO character_sheets(character_id,choices) VALUES($1,$2)', [
+        await client.query('INSERT INTO character_sheets(character_id,choices,rolls,ability_roll_floor,rolls_revealed) VALUES($1,$2,$3,$4,$5)', [
           characterId,
           JSON.stringify(data.choices),
+          savedSlot.rolls ? JSON.stringify(savedSlot.rolls) : null,
+          savedSlot.minimum,
+          savedSlot.revealed,
         ]);
       }
       await client.query(
@@ -514,7 +527,7 @@ export function characterArtRouter() {
       const {
         rows: [job],
       } = await client.query(
-        'SELECT id,status,character_id,creation,reference IS NOT NULL OR approved_portrait IS NOT NULL AS recoverable FROM character_art_jobs WHERE id=$1 AND user_id=$2 FOR UPDATE',
+        'SELECT id,status,character_id,creation,creation_slot,roll_generation,reference IS NOT NULL OR approved_portrait IS NOT NULL AS recoverable FROM character_art_jobs WHERE id=$1 AND user_id=$2 FOR UPDATE',
         [id, user],
       );
       if (!job) throw new AppError(404, 'Criação não encontrada.');
@@ -550,12 +563,15 @@ export function characterArtRouter() {
       if (!job.character_id && Number(count.total) >= characterLimit(false))
         throw new AppError(409, 'Limite de personagens atingido. Sua criação continua salva.');
       characterSchema.parse(replacement?.creation || job.creation);
+      const retrySlot=!job.character_id ? await freeCharacterSlot(client,user,replacement?.creation?.creation_slot??job.creation_slot??undefined,id,Boolean(replacement||job.creation.creation_slot)) : null;
+      if(retrySlot && !replacement && job.roll_generation && retrySlot.generation!==job.roll_generation)throw new AppError(409,'Este pedido pertence a uma criação anterior do slot. Retome o preenchimento.');
+      if(replacement?.creation && retrySlot)replacement.creation.creation_slot=retrySlot.slot;
       const retryMode = canConstructWithoutReference(replacement?.creation || job.creation)
         ? 'construction'
         : 'reference';
       await client.query(
-        "UPDATE character_art_jobs SET status='queued',error=NULL,started_at=NULL,completed_at=NULL,reference=CASE WHEN $3::jsonb IS NULL THEN CASE WHEN $4='construction' AND reference_mode='reference' AND character_id IS NULL THEN NULL ELSE reference END ELSE $2::bytea END,creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END,reference_mode=$4 WHERE id=$1",
-        [id, reference, replacement ? JSON.stringify(replacement.creation) : null, retryMode],
+        "UPDATE character_art_jobs SET status='queued',error=NULL,started_at=NULL,completed_at=NULL,reference=CASE WHEN $3::jsonb IS NULL THEN CASE WHEN $4='construction' AND reference_mode='reference' AND character_id IS NULL THEN NULL ELSE reference END ELSE $2::bytea END,creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END,reference_mode=$4,creation_slot=COALESCE($5,creation_slot),roll_generation=COALESCE($6,roll_generation) WHERE id=$1",
+        [id, reference, replacement ? JSON.stringify(replacement.creation) : null, retryMode,retrySlot?.slot??null,retrySlot?.generation??null],
       );
       return { id, status: 'queued' };
     });
@@ -642,6 +658,7 @@ export function characterArtRouter() {
     );
     res.json({
       reviews,
+      ready_characters:(await pool.query('SELECT c.id FROM characters c JOIN character_sheets s ON s.character_id=c.id WHERE c.user_id=$1 AND c.deleted_at IS NULL AND s.rolls IS NOT NULL AND s.rolls_revealed=6',[res.locals.user.id])).rows.map(c=>c.id),
       available: await artWorkerAvailable(),
       character_limit: characterLimit(await isAdministrator(res.locals.user.id)),
       jobs: jobs.map(({ saved_creation, ...job }) => ({

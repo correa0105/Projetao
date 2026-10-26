@@ -123,11 +123,15 @@ export function AttributeDice({
   revealed,
   onReveal,
   minimum = 0,
+  disabled = false,
+  allowReplay = true,
 }: {
   rolls: number[][];
   revealed: number;
   onReveal: (count: number) => void;
   minimum?: number;
+  disabled?: boolean;
+  allowReplay?: boolean;
 }) {
   const [throwing, setThrowing] = useState(false);
   return (
@@ -156,13 +160,13 @@ export function AttributeDice({
       </div>
       {revealed < 6 ? (
         <div className="attribute-roll-action">
-          <button className="button primary" disabled={throwing} onClick={() => setThrowing(true)}>
+          <button className="button primary" type="button" disabled={throwing || disabled} onClick={() => setThrowing(true)}>
             <Dices size={19} /> Lançar dados · resultado {revealed + 1}
           </button>
           <p className="muted small">Revele os seis resultados para distribuir seus atributos.</p>
         </div>
-      ) : (
-        <button className="button outline" onClick={() => onReveal(0)}>
+      ) : allowReplay && (
+        <button className="button outline" type="button" disabled={disabled} onClick={() => onReveal(0)}>
           Rever rolagens em 3D
         </button>
       )}

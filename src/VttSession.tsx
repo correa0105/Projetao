@@ -109,6 +109,8 @@ import { VttCharacterToken } from './VttCharacterToken';
 import { VttMonsterVariants } from './VttMonsterVariants';
 import { monsterVariantFilter, type MonsterVariant } from '../shared/vtt-monster-variants';
 import { VttCompanions } from './VttCompanions';
+import {VttVehicles,type VehiclePick} from './VttVehicles';
+import {vehicleMime} from '../shared/vtt-vehicles';
 import { companionMime } from '../shared/vtt-companions';
 import { VttSelectionPortrait } from './VttSelectionPortrait';
 import { VttChatText } from './VttChatText';
@@ -235,6 +237,7 @@ type Tab =
   | 'sheet'
   | 'mounts'
   | 'pets'
+  | 'vehicles'
   | 'chat'
   | 'combat'
   | 'journal'
@@ -2368,6 +2371,12 @@ export function VttSession({ characters, user, media }: { characters: Character[
       setBusy(false);
     }
   }
+  async function bringVehicle(pick:VehiclePick,at?:Point){
+    if(!state||!gm||preview||busy||characterImportBusy.current)return;
+    characterImportBusy.current=true;setBusy(true);
+    try{await save();setBusy(true);const existing=scene?.tokens.some(t=>t.vehicle?.characterId===pick.characterId&&t.vehicle.itemId===pick.itemId&&t.vehicle.copy===pick.copy);const position=at??(!existing?{x:camera.x,y:camera.y}:undefined);const next=await post<VttState>(`/vtt/rooms/${state.id}/vehicles`,{...pick,...(position?{position}:{})});receive(next);const imported=next.document.scenes.find(s=>s.id===next.document.activeScene)?.tokens.find(t=>t.vehicle?.characterId===pick.characterId&&t.vehicle.itemId===pick.itemId&&t.vehicle.copy===pick.copy);if(imported){changeLayer('map',[imported.id]);setSelection([imported.id]);setAttackTargetId(null);setTool('select');if(!at)setCamera(c=>({...c,x:imported.x,y:imported.y}));}}
+    finally{characterImportBusy.current=false;setBusy(false);}
+  }
   function dragCharacter(event: ReactDragEvent<HTMLElement>, id: string) {
     if (spectator || preview || busy || characterImportBusy.current) {
       event.preventDefault();
@@ -3195,6 +3204,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                 !busy &&
                 (e.dataTransfer.types.includes(characterMime) ||
                   e.dataTransfer.types.includes(companionMime) ||
+                  (gm && e.dataTransfer.types.includes(vehicleMime)) ||
                   (gm && (e.dataTransfer.types.includes(monsterMime) || e.dataTransfer.types.includes(animatedAssetMime) || e.dataTransfer.types.includes(natureAssetMime) || e.dataTransfer.types.includes(treeAssetMime) || e.dataTransfer.types.includes(sceneryAssetMime))))
               ) {
                 e.preventDefault();
@@ -3202,6 +3212,9 @@ export function VttSession({ characters, user, media }: { characters: Character[
               }
             }}
             onDrop={(e) => {
+              if(gm&&!preview&&!busy&&e.dataTransfer.types.includes(vehicleMime)){
+                e.preventDefault();try{const pick=JSON.parse(e.dataTransfer.getData(vehicleMime));void act(()=>bringVehicle(pick,point(e)));}catch{setNotice('Não foi possível puxar o veículo.');}return;
+              }
               if(gm&&!preview&&!busy&&e.dataTransfer.types.includes(natureAssetMime)){
                 e.preventDefault();
                 try{const a=JSON.parse(e.dataTransfer.getData(natureAssetMime));addNatureAsset(a.id,a.scale,point(e));}catch{setNotice('Não foi possível colocar a peça.');}
@@ -3629,7 +3642,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   title={name}
                   aria-pressed={
                     tab === id ||
-                    (id === 'sheet' && ['token', 'journal', 'mounts', 'pets'].includes(tab)) ||
+                    (id === 'sheet' && ['token', 'journal', 'mounts', 'pets','vehicles'].includes(tab)) ||
                     (id === 'table' && (tab === 'scene' || tab === 'help'))
                   }
                   onClick={() => {
@@ -3682,7 +3695,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   </button>
                 )}
               </div>
-              {['sheet', 'mounts', 'pets', 'token', 'journal'].includes(tab) && (
+              {['sheet', 'mounts', 'pets','vehicles', 'token', 'journal'].includes(tab) && (
                 <div className="vtt-subtabs vtt-companion-tabs">
                   <button aria-pressed={tab === 'sheet'} onClick={() => setTab('sheet')}>
                     Personagens
@@ -3693,6 +3706,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   <button aria-pressed={tab === 'pets'} onClick={() => setTab('pets')}>
                     Mascotes
                   </button>
+                  <button aria-pressed={tab==='vehicles'} onClick={()=>setTab('vehicles')}>Veículos</button>
                   <button aria-pressed={tab === 'token'} onClick={() => setTab('token')}>
                     Token selecionado
                   </button>
@@ -4652,6 +4666,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   bring={(id) => void act(() => bringCompanion(id))}
                 />
               )}
+              {tab==='vehicles'&&<VttVehicles roomId={state.id} gm={gm&&!preview} disabled={busy||preview||spectator} bring={pick=>void act(()=>bringVehicle(pick))}/>}
               {spectator && tab === 'sheet' && (
                 <p className="vtt-muted">
                   Espectadores acompanham a mesa sem trazer fichas. Escolha a visão de um jogador no

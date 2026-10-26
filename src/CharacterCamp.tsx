@@ -440,7 +440,7 @@ export function CharacterCamp({
             className="stack"
             onSubmit={async (e) => {
               e.preventDefault();
-              if (checkingQuota || quotaFull || availability !== true || busy) return;
+              if (!state.ready_characters?.includes(editing.id) || checkingQuota || quotaFull || availability !== true || busy) return;
               setBusy(true);
               setError('');
               try {
@@ -462,6 +462,7 @@ export function CharacterCamp({
           >
             <p>A imagem atual permanece até a nova ficar pronta.</p>
             <p>A geração inclui a arte do personagem e um token visto de cima para o VTT.</p>
+            {!checkingQuota&&!state.ready_characters?.includes(editing.id)&&<p role="status">Primeiro, abra a Ficha e confirme os seis resultados dos atributos. Seus dados ficam salvos no slot.</p>}
             {checkingQuota ? <p role="status">Consultando a cota mensal…</p> :
               editingQuota && <ArtQuotaNotice quota={editingQuota} subject="Personagem" initialFree accountWide />}
             <span
@@ -488,7 +489,7 @@ export function CharacterCamp({
             {error && <FlashMessage>{error}</FlashMessage>}
             <button
               className="button primary"
-              disabled={busy || checkingQuota || quotaFull || (!constructed && !reference) || !equipmentReady || availability !== true}
+              disabled={busy || !state.ready_characters?.includes(editing.id) || checkingQuota || quotaFull || (!constructed && !reference) || !equipmentReady || availability !== true}
             >
               {busy ? 'Enviando…' : 'Gerar imagem'}
             </button>

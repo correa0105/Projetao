@@ -10,6 +10,7 @@ export const COMPANION_ART_MONTHLY_LIMIT = 2;
 export const ART_MAX_BYTES = 8 * 1024 * 1024;
 export const characterSchema = z
   .object({
+    creation_slot: z.number().int().min(1).max(2).optional(),
     name: z.string().trim().min(2).max(60),
     race: z.enum(races),
     class: z.enum(classes),
@@ -63,6 +64,7 @@ export type ArtJob = {
   created_at: string;
 };
 export type ArtState = {
+  ready_characters?: string[];
   available: boolean;
   jobs: ArtJob[];
   pending_new: number;

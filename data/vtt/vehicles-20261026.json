@@ -1,0 +1,139 @@
+{
+  "generator": "built-in image_gen; originals retained without conversion or compression",
+  "assets": [
+    {
+      "id": "airship",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-aa09369f-294d-46cc-9942-1cbface94361.png",
+      "prompt": "Use case: stylized-concept. Asset type: production VTT transparent layered vehicle sprite sheet. Create a fantasy airship: beautifully crafted elongated suspended wooden gondola with a usable plank deck and tiny steering wheel, brass fittings; its upper layer is ONE large oval cream canvas balloon with coherent rope rigging, burgundy seams. Strict orthographic TOP DOWN, camera exactly 90 degrees above, bow pointing UP. Premium detailed hand-painted realistic fantasy battlemap art, realistic wood grain, restrained soft lighting. Transparent PNG. ONE asset sheet with TWO exactly equal portrait panels side by side, no dividing line: LEFT panel shows ONLY the lower hull, complete open deck and fittings, with ALL sails, masts, upper canopy removed so characters can stand on deck. RIGHT panel shows ONLY the removed upper sail/balloon/rigging layer, no hull, no deck. Both panels use the EXACT SAME registration, scale and center so overlaying right panel over left panel reconstructs one complete vehicle perfectly; mast feet align to deck. Keep all pixels within own half with generous transparent margin. The craft's visual length is 85% of panel height. Layer width must fit panel. No people, no animals, no water, no scenery, no ground, no grid, no text, no border, no labels, no cast shadow on background. Distinct functional coherent ship anatomy, NOT isometric, NOT side view.",
+      "path": "/vtt/vehicles-20261026/airship-v1.png",
+      "sha256": "e8c30b3fb988425dd37de4937261c0562866866bf965300bbef4a10225717119",
+      "width": 1223,
+      "height": 1286,
+      "alpha": true,
+      "clearFraction": 0.5322944496934723
+    },
+    {
+      "id": "sailing-ship",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-b7f29273-01c5-456a-9a6d-a6a566321f93.png",
+      "prompt": "Use case: stylized-concept. Asset type: production VTT transparent layered vehicle sprite sheet. Create a medieval three-masted sailing ship, dark oak open playable deck, raised bow and stern, hatches, ropes, brass fittings; upper layer contains the three masts and spars with cream billowing canvas sails, fine rigging. Strict orthographic TOP DOWN, camera exactly 90 degrees above, bow pointing UP. Premium detailed hand-painted realistic fantasy battlemap art, realistic wood grain, restrained soft lighting. Transparent PNG. ONE asset sheet with TWO exactly equal portrait panels side by side, no dividing line: LEFT panel shows ONLY the lower hull, complete open deck and fittings, with ALL sails, masts, upper canopy removed so characters can stand on deck. RIGHT panel shows ONLY the removed upper sail/balloon/rigging layer, no hull, no deck. Both panels use the EXACT SAME registration, scale and center so overlaying right panel over left panel reconstructs one complete vehicle perfectly; mast feet align to deck. Keep all pixels within own half with generous transparent margin. The craft's visual length is 85% of panel height. Layer width must fit panel. No people, no animals, no water, no scenery, no ground, no grid, no text, no border, no labels, no cast shadow on background. Distinct functional coherent ship anatomy, NOT isometric, NOT side view.",
+      "path": "/vtt/vehicles-20261026/sailing-ship-v1.png",
+      "sha256": "57db388bd9094cdc9222f9b6764b2a629c147e6971b91b31adb29bc9243dd5b3",
+      "width": 1223,
+      "height": 1286,
+      "alpha": true,
+      "clearFraction": 0.49835704721200325
+    },
+    {
+      "id": "galley",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-79ff31ba-5490-45b2-9408-9be8a2be2554.png",
+      "prompt": "Use case: stylized-concept. Asset type: production VTT transparent layered vehicle sprite sheet. Create a long medieval galley, narrow oak playable deck, raised stern and bow, many symmetrical oars extending from each side; upper layer contains one mast with a broad weathered cream square sail and coherent rigging. Strict orthographic TOP DOWN, camera exactly 90 degrees above, bow pointing UP. Premium detailed hand-painted realistic fantasy battlemap art, realistic wood grain, restrained soft lighting. Transparent PNG. ONE asset sheet with TWO exactly equal portrait panels side by side, no dividing line: LEFT panel shows ONLY the lower hull, complete open deck and fittings, with ALL sails, masts, upper canopy removed so characters can stand on deck. RIGHT panel shows ONLY the removed upper sail/balloon/rigging layer, no hull, no deck. Both panels use the EXACT SAME registration, scale and center so overlaying right panel over left panel reconstructs one complete vehicle perfectly; mast feet align to deck. Keep all pixels within own half with generous transparent margin. The craft's visual length is 85% of panel height. Layer width must fit panel. No people, no animals, no water, no scenery, no ground, no grid, no text, no border, no labels, no cast shadow on background. Distinct functional coherent ship anatomy, NOT isometric, NOT side view.",
+      "alphaPrompt": "Use case: background-extraction. Edit this two-panel VTT sprite sheet. Preserve both wooden deck and separated sails EXACTLY, all details and arrangement and dimensions unchanged. REMOVE ALL the brown gradient, brown glow and black backdrop between and around the two sprites, replace with true alpha=0 transparency. NO halo, no floor, no shadows around sprites. Only the actual hull/oars/planks/sails/masts/ropes remain. Deliver transparent PNG, same composition.",
+      "path": "/vtt/vehicles-20261026/galley-v1.png",
+      "sha256": "a98f31a5785a71de1ece64ab0d79ffa8f1cc6d5ff9f1702094b09db8ed7712a1",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "clearFraction": 0.6245638529459635
+    },
+    {
+      "id": "keelboat",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-a9465425-4b41-4723-adc3-a8d9bbb8f0ff.png",
+      "prompt": "Use case: stylized-concept. Asset type: production VTT transparent layered vehicle sprite sheet. Create a small medieval river keelboat, open oak playable deck with a small stern cabin, poles and ropes; upper layer contains one mast and one modest tan canvas sail with coherent rigging. Strict orthographic TOP DOWN, camera exactly 90 degrees above, bow pointing UP. Premium detailed hand-painted realistic fantasy battlemap art, realistic wood grain, restrained soft lighting. Transparent PNG. ONE asset sheet with TWO exactly equal portrait panels side by side, no dividing line: LEFT panel shows ONLY the lower hull, complete open deck and fittings, with ALL sails, masts, upper canopy removed so characters can stand on deck. RIGHT panel shows ONLY the removed upper sail/balloon/rigging layer, no hull, no deck. Both panels use the EXACT SAME registration, scale and center so overlaying right panel over left panel reconstructs one complete vehicle perfectly; mast feet align to deck. Keep all pixels within own half with generous transparent margin. The craft's visual length is 85% of panel height. Layer width must fit panel. No people, no animals, no water, no scenery, no ground, no grid, no text, no border, no labels, no cast shadow on background. Distinct functional coherent ship anatomy, NOT isometric, NOT side view.",
+      "alphaPrompt": "Use case: background-extraction. Edit this two-panel VTT sprite sheet. Preserve both wooden deck and separated sails EXACTLY, all details and arrangement and dimensions unchanged. REMOVE ALL the brown gradient, brown glow and black backdrop between and around the two sprites, replace with true alpha=0 transparency. NO halo, no floor, no shadows around sprites. Only the actual hull/oars/planks/sails/masts/ropes remain. Deliver transparent PNG, same composition.",
+      "path": "/vtt/vehicles-20261026/keelboat-v1.png",
+      "sha256": "27cb21f3a7c5c5318fe059f4b6068cc52c7e14ad3a1fc0ee1ce3dcef154e4b12",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "clearFraction": 0.6865889231363932
+    },
+    {
+      "id": "longship",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-f4cee5ac-4ddf-4d27-850b-b5c6aa7e9a73.png",
+      "prompt": "Use case: stylized-concept. Production VTT layered vehicle sprite sheet, a medieval Viking longship, oak clinker hull, an open playable deck with rowing benches and symmetrical oars and a carved dragon prow; upper layer one broad burgundy and cream striped square canvas sail, mast and rigging. True orthographic top down, bow UP. Premium finely detailed realistic painted fantasy battlemap art. TWO equal panels side by side. LEFT: only lower hull and uncovered deck with no masts or sails. RIGHT: only separated upper sail/mast/rigging layer with NO hull or deck. Both centered at same scale and registration to overlay them. Each part fits its own panel with transparent margin, height 85% of image. Isolated on genuinely TRANSPARENT background alpha0. No black/brown background, NO gradients, NO glow, no environment, no sea, no floor, no cast shadow, no grid, no labels, no text, no people. Coherent complete anatomy.",
+      "path": "/vtt/vehicles-20261026/longship-v1.png",
+      "sha256": "47b9e00be67893c0dc6d35521ccffe9381358f7566b7bb68ee3686d91b948f06",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "clearFraction": 0.6420167287190756
+    },
+    {
+      "id": "warship",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-26f1c548-474a-4088-9615-efab964ab41a.png",
+      "prompt": "Use case: stylized-concept. Production VTT layered vehicle sprite sheet, a broad medieval warship with raised forecastle and sterncastle, detailed oak open playable deck, ropes and hatches, no cannons; upper layer two sturdy masts and tan canvas sails, spars and rigging. True orthographic top down, bow UP. Premium finely detailed realistic painted fantasy battlemap art. TWO equal panels side by side. LEFT: only lower hull and uncovered deck with no masts or sails. RIGHT: only separated upper sail/mast/rigging layer with NO hull or deck. Both centered at same scale and registration to overlay them. Each part fits its own panel with transparent margin, height 85% of image. Isolated on genuinely TRANSPARENT background alpha0. No black/brown background, NO gradients, NO glow, no environment, no sea, no floor, no cast shadow, no grid, no labels, no text, no people. Coherent complete anatomy.",
+      "path": "/vtt/vehicles-20261026/warship-v1.png",
+      "sha256": "e7bc889723d527ef02fae1f26d0b65b2622d4172da2dc7332cd465cb04773e12",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "clearFraction": 0.6119219462076823
+    },
+    {
+      "id": "carriage",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-4a907979-bc71-4bff-88cf-4dd1e1472625.png",
+      "prompt": "Use case: stylized-concept. Production VTT transparent top-down vehicle art of a medieval four-wheeled enclosed horse carriage with empty shafts, oak chassis, dark green cabin, brass trim, leather bench seats. Strict orthographic top view looking straight DOWN, front pointing UP, no visible horizon. Premium finely detailed realistic painted fantasy battlemap art, natural oak grain, subtle restrained light and wear, coherent functional construction. TWO equal panels side by side, LEFT shows ONLY entire vehicle base and open interior with the cabin roof completely removed; RIGHT shows ONLY detached dark green carriage cabin roof, no chassis or wheels. Exact same scale and registration in both halves for overlay. Each part stays within own half with transparent margin. No horse, no people, no land, no water, no scenery, no grid, no text, no labels. GENUINELY transparent background alpha=0, no background gradient, NO glow, no cast shadow, no black or brown backdrop. Fine clean cutout.",
+      "path": "/vtt/vehicles-20261026/carriage-v1.png",
+      "sha256": "f3dbfbbc1a6ad3734c23336adff1ee0782782be19cfcd0b3ca0df55decedf88f",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "clearFraction": 0.5535507202148438
+    },
+    {
+      "id": "cart",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-b99fabe8-7142-4577-873e-77f2eea9bece.png",
+      "prompt": "Use case: stylized-concept. Production VTT transparent top-down vehicle art of a small medieval two-wheeled open wooden cart, ONE coherent axle and two empty towing shafts, empty plank cargo bed. Strict orthographic top view looking straight DOWN, front pointing UP, no visible horizon. Premium finely detailed realistic painted fantasy battlemap art, natural oak grain, subtle restrained light and wear, coherent functional construction. One complete vehicle centered with generous transparent margin all around. No horse, no people, no land, no water, no scenery, no grid, no text, no labels. GENUINELY transparent background alpha=0, no background gradient, NO glow, no cast shadow, no black or brown backdrop. Fine clean cutout.",
+      "path": "/vtt/vehicles-20261026/cart-v1.png",
+      "sha256": "9983348122a035a9d63af47deac5658178f7a5553531ef548a3b1af39717affc",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "clearFraction": 0.5592397054036459
+    },
+    {
+      "id": "chariot",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-51d2c496-5deb-443e-a05d-b9020ce64a17.png",
+      "prompt": "Use case: stylized-concept. Production VTT transparent top-down vehicle art of a medieval fantasy two-wheeled battle chariot, open standing platform behind a curved protective front, two wheels and one empty draw pole, bronze and leather fittings. Strict orthographic top view looking straight DOWN, front pointing UP, no visible horizon. Premium finely detailed realistic painted fantasy battlemap art, natural oak grain, subtle restrained light and wear, coherent functional construction. One complete vehicle centered with generous transparent margin all around. No horse, no people, no land, no water, no scenery, no grid, no text, no labels. GENUINELY transparent background alpha=0, no background gradient, NO glow, no cast shadow, no black or brown backdrop. Fine clean cutout.",
+      "path": "/vtt/vehicles-20261026/chariot-v1.png",
+      "sha256": "bfd83f76f4113802a1ce4ab9073c5efbf1949712228e28195fb4d4cf18c5559e",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "clearFraction": 0.6208305358886719
+    },
+    {
+      "id": "rowboat",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-9992de85-83b6-4b50-bee3-7056759178a7.png",
+      "prompt": "Use case: stylized-concept. Production VTT transparent top-down vehicle art of a small medieval wooden rowboat, coherent symmetrical hull, two oars resting inside, wooden bench seats and an open usable floor. Strict orthographic top view looking straight DOWN, front pointing UP, no visible horizon. Premium finely detailed realistic painted fantasy battlemap art, natural oak grain, subtle restrained light and wear, coherent functional construction. One complete vehicle centered with generous transparent margin all around. No horse, no people, no land, no water, no scenery, no grid, no text, no labels. GENUINELY transparent background alpha=0, no background gradient, NO glow, no cast shadow, no black or brown backdrop. Fine clean cutout.",
+      "path": "/vtt/vehicles-20261026/rowboat-v1.png",
+      "sha256": "36ffbaa2268be4690176f5948a37c224fcbba6e28a324c4f5de25be6c62b80f0",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "clearFraction": 0.5608882904052734
+    },
+    {
+      "id": "sled",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-86c17400-aa9c-4879-872e-dae19907a94d.png",
+      "prompt": "Use case: stylized-concept. One production VTT vehicle sprite: a medieval wooden cargo sled with two continuous curved runners and an empty flat bed, leather lashings. Strict orthographic TOP DOWN camera exactly 90 degrees above, front pointing UP. Premium finely detailed painted realistic fantasy battlemap art, natural wood grain, brass/iron fittings and restrained wear, coherent functional construction. Entire vehicle fits centered with transparent margin on all sides. GENUINELY transparent background alpha0, no background, no gradient, no glow, no cast shadow. No people, no animals, no ground, no water, no scenery, no grid, no text or labels. View open load floor from above.",
+      "path": "/vtt/vehicles-20261026/sled-v1.png",
+      "sha256": "31a2e654bbf23d2f5b2b66403d9b35a10ccc53c7e93cbe7a89db76de526c671a",
+      "width": 1154,
+      "height": 1363,
+      "alpha": true,
+      "clearFraction": 0.5232735415175263
+    },
+    {
+      "id": "wagon",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a17879-cdf4-73a2-917a-60f924467119\\exec-372c1772-b7fc-463c-8bae-c428950c33a3.png",
+      "prompt": "Use case: stylized-concept. One production VTT vehicle sprite: a sturdy medieval four-wheeled wooden cargo wagon, empty open plank bed with low side rails, two coherent axles and an empty draw pole. Strict orthographic TOP DOWN camera exactly 90 degrees above, front pointing UP. Premium finely detailed painted realistic fantasy battlemap art, natural wood grain, brass/iron fittings and restrained wear, coherent functional construction. Entire vehicle fits centered with transparent margin on all sides. GENUINELY transparent background alpha0, no background, no gradient, no glow, no cast shadow. No people, no animals, no ground, no water, no scenery, no grid, no text or labels. View open load floor from above.",
+      "path": "/vtt/vehicles-20261026/wagon-v1.png",
+      "sha256": "29f50acc541c013a6d3fd82b89b1c981c6f909b6281dbad748177e0017597620",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "clearFraction": 0.6113694508870443
+    }
+  ]
+}
