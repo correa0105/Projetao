@@ -38,6 +38,8 @@ Gravar fala é uma ação separada e explícita, limitada a 30 s. O arquivo fica
 
 Refino solicitado de Espectro e Aberração: Espectro usa uma oitava leve sob a voz, menor deslocamento principal, eco/reverberação reduzidos e respiração filtrada que segue as sílabas. Aberração passa a grave mais profundo com camada inferior discreta, menos saturação e bem menos modulação metálica. Ambos têm uma pequena deriva orgânica de afinação; os outros oito presets mantêm seus parâmetros. Os controles novos de respiração/deriva ficam zerados nos demais. Worklet inclui cache-bust `v=20261026-2`. Treze testes de engine/DSP/integridade verificam sinal finito, fundamental clara e ausência de sopro com entrada silenciosa; navegador real verifica as duas gravações, transmissão nos dois sentidos e quatro larguras.
 
+Vozes publicadas como `vtt-voice-refine-20261026`, fonte `2fca839bd3281facd905f13c8fbf79502412af06`: 40 arquivos, 910 anteriores e 40 respostas HTTPS conferidos; módulo v2 disponível. Os 241 áudios, atlas PNG original, cinco mesas, quatro hotbars e 35 assets privados preservados na troca; ilustrador online. Sem migration. Recarregar para obter o novo cliente e worklet.
+
 Arquivos de áudio enviados passam a ficar disponíveis aos participantes enquanto o mestre os reproduz no soundboard. O servidor exige áudio da própria mesa, uma voz ativa e fonte não oculta; ao parar, o arquivo deixa de ser compartilhado por esse vínculo. Uploads inativos, imagens, arquivos de outras mesas e acesso anônimo continuam protegidos.
 
 ## Verificação
