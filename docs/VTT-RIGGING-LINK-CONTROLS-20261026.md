@@ -28,3 +28,9 @@ Protocolo VTT **27** exige atualizar clientes antigos antes de editar vínculos 
 - `scripts/test-vehicles-slots-isolated.mjs --rigging`: navegador real, carruagem e personagem com seis atualizações de tamanho cada, abrir/fechar Mais opções, exatamente um slider antes/depois, quatro larguras 1440/1024/768/390, painel de vínculo e seleção real do apoio, posição/orientação conservadas ao vincular/soltar. Cinco coberturas e transparência verificadas no renderer. Evidências em `test-results/rigging-controls/`.
 
 Publicação incremental a partir de `vtt-vehicles-slots-20261026`, preservando seus arquivos e mídias e conferindo hashes dos dados privados antes/depois. Atualizar página para receber as correções também nos veículos já colocados.
+
+## Publicação confirmada
+
+Ativo em https://alvoradacinzenta.com/ na imagem `vtt-rigging-controls-20261026`, fonte `e67187ca18afb63f80f571543cab11ed1ba896ee`. Arquivo de release SHA-256 `77ef5b033edc12e6a03ba4626b5bbd59519db8fae69fa64fe99c68ef60e51718`. Conferidos 49 arquivos novos, 1.019 anteriores, 46 respostas HTTPS, cinco PNGs de cobertura novos, doze PNGs anteriores e 241 áudios.
+
+Backup completo `/opt/alvorada/backups/rigging-controls-before-20261026.dump`, configuração e snapshots privados antes/depois. Cinco mesas, quatro hotbars, 35 arquivos privados, 39 personagens/fichas, 26 slots, 190 linhas de inventário, 152 compras, oito retratos, sete tokens e 110 jobs conservaram seus hashes, incluindo documentos/vínculos e resultados/progresso dos slots. Ilustrador disponível e heartbeat recente, sem recarga necessária ou interrupção de trabalho. Nenhuma alteração de ficha/compra/mesa de teste criada em produção. Recarregar o VTT para protocolo 27.
