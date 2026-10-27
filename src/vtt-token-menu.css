@@ -84,6 +84,33 @@
   min-width: 15px;
   padding: 2px;
 }
+:root .vtt-token-actions > .vtt-token-operate {
+  display: flex;
+  width: auto;
+  max-width: 200px;
+  gap: 6px;
+  padding: 0 12px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  background: linear-gradient(#5b4930, #302a21);
+  white-space: nowrap;
+}
+.vtt-token-operate span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vtt-token-popover .vtt-token-operation-link {
+  border-color: #b69c64;
+  color: #efd29a;
+  margin-bottom: 12px;
+}
+.vtt-token-popover .vtt-siege-panel-compact {
+  gap: 10px;
+}
+.vtt-token-popover .vtt-siege-panel-compact button {
+  margin: 0;
+}
 :root .vtt-token-hud button:is(:hover, [aria-expanded='true']) {
   border-color: #efcc90;
   filter: brightness(1.14);
@@ -94,7 +121,7 @@
 }
 .vtt-token-hud .vtt-token-popover {
   pointer-events: auto;
-  width: 320px;
+  width: min(320px, calc(100vw - 16px));
   padding: 12px;
   border-radius: 12px;
   background: linear-gradient(145deg, #1b2732, #101922);

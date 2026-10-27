@@ -105,6 +105,7 @@ export type SiegeAiming = {
   weaponId: string;
   actorId: string;
   mode: 'normal' | 'advantage' | 'disadvantage';
+  returnToToken?: boolean;
 };
 export function VttSiegePanel({
   snapshot,
@@ -117,6 +118,9 @@ export function VttSiegePanel({
   select,
   send,
   aim,
+  compact = false,
+  initialPreferences,
+  onPreferencesChange,
 }: {
   snapshot: SiegeSnapshot | null;
   scene: VttScene;
@@ -128,9 +132,14 @@ export function VttSiegePanel({
   select: (id: string) => void;
   send: (command: SiegeCommand) => Promise<void>;
   aim: (value: SiegeAiming) => void;
+  compact?: boolean;
+  initialPreferences?: Pick<SiegeAiming, 'actorId' | 'mode'>;
+  onPreferencesChange?: (value: Pick<SiegeAiming, 'actorId' | 'mode'>) => void;
 }) {
-  const [actorId, setActorId] = useState(''),
-    [mode, setMode] = useState<'normal' | 'advantage' | 'disadvantage'>('normal'),
+  const [actorId, setActorId] = useState(initialPreferences?.actorId || ''),
+    [mode, setMode] = useState<'normal' | 'advantage' | 'disadvantage'>(
+      initialPreferences?.mode || 'normal',
+    ),
     [ammo, setAmmo] = useState(10),
     [muted, setMuted] = useState(false);
   const weapons = (snapshot?.sceneId === scene.id ? snapshot.weapons : []).filter(
@@ -157,6 +166,9 @@ export function VttSiegePanel({
       !turn?.active ||
       (turn.actorId === actor?.id && (actions?.used || 0) < (actions?.budget || 1));
   useEffect(() => {
+    if (actor) onPreferencesChange?.({ actorId: actor.id, mode });
+  }, [actor?.id, mode, onPreferencesChange]);
+  useEffect(() => {
     if (weapon) {
       setAmmo(weapon.ammo);
       setMuted(weapon.muted);
@@ -164,15 +176,20 @@ export function VttSiegePanel({
   }, [weapon?.id, weapon?.revision]);
   const run = (c: SiegeCommand) => void send(c).catch(() => {});
   return (
-    <section className="vtt-siege-panel" aria-label="Armas de cerco">
-      <header>
-        <Crosshair size={20} />
-        <div>
-          <strong>Armas de cerco</strong>
-          <small>Tripulação, mira e disparo</small>
-        </div>
-      </header>
-      {gm && (
+    <section
+      className={`vtt-siege-panel${compact ? ' vtt-siege-panel-compact' : ''}`}
+      aria-label={compact ? 'Controles da arma' : 'Armas de cerco'}
+    >
+      {!compact && (
+        <header>
+          <Crosshair size={20} />
+          <div>
+            <strong>Armas de cerco</strong>
+            <small>Tripulação, mira e disparo</small>
+          </div>
+        </header>
+      )}
+      {gm && !compact && (
         <div className="vtt-siege-library">
           {siegeKinds.map((kind) => (
             <article
@@ -196,7 +213,7 @@ export function VttSiegePanel({
           ))}
         </div>
       )}
-      {gm && (
+      {gm && !compact && (
         <p className="vtt-siege-hint">
           Arraste uma arma para o mapa ou coloque-a no centro. Pode vinculá-la ao convés de um
           veículo.
@@ -208,20 +225,23 @@ export function VttSiegePanel({
         weapon &&
         token && (
           <>
-            <label>
-              Arma
-              <select
-                aria-label="Arma de cerco"
-                value={weapon.id}
-                onChange={(e) => select(e.target.value)}
-              >
-                {weapons.map((w) => (
-                  <option key={w.id} value={w.id}>
-                    {scene.tokens.find((t) => t.id === w.id)?.name || siegeDefinitions[w.kind].name}
-                  </option>
-                ))}
-              </select>
-            </label>
+            {!compact && (
+              <label>
+                Arma
+                <select
+                  aria-label="Arma de cerco"
+                  value={weapon.id}
+                  onChange={(e) => select(e.target.value)}
+                >
+                  {weapons.map((w) => (
+                    <option key={w.id} value={w.id}>
+                      {scene.tokens.find((t) => t.id === w.id)?.name ||
+                        siegeDefinitions[w.kind].name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
             <div className="vtt-siege-status">
               <strong>{siegeStageNames[weapon.stage]}</strong>
               <span>{weapon.ammo} munições de reserva</span>
@@ -229,20 +249,22 @@ export function VttSiegePanel({
                 CA {token.ac} · {token.hp}/{token.maxHp} PV
               </span>
             </div>
-            <ol className="vtt-siege-steps" aria-label="Etapas da arma">
-              {['Carregar', 'Mirar', 'Disparar'].map((name, i) => (
-                <li
-                  key={name}
-                  data-current={
-                    i === ['empty', 'loaded', 'aimed'].indexOf(weapon.stage) || undefined
-                  }
-                >
-                  <b>{i + 1}</b>
-                  {name}
-                  <small>1 ação</small>
-                </li>
-              ))}
-            </ol>
+            {!compact && (
+              <ol className="vtt-siege-steps" aria-label="Etapas da arma">
+                {['Carregar', 'Mirar', 'Disparar'].map((name, i) => (
+                  <li
+                    key={name}
+                    data-current={
+                      i === ['empty', 'loaded', 'aimed'].indexOf(weapon.stage) || undefined
+                    }
+                  >
+                    <b>{i + 1}</b>
+                    {name}
+                    <small>1 ação</small>
+                  </li>
+                ))}
+              </ol>
+            )}
             <label>
               Quem opera
               <select
@@ -277,18 +299,6 @@ export function VttSiegePanel({
                 Fora de combate: cada etapa representa uma ação da tripulação.
               </p>
             )}
-            <label>
-              Condição do ataque
-              <select
-                aria-label="Condição do disparo"
-                value={mode}
-                onChange={(e) => setMode(e.target.value as typeof mode)}
-              >
-                <option value="normal">Normal</option>
-                <option value="advantage">Vantagem</option>
-                <option value="disadvantage">Desvantagem</option>
-              </select>
-            </label>
             <div className="vtt-siege-actions">
               <button
                 disabled={
@@ -333,6 +343,18 @@ export function VttSiegePanel({
                 Disparar
               </button>
             </div>
+            <label>
+              Condição do ataque
+              <select
+                aria-label="Condição do disparo"
+                value={mode}
+                onChange={(e) => setMode(e.target.value as typeof mode)}
+              >
+                <option value="normal">Normal</option>
+                <option value="advantage">Vantagem</option>
+                <option value="disadvantage">Desvantagem</option>
+              </select>
+            </label>
             {weapon.stage === 'aimed' && weapon.aim && (
               <p className="vtt-siege-hint">
                 Mira confirmada a {Math.round(siegeDistance(token, weapon.aim, scene))} pés. Se a

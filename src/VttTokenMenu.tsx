@@ -6,12 +6,12 @@ import {
   type ReactNode,
   type RefObject,
 } from 'react';
-import { BookOpen, Footprints, Heart, Settings2, Shield, Tags, X } from 'lucide-react';
+import { BookOpen, Crosshair, Footprints, Heart, Settings2, Shield, Tags, X } from 'lucide-react';
 import type { VttToken } from '../shared/vtt';
 import type { VttCamera } from './vtt-canvas';
 import './vtt-token-menu.css';
 
-type Pane = 'settings' | 'conditions' | 'hp' | 'ac' | 'speed';
+type Pane = 'settings' | 'conditions' | 'hp' | 'ac' | 'speed' | 'operate';
 export const VttTokenMenu = forwardRef<
   HTMLDivElement,
   {
@@ -29,6 +29,7 @@ export const VttTokenMenu = forwardRef<
     openSheet: () => void;
     completeSettings: () => void;
     edit: (patch: Partial<VttToken>) => void;
+    operation?: { title: string; controls: ReactNode };
   }
 >(function VttTokenMenu(
   {
@@ -46,10 +47,11 @@ export const VttTokenMenu = forwardRef<
     openSheet,
     completeSettings,
     edit,
+    operation,
   },
   ref,
 ) {
-  const [pane, setPane] = useState<Pane | null>(null);
+  const [pane, setPane] = useState<Pane | null>(operation ? 'operate' : null);
   const trigger = useRef<HTMLButtonElement | null>(null);
   const [position, setPosition] = useState({
     x: 80,
@@ -77,7 +79,8 @@ export const VttTokenMenu = forwardRef<
       const top = Math.max(8, rect.top + 8),
         bottom = Math.min(innerHeight - 8, rect.bottom - 8);
       const width = Math.min(320, innerWidth - 16);
-      const center = Math.max(left + 108, Math.min(right - 108, x));
+      const half = Math.min(operation ? 146 : 108, (right - left) / 2);
+      const center = Math.max(left + half, Math.min(right - half, x));
       const above = Math.max(top, Math.min(bottom - 66, y - h / 2 - 74));
       const below = Math.max(above + 70, Math.min(bottom - 48, y + h / 2 + 12));
       const toRight = x + Math.max(w / 2, 118) + 18,
@@ -93,12 +96,12 @@ export const VttTokenMenu = forwardRef<
       const preferredY = side ? above : below + 58;
       const panelY = Math.max(
         8,
-        Math.min(preferredY, innerHeight - Math.min(340, innerHeight - 16) - 8),
+        Math.min(preferredY, innerHeight - Math.min(operation ? 500 : 340, innerHeight - 16) - 8),
       );
       setPosition({
         x: center,
         above,
-        below,
+        below: operation && !side ? Math.max(top, Math.min(below, panelY - 48)) : below,
         panelX,
         panelY,
         panelHeight: innerHeight - panelY - 8,
@@ -125,6 +128,7 @@ export const VttTokenMenu = forwardRef<
     token.height,
     token.rotation,
     layoutKey,
+    Boolean(operation),
   ]);
   function toggle(next: Pane, button: HTMLButtonElement) {
     trigger.current = button;
@@ -142,6 +146,7 @@ export const VttTokenMenu = forwardRef<
     hp: 'Pontos de vida',
     ac: 'Classe de armadura',
     speed: 'Deslocamento',
+    operate: operation?.title || 'Operar arma',
   };
   return (
     <div
@@ -157,49 +162,61 @@ export const VttTokenMenu = forwardRef<
         }
       }}
     >
-      {!token.sceneryToken && <div
-        className="vtt-token-bubbles"
-        role="group"
-        aria-label="Valores do token"
-        style={{ left: position.x, top: position.above }}
-      >
-        <button
-          className="vtt-token-bubble hp"
-          title={'Pontos de vida: ' + token.hp + '/' + token.maxHp}
-          aria-label={'Pontos de vida: ' + token.hp + '/' + token.maxHp}
-          aria-expanded={pane === 'hp'}
-          onClick={(e) => toggle('hp', e.currentTarget)}
+      {!token.sceneryToken && (
+        <div
+          className="vtt-token-bubbles"
+          role="group"
+          aria-label="Valores do token"
+          style={{ left: position.x, top: position.above }}
         >
-          <strong>{token.hp}</strong>
-          <span>PV</span>
-        </button>
-        <button
-          className="vtt-token-bubble ac"
-          title={'Classe de armadura: ' + token.ac}
-          aria-label={'Classe de armadura: ' + token.ac}
-          aria-expanded={pane === 'ac'}
-          onClick={(e) => toggle('ac', e.currentTarget)}
-        >
-          <strong>{token.ac}</strong>
-          <span>CA</span>
-        </button>
-        <button
-          className="vtt-token-bubble speed"
-          title={'Deslocamento: ' + speed}
-          aria-label={'Deslocamento: ' + speed}
-          aria-expanded={pane === 'speed'}
-          onClick={(e) => toggle('speed', e.currentTarget)}
-        >
-          <strong>{speedValue}</strong>
-          <span>ft</span>
-        </button>
-      </div>}
+          <button
+            className="vtt-token-bubble hp"
+            title={'Pontos de vida: ' + token.hp + '/' + token.maxHp}
+            aria-label={'Pontos de vida: ' + token.hp + '/' + token.maxHp}
+            aria-expanded={pane === 'hp'}
+            onClick={(e) => toggle('hp', e.currentTarget)}
+          >
+            <strong>{token.hp}</strong>
+            <span>PV</span>
+          </button>
+          <button
+            className="vtt-token-bubble ac"
+            title={'Classe de armadura: ' + token.ac}
+            aria-label={'Classe de armadura: ' + token.ac}
+            aria-expanded={pane === 'ac'}
+            onClick={(e) => toggle('ac', e.currentTarget)}
+          >
+            <strong>{token.ac}</strong>
+            <span>CA</span>
+          </button>
+          <button
+            className="vtt-token-bubble speed"
+            title={'Deslocamento: ' + speed}
+            aria-label={'Deslocamento: ' + speed}
+            aria-expanded={pane === 'speed'}
+            onClick={(e) => toggle('speed', e.currentTarget)}
+          >
+            <strong>{speedValue}</strong>
+            <span>ft</span>
+          </button>
+        </div>
+      )}
       <div
         className="vtt-token-actions"
         role="group"
         aria-label="Ações do token"
         style={{ left: position.x, top: position.below }}
       >
+        {operation && (
+          <button
+            className="vtt-token-operate"
+            aria-expanded={pane === 'operate'}
+            onClick={(e) => toggle('operate', e.currentTarget)}
+          >
+            <Crosshair size={17} />
+            <span>{operation.title}</span>
+          </button>
+        )}
         <button
           title="Configurações do token"
           aria-label="Configurações do token"
@@ -219,98 +236,108 @@ export const VttTokenMenu = forwardRef<
             {token.conditions.length > 0 && <b>{token.conditions.length}</b>}
           </button>
         )}
-        {!token.sceneryToken && <button title="Abrir ficha" aria-label="Abrir ficha" onClick={openSheet}>
-          <BookOpen size={20} />
-        </button>}
+        {!token.sceneryToken && (
+          <button title="Abrir ficha" aria-label="Abrir ficha" onClick={openSheet}>
+            <BookOpen size={20} />
+          </button>
+        )}
         <button title="Fechar menu do token" aria-label="Fechar menu do token" onClick={close}>
           <X size={18} />
         </button>
       </div>
-      {pane && (pane === 'settings' || !token.sceneryToken) && (
-        <div
-          className="vtt-context-menu vtt-token-popover"
-          role="dialog"
-          aria-label={titles[pane]}
-          style={{ left: position.panelX, top: position.panelY, maxHeight: position.panelHeight }}
-        >
-          <header>
-            <span>
-              {token.name}
-              <small>{titles[pane]}</small>
-            </span>
-            <button aria-label="Fechar painel do token" onClick={dismissPane}>
-              <X size={15} />
-            </button>
-          </header>
-          {pane === 'settings' && (
-            <>
-              {children}
-              <button className="vtt-token-complete-settings" onClick={completeSettings}>
-                <Settings2 size={15} />
-                Configurações completas
+      {pane &&
+        (pane === 'settings' || (pane === 'operate' && operation) || !token.sceneryToken) && (
+          <div
+            className="vtt-context-menu vtt-token-popover"
+            role="dialog"
+            aria-label={titles[pane]}
+            style={{ left: position.panelX, top: position.panelY, maxHeight: position.panelHeight }}
+          >
+            <header>
+              <span>
+                {token.name}
+                <small>{titles[pane]}</small>
+              </span>
+              <button aria-label="Fechar painel do token" onClick={dismissPane}>
+                <X size={15} />
               </button>
-            </>
-          )}
-          {pane === 'hp' &&
-            (gm ? (
-              hp
-            ) : (
-              <p className="vtt-token-value">
-                <Heart size={18} /> {token.hp} / {token.maxHp} PV
-              </p>
-            ))}
-          {pane === 'ac' && (
-            <>
-              <p className="vtt-token-value">
-                <Shield size={20} />
-                {token.ac} CA
-              </p>
-              {gm && <button onClick={completeSettings}>Editar classe de armadura</button>}
-            </>
-          )}
-          {pane === 'speed' && (
-            <p className="vtt-token-value">
-              <Footprints size={20} />
-              {speed}
-            </p>
-          )}
-          {pane === 'conditions' && (
-            <>
-              {gm && (
-                <div className="vtt-token-color-palette" role="group" aria-label="Cor do token">
-                  {colors.map((color, i) => (
-                    <button
-                      key={color}
-                      style={{ background: color }}
-                      disabled={busy}
-                      title={
-                        'Cor do token: ' +
-                        ['Vermelho', 'Azul', 'Musgo', 'Cobre', 'Violeta', 'Rosa', 'Pergaminho'][i]
-                      }
-                      aria-label={
-                        'Cor do token: ' +
-                        ['Vermelho', 'Azul', 'Musgo', 'Cobre', 'Violeta', 'Rosa', 'Pergaminho'][i]
-                      }
-                      aria-pressed={token.color.toLowerCase() === color}
-                      onClick={() => edit({ color })}
-                    />
-                  ))}
-                  <button
-                    className="vtt-token-clear-conditions"
-                    title="Remover todas as condições"
-                    aria-label="Remover todas as condições"
-                    disabled={busy || !token.conditions.length}
-                    onClick={() => edit({ conditions: [] })}
-                  >
-                    <X size={17} />
+            </header>
+            {pane === 'settings' && (
+              <>
+                {operation && (
+                  <button className="vtt-token-operation-link" onClick={() => setPane('operate')}>
+                    <Crosshair size={16} />
+                    {operation.title} · Carregar e disparar
                   </button>
-                </div>
-              )}
-              {conditions}
-            </>
-          )}
-        </div>
-      )}
+                )}
+                {children}
+                <button className="vtt-token-complete-settings" onClick={completeSettings}>
+                  <Settings2 size={15} />
+                  Configurações completas
+                </button>
+              </>
+            )}
+            {pane === 'operate' && operation?.controls}
+            {pane === 'hp' &&
+              (gm ? (
+                hp
+              ) : (
+                <p className="vtt-token-value">
+                  <Heart size={18} /> {token.hp} / {token.maxHp} PV
+                </p>
+              ))}
+            {pane === 'ac' && (
+              <>
+                <p className="vtt-token-value">
+                  <Shield size={20} />
+                  {token.ac} CA
+                </p>
+                {gm && <button onClick={completeSettings}>Editar classe de armadura</button>}
+              </>
+            )}
+            {pane === 'speed' && (
+              <p className="vtt-token-value">
+                <Footprints size={20} />
+                {speed}
+              </p>
+            )}
+            {pane === 'conditions' && (
+              <>
+                {gm && (
+                  <div className="vtt-token-color-palette" role="group" aria-label="Cor do token">
+                    {colors.map((color, i) => (
+                      <button
+                        key={color}
+                        style={{ background: color }}
+                        disabled={busy}
+                        title={
+                          'Cor do token: ' +
+                          ['Vermelho', 'Azul', 'Musgo', 'Cobre', 'Violeta', 'Rosa', 'Pergaminho'][i]
+                        }
+                        aria-label={
+                          'Cor do token: ' +
+                          ['Vermelho', 'Azul', 'Musgo', 'Cobre', 'Violeta', 'Rosa', 'Pergaminho'][i]
+                        }
+                        aria-pressed={token.color.toLowerCase() === color}
+                        onClick={() => edit({ color })}
+                      />
+                    ))}
+                    <button
+                      className="vtt-token-clear-conditions"
+                      title="Remover todas as condições"
+                      aria-label="Remover todas as condições"
+                      disabled={busy || !token.conditions.length}
+                      onClick={() => edit({ conditions: [] })}
+                    >
+                      <X size={17} />
+                    </button>
+                  </div>
+                )}
+                {conditions}
+              </>
+            )}
+          </div>
+        )}
     </div>
   );
 });
