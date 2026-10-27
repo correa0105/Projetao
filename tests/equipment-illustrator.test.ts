@@ -169,7 +169,7 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     assert.match(captured.prompt, /"reference_image":3/);
     assert.match(captured.prompt, /Espada longa/);
     assert.match(captured.prompt, /SOMENTE os equipamentos listados/);
-    assert.match(captured.prompt, /Roupa inicial de aventureiro: túnica de linho cru/);
+    assert.match(captured.prompt, /Na ausência dessa seleção, manter o padrão: túnica de linho cru/);
     assert.match(captured.prompt, /calça de tecido castanho-escuro/);
     assert.match(captured.prompt, /CALÇAS COMPRIDAS OBRIGATÓRIAS/);
     assert.doesNotMatch(captured.prompt, /trapos velhos|pijama rudimentar/);

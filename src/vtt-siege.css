@@ -1,0 +1,237 @@
+.vtt-siege-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  min-width: 0;
+}
+.vtt-siege-panel > header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #ceb17b;
+}
+.vtt-siege-panel > header strong {
+  display: block;
+  font: 19px var(--serif, Georgia, serif);
+  color: #e7dcc7;
+}
+.vtt-siege-panel > header small {
+  display: block;
+  font-size: 10px;
+  margin-top: 4px;
+  color: #a8aaa4;
+}
+.vtt-siege-panel p {
+  font-size: 11px;
+  line-height: 1.55;
+  margin: 0;
+}
+.vtt-siege-panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  min-width: 0;
+}
+.vtt-siege-panel select,
+.vtt-siege-panel input[type='number'] {
+  width: 100%;
+  min-width: 0;
+}
+.vtt-siege-library {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+.vtt-siege-library article {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 9px;
+  border: 1px solid #a38b5355;
+  border-radius: 7px;
+  background: radial-gradient(ellipse at 50% 35%, #3a34254d, #0e151a);
+  cursor: grab;
+}
+.vtt-siege-library img {
+  width: 100%;
+  height: 112px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 5px #0008);
+}
+.vtt-siege-library strong {
+  font-size: 12px;
+  color: #e7dcc7;
+}
+.vtt-siege-library small {
+  font-size: 10px;
+  color: #b9b4a6;
+}
+.vtt-siege-library button {
+  font-size: 10px !important;
+  white-space: normal;
+}
+.vtt-siege-hint {
+  color: #afafa5;
+}
+.vtt-siege-warning {
+  color: #e0b27f;
+}
+.vtt-siege-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #a38b5355;
+  padding: 10px;
+  border-radius: 5px;
+  background: #b49b5c12;
+}
+.vtt-siege-status strong {
+  font-size: 12px;
+  color: #e4c78d;
+}
+.vtt-siege-status span {
+  font-size: 10px;
+  color: #c1bfb0;
+}
+.vtt-siege-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 5px;
+}
+.vtt-siege-steps li {
+  padding: 8px 4px;
+  text-align: center;
+  border: 1px solid #424b4c;
+  border-radius: 5px;
+  font-size: 10px;
+  color: #a8aaa4;
+}
+.vtt-siege-steps li[data-current] {
+  border-color: #b69a61;
+  background: #b49b5c1a;
+  color: #efd6a6;
+}
+.vtt-siege-steps b {
+  display: block;
+  margin-bottom: 4px;
+}
+.vtt-siege-steps small {
+  display: block;
+  font-size: 9px;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+.vtt-siege-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 7px;
+}
+.vtt-siege-actions button {
+  justify-content: center;
+}
+.vtt-siege-actions .vtt-siege-fire {
+  background: linear-gradient(#6f452a, #392b20);
+  border-color: #c39758;
+  color: #ffe2b1;
+}
+.vtt-siege-panel details {
+  border-top: 1px solid #a38b533d;
+  padding-top: 10px;
+  font-size: 11px;
+}
+.vtt-siege-panel summary {
+  cursor: pointer;
+  color: #d0b786;
+  margin-bottom: 10px;
+}
+.vtt-siege-panel details > p,
+.vtt-siege-panel details > label {
+  margin-bottom: 10px;
+}
+.vtt-siege-panel a {
+  color: #d6bd87;
+}
+.vtt-siege-panel .vtt-siege-check {
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+}
+.vtt-siege-check input {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+}
+.vtt-siege-extra {
+  font-size: 10px !important;
+  color: #dbc795 !important;
+}
+.vtt-siege-shots {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.vtt-siege-aim {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  cursor: crosshair;
+  outline: none;
+  touch-action: none;
+}
+.vtt-siege-aim > canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.vtt-siege-aim-info {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(405px, calc(100% - 20px));
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid #b69a61;
+  background: #10181ff2;
+  border-radius: 7px;
+  box-shadow: 0 5px 22px #0008;
+  cursor: default;
+}
+.vtt-siege-aim-info strong {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #edcf96;
+}
+.vtt-siege-aim-info span {
+  font-size: 11px;
+  color: #e0d6bf;
+}
+.vtt-siege-aim-info small {
+  font-size: 10px;
+  color: #b0b3ae;
+  line-height: 1.45;
+}
+.vtt-siege-aim-info > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.vtt-siege-aim-info button {
+  font-size: 10px !important;
+}
+.vtt-siege-aim-info p {
+  color: #edb898;
+  font-size: 11px;
+  margin: 0;
+}

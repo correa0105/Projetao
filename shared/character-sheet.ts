@@ -12,6 +12,7 @@ import { tieflingHornIds } from './tiefling-horns.js';
 import { warforgedAppearanceSchema, defaultWarforgedAppearance } from './warforged-appearance.js';
 import { physicalTraitsSchema, warforgedBodySchema } from './character-appearance.js';
 import { facialHairSchema, supportsFacialHair } from './facial-hair.js';
+import { startingOutfitSchema } from './starting-outfit.js';
 import { CHARACTER_STARTING_GOLD_CP } from './character-starting-gold.js';
 export const RULESET = 'D&D 2024 · Livro do Jogador e suplementos';
 export const { skills, skillAbilities, alignments } = base;
@@ -563,6 +564,7 @@ export const choicesSchema = z.object({
   warforgedAppearance: warforgedAppearanceSchema.optional(),
   warforgedArtMode: z.enum(['construction','reference']).optional(),
   physicalTraits: physicalTraitsSchema.partial().optional(),
+  startingOutfit: startingOutfitSchema.optional(),
   facialHair: facialHairSchema.optional(),
   warforgedBody: warforgedBodySchema.optional(),
   age: z.string().trim().max(40).default(''),

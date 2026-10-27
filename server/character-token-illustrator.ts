@@ -231,7 +231,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
             : '') +
           warforgedInstructions +
           (facialHairInstructions ? '\n' + facialHairInstructions + ' A prancha isolada contém barba à esquerda e bigode à direita; ignore o manequim e as cores demonstrativas. Registre facial_hair_correct=false se modelo, ausência de pelos escolhida, cor base ou grisalho estiverem errados nas partes VISÍVEIS. Não alterar a câmera superior para mostrar o rosto nem remover elmo para conferir pelos ocultos.' : '') +
-          '\n' + physicalInstructions + (physicalInstructions ? ' Registre physical_traits_correct=false se os volumes, a estrutura, a aparência de homem ou mulher informada ou os traços de idade VISÍVEIS contrariarem a personalização. Preserve as proporções tridimensionais; não julgar altura em centímetros nem pedir detalhes encobertos pela câmera superior.' : '') +
+          '\n' + physicalInstructions + (physicalInstructions ? ' Registre physical_traits_correct=false se os volumes, a estrutura, a aparência de homem ou mulher informada ou os traços de idade, postura e bengala VISÍVEIS contrariarem a personalização. Curvatura escolhida não é erro anatômico: conferir projeção superior real e equilíbrio, sem endireitar o corpo. Bengala quase vertical aparece encurtada, não deitada no chão. Preserve as proporções tridimensionais; não julgar altura em centímetros nem pedir detalhes encobertos pela câmera superior.' : '') +
           '\n' +
           headInstructions +
           (selectedHead
@@ -240,7 +240,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
           '\n' +
           ART_ANATOMY_RULES +
           (animal ? '' : '\n' + ART_CLOTHING_RULES) +
-          ' Registre clothing_correct=false se houver roupa interpenetrada, calça encurtada/assimétrica ou mangas/punhos desconectados. Confira cada perna visível até a barra inteira no tornozelo ou dentro do calçado. Oclusão pela câmera superior é correta; não inventar defeito oculto. Registre appendages_correct=false para qualquer defeito anatômico visível. Retorne approved=true, appendages_correct=true, clothing_correct=true e issues=[] somente se cumprir; caso contrário descreva defeitos visíveis em português.',
+          ' Registre clothing_correct=false se houver divergência do modelo, cor ou presença/ausência da faixa escolhida nas partes visíveis não substituídas por equipamento, roupa interpenetrada, calça encurtada/assimétrica ou mangas/punhos desconectados. Confira cada perna visível até a barra inteira no tornozelo ou dentro do calçado. Oclusão pela câmera superior é correta; não inventar defeito oculto. Registre appendages_correct=false para qualquer defeito anatômico visível. Retorne approved=true, appendages_correct=true, clothing_correct=true e issues=[] somente se cumprir; caso contrário descreva defeitos visíveis em português.',
         120_000,
       );
       let review;

@@ -15,6 +15,7 @@ import { AppError } from './services.js';
 import { administrationFor } from './administrators.js';
 import { canManageVtt } from './vtt-permissions.js';
 import { vttViewpoints, spectatorViewpoint } from './vtt-viewpoints.js';
+import {vttSiegeRouter,protectSiegeImages} from './vtt-siege.js';
 const vttAdministration = administrationFor('vtt');
 import { vttAssetId, vttAssetPath, isTopDownTokenImage } from '../shared/vtt-token-image.js';
 import { deriveSheet } from '../shared/character-sheet.js';
@@ -471,6 +472,7 @@ export function vttRouter() {
   router.use(vttVoiceRouter(room));
   router.use(vttCombatRouter(room, canSee));
   router.use(vttDamageRouter(room, canSee, state));
+  router.use(vttSiegeRouter(room,state,canSee));
   router.use(vttMonsterPresetRouter());
   router.use(vttPremiumRouter());
   router.post('/vtt/rooms/:id/translate-monster', async (req, res) => {
@@ -805,6 +807,7 @@ export function vttRouter() {
         )
       )
         throw new AppError(400, 'Controlador não participa da mesa.');
+      await protectSiegeImages(db,rid,input.document);
       await db.query(
         'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
         [rid, JSON.stringify(input.document)],

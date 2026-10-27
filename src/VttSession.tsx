@@ -182,6 +182,8 @@ import { spellProfile, breathProfile } from '../shared/vtt-spells';
 import type { AttackVisualCommand } from '../shared/vtt-attack-visual';
 import { VttSoundboard } from './VttSoundboard';
 import { VttScreenEffects } from './VttScreenEffects';
+import {useVttSiege,VttSiegePanel,VttSiegeAim,VttSiegeShots,type SiegeAiming} from './VttSiege';
+import {siegeImage,type SiegeCommand,type SiegeKind} from '../shared/vtt-siege';
 import { useVttVoice } from './useVttVoice';
 import { VttVoiceStatus } from './VttVoicePanel';
 import { VttSoundCredits } from './VttSoundCredits';
@@ -244,6 +246,7 @@ type Tab =
   | 'mounts'
   | 'pets'
   | 'vehicles'
+  | 'siege'
   | 'chat'
   | 'combat'
   | 'journal'
@@ -601,6 +604,10 @@ export function VttSession({ characters, user, media }: { characters: Character[
       ) ||
       (gm ? scene?.tokens.find((t) => t.layer === 'tokens' && !t.hidden) : null) ||
       null;
+  const siege=useVttSiege(state?.id,scene?.id,!!scene?.tokens.some(t=>t.image.startsWith('/vtt/siege-20261026/')));
+  const [siegeAiming,setSiegeAiming]=useState<SiegeAiming|null>(null);
+  const aimedWeapon=siege.snapshot?.weapons.find(w=>w.id===siegeAiming?.weaponId),aimedToken=scene?.tokens.find(t=>t.id===siegeAiming?.weaponId);
+  useEffect(()=>{setSiegeAiming(null);},[state?.id,scene?.id,preview,spectator]);
   useEffect(() => {
     const element = canvas.current;
     if (!element) return;
@@ -979,6 +986,14 @@ export function VttSession({ characters, user, media }: { characters: Character[
       setNotice((error as Error).name === 'ZodError' ? vttUpdateMessage : (error as Error).message);
     }
   }
+  async function commandSiege(command:SiegeCommand){
+    await save();
+    const previous=new Set(siege.snapshot?.weapons.map(w=>w.id));
+    const result=await siege.send(command.kind==='create'&&!command.position?{...command,position:{x:camera.x,y:camera.y}}:command);
+    if(stateRef.current?.id!==result.room.id)return;
+    receive(result.room);
+    if(command.kind==='create'){const added=result.weapons.find(w=>!previous.has(w.id));if(added){changeLayer('tokens');setSelection([added.id]);}}
+  }
   function fit(s = scene) {
     if (s)
       setCamera({
@@ -1092,9 +1107,11 @@ export function VttSession({ characters, user, media }: { characters: Character[
   }, [doc, dirty, save]);
   useEffect(() => {
     if (!state?.id) return;
+    let pending=false;
     const id = state.id,
       timer = setInterval(() => {
-        if (document.hidden || dirtyRef.current || savePromise.current || drag.current) return;
+        if (pending || document.hidden || dirtyRef.current || savePromise.current || drag.current) return;
+        pending=true;
         void api<VttState>('/vtt/rooms/' + id)
           .then((next) => {
             if (stateRef.current?.id === id && !dirtyRef.current && !drag.current) {
@@ -1111,10 +1128,10 @@ export function VttSession({ characters, user, media }: { characters: Character[
               }
             }
           })
-          .catch(() => {});
-      }, 3000);
+          .catch(() => {}).finally(()=>{pending=false;});
+      }, scene?.tokens.some(t=>t.image.startsWith('/vtt/siege-20261026/')) ? 750 : 3000);
     return () => clearInterval(timer);
-  }, [state?.id]);
+  }, [state?.id, Boolean(scene?.tokens.some(t=>t.image.startsWith('/vtt/siege-20261026/')))]);
   useEffect(() => {
     if (!state?.id) return;
     let live = true,
@@ -1143,6 +1160,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
     ...terrainTextures.filter(t => scene.terrain.some(stroke => stroke.texture === t.id) || (tool.startsWith('terrain-') && terrainBrush.texture === t.id)).map(t => t.image),
     scene.background, ...scene.tokens.map(t => t.image), ...houseInteriorImages(scene),
     ...vehicleCoverImages(scene.tokens),
+    ...(scene.tokens.some(t=>t.image.startsWith('/vtt/siege-20261026/harpoon'))?[siegeImage('harpoon'),siegeImage('harpoon',true)]:[]),
     ...(scene.tokens.some(t=>t.vehicle&&rowing[t.vehicle.itemId])?[rowingImage]:[]),
     ...(scene.ocean?.enabled?[oceanImage]:[]),
     ...(scene.tokens.some(t => houseAsset(t)) ? ['/vtt/house-parts-20261014/door-vertical.webp'] : []),
@@ -3139,7 +3157,9 @@ export function VttSession({ characters, user, media }: { characters: Character[
             />
           )}
         </nav>
-        <div className="vtt-stage" ref={stage}>
+        <div className="vtt-stage" ref={stage} onDragOverCapture={e=>{if(gm&&!preview&&e.dataTransfer.types.includes('application/x-alvorada-siege')){e.preventDefault();e.dataTransfer.dropEffect='copy';}}} onDropCapture={e=>{const kind=e.dataTransfer.getData('application/x-alvorada-siege');if(!gm||preview||(kind!=='cannon'&&kind!=='harpoon'))return;e.preventDefault();e.stopPropagation();const r=e.currentTarget.getBoundingClientRect();void commandSiege({kind:'create',weaponKind:kind as SiegeKind,position:{x:camera.x+(e.clientX-r.left-bounds.width/2)/camera.zoom,y:camera.y+(e.clientY-r.top-bounds.height/2)/camera.zoom}}).catch(error=>setNotice(error.message));}}>
+          <VttSiegeShots roomId={state.id} snapshot={siege.snapshot} scene={scene} camera={camera} bounds={bounds} enabled={visualEffects} gm={gm} preview={preview} viewer={viewer} soundEnabled={media.soundEnabled} soundVolume={media.soundVolume}/>
+          {siegeAiming&&aimedWeapon&&aimedToken&&<VttSiegeAim weapon={aimedWeapon} token={aimedToken} scene={scene} camera={camera} bounds={bounds} disabled={busy||siege.busy} cancel={()=>setSiegeAiming(null)} confirm={async point=>{await commandSiege({kind:'aim',weaponId:aimedWeapon.id,revision:aimedWeapon.revision,actorId:siegeAiming.actorId,point,mode:siegeAiming.mode});setSiegeAiming(null);}}/>}
           {spectator && scene.fog && !state.viewpoints.length && <p className="vtt-spectator-help" role="status">Nenhum personagem visível neste mapa. O mestre precisa colocar um personagem na camada de tokens ou revelar o mapa para compartilhar a visão.</p>}
           {scene.ocean?.enabled&&!preview&&<VttOceanPlayback ocean={scene.ocean} mapEffects={mapEffects} preference={media.oceanMotion} change={next=>media.update({oceanMotion:next,...(next==='on'?{mapEffects:true}:{})})}/>}
           {ruler.length > 1 && (
@@ -3147,7 +3167,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
               {rulerLabel(ruler, scene.grid)}
             </output>
           )}
-          {!preview && !sheetId && token && token.layer === 'tokens' && selection.length === 1 && (
+          {!preview && !sheetId && token && !token.sceneryToken && token.layer === 'tokens' && selection.length === 1 && (
             <VttSelectionPortrait
               key={token.id}
               roomId={state.id}
@@ -3670,7 +3690,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   title={name}
                   aria-pressed={
                     tab === id ||
-                    (id === 'sheet' && ['token', 'journal', 'mounts', 'pets','vehicles'].includes(tab)) ||
+                    (id === 'sheet' && ['token', 'journal', 'mounts', 'pets','vehicles','siege'].includes(tab)) ||
                     (id === 'table' && (tab === 'scene' || tab === 'help'))
                   }
                   onClick={() => {
@@ -3698,7 +3718,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                     tabs.find(
                       (t) =>
                         t.id ===
-                        (['token', 'journal', 'mounts', 'pets'].includes(tab)
+                        (['token', 'journal', 'mounts', 'pets','vehicles','siege'].includes(tab)
                           ? 'sheet'
                           : tab === 'scene' || tab === 'help'
                             ? 'table'
@@ -3723,7 +3743,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   </button>
                 )}
               </div>
-              {['sheet', 'mounts', 'pets','vehicles', 'token', 'journal'].includes(tab) && (
+              {['sheet', 'mounts', 'pets','vehicles','siege', 'token', 'journal'].includes(tab) && (
                 <div className="vtt-subtabs vtt-companion-tabs">
                   <button aria-pressed={tab === 'sheet'} onClick={() => setTab('sheet')}>
                     Personagens
@@ -3735,6 +3755,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                     Mascotes
                   </button>
                   <button aria-pressed={tab==='vehicles'} onClick={()=>setTab('vehicles')}>Veículos</button>
+                  <button aria-pressed={tab==='siege'} onClick={()=>setTab('siege')}>Armas de cerco</button>
                   <button aria-pressed={tab === 'token'} onClick={() => setTab('token')}>
                     Token selecionado
                   </button>
@@ -4698,6 +4719,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                 />
               )}
               {tab==='vehicles'&&<VttVehicles roomId={state.id} gm={gm&&!preview} disabled={busy||preview||spectator} bring={pick=>void act(()=>bringVehicle(pick))}/>}
+              {tab==='siege'&&<VttSiegePanel snapshot={siege.snapshot} scene={scene} userId={user.id} gm={gm&&!preview} disabled={busy||siege.busy||preview||spectator} error={siege.error} selectedId={selection[0]} select={id=>{changeLayer('tokens');setSelection([id]);}} send={commandSiege} aim={setSiegeAiming}/>}
               {spectator && tab === 'sheet' && (
                 <p className="vtt-muted">
                   Espectadores acompanham a mesa sem trazer fichas. Escolha a visão de um jogador no

@@ -203,10 +203,10 @@ export async function reviewComposition(
     Oclusão natural é correta: itens ocultos NÃO precisam aparecer.
     ${baseReference && !companion ? 'Imagem 2 é a identidade montada BASE aprovada. Compare rosto, estrutura e proporções do corpo; só roupas e equipamentos podem mudar, salvo corrigir cabeça divergente para o modelo escolhido na última imagem. Confira metal, acabamento e detalhes pela paleta validada abaixo; reprove clarear metal escurecido, apagar ferrugem ou recolorir o corpo com a cor das roupas.' : ''}
     ${ART_ANATOMY_RULES} Registre appendages_correct=false se houver defeito anatômico visível e descreva-o em issues. Se não houver apêndices incomuns, confira a anatomia normal antes de marcar true.
-    ${physicalInstructions} ${physicalInstructions ? 'Confira a escolha de homem ou mulher quando informada, altura relativa à raça, porte físico, idade aparente e estrutura escolhida nas partes visíveis. Registre physical_traits_correct=false se a arte contrariar essas escolhas. Não exigir medidas absolutas ou características ocultas.' : ''}
+    ${physicalInstructions} ${physicalInstructions ? 'Confira a escolha de homem ou mulher quando informada, altura relativa à raça, porte físico, idade aparente, estrutura, postura e bengala escolhidas nas partes visíveis. Curvatura escolhida é intencional: conferir equilíbrio e ligações anatômicas sem exigir postura ereta. Bengala deve estar apoiada no chão e segurada ou transportada de modo plausível. Registre physical_traits_correct=false se a arte contrariar essas escolhas. Não exigir medidas absolutas ou características ocultas.' : ''}
     ${facialHairInstructions ? 'PRANCHA DE BARBA E BIGODE: painel esquerdo define só a barba; painel direito define só o bigode. Ignore o manequim e as cores demonstrativas. Julgue facial_hair_correct separadamente: false se formato, ausência escolhida, cor base ou mistura de grisalho estiverem errados nas partes expostas. Não copiar o bigode do painel da barba, nem a barba do painel do bigode. Não exigir pelos ocultos por elmo ou pose. ' + facialHairInstructions : ''}
     ${companion ? '' : ART_CLOTHING_RULES}
-    Julgue clothing_correct separadamente: false para roupa interpenetrada, calça encurtada, barra assimétrica ou rasgada expondo canela, mangas ou punhos sem ligação física, mesmo que anatomia e estilo estejam corretos. Inspecione separadamente o comprimento e a continuidade do tecido em CADA perna. Nunca aprovar com clothing_correct=false.
+    Julgue clothing_correct separadamente: false para divergência dos modelos, cores ou presença/ausência da faixa do TRAJE INICIAL ESCOLHIDO nas partes visíveis não substituídas por equipamento, e para roupa interpenetrada, calça encurtada, barra assimétrica ou rasgada expondo canela, mangas ou punhos sem ligação física, mesmo que anatomia e estilo estejam corretos. Inspecione separadamente o comprimento e a continuidade do tecido em CADA perna. Nunca aprovar com clothing_correct=false.
     ${horns ? `A última imagem é somente o formato dos chifres escolhido pelo jogador, nunca o rosto/corpo. Formato obrigatório: ${horns.instruction} Reprove um formato diferente; respeite perspectiva e oclusão natural por cabelo/equipamento.` : ''}
     ${warforgedInstructions ? `${warforgedInstructions} As duas últimas imagens isolam SOMENTE corpo e cabeça escolhidos. Compare a cabeça da composição com a ÚLTIMA imagem: silhueta, placas, olhos/visor/lente, mandíbula e mecanismos. Registre selected_head_correct=false se a cabeça ficou grande ou pequena demais para o corpo, se simplificou, apagou mecanismos, alterou proporções ou trocou o modelo por uma cabeça genérica, mesmo com anatomia válida e approved=true. A cabeça escolhida prevalece sobre uma cabeça divergente na BASE antiga; preserve a paleta validada. Compare os detalhes visíveis, sem exigir a face oculta nem remover equipamento.` : ''}
     Reprove ombreiras desenhadas por cima da capa e anéis desenhados por cima de luvas,
@@ -240,7 +240,7 @@ export async function reviewComposition(
     }
     if (review.physical_traits_correct === false) {
       review.approved = false;
-      review.issues.push('Corrigir a aparência de homem ou mulher quando informada, altura relativa à raça, porte físico, idade aparente e estrutura conforme a personalização escolhida, preservando identidade e equipamento.');
+      review.issues.push('Corrigir a aparência de homem ou mulher quando informada, altura relativa à raça, porte físico, idade aparente, estrutura, postura e bengala conforme a personalização escolhida, preservando identidade e equipamento.');
     }
     if (!review.appendages_correct) {
       review.approved = false;
@@ -379,7 +379,7 @@ ${useSheet ? `Imagem ${equipmentImageStart}: prancha numerada de equipamentos; r
 Transcreva as posições e opções ao prompt da ferramenta de imagem.`
     : job.companion
       ? 'Nenhum equipamento selecionado: manter apenas o animal BASE sem acessórios.'
-      : 'Nenhum equipamento selecionado: vestir o traje inicial de aventureiro medieval descrito no padrão, com túnica de linho bem acabada e calça castanho-escura inteira até os tornozelos.';
+      : 'Nenhum equipamento selecionado: vestir o traje inicial escolhido quando informado; caso contrário, manter o traje padrão descrito nas instruções.';
   const magicalEquipment = magicalArtEquipment(job.equipment || []);
   const magicInstructions = magicalEquipment.length
     ? `APARÊNCIA MÁGICA OBRIGATÓRIA: ${JSON.stringify(magicalEquipment)}. Aplicar em cada peça exposta, com o mesmo acabamento nas peças do conjunto. A armadura precisa distinguir-se visualmente do modelo mundano na figura inteira. Brilho comum de metal não substitui encantamento. Essas indicações também se aplicam durante correções da imagem.`

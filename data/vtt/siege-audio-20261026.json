@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-26",
+  "assets": [
+    {
+      "id": "cannon-shot",
+      "path": "/audio/vtt-siege/cannon-shot-v1.wav",
+      "sha256": "2e68eb6580d73cacaf370b1d343ab2c675dfd633268d73fc4b3e32487c8d4979",
+      "bytes": 499244,
+      "sampleRate": 48000,
+      "channels": 2,
+      "bits": 16,
+      "duration": 2.6,
+      "peakDb": -3.0980391997148637,
+      "rmsDb": -21.96572018562524,
+      "source": "Original procedural cue; scripts/build-vtt-siege-audio.mjs"
+    }
+  ]
+}

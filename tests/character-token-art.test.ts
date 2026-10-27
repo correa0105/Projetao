@@ -21,6 +21,7 @@ import {
   lockTestIllustrator,
 } from './character-fixtures.js';
 import { defaultChoices } from '../shared/character-sheet.js';
+import {defaultStartingOutfit} from '../shared/starting-outfit.js';
 import { vttAssetId } from '../shared/vtt-token-image.js';
 import { vttProtocolVersion } from '../shared/vtt-protocol.js';
 const hash = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
@@ -316,12 +317,13 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     assert.match(state.reviews[1].prompt, /mãos com pegada impossível/);
     assert.match(state.reviews[0].prompt, /um chifre na testa e outro no alto da cabeça/);
     assert.match(state.reviews[1].prompt, /mesma altura anatômica/);
-    const physicalJob = { ...job, choices: { ...defaultChoices('Humano', 'Guerreiro'), physicalTraits: { height: 'tall' as const, build: 'slim' as const, age: 'old' as const, gender: 'female' as const } } };
+    const physicalJob = { ...job, choices: { ...defaultChoices('Humano', 'Guerreiro'), startingOutfit:{...defaultStartingOutfit,top:'vest' as const,topColor:'#123abc',sash:false}, physicalTraits: { height: 'tall' as const, build: 'slim' as const, age: 'old' as const, gender: 'female' as const,posture:'hunched' as const,cane:'wooden' as const } } };
     await writeFile(statePath, JSON.stringify({ renders: [], reviews: [] }));
     await generateCharacterArtPair({ ...physicalJob, id: randomUUID() });
     const physical = JSON.parse(await readFile(statePath, 'utf8'));
     for (const stage of [...physical.renders, ...physical.reviews]) { assert.match(stage.prompt, /PERSONALIZAÇÃO FÍSICA/); assert.match(stage.prompt, /Personagem mulher/); }
     assert.match(physical.reviews[1].prompt, /physical_traits_correct=false/);
+    for(const stage of [...physical.renders,...physical.reviews])for(const detail of ['POSTURA CURVADA','BENGALA:','#123abc','SEM FAIXA DE TECIDO','projeção curta e encurtada'])assert(stage.prompt.includes(detail),detail);
     for (const flags of [{ rejectPhysical: true }, { omitPhysical: true }]) {
       await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], ...flags }));
       await assert.rejects(generateCharacterToken({ ...physicalJob, id: randomUUID() }, portrait), /revisão|conferir/);

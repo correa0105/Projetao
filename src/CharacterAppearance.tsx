@@ -3,6 +3,8 @@ import {
   characterBuilds,
   characterAges,
   characterGenders,
+  characterPostures,
+  characterCanes,
   type AppearanceChoices,
 } from '../shared/character-appearance';
 
@@ -51,6 +53,49 @@ export function CharacterAppearance({
           </label>
         ))}
       </div>
+      <div className="form-grid">
+        <label>
+          Postura
+          <select
+            aria-label="Postura"
+            value={value?.posture || ''}
+            onChange={(e) =>
+              onChange({
+                ...value,
+                posture: (e.target.value as 'upright' | 'slightly-curved' | 'hunched') || undefined,
+              })
+            }
+          >
+            <option value="">Padrão do personagem</option>
+            {characterPostures.map((v) => (
+              <option key={v.id} value={v.id}>
+                {v.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Bengala de apoio
+          <select
+            aria-label="Bengala de apoio"
+            value={value?.cane || ''}
+            onChange={(e) =>
+              onChange({ ...value, cane: (e.target.value as 'none' | 'wooden') || undefined })
+            }
+          >
+            <option value="">Padrão do personagem</option>
+            {characterCanes.map((v) => (
+              <option key={v.id} value={v.id}>
+                {v.name}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <p className="muted small">
+        Você pode combinar qualquer postura com ou sem bengala. A bengala é um apoio visual; armas e
+        equipamentos continuam seguindo a ficha.
+      </p>
       <p className="muted small">
         Essas escolhas orientam a aparência, sem alterar os atributos ou as regras da ficha.
       </p>

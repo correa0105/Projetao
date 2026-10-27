@@ -30,6 +30,7 @@ import { eberronSpecies, EBERRON_SOURCE } from '../shared/eberron-species';
 import { TieflingHorns } from './TieflingHorns';
 import { WarforgedAppearance, WarforgedBodyChoices } from './WarforgedAppearance';
 import { CharacterAppearance } from './CharacterAppearance';
+import { StartingOutfit } from './StartingOutfit';
 import { FacialHairChoices } from './FacialHairChoices';
 import { supportsFacialHair } from '../shared/facial-hair';
 import { warforgedArtMode } from '../shared/warforged-appearance';
@@ -232,6 +233,7 @@ export function SheetChoices({
       )}
       {race === 'Warforged' && warforgedModeControl}
       <CharacterAppearance required={requireAppearance} value={c.physicalTraits} onChange={physicalTraits => update({ physicalTraits })} />
+      <StartingOutfit value={c.startingOutfit} onChange={startingOutfit=>update({startingOutfit})}/>
       {supportsFacialHair(race, c.physicalTraits?.gender) && (
         <FacialHairChoices value={c.facialHair} onChange={facialHair => update({ facialHair })} />
       )}

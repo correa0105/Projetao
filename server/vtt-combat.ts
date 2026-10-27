@@ -1,4 +1,5 @@
 import {canManageVtt} from './vtt-permissions.js';
+import {advanceSiegeTurn} from './vtt-siege.js';
 import { Router } from 'express';
 import { randomInt } from 'node:crypto';
 import { z } from 'zod';
@@ -116,6 +117,7 @@ export function vttCombatRouter(
         c = current(r),
         scene = r.document.scenes.find((s) => s.id === c.sceneId)!,
         gm = canManageVtt(r, user);
+      const previousId=c.currentId,wasActive=c.active;
       if (r.role === 'spectator' && !gm)
         throw new AppError(403, 'Espectadores podem somente assistir.');
       if (input.kind !== 'roll') {
@@ -225,6 +227,8 @@ export function vttCombatRouter(
       if (!c.entries.length) c.active = false;
       c.revision++;
       r.combat = combatSchema.parse(c);
+      if(['start','end','step'].includes(input.kind)||(input.kind==='goto'&&previousId!==c.currentId)||(input.kind==='remove'&&previousId!==c.currentId)||(wasActive&&!c.active))
+        await advanceSiegeTurn(db,rid,c);
       await db.query('UPDATE vtt_rooms SET combat=$2 WHERE id=$1', [rid, JSON.stringify(r.combat)]);
       return view(r, user, db);
     });

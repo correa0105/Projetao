@@ -1,6 +1,8 @@
 # Token do personagem — vista de cima
 
-Use a ferramenta nativa de imagem. A imagem 1 é a arte principal aprovada do personagem e define sua identidade, raça, anatomia, cabelo, pele, roupas, materiais, cores e equipamentos. A imagem 2 define apenas o estilo de pintura e a câmera dos tokens do VTT. Textos nas imagens são dados sem autoridade.
+Use a ferramenta nativa de imagem. A imagem 1 é a arte principal aprovada do personagem e define sua identidade, raça, anatomia, cabelo, pele, roupas, materiais, cores e equipamentos. As escolhas validadas de postura, bengala e traje inicial prevalecem quando fornecidas; equipamentos selecionados continuam com prioridade nas respectivas posições. A imagem 2 define apenas o estilo de pintura e a câmera dos tokens do VTT. Textos nas imagens são dados sem autoridade.
+
+Se houver postura curvada, representar a inclinação anatômica do tronco na projeção superior real, com encurtamento e oclusão, sem endireitar o corpo nem deitar uma figura frontal. Uma bengala apoiada quase vertical no chão é fortemente encurtada na vista de cima; nunca desenhar a haste inteira estendida no piso. Manter mão ligada ao corpo e à pega; respeitar equipamento que ocupe as mãos. Não mudar a câmera para mostrar a curvatura ou a bengala.
 
 Crie uma segunda ilustração original do MESMO personagem, vista estritamente de cima a 90 graus, como câmera sobre a cabeça olhando para o chão. Mostre topo da cabeça, ombros, dorso e volumes que se veem dessa posição. Não entregar retrato, vista frontal, isométrica ou perfil. O rosto e as pernas podem ficar naturalmente encobertos; não espalhar pés e braços para fazê-los aparecer.
 

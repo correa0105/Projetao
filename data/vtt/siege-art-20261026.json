@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-26",
+  "generator": "built-in image_gen",
+  "transparentBackground": true,
+  "assets": [
+    {
+      "id": "cannon",
+      "path": "/vtt/siege-20261026/cannon-v1.png",
+      "sha256": "b86c35df1e837064158d1f7ed2e205721967c2c012c9f5912dd054b49e2251b1",
+      "width": 1254,
+      "height": 1254,
+      "sourceFile": "exec-546950d5-1c3b-48aa-960a-5e73b9b0cb8c.png",
+      "prompt": "Use case: precise-object-edit. Correct the camera/axis of this cannon for a TRUE TOP-DOWN VTT token. Preserve its excellent dark iron, bronze rings, oak carriage, four wheels, transparent alpha and overall composition. The long cannon barrel lies HORIZONTALLY PARALLEL TO THE DECK and points to the TOP edge of the image. Camera is VERTICALLY ABOVE at strict 90-degree NADIR, absolutely no tilt. Therefore the muzzle at the TOP must appear as a NARROW STRAIGHT HORIZONTAL rim, seen edge-on, NEVER a visible circular opening or a large black oval hole facing the camera. The viewer sees only the long upper surface of the barrel with transverse bands, and the narrow top lip at its far end. Both sides of barrel are parallel, no perspective taper/convergence. Keep original wheeled carriage style and gentle light, make generous transparent margins and center the complete cannon. No background, floor, text or smoke. Square transparent production sprite.",
+      "originalBytes": true
+    },
+    {
+      "id": "harpoon-loaded",
+      "path": "/vtt/siege-20261026/harpoon-loaded-v1.png",
+      "sha256": "9b8eeacdb84e275119d10abdc638efa3af4b0b75037e2d48b1bf017d766cbe88",
+      "width": 1254,
+      "height": 1254,
+      "sourceFile": "exec-44b3984f-093a-4a57-b5e9-16a759cf8d9c.png",
+      "prompt": "Original transparent top-down sprite for a fantasy tabletop videogame: a single medieval naval ballista prop, dark oak and aged bronze, crossbow-shaped horizontal arms, a slim central rail with one long metal fishing-harpoon game piece, and a small rope winch at the rear. The prop sits on a low round swivel base. No people or action, no injuries, no target, no battle scene. Museum-style object study with fine hand-painted realistic material detail. Strict orthographic overhead camera, 90 degrees directly above, top-facing surfaces only, direction toward top of canvas, complete silhouette with generous transparent margins. Premium wooden sailing-ship art style, beautiful wood grain, dark iron and subtle brass. Square 1536x1536, real alpha transparency outside the object, no scenery, grid, frame, labels, text or watermark.",
+      "originalBytes": true
+    },
+    {
+      "id": "harpoon-empty",
+      "path": "/vtt/siege-20261026/harpoon-empty-v1.png",
+      "sha256": "51e8333f3732fd4fd673f03998b88afca84c9a21dcfb999e0a09d55c97ad2c73",
+      "width": 1254,
+      "height": 1254,
+      "sourceFile": "exec-52452987-c19b-4486-a112-c6236a0f7b5e.png",
+      "prompt": "Precise production sprite edit for a fantasy tabletop videogame, an EMPTY UNLOADED state of the same museum-style medieval naval ballista prop. Keep the exact overhead camera, canvas size, object registration, position, scale, framing, dark oak and aged bronze materials, round wooden swivel base, bow arms, rail, crank and rope spool from the reference. Remove ONLY the long metal fishing-harpoon game piece that currently lies along the centre rail and extends to the very top of the image; the central rail should be visibly empty, showing its wooden channel. The bowstring is released and runs between the two bow arm tips rather than holding a game piece. This is a static unoccupied fantasy game prop, no people, no target or action. Preserve every remaining part and the generous transparent empty margins, with real alpha transparency and no floor/background, grid, labels, text or watermark. Do not add a different projectile or alter the dimensions or orientation. Direction is toward the top of the canvas, strict orthographic nadir, 90 degrees directly above.",
+      "originalBytes": true
+    }
+  ]
+}
