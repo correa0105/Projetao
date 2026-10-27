@@ -41,6 +41,8 @@ Desde 20/10, a revisão do retrato e do token exige `appendages_correct=true`, a
 
 Tiefling oferece oito formatos ilustrados durante a criação. `tieflingHorns` é opcional no JSON da origem para conservar fichas antigas; só admite identificadores do catálogo e não muda atributos, magias, linhagem ou equipamento. O ilustrador recebe a miniatura escolhida apenas como referência dos chifres, com agrupamento dos equipamentos quando necessário para manter no máximo cinco referências. A revisão confere o formato selecionado. O token segue a arte principal aprovada.
 
+A imagem de referência fornece os demais traços compatíveis, sem impor a cor da pele. Na criação, Tieflings usam pele avermelhada e humanos usam tons humanos naturais; escolhas explícitas do jogador prevalecem. Vestir uma BASE aprovada conserva sua paleta, salvo correção pedida pelo dono. No token de postura ereta, apenas a câmera muda: cabeça, pescoço e coluna continuam alinhados verticalmente, com olhar horizontal. Não confundir vista superior com personagem de cabeça baixa. Essas orientações valem para novas artes e correções solicitadas, sem recolorir personagens existentes automaticamente.
+
 O worker carrega sempre [CHARACTER-ART-PROMPT-v1.md](CHARACTER-ART-PROMPT-v1.md)
 e anexa as referências em ordem: `docs/references/character-style-v1.png`
 (estilo fornecido pelo usuário) e a referência privada do jogador (aparência).
