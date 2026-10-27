@@ -5,6 +5,7 @@ import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { rollCharacterAbilities } from './ability-rolls.js';
 import type { CharacterSlotRolls } from '../shared/character-slot-rolls.js';
+import {characterCapacity} from './character-account.js';
 type DB = Pick<PoolClient, 'query'>;
 type PoolRow = {
   slot: number;
@@ -32,8 +33,8 @@ export async function readCharacterSlots(db: DB, user: string): Promise<Characte
 }
 export async function ensureCharacterSlots(db: DB, user: string) {
   await db.query(
-    'INSERT INTO character_slot_rolls(user_id,slot) SELECT $1,n FROM generate_series(1,2)n ON CONFLICT DO NOTHING',
-    [user],
+    'INSERT INTO character_slot_rolls(user_id,slot) SELECT $1,n FROM generate_series(1,$2::int)n ON CONFLICT DO NOTHING',
+    [user,await characterCapacity(db,user)],
   );
 }
 export async function freeCharacterSlot(
@@ -43,14 +44,17 @@ export async function freeCharacterSlot(
   excludeJob?: string,
   ready = false,
 ) {
+  const limit=await characterCapacity(db,user);
+  if(requested && requested>limit)throw new AppError(403,'Este slot está bloqueado para esta conta.');
   await ensureCharacterSlots(db, user);
   const available = (
     await db.query(
       `SELECT p.* FROM character_slot_rolls p WHERE p.user_id=$1 AND($2::smallint IS NULL OR p.slot=$2)
+ AND p.slot<=$4
  AND NOT EXISTS(SELECT 1 FROM characters c WHERE c.user_id=p.user_id AND c.creation_slot=p.slot AND c.deleted_at IS NULL)
  AND NOT EXISTS(SELECT 1 FROM character_art_jobs j WHERE j.user_id=p.user_id AND j.creation_slot=p.slot AND j.character_id IS NULL AND j.status IN('queued','running') AND j.id IS DISTINCT FROM $3::uuid)
  ORDER BY p.slot LIMIT 1 FOR UPDATE OF p`,
-      [user, requested ?? null, excludeJob ?? null],
+      [user, requested ?? null, excludeJob ?? null,limit],
     )
   ).rows[0] as PoolRow | undefined;
   if (!available)
@@ -98,7 +102,7 @@ export async function characterSlotPool(
 }
 export function characterSlotRollsRouter() {
   const r = Router(),
-    slot = z.coerce.number().int().min(1).max(2);
+    slot = z.coerce.number().int().min(1).max(4);
   r.get('/character-slots', async (_req, res) => {
     await ensureCharacterSlots(pool, res.locals.user.id);
     res.set('Cache-Control', 'no-store').json(await readCharacterSlots(pool, res.locals.user.id));

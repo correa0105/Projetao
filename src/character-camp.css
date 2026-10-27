@@ -651,6 +651,25 @@ body:has(.character-camp) {
   margin-left: auto;
   font-size: 12px;
 }
+.character-camp .camp-drafts-launcher {
+  position:fixed;
+  bottom:18px;
+  left:18px;
+  z-index:15;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:32px;
+  padding:6px 10px;
+  border:1px solid #b4996255;
+  border-radius:7px;
+  background:#171b1bd9;
+  color:#c4b69a;
+  font-size:11px;
+  box-shadow:0 2px 8px #0003;
+}
+.camp-saved-creation>summary{cursor:pointer;font-weight:600;color:#d7c39b}
 .character-reference-choices {
   min-width: 0;
   border: 1px solid #a98a4955;

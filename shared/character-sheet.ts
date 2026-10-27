@@ -11,6 +11,7 @@ import { eberronSpecies, shifterBenefits } from './eberron-species.js';
 import { tieflingHornIds } from './tiefling-horns.js';
 import { warforgedAppearanceSchema, defaultWarforgedAppearance } from './warforged-appearance.js';
 import { physicalTraitsSchema, warforgedBodySchema } from './character-appearance.js';
+import type {SheetOverrides} from './character-admin.js';
 import { facialHairSchema, supportsFacialHair } from './facial-hair.js';
 import { startingOutfitSchema } from './starting-outfit.js';
 import { CHARACTER_STARTING_GOLD_CP } from './character-starting-gold.js';
@@ -1686,7 +1687,7 @@ function deriveOriginSheet(
   };
 }
 export function deriveSheet(
-  character: { race: string; class: string; stats: number[]; level: number },
+  character: { race: string; class: string; stats: number[]; level: number; sheet_overrides?:SheetOverrides },
   c: SheetChoices,
 ) {
   const effectiveStyles = classFightingStyles(character.class, c);
@@ -1770,7 +1771,15 @@ export function deriveSheet(
           note: 'Magias concedidas pelo talento; custos, usos e recuperação conforme sua descrição. Não concede espaços de magia.',
         });
     }
-  sheet.passivePerception = 10 + sheet.skills.find((s) => s.name === 'Percepção')!.value;
+  const override=character.sheet_overrides;
+  if(override){
+    for(const key of ['hp','armorClass','initiative','speed','spellDC','spellAttack'] as const)if(override[key]!==undefined)sheet[key]=override[key]!;
+    if(override.saves)sheet.saves=[...override.saves];
+    if(override.languages)sheet.languages=[...override.languages];
+    if(override.proficiencies)sheet.proficiencies=[...override.proficiencies];
+    if(override.skills)sheet.skills=sheet.skills.map(skill=>({...skill,...override.skills?.[skill.name]}));
+  }
+  sheet.passivePerception = override?.passivePerception ?? 10 + sheet.skills.find((s) => s.name === 'Percepção')!.value;
   return { ...sheet, featureEntries: sheetFeatureEntries(character, c, sheet.featureGroups) };
 }
 export type SheetRecord = {

@@ -10,6 +10,8 @@ export type User = {
   maintenance_areas?: import('../shared/maintenance').MaintenanceArea[];
 };
 export type Character = {
+  creation_slot?: number | null;
+  sheet_overrides?: import('../shared/character-admin').SheetOverrides;
   token_available?: boolean;
   art_reference_mode?: 'construction' | 'reference';
   species_size?: string;

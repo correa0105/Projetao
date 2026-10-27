@@ -184,6 +184,11 @@ export function GuildEstateActors({
             data-estate-actors="members"
             clipPath={!roof && viewer && !editing ? 'url(#ge-visible-area)' : undefined}
           >
+            <defs>
+              <filter id={`guild-actor-contact-${guildId}`} x="-15%" y="-15%" width="130%" height="130%" primitiveUnits="objectBoundingBox">
+                <feDropShadow dx="0.004" dy="0.008" stdDeviation="0.012" floodColor="#10150f" floodOpacity="0.32"/>
+              </filter>
+            </defs>
             {actors
               .filter(
                 (a) =>
@@ -282,13 +287,6 @@ export function GuildEstateActors({
                     fill="transparent"
                     pointerEvents="all"
                   />
-                  <ellipse
-                    cy={a.scale * 0.65}
-                    rx={a.scale * 0.65}
-                    ry={a.scale * 0.25}
-                    fill="#121510"
-                    opacity=".4"
-                  />
                   <image
                     pointerEvents="none"
                     href={a.image}
@@ -298,6 +296,7 @@ export function GuildEstateActors({
                     height={a.scale * 2}
                     transform={`rotate(${a.rotation})`}
                     preserveAspectRatio="xMidYMid meet"
+                    filter={`url(#guild-actor-contact-${guildId})`}
                   />
                   <text y={a.scale + 0.35} textAnchor="middle" className="guild-estate-item-level">
                     {a.name}

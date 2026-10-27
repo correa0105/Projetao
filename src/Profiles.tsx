@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { api, post } from './api';
 import type { User } from './types';
+import {CharacterAdministration} from './CharacterAdministration';
 import type { DirectoryEntry, ProfileSettings, DirectMessage } from '../shared/social';
 import { profileSettingsSchema } from '../shared/social';
 import { rankTitle, progressionLabel } from '../shared/progression';
@@ -73,6 +74,7 @@ type Profile = Omit<PlayerOverview, 'characters' | 'friend'> & {
   avatar: string;
   is_owner: boolean;
   characters: PublicCharacter[];
+  camp_positions: [string | null, string | null];
   own_review: { score: number; comment: string } | null;
   rating: { count: number; average: number };
   friend: { id: string; status: 'pending' | 'accepted'; incoming: boolean } | null;
@@ -488,7 +490,7 @@ export function Profiles({ user }: { user: User }) {
                   </div>
                   <div className="page-header-spacer" aria-hidden="true" />
                   <div className="camp-stage public-camp-stage">
-                    {companion && (
+                    {companion && profile.camp_positions.includes(selected) && (
                       <button
                         className="camp-mount public-camp-mount"
                         ref={mountHost}
@@ -509,7 +511,7 @@ export function Profiles({ user }: { user: User }) {
                       </button>
                     )}
                     <div className="public-character-figures">
-                      {profile.characters.map((c) => (
+                      {profile.camp_positions.flatMap(id => profile.characters.filter(c => c.id === id)).map((c) => (
                         <article
                           key={c.id}
                           className={`camp-character public-camp-character ${selected === c.id ? 'is-selected' : ''}`}
@@ -586,7 +588,7 @@ export function Profiles({ user }: { user: User }) {
                         </article>
                       ))}
                     </div>
-                    {displayPet && species && (
+                    {displayPet && species && profile.camp_positions.includes(selected) && (
                       <div
                         className="camp-pet public-camp-pet"
                         ref={petHost}
@@ -756,6 +758,7 @@ export function Profiles({ user }: { user: User }) {
               close={() => setSheetCharacterId(null)}
             >
               <div className="public-sheet profile-sheet-modal">
+                {user.administrador===1&&<CharacterAdministration characterId={sheetCharacterId} onSaved={()=>setNavigationVersion(n=>n+1)}/>}
                 {details?.character.id !== sheetCharacterId ? (
                   <p role="status">Carregando ficha…</p>
                 ) : (

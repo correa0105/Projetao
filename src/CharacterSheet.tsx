@@ -56,6 +56,7 @@ import { SheetMagic } from './SheetMagic';
 import { SheetClassChoices } from './SheetClassChoices';
 import './character-sheet.css';
 import './character-parchment.css';
+import {CharacterAdministration} from './CharacterAdministration';
 const signed = (v: number) => `${v >= 0 ? '+' : ''}${v}`;
 const spellName = (id: string) => spells.find((s) => s.id === id)?.label || id;
 function FeatureCard({ text, source }: { text: string; source?: string }) {
@@ -262,6 +263,7 @@ export function CharacterSheet({
         );
   return (
     <div className="character-sheet">
+      {data?.capabilities?.can_manage_resources&&<CharacterAdministration characterId={c.id} onSaved={async()=>{await onRefresh();receive(await api<SheetResponse>(`/characters/${c.id}/sheet`));}}/>}
       <CharacterTitleLabel characterId={c.id} />
       <section
         className={`sheet-rank-banner${rankReady ? ' is-ready' : ''}`}

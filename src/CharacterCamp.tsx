@@ -1,7 +1,7 @@
 import { FlashMessage } from './FlashMessage';
 import { CharacterTitleLabel } from './Titles';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Sparkles, Trash2, X } from 'lucide-react';
+import { FolderClock, Sparkles, Trash2, X } from 'lucide-react';
 import { api, post } from './api';
 import { Modal, CharacterForm } from './components';
 import type { Character } from './types';
@@ -15,6 +15,8 @@ import { CampPet } from './CharacterPet';
 import { characterHeightScale } from '../shared/character-stature';
 import './character-camp.css';
 import { CampBackdrop } from './CampBackdrop';
+import {CampRoster} from './CampRoster';
+import type {CharacterCampState} from '../shared/character-account';
 
 export async function readArtReference(file: File) {
   if (file.size > 8 * 1024 * 1024) throw new Error('Escolha uma imagem de até 8 MB.');
@@ -122,6 +124,22 @@ export function CharacterCamp({
     reference: string;
   } | null>(null);
   const [showSavedCreations, setShowSavedCreations] = useState(false);
+  const [camp,setCamp]=useState<CharacterCampState|null>(null);
+  const [roster,setRoster]=useState<number|null|false>(false);
+  const [campBusy,setCampBusy]=useState(false);
+  const characterIds=characters.map(c=>c.id).join(',');
+  useEffect(()=>{let live=true;const load=()=>void api<CharacterCampState>('/character-camp').then(value=>{if(live)setCamp(value);}).catch(e=>{if(live)setError(e.message);});load();window.addEventListener('focus',load);return()=>{live=false;window.removeEventListener('focus',load);};},[characterIds,state.character_limit]);
+  const positions=(camp?.positions??[characters[0]?.id??null,characters[1]?.id??null]).map(id=>characters.some(c=>c.id===id)?id:null) as CharacterCampState['positions'];
+  const visibleCharacters=positions.flatMap(id=>{const c=characters.find(c=>c.id===id);return c?[c]:[];});
+  const capacity=camp?.limit??state.character_limit??2;
+  const canCreate=characters.length+state.pending_new<capacity;
+  async function saveCamp(next:CharacterCampState['positions']){
+    if(!camp||campBusy)return;
+    setCampBusy(true);setError('');
+    try{const saved=await post<CharacterCampState>('/character-camp',{positions:next,revision:camp.revision});setCamp(saved);if(!next.includes(selectedId)&&next.some(Boolean))onSelect(next.find((id):id is string=>!!id)!);}
+    catch(e){setError((e as Error).message);try{setCamp(await api<CharacterCampState>('/character-camp'));}catch{/* Keep the last confirmed arrangement on a connection failure. */}}
+    finally{setCampBusy(false);}
+  }
   useEffect(() => {
     if (!error || editing) return;
     const timer = setTimeout(() => setError(''), 5000);
@@ -173,6 +191,13 @@ export function CharacterCamp({
     };
   }, []);
   const pending = state.jobs.filter((j) => ['queued', 'running'].includes(j.status));
+  const savedCreations=state.jobs.filter(j=>j.status==='failed'&&!j.character_id);
+  async function removeSaved(ids:string[]){
+    if(busy)return;setBusy(true);setError('');
+    try{for(const id of ids)await post(`/character-art/${id}/archive`,{});const next=await api<ArtState>('/character-art');setState(next);if(!next.jobs.some(j=>j.status==='failed'&&!j.character_id))setShowSavedCreations(false);}
+    catch(e){setError((e as Error).message);}
+    finally{setBusy(false);}
+  }
   const constructed = editing?.race === 'Warforged' && editing.art_reference_mode === 'construction';
   const editingQuota = editing ? state.quotas?.[editing.id] ?? {
     used: editing.art_used,
@@ -182,27 +207,24 @@ export function CharacterCamp({
   return (
     <section className="character-camp" aria-label="Acampamento dos personagens">
       <CampBackdrop />
-      {selectedId && <CampMount key={`mount-${selectedId}`} characterId={selectedId} />}
-      {selectedId && <CampPet key={`pet-${selectedId}`} characterId={selectedId} />}
+      {positions.includes(selectedId) && <CampMount key={`mount-${selectedId}`} characterId={selectedId} />}
+      {positions.includes(selectedId) && <CampPet key={`pet-${selectedId}`} characterId={selectedId} />}
       <div className="page-header-spacer" aria-hidden="true" />
       <div className="camp-capacity-row">
         <span className="camp-capacity">
-          {characters.length + state.pending_new} / 2 personagens
+          {characters.length + state.pending_new} / {capacity} personagens
         </span>
-        {state.jobs.some(job => job.status === 'failed' && !job.character_id) && (
-          <button className="button outline camp-saved-creations-toggle" onClick={() => setShowSavedCreations(true)}>
-            Criações salvas ({state.jobs.filter(job => job.status === 'failed' && !job.character_id).length})
-          </button>
-        )}
+        <button className="button outline camp-saved-creations-toggle" disabled={!camp} onClick={()=>setRoster(null)}>Personagens e slots</button>
       </div>
       <div className="camp-stage">
-        {characters.map((character) => (
+        {visibleCharacters.map((character) => (
           <article
             key={character.id}
             className={`camp-character ${selectedId === character.id ? 'is-selected' : ''}`}
             style={
               {
                 '--stature-scale': characterHeightScale(character.race, character.species_size),
+                order:positions.indexOf(character.id),
               } as CSSProperties
             }
           >
@@ -247,6 +269,7 @@ export function CharacterCamp({
                 <p className="muted small">Geração de imagens sem limite</p>
               )}
               <div className="camp-actions">
+                <button className="button outline small-button camp-swap" disabled={!camp} onClick={()=>setRoster(positions.indexOf(character.id))}>Trocar personagem</button>
                 <a
                   className="button outline small-button"
                   href="#achievements"
@@ -308,6 +331,7 @@ export function CharacterCamp({
         ))}
         {pending
           .filter((j) => !j.character_id)
+          .slice(0,2-visibleCharacters.length)
           .map((job) => (
             <article className="camp-character camp-pending" key={job.id}>
               <div className="camp-figure">
@@ -323,13 +347,13 @@ export function CharacterCamp({
               </div>
             </article>
           ))}
-        {characters.length + state.pending_new < 2 && (
+        {visibleCharacters.length+pending.filter(j=>!j.character_id).length<2 && (
           <article className="camp-character camp-create-slot">
             <button
               className="camp-new camp-figure"
-              onClick={onCreate}
-              aria-label="Criar personagem"
-              title="Criar personagem"
+              onClick={canCreate&&characters.length===visibleCharacters.length?onCreate:()=>setRoster(positions.indexOf(null))}
+              aria-label={canCreate&&characters.length===visibleCharacters.length?'Criar personagem':'Escolher personagem para o acampamento'}
+              title={canCreate&&characters.length===visibleCharacters.length?'Criar personagem':'Escolher personagem'}
             >
               <CharacterSilhouette />
             </button>
@@ -337,6 +361,8 @@ export function CharacterCamp({
           </article>
         )}
       </div>
+      {roster!==false&&camp&&<CampRoster characters={characters} camp={{...camp,positions}} target={roster} close={()=>setRoster(false)} save={saveCamp} create={()=>{setRoster(false);onCreate();}} canCreate={canCreate} busy={campBusy}/>}
+      {!!savedCreations.length&&<button className="camp-drafts-launcher" aria-label={`Criações salvas (${savedCreations.length})`} title="Criações salvas" onClick={()=>setShowSavedCreations(true)}><FolderClock size={17}/><span>{savedCreations.length}</span></button>}
       {loadError && (
         <p className="camp-status" role="status">
           {loadError}
@@ -344,15 +370,18 @@ export function CharacterCamp({
       )}
       {showSavedCreations && (
         <Modal title="Criações salvas" close={() => setShowSavedCreations(false)}>
+          <p className="muted small">Remover um rascunho preserva os personagens, os dados dos slots e a cota de imagens.</p>
+          {error&&<p role="alert">{error}</p>}
           {state.jobs
             .filter((job) => job.status === 'failed' && !job.character_id)
             .map((job) => (
-              <section
+              <details
                 className="camp-saved-creation"
+                open={savedCreations.length===1}
                 key={job.id}
                 aria-label={`Criação salva de ${job.name}`}
               >
-                <h3>{job.name}: criação salva</h3>
+                <summary>{job.name}: criação salva</summary>
                 <p>
                   A arte não foi concluída. Seu nome, história e escolhas da ficha estão
                   preservados. Sua cota não foi descontada.
@@ -400,9 +429,11 @@ export function CharacterCamp({
                   >
                     Retomar preenchimento
                   </button>
+                  <button className="button outline" disabled={busy} onClick={()=>void removeSaved([job.id])}><Trash2 size={14}/>Remover da lista</button>
                 </div>
-              </section>
+              </details>
             ))}
+          {savedCreations.length>1&&<button className="button outline" disabled={busy} onClick={()=>void removeSaved(savedCreations.map(j=>j.id))}><Trash2 size={14}/>{busy?'Removendo…':`Remover ${savedCreations.length} criações salvas`}</button>}
         </Modal>
       )}
       {savedDraft && (

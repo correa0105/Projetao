@@ -38,6 +38,8 @@ import { characterArtRouter, characterListSql } from './character-art.js';
 import { characterSchema } from '../shared/character-art.js';
 import { characterSheetRouter } from './character-sheet.js';
 import { characterSlotRollsRouter } from './character-slot-rolls.js';
+import {characterAccountRouter} from './character-account.js';
+import {characterAdminRouter} from './character-admin.js';
 import { achievementsRouter } from './achievements.js';
 import { missionTagsRouter, setMissionTags } from './mission-tags.js';
 import { missionTagIds } from '../shared/mission-tags.js';
@@ -263,6 +265,8 @@ export function createApp() {
   app.use('/api', characterArtRouter());
   app.use('/api', characterSheetRouter());
   app.use('/api', characterSlotRollsRouter());
+  app.use('/api', characterAccountRouter());
+  app.use('/api', characterAdminRouter());
   app.use('/api', inventoryRouter());
   app.use('/api', rpLobbyRouter());
   app.use('/api', inventoryBagsRouter());

@@ -1,0 +1,59 @@
+.camp-roster-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+.camp-roster-card {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: center;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid #b8955266;
+  border-radius: 6px;
+  background: radial-gradient(ellipse at 50% 30%, #39382e, #141919);
+  text-align: center;
+}
+.camp-roster-card img {
+  height: 170px;
+  width: 100%;
+  object-fit: contain;
+}
+.camp-roster-card small {
+  color: #b9b1a1;
+}
+.camp-roster-card .button {
+  width: 100%;
+  justify-content: center;
+  white-space: normal;
+}
+.camp-roster-empty {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #aba59a;
+  font-size: 13px;
+}
+.camp-roster-card.is-locked {
+  border-color: #ffffff20;
+  background: #171b1b;
+}
+.camp-roster-card .eyebrow {
+  font-size: 10px;
+}
+.camp-swap {
+  margin-top: 6px;
+}
+@media (max-width: 420px) {
+  .camp-roster-grid {
+    grid-template-columns: 1fr;
+  }
+  .camp-roster-card img {
+    height: 145px;
+  }
+}

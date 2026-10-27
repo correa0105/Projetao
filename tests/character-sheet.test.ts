@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import { pool } from '../server/db.js';
+import { seed } from '../server/seed';
 import { migrate } from '../server/migrate.js';
 import { createLegacyTestCharacter } from './character-fixtures.js';
 import {
@@ -47,6 +48,7 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
     'Use the isolated sheet test runner.',
   );
   await migrate();
+  await seed();
   const { createApp } = await import('../server/app.js');
   const server = createApp().listen(0, '127.0.0.1');
   await new Promise<void>((r) => server.once('listening', r));
@@ -163,7 +165,7 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
       stats: [99, 99, 99, 99, 99, 99],
       hp: 999,
     });
-    assert.equal(done.status, 200);
+    assert.equal(done.status, 200, JSON.stringify(done.data));
     const expected = assignment.map(
       (j, i) =>
         abilityRollResult(rolls[j]) +

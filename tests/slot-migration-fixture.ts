@@ -51,7 +51,7 @@ export async function verifySlotMigration() {
   const snapshot = async () => ({
     characters: (
       await pool.query(
-        "SELECT to_jsonb(c)-'creation_slot' AS c FROM characters c WHERE user_id=$1 ORDER BY id",
+        "SELECT to_jsonb(c)-'creation_slot'-'sheet_overrides' AS c FROM characters c WHERE user_id=$1 ORDER BY id",
         [uid],
       )
     ).rows,

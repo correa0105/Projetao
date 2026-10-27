@@ -24,7 +24,7 @@ import {
 } from '../shared/character-art.js';
 import { hitDice, modifier } from '../shared/rules.js';
 import { isAdministrator } from './administrators.js';
-import { characterLimit } from '../shared/character-art.js';
+import { characterCapacity } from './character-account.js';
 import { characterAccountArtUsedSql } from './art-quota.js';
 import { warforgedArtMode } from '../shared/warforged-appearance.js';
 import { validateCreationAppearance } from '../shared/character-appearance.js';
@@ -218,10 +218,10 @@ export async function enqueueArt(userId: string, input: unknown) {
         (SELECT count(*) FROM character_art_jobs WHERE user_id=$1 AND character_id IS NULL AND status IN ('queued','running')) AS total`,
         [userId],
       );
-      if (Number(counts.total) >= characterLimit(account.administrador === 1))
+      if (Number(counts.total) >= await characterCapacity(client, userId))
         throw new AppError(
           409,
-          `Esta conta pode ter até ${characterLimit(account.administrador === 1)} personagens, incluindo os que estão em preparação.`,
+          `Esta conta pode ter até ${await characterCapacity(client, userId)} personagens, incluindo os que estão em preparação.`,
         );
     }
     const creationSlot = data.creation ? await freeCharacterSlot(client,userId,data.creation.creation_slot,undefined,true) : null;
@@ -413,7 +413,7 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
         'SELECT count(*)::int AS total FROM characters WHERE user_id=$1 AND deleted_at IS NULL',
         [job.user_id],
       );
-      if (counts.total >= characterLimit(account.administrador === 1))
+      if (counts.total >= await characterCapacity(client, job.user_id))
         throw new AppError(409, 'Limite de personagens atingido.');
       const data = characterSchema.parse(job.creation);
       const savedSlot = await freeCharacterSlot(client,job.user_id,job.creation_slot??data.creation_slot,jobId,Boolean(data.creation_slot));
@@ -471,6 +471,18 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
 
 export function characterArtRouter() {
   const router = Router();
+  router.post('/character-art/:id/archive',async(req,res)=>{
+    const id=uuid.parse(req.params.id),user=res.locals.user.id;
+    z.object({}).strict().parse(req.body);
+    await transaction(async db=>{
+      await db.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE',[user]);
+      const job=(await db.query('SELECT status,character_id FROM character_art_jobs WHERE id=$1 AND user_id=$2 FOR UPDATE',[id,user])).rows[0];
+      if(!job)throw new AppError(404,'Criação não encontrada.');
+      if(job.status!=='failed'||job.character_id)throw new AppError(409,'Somente criações não concluídas podem ser removidas dos salvos.');
+      await db.query('INSERT INTO character_art_archives(job_id,user_id)VALUES($1,$2)ON CONFLICT DO NOTHING',[id,user]);
+    });
+    res.json({removed:true});
+  });
   router.get('/character-art/:id/proposed/:kind', async (req, res) => {
     const id = uuid.parse(req.params.id),
       kind = z.enum(['portrait', 'token']).parse(req.params.kind);
@@ -492,7 +504,7 @@ export function characterArtRouter() {
   });
   router.get('/character-art/:id/draft', async (req, res) => {
     const { rows } = await pool.query(
-      'SELECT creation,reference FROM character_art_jobs WHERE id=$1 AND user_id=$2 AND character_id IS NULL',
+      'SELECT creation,reference FROM character_art_jobs j WHERE id=$1 AND user_id=$2 AND character_id IS NULL AND NOT EXISTS(SELECT 1 FROM character_art_archives a WHERE a.job_id=j.id)',
       [uuid.parse(req.params.id), res.locals.user.id],
     );
     if (!rows.length) throw new AppError(404, 'Criação não encontrada.');
@@ -524,6 +536,7 @@ export function characterArtRouter() {
         [id, user],
       );
       if (!job) throw new AppError(404, 'Criação não encontrada.');
+      if((await client.query('SELECT 1 FROM character_art_archives WHERE job_id=$1 AND user_id=$2',[id,user])).rowCount)throw new AppError(409,'Esta criação foi removida dos salvos.');
       if (job.status !== 'failed') return { id: job.id, status: job.status };
       if (!job.creation || (job.character_id && (!job.recoverable || replacement)))
         throw new AppError(409, 'Este pedido não é uma criação pendente.');
@@ -553,7 +566,7 @@ export function characterArtRouter() {
         "SELECT (SELECT count(*) FROM characters WHERE user_id=$1 AND deleted_at IS NULL)+(SELECT count(*) FROM character_art_jobs WHERE user_id=$1 AND character_id IS NULL AND status IN('queued','running')) AS total",
         [user],
       );
-      if (!job.character_id && Number(count.total) >= characterLimit(false))
+      if (!job.character_id && Number(count.total) >= await characterCapacity(client, user))
         throw new AppError(409, 'Limite de personagens atingido. Sua criação continua salva.');
       characterSchema.parse(replacement?.creation || job.creation);
       const retrySlot=!job.character_id ? await freeCharacterSlot(client,user,replacement?.creation?.creation_slot??job.creation_slot??undefined,id,Boolean(replacement||job.creation.creation_slot)) : null;
@@ -646,6 +659,7 @@ export function characterArtRouter() {
       j.creation AS saved_creation,
       COALESCE(c.name,j.creation->>'name') AS name FROM character_art_jobs j
       LEFT JOIN characters c ON c.id=j.character_id WHERE j.user_id=$1 AND (j.character_id IS NULL OR c.deleted_at IS NULL)
+      AND NOT EXISTS(SELECT 1 FROM character_art_archives a WHERE a.job_id=j.id AND a.user_id=j.user_id)
       ORDER BY j.created_at DESC LIMIT 30`,
       [res.locals.user.id],
     );
@@ -653,7 +667,7 @@ export function characterArtRouter() {
       reviews,
       ready_characters:(await pool.query('SELECT c.id FROM characters c JOIN character_sheets s ON s.character_id=c.id WHERE c.user_id=$1 AND c.deleted_at IS NULL AND s.rolls IS NOT NULL AND s.rolls_revealed=6',[res.locals.user.id])).rows.map(c=>c.id),
       available: await artWorkerAvailable(),
-      character_limit: characterLimit(await isAdministrator(res.locals.user.id)),
+      character_limit: await characterCapacity(pool,res.locals.user.id),
       jobs: jobs.map(({ saved_creation, ...job }) => ({
         ...job,
         can_retry:

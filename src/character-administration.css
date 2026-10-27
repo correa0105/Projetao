@@ -1,0 +1,106 @@
+.character-admin-editor {
+  min-width: 0;
+  color: var(--text, #ded7c6);
+}
+.character-admin-editor label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 10px 0;
+  font-size: 13px;
+  min-width: 0;
+}
+.character-admin-editor input,
+.character-admin-editor select,
+.character-admin-editor textarea {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.character-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 16px;
+}
+.character-admin-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.character-admin-owner {
+  padding: 12px;
+  background: #c8ac6420;
+  border: 1px solid #c8ac6450;
+  border-radius: 4px;
+}
+.character-admin-editor details {
+  border-top: 1px solid #bfa26945;
+  margin: 18px 0;
+  padding-top: 14px;
+}
+.character-admin-editor summary {
+  cursor: pointer;
+  color: #d7bc87;
+  font-weight: 600;
+}
+.character-admin-editor fieldset {
+  min-width: 0;
+  margin: 18px 0;
+  padding: 12px;
+  border: 1px solid #bfa26940;
+}
+.character-admin-editor fieldset:disabled {
+  opacity: 0.7;
+}
+.character-admin-error {
+  color: #efb7a4;
+  padding: 12px;
+  border: 1px solid #af6c5e;
+}
+.character-admin-skill {
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #ffffff10;
+}
+.character-admin-editor .character-admin-skill label:not(:first-child),
+.character-admin-editor .character-admin-check {
+  flex-direction: row;
+  align-items: center;
+  font-size: 11px;
+}
+.character-admin-editor input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+.character-admin-json {
+  font:
+    12px/1.5 ui-monospace,
+    monospace;
+  tab-size: 2;
+  resize: vertical;
+}
+.character-admin-save {
+  width: 100%;
+  justify-content: center;
+  margin: 18px 0 4px;
+}
+@media (max-width: 480px) {
+  .character-admin-grid {
+    grid-template-columns: 1fr;
+  }
+  .character-admin-skill {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .character-admin-skill label:first-child {
+    grid-column: 1/-1;
+  }
+}
+.character-admin-launcher {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 16px;
+}
