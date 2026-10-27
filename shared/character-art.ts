@@ -58,6 +58,7 @@ export type ArtJob = {
   can_retry?: boolean;
   id: string;
   character_id: string | null;
+  creation_slot?: number | null;
   name: string;
   status: 'queued' | 'running' | 'completed' | 'failed';
   error: string | null;

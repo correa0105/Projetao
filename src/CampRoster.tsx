@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { LockKeyhole, ArrowLeftRight, EyeOff } from 'lucide-react';
+import { LockKeyhole, ArrowLeftRight, EyeOff, Hourglass } from 'lucide-react';
 import { Modal } from './components';
 import type { Character } from './types';
 import type { CharacterCampState } from '../shared/character-account';
+import type { ArtJob } from '../shared/character-art';
 import './camp-roster.css';
 export function CampRoster({
   characters,
@@ -13,6 +14,10 @@ export function CampRoster({
   create,
   canCreate,
   busy,
+  jobs = [],
+  available = false,
+  retry,
+  saved,
 }: {
   characters: Character[];
   camp: CharacterCampState;
@@ -22,6 +27,10 @@ export function CampRoster({
   create: () => void;
   canCreate: boolean;
   busy: boolean;
+  jobs?: ArtJob[];
+  available?: boolean;
+  retry?: (id: string) => void;
+  saved?: () => void;
 }) {
   const [position, setPosition] = useState(target ?? 0);
   const names = camp.positions.map(
@@ -33,6 +42,15 @@ export function CampRoster({
   for (const c of characters.filter((c) => ![...assigned.values()].some((a) => a.id === c.id))) {
     const free = [1, 2, 3, 4].find((slot) => !assigned.has(slot));
     if (free) assigned.set(free, c);
+  }
+  const drafts = new Map<number, ArtJob>();
+  for (const job of [
+    ...jobs.filter((j) => ['queued', 'running'].includes(j.status)),
+    ...jobs.filter((j) => j.status === 'failed'),
+  ]) {
+    const slot = job.creation_slot;
+    if (!job.character_id && slot && !assigned.has(slot) && !drafts.has(slot))
+      drafts.set(slot, job);
   }
   return (
     <Modal title="Personagens e slots" close={close}>
@@ -55,6 +73,7 @@ export function CampRoster({
       <div className="camp-roster-grid">
         {[1, 2, 3, 4].map((slot, index) => {
           const character = assigned.get(slot),
+            job = drafts.get(slot),
             locked = slot > camp.limit;
           const displayed = character ? camp.positions.indexOf(character.id) : -1;
           return (
@@ -71,7 +90,11 @@ export function CampRoster({
                     ? displayed >= 0
                       ? 'No acampamento'
                       : 'Na reserva'
-                    : 'Disponível'}
+                    : job
+                      ? job.status === 'failed'
+                        ? 'Criação salva'
+                        : 'Em preparação'
+                      : 'Disponível'}
               </span>
               {character && !locked ? (
                 <>
@@ -118,6 +141,43 @@ export function CampRoster({
                     </button>
                   )}
                 </>
+              ) : job && !locked ? (
+                <div className="camp-roster-empty camp-roster-draft" role="status">
+                  <Hourglass size={28} />
+                  <strong>{job.name}</strong>
+                  <span>
+                    {job.status === 'failed'
+                      ? 'A arte não foi concluída. Sua criação está salva.'
+                      : job.status === 'running'
+                        ? 'Preparando retrato e token visto de cima…'
+                        : 'Aguardando o ilustrador…'}
+                  </span>
+                  {job.status === 'failed' ? (
+                    <>
+                      {job.error && <small>{job.error}</small>}
+                      {job.can_retry && retry && (
+                        <button
+                          className="button outline small-button"
+                          disabled={busy || !available}
+                          onClick={() => retry(job.id)}
+                        >
+                          Tentar concluir
+                        </button>
+                      )}
+                      {saved && (
+                        <button
+                          className="button outline small-button"
+                          disabled={busy}
+                          onClick={saved}
+                        >
+                          Ver criação salva
+                        </button>
+                      )}
+                    </>
+                  ) : (
+                    <small>Quando ficar pronto, você poderá colocá-lo no acampamento.</small>
+                  )}
+                </div>
               ) : (
                 <div className="camp-roster-empty">
                   {locked ? (

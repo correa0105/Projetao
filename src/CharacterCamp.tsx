@@ -214,7 +214,7 @@ export function CharacterCamp({
         <span className="camp-capacity">
           {characters.length + state.pending_new} / {capacity} personagens
         </span>
-        <button className="button outline camp-saved-creations-toggle" disabled={!camp} onClick={()=>setRoster(null)}>Personagens e slots</button>
+        <button className="camp-roster-toggle" disabled={!camp} onClick={()=>setRoster(null)}>Personagens e slots</button>
       </div>
       <div className="camp-stage">
         {visibleCharacters.map((character) => (
@@ -361,7 +361,7 @@ export function CharacterCamp({
           </article>
         )}
       </div>
-      {roster!==false&&camp&&<CampRoster characters={characters} camp={{...camp,positions}} target={roster} close={()=>setRoster(false)} save={saveCamp} create={()=>{setRoster(false);onCreate();}} canCreate={canCreate} busy={campBusy}/>}
+      {roster!==false&&camp&&<CampRoster characters={characters} camp={{...camp,positions}} target={roster} close={()=>setRoster(false)} save={saveCamp} create={()=>{setRoster(false);onCreate();}} canCreate={canCreate} busy={campBusy||busy} jobs={state.jobs} available={availability===true} saved={()=>{setRoster(false);setShowSavedCreations(true);}} retry={id=>{setBusy(true);void post(`/character-art/${id}/retry`,{}).then(async()=>{setState(await api<ArtState>('/character-art'));await onRefresh();}).catch(e=>setError(e.message)).finally(()=>setBusy(false));}}/>}
       {!!savedCreations.length&&<button className="camp-drafts-launcher" aria-label={`Criações salvas (${savedCreations.length})`} title="Criações salvas" onClick={()=>setShowSavedCreations(true)}><FolderClock size={17}/><span>{savedCreations.length}</span></button>}
       {loadError && (
         <p className="camp-status" role="status">

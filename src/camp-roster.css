@@ -43,6 +43,9 @@
   border-color: #ffffff20;
   background: #171b1b;
 }
+.camp-roster-draft small {
+  overflow-wrap: anywhere;
+}
 .camp-roster-card .eyebrow {
   font-size: 10px;
 }

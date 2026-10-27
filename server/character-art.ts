@@ -654,7 +654,7 @@ export function characterArtRouter() {
       [res.locals.user.id],
     );
     const { rows: jobs } = await pool.query(
-      `SELECT j.id,j.character_id,j.status,j.error,j.created_at,
+      `SELECT j.id,j.character_id,j.creation_slot,j.status,j.error,j.created_at,
       (j.status='failed' AND j.creation IS NOT NULL AND (j.reference IS NOT NULL OR j.approved_portrait IS NOT NULL)) AS can_retry,
       j.creation AS saved_creation,
       COALESCE(c.name,j.creation->>'name') AS name FROM character_art_jobs j
