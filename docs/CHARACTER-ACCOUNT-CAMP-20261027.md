@@ -26,3 +26,11 @@ Publicação incremental a partir de `vtt-harpoon-cut-rope-20261027`, backup int
 - Renderer real da guilda com token Nana, sombra pelo alfa e comparação com a antiga elipse. TypeScript e builds aprovados.
 
 Evidências privadas: `test-results/character-account/` e `.local/character-account-*-20261027.log`. Fixtures usam banco descartável e artes locais, sem chamar o ilustrador real.
+
+## Resultado publicado
+
+Imagem `alvorada-cinzenta:character-account-camp-20261027`, fonte `d5057422dfc3daa234a4e3d468ca333e8b2dfdb4`, ativa em alvoradacinzenta.com. Conferidos 48 arquivos da entrega, 1.532 anteriores e 41 respostas HTTPS. Seis mesas, 37 assets privados, fichas/imagens/inventários/compras/jobs/armas/impactos íntegros por hash antes e depois da atualização. PNGs originais e 242 áudios preservados. Migration 135 e protocolo 28.
+
+Concessões transacionais aplicadas somente a Pai do Cris (global1) e Crowley (global0/oito escopos): quatro slots cada. Comparadas integralmente as 26 linhas anteriores de rolagens, todas idênticas; quatro novas linhas vazias, total 30. Dois registros de capacidade, com auditoria própria. Nenhuma ficha, imagem, mochila, job ou permissão alterada durante a concessão. Ilustrador recarregado ocioso, PID 29948 → 37208 e heartbeat confirmado antes das concessões.
+
+Atualizar com Ctrl+F5. Salvos ficam no pequeno ícone inferior esquerdo; disposição em Personagens e slots; edição global em Editar ficha · Admin.
