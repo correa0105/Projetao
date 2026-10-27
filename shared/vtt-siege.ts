@@ -34,6 +34,22 @@ export type SiegeAim = Point & {
   origin: Point;
   rotation: number;
   mode: 'normal' | 'advantage' | 'disadvantage';
+  surface?: 'auto' | 'ground' | 'water';
+};
+export type SiegeLoad = { id: string; at: number; private: boolean; muted: boolean };
+export type SiegeImpact = {
+  id: string;
+  shotId: string;
+  sceneId: string;
+  weaponId: string;
+  kind: SiegeKind;
+  point: Point;
+  rotation: number;
+  at: number;
+  private: boolean;
+  surface: 'ground' | 'solid';
+  targetId: string | null;
+  local?: Point & { rotation: number };
 };
 export type SiegeShot = {
   id: string;
@@ -59,6 +75,7 @@ export type SiegeWeapon = {
   revision: number;
   aim: SiegeAim | null;
   lastShot: SiegeShot | null;
+  lastLoad?: SiegeLoad | null;
   muted: boolean;
 };
 export type SiegeSnapshot = {
@@ -66,6 +83,7 @@ export type SiegeSnapshot = {
   sceneId: string;
   serverTime: number;
   weapons: SiegeWeapon[];
+  impacts?: SiegeImpact[];
   turn: {
     active: boolean;
     actorId: string | null;
@@ -82,9 +100,12 @@ export type SiegeCommand =
       actorId: string;
       point: Point;
       mode: 'normal' | 'advantage' | 'disadvantage';
+      surface?: 'auto' | 'ground' | 'water';
     }
   | { kind: 'settings'; weaponId: string; revision: number; ammunition: number; muted: boolean }
-  | { kind: 'extraAction'; actorId: string };
+  | { kind: 'extraAction'; actorId: string }
+  | SiegeImpactCommand;
+export type SiegeImpactCommand = { kind: 'removeImpact'; impactId: string };
 export const siegeAimStale = (token: VttToken, aim: SiegeAim) =>
   Math.hypot(token.x - aim.origin.x, token.y - aim.origin.y) > 0.1 ||
   Math.abs(((((token.rotation - aim.rotation) % 360) + 540) % 360) - 180) > 0.1 ||
@@ -112,4 +133,25 @@ export function siegePointInToken(p: Point, t: VttToken) {
     Math.abs(x * Math.cos(a) - y * Math.sin(a)) <= t.width / 2 + 1 &&
     Math.abs(x * Math.sin(a) + y * Math.cos(a)) <= t.height / 2 + 1
   );
+}
+export function siegeImpactPosition(impact: SiegeImpact, scene: VttScene) {
+  const t = impact.targetId && scene.tokens.find((t) => t.id === impact.targetId);
+  if (!t || !impact.local) return { point: impact.point, rotation: impact.rotation };
+  const a = (t.rotation * Math.PI) / 180,
+    c = Math.cos(a),
+    s = Math.sin(a),
+    x = impact.local.x * t.width * (t.flipX ? -1 : 1),
+    y = impact.local.y * t.height * (t.flipY ? -1 : 1);
+  const direction = (impact.local.rotation * Math.PI) / 180;
+  return {
+    point: { x: t.x + x * c - y * s, y: t.y + x * s + y * c },
+    rotation:
+      (Math.atan2(
+        Math.sin(direction) * (t.flipY ? -1 : 1),
+        Math.cos(direction) * (t.flipX ? -1 : 1),
+      ) *
+        180) /
+        Math.PI +
+      t.rotation,
+  };
 }

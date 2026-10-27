@@ -177,6 +177,10 @@
   z-index: 4;
   pointer-events: none;
 }
+.vtt-siege-impacts{position:absolute;inset:0;z-index:3;pointer-events:none}
+.vtt-siege-impact-list>div{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid #aa95652b}
+.vtt-siege-impact-list>div>span{font-size:11px}
+.vtt-siege-impact-list>div>button{font-size:10px;min-height:28px;padding:3px 6px;width:auto}
 .vtt-siege-aim {
   position: absolute;
   inset: 0;

@@ -119,6 +119,7 @@ import {VttVehicles,type VehiclePick} from './VttVehicles';
 import {vehicleMime,vehicleCoverImages} from '../shared/vtt-vehicles';
 import { companionMime } from '../shared/vtt-companions';
 import { VttSelectionPortrait } from './VttSelectionPortrait';
+import {VttSiegeImpacts} from './VttSiegeImpacts';
 import { VttChatText } from './VttChatText';
 import { VttChatComposer } from './VttChatComposer';
 import { VttMonsterEditor, customMonster } from './VttMonsterEditor';
@@ -608,7 +609,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
   const [siegeAiming,setSiegeAiming]=useState<SiegeAiming|null>(null);
   const aimedWeapon=siege.snapshot?.weapons.find(w=>w.id===siegeAiming?.weaponId),aimedToken=scene?.tokens.find(t=>t.id===siegeAiming?.weaponId);
   const selectedSiegeWeapon=siege.snapshot?.sceneId===scene?.id?siege.snapshot?.weapons.find(w=>w.id===token?.id):undefined;
-  const siegePreferences=useRef(new Map<string,Pick<SiegeAiming,'actorId'|'mode'>>());
+  const siegePreferences=useRef(new Map<string,Pick<SiegeAiming,'actorId'|'mode'|'surface'>>());
   function finishSiegeAim(){setSiegeAiming(null);if(siegeAiming?.returnToToken&&selection[0]===siegeAiming.weaponId)setContextMenu({x:0,y:0});}
   useEffect(()=>{setSiegeAiming(null);},[state?.id,scene?.id,preview,spectator]);
   useEffect(() => {
@@ -3164,8 +3165,9 @@ export function VttSession({ characters, user, media }: { characters: Character[
           )}
         </nav>
         <div className="vtt-stage" ref={stage} onDragOverCapture={e=>{if(gm&&!preview&&e.dataTransfer.types.includes('application/x-alvorada-siege')){e.preventDefault();e.dataTransfer.dropEffect='copy';}}} onDropCapture={e=>{const kind=e.dataTransfer.getData('application/x-alvorada-siege');if(!gm||preview||(kind!=='cannon'&&kind!=='harpoon'))return;e.preventDefault();e.stopPropagation();const r=e.currentTarget.getBoundingClientRect();void commandSiege({kind:'create',weaponKind:kind as SiegeKind,position:{x:camera.x+(e.clientX-r.left-bounds.width/2)/camera.zoom,y:camera.y+(e.clientY-r.top-bounds.height/2)/camera.zoom}}).catch(error=>setNotice(error.message));}}>
+          <VttSiegeImpacts snapshot={siege.snapshot} scene={scene} camera={camera} bounds={bounds} gm={gm} preview={preview} viewer={viewer}/>
           <VttSiegeShots roomId={state.id} snapshot={siege.snapshot} scene={scene} camera={camera} bounds={bounds} enabled={visualEffects} gm={gm} preview={preview} viewer={viewer} soundEnabled={media.soundEnabled} soundVolume={media.soundVolume}/>
-          {siegeAiming&&aimedWeapon&&aimedToken&&<VttSiegeAim weapon={aimedWeapon} token={aimedToken} scene={scene} camera={camera} bounds={bounds} disabled={busy||siege.busy} cancel={finishSiegeAim} confirm={async point=>{await commandSiege({kind:'aim',weaponId:aimedWeapon.id,revision:aimedWeapon.revision,actorId:siegeAiming.actorId,point,mode:siegeAiming.mode});finishSiegeAim();}}/>}
+          {siegeAiming&&aimedWeapon&&aimedToken&&<VttSiegeAim weapon={aimedWeapon} token={aimedToken} scene={scene} camera={camera} bounds={bounds} disabled={busy||siege.busy} cancel={finishSiegeAim} confirm={async point=>{await commandSiege({kind:'aim',weaponId:aimedWeapon.id,revision:aimedWeapon.revision,actorId:siegeAiming.actorId,point,mode:siegeAiming.mode,surface:siegeAiming.surface});finishSiegeAim();}}/>}
           {spectator && scene.fog && !state.viewpoints.length && <p className="vtt-spectator-help" role="status">Nenhum personagem visível neste mapa. O mestre precisa colocar um personagem na camada de tokens ou revelar o mapa para compartilhar a visão.</p>}
           {scene.ocean?.enabled&&!preview&&<VttOceanPlayback ocean={scene.ocean} mapEffects={mapEffects} preference={media.oceanMotion} change={next=>media.update({oceanMotion:next,...(next==='on'?{mapEffects:true}:{})})}/>}
           {ruler.length > 1 && (
@@ -4726,7 +4728,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                 />
               )}
               {tab==='vehicles'&&<VttVehicles roomId={state.id} gm={gm&&!preview} disabled={busy||preview||spectator} bring={pick=>void act(()=>bringVehicle(pick))}/>}
-              {tab==='siege'&&<VttSiegePanel snapshot={siege.snapshot} scene={scene} userId={user.id} gm={gm&&!preview} disabled={busy||siege.busy||preview||spectator} error={siege.error} selectedId={selection[0]} select={id=>{changeLayer('tokens');setSelection([id]);}} send={commandSiege} aim={setSiegeAiming}/>}
+              {tab==='siege'&&<VttSiegePanel roomId={state.id} snapshot={siege.snapshot} scene={scene} userId={user.id} gm={gm&&!preview} disabled={busy||siege.busy||preview||spectator} error={siege.error} selectedId={selection[0]} select={id=>{changeLayer('tokens');setSelection([id]);}} send={commandSiege} aim={setSiegeAiming}/>}
               {spectator && tab === 'sheet' && (
                 <p className="vtt-muted">
                   Espectadores acompanham a mesa sem trazer fichas. Escolha a visão de um jogador no
@@ -5539,7 +5541,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
           close={() => setContextMenu(null)}
           openSheet={() => {openSheet(); setContextMenu(null);}}
           completeSettings={() => {setTab('token'); setPanelOpen(true); setContextMenu(null);}}
-          operation={selectedSiegeWeapon ? {title:selectedSiegeWeapon.kind==='cannon'?'Operar canhão':'Operar arpão',controls:<VttSiegePanel key={token.id} compact initialPreferences={siegePreferences.current.get(token.id)} onPreferencesChange={value=>siegePreferences.current.set(token.id,value)} snapshot={siege.snapshot} scene={scene} userId={user.id} gm={gm} disabled={busy||siege.busy} error={siege.error} selectedId={token.id} select={()=>{}} send={commandSiege} aim={value=>{setContextMenu(null);setSiegeAiming({...value,returnToToken:true});}}/>} : undefined}
+          operation={selectedSiegeWeapon ? {title:selectedSiegeWeapon.kind==='cannon'?'Operar canhão':'Operar arpão',controls:<VttSiegePanel roomId={state.id} releaseCharacterSupport={gm&&token.attachment&&scene.tokens.some(t=>t.id===token.attachment!.tokenId&&!t.sceneryToken&&!t.vehicle)?{name:scene.tokens.find(t=>t.id===token.attachment!.tokenId)!.name,release:()=>void act(()=>bindToken(null))}:undefined} key={token.id} compact initialPreferences={siegePreferences.current.get(token.id)} onPreferencesChange={value=>siegePreferences.current.set(token.id,value)} snapshot={siege.snapshot} scene={scene} userId={user.id} gm={gm} disabled={busy||siege.busy} error={siege.error} selectedId={token.id} select={()=>{}} send={commandSiege} aim={value=>{setContextMenu(null);setSiegeAiming({...value,returnToToken:true});}}/>} : undefined}
           edit={patch => {editToken(patch); if(gm) void act(save);}}
           hp={gm && !token.sceneryToken ? (                  <VttHpControl
                     key={token.id}

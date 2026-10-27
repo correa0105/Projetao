@@ -106,6 +106,7 @@ export type SiegeAiming = {
   actorId: string;
   mode: 'normal' | 'advantage' | 'disadvantage';
   returnToToken?: boolean;
+  surface?: 'auto' | 'ground' | 'water';
 };
 export function VttSiegePanel({
   snapshot,
@@ -121,6 +122,8 @@ export function VttSiegePanel({
   compact = false,
   initialPreferences,
   onPreferencesChange,
+  roomId,
+  releaseCharacterSupport,
 }: {
   snapshot: SiegeSnapshot | null;
   scene: VttScene;
@@ -133,20 +136,64 @@ export function VttSiegePanel({
   send: (command: SiegeCommand) => Promise<void>;
   aim: (value: SiegeAiming) => void;
   compact?: boolean;
-  initialPreferences?: Pick<SiegeAiming, 'actorId' | 'mode'>;
-  onPreferencesChange?: (value: Pick<SiegeAiming, 'actorId' | 'mode'>) => void;
+  initialPreferences?: Pick<SiegeAiming, 'actorId' | 'mode' | 'surface'>;
+  onPreferencesChange?: (value: Pick<SiegeAiming, 'actorId' | 'mode' | 'surface'>) => void;
+  roomId: string;
+  releaseCharacterSupport?: { name: string; release: () => void };
 }) {
-  const [actorId, setActorId] = useState(initialPreferences?.actorId || ''),
-    [mode, setMode] = useState<'normal' | 'advantage' | 'disadvantage'>(
+  const [mode, setMode] = useState<'normal' | 'advantage' | 'disadvantage'>(
       initialPreferences?.mode || 'normal',
     ),
     [ammo, setAmmo] = useState(10),
     [muted, setMuted] = useState(false);
+  const [surface, setSurface] = useState<'auto' | 'ground' | 'water'>(
+      initialPreferences?.surface || 'auto',
+    ),
+    [impactCount, setImpactCount] = useState(20);
   const weapons = (snapshot?.sceneId === scene.id ? snapshot.weapons : []).filter(
     (w) => gm || scene.tokens.some((t) => t.id === w.id && !t.hidden && t.layer !== 'gm'),
   );
   const weapon = weapons.find((w) => w.id === selectedId) || weapons[0],
     token = scene.tokens.find((t) => t.id === weapon?.id);
+  const operatorKey = `alvorada-siege-operator-v1:${userId}:${roomId}:${weapon?.id || ''}`;
+  function readOperator() {
+    try {
+      return localStorage.getItem(operatorKey);
+    } catch {
+      return null;
+    }
+  }
+  const [operatorChoice, setOperatorChoice] = useState<{ key: string; id: string | null }>(() => ({
+    key: operatorKey,
+    id: readOperator() ?? initialPreferences?.actorId ?? null,
+  }));
+  const actorId = operatorChoice.key === operatorKey ? operatorChoice.id : readOperator();
+  useEffect(() => {
+    const local = (event: Event) => {
+      const value = (event as CustomEvent<{ key: string; id: string }>).detail;
+      if (value?.key === operatorKey) setOperatorChoice({ key: operatorKey, id: value.id });
+    };
+    const external = (event: StorageEvent) => {
+      if (event.key === operatorKey) setOperatorChoice({ key: operatorKey, id: event.newValue });
+    };
+    window.addEventListener('alvorada-siege-operator', local);
+    window.addEventListener('storage', external);
+    return () => {
+      window.removeEventListener('alvorada-siege-operator', local);
+      window.removeEventListener('storage', external);
+    };
+  }, [operatorKey]);
+  function chooseOperator(id: string) {
+    setOperatorChoice({ key: operatorKey, id });
+    try {
+      localStorage.setItem(operatorKey, id);
+    } catch {
+      /* Session choice remains usable when storage is unavailable. */
+    }
+    window.dispatchEvent(
+      new CustomEvent('alvorada-siege-operator', { detail: { key: operatorKey, id } }),
+    );
+  }
   const actors = scene.tokens.filter(
     (t) =>
       t.layer === 'tokens' &&
@@ -156,9 +203,9 @@ export function VttSiegePanel({
       t.hp > 0,
   );
   const actor =
-    actors.find((t) => t.id === actorId) ||
-    (token ? actors.find((a) => siegeAdjacent(a, token, scene)) : null) ||
-    actors[0];
+    actorId === null
+      ? (token ? actors.find((a) => siegeAdjacent(a, token, scene)) : null) || actors[0]
+      : actors.find((t) => t.id === actorId);
   const near = !!actor && !!token && siegeAdjacent(actor, token, scene),
     turn = snapshot?.turn,
     actions = turn?.actions.find((a) => a.actorId === actor?.id),
@@ -166,8 +213,8 @@ export function VttSiegePanel({
       !turn?.active ||
       (turn.actorId === actor?.id && (actions?.used || 0) < (actions?.budget || 1));
   useEffect(() => {
-    if (actor) onPreferencesChange?.({ actorId: actor.id, mode });
-  }, [actor?.id, mode, onPreferencesChange]);
+    onPreferencesChange?.({ actorId: actor?.id || '', mode, surface });
+  }, [actor?.id, mode, surface, onPreferencesChange]);
   useEffect(() => {
     if (weapon) {
       setAmmo(weapon.ammo);
@@ -270,11 +317,9 @@ export function VttSiegePanel({
               <select
                 aria-label="Operador da arma"
                 value={actor?.id || ''}
-                onChange={(e) => setActorId(e.target.value)}
+                onChange={(e) => chooseOperator(e.target.value)}
               >
-                <option value="" disabled>
-                  Escolha um personagem
-                </option>
+                <option value="">Sem operador</option>
                 {actors.map((a) => (
                   <option key={a.id} value={a.id}>
                     {a.name}
@@ -284,7 +329,9 @@ export function VttSiegePanel({
             </label>
             {!actor ? (
               <p className="vtt-siege-warning">
-                Coloque um personagem que você controla no mapa para operar a arma.
+                {actors.length
+                  ? 'Sem operador. Escolha um personagem próximo para carregar, mirar ou disparar.'
+                  : 'Sem operador. Coloque um personagem que você controla no mapa para operar a arma.'}
               </p>
             ) : !near ? (
               <p className="vtt-siege-warning">Aproxime {actor.name} a até 5 pés da arma.</p>
@@ -298,6 +345,14 @@ export function VttSiegePanel({
               <p className="vtt-siege-hint">
                 Fora de combate: cada etapa representa uma ação da tripulação.
               </p>
+            )}
+            {!actor && releaseCharacterSupport && (
+              <div className="vtt-siege-hint">
+                <p>A arma acompanha {releaseCharacterSupport.name} por um vínculo.</p>
+                <button disabled={disabled} onClick={releaseCharacterSupport.release}>
+                  Soltar vínculo com {releaseCharacterSupport.name}
+                </button>
+              </div>
             )}
             <div className="vtt-siege-actions">
               <button
@@ -319,7 +374,15 @@ export function VttSiegePanel({
               </button>
               <button
                 disabled={disabled || !near || !available || weapon.stage === 'empty'}
-                onClick={() => actor && aim({ weaponId: weapon.id, actorId: actor.id, mode })}
+                onClick={() =>
+                  actor &&
+                  aim({
+                    weaponId: weapon.id,
+                    actorId: actor.id,
+                    mode,
+                    surface: gm ? surface : 'auto',
+                  })
+                }
               >
                 <Crosshair size={15} />
                 Mirar no mapa
@@ -355,6 +418,20 @@ export function VttSiegePanel({
                 <option value="disadvantage">Desvantagem</option>
               </select>
             </label>
+            {gm && (
+              <label>
+                Superfície do impacto
+                <select
+                  aria-label="Superfície do impacto"
+                  value={surface}
+                  onChange={(e) => setSurface(e.target.value as typeof surface)}
+                >
+                  <option value="auto">Automática · oceano e pintura</option>
+                  <option value="ground">Terra ou superfície sólida</option>
+                  <option value="water">Água</option>
+                </select>
+              </label>
+            )}
             {weapon.stage === 'aimed' && weapon.aim && (
               <p className="vtt-siege-hint">
                 Mira confirmada a {Math.round(siegeDistance(token, weapon.aim, scene))} pés. Se a
@@ -397,7 +474,7 @@ export function VttSiegePanel({
                     onChange={(e) => setMuted(e.target.checked)}
                   />
                   <Volume2 size={14} />
-                  Disparos sem som para todos
+                  Sons da arma desativados para todos
                 </label>
                 <button
                   disabled={disabled}
@@ -436,6 +513,28 @@ export function VttSiegePanel({
             </details>
           </>
         )
+      )}
+      {gm && !!snapshot?.impacts?.length && (
+        <details className="vtt-siege-impact-list">
+          <summary>Projéteis no mapa ({snapshot.impacts.length})</summary>
+          <p className="vtt-siege-hint">Ficam na superfície até o mestre remover.</p>
+          {snapshot.impacts.slice(-impactCount).map((impact, i) => (
+            <div key={impact.id} data-impact-id={impact.id}>
+              <span>{impact.kind === 'cannon' ? 'Bala de canhão' : 'Arpão preso'}</span>
+              <button
+                disabled={disabled}
+                aria-label={`Remover ${impact.kind === 'cannon' ? 'bala de canhão' : 'arpão'} ${i + 1}`}
+                onClick={() => run({ kind: 'removeImpact', impactId: impact.id })}
+              >
+                <X size={13} />
+                Remover
+              </button>
+            </div>
+          ))}
+          {snapshot.impacts.length > impactCount && (
+            <button onClick={() => setImpactCount((n) => n + 20)}>Mostrar mais projéteis</button>
+          )}
+        </details>
       )}
       {error && (
         <p role="alert" className="vtt-siege-warning">
@@ -720,13 +819,34 @@ export function VttSiegeShots({
       initialized.current = identity;
       events.current = [];
       seen.current = new Set(
-        (snapshot?.weapons || []).flatMap((w) => (w.lastShot ? [w.lastShot.id] : [])),
+        (snapshot?.weapons || []).flatMap((w) => [
+          ...(w.lastShot ? [w.lastShot.id] : []),
+          ...(w.lastLoad ? [w.lastLoad.id] : []),
+        ]),
       );
       audio.stop();
       return;
     }
     if (!snapshot) return;
     for (const w of snapshot.weapons) {
+      const load = w.lastLoad;
+      if (load && !seen.current.has(load.id)) {
+        seen.current.add(load.id);
+        const token = scene.tokens.find((t) => t.id === w.id);
+        if (
+          token &&
+          snapshot.serverTime - load.at < 3500 &&
+          !document.hidden &&
+          !load.muted &&
+          !w.muted &&
+          ((gm && !preview) ||
+            (!load.private &&
+              !token.hidden &&
+              token.layer !== 'gm' &&
+              (!preview || (viewer && viewerSees(viewer, token, scene)))))
+        )
+          audio.play(`/audio/vtt-siege/${w.kind}-load-v1.wav`);
+      }
       const shot = w.lastShot;
       if (!shot || seen.current.has(shot.id)) continue;
       seen.current.add(shot.id);

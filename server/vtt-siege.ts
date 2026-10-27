@@ -16,6 +16,7 @@ import { combatSchema, type Combat } from '../shared/vtt-combat';
 import { rollFormula } from '../shared/vtt-roll';
 import { attackFormula, attackOutcome, criticalDamage } from '../shared/vtt-attack';
 import { attachmentUnavailable } from '../shared/vtt-attachments';
+import { siegeWaterAt } from '../shared/vtt-siege-surface';
 import {
   siegeKinds,
   siegeDefinitions,
@@ -25,11 +26,14 @@ import {
   siegeDistance,
   siegePointInToken,
   siegeAimStale,
+  siegeImpactPosition,
   type SiegeWeapon,
   type SiegeSnapshot,
   type SiegeAim,
   type SiegeShot,
   type SiegeKind,
+  type SiegeImpact,
+  type SiegeLoad,
 } from '../shared/vtt-siege';
 
 type DB = Pick<PoolClient, 'query'>;
@@ -55,6 +59,7 @@ type Row = {
   revision: number;
   aim: SiegeAim | null;
   last_shot: SiegeShot | null;
+  last_load: SiegeLoad | null;
   muted: boolean;
 };
 const uuid = z.string().uuid(),
@@ -82,6 +87,7 @@ const commandSchema = z.discriminatedUnion('kind', [
       ...operator,
       point: pointSchema,
       mode: mode.default('normal'),
+      surface: z.enum(['auto', 'ground', 'water']).optional(),
       operationId: uuid,
     })
     .strict(),
@@ -100,6 +106,9 @@ const commandSchema = z.discriminatedUnion('kind', [
   z
     .object({ kind: z.literal('extraAction'), actorId: uuid, sceneId: uuid, operationId: uuid })
     .strict(),
+  z
+    .object({ kind: z.literal('removeImpact'), impactId: uuid, sceneId: uuid, operationId: uuid })
+    .strict(),
 ]);
 const asWeapon = (r: Row): SiegeWeapon => ({
   id: r.token_id,
@@ -110,6 +119,7 @@ const asWeapon = (r: Row): SiegeWeapon => ({
   revision: r.revision,
   aim: r.aim,
   lastShot: r.last_shot,
+  lastLoad: r.last_load,
   muted: r.muted,
 });
 const combat = (r: Room) => {
@@ -228,10 +238,43 @@ export function vttSiegeRouter(
         [id],
       )
     ).rows;
+    const pointVisible = (point: { x: number; y: number }, sourceId: string) => {
+      const source = scene.tokens.find((t) => t.id === sourceId) || newToken(sourceId, scene);
+      return canSee(
+        {
+          ...source,
+          ...point,
+          width: 1,
+          height: 1,
+          hidden: false,
+          layer: 'tokens',
+          controller: null,
+        },
+        scene,
+        r.role === 'spectator' ? r.viewing_user_id || '' : user,
+      );
+    };
+    const impacts = (
+      await pool.query<{ data: SiegeImpact }>(
+        'SELECT data FROM vtt_siege_impacts WHERE room_id=$1 AND scene_id=$2 ORDER BY created_at,id',
+        [id, scene.id],
+      )
+    ).rows
+      .map((row) => row.data)
+      .filter((impact) => {
+        if (canManageVtt(r, user)) return true;
+        const target = impact.targetId && scene.tokens.find((t) => t.id === impact.targetId);
+        return (
+          !impact.private &&
+          (!target || visible(r, target, user)) &&
+          pointVisible(siegeImpactPosition(impact, scene).point, impact.weaponId)
+        );
+      });
     return {
       roomId: id,
       sceneId: scene.id,
       serverTime: Date.now(),
+      impacts,
       weapons: rows
         .filter((w) => {
           const t = scene.tokens.find((t) => t.id === w.token_id);
@@ -252,6 +295,7 @@ export function vttSiegeRouter(
             result.aim = null;
           }
           if (!canManageVtt(r, user)) {
+            if (result.lastLoad?.private) result.lastLoad = null;
             const token = scene.tokens.find((t) => t.id === w.token_id)!;
             const seesPoint = (p: { x: number; y: number }) =>
               canSee(
@@ -321,7 +365,18 @@ export function vttSiegeRouter(
       }
       if (input.sceneId !== scene.id)
         throw new AppError(409, 'O mapa ativo mudou. Abra a arma novamente.');
-      if (input.kind === 'create') {
+      if (input.kind === 'removeImpact') {
+        if (!gm) throw new AppError(403, 'Somente o mestre pode remover marcas dos disparos.');
+        if (
+          !(
+            await db.query(
+              'DELETE FROM vtt_siege_impacts WHERE id=$1 AND room_id=$2 AND scene_id=$3',
+              [input.impactId, id, scene.id],
+            )
+          ).rowCount
+        )
+          throw new AppError(404, 'Marca indisponível neste mapa.');
+      } else if (input.kind === 'create') {
         if (!gm) throw new AppError(403, 'Somente o mestre pode colocar armas de cerco.');
         const existing = (
           await db.query('SELECT token_id FROM vtt_siege_weapons WHERE room_id=$1', [id])
@@ -405,7 +460,17 @@ export function vttSiegeRouter(
             row.ammunition--;
             row.stage = 'loaded';
             row.aim = null;
+            row.last_load = {
+              id: randomUUID(),
+              at: Date.now(),
+              muted: row.muted,
+              private:
+                attachmentUnavailable(scene.tokens, t) ||
+                attachmentUnavailable(scene.tokens, actor),
+            };
           } else if (input.kind === 'aim') {
+            if (input.surface && input.surface !== 'auto' && !gm)
+              throw new AppError(403, 'Somente o mestre pode definir a superfície do impacto.');
             if (row.stage === 'empty') throw new AppError(409, 'Carregue a arma antes de mirar.');
             if (
               input.point.x < 0 ||
@@ -435,6 +500,7 @@ export function vttSiegeRouter(
               rotation: t.rotation,
               targetId: target?.id || null,
               mode: input.mode,
+              surface: input.surface || 'auto',
             };
             row.stage = 'aimed';
           } else {
@@ -506,13 +572,69 @@ export function vttSiegeRouter(
               private: privateShot,
               muted: row.muted,
             };
+            const solid =
+              (hit && target && (row.kind === 'harpoon' || target.sceneryToken || target.vehicle)
+                ? target
+                : null) ||
+              [...scene.tokens]
+                .reverse()
+                .find(
+                  (surface) =>
+                    surface.id !== t.id &&
+                    surface.id !== actor.id &&
+                    surface.layer === 'map' &&
+                    !!surface.image &&
+                    visible(r, surface, user) &&
+                    siegePointInToken(a, surface),
+                );
+            const water =
+              a.surface === 'water' || (a.surface !== 'ground' && !solid && siegeWaterAt(scene, a));
+            if (!water) {
+              const rotation = (Math.atan2(a.y - t.y, a.x - t.x) * 180) / Math.PI;
+              const impact: SiegeImpact = {
+                id: randomUUID(),
+                shotId: row.last_shot.id,
+                sceneId: scene.id,
+                weaponId: t.id,
+                kind: row.kind,
+                point: { x: a.x, y: a.y },
+                rotation,
+                at: row.last_shot.at,
+                private: privateShot || !!(solid && attachmentUnavailable(scene.tokens, solid)),
+                surface: solid ? 'solid' : 'ground',
+                targetId: solid ? solid.id : null,
+              };
+              if (solid) {
+                const angle = (-solid.rotation * Math.PI) / 180,
+                  c = Math.cos(angle),
+                  s = Math.sin(angle),
+                  dx = a.x - solid.x,
+                  dy = a.y - solid.y,
+                  relative = ((rotation - solid.rotation) * Math.PI) / 180;
+                impact.local = {
+                  x: ((dx * c - dy * s) / solid.width) * (solid.flipX ? -1 : 1),
+                  y: ((dx * s + dy * c) / solid.height) * (solid.flipY ? -1 : 1),
+                  rotation:
+                    (Math.atan2(
+                      Math.sin(relative) * (solid.flipY ? -1 : 1),
+                      Math.cos(relative) * (solid.flipX ? -1 : 1),
+                    ) *
+                      180) /
+                    Math.PI,
+                };
+              }
+              await db.query(
+                'INSERT INTO vtt_siege_impacts(id,room_id,scene_id,shot_id,data)VALUES($1,$2,$3,$4,$5)',
+                [impact.id, id, scene.id, impact.shotId, JSON.stringify(impact)],
+              );
+            }
             row.stage = 'empty';
             row.aim = null;
           }
         }
         t.image = siegeImage(row.kind, row.stage !== 'empty');
         await db.query(
-          'UPDATE vtt_siege_weapons SET stage=$3,ammunition=$4,aim=$5,last_shot=$6,muted=$7,revision=revision+1 WHERE room_id=$1 AND token_id=$2',
+          'UPDATE vtt_siege_weapons SET stage=$3,ammunition=$4,aim=$5,last_shot=$6,muted=$7,last_load=$8,revision=revision+1 WHERE room_id=$1 AND token_id=$2',
           [
             id,
             t.id,
@@ -521,6 +643,7 @@ export function vttSiegeRouter(
             row.aim ? JSON.stringify(row.aim) : null,
             row.last_shot ? JSON.stringify(row.last_shot) : null,
             row.muted,
+            row.last_load ? JSON.stringify(row.last_load) : null,
           ],
         );
       }

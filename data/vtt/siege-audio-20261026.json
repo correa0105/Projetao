@@ -13,6 +13,32 @@
       "peakDb": -3.0980391997148637,
       "rmsDb": -21.96572018562524,
       "source": "Original procedural cue; scripts/build-vtt-siege-audio.mjs"
+    },
+    {
+      "id": "cannon-load",
+      "path": "/audio/vtt-siege/cannon-load-v1.wav",
+      "sha256": "aaf7a3ec7e1535d977312b3a9ee2ae328d94163cd262184e8032bd7aa6b5986b",
+      "bytes": 432044,
+      "sampleRate": 48000,
+      "channels": 2,
+      "bits": 16,
+      "duration": 2.25,
+      "peakDb": -3.4785039459834706,
+      "rmsDb": -23.887096262765326,
+      "source": "Original mechanical foley synthesis; scripts/build-vtt-siege-loading-audio.mjs"
+    },
+    {
+      "id": "harpoon-load",
+      "path": "/audio/vtt-siege/harpoon-load-v1.wav",
+      "sha256": "2d245b9530cf97fcd319c4b658fa6680b4c0a64501dd02617980050c3957db85",
+      "bytes": 518444,
+      "sampleRate": 48000,
+      "channels": 2,
+      "bits": 16,
+      "duration": 2.7,
+      "peakDb": -3.4785039459834706,
+      "rmsDb": -23.879509998018356,
+      "source": "Original mechanical foley synthesis; scripts/build-vtt-siege-loading-audio.mjs"
     }
   ]
 }
