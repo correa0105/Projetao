@@ -20,12 +20,13 @@ export const characterPostures = [
     id: 'hunched',
     name: 'Curvada',
     instruction:
-      'POSTURA CURVADA: tronco nitidamente inclinado para a frente, dorso arqueado de forma anatômica, ombros baixos e projetados à frente, cabeça acompanhando o pescoço e joelhos flexionados com pés apoiados. A silhueta deve expressar essa postura, sem simplesmente girar a imagem inteira, encurtar membros ou acrescentar corcova artificial. Preservar a identidade e a anatomia racial.',
+      'POSTURA CURVADA: tronco nitidamente inclinado para a frente, dorso arqueado de forma anatômica, ombros baixos e projetados à frente, cabeça acompanhando o pescoço e joelhos discretamente flexionados com pés apoiados. Continua em pé, com equilíbrio e distância natural entre os pés; não agachado, ajoelhado ou em posição de engatinhar. Ombros, mangas, braços e cabeça conservam proporções normais, sem criar uma enorme massa semicircular de tecido. A silhueta deve expressar essa postura, sem simplesmente girar a imagem inteira, encurtar membros ou acrescentar corcova artificial. Preservar a identidade e a anatomia racial.',
   },
 ] as const;
 export const characterCanes = [
   { id: 'none', name: 'Sem bengala' },
   { id: 'wooden', name: 'Bengala de madeira' },
+  { id: 'wooden-staff', name: 'Cajado de madeira' },
 ] as const;
 
 export const characterGenders = [
@@ -131,7 +132,7 @@ export const physicalTraitsSchema = z
     // Existing sheets and queued jobs predate this choice; require it on new submissions only.
     gender: z.enum(['male', 'female']).optional(),
     posture: z.enum(['upright', 'slightly-curved', 'hunched']).optional(),
-    cane: z.enum(['none', 'wooden']).optional(),
+    cane: z.enum(['none', 'wooden', 'wooden-staff']).optional(),
   })
   .strict();
 export type PhysicalTraits = z.infer<typeof physicalTraitsSchema>;
@@ -165,7 +166,7 @@ export function characterAppearanceInstructions(race: string, choices?: Appearan
   const outfitInstructions = startingOutfitInstructions(choices?.startingOutfit);
   const posture = characterPostures.find((v) => v.id === choices?.physicalTraits?.posture);
   const cane = choices?.physicalTraits?.cane;
-  const poseInstructions = `${posture ? `${posture.instruction} A postura é uma escolha deliberada: não reprovar como erro de proporção nem endireitar por causa da idade, da classe ou da pose da referência. No token em zênite, projetar o tronco inclinado com encurtamento e oclusão reais, sem mostrar uma figura frontal deitada. ` : ''}${cane === 'wooden' ? 'BENGALA: bengala simples de madeira para apoio, sem magia, lâmina, joias ou atributos de arma. Uma mão livre segura o cabo de forma anatômica, a ponta inferior toca o chão junto ao pé; peso e apoio coerentes, sem flutuar ou atravessar o corpo. Se os equipamentos ocuparem ambas as mãos, mantê-los e levar a bengala presa ao corpo com apoio físico plausível, sem criar mão extra. Na vista superior, a bengala apoiada quase vertical tem projeção curta e encurtada: não mostrar a haste inteira deitada no chão nem alterar a câmera. ' : cane === 'none' ? 'SEM BENGALA de apoio; não acrescentar uma pela idade ou postura. Preservar cajado ou arma realmente equipado, que é independente dessa escolha. ' : ''}`;
+  const poseInstructions = `${posture ? `${posture.instruction} A postura é uma escolha deliberada: não reprovar como erro de proporção nem endireitar por causa da idade, da classe ou da pose da referência. No token em zênite, projetar o tronco inclinado com encurtamento e oclusão reais, sem mostrar uma figura frontal deitada. ` : ''}${cane === 'wooden-staff' ? 'CAJADO DE MADEIRA: cajado simples e inteiro de madeira natural, comprido e proporcional à altura do conjurador, usado como alternativa à bengala, com textura de madeira, sem lâmina, joias, brilho ou magia automática. Uma mão livre segura a haste com anatomia correta e a base toca o chão junto ao pé. Se ambas as mãos estiverem ocupadas, preservar o equipamento e prender o cajado ao corpo com apoio plausível, sem mão extra. Não duplicar um cajado já equipado nem conceder arma, foco, bônus, ouro ou item no inventário. Na câmera em zênite, a haste quase vertical aparece encurtada; nunca deitada no chão nem alterar a câmera. ' : cane === 'wooden' ? 'BENGALA: bengala simples de madeira para apoio, sem magia, lâmina, joias ou atributos de arma. Uma mão livre segura o cabo de forma anatômica, a ponta inferior toca o chão junto ao pé; peso e apoio coerentes, sem flutuar ou atravessar o corpo. Se os equipamentos ocuparem ambas as mãos, mantê-los e levar a bengala presa ao corpo com apoio físico plausível, sem criar mão extra. Na vista superior, a bengala apoiada quase vertical tem projeção curta e encurtada: não mostrar a haste inteira deitada no chão nem alterar a câmera. ' : cane === 'none' ? 'SEM BENGALA de apoio; não acrescentar uma pela idade ou postura. Preservar cajado ou arma realmente equipado, que é independente dessa escolha. ' : ''}`;
   const traits = physicalTraitsSchema.safeParse(choices?.physicalTraits);
   const body = race === 'Warforged' && warforgedBodies.find((b) => b.id === choices?.warforgedBody);
   if (!traits.success && !body && !hairInstructions && !outfitInstructions && !poseInstructions)

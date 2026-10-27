@@ -102,6 +102,68 @@
   min-height: 43px;
   font-weight: 600;
 }
+.starting-outfit-models {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0.7rem 0 1rem;
+}
+.starting-outfit .starting-outfit-models button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  padding: 0.45rem;
+  border: 1px solid #bfa26940;
+  border-radius: 5px;
+  background: radial-gradient(ellipse at 50% 35%, #3b3930, #14191b 80%);
+  color: #ded5c3;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+.starting-outfit-models canvas,
+.outfit-barefoot {
+  width: 100%;
+  max-width: 155px;
+  height: 135px;
+  object-fit: contain;
+}
+.outfit-barefoot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: center;
+  color: #b9ac92;
+}
+.starting-outfit .starting-outfit-models button[aria-pressed='true'] {
+  border-color: #d8b772;
+  box-shadow: inset 0 0 0 1px #d8b772;
+  background: radial-gradient(ellipse at 50% 35%, #534a37, #1a201f 80%);
+}
+.outfit-model-check {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.55rem;
+  color: #eacb86;
+}
+.starting-outfit-sash-preview {
+  display: grid;
+  place-items: center;
+  height: 300px;
+  margin: 0.7rem 0 1rem;
+  border-radius: 5px;
+  background: radial-gradient(ellipse, #3b3930, #14191b 80%);
+  color: #b9ac92;
+  font-size: 0.85rem;
+}
+.starting-outfit-sash-preview canvas {
+  width: 260px;
+  max-width: 100%;
+  height: 260px;
+  object-fit: contain;
+}
 .starting-outfit .starting-outfit-sash input {
   width: 18px;
   height: 18px;

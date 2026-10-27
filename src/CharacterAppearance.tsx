@@ -12,10 +12,12 @@ export function CharacterAppearance({
   value,
   onChange,
   required = false,
+  spellcaster = false,
 }: {
   value: AppearanceChoices['physicalTraits'];
   onChange: (value: NonNullable<AppearanceChoices['physicalTraits']>) => void;
   required?: boolean;
+  spellcaster?: boolean;
 }) {
   return (
     <fieldset className="character-physical-choices">
@@ -75,26 +77,34 @@ export function CharacterAppearance({
           </select>
         </label>
         <label>
-          Bengala de apoio
+          Apoio e cajado
           <select
-            aria-label="Bengala de apoio"
+            aria-label="Apoio e cajado"
             value={value?.cane || ''}
             onChange={(e) =>
-              onChange({ ...value, cane: (e.target.value as 'none' | 'wooden') || undefined })
+              onChange({
+                ...value,
+                cane:
+                  (e.target.value as NonNullable<AppearanceChoices['physicalTraits']>['cane']) ||
+                  undefined,
+              })
             }
           >
             <option value="">Padrão do personagem</option>
-            {characterCanes.map((v) => (
-              <option key={v.id} value={v.id}>
-                {v.name}
-              </option>
-            ))}
+            {characterCanes
+              .filter((v) => v.id !== 'wooden-staff' || spellcaster)
+              .map((v) => (
+                <option key={v.id} value={v.id}>
+                  {v.name}
+                </option>
+              ))}
           </select>
         </label>
       </div>
       <p className="muted small">
-        Você pode combinar qualquer postura com ou sem bengala. A bengala é um apoio visual; armas e
-        equipamentos continuam seguindo a ficha.
+        Combine qualquer postura com ou sem bengala.
+        {spellcaster && ' Como conjurador, você também pode escolher um cajado de madeira.'} São
+        escolhas visuais; armas, focos e equipamentos continuam seguindo a ficha.
       </p>
       <p className="muted small">
         Essas escolhas orientam a aparência, sem alterar os atributos ou as regras da ficha.

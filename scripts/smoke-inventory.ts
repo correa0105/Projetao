@@ -42,6 +42,10 @@ try {
   userId = (await response.json()).user.id;
   const first = await createLegacyTestCharacter(userId, 'Arden');
   const second = await createLegacyTestCharacter(userId, 'Mira');
+  const initial = await createLegacyTestCharacter(userId,'OBruxo inicial');
+  const {defaultChoices}=await import('../shared/character-sheet');
+  await pool.query("UPDATE characters SET class='Bruxo',race='Orc' WHERE id=$1",[initial.id]);
+  await pool.query("INSERT INTO character_sheets(character_id,choices,rolls,assignment,finalized_at)VALUES($1,$2,'[[4,4,4,4],[4,4,4,4],[4,4,4,4],[4,4,4,4],[4,4,4,4],[4,4,4,4]]','[0,1,2,3,4,5]',now())",[initial.id,JSON.stringify(defaultChoices('Orc','Bruxo','Eremita'))]);
   const {
     rows: [item],
   } = await pool.query("SELECT * FROM catalog_items WHERE name='Espada longa' LIMIT 1");
@@ -178,6 +182,20 @@ try {
       true,
     );
   }
+  await page.getByRole('button',{name:/^Abrir menu de/}).click();
+  await page.getByRole('option',{name:'OBruxo inicial',exact:true}).click();
+  await expect(bag.getByRole('button',{name:'Adaga, quantidade 2',exact:true})).toBeVisible();
+  await expect(bag.getByRole('button',{name:'Óleo de lamparina, quantidade 3',exact:true})).toBeVisible();
+  for(const width of [1440,768,390,320]){
+    await page.setViewportSize({width,height:1200});
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+    await bag.screenshot({path:`test-results/starting-inventory-${width}.png`});
+  }
+  await page.reload();
+  await page.getByRole('button',{name:/^Abrir menu de/}).click();
+  await page.getByRole('option',{name:'OBruxo inicial',exact:true}).click();
+  await expect(bag.getByRole('button',{name:'Adaga, quantidade 2',exact:true})).toBeVisible();
+  expect((await pool.query('SELECT count(*)::int n FROM character_starting_item_grants WHERE character_id=$1',[initial.id])).rows[0].n).toBe(1);
   expect(errors).toEqual([]);
   console.log(
     'Inventário no navegador: transferências, exclusão parcial/total de mochila e cofre, cancelar, quantidade máxima, persistência e 1440/768/390/320 OK.',

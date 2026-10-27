@@ -17,6 +17,7 @@ import { money } from '../shared/rules';
 import { SheetHelp } from './SheetHelp';
 import { Modal } from './components';
 import { api, post } from './api';
+import { basicAccountPreview } from './account-preview';
 import './inventory.css';
 import { inventoryPieceName } from './armor-set-options';
 
@@ -346,9 +347,12 @@ export function Inventory({
     inFlight = useRef(false);
   useEffect(() => {
     mounted.current = true;
-    void api<Storage>(`/characters/${character.id}/storage`)
+    void (basicAccountPreview() ? api<Storage>(`/characters/${character.id}/storage`) : post<Storage>(`/characters/${character.id}/starting-equipment`, {}))
       .then((value) => {
-        if (mounted.current) setStorage(value);
+        if (mounted.current) {
+          setStorage(value);
+          onInventoryChange(value.inventory);
+        }
       })
       .catch((e) => {
         if (mounted.current) setError(e.message);

@@ -74,10 +74,16 @@ try {
     ['Porte físico', 'average'],
     ['Idade aparente', 'elder'],
     ['Postura', 'hunched'],
-    ['Bengala de apoio', 'wooden'],
+    ['Apoio e cajado', 'wooden'],
   ])
     await form.getByRole('combobox', { name: label, exact: true }).selectOption(value);
   const outfit = form.getByRole('group', { name: 'Roupa inicial', exact: true });
+  const linen=outfit.getByRole('button',{name:'Escolher Túnica de linho',exact:true}).locator('canvas');
+  const pixels=()=>linen.evaluate((c:HTMLCanvasElement)=>Array.from(c.getContext('2d')!.getImageData(0,0,c.width,c.height).data));
+  await expect.poll(async()=> (await pixels()).filter((v,i)=>i%4===3&&v>0).length).toBeGreaterThan(10000);
+  const originalPixels=await pixels();
+  await outfit.getByLabel('Cor da parte superior',{exact:true}).fill('#234fed');
+  await expect.poll(async()=> (await pixels()).filter((v,i)=>i%4!==3&&v!==originalPixels[i]).length).toBeGreaterThan(10000);
   for (const label of ['Modelo: parte superior', 'Modelo: calça', 'Modelo: calçado'])
     await expect(
       outfit.getByRole('combobox', { name: label, exact: true }).locator('option'),
@@ -96,6 +102,8 @@ try {
   await outfit.getByRole('checkbox', { name: 'Usar faixa na cintura' }).uncheck();
   // Species/class changes keep independent visual selections without granting equipment.
   await form.getByLabel('Classe', { exact: true }).selectOption('Mago');
+  await expect(form.getByRole('option',{name:'Cajado de madeira',exact:true})).toHaveCount(1);
+  await form.getByLabel('Apoio e cajado',{exact:true}).selectOption('wooden-staff');
   await expect(form.getByLabel('Postura', { exact: true })).toHaveValue('hunched');
   await expect(outfit.getByLabel('Cor da parte superior', { exact: true })).toHaveValue('#123abc');
   for (const width of [1440, 768, 390, 320]) {
@@ -122,7 +130,7 @@ try {
       .then((r) => r.rows[0].creation);
   const creation = await readJob();
   expect(creation.choices.physicalTraits.posture).toBe('hunched');
-  expect(creation.choices.physicalTraits.cane).toBe('wooden');
+  expect(creation.choices.physicalTraits.cane).toBe('wooden-staff');
   expect(creation.choices.startingOutfit).toEqual({
     top: 'vest',
     topColor: '#123abc',
@@ -141,7 +149,7 @@ try {
   await page.getByRole('button', { name: 'Criações salvas (1)', exact: true }).click();
   await page.getByRole('button', { name: 'Retomar preenchimento', exact: true }).click();
   await expect(form.getByLabel('Postura', { exact: true })).toHaveValue('hunched');
-  await expect(form.getByLabel('Bengala de apoio', { exact: true })).toHaveValue('wooden');
+  await expect(form.getByLabel('Apoio e cajado', { exact: true })).toHaveValue('wooden-staff');
   await expect(outfit.getByLabel('Cor da parte superior', { exact: true })).toHaveValue('#123abc');
   await expect(outfit.getByRole('checkbox', { name: 'Usar faixa na cintura' })).not.toBeChecked();
   const retry = page.waitForResponse(
@@ -171,9 +179,15 @@ try {
     )
   ).rows[0];
   expect(after.choices.physicalTraits.posture).toBe('hunched');
-  expect(after.choices.physicalTraits.cane).toBe('wooden');
+  expect(after.choices.physicalTraits.cane).toBe('wooden-staff');
   expect(after.choices.startingOutfit).toEqual(saved.choices.startingOutfit);
   expect(after.portrait_revision).toBe(saved.portrait_revision);
+  for(let retry=0;retry<2;retry++){
+    const finalized=await page.request.post(origin+`/api/characters/${saved.id}/sheet/finalize`,{headers:{Origin:origin},data:{assignment:[0,1,2,3,4,5]}});
+    expect(finalized.status(),await finalized.text()).toBe(200);
+  }
+  expect((await pool.query("SELECT quantity FROM inventory WHERE character_id=$1 AND item_id='dagger'",[saved.id])).rows[0].quantity).toBe(2);
+  expect((await pool.query('SELECT count(*)::int n FROM character_starting_item_grants WHERE character_id=$1',[saved.id])).rows[0].n).toBe(1);
   expect(errors).toEqual([]);
   await writeFile(
     'test-results/character-style/result.json',

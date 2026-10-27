@@ -50,6 +50,8 @@ export type SiegeImpact = {
   surface: 'ground' | 'solid';
   targetId: string | null;
   local?: Point & { rotation: number };
+  // Null deliberately hides a source that is outside the viewer's permission.
+  ropeOrigin?: Point | null;
 };
 export type SiegeShot = {
   id: string;
@@ -153,5 +155,15 @@ export function siegeImpactPosition(impact: SiegeImpact, scene: VttScene) {
         180) /
         Math.PI +
       t.rotation,
+  };
+}
+export function siegeRopeOrigin(impact: SiegeImpact, scene: VttScene): Point | null {
+  if (impact.kind !== 'harpoon' || impact.ropeOrigin === null) return null;
+  const weapon = scene.tokens.find((t) => t.id === impact.weaponId);
+  if (!weapon) return impact.ropeOrigin || null;
+  const angle = ((weapon.rotation - 90 + (weapon.flipY ? 180 : 0)) * Math.PI) / 180;
+  return {
+    x: weapon.x + Math.cos(angle) * weapon.height * 0.34,
+    y: weapon.y + Math.sin(angle) * weapon.height * 0.34,
   };
 }

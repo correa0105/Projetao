@@ -7,6 +7,7 @@ import {
   type StartingOutfit as Outfit,
 } from '../shared/starting-outfit';
 import './starting-outfit.css';
+import { OutfitIllustration } from './OutfitIllustration';
 
 function Color({
   label,
@@ -109,6 +110,32 @@ export function StartingOutfit({
               </select>
             </label>
             <p className="muted small">{models.find((m) => m.id === outfit[key])?.detail}</p>
+            <div
+              className="starting-outfit-models"
+              role="group"
+              aria-label={`Prévias: ${label.toLowerCase()}`}
+            >
+              {models.map((model) => (
+                <button
+                  type="button"
+                  key={model.id}
+                  aria-label={`Escolher ${model.name}`}
+                  aria-pressed={outfit[key] === model.id}
+                  onClick={() => update({ [key]: model.id })}
+                >
+                  <OutfitIllustration
+                    piece={key}
+                    model={model.id}
+                    color={outfit[colorKey]}
+                    label={`${model.name}, cor ${outfit[colorKey]}`}
+                  />
+                  <span>{model.name}</span>
+                  <span className="outfit-model-check" aria-hidden="true">
+                    {outfit[key] === model.id ? '✓' : ''}
+                  </span>
+                </button>
+              ))}
+            </div>
             {!(key === 'footwear' && outfit.footwear === 'barefoot') && (
               <Color
                 label={colorLabel}
@@ -132,6 +159,18 @@ export function StartingOutfit({
               ? 'Faixa de tecido com caimento natural.'
               : 'Sem a faixa de tecido na barriga.'}
           </p>
+          <div className="starting-outfit-sash-preview">
+            {outfit.sash ? (
+              <OutfitIllustration
+                piece="sash"
+                model="sash"
+                color={outfit.sashColor}
+                label={`Faixa, cor ${outfit.sashColor}`}
+              />
+            ) : (
+              <span>Sem faixa na cintura</span>
+            )}
+          </div>
           {outfit.sash && (
             <Color
               label="Cor da faixa"
@@ -144,7 +183,7 @@ export function StartingOutfit({
       <div className="starting-outfit-footer">
         <p className="muted small">
           Escolhas de aparência, sem alterar a proteção ou os atributos da ficha. Uma nova arte
-          aplica as mudanças.
+          aplica as mudanças ao personagem. As ilustrações acima mostram o modelo e a cor agora.
         </p>
         {value && (
           <button

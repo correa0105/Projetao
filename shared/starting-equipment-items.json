@@ -1,0 +1,410 @@
+{
+  "10 folhas de pergaminho": {
+    "id": "parchment",
+    "quantity": 10
+  },
+  "12 folhas de pergaminho": {
+    "id": "parchment",
+    "quantity": 12
+  },
+  "20 flechas": {
+    "id": "arrows-20",
+    "quantity": 1
+  },
+  "20 virotes": {
+    "id": "bolts-20",
+    "quantity": 1
+  },
+  "8 folhas de pergaminho": {
+    "id": "parchment",
+    "quantity": 8
+  },
+  "Adaga": {
+    "id": "dagger",
+    "quantity": 1
+  },
+  "Alaúde": {
+    "id": "lute",
+    "quantity": 1
+  },
+  "Algemas": {
+    "id": "manacles",
+    "quantity": 1
+  },
+  "Aljava": {
+    "id": "quiver",
+    "quantity": 1
+  },
+  "Arco curto": {
+    "id": "shortbow",
+    "quantity": 1
+  },
+  "Arco longo": {
+    "id": "longbow",
+    "quantity": 1
+  },
+  "Baralho": {
+    "id": "playing-card-set",
+    "quantity": 1
+  },
+  "Besta leve": {
+    "id": "light-crossbow",
+    "quantity": 1
+  },
+  "Bordão": {
+    "id": "quarterstaff",
+    "quantity": 1
+  },
+  "Camisão de malha": {
+    "id": "chain-shirt",
+    "quantity": 1
+  },
+  "Charamela": {
+    "id": "shawm",
+    "quantity": 1
+  },
+  "Cimitarra": {
+    "id": "scimitar",
+    "quantity": 1
+  },
+  "Cinco adagas": {
+    "id": "dagger",
+    "quantity": 5
+  },
+  "Corda": {
+    "id": "hempen-rope-50-feet",
+    "quantity": 1
+  },
+  "Cota de malha": {
+    "id": "chain-mail",
+    "quantity": 1
+  },
+  "Couro": {
+    "id": "leather-armor",
+    "quantity": 1
+  },
+  "Couro batido": {
+    "id": "studded-leather",
+    "quantity": 1
+  },
+  "Dados de jogo": {
+    "id": "gaming-dice",
+    "quantity": 1
+  },
+  "Duas adagas": {
+    "id": "dagger",
+    "quantity": 2
+  },
+  "Duas bolsas": {
+    "id": "pouch",
+    "quantity": 2
+  },
+  "Duas fantasias": {
+    "id": "costume",
+    "quantity": 2
+  },
+  "Dulcimer": {
+    "id": "dulcimer",
+    "quantity": 1
+  },
+  "Escudo": {
+    "id": "shield",
+    "quantity": 1
+  },
+  "Espada curta": {
+    "id": "shortsword",
+    "quantity": 1
+  },
+  "Espada grande": {
+    "id": "greatsword",
+    "quantity": 1
+  },
+  "Espada longa": {
+    "id": "longsword",
+    "quantity": 1
+  },
+  "Espelho": {
+    "id": "mirror",
+    "quantity": 1
+  },
+  "Fantasia": {
+    "id": "costume",
+    "quantity": 1
+  },
+  "Ferramentas de alquimista": {
+    "id": "alchemists-supplies",
+    "quantity": 1
+  },
+  "Ferramentas de carpinteiro": {
+    "id": "carpenters-tools",
+    "quantity": 1
+  },
+  "Ferramentas de cartógrafo": {
+    "id": "cartographers-tools",
+    "quantity": 1
+  },
+  "Ferramentas de cervejeiro": {
+    "id": "brewers-supplies",
+    "quantity": 1
+  },
+  "Ferramentas de couro": {
+    "id": "leatherworkers-tools",
+    "quantity": 1
+  },
+  "Ferramentas de cozinheiro": {
+    "id": "cooks-utensils",
+    "quantity": 1
+  },
+  "Ferramentas de entalhador": {
+    "id": "woodcarvers-tools",
+    "quantity": 1
+  },
+  "Ferramentas de ferreiro": {
+    "id": "smiths-tools",
+    "quantity": 1
+  },
+  "Ferramentas de funileiro": {
+    "id": "tinkers-tools",
+    "quantity": 1
+  },
+  "Ferramentas de joalheiro": {
+    "id": "jewelers-tools",
+    "quantity": 1
+  },
+  "Ferramentas de ladrão": {
+    "id": "thieves-tools",
+    "quantity": 1
+  },
+  "Ferramentas de navegador": {
+    "id": "navigators-tools",
+    "quantity": 1
+  },
+  "Ferramentas de oleiro": {
+    "id": "potters-tools",
+    "quantity": 1
+  },
+  "Ferramentas de pedreiro": {
+    "id": "masons-tools",
+    "quantity": 1
+  },
+  "Ferramentas de pintor": {
+    "id": "painters-supplies",
+    "quantity": 1
+  },
+  "Ferramentas de sapateiro": {
+    "id": "cobblers-tools",
+    "quantity": 1
+  },
+  "Ferramentas de tecelão": {
+    "id": "weavers-tools",
+    "quantity": 1
+  },
+  "Ferramentas de vidreiro": {
+    "id": "glassblowers-tools",
+    "quantity": 1
+  },
+  "Flauta": {
+    "id": "flute",
+    "quantity": 1
+  },
+  "Flauta de pã": {
+    "id": "pan-flute",
+    "quantity": 1
+  },
+  "Foco arcano": {
+    "id": "arcane-focus-crystal",
+    "quantity": 1
+  },
+  "Foco arcano (cristal)": {
+    "id": "arcane-focus-crystal",
+    "quantity": 1
+  },
+  "Foco arcano (orbe)": {
+    "id": "arcane-focus-orb",
+    "quantity": 1
+  },
+  "Foco druídico": {
+    "id": "druidic-focus-mistletoe",
+    "quantity": 1
+  },
+  "Foice": {
+    "id": "sickle",
+    "quantity": 1
+  },
+  "Gaita de foles": {
+    "id": "bagpipes",
+    "quantity": 1
+  },
+  "Grimório": {
+    "id": "book",
+    "quantity": 1
+  },
+  "Kit de curandeiro": {
+    "id": "healers-kit",
+    "quantity": 1
+  },
+  "Kit de disfarce": {
+    "id": "disguise-kit",
+    "quantity": 1
+  },
+  "Kit de falsificação": {
+    "id": "forgery-kit",
+    "quantity": 1
+  },
+  "Kit de herbalismo": {
+    "id": "herbalism-kit",
+    "quantity": 1
+  },
+  "Kit de venenos": {
+    "id": "poisoners-kit",
+    "quantity": 1
+  },
+  "Lamparina": {
+    "id": "lamp",
+    "quantity": 1
+  },
+  "Lança": {
+    "id": "spear",
+    "quantity": 1
+  },
+  "Lanterna coberta": {
+    "id": "hooded-lantern",
+    "quantity": 1
+  },
+  "Lira": {
+    "id": "lyre",
+    "quantity": 1
+  },
+  "Livro de filosofia": {
+    "id": "book",
+    "quantity": 1
+  },
+  "Livro de história": {
+    "id": "book",
+    "quantity": 1
+  },
+  "Livro de ocultismo": {
+    "id": "book",
+    "quantity": 1
+  },
+  "Livro de orações": {
+    "id": "book",
+    "quantity": 1
+  },
+  "Maça": {
+    "id": "mace",
+    "quantity": 1
+  },
+  "Machado grande": {
+    "id": "greataxe",
+    "quantity": 1
+  },
+  "Mangual": {
+    "id": "flail",
+    "quantity": 1
+  },
+  "Oito azagaias": {
+    "id": "javelin",
+    "quantity": 8
+  },
+  "Pá": {
+    "id": "shovel",
+    "quantity": 1
+  },
+  "Pacote de artista": {
+    "id": "entertainers-pack",
+    "quantity": 1
+  },
+  "Pacote de assaltante": {
+    "id": "burglars-pack",
+    "quantity": 1
+  },
+  "Pacote de aventureiro": {
+    "id": "dungeoneers-pack",
+    "quantity": 1
+  },
+  "Pacote de estudioso": {
+    "id": "scholars-pack",
+    "quantity": 1
+  },
+  "Pacote de explorador": {
+    "id": "explorers-pack",
+    "quantity": 1
+  },
+  "Pacote de sacerdote": {
+    "id": "priests-pack",
+    "quantity": 1
+  },
+  "Panela de ferro": {
+    "id": "iron-pot",
+    "quantity": 1
+  },
+  "Pé de cabra": {
+    "id": "crowbar",
+    "quantity": 1
+  },
+  "Perfume": {
+    "id": "perfume",
+    "quantity": 1
+  },
+  "Quatro machadinhas": {
+    "id": "handaxe",
+    "quantity": 4
+  },
+  "Roupas de viajante": {
+    "id": "travelers-clothes",
+    "quantity": 1
+  },
+  "Roupas finas": {
+    "id": "fine-clothes",
+    "quantity": 1
+  },
+  "Saco de dormir": {
+    "id": "bedroll",
+    "quantity": 1
+  },
+  "Seis azagaias": {
+    "id": "javelin",
+    "quantity": 6
+  },
+  "Símbolo sagrado": {
+    "id": "holy-symbol-amulet",
+    "quantity": 1
+  },
+  "Suprimentos de caligrafia": {
+    "id": "calligraphers-supplies",
+    "quantity": 1
+  },
+  "Tambor": {
+    "id": "drum",
+    "quantity": 1
+  },
+  "Tenda": {
+    "id": "tent",
+    "quantity": 1
+  },
+  "Três dragões": {
+    "id": "three-dragon-ante-set",
+    "quantity": 3
+  },
+  "Três frascos de óleo": {
+    "id": "oil",
+    "quantity": 3
+  },
+  "Trombeta": {
+    "id": "horn",
+    "quantity": 1
+  },
+  "Vestes": {
+    "id": "robe",
+    "quantity": 1
+  },
+  "Violino": {
+    "id": "viol",
+    "quantity": 1
+  },
+  "Xadrez de dragão": {
+    "id": "dragonchess-set",
+    "quantity": 1
+  }
+}

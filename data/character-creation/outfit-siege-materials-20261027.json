@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-27",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "prompts": [
+    [
+      "siege",
+      "Use case: stylized-concept. Asset type: premium realistic fantasy VTT sprite atlas, four equal cells in a 2 by 2 square layout. Real transparent background with wide transparent gutters, no text, no borders. Strict orthographic overhead. Top-left: a long complete naval harpoon lying horizontally pointing RIGHT, dark walnut shaft, exceptionally detailed forged steel barbed head on right, braided hemp grip and iron rope eye at left butt. Entire weapon fits its cell. Top-right: one straight horizontal segment of thick tan braided hemp rope, detailed intertwined fibers, constant thickness across middle, no knot or coil. Bottom-left: heavy dark iron cannonball half buried in an irregular EARTH impact depression with broken soil chunks and dirt pushed up, organic feathered transparent edges, no perfect rim or cup. Bottom-right: a bare dark scuffed iron cannonball resting on solid ground with subtle contact shadow, no soil. Painted realistic game art, crisp small scale readability, restrained highlights, physically convincing textures, no icons, no flat vector shapes, no floor or backdrop. Keep all four objects fully separate inside their equal cells."
+    ],
+    [
+      "tops",
+      "Use case: product-mockup. Asset type: four medieval starting clothing illustrations in a square 2 by 2 atlas. Four equal cells with wide transparent gutters, real transparent background, no text or frames. Front-facing isolated garments with believable fabric drape, NO wearer, NO body, NO hanger. Each centered garment fits its cell. Top-left: long-sleeve linen tunic with cord-tied collar. Top-right: short-sleeve cotton shirt with round collar. Bottom-left: road tunic with elbow-length sleeves and V-neck, mid-thigh hem. Bottom-right: sleeveless cloth vest over a warm cream long-sleeve simple shirt. Main fabrics neutral medium GRAY intended to be recolored in an app; only undershirt in last cell remains warm cream. Premium semi-realistic hand-painted fantasy RPG art, finely woven cloth, detailed folds and seams, soft neutral light, natural shadow inside folds, no big external shadows, no armor or weapons, no rips or dirt. Four different clearly recognizable cuts."
+    ],
+    [
+      "trousers",
+      "Use case: product-mockup. Asset type: four medieval starting trousers illustrations in a square 2 by 2 atlas. Four equal cells, wide transparent gutters, real transparent background, no text or frames. Front-facing isolated complete trousers, NO wearer, body, feet or hanger. Both legs visible, intact and full length. Top-left: simple straight loose linen trousers. Top-right: loose medieval trousers tied with cord at both ankles. Bottom-left: broad wool trousers with deep soft folds. Bottom-right: fitted narrow trousers with tailored seams. All fabric neutral medium gray for app recoloring. Premium semi-realistic hand-painted fantasy RPG art, detailed cloth weave, natural folds/seams, soft neutral lighting. No armor, no rips, no short pants, no background or external cast shadows. Similar garment scale with roomy margins inside each cell."
+    ],
+    [
+      "accessories",
+      "Use case: product-mockup. Asset type: medieval clothing accessories square atlas, four equal cells in a 2 by 2 grid, real transparent background, wide transparent gutters, no text or frames. Top-left: pair of simple handmade closed leather shoes. Top-right: pair of ankle-high leather boots. Bottom-left: pair of simple leather sandals with clear straps and soles. Bottom-right: wide cloth sash tied at waist shape with natural knot and two draped tails, no body inside. All colorable material neutral medium gray. Front three-quarter product views for footwear, front view sash. No skin, feet, mannequin, armor, metal studs or weapon. Premium semi-realistic hand-painted fantasy RPG artwork, fine leather grain and stitching, woven fabric and folds, crisp readable details, soft neutral light, minimal contact shadows. Each complete item wholly within its equal cell, no overlap."
+    ]
+  ],
+  "edits": {
+    "tops": "Use case: precise-object-edit. Edit this clothing atlas. Change ONLY the bottom-left road tunic: REMOVE the entire fabric waist belt/sash, knot and hanging tail, replace their space with natural uninterrupted gray tunic fabric and folds. Keep its V neck, elbow sleeves and mid-thigh length. Preserve the other three garments exactly, the four-cell layout, margins, texture, grayscale palette and real transparent background. No waistband, no belt, no cord around the waist in the bottom-left tunic.",
+    "siege": "Use case: background-extraction. Keep all four objects and their positions exactly. Remove ALL broad brown/gray haze, glow, vignette and background from this sprite atlas. Produce clean transparent cutouts with actual alpha and crisp natural edges around harpoon, rope, dirt impact, and cannonball. No shadows beyond a very small tight contact shadow under the cannonball. Keep the realistic metal/wood/hemp/earth textures and overhead view. Do not change the objects, size, orientation or layout. Background must be entirely transparent including between cells."
+  },
+  "preservation": "PNG originals copied byte for byte; source rectangles and live tints are runtime previews.",
+  "assets": [
+    {
+      "path": "/character-creation/outfit-20261027/tops-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "d6557cbfa56da873354915aa6b17adb1adbe139aa56a2998bd51bab42ef09da5",
+      "original": true
+    },
+    {
+      "path": "/character-creation/outfit-20261027/trousers-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "4e4e12552f45a2d59c60e283604f296a77032b3674aeb8d0489203acd0a73dcb",
+      "original": true
+    },
+    {
+      "path": "/character-creation/outfit-20261027/accessories-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "dfc93d7f5cb6dcd507fd4df87e43ea990797763a9c59d8bbdb920e4424682341",
+      "original": true
+    },
+    {
+      "path": "/vtt/siege-materials-20261027/projectiles-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "08262e37b9cb7f702a7c23973f295dd6716beb509d5139e3e5db0767c50afdcd",
+      "original": true
+    }
+  ]
+}

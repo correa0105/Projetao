@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import {spellReference} from './spell-reference.js';
 import { grantCharacterStartingGold } from './character-starting-gold.js';
+import { grantCharacterStartingItems } from './character-starting-items.js';
 import { rollCharacterAbilities } from './ability-rolls.js';
 import {characterSlotPool} from './character-slot-rolls.js';
 import { abilityRollResult } from '../shared/ability-rolls.js';
@@ -463,6 +464,7 @@ export function characterSheetRouter() {
         'UPDATE character_sheets SET assignment=$2,choices=$4,finalized_at=now(),current_hp=$3,updated_at=now() WHERE character_id=$1',
         [id, JSON.stringify(assignment), d.hp, JSON.stringify(finalChoices)],
       );
+      await grantCharacterStartingItems(client,id);
     });
     res.json(await result(id, user));
   });

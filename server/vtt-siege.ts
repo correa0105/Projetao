@@ -27,6 +27,7 @@ import {
   siegePointInToken,
   siegeAimStale,
   siegeImpactPosition,
+  siegeRopeOrigin,
   type SiegeWeapon,
   type SiegeSnapshot,
   type SiegeAim,
@@ -261,6 +262,19 @@ export function vttSiegeRouter(
       )
     ).rows
       .map((row) => row.data)
+      .map((impact) => {
+        if (impact.kind !== 'harpoon') return impact;
+        const source = scene.tokens.find((t) => t.id === impact.weaponId);
+        const origin = siegeRopeOrigin(impact, scene);
+        return {
+          ...impact,
+          ropeOrigin:
+            (source && !visible(r, source, user)) ||
+            (!canManageVtt(r, user) && origin && !pointVisible(origin, impact.weaponId))
+              ? null
+              : origin,
+        };
+      })
       .filter((impact) => {
         if (canManageVtt(r, user)) return true;
         const target = impact.targetId && scene.tokens.find((t) => t.id === impact.targetId);
@@ -603,6 +617,12 @@ export function vttSiegeRouter(
                 private: privateShot || !!(solid && attachmentUnavailable(scene.tokens, solid)),
                 surface: solid ? 'solid' : 'ground',
                 targetId: solid ? solid.id : null,
+                ...(row.kind === 'harpoon'
+                  ? { ropeOrigin: {
+                      x: t.x + Math.cos(rotation * Math.PI / 180) * t.height * .34,
+                      y: t.y + Math.sin(rotation * Math.PI / 180) * t.height * .34,
+                    } }
+                  : {}),
               };
               if (solid) {
                 const angle = (-solid.rotation * Math.PI) / 180,

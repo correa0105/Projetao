@@ -1076,7 +1076,15 @@ export function normalizeOptions(race: string, cls: string, c: SheetChoices) {
         .slice(0, f.count);
     }
   }
+  if (c.physicalTraits?.cane === 'wooden-staff' && !canChooseWoodenStaff(race, cls, c))
+    c = { ...c, physicalTraits: { ...c.physicalTraits, cane: 'none' } };
   return c;
+}
+export function canChooseWoodenStaff(race: string, cls: string, c: SheetChoices) {
+  return classRules[cls]?.ability !== undefined ||
+    feats(c).some(f => f.startsWith('Iniciado em Magia')) ||
+    race === 'Elfo' || race === 'Tiefling' ||
+    (race === 'Gnomo' && c.subrace === 'Gnomo da floresta');
 }
 export function defaultChoices(race: string, cls: string, background = 'Acólito'): SheetChoices {
   const species = (races as readonly string[]).includes(race) ? race : 'Humano',
@@ -1241,6 +1249,7 @@ export function validateChoices(race: string, cls: string, input: unknown): Shee
   check(!c.warforgedBody || race === 'Warforged', 'A estrutura de constructo é exclusiva do Warforged.');
   check(!c.warforgedBody || !c.warforgedAppearance, 'Escolha a estrutura no modo de aparência selecionado.');
   check(!c.physicalTraits || physicalTraitsSchema.safeParse(c.physicalTraits).success, 'Complete a altura, o porte físico e a idade aparente.');
+  check(c.physicalTraits?.cane !== 'wooden-staff' || canChooseWoodenStaff(race, cls, c), 'O cajado de madeira está disponível para personagens com conjuração.');
   check(!c.facialHair || supportsFacialHair(race, c.physicalTraits?.gender), 'Barba e bigode são escolhas de personagens masculinos, exceto Warforged.');
   check(c.warforgedArtMode !== 'reference' || !c.warforgedAppearance, 'Desative as opções de montagem para usar uma imagem de referência.');
   check(c.warforgedArtMode !== 'construction' || Boolean(c.warforgedAppearance), 'Escolha a estrutura, a cabeça e as cores da montagem.');

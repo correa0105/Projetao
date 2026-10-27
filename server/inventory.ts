@@ -6,6 +6,7 @@ import { AppError } from './services.js';
 import { allocatedCopies, companionAllocated } from './companion-inventory.js';
 import { armorSetPieces } from './equipment-sets.js';
 import { clothingPieceAppearance } from '../shared/clothing-bundles.js';
+import { grantCharacterStartingItems } from './character-starting-items.js';
 import {
   EQUIPMENT_SLOTS,
   compatibleSlots,
@@ -100,6 +101,15 @@ async function companionBags(client: PoolClient, characterId: string) {
 
 export function inventoryRouter() {
   const router = Router();
+  router.post('/characters/:id/starting-equipment', async (req,res)=>{
+    z.object({}).strict().parse(req.body);
+    const id=uuid.parse(req.params.id),userId=res.locals.user.id;
+    res.json(await transaction(async client=>{
+      await lockStorage(client,userId,id);
+      await grantCharacterStartingItems(client,id);
+      return storageState(client,userId,id);
+    }));
+  });
   router.post('/inventory/discards', async (req, res) => {
     const data = discardSchema.parse(req.body),
       userId = res.locals.user.id;

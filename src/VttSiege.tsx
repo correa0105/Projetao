@@ -19,6 +19,7 @@ import {
 import type { VttCamera } from './vtt-canvas';
 import { useVttEffectAudio } from './vtt-effect-audio';
 import './vtt-siege.css';
+import { siegeMaterials, drawSiegeHarpoon, drawSiegeRope, harpoonLength } from './vtt-siege-materials';
 
 export function useVttSiege(
   roomId: string | undefined,
@@ -806,6 +807,7 @@ export function VttSiegeShots({
     audio = useVttEffectAudio(soundEnabled, soundVolume),
     live = useRef({ scene, camera, bounds, enabled, gm, preview, viewer });
   live.current = { scene, camera, bounds, enabled, gm, preview, viewer };
+  useEffect(() => { siegeMaterials(); }, []);
   useEffect(() => {
     initialized.current = '';
     events.current = [];
@@ -976,34 +978,19 @@ export function VttSiegeShots({
             ctx.shadowBlur = 0;
           }
         } else {
-          ctx.globalAlpha = Math.max(0, 1 - Math.max(0, t - travel) / 1.2);
-          ctx.strokeStyle = '#bd9d6e';
-          ctx.lineWidth = 1.2;
-          ctx.beginPath();
-          ctx.moveTo(from.x, from.y);
-          if (reduced.matches) ctx.lineTo(x, y);
-          else
-            ctx.quadraticCurveTo((from.x + x) / 2, (from.y + y) / 2 + Math.sin(t * 17) * 8, x, y);
-          ctx.stroke();
-          ctx.save();
-          ctx.translate(x, y);
-          ctx.rotate(angle);
-          ctx.strokeStyle = '#b9a988';
-          ctx.lineWidth = 3;
-          ctx.beginPath();
-          ctx.moveTo(-28, 0);
-          ctx.lineTo(7, 0);
-          ctx.stroke();
-          ctx.fillStyle = '#d3d8d8';
-          ctx.beginPath();
-          ctx.moveTo(13, 0);
-          ctx.lineTo(-1, -5);
-          ctx.lineTo(2, 0);
-          ctx.lineTo(-1, 5);
-          ctx.closePath();
-          ctx.fill();
-          ctx.restore();
-          ctx.globalAlpha = 1;
+          if (t < .6) {
+            const grid = o.scene.grid.size * o.camera.zoom;
+            const length = harpoonLength(grid, 1);
+            const tail = {x:x-Math.cos(angle)*length*.96,y:y-Math.sin(angle)*length*.96};
+            if (Math.hypot(x-from.x,y-from.y)>length) drawSiegeRope(ctx, from, tail, grid, 1,
+              o.gm && !o.preview ? undefined : screen => !!o.viewer && viewerSees(o.viewer, {
+                x:(screen.x-o.bounds.width/2)/o.camera.zoom+o.camera.x,
+                y:(screen.y-o.bounds.height/2)/o.camera.zoom+o.camera.y,
+
+              },o.scene), reduced.matches ? 0 : Math.sin(t*17)*grid*.035);
+            ctx.save();ctx.translate(x,y);ctx.rotate(angle);
+            drawSiegeHarpoon(ctx,grid,1);ctx.restore();
+          }
         }
         if (t >= travel && t < travel + 0.5) {
           const impact = (t - travel) / 0.5;

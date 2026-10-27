@@ -6,6 +6,7 @@ import {
   choiceFields,
   equipmentFields,
   classRules,
+  canChooseWoodenStaff,
   raceRules,
   skills,
   languages,
@@ -232,7 +233,7 @@ export function SheetChoices({
         />
       )}
       {race === 'Warforged' && warforgedModeControl}
-      <CharacterAppearance required={requireAppearance} value={c.physicalTraits} onChange={physicalTraits => update({ physicalTraits })} />
+      <CharacterAppearance required={requireAppearance} spellcaster={canChooseWoodenStaff(race, cls, c)} value={c.physicalTraits} onChange={physicalTraits => update({ physicalTraits })} />
       <StartingOutfit value={c.startingOutfit} onChange={startingOutfit=>update({startingOutfit})}/>
       {supportsFacialHair(race, c.physicalTraits?.gender) && (
         <FacialHairChoices value={c.facialHair} onChange={facialHair => update({ facialHair })} />

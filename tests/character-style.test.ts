@@ -6,6 +6,7 @@ import {
   validateChoices,
   reconcileChoices,
   deriveSheet,
+  canChooseWoodenStaff,
 } from '../shared/character-sheet';
 import { characterAppearanceInstructions, characterPostures } from '../shared/character-appearance';
 import {
@@ -62,6 +63,51 @@ test('traje, postura e bengala permanecem cosméticos em todas as espécies e so
     assert.equal(validateChoices(race, 'Guerreiro', base).physicalTraits, undefined);
     assert.equal(startingOutfitInstructions(undefined), '');
   }
+});
+test('cajado é cosmético, disponível por classe, origem ou talento e reconciliado ao perder conjuração', () => {
+  for (const cls of [
+    'Mago',
+    'Bruxo',
+    'Feiticeiro',
+    'Druida',
+    'Clérigo',
+    'Bardo',
+    'Paladino',
+    'Patrulheiro',
+    'Artífice',
+  ]) {
+    const base = defaultChoices('Orc', cls, 'Soldado');
+    assert(canChooseWoodenStaff('Orc', cls, base));
+    const selected = {
+      ...base,
+      physicalTraits: {
+        height: 'average' as const,
+        build: 'average' as const,
+        age: 'elder' as const,
+        posture: 'hunched' as const,
+        cane: 'wooden-staff' as const,
+      },
+    };
+    assert.equal(validateChoices('Orc', cls, selected).physicalTraits?.cane, 'wooden-staff');
+    const character = { race: 'Orc', class: cls, stats: [15, 14, 13, 12, 10, 8], level: 1 };
+    assert.deepEqual(deriveSheet(character, selected), deriveSheet(character, base));
+    assert(characterAppearanceInstructions('Orc', selected).includes('CAJADO DE MADEIRA'));
+    const changed = reconcileChoices('Orc', 'Guerreiro', selected, 'Soldado');
+    assert.equal(changed.physicalTraits?.cane, 'none');
+    assert.equal(changed.physicalTraits?.posture, 'hunched');
+  }
+  const fighter = defaultChoices('Orc', 'Guerreiro', 'Soldado');
+  assert(!canChooseWoodenStaff('Orc', 'Guerreiro', fighter));
+  assert(canChooseWoodenStaff('Orc', 'Guerreiro', defaultChoices('Orc', 'Guerreiro', 'Acólito')));
+  assert(canChooseWoodenStaff('Elfo', 'Guerreiro', defaultChoices('Elfo', 'Guerreiro', 'Soldado')));
+  assert.throws(
+    () =>
+      validateChoices('Orc', 'Guerreiro', {
+        ...fighter,
+        physicalTraits: { height: 'average', build: 'average', age: 'adult', cane: 'wooden-staff' },
+      }),
+    /conjuração/,
+  );
 });
 test('quatro modelos de cada peça geram orientações próprias e cores validadas sem texto injetado', () => {
   assert.equal(startingTops.length, 4);

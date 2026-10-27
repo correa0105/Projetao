@@ -1,6 +1,20 @@
 import { useEffect, useRef } from 'react';
 import { viewerSees, type VttScene, type VttToken } from '../shared/vtt';
-import { siegeImpactPosition, type SiegeSnapshot, type SiegeImpact } from '../shared/vtt-siege';
+import {
+  siegeImpactPosition,
+  siegeRopeOrigin,
+  type SiegeSnapshot,
+  type SiegeImpact,
+} from '../shared/vtt-siege';
+import { attachmentUnavailable } from '../shared/vtt-attachments';
+import {
+  siegeMaterials,
+  forgetSiegeMaterials,
+  drawSiegeHarpoon,
+  drawSiegeBall,
+  drawSiegeRope,
+  harpoonLength,
+} from './vtt-siege-materials';
 import type { VttCamera } from './vtt-canvas';
 
 export function VttSiegeImpacts({
@@ -22,7 +36,7 @@ export function VttSiegeImpacts({
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const impacts = snapshot?.sceneId === scene.id ? snapshot.impacts || [] : [];
-  const identity = impacts.map((i) => i.id + ':' + i.private).join(',');
+  const identity = JSON.stringify(impacts);
   useEffect(() => {
     const c = canvas.current,
       ctx = c?.getContext('2d');
@@ -53,13 +67,16 @@ export function VttSiegeImpacts({
       let next = Infinity;
       for (const impact of impacts) {
         const { point, rotation } = siegeImpactPosition(impact, scene),
+          origin = siegeRopeOrigin(impact, scene),
           screenX = (point.x - camera.x) * camera.zoom + bounds.width / 2,
-          screenY = (point.y - camera.y) * camera.zoom + bounds.height / 2;
+          screenY = (point.y - camera.y) * camera.zoom + bounds.height / 2,
+          sourceX = origin ? (origin.x - camera.x) * camera.zoom + bounds.width / 2 : screenX,
+          sourceY = origin ? (origin.y - camera.y) * camera.zoom + bounds.height / 2 : screenY;
         if (
-          screenX < -100 ||
-          screenY < -100 ||
-          screenX > bounds.width + 100 ||
-          screenY > bounds.height + 100
+          Math.max(screenX, sourceX) < -100 ||
+          Math.max(screenY, sourceY) < -100 ||
+          Math.min(screenX, sourceX) > bounds.width + 100 ||
+          Math.min(screenY, sourceY) > bounds.height + 100
         )
           continue;
         if (impact.at + 600 > now) {
@@ -72,6 +89,7 @@ export function VttSiegeImpacts({
           (impact.private ||
             target?.hidden ||
             target?.layer === 'gm' ||
+            (target && attachmentUnavailable(scene.tokens, target)) ||
             (preview &&
               (!viewer ||
                 !viewerSees(
@@ -89,6 +107,30 @@ export function VttSiegeImpacts({
                 ))))
         )
           continue;
+        const source = scene.tokens.find((t) => t.id === impact.weaponId);
+        if (
+          origin &&
+          ((gm && !preview) ||
+            (viewer && (!source || !attachmentUnavailable(scene.tokens, source))))
+        ) {
+          const angle = (rotation * Math.PI) / 180,
+            length = harpoonLength(scene.grid.size, camera.zoom) * 0.96;
+          const tail = {
+            x: point.x - Math.cos(angle) * length,
+            y: point.y - Math.sin(angle) * length,
+          };
+          ctx.save();
+          ctx.globalAlpha = impact.private ? scene.gmOpacity : 1;
+          drawSiegeRope(
+            ctx,
+            origin,
+            tail,
+            scene.grid.size,
+            camera.zoom,
+            gm && !preview ? undefined : (p) => !!viewer && viewerSees(viewer, p, scene),
+          );
+          ctx.restore();
+        }
         ctx.save();
         ctx.translate(point.x, point.y);
         ctx.rotate((rotation * Math.PI) / 180);
@@ -98,10 +140,12 @@ export function VttSiegeImpacts({
       }
       if (Number.isFinite(next)) timer = setTimeout(draw, Math.max(16, next));
     };
+    siegeMaterials(draw);
     draw();
     document.addEventListener('visibilitychange', draw);
     return () => {
       if (timer) clearTimeout(timer);
+      forgetSiegeMaterials(draw);
       document.removeEventListener('visibilitychange', draw);
     };
   }, [
@@ -125,97 +169,6 @@ export function VttSiegeImpacts({
   );
 }
 function drawImpact(c: CanvasRenderingContext2D, impact: SiegeImpact, grid: number, zoom: number) {
-  const r = Math.max(grid * 0.08, 1 / Math.max(0.03, zoom));
-  if (impact.kind === 'cannon') {
-    const soil = impact.surface === 'ground';
-    const shadow = c.createRadialGradient(0, r * 0.2, r * 0.3, 0, r * 0.2, r * 1.75);
-    shadow.addColorStop(0, '#100e0bd9');
-    shadow.addColorStop(0.55, soil ? '#3d30219c' : '#171a2090');
-    shadow.addColorStop(1, '#1b151000');
-    c.fillStyle = shadow;
-    c.fillRect(-r * 1.8, -r * 1.8, r * 3.6, r * 3.6);
-    c.fillStyle = soil ? '#8b7252' : '#51504a';
-    c.beginPath();
-    c.ellipse(0, r * 0.28, r * 1.23, r * 0.8, 0, 0, Math.PI * 2);
-    c.fill();
-    c.save();
-    c.beginPath();
-    c.rect(-r * 1.1, -r * 1.2, r * 2.2, r * 1.65);
-    c.clip();
-    const metal = c.createRadialGradient(-r * 0.3, -r * 0.44, r * 0.08, 0, -r * 0.08, r);
-    metal.addColorStop(0, '#85858a');
-    metal.addColorStop(0.27, '#47484d');
-    metal.addColorStop(0.65, '#25282d');
-    metal.addColorStop(1, '#101317');
-    c.fillStyle = metal;
-    c.beginPath();
-    c.arc(0, 0, r, 0, Math.PI * 2);
-    c.fill();
-    c.restore();
-    c.strokeStyle = soil ? '#a88a61' : '#73706a';
-    c.lineWidth = r * 0.2;
-    c.beginPath();
-    c.ellipse(0, r * 0.33, r * 1.08, r * 0.55, 0, 0.1, Math.PI - 0.1);
-    c.stroke();
-    if (soil) {
-      for (let i = 0; i < 7; i++) {
-        const a = i * 2.39,
-          rad = r * (1.3 + (i % 3) * 0.16);
-        c.fillStyle = i % 2 ? '#9c805b' : '#493725';
-        c.beginPath();
-        c.ellipse(
-          Math.cos(a) * rad,
-          Math.sin(a) * rad * 0.75,
-          r * 0.13,
-          r * 0.08,
-          a,
-          0,
-          Math.PI * 2,
-        );
-        c.fill();
-      }
-    }
-  } else {
-    const length = Math.max(grid * 0.65, 9 / Math.max(0.03, zoom)),
-      head = Math.max(grid * 0.09, 2 / Math.max(0.03, zoom));
-    c.strokeStyle = '#0c0b0b99';
-    c.lineWidth = Math.max(grid * 0.07, 2 / Math.max(0.03, zoom));
-    c.beginPath();
-    c.moveTo(-length, grid * 0.025);
-    c.lineTo(-head * 0.5, grid * 0.025);
-    c.stroke();
-    c.strokeStyle = '#5c4028';
-    c.lineWidth = Math.max(grid * 0.035, 1 / Math.max(0.03, zoom));
-    c.beginPath();
-    c.moveTo(-length, 0);
-    c.lineTo(-head * 0.4, 0);
-    c.stroke();
-    c.strokeStyle = '#c2a679';
-    c.lineWidth = Math.max(grid * 0.012, 0.5 / Math.max(0.03, zoom));
-    c.beginPath();
-    c.moveTo(-length, -grid * 0.012);
-    c.lineTo(-head, -grid * 0.012);
-    c.stroke();
-    c.fillStyle = '#0b0b0bd9';
-    c.beginPath();
-    c.ellipse(0, 0, head * 0.55, head * 0.28, 0, 0, Math.PI * 2);
-    c.fill();
-    c.fillStyle = '#a8acac';
-    c.strokeStyle = '#454b4e';
-    c.lineWidth = grid * 0.009;
-    c.beginPath();
-    c.moveTo(0, 0);
-    c.lineTo(-head, head * 0.38);
-    c.lineTo(-head * 0.7, 0);
-    c.lineTo(-head, -head * 0.38);
-    c.closePath();
-    c.fill();
-    c.stroke();
-    c.strokeStyle = '#bda578';
-    c.lineWidth = grid * 0.013;
-    c.beginPath();
-    c.moveTo(-length, 0);
-    c.quadraticCurveTo(-length - head * 0.6, head * 0.8, -length - head * 1.1, head * 0.3);
-    c.stroke();
-  }
+  if (impact.kind === 'cannon') drawSiegeBall(c, impact.surface === 'ground', grid, zoom);
+  else drawSiegeHarpoon(c, grid, zoom);
 }

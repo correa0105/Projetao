@@ -957,8 +957,9 @@ export function CharacterSheet({
                     <h3>
                       Equipamento inicial
                       <SheetHelp label="Equipamento inicial">
-                        Os itens iniciais são registros da ficha; compras permanecem no inventário.
-                        Trocas de equipamento e efeitos situacionais são resolvidos na mesa.
+                        Este é o registro do conjunto escolhido na criação. Os itens são entregues
+                        uma única vez na Mochila, onde podem ser equipados, transferidos ou descartados.
+                        Excluir ou transferir um item não faz ele reaparecer.
                       </SheetHelp>
                     </h3>
                     <ul className="sheet-equipment-grid">
@@ -974,7 +975,7 @@ export function CharacterSheet({
                         />
                       ))}
                     </ul>
-                    <h3>Inventário adquirido</h3>
+                    <h3>Inventário atual</h3>
                     {!!details?.inventory.some(item=>item.id in vehicleDefinitions)&&<section aria-label="Veículos na ficha"><h3>Veículos para a mesa</h3><p className="muted small">O mestre pode puxar estes veículos em VTT → Fichas → Veículos.</p>{details.inventory.filter(item=>item.id in vehicleDefinitions).map(item=><div key={item.id} style={{display:'flex',alignItems:'center',gap:12}}><VehiclePreview id={item.id as VehicleId}/><span>{item.name} · {item.quantity??1} exemplar(es)</span></div>)}</section>}
                     <ul className="sheet-equipment-grid">
                       {details?.inventory.map((item) => (

@@ -20,6 +20,7 @@ try {
           '--test-concurrency=1',
           'tests/inventory.test.ts',
           'tests/inventory-discard.test.ts',
+          'tests/character-starting-items.test.ts',
         ]
       : ['--import', 'tsx', 'scripts/smoke-inventory.ts'];
     const child = spawn(process.execPath, args, {
