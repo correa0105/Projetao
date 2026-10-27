@@ -290,7 +290,7 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
       const state=fs.existsSync(${JSON.stringify(statePath)})?JSON.parse(fs.readFileSync(${JSON.stringify(statePath)})):{renders:[],reviews:[]};
       const top=dir.includes('character-token-art'), review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
-      if(review){state.reviews.push({top,prompt});fs.writeFileSync(result,JSON.stringify({approved:!state.rejectToken||!top,clothing_correct:!state.rejectClothing,facial_hair_correct:state.omitFacialHair?undefined:!state.rejectFacialHair,physical_traits_correct:state.omitPhysical?undefined:!state.rejectPhysical,selected_head_correct:!state.rejectHead,appendages_correct:!state.rejectAnatomy,issues:state.rejectToken&&top?['Câmera frontal incorreta.']:[]}));}
+      if(review){state.reviews.push({top,prompt});fs.writeFileSync(result,JSON.stringify({approved:!state.rejectToken||!top,top_down_correct:state.omitCamera?undefined:!state.rejectCamera,clothing_correct:!state.rejectClothing,facial_hair_correct:state.omitFacialHair?undefined:!state.rejectFacialHair,physical_traits_correct:state.omitPhysical?undefined:!state.rejectPhysical,selected_head_correct:!state.rejectHead,appendages_correct:!state.rejectAnatomy,issues:state.rejectToken&&top?['Câmera frontal incorreta.']:[]}));}
       else{state.renders.push({top,prompt,hashes:images.map(p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex'))});const output=path.join(dir,'output.png');fs.copyFileSync(top?${JSON.stringify(join(temp, 'token.png'))}:${JSON.stringify(join(temp, 'portrait.png'))},output);fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));}
       fs.writeFileSync(${JSON.stringify(statePath)},JSON.stringify(state));
     });`,
@@ -323,6 +323,7 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     const physical = JSON.parse(await readFile(statePath, 'utf8'));
     for (const stage of [...physical.renders, ...physical.reviews]) { assert.match(stage.prompt, /PERSONALIZAÇÃO FÍSICA/); assert.match(stage.prompt, /Personagem mulher/); }
     assert.match(physical.reviews[1].prompt, /physical_traits_correct=false/);
+    for(const flags of [{rejectCamera:true},{omitCamera:true}]){await writeFile(statePath,JSON.stringify({renders:[],reviews:[],...flags}));await assert.rejects(generateCharacterToken({...job,id:randomUUID()},portrait),/revisão|conferir/);}
     for(const stage of [...physical.renders,...physical.reviews])for(const detail of ['POSTURA CURVADA','BENGALA:','#123abc','SEM FAIXA DE TECIDO','projeção curta e encurtada'])assert(stage.prompt.includes(detail),detail);
     for (const flags of [{ rejectPhysical: true }, { omitPhysical: true }]) {
       await writeFile(statePath, JSON.stringify({ renders: [], reviews: [], ...flags }));

@@ -67,7 +67,9 @@ test('cada criação recebe 6.000 PO: contas antigas, segundo personagem, beta, 
   const regular = await createUser(),
     other = await createUser();
   const firstJob = await queue(regular);
-  const first = await completeArt(firstJob, { portrait });
+  assert.equal(await completeArt(firstJob, { portrait }),null);
+  assert.equal((await pool.query('SELECT count(*)::int n FROM characters WHERE user_id=$1',[regular])).rows[0].n,0,'Checkpoint privado não cria ficha nem credita ouro');
+  const first = await completeArt(firstJob, { portrait,token });
   assert.equal(await balance(first), 600000, 'Já vem com o valor na criação');
   await pool.query('UPDATE characters SET gold_cp=gold_cp-20000 WHERE id=$1', [first]);
   assert.equal(await completeArt(firstJob, { portrait, token }), first);

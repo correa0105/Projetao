@@ -147,11 +147,11 @@ test('Warforged sem referência: fila, escolhas, privacidade, retomada e entrega
       404,
     );
     await pool.query("UPDATE character_art_jobs SET status='running' WHERE id=$1", [id]);
-    const cid = await completeArt(id, { portrait: image });
+    assert.equal(await completeArt(id, { portrait: image }),null);
     await pool.query("UPDATE character_art_jobs SET status='failed' WHERE id=$1", [id]);
     assert.equal((await req(route + '/retry', owner.cookie, {})).status, 202);
     await pool.query("UPDATE character_art_jobs SET status='running' WHERE id=$1", [id]);
-    assert.equal(await completeArt(id, { portrait: image, token: await testTokenImage() }), cid);
+    const cid=await completeArt(id, { portrait: image, token: await testTokenImage() });
     assert.equal(
       (await pool.query('SELECT count(*)::int n FROM characters WHERE user_id=$1', [owner.id]))
         .rows[0].n,

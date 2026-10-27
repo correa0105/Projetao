@@ -365,6 +365,8 @@ export async function decideCharacterArt(
 }
 
 // Only the trusted worker supplies image bytes. The owner may choose an already validated pair.
+export function completeArt(jobId: string, output: {portrait:Buffer;token:Buffer}):Promise<string>;
+export function completeArt(jobId: string, output: {portrait:Buffer;token?:Buffer}):Promise<string|null>;
 export async function completeArt(jobId: string, output: { portrait: Buffer; token?: Buffer }) {
   const [image, tokenImage] = await Promise.all([
     normalizeArtImage(output.portrait, true),
@@ -385,6 +387,11 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
     if (job.status !== 'running' && !(job.status === 'failed' && !tokenImage))
       throw new AppError(409, 'Pedido não está em processamento.');
     let characterId = job.character_id;
+    // A portrait checkpoint is private. Publish/create only after both images pass review.
+    if(!tokenImage){
+      await client.query('UPDATE character_art_jobs SET approved_portrait=$2 WHERE id=$1',[jobId,image]);
+      return characterId as string|null;
+    }
     if (job.replacement_revision != null) {
       const character = (
         await client.query(
@@ -393,17 +400,10 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
         )
       ).rows[0];
       if (!character) throw new AppError(404, 'Personagem não encontrado.');
-      if (!tokenImage) {
-        await client.query('UPDATE character_art_jobs SET approved_portrait=$2 WHERE id=$1', [
-          jobId,
-          image,
-        ]);
-      } else {
-        await client.query(
+      await client.query(
           "UPDATE character_art_jobs SET status='completed',art_decision='pending',proposed_portrait=$2,proposed_token=$3,reference=NULL,approved_portrait=NULL,error=NULL,completed_at=now() WHERE id=$1",
           [jobId, image, tokenImage],
-        );
-      }
+      );
       return characterId as string;
     }
     if (!characterId) {
@@ -461,17 +461,10 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
       tokenImage,
       job.reference_mode === 'construction' && job.creation ? image : null,
     );
-    if (tokenImage) {
-      await client.query(
+    await client.query(
         "UPDATE character_art_jobs SET status='completed',character_id=$2,reference=NULL,approved_portrait=NULL,error=NULL,completed_at=now() WHERE id=$1",
         [jobId, characterId],
-      );
-    } else {
-      await client.query(
-        'UPDATE character_art_jobs SET character_id=$2,approved_portrait=$3 WHERE id=$1',
-        [jobId, characterId, image],
-      );
-    }
+    );
     return characterId as string;
   });
 }
