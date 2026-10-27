@@ -1,0 +1,84 @@
+.arcana-card-face.arcana-card-face--engraved[data-rarity] {
+  --card-paper: #111614; --card-engraving-paper: #131915; --card-frame-ink: #c3a263;
+  --card-engraving-ink: #d2b77c; --sans:'DM Sans',sans-serif;
+  position: relative; display: block; isolation: isolate; width: 100%; aspect-ratio: .7;
+  overflow: hidden; border: 0; border-radius: 8px; mask: none;
+  background: radial-gradient(ellipse at 35% 20%,#242a23,#121715 72%);
+  color: var(--card-frame-ink); box-shadow: 0 2px 0 #8d7448, 0 7px 16px #0008;
+}
+.arcana-card-face--engraved[data-level='2'] { --card-engraving-ink: #e5ca8b; --card-frame-ink: #e8cd91; }
+.arcana-card-face--engraved[data-finish='chrome'] { --card-engraving-ink: #c6d9d9; --card-frame-ink: #d5e0dc; --card-paper:#12191a; }
+.card-engraving { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--card-engraving-ink); pointer-events: none; }
+.arcana-card-face--engraved .arcana-card-title { position: absolute; inset: 83% 7% auto; height: 10%; display: grid; place-items: center; padding: 0; background: none; z-index: 2; color: var(--card-frame-ink); transform:none; }
+.arcana-card-face.arcana-card-face--engraved::before,.arcana-card-face.arcana-card-face--engraved::after { content:none; }
+:root .arcana-card-face.arcana-card-face--engraved[data-rarity] .arcana-card-title .arcana-card-name { position:static; inset:auto; width:100%; display:block; color:var(--card-frame-ink); font-family: 'Cinzel',Georgia,serif; font-weight: 400; line-height: 1.2; text-align: center; text-shadow: none; }
+:root .arcana-card-face.arcana-card-face--engraved[data-rarity] .arcana-card-family { display: block; position: absolute; inset: auto 10% 4.8%; color: var(--card-frame-ink); font: 4.3cqw/1 var(--sans); letter-spacing: .22em; text-align: center; text-transform: uppercase; opacity: .7; }
+.card-viewer-back, .card-viewer-core { mask: none; border-radius: 8px; }
+.card-viewer-model .card-viewer-core { background: #756344; }
+:root dialog.card-inspection.card-inspection--reveal { --sans:'DM Sans',sans-serif; --serif:'Cinzel',Georgia,serif; overflow: visible; padding: 20px; background: transparent; border:0; box-shadow:none; }
+:root dialog.card-inspection--reveal::backdrop { background: radial-gradient(ellipse at center,#171c1ccf,#050709ed 75%); backdrop-filter: blur(9px); animation: card-reveal-backdrop .35s ease-out both; }
+.card-inspection--reveal .card-inspection-content { isolation: isolate; width: min(70vw,calc((100dvh - 238px) * .7),400px); gap: 10px; }
+.card-reveal-caption { text-align: center; color: #d8c08d; }
+.card-reveal-caption > span { font: 8px var(--sans); letter-spacing: .24em; opacity: .75; }
+.card-reveal-caption h2 { margin: 8px 0 5px; font: 24px/1.2 var(--serif); font-weight: 400; }
+.card-reveal-entry { width: 100%; animation: card-reveal-arrival 1s cubic-bezier(.16,.75,.2,1) both; }
+.card-reveal-aura { position: absolute; z-index: -1; inset: 10% -50% 13%; pointer-events: none; }
+.card-reveal-aura::before { content: ''; position: absolute; inset: 8% 5%; background: radial-gradient(ellipse,#d5aa4b22,transparent 65%); animation: card-reveal-glow 1.5s ease-out both; }
+.card-reveal-aura > i { position: absolute; inset: 12% 0; border: 1px solid #b5944b35; border-radius: 50%; transform: rotate(-20deg); animation: card-reveal-ring 1.6s ease-out both; }
+.card-reveal-aura > i:nth-child(2) { inset: 18% -7%; border-style: dashed; opacity: .4; transform: rotate(22deg); }
+.card-reveal-aura > span { position: absolute; top: 50%; left: 50%; width: 3px; height: 3px; border-radius: 50%; background: #ead29b; box-shadow: 0 0 7px #d4af65; animation: card-reveal-spark 1.25s var(--spark-delay) ease-out both; }
+.card-inspection--reveal .card-inspection-close, .card-inspection-sound { border: 1px solid #b29a6260; background: #171d1d; color: #ead6ac; }
+.card-inspection--reveal .card-inspection-close { right: -45px; top: 0; }
+.card-inspection-sound { position: absolute; top: 42px; right: -45px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; padding: 0; }
+.card-inspection--reveal .card-viewer-controls button { border-color: #b29a6250; background:#141b1b; color:#d9c594; }
+.card-inspection--reveal .card-viewer-help { color:#b5ac97; }
+@keyframes card-reveal-arrival { from { opacity:0; transform:perspective(1200px) translateY(45px) scale(.66) rotateY(-165deg) rotateZ(-8deg); filter:brightness(.45); } 65% { opacity:1; filter:brightness(1.2); } to { opacity:1; transform:perspective(1200px) translateY(0) scale(1) rotateY(0) rotateZ(0); filter:brightness(1); } }
+@keyframes card-reveal-backdrop { from { opacity:0; } to { opacity:1; } }
+@keyframes card-reveal-glow { from { opacity:0; transform:scale(.45); } 45% { opacity:1; } to { opacity:.55; transform:scale(1.15); } }
+@keyframes card-reveal-ring { from { opacity:0; scale:.6; } 40% { opacity:1; } to { opacity:.35; scale:1; } }
+@keyframes card-reveal-spark { from { opacity:0; transform:rotate(var(--spark-angle)) translateX(30px); } 25% { opacity:.9; } to { opacity:0; transform:rotate(var(--spark-angle)) translateX(330px); } }
+@media(max-width:650px) { .card-reveal-caption h2 { font-size:21px; } .card-inspection--reveal .card-inspection-content { width:min(68vw,calc((100dvh - 238px) * .7)); } .card-inspection--reveal .card-inspection-close,.card-inspection-sound { right:-37px; } }
+@media(prefers-reduced-motion:reduce) { .card-reveal-entry,.card-reveal-aura::before,.card-reveal-aura > i,:root dialog.card-inspection--reveal::backdrop { animation:none; } .card-reveal-aura > span { display:none; } }
+
+:root dialog.card-inspection--with-details { max-width:calc(100vw - 24px); max-height:calc(100dvh - 24px); overflow:auto; padding:28px; border:1px solid #a78c5145; border-radius:12px; background:linear-gradient(135deg,#10191bf2,#121918ed); box-shadow:0 25px 100px #0008; }
+.card-inspection--with-details .card-inspection-content { width:min(700px,calc(100vw - 82px)); grid-template-columns:minmax(230px,300px) minmax(220px,1fr); align-items:center; gap:22px 35px; }
+.card-inspection--with-details .card-reveal-caption { grid-column:1/-1; }
+.card-inspection--with-details .card-reveal-entry { grid-column:1; }
+.card-inspection--with-details .card-inspection-close { right:-16px; top:-16px; }
+.card-inspection--with-details .card-inspection-sound { right:-16px; top:26px; }
+.card-reveal-details { align-self:center; min-width:0; }
+:root dialog.card-inspection--with-details .card-reveal-details .cards-detail { display:flex; flex-direction:column; width:auto; max-width:none; gap:17px; padding:0; margin:0; border:0; background:none; box-shadow:none; }
+.card-reveal-details .cards-detail-preview { display:contents; transform:none; padding:0; }
+.card-reveal-details .cards-inspect-art { display:none; }
+.card-reveal-details .cards-detail-meta { order:2; margin:0; text-align:left; }
+.card-reveal-details .cards-detail-copy { display:flex; flex-direction:column; gap:17px; color:#e0d3ba; text-align:left; }
+.card-reveal-details .cards-detail-copy > h2 { display:none; }
+.card-reveal-details .cards-detail-copy > p { margin:0; font:13px/1.7 'DM Sans',sans-serif; color:#c4c0b3; }
+.card-reveal-details .cards-gold { margin:0; display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
+.card-reveal-details .cards-gold strong { font:26px 'Cinzel',serif; color:#d9ba78; }
+.card-reveal-details .cards-gold span { display:flex; gap:5px; align-items:center; font:10px 'DM Sans',sans-serif; color:#a99c7e; }
+.card-reveal-details .button { width:100%; min-height:39px; font-size:12px; border-radius:4px; }
+.card-reveal-details .button.primary { background:#b38b45; color:#151b18; border-color:#d1af69; }
+.card-reveal-details .cards-detail-actions { display:grid; gap:9px; }
+.card-reveal-details .cards-level { justify-content:flex-start; color:#c1a979; font-size:11px; }
+.card-reveal-details .cards-level-preview { justify-content:flex-start; margin:7px 0 0; }
+.card-reveal-details .cards-rarity { font-size:10px; }
+.cards-equip-slot-choice { display:flex; gap:8px; padding:0; margin:0; border:0; }
+.cards-equip-slot-choice legend { padding:0; margin-bottom:8px; font-size:10px; color:#b6a88a; }
+.cards-equip-slot-choice button { width:38px; height:34px; border:1px solid #947a454f; border-radius:4px; color:#bfb294; background:#111818; }
+.cards-equip-slot-choice button[aria-pressed='true'] { border-color:#d1b471; color:#e3c995; background:#b4965020; }
+@media(max-width:650px) {
+ :root dialog.card-inspection--with-details { padding:18px; }
+ .card-inspection--with-details .card-inspection-content { width:min(330px,calc(100vw - 66px)); grid-template-columns:minmax(0,1fr); gap:13px; }
+ .card-inspection--with-details .card-reveal-entry { width:min(48vw,190px); margin:auto; }
+ .card-inspection--with-details .card-reveal-caption h2 { font-size:19px; margin:6px 0 0; }
+ .card-inspection--with-details .card-inspection-close { top:-10px; right:-11px; }
+ .card-inspection--with-details .card-inspection-sound { top:32px; right:-11px; }
+ .card-reveal-details .cards-detail-copy { gap:10px; }
+ .card-reveal-details .cards-detail-copy > p { font-size:11px; line-height:1.55; }
+ .card-reveal-details .cards-gold { flex-direction:row; align-items:center; gap:12px; }
+ .card-reveal-details .cards-gold strong { font-size:20px; }
+ .card-reveal-details .cards-detail-meta { display:flex; align-items:center; justify-content:space-between; }
+ .card-reveal-details .cards-level-preview { margin:0; }
+ .card-reveal-details .cards-detail { gap:10px; }
+}

@@ -1,6 +1,6 @@
 # Salão das cartas, conquistas e corvo — 05/10/2026
 
-Direção atual: janela no terço esquerdo, anfitrião menor ao fundo à direita em sombra, luz fria lateral, cartas em leque no primeiro plano. Conversa sob demanda, com encerramento e Escape; não há painel de diálogo permanente. Três cartas equipadas, preços e obtenção preservados. Aprimoramento e drops seguem pendentes conforme o usuário.
+Direção atual: Anfitrião mascarado, de frente para o jogador e um pouco afastado, sentado em poltrona atrás da mesa. Oito cartas em arco no primeiro plano, sobre o feltro e acompanhando sua perspectiva. Detalhes aparecem na revelação com animação e som; conversa sob demanda com encerramento e Escape. Três cartas equipadas, preços e obtenção preservados. Aprimoramento e drops seguem pendentes conforme o usuário. Implementação e artes finais em [CARDS-SALON-20261027.md](CARDS-SALON-20261027.md).
 
 Correção do usuário: a página original **Conquistas** foi restaurada, incluindo
 estante, prateleiras sem limite, posições livres, personalização e catálogo.
