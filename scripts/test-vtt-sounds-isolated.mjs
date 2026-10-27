@@ -13,11 +13,18 @@ try {
   process.exitCode = await new Promise((resolve, reject) => {
     const child = spawn(
       process.execPath,
-      process.argv.includes('--immersive')
-        ? ['--import', 'tsx', 'scripts/smoke-vtt-immersive-only.ts']
-        : process.argv.includes('--browser')
-        ? ['--import', 'tsx', 'scripts/smoke-vtt-sounds.ts']
-        : ['--import', 'tsx', '--test', 'tests/vtt-sounds-api.test.ts'],
+      process.argv.includes('--tremor')
+        ? [
+            '--import',
+            'tsx',
+            'scripts/smoke-vtt-screen-overflow.ts',
+            ...(process.argv.includes('--baseline') ? ['--baseline'] : []),
+          ]
+        : process.argv.includes('--immersive')
+          ? ['--import', 'tsx', 'scripts/smoke-vtt-immersive-only.ts']
+          : process.argv.includes('--browser')
+            ? ['--import', 'tsx', 'scripts/smoke-vtt-sounds.ts']
+            : ['--import', 'tsx', '--test', 'tests/vtt-sounds-api.test.ts'],
       {
         env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
         stdio: 'inherit',

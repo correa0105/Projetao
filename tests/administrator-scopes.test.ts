@@ -6,7 +6,7 @@ import { pool } from '../server/db.js';
 import { migrate } from '../server/migrate.js';
 import { seed } from '../server/seed.js';
 import { isAdministrator, administrationFor } from '../server/administrators.js';
-import { adminScopes } from '../shared/admin-scopes.js';
+const adminScopes = ['lore','rules','home','world'] as const;
 
 test('administração limitada: quatro áreas independentes, uploads, privacidade e revogação', async () => {
   const database = new URL(process.env.DATABASE_URL!);

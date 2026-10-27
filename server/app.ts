@@ -25,7 +25,8 @@ import { existsSync } from 'node:fs';
 import sharp from 'sharp';
 import { auth, origins } from './auth.js';
 import { pool, transaction } from './db.js';
-import { administratorPredicate, isAdministrator, requireAdministrator, administrativeScopes, administrationFor } from './administrators.js';
+import { isAdministrator, administrativeScopes, administrationFor } from './administrators.js';
+const boardAdministration = administrationFor('board'), eventAdministration = administrationFor('events');
 import { AppError, purchase } from './services.js';
 import { completeMission, completionSchema, publishMissionHook } from './missions.js';
 import { houseRouter } from './house.js';
@@ -308,7 +309,7 @@ export function createApp() {
             ? 'staff'
             : 'player',
       canEditKingdom: scopes.includes('world'),
-      maintenance_areas: (await isAdministrator(res.locals.user.id)) ? [] : maintenanceAreas(),
+      maintenance_areas: maintenanceAreas().filter(area => !scopes.includes(area)),
     });
   });
   app.get('/api/characters', async (_req, res) => {
@@ -427,7 +428,7 @@ export function createApp() {
       throw new AppError(400, 'O teste deve pertencer à patente de origem da promoção.');
     if (data.rank_test_level !== null && data.kind !== 'mission')
       throw new AppError(400, 'Teste de patente deve ser uma missão.');
-    if (data.kind === 'event' && !(await isAdministrator(res.locals.user.id)))
+    if (data.kind === 'event' && !(await eventAdministration.has(res.locals.user.id)))
       throw new AppError(403, 'Somente administradores podem criar eventos.');
     if (data.kind === 'mission' && !data.starts_at)
       throw new AppError(400, 'Informe a data e a hora de início da missão.');
@@ -485,10 +486,12 @@ export function createApp() {
   app.delete('/api/board/:id', async (req, res) => {
     const id = uuid.parse(req.params.id);
     await transaction(async (client) => {
-      await requireAdministrator(res.locals.user.id, client);
+      if (!(await boardAdministration.has(res.locals.user.id, client)) && !(await eventAdministration.has(res.locals.user.id, client)))
+        throw new AppError(403, 'Esta conta não pode administrar o mural.');
       const { rows: [post] } = await client.query('SELECT kind FROM board_posts WHERE id=$1 FOR UPDATE', [id]);
       if (!post || !['mission', 'event'].includes(post.kind))
         throw new AppError(404, 'Missão ou evento não encontrado.');
+      await (post.kind === 'event' ? eventAdministration : boardAdministration).require(res.locals.user.id, client);
       await client.query('UPDATE board_posts SET deleted_at=now(),deleted_by=$2 WHERE id=$1 AND deleted_at IS NULL', [id, res.locals.user.id]);
     });
     res.json({ ok: true });
@@ -505,7 +508,7 @@ export function createApp() {
       .parse(req.body);
     const result = await pool.query(
       `UPDATE board_posts SET paper_x=$3,paper_y=$4,paper_style=$5
-       WHERE id=$1 AND deleted_at IS NULL AND ((kind='event' AND ${administratorPredicate(2)}) OR (kind<>'event' AND author_id=$2)) RETURNING id,paper_x,paper_y,paper_style`,
+       WHERE id=$1 AND deleted_at IS NULL AND ((kind='event' AND ${eventAdministration.predicate(2)}) OR (kind<>'event' AND (author_id=$2 OR ${boardAdministration.predicate(2)}))) RETURNING id,paper_x,paper_y,paper_style`,
       [id, res.locals.user.id, data.paper_x, data.paper_y, data.paper_style],
     );
     if (!result.rowCount) throw new AppError(403, 'Somente o autor pode alterar este papel.');
@@ -588,9 +591,9 @@ export function createApp() {
       rows: [post],
     } = await pool.query(
       `UPDATE board_posts SET status=$1,event_revision=event_revision+CASE WHEN kind='event' THEN 1 ELSE 0 END,closed_at=CASE WHEN $1 IN ('completed','closed') THEN now() ELSE NULL END
-      WHERE id=$2 AND deleted_at IS NULL AND author_id=$3 AND status=ANY($4::text[]) AND kind <> 'hook'
+      WHERE id=$2 AND deleted_at IS NULL AND (author_id=$3 OR (kind='mission' AND ${boardAdministration.predicate(3)}) OR (kind='event' AND ${eventAdministration.predicate(3)})) AND status=ANY($4::text[]) AND kind <> 'hook'
       AND NOT (kind='mission' AND $1='completed')
-      AND (kind <> 'event' OR ${administratorPredicate(3)}) RETURNING *`,
+      AND (kind <> 'event' OR ${eventAdministration.predicate(3)}) RETURNING *`,
       [status, id, res.locals.user.id, allowed],
     );
     if (!post)

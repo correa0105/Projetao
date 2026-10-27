@@ -2,7 +2,12 @@ import express from 'express';
 import sharp from 'sharp';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
-import { requireAdministrator, isAdministrator, administratorPredicate } from './administrators.js';
+import { administrationFor } from './administrators.js';
+const {
+  require: requireScope,
+  has: hasScope,
+  predicate: scopePredicate,
+} = administrationFor('events');
 import { AppError } from './services.js';
 import {
   defaultEventScene,
@@ -29,13 +34,12 @@ async function checkImages(paths: string[]) {
 export function eventsRouter() {
   const router = express.Router();
   router.use(['/events', '/events-scene', '/event-images'], async (req, res, next) => {
-    if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method))
-      await requireAdministrator(res.locals.user.id);
+    if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method)) await requireScope(res.locals.user.id);
     next();
   });
   router.get('/events', async (_req, res) =>
     res.json({
-      can_edit: await isAdministrator(res.locals.user.id),
+      can_edit: await hasScope(res.locals.user.id),
       items: (
         await pool.query(
           'SELECT b.id,b.title,b.description,b.starts_at,b.location,b.status,b.created_at,b.event_revision,b.event_presentation AS presentation,u.name AS author_name FROM board_posts b LEFT JOIN "user" u ON u.id=b.author_id WHERE b.kind=\'event\' AND b.deleted_at IS NULL ORDER BY b.starts_at NULLS LAST,b.created_at DESC',
@@ -49,7 +53,7 @@ export function eventsRouter() {
     ]);
     res.json({
       ...(await pool.query('SELECT document,revision FROM event_scene WHERE id=1')).rows[0],
-      can_edit: await isAdministrator(res.locals.user.id),
+      can_edit: await hasScope(res.locals.user.id),
     });
   });
   router.put('/events-scene', async (req, res) => {
@@ -59,11 +63,11 @@ export function eventsRouter() {
       .parse(req.body);
     await checkImages([input.document.background, ...input.document.layers.map((l) => l.path)]);
     const r = await pool.query(
-      `UPDATE event_scene SET document=$1,revision=revision+1,updated_by=$2,updated_at=now() WHERE id=1 AND revision=$3 AND ${administratorPredicate(2)} RETURNING document,revision`,
+      `UPDATE event_scene SET document=$1,revision=revision+1,updated_by=$2,updated_at=now() WHERE id=1 AND revision=$3 AND ${scopePredicate(2)} RETURNING document,revision`,
       [JSON.stringify(input.document), res.locals.user.id, input.revision],
     );
     if (!r.rowCount) {
-      await requireAdministrator(res.locals.user.id);
+      await requireScope(res.locals.user.id);
       throw new AppError(409, 'O cenário mudou. Reabra o editor para carregar a versão atual.');
     }
     res.json({ ...r.rows[0], can_edit: true });
@@ -72,7 +76,7 @@ export function eventsRouter() {
     const d = eventInputSchema.parse(req.body);
     await checkImages([d.presentation.image]);
     const r = await pool.query(
-      `INSERT INTO board_posts(author_id,kind,title,description,starts_at,location,difficulty,reward_cp,status,event_presentation) SELECT $1,'event',$2,$3,$4,$5,'Tranquila',0,$6,$7 WHERE ${administratorPredicate()} RETURNING id`,
+      `INSERT INTO board_posts(author_id,kind,title,description,starts_at,location,difficulty,reward_cp,status,event_presentation) SELECT $1,'event',$2,$3,$4,$5,'Tranquila',0,$6,$7 WHERE ${scopePredicate()} RETURNING id`,
       [
         res.locals.user.id,
         d.title,
@@ -95,7 +99,7 @@ export function eventsRouter() {
       d = eventInputSchema.parse(raw);
     await checkImages([d.presentation.image]);
     const r = await pool.query(
-      `UPDATE board_posts SET title=$1,description=$2,starts_at=$3,location=$4,status=$5,event_presentation=$6,event_revision=event_revision+1,closed_at=CASE WHEN $5 IN ('completed','closed') THEN now() ELSE NULL END WHERE id=$7 AND kind='event' AND deleted_at IS NULL AND event_revision=$8 AND ${administratorPredicate(9)} RETURNING id,event_revision`,
+      `UPDATE board_posts SET title=$1,description=$2,starts_at=$3,location=$4,status=$5,event_presentation=$6,event_revision=event_revision+1,closed_at=CASE WHEN $5 IN ('completed','closed') THEN now() ELSE NULL END WHERE id=$7 AND kind='event' AND deleted_at IS NULL AND event_revision=$8 AND ${scopePredicate(9)} RETURNING id,event_revision`,
       [
         d.title,
         d.description,
@@ -109,7 +113,7 @@ export function eventsRouter() {
       ],
     );
     if (!r.rowCount) {
-      await requireAdministrator(res.locals.user.id);
+      await requireScope(res.locals.user.id);
       throw new AppError(409, 'Este evento mudou ou foi excluído. Reabra a versão atual.');
     }
     res.json(r.rows[0]);
@@ -118,7 +122,7 @@ export function eventsRouter() {
     const id = uuid.parse(req.params.id),
       revision = z.number().int().min(1).parse(req.body?.revision);
     const r = await pool.query(
-      `UPDATE board_posts SET deleted_at=now(),deleted_by=$3 WHERE id=$1 AND kind='event' AND deleted_at IS NULL AND event_revision=$2 AND ${administratorPredicate(3)} RETURNING id`,
+      `UPDATE board_posts SET deleted_at=now(),deleted_by=$3 WHERE id=$1 AND kind='event' AND deleted_at IS NULL AND event_revision=$2 AND ${scopePredicate(3)} RETURNING id`,
       [id, revision, res.locals.user.id],
     );
     if (!r.rowCount)
@@ -151,7 +155,7 @@ export function eventsRouter() {
   router.get('/event-images/:id', async (req, res) => {
     const id = uuid.parse(req.params.id);
     const r = await pool.query(
-      `SELECT bytes FROM event_images i WHERE id=$1 AND (${administratorPredicate(2)} OR EXISTS(SELECT 1 FROM event_scene WHERE document->>'background'='/api/event-images/'||i.id::text OR EXISTS(SELECT 1 FROM jsonb_array_elements(document->'layers') l WHERE l->>'path'='/api/event-images/'||i.id::text)) OR EXISTS(SELECT 1 FROM guild_calendar WHERE document->>'background'='/api/event-images/'||i.id::text) OR EXISTS(SELECT 1 FROM board_posts b WHERE kind='event' AND event_presentation->>'image'='/api/event-images/'||i.id::text))`,
+      `SELECT bytes FROM event_images i WHERE id=$1 AND (${scopePredicate(2)} OR EXISTS(SELECT 1 FROM event_scene WHERE document->>'background'='/api/event-images/'||i.id::text OR EXISTS(SELECT 1 FROM jsonb_array_elements(document->'layers') l WHERE l->>'path'='/api/event-images/'||i.id::text)) OR EXISTS(SELECT 1 FROM guild_calendar WHERE document->>'background'='/api/event-images/'||i.id::text) OR EXISTS(SELECT 1 FROM board_posts b WHERE kind='event' AND event_presentation->>'image'='/api/event-images/'||i.id::text))`,
       [id, res.locals.user.id],
     );
     if (!r.rowCount) throw new AppError(404, 'Imagem não encontrada.');

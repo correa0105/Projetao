@@ -2,7 +2,8 @@ import { Router } from 'express';
 import { randomInt, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
-import { isAdministrator, requireAdministrator } from './administrators.js';
+import { administrationFor } from './administrators.js';
+const { has: hasScope, require: requireScope } = administrationFor('tower');
 import { AppError } from './services.js';
 import { towerBaseReward, towerTreasure, towerFloorCount } from '../shared/tower.js';
 import { monsterArt } from '../shared/vtt-monster-art.js';
@@ -82,7 +83,7 @@ export function towerRouter() {
   const router = Router();
   router.get('/tower', async (_req, res) => {
     const user = res.locals.user.id,
-      canCreate = await isAdministrator(user);
+      canCreate = await hasScope(user);
     const runs = (
       await pool.query(
         `SELECT id,name,status,cleared_floor,bosses,revision,summary,created_at,
@@ -163,7 +164,7 @@ export function towerRouter() {
     const number = floorNumber.parse(req.params.number),
       input = floorInput.parse(req.body);
     await transaction(async (c) => {
-      await requireAdministrator(res.locals.user.id, c);
+      await requireScope(res.locals.user.id, c);
       const changed = await c.query(
         `UPDATE tower_floors SET name=$2,description=$3,challenge=$4,hazard=$5,traps=$6,creatures=$7,boss=$8,boss_name=$9,base_gold_cp=$11,base_crystals=$12,revision=revision+1,updated_at=now() WHERE number=$1 AND revision=$10 RETURNING number`,
         [
@@ -189,7 +190,7 @@ export function towerRouter() {
     const tier = z.coerce.number().int().min(0).max(towerFloorCount).parse(req.params.tier),
       input = rewardInput.parse(req.body);
     await transaction(async (c) => {
-      await requireAdministrator(res.locals.user.id, c);
+      await requireScope(res.locals.user.id, c);
       const ids = [...new Set(input.rows.flatMap((r) => (r.item_id ? [r.item_id] : [])))];
       if (ids.length) {
         const found = await c.query(
@@ -214,7 +215,7 @@ export function towerRouter() {
       .parse(req.body);
     const user = res.locals.user.id;
     const saved = await transaction(async (c) => {
-      await requireAdministrator(user, c);
+      await requireScope(user, c);
       await c.query('SELECT pg_advisory_xact_lock(hashtextextended($1,742))', [user]);
       if (
         Number(
@@ -308,7 +309,7 @@ export function towerRouter() {
       input = operation.parse(req.body),
       user = res.locals.user.id;
     const result = await transaction(async (c) => {
-      await requireAdministrator(user, c);
+      await requireScope(user, c);
       const run = (await c.query('SELECT * FROM tower_expeditions WHERE id=$1 FOR UPDATE', [id]))
         .rows[0];
       if (!run || run.master_id !== user) throw new AppError(404, 'Expedição não encontrada.');

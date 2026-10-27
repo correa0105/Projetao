@@ -1,3 +1,4 @@
+import {canManageVtt} from './vtt-permissions.js';
 import { Router } from 'express';
 import { randomUUID } from 'node:crypto';
 import { z } from 'zod';
@@ -50,7 +51,7 @@ export function vttHotbarRouter(getRoom: Access) {
   const router = Router();
   router.get('/vtt/rooms/:id/hotbar/monster/:token/:action', async (req, res) => {
     const r = await getRoom(pool, z.string().uuid().parse(req.params.id), res.locals.user.id);
-    if (r.owner_id !== res.locals.user.id)
+    if (!canManageVtt(r, res.locals.user.id))
       throw new AppError(403, 'Somente o mestre desta mesa usa ataques de monstros.');
     const tokenId = z.string().uuid().parse(req.params.token);
     const t = r.document.scenes
@@ -119,7 +120,7 @@ export function vttHotbarRouter(getRoom: Access) {
         .flatMap((p) => p.slots)
         .filter((a) => a !== null)
         .filter((a) => !previousKeys.has(hotbarActionKey(a)));
-      const gm = room.owner_id === user;
+      const gm = canManageVtt(room, user);
       const characterActions = actions.filter((a) => 'characterId' in a);
       for (const a of actions.filter((a) => a.kind === 'sound')) {
         if (!gm) throw new AppError(403, 'Sons compartilhados são exclusivos do mestre.');

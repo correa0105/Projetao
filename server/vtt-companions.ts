@@ -1,3 +1,4 @@
+import {canManageVtt} from './vtt-permissions.js';
 import { reuseVttAsset } from './vtt-assets.js';
 import express from 'express';
 import { z } from 'zod';
@@ -79,7 +80,7 @@ async function importCompanion(
   position?: { x: number; y: number },
 ) {
   const scene = room.document.scenes.find((s) => s.id === room.document.activeScene)!;
-  const isGm = room.owner_id === user;
+  const isGm = canManageVtt(room, user);
   const existing = scene.tokens.find((t) => t.companionId === animal.id && t.controller === user);
   const token = existing || newToken(crypto.randomUUID(), scene);
   if (existing && (existing.locked || (existing.hidden && !isGm)))

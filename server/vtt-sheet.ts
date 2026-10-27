@@ -1,3 +1,4 @@
+import {canManageVtt} from './vtt-permissions.js';
 import { Router } from 'express';
 import type { PoolClient } from 'pg';
 import { z } from 'zod';
@@ -28,7 +29,7 @@ export async function access(
   const scene = room.document.scenes.find((s) => s.id === room.document.activeScene)!;
   const token = scene.tokens.find((t) => t.id === tid);
   if (!token?.characterId) throw new AppError(404, 'Este token não tem personagem importado.');
-  const isGm = room.owner_id === user;
+  const isGm = canManageVtt(room, user);
   const {
     rows: [character],
   } = await db.query(

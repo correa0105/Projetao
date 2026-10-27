@@ -21,16 +21,30 @@ try {
             'tsx',
             '--test',
             '--test-concurrency=1',
-            ...(process.argv.includes('--scopes')
-              ? ['tests/administrator-scopes.test.ts']
-              : [
+            ...(process.argv.includes('--regression')
+              ? [
                   'tests/administrators.test.ts',
-                  'tests/administrator-scopes.test.ts',
-                  'tests/mount-selection.test.ts',
-                  'tests/integration.test.ts',
-                  'tests/lore.test.ts',
-                  'tests/rulebook.test.ts',
-                ]),
+                  'tests/vtt-blood-api.test.ts',
+                  'tests/vtt-sounds-api.test.ts',
+                  'tests/vtt-personal.test.ts',
+                  'tests/vtt-art-http.test.ts',
+                  'tests/tower.test.ts',
+                ]
+              : process.argv.includes('--scopes')
+                ? [
+                    'tests/administrator-scopes.test.ts',
+                    'tests/administrator-mural-scopes.test.ts',
+                    'tests/vtt-spectator-view.test.ts',
+                  ]
+                : [
+                    'tests/administrators.test.ts',
+                    'tests/administrator-scopes.test.ts',
+                    'tests/administrator-mural-scopes.test.ts',
+                    'tests/mount-selection.test.ts',
+                    'tests/integration.test.ts',
+                    'tests/lore.test.ts',
+                    'tests/rulebook.test.ts',
+                  ]),
           ],
       {
         env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },

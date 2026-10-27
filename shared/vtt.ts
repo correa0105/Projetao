@@ -416,6 +416,7 @@ export type VttState = {
   revision: number;
   document: VttDocument;
   is_gm: boolean;
+  administrativeAccess?: boolean;
   premiumAccess?: boolean;
   premiumTokens?: boolean;
   role: 'master' | 'player' | 'spectator';

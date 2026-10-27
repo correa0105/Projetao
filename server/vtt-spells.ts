@@ -1,3 +1,4 @@
+import {canManageVtt} from './vtt-permissions.js';
 import { Router } from 'express';
 import { teleportArrivals, applyTeleportArrivals } from '../shared/vtt-spell-transport.js';
 import { randomUUID } from 'node:crypto';
@@ -166,8 +167,8 @@ export function vttSpellsRouter(
       user = res.locals.user.id,
       r = await getRoom(pool, rid, user);
     const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
-    const gm = r.owner_id === user,
-      viewing = (r as typeof r & { viewing_user_id?: string }).viewing_user_id || user;
+    const gm = canManageVtt(r, user),
+      viewing = r.role === 'spectator' ? (r as typeof r & { viewing_user_id?: string }).viewing_user_id || '' : user;
     const { rows } = await pool.query(
       "SELECT id,effect FROM vtt_spell_casts WHERE room_id=$1 AND ended_at IS NULL AND ((effect->>'expires') IS NULL OR (effect->>'expires')::bigint>$2 OR (effect->>'concentration')::boolean=true AND effect->>'spellId' IN ('spell-wall-of-stone','spell-true-polymorph')) ORDER BY created_at DESC LIMIT 256",
       [rid, Date.now()],
@@ -222,7 +223,7 @@ export function vttSpellsRouter(
       input = spellCastSchema.parse(req.body);
     const effect = await transaction(async (db) => {
       const r = await getRoom(db, rid, user, true),
-        gm = r.owner_id === user;
+        gm = canManageVtt(r, user);
       if (r.role === 'spectator') throw new AppError(403, 'Espectadores apenas assistem à mesa.');
       const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
       if (scene.id !== input.scene_id)
@@ -477,7 +478,7 @@ export function vttSpellsRouter(
       input = spellMoveSchema.parse(req.body);
     const effect = await transaction(async (db) => {
       const r = await getRoom(db, rid, user, true),
-        gm = r.owner_id === user;
+        gm = canManageVtt(r, user);
       if (r.role === 'spectator') throw new AppError(403, 'Espectadores apenas assistem à mesa.');
       const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
       const {
@@ -542,7 +543,7 @@ export function vttSpellsRouter(
       user = res.locals.user.id;
     await transaction(async (db) => {
       const r = await getRoom(db, rid, user, true),
-        gm = r.owner_id === user;
+        gm = canManageVtt(r, user);
       const {
         rows: [row],
       } = await db.query('SELECT effect,user_id FROM vtt_spell_casts WHERE id=$1 AND room_id=$2', [

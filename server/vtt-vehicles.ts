@@ -1,3 +1,4 @@
+import {canManageVtt} from './vtt-permissions.js';
 import { Router, json } from 'express';
 import { z } from 'zod';
 import type { PoolClient } from 'pg';
@@ -34,7 +35,7 @@ export function vttVehiclesRouter(
     uuid = z.string().uuid();
   async function gm(db: DB, id: string, user: string, lock = false) {
     const r = await access(db, id, user, lock);
-    if (r.owner_id !== user)
+    if (!canManageVtt(r, user))
       throw new AppError(403, 'Somente o mestre pode puxar veículos para a mesa.');
     return r;
   }

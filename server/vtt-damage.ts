@@ -1,3 +1,4 @@
+import {canManageVtt} from './vtt-permissions.js';
 import { Router } from 'express';
 import { z } from 'zod';
 import { transaction } from './db.js';
@@ -31,7 +32,7 @@ export function vttDamageRouter(
       throw new AppError(400, 'Rolagem repetida.');
     await transaction(async (db) => {
       const r = await access(db, id, user, true);
-      const gm = r.owner_id === user;
+      const gm = canManageVtt(r, user);
       if (r.role === 'spectator')
         throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
       const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
@@ -108,7 +109,7 @@ export function vttDamageRouter(
       .parse(req.body);
     await transaction(async (db) => {
       const r = await access(db, id, user, true),
-        gm = r.owner_id === user;
+        gm = canManageVtt(r, user);
       if (r.role === 'spectator')
         throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
       const { rows } = await db.query(

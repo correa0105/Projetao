@@ -3,7 +3,8 @@ import { randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import type { Pool, PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
-import { requireAdministrator, isAdministrator } from './administrators.js';
+import { administrationFor } from './administrators.js';
+const { require: requireScope, has: hasScope } = administrationFor('board');
 import { AppError } from './services.js';
 import { refreshTagAchievements } from './mission-tag-progress.js';
 import { houseCatalog } from '../shared/house.js';
@@ -91,7 +92,7 @@ async function unique<T>(work: () => Promise<T>) {
 export function missionTagsRouter() {
   const router = Router();
   router.get('/mission-tags/catalog', async (_req, res) => {
-    const can_edit = await isAdministrator(res.locals.user.id);
+    const can_edit = await hasScope(res.locals.user.id);
     const tags = (
       await pool.query(
         'SELECT id,name,description,active,revision FROM mission_tags ORDER BY name,id',
@@ -112,7 +113,7 @@ export function missionTagsRouter() {
     });
   });
   router.get('/mission-tags/reward-options', async (_req, res) => {
-    await requireAdministrator(res.locals.user.id);
+    await requireScope(res.locals.user.id);
     const titles = (
       await pool.query(
         "SELECT id,document FROM title_catalog WHERE deleted_at IS NULL ORDER BY document->>'name',id",
@@ -137,7 +138,7 @@ export function missionTagsRouter() {
     const input = tagSchema.parse(req.body);
     const result = await unique(() =>
       transaction(async (db) => {
-        await requireAdministrator(res.locals.user.id, db);
+        await requireScope(res.locals.user.id, db);
         return (
           await db.query(
             'INSERT INTO mission_tags(name,canonical_name,description,active,created_by) VALUES($1,$2,$3,$4,$5) RETURNING id,name,description,active,revision',
@@ -163,7 +164,7 @@ export function missionTagsRouter() {
       id = uuid.parse(req.params.id);
     const result = await unique(() =>
       transaction(async (db) => {
-        await requireAdministrator(res.locals.user.id, db);
+        await requireScope(res.locals.user.id, db);
         const r = await db.query(
           'UPDATE mission_tags SET name=$2,canonical_name=$3,description=$4,active=$5,revision=revision+1 WHERE id=$1 AND revision=$6 RETURNING id,name,description,active,revision',
           [id, input.name, canonical(input.name), input.description, input.active, revision],
@@ -192,7 +193,7 @@ export function missionTagsRouter() {
               : codeSchema.parse((req.params as Record<string, string>).code);
         const result = await unique(() =>
           transaction(async (db) => {
-            await requireAdministrator(res.locals.user.id, db);
+            await requireScope(res.locals.user.id, db);
             const current = (
               await db.query('SELECT * FROM tag_achievements WHERE code=$1 FOR UPDATE', [code])
             ).rows[0];
@@ -265,12 +266,14 @@ export function missionTagsRouter() {
       id = uuid.parse(req.params.id);
     await transaction(async (db) => {
       const mission = (
-        await db.query('SELECT author_id,kind,status FROM board_posts WHERE id=$1 AND deleted_at IS NULL FOR UPDATE', [id])
+        await db.query(
+          'SELECT author_id,kind,status FROM board_posts WHERE id=$1 AND deleted_at IS NULL FOR UPDATE',
+          [id],
+        )
       ).rows[0];
       if (
         !mission ||
-        (mission.author_id !== res.locals.user.id &&
-          !(await isAdministrator(res.locals.user.id, db)))
+        (mission.author_id !== res.locals.user.id && !(await hasScope(res.locals.user.id, db)))
       )
         throw new AppError(
           403,

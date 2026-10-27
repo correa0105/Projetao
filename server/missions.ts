@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { transaction } from './db.js';
 import type { PoolClient } from 'pg';
 import { AppError } from './services.js';
+import {administrationFor} from './administrators.js';
 import { creditMissionTags } from './mission-tag-progress.js';
 import {
   progressMission,
@@ -27,7 +28,7 @@ async function insertHook(
   const {
     rows: [mission],
   } = await client.query('SELECT * FROM board_posts WHERE id=$1 AND deleted_at IS NULL FOR UPDATE', [id]);
-  if (!mission || mission.kind !== 'mission' || mission.author_id !== userId)
+  if (!mission || mission.kind !== 'mission' || (mission.author_id !== userId && !await administrationFor('board').has(userId,client)))
     throw new AppError(403, 'Somente o criador da missão pode registrar seu gancho.');
   if (mission.status !== 'completed')
     throw new AppError(409, 'Conclua a missão antes de registrar um gancho.');
@@ -88,7 +89,7 @@ export async function completeMission(
     const {
       rows: [mission],
     } = await client.query('SELECT * FROM board_posts WHERE id=$1 AND deleted_at IS NULL FOR UPDATE', [id]);
-    if (!mission || mission.author_id !== userId)
+    if (!mission || (mission.author_id !== userId && !await administrationFor('board').has(userId,client)))
       throw new AppError(403, 'Somente o criador pode concluir esta missão.');
     if (mission.kind !== 'mission' || mission.status !== 'active')
       throw new AppError(409, 'Esta missão não está em andamento ou já foi concluída.');

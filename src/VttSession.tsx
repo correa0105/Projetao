@@ -390,7 +390,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
   const [personalId, setPersonalId] = useState<string | null>(null);
   const [personalUrl, setPersonalUrl] = useState('');
   const [storage, setStorage] = useState<import('../shared/vtt-storage').VttStorage | null>(null);
-  const [rooms, setRooms] = useState<{ id: string; name: string; is_owner: boolean }[]>([]),
+  const [rooms, setRooms] = useState<{ id: string; name: string; is_owner: boolean; is_admin?: boolean }[]>([]),
     [canCreate, setCanCreate] = useState(false),
     [state, setState] = useState<VttState | null>(null),
     [doc, setDoc] = useState<VttDocument | null>(null),
@@ -993,7 +993,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
   async function openRoom(id: string, following: string | null = null) {
     await save();
     let next = await api<VttState>('/vtt/rooms/' + id);
-    if (next.is_gm) next = await post<VttState>(`/vtt/rooms/${id}/activate`, {});
+    if (next.is_gm && !next.administrativeAccess) next = await post<VttState>(`/vtt/rooms/${id}/activate`, {});
     setFollowingPersonal(following);
     if (!following) window.history.replaceState(null,'','#vtt?room='+id);
     if (!next.is_gm && next.role === 'player')
@@ -2817,11 +2817,12 @@ export function VttSession({ characters, user, media }: { characters: Character[
         >
           {rooms.map((r) => (
             <option key={r.id} value={r.id}>
-              {r.name}
+              {r.name}{r.is_admin && !r.is_owner ? ' · Administrar' : ''}
             </option>
           ))}
           {!rooms.some((r) => r.id === state.id) && <option value={state.id}>{doc.name}</option>}
         </select>
+        {state.administrativeAccess && <span className="vtt-admin-access">Administrando esta mesa</span>}
         {!gm && (
           <div className="vtt-participation">
             {!gm && (
@@ -2860,7 +2861,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   )
                 }
               >
-                <option value="">Escolher visão do jogador</option>
+                <option value="">Visão automática do mapa</option>
                 {state.viewpoints.map((p) => (
                   <option key={p.id} value={p.id}>
                     {p.name}
@@ -3139,6 +3140,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
           )}
         </nav>
         <div className="vtt-stage" ref={stage}>
+          {spectator && scene.fog && !state.viewpoints.length && <p className="vtt-spectator-help" role="status">Nenhum personagem visível neste mapa. O mestre precisa colocar um personagem na camada de tokens ou revelar o mapa para compartilhar a visão.</p>}
           {scene.ocean?.enabled&&!preview&&<VttOceanPlayback ocean={scene.ocean} mapEffects={mapEffects} preference={media.oceanMotion} change={next=>media.update({oceanMotion:next,...(next==='on'?{mapEffects:true}:{})})}/>}
           {ruler.length > 1 && (
             <output className="vtt-movement-distance" aria-label="Distância medida">

@@ -155,6 +155,8 @@ export default function App() {
 function Portal({ user }: { user: User }) {
   const [administrator, setAdministrator] = useState(false);
   const [contentScopes, setContentScopes] = useState(user.admin_scopes || []);
+  const canManageBoard = administrator || contentScopes.includes('board');
+  const canManageEvents = administrator || contentScopes.includes('events');
   const [maintenanceAreas, setMaintenanceAreas] = useState<MaintenanceArea[]>([]);
   const [deletingMission, setDeletingMission] = useState<Post | null>(null);
   const [deletionError, setDeletionError] = useState('');
@@ -329,7 +331,7 @@ function Portal({ user }: { user: User }) {
       {!compact && (
         <MissionTags
           mission={item}
-          canEdit={item.author_id === user.id || user.administrador === 1}
+          canEdit={item.author_id === user.id || canManageBoard}
           refresh={refresh}
         />
       )}
@@ -455,9 +457,9 @@ function Portal({ user }: { user: User }) {
             {item.author_name || 'Alvorada Cinzenta'}
             {item.kind === 'mission' ? ` · ${item.participants} inscrito(s)` : ''}
           </span>
-          {item.author_id === user.id &&
+          {(item.author_id === user.id || (item.kind === 'event' ? canManageEvents : canManageBoard)) &&
             item.kind !== 'hook' &&
-            (item.kind !== 'event' || (administrator && !maintenanceAreas.includes('events'))) &&
+            (item.kind !== 'event' || (canManageEvents && !maintenanceAreas.includes('events'))) &&
             ['open', 'active'].includes(item.status) && (
               <div>
                 {item.status === 'open' && (
@@ -513,7 +515,7 @@ function Portal({ user }: { user: User }) {
                 </button>
               </div>
             )}
-          {administrator && ['mission', 'event'].includes(item.kind) && (
+          {(item.kind === 'event' ? canManageEvents : canManageBoard) && ['mission', 'event'].includes(item.kind) && (
             <button disabled={busy} onClick={() => { setDeletionError(''); setDeletingMission(item); }}>
               Excluir {item.kind === 'event' ? 'evento' : 'missão'}
             </button>
@@ -684,7 +686,8 @@ function Portal({ user }: { user: User }) {
             onPaperChange={refresh}
             feedback={toast}
             renderPost={(item) => postCard(item, false)}
-            canCreateEvent={administrator && !maintenanceAreas.includes('events')}
+            canCreateEvent={canManageEvents && !maintenanceAreas.includes('events')}
+            canManageBoard={canManageBoard}
             eventsInMaintenance={maintenanceAreas.includes('events')}
             onPublish={(kind, eventId) => {
               setPostEventId(eventId);
@@ -826,7 +829,7 @@ function Portal({ user }: { user: User }) {
         <Modal title="Um chamado à guilda" close={() => setModal(null)}>
           <PostForm
             initialKind={postFromAtlas ? 'mission' : postKind}
-            canCreateEvent={!postFromAtlas && !postEventId && administrator && !maintenanceAreas.includes('events')}
+            canCreateEvent={!postFromAtlas && !postEventId && canManageEvents && !maintenanceAreas.includes('events')}
             initialLocation={postLocation}
             initialEventId={postEventId}
             requireMappedLocation={postFromAtlas}

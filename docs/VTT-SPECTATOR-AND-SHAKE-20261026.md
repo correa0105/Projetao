@@ -1,0 +1,13 @@
+# Espectador e barra durante tremor — 26/10/2026
+
+O espectador não encontrava a visão do personagem do mestre porque a consulta só incluía `vtt_members.role=player`. O proprietário da mesa normalmente não tem essa linha. Além disso, sem uma visão escolhida, o retorno permanecia vazio mesmo quando havia um personagem disponível.
+
+`server/vtt-viewpoints.ts` reúne o dono e os jogadores participantes com token visível na camada de tokens do mapa ativo. Mantém a escolha válida e usa automaticamente a primeira visão disponível quando falta uma escolha ou o token anterior foi ocultado/removido. O retorno para espectador continua filtrado pela visão pública dos tokens: não recebe camada do mestre, notas privadas ou fichas. Imagens, retratos, combate, mensagens e efeitos usam a mesma escolha resolvida na requisição. Não há mudança persistente na escolha salva nem promoção de espectador. Ao trocar de mapa, a lista é recalculada; sem personagem disponível, a interface explica o motivo.
+
+O vídeo do proprietário também revelou barras nativas aparecendo com o tremor. O deslocamento da interface inteira estendia a área rolável da página em até 7 px horizontais e 5 px verticais; a coluna de ferramentas tinha 2 px de transbordamento horizontal próprios. O conteúdo do VTT agora recorta a transformação com `overflow: clip`; a coluna permite apenas rolagem vertical e acomoda os botões em telas menores. A animação, intensidade, partículas e som continuam iguais. Nenhuma imagem ou áudio foi regenerado.
+
+`node scripts/test-vtt-sounds-isolated.mjs --tremor` mede 100 frames reais por largura (1916, 1440, 760 e 390 px). A página apresenta zero transbordamento nos dois eixos durante a animação; a coluna não mostra barra horizontal. O teste confirma movimento efetivo, limpeza ao encerrar, rolagem vertical em tela curta, preferência de movimento reduzido e navegação para fora do VTT sem bloquear a página.
+
+`tests/vtt-spectator-view.test.ts` importa um personagem real de teste do proprietário sem cadastrá-lo como jogador. Confere visão automática, arquivo da imagem acessível, camada secreta/notas/ficha protegidas, proibição de ações do espectador, troca manual válida, fallback após ocultar token e troca de mapa. O navegador confirma o personagem visível e a seleção do mestre sem intervenção manual. Artefatos em `test-results/admin-scopes/` e `test-results/vtt-screen-overflow/` (ignorados pelo Git).
+
+As correções não alteram dados ou artes existentes. Protocolo 28 conservado; a migration 129 desta entrega pertence apenas à ampliação administrativa descrita em [Administração por área](CONTENT-ADMIN-SCOPES-20261026.md).

@@ -32,6 +32,7 @@ export function NoticeBoard({
   userId,
   renderPost,
   canCreateEvent,
+  canManageBoard = false,
   eventsInMaintenance = false,
   onPublish,
   onPaperChange,
@@ -41,6 +42,7 @@ export function NoticeBoard({
   userId: string;
   renderPost: (post: Post) => ReactNode;
   canCreateEvent: boolean;
+  canManageBoard?: boolean;
   eventsInMaintenance?: boolean;
   onPublish: (kind: 'mission' | 'event', eventId?: string) => void;
   onPaperChange: () => Promise<void>;
@@ -55,7 +57,7 @@ export function NoticeBoard({
     (p) =>
       p.kind === 'mission' &&
       p.status === 'completed' &&
-      p.author_id === userId &&
+      (p.author_id === userId || canManageBoard) &&
       !posts.some((h) => h.kind === 'hook' && h.source_mission_id === p.id),
   );
   const [category, setCategory] = useState<Post['kind'] | null>(null);
@@ -132,9 +134,10 @@ export function NoticeBoard({
       setDraft(null);
     }
   }
+  const canMove = (p: Post) => p.kind === 'event' ? canCreateEvent : p.author_id === userId || canManageBoard;
   function begin(e: PointerEvent<HTMLButtonElement>, p: Post) {
     suppressClick.current = false;
-    if (p.author_id !== userId || saving || e.button !== 0 || !stage.current) return;
+    if (!canMove(p) || saving || e.button !== 0 || !stage.current) return;
     const r = stage.current.getBoundingClientRect();
     const position = { paper_x: p.paper_x, paper_y: p.paper_y };
     drag.current = {
@@ -179,7 +182,7 @@ export function NoticeBoard({
         <div className="notice-board-surface" ref={stage} aria-label="Avisos publicados">
           {visible.map((p, index) => {
             const pos = draft?.id === p.id ? draft.position : p;
-            const mine = p.author_id === userId;
+            const mine = canMove(p);
             return (
               <button
                 type="button"
@@ -451,7 +454,7 @@ export function NoticeBoard({
                   </div>
                 ))}
           </div>
-          {selected?.author_id === userId && (
+          {selected && canMove(selected) && (
             <details className="notice-paper-settings">
               <summary>Aparência do papel</summary>
               <PaperPicker

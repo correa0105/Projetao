@@ -59,23 +59,91 @@
   line-height: 1.5;
 }
 .facial-hair-colors {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
 }
-.facial-hair-colors > label {
+:root .facial-hair-choices .facial-hair-colors > label {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px;
-  border: 1px solid #a98a494d;
+  min-width: 0;
+  min-height: 52px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid #8c79544d;
+  border-radius: 6px;
+  background: #161c1a;
+  color: #d9d3c3;
   cursor: pointer;
 }
-.facial-hair-swatch {
-  width: 24px;
-  height: 24px;
-  border: 1px solid #bca473;
+:root .facial-hair-choices .facial-hair-colors > label.is-selected {
+  border-color: #c6a364;
+  box-shadow: inset 0 0 0 1px #c6a36455;
+  background: #b3965120;
+  color: #f0dfbb;
+}
+:root .facial-hair-choices .facial-hair-colors > label:has(input:focus-visible) {
+  outline: 2px solid #e4c07e;
+  outline-offset: 3px;
+}
+:root .facial-hair-choices .facial-hair-colors > label:focus-within:not(:has(input:focus-visible)) {
+  outline: none;
+}
+:root .facial-hair-choices .facial-hair-colors > label > input[type='radio'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  opacity: 0;
+}
+:root .facial-hair-choices .facial-hair-swatch {
+  position: relative;
+  display: block;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border: 1px solid #b2a69088;
+  border-radius: 5px;
+  background-image: repeating-linear-gradient(
+    97deg,
+    #ffffff12 0 1px,
+    transparent 1px 3px,
+    #00000018 3px 4px
+  );
+  box-shadow: inset 0 1px 3px #0005;
+}
+:root .facial-hair-choices .facial-hair-color-name {
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+:root .facial-hair-choices .facial-hair-color-check {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
+  border: 1px solid #e5ca91;
+  background: #c9a66a;
+  color: #171b18;
+}
+.facial-hair-choices fieldset:disabled .facial-hair-colors {
+  opacity: 0.45;
+}
+.facial-hair-choices fieldset:disabled .facial-hair-colors > label {
+  cursor: default;
 }
 .facial-hair-graying {
   display: flex;
@@ -92,6 +160,9 @@
   border: 1px solid #a98a494d;
 }
 @media (max-width: 640px) {
+  .facial-hair-colors {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .facial-hair-options {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;

@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import { Check } from 'lucide-react';
 import {
   beardStyles,
   mustacheStyles,
@@ -114,8 +115,14 @@ export function FacialHairChoices({
                 className="facial-hair-swatch"
                 style={{ backgroundColor: color.color }}
                 aria-hidden="true"
-              />
-              {color.name}
+              >
+                {selected.color === color.id && (
+                  <span className="facial-hair-color-check">
+                    <Check size={11} strokeWidth={3} />
+                  </span>
+                )}
+              </span>
+              <span className="facial-hair-color-name">{color.name}</span>
             </label>
           ))}
         </div>

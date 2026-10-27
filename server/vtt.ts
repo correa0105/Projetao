@@ -12,6 +12,10 @@ import { atmosphereSchema } from '../shared/vtt-atmosphere.js';
 import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
+import { administrationFor } from './administrators.js';
+import { canManageVtt } from './vtt-permissions.js';
+import { vttViewpoints, spectatorViewpoint } from './vtt-viewpoints.js';
+const vttAdministration = administrationFor('vtt');
 import { vttAssetId, vttAssetPath, isTopDownTokenImage } from '../shared/vtt-token-image.js';
 import { deriveSheet } from '../shared/character-sheet.js';
 import { vttSheetRouter } from './vtt-sheet.js';
@@ -75,15 +79,23 @@ async function room(db: DB, id: string, user: string, lock = false) {
   const {
     rows: [r],
   } = await db.query(
-    `SELECT r.*, (SELECT role FROM vtt_members WHERE room_id=r.id AND user_id=$2) AS role,
-      (SELECT viewing_user_id FROM vtt_members WHERE room_id=r.id AND user_id=$2) AS viewing_user_id FROM vtt_rooms r WHERE r.id=$1 AND (r.owner_id=$2 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$2))${lock ? ' FOR UPDATE' : ''}`,
+    `SELECT r.*, ${vttAdministration.predicate(2)} AS administrator, (SELECT role FROM vtt_members WHERE room_id=r.id AND user_id=$2) AS role,
+      (SELECT viewing_user_id FROM vtt_members WHERE room_id=r.id AND user_id=$2) AS viewing_user_id FROM vtt_rooms r WHERE r.id=$1 AND (r.owner_id=$2 OR ${vttAdministration.predicate(2)} OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$2))${lock ? ' FOR UPDATE' : ''}`,
     [id, user],
   );
   if (!r) throw new AppError(404, 'Mesa não encontrada.');
   r.document = documentSchema.parse(r.document);
+  if (r.administrator) { r.administrator_user_id = user; r.role = null; r.viewing_user_id = null; }
+  if (r.role === 'spectator') {
+    r.viewpoints = await vttViewpoints(db,r);
+    r.viewing_user_id = spectatorViewpoint(r.viewpoints,r.viewing_user_id);
+  }
   return r as {
     id: string;
     owner_id: string;
+    administrator: boolean;
+    administrator_user_id?:string;
+    viewpoints?: {id:string;name:string}[];
     region_id: string | null;
     location_id: string | null;
     document: VttDocument;
@@ -96,7 +108,7 @@ async function room(db: DB, id: string, user: string, lock = false) {
 }
 async function gm(db: DB, id: string, user: string, lock = false) {
   const r = await room(db, id, user, lock);
-  if (r.owner_id !== user) throw new AppError(403, 'Somente o mestre desta mesa pode fazer isso.');
+  if (!canManageVtt(r, user)) throw new AppError(403, 'Somente o mestre desta mesa pode fazer isso.');
   return r;
 }
 function canSee(t: VttToken, s: VttScene, user: string) {
@@ -206,22 +218,13 @@ async function validateAssets(db: DB, rid: string, doc: VttDocument) {
 }
 async function state(rid: string, user: string) {
   const r = await room(pool, rid, user);
-  const isGm = r.owner_id === user;
+  const isGm = canManageVtt(r, user);
   const spectator = r.role === 'spectator' && !isGm;
-  const viewpoints = (
-    await pool.query(
-      `SELECT u.id,u.name FROM "user" u JOIN vtt_members m ON m.user_id=u.id WHERE m.room_id=$1 AND m.role='player' ORDER BY u.name`,
-      [rid],
-    )
-  ).rows.filter((m) =>
-    r.document.scenes
-      .find((s) => s.id === r.document.activeScene)!
-      .tokens.some((t) => t.controller === m.id && t.layer === 'tokens' && !t.hidden),
-  );
+  const viewpoints = r.viewpoints || await vttViewpoints(pool,r);
   const viewingUser = spectator
     ? viewpoints.some((m) => m.id === r.viewing_user_id)
       ? r.viewing_user_id
-      : null
+      : viewpoints[0]?.id || null
     : user;
   const document = isGm ? r.document : playerDocument(r.document, viewingUser || '', spectator);
   const [assets, members, messages] = await Promise.all([
@@ -230,8 +233,8 @@ async function state(rid: string, user: string) {
       [rid],
     ),
     pool.query(
-      `SELECT u.id,u.name,COALESCE(m.role,'master') AS role FROM "user" u LEFT JOIN vtt_members m ON m.room_id=$2 AND m.user_id=u.id WHERE u.id=$1 OR m.user_id IS NOT NULL`,
-      [r.owner_id, rid],
+      `SELECT u.id,u.name,COALESCE(m.role,'master') AS role FROM "user" u LEFT JOIN vtt_members m ON m.room_id=$2 AND m.user_id=u.id WHERE u.id=$1 OR m.user_id IS NOT NULL OR (u.id=$3 AND $4)`,
+      [r.owner_id, rid, user, isGm],
     ),
     pool.query(
       `SELECT id::text,author,text,roll,spell,private,created_at,damage,discarded,attack_visual AS "attackVisual",
@@ -248,6 +251,7 @@ async function state(rid: string, user: string) {
     revision: r.revision,
     document,
     is_gm: isGm,
+    administrativeAccess: isGm && r.owner_id !== user,
     role: isGm ? 'master' : spectator ? 'spectator' : 'player',
     viewingUser,
     viewpoints,
@@ -331,10 +335,10 @@ async function importCharacter(
     if (!position) return false;
     if (existing.attachment)
       throw new AppError(400, 'Solte o vínculo antes de reposicionar este token.');
-    if (existing.locked || (r.owner_id !== actor && existing.hidden))
+    if (existing.locked || (!canManageVtt(r, actor) && existing.hidden))
       throw new AppError(403, 'Este token está bloqueado ou oculto.');
     const destination = placement(existing);
-    if (r.owner_id !== actor && movementBlocked(scene, existing, destination, existing))
+    if (!canManageVtt(r, actor) && movementBlocked(scene, existing, destination, existing))
       throw new AppError(400, 'Uma parede, porta fechada ou janela fechada bloqueia o movimento.');
     if (existing.x === destination.x && existing.y === destination.y) return false;
     const groupError = attachmentMovementError(scene, existing, [destination]);
@@ -420,7 +424,7 @@ async function chooseParticipation(
   user: string,
   role: 'player' | 'spectator',
 ) {
-  if (r.owner_id === user) return;
+  if (canManageVtt(r, user)) return;
   await db.query(
     'INSERT INTO vtt_members(room_id,user_id,role)VALUES($1,$2,$3)ON CONFLICT(room_id,user_id)DO UPDATE SET role=EXCLUDED.role,viewing_user_id=NULL',
     [r.id, user, role],
@@ -455,7 +459,7 @@ export function vttRouter() {
     const privateRead = req.path.startsWith('/sheets/') || req.path.startsWith('/hotbar');
     if (!roleChange && (req.method !== 'GET' || privateRead)) {
       const r = await room(pool, uuid.parse(req.params.id), res.locals.user.id);
-      if (r.role === 'spectator' && r.owner_id !== res.locals.user.id)
+      if (r.role === 'spectator' && !canManageVtt(r, res.locals.user.id))
         throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
     }
     next();
@@ -531,14 +535,10 @@ export function vttRouter() {
       tid = uuid.parse(req.params.token),
       user = res.locals.user.id;
     const current = await room(pool, rid, user);
-    const isGm = current.owner_id === user;
+    const isGm = canManageVtt(current, user);
     let viewAs = user;
     if (current.role === 'spectator') {
-      const member = await pool.query(
-        "SELECT user_id FROM vtt_members WHERE room_id=$1 AND user_id=$2 AND role='player'",
-        [rid, current.viewing_user_id],
-      );
-      viewAs = member.rows[0]?.user_id || '';
+      viewAs = current.viewing_user_id || '';
     }
     const visible = isGm
       ? current.document
@@ -574,7 +574,7 @@ export function vttRouter() {
       can_create: true, personal:personalVttInfo(personal),
       storage: await vttStorage(pool,res.locals.user.id),
       rooms: (await pool.query(
-        `SELECT id,document->>'name' AS name,owner_id=$1 AS is_owner,updated_at FROM vtt_rooms r WHERE owner_id=$1 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$1) ORDER BY updated_at DESC`,[res.locals.user.id])).rows,
+        `SELECT id,document->>'name' AS name,owner_id=$1 AS is_owner,${vttAdministration.predicate()} AS is_admin,updated_at FROM vtt_rooms r WHERE owner_id=$1 OR ${vttAdministration.predicate()} OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$1) ORDER BY updated_at DESC`,[res.locals.user.id])).rows,
     });
   });
   router.get('/vtt/personal/:id', async (req,res)=>{
@@ -656,19 +656,8 @@ export function vttRouter() {
       if (r.role !== 'spectator')
         throw new AppError(403, 'Escolher a visão de outro jogador é exclusivo do espectador.');
       if (viewer) {
-        const {
-          rows: [m],
-        } = await db.query(
-          `SELECT user_id FROM vtt_members WHERE room_id=$1 AND user_id=$2 AND role='player'`,
-          [rid, viewer],
-        );
-        if (
-          !m ||
-          !r.document.scenes
-            .find((s) => s.id === r.document.activeScene)!
-            .tokens.some((t) => t.controller === viewer && t.layer === 'tokens' && !t.hidden)
-        )
-          throw new AppError(400, 'Escolha um jogador com personagem visível neste mapa.');
+        if (!r.viewpoints?.some(v=>v.id===viewer))
+          throw new AppError(400, 'Escolha uma pessoa com personagem visível neste mapa.');
       }
       await db.query('UPDATE vtt_members SET viewing_user_id=$3 WHERE room_id=$1 AND user_id=$2', [
         rid,
@@ -696,7 +685,7 @@ export function vttRouter() {
     const {
       rows: [row],
     } = await pool.query(
-      `SELECT focus_signal FROM vtt_rooms r WHERE id=$1 AND (owner_id=$2 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$2))`,
+      `SELECT focus_signal FROM vtt_rooms r WHERE id=$1 AND (owner_id=$2 OR ${vttAdministration.predicate(2)} OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$2))`,
       [uuid.parse(req.params.id), res.locals.user.id],
     );
     if (!row) throw new AppError(404, 'Mesa não encontrada.');
@@ -915,7 +904,7 @@ export function vttRouter() {
       const r = await room(db, rid, res.locals.user.id, true),
         s = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
       const master =
-        r.owner_id === res.locals.user.id;
+        canManageVtt(r, res.locals.user.id);
       if (r.role === 'spectator' && !master)
         throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
       const child = s.tokens.find((t) => t.id === tid);
@@ -961,7 +950,7 @@ export function vttRouter() {
     const rid=uuid.parse(req.params.id),tid=uuid.parse(req.params.token),{open}=z.object({open:z.boolean()}).strict().parse(req.body);
     await transaction(async db=>{
       const r=await room(db,rid,res.locals.user.id,true),s=r.document.scenes.find(s=>s.id===r.document.activeScene)!,h=s.tokens.find(t=>t.id===tid);
-      const master=r.owner_id===res.locals.user.id;
+      const master=canManageVtt(r, res.locals.user.id);
       if(!h||!houseAsset(h))throw new AppError(404,'Casa não encontrada.');
       if(!master&&(r.role==='spectator'||!canReachHouseDoor(h,s,res.locals.user.id)||!canSee({...h,...houseDoorPoint(h),width:1,height:1},s,res.locals.user.id)))throw new AppError(403,'Aproxime seu personagem da porta para abri-la ou fechá-la.');
       if((h.houseDoorOpen===true)===open)return;
@@ -976,7 +965,7 @@ export function vttRouter() {
     await transaction(async db=>{
       const r=await room(db,rid,res.locals.user.id,true),s=r.document.scenes.find(s=>s.id===r.document.activeScene)!,h=s.tokens.find(t=>t.id===tid),w=h&&houseAsset(h)?.windows[index];
       if(!h||!w)throw new AppError(404,'Janela não encontrada.');
-      const master=r.owner_id===res.locals.user.id;
+      const master=canManageVtt(r, res.locals.user.id);
       if(!master&&(r.role==='spectator'||!canReachHouseWindow(h,index,s,res.locals.user.id)||!canSee({...h,...houseWorld(w,h),width:1,height:1},s,res.locals.user.id)))throw new AppError(403,'Aproxime seu personagem da janela para abri-la ou fechá-la.');
       if(houseWindowOpen(h,index)===open)return;
       h.houseWindowsClosed=open?(h.houseWindowsClosed??[]).filter(i=>i!==index):[...(h.houseWindowsClosed??[]),index];
@@ -1120,7 +1109,7 @@ export function vttRouter() {
             (t) => t.id === input.attack_visual!.target_id && t.layer === 'tokens',
           ),
           isGm =
-            r.owner_id === res.locals.user.id;
+            canManageVtt(r, res.locals.user.id);
         if (
           !actor ||
           !target ||
@@ -1149,7 +1138,7 @@ export function vttRouter() {
           (t) => t.id === input.damage!.target_id && t.layer === 'tokens',
         );
         const isGm =
-          r.owner_id === res.locals.user.id;
+          canManageVtt(r, res.locals.user.id);
         if (
           !actor ||
           !target ||
@@ -1187,7 +1176,7 @@ export function vttRouter() {
       .regex(/^\d{1,19}$/)
       .optional()
       .parse(req.query.before);
-    const isGm = current.owner_id === user;
+    const isGm = canManageVtt(current, user);
     const { rows } = await pool.query(
       `SELECT id::text,author,text,roll,spell,private,created_at,damage,discarded,attack_visual AS "attackVisual",
         COALESCE((SELECT jsonb_agg(a.token_id) FROM vtt_damage_applications a WHERE a.message_id=vtt_messages.id),'[]'::jsonb) AS applied
@@ -1236,10 +1225,10 @@ export function vttRouter() {
     const { rows } = await pool.query(
       `SELECT c.id,c.name,c.class,c.level,c.user_id AS controller,u.name AS player_name
        FROM characters c JOIN "user" u ON u.id=c.user_id
-       WHERE c.deleted_at IS NULL AND (c.user_id=$2 OR EXISTS(
+       WHERE c.deleted_at IS NULL AND (c.user_id=$2 OR c.user_id=$3 OR EXISTS(
          SELECT 1 FROM vtt_members m WHERE m.room_id=$1 AND m.user_id=c.user_id AND m.role='player'))
        ORDER BY u.name,c.created_at,c.id`,
-      [r.id, r.owner_id],
+      [r.id, r.owner_id, res.locals.user.id],
     );
     res.json({ characters: rows });
   });
@@ -1256,12 +1245,12 @@ export function vttRouter() {
       if (r.role === 'spectator')
         throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
       let controller = res.locals.user.id;
-      if (r.owner_id === controller) {
+      if (canManageVtt(r, res.locals.user.id)) {
         await gm(db, rid, controller);
         const { rows: [character] } = await db.query(
           `SELECT c.user_id FROM characters c WHERE c.id=$1 AND c.deleted_at IS NULL AND
-           (c.user_id=$3 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=$2 AND m.user_id=c.user_id AND m.role='player'))`,
-          [cid, rid, controller],
+           (c.user_id=$3 OR c.user_id=$4 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=$2 AND m.user_id=c.user_id AND m.role='player'))`,
+          [cid, rid, r.owner_id, res.locals.user.id],
         );
         if (!character) throw new AppError(404, 'Personagem não disponível nesta mesa.');
         controller = character.user_id;
@@ -1338,16 +1327,10 @@ export function vttRouter() {
     if (topDown && !a.character_art_source && !a.companion_art_source)
       throw new AppError(404, 'Token não encontrado.');
     const r = await room(pool, a.room_id, res.locals.user.id);
-    const isGm = r.owner_id === res.locals.user.id;
+    const isGm = canManageVtt(r, res.locals.user.id);
     let viewAs = res.locals.user.id;
     if (r.role === 'spectator') {
-      const {
-        rows: [member],
-      } = await pool.query(
-        "SELECT user_id FROM vtt_members WHERE room_id=$1 AND user_id=$2 AND role='player'",
-        [r.id, r.viewing_user_id],
-      );
-      viewAs = member?.user_id || '';
+      viewAs = r.viewing_user_id || '';
     }
     const sharedAudio = a.kind === 'audio' && !r.document.soundboard.hiddenSources.includes('asset:' + id) &&
       r.document.soundboard.voices.some(v => v.sourceId === 'asset:' + id && soundAlive(v));

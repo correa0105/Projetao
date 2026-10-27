@@ -1,3 +1,4 @@
+import {canManageVtt} from './vtt-permissions.js';
 import { Router } from 'express';
 import { randomInt } from 'node:crypto';
 import { z } from 'zod';
@@ -68,21 +69,10 @@ export function vttCombatRouter(
   async function view(room: Room, user: string, db: DB = pool): Promise<CombatView> {
     const c = current(room),
       scene = room.document.scenes.find((s) => s.id === c.sceneId)!,
-      gm = room.owner_id === user;
+      gm = canManageVtt(room, user);
     let viewer = user;
     if (room.role === 'spectator' && !gm) {
-      const members = (
-        await db.query(
-          'SELECT m.user_id FROM vtt_members m JOIN "user" u ON u.id=m.user_id WHERE m.room_id=$1 AND m.role=\'player\' ORDER BY u.name',
-          [room.id],
-        )
-      ).rows;
-      viewer =
-        members.find((m) => m.user_id === room.viewing_user_id)?.user_id ||
-        members.find((m) =>
-          scene.tokens.some((t) => t.controller === m.user_id && !t.hidden && t.layer === 'tokens'),
-        )?.user_id ||
-        '';
+      viewer = room.viewing_user_id || '';
     }
     const entries = c.entries.flatMap((e) => {
       const t = scene.tokens.find((t) => t.id === e.tokenId)!;
@@ -125,7 +115,7 @@ export function vttCombatRouter(
       const r = await getRoom(db, rid, user, true),
         c = current(r),
         scene = r.document.scenes.find((s) => s.id === c.sceneId)!,
-        gm = r.owner_id === user;
+        gm = canManageVtt(r, user);
       if (r.role === 'spectator' && !gm)
         throw new AppError(403, 'Espectadores podem somente assistir.');
       if (input.kind !== 'roll') {

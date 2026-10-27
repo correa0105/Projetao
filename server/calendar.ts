@@ -2,7 +2,6 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
 import { administrationFor } from './administrators.js';
-import { isAdministrator, administratorPredicate } from './administrators.js';
 const { require: requireScope, has: hasScope } = administrationFor('home');
 import { AppError } from './services.js';
 import {
@@ -59,7 +58,7 @@ export function calendarRouter() {
     res.json({
       ...settings.rows[0],
       can_edit: await hasScope(res.locals.user.id),
-      can_edit_events: await isAdministrator(res.locals.user.id),
+      can_edit_events: await administrationFor('events').has(res.locals.user.id),
       entries,
     });
   });
@@ -85,7 +84,7 @@ export function calendarRouter() {
         !(
           await client.query(
             `SELECT id FROM event_images i WHERE id=$1 AND (
-            ${administratorPredicate(2)} OR i.author_id=$2
+            ${administrationFor('events').predicate(2)} OR i.author_id=$2
             OR EXISTS(SELECT 1 FROM guild_calendar WHERE document->>'background'='/api/event-images/'||i.id::text)
             OR EXISTS(SELECT 1 FROM event_scene WHERE document->>'background'='/api/event-images/'||i.id::text OR EXISTS(SELECT 1 FROM jsonb_array_elements(document->'layers') l WHERE l->>'path'='/api/event-images/'||i.id::text))
             OR EXISTS(SELECT 1 FROM board_posts WHERE kind='event' AND event_presentation->>'image'='/api/event-images/'||i.id::text))`,
