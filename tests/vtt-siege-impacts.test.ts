@@ -4,7 +4,12 @@ import { randomUUID, createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { newScene, newToken, terrainStrokeSchema, type VttState } from '../shared/vtt';
 import { siegeWaterAt } from '../shared/vtt-siege-surface';
-import { siegeImpactPosition, type SiegeSnapshot, type SiegeImpact } from '../shared/vtt-siege';
+import {
+  siegeImpactPosition,
+  siegeRopeOrigin,
+  type SiegeSnapshot,
+  type SiegeImpact,
+} from '../shared/vtt-siege';
 import { vehicleImage } from '../shared/vtt-vehicles';
 import { vttProtocolVersion } from '../shared/vtt-protocol';
 import { pool } from '../server/db';
@@ -280,18 +285,31 @@ test('cerco: sons de carga e impactos persistem com água/terra, vínculo, sigil
     assert((await snapshot(player)).impacts![0].ropeOrigin);
     assert.equal((await snapshot()).impacts![0].id, pinned.id, 'Nova leitura mantém a marca');
     room = (await req(path, gm)).data;
-    const source = room.document.scenes[0].tokens.find(t=>t.id===harpoon)!;
+    const source = room.document.scenes[0].tokens.find((t) => t.id === harpoon)!;
     source.x += 80;
-    assert.equal((await req(path,gm,'PUT',{revision:room.revision,document:room.document})).status,200);
-    const movedSource=(await snapshot()).impacts![0].ropeOrigin!;
-    assert(Math.abs(movedSource.x-pinned.ropeOrigin.x-80)<.001,'Corda acompanha o lançador');
+    assert.equal(
+      (await req(path, gm, 'PUT', { revision: room.revision, document: room.document })).status,
+      200,
+    );
+    const movedSource = (await snapshot()).impacts![0].ropeOrigin!;
+    assert(
+      Math.abs(movedSource.x - pinned.ropeOrigin.x - 80) < 0.001,
+      'Corda acompanha o lançador',
+    );
     room = (await req(path, gm)).data;
-    room.document.scenes[0].tokens.find(t=>t.id===harpoon)!.hidden=true;
-    assert.equal((await req(path,gm,'PUT',{revision:room.revision,document:room.document})).status,200);
-    assert.equal((await snapshot(player)).impacts![0].ropeOrigin,null,'Não expor origem da arma oculta');
-    assert((await snapshot()).impacts![0].ropeOrigin,'Mestre conserva origem');
-    room=(await req(path,gm)).data;
-    room.document.scenes[0].tokens.find(t=>t.id===harpoon)!.hidden=false;
+    room.document.scenes[0].tokens.find((t) => t.id === harpoon)!.hidden = true;
+    assert.equal(
+      (await req(path, gm, 'PUT', { revision: room.revision, document: room.document })).status,
+      200,
+    );
+    assert.equal(
+      (await snapshot(player)).impacts![0].ropeOrigin,
+      null,
+      'Não expor origem da arma oculta',
+    );
+    assert((await snapshot()).impacts![0].ropeOrigin, 'Mestre conserva origem');
+    room = (await req(path, gm)).data;
+    room.document.scenes[0].tokens.find((t) => t.id === harpoon)!.hidden = false;
     const target = room.document.scenes[0].tokens.find((t) => t.id === boat.id)!;
     target.x += 100;
     target.rotation = 90;
@@ -317,6 +335,79 @@ test('cerco: sons de carga e impactos persistem com água/terra, vínculo, sigil
       'Alvo oculto não revela a marca ou sua posição',
     );
     assert.equal((await snapshot()).impacts!.length, 1);
+    // Cut only the rope: preserve the embedded projectile, state and ammunition.
+    const beforeCut = await weapon(harpoon);
+    assert(beforeCut.ropeAttached);
+    assert.equal(
+      (await operate(harpoon, 'load')).status,
+      400,
+      'Operador distante continua bloqueado',
+    );
+    const cut = {
+      kind: 'cutRope',
+      weaponId: harpoon,
+      revision: beforeCut.revision,
+      actorId: hero.id,
+    };
+    assert.equal((await command(cut, spectator)).status, 403);
+    assert.equal((await command({ ...cut, actorId: crew.id }, player)).status, 403);
+    assert.equal((await command(cut, player)).status, 400, 'Cortar exige operador próximo');
+    assert.equal(
+      (
+        await command({
+          kind: 'cutRope',
+          weaponId: cannon,
+          revision: (await weapon(cannon)).revision,
+        })
+      ).status,
+      400,
+    );
+    room = (await req(path, gm)).data;
+    const cutter = room.document.scenes[0].tokens.find((t) => t.id === hero.id)!;
+    cutter.x = 780;
+    cutter.y = 700;
+    assert.equal(
+      (await req(path, gm, 'PUT', { revision: room.revision, document: room.document })).status,
+      200,
+    );
+    assert.equal((await operate(harpoon, 'load')).status, 409, 'Corda impede outra carga');
+    const cutOperation = randomUUID();
+    assert.equal((await command(cut, player, cutOperation)).status, 200);
+    assert.equal((await command(cut, player, cutOperation)).status, 200, 'Repetição é segura');
+    const afterCut = await weapon(harpoon),
+      oldMark = (await snapshot()).impacts!.find((i) => i.id === pinned.id)!;
+    assert.equal(afterCut.ropeAttached, false);
+    assert.equal(afterCut.ammo, beforeCut.ammo);
+    assert.deepEqual(afterCut.lastShot, beforeCut.lastShot);
+    assert.equal(afterCut.stage, beforeCut.stage);
+    assert(oldMark.ropeCutAt);
+    assert.equal(oldMark.ropeOrigin, null);
+    assert.equal(siegeRopeOrigin(oldMark, room.document.scenes[0]), null);
+    assert.deepEqual(oldMark.point, pinned.point);
+    assert.deepEqual(oldMark.local, pinned.local);
+    assert.equal((await operate(harpoon, 'load')).status, 200);
+    assert.equal(
+      (await operate(harpoon, 'aim', { point: { x: 1500, y: 500 }, mode: 'normal' })).status,
+      200,
+    );
+    assert.equal((await operate(harpoon, 'fire')).status, 200, 'Segundo disparo após corte');
+    assert.equal((await weapon(harpoon)).ammo, beforeCut.ammo - 1);
+    assert((await snapshot()).impacts!.some((i) => i.id === pinned.id && !!i.ropeCutAt));
+    assert((await weapon(harpoon)).ropeAttached);
+    const secondMark = (await snapshot()).impacts!.find((i) => i.id !== pinned.id)!;
+    assert(secondMark && !secondMark.ropeCutAt);
+    assert.equal(
+      (
+        await command({
+          kind: 'cutRope',
+          weaponId: harpoon,
+          revision: (await weapon(harpoon)).revision,
+        })
+      ).status,
+      200,
+      'Mestre corta mesmo sem operador',
+    );
+    assert.equal((await command({ kind: 'removeImpact', impactId: secondMark.id })).status, 200);
     const last = await weapon(cannon);
     await command({
       kind: 'settings',

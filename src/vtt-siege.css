@@ -33,6 +33,15 @@
   font-size: 11px;
   min-width: 0;
 }
+.vtt-siege-rope {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #bc9b5a66;
+  border-radius: 6px;
+  background: #bc9b5a12;
+}
+.vtt-siege-rope p { color: #d9c392; }
 .vtt-siege-panel select,
 .vtt-siege-panel input[type='number'] {
   width: 100%;

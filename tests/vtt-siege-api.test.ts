@@ -229,6 +229,8 @@ test('cerco: mestre coloca; tripulação próxima carrega/mira/dispara; muniçã
       siegeImage('harpoon'),
     );
     assert.equal((await get(harpoon)).stage, 'empty');
+    const attached = await get(harpoon);
+    if(attached.ropeAttached) assert.equal((await command({kind:'cutRope',weaponId:harpoon,revision:attached.revision})).status,200);
     // Real initiative: one action per actor/turn across every gun, with cooperative crew.
     await req(path + '/combat', gm, 'POST', { kind: 'add', tokenIds: [hero.id, crew.id] });
     await req(path + '/combat', gm, 'POST', { kind: 'set', tokenId: hero.id, value: 20 });

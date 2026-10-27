@@ -93,6 +93,7 @@ const commandSchema = z.discriminatedUnion('kind', [
     })
     .strict(),
   z.object({ kind: z.literal('fire'), ...operator, operationId: uuid }).strict(),
+  z.object({ kind: z.literal('cutRope'), ...operator, actorId: uuid.optional(), operationId: uuid }).strict(),
   z
     .object({
       kind: z.literal('settings'),
@@ -255,13 +256,14 @@ export function vttSiegeRouter(
         r.role === 'spectator' ? r.viewing_user_id || '' : user,
       );
     };
-    const impacts = (
+    const storedImpacts = (
       await pool.query<{ data: SiegeImpact }>(
         'SELECT data FROM vtt_siege_impacts WHERE room_id=$1 AND scene_id=$2 ORDER BY created_at,id',
         [id, scene.id],
       )
-    ).rows
-      .map((row) => row.data)
+    ).rows.map((row) => row.data);
+    const attachedWeapons = new Set(storedImpacts.filter(i => i.kind === 'harpoon' && !i.ropeCutAt).map(i => i.weaponId));
+    const impacts = storedImpacts
       .map((impact) => {
         if (impact.kind !== 'harpoon') return impact;
         const source = scene.tokens.find((t) => t.id === impact.weaponId);
@@ -296,6 +298,7 @@ export function vttSiegeRouter(
         })
         .map((w) => {
           const result = asWeapon(w);
+          result.ropeAttached = w.kind === 'harpoon' && attachedWeapons.has(w.token_id);
           const actual = scene.tokens.find((t) => t.id === w.token_id)!;
           const target = result.aim?.targetId
             ? scene.tokens.find((t) => t.id === result.aim!.targetId)
@@ -444,13 +447,9 @@ export function vttSiegeRouter(
           throw new AppError(404, 'Arma indisponível neste mapa.');
         if (row.revision !== input.revision)
           throw new AppError(409, 'A arma mudou em outra janela. Atualize antes de operar.');
-        if (input.kind === 'settings') {
-          if (!gm) throw new AppError(403, 'Somente o mestre configura reservas e som.');
-          row.ammunition = input.ammunition;
-          row.muted = input.muted;
-        } else {
+        const operatingActor = (actorId: string | undefined) => {
           const actor = scene.tokens.find(
-            (a) => a.id === input.actorId && a.layer === 'tokens' && !a.sceneryToken,
+            (a) => a.id === actorId && a.layer === 'tokens' && !a.sceneryToken,
           );
           if (!actor || (!gm && (actor.controller !== user || !visible(r, actor, user))))
             throw new AppError(403, 'Escolha um personagem que você controla neste mapa.');
@@ -467,6 +466,26 @@ export function vttSiegeRouter(
           if (t.hp <= 0 || t.deathAt) throw new AppError(400, 'A arma está destruída.');
           if (!siegeAdjacent(actor, t, scene))
             throw new AppError(400, 'Aproxime o personagem a até 5 pés da arma.');
+          return actor;
+        };
+        const ropeFilter = "room_id=$1 AND scene_id=$2 AND data->>'weaponId'=$3 AND data->>'kind'='harpoon' AND data->>'ropeCutAt' IS NULL";
+        const ropeParams = [id, scene.id, t.id];
+        const ropeAttached = row.kind === 'harpoon' &&
+          ['cutRope','load','fire'].includes(input.kind) &&
+          !!(await db.query('SELECT 1 FROM vtt_siege_impacts WHERE '+ropeFilter+' LIMIT 1', ropeParams)).rowCount;
+        if (input.kind === 'cutRope') {
+          if (row.kind !== 'harpoon') throw new AppError(400, 'Esta arma não usa corda de arpão.');
+          if (!gm) operatingActor(input.actorId);
+          if (!ropeAttached) throw new AppError(409, 'Não há corda presa a este lançador.');
+          await db.query('UPDATE vtt_siege_impacts SET data=data||$4::jsonb WHERE '+ropeFilter,
+            [...ropeParams, JSON.stringify({ropeCutAt:Date.now(),ropeOrigin:null})]);
+        } else if (input.kind === 'settings') {
+          if (!gm) throw new AppError(403, 'Somente o mestre configura reservas e som.');
+          row.ammunition = input.ammunition;
+          row.muted = input.muted;
+        } else {
+          const actor = operatingActor(input.actorId);
+          if (ropeAttached) throw new AppError(409, 'Corte a corda do arpão antes de carregar ou disparar novamente.');
           if (input.kind === 'load') {
             if (row.stage !== 'empty') throw new AppError(409, 'A arma já tem uma carga.');
             if (!row.ammunition) throw new AppError(400, 'Não há munição de reserva.');

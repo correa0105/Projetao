@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Crosshair, Flame, Plus, RotateCcw, Volume2, X } from 'lucide-react';
+import { Crosshair, Flame, Plus, RotateCcw, Scissors, Volume2, X } from 'lucide-react';
 import { api } from './api';
 import { viewerSees, type VttState, type VttScene, type VttToken, type Point } from '../shared/vtt';
 import {
@@ -356,9 +356,21 @@ export function VttSiegePanel({
               </div>
             )}
             <div className="vtt-siege-actions">
+              {weapon.kind === 'harpoon' && weapon.ropeAttached && (
+                <div className="vtt-siege-rope">
+                  <p>Corda presa. Corte para carregar outro arpão; o projétil permanece no alvo.</p>
+                  <button
+                    disabled={disabled || (!gm && !near)}
+                    onClick={() => run({kind:'cutRope',weaponId:weapon.id,revision:weapon.revision,...(actor ? {actorId:actor.id} : {})})}
+                  >
+                    <Scissors size={15}/>
+                    Cortar corda
+                  </button>
+                </div>
+              )}
               <button
                 disabled={
-                  disabled || !near || !available || weapon.stage !== 'empty' || !weapon.ammo
+                  disabled || !near || !available || weapon.stage !== 'empty' || !weapon.ammo || weapon.ropeAttached
                 }
                 onClick={() =>
                   actor &&
@@ -391,7 +403,7 @@ export function VttSiegePanel({
               <button
                 className="vtt-siege-fire"
                 disabled={
-                  disabled || !near || !available || weapon.stage !== 'aimed' || !weapon.aim
+                  disabled || !near || !available || weapon.stage !== 'aimed' || !weapon.aim || weapon.ropeAttached
                 }
                 onClick={() =>
                   actor &&
