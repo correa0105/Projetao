@@ -43,6 +43,8 @@ Tiefling oferece oito formatos ilustrados durante a criação. `tieflingHorns` �
 
 A imagem de referência fornece os demais traços compatíveis, sem impor a cor da pele. Na criação, Tieflings usam pele avermelhada e humanos usam tons humanos naturais; escolhas explícitas do jogador prevalecem. Vestir uma BASE aprovada conserva sua paleta, salvo correção pedida pelo dono. No token de postura ereta, apenas a câmera muda: cabeça, pescoço e coluna continuam alinhados verticalmente, com olhar horizontal. Não confundir vista superior com personagem de cabeça baixa. Essas orientações valem para novas artes e correções solicitadas, sem recolorir personagens existentes automaticamente.
 
+O acervo FA indicado pelo usuário pode orientar câmera, encurtamento e proporções dos tokens de personagens. O worker lê `.local/token-camera-reference.json` com `root` absoluto e `file` relativo ao acervo privado; a imagem selecionada é anexada à geração e à revisão, sem cópia para Git, catálogo ou release. O caminho real precisa permanecer dentro de `root` e apontar para PNG/WebP válido. Configuração existente com arquivo indisponível interrompe a geração em vez de trocar silenciosamente de referência. Sem esse perfil local, mantém a referência própria do projeto; animais conservam seus modelos por espécie. A revisão compara a projeção com a referência efetivamente anexada e confere o corpo inteiro, rejeitando pés invertidos ou deslocados, cabeça abaixada, curvatura não escolhida e proporções incoerentes.
+
 O worker carrega sempre [CHARACTER-ART-PROMPT-v1.md](CHARACTER-ART-PROMPT-v1.md)
 e anexa as referências em ordem: `docs/references/character-style-v1.png`
 (estilo fornecido pelo usuário) e a referência privada do jogador (aparência).
