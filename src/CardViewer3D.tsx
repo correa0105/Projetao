@@ -1,10 +1,9 @@
-import {useEffect, useRef, useState, type CSSProperties} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {RotateCcw, Rotate3D} from 'lucide-react';
 import type {Card} from '../shared/cards';
 import {CardFace} from './Cards';
-import {cardBacks} from './card-backs';
+import {CardBack} from './CardBack';
 import {cardVisualLevel} from '../shared/card-presentation';
-import {CardPrismaticFoil} from './CardPrismaticFoil';
 
 export function CardViewer3D({card,level=1}:{card:Card;level?:number}) {
   const stage=useRef<HTMLDivElement>(null),model=useRef<HTMLDivElement>(null);
@@ -75,7 +74,7 @@ export function CardViewer3D({card,level=1}:{card:Card;level?:number}) {
       }}>
       <div ref={model} className="card-viewer-model" data-finish={chrome?'chrome':'original'}>
         <div ref={front} className="card-viewer-front" aria-hidden="false"><CardFace card={card} level={level} finish={chrome?'chrome':'original'}/></div>
-        <div ref={back} className="card-viewer-back" role="img" aria-label={'Verso de '+card.name} aria-hidden="true" style={{backgroundImage:`url('${chrome?cardBacks.chrome:cardVisualLevel(level)===2?cardBacks.dark:cardBacks.original}')`} as CSSProperties}>{chrome&&<CardPrismaticFoil/>}</div>
+        <div ref={back} className="card-viewer-back" role="img" aria-label={'Verso de '+card.name} aria-hidden="true"><CardBack level={level}/></div>
         {[-1.5,-.5,.5,1.5].map(depth=><span key={depth} className="card-viewer-core" style={{transform:`translateZ(${depth}px)`}} aria-hidden="true"/>)}
       </div>
     </div>

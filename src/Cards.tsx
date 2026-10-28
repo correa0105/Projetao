@@ -8,14 +8,14 @@ import type { Character } from './types';
 import './cards.css';
 import './cards-rarity.css';
 import { CardsHost } from './CardsHost';
-import {CardFrame} from './CardFrame';
+import {CardBack} from './CardBack';
+import {useCardTableSides} from './useCardTableSides';
 import {cardVisualLevel} from '../shared/card-presentation';
 import {CardViewer3D} from './CardViewer3D';
 import {CardPrismaticFoil} from './CardPrismaticFoil';
 import {CardReadingSurface} from './CardReadingSurface';
 import {CardsLibrary} from './CardsLibrary';
 import {CardsRoomLighting} from './CardsRoomLighting';
-import {cardBacks} from './card-backs';
 import {useSoundEffects} from './SiteMusic';
 import {playCardReveal} from './card-reveal-audio';
 import './card-reveal.css';
@@ -23,9 +23,10 @@ import './cards-salon.css';
 export function CardFace({ card, small = false, level = 1, finish }: { card: Card; small?: boolean; level?: number; finish?:'original'|'chrome' }) {
   const visualLevel=cardVisualLevel(level),resolvedFinish=finish??(visualLevel===3?'chrome':'original');
   const nativePrism=resolvedFinish==='chrome';
-  const art=nativePrism?`/cards/prismatic-clean-20261014/${card.id}.webp`:card.id==='raven'?`/cards/raven-corrected-20261014/raven-${visualLevel===1?1:2}.webp`:`/cards/tarot-symbolic-20261013/${card.id}-${visualLevel===1?1:2}.webp`;
+  const art=`/cards/arcana-emblems-20261028/${card.id}.png`;
+  const titleY={vigil:87.8,raven:88.1,mirror:87.6,moon:87.8,roots:86.7,anchor:87.7,blade:89.1,throne:88.5}[card.id];
   return (
-    <span className={'arcana-card-face' + (small ? ' small' : '')} data-rarity={card.rarity} data-level={visualLevel} data-finish={resolvedFinish} data-prismatic-art={nativePrism}>
+    <span className={'arcana-card-face' + (small ? ' small' : '')} data-deck="emblems" data-card={card.id} data-rarity={card.rarity} data-level={visualLevel} data-finish={resolvedFinish} data-prismatic-art={nativePrism} style={{'--emblem-title-y':titleY+'%'} as CSSProperties}>
       <span
         className="arcana-card-art"
         style={
@@ -34,10 +35,10 @@ export function CardFace({ card, small = false, level = 1, finish }: { card: Car
           } as CSSProperties
         }
       />
-      <CardFrame cell={card.cell} metallic={visualLevel>=2||nativePrism} chrome={nativePrism} gold={visualLevel===2&&!nativePrism}/>
+      {visualLevel===2&&!nativePrism&&<span className="arcana-emblem-gold" aria-hidden="true"/>}
       {nativePrism && <CardPrismaticFoil/>}
       <span className="arcana-card-title">
-        <span className="arcana-card-name" style={{fontSize: `${Math.min(7.5, 112 / card.name.length)}cqw`}}>{card.name}</span>
+        <span className="arcana-card-name" style={{fontSize: `${Math.min(7.2, 112 / card.name.length)}cqw`}}>{card.name}</span>
       </span>
       <span className="arcana-card-family">{card.family}</span>
     </span>
@@ -64,6 +65,7 @@ export function Cards({
   const [inspecting, setInspecting] = useState<Card | null>(null);
   const [library,setLibrary]=useState<'catalog'|'equip'|null>(null);
   const [previewLevel,setPreviewLevel]=useState(1);
+  const tableSides=useCardTableSides(character?.id);
   const dialogueBody=useRef<HTMLDivElement>(null);
   useLayoutEffect(()=>{dialogueBody.current?.scrollTo({top:0});},[speech,conversation]);
   const key = useRef(crypto.randomUUID()),
@@ -201,6 +203,7 @@ export function Cards({
                     Nv {item.level} ·{' '}
                     {item.slot ? 'Equipada no espaço ' + item.slot : 'Na coleção'}
                   </span>
+                  {item.slot&&<button type="button" className="button outline cards-table-side-choice" aria-pressed={tableSides.isFaceDown(item.id)} onClick={()=>tableSides.toggle(item.id)}>{tableSides.isFaceDown(item.id)?'Mostrar frente na mesa':'Deixar verso na mesa'}</button>}
                   <fieldset className="cards-equip-slot-choice"><legend>Espaço para equipar</legend>{[1,2,3].map(position => <button type="button" key={position} aria-label={'Usar espaço '+position} aria-pressed={slot===position} disabled={busy} onClick={() => setSlot(position)}>{position}</button>)}</fieldset>
                   <div className="cards-detail-actions">
                     <button
@@ -307,12 +310,13 @@ export function Cards({
       </div>
       <div className="cards-table">
         <CardReadingSurface>
-          <button type="button" className="cards-deck" aria-label="Abrir acervo do Anfitrião" title="Ver o acervo do Anfitrião" disabled={busy} onClick={()=>{setError('');setLibrary('catalog');}}><span/><span/><img src={cardBacks.original} alt=""/><small>Acervo</small></button>
+          <button type="button" className="cards-deck" aria-label="Abrir acervo do Anfitrião" title="Ver o acervo do Anfitrião" disabled={busy} onClick={()=>{setError('');setLibrary('catalog');}}><span/><span/><CardBack/><small>Acervo</small></button>
           <div className="cards-table-slots" aria-label="Três espaços de cartas na mesa">
             {[1,2,3].map(position=>{
               const equipped=owned.find(card=>card.slot===position),definition=cards.find(card=>card.id===equipped?.card_id);
-              return <button type="button" key={position} className="cards-table-slot" data-filled={!!definition} aria-label={`Escolher carta para o espaço ${position}${definition?': '+definition.name:''}`} disabled={busy||!character||!collectionReady} onClick={()=>openSlot(position)}>
-                {definition?<CardFace card={definition} level={equipped?.level}/>:<span className="cards-table-slot-empty"><span aria-hidden="true">✦</span><b>Escolher carta</b></span>}
+              const faceDown=!!equipped&&tableSides.isFaceDown(equipped.id);
+              return <button type="button" key={position} className="cards-table-slot" data-filled={!!definition} data-side={faceDown?'back':'front'} aria-label={`Escolher carta para o espaço ${position}${definition?': '+definition.name:''}${faceDown?' (verso para cima)':''}`} disabled={busy||!character||!collectionReady} onClick={()=>openSlot(position)}>
+                {definition?<span className="cards-table-turn"><span className="cards-table-front" aria-hidden={faceDown}><CardFace card={definition} level={equipped?.level}/></span><span className="cards-table-back" aria-hidden={!faceDown}><CardBack level={equipped?.level}/></span></span>:<span className="cards-table-slot-empty"><span aria-hidden="true">✦</span><b>Escolher carta</b></span>}
                 <span className="cards-table-slot-number" aria-hidden="true">{['I','II','III'][position-1]}</span>
               </button>;
             })}
@@ -320,7 +324,7 @@ export function Cards({
         </CardReadingSurface>
       </div>
       {!library&&!inspecting&&(error||notice)&&<p className="cards-room-message" role={error?'alert':'status'}>{error||notice}</p>}
-      {library&&<CardsLibrary key={library+'-'+slot} mode={library} slot={slot} owned={owned} busy={busy} error={error} close={()=>setLibrary(null)} onBrowse={()=>{setError('');setLibrary('catalog');}} onInspect={openCard} onEquip={finishEquip}/>}
+      {library&&<CardsLibrary key={library+'-'+slot} mode={library} slot={slot} owned={owned} busy={busy} error={error} close={()=>setLibrary(null)} onBrowse={()=>{setError('');setLibrary('catalog');}} onInspect={openCard} onEquip={finishEquip} isFaceDown={tableSides.isFaceDown} onFlip={tableSides.toggle}/>}
       {inspecting && <CardInspection card={inspecting} level={previewLevel} close={() => setInspecting(null)}>{details}</CardInspection>}
     </section>
   );

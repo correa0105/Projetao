@@ -1,7 +1,7 @@
 export type TablePoint = {x:number;y:number};
 type TableSize = {width:number;height:number};
 export type TableKind = 'wide'|'tall';
-export const cardTableCardSize = {width:170,height:243};
+export const cardTableCardSize = {width:162,height:243};
 export const cardTableLayouts = {
   wide: {width:1400,height:490,matTop:90,matHeight:400,slotY:168.5,deckX:1120,deckY:50},
   tall: {width:1400,height:490,matTop:90,matHeight:400,slotY:168.5,deckX:1040,deckY:50},
@@ -16,7 +16,7 @@ export const cardTableScenes = {
 
 // Three persistent equipment positions share the desk's real projective plane.
 export function cardTablePlacement(kind:TableKind,index:number) {
-  return {x:405+210*index,y:cardTableLayouts[kind].slotY};
+  return {x:409+210*index,y:cardTableLayouts[kind].slotY};
 }
 export function cardTableCardCorners(kind:TableKind,index:number) {
   const p=cardTablePlacement(kind,index);

@@ -6,9 +6,10 @@ import {money} from '../shared/rules';
 import {CardFace} from './Cards';
 import './cards-library.css';
 
-export function CardsLibrary({mode,slot,owned,busy,error,close,onBrowse,onInspect,onEquip}:{
+export function CardsLibrary({mode,slot,owned,busy,error,close,onBrowse,onInspect,onEquip,isFaceDown,onFlip}:{
   mode:'catalog'|'equip';slot:number;owned:OwnedCard[];busy:boolean;error:string;
   close:()=>void;onBrowse:()=>void;onInspect:(card:Card)=>void;onEquip:(id:string|null)=>Promise<void>;
+  isFaceDown?:(id:string)=>boolean;onFlip?:(id:string)=>void;
 }) {
   const dialog=useRef<HTMLDialogElement>(null);
   const [filter,setFilter]=useState('Todas');
@@ -37,6 +38,7 @@ export function CardsLibrary({mode,slot,owned,busy,error,close,onBrowse,onInspec
     {error&&<p className="cards-library-error" role="alert">{error}</p>}
     {choosing&&<footer className="cards-library-actions">
       {chosen&&definition&&<button type="button" className="button outline" disabled={busy} onClick={()=>onInspect(definition)}>Inspecionar</button>}
+      {chosen?.slot&&onFlip&&<button type="button" className="button outline" aria-pressed={isFaceDown?.(chosen.id)||false} disabled={busy} onClick={()=>onFlip(chosen.id)}>{isFaceDown?.(chosen.id)?'Mostrar frente na mesa':'Deixar verso na mesa'}</button>}
       {current&&<button type="button" className="button outline" disabled={busy} onClick={()=>void onEquip(null)}>Retirar carta do espaço {slot}</button>}
       <button type="button" className="button primary" disabled={busy||!chosen||chosen.slot===slot} onClick={()=>void onEquip(choice)}>{busy?'Equipando…':`Equipar no espaço ${slot}`}</button>
     </footer>}

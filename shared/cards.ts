@@ -2,7 +2,7 @@ export const cards = [
   {
     id: 'vigil',
     rarity: 'common',
-    name: 'A Vigília',
+    name: 'A Lanterna',
     family: 'Luz',
     price_cp: 5000,
     buyable: true,
@@ -10,7 +10,7 @@ export const cards = [
     description:
       'Uma chama protegida contra a noite. O símbolo de quem permanece quando os outros precisam descansar.',
     comment:
-      'A Vigília. Ficavam acesas lanternas como esta nos portões do Norte, mesmo quando ninguém esperava visitas. Gosto de pensar que algum viajante conseguiu voltar por causa delas.',
+      'A Lanterna. Ficavam acesas lanternas como esta nos portões do Norte, mesmo quando ninguém esperava visitas. Gosto de pensar que algum viajante conseguiu voltar por causa delas.',
   },
   {
     id: 'raven',
@@ -40,19 +40,19 @@ export const cards = [
   {
     id: 'moon',
     rarity: 'rare',
-    name: 'A Lua Errante',
-    family: 'Caminho',
+    name: 'A Chave',
+    family: 'Acesso',
     price_cp: 15000,
     buyable: true,
     cell: 3,
-    description: 'Uma luz distante acompanha os viajantes que seguem depois do último portão.',
+    description: 'Ferro antigo, uma pedra verde e dentes que ainda procuram a fechadura certa.',
     comment:
-      'Esta foi pintada por alguém que viajava à noite. Repare na figura junto à montanha: ela segue em frente, embora a estrada já tenha sumido. Sempre volto a olhar esse detalhe.',
+      'Repare nos dentes da chave. Não combinam com nenhuma porta deste salão. Veio embrulhada num mapa de ruínas; a fechadura desenhada na pedra era a única marca que não havia sido riscada.',
   },
   {
     id: 'roots',
     rarity: 'uncommon',
-    name: 'Raízes Antigas',
+    name: 'A Árvore',
     family: 'Memória',
     price_cp: 0,
     buyable: false,
@@ -64,38 +64,38 @@ export const cards = [
   {
     id: 'anchor',
     rarity: 'rare',
-    name: 'Âncora da Maré',
-    family: 'Vínculo',
+    name: 'O Poço',
+    family: 'Profundidade',
     price_cp: 0,
     buyable: false,
     cell: 5,
-    description: 'O peso que dá direção ao retorno quando o mar insiste em apagar as rotas.',
+    description: 'Pedra quebrada e uma corda gasta cercam uma luz fria no fundo do poço.',
     comment:
-      'Um marinheiro deixou esta comigo antes de partir. Pediu que eu a conservasse longe da umidade, como se não tivesse passado a vida no mar. Ela permanece guardada por enquanto.',
+      'O artista deixou cair uma moeda antes de desenhar este poço. Esperou pelo som até a vela se apagar. Na manhã seguinte, pintou aquela luz no fundo. A carta continua sob minha guarda.',
   },
   {
     id: 'blade',
     rarity: 'very-rare',
-    name: 'O Último Corte',
+    name: 'A Lança',
     family: 'Juramento',
     price_cp: 0,
     buyable: false,
     cell: 6,
-    description: 'A lâmina descansa. O juramento que a acompanha permanece desperto.',
+    description: 'Uma lança dourada permanece entre as armas comuns de um pátio abandonado.',
     comment:
-      'O fio está limpo, mas o punho foi gasto por muitas mãos. Há um nome gravado na guarda; a pintura não deixa ler. Também esta continua sob meus cuidados.',
+      'As outras lanças eram da guarda do pátio. A dourada já estava ali quando chegaram. Ninguém quis levar a última arma depois que os portões fecharam. Guardo a carta até saber por quê.',
   },
   {
     id: 'throne',
     rarity: 'legendary',
-    name: 'O Trono Vazio',
-    family: 'Destino',
+    name: 'A Torre',
+    family: 'Vigília',
     price_cp: 0,
     buyable: false,
     cell: 7,
-    description: 'Uma cadeira sem dono, um lugar sem promessa. A ausência também deixa sua marca.',
+    description: 'Uma esfera verde ilumina o alto de uma torre de pedra entre montanhas desertas.',
     comment:
-      'Quando trouxe esta carta, o pintor ficou um bom tempo sentado onde você está. Perguntou se uma cadeira vazia podia incomodar alguém. Não a pus à venda.',
+      'A escada sobe por fora da torre, mas o desenho não mostra uma entrada. O pintor disse que a esfera ainda acendia ao anoitecer. Não voltou às montanhas e não me pediu a carta de volta.',
   },
 ] as const;
 export type Card = (typeof cards)[number];
