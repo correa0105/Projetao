@@ -14,6 +14,8 @@ Falhas técnicas, de geração ou de revisão devolvem o mesmo pedido à fila au
 
 Interrupção do processo também retoma o pedido após obter a trava exclusiva do ilustrador. Referência, equipamentos, ficha, slot e retrato aprovado permanecem preservados, inclusive em substituições. Não reativar em lote rascunhos antigos, arquivados ou superados. A interface informa que a continuação é automática. Publicação continua exigindo o par aprovado; nova tentativa não cria outro pedido, não concede ouro novamente nem acrescenta consumo à geração original.
 
+O PNG aprovado do token conserva resolução nativa, pixels e transparência. A normalização valida o arquivo sem reduzir a fonte para 1024 px; derivados existentes do VTT continuam separados do original.
+
 Validação em banco descartável cobre cinco falhas consecutivas, intervalo e concorrência, atendimento de outro pedido, reinício repetido, preservação dos checkpoints, publicação idempotente e substituição privada. A retomada manual continua disponível para os casos que exigem correção, com ownership e dados atuais dos slots.
 
 Validação: seis testes de API/ownership, retomada concorrente, conteúdo preservado, finalização atômica e gerador de duas artes; QA no navegador com recarga, restauração literal da história e ficha, imagem preservada e retry no mesmo pedido, em 1440 e 390 px. Fixture do teste de VTT passou a usar a constante vigente do protocolo em vez do valor antigo 7.

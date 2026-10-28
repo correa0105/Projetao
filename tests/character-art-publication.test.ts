@@ -9,6 +9,18 @@ import { IllustratorError, imageGenerationFailure } from '../server/codex-illust
 import { AppError } from '../server/services';
 import { defaultChoices } from '../shared/character-sheet';
 import { lockTestIllustrator, testArtImage, testTokenImage } from './character-fixtures';
+import sharp from 'sharp';
+import { normalizeCharacterToken } from '../server/character-token-art';
+
+test('token aprovado conserva resolução, pixels e alfa do PNG original acima de 1024', async () => {
+  const source = await sharp(await testTokenImage()).resize(1536, 1536).png().toBuffer();
+  const normalized = await normalizeCharacterToken(source);
+  const meta = await sharp(normalized).metadata();
+  assert.equal(meta.width, 1536);
+  assert.equal(meta.height, 1536);
+  assert.equal(meta.hasAlpha, true);
+  assert.deepEqual(await sharp(normalized).raw().toBuffer(), await sharp(source).raw().toBuffer());
+});
 
 test('criação e substituição publicam somente par completo; checkpoint e falha preservam slot, ouro, imagem e cota', async () => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[a-f0-9]{32}$/);

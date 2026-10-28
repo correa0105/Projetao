@@ -25,10 +25,9 @@ export async function normalizeCharacterToken(bytes: Buffer) {
     const stats = await image.stats();
     if (stats.isOpaque || !stats.channels[3]?.max)
       throw new AppError(400, 'O token precisa de uma silhueta e fundo transparente.');
-    return image
-      .resize({ width: 1024, height: 1024, fit: 'inside', withoutEnlargement: true })
-      .png()
-      .toBuffer();
+    // Keep the approved source at its native resolution. VTT derivatives are
+    // prepared separately without replacing the original PNG.
+    return image.png().toBuffer();
   } catch (error) {
     if (error instanceof AppError) throw error;
     throw new AppError(400, 'Não foi possível validar a vista de cima.');
