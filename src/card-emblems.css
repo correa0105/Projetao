@@ -8,10 +8,10 @@
 .arcana-emblem-gold {position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 18px #edd19a33;}
 .arcana-card-back {display:block;position:relative;isolation:isolate;width:100%;height:100%;}
 .arcana-card-back .arcana-back-paper {position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border:0;mask:none;}
-.arcana-back-eye {position:absolute;left:50%;top:50%;width:62%;height:auto;transform:translate(-50%,-50%);overflow:visible;}
+.arcana-back-eye {position:absolute;inset:0;width:100%;height:100%;overflow:hidden;}
 .arcana-eye-lid {animation:arcana-eye-blink 7.4s ease-in-out infinite;}
 .arcana-eye-seam {opacity:0;animation:arcana-eye-seam 7.4s ease-in-out infinite;}
-@keyframes arcana-eye-blink {0%,84%,93%,100%{d:path('M12 55C66 -4 174 -4 228 55C174 114 66 114 12 55Z')}88%,89%{d:path('M12 55C66 74 174 74 228 55C174 76 66 76 12 55Z')}}
+@keyframes arcana-eye-blink {0%,84%,93%,100%{d:path('M-20 55C-20 -55 260 -55 260 55C260 165 -20 165 -20 55Z')}88%,89%{d:path('M-20 55C60 80 180 80 260 55C180 82 60 82 -20 55Z')}}
 @keyframes arcana-eye-seam {0%,85%,92%,100%{opacity:0}88%,89%{opacity:.8}}
 .card-viewer-stage {aspect-ratio:2/3;}
 .card-viewer-back,.card-viewer-core {mask:none;border-radius:7% / 4.67%;}
