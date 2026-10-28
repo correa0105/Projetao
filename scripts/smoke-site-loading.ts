@@ -3,6 +3,10 @@ import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
 import { createServer } from 'node:net';
+import express from 'express';
+import {resolve} from 'node:path';
+import {optimizedPublicImages} from '../server/optimized-public-images';
+import {staticAssetCacheControl} from '../server/static-asset-cache';
 if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
   throw Error('Banco descartável obrigatório.');
 const probe = createServer();
@@ -17,7 +21,11 @@ const { seed } = await import('../server/seed');
 await migrate();
 await seed();
 const { createApp } = await import('../server/app');
-const server = createApp().listen(port, '127.0.0.1');
+const app=express();
+app.use(optimizedPublicImages(resolve('public')));
+app.use(express.static(resolve('public'),{setHeaders(res,file){const cache=staticAssetCacheControl(resolve('public'),file);if(cache)res.setHeader('Cache-Control',cache);}}));
+app.use(createApp());
+const server = app.listen(port, '127.0.0.1');
 await new Promise<void>((r) => server.once('listening', r));
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
 const context = await browser.newContext({
@@ -45,9 +53,11 @@ try {
   const delayed = new Promise<void>((r) => (release = r));
   let shopRequests = 0;
   let catalogueRequests = 0;
+  let unrelatedBackgroundRequests=0;
   page.on('request', (r) => {
     if (r.url().includes('/shop/reference/shop-counter')) shopRequests++;
     if (r.url().endsWith('/api/catalog')) catalogueRequests++;
+    if (/\/(?:home-guild-hall\.webp|cards\/host-shadow-study[^/]*)$/.test(new URL(r.url()).pathname))unrelatedBackgroundRequests++;
   });
   await page.route('**/stable/paddock-camp-v2.webp', async (route) => {
     await delayed;
@@ -60,6 +70,7 @@ try {
   await expect(page.locator('.stable-page')).toHaveCount(0);
   expect(shopRequests).toBe(0);
   expect(catalogueRequests).toBe(0);
+  expect(unrelatedBackgroundRequests).toBe(0);
   await expect(page.locator('.asset-loading__first-visit')).toContainText(
     'Na primeira visita, o carregamento pode demorar mais.',
   );
@@ -79,6 +90,16 @@ try {
   ).toBe(true);
   expect(shopRequests).toBe(0);
   await page.screenshot({ path: 'test-results/site-loading/stable-ready.png' });
+  let releaseReload!:()=>void;
+  const delayedReload=new Promise<void>(r=>releaseReload=r);
+  await page.route('**/stable/paddock-camp-v2.webp',async route=>{await delayedReload;await route.continue();});
+  await page.reload({waitUntil:'domcontentloaded'});
+  await expect(page.locator('[data-loading-mode="compact"]')).toBeVisible();
+  await expect(page.locator('.asset-loading__first-visit')).toHaveCount(0);
+  await expect(page.locator('[data-loading-mode="compact"] h1')).toHaveCount(0);
+  await page.screenshot({path:'test-results/site-loading/return-visit-bar.png'});
+  releaseReload();
+  await expect(page.locator('[data-asset-loading]')).toHaveCount(0,{timeout:60000});
   const cached = await context.request.get(origin + '/stable/paddock-camp-v2.webp');
   expect(cached.headers()['cache-control']).toContain('max-age=3600');
   let releaseShop!: () => void;
@@ -96,9 +117,10 @@ try {
     .getByRole('navigation', { name: 'Navegação principal' })
     .getByRole('button', { name: 'Empório', exact: true })
     .click();
-  await expect(
-    page.getByRole('heading', { name: 'Preparando Empório do viajante', exact: true }),
-  ).toBeVisible();
+  await expect(page.locator('[data-loading-mode="compact"]')).toBeVisible();
+  await expect(page.locator('.asset-loading__first-visit')).toHaveCount(0);
+  await expect(page.locator('[data-loading-mode="compact"] h1')).toHaveCount(0);
+  await expect(page.locator('[data-loading-mode="compact"] progress')).toBeVisible();
   await expect(page.locator('.shop-scene')).toBeHidden();
   await page.screenshot({ path: 'test-results/site-loading/shop-waiting.png' });
   releaseShop();
@@ -133,7 +155,7 @@ try {
   );
   await page.screenshot({ path: 'test-results/site-loading/sheet-guild-rank.png' });
   let failOnce = true;
-  await page.route('**/home-guild-hall.webp', async (route) => {
+  await page.route('**/stable/paddock-camp-v2.webp', async (route) => {
     if (failOnce) {
       failOnce = false;
       await route.abort();

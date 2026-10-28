@@ -1104,7 +1104,7 @@ export function Shop({
               const recipient = recipients.find(animal => animal.id === line.companion_id) || recipients.find(animal => animal.displayed) || recipients[0];
               return (
                 <div className="shop-checkout-line" key={line.id}>
-                  <img src={item.image_path || ''} alt="" />
+                  <img src={item.image_path || ''} alt="" loading="lazy" decoding="async" />
                   <div>
                     <strong>{item.name}</strong>
                     {line.spell_label && <small>Magia vinculada: {line.spell_label}</small>}

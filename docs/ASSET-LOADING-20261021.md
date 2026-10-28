@@ -1,9 +1,14 @@
 # Entrada e preparação de cenários
 
-O site prepara 21 imagens compartilhadas de abertura antes de exibir a entrada.
-A tela mostra progresso real por arquivos preparados, falha explícita e nova tentativa.
-O catálogo, o cenário próprio da loja, mapas e bibliotecas grandes ficam fora dessa
-fila. O catálogo JSON só começa a carregar ao entrar no Empório ou na Torre.
+Na entrada, o site prepara somente o destino aberto pelo usuário autenticado;
+sem sessão, prepara as duas imagens da entrada. As outras áreas carregam seus
+cenários ao serem abertas. Cartas prepara apenas o fundo correspondente à largura
+da tela. O catálogo JSON só começa a carregar ao entrar no Empório ou na Torre.
+A primeira visita mostra o aviso de que pode demorar mais e o progresso real.
+Depois da primeira preparação bem-sucedida, fica somente uma barra discreta,
+inclusive após recarregar o navegador. A preferência visual é local; não guarda
+dados de jogo nem promete cache permanente. Falhas continuam mostrando a causa
+e o botão de nova tentativa.
 
 `page-assets.ts` lista cenários iniciais; `asset-preloader.ts` compartilha pedidos
 por URL normalizada, limita a quatro downloads simultâneos e aguarda decodificação.
@@ -12,7 +17,8 @@ O navegador administra o cache e a memória. Artes e fontes públicas em caminho
 com data de versão, assim como os bundles com hash, têm cache de um ano e
 `immutable`; imagens públicas sem essa versão mantêm uma hora. Trocar uma arte
 versionada exige uma URL nova. HTML, autenticação e APIs mantêm suas políticas de não armazenamento.
-Nenhuma imagem foi comprimida, redimensionada ou substituída.
+Os arquivos originais permanecem preservados. A entrega leve autorizada está
+descrita abaixo; backgrounds e mapas continuam com seus bytes originais.
 
 `AssetGate` prepara fundos CSS, pseudo-elementos, imagens e texturas SVG da primeira
 viewport antes de revelar uma aba. O observador atua somente até a primeira abertura;
@@ -22,9 +28,39 @@ medidas, responsividade e controles. Imagens visíveis com carregamento lazy sã
 promovidas só nessa viewport; o restante do catálogo continua sob demanda.
 Modais conservam seus próprios fluxos, sem esconder diálogos no topo da página.
 Dados iniciais assíncronos aguardam `data-page-preparing`/`aria-busy` antes da primeira
-varredura completa. Imagens de prévias de pins ficam fora dessa preparação. A mensagem
-em destaque explica que a primeira visita demora mais e que o navegador poderá
-reutilizar imagens nas próximas visitas; não garante cache permanente.
+varredura completa. Imagens de prévias de pins ficam fora dessa preparação. O aviso
+da primeira visita fica em `AssetLoading`; `loading-visit.ts` registra somente que
+a preparação inicial terminou. A barra seguinte continua acessível a leitores de
+tela e fica indeterminada enquanto aguarda informações.
+
+## Entrega leve de imagens
+
+`npm run images:optimize` audita os arquivos públicos e gera cópias WebP em
+`public/optimized-images-20261028/`, com manifesto e hashes próprios. Essa saída
+reproduzível fica fora do Git e deve acompanhar o artefato de publicação. Os PNGs,
+WebPs e SVGs originais não são sobrescritos. `image-delivery-policy.ts` exclui
+backgrounds, mapas, máscaras e texturas de dados; atlas mantêm dimensões e
+coordenadas. Imagens avulsas usam resolução de exibição proporcional, até 768 px
+na loja, 960 px nos demais objetos e 1536 px nas cartas. SVGs com animação ou
+símbolos reutilizáveis conservam o arquivo original; não reduzir quadros de forma
+que descarte movimentos ou variações necessárias.
+
+O servidor negocia a cópia somente quando o navegador aceita WebP explicitamente.
+`Vary: Accept` separa os formatos no cache. Requisições de ferramentas e
+`?original=1` recebem os originais. Arquivos ausentes voltam à entrega original.
+Os retratos, tokens e companheiros também podem receber prévias WebP após a
+autorização atual da rota. O cache dessas conversões é privado, limitado a 32 MB,
+com no máximo duas conversões simultâneas; o banco, as revisões e os originais
+continuam intactos. Galerias de inventário e animais carregam imagens fora da
+viewport sob demanda.
+
+A entrega de 28/10/2026 verificou 8.628 arquivos: 2.658.646.549 bytes originais para
+735.661.046 bytes nas cópias, redução agregada de 72,3%. Isso mede o acervo tratado,
+não um download completo feito por visita. Comparação visual em 1440 e 390 px,
+negociação/cache por formato, acesso privado após cache aquecido e exclusão,
+primeira visita, recarga com barra, falha/retomada e ausência de downloads de áreas
+não abertas foram conferidos em testes e navegador. Evidências em `.local` e
+`test-results/image-performance/` e `test-results/site-loading/`.
 
 Guilda e House reaproveitam snapshots de exibição durante a navegação da sessão.
 O cache fica somente na memória, separado por conta, personagem e prévia básica,

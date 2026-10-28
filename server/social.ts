@@ -1,4 +1,5 @@
 import express from 'express';
+import { sendImagePreview } from './image-preview.js';
 import { tagDefinitions } from './mission-tags.js';
 import { z } from 'zod';
 import sharp from 'sharp';
@@ -312,7 +313,8 @@ export function socialRouter() {
       );
       if (!art) throw new AppError(404, 'Imagem não encontrada neste perfil.');
       res.setHeader('Cache-Control', 'private, no-store');
-      res.type('png').send(art.image);
+      res.vary('Cookie').type('png');
+      await sendImagePreview(req,res,art.image);
     },
   );
   router.get('/profiles/:user/characters/:character/portrait', async (req, res) => {

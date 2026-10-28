@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { sendImagePreview } from './image-preview.js';
 import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { readFile } from 'node:fs/promises';
@@ -659,7 +660,8 @@ export function companionEquipmentRouter() {
           : 'private, no-cache'
         : 'private, no-store',
     );
-    res.type('png').send(art.image);
+    res.type('png');
+    await sendImagePreview(req,res,art.image);
   });
   return router;
 }

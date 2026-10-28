@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { assetReady, preloadImages } from './asset-preloader';
+import { initialLoadComplete } from './loading-visit';
 import './asset-loading.css';
 
 export function AssetLoading({
@@ -17,10 +18,16 @@ export function AssetLoading({
   retry?: () => void;
   waitingForData?: boolean;
 }) {
+  const [firstVisit] = useState(() => !initialLoadComplete());
+  if (!firstVisit && !error)
+    return <div className="asset-loading asset-loading--compact" data-asset-loading="true" data-loading-mode="compact" role="status" aria-label={title}>
+      <progress max={Math.max(1,total)} {...(!waitingForData && total ? {value:done} : {})} aria-label={waitingForData ? 'Carregando informações' : 'Imagens preparadas'} />
+    </div>;
   return (
     <div
       className="asset-loading"
       data-asset-loading="true"
+      data-loading-mode={error ? 'error' : 'first-visit'}
       role={error ? 'alert' : 'status'}
       aria-live="polite"
     >
@@ -28,7 +35,7 @@ export function AssetLoading({
         <span className="asset-loading__brand">Alvorada Cinzenta</span>
         <h1>{title}</h1>
         <p>{error || (waitingForData ? 'Consultando os dados desta área.' : 'Preparando os cenários e as imagens para você entrar.')}</p>
-        {!error && !waitingForData && done < total && (
+        {firstVisit && !error && (
           <p className="asset-loading__first-visit">
             <strong>Na primeira visita, o carregamento pode demorar mais.</strong>
             <br />

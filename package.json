@@ -11,6 +11,7 @@
     "db:seed": "tsx scripts/db-seed.ts",
     "staff": "tsx scripts/staff.ts",
     "art:worker": "tsx scripts/character-art-worker.ts",
+    "images:optimize": "node --import tsx scripts/audit-public-images.mjs && node --import tsx scripts/optimize-public-images.mjs && node --import tsx scripts/verify-optimized-images.mjs",
     "catalog:import": "tsx scripts/import-catalog.ts",
     "test": "tsx --test --test-concurrency=1 tests/*.test.ts",
     "test:browser": "tsx scripts/smoke-browser.ts",

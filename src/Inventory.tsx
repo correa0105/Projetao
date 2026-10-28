@@ -149,7 +149,7 @@ function InventorySlot({
         onDragEnd={() => onDrag(null)}
       >
         {item.image_path ? (
-          <img className="loot-item-art" src={item.image_path} alt="" />
+          <img className="loot-item-art" src={item.image_path} alt="" loading="lazy" decoding="async" />
         ) : (
           <Icon size={23} aria-hidden="true" />
         )}

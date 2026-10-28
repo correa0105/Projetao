@@ -329,7 +329,7 @@ export function Stable({
                     className="stable-head"
                     style={{ '--head-position': m.head } as CSSProperties}
                   >
-                    <img src={`/stable/${m.id}.png`} alt="" />
+                    <img src={`/stable/${m.id}.png`} alt="" loading="lazy" decoding="async" />
                   </span>
                   <span>{m.name}</span>
                   <small>{money(m.price_cp)} PO</small>

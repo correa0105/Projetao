@@ -62,3 +62,5 @@
 .asset-gate-content {
   display: contents;
 }
+.asset-loading--compact { background:#10151bd9; }
+.asset-loading--compact progress { width:min(300px,70vw); height:5px; margin:0; }

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { sendImagePreview } from './image-preview.js';
 import {freeCharacterSlot} from './character-slot-rolls.js';
 import { grantCharacterStartingGold } from './character-starting-gold.js';
 import type { CharacterArtPair } from './character-token-illustrator.js';
@@ -493,7 +494,8 @@ export function characterArtRouter() {
       )
     ).rows[0];
     if (!row) throw new AppError(404, 'Imagem não encontrada.');
-    res.set('Cache-Control', 'private, no-store').set('Vary', 'Cookie').type('png').send(row.image);
+    res.set('Cache-Control', 'private, no-store').vary('Cookie').type('png');
+    await sendImagePreview(req,res,row.image);
   });
   router.post('/character-art/:id/decision', async (req, res) => {
     const { decision } = z
@@ -697,7 +699,8 @@ export function characterArtRouter() {
         ? 'private, max-age=3600, immutable'
         : 'private, no-cache',
     );
-    res.type('png').send(rows[0].image);
+    res.type('png');
+    await sendImagePreview(req,res,rows[0].image);
   });
   router.get('/characters/:id/token', async (req, res) => {
     const { rows } = await pool.query(
@@ -708,7 +711,8 @@ export function characterArtRouter() {
       [uuid.parse(req.params.id), res.locals.user.id],
     );
     if (!rows[0]?.image) throw new AppError(404, 'Imagem não encontrada.');
-    res.set('Cache-Control', 'private, max-age=300').type('png').send(rows[0].image);
+    res.set('Cache-Control', 'private, max-age=300').vary('Cookie').type('png');
+    await sendImagePreview(req,res,rows[0].image);
   });
   return router;
 }

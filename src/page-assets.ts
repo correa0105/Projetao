@@ -33,12 +33,12 @@ export const primaryPageAssets: Partial<Record<Page, readonly string[]>> = {
     '/character-parchment-v2.png',
   ],
 };
-export const siteBootAssets = [
-  ...new Set([
-    '/guild-icons-candle-helmet.png',
-    '/guild-icon-notice-board-v3.png',
-    ...Object.entries(primaryPageAssets)
-      .filter(([page]) => page !== 'shop')
-      .flatMap(([, assets]) => assets!),
-  ]),
-];
+// Entry downloads only its own scenery. Authenticated visits prepare their
+// destination instead of fetching every area's background before entering.
+export const siteBootAssets = ['/alvorada-map-v2.png','/alvorada-fog.svg'];
+export function openingPageAssets(page: Page) {
+  if(page==='cards')return [matchMedia('(max-width:900px)').matches
+    ? '/cards/host-shadow-study-mobile-20261027.png'
+    : '/cards/host-shadow-study-20261027.png'];
+  return primaryPageAssets[page] || [];
+}

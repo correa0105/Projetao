@@ -11,3 +11,4 @@ test-results/
 .local/
 backups/
 public/kingdom/terrain-square*.png
+public/optimized-images-*/

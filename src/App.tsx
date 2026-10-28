@@ -2,7 +2,8 @@ import { copyText } from './copy-text';
 import { PasswordRecovery } from './PasswordRecovery';
 import { RecoveryMailSettings } from './RecoveryMailSettings';
 import { AssetGate, AssetLoading, usePreparedAssets } from './AssetLoading';
-import { primaryPageAssets, siteBootAssets } from './page-assets';
+import { openingPageAssets, siteBootAssets } from './page-assets';
+import { markInitialLoadComplete } from './loading-visit';
 import { maintenanceMessage, type MaintenanceArea } from '../shared/maintenance';
 import { vttPersonalHref } from '../shared/vtt-links';
 import { HomeJournal } from './HomeJournal';
@@ -130,15 +131,16 @@ const initialPage = (): Page => {
 export default function App() {
   const { data: session, isPending, error, refetch } = authClient.useSession();
   const recovering=new URLSearchParams(location.search).get('recover')==='1';
-  const prepared = usePreparedAssets(recovering?[]:siteBootAssets);
+  const bootPage=useRef(initialPage()).current;
+  const prepared = usePreparedAssets(recovering || isPending ? [] : session ? openingPageAssets(bootPage) : siteBootAssets);
+  useEffect(() => {
+    if (!recovering && prepared.ready && !isPending && !error) markInitialLoadComplete();
+  },[recovering,prepared.ready,isPending,error]);
   if(recovering)return <PasswordRecovery/>;
   if (!prepared.ready) return <AssetLoading {...prepared} />;
   if (isPending)
     return (
-      <div className="boot">
-        <span className="loading-wordmark">Alvorada Cinzenta</span>
-        <p>À espera da alvorada…</p>
-      </div>
+      <AssetLoading waitingForData />
     );
   if (error)
     return (
@@ -793,7 +795,7 @@ function Portal({ user }: { user: User }) {
           </PageHeader>
         )}
         <main className="main-content" id="main-content">
-          <AssetGate key={page} title={`Preparando ${titles[page]}`} assets={primaryPageAssets[page]} busy={loading || (page === 'shop' && catalogLoading)}>{renderContent()}</AssetGate>
+          <AssetGate key={page} title={`Preparando ${titles[page]}`} assets={openingPageAssets(page)} busy={loading || (page === 'shop' && catalogLoading)}>{renderContent()}</AssetGate>
           {rulesVisited && (
             <div hidden={!rulesActive} style={{ display: rulesActive ? undefined : 'none' }}>
               <div className="page-header-spacer" aria-hidden="true" />
