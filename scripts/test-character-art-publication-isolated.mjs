@@ -19,6 +19,7 @@ try {
           '--test',
           '--test-concurrency=1',
           'tests/character-art-publication.test.ts',
+          'tests/character-creation-recovery.test.ts',
           'tests/character-starting-gold.test.ts',
         ];
     const c = spawn(process.execPath, args, {

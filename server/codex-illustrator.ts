@@ -39,6 +39,16 @@ export class IllustratorError extends Error {
   }
 }
 
+export function imageGenerationFailure(error: string) {
+  if (/policy|pol[ií]tica|sexual|porn|safety|conte[uú]do.*(recus|bloque)|not.*allowed/i.test(error))
+    return new IllustratorError('content_refused', 'O ilustrador recusou essa referência. Escolha outra imagem adequada ao personagem.');
+  if (/limit|quota|cota|\brate\b|\busage\b/i.test(error))
+    return new IllustratorError('usage_limit', 'O ilustrador atingiu o limite de uso da assinatura. Tente novamente mais tarde.');
+  if (/login|auth|sess[aã]o/i.test(error))
+    return new IllustratorError('authentication', 'A sessão do ilustrador precisa ser reconectada.');
+  return new IllustratorError('tool_error', 'A ferramenta de imagem não concluiu a geração. Tente novamente.');
+}
+
 export async function runCodex(args: string[], prompt?: string, timeout = 15 * 60_000) {
   // Invoke executable or Node entry point directly. Never pass prompts through a shell.
   const { command, prefix } = resolveCodexCommand();
@@ -504,31 +514,7 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
           'O ilustrador devolveu um resultado inválido.',
         );
       }
-      if (result.error) {
-        if (
-          /policy|pol[ií]tica|sexual|porn|safety|conte[uú]do.*(recus|bloque)|not.*allowed/i.test(
-            result.error,
-          )
-        )
-          throw new IllustratorError(
-            'content_refused',
-            'O ilustrador recusou essa referência. Escolha outra imagem adequada ao personagem.',
-          );
-        if (/limit|quota|cota|rate|usage/i.test(result.error))
-          throw new IllustratorError(
-            'usage_limit',
-            'O ilustrador atingiu o limite de uso da assinatura. Tente novamente mais tarde.',
-          );
-        if (/login|auth|sess[aã]o/i.test(result.error))
-          throw new IllustratorError(
-            'authentication',
-            'A sessão do ilustrador precisa ser reconectada.',
-          );
-        throw new IllustratorError(
-          'tool_error',
-          'A ferramenta de imagem não concluiu a geração. Tente novamente.',
-        );
-      }
+      if (result.error) throw imageGenerationFailure(result.error);
       if (!result.image_path)
         throw new IllustratorError(
           'no_image',

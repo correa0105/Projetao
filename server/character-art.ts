@@ -401,7 +401,7 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
       ).rows[0];
       if (!character) throw new AppError(404, 'Personagem não encontrado.');
       await client.query(
-          "UPDATE character_art_jobs SET status='completed',art_decision='pending',proposed_portrait=$2,proposed_token=$3,reference=NULL,approved_portrait=NULL,error=NULL,completed_at=now() WHERE id=$1",
+          "UPDATE character_art_jobs SET status='completed',art_decision='pending',proposed_portrait=$2,proposed_token=$3,reference=NULL,approved_portrait=NULL,error=NULL,last_error_code=NULL,next_attempt_at=NULL,completed_at=now() WHERE id=$1",
           [jobId, image, tokenImage],
       );
       return characterId as string;
@@ -462,7 +462,7 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
       job.reference_mode === 'construction' && job.creation ? image : null,
     );
     await client.query(
-        "UPDATE character_art_jobs SET status='completed',character_id=$2,reference=NULL,approved_portrait=NULL,error=NULL,completed_at=now() WHERE id=$1",
+        "UPDATE character_art_jobs SET status='completed',character_id=$2,reference=NULL,approved_portrait=NULL,error=NULL,last_error_code=NULL,next_attempt_at=NULL,completed_at=now() WHERE id=$1",
         [jobId, characterId],
     );
     return characterId as string;
@@ -576,7 +576,7 @@ export function characterArtRouter() {
         ? 'construction'
         : 'reference';
       await client.query(
-        "UPDATE character_art_jobs SET status='queued',error=NULL,started_at=NULL,completed_at=NULL,reference=CASE WHEN $3::jsonb IS NULL THEN CASE WHEN $4='construction' AND reference_mode='reference' AND character_id IS NULL THEN NULL ELSE reference END ELSE $2::bytea END,creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END,reference_mode=$4,creation_slot=COALESCE($5,creation_slot),roll_generation=COALESCE($6,roll_generation) WHERE id=$1",
+        "UPDATE character_art_jobs SET status='queued',error=NULL,last_error_code=NULL,next_attempt_at=now(),started_at=NULL,completed_at=NULL,reference=CASE WHEN $3::jsonb IS NULL THEN CASE WHEN $4='construction' AND reference_mode='reference' AND character_id IS NULL THEN NULL ELSE reference END ELSE $2::bytea END,creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END,reference_mode=$4,creation_slot=COALESCE($5,creation_slot),roll_generation=COALESCE($6,roll_generation) WHERE id=$1",
         [id, reference, replacement ? JSON.stringify(replacement.creation) : null, retryMode,retrySlot?.slot??null,retrySlot?.generation??null],
       );
       return { id, status: 'queued' };
@@ -654,7 +654,7 @@ export function characterArtRouter() {
       [res.locals.user.id],
     );
     const { rows: jobs } = await pool.query(
-      `SELECT j.id,j.character_id,j.creation_slot,j.status,j.error,j.created_at,
+      `SELECT j.id,j.character_id,j.creation_slot,j.status,j.error,j.created_at,j.retry_count,j.next_attempt_at,
       (j.status='failed' AND j.creation IS NOT NULL AND (j.reference IS NOT NULL OR j.approved_portrait IS NOT NULL)) AS can_retry,
       j.creation AS saved_creation,
       COALESCE(c.name,j.creation->>'name') AS name FROM character_art_jobs j

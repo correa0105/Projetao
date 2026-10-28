@@ -47,10 +47,15 @@ test('criação recuperável: texto, ficha, imagem e arte aprovada sobrevivem à
       other = await signup(),
       id = randomUUID(),
       reference = await testArtImage();
+    await req('/character-slots', owner.cookie);
+    assert.equal((await req('/character-slots/1/roll', owner.cookie, {})).status, 200);
+    for (let revealed = 1; revealed <= 6; revealed++)
+      assert.equal((await req('/character-slots/1/reveal', owner.cookie, { revealed })).status, 200);
     const legacyChoices = defaultChoices('Warforged', 'Bárbaro', 'Soldado');
     delete legacyChoices.warforgedAppearance;
     delete legacyChoices.warforgedArtMode;
     const creation = {
+      creation_slot: 1,
       name: 'Artorias teste',
       race: 'Warforged',
       class: 'Bárbaro',

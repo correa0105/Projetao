@@ -150,7 +150,9 @@ export function CampRoster({
                       ? 'A arte não foi concluída. Sua criação está salva.'
                       : job.status === 'running'
                         ? 'Preparando retrato e token visto de cima…'
-                        : 'Aguardando o ilustrador…'}
+                        : job.retry_count
+                          ? 'O ilustrador vai continuar automaticamente…'
+                          : 'Aguardando o ilustrador…'}
                   </span>
                   {job.status === 'failed' ? (
                     <>

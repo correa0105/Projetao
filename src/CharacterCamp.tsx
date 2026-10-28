@@ -342,7 +342,9 @@ export function CharacterCamp({
                 <p>
                   {job.status === 'running'
                     ? 'O ilustrador está dando vida ao personagem…'
-                    : 'Aguardando o ilustrador…'}
+                    : job.retry_count
+                      ? 'O ilustrador vai continuar automaticamente…'
+                      : 'Aguardando o ilustrador…'}
                 </p>
               </div>
             </article>

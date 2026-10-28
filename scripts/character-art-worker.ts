@@ -1,5 +1,6 @@
 import 'dotenv/config';
-import { pool, transaction } from '../server/db.js';
+import { pool } from '../server/db.js';
+import { claimNextArtJob, recoverInterruptedCharacterArt, retryCharacterArt } from '../server/character-art-retries.js';
 import { completeArt } from '../server/character-art.js';
 import {
   generateCharacterArtPair,
@@ -35,10 +36,7 @@ process.on('SIGTERM', () => {
 let heartbeat: ReturnType<typeof setInterval> | undefined;
 try {
   await checkCodexLogin();
-  // A previous process may have stopped while rendering. Do not charge or retry invisibly.
-  await pool.query(
-    "UPDATE character_art_jobs SET status='failed',reference=CASE WHEN character_id IS NULL THEN reference ELSE NULL END,error='A geração foi interrompida. Os dados da criação foram preservados; tente novamente. A tentativa não consumiu a cota.' WHERE status='running'",
-  );
+  await recoverInterruptedCharacterArt();
   await pool.query(
     "UPDATE companion_art_jobs SET status='failed',reference=NULL,error='A geração foi interrompida. A tentativa não consumiu a cota.' WHERE status='running'",
   );
@@ -80,38 +78,7 @@ try {
       await new Promise(resolve => setTimeout(resolve, 2500));
       continue;
     }
-    const job = await transaction(async (client) => {
-      const candidate = (
-        await client.query(
-          "SELECT id,created_at,'character' AS queue_kind FROM character_art_jobs WHERE status='queued' UNION ALL SELECT id,created_at,'companion' FROM companion_art_jobs WHERE status='queued' ORDER BY created_at,id LIMIT 1",
-        )
-      ).rows[0];
-      if (candidate?.queue_kind === 'companion') {
-        const next = (
-          await client.query(
-            "SELECT * FROM companion_art_jobs WHERE id=$1 AND status='queued' FOR UPDATE SKIP LOCKED",
-            [candidate.id],
-          )
-        ).rows[0];
-        if (next)
-          await client.query(
-            "UPDATE companion_art_jobs SET status='running',started_at=now() WHERE id=$1",
-            [next.id],
-          );
-        return next ? { ...next, queue_kind: 'companion' } : undefined;
-      }
-      const {
-        rows: [next],
-      } = await client.query(
-        "SELECT j.*,COALESCE(c.race,j.creation->>'race') AS race,COALESCE(c.class,j.creation->>'class') AS class,COALESCE(s.choices,j.creation->'choices') AS choices FROM character_art_jobs j LEFT JOIN characters c ON c.id=j.character_id LEFT JOIN character_sheets s ON s.character_id=c.id WHERE j.status='queued' ORDER BY j.created_at FOR UPDATE OF j SKIP LOCKED LIMIT 1",
-      );
-      if (next)
-        await client.query(
-          "UPDATE character_art_jobs SET status='running',started_at=now() WHERE id=$1",
-          [next.id],
-        );
-      return next;
-    });
+    const job = await claimNextArtJob();
     if (job) {
       try {
         const companion = job.queue_kind === 'companion';
@@ -152,13 +119,14 @@ try {
           error instanceof IllustratorError || error instanceof AppError
             ? error.message
             : 'Não foi possível finalizar a arte. Tente novamente.';
-        await pool.query(
-          `UPDATE ${job.queue_kind === 'companion' ? 'companion_art_jobs' : 'character_art_jobs'} SET status='failed',reference=${job.queue_kind === 'companion' ? 'NULL' : 'CASE WHEN character_id IS NULL THEN reference ELSE NULL END'},error=$2 WHERE id=$1 AND status='running'`,
-          [job.id, `${message} Sua cota foi preservada.`],
-        );
-        if (job.queue_kind === 'companion')
+        if (job.queue_kind === 'companion') {
+          await pool.query("UPDATE companion_art_jobs SET status='failed',reference=NULL,error=$2 WHERE id=$1 AND status='running'", [job.id, `${message} Sua cota foi preservada.`]);
           await pool.query('DELETE FROM companion_art_equipment WHERE job_id=$1', [job.id]);
-        console.error(`Falha de geração: ${job.id}. Motivo: ${code}. Cota preservada.`);
+          console.error(`Falha de geração: ${job.id}. Motivo: ${code}. Cota preservada.`);
+        } else {
+          const resumed = await retryCharacterArt(job.id, error);
+          console.error(`Geração ${resumed?.status === 'queued' ? 'aguardando retomada automática' : 'não concluída'}: ${job.id}. Motivo: ${code}. Cota preservada.`);
+        }
       }
     } else if (!process.argv.includes('--once'))
       await new Promise((resolve) => setTimeout(resolve, 2500));

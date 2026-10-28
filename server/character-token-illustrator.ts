@@ -10,6 +10,7 @@ import {
   generateCharacterArt,
   generateCompanionArt,
   IllustratorError,
+  imageGenerationFailure,
   runCodex,
 } from './codex-illustrator.js';
 import { basicCompanionToken } from '../shared/companion-token-art.js';
@@ -63,7 +64,8 @@ async function nativeResult(
   } catch {
     throw new IllustratorError('token_result', 'O ilustrador não devolveu o token.');
   }
-  if (result.error || !result.image_path)
+  if (result.error) throw imageGenerationFailure(result.error);
+  if (!result.image_path)
     throw new IllustratorError(
       'token_generation',
       'Não foi possível gerar a vista de cima do personagem.',

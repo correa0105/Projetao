@@ -63,6 +63,8 @@ export type ArtJob = {
   status: 'queued' | 'running' | 'completed' | 'failed';
   error: string | null;
   created_at: string;
+  retry_count?: number;
+  next_attempt_at?: string | null;
 };
 export type ArtState = {
   ready_characters?: string[];

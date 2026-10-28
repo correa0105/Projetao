@@ -4,6 +4,9 @@ import { randomUUID } from 'node:crypto';
 import { pool } from '../server/db';
 import { migrate } from '../server/migrate';
 import { completeArt } from '../server/character-art';
+import { claimNextArtJob, recoverInterruptedCharacterArt, retryCharacterArt, characterArtFailure } from '../server/character-art-retries';
+import { IllustratorError, imageGenerationFailure } from '../server/codex-illustrator';
+import { AppError } from '../server/services';
 import { defaultChoices } from '../shared/character-sheet';
 import { lockTestIllustrator, testArtImage, testTokenImage } from './character-fixtures';
 
@@ -85,6 +88,54 @@ test('criação e substituição publicam somente par completo; checkpoint e fal
     assert.equal((await req('/character-slots')).data[0].pending, true);
     await assert.rejects(completeArt(jid, { portrait, token: portrait }));
     assert.equal(await count(), 0, 'Token inválido não publica o retrato');
+    const retryNow = () => pool.query("UPDATE character_art_jobs SET next_attempt_at=now()-interval '1 second' WHERE id=$1", [jid]);
+    for (let attempt = 1; attempt <= 5; attempt++) {
+      const failures = await Promise.all([
+        retryCharacterArt(jid, new IllustratorError('token_rejected', 'Câmera frontal reprovada')),
+        retryCharacterArt(jid, new IllustratorError('token_rejected', 'Câmera frontal reprovada')),
+      ]);
+      assert.equal(failures.filter(Boolean).length, 1, 'A mesma falha só agenda uma retomada');
+      const queued = (await req('/character-art')).data.jobs.find((job: any) => job.id === jid);
+      assert.equal(queued.status, 'queued');
+      assert.equal(queued.retry_count, attempt);
+      assert.equal(queued.can_retry, false, 'Jogador não precisa reenviar a criação');
+      assert(queued.next_attempt_at);
+      assert.equal((await req('/character-slots')).data[0].pending, true);
+      assert.equal(await claimNextArtJob(), undefined, 'Respeita o intervalo entre tentativas');
+      if (attempt === 1) {
+        const otherJob = (await pool.query(
+          'INSERT INTO character_art_jobs(user_id,creation,reference,idempotency_key)VALUES($1,$2,$3,$4)RETURNING id',
+          [uid, { name: 'Outro pedido', race: 'Orc', class: 'Guerreiro', choices }, portrait, randomUUID()],
+        )).rows[0].id;
+        assert.equal((await claimNextArtJob()).id, otherJob, 'Uma retomada futura não bloqueia novos pedidos');
+        await pool.query('DELETE FROM character_art_jobs WHERE id=$1', [otherJob]);
+      }
+      await retryNow();
+      const resumed = await claimNextArtJob();
+      assert.equal(resumed.id, jid);
+      assert.deepEqual(resumed.approved_portrait, j.approved_portrait);
+      assert.deepEqual(resumed.reference, portrait);
+      assert.deepEqual(resumed.creation.choices, choices);
+      assert.equal(await count(), 0);
+    }
+    // A restart recovers only active work, retaining the same job and slot.
+    await recoverInterruptedCharacterArt();
+    await recoverInterruptedCharacterArt();
+    const restarted = (await pool.query('SELECT * FROM character_art_jobs WHERE id=$1', [jid])).rows[0];
+    assert.equal(restarted.retry_count, 6);
+    assert.equal(restarted.last_error_code, 'interrupted');
+    assert.deepEqual(restarted.approved_portrait, j.approved_portrait);
+    assert.equal(restarted.creation_slot, 1);
+    assert.equal(restarted.roll_generation, slot.generation);
+    await retryNow();
+    assert.equal((await claimNextArtJob()).id, jid);
+    assert.equal(characterArtFailure(new IllustratorError('content_refused', 'Referência recusada')).retry, false);
+    assert.equal(characterArtFailure(new AppError(409, 'Slot já ocupado')).retry, false);
+    assert.equal(characterArtFailure(new AppError(400, 'Imagem inválida')).retry, true);
+    assert.equal(characterArtFailure(imageGenerationFailure('tool_error')).retry, true);
+    assert.equal(characterArtFailure(imageGenerationFailure('content refused by policy')).retry, false);
+    assert.equal(imageGenerationFailure('usage limit exceeded').code, 'usage_limit');
+    assert.equal(imageGenerationFailure('Failed to generate image').code, 'tool_error');
     await pool.query(
       "UPDATE character_art_jobs SET status='failed',error='Câmera frontal reprovada' WHERE id=$1",
       [jid],
@@ -97,6 +148,11 @@ test('criação e substituição publicam somente par completo; checkpoint e fal
     assert(cid);
     assert.equal(await count(), 1);
     assert.equal(await completeArt(jid, { portrait, token }), cid);
+    assert.equal(await retryCharacterArt(jid, new Error('Falha tardia')), undefined);
+    const completed = (await pool.query('SELECT * FROM character_art_jobs WHERE id=$1', [jid])).rows[0];
+    assert.equal(completed.status, 'completed');
+    assert.equal(completed.next_attempt_at, null);
+    assert.equal(completed.last_error_code, null);
     const current = async () =>
       (
         await pool.query(
@@ -120,6 +176,13 @@ test('criação e substituição publicam somente par completo; checkpoint e fal
     await pool.query("UPDATE character_art_jobs SET status='running' WHERE id=$1", [rid]);
     await completeArt(rid, { portrait });
     assert.deepEqual(await current(), before);
+    await retryCharacterArt(rid, new IllustratorError('connection', 'Conexão interrompida'));
+    const replacementCheckpoint = (await pool.query('SELECT * FROM character_art_jobs WHERE id=$1', [rid])).rows[0];
+    assert.deepEqual(replacementCheckpoint.reference, portrait, 'Substituições também conservam sua referência');
+    assert(replacementCheckpoint.approved_portrait);
+    assert.equal((await req('/character-art')).data.quotas[cid].used, 1, 'Retomada reserva apenas a geração original');
+    await pool.query("UPDATE character_art_jobs SET next_attempt_at=now()-interval '1 second' WHERE id=$1", [rid]);
+    assert.equal((await claimNextArtJob()).id, rid);
     await completeArt(rid, { portrait, token });
     assert.deepEqual(await current(), before);
     assert.equal((await req('/character-art')).data.reviews[0].id, rid);
