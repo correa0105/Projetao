@@ -8,7 +8,7 @@
 .arcana-emblem-gold {position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 18px #edd19a33;}
 .arcana-card-back {display:block;position:relative;isolation:isolate;width:100%;height:100%;}
 .arcana-card-back .arcana-back-paper {position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border:0;mask:none;}
-.arcana-back-eye {position:absolute;left:50%;top:50%;width:55%;height:auto;transform:translate(-50%,-50%);overflow:visible;}
+.arcana-back-eye {position:absolute;left:50%;top:50%;width:62%;height:auto;transform:translate(-50%,-50%);overflow:visible;}
 .arcana-eye-lid {animation:arcana-eye-blink 7.4s ease-in-out infinite;}
 .arcana-eye-seam {opacity:0;animation:arcana-eye-seam 7.4s ease-in-out infinite;}
 @keyframes arcana-eye-blink {0%,84%,93%,100%{d:path('M12 55C66 -4 174 -4 228 55C174 114 66 114 12 55Z')}88%,89%{d:path('M12 55C66 74 174 74 228 55C174 76 66 76 12 55Z')}}
