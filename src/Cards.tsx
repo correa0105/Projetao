@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import {Coins,Sparkles,Volume2,VolumeX,X} from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { api, post } from './api';
@@ -64,6 +64,8 @@ export function Cards({
   const [inspecting, setInspecting] = useState<Card | null>(null);
   const [library,setLibrary]=useState<'catalog'|'equip'|null>(null);
   const [previewLevel,setPreviewLevel]=useState(1);
+  const dialogueBody=useRef<HTMLDivElement>(null);
+  useLayoutEffect(()=>{dialogueBody.current?.scrollTo({top:0});},[speech,conversation]);
   const key = useRef(crypto.randomUUID()),
     inFlight = useRef(false),
     live = useRef(true),
@@ -278,6 +280,7 @@ export function Cards({
               <X size={16} />
             </button>
             <span className="eyebrow">O ANFITRIÃO</span>
+            <div ref={dialogueBody} className="cards-host-dialogue-body">
             <p key={speech} aria-live="polite">
               {speech}
             </p>
@@ -290,6 +293,7 @@ export function Cards({
                 ))}
               </div>
             )}
+            </div>
           </aside>
         )}
       </div>

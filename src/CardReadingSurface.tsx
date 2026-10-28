@@ -11,6 +11,7 @@ export function CardReadingSurface({children}:{children:ReactNode}) {
       const width=room.clientWidth,height=room.clientHeight;
       if(!width||!height)return;
       const projection=cardTableProjection(width,height);
+      room.style.setProperty('--cards-dialogue-limit',`${projection.dialogueLimit}px`);
       const positions:Record<string,string>={
         '--table-card-width':`${cardTableCardSize.width}px`,'--table-card-height':`${cardTableCardSize.height}px`,
         '--table-slot-y':`${projection.size.slotY}px`,'--table-deck-x':`${projection.size.deckX}px`,'--table-deck-y':`${projection.size.deckY}px`,
@@ -20,7 +21,7 @@ export function CardReadingSurface({children}:{children:ReactNode}) {
     };
     const observer=new ResizeObserver(update);observer.observe(room);
     update();
-    return()=>observer.disconnect();
+    return()=>{observer.disconnect();room.style.removeProperty('--cards-dialogue-limit');};
   },[]);
   return <div ref={surface} className="cards-reading-surface" style={style} aria-label="Baralho do Anfitrião e três espaços de cartas na mesa">{children}</div>;
 }

@@ -24,7 +24,7 @@
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot-empty > b { font:17px var(--sans); font-weight:400; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot-number { position:absolute; top:17px; left:0; width:100%; color:#b99d6e; font:23px var(--serif); text-align:center; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot[data-filled='true'] .cards-table-slot-number { display:none; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck { position:absolute; left:var(--table-deck-x); top:var(--table-deck-y); width:170px; height:243px; margin:0; padding:0; border:0; border-radius:7px; background:none; transform:none; box-shadow:-6px 12px 9px #000a; pointer-events:auto; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck { position:absolute; left:var(--table-deck-x); top:var(--table-deck-y); width:var(--table-card-width); height:var(--table-card-height); margin:0; padding:0; border:0; border-radius:7px; background:none; transform:none; box-shadow:-6px 12px 9px #000a; pointer-events:auto; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck img,:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span { position:absolute; inset:0; width:100%; height:100%; border:2px solid #a98a56; border-radius:6px; background:#17141f; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck img,:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span { mask:url('/cards/card-silhouette.svg') center / 100% 100% no-repeat; border:0; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck img { background:none; }
@@ -36,7 +36,12 @@
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-invite { position:absolute; z-index:3; right:5vw; top:200px; display:flex; align-items:center; gap:10px; padding:11px 18px; border:1px solid #a58c5660; border-radius:5px; color:#d8c190; background:#13141db3; backdrop-filter:blur(6px); text-align:left; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-invite small { display:block; margin-bottom:4px; color:#b8a06d; font:8px var(--sans); letter-spacing:.18em; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-invite span { font:13px var(--serif); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { position:absolute; z-index:8; top:145px; right:4vw; width:min(340px,29vw); background:#14151ef5; border-color:#a68c5860; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { position:absolute; z-index:8; top:145px; right:4vw; display:flex; flex-direction:column; gap:12px; width:min(340px,calc(100% - 36px)); max-height:max(88px,calc(var(--cards-dialogue-limit,450px) - 145px)); box-sizing:border-box; overflow:hidden; padding:20px; background:#14151ef5; border-color:#a68c5860; animation:cards-dialogue-enter .2s ease both; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue::after { content:none; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue > .eyebrow { flex:none; padding-right:24px; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue-body { min-height:0; overflow-y:auto; scroll-behavior:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#8e794a66 transparent; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue-body > p { margin:0; font:12px/1.75 'Libre Baskerville',Georgia,serif; color:#ddd2bc; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-questions { margin-top:14px; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-sound-toggle { position:absolute; z-index:4; top:100px; right:5vw; display:flex; align-items:center; gap:8px; padding:8px 11px; border:1px solid #a58b5145; border-radius:4px; background:#13141d9c; color:#c8b68e; font:10px var(--sans); }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-message { position:absolute; bottom:85px; left:50%; transform:translateX(-50%); max-width:80vw; color:#cdb98f; font:12px/1.6 var(--sans); text-align:center; z-index:5; }
 @media(max-width:900px) {
@@ -49,6 +54,7 @@
  :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-sound-toggle { top:95px; right:18px; padding:7px; }
  :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-sound-toggle span { display:none; }
  :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-invite { top:auto; bottom:92px; right:18px; padding:9px 12px; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { position:fixed; top:110px; left:18px; right:18px; width:auto; max-height:70dvh; overflow:auto; }
+ :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { top:110px; left:18px; right:18px; width:auto; max-height:max(88px,calc(var(--cards-dialogue-limit,450px) - 110px)); }
 }
-@media(prefers-reduced-motion:reduce) { :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot { transition:none; } }
+@keyframes cards-dialogue-enter { from { opacity:0; } to { opacity:1; } }
+@media(prefers-reduced-motion:reduce) { :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot { transition:none; } :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { animation:none; } }

@@ -3,17 +3,20 @@ type TableSize = {width:number;height:number};
 export type TableKind = 'wide'|'tall';
 export const cardTableCardSize = {width:170,height:243};
 export const cardTableLayouts = {
-  wide: {width:1200,height:760,slotY:338,deckX:990,deckY:65},
-  tall: {width:1200,height:760,slotY:338,deckX:990,deckY:65},
+  wide: {width:1400,height:490,matTop:90,matHeight:400,slotY:168.5,deckX:1120,deckY:50},
+  tall: {width:1400,height:490,matTop:90,matHeight:400,slotY:168.5,deckX:1040,deckY:50},
 } as const;
+// Actual stitched mat corners, clockwise from the far-left corner, in native
+// image pixels. The same 3.5:1 mat metric in both views avoids flattening cards
+// by treating this shallow reading mat as an almost-square physical surface.
 export const cardTableScenes = {
-  wide: {width:1672,height:941,points:[{x:566.1038555827948,y:567.4542010251839},{x:1264.5616224648986,y:567.4542010251839},{x:1420,y:689},{x:316,y:689}]},
-  tall: {width:1024,height:1536,points:[{x:304.9825378346915,y:782.4330616996508},{x:818.6321303841677,y:782.4330616996508},{x:930,y:970},{x:135,y:970}]},
+  wide: {width:1672,height:941,points:[{x:412.027,y:578.715},{x:1312.949,y:579.525},{x:1453.727,y:691.742},{x:259.318,y:690.716}]},
+  tall: {width:1024,height:1536,points:[{x:280.359,y:800.120},{x:859.167,y:799.638},{x:969.786,y:975.598},{x:145.600,y:976.408}]},
 } as const;
 
 // Three persistent equipment positions share the desk's real projective plane.
 export function cardTablePlacement(kind:TableKind,index:number) {
-  return {x:305+210*index,y:cardTableLayouts[kind].slotY};
+  return {x:405+210*index,y:cardTableLayouts[kind].slotY};
 }
 export function cardTableCardCorners(kind:TableKind,index:number) {
   const p=cardTablePlacement(kind,index);
@@ -37,17 +40,41 @@ export function projectTablePoint(matrix:readonly number[],x:number,y:number):Ta
   const denominator=matrix[3]*x+matrix[7]*y+matrix[15];
   return {x:(matrix[0]*x+matrix[4]*y+matrix[12])/denominator,y:(matrix[1]*x+matrix[5]*y+matrix[13])/denominator};
 }
+export function cardTableNativeMatrix(kind:TableKind) {
+  const scene=cardTableScenes[kind],size=cardTableLayouts[kind];
+  const mat=cardTableMatrix(scene.points,{width:size.width,height:size.matHeight});
+  // Include the wooden strip behind the mat so the host deck remains inside
+  // the transformed element's hit-test area, without inventing a second plane.
+  const points=[[0,-size.matTop],[size.width,-size.matTop],[size.width,size.matHeight],[0,size.matHeight]].map(([x,y])=>projectTablePoint(mat,x,y));
+  return cardTableMatrix(points,size);
+}
+export function cardTableDeckCorners(kind:TableKind) {
+  const size=cardTableLayouts[kind],card=cardTableCardSize;
+  return [[-6,0],[card.width,0],[card.width,card.height+42],[-6,card.height+42]].map(([x,y])=>({x:size.deckX+x,y:size.deckY+y}));
+}
 export function cardTableProjection(width:number,height:number) {
   const kind:TableKind=width<=900?'tall':'wide',scene=cardTableScenes[kind],size=cardTableLayouts[kind];
   const scale=Math.max(width/scene.width,height/scene.height);
   const left=(width-scene.width*scale)/2,top=(height-scene.height*scale)/2;
-  const full=cardTableMatrix(scene.points.map(point=>({x:point.x*scale+left,y:point.y*scale+top})),size);
+  const native=cardTableNativeMatrix(kind);
   const {width:w,height:h}=size,margin=10;
+  const full=cardTableMatrix([[0,0],[w,0],[w,h],[0,h]].map(([x,y])=>{
+    const p=projectTablePoint(native,x,y);return {x:p.x*scale+left,y:p.y*scale+top};
+  }),size);
+  const center={x:w/2,y:size.slotY+cardTableCardSize.height/2};
+  const scaled=(point:TablePoint,factor:number)=>({x:center.x+(point.x-center.x)*factor,y:center.y+(point.y-center.y)*factor});
+  const active=[...[0,1,2].flatMap(i=>cardTableCardCorners(kind,i)),...cardTableDeckCorners(kind)];
   const corners=(factor:number)=>{
-    const x=w*(1-factor)/2,y=h*(1-factor)/2;
-    return [[x,y],[w-x,y],[w-x,h-y],[x,h-y]].map(([a,b])=>projectTablePoint(full,a,b));
+    return [[0,0],[w,0],[w,h],[0,h]].map(([x,y])=>{
+      const p=scaled({x,y},factor);return projectTablePoint(full,p.x,p.y);
+    });
   };
-  const fits=(factor:number)=>corners(factor).every(p=>p.x>=margin&&p.x<=width-margin&&p.y>=margin&&p.y<=height-margin);
+  // Crop the scenery freely; only shrink when an interactive piece would leave
+  // the viewport. Fitting the whole mat needlessly shrank cards on small screens.
+  const fits=(factor:number)=>active.every(point=>{
+    const p=scaled(point,factor),v=projectTablePoint(full,p.x,p.y);
+    return v.x>=margin&&v.x<=width-margin&&v.y>=margin&&v.y<=height-margin;
+  });
   let factor=1;
   if(!fits(1)){
     let low=.1,high=1;
@@ -55,5 +82,6 @@ export function cardTableProjection(width:number,height:number) {
     factor=low;
   }
   const points=corners(factor),matrix=cardTableMatrix(points,size);
-  return {kind,size,points,matrix,css:`matrix3d(${matrix.join(',')})`,scale,left,top,factor};
+  const firstCardTop=Math.min(...active.map(p=>projectTablePoint(matrix,p.x,p.y).y));
+  return {kind,size,points,matrix,css:`matrix3d(${matrix.join(',')})`,scale,left,top,factor,dialogueLimit:firstCardTop-18};
 }
