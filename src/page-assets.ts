@@ -22,7 +22,7 @@ export const primaryPageAssets: Partial<Record<Page, readonly string[]>> = {
   hooks: board,
   stable: ['/stable/paddock-camp-v2.webp', '/stable/ginna.webp', '/stable/riding-horse.png', wood],
   pets: ['/pets/garalho-cottage-v2.webp', '/pets/garalho-sign-ready-v2.png'],
-  cards: ['/cards/host-shadow-study-20261027.png', '/cards/host-shadow-study-mobile-20261027.png', '/cards/nocturne-back-20261027.svg'],
+  cards: ['/cards/host-shadow-study-20261027.png', '/cards/host-shadow-study-mobile-20261027.png', '/cards/back-celestial-original-20261014.webp'],
   'character-cards': ['/cards/private-archive-20261012.webp'],
   hall: ['/achievement-house-v3.png'],
   profiles: ['/character-camp-v2.png'],

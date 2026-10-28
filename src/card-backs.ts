@@ -1,2 +1,2 @@
-// Shared engraved back; earlier original, dark and chrome assets remain archived.
-export const cardBacks={original:'/cards/nocturne-back-20261027.svg',dark:'/cards/nocturne-back-20261027.svg',chrome:'/cards/nocturne-back-20261027.svg'} as const;
+// Three matching backs; original source and earlier designs stay archived.
+export const cardBacks={original:'/cards/back-celestial-original-20261014.webp',dark:'/cards/back-celestial-dark-20261014.webp',chrome:'/cards/back-celestial-clean-20261014.webp'} as const;

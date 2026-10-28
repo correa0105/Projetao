@@ -12,22 +12,29 @@ import {CardFrame} from './CardFrame';
 import {cardVisualLevel} from '../shared/card-presentation';
 import {CardViewer3D} from './CardViewer3D';
 import {CardPrismaticFoil} from './CardPrismaticFoil';
-import {CardEngraving} from './CardEngraving';
 import {CardReadingSurface} from './CardReadingSurface';
 import {CardsLibrary} from './CardsLibrary';
 import {CardsRoomLighting} from './CardsRoomLighting';
 import {cardBacks} from './card-backs';
 import {useSoundEffects} from './SiteMusic';
 import {playCardReveal} from './card-reveal-audio';
-import './cards-engraved.css';
+import './card-reveal.css';
 import './cards-salon.css';
 export function CardFace({ card, small = false, level = 1, finish }: { card: Card; small?: boolean; level?: number; finish?:'original'|'chrome' }) {
   const visualLevel=cardVisualLevel(level),resolvedFinish=finish??(visualLevel===3?'chrome':'original');
   const nativePrism=resolvedFinish==='chrome';
+  const art=nativePrism?`/cards/prismatic-clean-20261014/${card.id}.webp`:card.id==='raven'?`/cards/raven-corrected-20261014/raven-${visualLevel===1?1:2}.webp`:`/cards/tarot-symbolic-20261013/${card.id}-${visualLevel===1?1:2}.webp`;
   return (
-    <span className={'arcana-card-face arcana-card-face--engraved' + (small ? ' small' : '')} data-rarity={card.rarity} data-level={visualLevel} data-finish={resolvedFinish}>
-      <CardEngraving card={card}/>
-      <CardFrame cell={card.cell} engraved metallic={visualLevel>=2||nativePrism} chrome={nativePrism} gold={visualLevel===2&&!nativePrism}/>
+    <span className={'arcana-card-face' + (small ? ' small' : '')} data-rarity={card.rarity} data-level={visualLevel} data-finish={resolvedFinish} data-prismatic-art={nativePrism}>
+      <span
+        className="arcana-card-art"
+        style={
+          {
+            backgroundImage: `url('${art}')`,
+          } as CSSProperties
+        }
+      />
+      <CardFrame cell={card.cell} metallic={visualLevel>=2||nativePrism} chrome={nativePrism} gold={visualLevel===2&&!nativePrism}/>
       {nativePrism && <CardPrismaticFoil/>}
       <span className="arcana-card-title">
         <span className="arcana-card-name" style={{fontSize: `${Math.min(7.5, 112 / card.name.length)}cqw`}}>{card.name}</span>

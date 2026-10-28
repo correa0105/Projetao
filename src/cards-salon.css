@@ -17,15 +17,17 @@
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot:nth-child(3) { left:var(--table-slot-3-x); }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot::after { content:''; position:absolute; inset:-100px -12px; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot:hover,:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot:focus-visible { border-color:#e0c38a; background:#bda06818; outline:3px solid #d2b57d88; outline-offset:5px; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot[data-filled='true'] { border:0; background:none; box-shadow:0 4px 2px #8b704c,0 9px 7px #0008; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot[data-filled='true'] { border:0; background:none; box-shadow:none; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot .arcana-card-face { width:100%; height:100%; transform:none; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot-empty { height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:14px; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot-empty > span { font-size:45px; font-weight:400; opacity:.65; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot-empty > b { font:17px var(--sans); font-weight:400; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot-number { position:absolute; top:17px; left:0; width:100%; color:#b99d6e; font:23px var(--serif); text-align:center; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot[data-filled='true'] .cards-table-slot-number { top:auto; bottom:18px; left:15px; width:34px; height:34px; display:grid; place-items:center; font:17px var(--serif); border:1px solid #b99d6e77; border-radius:50%; background:#11151b; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot[data-filled='true'] .cards-table-slot-number { display:none; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck { position:absolute; left:var(--table-deck-x); top:var(--table-deck-y); width:170px; height:243px; margin:0; padding:0; border:0; border-radius:7px; background:none; transform:none; box-shadow:-6px 12px 9px #000a; pointer-events:auto; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck img,:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span { position:absolute; inset:0; width:100%; height:100%; border:2px solid #a98a56; border-radius:6px; background:#17141f; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck img,:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span { mask:url('/cards/card-silhouette.svg') center / 100% 100% no-repeat; border:0; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck img { background:none; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span:first-child { transform:translate(-6px,12px); }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span:nth-child(2) { transform:translate(-3px,6px); }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck small { position:absolute; top:calc(100% + 14px); left:0; width:100%; color:#e1c895; font:24px var(--serif); text-shadow:0 3px 7px #000; }
