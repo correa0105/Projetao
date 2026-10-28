@@ -8,8 +8,10 @@ fila. O catálogo JSON só começa a carregar ao entrar no Empório ou na Torre.
 `page-assets.ts` lista cenários iniciais; `asset-preloader.ts` compartilha pedidos
 por URL normalizada, limita a quatro downloads simultâneos e aguarda decodificação.
 O resultado guarda prontidão, sem reter cópias próprias de todas as imagens decodificadas.
-O navegador administra o cache e a memória. Imagens e fontes públicas têm cache de
-uma hora; HTML, autenticação e APIs mantêm suas políticas de não armazenamento.
+O navegador administra o cache e a memória. Artes e fontes públicas em caminhos
+com data de versão, assim como os bundles com hash, têm cache de um ano e
+`immutable`; imagens públicas sem essa versão mantêm uma hora. Trocar uma arte
+versionada exige uma URL nova. HTML, autenticação e APIs mantêm suas políticas de não armazenamento.
 Nenhuma imagem foi comprimida, redimensionada ou substituída.
 
 `AssetGate` prepara fundos CSS, pseudo-elementos, imagens e texturas SVG da primeira
@@ -23,6 +25,23 @@ Dados iniciais assíncronos aguardam `data-page-preparing`/`aria-busy` antes da 
 varredura completa. Imagens de prévias de pins ficam fora dessa preparação. A mensagem
 em destaque explica que a primeira visita demora mais e que o navegador poderá
 reutilizar imagens nas próximas visitas; não garante cache permanente.
+
+Guilda e House reaproveitam snapshots de exibição durante a navegação da sessão.
+O cache fica somente na memória, separado por conta, personagem e prévia básica,
+com expiração de dez minutos e limite de 24 entradas. Sair da conta ou trocar o
+contexto de prévia limpa a sessão de snapshots; uma resposta antiga não pode
+repovoar o contexto novo. Não é persistência de jogo nem autorização para editar.
+As cenas restauradas abrem sem refazer a varredura completa das texturas SVG;
+as consultas autenticadas continuam em segundo plano a cada entrada. Permissões
+de edição ficam desativadas até a resposta atual, e respostas 401/403/404 removem
+a cena e seu snapshot. Falhas transitórias conservam somente a exibição sem edição.
+
+Na guilda, registro, configurações e sede são consultados em paralelo. Presença
+e retratos dos membros atualizam separadamente, sem bloquear a abertura do mapa.
+A House conserva a vizinhança aberta e a câmera da última visita naquela sessão;
+sair da vizinhança explicitamente volta ao diretório. Polling, revisão, ownership
+e operações de jogo permanecem conferidos pelo servidor. As artes são preservadas
+sem conversão ou perda de qualidade.
 
 Verificação: `node scripts/test-portal-controls-isolated.mjs --assets` usa uma base
 descartável e atrasos/falhas de rede controlados. Confirma que o Estábulo fica oculto

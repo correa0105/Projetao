@@ -50,6 +50,7 @@ import './guild-estate.css';
 
 type Camera = { x: number; y: number; width: number };
 type Props = {
+  restored?: boolean;
   menuRequest: number;
   guildActions: ReactNode;
   guildId: string;
@@ -298,7 +299,7 @@ export function GuildEstate(p: Props) {
     floorArt = guildEstateFinishes.floor.find((f) => f.id === finishes.floor)!,
     wallArt = guildEstateFinishes.walls.find((f) => f.id === finishes.walls)!;
   return (
-    <div ref={stage} className="guild-estate" data-guild-estate="single-property">
+    <div ref={stage} className="guild-estate" data-guild-estate="single-property" data-scene-restored={p.restored || undefined}>
       <svg
         ref={svg}
         className={'guild-estate-map' + (editing ? ' is-editing' : '')}

@@ -15,7 +15,9 @@ import {
   Palette,
   ChevronDown,
 } from 'lucide-react';
-import { api, post } from './api';
+import { api, post, ApiError } from './api';
+import { basicAccountPreview } from './account-preview';
+import { readSceneSnapshot, writeSceneSnapshot, removeSceneSnapshot, sceneSnapshotScope } from './scene-snapshots';
 import type { User, Character } from './types';
 import {
   crestSchema,
@@ -91,9 +93,17 @@ export function Guilds({
   onSelectCharacter: (id: string) => void;
   onPurchased: () => void | Promise<void>;
 }) {
-  const [directory, setDirectory] = useState<Directory | null>(null),
-    [settings, setSettings] = useState<Settings | null>(null),
-    [g, setG] = useState<Guild | null>(null),
+  const scope = sceneSnapshotScope(user.id, activeCharacterId, basicAccountPreview());
+  const [opening] = useState(() => {
+    const id = new URLSearchParams(location.hash.split('?')[1] || '').get('id') || '';
+    const saved = readSceneSnapshot<Guild>(scope, 'guild:' + id);
+    return { directory: readSceneSnapshot<Directory>(scope, 'guild-directory'),
+      settings: readSceneSnapshot<Settings>(scope, 'guild-settings'),
+      guild: saved ? { ...saved, is_owner: false, is_member: false, treasury_cp: null, ledger: [], weekly: null } : null };
+  });
+  const [directory, setDirectory] = useState<Directory | null>(opening.directory),
+    [settings, setSettings] = useState<Settings | null>(opening.settings),
+    [g, setG] = useState<Guild | null>(opening.guild),
     [target, setTarget] = useState(
       new URLSearchParams(location.hash.split('?')[1] || '').get('id') || '',
     ),
@@ -109,6 +119,7 @@ export function Guilds({
     [search, setSearch] = useState(''),
     [people, setPeople] = useState<{ id: string; name: string }[]>([]),
     [decor, setDecor] = useState(guildDecor[0]?.id || '');
+  const [restored, setRestored] = useState(Boolean(opening.guild));
   const [estateFocusRequest, setEstateFocusRequest] = useState(0);
   const [estateEditRequest, setEstateEditRequest] = useState(0);
   const [estateMenuRequest, setEstateMenuRequest] = useState(0);
@@ -119,24 +130,38 @@ export function Guilds({
     activeCharacterId ? url + '?character_id=' + encodeURIComponent(activeCharacterId) : url;
   async function load() {
     const turn = ++loadTurn.current;
-    const [d, s] = await Promise.all([
+    let result: [Directory, Settings, Guild | null];
+    try { result = await Promise.all([
       api<Directory>(memberUrl('/guilds')),
       api<Settings>('/community/settings'),
-    ]);
-    const guild = target ? await api<Guild>(memberUrl('/guilds/' + target)) : null;
+      target ? api<Guild>(memberUrl('/guilds/' + target)) : Promise.resolve(null),
+    ]); } catch (e) {
+      if (turn === loadTurn.current && e instanceof ApiError && [401,403,404].includes(e.status)) {
+        removeSceneSnapshot(scope, 'guild:' + target); removeSceneSnapshot(scope, 'guild-directory');
+        setG(null); setDirectory(null);
+      }
+      throw e;
+    }
     if (turn !== loadTurn.current) return;
+    const [d, s, guild] = result;
+    writeSceneSnapshot(scope, 'guild-directory', d); writeSceneSnapshot(scope, 'guild-settings', s);
+    if (guild) writeSceneSnapshot(scope, 'guild:' + target, guild);
     setDirectory(d);
     setSettings(s);
     setG(guild);
+    setRestored(false);
   }
   useEffect(() => {
     void load().catch((e) => setError(e.message));
     const timer = setInterval(() => {
       if (!document.hidden && !doc) void load().catch((e) => setError(e.message));
     }, 30000);
-    return () => clearInterval(timer);
+    return () => { loadTurn.current++; clearInterval(timer); };
   }, [target, Boolean(doc), activeCharacterId]);
+  const previousCharacter = useRef(activeCharacterId);
   useEffect(() => {
+    if (previousCharacter.current === activeCharacterId) return;
+    previousCharacter.current = activeCharacterId;
     setDirectory(null);
     setG(null);
     setDoc(null);
@@ -152,7 +177,10 @@ export function Guilds({
       setTarget(new URLSearchParams(location.hash.split('?')[1] || '').get('id') || '');
       setDoc(null);
       setCrestDraft(null);
-      setG(null);
+      const id = new URLSearchParams(location.hash.split('?')[1] || '').get('id') || '';
+      const saved = readSceneSnapshot<Guild>(scope, 'guild:' + id);
+      setRestored(Boolean(saved));
+      setG(saved ? { ...saved, is_owner:false, is_member:false, treasury_cp:null, ledger:[], weekly:null } : null);
       setRoom('main');
       setEstateFocusRequest(0);
       setEstateEditRequest(0);
@@ -160,7 +188,7 @@ export function Guilds({
     };
     window.addEventListener('hashchange', fn);
     return () => window.removeEventListener('hashchange', fn);
-  }, []);
+  }, [scope]);
   useEffect(() => {
     if (!g?.is_owner) return;
     let active = true;
@@ -200,6 +228,7 @@ export function Guilds({
   const headquarters = g ? (
     <GuildEstate
       key={g.id}
+      restored={restored}
       menuRequest={estateMenuRequest}
       guildId={g.id}
       characterId={activeCharacterId}
@@ -362,7 +391,7 @@ export function Guilds({
               <GuildCrest crest={current!.crest} size={52} />
               <span>
                 <h1>{g.document.name}</h1>
-                <small>Sede da guilda · {g.is_member ? 'Sua companhia' : 'Visitante'}</small>
+                <small>Sede da guilda · {restored ? 'Atualizando acesso…' : g.is_member ? 'Sua companhia' : 'Visitante'}</small>
               </span>
               <ChevronDown size={15} />
             </button></div>

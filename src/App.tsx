@@ -50,6 +50,7 @@ import {
   X,
 } from 'lucide-react';
 import { authClient, api, post } from './api';
+import { clearSceneSnapshots } from './scene-snapshots';
 import { CharacterForm, Empty, Login, Modal, PostForm } from './components';
 import { rankName, rankTitle, rankLabel, progressionLabel, testEligible } from '../shared/progression';
 import { Navigation } from './Navigation';
@@ -153,6 +154,7 @@ export default function App() {
 }
 
 function Portal({ user }: { user: User }) {
+  useEffect(() => () => clearSceneSnapshots(), []);
   const [administrator, setAdministrator] = useState(false);
   const [contentScopes, setContentScopes] = useState(user.admin_scopes || []);
   const canManageBoard = administrator || contentScopes.includes('board');
@@ -700,7 +702,7 @@ function Portal({ user }: { user: User }) {
         )}
         {page === 'lore' && <LoreLibrary />}
         {page === 'house' && <HousePage character={character} user={user} onPurchased={refresh} />}
-        {page === 'house2' && <House2Page character={character} user={user} />}
+        {page === 'house2' && <House2Page key={character?.id || 'no-character'} character={character} user={user} />}
         {page === 'guild' && (
           <GuildPage key={character?.id || 'no-character'} user={user} characters={characters} activeCharacterId={character?.id || ''} onSelectCharacter={setSelectedId} onPurchased={refresh} />
         )}

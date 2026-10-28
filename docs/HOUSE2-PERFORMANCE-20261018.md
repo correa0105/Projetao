@@ -6,6 +6,8 @@ Máscaras de grama, mistura dos caminhos e luz ambiente ficam limitadas à mesma
 
 O cenário procedural é reutilizado enquanto a geometria dos terrenos não muda. Camadas estáticas e pintura usam memoização; respostas de atualização idênticas conservam o estado atual. A câmera agrupa movimentos até o próximo quadro e aplica a última posição ao soltar o ponteiro. Os intervalos de sincronização permanecem iguais, preservando atualizações de outros jogadores.
 
+Ao voltar de outra aba do site, a House restaura a última vizinhança e sua câmera a partir de um snapshot de exibição da mesma conta/personagem, enquanto atualiza os dados no servidor. Edição só fica disponível após a conferência atual das permissões. O snapshot não substitui o PostgreSQL nem persiste compras ou rascunhos. Cache de artes versionadas, expiração e isolamento da sessão seguem [Entrada e preparação de cenários](ASSET-LOADING-20261021.md).
+
 As 350 peças do catálogo compartilhado usam suas miniaturas publicadas na loja e coleção, com carregamento sob demanda. Mapa, confirmação de compra e PNG em alta qualidade continuam usando as artes completas. Não há alteração de servidor, regras, compras, posições, inventário ou banco.
 
 ## Medição

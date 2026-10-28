@@ -43,7 +43,6 @@ export function GuildEstateActors({
   focus: () => void;
   notice: (s: string) => void;
 }) {
-  const [actorsReady, setActorsReady] = useState(false);
   const [actors, setActors] = useState<Actor[]>([]),
     [sources, setSources] = useState<Source[]>([]),
     [busy, setBusy] = useState(false);
@@ -73,14 +72,10 @@ export function GuildEstateActors({
   useEffect(() => {
     if (!member || !characterId) return;
     let stop = false;
-    setActorsReady(false);
     const load = () => {
       if (!stop && !drag.current)
         void refresh()
-          .catch((e) => notice(e.message))
-          .finally(() => {
-            if (!stop) setActorsReady(true);
-          });
+          .catch((e) => notice(e.message));
     };
     load();
     const timer = setInterval(load, 5000);
@@ -144,7 +139,7 @@ export function GuildEstateActors({
   if (!member || !characterId) return null;
   return (
     <>
-      {!actorsReady && <span hidden data-page-preparing="true" />}
+      {/* Presence refreshes separately; it must not block an already prepared map. */}
       {panelTarget &&
         createPortal(
           <div className="guild-estate-actors-panel">

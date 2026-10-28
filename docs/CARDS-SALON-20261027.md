@@ -12,7 +12,7 @@ A fala do Anfitrião tem altura limitada pela posição projetada da primeira pe
 
 A iluminação pintada fornece sombras, reflexos e feixe volumétrico. Uma camada Canvas acrescenta difusão discreta e oscilação das velas, além de poeira esparsa somente na região do feixe. Coordenadas acompanham o mesmo recorte da imagem. Movimento reduzido mantém luz estática, sem partículas; aba oculta e desmontagem interrompem os quadros. Densidade e resolução limitadas, sem filtros animados sobre a tela inteira.
 
-A revelação usa giro, brilho e partículas, com papel e harmônicos sintetizados originalmente em Web Audio. Respeita o volume/silenciamento global de efeitos, interrompe o áudio ao fechar/ocultar e reduz animações conforme a preferência do sistema. Inspeção conserva Escape, retorno do foco, rotação por teclado e prévias dos três níveis.
+A revelação usa giro, brilho e partículas, com papel e harmônicos sintetizados originalmente em Web Audio. Respeita o volume/silenciamento global de efeitos, interrompe o áudio ao fechar/ocultar e reduz animações conforme a preferência do sistema. Inspeção conserva Escape, retorno do foco, rotação por teclado e prévias dos três níveis. O nível é escolhido somente nos três botões junto à raridade; a barra inferior mantém Virar e Restaurar, sem outro botão Nv 3.
 
 As oito definições, quatro cartas compráveis, preços, três espaços e APIs de compra/equipamento existentes são preservados. Não foram acrescentados upgrades, drops, migrações ou concessões de bens.
 

@@ -12,8 +12,8 @@ export function CardViewer3D({card,level=1}:{card:Card;level?:number}) {
   const rotation=useRef({x:0,y:0}),frame=useRef<number|null>(null);
   const light=useRef({x:0,y:0});
   const drag=useRef<{id:number;x:number;y:number;rx:number;ry:number;width:number;height:number}|null>(null);
-  const [chromePreview,setChromePreview]=useState(false),[side,setSide]=useState('Frente');
-  const chrome=cardVisualLevel(level)===3||chromePreview;
+  const [side,setSide]=useState('Frente');
+  const chrome=cardVisualLevel(level)===3;
   function paint() {
     frame.current=null;
     model.current?.style.setProperty('--card-rotation-x',rotation.current.x+'deg');
@@ -82,7 +82,6 @@ export function CardViewer3D({card,level=1}:{card:Card;level?:number}) {
     <div className="card-viewer-controls">
       <button type="button" onClick={()=>{rotate(rotation.current.y+180);setSide(side==='Frente'?'Verso':'Frente');}}><Rotate3D size={14}/>Virar</button>
       <button type="button" onClick={()=>{rotate(0,0);setSide('Frente');}}><RotateCcw size={14}/>Restaurar</button>
-      {cardVisualLevel(level)<3&&<button type="button" aria-label="Prévia Nv 3" aria-pressed={chromePreview} onClick={()=>setChromePreview(!chromePreview)}>Nv 3</button>}
     </div>
     <p className="card-viewer-help" id="card-viewer-help">Arraste para girar · Use as setas ou Home<span role="status">{side}{' · Nv '+(chrome?3:cardVisualLevel(level))}</span></p>
   </>;

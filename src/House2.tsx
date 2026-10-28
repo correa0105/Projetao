@@ -33,7 +33,9 @@ import {
   X,
   UsersRound,
 } from 'lucide-react';
-import { api, post } from './api';
+import { api, post, ApiError } from './api';
+import { basicAccountPreview } from './account-preview';
+import { readSceneSnapshot, writeSceneSnapshot, removeSceneSnapshot, sceneSnapshotScope } from './scene-snapshots';
 import { ScenePanel } from './ScenePanel';
 import { Modal } from './components';
 import { House2Village, House2VillageRoofs } from './House2Village';
@@ -119,9 +121,18 @@ const toolIcons = {
 type Camera = House2Camera;
 
 export function House2({ character, user }: { character?: Character; user: User }) {
-  const [directory, setDirectory] = useState<House2Directory | null>(null);
-  const [sceneId, setSceneId] = useState<string | null>(null);
-  const [scene, setScene] = useState<House2Scene | null>(null);
+  const scope = sceneSnapshotScope(user.id, character?.id || '', basicAccountPreview());
+  const [opening] = useState(() => {
+    const id = readSceneSnapshot<string>(scope, 'house-active');
+    const saved = id ? readSceneSnapshot<House2Scene>(scope, 'house:' + id) : null;
+    return { directory: readSceneSnapshot<House2Directory>(scope, 'house-directory'),
+      id: saved ? id : null, scene: saved ? { ...saved, plots: saved.plots.map(p => ({ ...p, can_edit: false })) } : null,
+      camera: id ? readSceneSnapshot<Camera>(scope, 'house-camera:' + id) : null };
+  });
+  const [directory, setDirectory] = useState<House2Directory | null>(opening.directory);
+  const [sceneId, setSceneId] = useState<string | null>(opening.id);
+  const [scene, setScene] = useState<House2Scene | null>(opening.scene);
+  const [restored, setRestored] = useState(Boolean(opening.scene));
   const [query, setQuery] = useState(''),
     [filter, setFilter] = useState('all');
   const [catalogQuery, setCatalogQuery] = useState('');
@@ -137,7 +148,7 @@ export function House2({ character, user }: { character?: Character; user: User 
   const [interior, setInterior] = useState<string | null>(null);
   const [hideRoofOnEdit, setHideRoofOnEdit] = useState(true);
   const [camera, setCamera] = useState<Camera>(() =>
-    initialHouse2Camera({ width: innerWidth, height: innerHeight }),
+    opening.camera ? boundHouse2Camera(opening.camera, { width: innerWidth, height: innerHeight }) : initialHouse2Camera({ width: innerWidth, height: innerHeight }),
   );
   const [viewport, setViewport] = useState({ width: 1440, height: 900 });
   const worldClock = useWorldClock();
@@ -284,12 +295,24 @@ export function House2({ character, user }: { character?: Character; user: User 
       if (!mounted.current || version !== epoch.current) return;
       setDirectory((old) => (JSON.stringify(old) === JSON.stringify(d) ? old : d));
       setScene((old) => (JSON.stringify(old) === JSON.stringify(s) ? old : s));
+      setRestored(false);
+      writeSceneSnapshot(scope, 'house-directory', d);
+      if (id && s) writeSceneSnapshot(scope, 'house:' + id, s);
     } catch (e) {
-      if (mounted.current && version === epoch.current) setNotice((e as Error).message);
+      if (mounted.current && version === epoch.current) {
+        if (e instanceof ApiError && [401,403,404].includes(e.status)) {
+          removeSceneSnapshot(scope, 'house:' + id); removeSceneSnapshot(scope, 'house-active');
+          removeSceneSnapshot(scope, 'house-directory'); setScene(null); setDirectory(null); setSceneId(null);
+        }
+        setNotice((e as Error).message);
+      }
     } finally {
       if (mounted.current && version === epoch.current) setLoading(false);
     }
-  }, []);
+  }, [scope]);
+  useEffect(() => {
+    if (sceneId) writeSceneSnapshot(scope, 'house-camera:' + sceneId, camera);
+  }, [scope, sceneId, camera]);
   useEffect(() => {
     mounted.current = true;
     return () => {
@@ -365,12 +388,16 @@ export function House2({ character, user }: { character?: Character; user: User 
   function enter(id: string) {
     if (actors.busy) return;
     if (guardDirty()) return;
-    setScene(null);
+    const saved = readSceneSnapshot<House2Scene>(scope, 'house:' + id);
+    setRestored(Boolean(saved));
+    setScene(saved ? { ...saved, plots: saved.plots.map(p => ({ ...p, can_edit: false })) } : null);
     setSceneId(id);
+    writeSceneSnapshot(scope, 'house-active', id);
     setSelected(null);
     setInterior(null);
     setTool(null);
-    setCamera(initialHouse2Camera(viewport));
+    const savedCamera = readSceneSnapshot<Camera>(scope, 'house-camera:' + id);
+    setCamera(savedCamera ? boundHouse2Camera(savedCamera, viewport) : initialHouse2Camera(viewport));
     setMenu(false);
     setNotice('');
   }
@@ -378,6 +405,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     if (actors.busy) return;
     if (guardDirty()) return;
     setSceneId(null);
+    removeSceneSnapshot(scope, 'house-active');
     setScene(null);
     setSelected(null);
     setTool(null);
@@ -1181,7 +1209,7 @@ export function House2({ character, user }: { character?: Character; user: User 
     );
 
   return (
-    <section className="house2-world" aria-label="Vizinhança House">
+    <section className="house2-world" aria-label="Vizinhança House" data-scene-restored={restored || undefined}>
       <svg
         ref={mapRef}
         className="h2-map"

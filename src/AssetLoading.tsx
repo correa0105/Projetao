@@ -169,6 +169,16 @@ export function AssetGate({
       frame = 0;
     const check = () => {
       if (opened.current) return;
+      // A session snapshot restores only scenery, with editing disabled until the
+      // API confirms access. Re-enter it without rescanning every SVG texture.
+      if (!busy && prepared.ready && node.querySelector('[data-scene-restored="true"]') &&
+          !node.querySelector('[data-page-preparing="true"]')) {
+        opened.current = true;
+        observer.disconnect();
+        window.removeEventListener('resize', check);
+        setVisible(true);
+        return;
+      }
       const current = ++revision;
       const found = imagePaths(node);
       const paths = [...new Set([...assets, ...found.urls].map((path) => new URL(path, location.href).href))];

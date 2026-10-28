@@ -16,6 +16,7 @@ import { clothingPieceAppearance } from '../shared/clothing-bundles.js';
 import express from 'express';
 import { authenticationClientIp, configureReverseProxy } from './reverse-proxy.js';
 import { sendCatalog, compressedBundle } from './http-transfer.js';
+import { staticAssetCacheControl } from './static-asset-cache.js';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
 import { toNodeHandler, fromNodeHeaders } from 'better-auth/node';
@@ -779,11 +780,8 @@ export function createApp() {
     app.use(
       express.static(resolve('dist/client'), {
         setHeaders: (res, file) => {
-          if (file.endsWith('.html')) res.setHeader('Cache-Control', 'no-store');
-          else if (file.startsWith(resolve('dist/client/assets')))
-            res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-          else if (/\.(png|jpe?g|webp|avif|svg|woff2?|ttf)$/i.test(file))
-            res.setHeader('Cache-Control', 'public, max-age=3600');
+          const cache = staticAssetCacheControl(resolve('dist/client'), file);
+          if (cache) res.setHeader('Cache-Control', cache);
         },
       }),
     );
