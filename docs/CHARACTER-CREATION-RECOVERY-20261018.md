@@ -18,6 +18,8 @@ O PNG aprovado do token conserva resolução nativa, pixels e transparência. A 
 
 Validação em banco descartável cobre cinco falhas consecutivas, intervalo e concorrência, atendimento de outro pedido, reinício repetido, preservação dos checkpoints, publicação idempotente e substituição privada. A retomada manual continua disponível para os casos que exigem correção, com ownership e dados atuais dos slots.
 
+O pedido original de Raj foi concluído com o primeiro token escolhido expressamente pelo usuário, conservando o retrato, a história, as escolhas, os dados do slot e o personagem já criado. PNG fonte de 1254 × 1254 com alfa e pixels preservados; ouro inicial de 6.000 PO concedido uma vez. As variantes recusadas e a aprovação do usuário ficam em `.local`, fora do Git. Web com a fila automática publicada e verificada por HTTPS; resolução nativa e referência aprovada são aplicadas pelo ilustrador local.
+
 Validação: seis testes de API/ownership, retomada concorrente, conteúdo preservado, finalização atômica e gerador de duas artes; QA no navegador com recarga, restauração literal da história e ficha, imagem preservada e retry no mesmo pedido, em 1440 e 390 px. Fixture do teste de VTT passou a usar a constante vigente do protocolo em vez do valor antigo 7.
 
 Artorias foi recuperado do pedido original e da sessão exata da arte aprovada, preservando os 506 caracteres da história e as escolhas por comparação integral. Retrato e token estão privados no banco; cópia de recuperação e registro ficam em `.local/recovery-artorias-20261018`, fora do Git e dos arquivos públicos.
