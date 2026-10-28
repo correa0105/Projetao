@@ -41,7 +41,8 @@ import {
   type GuildEstateItemId,
 } from '../shared/guild-estate';
 import { house2Landscape } from '../shared/house-v2';
-import { guildFacilityCost, guildFacilityMaxLevel } from '../shared/guild-facilities';
+import { GuildBastionPanel } from './GuildBastionPanel';
+import './guild-facilities.css';
 import { money } from '../shared/rules';
 import { api, post } from './api';
 import { Modal } from './components';
@@ -1033,40 +1034,8 @@ export function GuildEstate(p: Props) {
         <Modal title={definition.name + ' · nível ' + level} close={() => !busy && setDetail(null)}>
           <div className="guild-estate-item-details">
             <img src={guildEstateArt(definition.id).image} alt="" />
-            <p>Esta é uma das quatro instalações da sede. Suas melhorias pertencem à guilda.</p>
-            <p>
-              Nível {level}/{guildFacilityMaxLevel} · Tesouro:{' '}
-              {p.treasury === null ? 'Disponível aos membros' : money(p.treasury)}
-            </p>
-            {level < guildFacilityMaxLevel && (
-              <p>Próximo nível: {money(guildFacilityCost(level))} do tesouro.</p>
-            )}
-            {p.owner && level < guildFacilityMaxLevel && (
-              <button
-                type="button"
-                className="button primary"
-                disabled={busy || (p.treasury ?? 0) < guildFacilityCost(level)}
-                onClick={async () => {
-                  setBusy(true);
-                  setError('');
-                  try {
-                    await post(
-                      url('/guilds/' + p.guildId + '/facilities/' + definition.id + '/upgrade'),
-                      { level: level + 1 },
-                    );
-                    await p.changed();
-                    setNotice('Instalação evoluída.');
-                  } catch (e) {
-                    setError((e as Error).message);
-                  } finally {
-                    setBusy(false);
-                  }
-                }}
-              >
-                {busy ? 'Evoluindo…' : 'Evoluir instalação'}
-              </button>
-            )}
-            {error && <p role="alert">{error}</p>}
+            <GuildBastionPanel guildId={p.guildId} room={definition.id}
+              characterId={p.characterId} changed={p.changed} />
           </div>
         </Modal>
       )}

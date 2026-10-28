@@ -4,6 +4,7 @@ import type { PoolClient } from 'pg';
 import { AppError } from './services.js';
 import {administrationFor} from './administrators.js';
 import { creditMissionTags } from './mission-tag-progress.js';
+import { creditBastionMission } from './guild-bastion.js';
 import {
   progressMission,
   testEligible,
@@ -150,6 +151,7 @@ export async function completeMission(
         ],
       );
       await creditMissionTags(client, id, participant.character_id);
+      await creditBastionMission(client, id, participant.character_id);
     }
     const {
       rows: [completed],

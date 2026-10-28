@@ -9,9 +9,9 @@ import { requireAdministrator, isAdministrator } from './administrators.js';
 import { currentGoldUnlimited, spendGold } from './gold.js';
 import {
   guildFacilities,
-  guildFacilityCost,
   guildFacilityMaxLevel,
 } from '../shared/guild-facilities.js';
+import { bastionDefinitions, bastionFacilityStates, requireBastionUpgrade } from './guild-bastion.js';
 import {
   guildEstateSchema,
   defaultGuildEstate,
@@ -683,13 +683,44 @@ export function guildsRouter() {
       }),
     );
   });
+  router.get('/guilds/:id/bastion', async (req, res) => {
+    const id = uuid.parse(req.params.id);
+    const { rows: [g] } = await pool.query('SELECT owner_id,treasury_cp FROM player_guilds WHERE id=$1', [id]);
+    if (!g) throw new AppError(404, 'Guilda não encontrada.');
+    const member = !!(await pool.query('SELECT 1 FROM player_guild_members WHERE guild_id=$1 AND user_id=$2 AND ($3::uuid IS NULL OR character_id=$3)',
+      [id, res.locals.user.id, res.locals.guildCharacterId])).rowCount;
+    const state = await bastionFacilityStates(pool, id, member ? Number(g.treasury_cp) : 0);
+    res.json({ ...state, custom: member ? state.custom : [], progress_visible: member,
+      facilities: state.facilities.map(f => member ? f : { ...f, can_upgrade: false,
+        next: f.next ? { ...f.next, requirements: f.next.requirements.map(r => ({ ...r, current: 0, met: false })) } : null }),
+      can_edit: await isAdministrator(res.locals.user.id), can_upgrade: member && g.owner_id === res.locals.user.id });
+  });
+  router.put('/guilds/:id/bastion/progress/:key', async (req, res) => {
+    await requireAdministrator(res.locals.user.id);
+    const id = uuid.parse(req.params.id), key = z.string().regex(/^[a-z][a-z0-9_]{1,59}$/).parse(req.params.key);
+    const input = z.object({ value: z.number().int().min(0).max(1_000_000_000), revision: z.number().int().min(0), note: z.string().trim().min(3).max(1000) }).strict().parse(req.body);
+    res.json(await transaction(async db => {
+      await requireAdministrator(res.locals.user.id, db);
+      if (!(await db.query('SELECT id FROM player_guilds WHERE id=$1 FOR UPDATE', [id])).rowCount) throw new AppError(404, 'Guilda não encontrada.');
+      const definitions = await bastionDefinitions(db);
+      if (!definitions.some(f => f.progression.levels.some(t => t.requirements.some(r => r.kind === 'custom' && r.key === key))))
+        throw new AppError(400, 'Cadastre este critério na evolução de uma instalação.');
+      const previous = (await db.query('SELECT value,revision FROM guild_bastion_custom_progress WHERE guild_id=$1 AND key=$2 FOR UPDATE', [id, key])).rows[0];
+      if ((previous?.revision || 0) !== input.revision) throw new AppError(409, 'O progresso mudou. Atualize antes de salvar.');
+      const saved = (await db.query(`INSERT INTO guild_bastion_custom_progress(guild_id,key,value) VALUES($1,$2,$3)
+        ON CONFLICT(guild_id,key) DO UPDATE SET value=excluded.value,revision=guild_bastion_custom_progress.revision+1 RETURNING key,value::float8 AS value,revision`, [id, key, input.value])).rows[0];
+      await db.query('INSERT INTO guild_bastion_audit(guild_id,user_id,kind,reference,document) VALUES($1,$2,$3,$4,$5)',
+        [id, res.locals.user.id, 'custom_progress', key, JSON.stringify({ previous: previous || null, ...input })]);
+      return saved;
+    }));
+  });
   router.post('/guilds/:id/facilities/:room/upgrade', async (req, res) => {
     const id = uuid.parse(req.params.id),
       uid = res.locals.user.id;
     const facility = guildFacilities.find((f) => f.room === req.params.room);
     if (!facility) throw new AppError(404, 'Instalação não encontrada.');
     const input = z
-      .object({ level: z.number().int().min(2).max(guildFacilityMaxLevel) })
+      .object({ level: z.number().int().min(2).max(guildFacilityMaxLevel), revision: z.number().int().min(0).optional() })
       .strict()
       .parse(req.body);
     res.json(
@@ -712,9 +743,9 @@ export function guildsRouter() {
         const current = stored?.level || 1;
         if (input.level <= current) return { level: current, replayed: true };
         if (input.level !== current + 1) throw new AppError(409, 'Melhore um nível por vez.');
-        const cost = guildFacilityCost(current);
-        if (Number(g.treasury_cp) < cost)
-          throw new AppError(409, 'O tesouro da guilda não cobre esta melhoria.');
+        const { cost, snapshot } = await requireBastionUpgrade(db, id, facility.room, input.level, Number(g.treasury_cp));
+        if (input.revision !== undefined && snapshot.revision !== input.revision)
+          throw new AppError(409, 'Os requisitos mudaram. Reabra os detalhes antes de evoluir.');
         await db.query('UPDATE player_guilds SET treasury_cp=treasury_cp-$2 WHERE id=$1', [
           id,
           cost,
@@ -727,6 +758,8 @@ export function guildsRouter() {
           "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference) VALUES($1,$2,'upgrade',$3,$4)",
           [id, uid, -cost, 'facility:' + facility.room + ':' + input.level],
         );
+        await db.query('INSERT INTO guild_bastion_audit(guild_id,user_id,kind,reference,document) VALUES($1,$2,$3,$4,$5)',
+          [id, uid, 'upgrade', facility.room + ':' + input.level, JSON.stringify(snapshot)]);
         return { level: input.level, replayed: false };
       }),
     );

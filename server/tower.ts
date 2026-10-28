@@ -8,6 +8,7 @@ import { AppError } from './services.js';
 import { towerBaseReward, towerTreasure, towerFloorCount } from '../shared/tower.js';
 import { monsterArt } from '../shared/vtt-monster-art.js';
 import { purchaseContents } from '../shared/armor-bundles.js';
+import { creditBastionCrystals } from './guild-bastion.js';
 const uuid = z.string().uuid();
 const floorNumber = z.coerce.number().int().min(1).max(towerFloorCount);
 const floorInput = z
@@ -379,6 +380,7 @@ export function towerRouter() {
             'INSERT INTO tower_wallets(character_id,crystals) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET crystals=tower_wallets.crystals+EXCLUDED.crystals',
             [char.id, base.crystals],
           );
+          await creditBastionCrystals(c, id, char.id, base.crystals, 'base');
         }
         await c.query(
           "UPDATE tower_expeditions SET status='completed',summary=$2,completed_at=now(),revision=revision+1 WHERE id=$1",
@@ -440,6 +442,7 @@ export function towerRouter() {
         character_id,
         reward.crystals,
       ]);
+      await creditBastionCrystals(c, id, character_id, reward.crystals, 'bonus');
       return (
         await c.query(
           'UPDATE tower_claims SET roll=$3,rarity=$4,relic=$5,bonus_gold_cp=$6,bonus_crystals=$7,item_id=$8,item_quantity=$9,rolled_at=now() WHERE run_id=$1 AND character_id=$2 RETURNING *',

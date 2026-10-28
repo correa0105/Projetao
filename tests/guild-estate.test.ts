@@ -12,6 +12,7 @@ import { pool } from '../server/db';
 import { migrate } from '../server/migrate';
 import { seed } from '../server/seed';
 import { createLegacyTestCharacter } from './character-fixtures';
+import { configureTestBastion } from './guild-bastion-fixtures';
 
 test('sede começa com quatro instalações em quatro cômodos; permite aproximar da parede e valida limite da casa e quantidade', () => {
   const layout = defaultGuildEstate();
@@ -46,6 +47,7 @@ test('API da sede conserva broche/economia, protege o dono e salva posições co
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
   await migrate();
   await seed();
+  await configureTestBastion();
   const { createApp } = await import('../server/app');
   const server = createApp().listen(0, '127.0.0.1');
   await new Promise<void>((r) => server.once('listening', r));

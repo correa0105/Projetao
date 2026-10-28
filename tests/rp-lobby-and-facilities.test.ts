@@ -7,6 +7,7 @@ import { pool } from '../server/db';
 import { migrate } from '../server/migrate';
 import { seed } from '../server/seed';
 import { createLegacyTestCharacter } from './character-fixtures';
+import { configureTestBastion } from './guild-bastion-fixtures';
 import { guildDocumentSchema } from '../shared/guilds';
 import { guildFacilities, guildFacilityCost } from '../shared/guild-facilities';
 
@@ -14,6 +15,7 @@ test('Lobby de RP e instalações: acesso, edição, presença, convites e econo
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[a-f0-9]{32}$/);
   await migrate();
   await seed();
+  await configureTestBastion();
   const { createApp } = await import('../server/app');
   const server = createApp().listen(0, '127.0.0.1');
   await new Promise<void>((r) => server.once('listening', r));

@@ -1,3 +1,4 @@
+import type { BastionProgression } from './guild-bastion';
 export const guildFacilities = [
   {
     room: 'main',
@@ -77,6 +78,7 @@ export type GuildFacilityDefinition = {
   y: number;
   scale: number;
   revision: number;
+  progression?: BastionProgression | null;
 };
 export type GuildFacilityCatalog = { items: GuildFacilityDefinition[]; can_edit: boolean };
 export function defaultGuildFacilities(): GuildFacilityDefinition[] {

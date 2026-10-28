@@ -1,0 +1,158 @@
+.guild-bastion-panel {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+  color: #d4c7ae;
+}
+.guild-bastion-panel p {
+  margin: 0;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.guild-bastion-panel h3,
+.guild-bastion-panel h4 {
+  margin: 0;
+  color: #eadcbd;
+}
+.bastion-current,
+.bastion-next {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid #a1834e55;
+  background: #171a20;
+  border-radius: 6px;
+}
+.bastion-current {
+  border-left: 3px solid #b49861;
+  background: linear-gradient(120deg, #29251c, #171a20);
+}
+.bastion-eyebrow {
+  color: #c9ad77;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+.bastion-requirements {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+}
+.bastion-requirements li {
+  display: grid;
+  gap: 6px;
+}
+.bastion-requirements li > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.bastion-requirements li > div > span {
+  color: #c3b290;
+  font-variant-numeric: tabular-nums;
+}
+.bastion-requirements progress {
+  width: 100%;
+  height: 7px;
+  accent-color: #ae8c52;
+  border: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.bastion-requirements progress::-webkit-progress-bar {
+  background: #090d14;
+}
+.bastion-requirements progress::-webkit-progress-value {
+  background: #ae8c52;
+}
+.bastion-requirements progress::-moz-progress-bar {
+  background: #ae8c52;
+}
+.bastion-requirements small {
+  font-size: 11px;
+  color: #aaa18f;
+}
+.bastion-requirements [data-met='true'] strong::after {
+  content: ' ✓';
+  color: #d3b677;
+}
+.guild-bastion-panel summary {
+  cursor: pointer;
+  padding: 8px 0;
+  color: #cbb382;
+}
+.bastion-timeline ol {
+  display: grid;
+  gap: 16px;
+  margin: 12px 0 0;
+  padding-left: 24px;
+}
+.bastion-timeline li {
+  padding-left: 8px;
+}
+.bastion-timeline li[aria-current='step'] {
+  color: #e4c384;
+}
+.bastion-timeline li p {
+  font-size: 13px;
+  color: #bfb4a0;
+}
+.bastion-editor,
+.bastion-custom {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+.bastion-editor p {
+  font-size: 12px;
+  color: #b7ac97;
+}
+.bastion-editor .bastion-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bastion-checkbox input {
+  width: auto;
+}
+.bastion-requirement-editor {
+  margin: 0;
+  border-radius: 4px;
+  background: #11151c;
+}
+.guild-bastion-panel input,
+.guild-bastion-panel select,
+.guild-bastion-panel textarea {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.guild-bastion-panel .bastion-checkbox input {
+  width: auto;
+}
+.bastion-custom {
+  margin-top: 14px;
+}
+.bastion-counting-note {
+  font-size: 11px;
+  color: #a99f8b;
+}
+.bastion-custom label {
+  display: grid;
+  gap: 6px;
+}
+@media (max-width: 480px) {
+  .bastion-current,
+  .bastion-next {
+    padding: 13px;
+  }
+  .guild-bastion-panel {
+    gap: 14px;
+  }
+}

@@ -83,6 +83,7 @@ after(async () => {
     'DELETE FROM house_items WHERE character_id IN(SELECT id FROM characters WHERE user_id=ANY($1::text[]))',
     [users],
   );
+  await pool.query('DELETE FROM vtt_rooms WHERE owner_id=ANY($1::text[])', [users]);
   await pool.query('DELETE FROM "user" WHERE id=ANY($1::text[])', [users]);
   await new Promise<void>((r, j) => server.close((e) => (e ? j(e) : r())));
   await pool.end();
