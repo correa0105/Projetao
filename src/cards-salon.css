@@ -1,78 +1,52 @@
-/* Source plane dimensions match card-table-projection.ts. Its matrix also applies
-   the background's center/cover crop; cards must not receive a second CSS tilt. */
+/* The three slots and host deck share the photographed desk plane. */
 :root .app-shell[data-page='cards'] > .main-shell { height:100dvh; padding-bottom:0; overflow:hidden; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon { --sans:'DM Sans',sans-serif; --serif:'Cinzel',Georgia,serif; --salon-card-width:clamp(84px,12.9vh,142px); position:relative; display:block; height:100dvh; min-height:620px; padding:0; overflow:hidden; color:#e5dccb; background:#101414; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon { --sans:'DM Sans',sans-serif; --serif:'Cinzel',Georgia,serif; position:relative; display:block; height:100dvh; min-height:620px; padding:0; overflow:hidden; color:#e5dccb; background:#10111a; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-scene { position:absolute; inset:0; height:100%; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-backdrop { background:url('/cards/host-reading-masked-20261027.png') center / cover no-repeat; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-shade { background:linear-gradient(90deg,#060b1270,transparent 60%),linear-gradient(180deg,#060a1225,transparent 50%,#05080c24); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-content > header { position:absolute; top:105px; left:5vw; z-index:3; max-width:350px; padding:0; pointer-events:none; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-backdrop { background:url('/cards/host-shadow-study-20261027.png') center / cover no-repeat; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-shade { background:linear-gradient(90deg,#06091455,transparent 55%),linear-gradient(180deg,#06091420,transparent 55%,#06091435); pointer-events:none; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-lighting { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; mix-blend-mode:screen; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-content > header { position:absolute; top:105px; left:5vw; z-index:3; max-width:340px; padding:0; pointer-events:none; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .eyebrow { color:#bda16a; font:8px/1.4 var(--sans); letter-spacing:.18em; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon header > h2 { margin:8px 0; color:#ecdfc4; font:23px/1.25 var(--serif); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon header > p { margin:0; color:#bdb9ac; font:10px/1.6 var(--sans); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-workbench, :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-browse { display:contents; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-playset { position:absolute; z-index:5; top:201px; left:5vw; width:fit-content; margin:0; padding:0; border:0; background:none; box-shadow:none; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-hand-toggle { display:flex; align-items:center; gap:9px; min-height:34px; padding:7px 12px; border:1px solid #a58a5345; border-radius:5px; background:#111918b3; color:#d1bd93; font:10px var(--sans); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-hand-toggle small { padding-left:10px; border-left:1px solid #ad945144; color:#ae9b76; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-equipped { position:absolute; top:43px; left:0; display:flex; width:225px; gap:10px; padding:12px; border:1px solid #a18a534a; border-radius:6px; background:#101919f5; box-shadow:0 12px 30px #0008; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-equipped > button { width:60px; height:83px; flex:1; background:#161e1b; border:1px solid #a88d5155; border-radius:4px; padding:0; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-equipped > button[aria-pressed='true'] { border-color:#d2b97e; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-slot-index { display:none; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-empty-slot { height:100%; gap:5px; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-empty-slot > span { font-size:20px; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon header > h2 { margin:8px 0; color:#ecdfc4; font:22px/1.35 var(--serif); }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon header > p { margin:0; color:#c3bdb4; font:11px/1.6 var(--sans); }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table { position:absolute; z-index:2; inset:0; width:100%; height:100%; margin:0; padding:0; border:0; background:none; box-shadow:none; overflow:visible; pointer-events:none; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog-heading { display:none; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-filters { position:absolute; z-index:4; left:5vw; bottom:34px; display:flex; gap:20px; justify-content:center; width:max-content; padding:0; border:0; pointer-events:auto; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-filters button { min-height:28px; padding:5px 0; border:0; border-bottom:1px solid transparent; border-radius:0; background:none; color:#b6af9d; font:10px var(--sans); text-shadow:0 2px 7px #000; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-filters button[aria-pressed='true'] { border-bottom-color:#c8a66b; color:#e0c38a; box-shadow:none; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-reading-surface { position:absolute; top:0; left:0; transform-origin:0 0; pointer-events:none; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog { display:contents; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button { position:absolute; left:var(--card-x); top:var(--card-y); min-width:0; width:280px; height:400px; margin:0; padding:0; border:0; border-radius:7px; background:none; transform:rotate(var(--card-angle)); transform-origin:center; pointer-events:auto; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:nth-child(1) { --card-x:var(--fan-0-x); --card-y:var(--fan-0-y); --card-angle:var(--fan-0-angle); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:nth-child(2) { --card-x:var(--fan-1-x); --card-y:var(--fan-1-y); --card-angle:var(--fan-1-angle); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:nth-child(3) { --card-x:var(--fan-2-x); --card-y:var(--fan-2-y); --card-angle:var(--fan-2-angle); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:nth-child(4) { --card-x:var(--fan-3-x); --card-y:var(--fan-3-y); --card-angle:var(--fan-3-angle); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:nth-child(5) { --card-x:var(--fan-4-x); --card-y:var(--fan-4-y); --card-angle:var(--fan-4-angle); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:nth-child(6) { --card-x:var(--fan-5-x); --card-y:var(--fan-5-y); --card-angle:var(--fan-5-angle); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:nth-child(7) { --card-x:var(--fan-6-x); --card-y:var(--fan-6-y); --card-angle:var(--fan-6-angle); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:nth-child(8) { --card-x:var(--fan-7-x); --card-y:var(--fan-7-y); --card-angle:var(--fan-7-angle); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog .arcana-card-face { width:100%; height:100%; transform:none; box-shadow:0 2px 0 #8e7548,0 7px 5px #0009; transition:filter .2s,box-shadow .2s; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:hover, :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:focus-visible { outline:0; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:hover .arcana-card-face, :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button:focus-visible .arcana-card-face { filter:brightness(1.23); box-shadow:0 2px 0 #c3a368,0 14px 15px #0009,0 0 0 1px #cfb176; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog-price { display:none; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck { position:absolute; left:980px; top:80px; width:240px; height:343px; margin:0; padding:0; border:0; border-radius:7px; background:none; transform:none; box-shadow:-4px 10px 10px #000b; pointer-events:auto; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck img, :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span { position:absolute; inset:0; width:100%; height:100%; border:1px solid #af8c4f; border-radius:6px; background:#121917; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span:first-child { transform:translate(-3px,8px) rotate(-1deg); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span:nth-child(2) { transform:translate(-1px,4px); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck small { display:none; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck:hover { filter:brightness(1.2); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-reading-mat { display:none; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-count { position:absolute; left:5vw; bottom:70px; width:max-content; font:8px var(--sans); letter-spacing:.1em; color:#b5a37b; text-shadow:0 2px 7px #000; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog-empty { position:absolute; left:50%; bottom:190px; transform:translateX(-50%); width:230px; color:#ddd1b8; text-align:center; font:12px/1.6 var(--sans); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-invite { position:absolute; z-index:3; right:5vw; top:205px; display:flex; align-items:center; gap:10px; padding:11px 18px; border:1px solid #a58c5660; border-radius:5px; color:#d8c190; background:#101919b3; backdrop-filter:blur(6px); text-align:left; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot { position:absolute; top:var(--table-slot-y); width:var(--table-card-width); height:var(--table-card-height); margin:0; padding:0; border:2px dashed #ba9a6677; border-radius:7px; color:#c4aa7b; background:#0c0c1848; box-shadow:inset 0 0 0 7px #11121a55; pointer-events:auto; cursor:pointer; transition:background .18s,border-color .18s; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot:nth-child(1) { left:var(--table-slot-1-x); }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot:nth-child(2) { left:var(--table-slot-2-x); }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot:nth-child(3) { left:var(--table-slot-3-x); }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot::after { content:''; position:absolute; inset:-100px -12px; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot:hover,:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot:focus-visible { border-color:#e0c38a; background:#bda06818; outline:3px solid #d2b57d88; outline-offset:5px; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot[data-filled='true'] { border:0; background:none; box-shadow:0 4px 2px #8b704c,0 9px 7px #0008; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot .arcana-card-face { width:100%; height:100%; transform:none; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot-empty { height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:14px; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot-empty > span { font-size:45px; font-weight:400; opacity:.65; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot-empty > b { font:17px var(--sans); font-weight:400; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot-number { position:absolute; top:17px; left:0; width:100%; color:#b99d6e; font:23px var(--serif); text-align:center; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot[data-filled='true'] .cards-table-slot-number { top:auto; bottom:18px; left:15px; width:34px; height:34px; display:grid; place-items:center; font:17px var(--serif); border:1px solid #b99d6e77; border-radius:50%; background:#11151b; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck { position:absolute; left:var(--table-deck-x); top:var(--table-deck-y); width:170px; height:243px; margin:0; padding:0; border:0; border-radius:7px; background:none; transform:none; box-shadow:-6px 12px 9px #000a; pointer-events:auto; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck img,:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span { position:absolute; inset:0; width:100%; height:100%; border:2px solid #a98a56; border-radius:6px; background:#17141f; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span:first-child { transform:translate(-6px,12px); }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck > span:nth-child(2) { transform:translate(-3px,6px); }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck small { position:absolute; top:calc(100% + 14px); left:0; width:100%; color:#e1c895; font:24px var(--serif); text-shadow:0 3px 7px #000; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck:hover,:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck:focus-visible { filter:brightness(1.25); outline:2px solid #d6b77a; outline-offset:7px; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-deck::after { content:''; position:absolute; inset:-50px -14px -140px; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-invite { position:absolute; z-index:3; right:5vw; top:200px; display:flex; align-items:center; gap:10px; padding:11px 18px; border:1px solid #a58c5660; border-radius:5px; color:#d8c190; background:#13141db3; backdrop-filter:blur(6px); text-align:left; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-invite small { display:block; margin-bottom:4px; color:#b8a06d; font:8px var(--sans); letter-spacing:.18em; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-invite span { font:13px var(--serif); }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { position:absolute; z-index:8; top:145px; right:4vw; width:min(340px,29vw); background:#11191bf5; border-color:#a68c5860; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-sound-toggle { position:absolute; z-index:4; top:100px; right:5vw; display:flex; align-items:center; gap:8px; padding:8px 11px; border:1px solid #a58b5145; border-radius:4px; background:#1017199c; color:#c8b68e; font:10px var(--sans); }
-@media(max-height:820px) and (min-width:901px) {
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-content > header { top:95px; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon header > h2 { font-size:20px; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-playset { top:183px; }
-}
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { position:absolute; z-index:8; top:145px; right:4vw; width:min(340px,29vw); background:#14151ef5; border-color:#a68c5860; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-sound-toggle { position:absolute; z-index:4; top:100px; right:5vw; display:flex; align-items:center; gap:8px; padding:8px 11px; border:1px solid #a58b5145; border-radius:4px; background:#13141d9c; color:#c8b68e; font:10px var(--sans); }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-message { position:absolute; bottom:85px; left:50%; transform:translateX(-50%); max-width:80vw; color:#cdb98f; font:12px/1.6 var(--sans); text-align:center; z-index:5; }
 @media(max-width:900px) {
- :root .app-shell[data-page='cards'] > .main-shell { height:auto; padding-bottom:0; overflow:visible; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon { --salon-card-width:clamp(70px,calc((100vw - 100px) / 3),112px); min-height:max(740px,100dvh); height:max(740px,100dvh); overflow:clip; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-scene { height:100%; inset:0; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-backdrop { background-image:url('/cards/host-reading-masked-mobile-20261027.png'); background-position:center; background-size:cover; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-shade { background:linear-gradient(180deg,#080b1535,transparent 50%),linear-gradient(90deg,#070b1440,transparent 60%); }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-content > header { display:none; }
+ :root .app-shell[data-page='cards'] > .main-shell { height:auto; overflow:visible; }
+ :root .app-shell[data-page='cards'] .cards-room.cards-room--salon { height:max(740px,100dvh); min-height:740px; }
+ :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-backdrop { background-image:url('/cards/host-shadow-study-mobile-20261027.png'); }
+ :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-content > header { top:102px; left:22px; max-width:180px; }
  :root .app-shell[data-page='cards'] .cards-room.cards-room--salon header > h2 { display:none; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon header > p { max-width:130px; margin-top:8px; font-size:9px; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-playset { top:95px; left:22px; }
+ :root .app-shell[data-page='cards'] .cards-room.cards-room--salon header > p { width:180px; max-width:180px; font-size:10px; margin-top:8px; }
  :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-sound-toggle { top:95px; right:18px; padding:7px; }
  :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-sound-toggle span { display:none; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-filters { bottom:66px; left:22px; gap:18px; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-count { display:none; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-invite { top:calc(43dvh - 15px); right:18px; padding:9px 12px; }
+ :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-invite { top:auto; bottom:92px; right:18px; padding:9px 12px; }
  :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { position:fixed; top:110px; left:18px; right:18px; width:auto; max-height:70dvh; overflow:auto; }
 }
-@media(prefers-reduced-motion:reduce) { :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog > button, :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-catalog .arcana-card-face { transition:none; } }
+@media(prefers-reduced-motion:reduce) { :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-table-slot { transition:none; } }

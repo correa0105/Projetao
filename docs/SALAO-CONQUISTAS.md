@@ -1,6 +1,6 @@
 # Salão das cartas, conquistas e corvo — 05/10/2026
 
-Direção atual: Anfitrião mascarado, de frente para o jogador e um pouco afastado, sentado em poltrona atrás da mesa. Oito cartas em arco no primeiro plano, sobre o feltro e acompanhando sua perspectiva. Detalhes aparecem na revelação com animação e som; conversa sob demanda com encerramento e Escape. Três cartas equipadas, preços e obtenção preservados. Aprimoramento e drops seguem pendentes conforme o usuário. Implementação e artes finais em [CARDS-SALON-20261027.md](CARDS-SALON-20261027.md).
+Direção atual: gabinete escuro e sóbrio, madeira envelhecida, pouca ornamentação, luz fria da janela e velas discretas. Anfitrião com máscara de bico de corvo, um pouco afastado na poltrona atrás da mesa retangular. Três espaços pequenos e centralizados no tapete: clicar mostra somente as cartas do personagem para escolher e equipar. Baralho ao lado dele abre o acervo, separado da seleção de equipamento. Inspeção com animação e som; conversa sob demanda com encerramento e Escape. Preços e obtenção preservados; aprimoramento e drops seguem pendentes. Implementação e artes finais em [CARDS-SALON-20261027.md](CARDS-SALON-20261027.md).
 
 Correção do usuário: a página original **Conquistas** foi restaurada, incluindo
 estante, prateleiras sem limite, posições livres, personalização e catálogo.

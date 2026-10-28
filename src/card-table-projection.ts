@@ -1,26 +1,24 @@
 export type TablePoint = {x:number;y:number};
 type TableSize = {width:number;height:number};
 export type TableKind = 'wide'|'tall';
-export const cardTableCardSize = {width:280,height:400};
+export const cardTableCardSize = {width:170,height:243};
 export const cardTableLayouts = {
-  wide: {width:2200,height:1100,radiusY:600},
-  tall: {width:2200,height:1550,radiusY:1000},
+  wide: {width:1200,height:760,slotY:338,deckX:990,deckY:65},
+  tall: {width:1200,height:760,slotY:338,deckX:990,deckY:65},
 } as const;
 export const cardTableScenes = {
-  wide: {width:1672,height:941,points:[{x:230,y:580},{x:1440,y:580},{x:1510,y:910},{x:160,y:910}],felt:{left:150,top:575,right:1520,bottom:920}},
-  tall: {width:1024,height:1536,points:[{x:175,y:850},{x:850,y:850},{x:920,y:1430},{x:105,y:1430}],felt:{left:95,top:840,right:930,bottom:1440}},
+  wide: {width:1672,height:941,points:[{x:566.1038555827948,y:567.4542010251839},{x:1264.5616224648986,y:567.4542010251839},{x:1420,y:689},{x:316,y:689}]},
+  tall: {width:1024,height:1536,points:[{x:304.9825378346915,y:782.4330616996508},{x:818.6321303841677,y:782.4330616996508},{x:930,y:970},{x:135,y:970}]},
 } as const;
 
-// The eight cards form a horseshoe on one physical plane, not separate 3D tilts.
-export function cardTablePlacement(kind:TableKind,index:number,count=8) {
-  const angle=count===1?90:165-index*150/(count-1);
-  const radians=angle*Math.PI/180,layout=cardTableLayouts[kind];
-  return {x:1100+800*Math.cos(radians),y:200+layout.radiusY*Math.sin(radians),angle:angle-90};
+// Three persistent equipment positions share the desk's real projective plane.
+export function cardTablePlacement(kind:TableKind,index:number) {
+  return {x:305+210*index,y:cardTableLayouts[kind].slotY};
 }
-export function cardTableCardCorners(kind:TableKind,index:number,count=8) {
-  const p=cardTablePlacement(kind,index,count),radians=p.angle*Math.PI/180;
+export function cardTableCardCorners(kind:TableKind,index:number) {
+  const p=cardTablePlacement(kind,index);
   const {width:w,height:h}=cardTableCardSize;
-  return [[-w/2,-h/2],[w/2,-h/2],[w/2,h/2],[-w/2,h/2]].map(([x,y])=>({x:p.x+x*Math.cos(radians)-y*Math.sin(radians),y:p.y+x*Math.sin(radians)+y*Math.cos(radians)}));
+  return [[0,0],[w,0],[w,h],[0,h]].map(([x,y])=>({x:p.x+x,y:p.y+y}));
 }
 // CSS matrix3d is column-major; retain its homogeneous denominator.
 export function cardTableMatrix(points:readonly TablePoint[],size:TableSize) {

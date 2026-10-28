@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { Check, Layers, Coins, Lock, Sparkles, Volume2, VolumeX, X } from 'lucide-react';
+import {Coins,Sparkles,Volume2,VolumeX,X} from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { api, post } from './api';
 import { cards, cardRarities, cardQuestions, type Card, type OwnedCard } from '../shared/cards';
@@ -14,6 +14,8 @@ import {CardViewer3D} from './CardViewer3D';
 import {CardPrismaticFoil} from './CardPrismaticFoil';
 import {CardEngraving} from './CardEngraving';
 import {CardReadingSurface} from './CardReadingSurface';
+import {CardsLibrary} from './CardsLibrary';
+import {CardsRoomLighting} from './CardsRoomLighting';
 import {cardBacks} from './card-backs';
 import {useSoundEffects} from './SiteMusic';
 import {playCardReveal} from './card-reveal-audio';
@@ -46,8 +48,6 @@ export function Cards({
   const [owned, setOwned] = useState<OwnedCard[]>([]),
     [selected, setSelected] = useState<Card>(cards[0]),
     [slot, setSlot] = useState(1),
-    [filter, setFilter] = useState('Todas'),
-    [handOpen, setHandOpen] = useState(false),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
     [notice, setNotice] = useState(''),
@@ -55,6 +55,7 @@ export function Cards({
     [conversation, setConversation] = useState(false),
     [questions, setQuestions] = useState(false);
   const [inspecting, setInspecting] = useState<Card | null>(null);
+  const [library,setLibrary]=useState<'catalog'|'equip'|null>(null);
   const [previewLevel,setPreviewLevel]=useState(1);
   const key = useRef(crypto.randomUUID()),
     inFlight = useRef(false),
@@ -66,7 +67,7 @@ export function Cards({
     let cancelled = false;
     live.current = true;
     setOwned([]);
-    setHandOpen(false);
+    setLibrary(null);
     setInspecting(null);
     setNotice('');
     setError('');
@@ -97,13 +98,10 @@ export function Cards({
   }
   const item = owned.find((c) => c.card_id === selected.id);
   useEffect(()=>setPreviewLevel(cardVisualLevel(item?.level)),[selected.id,item?.level,character?.id]);
-  const available = cards.filter(c => filter === 'Todas' ||
-    (filter === 'À venda' ? c.buyable : owned.some(o => o.card_id === c.id)));
   function openCard(card: Card) {
     setSelected(card);
     setPreviewLevel(cardVisualLevel(owned.find(item => item.card_id === card.id)?.level));
     setInspecting(card);
-    setHandOpen(false);
     key.current = crypto.randomUUID();
     setError('');
     setNotice('');
@@ -138,7 +136,7 @@ export function Cards({
     }
   }
   async function equip(ownedId: string | null) {
-    if (!character || inFlight.current) return;
+    if (!character || inFlight.current) return false;
     inFlight.current = true;
     setBusy(true);
     setError('');
@@ -156,6 +154,7 @@ export function Cards({
       if (live.current && currentCharacter.current === character.id) {
         setOwned(updated);
         setNotice(ownedId ? 'Carta equipada.' : 'Espaço liberado.');
+        return true;
       }
     } catch (e) {
       if (live.current && currentCharacter.current === character.id) setError((e as Error).message);
@@ -163,6 +162,14 @@ export function Cards({
       inFlight.current = false;
       if (live.current) setBusy(false);
     }
+    return false;
+  }
+  async function finishEquip(ownedId:string|null) {
+    if(await equip(ownedId)){setInspecting(null);setLibrary(null);}
+  }
+  function openSlot(position:number) {
+    if(!character||busy)return;
+    setSlot(position);setError('');setNotice('');setLibrary('equip');
   }
   const details = (<section
             className="cards-detail"
@@ -190,7 +197,7 @@ export function Cards({
                     <button
                       className="button primary"
                       disabled={busy || item.slot === slot}
-                      onClick={() => void equip(item.id)}
+                      onClick={() => void finishEquip(item.id)}
                     >
                       Equipar no espaço {slot}
                     </button>
@@ -198,7 +205,7 @@ export function Cards({
                       <button
                         className="button outline"
                         disabled={busy}
-                        onClick={() => void equip(null)}
+                        onClick={() => void finishEquip(null)}
                       >
                         Esvaziar espaço {slot}
                       </button>
@@ -243,6 +250,7 @@ export function Cards({
       <div className="cards-scene">
         <div className="cards-room-backdrop" aria-hidden="true" />
         <div className="cards-room-shade" aria-hidden="true" />
+        <CardsRoomLighting/>
 
         <CardsHost
           expanded={conversation && questions}
@@ -281,100 +289,27 @@ export function Cards({
       <div className="cards-room-content">
         <header>
           <span className="eyebrow">O SALÃO DA MEIA-NOITE</span>
-          <h2>O acervo do Anfitrião</h2>
-          <p>Toque em uma carta sobre a mesa para revelá-la.</p>
+          <h2>Um lugar para cada história.</h2>
+          <p>{character?'Escolha um espaço na mesa para equipar suas cartas.':'Selecione um personagem para equipar suas cartas.'}</p>
         </header>
         <button type="button" className="cards-sound-toggle" onClick={sound.toggle} aria-label={sound.muted ? 'Ativar efeitos sonoros' : 'Silenciar efeitos sonoros'} aria-pressed={!sound.muted}>{sound.muted ? <VolumeX size={16}/> : <Volume2 size={16}/>}<span>Som da sala</span></button>
       </div>
-      <div className="cards-workbench">
-        <div className="cards-playset" data-open={handOpen}>
-          <button type="button" className="cards-hand-toggle" aria-expanded={handOpen} aria-controls="salon-equipped-cards" onClick={() => setHandOpen(!handOpen)}><Layers size={15}/><span>Cartas equipadas</span><small>{owned.filter(card => card.slot).length}/3</small></button>
-          {handOpen && <section id="salon-equipped-cards" className="cards-equipped" aria-label="Três cartas equipadas">
-            {[1, 2, 3].map((position) => {
-              const equipped = owned.find((c) => c.slot === position),
-                definition = cards.find((c) => c.id === equipped?.card_id);
-              return (
-                <button
-                  key={position}
-                  disabled={busy}
-                  aria-label={`Selecionar espaço ${position}${definition ? ': ' + definition.name : ''}`}
-                  aria-pressed={slot === position}
-                  onClick={() => {
-                    setSlot(position);
-                    if (definition) {
-                      openCard(definition);
-                    }
-                  }}
-                >
-                  {definition ? (
-                    <CardFace card={definition} small level={equipped?.level}/>
-                  ) : (
-                    <span className="cards-empty-slot">
-                      <span>✦</span>
-                      <small>{position}</small>
-                    </span>
-                  )}
-                  <span className="cards-slot-index">{position}</span>
-                </button>
-              );
+      <div className="cards-table">
+        <CardReadingSurface>
+          <button type="button" className="cards-deck" aria-label="Abrir acervo do Anfitrião" title="Ver o acervo do Anfitrião" disabled={busy} onClick={()=>{setError('');setLibrary('catalog');}}><span/><span/><img src={cardBacks.original} alt=""/><small>Acervo</small></button>
+          <div className="cards-table-slots" aria-label="Três espaços de cartas na mesa">
+            {[1,2,3].map(position=>{
+              const equipped=owned.find(card=>card.slot===position),definition=cards.find(card=>card.id===equipped?.card_id);
+              return <button type="button" key={position} className="cards-table-slot" data-filled={!!definition} aria-label={`Escolher carta para o espaço ${position}${definition?': '+definition.name:''}`} disabled={busy||!character||!collectionReady} onClick={()=>openSlot(position)}>
+                {definition?<CardFace card={definition} level={equipped?.level}/>:<span className="cards-table-slot-empty"><span aria-hidden="true">✦</span><b>Escolher carta</b></span>}
+                <span className="cards-table-slot-number" aria-hidden="true">{['I','II','III'][position-1]}</span>
+              </button>;
             })}
-          </section>}
-        </div>
-        <div className="cards-browse">
-          <div className="cards-table">
-            <div className="cards-catalog-heading">
-              <span className="eyebrow">O ACERVO DO ANFITRIÃO</span>
-              <h2>Escolha sua carta</h2>
-            </div>
-            <nav className="cards-filters" aria-label="Filtrar cartas">
-              {['Todas', 'Minha coleção', 'À venda'].map((label) => (
-                <button
-                  key={label}
-                  aria-pressed={filter === label}
-                  onClick={() => { setFilter(label); }}
-                >
-                  {label}
-                </button>
-              ))}
-            </nav>
-            <CardReadingSurface>
-            <button type="button" className="cards-deck" aria-label={'Revelar '+selected.name} disabled={busy || !available.length} onClick={() => openCard(available.find(card => card.id === selected.id) || available[0])}><span/><span/><img src={cardBacks.original} alt=""/><small>Revelar</small></button>
-            <div className="cards-catalog">
-              {available
-                .map((card) => (
-                  <button
-                    key={card.id}
-                    aria-label={card.name}
-                    disabled={busy}
-                    aria-pressed={selected.id === card.id}
-                    onClick={() => openCard(card)}
-                  >
-                    <CardFace card={card} level={owned.find(c=>c.card_id===card.id)?.level}/>
-                    <span className="cards-catalog-price">
-                      {owned.some((o) => o.card_id === card.id) ? (
-                        <>
-                          <Check size={12} />
-                          Na coleção
-                        </>
-                      ) : card.buyable ? (
-                        money(card.price_cp) + ' PO'
-                      ) : (
-                        <>
-                          <Lock size={11} />
-                          Outra história
-                        </>
-                      )}
-                    </span>
-                  </button>
-                ))}
-            </div>
-            </CardReadingSurface>
-            {available.length === 0 && <p className="cards-catalog-empty">Nenhuma carta nesta coleção.</p>}
-            <span className="cards-table-count" role="status">{available.length} {available.length===1 ? 'carta' : 'cartas'} no acervo</span>
           </div>
-
-        </div>
+        </CardReadingSurface>
       </div>
+      {!library&&!inspecting&&(error||notice)&&<p className="cards-room-message" role={error?'alert':'status'}>{error||notice}</p>}
+      {library&&<CardsLibrary key={library+'-'+slot} mode={library} slot={slot} owned={owned} busy={busy} error={error} close={()=>setLibrary(null)} onBrowse={()=>{setError('');setLibrary('catalog');}} onInspect={openCard} onEquip={finishEquip}/>}
       {inspecting && <CardInspection card={inspecting} level={previewLevel} close={() => setInspecting(null)}>{details}</CardInspection>}
     </section>
   );

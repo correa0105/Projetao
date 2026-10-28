@@ -1,8 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {cardTableCardCorners,cardTableLayouts,cardTableMatrix,cardTableProjection,cardTableScenes,projectTablePoint,type TableKind} from '../src/card-table-projection';
+import {cardTableCardCorners,cardTableLayouts,cardTableMatrix,cardTableProjection,cardTableScenes,projectTablePoint} from '../src/card-table-projection';
 
-test('card plane follows the four calibrated corners of each scene',()=>{
+test('equipment plane follows the four calibrated corners of each desk',()=>{
   for(const kind of ['wide','tall'] as const){
     const scene=cardTableScenes[kind],size=cardTableLayouts[kind],matrix=cardTableMatrix(scene.points,size);
     const {width:w,height:h}=size;
@@ -12,17 +12,14 @@ test('card plane follows the four calibrated corners of each scene',()=>{
     }
   }
 });
-test('every rotated card corner remains on the felt and in the viewport, including filtered arcs',()=>{
+test('three separate equipment positions remain within the desk and viewport across cover crops',()=>{
   for(const [width,height] of [[1920,1080],[1440,900],[1280,720],[768,1024],[390,844],[320,740],[320,922],[1920,720]]){
-    const p=cardTableProjection(width,height),scene=cardTableScenes[p.kind];
-    for(const count of [1,4,8]){
-      for(let i=0;i<count;i++){
-        for(const corner of cardTableCardCorners(p.kind,i,count)){
-          const point=projectTablePoint(p.matrix,corner.x,corner.y);
-          assert(point.x>=9.99&&point.x<=width-9.99);assert(point.y>=9.99&&point.y<=height-9.99);
-          const x=(point.x-p.left)/p.scale,y=(point.y-p.top)/p.scale,felt=scene.felt;
-          assert(x>=felt.left&&x<=felt.right&&y>=felt.top&&y<=felt.bottom,`Outside felt at ${width}x${height}`);
-        }
+    const p=cardTableProjection(width,height);
+    for(let i=0;i<3;i++){
+      for(const corner of cardTableCardCorners(p.kind,i)){
+        assert(corner.x>=0&&corner.x<=p.size.width&&corner.y>=0&&corner.y<=p.size.height);
+        const point=projectTablePoint(p.matrix,corner.x,corner.y);
+        assert(point.x>=9.99&&point.x<=width-9.99);assert(point.y>=9.99&&point.y<=height-9.99);
       }
     }
   }
