@@ -9,19 +9,19 @@ Guia vigente: [PROFILE-VISIT-SIGNPOST.md](PROFILE-VISIT-SIGNPOST.md).
 
 ## Navegação e personalização — 06/10/2026
 
-O botão **Biblioteca** reúne somente os assets em um painel à esquerda, com
-busca por categoria: imagens, monstros, presets, criaturas vistas de cima,
-magias, cenários, peças de cenário e peças animadas. Terrenos e texturas ficam
-acessíveis ao mestre. Escolher uma categoria mostra seu conteúdo no mesmo
-painel; **Todas as categorias** volta à lista e **Escape** fecha a biblioteca.
+A aba **Biblioteca de assets** (ícone de livro), no painel à direita, reúne
+imagens, monstros, presets, criaturas vistas de cima, magias, cenários, peças
+de cenário e peças animadas. Terrenos e texturas ficam acessíveis ao mestre.
+A lista de categorias conserva a busca e o visual do acervo. Escolher uma
+categoria mostra seu conteúdo dentro do mesmo painel; **Todas as categorias**
+volta à lista. **Escape** ou fechar a biblioteca retorna ao chat.
 As coleções de cenário aparecem em duas colunas, sem recorte horizontal.
 
-Ferramentas continuam na barra à esquerda. Chat, fichas, combate, som,
-configurações e ajuda conservam o painel à direita e suas subabas, incluindo
-montarias, mascotes, veículos, armas de cerco e diário. A biblioteca pode ser
-aberta junto do painel no computador; no celular, recolhe o painel da direita
-para deixar os controles acessíveis. A navegação não muda a câmera nem o
-conteúdo da sessão. Colocação por clique e arraste continuam disponíveis.
+A biblioteca ocupa a mesma área das abas de chat, fichas, som, combate e
+configurações. O acesso independente no topo foi removido. As ferramentas
+continuam na barra à esquerda, e os demais controles conservam suas posições.
+A navegação não muda a câmera nem o conteúdo da sessão. Colocação por clique
+e arraste continuam disponíveis.
 
 `node scripts/test-vtt-menu-isolated.mjs` confere o escopo da biblioteca,
 controles separados, busca/teclado, cinco larguras, cenário por clique e os

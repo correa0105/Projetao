@@ -107,10 +107,10 @@ export function VttLibraryMenu({
       (!o.gm || gm) && normalize(o.name + ' ' + o.description).includes(normalize(query.trim())),
   );
   return (
-    <aside
+    <section
       id="vtt-library-menu"
       ref={root}
-      className="vtt-panel vtt-library-drawer"
+      className="vtt-library-panel"
       aria-label="Biblioteca de assets"
       onKeyDown={(e) => {
         if (e.key === 'Escape' && !e.defaultPrevented) {
@@ -168,6 +168,6 @@ export function VttLibraryMenu({
           {children}
         </>
       )}
-    </aside>
+    </section>
   );
 }

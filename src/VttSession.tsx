@@ -58,7 +58,6 @@ import {
   type DragEvent as ReactDragEvent,
 } from 'react';
 import {
-  Menu,
   MousePointer2,
   Hand,
   LassoSelect,
@@ -459,16 +458,15 @@ export function VttSession({ characters, user, media }: { characters: Character[
     [settingsId, setSettingsId] = useState<string | null>(null),
     [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
   const libraryButton = useRef<HTMLButtonElement>(null);
-  const [libraryOpen, setLibraryOpen] = useState(false);
   const [libraryView, setLibraryView] = useState<'menu' | 'content'>('menu');
   function openLibrary(next?: VttLibrary) {
-    setLibraryOpen(true);
+    setTab('library');
+    setPanelOpen(true);
     setLibraryView(next ? 'content' : 'menu');
     if (next) {
       setLibrary(next);setQuery('');setEntry(null);
       if (next === 'presets' || next === 'premium') setPresetVersion(v => v + 1);
     }
-    if (window.innerWidth <= 800) setPanelOpen(false);
   }
   const [terrainBrush, setTerrainBrush] = useState<TerrainBrushSettings>({texture:'grass',radius:45,softness:.5,opacity:1,textureScale:280,shape:'round',layer:'base'});
   const [terrainDraft, setTerrainDraft] = useState<TerrainStroke | null>(null);
@@ -2842,7 +2840,6 @@ export function VttSession({ characters, user, media }: { characters: Character[
     <VttVoiceStatus voice={voice}/>
     <section inert={!sceneImagesReady} style={{visibility: sceneImagesReady ? 'visible' : 'hidden'}} data-map-effects={mapEffects ? 'on' : 'off'} className="vtt-workspace" data-visual-effects={visualEffects ? 'on' : 'off'} aria-label="Mesa virtual">
       <header className="vtt-top">
-        <button ref={libraryButton} className="vtt-menu-trigger" aria-label="Abrir biblioteca de assets" aria-expanded={libraryOpen} aria-controls="vtt-library-menu" onClick={() => {if(libraryOpen)setLibraryOpen(false);else openLibrary();}}><Menu size={18}/>Biblioteca</button>
         <div className="vtt-brand">
           <Swords size={22} />
           <div>
@@ -2948,7 +2945,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
           >
             <Maximize2 size={17} />
           </button>
-          <button aria-label="Alternar painel" onClick={() => {if(!panelOpen && window.innerWidth <= 800)setLibraryOpen(false);setPanelOpen(v => !v);}}>
+          <button aria-label="Alternar painel" onClick={() => setPanelOpen(v => !v)}>
             <Settings2 size={17} />
           </button>
         </div>
@@ -3704,9 +3701,33 @@ export function VttSession({ characters, user, media }: { characters: Character[
             </div>
           )}
         </div>
-        {libraryOpen && <VttLibraryMenu view={libraryView} library={library} gm={gm && !preview}
+
+        {panelOpen && (
+          <aside className="vtt-panel">
+            <nav className="vtt-panel-tabs" aria-label="Painéis da mesa">
+              {tabs.map(({ id, name, icon: Icon }) => (
+                <button
+                  ref={id === 'library' ? libraryButton : undefined}
+                  key={id}
+                  aria-label={name}
+                  title={name}
+                  aria-pressed={
+                    tab === id ||
+                    (id === 'sheet' && ['token', 'journal', 'mounts', 'pets','vehicles','siege'].includes(tab)) ||
+                    (id === 'table' && (tab === 'scene' || tab === 'help'))
+                  }
+                  onClick={() => {
+                    if (id === 'library') {openLibrary();return;}
+                    setTab(id);
+                  }}
+                >
+                  <Icon size={17} />
+                </button>
+              ))}
+            </nav>
+        {tab === 'library' && <VttLibraryMenu view={libraryView} library={library} gm={gm && !preview}
           overview={() => setLibraryView('menu')}
-          close={() => {setLibraryOpen(false);libraryButton.current?.focus();}}
+          close={() => {setTab('chat');libraryButton.current?.focus();}}
           choose={key => {openLibrary(key);if(key==='terrain'){changeLayer('map');setTool('terrain-paint');}}}>
           <div className="vtt-panel-content">
                   {['monsters', 'premium'].includes(library) && gm && (
@@ -4021,29 +4042,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   </a>
 </div>
         </VttLibraryMenu>}
-        {panelOpen && (
-          <aside className="vtt-panel">
-            <nav className="vtt-panel-tabs" aria-label="Painéis da mesa">
-              {tabs.map(({ id, name, icon: Icon }) => (
-                <button
-                  key={id}
-                  aria-label={name}
-                  title={name}
-                  aria-pressed={
-                    tab === id ||
-                    (id === 'sheet' && ['token', 'journal', 'mounts', 'pets','vehicles','siege'].includes(tab)) ||
-                    (id === 'table' && (tab === 'scene' || tab === 'help'))
-                  }
-                  onClick={() => {
-                    if (id === 'library') {openLibrary();return;}
-                    setTab(id);
-                    if (window.innerWidth <= 800) setLibraryOpen(false);
-                  }}
-                >
-                  <Icon size={17} />
-                </button>
-              ))}
-            </nav>
+            {tab !== 'library' && (
             <div className={'vtt-panel-content' + (tab === 'chat' ? ' vtt-chat-panel' : '')}>
               <div className="vtt-panel-heading">
                 <h2 hidden={tab === 'chat' && chatControlsCollapsed}>
@@ -5411,6 +5410,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                 </div>
               )}
             </div>
+            )}
           </aside>
         )}
       </div>

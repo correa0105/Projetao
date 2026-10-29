@@ -32,7 +32,9 @@ try{
  await request(player,'/vtt/join','POST',{invite:room.invite});await request(spectator,'/vtt/join','POST',{invite:room.invite,role:'spectator'});
  await page.goto(origin+'/#vtt?room='+room.id);await page.getByRole('button',{name:'Entrar no VTT',exact:true}).click();
  await expect(page.locator('.vtt-workspace')).toBeVisible({timeout:60000});
- const launch=page.getByRole('button',{name:'Abrir biblioteca de assets',exact:true});
+ const launch=page.getByRole('navigation',{name:'Painéis da mesa'}).getByRole('button',{name:'Biblioteca de assets',exact:true});
+ await expect(page.locator('.vtt-top .vtt-menu-trigger')).toHaveCount(0);
+ await expect(page.getByRole('button',{name:'Abrir biblioteca de assets',exact:true})).toHaveCount(0);
  await expect(launch).toHaveCount(1);await expect(page.locator('#vtt-library-menu')).toHaveCount(0);
  await expect(page.getByRole('navigation',{name:'Ferramentas da mesa'})).toBeVisible();
  await expect(page.getByRole('navigation',{name:'Painéis da mesa'}).getByRole('button',{name:'Chat',exact:true})).toHaveAttribute('aria-pressed','true');
@@ -40,12 +42,14 @@ try{
   await page.setViewportSize({width,height:width<500?780:950});
   const canvasBefore=await page.locator('.vtt-stage').boundingBox();
   await launch.click();
-  const menu=page.getByRole('complementary',{name:'Biblioteca de assets'});
+  const menu=page.getByRole('region',{name:'Biblioteca de assets'});
   await expect(menu).toBeVisible();await expect(menu.getByRole('textbox',{name:'Buscar categoria da biblioteca'})).toBeFocused();
   expect(await menu.getByRole('navigation',{name:'Categorias da biblioteca'}).getByRole('button').count()).toBe(9);
   for(const label of ['Chat','Personagens','Combate','Diário','Montarias','Mascotes','Veículos','Armas de cerco','Ferramentas do mapa','Som e voz','Configurações da mesa'])await expect(menu.getByRole('button',{name:new RegExp('^'+label)})).toHaveCount(0);
   expect(await menu.locator('.vtt-tools').count()).toBe(0);
-  const box=await menu.boundingBox();expect(box!.x).toBeCloseTo(width>1000?54:width>700?46:40,0);expect(box!.x+box!.width).toBeLessThanOrEqual(width);
+  const box=await menu.boundingBox(),panel=await page.locator('aside.vtt-panel').boundingBox();
+  expect(box!.x).toBeGreaterThanOrEqual(panel!.x);expect(box!.x+box!.width).toBeCloseTo(panel!.x+panel!.width,0);expect(box!.x+box!.width).toBeLessThanOrEqual(width);
+  expect(await menu.evaluate(e=>Boolean(e.closest('aside.vtt-panel')?.querySelector('.vtt-panel-tabs')))).toBe(true);
   if(width>800){const stage=await page.locator('.vtt-stage').boundingBox();expect(stage!.width).toBeCloseTo(canvasBefore!.width,0);expect(stage!.x).toBeCloseTo(canvasBefore!.x,0);}
   await menu.getByRole('textbox',{name:'Buscar categoria da biblioteca'}).fill('cenarios');
   await menu.getByRole('button',{name:/^Cenários/}).click();
@@ -60,19 +64,24 @@ try{
   });
   for(const value of [measured.pageOverflow,measured.menuOverflow,measured.contentOverflow,measured.categoryOverflow])expect(value).toBeLessThanOrEqual(1);
   expect(measured.categoriesInside).toBe(true);metrics.push({width,...measured});
+  if(width<=700)expect(await menu.evaluate(root=>{
+    const bar=document.querySelector('.vtt-hotbar')?.getBoundingClientRect(),pane=root.getBoundingClientRect();
+    if(!bar||bar.right<=pane.left||bar.left>=pane.right)return true;
+    const x=(Math.max(bar.left,pane.left)+Math.min(bar.right,pane.right))/2,y=bar.top+8;
+    return root.contains(document.elementFromPoint(x,y));
+  })).toBe(true);
   await page.screenshot({path:'test-results/vtt-menu/library-scenery-'+width+'.png'});
   await menu.getByRole('button',{name:'Todas as categorias',exact:true}).click();
   await expect(menu.getByRole('textbox',{name:'Buscar categoria da biblioteca'})).toBeFocused();
   await page.keyboard.press('Escape');await expect(menu).toHaveCount(0);await expect(launch).toBeFocused();
  }
  await page.setViewportSize({width:1440,height:950});
- await page.getByRole('button',{name:'Alternar painel',exact:true}).click();
  const panels=page.getByRole('navigation',{name:'Painéis da mesa'});
  await expect(panels.getByRole('button')).toHaveCount(6);
- await panels.getByRole('button',{name:'Combate',exact:true}).click();await expect(page.locator('.vtt-panel:not(.vtt-library-drawer)').getByRole('heading',{name:'Combate',exact:true})).toBeVisible();
+ await panels.getByRole('button',{name:'Combate',exact:true}).click();await expect(page.locator('aside.vtt-panel').getByRole('heading',{name:'Combate',exact:true})).toBeVisible();
  await panels.getByRole('button',{name:'Fichas',exact:true}).click();await expect(page.getByRole('button',{name:'Personagens',exact:true})).toBeVisible();
  await panels.getByRole('button',{name:'Chat',exact:true}).click();
- await launch.click();let menu=page.getByRole('complementary',{name:'Biblioteca de assets'});
+ await launch.click();let menu=page.getByRole('region',{name:'Biblioteca de assets'});
  await menu.getByRole('button',{name:/^Cenários/}).click();
  await menu.getByRole('navigation',{name:'Coleções de cenário'}).getByRole('button',{name:/Comércios/}).click();
  const before=(await request(gm,path)).document.scenes.find((s:any)=>s.id===scene.id).tokens.length;
@@ -89,13 +98,13 @@ try{
  await launch.click();await menu.getByRole('textbox',{name:'Buscar categoria da biblioteca'}).fill('nada-encontrado');await expect(menu.getByText('Nenhuma categoria encontrada. Tente outro nome.')).toBeVisible();
  for(const [c,role]of [[player,'player'],[spectator,'spectator']]as const){
   const p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(origin+'/#vtt?room='+room.id);await p.getByRole('button',{name:'Entrar no VTT',exact:true}).click();
-  await expect(p.locator('.vtt-workspace')).toBeVisible({timeout:60000});await p.getByRole('button',{name:'Abrir biblioteca de assets',exact:true}).click();
-  const drawer=p.getByRole('complementary',{name:'Biblioteca de assets'});await expect(drawer.getByRole('button',{name:/^Terrenos e texturas/})).toHaveCount(0);
+  await expect(p.locator('.vtt-workspace')).toBeVisible({timeout:60000});await p.getByRole('navigation',{name:'Painéis da mesa'}).getByRole('button',{name:'Biblioteca de assets',exact:true}).click();
+  const drawer=p.getByRole('region',{name:'Biblioteca de assets'});await expect(drawer.getByRole('button',{name:/^Terrenos e texturas/})).toHaveCount(0);
   const toolbar=p.getByRole('navigation',{name:'Ferramentas da mesa'});await expect(toolbar).toBeVisible();await expect(toolbar.getByRole('button',{name:'Barreira de luz',exact:true})).toHaveCount(0);
   if(role==='spectator')await expect(toolbar.getByRole('button',{name:'Selecionar (V)',exact:true})).toHaveCount(0);
   await p.close();
  }
  expect(errors).toEqual([]);
- await writeFile('test-results/vtt-menu/result.json',JSON.stringify({passed:true,libraryOnly:true,metrics,clickPlacementPreserved:true,separateToolbarAndRightPanels:true,playerAndSpectatorPreserved:true},null,2));
- console.log('Menu exclusivo da biblioteca: 5 larguras, cenário por clique, ferramentas à esquerda e painéis independentes à direita conferidos.');
+ await writeFile('test-results/vtt-menu/result.json',JSON.stringify({passed:true,libraryOnly:true,rightPanel:true,noHeaderTrigger:true,metrics,clickPlacementPreserved:true,separateToolbarAndRightPanels:true,playerAndSpectatorPreserved:true},null,2));
+ console.log('Biblioteca integrada à aba do painel direito: 5 larguras, botão do topo removido, categorias, cenário por clique e perfis conferidos.');
 }finally{await browser.close();await new Promise<void>(r=>server.close(()=>r()));await pool.end();}
