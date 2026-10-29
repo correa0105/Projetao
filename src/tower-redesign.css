@@ -1,0 +1,1062 @@
+/* A paisagem abre a Torre; o registro organiza a exploração e a companhia. */
+:root .tower-page.tower-page--redesigned {
+  --tower-line: #45413a;
+  --tower-gold: #c9a879;
+  --tower-ink: #161615;
+  background: radial-gradient(ellipse at 70% 28%, #32312938, transparent 55%), #161615;
+  padding-bottom: 90px;
+}
+:root .tower-page--redesigned :is(button, select, input) {
+  min-height: 40px;
+}
+:root .tower-page--redesigned button {
+  border-radius: 3px;
+  border-color: #565045;
+  background: #222220;
+}
+:root .tower-page--redesigned button:hover:not(:disabled) {
+  background: #34312b;
+  border-color: #c9a879;
+}
+:root .tower-page--redesigned .tower-primary {
+  background: #c6a575;
+  border-color: #c6a575;
+  color: #181714;
+}
+:root .tower-page--redesigned .tower-primary:hover:not(:disabled) {
+  background: #e0c18e;
+  color: #181714;
+}
+:root .tower-page--redesigned p {
+  color: #b7b5ac;
+}
+:root .tower-page--redesigned .tower-kicker {
+  font-size: 10px;
+  color: #b99d72;
+  letter-spacing: 0.13em;
+}
+:root .tower-page--redesigned .tower-hero {
+  min-height: 530px;
+  border: 0;
+}
+:root .tower-page--redesigned .tower-hero-art {
+  object-position: 62% 50%;
+}
+:root .tower-page--redesigned .tower-hero-shade {
+  background:
+    linear-gradient(90deg, #141616f5, #171918ad 34%, #17191812 71%),
+    linear-gradient(0deg, #161615, transparent 42%);
+}
+:root .tower-page--redesigned .tower-hero-copy {
+  max-width: 720px;
+  padding: calc(var(--page-header-height) + 56px) max(5vw, 28px) 40px;
+}
+:root .tower-page--redesigned .tower-eyebrow {
+  font-size: 9px;
+  gap: 12px;
+  letter-spacing: 0.16em;
+}
+:root .tower-page--redesigned .tower-experimental {
+  border-color: #c9a87955;
+  background: #17191688;
+  color: #c3b8a5;
+}
+:root .tower-page--redesigned .tower-hero h2 {
+  font: 400 clamp(44px, 5.4vw, 78px)/1.08 var(--serif);
+  margin: 25px 0 20px;
+  letter-spacing: -0.045em;
+  text-shadow: 0 4px 25px #0007;
+}
+:root .tower-page--redesigned .tower-hero h2 i {
+  color: #d1b485;
+  display: inline;
+  font-style: normal;
+}
+:root .tower-page--redesigned .tower-hero-caption {
+  max-width: 380px;
+  font-size: 14px;
+  line-height: 1.85;
+  color: #c8c6b9;
+}
+:root .tower-page--redesigned .tower-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+:root .tower-page--redesigned .tower-hero-actions button {
+  padding: 12px 16px;
+}
+:root .tower-page--redesigned .tower-hero-actions button:not(.tower-primary) {
+  background: #171a19aa;
+  border-color: #92917c66;
+}
+:root .tower-page--redesigned .tower-horizon {
+  display: flex;
+  gap: 24px;
+  margin-top: 35px;
+  padding-top: 20px;
+  border-top: 1px solid #a5a38c2c;
+  width: fit-content;
+}
+:root .tower-page--redesigned .tower-horizon span {
+  display: grid;
+  gap: 5px;
+  color: #a6a69b;
+  font-size: 10px;
+}
+:root .tower-page--redesigned .tower-horizon b {
+  font: 24px var(--serif);
+  color: #e5dece;
+}
+:root .tower-page--redesigned .tower-wallet {
+  right: max(5vw, 28px);
+  bottom: 37px;
+  background: #1d201dbb;
+  border: 1px solid #aaa18944;
+  border-radius: 4px;
+  padding: 12px 18px;
+  backdrop-filter: blur(8px);
+}
+:root .tower-page--redesigned .tower-wallet b {
+  font-size: 25px;
+}
+:root .tower-page--redesigned .tower-body {
+  width: min(1320px, calc(100% - 80px));
+  max-width: 1320px;
+  padding: 0;
+  scroll-margin-top: calc(var(--page-header-height) + 16px);
+}
+:root .tower-page--redesigned .tower-tabs {
+  gap: 6px;
+  position: sticky;
+  top: 0;
+  z-index: 18;
+  min-height: 88px;
+  margin-bottom: 36px;
+  padding: 9px 0;
+  background: #161615f5;
+  border-bottom: 1px solid var(--tower-line);
+  backdrop-filter: blur(12px);
+}
+:root .tower-page--redesigned .tower-tabs button {
+  gap: 12px;
+  padding: 13px 20px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  text-align: left;
+  color: #aaa99f;
+}
+:root .tower-page--redesigned .tower-tabs button > span {
+  display: grid;
+  gap: 5px;
+  font-size: 13px;
+}
+:root .tower-page--redesigned .tower-tabs button small {
+  font-size: 10px;
+  color: #97978c;
+  font-weight: 400;
+}
+:root .tower-page--redesigned .tower-tabs button[aria-pressed='true'] {
+  background: #c9a8790e;
+  border-color: #c9a8795c;
+  color: #e4c99b;
+}
+:root .tower-page--redesigned .tower-tabs button[aria-pressed='true']::after {
+  display: none;
+}
+:root .tower-page--redesigned .tower-tabs > span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font:
+    10px 'DM Sans',
+    sans-serif;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+:root .tower-page--redesigned .tower-atlas.tower-atlas-compact {
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 22px;
+  margin-bottom: 24px;
+  align-items: start;
+}
+:root .tower-page--redesigned .tower-atlas-heading {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin: 5px 0 4px;
+}
+:root .tower-page--redesigned .tower-atlas-heading h2 {
+  font-size: clamp(24px, 2.4vw, 32px);
+  margin: 0;
+}
+:root .tower-page--redesigned .tower-atlas-heading p {
+  max-width: 360px;
+  font-size: 12px;
+  margin: 0 0 3px;
+}
+:root .tower-page--redesigned .tower-floor-picker {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  padding: 18px 20px;
+  background: #20211f;
+  border: 1px solid #45443d;
+  border-radius: 4px;
+}
+:root .tower-page--redesigned .tower-floor-picker label {
+  display: grid;
+  gap: 8px;
+  flex: 1;
+  min-width: 160px;
+  max-width: 360px;
+  color: #a9a79b;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+:root .tower-page--redesigned .tower-floor-picker select {
+  width: 100%;
+  max-width: 100%;
+  background: #171916;
+  border-color: #514d42;
+  padding: 10px 30px 10px 12px;
+}
+:root .tower-page--redesigned .tower-floor-picker > button {
+  padding: 10px 12px;
+}
+:root .tower-page--redesigned .tower-floor-picker .tower-edit-floor {
+  margin-left: auto;
+  padding: 10px 14px;
+}
+:root .tower-page--redesigned .tower-floor {
+  --realm: #c9a879;
+  border: 1px solid #47453c;
+  border-top: 2px solid #b6996b77;
+  border-radius: 4px;
+  padding: 28px 30px;
+  background: linear-gradient(120deg, #282923b8, #1c1d1b);
+  box-shadow: 0 12px 36px #0002;
+}
+:root .tower-page--redesigned .tower-floor-heading {
+  display: flex;
+  align-items: start;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+:root .tower-page--redesigned .tower-floor-heading > div:first-child {
+  min-width: 0;
+}
+:root .tower-page--redesigned .tower-floor-heading h2 {
+  font-size: clamp(25px, 2.6vw, 35px);
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+:root .tower-page--redesigned .tower-floor-level {
+  font-size: 11px;
+  margin: 0;
+  color: #a5a99a;
+  text-transform: capitalize;
+}
+:root .tower-page--redesigned .tower-floor-number {
+  border: 0;
+  background: none;
+  min-width: 64px;
+  padding: 0;
+  color: #bba478;
+  text-align: right;
+}
+:root .tower-page--redesigned .tower-floor-number small {
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+:root .tower-page--redesigned .tower-floor-number b {
+  font: 58px/0.95 var(--serif);
+  display: block;
+  margin-top: 9px;
+  color: #c3b08b;
+}
+:root .tower-page--redesigned .tower-floor-steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 25px;
+}
+:root .tower-page--redesigned .tower-floor-steps button {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 12px 3px;
+  border: 1px solid #4c4b413f;
+  background: #16191680;
+}
+:root .tower-page--redesigned .tower-floor-steps button[aria-pressed='true'] {
+  border-color: #bda273;
+  background: #bda27315;
+  box-shadow: inset 0 -2px #bda273;
+}
+:root .tower-page--redesigned .tower-floor-steps button > span {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font: 22px var(--serif);
+  color: #d0c5ac;
+}
+:root .tower-page--redesigned .tower-floor-steps button small {
+  font-size: 9px;
+  color: #96998a;
+}
+:root .tower-page--redesigned .tower-floor-description {
+  font-size: 14px;
+  margin: 24px 0;
+  color: #d5d0bf;
+}
+:root .tower-page--redesigned .tower-hidden {
+  display: flex;
+  align-items: start;
+  gap: 20px;
+  border: 1px solid #61574065;
+  background: #17191655;
+  padding: 25px;
+  margin: 15px 0 4px;
+  border-radius: 3px;
+  box-shadow: none;
+}
+:root .tower-page--redesigned .tower-hidden > svg {
+  flex-shrink: 0;
+  color: #b59b70;
+  margin-top: 3px;
+}
+:root .tower-page--redesigned .tower-hidden h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+:root .tower-page--redesigned .tower-hidden p {
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.9;
+}
+:root .tower-page--redesigned .tower-discovery {
+  font-size: 10px;
+  padding: 11px 0;
+  border-block: 1px solid #9a967c2b;
+  color: #a3aa98;
+  margin-bottom: 22px;
+}
+:root .tower-page--redesigned .tower-boss {
+  padding: 0 0 24px;
+  gap: 20px;
+}
+:root .tower-page--redesigned .tower-boss > svg {
+  color: #c8a575;
+  flex-shrink: 0;
+}
+:root .tower-page--redesigned .tower-boss h3 {
+  font-size: 25px;
+}
+:root .tower-page--redesigned .tower-creatures figure {
+  padding: 18px 8px;
+  background: #14171355;
+  border: 1px solid #77736124;
+  border-radius: 3px;
+}
+:root .tower-page--redesigned .tower-creatures img {
+  width: 94px;
+  height: 94px;
+}
+:root .tower-page--redesigned .tower-challenges {
+  gap: 20px;
+  padding-bottom: 0;
+}
+:root .tower-page--redesigned .tower-challenges > div {
+  padding: 18px;
+  border-left: 1px solid #c9a8795c;
+  background: #15171444;
+}
+:root .tower-page--redesigned .tower-challenges h3 {
+  font-size: 18px;
+}
+:root .tower-page--redesigned .tower-atlas-sidebar {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+:root .tower-page--redesigned .tower-atlas-sidebar section {
+  padding: 24px;
+  border: 1px solid #49463b;
+  border-radius: 4px;
+  background: linear-gradient(150deg, #2b2922, #1c1e1a);
+}
+:root .tower-page--redesigned .tower-atlas-sidebar h3 {
+  font-size: 22px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+:root .tower-page--redesigned .tower-atlas-sidebar p {
+  font-size: 12px;
+  margin: 0 0 18px;
+}
+:root .tower-page--redesigned .tower-floor-reward {
+  display: grid;
+  gap: 18px;
+  padding: 20px 0;
+  border-block: 1px solid #b5996c36;
+  margin-bottom: 17px;
+}
+:root .tower-page--redesigned .tower-floor-reward > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #c4ab80;
+}
+:root .tower-page--redesigned .tower-floor-reward span {
+  display: grid;
+  gap: 5px;
+  font-size: 10px;
+  color: #aaa99c;
+}
+:root .tower-page--redesigned .tower-floor-reward b {
+  font: 24px var(--serif);
+  color: #e3dbc8;
+  gap: 6px;
+}
+:root .tower-page--redesigned .tower-floor-reward b small {
+  font:
+    10px 'DM Sans',
+    sans-serif;
+}
+:root .tower-page--redesigned .tower-return-card .tower-reward-note {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #96998b;
+}
+:root .tower-page--redesigned .tower-atlas-sidebar button {
+  width: 100%;
+  justify-content: space-between;
+  font-size: 11px;
+  padding: 10px 12px;
+}
+:root .tower-page--redesigned .tower-company-card > svg {
+  color: #bca477;
+  margin-bottom: 17px;
+}
+:root .tower-page--redesigned .tower-company-card .tower-next-floor-link {
+  margin-top: 8px;
+  background: transparent;
+  border-color: transparent;
+  color: #c6b58f;
+  padding-inline: 0;
+}
+:root .tower-page--redesigned .tower-loot-preview {
+  border: 1px solid #45443a;
+  border-radius: 4px;
+  padding: 0;
+  margin-bottom: 32px;
+  background: #1c1e1b;
+}
+:root .tower-page--redesigned .tower-loot-preview > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 22px 25px;
+  cursor: pointer;
+  color: #c6aa7b;
+}
+:root .tower-page--redesigned .tower-loot-preview > summary::-webkit-details-marker {
+  display: none;
+}
+:root .tower-page--redesigned .tower-loot-preview > summary::after {
+  display: none;
+}
+:root .tower-page--redesigned summary:focus-visible {
+  outline: 2px solid #c9a879;
+  outline-offset: 4px;
+}
+:root .tower-page--redesigned .tower-loot-preview > summary > span {
+  display: grid;
+  gap: 7px;
+}
+:root .tower-page--redesigned .tower-loot-preview > summary b {
+  font: 20px var(--serif);
+  color: #dfd9c7;
+}
+:root .tower-page--redesigned .tower-loot-preview > summary small {
+  font-size: 11px;
+  color: #aaa99a;
+}
+:root .tower-page--redesigned .tower-loot-preview > summary > svg:last-child {
+  margin-left: auto;
+  transition: transform 0.2s;
+}
+:root .tower-page--redesigned .tower-loot-preview[open] > summary {
+  border-bottom: 1px solid #45443a;
+}
+:root .tower-page--redesigned .tower-loot-preview[open] > summary > svg:last-child {
+  transform: rotate(90deg);
+}
+:root .tower-page--redesigned .tower-loot-preview > header {
+  padding: 25px 25px 0;
+}
+:root .tower-page--redesigned .tower-loot-preview > header h2 {
+  font-size: 24px;
+}
+:root .tower-page--redesigned .tower-loot-preview > header p {
+  font-size: 12px;
+}
+:root .tower-page--redesigned .tower-loot-preview .tower-table-wrap {
+  padding: 0 25px 18px;
+}
+:root .tower-page--redesigned .tower-table-wrap table {
+  min-width: 540px;
+}
+:root .tower-page--redesigned th {
+  color: #a9ab9b;
+  border-color: #6d6046;
+  font-size: 9px;
+}
+:root .tower-page--redesigned td {
+  border-color: #7773612a;
+  font-size: 12px;
+}
+:root .tower-page--redesigned .tower-section-heading {
+  margin: 12px 0 28px;
+  align-items: center;
+}
+:root .tower-page--redesigned .tower-section-heading h2 {
+  font-size: clamp(25px, 2.6vw, 34px);
+}
+:root .tower-page--redesigned .tower-run-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+:root .tower-page--redesigned .tower-run-filters button {
+  padding: 9px 14px;
+  font-size: 11px;
+  background: transparent;
+  border-color: #64614e45;
+  color: #afafa1;
+}
+:root .tower-page--redesigned .tower-run-filters button span {
+  font-size: 10px;
+  color: #a89b7f;
+}
+:root .tower-page--redesigned .tower-run-filters button[aria-pressed='true'] {
+  background: #c9a87915;
+  border-color: #b69a6e77;
+  color: #dfc79e;
+}
+:root .tower-page--redesigned .tower-runs-layout {
+  grid-template-columns: 285px minmax(0, 1fr);
+  gap: 22px;
+}
+:root .tower-page--redesigned .tower-runs {
+  padding: 0;
+  gap: 10px;
+  max-height: 720px;
+}
+:root .tower-page--redesigned .tower-runs button {
+  background: #20221d;
+  border-color: #56544566;
+  border-left: 3px solid transparent;
+  padding: 19px;
+  gap: 12px;
+}
+:root .tower-page--redesigned .tower-runs button[aria-pressed='true'] {
+  border-color: #b99f7066;
+  border-left-color: #c9a879;
+  background: #b99f7012;
+}
+:root .tower-page--redesigned .tower-runs small {
+  color: #b2ad97;
+}
+:root .tower-page--redesigned .tower-runs button[data-status='active'] small {
+  color: #ddbd86;
+}
+:root .tower-page--redesigned .tower-runs b {
+  font: 18px/1.5 var(--serif);
+  color: #e0dac7;
+  overflow-wrap: anywhere;
+}
+:root .tower-page--redesigned .tower-filter-empty {
+  padding: 22px;
+  border: 1px dashed #726a4e66;
+  font-size: 12px;
+  margin: 0;
+}
+:root .tower-page--redesigned .tower-run-detail {
+  padding: 30px;
+  border: 1px solid #4e4c40;
+  border-radius: 4px;
+  background: linear-gradient(125deg, #292a23, #1c1e1a);
+}
+:root .tower-page--redesigned .tower-run-detail > header h2 {
+  font-size: 29px;
+  overflow-wrap: anywhere;
+}
+:root .tower-page--redesigned .tower-run-progress {
+  padding-bottom: 24px;
+  border-color: #9b92783a;
+}
+:root .tower-page--redesigned .tower-run-progress > b {
+  font: 62px var(--serif);
+  color: #c5ac80;
+}
+:root .tower-page--redesigned .tower-progress-track {
+  height: 3px;
+  background: #5b5b463b;
+  border-radius: 0;
+}
+:root .tower-page--redesigned .tower-progress-track i {
+  background: #c8a66e;
+}
+:root .tower-page--redesigned .tower-party {
+  margin-top: 25px;
+}
+:root .tower-page--redesigned .tower-party > div {
+  padding: 13px;
+  border-color: #7773612a;
+  background: #161a1466;
+}
+:root .tower-page--redesigned .tower-party > div > img {
+  border: 1px solid #78694e77;
+  background: #161915;
+}
+:root .tower-page--redesigned .tower-join {
+  padding: 22px;
+  background: #13171270;
+  border: 1px dashed #80735266;
+  border-radius: 3px;
+}
+:root .tower-page--redesigned .tower-join > span {
+  color: #b8b49f;
+}
+:root .tower-page--redesigned .tower-next {
+  padding: 22px;
+  background: #c9a8790a;
+  border: 1px solid #aa92613d;
+  border-left: 2px solid #b99d6c;
+}
+:root .tower-page--redesigned .tower-master-controls {
+  border-top: 1px solid #82745766;
+  padding-top: 24px;
+  margin-top: 26px;
+}
+:root .tower-page--redesigned .tower-master-controls button:last-child {
+  color: #bca69a;
+  background: transparent;
+  border-color: #7d675e50;
+}
+:root .tower-page--redesigned .tower-create {
+  background: #25261f;
+  border: 1px solid #85745366;
+  border-radius: 3px;
+}
+:root .tower-page--redesigned .tower-empty {
+  padding: 65px 25px;
+  background: radial-gradient(ellipse at center, #5c553b19, transparent 65%);
+  border: 1px dashed #77725966;
+  border-radius: 4px;
+}
+:root .tower-page--redesigned .tower-empty > svg {
+  color: #aa9369;
+  margin-bottom: 20px;
+}
+:root .tower-page--redesigned .tower-empty h3 {
+  font-size: 25px;
+}
+:root .tower-page--redesigned .tower-treasure-summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 20px 25px;
+  border: 1px solid #60584466;
+  background: #24251e;
+  margin-bottom: 25px;
+  border-radius: 4px;
+}
+:root .tower-page--redesigned .tower-treasure-summary > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #b5b39f;
+  font-size: 11px;
+}
+:root .tower-page--redesigned .tower-treasure-summary b {
+  color: #d5ba8c;
+  font: 27px var(--serif);
+}
+:root .tower-page--redesigned .tower-treasure-summary p {
+  font-size: 11px;
+  margin: 0 0 0 auto;
+}
+:root .tower-page--redesigned .tower-claim-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: 22px;
+}
+:root .tower-page--redesigned .tower-claim {
+  background: linear-gradient(145deg, #2b2c23, #1b1e19);
+  border: 1px solid #5f5843;
+  border-radius: 4px;
+  max-width: 100%;
+}
+:root .tower-page--redesigned .tower-claim.sealed {
+  border-color: #b69c7066;
+  background: radial-gradient(ellipse at 50% 30%, #77613c24, transparent 70%), #20221b;
+}
+:root .tower-page--redesigned .tower-claim-top {
+  border-color: #7a705134;
+}
+:root .tower-page--redesigned .tower-d100 {
+  border-color: #b89c6d77;
+  background: #c6a66d0a;
+}
+:root .tower-page--redesigned .tower-claim h3 {
+  font-size: 25px;
+}
+:root .tower-page--redesigned .tower-claim footer {
+  background: #13171166;
+  border-color: #746a493b;
+}
+:root .tower-page--redesigned .tower-guide {
+  margin-top: 32px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid #64604b66;
+  box-shadow: none;
+}
+:root .tower-page--redesigned .tower-guide summary {
+  padding: 22px 0;
+  font-size: 12px;
+  color: #bcb69f;
+}
+:root .tower-page--redesigned .tower-guide > div {
+  padding: 0 0 15px;
+}
+@media (max-width: 1100px) {
+  :root .tower-page--redesigned .tower-tabs > span {
+    display: none;
+  }
+  :root .tower-page--redesigned .tower-atlas.tower-atlas-compact {
+    grid-template-columns: minmax(0, 1fr) 250px;
+    gap: 18px;
+  }
+  :root .tower-page--redesigned .tower-atlas-sidebar section {
+    padding: 20px;
+  }
+  :root .tower-page--redesigned .tower-floor {
+    padding: 24px;
+  }
+  :root .tower-page--redesigned .tower-runs-layout {
+    grid-template-columns: 235px minmax(0, 1fr);
+  }
+}
+@media (max-width: 850px) {
+  :root .tower-page--redesigned .tower-hero-copy {
+    max-width: 610px;
+  }
+  :root .tower-page--redesigned .tower-hero-art {
+    object-position: 58% 50%;
+  }
+  :root .tower-page--redesigned .tower-hero {
+    min-height: 510px;
+  }
+  :root .tower-page--redesigned .tower-wallet {
+    right: 25px;
+    bottom: 32px;
+  }
+  :root .tower-page--redesigned .tower-body {
+    width: calc(100% - 44px);
+  }
+  :root .tower-page--redesigned .tower-atlas.tower-atlas-compact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  :root .tower-page--redesigned .tower-atlas-sidebar {
+    grid-template-columns: 1fr 1fr;
+  }
+  :root .tower-page--redesigned .tower-atlas-heading {
+    display: block;
+  }
+  :root .tower-page--redesigned .tower-atlas-heading p {
+    max-width: 600px;
+    margin-top: 12px;
+  }
+  :root .tower-page--redesigned .tower-loot-preview > header {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  :root .tower-page--redesigned .tower-loot-preview > header > div:first-child {
+    flex: 1 1 100%;
+  }
+  :root .tower-page--redesigned .tower-treasure-tier {
+    border-left: 0;
+    padding: 0;
+    margin-right: auto;
+  }
+  :root .tower-page--redesigned .tower-runs-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  :root .tower-page--redesigned .tower-runs {
+    flex-direction: row;
+    padding-bottom: 5px;
+    max-width: 100%;
+  }
+  :root .tower-page--redesigned .tower-runs button {
+    min-width: min(240px, 75vw);
+  }
+}
+@media (max-width: 900px) {
+  :root .tower-page--redesigned .tower-hero-copy {
+    padding-top: calc(2 * var(--page-header-height) + 50px);
+  }
+}
+@media (max-width: 540px) {
+  :root .tower-page--redesigned .tower-hero {
+    min-height: 620px;
+  }
+  :root .tower-page--redesigned .tower-hero-art {
+    object-position: 63% center;
+    opacity: 0.8;
+  }
+  :root .tower-page--redesigned .tower-hero-shade {
+    background:
+      linear-gradient(90deg, #151715d9, #15171535), linear-gradient(0deg, #161615 2%, #16161533 75%);
+  }
+  :root .tower-page--redesigned .tower-hero-copy {
+    padding: calc(2 * var(--page-header-height) + 48px) 22px 95px;
+  }
+  :root .tower-page--redesigned .tower-hero h2 {
+    font-size: clamp(39px, 10vw, 55px);
+    margin-top: 24px;
+  }
+  :root .tower-page--redesigned .tower-hero h2 i {
+    display: block;
+  }
+  :root .tower-page--redesigned .tower-hero-caption {
+    font-size: 12px;
+    max-width: 285px;
+  }
+  :root .tower-page--redesigned .tower-hero-actions {
+    margin-top: 22px;
+    gap: 8px;
+  }
+  :root .tower-page--redesigned .tower-hero-actions button {
+    font-size: 11px;
+    padding: 11px 12px;
+  }
+  :root .tower-page--redesigned .tower-horizon {
+    gap: 24px;
+    margin-top: 25px;
+    padding-top: 17px;
+  }
+  :root .tower-page--redesigned .tower-horizon span {
+    font-size: 9px;
+  }
+  :root .tower-page--redesigned .tower-horizon b {
+    font-size: 22px;
+  }
+  :root .tower-page--redesigned .tower-wallet {
+    left: 22px;
+    right: auto;
+    bottom: 21px;
+    padding: 9px 13px;
+  }
+  :root .tower-page--redesigned .tower-wallet b {
+    font-size: 20px;
+  }
+  :root .tower-page--redesigned .tower-wallet span {
+    font-size: 9px;
+  }
+  :root .tower-page--redesigned .tower-body {
+    width: calc(100% - 30px);
+  }
+  :root .tower-page--redesigned .tower-tabs {
+    min-height: 70px;
+    gap: 4px;
+    margin-bottom: 28px;
+    padding: 8px 0;
+  }
+  :root .tower-page--redesigned .tower-tabs button {
+    flex: 1;
+    min-width: 0;
+    gap: 6px;
+    padding: 11px 5px;
+    justify-content: center;
+  }
+  :root .tower-page--redesigned .tower-tabs button > span {
+    font-size: 11px;
+  }
+  :root .tower-page--redesigned .tower-tabs button small {
+    display: none;
+  }
+  :root .tower-page--redesigned .tower-tabs button > svg {
+    width: 14px;
+  }
+  :root .tower-page--redesigned .tower-tabs em {
+    padding: 1px 4px;
+    font-size: 9px;
+  }
+  :root .tower-page--redesigned .tower-atlas-heading h2 {
+    font-size: 25px;
+  }
+  :root .tower-page--redesigned .tower-atlas-heading p {
+    font-size: 12px;
+  }
+  :root .tower-page--redesigned .tower-floor-picker {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 8px;
+    padding: 16px;
+  }
+  :root .tower-page--redesigned .tower-floor-picker label {
+    grid-column: 1/-1;
+    max-width: none;
+    min-width: 0;
+  }
+  :root .tower-page--redesigned .tower-floor-picker > button {
+    width: 100%;
+  }
+  :root .tower-page--redesigned .tower-floor-picker .tower-edit-floor {
+    grid-column: 1/-1;
+    margin: 0;
+  }
+  :root .tower-page--redesigned .tower-floor {
+    padding: 22px 17px;
+  }
+  :root .tower-page--redesigned .tower-floor-heading {
+    gap: 12px;
+  }
+  :root .tower-page--redesigned .tower-floor-heading .tower-kicker {
+    font-size: 9px;
+    line-height: 1.8;
+  }
+  :root .tower-page--redesigned .tower-floor-heading h2 {
+    font-size: 25px;
+  }
+  :root .tower-page--redesigned .tower-floor-number {
+    min-width: 43px;
+  }
+  :root .tower-page--redesigned .tower-floor-number b {
+    font-size: 43px;
+  }
+  :root .tower-page--redesigned .tower-floor-number small {
+    font-size: 8px;
+  }
+  :root .tower-page--redesigned .tower-floor-steps {
+    gap: 4px;
+  }
+  :root .tower-page--redesigned .tower-floor-steps button > span {
+    font-size: 18px;
+    gap: 2px;
+  }
+  :root .tower-page--redesigned .tower-floor-steps button > span svg {
+    width: 10px;
+  }
+  :root .tower-page--redesigned .tower-floor-steps button small {
+    font-size: 8px;
+    letter-spacing: -0.02em;
+  }
+  :root .tower-page--redesigned .tower-hidden {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+  :root .tower-page--redesigned .tower-hidden h3 {
+    font-size: 20px;
+  }
+  :root .tower-page--redesigned .tower-creatures > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  :root .tower-page--redesigned .tower-creatures img {
+    width: 80px;
+    height: 80px;
+  }
+  :root .tower-page--redesigned .tower-challenges {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  :root .tower-page--redesigned .tower-atlas-sidebar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  :root .tower-page--redesigned .tower-atlas-sidebar section {
+    padding: 24px;
+  }
+  :root .tower-page--redesigned .tower-floor-reward {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 12px;
+  }
+  :root .tower-page--redesigned .tower-floor-reward > div {
+    gap: 10px;
+  }
+  :root .tower-page--redesigned .tower-floor-reward b {
+    font-size: 22px;
+  }
+  :root .tower-page--redesigned .tower-loot-preview > summary {
+    padding: 20px 17px;
+    gap: 12px;
+  }
+  :root .tower-page--redesigned .tower-loot-preview > header {
+    padding: 22px 17px 0;
+  }
+  :root .tower-page--redesigned .tower-loot-preview .tower-table-wrap {
+    padding-inline: 10px;
+  }
+  :root .tower-page--redesigned .tower-section-heading {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+  :root .tower-page--redesigned .tower-section-heading h2 {
+    font-size: 26px;
+  }
+  :root .tower-page--redesigned .tower-run-filters {
+    gap: 7px;
+  }
+  :root .tower-page--redesigned .tower-run-filters button {
+    flex: 1 1 40%;
+    padding: 9px;
+    font-size: 10px;
+  }
+  :root .tower-page--redesigned .tower-run-detail {
+    padding: 24px 20px;
+  }
+  :root .tower-page--redesigned .tower-run-detail > header h2 {
+    font-size: 25px;
+  }
+  :root .tower-page--redesigned .tower-run-progress > b {
+    font-size: 50px;
+  }
+  :root .tower-page--redesigned .tower-master-controls > div {
+    display: grid;
+  }
+  :root .tower-page--redesigned .tower-create {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px;
+  }
+  :root .tower-page--redesigned .tower-create label {
+    flex: 1 1 100%;
+  }
+  :root .tower-page--redesigned .tower-treasure-summary {
+    padding: 16px 20px;
+    gap: 18px;
+  }
+  :root .tower-page--redesigned .tower-treasure-summary p {
+    margin: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root .tower-page--redesigned * {
+    scroll-behavior: auto;
+  }
+}

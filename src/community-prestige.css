@@ -174,12 +174,22 @@
   display: none;
 }
 .player-profile-home {
+  position: relative;
+  isolation: isolate;
   min-height: 100dvh;
   padding: 50px max(5vw, 20px) 100px;
   color: #e7d8bd;
+  background: transparent;
+}
+.player-profile-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background:
-    linear-gradient(#14110ee6, #14110ec4 35%, #14110ff5 75%),
-    var(--player-bg) center top/cover fixed;
+    linear-gradient(180deg, #141615b8, #14161578 42%, #141615d9),
+    var(--player-bg) center / cover no-repeat,
+    #141615;
 }
 .player-profile-hero {
   max-width: 1240px;

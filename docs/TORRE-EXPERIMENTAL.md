@@ -8,7 +8,9 @@ Administradores usam **Editar andar** para nome, descrição pública, desafio, 
 
 Nome/descrição e indicação de guardião são públicos. Nomes e imagens das criaturas, nome do guardião, desafios, ambiente e armadilhas ficam fora das respostas a jogadores até o andar ter sido concluído. Administradores veem a preparação. O personagem que concluiu recebe marca de descoberta pessoal; os demais recebem descoberta da guilda. O projeto possui **uma guilda compartilhada**: uma conclusão de expedição revela aquele andar para seus membros autenticados. Inscrição, início ou seleção do andar não revelam conteúdo. Progresso já confirmado permanece conhecido mesmo que a expedição depois seja encerrada.
 
-A navegação usa seletor compacto de andares e passos anterior/próximo, sem lista lateral extensa. Removidos do hero o slogan, “Preparar a ascensão” e indicadores 30/06/d100.
+A navegação usa seletor de região/andar, anterior/próximo e cinco passos da região atual, sem lista lateral de cem andares. A abertura mantém a paisagem original, tipografia Cinzel e acabamento em carvão, pedra e cobre, com atalhos para exploração e expedições. Os indicadores da abertura correspondem aos limites reais: cem andares, vinte regiões e oito participantes por grupo.
+
+O registro separa **A ascensão**, **Expedições** e **Tesouros**, com navegação fixa durante a rolagem. A ascensão apresenta descobertas ao lado da prévia de retorno e do acesso à própria companhia; o próximo andar da expedição ativa pode ser consultado diretamente. A tabela d100 fica recolhida e pode ser aberta pela prévia. Expedições têm filtros por preparação, subida e histórico; iniciar ou encerrar acompanha a expedição no filtro correspondente. Tesouros ainda fechados aparecem primeiro, com contagem de pendentes e revelados. No celular, as colunas se empilham e a lista de companhias permite rolagem horizontal local. Nenhuma prévia concede recompensas ou revela encontros antes da conquista.
 
 ## Expedições e recompensas
 
@@ -38,6 +40,6 @@ Prompt final:
 
 `node scripts/test-tower-isolated.mjs`: **11/11**, incluindo sigilo real no JSON, edição administrativa/revisões, revelação pessoal/guilda, guardião fora do intervalo inicial, limite 100, concorrência, pagamentos, snapshots e entrega única de todas as peças de armadura ao inventário. Banco descartável; nunca o banco de jogadores.
 
-`--browser`: edição de andar/criaturas/armadilhas e prêmios pela interface, item com imagem/descrição, ausência do conteúdo removido, nova arte, jogador com encontros ocultos/revelados, retorno/d100 persistentes e 1440/768/390/320 sem overflow. Capturas em test-results (ignorado). TypeScript/build conferidos antes da entrega.
+`--browser`: seletores, tabela recolhível, filtros, edição de andar/criaturas/armadilhas e prêmios, item com imagem/descrição, jogador com encontros ocultos/revelados, retorno/d100 persistentes e 1440/768/390/320 sem overflow. Também confere o fundo personalizado do perfil fixo na viewport e a volta ao acampamento original. Capturas em test-results (ignorado). TypeScript/build conferidos antes da entrega.
 
 A suíte geral anterior tinha 113/115: duas falhas anteriores do kraken em world-fleet.test.ts. Este refino não altera Mundo/kraken nem afirma resolver essas falhas.

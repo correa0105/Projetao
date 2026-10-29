@@ -60,6 +60,7 @@ export function PlayerProfileOverview({
         } as CSSProperties
       }
     >
+      <div className="player-profile-backdrop" aria-hidden="true" />
       <header className="player-profile-hero">
         <div
           className={`player-avatar border-${p.document.border} effect-${p.document.border_effect}`}

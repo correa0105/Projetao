@@ -7,6 +7,13 @@ das brasas: base da fogueira a 66% da arte 1672×941, alinhada ao chão das figu
 Montaria e mascote compartilham os mesmos hooks de posição do acampamento.
 O tamanho opcional da espécie vem da ficha, sem expor o documento privado.
 
+Na visão inicial do viajante (`PlayerProfileOverview`), o background personalizado
+ocupa toda a viewport, com enquadramento `cover` e uma camada fixa atrás do
+conteúdo. O cenário continua até as bordas e acompanha a rolagem, sem ficar
+limitado ao container das vitrines. A camada é desmontada ao sair dessa visão;
+o acampamento mantém seu cenário original da fogueira. A escolha salva e a arte
+original do background são preservadas.
+
 A chegada de detalhes antes do perfil também é tratada: a chave do perfil faz
 os hooks medirem novamente quando os elementos realmente entram na página.
 Não usar altura/posição provisórias como resultado final da visita.

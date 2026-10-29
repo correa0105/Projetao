@@ -2,6 +2,10 @@ import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
+import express from 'express';
+import { resolve } from 'node:path';
+import { optimizedPublicImages } from '../server/optimized-public-images';
+import { staticAssetCacheControl } from '../server/static-asset-cache';
 if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
   throw Error('Banco isolado obrigatório.');
 const origin = 'http://localhost:3006';
@@ -12,8 +16,19 @@ const { pool } = await import('../server/db.js'),
   { createLegacyTestCharacter } = await import('../tests/character-fixtures.js');
 await migrate();
 await seed();
-const { createApp } = await import('../server/app.js'),
-  server = createApp().listen(3006, '127.0.0.1');
+const { createApp } = await import('../server/app.js');
+const app = express();
+app.use(optimizedPublicImages(resolve('public')));
+app.use(
+  express.static(resolve('public'), {
+    setHeaders(res, file) {
+      const cache = staticAssetCacheControl(resolve('public'), file);
+      if (cache) res.setHeader('Cache-Control', cache);
+    },
+  }),
+);
+app.use(createApp());
+const server = app.listen(3006, '127.0.0.1');
 await new Promise<void>((resolve) => server.once('listening', resolve));
 const browser = await chromium.launch({ channel: 'msedge', headless: true }),
   ctx = await browser.newContext({
@@ -57,6 +72,11 @@ try {
   await expect(page.getByRole('button', { name: 'Preparar a ascensão' })).toHaveCount(0);
   await expect(page.locator('.tower-hero-metrics')).toHaveCount(0);
   await expect(page.locator('.tower-hero-art')).toHaveAttribute('src', '/tower/tower-veil-v2.webp');
+  await expect(page.locator('.tower-loot-preview')).not.toHaveAttribute('open');
+  await page.getByRole('button', { name: 'Consultar tabela d100' }).click();
+  await expect(page.locator('.tower-loot-preview')).toHaveAttribute('open');
+  await page.locator('.tower-loot-preview > summary').click();
+  await page.getByRole('button', { name: 'Consultar tabela d100' }).click();
   await page.getByRole('button', { name: 'Editar andar', exact: true }).click();
   let editor = page.getByRole('dialog', { name: 'Editar andar da torre' });
   await expect(editor.getByLabel('Nome do andar')).toBeFocused();
@@ -110,6 +130,11 @@ try {
   await page.getByLabel('Nome da expedição', { exact: true }).fill('Os que voltam com a aurora');
   await page.getByRole('button', { name: 'Abrir expedição', exact: true }).click();
   await page.getByRole('button', { name: 'Arden da aurora', exact: true }).click();
+  await page.getByRole('button', { name: /^Encerradas/ }).click();
+  await expect(page.locator('.tower-filter-empty')).toBeVisible();
+  await expect(page.locator('.tower-run-detail')).toHaveCount(0);
+  await page.getByRole('button', { name: /^Reunindo grupo/ }).click();
+  await expect(page.locator('.tower-party')).toContainText('Arden da aurora');
   await playerPage.goto(origin + '/#tower');
   await expect(playerPage.locator('.tower-hidden')).toBeVisible();
   await expect(playerPage.locator('.tower-creatures img')).toHaveCount(0);
@@ -125,6 +150,10 @@ try {
   await page.getByRole('button', { name: 'Expedições', exact: true }).click();
   await expect(page.locator('.tower-party')).toContainText('Bruma');
   await page.getByRole('button', { name: 'Iniciar ascensão', exact: true }).click();
+  await expect(
+    page.getByLabel('Filtrar expedições').getByRole('button', { name: /^Em ascensão/ }),
+  ).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.tower-run-detail')).toBeVisible();
   for (let floor = 1; floor <= 5; floor++) {
     await page
       .getByRole('button', {
@@ -140,7 +169,16 @@ try {
     await expect(page.locator('.tower-run-progress>b')).toHaveText(String(floor).padStart(2, '0'));
   }
   await expect(page.locator('.tower-run-progress')).toContainText('tesouro grau 1');
+  await expect(page.getByRole('progressbar', { name: 'Andares concluídos' })).toHaveAttribute(
+    'aria-valuenow',
+    '5',
+  );
   await page.screenshot({ path: 'test-results/tower-expedition-desktop.png', fullPage: true });
+  await page.getByRole('button', { name: 'A ascensão', exact: true }).click();
+  await page.getByRole('button', { name: 'Ver próximo andar · 6', exact: true }).click();
+  await expect(page.getByLabel('Escolher andar', { exact: true })).toHaveValue('6');
+  await page.getByRole('button', { name: 'Abrir minha expedição', exact: true }).click();
+  await expect(page.locator('.tower-run-detail')).toContainText('Os que voltam com a aurora');
   await playerPage.reload();
   await expect(playerPage.locator('.tower-creatures img')).toHaveCount(3);
   await expect(playerPage.locator('.tower-traps')).toContainText('placa de pressão');
@@ -155,6 +193,11 @@ try {
     .getByRole('button', { name: 'Confirmar retorno e entregar', exact: true })
     .click();
   await expect(completion).not.toBeVisible();
+  await expect(page.getByRole('button', { name: /^Encerradas/ })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  await expect(page.locator('.tower-return')).toBeVisible();
   await playerPage.reload();
   await playerPage.getByRole('button', { name: /^Tesouros/ }).click();
   await expect(
@@ -176,6 +219,9 @@ try {
     await page.goto(origin + '/#tower');
     await page.getByRole('button', { name: 'A ascensão', exact: true }).click();
     await expect(page.locator('.tower-atlas')).toBeVisible();
+    const title = await page.locator('.page-header .page-title').boundingBox();
+    const eyebrow = await page.locator('.tower-eyebrow').boundingBox();
+    expect(title!.y + title!.height).toBeLessThan(eyebrow!.y);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
       true,
     );
@@ -184,12 +230,56 @@ try {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
       true,
     );
+    await page.screenshot({ path: `test-results/tower-expedition-${width}.png`, fullPage: true });
     await page.getByRole('button', { name: /^Tesouros/ }).click();
     await expect(page.locator('.tower-claim')).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
       true,
     );
+    await page.screenshot({ path: `test-results/tower-treasure-${width}.png`, fullPage: true });
   }
+  // O cenário personalizado acompanha toda a viewport e só existe na visão do viajante.
+  await pool.query(
+    `INSERT INTO player_profiles(user_id,document) VALUES($1,$2::jsonb)
+     ON CONFLICT(user_id) DO UPDATE SET document=EXCLUDED.document`,
+    [
+      gmId,
+      JSON.stringify({
+        background: '/tower/tower-veil-v2.webp',
+        bio: 'A companhia prepara a próxima jornada. '.repeat(35),
+      }),
+    ],
+  );
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(origin + '/#profiles?user=' + gmId);
+  await page.getByRole('button', { name: 'Abrir perfil de Mestre da torre', exact: true }).click();
+  await expect(page.locator('.player-profile-home')).toBeVisible();
+  for (const width of [1440, 768, 390, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.evaluate(() => scrollTo(0, 0));
+    const backdrop = page.locator('.player-profile-backdrop');
+    await expect(backdrop).toHaveCSS('position', 'fixed');
+    await expect(backdrop).toHaveCSS('background-size', 'auto, cover, auto');
+    expect(await backdrop.evaluate((el) => getComputedStyle(el).backgroundImage)).toContain(
+      '/tower/tower-veil-v2.webp',
+    );
+    expect(await backdrop.boundingBox()).toEqual({ x: 0, y: 0, width, height: 900 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
+      true,
+    );
+    await page.screenshot({
+      path: `test-results/profile-full-background-${width}.png`,
+      fullPage: false,
+    });
+    await page.evaluate(() => scrollTo(0, 350));
+    expect(await backdrop.boundingBox()).toEqual({ x: 0, y: 0, width, height: 900 });
+  }
+  await page.locator('.player-character-showcase button').first().click();
+  await expect(page.locator('.player-profile-backdrop')).toHaveCount(0);
+  await expect(page.locator('.public-camp')).toBeVisible();
+  expect(
+    await page.locator('.public-camp').evaluate((el) => getComputedStyle(el).backgroundImage),
+  ).toContain('character-camp-v2.png');
   const wallet = (
     await pool.query('SELECT crystals FROM tower_wallets WHERE character_id=$1', [pHero.id])
   ).rows[0];
@@ -203,7 +293,7 @@ try {
   ).toBe(2);
   expect(errors).toEqual([]);
   console.log(
-    'Torre: 100 andares, edição administrativa, criaturas/armadilhas ocultas, prêmios/itens clicáveis, mestre/jogador, andares sequenciais, conclusão, d100 persistente e layouts 1440/768/390/320 verificados.',
+    'Torre: navegação, filtros, 100 andares, sigilo, edição, expedição, retorno e d100 persistente. Torre e perfil com fundo de viewport em 1440/768/390/320 verificados; acampamento preservado.',
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/tower-failure.png', fullPage: true });
