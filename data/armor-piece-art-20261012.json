@@ -16787,8 +16787,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-2--bracers.webp",
-      "sha256": "242770a54c063cb62dbe1e4b363e6bec961a7b03f085e6f80085f77639552111"
+      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-1--bracers.webp",
+      "sha256": "5b48a3a8fbe6236a4232388385df839896fde73a9f08adaa39fc847b1c3010b7",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-breastplate-plus-2",
@@ -16798,8 +16799,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-2--feet.webp",
-      "sha256": "b11d5c778ccc562ecd62970f00e43599cadb166cf9bba43000bd1e702d2ea75c"
+      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-1--feet.webp",
+      "sha256": "c0e0eec8b5bcf7a0bd51490f5d14655ff731bcef415cc22a849b6596b846b5c7",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-breastplate-plus-2",
@@ -16809,8 +16811,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-2--head.webp",
-      "sha256": "96015322e39cef6c54241c865b569271197d40ddbb89e78bd8c98f3ee15fb2d1"
+      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-1--head.webp",
+      "sha256": "5cb48a3e0d7bb4bdedb3b9cbb21f7f088bcb7802b38ea682aaf4634dc9701c4d",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-breastplate-plus-2",
@@ -16820,8 +16823,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-2--legs.webp",
-      "sha256": "8700fb8f46883bc3139b0d7304627069735af611534d4e4d5cc48bcae59a12ae"
+      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-1--legs.webp",
+      "sha256": "cae3ced84dcbe70ed8f7f05d5bdc57a69e53703b9ecfc1737ddcf974ba0afc82",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-breastplate-plus-2",
@@ -16831,8 +16835,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-2--shoulders.webp",
-      "sha256": "0940111e0a31e45e91fb27efa0c6d1e963cb974cd3003582ca91c34328f8c316"
+      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-1--shoulders.webp",
+      "sha256": "a352517ceede7368449db6456edba2959d53d146683ca78e50ad3c61fdbbf533",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-breastplate-plus-3",
@@ -16842,8 +16847,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-3--bracers.webp",
-      "sha256": "6f2df5e8f6e3f4ce313a646ff39829e6d3a09e5ed64816fa83556917ed56f17e"
+      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-1--bracers.webp",
+      "sha256": "5b48a3a8fbe6236a4232388385df839896fde73a9f08adaa39fc847b1c3010b7",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-breastplate-plus-3",
@@ -16853,8 +16859,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-3--feet.webp",
-      "sha256": "db129c3b8f2caaffa563b1b89da16f9bd65ce738c23a9453226e0f2f97764ae7"
+      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-1--feet.webp",
+      "sha256": "c0e0eec8b5bcf7a0bd51490f5d14655ff731bcef415cc22a849b6596b846b5c7",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-breastplate-plus-3",
@@ -16864,8 +16871,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-3--head.webp",
-      "sha256": "b12d9e073e815bf0b3e5078df3c3f438278a596f0a9c3366744e7ce14930653f"
+      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-1--head.webp",
+      "sha256": "5cb48a3e0d7bb4bdedb3b9cbb21f7f088bcb7802b38ea682aaf4634dc9701c4d",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-breastplate-plus-3",
@@ -16875,8 +16883,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-3--legs.webp",
-      "sha256": "9771b9d3f4c93d3a28d3cd75279c417c7162584d532f0bfe91c115ffb1d18fad"
+      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-1--legs.webp",
+      "sha256": "cae3ced84dcbe70ed8f7f05d5bdc57a69e53703b9ecfc1737ddcf974ba0afc82",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-breastplate-plus-3",
@@ -16886,8 +16895,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-3--shoulders.webp",
-      "sha256": "6f5a7576df18213f06fe52f3420603f4c4f4c803266cf4fa0c8f0b65873ff0a0"
+      "output": "public/shop/armor-parts-20261012/magic-armor-breastplate-plus-1--shoulders.webp",
+      "sha256": "a352517ceede7368449db6456edba2959d53d146683ca78e50ad3c61fdbbf533",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-1",
@@ -16952,8 +16962,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-2--bracers.webp",
-      "sha256": "9cf18925501591547f129dc9d26754158fa797539a3cf1c8cbfc1215d4249b9c"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-1--bracers.webp",
+      "sha256": "d64661ceb2117759b8ef573465b55b9790e5c66f6289bd7e998ae807a026a015",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-2",
@@ -16963,8 +16974,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-2--feet.webp",
-      "sha256": "731bd00ec91562cab727923a9c667a91da06c3c9e70220a9fe8c610a5f45d4e0"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-1--feet.webp",
+      "sha256": "77a07d803cccff1afe2e65846b2bb08a26d277dbae675731e89602f7675375e2",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-2",
@@ -16974,8 +16986,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-2--head.webp",
-      "sha256": "c27aa1b0584580adb7d1a909cc4ea5cee6c16b2942774c320ffc7e7f522ddad2"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-1--head.webp",
+      "sha256": "7ea4cd88a57fdaec422cf022c3f7483bc8eec1c76a58b6ee6eb4ce0388e2e79f",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-2",
@@ -16985,8 +16998,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-2--legs.webp",
-      "sha256": "3432595d6f19a3cd5e76e1a592f1a7986976c30ef6c35b4a387b65f968eb2760"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-1--legs.webp",
+      "sha256": "f77ab3f01b87a159e3ff1a43cc6bd81fcc505cc73784ec57a9e3062727675618",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-2",
@@ -16996,8 +17010,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-2--shoulders.webp",
-      "sha256": "0056954fd437a073eb50df8f739ea64ec9f772431bda9515da513c1b96d26c56"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-1--shoulders.webp",
+      "sha256": "d7605c0fce14fbbd42a1228ddd33599dc979b5519016f4fb6206d4b688591898",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-3",
@@ -17007,8 +17022,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-3--bracers.webp",
-      "sha256": "9a83370442f1867ee07d0b7993ca1116454277cd1c7df52f0cea44eed17ff74d"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-1--bracers.webp",
+      "sha256": "d64661ceb2117759b8ef573465b55b9790e5c66f6289bd7e998ae807a026a015",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-3",
@@ -17018,8 +17034,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-3--feet.webp",
-      "sha256": "c9724080838ac769b95809ec815c6696ce27d514de63aef4465e2b1d1cb3a312"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-1--feet.webp",
+      "sha256": "77a07d803cccff1afe2e65846b2bb08a26d277dbae675731e89602f7675375e2",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-3",
@@ -17029,8 +17046,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-3--head.webp",
-      "sha256": "08e45f177ebbb1eeac510e202f36b3645c9d424f1aa7be07e3c041b262d0b76e"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-1--head.webp",
+      "sha256": "7ea4cd88a57fdaec422cf022c3f7483bc8eec1c76a58b6ee6eb4ce0388e2e79f",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-3",
@@ -17040,8 +17058,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-3--legs.webp",
-      "sha256": "71fd7004669ceac11dc90e72b8be9973c5178a871d1bf7eadf335cdc8c63df2d"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-1--legs.webp",
+      "sha256": "f77ab3f01b87a159e3ff1a43cc6bd81fcc505cc73784ec57a9e3062727675618",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-3",
@@ -17051,8 +17070,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-3--shoulders.webp",
-      "sha256": "90de568ce32f8e7c98e5c31414a57b4e9f749d8e70e9bfce0d5216cef9964f22"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-mail-plus-1--shoulders.webp",
+      "sha256": "d7605c0fce14fbbd42a1228ddd33599dc979b5519016f4fb6206d4b688591898",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-1",
@@ -17117,8 +17137,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-2--bracers.webp",
-      "sha256": "f003d05038028ae6ca5d7bf5a0f4bd22268279309a93bd5f9d3960de062d0892"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-1--bracers.webp",
+      "sha256": "0037194658e0f0cbf18e1baa9a15d1adf7ee35886c0b015cbe730458f1cd8d52",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-2",
@@ -17128,8 +17149,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-2--feet.webp",
-      "sha256": "2d7fde71f8b3f93f4346c8e560d6173373eb4533b765c91efc7af4ba00841766"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-1--feet.webp",
+      "sha256": "9cf13372ade06f18b8a315460180844e417c7e4211010de63f96b4e2941b6c0e",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-2",
@@ -17139,8 +17161,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-2--head.webp",
-      "sha256": "3a72f6ee22eef0784ff241da75467c87d12e1a4e6a92a04720845069bc2c977a"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-1--head.webp",
+      "sha256": "1cbc16403536ecc16f26e147461cfa09e98006dd3d6182478afa0096826fde61",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-2",
@@ -17150,8 +17173,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-2--legs.webp",
-      "sha256": "230043b74058507b2bfb691bfc5f0324a336e49882835465e212b94cbe99194c"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-1--legs.webp",
+      "sha256": "72dcc0d204fb25f45cee08022dc7c937141de86d99dbe11881b9d7827e486e21",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-2",
@@ -17161,8 +17185,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-2--shoulders.webp",
-      "sha256": "e7c748f4e5b0c9d37c4815ed8d80d114dc6e03ff2f2140dfcb6c07a38f61a555"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-1--shoulders.webp",
+      "sha256": "df256b97dc4c665ea991b2cb19496ccb380111a2ba65d852756cc6c79413b08f",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-3",
@@ -17172,8 +17197,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-3--bracers.webp",
-      "sha256": "a1e6fea617727755a5c93b5565ac870309f109d2a93bd3c4fe93f7588f024763"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-1--bracers.webp",
+      "sha256": "0037194658e0f0cbf18e1baa9a15d1adf7ee35886c0b015cbe730458f1cd8d52",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-3",
@@ -17183,8 +17209,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-3--feet.webp",
-      "sha256": "579fa0915fd635674b42c80e734b63e2525f345d23b28a64bff6d1faacbfdaf0"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-1--feet.webp",
+      "sha256": "9cf13372ade06f18b8a315460180844e417c7e4211010de63f96b4e2941b6c0e",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-3",
@@ -17194,8 +17221,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-3--head.webp",
-      "sha256": "4151a6ede019c2bf4661a9fefdcebb2f1735e35cd781be6b541fd9b53534857b"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-1--head.webp",
+      "sha256": "1cbc16403536ecc16f26e147461cfa09e98006dd3d6182478afa0096826fde61",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-3",
@@ -17205,8 +17233,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-3--legs.webp",
-      "sha256": "7b2db7c953233668e60c78319a985136713c35f1e14e1f8af58b7d0f21660236"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-1--legs.webp",
+      "sha256": "72dcc0d204fb25f45cee08022dc7c937141de86d99dbe11881b9d7827e486e21",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-3",
@@ -17216,8 +17245,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-3--shoulders.webp",
-      "sha256": "ba1aab2bc0b5fff83efcfb2e5cce5545f2e6de14e820b37a9368911ed6428543"
+      "output": "public/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-1--shoulders.webp",
+      "sha256": "df256b97dc4c665ea991b2cb19496ccb380111a2ba65d852756cc6c79413b08f",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-1",
@@ -17282,8 +17312,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-2--bracers.webp",
-      "sha256": "153304bb74a60037c4c832a83d9e0f6a3744c66a014426f37712a2ca9268db36"
+      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-1--bracers.webp",
+      "sha256": "6fdaa09ef5034421eb2f9f1955770ac1f42fc5c1681ec02c499284a929a8d6d0",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-2",
@@ -17293,8 +17324,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-2--feet.webp",
-      "sha256": "03a011a59a55284b0b4a0d3ff9c4612242185f52941a1f39745ae6d2c27041b0"
+      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-1--feet.webp",
+      "sha256": "ec2ba617d234890e7decf1c3dc367c28b2c11d3897a2226787068674700563b6",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-2",
@@ -17304,8 +17336,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-2--head.webp",
-      "sha256": "8063ffbecc204ca1433973d08860a252bcf1c080649eb14e06cff2223975ad63"
+      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-1--head.webp",
+      "sha256": "985961aa18b29e4bd451d6e92146922d97d76a95b7a934e3088427b100d9a57e",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-2",
@@ -17315,8 +17348,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-2--legs.webp",
-      "sha256": "9c434cf361081bb51e90aaf0a78ad7cfb6265df66182f73d36b5bd2b51eb6829"
+      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-1--legs.webp",
+      "sha256": "08fdd9eb1a4d56cfac68b34bbead6150583c76cb72143bd1c1caa550d5f7f951",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-2",
@@ -17326,8 +17360,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-2--shoulders.webp",
-      "sha256": "158472f7a9a1dbdb59d61654e2aa3e4dd35a20f8edb55711a63f6f60c8643aef"
+      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-1--shoulders.webp",
+      "sha256": "37b95f03800dbee37a8e9b2e986e3eb9c651a7e9c1136da5c7ba771a6983770d",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-3",
@@ -17337,8 +17372,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-3--bracers.webp",
-      "sha256": "bac02f3f02c09767b2d5d00912814a48d148414c113b5f8338a8a3a659d18343"
+      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-1--bracers.webp",
+      "sha256": "6fdaa09ef5034421eb2f9f1955770ac1f42fc5c1681ec02c499284a929a8d6d0",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-3",
@@ -17348,8 +17384,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-3--feet.webp",
-      "sha256": "3010b5741599479fe113fca8fe4ffdab35496bf31d91a7950af6f4966ef6da35"
+      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-1--feet.webp",
+      "sha256": "ec2ba617d234890e7decf1c3dc367c28b2c11d3897a2226787068674700563b6",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-3",
@@ -17359,8 +17396,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-3--head.webp",
-      "sha256": "bca9de3677e8fc367c8811cd95f7db2602ef7dfd854a3f3532c9ce26f5ba930e"
+      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-1--head.webp",
+      "sha256": "985961aa18b29e4bd451d6e92146922d97d76a95b7a934e3088427b100d9a57e",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-3",
@@ -17370,8 +17408,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-3--legs.webp",
-      "sha256": "f9b43fa50c37a535fe3fbb70ce7b9b556bed0bfeed5e0f97f18307c834f04e1a"
+      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-1--legs.webp",
+      "sha256": "08fdd9eb1a4d56cfac68b34bbead6150583c76cb72143bd1c1caa550d5f7f951",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-3",
@@ -17381,8 +17420,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-3--shoulders.webp",
-      "sha256": "6dd3ad51268d0d7b1480265b57c1b42f3f8bf3c7789471f267e99c8d9f855617"
+      "output": "public/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-1--shoulders.webp",
+      "sha256": "37b95f03800dbee37a8e9b2e986e3eb9c651a7e9c1136da5c7ba771a6983770d",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-1",
@@ -17447,8 +17487,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-2--bracers.webp",
-      "sha256": "332c5324829a62d77afa9b8bcd874cd23c3d7beebc88e497b88d37363922f304"
+      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-1--bracers.webp",
+      "sha256": "115555ecccf98cab8362bebe486c078aea993e3780a3e60cd1eaf5a2af342830",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-2",
@@ -17458,8 +17499,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-2--feet.webp",
-      "sha256": "dd3dc9ef71aa8457adcc31029bd9e5f47f63300d51a87730034965616726eb40"
+      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-1--feet.webp",
+      "sha256": "668a1c85306c4276b1e697959a2e4d7fdfb26bbe2387605aee7f721d7e0bdad6",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-2",
@@ -17469,8 +17511,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-2--head.webp",
-      "sha256": "7e2fce7c34d03098bd5880eb1c80b6a55afb5fd4f37d55b6f6b981f3566ec59f"
+      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-1--head.webp",
+      "sha256": "114d3080a51aa7758978a4fa316c8c62675f0115d5b6ba339cf697eda3de083b",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-2",
@@ -17480,8 +17523,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-2--legs.webp",
-      "sha256": "f150d63c1645027bba51a1f5a1d6eaa04bc1de2b13906a32caf909ef0205115f"
+      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-1--legs.webp",
+      "sha256": "95a92461f407ba410a38d41f218d7b371da0e7b0abad304d9e32ad6563b26ca7",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-2",
@@ -17491,8 +17535,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-2--shoulders.webp",
-      "sha256": "b4066c5e71a41f95da9818d73427eb0ccdb0380737a53530bb6245e753494cb0"
+      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-1--shoulders.webp",
+      "sha256": "6956e90e5cb2745ae6a4f84dc5e54819de031a943b27b4b9e85c316456b3cd3a",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-3",
@@ -17502,8 +17547,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-3--bracers.webp",
-      "sha256": "fa24c97577bbfe5e059e8f04e7039de810cd50cc34d741a726f25bcd7bc6f210"
+      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-1--bracers.webp",
+      "sha256": "115555ecccf98cab8362bebe486c078aea993e3780a3e60cd1eaf5a2af342830",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-3",
@@ -17513,8 +17559,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-3--feet.webp",
-      "sha256": "d4f0b9e0cee02beb73d6225eadd6ed39f4bd65081f5a45443cbdf06bd975c7c0"
+      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-1--feet.webp",
+      "sha256": "668a1c85306c4276b1e697959a2e4d7fdfb26bbe2387605aee7f721d7e0bdad6",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-3",
@@ -17524,8 +17571,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-3--head.webp",
-      "sha256": "e6e0cb72ca523d4091d04bffb5d73e969eb01d50997388043e3cbedefea34120"
+      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-1--head.webp",
+      "sha256": "114d3080a51aa7758978a4fa316c8c62675f0115d5b6ba339cf697eda3de083b",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-3",
@@ -17535,8 +17583,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-3--legs.webp",
-      "sha256": "0809c4f8f267b766235aee6ce91d59ee54a778ec0aff40973d8ace7806206284"
+      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-1--legs.webp",
+      "sha256": "95a92461f407ba410a38d41f218d7b371da0e7b0abad304d9e32ad6563b26ca7",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-3",
@@ -17546,8 +17595,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-3--shoulders.webp",
-      "sha256": "af371a996fd108e24fae0ec2638b1e4ba961e7330f576b8062852b8622b96d17"
+      "output": "public/shop/armor-parts-20261012/magic-armor-hide-armor-plus-1--shoulders.webp",
+      "sha256": "6956e90e5cb2745ae6a4f84dc5e54819de031a943b27b4b9e85c316456b3cd3a",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-1",
@@ -17612,8 +17662,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-2--bracers.webp",
-      "sha256": "8473bd8bfd74e3ea94686baaaa213ba423d246da245a1195d1590aeeddf91d4d"
+      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-1--bracers.webp",
+      "sha256": "cc1fea92aabf6d648bad0c23d427f5efc9df6b2fda77a3b806acf781e938249c",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-2",
@@ -17623,8 +17674,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-2--feet.webp",
-      "sha256": "14fafddbc09006b275d457c74f33a2c93577395cd635edb8145e1fc9c01a12ce"
+      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-1--feet.webp",
+      "sha256": "01449e1afec86cfbc25d2fa01da2b764cbda98ef020fa68f50ae4f19b2c8e1ce",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-2",
@@ -17634,8 +17686,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-2--head.webp",
-      "sha256": "c32e9ae797f6e4dde3efaa7999fc437274f0d3c8c643038536addb31085e641a"
+      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-1--head.webp",
+      "sha256": "47a7525251f4b505fb4367a88683434999c1284bf41d406e87cba237d0ac9317",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-2",
@@ -17645,8 +17698,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-2--legs.webp",
-      "sha256": "9982ef67cd5994d8aee9964035ede4bd53d2b5a8aab206ad9cc84232bd58ee46"
+      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-1--legs.webp",
+      "sha256": "462b75366739582e4f338237edd44baa0a0a78259c5afccef85296df84c8a534",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-2",
@@ -17656,8 +17710,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-2--shoulders.webp",
-      "sha256": "2a53db7c91a57fce7a1dad84cb740996edbd0d6d666d6a3d36a4170e9e0d42ff"
+      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-1--shoulders.webp",
+      "sha256": "072331ab222368c58d17a9aea9a739f26604647329700e7628d6fac4212d55b9",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-3",
@@ -17667,8 +17722,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-3--bracers.webp",
-      "sha256": "3ac13130f2e2a00e44dba03cf47583276b9e2eab0359861409c835df7afda8ff"
+      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-1--bracers.webp",
+      "sha256": "cc1fea92aabf6d648bad0c23d427f5efc9df6b2fda77a3b806acf781e938249c",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-3",
@@ -17678,8 +17734,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-3--feet.webp",
-      "sha256": "4ace6b4dd1b3de0f307b536fd9fd959eb1be0238003c5e0c3e086164f84ea892"
+      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-1--feet.webp",
+      "sha256": "01449e1afec86cfbc25d2fa01da2b764cbda98ef020fa68f50ae4f19b2c8e1ce",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-3",
@@ -17689,8 +17746,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-3--head.webp",
-      "sha256": "a925e39c0f2e8c842887841690c1efd7cebcb12b6ab2ebacaefc3163e2b1822a"
+      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-1--head.webp",
+      "sha256": "47a7525251f4b505fb4367a88683434999c1284bf41d406e87cba237d0ac9317",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-3",
@@ -17700,8 +17758,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-3--legs.webp",
-      "sha256": "1b2e10e5549f4aa06f3355bfb6563095e05489f81074c6ff70c779341e5af58a"
+      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-1--legs.webp",
+      "sha256": "462b75366739582e4f338237edd44baa0a0a78259c5afccef85296df84c8a534",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-3",
@@ -17711,8 +17770,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-3--shoulders.webp",
-      "sha256": "cd3fb3a4a62466b3f9bea555a42d1769b439fb9bc0174fdc44beb07723446d55"
+      "output": "public/shop/armor-parts-20261012/magic-armor-leather-armor-plus-1--shoulders.webp",
+      "sha256": "072331ab222368c58d17a9aea9a739f26604647329700e7628d6fac4212d55b9",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-padded-armor-plus-1",
@@ -17777,8 +17837,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-2--bracers.webp",
-      "sha256": "1113cde23830e4b23a12db3333bfea30764a1b4952f78acca0bd6a842b63d1a5"
+      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-1--bracers.webp",
+      "sha256": "a35b2c7da116be916bcf5a3e631fbdc58e075d54050025d76de369706cd7c954",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-padded-armor-plus-2",
@@ -17788,8 +17849,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-2--feet.webp",
-      "sha256": "aebbefc4fec0c52d7dbd24913e1590313f5092f9d8490c777b427675932bd6de"
+      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-1--feet.webp",
+      "sha256": "5323272a5e1cc38c3cc4e8acea1b8a5c885e9d8ac79feb9648db545862fbcd77",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-padded-armor-plus-2",
@@ -17799,8 +17861,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-2--head.webp",
-      "sha256": "5a643c3d098c4a85dcd44bd1b0d6618cfef855d88bcafa59a226f65e450c1621"
+      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-1--head.webp",
+      "sha256": "a0646b5e7ddb13626cf8149e37867180a54eab4dade96125e37e7f90b714aaee",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-padded-armor-plus-2",
@@ -17810,8 +17873,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-2--legs.webp",
-      "sha256": "9d18ddec77384cccfb8b94a5998135ff3c48073383752ddd75158820afcf5ec8"
+      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-1--legs.webp",
+      "sha256": "20c0722e7abb752125c9e94517416231e18da91e1830f8edc117f3f15441e1e1",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-padded-armor-plus-2",
@@ -17821,8 +17885,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-2--shoulders.webp",
-      "sha256": "76a164c06d0d524fd202a0238e606cf528e233f97e46d6aba829b42b6b395835"
+      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-1--shoulders.webp",
+      "sha256": "63fe059eda81c21b1275893e01f4be32554c551dd7b8a0a1144a10d49961ce59",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-padded-armor-plus-3",
@@ -17832,8 +17897,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-3--bracers.webp",
-      "sha256": "6ae3e2490c5175b9736980662effd2f313d85b2626de3b5fc299af1d263e828f"
+      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-1--bracers.webp",
+      "sha256": "a35b2c7da116be916bcf5a3e631fbdc58e075d54050025d76de369706cd7c954",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-padded-armor-plus-3",
@@ -17843,8 +17909,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-3--feet.webp",
-      "sha256": "912165a896f50585719a8a585ef560d8809d2aa15313d3300057d70297ef7972"
+      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-1--feet.webp",
+      "sha256": "5323272a5e1cc38c3cc4e8acea1b8a5c885e9d8ac79feb9648db545862fbcd77",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-padded-armor-plus-3",
@@ -17854,8 +17921,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-3--head.webp",
-      "sha256": "a6f62cf7283d15e5ab7a7b57804ca42abd3d5785f98e9d73dc257da0638fd8b9"
+      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-1--head.webp",
+      "sha256": "a0646b5e7ddb13626cf8149e37867180a54eab4dade96125e37e7f90b714aaee",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-padded-armor-plus-3",
@@ -17865,8 +17933,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-3--legs.webp",
-      "sha256": "ccc94770df9529e32de00fd36344debb7faad19295bb49b9e57395467ef0175d"
+      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-1--legs.webp",
+      "sha256": "20c0722e7abb752125c9e94517416231e18da91e1830f8edc117f3f15441e1e1",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-padded-armor-plus-3",
@@ -17876,8 +17945,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-3--shoulders.webp",
-      "sha256": "d77607df9d61d16d8b510d3712535a1fa92364ffab2074e699cd477095b81666"
+      "output": "public/shop/armor-parts-20261012/magic-armor-padded-armor-plus-1--shoulders.webp",
+      "sha256": "63fe059eda81c21b1275893e01f4be32554c551dd7b8a0a1144a10d49961ce59",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-plate-armor-plus-2",
@@ -17887,8 +17957,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-plate-armor-plus-2--bracers.webp",
-      "sha256": "6ffed0de3cce76e495561eb6ba666dd7ac11e0866d2a9338329aea4f9c70c57a"
+      "output": "public/shop/armor-parts-20261012/magic-armor--bracers.webp",
+      "sha256": "8c1d6eff0b4a55fdaccb59953681031b47cb9d09e0fa3848707c32fc32a9a0fe",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-plate-armor-plus-2",
@@ -17898,8 +17969,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-plate-armor-plus-2--feet.webp",
-      "sha256": "c75410c524605b43d4ed802442db30a96f8eb79ff9cc86ba2a22f2a77fa27b85"
+      "output": "public/shop/armor-parts-20261012/magic-armor--feet.webp",
+      "sha256": "ea2d12b6c3def48859085e10cb66c9c0046b7b67a581c86854fc41b8c33ebf83",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-plate-armor-plus-2",
@@ -17909,8 +17981,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-plate-armor-plus-2--head.webp",
-      "sha256": "0cd145e72b948c661583fc576e4d2fb51d7d73dd07e2c0ae3dfe30e60f4093f2"
+      "output": "public/shop/armor-parts-20261012/magic-armor--head.webp",
+      "sha256": "8e3f3c90409c06e3c3d3148c8d462fdd63d37e298a2ddfe2ceb4fbe0250cc0bf",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-plate-armor-plus-2",
@@ -17920,8 +17993,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-plate-armor-plus-2--legs.webp",
-      "sha256": "900784e4c5e8be1786decc6a9ebea18b1acd5b43abe98a257e4fad027c9635ad"
+      "output": "public/shop/armor-parts-20261012/magic-armor--legs.webp",
+      "sha256": "108da9bbb3b52732362028a9da7711da540513e050b5fcdae5d4c7ae98f9ca24",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-plate-armor-plus-2",
@@ -17931,8 +18005,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-plate-armor-plus-2--shoulders.webp",
-      "sha256": "a64f154874a3b1339184a9c3dc0d70d8bcc46ec0ddd1f753315d578e98e9e94f"
+      "output": "public/shop/armor-parts-20261012/magic-armor--shoulders.webp",
+      "sha256": "ef19da237534e1454699ba90fd273f05c64fbaf40ab85552a250066068ca0150",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-plate-armor-plus-3",
@@ -17942,8 +18017,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-plate-armor-plus-3--bracers.webp",
-      "sha256": "76f220851013d4d2120acdea309e5cee447718546687289b12d7458b61ba9e4e"
+      "output": "public/shop/armor-parts-20261012/magic-armor--bracers.webp",
+      "sha256": "8c1d6eff0b4a55fdaccb59953681031b47cb9d09e0fa3848707c32fc32a9a0fe",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-plate-armor-plus-3",
@@ -17953,8 +18029,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-plate-armor-plus-3--feet.webp",
-      "sha256": "64fe62fdb208900c6f2073768da4fa6754982dd2dae419d62b286f89698a5678"
+      "output": "public/shop/armor-parts-20261012/magic-armor--feet.webp",
+      "sha256": "ea2d12b6c3def48859085e10cb66c9c0046b7b67a581c86854fc41b8c33ebf83",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-plate-armor-plus-3",
@@ -17964,8 +18041,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-plate-armor-plus-3--head.webp",
-      "sha256": "af828698599edf7e751dee4faef21a8fb117e78c93b73176a8d5f67c7d2f049e"
+      "output": "public/shop/armor-parts-20261012/magic-armor--head.webp",
+      "sha256": "8e3f3c90409c06e3c3d3148c8d462fdd63d37e298a2ddfe2ceb4fbe0250cc0bf",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-plate-armor-plus-3",
@@ -17975,8 +18053,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-plate-armor-plus-3--legs.webp",
-      "sha256": "48743958eb75f77ee4124a08a1b5011bf1b0c1b9a94d70d7dc4e33e6d3d9ac60"
+      "output": "public/shop/armor-parts-20261012/magic-armor--legs.webp",
+      "sha256": "108da9bbb3b52732362028a9da7711da540513e050b5fcdae5d4c7ae98f9ca24",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-plate-armor-plus-3",
@@ -17986,8 +18065,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-plate-armor-plus-3--shoulders.webp",
-      "sha256": "412b69ff63b731e4fc940fbd4a63ab44e065e1675e449eb8c5bde9ee4e7dcb36"
+      "output": "public/shop/armor-parts-20261012/magic-armor--shoulders.webp",
+      "sha256": "ef19da237534e1454699ba90fd273f05c64fbaf40ab85552a250066068ca0150",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-ring-mail-plus-1",
@@ -18052,8 +18132,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-2--bracers.webp",
-      "sha256": "416753fb6bb9ff8c339039dfac53a3020e7536b5ad7d7140066c0e2abfb2cabd"
+      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-1--bracers.webp",
+      "sha256": "40522dc72dd6a3408e1f62a4cec6021dca8d38e7e986875ec45b45055310a6ba",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-ring-mail-plus-2",
@@ -18063,8 +18144,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-2--feet.webp",
-      "sha256": "6b70269b3b0972450810c0f926af738447f2db0b62d0a5e424c96b200cce4271"
+      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-1--feet.webp",
+      "sha256": "6141cf0bb8b5a2e2ba983cf47eeadfc46686d6347701cd907252795c1e29dd1f",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-ring-mail-plus-2",
@@ -18074,8 +18156,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-2--head.webp",
-      "sha256": "5f27dd6c9bb3037cf6c08412fcf858321f506ae2d8cd7ba98269dc9b64d5f300"
+      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-1--head.webp",
+      "sha256": "a79a8badd7ca60c6941ce44fe439da49da5253194240d81c0f1825ab66733170",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-ring-mail-plus-2",
@@ -18085,8 +18168,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-2--legs.webp",
-      "sha256": "16964ed967909164c88b4fb27255597295a8fc5cc4cb00b6440e0ec435b5fe70"
+      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-1--legs.webp",
+      "sha256": "8842bc535a18ddd6286a2994ea519bd2319e7940976e597ce7e0fe258bdda98d",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-ring-mail-plus-2",
@@ -18096,8 +18180,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-2--shoulders.webp",
-      "sha256": "e514c055dbbf999f9ab179565ef31a3e5566bbc12b669d8e08b5cc071a356237"
+      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-1--shoulders.webp",
+      "sha256": "d34d1025625c52661f60e1a9de3888f3413857d8cb85ca3276506d2266f52c25",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-ring-mail-plus-3",
@@ -18107,8 +18192,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-3--bracers.webp",
-      "sha256": "f2ea40dd0b97562a1d45955f7d504682c8c355c7c674d9ccbd0725aa33857495"
+      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-1--bracers.webp",
+      "sha256": "40522dc72dd6a3408e1f62a4cec6021dca8d38e7e986875ec45b45055310a6ba",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-ring-mail-plus-3",
@@ -18118,8 +18204,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-3--feet.webp",
-      "sha256": "23ec248066447793df073b65b0ce5bb3c20c17d15348135f7254d6f406aac6bc"
+      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-1--feet.webp",
+      "sha256": "6141cf0bb8b5a2e2ba983cf47eeadfc46686d6347701cd907252795c1e29dd1f",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-ring-mail-plus-3",
@@ -18129,8 +18216,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-3--head.webp",
-      "sha256": "cafb13c5726dba9cbbce9dc844b753edd2a8c512a743530ffe7186cfeec0ce02"
+      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-1--head.webp",
+      "sha256": "a79a8badd7ca60c6941ce44fe439da49da5253194240d81c0f1825ab66733170",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-ring-mail-plus-3",
@@ -18140,8 +18228,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-3--legs.webp",
-      "sha256": "24570c3542f1d6dc97a95134b7251e8b4a4f18f978bfd11b2d3dcd0fcd0df496"
+      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-1--legs.webp",
+      "sha256": "8842bc535a18ddd6286a2994ea519bd2319e7940976e597ce7e0fe258bdda98d",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-ring-mail-plus-3",
@@ -18151,8 +18240,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-3--shoulders.webp",
-      "sha256": "0c0235f682399940f1063767a2b27233be0b9c822d0d75a8d6dd8aaff65dfeb5"
+      "output": "public/shop/armor-parts-20261012/magic-armor-ring-mail-plus-1--shoulders.webp",
+      "sha256": "d34d1025625c52661f60e1a9de3888f3413857d8cb85ca3276506d2266f52c25",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-1",
@@ -18217,8 +18307,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-2--bracers.webp",
-      "sha256": "8cd06d7d8359390e475a92fc9e86ca12611a5eb2b1127c6232151817a4a01c69"
+      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-1--bracers.webp",
+      "sha256": "c4c3a72a2ebf76458ac5f55d3fc039825ecb8a7f774d272b0ee335c2ce9f7d20",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-2",
@@ -18228,8 +18319,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-2--feet.webp",
-      "sha256": "5ea24c359f00faf78c9bd4608d22d8a8fc246235ebe06d7ee79f703166598a58"
+      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-1--feet.webp",
+      "sha256": "b82351de8b5efb010a71a172ecd6376e85cf9f681a80f3a6aa6ccad3b32a64d2",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-2",
@@ -18239,8 +18331,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-2--head.webp",
-      "sha256": "c6e43e23ea8bd65744b2343f30dd177c00e6bfeaaef6c202724011a198aadf00"
+      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-1--head.webp",
+      "sha256": "68e38904eb3eb613aa8d569e6c0f6e0405817ba14dd5acc70eeb581d497c7807",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-2",
@@ -18250,8 +18343,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-2--legs.webp",
-      "sha256": "260286d57a8e79d52c4150b49e4a9e60743c3115be24ba0375699101dda8230b"
+      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-1--legs.webp",
+      "sha256": "13580e7014bde0449c6862d540f3d4a2e9a4f743e4df7fc61579b5dce56057a3",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-2",
@@ -18261,8 +18355,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-2--shoulders.webp",
-      "sha256": "a59ef0cb5bb59543baa32bb4cfac616890af61c5e0de3081fbd057b83d4de385"
+      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-1--shoulders.webp",
+      "sha256": "6a3327edc8b0f4fbfb97481c9282ab34ec4a7b0b8a4eb49f9c3f370998e7551f",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-3",
@@ -18272,8 +18367,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-3--bracers.webp",
-      "sha256": "ee9bd2b42ca5287dff4e019218508e1c17f6e47990c64c2a673ba32c2ab6a2c2"
+      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-1--bracers.webp",
+      "sha256": "c4c3a72a2ebf76458ac5f55d3fc039825ecb8a7f774d272b0ee335c2ce9f7d20",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-3",
@@ -18283,8 +18379,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-3--feet.webp",
-      "sha256": "71162986fd00bdf08603783d0a6bfb306d8458a5c0f9a013c3020b292c7db85e"
+      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-1--feet.webp",
+      "sha256": "b82351de8b5efb010a71a172ecd6376e85cf9f681a80f3a6aa6ccad3b32a64d2",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-3",
@@ -18294,8 +18391,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-3--head.webp",
-      "sha256": "3755f63f4d7e5f6a4def946ae972c5933c102ee72f7fc637d3d9bfa2311f1da8"
+      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-1--head.webp",
+      "sha256": "68e38904eb3eb613aa8d569e6c0f6e0405817ba14dd5acc70eeb581d497c7807",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-3",
@@ -18305,8 +18403,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-3--legs.webp",
-      "sha256": "ab9cd32370ef74e77c333b2159d7486dd34a1875b17c0e91ea8ec1cd1ba63f39"
+      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-1--legs.webp",
+      "sha256": "13580e7014bde0449c6862d540f3d4a2e9a4f743e4df7fc61579b5dce56057a3",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-3",
@@ -18316,8 +18415,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-3--shoulders.webp",
-      "sha256": "234477b89c167e30f05f108130165dd852d0419aab7e382aa563e62b59e83e07"
+      "output": "public/shop/armor-parts-20261012/magic-armor-scale-mail-plus-1--shoulders.webp",
+      "sha256": "6a3327edc8b0f4fbfb97481c9282ab34ec4a7b0b8a4eb49f9c3f370998e7551f",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-1",
@@ -18382,8 +18482,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-2--bracers.webp",
-      "sha256": "7e5ab5745f05c335de49cf5c410870220531e6eb3b8faadfc213aa396807642a"
+      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-1--bracers.webp",
+      "sha256": "83a5d86a719894ccced44973632e4801d21f4f3d93a0d4b253f9e5b7454dd356",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-2",
@@ -18393,8 +18494,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-2--feet.webp",
-      "sha256": "739442aedccdf1c10f672cdd1146f3419ce6a92571fc0d50f4978f9e28aefbf9"
+      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-1--feet.webp",
+      "sha256": "5e89d2207a998c09be771e4ed0f5493e4e6505a5da33baa776ff85a8a81e9eb3",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-2",
@@ -18404,8 +18506,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-2--head.webp",
-      "sha256": "2f5b17d4eea7b32906b0dc8542ea81026913660ca579187fc7bf41a6c17237fc"
+      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-1--head.webp",
+      "sha256": "b455d33fb67c1e779d6ddcbf67932eb7fe62b07f3527d066c3c148401fc09cad",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-2",
@@ -18415,8 +18518,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-2--legs.webp",
-      "sha256": "4cc125c454a50e811e63b78e0dff0c682f44f2be4a30440a6fc5fb9763a0b212"
+      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-1--legs.webp",
+      "sha256": "67219e9217e11968d424ae5855798da7ce18705fe50b0ad5587008db07771fe6",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-2",
@@ -18426,8 +18530,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-2--shoulders.webp",
-      "sha256": "4a5cd94e816de8d683129416d2e372c87781e6ab3e0d6fda508eefc8c991fe17"
+      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-1--shoulders.webp",
+      "sha256": "134dfa1753625dcc267c727bf47c2aabbf196ef6dfea613a56903a9d4e07f60d",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-3",
@@ -18437,8 +18542,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-3--bracers.webp",
-      "sha256": "0b73820b5e0fb3354fc13d529bf7624cc604ffea83c8aef558c3d6ea5bd9a934"
+      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-1--bracers.webp",
+      "sha256": "83a5d86a719894ccced44973632e4801d21f4f3d93a0d4b253f9e5b7454dd356",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-3",
@@ -18448,8 +18554,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-3--feet.webp",
-      "sha256": "9bd30204378f0c3af44bd79213088cb38fdf21f54a11923f04dce54374bc44fa"
+      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-1--feet.webp",
+      "sha256": "5e89d2207a998c09be771e4ed0f5493e4e6505a5da33baa776ff85a8a81e9eb3",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-3",
@@ -18459,8 +18566,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-3--head.webp",
-      "sha256": "e211bc4cd95a86081ab59cd284c54ecec84371332c27fb2d44f638fd4508a2f0"
+      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-1--head.webp",
+      "sha256": "b455d33fb67c1e779d6ddcbf67932eb7fe62b07f3527d066c3c148401fc09cad",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-3",
@@ -18470,8 +18578,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-3--legs.webp",
-      "sha256": "fd03d40a5c89dea6a2cdaf52e328f30e4e7be7bad00b40360ea0ce4a71dc5c3e"
+      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-1--legs.webp",
+      "sha256": "67219e9217e11968d424ae5855798da7ce18705fe50b0ad5587008db07771fe6",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-3",
@@ -18481,8 +18590,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-3--shoulders.webp",
-      "sha256": "520e46652f2fdc230741ee0aff23e60a8c42ec0bb7a6184e4c9c7178a0c70e12"
+      "output": "public/shop/armor-parts-20261012/magic-armor-splint-armor-plus-1--shoulders.webp",
+      "sha256": "134dfa1753625dcc267c727bf47c2aabbf196ef6dfea613a56903a9d4e07f60d",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-1",
@@ -18547,8 +18657,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-2--bracers.webp",
-      "sha256": "87f3d06e7e2b94d936d44a869d377543b6ba822407613f3696852b1006bbee18"
+      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-1--bracers.webp",
+      "sha256": "4cf49ec038648be7d5c93df6d7f2f56caf3b878f71c60b98632c46867deadfad",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-2",
@@ -18558,8 +18669,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-2--feet.webp",
-      "sha256": "e7f1f58ed677338d9d18e681bfc8ba6a7cd2ad7ca2bc9c404a7ac16e1661d773"
+      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-1--feet.webp",
+      "sha256": "7ba5c9808556c1deddc1079b0d1b1387c344badcc4d0d1b4c1974935339a34ce",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-2",
@@ -18569,8 +18681,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-2--head.webp",
-      "sha256": "a85266c54d540410216340e2a776b3fef136f3711a3822ade5fdcfe9147f253c"
+      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-1--head.webp",
+      "sha256": "f5f8f32f90d70841fa73c4b6bced1913b5a0b73435fd78cf7b797a3ef2f65b16",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-2",
@@ -18580,8 +18693,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-2--legs.webp",
-      "sha256": "11e78aac3abadbebaa03621053eee9f80fdda4ec09297b7ee8ac1674bfe0b16a"
+      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-1--legs.webp",
+      "sha256": "a66245b9412e558c1210fde1e57e2d6998590d6ea0289146c1165d2308de20ef",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-2",
@@ -18591,8 +18705,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-2--shoulders.webp",
-      "sha256": "1badd9b083c63c735183a73a9846ca1872ada0c43219a75205728791d30f62cf"
+      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-1--shoulders.webp",
+      "sha256": "edaa422e6586ff5bf563b74b481cf9d8f88d2c4e5c5fb762ebd61e868f0a9850",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-3",
@@ -18602,8 +18717,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-3--bracers.webp",
-      "sha256": "9345818bc979a29dd611ef0d11362d8a00f8ea4aed8529271f18c4fc09b9ec76"
+      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-1--bracers.webp",
+      "sha256": "4cf49ec038648be7d5c93df6d7f2f56caf3b878f71c60b98632c46867deadfad",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-3",
@@ -18613,8 +18729,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-3--feet.webp",
-      "sha256": "d5842b952c913f111e78a76dd5ccf09781b7eb62e6fad9c6634e291131122b2a"
+      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-1--feet.webp",
+      "sha256": "7ba5c9808556c1deddc1079b0d1b1387c344badcc4d0d1b4c1974935339a34ce",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-3",
@@ -18624,8 +18741,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-3--head.webp",
-      "sha256": "e5666ad1aad558f8d167d87b58a6c95a226a3a6b7a00af3c17e86aaa26582f84"
+      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-1--head.webp",
+      "sha256": "f5f8f32f90d70841fa73c4b6bced1913b5a0b73435fd78cf7b797a3ef2f65b16",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-3",
@@ -18635,8 +18753,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-3--legs.webp",
-      "sha256": "af896ecdd799ff323fa8882726d07b0b34af916bf3cf8c1bbad083086faaa0b2"
+      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-1--legs.webp",
+      "sha256": "a66245b9412e558c1210fde1e57e2d6998590d6ea0289146c1165d2308de20ef",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-3",
@@ -18646,8 +18765,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-3--shoulders.webp",
-      "sha256": "c58af9da4b0d17a499a7147ad9984d8df7d983dc8a84b31d3b26ec076a9a2013"
+      "output": "public/shop/armor-parts-20261012/magic-armor-studded-leather-plus-1--shoulders.webp",
+      "sha256": "edaa422e6586ff5bf563b74b481cf9d8f88d2c4e5c5fb762ebd61e868f0a9850",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor",
@@ -23772,8 +23892,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-2--bracers.webp",
-      "sha256": "567d8b43a2cba3187f6fac47c6a2a81b900380dcccdec4192e8739b75f9deb86"
+      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-1--bracers.webp",
+      "sha256": "4799ccbe77509a181ec2fb9b8e026ea5132216ef3b21c591c979b9a873afc4a3",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "spiked-armor-plus-2",
@@ -23783,8 +23904,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-2--feet.webp",
-      "sha256": "2dbb42219bbe666d380ead1d6784e2bd80a344547b2c0e23593bd8fac1d68ede"
+      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-1--feet.webp",
+      "sha256": "e8cc061ec3e6d29acaa65579706255c11662449107635ee6efa1230e10ea1bdb",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "spiked-armor-plus-2",
@@ -23794,8 +23916,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-2--head.webp",
-      "sha256": "04b8b5140b4662567bb00f4aad1c1784dcfccf68981bdfeeab85bff91d4503b2"
+      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-1--head.webp",
+      "sha256": "a111100c4ce3e896dc9f00388a56786c9ef67bd3ab17addf69ad3d86c51b4f00",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "spiked-armor-plus-2",
@@ -23805,8 +23928,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-2--legs.webp",
-      "sha256": "0068e8b6a1860653daa674f5afdf80e017dcbd378ebd8006b1f68fec99cd8a0a"
+      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-1--legs.webp",
+      "sha256": "850d6b029e8e74f8d35119e6d0d32d510bbb18a5c172d759d3ff0d9397038de9",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "spiked-armor-plus-2",
@@ -23816,8 +23940,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 2,
-      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-2--shoulders.webp",
-      "sha256": "522262c2e8df3b934959b317310c422e4952a3e6b886711fcb287ec488aa7bf7"
+      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-1--shoulders.webp",
+      "sha256": "69caec2f4d544aa30739426b859b1fc8179aab897303a9a0df74e943d57de4d5",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "spiked-armor-plus-3",
@@ -23827,8 +23952,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-3--bracers.webp",
-      "sha256": "442a0d240630b5aa37d0dc4a3725b5fd84d2e1eacb26c622c6d79b21a309f5ca"
+      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-1--bracers.webp",
+      "sha256": "4799ccbe77509a181ec2fb9b8e026ea5132216ef3b21c591c979b9a873afc4a3",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "spiked-armor-plus-3",
@@ -23838,8 +23964,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-3--feet.webp",
-      "sha256": "66c90255439f01335090f063092e4b7f8f348f72b4cd1eaa15e161cbe7da2da3"
+      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-1--feet.webp",
+      "sha256": "e8cc061ec3e6d29acaa65579706255c11662449107635ee6efa1230e10ea1bdb",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "spiked-armor-plus-3",
@@ -23849,8 +23976,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-3--head.webp",
-      "sha256": "1c1e79aaf77e1edce2a6f84a50f16b51ed405125c28cca2c5a2939aa259addf5"
+      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-1--head.webp",
+      "sha256": "a111100c4ce3e896dc9f00388a56786c9ef67bd3ab17addf69ad3d86c51b4f00",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "spiked-armor-plus-3",
@@ -23860,8 +23988,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-3--legs.webp",
-      "sha256": "cae7e19c5682efccea7e13b381137353a2ccc54b3c3d2d62655a161e4066d7b4"
+      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-1--legs.webp",
+      "sha256": "850d6b029e8e74f8d35119e6d0d32d510bbb18a5c172d759d3ff0d9397038de9",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "spiked-armor-plus-3",
@@ -23871,8 +24000,9 @@
       "texture": "/shop/magic-materials/runic-steel.webp",
       "family": "Armor, +1, +2, or +3",
       "enhancement": 3,
-      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-3--shoulders.webp",
-      "sha256": "a91dc6208f9c919d999a7fbf20a0211a4d274e627d8ba93fe44fb13c3e15c12e"
+      "output": "public/shop/armor-parts-20261012/spiked-armor-plus-1--shoulders.webp",
+      "sha256": "69caec2f4d544aa30739426b859b1fc8179aab897303a9a0df74e943d57de4d5",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "splint-armor-of-gleaming",

@@ -13,6 +13,15 @@ Os modelos humanos recebem peças de cabeça, antebraços, pernas, pés e ombros
 
 O modo de geração é **image_gen integrado** para os 80 recortes originais, com `transparent_background=true`, seguido de exportação WebP local. As variantes mágicas são composição nativa de materiais sobre esses recortes; não são 2.155 gerações independentes de IA. As referências visuais são as artes existentes de cada armadura.
 
+As armaduras da família `Armor, +1, +2, or +3` compartilham uma arte por modelo e
+posição entre os três níveis, conforme `shared/armor-tier-art.json`. Isso inclui
+a imagem do conjunto e suas cinco peças nos treze modelos. IDs, bônus, preços e
+propriedades continuam separados; só os caminhos das imagens são compartilhados.
+Os geradores conservam essa associação sem recriar arquivos para +2 e +3.
+Os 156 originais redundantes e suas 156 cópias leves foram retirados da entrega;
+os originais ficam arquivados fora de `public`, e as URLs antigas redirecionam
+para a arte comum, preservando referências de itens já salvos.
+
 ## Validação e preservação
 
 O build TypeScript, Vite e servidor foi realizado em checkout isolado baseado em `cbaa901`, sem incluir os trabalhos pausados do VTT. As quatro pranchas de originais e a prancha de 27 famílias mágicas foram inspecionadas. Testes em bancos UUID descartáveis cobrem os 459 conjuntos, entrega/replay, peso, ownership, equipamento humano e animal, referências da geração de aparência e transparência das imagens. O smoke de navegador cobre clique e teclado no NPC, cinco larguras do Salão, quatro do perfil e carregamento de 20 peças no inventário.

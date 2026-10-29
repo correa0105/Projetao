@@ -10586,6 +10586,1098 @@
       "sha256": "f3032d23c4eb6a8d2d159a7fcc7adde20d4b627731391b23928671f429183553",
       "bytes": 12038,
       "replacement": "/vtt/overhead-thumbs-20261015/resident-025.webp"
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-plate-armor-plus-2.svg",
+      "sha256": "32846d0712753158ff7225de389b439722b7dce1bb1640fd6623b5ede6ea2548",
+      "bytes": 222886,
+      "optimizedFile": "/optimized-images-20261028/e41e48f4ecf09a13122d9ae19aa3734e083f7618683d91750541cea55dcc436d.webp",
+      "optimizedBytes": 46616
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-plate-armor-plus-2--bracers.webp",
+      "sha256": "6ffed0de3cce76e495561eb6ba666dd7ac11e0866d2a9338329aea4f9c70c57a",
+      "bytes": 94542,
+      "optimizedFile": "/optimized-images-20261028/514da637a729c6b820cbd81f02f19cb1ed350390a009e53c49706d7789b41cba.webp",
+      "optimizedBytes": 61516
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-plate-armor-plus-2--feet.webp",
+      "sha256": "c75410c524605b43d4ed802442db30a96f8eb79ff9cc86ba2a22f2a77fa27b85",
+      "bytes": 92312,
+      "optimizedFile": "/optimized-images-20261028/2f941ffbdd207e4d3a1a80fbf7c3a96badc6e0063a7dc11bef6f4bb9b0cc5865.webp",
+      "optimizedBytes": 61284
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-plate-armor-plus-2--head.webp",
+      "sha256": "0cd145e72b948c661583fc576e4d2fb51d7d73dd07e2c0ae3dfe30e60f4093f2",
+      "bytes": 83952,
+      "optimizedFile": "/optimized-images-20261028/810637fddfd03893841bab5a3bcfdc40af5e34b9d3039234cfb05dcce74ea61d.webp",
+      "optimizedBytes": 53948
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-plate-armor-plus-2--legs.webp",
+      "sha256": "900784e4c5e8be1786decc6a9ebea18b1acd5b43abe98a257e4fad027c9635ad",
+      "bytes": 88988,
+      "optimizedFile": "/optimized-images-20261028/d4c82dfe639699211b8cf23cd459f3520bcf4cbce206b12be18a2021d45897c5.webp",
+      "optimizedBytes": 58124
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-plate-armor-plus-2--shoulders.webp",
+      "sha256": "a64f154874a3b1339184a9c3dc0d70d8bcc46ec0ddd1f753315d578e98e9e94f",
+      "bytes": 78112,
+      "optimizedFile": "/optimized-images-20261028/e6c9b883e5e65906c56b142e9628b042a4ba1bf32cdad5bb21f99e324cd88274.webp",
+      "optimizedBytes": 52158
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-plate-armor-plus-3.svg",
+      "sha256": "708c0d1c73e4496fe8de0845db0730915a388aa334ba81b6573e63fbe7599228",
+      "bytes": 222887,
+      "optimizedFile": "/optimized-images-20261028/0ff21109e0a7a1b4307881887b63b858631fd9ea4c23cc024f532902a53bce78.webp",
+      "optimizedBytes": 48258
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-plate-armor-plus-3--bracers.webp",
+      "sha256": "76f220851013d4d2120acdea309e5cee447718546687289b12d7458b61ba9e4e",
+      "bytes": 97098,
+      "optimizedFile": "/optimized-images-20261028/fa0a0ecf1c1962369213b9d09feea96a7edbb0e1d4e9cc54342dae84de3e6484.webp",
+      "optimizedBytes": 65112
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-plate-armor-plus-3--feet.webp",
+      "sha256": "64fe62fdb208900c6f2073768da4fa6754982dd2dae419d62b286f89698a5678",
+      "bytes": 94718,
+      "optimizedFile": "/optimized-images-20261028/617030145bf0131abc314d7f8e5da4654a85f84f18ff03ca844b6df35838960b.webp",
+      "optimizedBytes": 63160
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-plate-armor-plus-3--head.webp",
+      "sha256": "af828698599edf7e751dee4faef21a8fb117e78c93b73176a8d5f67c7d2f049e",
+      "bytes": 86070,
+      "optimizedFile": "/optimized-images-20261028/3713d6c1bb2b5c5de5215acfe796399f594e409ce2e7697e89febe74c4ffac34.webp",
+      "optimizedBytes": 55400
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-plate-armor-plus-3--legs.webp",
+      "sha256": "48743958eb75f77ee4124a08a1b5011bf1b0c1b9a94d70d7dc4e33e6d3d9ac60",
+      "bytes": 91570,
+      "optimizedFile": "/optimized-images-20261028/1a62823d678e7c5ecf49629ad99b897b35d4193bc5f128f501be6e1b8d75f0c3.webp",
+      "optimizedBytes": 59754
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-plate-armor-plus-3--shoulders.webp",
+      "sha256": "412b69ff63b731e4fc940fbd4a63ab44e065e1675e449eb8c5bde9ee4e7dcb36",
+      "bytes": 81752,
+      "optimizedFile": "/optimized-images-20261028/cba5a3ec8151107475a06d01f18c316714599a99ef94b1806710784fd35fe486.webp",
+      "optimizedBytes": 54136
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-padded-armor-plus-2.svg",
+      "sha256": "63d200430e907d554c1592eeec7da5e18e43bd57e57d5f81c8f45de70c24dcc0",
+      "bytes": 256169,
+      "optimizedFile": "/optimized-images-20261028/174d4d05729fb1157712693e644f5b3fc55816ad9f0c4b336d0eb19198f1c00e.webp",
+      "optimizedBytes": 53958
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-padded-armor-plus-2--bracers.webp",
+      "sha256": "1113cde23830e4b23a12db3333bfea30764a1b4952f78acca0bd6a842b63d1a5",
+      "bytes": 77164,
+      "optimizedFile": "/optimized-images-20261028/5b3bdeaef029d1ad4f63e11f1147238569641a6682eeb441e9e4b50a1abe6339.webp",
+      "optimizedBytes": 49190
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-padded-armor-plus-2--feet.webp",
+      "sha256": "aebbefc4fec0c52d7dbd24913e1590313f5092f9d8490c777b427675932bd6de",
+      "bytes": 78316,
+      "optimizedFile": "/optimized-images-20261028/312c172170439a321820696907edcb1ad0f5e9a3d62f48d9c23ad7caf27933b5.webp",
+      "optimizedBytes": 46720
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-padded-armor-plus-2--head.webp",
+      "sha256": "5a643c3d098c4a85dcd44bd1b0d6618cfef855d88bcafa59a226f65e450c1621",
+      "bytes": 66818,
+      "optimizedFile": "/optimized-images-20261028/83d60cb1e98df8a48424ffc0f122bec4457a135c9dfe10a13d21d4c5a3f146ee.webp",
+      "optimizedBytes": 39108
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-padded-armor-plus-2--legs.webp",
+      "sha256": "9d18ddec77384cccfb8b94a5998135ff3c48073383752ddd75158820afcf5ec8",
+      "bytes": 73804,
+      "optimizedFile": "/optimized-images-20261028/e2a6013649d56244411bdd218299c7cbe5c3cb7f89ad2a1acf88fb674bb130ec.webp",
+      "optimizedBytes": 47412
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-padded-armor-plus-2--shoulders.webp",
+      "sha256": "76a164c06d0d524fd202a0238e606cf528e233f97e46d6aba829b42b6b395835",
+      "bytes": 67960,
+      "optimizedFile": "/optimized-images-20261028/6e04b9285ec6dff154502abece7b36688850bc92d31d1a4134af56ec65b01c8b.webp",
+      "optimizedBytes": 42928
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-padded-armor-plus-3.svg",
+      "sha256": "ba0616e057a54115fca0c9dbbc5612f91bab1a9d6dc89e0aac7a0cf7e1508a20",
+      "bytes": 256170,
+      "optimizedFile": "/optimized-images-20261028/455843e3bd735c4190609f4870cb45f001bcb4843bad6da76a0955ea56bcf9bc.webp",
+      "optimizedBytes": 55170
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-padded-armor-plus-3--bracers.webp",
+      "sha256": "6ae3e2490c5175b9736980662effd2f313d85b2626de3b5fc299af1d263e828f",
+      "bytes": 83348,
+      "optimizedFile": "/optimized-images-20261028/5ab7b5181b77ebf27f6ff9019f3db2a68942519b8cefc007fe5c594a5ca852c3.webp",
+      "optimizedBytes": 53156
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-padded-armor-plus-3--feet.webp",
+      "sha256": "912165a896f50585719a8a585ef560d8809d2aa15313d3300057d70297ef7972",
+      "bytes": 80782,
+      "optimizedFile": "/optimized-images-20261028/636778e524e8b9405face567cd7138a2791e131473bcaa3d9753b22ad93026b1.webp",
+      "optimizedBytes": 48016
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-padded-armor-plus-3--head.webp",
+      "sha256": "a6f62cf7283d15e5ab7a7b57804ca42abd3d5785f98e9d73dc257da0638fd8b9",
+      "bytes": 69106,
+      "optimizedFile": "/optimized-images-20261028/13ec227085089a596e1e81a931bf73c096d2cec1471f6578a9c197061ab31ef2.webp",
+      "optimizedBytes": 40664
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-padded-armor-plus-3--legs.webp",
+      "sha256": "ccc94770df9529e32de00fd36344debb7faad19295bb49b9e57395467ef0175d",
+      "bytes": 75392,
+      "optimizedFile": "/optimized-images-20261028/8f1a984cc1cd1533bd9e06745da19cfd6532601652daa3818ade57e196e3574a.webp",
+      "optimizedBytes": 48608
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-padded-armor-plus-3--shoulders.webp",
+      "sha256": "d77607df9d61d16d8b510d3712535a1fa92364ffab2074e699cd477095b81666",
+      "bytes": 69592,
+      "optimizedFile": "/optimized-images-20261028/96f1996ac410f9ceda441cf01fd6524366780f2686883a3df2bc427bc6d8f93e.webp",
+      "optimizedBytes": 44878
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-leather-armor-plus-2.svg",
+      "sha256": "84557cd37bac2ef9fe61c9ddcb77046c973875ba5b024efbd5855b415b492491",
+      "bytes": 215564,
+      "optimizedFile": "/optimized-images-20261028/44859cb7cd988086bb7bce1bdbebee8331b26b5e9138ab36e69da13e60a87086.webp",
+      "optimizedBytes": 39574
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-leather-armor-plus-2--bracers.webp",
+      "sha256": "8473bd8bfd74e3ea94686baaaa213ba423d246da245a1195d1590aeeddf91d4d",
+      "bytes": 82790,
+      "optimizedFile": "/optimized-images-20261028/48f19feb66a4c124b3f31542cce78c3e9b1dd72b0cc27af50c70594096a27629.webp",
+      "optimizedBytes": 53184
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-leather-armor-plus-2--feet.webp",
+      "sha256": "14fafddbc09006b275d457c74f33a2c93577395cd635edb8145e1fc9c01a12ce",
+      "bytes": 81258,
+      "optimizedFile": "/optimized-images-20261028/75ab589ea8309814f17a2f60d84cf89fccc5c8caa26ad9b5f411355d5a59d25d.webp",
+      "optimizedBytes": 51466
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-leather-armor-plus-2--head.webp",
+      "sha256": "c32e9ae797f6e4dde3efaa7999fc437274f0d3c8c643038536addb31085e641a",
+      "bytes": 66014,
+      "optimizedFile": "/optimized-images-20261028/4ea312b1fdede21cda7bad29c08eb464140e684b2825a91001548c137c82c58c.webp",
+      "optimizedBytes": 40400
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-leather-armor-plus-2--legs.webp",
+      "sha256": "9982ef67cd5994d8aee9964035ede4bd53d2b5a8aab206ad9cc84232bd58ee46",
+      "bytes": 88280,
+      "optimizedFile": "/optimized-images-20261028/fc6ce75a9668fe3ac2036849e2adae5b1a58a2de719c5c01f22237068c414fcd.webp",
+      "optimizedBytes": 56814
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-leather-armor-plus-2--shoulders.webp",
+      "sha256": "2a53db7c91a57fce7a1dad84cb740996edbd0d6d666d6a3d36a4170e9e0d42ff",
+      "bytes": 68010,
+      "optimizedFile": "/optimized-images-20261028/b5e932a8ecc9534ce4737ef28337e20e08e4a099db8199365c83cf41a831d775.webp",
+      "optimizedBytes": 41940
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-leather-armor-plus-3.svg",
+      "sha256": "ca4978fbd7d6980843a7359ba4ccd742a98ce5e309c30d3f34762f8529ba0e3e",
+      "bytes": 215565,
+      "optimizedFile": "/optimized-images-20261028/375146515740ecb855f8984f85a272e97f0ca49708b042bad471249b620b6995.webp",
+      "optimizedBytes": 40936
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-leather-armor-plus-3--bracers.webp",
+      "sha256": "3ac13130f2e2a00e44dba03cf47583276b9e2eab0359861409c835df7afda8ff",
+      "bytes": 85424,
+      "optimizedFile": "/optimized-images-20261028/98cc27a29e87110814b49025c78a372d1172a79931a6b55dba29324c1bded5a9.webp",
+      "optimizedBytes": 54900
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-leather-armor-plus-3--feet.webp",
+      "sha256": "4ace6b4dd1b3de0f307b536fd9fd959eb1be0238003c5e0c3e086164f84ea892",
+      "bytes": 83680,
+      "optimizedFile": "/optimized-images-20261028/20138e04eac1a4a172e4e298a9417fd6239d5a25df952a7f6c74055edfdf3021.webp",
+      "optimizedBytes": 52838
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-leather-armor-plus-3--head.webp",
+      "sha256": "a925e39c0f2e8c842887841690c1efd7cebcb12b6ab2ebacaefc3163e2b1822a",
+      "bytes": 68120,
+      "optimizedFile": "/optimized-images-20261028/b3430565f49ad51a5692d52512a0176f77e95656a9e577d3c3d3a6ea4a88547a.webp",
+      "optimizedBytes": 41740
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-leather-armor-plus-3--legs.webp",
+      "sha256": "1b2e10e5549f4aa06f3355bfb6563095e05489f81074c6ff70c779341e5af58a",
+      "bytes": 91528,
+      "optimizedFile": "/optimized-images-20261028/4f556d2227ec3739bdfab4e1935f9a83f621c285436b200ce97b751c435bbf89.webp",
+      "optimizedBytes": 58910
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-leather-armor-plus-3--shoulders.webp",
+      "sha256": "cd3fb3a4a62466b3f9bea555a42d1769b439fb9bc0174fdc44beb07723446d55",
+      "bytes": 70914,
+      "optimizedFile": "/optimized-images-20261028/ea1bae6943cd2915e38ce576412cddef1a192aff154033e39fe90ffc7459ba55.webp",
+      "optimizedBytes": 43872
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-studded-leather-plus-2.svg",
+      "sha256": "5186db2fd23d9cf5b12d7902f95f98f99d14a69c962de821ba105984394f98e4",
+      "bytes": 212313,
+      "optimizedFile": "/optimized-images-20261028/3d39046ac55f20e0ef4a69be750820fbbea852e4819884a955dc2fd85381653e.webp",
+      "optimizedBytes": 38392
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-studded-leather-plus-2--bracers.webp",
+      "sha256": "87f3d06e7e2b94d936d44a869d377543b6ba822407613f3696852b1006bbee18",
+      "bytes": 80572,
+      "optimizedFile": "/optimized-images-20261028/90d14261876a1b1339fe5e0d4b0c6456dd5aaef5896de0aaf9cb5b5d7518dc2a.webp",
+      "optimizedBytes": 49684
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-studded-leather-plus-2--feet.webp",
+      "sha256": "e7f1f58ed677338d9d18e681bfc8ba6a7cd2ad7ca2bc9c404a7ac16e1661d773",
+      "bytes": 91946,
+      "optimizedFile": "/optimized-images-20261028/6650e70f69ed019d10e9663dda46c5c90ce765ec096399ae82fe32a41e74b9f4.webp",
+      "optimizedBytes": 56510
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-studded-leather-plus-2--head.webp",
+      "sha256": "a85266c54d540410216340e2a776b3fef136f3711a3822ade5fdcfe9147f253c",
+      "bytes": 69496,
+      "optimizedFile": "/optimized-images-20261028/c6cd32388527bbb8ac5cc019a7c4b6c2f7a3c36872e86e068d2b429280467590.webp",
+      "optimizedBytes": 42570
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-studded-leather-plus-2--legs.webp",
+      "sha256": "11e78aac3abadbebaa03621053eee9f80fdda4ec09297b7ee8ac1674bfe0b16a",
+      "bytes": 82080,
+      "optimizedFile": "/optimized-images-20261028/b0dec49e35d43c9e9f437bc5c8f1356124a23fd245c8ae03964e7eba9a1766b5.webp",
+      "optimizedBytes": 52284
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-studded-leather-plus-2--shoulders.webp",
+      "sha256": "1badd9b083c63c735183a73a9846ca1872ada0c43219a75205728791d30f62cf",
+      "bytes": 67566,
+      "optimizedFile": "/optimized-images-20261028/21e8f1aa1b809934657d0ccf016c23c796c36ac25faa97b429c4c962683acc8a.webp",
+      "optimizedBytes": 41976
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-studded-leather-plus-3.svg",
+      "sha256": "f0d95aeaa32d9ca566750b1f75314ed65508f1cb35bf9d12c751521e666f1308",
+      "bytes": 212314,
+      "optimizedFile": "/optimized-images-20261028/235e950a18e955b6ccd9470864eae3c619ecec7f6931c9cae541308cffff436f.webp",
+      "optimizedBytes": 39494
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-studded-leather-plus-3--bracers.webp",
+      "sha256": "9345818bc979a29dd611ef0d11362d8a00f8ea4aed8529271f18c4fc09b9ec76",
+      "bytes": 83684,
+      "optimizedFile": "/optimized-images-20261028/804b21b775fa6952249554dd99ac7fff294e99a998f536a91cb56b029d2f1c4b.webp",
+      "optimizedBytes": 51584
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-studded-leather-plus-3--feet.webp",
+      "sha256": "d5842b952c913f111e78a76dd5ccf09781b7eb62e6fad9c6634e291131122b2a",
+      "bytes": 94316,
+      "optimizedFile": "/optimized-images-20261028/c5051fe8b729c8f730a966778c5e3e94c4457cf3fe48bdf7508d06f75830c73c.webp",
+      "optimizedBytes": 57706
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-studded-leather-plus-3--head.webp",
+      "sha256": "e5666ad1aad558f8d167d87b58a6c95a226a3a6b7a00af3c17e86aaa26582f84",
+      "bytes": 71772,
+      "optimizedFile": "/optimized-images-20261028/8d18398a7f315c375ad54991f5524f9bb3b8ce3d54bb64259718166d79f9b858.webp",
+      "optimizedBytes": 44054
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-studded-leather-plus-3--legs.webp",
+      "sha256": "af896ecdd799ff323fa8882726d07b0b34af916bf3cf8c1bbad083086faaa0b2",
+      "bytes": 85260,
+      "optimizedFile": "/optimized-images-20261028/3deefcc498f8daa8fe976ac79f0382df4df3ba1826a5f41aaf57e9d57b601665.webp",
+      "optimizedBytes": 53332
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-studded-leather-plus-3--shoulders.webp",
+      "sha256": "c58af9da4b0d17a499a7147ad9984d8df7d983dc8a84b31d3b26ec076a9a2013",
+      "bytes": 67500,
+      "optimizedFile": "/optimized-images-20261028/b8e35366d00780689db1951271e78595012c1e72b75d83e852e581f209219ba7.webp",
+      "optimizedBytes": 43744
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-hide-armor-plus-2.svg",
+      "sha256": "42fbe90d030650aa45f01890716620a42528db20f6079b6c1843c6101aed1c31",
+      "bytes": 245033,
+      "optimizedFile": "/optimized-images-20261028/881d8124a3177232a7a3b75c7a35f58b184adb3e696d818d47598d8fa8578692.webp",
+      "optimizedBytes": 57188
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-hide-armor-plus-2--bracers.webp",
+      "sha256": "332c5324829a62d77afa9b8bcd874cd23c3d7beebc88e497b88d37363922f304",
+      "bytes": 102922,
+      "optimizedFile": "/optimized-images-20261028/ac4974d74d82741b5ec01cdb7791d1e6d63a0986611b22a3d7c3c12249db1a73.webp",
+      "optimizedBytes": 65540
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-hide-armor-plus-2--feet.webp",
+      "sha256": "dd3dc9ef71aa8457adcc31029bd9e5f47f63300d51a87730034965616726eb40",
+      "bytes": 95062,
+      "optimizedFile": "/optimized-images-20261028/b361fcfd9f05a4d39cbde6a764dbd70df48c9145898bdf7b2f7def1c3da8725a.webp",
+      "optimizedBytes": 60914
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-hide-armor-plus-2--head.webp",
+      "sha256": "7e2fce7c34d03098bd5880eb1c80b6a55afb5fd4f37d55b6f6b981f3566ec59f",
+      "bytes": 90908,
+      "optimizedFile": "/optimized-images-20261028/a1a002ff2c44b08f931f4ea8e7b1816e6ffa7b73f63e5a49f1912f4fa0429d1c.webp",
+      "optimizedBytes": 59150
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-hide-armor-plus-2--legs.webp",
+      "sha256": "f150d63c1645027bba51a1f5a1d6eaa04bc1de2b13906a32caf909ef0205115f",
+      "bytes": 101038,
+      "optimizedFile": "/optimized-images-20261028/9160c9dd3d3abbf21c21f41495320930549ee56dcba11b7af2e47420ef82ada8.webp",
+      "optimizedBytes": 66638
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-hide-armor-plus-2--shoulders.webp",
+      "sha256": "b4066c5e71a41f95da9818d73427eb0ccdb0380737a53530bb6245e753494cb0",
+      "bytes": 87416,
+      "optimizedFile": "/optimized-images-20261028/636109b34e405c5007f48a96503bd1bf66a542e6191aabe1c5e613e20127ab2d.webp",
+      "optimizedBytes": 57074
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-hide-armor-plus-3.svg",
+      "sha256": "747b8eac77b59a36e33d6dab2efb00c7c9a9ce983baea50decaef7fafda86358",
+      "bytes": 245034,
+      "optimizedFile": "/optimized-images-20261028/873cc30153c7e0bb4046bc2790f50a80094e7a6e2991294356c314582ff99443.webp",
+      "optimizedBytes": 58808
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-hide-armor-plus-3--bracers.webp",
+      "sha256": "fa24c97577bbfe5e059e8f04e7039de810cd50cc34d741a726f25bcd7bc6f210",
+      "bytes": 105500,
+      "optimizedFile": "/optimized-images-20261028/bd83fd25704d8ff908d35bcaf7ed3b503cefbe9d373c29b81886aa5c9a47327e.webp",
+      "optimizedBytes": 67342
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-hide-armor-plus-3--feet.webp",
+      "sha256": "d4f0b9e0cee02beb73d6225eadd6ed39f4bd65081f5a45443cbdf06bd975c7c0",
+      "bytes": 97786,
+      "optimizedFile": "/optimized-images-20261028/0292e5f690ff90ac30087e411ac8fcfb6c0087f8fc39bbcbd161b2539e6f4808.webp",
+      "optimizedBytes": 62386
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-hide-armor-plus-3--head.webp",
+      "sha256": "e6e0cb72ca523d4091d04bffb5d73e969eb01d50997388043e3cbedefea34120",
+      "bytes": 92416,
+      "optimizedFile": "/optimized-images-20261028/0285282b3e2f8d1ac1eb9df2c786102ef37fade7d638ce2d7a8d73f7297cd6f1.webp",
+      "optimizedBytes": 60658
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-hide-armor-plus-3--legs.webp",
+      "sha256": "0809c4f8f267b766235aee6ce91d59ee54a778ec0aff40973d8ace7806206284",
+      "bytes": 103802,
+      "optimizedFile": "/optimized-images-20261028/711d0805ee3b72279e7e24dad133fede5421684c939ec0723039e6896eedab38.webp",
+      "optimizedBytes": 68286
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-hide-armor-plus-3--shoulders.webp",
+      "sha256": "af371a996fd108e24fae0ec2638b1e4ba961e7330f576b8062852b8622b96d17",
+      "bytes": 90552,
+      "optimizedFile": "/optimized-images-20261028/566f316989546f12c5438f8ab0c52ae73051c33e3d82d0eff72f69113a8cdf5a.webp",
+      "optimizedBytes": 58902
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-chain-shirt-plus-2.svg",
+      "sha256": "af05342da1ac0b351196f01377962bf3348d6b1566cd506d422d6f82fd55c227",
+      "bytes": 269540,
+      "optimizedFile": "/optimized-images-20261028/6a238cd7405281d463d4f60a09ac096c37523d326b845f81784f108778f4a38c.webp",
+      "optimizedBytes": 64730
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-2--bracers.webp",
+      "sha256": "f003d05038028ae6ca5d7bf5a0f4bd22268279309a93bd5f9d3960de062d0892",
+      "bytes": 84014,
+      "optimizedFile": "/optimized-images-20261028/3c919a92c8bb8361b3b9d0bdb0769fb21718acc78a8bad0f88f2c145f7ef40e6.webp",
+      "optimizedBytes": 56874
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-2--feet.webp",
+      "sha256": "2d7fde71f8b3f93f4346c8e560d6173373eb4533b765c91efc7af4ba00841766",
+      "bytes": 95382,
+      "optimizedFile": "/optimized-images-20261028/4c4df5ce15e97c496c809febd7061201db9724e118b56ac32580bc1bc4107348.webp",
+      "optimizedBytes": 61364
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-2--head.webp",
+      "sha256": "3a72f6ee22eef0784ff241da75467c87d12e1a4e6a92a04720845069bc2c977a",
+      "bytes": 77094,
+      "optimizedFile": "/optimized-images-20261028/c5c1264c9c60e5be5ce4d18392b47b4ecea2d50aabf4e02265eedd29390d134e.webp",
+      "optimizedBytes": 51470
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-2--legs.webp",
+      "sha256": "230043b74058507b2bfb691bfc5f0324a336e49882835465e212b94cbe99194c",
+      "bytes": 91296,
+      "optimizedFile": "/optimized-images-20261028/5c58c4a8b94c67e163cea44ad1ab37f5e1d49ced0634f3fea9183b1cff9d14ac.webp",
+      "optimizedBytes": 60556
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-2--shoulders.webp",
+      "sha256": "e7c748f4e5b0c9d37c4815ed8d80d114dc6e03ff2f2140dfcb6c07a38f61a555",
+      "bytes": 74462,
+      "optimizedFile": "/optimized-images-20261028/cbe01c1464d6756e5bc09e869e312f4d2a1a6e5cfb1c653092d65a09440c4145.webp",
+      "optimizedBytes": 48120
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-chain-shirt-plus-3.svg",
+      "sha256": "3c8e473536370ae9094e426b4de090c3a7ddc6dc41197f25d9f54157d509cd9a",
+      "bytes": 269541,
+      "optimizedFile": "/optimized-images-20261028/d822aab53171bb1868dc009a113fcde27cbeb1b161c0c8adaa86b506ebcd1a4d.webp",
+      "optimizedBytes": 65560
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-3--bracers.webp",
+      "sha256": "a1e6fea617727755a5c93b5565ac870309f109d2a93bd3c4fe93f7588f024763",
+      "bytes": 86168,
+      "optimizedFile": "/optimized-images-20261028/4d2a761c5e00e40b189ed55c1b245190a077d6be3b72b81d429e9d4deb932dad.webp",
+      "optimizedBytes": 58320
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-3--feet.webp",
+      "sha256": "579fa0915fd635674b42c80e734b63e2525f345d23b28a64bff6d1faacbfdaf0",
+      "bytes": 96056,
+      "optimizedFile": "/optimized-images-20261028/ee00567873c438e851a65d583372ea1fbf74a0d2b679a153c999eea435231acd.webp",
+      "optimizedBytes": 63102
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-3--head.webp",
+      "sha256": "4151a6ede019c2bf4661a9fefdcebb2f1735e35cd781be6b541fd9b53534857b",
+      "bytes": 78406,
+      "optimizedFile": "/optimized-images-20261028/ac4ab78b85cc12337cc365f83bf33e70e085bee7ffede039032b5b2fa196b463.webp",
+      "optimizedBytes": 54320
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-3--legs.webp",
+      "sha256": "7b2db7c953233668e60c78319a985136713c35f1e14e1f8af58b7d0f21660236",
+      "bytes": 93052,
+      "optimizedFile": "/optimized-images-20261028/918bbc222bfdf1627aebe4cca6ee75fa4bdbb6a2182abbd55132ae0f71366876.webp",
+      "optimizedBytes": 61442
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-shirt-plus-3--shoulders.webp",
+      "sha256": "ba1aab2bc0b5fff83efcfb2e5cce5545f2e6de14e820b37a9368911ed6428543",
+      "bytes": 76324,
+      "optimizedFile": "/optimized-images-20261028/af0839a5e93ed2d4dfb16ca74b9e14ae6a6ed09ce562a6dbc77538b50933f5d7.webp",
+      "optimizedBytes": 49702
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-scale-mail-plus-2.svg",
+      "sha256": "5af99e0cf6953070894e3d7dfd7f4b48370eef4172a96eb53abd42e7afc2f237",
+      "bytes": 250919,
+      "optimizedFile": "/optimized-images-20261028/f84cb5de9c421ce48cf9b938f29827ad68e0f3e92a48db61301658d8a2ce1d8f.webp",
+      "optimizedBytes": 54720
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-scale-mail-plus-2--bracers.webp",
+      "sha256": "8cd06d7d8359390e475a92fc9e86ca12611a5eb2b1127c6232151817a4a01c69",
+      "bytes": 80770,
+      "optimizedFile": "/optimized-images-20261028/e49b5212571c21ea612f36627aa11fc5a0f3db1ba1f221efb2e68ecf68257fc9.webp",
+      "optimizedBytes": 51522
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-scale-mail-plus-2--feet.webp",
+      "sha256": "5ea24c359f00faf78c9bd4608d22d8a8fc246235ebe06d7ee79f703166598a58",
+      "bytes": 88432,
+      "optimizedFile": "/optimized-images-20261028/74a188e4d4531b1aadd5a9a0c7ab85e224d16391bdc621db3108144b985461b9.webp",
+      "optimizedBytes": 53080
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-scale-mail-plus-2--head.webp",
+      "sha256": "c6e43e23ea8bd65744b2343f30dd177c00e6bfeaaef6c202724011a198aadf00",
+      "bytes": 71682,
+      "optimizedFile": "/optimized-images-20261028/6048619d9d7603d674860c70e40d0374a3909f60a127c9f25ea72c9eb52c01fa.webp",
+      "optimizedBytes": 43310
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-scale-mail-plus-2--legs.webp",
+      "sha256": "260286d57a8e79d52c4150b49e4a9e60743c3115be24ba0375699101dda8230b",
+      "bytes": 96456,
+      "optimizedFile": "/optimized-images-20261028/8a663f41d6192f26069330fab01af0f607d24a34a8d6cfe96602e353163ebd8e.webp",
+      "optimizedBytes": 59790
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-scale-mail-plus-2--shoulders.webp",
+      "sha256": "a59ef0cb5bb59543baa32bb4cfac616890af61c5e0de3081fbd057b83d4de385",
+      "bytes": 71748,
+      "optimizedFile": "/optimized-images-20261028/a830bb8af77ac1aa15857ca0bdf7058d80ca26b04f407a6d9e31a4bed8673477.webp",
+      "optimizedBytes": 45262
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-scale-mail-plus-3.svg",
+      "sha256": "e1bd6264007a5e8707238804fbe6d44c01bcd8485e63b629a31643cfbdf1759a",
+      "bytes": 250920,
+      "optimizedFile": "/optimized-images-20261028/e38b32b6a9be844c98f0b5acf31b1a51489d2127f341f108b94aa1284b10227d.webp",
+      "optimizedBytes": 56028
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-scale-mail-plus-3--bracers.webp",
+      "sha256": "ee9bd2b42ca5287dff4e019218508e1c17f6e47990c64c2a673ba32c2ab6a2c2",
+      "bytes": 86050,
+      "optimizedFile": "/optimized-images-20261028/4126445d85f73263883488637cb05c3662825efe411715c066f928aa9cadcc04.webp",
+      "optimizedBytes": 53788
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-scale-mail-plus-3--feet.webp",
+      "sha256": "71162986fd00bdf08603783d0a6bfb306d8458a5c0f9a013c3020b292c7db85e",
+      "bytes": 89664,
+      "optimizedFile": "/optimized-images-20261028/ca65d77945a3e69d853e2245e3c21493af85df8eb18983b0e90f6b1084b532e8.webp",
+      "optimizedBytes": 54252
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-scale-mail-plus-3--head.webp",
+      "sha256": "3755f63f4d7e5f6a4def946ae972c5933c102ee72f7fc637d3d9bfa2311f1da8",
+      "bytes": 73642,
+      "optimizedFile": "/optimized-images-20261028/16b2145496392aa8956bcc050238e846c8fa61bde1e2302ffa544c39d9beef48.webp",
+      "optimizedBytes": 44808
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-scale-mail-plus-3--legs.webp",
+      "sha256": "ab9cd32370ef74e77c333b2159d7486dd34a1875b17c0e91ea8ec1cd1ba63f39",
+      "bytes": 99112,
+      "optimizedFile": "/optimized-images-20261028/97fea1e18720e425e997f502612d49a05c90d0638b75dff646382d177198ba8c.webp",
+      "optimizedBytes": 61680
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-scale-mail-plus-3--shoulders.webp",
+      "sha256": "234477b89c167e30f05f108130165dd852d0419aab7e382aa563e62b59e83e07",
+      "bytes": 75170,
+      "optimizedFile": "/optimized-images-20261028/82589066e1bc9dc827321c6bebf341a04d28725661c31ac4542a84651bcef670.webp",
+      "optimizedBytes": 47512
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-breastplate-plus-2.svg",
+      "sha256": "62862d12b8061cf9d387dfcfb4bc9b31d082e9b6bf8acf8e7fd146924c5a85ba",
+      "bytes": 209606,
+      "optimizedFile": "/optimized-images-20261028/2cc5b23c27a68094037274a3987180c511503a6eefbd996cd6116bcebc42d784.webp",
+      "optimizedBytes": 39042
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-breastplate-plus-2--bracers.webp",
+      "sha256": "242770a54c063cb62dbe1e4b363e6bec961a7b03f085e6f80085f77639552111",
+      "bytes": 78972,
+      "optimizedFile": "/optimized-images-20261028/ee1af1da8e92e8e0f927f35e962e4ae6747a72e1061cf1fe8689318d9aa01040.webp",
+      "optimizedBytes": 50860
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-breastplate-plus-2--feet.webp",
+      "sha256": "b11d5c778ccc562ecd62970f00e43599cadb166cf9bba43000bd1e702d2ea75c",
+      "bytes": 73972,
+      "optimizedFile": "/optimized-images-20261028/a38da406abf957a76842ad0f1b892f57664b62d9b0714ef7bd2201d5652052fc.webp",
+      "optimizedBytes": 48920
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-breastplate-plus-2--head.webp",
+      "sha256": "96015322e39cef6c54241c865b569271197d40ddbb89e78bd8c98f3ee15fb2d1",
+      "bytes": 69204,
+      "optimizedFile": "/optimized-images-20261028/e4e25a264f563931fe9b814592beee795d7a6e114d5c49427cd3fe863c427cd8.webp",
+      "optimizedBytes": 43416
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-breastplate-plus-2--legs.webp",
+      "sha256": "8700fb8f46883bc3139b0d7304627069735af611534d4e4d5cc48bcae59a12ae",
+      "bytes": 86674,
+      "optimizedFile": "/optimized-images-20261028/05f7c66b8ce2dec224555de99f476f3cc197a50db912d41aa62146ccaec8e4f7.webp",
+      "optimizedBytes": 57456
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-breastplate-plus-2--shoulders.webp",
+      "sha256": "0940111e0a31e45e91fb27efa0c6d1e963cb974cd3003582ca91c34328f8c316",
+      "bytes": 70752,
+      "optimizedFile": "/optimized-images-20261028/921837b1d0820ce483132ba6178c5d5772d5bc5c093ae5ba843bbabb9fe6f835.webp",
+      "optimizedBytes": 43608
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-breastplate-plus-3.svg",
+      "sha256": "8b6276b2a347474b0a207c67302c0321ac2ab3a485d8f0b6a9664a55bdb067bd",
+      "bytes": 209607,
+      "optimizedFile": "/optimized-images-20261028/c2bbcd7aaa43bcbabc0521313416acaea54d349673764b50b2652a780c6c3905.webp",
+      "optimizedBytes": 40438
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-breastplate-plus-3--bracers.webp",
+      "sha256": "6f2df5e8f6e3f4ce313a646ff39829e6d3a09e5ed64816fa83556917ed56f17e",
+      "bytes": 82492,
+      "optimizedFile": "/optimized-images-20261028/d5e3ae51ad09cceb15220d0057afb8b7f1c6904d197985d166fb502ee41a39cb.webp",
+      "optimizedBytes": 51440
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-breastplate-plus-3--feet.webp",
+      "sha256": "db129c3b8f2caaffa563b1b89da16f9bd65ce738c23a9453226e0f2f97764ae7",
+      "bytes": 79422,
+      "optimizedFile": "/optimized-images-20261028/4abdfc1733a410a3121ae84f72dfd545d2f50679e4e918218559fda2d0219ab8.webp",
+      "optimizedBytes": 50924
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-breastplate-plus-3--head.webp",
+      "sha256": "b12d9e073e815bf0b3e5078df3c3f438278a596f0a9c3366744e7ce14930653f",
+      "bytes": 71650,
+      "optimizedFile": "/optimized-images-20261028/ea8f013654dafe78bd0f0b3ae53aeb043597dbb56a9be60b682392743396222e.webp",
+      "optimizedBytes": 44868
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-breastplate-plus-3--legs.webp",
+      "sha256": "9771b9d3f4c93d3a28d3cd75279c417c7162584d532f0bfe91c115ffb1d18fad",
+      "bytes": 89420,
+      "optimizedFile": "/optimized-images-20261028/bdc5e443d7f7892e8ac0d53831d849f010a4a9ea6930313e19be27cc6c6d0c79.webp",
+      "optimizedBytes": 59242
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-breastplate-plus-3--shoulders.webp",
+      "sha256": "6f5a7576df18213f06fe52f3420603f4c4f4c803266cf4fa0c8f0b65873ff0a0",
+      "bytes": 73268,
+      "optimizedFile": "/optimized-images-20261028/2081c86eea2ea17e15dde73eb89a4a5400c50d1e4ca9c88ecbd2e79214de3a62.webp",
+      "optimizedBytes": 45596
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-half-plate-armor-plus-2.svg",
+      "sha256": "702b3ffb4bd93a9e199c3bb96da54306a3646200008ef10a06ff207e6ebf5d2c",
+      "bytes": 252708,
+      "optimizedFile": "/optimized-images-20261028/16c2b93073876ccf88e3ac8f48dfabcc9120a34672e89c41744492693d551716.webp",
+      "optimizedBytes": 59100
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-2--bracers.webp",
+      "sha256": "153304bb74a60037c4c832a83d9e0f6a3744c66a014426f37712a2ca9268db36",
+      "bytes": 73292,
+      "optimizedFile": "/optimized-images-20261028/92484e0beb2cd7a4d7395858b9adfe9497d653f480ce8b89c724c055e506e00b.webp",
+      "optimizedBytes": 48842
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-2--feet.webp",
+      "sha256": "03a011a59a55284b0b4a0d3ff9c4612242185f52941a1f39745ae6d2c27041b0",
+      "bytes": 83698,
+      "optimizedFile": "/optimized-images-20261028/120c7269ac7444920b3a9e388fc54354099b8ad8f930da24e8b6f4678b6d6d03.webp",
+      "optimizedBytes": 53358
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-2--head.webp",
+      "sha256": "8063ffbecc204ca1433973d08860a252bcf1c080649eb14e06cff2223975ad63",
+      "bytes": 69118,
+      "optimizedFile": "/optimized-images-20261028/8200686a9ae40bbdb8c3714eade7405749ccf949a2138c3f5670afaecfd430ef.webp",
+      "optimizedBytes": 42712
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-2--legs.webp",
+      "sha256": "9c434cf361081bb51e90aaf0a78ad7cfb6265df66182f73d36b5bd2b51eb6829",
+      "bytes": 89792,
+      "optimizedFile": "/optimized-images-20261028/5a64d4c1fe86958e999a55b4128ba1060246ef0577f65e12b75fe62aab8dc2a7.webp",
+      "optimizedBytes": 57696
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-2--shoulders.webp",
+      "sha256": "158472f7a9a1dbdb59d61654e2aa3e4dd35a20f8edb55711a63f6f60c8643aef",
+      "bytes": 65804,
+      "optimizedFile": "/optimized-images-20261028/50f450ba296b3a3f94f44b62d75bc3545276ac81eb65d977607df0e89ffcfc59.webp",
+      "optimizedBytes": 43454
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-half-plate-armor-plus-3.svg",
+      "sha256": "21f4b96daf001034818c9cf797dfc327533eb747141e9f0b03a028f7a07f0333",
+      "bytes": 252709,
+      "optimizedFile": "/optimized-images-20261028/420f1d283846d0984ccf0289edab0863124d088a9106c9e0ebd801d5bd4b22a3.webp",
+      "optimizedBytes": 60424
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-3--bracers.webp",
+      "sha256": "bac02f3f02c09767b2d5d00912814a48d148414c113b5f8338a8a3a659d18343",
+      "bytes": 76532,
+      "optimizedFile": "/optimized-images-20261028/eab895b97fd1414236d01a48ed99ec4840a48e6f7dccc76f58b3316551f0a49a.webp",
+      "optimizedBytes": 50708
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-3--feet.webp",
+      "sha256": "3010b5741599479fe113fca8fe4ffdab35496bf31d91a7950af6f4966ef6da35",
+      "bytes": 86470,
+      "optimizedFile": "/optimized-images-20261028/4b2f7fd9ccc71b427b0b88affc543475fffbf70d7bb77ac14de51db455f14ff4.webp",
+      "optimizedBytes": 55036
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-3--head.webp",
+      "sha256": "bca9de3677e8fc367c8811cd95f7db2602ef7dfd854a3f3532c9ce26f5ba930e",
+      "bytes": 72580,
+      "optimizedFile": "/optimized-images-20261028/ae53deee2532a37cc16bc841f86509d62adb5f6a380d2260b38e49b160e0e1ae.webp",
+      "optimizedBytes": 44624
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-3--legs.webp",
+      "sha256": "f9b43fa50c37a535fe3fbb70ce7b9b556bed0bfeed5e0f97f18307c834f04e1a",
+      "bytes": 93472,
+      "optimizedFile": "/optimized-images-20261028/2e62219769fa8b2d0ebbf289e153ade9c2a05dc09cb14ae53d2342af454f1103.webp",
+      "optimizedBytes": 59756
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-half-plate-armor-plus-3--shoulders.webp",
+      "sha256": "6dd3ad51268d0d7b1480265b57c1b42f3f8bf3c7789471f267e99c8d9f855617",
+      "bytes": 68626,
+      "optimizedFile": "/optimized-images-20261028/543a543c123a0f993f4b7e6c6cfb03cbe20b4f1074287f4156706463e73e2a9e.webp",
+      "optimizedBytes": 46228
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-ring-mail-plus-2.svg",
+      "sha256": "60f5a389c2c618bb3e3c2d94f34503268d70adf82129b046c8e3590573ec67c9",
+      "bytes": 269345,
+      "optimizedFile": "/optimized-images-20261028/5d551c457446c67a54d7189ce7bfe49dd26150c2224bb8e1bd782ced235d7053.webp",
+      "optimizedBytes": 57062
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-ring-mail-plus-2--bracers.webp",
+      "sha256": "416753fb6bb9ff8c339039dfac53a3020e7536b5ad7d7140066c0e2abfb2cabd",
+      "bytes": 86116,
+      "optimizedFile": "/optimized-images-20261028/7685916b279b4f06270918950764d35f1769209a13418a3c9c61fc28afa53217.webp",
+      "optimizedBytes": 53668
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-ring-mail-plus-2--feet.webp",
+      "sha256": "6b70269b3b0972450810c0f926af738447f2db0b62d0a5e424c96b200cce4271",
+      "bytes": 87704,
+      "optimizedFile": "/optimized-images-20261028/93bfec39b8a4168428324157e6243054c34178a00965168941df7a10ee9327df.webp",
+      "optimizedBytes": 54450
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-ring-mail-plus-2--head.webp",
+      "sha256": "5f27dd6c9bb3037cf6c08412fcf858321f506ae2d8cd7ba98269dc9b64d5f300",
+      "bytes": 68012,
+      "optimizedFile": "/optimized-images-20261028/18b177693d2119de69ca618f2e80fa0323707a8c4a30bc5fe45ab8bb22936d26.webp",
+      "optimizedBytes": 41768
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-ring-mail-plus-2--legs.webp",
+      "sha256": "16964ed967909164c88b4fb27255597295a8fc5cc4cb00b6440e0ec435b5fe70",
+      "bytes": 83500,
+      "optimizedFile": "/optimized-images-20261028/ecb8c602f60d604819c22bb31c0946e97530c661126a4a6257908bccf22cea4d.webp",
+      "optimizedBytes": 52018
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-ring-mail-plus-2--shoulders.webp",
+      "sha256": "e514c055dbbf999f9ab179565ef31a3e5566bbc12b669d8e08b5cc071a356237",
+      "bytes": 70428,
+      "optimizedFile": "/optimized-images-20261028/8393a49b3a580d0113688e6c4cf817da46d12b7271154b83062000f94a665e6a.webp",
+      "optimizedBytes": 45738
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-ring-mail-plus-3.svg",
+      "sha256": "c91a22e13f5d948a085c568aa0b06f8f3eb26e53b63b221408f60d62713243e7",
+      "bytes": 269346,
+      "optimizedFile": "/optimized-images-20261028/e6bfcf1f3da84d06cc92abf59117d7e301b9ed3a4e4c89ee21b1b59622f25a8b.webp",
+      "optimizedBytes": 58804
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-ring-mail-plus-3--bracers.webp",
+      "sha256": "f2ea40dd0b97562a1d45955f7d504682c8c355c7c674d9ccbd0725aa33857495",
+      "bytes": 88950,
+      "optimizedFile": "/optimized-images-20261028/1456ea7769c741f1a9a9be62694233d2ea7c6edb143a5424c9eca8fcfa04dbe1.webp",
+      "optimizedBytes": 54576
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-ring-mail-plus-3--feet.webp",
+      "sha256": "23ec248066447793df073b65b0ce5bb3c20c17d15348135f7254d6f406aac6bc",
+      "bytes": 90752,
+      "optimizedFile": "/optimized-images-20261028/63a1c2f7804ce16e73e0a88e6f1df4811859785cd8a8d91cc58b6fcd02376933.webp",
+      "optimizedBytes": 55906
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-ring-mail-plus-3--head.webp",
+      "sha256": "cafb13c5726dba9cbbce9dc844b753edd2a8c512a743530ffe7186cfeec0ce02",
+      "bytes": 71502,
+      "optimizedFile": "/optimized-images-20261028/57cb65b403669e479a8401bac4206cab9767bceb6294afcc465f216b0bcee779.webp",
+      "optimizedBytes": 43342
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-ring-mail-plus-3--legs.webp",
+      "sha256": "24570c3542f1d6dc97a95134b7251e8b4a4f18f978bfd11b2d3dcd0fcd0df496",
+      "bytes": 86574,
+      "optimizedFile": "/optimized-images-20261028/fc992b3d01ca1bee307873da8ffcbd374c78a4da76a102f7fff35795b3cb854d.webp",
+      "optimizedBytes": 54440
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-ring-mail-plus-3--shoulders.webp",
+      "sha256": "0c0235f682399940f1063767a2b27233be0b9c822d0d75a8d6dd8aaff65dfeb5",
+      "bytes": 75506,
+      "optimizedFile": "/optimized-images-20261028/024f855533a238ba4e802f71926413cf363f0f706b19c9b9e4165ce83e6a6c53.webp",
+      "optimizedBytes": 47694
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-chain-mail-plus-2.svg",
+      "sha256": "e975d4f9a4fba1429096665087a18f26b222517fc0faac136ec3ef1a7a394640",
+      "bytes": 236801,
+      "optimizedFile": "/optimized-images-20261028/01c35ebbdf97fd9d32c7fa921993b35dbd218be7383f0b2a307761c1f4c507d2.webp",
+      "optimizedBytes": 47118
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-mail-plus-2--bracers.webp",
+      "sha256": "9cf18925501591547f129dc9d26754158fa797539a3cf1c8cbfc1215d4249b9c",
+      "bytes": 89782,
+      "optimizedFile": "/optimized-images-20261028/777512ef4d917e5a2f7c534bdfe93eb482a175bc282a7074b93d3b2d58a9f7ba.webp",
+      "optimizedBytes": 59210
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-mail-plus-2--feet.webp",
+      "sha256": "731bd00ec91562cab727923a9c667a91da06c3c9e70220a9fe8c610a5f45d4e0",
+      "bytes": 86080,
+      "optimizedFile": "/optimized-images-20261028/086f01bae036e8a75efa16723b271482cf206c0712a346e3affccba9b18b5a01.webp",
+      "optimizedBytes": 57328
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-mail-plus-2--head.webp",
+      "sha256": "c27aa1b0584580adb7d1a909cc4ea5cee6c16b2942774c320ffc7e7f522ddad2",
+      "bytes": 74930,
+      "optimizedFile": "/optimized-images-20261028/5bbf1082bdb55162925835ec691dc06bb4de867e568b574d25c7418c84f9793b.webp",
+      "optimizedBytes": 50010
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-mail-plus-2--legs.webp",
+      "sha256": "3432595d6f19a3cd5e76e1a592f1a7986976c30ef6c35b4a387b65f968eb2760",
+      "bytes": 89020,
+      "optimizedFile": "/optimized-images-20261028/6ec5a2a8a6b4c3268aad43d0df48fd2e3cbdf0c7426ae0a75433260cb48bb568.webp",
+      "optimizedBytes": 60760
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-mail-plus-2--shoulders.webp",
+      "sha256": "0056954fd437a073eb50df8f739ea64ec9f772431bda9515da513c1b96d26c56",
+      "bytes": 66638,
+      "optimizedFile": "/optimized-images-20261028/9c078c2cc5738eef8c1f09e13701b1841d117606b8d5ae38fa9866d78d3d721c.webp",
+      "optimizedBytes": 45472
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-chain-mail-plus-3.svg",
+      "sha256": "b6cb95d1cfe9c2b12497903ab8bf5507c741b58e09920e3ad506ccf44f7a8c6f",
+      "bytes": 236802,
+      "optimizedFile": "/optimized-images-20261028/00633e0bd98eb11c3abdfae019203935db1aa8a1656ba38c2f83ff7d789eda35.webp",
+      "optimizedBytes": 48510
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-mail-plus-3--bracers.webp",
+      "sha256": "9a83370442f1867ee07d0b7993ca1116454277cd1c7df52f0cea44eed17ff74d",
+      "bytes": 92656,
+      "optimizedFile": "/optimized-images-20261028/85ab52bf366658703e5a454beb6d570db85d24a88d56df05f9aa72f647c1877b.webp",
+      "optimizedBytes": 61184
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-mail-plus-3--feet.webp",
+      "sha256": "c9724080838ac769b95809ec815c6696ce27d514de63aef4465e2b1d1cb3a312",
+      "bytes": 87904,
+      "optimizedFile": "/optimized-images-20261028/8dca891cbce4e3788dd1e954249c3d681239426f5ee3341e6ee7cf8a1dd98ed6.webp",
+      "optimizedBytes": 57670
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-mail-plus-3--head.webp",
+      "sha256": "08e45f177ebbb1eeac510e202f36b3645c9d424f1aa7be07e3c041b262d0b76e",
+      "bytes": 76722,
+      "optimizedFile": "/optimized-images-20261028/811f5766b9c6f534222c6c9421e0f9f06aa5e034c25345391e44a97350281400.webp",
+      "optimizedBytes": 51012
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-mail-plus-3--legs.webp",
+      "sha256": "71fd7004669ceac11dc90e72b8be9973c5178a871d1bf7eadf335cdc8c63df2d",
+      "bytes": 91892,
+      "optimizedFile": "/optimized-images-20261028/49675087c64d9cfc146e13213c6d6d421f3df5dfca0503970093dc45335f5714.webp",
+      "optimizedBytes": 61532
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-chain-mail-plus-3--shoulders.webp",
+      "sha256": "90de568ce32f8e7c98e5c31414a57b4e9f749d8e70e9bfce0d5216cef9964f22",
+      "bytes": 69026,
+      "optimizedFile": "/optimized-images-20261028/3f65dcde86da023f42300f8f0ac9bcc50b0a12b78605bce2e799e13fdb19083e.webp",
+      "optimizedBytes": 47238
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-splint-armor-plus-2.svg",
+      "sha256": "7e5c3249f94af0d378410a1f7cc74cac6c9b51cb83d34cb6fcdb7f4065a2df31",
+      "bytes": 245821,
+      "optimizedFile": "/optimized-images-20261028/c26c6dd9fd4d9f8e9386fa2cb34ea0a8ebf4b5fbdd2f0e839bf11f0180400aa8.webp",
+      "optimizedBytes": 49412
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-splint-armor-plus-2--bracers.webp",
+      "sha256": "7e5ab5745f05c335de49cf5c410870220531e6eb3b8faadfc213aa396807642a",
+      "bytes": 87998,
+      "optimizedFile": "/optimized-images-20261028/93c3b4a88fdca837fc6057159cd41ab1974287abd05a03b5602b6a34e7872008.webp",
+      "optimizedBytes": 54370
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-splint-armor-plus-2--feet.webp",
+      "sha256": "739442aedccdf1c10f672cdd1146f3419ce6a92571fc0d50f4978f9e28aefbf9",
+      "bytes": 84228,
+      "optimizedFile": "/optimized-images-20261028/6ab0d89f61d783b817aa806ef1e8af96534704b7e33d268abd99dcd7bc6ef7ff.webp",
+      "optimizedBytes": 52970
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-splint-armor-plus-2--head.webp",
+      "sha256": "2f5b17d4eea7b32906b0dc8542ea81026913660ca579187fc7bf41a6c17237fc",
+      "bytes": 77614,
+      "optimizedFile": "/optimized-images-20261028/42a1f6ef50f54029133326752974c680ba69a233e50d9a5723f14ec4f401d65b.webp",
+      "optimizedBytes": 47538
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-splint-armor-plus-2--legs.webp",
+      "sha256": "4cc125c454a50e811e63b78e0dff0c682f44f2be4a30440a6fc5fb9763a0b212",
+      "bytes": 87998,
+      "optimizedFile": "/optimized-images-20261028/7fa344216725a3dd2b0a9df90c13602ce2ac8098ffd3b2644ccf0259d10d732d.webp",
+      "optimizedBytes": 55896
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-splint-armor-plus-2--shoulders.webp",
+      "sha256": "4a5cd94e816de8d683129416d2e372c87781e6ab3e0d6fda508eefc8c991fe17",
+      "bytes": 80608,
+      "optimizedFile": "/optimized-images-20261028/9a44ba9fef8b89cb535e50d8cafb5c7a3d3f72059522274ca0e90892943773c1.webp",
+      "optimizedBytes": 50378
+    },
+    {
+      "path": "/shop/magic-skins/magic-armor-splint-armor-plus-3.svg",
+      "sha256": "aea2a0c516691823bc56953437574801f316bd5948ade403975327638c4da220",
+      "bytes": 245822,
+      "optimizedFile": "/optimized-images-20261028/57883b3019197af4cb8897c0b173d92a74209ddc718500381f42d4d185d8f357.webp",
+      "optimizedBytes": 50232
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-splint-armor-plus-3--bracers.webp",
+      "sha256": "0b73820b5e0fb3354fc13d529bf7624cc604ffea83c8aef558c3d6ea5bd9a934",
+      "bytes": 90832,
+      "optimizedFile": "/optimized-images-20261028/b49ad63192c0b7df782aba7daac5182151f13f57b2de4628eeb74cb6285adb85.webp",
+      "optimizedBytes": 56836
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-splint-armor-plus-3--feet.webp",
+      "sha256": "9bd30204378f0c3af44bd79213088cb38fdf21f54a11923f04dce54374bc44fa",
+      "bytes": 86864,
+      "optimizedFile": "/optimized-images-20261028/160b5fe081a27ee9b8b798134ae0130a1cc2b3e477bd2a6f19bfb50cff6c691c.webp",
+      "optimizedBytes": 54368
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-splint-armor-plus-3--head.webp",
+      "sha256": "e211bc4cd95a86081ab59cd284c54ecec84371332c27fb2d44f638fd4508a2f0",
+      "bytes": 80174,
+      "optimizedFile": "/optimized-images-20261028/47f976c4bd3f6a4678100dab55ab69d67782fd1798d0760a4808241151081cd2.webp",
+      "optimizedBytes": 49256
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-splint-armor-plus-3--legs.webp",
+      "sha256": "fd03d40a5c89dea6a2cdaf52e328f30e4e7be7bad00b40360ea0ce4a71dc5c3e",
+      "bytes": 91488,
+      "optimizedFile": "/optimized-images-20261028/11d469fd3884538570e872b07e188fd39dcc799741d675d028e591448ac220e5.webp",
+      "optimizedBytes": 58262
+    },
+    {
+      "path": "/shop/armor-parts-20261012/magic-armor-splint-armor-plus-3--shoulders.webp",
+      "sha256": "520e46652f2fdc230741ee0aff23e60a8c42ec0bb7a6184e4c9c7178a0c70e12",
+      "bytes": 83254,
+      "optimizedFile": "/optimized-images-20261028/00aa893970ab86fdd0be72c224803f52597e936bbe82a8eea2ec53a17ffd22af.webp",
+      "optimizedBytes": 51958
+    },
+    {
+      "path": "/shop/magic-completion-20261009/spiked-armor-plus-2.svg",
+      "sha256": "8b934f867d808274383e8c6732ae3c9030c4bf738f551c456947a2d5dfac239d",
+      "bytes": 544273,
+      "optimizedFile": "/optimized-images-20261028/f25aed33650c2d8e768328863ef71cad86164cb701c7862bad48212e32d67a50.webp",
+      "optimizedBytes": 47164
+    },
+    {
+      "path": "/shop/armor-parts-20261012/spiked-armor-plus-2--bracers.webp",
+      "sha256": "567d8b43a2cba3187f6fac47c6a2a81b900380dcccdec4192e8739b75f9deb86",
+      "bytes": 77864,
+      "optimizedFile": "/optimized-images-20261028/503c7829db57adeca81e1acc97bc6887ea48bc0d8e334b5d3f7b870ac9a4784b.webp",
+      "optimizedBytes": 49650
+    },
+    {
+      "path": "/shop/armor-parts-20261012/spiked-armor-plus-2--feet.webp",
+      "sha256": "2dbb42219bbe666d380ead1d6784e2bd80a344547b2c0e23593bd8fac1d68ede",
+      "bytes": 92556,
+      "optimizedFile": "/optimized-images-20261028/69d68394579254c437b7ec2d12755e13f7dd15248e2ab7d3b18f5c8754b6b8af.webp",
+      "optimizedBytes": 56848
+    },
+    {
+      "path": "/shop/armor-parts-20261012/spiked-armor-plus-2--head.webp",
+      "sha256": "04b8b5140b4662567bb00f4aad1c1784dcfccf68981bdfeeab85bff91d4503b2",
+      "bytes": 73126,
+      "optimizedFile": "/optimized-images-20261028/674ea3ae420bcbfb5de1abe59efb0de79f7d29259d48286621a1ac686a55dcfd.webp",
+      "optimizedBytes": 44790
+    },
+    {
+      "path": "/shop/armor-parts-20261012/spiked-armor-plus-2--legs.webp",
+      "sha256": "0068e8b6a1860653daa674f5afdf80e017dcbd378ebd8006b1f68fec99cd8a0a",
+      "bytes": 80374,
+      "optimizedFile": "/optimized-images-20261028/1b555569167cdd05e221e7d7f32f2fb0f4931836029e4fc44f351dcaebffa0a7.webp",
+      "optimizedBytes": 51992
+    },
+    {
+      "path": "/shop/armor-parts-20261012/spiked-armor-plus-2--shoulders.webp",
+      "sha256": "522262c2e8df3b934959b317310c422e4952a3e6b886711fcb287ec488aa7bf7",
+      "bytes": 76696,
+      "optimizedFile": "/optimized-images-20261028/4fb92884755b7dcd5ba1dab818e197af7368bef1ea70ee18116739de986af357.webp",
+      "optimizedBytes": 48216
+    },
+    {
+      "path": "/shop/magic-completion-20261009/spiked-armor-plus-3.svg",
+      "sha256": "7fe8e63cd1706673dd7104027650161e678bb1519cf4a8168b187f95fbe6cc96",
+      "bytes": 544509,
+      "optimizedFile": "/optimized-images-20261028/e089930aa5bdd38e5c5a08b8e0b3e1d65ff6471b7182d006a0f397c1a49222ff.webp",
+      "optimizedBytes": 49296
+    },
+    {
+      "path": "/shop/armor-parts-20261012/spiked-armor-plus-3--bracers.webp",
+      "sha256": "442a0d240630b5aa37d0dc4a3725b5fd84d2e1eacb26c622c6d79b21a309f5ca",
+      "bytes": 83880,
+      "optimizedFile": "/optimized-images-20261028/79050051107842c377ef4d75d23a22c9c1214807d429f22ac9d3651d038acf1d.webp",
+      "optimizedBytes": 52602
+    },
+    {
+      "path": "/shop/armor-parts-20261012/spiked-armor-plus-3--feet.webp",
+      "sha256": "66c90255439f01335090f063092e4b7f8f348f72b4cd1eaa15e161cbe7da2da3",
+      "bytes": 95112,
+      "optimizedFile": "/optimized-images-20261028/626b902530b588631eb979ccae935f04e831213ab72072358ea36d528de99d25.webp",
+      "optimizedBytes": 58604
+    },
+    {
+      "path": "/shop/armor-parts-20261012/spiked-armor-plus-3--head.webp",
+      "sha256": "1c1e79aaf77e1edce2a6f84a50f16b51ed405125c28cca2c5a2939aa259addf5",
+      "bytes": 76838,
+      "optimizedFile": "/optimized-images-20261028/d4393604b8699cde3d7b4847ffaade182f158a475f7f654c56a85c22bb34dc2a.webp",
+      "optimizedBytes": 47214
+    },
+    {
+      "path": "/shop/armor-parts-20261012/spiked-armor-plus-3--legs.webp",
+      "sha256": "cae7e19c5682efccea7e13b381137353a2ccc54b3c3d2d62655a161e4066d7b4",
+      "bytes": 84876,
+      "optimizedFile": "/optimized-images-20261028/3e58501784fa2ab06f508164577671e24b1e552db241f9a4856ef99af7c39090.webp",
+      "optimizedBytes": 54778
+    },
+    {
+      "path": "/shop/armor-parts-20261012/spiked-armor-plus-3--shoulders.webp",
+      "sha256": "a91dc6208f9c919d999a7fbf20a0211a4d274e627d8ba93fe44fb13c3e15c12e",
+      "bytes": 81140,
+      "optimizedFile": "/optimized-images-20261028/13b7e4da3745c63f580804abf38e8c6d5106dbea40db965e107c922c7e33a6b0.webp",
+      "optimizedBytes": 51218
     }
   ],
   "derivatives": [
@@ -15418,6 +16510,795 @@
       "path": "/optimized-images-20261028/ffec81db0babe6fd82b3a089b10529c48ecf7b55accb08f9f935307275e27640.webp",
       "sha256": "ffec81db0babe6fd82b3a089b10529c48ecf7b55accb08f9f935307275e27640",
       "bytes": 150860
+    },
+    {
+      "path": "/optimized-images-20261028/e41e48f4ecf09a13122d9ae19aa3734e083f7618683d91750541cea55dcc436d.webp",
+      "sha256": "e41e48f4ecf09a13122d9ae19aa3734e083f7618683d91750541cea55dcc436d",
+      "bytes": 46616
+    },
+    {
+      "path": "/optimized-images-20261028/514da637a729c6b820cbd81f02f19cb1ed350390a009e53c49706d7789b41cba.webp",
+      "sha256": "514da637a729c6b820cbd81f02f19cb1ed350390a009e53c49706d7789b41cba",
+      "bytes": 61516
+    },
+    {
+      "path": "/optimized-images-20261028/2f941ffbdd207e4d3a1a80fbf7c3a96badc6e0063a7dc11bef6f4bb9b0cc5865.webp",
+      "sha256": "2f941ffbdd207e4d3a1a80fbf7c3a96badc6e0063a7dc11bef6f4bb9b0cc5865",
+      "bytes": 61284
+    },
+    {
+      "path": "/optimized-images-20261028/810637fddfd03893841bab5a3bcfdc40af5e34b9d3039234cfb05dcce74ea61d.webp",
+      "sha256": "810637fddfd03893841bab5a3bcfdc40af5e34b9d3039234cfb05dcce74ea61d",
+      "bytes": 53948
+    },
+    {
+      "path": "/optimized-images-20261028/d4c82dfe639699211b8cf23cd459f3520bcf4cbce206b12be18a2021d45897c5.webp",
+      "sha256": "d4c82dfe639699211b8cf23cd459f3520bcf4cbce206b12be18a2021d45897c5",
+      "bytes": 58124
+    },
+    {
+      "path": "/optimized-images-20261028/e6c9b883e5e65906c56b142e9628b042a4ba1bf32cdad5bb21f99e324cd88274.webp",
+      "sha256": "e6c9b883e5e65906c56b142e9628b042a4ba1bf32cdad5bb21f99e324cd88274",
+      "bytes": 52158
+    },
+    {
+      "path": "/optimized-images-20261028/0ff21109e0a7a1b4307881887b63b858631fd9ea4c23cc024f532902a53bce78.webp",
+      "sha256": "0ff21109e0a7a1b4307881887b63b858631fd9ea4c23cc024f532902a53bce78",
+      "bytes": 48258
+    },
+    {
+      "path": "/optimized-images-20261028/fa0a0ecf1c1962369213b9d09feea96a7edbb0e1d4e9cc54342dae84de3e6484.webp",
+      "sha256": "fa0a0ecf1c1962369213b9d09feea96a7edbb0e1d4e9cc54342dae84de3e6484",
+      "bytes": 65112
+    },
+    {
+      "path": "/optimized-images-20261028/617030145bf0131abc314d7f8e5da4654a85f84f18ff03ca844b6df35838960b.webp",
+      "sha256": "617030145bf0131abc314d7f8e5da4654a85f84f18ff03ca844b6df35838960b",
+      "bytes": 63160
+    },
+    {
+      "path": "/optimized-images-20261028/3713d6c1bb2b5c5de5215acfe796399f594e409ce2e7697e89febe74c4ffac34.webp",
+      "sha256": "3713d6c1bb2b5c5de5215acfe796399f594e409ce2e7697e89febe74c4ffac34",
+      "bytes": 55400
+    },
+    {
+      "path": "/optimized-images-20261028/1a62823d678e7c5ecf49629ad99b897b35d4193bc5f128f501be6e1b8d75f0c3.webp",
+      "sha256": "1a62823d678e7c5ecf49629ad99b897b35d4193bc5f128f501be6e1b8d75f0c3",
+      "bytes": 59754
+    },
+    {
+      "path": "/optimized-images-20261028/cba5a3ec8151107475a06d01f18c316714599a99ef94b1806710784fd35fe486.webp",
+      "sha256": "cba5a3ec8151107475a06d01f18c316714599a99ef94b1806710784fd35fe486",
+      "bytes": 54136
+    },
+    {
+      "path": "/optimized-images-20261028/174d4d05729fb1157712693e644f5b3fc55816ad9f0c4b336d0eb19198f1c00e.webp",
+      "sha256": "174d4d05729fb1157712693e644f5b3fc55816ad9f0c4b336d0eb19198f1c00e",
+      "bytes": 53958
+    },
+    {
+      "path": "/optimized-images-20261028/5b3bdeaef029d1ad4f63e11f1147238569641a6682eeb441e9e4b50a1abe6339.webp",
+      "sha256": "5b3bdeaef029d1ad4f63e11f1147238569641a6682eeb441e9e4b50a1abe6339",
+      "bytes": 49190
+    },
+    {
+      "path": "/optimized-images-20261028/312c172170439a321820696907edcb1ad0f5e9a3d62f48d9c23ad7caf27933b5.webp",
+      "sha256": "312c172170439a321820696907edcb1ad0f5e9a3d62f48d9c23ad7caf27933b5",
+      "bytes": 46720
+    },
+    {
+      "path": "/optimized-images-20261028/83d60cb1e98df8a48424ffc0f122bec4457a135c9dfe10a13d21d4c5a3f146ee.webp",
+      "sha256": "83d60cb1e98df8a48424ffc0f122bec4457a135c9dfe10a13d21d4c5a3f146ee",
+      "bytes": 39108
+    },
+    {
+      "path": "/optimized-images-20261028/e2a6013649d56244411bdd218299c7cbe5c3cb7f89ad2a1acf88fb674bb130ec.webp",
+      "sha256": "e2a6013649d56244411bdd218299c7cbe5c3cb7f89ad2a1acf88fb674bb130ec",
+      "bytes": 47412
+    },
+    {
+      "path": "/optimized-images-20261028/6e04b9285ec6dff154502abece7b36688850bc92d31d1a4134af56ec65b01c8b.webp",
+      "sha256": "6e04b9285ec6dff154502abece7b36688850bc92d31d1a4134af56ec65b01c8b",
+      "bytes": 42928
+    },
+    {
+      "path": "/optimized-images-20261028/455843e3bd735c4190609f4870cb45f001bcb4843bad6da76a0955ea56bcf9bc.webp",
+      "sha256": "455843e3bd735c4190609f4870cb45f001bcb4843bad6da76a0955ea56bcf9bc",
+      "bytes": 55170
+    },
+    {
+      "path": "/optimized-images-20261028/5ab7b5181b77ebf27f6ff9019f3db2a68942519b8cefc007fe5c594a5ca852c3.webp",
+      "sha256": "5ab7b5181b77ebf27f6ff9019f3db2a68942519b8cefc007fe5c594a5ca852c3",
+      "bytes": 53156
+    },
+    {
+      "path": "/optimized-images-20261028/636778e524e8b9405face567cd7138a2791e131473bcaa3d9753b22ad93026b1.webp",
+      "sha256": "636778e524e8b9405face567cd7138a2791e131473bcaa3d9753b22ad93026b1",
+      "bytes": 48016
+    },
+    {
+      "path": "/optimized-images-20261028/13ec227085089a596e1e81a931bf73c096d2cec1471f6578a9c197061ab31ef2.webp",
+      "sha256": "13ec227085089a596e1e81a931bf73c096d2cec1471f6578a9c197061ab31ef2",
+      "bytes": 40664
+    },
+    {
+      "path": "/optimized-images-20261028/8f1a984cc1cd1533bd9e06745da19cfd6532601652daa3818ade57e196e3574a.webp",
+      "sha256": "8f1a984cc1cd1533bd9e06745da19cfd6532601652daa3818ade57e196e3574a",
+      "bytes": 48608
+    },
+    {
+      "path": "/optimized-images-20261028/96f1996ac410f9ceda441cf01fd6524366780f2686883a3df2bc427bc6d8f93e.webp",
+      "sha256": "96f1996ac410f9ceda441cf01fd6524366780f2686883a3df2bc427bc6d8f93e",
+      "bytes": 44878
+    },
+    {
+      "path": "/optimized-images-20261028/44859cb7cd988086bb7bce1bdbebee8331b26b5e9138ab36e69da13e60a87086.webp",
+      "sha256": "44859cb7cd988086bb7bce1bdbebee8331b26b5e9138ab36e69da13e60a87086",
+      "bytes": 39574
+    },
+    {
+      "path": "/optimized-images-20261028/48f19feb66a4c124b3f31542cce78c3e9b1dd72b0cc27af50c70594096a27629.webp",
+      "sha256": "48f19feb66a4c124b3f31542cce78c3e9b1dd72b0cc27af50c70594096a27629",
+      "bytes": 53184
+    },
+    {
+      "path": "/optimized-images-20261028/75ab589ea8309814f17a2f60d84cf89fccc5c8caa26ad9b5f411355d5a59d25d.webp",
+      "sha256": "75ab589ea8309814f17a2f60d84cf89fccc5c8caa26ad9b5f411355d5a59d25d",
+      "bytes": 51466
+    },
+    {
+      "path": "/optimized-images-20261028/4ea312b1fdede21cda7bad29c08eb464140e684b2825a91001548c137c82c58c.webp",
+      "sha256": "4ea312b1fdede21cda7bad29c08eb464140e684b2825a91001548c137c82c58c",
+      "bytes": 40400
+    },
+    {
+      "path": "/optimized-images-20261028/fc6ce75a9668fe3ac2036849e2adae5b1a58a2de719c5c01f22237068c414fcd.webp",
+      "sha256": "fc6ce75a9668fe3ac2036849e2adae5b1a58a2de719c5c01f22237068c414fcd",
+      "bytes": 56814
+    },
+    {
+      "path": "/optimized-images-20261028/b5e932a8ecc9534ce4737ef28337e20e08e4a099db8199365c83cf41a831d775.webp",
+      "sha256": "b5e932a8ecc9534ce4737ef28337e20e08e4a099db8199365c83cf41a831d775",
+      "bytes": 41940
+    },
+    {
+      "path": "/optimized-images-20261028/375146515740ecb855f8984f85a272e97f0ca49708b042bad471249b620b6995.webp",
+      "sha256": "375146515740ecb855f8984f85a272e97f0ca49708b042bad471249b620b6995",
+      "bytes": 40936
+    },
+    {
+      "path": "/optimized-images-20261028/98cc27a29e87110814b49025c78a372d1172a79931a6b55dba29324c1bded5a9.webp",
+      "sha256": "98cc27a29e87110814b49025c78a372d1172a79931a6b55dba29324c1bded5a9",
+      "bytes": 54900
+    },
+    {
+      "path": "/optimized-images-20261028/20138e04eac1a4a172e4e298a9417fd6239d5a25df952a7f6c74055edfdf3021.webp",
+      "sha256": "20138e04eac1a4a172e4e298a9417fd6239d5a25df952a7f6c74055edfdf3021",
+      "bytes": 52838
+    },
+    {
+      "path": "/optimized-images-20261028/b3430565f49ad51a5692d52512a0176f77e95656a9e577d3c3d3a6ea4a88547a.webp",
+      "sha256": "b3430565f49ad51a5692d52512a0176f77e95656a9e577d3c3d3a6ea4a88547a",
+      "bytes": 41740
+    },
+    {
+      "path": "/optimized-images-20261028/4f556d2227ec3739bdfab4e1935f9a83f621c285436b200ce97b751c435bbf89.webp",
+      "sha256": "4f556d2227ec3739bdfab4e1935f9a83f621c285436b200ce97b751c435bbf89",
+      "bytes": 58910
+    },
+    {
+      "path": "/optimized-images-20261028/ea1bae6943cd2915e38ce576412cddef1a192aff154033e39fe90ffc7459ba55.webp",
+      "sha256": "ea1bae6943cd2915e38ce576412cddef1a192aff154033e39fe90ffc7459ba55",
+      "bytes": 43872
+    },
+    {
+      "path": "/optimized-images-20261028/3d39046ac55f20e0ef4a69be750820fbbea852e4819884a955dc2fd85381653e.webp",
+      "sha256": "3d39046ac55f20e0ef4a69be750820fbbea852e4819884a955dc2fd85381653e",
+      "bytes": 38392
+    },
+    {
+      "path": "/optimized-images-20261028/90d14261876a1b1339fe5e0d4b0c6456dd5aaef5896de0aaf9cb5b5d7518dc2a.webp",
+      "sha256": "90d14261876a1b1339fe5e0d4b0c6456dd5aaef5896de0aaf9cb5b5d7518dc2a",
+      "bytes": 49684
+    },
+    {
+      "path": "/optimized-images-20261028/6650e70f69ed019d10e9663dda46c5c90ce765ec096399ae82fe32a41e74b9f4.webp",
+      "sha256": "6650e70f69ed019d10e9663dda46c5c90ce765ec096399ae82fe32a41e74b9f4",
+      "bytes": 56510
+    },
+    {
+      "path": "/optimized-images-20261028/c6cd32388527bbb8ac5cc019a7c4b6c2f7a3c36872e86e068d2b429280467590.webp",
+      "sha256": "c6cd32388527bbb8ac5cc019a7c4b6c2f7a3c36872e86e068d2b429280467590",
+      "bytes": 42570
+    },
+    {
+      "path": "/optimized-images-20261028/b0dec49e35d43c9e9f437bc5c8f1356124a23fd245c8ae03964e7eba9a1766b5.webp",
+      "sha256": "b0dec49e35d43c9e9f437bc5c8f1356124a23fd245c8ae03964e7eba9a1766b5",
+      "bytes": 52284
+    },
+    {
+      "path": "/optimized-images-20261028/21e8f1aa1b809934657d0ccf016c23c796c36ac25faa97b429c4c962683acc8a.webp",
+      "sha256": "21e8f1aa1b809934657d0ccf016c23c796c36ac25faa97b429c4c962683acc8a",
+      "bytes": 41976
+    },
+    {
+      "path": "/optimized-images-20261028/235e950a18e955b6ccd9470864eae3c619ecec7f6931c9cae541308cffff436f.webp",
+      "sha256": "235e950a18e955b6ccd9470864eae3c619ecec7f6931c9cae541308cffff436f",
+      "bytes": 39494
+    },
+    {
+      "path": "/optimized-images-20261028/804b21b775fa6952249554dd99ac7fff294e99a998f536a91cb56b029d2f1c4b.webp",
+      "sha256": "804b21b775fa6952249554dd99ac7fff294e99a998f536a91cb56b029d2f1c4b",
+      "bytes": 51584
+    },
+    {
+      "path": "/optimized-images-20261028/c5051fe8b729c8f730a966778c5e3e94c4457cf3fe48bdf7508d06f75830c73c.webp",
+      "sha256": "c5051fe8b729c8f730a966778c5e3e94c4457cf3fe48bdf7508d06f75830c73c",
+      "bytes": 57706
+    },
+    {
+      "path": "/optimized-images-20261028/8d18398a7f315c375ad54991f5524f9bb3b8ce3d54bb64259718166d79f9b858.webp",
+      "sha256": "8d18398a7f315c375ad54991f5524f9bb3b8ce3d54bb64259718166d79f9b858",
+      "bytes": 44054
+    },
+    {
+      "path": "/optimized-images-20261028/3deefcc498f8daa8fe976ac79f0382df4df3ba1826a5f41aaf57e9d57b601665.webp",
+      "sha256": "3deefcc498f8daa8fe976ac79f0382df4df3ba1826a5f41aaf57e9d57b601665",
+      "bytes": 53332
+    },
+    {
+      "path": "/optimized-images-20261028/b8e35366d00780689db1951271e78595012c1e72b75d83e852e581f209219ba7.webp",
+      "sha256": "b8e35366d00780689db1951271e78595012c1e72b75d83e852e581f209219ba7",
+      "bytes": 43744
+    },
+    {
+      "path": "/optimized-images-20261028/881d8124a3177232a7a3b75c7a35f58b184adb3e696d818d47598d8fa8578692.webp",
+      "sha256": "881d8124a3177232a7a3b75c7a35f58b184adb3e696d818d47598d8fa8578692",
+      "bytes": 57188
+    },
+    {
+      "path": "/optimized-images-20261028/ac4974d74d82741b5ec01cdb7791d1e6d63a0986611b22a3d7c3c12249db1a73.webp",
+      "sha256": "ac4974d74d82741b5ec01cdb7791d1e6d63a0986611b22a3d7c3c12249db1a73",
+      "bytes": 65540
+    },
+    {
+      "path": "/optimized-images-20261028/b361fcfd9f05a4d39cbde6a764dbd70df48c9145898bdf7b2f7def1c3da8725a.webp",
+      "sha256": "b361fcfd9f05a4d39cbde6a764dbd70df48c9145898bdf7b2f7def1c3da8725a",
+      "bytes": 60914
+    },
+    {
+      "path": "/optimized-images-20261028/a1a002ff2c44b08f931f4ea8e7b1816e6ffa7b73f63e5a49f1912f4fa0429d1c.webp",
+      "sha256": "a1a002ff2c44b08f931f4ea8e7b1816e6ffa7b73f63e5a49f1912f4fa0429d1c",
+      "bytes": 59150
+    },
+    {
+      "path": "/optimized-images-20261028/9160c9dd3d3abbf21c21f41495320930549ee56dcba11b7af2e47420ef82ada8.webp",
+      "sha256": "9160c9dd3d3abbf21c21f41495320930549ee56dcba11b7af2e47420ef82ada8",
+      "bytes": 66638
+    },
+    {
+      "path": "/optimized-images-20261028/636109b34e405c5007f48a96503bd1bf66a542e6191aabe1c5e613e20127ab2d.webp",
+      "sha256": "636109b34e405c5007f48a96503bd1bf66a542e6191aabe1c5e613e20127ab2d",
+      "bytes": 57074
+    },
+    {
+      "path": "/optimized-images-20261028/873cc30153c7e0bb4046bc2790f50a80094e7a6e2991294356c314582ff99443.webp",
+      "sha256": "873cc30153c7e0bb4046bc2790f50a80094e7a6e2991294356c314582ff99443",
+      "bytes": 58808
+    },
+    {
+      "path": "/optimized-images-20261028/bd83fd25704d8ff908d35bcaf7ed3b503cefbe9d373c29b81886aa5c9a47327e.webp",
+      "sha256": "bd83fd25704d8ff908d35bcaf7ed3b503cefbe9d373c29b81886aa5c9a47327e",
+      "bytes": 67342
+    },
+    {
+      "path": "/optimized-images-20261028/0292e5f690ff90ac30087e411ac8fcfb6c0087f8fc39bbcbd161b2539e6f4808.webp",
+      "sha256": "0292e5f690ff90ac30087e411ac8fcfb6c0087f8fc39bbcbd161b2539e6f4808",
+      "bytes": 62386
+    },
+    {
+      "path": "/optimized-images-20261028/0285282b3e2f8d1ac1eb9df2c786102ef37fade7d638ce2d7a8d73f7297cd6f1.webp",
+      "sha256": "0285282b3e2f8d1ac1eb9df2c786102ef37fade7d638ce2d7a8d73f7297cd6f1",
+      "bytes": 60658
+    },
+    {
+      "path": "/optimized-images-20261028/711d0805ee3b72279e7e24dad133fede5421684c939ec0723039e6896eedab38.webp",
+      "sha256": "711d0805ee3b72279e7e24dad133fede5421684c939ec0723039e6896eedab38",
+      "bytes": 68286
+    },
+    {
+      "path": "/optimized-images-20261028/566f316989546f12c5438f8ab0c52ae73051c33e3d82d0eff72f69113a8cdf5a.webp",
+      "sha256": "566f316989546f12c5438f8ab0c52ae73051c33e3d82d0eff72f69113a8cdf5a",
+      "bytes": 58902
+    },
+    {
+      "path": "/optimized-images-20261028/6a238cd7405281d463d4f60a09ac096c37523d326b845f81784f108778f4a38c.webp",
+      "sha256": "6a238cd7405281d463d4f60a09ac096c37523d326b845f81784f108778f4a38c",
+      "bytes": 64730
+    },
+    {
+      "path": "/optimized-images-20261028/3c919a92c8bb8361b3b9d0bdb0769fb21718acc78a8bad0f88f2c145f7ef40e6.webp",
+      "sha256": "3c919a92c8bb8361b3b9d0bdb0769fb21718acc78a8bad0f88f2c145f7ef40e6",
+      "bytes": 56874
+    },
+    {
+      "path": "/optimized-images-20261028/4c4df5ce15e97c496c809febd7061201db9724e118b56ac32580bc1bc4107348.webp",
+      "sha256": "4c4df5ce15e97c496c809febd7061201db9724e118b56ac32580bc1bc4107348",
+      "bytes": 61364
+    },
+    {
+      "path": "/optimized-images-20261028/c5c1264c9c60e5be5ce4d18392b47b4ecea2d50aabf4e02265eedd29390d134e.webp",
+      "sha256": "c5c1264c9c60e5be5ce4d18392b47b4ecea2d50aabf4e02265eedd29390d134e",
+      "bytes": 51470
+    },
+    {
+      "path": "/optimized-images-20261028/5c58c4a8b94c67e163cea44ad1ab37f5e1d49ced0634f3fea9183b1cff9d14ac.webp",
+      "sha256": "5c58c4a8b94c67e163cea44ad1ab37f5e1d49ced0634f3fea9183b1cff9d14ac",
+      "bytes": 60556
+    },
+    {
+      "path": "/optimized-images-20261028/cbe01c1464d6756e5bc09e869e312f4d2a1a6e5cfb1c653092d65a09440c4145.webp",
+      "sha256": "cbe01c1464d6756e5bc09e869e312f4d2a1a6e5cfb1c653092d65a09440c4145",
+      "bytes": 48120
+    },
+    {
+      "path": "/optimized-images-20261028/d822aab53171bb1868dc009a113fcde27cbeb1b161c0c8adaa86b506ebcd1a4d.webp",
+      "sha256": "d822aab53171bb1868dc009a113fcde27cbeb1b161c0c8adaa86b506ebcd1a4d",
+      "bytes": 65560
+    },
+    {
+      "path": "/optimized-images-20261028/4d2a761c5e00e40b189ed55c1b245190a077d6be3b72b81d429e9d4deb932dad.webp",
+      "sha256": "4d2a761c5e00e40b189ed55c1b245190a077d6be3b72b81d429e9d4deb932dad",
+      "bytes": 58320
+    },
+    {
+      "path": "/optimized-images-20261028/ee00567873c438e851a65d583372ea1fbf74a0d2b679a153c999eea435231acd.webp",
+      "sha256": "ee00567873c438e851a65d583372ea1fbf74a0d2b679a153c999eea435231acd",
+      "bytes": 63102
+    },
+    {
+      "path": "/optimized-images-20261028/ac4ab78b85cc12337cc365f83bf33e70e085bee7ffede039032b5b2fa196b463.webp",
+      "sha256": "ac4ab78b85cc12337cc365f83bf33e70e085bee7ffede039032b5b2fa196b463",
+      "bytes": 54320
+    },
+    {
+      "path": "/optimized-images-20261028/918bbc222bfdf1627aebe4cca6ee75fa4bdbb6a2182abbd55132ae0f71366876.webp",
+      "sha256": "918bbc222bfdf1627aebe4cca6ee75fa4bdbb6a2182abbd55132ae0f71366876",
+      "bytes": 61442
+    },
+    {
+      "path": "/optimized-images-20261028/af0839a5e93ed2d4dfb16ca74b9e14ae6a6ed09ce562a6dbc77538b50933f5d7.webp",
+      "sha256": "af0839a5e93ed2d4dfb16ca74b9e14ae6a6ed09ce562a6dbc77538b50933f5d7",
+      "bytes": 49702
+    },
+    {
+      "path": "/optimized-images-20261028/f84cb5de9c421ce48cf9b938f29827ad68e0f3e92a48db61301658d8a2ce1d8f.webp",
+      "sha256": "f84cb5de9c421ce48cf9b938f29827ad68e0f3e92a48db61301658d8a2ce1d8f",
+      "bytes": 54720
+    },
+    {
+      "path": "/optimized-images-20261028/e49b5212571c21ea612f36627aa11fc5a0f3db1ba1f221efb2e68ecf68257fc9.webp",
+      "sha256": "e49b5212571c21ea612f36627aa11fc5a0f3db1ba1f221efb2e68ecf68257fc9",
+      "bytes": 51522
+    },
+    {
+      "path": "/optimized-images-20261028/74a188e4d4531b1aadd5a9a0c7ab85e224d16391bdc621db3108144b985461b9.webp",
+      "sha256": "74a188e4d4531b1aadd5a9a0c7ab85e224d16391bdc621db3108144b985461b9",
+      "bytes": 53080
+    },
+    {
+      "path": "/optimized-images-20261028/6048619d9d7603d674860c70e40d0374a3909f60a127c9f25ea72c9eb52c01fa.webp",
+      "sha256": "6048619d9d7603d674860c70e40d0374a3909f60a127c9f25ea72c9eb52c01fa",
+      "bytes": 43310
+    },
+    {
+      "path": "/optimized-images-20261028/8a663f41d6192f26069330fab01af0f607d24a34a8d6cfe96602e353163ebd8e.webp",
+      "sha256": "8a663f41d6192f26069330fab01af0f607d24a34a8d6cfe96602e353163ebd8e",
+      "bytes": 59790
+    },
+    {
+      "path": "/optimized-images-20261028/a830bb8af77ac1aa15857ca0bdf7058d80ca26b04f407a6d9e31a4bed8673477.webp",
+      "sha256": "a830bb8af77ac1aa15857ca0bdf7058d80ca26b04f407a6d9e31a4bed8673477",
+      "bytes": 45262
+    },
+    {
+      "path": "/optimized-images-20261028/e38b32b6a9be844c98f0b5acf31b1a51489d2127f341f108b94aa1284b10227d.webp",
+      "sha256": "e38b32b6a9be844c98f0b5acf31b1a51489d2127f341f108b94aa1284b10227d",
+      "bytes": 56028
+    },
+    {
+      "path": "/optimized-images-20261028/4126445d85f73263883488637cb05c3662825efe411715c066f928aa9cadcc04.webp",
+      "sha256": "4126445d85f73263883488637cb05c3662825efe411715c066f928aa9cadcc04",
+      "bytes": 53788
+    },
+    {
+      "path": "/optimized-images-20261028/ca65d77945a3e69d853e2245e3c21493af85df8eb18983b0e90f6b1084b532e8.webp",
+      "sha256": "ca65d77945a3e69d853e2245e3c21493af85df8eb18983b0e90f6b1084b532e8",
+      "bytes": 54252
+    },
+    {
+      "path": "/optimized-images-20261028/16b2145496392aa8956bcc050238e846c8fa61bde1e2302ffa544c39d9beef48.webp",
+      "sha256": "16b2145496392aa8956bcc050238e846c8fa61bde1e2302ffa544c39d9beef48",
+      "bytes": 44808
+    },
+    {
+      "path": "/optimized-images-20261028/97fea1e18720e425e997f502612d49a05c90d0638b75dff646382d177198ba8c.webp",
+      "sha256": "97fea1e18720e425e997f502612d49a05c90d0638b75dff646382d177198ba8c",
+      "bytes": 61680
+    },
+    {
+      "path": "/optimized-images-20261028/82589066e1bc9dc827321c6bebf341a04d28725661c31ac4542a84651bcef670.webp",
+      "sha256": "82589066e1bc9dc827321c6bebf341a04d28725661c31ac4542a84651bcef670",
+      "bytes": 47512
+    },
+    {
+      "path": "/optimized-images-20261028/2cc5b23c27a68094037274a3987180c511503a6eefbd996cd6116bcebc42d784.webp",
+      "sha256": "2cc5b23c27a68094037274a3987180c511503a6eefbd996cd6116bcebc42d784",
+      "bytes": 39042
+    },
+    {
+      "path": "/optimized-images-20261028/ee1af1da8e92e8e0f927f35e962e4ae6747a72e1061cf1fe8689318d9aa01040.webp",
+      "sha256": "ee1af1da8e92e8e0f927f35e962e4ae6747a72e1061cf1fe8689318d9aa01040",
+      "bytes": 50860
+    },
+    {
+      "path": "/optimized-images-20261028/a38da406abf957a76842ad0f1b892f57664b62d9b0714ef7bd2201d5652052fc.webp",
+      "sha256": "a38da406abf957a76842ad0f1b892f57664b62d9b0714ef7bd2201d5652052fc",
+      "bytes": 48920
+    },
+    {
+      "path": "/optimized-images-20261028/e4e25a264f563931fe9b814592beee795d7a6e114d5c49427cd3fe863c427cd8.webp",
+      "sha256": "e4e25a264f563931fe9b814592beee795d7a6e114d5c49427cd3fe863c427cd8",
+      "bytes": 43416
+    },
+    {
+      "path": "/optimized-images-20261028/05f7c66b8ce2dec224555de99f476f3cc197a50db912d41aa62146ccaec8e4f7.webp",
+      "sha256": "05f7c66b8ce2dec224555de99f476f3cc197a50db912d41aa62146ccaec8e4f7",
+      "bytes": 57456
+    },
+    {
+      "path": "/optimized-images-20261028/921837b1d0820ce483132ba6178c5d5772d5bc5c093ae5ba843bbabb9fe6f835.webp",
+      "sha256": "921837b1d0820ce483132ba6178c5d5772d5bc5c093ae5ba843bbabb9fe6f835",
+      "bytes": 43608
+    },
+    {
+      "path": "/optimized-images-20261028/c2bbcd7aaa43bcbabc0521313416acaea54d349673764b50b2652a780c6c3905.webp",
+      "sha256": "c2bbcd7aaa43bcbabc0521313416acaea54d349673764b50b2652a780c6c3905",
+      "bytes": 40438
+    },
+    {
+      "path": "/optimized-images-20261028/d5e3ae51ad09cceb15220d0057afb8b7f1c6904d197985d166fb502ee41a39cb.webp",
+      "sha256": "d5e3ae51ad09cceb15220d0057afb8b7f1c6904d197985d166fb502ee41a39cb",
+      "bytes": 51440
+    },
+    {
+      "path": "/optimized-images-20261028/4abdfc1733a410a3121ae84f72dfd545d2f50679e4e918218559fda2d0219ab8.webp",
+      "sha256": "4abdfc1733a410a3121ae84f72dfd545d2f50679e4e918218559fda2d0219ab8",
+      "bytes": 50924
+    },
+    {
+      "path": "/optimized-images-20261028/ea8f013654dafe78bd0f0b3ae53aeb043597dbb56a9be60b682392743396222e.webp",
+      "sha256": "ea8f013654dafe78bd0f0b3ae53aeb043597dbb56a9be60b682392743396222e",
+      "bytes": 44868
+    },
+    {
+      "path": "/optimized-images-20261028/bdc5e443d7f7892e8ac0d53831d849f010a4a9ea6930313e19be27cc6c6d0c79.webp",
+      "sha256": "bdc5e443d7f7892e8ac0d53831d849f010a4a9ea6930313e19be27cc6c6d0c79",
+      "bytes": 59242
+    },
+    {
+      "path": "/optimized-images-20261028/2081c86eea2ea17e15dde73eb89a4a5400c50d1e4ca9c88ecbd2e79214de3a62.webp",
+      "sha256": "2081c86eea2ea17e15dde73eb89a4a5400c50d1e4ca9c88ecbd2e79214de3a62",
+      "bytes": 45596
+    },
+    {
+      "path": "/optimized-images-20261028/16c2b93073876ccf88e3ac8f48dfabcc9120a34672e89c41744492693d551716.webp",
+      "sha256": "16c2b93073876ccf88e3ac8f48dfabcc9120a34672e89c41744492693d551716",
+      "bytes": 59100
+    },
+    {
+      "path": "/optimized-images-20261028/92484e0beb2cd7a4d7395858b9adfe9497d653f480ce8b89c724c055e506e00b.webp",
+      "sha256": "92484e0beb2cd7a4d7395858b9adfe9497d653f480ce8b89c724c055e506e00b",
+      "bytes": 48842
+    },
+    {
+      "path": "/optimized-images-20261028/120c7269ac7444920b3a9e388fc54354099b8ad8f930da24e8b6f4678b6d6d03.webp",
+      "sha256": "120c7269ac7444920b3a9e388fc54354099b8ad8f930da24e8b6f4678b6d6d03",
+      "bytes": 53358
+    },
+    {
+      "path": "/optimized-images-20261028/8200686a9ae40bbdb8c3714eade7405749ccf949a2138c3f5670afaecfd430ef.webp",
+      "sha256": "8200686a9ae40bbdb8c3714eade7405749ccf949a2138c3f5670afaecfd430ef",
+      "bytes": 42712
+    },
+    {
+      "path": "/optimized-images-20261028/5a64d4c1fe86958e999a55b4128ba1060246ef0577f65e12b75fe62aab8dc2a7.webp",
+      "sha256": "5a64d4c1fe86958e999a55b4128ba1060246ef0577f65e12b75fe62aab8dc2a7",
+      "bytes": 57696
+    },
+    {
+      "path": "/optimized-images-20261028/50f450ba296b3a3f94f44b62d75bc3545276ac81eb65d977607df0e89ffcfc59.webp",
+      "sha256": "50f450ba296b3a3f94f44b62d75bc3545276ac81eb65d977607df0e89ffcfc59",
+      "bytes": 43454
+    },
+    {
+      "path": "/optimized-images-20261028/420f1d283846d0984ccf0289edab0863124d088a9106c9e0ebd801d5bd4b22a3.webp",
+      "sha256": "420f1d283846d0984ccf0289edab0863124d088a9106c9e0ebd801d5bd4b22a3",
+      "bytes": 60424
+    },
+    {
+      "path": "/optimized-images-20261028/eab895b97fd1414236d01a48ed99ec4840a48e6f7dccc76f58b3316551f0a49a.webp",
+      "sha256": "eab895b97fd1414236d01a48ed99ec4840a48e6f7dccc76f58b3316551f0a49a",
+      "bytes": 50708
+    },
+    {
+      "path": "/optimized-images-20261028/4b2f7fd9ccc71b427b0b88affc543475fffbf70d7bb77ac14de51db455f14ff4.webp",
+      "sha256": "4b2f7fd9ccc71b427b0b88affc543475fffbf70d7bb77ac14de51db455f14ff4",
+      "bytes": 55036
+    },
+    {
+      "path": "/optimized-images-20261028/ae53deee2532a37cc16bc841f86509d62adb5f6a380d2260b38e49b160e0e1ae.webp",
+      "sha256": "ae53deee2532a37cc16bc841f86509d62adb5f6a380d2260b38e49b160e0e1ae",
+      "bytes": 44624
+    },
+    {
+      "path": "/optimized-images-20261028/2e62219769fa8b2d0ebbf289e153ade9c2a05dc09cb14ae53d2342af454f1103.webp",
+      "sha256": "2e62219769fa8b2d0ebbf289e153ade9c2a05dc09cb14ae53d2342af454f1103",
+      "bytes": 59756
+    },
+    {
+      "path": "/optimized-images-20261028/543a543c123a0f993f4b7e6c6cfb03cbe20b4f1074287f4156706463e73e2a9e.webp",
+      "sha256": "543a543c123a0f993f4b7e6c6cfb03cbe20b4f1074287f4156706463e73e2a9e",
+      "bytes": 46228
+    },
+    {
+      "path": "/optimized-images-20261028/5d551c457446c67a54d7189ce7bfe49dd26150c2224bb8e1bd782ced235d7053.webp",
+      "sha256": "5d551c457446c67a54d7189ce7bfe49dd26150c2224bb8e1bd782ced235d7053",
+      "bytes": 57062
+    },
+    {
+      "path": "/optimized-images-20261028/7685916b279b4f06270918950764d35f1769209a13418a3c9c61fc28afa53217.webp",
+      "sha256": "7685916b279b4f06270918950764d35f1769209a13418a3c9c61fc28afa53217",
+      "bytes": 53668
+    },
+    {
+      "path": "/optimized-images-20261028/93bfec39b8a4168428324157e6243054c34178a00965168941df7a10ee9327df.webp",
+      "sha256": "93bfec39b8a4168428324157e6243054c34178a00965168941df7a10ee9327df",
+      "bytes": 54450
+    },
+    {
+      "path": "/optimized-images-20261028/18b177693d2119de69ca618f2e80fa0323707a8c4a30bc5fe45ab8bb22936d26.webp",
+      "sha256": "18b177693d2119de69ca618f2e80fa0323707a8c4a30bc5fe45ab8bb22936d26",
+      "bytes": 41768
+    },
+    {
+      "path": "/optimized-images-20261028/ecb8c602f60d604819c22bb31c0946e97530c661126a4a6257908bccf22cea4d.webp",
+      "sha256": "ecb8c602f60d604819c22bb31c0946e97530c661126a4a6257908bccf22cea4d",
+      "bytes": 52018
+    },
+    {
+      "path": "/optimized-images-20261028/8393a49b3a580d0113688e6c4cf817da46d12b7271154b83062000f94a665e6a.webp",
+      "sha256": "8393a49b3a580d0113688e6c4cf817da46d12b7271154b83062000f94a665e6a",
+      "bytes": 45738
+    },
+    {
+      "path": "/optimized-images-20261028/e6bfcf1f3da84d06cc92abf59117d7e301b9ed3a4e4c89ee21b1b59622f25a8b.webp",
+      "sha256": "e6bfcf1f3da84d06cc92abf59117d7e301b9ed3a4e4c89ee21b1b59622f25a8b",
+      "bytes": 58804
+    },
+    {
+      "path": "/optimized-images-20261028/1456ea7769c741f1a9a9be62694233d2ea7c6edb143a5424c9eca8fcfa04dbe1.webp",
+      "sha256": "1456ea7769c741f1a9a9be62694233d2ea7c6edb143a5424c9eca8fcfa04dbe1",
+      "bytes": 54576
+    },
+    {
+      "path": "/optimized-images-20261028/63a1c2f7804ce16e73e0a88e6f1df4811859785cd8a8d91cc58b6fcd02376933.webp",
+      "sha256": "63a1c2f7804ce16e73e0a88e6f1df4811859785cd8a8d91cc58b6fcd02376933",
+      "bytes": 55906
+    },
+    {
+      "path": "/optimized-images-20261028/57cb65b403669e479a8401bac4206cab9767bceb6294afcc465f216b0bcee779.webp",
+      "sha256": "57cb65b403669e479a8401bac4206cab9767bceb6294afcc465f216b0bcee779",
+      "bytes": 43342
+    },
+    {
+      "path": "/optimized-images-20261028/fc992b3d01ca1bee307873da8ffcbd374c78a4da76a102f7fff35795b3cb854d.webp",
+      "sha256": "fc992b3d01ca1bee307873da8ffcbd374c78a4da76a102f7fff35795b3cb854d",
+      "bytes": 54440
+    },
+    {
+      "path": "/optimized-images-20261028/024f855533a238ba4e802f71926413cf363f0f706b19c9b9e4165ce83e6a6c53.webp",
+      "sha256": "024f855533a238ba4e802f71926413cf363f0f706b19c9b9e4165ce83e6a6c53",
+      "bytes": 47694
+    },
+    {
+      "path": "/optimized-images-20261028/01c35ebbdf97fd9d32c7fa921993b35dbd218be7383f0b2a307761c1f4c507d2.webp",
+      "sha256": "01c35ebbdf97fd9d32c7fa921993b35dbd218be7383f0b2a307761c1f4c507d2",
+      "bytes": 47118
+    },
+    {
+      "path": "/optimized-images-20261028/777512ef4d917e5a2f7c534bdfe93eb482a175bc282a7074b93d3b2d58a9f7ba.webp",
+      "sha256": "777512ef4d917e5a2f7c534bdfe93eb482a175bc282a7074b93d3b2d58a9f7ba",
+      "bytes": 59210
+    },
+    {
+      "path": "/optimized-images-20261028/086f01bae036e8a75efa16723b271482cf206c0712a346e3affccba9b18b5a01.webp",
+      "sha256": "086f01bae036e8a75efa16723b271482cf206c0712a346e3affccba9b18b5a01",
+      "bytes": 57328
+    },
+    {
+      "path": "/optimized-images-20261028/5bbf1082bdb55162925835ec691dc06bb4de867e568b574d25c7418c84f9793b.webp",
+      "sha256": "5bbf1082bdb55162925835ec691dc06bb4de867e568b574d25c7418c84f9793b",
+      "bytes": 50010
+    },
+    {
+      "path": "/optimized-images-20261028/6ec5a2a8a6b4c3268aad43d0df48fd2e3cbdf0c7426ae0a75433260cb48bb568.webp",
+      "sha256": "6ec5a2a8a6b4c3268aad43d0df48fd2e3cbdf0c7426ae0a75433260cb48bb568",
+      "bytes": 60760
+    },
+    {
+      "path": "/optimized-images-20261028/9c078c2cc5738eef8c1f09e13701b1841d117606b8d5ae38fa9866d78d3d721c.webp",
+      "sha256": "9c078c2cc5738eef8c1f09e13701b1841d117606b8d5ae38fa9866d78d3d721c",
+      "bytes": 45472
+    },
+    {
+      "path": "/optimized-images-20261028/00633e0bd98eb11c3abdfae019203935db1aa8a1656ba38c2f83ff7d789eda35.webp",
+      "sha256": "00633e0bd98eb11c3abdfae019203935db1aa8a1656ba38c2f83ff7d789eda35",
+      "bytes": 48510
+    },
+    {
+      "path": "/optimized-images-20261028/85ab52bf366658703e5a454beb6d570db85d24a88d56df05f9aa72f647c1877b.webp",
+      "sha256": "85ab52bf366658703e5a454beb6d570db85d24a88d56df05f9aa72f647c1877b",
+      "bytes": 61184
+    },
+    {
+      "path": "/optimized-images-20261028/8dca891cbce4e3788dd1e954249c3d681239426f5ee3341e6ee7cf8a1dd98ed6.webp",
+      "sha256": "8dca891cbce4e3788dd1e954249c3d681239426f5ee3341e6ee7cf8a1dd98ed6",
+      "bytes": 57670
+    },
+    {
+      "path": "/optimized-images-20261028/811f5766b9c6f534222c6c9421e0f9f06aa5e034c25345391e44a97350281400.webp",
+      "sha256": "811f5766b9c6f534222c6c9421e0f9f06aa5e034c25345391e44a97350281400",
+      "bytes": 51012
+    },
+    {
+      "path": "/optimized-images-20261028/49675087c64d9cfc146e13213c6d6d421f3df5dfca0503970093dc45335f5714.webp",
+      "sha256": "49675087c64d9cfc146e13213c6d6d421f3df5dfca0503970093dc45335f5714",
+      "bytes": 61532
+    },
+    {
+      "path": "/optimized-images-20261028/3f65dcde86da023f42300f8f0ac9bcc50b0a12b78605bce2e799e13fdb19083e.webp",
+      "sha256": "3f65dcde86da023f42300f8f0ac9bcc50b0a12b78605bce2e799e13fdb19083e",
+      "bytes": 47238
+    },
+    {
+      "path": "/optimized-images-20261028/c26c6dd9fd4d9f8e9386fa2cb34ea0a8ebf4b5fbdd2f0e839bf11f0180400aa8.webp",
+      "sha256": "c26c6dd9fd4d9f8e9386fa2cb34ea0a8ebf4b5fbdd2f0e839bf11f0180400aa8",
+      "bytes": 49412
+    },
+    {
+      "path": "/optimized-images-20261028/93c3b4a88fdca837fc6057159cd41ab1974287abd05a03b5602b6a34e7872008.webp",
+      "sha256": "93c3b4a88fdca837fc6057159cd41ab1974287abd05a03b5602b6a34e7872008",
+      "bytes": 54370
+    },
+    {
+      "path": "/optimized-images-20261028/6ab0d89f61d783b817aa806ef1e8af96534704b7e33d268abd99dcd7bc6ef7ff.webp",
+      "sha256": "6ab0d89f61d783b817aa806ef1e8af96534704b7e33d268abd99dcd7bc6ef7ff",
+      "bytes": 52970
+    },
+    {
+      "path": "/optimized-images-20261028/42a1f6ef50f54029133326752974c680ba69a233e50d9a5723f14ec4f401d65b.webp",
+      "sha256": "42a1f6ef50f54029133326752974c680ba69a233e50d9a5723f14ec4f401d65b",
+      "bytes": 47538
+    },
+    {
+      "path": "/optimized-images-20261028/7fa344216725a3dd2b0a9df90c13602ce2ac8098ffd3b2644ccf0259d10d732d.webp",
+      "sha256": "7fa344216725a3dd2b0a9df90c13602ce2ac8098ffd3b2644ccf0259d10d732d",
+      "bytes": 55896
+    },
+    {
+      "path": "/optimized-images-20261028/9a44ba9fef8b89cb535e50d8cafb5c7a3d3f72059522274ca0e90892943773c1.webp",
+      "sha256": "9a44ba9fef8b89cb535e50d8cafb5c7a3d3f72059522274ca0e90892943773c1",
+      "bytes": 50378
+    },
+    {
+      "path": "/optimized-images-20261028/57883b3019197af4cb8897c0b173d92a74209ddc718500381f42d4d185d8f357.webp",
+      "sha256": "57883b3019197af4cb8897c0b173d92a74209ddc718500381f42d4d185d8f357",
+      "bytes": 50232
+    },
+    {
+      "path": "/optimized-images-20261028/b49ad63192c0b7df782aba7daac5182151f13f57b2de4628eeb74cb6285adb85.webp",
+      "sha256": "b49ad63192c0b7df782aba7daac5182151f13f57b2de4628eeb74cb6285adb85",
+      "bytes": 56836
+    },
+    {
+      "path": "/optimized-images-20261028/160b5fe081a27ee9b8b798134ae0130a1cc2b3e477bd2a6f19bfb50cff6c691c.webp",
+      "sha256": "160b5fe081a27ee9b8b798134ae0130a1cc2b3e477bd2a6f19bfb50cff6c691c",
+      "bytes": 54368
+    },
+    {
+      "path": "/optimized-images-20261028/47f976c4bd3f6a4678100dab55ab69d67782fd1798d0760a4808241151081cd2.webp",
+      "sha256": "47f976c4bd3f6a4678100dab55ab69d67782fd1798d0760a4808241151081cd2",
+      "bytes": 49256
+    },
+    {
+      "path": "/optimized-images-20261028/11d469fd3884538570e872b07e188fd39dcc799741d675d028e591448ac220e5.webp",
+      "sha256": "11d469fd3884538570e872b07e188fd39dcc799741d675d028e591448ac220e5",
+      "bytes": 58262
+    },
+    {
+      "path": "/optimized-images-20261028/00aa893970ab86fdd0be72c224803f52597e936bbe82a8eea2ec53a17ffd22af.webp",
+      "sha256": "00aa893970ab86fdd0be72c224803f52597e936bbe82a8eea2ec53a17ffd22af",
+      "bytes": 51958
+    },
+    {
+      "path": "/optimized-images-20261028/f25aed33650c2d8e768328863ef71cad86164cb701c7862bad48212e32d67a50.webp",
+      "sha256": "f25aed33650c2d8e768328863ef71cad86164cb701c7862bad48212e32d67a50",
+      "bytes": 47164
+    },
+    {
+      "path": "/optimized-images-20261028/503c7829db57adeca81e1acc97bc6887ea48bc0d8e334b5d3f7b870ac9a4784b.webp",
+      "sha256": "503c7829db57adeca81e1acc97bc6887ea48bc0d8e334b5d3f7b870ac9a4784b",
+      "bytes": 49650
+    },
+    {
+      "path": "/optimized-images-20261028/69d68394579254c437b7ec2d12755e13f7dd15248e2ab7d3b18f5c8754b6b8af.webp",
+      "sha256": "69d68394579254c437b7ec2d12755e13f7dd15248e2ab7d3b18f5c8754b6b8af",
+      "bytes": 56848
+    },
+    {
+      "path": "/optimized-images-20261028/674ea3ae420bcbfb5de1abe59efb0de79f7d29259d48286621a1ac686a55dcfd.webp",
+      "sha256": "674ea3ae420bcbfb5de1abe59efb0de79f7d29259d48286621a1ac686a55dcfd",
+      "bytes": 44790
+    },
+    {
+      "path": "/optimized-images-20261028/1b555569167cdd05e221e7d7f32f2fb0f4931836029e4fc44f351dcaebffa0a7.webp",
+      "sha256": "1b555569167cdd05e221e7d7f32f2fb0f4931836029e4fc44f351dcaebffa0a7",
+      "bytes": 51992
+    },
+    {
+      "path": "/optimized-images-20261028/4fb92884755b7dcd5ba1dab818e197af7368bef1ea70ee18116739de986af357.webp",
+      "sha256": "4fb92884755b7dcd5ba1dab818e197af7368bef1ea70ee18116739de986af357",
+      "bytes": 48216
+    },
+    {
+      "path": "/optimized-images-20261028/e089930aa5bdd38e5c5a08b8e0b3e1d65ff6471b7182d006a0f397c1a49222ff.webp",
+      "sha256": "e089930aa5bdd38e5c5a08b8e0b3e1d65ff6471b7182d006a0f397c1a49222ff",
+      "bytes": 49296
+    },
+    {
+      "path": "/optimized-images-20261028/79050051107842c377ef4d75d23a22c9c1214807d429f22ac9d3651d038acf1d.webp",
+      "sha256": "79050051107842c377ef4d75d23a22c9c1214807d429f22ac9d3651d038acf1d",
+      "bytes": 52602
+    },
+    {
+      "path": "/optimized-images-20261028/626b902530b588631eb979ccae935f04e831213ab72072358ea36d528de99d25.webp",
+      "sha256": "626b902530b588631eb979ccae935f04e831213ab72072358ea36d528de99d25",
+      "bytes": 58604
+    },
+    {
+      "path": "/optimized-images-20261028/d4393604b8699cde3d7b4847ffaade182f158a475f7f654c56a85c22bb34dc2a.webp",
+      "sha256": "d4393604b8699cde3d7b4847ffaade182f158a475f7f654c56a85c22bb34dc2a",
+      "bytes": 47214
+    },
+    {
+      "path": "/optimized-images-20261028/3e58501784fa2ab06f508164577671e24b1e552db241f9a4856ef99af7c39090.webp",
+      "sha256": "3e58501784fa2ab06f508164577671e24b1e552db241f9a4856ef99af7c39090",
+      "bytes": 54778
+    },
+    {
+      "path": "/optimized-images-20261028/13b7e4da3745c63f580804abf38e8c6d5106dbea40db965e107c922c7e33a6b0.webp",
+      "sha256": "13b7e4da3745c63f580804abf38e8c6d5106dbea40db965e107c922c7e33a6b0",
+      "bytes": 51218
+    }
+  ],
+  "updates": [
+    {
+      "date": "2026-10-29",
+      "reason": "Uma arte por modelo/peça para armaduras +1, +2 e +3; itens e regras preservados",
+      "models": 13,
+      "removedOriginals": 156,
+      "removedExclusiveDerivatives": 156
     }
   ]
 }

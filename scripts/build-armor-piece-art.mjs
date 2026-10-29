@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
 import { magicSkinProfile } from './magic-skin-profiles.mjs';
+import tierArt from '../shared/armor-tier-art.json' with { type: 'json' };
 
 const file = 'data/armor-piece-art-20261012.json';
 const manifest = JSON.parse(await fs.readFile(file));
@@ -59,6 +60,7 @@ async function image(url, size) {
 const images = {}, variants = [], jobs = [];
 for (const [id, , target] of bundles) {
   if (target === 'mount') continue;
+  if (tierArt[id]) continue;
   const item = items.get(id); assert(item, id);
   const model = item.raw_data?.base_item || id;
   for (const slot of slots) {
@@ -98,6 +100,14 @@ async function worker() {
   }
 }
 await Promise.all(Array.from({ length: 4 }, worker));
+for (const [id, canonical] of Object.entries(tierArt)) {
+  for (const slot of slots) {
+    const key = `${canonical}:${slot}`; assert(images[key], key);
+    images[`${id}:${slot}`] = images[key];
+    const source = variants.find(v => v.id === canonical && v.slot === slot); assert(source, key);
+    variants.push({ ...source, id, enhancement: items.get(id).raw_data.enhancement, shared_artwork_id: canonical });
+  }
+}
 assert.equal(Object.keys(images).length, bundles.filter(bundle => bundle[2] !== 'mount').length * 5);
 manifest.assets.sort((a, b) => (a.model + a.slot).localeCompare(b.model + b.slot));
 manifest.variants = variants.sort((a, b) => (a.id + a.slot).localeCompare(b.id + b.slot));

@@ -341,7 +341,7 @@
       "id": "magic-armor-plate-armor-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "plate-armor",
-      "path": "/shop/magic-skins/magic-armor-plate-armor-plus-2.svg",
+      "path": "/shop/expanded/magic-armor.webp",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -349,13 +349,14 @@
       "coating": 1,
       "reference": "/shop/items/plate-armor.png",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "32846d0712753158ff7225de389b439722b7dce1bb1640fd6623b5ede6ea2548"
+      "sha256": "90c3f1e4317a3a2008bb914faa206e0d9c7bd99b51adaa66d80dd052af241ece",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-plate-armor-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "plate-armor",
-      "path": "/shop/magic-skins/magic-armor-plate-armor-plus-3.svg",
+      "path": "/shop/expanded/magic-armor.webp",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -363,7 +364,8 @@
       "coating": 1,
       "reference": "/shop/items/plate-armor.png",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "708c0d1c73e4496fe8de0845db0730915a388aa334ba81b6573e63fbe7599228"
+      "sha256": "90c3f1e4317a3a2008bb914faa206e0d9c7bd99b51adaa66d80dd052af241ece",
+      "shared_artwork_id": "magic-armor"
     },
     {
       "id": "magic-armor-padded-armor-plus-1",
@@ -383,7 +385,7 @@
       "id": "magic-armor-padded-armor-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "padded-armor",
-      "path": "/shop/magic-skins/magic-armor-padded-armor-plus-2.svg",
+      "path": "/shop/magic-skins/magic-armor-padded-armor-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -391,13 +393,14 @@
       "coating": 1,
       "reference": "/shop/expanded/padded-armor.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "63d200430e907d554c1592eeec7da5e18e43bd57e57d5f81c8f45de70c24dcc0"
+      "sha256": "7e453a11882a98b9fe6939ec9a1191724ce65152808db8b37738ef1b10ecceea",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-padded-armor-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "padded-armor",
-      "path": "/shop/magic-skins/magic-armor-padded-armor-plus-3.svg",
+      "path": "/shop/magic-skins/magic-armor-padded-armor-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -405,7 +408,8 @@
       "coating": 1,
       "reference": "/shop/expanded/padded-armor.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "ba0616e057a54115fca0c9dbbc5612f91bab1a9d6dc89e0aac7a0cf7e1508a20"
+      "sha256": "7e453a11882a98b9fe6939ec9a1191724ce65152808db8b37738ef1b10ecceea",
+      "shared_artwork_id": "magic-armor-padded-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-1",
@@ -425,7 +429,7 @@
       "id": "magic-armor-leather-armor-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "leather-armor",
-      "path": "/shop/magic-skins/magic-armor-leather-armor-plus-2.svg",
+      "path": "/shop/magic-skins/magic-armor-leather-armor-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -433,13 +437,14 @@
       "coating": 1,
       "reference": "/shop/items/leather-armor.png",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "84557cd37bac2ef9fe61c9ddcb77046c973875ba5b024efbd5855b415b492491"
+      "sha256": "3e8b05a33da7d2d333b16b6ea12e9670cd087b71cc4abe9a9e4d6206d5b11226",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-leather-armor-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "leather-armor",
-      "path": "/shop/magic-skins/magic-armor-leather-armor-plus-3.svg",
+      "path": "/shop/magic-skins/magic-armor-leather-armor-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -447,7 +452,8 @@
       "coating": 1,
       "reference": "/shop/items/leather-armor.png",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "ca4978fbd7d6980843a7359ba4ccd742a98ce5e309c30d3f34762f8529ba0e3e"
+      "sha256": "3e8b05a33da7d2d333b16b6ea12e9670cd087b71cc4abe9a9e4d6206d5b11226",
+      "shared_artwork_id": "magic-armor-leather-armor-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-1",
@@ -467,7 +473,7 @@
       "id": "magic-armor-studded-leather-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "studded-leather",
-      "path": "/shop/magic-skins/magic-armor-studded-leather-plus-2.svg",
+      "path": "/shop/magic-skins/magic-armor-studded-leather-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -475,13 +481,14 @@
       "coating": 1,
       "reference": "/shop/items/studded-leather.png",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "5186db2fd23d9cf5b12d7902f95f98f99d14a69c962de821ba105984394f98e4"
+      "sha256": "6dc818bc575d41daa3d7d76be1d66274f1297c66ca85050d8ffed2d3c5eb2ebd",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor-studded-leather-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "studded-leather",
-      "path": "/shop/magic-skins/magic-armor-studded-leather-plus-3.svg",
+      "path": "/shop/magic-skins/magic-armor-studded-leather-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -489,7 +496,8 @@
       "coating": 1,
       "reference": "/shop/items/studded-leather.png",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "f0d95aeaa32d9ca566750b1f75314ed65508f1cb35bf9d12c751521e666f1308"
+      "sha256": "6dc818bc575d41daa3d7d76be1d66274f1297c66ca85050d8ffed2d3c5eb2ebd",
+      "shared_artwork_id": "magic-armor-studded-leather-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-1",
@@ -509,7 +517,7 @@
       "id": "magic-armor-hide-armor-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "hide-armor",
-      "path": "/shop/magic-skins/magic-armor-hide-armor-plus-2.svg",
+      "path": "/shop/magic-skins/magic-armor-hide-armor-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -517,13 +525,14 @@
       "coating": 1,
       "reference": "/shop/expanded/hide-armor.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "42fbe90d030650aa45f01890716620a42528db20f6079b6c1843c6101aed1c31"
+      "sha256": "9786e99f085b77a92f27792cb9b7df49c93af12023a9c6e38084e11577ab31fe",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-hide-armor-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "hide-armor",
-      "path": "/shop/magic-skins/magic-armor-hide-armor-plus-3.svg",
+      "path": "/shop/magic-skins/magic-armor-hide-armor-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -531,7 +540,8 @@
       "coating": 1,
       "reference": "/shop/expanded/hide-armor.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "747b8eac77b59a36e33d6dab2efb00c7c9a9ce983baea50decaef7fafda86358"
+      "sha256": "9786e99f085b77a92f27792cb9b7df49c93af12023a9c6e38084e11577ab31fe",
+      "shared_artwork_id": "magic-armor-hide-armor-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-1",
@@ -551,7 +561,7 @@
       "id": "magic-armor-chain-shirt-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "chain-shirt",
-      "path": "/shop/magic-skins/magic-armor-chain-shirt-plus-2.svg",
+      "path": "/shop/magic-skins/magic-armor-chain-shirt-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -559,13 +569,14 @@
       "coating": 1,
       "reference": "/shop/expanded/chain-shirt.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "af05342da1ac0b351196f01377962bf3348d6b1566cd506d422d6f82fd55c227"
+      "sha256": "6c11a0f3326f33f39d540b5a939aa5d48bc69267f42393d42618be3daee3153f",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-chain-shirt-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "chain-shirt",
-      "path": "/shop/magic-skins/magic-armor-chain-shirt-plus-3.svg",
+      "path": "/shop/magic-skins/magic-armor-chain-shirt-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -573,7 +584,8 @@
       "coating": 1,
       "reference": "/shop/expanded/chain-shirt.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "3c8e473536370ae9094e426b4de090c3a7ddc6dc41197f25d9f54157d509cd9a"
+      "sha256": "6c11a0f3326f33f39d540b5a939aa5d48bc69267f42393d42618be3daee3153f",
+      "shared_artwork_id": "magic-armor-chain-shirt-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-1",
@@ -593,7 +605,7 @@
       "id": "magic-armor-scale-mail-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "scale-mail",
-      "path": "/shop/magic-skins/magic-armor-scale-mail-plus-2.svg",
+      "path": "/shop/magic-skins/magic-armor-scale-mail-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -601,13 +613,14 @@
       "coating": 1,
       "reference": "/shop/expanded/scale-mail.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "5af99e0cf6953070894e3d7dfd7f4b48370eef4172a96eb53abd42e7afc2f237"
+      "sha256": "e0e832320d4245636e1adee22a82c115b77905be87313ce8081cefcacbdd8995",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-scale-mail-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "scale-mail",
-      "path": "/shop/magic-skins/magic-armor-scale-mail-plus-3.svg",
+      "path": "/shop/magic-skins/magic-armor-scale-mail-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -615,7 +628,8 @@
       "coating": 1,
       "reference": "/shop/expanded/scale-mail.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "e1bd6264007a5e8707238804fbe6d44c01bcd8485e63b629a31643cfbdf1759a"
+      "sha256": "e0e832320d4245636e1adee22a82c115b77905be87313ce8081cefcacbdd8995",
+      "shared_artwork_id": "magic-armor-scale-mail-plus-1"
     },
     {
       "id": "magic-armor-breastplate-plus-1",
@@ -635,7 +649,7 @@
       "id": "magic-armor-breastplate-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "breastplate",
-      "path": "/shop/magic-skins/magic-armor-breastplate-plus-2.svg",
+      "path": "/shop/magic-skins/magic-armor-breastplate-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -643,13 +657,14 @@
       "coating": 1,
       "reference": "/shop/items/breastplate.png",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "62862d12b8061cf9d387dfcfb4bc9b31d082e9b6bf8acf8e7fd146924c5a85ba"
+      "sha256": "432605c2fe075db1f38280c3c83c5bfeb40bcab27e296d386073c5f4b14815d3",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-breastplate-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "breastplate",
-      "path": "/shop/magic-skins/magic-armor-breastplate-plus-3.svg",
+      "path": "/shop/magic-skins/magic-armor-breastplate-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -657,7 +672,8 @@
       "coating": 1,
       "reference": "/shop/items/breastplate.png",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "8b6276b2a347474b0a207c67302c0321ac2ab3a485d8f0b6a9664a55bdb067bd"
+      "sha256": "432605c2fe075db1f38280c3c83c5bfeb40bcab27e296d386073c5f4b14815d3",
+      "shared_artwork_id": "magic-armor-breastplate-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-1",
@@ -677,7 +693,7 @@
       "id": "magic-armor-half-plate-armor-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "half-plate-armor",
-      "path": "/shop/magic-skins/magic-armor-half-plate-armor-plus-2.svg",
+      "path": "/shop/magic-skins/magic-armor-half-plate-armor-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -685,13 +701,14 @@
       "coating": 1,
       "reference": "/shop/expanded/half-plate-armor.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "702b3ffb4bd93a9e199c3bb96da54306a3646200008ef10a06ff207e6ebf5d2c"
+      "sha256": "d82395397a3235722066fa7d922b3b2fbd857a17eed37e21de4ea7bde5bf1dbb",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-half-plate-armor-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "half-plate-armor",
-      "path": "/shop/magic-skins/magic-armor-half-plate-armor-plus-3.svg",
+      "path": "/shop/magic-skins/magic-armor-half-plate-armor-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -699,7 +716,8 @@
       "coating": 1,
       "reference": "/shop/expanded/half-plate-armor.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "21f4b96daf001034818c9cf797dfc327533eb747141e9f0b03a028f7a07f0333"
+      "sha256": "d82395397a3235722066fa7d922b3b2fbd857a17eed37e21de4ea7bde5bf1dbb",
+      "shared_artwork_id": "magic-armor-half-plate-armor-plus-1"
     },
     {
       "id": "magic-armor-ring-mail-plus-1",
@@ -719,7 +737,7 @@
       "id": "magic-armor-ring-mail-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "ring-mail",
-      "path": "/shop/magic-skins/magic-armor-ring-mail-plus-2.svg",
+      "path": "/shop/magic-skins/magic-armor-ring-mail-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -727,13 +745,14 @@
       "coating": 1,
       "reference": "/shop/expanded/ring-mail.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "60f5a389c2c618bb3e3c2d94f34503268d70adf82129b046c8e3590573ec67c9"
+      "sha256": "392189d71dddf6f89dc465702b9e890954eaa69c9a20c46c99434ee62e34e462",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-ring-mail-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "ring-mail",
-      "path": "/shop/magic-skins/magic-armor-ring-mail-plus-3.svg",
+      "path": "/shop/magic-skins/magic-armor-ring-mail-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -741,7 +760,8 @@
       "coating": 1,
       "reference": "/shop/expanded/ring-mail.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "c91a22e13f5d948a085c568aa0b06f8f3eb26e53b63b221408f60d62713243e7"
+      "sha256": "392189d71dddf6f89dc465702b9e890954eaa69c9a20c46c99434ee62e34e462",
+      "shared_artwork_id": "magic-armor-ring-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-1",
@@ -761,7 +781,7 @@
       "id": "magic-armor-chain-mail-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "chain-mail",
-      "path": "/shop/magic-skins/magic-armor-chain-mail-plus-2.svg",
+      "path": "/shop/magic-skins/magic-armor-chain-mail-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -769,13 +789,14 @@
       "coating": 1,
       "reference": "/shop/items/chain-mail.png",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "e975d4f9a4fba1429096665087a18f26b222517fc0faac136ec3ef1a7a394640"
+      "sha256": "3d640473529133fddd032bb6054058ad396c701d12a6bcd68a06983f06a0983b",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-chain-mail-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "chain-mail",
-      "path": "/shop/magic-skins/magic-armor-chain-mail-plus-3.svg",
+      "path": "/shop/magic-skins/magic-armor-chain-mail-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -783,7 +804,8 @@
       "coating": 1,
       "reference": "/shop/items/chain-mail.png",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "b6cb95d1cfe9c2b12497903ab8bf5507c741b58e09920e3ad506ccf44f7a8c6f"
+      "sha256": "3d640473529133fddd032bb6054058ad396c701d12a6bcd68a06983f06a0983b",
+      "shared_artwork_id": "magic-armor-chain-mail-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-1",
@@ -803,7 +825,7 @@
       "id": "magic-armor-splint-armor-plus-2",
       "family": "Armor, +1, +2, or +3",
       "model": "splint-armor",
-      "path": "/shop/magic-skins/magic-armor-splint-armor-plus-2.svg",
+      "path": "/shop/magic-skins/magic-armor-splint-armor-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.47,
@@ -811,13 +833,14 @@
       "coating": 1,
       "reference": "/shop/expanded/splint-armor.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "7e5c3249f94af0d378410a1f7cc74cac6c9b51cb83d34cb6fcdb7f4065a2df31"
+      "sha256": "f8ddf6456a580d9914a86f23b87350b77434f390e011dda1f284962a23773368",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "magic-armor-splint-armor-plus-3",
       "family": "Armor, +1, +2, or +3",
       "model": "splint-armor",
-      "path": "/shop/magic-skins/magic-armor-splint-armor-plus-3.svg",
+      "path": "/shop/magic-skins/magic-armor-splint-armor-plus-1.svg",
       "material": "runic-steel",
       "color": "#87c7ff",
       "opacity": 0.495,
@@ -825,7 +848,8 @@
       "coating": 1,
       "reference": "/shop/expanded/splint-armor.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
-      "sha256": "aea2a0c516691823bc56953437574801f316bd5948ade403975327638c4da220"
+      "sha256": "f8ddf6456a580d9914a86f23b87350b77434f390e011dda1f284962a23773368",
+      "shared_artwork_id": "magic-armor-splint-armor-plus-1"
     },
     {
       "id": "armor-of-resistance-padded-armor",

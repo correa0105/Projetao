@@ -12202,7 +12202,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é armadura de placas +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-plate-armor-plus-2.svg",
+      "image_path": "/shop/expanded/magic-armor.webp",
       "audio_path": "/audio/emporium/magic-armor-plate-armor-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12244,7 +12244,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é armadura de placas +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-plate-armor-plus-3.svg",
+      "image_path": "/shop/expanded/magic-armor.webp",
       "audio_path": "/audio/emporium/magic-armor-plate-armor-plus-3.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12328,7 +12328,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é armadura acolchoada +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-padded-armor-plus-2.svg",
+      "image_path": "/shop/magic-skins/magic-armor-padded-armor-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-padded-armor-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12370,7 +12370,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é armadura acolchoada +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-padded-armor-plus-3.svg",
+      "image_path": "/shop/magic-skins/magic-armor-padded-armor-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-padded-armor-plus-3.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12454,7 +12454,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é armadura de couro +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-leather-armor-plus-2.svg",
+      "image_path": "/shop/magic-skins/magic-armor-leather-armor-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-leather-armor-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12496,7 +12496,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é armadura de couro +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-leather-armor-plus-3.svg",
+      "image_path": "/shop/magic-skins/magic-armor-leather-armor-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-leather-armor-plus-3.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12580,7 +12580,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é couro batido +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-studded-leather-plus-2.svg",
+      "image_path": "/shop/magic-skins/magic-armor-studded-leather-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-studded-leather-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12622,7 +12622,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é couro batido +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-studded-leather-plus-3.svg",
+      "image_path": "/shop/magic-skins/magic-armor-studded-leather-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-studded-leather-plus-3.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12706,7 +12706,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é armadura de peles +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-hide-armor-plus-2.svg",
+      "image_path": "/shop/magic-skins/magic-armor-hide-armor-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-hide-armor-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12748,7 +12748,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é armadura de peles +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-hide-armor-plus-3.svg",
+      "image_path": "/shop/magic-skins/magic-armor-hide-armor-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-hide-armor-plus-3.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12832,7 +12832,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é camisão de malha +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-chain-shirt-plus-2.svg",
+      "image_path": "/shop/magic-skins/magic-armor-chain-shirt-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-chain-shirt-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12874,7 +12874,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é camisão de malha +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-chain-shirt-plus-3.svg",
+      "image_path": "/shop/magic-skins/magic-armor-chain-shirt-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-chain-shirt-plus-3.wav",
       "raw_data": {
         "srd_page": 210,
@@ -12958,7 +12958,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é cota de escamas +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-scale-mail-plus-2.svg",
+      "image_path": "/shop/magic-skins/magic-armor-scale-mail-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-scale-mail-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -13000,7 +13000,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é cota de escamas +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-scale-mail-plus-3.svg",
+      "image_path": "/shop/magic-skins/magic-armor-scale-mail-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-scale-mail-plus-3.wav",
       "raw_data": {
         "srd_page": 210,
@@ -13084,7 +13084,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é peitoral +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-breastplate-plus-2.svg",
+      "image_path": "/shop/magic-skins/magic-armor-breastplate-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-breastplate-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -13126,7 +13126,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é peitoral +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-breastplate-plus-3.svg",
+      "image_path": "/shop/magic-skins/magic-armor-breastplate-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-breastplate-plus-3.wav",
       "raw_data": {
         "srd_page": 210,
@@ -13210,7 +13210,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é meia armadura de placas +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-half-plate-armor-plus-2.svg",
+      "image_path": "/shop/magic-skins/magic-armor-half-plate-armor-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-half-plate-armor-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -13252,7 +13252,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é meia armadura de placas +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-half-plate-armor-plus-3.svg",
+      "image_path": "/shop/magic-skins/magic-armor-half-plate-armor-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-half-plate-armor-plus-3.wav",
       "raw_data": {
         "srd_page": 210,
@@ -13336,7 +13336,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é cota de anéis +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-ring-mail-plus-2.svg",
+      "image_path": "/shop/magic-skins/magic-armor-ring-mail-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-ring-mail-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -13378,7 +13378,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é cota de anéis +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-ring-mail-plus-3.svg",
+      "image_path": "/shop/magic-skins/magic-armor-ring-mail-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-ring-mail-plus-3.wav",
       "raw_data": {
         "srd_page": 210,
@@ -13462,7 +13462,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é cota de malha +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-chain-mail-plus-2.svg",
+      "image_path": "/shop/magic-skins/magic-armor-chain-mail-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-chain-mail-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -13504,7 +13504,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é cota de malha +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-chain-mail-plus-3.svg",
+      "image_path": "/shop/magic-skins/magic-armor-chain-mail-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-chain-mail-plus-3.wav",
       "raw_data": {
         "srd_page": 210,
@@ -13588,7 +13588,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é armadura de talas +2.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-splint-armor-plus-2.svg",
+      "image_path": "/shop/magic-skins/magic-armor-splint-armor-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-splint-armor-plus-2.wav",
       "raw_data": {
         "srd_page": 210,
@@ -13630,7 +13630,7 @@
       "merchant_comment": "A armadura mágica oferece proteção extra. A cautela ainda custa menos. Esta peça é armadura de talas +3.",
       "source": "SRD 5.2.1",
       "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210",
-      "image_path": "/shop/magic-skins/magic-armor-splint-armor-plus-3.svg",
+      "image_path": "/shop/magic-skins/magic-armor-splint-armor-plus-1.svg",
       "audio_path": "/audio/emporium/magic-armor-splint-armor-plus-3.wav",
       "raw_data": {
         "srd_page": 210,

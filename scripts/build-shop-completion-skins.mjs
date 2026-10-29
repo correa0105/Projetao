@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import sharp from 'sharp';
+import tierArt from '../shared/armor-tier-art.json' with { type: 'json' };
 const dir='data/shop-magic-completion-20261009';
 const recipes=JSON.parse(await fs.readFile(dir+'/variant-recipes.json'));
 const manifest=JSON.parse(await fs.readFile(dir+'/art-manifest.json'));
@@ -22,6 +23,7 @@ async function image(url,size,requireAlpha=false){
 }
 for(const r of recipes){
  assert(candidates.has(r.id)&&!oldIds.has(r.id),'Only new concrete candidates may receive skins');
+ if(tierArt[r.id])continue;
  const existing=manifest.assets.find(x=>x.id===r.id);
  if(existing?.review==='approved')continue;
  const base=await image(r.reference,512,true),tex=await image(r.texture,256);
@@ -43,9 +45,15 @@ for(const r of recipes){
  const dest=`/shop/magic-completion-20261009/${r.id}.svg`;
  await fs.writeFile('public'+dest,svg);
  const a={id:r.id,path:dest,mode:'native SVG material skin',reference:r.reference,texture:r.texture,physical_model:r.model,family:r.family,enhancement:bonus,...(r.spell_level!=null?{spell_level:r.spell_level,decoration_tier:decoration}:{}),width:w,height:h,sha256:createHash('sha256').update(svg).digest('hex'),review:'pending visual review'};
- assert(!manifest.assets.some(x=>x.id!==r.id&&x.sha256===a.sha256),'Repeated image');
+ assert(!manifest.assets.some(x=>x.id!==r.id&&tierArt[x.id]!==r.id&&x.sha256===a.sha256),'Repeated image');
  manifest.assets=manifest.assets.filter(x=>x.id!==r.id);
  manifest.assets.push(a);
+}
+for(const [id,canonical] of Object.entries(tierArt)){
+ const alias=manifest.assets.find(a=>a.id===id);
+ if(!alias)continue;
+ const source=manifest.assets.find(a=>a.id===canonical);assert(source,canonical);
+ Object.assign(alias,{path:source.path,sha256:source.sha256,shared_artwork_id:canonical});
 }
 await fs.writeFile(dir+'/art-manifest.json',JSON.stringify(manifest,null,2)+'\n');
 console.log('Prepared original material skins for',recipes.length,'new concrete forms; existing approved art preserved.');

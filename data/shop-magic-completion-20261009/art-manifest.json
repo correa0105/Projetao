@@ -458,7 +458,7 @@
     },
     {
       "id": "spiked-armor-plus-2",
-      "path": "/shop/magic-completion-20261009/spiked-armor-plus-2.svg",
+      "path": "/shop/magic-completion-20261009/spiked-armor-plus-1.svg",
       "mode": "native SVG material skin",
       "reference": "/shop/magic-completion-20261009/model-spiked-armor.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
@@ -467,8 +467,9 @@
       "enhancement": 2,
       "width": 373,
       "height": 544,
-      "sha256": "8b934f867d808274383e8c6732ae3c9030c4bf738f551c456947a2d5dfac239d",
-      "review": "approved"
+      "sha256": "9c689235382ace76c3a558a9cf1f605524b5b3e79b75588a29ec69f6a4add294",
+      "review": "approved",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "double-bladed-scimitar-plus-2",
@@ -528,7 +529,7 @@
     },
     {
       "id": "spiked-armor-plus-3",
-      "path": "/shop/magic-completion-20261009/spiked-armor-plus-3.svg",
+      "path": "/shop/magic-completion-20261009/spiked-armor-plus-1.svg",
       "mode": "native SVG material skin",
       "reference": "/shop/magic-completion-20261009/model-spiked-armor.webp",
       "texture": "/shop/magic-materials/runic-steel.webp",
@@ -537,8 +538,9 @@
       "enhancement": 3,
       "width": 373,
       "height": 544,
-      "sha256": "7fe8e63cd1706673dd7104027650161e678bb1519cf4a8168b187f95fbe6cc96",
-      "review": "approved"
+      "sha256": "9c689235382ace76c3a558a9cf1f605524b5b3e79b75588a29ec69f6a4add294",
+      "review": "approved",
+      "shared_artwork_id": "spiked-armor-plus-1"
     },
     {
       "id": "double-bladed-scimitar-plus-3",

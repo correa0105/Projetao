@@ -26,5 +26,5 @@ test('cada peça humana ou de mascote possui imagem própria; placas anteriores 
   }
   assert.equal(armorPieceImage('plate-armor', 'head'), '/shop/equipment/plate-helmet.png');
   assert.notEqual(armorPieceImage('hide-armor', 'head'), armorPieceImage('leather-armor', 'head'));
-  assert.notEqual(armorPieceImage('magic-armor', 'head'), armorPieceImage('magic-armor-plate-armor-plus-2', 'head'));
+  assert.equal(armorPieceImage('magic-armor', 'head'), armorPieceImage('magic-armor-plate-armor-plus-2', 'head'));
 });

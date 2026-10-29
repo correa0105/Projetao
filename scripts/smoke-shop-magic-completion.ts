@@ -7,6 +7,7 @@ import { compatibleSlots, twoHanded } from '../shared/equipment.js';
 import { consumableItems } from '../shared/vtt-sheet.js';
 import { armorBundle, purchaseContents } from '../shared/armor-bundles.js';
 import { shopQaApp } from './shop-qa-app.js';
+import tierArt from '../shared/armor-tier-art.json';
 if (!/^\/alvorada_test_[a-f0-9]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable database required');
 const { pool } = await import('../server/db.js');
@@ -111,7 +112,11 @@ try {
     const b = Buffer.from(await image.arrayBuffer());
     const h = createHash('sha256').update(b).digest('hex');
     assert.equal(h, art.find((x: any) => x.id === expected.id).sha256);
-    assert(!hashes.has(h));
+    const sharedId = tierArt as Record<string, string>;
+    if (sharedId[expected.id]) {
+      const shared = art.find((x: any) => x.id === sharedId[expected.id]);
+      assert(shared && shared.path === expected.image_path && shared.sha256 === h);
+    } else assert(!hashes.has(h));
     hashes.add(h);
     assert((await sharp(b).metadata()).hasAlpha);
     const audio = await fetch(base + expected.audio_path);

@@ -97,6 +97,8 @@ const illustratedVariants = {
     'midnight blue leather and silver storm giant belt with sapphire lightning gemstone',
 };
 
+import tierArt from '../shared/armor-tier-art.json' with { type: 'json' };
+
 export function magicSkinProfile(item) {
   const raw = item.raw_data || {};
   let value = familyMaterials[raw.magic_family];
@@ -146,6 +148,14 @@ export function assignMagicSkins(items, old = []) {
       texture: `/shop/magic-materials/${profile.material}.webp`,
     };
     item.image_path = `/shop/magic-skins/${item.id}.svg`;
+  }
+  for (const item of items) {
+    const canonical = tierArt[item.id];
+    if (canonical) {
+      const source = all.get(canonical);
+      if (!source) throw Error(`Unknown shared armor artwork: ${canonical}`);
+      item.image_path = source.image_path;
+    }
   }
   return items;
 }

@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { permittedSource } from '../shared/content-sources.ts';
+import tierArt from '../shared/armor-tier-art.json' with { type: 'json' };
 const dir = 'data/shop-magic-completion-20261009';
 const candidates = JSON.parse(await fs.readFile(dir + '/candidates.json')).items;
 const editorial = JSON.parse(await fs.readFile(dir + '/editorial.json'));
@@ -70,7 +71,10 @@ for (const c of candidates) {
   assert(/^\/shop\/magic-completion-20261009\/[a-z0-9-]+\.(webp|svg)$/.test(a.path), 'Unsafe art');
   const bytes = await fs.readFile('public' + a.path);
   assert.equal(createHash('sha256').update(bytes).digest('hex'), a.sha256, c.id + ' changed art');
-  assert(!hashes.has(a.sha256), 'Repeated art: ' + c.id);
+  if (tierArt[c.id]) {
+    const shared = art.find(x => x.id === tierArt[c.id]);
+    assert(shared && a.shared_artwork_id === shared.id && a.path === shared.path && a.sha256 === shared.sha256, 'Invalid shared armor art: ' + c.id);
+  } else assert(!hashes.has(a.sha256), 'Repeated art: ' + c.id);
   hashes.add(a.sha256);
   const f = c.facts,
     type = (f.type || '').split('|')[0];

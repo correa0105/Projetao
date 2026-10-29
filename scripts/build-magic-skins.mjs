@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import sharp from 'sharp';
 import { assignMagicSkins } from './magic-skin-profiles.mjs';
 import { writeThematicSkinIds } from './generate-thematic-skin-ids.mjs';
+import tierArt from '../shared/armor-tier-art.json' with { type: 'json' };
 
 const file = 'data/emporium-expansion.json';
 const catalog = JSON.parse(await fs.readFile(file, 'utf8'));
@@ -32,6 +33,7 @@ const manifest = [];
 for (const item of catalog.items) {
   const skin = item.raw_data?.magic_skin;
   if (!skin) continue;
+  if (tierArt[item.id]) continue;
   const base = await asset(skin.reference, 512),
     texture = await asset(skin.texture, 256);
   const width = base.width + 32,
@@ -55,6 +57,11 @@ for (const item of catalog.items) {
     ...skin,
     sha256: crypto.createHash('sha256').update(renderedSvg).digest('hex'),
   });
+}
+for (const item of catalog.items) if (tierArt[item.id] && item.raw_data?.magic_skin) {
+  manifest.push({ id: item.id, family: item.raw_data.magic_family, model: item.raw_data.base_item,
+    path: item.image_path, ...item.raw_data.magic_skin, shared_artwork_id: tierArt[item.id],
+    sha256: crypto.createHash('sha256').update(await fs.readFile('public' + item.image_path)).digest('hex') });
 }
 await fs.writeFile(file, JSON.stringify(catalog, null, 2) + '\n');
 await fs.writeFile(
