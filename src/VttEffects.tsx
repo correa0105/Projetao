@@ -55,7 +55,7 @@ export function VttEffects({
       if (!toolbar) return;
       const top = Math.max(8, Math.min(toolbar.top + 8, window.innerHeight - 180));
       setMenuPosition({
-        left: toolbar.right + 8,
+        left: Math.max(8, Math.min(toolbar.right + 8, window.innerWidth - Math.min(390, window.innerWidth - (window.innerWidth <= 600 ? 74 : 94)) - 12)),
         top,
         maxHeight: Math.min(650, window.innerHeight - top - 12),
       });

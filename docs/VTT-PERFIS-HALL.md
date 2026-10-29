@@ -9,9 +9,23 @@ Guia vigente: [PROFILE-VISIT-SIGNPOST.md](PROFILE-VISIT-SIGNPOST.md).
 
 ## Navegação e personalização — 06/10/2026
 
-Combate ocupa a antiga posição de Diário nos sete ícones da barra lateral.
-Diário é a terceira subaba de Fichas (Personagens, Token selecionado, Diário);
-anotações/imagens e permissões continuam no mesmo documento da mesa.
+O botão **Menu** no topo reúne a navegação do VTT em um painel à esquerda.
+A lista tem busca e opções agrupadas para a mesa, biblioteca, companhia,
+mapa/ferramentas e sessão. Escolher uma opção mostra seu conteúdo no mesmo
+painel; **Todas as opções** volta à lista e **Escape** fecha o menu devolvendo
+o foco ao botão. O mapa começa com o painel recolhido.
+
+Chat, combate, diário, fichas, animais, veículos, armas de cerco, bibliotecas,
+som, configurações e ajuda mantêm suas funções e permissões. As ferramentas
+ficam em **Menu → Ferramentas do mapa**. As antigas barras de ícones e subabas
+foram reunidas nessa lista. As coleções de cenário quebram em duas colunas,
+com todos os botões dentro do painel. Em telas pequenas, o menu abre sobre o
+lado esquerdo do mapa e pode ser fechado para liberar a tela.
+Anotações, imagens, câmera, documentos e atalhos da sessão são preservados.
+
+`node scripts/test-vtt-menu-isolated.mjs` valida navegação, busca, teclado,
+ausência de recortes em cinco larguras, colocação de cenário por clique e os
+controles de mestre, jogador e espectador em banco descartável.
 Chat tem Minimizar / Mostrar controles do chat: recolhe título, dados rápidos,
 fórmula, privacidade e carregar histórico; log/envio continuam disponíveis.
 Configurações e ajuda → Personalização → Recolher controles do chat controla
