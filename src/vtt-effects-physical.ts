@@ -49,6 +49,8 @@ const originalPhysicalPropsReady = Promise.all(
   ).map(async (name) => {
     if (typeof Image === 'undefined') return;
     const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
     image.src = '/vtt/physical-20261009/' + name + '.webp';
     try {
       await image.decode();

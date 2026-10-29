@@ -22,6 +22,8 @@ export const nativeFlowReady = Promise.all(
   flowArtIds.map(async (id) => {
     if (typeof Image === 'undefined') return;
     const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
     image.src = '/vtt/refined-2124-20261009/' + id + '.webp';
     try {
       await image.decode();

@@ -1,3 +1,4 @@
+import { VttAssetImage } from './VttAssetImage';
 import { useState } from 'react';
 import { terrainTextures, type TerrainTextureId } from '../shared/vtt-terrain';
 import { referenceGrassTextures } from '../shared/reference-grass';
@@ -50,7 +51,7 @@ export function TerrainTexturePicker({
       </label>
       {selected && (
         <div className="terrain-texture-selected" aria-label="Textura selecionada">
-          <img src={'thumbnail' in selected ? selected.thumbnail : selected.image} alt="" />
+          <VttAssetImage thumbnail src={'thumbnail' in selected ? selected.thumbnail : selected.image} alt="" />
           <span>
             Textura selecionada<strong>{selected.name}</strong>
           </span>
@@ -66,7 +67,7 @@ export function TerrainTexturePicker({
             aria-pressed={value === t.id}
             onClick={() => change(t.id)}
           >
-            <img src={'thumbnail' in t ? t.thumbnail : t.image} alt="" loading="lazy" />
+            <VttAssetImage thumbnail src={'thumbnail' in t ? t.thumbnail : t.image} alt="" loading="lazy" />
             <span>{t.name}</span>
           </button>
         ))}

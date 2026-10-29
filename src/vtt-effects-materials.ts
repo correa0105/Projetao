@@ -12,6 +12,8 @@ export const effectMaterialsReady = Promise.all(
   (['vapor', 'flame', 'energy'] as const).map(async (material) => {
     if (typeof Image === 'undefined') return;
     const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
     image.src = '/vtt/materials-20261009/' + material + '-v1.webp';
     try {
       await image.decode();

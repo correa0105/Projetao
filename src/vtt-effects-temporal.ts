@@ -9,7 +9,9 @@ export const temporalFieldsReady = Promise.all(
     [0, 1, 2].map(async (page) => {
       if (typeof Image === 'undefined') return;
       const image = new Image();
-      image.src = `/vtt/temporal-20261009/${kind}-${page}.webp`;
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
+      image.src = `/vtt/temporal-20261009/${kind}-${page}.webp?v=native-atlas-20261029`;
       try {
         await image.decode();
         pages.set(`${kind}-${page}`, image);

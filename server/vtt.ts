@@ -3,6 +3,7 @@ import { createVttRoom, vttStorage, ensurePersonalVtt, setPersonalVttRoom, perso
 import {reuseVttAsset,uniqueVttAssetsSql,duplicateVttAssetIds} from './vtt-assets.js';
 import {convertSceneryToToken} from '../shared/vtt-scenery-token.js';
 import express from 'express';
+import { sendImagePreview } from './image-preview.js';
 import { randomInt, randomUUID, randomBytes } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { appendMonsterTestCards } from '../shared/vtt-monster-test-cards.js';
@@ -1345,6 +1346,10 @@ export function vttRouter() {
     )
       throw new AppError(404, 'Arquivo não disponível.');
     res.setHeader('Content-Type', a.mime);
+    if(a.mime.startsWith('image/') && req.query.thumbnail==='1' && !req.headers.range){
+      res.setHeader('Cache-Control','private, no-store');
+      await sendImagePreview(req,res,a.bytes);return;
+    }
     res.setHeader('Accept-Ranges', 'bytes');
     const match = req.headers.range?.match(/^bytes=(\d+)-(\d*)$/);
     if (match) {

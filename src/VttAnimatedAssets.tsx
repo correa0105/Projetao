@@ -1,52 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { VttAssetImage } from './VttAssetImage';
+import posters from '../shared/vtt-animated-thumbnails.json';
 import {
   animatedAssets,
   animatedAssetMime,
   type AnimatedAsset,
 } from '../shared/vtt-animated-assets';
-import { newDocument, newToken } from '../shared/vtt';
-import { drawAnimatedAsset } from './vtt-animated-assets';
-import { effectMaterialsReady } from './vtt-effects-materials';
-import { physicalPropsReady } from './vtt-effects-physical';
-function Preview({ id, image }: { id: AnimatedAsset['id']; image: string }) {
-  const ref = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const c = ref.current!.getContext('2d')!,
-      art = new Image();
-    if (image) art.src = image;
-    const scene = newDocument(crypto.randomUUID()).scenes[0],
-      token = newToken(crypto.randomUUID(), scene);
-    token.width = token.height = 180;
-    token.animatedAsset = { id, speed: 1, intensity: 0.8, playing: false };
-    let disposed = false;
-    const paint = () => {
-      if (disposed) return;
-      c.clearRect(0, 0, 192, 192);
-      c.save();
-      c.translate(96, 96);
-      if (id === 'windmill' && art.naturalWidth) {
-        const fit = 180 / Math.max(art.naturalWidth, art.naturalHeight);
-        c.drawImage(
-          art,
-          (-art.naturalWidth * fit) / 2,
-          (-art.naturalHeight * fit) / 2,
-          art.naturalWidth * fit,
-          art.naturalHeight * fit,
-        );
-      } else drawAnimatedAsset(c, token, image ? art : undefined, 1700, true, true);
-      c.restore();
-    };
-    void Promise.all([
-      id === 'windmill' ? Promise.resolve() : effectMaterialsReady,
-      id === 'windmill' ? Promise.resolve() : physicalPropsReady,
-      image ? art.decode().catch(() => {}) : Promise.resolve(),
-    ]).then(paint);
-    return () => {
-      disposed = true;
-    };
-  }, [id, image]);
-  return <canvas ref={ref} width={192} height={192} aria-label="Prévia estática vista de cima" />;
-}
 export function VttAnimatedAssets({
   query,
   gm,
@@ -86,7 +44,7 @@ export function VttAnimatedAssets({
               e.dataTransfer.effectAllowed = 'copy';
             }}
           >
-            <Preview id={a.id} image={a.image} />
+            <VttAssetImage thumbnail src={(posters as Record<string,string>)[a.id] || a.image} fallback={a.image} width={192} height={192} alt="" aria-label="Prévia estática vista de cima" />
             <strong>{a.name}</strong>
             <p>{a.description}</p>
             {gm && (

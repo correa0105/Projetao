@@ -1,3 +1,4 @@
+import { VttAssetImage } from './VttAssetImage';
 import { useEffect, useState } from 'react';
 import { api } from './api';
 import type { MonsterPreset } from '../shared/vtt-monster-presets';
@@ -97,7 +98,7 @@ export function VttPrivateLibrary({
                 onClick={() => setSelected(m)}
                 title={gm ? 'Arraste para a mesa ou abra a ficha' : 'Ver ficha'}
               >
-                <img loading="lazy" src={m.image} alt="" draggable={false} style={{ filter: monsterVariantFilter(variant) }} />
+                <VttAssetImage thumbnail loading="lazy" src={m.image} alt="" draggable={false} style={{ filter: monsterVariantFilter(variant) }} />
                 <span>{m.name}</span>
                 <small>ND {m.cr}</small>
               </button>
@@ -109,7 +110,7 @@ export function VttPrivateLibrary({
             .filter((p) => p.name.toLowerCase().includes(query.toLowerCase()))
             .map((p) => (
               <article key={p.id} draggable={gm} onDragStart={(e) => drag(e, 'preset:' + p.id)}>
-                <img loading="lazy" src={p.image || undefined} alt="" draggable={false} style={{ filter: monsterVariantFilter(p.token.artVariant) }} />
+                <VttAssetImage thumbnail loading="lazy" src={p.image || ''} alt="" draggable={false} style={{ filter: monsterVariantFilter(p.token.artVariant) }} />
                 <strong>{p.name}</strong>
                 <small>
                   CA {p.token.ac} · PV {p.token.maxHp}

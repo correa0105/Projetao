@@ -1,3 +1,4 @@
+import { VttAssetImage } from './VttAssetImage';
 import { useEffect, useState, type DragEvent } from 'react';
 import { api } from './api';
 import { companionMime, type VttCompanion } from '../shared/vtt-companions';
@@ -66,7 +67,7 @@ export function VttCompanions({
           title="Arraste para o mapa"
         >
           <span className="vtt-companion-thumbnail">
-            <img src={a.portraitUrl || a.tokenUrl} alt="" />
+            <VttAssetImage thumbnail src={a.portraitUrl || a.tokenUrl} alt="" />
           </span>
           <span>
             <strong>{a.name}</strong>
@@ -76,7 +77,7 @@ export function VttCompanions({
             </small>
           </span>
           <span className="vtt-companion-token-mini" title="Token visto de cima">
-            <img src={a.tokenUrl} alt="Token visto de cima" />
+            <VttAssetImage thumbnail src={a.tokenUrl} alt="Token visto de cima" />
           </span>
         </button>
       ))}

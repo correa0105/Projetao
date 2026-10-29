@@ -2,6 +2,8 @@ let wraith: HTMLImageElement | undefined;
 export const spectralScreamerReady = (async () => {
   if (typeof Image === 'undefined') return;
   const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
   image.src = '/vtt/spectral-reaper-20261010/reaper.webp';
   try {
     await image.decode();

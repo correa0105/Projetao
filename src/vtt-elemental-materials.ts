@@ -30,9 +30,11 @@ export const elementalMaterialsReady = Promise.all(
     async (key) => {
       if (typeof Image === 'undefined') return;
       const img = new Image();
+    img.decoding = 'async';
+    img.fetchPriority = 'low';
       img.src = key.startsWith('electric-')
-        ? `/vtt/chain-lightning-20261010/${key}.webp`
-        : `/vtt/elemental-20261009/${key}.webp`;
+        ? `/vtt/chain-lightning-20261010/${key}.webp?v=native-atlas-20261029`
+        : `/vtt/elemental-20261009/${key}.webp?v=native-atlas-20261029`;
       try {
         await img.decode();
         pages.set(key, img);

@@ -5,24 +5,34 @@ import type {Request,Response} from 'express';
 const cache=new Map<string,Buffer|null>(),pending=new Map<string,Promise<Buffer|null>>();
 let cachedBytes=0;
 const maxBytes=32*1024*1024;
+let thumbnailWorkers=0;
+const thumbnailQueue:(()=>void)[]=[];
+async function thumbnailSlot(){
+  if(thumbnailWorkers<2){thumbnailWorkers++;return;}
+  await new Promise<void>(resolve=>thumbnailQueue.push(resolve));
+}
+function releaseThumbnail(){const next=thumbnailQueue.shift();if(next)next();else thumbnailWorkers--;}
 /** Call only after the route's current authorization and cache headers. */
 export async function sendImagePreview(req:Request,res:Response,original:Buffer) {
   res.vary('Accept');
-  if(original.length<40000 || req.query.original==='1' || !/image\/webp/i.test(req.get('Accept')||'') || !req.accepts('image/webp'))return res.send(original);
-  const key=createHash('sha256').update(original).digest('hex');
+  const thumbnail=req.query.thumbnail==='1';
+  if((!thumbnail&&original.length<40000) || req.query.original==='1' || !/image\/webp/i.test(req.get('Accept')||'') || !req.accepts('image/webp'))return res.send(original);
+  const key=createHash('sha256').update(original).digest('hex')+(thumbnail?':thumbnail-256-v1':'');
   let preview=cache.get(key);
   if(preview!==undefined){cache.delete(key);cache.set(key,preview);}
   else {
     let job=pending.get(key);
-    if(!job && pending.size>=2)return res.send(original);
+    if(!job && pending.size>=(thumbnail?16:2))return res.send(original);
     if(!job){
       job=(async()=>{
+        if(thumbnail)await thumbnailSlot();
         try{
-          const image=sharp(original,{animated:true,limitInputPixels:40_000_000}),meta=await image.metadata();
-          if((meta.pages||1)>1 || meta.format==='webp')return null;
-          const output=await image.webp({quality:86,alphaQuality:100,effort:2}).toBuffer();
+          let image=sharp(original,{animated:!thumbnail,limitInputPixels:40_000_000});const meta=await image.metadata();
+          if(!thumbnail&&((meta.pages||1)>1 || meta.format==='webp'))return null;
+          if(thumbnail)image=image.resize({width:256,height:256,fit:'inside',withoutEnlargement:true});
+          const output=await image.webp({quality:thumbnail?74:86,alphaQuality:100,effort:2}).toBuffer();
           return output.length<original.length*.85?output:null;
-        }catch{return null;}
+        }catch{return null;}finally{if(thumbnail)releaseThumbnail();}
       })();
       pending.set(key,job);
     }

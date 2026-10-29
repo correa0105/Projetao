@@ -482,9 +482,9 @@ export function companionEquipmentRouter() {
       );
     });
     res.setHeader('Cache-Control', 'private, no-store');
-    res
-      .type((await sharp(bytes).metadata()).format === 'webp' ? 'image/webp' : 'image/png')
-      .send(bytes);
+    res.type((await sharp(bytes).metadata()).format === 'webp' ? 'image/webp' : 'image/png');
+    if(req.query.thumbnail==='1')await sendImagePreview(req,res,bytes);
+    else res.send(bytes);
   });
   router.put('/companions/:characterId/equipment-set', async (req, res) => {
     const characterId = uuid.parse(req.params.characterId),
@@ -637,7 +637,9 @@ export function companionEquipmentRouter() {
       return trustedCompanionBase(await companion(db, characterId, kind, companionId));
     });
     res.setHeader('Cache-Control', 'private, no-store');
-    res.type('png').send(bytes);
+    res.type('png');
+    if(req.query.thumbnail==='1')await sendImagePreview(req,res,bytes);
+    else res.send(bytes);
   });
   router.get('/companions/:characterId/:kind/:companionId/image', async (req, res) => {
     const characterId = uuid.parse(req.params.characterId),

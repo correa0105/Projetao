@@ -1,93 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
+import { VttAssetImage } from './VttAssetImage';
+import { useEffect, useState } from 'react';
+import posters from '../shared/vtt-vehicle-thumbnails.json';
 import { api } from './api';
-import { navalAtlas, sailMasts, rowing, rowingImage } from '../shared/vtt-naval';
-import { drawSailingRig } from './vtt-naval-canvas';
-import { drawVehiclePart } from './vtt-vehicles-canvas';
-import type { VttToken } from '../shared/vtt';
 import {
   vehicleDefinitions,
-  vehicleImage,
-  vehicleCoverImage,
   vehicleMime,
-  vehicleDrawParts,
   type OwnedVttVehicle,
   type VehicleId,
 } from '../shared/vtt-vehicles';
 export type VehiclePick = { characterId: string; itemId: VehicleId; copy: number };
 export function VehiclePreview({ id }: { id: VehicleId }) {
-  const canvas = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    let live = true;
-    const img = new Image(),
-      cover = new Image(),
-      oar = new Image();
-    const draw = () => {
-      const c = canvas.current?.getContext('2d');
-      if (
-        !c ||
-        !live ||
-        !img.complete ||
-        !img.naturalWidth ||
-        !cover.complete ||
-        !cover.naturalWidth
-      )
-        return;
-      const d = vehicleDefinitions[id];
-      c.clearRect(0, 0, 180, 180);
-      const scale = Math.min(164 / d.widthFt, 164 / d.lengthFt),
-        w = d.widthFt * scale,
-        h = d.lengthFt * scale;
-      if (sailMasts[id] || rowing[id]) {
-        const t = {
-          width: w,
-          height: h,
-          rotation: 0,
-          image: vehicleImage(id),
-          vehicle: { itemId: id },
-        } as VttToken;
-        c.save();
-        c.translate(90, 90);
-        drawVehiclePart(c, t, img, 'base', { time: 0, animate: false, oar });
-        if (sailMasts[id]) drawSailingRig(c, t, cover);
-        c.restore();
-        canvas.current!.dataset.ready = 'true';
-        return;
-      }
-      for (const part of ['base', 'cover'] as const) {
-        const source = part === 'cover' ? cover : img;
-        for (const { source: r, target: q } of vehicleDrawParts(id, part))
-          c.drawImage(
-            source,
-            r[0] * source.width,
-            r[1] * source.height,
-            r[2] * source.width,
-            r[3] * source.height,
-            (180 - w) / 2 + q[0] * w,
-            (180 - h) / 2 + q[1] * h,
-            q[2] * w,
-            q[3] * h,
-          );
-      }
-      canvas.current!.dataset.ready = 'true';
-    };
-    img.onload = cover.onload = oar.onload = draw;
-    img.src = vehicleImage(id);
-    cover.src = sailMasts[id] ? navalAtlas(id) : vehicleCoverImage(id);
-    if (rowing[id]) oar.src = rowingImage;
-    return () => {
-      live = false;
-    };
-  }, [id]);
-  return (
-    <canvas
-      ref={canvas}
-      width={180}
-      height={180}
-      style={{ width: 84, height: 100, objectFit: 'contain', flexShrink: 0 }}
-      aria-label="Veículo visto de cima"
-      role="img"
-    />
-  );
+  return <VttAssetImage thumbnail src={posters[id]} width={180} height={180}
+    style={{width:84,height:100,objectFit:'contain',flexShrink:0}} alt="Veículo visto de cima"
+    onLoad={event=>{event.currentTarget.dataset.ready='true';}}/>;
 }
 function VehicleRow({
   vehicle: v,

@@ -15,6 +15,8 @@ export function preloadNaturalArt() {
             return;
           }
           const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
           image.onload = () => {
             illustrations.set(id, image);
             cache.clear();

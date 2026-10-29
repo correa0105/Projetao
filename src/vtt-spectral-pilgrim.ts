@@ -4,6 +4,8 @@ let pilgrim: HTMLImageElement | undefined;
 export const spectralPilgrimReady = (async () => {
   if (typeof Image === 'undefined') return;
   const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
   image.src = '/vtt/temporal-20261009/spectral-pilgrim.webp';
   try {
     await image.decode();

@@ -1,3 +1,4 @@
+import { VttAssetImage } from './VttAssetImage';
 import { useEffect, useRef, useState } from 'react';
 import { sceneryAssets, sceneryAssetMime, type SceneryAsset } from '../shared/vtt-scenery-assets';
 import './vtt-scenery-assets.css';
@@ -149,7 +150,7 @@ export function VttSceneryAssets({
             }}
           >
             <div className="vtt-scenery-stage">
-              <img loading="lazy" src={a.image} alt="" draggable={false} />
+              <VttAssetImage thumbnail loading="lazy" src={a.image} alt="" draggable={false} />
               <span>
                 {Number(a.width.toFixed(2))} × {Number(a.height.toFixed(2))}
               </span>

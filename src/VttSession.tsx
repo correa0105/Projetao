@@ -1,3 +1,4 @@
+import { VttAssetImage } from './VttAssetImage';
 import { isTreeCanopy } from '../shared/vtt-canopies';
 import {navalAtlas,navalAnimated,sailMasts,rowing,rowingImage,oceanImage,oceanSchema} from '../shared/vtt-naval';
 import {tokenOnScreen} from './vtt-render-cache';
@@ -3805,7 +3806,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                                 onDragStart={(event) => dragMonster(event, e.id)}
                                 title={gm ? 'Arraste para a mesa' : ''}
                               >
-                                <img
+                                <VttAssetImage thumbnail
                                   loading="lazy"
                                   src={e.image || monsterArt(e.id, e.name)}
                                   style={{ filter: monsterVariantFilter(monsterVariant) }}
@@ -3822,7 +3823,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                       </details>
                       <div className="vtt-asset-grid">
                         <div className="vtt-asset">
-                          <img src="/vtt/crypt.svg" alt="Mapa da cripta" />
+                          <VttAssetImage thumbnail src="/vtt/crypt.svg" alt="Mapa da cripta" />
                           <span>Cripta esquecida</span>
                           {gm && (
                             <button
@@ -3846,7 +3847,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                           )
                           .map((a) => (
                             <div className="vtt-asset" key={a.id}>
-                              <img src={a.path} alt={a.name} />
+                              <VttAssetImage thumbnail src={a.path} alt={a.name} />
                               <span>{a.name}</span>
                               {gm && (
                                 <>
@@ -4003,7 +4004,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                                   }
                                 >
                                   {library === 'monsters' && monsterImage(e) && (
-                                    <img
+                                    <VttAssetImage thumbnail
                                       className={
                                         'vtt-monster-thumbnail' +
                                         (monsterImage(e).startsWith('/api/vtt/premium-art/')

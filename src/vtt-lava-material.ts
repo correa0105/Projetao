@@ -14,6 +14,8 @@ let gpu: Gpu | undefined;
 export const lavaSurfaceReady = (async () => {
   if (typeof Image === 'undefined') return;
   const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
   image.src = '/vtt/lava-flow-20261010/magma-surface.webp';
   try { await image.decode(); surface = image; } catch { /* Optional cosmetic art. */ }
 })();

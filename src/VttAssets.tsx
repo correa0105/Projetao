@@ -1,3 +1,4 @@
+import { VttAssetImage } from './VttAssetImage';
 import { useState, type ReactNode, type DragEvent } from 'react';
 import { Trees, Bird, Plus, X } from 'lucide-react';
 import { rockAssets } from '../shared/vtt-rock-assets';
@@ -172,7 +173,7 @@ export function VttAssets({
                 title={gm ? 'Arraste para o mapa ou veja a prévia' : a.name}
               >
                 <span>
-                  <img src={a.image} alt="" loading="lazy" draggable={false} />
+                  <VttAssetImage thumbnail src={a.image} alt="" loading="lazy" draggable={false} />
                 </span>
                 <strong>{a.name}</strong>
                 <small>{a.group} · {a.squares.toLocaleString('pt-BR')} quadrados</small>

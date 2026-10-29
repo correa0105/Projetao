@@ -41,3 +41,18 @@ test('prévia privada conserva autorização e cache privado mesmo após aquecer
   const raw=await fetch(url+'?original=1',{headers:{'X-User':'owner',Accept:'image/webp'}});assert.deepEqual(Buffer.from(await raw.arrayBuffer()),original);assert.equal(createHash('sha256').update(original).digest('hex'),before);
  }finally{await new Promise<void>(r=>server.close(()=>r()));}
 });
+
+test('miniatura privada tem cache separado, preserva alfa/autorização e mantém o download original',async()=>{
+ const original=await fixture(),app=express();
+ app.get('/private',async(req,res)=>{if(req.get('X-User')!=='owner'){res.status(403).end();return;}res.set('Cache-Control','private, no-store').vary('Cookie').type('png');await sendImagePreview(req,res,original);});
+ const server=app.listen(0,'127.0.0.1');await new Promise<void>(r=>server.once('listening',r));const url='http://127.0.0.1:'+(server.address() as {port:number}).port+'/private';
+ try{
+  const headers={'X-User':'owner',Accept:'image/webp'};
+  await fetch(url,{headers});
+  const replies=await Promise.all(Array.from({length:6},()=>fetch(url+'?thumbnail=1',{headers})));
+  for(const r of replies){const b=Buffer.from(await r.arrayBuffer()),m=await sharp(b).metadata();assert.equal(m.width,256);assert.equal(m.height,256);assert(m.hasAlpha);assert(b.length<original.length*.3);assert.equal(r.headers.get('cache-control'),'private, no-store');}
+  const full=Buffer.from(await(await fetch(url,{headers})).arrayBuffer());assert.equal((await sharp(full).metadata()).width,512);
+  assert.deepEqual(Buffer.from(await(await fetch(url+'?thumbnail=1&original=1',{headers})).arrayBuffer()),original);
+  assert.equal((await fetch(url+'?thumbnail=1',{headers:{Accept:'image/webp'}})).status,403);
+ }finally{await new Promise<void>(r=>server.close(()=>r()));}
+});

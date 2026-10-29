@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Crosshair, Flame, Plus, RotateCcw, Scissors, Volume2, X } from 'lucide-react';
 import { api } from './api';
+import { VttAssetImage } from './VttAssetImage';
 import { viewerSees, type VttState, type VttScene, type VttToken, type Point } from '../shared/vtt';
 import {
   siegeKinds,
@@ -248,7 +249,7 @@ export function VttSiegePanel({
                 e.dataTransfer.effectAllowed = 'copy';
               }}
             >
-              <img src={siegeImage(kind, kind === 'harpoon')} alt="" loading="lazy" />
+              <VttAssetImage thumbnail src={siegeImage(kind, kind === 'harpoon')} alt="" loading="lazy" />
               <strong>{siegeDefinitions[kind].name}</strong>
               <small>
                 {siegeDefinitions[kind].damage} · {siegeDefinitions[kind].damageType}

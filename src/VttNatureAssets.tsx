@@ -20,6 +20,6 @@ export function VttNatureAssets({query,gm,add,category:fixedCategory}:{query:str
       <p>{Number((selected.width*scale).toFixed(2))} × {Number((selected.height*scale).toFixed(2))} quadrados</p>
       {gm&&<button onClick={()=>add(selected.id,scale)}>Colocar no mapa</button>}
     </div>}
-    <div className="vtt-nature-grid">{items.map(a=><button key={a.id} className="vtt-nature-card" draggable={gm} aria-pressed={selected?.id===a.id} onClick={()=>{setSelected(a);setScale(1);setInside(false);}} onDragStart={e=>{e.dataTransfer.setData(natureAssetMime,JSON.stringify({id:a.id,scale:selected?.id===a.id?scale:1}));e.dataTransfer.effectAllowed='copy';}}><VttAssetImage src={vttVisualThumbnail(a.image,a.thumbnail)} fallback={vttVisualSource(a.image)} alt="" loading="lazy" draggable={false}/><span>{a.name}</span></button>)}</div>
+    <div className="vtt-nature-grid">{items.map(a=><button key={a.id} className="vtt-nature-card" draggable={gm} aria-pressed={selected?.id===a.id} onClick={()=>{setSelected(a);setScale(1);setInside(false);}} onDragStart={e=>{e.dataTransfer.setData(natureAssetMime,JSON.stringify({id:a.id,scale:selected?.id===a.id?scale:1}));e.dataTransfer.effectAllowed='copy';}}><VttAssetImage thumbnail src={vttVisualThumbnail(a.image,a.thumbnail)} fallback={vttVisualSource(a.image)} alt="" loading="lazy" draggable={false}/><span>{a.name}</span></button>)}</div>
   </section>;
 }

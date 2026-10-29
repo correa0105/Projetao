@@ -1,3 +1,4 @@
+import { VttAssetImage } from './VttAssetImage';
 import { useEffect, useState, type DragEvent } from 'react';
 import { Users, RefreshCw } from 'lucide-react';
 import { api } from './api';
@@ -77,7 +78,7 @@ export function VttRoomCharacters({
             onClick={() => place(c.id)}
           >
             {token?.image ? (
-              <img src={token.image} alt="" draggable={false} />
+              <VttAssetImage thumbnail src={token.image} alt="" draggable={false} />
             ) : (
               <Users size={25} />
             )}

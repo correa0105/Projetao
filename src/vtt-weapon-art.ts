@@ -14,6 +14,8 @@ export function preloadWeaponArt() {
             return;
           }
           const img = new Image();
+    img.decoding = 'async';
+    img.fetchPriority = 'low';
           requested.add(key);
           img.onload = () => {
             images.set(key, img);

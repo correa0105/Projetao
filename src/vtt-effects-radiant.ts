@@ -21,6 +21,8 @@ function materials() {
       'obsidian-shard',
     ].map(async (name) => {
       const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
       image.src = `/vtt/radiant-20261011/${name}.webp`;
       try {
         await image.decode();

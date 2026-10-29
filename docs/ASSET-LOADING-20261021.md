@@ -62,6 +62,40 @@ primeira visita, recarga com barra, falha/retomada e ausência de downloads de �
 não abertas foram conferidos em testes e navegador. Evidências em `.local` e
 `test-results/image-performance/` e `test-results/site-loading/`.
 
+### Miniaturas das bibliotecas do VTT
+
+Os cartões usam cópias WebP de até 256 px, preservando proporção e transparência.
+`VttAssetImage` só inicia pedidos dentro ou a 96 px do painel visível; essas prévias
+não bloqueiam o loading geral. Monstros, presets, criaturas, cenários, peças,
+texturas do pincel, veículos, armas de cerco e imagens da mesa compartilham esse
+fluxo. O detalhe ampliado e a colocação no mapa continuam usando os caminhos
+originais. Fundos e texturas pintadas não recebem a miniatura como material.
+
+Peças animadas e veículos têm prévias estáticas renderizadas antecipadamente
+pelo mesmo desenho do mapa. Abrir a biblioteca não espera os pacotes de efeitos
+nem monta vários canvases para mostrar os cartões. A animação da peça colocada
+continua completa. Texturas técnicas temporais, elementais e de relâmpago também
+mantêm seus pixels nativos; o manifesto corrige 43 cópias antes redimensionadas.
+
+Imagens privadas aceitam `thumbnail=1` somente depois da autorização existente.
+A conversão usa cache separado da versão completa, duas conversões simultâneas
+e fila limitada, mantendo `private, no-store`. `original=1` tem precedência.
+Nenhuma imagem privada ou original do banco é reescrita.
+
+`node --import tsx scripts/build-vtt-library-thumbnails.mjs` gera o índice público;
+`node scripts/build-vtt-animated-previews.mjs` gera os cartões animados e veículos.
+Os índices em `shared/` vão ao Git e os arquivos em
+`public/optimized-images-20261028/vtt-thumbnails/` acompanham a publicação.
+As 1.953 fontes tratadas passam de 192.804.851 bytes na entrega anterior para
+25.375.136 bytes em miniaturas, cerca de 87% menos. Isso compara o conjunto de
+prévias, não o download de uma visita. As 28 prévias de animações/veículos somam
+380.932 bytes. Evidências e hashes dos originais ficam em `.local`.
+
+`node scripts/test-vtt-menu-isolated.mjs --performance` verifica as categorias com
+rede limitada e pacotes de efeitos atrasados, carregamento por viewport, alfa,
+autorização privada após cache aquecido e conservação da animação no mapa.
+`node scripts/test-vtt-menu-isolated.mjs` verifica a biblioteca no painel direito.
+
 ### Imagens retiradas da publicação
 
 Por pedido de remoção das imagens sem uso, a auditoria de 29/10/2026 cruzou código,

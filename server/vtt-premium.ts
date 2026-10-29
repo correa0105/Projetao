@@ -1,4 +1,5 @@
-import { Router, type Response } from 'express';
+import { Router, type Request, type Response } from 'express';
+import { sendImagePreview } from './image-preview.js';
 import { readFile } from 'node:fs/promises';
 import { z } from 'zod';
 import { pool } from './db.js';
@@ -61,7 +62,7 @@ export async function validatePremiumImages(
 export function vttPremiumRouter() {
   const router = Router();
   const previewIds = new Set<string>(premiumPreviewGroups.flatMap((g) => [...g.ids]));
-  async function sendArt(id: string, res: Response) {
+  async function sendArt(id: string, req: Request, res: Response) {
     const asset = (await premiumAssets()).find((a) => a.id === id);
     if (!asset || !/^monster-[a-z0-9-]+-v1\.webp$/.test(asset.filename))
       throw new AppError(404, 'Arte de monstro não encontrada.');
@@ -71,8 +72,9 @@ export function vttPremiumRouter() {
         'Cache-Control': 'private, no-store',
         'Content-Type': 'image/webp',
         'X-Content-Type-Options': 'nosniff',
-      })
-      .send(bytes);
+      });
+    if(req.query.thumbnail==='1')await sendImagePreview(req,res,bytes);
+    else res.send(bytes);
   }
   router.get('/vtt/premium-preview', async (_req, res) => {
     const catalog = JSON.parse(await readFile('data/vtt/srd-2024.json', 'utf8'));
@@ -103,7 +105,7 @@ export function vttPremiumRouter() {
   router.get('/vtt/premium-preview-art/:monster', async (req, res) => {
     const id = z.string().max(150).parse(req.params.monster);
     if (!previewIds.has(id)) throw new AppError(403, 'Esta criatura não faz parte da prévia.');
-    await sendArt(id, res);
+    await sendArt(id, req, res);
   });
   router.put('/vtt/premium-tokens', async (req, res) => {
     await requirePremium(res.locals.user.id);
@@ -140,7 +142,7 @@ export function vttPremiumRouter() {
       .regex(/^monster-[a-z0-9-]+$/)
       .max(150)
       .parse(req.params.monster);
-    await sendArt(id, res);
+    await sendArt(id, req, res);
   });
   return router;
 }
