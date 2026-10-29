@@ -109,6 +109,7 @@ export function VttEffects({
     }
   }
   const blocked = working || busy;
+  useEffect(()=>{if(!open)setAnimatedKind(null);},[open]);
   function createEffect(i: number) {
     setDraft({
       id: crypto.randomUUID(),

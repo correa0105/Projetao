@@ -44,7 +44,8 @@ try{
   await launch.click();
   const menu=page.getByRole('region',{name:'Biblioteca de assets'});
   await expect(menu).toBeVisible();await expect(menu.getByRole('textbox',{name:'Buscar categoria da biblioteca'})).toBeFocused();
-  expect(await menu.getByRole('navigation',{name:'Categorias da biblioteca'}).getByRole('button').count()).toBe(9);
+  expect(await menu.getByRole('navigation',{name:'Categorias da biblioteca'}).getByRole('button').count()).toBe(8);
+  await expect(menu.getByRole('button',{name:/^Terrenos e texturas/})).toHaveCount(0);
   for(const label of ['Chat','Personagens','Combate','Diário','Montarias','Mascotes','Veículos','Armas de cerco','Ferramentas do mapa','Som e voz','Configurações da mesa'])await expect(menu.getByRole('button',{name:new RegExp('^'+label)})).toHaveCount(0);
   expect(await menu.locator('.vtt-tools').count()).toBe(0);
   const box=await menu.boundingBox(),panel=await page.locator('aside.vtt-panel').boundingBox();
@@ -73,6 +74,21 @@ try{
   await page.screenshot({path:'test-results/vtt-menu/library-scenery-'+width+'.png'});
   await menu.getByRole('button',{name:'Todas as categorias',exact:true}).click();
   await expect(menu.getByRole('textbox',{name:'Buscar categoria da biblioteca'})).toBeFocused();
+  await menu.getByRole('textbox',{name:'Buscar categoria da biblioteca'}).fill('pedras');
+  await menu.getByRole('button',{name:/^Peças de cenário/}).click();
+  const pieces=menu.getByRole('navigation',{name:'Coleções de peças de cenário'});
+  await expect(pieces.getByRole('button')).toHaveCount(4);
+  expect(await pieces.evaluate(e=>e.scrollWidth-e.clientWidth)).toBeLessThanOrEqual(1);
+  await pieces.getByRole('button',{name:/^Árvores/}).click();
+  await menu.locator('.vtt-tree-card').first().scrollIntoViewIfNeeded();
+  await expect.poll(()=>menu.locator('.vtt-tree-card img').first().evaluate(i=>(i as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+  await page.screenshot({path:'test-results/vtt-menu/library-trees-'+width+'.png'});
+  await pieces.getByRole('button',{name:/^Pedras/}).click();
+  await menu.locator('.vtt-tree-card').first().scrollIntoViewIfNeeded();
+  await expect.poll(()=>menu.locator('.vtt-tree-card img').first().evaluate(i=>(i as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+  await pieces.getByRole('button',{name:/^Terrenos e texturas/}).click();
+  await expect(menu.getByRole('heading',{name:'Pintar o mapa',exact:true})).toBeVisible();
+  await menu.getByRole('button',{name:'Todas as categorias',exact:true}).click();
   await page.keyboard.press('Escape');await expect(menu).toHaveCount(0);await expect(launch).toBeFocused();
  }
  await page.setViewportSize({width:1440,height:950});
@@ -90,6 +106,21 @@ try{
  await expect.poll(async()=>(await request(gm,path)).document.scenes.find((s:any)=>s.id===scene.id).tokens.length).toBe(before+1);
  await menu.getByRole('button',{name:'Todas as categorias',exact:true}).click();
  await menu.getByRole('textbox',{name:'Buscar categoria da biblioteca'}).fill('');
+ await menu.getByRole('button',{name:/^Peças de cenário/}).click();
+ const pieces=menu.getByRole('navigation',{name:'Coleções de peças de cenário'});
+ for(const collection of ['Árvores','Pedras']){
+  await pieces.getByRole('button',{name:new RegExp('^'+collection)}).click();
+  await menu.locator('.vtt-tree-card').first().click();
+  await menu.getByRole('button',{name:'Colocar no mapa',exact:true}).click();
+ }
+ await page.getByRole('button',{name:'Salvar mesa',exact:true}).click();
+ await expect.poll(async()=>(await request(gm,path)).document.scenes.find((s:any)=>s.id===scene.id).tokens.length).toBe(before+3);
+ const tokens=(await request(gm,path)).document.scenes.find((s:any)=>s.id===scene.id).tokens;
+ expect(tokens.some((t:any)=>t.image.startsWith('/vtt/trees-'))).toBe(true);expect(tokens.some((t:any)=>t.image.startsWith('/vtt/rocks-'))).toBe(true);
+ await menu.getByRole('button',{name:'Todas as categorias',exact:true}).click();
+ await menu.getByRole('button',{name:/^Criaturas vistas de cima/}).click();
+ await expect(menu.locator('.vtt-private-library.premium')).toBeVisible();await expect(menu.locator('.vtt-tree-grid')).toHaveCount(0);
+ await menu.getByRole('button',{name:'Todas as categorias',exact:true}).click();
  await page.screenshot({path:'test-results/vtt-menu/library-overview-1440.png'});
  await menu.getByRole('button',{name:'Fechar biblioteca de assets',exact:true}).click();
  const tools=page.getByRole('navigation',{name:'Ferramentas da mesa'});
@@ -100,11 +131,16 @@ try{
   const p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(origin+'/#vtt?room='+room.id);await p.getByRole('button',{name:'Entrar no VTT',exact:true}).click();
   await expect(p.locator('.vtt-workspace')).toBeVisible({timeout:60000});await p.getByRole('navigation',{name:'Painéis da mesa'}).getByRole('button',{name:'Biblioteca de assets',exact:true}).click();
   const drawer=p.getByRole('region',{name:'Biblioteca de assets'});await expect(drawer.getByRole('button',{name:/^Terrenos e texturas/})).toHaveCount(0);
+  await drawer.getByRole('button',{name:/^Peças de cenário/}).click();
+  const pieces=drawer.getByRole('navigation',{name:'Coleções de peças de cenário'});
+  await expect(pieces.getByRole('button')).toHaveCount(3);await expect(pieces.getByRole('button',{name:/^Terrenos/})).toHaveCount(0);
+  await pieces.getByRole('button',{name:/^Árvores/}).click();await drawer.locator('.vtt-tree-card').first().click();
+  await expect(drawer.getByRole('button',{name:'Colocar no mapa',exact:true})).toHaveCount(0);
   const toolbar=p.getByRole('navigation',{name:'Ferramentas da mesa'});await expect(toolbar).toBeVisible();await expect(toolbar.getByRole('button',{name:'Barreira de luz',exact:true})).toHaveCount(0);
   if(role==='spectator')await expect(toolbar.getByRole('button',{name:'Selecionar (V)',exact:true})).toHaveCount(0);
   await p.close();
  }
  expect(errors).toEqual([]);
- await writeFile('test-results/vtt-menu/result.json',JSON.stringify({passed:true,libraryOnly:true,rightPanel:true,noHeaderTrigger:true,metrics,clickPlacementPreserved:true,separateToolbarAndRightPanels:true,playerAndSpectatorPreserved:true},null,2));
+ await writeFile('test-results/vtt-menu/result.json',JSON.stringify({passed:true,libraryOnly:true,rightPanel:true,noHeaderTrigger:true,sceneryUnified:true,treesAndRocksAccessible:true,terrainGmOnly:true,creaturesSeparate:true,metrics,clickPlacementPreserved:true,separateToolbarAndRightPanels:true,playerAndSpectatorPreserved:true},null,2));
  console.log('Biblioteca integrada à aba do painel direito: 5 larguras, botão do topo removido, categorias, cenário por clique e perfis conferidos.');
 }finally{await browser.close();await new Promise<void>(r=>server.close(()=>r()));await pool.end();}

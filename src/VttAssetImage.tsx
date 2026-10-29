@@ -20,7 +20,7 @@ export function VttAssetImage({ src, fallback, thumbnail = false, ...props }: Pr
     if (!image) return;
     const observer = new IntersectionObserver(entries => {
       if (entries.some(entry => entry.isIntersecting)) { setVisible(true); observer.disconnect(); }
-    }, {root: image.closest('.vtt-panel-content'), rootMargin: '320px 0px'});
+    }, {root: image.closest('.vtt-effects-menu, .vtt-atmosphere-menu, .vtt-panel-content'), rootMargin: '320px 0px'});
     observer.observe(image);
     return () => observer.disconnect();
   }, [thumbnail, src]);

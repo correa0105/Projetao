@@ -17,7 +17,7 @@ import { VttItemLayers, VttStackButtons } from './VttItemLayers';
 import { VttRoomCharacters } from './VttRoomCharacters';
 import { reorderVttItems } from '../shared/vtt-stacking';
 import {vttVisualSource} from '../shared/vtt-asset-visuals';
-import { VttSceneryAssets } from './VttSceneryAssets';
+import {VttSceneryLibrary,type VttSceneryCollection} from './VttSceneryLibrary';
 import {VttNatureAssets} from './VttNatureAssets';
 import {natureAssets,natureAssetMime} from '../shared/vtt-nature-assets';
 import {houseInteriorImages,houseAsset,houseDoorObstructed,fitHouseToGrid,housePlacement} from '../shared/vtt-houses';
@@ -173,7 +173,6 @@ import { VttEffectSounds } from './VttEffectSounds';
 import { VttCanopyEditor } from './VttCanopyEditor';
 import { rockAssets } from '../shared/vtt-rock-assets';
 import { treeAssets, treeAssetMime } from '../shared/vtt-tree-assets';
-import { VttAssets } from './VttAssets';
 import type { useVttMediaPreferences } from './vtt-media-preferences';
 import { VttVisualChoices } from './VttVisualChoices';
 import { AssetLoading } from './AssetLoading';
@@ -460,12 +459,14 @@ export function VttSession({ characters, user, media }: { characters: Character[
     [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
   const libraryButton = useRef<HTMLButtonElement>(null);
   const [libraryView, setLibraryView] = useState<'menu' | 'content'>('menu');
-  function openLibrary(next?: VttLibrary) {
+  const [sceneryCollection,setSceneryCollection]=useState<VttSceneryCollection>('objects');
+  function openLibrary(next?: VttLibrary,collection?:VttSceneryCollection) {
     setTab('library');
     setPanelOpen(true);
     setLibraryView(next ? 'content' : 'menu');
     if (next) {
       setLibrary(next);setQuery('');setEntry(null);
+      if(next==='scenery')setSceneryCollection(collection??'objects');
       if (next === 'presets' || next === 'premium') setPresetVersion(v => v + 1);
     }
   }
@@ -484,7 +485,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
       setTerrainDraft(terrainActive.current);
     });
   }
-  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium' | 'nature' | 'animated' | 'scenery' | 'terrain'>(
+  const [library, setLibrary] = useState<VttLibrary>(
       'images',
     ),
     [presetVersion, setPresetVersion] = useState(0),
@@ -2982,7 +2983,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
           ))}
           {gm && !preview && <button title="Áreas de transparência" aria-label="Áreas de transparência" aria-pressed={canopyEditing} onClick={()=>{if(!canopyEditing)setPanelOpen(false);setCanopyEditing(v=>!v);}}><Eye size={20}/></button>}
           {gm && !preview && <button aria-label="Brush do mapa" title="Brush do mapa" aria-pressed={tool.startsWith('terrain-')}
-            onClick={()=>{openLibrary('terrain');setContextMenu(null);changeLayer('map');setTool('terrain-paint');}}><Paintbrush size={20}/></button>}
+            onClick={()=>{openLibrary('scenery','textures');setContextMenu(null);changeLayer('map');setTool('terrain-paint');}}><Paintbrush size={20}/></button>}
           {toolList
             .filter(
               (t) =>
@@ -3741,13 +3742,13 @@ export function VttSession({ characters, user, media }: { characters: Character[
         {tab === 'library' && <VttLibraryMenu view={libraryView} library={library} gm={gm && !preview}
           overview={() => setLibraryView('menu')}
           close={() => {setTab('chat');libraryButton.current?.focus();}}
-          choose={key => {openLibrary(key);if(key==='terrain'){changeLayer('map');setTool('terrain-paint');}}}>
+          choose={key => openLibrary(key)}>
           <div className="vtt-panel-content">
                   {['monsters', 'premium'].includes(library) && gm && (
                     <VttMonsterVariants value={monsterVariant} change={setMonsterVariant}
                       image={entry ? monsterImage(entry) : undefined} />
                   )}
-                  {library !== 'terrain' && <label className="vtt-search">
+                  {!(library==='scenery'&&sceneryCollection==='textures'&&gm&&!preview) && <label className="vtt-search">
                     Buscar na biblioteca
                     <input
                       aria-label="Buscar na biblioteca"
@@ -3757,7 +3758,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                     />
                   </label>}
                   {gm && library === 'images' && storage && <p className="vtt-muted" role="status">Imagens externas: {vttStorageLabel(storage)}. O catálogo não ocupa esta cota.</p>}
-                  {gm && library !== 'nature' && library !== 'terrain' && library !== 'presets' && library !== 'premium' && library !== 'animated' && library !== 'scenery' && (
+                  {gm && library !== 'nature' && library !== 'presets' && library !== 'premium' && library !== 'animated' && library !== 'scenery' && (
                     <label className="vtt-file-button">
                       <Upload size={14} />
                       {library === 'images' ? 'Enviar imagem' : 'Importar JSON do 5etools'}
@@ -3782,13 +3783,12 @@ export function VttSession({ characters, user, media }: { characters: Character[
                       />
                     </label>
                   )}
-                  {library === 'terrain' ? terrainPanel() : library === 'nature' ? (<VttNatureAssets query={query} gm={gm&&!preview} add={addNatureAsset}/>) : library === 'scenery' ? (
-                    <>{terrainPanel()}
-                    <VttSceneryAssets query={query} gm={gm && !preview} add={addSceneryAsset} /></>
+                  {library === 'nature' ? (<VttNatureAssets query={query} gm={gm&&!preview} add={addNatureAsset}/>) : library === 'scenery' ? (
+                    <VttSceneryLibrary collection={sceneryCollection} change={next=>{setSceneryCollection(next);setQuery('');}} query={query} gm={gm&&!preview} addObject={addSceneryAsset} addTree={addTreeAsset} textures={terrainPanel()}/>
                   ) : library === 'animated' ? (
                     <VttAnimatedAssets query={query} gm={gm && !preview} add={addAnimatedAsset} />
                   ) : library === 'presets' || library === 'premium' ? (
-                    <VttAssets enabled={library === 'premium'} gm={gm && !preview} query={query} add={addTreeAsset} addNature={addNatureAsset}><VttPrivateLibrary
+                    <VttPrivateLibrary
                       kind={library}
                       gm={gm && !preview}
                       viewMonsters={() => {
@@ -3802,7 +3802,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                       importPremium={(m) => addMonster(m as Entry)}
                       drag={dragMonster}
                       variant={monsterVariant}
-                    /></VttAssets>
+                    />
                   ) : library === 'images' ? (
                     <>
                       <details className="vtt-monster-gallery">

@@ -6,18 +6,24 @@ import {watchVttMedia} from './vtt-media';
 import { arcanaEffectReady } from './vtt-effects-arcana';
 import { livingEffectReady } from './vtt-effects-living';
 import { drawDeath } from './vtt-death';
-let previewImage: HTMLImageElement | undefined;
-function overheadPreview() {
-  if (!previewImage) {
-    previewImage = new Image();
-    previewImage.src = '/api/vtt/premium-art/monster-knight?thumbnail=1';
-  }
-  return previewImage;
+import posters from '../shared/vtt-effect-previews.json';
+import {VttAssetImage} from './VttAssetImage';
+import {effectPreviewToken} from './vtt-effect-preview-token';
+function hue(hex:string){
+  const [r,g,b]=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255),max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min;
+  return !d?0:(max===r?(g-b)/d:max===g?(b-r)/d+2:(r-g)/d+4)*60;
+}
+export function VttEffectPreview({preset,animated=false}:{preset:EffectPreset;animated?:boolean}){
+  if(animated)return <AnimatedEffectPreview preset={preset} animated/>;
+  const poster=(posters as Record<string,{image:string;color:string}>)[preset.kind];
+  if(!poster)return <span className="vtt-effect-preview-art" aria-hidden="true"/>;
+  return <VttAssetImage thumbnail src={poster.image} className="vtt-effect-preview-art" width={152} height={112} alt="" aria-hidden="true"
+    style={preset.color===poster.color?undefined:{filter:`hue-rotate(${hue(preset.color)-hue(poster.color)}deg)`}}/>;
 }
 
 // Gallery thumbnails are still until hovered/focused. Only the active card runs
 // an animation, with cleanup on exit/unmount and reduced-motion support.
-export function VttEffectPreview({
+function AnimatedEffectPreview({
   preset,
   animated = false,
 }: {
@@ -31,11 +37,11 @@ export function VttEffectPreview({
     const c = surface.getContext('2d');
     if (!c) return;
     const media = matchMedia('(prefers-reduced-motion: reduce)');
-    const dpr = Math.min(2, devicePixelRatio || 1);
+    const dpr = 1;
     surface.width = Math.round(152 * dpr);
     surface.height = Math.round(112 * dpr);
     const start = performance.now();
-    const image = overheadPreview(),
+    const image = effectPreviewToken(),
       width = 68,
       height = 72;
     let alive = true,
@@ -87,9 +93,8 @@ export function VttEffectPreview({
         renderEffect(c, effect, width, height, { ...options, pass: 'front' });
       c.restore();
     };
-    paint(0);
     const animate = (now: number) => {
-      if (now - last >= 1000 / 60 - 1 && !document.hidden) {
+      if (now - last >= 1000 / 30 - 1 && !document.hidden) {
         paint(now - start);
         last = now;
       }

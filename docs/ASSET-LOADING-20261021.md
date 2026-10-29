@@ -88,6 +88,25 @@ para geração e verificação das artes. O compêndio só é consultado depois 
 carregar, evitando os pedidos duplicados da entrada. O ícone do mural usa sua
 cópia WebP existente diretamente, inclusive dentro do SVG de navegação.
 
+O menu **Efeitos do mestre** mostra imagens estáticas de até 128 px em vez de
+criar um canvas para cada efeito. Só a opção apontada ou focada anima, a 30 fps
+e resolução simples; sair da opção ou fechar o menu cancela o desenho. A barra
+rápida usa as mesmas imagens, com a cor do efeito. As duas prévias de **Tela
+inteira**, em **Efeitos do mapa**, também usam imagens leves, sem carregar o
+atlas técnico apenas para abrir o menu. A execução real no mapa fica preservada.
+
+`node scripts/build-vtt-effect-previews.mjs` renderiza as 147 prévias de efeitos
+e duas de tela em `public/optimized-images-20261028/vtt-effect-previews/`, com
+índices em `shared/`. O conjunto soma 523.368 bytes e usa uma silhueta neutra
+pública, sem arte autenticada de personagens. As URLs por hash têm cache público
+de um ano e `immutable`: o navegador reaproveita os arquivos baixados, inclusive
+após fechar e reabrir. Nenhum dado de jogo passa a ser salvo nesse cache.
+
+`node scripts/test-vtt-menu-isolated.mjs --effects` confere abertura com CPU quatro
+vezes mais lenta, ausência de canvases e downloads de texturas nativas ao abrir,
+animação apenas no hover e uso do cache em disco após reiniciar o navegador com
+perfil de teste. Abrir os menus não altera a atmosfera salva da mesa.
+
 Imagens privadas aceitam `thumbnail=1` (128 px) e `display=1` (512 px) somente depois
 da autorização existente. Animações privadas conservam o arquivo completo no mapa.
 A conversão usa cache separado da versão completa, duas conversões simultâneas

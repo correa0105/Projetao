@@ -14,3 +14,7 @@
 .vtt-subtabs.vtt-library-tabs button:last-child {
   grid-column: auto;
 }
+.vtt-scenery-collections {margin-bottom:12px}
+.vtt-scenery-collections button {min-width:0;flex-wrap:wrap;padding:9px 6px;font-size:11px;white-space:normal}
+.vtt-scenery-collections button span {min-width:0;overflow-wrap:anywhere}
+.vtt-scenery-collections button[aria-pressed='true'] {border-color:#b99a63;background:#b99a6318;color:#e6d1a9}

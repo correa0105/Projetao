@@ -1,0 +1,590 @@
+{
+  "death": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/2e6df8cae419735a38b840fa2716faf5dd625d7324c689355c3701afe61ee4ec.webp",
+    "color": "#801b19"
+  },
+  "fire": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/19f1fe50e11755b42d8742f06cd9655af3f75845459d858e5a2bfd7a15594c3d.webp",
+    "color": "#ed7836"
+  },
+  "frost": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/703228dcfee5e4deed929c71fe68af7e75cfdeba04328ab2f0520edb35bbc6d8.webp",
+    "color": "#73dcff"
+  },
+  "poison": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/a68bdd61a8f3f2bbba04137d484c41c14c89be0d7853a9d039eddfd75ff9c117.webp",
+    "color": "#96df45"
+  },
+  "heal": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/49665ef60f94633b5ab1b8eef857285bb7a5e291329616299e5fe5b82eab233b.webp",
+    "color": "#64e89a"
+  },
+  "sparks": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/452b6b2548d2d0ca9f20161d7cab759ae7e0c55ecc36bc7bcbcd91c433661fb2.webp",
+    "color": "#d8bc76"
+  },
+  "lightning": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/eea231cd36cd090900fdede34f706d5e9583e034a6804e1795ea2c3b2e34d3ca.webp",
+    "color": "#96beff"
+  },
+  "arcane": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/de5db2afbd3e2e8c8f5931e1fcddd07e762e36518d1fa7f323767069da66db39.webp",
+    "color": "#aa6bff"
+  },
+  "shield": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/418e736d9907c1dd64a1e57d8b7eb0ac97d5bbc801c7410b72af57ffce064153.webp",
+    "color": "#34c1ef"
+  },
+  "radiant": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/2a3df59d383cee4959ae58585934b5e0c56473656be3f5eeffc1bc50ae0bb55c.webp",
+    "color": "#ffd05a"
+  },
+  "shadow": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/4192f0f399a9eb14cbdebec334b702895aed5143c7666c889c021475c1443328.webp",
+    "color": "#a85ddd"
+  },
+  "acid": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/ead1f13203cd0c3535fbfbd84873e9eb0831e96fca9ab1f026d1aa4436960021.webp",
+    "color": "#c2ea48"
+  },
+  "wind": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/3c475032ea650e2fb43ac2d6015a118c7926c681f8215b61f3bc0ec7094fbbb9.webp",
+    "color": "#b6dbda"
+  },
+  "water": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/14ce5a13c3f9e56d85e25e446efd50f5e3b653c4df886412ccfc705185063770.webp",
+    "color": "#59bddd"
+  },
+  "earth": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/f00e3d4c1eded7ee3dcc43703a973df848c087cc2d060e38ef58fb9243ae6649.webp",
+    "color": "#b39165"
+  },
+  "vines": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/5f26747aee1a042d0e4b36640c23b572fa363542b38e02807a7241e027dd389c.webp",
+    "color": "#80ae68"
+  },
+  "portal": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/e44e9b7d26cafa64559febd87d7dfcd798302b90d49234acf86c5818c7f8b9f8.webp",
+    "color": "#7eb5ff"
+  },
+  "teleport": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/9142ce9a8f4699209446ce474840c669adec749f1370b0715c11c23282d57d3b.webp",
+    "color": "#b79aef"
+  },
+  "shockwave": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/81cdbd688022a144ed6130e5ae09e6ccb521dc1a4c5f0d3461a4cf117cc49119.webp",
+    "color": "#a8dce6"
+  },
+  "explosion": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/351880da04837e4594230463d634771a83b2944a55d60a65ca67732b497900f1.webp",
+    "color": "#ff9a4c"
+  },
+  "vortex": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/4a9222b30445f4dd82027bb1258ff99edbf0315fc1e000bbe537b50ba93b3357.webp",
+    "color": "#91bdd1"
+  },
+  "smoke": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/5704c725f7d66252c450129c3ec9c71307dbbeaff1367595f0c62fb11ca2166e.webp",
+    "color": "#b6c8d3"
+  },
+  "blizzard": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/a4a8ae721acd34b32f19c779bdb58c123842c21aa486c1e1a89b546a016d9428.webp",
+    "color": "#d0edff"
+  },
+  "embers": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/72babd1a34f07949e4cfe36f5e5afba7ebc8a0637a9a3b5d513e08fc01b91b9e.webp",
+    "color": "#ffba67"
+  },
+  "chain-lightning": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/24f31905be93c0fa42e337d89b3b92612da28b3e374637ac017de142c738070f.webp",
+    "color": "#9cbfff"
+  },
+  "lava": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/89504cf0dc062dc079ece3668e70cd7611d4be759f944d25d150308b76fc5f99.webp",
+    "color": "#fa6d32"
+  },
+  "runes": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/f4a7f5be0ea1aedfa092c196b3f7b515424573a1e41068bb61e7d89caff2e08f.webp",
+    "color": "#c4a2ff"
+  },
+  "curse": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/e5f07c3ae2a487cc2fa3b9ea836b09535d0a222db8c76ba68946924a57514a52.webp",
+    "color": "#b46cd5"
+  },
+  "bless": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/85b831e4591255a39f9ef69a842168824853f1d00ae7202743bea67fc065c496.webp",
+    "color": "#f7dc8f"
+  },
+  "necrotic": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/e1dc120ce807ae1dda06e1879091fb1d3bf3f4f2befbc08f164b82b254f80b90.webp",
+    "color": "#f343a3"
+  },
+  "web": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/88414d2ca9c95b551e0d7e9b417dd86c50f4ddc88de289300477b8c35ee0422f.webp",
+    "color": "#d8d4c4"
+  },
+  "swarm": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/9f5826b4294f1264ef2c854a19c9d8ab6e41847f4ecbd30d872f4a78564c931a.webp",
+    "color": "#a691c5"
+  },
+  "leaves": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/815ff9b30e82ef5564e746f40a99c02a379ab0ae5a6ceb3c0ccf78b3ecc6b62a.webp",
+    "color": "#97d14f"
+  },
+  "petals": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/cf1513409e56be127e94f21df967783ea5660cc5daf5a81f7876c6ff4f72946d.webp",
+    "color": "#ef84bd"
+  },
+  "blades": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/26d24aa370295fdcd0bb173c87c74964582171a56afadf4adb6e9b73760099b5.webp",
+    "color": "#c3dbe4"
+  },
+  "sonic": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/7b212cc22384ed4c491702a40f606a59b514eda796d4ef053277baffd6785ee6.webp",
+    "color": "#dda8ef"
+  },
+  "inferno": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/1642e7f15b459f5908e5dd9691e803dd0179a7fda42c8ede1691f12633edc996.webp",
+    "color": "#ff693c"
+  },
+  "blue-fire": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/47af0a444c4d18169d2fbda019a5ecb8225f4a146e51eeea433358f24e840fd1.webp",
+    "color": "#79ccff"
+  },
+  "acid-rain": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/dea4fa3cd3444fc22845cea02862698d515809d14051c2759a10346dd960331b.webp",
+    "color": "#b3da67"
+  },
+  "hail": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/72d24e5c3f072b152050fa96acd3d01661274f6eb9a63ecf13622f33ecf60a72.webp",
+    "color": "#b5e9ff"
+  },
+  "ice-lattice": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/2d527b1b6da3fd48d58946bf1cc91afd5ec65d18f2c93839ba67724d052fc814.webp",
+    "color": "#c3eaff"
+  },
+  "steam": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/66832de5779b6490d7d88a94a2fcb9ed8faefb2e5aadabb505a030faee1dbb5b.webp",
+    "color": "#e5cabc"
+  },
+  "sandstorm": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/2cd7817ac1512dde077ebaaac637e37b452770b7a3f437770f67ca3e4853b84f.webp",
+    "color": "#d6ac6b"
+  },
+  "earthquake": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/5b77b388e067d4c630ecd9a0cde71d1fe8a67fea3dca2f87b43f79ffee071419.webp",
+    "color": "#c69568"
+  },
+  "thunderstorm": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/4590afd9cb1353213996e0269f623d664ae951e5bab7b3e09de4b267af07dc46.webp",
+    "color": "#a7beff"
+  },
+  "bubbles": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/2d18554e862f56426977fe30dc6f09338cf88c629865501bad0f34f17fe8dd06.webp",
+    "color": "#7ed7ed"
+  },
+  "solar-halo": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/bead8be9cd42f184c8fd5fd174428794806ec6fa9ca78285febd25df98ffbcb3.webp",
+    "color": "#ffd37b"
+  },
+  "lunar-halo": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/5a01625166b5745a6aa197170f3e44b12278ab319afd60e023705ce3304506a3.webp",
+    "color": "#bdd1ff"
+  },
+  "starfield": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/7b8c88931bfbae7643132fd11616d0e826f47ed12dbed843fc36fb630eb7801e.webp",
+    "color": "#a087ff"
+  },
+  "comets": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/295276d2256a81f1c2210499ba7b7c050ae28cb8cab835da2fc862359f397b4a.webp",
+    "color": "#ffaaca"
+  },
+  "mirror-shield": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/37f8c0c8f46295cc9dc6f6e2e6b59433d4fb0b20d803d9f2ced7dce7bd1cdc98.webp",
+    "color": "#c7e6ef"
+  },
+  "prismatic-barrier": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/b6ac4879d09591d97f0704b99b517ec25f7cee3708fe83cf9a054a6a2ed5a50e.webp",
+    "color": "#b7acff"
+  },
+  "clockwork": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/bb75b90ab3e18e0551bc1fe1a027bef11b8f6ebbbd218f70abc74601ff0c36dd.webp",
+    "color": "#d8b37d"
+  },
+  "gravity-well": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/91fa155b8394f72cf618a11f1c0187073a7daf0bb73b2a60abcceac7c74d7b4b.webp",
+    "color": "#a493eb"
+  },
+  "astral-threads": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/81ae465934b50624393dd884b9c47fa0c2b675fad64d4b22e5a9c2f4b4ce8963.webp",
+    "color": "#8fe1dc"
+  },
+  "spectral-chains": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/5a8bfe1f7e10d0b82533abd930d6601ca5fd1230cde01969303297761f243a9d.webp",
+    "color": "#aebfff"
+  },
+  "thorn-cage": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/36c6b2aaa220e91e4d53b7f6b18d98e048a6eca87d573fbf76272fe71cc1f3e8.webp",
+    "color": "#86b66b"
+  },
+  "spores": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/4ba0c551abeb83fcb757034131f17c5848059225f54d741b4426a02a2a2f255b.webp",
+    "color": "#acd955"
+  },
+  "mushrooms": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/5febb8cc4aab9f1dbd916685174b1c37d106174976c258bee6c304969eab1240.webp",
+    "color": "#d29edb"
+  },
+  "butterflies": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/6a1d31d5f25182014581916621fd02484c92c36c485ba0c8154859ae421372ae.webp",
+    "color": "#ecafce"
+  },
+  "feathers": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/379beb2e72fd94a22e215c869f51c740f1f91326e1f45abc115277a849833119.webp",
+    "color": "#e5d6b3"
+  },
+  "rage": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/dc17b57d86e5b2ebcb06ded71bd60e9c999e7c19d5a1f2b9e154452eb1cc2609.webp",
+    "color": "#ee7654"
+  },
+  "sleep": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/fa15e4dc22cd8ad46111de6182951921d13c7a413fe3d5a7cd3e442ad99e08d2.webp",
+    "color": "#c0aff0"
+  },
+  "fear": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/eb79134e440d0cddd6d1fec21558938b51aa75068b5eaa6d6d45946b0ddbb87b.webp",
+    "color": "#a995b7"
+  },
+  "petrify": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/a1eda685adf14354b6b44165237190aec2874e7a8206a50b7f04174192984a28.webp",
+    "color": "#b7aaa0"
+  },
+  "soul-flames": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/b339604dde1b3517d90f1abe270dabd2ad26f569279c0aa319478af17c11b5b8.webp",
+    "color": "#84dcc9"
+  },
+  "ember-comet": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/db13913a97f09f1e59f1096ace9f8be80a5f87457b0a1c74c60d8d305b224a66.webp",
+    "color": "#f28542"
+  },
+  "fire-surge": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/d5226ab91fd27c3ef66980c25a032aab791b2f2994cd4459005b1cc929c9572e.webp",
+    "color": "#f28542"
+  },
+  "fire-geyser": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/1305f54784768dce92706e8368316cf5ee8ae69438f872e5f791693513c51016.webp",
+    "color": "#f28542"
+  },
+  "fire-spiral": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/3a512bdf05e1784f05b389e258853a9abc118259c8fa32f9d66f3ecc7debe8c2.webp",
+    "color": "#f28542"
+  },
+  "frost-ring": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/5e0412a5751850444eda6d59fe05c58980b425123856e7f024ba358635353bb2.webp",
+    "color": "#b0ddf4"
+  },
+  "ice-bloom": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/bc5a3d17e8d72e4530769fc0d5b83229f6ebe00455614c4d9500987f7f4c5507.webp",
+    "color": "#b0ddf4"
+  },
+  "snow-drift": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/d3501737fcc1187916495200d799419cb05f68d46c7d533feef5b4a2ac263409.webp",
+    "color": "#b0ddf4"
+  },
+  "ice-comet": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/9f7109358440fdd95413b9efca33ffc7a0975591e80fda0b5f2f326e5e96cf95.webp",
+    "color": "#b0ddf4"
+  },
+  "electric-cage": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/94cb7aa5918db7572ce447c14605e3126ab3503f46034fddf432ea9edd91611c.webp",
+    "color": "#a1cfff"
+  },
+  "ball-lightning": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/8346e8dfa71973540bfd2f6118bd75127e62447cf46550536c86f305e12a809a.webp",
+    "color": "#a1cfff"
+  },
+  "storm-vortex": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/62393e664d793942b3680107bf0d8219b8716b961029b4d17b5049e031eecfcc.webp",
+    "color": "#a1cfff"
+  },
+  "static-corona": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/1dbad3afdb5f21b87460a3bbe5c673d10552951d8704fd678315590f0bd7ef11.webp",
+    "color": "#a1cfff"
+  },
+  "acid-splash": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/8716cf52d2691dc15800cac110d8eb8142df164b71211b0dec9bab9323a9eebf.webp",
+    "color": "#a6c969"
+  },
+  "corrosive-puddle": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/0b86f40f0421bbb982fd784920ce6bdbab3b3fe9a17e7b2d1e2e4bb4b7f52d66.webp",
+    "color": "#a6c969"
+  },
+  "toxic-spiral": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/4487c889969b845179b79228188cc048e41bc8a54bb8674e193b46faa23cd2fc.webp",
+    "color": "#a6c969"
+  },
+  "poison-breath": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/d01cc15d3280fb9801ad7466529f3b6ca13454775a3518bdb01c2af9626e0203.webp",
+    "color": "#a6c969"
+  },
+  "rain-curtain": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/1956ab4f521cde20e05b6690c2cfacbcc8c6df6b51b197b5ea11618512433197.webp",
+    "color": "#75bdd3"
+  },
+  "water-tornado": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/2e40b3639603dde23dbaf41badfa646039a148d786f39362be645eff76bf75d0.webp",
+    "color": "#75bdd3"
+  },
+  "water-geyser": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/cdd6b4e9d598e96e86769f44c77cc328bfe6512fbe010ff2c93dd19eb9c56a00.webp",
+    "color": "#75bdd3"
+  },
+  "tidal-wave": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/b8410bd3d90827ad043df3898f854de941d1710d199fc85c2afbba3cf4536c50.webp",
+    "color": "#75bdd3"
+  },
+  "dust-devil": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/7c55b838ae358ae567862682abe7667cb03ff13c4997d37527f8f9f5a4e7f772.webp",
+    "color": "#c3bbb0"
+  },
+  "wind-shear": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/02e8851bb56e6f82495b3ab3913e987413c6b0665e6508c8de7e92b97a32c42d.webp",
+    "color": "#c3bbb0"
+  },
+  "sand-veil": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/71bc203507ced10984160a2a2fe524f525fd326c7d5634cf2c48e6d97c9bbda9.webp",
+    "color": "#c3bbb0"
+  },
+  "air-burst": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/dba03a803924a029c2b16a078122ef9c2e4320fd549cce98fe082b0a703c053f.webp",
+    "color": "#c3bbb0"
+  },
+  "stone-orbit": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/cea43960c0e0ef4001fbe4c1005225dfad212bbcf8f81e6b57e19b7d9ccdfb1b.webp",
+    "color": "#b69a7c"
+  },
+  "shattering-rocks": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/14cecc482bef62f1034b092c39ebb817b238ee69148d73dbdd3aa37006c89184.webp",
+    "color": "#b69a7c"
+  },
+  "ground-rupture": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/2e2ce95a0da6d63b2b173df27d5f2f1ee32c700f66bf98eb9fc2154c5ef74c88.webp",
+    "color": "#b69a7c"
+  },
+  "crystal-growth": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/0857ac84016b8170538259cd1e602dc0b4cd0291ca6c52a8acfe73f3b9f7424b.webp",
+    "color": "#b0ddf4"
+  },
+  "rose-vortex": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/3deb3c822c4645b2b4b8287b1d2217c14ef6acb0319b84f5b074f1373cb9bcd2.webp",
+    "color": "#e5b6c6"
+  },
+  "falling-blossoms": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/4958322e83d49e248680048e0f18e6f9cb7d1b082d7b0ebc533fcdf112dc33d9.webp",
+    "color": "#e5b6c6"
+  },
+  "leaf-cyclone": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/69b871c06fb54a1abcdb47bfa7d4e4c84d57c29c7c046f5f6b7603554d5f0904.webp",
+    "color": "#e5b6c6"
+  },
+  "seed-trails": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/147da1b8f5b4f5730bd3f4523b6d8fd2c7234237701dc709f0f4cea27fa6b33c.webp",
+    "color": "#e5b6c6"
+  },
+  "soul-vortex": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/9122003b12c37883e1323985a0da8f529544c3f69e4a564a84ee83cf98a9d830.webp",
+    "color": "#a9a3dc"
+  },
+  "spirit-procession": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/3af9e57e4c1eff6b466956b622c19060957a1eac7f2d4cc7f5dc29d8a6c56fbd.webp",
+    "color": "#a9a3dc"
+  },
+  "ghost-wake": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/bea45402a487d29db01132c36cdd3dbc3c9c44248a34b09356be193a69054484.webp",
+    "color": "#a9a3dc"
+  },
+  "umbra-bloom": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/af7dc8e4c7289618aad038ce4bbda82ff4bbbf4647e6473706dbb1bb40478fe5.webp",
+    "color": "#a9a3dc"
+  },
+  "healing-stream": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/337d804dbc67a94e345ff03501a221f1104d8d6652f0fd6026defa86969a6980.webp",
+    "color": "#d4d9ad"
+  },
+  "celestial-rain": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/437d0a978d9a530c3148f2c208019e03fd8eed254fee88fc5acb2f9efe298cb5.webp",
+    "color": "#d4d9ad"
+  },
+  "prism-pulse": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/d81cee12f46a5416b99257d4e685313d0618c817cbb36a69a9945b33154c3995.webp",
+    "color": "#d4d9ad"
+  },
+  "dimensional-rift": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/6814f21d9653720a038935c45952c82ff2fa8b558106d3bdca275f4272774dee.webp",
+    "color": "#d4d9ad"
+  },
+  "liquid-aegis": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/3a7b08730184ad06caa2387a10d31960f9539fbcf04aadfcaa3dff8465ea2d07.webp",
+    "color": "#1dbbff"
+  },
+  "aurora-veil": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/3654b9f1c3593ee6bb5f19d4141349812965643220e105dd7593c8d4564d074f.webp",
+    "color": "#39efb6"
+  },
+  "light-cathedral": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/447a36508042f1e4b7a1da8eb6d062c6b02b1ff39a6b96680b2f13c5080f1e98.webp",
+    "color": "#ffbd45"
+  },
+  "mirror-helix": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/35ff1ae3f1dd95ce16231e3abe4229d94c2a635b4fb4aaaa8f24f7e7a1dea356.webp",
+    "color": "#64dfff"
+  },
+  "plasma-flower": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/5e94c7bca57c48b2b7b911dedcfcd1fb821c9324dafa1cf185db7d24986b625d.webp",
+    "color": "#ff508e"
+  },
+  "nebula-mantle": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/7ddba6e5f0a9e439e244dfbfb50fecc6205b328a0f1c010a3d7b9ed969edbae7.webp",
+    "color": "#9859ff"
+  },
+  "living-eclipse": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/70943864713407a8432902224d70541d459d2bee637a6ae7ded5b533a2955ce5.webp",
+    "color": "#ffa73a"
+  },
+  "tidal-lens": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/1a8f7f0f1a49c81aa74c3f5a1abecb09a67d18c15467e67e22815496ad94ec7b.webp",
+    "color": "#1ad7eb"
+  },
+  "storm-lances": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/dcc1bc1efb182858427aa9efdb823246a892d75735c6b6791f3c6f4bee4ccbaa.webp",
+    "color": "#378dff"
+  },
+  "floating-prisms": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/7ded3e093565b6656cbb3ce955225adc5e5ebb4acd73d92f656a8f1ebb285fde.webp",
+    "color": "#ab70ff"
+  },
+  "arcane-harmony": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/adfbd539990942e1a14b41afc274cce7c166c71947c599af9b4ef64e65c9c59e.webp",
+    "color": "#ff73d6"
+  },
+  "ruby-heart": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/1d59f1a3177631505177b673430a8e47bb99fd53f41101460b326493289e0123.webp",
+    "color": "#ff345d"
+  },
+  "constellation-breath": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/78e3654a48fe3a35f403411c9bd53d1569bce335e9dc75cc182a1c42e0efc6d7.webp",
+    "color": "#4dbaff"
+  },
+  "aether-drops": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/98c8a06c69c928381af9028006e22698cb5548f30377c605fad30620d85a1711.webp",
+    "color": "#28ecd2"
+  },
+  "celestial-rosette": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/c6941e369fb38711fbc0dc80d59ecf86532b0d782100f0e9ab9a2a0b4b12923b.webp",
+    "color": "#ffcb59"
+  },
+  "gravity-fold": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/ad72d373f8c1f84d8ff10a0f21be9c5efeb7447ff67e13402724e497a76982ba.webp",
+    "color": "#845dff"
+  },
+  "discharge-matrix": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/98f0d1a72eaf0b779b77cdf2e2bcdecb425a20be72a1cb016516988eb8a0c937.webp",
+    "color": "#54d5ff"
+  },
+  "threshold-wings": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/0ed9603f4daffaf3a0d8f9854a087724fd629714b2737d8f4c05944b856b5048.webp",
+    "color": "#41e3ff"
+  },
+  "abyssal-veil": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/da26ac0864b51ff18435ba14bbadae01a0ba4c62c62d361e1ce02df5af1e10d5.webp",
+    "color": "#b64aff"
+  },
+  "sapphire-iris": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/2b210b48d8d70e02cd3fb578903e7ac44e7add36ac813ff71c32b138ed1f1112.webp",
+    "color": "#249fff"
+  },
+  "arcane-barrier": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/e630d6fa3e1d09cc27af5a1ea193d52459936e0899c45567dc00586a090df115.webp",
+    "color": "#8870ff"
+  },
+  "phoenix-plumage": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/4ef2977cf70d1193e08d8f37481e70eec0bd5b9bac2d6209095c955ee8659156.webp",
+    "color": "#ff8738"
+  },
+  "argent-crossroads": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/515d2e3719d13d1a665dd03190c71e5f68f0758f2d87bfdaffbd3ff0f948c4ff.webp",
+    "color": "#b9d9ee"
+  },
+  "coral-bloom": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/e68d4d45f1ad94b47b7f623299ad970d806348981e7e87738394ff99b0fc3ec4.webp",
+    "color": "#ff839f"
+  },
+  "mercury-ribbon": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/f14bec7706ab4184b61baee7c059357ea9922cabaadba18559b0523d43ee2bec.webp",
+    "color": "#88d5e7"
+  },
+  "ink-bloom": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/771f084c5897a0b6b87c545a16d747e50b5816d9cb2b5b1f44baa99844cb5706.webp",
+    "color": "#9c72e8"
+  },
+  "lotus-wake": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/eb6b28bd14c07efb3eed7ef94d51fb096ef6394b731c3d1e38ed0acc33a05e06.webp",
+    "color": "#48d8eb"
+  },
+  "thorn-covenant": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/70224308991c7ec406adfd20f342ee708981c2f97a4f935d114f43331fb73450.webp",
+    "color": "#8ed476"
+  },
+  "starlit-fall": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/8be176626689811f13fb4c2ec7b0a87333525d85e78e81c2e2d27f6fa4154e16.webp",
+    "color": "#8fbcff"
+  },
+  "moon-shards": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/b3d5a4a86fb29846f0584d05c94d894a08e42e36580d430f1ecab33f7012b827.webp",
+    "color": "#bad9ff"
+  },
+  "golden-moths": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/90bdf085f77505e69466f94086882abf2628ebb1ad70f6894f9291d0930af523.webp",
+    "color": "#ffd976"
+  },
+  "crimson-lattice": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/07f40fa76dd54584701ef216e532ab47fb6880d379c7fb572b79cd9d9e1be255.webp",
+    "color": "#ef5d86"
+  },
+  "frost-lotus": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/d20df5d946286f929ea46d14349b8a4e023e43edd2b18646ba1063ca096bf863.webp",
+    "color": "#86e5ff"
+  },
+  "ether-sail": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/834f85c39d9a38e8e23da121ccc6b7a96a87aeb5cb289ef3640416e66f8604ec.webp",
+    "color": "#b7a1ff"
+  },
+  "obsidian-sun": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/ff49f8e1f4e62cdbaefc1d37da90f8240c3850bb4688032c3e04580eef15ef78.webp",
+    "color": "#ffb45d"
+  },
+  "thunder-roots": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/06a95b3f098cddd704a51395aeb8a20d63786e19ce37ae145ab414d1cd40450a.webp",
+    "color": "#99bcff"
+  },
+  "jade-cocoons": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/c376df947c2d200f425b34f90f041409a749c4d0d2f5c09e2fd38a057ea8f72e.webp",
+    "color": "#53e3b1"
+  },
+  "sand-chronicle": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/32968b66848f776fa106cab4ca6d204c4fa545080d582841e1c55c0cd6d2ec67.webp",
+    "color": "#e5bd82"
+  },
+  "opal-cascade": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/29cdfec04af26dc107eaeb1e2af5ee17344e2e68ac047c8093c9ceb3c55a52dc.webp",
+    "color": "#81e1ef"
+  },
+  "soul-tethers": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/aa6efc478c79181b56425d2db78fa1e50e77ea8ae2cd726d315d344ce20fcb7b.webp",
+    "color": "#a383ff"
+  },
+  "nova-breath": {
+    "image": "/optimized-images-20261028/vtt-effect-previews/c7803a43e13fed79a8b3d3a85973918a8d59ad519d0b7a62df1f1be9353f4b56.webp",
+    "color": "#ffbd87"
+  }
+}

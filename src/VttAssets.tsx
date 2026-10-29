@@ -1,32 +1,24 @@
 import { VttAssetImage } from './VttAssetImage';
-import { useState, type ReactNode, type DragEvent } from 'react';
-import { Trees, Bird, Plus, X } from 'lucide-react';
+import { useState, type DragEvent } from 'react';
+import { Plus, X } from 'lucide-react';
 import { rockAssets } from '../shared/vtt-rock-assets';
 import { treeAssets, treeAssetMime } from '../shared/vtt-tree-assets';
 import './vtt-tree-assets.css';
-import {natureAssets,natureCategories} from '../shared/vtt-nature-assets';
-import {VttNatureAssets} from './VttNatureAssets';
 
 export function VttAssets({
-  enabled,
+  collection,
   query,
   gm,
   add,
-  addNature,
-  children,
 }: {
-  enabled: boolean;
+  collection: 'trees' | 'rocks';
   query: string;
   gm: boolean;
   add: (id: string, scale: number) => void;
-  addNature: (id: string, scale: number) => void;
-  children: ReactNode;
 }) {
-  const [collection, setCollection] = useState('trees'),
-    [group, setGroup] = useState('Todos'),
+  const [group, setGroup] = useState('Todos'),
     [selected, setSelected] = useState(''),
     [scale, setScale] = useState(1);
-  if (!enabled) return children;
   const catalog = collection === 'rocks' ? rockAssets : treeAssets,
     rock = collection === 'rocks';
   const item = catalog.find((a) => a.id === selected),
@@ -55,43 +47,6 @@ export function VttAssets({
   };
   return (
     <section className="vtt-world-assets" aria-label="Acervo de assets">
-      <nav className="vtt-asset-collections" aria-label="Coleções de assets">
-        <button
-          aria-pressed={collection === 'trees'}
-          onClick={() => {
-            setCollection('trees');
-            setGroup('Todos');
-            setSelected('');
-            setScale(1);
-          }}
-        >
-          <Trees size={14} /> Árvores <small>{treeAssets.length}</small>
-        </button>
-        <button
-          aria-pressed={rock}
-          onClick={() => {
-            setCollection('rocks');
-            setGroup('Todos');
-            setSelected('');
-            setScale(1);
-          }}
-        >
-          ◆ Pedras <small>{rockAssets.length}</small>
-        </button>
-        <button
-          aria-pressed={collection === 'creatures'}
-          onClick={() => setCollection('creatures')}
-        >
-          <Bird size={14} /> Criaturas
-        </button>
-        {natureCategories.map(name=><button key={name} aria-pressed={collection===name} onClick={()=>setCollection(name)}>{name}<small>{natureAssets.filter(a=>a.category===name).length}</small></button>)}
-      </nav>
-      {natureCategories.includes(collection) ? (
-        <VttNatureAssets key={collection} category={collection} query={query} gm={gm} add={addNature}/>
-      ) : collection === 'creatures' ? (
-        children
-      ) : (
-        <>
           <header>
             <small>{rock ? 'TERRENO' : 'FLORESTA'} · VISTA SUPERIOR</small>
             <h3>{rock ? 'Pedras' : 'Árvores'} para seus mapas</h3>
@@ -181,8 +136,6 @@ export function VttAssets({
             ))}
           </div>
           {!shown.length && <p>Nenhum asset encontrado. Experimente outro nome ou tipo.</p>}
-        </>
-      )}
     </section>
   );
 }

@@ -7,7 +7,6 @@ import {
   Hammer,
   Image,
   Layers,
-  Paintbrush,
   Search,
   Shield,
   Sparkles,
@@ -23,8 +22,7 @@ export type VttLibrary =
   | 'premium'
   | 'nature'
   | 'animated'
-  | 'scenery'
-  | 'terrain';
+  | 'scenery';
 const options: {
   id: VttLibrary;
   name: string;
@@ -56,7 +54,7 @@ const options: {
   {
     id: 'scenery',
     name: 'Peças de cenário',
-    description: 'Objetos e elementos para compor o mapa',
+    description: 'Objetos, árvores, pedras e texturas para o mapa',
     icon: Hammer,
   },
   {
@@ -64,13 +62,6 @@ const options: {
     name: 'Peças animadas',
     description: 'Elementos com movimento',
     icon: Sparkles,
-  },
-  {
-    id: 'terrain',
-    name: 'Terrenos e texturas',
-    description: 'Materiais para pintar o mapa',
-    icon: Paintbrush,
-    gm: true,
   },
 ];
 const normalize = (s: string) =>

@@ -11,7 +11,12 @@ Guia vigente: [PROFILE-VISIT-SIGNPOST.md](PROFILE-VISIT-SIGNPOST.md).
 
 A aba **Biblioteca de assets** (ícone de livro), no painel à direita, reúne
 imagens, monstros, presets, criaturas vistas de cima, magias, cenários, peças
-de cenário e peças animadas. Terrenos e texturas ficam acessíveis ao mestre.
+de cenário e peças animadas. **Peças de cenário** conserva o acervo mais amplo
+em quatro coleções: **Objetos**, **Árvores**, **Pedras** e **Terrenos e texturas**.
+O pincel fica nessa última coleção, acessível ao mestre; o atalho da barra de
+ferramentas abre diretamente essa coleção. A entrada separada de terrenos foi
+removida. Árvores e pedras ficam em peças de cenário; **Criaturas vistas de cima**
+mostra os tokens de criaturas.
 A lista de categorias conserva a busca e o visual do acervo. Escolher uma
 categoria mostra seu conteúdo dentro do mesmo painel; **Todas as categorias**
 volta à lista. **Escape** ou fechar a biblioteca retorna ao chat.
