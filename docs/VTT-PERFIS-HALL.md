@@ -9,23 +9,24 @@ Guia vigente: [PROFILE-VISIT-SIGNPOST.md](PROFILE-VISIT-SIGNPOST.md).
 
 ## Navegação e personalização — 06/10/2026
 
-O botão **Menu** no topo reúne a navegação do VTT em um painel à esquerda.
-A lista tem busca e opções agrupadas para a mesa, biblioteca, companhia,
-mapa/ferramentas e sessão. Escolher uma opção mostra seu conteúdo no mesmo
-painel; **Todas as opções** volta à lista e **Escape** fecha o menu devolvendo
-o foco ao botão. O mapa começa com o painel recolhido.
+O botão **Biblioteca** reúne somente os assets em um painel à esquerda, com
+busca por categoria: imagens, monstros, presets, criaturas vistas de cima,
+magias, cenários, peças de cenário e peças animadas. Terrenos e texturas ficam
+acessíveis ao mestre. Escolher uma categoria mostra seu conteúdo no mesmo
+painel; **Todas as categorias** volta à lista e **Escape** fecha a biblioteca.
+As coleções de cenário aparecem em duas colunas, sem recorte horizontal.
 
-Chat, combate, diário, fichas, animais, veículos, armas de cerco, bibliotecas,
-som, configurações e ajuda mantêm suas funções e permissões. As ferramentas
-ficam em **Menu → Ferramentas do mapa**. As antigas barras de ícones e subabas
-foram reunidas nessa lista. As coleções de cenário quebram em duas colunas,
-com todos os botões dentro do painel. Em telas pequenas, o menu abre sobre o
-lado esquerdo do mapa e pode ser fechado para liberar a tela.
-Anotações, imagens, câmera, documentos e atalhos da sessão são preservados.
+Ferramentas continuam na barra à esquerda. Chat, fichas, combate, som,
+configurações e ajuda conservam o painel à direita e suas subabas, incluindo
+montarias, mascotes, veículos, armas de cerco e diário. A biblioteca pode ser
+aberta junto do painel no computador; no celular, recolhe o painel da direita
+para deixar os controles acessíveis. A navegação não muda a câmera nem o
+conteúdo da sessão. Colocação por clique e arraste continuam disponíveis.
 
-`node scripts/test-vtt-menu-isolated.mjs` valida navegação, busca, teclado,
-ausência de recortes em cinco larguras, colocação de cenário por clique e os
-controles de mestre, jogador e espectador em banco descartável.
+`node scripts/test-vtt-menu-isolated.mjs` confere o escopo da biblioteca,
+controles separados, busca/teclado, cinco larguras, cenário por clique e os
+perfis de mestre, jogador e espectador em banco descartável.
+
 Chat tem Minimizar / Mostrar controles do chat: recolhe título, dados rápidos,
 fórmula, privacidade e carregar histórico; log/envio continuam disponíveis.
 Configurações e ajuda → Personalização → Recolher controles do chat controla

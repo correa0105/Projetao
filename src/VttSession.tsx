@@ -165,7 +165,7 @@ import { VttSheet } from './VttSheet';
 import { VttMonsterSheet, VttMonsterStatblock, type MonsterProfile } from './VttMonsterSheet';
 import { VttDice } from './VttDice';
 import { VttToolGroup } from './VttToolGroup';
-import { VttMenu, type VttMenuTab } from './VttMenu';
+import { VttLibraryMenu, type VttLibrary } from './VttLibraryMenu';
 import { VttHotbar, ActionShortcut } from './VttHotbar';
 import { VttEffects } from './VttEffects';
 import { VttAttackVisuals } from './VttAttackVisuals';
@@ -218,7 +218,7 @@ import { MapLibrary, MapSettings } from './VttMaps';
 import { useMusicInterlude } from './SiteMusic';
 import './vtt.css';
 import './vtt-library-tabs.css';
-import './vtt-menu.css';
+import './vtt-library-menu.css';
 type Tool =
   | 'select'
   | 'terrain-paint'
@@ -241,7 +241,22 @@ type Tool =
   | 'light'
   | 'ping';
 const barrierTools = new Set<Tool>(['wall', 'door', 'window', 'light']);
-type Tab = VttMenuTab;
+type Tab =
+  | 'art'
+  | 'scene'
+  | 'token'
+  | 'library'
+  | 'sheet'
+  | 'mounts'
+  | 'pets'
+  | 'vehicles'
+  | 'siege'
+  | 'chat'
+  | 'combat'
+  | 'journal'
+  | 'music'
+  | 'table'
+  | 'help';
 type Entry = {
   id: string;
   name: string;
@@ -270,6 +285,14 @@ const characterMime = 'application/x-alvorada-character';
 function monsterImage(entry: Entry) {
   return entry.image || monsterArt(entry.id, entry.name);
 }
+const tabs: { id: Tab; name: string; icon: typeof Sun }[] = [
+  { id: 'chat', name: 'Chat', icon: MessageSquare },
+  { id: 'sheet', name: 'Fichas', icon: Users },
+  { id: 'library', name: 'Biblioteca de assets', icon: BookOpen },
+  { id: 'music', name: 'Som', icon: Music },
+  { id: 'combat', name: 'Combate', icon: Swords },
+  { id: 'table', name: 'Configurações e ajuda', icon: Settings2 },
+];
 const toolList: { id: Tool; name: string; icon: typeof Sun; gm?: boolean }[] = [
   { id: 'select', name: 'Selecionar (V)', icon: MousePointer2 },
   { id: 'pan', name: 'Mover mapa (H)', icon: Hand },
@@ -387,7 +410,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
   const [createRegion,setCreateRegion]=useState(''),[createPlace,setCreatePlace]=useState('');
   const [canopyEditing, setCanopyEditing] = useState(false);
   const [tool, setTool] = useState<Tool>('select'),
-    [tab, setTab] = useState<Tab>('menu'),
+    [tab, setTab] = useState<Tab>('chat'),
     [layer, setLayer] = useState('tokens'),
     [selection, setSelection] = useState<string[]>([]),
     [attackTargetId, setAttackTargetId] = useState<string | null>(null),
@@ -423,7 +446,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
       value: string;
     } | null>(null),
     [brushRadius, setBrushRadius] = useState(140),
-    [panelOpen, setPanelOpen] = useState(false),
+    [panelOpen, setPanelOpen] = useState(true),
     [mapsOpen, setMapsOpen] = useState(false),
     [sheetId, setSheetId] = useState<string | null>(null),
     [diceOpen, setDiceOpen] = useState(false),
@@ -435,7 +458,18 @@ export function VttSession({ characters, user, media }: { characters: Character[
     [historyEnd, setHistoryEnd] = useState(false),
     [settingsId, setSettingsId] = useState<string | null>(null),
     [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
-  const menuButton = useRef<HTMLButtonElement>(null);
+  const libraryButton = useRef<HTMLButtonElement>(null);
+  const [libraryOpen, setLibraryOpen] = useState(false);
+  const [libraryView, setLibraryView] = useState<'menu' | 'content'>('menu');
+  function openLibrary(next?: VttLibrary) {
+    setLibraryOpen(true);
+    setLibraryView(next ? 'content' : 'menu');
+    if (next) {
+      setLibrary(next);setQuery('');setEntry(null);
+      if (next === 'presets' || next === 'premium') setPresetVersion(v => v + 1);
+    }
+    if (window.innerWidth <= 800) setPanelOpen(false);
+  }
   const [terrainBrush, setTerrainBrush] = useState<TerrainBrushSettings>({texture:'grass',radius:45,softness:.5,opacity:1,textureScale:280,shape:'round',layer:'base'});
   const [terrainDraft, setTerrainDraft] = useState<TerrainStroke | null>(null);
   const [terrainCursor, setTerrainCursor] = useState<Point | null>(null);
@@ -2808,7 +2842,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
     <VttVoiceStatus voice={voice}/>
     <section inert={!sceneImagesReady} style={{visibility: sceneImagesReady ? 'visible' : 'hidden'}} data-map-effects={mapEffects ? 'on' : 'off'} className="vtt-workspace" data-visual-effects={visualEffects ? 'on' : 'off'} aria-label="Mesa virtual">
       <header className="vtt-top">
-        <button ref={menuButton} className="vtt-menu-trigger" aria-label="Menu da mesa" aria-expanded={panelOpen} aria-controls="vtt-menu" onClick={() => {if (panelOpen) setPanelOpen(false); else {setTab('menu');setPanelOpen(true);}}}><Menu size={18}/>Menu</button>
+        <button ref={libraryButton} className="vtt-menu-trigger" aria-label="Abrir biblioteca de assets" aria-expanded={libraryOpen} aria-controls="vtt-library-menu" onClick={() => {if(libraryOpen)setLibraryOpen(false);else openLibrary();}}><Menu size={18}/>Biblioteca</button>
         <div className="vtt-brand">
           <Swords size={22} />
           <div>
@@ -2914,7 +2948,9 @@ export function VttSession({ characters, user, media }: { characters: Character[
           >
             <Maximize2 size={17} />
           </button>
-
+          <button aria-label="Alternar painel" onClick={() => {if(!panelOpen && window.innerWidth <= 800)setLibraryOpen(false);setPanelOpen(v => !v);}}>
+            <Settings2 size={17} />
+          </button>
         </div>
       </header>
       {notice && (
@@ -2928,8 +2964,221 @@ export function VttSession({ characters, user, media }: { characters: Character[
           </button>
         </div>
       )}
-      <div className={`vtt-layout vtt-layout--unified ${!panelOpen ? 'panel-closed' : ''}`}>
-
+      <div className={`vtt-layout ${!panelOpen ? 'panel-closed' : ''}`}>
+        <nav className="vtt-tools" aria-label="Ferramentas da mesa">
+          {toolList.filter(t => ['select', 'lasso', 'ruler'].includes(t.id) && !spectator && (gm || !t.gm)).map(({id,name,icon:Icon}) => (
+            <button key={id} title={name} aria-label={name} aria-pressed={tool === id} disabled={id === 'lasso' && preview}
+              onClick={() => {setLasso([]);drag.current=null;setFogPoints([]);setFogPointer(null);setContextMenu(null);setDraft(null);setTool(id);}}><Icon size={19}/></button>
+          ))}
+          {gm && !preview && <button title="Áreas de transparência" aria-label="Áreas de transparência" aria-pressed={canopyEditing} onClick={()=>{if(!canopyEditing)setPanelOpen(false);setCanopyEditing(v=>!v);}}><Eye size={20}/></button>}
+          {gm && !preview && <button aria-label="Brush do mapa" title="Brush do mapa" aria-pressed={tool.startsWith('terrain-')}
+            onClick={()=>{openLibrary('terrain');setContextMenu(null);changeLayer('map');setTool('terrain-paint');}}><Paintbrush size={20}/></button>}
+          {toolList
+            .filter(
+              (t) =>
+                !['select', 'lasso', 'ruler'].includes(t.id) && (spectator ? t.id === 'pan' : gm || !t.gm) &&
+                (!barrierTools.has(t.id) || barrierEditing),
+            )
+            .map(({ id, name, icon: Icon }) =>
+              ['rect', 'circle', 'cone', 'line', 'text', 'hide'].includes(id) ? null : id === 'pen' ? (
+                <VttToolGroup
+                  key="drawing"
+                  label="Desenho"
+                  options={[
+                    toolList.find(t => t.id === 'pen')!,
+                    {id:'forms',name:'Formas',icon:Square,options:toolList.filter(t => ['rect','circle','cone','line'].includes(t.id))},
+                    toolList.find(t => t.id === 'text')!,
+                  ]}
+                  selected={tool}
+                  choose={(id) => {
+                    setLasso([]);drag.current=null;setFogPoints([]);setFogPointer(null);setContextMenu(null);setDraft(null);
+                    if (layer === 'lighting') changeLayer('tokens');
+                    setTool(id as Tool);
+                  }}
+                />
+              ) : id === 'reveal' ? (
+                <VttToolGroup
+                  key="fog"
+                  label="Névoa"
+                  selected={['reveal', 'hide'].includes(tool) ? tool + '-' + fogShape : ''}
+                  options={[
+                    { id: 'reveal-rect', name: 'Revelar área', icon: Eye },
+                    { id: 'reveal-polygon', name: 'Revelar polígono', icon: Triangle },
+                    { id: 'hide-rect', name: 'Ocultar área', icon: EyeOff },
+                    { id: 'hide-polygon', name: 'Ocultar polígono', icon: Triangle },
+                    { id: 'reveal-brush', name: 'Revelar com pincel', icon: Circle },
+                    { id: 'hide-brush', name: 'Ocultar com pincel', icon: Circle },
+                    { id: 'automatic', name: 'Visão automática dos tokens', icon: Eye },
+                    { id: 'reset', name: 'Reiniciar névoa', icon: Trash2 },
+                  ]}
+                  choose={(id) => {
+                    setFogPoints([]);
+                    setFogPointer(null);
+                    setDraft(null);
+                    if (id === 'automatic') {
+                      editScene(activateTokenVision);
+                      setTool('select');
+                    } else if (id === 'reset') {
+                      editScene((s) => {
+                        s.fog = true;
+                        s.fogMode = 'manual';
+                        s.lighting = false;
+                        s.reveals = [];
+                        s.fogAreas = [];
+                      });
+                      setTool('select');
+                    } else {
+                      const [mode, shape] = id.split('-');
+                      setTool(mode as Tool);
+                      setFogShape(shape as typeof fogShape);
+                    }
+                  }}
+                />
+              ) : (
+                <button
+                  key={id}
+                  title={
+                    id === 'lasso'
+                      ? 'Seleção livre (L) · Arraste um contorno. Shift adiciona à seleção.'
+                      : name
+                  }
+                  aria-label={name}
+                  aria-pressed={tool === id}
+                  disabled={id === 'lasso' && preview}
+                  onClick={() => {
+                    setLasso([]);
+                    drag.current = null;
+                    setFogPoints([]);
+                    setFogPointer(null);
+                    setContextMenu(null);
+                    if (['wall', 'door', 'window', 'light'].includes(id)) {
+                      setSelection([]);
+                    } else if (
+                      layer === 'lighting' &&
+                      ['pen', 'rect', 'circle', 'cone', 'line', 'text'].includes(id)
+                    )
+                      changeLayer('tokens');
+                    if(id==='attach'){beginAttachment();return;}
+                    setTool(id);
+                    setDraft(null);
+                  }}
+                >
+                  <Icon size={19} />
+                </button>
+              ),
+            )}
+          {!spectator && (
+            <button
+              aria-label="Escolher dados"
+              title="Escolher dados"
+              aria-pressed={diceOpen}
+              onClick={() => setDiceOpen((v) => !v)}
+            >
+              <Dices size={20} />
+            </button>
+          )}
+          {gm && (
+            <VttToolGroup
+              label="Camadas"
+              selected={layer}
+              icon={Layers}
+              options={[
+                { id: 'map', name: 'Fundo · visível aos jogadores', icon: Image },
+                { id: 'tokens', name: 'Tokens · jogadores', icon: Users },
+                { id: 'gm', name: 'Mestre · oculto', icon: EyeOff },
+                { id: 'lighting', name: 'Iluminação e barreiras', icon: Lightbulb },
+                { id: 'order', name: 'Ordem de sobreposição dos itens', icon: Layers },
+              ]}
+              choose={next => {
+                if(next === 'order') {
+                  setTab('scene'); setPanelOpen(true);
+                  requestAnimationFrame(() => document.getElementById('vtt-item-layers')?.scrollIntoView({block:'nearest'}));
+                } else changeLayer(next);
+              }}
+            />
+          )}
+          {gm && (
+            <>
+              <div className="vtt-tool-separator" />
+              <button
+                aria-label="Excluir objetos selecionados"
+                title="Excluir seleção (Delete)"
+                disabled={!selection.length}
+                onClick={removeSelected}
+              >
+                <Trash2 size={18} />
+              </button>
+              <button aria-label="Desfazer" title="Desfazer (Ctrl+Z)" onClick={() => history(true)}>
+                <Undo2 size={18} />
+              </button>
+              <button
+                aria-label="Refazer"
+                title="Refazer (Ctrl+Shift+Z)"
+                onClick={() => history(false)}
+              >
+                <Redo2 size={18} />
+              </button>
+            </>
+          )}
+          {gm && !preview && !sheetId && (
+            <VttAtmosphereMenu
+              key={state.id + scene.id}
+              soundSnapshot={sounds.snapshot} sceneId={scene.id}
+              soundCommand={c=>soundCommand(c,state.id)} unlockAudio={sounds.unlock}
+              effectsEnabled={mapEffects} enableEffects={() => media.update({mapEffects:true})}
+              value={scene.atmosphere} busy={busy}
+              preview={(value) => setAtmospherePreview(value ? {sceneId:scene.id,value} : null)}
+              change={async (value) => {
+                await save();
+                const next = await api<VttState>('/vtt/rooms/' + state.id + '/atmosphere', {method:'PUT',body:JSON.stringify({sceneId:scene.id,atmosphere:value})});
+                if (stateRef.current && next.revision < stateRef.current.revision) return;
+                if (dirtyRef.current && docRef.current) {
+                  stateRef.current = next; setState(next);
+                  const merged = structuredClone(docRef.current);
+                  const target = merged.scenes.find(s => s.id === scene.id);
+                  const saved = next.document.scenes.find(s => s.id === scene.id);
+                  if (target && saved) target.atmosphere = saved.atmosphere;
+                  docRef.current = merged; setDoc(merged);
+                } else receive(next);
+              }}
+            />
+          )}
+          {gm && !sheetId && (
+            <VttEffects
+              presets={doc.effects}
+              visualEffects={visualEffects}
+              tokens={selectedEffectTokens}
+              busy={busy}
+              preview={(preset) =>
+                setEffectPreview(
+                  preset && selectedEffectTokens.length
+                    ? { tokenIds: selectedEffectTokens.map((t) => t.id), preset, at: Date.now() }
+                    : null,
+                )
+              }
+              save={saveEffect}
+              remove={async (id) => {
+                edit((d) => {
+                  d.effects = d.effects.filter((e) => e.id !== id);
+                });
+                await save();
+              }}
+              apply={applyEffect}
+              clear={async () => {
+                if (selectedEffectTokens.length) {
+                  await save();
+                  editSelected((t) => {
+                    if (t.layer !== 'map') {
+                      t.deathAt = null;
+                      t.effects = [];
+                    }
+                  });
+                  await save();
+                }
+              }}
+            />
+          )}
+        </nav>
         <div className="vtt-stage" ref={stage} onDragOverCapture={e=>{if(gm&&!preview&&e.dataTransfer.types.includes('application/x-alvorada-siege')){e.preventDefault();e.dataTransfer.dropEffect='copy';}}} onDropCapture={e=>{const kind=e.dataTransfer.getData('application/x-alvorada-siege');if(!gm||preview||(kind!=='cannon'&&kind!=='harpoon'))return;e.preventDefault();e.stopPropagation();const r=e.currentTarget.getBoundingClientRect();void commandSiege({kind:'create',weaponKind:kind as SiegeKind,position:{x:camera.x+(e.clientX-r.left-bounds.width/2)/camera.zoom,y:camera.y+(e.clientY-r.top-bounds.height/2)/camera.zoom}}).catch(error=>setNotice(error.message));}}>
           <VttSiegeImpacts snapshot={siege.snapshot} scene={scene} camera={camera} bounds={bounds} gm={gm} preview={preview} viewer={viewer}/>
           <VttSiegeShots roomId={state.id} snapshot={siege.snapshot} scene={scene} camera={camera} bounds={bounds} enabled={visualEffects} gm={gm} preview={preview} viewer={viewer} soundEnabled={media.soundEnabled} soundVolume={media.soundVolume}/>
@@ -3455,237 +3704,361 @@ export function VttSession({ characters, user, media }: { characters: Character[
             </div>
           )}
         </div>
+        {libraryOpen && <VttLibraryMenu view={libraryView} library={library} gm={gm && !preview}
+          overview={() => setLibraryView('menu')}
+          close={() => {setLibraryOpen(false);libraryButton.current?.focus();}}
+          choose={key => {openLibrary(key);if(key==='terrain'){changeLayer('map');setTool('terrain-paint');}}}>
+          <div className="vtt-panel-content">
+                  {['monsters', 'premium'].includes(library) && gm && (
+                    <VttMonsterVariants value={monsterVariant} change={setMonsterVariant}
+                      image={entry ? monsterImage(entry) : undefined} />
+                  )}
+                  {library !== 'terrain' && <label className="vtt-search">
+                    Buscar na biblioteca
+                    <input
+                      aria-label="Buscar na biblioteca"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder={library === 'scenery' ? 'Nome da peça ou categoria…' : 'Nome, tipo, nível…'}
+                    />
+                  </label>}
+                  {gm && library === 'images' && storage && <p className="vtt-muted" role="status">Imagens externas: {vttStorageLabel(storage)}. O catálogo não ocupa esta cota.</p>}
+                  {gm && library !== 'nature' && library !== 'terrain' && library !== 'presets' && library !== 'premium' && library !== 'animated' && library !== 'scenery' && (
+                    <label className="vtt-file-button">
+                      <Upload size={14} />
+                      {library === 'images' ? 'Enviar imagem' : 'Importar JSON do 5etools'}
+                      <input
+                        type="file"
+                        accept={
+                          library === 'images'
+                            ? 'image/png,image/jpeg,image/webp'
+                            : '.json,application/json'
+                        }
+                        multiple={library === 'images'}
+                        onChange={(e) => {
+                          const files = Array.from(e.target.files || []);
+                          void act(async () => {
+                            for (const file of files)
+                              library === 'images'
+                                ? await uploadAsset(file)
+                                : await importJson(file);
+                          });
+                          e.target.value = '';
+                        }}
+                      />
+                    </label>
+                  )}
+                  {library === 'terrain' ? terrainPanel() : library === 'nature' ? (<VttNatureAssets query={query} gm={gm&&!preview} add={addNatureAsset}/>) : library === 'scenery' ? (
+                    <>{terrainPanel()}
+                    <VttSceneryAssets query={query} gm={gm && !preview} add={addSceneryAsset} /></>
+                  ) : library === 'animated' ? (
+                    <VttAnimatedAssets query={query} gm={gm && !preview} add={addAnimatedAsset} />
+                  ) : library === 'presets' || library === 'premium' ? (
+                    <VttAssets enabled={library === 'premium'} gm={gm && !preview} query={query} add={addTreeAsset} addNature={addNatureAsset}><VttPrivateLibrary
+                      kind={library}
+                      gm={gm && !preview}
+                      viewMonsters={() => {
+                        setLibrary('monsters');
+                        setQuery('');
+                        setEntry(null);
+                      }}
+                      query={query}
+                      loadKey={presetVersion}
+                      importPreset={importMonsterPreset}
+                      importPremium={(m) => addMonster(m as Entry)}
+                      drag={dragMonster}
+                      variant={monsterVariant}
+                    /></VttAssets>
+                  ) : library === 'images' ? (
+                    <>
+                      <details className="vtt-monster-gallery">
+                        <summary>Tokens dos monstros · {catalog.monsters.length}</summary>
+                        <div className="vtt-asset-grid">
+                          {catalog.monsters
+                            .filter((e) => e.name.toLowerCase().includes(query.toLowerCase()))
+                            .map((e) => (
+                              <div
+                                className="vtt-asset"
+                                key={e.id}
+                                draggable={gm && !preview}
+                                onDragStart={(event) => dragMonster(event, e.id)}
+                                title={gm ? 'Arraste para a mesa' : ''}
+                              >
+                                <img
+                                  loading="lazy"
+                                  src={e.image || monsterArt(e.id, e.name)}
+                                  style={{ filter: monsterVariantFilter(monsterVariant) }}
+                                  alt={e.name}
+                                  draggable={false}
+                                />
+                                <span>{e.name}</span>
+                                {gm && (
+                                  <button onClick={() => addMonster(e)}>Adicionar token</button>
+                                )}
+                              </div>
+                            ))}
+                        </div>
+                      </details>
+                      <div className="vtt-asset-grid">
+                        <div className="vtt-asset">
+                          <img src="/vtt/crypt.svg" alt="Mapa da cripta" />
+                          <span>Cripta esquecida</span>
+                          {gm && (
+                            <button
+                              onClick={() =>
+                                editScene((s) => {
+                                  s.background = '/vtt/crypt.svg';
+                                  s.width = 2240;
+                                  s.height = 1680;
+                                })
+                              }
+                            >
+                              Usar como mapa
+                            </button>
+                          )}
+                        </div>
+                        {state.assets
+                          .filter(
+                            (a) =>
+                              a.kind === 'image' &&
+                              a.name.toLowerCase().includes(query.toLowerCase()),
+                          )
+                          .map((a) => (
+                            <div className="vtt-asset" key={a.id}>
+                              <img src={a.path} alt={a.name} />
+                              <span>{a.name}</span>
+                              {gm && (
+                                <>
+                                  <button
+                                    onClick={() => {
+                                      editScene((s) => {
+                                        s.background = a.path;
+                                        if (a.width && a.height) {
+                                          s.width = Math.max(280, a.width);
+                                          s.height = Math.max(280, a.height);
+                                        }
+                                      });
+                                    }}
+                                  >
+                                    Mapa
+                                  </button>
+                                  <button
+                                    onClick={() => {
+                                      if (token) editToken({ image: a.path });
+                                      else {
+                                        const t = newToken(crypto.randomUUID(), scene);
+                                        t.name = a.name.replace(/\.[^.]+$/, '');
+                                        t.image = a.path;
+                                        Object.assign(t,tokenPlacement(camera,t,scene));
+                                        editScene((s) => s.tokens.push(t));
+                                        setSelection([t.id]);
+                                      }
+                                    }}
+                                  >
+                                    Token
+                                  </button>
+                                  <button
+                                    aria-label={`Excluir ${a.name}`}
+                                    onClick={() =>
+                                      void act(async () => {
+                                        await save();
+                                        await api(`/vtt/rooms/${state.id}/assets/${a.id}`, {
+                                          method: 'DELETE',
+                                        });
+                                        setState((s) =>
+                                          s
+                                            ? {
+                                                ...s,
+                                                assets: s.assets.filter((v) => v.id !== a.id),
+                                              }
+                                            : s,
+                                        );
+                                      })
+                                    }
+                                  >
+                                    <Trash2 size={12} />
+                                  </button>
+                                </>
+                              )}
+                            </div>
+                          ))}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {entry ? (
+                        <div className="vtt-statblock">
+                          <button onClick={() => setEntry(null)}>
+                            <ChevronLeft size={14} />
+                            Voltar à lista
+                          </button>
+                          {library === 'spells' && <h3>{entry.name}</h3>}
+                          {library === 'spells' && (
+                            <p>
+                              {entry.source || 'Importação da mesa'} ·{' '}
+                              {`Nível ${entry.level} · ${entry.school || ''}`}
+                            </p>
+                          )}
+                          {entry.range && (
+                            <p>
+                              Alcance: {entry.range} · {entry.time}
+                            </p>
+                          )}
+                          {entry.duration && (
+                            <p>
+                              Duração: {entry.duration} · {entry.components}
+                            </p>
+                          )}
+                          {library === 'spells' && entry.stats && (
+                            <div className="vtt-stats">
+                              {entry.stats.map((v, i) => (
+                                <span key={i}>
+                                  {['FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'][i]}
+                                  <b>{v}</b>
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          {library === 'monsters' ? (
+                            <VttMonsterStatblock
+                              compact
+                              monster={{
+                                ...entryProfile(entry),
+                                actionDetails:
+                                  token?.name === entry.name ? token.sheet?.details : undefined,
+                              }}
+                              tokenId={token?.name === entry.name ? token.id : undefined}
+                              gm={gm && !preview}
+                              roll={send}
+                              useAction={
+                                token?.name === entry.name
+                                  ? (action) => useMonsterAction(token, action)
+                                  : undefined
+                              }
+                            />
+                          ) : (
+                            <pre>{entry.details}</pre>
+                          )}
+                          {gm && library === 'monsters' && (
+                            <button className="vtt-gold" onClick={() => addMonster(entry)}>
+                              Adicionar ao tabuleiro
+                            </button>
+                          )}
+                          {library === 'spells' && (
+                            <>
+                            {spellProfile(entry.id) && <button className="vtt-gold" disabled={!canToken || !token || preview} onClick={() => requestSpellCast(token!.id, entry.id)}>
+                              Preparar conjuração
+                            </button>}
+                            <button onClick={() => void act(() => send('', '', entry.id))}>
+                              Compartilhar no chat
+                            </button>
+                            </>
+                          )}
+                        </div>
+                      ) : (
+                        <>
+                          <div className="vtt-compendium">
+                            {[
+                              ...catalog[library],
+                              ...doc.custom.filter(
+                                (e) => e.kind === (library === 'monsters' ? 'monster' : 'spell'),
+                              ),
+                            ]
+                              .filter((e) =>
+                                `${e.name} ${e.type || ''} ${e.level ?? ''} ${e.cr || ''}`
+                                  .toLowerCase()
+                                  .includes(query.toLowerCase()),
+                              )
+                              .map((e) => (
+                                <button
+                                  key={e.id}
+                                  onClick={() => setEntry(e)}
+                                  draggable={library === 'monsters' && gm && !preview}
+                                  onDragStart={(event) => dragMonster(event, e.id)}
+                                  title={
+                                    library === 'monsters' && gm
+                                      ? 'Arraste para a mesa ou clique para ver a ficha'
+                                      : undefined
+                                  }
+                                >
+                                  {library === 'monsters' && monsterImage(e) && (
+                                    <img
+                                      className={
+                                        'vtt-monster-thumbnail' +
+                                        (monsterImage(e).startsWith('/api/vtt/premium-art/')
+                                          ? ' premium'
+                                          : '')
+                                      }
+                                      style={{ filter: monsterVariantFilter(monsterVariant) }}
+                                      loading="lazy"
+                                      src={monsterImage(e)}
+                                      alt=""
+                                      draggable={false}
+                                    />
+                                  )}
+                                  <span>{e.name}</span>
+                                  <small>
+                                    {library === 'monsters'
+                                      ? `ND ${e.cr}`
+                                      : e.level === 0
+                                        ? 'Truque'
+                                        : `Nível ${e.level}`}
+                                  </small>
+                                </button>
+                              ))}
+                          </div>
+                        </>
+                      )}
+                    </>
+                  )}
+                  <a
+                    className="vtt-credits"
+                    href="https://www.dndbeyond.com/srd"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    SRD 5.2.1 · Wizards of the Coast · CC BY 4.0
+                  </a>
+</div>
+        </VttLibraryMenu>}
         {panelOpen && (
-          <VttMenu tab={tab} library={library} gm={gm && !preview}
-            overview={() => setTab('menu')}
-            close={() => {setPanelOpen(false);menuButton.current?.focus();}}
-            choose={option => {
-              setTab(option.tab);
-              if (option.library) {
-                setLibrary(option.library);setQuery('');setEntry(null);
-                if (option.library === 'presets' || option.library === 'premium') setPresetVersion(v => v + 1);
-                if (option.library === 'terrain') {changeLayer('map');setTool('terrain-paint');}
-              }
-            }}>
-            {tab === 'tools' && (        <nav className="vtt-tools" aria-label="Ferramentas da mesa">
-          {toolList.filter(t => ['select', 'lasso', 'ruler'].includes(t.id) && !spectator && (gm || !t.gm)).map(({id,name,icon:Icon}) => (
-            <button key={id} title={name} aria-label={name} aria-pressed={tool === id} disabled={id === 'lasso' && preview}
-              onClick={() => {setLasso([]);drag.current=null;setFogPoints([]);setFogPointer(null);setContextMenu(null);setDraft(null);setTool(id);}}><Icon size={19}/></button>
-          ))}
-          {gm && !preview && <button title="Áreas de transparência" aria-label="Áreas de transparência" aria-pressed={canopyEditing} onClick={()=>{if(!canopyEditing)setPanelOpen(false);setCanopyEditing(v=>!v);}}><Eye size={20}/></button>}
-          {gm && !preview && <button aria-label="Brush do mapa" title="Brush do mapa" aria-pressed={tool.startsWith('terrain-')}
-            onClick={()=>{setLibrary('terrain');setTab('art');setPanelOpen(true);setContextMenu(null);setQuery('');changeLayer('map');setTool('terrain-paint');}}><Paintbrush size={20}/></button>}
-          {toolList
-            .filter(
-              (t) =>
-                !['select', 'lasso', 'ruler'].includes(t.id) && (spectator ? t.id === 'pan' : gm || !t.gm) &&
-                (!barrierTools.has(t.id) || barrierEditing),
-            )
-            .map(({ id, name, icon: Icon }) =>
-              ['rect', 'circle', 'cone', 'line', 'text', 'hide'].includes(id) ? null : id === 'pen' ? (
-                <VttToolGroup
-                  key="drawing"
-                  label="Desenho"
-                  options={[
-                    toolList.find(t => t.id === 'pen')!,
-                    {id:'forms',name:'Formas',icon:Square,options:toolList.filter(t => ['rect','circle','cone','line'].includes(t.id))},
-                    toolList.find(t => t.id === 'text')!,
-                  ]}
-                  selected={tool}
-                  choose={(id) => {
-                    setLasso([]);drag.current=null;setFogPoints([]);setFogPointer(null);setContextMenu(null);setDraft(null);
-                    if (layer === 'lighting') changeLayer('tokens');
-                    setTool(id as Tool);
-                  }}
-                />
-              ) : id === 'reveal' ? (
-                <VttToolGroup
-                  key="fog"
-                  label="Névoa"
-                  selected={['reveal', 'hide'].includes(tool) ? tool + '-' + fogShape : ''}
-                  options={[
-                    { id: 'reveal-rect', name: 'Revelar área', icon: Eye },
-                    { id: 'reveal-polygon', name: 'Revelar polígono', icon: Triangle },
-                    { id: 'hide-rect', name: 'Ocultar área', icon: EyeOff },
-                    { id: 'hide-polygon', name: 'Ocultar polígono', icon: Triangle },
-                    { id: 'reveal-brush', name: 'Revelar com pincel', icon: Circle },
-                    { id: 'hide-brush', name: 'Ocultar com pincel', icon: Circle },
-                    { id: 'automatic', name: 'Visão automática dos tokens', icon: Eye },
-                    { id: 'reset', name: 'Reiniciar névoa', icon: Trash2 },
-                  ]}
-                  choose={(id) => {
-                    setFogPoints([]);
-                    setFogPointer(null);
-                    setDraft(null);
-                    if (id === 'automatic') {
-                      editScene(activateTokenVision);
-                      setTool('select');
-                    } else if (id === 'reset') {
-                      editScene((s) => {
-                        s.fog = true;
-                        s.fogMode = 'manual';
-                        s.lighting = false;
-                        s.reveals = [];
-                        s.fogAreas = [];
-                      });
-                      setTool('select');
-                    } else {
-                      const [mode, shape] = id.split('-');
-                      setTool(mode as Tool);
-                      setFogShape(shape as typeof fogShape);
-                    }
-                  }}
-                />
-              ) : (
+          <aside className="vtt-panel">
+            <nav className="vtt-panel-tabs" aria-label="Painéis da mesa">
+              {tabs.map(({ id, name, icon: Icon }) => (
                 <button
                   key={id}
-                  title={
-                    id === 'lasso'
-                      ? 'Seleção livre (L) · Arraste um contorno. Shift adiciona à seleção.'
-                      : name
-                  }
                   aria-label={name}
-                  aria-pressed={tool === id}
-                  disabled={id === 'lasso' && preview}
+                  title={name}
+                  aria-pressed={
+                    tab === id ||
+                    (id === 'sheet' && ['token', 'journal', 'mounts', 'pets','vehicles','siege'].includes(tab)) ||
+                    (id === 'table' && (tab === 'scene' || tab === 'help'))
+                  }
                   onClick={() => {
-                    setLasso([]);
-                    drag.current = null;
-                    setFogPoints([]);
-                    setFogPointer(null);
-                    setContextMenu(null);
-                    if (['wall', 'door', 'window', 'light'].includes(id)) {
-                      setSelection([]);
-                    } else if (
-                      layer === 'lighting' &&
-                      ['pen', 'rect', 'circle', 'cone', 'line', 'text'].includes(id)
-                    )
-                      changeLayer('tokens');
-                    if(id==='attach'){beginAttachment();return;}
-                    setTool(id);
-                    setDraft(null);
+                    if (id === 'library') {openLibrary();return;}
+                    setTab(id);
+                    if (window.innerWidth <= 800) setLibraryOpen(false);
                   }}
                 >
-                  <Icon size={19} />
+                  <Icon size={17} />
                 </button>
-              ),
-            )}
-          {!spectator && (
-            <button
-              aria-label="Escolher dados"
-              title="Escolher dados"
-              aria-pressed={diceOpen}
-              onClick={() => setDiceOpen((v) => !v)}
-            >
-              <Dices size={20} />
-            </button>
-          )}
-          {gm && (
-            <VttToolGroup
-              label="Camadas"
-              selected={layer}
-              icon={Layers}
-              options={[
-                { id: 'map', name: 'Fundo · visível aos jogadores', icon: Image },
-                { id: 'tokens', name: 'Tokens · jogadores', icon: Users },
-                { id: 'gm', name: 'Mestre · oculto', icon: EyeOff },
-                { id: 'lighting', name: 'Iluminação e barreiras', icon: Lightbulb },
-                { id: 'order', name: 'Ordem de sobreposição dos itens', icon: Layers },
-              ]}
-              choose={next => {
-                if(next === 'order') {
-                  setTab('scene'); setPanelOpen(true);
-                  requestAnimationFrame(() => document.getElementById('vtt-item-layers')?.scrollIntoView({block:'nearest'}));
-                } else changeLayer(next);
-              }}
-            />
-          )}
-          {gm && (
-            <>
-              <div className="vtt-tool-separator" />
-              <button
-                aria-label="Excluir objetos selecionados"
-                title="Excluir seleção (Delete)"
-                disabled={!selection.length}
-                onClick={removeSelected}
-              >
-                <Trash2 size={18} />
-              </button>
-              <button aria-label="Desfazer" title="Desfazer (Ctrl+Z)" onClick={() => history(true)}>
-                <Undo2 size={18} />
-              </button>
-              <button
-                aria-label="Refazer"
-                title="Refazer (Ctrl+Shift+Z)"
-                onClick={() => history(false)}
-              >
-                <Redo2 size={18} />
-              </button>
-            </>
-          )}
-          {gm && !preview && !sheetId && (
-            <VttAtmosphereMenu
-              key={state.id + scene.id}
-              soundSnapshot={sounds.snapshot} sceneId={scene.id}
-              soundCommand={c=>soundCommand(c,state.id)} unlockAudio={sounds.unlock}
-              effectsEnabled={mapEffects} enableEffects={() => media.update({mapEffects:true})}
-              value={scene.atmosphere} busy={busy}
-              preview={(value) => setAtmospherePreview(value ? {sceneId:scene.id,value} : null)}
-              change={async (value) => {
-                await save();
-                const next = await api<VttState>('/vtt/rooms/' + state.id + '/atmosphere', {method:'PUT',body:JSON.stringify({sceneId:scene.id,atmosphere:value})});
-                if (stateRef.current && next.revision < stateRef.current.revision) return;
-                if (dirtyRef.current && docRef.current) {
-                  stateRef.current = next; setState(next);
-                  const merged = structuredClone(docRef.current);
-                  const target = merged.scenes.find(s => s.id === scene.id);
-                  const saved = next.document.scenes.find(s => s.id === scene.id);
-                  if (target && saved) target.atmosphere = saved.atmosphere;
-                  docRef.current = merged; setDoc(merged);
-                } else receive(next);
-              }}
-            />
-          )}
-          {gm && !sheetId && (
-            <VttEffects
-              presets={doc.effects}
-              visualEffects={visualEffects}
-              tokens={selectedEffectTokens}
-              busy={busy}
-              preview={(preset) =>
-                setEffectPreview(
-                  preset && selectedEffectTokens.length
-                    ? { tokenIds: selectedEffectTokens.map((t) => t.id), preset, at: Date.now() }
-                    : null,
-                )
-              }
-              save={saveEffect}
-              remove={async (id) => {
-                edit((d) => {
-                  d.effects = d.effects.filter((e) => e.id !== id);
-                });
-                await save();
-              }}
-              apply={applyEffect}
-              clear={async () => {
-                if (selectedEffectTokens.length) {
-                  await save();
-                  editSelected((t) => {
-                    if (t.layer !== 'map') {
-                      t.deathAt = null;
-                      t.effects = [];
-                    }
-                  });
-                  await save();
-                }
-              }}
-            />
-          )}
-        </nav>)}
-            {tab !== 'menu' && tab !== 'tools' && (
-
+              ))}
+            </nav>
             <div className={'vtt-panel-content' + (tab === 'chat' ? ' vtt-chat-panel' : '')}>
               <div className="vtt-panel-heading">
-
+                <h2 hidden={tab === 'chat' && chatControlsCollapsed}>
+                  {
+                    tabs.find(
+                      (t) =>
+                        t.id ===
+                        (['token', 'journal', 'mounts', 'pets','vehicles','siege'].includes(tab)
+                          ? 'sheet'
+                          : tab === 'scene' || tab === 'help'
+                            ? 'table'
+                            : tab),
+                    )?.name
+                  }
+                </h2>
                 {tab === 'chat' && (
                   <button
                     className="vtt-chat-collapse"
@@ -3703,6 +4076,40 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   </button>
                 )}
               </div>
+              {['sheet', 'mounts', 'pets','vehicles','siege', 'token', 'journal'].includes(tab) && (
+                <div className="vtt-subtabs vtt-companion-tabs">
+                  <button aria-pressed={tab === 'sheet'} onClick={() => setTab('sheet')}>
+                    Personagens
+                  </button>
+                  <button aria-pressed={tab === 'mounts'} onClick={() => setTab('mounts')}>
+                    Montarias
+                  </button>
+                  <button aria-pressed={tab === 'pets'} onClick={() => setTab('pets')}>
+                    Mascotes
+                  </button>
+                  <button aria-pressed={tab==='vehicles'} onClick={()=>setTab('vehicles')}>Veículos</button>
+                  <button aria-pressed={tab==='siege'} onClick={()=>setTab('siege')}>Armas de cerco</button>
+                  <button aria-pressed={tab === 'token'} onClick={() => setTab('token')}>
+                    Token selecionado
+                  </button>
+                  <button aria-pressed={tab === 'journal'} onClick={() => setTab('journal')}>
+                    Diário
+                  </button>
+                </div>
+              )}
+              {['table', 'scene', 'help'].includes(tab) && (
+                <div className="vtt-subtabs">
+                  <button aria-pressed={tab === 'table'} onClick={() => setTab('table')}>
+                    Mesa
+                  </button>
+                  <button aria-pressed={tab === 'scene'} onClick={() => setTab('scene')}>
+                    Mapa
+                  </button>
+                  <button aria-pressed={tab === 'help'} onClick={() => setTab('help')}>
+                    <HelpCircle size={13} /> Ajuda
+                  </button>
+                </div>
+              )}
               {tab === 'scene' && (
                 <>
                   <label>
@@ -4197,8 +4604,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                           </label>
                           <button
                             onClick={() => {
-                              setLibrary('images');
-                              setTab('art');
+                              openLibrary('images');
                             }}
                           >
                             Usar imagem da biblioteca
@@ -4267,320 +4673,6 @@ export function VttSession({ characters, user, media }: { characters: Character[
                       </div>
                     </>
                   )}
-                </>
-              )}
-              {(tab === 'library' || tab === 'art') && (
-                <>
-                  {['monsters', 'premium'].includes(library) && gm && (
-                    <VttMonsterVariants value={monsterVariant} change={setMonsterVariant}
-                      image={entry ? monsterImage(entry) : undefined} />
-                  )}
-                  {library !== 'terrain' && <label className="vtt-search">
-                    Buscar na biblioteca
-                    <input
-                      aria-label="Buscar na biblioteca"
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                      placeholder={library === 'scenery' ? 'Nome da peça ou categoria…' : 'Nome, tipo, nível…'}
-                    />
-                  </label>}
-                  {gm && library === 'images' && storage && <p className="vtt-muted" role="status">Imagens externas: {vttStorageLabel(storage)}. O catálogo não ocupa esta cota.</p>}
-                  {gm && library !== 'nature' && library !== 'terrain' && library !== 'presets' && library !== 'premium' && library !== 'animated' && library !== 'scenery' && (
-                    <label className="vtt-file-button">
-                      <Upload size={14} />
-                      {library === 'images' ? 'Enviar imagem' : 'Importar JSON do 5etools'}
-                      <input
-                        type="file"
-                        accept={
-                          library === 'images'
-                            ? 'image/png,image/jpeg,image/webp'
-                            : '.json,application/json'
-                        }
-                        multiple={library === 'images'}
-                        onChange={(e) => {
-                          const files = Array.from(e.target.files || []);
-                          void act(async () => {
-                            for (const file of files)
-                              library === 'images'
-                                ? await uploadAsset(file)
-                                : await importJson(file);
-                          });
-                          e.target.value = '';
-                        }}
-                      />
-                    </label>
-                  )}
-                  {library === 'terrain' ? terrainPanel() : library === 'nature' ? (<VttNatureAssets query={query} gm={gm&&!preview} add={addNatureAsset}/>) : library === 'scenery' ? (
-                    <>{terrainPanel()}
-                    <VttSceneryAssets query={query} gm={gm && !preview} add={addSceneryAsset} /></>
-                  ) : library === 'animated' ? (
-                    <VttAnimatedAssets query={query} gm={gm && !preview} add={addAnimatedAsset} />
-                  ) : library === 'presets' || library === 'premium' ? (
-                    <VttAssets enabled={library === 'premium'} gm={gm && !preview} query={query} add={addTreeAsset} addNature={addNatureAsset}><VttPrivateLibrary
-                      kind={library}
-                      gm={gm && !preview}
-                      viewMonsters={() => {
-                        setLibrary('monsters');
-                        setQuery('');
-                        setEntry(null);
-                      }}
-                      query={query}
-                      loadKey={presetVersion}
-                      importPreset={importMonsterPreset}
-                      importPremium={(m) => addMonster(m as Entry)}
-                      drag={dragMonster}
-                      variant={monsterVariant}
-                    /></VttAssets>
-                  ) : library === 'images' ? (
-                    <>
-                      <details className="vtt-monster-gallery">
-                        <summary>Tokens dos monstros · {catalog.monsters.length}</summary>
-                        <div className="vtt-asset-grid">
-                          {catalog.monsters
-                            .filter((e) => e.name.toLowerCase().includes(query.toLowerCase()))
-                            .map((e) => (
-                              <div
-                                className="vtt-asset"
-                                key={e.id}
-                                draggable={gm && !preview}
-                                onDragStart={(event) => dragMonster(event, e.id)}
-                                title={gm ? 'Arraste para a mesa' : ''}
-                              >
-                                <img
-                                  loading="lazy"
-                                  src={e.image || monsterArt(e.id, e.name)}
-                                  style={{ filter: monsterVariantFilter(monsterVariant) }}
-                                  alt={e.name}
-                                  draggable={false}
-                                />
-                                <span>{e.name}</span>
-                                {gm && (
-                                  <button onClick={() => addMonster(e)}>Adicionar token</button>
-                                )}
-                              </div>
-                            ))}
-                        </div>
-                      </details>
-                      <div className="vtt-asset-grid">
-                        <div className="vtt-asset">
-                          <img src="/vtt/crypt.svg" alt="Mapa da cripta" />
-                          <span>Cripta esquecida</span>
-                          {gm && (
-                            <button
-                              onClick={() =>
-                                editScene((s) => {
-                                  s.background = '/vtt/crypt.svg';
-                                  s.width = 2240;
-                                  s.height = 1680;
-                                })
-                              }
-                            >
-                              Usar como mapa
-                            </button>
-                          )}
-                        </div>
-                        {state.assets
-                          .filter(
-                            (a) =>
-                              a.kind === 'image' &&
-                              a.name.toLowerCase().includes(query.toLowerCase()),
-                          )
-                          .map((a) => (
-                            <div className="vtt-asset" key={a.id}>
-                              <img src={a.path} alt={a.name} />
-                              <span>{a.name}</span>
-                              {gm && (
-                                <>
-                                  <button
-                                    onClick={() => {
-                                      editScene((s) => {
-                                        s.background = a.path;
-                                        if (a.width && a.height) {
-                                          s.width = Math.max(280, a.width);
-                                          s.height = Math.max(280, a.height);
-                                        }
-                                      });
-                                    }}
-                                  >
-                                    Mapa
-                                  </button>
-                                  <button
-                                    onClick={() => {
-                                      if (token) editToken({ image: a.path });
-                                      else {
-                                        const t = newToken(crypto.randomUUID(), scene);
-                                        t.name = a.name.replace(/\.[^.]+$/, '');
-                                        t.image = a.path;
-                                        Object.assign(t,tokenPlacement(camera,t,scene));
-                                        editScene((s) => s.tokens.push(t));
-                                        setSelection([t.id]);
-                                      }
-                                    }}
-                                  >
-                                    Token
-                                  </button>
-                                  <button
-                                    aria-label={`Excluir ${a.name}`}
-                                    onClick={() =>
-                                      void act(async () => {
-                                        await save();
-                                        await api(`/vtt/rooms/${state.id}/assets/${a.id}`, {
-                                          method: 'DELETE',
-                                        });
-                                        setState((s) =>
-                                          s
-                                            ? {
-                                                ...s,
-                                                assets: s.assets.filter((v) => v.id !== a.id),
-                                              }
-                                            : s,
-                                        );
-                                      })
-                                    }
-                                  >
-                                    <Trash2 size={12} />
-                                  </button>
-                                </>
-                              )}
-                            </div>
-                          ))}
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {entry ? (
-                        <div className="vtt-statblock">
-                          <button onClick={() => setEntry(null)}>
-                            <ChevronLeft size={14} />
-                            Voltar à lista
-                          </button>
-                          {library === 'spells' && <h3>{entry.name}</h3>}
-                          {library === 'spells' && (
-                            <p>
-                              {entry.source || 'Importação da mesa'} ·{' '}
-                              {`Nível ${entry.level} · ${entry.school || ''}`}
-                            </p>
-                          )}
-                          {entry.range && (
-                            <p>
-                              Alcance: {entry.range} · {entry.time}
-                            </p>
-                          )}
-                          {entry.duration && (
-                            <p>
-                              Duração: {entry.duration} · {entry.components}
-                            </p>
-                          )}
-                          {library === 'spells' && entry.stats && (
-                            <div className="vtt-stats">
-                              {entry.stats.map((v, i) => (
-                                <span key={i}>
-                                  {['FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'][i]}
-                                  <b>{v}</b>
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                          {library === 'monsters' ? (
-                            <VttMonsterStatblock
-                              compact
-                              monster={{
-                                ...entryProfile(entry),
-                                actionDetails:
-                                  token?.name === entry.name ? token.sheet?.details : undefined,
-                              }}
-                              tokenId={token?.name === entry.name ? token.id : undefined}
-                              gm={gm && !preview}
-                              roll={send}
-                              useAction={
-                                token?.name === entry.name
-                                  ? (action) => useMonsterAction(token, action)
-                                  : undefined
-                              }
-                            />
-                          ) : (
-                            <pre>{entry.details}</pre>
-                          )}
-                          {gm && library === 'monsters' && (
-                            <button className="vtt-gold" onClick={() => addMonster(entry)}>
-                              Adicionar ao tabuleiro
-                            </button>
-                          )}
-                          {library === 'spells' && (
-                            <>
-                            {spellProfile(entry.id) && <button className="vtt-gold" disabled={!canToken || !token || preview} onClick={() => requestSpellCast(token!.id, entry.id)}>
-                              Preparar conjuração
-                            </button>}
-                            <button onClick={() => void act(() => send('', '', entry.id))}>
-                              Compartilhar no chat
-                            </button>
-                            </>
-                          )}
-                        </div>
-                      ) : (
-                        <>
-                          <div className="vtt-compendium">
-                            {[
-                              ...catalog[library],
-                              ...doc.custom.filter(
-                                (e) => e.kind === (library === 'monsters' ? 'monster' : 'spell'),
-                              ),
-                            ]
-                              .filter((e) =>
-                                `${e.name} ${e.type || ''} ${e.level ?? ''} ${e.cr || ''}`
-                                  .toLowerCase()
-                                  .includes(query.toLowerCase()),
-                              )
-                              .map((e) => (
-                                <button
-                                  key={e.id}
-                                  onClick={() => setEntry(e)}
-                                  draggable={library === 'monsters' && gm && !preview}
-                                  onDragStart={(event) => dragMonster(event, e.id)}
-                                  title={
-                                    library === 'monsters' && gm
-                                      ? 'Arraste para a mesa ou clique para ver a ficha'
-                                      : undefined
-                                  }
-                                >
-                                  {library === 'monsters' && monsterImage(e) && (
-                                    <img
-                                      className={
-                                        'vtt-monster-thumbnail' +
-                                        (monsterImage(e).startsWith('/api/vtt/premium-art/')
-                                          ? ' premium'
-                                          : '')
-                                      }
-                                      style={{ filter: monsterVariantFilter(monsterVariant) }}
-                                      loading="lazy"
-                                      src={monsterImage(e)}
-                                      alt=""
-                                      draggable={false}
-                                    />
-                                  )}
-                                  <span>{e.name}</span>
-                                  <small>
-                                    {library === 'monsters'
-                                      ? `ND ${e.cr}`
-                                      : e.level === 0
-                                        ? 'Truque'
-                                        : `Nível ${e.level}`}
-                                  </small>
-                                </button>
-                              ))}
-                          </div>
-                        </>
-                      )}
-                    </>
-                  )}
-                  <a
-                    className="vtt-credits"
-                    href="https://www.dndbeyond.com/srd"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    SRD 5.2.1 · Wizards of the Coast · CC BY 4.0
-                  </a>
                 </>
               )}
               {(tab === 'mounts' || tab === 'pets') && (
@@ -5285,10 +5377,10 @@ export function VttSession({ characters, user, media }: { characters: Character[
                 <div className="vtt-help">
                   <h3>Comece por aqui</h3>
                   <ol>
-                    <li>Em Menu → Imagens, envie o mapa e clique em Mapa.</li>
-                    <li>Em Menu → Mapa e camadas, ajuste a grade e a iluminação.</li>
-                    <li>Traga seu personagem em Menu → Personagens ou escolha Menu → Monstros.</li>
-                    <li>Escolha a camada em Menu → Ferramentas do mapa → Camadas.</li>
+                    <li>Em Biblioteca → Imagens, envie o mapa e clique em Mapa.</li>
+                    <li>Em Configurações e ajuda → Mapa, ajuste a grade e a iluminação.</li>
+                    <li>Importe seu personagem em Fichas ou adicione monstros na Biblioteca.</li>
+                    <li>Escolha a camada em Camadas, na barra à esquerda.</li>
                     <li>Desenhe paredes, portas e janelas; ative a iluminação.</li>
                     <li>Selecione um token e confira a Visão do jogador.</li>
                     <li>Compartilhe o convite e escolha quem controla cada token.</li>
@@ -5319,8 +5411,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                 </div>
               )}
             </div>
-            )}
-          </VttMenu>
+          </aside>
         )}
       </div>
       {!spectator &&
