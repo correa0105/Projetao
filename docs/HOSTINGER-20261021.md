@@ -189,6 +189,17 @@ PostgreSQL, uploads, arte premium, configuração, backups essenciais nem a imag
 anterior usada para retorno. Construção de imagem completa exige espaço também
 para exportação e descompactação, além do tamanho final da imagem.
 
+A cópia de implantação na VPS usa sparse checkout apenas para excluir
+`artwork-archive/` da árvore de trabalho: os originais continuam no histórico Git,
+na cópia local de desenvolvimento e no backup verificado das imagens retiradas.
+`git sparse-checkout disable` materializa novamente essa pasta quando necessário;
+ela também permanece excluída do contexto Docker. O diretório `public` da cópia
+de implantação deve seguir a mesma lista de retirada aplicada à imagem publicada.
+Não usar `docker image prune -a` sem exceções: manter a imagem ativa, a versão
+anterior validada e todas as imagens usadas por serviços em execução. Tags antigas
+da aplicação podem ser retiradas depois de registrar seus IDs; caches só são
+descartáveis quando não sustentam imagens necessárias.
+
 Antes da entrega, verificar HTTPS, `/api/health`, login/logout, página principal,
 personagens, imagens, inventário e uma mesa virtual com duas sessões. Verificar
 60 usuários autenticados em um banco/ambiente descartável com perfil representativo;
