@@ -7,6 +7,9 @@ import { createHash } from 'node:crypto';
 import express from 'express';
 import { pruneRetiredPublicImages, retirementTarget } from '../scripts/public-image-retirement';
 import { publicImageNotFound } from '../server/public-image-not-found';
+import { publicImageReplacements } from '../server/public-image-replacements';
+import replacements from '../shared/public-image-replacements-20261029.json';
+import retirement from '../data/public-image-retirements-20261029.json';
 
 const hash = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 async function setup() {
@@ -114,5 +117,36 @@ test('imagens ausentes retornam 404 em GET/HEAD, inclusive codificadas; mantém 
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
     await clean(f.root);
+  }
+});
+
+test('referências antigas recebem a arte atual sem restaurar arquivos legados ou alterar IDs', async () => {
+  const [old, target] = Object.entries(replacements)[0];
+  const root = await mkdtemp(join(tmpdir(), 'alvorada-retirement-'));
+  const bytes = Buffer.from('current approved artwork');
+  await mkdir(dirname(retirementTarget(root, target)), { recursive: true });
+  await writeFile(retirementTarget(root, target), bytes);
+  const app = express();
+  app.use(publicImageReplacements);
+  app.use(express.static(root));
+  app.use(publicImageNotFound);
+  const server = app.listen(0, '127.0.0.1');
+  await new Promise<void>((r) => server.once('listening', r));
+  const url = 'http://127.0.0.1:' + (server.address() as { port: number }).port;
+  try {
+    const response = await fetch(url + old + '?original=1', { redirect: 'manual' });
+    assert.equal(response.status, 307);
+    assert.equal(response.headers.get('location'), target + '?original=1');
+    assert.deepEqual(Buffer.from(await (await fetch(url + old)).arrayBuffer()), bytes);
+    await assert.rejects(stat(retirementTarget(root, old)), { code: 'ENOENT' });
+    const removed = new Set(retirement.images.map((e) => e.path));
+    for (const [from, to] of Object.entries(replacements)) {
+      assert(removed.has(from), from);
+      assert(!removed.has(to), to);
+      assert((await stat(retirementTarget('public', to))).isFile(), to);
+    }
+  } finally {
+    await new Promise<void>((r) => server.close(() => r()));
+    await clean(root);
   }
 });

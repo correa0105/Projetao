@@ -19,6 +19,7 @@ import { sendCatalog, compressedBundle } from './http-transfer.js';
 import { staticAssetCacheControl } from './static-asset-cache.js';
 import { optimizedPublicImages } from './optimized-public-images.js';
 import { publicImageNotFound } from './public-image-not-found.js';
+import { publicImageReplacements } from './public-image-replacements.js';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
 import { toNodeHandler, fromNodeHeaders } from 'better-auth/node';
@@ -779,6 +780,7 @@ export function createApp() {
   app.use('/api', (_req, _res, next) => next(new AppError(404, 'Rota não encontrada.')));
   if (existsSync(resolve('dist/client/index.html'))) {
     app.use(compressedBundle);
+    app.use(publicImageReplacements);
     app.use(optimizedPublicImages());
     app.use(
       express.static(resolve('dist/client'), {

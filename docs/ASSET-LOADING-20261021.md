@@ -66,9 +66,11 @@ não abertas foram conferidos em testes e navegador. Evidências em `.local` e
 
 Por pedido de remoção das imagens sem uso, a auditoria de 29/10/2026 cruzou código,
 catálogos, dependências de SVG e referências do banco publicado. Foram retirados
-418 originais sem referência encontrada e 418 derivados exclusivos, totalizando
-232.570.477 bytes na pasta pública. Cópias compartilhadas com artes em uso são
-preservadas. O manifesto de exibição passa de 8.628 para 8.210 entradas.
+1.529 originais sem uso ou substituídos, incluindo miniaturas, e 966 derivados
+exclusivos, totalizando 617.414.605 bytes na pasta pública. Cópias compartilhadas
+com artes em uso são preservadas. O manifesto de exibição passa de 8.628 para
+7.637 entradas. O inventário também verifica os catálogos materializados em
+runtime; texturas técnicas, máscaras e biomas gerados dinamicamente permanecem.
 
 Os originais permanecem, sem alteração, em
 `artwork-archive/retired-public-images-20261029/`, fora de `public`, `dist` e do
@@ -83,9 +85,12 @@ aplica a mesma lista na saída para impedir que uma geração antiga os inclua
 novamente. Conteúdo diferente em um caminho retirado exige revisão explícita da
 lista antes da publicação. Para reativar uma arte, revisar referências, retirar
 a entrada da lista, restaurar o original arquivado e gerar a cópia de exibição.
-Imagens ausentes respondem 404, inclusive a URL otimizada e `?original=1`, sem
-receber o HTML do aplicativo. A remoção reduz o pacote da publicação; não
-representa o volume baixado em cada visita.
+Imagens sem substituta respondem 404, inclusive a URL otimizada e `?original=1`,
+sem receber o HTML do aplicativo. Para 946 URLs lógicas de artes/miniaturas
+substituídas, `public-image-replacements-20261029.json` direciona à arte atual,
+preservando referências de mesas salvas sem armazenar o arquivo legado na
+publicação. IDs e dados dos jogadores não são reescritos. A remoção reduz o
+pacote da publicação; não representa o volume baixado em cada visita.
 
 Guilda e House reaproveitam snapshots de exibição durante a navegação da sessão.
 O cache fica somente na memória, separado por conta, personagem e prévia básica,

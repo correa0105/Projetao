@@ -163,6 +163,32 @@ computador, e o plano Hostinger tem snapshots semanais. Certificados e modelos t
 as imagens enviadas pelos jogadores estão no PostgreSQL. Preservar código/imagem
 e a pasta de arte premium separadamente.
 
+Os checkpoints manuais anteriores a cada ajuste não devem acumular dumps
+completos avulsos indefinidamente. Na limpeza de 29/10/2026, 66 checkpoints
+(39.200.956.773 bytes) foram consolidados, sem perda, em
+`/opt/alvorada/backups/checkpoint-archive-20261029/release-checkpoints.tar.zst`
+(8.135.845.131 bytes). Cada dump foi lido de volta do arquivo e validado por
+SHA-256 antes de retirar a cópia avulsa, liberando 31.065.111.642 bytes.
+Quatorze dumps recentes, diários ou essenciais continuam disponíveis diretamente;
+o backup de contas anterior à limpeza e a cópia final da migração permanecem.
+
+O diretório do arquivo consolidado contém `checksums.json`, o SHA-256 do arquivo
+e `result.json`; o tar também inclui `BACKUP-MANIFEST.json`. Para recuperar um
+checkpoint individual para inspeção, sem restaurar o banco automaticamente:
+
+```sh
+zstd -dc --memory=1536MB /opt/alvorada/backups/checkpoint-archive-20261029/release-checkpoints.tar.zst |
+  tar -xOf - NOME-DO-CHECKPOINT.dump > /caminho/seguro/recuperado.dump
+```
+
+Diretórios expandidos de releases antigos só podem ser retirados após conferir
+que todos os arquivos e hashes correspondem ao pacote comprimido preservado,
+sem volumes da aplicação apontando para eles. Conteúdos diferentes ou adicionais
+exigem uma cópia adicional validada antes da retirada. Não limpar volumes do
+PostgreSQL, uploads, arte premium, configuração, backups essenciais nem a imagem
+anterior usada para retorno. Construção de imagem completa exige espaço também
+para exportação e descompactação, além do tamanho final da imagem.
+
 Antes da entrega, verificar HTTPS, `/api/health`, login/logout, página principal,
 personagens, imagens, inventário e uma mesa virtual com duas sessões. Verificar
 60 usuários autenticados em um banco/ambiente descartável com perfil representativo;
