@@ -40,6 +40,7 @@ import { TowerDialog, TowerFloorEditor, TowerRewardEditor, TowerItemPreview } fr
 import './tower.css';
 import './tower-redesign.css';
 type TowerSection = 'atlas' | 'expeditions' | 'treasures';
+const towerRegionLabel = (index: number) => (index === 0 ? towerZones[0].name : '???');
 const statusNames = {
   preparing: 'Reunindo a expedição',
   active: 'Em ascensão',
@@ -301,9 +302,9 @@ export function Tower({
                       setDraft(null);
                     }}
                   >
-                    {towerZones.map((region, index) => (
+                    {towerZones.map((_, index) => (
                       <option key={index} value={index}>
-                        {index * 5 + 1}–{(index + 1) * 5} · {region.name}
+                        {index * 5 + 1}–{(index + 1) * 5} · {towerRegionLabel(index)}
                       </option>
                     ))}
                   </select>
@@ -359,7 +360,8 @@ export function Tower({
                 <header className="tower-floor-heading">
                   <div>
                     <span className="tower-kicker">
-                      REGIÃO {String(zoneIndex + 1).padStart(2, '0')} · {zone.name}
+                      REGIÃO {String(zoneIndex + 1).padStart(2, '0')} ·{' '}
+                      {towerRegionLabel(zoneIndex)}
                     </span>
                     <h2>{level.name}</h2>
                     <p className="tower-floor-level">
@@ -858,7 +860,7 @@ export function Tower({
                           </h3>
                           <p>
                             Andar {currentRun.cleared_floor + 1} ·{' '}
-                            {towerZones[towerFloors[currentRun.cleared_floor].zone].name}
+                            {towerRegionLabel(towerFloors[currentRun.cleared_floor].zone)}
                           </p>
                         </div>
                       )}
