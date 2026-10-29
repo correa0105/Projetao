@@ -8,6 +8,18 @@ Automático considera oceano, pintura de água/terra, ordem/opacidade/visibilida
 
 O overlay usa desenho nativo de metal/solo/haste, recorte da viewport e nível de detalhe conforme zoom. Não mantém RAF ocioso: redesenha quando estado/câmera mudam e usa somente um timer para aguardar o impacto da animação. A lista mostra os vinte mais recentes, com Mostrar mais. Marcas privadas, alvos ocultos, visão do espectador e prévia do jogador conservam sigilo.
 
+As texturas de metal, terra, haste e corda vêm da prancha
+`vtt/siege-materials-20261027/projectiles-v1.png`, com 1536×1024 pixels. A cópia
+WebP mantém essas dimensões; essa pasta não pode ser redimensionada pelo
+otimizador. O carregador usa uma revisão de URL para evitar cópias reduzidas já
+em cache, e os recortes também se ajustam às dimensões recebidas como proteção
+de compatibilidade. A correção conserva posições, IDs, vínculos e impactos já
+salvos, sem remover ou recriar projéteis.
+
+`node --import tsx scripts/smoke-siege-materials.ts` confere no navegador a corda
+texturizada e as silhuetas do arpão e das balas contra a arte original, tanto
+com a entrega nativa quanto com uma cópia reduzida antiga em cache.
+
 Migration **131** adiciona `last_load` e `vtt_siege_impacts`. Estado de carga, eventos e projéteis são autoritativos e idempotentes por sala; PUT/undo de mapa não restaura munição nem apaga marcas. Remoção valida mestre atual, sala e cena, sem consumir munição/ação. Campos novos são aditivos na API; protocolo **28** permanece. Ataque, alcance, dano e ações do perfil de 2014 conservados.
 
 **Sem operador** agora é selecionável em Quem opera, sem escolher outro personagem automaticamente. Desativa Carregar/Mirar/Disparar, persiste por usuário/sala/arma no navegador e acompanha o menu e o painel. Não consome munição ou ação. Se a arma estiver fisicamente vinculada a um personagem, o mestre vê **Soltar vínculo com [nome]** junto do controle; a remoção explícita usa a rota existente e mantém a posição da arma. Vínculos com veículos são conservados e continuam sendo gerenciados na engrenagem.

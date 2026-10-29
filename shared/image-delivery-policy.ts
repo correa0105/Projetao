@@ -17,7 +17,7 @@ export function protectedPublicBackground(path: string) {
 
 export function imageDeliverySide(path:string) {
   // Atlases are addressed in native pixels. Resize neither their grids nor masks.
-  if(/atlas|frames|sprite|sheet|icons|badges|insignias|milestones|animals-v|classics-|variants-[ab]/i.test(path) || path.startsWith('/character-creation/'))return null;
+  if(/atlas|frames|sprite|sheet|icons|badges|insignias|milestones|animals-v|classics-|variants-[ab]/i.test(path) || path.startsWith('/character-creation/') || path.startsWith('/vtt/siege-materials-'))return null;
   if(path.startsWith('/cards/'))return 1536;
   return path.startsWith('/shop/')?768:960;
 }

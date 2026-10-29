@@ -3,6 +3,12 @@ import express from 'express';import {mkdtemp,mkdir,writeFile,rm} from 'node:fs/
 import {optimizedPublicImages} from '../server/optimized-public-images';
 import {sendImagePreview} from '../server/image-preview';
 import {staticAssetCacheControl} from '../server/static-asset-cache';
+import {imageDeliverySide} from '../shared/image-delivery-policy';
+
+test('pranchas de corda e projéteis conservam o espaço de pixels dos recortes',()=>{
+ assert.equal(imageDeliverySide('/vtt/siege-materials-20261027/projectiles-v1.png'),null);
+ assert.equal(imageDeliverySide('/vtt/siege-materials-20261029/rope-v2.png'),null);
+});
 
 async function fixture(){const raw=Buffer.alloc(512*512*4);let seed=17;for(let p=0;p<512*512;p++){for(let c=0;c<3;c++){seed=(seed*1664525+1013904223)>>>0;raw[p*4+c]=seed>>>24;}raw[p*4+3]=(p%512<24||Math.floor(p/512)<24)?0:255;}return sharp(raw,{raw:{width:512,height:512,channels:4}}).png().toBuffer();}
 test('entrega leve negocia WebP, mantém originais/backgrounds, geometria, alfa e cache por formato',async()=>{

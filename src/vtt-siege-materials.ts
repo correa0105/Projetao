@@ -9,7 +9,7 @@ export function siegeMaterials(onLoad?: () => void) {
     image.onload = () => {
       for (const draw of listeners) draw();
     };
-    image.src = '/vtt/siege-materials-20261027/projectiles-v1.png';
+    image.src = '/vtt/siege-materials-20261027/projectiles-v1.png?v=native-atlas-20261029';
   }
   return image.complete && image.naturalWidth ? image : null;
 }
@@ -18,12 +18,30 @@ export function forgetSiegeMaterials(callback: () => void) {
 }
 export const harpoonLength = (grid: number, zoom: number) =>
   Math.max(grid * 0.95, 12 / Math.max(0.03, zoom));
+function drawAtlasRegion(
+  ctx: CanvasRenderingContext2D,
+  material: HTMLImageElement,
+  sx: number,
+  sy: number,
+  sw: number,
+  sh: number,
+  dx: number,
+  dy: number,
+  dw: number,
+  dh: number,
+) {
+  // Regions use the original 1536×1024 pixel space. A stale delivery copy must
+  // not shift a projectile or make the rope sample an empty atlas region.
+  const scaleX = material.naturalWidth / 1536,
+    scaleY = material.naturalHeight / 1024;
+  ctx.drawImage(material, sx * scaleX, sy * scaleY, sw * scaleX, sh * scaleY, dx, dy, dw, dh);
+}
 export function drawSiegeHarpoon(ctx: CanvasRenderingContext2D, grid: number, zoom: number) {
   const material = siegeMaterials();
   if (!material) return;
   const length = harpoonLength(grid, zoom),
     height = (length * 152) / 853;
-  ctx.drawImage(material, 26, 176, 853, 152, -length, -height / 2, length, height);
+  drawAtlasRegion(ctx, material, 26, 176, 853, 152, -length, -height / 2, length, height);
 }
 export function drawSiegeBall(
   ctx: CanvasRenderingContext2D,
@@ -36,7 +54,8 @@ export function drawSiegeBall(
   const width = Math.max(grid * (ground ? 0.48 : 0.21), (ground ? 10 : 5) / Math.max(0.03, zoom));
   const source = ground ? [58, 436, 756, 502] : [1028, 534, 345, 347];
   const height = (width * source[3]) / source[2];
-  ctx.drawImage(
+  drawAtlasRegion(
+    ctx,
     material,
     source[0],
     source[1],
@@ -90,7 +109,8 @@ export function drawSiegeRope(
       ctx.translate(a.x, a.y);
       ctx.rotate(Math.atan2(b.y - a.y, b.x - a.x));
       // The atlas middle repeats without the fading ends; no image file is cropped.
-      ctx.drawImage(
+      drawAtlasRegion(
+        ctx,
         material,
         1095,
         210,
