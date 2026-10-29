@@ -1,5 +1,5 @@
 let image:HTMLImageElement|undefined;
-/** Public neutral silhouette: examples never retain authenticated character art. */
+/** Invisible footprint reference; previews paint the effects without a character overlay. */
 export function effectPreviewToken(){
   if(!image){
     const body=document.createElement('canvas');body.width=68;body.height=72;const b=body.getContext('2d')!;

@@ -67,28 +67,6 @@ function AnimatedEffectPreview({
           options,
         );
       else renderEffect(c, effect, width, height, { ...options, pass: 'behind' });
-      c.save();
-      if (preset.kind === 'death')
-        c.filter = 'sepia(1) saturate(4) hue-rotate(320deg) brightness(.5)';
-      if (image.complete && image.naturalWidth) {
-        const fit = Math.min(width / image.naturalWidth, height / image.naturalHeight);
-        c.drawImage(
-          image,
-          (-image.naturalWidth * fit) / 2,
-          (-image.naturalHeight * fit) / 2,
-          image.naturalWidth * fit,
-          image.naturalHeight * fit,
-        );
-      } else {
-        // Loading silhouette, without a circular token base.
-        c.fillStyle = '#62737b';
-        c.fillRect(-18, -12, 36, 24);
-        c.fillStyle = '#d8c8a4';
-        c.beginPath();
-        c.ellipse(0, -9, 9, 10, 0, 0, Math.PI * 2);
-        c.fill();
-      }
-      c.restore();
       if (preset.kind !== 'death')
         renderEffect(c, effect, width, height, { ...options, pass: 'front' });
       c.restore();

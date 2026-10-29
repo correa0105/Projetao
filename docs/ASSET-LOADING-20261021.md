@@ -97,8 +97,9 @@ atlas técnico apenas para abrir o menu. A execução real no mapa fica preserva
 
 `node scripts/build-vtt-effect-previews.mjs` renderiza as 147 prévias de efeitos
 e duas de tela em `public/optimized-images-20261028/vtt-effect-previews/`, com
-índices em `shared/`. O conjunto soma 523.368 bytes e usa uma silhueta neutra
-pública, sem arte autenticada de personagens. As URLs por hash têm cache público
+índices em `shared/`. As prévias mostram somente os efeitos, sem boneco sobreposto,
+e não incluem arte autenticada de personagens. O conjunto soma 532.218 bytes.
+As URLs por hash têm cache público
 de um ano e `immutable`: o navegador reaproveita os arquivos baixados, inclusive
 após fechar e reabrir. Nenhum dado de jogo passa a ser salvo nesse cache.
 

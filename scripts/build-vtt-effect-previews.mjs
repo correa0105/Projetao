@@ -26,7 +26,6 @@ for(const e of effectLibrary){
  const options={now:1250,reducedMotion:false,seed:'gallery',overhead:true,image};
  if(e.kind==='death')drawDeath(c,{id:effect.id,layer:'tokens',deathAt:1,width:68,height:72},options);
  else renderEffect(c,effect,68,72,{...options,pass:'behind'});
- c.save();if(e.kind==='death')c.filter='sepia(1) saturate(4) hue-rotate(320deg) brightness(.5)';c.drawImage(image,-34,-36,68,72);c.restore();
  if(e.kind!=='death')renderEffect(c,effect,68,72,{...options,pass:'front'});
  rows.push({kind:e.kind,color:e.color,data:canvas.toDataURL('image/png')});
 }
@@ -50,6 +49,6 @@ try{
   proof.push({kind:row.kind,file:path,sha256,bytes:bytes.length});
  }
  await writeFile('shared/vtt-effect-previews.json',JSON.stringify(effects,null,2)+'\n');await writeFile('shared/vtt-screen-previews.json',JSON.stringify(screen,null,2)+'\n');
- await mkdir('.local/vtt-effect-menus-20261029',{recursive:true});const result={passed:true,images:proof,bytes:proof.reduce((s,e)=>s+e.bytes,0),privateArtworkIncluded:false};
+ await mkdir('.local/vtt-effect-menus-20261029',{recursive:true});const result={passed:true,images:proof,bytes:proof.reduce((s,e)=>s+e.bytes,0),privateArtworkIncluded:false,withoutTokenOverlay:true};
  await writeFile('.local/vtt-effect-menus-20261029/posters.json',JSON.stringify(result,null,2));console.log(JSON.stringify({...result,images:proof.length}));
 }finally{await browser.close();await vite.close();await new Promise(r=>server.close(()=>r()));}
