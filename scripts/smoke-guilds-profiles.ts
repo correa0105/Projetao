@@ -105,7 +105,7 @@ try {
   await pool.query('UPDATE characters SET level=12,gold_cp=200000 WHERE id=$1', [a.id]);
   await pool.query('UPDATE characters SET level=8 WHERE id=$1', [b.id]);
   await pool.query('UPDATE characters SET level=4 WHERE id=$1', [c.id]);
-  const portrait = await sharp(await readFile('public/shop/merchant-v2.png'))
+  const portrait = await sharp(await readFile('artwork-archive/retired-public-images-20261029/shop/merchant-v2.png'))
     .resize({ height: 900 })
     .png()
     .toBuffer();

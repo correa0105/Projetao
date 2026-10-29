@@ -100,7 +100,7 @@ try {
   const a = await createLegacyTestCharacter(owner.id, 'Nana'),
     b = await createLegacyTestCharacter(owner.id, 'Irineu');
   await createLegacyTestCharacter(guest.id, 'Visitante');
-  const png = await sharp(await readFile('public/shop/merchant-v2.png'))
+  const png = await sharp(await readFile('artwork-archive/retired-public-images-20261029/shop/merchant-v2.png'))
     .resize({ height: 900 })
     .png()
     .toBuffer();

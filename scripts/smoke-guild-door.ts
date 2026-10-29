@@ -46,7 +46,7 @@ try {
   const character = await createLegacyTestCharacter(account.user.id, 'Guardião');
   await pool.query('INSERT INTO character_tokens(character_id,image) VALUES($1,$2)', [
     character.id,
-    await readFile(process.env.GUILD_DOOR_TEST_IMAGE || 'public/shop/merchant-v2.png'),
+    await readFile(process.env.GUILD_DOOR_TEST_IMAGE || 'artwork-archive/retired-public-images-20261029/shop/merchant-v2.png'),
   ]);
   const guildId = randomUUID();
   const document = {

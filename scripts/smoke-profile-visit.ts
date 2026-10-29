@@ -52,7 +52,7 @@ try {
   await signup(visitorContext, 'Visitante');
   const a = await createLegacyTestCharacter(owner.id, 'Nana');
   const b = await createLegacyTestCharacter(owner.id, 'Irineu');
-  const png = await sharp(await readFile('public/shop/merchant-v2.png'))
+  const png = await sharp(await readFile('artwork-archive/retired-public-images-20261029/shop/merchant-v2.png'))
     .resize({ height: 900 })
     .png()
     .toBuffer();

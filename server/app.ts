@@ -18,6 +18,7 @@ import { authenticationClientIp, configureReverseProxy } from './reverse-proxy.j
 import { sendCatalog, compressedBundle } from './http-transfer.js';
 import { staticAssetCacheControl } from './static-asset-cache.js';
 import { optimizedPublicImages } from './optimized-public-images.js';
+import { publicImageNotFound } from './public-image-not-found.js';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
 import { toNodeHandler, fromNodeHeaders } from 'better-auth/node';
@@ -787,6 +788,7 @@ export function createApp() {
         },
       }),
     );
+    app.use(publicImageNotFound);
     app.get('/{*splat}', (_req, res) =>
       res.set('Cache-Control', 'no-store').sendFile('index.html', { root: resolve('dist/client') }),
     );

@@ -62,6 +62,31 @@ primeira visita, recarga com barra, falha/retomada e ausência de downloads de �
 não abertas foram conferidos em testes e navegador. Evidências em `.local` e
 `test-results/image-performance/` e `test-results/site-loading/`.
 
+### Imagens retiradas da publicação
+
+Por pedido de remoção das imagens sem uso, a auditoria de 29/10/2026 cruzou código,
+catálogos, dependências de SVG e referências do banco publicado. Foram retirados
+418 originais sem referência encontrada e 418 derivados exclusivos, totalizando
+232.570.477 bytes na pasta pública. Cópias compartilhadas com artes em uso são
+preservadas. O manifesto de exibição passa de 8.628 para 8.210 entradas.
+
+Os originais permanecem, sem alteração, em
+`artwork-archive/retired-public-images-20261029/`, fora de `public`, `dist` e do
+contexto Docker. Caminhos, tamanhos e hashes ficam em
+`data/public-image-retirements-20261029.json`. O arquivo anterior de otimização e
+os derivados retirados têm backup privado; a publicação também preserva uma
+cópia externa dos arquivos removidos e a imagem anterior para retorno.
+
+`node --import tsx scripts/retire-public-images.ts --apply` confere hashes,
+arquiva e retira os arquivos locais; `--check` apenas verifica. O build Vite
+aplica a mesma lista na saída para impedir que uma geração antiga os inclua
+novamente. Conteúdo diferente em um caminho retirado exige revisão explícita da
+lista antes da publicação. Para reativar uma arte, revisar referências, retirar
+a entrada da lista, restaurar o original arquivado e gerar a cópia de exibição.
+Imagens ausentes respondem 404, inclusive a URL otimizada e `?original=1`, sem
+receber o HTML do aplicativo. A remoção reduz o pacote da publicação; não
+representa o volume baixado em cada visita.
+
 Guilda e House reaproveitam snapshots de exibição durante a navegação da sessão.
 O cache fica somente na memória, separado por conta, personagem e prévia básica,
 com expiração de dez minutos e limite de 24 entradas. Sair da conta ou trocar o
