@@ -273,6 +273,11 @@
   }
 }
 @media (max-width: 800px) {
+  .vtt-menu-options,
+  .vtt-unified-panel .vtt-tools,
+  .vtt-unified-panel .vtt-panel-content {
+    padding-bottom: 90px;
+  }
   .vtt-layout.vtt-layout--unified,
   .vtt-layout--unified.panel-closed {
     position: relative;

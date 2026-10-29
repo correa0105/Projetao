@@ -83,6 +83,9 @@ try{
   await expect(effects).toBeVisible();
   const effectsBox=await effects.boundingBox();expect(effectsBox!.x).toBeGreaterThanOrEqual(0);expect(effectsBox!.x+effectsBox!.width).toBeLessThanOrEqual(390);
   await effects.getByRole('button',{name:'Fechar efeitos',exact:true}).click();
+  await menu.locator('.vtt-tools').evaluate(e=>{e.scrollTop=e.scrollHeight;});
+  const finalTool=await menu.getByRole('button',{name:'Efeitos do mestre',exact:true}).boundingBox(),siteMenu=await page.locator('.journey-dock').boundingBox();
+  if(siteMenu)expect(finalTool!.y+finalTool!.height).toBeLessThanOrEqual(siteMenu.y-6);
   await page.screenshot({path:'test-results/vtt-menu/tools-390.png'});
   await page.setViewportSize({width:1440,height:950});
  await menu.getByRole('button',{name:'Todas as opções',exact:true}).click();
