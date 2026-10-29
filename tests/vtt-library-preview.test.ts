@@ -6,6 +6,7 @@ import {vttLibraryPreview} from '../shared/vtt-library-preview';
 import images from '../shared/vtt-library-thumbnails.json';
 import posters from '../shared/vtt-animated-thumbnails.json';
 import vehicles from '../shared/vtt-vehicle-thumbnails.json';
+import {vttDisplaySource} from '../shared/vtt-display-source';
 
 test('miniaturas públicas compartilham cache e não substituem texturas técnicas ou URLs privadas',()=>{
   const url='/vtt/animated-assets-20261009/portal-ring.webp';
@@ -21,9 +22,19 @@ test('acervos usam cópias pequenas com alfa e prévias estáticas para animados
   const files=[...new Set(Object.values(images))];assert(files.length>1900);
   for(const path of [files[0],files[Math.floor(files.length/2)],files.at(-1)!,...Object.values(posters),...Object.values(vehicles)]){
     const metadata=await sharp(await readFile('public'+path)).metadata();
-    assert(metadata.width!<=256&&metadata.height!<=256,path);assert.equal(metadata.pages||1,1,path);
+    assert(metadata.width!<=128&&metadata.height!<=128,path);assert.equal(metadata.pages||1,1,path);
     assert.equal(metadata.hasAlpha,true,path);
   }
   assert.equal(Object.keys(vehicles).length,12);
   assert.equal(Object.keys(posters).length,16);
+});
+
+test('objetos usam uma URL de exibição menor sem reduzir fundos ou atlas nativos',async()=>{
+  const tree='/vtt/trees-20261013/oak-ancient.png',display=vttDisplaySource(tree);
+  assert.match(display,/^\/optimized-images-20261028\/[a-f0-9]{64}\.webp$/);
+  const m=await sharp(await readFile('public'+display)).metadata();assert(m.width!<=512&&m.height!<=512);assert(m.hasAlpha);
+  for(const path of ['/vtt/terrain-v4-20261013/grass.webp','/vtt/temporal-20261009/ring-0.webp','/vtt/siege-materials-20261027/projectiles-v1.png'])assert.equal(vttDisplaySource(path),path);
+  const path='/api/vtt/assets/00000000-0000-4000-8000-000000000001?v=2';
+  assert.equal(vttDisplaySource(path),path+'&display=1');assert.equal(vttDisplaySource(vttDisplaySource(path)),path+'&display=1');
+  assert.equal(vttDisplaySource(path+'&original=1'),path+'&original=1');
 });

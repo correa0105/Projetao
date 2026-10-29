@@ -41,7 +41,7 @@ reproduzível fica fora do Git e deve acompanhar o artefato de publicação. Os 
 WebPs e SVGs originais não são sobrescritos. `image-delivery-policy.ts` exclui
 backgrounds, mapas, máscaras e texturas de dados; atlas mantêm dimensões e
 coordenadas. Imagens avulsas usam resolução de exibição proporcional, até 768 px
-na loja, 960 px nos demais objetos e 1536 px nas cartas. SVGs com animação ou
+na loja, 512 px nos objetos do VTT, 960 px nos demais objetos e 1536 px nas cartas. SVGs com animação ou
 símbolos reutilizáveis conservam o arquivo original; não reduzir quadros de forma
 que descarte movimentos ou variações necessárias.
 
@@ -64,12 +64,16 @@ não abertas foram conferidos em testes e navegador. Evidências em `.local` e
 
 ### Miniaturas das bibliotecas do VTT
 
-Os cartões usam cópias WebP de até 256 px, preservando proporção e transparência.
-`VttAssetImage` só inicia pedidos dentro ou a 96 px do painel visível; essas prévias
+Os cartões usam cópias WebP de até 128 px, preservando proporção e transparência.
+`VttAssetImage` inicia pedidos dentro ou a 320 px do painel visível para antecipar
+a próxima rolagem; essas prévias
 não bloqueiam o loading geral. Monstros, presets, criaturas, cenários, peças,
 texturas do pincel, veículos, armas de cerco e imagens da mesa compartilham esse
-fluxo. O detalhe ampliado e a colocação no mapa continuam usando os caminhos
+fluxo. Detalhes ampliados e objetos do mapa usam cópias de até 512 px, com URL por
+hash para evitar reutilizar a versão maior em cache. Os caminhos salvos continuam
 originais. Fundos e texturas pintadas não recebem a miniatura como material.
+Imagens usadas como fundo conservam a resolução original, inclusive quando uma
+peça antes usada como objeto passa a ser o fundo da cena.
 
 Peças animadas e veículos têm prévias estáticas renderizadas antecipadamente
 pelo mesmo desenho do mapa. Abrir a biblioteca não espera os pacotes de efeitos
@@ -77,23 +81,36 @@ nem monta vários canvases para mostrar os cartões. A animação da peça coloc
 continua completa. Texturas técnicas temporais, elementais e de relâmpago também
 mantêm seus pixels nativos; o manifesto corrige 43 cópias antes redimensionadas.
 
-Imagens privadas aceitam `thumbnail=1` somente depois da autorização existente.
+Importar os renderizadores não inicia o download de todos os materiais de efeitos.
+Cada desenho solicita somente as texturas que utiliza; a conclusão atualiza o mapa
+ou a prévia aberta. As interfaces de aquecimento explícito continuam disponíveis
+para geração e verificação das artes. O compêndio só é consultado depois da mesa
+carregar, evitando os pedidos duplicados da entrada. O ícone do mural usa sua
+cópia WebP existente diretamente, inclusive dentro do SVG de navegação.
+
+Imagens privadas aceitam `thumbnail=1` (128 px) e `display=1` (512 px) somente depois
+da autorização existente. Animações privadas conservam o arquivo completo no mapa.
 A conversão usa cache separado da versão completa, duas conversões simultâneas
 e fila limitada, mantendo `private, no-store`. `original=1` tem precedência.
 Nenhuma imagem privada ou original do banco é reescrita.
 
 `node --import tsx scripts/build-vtt-library-thumbnails.mjs` gera o índice público;
-`node scripts/build-vtt-animated-previews.mjs` gera os cartões animados e veículos.
+`node --import tsx scripts/build-vtt-animated-previews.mjs` gera os cartões animados e veículos.
+`node --import tsx scripts/build-vtt-display-images.mjs` reduz as cópias de objetos
+maiores e atualiza somente as entradas correspondentes do manifesto existente.
 Os índices em `shared/` vão ao Git e os arquivos em
 `public/optimized-images-20261028/vtt-thumbnails/` acompanham a publicação.
-As 1.953 fontes tratadas passam de 192.804.851 bytes na entrega anterior para
-25.375.136 bytes em miniaturas, cerca de 87% menos. Isso compara o conjunto de
-prévias, não o download de uma visita. As 28 prévias de animações/veículos somam
-380.932 bytes. Evidências e hashes dos originais ficam em `.local`.
+As 1.953 fontes tratadas somam 8.271.352 bytes em miniaturas, 67% menos que os
+25.375.136 bytes da primeira versão de 256 px. As 28 prévias de animações/veículos
+somam 113.714 bytes. As 865 cópias maiores de objetos passam de 153.089.476 para
+46.942.158 bytes, cerca de 69% menos. Isso compara os conjuntos tratados, não o
+download de uma visita. Evidências e hashes dos originais ficam em `.local`.
 
 `node scripts/test-vtt-menu-isolated.mjs --performance` verifica as categorias com
 rede limitada e pacotes de efeitos atrasados, carregamento por viewport, alfa,
 autorização privada após cache aquecido e conservação da animação no mapa.
+`--cold` também limita a rede desde a entrada, mantendo os downloads reais de
+efeitos, e verifica a rolagem de Mobílias externas e o detalhe ampliado.
 `node scripts/test-vtt-menu-isolated.mjs` verifica a biblioteca no painel direito.
 
 ### Imagens retiradas da publicação

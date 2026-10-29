@@ -1,3 +1,4 @@
+import {createVttMedia} from './vtt-media';
 import { fract } from './vtt-effects-primitives';
 
 export type EffectMaterial = 'vapor' | 'flame' | 'energy';
@@ -8,8 +9,7 @@ const nativeFields = new Map<EffectMaterial, Uint8ClampedArray>();
 const FRAMES = 8;
 // Decode the original assets once. The procedural atlas remains available on a
 // failed request, during loading, and in Canvas-only browsers.
-export const effectMaterialsReady = Promise.all(
-  (['vapor', 'flame', 'energy'] as const).map(async (material) => {
+const media = createVttMedia(['vapor', 'flame', 'energy'] as const, async (material) => {
     if (typeof Image === 'undefined') return;
     const image = new Image();
     image.decoding = 'async';
@@ -52,8 +52,8 @@ export const effectMaterialsReady = Promise.all(
     } catch {
       // Keep the bounded local fallback; a missing texture never removes an effect.
     }
-  }),
-);
+  });
+export const effectMaterialsReady=media.ready;
 export const nativeMaterialCount = () => nativeFields.size;
 let bakes = 0;
 export const materialCacheSize = () => atlases.size;
@@ -177,6 +177,7 @@ export function materialSprite(
   phase: number,
   opacity: number,
 ) {
+  void media.request(material);
   const texture = atlas(color, material),
     frames = texture.width / TILE;
   const position = fract(phase * (frames > 2 ? 1 : 0.5)) * frames;

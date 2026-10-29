@@ -43,7 +43,7 @@ export function NoticeBoardIcon(_: IconProps) {
       aria-hidden="true"
       focusable="false"
     >
-      <image href="/guild-icon-notice-board-v3.png" width="1254" height="1254" />
+      <image href="/optimized-images-20261028/da4daf73d1de3e7105c722a1acb47d1d00c7045903af1005676b6a9770d6ee17.webp" width="1254" height="1254" />
     </svg>
   );
 }

@@ -1,5 +1,6 @@
+import {createVttMedia} from './vtt-media';
 let wraith: HTMLImageElement | undefined;
-export const spectralScreamerReady = (async () => {
+const media=createVttMedia(['art'],async()=>{
   if (typeof Image === 'undefined') return;
   const image = new Image();
     image.decoding = 'async';
@@ -11,7 +12,8 @@ export const spectralScreamerReady = (async () => {
   } catch {
     // A failed download must not stop the other gallery effects.
   }
-})();
+});
+export const spectralScreamerReady=media.ready;
 export const spectralScreamerLoaded = () => Boolean(wraith);
 
 // The mask, hood, hand and long scythe remain rigid. An affine cloth grid blends
@@ -22,6 +24,7 @@ export function spectralScreamer(
   t: number,
   opacity: number,
 ) {
+  void media.request('art');
   if (!wraith) return;
   c.save();
   c.globalAlpha *= opacity;

@@ -2,6 +2,7 @@ import {readdir,readFile,writeFile,mkdir,stat} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import sharp from 'sharp';
 import {protectedPublicBackground,imageDeliverySide} from '../shared/image-delivery-policy.ts';
+import {vttLibraryImageSide} from '../shared/vtt-image-sizes.ts';
 
 // Library-only delivery copies. Map images, backgrounds and atlas coordinates
 // retain their original URLs, files and resolution.
@@ -21,8 +22,8 @@ await Promise.all(Array.from({length:4},async()=>{while(next<entries.length){con
  try{
   if(url.endsWith('.svg')&&/(?:href|xlink:href)\s*=\s*["'](?!#|data:image\/)[^"']+/i.test(source.toString()))continue;
   const image=sharp(source,{limitInputPixels:100_000_000}),meta=await image.metadata();
-  const output=await image.resize({width:256,height:256,fit:'inside',withoutEnlargement:true}).webp({quality:74,alphaQuality:100,effort:3}).toBuffer();
-  if(output.length>=source.length&&Math.max(meta.width||0,meta.height||0)<=256)continue;
+  const output=await image.resize({width:vttLibraryImageSide,height:vttLibraryImageSide,fit:'inside',withoutEnlargement:true}).webp({quality:60,alphaQuality:100,effort:3}).toBuffer();
+  if(output.length>=source.length&&Math.max(meta.width||0,meta.height||0)<=vttLibraryImageSide)continue;
   const target='/optimized-images-20261028/vtt-thumbnails/'+hash(output)+'.webp';
   await writeFile('public'+target,output);images[url]=target;
   proof.push({path:url,sourceSha256,sourceBytes:source.length,file:target,bytes:output.length,width:meta.width,height:meta.height});

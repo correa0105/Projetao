@@ -1,4 +1,5 @@
 import { VttAssetImage } from './VttAssetImage';
+import { vttDisplaySource } from '../shared/vtt-display-source';
 import { isTreeCanopy } from '../shared/vtt-canopies';
 import {navalAtlas,navalAnimated,sailMasts,rowing,rowingImage,oceanImage,oceanSchema} from '../shared/vtt-naval';
 import {tokenOnScreen} from './vtt-render-cache';
@@ -45,8 +46,7 @@ import {VttAttachmentGuide} from './VttAttachmentGuide';
 import { isAttackCheck } from '../shared/vtt-roll-purpose';
 import { VttAttackRollAction } from './VttAttackRollAction';
 import { VttAnimatedAssetControls } from './VttAnimatedAssetControls';
-import { effectMaterialsReady } from './vtt-effects-materials';
-import { physicalPropsReady } from './vtt-effects-physical';
+import {watchVttMedia} from './vtt-media';
 import { animatedAssets, animatedAssetMime, type AnimatedAsset } from '../shared/vtt-animated-assets';
 import { VttAnimatedAssets } from './VttAnimatedAssets';
 import {
@@ -1090,6 +1090,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
     return()=>{live=false;window.clearInterval(timer);};
   },[followingPersonal,state?.is_gm]);
   useEffect(() => {
+    if(!state)return;
     let live = true;
     api<typeof catalog>('/vtt/compendium')
       .then((c) => {
@@ -1103,7 +1104,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
     return () => {
       live = false;
     };
-  }, [state?.premiumAccess, state?.premiumTokens]);
+  }, [Boolean(state),state?.premiumAccess,state?.premiumTokens,user.id]);
   useEffect(() => {
     if (!stage.current) return;
     const observer = new ResizeObserver(([entry]) =>
@@ -1173,6 +1174,8 @@ export function VttSession({ characters, user, media }: { characters: Character[
     };
   }, [state?.id]);
   const mapImages = useRef<ReturnType<typeof createVttImageLoader> | null>(null);
+  const backgroundImages = useRef(new Set<string>());
+  backgroundImages.current = new Set(state?.document.scenes.map(s=>s.background).filter(Boolean) || []);
   const sceneImagePaths = scene ? [...new Set([
     ...terrainTextures.filter(t => scene.terrain.some(stroke => stroke.texture === t.id) || (tool.startsWith('terrain-') && terrainBrush.texture === t.id)).map(t => t.image),
     scene.background, ...scene.tokens.map(t => t.image), ...houseInteriorImages(scene),
@@ -1185,7 +1188,14 @@ export function VttSession({ characters, user, media }: { characters: Character[
   ].filter(Boolean))] : [];
   const sceneImageKey = JSON.stringify(sceneImagePaths);
   useEffect(() => {
-    const loader = createVttImageLoader(images.current, vttVisualSource,
+    const loader = createVttImageLoader(images.current, path=>{
+      const resolved=vttVisualSource(path);
+      if(backgroundImages.current.has(path)&&resolved.startsWith('/')){
+        const original=new URL(resolved,'http://vtt.invalid');original.searchParams.set('original','1');
+        return original.pathname+original.search+original.hash;
+      }
+      return vttDisplaySource(resolved);
+    },
       () => setImageVersion(v => v + 1), () => setSceneImageError(true));
     mapImages.current = loader;
     window.addEventListener('online', loader.retry);
@@ -1194,7 +1204,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
   useEffect(() => {
     setSceneImageError(false);
     for (const path of JSON.parse(sceneImageKey) as string[]) mapImages.current?.load(path);
-  }, [sceneImageKey]);
+  }, [sceneImageKey,scene?.background]);
   const sceneImagesDone = sceneImagePaths.filter(path => mapImages.current?.ready(path)).length;
   const sceneEntryKey = state && scene ? state.id + ':' + scene.id : '';
   const [readyScene,setReadyScene] = useState('');
@@ -1317,7 +1327,8 @@ export function VttSession({ characters, user, media }: { characters: Character[
       frame = requestAnimationFrame(animate);
     };
     restartAnimation();
-    void Promise.all([effectMaterialsReady, physicalPropsReady, ...scene.tokens.flatMap(t => t.effects.map(e => livingEffectReady(e.kind))), livingEffectReady(effectPreview?.preset.kind || '')]).then(() => {
+    const stopMedia=watchVttMedia(draw);
+    void Promise.all([...scene.tokens.flatMap(t => t.effects.map(e => livingEffectReady(e.kind))), livingEffectReady(effectPreview?.preset.kind || '')]).then(() => {
       if (!disposed) draw();
     });
     motionPreference.addEventListener('change', restartAnimation);
@@ -1327,6 +1338,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
       motionPreference.removeEventListener('change', restartAnimation);
       document.removeEventListener('visibilitychange',restartAnimation);
       disposed = true;
+      stopMedia();
       timers.forEach(clearTimeout);
     };
   }, [

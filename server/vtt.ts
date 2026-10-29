@@ -1346,7 +1346,7 @@ export function vttRouter() {
     )
       throw new AppError(404, 'Arquivo não disponível.');
     res.setHeader('Content-Type', a.mime);
-    if(a.mime.startsWith('image/') && req.query.thumbnail==='1' && !req.headers.range){
+    if(a.mime.startsWith('image/') && (req.query.thumbnail==='1'||req.query.display==='1') && !req.headers.range){
       res.setHeader('Cache-Control','private, no-store');
       await sendImagePreview(req,res,a.bytes);return;
     }

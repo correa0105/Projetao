@@ -10,8 +10,10 @@ export function createVttImageLoader(
     timer?: ReturnType<typeof setTimeout>;
     timeout?: ReturnType<typeof setTimeout>;
     image?: HTMLImageElement;
+    source?: string;
   };
   const pending = new Map<string, Task>();
+  const loadedSources = new Map<string, string>();
   let disposed = false;
   function start(path: string) {
     if (disposed) return;
@@ -21,6 +23,7 @@ export function createVttImageLoader(
     clearTimeout(task.timeout);
     task.timer = undefined;
     const image = new Image();
+    image.decoding = 'async';
     task.image = image;
     images.set(path, image);
     const current = () => !disposed && task.image === image && pending.get(path) === task;
@@ -39,6 +42,7 @@ export function createVttImageLoader(
       clearTimeout(task.timeout);
       image.onload = image.onerror = null;
       pending.delete(path);
+      loadedSources.set(path,task.source!);
       changed();
     };
     image.onload = () => {
@@ -47,13 +51,16 @@ export function createVttImageLoader(
     };
     image.onerror = fail;
     task.timeout = setTimeout(fail, 45000);
-    image.src = source(path);
+    task.source = source(path);
+    image.src = task.source;
   }
   function ready(path: string) {
-    return !path || (!pending.has(path) && !!images.get(path)?.naturalWidth);
+    return !path || (!pending.has(path) && !!images.get(path)?.naturalWidth && loadedSources.get(path)===source(path));
   }
   function load(path: string) {
-    if (!path || disposed || pending.has(path) || ready(path)) return;
+    if (!path || disposed || ready(path)) return;
+    const task=pending.get(path);
+    if(task){if(task.source!==source(path)){task.attempt=0;start(path);}return;}
     pending.set(path, { attempt: 0 });
     start(path);
   }

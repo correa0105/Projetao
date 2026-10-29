@@ -1,7 +1,8 @@
+import {createVttMedia} from './vtt-media';
 // Native alpha is preserved. Gauzy cloak rows flutter independently while
 // advected density dissolves its tail; the illustrated head remains stable.
 let pilgrim: HTMLImageElement | undefined;
-export const spectralPilgrimReady = (async () => {
+const media=createVttMedia(['art'],async()=>{
   if (typeof Image === 'undefined') return;
   const image = new Image();
     image.decoding = 'async';
@@ -13,7 +14,8 @@ export const spectralPilgrimReady = (async () => {
   } catch {
     /* surrounding density fallback */
   }
-})();
+});
+export const spectralPilgrimReady=media.ready;
 export const spectralPilgrimLoaded = () => Boolean(pilgrim);
 export function spectralPilgrim(
   c: CanvasRenderingContext2D,
@@ -21,6 +23,7 @@ export function spectralPilgrim(
   t: number,
   opacity: number,
 ) {
+  void media.request('art');
   if (!pilgrim) return;
   c.save();
   c.globalAlpha *= opacity;

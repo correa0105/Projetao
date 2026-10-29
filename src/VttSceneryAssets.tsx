@@ -97,7 +97,7 @@ export function VttSceneryAssets({
             ×
           </button>
           <div className="vtt-scenery-stage">
-            <img src={selected.image} alt={selected.name} />
+            <VttAssetImage src={selected.image} alt={selected.name} />
           </div>
           <h4>{selected.name}</h4>
           <p>

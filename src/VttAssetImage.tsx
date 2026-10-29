@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ImgHTMLAttributes } from 'react';
 import { vttLibraryPreview } from '../shared/vtt-library-preview';
+import { vttDisplaySource } from '../shared/vtt-display-source';
 
 type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'onError'> & {
   src: string;
@@ -19,7 +20,7 @@ export function VttAssetImage({ src, fallback, thumbnail = false, ...props }: Pr
     if (!image) return;
     const observer = new IntersectionObserver(entries => {
       if (entries.some(entry => entry.isIntersecting)) { setVisible(true); observer.disconnect(); }
-    }, {root: image.closest('.vtt-panel-content'), rootMargin: '96px 0px'});
+    }, {root: image.closest('.vtt-panel-content'), rootMargin: '320px 0px'});
     observer.observe(image);
     return () => observer.disconnect();
   }, [thumbnail, src]);
@@ -30,7 +31,7 @@ export function VttAssetImage({ src, fallback, thumbnail = false, ...props }: Pr
   const retrySource = fallback || src;
   const source = attempt
     ? retrySource + (retrySource.includes('?') ? '&' : '?') + 'image_retry=' + attempt
-    : thumbnail ? vttLibraryPreview(src) : src;
+    : thumbnail ? vttLibraryPreview(src) : vttDisplaySource(src);
   return (
     <img
       {...props}

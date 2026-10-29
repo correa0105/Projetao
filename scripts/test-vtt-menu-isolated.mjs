@@ -9,8 +9,8 @@ await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
   process.exitCode = await new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, ['--import', 'tsx', process.argv.includes('--performance') ? 'scripts/smoke-vtt-library-performance.ts' : 'scripts/smoke-vtt-menu.ts'], {
-      env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' }, stdio: 'inherit', windowsHide: true,
+    const child = spawn(process.execPath, ['--import', 'tsx', process.argv.includes('--performance')||process.argv.includes('--cold') ? 'scripts/smoke-vtt-library-performance.ts' : 'scripts/smoke-vtt-menu.ts'], {
+      env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test', VTT_PREVIEW_COLD:process.argv.includes('--cold')?'1':'' }, stdio: 'inherit', windowsHide: true,
     });
     child.once('error', reject); child.once('exit', code => resolve(code ?? 1));
   });

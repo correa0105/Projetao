@@ -1,3 +1,4 @@
+import { vttDisplayImageSide } from './vtt-image-sizes';
 /** Scenery and maps keep their original files and resolution. */
 export function protectedPublicBackground(path: string) {
   return /(?:^|[-_/])(?:normal|roughness|metalness|heightmap|depth|mask)(?:[-_.]|$)/i.test(path) ||
@@ -19,5 +20,6 @@ export function imageDeliverySide(path:string) {
   // Atlases are addressed in native pixels. Resize neither their grids nor masks.
   if(/atlas|frames|sprite|sheet|icons|badges|insignias|milestones|animals-v|classics-|variants-[ab]/i.test(path) || path.startsWith('/character-creation/') || /^\/vtt\/(?:siege-materials|temporal|elemental|chain-lightning)-/.test(path))return null;
   if(path.startsWith('/cards/'))return 1536;
+  if(path.startsWith('/vtt/'))return vttDisplayImageSide;
   return path.startsWith('/shop/')?768:960;
 }

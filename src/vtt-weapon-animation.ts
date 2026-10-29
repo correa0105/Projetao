@@ -1,9 +1,8 @@
 import type { AttackVisual } from '../shared/vtt-attack-visual';
 import type { Point, VttToken } from '../shared/vtt';
-import { drawWeaponArt, drawProjectile, preloadWeaponArt } from './vtt-weapon-art';
+import { drawWeaponArt, drawProjectile } from './vtt-weapon-art';
 import { drawNaturalAnimation } from './vtt-natural-animation';
 export { preloadNaturalArt } from './vtt-natural-art';
-void preloadWeaponArt();
 export type WeaponAnimation = AttackVisual & {
   id: string;
   started: number;

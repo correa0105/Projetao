@@ -29,3 +29,17 @@ test('disposing a scene image loader cancels retries and ignores late callbacks'
   loader.retry();loader.load('/other.webp');assert.equal(images.size,1);assert.equal(changes,1);
  }finally{loader.dispose();globalThis.Image=Original;}
 });
+
+test('using an object as a background reloads its original instead of reusing the small display copy',()=>{
+ const Original=globalThis.Image;
+ class FakeImage{naturalWidth=0;src='';onload:(()=>void)|null=null;onerror:(()=>void)|null=null;}
+ globalThis.Image=FakeImage as unknown as typeof Image;
+ const images=new Map<string,HTMLImageElement>();let background=false;
+ const loader=createVttImageLoader(images,p=>background?p+'?original=1':p+'?display=1',()=>{},()=>assert.fail('unexpected failure'));
+ try{
+  loader.load('/object.webp');const object=images.get('/object.webp')!;Object.defineProperty(object,'naturalWidth',{value:512});object.onload!(new Event('load'));
+  assert(loader.ready('/object.webp'));background=true;assert(!loader.ready('/object.webp'));
+  loader.load('/object.webp');const full=images.get('/object.webp')!;assert.notEqual(full,object);assert.equal(full.src,'/object.webp?original=1');
+  Object.defineProperty(full,'naturalWidth',{value:2048});full.onload!(new Event('load'));assert(loader.ready('/object.webp'));
+ }finally{loader.dispose();globalThis.Image=Original;}
+});

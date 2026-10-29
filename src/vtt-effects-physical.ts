@@ -1,3 +1,4 @@
+import {createVttMedia,lazyVttMedia} from './vtt-media';
 import type { TokenEffect } from '../shared/vtt-effects';
 import { footprintPoint, type EffectFootprint } from './vtt-effect-footprint';
 import { alpha, fract, glow, seededRandom, tau, tint } from './vtt-effects-primitives';
@@ -26,8 +27,7 @@ export type PhysicalProp =
   | 'tendril';
 const props = new Map<PhysicalProp, HTMLImageElement>();
 const tinted = new Map<string, HTMLCanvasElement>();
-const originalPhysicalPropsReady = Promise.all(
-  (
+const media = createVttMedia(
     [
       'rock',
       'rubble',
@@ -45,8 +45,7 @@ const originalPhysicalPropsReady = Promise.all(
       'droplet',
       'skull',
       'tendril',
-    ] as const
-  ).map(async (name) => {
+    ] as const, async (name) => {
     if (typeof Image === 'undefined') return;
     const image = new Image();
     image.decoding = 'async';
@@ -58,15 +57,13 @@ const originalPhysicalPropsReady = Promise.all(
     } catch {
       /* Physical shading fallback stays available. */
     }
-  }),
-);
-export const physicalPropsReady = Promise.all([
-  originalPhysicalPropsReady,
+  });
+export const physicalPropsReady = lazyVttMedia(()=>Promise.all([media.ready,
   nativeFlowReady,
   temporalFieldsReady,
   spectralPilgrimReady,
   elementalMaterialsReady,
-]);
+]));
 export function physicalProp(
   c: CanvasRenderingContext2D,
   kind: PhysicalProp,
@@ -77,6 +74,7 @@ export function physicalProp(
   opacity = 1,
   color?: string,
 ) {
+  void media.request(kind);
   const source = props.get(kind);
   c.save();
   c.translate(x, y);

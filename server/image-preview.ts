@@ -1,6 +1,7 @@
 import {createHash} from 'node:crypto';
 import sharp from 'sharp';
 import type {Request,Response} from 'express';
+import {vttLibraryImageSide,vttDisplayImageSide} from '../shared/vtt-image-sizes.js';
 
 const cache=new Map<string,Buffer|null>(),pending=new Map<string,Promise<Buffer|null>>();
 let cachedBytes=0;
@@ -16,23 +17,25 @@ function releaseThumbnail(){const next=thumbnailQueue.shift();if(next)next();els
 export async function sendImagePreview(req:Request,res:Response,original:Buffer) {
   res.vary('Accept');
   const thumbnail=req.query.thumbnail==='1';
-  if((!thumbnail&&original.length<40000) || req.query.original==='1' || !/image\/webp/i.test(req.get('Accept')||'') || !req.accepts('image/webp'))return res.send(original);
-  const key=createHash('sha256').update(original).digest('hex')+(thumbnail?':thumbnail-256-v1':'');
+  const display=!thumbnail&&req.query.display==='1',sized=thumbnail||display,side=thumbnail?vttLibraryImageSide:vttDisplayImageSide;
+  if((!sized&&original.length<40000) || req.query.original==='1' || !/image\/webp/i.test(req.get('Accept')||'') || !req.accepts('image/webp'))return res.send(original);
+  const key=createHash('sha256').update(original).digest('hex')+(sized?':'+(thumbnail?'thumbnail':'display')+'-'+side+'-v2':'');
   let preview=cache.get(key);
   if(preview!==undefined){cache.delete(key);cache.set(key,preview);}
   else {
     let job=pending.get(key);
-    if(!job && pending.size>=(thumbnail?16:2))return res.send(original);
+    if(!job && pending.size>=(sized?16:2))return res.send(original);
     if(!job){
       job=(async()=>{
-        if(thumbnail)await thumbnailSlot();
+        if(sized)await thumbnailSlot();
         try{
           let image=sharp(original,{animated:!thumbnail,limitInputPixels:40_000_000});const meta=await image.metadata();
-          if(!thumbnail&&((meta.pages||1)>1 || meta.format==='webp'))return null;
-          if(thumbnail)image=image.resize({width:256,height:256,fit:'inside',withoutEnlargement:true});
-          const output=await image.webp({quality:thumbnail?74:86,alphaQuality:100,effort:2}).toBuffer();
+          if(!thumbnail&&(meta.pages||1)>1)return null;
+          if(!sized&&meta.format==='webp')return null;
+          if(sized)image=image.resize({width:side,height:side,fit:'inside',withoutEnlargement:true});
+          const output=await image.webp({quality:thumbnail?60:display?78:86,alphaQuality:100,effort:2}).toBuffer();
           return output.length<original.length*.85?output:null;
-        }catch{return null;}finally{if(thumbnail)releaseThumbnail();}
+        }catch{return null;}finally{if(sized)releaseThumbnail();}
       })();
       pending.set(key,job);
     }

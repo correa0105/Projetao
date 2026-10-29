@@ -133,7 +133,7 @@ export function VttAssets({
               >
                 <X size={15} />
               </button>
-              <img src={item.image} alt={item.name} />
+              <VttAssetImage src={item.image} alt={item.name} />
               <h4>{item.name}</h4>
               <p>
                 {item.group} · {Number((item.squares * scale).toFixed(2)).toLocaleString('pt-BR')} × {Number((item.squares * scale).toFixed(2)).toLocaleString('pt-BR')} quadrados

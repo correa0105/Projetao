@@ -1,3 +1,4 @@
+import {createVttMedia} from './vtt-media';
 // Original offline materials. Ten fixed frame canvases and 21 decoded media;
 // no scene/token cache entries and no pixel reads in the animation loop.
 export type ElementalMaterial =
@@ -25,9 +26,8 @@ const kinds: ElementalMaterial[] = [
 ];
 const pages = new Map<string, HTMLImageElement>();
 const tiles = new Map<ElementalMaterial, HTMLCanvasElement>();
-export const elementalMaterialsReady = Promise.all(
-  [...kinds.flatMap((kind) => [0, 1].map((page) => `${kind}-${page}`)), 'earth-fracture'].map(
-    async (key) => {
+const media = createVttMedia(
+  [...kinds.flatMap((kind) => [0, 1].map((page) => `${kind}-${page}`)), 'earth-fracture'], async (key) => {
       if (typeof Image === 'undefined') return;
       const img = new Image();
     img.decoding = 'async';
@@ -41,9 +41,8 @@ export const elementalMaterialsReady = Promise.all(
       } catch {
         /* Optional cosmetic media. */
       }
-    },
-  ),
-);
+    });
+export const elementalMaterialsReady=media.ready;
 export const elementalMediaCount = () => pages.size;
 export const elementalTileCount = () => tiles.size;
 function hue(color: string) {
@@ -72,6 +71,7 @@ export function elementalMaterial(
   opacity = 1,
   color?: string,
 ) {
+  for(const page of [0,1])void media.request(kind+'-'+page);
   const sw = kind === 'electric' ? 480 : 256,
     sh = kind === 'electric' ? 128 : 256;
   let tile = tiles.get(kind);
@@ -126,6 +126,7 @@ export function elementalMaterial(
   c.restore();
 }
 export function earthFracture(c: CanvasRenderingContext2D, rotation: number) {
+  void media.request('earth-fracture');
   const img = pages.get('earth-fracture');
   if (!img) return;
   c.save();

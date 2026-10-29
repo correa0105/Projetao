@@ -1,26 +1,17 @@
+import {createVttMedia} from './vtt-media';
 // Original offline density simulation: 48 evolving frames per field, seamless
 // two-second period. Frame interpolation is premultiplied on a reusable canvas.
 // No per-frame pixel reads, video players or scene-dependent cache entries.
 export type TemporalField = 'ring' | 'wave' | 'geyser' | 'spiral' | 'tongue' | 'vapour' | 'vortex';
 const kinds: TemporalField[] = ['ring', 'wave', 'geyser', 'spiral', 'tongue', 'vapour', 'vortex'];
 const pages = new Map<string, HTMLImageElement>();
-export const temporalFieldsReady = Promise.all(
-  kinds.flatMap((kind) =>
-    [0, 1, 2].map(async (page) => {
-      if (typeof Image === 'undefined') return;
-      const image = new Image();
-    image.decoding = 'async';
-    image.fetchPriority = 'low';
-      image.src = `/vtt/temporal-20261009/${kind}-${page}.webp?v=native-atlas-20261029`;
-      try {
-        await image.decode();
-        pages.set(`${kind}-${page}`, image);
-      } catch {
-        /* optional art */
-      }
-    }),
-  ),
-);
+const media=createVttMedia(kinds.flatMap(kind=>[0,1,2].map(page=>kind+'-'+page)),async key=>{
+  if(typeof Image==='undefined')return;
+  const image=new Image();image.decoding='async';image.fetchPriority='low';
+  image.src='/vtt/temporal-20261009/'+key+'.webp?v=native-atlas-20261029';
+  try{await image.decode();pages.set(key,image);}catch{/* Optional cosmetic media. */}
+});
+export const temporalFieldsReady=media.ready;
 export const temporalPageCount = () => pages.size;
 const tiles = new Map<TemporalField, HTMLCanvasElement>();
 export const temporalTileCount = () => tiles.size;
@@ -54,6 +45,7 @@ export function temporalField(
   opacity = 1,
   color?: string,
 ) {
+  for(const page of [0,1,2])void media.request(kind+'-'+page);
   let tile = tiles.get(kind);
   if (!tile) {
     tile = document.createElement('canvas');

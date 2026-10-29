@@ -50,7 +50,9 @@ test('miniatura privada tem cache separado, preserva alfa/autorização e manté
   const headers={'X-User':'owner',Accept:'image/webp'};
   await fetch(url,{headers});
   const replies=await Promise.all(Array.from({length:6},()=>fetch(url+'?thumbnail=1',{headers})));
-  for(const r of replies){const b=Buffer.from(await r.arrayBuffer()),m=await sharp(b).metadata();assert.equal(m.width,256);assert.equal(m.height,256);assert(m.hasAlpha);assert(b.length<original.length*.3);assert.equal(r.headers.get('cache-control'),'private, no-store');}
+  for(const r of replies){const b=Buffer.from(await r.arrayBuffer()),m=await sharp(b).metadata();assert.equal(m.width,128);assert.equal(m.height,128);assert(m.hasAlpha);assert(b.length<original.length*.3);assert.equal(r.headers.get('cache-control'),'private, no-store');}
+  const display=await fetch(url+'?display=1',{headers});assert.equal((await sharp(Buffer.from(await display.arrayBuffer())).metadata()).width,512);
+  assert.equal((await fetch(url+'?display=1',{headers:{Accept:'image/webp'}})).status,403);
   const full=Buffer.from(await(await fetch(url,{headers})).arrayBuffer());assert.equal((await sharp(full).metadata()).width,512);
   assert.deepEqual(Buffer.from(await(await fetch(url+'?thumbnail=1&original=1',{headers})).arrayBuffer()),original);
   assert.equal((await fetch(url+'?thumbnail=1',{headers:{Accept:'image/webp'}})).status,403);

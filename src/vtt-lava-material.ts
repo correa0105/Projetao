@@ -1,3 +1,4 @@
+import {createVttMedia} from './vtt-media';
 // One original surface, one reusable GPU tile. Flow changes the hot liquid;
 // cool crust remains anchored. No per-token contexts or per-frame pixel reads.
 const PERIOD = 6.4;
@@ -11,14 +12,15 @@ type Gpu = {
   phase: WebGLUniformLocation;
 };
 let gpu: Gpu | undefined;
-export const lavaSurfaceReady = (async () => {
+const media=createVttMedia(['art'],async()=>{
   if (typeof Image === 'undefined') return;
   const image = new Image();
     image.decoding = 'async';
     image.fetchPriority = 'low';
   image.src = '/vtt/lava-flow-20261010/magma-surface.webp';
   try { await image.decode(); surface = image; } catch { /* Optional cosmetic art. */ }
-})();
+});
+export const lavaSurfaceReady=media.ready;
 const vertex = `attribute vec2 point; varying vec2 uv;
 void main(){uv=(point+1.0)*0.5;gl_Position=vec4(point,0.0,1.0);}`;
 const fragment = `precision highp float;
@@ -93,6 +95,7 @@ export function lavaMaterialStatus() {
   return { ready: !!surface, gpu: !!gpu, tiles: canvas ? 1 : 0, submissions, period: PERIOD };
 }
 export function lavaMaterial(c: CanvasRenderingContext2D, t: number, size: number) {
+  void media.request('art');
   if (!surface) return;
   const renderer = prepareGpu();
   const next = ((Math.floor(t * 30) % 192) + 192) % 192;

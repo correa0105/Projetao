@@ -30,7 +30,7 @@ export function preloadNaturalArt() {
     ),
   );
 }
-void preloadNaturalArt();
+let requestedArt=false;
 function material(c: CanvasRenderingContext2D, path: Path2D, colors: string[], seed: number) {
   c.save();
   c.clip(path);
@@ -281,6 +281,7 @@ export function drawNaturalArt(
   size: number,
   mirror = false,
 ) {
+  if(!requestedArt){requestedArt=true;void preloadNaturalArt();}
   const illustration = illustrations.get(style);
   if (illustration) {
     c.save();

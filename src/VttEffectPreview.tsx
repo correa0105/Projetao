@@ -2,8 +2,7 @@ import { useEffect, useRef } from 'react';
 import type { EffectPreset } from '../shared/vtt-effects';
 import type { VttToken } from '../shared/vtt';
 import { renderEffect } from './vtt-effects-canvas';
-import { effectMaterialsReady } from './vtt-effects-materials';
-import { spectralScreamerReady } from './vtt-spectral-screamer';
+import {watchVttMedia} from './vtt-media';
 import { arcanaEffectReady } from './vtt-effects-arcana';
 import { livingEffectReady } from './vtt-effects-living';
 import { drawDeath } from './vtt-death';
@@ -11,7 +10,7 @@ let previewImage: HTMLImageElement | undefined;
 function overheadPreview() {
   if (!previewImage) {
     previewImage = new Image();
-    previewImage.src = '/api/vtt/premium-art/monster-knight';
+    previewImage.src = '/api/vtt/premium-art/monster-knight?thumbnail=1';
   }
   return previewImage;
 }
@@ -102,9 +101,8 @@ export function VttEffectPreview({
       if (animated && !media.matches) frame = requestAnimationFrame(animate);
     };
     update();
+    const stopMedia=watchVttMedia(update);
     void Promise.all([
-      effectMaterialsReady,
-      spectralScreamerReady,
       arcanaEffectReady(preset.kind),
       livingEffectReady(preset.kind),
     ]).then(() => {
@@ -114,6 +112,7 @@ export function VttEffectPreview({
     media.addEventListener('change', update);
     return () => {
       alive = false;
+      stopMedia();
       cancelAnimationFrame(frame);
       media.removeEventListener('change', update);
       image.removeEventListener('load', update);

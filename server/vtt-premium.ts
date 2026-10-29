@@ -73,7 +73,7 @@ export function vttPremiumRouter() {
         'Content-Type': 'image/webp',
         'X-Content-Type-Options': 'nosniff',
       });
-    if(req.query.thumbnail==='1')await sendImagePreview(req,res,bytes);
+    if(req.query.thumbnail==='1'||req.query.display==='1')await sendImagePreview(req,res,bytes);
     else res.send(bytes);
   }
   router.get('/vtt/premium-preview', async (_req, res) => {

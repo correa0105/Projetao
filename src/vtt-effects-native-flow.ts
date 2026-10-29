@@ -1,3 +1,4 @@
+import {createVttMedia} from './vtt-media';
 import { materialSprite } from './vtt-effects-materials';
 
 export const flowArtIds = [
@@ -18,8 +19,7 @@ const arcs = new Map<string, HTMLCanvasElement>();
 export const nativeArcCacheSize = () => arcs.size;
 type InkProfile = { first: number; last: number; centers: number[]; height: number };
 const inkProfiles = new Map<FlowArt, InkProfile>();
-export const nativeFlowReady = Promise.all(
-  flowArtIds.map(async (id) => {
+const media = createVttMedia(flowArtIds,async (id) => {
     if (typeof Image === 'undefined') return;
     const image = new Image();
     image.decoding = 'async';
@@ -64,8 +64,8 @@ export const nativeFlowReady = Promise.all(
     } catch {
       /* Local material fallback remains visible. */
     }
-  }),
-);
+  });
+export const nativeFlowReady=media.ready;
 export const nativeFlowCount = () => images.size;
 export const nativeFlowCacheSize = () => colors.size;
 function hue(color: string) {
@@ -127,6 +127,7 @@ export function chainLoop(
 // Keep the source shading and alpha. A small color glaze never replaces the
 // detail with a flat silhouette; caching also avoids frame-time pixel reads.
 function texture(id: FlowArt, color?: string): CanvasImageSource | undefined {
+  void media.request(id);
   const image = images.get(id);
   if (!image || !color) return image;
   const key = id + color,
