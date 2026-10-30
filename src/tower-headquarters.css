@@ -29,7 +29,7 @@
   transition: opacity 0.25s;
   opacity: 1;
 }
-.tower-headquarters-scene > img.changing {
+.tower-scene-art > img.changing {
   opacity: 0.65;
 }
 .tower-scene-frame {
@@ -66,16 +66,16 @@
   stroke: #edcc8f;
   stroke-width: 1.2;
   stroke-linejoin: round;
-  opacity: 0.1;
-  filter: blur(0.6px) drop-shadow(0 0 4px #d5aa6544);
+  opacity: 0;
+  filter: none;
   transition:
     opacity 0.18s,
     filter 0.18s;
 }
-.tower-clerk-contour:is(:hover, :focus-visible, [aria-expanded='true']) {
+.tower-clerk-contour:is(:hover, :focus-visible) {
   opacity: 0.55;
-  stroke-width: 1.1;
-  filter: blur(0.6px) drop-shadow(0 0 5px #e3b56b88);
+  stroke-width: 0.9;
+  filter: drop-shadow(0 0 3px #d2ad7077);
   outline: none;
 }
 .tower-headquarters-workspace.is-idle {
@@ -249,11 +249,41 @@
   min-width: 0;
 }
 .tower-headquarters-workspace.is-conversation {
-  display: flex;
-  align-items: center;
-  margin: 24px max(4vw, 30px) 0 auto;
-  width: min(390px, 40%);
+  --tower-bubble-top: clamp(
+    120px,
+    calc(50svh + var(--tower-bubble-offset-y) * max(100svh, calc(100vw / var(--tower-art-ratio)))),
+    calc(100svh - 430px)
+  );
+  position: fixed;
+  display: block;
+  left: clamp(
+    18px,
+    calc(32vw + var(--tower-bubble-offset-x) * max(100vw, calc(100svh * var(--tower-art-ratio)))),
+    calc(100vw - 380px)
+  );
+  top: var(--tower-bubble-top);
+  margin: 0;
+  width: 360px;
+  max-height: min(600px, calc(100svh - var(--tower-bubble-top) - 100px));
+  height: auto;
 }
+.tower-headquarters-workspace.is-conversation:not(.is-idle)::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 84px;
+  width: 16px;
+  height: 16px;
+  background: #14191df2;
+  border-left: 1px solid #bc9c694f;
+  border-bottom: 1px solid #bc9c694f;
+  transform: rotate(45deg);
+}
+.tower-headquarters-workspace.is-conversation > .tower-conversation {
+  position: relative;
+  max-height: inherit;
+}
+
 .tower-conversation,
 .tower-headquarters-service {
   border: 1px solid #bc9c694f;
@@ -553,7 +583,7 @@
 :root .tower-page--headquarters .tower-body:empty {
   display: none;
 }
-.tower-headquarters[data-room='crystals'] .tower-headquarters-workspace {
+.tower-headquarters[data-room='crystals'] .tower-headquarters-workspace:not(.is-conversation) {
   width: min(430px, 40%);
   display: flex;
   align-items: center;
@@ -601,11 +631,8 @@
     width: 54%;
     margin-right: 22px;
   }
-  .tower-headquarters-workspace.is-conversation {
-    width: 41%;
-    margin-right: 22px;
-  }
-  .tower-headquarters[data-room='crystals'] .tower-headquarters-workspace {
+
+  .tower-headquarters[data-room='crystals'] .tower-headquarters-workspace:not(.is-conversation) {
     width: 44%;
   }
   :root .tower-page--headquarters .tower-atlas-sidebar {
@@ -669,6 +696,21 @@
     max-width: 600px;
     max-height: none;
     margin: 280px 14px 0;
+  }
+  .tower-headquarters-workspace.is-conversation {
+    position: relative;
+    left: auto;
+    top: auto;
+    max-width: 440px;
+    width: auto;
+    height: auto;
+    max-height: none;
+    margin: 280px 14px 0;
+  }
+  .tower-headquarters-workspace.is-conversation:not(.is-idle)::before {
+    left: 42%;
+    top: -8px;
+    transform: rotate(135deg);
   }
   .tower-conversation {
     max-height: none;

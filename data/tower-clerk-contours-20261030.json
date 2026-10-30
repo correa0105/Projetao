@@ -1,0 +1,59 @@
+{
+  "method": "MobileSAM ONNX + refinamento de borda por cor (GrabCut); vetorização dos pixels nativos",
+  "model": "https://huggingface.co/Acly/MobileSAM",
+  "originalModel": "https://github.com/ChaoningZhang/MobileSAM",
+  "licenses": [
+    "https://github.com/ChaoningZhang/MobileSAM/blob/master/LICENSE",
+    "https://huggingface.co/Acly/MobileSAM/blob/main/README.md"
+  ],
+  "models": {
+    "mobile_sam_image_encoder.onnx": "580f5fb648ea1062c0aabc26217aed56921985f03f0cbbd852bba81d760cc749",
+    "sam_mask_decoder_multi.onnx": "8976b90a87ba50a6a72217a5ff994f7d25ce16f2229fcc1ed259e1294c622ffe"
+  },
+  "images": [
+    {
+      "room": "reception",
+      "source": "artwork-archive/tower-headquarters-20261030/reception.png",
+      "sourceSha256": "d425f6ff24eb76d9ed51ffef1c67b723036d9f61a8026912c0855dc55064f8ce",
+      "mask": "artwork-archive/tower-clerk-masks-20261030/reception.png",
+      "maskSha256": "0e67db7e613363be76542a64cbaac457da8910ac769146d37b7f7183a03be313",
+      "width": 1671,
+      "height": 941,
+      "vertices": 739,
+      "simplificationPixels": 0.45
+    },
+    {
+      "room": "expeditions",
+      "source": "artwork-archive/tower-headquarters-20261030/expeditions-paper.png",
+      "sourceSha256": "99778b56084cbeaf48166dae78509b744e09970fde863cf752cc0199985b71b5",
+      "mask": "artwork-archive/tower-clerk-masks-20261030/expeditions.png",
+      "maskSha256": "aa5ee3492f6d3e985bc6ceb018c6a00fe117322c4b096a6147e73e4017d8161d",
+      "width": 1672,
+      "height": 941,
+      "vertices": 686,
+      "simplificationPixels": 0.45
+    },
+    {
+      "room": "archive",
+      "source": "artwork-archive/tower-headquarters-20261030/archive-gaze.png",
+      "sourceSha256": "75f3db94d80ed948d5519da11e98657809e218ffad3ad74ceadd2fe9768f82c7",
+      "mask": "artwork-archive/tower-clerk-masks-20261030/archive.png",
+      "maskSha256": "46e92786bab2d2728d76ff612d2da2796a98f2da8285f6655cf61eb29ff826b0",
+      "width": 1672,
+      "height": 941,
+      "vertices": 580,
+      "simplificationPixels": 0.45
+    },
+    {
+      "room": "crystals",
+      "source": "artwork-archive/tower-headquarters-20261030/crystals.png",
+      "sourceSha256": "5bdb5fd88629f62a9a7d45f17d0396eb084cf2b11f912b5363e4c7629b24180c",
+      "mask": "artwork-archive/tower-clerk-masks-20261030/crystals.png",
+      "maskSha256": "bf536b1ba0ce1dbd1a891a7ade07c2d56d97d174f4f013ad3038c4bbe8bd23be",
+      "width": 1672,
+      "height": 941,
+      "vertices": 734,
+      "simplificationPixels": 0.45
+    }
+  ]
+}

@@ -107,7 +107,13 @@ export function TowerHeadquarters({
     <div
       className="tower-headquarters"
       data-room={room}
-      style={{ '--tower-art-ratio': outline.width / 941 } as CSSProperties}
+      style={
+        {
+          '--tower-art-ratio': outline.width / 941,
+          '--tower-bubble-offset-x': outline.speech[0] / outline.width - 0.32,
+          '--tower-bubble-offset-y': outline.speech[1] / 941 - 0.5,
+        } as CSSProperties
+      }
     >
       <div className="tower-headquarters-scene" aria-hidden="true">
         <div className="tower-scene-frame">
@@ -132,6 +138,7 @@ export function TowerHeadquarters({
                 ref={clerk}
                 d={outline.path}
                 fill="transparent"
+                fillRule="evenodd"
                 vectorEffect="non-scaling-stroke"
                 role="button"
                 tabIndex={0}

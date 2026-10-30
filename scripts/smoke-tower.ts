@@ -93,6 +93,28 @@ async function clickClerk(target: typeof page) {
   });
   await target.mouse.click(point.x, point.y);
   await expect(target.getByRole('region', { name: 'Conversa com a atendente' })).toBeVisible();
+  const dialog = target.getByRole('region', { name: 'Conversa com a atendente' }),
+    rect = (await dialog.boundingBox())!;
+  if (target.viewportSize()!.width > 900) {
+    const headRight: Record<string, number> = {
+      reception: 626,
+      atlas: 528,
+      expeditions: 592,
+      crystals: 634,
+      treasures: 634,
+    };
+    const edge = box.x + (headRight[room!] / native.width) * box.width;
+    expect(rect.x - edge).toBeGreaterThanOrEqual(-3);
+    expect(rect.x - edge).toBeLessThan(120);
+    expect(rect.x + rect.width).toBeLessThanOrEqual(target.viewportSize()!.width - 8);
+    await expect(dialog).toBeInViewport({ ratio: 0.99 });
+  } else {
+    expect(rect.y).toBeGreaterThan(point.y + 25);
+  }
+  await target.screenshot({
+    path: 'test-results/tower-speech-' + room + '-' + target.viewportSize()!.width + '.png',
+    fullPage: true,
+  });
 }
 try {
   const signup = async (context: typeof ctx, name: string) => {
@@ -455,7 +477,7 @@ try {
   ).toBe(2);
   expect(errors).toEqual([]);
   console.log(
-    'Torre: contorno de Lia clicável e com teclado, título da sala no topo, sem rodapé e plaquinha, menu recolhido com Escape e clique externo, conversas sem transações, salas sob demanda, visualização, navegação, filtros, 100 andares, sigilo, edição, expedição, retorno e d100 persistente. Torre e perfil com fundo de viewport em 1440/768/390/320 verificados; acampamento preservado.',
+    'Torre: contorno de pixels nativos clicável e com teclado, balão próximo à personagem, título da sala no topo, sem rodapé e plaquinha, menu recolhido com Escape e clique externo, conversas sem transações, salas sob demanda, visualização, navegação, filtros, 100 andares, sigilo, edição, expedição, retorno e d100 persistente. Torre e perfil com fundo de viewport em 1440/768/390/320 verificados; acampamento preservado.',
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/tower-failure.png', fullPage: true });
