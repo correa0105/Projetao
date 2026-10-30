@@ -47,7 +47,7 @@ export function TowerHeadquarters({
   const roomMenu = useRef<HTMLDivElement>(null);
   const clerk = useRef<HTMLButtonElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scene, setScene] = useState({ image: current.image, portrait: current.portrait }),
+  const [scene, setScene] = useState({ image: current.image, portrait: current.portrait, room }),
     [loading, setLoading] = useState(false),
     [imageError, setImageError] = useState(false),
     [retry, setRetry] = useState(0);
@@ -72,7 +72,7 @@ export function TowerHeadquarters({
     void Promise.all(images.map((image) => image.decode()))
       .then(() => {
         if (live) {
-          setScene({ image: current.image, portrait: current.portrait });
+          setScene({ image: current.image, portrait: current.portrait, room });
           setLoading(false);
         }
       })
@@ -125,6 +125,7 @@ export function TowerHeadquarters({
       <button
         ref={clerk}
         className="tower-clerk"
+        data-room={scene.room}
         aria-label="Conversar com Lia"
         aria-expanded={talking}
         aria-controls={talking ? 'tower-clerk-conversation' : undefined}
@@ -158,7 +159,7 @@ export function TowerHeadquarters({
               </feMerge>
             </filter>
           </defs>
-          <image href={scene.portrait} width="1024" height="1536" />
+          <image className="tower-clerk-portrait" href={scene.portrait} width="1024" height="1536" />
           <image
             className="tower-clerk-light"
             href={scene.portrait}

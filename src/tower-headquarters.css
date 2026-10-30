@@ -72,6 +72,26 @@
   overflow: visible;
   pointer-events: none;
 }
+.tower-clerk-portrait {
+  filter: brightness(var(--tower-clerk-brightness, 0.73))
+    saturate(var(--tower-clerk-saturation, 0.78)) contrast(0.98);
+}
+.tower-clerk[data-room='expeditions'] {
+  --tower-clerk-brightness: 0.78;
+  --tower-clerk-saturation: 0.8;
+}
+.tower-clerk[data-room='atlas'] {
+  --tower-clerk-brightness: 0.71;
+  --tower-clerk-saturation: 0.76;
+}
+.tower-clerk[data-room='crystals'] {
+  --tower-clerk-brightness: 0.67;
+  --tower-clerk-saturation: 0.68;
+}
+.tower-clerk[data-room='treasures'] {
+  --tower-clerk-brightness: 0.69;
+  --tower-clerk-saturation: 0.76;
+}
 :root .tower-page--headquarters button.tower-clerk:is(:hover, :focus-visible) {
   background: transparent;
   border: 0;
