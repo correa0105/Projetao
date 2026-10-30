@@ -30,7 +30,7 @@ export const towerRooms: {
     name: 'Expedições',
     title: 'Sala de expedições',
     description: 'Companhias, preparativos e registros da subida.',
-    image: '/tower/headquarters-expeditions-20261030.webp',
+    image: '/tower/headquarters-expeditions-paper-20261030.webp',
     topic: 'expeditions',
   },
   {
@@ -38,7 +38,7 @@ export const towerRooms: {
     name: 'Arquivo da Torre',
     title: 'Arquivo da Torre',
     description: 'Os registros do que já foi descoberto.',
-    image: '/tower/headquarters-archive-20261030.webp',
+    image: '/tower/headquarters-archive-gaze-20261030.webp',
     topic: 'discoveries',
   },
   {

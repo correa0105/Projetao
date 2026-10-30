@@ -717,7 +717,7 @@ function Portal({ user }: { user: User }) {
       <div className="main-shell">
         {page !== 'vtt' && (
           <PageHeader
-            showTitle={page !== 'world'}
+            showTitle={page !== 'world' && page !== 'tower'}
             title={
               page === 'characters'
                 ? 'Seu acampamento'

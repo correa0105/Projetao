@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -7,7 +7,6 @@ import {
   Diamond,
   Dices,
   DoorOpen,
-  Eye,
   Menu,
   MessageCircle,
   Users,
@@ -20,6 +19,7 @@ import {
   type TowerRoom,
   type TowerTopic,
 } from '../shared/tower-headquarters';
+import { towerClerkOutlines } from './tower-clerk-outlines';
 const icons = {
   reception: DoorOpen,
   atlas: BookOpen,
@@ -44,16 +44,15 @@ export function TowerHeadquarters({
 }) {
   const current = towerRooms.find((r) => r.id === room)!;
   const roomMenu = useRef<HTMLDivElement>(null);
+  const clerk = useRef<SVGPathElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [backdrop, setBackdrop] = useState(current.image),
     [loading, setLoading] = useState(false),
     [imageError, setImageError] = useState(false),
     [retry, setRetry] = useState(0);
   const [topic, setTopic] = useState<TowerTopic>('welcome'),
-    [conversation, setConversation] = useState<TowerRoom | null>(null),
-    [peek, setPeek] = useState(false);
+    [conversation, setConversation] = useState<TowerRoom | null>(null);
   useEffect(() => {
-    setPeek(false);
     if (backdrop === current.image) {
       setLoading(false);
       setImageError(false);
@@ -87,39 +86,76 @@ export function TowerHeadquarters({
   useEffect(() => {
     setConversation(null);
     setTopic(current.topic);
-    setPeek(false);
   }, [room]);
-  const talking = room === 'reception' || conversation === room,
+  const talking = conversation === room,
     answer = towerAnswers[topic];
+  const outline = towerClerkOutlines[backdrop];
   function talk(next: TowerTopic = current.topic) {
     setTopic(next);
     setConversation(room);
-    setPeek(false);
+  }
+  function closeTalk() {
+    setConversation(null);
+    clerk.current?.focus({ preventScroll: true });
   }
   function go(next: TowerRoom) {
     roomMenu.current?.hidePopover();
     setConversation(null);
-    setPeek(false);
     change(next);
   }
   return (
-    <div className="tower-headquarters" data-room={room} data-peeking={peek}>
+    <div
+      className="tower-headquarters"
+      data-room={room}
+      style={{ '--tower-art-ratio': outline.width / 941 } as CSSProperties}
+    >
       <div className="tower-headquarters-scene" aria-hidden="true">
-        <img
-          src={backdrop}
-          alt=""
-          decoding="async"
-          fetchPriority="high"
-          className={loading ? 'changing' : ''}
-        />
+        <div className="tower-scene-frame">
+          <div className="tower-scene-art">
+            <img
+              src={backdrop}
+              alt=""
+              decoding="async"
+              fetchPriority="high"
+              className={loading ? 'changing' : ''}
+            />
+          </div>
+        </div>
         <div className="tower-headquarters-shade" />
+      </div>
+      <div className="tower-clerk-interaction">
+        <div className="tower-scene-frame">
+          <div className="tower-scene-art">
+            <svg viewBox={`0 0 ${outline.width} 941`} className="tower-clerk-silhouette">
+              <path
+                className="tower-clerk-contour"
+                ref={clerk}
+                d={outline.path}
+                fill="transparent"
+                vectorEffect="non-scaling-stroke"
+                role="button"
+                tabIndex={0}
+                aria-label="Conversar com Lia"
+                aria-expanded={talking}
+                aria-controls="tower-clerk-conversation"
+                onClick={() => (talking ? closeTalk() : talk(topic))}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    talking ? closeTalk() : talk(topic);
+                  }
+                }}
+              />
+            </svg>
+          </div>
+        </div>
       </div>
       <header className="tower-headquarters-header">
         <div className="tower-headquarters-title">
-          <span>BASTIÃO DA ALVORADA · VIGÍLIA</span>
-          <h2 className="tower-room-heading" tabIndex={-1}>
+          <h1 className="tower-room-heading" tabIndex={-1}>
             {current.title}
-          </h2>
+          </h1>
+          <span>BASTIÃO DA ALVORADA · VIGÍLIA</span>
         </div>
         <div className="tower-headquarters-actions">
           {characterName && (
@@ -190,29 +226,30 @@ export function TowerHeadquarters({
           <button onClick={() => setRetry((v) => v + 1)}>Tentar novamente</button>
         </div>
       )}
-      <button className="tower-clerk-hotspot" onClick={() => talk()} aria-label="Conversar com Lia">
-        <MessageCircle size={16} />
-        <span>
-          <b>Lia</b>
-          <small>Escrivã da Torre</small>
-        </span>
-      </button>
       <div
-        className={'tower-headquarters-workspace ' + (talking ? 'is-conversation' : '')}
-        inert={peek}
+        className={
+          'tower-headquarters-workspace ' +
+          (talking || room === 'reception' ? 'is-conversation' : '') +
+          (room === 'reception' && !talking ? ' is-idle' : '')
+        }
       >
         {talking ? (
-          <section className="tower-conversation" aria-label="Conversa com a atendente">
+          <section
+            id="tower-clerk-conversation"
+            className="tower-conversation"
+            aria-label="Conversa com a atendente"
+          >
             <header>
               <span>ATENDIMENTO · {current.name.toLocaleUpperCase('pt-BR')}</span>
               <b>
                 Lia <small>Escrivã da Torre</small>
               </b>
-              {room !== 'reception' && (
-                <button aria-label="Voltar aos registros" onClick={() => setConversation(null)}>
-                  <ArrowLeft size={16} />
-                </button>
-              )}
+              <button
+                aria-label={room === 'reception' ? 'Fechar conversa' : 'Voltar aos registros'}
+                onClick={closeTalk}
+              >
+                {room === 'reception' ? <X size={16} /> : <ArrowLeft size={16} />}
+              </button>
             </header>
             <div className="tower-conversation-answer" aria-live="polite" aria-atomic="true">
               <h3>{answer.title}</h3>
@@ -249,6 +286,8 @@ export function TowerHeadquarters({
             </div>
             {room === 'reception' && children}
           </section>
+        ) : room === 'reception' ? (
+          children
         ) : (
           <section
             className="tower-headquarters-service"
@@ -306,17 +345,6 @@ export function TowerHeadquarters({
           </section>
         )}
       </div>
-      <footer className="tower-headquarters-footer">
-        <span>
-          {room === 'reception'
-            ? '100 andares · 20 regiões · Até 8 aventureiros'
-            : 'DIRETORIA DA TORRE · ' + current.name.toLocaleUpperCase('pt-BR')}
-        </span>
-        <button onClick={() => setPeek((v) => !v)}>
-          <Eye size={15} />
-          {peek ? 'Voltar ao atendimento' : 'Ver a sala'}
-        </button>
-      </footer>
     </div>
   );
 }

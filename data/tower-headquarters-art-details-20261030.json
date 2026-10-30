@@ -1,0 +1,28 @@
+{
+  "tool": "image_gen (integrado), edição",
+  "reference": "Correções pontuais: olhar para o ponto indicado no livro e mapa de papel sem relevo.",
+  "images": [
+    {
+      "room": "archive",
+      "prompt": "Use case: inpainting. The attached full landscape is the EDIT TARGET. Correct ONLY the main adult female clerk Lia's face, eyes and subtle head angle in the archive scene. The user specifically notes that she is not looking where her pointing finger points. Her extended index finger points to the OPEN BOOK near image coordinates x430 y600. Make BOTH eyes and pupils unmistakably look DOWN AND TOWARD VIEWER RIGHT toward that fingertip and the exact book spot directly beneath it. Her gaze should follow the finger, not look toward viewer left, not toward the bronze tower model, and not at the viewer. Chin lowered, face subtly turned toward viewer right, eyes visibly lowered toward the book. Natural comfortable head/eye alignment with her actual pointing hand; quiet focused expression, not angry. Keep her identity, chestnut bob/bangs, brass eyeglasses, outfit, original anatomy and BOTH EXISTING HANDS EXACTLY intact. Preserve the outside silhouette of the hair/head as closely as possible, and preserve all shoulders, arms, pointing finger, book, desk, bronze tower model, room architecture, objects, painterly lighting/style, camera and 1672 by 941 wide framing. Do not move the finger or book to solve this. Do not add text, logos, UI, border or watermark. This is a precise gaze correction, not a redesign.",
+      "source": "C:/Users/limaw/.codex/generated_images/01a18441-cb49-7020-bf08-9d0472d08adc/exec-b3f1d119-fc54-4817-8e31-a3252cf0907b.png",
+      "file": "public/tower/headquarters-archive-gaze-20261030.webp",
+      "original": "artwork-archive/tower-headquarters-20261030/archive-gaze.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 203274,
+      "sha256": "e5a2b117b0b6e546c8d0eb08369d8fc7ada28076a3b6510e4a8fa6469781cb8a"
+    },
+    {
+      "room": "expeditions",
+      "prompt": "Use case: inpainting. The attached full landscape is the EDIT TARGET. Correct ONLY the large MAP ON THE EXPEDITION TABLE. The user wants an ordinary PAPER MAP, not a 3D model or miniature terrain. Replace ALL apparent raised topography, 3D mountains, sculpted landforms and the upright physical-looking tower on the map with FLAT TWO-DIMENSIONAL CARTOGRAPHIC DRAWING ON ONE SHEET OF PARCHMENT. Draw mountains as thin ink hatching/contour lines and small conventional cartographic symbols, rivers and shorelines as flat ink lines, a subdued watercolor lake wash absorbed into the paper, paths as simple lines, and the tower as one SMALL FLAT INK TOWER GLYPH lying in the plane of the paper. The drawing follows the perspective of the same tabletop and is physically completely flat: no topographic relief, no raised miniature tower, no extruded landscape, no 3D shadows from the depicted terrain, no photorealistic landscape inside the map. Visible paper fibers, subtle creases, a continuous flat parchment surface and gently curled paper edges make its material clear. Existing small brass weights/ordinary desk props at the paper's perimeter can remain as actual objects; they must not become terrain or buildings. Keep the table, room, background wall chart, architecture, windows, lighting, full 1672 by 941 landscape framing and painterly style unchanged. Preserve Lia EXACTLY: recognizable face, animated expression, hair, glasses, clothing, body silhouette, arms and both natural hands in their existing map-explaining gesture. No readable text, numbers, UI, logos, borders or watermark. This is a map-material correction, not a new scene.",
+      "source": "C:/Users/limaw/.codex/generated_images/01a18441-cb49-7020-bf08-9d0472d08adc/exec-961250bf-b30b-4342-9a71-5245dbe20bab.png",
+      "file": "public/tower/headquarters-expeditions-paper-20261030.webp",
+      "original": "artwork-archive/tower-headquarters-20261030/expeditions-paper.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 277714,
+      "sha256": "27f825a1de87c20eed4da7de5fdae53e44f584a5830ced132b72c0ec7df1e58f"
+    }
+  ]
+}

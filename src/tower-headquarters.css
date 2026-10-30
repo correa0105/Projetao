@@ -22,16 +22,67 @@
   background: #191b19;
   pointer-events: none;
 }
-.tower-headquarters-scene > img {
+.tower-scene-art > img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 32% 50%;
+  display: block;
   transition: opacity 0.25s;
   opacity: 1;
 }
 .tower-headquarters-scene > img.changing {
   opacity: 0.65;
+}
+.tower-scene-frame {
+  position: absolute;
+  inset: 0;
+  container-type: size;
+}
+.tower-scene-art {
+  position: absolute;
+  top: 50%;
+  left: 32%;
+  width: max(100cqw, calc(100cqh * var(--tower-art-ratio)));
+  height: max(100cqh, calc(100cqw / var(--tower-art-ratio)));
+  transform: translate(-32%, -50%);
+}
+.tower-clerk-interaction {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.tower-clerk-silhouette {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.tower-clerk-contour {
+  pointer-events: fill;
+  cursor: pointer;
+  stroke: #edcc8f;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+  opacity: 0.1;
+  filter: blur(0.6px) drop-shadow(0 0 4px #d5aa6544);
+  transition:
+    opacity 0.18s,
+    filter 0.18s;
+}
+.tower-clerk-contour:is(:hover, :focus-visible, [aria-expanded='true']) {
+  opacity: 0.55;
+  stroke-width: 1.1;
+  filter: blur(0.6px) drop-shadow(0 0 5px #e3b56b88);
+  outline: none;
+}
+.tower-headquarters-workspace.is-idle {
+  pointer-events: none;
+}
+.tower-headquarters-workspace.is-idle .tower-error {
+  pointer-events: auto;
 }
 .tower-headquarters-shade {
   position: absolute;
@@ -41,6 +92,8 @@
     linear-gradient(90deg, transparent 35%, #0c101544 68%, #0c101578);
 }
 .tower-headquarters-header {
+  position: relative;
+  z-index: 2;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -51,17 +104,23 @@
   border: 0;
 }
 .tower-headquarters-title {
+  position: absolute;
+  top: 24px;
+  left: var(--page-header-edge);
   min-width: 0;
-  flex: 1;
+  max-width: calc(100% - 2 * var(--page-header-edge) - 70px);
 }
 .tower-headquarters-title > span {
+  display: block;
+  margin-top: 7px;
   font-size: 7px;
   letter-spacing: 0.14em;
   color: #c7ac83;
 }
 .tower-room-heading {
-  font: 400 22px/1.35 var(--serif);
-  margin: 7px 0 0;
+  font: 500 clamp(21px, 2vw, 26px)/1.2 var(--serif);
+  letter-spacing: -0.75px;
+  margin: 0;
   color: #eee4d4;
   text-shadow: 0 2px 12px #0008;
 }
@@ -69,6 +128,7 @@
   outline: none;
 }
 .tower-headquarters-actions {
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -180,6 +240,7 @@
 }
 .tower-headquarters-workspace {
   position: relative;
+  z-index: 1;
   flex: 1;
   min-height: 0;
   width: min(650px, 49%);
@@ -403,54 +464,6 @@
 :root .tower-page--headquarters .tower-rules {
   margin-bottom: 0;
 }
-.tower-clerk-hotspot {
-  position: absolute;
-  left: 21%;
-  top: 73%;
-  display: flex;
-  gap: 9px;
-  align-items: center;
-  text-align: left;
-  padding: 9px 15px !important;
-  background: #11191de0 !important;
-  border-color: #bc9c6960 !important;
-  box-shadow: 0 8px 30px #0006;
-}
-.tower-clerk-hotspot > span {
-  display: grid;
-  gap: 3px;
-}
-.tower-clerk-hotspot b {
-  font: 15px var(--serif);
-}
-.tower-clerk-hotspot small {
-  font-size: 9px;
-  color: #bdb09a;
-}
-.tower-headquarters-footer {
-  flex-shrink: 0;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  margin: 24px 36px 0;
-  color: #bcad92;
-  font-size: 9px;
-  letter-spacing: 0.1em;
-}
-.tower-headquarters-footer button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  font-size: 10px;
-  letter-spacing: 0;
-  background: #13191dde !important;
-}
-.tower-headquarters[data-peeking='true'] .tower-headquarters-workspace {
-  visibility: hidden;
-}
 .tower-room-status {
   position: absolute;
   right: 36px;
@@ -614,13 +627,16 @@
     gap: 12px;
     align-items: flex-start;
   }
+  .tower-headquarters-title {
+    top: 84px;
+    left: 18px;
+    max-width: calc(100% - 36px);
+  }
   .tower-headquarters-title > span {
-    font-size: 6px;
-    letter-spacing: 0.1em;
+    display: none;
   }
   .tower-room-heading {
-    font-size: 18px;
-    margin-top: 6px;
+    font-size: 21px;
   }
   .tower-headquarters-actions {
     gap: 10px;
@@ -652,7 +668,7 @@
     width: auto;
     max-width: 600px;
     max-height: none;
-    margin: 225px 14px 0;
+    margin: 280px 14px 0;
   }
   .tower-conversation {
     max-height: none;
@@ -689,18 +705,8 @@
     padding: 12px;
     gap: 7px;
   }
-  .tower-service-guidance > svg,
-  .tower-clerk-hotspot {
+  .tower-service-guidance > svg {
     display: none;
-  }
-  .tower-headquarters-footer {
-    margin: 20px 18px 0;
-    align-items: start;
-  }
-  .tower-headquarters-footer > span {
-    max-width: 52%;
-    line-height: 1.7;
-    font-size: 8px;
   }
   .tower-room-status {
     top: 240px;
@@ -712,17 +718,14 @@
   .tower-crystal-office {
     padding: 20px 18px;
   }
-  .tower-headquarters[data-peeking='true'] .tower-headquarters-workspace {
-    display: none;
-  }
-  .tower-headquarters[data-peeking='true'] .tower-headquarters-footer {
-    margin-top: calc(100svh - 340px);
-  }
-  .tower-headquarters-scene > img {
-    position: absolute;
+  .tower-scene-frame {
     top: 145px;
+    bottom: auto;
     height: max(755px, calc(100% - 145px));
-    object-position: 23% 50%;
+  }
+  .tower-scene-art {
+    left: 23%;
+    transform: translate(-23%, -50%);
   }
 }
 @media (prefers-reduced-motion: reduce) {
