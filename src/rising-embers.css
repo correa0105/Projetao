@@ -1,0 +1,37 @@
+.scene-embers {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.scene-embers i {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #c49145;
+  box-shadow: 0 0 9px #eeb363;
+  bottom: 0;
+  animation: scene-ember-rise 16s linear infinite;
+  opacity: 0;
+}
+.scene-embers[data-paused='true'] i {
+  animation-play-state: paused;
+}
+@keyframes scene-ember-rise {
+  10% {
+    opacity: 0.65;
+  }
+  90% {
+    opacity: 0;
+  }
+  to {
+    transform: translate(50px, -80vh);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene-embers i {
+    animation: none;
+  }
+}

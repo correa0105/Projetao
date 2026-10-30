@@ -15,6 +15,7 @@ import {
 } from '../shared/events';
 import './events.css';
 import { EventsVenue } from './EventsVenue';
+import { RisingEmbers } from './RisingEmbers';
 type SceneResponse = { document: EventScene; revision: number; can_edit: boolean };
 const date = (value: string) =>
   new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long', timeStyle: 'short' }).format(
@@ -155,21 +156,11 @@ export function Events() {
         style={{ '--events-darkness': sceneDoc.darkness } as CSSProperties}
         aria-hidden="true"
       />
-      <div className={'events-atmosphere ' + sceneDoc.ambient} aria-hidden="true">
-        {sceneDoc.ambient === 'embers' &&
-          Array.from({ length: 20 }, (_, i) => (
-            <i
-              key={i}
-              style={
-                {
-                  left: ((i * 43) % 100) + '%',
-                  animationDelay: -i * 0.8 + 's',
-                  animationDuration: 12 + (i % 6) + 's',
-                } as CSSProperties
-              }
-            />
-          ))}
-      </div>
+      {sceneDoc.ambient === 'embers' ? (
+        <RisingEmbers />
+      ) : (
+        <div className={'events-atmosphere ' + sceneDoc.ambient} aria-hidden="true" />
+      )}
       <ArtLayers scene={sceneDoc} />
       {error && (
         <p className="events-venue-error" role="alert">

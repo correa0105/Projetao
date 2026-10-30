@@ -123,7 +123,7 @@ try {
   });
   await page.goto(origin + '/#events');
   await expect(
-    page.getByRole('heading', { name: 'Átrio dos Encontros', exact: true }),
+    page.getByRole('heading', { name: 'Átrio', exact: true }),
   ).toBeVisible();
   await expect(page.locator('.asset-loading-cover')).toHaveCount(0);
   await expect(
@@ -139,7 +139,7 @@ try {
   await page.keyboard.press('Escape');
   await expect(page.getByRole('navigation', { name: 'Ambientes dos eventos' })).not.toBeVisible();
   await openMenu(page);
-  await page.getByRole('heading', { name: 'Átrio dos Encontros', exact: true }).click();
+  await page.getByRole('heading', { name: 'Átrio', exact: true }).click();
   await expect(page.getByRole('navigation', { name: 'Ambientes dos eventos' })).not.toBeVisible();
   await page.mouse.move(1400, 10);
   await page.screenshot({ path: 'test-results/events-venue-reception-1440.png', fullPage: true });
@@ -218,7 +218,7 @@ try {
 
   await playerPage.goto(origin + '/#events');
   await expect(
-    playerPage.getByRole('heading', { name: 'Átrio dos Encontros', exact: true }),
+    playerPage.getByRole('heading', { name: 'Átrio', exact: true }),
   ).toBeVisible();
   await openMenu(playerPage);
   await expect(playerPage.getByRole('button', { name: 'Criar evento', exact: true })).toHaveCount(
@@ -262,7 +262,7 @@ try {
       fullPage: true,
     });
   }
-  const asset = await admin.request.get(origin + '/events/host-serious-20261030.webp');
+  const asset = await admin.request.get(origin + '/events/host-tailoring-20261030.webp');
   expect(asset.headers()['cache-control']).toContain('immutable');
   expect((await sharp(await asset.body()).metadata()).hasAlpha).toBe(true);
   expect(errors).toEqual([]);

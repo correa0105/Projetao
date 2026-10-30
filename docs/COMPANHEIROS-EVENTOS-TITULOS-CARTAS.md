@@ -65,19 +65,21 @@ sair da página encerram o áudio. Animações respeitam movimento reduzido.
 
 ## Eventos
 
-`#events` abre no **Átrio dos Encontros**, com corredor de pedra, arcos, tochas
+`#events` abre no **Átrio**, com corredor de pedra, arcos, tochas
 e luz das janelas. O anfitrião tiefling segue a referência do usuário, com pele
 cinzenta, chifres escuros, cabelo/barba vinho, expressão séria e ligeiramente
 arrogante. Os olhos têm esclera escura e íris vermelhas pequenas, como na
 referência; a postura é ereta, com queixo elevado e mãos atrás do corpo, sem
-sorriso. O retrato anterior permanece arquivado. Sua arte tem alpha
+sorriso. As duas lapelas têm o mesmo acabamento vinho e a túnica mantém abas
+com corte correspondente abaixo do cinto. Os retratos anteriores permanecem
+arquivados. Sua arte tem alpha
 real; clicar/tocar nele ou usar o teclado abre o balão junto ao rosto. O halo
 dourado suave aparece ao passar o mouse ou focar. Conversar não grava dados nem
 concede recompensas. No celular, o balão e os painéis ficam abaixo do rosto.
 
 O menu compacto **Encontros** abre Recepção, Agenda de eventos e Memórias da
 guilda; fecha ao escolher uma opção, clicar fora ou pressionar Esc. A recepção
-inicia livre de painéis. Agenda e Memórias conservam os eventos em destaque,
+inicia livre de painéis. O destaque do evento não tem filete vertical lateral. Agenda e Memórias conservam os eventos em destaque,
 filtros, datas/horários, local, links de participação, arte e contagem para a data.
 Criar evento e Editar cenário ficam no menu para administradores globais ou
 com escopo `events`, sempre com autorização e revisão no servidor. A navegação

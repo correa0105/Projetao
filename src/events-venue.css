@@ -493,3 +493,8 @@
 .events-venue-heading > div {
   pointer-events: auto;
 }
+
+.events-venue-workspace .event-feature::before {
+  content: none;
+  display: none;
+}

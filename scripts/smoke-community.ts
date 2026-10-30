@@ -376,7 +376,7 @@ try {
   await page.screenshot({ path: 'test-results/cards-desktop.png' });
   await page.goto(origin + '/#events');
   await expect(
-    page.getByRole('heading', { name: 'Átrio dos Encontros', exact: true }),
+    page.getByRole('heading', { name: 'Átrio', exact: true }),
   ).toBeVisible();
   await page.getByRole('button', { name: 'Abrir menu dos eventos', exact: true }).click();
   await page.getByRole('button', { name: 'Criar evento', exact: true }).click();

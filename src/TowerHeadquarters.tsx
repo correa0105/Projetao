@@ -20,6 +20,7 @@ import {
   type TowerTopic,
 } from '../shared/tower-headquarters';
 import { towerClerkForegrounds, towerClerkOutlines } from './tower-clerk-outlines';
+import { RisingEmbers } from './RisingEmbers';
 const icons = {
   reception: DoorOpen,
   atlas: BookOpen,
@@ -131,6 +132,7 @@ export function TowerHeadquarters({
         </div>
         <div className="tower-headquarters-shade" />
       </div>
+      <RisingEmbers />
       <div className="tower-clerk-interaction">
         <div className="tower-scene-frame">
           <div className="tower-scene-art">

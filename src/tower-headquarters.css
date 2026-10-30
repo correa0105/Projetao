@@ -84,8 +84,9 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, #090c12b8, transparent 25%, #090c1240 65%, #090c12c7),
-    linear-gradient(90deg, transparent 35%, #0c101544 68%, #0c101578);
+    linear-gradient(180deg, #090c1280, transparent 25%),
+    linear-gradient(90deg, transparent 35%, #0c101544 68%, #0c101578),
+    linear-gradient(0deg, var(--page, #141613), #15141320 70%);
 }
 .tower-headquarters-header {
   position: relative;
