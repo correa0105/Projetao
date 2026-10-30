@@ -21,6 +21,25 @@
     },
     {
       "role": "host",
+      "file": "public/events/host-serious-20261030.webp",
+      "original": "artwork-archive/events-venue-20261030/host-serious.png",
+      "generatedFrom": "C:/Users/limaw/.codex/generated_images/01a18e18-b339-7e50-babc-6cbdc56b4f58/exec-5b3708c6-394f-42b5-8e17-3c0844bdb634.png",
+      "prompt": "Use case: identity-preserve. Asset type: corrected transparent foreground NPC for an existing fantasy guild Events website. Image 1 is the CURRENT IMPLEMENTED CHARACTER / EDIT TARGET. Image 2 is the USER'S AUTHORITATIVE FACE, EYES, EXPRESSION AND PERSONALITY REFERENCE. The user rejected image 1 as too cheerful, too friendly, with incorrect eyes and an overly agreeable posture. Correct those issues decisively. Make the face and attitude closely match image 2: severe, reserved, proud, slightly arrogant middle-aged male tiefling. His mouth must be fully closed and straight or subtly downturned, lips compressed, NO smile, NO upturned corners, NO visible teeth. No cute or friendly facial cues. Deep-set tired heavy-lidded relatively narrow eyes, dark almost BLACK sclera and tiny dark crimson-red irises like image 2, not human white sclera, not amber or brown eyes, no large shiny anime pupils, no bright catchlights, no red neon glow or magic aura. Strong lower orbital shadows and natural under-eye creases, level heavy burgundy eyebrows, cool pale ash-gray skin. The stare should be steady, detached and judging the viewer with quiet confidence. Copy the serious eye anatomy and dark sclera/red iris relationship from image 2, not just the eye color. Replace the deferential folio-holding pose with a formal upright authoritative stance: squared level shoulders drawn back, straight spine, chest open, head upright without a friendly tilt, chin raised slightly so he appears to look down on the viewer a little. Both hands clasped naturally BEHIND HIS BACK, forearms and hands genuinely occluded behind the torso; elbows slightly back, no hands visible in front. Remove the folio entirely. Keep the same horn design, horn tips fully inside the canvas, pointed ears, small hoop earring, burgundy ponytail and beard, and the same charcoal long coat with muted burgundy lining, dark under-tunic and belt. Maintain the current high-quality painterly finish and overall 1024x1536 framing, from full horn tips to upper thighs, centered with breathing room around elbows and horns. Preserve the overall size and position of the head for the existing interface. Preserve proper masculine anatomy and believable arm/shoulder placement. Character is serious and a little arrogant, NOT angry or screaming, not a cartoon villain. Keep cool gray skin and low-intensity red eyes faithful to the user reference. Output on the same genuinely transparent alpha background: the character interior opaque, all exterior background pixels alpha zero, including between horns and in any arm gaps. No background, no brown haze, no painted glow outside the silhouette, no floor, no cast shadow, no text, no logos or UI.",
+      "references": [
+        "artwork-archive/events-venue-20261030/host.png",
+        "artwork-archive/events-venue-20261030/references/host.png"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "bytes": 325234,
+      "sha256": "086085cbcef21680ee6bc24bce866f15461668cfe4614bc2a5bd026975912a69",
+      "review": "Expressão séria, olhar com esclera escura/íris vermelhas discretas, queixo elevado e mãos atrás do corpo; revisão visual de rosto, olhos, postura, chifres e anatomia."
+    }
+  ],
+  "previousHosts": [
+    {
+      "role": "host",
       "file": "public/events/host-20261030.webp",
       "original": "artwork-archive/events-venue-20261030/host.png",
       "generatedFrom": "C:/Users/limaw/.codex/generated_images/01a18e18-b339-7e50-babc-6cbdc56b4f58/exec-45873031-5b7f-4240-89ee-f207481c7d50.png",

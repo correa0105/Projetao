@@ -187,10 +187,10 @@ export function EventsVenue({
               </feMerge>
             </filter>
           </defs>
-          <image href="/events/host-20261030.webp" width="1024" height="1536" />
+          <image href="/events/host-serious-20261030.webp" width="1024" height="1536" />
           <image
             className="events-host-light"
-            href="/events/host-20261030.webp"
+            href="/events/host-serious-20261030.webp"
             width="1024"
             height="1536"
             filter={`url(#${light})`}

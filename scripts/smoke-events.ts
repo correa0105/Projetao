@@ -262,7 +262,7 @@ try {
       fullPage: true,
     });
   }
-  const asset = await admin.request.get(origin + '/events/host-20261030.webp');
+  const asset = await admin.request.get(origin + '/events/host-serious-20261030.webp');
   expect(asset.headers()['cache-control']).toContain('immutable');
   expect((await sharp(await asset.body()).metadata()).hasAlpha).toBe(true);
   expect(errors).toEqual([]);

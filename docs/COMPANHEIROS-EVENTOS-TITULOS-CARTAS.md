@@ -67,7 +67,10 @@ sair da página encerram o áudio. Animações respeitam movimento reduzido.
 
 `#events` abre no **Átrio dos Encontros**, com corredor de pedra, arcos, tochas
 e luz das janelas. O anfitrião tiefling segue a referência do usuário, com pele
-cinzenta, chifres escuros, cabelo/barba vinho e folio nas mãos. Sua arte tem alpha
+cinzenta, chifres escuros, cabelo/barba vinho, expressão séria e ligeiramente
+arrogante. Os olhos têm esclera escura e íris vermelhas pequenas, como na
+referência; a postura é ereta, com queixo elevado e mãos atrás do corpo, sem
+sorriso. O retrato anterior permanece arquivado. Sua arte tem alpha
 real; clicar/tocar nele ou usar o teclado abre o balão junto ao rosto. O halo
 dourado suave aparece ao passar o mouse ou focar. Conversar não grava dados nem
 concede recompensas. No celular, o balão e os painéis ficam abaixo do rosto.
