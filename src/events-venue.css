@@ -1,0 +1,495 @@
+:root .app-shell[data-page='events'] .page-header .page-title {
+  visibility: hidden;
+}
+:root .events-page.events-page--venue {
+  padding: 0;
+  overflow: visible;
+  min-height: 100svh;
+  background: #141613;
+}
+.events-page--venue .events-backdrop,
+.events-page--venue .events-shade,
+.events-page--venue .events-atmosphere {
+  position: fixed;
+}
+.events-page--venue .events-backdrop {
+  background-attachment: initial;
+}
+.events-page--venue .events-shade {
+  background:
+    linear-gradient(180deg, #090c1280, transparent 25%, #090c1230 65%, #090c12b8),
+    linear-gradient(
+      90deg,
+      rgba(5, 8, 12, calc(var(--events-darkness) * 0.6)),
+      #0c101515 50%,
+      #0c101560
+    );
+}
+.events-venue {
+  --events-host-height: min(calc(100svh - 110px), 1000px);
+  --events-host-left: clamp(0px, 3vw, 70px);
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  padding-bottom: 110px;
+  box-sizing: border-box;
+}
+.events-venue-heading {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  justify-content: flex-end;
+  padding: 85px 30px 0;
+  pointer-events: none;
+}
+.events-venue-heading > div {
+  position: absolute;
+  left: var(--page-header-edge);
+  top: 24px;
+  max-width: calc(100% - 2 * var(--page-header-edge) - 70px);
+}
+.events-venue-heading h1 {
+  font: 500 clamp(21px, 2vw, 26px)/1.2 var(--serif);
+  color: #e6dfd0;
+  letter-spacing: -0.75px;
+  margin: 0;
+  text-shadow: 0 2px 5px #000b;
+}
+.events-venue-heading > div > span {
+  display: block;
+  margin-top: 8px;
+  font-size: 7px;
+  letter-spacing: 0.14em;
+  color: #c7ac83;
+}
+:root .events-venue-trigger {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #14191de8;
+  border: 1px solid #bc9c6955;
+  border-radius: 3px;
+  padding: 10px 13px;
+  font-size: 11px;
+  color: #e7decd;
+}
+.events-venue-trigger em {
+  font: normal 10px var(--sans);
+  background: #c4a36c;
+  color: #171717;
+  min-width: 16px;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.events-venue-menu {
+  position: fixed;
+  inset: 138px 30px auto auto;
+  margin: 0;
+  z-index: 100;
+  width: min(280px, calc(100vw - 32px));
+  padding: 10px;
+  background: #14191df7;
+  border: 1px solid #bc9c6955;
+  border-radius: 5px;
+  box-shadow: 0 16px 55px #0008;
+  color: #e5dccc;
+}
+.events-venue-menu::backdrop {
+  background: transparent;
+}
+.events-venue-menu > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 7px 12px;
+  border-bottom: 1px solid #bca16e30;
+  margin-bottom: 7px;
+}
+.events-venue-menu > header > span {
+  font-size: 9px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #c4a775;
+}
+.events-venue-menu header button,
+.events-host-conversation header button,
+.events-venue-panel-heading > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid #bc9c6940;
+  border-radius: 3px;
+  color: #e0d7c5;
+  padding: 6px;
+}
+.events-venue-menu nav {
+  display: grid;
+  gap: 3px;
+}
+.events-venue-menu nav button,
+.events-venue-administration button {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  padding: 11px 9px;
+  color: #ddd5c5;
+  font-size: 12px;
+}
+.events-venue-menu nav button[aria-current='page'],
+.events-venue-menu nav button:hover,
+.events-venue-administration button:hover {
+  background: #c4a77512;
+  border-color: #c4a77545;
+}
+.events-venue-menu nav small {
+  margin-left: auto;
+  color: #c4a775;
+  font-size: 10px;
+}
+.events-venue-administration {
+  display: grid;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #bca16e30;
+}
+:root .events-page .events-host {
+  position: fixed;
+  z-index: 1;
+  left: var(--events-host-left);
+  bottom: -35px;
+  height: var(--events-host-height);
+  width: calc(var(--events-host-height) * 2 / 3);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  cursor: pointer;
+}
+.events-host svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.events-host-light {
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+.events-host:is(:hover, :focus-visible) .events-host-light {
+  opacity: 1;
+}
+.events-host-conversation {
+  position: fixed;
+  z-index: 3;
+  left: clamp(
+    18px,
+    calc(var(--events-host-left) + var(--events-host-height) * 0.52),
+    calc(100vw - 380px)
+  );
+  --events-dialog-top: clamp(
+    135px,
+    calc(100svh - var(--events-host-height) * 0.81 - 35px),
+    calc(100svh - 430px)
+  );
+  top: var(--events-dialog-top);
+  width: 360px;
+  max-height: min(600px, calc(100svh - var(--events-dialog-top) - 100px));
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid #bc9c6955;
+  border-radius: 6px;
+  background: #14191df2;
+  color: #ddd6c8;
+  box-shadow: 0 14px 70px #0006;
+}
+.events-host-conversation::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 84px;
+  width: 14px;
+  height: 14px;
+  background: #14191d;
+  border-left: 1px solid #bc9c6955;
+  border-bottom: 1px solid #bc9c6955;
+  transform: rotate(45deg);
+}
+.events-host-conversation-body > header {
+  position: relative;
+  border-bottom: 1px solid #bca16e30;
+  padding-bottom: 17px;
+  margin-bottom: 18px;
+}
+.events-host-conversation-body > header > span {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  color: #c4a775;
+  margin-bottom: 12px;
+}
+.events-host-conversation-body > header > b {
+  display: block;
+  font: 25px var(--serif);
+  color: #eadac0;
+  padding-right: 22px;
+}
+.events-host-conversation-body > header small {
+  display: block;
+  font: 10px var(--sans, Arial);
+  color: #a8afa9;
+  margin-top: 5px;
+}
+.events-host-conversation-body > header > button {
+  position: absolute;
+  right: 0;
+  top: 18px;
+}
+.events-host-conversation h2 {
+  font: 20px/1.4 var(--serif);
+  margin: 0 0 15px;
+  color: #eee3d1;
+}
+.events-host-conversation p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #c6c8bf;
+  margin: 0 0 12px;
+}
+.events-host-conversation nav {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+.events-host-conversation nav button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+  padding: 11px 12px;
+  background: #ffffff06;
+  border: 1px solid #bc9c6940;
+  border-radius: 3px;
+  color: #ddd6c8;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.events-host-conversation nav button:hover {
+  border-color: #c7aa72;
+  background: #c4a77512;
+}
+:root .events-host-destination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 13px 12px;
+  background: #c4a775;
+  color: #171717;
+  border: 0;
+  border-radius: 3px;
+  font-size: 11px;
+  margin-top: 18px;
+}
+.events-host-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 0 0 auto;
+  background: none;
+  border: 0;
+  color: #c4a775;
+  font-size: 11px;
+}
+.events-venue-workspace {
+  position: relative;
+  z-index: 2;
+  width: min(640px, 48%);
+  margin: 30px 30px 0 auto;
+  background: #14191ded;
+  border: 1px solid #bc9c694f;
+  border-radius: 6px;
+  padding: 24px;
+  box-shadow: 0 14px 70px #0005;
+}
+.events-venue-panel-heading {
+  position: relative;
+  padding-right: 25px;
+  margin-bottom: 20px;
+}
+.events-venue-panel-heading > span {
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  color: #c4a775;
+}
+.events-venue-panel-heading h2 {
+  font: 24px/1.4 var(--serif);
+  color: #eadac0;
+  margin: 12px 0 0;
+}
+.events-venue-panel-heading > button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+:root .events-page.events-page--venue .events-venue-workspace .events-filters {
+  margin: 0 0 22px;
+  gap: 17px;
+}
+:root .events-page.events-page--venue .events-venue-workspace .events-filters button {
+  font-size: 11px;
+}
+:root .events-page.events-page--venue .events-venue-workspace .event-feature {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  animation: none;
+}
+:root .events-page.events-page--venue .events-venue-workspace .event-feature-copy {
+  padding: 0;
+  width: 100%;
+}
+:root .events-page.events-page--venue .events-venue-workspace .event-feature-copy > h2 {
+  font: clamp(23px, 2vw, 30px)/1.35 var(--serif);
+  margin: 13px 0 18px;
+}
+:root .events-page.events-page--venue .events-venue-workspace .event-feature .journal-rich-text {
+  font-size: 13px;
+  line-height: 1.8;
+}
+:root .events-page.events-page--venue .events-venue-workspace .event-feature-art {
+  width: 100%;
+  padding: 20px 0 0;
+  justify-content: center;
+}
+:root .events-page.events-page--venue .events-venue-workspace .event-feature-art img {
+  max-height: 270px;
+}
+:root .events-page.events-page--venue .events-venue-workspace .event-feature-meta {
+  gap: 10px;
+  font-size: 10px;
+}
+:root .events-page.events-page--venue .events-venue-workspace .events-empty {
+  padding: 35px 12px;
+  border: 0;
+  background: none;
+}
+:root .events-page.events-page--venue .events-venue-workspace .events-empty > span {
+  font: 22px/1.4 var(--serif);
+}
+:root .events-page.events-page--venue .events-venue-workspace .events-agenda {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+:root .events-page.events-page--venue .events-venue-workspace .events-agenda button {
+  padding: 14px 12px;
+}
+:root .events-page.events-page--venue .events-venue-workspace .events-agenda strong {
+  font: 14px/1.5 var(--serif);
+}
+.events-venue-error {
+  position: relative;
+  z-index: 4;
+  margin: 0 30px 15px auto;
+  width: min(640px, calc(100% - 60px));
+  background: #211b1af5;
+  border: 1px solid #a9675b;
+  color: #e8c8bd;
+  padding: 16px;
+}
+@media (max-width: 900px) {
+  .events-venue {
+    --events-host-height: 690px;
+    --events-host-left: calc(50% - 230px);
+  }
+  .events-venue-heading {
+    padding: 145px 18px 0;
+  }
+  .events-venue-heading > div {
+    left: 18px;
+    top: 84px;
+    max-width: calc(100% - 36px);
+  }
+  .events-venue-heading h1 {
+    font-size: 21px;
+  }
+  .events-venue-heading > div > span {
+    display: none;
+  }
+  .events-venue-menu {
+    top: 195px;
+    right: 18px;
+  }
+  :root .events-page .events-host {
+    top: 145px;
+    bottom: auto;
+  }
+  .events-host-conversation {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: calc(100% - 28px);
+    max-width: 440px;
+    max-height: none;
+    margin: 240px auto 0;
+    padding: 0;
+  }
+  .events-host-conversation::before {
+    left: 50%;
+    top: -8px;
+    transform: rotate(135deg);
+  }
+  .events-venue-workspace {
+    width: calc(100% - 28px);
+    max-width: 640px;
+    margin: 240px auto 0;
+    padding: 20px 18px;
+  }
+  :root .events-page.events-page--venue .events-venue-workspace .events-agenda {
+    grid-template-columns: 1fr;
+  }
+  .events-page--venue .event-art-layer {
+    max-width: 95vw;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .events-host-light {
+    transition: none;
+  }
+}
+
+.events-host-conversation-body {
+  max-height: inherit;
+  overflow: auto;
+  padding: 20px 22px;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #877252 #14191d;
+}
+
+:root .app-shell[data-page='events'] > .main-shell {
+  padding-bottom: 0;
+}
+:root .app-shell[data-page='events'] .main-content {
+  padding: 0;
+  width: 100%;
+  max-width: none;
+}
+.events-venue-heading > div {
+  pointer-events: auto;
+}

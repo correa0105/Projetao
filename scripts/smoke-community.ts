@@ -376,8 +376,9 @@ try {
   await page.screenshot({ path: 'test-results/cards-desktop.png' });
   await page.goto(origin + '/#events');
   await expect(
-    page.getByRole('heading', { name: 'Onde as histórias se encontram.', exact: true }),
+    page.getByRole('heading', { name: 'Átrio dos Encontros', exact: true }),
   ).toBeVisible();
+  await page.getByRole('button', { name: 'Abrir menu dos eventos', exact: true }).click();
   await page.getByRole('button', { name: 'Criar evento', exact: true }).click();
   let dialog = page.getByRole('dialog', { name: 'Criar evento', exact: true });
   await dialog.getByLabel('Título', { exact: true }).fill('A noite das histórias');
@@ -388,6 +389,7 @@ try {
   await dialog.getByLabel('Animação da arte', { exact: true }).selectOption('breathe');
   await dialog.getByRole('button', { name: 'Salvar evento', exact: true }).click();
   await expect(page.locator('.event-feature')).toContainText('A noite das histórias');
+  await page.getByRole('button', { name: 'Abrir menu dos eventos', exact: true }).click();
   await page.getByRole('button', { name: 'Editar cenário', exact: true }).click();
   dialog = page.getByRole('dialog', { name: 'Editar cenário dos eventos', exact: true });
   await dialog.getByLabel('Título da página', { exact: true }).fill('O salão da nossa guilda');
@@ -463,6 +465,8 @@ try {
   }
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto(origin + '/#events');
+  await page.getByRole('button', { name: 'Abrir menu dos eventos', exact: true }).click();
+  await page.getByRole('navigation', { name: 'Ambientes dos eventos' }).getByRole('button', { name: 'Agenda de eventos', exact: true }).click();
   await expect(page.locator('.event-feature-art img')).toHaveCSS('animation-name', 'none');
   await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [owner.id]);
   await page.reload();

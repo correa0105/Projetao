@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-30",
+  "tool": "image_gen integrado",
+  "images": [
+    {
+      "role": "corridor",
+      "file": "public/events/antechamber-20261030.webp",
+      "original": "artwork-archive/events-venue-20261030/corridor.png",
+      "generatedFrom": "C:/Users/limaw/.codex/generated_images/01a18e18-b339-7e50-babc-6cbdc56b4f58/exec-59033ebc-f746-4bda-ab5e-b888ea2f67be.png",
+      "prompt": "Use case: illustration-story. Asset type: original wide landscape background painting for the Events page of the existing Alvorada Cinzenta fantasy guild website. Input image 1 is an ARCHITECTURE REFERENCE ONLY (torch-lit vaulted stone corridor); input image 2 is an ARCHITECTURE AND DAYLIGHT REFERENCE ONLY (tall stone vaults, side windows, receding doors); input image 3 is a PAINTING QUALITY AND FINISH REFERENCE ONLY from the existing Tower page. Create an original welcoming but mysterious events antechamber inside the same medieval guild bastion: broad weathered gray limestone arches and ribbed vaults, a long walkable corridor receding towards the center-right, dark oak doors opening into meeting rooms, a few iron wall torches and hanging lanterns, discreet warm light on the left and cool soft window light along the right stone walls, believable floor perspective, rich painterly dark fantasy illustration with fine architectural brushwork and convincing depth. Retain the grounded human-scale corridor character of the two architecture references; no huge cathedral or palace hall. Wide 16:9 horizontal composition, ceiling arches and stone floor visible. The left third is a quiet dim foreground bay for a separately composited NPC, the middle and right have uncluttered readable stone and distant arches suitable behind compact dark translucent UI. Do not draw any person, creature, silhouette, desk, sign, bulletin board, furniture dominating the foreground, carved face, crest, banner, readable writing, text, logo, UI panel, speech bubble, frame or watermark. The final image must be only the original corridor painting, no mockup.",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "bytes": 224624,
+      "sha256": "6366cb4ce4412e3842a94858a062a35845f816793020cdb0828911bc1ec1068f",
+      "references": [
+        "artwork-archive/events-venue-20261030/references/torch-corridor.png",
+        "artwork-archive/events-venue-20261030/references/window-corridor.png",
+        "artwork-archive/tower-headquarters-20261030/reception.png"
+      ]
+    },
+    {
+      "role": "host",
+      "file": "public/events/host-20261030.webp",
+      "original": "artwork-archive/events-venue-20261030/host.png",
+      "generatedFrom": "C:/Users/limaw/.codex/generated_images/01a18e18-b339-7e50-babc-6cbdc56b4f58/exec-45873031-5b7f-4240-89ee-f207481c7d50.png",
+      "prompt": "Use case: identity-preserve. Asset type: transparent foreground NPC illustration for the Events page of the existing Alvorada Cinzenta fantasy guild website. Image 1 is the CHARACTER IDENTITY REFERENCE; image 2 is PAINTERLY RENDERING AND DETAIL QUALITY REFERENCE ONLY from the existing Tower page, do not copy the woman, background or architecture. Reinterpret the man from image 1 as the composed, approachable event host of a medieval fantasy guild. Preserve his exact recognizable identity: adult middle-aged masculine tiefling, pale ash-gray skin, burgundy red hair drawn back into a low ponytail with a few loose strands, matching full trimmed beard and eyebrows, two large thick dark burgundy ridged horns curling upward and inward symmetrically, pointed ears, one simple metal hoop earring and subtle red irises in naturally dark eyes. Calm attentive expression with a faint welcoming smile, no fangs or sinister glowing eyes. High quality painterly fantasy illustration matching the Tower painting's fine anatomy, materials and natural soft shading. Three-quarter portrait framed from the FULL UNCROPPED horn tips to the upper thighs, almost front-facing, eye contact with viewer. He wears a tailored dark charcoal medieval long coat with restrained worn burgundy lining, dark under-tunic, simple leather belt; practical guild organizer clothing, no heavy armor or weapons, no badges or crest. One anatomically correct hand holds a slim closed leather appointment folio near his waist, the other hand rests naturally against the folio; both hands fully visible, five correct fingers each, no strange or fused joints. Gentle warm lantern rim light and cool neutral fill, consistent natural highlights, no magical glow or outline baked into the illustration. Center the complete silhouette with breathing room around both horn tips, ponytail, elbows and coat; nothing cut off at the sides or top. Isolate this one character and the small held folio on a genuinely fully transparent background with clean alpha, no background color, no floor, no cast shadow, no scenery, no pedestal, no border, no text, no speech bubble and no watermark. Keep all clothing opaque and the background truly transparent.",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "bytes": 315906,
+      "sha256": "dfa5d9c733b6f8aa138deb9beacee008ad071ef3bf1a5b24bd989d12797f6050",
+      "references": [
+        "artwork-archive/events-venue-20261030/references/host.png",
+        "artwork-archive/tower-headquarters-20261030/reception.png"
+      ]
+    }
+  ]
+}

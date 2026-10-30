@@ -14,6 +14,7 @@ import {
   type GuildEvent,
 } from '../shared/events';
 import './events.css';
+import { EventsVenue } from './EventsVenue';
 type SceneResponse = { document: EventScene; revision: number; can_edit: boolean };
 const date = (value: string) =>
   new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long', timeStyle: 'short' }).format(
@@ -138,7 +139,7 @@ export function Events() {
   return (
     <section
       data-page-preparing={(!scene && !error) || undefined}
-      className="events-page"
+      className="events-page events-page--venue"
       data-paused={hidden}
     >
       <div
@@ -170,38 +171,21 @@ export function Events() {
           ))}
       </div>
       <ArtLayers scene={sceneDoc} />
-      <div className="events-content">
-        <header className="events-heading">
-          <div className="event-seal">
-            <CalendarDays size={27} />
-          </div>
-          <span className="eyebrow">OS ENCONTROS DA ALVORADA</span>
-          <h2>{sceneDoc.title}</h2>
-          <p>{sceneDoc.subtitle}</p>
-          {canEdit && (
-            <div className="events-admin-actions">
-              <button className="button outline" onClick={() => setEditScene(true)}>
-                <ImagePlus size={15} />
-                Editar cenário
-              </button>
-              <button className="button primary" onClick={() => setEditing('new')}>
-                <Plus size={15} />
-                Criar evento
-              </button>
-            </div>
-          )}
-        </header>
-        {error && <p role="alert">{error}</p>}
-        <nav className="events-filters" aria-label="Filtrar eventos">
-          {['Todos', 'Próximos', 'Memórias'].map((f) => (
-            <button key={f} aria-pressed={filter === f} onClick={() => setFilter(f)}>
-              {f}
-            </button>
-          ))}
-          <small>
-            {visible.length} {visible.length === 1 ? 'encontro' : 'encontros'}
-          </small>
-        </nav>
+      {error && (
+        <p className="events-venue-error" role="alert">
+          {error}
+        </p>
+      )}
+      <EventsVenue
+        scene={sceneDoc}
+        upcoming={events.filter((e) => ['open', 'active'].includes(e.status)).length}
+        memories={events.filter((e) => ['completed', 'closed'].includes(e.status)).length}
+        canEdit={canEdit}
+        filter={filter}
+        changeFilter={setFilter}
+        create={() => setEditing('new')}
+        editScene={() => setEditScene(true)}
+      >
         {featured ? (
           <article className="event-feature" key={featured.id}>
             <div className="event-feature-copy">
@@ -288,8 +272,7 @@ export function Events() {
             ))}
           </div>
         )}
-        <footer className="events-footer">Cada encontro deixa uma história.</footer>
-      </div>
+      </EventsVenue>
       {editScene && scene && canEdit && (
         <SceneEditor
           value={scene}

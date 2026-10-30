@@ -65,13 +65,27 @@ sair da página encerram o áudio. Animações respeitam movimento reduzido.
 
 ## Eventos
 
-`#events` possui fundo integral pintado, luz noturna, partículas/névoa discretas,
-evento em destaque, próximos encontros, filtros e contagem para a data marcada.
-Administradores criam, editam e excluem eventos e alteram o cenário inteiro.
-Direção atual: fundo mais mundano, usando a rua da vila já ilustrada no site,
-com ambientação padrão sem partículas. A opção de salão continua na galeria.
-Início ganhou Calendário, reunindo esses mesmos eventos, missões e encontros
-do Diário. Apresentação e compromissos têm edição administrativa.
+`#events` abre no **Átrio dos Encontros**, com corredor de pedra, arcos, tochas
+e luz das janelas. O anfitrião tiefling segue a referência do usuário, com pele
+cinzenta, chifres escuros, cabelo/barba vinho e folio nas mãos. Sua arte tem alpha
+real; clicar/tocar nele ou usar o teclado abre o balão junto ao rosto. O halo
+dourado suave aparece ao passar o mouse ou focar. Conversar não grava dados nem
+concede recompensas. No celular, o balão e os painéis ficam abaixo do rosto.
+
+O menu compacto **Encontros** abre Recepção, Agenda de eventos e Memórias da
+guilda; fecha ao escolher uma opção, clicar fora ou pressionar Esc. A recepção
+inicia livre de painéis. Agenda e Memórias conservam os eventos em destaque,
+filtros, datas/horários, local, links de participação, arte e contagem para a data.
+Criar evento e Editar cenário ficam no menu para administradores globais ou
+com escopo `events`, sempre com autorização e revisão no servidor. A navegação
+e a conversa não reabrem o loading geral.
+
+O cenário novo integra a galeria, que preserva as artes anteriores e os uploads.
+As imagens foram geradas com imagegen integrado; originais e referências estão
+em `artwork-archive/events-venue-20261030/`, e as cópias WebP mantêm dimensões
+nativas e alpha. Caminhos, fontes e prompts completos: [registro da arte](../data/events-venue-art-20261030.json).
+Início mantém o Calendário com esses mesmos eventos, missões e encontros do
+Diário. A mudança de apresentação não cria eventos nem altera anúncios existentes.
 
 **Editar cenário** permite trocar/enviar o background, ajustar enquadramento e
 escurecimento, título/subtítulo, ambientação e camadas de artes transparentes.
@@ -155,6 +169,12 @@ florestas, caminhos e montanhas. Não modifica a geografia do mapa navegável.
 Artes, referências, grids e prompts estão em `docs/COMPANIONS-ART.md`.
 
 ## Verificação
+
+`node scripts/test-events-isolated.mjs` confere o átrio, menu recolhido e seu
+fechamento, halo, conversa por clique/teclado sem escritas, agenda/memórias,
+links/datas, criação/edição de eventos e cenário, conflitos de revisão,
+administração somente da área `events`, recusa de escritas por jogador e telas
+1440/768/390/320. Usa banco descartável e preserva o cenário de produção.
 
 `scripts/test-community-isolated.mjs` valida economia, idempotência concorrente,
 ownership, aparência, três cartas, títulos/metas/distribuição/revogação,

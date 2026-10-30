@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { safeHomeLink } from './home-updates.js';
 import { calendarBackgrounds } from './calendar-art.js';
 export const eventBackgrounds = [
+  { path: '/events/antechamber-20261030.webp', label: 'Átrio dos Encontros' },
   { path: '/notice-village-empty-v4.png', label: 'Rua da vila' },
   { path: '/events/hall-v1.webp', label: 'Salão dos encontros' },
   { path: '/alvorada-dawn-banner.png', label: 'Alvorada nas montanhas' },
