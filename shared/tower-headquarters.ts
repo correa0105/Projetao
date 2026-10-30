@@ -15,6 +15,7 @@ export const towerRooms: {
   title: string;
   description: string;
   image: string;
+  portrait: string;
   topic: TowerTopic;
 }[] = [
   {
@@ -22,7 +23,8 @@ export const towerRooms: {
     name: 'Recepção',
     title: 'Diretoria da Torre',
     description: 'Um registro antes da jornada.',
-    image: '/tower/headquarters-reception-20261030.webp',
+    image: '/tower/headquarters-reception-room-20261030.webp',
+    portrait: '/tower/headquarters-lia-reception-20261030.webp',
     topic: 'welcome',
   },
   {
@@ -30,7 +32,8 @@ export const towerRooms: {
     name: 'Expedições',
     title: 'Sala de expedições',
     description: 'Companhias, preparativos e registros da subida.',
-    image: '/tower/headquarters-expeditions-paper-20261030.webp',
+    image: '/tower/headquarters-expeditions-room-20261030.webp',
+    portrait: '/tower/headquarters-lia-expeditions-20261030.webp',
     topic: 'expeditions',
   },
   {
@@ -38,7 +41,8 @@ export const towerRooms: {
     name: 'Arquivo da Torre',
     title: 'Arquivo da Torre',
     description: 'Os registros do que já foi descoberto.',
-    image: '/tower/headquarters-archive-gaze-20261030.webp',
+    image: '/tower/headquarters-atlas-room-20261030.webp',
+    portrait: '/tower/headquarters-lia-atlas-20261030.webp',
     topic: 'discoveries',
   },
   {
@@ -46,7 +50,8 @@ export const towerRooms: {
     name: 'Cristais',
     title: 'Gabinete de cristais',
     description: 'O registro do que você trouxe do Véu.',
-    image: '/tower/headquarters-crystals-20261030.webp',
+    image: '/tower/headquarters-crystals-room-20261030.webp',
+    portrait: '/tower/headquarters-lia-crystals-20261030.webp',
     topic: 'crystals',
   },
   {
@@ -54,7 +59,8 @@ export const towerRooms: {
     name: 'Tesouros',
     title: 'Mesa de retorno',
     description: 'Tesouros e recompensas da sua jornada.',
-    image: '/tower/headquarters-crystals-20261030.webp',
+    image: '/tower/headquarters-treasures-room-20261030.webp',
+    portrait: '/tower/headquarters-lia-treasures-20261030.webp',
     topic: 'treasures',
   },
 ];

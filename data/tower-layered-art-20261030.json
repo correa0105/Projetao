@@ -1,0 +1,217 @@
+{
+  "tool": "imagegen integrated",
+  "date": "2026-10-30",
+  "direction": "Salas modestas com arquiteturas distintas e Lia independente sobre o cenário, seguindo a composição de Eventos.",
+  "priorArt": "data/tower-headquarters-art-20261030.json",
+  "assets": [
+    {
+      "room": "reception",
+      "role": "room",
+      "prompt": "Use case: illustration-story. Asset type: original wide background for a MODEST working fantasy guild reception, not a palace. Input image 1 is the existing Events corridor: use its grounded human-scale simple stone-and-wood atmosphere as the PRIMARY architectural reference. Image 2 is the previous Tower reception: use ONLY the practical function (counter, records, two distant clerks), NOT its luxury, huge windows, gold metalwork, high hall or polished floor. Create a small-to-medium practical guild reception room with rough gray stone walls, a low timber-beamed ceiling, worn matte stone flagstones, ordinary narrow wood-framed windows with cloudy daylight, one simple dark wood service counter in the MIDDLE GROUND, utilitarian shelves, paper ledgers and a single small iron oil lamp. Two small secondary workers may appear far behind the counter, one human man and one pale-haired elf woman, but no foreground main woman. This is a humble lived-in administrative room in a frontier bastion: believable wear, scuffed wood, hand-built furniture, restrained decoration. Leave the entire left foreground open for a separately composited standing NPC; desks and objects remain behind that standing area. Calm center/right for translucent interface panels. Preserve a high-quality painterly fantasy rendering with natural materials and modest cool/warm light, while making the ROOM ITSELF plain and functional. Matte dry floor, no reflection or marble; no carpet, rugs, huge vaulted cathedral, tall pillars, gilding, chandeliers, ornate brass fixtures, banners, statues, decorative towers, lavish glass cases or lavish furniture. No giant hall, no palace. Wide 16:9 landscape around 1672x941. Paint only the room and the two tiny distant staff; no main foreground character, no text, writing, UI, frame, logo or watermark. No baked dark overlay or blur.",
+      "original": "artwork-archive/tower-layered-20261030/reception-room.png",
+      "public": "/tower/headquarters-reception-room-20261030.webp",
+      "references": [
+        "artwork-archive/events-venue-20261030/corridor.png"
+      ],
+      "quality": 88,
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "sha256": "e00a3493f2778b779f047400745a288481e2608d7030638b0a3b20fdfe271f61",
+      "originalSha256": "2593cb34b99b9e2264b491ce128b6d7c14e4a2571afedaf8ff2e89b2b5a691dd",
+      "bytes": 238324,
+      "generatedFilename": "exec-6f6d302a-016a-4c00-8ea0-25976e989063.png"
+    },
+    {
+      "room": "reception",
+      "role": "lia",
+      "prompt": "Use case: precise-object-edit. The attached transparent Lia portrait is the EDIT TARGET. Make one clothing correction only: the charcoal skirt must be a LONG, practical, professional ankle-length skirt that continues BELOW THE BOTTOM OF THIS UPPER-THIGH CROP. Remove the visible mini-skirt hem and the exposed bare thighs at the very bottom. Extend the same charcoal skirt material straight down beyond the canvas, with natural subtle folds. The bottom edge of the image must show only the continuous dark skirt, no hem, no bare legs, no stockings. Preserve the exact face, adult identity, blue-gray eyes, gold oval glasses, brown bob and fringe, expression, pose, hands, ledger, cream blouse, waistcoat, belt, anatomy, lighting, position and 1024x1536 framing unchanged. Keep the same clean TRUE transparent alpha background, with no haze, glow, shadow, background or scene. No other changes.",
+      "original": "artwork-archive/tower-layered-20261030/reception-lia.png",
+      "public": "/tower/headquarters-lia-reception-20261030.webp",
+      "references": [
+        "artwork-archive/tower-layered-20261030/lia-identity-source.png"
+      ],
+      "quality": 92,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "alpha": {
+        "transparent": 690378,
+        "opaque": 842668
+      },
+      "sha256": "ab31db5d160efcedd2f27156732d164ea3408fb5e875239e5a653acb42a9fb87",
+      "originalSha256": "2f612f0055a83c3ef53aef5593c9d25ecb9a7f8333629f33ef446c303f6815ba",
+      "bytes": 233120,
+      "generatedFilename": "exec-fdbae3fb-83db-42d8-8590-25a7a2e8b73e.png"
+    },
+    {
+      "room": "expeditions",
+      "role": "room",
+      "prompt": "Use case: stylized-concept. Asset type: landscape 16:9 background for a fantasy guild's expedition planning room, 1672x941. Reference image is STYLE ONLY, for the painterly detailed dark fantasy rendering. Create a wholly NEW room, NOT the reference corridor or an alteration of the reception. A modest practical upper-floor loft with a steep asymmetric timber roof, exposed rafters and plaster mixed with rough stone. Camera diagonally across the loft toward one modest round window at the far gable. Large worn rectangular planning table on the RIGHT middle ground with FLAT paper route maps, compass, ruler, scrolls; expedition packs on pegs and a simple map board behind. A timber stair railing in the far right. Clear empty floor and darker wall on the left foreground to place a separate large NPC cutout. Warm dusty afternoon light from the far round window plus one small oil lamp. Worn matte floorboards, cheap functional wood and simple iron. Recognizably an office for adventurers, not rich: no gold furnishings, marble, palace, chandelier, carpet, glossy floor, huge windows, grand halls or 3D miniature map. No foreground people, no UI, legible text, border or watermark. Fully different architecture, roof silhouette, perspective, lighting and doorway/window placement from a rectangular stone reception with low beams.",
+      "original": "artwork-archive/tower-layered-20261030/expeditions-room.png",
+      "public": "/tower/headquarters-expeditions-room-20261030.webp",
+      "references": [
+        "artwork-archive/events-venue-20261030/corridor.png"
+      ],
+      "quality": 88,
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "sha256": "07d468e33a2fcbde0fc4c8b823268454b2334d721c51366017823691fae58a1a",
+      "originalSha256": "c36824d15c24da6dd8bd3295d2fa86a44f0195f30e6ad3774a5432475633a7cc",
+      "bytes": 259542,
+      "generatedFilename": "exec-3a287aac-0ab7-44e6-98fb-03b50bed8e4a.png"
+    },
+    {
+      "room": "expeditions",
+      "role": "lia",
+      "prompt": "Use case: identity-preserve. Edit target: the attached Lia portrait. Create one matching 1024x1536 portrait cutout on a TRUE transparent background. Keep exactly the same adult HUMAN woman, face and facial proportions, chestnut curly bob and short fringe, gold oval eyeglasses, blue-gray eyes, cream collared blouse with rolled sleeves, dark charcoal fitted buttoned waistcoat, narrow brown belt and LONG charcoal skirt continuing beyond the bottom edge. Same head scale, framing from full head to upper thighs and detailed painterly renderer. Preserve natural anatomy, five fingers per hand and consistent blouse/waistcoat construction on both sides. Do not crop hair, elbows or hands. No backdrop, haze, shadow, halo or floor; real alpha transparent outside the silhouette. Change ONLY pose, handheld prop and expression as follows. She is engaged and explaining an expedition, friendly subtle animated smile toward the viewer, shoulders slightly turned. Her left hand holds a partly unrolled FLAT parchment route map at waist/chest height, right hand gestures naturally toward a route on the paper. Map is ordinary paper, no relief or miniature. Hands and map stay inside canvas.",
+      "original": "artwork-archive/tower-layered-20261030/expeditions-lia.png",
+      "public": "/tower/headquarters-lia-expeditions-20261030.webp",
+      "references": [
+        "artwork-archive/tower-layered-20261030/reception-lia.png"
+      ],
+      "quality": 92,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "alpha": {
+        "transparent": 630203,
+        "opaque": 895942
+      },
+      "sha256": "8e7ecd6dbc595e2f52f400a59713e4f7b9c49de8ddbba8bcdd18b2b27a6971af",
+      "originalSha256": "6066f8c5235d0de7dc332f247a6cd2ccfdb8b173757502c5b052d24e6a5a3340",
+      "bytes": 313514,
+      "generatedFilename": "exec-f26160aa-29da-46b3-87fa-22a353344f08.png"
+    },
+    {
+      "room": "atlas",
+      "role": "room",
+      "prompt": "Use case: stylized-concept. Asset type: wide 16:9 fantasy guild archive background, 1672x941. Reference image is STYLE ONLY for painterly detailed stone and atmospheric rendering; do NOT copy its room or corridor. Create a NEW compact long NARROW archive beneath a continuous low stone barrel vault, with NO wooden ceiling beams, no reception counter. Eye-level camera looking diagonally along rows of dark worn timber shelves which run into depth on the RIGHT. The far end turns into a small side alcove with an ordinary shuttered window admitting cool overcast light. Bundled documents, irregular book spines, a simple ladder leaning against a shelf, a small reading desk with open ledger and candle at center-right. Left foreground has a quiet worn stone pier and open matte flagstones reserved for a separate character. Practical slightly cramped guild records room, no grand library, upper gallery, palace, gilded shelves, ornamental dome, polished surfaces or giant windows. Atmospheric ink-brown, slate and cool blue-gray daylight; tiny warm lamp highlights. No people, UI, legible writing, watermark or border. Unique geometry and camera composition, not reception with swapped furniture.",
+      "original": "artwork-archive/tower-layered-20261030/atlas-room.png",
+      "public": "/tower/headquarters-atlas-room-20261030.webp",
+      "references": [
+        "artwork-archive/events-venue-20261030/corridor.png"
+      ],
+      "quality": 88,
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "sha256": "97a30919420764cec1726b634d9c95c83004b2eb9e9446ec6d9e0a5f112de7e3",
+      "originalSha256": "11938b7a583d792eca057ecce1edc2049c929f21d3061737cd69e74bdc797e14",
+      "bytes": 240938,
+      "generatedFilename": "exec-59e427e9-e7d8-423d-9fbb-9bdae8cdc266.png"
+    },
+    {
+      "room": "atlas",
+      "role": "lia",
+      "prompt": "Use case: identity-preserve. Edit target: the attached Lia portrait. Create one matching 1024x1536 portrait cutout on a TRUE transparent background. Keep exactly the same adult HUMAN woman, face and facial proportions, chestnut curly bob and short fringe, gold oval eyeglasses, blue-gray eyes, cream collared blouse with rolled sleeves, dark charcoal fitted buttoned waistcoat, narrow brown belt and LONG charcoal skirt continuing beyond the bottom edge. Same head scale, framing from full head to upper thighs and detailed painterly renderer. Preserve natural anatomy, five fingers per hand and consistent blouse/waistcoat construction on both sides. Do not crop hair, elbows or hands. No backdrop, haze, shadow, halo or floor; real alpha transparent outside the silhouette. Change ONLY pose, handheld prop and expression as follows. She is quietly concentrated, holding an open old ledger at waist level with her left hand under the book. Her right index finger indicates a line on its right page; her head tips slightly down and BOTH EYES gaze directly at the line her finger indicates, not at the viewer or elsewhere. Mouth relaxed without big smile. Book and hands remain fully visible and anatomically correct.",
+      "original": "artwork-archive/tower-layered-20261030/atlas-lia.png",
+      "public": "/tower/headquarters-lia-atlas-20261030.webp",
+      "references": [
+        "artwork-archive/tower-layered-20261030/reception-lia.png"
+      ],
+      "quality": 92,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "alpha": {
+        "transparent": 664697,
+        "opaque": 860628
+      },
+      "sha256": "64e3b71721d57d7acf782dcde2c09edbf7a55aeb63b863253339d3e68343d016",
+      "originalSha256": "f41c08a403654ab09048557424f3947571996b965ccc183fc91cff21fd2253f5",
+      "bytes": 276080,
+      "generatedFilename": "exec-8e8a40c2-ae67-4295-8bb4-9b7eddb48e0b.png"
+    },
+    {
+      "room": "crystals",
+      "role": "room",
+      "prompt": "Use case: stylized-concept. Asset type: wide landscape 16:9 1672x941 background for a practical fantasy guild mineral assay office. Reference image STYLE ONLY for painterly dark fantasy rendering. Create completely different architecture and camera: a SMALL ROUND chamber built into a tower, visibly CURVED rough blue-gray stone walls and low shallow stone dome. No wooden beams and no corridor. Two tiny high slit windows in the curved upper RIGHT wall admit cool blue daylight. Along the curved back wall a plain crescent shaped worn wooden workbench holds a small balance scale, sample trays with a FEW natural pale violet and blue crystal clusters, a record book and simple tools. A small cupboard, plain wooden stool, muted old iron fittings. Off-center perspective facing the curved wall; quiet dim open left foreground for a separately composited character. Matte rough stone floor, modest practical workspace, subtle cool light from minerals only, one tiny warm lamp. No enormous magic crystal, magical altar, elaborate laboratory, grand cathedral, glass display cases, rich ornament, gold, marble, shiny floor, huge windows, or reception counter. No people, legible text, UI, watermark or border. Distinct round plan and cool illumination, not a rearrangement of a rectangular office.",
+      "original": "artwork-archive/tower-layered-20261030/crystals-room.png",
+      "public": "/tower/headquarters-crystals-room-20261030.webp",
+      "references": [
+        "artwork-archive/events-venue-20261030/corridor.png"
+      ],
+      "quality": 88,
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "sha256": "e91c134881703d4b017c40834e1e14510b8c1979cf41c8045d8cca17533d9945",
+      "originalSha256": "4747dd7c37b45adeb117e3cbced9f58081e0907131089b341750f31f119c0b84",
+      "bytes": 192722,
+      "generatedFilename": "exec-8466802b-e0dd-45fb-8b4b-b702b0338fc3.png"
+    },
+    {
+      "room": "crystals",
+      "role": "lia",
+      "prompt": "Use case: identity-preserve. Edit target is the attached Lia portrait. Create one matching 1024x1536 portrait cutout on a TRUE transparent background. Keep exactly the same adult HUMAN woman, face proportions, chestnut curly bob and short fringe, gold oval eyeglasses, blue-gray eyes, cream collared blouse with rolled sleeves, fitted dark charcoal waistcoat with central brass buttons, narrow brown belt and LONG charcoal skirt continuing past bottom edge. Identical head size and frame from full head to upper thighs; same detailed painterly renderer. Natural correct anatomy and five fingers each hand, coherent blouse and vest on both sides. All hair, elbows and hands inside frame. No background, haze, halo, floor or shadows; actual alpha outside silhouette. Change only pose, prop and expression: She tilts her head a little to study a small natural pale-violet mineral crystal resting in the open palm of her left hand at lower chest height. Her right hand lightly supports her left wrist. Curious focused expression, eyes looking directly at the crystal in her palm. Ordinary small stone, not levitating, no energy effects, no bright glow.",
+      "original": "artwork-archive/tower-layered-20261030/crystals-lia.png",
+      "public": "/tower/headquarters-lia-crystals-20261030.webp",
+      "references": [
+        "artwork-archive/tower-layered-20261030/reception-lia.png"
+      ],
+      "quality": 92,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "alpha": {
+        "transparent": 660231,
+        "opaque": 865693
+      },
+      "sha256": "bcc58fca78273c30b6c93819c58b91b12cc86421507411149d1b92dccd3b0b3a",
+      "originalSha256": "96f1cb74dc117a1e9efab46fe843b94b3c5848470be90692ec6c44f1e854aadf",
+      "bytes": 252694,
+      "generatedFilename": "exec-0af8c9f1-23b8-4240-8828-2e5cff81a302.png"
+    },
+    {
+      "room": "treasures",
+      "role": "room",
+      "prompt": "Use case: stylized-concept. Asset type: landscape 16:9 1672x941 background for fantasy guild return rewards and recovered goods storeroom. Reference image STYLE ONLY for detailed painterly atmosphere. Design an ORIGINAL low SQUARE underground strongroom with a squat stone CROSS VAULT and one thick central masonry pier slightly RIGHT of center dividing two short bays, different from any long corridor or timber roof office. Camera from left doorway diagonally toward a rear-right alcove closed by simple iron bars; inside are a few worn wooden chests with iron straps, no heaps of gold. In the middle ground a short rugged wood counting table with closed coffer, sealed pouches and open return ledger. Low storage shelves and numbered tags without legible text. NO WINDOWS: warm amber oil lamps cast broad grounded shadows, deep dark umber and charcoal stone. Left foreground open stone floor and plain dark masonry reserved for separate large character. Humble fortified utility storeroom, practical and inhabited, matte worn surfaces. No palace, ornate bank vault, gilding, marble, glossy floor, treasure mountain, crystals, ornamental arches, furniture copied from reference, people, UI, logos or watermark. Make architecture, perspective and illumination clearly unique.",
+      "original": "artwork-archive/tower-layered-20261030/treasures-room.png",
+      "public": "/tower/headquarters-treasures-room-20261030.webp",
+      "references": [
+        "artwork-archive/events-venue-20261030/corridor.png"
+      ],
+      "quality": 88,
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "sha256": "376f9266dea9b0dff43cf89f8f81e3fb9d29f8d8668e2d6fe33e4903408d4583",
+      "originalSha256": "62dc69066fec3cc27e331f8bb516fe1cb7b5f6e2bdefff5251cc0dfef1adb658",
+      "bytes": 272886,
+      "generatedFilename": "exec-51e918b0-bf4d-430b-8463-a10efae55559.png"
+    },
+    {
+      "room": "treasures",
+      "role": "lia",
+      "prompt": "Use case: identity-preserve. Edit target is the attached Lia portrait. Create one matching 1024x1536 portrait cutout on a TRUE transparent background. Keep exactly the same adult HUMAN woman, face proportions, chestnut curly bob and short fringe, gold oval eyeglasses, blue-gray eyes, cream collared blouse with rolled sleeves, fitted dark charcoal waistcoat with central brass buttons, narrow brown belt and LONG charcoal skirt continuing past bottom edge. Identical head size and frame from full head to upper thighs; same detailed painterly renderer. Natural correct anatomy and five fingers each hand, coherent blouse and vest on both sides. All hair, elbows and hands inside frame. No background, haze, halo, floor or shadows; actual alpha outside silhouette. Change only pose, prop and expression: She looks toward the viewer with a calm modest pleased smile, shoulders turned slightly the other way compared with the reference. She holds one SMALL closed plain worn wooden coffer at waist height in both hands, supporting it naturally. Simple iron hinge/straps and no jewels or gold ornament. No book or map. Long skirt stays continuous below the belt to bottom edge.",
+      "original": "artwork-archive/tower-layered-20261030/treasures-lia.png",
+      "public": "/tower/headquarters-lia-treasures-20261030.webp",
+      "references": [
+        "artwork-archive/tower-layered-20261030/reception-lia.png"
+      ],
+      "quality": 92,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "alpha": {
+        "transparent": 703613,
+        "opaque": 828797
+      },
+      "sha256": "0158b63ce1599bc2de096b8001ca4db8ba09fc832d6b5c3e82c05f0abd987aad",
+      "originalSha256": "85792b1139a02e556bb1a33905eecda7238e5054832b8e5469d1cd5d5c10249f",
+      "bytes": 259544,
+      "generatedFilename": "exec-d752baeb-0465-4299-aafe-3287473728f6.png"
+    }
+  ],
+  "identitySource": {
+    "original": "artwork-archive/tower-layered-20261030/lia-identity-source.png",
+    "role": "Intermediate reference before long-skirt correction; not used in the UI",
+    "prompt": "Use case: identity-preserve. Asset type: transparent foreground NPC portrait for the Tower reception of an existing fantasy guild website. The EDIT TARGET / identity reference is the large brown-haired woman in the foreground of the attached painting, Lia; ignore all other people and scenery. Recreate ONLY Lia as a separate highly detailed painterly character on TRUE transparent alpha, with the exact same recognizable adult female human face, skin tone, blue-gray eyes, delicate thin gold oval eyeglasses, short curly chestnut-brown bob, straight short fringe, soft natural smile and fine original facial proportions. Normal rounded HUMAN ears, no pointed ears and no horns. Preserve her modest practical outfit: matching cream collared blouse with symmetrical collar points and both sleeves rolled equally to the elbows, fitted charcoal waistcoat with a single central row of aged brass buttons, slim brown leather belt and plain dark charcoal skirt continuing to upper thighs. No coat, no cape and no extra costume layers. She is standing upright, almost front-facing with a welcoming attentive expression, holding a small closed dark brown appointment ledger lightly in both hands at her waist. Correct relaxed shoulders, natural wrists, five anatomically correct fingers per hand. Frame the COMPLETE head and hair down to the UPPER THIGHS, with comfortable transparent space around both elbows and hair, centered 1024x1536 portrait. The foreground character should be crisp, well-lit and distinctly readable, with gentle neutral fill on the face, subtle warm rim illumination, natural cloth folds and the same premium painterly quality as the original; not overexposed or flat. No baked outline, glow or contact shadow. The only opaque pixels are the woman and her held ledger; fully transparent exterior and genuine transparent gaps, not a colored or foggy backdrop. No room, desk, floor, background gradient, text, UI or watermark. Preserve Lia's identity, not a generic new clerk.",
+    "references": [
+      "artwork-archive/tower-headquarters-20261030/reception.png"
+    ],
+    "sha256": "c22ff27463cb7e2fb22b69547ef5ddf023a656b6354e9eba611ab928d3d2e125"
+  }
+}

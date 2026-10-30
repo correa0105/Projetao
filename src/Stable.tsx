@@ -78,7 +78,24 @@ function MountArt({ image, name }: { image: string; name: string }) {
     setHooves(contacts);
   };
   return (
-    <div className="stable-animal-art">
+    <div
+      className="stable-animal-art"
+      style={
+        hooves.length
+          ? ({
+              '--stable-ground-y': Math.max(...hooves.map((h) => h.y)) + '%',
+              '--stable-ground-x':
+                (Math.min(...hooves.map((h) => h.x)) + Math.max(...hooves.map((h) => h.x))) / 2 +
+                '%',
+              '--stable-ground-width':
+                Math.max(...hooves.map((h) => h.x)) -
+                Math.min(...hooves.map((h) => h.x)) +
+                20 +
+                '%',
+            } as CSSProperties)
+          : undefined
+      }
+    >
       <img className="stable-cast-shadow" src={image} alt="" aria-hidden="true" />
       {hooves.map((hoof, i) => (
         <span
@@ -225,6 +242,12 @@ export function Stable({
   const [coat, setCoat] = useState('original');
   const coats = mountCoats[mount.id];
   const image = `/stable/${mount.id}${coat === 'alternate' ? '-alternate' : ''}.png`;
+  const keeperImage =
+    warnings.current >= 4
+      ? '/stable/ginna-angry-approved.png'
+      : warnings.current >= 3
+        ? '/stable/ginna-serious.webp'
+        : '/stable/ginna.webp';
   const total = mount.price_cp;
   const [confirm, setConfirm] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -416,6 +439,12 @@ export function Stable({
             <MountArt key={image} image={image} name={mount.name} />
           </div>
           <div className="stable-keeper">
+            <img
+              className="stable-keeper-cast-shadow"
+              src={keeperImage}
+              alt=""
+              aria-hidden="true"
+            />
             <button
               ref={keeperTrigger}
               className="stable-keeper-trigger"
@@ -431,13 +460,7 @@ export function Stable({
               }}
             >
               <img
-                src={
-                  warnings.current >= 4
-                    ? '/stable/ginna-angry-approved.png'
-                    : warnings.current >= 3
-                      ? '/stable/ginna-serious.webp'
-                      : '/stable/ginna.webp'
-                }
+                src={keeperImage}
                 alt={
                   warnings.current >= 4
                     ? 'Ginna muito brava, com expressão de última advertência'

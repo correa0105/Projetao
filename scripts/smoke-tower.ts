@@ -61,28 +61,13 @@ async function chooseRoom(target: typeof page, name: string) {
   ).toHaveAttribute('aria-expanded', 'false');
 }
 async function clickClerk(target: typeof page) {
-  const image = target.locator('.tower-headquarters-scene img');
-  const box = (await image.boundingBox())!;
-  const native = await image.evaluate((el: HTMLImageElement) => ({
-    width: el.naturalWidth,
-    height: el.naturalHeight,
-  }));
+  const clerk = target.getByRole('button', { name: 'Conversar com Lia', exact: true });
+  const box = (await clerk.boundingBox())!;
   const room = await target.locator('.tower-headquarters').getAttribute('data-room');
-  const face: Record<string, [number, number]> = {
-    reception: [480, 270],
-    atlas: [407, 320],
-    expeditions: [480, 240],
-    crystals: [480, 280],
-    treasures: [480, 280],
-  };
-  const [x, y] = face[room!],
-    point = {
-      x: box.x + (x / native.width) * box.width,
-      y: box.y + (y / native.height) * box.height,
-    };
+  const point = { x: box.x + box.width * 0.5, y: box.y + box.height * 0.2 };
   expect(
     await target.evaluate(
-      ({ x, y }) => document.elementFromPoint(x, y)?.classList.contains('tower-clerk-contour'),
+      ({ x, y }) => document.elementFromPoint(x, y)?.classList.contains('tower-clerk'),
       point,
     ),
   ).toBe(true);
@@ -96,14 +81,7 @@ async function clickClerk(target: typeof page) {
   const dialog = target.getByRole('region', { name: 'Conversa com a atendente' }),
     rect = (await dialog.boundingBox())!;
   if (target.viewportSize()!.width > 900) {
-    const headRight: Record<string, number> = {
-      reception: 626,
-      atlas: 528,
-      expeditions: 592,
-      crystals: 634,
-      treasures: 634,
-    };
-    const edge = box.x + (headRight[room!] / native.width) * box.width;
+    const edge = box.x + box.width * 0.76;
     expect(rect.x - edge).toBeGreaterThanOrEqual(-3);
     expect(rect.x - edge).toBeLessThan(120);
     expect(rect.x + rect.width).toBeLessThanOrEqual(target.viewportSize()!.width - 8);
@@ -162,12 +140,12 @@ try {
   expect((await page.locator('.tower-conversation').boundingBox())!.width).toBeLessThanOrEqual(400);
   await expect(page.locator('.tower-headquarters-scene img')).toHaveAttribute(
     'src',
-    '/tower/headquarters-reception-20261030.webp',
+    '/tower/headquarters-reception-room-20261030.webp',
   );
   await expect(page.locator('.tower-headquarters-scene img')).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: 'test-results/tower-reception-desktop.png', fullPage: true });
-  expect([...new Set(roomRequests)]).toEqual(['/tower/headquarters-reception-20261030.webp']);
+  expect([...new Set(roomRequests)].sort()).toEqual(['/tower/headquarters-lia-reception-20261030.webp', '/tower/headquarters-reception-room-20261030.webp']);
   const beforeTalk = await (await ctx.request.get(origin + '/api/tower')).json();
   await page.getByRole('button', { name: 'Quero conhecer a Torre.', exact: true }).click();
   await expect(page.locator('.tower-conversation-answer')).toContainText('cem andares');
@@ -176,8 +154,8 @@ try {
   await expect(page.locator('.tower-conversation')).not.toBeVisible();
   await page.getByRole('button', { name: 'Conversar com Lia', exact: true }).press('Enter');
   await expect(page.locator('.tower-conversation')).toBeVisible();
-  // A transição espera a nova imagem sem reabrir o loading geral ou apagar a sala atual.
-  await page.route('**/tower/headquarters-archive-gaze-20261030.webp', async (route) => {
+  // Mesmo com o cenário pronto, só troca o par depois de decodificar a nova pose.
+  await page.route('**/tower/headquarters-lia-atlas-20261030.webp', async (route) => {
     await new Promise((r) => setTimeout(r, 800));
     await route.continue();
   });
@@ -185,18 +163,19 @@ try {
   await expect(page.locator('.tower-room-status')).toBeVisible();
   await expect(page.locator('.tower-headquarters-scene img')).toHaveAttribute(
     'src',
-    '/tower/headquarters-reception-20261030.webp',
+    '/tower/headquarters-reception-room-20261030.webp',
   );
   await expect(page.locator('.asset-loading-cover')).toHaveCount(0);
+  await expect(page.locator('.tower-clerk image').first()).toHaveAttribute('href','/tower/headquarters-lia-reception-20261030.webp');
   await expect(page.locator('.tower-headquarters-scene img')).toHaveAttribute(
     'src',
-    '/tower/headquarters-archive-gaze-20261030.webp',
+    '/tower/headquarters-atlas-room-20261030.webp',
   );
-  await page.unroute('**/tower/headquarters-archive-gaze-20261030.webp');
+  await page.unroute('**/tower/headquarters-lia-atlas-20261030.webp');
   await chooseRoom(page, 'Cristais');
   await expect(page.locator('.tower-headquarters-scene img')).toHaveAttribute(
     'src',
-    '/tower/headquarters-crystals-20261030.webp',
+    '/tower/headquarters-crystals-room-20261030.webp',
   );
   await clickClerk(page);
   await page.getByRole('button', { name: 'Voltar aos registros', exact: true }).click();
@@ -217,7 +196,7 @@ try {
   await page.getByRole('button', { name: 'Voltar aos registros', exact: true }).click();
   await expect(page.locator('.tower-headquarters-scene img')).toHaveAttribute(
     'src',
-    '/tower/headquarters-crystals-20261030.webp',
+    '/tower/headquarters-crystals-room-20261030.webp',
   );
   expect(
     (await page.locator('.tower-headquarters-service').boundingBox())!.width,
@@ -294,7 +273,7 @@ try {
   await chooseRoom(page, 'Expedições');
   await expect(page.locator('.tower-headquarters-scene img')).toHaveAttribute(
     'src',
-    '/tower/headquarters-expeditions-paper-20261030.webp',
+    '/tower/headquarters-expeditions-room-20261030.webp',
   );
   await clickClerk(page);
   await page.getByRole('button', { name: 'Voltar aos registros', exact: true }).click();
@@ -477,7 +456,7 @@ try {
   ).toBe(2);
   expect(errors).toEqual([]);
   console.log(
-    'Torre: contorno de pixels nativos clicável e com teclado, balão próximo à personagem, título da sala no topo, sem rodapé e plaquinha, menu recolhido com Escape e clique externo, conversas sem transações, salas sob demanda, visualização, navegação, filtros, 100 andares, sigilo, edição, expedição, retorno e d100 persistente. Torre e perfil com fundo de viewport em 1440/768/390/320 verificados; acampamento preservado.',
+    'Torre: retrato separado clicável e com teclado, halo no alpha, balão próximo à personagem, título da sala no topo, sem rodapé e plaquinha, menu recolhido com Escape e clique externo, conversas sem transações, salas sob demanda, visualização, navegação, filtros, 100 andares, sigilo, edição, expedição, retorno e d100 persistente. Torre e perfil com fundo de viewport em 1440/768/390/320 verificados; acampamento preservado.',
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/tower-failure.png', fullPage: true });

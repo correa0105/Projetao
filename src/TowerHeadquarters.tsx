@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -19,7 +19,6 @@ import {
   type TowerRoom,
   type TowerTopic,
 } from '../shared/tower-headquarters';
-import { towerClerkForegrounds, towerClerkOutlines } from './tower-clerk-outlines';
 import { RisingEmbers } from './RisingEmbers';
 const icons = {
   reception: DoorOpen,
@@ -46,32 +45,34 @@ export function TowerHeadquarters({
   const current = towerRooms.find((r) => r.id === room)!;
   const lightFilter = useId();
   const roomMenu = useRef<HTMLDivElement>(null);
-  const clerk = useRef<SVGPathElement>(null);
+  const clerk = useRef<HTMLButtonElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [backdrop, setBackdrop] = useState(current.image),
+  const [scene, setScene] = useState({ image: current.image, portrait: current.portrait }),
     [loading, setLoading] = useState(false),
     [imageError, setImageError] = useState(false),
     [retry, setRetry] = useState(0);
   const [topic, setTopic] = useState<TowerTopic>('welcome'),
     [conversation, setConversation] = useState<TowerRoom | null>(null);
   useEffect(() => {
-    if (backdrop === current.image) {
+    if (scene.image === current.image && scene.portrait === current.portrait) {
       setLoading(false);
       setImageError(false);
       return;
     }
     let live = true;
-    const image = new Image();
-    image.decoding = 'async';
-    image.fetchPriority = 'high';
+    const images = [current.image, current.portrait].map((src) => {
+      const image = new Image();
+      image.decoding = 'async';
+      image.fetchPriority = 'high';
+      image.src = src;
+      return image;
+    });
     setLoading(true);
     setImageError(false);
-    image.src = current.image;
-    void image
-      .decode()
+    void Promise.all(images.map((image) => image.decode()))
       .then(() => {
         if (live) {
-          setBackdrop(image.src.replace(location.origin, ''));
+          setScene({ image: current.image, portrait: current.portrait });
           setLoading(false);
         }
       })
@@ -84,15 +85,13 @@ export function TowerHeadquarters({
     return () => {
       live = false;
     };
-  }, [current.image, retry]);
+  }, [current.image, current.portrait, retry]);
   useEffect(() => {
     setConversation(null);
     setTopic(current.topic);
   }, [room]);
   const talking = conversation === room,
     answer = towerAnswers[topic];
-  const outline = towerClerkOutlines[backdrop];
-  const foreground = towerClerkForegrounds[backdrop];
   function talk(next: TowerTopic = current.topic) {
     setTopic(next);
     setConversation(room);
@@ -107,22 +106,12 @@ export function TowerHeadquarters({
     change(next);
   }
   return (
-    <div
-      className="tower-headquarters"
-      data-room={room}
-      style={
-        {
-          '--tower-art-ratio': outline.width / 941,
-          '--tower-bubble-offset-x': outline.speech[0] / outline.width - 0.32,
-          '--tower-bubble-offset-y': outline.speech[1] / 941 - 0.5,
-        } as CSSProperties
-      }
-    >
+    <div className="tower-headquarters" data-room={room}>
       <div className="tower-headquarters-scene" aria-hidden="true">
         <div className="tower-scene-frame">
           <div className="tower-scene-art">
             <img
-              src={backdrop}
+              src={scene.image}
               alt=""
               decoding="async"
               fetchPriority="high"
@@ -133,86 +122,52 @@ export function TowerHeadquarters({
         <div className="tower-headquarters-shade" />
       </div>
       <RisingEmbers />
-      <div className="tower-clerk-interaction">
-        <div className="tower-scene-frame">
-          <div className="tower-scene-art">
-            <svg viewBox={`0 0 ${outline.width} 941`} className="tower-clerk-silhouette">
-              <defs>
-                <filter
-                  id={lightFilter}
-                  x="-8%"
-                  y="-6%"
-                  width="116%"
-                  height="112%"
-                  colorInterpolationFilters="sRGB"
-                >
-                  <feMorphology in="SourceAlpha" operator="dilate" radius="1.8" result="expanded" />
-                  <feGaussianBlur in="expanded" stdDeviation="4.5" result="soft" />
-                  <feComposite in="soft" in2="SourceAlpha" operator="out" result="outside" />
-                  <feFlood floodColor="#ecc263" floodOpacity="0.55" result="warm" />
-                  <feComposite in="warm" in2="outside" operator="in" result="halo" />
-                  <feComposite in="expanded" in2="SourceAlpha" operator="out" result="edge" />
-                  <feGaussianBlur in="edge" stdDeviation="0.65" result="softEdge" />
-                  <feFlood floodColor="#f5d58b" floodOpacity="0.92" result="gold" />
-                  <feComposite in="gold" in2="softEdge" operator="in" result="rim" />
-                  <feMerge>
-                    <feMergeNode in="halo" />
-                    <feMergeNode in="rim" />
-                  </feMerge>
-                </filter>
-                {foreground && (
-                  <mask
-                    id={`${lightFilter}-foreground`}
-                    maskUnits="userSpaceOnUse"
-                    x="0"
-                    y="0"
-                    width={outline.width}
-                    height="941"
-                  >
-                    <rect width={outline.width} height="941" fill="white" />
-                    <path
-                      d={foreground}
-                      fill="black"
-                      stroke="black"
-                      strokeWidth="12"
-                      strokeLinejoin="round"
-                    />
-                  </mask>
-                )}
-              </defs>
-              <path
-                className="tower-clerk-contour"
-                ref={clerk}
-                d={outline.path}
-                fill="transparent"
-                fillRule="evenodd"
-                vectorEffect="non-scaling-stroke"
-                role="button"
-                tabIndex={0}
-                aria-label="Conversar com Lia"
-                aria-expanded={talking}
-                aria-controls="tower-clerk-conversation"
-                onClick={() => (talking ? closeTalk() : talk(topic))}
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    talking ? closeTalk() : talk(topic);
-                  }
-                }}
-              />
-              <path
-                className="tower-clerk-light"
-                d={outline.path}
-                fill="white"
-                fillRule="evenodd"
-                filter={`url(#${lightFilter})`}
-                mask={foreground ? `url(#${lightFilter}-foreground)` : undefined}
-                aria-hidden="true"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
+      <button
+        ref={clerk}
+        className="tower-clerk"
+        aria-label="Conversar com Lia"
+        aria-expanded={talking}
+        aria-controls={talking ? 'tower-clerk-conversation' : undefined}
+        onClick={() => (talking ? closeTalk() : talk(topic))}
+        onKeyDown={(event) => {
+          if (event.key === 'Escape' && talking) closeTalk();
+        }}
+      >
+        <svg viewBox="0 0 1024 1536" aria-hidden="true">
+          <defs>
+            <filter
+              id={lightFilter}
+              x="-10%"
+              y="-5%"
+              width="120%"
+              height="110%"
+              colorInterpolationFilters="sRGB"
+            >
+              <feMorphology in="SourceAlpha" operator="dilate" radius="3" result="expanded" />
+              <feGaussianBlur in="expanded" stdDeviation="6" result="soft" />
+              <feComposite in="soft" in2="SourceAlpha" operator="out" result="outside" />
+              <feFlood floodColor="#ecc263" floodOpacity="0.55" result="warm" />
+              <feComposite in="warm" in2="outside" operator="in" result="halo" />
+              <feComposite in="expanded" in2="SourceAlpha" operator="out" result="edge" />
+              <feGaussianBlur in="edge" stdDeviation="0.85" result="softEdge" />
+              <feFlood floodColor="#f5d58b" floodOpacity="0.92" result="gold" />
+              <feComposite in="gold" in2="softEdge" operator="in" result="rim" />
+              <feMerge>
+                <feMergeNode in="halo" />
+                <feMergeNode in="rim" />
+              </feMerge>
+            </filter>
+          </defs>
+          <image href={scene.portrait} width="1024" height="1536" />
+          <image
+            className="tower-clerk-light"
+            href={scene.portrait}
+            width="1024"
+            height="1536"
+            filter={`url(#${lightFilter})`}
+          />
+        </svg>
+      </button>
       <header className="tower-headquarters-header">
         <div className="tower-headquarters-title">
           <h1 className="tower-room-heading" tabIndex={-1}>
@@ -301,6 +256,12 @@ export function TowerHeadquarters({
             id="tower-clerk-conversation"
             className="tower-conversation"
             aria-label="Conversa com a atendente"
+            onKeyDown={(event) => {
+              if (event.key === 'Escape') {
+                event.stopPropagation();
+                closeTalk();
+              }
+            }}
           >
             <header>
               <span>ATENDIMENTO · {current.name.toLocaleUpperCase('pt-BR')}</span>

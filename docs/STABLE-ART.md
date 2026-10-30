@@ -4,7 +4,9 @@ Arte ativa: `public/stable/paddock-camp-v2.webp`. Gerada com o imagegen integrad
 
 A vista representa uma interpretação de outro ângulo do mesmo vale: grupo de picos recortados, ponte de pedra sobre o rio/lago e cidade fortificada no promontório direito. O primeiro plano é terra pisada, com grama nas bordas, para receber as montarias.
 
-`MountArt` mede a borda inferior opaca de cada sprite em um canvas pequeno, ignorando halos transparentes, e coloca sombras de contato nos cascos. O resultado é armazenado por imagem, incluindo pelagens, selas e bardas. Uma sombra projetada suave e a tonalidade das montarias acompanham a luz do cenário sem deformar o desenho do animal.
+`MountArt` mede a borda inferior opaca de cada sprite em um canvas pequeno, ignorando halos transparentes, e coloca sombras de contato nos cascos. O resultado é armazenado por imagem, incluindo pelagens, selas e bardas. A sombra difusa sob o corpo e a origem da projeção usam esse chão medido. A projeção é mais presente e avança para baixo e à direita, acompanhando o sol atrás e à esquerda; os cascos têm contato mais escuro e estreito. A tonalidade das montarias continua acompanhando a luz do cenário sem deformar o desenho do animal.
+
+Ginna também tem sombra projetada a partir do mesmo retrato ativo e contato sob as botas. O cálculo usa o tamanho real da imagem contida, preservando o encaixe em telas estreitas e as versões normal, séria e irritada. A sombra fica fora do botão da cuidadora, sem receber o contorno dourado ou interferir na âncora do balão. A visão especial conserva sua composição e efeitos próprios.
 
 ## Prompt utilizado
 
