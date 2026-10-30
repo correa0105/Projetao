@@ -63,20 +63,16 @@
 .tower-clerk-contour {
   pointer-events: fill;
   cursor: pointer;
-  stroke: #edcc8f;
-  stroke-width: 1.2;
-  stroke-linejoin: round;
-  opacity: 0;
-  filter: none;
-  transition:
-    opacity 0.18s,
-    filter 0.18s;
-}
-.tower-clerk-contour:is(:hover, :focus-visible) {
-  opacity: 0.55;
-  stroke-width: 0.9;
-  filter: drop-shadow(0 0 3px #d2ad7077);
+  stroke: none;
   outline: none;
+}
+.tower-clerk-light {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+.tower-clerk-contour:is(:hover, :focus-visible) + .tower-clerk-light {
+  opacity: 1;
 }
 .tower-headquarters-workspace.is-idle {
   pointer-events: none;
