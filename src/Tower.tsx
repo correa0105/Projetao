@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import {
   ArrowUpRight,
-  ArrowDown,
   Check,
   ChevronRight,
   Coins,
@@ -37,9 +36,11 @@ import {
 } from '../shared/tower';
 import type { Character, Item } from './types';
 import { TowerDialog, TowerFloorEditor, TowerRewardEditor, TowerItemPreview } from './TowerEditors';
+import { TowerHeadquarters } from './TowerHeadquarters';
+import type { TowerRoom } from '../shared/tower-headquarters';
 import './tower.css';
 import './tower-redesign.css';
-type TowerSection = 'atlas' | 'expeditions' | 'treasures';
+import './tower-headquarters.css';
 const towerRegionLabel = (index: number) => (index === 0 ? towerZones[0].name : '???');
 const statusNames = {
   preparing: 'Reunindo a expedição',
@@ -66,7 +67,7 @@ export function Tower({
     [error, setError] = useState(''),
     [busy, setBusy] = useState(false),
     [floor, setFloor] = useState(1),
-    [tab, setTab] = useState<TowerSection>('atlas'),
+    [tab, setTab] = useState<TowerRoom>('reception'),
     [runFilter, setRunFilter] = useState<'all' | 'preparing' | 'active' | 'history'>('all'),
     [name, setName] = useState(''),
     [createOpen, setCreateOpen] = useState(false),
@@ -151,14 +152,12 @@ export function Tower({
   const myClaims = state?.claims.filter((c) => c.character_id === character?.id) || [],
     crystals = state?.wallets.find((w) => w.character_id === character?.id)?.crystals || 0;
   const pending = myClaims.filter((c) => c.roll === null).length;
-  function openSection(section: TowerSection) {
+  function openSection(section: TowerRoom) {
     setTab(section);
-    requestAnimationFrame(() =>
-      document.getElementById('tower-content')?.scrollIntoView({
-        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
-        block: 'start',
-      }),
-    );
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      document.querySelector<HTMLElement>('.tower-room-heading')?.focus({ preventScroll: true });
+    });
   }
   async function progress(run: TowerRun, action: 'start' | 'clear' | 'finish' | 'cancel') {
     await post(`/tower/expeditions/${run.id}/progress`, {
@@ -182,96 +181,18 @@ export function Tower({
     };
   };
   return (
-    <section className="tower-page tower-page--redesigned" aria-label={towerName}>
-      <header className="tower-hero">
-        <img
-          className="tower-hero-art"
-          src="/tower/tower-veil-v2.webp"
-          alt="Uma torre de pedra fechada e monumental, com estátuas de guardiões junto a um lago sob nuvens."
-          fetchPriority="high"
-        />
-        <div className="tower-hero-shade" />
-        <div className="tower-hero-copy">
-          <div className="tower-eyebrow">
-            <span>ALÉM DOS PORTÕES DA ALVORADA</span>
-            <span className="tower-experimental">Experimental</span>
-          </div>
-          <h2>
-            Torre <i>do Véu</i>
-          </h2>
-          <p className="tower-hero-caption">
-            Há cem andares entre a primeira porta e o desconhecido. Reúna sua companhia. Descubra o
-            que o véu esconde.
-          </p>
-          <div className="tower-hero-actions">
-            <button className="tower-primary" onClick={() => openSection('expeditions')}>
-              <Users size={16} /> Ver expedições <ArrowUpRight size={15} />
-            </button>
-            <button onClick={() => openSection('atlas')}>
-              Explorar andares <ArrowDown size={15} />
-            </button>
-          </div>
-          <div className="tower-horizon" aria-label="Sobre a torre">
-            <span>
-              <b>100</b> andares
-            </span>
-            <span>
-              <b>20</b> regiões
-            </span>
-            <span>
-              <b>8</b> aventureiros por grupo
-            </span>
-          </div>
-        </div>
-        {character && (
-          <div className="tower-wallet">
-            <Diamond size={19} />
-            <div>
-              <b>{crystals.toLocaleString('pt-BR')}</b>
-              <span>Cristais · {character.name}</span>
-            </div>
-          </div>
-        )}
-      </header>
+    <section
+      className="tower-page tower-page--redesigned tower-page--headquarters"
+      aria-label={towerName}
+    >
+      <TowerHeadquarters
+        room={tab}
+        change={openSection}
+        characterName={character?.name}
+        crystals={crystals}
+        pending={pending}
+      >
       <div className="tower-body" id="tower-content">
-        <nav className="tower-tabs" aria-label="Seções da torre">
-          {(
-            [
-              ['atlas', 'A ascensão'],
-              ['expeditions', 'Expedições'],
-              ['treasures', 'Tesouros'],
-            ] as const
-          ).map(([id, label]) => (
-            <button
-              key={id}
-              aria-label={label}
-              aria-pressed={tab === id}
-              onClick={() => setTab(id)}
-            >
-              {id === 'atlas' ? (
-                <Swords size={17} />
-              ) : id === 'expeditions' ? (
-                <Users size={17} />
-              ) : (
-                <Dices size={17} />
-              )}
-              <span>
-                {label}
-                <small>
-                  {id === 'atlas'
-                    ? 'Andares e descobertas'
-                    : id === 'expeditions'
-                      ? 'Sua companhia'
-                      : 'Prêmios da jornada'}
-                </small>
-              </span>
-              {id === 'treasures' && pending > 0 && <em>{pending}</em>}
-            </button>
-          ))}
-          <span>
-            <Shield size={14} /> Registro da Torre
-          </span>
-        </nav>
         {error && (
           <div className="tower-error" role="alert">
             {error}
@@ -874,7 +795,7 @@ export function Tower({
                           A recompensa da expedição já foi entregue. Abra Tesouros para rolar o d100
                           e revelar sua relíquia.
                         </p>
-                        <button onClick={() => setTab('treasures')}>
+                        <button onClick={() => openSection('treasures')}>
                           Abrir tesouros <ChevronRight size={14} />
                         </button>
                       </div>
@@ -963,7 +884,7 @@ export function Tower({
                 <Dices size={35} />
                 <h3>Sua história ainda não tem um tesouro.</h3>
                 <p>Conclua uma expedição para receber ouro, cristais e uma chance no d100.</p>
-                <button onClick={() => setTab('expeditions')}>
+                <button onClick={() => openSection('expeditions')}>
                   Ver expedições <ArrowUpRight size={15} />
                 </button>
               </div>
@@ -1054,7 +975,7 @@ export function Tower({
             )}
           </section>
         )}
-        <details className="tower-guide">
+        {tab !== 'reception' && tab !== 'crystals' && <details className="tower-guide">
           <summary>Como funciona a Torre do Véu?</summary>
           <div>
             <p>
@@ -1080,8 +1001,9 @@ export function Tower({
               armadilhas são revelados somente após a conclusão pelo personagem ou pela guilda.
             </p>
           </div>
-        </details>
+        </details>}
       </div>
+      </TowerHeadquarters>
       {confirm && (
         <TowerDialog
           label="Confirmar progresso da torre"

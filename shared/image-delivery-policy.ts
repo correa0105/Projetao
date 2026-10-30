@@ -7,6 +7,7 @@ export function protectedPublicBackground(path: string) {
     /^\/(?:atlas-materials|atlas-model-materials|guild|events)\//.test(path) ||
     /^\/kingdom\/(?!structures\/)/.test(path) ||
     /^\/cards\/(?:host-|moonlit-room|private-archive|raven-manor)/.test(path) ||
+    /^\/tower\/headquarters-/.test(path) ||
     /^\/stable\/paddock/.test(path) ||
     /^\/pets\/garalho-cottage/.test(path) ||
     /^\/community\/hall/.test(path) ||

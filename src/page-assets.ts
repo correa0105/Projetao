@@ -5,6 +5,7 @@ const wood = '/achievement-wood-v1.png';
 const board = ['/notice-village-complete-v5.png', '/notices/wood-plaque-v1.png', wood];
 export const primaryPageAssets: Partial<Record<Page, readonly string[]>> = {
   overview: ['/home-guild-hall.webp'],
+  tower: ['/tower/headquarters-reception-20261029.webp'],
   characters: ['/character-camp-v2.webp'],
   profile: ['/achievement-house-v3.png', '/character-parchment-v2.png'],
   inventory: [

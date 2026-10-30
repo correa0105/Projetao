@@ -63,15 +63,80 @@ try {
   await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [gmId]);
   const gmHero = await createLegacyTestCharacter(gmId, 'Arden da aurora'),
     pHero = await createLegacyTestCharacter(pId, 'Bruma');
+  const roomRequests: string[] = [];
+  page.on('request', (r) => {
+    if (r.url().includes('/tower/headquarters-')) roomRequests.push(new URL(r.url()).pathname);
+  });
   await page.goto(origin + '/#tower');
+  await expect(
+    page.getByRole('heading', { name: 'Diretoria da Torre', exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('navigation', { name: 'Salas da sede' }).getByRole('button'),
+  ).toHaveCount(5);
+  await expect(page.locator('.tower-headquarters-scene img')).toHaveAttribute(
+    'src',
+    '/tower/headquarters-reception-20261029.webp',
+  );
+  await expect(page.locator('.tower-headquarters-scene img')).toBeVisible();
+  await page.evaluate(() => document.fonts.ready);
+  await page.screenshot({ path: 'test-results/tower-reception-desktop.png', fullPage: true });
+  expect([...new Set(roomRequests)]).toEqual(['/tower/headquarters-reception-20261029.webp']);
+  const beforeTalk = await (await ctx.request.get(origin + '/api/tower')).json();
+  await page.getByRole('button', { name: 'Quero conhecer a Torre.', exact: true }).click();
+  await expect(page.locator('.tower-conversation-answer')).toContainText('cem andares');
+  await page.getByRole('button', { name: 'Ver a sala', exact: true }).click();
+  await expect(page.locator('.tower-headquarters-workspace')).toHaveAttribute('inert', '');
+  await expect(page.locator('.tower-conversation')).not.toBeVisible();
+  await page.getByRole('button', { name: 'Voltar ao atendimento', exact: true }).click();
+  await expect(page.locator('.tower-conversation')).toBeVisible();
+  // A transição espera a nova imagem sem reabrir o loading geral ou apagar a sala atual.
+  await page.route('**/tower/headquarters-archive-20261029.webp', async (route) => {
+    await new Promise((r) => setTimeout(r, 800));
+    await route.continue();
+  });
+  await page.getByRole('button', { name: 'Acompanhar Lia até o arquivo', exact: true }).click();
+  await expect(page.locator('.tower-room-status')).toBeVisible();
+  await expect(page.locator('.tower-headquarters-scene img')).toHaveAttribute(
+    'src',
+    '/tower/headquarters-reception-20261029.webp',
+  );
+  await expect(page.locator('.asset-loading-cover')).toHaveCount(0);
+  await expect(page.locator('.tower-headquarters-scene img')).toHaveAttribute(
+    'src',
+    '/tower/headquarters-archive-20261029.webp',
+  );
+  await page.unroute('**/tower/headquarters-archive-20261029.webp');
+  await page.getByRole('button', { name: 'Cristais', exact: true }).click();
+  await expect(
+    page.getByRole('heading', { name: 'Seu registro no Véu.', exact: true }),
+  ).toBeVisible();
+  await expect(page.locator('.tower-crystal-balance strong')).toHaveText('0');
+  await page
+    .getByRole('button', { name: 'Como funciona o comércio de cristais?', exact: true })
+    .click();
+  await expect(page.locator('.tower-conversation-answer')).toContainText(
+    'entreposto ainda não está aberto',
+  );
+  await page.getByRole('button', { name: 'Em que os cristais são usados?', exact: true }).click();
+  await expect(page.locator('.tower-conversation-answer')).toContainText(
+    'Ainda não existe um serviço de gasto',
+  );
+  await page.getByRole('button', { name: 'Voltar aos registros', exact: true }).click();
+  await expect(page.locator('.tower-headquarters-scene img')).toHaveAttribute(
+    'src',
+    '/tower/headquarters-crystals-20261029.webp',
+  );
+  await page.screenshot({ path: 'test-results/tower-crystals-desktop.png', fullPage: true });
+  const afterTalk = await (await ctx.request.get(origin + '/api/tower')).json();
+  expect(afterTalk.wallets).toEqual(beforeTalk.wallets);
+  expect(afterTalk.claims).toEqual(beforeTalk.claims);
+  expect(afterTalk.expeditions).toEqual(beforeTalk.expeditions);
+  await page.getByRole('button', { name: 'Arquivo da Torre', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Torre do Véu', exact: true })).toBeVisible();
   await expect(page.getByLabel('Escolher andar', { exact: true }).locator('option')).toHaveCount(
     100,
   );
-  await expect(page.locator('.tower-hero')).not.toContainText('Trinta andares');
-  await expect(page.getByRole('button', { name: 'Preparar a ascensão' })).toHaveCount(0);
-  await expect(page.locator('.tower-hero-metrics')).toHaveCount(0);
-  await expect(page.locator('.tower-hero-art')).toHaveAttribute('src', '/tower/tower-veil-v2.webp');
   await expect(page.locator('.tower-loot-preview')).not.toHaveAttribute('open');
   await page.getByRole('button', { name: 'Consultar tabela d100' }).click();
   await expect(page.locator('.tower-loot-preview')).toHaveAttribute('open');
@@ -136,6 +201,7 @@ try {
   await page.getByRole('button', { name: /^Reunindo grupo/ }).click();
   await expect(page.locator('.tower-party')).toContainText('Arden da aurora');
   await playerPage.goto(origin + '/#tower');
+  await playerPage.getByRole('button', { name: 'Arquivo da Torre', exact: true }).click();
   await expect(playerPage.locator('.tower-hidden')).toBeVisible();
   await expect(playerPage.locator('.tower-creatures img')).toHaveCount(0);
   await expect(playerPage.getByRole('button', { name: 'Editar andar', exact: true })).toHaveCount(
@@ -174,12 +240,13 @@ try {
     '5',
   );
   await page.screenshot({ path: 'test-results/tower-expedition-desktop.png', fullPage: true });
-  await page.getByRole('button', { name: 'A ascensão', exact: true }).click();
+  await page.getByRole('button', { name: 'Arquivo da Torre', exact: true }).click();
   await page.getByRole('button', { name: 'Ver próximo andar · 6', exact: true }).click();
   await expect(page.getByLabel('Escolher andar', { exact: true })).toHaveValue('6');
   await page.getByRole('button', { name: 'Abrir minha expedição', exact: true }).click();
   await expect(page.locator('.tower-run-detail')).toContainText('Os que voltam com a aurora');
   await playerPage.reload();
+  await playerPage.getByRole('button', { name: 'Arquivo da Torre', exact: true }).click();
   await expect(playerPage.locator('.tower-creatures img')).toHaveCount(3);
   await expect(playerPage.locator('.tower-traps')).toContainText('placa de pressão');
   await playerPage.getByLabel('Escolher andar', { exact: true }).selectOption('6');
@@ -217,10 +284,14 @@ try {
   for (const width of [768, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(origin + '/#tower');
-    await page.getByRole('button', { name: 'A ascensão', exact: true }).click();
+    await page.getByRole('button', { name: 'Recepção', exact: true }).click();
+    await page.screenshot({ path: `test-results/tower-reception-${width}.png`, fullPage: true });
+    await page.getByRole('button', {name:'Quero conhecer a Torre.',exact:true}).click();
+    await page.getByRole('button', {name:'Acompanhar Lia até o arquivo',exact:true}).click();
+    await expect.poll(()=>page.evaluate(()=>scrollY)).toBe(0);
     await expect(page.locator('.tower-atlas')).toBeVisible();
     const title = await page.locator('.page-header .page-title').boundingBox();
-    const eyebrow = await page.locator('.tower-eyebrow').boundingBox();
+    const eyebrow = await page.locator('.tower-headquarters-title').boundingBox();
     expect(title!.y + title!.height).toBeLessThan(eyebrow!.y);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
       true,
@@ -293,7 +364,7 @@ try {
   ).toBe(2);
   expect(errors).toEqual([]);
   console.log(
-    'Torre: navegação, filtros, 100 andares, sigilo, edição, expedição, retorno e d100 persistente. Torre e perfil com fundo de viewport em 1440/768/390/320 verificados; acampamento preservado.',
+    'Torre: sede, conversas sem transações, salas sob demanda, visualização, navegação, filtros, 100 andares, sigilo, edição, expedição, retorno e d100 persistente. Torre e perfil com fundo de viewport em 1440/768/390/320 verificados; acampamento preservado.',
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/tower-failure.png', fullPage: true });

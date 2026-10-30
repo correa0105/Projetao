@@ -1,0 +1,50 @@
+{
+  "tool": "image_gen (integrado)",
+  "reference": "Referência visual de atendente enviada pelo usuário em 29/10/2026; personagem e salas novos.",
+  "images": [
+    {
+      "room": "reception",
+      "prompt": "Use case: illustration-story. Asset type: full-screen 16:9 background artwork for an immersive fantasy government expedition headquarters in the Alvorada Cinzenta website. Input image 1 is a CHARACTER AND PAINTERLY STYLE REFERENCE ONLY, not an edit target. Create a new original scene: the reception room of a governmental expedition office serving a mysterious stone tower. Main subject: a young ADULT female clerk, short softly wavy dark chestnut bob haircut with bangs, delicate round aged-brass glasses, pale gray-blue eyes, ivory collared blouse and dark tailored waistcoat, modest professional clothing, calm attentive expression. She sits BEHIND a substantial dark wooden reception counter, her upper body and naturally placed hands visible above the counter, facing the arriving player. Place her around the left-center third, large enough to feel like an approachable conversation partner. Two much smaller adult clerks quietly work behind the farther counter and archive shelves, supporting the idea of a functioning public office. Environment: refined restrained medieval fantasy civic architecture, charcoal stone vaulted room, tall arched windows, paper ledgers, organized registration forms, a copper desk lamp, quiet expedition documents. Painterly hand-painted illustration, visible confident brushwork like the supplied reference, sophisticated warm ivory and aged copper light, cool blue-gray shadows, dark charcoal timber and stone. No bright green. Composition: wide 16:9 landscape, natural eye-level view from the visitor's side of the counter. Reserve the rightmost 38 percent as quieter, darker architectural space with few details for a website dialogue panel; keep the main clerk and her face fully visible outside that area. The scene must remain coherent and beautiful without UI. No text, lettering, seals, heraldry, coats of arms, logos, UI panels, labels, borders or watermark. No modern computers or modern office furniture. No sexuality, no childish proportions. Strong usable landscape composition, high quality fantasy environment art.",
+      "source": "C:/Users/limaw/.codex/generated_images/01a18441-cb49-7020-bf08-9d0472d08adc/exec-d5a16718-abdd-46fe-8228-ef639b40ed93.png",
+      "file": "public/tower/headquarters-reception-20261029.webp",
+      "original": "artwork-archive/tower-headquarters-20261029/reception.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 188426,
+      "sha256": "5f964e46dd07476a1429928ed5c437bd4091ea9b5d8d12e2dc0b9ace16a99bd4"
+    },
+    {
+      "room": "expeditions",
+      "prompt": "Use case: illustration-story. Asset type: a new full-screen 16:9 room background for the same immersive fantasy governmental Tower expedition headquarters shown in reference image 1. Reference image 1 is a CHARACTER, ARCHITECTURE AND PAINTERLY STYLE REFERENCE ONLY, not an edit target. Create the EXPEDITION PLANNING ROOM, visually distinct from reception but belonging to the same stone civic building. The SAME adult female clerk from the reference, chestnut bob with bangs, brass round glasses, ivory blouse and dark waistcoat, stands behind the near left-center edge of a broad dark wooden map table, looking welcoming toward the visitor and gesturing naturally at one parchment route chart. Keep her recognizable and her anatomy/hands natural. The room contains a large unlabeled cartographic map on the stone wall, expedition ledgers and a few simple brass markers. The chart represents the approach to one solitary closed monumental stone tower beside a lake; it must NOT reveal floors, dungeon rooms, secret creatures or magical regions. Strong atmosphere of an organized government office preparing a company for an expedition. Wide natural eye-level perspective, main clerk and map table in left 58 percent, quieter darker right 38 percent reserved for real website controls. Tall arched windows and restrained copper lamps; charcoal stone, muted ivory paper, slate shadows and warm aged brass. Sophisticated painterly illustration with visible brushwork matching the reference, not photorealistic and not a modern game dashboard. No readable text or lettering anywhere, no numbers, no labels, no UI, no logos, heraldry, coats of arms, borders or watermarks. No extra people necessary. Wide coherent 16:9 composition, not a collage.",
+      "source": "C:/Users/limaw/.codex/generated_images/01a18441-cb49-7020-bf08-9d0472d08adc/exec-2d3fba28-6b5d-4472-af1f-ecaa3b25fdef.png",
+      "file": "public/tower/headquarters-expeditions-20261029.webp",
+      "original": "artwork-archive/tower-headquarters-20261029/expeditions.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 292332,
+      "sha256": "13ecd4a9909762686e25b9ee3c7617bc2643ad8d3e300a5e59eaee6412b50cf9"
+    },
+    {
+      "room": "archive",
+      "prompt": "Use case: illustration-story. Asset type: a new 16:9 immersive room background for the same fantasy government Tower headquarters as reference image 1. Reference image 1 is a CHARACTER AND STYLE REFERENCE ONLY. Create the ARCHIVE AND TOWER RECORDS ROOM, a distinctly different reading chamber inside this civic stone building. The SAME adult female clerk with chestnut bob and bangs, round brass glasses, ivory collared blouse and dark fitted waistcoat is behind a modest dark oak archivist's desk in the left-center third. She has opened a large ledger and gently indicates a small bronze architectural model of one closed monumental cylindrical tower set beside the ledger. The model has intact closed stone-like walls and reveals no interior. Behind her: tall organized archive shelves, closed tied paper folios, a rolling ladder and one high arched window with soft evening light. No readable writing, no secret monster depictions, no diagrams of unrevealed floors. The rightmost 38 percent should be calmer and darker, made of shadowed shelves and architecture, with room for an actual website panel. Restrained museum and public records atmosphere. Same hand-painted painterly fantasy style, subtle brush texture, charcoal timber, cool slate stone and muted warm ivory/aged-brass highlights as reference. Natural eye-level visitor perspective, dignified attentive adult expression, natural hands. Wide 16:9, full coherent room, no UI frames or panels, no lettering, labels, numbers, heraldry, logos, borders, watermarks, modern objects or bright green.",
+      "source": "C:/Users/limaw/.codex/generated_images/01a18441-cb49-7020-bf08-9d0472d08adc/exec-438d35ed-63ea-4777-8b38-cacc326549d6.png",
+      "file": "public/tower/headquarters-archive-20261029.webp",
+      "original": "artwork-archive/tower-headquarters-20261029/archive.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 215762,
+      "sha256": "3b0b1f15c6fac0367d9ecf99179b646c2cda4caac1aff26851e3e14f5af84878"
+    },
+    {
+      "room": "crystals",
+      "prompt": "Use case: illustration-story. Asset type: a new 16:9 immersive background room for the SAME fantasy governmental Tower expedition headquarters as reference image 1. Reference image 1 is a CHARACTER, PALETTE AND PAINTERLY STYLE REFERENCE ONLY. Create the CRYSTAL REGISTRY AND APPRAISAL CABINET, clearly a different room in the same dignified public building. The SAME adult female clerk with short chestnut wavy bob and bangs, delicate round brass glasses, ivory blouse and dark tailored waistcoat sits behind an oak-and-dark-stone examination counter in the left-center third. She is calmly showing a single pale blue-violet faceted crystal resting in a small brass sample cradle on the counter, with natural hands safely beside it, not exaggerated magical poses. Near her are a fine brass balance, closed inventory ledger and a glass display case with a handful of separately organized crystal specimens. This is a registration and study office, not an active shop: no merchandise wall, prices, cash register, jewelry advertising or fantasy shop labels. In the back: orderly cabinets, dark vaulted civic stonework, warm copper lamps and a high arched window. Keep the rightmost 38 percent as quieter dark stone and cabinets for actual website UI. The clerk's face and crystal must be unobstructed on the left. Sophisticated painterly illustration and visible brushwork matching reference 1, charcoal and slate shadows, muted ivory paper, warm aged brass, restrained pale violet-blue glow from the crystals only. No bright green, no modern objects. Eye-level visitor perspective, coherent wide 16:9 room composition. No text, numbers, labels, UI, logos, heraldry, coats of arms, border or watermark.",
+      "source": "C:/Users/limaw/.codex/generated_images/01a18441-cb49-7020-bf08-9d0472d08adc/exec-9ecfb1aa-9e61-459f-9c69-662d67b64e79.png",
+      "file": "public/tower/headquarters-crystals-20261029.webp",
+      "original": "artwork-archive/tower-headquarters-20261029/crystals.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 260954,
+      "sha256": "81dced143e16b280fe7703ad3aa16d55a40fb858995d075ab6a4c89bf190f783"
+    }
+  ]
+}

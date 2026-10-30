@@ -3,7 +3,11 @@ import express from 'express';import {mkdtemp,mkdir,writeFile,rm} from 'node:fs/
 import {optimizedPublicImages} from '../server/optimized-public-images';
 import {sendImagePreview} from '../server/image-preview';
 import {staticAssetCacheControl} from '../server/static-asset-cache';
-import {imageDeliverySide} from '../shared/image-delivery-policy';
+import {imageDeliverySide,protectedPublicBackground} from '../shared/image-delivery-policy';
+
+test('salas da sede conservam os backgrounds na resolução original',()=>{
+ for(const room of ['reception','expeditions','archive','crystals'])assert(protectedPublicBackground('/tower/headquarters-'+room+'-20261029.webp'));
+});
 
 test('pranchas de corda e projéteis conservam o espaço de pixels dos recortes',()=>{
  assert.equal(imageDeliverySide('/vtt/siege-materials-20261027/projectiles-v1.png'),null);
