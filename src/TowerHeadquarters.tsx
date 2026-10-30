@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -8,8 +8,10 @@ import {
   Dices,
   DoorOpen,
   Eye,
+  Menu,
   MessageCircle,
   Users,
+  X,
 } from 'lucide-react';
 import {
   towerAnswers,
@@ -41,6 +43,8 @@ export function TowerHeadquarters({
   children: ReactNode;
 }) {
   const current = towerRooms.find((r) => r.id === room)!;
+  const roomMenu = useRef<HTMLDivElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [backdrop, setBackdrop] = useState(current.image),
     [loading, setLoading] = useState(false),
     [imageError, setImageError] = useState(false),
@@ -93,6 +97,7 @@ export function TowerHeadquarters({
     setPeek(false);
   }
   function go(next: TowerRoom) {
+    roomMenu.current?.hidePopover();
     setConversation(null);
     setPeek(false);
     change(next);
@@ -116,6 +121,46 @@ export function TowerHeadquarters({
             {current.title}
           </h2>
         </div>
+        <div className="tower-headquarters-actions">
+          {characterName && (
+            <div className="tower-headquarters-wallet" title={'Cristais · ' + characterName}>
+              <Diamond size={15} />
+              <span>
+                <b>{crystals.toLocaleString('pt-BR')}</b>
+                <small>Cristais</small>
+              </span>
+            </div>
+          )}
+          <button
+            className="tower-room-trigger"
+            popoverTarget="tower-room-menu"
+            aria-label="Abrir menu de salas"
+            aria-controls="tower-room-menu"
+            aria-expanded={menuOpen}
+          >
+            <Menu size={16} />
+            <span>Salas</span>
+            {pending > 0 && <em aria-label={pending + ' tesouros pendentes'}>{pending}</em>}
+          </button>
+        </div>
+      </header>
+      <div
+        id="tower-room-menu"
+        popover="auto"
+        ref={roomMenu}
+        className="tower-room-menu"
+        onToggle={(event) => setMenuOpen(event.newState === 'open')}
+      >
+        <header>
+          <span>Salas da sede</span>
+          <button
+            popoverTarget="tower-room-menu"
+            popoverTargetAction="hide"
+            aria-label="Fechar menu de salas"
+          >
+            <X size={15} />
+          </button>
+        </header>
         <nav aria-label="Salas da sede" className="tower-room-nav">
           {towerRooms.map((r) => {
             const Icon = icons[r.id];
@@ -127,30 +172,13 @@ export function TowerHeadquarters({
                 onClick={() => go(r.id)}
               >
                 <Icon size={17} />
-                <span>
-                  {r.id === 'atlas' ? (
-                    <>
-                      Arquivo<span className="tower-room-word"> da Torre</span>
-                    </>
-                  ) : (
-                    r.name
-                  )}
-                </span>
+                <span>{r.name}</span>
                 {r.id === 'treasures' && pending > 0 && <em aria-hidden="true">{pending}</em>}
               </button>
             );
           })}
         </nav>
-        {characterName && (
-          <div className="tower-headquarters-wallet">
-            <Diamond size={17} />
-            <span>
-              <b>{crystals.toLocaleString('pt-BR')}</b>
-              <small>Cristais · {characterName}</small>
-            </span>
-          </div>
-        )}
-      </header>
+      </div>
       {loading && (
         <p className="tower-room-status" role="status">
           Abrindo {current.name.toLocaleLowerCase('pt-BR')}…

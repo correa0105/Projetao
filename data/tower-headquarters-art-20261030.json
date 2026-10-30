@@ -1,0 +1,50 @@
+{
+  "tool": "image_gen (integrado), edição",
+  "reference": "Edição das salas aprovadas de 29/10/2026: expressões distintas de Lia, homem e elfa no saguão.",
+  "images": [
+    {
+      "room": "reception",
+      "prompt": "Use case: inpainting. The attached landscape is the EDIT TARGET, not just inspiration. Make a precise painterly edit while preserving this exact room, architecture, lighting, wide 16:9 framing, camera, composition, counter/table, outfit, hair, eyeglasses, character identity, natural anatomy, and high-quality brushwork. Keep the result at the same 1672 by 941 landscape size. The main clerk Lia remains an adult woman with short chestnut bob and bangs, brass round glasses, gray-blue eyes, ivory blouse and dark waistcoat, behind the counter. Keep her recognizable. No text, UI, logos, coats of arms, border or watermark. Do not duplicate people or add extra main characters. Make Lia's expression distinctly WARM AND WELCOMING: a clear natural friendly smile, lifted mouth corners, relaxed brows, smiling eyes and gently raised cheeks. The user's request also requires changing the TWO background clerks: replace the far-left background woman near the lamp and shelves with an adult HUMAN MAN with short dark hair and a neatly trimmed beard, dark modest clerk waistcoat, still working at that same rear counter. Replace the other background woman in the middle distance near the tall window with an adult FEMALE ELF with clearly visible pointed ears, silver-blond hair tied back, refined distinct face and muted blue-gray clerk clothing, still handling papers at that same rear counter. These are three visibly distinct people: Lia in front, a man at the left rear, and an elf woman at the farther rear. The two background people must not resemble Lia or each other. Preserve their small background scale and professional roles.",
+      "source": "C:/Users/limaw/.codex/generated_images/01a18441-cb49-7020-bf08-9d0472d08adc/exec-094f3ce1-8e96-481c-a001-84de0dbefbbb.png",
+      "file": "public/tower/headquarters-reception-20261030.webp",
+      "original": "artwork-archive/tower-headquarters-20261030/reception.png",
+      "width": 1671,
+      "height": 941,
+      "bytes": 181120,
+      "sha256": "3b7298ada5ac3a2637f73cdb4dd9cfa93a1188de4b0248b654d540a53c7d0051"
+    },
+    {
+      "room": "expeditions",
+      "prompt": "Use case: inpainting. The attached landscape is the EDIT TARGET, not just inspiration. Make a precise painterly edit while preserving this exact room, architecture, lighting, wide 16:9 framing, camera, composition, counter/table, outfit, hair, eyeglasses, character identity, natural anatomy, and high-quality brushwork. Keep the result at the same 1672 by 941 landscape size. The main clerk Lia remains an adult woman with short chestnut bob and bangs, brass round glasses, gray-blue eyes, ivory blouse and dark waistcoat, behind the counter. Keep her recognizable. No text, UI, logos, coats of arms, border or watermark. Do not duplicate people or add extra main characters. Change only Lia's face/head expression to distinctly ANIMATED AND CONFIDENT while explaining the map: brows slightly lifted, engaged bright eyes, mouth naturally slightly open as if mid-sentence with a small enthusiastic smile. This is visibly more expressive than a neutral closed-lip face. A very slight head turn toward her existing map-pointing hand is welcome, while she still connects with the visitor. Keep both existing hands and the map gesture intact and anatomically natural. Preserve all map/table and background details; no new people.",
+      "source": "C:/Users/limaw/.codex/generated_images/01a18441-cb49-7020-bf08-9d0472d08adc/exec-7ebcdae3-3bf1-4de3-ba02-c6a5b710288d.png",
+      "file": "public/tower/headquarters-expeditions-20261030.webp",
+      "original": "artwork-archive/tower-headquarters-20261030/expeditions.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 275294,
+      "sha256": "491261cf47e644fdd4835611b2842e16e07e35127bf87c6ec99b3b4dc0f57b32"
+    },
+    {
+      "room": "archive",
+      "prompt": "Use case: inpainting. The attached landscape is the EDIT TARGET, not just inspiration. Make a precise painterly edit while preserving this exact room, architecture, lighting, wide 16:9 framing, camera, composition, counter/table, outfit, hair, eyeglasses, character identity, natural anatomy, and high-quality brushwork. Keep the result at the same 1672 by 941 landscape size. The main clerk Lia remains an adult woman with short chestnut bob and bangs, brass round glasses, gray-blue eyes, ivory blouse and dark waistcoat, behind the counter. Keep her recognizable. No text, UI, logos, coats of arms, border or watermark. Do not duplicate people or add extra main characters. Change only Lia's face/head expression to distinctly SERIOUS AND THOUGHTFUL while checking a record: eyebrows softly drawn together in concentration, lips gently pressed in a neutral thoughtful line with no smile, chin modestly lowered and gaze directed toward the open ledger under her existing pointing hand. She looks focused, composed and scholarly, not angry, distressed or hostile. This should clearly differ from an identical forward-facing neutral smile. Keep her existing natural hands/pointing gesture, ledger and bronze tower model intact. No new people.",
+      "source": "C:/Users/limaw/.codex/generated_images/01a18441-cb49-7020-bf08-9d0472d08adc/exec-175b4a8c-28c1-4902-a7cc-ac128cf69ef0.png",
+      "file": "public/tower/headquarters-archive-20261030.webp",
+      "original": "artwork-archive/tower-headquarters-20261030/archive.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 202188,
+      "sha256": "358eb36b2aa072e029f45e4a13ee5f2017e3d30c503112dc367c6bab1849e8ab"
+    },
+    {
+      "room": "crystals",
+      "prompt": "Use case: inpainting. The attached landscape is the EDIT TARGET, not just inspiration. Make a precise painterly edit while preserving this exact room, architecture, lighting, wide 16:9 framing, camera, composition, counter/table, outfit, hair, eyeglasses, character identity, natural anatomy, and high-quality brushwork. Keep the result at the same 1672 by 941 landscape size. The main clerk Lia remains an adult woman with short chestnut bob and bangs, brass round glasses, gray-blue eyes, ivory blouse and dark waistcoat, behind the counter. Keep her recognizable. No text, UI, logos, coats of arms, border or watermark. Do not duplicate people or add extra main characters. Change only Lia's face/head expression to distinctly CURIOUS AND PLEASED while showing the crystal: a gentle but clearly visible delighted smile with lips slightly parted, softly raised eyebrows, eyes glancing toward the crystal in front of her, and a slight natural head tilt. The emotion should be clear and human, with smiling cheeks and engaged eyes, rather than the same neutral straight-on face. Preserve her exact identity, glasses, body, natural hands, crystal specimen and balances. No new people.",
+      "source": "C:/Users/limaw/.codex/generated_images/01a18441-cb49-7020-bf08-9d0472d08adc/exec-26a79777-c1b1-4091-aa86-dca9731ebbbf.png",
+      "file": "public/tower/headquarters-crystals-20261030.webp",
+      "original": "artwork-archive/tower-headquarters-20261030/crystals.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 246690,
+      "sha256": "421db843122d08a36a86f93349c9244276b1e0a83b68a6a5000552daab82373e"
+    }
+  ]
+}

@@ -22,7 +22,7 @@ export const towerRooms: {
     name: 'Recepção',
     title: 'Diretoria da Torre',
     description: 'Um registro antes da jornada.',
-    image: '/tower/headquarters-reception-20261029.webp',
+    image: '/tower/headquarters-reception-20261030.webp',
     topic: 'welcome',
   },
   {
@@ -30,7 +30,7 @@ export const towerRooms: {
     name: 'Expedições',
     title: 'Sala de expedições',
     description: 'Companhias, preparativos e registros da subida.',
-    image: '/tower/headquarters-expeditions-20261029.webp',
+    image: '/tower/headquarters-expeditions-20261030.webp',
     topic: 'expeditions',
   },
   {
@@ -38,7 +38,7 @@ export const towerRooms: {
     name: 'Arquivo da Torre',
     title: 'Arquivo da Torre',
     description: 'Os registros do que já foi descoberto.',
-    image: '/tower/headquarters-archive-20261029.webp',
+    image: '/tower/headquarters-archive-20261030.webp',
     topic: 'discoveries',
   },
   {
@@ -46,7 +46,7 @@ export const towerRooms: {
     name: 'Cristais',
     title: 'Gabinete de cristais',
     description: 'O registro do que você trouxe do Véu.',
-    image: '/tower/headquarters-crystals-20261029.webp',
+    image: '/tower/headquarters-crystals-20261030.webp',
     topic: 'crystals',
   },
   {
@@ -54,7 +54,7 @@ export const towerRooms: {
     name: 'Tesouros',
     title: 'Mesa de retorno',
     description: 'Tesouros e recompensas da sua jornada.',
-    image: '/tower/headquarters-crystals-20261029.webp',
+    image: '/tower/headquarters-crystals-20261030.webp',
     topic: 'treasures',
   },
 ];
