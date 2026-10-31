@@ -77,6 +77,8 @@ real; clicar/tocar nele ou usar o teclado abre o balão junto ao rosto. O halo
 dourado suave aparece ao passar o mouse ou focar. Conversar não grava dados nem
 concede recompensas. No celular, o balão e os painéis ficam abaixo do rosto.
 
+O anfitrião responde também sobre quem é, sua maneira reservada de receber os visitantes e o motivo de cuidar dos encontros. Mantém o tom sério e ligeiramente arrogante. Usa uma nova pose de explicação com a mão aberta e outra consultando o registro ao falar da agenda, das memórias e do trabalho; ao fechar a conversa volta às mãos atrás do corpo. Uma das íris recebe um brilho vermelho/âmbar lento e localizado. O contorno acompanha o alpha da pose atual, sem tingir a pintura. As trocas aguardam decodificação e têm fallback para a pose de espera; movimento reduzido e aba oculta desativam os efeitos. Artes originais anteriores preservadas; PNGs novos em `artwork-archive/npc-dialogues-20261031/`, WebPs em `public/events/events-*-20261031.webp`. Geração integrada, fontes e prompts no [registro de poses e diálogos](../data/npc-dialogue-art-20261031.json).
+
 O menu compacto **Encontros** abre Recepção, Agenda de eventos e Memórias da
 guilda; fecha ao escolher uma opção, clicar fora ou pressionar Esc. A recepção
 inicia livre de painéis. O destaque do evento não tem filete vertical lateral. Agenda e Memórias conservam os eventos em destaque,

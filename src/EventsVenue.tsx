@@ -1,4 +1,4 @@
-import { useId, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -13,15 +13,19 @@ import {
 } from 'lucide-react';
 import type { EventScene } from '../shared/events';
 import './events-venue.css';
+import { NpcPortrait, useDialogueArt } from './NpcPortrait';
 
 type View = 'reception' | 'agenda' | 'memories';
-type Topic = 'welcome' | 'agenda' | 'participation' | 'memories';
+type Topic = 'welcome' | 'agenda' | 'participation' | 'memories' | 'identity' | 'manner' | 'past';
 const titles = {
   reception: 'Átrio',
   agenda: 'Agenda de Eventos',
   memories: 'Memórias da Guilda',
 };
 const questions = {
+  identity: 'Quem é você?',
+  manner: 'Você recebe todo mundo desse jeito?',
+  past: 'O que faz você ficar no átrio?',
   welcome: 'Seja bem-vindo ao átrio.',
   agenda: 'Quais são os próximos eventos?',
   participation: 'Como participo de um encontro?',
@@ -54,7 +58,21 @@ export function EventsVenue({
   const [menuOpen, setMenuOpen] = useState(false);
   const menu = useRef<HTMLDivElement>(null);
   const host = useRef<HTMLButtonElement>(null);
-  const light = useId();
+  const idlePortrait = '/events/host-tailoring-20261030.webp';
+  const requestedPortrait = !talking
+    ? idlePortrait
+    : ['/events/events-explain-20261031.webp', '/events/events-records-20261031.webp'][
+        ['agenda', 'memories', 'past'].includes(topic) ? 1 : 0
+      ];
+  const portrait = useDialogueArt(requestedPortrait, idlePortrait);
+  useEffect(() => {
+    if (!talking) return;
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closeTalk();
+    };
+    window.addEventListener('keydown', escape);
+    return () => window.removeEventListener('keydown', escape);
+  }, [talking]);
   function go(next: View) {
     menu.current?.hidePopover();
     setView(next);
@@ -162,40 +180,7 @@ export function EventsVenue({
         }}
         onClick={() => (talking ? closeTalk() : ask('welcome'))}
       >
-        <svg viewBox="0 0 1024 1536" aria-hidden="true">
-          <defs>
-            <filter
-              id={light}
-              x="-10%"
-              y="-5%"
-              width="120%"
-              height="110%"
-              colorInterpolationFilters="sRGB"
-            >
-              <feMorphology in="SourceAlpha" operator="dilate" radius="3" result="expanded" />
-              <feGaussianBlur in="expanded" stdDeviation="6" result="soft" />
-              <feComposite in="soft" in2="SourceAlpha" operator="out" result="outside" />
-              <feFlood floodColor="#ecc263" floodOpacity="0.55" result="warm" />
-              <feComposite in="warm" in2="outside" operator="in" result="halo" />
-              <feComposite in="expanded" in2="SourceAlpha" operator="out" result="edge" />
-              <feGaussianBlur in="edge" stdDeviation="0.85" result="softEdge" />
-              <feFlood floodColor="#f5d58b" floodOpacity="0.92" result="gold" />
-              <feComposite in="gold" in2="softEdge" operator="in" result="rim" />
-              <feMerge>
-                <feMergeNode in="halo" />
-                <feMergeNode in="rim" />
-              </feMerge>
-            </filter>
-          </defs>
-          <image href="/events/host-tailoring-20261030.webp" width="1024" height="1536" />
-          <image
-            className="events-host-light"
-            href="/events/host-tailoring-20261030.webp"
-            width="1024"
-            height="1536"
-            filter={`url(#${light})`}
-          />
-        </svg>
+        <NpcPortrait src={portrait} kind="events" lightClass="events-host-light" />
       </button>
       {talking && (
         <section
@@ -230,6 +215,42 @@ export function EventsVenue({
                 <p>
                   Posso mostrar o que está por vir, explicar como participar ou abrir o registro dos
                   encontros passados.
+                </p>
+              </>
+            )}
+            {topic === 'identity' && (
+              <>
+                <p>
+                  Sou o anfitrião deste átrio. Cuido para que os encontros tenham lugar, os
+                  visitantes encontrem seu caminho e certas histórias não desapareçam entre uma
+                  despedida e outra.
+                </p>
+                <p>
+                  Meu nome? Por enquanto, Anfitrião basta. Um título bem cumprido diz mais que uma
+                  apresentação longa.
+                </p>
+              </>
+            )}
+            {topic === 'manner' && (
+              <>
+                <p>
+                  Com atenção, sim. Com entusiasmo teatral, raramente. Não confunda as duas coisas.
+                </p>
+                <p>
+                  Se veio em boa companhia e sabe respeitar a casa, será recebido. Não exijo
+                  reverências; chegar no horário já é uma cortesia bastante subestimada.
+                </p>
+              </>
+            )}
+            {topic === 'past' && (
+              <>
+                <p>
+                  As pessoas. Algumas chegam tentando parecer maiores do que são. Outras voltam de
+                  uma jornada e já não precisam tentar. É uma mudança interessante de observar.
+                </p>
+                <p>
+                  Registro os encontros porque a memória costuma favorecer quem fala mais alto. Um
+                  nome no papel, ao menos, tem a oportunidade de permanecer.
                 </p>
               </>
             )}
@@ -282,7 +303,7 @@ export function EventsVenue({
               </>
             )}
             <nav aria-label="Perguntas ao anfitrião">
-              {(['agenda', 'participation', 'memories'] as const)
+              {(['identity', 'manner', 'past', 'agenda', 'participation', 'memories'] as const)
                 .filter((t) => t !== topic)
                 .map((t) => (
                   <button key={t} onClick={() => ask(t)}>

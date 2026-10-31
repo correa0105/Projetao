@@ -1,5 +1,68 @@
 import { useId, useLayoutEffect, useState, type CSSProperties, type RefObject } from 'react';
 import { cardsHostOutlines } from './cards-host-outlines';
+import { useDialogueArt, useNpcMotion } from './NpcPortrait';
+
+export type CardsHostGesture = 'idle' | 'explain' | 'card';
+
+// The painting above the desk changes locally; the calibrated desk and room stay fixed.
+export function CardsHostPose({ gesture }: { gesture: CardsHostGesture }) {
+  const id = useId();
+  const [mobile, setMobile] = useState(() => matchMedia('(max-width: 900px)').matches);
+  const { visible, reduced } = useNpcMotion();
+  useLayoutEffect(() => {
+    const media = matchMedia('(max-width: 900px)');
+    const update = () => setMobile(media.matches);
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+  const kind = mobile ? 'mobile' : 'desktop';
+  const fallback = '/cards/host-shadow-study-' + (mobile ? 'mobile-' : '') + '20261027.png';
+  const requested = gesture === 'idle' ? fallback : `/cards/cards-${gesture}-${kind}-20261031.webp`;
+  const src = useDialogueArt(requested, fallback);
+  const changing = src !== fallback && src.includes(kind);
+  return (
+    <svg
+      className="cards-host-pose"
+      viewBox={mobile ? '0 0 1024 1536' : '0 0 1672 941'}
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      data-art={src}
+      data-motion={visible && !reduced ? 'on' : 'off'}
+    >
+      <defs>
+        <clipPath id={id + '-patch'}>
+          <rect
+            x={mobile ? 225 : 585}
+            y={mobile ? 250 : 54}
+            width={mobile ? 765 : 870}
+            height={mobile ? 511 : 502}
+          />
+        </clipPath>
+        <radialGradient id={id + '-spark'}>
+          <stop stopColor="#ffe3a0" stopOpacity=".75" />
+          <stop offset="1" stopColor="#efae46" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      {changing && (
+        <image
+          key={src}
+          className="npc-pose"
+          href={src}
+          width={mobile ? 1024 : 1672}
+          height={mobile ? 1536 : 941}
+          clipPath={`url(#${id}-patch)`}
+        />
+      )}
+      <circle
+        className="cards-mask-shimmer"
+        cx={mobile ? 662 : 1074}
+        cy={mobile ? 386 : 222}
+        r={mobile ? 10 : 8}
+        fill={`url(#${id}-spark)`}
+      />
+    </svg>
+  );
+}
 
 export function CardsHost({
   expanded,

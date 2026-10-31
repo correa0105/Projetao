@@ -1,0 +1,61 @@
+.npc-portrait {
+  pointer-events: none;
+}
+.npc-pose {
+  animation: npc-pose-enter 0.2s ease both;
+}
+.npc-eye-glow {
+  opacity: 0.15;
+  animation: npc-eye-ember 9s ease-in-out infinite;
+}
+.npc-glasses-glint {
+  opacity: 0;
+  animation: npc-lens-light 13s ease-in-out infinite;
+}
+.npc-portrait[data-motion='off'] * {
+  animation: none;
+}
+.npc-portrait[data-motion='off'] .npc-eye-glow {
+  opacity: 0.12;
+}
+@keyframes npc-pose-enter {
+  from {
+    opacity: 0.85;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes npc-eye-ember {
+  0%,
+  55%,
+  100% {
+    opacity: 0.12;
+  }
+  70% {
+    opacity: 0.8;
+  }
+  78% {
+    opacity: 0.35;
+  }
+}
+@keyframes npc-lens-light {
+  0%,
+  75%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  78% {
+    opacity: 0.7;
+  }
+  84% {
+    opacity: 0;
+    transform: translateX(360px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .npc-portrait * {
+    animation: none;
+  }
+}

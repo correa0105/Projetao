@@ -1,6 +1,9 @@
 export type TowerRoom = 'reception' | 'atlas' | 'expeditions' | 'crystals' | 'treasures';
 export type TowerTopic =
   | 'welcome'
+  | 'lia'
+  | 'work'
+  | 'book'
   | 'tower'
   | 'discoveries'
   | 'expeditions'
@@ -77,7 +80,31 @@ export const towerAnswers: Record<TowerTopic, Answer> = {
       'Seja bem-vindo à Diretoria da Torre. Sou Lia, a escrivã responsável pelos registros. Antes de partir, vale conhecer o caminho e a companhia que vai com você.',
       'Posso explicar a Torre, mostrar as expedições ou consultar o que você trouxe da última subida.',
     ],
-    related: ['tower', 'expeditions', 'crystals', 'treasures'],
+    related: ['lia', 'tower', 'expeditions', 'crystals', 'treasures'],
+  },
+  lia: {
+    title: 'Quem é você, Lia?',
+    paragraphs: [
+      'Lia. Sou a escrivã da Torre — a pessoa que pede seu nome antes da partida e confere se ele voltou na lista certa. Pode parecer pouco, até faltar um nome.',
+      'Gosto de ouvir quem retorna. Os relatos nunca chegam na ordem dos acontecimentos; primeiro vem o susto, depois a risada, e só então consigo anotar alguma coisa. É a melhor parte do meu trabalho.',
+    ],
+    related: ['work', 'book', 'tower'],
+  },
+  work: {
+    title: 'Você também sobe a Torre?',
+    paragraphs: [
+      'Meu lugar costuma ser deste lado do balcão. Organizo os registros e ajudo as companhias a se prepararem. Não vou fingir que conheço um corredor só porque alguém o descreveu muito bem.',
+      'Se me perguntar sobre algo que ainda não foi registrado, minha resposta será “não sei”. Prefiro uma lacuna honesta a mandar alguém para o perigo com uma certeza inventada.',
+    ],
+    related: ['book', 'lia', 'discoveries'],
+  },
+  book: {
+    title: 'O que você tanto consulta nesse livro?',
+    paragraphs: [
+      'Anotações de trabalho. Nomes, referências e perguntas que preciso conferir depois. Espere um instante… aqui. Uma margem cheia de correções costuma ser mais útil que uma página bonita.',
+      'Também guardo lembretes para mim. “Ouvir até o fim” aparece mais de uma vez. Há aventureiros que só contam a parte importante quando já estão indo embora.',
+    ],
+    related: ['lia', 'work', 'discoveries'],
   },
   tower: {
     title: 'O que é a Torre do Véu?',
@@ -154,6 +181,9 @@ export const towerAnswers: Record<TowerTopic, Answer> = {
 };
 export const towerQuestionLabels: Record<TowerTopic, string> = {
   welcome: 'Outras perguntas',
+  lia: 'Quem é você, Lia?',
+  work: 'Você também sobe a Torre?',
+  book: 'O que tem nesse livro?',
   tower: 'Quero conhecer a Torre.',
   discoveries: 'O que já podemos descobrir?',
   expeditions: 'Quero preparar uma expedição.',

@@ -194,7 +194,7 @@
   z-index: 3;
   left: clamp(
     18px,
-    calc(var(--events-host-left) + var(--events-host-height) * 0.52),
+    calc(var(--events-host-left) + var(--events-host-height) * 0.67),
     calc(100vw - 380px)
   );
   --events-dialog-top: clamp(
@@ -446,7 +446,7 @@
     width: calc(100% - 28px);
     max-width: 440px;
     max-height: none;
-    margin: 240px auto 0;
+    margin: 510px auto 0;
     padding: 0;
   }
   .events-host-conversation::before {

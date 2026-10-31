@@ -7,7 +7,7 @@ import { money } from '../shared/rules';
 import type { Character } from './types';
 import './cards.css';
 import './cards-rarity.css';
-import { CardsHost } from './CardsHost';
+import { CardsHost, CardsHostPose, type CardsHostGesture } from './CardsHost';
 import {CardBack} from './CardBack';
 import {useCardTableSides} from './useCardTableSides';
 import {cardVisualLevel} from '../shared/card-presentation';
@@ -62,6 +62,7 @@ export function Cards({
     [speech, setSpeech] = useState(''),
     [conversation, setConversation] = useState(false),
     [questions, setQuestions] = useState(false);
+  const [hostGesture, setHostGesture] = useState<CardsHostGesture>('explain');
   const [inspecting, setInspecting] = useState<Card | null>(null);
   const [library,setLibrary]=useState<'catalog'|'equip'|null>(null);
   const [previewLevel,setPreviewLevel]=useState(1);
@@ -101,9 +102,10 @@ export function Cards({
     window.addEventListener('keydown', escape);
     return () => window.removeEventListener('keydown', escape);
   }, [conversation]);
-  function say(text: string, showQuestions = false) {
+  function say(text: string, showQuestions = false, gesture: CardsHostGesture = 'explain') {
     if (timer.current) clearTimeout(timer.current);
     setSpeech(text);
+    setHostGesture(gesture);
     setQuestions(showQuestions);
     setConversation(true);
     if (!showQuestions) timer.current = setTimeout(() => setConversation(false), 14000);
@@ -262,6 +264,7 @@ export function Cards({
     <section data-page-preparing={!collectionReady && !error || undefined} className="cards-room cards-room--salon" aria-label="Salão das cartas">
       <div className="cards-scene">
         <div className="cards-room-backdrop" aria-hidden="true" />
+        <CardsHostPose gesture={conversation ? hostGesture : 'idle'} />
         <div className="cards-room-shade" aria-hidden="true" />
         <CardsRoomLighting/>
 
@@ -292,7 +295,7 @@ export function Cards({
             {questions && (
               <div className="cards-host-questions">
                 {cardQuestions.map((q) => (
-                  <button key={q.question} onClick={() => say(q.answer, true)}>
+                  <button key={q.question} onClick={() => say(q.answer, true, q.pose)}>
                     {q.question}
                   </button>
                 ))}

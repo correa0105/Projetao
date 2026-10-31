@@ -1,0 +1,120 @@
+{
+  "mode": "integrated-image_gen",
+  "purpose": "Poses contextuais de Lia, anfitrião do Átrio e anfitrião mascarado das Cartas. Originais anteriores preservados.",
+  "assets": [
+    {
+      "key": "events-explain",
+      "original": "artwork-archive/npc-dialogues-20261031/events-explain.png",
+      "display": "/events/events-explain-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "8b8e00cee632ec5437d113e4694ffbd2bee43ee1738868d32700047ca0f57fef",
+      "displaySha256": "445b388a16a0fcc87a164c73dacbeee3760e27bd5f2635f53ee17734dbcd0441",
+      "references": [
+        "artwork-archive/events-venue-20261030/host-tailoring.png"
+      ],
+      "prompt": "Use case: identity-preserve. Asset: transparent 1024x1536 dialogue pose, same character and camera framing as input edit target. Preserve exact face, serious slightly arrogant unsmiling expression, pale textured skin, dark sclera with tiny red irises, burgundy beard and hair, curled horns, gold earring, brown weathered long coat with BOTH matching burgundy lapels, dark tunic with symmetrical matching lower panels, brass buttons and belt. Keep head scale and position aligned to input. Same muted painterly fantasy material and warm low-key light. Real alpha background, no backdrop or glow baked into transparent area, no words. Exactly two anatomically correct hands, five fingers each. Change only pose: He brings his left forearm forward at waist/chest height, palm facing up in a controlled restrained explanatory gesture; right hand remains behind his back. Chin raised slightly, level stern gaze. No smile."
+    },
+    {
+      "key": "events-records",
+      "original": "artwork-archive/npc-dialogues-20261031/events-records.png",
+      "display": "/events/events-records-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "03cac1d0bfda4bb26eea79256a3b3d437c089121d0a1b9f3a193aac8dde92881",
+      "displaySha256": "b5b447581aae80b68408340caff1e851dbe44b74418bdda3c519455cc68edfdf",
+      "references": [
+        "artwork-archive/events-venue-20261030/host-tailoring.png"
+      ],
+      "prompt": "Use case: identity-preserve. Asset: transparent 1024x1536 dialogue pose, same character and camera framing as input edit target. Preserve exact face, serious slightly arrogant unsmiling expression, pale textured skin, dark sclera with tiny red irises, burgundy beard and hair, curled horns, gold earring, brown weathered long coat with BOTH matching burgundy lapels, dark tunic with symmetrical matching lower panels, brass buttons and belt. Keep head scale and position aligned to input. Same muted painterly fantasy material and warm low-key light. Real alpha background, no backdrop or glow baked into transparent area, no words. Exactly two anatomically correct hands, five fingers each. Change only pose: He holds a small open dark leather register at waist height in his left hand, with his right index finger indicating a line while his gaze lowers slightly toward the page. Still stern, dignified. No grin. Book pages have only faint illegible ink lines."
+    },
+    {
+      "key": "lia-explain",
+      "original": "artwork-archive/npc-dialogues-20261031/lia-explain.png",
+      "display": "/tower/headquarters-lia-explain-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "6808af34fed39f947ce5395d4a33d3ed1afe97430e7463d50222000f0954788b",
+      "displaySha256": "969c877f1d593bf96be0525cda5403456c1565beda8256b2e5ec656e5501e3b1",
+      "references": [
+        "artwork-archive/tower-layered-20261030/reception-lia.png"
+      ],
+      "prompt": "Use case: identity-preserve. Edit target input: approved Lia portrait. Create one transparent 1024x1536 dialogue pose. Exact same adult human woman, chestnut curled bob and fringe, blue-grey eyes, thin oval gold spectacles, cream collared blouse rolled sleeves, dark fitted waistcoat brass buttons and narrow belt, LONG dark skirt cropped by bottom edge. Same head scale and placement and muted painterly style, warm interior rim lighting. Gentle attentive natural expression, no exaggerated grin, real human ears. Background truly transparent without baked halo/glow. Exactly two correct arms/hands, five fingers per hand. Change pose only: She holds the closed dark leather ledger against her waist with her left forearm, while her right hand opens palm-up at chest height as she tells the visitor about herself. Eyes towards viewer. Modest relaxed posture."
+    },
+    {
+      "key": "lia-retrieve",
+      "original": "artwork-archive/npc-dialogues-20261031/lia-retrieve.png",
+      "display": "/tower/headquarters-lia-retrieve-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "88ec4f475a9d4a54d460908a4e3df233bd0ccc4ae365136e6cdfea28f3a507dc",
+      "displaySha256": "3377dface4de3c0c6e55a9b61aea48fe1d3988a07358c27053a2e7d69f2dcd39",
+      "references": [
+        "artwork-archive/tower-layered-20261030/reception-lia.png"
+      ],
+      "prompt": "Use case: identity-preserve. Edit target input: approved Lia portrait. Create one transparent 1024x1536 dialogue pose. Exact same adult human woman, chestnut curled bob and fringe, blue-grey eyes, thin oval gold spectacles, cream collared blouse rolled sleeves, dark fitted waistcoat brass buttons and narrow belt, LONG dark skirt cropped by bottom edge. Same head scale and placement and muted painterly style, warm interior rim lighting. Gentle attentive natural expression, no exaggerated grin, real human ears. Background truly transparent without baked halo/glow. Exactly two correct arms/hands, five fingers per hand. Change pose only: She turns slightly three-quarter and lifts a dark leather ledger from beside her left hip up toward her chest, one hand grasping the spine and the other supporting its bottom, cover just beginning to open. A natural transitional gesture taking a book to consult it, gaze down towards book. Book has no readable words."
+    },
+    {
+      "key": "cards-explain-desktop",
+      "original": "artwork-archive/npc-dialogues-20261031/cards-explain-desktop.png",
+      "display": "/cards/cards-explain-desktop-20261031.webp",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "sha256": "a9adaaef769ff1e45ff64af31b33149526b56c6feb012900e9312c58d0394bd7",
+      "displaySha256": "7cd0aff665302cb30e31275ea45c91822c82fb0a4688f86ce7719563634069bb",
+      "references": [
+        "public/cards/host-shadow-study-20261027.png"
+      ],
+      "prompt": "Use case: identity-preserve. Edit target: the provided wide dark fantasy card salon painting. Preserve EXACT canvas aspect ratio and composition, locked camera, every background object, the desk and mat geometry and ALL foreground pixels. Modify ONLY the seated masked host above the desk edge into a conversational pose. Same raven beak mask amber eye holes, exact black top hat tilted with purple band and gold brooch, black feather cape, cream shirt, purple and gold coat, black gloves with gold claw tips, crossed legs, SAME leather chair, SAME scale and seated position. The head remains at the same coordinates. Keep dark low key moon/candle painterly lighting. No text. Do not move camera, furniture, candle, raven, window or mat. Both hands remain ABOVE the desk and within the chair's overall silhouette. Correct anatomy. Pose: His left gloved hand rises slightly from the armrest, palm upward in a restrained explanatory gesture towards the visitor, while his right hand rests on the other armrest. Head subtly straightens, mysterious attentive expression."
+    },
+    {
+      "key": "cards-card-desktop",
+      "original": "artwork-archive/npc-dialogues-20261031/cards-card-desktop.png",
+      "display": "/cards/cards-card-desktop-20261031.webp",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "sha256": "fd95e89cab19eb41a2954dd2a25dc0f87716e8756180a1fa9761a375721be427",
+      "displaySha256": "3eedf036d241a7903485dd1ff3221f9416c20945198ef724a4bb033e486779e8",
+      "references": [
+        "public/cards/host-shadow-study-20261027.png"
+      ],
+      "prompt": "Use case: identity-preserve. Edit target: the provided wide dark fantasy card salon painting. Preserve EXACT canvas aspect ratio and composition, locked camera, every background object, the desk and mat geometry and ALL foreground pixels. Modify ONLY the seated masked host above the desk edge into a conversational pose. Same raven beak mask amber eye holes, exact black top hat tilted with purple band and gold brooch, black feather cape, cream shirt, purple and gold coat, black gloves with gold claw tips, crossed legs, SAME leather chair, SAME scale and seated position. The head remains at the same coordinates. Keep dark low key moon/candle painterly lighting. No text. Do not move camera, furniture, candle, raven, window or mat. Both hands remain ABOVE the desk and within the chair's overall silhouette. Correct anatomy. Pose: His right gloved hand holds a single small tarot-sized dark-backed card near his chest, his left hand gesturing with two relaxed fingers toward it. No readable illustration or letters on card. Head inclines slightly towards card as he considers its story."
+    },
+    {
+      "key": "cards-explain-mobile",
+      "original": "artwork-archive/npc-dialogues-20261031/cards-explain-mobile.png",
+      "display": "/cards/cards-explain-mobile-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": false,
+      "sha256": "de3b4a2e96bb22f26bf3256e6e9f05de8548a24f7e1a158acc2806ddf1ee631c",
+      "displaySha256": "aecca96b4f66bf935abe660a1e7c8ea833752cf4493be31315ba7dcd93936ad9",
+      "references": [
+        "public/cards/host-shadow-study-mobile-20261027.png",
+        "artwork-archive/npc-dialogues-20261031/cards-explain-desktop.png"
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is EDIT TARGET: approved portrait mobile salon painting. Image 2 is supporting pose reference. Preserve exact tall composition, aspect ratio, camera, character scale, chair, ALL architecture, books, raven, candles, desk and mat geometry of Image 1. Edit ONLY seated host ABOVE the desk edge: adopt the conversational hand gesture of Image 2 (one gloved palm up explaining, other arm on chair). Same raven beak mask, tiny amber eye holes, tilted black top hat purple band/gold brooch, black feather cape, purple/gold coat and cream shirt. Correct two arms, hands with five fingers. Dark muted original painterly lighting. Do NOT move or redesign desk or background. No new text. Hands remain within overall chair bounds and above desk."
+    },
+    {
+      "key": "cards-card-mobile",
+      "original": "artwork-archive/npc-dialogues-20261031/cards-card-mobile.png",
+      "display": "/cards/cards-card-mobile-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": false,
+      "sha256": "b9511cd3d7160b8f131fdcb426418a105551eb7af0b6fe97f98f1619c2e3cb32",
+      "displaySha256": "1aa17d30c4f816ba6db3cc5bdc7c41dd4fbbe93716bada0a0ed4cbba35b205fd",
+      "references": [
+        "public/cards/host-shadow-study-mobile-20261027.png",
+        "artwork-archive/npc-dialogues-20261031/cards-card-desktop.png"
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is EDIT TARGET: approved portrait mobile salon painting. Image 2 is supporting pose reference. Preserve exact tall composition, aspect ratio, camera, character scale, chair, ALL architecture, books, raven, candles, desk and mat geometry of Image 1. Edit ONLY seated host ABOVE the desk edge: adopt the conversational hand gesture of Image 2 (holding a single small dark-backed card near chest and indicating it with the other hand). Same raven beak mask, tiny amber eye holes, tilted black top hat purple band/gold brooch, black feather cape, purple/gold coat and cream shirt. Correct two arms, hands with five fingers. Dark muted original painterly lighting. Do NOT move or redesign desk or background. No new text. Hands remain within overall chair bounds and above desk."
+    }
+  ]
+}

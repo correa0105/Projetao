@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -20,6 +20,7 @@ import {
   type TowerTopic,
 } from '../shared/tower-headquarters';
 import { RisingEmbers } from './RisingEmbers';
+import { NpcPortrait, useDialogueArt, useNpcMotion } from './NpcPortrait';
 const icons = {
   reception: DoorOpen,
   atlas: BookOpen,
@@ -43,7 +44,6 @@ export function TowerHeadquarters({
   children: ReactNode;
 }) {
   const current = towerRooms.find((r) => r.id === room)!;
-  const lightFilter = useId();
   const roomMenu = useRef<HTMLDivElement>(null);
   const clerk = useRef<HTMLButtonElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -92,6 +92,52 @@ export function TowerHeadquarters({
   }, [room]);
   const talking = conversation === room,
     answer = towerAnswers[topic];
+  const { visible, reduced } = useNpcMotion();
+  const [idleReading, setIdleReading] = useState(false);
+  useEffect(() => {
+    if (!talking) return;
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closeTalk();
+    };
+    window.addEventListener('keydown', escape);
+    return () => window.removeEventListener('keydown', escape);
+  }, [talking]);
+  useEffect(() => {
+    setIdleReading(false);
+    if (talking || room !== 'reception' || !visible || reduced) return;
+    let timer: ReturnType<typeof setTimeout>;
+    const schedule = () => {
+      timer = setTimeout(() => {
+        setIdleReading(true);
+        timer = setTimeout(() => {
+          setIdleReading(false);
+          schedule();
+        }, 6000);
+      }, 22000);
+    };
+    schedule();
+    return () => clearTimeout(timer);
+  }, [talking, room, visible, reduced]);
+  const portraitRequest = !talking
+    ? idleReading
+      ? '/tower/headquarters-lia-atlas-20261030.webp'
+      : scene.portrait
+    : ['book', 'tower', 'discoveries', 'return', 'trade', 'uses'].includes(topic)
+      ? '/tower/headquarters-lia-atlas-20261030.webp'
+      : topic === 'expeditions'
+        ? '/tower/headquarters-lia-expeditions-20261030.webp'
+        : topic === 'crystals'
+          ? '/tower/headquarters-lia-crystals-20261030.webp'
+          : topic === 'treasures'
+            ? '/tower/headquarters-lia-treasures-20261030.webp'
+            : '/tower/headquarters-lia-explain-20261031.webp';
+  const portrait = useDialogueArt(
+    portraitRequest,
+    scene.portrait,
+    (talking || idleReading) && portraitRequest.includes('lia-atlas')
+      ? '/tower/headquarters-lia-retrieve-20261031.webp'
+      : undefined,
+  );
   function talk(next: TowerTopic = current.topic) {
     setTopic(next);
     setConversation(room);
@@ -134,40 +180,12 @@ export function TowerHeadquarters({
           if (event.key === 'Escape' && talking) closeTalk();
         }}
       >
-        <svg viewBox="0 0 1024 1536" aria-hidden="true">
-          <defs>
-            <filter
-              id={lightFilter}
-              x="-10%"
-              y="-5%"
-              width="120%"
-              height="110%"
-              colorInterpolationFilters="sRGB"
-            >
-              <feMorphology in="SourceAlpha" operator="dilate" radius="3" result="expanded" />
-              <feGaussianBlur in="expanded" stdDeviation="6" result="soft" />
-              <feComposite in="soft" in2="SourceAlpha" operator="out" result="outside" />
-              <feFlood floodColor="#ecc263" floodOpacity="0.55" result="warm" />
-              <feComposite in="warm" in2="outside" operator="in" result="halo" />
-              <feComposite in="expanded" in2="SourceAlpha" operator="out" result="edge" />
-              <feGaussianBlur in="edge" stdDeviation="0.85" result="softEdge" />
-              <feFlood floodColor="#f5d58b" floodOpacity="0.92" result="gold" />
-              <feComposite in="gold" in2="softEdge" operator="in" result="rim" />
-              <feMerge>
-                <feMergeNode in="halo" />
-                <feMergeNode in="rim" />
-              </feMerge>
-            </filter>
-          </defs>
-          <image className="tower-clerk-portrait" href={scene.portrait} width="1024" height="1536" />
-          <image
-            className="tower-clerk-light"
-            href={scene.portrait}
-            width="1024"
-            height="1536"
-            filter={`url(#${lightFilter})`}
-          />
-        </svg>
+        <NpcPortrait
+          src={portrait}
+          kind="lia"
+          portraitClass="tower-clerk-portrait"
+          lightClass="tower-clerk-light"
+        />
       </button>
       <header className="tower-headquarters-header">
         <div className="tower-headquarters-title">

@@ -110,16 +110,34 @@ export type OwnedCard = {
 export const cardQuestions = [
   {
     question: 'Quem é você?',
+    pose: 'explain',
     answer:
       'Chamam-me de Anfitrião. Recebo as cartas que viajantes trazem e cuido delas até encontrarem outra companhia. Algumas vieram com uma história; outras, apenas com um pedido de silêncio. Pode se sentar.',
   },
   {
+    question: 'Por que usa essa máscara?',
+    pose: 'explain',
+    answer: 'Por hábito, e por alguma preferência pela discrição. Um rosto costuma fazer o visitante decidir depressa demais em quem está confiando. Prefiro que me julgue pelo cuidado com que trato o que me entregam. Quanto ao bico… admito que combina com a companhia da sala.',
+  },
+  {
+    question: 'O que você procura nessas cartas?',
+    pose: 'card',
+    answer: 'As marcas de quem as guardou. Uma dobra, uma borda gasta, a cautela de alguém ao pousá-las na mesa. Nem toda carta conta o futuro; às vezes, conta apenas que alguém conseguiu voltar. É por isso que examino cada uma antes de guardá-la.',
+  },
+  {
+    question: 'Você fica sempre aqui?',
+    pose: 'card',
+    answer: 'Tempo suficiente para reconhecer o passo de alguns visitantes. Gosto destas horas quietas: separar o acervo, conferir uma carta à luz, ouvir o corvo desaprovar minhas escolhas. Ele tem opiniões muito firmes para quem nunca ajuda a organizar nada.',
+  },
+  {
     question: 'Quantas cartas posso levar?',
+    pose: 'card',
     answer:
       'Três podem acompanhar você ao mesmo tempo. As demais ficam guardadas na sua coleção. Escolha um dos três lugares e coloque ali a carta que deseja levar; poderá trocar a combinação quando voltar.',
   },
   {
     question: 'Como consigo novas cartas?',
+    pose: 'card',
     answer:
       'As quatro primeiras estão à venda; deixei o preço junto de cada uma. As outras ficam sob minha guarda por enquanto. Quando houver um modo de recebê-las, você saberá. Não aceito ouro por promessas.',
   },
