@@ -15,9 +15,6 @@ import type { EventScene } from '../shared/events';
 import './events-venue.css';
 import { NpcPortrait, useDialogueArt } from './NpcPortrait';
 import './npc-dialogue.css';
-import { AtriumWind, useAtriumReaction } from './AtriumAmbience';
-import { AtriumGroundFog } from './AtriumGroundFog';
-import { AtriumRelighting } from './AtriumRelighting';
 
 type View = 'reception' | 'agenda' | 'memories';
 type Topic =
@@ -27,24 +24,13 @@ type Topic =
   | 'memories'
   | 'identity'
   | 'manner'
-  | 'past'
-  | 'dismissal'
-  | 'insult'
-  | 'defiance'
-  | 'apology'
-  | 'intimidation';
-const hostileTopics = new Set<Topic>(['intimidation', 'dismissal', 'insult', 'defiance']);
+  | 'past';
 const titles = {
   reception: 'Átrio',
   agenda: 'Agenda de Eventos',
   memories: 'Memórias da Guilda',
 };
 const questions = {
-  intimidation: 'E se eu causar problemas aqui?',
-  dismissal: 'Você é só um porteiro fantasiado.',
-  insult: 'Você fala demais para alguém tão insignificante.',
-  defiance: 'Quero ver você me tirar daqui.',
-  apology: 'Foi mal. Passei do ponto.',
   identity: 'Quem é você?',
   manner: 'Você recebe todo mundo desse jeito?',
   past: 'O que faz você ficar no átrio?',
@@ -54,15 +40,10 @@ const questions = {
   memories: 'Onde encontro as histórias passadas?',
 };
 const followups: Record<Topic, Exclude<Topic, 'welcome'>[]> = {
-  welcome: ['agenda', 'participation', 'memories', 'identity', 'manner', 'past', 'dismissal', 'insult', 'intimidation'],
-  identity: ['manner', 'insult', 'agenda'],
-  manner: ['dismissal', 'intimidation', 'agenda'],
+  welcome: ['agenda', 'participation', 'memories', 'identity', 'manner', 'past'],
+  identity: ['manner', 'past', 'agenda'],
+  manner: ['identity', 'past', 'agenda'],
   past: ['identity', 'memories', 'agenda'],
-  intimidation: ['defiance', 'apology', 'identity'],
-  dismissal: ['insult', 'intimidation', 'apology'],
-  insult: ['defiance', 'intimidation', 'apology'],
-  defiance: ['apology', 'identity', 'agenda'],
-  apology: ['identity', 'agenda', 'memories'],
   agenda: ['participation', 'memories', 'identity'],
   participation: ['agenda', 'memories', 'identity'],
   memories: ['past', 'agenda', 'identity'],
@@ -99,20 +80,12 @@ export function EventsVenue({
   const idlePortrait = '/events/host-tailoring-20261030.webp';
   const requestedPortrait = !talking
     ? idlePortrait
-    : ['identity', 'manner'].includes(topic) || hostileTopics.has(topic)
+    : ['identity', 'manner'].includes(topic)
       ? '/events/events-reserved-refined-20261031.webp'
       : ['agenda', 'memories', 'past'].includes(topic)
         ? '/events/events-register-refined-20261031.webp'
         : '/events/events-speaking-closed-20261031.webp';
   const portrait = useDialogueArt(requestedPortrait, idlePortrait);
-  const intimidating = talking && hostileTopics.has(topic);
-  const reaction = useAtriumReaction(intimidating);
-  const crimsonScene = useDialogueArt(
-    intimidating && scene.background === '/events/antechamber-20261030.webp'
-      ? '/events/atrium-crimson-light-20261031.webp'
-      : scene.background,
-    scene.background,
-  );
   useEffect(() => {
     if (!talking) return;
     const escape = (event: KeyboardEvent) => {
@@ -136,19 +109,7 @@ export function EventsVenue({
     setTalking(true);
   }
   return (
-    <div className="events-venue" data-view={view} data-intimidating={intimidating || undefined} data-reaction={reaction}>
-      <AtriumWind active={reaction === 'fading'} />
-      {intimidating && (
-        <>
-          <div className="events-reaction-room" aria-hidden="true">
-            <div className="events-darkness events-darkness-far" />
-            <div className="events-darkness events-darkness-middle" />
-            <div className="events-darkness events-darkness-near" />
-            <AtriumRelighting background={crimsonScene} x={scene.x} y={scene.y} tinted={crimsonScene === scene.background} />
-          </div>
-          {reaction === 'crimson' && <AtriumGroundFog />}
-        </>
-      )}
+    <div className="events-venue" data-view={view}>
       <header className="events-venue-heading">
         <div>
           <h1>{titles[view]}</h1>
@@ -244,7 +205,6 @@ export function EventsVenue({
           src={portrait}
           kind="events"
           lightClass="events-host-light"
-          intimidating={reaction === 'crimson'}
         />
       </button>
       {talking && (
@@ -318,45 +278,6 @@ export function EventsVenue({
                   Registro os encontros porque a memória costuma favorecer quem fala mais alto. Um
                   nome no papel, ao menos, tem a oportunidade de permanecer.
                 </p>
-              </>
-            )}
-            {topic === 'intimidation' && (
-              <>
-                <p>Pode experimentar. Mas olhe bem para mim antes de decidir.</p>
-                <p>
-                  Este átrio recebe viajantes cansados, companhias inteiras e gente que só precisa
-                  de um lugar tranquilo. Enquanto eu estiver aqui, todos vão respeitar essa paz.
-                  Inclusive você.
-                </p>
-                <p>Agora… podemos recomeçar essa conversa com mais educação.</p>
-              </>
-            )}
-            {topic === 'dismissal' && (
-              <>
-                <p>Porteiro? Há dias em que é exatamente isso. Ainda assim, você está do lado de dentro porque eu permiti.</p>
-                <p>Não preciso que goste de mim. Preciso que trate quem está aqui com respeito. A roupa não muda essa regra, e o seu desprezo também não.</p>
-                <p>Quer conversar, ou veio apenas testar a paciência de um estranho?</p>
-              </>
-            )}
-            {topic === 'insult' && (
-              <>
-                <p>Curioso. Você poderia perguntar por qualquer história guardada neste lugar. Preferiu gastar a voz tentando me diminuir.</p>
-                <p>Eu sei quem sou. Você ainda está decidindo que impressão quer deixar. Sugiro escolher com mais cuidado a próxima frase.</p>
-                <p>Podemos encerrar essa disputa agora. Basta mudar o tom.</p>
-              </>
-            )}
-            {topic === 'defiance' && (
-              <>
-                <p>Você confundiu hospitalidade com falta de limites.</p>
-                <p>Olhe ao redor. A paz deste átrio não está em discussão. Não vou transformar os outros visitantes em plateia para o seu orgulho.</p>
-                <p>A saída continua onde sempre esteve. Pode usá-la, ou ficar e agir como alguém que merece ser recebido. A escolha é sua.</p>
-              </>
-            )}
-            {topic === 'apology' && (
-              <>
-                <p>Passou. E percebeu antes de tornar isso mais desagradável. Já é um começo.</p>
-                <p>Estamos entendidos. Não pretendo cobrar uma reverência por cada palavra mal colocada. Respeite a casa e podemos recomeçar.</p>
-                <p>Então… veio procurar um encontro, uma história, ou só um lugar para descansar?</p>
               </>
             )}
             {topic === 'agenda' && (

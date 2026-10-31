@@ -11,7 +11,7 @@ await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
   process.exitCode = await new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, ['--import', 'tsx', 'scripts/smoke-atrium-ambience.ts'], {
+    const child = spawn(process.execPath, ['--import', 'tsx', 'scripts/smoke-atrium-normal.ts'], {
       env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
       stdio: 'inherit',
       windowsHide: true,

@@ -7,10 +7,6 @@
 .npc-pose {
   animation: npc-pose-enter 0.2s ease both;
 }
-.npc-eye-glow {
-  opacity: 0.95;
-  animation: npc-intimidating-eye 3.6s ease-in-out infinite;
-}
 .npc-glasses-glint {
   opacity: 0;
   animation: npc-lens-adjust 0.9s ease-out both;
@@ -22,22 +18,11 @@
 .npc-portrait[data-motion='off'] * {
   animation: none;
 }
-.npc-portrait[data-motion='off'] .npc-eye-glow {
-  opacity: 0.95;
-}
 @keyframes npc-pose-enter {
   from {
     opacity: 0.85;
   }
   to {
-    opacity: 1;
-  }
-}
-@keyframes npc-intimidating-eye {
-  0%, 100% {
-    opacity: 0.78;
-  }
-  50% {
     opacity: 1;
   }
 }

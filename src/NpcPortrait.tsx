@@ -51,13 +51,11 @@ export function NpcPortrait({
   kind,
   portraitClass,
   lightClass,
-  intimidating = false,
 }: {
   src: string;
   kind: 'lia' | 'events';
   portraitClass?: string;
   lightClass: string;
-  intimidating?: boolean;
 }) {
   const id = useId();
   const { visible, reduced } = useNpcMotion();
@@ -73,11 +71,6 @@ export function NpcPortrait({
     'M356 286C364 274 394 271 423 274C436 276 444 280 442 299C439 319 421 331 397 333C375 338 362 332 357 319C352 306 351 296 356 286Z',
     'M479 250C493 239 521 229 544 234C560 238 565 248 561 266C557 284 546 293 525 299C503 306 483 299 478 287C472 274 472 261 479 250Z',
   ];
-  const eye = /speaking-refined|speaking-closed/.test(src)
-    ? [478, 270]
-    : src.includes('reserved-refined')
-      ? [459, 263]
-      : [459, 273];
   return (
     <svg
       viewBox="0 0 1024 1536"
@@ -86,7 +79,6 @@ export function NpcPortrait({
       data-motion={visible && !reduced ? 'on' : 'off'}
       data-art={src}
       data-glasses={glasses}
-      data-intimidating={intimidating || undefined}
     >
       <defs>
         <filter
@@ -111,11 +103,6 @@ export function NpcPortrait({
             <feMergeNode in="rim" />
           </feMerge>
         </filter>
-        <radialGradient id={id + '-eye'}>
-          <stop stopColor="#ffc98a" />
-          <stop offset=".3" stopColor="#ef542b" stopOpacity=".8" />
-          <stop offset="1" stopColor="#d22a19" stopOpacity="0" />
-        </radialGradient>
         <linearGradient
           id={id + '-white'}
           x1="0"
@@ -152,16 +139,6 @@ export function NpcPortrait({
         height="1536"
         filter={`url(#${id}-halo)`}
       />
-      {kind === 'events' && intimidating && (
-        <ellipse
-          className="npc-eye-glow"
-          cx={eye[0]}
-          cy={eye[1]}
-          rx="24"
-          ry="13"
-          fill={`url(#${id}-eye)`}
-        />
-      )}
       {adjusting && !src.includes('-painted-') && (
         <g key={src} className="npc-glasses-effect" data-mood={glasses}>
           {(glasses === 'stern'
