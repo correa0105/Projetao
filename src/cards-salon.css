@@ -45,7 +45,7 @@
 .cards-room--salon .cards-mask-shimmer { opacity:.1; animation:cards-mask-light 11s ease-in-out infinite; }
 .cards-room--salon .cards-host-pose[data-motion='off'] * { animation:none; }
 @keyframes cards-mask-light { 0%,60%,100% { opacity:.1; } 72% { opacity:.7; } 84% { opacity:.15; } }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { position:absolute; z-index:8; top:215px; left:4vw; right:auto; display:flex; flex-direction:column; gap:12px; width:min(340px,calc(100% - 36px)); max-height:max(88px,calc(var(--cards-dialogue-limit,450px) - 215px)); box-sizing:border-box; overflow:hidden; padding:20px; background:#14151ef5; border-color:#a68c5860; animation:cards-dialogue-enter .2s ease both; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { position:absolute; z-index:8; top:215px; left:var(--cards-dialogue-left,4vw); right:auto; display:flex; flex-direction:column; gap:12px; width:min(340px,calc(100% - 36px)); max-height:max(88px,calc(var(--cards-dialogue-limit,450px) - 215px)); box-sizing:border-box; overflow:hidden; padding:20px; background:#14151ef5; border-color:#a68c5860; animation:cards-dialogue-enter .2s ease both; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue::after { content:none; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue > .eyebrow { flex:none; padding-right:24px; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue-body { min-height:0; overflow-y:auto; scroll-behavior:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#8e794a66 transparent; }

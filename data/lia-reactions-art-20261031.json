@@ -1,0 +1,34 @@
+{
+  "mode": "integrated-image_gen",
+  "purpose": "Expressões brava e esperta de Lia ajustando os óculos. Efeitos brancos nas lentes são camadas SVG, sem alterar os originais.",
+  "assets": [
+    {
+      "key": "lia-glasses-stern",
+      "original": "artwork-archive/lia-reactions-20261031/lia-glasses-stern.png",
+      "display": "/tower/headquarters-lia-glasses-stern-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "648ecd2e68ff94cf44363b605231521f761331c97558cacac13497cceb2a5ef7",
+      "displaySha256": "83d3f8e613657f98ed2c373d5545eb3f079ee72112e0ff6af7088ac1ee077c8e",
+      "references": [
+        "artwork-archive/npc-dialogue-refinements-20261031/lia-considering-refined.png"
+      ],
+      "prompt": "Use case: identity-preserve. EDIT TARGET image 1 is approved Lia adjusting her glasses. Make a transparent 1024x1536 expression variant. LOCK exactly the hand-adjusting-glasses pose, spectacle placement, camera, head position, body and book position, framing, clothing and anatomy. Same adult human woman, short curled chestnut bob/fringe, gold oval glasses, cream collared blouse rolled sleeves, charcoal waistcoat/brass buttons, belt and long skirt. Preserve the dim warm painterly fantasy finish and exact identity. Hand must stay touching the left outer temple of the glasses as in target, with natural five-finger anatomy. Keep lenses CLEAR with her eyes visible; white reflections will be added in the application. Truly transparent alpha background, no glow/haze or painted backdrop. Change facial acting ONLY: She is distinctly annoyed and stern: eyebrows lower and draw together, eyes narrowed at the visitor, lips closed in a firm straight line, jaw set. No smile or upturned mouth corners. Controlled displeasure from a competent clerk warning someone to be honest; not screaming, not grotesque. Keep exact glasses silhouette and head angle."
+    },
+    {
+      "key": "lia-glasses-knowing",
+      "original": "artwork-archive/lia-reactions-20261031/lia-glasses-knowing.png",
+      "display": "/tower/headquarters-lia-glasses-knowing-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "72082f4a415239eb9a723544fa579013c062ea57c2e77133163b874ee967fedb",
+      "displaySha256": "e5b4b6f9344e82a2c979cab4d066d82f5908df1f98dacc773d44f86095506f78",
+      "references": [
+        "artwork-archive/npc-dialogue-refinements-20261031/lia-considering-refined.png"
+      ],
+      "prompt": "Use case: identity-preserve. EDIT TARGET image 1 is approved Lia adjusting her glasses. Make a transparent 1024x1536 expression variant. LOCK exactly the hand-adjusting-glasses pose, spectacle placement, camera, head position, body and book position, framing, clothing and anatomy. Same adult human woman, short curled chestnut bob/fringe, gold oval glasses, cream collared blouse rolled sleeves, charcoal waistcoat/brass buttons, belt and long skirt. Preserve the dim warm painterly fantasy finish and exact identity. Hand must stay touching the left outer temple of the glasses as in target, with natural five-finger anatomy. Keep lenses CLEAR with her eyes visible; white reflections will be added in the application. Truly transparent alpha background, no glow/haze or painted backdrop. Change facial acting ONLY: She has just noticed something the visitor missed: subtle knowing asymmetric closed-mouth smirk, one eyebrow slightly lifted, direct shrewd attentive gaze. Clever confidence with playful restrained amusement, not a broad grin. Keep exact glasses silhouette, head angle and all other features."
+    }
+  ]
+}

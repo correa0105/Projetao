@@ -1,0 +1,34 @@
+{
+  "mode": "integrated-image_gen",
+  "purpose": "Correção anatômica da mão de conversa do anfitrião das Cartas, preservando enquadramento e mesa.",
+  "assets": [
+    {
+      "key": "cards-card-hands-desktop",
+      "original": "artwork-archive/cards-host-hands-20261031/cards-card-hands-desktop.png",
+      "display": "/cards/cards-card-hands-desktop-20261031.webp",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "sha256": "c24bc9331e80892a08730596b9c18f0f26eafcde02770985cf0025d5b41559b5",
+      "displaySha256": "8f2c920c54f57592218bb385a9e410fcb049b4ff0a66642d96f8f4c68a0bc464",
+      "references": [
+        "artwork-archive/npc-dialogues-20261031/cards-card-desktop.png"
+      ],
+      "prompt": "Use case: precise-object-edit. EDIT TARGET: supplied desktop card-salon painting. Repair ONLY the anatomically broken pointing hand on the VIEWER'S RIGHT of the seated host's chest. Keep the entire canvas size, camera, background, desk, mat, chair, host mask/face/hat, feathers, clothing, other arm and the card-holding hand pixel-aligned and unchanged. Replace that malformed pointing glove with one realistic relaxed HUMAN hand, five fingers with one thumb and four correctly connected fingers, natural knuckles and wrist, black leather glove. It is a small conversational gesture: palm angled inward toward his torso, fingers gently curved and separated, NO pointing finger, NO extended rigid blades. Very SHORT gold fingertip caps sit snugly over the glove's fingertips; they are small ornaments, not long claws or floating rods. Correct glove folds, believable finger lengths, no doubled thumb, detached finger, fused digits or extra hand. Preserve original dark painterly lighting, gold highlights and exact composition. The repaired hand stays in the same local chest region and must not touch or move the desk. Do not add anything else. Same native resolution and aspect ratio as input, no text or watermark."
+    },
+    {
+      "key": "cards-card-hands-mobile",
+      "original": "artwork-archive/cards-host-hands-20261031/cards-card-hands-mobile.png",
+      "display": "/cards/cards-card-hands-mobile-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": false,
+      "sha256": "37d1a44bf49e7c0d7557efff447e061b85d149f155a593be2c16b9e8672f932c",
+      "displaySha256": "a2964c4af11c06ff34d7d2bf2c351846580e361582e22841c3089237cb6fe569",
+      "references": [
+        "artwork-archive/npc-dialogues-20261031/cards-card-mobile.png"
+      ],
+      "prompt": "Use case: precise-object-edit. EDIT TARGET: supplied mobile card-salon painting. Repair ONLY the anatomically broken pointing hand on the VIEWER'S RIGHT of the seated host's chest. Keep the entire canvas size, camera, background, desk, mat, chair, host mask/face/hat, feathers, clothing, other arm and the card-holding hand pixel-aligned and unchanged. Replace that malformed pointing glove with one realistic relaxed HUMAN hand, five fingers with one thumb and four correctly connected fingers, natural knuckles and wrist, black leather glove. It is a small conversational gesture: palm angled inward toward his torso, fingers gently curved and separated, NO pointing finger, NO extended rigid blades. Very SHORT gold fingertip caps sit snugly over the glove's fingertips; they are small ornaments, not long claws or floating rods. Correct glove folds, believable finger lengths, no doubled thumb, detached finger, fused digits or extra hand. Preserve original dark painterly lighting, gold highlights and exact composition. The repaired hand stays in the same local chest region and must not touch or move the desk. Do not add anything else. Same native resolution and aspect ratio as input, no text or watermark."
+    }
+  ]
+}

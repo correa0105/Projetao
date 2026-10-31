@@ -4,6 +4,8 @@ export type TowerTopic =
   | 'lia'
   | 'work'
   | 'book'
+  | 'honesty'
+  | 'clever'
   | 'tower'
   | 'discoveries'
   | 'expeditions'
@@ -88,7 +90,7 @@ export const towerAnswers: Record<TowerTopic, Answer> = {
       'Lia. Sou a escrivã da Torre — a pessoa que pede seu nome antes da partida e confere se ele voltou na lista certa. Pode parecer pouco, até faltar um nome.',
       'Gosto de ouvir quem retorna. Os relatos nunca chegam na ordem dos acontecimentos; primeiro vem o susto, depois a risada, e só então consigo anotar alguma coisa. É a melhor parte do meu trabalho.',
     ],
-    related: ['work', 'book', 'tower'],
+    related: ['work', 'book', 'honesty', 'clever', 'tower'],
   },
   work: {
     title: 'Você também sobe a Torre?',
@@ -97,6 +99,22 @@ export const towerAnswers: Record<TowerTopic, Answer> = {
       'Se me perguntar sobre algo que ainda não foi registrado, minha resposta será “não sei”. Prefiro uma lacuna honesta a mandar alguém para o perigo com uma certeza inventada.',
     ],
     related: ['book', 'lia', 'discoveries'],
+  },
+  honesty: {
+    title: 'E se eu inventar uma conquista?',
+    paragraphs: [
+      'Não. Pode brincar comigo, mas não com o nome de quem entrou naquela Torre. Um registro falso apaga o esforço de quem esteve lá de verdade.',
+      'Conte o que aconteceu, inclusive quando não saiu como queria. Isso eu consigo registrar. Coragem inventada, não.',
+    ],
+    related: ['clever', 'lia', 'book'],
+  },
+  clever: {
+    title: 'Você nunca se perde nessas anotações?',
+    paragraphs: [
+      'Às vezes. Mas sei exatamente onde anotei que estava perdida. Ajuda bastante.',
+      'Você mudou um detalhe da história desde que chegou. Não precisa se assustar: estou falando da cor da capa. Tenho o hábito de prestar atenção.',
+    ],
+    related: ['honesty', 'lia', 'book'],
   },
   book: {
     title: 'O que você tanto consulta nesse livro?',
@@ -184,6 +202,8 @@ export const towerQuestionLabels: Record<TowerTopic, string> = {
   lia: 'Quem é você, Lia?',
   work: 'Você também sobe a Torre?',
   book: 'O que tem nesse livro?',
+  honesty: 'E se eu inventar uma conquista?',
+  clever: 'Você nunca se perde nessas anotações?',
   tower: 'Quero conhecer a Torre.',
   discoveries: 'O que já podemos descobrir?',
   expeditions: 'Quero preparar uma expedição.',

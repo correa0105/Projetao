@@ -8,18 +8,22 @@
   animation: npc-pose-enter 0.2s ease both;
 }
 .npc-eye-glow {
-  opacity: 0.15;
-  animation: npc-eye-ember 9s ease-in-out infinite;
+  opacity: 0.95;
+  animation: npc-intimidating-eye 1.5s ease-out both;
 }
 .npc-glasses-glint {
   opacity: 0;
-  animation: npc-lens-light 13s ease-in-out infinite;
+  animation: npc-lens-adjust 0.9s ease-out both;
+}
+.npc-lens-white {
+  opacity: 1;
+  animation: npc-lens-fill 0.6s ease-out both;
 }
 .npc-portrait[data-motion='off'] * {
   animation: none;
 }
 .npc-portrait[data-motion='off'] .npc-eye-glow {
-  opacity: 0.12;
+  opacity: 0.95;
 }
 @keyframes npc-pose-enter {
   from {
@@ -29,30 +33,31 @@
     opacity: 1;
   }
 }
-@keyframes npc-eye-ember {
-  0%,
-  55%,
-  100% {
-    opacity: 0.12;
+@keyframes npc-intimidating-eye {
+  from {
+    opacity: 0;
   }
-  70% {
-    opacity: 0.8;
-  }
-  78% {
-    opacity: 0.35;
+  to {
+    opacity: 0.95;
   }
 }
-@keyframes npc-lens-light {
-  0%,
-  75%,
-  100% {
+@keyframes npc-lens-fill {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes npc-lens-adjust {
+  0% {
     opacity: 0;
     transform: translateX(0);
   }
-  78% {
-    opacity: 0.7;
+  25% {
+    opacity: 0.8;
   }
-  84% {
+  100% {
     opacity: 0;
     transform: translateX(360px);
   }

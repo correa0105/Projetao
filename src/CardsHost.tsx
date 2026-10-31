@@ -17,7 +17,10 @@ export function CardsHostPose({ gesture }: { gesture: CardsHostGesture }) {
   }, []);
   const kind = mobile ? 'mobile' : 'desktop';
   const fallback = '/cards/host-shadow-study-' + (mobile ? 'mobile-' : '') + '20261027.png';
-  const requested = gesture === 'idle' ? fallback : `/cards/cards-${gesture}-${kind}-20261031.webp`;
+  const requested =
+    gesture === 'idle'
+      ? fallback
+      : `/cards/cards-${gesture === 'card' ? 'card-hands' : gesture}-${kind}-20261031.webp`;
   const src = useDialogueArt(requested, fallback);
   const changing = src !== fallback && src.includes(kind);
   return (
@@ -83,6 +86,11 @@ export function CardsHost({
         height = room.clientHeight;
       const shape = cardsHostOutlines[width <= 900 ? 'mobile' : 'desktop'];
       const scale = Math.max(width / shape.width, height / shape.height);
+      if (width > 900)
+        room.style.setProperty(
+          '--cards-dialogue-left',
+          `${Math.max(18, Math.min(width - 358, (width - shape.width * scale) / 2 + 580 * scale))}px`,
+        );
       setPosition({
         left: (width - shape.width * scale) / 2 + shape.bounds.x * scale,
         top: (height - shape.height * scale) / 2 + shape.bounds.y * scale,
@@ -93,7 +101,10 @@ export function CardsHost({
     const observer = new ResizeObserver(update);
     observer.observe(room);
     update();
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      room.style.removeProperty('--cards-dialogue-left');
+    };
   }, [buttonRef]);
   return (
     <button

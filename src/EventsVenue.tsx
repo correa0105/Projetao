@@ -16,13 +16,22 @@ import './events-venue.css';
 import { NpcPortrait, useDialogueArt } from './NpcPortrait';
 
 type View = 'reception' | 'agenda' | 'memories';
-type Topic = 'welcome' | 'agenda' | 'participation' | 'memories' | 'identity' | 'manner' | 'past';
+type Topic =
+  | 'welcome'
+  | 'agenda'
+  | 'participation'
+  | 'memories'
+  | 'identity'
+  | 'manner'
+  | 'past'
+  | 'intimidation';
 const titles = {
   reception: 'Átrio',
   agenda: 'Agenda de Eventos',
   memories: 'Memórias da Guilda',
 };
 const questions = {
+  intimidation: 'E se eu causar problemas aqui?',
   identity: 'Quem é você?',
   manner: 'Você recebe todo mundo desse jeito?',
   past: 'O que faz você ficar no átrio?',
@@ -61,12 +70,13 @@ export function EventsVenue({
   const idlePortrait = '/events/host-tailoring-20261030.webp';
   const requestedPortrait = !talking
     ? idlePortrait
-    : ['identity', 'manner'].includes(topic)
+    : ['identity', 'manner', 'intimidation'].includes(topic)
       ? '/events/events-reserved-refined-20261031.webp'
       : ['agenda', 'memories', 'past'].includes(topic)
         ? '/events/events-register-refined-20261031.webp'
         : '/events/events-speaking-refined-20261031.webp';
   const portrait = useDialogueArt(requestedPortrait, idlePortrait);
+  const intimidating = talking && topic === 'intimidation';
   useEffect(() => {
     if (!talking) return;
     const escape = (event: KeyboardEvent) => {
@@ -90,7 +100,17 @@ export function EventsVenue({
     setTalking(true);
   }
   return (
-    <div className="events-venue" data-view={view}>
+    <div className="events-venue" data-view={view} data-intimidating={intimidating || undefined}>
+      <svg width="0" height="0" aria-hidden="true" className="events-light-filter">
+        <defs>
+          <filter id="events-red-light" colorInterpolationFilters="sRGB">
+            <feColorMatrix
+              type="matrix"
+              values=".8 .12 .08 0 0 .07 .025 .015 0 0 .09 .025 .015 0 0 0 0 0 1 0"
+            />
+          </filter>
+        </defs>
+      </svg>
       <header className="events-venue-heading">
         <div>
           <h1>{titles[view]}</h1>
@@ -182,7 +202,12 @@ export function EventsVenue({
         }}
         onClick={() => (talking ? closeTalk() : ask('welcome'))}
       >
-        <NpcPortrait src={portrait} kind="events" lightClass="events-host-light" />
+        <NpcPortrait
+          src={portrait}
+          kind="events"
+          lightClass="events-host-light"
+          intimidating={intimidating}
+        />
       </button>
       {talking && (
         <section
@@ -256,6 +281,17 @@ export function EventsVenue({
                 </p>
               </>
             )}
+            {topic === 'intimidation' && (
+              <>
+                <p>Pode experimentar. Mas olhe bem para mim antes de decidir.</p>
+                <p>
+                  Este átrio recebe viajantes cansados, companhias inteiras e gente que só precisa
+                  de um lugar tranquilo. Enquanto eu estiver aqui, todos vão respeitar essa paz.
+                  Inclusive você.
+                </p>
+                <p>Agora… podemos recomeçar essa conversa com mais educação.</p>
+              </>
+            )}
             {topic === 'agenda' && (
               <>
                 <p>
@@ -305,7 +341,17 @@ export function EventsVenue({
               </>
             )}
             <nav aria-label="Perguntas ao anfitrião">
-              {(['identity', 'manner', 'past', 'agenda', 'participation', 'memories'] as const)
+              {(
+                [
+                  'identity',
+                  'manner',
+                  'past',
+                  'agenda',
+                  'participation',
+                  'memories',
+                  'intimidation',
+                ] as const
+              )
                 .filter((t) => t !== topic)
                 .map((t) => (
                   <button key={t} onClick={() => ask(t)}>

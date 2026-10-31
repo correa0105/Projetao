@@ -102,17 +102,21 @@ export function TowerHeadquarters({
   }, [talking]);
   const portraitRequest = !talking
     ? scene.portrait
-    : ['book', 'tower', 'discoveries', 'return'].includes(topic)
-      ? '/tower/headquarters-lia-reading-refined-20261031.webp'
-      : ['work', 'trade', 'uses'].includes(topic)
-        ? '/tower/headquarters-lia-considering-refined-20261031.webp'
-        : topic === 'expeditions'
-          ? '/tower/headquarters-lia-expeditions-20261030.webp'
-          : topic === 'crystals'
-            ? '/tower/headquarters-lia-crystals-20261030.webp'
-            : topic === 'treasures'
-              ? '/tower/headquarters-lia-treasures-20261030.webp'
-              : '/tower/headquarters-lia-speaking-refined-20261031.webp';
+    : topic === 'honesty'
+      ? '/tower/headquarters-lia-glasses-stern-20261031.webp'
+      : topic === 'clever'
+        ? '/tower/headquarters-lia-glasses-knowing-20261031.webp'
+        : ['book', 'tower', 'discoveries', 'return'].includes(topic)
+          ? '/tower/headquarters-lia-reading-refined-20261031.webp'
+          : ['work', 'trade', 'uses'].includes(topic)
+            ? '/tower/headquarters-lia-considering-refined-20261031.webp'
+            : topic === 'expeditions'
+              ? '/tower/headquarters-lia-expeditions-20261030.webp'
+              : topic === 'crystals'
+                ? '/tower/headquarters-lia-crystals-20261030.webp'
+                : topic === 'treasures'
+                  ? '/tower/headquarters-lia-treasures-20261030.webp'
+                  : '/tower/headquarters-lia-speaking-refined-20261031.webp';
   const portrait = useDialogueArt(portraitRequest, scene.portrait);
   function talk(next: TowerTopic = current.topic) {
     setTopic(next);
@@ -151,7 +155,7 @@ export function TowerHeadquarters({
         aria-label="Conversar com Lia"
         aria-expanded={talking}
         aria-controls={talking ? 'tower-clerk-conversation' : undefined}
-        onClick={() => (talking ? closeTalk() : talk(topic))}
+        onClick={() => (talking ? closeTalk() : talk())}
         onKeyDown={(event) => {
           if (event.key === 'Escape' && talking) closeTalk();
         }}

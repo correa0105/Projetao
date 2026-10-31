@@ -15,6 +15,16 @@
 .events-page--venue .events-backdrop {
   background-attachment: initial;
 }
+.events-light-filter { position:absolute; pointer-events:none; }
+.events-page--venue:has(.events-venue[data-intimidating='true']) .events-backdrop {
+  filter:url(#events-red-light);
+}
+.events-page--venue:has(.events-venue[data-intimidating='true']) .events-shade {
+  background:linear-gradient(180deg,#17000620,#120006b8),radial-gradient(ellipse at 30% 40%,#67051022,#16000699);
+}
+.events-venue[data-intimidating='true'] .npc-pose {
+  filter:brightness(.78) sepia(.18) saturate(.9);
+}
 .events-page--venue .events-shade {
   background:
     linear-gradient(180deg, #090c1280, transparent 25%, #090c1230 65%, #090c12b8),

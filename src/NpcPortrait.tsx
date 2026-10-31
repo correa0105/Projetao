@@ -51,21 +51,28 @@ export function NpcPortrait({
   kind,
   portraitClass,
   lightClass,
+  intimidating = false,
 }: {
   src: string;
   kind: 'lia' | 'events';
   portraitClass?: string;
   lightClass: string;
+  intimidating?: boolean;
 }) {
   const id = useId();
   const { visible, reduced } = useNpcMotion();
-  const reading = /reading-refined|atlas/.test(src);
-  const considering = src.includes('considering-refined');
-  const lenses = reading
-    ? [402, 309, 540, 285]
-    : considering
-      ? [404, 303, 530, 267]
-      : [400, 305, 545, 282];
+  const adjusting = kind === 'lia' && /considering-refined|lia-glasses-/.test(src);
+  const glasses = !adjusting
+    ? 'none'
+    : src.includes('glasses-stern')
+      ? 'stern'
+      : src.includes('glasses-knowing')
+        ? 'knowing'
+        : 'adjust';
+  const lensPaths = [
+    'M356 286C364 274 394 271 423 274C436 276 444 280 442 299C439 319 421 331 397 333C375 338 362 332 357 319C352 306 351 296 356 286Z',
+    'M479 250C493 239 521 229 544 234C560 238 565 248 561 266C557 284 546 293 525 299C503 306 483 299 478 287C472 274 472 261 479 250Z',
+  ];
   const eye = src.includes('speaking-refined')
     ? [478, 270]
     : src.includes('reserved-refined')
@@ -78,6 +85,8 @@ export function NpcPortrait({
       className="npc-portrait"
       data-motion={visible && !reduced ? 'on' : 'off'}
       data-art={src}
+      data-glasses={glasses}
+      data-intimidating={intimidating || undefined}
     >
       <defs>
         <filter
@@ -107,26 +116,27 @@ export function NpcPortrait({
           <stop offset=".3" stopColor="#ef542b" stopOpacity=".8" />
           <stop offset="1" stopColor="#d22a19" stopOpacity="0" />
         </radialGradient>
+        <linearGradient
+          id={id + '-white'}
+          x1="0"
+          y1="0"
+          x2=".6"
+          y2="1"
+          gradientUnits="objectBoundingBox"
+        >
+          <stop stopColor="#fffefa" />
+          <stop offset=".55" stopColor="#f3f5ec" />
+          <stop offset="1" stopColor="#dce8e6" />
+        </linearGradient>
         <linearGradient id={id + '-glint'}>
           <stop stopColor="#fff7dc" stopOpacity="0" />
           <stop offset=".5" stopColor="#fff7dc" stopOpacity=".7" />
           <stop offset="1" stopColor="#fff7dc" stopOpacity="0" />
         </linearGradient>
         <clipPath id={id + '-lenses'}>
-          <ellipse
-            cx={lenses[0]}
-            cy={lenses[1]}
-            rx="51"
-            ry="27"
-            transform={`rotate(-12 ${lenses[0]} ${lenses[1]})`}
-          />
-          <ellipse
-            cx={lenses[2]}
-            cy={lenses[3]}
-            rx="51"
-            ry="27"
-            transform={`rotate(-12 ${lenses[2]} ${lenses[3]})`}
-          />
+          {lensPaths.map((d, i) => (
+            <path key={i} d={d} />
+          ))}
         </clipPath>
       </defs>
       <image
@@ -142,22 +152,41 @@ export function NpcPortrait({
         height="1536"
         filter={`url(#${id}-halo)`}
       />
-      {kind === 'events' ? (
+      {kind === 'events' && intimidating && (
         <ellipse
           className="npc-eye-glow"
           cx={eye[0]}
           cy={eye[1]}
-          rx="16"
-          ry="9"
+          rx="24"
+          ry="13"
           fill={`url(#${id}-eye)`}
         />
-      ) : (
-        <g clipPath={`url(#${id}-lenses)`}>
-          <path
-            className="npc-glasses-glint"
-            d="M250 220h38l110 200h-38z"
-            fill={`url(#${id}-glint)`}
-          />
+      )}
+      {adjusting && (
+        <g key={src} className="npc-glasses-effect" data-mood={glasses}>
+          {(glasses === 'stern'
+            ? lensPaths
+            : glasses === 'knowing'
+              ? lensPaths.slice(0, 1)
+              : []
+          ).map((d, i) => (
+            <path
+              key={i}
+              className="npc-lens-white"
+              data-lens={i}
+              d={d}
+              fill={`url(#${id}-white)`}
+            />
+          ))}
+          {glasses === 'adjust' && (
+            <g clipPath={`url(#${id}-lenses)`}>
+              <path
+                className="npc-glasses-glint"
+                d="M250 220h38l110 200h-38z"
+                fill={`url(#${id}-glint)`}
+              />
+            </g>
+          )}
         </g>
       )}
     </svg>
