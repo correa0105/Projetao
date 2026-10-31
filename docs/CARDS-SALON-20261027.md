@@ -20,6 +20,14 @@ As oito novas artes dos três NPCs foram geradas com imagegen integrado e preser
 
 A mão que gesticula junto à carta foi corrigida nas pinturas desktop e celular: dedos curvados e conectados ao punho, com pequenas ponteiras douradas sobre a luva, sem as hastes longas que pareciam dedos soltos. A mão que segura a carta, o personagem, o cenário e o plano da mesa conservam a composição. A pose atual usa `public/cards/cards-card-hands-{desktop,mobile}-20261031.webp`; originais nativos em `artwork-archive/cards-host-hands-20261031/`, gerados por edição com imagegen integrado. Fontes, prompts e hashes no [registro da correção](../data/cards-host-hands-art-20261031.json). As pinturas anteriores ficam preservadas.
 
+A carta segurada nessa pose usa o mesmo `CardBack` aprovado, com moldura gótica,
+olho realista e piscar, nas versões desktop e celular. `CardsHeldCard.tsx` projeta
+o componente nos quatro cantos da carta da pintura e recompõe os dedos originais
+por cima, preservando a pegada e a anatomia. Os PNGs/WebPs, a mão, o personagem
+e o cenário não são regravados. A carta acompanha o recorte e a perspectiva da
+pose; fecha com o diálogo e não aparece nas poses sem carta. Movimento reduzido
+ou aba oculta mantêm o olho aberto, seguindo o controle de movimento da pose.
+
 A plaquinha flutuante “Conversar” foi retirada. O Anfitrião recebe clique/toque diretamente na silhueta; mouse ou foco pelo teclado acendem uma borda dourada suave com halo externo, no mesmo acabamento de Eventos. As duas artes têm máscaras técnicas próprias, extraídas por segmentação e vetorizadas em coordenadas nativas; o mesmo recorte `center / cover` mantém o contorno alinhado no desktop e no celular. A mesa oculta a base do contorno. As pinturas originais não são alteradas e as máscaras não são baixadas pelo cliente: somente os caminhos SVG. Enter/Espaço abrem/fecham a conversa; Escape e o fechamento devolvem foco ao personagem. Máscaras e fontes em [registro do contorno](../data/cards-host-contours-20261030.json). Três espaços, acervo, cartas, compras e som conservam seus comportamentos.
 
 O contorno foi conferido em 1896/1440/768/390/320, incluindo clique no rosto, teclado, fechamento com retorno de foco, ausência da plaquinha e abertura do acervo sem bloqueio pela silhueta. As capturas ficam em `.local/vtt-entry-cards-window-20261030/`; a verificação usa conta e banco descartáveis, sem compras reais.

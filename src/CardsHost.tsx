@@ -1,6 +1,7 @@
 import { useId, useLayoutEffect, useState, type CSSProperties, type RefObject } from 'react';
 import { cardsHostOutlines } from './cards-host-outlines';
 import { useDialogueArt, useNpcMotion } from './NpcPortrait';
+import { CardsHeldCard } from './CardsHeldCard';
 
 export type CardsHostGesture = 'idle' | 'explain' | 'card';
 
@@ -56,6 +57,7 @@ export function CardsHostPose({ gesture }: { gesture: CardsHostGesture }) {
           clipPath={`url(#${id}-patch)`}
         />
       )}
+      {changing && src.includes('cards-card-hands-') && <CardsHeldCard mobile={mobile} src={src}/>}
       <circle
         className="cards-mask-shimmer"
         cx={mobile ? 662 : 1074}
