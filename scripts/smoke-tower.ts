@@ -169,7 +169,7 @@ try {
   await expect(page.locator('.tower-clerk image').first()).toHaveAttribute('href','/tower/headquarters-lia-reception-20261030.webp');
   await expect(page.locator('.tower-headquarters-scene img')).toHaveAttribute(
     'src',
-    '/tower/headquarters-atlas-room-20261030.webp',
+    '/tower/headquarters-atlas-window-20261030.webp',
   );
   await page.unroute('**/tower/headquarters-lia-atlas-20261030.webp');
   await chooseRoom(page, 'Cristais');

@@ -10,7 +10,8 @@ import { WorldPlacePicker } from './WorldPlacePicker';
 import { Modal } from './components';
 import { VttPlaceSettings } from './VttPlaceSettings';
 import { copyText } from './copy-text';
-import { vttPersonalHref, vttInviteCode } from '../shared/vtt-links';
+import { vttPersonalHref, vttInviteCode, vttEntryTarget } from '../shared/vtt-links';
+import { VttLobby } from './VttLobby';
 import { vttStorageLabel } from '../shared/vtt-storage';
 import { VttHighQualityCapture, renderVttCaptureFrame, type VttCaptureFrame } from './VttHighQualityCapture';
 import { VttItemLayers, VttStackButtons } from './VttItemLayers';
@@ -174,7 +175,7 @@ import { VttCanopyEditor } from './VttCanopyEditor';
 import { rockAssets } from '../shared/vtt-rock-assets';
 import { treeAssets, treeAssetMime } from '../shared/vtt-tree-assets';
 import type { useVttMediaPreferences } from './vtt-media-preferences';
-import { VttVisualChoices } from './VttVisualChoices';
+import { VttVisualChoices, VttRememberChoices } from './VttVisualChoices';
 import { AssetLoading } from './AssetLoading';
 import { useVttSpells, requestSpellCast } from './useVttSpells';
 import { VttSpellControls } from './VttSpellControls';
@@ -389,11 +390,15 @@ function NumberField({
     </label>
   );
 }
-export function VttSession({ characters, user, media }: { characters: Character[]; user: User; media: ReturnType<typeof useVttMediaPreferences> }) {
+export function VttSession({ characters, user, media, reviewVisualPreferences }: { characters: Character[]; user: User; media: ReturnType<typeof useVttMediaPreferences>; reviewVisualPreferences: () => void }) {
   const captureFrame = useRef<VttCaptureFrame | null>(null);
   const [followingPersonal, setFollowingPersonal] = useState<string | null>(null);
   const [personalId, setPersonalId] = useState<string | null>(null);
   const [personalUrl, setPersonalUrl] = useState('');
+  const [personalRoomId, setPersonalRoomId] = useState<string | null>(null);
+  const [lobbyLoading, setLobbyLoading] = useState(true);
+  const [entryBusy, setEntryBusy] = useState(false);
+  const [entryRetry, setEntryRetry] = useState(0);
   const [storage, setStorage] = useState<import('../shared/vtt-storage').VttStorage | null>(null);
   const [rooms, setRooms] = useState<{ id: string; name: string; is_owner: boolean; is_admin?: boolean }[]>([]),
     [canCreate, setCanCreate] = useState(false),
@@ -424,7 +429,6 @@ export function VttSession({ characters, user, media }: { characters: Character[
       at: number;
     } | null>(null),
     [attack, setAttack] = useState<AttackRequest | null>(null),
-    [joinRole, setJoinRole] = useState<'player' | 'spectator'>('player'),
     [showWalls, setShowWalls] = useState(true),
     [lightPreset,setLightPreset]=useState<LightPresetId>('torch'),
     [ruler, setRuler] = useState<Point[]>([]),
@@ -506,7 +510,6 @@ export function VttSession({ characters, user, media }: { characters: Character[
         return false;
       }
     }),
-    [inviteInput, setInviteInput] = useState(''),
     [roomName, setRoomName] = useState('Mesa da Alvorada'),
     [journalId, setJournalId] = useState('');
   const characterImportBusy = useRef(false);
@@ -1004,6 +1007,24 @@ export function VttSession({ characters, user, media }: { characters: Character[
       setNotice((error as Error).name === 'ZodError' ? vttUpdateMessage : (error as Error).message);
     }
   }
+  async function enterFromLobby(fn: () => Promise<unknown>) {
+    if (entryBusy) return;
+    setEntryBusy(true);
+    try { await act(fn); } finally { setEntryBusy(false); }
+  }
+  async function joinFromLobby(input: string, role: 'player' | 'spectator') {
+    const target = vttEntryTarget(input);
+    if (!target) throw new Error('Cole um link válido da mesa ou o código de convite enviado pelo mestre.');
+    if (target.kind === 'room') return openRoom(target.id, null, role);
+    await save();
+    const next = target.kind === 'table'
+      ? await post<VttState>('/vtt/personal/' + target.id + '/join', { role })
+      : await post<VttState>('/vtt/join', { invite: target.id, role });
+    receive(next);
+    setFollowingPersonal(target.kind === 'table' ? target.id : null);
+    const hash = target.kind === 'table' ? vttPersonalHref(target.id) + (role === 'spectator' ? '&role=spectator' : '') : '#vtt?room=' + next.id;
+    window.history.replaceState(null, '', hash);
+  }
   async function commandSiege(command:SiegeCommand){
     await save();
     const previous=new Set(siege.snapshot?.weapons.map(w=>w.id));
@@ -1023,14 +1044,14 @@ export function VttSession({ characters, user, media }: { characters: Character[
         ),
       });
   }
-  async function openRoom(id: string, following: string | null = null) {
+  async function openRoom(id: string, following: string | null = null, participation?: 'player' | 'spectator') {
     await save();
     let next = await api<VttState>('/vtt/rooms/' + id);
     if (next.is_gm && !next.administrativeAccess) next = await post<VttState>(`/vtt/rooms/${id}/activate`, {});
     setFollowingPersonal(following);
     if (!following) window.history.replaceState(null,'','#vtt?room='+id);
-    if (!next.is_gm && next.role === 'player')
-      next = await post<VttState>(`/vtt/rooms/${id}/participation`, { role: 'player' });
+    if (!next.is_gm && (participation || next.role === 'player'))
+      next = await post<VttState>(`/vtt/rooms/${id}/participation`, { role: participation || 'player' });
     receive(next);
     setSelection([]);
     undo.current = [];
@@ -1044,36 +1065,51 @@ export function VttSession({ characters, user, media }: { characters: Character[
   }
   useEffect(() => {
     let live = true, sequence = 0;
-    const load = async (initial = false) => {
+    const load = async () => {
       if (location.hash.slice(1).split('?')[0] !== 'vtt') return;
       const ticket = ++sequence;
       const params = new URLSearchParams(location.hash.split('?')[1] || '');
       const personal = params.get('table');
       const code = params.get('invite');
       const requested = params.get('room');
+      const role = params.get('role') === 'spectator' ? 'spectator' : 'player';
+      setLobbyLoading(true);
       try {
         const listing = await api<{ rooms: typeof rooms; can_create: boolean; personal: {public_id:string;room_id:string;url?:string}; storage: import('../shared/vtt-storage').VttStorage }>('/vtt');
         if (!live || ticket !== sequence) return;
         setRooms(listing.rooms); setCanCreate(listing.can_create); setPersonalId(listing.personal.public_id); setPersonalUrl(listing.personal.url || ''); setStorage(listing.storage);
+        setPersonalRoomId(listing.personal.room_id);
         if (personal) {
           await save();
-          const next = await post<VttState>('/vtt/personal/' + encodeURIComponent(personal) + '/join', {role:'player'});
+          const next = await post<VttState>('/vtt/personal/' + encodeURIComponent(personal) + '/join', {role});
           if (!live || ticket !== sequence) return;
           receive(next); setFollowingPersonal(personal);
         } else if (code) {
           await save();
           const invite = vttInviteCode(code);
           if (!invite) throw new Error('Convite inválido.');
-          const next = await post<VttState>('/vtt/join', {invite,role:'player'});
+          const next = await post<VttState>('/vtt/join', {invite,role});
           if (live && ticket === sequence) {receive(next);setFollowingPersonal(null);}
-        } else if (requested || initial) await openRoom(requested || listing.personal.room_id);
+        } else if (requested) await openRoom(requested);
+        else {
+          await save();
+          if (!live || ticket !== sequence) return;
+          stateRef.current = null;
+          docRef.current = null;
+          setState(null);
+          setDoc(null);
+          setFollowingPersonal(null);
+          setSelection([]);
+          setSheetId(null);
+        }
       } catch (e) { if (live && ticket === sequence) setNotice((e as Error).message); }
+      finally { if (live && ticket === sequence) setLobbyLoading(false); }
     };
-    void load(true);
+    void load();
     const onHash = () => { void load(); };
     window.addEventListener('hashchange',onHash);
     return () => {live=false;sequence++;window.removeEventListener('hashchange',onHash);};
-  }, []);
+  }, [entryRetry]);
   useEffect(() => {
     if (!followingPersonal || state?.is_gm) return;
     let live=true,pending=false;
@@ -2771,21 +2807,19 @@ export function VttSession({ characters, user, media }: { characters: Character[
   const journal = doc?.journal.find((j) => j.id === journalId);
   if (!state || !doc || !scene)
     return (
-      <section className="vtt-lobby">
-        <span className="vtt-eyebrow">A mesa está posta</span>
-        <h1>Mesa virtual</h1>
-        <p>Prepare sua mesa a qualquer momento. O mesmo link acompanha todas as suas missões.</p>
-        {notice && <p role="alert">{notice}</p>}
-        <div className="vtt-lobby-card">
-          <Swords size={40} />
-          <h2>Preparar uma aventura</h2>
-          {canCreate ? (
+      <VttLobby rooms={rooms} personalRoomId={personalRoomId} loading={lobbyLoading} busy={entryBusy}
+        notice={notice} join={(input, role) => void enterFromLobby(() => joinFromLobby(input, role))}
+        open={id => void enterFromLobby(() => openRoom(id))}
+        retry={() => {setNotice('');setEntryRetry(value => value + 1);}}
+        preferences={reviewVisualPreferences}>
+          {canCreate && (
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                void act(async () => {
+                void enterFromLobby(async () => {
                   const next = await post<VttState>('/vtt', { name: roomName,region_id:createRegion||undefined,location_id:createPlace||undefined });
                   receive(next);
+                  setPersonalRoomId(next.id);
                   setFollowingPersonal(null);
                   window.history.replaceState(null,'','#vtt?room='+next.id);
                   setRooms((list) => [
@@ -2798,50 +2832,19 @@ export function VttSession({ characters, user, media }: { characters: Character[
               <label>
                 Nome da mesa
                 <input
+                  required
                   value={roomName}
                   onChange={(e) => setRoomName(e.target.value)}
                   maxLength={100}
                 />
               </label>
               <WorldPlacePicker regionId={createRegion} locationId={createPlace} onRegionChange={setCreateRegion} onLocationChange={setCreatePlace}/>
-              <button className="vtt-gold" type="submit">
+              <button className="button outline vtt-entry-primary" type="submit" disabled={entryBusy}>
                 Criar mesa
               </button>
             </form>
-          ) : (
-            <p>Peça ao mestre o código de convite para entrar.</p>
           )}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              void act(async () => {
-                const next = await post<VttState>('/vtt/join', {
-                  invite: vttInviteCode(inviteInput) || inviteInput.trim(),
-                  role: joinRole,
-                });
-                receive(next);
-              });
-            }}
-          >
-            <label>
-              Código de convite
-              <input value={inviteInput} onChange={(e) => setInviteInput(e.target.value)} />
-            </label>
-            <label>
-              Entrar como
-              <select
-                aria-label="Entrar como"
-                value={joinRole}
-                onChange={(e) => setJoinRole(e.target.value as 'player' | 'spectator')}
-              >
-                <option value="player">Jogador · trazer meus personagens</option>
-                <option value="spectator">Espectador · somente assistir</option>
-              </select>
-            </label>
-            <button>Entrar na mesa</button>
-          </form>
-        </div>
-      </section>
+      </VttLobby>
     );
   return (
     <>
@@ -5173,6 +5176,7 @@ export function VttSession({ characters, user, media }: { characters: Character[
                   </label>
                   <p className="vtt-muted">Arraste o fundo com o botão escolhido. Espaço + arraste e o botão do meio também movem o mapa. Preferência deste usuário neste navegador.</p>
                   <VttVisualChoices media={media} />
+                  <VttRememberChoices media={media} />
                   <p className="vtt-muted">Desative para reduzir o uso do computador. Preferência deste navegador; os demais participantes continuam vendo os efeitos.</p>
                   <label className="vtt-check"><input type="checkbox" checked={media.soundEnabled} onChange={e=>media.update({soundEnabled:e.target.checked})} />Som dos efeitos e ataques</label>
                   <label>Volume dos efeitos e ataques · {Math.round(media.soundVolume*100)}%<input aria-label="Volume dos efeitos e ataques" type="range" min="0" max="100" value={Math.round(media.soundVolume*100)} onChange={e=>media.update({soundVolume:Number(e.target.value)/100})} /></label>

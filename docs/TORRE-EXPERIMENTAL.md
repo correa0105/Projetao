@@ -47,6 +47,8 @@ O botão da personagem contém a imagem com transparência e uma cópia filtrada
 
 Os diálogos usam as regras vigentes: o gabinete consulta o saldo real do personagem e explica que câmbio, loja e gasto de cristais ainda não estão disponíveis. Conversar e navegar não criam transações nem recompensas.
 
+A janela ao fundo do Arquivo foi corrigida para uma única veneziana de madeira fechada, sem a folha extra que parecia outra porta. A arte atual usa `public/tower/headquarters-atlas-window-20261030.webp`, com PNG nativo em `artwork-archive/tower-layered-20261030/atlas-window-fixed.png`. A edição foi feita com imagegen integrado, mantendo a composição da sala; fonte, prompt e hashes constam no [registro de arte](../data/tower-layered-art-20261030.json). A primeira versão do cenário permanece preservada.
+
 Ferramenta imagegen **integrada**, modo edição/style-transfer com imagem existente como alvo e os dois anexos do usuário como referências arquitetônicas. Asset final: `public/tower/tower-veil-v2.webp`, 1672 × 941, WebP qualidade 87. Original gerado preservado: `exec-f328ae15-1dd0-42e0-8a11-fa6b078b408d.png`. V1 permanece no projeto como histórico. Nova direção: torre fechada, pedra monumental, estátuas na base, margem de lago, laterais limpas e interior oculto.
 
 Prompt final:

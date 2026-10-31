@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { OceanMotionPreference } from '../shared/vtt-naval';
 type Preferences = {
+  skipVisualPrompt: boolean;
   mapPanButton: 'right' | 'left';
   mapEffects: boolean;
   oceanMotion: OceanMotionPreference;
@@ -9,6 +10,7 @@ type Preferences = {
   soundVolume: number;
 };
 const defaults: Preferences = {
+  skipVisualPrompt: false,
   mapPanButton: 'right',
   mapEffects: true,
   oceanMotion: 'system',
@@ -22,6 +24,7 @@ export function useVttMediaPreferences(userId: string) {
     try {
       const saved = JSON.parse(localStorage.getItem(key) || '{}');
       return {
+        skipVisualPrompt: saved.skipVisualPrompt === true,
         mapPanButton: saved.mapPanButton === 'left' ? 'left' : 'right',
         mapEffects:
           typeof saved.mapEffects === 'boolean' ? saved.mapEffects : saved.visualEffects !== false,

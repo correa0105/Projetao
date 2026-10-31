@@ -1,0 +1,28 @@
+{
+  "method": "MobileSAM ONNX and GrabCut; native-pixel contours for UI only; original artwork unchanged",
+  "modelRecord": "data/tower-clerk-contours-20261030.json",
+  "images": [
+    {
+      "kind": "desktop",
+      "source": "public/cards/host-shadow-study-20261027.png",
+      "sourceSha256": "62d8dbf5322e1eccf5b03ee5cb5e5245d1ff2c1649b485d18c23b8a070961108",
+      "mask": "artwork-archive/cards-host-masks-20261030/desktop.png",
+      "maskSha256": "fe64a3ecb4e8ec17d90e2b82dcd985afc96f05de580e597953563c672f54c820",
+      "width": 1672,
+      "height": 941,
+      "vertices": 504,
+      "clipY": 556
+    },
+    {
+      "kind": "mobile",
+      "source": "public/cards/host-shadow-study-mobile-20261027.png",
+      "sourceSha256": "69210e8ceff4b8b9564058abfc732944fca066d46c1896ab31e4b05e2095bd19",
+      "mask": "artwork-archive/cards-host-masks-20261030/mobile.png",
+      "maskSha256": "5511a57eeeef13e019b8484313c415ca41d1215747ad0455a313fc7a1e149aa2",
+      "width": 1024,
+      "height": 1536,
+      "vertices": 515,
+      "clipY": 760
+    }
+  ]
+}

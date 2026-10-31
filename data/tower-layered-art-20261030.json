@@ -87,20 +87,20 @@
     {
       "room": "atlas",
       "role": "room",
-      "prompt": "Use case: stylized-concept. Asset type: wide 16:9 fantasy guild archive background, 1672x941. Reference image is STYLE ONLY for painterly detailed stone and atmospheric rendering; do NOT copy its room or corridor. Create a NEW compact long NARROW archive beneath a continuous low stone barrel vault, with NO wooden ceiling beams, no reception counter. Eye-level camera looking diagonally along rows of dark worn timber shelves which run into depth on the RIGHT. The far end turns into a small side alcove with an ordinary shuttered window admitting cool overcast light. Bundled documents, irregular book spines, a simple ladder leaning against a shelf, a small reading desk with open ledger and candle at center-right. Left foreground has a quiet worn stone pier and open matte flagstones reserved for a separate character. Practical slightly cramped guild records room, no grand library, upper gallery, palace, gilded shelves, ornamental dome, polished surfaces or giant windows. Atmospheric ink-brown, slate and cool blue-gray daylight; tiny warm lamp highlights. No people, UI, legible writing, watermark or border. Unique geometry and camera composition, not reception with swapped furniture.",
-      "original": "artwork-archive/tower-layered-20261030/atlas-room.png",
-      "public": "/tower/headquarters-atlas-room-20261030.webp",
+      "prompt": "Use case: precise-object-edit. Edit target: attached landscape archive room background, native 1672x941. Correct ONLY the small shuttered window in the far back wall (roughly x520-640,y330-480). It currently looks like a closed inner wooden door plus an extra opened pale door/window panel on its right. Replace this faulty construction with ONE coherent small medieval window in the same stone opening: a single set of two dark worn wooden shutter leaves fully CLOSED together, flush in one plane, meeting in a narrow central seam, plain iron hinges. Remove the extra inner/outer door, open side panel, doubled frame and large bright gaps. Keep the stone arch and sill in the same location and shape. Only tiny cool daylight cracks at shutter edges; no other door behind the shutters, no opened leaf on either side. Preserve everything else exactly: entire room architecture, shelves, books, ladder, reading desk, candles, lanterns, floor, painterly texture, existing warm/cool lighting, perspective, framing and native dimensions. No people, text, UI, logos or watermark. Small targeted repair, do not redesign the room.",
+      "original": "artwork-archive/tower-layered-20261030/atlas-window-fixed.png",
+      "public": "/tower/headquarters-atlas-window-20261030.webp",
       "references": [
-        "artwork-archive/events-venue-20261030/corridor.png"
+        "artwork-archive/tower-layered-20261030/atlas-room.png"
       ],
       "quality": 88,
       "width": 1672,
       "height": 941,
       "hasAlpha": false,
-      "sha256": "97a30919420764cec1726b634d9c95c83004b2eb9e9446ec6d9e0a5f112de7e3",
-      "originalSha256": "11938b7a583d792eca057ecce1edc2049c929f21d3061737cd69e74bdc797e14",
-      "bytes": 240938,
-      "generatedFilename": "exec-59e427e9-e7d8-423d-9fbb-9bdae8cdc266.png"
+      "sha256": "84ba6f230cc9a85ae4a267650d6bcfe34e32ac9e7e688844b0749107f37f75c7",
+      "originalSha256": "81e61a96e91e4e773e3ca578e0981cac6f888fc33c15e33d47c2c7ad87556593",
+      "bytes": 192174,
+      "generatedFilename": "exec-819d52e4-7a56-4746-97b2-43ff37064951.png"
     },
     {
       "room": "atlas",
@@ -213,5 +213,25 @@
       "artwork-archive/tower-headquarters-20261030/reception.png"
     ],
     "sha256": "c22ff27463cb7e2fb22b69547ef5ddf023a656b6354e9eba611ab928d3d2e125"
-  }
+  },
+  "previousAssets": [
+    {
+      "room": "atlas",
+      "role": "room",
+      "prompt": "Use case: stylized-concept. Asset type: wide 16:9 fantasy guild archive background, 1672x941. Reference image is STYLE ONLY for painterly detailed stone and atmospheric rendering; do NOT copy its room or corridor. Create a NEW compact long NARROW archive beneath a continuous low stone barrel vault, with NO wooden ceiling beams, no reception counter. Eye-level camera looking diagonally along rows of dark worn timber shelves which run into depth on the RIGHT. The far end turns into a small side alcove with an ordinary shuttered window admitting cool overcast light. Bundled documents, irregular book spines, a simple ladder leaning against a shelf, a small reading desk with open ledger and candle at center-right. Left foreground has a quiet worn stone pier and open matte flagstones reserved for a separate character. Practical slightly cramped guild records room, no grand library, upper gallery, palace, gilded shelves, ornamental dome, polished surfaces or giant windows. Atmospheric ink-brown, slate and cool blue-gray daylight; tiny warm lamp highlights. No people, UI, legible writing, watermark or border. Unique geometry and camera composition, not reception with swapped furniture.",
+      "original": "artwork-archive/tower-layered-20261030/atlas-room.png",
+      "public": "/tower/headquarters-atlas-room-20261030.webp",
+      "references": [
+        "artwork-archive/events-venue-20261030/corridor.png"
+      ],
+      "quality": 88,
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "sha256": "97a30919420764cec1726b634d9c95c83004b2eb9e9446ec6d9e0a5f112de7e3",
+      "originalSha256": "11938b7a583d792eca057ecce1edc2049c929f21d3061737cd69e74bdc797e14",
+      "bytes": 240938,
+      "generatedFilename": "exec-59e427e9-e7d8-423d-9fbb-9bdae8cdc266.png"
+    }
+  ]
 }

@@ -67,6 +67,7 @@ export function Cards({
   const [previewLevel,setPreviewLevel]=useState(1);
   const tableSides=useCardTableSides(character?.id);
   const dialogueBody=useRef<HTMLDivElement>(null);
+  const hostTrigger=useRef<HTMLButtonElement>(null);
   useLayoutEffect(()=>{dialogueBody.current?.scrollTo({top:0});},[speech,conversation]);
   const key = useRef(crypto.randomUUID()),
     inFlight = useRef(false),
@@ -95,7 +96,7 @@ export function Cards({
   useEffect(() => {
     if (!conversation) return;
     const escape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setConversation(false);
+      if (e.key === 'Escape') {setConversation(false);hostTrigger.current?.focus({preventScroll:true});}
     };
     window.addEventListener('keydown', escape);
     return () => window.removeEventListener('keydown', escape);
@@ -265,20 +266,21 @@ export function Cards({
         <CardsRoomLighting/>
 
         <CardsHost
-          expanded={conversation && questions}
+          buttonRef={hostTrigger}
+          expanded={conversation}
           onTalk={() =>
-            say(
+            conversation ? setConversation(false) : say(
               'Entre. A cadeira está livre, e ninguém aqui vai lhe pedir pressa. Estava examinando estas cartas; alguma chamou sua atenção?',
               true,
             )
           }
         />
         {conversation && (
-          <aside className="cards-host-dialogue" aria-label="Conversa com o Anfitrião">
+          <aside id="cards-host-dialogue" className="cards-host-dialogue" aria-label="Conversa com o Anfitrião">
             <button
               className="cards-conversation-close"
               aria-label="Encerrar conversa"
-              onClick={() => setConversation(false)}
+              onClick={() => {setConversation(false);hostTrigger.current?.focus({preventScroll:true});}}
             >
               <X size={16} />
             </button>

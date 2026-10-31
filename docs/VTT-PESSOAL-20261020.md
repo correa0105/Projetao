@@ -6,7 +6,7 @@ Cada conta, inclusive básica, pode preparar e editar sua própria mesa virtual 
 
 `vtt_personal_spaces` mantém um `public_id` permanente por conta e aponta para a sala ativa do seu VTT. O endereço é `/#vtt?table=PUBLIC_ID`. O servidor prefere a origem de rede configurada em `APP_ORIGIN`, para que o mestre usando localhost copie um endereço acessível aos jogadores pelo Radmin. `APP_SHARE_ORIGIN` pode escolher outra origem da mesma lista; sem origem de rede, usa a primeira origem local configurada.
 
-- Abrir o VTT provisiona uma mesa pessoal se a conta ainda não tiver uma. Isso independe do mural.
+- Abrir o VTT provisiona uma mesa pessoal se a conta ainda não tiver uma. Isso independe do mural. Sem um endereço de mesa/convite, a abertura para no seletor: **Entrar em uma mesa** como jogador/espectador ou **Abrir minha mesa**. Ter mesa própria não direciona automaticamente a conta a ela. Preferências visuais podem ser lembradas por conta/navegador, conforme [entrada do VTT](VTT-MEDIA-20261021.md).
 - A criação de uma missão usa o endereço da conta; não cria uma mesa para cada missão nem pede escolha de mesa no formulário.
 - O formulário mostra o link e permite abrir a preparação em outra aba. O aviso da missão permite entrar na mesa, e seu autor pode copiar o endereço.
 - O identificador não muda ao publicar outra missão, renomear a mesa, mudar de mapa, abrir outro projeto salvo ou renovar um convite avulso.
