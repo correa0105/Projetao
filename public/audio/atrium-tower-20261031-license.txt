@@ -1,0 +1,11 @@
+Alvorada Cinzenta — Átrio e Torre (2026-10-31)
+
+Original deterministic synthesis by scripts/generate-atrium-tower-audio.mjs.
+No third-party recordings, samples, melodies or commercial soundtracks.
+These three recordings are dedicated to the public domain under CC0 1.0.
+Commercial use, modification and redistribution are permitted.
+https://creativecommons.org/publicdomain/zero/1.0/
+
+atrium-lantern-vigil-20261031.ogg
+tower-beyond-the-veil-20261031.ogg
+atrium-corridor-wind-20261031.ogg

@@ -14,6 +14,8 @@ import { Volume2, VolumeX } from 'lucide-react';
 export const siteSoundtracks: Record<string, string> = {
   default: '/audio/medieval-travelers-journey.ogg',
   shop: '/audio/medieval-market.ogg',
+  events: '/audio/atrium-lantern-vigil-20261031.ogg',
+  tower: '/audio/tower-beyond-the-veil-20261031.ogg',
 };
 const trackForPage = () => siteSoundtracks[location.hash.slice(1)] || siteSoundtracks.default;
 const MusicContext = createContext({
@@ -203,7 +205,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     } catch {}
   }, [effectsVolume, effectsMuted]);
   useEffect(() => {
-    if (!interlude.current) void audio.current!.play().catch(() => {});
+    if (!interlude.current && !document.hidden) void audio.current!.play().catch(() => {});
   }, [track]);
   return (
     <MusicContext.Provider

@@ -1,0 +1,43 @@
+{
+  "license": "CC0-1.0",
+  "origin": "Original deterministic synthesis, no external samples",
+  "generator": "scripts/generate-atrium-tower-audio.mjs",
+  "assets": [
+    {
+      "file": "public/audio/atrium-lantern-vigil-20261031.ogg",
+      "description": "Vigília das Lanternas: harpa, sopro suave e cordas, tema original do átrio.",
+      "seconds": 96,
+      "sampleRate": 32000,
+      "channels": 2,
+      "loop": true,
+      "peak": 0.5360602001406034,
+      "rms": 0.105,
+      "bytes": 457843,
+      "sha256": "011a477b2de36a202fb8a964177d54225444f4c2874088fa61bd27575df46d34"
+    },
+    {
+      "file": "public/audio/tower-beyond-the-veil-20261031.ogg",
+      "description": "Além do Véu: cordas graves e sinos distantes, tema original da torre.",
+      "seconds": 96,
+      "sampleRate": 32000,
+      "channels": 2,
+      "loop": true,
+      "peak": 0.45399326943921203,
+      "rms": 0.105,
+      "bytes": 361253,
+      "sha256": "ad76f1c9d5fb9dc429a293f2013cf45cbde2df792c5b0c240bbf12597f180229"
+    },
+    {
+      "file": "public/audio/atrium-corridor-wind-20261031.ogg",
+      "description": "Vento de ruído filtrado, com rajadas que atravessam o panorama estéreo.",
+      "seconds": 4.2,
+      "sampleRate": 32000,
+      "channels": 2,
+      "loop": false,
+      "peak": 0.7799999999999999,
+      "rms": 0.11588919080075429,
+      "bytes": 45340,
+      "sha256": "d4ba7a70abceba09e18e2b8755cff337f46f10928743ed381b78ba8f2e6efda9"
+    }
+  ]
+}

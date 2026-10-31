@@ -12,6 +12,14 @@ export function VttSoundCredits() {
         Fontes e licenças
       </a>
       <p>
+        Trilhas do Átrio e da Torre e vento dos corredores: composições originais da Alvorada
+        Cinzenta, sem amostras externas.{' '}
+        <a href="/audio/atrium-tower-20261031-license.txt" target="_blank" rel="noreferrer">
+          Licença CC0, com uso comercial permitido
+        </a>
+        .
+      </p>
+      <p>
         Referência de organização:{' '}
         <a href="https://tabletopaudio.com/soundpad.html" target="_blank" rel="noreferrer">
           Tabletop Audio SoundPad

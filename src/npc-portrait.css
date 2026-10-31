@@ -9,7 +9,7 @@
 }
 .npc-eye-glow {
   opacity: 0.95;
-  animation: npc-intimidating-eye 1.5s ease-out both;
+  animation: npc-intimidating-eye 3.6s ease-in-out infinite;
 }
 .npc-glasses-glint {
   opacity: 0;
@@ -34,11 +34,11 @@
   }
 }
 @keyframes npc-intimidating-eye {
-  from {
-    opacity: 0;
+  0%, 100% {
+    opacity: 0.78;
   }
-  to {
-    opacity: 0.95;
+  50% {
+    opacity: 1;
   }
 }
 @keyframes npc-lens-fill {

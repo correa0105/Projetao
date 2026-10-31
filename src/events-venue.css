@@ -15,22 +15,104 @@
 .events-page--venue .events-backdrop {
   background-attachment: initial;
 }
-.events-intimidation-scene {
+.events-reaction-room {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(180deg,#06080c25,#06080c10 55%,#06080c65), url('/events/atrium-crimson-light-20261031.webp') center / cover no-repeat;
-  animation: events-light-settle .5s ease-out both;
 }
-.events-page--venue:has(.events-venue[data-intimidating='true']) .events-shade {
-  background: linear-gradient(180deg,#07080d40,transparent 40%,#08070db0);
+.events-darkness,
+.events-intimidation-scene {
+  position: absolute;
+  inset: 0;
 }
-.events-venue[data-intimidating='true'] .npc-pose {
-  filter: brightness(.9);
+.events-darkness {
+  opacity: 0;
+  animation: events-lights-out 1.7s ease-in-out both;
 }
-@keyframes events-light-settle { from { opacity: 0; } to { opacity: 1; } }
-@media(prefers-reduced-motion:reduce) { .events-intimidation-scene { animation:none; } }
+.events-darkness-far {
+  background: linear-gradient(90deg, transparent 47%, #000 72%);
+}
+.events-darkness-middle {
+  background: linear-gradient(90deg, transparent 25%, #000 47%);
+  animation-delay: 1.2s;
+}
+.events-darkness-near {
+  background: #000;
+  animation-duration: 1.6s;
+  animation-delay: 2.6s;
+}
+.events-intimidation-scene {
+  opacity: 0;
+  background-color: #000;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: opacity .9s ease-out;
+}
+.events-venue[data-reaction='crimson'] .events-intimidation-scene {
+  opacity: 1;
+}
+.events-venue[data-intimidating='true'] .events-host-light {
+  opacity: 0;
+}
+.events-venue[data-reaction='fading'] .npc-pose {
+  animation: events-host-darken 4.2s ease-in-out both;
+}
+.events-venue[data-reaction='dark'] .npc-pose {
+  filter: brightness(0);
+}
+.events-venue[data-reaction='crimson'] .npc-pose {
+  animation: events-host-relight .9s ease-out both;
+}
+.events-ground-fog {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 2;
+  height: 33svh;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: linear-gradient(transparent, #000 45%);
+  animation: events-fog-enter 1.8s ease-out both;
+}
+.events-ground-fog::before,
+.events-ground-fog::after {
+  content: '';
+  position: absolute;
+  inset: 0 -20%;
+  background:
+    radial-gradient(ellipse at 14% 70%, #b6a9a94d, transparent 36%),
+    radial-gradient(ellipse at 48% 92%, #b7adb45c, transparent 39%),
+    radial-gradient(ellipse at 80% 64%, #ab9da749, transparent 32%),
+    radial-gradient(ellipse at 58% 100%, #7e4e5366, transparent 65%);
+  filter: blur(18px);
+  animation: events-fog-drift 19s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.events-ground-fog::after {
+  opacity: .65;
+  animation-duration: 27s;
+  animation-direction: alternate-reverse;
+}
+.events-page[data-paused='true'] .events-ground-fog::before,
+.events-page[data-paused='true'] .events-ground-fog::after {
+  animation-play-state: paused;
+}
+.events-page--venue:has(.events-venue[data-intimidating='true']) > :is(.events-atmosphere, .scene-embers, .event-art-layer) {
+  visibility: hidden;
+}
+@keyframes events-lights-out { from { opacity: 0; } to { opacity: 1; } }
+@keyframes events-host-darken { from { filter: brightness(1); } to { filter: brightness(0); } }
+@keyframes events-host-relight { from { filter: brightness(0); } to { filter: brightness(.8); } }
+@keyframes events-fog-enter { from { opacity: 0; } to { opacity: 1; } }
+@keyframes events-fog-drift { from { transform: translateX(-5%) scaleY(.85); } to { transform: translateX(6%) scaleY(1.08); } }
+@media (prefers-reduced-motion: reduce) {
+  .events-darkness { animation: none; transition: opacity 1.2s linear; }
+  .events-venue[data-reaction='fading'] .events-darkness-near { opacity: .88; }
+  .events-venue:is([data-reaction='dark'], [data-reaction='crimson']) .events-darkness-near { opacity: 1; }
+  .events-venue[data-reaction='fading'] .npc-pose { animation: none; filter: brightness(.2); }
+  .events-venue[data-reaction='crimson'] .npc-pose { animation: none; filter: brightness(.8); }
+  .events-ground-fog, .events-ground-fog::before, .events-ground-fog::after { animation: none; will-change: auto; }
+}
 .events-page--venue .events-shade {
   background:
     linear-gradient(180deg, #090c1280, transparent 25%, #090c1230 65%, #090c12b8),

@@ -15,6 +15,7 @@ import type { EventScene } from '../shared/events';
 import './events-venue.css';
 import { NpcPortrait, useDialogueArt } from './NpcPortrait';
 import './npc-dialogue.css';
+import { AtriumWind, useAtriumReaction } from './AtriumAmbience';
 
 type View = 'reception' | 'agenda' | 'memories';
 type Topic =
@@ -88,6 +89,7 @@ export function EventsVenue({
         : '/events/events-speaking-closed-20261031.webp';
   const portrait = useDialogueArt(requestedPortrait, idlePortrait);
   const intimidating = talking && topic === 'intimidation';
+  const reaction = useAtriumReaction(intimidating);
   const crimsonScene = useDialogueArt(
     intimidating && scene.background === '/events/antechamber-20261030.webp'
       ? '/events/atrium-crimson-light-20261031.webp'
@@ -117,13 +119,24 @@ export function EventsVenue({
     setTalking(true);
   }
   return (
-    <div className="events-venue" data-view={view} data-intimidating={intimidating || undefined}>
-      {intimidating && crimsonScene !== scene.background && (
-        <div
-          className="events-intimidation-scene"
-          aria-hidden="true"
-          style={{ backgroundPosition: `${scene.x}% ${scene.y}%` }}
-        />
+    <div className="events-venue" data-view={view} data-intimidating={intimidating || undefined} data-reaction={reaction}>
+      <AtriumWind active={reaction === 'fading'} />
+      {intimidating && (
+        <>
+          <div className="events-reaction-room" aria-hidden="true">
+            <div className="events-darkness events-darkness-far" />
+            <div className="events-darkness events-darkness-middle" />
+            <div className="events-darkness events-darkness-near" />
+            <div
+              className="events-intimidation-scene"
+              style={{
+                backgroundImage: `linear-gradient(180deg,#06080c25,#06080c10 55%,#06080c65),${crimsonScene === scene.background ? 'linear-gradient(#79090066,#79090066),' : ''}url('${crimsonScene}')`,
+                backgroundPosition: `${scene.x}% ${scene.y}%`,
+              }}
+            />
+          </div>
+          {reaction === 'crimson' && <div className="events-ground-fog" aria-hidden="true" />}
+        </>
       )}
       <header className="events-venue-heading">
         <div>
@@ -220,7 +233,7 @@ export function EventsVenue({
           src={portrait}
           kind="events"
           lightClass="events-host-light"
-          intimidating={intimidating}
+          intimidating={reaction === 'crimson'}
         />
       </button>
       {talking && (
