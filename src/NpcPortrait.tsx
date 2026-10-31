@@ -73,7 +73,7 @@ export function NpcPortrait({
     'M356 286C364 274 394 271 423 274C436 276 444 280 442 299C439 319 421 331 397 333C375 338 362 332 357 319C352 306 351 296 356 286Z',
     'M479 250C493 239 521 229 544 234C560 238 565 248 561 266C557 284 546 293 525 299C503 306 483 299 478 287C472 274 472 261 479 250Z',
   ];
-  const eye = src.includes('speaking-refined')
+  const eye = /speaking-refined|speaking-closed/.test(src)
     ? [478, 270]
     : src.includes('reserved-refined')
       ? [459, 263]
@@ -97,14 +97,14 @@ export function NpcPortrait({
           height="110%"
           colorInterpolationFilters="sRGB"
         >
-          <feMorphology in="SourceAlpha" operator="dilate" radius="3" result="expanded" />
-          <feGaussianBlur in="expanded" stdDeviation="6" result="soft" />
+          <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="expanded" />
+          <feGaussianBlur in="expanded" stdDeviation="3" result="soft" />
           <feComposite in="soft" in2="SourceAlpha" operator="out" result="outside" />
-          <feFlood floodColor="#ecc263" floodOpacity="0.55" result="warm" />
+          <feFlood floodColor="#cfb078" floodOpacity="0.3" result="warm" />
           <feComposite in="warm" in2="outside" operator="in" result="halo" />
           <feComposite in="expanded" in2="SourceAlpha" operator="out" result="edge" />
           <feGaussianBlur in="edge" stdDeviation="0.85" result="softEdge" />
-          <feFlood floodColor="#f5d58b" floodOpacity="0.92" result="gold" />
+          <feFlood floodColor="#d8ba82" floodOpacity="0.65" result="gold" />
           <feComposite in="gold" in2="softEdge" operator="in" result="rim" />
           <feMerge>
             <feMergeNode in="halo" />
@@ -162,7 +162,7 @@ export function NpcPortrait({
           fill={`url(#${id}-eye)`}
         />
       )}
-      {adjusting && (
+      {adjusting && !src.includes('-painted-') && (
         <g key={src} className="npc-glasses-effect" data-mood={glasses}>
           {(glasses === 'stern'
             ? lensPaths

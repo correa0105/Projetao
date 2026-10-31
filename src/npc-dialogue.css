@@ -1,0 +1,150 @@
+/* Shared speech panels: fixed identity header, readable copy, quiet response links. */
+:root
+  .app-shell[data-page]
+  :is(.cards-room.cards-room--salon, .events-venue, .tower-headquarters-workspace)
+  .npc-dialogue {
+  --dialogue-edge: #a68a5d70;
+  --dialogue-surface: #15191cf7;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: visible;
+  border: 1px solid var(--dialogue-edge);
+  border-radius: 7px;
+  background: linear-gradient(145deg, #25272be8, var(--dialogue-surface) 42%);
+  color: #ded7ca;
+  box-shadow:
+    0 20px 65px #0007,
+    inset 0 1px #f3d9a914;
+}
+:root .app-shell[data-page] .npc-dialogue > .npc-dialogue-header {
+  position: relative;
+  inset: auto;
+  max-width: none;
+  pointer-events: auto;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 23px;
+  padding: 20px 0 17px;
+  border-bottom: 1px solid #ad936b35;
+}
+:root .app-shell[data-page] .npc-dialogue-header > div {
+  min-width: 0;
+}
+:root .app-shell[data-page] .npc-dialogue-header span {
+  display: block;
+  margin-bottom: 9px;
+  color: #bda47b;
+  font: 8px/1.5 var(--sans, Arial);
+  letter-spacing: 0.17em;
+}
+:root .app-shell[data-page] .npc-dialogue-header b {
+  display: block;
+  padding: 0;
+  color: #eee0c8;
+  font: 25px/1.2 var(--serif, Georgia);
+  font-weight: 400;
+}
+:root .app-shell[data-page] .npc-dialogue-header small {
+  display: block;
+  margin: 5px 0 0;
+  color: #a9aaa4;
+  font: 10px/1.4 var(--sans, Arial);
+}
+:root .app-shell[data-page] .npc-dialogue-header > button {
+  position: static;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  min-height: 0;
+  padding: 6px;
+  border: 1px solid #ad936b35;
+  border-radius: 50%;
+  background: #ffffff03;
+  color: #c4b69e;
+}
+:root .app-shell[data-page] .npc-dialogue-header > button:hover {
+  background: #bda47b18;
+  border-color: #bda47b;
+}
+:root .app-shell[data-page] .npc-dialogue .npc-dialogue-scroll {
+  min-height: 0;
+  max-height: none;
+  padding: 21px 23px 24px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #8f795244 transparent;
+}
+:root .app-shell[data-page] .npc-dialogue :is(h2, h3) {
+  margin: 0 0 15px;
+  color: #c0aa86;
+  font: 12px/1.6 var(--sans, Arial);
+  font-weight: 400;
+  text-transform: none;
+}
+:root .app-shell[data-page] .npc-dialogue .npc-dialogue-scroll p {
+  margin: 0 0 15px;
+  color: #ded7ca;
+  font:
+    14px/1.75 Georgia,
+    Georgia,
+    serif;
+  font-weight: 400;
+}
+:root .app-shell[data-page] .npc-dialogue .npc-dialogue-choices {
+  display: grid;
+  gap: 0;
+  margin-top: 21px;
+  padding-top: 6px;
+  border-top: 1px solid #ad936b35;
+}
+:root .app-shell[data-page] .npc-dialogue .npc-dialogue-choices > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 43px;
+  padding: 12px 1px;
+  border: 0;
+  border-bottom: 1px solid #bda47b1a;
+  border-radius: 0;
+  background: transparent;
+  color: #c3bcae;
+  text-align: left;
+  font: 11px/1.6 var(--sans, Arial);
+  box-shadow: none;
+}
+:root .app-shell[data-page] .npc-dialogue .npc-dialogue-choices > button:hover {
+  background: linear-gradient(90deg, #bda47b0b, transparent);
+  color: #f0dfbd;
+}
+:root .app-shell[data-page] .npc-dialogue .npc-dialogue-choices > button:focus-visible {
+  outline: 1px solid #c7aa72;
+  outline-offset: -1px;
+}
+:root .app-shell[data-page] .npc-dialogue-choices > button > small {
+  color: #a78c5e;
+  font: 10px var(--serif, Georgia);
+}
+:root .app-shell[data-page] .npc-dialogue .npc-dialogue-choices > .tower-primary {
+  color: #e8c994;
+}
+:root .app-shell[data-page] .npc-dialogue .npc-dialogue-choices > .tower-conversation-back {
+  justify-content: flex-end;
+  margin-top: 10px;
+  border: 0;
+  color: #bda47b;
+}
+.cards-host-questions > button > svg { flex-shrink: 0; color: #a68b60; }
+@media (max-width: 900px) {
+  :root .app-shell[data-page] .npc-dialogue .npc-dialogue-scroll {
+    padding: 20px;
+  }
+  :root .app-shell[data-page] .npc-dialogue > .npc-dialogue-header {
+    margin: 0 20px;
+  }
+}

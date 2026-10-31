@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import {Coins,Sparkles,Volume2,VolumeX,X} from 'lucide-react';
+import {ChevronRight,Coins,Sparkles,Volume2,VolumeX,X} from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { api, post } from './api';
 import { cards, cardRarities, cardQuestions, type Card, type OwnedCard } from '../shared/cards';
@@ -20,6 +20,7 @@ import {useSoundEffects} from './SiteMusic';
 import {playCardReveal} from './card-reveal-audio';
 import './card-reveal.css';
 import './cards-salon.css';
+import './npc-dialogue.css';
 export function CardFace({ card, small = false, level = 1, finish }: { card: Card; small?: boolean; level?: number; finish?:'original'|'chrome' }) {
   const visualLevel=cardVisualLevel(level),resolvedFinish=finish??(visualLevel===3?'chrome':'original');
   const nativePrism=resolvedFinish==='chrome';
@@ -279,7 +280,9 @@ export function Cards({
           }
         />
         {conversation && (
-          <aside id="cards-host-dialogue" className="cards-host-dialogue" aria-label="Conversa com o Anfitrião">
+          <aside id="cards-host-dialogue" className="cards-host-dialogue npc-dialogue" aria-label="Conversa com o Anfitrião">
+            <header className="npc-dialogue-header">
+            <div><span>O SALÃO DA MEIA-NOITE</span><b>O Anfitrião</b><small>Guardião do acervo</small></div>
             <button
               className="cards-conversation-close"
               aria-label="Encerrar conversa"
@@ -287,16 +290,16 @@ export function Cards({
             >
               <X size={16} />
             </button>
-            <span className="eyebrow">O ANFITRIÃO</span>
-            <div ref={dialogueBody} className="cards-host-dialogue-body">
+            </header>
+            <div ref={dialogueBody} className="cards-host-dialogue-body npc-dialogue-scroll">
             <p key={speech} aria-live="polite">
               {speech}
             </p>
             {questions && (
-              <div className="cards-host-questions">
+              <div className="cards-host-questions npc-dialogue-choices" aria-label="Perguntas ao Anfitrião">
                 {cardQuestions.map((q) => (
                   <button key={q.question} onClick={() => say(q.answer, true, q.pose)}>
-                    {q.question}
+                    <span>{q.question}</span><ChevronRight size={14} aria-hidden="true"/>
                   </button>
                 ))}
               </div>

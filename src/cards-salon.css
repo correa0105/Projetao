@@ -45,11 +45,11 @@
 .cards-room--salon .cards-mask-shimmer { opacity:.1; animation:cards-mask-light 11s ease-in-out infinite; }
 .cards-room--salon .cards-host-pose[data-motion='off'] * { animation:none; }
 @keyframes cards-mask-light { 0%,60%,100% { opacity:.1; } 72% { opacity:.7; } 84% { opacity:.15; } }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { position:absolute; z-index:8; top:215px; left:var(--cards-dialogue-left,4vw); right:auto; display:flex; flex-direction:column; gap:12px; width:min(340px,calc(100% - 36px)); max-height:max(88px,calc(var(--cards-dialogue-limit,450px) - 215px)); box-sizing:border-box; overflow:hidden; padding:20px; background:#14151ef5; border-color:#a68c5860; animation:cards-dialogue-enter .2s ease both; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue::after { content:none; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { position:absolute; z-index:8; --cards-dialogue-top:clamp(140px,18svh,185px); top:var(--cards-dialogue-top); left:var(--cards-dialogue-left,4vw); right:auto; width:min(360px,calc(100% - 36px)); max-height:max(160px,calc(var(--cards-dialogue-limit,450px) - var(--cards-dialogue-top))); box-sizing:border-box; animation:cards-dialogue-enter .2s ease both; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue::after { content:''; position:absolute; top:88px; bottom:auto; left:auto; right:-8px; width:14px; height:14px; background:#1b1e22; border:0; border-top:1px solid #a68a5d70; border-right:1px solid #a68a5d70; transform:rotate(45deg); pointer-events:none; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue > .eyebrow { flex:none; padding-right:24px; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue-body { min-height:0; overflow-y:auto; scroll-behavior:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#8e794a66 transparent; }
-:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue-body > p { margin:0; font:12px/1.75 'Libre Baskerville',Georgia,serif; color:#ddd2bc; }
+:root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue-body > p { margin:0; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-questions { margin-top:14px; }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-sound-toggle { position:absolute; z-index:4; top:100px; right:5vw; display:flex; align-items:center; gap:8px; padding:8px 11px; border:1px solid #a58b5145; border-radius:4px; background:#13141d9c; color:#c8b68e; font:10px var(--sans); }
 :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-room-message { position:absolute; bottom:85px; left:50%; transform:translateX(-50%); max-width:80vw; color:#cdb98f; font:12px/1.6 var(--sans); text-align:center; z-index:5; }
@@ -64,7 +64,10 @@
  :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-sound-toggle span { display:none; }
  .cards-room--salon .cards-host-silhouette--desktop { display:none; }
  .cards-room--salon .cards-host-silhouette--mobile { display:block; }
- :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { top:var(--cards-dialogue-after,660px); left:18px; right:18px; width:auto; max-height:max(120px,calc(100% - var(--cards-dialogue-after,660px) - 85px)); }
+ :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue::after { top:-8px; right:auto; left:60%; border:0; border-top:1px solid #a68a5d70; border-left:1px solid #a68a5d70; }
+ :root .app-shell[data-page='cards'] .cards-room.cards-room--salon:has(.cards-host-dialogue),
+ :root .app-shell[data-page='cards'] .cards-room.cards-room--salon:has(.cards-host-dialogue) .cards-scene { overflow:visible; }
+ :root .app-shell[data-page='cards'] .cards-room.cards-room--salon .cards-host-dialogue { top:var(--cards-dialogue-after,660px); left:18px; right:18px; width:auto; max-height:min(520px,calc(100dvh - 140px)); margin-bottom:100px; }
 }
 @keyframes cards-dialogue-enter { from { opacity:0; } to { opacity:1; } }
 @media(prefers-reduced-motion:reduce) { .cards-room--salon .cards-host-light { transition:none; } }

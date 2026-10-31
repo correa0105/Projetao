@@ -102,8 +102,8 @@
   opacity: 0;
   transition: opacity 0.18s;
 }
-.tower-clerk:is(:hover, :focus-visible) .tower-clerk-light {
-  opacity: 1;
+.tower-clerk:not([aria-expanded='true']):is(:hover, :focus-visible) .tower-clerk-light {
+  opacity: .55;
 }
 .tower-headquarters-workspace.is-idle {
   pointer-events: none;

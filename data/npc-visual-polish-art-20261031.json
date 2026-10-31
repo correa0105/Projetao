@@ -1,0 +1,62 @@
+{
+  "mode": "integrated-image_gen",
+  "purpose": "Iluminação localizada de intimidação, anfitrião com boca fechada e reflexos de vidro pintados nas expressões de Lia. Originais anteriores preservados.",
+  "assets": [
+    {
+      "key": "atrium-crimson-light",
+      "original": "artwork-archive/npc-visual-polish-20261031/atrium-crimson-light.png",
+      "display": "/events/atrium-crimson-light-20261031.webp",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "sha256": "d0164d6abce43c3c95cfc8abd4e0ac70833427a8e5a04c2f3d2fcf787c54a784",
+      "displaySha256": "d441631d8ff1b8fa1a62fae6b3b16f20a960617e531b06401ced3024164edeb4",
+      "references": [
+        "public/events/antechamber-20261030.webp"
+      ],
+      "prompt": "Use case: lighting-weather. Edit the provided medieval corridor painting into a controlled supernatural intimidation lighting state. LOCK the exact corridor architecture, camera, perspective, crop, doors, arches, paving, torch and hanging lantern positions. Keep full landscape composition and same aspect ratio. Change ONLY the lighting: the existing torch and lantern FLAMES burn vivid crimson with tiny almost white hot cores, casting localized red pools of light onto the NEARBY stone, soft red bounce across floor stones and long naturally falling shadows. The deep arches remain charcoal and blue-black with legible neutral grey stone; windows become faint cold night light rather than bright daylight. Retain strong depth toward the distant door, atmospheric perspective and rich original painterly texture. Menacing, restrained, physically motivated cinematic chiaroscuro. Keep much of the frame in nearly neutral dark stone. No uniform red filter, no monochrome red scene, no new architecture, no people, no extra torches, no smoke wall, no painted UI or text. This is the SAME room relit, not a new room."
+    },
+    {
+      "key": "events-speaking-closed",
+      "original": "artwork-archive/npc-visual-polish-20261031/events-speaking-closed.png",
+      "display": "/events/events-speaking-closed-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "8c11109bc2c63f1cee46a55e850dbccfd07d71445c681db43f3ba9d1bba0479d",
+      "displaySha256": "292bb55f80f887208c9630073dc5ba5b4112754b5d51e85ed7e1ec8287df28c6",
+      "references": [
+        "public/events/events-speaking-refined-20261031.webp"
+      ],
+      "prompt": "Use case: precise-object-edit. Edit the supplied adult male horned fantasy host cutout. Change ONLY his mouth: lips fully and naturally CLOSED, no visible teeth, no mouth opening. Preserve exact facial identity, head angle, stern reserved expression, tiny red irises and dark sclera, red hair and beard, horns, gold earring, coat with burgundy lapels, five-finger hand gesture near waist, anatomy, whole-body pose, framing and exact 1024x1536 canvas. Keep painterly dark fantasy finish. Original figure pixel-aligned as closely as possible. Output genuinely TRANSPARENT background with clean alpha right to the figure silhouette, absolutely NO colored haze, halo, glow, backdrop or cast shadow behind the body. Do not change clothing, hand or pose. No text."
+    },
+    {
+      "key": "lia-glasses-stern-painted",
+      "original": "artwork-archive/npc-visual-polish-20261031/lia-glasses-stern-painted.png",
+      "display": "/tower/headquarters-lia-glasses-stern-painted-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "5a9ddbb082f58afc605571f8b8284e8a1b1327ea25ab9b42e8e4cbf87a1deb56",
+      "displaySha256": "41f694ef9d822ad63d2d256d156c113d871490c42cac5790976f6d06986054a5",
+      "references": [
+        "artwork-archive/lia-reactions-20261031/lia-glasses-stern.png"
+      ],
+      "prompt": "Use case: identity-preserve. Edit the same adult female fantasy clerk Lia shown in the supplied image. Preserve her exact identity, chestnut bob haircut, oval gold-rim spectacles, cream rolled-sleeve blouse, charcoal waistcoat, long skirt, belt and leather book. Same 1024x1536 full-body framing and hand touching the glasses temple; preserve five natural fingers, wrist, arms and book structure. Improve her ANGRY facial acting: brows visibly lowered and drawn inward, tense closed mouth with no smile, restrained stern warning, confident head angle. Paint an elegant anime-inspired WHITE REFLECTION across BOTH eyeglass lenses, integrated into the painterly art: bright white-silver glass planes with subtle cool-grey edge gradients, fine diagonal reflected window-light streaks and a narrow sharp specular highlight. Eyes hidden by reflection on both lenses, the GOLD RIMS must remain crisp and visible. The lenses must look like reflective glass, not white stickers, blank blobs or glowing eyes. Keep nose bridge and finger unobscured. Use subdued corridor lighting on skin and clothes, no beauty studio spotlight. Output TRUE TRANSPARENT alpha background tightly around silhouette, NO haze, no glow behind body, no luminous outline, no scene, no text."
+    },
+    {
+      "key": "lia-glasses-knowing-painted",
+      "original": "artwork-archive/npc-visual-polish-20261031/lia-glasses-knowing-painted.png",
+      "display": "/tower/headquarters-lia-glasses-knowing-painted-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "1089640ed8512f022425ec6a7e3b4b4c68cb73f66a797e42268f14a459a49fdc",
+      "displaySha256": "219f57523260e5bcc16ff4062fe53b1184264abab453afbd46e25e5035c4004e",
+      "references": [
+        "artwork-archive/lia-reactions-20261031/lia-glasses-knowing.png"
+      ],
+      "prompt": "Use case: identity-preserve. Edit the same adult female fantasy clerk Lia shown in the supplied image. Preserve her exact identity, chestnut bob haircut, oval gold-rim spectacles, cream rolled-sleeve blouse, charcoal waistcoat, long skirt, belt and leather book. Same 1024x1536 full-body framing and hand touching the glasses temple; preserve five natural fingers, wrist, arms and book structure. Improve her CLEVER facial acting: subtle asymmetric confident closed-mouth smirk, ONE raised eyebrow, sharp perceptive gaze in the uncovered eye, playful self-assured expression without a broad grin. Paint an elegant anime-inspired WHITE REFLECTION across ONLY THE LENS NEXT TO HER RAISED HAND, on the viewer's LEFT. Integrated into painterly art: white-silver glass plane with subtle cool-grey edge gradients, fine diagonal window-light streaks and a narrow sharp specular highlight. The other lens stays fully transparent and its natural blue-grey eye remains clearly visible. GOLD RIMS crisp and visible. Reflective GLASS, not a white sticker or glowing eye. Keep nose bridge and finger unobscured. Subdued corridor light on skin and clothes, no studio spotlight. Output TRUE TRANSPARENT alpha background tightly around silhouette, NO haze, no glow behind body, no luminous outline, no scene, no text."
+    }
+  ]
+}

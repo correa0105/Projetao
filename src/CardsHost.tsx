@@ -89,7 +89,7 @@ export function CardsHost({
       if (width > 900)
         room.style.setProperty(
           '--cards-dialogue-left',
-          `${Math.max(18, Math.min(width - 358, (width - shape.width * scale) / 2 + 580 * scale))}px`,
+          `${Math.max(18, Math.min(width - 378, (width - shape.width * scale) / 2 + 548 * scale))}px`,
         );
       setPosition({
         left: (width - shape.width * scale) / 2 + shape.bounds.x * scale,

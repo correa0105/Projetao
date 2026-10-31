@@ -21,6 +21,7 @@ import {
 } from '../shared/tower-headquarters';
 import { RisingEmbers } from './RisingEmbers';
 import { NpcPortrait, useDialogueArt } from './NpcPortrait';
+import './npc-dialogue.css';
 const icons = {
   reception: DoorOpen,
   atlas: BookOpen,
@@ -103,9 +104,9 @@ export function TowerHeadquarters({
   const portraitRequest = !talking
     ? scene.portrait
     : topic === 'honesty'
-      ? '/tower/headquarters-lia-glasses-stern-20261031.webp'
+      ? '/tower/headquarters-lia-glasses-stern-painted-20261031.webp'
       : topic === 'clever'
-        ? '/tower/headquarters-lia-glasses-knowing-20261031.webp'
+        ? '/tower/headquarters-lia-glasses-knowing-painted-20261031.webp'
         : ['book', 'tower', 'discoveries', 'return'].includes(topic)
           ? '/tower/headquarters-lia-reading-refined-20261031.webp'
           : ['work', 'trade', 'uses'].includes(topic)
@@ -253,7 +254,7 @@ export function TowerHeadquarters({
         {talking ? (
           <section
             id="tower-clerk-conversation"
-            className="tower-conversation"
+            className="tower-conversation npc-dialogue"
             aria-label="Conversa com a atendente"
             onKeyDown={(event) => {
               if (event.key === 'Escape') {
@@ -262,11 +263,12 @@ export function TowerHeadquarters({
               }
             }}
           >
-            <header>
-              <span>ATENDIMENTO · {current.name.toLocaleUpperCase('pt-BR')}</span>
-              <b>
-                Lia <small>Escrivã da Torre</small>
-              </b>
+            <header className="npc-dialogue-header">
+              <div>
+                <span>DIRETORIA DA TORRE · {current.name.toLocaleUpperCase('pt-BR')}</span>
+                <b>Lia</b>
+                <small>Escrivã da Torre</small>
+              </div>
               <button
                 aria-label={room === 'reception' ? 'Fechar conversa' : 'Voltar aos registros'}
                 onClick={closeTalk}
@@ -274,40 +276,45 @@ export function TowerHeadquarters({
                 {room === 'reception' ? <X size={16} /> : <ArrowLeft size={16} />}
               </button>
             </header>
-            <div className="tower-conversation-answer" aria-live="polite" aria-atomic="true">
-              <h3>{answer.title}</h3>
-              {answer.paragraphs.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-              {topic === 'welcome' && characterName && pending > 0 && (
-                <p>
-                  Há {pending} {pending === 1 ? 'tesouro aguardando' : 'tesouros aguardando'} sua
-                  revelação, {characterName}.
-                </p>
-              )}
+            <div className="npc-dialogue-scroll">
+              <div className="tower-conversation-answer" aria-live="polite" aria-atomic="true">
+                <h3>{answer.title}</h3>
+                {answer.paragraphs.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+                {topic === 'welcome' && characterName && pending > 0 && (
+                  <p>
+                    Há {pending} {pending === 1 ? 'tesouro aguardando' : 'tesouros aguardando'} sua
+                    revelação, {characterName}.
+                  </p>
+                )}
+              </div>
+              <div
+                className="tower-conversation-options npc-dialogue-choices"
+                aria-label="Perguntas para Lia"
+              >
+                {answer.action && (
+                  <button className="tower-primary" onClick={() => go(answer.action!.room)}>
+                    {answer.action.label}
+                    <ArrowUpRight size={16} />
+                  </button>
+                )}
+                {answer.related.map((id, i) => (
+                  <button key={id} onClick={() => talk(id)}>
+                    <small aria-hidden="true">{i + 1}</small>
+                    <span>{towerQuestionLabels[id]}</span>
+                    <ChevronRight size={15} />
+                  </button>
+                ))}
+                {topic !== 'welcome' && (
+                  <button className="tower-conversation-back" onClick={() => talk('welcome')}>
+                    <ArrowLeft size={14} />
+                    Outras perguntas
+                  </button>
+                )}
+              </div>
+              {room === 'reception' && children}
             </div>
-            <div className="tower-conversation-options" aria-label="Perguntas para Lia">
-              {answer.action && (
-                <button className="tower-primary" onClick={() => go(answer.action!.room)}>
-                  {answer.action.label}
-                  <ArrowUpRight size={16} />
-                </button>
-              )}
-              {answer.related.map((id, i) => (
-                <button key={id} onClick={() => talk(id)}>
-                  <small aria-hidden="true">{i + 1}</small>
-                  <span>{towerQuestionLabels[id]}</span>
-                  <ChevronRight size={15} />
-                </button>
-              ))}
-              {topic !== 'welcome' && (
-                <button className="tower-conversation-back" onClick={() => talk('welcome')}>
-                  <ArrowLeft size={14} />
-                  Outras perguntas
-                </button>
-              )}
-            </div>
-            {room === 'reception' && children}
           </section>
         ) : room === 'reception' ? (
           children

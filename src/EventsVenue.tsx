@@ -14,6 +14,7 @@ import {
 import type { EventScene } from '../shared/events';
 import './events-venue.css';
 import { NpcPortrait, useDialogueArt } from './NpcPortrait';
+import './npc-dialogue.css';
 
 type View = 'reception' | 'agenda' | 'memories';
 type Topic =
@@ -39,6 +40,16 @@ const questions = {
   agenda: 'Quais são os próximos eventos?',
   participation: 'Como participo de um encontro?',
   memories: 'Onde encontro as histórias passadas?',
+};
+const followups: Record<Topic, Exclude<Topic, 'welcome'>[]> = {
+  welcome: ['agenda', 'participation', 'memories', 'identity', 'manner', 'past', 'intimidation'],
+  identity: ['manner', 'past', 'agenda'],
+  manner: ['intimidation', 'identity', 'agenda'],
+  past: ['identity', 'memories', 'agenda'],
+  intimidation: ['manner', 'identity', 'agenda'],
+  agenda: ['participation', 'memories', 'identity'],
+  participation: ['agenda', 'memories', 'identity'],
+  memories: ['past', 'agenda', 'identity'],
 };
 export function EventsVenue({
   scene,
@@ -74,9 +85,15 @@ export function EventsVenue({
       ? '/events/events-reserved-refined-20261031.webp'
       : ['agenda', 'memories', 'past'].includes(topic)
         ? '/events/events-register-refined-20261031.webp'
-        : '/events/events-speaking-refined-20261031.webp';
+        : '/events/events-speaking-closed-20261031.webp';
   const portrait = useDialogueArt(requestedPortrait, idlePortrait);
   const intimidating = talking && topic === 'intimidation';
+  const crimsonScene = useDialogueArt(
+    intimidating && scene.background === '/events/antechamber-20261030.webp'
+      ? '/events/atrium-crimson-light-20261031.webp'
+      : scene.background,
+    scene.background,
+  );
   useEffect(() => {
     if (!talking) return;
     const escape = (event: KeyboardEvent) => {
@@ -101,16 +118,13 @@ export function EventsVenue({
   }
   return (
     <div className="events-venue" data-view={view} data-intimidating={intimidating || undefined}>
-      <svg width="0" height="0" aria-hidden="true" className="events-light-filter">
-        <defs>
-          <filter id="events-red-light" colorInterpolationFilters="sRGB">
-            <feColorMatrix
-              type="matrix"
-              values=".8 .12 .08 0 0 .07 .025 .015 0 0 .09 .025 .015 0 0 0 0 0 1 0"
-            />
-          </filter>
-        </defs>
-      </svg>
+      {intimidating && crimsonScene !== scene.background && (
+        <div
+          className="events-intimidation-scene"
+          aria-hidden="true"
+          style={{ backgroundPosition: `${scene.x}% ${scene.y}%` }}
+        />
+      )}
       <header className="events-venue-heading">
         <div>
           <h1>{titles[view]}</h1>
@@ -212,7 +226,7 @@ export function EventsVenue({
       {talking && (
         <section
           id="events-host-conversation"
-          className="events-host-conversation"
+          className="events-host-conversation npc-dialogue"
           role="region"
           aria-label="Conversa com o anfitrião dos eventos"
           onKeyDown={(e) => {
@@ -222,16 +236,17 @@ export function EventsVenue({
             }
           }}
         >
-          <div className="events-host-conversation-body">
-            <header>
-              <span>ATENDIMENTO · ENCONTROS</span>
-              <b>
-                O Anfitrião<small>Organizador do átrio</small>
-              </b>
-              <button onClick={closeTalk} aria-label="Fechar conversa">
-                <X size={17} />
-              </button>
-            </header>
+          <header className="npc-dialogue-header">
+            <div>
+              <span>BASTIÃO DA ALVORADA · ÁTRIO</span>
+              <b>O Anfitrião</b>
+              <small>Guardião dos encontros</small>
+            </div>
+            <button onClick={closeTalk} aria-label="Fechar conversa">
+              <X size={17} />
+            </button>
+          </header>
+          <div className="events-host-conversation-body npc-dialogue-scroll">
             <h2>{questions[topic]}</h2>
             {topic === 'welcome' && (
               <>
@@ -340,25 +355,13 @@ export function EventsVenue({
                 </button>
               </>
             )}
-            <nav aria-label="Perguntas ao anfitrião">
-              {(
-                [
-                  'identity',
-                  'manner',
-                  'past',
-                  'agenda',
-                  'participation',
-                  'memories',
-                  'intimidation',
-                ] as const
-              )
-                .filter((t) => t !== topic)
-                .map((t) => (
-                  <button key={t} onClick={() => ask(t)}>
-                    {questions[t]}
-                    <ChevronRight size={14} />
-                  </button>
-                ))}
+            <nav className="npc-dialogue-choices" aria-label="Perguntas ao anfitrião">
+              {followups[topic].map((t) => (
+                <button key={t} onClick={() => ask(t)}>
+                  {questions[t]}
+                  <ChevronRight size={14} />
+                </button>
+              ))}
             </nav>
             {topic !== 'welcome' && (
               <button className="events-host-back" onClick={() => ask('welcome')}>
