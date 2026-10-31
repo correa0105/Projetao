@@ -104,7 +104,7 @@ export function TowerHeadquarters({
   const portraitRequest = !talking
     ? scene.portrait
     : topic === 'honesty'
-      ? '/tower/headquarters-lia-glasses-stern-painted-20261031.webp'
+      ? '/tower/headquarters-lia-glasses-stern-bridge-painted-20261031.webp'
       : topic === 'clever'
         ? '/tower/headquarters-lia-glasses-knowing-painted-20261031.webp'
         : ['book', 'tower', 'discoveries', 'return'].includes(topic)

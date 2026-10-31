@@ -1,0 +1,20 @@
+{
+  "mode": "integrated-image_gen",
+  "purpose": "Somente na expressão brava: Lia empurra a ponte central dos óculos para cima com o indicador. As poses pensativa e esperta permanecem inalteradas. Preservar a variante anterior.",
+  "assets": [
+    {
+      "key": "lia-glasses-stern-bridge-painted",
+      "original": "artwork-archive/lia-glasses-bridge-20261031/lia-glasses-stern-bridge-painted.png",
+      "display": "/tower/headquarters-lia-glasses-stern-bridge-painted-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "ab7925dc5d82d3a05db40e0039a7de01bb932932aca721a69042f992592bab76",
+      "displaySha256": "450f7b42f28f1365287452847f4a77230a84fce168f9390a5f8e37c03d6ce5c6",
+      "references": [
+        "artwork-archive/npc-visual-polish-20261031/lia-glasses-stern-painted.png"
+      ],
+      "prompt": "Use case: precise-object-edit. EDIT the supplied approved full-body Lia cutout. Change ONLY the raised arm and hand gesture: instead of touching the OUTER SIDE/temple of her spectacles, she now PUSHES THE GLASSES UP FROM THE CENTER BRIDGE directly over her nose, as if lifting them into place. Her RIGHT hand (the raised hand on viewer's left) moves inward toward the center of her face. The pad of her gently extended INDEX FINGER touches the UNDERSIDE of the small GOLD BRIDGE between the lenses, centered immediately above the nose. Index finger presses UPWARD against the bridge. The other fingers are relaxed and gently curled together below it; one natural thumb, one index, middle/ring/little fingers. Anatomically coherent HUMAN hand of exactly five connected fingers, natural knuckles, palm and wrist. NOT an extended middle finger, no extra hand, no fingers through glass, no contact at outer temple, no hand covering the lenses. Repose her forearm and elbow only as necessary for this centered upward push. The gold glasses may sit a few millimeters higher naturally, keeping shape and optical perspective. Keep her angry stern facial acting and BOTH lenses covered in the existing white-silver diagonal glass reflections. LOCK her identity, chestnut bob haircut, face proportions, head tilt, cream blouse/rolled cuff, charcoal waistcoat and skirt, belt, torso, book and the other hand holding that book. Preserve 1024x1536 canvas, camera, scale, full framing, painterly finish, subdued warm fantasy lighting and exact clothing details. Keep lens effects beautifully painted reflective GLASS with gold rims visible. True TRANSPARENT alpha background; no colored haze, painted backdrop, cast shadow behind body, halo or glow. No text."
+    }
+  ]
+}
