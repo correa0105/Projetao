@@ -20,38 +20,20 @@ export function useNpcMotion() {
 }
 
 // Keep the previous decoded art on screen. Internal dialogue never opens the page loader.
-export function useDialogueArt(requested: string, fallback: string, interlude?: string) {
+export function useDialogueArt(requested: string, fallback: string) {
   const [src, setSrc] = useState(fallback);
-  const { visible, reduced } = useNpcMotion();
   useEffect(() => {
     let live = true;
-    let timer: ReturnType<typeof setTimeout> | undefined;
     if (requested === fallback) {
       setSrc(fallback);
       return;
     }
-    const decode = async (url: string) => {
-      const art = new Image();
-      art.decoding = 'async';
-      art.src = url;
-      await art.decode();
-    };
-    void decode(requested)
-      .then(async () => {
-        if (!live) return;
-        if (interlude && visible && !reduced) {
-          try {
-            await decode(interlude);
-            if (!live) return;
-            setSrc(interlude);
-            timer = setTimeout(() => {
-              if (live) setSrc(requested);
-            }, 1100);
-            return;
-          } catch {
-            /* The final pose is already available. */
-          }
-        }
+    const art = new Image();
+    art.decoding = 'async';
+    art.src = requested;
+    void art
+      .decode()
+      .then(() => {
         if (live) setSrc(requested);
       })
       .catch(() => {
@@ -59,9 +41,8 @@ export function useDialogueArt(requested: string, fallback: string, interlude?: 
       });
     return () => {
       live = false;
-      clearTimeout(timer);
     };
-  }, [requested, fallback, interlude, visible, reduced]);
+  }, [requested, fallback]);
   return src;
 }
 
@@ -78,8 +59,18 @@ export function NpcPortrait({
 }) {
   const id = useId();
   const { visible, reduced } = useNpcMotion();
-  const reading = /atlas|retrieve/.test(src);
-  const eyeY = /records/.test(src) ? 285 : 273;
+  const reading = /reading-refined|atlas/.test(src);
+  const considering = src.includes('considering-refined');
+  const lenses = reading
+    ? [402, 309, 540, 285]
+    : considering
+      ? [404, 303, 530, 267]
+      : [400, 305, 545, 282];
+  const eye = src.includes('speaking-refined')
+    ? [478, 270]
+    : src.includes('reserved-refined')
+      ? [459, 263]
+      : [459, 273];
   return (
     <svg
       viewBox="0 0 1024 1536"
@@ -123,23 +114,22 @@ export function NpcPortrait({
         </linearGradient>
         <clipPath id={id + '-lenses'}>
           <ellipse
-            cx={reading ? 420 : 400}
-            cy={reading ? 335 : 305}
+            cx={lenses[0]}
+            cy={lenses[1]}
             rx="51"
             ry="27"
-            transform={`rotate(-12 ${reading ? 420 : 400} ${reading ? 335 : 305})`}
+            transform={`rotate(-12 ${lenses[0]} ${lenses[1]})`}
           />
           <ellipse
-            cx={reading ? 557 : 545}
-            cy={reading ? 308 : 282}
+            cx={lenses[2]}
+            cy={lenses[3]}
             rx="51"
             ry="27"
-            transform={`rotate(-12 ${reading ? 557 : 545} ${reading ? 308 : 282})`}
+            transform={`rotate(-12 ${lenses[2]} ${lenses[3]})`}
           />
         </clipPath>
       </defs>
       <image
-        key={src}
         className={'npc-pose ' + (portraitClass || '')}
         href={src}
         width="1024"
@@ -155,8 +145,8 @@ export function NpcPortrait({
       {kind === 'events' ? (
         <ellipse
           className="npc-eye-glow"
-          cx="459"
-          cy={eyeY}
+          cx={eye[0]}
+          cy={eye[1]}
           rx="16"
           ry="9"
           fill={`url(#${id}-eye)`}

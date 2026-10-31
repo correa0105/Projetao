@@ -20,7 +20,7 @@ import {
   type TowerTopic,
 } from '../shared/tower-headquarters';
 import { RisingEmbers } from './RisingEmbers';
-import { NpcPortrait, useDialogueArt, useNpcMotion } from './NpcPortrait';
+import { NpcPortrait, useDialogueArt } from './NpcPortrait';
 const icons = {
   reception: DoorOpen,
   atlas: BookOpen,
@@ -92,8 +92,6 @@ export function TowerHeadquarters({
   }, [room]);
   const talking = conversation === room,
     answer = towerAnswers[topic];
-  const { visible, reduced } = useNpcMotion();
-  const [idleReading, setIdleReading] = useState(false);
   useEffect(() => {
     if (!talking) return;
     const escape = (event: KeyboardEvent) => {
@@ -102,42 +100,20 @@ export function TowerHeadquarters({
     window.addEventListener('keydown', escape);
     return () => window.removeEventListener('keydown', escape);
   }, [talking]);
-  useEffect(() => {
-    setIdleReading(false);
-    if (talking || room !== 'reception' || !visible || reduced) return;
-    let timer: ReturnType<typeof setTimeout>;
-    const schedule = () => {
-      timer = setTimeout(() => {
-        setIdleReading(true);
-        timer = setTimeout(() => {
-          setIdleReading(false);
-          schedule();
-        }, 6000);
-      }, 22000);
-    };
-    schedule();
-    return () => clearTimeout(timer);
-  }, [talking, room, visible, reduced]);
   const portraitRequest = !talking
-    ? idleReading
-      ? '/tower/headquarters-lia-atlas-20261030.webp'
-      : scene.portrait
-    : ['book', 'tower', 'discoveries', 'return', 'trade', 'uses'].includes(topic)
-      ? '/tower/headquarters-lia-atlas-20261030.webp'
-      : topic === 'expeditions'
-        ? '/tower/headquarters-lia-expeditions-20261030.webp'
-        : topic === 'crystals'
-          ? '/tower/headquarters-lia-crystals-20261030.webp'
-          : topic === 'treasures'
-            ? '/tower/headquarters-lia-treasures-20261030.webp'
-            : '/tower/headquarters-lia-explain-20261031.webp';
-  const portrait = useDialogueArt(
-    portraitRequest,
-    scene.portrait,
-    (talking || idleReading) && portraitRequest.includes('lia-atlas')
-      ? '/tower/headquarters-lia-retrieve-20261031.webp'
-      : undefined,
-  );
+    ? scene.portrait
+    : ['book', 'tower', 'discoveries', 'return'].includes(topic)
+      ? '/tower/headquarters-lia-reading-refined-20261031.webp'
+      : ['work', 'trade', 'uses'].includes(topic)
+        ? '/tower/headquarters-lia-considering-refined-20261031.webp'
+        : topic === 'expeditions'
+          ? '/tower/headquarters-lia-expeditions-20261030.webp'
+          : topic === 'crystals'
+            ? '/tower/headquarters-lia-crystals-20261030.webp'
+            : topic === 'treasures'
+              ? '/tower/headquarters-lia-treasures-20261030.webp'
+              : '/tower/headquarters-lia-speaking-refined-20261031.webp';
+  const portrait = useDialogueArt(portraitRequest, scene.portrait);
   function talk(next: TowerTopic = current.topic) {
     setTopic(next);
     setConversation(room);

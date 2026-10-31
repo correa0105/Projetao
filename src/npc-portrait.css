@@ -1,6 +1,9 @@
 .npc-portrait {
   pointer-events: none;
 }
+.npc-portrait .npc-pose {
+  animation: none;
+}
 .npc-pose {
   animation: npc-pose-enter 0.2s ease both;
 }

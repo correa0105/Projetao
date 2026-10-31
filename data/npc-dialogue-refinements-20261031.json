@@ -1,0 +1,90 @@
+{
+  "mode": "integrated-image_gen",
+  "purpose": "Revisão das poses de Lia e do Átrio, livro com estrutura coerente e uma pose estável por resposta. Versões anteriores preservadas.",
+  "assets": [
+    {
+      "key": "lia-reading-refined",
+      "original": "artwork-archive/npc-dialogue-refinements-20261031/lia-reading-refined.png",
+      "display": "/tower/headquarters-lia-reading-refined-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "30365b96ae6f346763250dde31388bc1a048c15e5e9887473c7a72034971bc6b",
+      "displaySha256": "f1983f2ec3ba06455c4a0e280890395e9e3a8e181bf0f9ce443c76c69c71bd0d",
+      "references": [
+        "artwork-archive/tower-layered-20261030/reception-lia.png"
+      ],
+      "prompt": "Use case: identity-preserve. Edit target image 1: approved Lia portrait. Produce a polished transparent 1024x1536 character dialogue illustration, exact same adult woman and painterly fantasy style. Preserve her recognisable face, short curled chestnut bob/fringe, blue-grey eyes, delicate oval gold spectacles, cream collared blouse and rolled sleeves, fitted charcoal waistcoat with central brass buttons and belt, long charcoal skirt continuing beyond the lower crop. Lock camera and body scale, head at the same screen coordinates; head top around y25. Subdued warm side light suitable for a dim stone guild office, refined fabric and skin shading, modest natural character acting. Real alpha outside the figure, no painted backdrop, haze, glow or text. Anatomically correct two arms, five fingers each; no fused joints. Rebuild the pose as careful attentive reading. She cradles ONE small normal leather-bound book, approximately 24cm wide when open, centered at lower chest height and tilted up toward her eyes. BOTH hands support the outer lower corners with relaxed visible fingers; neither hand points at the pages. Eyes naturally directed down, quiet focused expression. The book must be physically correct: one spine at the middle, two rigid covers connected at that spine, a SINGLE continuous page block folded into a shallow V, pages on both sides meeting at the same central gutter, parallel paper edges, believable perspective and consistent thickness. Covers sit immediately under the page blocks; no extra covers, flaps, stacked books, broken hinge or detached page wedge. No clasp or decorative hardware. Only faint illegible ink lines. The complete book and both hands fit fully inside the canvas. This is a finished static reading pose."
+    },
+    {
+      "key": "lia-speaking-refined",
+      "original": "artwork-archive/npc-dialogue-refinements-20261031/lia-speaking-refined.png",
+      "display": "/tower/headquarters-lia-speaking-refined-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "b2da9eb77e62ef78cc1cda00f3d6c38998c43e093e732b69bb86338088f495f9",
+      "displaySha256": "57af28b50c927b208a4e6fc7dfc3dbfa154f527416da1c950179ed1dcda4fa24",
+      "references": [
+        "artwork-archive/tower-layered-20261030/reception-lia.png"
+      ],
+      "prompt": "Use case: identity-preserve. Edit target image 1: approved Lia portrait. Produce a polished transparent 1024x1536 character dialogue illustration, exact same adult woman and painterly fantasy style. Preserve her recognisable face, short curled chestnut bob/fringe, blue-grey eyes, delicate oval gold spectacles, cream collared blouse and rolled sleeves, fitted charcoal waistcoat with central brass buttons and belt, long charcoal skirt continuing beyond the lower crop. Lock camera and body scale, head at the same screen coordinates; head top around y25. Subdued warm side light suitable for a dim stone guild office, refined fabric and skin shading, modest natural character acting. Real alpha outside the figure, no painted backdrop, haze, glow or text. Anatomically correct two arms, five fingers each; no fused joints. A natural conversational pose: left forearm holds ONE closed modest leather journal upright against her left waist; right hand held close to her sternum with relaxed gently curved fingers, thumb toward herself, as she introduces herself sincerely. Shoulders subtly three-quarter, face towards the visitor, attentive half-open lips as if speaking softly, restrained friendly expression instead of a stock posed grin. Expressive but small believable gesture, no grand palm presented to camera. Keep exact facial identity and glasses shape. Journal has one cover and one spine, no flap or clasp."
+    },
+    {
+      "key": "lia-considering-refined",
+      "original": "artwork-archive/npc-dialogue-refinements-20261031/lia-considering-refined.png",
+      "display": "/tower/headquarters-lia-considering-refined-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "e4f6edbc01b637758ac3f53df6267183ca3327eb2ab80c7a20057257612b9d5a",
+      "displaySha256": "afad5774ac82e4353ea2a68c33f75c2cf21d0d314c45ee6c75714a65b218b06a",
+      "references": [
+        "artwork-archive/tower-layered-20261030/reception-lia.png"
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is edit target, the approved Lia portrait. Create a refined transparent 1024x1536 conversation pose preserving exact adult female identity, curled chestnut bob/fringe, blue-grey eyes, oval gold glasses, cream collared blouse rolled sleeves, dark fitted buttoned waistcoat, belt and long charcoal skirt cropped below. Same camera, framing, head size and placement and richly textured painterly fantasy style. Change only her acting: she pauses thoughtfully while answering about her work. One hand gently touches the outer temple of her glasses with index finger and thumb, the other forearm cradles a single CLOSED modest plain leather journal at waist. Natural upright shoulders, head subtly tilted, eyes meeting listener, lips relaxed and expression attentive and slightly earnest rather than a grin. Believable anatomy, two arms, five fingers per hand, no fingers crossing lenses or glasses bridge, no duplicated frame. Warm subdued interior side light and shadow consistent with reference, no studio brightness. Real transparent alpha, no backdrop, text or glow outside figure."
+    },
+    {
+      "key": "events-speaking-refined",
+      "original": "artwork-archive/npc-dialogue-refinements-20261031/events-speaking-refined.png",
+      "display": "/events/events-speaking-refined-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "e609c1f8610f3654cc1d958060d88ed615489a0dbda3587a27ec99dbf136ebc1",
+      "displaySha256": "23308bca956398b067808c6ad011e9a822e29d77157c80fa86688b203541a891",
+      "references": [
+        "artwork-archive/events-venue-20261030/host-tailoring.png"
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is edit target: approved male tiefling host portrait. Create one refined transparent 1024x1536 dialogue pose. Preserve EXACT character identity, age, pale grey textured skin, wine-red hair and pointed beard, curled dark horns, pointed ears and gold hoop, dark sclera with tiny red irises (NOT white human eyes), stern unsmiling slightly arrogant face and raised chin. Same coat construction: BOTH lapels match burgundy, dark long weathered leather coat, brass buttons, dark neckcloth, central tunic, belt and matching symmetrical tunic panels below belt. Camera, head location and scale locked to reference. Same detailed painterly style, restrained warm low-key torch side lighting; no bright studio light. True alpha background with no haze or halo. Elegant natural anatomical hands with five fingers; correct sleeves and wrists. Change pose and nuanced expression only. Controlled conversational acting: his left forearm comes forward but remains near his waist, hand angled sideways with relaxed half-curled fingers and thumb rather than a broad theatrical palm. Right hand rests behind his back. He inclines his head just a little toward the listener, one brow subtly raised, lips very slightly parted mid-sentence, firm neutral mouth with absolutely no smile. The gesture should feel like a reserved confident organiser explaining a matter, not asking for money. Coat fabric folds react convincingly to the elbow."
+    },
+    {
+      "key": "events-reserved-refined",
+      "original": "artwork-archive/npc-dialogue-refinements-20261031/events-reserved-refined.png",
+      "display": "/events/events-reserved-refined-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "949d97d51f27063537c3dafd7026712ff409076645c9cd506882c5d6994f114d",
+      "displaySha256": "0de403061dd871744d64ea5a05e05d2e20b488d52117f954a57078513fd6b0fe",
+      "references": [
+        "artwork-archive/events-venue-20261030/host-tailoring.png"
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is edit target: approved male tiefling host portrait. Create one refined transparent 1024x1536 dialogue pose. Preserve EXACT character identity, age, pale grey textured skin, wine-red hair and pointed beard, curled dark horns, pointed ears and gold hoop, dark sclera with tiny red irises (NOT white human eyes), stern unsmiling slightly arrogant face and raised chin. Same coat construction: BOTH lapels match burgundy, dark long weathered leather coat, brass buttons, dark neckcloth, central tunic, belt and matching symmetrical tunic panels below belt. Camera, head location and scale locked to reference. Same detailed painterly style, restrained warm low-key torch side lighting; no bright studio light. True alpha background with no haze or halo. Elegant natural anatomical hands with five fingers; correct sleeves and wrists. Change pose and nuanced expression only. Reserved, mildly dismissive personal conversation: arms loosely folded across the lower chest in a physically natural way, each forearm visible with two properly connected sleeves and only two hands. One hand rests over the opposite upper arm with relaxed fingers, the other is tucked naturally under the opposite elbow. Shoulders square and slightly back. Chin elevated, direct serious narrow-eyed gaze, one eyebrow a touch higher, closed unsmiling mouth. Dignified confidence, not villain theatrics. Preserve the coat and both burgundy lapels clearly."
+    },
+    {
+      "key": "events-register-refined",
+      "original": "artwork-archive/npc-dialogue-refinements-20261031/events-register-refined.png",
+      "display": "/events/events-register-refined-20261031.webp",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "sha256": "2b874ebddd4f2e88c9fb4cf7bf2d14c31f2856efae29d80a3a1c65c937d673f9",
+      "displaySha256": "1b8a9983268a6199e93ed91132471b0cc7e7baac28d145f0738932c1dd1a3390",
+      "references": [
+        "artwork-archive/events-venue-20261030/host-tailoring.png"
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is edit target, approved stern male tiefling host. Create a refined transparent 1024x1536 conversational illustration. Exact same identity, pale grey textured skin, burgundy hair/beard, large curled horns, gold hoop, DARK sclera and tiny RED irises; serious, confident, slightly arrogant unsmiling expression. BOTH burgundy lapels must match, same weathered long dark leather coat, brass buttons, black neckcloth, belt, symmetrical lower tunic panels. Camera, head position and scale fixed. He holds ONE thin CLOSED dark leather register with a plain rigid rectangular cover upright against his lower chest, supported by left hand beneath it; right hand rests lightly on the top edge with relaxed fingers, as if referring to the record while speaking. Eyes towards listener, chin raised, lips very slightly parted without smile. Clearly correct two hands, five fingers each, natural wrist/elbow construction. No open pages, loose papers, clasps, floating objects or extra books. Rich restrained painterly shading and subdued torch side-light, same low-key palette as target. True alpha outside figure, no painted haze, glow, background, text or logos."
+    }
+  ]
+}

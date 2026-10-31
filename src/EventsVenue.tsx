@@ -61,9 +61,11 @@ export function EventsVenue({
   const idlePortrait = '/events/host-tailoring-20261030.webp';
   const requestedPortrait = !talking
     ? idlePortrait
-    : ['/events/events-explain-20261031.webp', '/events/events-records-20261031.webp'][
-        ['agenda', 'memories', 'past'].includes(topic) ? 1 : 0
-      ];
+    : ['identity', 'manner'].includes(topic)
+      ? '/events/events-reserved-refined-20261031.webp'
+      : ['agenda', 'memories', 'past'].includes(topic)
+        ? '/events/events-register-refined-20261031.webp'
+        : '/events/events-speaking-refined-20261031.webp';
   const portrait = useDialogueArt(requestedPortrait, idlePortrait);
   useEffect(() => {
     if (!talking) return;

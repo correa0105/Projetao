@@ -45,7 +45,7 @@ export const towerRooms: {
     title: 'Arquivo da Torre',
     description: 'Os registros do que já foi descoberto.',
     image: '/tower/headquarters-atlas-window-20261030.webp',
-    portrait: '/tower/headquarters-lia-atlas-20261030.webp',
+    portrait: '/tower/headquarters-lia-reading-refined-20261031.webp',
     topic: 'discoveries',
   },
   {
