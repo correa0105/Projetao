@@ -87,7 +87,22 @@ Criar evento e Editar cenário ficam no menu para administradores globais ou
 com escopo `events`, sempre com autorização e revisão no servidor. A navegação
 e a conversa não reabrem o loading geral.
 
-A pergunta “E se eu causar problemas aqui?” inicia uma sequência de intimidação: as luzes se apagam progressivamente do fundo para a frente durante 4,2 segundos, acompanhadas por vento estéreo. Ao chegar ao preto completo, a música própria do Átrio pausa. Depois de 0,9 segundo no escuro, o mesmo olho aprovado acende junto da iluminação vermelha e do nevoeiro rasteiro. Somente a opacidade do brilho pulsa suavemente a cada 3,6 segundos; elipse, posição, anatomia e pintura do olho permanecem iguais. A variante vermelha preserva a arquitetura original e sombras frias; cenários personalizados conservam sua imagem e recebem tonalidade vermelha. Outra pergunta, navegação ou fechamento cancelam a sequência, retiram vento/nevoeiro e liberam a música, sem transação de jogo. Aba oculta pausa relógio, áudio e animações; movimento reduzido mantém a luz e o nevoeiro estáticos, sem pulsação. As artes anteriores permanecem preservadas no [registro visual](../data/npc-visual-polish-art-20261031.json). O balão conserva cabeçalho fixo, rolagem própria, três perguntas relacionadas e retorno a todas as perguntas. Músicas originais, licença comercial e verificação em [Configurações de som](SOUND-SETTINGS.md).
+A pergunta “E se eu causar problemas aqui?” inicia uma sequência de intimidação: as luzes se apagam progressivamente do fundo para a frente durante 4,2 segundos, acompanhadas por vento estéreo. Ao chegar ao preto completo, a música própria do Átrio pausa. Depois de 0,9 segundo no escuro, o mesmo olho aprovado acende junto da iluminação vermelha e do nevoeiro rasteiro. Somente a opacidade do brilho pulsa suavemente a cada 3,6 segundos; elipse, posição, anatomia e pintura do olho permanecem iguais. A variante vermelha preserva a arquitetura original e sombras frias; cenários personalizados conservam sua imagem e recebem tonalidade vermelha. Uma pergunta neutra, navegação ou fechamento cancelam a sequência, retiram vento/nevoeiro e liberam a música, sem transação de jogo. Aba oculta pausa relógio, áudio e animações; movimento reduzido mantém a luz e o nevoeiro estáticos, sem pulsação. As artes anteriores permanecem preservadas no [registro visual](../data/npc-visual-polish-art-20261031.json). O balão conserva cabeçalho fixo, rolagem própria, três perguntas relacionadas e retorno a todas as perguntas. Músicas originais, licença comercial e verificação em [Configurações de som](SOUND-SETTINGS.md).
+
+O reacendimento vermelho acontece por seis focos presos às coordenadas da pintura,
+do fundo para as lanternas próximas, ao longo de 3,9 segundos. A luz ambiente e o
+retrato retornam depois dos primeiros focos. O nevoeiro usa um volume baixo com
+ruído em perspectiva e corrente irregular, em WebGL limitado a 24 quadros/s e
+640 × 400 pixels; sem WebGL, há alternativa estática de ruído SVG. Não há faixa
+uniforme de gradientes no rodapé. Pausa por visibilidade, movimento reduzido e
+descarte do contexto ao fechar continuam aplicados.
+
+A conversa permite menosprezar o cargo, insultar o Anfitrião, ameaçar causar
+problemas e desafiar sua autoridade, com respostas diferentes e opções de
+insistência ou pedido de desculpas. Continuar uma provocação mantém a mesma
+sequência, sem apagar a sala novamente. Desculpar-se ou voltar a um assunto
+neutro encerra a intimidação e retoma a música. Cada resposta reposiciona a
+rolagem no início; nenhuma escolha expulsa o jogador ou muda dados de jogo.
 
 O cenário novo integra a galeria, que preserva as artes anteriores e os uploads.
 As imagens foram geradas com imagegen integrado; originais e referências estão

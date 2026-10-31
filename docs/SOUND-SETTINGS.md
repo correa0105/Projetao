@@ -25,8 +25,9 @@ Ocultar a aba e desmontar as cenas mantém os cancelamentos existentes.
 
 Na reação à pergunta “E se eu causar problemas aqui?”, a música do Átrio pausa
 ao completar 4,2 segundos visíveis, quando o cenário fica preto. Continua pausada
-na iluminação vermelha e retoma da mesma posição ao trocar de pergunta ou fechar
-a conversa. Navegar troca diretamente para a faixa da nova área. A sequência,
+na iluminação vermelha e retoma da mesma posição ao voltar a um assunto neutro,
+pedir desculpas ou fechar a conversa. Insistir nas provocações mantém a pausa e
+a mesma reação, sem reiniciar o apagamento. Navegar troca diretamente para a faixa da nova área. A sequência,
 o vento e as animações pausam na aba oculta; fechar ou sair cancela os disparos
 pendentes. Silenciar efeitos interrompe o vento sem alterar a música nem repetir
 a rajada ao reativar. O gerador e hashes dos três áudios estão em

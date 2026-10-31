@@ -38,7 +38,7 @@ await context.addInitScript(() => {
   localStorage.setItem('alvorada-effects-muted', 'false');
 });
 const page = await context.newPage();
-const root = '.local/atrio-ambientacao-20261031';
+const root = process.env.ATRIUM_QA_DIR || '.local/atrio-ambientacao-20261031';
 const errors: string[] = [],
   missing: string[] = [],
   writes: string[] = [],
@@ -130,6 +130,17 @@ try {
   ).toEqual(['459', '263', '24', '13']);
   const opacity = await eye.evaluate((el) => getComputedStyle(el).opacity);
   await page.waitForTimeout(1100);
+  expect(
+    await page
+      .locator('.events-light-pool[data-light="0"]')
+      .evaluate((el) => Number(getComputedStyle(el).opacity)),
+  ).toBeGreaterThan(0.95);
+  await expect(page.locator('.events-light-pool[data-light="5"]')).toHaveCSS('opacity', '0');
+  await page.screenshot({ path: root + '/04-lanternas-fundo-1440.png' });
+  await page.waitForTimeout(3000);
+  await expect(page.locator('.events-relight-base')).toHaveCSS('opacity', '1');
+  await expect(page.locator('.events-ground-fog canvas')).toBeVisible();
+  await expect(page.locator('.events-ground-fog canvas')).toHaveAttribute('data-motion', 'on');
   expect(await eye.evaluate((el) => getComputedStyle(el).opacity)).not.toBe(opacity);
   await expect.poll(() => isPlaying()).toBe(false);
   expect(await music().evaluate((el: HTMLAudioElement) => el.currentTime)).toBeCloseTo(pausedAt, 1);
@@ -143,11 +154,7 @@ try {
     'apagamento progressivo, silêncio no escuro, vento estéreo, olho único com geometria preservada e pulsação, luz vermelha e nevoeiro',
   );
   await hidden(true);
-  expect(
-    await page
-      .locator('.events-ground-fog')
-      .evaluate((el) => getComputedStyle(el, '::before').animationPlayState),
-  ).toBe('paused');
+  await expect(page.locator('.events-ground-fog canvas')).toHaveAttribute('data-motion', 'off');
   await hidden(false);
   await page.getByRole('button', { name: 'Quem é você?', exact: true }).click();
   await expect(room()).toHaveAttribute('data-reaction', 'idle');
@@ -168,6 +175,39 @@ try {
   await closeTalk();
   checks.push(
     'retomada da mesma posição da música e preferências preservadas ao trocar de pergunta e fechar',
+  );
+
+  await page
+    .getByRole('button', { name: 'Conversar com o anfitrião dos eventos', exact: true })
+    .click();
+  await page
+    .getByRole('button', { name: 'Você é só um porteiro fantasiado.', exact: true })
+    .click();
+  await expect(room()).toHaveAttribute('data-reaction', 'fading');
+  await expect(page.locator('.npc-dialogue-scroll')).toContainText('A roupa não muda essa regra');
+  await page
+    .getByRole('button', { name: 'Você fala demais para alguém tão insignificante.', exact: true })
+    .click();
+  await expect(page.locator('.npc-dialogue-scroll')).toContainText('Eu sei quem sou');
+  await expect(room()).toHaveAttribute('data-reaction', 'crimson', {
+    timeout: atriumCrimsonMs + 1000,
+  });
+  const fogNode = await page.locator('.events-ground-fog canvas').elementHandle();
+  await page.getByRole('button', { name: 'Quero ver você me tirar daqui.', exact: true }).click();
+  await expect(room()).toHaveAttribute('data-reaction', 'crimson');
+  expect(await fogNode!.evaluate((el) => el.isConnected)).toBe(true);
+  await expect(page.locator('.npc-dialogue-scroll')).toContainText(
+    'hospitalidade com falta de limites',
+  );
+  await expect.poll(() => isPlaying()).toBe(false);
+  await page.screenshot({ path: root + '/06-provocacao-insistencia-1440.png' });
+  await page.getByRole('button', { name: 'Foi mal. Passei do ponto.', exact: true }).click();
+  await expect(room()).toHaveAttribute('data-reaction', 'idle');
+  await expect(page.locator('.npc-dialogue-scroll')).toContainText('Estamos entendidos');
+  await expect.poll(() => isPlaying()).toBe(true);
+  await closeTalk();
+  checks.push(
+    'provocações diferentes, respostas próprias, insistência sem reiniciar o apagamento e desculpas que encerram a intimidação',
   );
 
   await threaten();
@@ -240,11 +280,7 @@ try {
     await expect(page.locator('.events-darkness-near')).toHaveCSS('opacity', '1');
     await expect(room()).toHaveAttribute('data-reaction', 'crimson');
     expect(await eye.evaluate((el) => getComputedStyle(el).animationName)).toBe('none');
-    expect(
-      await page
-        .locator('.events-ground-fog')
-        .evaluate((el) => getComputedStyle(el, '::before').animationName),
-    ).toBe('none');
+    await expect(page.locator('.events-ground-fog canvas')).toHaveAttribute('data-motion', 'off');
     await expect(
       page.getByRole('button', { name: 'Fechar conversa', exact: true }),
     ).toBeInViewport();
@@ -257,6 +293,25 @@ try {
   checks.push(
     '320 e 390 px, sem transbordamento, movimento reduzido sem pulsação ou nevoeiro móvel',
   );
+  await page.evaluate(() => {
+    const get = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = function (
+      this: HTMLCanvasElement,
+      type: string,
+      ...args: unknown[]
+    ) {
+      if (type === 'webgl') return null;
+      return (get as Function).apply(this, [type, ...args]);
+    } as typeof get;
+  });
+  await threaten();
+  await expect(room()).toHaveAttribute('data-reaction', 'crimson', {
+    timeout: atriumCrimsonMs + 1000,
+  });
+  await expect(page.locator('.events-fog-fallback')).toBeVisible();
+  await expect(page.locator('.events-ground-fog canvas')).toBeHidden();
+  await closeTalk();
+  checks.push('alternativa SVG sem WebGL e descarte da névoa ao fechar');
   const assets = JSON.parse(await readFile('data/atrium-tower-audio-20261031.json', 'utf8'));
   expect(assets.assets).toHaveLength(3);
   expect(errors).toEqual([]);
