@@ -366,6 +366,21 @@ export async function decideCharacterArt(
 }
 
 // Only the trusted worker supplies image bytes. The owner may choose an already validated pair.
+export async function cancelCharacterArt(userId: string, jobId: string) {
+  return transaction(async client => {
+    await client.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE',[userId]);
+    const job=(await client.query(`SELECT j.id,j.character_id,j.status,j.last_error_code FROM character_art_jobs j
+      JOIN characters c ON c.id=j.character_id WHERE j.id=$1 AND j.user_id=$2 AND c.user_id=$2 AND c.deleted_at IS NULL
+      FOR UPDATE OF j`,[jobId,userId])).rows[0];
+    if(!job)throw new AppError(404,'Pedido não encontrado.');
+    if(job.status==='failed' && job.last_error_code==='cancelled')return{...job,cancelled:true,replayed:true};
+    if(!['queued','running'].includes(job.status))throw new AppError(409,'O pedido já terminou. Atualize a página para conferir a imagem.');
+    await client.query(`UPDATE character_art_jobs SET status='failed',last_error_code='cancelled',next_attempt_at=NULL,
+      completed_at=now(),error='Pedido cancelado. Sua imagem atual e sua cota foram preservadas.' WHERE id=$1`,[jobId]);
+    return{id:job.id,character_id:job.character_id,status:'failed',cancelled:true,replayed:false};
+  });
+}
+
 export function completeArt(jobId: string, output: {portrait:Buffer;token:Buffer}):Promise<string>;
 export function completeArt(jobId: string, output: {portrait:Buffer;token?:Buffer}):Promise<string|null>;
 export async function completeArt(jobId: string, output: { portrait: Buffer; token?: Buffer }) {
@@ -385,6 +400,7 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
       rows: [job],
     } = await client.query('SELECT * FROM character_art_jobs WHERE id=$1 FOR UPDATE', [jobId]);
     if (job.status === 'completed') return job.character_id as string;
+    if (job.last_error_code === 'cancelled') throw new AppError(409,'Este pedido foi cancelado.');
     if (job.status !== 'running' && !(job.status === 'failed' && !tokenImage))
       throw new AppError(409, 'Pedido não está em processamento.');
     let characterId = job.character_id;
@@ -503,6 +519,10 @@ export function characterArtRouter() {
       .strict()
       .parse(req.body);
     res.json(await decideCharacterArt(res.locals.user.id, uuid.parse(req.params.id), decision));
+  });
+  router.post('/character-art/:id/cancel',async(req,res)=>{
+    z.object({}).strict().parse(req.body);
+    res.json(await cancelCharacterArt(res.locals.user.id,uuid.parse(req.params.id)));
   });
   router.get('/character-art/:id/draft', async (req, res) => {
     const { rows } = await pool.query(

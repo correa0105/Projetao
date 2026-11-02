@@ -8,6 +8,14 @@ O acampamento mantém a criação que falhou visível, com Tentar novamente e Re
 
 Rotas `GET /api/character-art/:id/draft` e `POST /api/character-art/:id/retry` filtram pelo proprietário. Retry serializa pela conta e pedido, respeita o limite de dois personagens e a disponibilidade do ilustrador. Chamadas repetidas não duplicam o pedido.
 
+## Cancelamento de Vestir
+
+Pedidos de personagens existentes em fila ou processamento mostram **Cancelar pedido**. `POST /api/character-art/:id/cancel` valida o dono e encerra somente aquele pedido, sem interromper o ilustrador ou outras filas. Usa status `failed` com motivo `cancelled`; conserva referência, equipamentos e retrato aprovado, e retira o pedido da cota reservada. Reenvios são idempotentes. Uma imagem já pronta permanece disponível para escolha e não pode ser descartada por essa rota.
+
+Resultados e checkpoints atrasados do pedido cancelado não são publicados nem o reativam. A consulta da fila prevalece sobre o indicador antigo do acampamento, evitando manter Vestir bloqueado após o cancelamento. Sem equipamento selecionado, o envio é rotulado **Gerar sem equipamentos**; vestir itens exige equipá-los na Mochila. A recuperação automática dos demais pedidos continua ativa.
+
+Validação: `node scripts/test-character-tokens-isolated.mjs --cancel`; `--cancel-browser` confere cancelamento, indicador antigo e envio sem equipamento em computador e celular.
+
 ## Retomada automática
 
 Falhas técnicas, de geração ou de revisão devolvem o mesmo pedido à fila automaticamente, sem limite de tentativas. A migration 137 conserva contador, motivo e horário da próxima tentativa no PostgreSQL. O intervalo cresce de 15 segundos até cinco minutos; limite do provedor aguarda uma hora. Novos pedidos e companheiros continuam sendo atendidos durante esses intervalos. Erros que exigem corrigir os dados ou uma referência recusada permanecem salvos para edição.

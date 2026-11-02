@@ -22,6 +22,8 @@ export function CharacterArtButton({
   const [availabilityError, setAvailabilityError] = useState('');
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [cancelling, setCancelling] = useState(false);
+  const [jobsChecked, setJobsChecked] = useState(false);
   const [checkingQuota, setCheckingQuota] = useState(false);
   const [error, setError] = useState('');
   const [reference, setReference] = useState('');
@@ -49,6 +51,7 @@ export function CharacterArtButton({
         const changed = previous && previous !== signature;
         previous = signature;
         setState(result);
+        setJobsChecked(true);
         setAvailability(result.available);
         setAvailabilityError('');
         if (
@@ -69,6 +72,7 @@ export function CharacterArtButton({
       }
     };
     setAvailability(null);
+    setJobsChecked(false);
     void update();
     const timer = setInterval(() => void update(), 4000);
     const focus = () => void update();
@@ -82,11 +86,12 @@ export function CharacterArtButton({
     };
   }, [character.id]);
   const pending =
-    character.art_pending ||
+    (!jobsChecked && character.art_pending) ||
     state.jobs.some(
       (job) => job.character_id === character.id && ['queued', 'running'].includes(job.status),
     );
   const latestJob = state.jobs.find((job) => job.character_id === character.id);
+  const activeJob = state.jobs.find(job=>job.character_id===character.id && ['queued','running'].includes(job.status));
   const awaitingChoice=state.reviews?.some(review=>review.character_id===character.id);
   const quota = state.quotas?.[character.id] ?? {
     used: character.art_used,
@@ -126,6 +131,18 @@ export function CharacterArtButton({
         <Sparkles size={15} />
         {pending ? 'Vestindo...' : awaitingChoice ? 'Imagem pronta para escolher' : 'Vestir'}
       </button>
+      {activeJob && <>
+        {!!activeJob.retry_count && <p className="muted" role="status">O ilustrador está tentando concluir o pedido novamente. Você pode cancelar este pedido e ajustar os equipamentos.</p>}
+        <button className="text-button" disabled={cancelling} onClick={async()=>{
+          setCancelling(true);setError('');
+          try{
+            await post('/character-art/'+activeJob.id+'/cancel',{});
+            setState(await api<ArtState>('/character-art'));
+            setJobsChecked(true);
+            await onRefresh();
+          }catch(e){setError((e as Error).message);}finally{setCancelling(false);}
+        }}>{cancelling?'Cancelando...':'Cancelar pedido'}</button>
+      </>}
       {!pending && availability !== true && (
         <p
           className="muted"
@@ -227,7 +244,7 @@ export function CharacterArtButton({
                 availability !== true
               }
             >
-              {busy ? 'Vestindo...' : 'Vestir'}
+              {busy ? 'Vestindo...' : equipmentReady && !equipmentSlots.length ? 'Gerar sem equipamentos' : 'Vestir'}
             </button>
           </form>
         </Modal>
