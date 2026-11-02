@@ -16,10 +16,14 @@ export type ArmorBundle = {
   target: EquipmentTarget;
   pieces: { id: string; slot: ArmorPieceSlot; weight_lb: number }[];
 };
+export function isPartialArmorId(id: string) {
+  return /(?:^|-)(?:breastplate|half-plate)(?:-|$)/.test(id);
+}
 const bundles = new Map<string, ArmorBundle>(
   catalog.map(([parentId, totalWeight, target]) => {
     const id = String(parentId),
       total = Number(totalWeight);
+    const singlePiece = target === 'mount' || (target === 'human' && isPartialArmorId(id));
     const parts = [27, 8, 6, 12, 8, 4].map(
       (weight) => Math.round(((total * weight) / 65) * 100) / 100,
     );
@@ -33,11 +37,11 @@ const bundles = new Map<string, ArmorBundle>(
       'plate-boots',
       'plate-pauldrons',
     ];
-    const pieces = (target === 'mount' ? ['armor' as const] : ARMOR_PIECE_SLOTS).map(
+    const pieces = (singlePiece ? ['armor' as const] : ARMOR_PIECE_SLOTS).map(
       (slot, index) => ({
         id: slot === 'armor' ? id : id === 'plate-armor' ? oldIds[index] : `${id}--${slot}`,
         slot,
-        weight_lb: target === 'mount' ? total : parts[index],
+        weight_lb: singlePiece ? total : parts[index],
       }),
     );
     if (pieces.some((piece) => piece.id.length > 100))

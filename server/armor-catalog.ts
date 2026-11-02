@@ -62,7 +62,7 @@ export async function seedArmorPieces(db: PoolClient) {
       piece_slot: 'armor',
       equipment_slots: ['armor'],
       armor_piece_name:
-        bundle.id === 'plate-armor' ? 'Peitoral de placas' : `${names.armor} — ${parent.name}`,
+        bundle.pieces.length === 1 ? parent.name : bundle.id === 'plate-armor' ? 'Peitoral de placas' : `${names.armor} — ${parent.name}`,
     };
     await db.query('UPDATE catalog_items SET weight_lb=$2,raw_data=$3 WHERE id=$1', [
       bundle.id,

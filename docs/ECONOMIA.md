@@ -34,6 +34,30 @@ A aplicação inicial registra o preço anterior e a alteração em `economy_pri
 
 O livro de regras recebe uma revisão única dos artigos de recompensas e moedas, conservando os demais artigos, imagens e anotações adicionais. O documento anterior permanece no histórico; reiniciar o servidor não repete essa revisão.
 
+### Armaduras básicas
+
+Preços ajustados pela proteção, pelas exigências e desvantagens, considerando 100–150 PO por missão inicial. Talas e placas mantêm os valores publicados aprovados pelo proprietário. Os demais preços passam a ser:
+
+| Item | PO |
+|---|---:|
+| Acolchoada | 60 |
+| Couro | 100 |
+| Peles | 120 |
+| Escudo | 200 |
+| Cota de anéis | 250 |
+| Camisão de malha | 300 |
+| Couro batido | 400 |
+| Cota de escamas | 500 |
+| Cota de malha | 650 |
+| Peitoral | 700 |
+| Meia armadura de placas | 1.100 |
+| Talas — mantido | 1.200 |
+| Placas — mantido | 1.500 |
+
+Peitoral e meia armadura são peças individuais, inclusive nas variantes mágicas humanas, sem entregar cinco acessórios extras. Versões com encantamentos comuns custam pelo menos o preço da base mais 200 PO, evitando uma alternativa encantada mais barata que a armadura básica. As demais raridades, recompensas e moedas permanecem com as regras acima. A migration 139 registra os preços substituídos e preserva os overrides de talas e placas. Edições administrativas posteriores continuam persistentes.
+
+Verificação específica em banco descartável: `node scripts/test-basic-armor-isolated.mjs`; `--browser` confere os cards em computador e celular após gerar o cliente. A arte da Chave de vínculo usa a versão reta registrada em `data/keycharm-art-20261102.json`, preservando o original anterior.
+
 ## House e guilda
 
 - Móveis: 20, 40, 75, 120, 200 ou 300 CB conforme tamanho; peças luxuosas custam o dobro, limitadas a 800 CB. Carta: 15 CB; moldura: 60 CB.

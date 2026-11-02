@@ -79,7 +79,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
       const { rows } = await pool.query('SELECT * FROM catalog_items WHERE id=ANY($1::text[])', [
         purchaseContents(bundle.id),
       ]);
-      assert.equal(rows.length, bundle.target === 'mount' ? 1 : 6, bundle.id);
+      assert.equal(rows.length, bundle.pieces.length, bundle.id);
       assert.equal(
         Math.round(rows.reduce((sum, row) => sum + Number(row.weight_lb), 0) * 100),
         Math.round(bundle.weight_lb * 100),

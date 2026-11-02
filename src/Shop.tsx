@@ -859,7 +859,7 @@ export function Shop({
                       ) : null}
                       {armorSet && (
                         <span className="shop-weight">
-                          Conjunto completo com {armorSet.pieces.length} peças
+                          {armorSet.pieces.length === 1 ? 'Peça única de armadura' : `Conjunto completo com ${armorSet.pieces.length} peças`}
                         </span>
                       )}
                       {clothingSet && (
@@ -867,7 +867,7 @@ export function Shop({
                       )}
                       {chosen && item.category !== 'Itens de House' && (
                         <span className="shop-weight">
-                          {armorSet
+                          {armorSet && armorSet.pieces.length > 1
                             ? 'Peso do conjunto'
                             : item.weight_estimated
                               ? 'Peso estimado'

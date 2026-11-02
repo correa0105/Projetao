@@ -31,6 +31,11 @@ export const rarityReferencePo = {
   'very rare': 50000,
   legendary: 250000,
 } as const;
+export const basicArmorPo: Readonly<Record<string,number>> = {
+  'padded-armor':60, 'leather-armor':100, 'hide-armor':120, 'ring-mail':250,
+  'studded-leather':400, 'chain-shirt':300, 'scale-mail':500, 'chain-mail':650,
+  breastplate:700, 'half-plate-armor':1100, shield:200, 'splint-armor':1200, 'plate-armor':1500,
+};
 const oldReferencePo = {
   common: 100,
   uncommon: 400,
@@ -91,7 +96,11 @@ export function balancedMagicPrice(item: Product): number | null {
   // Keep relative price tiers from the existing catalog, with a bounded premium.
   const reference = (item.price_cp / 100) * (consumable ? 2 : 1);
   const factor = Math.max(1, Math.min(4, Math.ceil((reference / oldReferencePo[rarity]) * 2) / 2));
-  return Math.round((rarityReferencePo[rarity] * factor * 100) / (consumable ? 4 : 1));
+  const price=Math.round((rarityReferencePo[rarity] * factor * 100) / (consumable ? 4 : 1));
+  const raw=item.raw_data || {};
+  const armorBase=rarity==='common' && !consumable && !['mount','pet'].includes(raw.equipment_target)
+    ? basicArmorPo[raw.base_item] : undefined;
+  return armorBase === undefined ? price : Math.max(price,(armorBase+rarityReferencePo.common)*100);
 }
 export function furnishingCredits(item: {
   id: string;

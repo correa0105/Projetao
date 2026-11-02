@@ -1,0 +1,12 @@
+{
+  "item_id": "keycharm",
+  "tool": "imagegen",
+  "change": "Cabeça triangular, encaixe e haste de prata alinhados em um eixo vertical reto; dentes integrados e fundo transparente.",
+  "original_asset": "public/shop/magic-completion-20261009/keycharm.webp",
+  "original_preserved": true,
+  "source": "public/shop/magic-completion-20261009/keycharm-straight-20261102.png",
+  "source_sha256": "9fcc1306d9149a39a6eab69f9c7442bb5ec542ee60cdfcfa85004daa23a7e9e0",
+  "display": "public/shop/magic-completion-20261009/keycharm-straight-20261102.webp",
+  "display_sha256": "239a7da23237a13ea476a529ec86a36dce6f021fe8b2c675b53ad244b4b59b16",
+  "identity_and_rules_preserved": true
+}

@@ -16,8 +16,13 @@ transferidos à mochila. A lista continua disponível para teclado e celular.
 Comprar a armadura de placas completa entrega peitoral, capacete, braçadeiras com
 luvas, calça, botas e ombreiras, separados no inventário. O preço continua 1.500 PO
 e o peso total continua 65 lb (peitoral 27, capacete 8, braçadeiras 6, calça 12,
-botas 8 e ombreiras 4). As demais armaduras, incluindo meia armadura, não entregam
-peças extras. A migration 038 captura os conjuntos antigos da mochila e do cofre;
+botas 8 e ombreiras 4). Peitoral e meia armadura de placas, incluindo suas variantes
+mágicas humanas, são peças únicas de tronco: cada compra entrega somente o próprio
+item, com 20 e 40 lb respectivamente. O catálogo mostra “Peça única de armadura”;
+talas, placas e os demais conjuntos mantêm a composição definida no catálogo.
+Peças extras de compras antigas permanecem com seus donos e no histórico; o ajuste
+não distribui novos acessórios ao reiniciar. Preços atuais: [Economia](ECONOMIA.md).
+A migration 038 captura os conjuntos antigos de placas da mochila e do cofre;
 o seed entrega suas cinco peças adicionais uma única vez. Novas compras têm suas
 entregas registradas em `purchase_item_grants` na mesma transação da cobrança.
 

@@ -269,7 +269,8 @@ Não muda peso para zero. CA, limites de Destreza, Força e Furtividade de cada
 base aparecem no resumo; nenhum novo poder implica automação de combate.
 
 O catálogo de conjuntos foi ampliado de 266 para 346: inclui as 15 formas de
-espinhos já publicadas e as 65 novas. Comprar dá seis peças reais para humano,
+espinhos já publicadas e as 65 novas. Comprar conjuntos completos dá seis peças reais para humano;
+peitorais e meias armaduras humanas são a exceção vigente e entregam uma peça só,
 com peso total preservado. Migration 091 captura só armaduras de espinhos
 anteriormente inteiras na mochila/cofre; o seed entrega cinco partes restantes
 uma vez, preservando unidades de peitoral, preço, saldo, histórico e seleção
