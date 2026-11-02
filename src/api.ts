@@ -1,6 +1,7 @@
 import { createAuthClient } from 'better-auth/react';
 import { vttProtocolVersion } from '../shared/vtt-protocol';
 import { accountPreviewHeaders } from './account-preview';
+import { economyVersion } from '../shared/economy';
 export const authClient = createAuthClient();
 export class ApiError extends Error {
   constructor(message: string, public status: number) { super(message); this.name = 'ApiError'; }
@@ -11,6 +12,7 @@ export async function api<T>(path: string, options?: RequestInit): Promise<T> {
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
+      'X-Economy-Version': economyVersion,
       ...accountPreviewHeaders(),
       ...(path.startsWith('/vtt') ? { 'X-Vtt-Schema-Version': String(vttProtocolVersion) } : {}),
       ...options?.headers,

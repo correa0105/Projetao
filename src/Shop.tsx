@@ -882,7 +882,7 @@ export function Shop({
                               ? clothing ? 'Escolha a cor' : 'Escolha o tipo'
                               : item.price_cp === null
                                 ? 'Preço a definir'
-                                : `${money(item.price_cp)} PO`}
+                                : `${money(item.price_cp)} ${item.id.startsWith('house-')?'CB':'PO'}`}
                           </strong>
                           {canAdmin && chosen && (
                             <button

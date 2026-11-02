@@ -119,7 +119,7 @@ export function House2FinishesShop({
                       ? 'Em uso'
                       : purchased
                         ? 'Aplicar na casa'
-                        : `${f.price} créditos · comprar`}
+                        : `${f.price} CB · comprar`}
                   </small>
                 </button>
               );
@@ -137,7 +137,7 @@ export function House2FinishesShop({
             <img src={vttVisualSource(buy.image)} alt={buy.name} />
             <h3>{buy.name}</h3>
             <p>
-              {buy.price} créditos de teste · saldo após a compra: {balance - buy.price}.
+              {buy.price} Créditos do Bastião · saldo após a compra: {balance - buy.price}.
             </p>
             {error && <p role="alert">{error}</p>}
             <div className="h2-confirm-actions">

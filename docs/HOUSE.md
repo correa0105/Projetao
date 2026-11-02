@@ -5,7 +5,7 @@
 A entrada antiga House agora abre salas independentes de RP: locais fixos da cidade e salas temporárias de jogadores, por convite. A interface de casa com quatro cômodos foi substituída; dados e bens antigos continuam preservados. A House 2.0 permanece separada. Fluxo vigente, permissões, rascunhos e validação em `RP-LOBBY-AND-GUILD-FACILITIES-20261018.md`. As seções abaixo documentam a versão anterior e seus arquivos mantidos.
 
 A House 2.0 experimental é uma opção separada em Explorar. Usa terrenos em
-vizinhanças superiores, casas vazias e mobília do VTT com créditos de teste.
+vizinhanças superiores, casas vazias e mobília do VTT com Créditos do Bastião recebidos em missões. Preços e preservação dos saldos anteriores: [Economia](ECONOMIA.md).
 Não altera esta versão ou suas compras. Guia: `HOUSE-2-EXPERIMENTAL.md`.
 
 ## Tela inteira e menu único — 16/10/2026

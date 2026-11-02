@@ -98,7 +98,7 @@ export function GuildLobby({
               ) : (
                 <>
                   <Coins size={14} />
-                  {cost.toLocaleString('pt-BR')} PO para fundar · quatro salas iniciais
+                  {cost.toLocaleString('pt-BR')} CB para fundar · quatro salas iniciais
                 </>
               )}
             </span>

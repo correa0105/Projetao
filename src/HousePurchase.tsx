@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { houseCatalog } from '../shared/house';
 import { money } from '../shared/rules';
-import { post } from './api';
+import { api, post } from './api';
 import { Modal } from './components';
 import './house.css';
 import { ItemInfoButton } from './ItemInfoButton';
@@ -25,6 +25,8 @@ export function HousePurchase({
   const [busy, setBusy] = useState(false),
     [error, setError] = useState('');
   const key = useRef(crypto.randomUUID());
+  const [balance,setBalance] = useState<number | null>(null);
+  useEffect(() => { let active=true; void api<{balance:number}>('/bastion-wallet').then(wallet => { if(active)setBalance(wallet.balance); }).catch(e => { if(active)setError(e.message); }); return () => {active=false;}; }, []);
   function changed() {
     key.current = crypto.randomUUID();
   }
@@ -75,7 +77,8 @@ export function HousePurchase({
         <img src={item.image} alt={item.name} />
         <p>{item.description}</p>
         <p>A compra fica na coleção de House deste personagem.</p>
-        {goldUnlimited && <p>Saldo: ∞ PO.</p>}
+        <p>Esta compra usa Créditos do Bastião, recebidos em missões, sem gastar ouro.</p>
+        <p>Seu saldo: {balance === null ? '…' : balance.toLocaleString('pt-BR')} CB.</p>
         {['letter', 'frame'].includes(item.id) && (
           <>
             <label>
@@ -120,7 +123,7 @@ export function HousePurchase({
         )}
         <div className="item-purchase-actions">
           <button type="submit" disabled={busy}>
-            Comprar por {money(item.price_cp)} PO
+            Comprar por {money(item.price_cp)} CB
           </button>
           <ItemInfoButton item={{ ...item, id: `house-${item.id}`, category: 'Itens de House' }} />
         </div>

@@ -503,7 +503,7 @@ export function House2({ character, user }: { character?: Character; user: User 
       await reload(sceneId, true);
       setNotice(
         kind === 'plot'
-          ? 'Terreno adquirido com créditos de teste. Agora escolha uma casa vazia.'
+          ? 'Terreno adquirido com Créditos do Bastião. Agora escolha uma casa vazia.'
           : kind === 'house'
             ? 'Sua casa está pronta para mobiliar. Entre para ver o interior.'
             : 'Mobília adquirida. Coloque a peça pela Minha coleção.',
@@ -877,7 +877,7 @@ export function House2({ character, user }: { character?: Character; user: User 
   }
   const balance = (
     <span className="h2-balance">
-      <Coins size={15} /> {number(directory?.balance ?? 20000)} <small>créditos de teste</small>
+      <Coins size={15} /> {number(directory?.balance ?? 0)} <small>Créditos do Bastião</small>
     </span>
   );
   const selectedTransform =
@@ -1086,7 +1086,7 @@ export function House2({ character, user }: { character?: Character; user: User 
           <p>Encontre sua vizinhança. Escolha seu terreno. Construa sua história.</p>
           <div className="h2-test-note">
             {balance}
-            <span>Compras de teste. O ouro e a House atual permanecem separados.</span>
+            <span>Receba Créditos do Bastião nas missões e use na House ou na guilda.</span>
           </div>
         </header>
         <div className="h2-directory-toolbar">
@@ -1518,7 +1518,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                 <text y="-1.1">
                   {p.owner_name
                     ? `Casa de ${p.owner_name}`
-                    : `Terreno ${p.number} · ${number(p.price)} créditos`}
+                    : `Terreno ${p.number} · ${number(p.price)} CB`}
                 </text>
                 <text y="-.4" className="h2-tooltip-player">
                   {p.player_name || 'Disponível para compra'}
@@ -1772,7 +1772,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                       <>
                         <p>
                           O terreno inteiro será seu para construir e decorar. Custo:{' '}
-                          {number(plot.price)} créditos de teste.
+                          {number(plot.price)} Créditos do Bastião.
                         </p>
                         <p>
                           As casas nos terrenos livres são modelos ilustrativos. Depois de comprar o
@@ -1869,7 +1869,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                                   loading="lazy"
                                 />
                                 <strong>{h.name.replace(' · vazia', '')}</strong>
-                                <small>{number(h.price)} créditos · comprar</small>
+                                <small>{number(h.price)} CB · comprar</small>
                               </button>
                             ))}
                         </div>
@@ -1936,7 +1936,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                     )}
                     <p>
                       {house2FurnitureForSale.length} peças para interiores, jardins e cidade. A
-                      compra entra na sua coleção de teste.
+                      compra entra na sua coleção.
                     </p>
                     <label>
                       Categoria
@@ -1983,7 +1983,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                               decoding="async"
                             />
                             <strong>{f.name}</strong>
-                            <small>{number(f.price)} créditos · comprar</small>
+                            <small>{number(f.price)} CB · comprar</small>
                           </button>
                         ))}
                     </div>
@@ -2033,7 +2033,7 @@ export function House2({ character, user }: { character?: Character; user: User 
                           );
                         })}
                     </div>
-                    {!directory?.inventory.length && <p>Sua coleção de teste está vazia.</p>}
+                    {!directory?.inventory.length && <p>Sua coleção está vazia.</p>}
                   </>
                 )}
               </>
@@ -2066,19 +2066,19 @@ export function House2({ character, user }: { character?: Character; user: User 
           <div className="h2-purchase-confirmation">
             {confirmation.image && <img src={confirmation.image} alt="" />}
             <h3>{confirmation.name}</h3>
-            <p>Esta compra usa apenas créditos de teste.</p>
+            <p>Créditos do Bastião são recebidos em missões e usados na House e na guilda.</p>
             <dl>
               <div>
                 <dt>Preço</dt>
-                <dd>{number(confirmation.price)} créditos</dd>
+                <dd>{number(confirmation.price)} CB</dd>
               </div>
               <div>
                 <dt>Seu saldo</dt>
-                <dd>{number(directory?.balance ?? 0)} créditos</dd>
+                <dd>{number(directory?.balance ?? 0)} CB</dd>
               </div>
               <div>
                 <dt>Saldo após a compra</dt>
-                <dd>{number((directory?.balance ?? 0) - confirmation.price)} créditos</dd>
+                <dd>{number((directory?.balance ?? 0) - confirmation.price)} CB</dd>
               </div>
             </dl>
             {purchaseError && <p role="alert">{purchaseError}</p>}

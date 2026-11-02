@@ -73,7 +73,7 @@ export function GuildBastionEditor({
           <h4>Requisitos para alcançar o nível {selected}</h4>
           <p>
             Todos os requisitos devem ser cumpridos. Missões, tags e cristais são metas acumuladas,
-            sem consumo. Ouro é retirado do tesouro ao evoluir.
+            sem consumo. Créditos do Bastião são retirados do tesouro ao evoluir.
           </p>
           {tier.requirements.map((r, i) => (
             <fieldset className="bastion-requirement-editor" key={i}>
@@ -98,7 +98,7 @@ export function GuildBastionEditor({
                   <option value="missions">Missões concluídas</option>
                   <option value="monster_tag">Tag de monstro</option>
                   <option value="tower_crystals">Cristais conquistados na Torre</option>
-                  <option value="treasury">Ouro do tesouro</option>
+                  <option value="treasury">Créditos do Bastião no tesouro</option>
                   <option value="custom">Outro critério</option>
                 </select>
               </label>
@@ -149,7 +149,7 @@ export function GuildBastionEditor({
                 </>
               )}
               <label>
-                {r.kind === 'treasury' ? 'Quantidade em PO' : 'Quantidade necessária'}
+                {r.kind === 'treasury' ? 'Quantidade em CB' : 'Quantidade necessária'}
                 <input
                   type="number"
                   min={r.kind === 'treasury' ? 0.01 : 1}

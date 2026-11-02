@@ -5,7 +5,7 @@ import walls from './house2-wall-finishes-20261018.json';
 export type House2FinishKind = 'roof' | 'walls' | 'floor';
 export type House2Finishes = Partial<Record<House2FinishKind, string>>;
 export const house2FinishNames = { roof: 'Telhados', walls: 'Paredes', floor: 'Pisos' } as const;
-export const house2FinishesCatalog = [
+export const house2FinishesCatalog = ([
   {
     id: 'roof-straw',
     sourceHouse: 'house-empty-001',
@@ -112,6 +112,6 @@ export const house2FinishesCatalog = [
     })),
   ...floors.map((f) => ({ ...f, kind: 'floor' as const })),
   ...walls.map((f) => ({ ...f, kind: 'walls' as const })),
-] as const;
+] as const).map(finish => ({ ...finish, price: Math.min(150, Math.max(50, Math.round(finish.price / 3 / 10) * 10)) }));
 export const house2Finish = (finishes: House2Finishes | undefined, kind: House2FinishKind) =>
   house2FinishesCatalog.find((f) => f.id === finishes?.[kind] && f.kind === kind);

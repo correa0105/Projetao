@@ -2,7 +2,7 @@
 
 Cada instalação tem uma progressão própria de dez níveis. O nível 1 é a base e já oferece o benefício que o administrador cadastrar. Cada evolução passa a oferecer o benefício completo do novo nível, substituindo o anterior. Não somar todos os textos de benefícios como bônus cumulativos.
 
-O proprietário ainda vai decidir os benefícios, valores e metas. Nenhum número de balanceamento foi criado como regra oficial. Níveis e tesouros existentes são preservados; um nível sem regras liberadas aguarda configuração e não pode ser comprado pelo custo genérico antigo. Instalações bloqueadas pelo nível da guilda continuam bloqueadas. Benefícios já configurados em níveis inferiores continuam vigentes para guildas que possuam níveis legados mais altos ainda sem definição.
+Benefícios e metas dependem da configuração administrativa. Os custos monetários existentes seguem [Economia](ECONOMIA.md), em Créditos do Bastião (CB), sem liberar níveis pendentes. Níveis e tesouros existentes são preservados; um nível sem regras liberadas aguarda configuração e não pode ser comprado pelo custo genérico antigo. Instalações bloqueadas pelo nível da guilda continuam bloqueadas. Benefícios já configurados em níveis inferiores continuam vigentes para guildas que possuam níveis legados mais altos ainda sem definição.
 
 ## Configuração e uso
 
@@ -13,7 +13,7 @@ Todos os requisitos de um nível devem ser cumpridos juntos. É possível combin
 - Missões concluídas pela companhia: uma missão soma uma vez por guilda, mesmo com vários participantes.
 - Tags de monstro: escolher uma tag do catálogo existente. Cada participante membro soma as tags recebidas na conclusão.
 - Cristais da Torre: total conquistado pelos membros, incluindo recompensa base e bônus do tesouro.
-- Ouro do tesouro: custo opcional por nível, debitado somente na evolução. O formulário usa PO e o servidor conserva PC inteiros.
+- Créditos do Bastião do tesouro: custo opcional por nível, debitado somente na evolução. Membros contribuem com seus CB de missões; o ouro legado da guilda fica preservado separadamente.
 - Outros critérios: nome, identificador estável e quantidade. O administrador confirma o progresso da guilda com justificativa e revisão concorrente.
 
 **Missões, tags e cristais são metas acumuladas, sem consumo**, conforme decisão do proprietário. Cristais contam pelo que foi conquistado, independentemente do saldo atual da carteira. Não reduzir tags pessoais, conquistas ou cristais para evoluir uma instalação. Requisitos próprios também representam metas, sem gasto automático.
@@ -26,6 +26,6 @@ A janela mostra benefício vigente, próximo benefício, requisitos com barras d
 
 A migração aditiva `136_guild_bastion_progression.sql` acrescenta a progressão ao catálogo existente, créditos duráveis e progresso administrativo auditado. Não altera os níveis, tesouros, carteiras ou tags pessoais existentes. A conclusão da missão e as recompensas da Torre registram créditos na mesma transação do pagamento original, com referências únicas para impedir repetição.
 
-A evolução bloqueia a guilda, confere nível e regras atuais no servidor, verifica todos os critérios, debita somente o custo explícito em ouro e registra ledger e fotografia dos requisitos/benefício. Reenvios não repetem débito ou evolução. Alterações administrativas usam revisão e auditoria, com permissão revalidada na transação.
+A evolução bloqueia a guilda, confere nível e regras atuais no servidor, verifica todos os critérios, debita somente o custo explícito em CB e registra ledger e fotografia dos requisitos/benefício. Reenvios não repetem débito ou evolução. Alterações administrativas usam revisão e auditoria, com permissão revalidada na transação.
 
 Os testes de bastião cobrem configuração pendente, benefício base e evolução, critérios combinados, sigilo, revogação administrativa, revisão, créditos repetidos, saída de membro, rollback e evolução concorrente sem consumo. As regressões de sede e instalações cadastram regras explícitas em fixtures privadas de teste; nenhum desses benefícios ou preços de teste é levado ao seed real.

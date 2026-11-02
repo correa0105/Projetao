@@ -98,6 +98,7 @@ export type Post = {
   location_id: string | null;
   difficulty: string;
   reward_cp: number;
+  bastion_credits?: number;
   participants: number;
   my_characters: string[];
   starts_at: string | null;

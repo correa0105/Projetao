@@ -11,6 +11,7 @@ import { currentGoldUnlimited, spendGold } from './gold.js';
 import { configuredShopItem } from './shop-spell-configurations.js';
 import { boundSpellOptions, spellBindingSpec } from '../shared/shop-spell-bindings.js';
 import { pool } from './db.js';
+import { isConsumable, magicRarity, rarityReferencePo } from '../shared/economy.js';
 
 export function shopRouter() {
   const router = Router();
@@ -40,7 +41,11 @@ export function shopRouter() {
         if (price_cp === null)
           throw new AppError(400, 'Defina um preço maior que zero para o item de House.');
         await lockHousePrice(client, houseId);
+        if (price_cp! % 100 !== 0) throw new AppError(400, 'O preço de House deve ser um valor inteiro em CB.');
       } else {
+        const item=(await client.query('SELECT id,category,raw_data,price_cp FROM catalog_items WHERE id=$1 AND active=true',[id])).rows[0];
+        if(item && magicRarity(item)==='legendary' && price_cp!==null && price_cp < rarityReferencePo.legendary*100/(isConsumable(item)?4:1))
+          throw new AppError(400,'Lendários permanentes partem de 250.000 PO; consumíveis lendários, de 62.500 PO.');
         const updated = await client.query(
           'UPDATE catalog_items SET price_cp=$2 WHERE id=$1 AND active=true RETURNING id',
           [id, price_cp],

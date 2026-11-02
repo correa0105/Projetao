@@ -29,14 +29,14 @@ export function ShopPriceEditor({
     let price: number | null = null;
     if (isHouse || !unpriced) {
       const input = value.trim();
-      if (!/^\d+(?:[,.]\d{1,2})?$/.test(input)) {
-        setError('Informe um preço em PO com até duas casas decimais, como 12,50.');
+      if (!(isHouse ? /^\d+$/ : /^\d+(?:[,.]\d{1,2})?$/).test(input)) {
+        setError(isHouse ? 'Informe um preço inteiro em CB.' : 'Informe um preço em PO com até duas casas decimais, como 12,50.');
         return;
       }
       const [whole, fraction = ''] = input.split(/[,.]/);
       price = Number(whole) * 100 + Number(fraction.padEnd(2, '0'));
       if (!Number.isSafeInteger(price) || price < 1 || price > 2147483647) {
-        setError('O preço deve ficar entre 0,01 e 21.474.836,47 PO.');
+        setError(isHouse ? 'O preço deve ficar entre 1 e 21.474.836 CB.' : 'O preço deve ficar entre 0,01 e 21.474.836,47 PO.');
         return;
       }
     }
@@ -73,11 +73,11 @@ export function ShopPriceEditor({
           <strong>{item.name}</strong>
           <span>
             Preço atual:{' '}
-            {item.price_cp === null ? 'sem preço definido' : `${money(item.price_cp)} PO`}
+            {item.price_cp === null ? 'sem preço definido' : `${money(item.price_cp)} ${isHouse ? 'CB' : 'PO'}`}
           </span>
         </div>
         <label>
-          Preço em PO
+          Preço em {isHouse ? 'CB' : 'PO'}
           <input
             type="text"
             inputMode="decimal"
@@ -111,7 +111,7 @@ export function ShopPriceEditor({
         <p id="shop-price-hint" className="shop-price-hint">
           {unpriced
             ? 'O item fica indisponível para compra.'
-            : 'Use vírgula ou ponto e até duas casas decimais.'}{' '}
+            : isHouse ? 'Use um valor inteiro em Créditos do Bastião.' : 'Use vírgula ou ponto e até duas casas decimais.'}{' '}
           O novo preço vale para as próximas compras.
         </p>
         {error && (

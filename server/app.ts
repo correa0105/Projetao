@@ -60,7 +60,8 @@ import { cardsRouter } from './cards.js';
 import { shopRouter } from './shop.js';
 import { shopItemRulesRouter } from './shop-item-rules.js';
 import { PAPER_STYLES } from '../shared/notice-board.js';
-import { testEligible, rankName, rankTitle, rankLabel, RANKS, RANK_REWARD_CP } from '../shared/progression.js';
+import { testEligible, rankName, rankTitle, rankLabel, RANKS } from '../shared/progression.js';
+import { missionReward } from '../shared/economy.js';
 import {
   KINGDOM_BACKGROUND_MAX_BYTES,
   KINGDOM_BACKGROUND_MAX_EDGE,
@@ -461,8 +462,8 @@ export function createApp() {
       const {
         rows: [created],
       } = await client.query(
-        `INSERT INTO board_posts(author_id,kind,title,description,location,difficulty,reward_cp,starts_at,region_id,location_id,paper_style,paper_summary,rank_test_level,mission_rank,event_source_id)
-         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING *`,
+        `INSERT INTO board_posts(author_id,kind,title,description,location,difficulty,reward_cp,starts_at,region_id,location_id,paper_style,paper_summary,rank_test_level,mission_rank,event_source_id,bastion_credits)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *`,
         [
           res.locals.user.id,
           data.kind,
@@ -470,7 +471,7 @@ export function createApp() {
           data.description,
           location.location,
           data.difficulty,
-          data.kind === 'mission' ? RANK_REWARD_CP[data.mission_rank] : data.reward_cp,
+          data.kind === 'mission' ? missionReward(data.mission_rank,data.difficulty).gold_cp : data.reward_cp,
           data.starts_at || null,
           location.region_id,
           location.location_id,
@@ -479,6 +480,7 @@ export function createApp() {
           data.rank_test_level,
           data.mission_rank,
           data.event_source_id || null,
+          data.kind === 'mission' ? missionReward(data.mission_rank,data.difficulty).bastion_credits : 0,
         ],
       );
       if (data.kind === 'mission') await setMissionTags(client, created.id, data.tag_ids);

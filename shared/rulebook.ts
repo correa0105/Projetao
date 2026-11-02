@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { classes, races, statNames } from './rules.js';
-import { MISSION_THRESHOLDS, RANKS, RANK_REWARD_CP, rankTitle, rankLabel } from './progression.js';
+import { MISSION_THRESHOLDS, RANKS, rankTitle, rankLabel } from './progression.js';
+import { missionDifficulties, missionReward } from './economy.js';
 
 export const RULEBOOK_MAX_DOCUMENT_BYTES = 2 * 1024 * 1024;
 export const RULEBOOK_MAX_IMAGE_BYTES = 8 * 1024 * 1024;
@@ -350,13 +351,13 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
         {
           id: 'economia-moedas',
           title: 'Moedas e riqueza inicial',
-          summary: 'Cada personagem novo começa com 6.000 PO, até nova ordem.',
+          summary: '6.000 PO durante os testes; 250 PO no lançamento oficial.',
           tag: 'Economia',
           blocks: [
             {
               id: 'economia-moedas-texto',
               type: 'text',
-              text: '1 PO equivale a 10 PP ou 100 PC. Cada personagem novo recebe 6.000 PO uma única vez, até nova ordem, independente da conta, classe, antecedente ou conjunto de equipamento. O valor fixo substitui o ouro inicial de classe/antecedente e o bônus beta por conta. Conversões de fichas preservam o saldo e as compras existentes. Valores monetários são registrados em peças de cobre inteiras.',
+              text: '1 PO equivale a 10 PP ou 100 PC. Durante os testes, cada personagem novo recebe 6.000 PO uma única vez. No lançamento oficial, novos personagens começarão com 250 PO; essa redução ainda não está ativa. Saldos e compras existentes são preservados. O valor fixo substitui o ouro inicial de classe/antecedente e o bônus beta por conta. Missões também concedem Créditos do Bastião (CB), separados do ouro, para House e guilda, sem conversão entre moedas.',
             },
             {
               id: 'economia-moedas-tabela',
@@ -425,20 +426,23 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
         },
         {
           id: 'missoes-recompensas',
-          title: 'Ouro por participante',
-          summary: 'O pagamento é fixado pela patente da missão.',
+          title: 'Recompensas das missões',
+          summary: 'Patente e dificuldade determinam o ouro e os Créditos do Bastião.',
           tag: 'Recompensas',
           blocks: [
             {
               id: 'missoes-recompensas-tabela',
               type: 'table',
-              columns: ['Patente da missão', 'PO por participante'],
-              rows: RANKS.map((rank) => [rankLabel(rank), String(RANK_REWARD_CP[rank] / 100)]),
+              columns: ['Patente da missão', ...missionDifficulties],
+              rows: RANKS.map((rank) => [rankLabel(rank), ...missionDifficulties.map(difficulty => {
+                const reward = missionReward(rank,difficulty);
+                return `${reward.gold_cp / 100} PO + ${reward.bastion_credits} CB`;
+              })]),
             },
             {
               id: 'missoes-recompensas-texto',
               type: 'text',
-              text: 'Na conclusão, o autor registra o resumo. Ouro e progresso são concedidos uma única vez a cada participante inscrito. Um teste paga o valor da patente de origem. Missões concluídas permanecem no histórico, junto aos valores e pagamentos daquela aventura.',
+              text: 'Na conclusão, o autor registra o resumo. Cada personagem inscrito recebe ouro e progresso uma única vez. Cada jogador recebe também Créditos do Bastião (CB), uma vez por missão, mesmo participando com dois personagens. Os créditos servem para House e guilda e não são convertidos em ouro. Um teste paga pela patente de origem e dificuldade. Missões já concluídas conservam seus pagamentos históricos.',
             },
           ],
         },

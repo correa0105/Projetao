@@ -91,7 +91,7 @@ export function MissionCompletion({
             </p>
           )}
           <p className="small muted">
-            Cada inscrito receberá {money(mission.reward_cp)} PO.{' '}
+            Cada inscrito receberá {money(mission.reward_cp)} PO. Cada jogador recebe também {mission.bastion_credits || 0} Créditos do Bastião, uma vez por missão, mesmo com mais de um personagem.{' '}
             {mission.rank_test_level
               ? 'Este teste promove os personagens aptos para a próxima patente, sem somar uma missão à progressão.'
               : 'A missão conta para a progressão, exceto quando há um teste de patente pendente ou o personagem já atingiu o nível 20.'}

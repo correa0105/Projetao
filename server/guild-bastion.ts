@@ -93,7 +93,7 @@ export function requirementLabel(r: BastionRequirement, tags: { id: string; name
     case 'tower_crystals':
       return 'Cristais conquistados na Torre';
     case 'treasury':
-      return 'Ouro do tesouro (PC)';
+      return 'Créditos do Bastião no tesouro';
     case 'custom':
       return r.label;
   }

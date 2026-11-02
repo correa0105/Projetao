@@ -65,11 +65,12 @@ type Guild = {
   rank: string;
   prestige: number;
   treasury_cp: number | null;
+  legacy_treasury_cp?: number | null;
   room_unlocks: CommunitySettings['room_unlocks'];
   members: { user_id: string; character_id: string; name: string; character_name: string }[];
   upgrades: { object_id: string; level: number }[];
   facilities: { room: string; level: number }[];
-  ledger: { kind: string; amount_cp: string; created_at: string }[];
+  ledger: { kind: string; amount_cp: string; created_at: string; currency?: string }[];
   weekly: {
     week: string;
     items: {
@@ -120,6 +121,9 @@ export function Guilds({
     [people, setPeople] = useState<{ id: string; name: string }[]>([]),
     [decor, setDecor] = useState(guildDecor[0]?.id || '');
   const [restored, setRestored] = useState(Boolean(opening.guild));
+  const [balance, setBalance] = useState<number | null>(null);
+  const [deposit, setDeposit] = useState('');
+  const depositRequest = useRef(crypto.randomUUID());
   const [estateFocusRequest, setEstateFocusRequest] = useState(0);
   const [estateEditRequest, setEstateEditRequest] = useState(0);
   const [estateMenuRequest, setEstateMenuRequest] = useState(0);
@@ -130,11 +134,12 @@ export function Guilds({
     activeCharacterId ? url + '?character_id=' + encodeURIComponent(activeCharacterId) : url;
   async function load() {
     const turn = ++loadTurn.current;
-    let result: [Directory, Settings, Guild | null];
+    let result: [Directory, Settings, Guild | null, {balance:number}];
     try { result = await Promise.all([
       api<Directory>(memberUrl('/guilds')),
       api<Settings>('/community/settings'),
       target ? api<Guild>(memberUrl('/guilds/' + target)) : Promise.resolve(null),
+      api<{balance:number}>('/bastion-wallet'),
     ]); } catch (e) {
       if (turn === loadTurn.current && e instanceof ApiError && [401,403,404].includes(e.status)) {
         removeSceneSnapshot(scope, 'guild:' + target); removeSceneSnapshot(scope, 'guild-directory');
@@ -143,7 +148,8 @@ export function Guilds({
       throw e;
     }
     if (turn !== loadTurn.current) return;
-    const [d, s, guild] = result;
+    const [d, s, guild, wallet] = result;
+    setBalance(wallet.balance);
     writeSceneSnapshot(scope, 'guild-directory', d); writeSceneSnapshot(scope, 'guild-settings', s);
     if (guild) writeSceneSnapshot(scope, 'guild:' + target, guild);
     setDirectory(d);
@@ -425,7 +431,7 @@ export function Guilds({
                 </div>
                 {g.is_member && (
                   <strong>
-                    <Coins size={18} /> {((g.treasury_cp || 0) / 100).toLocaleString('pt-BR')} PO
+                    <Coins size={18} /> {((g.treasury_cp || 0) / 100).toLocaleString('pt-BR')} CB
                     <small>Tesouro da guilda</small>
                   </strong>
                 )}
@@ -534,11 +540,24 @@ export function Guilds({
                 (g.is_member ? (
                   <>
                     <section className="guild-paper">
+                      <h3>Contribuir com o tesouro</h3>
+                      <p>Seu saldo: {balance === null ? '…' : balance.toLocaleString('pt-BR')} CB. Tesouro: {((g.treasury_cp || 0) / 100).toLocaleString('pt-BR')} CB.</p>
+                      <p>Os Créditos do Bastião das suas missões podem ser usados na House ou doados à guilda para mobília e melhorias.</p>
+                      <form onSubmit={event => { event.preventDefault(); void run(async () => {
+                        await post(memberUrl('/guilds/' + g.id + '/credits/deposit'), {amount:Number(deposit),request_id:depositRequest.current});
+                        depositRequest.current = crypto.randomUUID(); setDeposit(''); await load(); setNotice('Contribuição registrada no tesouro.');
+                      }); }}>
+                        <label>Quantidade em CB<input type="number" min="1" max={Math.min(balance || 0,1000000)} step="1" required value={deposit} disabled={busy} onChange={event => { setDeposit(event.target.value); depositRequest.current = crypto.randomUUID(); }} /></label>
+                        <button disabled={busy || !balance || !Number.isInteger(Number(deposit)) || Number(deposit) < 1 || Number(deposit) > balance}>Contribuir</button>
+                      </form>
+                      {!!g.legacy_treasury_cp && <p>Ouro anterior preservado: {(g.legacy_treasury_cp / 100).toLocaleString('pt-BR')} PO.</p>}
+                    </section>
+                    <section className="guild-paper">
                       <span className="social-eyebrow">Semana de {g.weekly?.week}</span>
                       <h2>Crônicas da companhia</h2>
                       <p>
                         Missões de aventura concluídas pelos membros após a entrada na guilda contam
-                        automaticamente. A semana começa na segunda-feira, às 00h UTC. Ouro vai ao
+                        automaticamente. A semana começa na segunda-feira, às 00h UTC. Créditos do Bastião vão ao
                         tesouro; prestígio melhora a patente e libera salas.
                       </p>
                     </section>
@@ -559,7 +578,7 @@ export function Guilds({
                           </p>
                           <progress max={m.template.goal} value={m.progress} />
                           <strong>
-                            {m.template.gold_po} PO + {m.template.prestige} prestígio
+                            {m.template.gold_po} CB + {m.template.prestige} prestígio
                           </strong>
                           <button
                             disabled={
@@ -595,11 +614,12 @@ export function Guilds({
                         <p key={i}>
                           {{
                             foundation: 'Fundação',
+                            deposit: 'Contribuição de membro',
                             weekly: 'Missão semanal',
                             upgrade: 'Melhoria de objeto',
                             furniture: 'Compra de mobília',
                           }[l.kind] || l.kind}{' '}
-                          · {Number(l.amount_cp) / 100} PO ·{' '}
+                          · {Number(l.amount_cp) / 100} {l.currency==='bastion'?'CB':'PO (legado)'} ·{' '}
                           {new Date(l.created_at).toLocaleDateString('pt-BR')}
                         </p>
                       ))}
@@ -729,7 +749,7 @@ export function Guilds({
               >
                 {freeCharacters.map((c) => (
                   <option key={c.id} value={c.id}>
-                    {c.name} · {c.gold_cp / 100} PO
+                    {c.name}
                   </option>
                 ))}
               </select>
@@ -748,7 +768,7 @@ export function Guilds({
               onChange={(crest) => setDoc({ ...doc, crest })}
             />
             <p>
-              {settings?.document.founding_po} PO · sede inicial com quatro salas · oito jogadores.
+              {settings?.document.founding_po} CB · sede inicial com quatro salas · oito jogadores. Seu saldo: {balance === null ? '…' : balance.toLocaleString('pt-BR')} CB.
             </p>
             {error && <p role="alert">{error}</p>}
             <button disabled={busy} type="submit">
@@ -819,7 +839,7 @@ export function Guilds({
             }}
           >
             <label>
-              Custo de fundação (PO)
+              Custo de fundação (CB)
               <input
                 type="number"
                 min={0}
@@ -907,7 +927,7 @@ export function Guilds({
                 <div className="guild-field-grid">
                   {(['goal', 'gold_po', 'prestige'] as const).map((key) => (
                     <label key={key}>
-                      {{ goal: 'Meta', gold_po: 'Recompensa (PO)', prestige: 'Prestígio' }[key]}
+                      {{ goal: 'Meta', gold_po: 'Recompensa (CB)', prestige: 'Prestígio' }[key]}
                       <input
                         type="number"
                         min={key === 'goal' ? 1 : 0}
@@ -969,7 +989,7 @@ export function Guilds({
                     <label key={key}>
                       {
                         {
-                          gold_po: 'Custo do tesouro (PO)',
+                          gold_po: 'Custo do tesouro (CB)',
                           prestige: 'Prestígio necessário',
                           missions: 'Semanais concluídas',
                           max_level: 'Nível máximo',

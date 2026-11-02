@@ -1,3 +1,4 @@
+import { missionReward, type MissionDifficulty } from '../shared/economy';
 import { WorldPlacePicker } from './WorldPlacePicker';
 import {CharacterSlotDice} from './CharacterSlotDice';
 import { defaultWarforgedAppearance, warforgedArtMode } from '../shared/warforged-appearance';
@@ -22,7 +23,6 @@ import {
 import { races, classes } from '../shared/rules';
 import {
   RANKS,
-  RANK_REWARD_CP,
   RANK_TEST_LEVELS,
   MISSION_THRESHOLDS,
   rankName,
@@ -558,6 +558,7 @@ export function PostForm({
 }) {
   const [kind, setKind] = useState<string>(canCreateEvent ? initialKind : 'mission');
   const [missionRank, setMissionRank] = useState<Rank>('Ferro');
+  const [difficulty,setDifficulty]=useState<MissionDifficulty>('Tranquila');
   const [tagIds, setTagIds] = useState<string[]>([]);
   const [rankTest, setRankTest] = useState('');
   const [paperStyle, setPaperStyle] = useState<PaperStyle>('parchment');
@@ -625,7 +626,7 @@ export function PostForm({
         </label>
         <label>
           Dificuldade
-          <select name="difficulty" aria-label="Dificuldade">
+          <select name="difficulty" aria-label="Dificuldade" value={difficulty} onChange={e=>setDifficulty(e.target.value as MissionDifficulty)}>
             <option>Tranquila</option>
             <option>Moderada</option>
             <option>Perigosa</option>
@@ -645,12 +646,12 @@ export function PostForm({
           >
             {RANKS.map((rank) => (
               <option key={rank} value={rank}>
-                {rankLabel(rank)} · {RANK_REWARD_CP[rank] / 100} PO
+                {rankLabel(rank)} · {missionReward(rank,difficulty).gold_cp / 100} PO
               </option>
             ))}
           </select>
           <small className="muted">
-            Somente personagens desta patente podem se inscrever, inclusive nos testes.
+            Somente personagens desta patente podem se inscrever, inclusive nos testes. Cada jogador também recebe {missionReward(missionRank,difficulty).bastion_credits} Créditos do Bastião para House e guilda.
           </small>
         </label>
       )}
@@ -716,7 +717,7 @@ export function PostForm({
           <input
             name="reward"
             type="number"
-            value={RANK_REWARD_CP[missionRank] / 100}
+            value={missionReward(missionRank,difficulty).gold_cp / 100}
             readOnly
             aria-label="Recompensa por participante (PO)"
           />

@@ -377,7 +377,7 @@ function Portal({ user }: { user: User }) {
           {item.reward_cp > 0 ? (
             <>
               <Coins size={16} />
-              <b>{money(item.reward_cp)} PO</b>
+              <b>{money(item.reward_cp)} PO{(item.bastion_credits || 0) > 0 ? ` + ${item.bastion_credits} CB` : ''}</b>
             </>
           ) : (
             <>

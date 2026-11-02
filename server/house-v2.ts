@@ -4,6 +4,7 @@ import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
+import { changeBastionCredits, requireEconomyClient } from './bastion-currency.js';
 import { requireAdministrator } from './administrators.js';
 import { house2TokensRouter } from './house2-tokens.js';
 import { house2LightItems } from '../shared/house2-items-lighting.js';
@@ -74,11 +75,7 @@ async function purchase(
       return { ...old.result, replay: true };
     }
     const { amount, result } = await fn(db);
-    if (account.balance < amount) throw new AppError(409, 'Saldo de teste insuficiente.');
-    await db.query('UPDATE house2_accounts SET balance=balance-$2 WHERE user_id=$1', [
-      user,
-      amount,
-    ]);
+    await changeBastionCredits(db,user,-amount,'house2',body.idempotency_key,{operation,payload});
     await db.query(
       'INSERT INTO house2_orders(user_id,idempotency_key,fingerprint,amount,result)VALUES($1,$2,$3,$4,$5)',
       [user, body.idempotency_key, fingerprint, amount, JSON.stringify(result)],
@@ -88,6 +85,10 @@ async function purchase(
 }
 export function house2Router() {
   const router = Router();
+  router.use((req,_res,next)=>{
+    if(req.method==='POST' && (/^\/house-v2\/(furniture|finishes)$/.test(req.path) || /^\/house-v2\/plots\/[^/]+\/(purchase|house)$/.test(req.path))) requireEconomyClient(req);
+    next();
+  });
   router.use(house2TokensRouter());
   router.get('/house-v2', async (_req, res) => {
     const user = res.locals.user.id;

@@ -44,24 +44,24 @@ esse histórico não é o contador limitado usado para evolução.
 
 ## Implementação
 
-### Missões exclusivas por patente e ouro fixo
+### Missões exclusivas por patente e recompensas
 
 Toda missão tem uma patente, selecionada no formulário. Somente personagens da
 **mesma patente** podem se inscrever, sem acesso a patentes inferiores ou superiores.
 O servidor revalida a patente ao concluir: uma promoção ocorrida em outra missão
 pode impedir a conclusão conjunta até resolver a participação incompatível.
 
-| Patente | PO por participante |
-|---|---|
-| Iniciante | 150 |
-| Intermediário | 230 |
-| Profissional | 300 |
-| Mestre | 390 |
-| Heroico | 500 |
+| Patente | PO por personagem (Tranquila / Moderada / Perigosa) | CB por jogador |
+|---|---|---|
+| Iniciante | 100 / 125 / 150 | 40 / 50 / 60 |
+| Intermediário | 250 / 300 / 350 | 60 / 75 / 90 |
+| Profissional | 500 / 625 / 750 | 80 / 100 / 120 |
+| Mestre | 1.000 / 1.250 / 1.500 | 120 / 150 / 180 |
+| Heroico | 2.000 / 2.500 / 3.000 | 160 / 200 / 240 |
 
 O formulário preenche o ouro automaticamente, sem edição. Servidor calcula criação
-e pagamento pela tabela, nunca pelo valor enviado pelo navegador. Teste de patente
-pertence à patente de **origem** (Iniciante → Intermediário exige Iniciante e paga 150 PO), além
+e pagamento pela patente e dificuldade, nunca pelo valor enviado pelo navegador. Teste de patente
+pertence à patente de **origem** (Iniciante → Intermediário exige Iniciante e paga a faixa de Iniciante), além
 dos requisitos de nível/missões já definidos. Eventos e ganchos não usam essa restrição.
 
 Migration 030 atribui Iniciante às missões legadas sem teste, e a patente de origem aos
@@ -78,7 +78,7 @@ antigos que omitam a patente; valores desconhecidos são rejeitados.
 - Inscrição valida titularidade e elegibilidade no servidor. Conclusão só pelo autor,
   com missão em andamento; revalida elegibilidade sob bloqueio dos personagens.
   Se alguém já tiver sido promovido por outro teste, retorna conflito sem crédito parcial.
-- Cada inscrito recebe o valor fixo em cobre da patente da missão, uma vez.
+- Cada inscrito recebe o ouro da patente e dificuldade, uma vez. Cada jogador recebe CB uma vez por missão para House e guilda, mesmo com dois personagens participantes. Consulte [Economia](ECONOMIA.md).
   O servidor calcula pela tabela; ignora ouro, nível e XP enviados na conclusão.
   Crédito monetário, progresso, histórico, encerramento e gancho opcional são uma transação.
 - Novas conclusões não dão XP. O campo legado é preservado para consulta histórica.

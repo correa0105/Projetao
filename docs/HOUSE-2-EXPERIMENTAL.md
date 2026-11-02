@@ -71,19 +71,15 @@ Vizinhança, Meu terreno e Outras vizinhanças. Menu global permanece disponíve
 Nome do personagem e do jogador aparecem ao passar o mouse ou focar o lote;
 o botão de porta permite consultar o interior, escondendo apenas seu telhado.
 
-## Compras de teste e posse
+## Créditos do Bastião e posse
 
-Por escolha explícita do usuário, cada conta dispõe de **20.000 créditos de
-teste**, separados do ouro real. Terrenos custam 1.200; as 25 casas vazias do
-VTT custam de 600 a 1.000. A coleção reutiliza as 100 peças da mobília superior
-do VTT, com preços experimentais por área. Valores vêm do servidor; não são
-preços definitivos nem compras do Empório. Nada tem revenda ou bônus de jogo.
+Novas carteiras começam em zero e recebem Créditos do Bastião (CB) nas missões. O saldo é compartilhado com compras e contribuições da guilda. Terrenos custam 600 CB; casas de 500 a 1.100 CB; móveis seguem faixas acessíveis por tamanho e luxo. Revestimentos custam 50–150 CB. Regras completas em [Economia](ECONOMIA.md). Saldos e compras experimentais anteriores são preservados, sem conversão em ouro.
 
 O servidor confere personagem próprio, carteira bloqueada, terreno bloqueado,
 saldo, chave idempotente e auditoria transacional. Repetir a mesma compra não
 debita novamente; chave reaproveitada com outro pedido é recusada. Duas contas
 disputando um lote produzem um único vencedor. Não existe recarga automática
-do saldo de teste nem débito em `characters.gold_cp`.
+do saldo nem débito em `characters.gold_cp`.
 Toda compra abre uma confirmação com custo, saldo disponível e saldo restante;
 cancelar não compra. A loja exibe preços; Minha coleção mostra peças já compradas,
 com estado Guardado/No terreno e ações Colocar/Ajustar, sem repetir os cards de venda.

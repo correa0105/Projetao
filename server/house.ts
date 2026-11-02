@@ -16,6 +16,7 @@ import {
 } from '../shared/house.js';
 import { achievementCatalog } from '../shared/achievements.js';
 import { currentHouseCatalog, currentHousePrice } from './shop-prices.js';
+import { changeBastionCredits, requireEconomyClient } from './bastion-currency.js';
 import { withCompanionImages } from './companion-images.js';
 import { currentGoldUnlimited, spendGold } from './gold.js';
 const uuid = z.string().uuid(),
@@ -301,6 +302,7 @@ export function houseRouter() {
     })
     .strict();
   router.post('/house/purchase', async (req, res) => {
+    requireEconomyClient(req);
     const input = purchaseSchema.parse(req.body),
       item = houseCatalog.find((i) => i.id === input.catalog_id);
     if (!item) throw new AppError(404, 'Mobília não encontrada.');
@@ -335,7 +337,8 @@ export function houseRouter() {
         return { item_id: previous.item_id, gold_cp: c.gold_cp, gold_unlimited, replayed: true };
       }
       const price = await currentHousePrice(db, item.id, item.price_cp);
-      const gold_cp = await spendGold(db, c, price, gold_unlimited, 'Ouro insuficiente.');
+      await changeBastionCredits(db,res.locals.user.id,-price/100,'house',input.idempotency_key,request);
+      const gold_cp = c.gold_cp;
       const added = (
         await db.query(
           `INSERT INTO house_items(character_id,catalog_id,content,image,source)VALUES($1,$2,$3,$4,'purchase')RETURNING id`,

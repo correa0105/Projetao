@@ -8,6 +8,7 @@ import { vttVisualSource } from './vtt-asset-visuals';
 import { house2DefaultGrassImage } from './reference-grass';
 import { house2ExtraLightItems } from './house2-items-lighting';
 import type { House2Finishes } from './house2-finishes';
+import { furnishingCredits, housePlotCredits } from './economy';
 
 export const house2Size = 200;
 export const house2Landscape = house2DefaultGrassImage;
@@ -26,8 +27,8 @@ export const house2VillagePlots = [
   { x: 60, y: 122, rotation: 180, dx: 0.7, dy: -0.8 },
   { x: 86, y: 119, rotation: 270, dx: 0.4, dy: 0.6 },
 ] as const;
-export const house2StartingBalance = 20000;
-export const house2PlotPrice = 1200;
+export const house2StartingBalance = 0;
+export const house2PlotPrice = housePlotCredits;
 export const house2PlotSize = 18;
 export const house2PlotExpansion = 3;
 export const house2Houses = houses
@@ -36,13 +37,13 @@ export const house2Houses = houses
     ...h,
     image: vttVisualSource(h.image),
     interior: vttVisualSource(h.interior),
-    price: 600 + Math.floor(i / 5) * 100,
+    price: 500 + Math.floor(i / 5) * 150,
   }));
 export const house2Furniture = [...furniture, ...medievalFurniture, ...expandedFurniture, ...house2ExtraLightItems].map(
   (f) => ({
     ...f,
     image: vttVisualSource(f.image),
-    price: Math.max(15, Math.round(f.width * f.height * 30)),
+    price: furnishingCredits(f),
   }),
 );
 // Retain historical pieces for collections, layout validation and rendering.

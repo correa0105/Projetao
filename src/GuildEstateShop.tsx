@@ -31,7 +31,7 @@ export function GuildEstateShop({
     <Modal title="Mobília da guilda" close={() => !busy && close()}>
       <div className="guild-estate-shop">
         <p>
-          Tesouro disponível: <strong>{money(treasury)}</strong>. Os móveis pertencem à guilda.
+          Tesouro disponível: <strong>{money(treasury)} CB</strong>. Os móveis pertencem à guilda.
         </p>
         <div className="guild-estate-shop-tabs">
           <button type="button" aria-pressed={tab === 'shop'} onClick={() => setTab('shop')}>
@@ -60,7 +60,7 @@ export function GuildEstateShop({
                 <li key={f.id} data-estate-shop-item={f.id}>
                   <img src={f.image} loading="lazy" alt="" />
                   <b>{f.name}</b>
-                  <span>{money(f.price * 100)}</span>
+                  <span>{money(f.price * 100)} CB</span>
                   <button
                     type="button"
                     disabled={busy || treasury < f.price * 100 || estate.furniture.length >= 120}

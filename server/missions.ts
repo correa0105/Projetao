@@ -5,12 +5,13 @@ import { AppError } from './services.js';
 import {administrationFor} from './administrators.js';
 import { creditMissionTags } from './mission-tag-progress.js';
 import { creditBastionMission } from './guild-bastion.js';
+import { changeBastionCredits } from './bastion-currency.js';
+import { missionReward } from '../shared/economy.js';
 import {
   progressMission,
   testEligible,
   rankName,
   rankLabel,
-  RANK_REWARD_CP,
   type Rank,
 } from '../shared/progression.js';
 
@@ -109,7 +110,9 @@ export async function completeMission(
         'Confirme todos os personagens inscritos, sem adicionar ou repetir personagens.',
       );
     // Stable character order prevents deadlocks between two missions with shared participants.
-    const gold = RANK_REWARD_CP[mission.mission_rank as Rank];
+    const reward = missionReward(mission.mission_rank as Rank, mission.difficulty);
+    const gold = reward.gold_cp;
+    const rewardedUsers = new Set<string>();
     for (const participant of participants) {
       const {
         rows: [character],
@@ -136,6 +139,7 @@ export async function completeMission(
         [progress.level, progress.missions, gold, participant.character_id],
       );
       if (!result.rowCount) throw new AppError(409, 'O limite de ouro do personagem foi atingido.');
+      rewardedUsers.add(character.user_id);
       await client.query(
         `INSERT INTO mission_rewards(post_id,character_id,experience,awarded_by,gold_cp,progression_credit,level_before,level_after,rank_promoted)
          VALUES($1,$2,0,$3,$4,$5,$6,$7,$8)`,
@@ -153,6 +157,9 @@ export async function completeMission(
       await creditMissionTags(client, id, participant.character_id);
       await creditBastionMission(client, id, participant.character_id);
     }
+    // One cosmetic-currency reward per player, even with two characters in the mission.
+    for (const user of [...rewardedUsers].sort())
+      await changeBastionCredits(client,user,reward.bastion_credits,'mission',id,{rank:mission.mission_rank,difficulty:mission.difficulty});
     const {
       rows: [completed],
     } = await client.query(

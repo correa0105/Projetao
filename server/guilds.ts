@@ -6,7 +6,7 @@ import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { requireAdministrator, isAdministrator } from './administrators.js';
-import { currentGoldUnlimited, spendGold } from './gold.js';
+import { bastionBalance, changeBastionCredits, requireEconomyClient } from './bastion-currency.js';
 import {
   guildFacilities,
   guildFacilityMaxLevel,
@@ -114,6 +114,11 @@ async function weeks(db: Pick<PoolClient, 'query'>, id: string) {
 }
 export function guildsRouter() {
   const router = express.Router();
+  router.get('/bastion-wallet',async(_req,res)=>res.json({balance:await bastionBalance(res.locals.user.id),currency:'bastion'}));
+  router.use((req,_res,next)=>{
+    if(req.method==='POST' && (req.path==='/guilds' || /^\/guilds\/[^/]+\/(estate\/furniture|credits\/deposit|weekly\/[^/]+\/claim|facilities\/[^/]+\/upgrade|upgrade\/[^/]+)$/.test(req.path))) requireEconomyClient(req);
+    next();
+  });
   // A selected character must belong to the authenticated account. Legacy callers
   // without a character retain the registered member's account context.
   router.use(/^\/guilds(?=\/|$)/, async (req, res, next) => {
@@ -131,6 +136,21 @@ export function guildsRouter() {
       throw new AppError(404, 'Escolha um personagem seu.');
     res.locals.guildCharacterId = characterId;
     next();
+  });
+  router.post('/guilds/:id/credits/deposit',async(req,res)=>{
+    const input=z.object({amount:z.number().int().min(1).max(1000000),request_id:uuid}).strict().parse(req.body);
+    const id=uuid.parse(req.params.id),uid=res.locals.user.id;
+    res.json(await transaction(async db=>{
+      const g=await guild(db,id,uid,false,res.locals.guildCharacterId);
+      const reference='deposit:'+input.request_id;
+      const old=(await db.query("SELECT amount_cp FROM player_guild_ledger WHERE guild_id=$1 AND reference=$2 AND user_id=$3 AND currency='bastion'",[id,reference,uid])).rows[0];
+      if(old){if(Number(old.amount_cp)!==input.amount*100)throw new AppError(409,'Pedido já usado para outro valor.');return{replayed:true,balance:await bastionBalance(uid,db)};}
+      if(Number(g.bastion_treasury_cp)+input.amount*100>2147483647)throw new AppError(409,'O limite do tesouro foi atingido.');
+      const balance=await changeBastionCredits(db,uid,-input.amount,'guild_deposit',input.request_id,{guild_id:id});
+      await db.query('UPDATE player_guilds SET bastion_treasury_cp=bastion_treasury_cp+$2 WHERE id=$1',[id,input.amount*100]);
+      await db.query("INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference,currency)VALUES($1,$2,'deposit',$3,$4,'bastion')",[id,uid,input.amount*100,reference]);
+      return{replayed:false,balance};
+    }));
   });
   router.get('/community/settings', async (_req, res) =>
     res.json({
@@ -184,7 +204,6 @@ export function guildsRouter() {
         .strict()
         .parse(req.body);
     const saved = await transaction(async (db) => {
-      const unlimited = await currentGoldUnlimited(db, uid);
       await db.query('SELECT pg_advisory_xact_lock(hashtextextended($1,0))', ['guild-user:' + uid]);
       const {
         rows: [old],
@@ -216,17 +235,11 @@ export function guildsRouter() {
       if (!ch) throw new AppError(404, 'Escolha um personagem seu.');
       await reserveName(db, input.document.name);
       checkRooms(input.document, 0, c);
-      const cp = c.founding_po * 100,
-        gold_cp = await spendGold(
-          db,
-          ch,
-          cp,
-          unlimited,
-          'O personagem não possui ouro suficiente para fundar a guilda.',
-        ),
-        id = randomUUID();
+      const cp=c.founding_po*100;
+      await changeBastionCredits(db,uid,-c.founding_po,'guild_foundation',input.request_id,{name:input.document.name,character_id:ch.id});
+      const gold_cp=ch.gold_cp,id=randomUUID();
       await db.query(
-        'INSERT INTO player_guilds(id,owner_id,document,founding_cp,request_id) VALUES($1,$2,$3,$4,$5)',
+        "INSERT INTO player_guilds(id,owner_id,document,founding_cp,request_id,founding_currency) VALUES($1,$2,$3,$4,$5,'bastion')",
         [id, uid, JSON.stringify(initialDecor(input.document)), cp, input.request_id],
       );
       await db.query(
@@ -234,7 +247,7 @@ export function guildsRouter() {
         [uid, id, ch.id],
       );
       await db.query(
-        "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference) VALUES($1,$2,'foundation',$3,$4)",
+        "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference,currency) VALUES($1,$2,'foundation',$3,$4,'bastion')",
         [id, uid, -cp, input.request_id],
       );
       return { id, gold_cp, replayed: false };
@@ -280,7 +293,8 @@ export function guildsRouter() {
         ])
       ).rows,
       members: members.rows,
-      treasury_cp: member ? Number(g.treasury_cp) : null,
+      treasury_cp: member ? Number(g.bastion_treasury_cp) : null,
+      legacy_treasury_cp: member ? Number(g.treasury_cp) : null,
       weekly: member ? await weeks(pool, id) : null,
       upgrades: member
         ? (
@@ -293,7 +307,7 @@ export function guildsRouter() {
       ledger: member
         ? (
             await pool.query(
-              'SELECT kind,amount_cp,created_at FROM player_guild_ledger WHERE guild_id=$1 ORDER BY id DESC LIMIT 20',
+              'SELECT kind,amount_cp,created_at,currency FROM player_guild_ledger WHERE guild_id=$1 ORDER BY id DESC LIMIT 20',
               [id],
             )
           ).rows
@@ -492,7 +506,7 @@ export function guildsRouter() {
         if (estate.furniture.length >= 120)
           throw new AppError(409, 'O acervo da sede já contém 120 móveis.');
         const cost = catalog.price * 100;
-        if (Number(g.treasury_cp) < cost)
+        if (Number(g.bastion_treasury_cp) < cost)
           throw new AppError(409, 'O tesouro da guilda não cobre este móvel.');
         const item = {
           id: randomUUID(),
@@ -506,11 +520,11 @@ export function guildsRouter() {
         const {
           rows: [saved],
         } = await db.query(
-          "UPDATE player_guilds SET document=jsonb_set(document,'{estate}',$2::jsonb),treasury_cp=treasury_cp-$3,revision=revision+1 WHERE id=$1 RETURNING revision",
+          "UPDATE player_guilds SET document=jsonb_set(document,'{estate}',$2::jsonb),bastion_treasury_cp=bastion_treasury_cp-$3,revision=revision+1 WHERE id=$1 RETURNING revision",
           [id, JSON.stringify(estate), cost],
         );
         await db.query(
-          "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference) VALUES($1,$2,'furniture',$3,$4)",
+          "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference,currency) VALUES($1,$2,'furniture',$3,$4,'bastion')",
           [id, res.locals.user.id, -cost, b.request_id + ':' + catalog.id + ':' + item.id],
         );
         return { estate, revision: saved.revision, item_id: item.id, replayed: false };
@@ -672,11 +686,11 @@ export function guildsRouter() {
           [id, w.week, mid],
         );
         await db.query(
-          'UPDATE player_guilds SET treasury_cp=treasury_cp+$2,prestige=prestige+$3 WHERE id=$1',
+          'UPDATE player_guilds SET bastion_treasury_cp=bastion_treasury_cp+$2,prestige=prestige+$3 WHERE id=$1',
           [id, m.template.gold_po * 100, m.template.prestige],
         );
         await db.query(
-          "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference) VALUES($1,$2,'weekly',$3,$4)",
+          "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference,currency) VALUES($1,$2,'weekly',$3,$4,'bastion')",
           [id, uid, m.template.gold_po * 100, w.week + ':' + mid],
         );
         return { replayed: false };
@@ -685,11 +699,11 @@ export function guildsRouter() {
   });
   router.get('/guilds/:id/bastion', async (req, res) => {
     const id = uuid.parse(req.params.id);
-    const { rows: [g] } = await pool.query('SELECT owner_id,treasury_cp FROM player_guilds WHERE id=$1', [id]);
+    const { rows: [g] } = await pool.query('SELECT owner_id,bastion_treasury_cp FROM player_guilds WHERE id=$1', [id]);
     if (!g) throw new AppError(404, 'Guilda não encontrada.');
     const member = !!(await pool.query('SELECT 1 FROM player_guild_members WHERE guild_id=$1 AND user_id=$2 AND ($3::uuid IS NULL OR character_id=$3)',
       [id, res.locals.user.id, res.locals.guildCharacterId])).rowCount;
-    const state = await bastionFacilityStates(pool, id, member ? Number(g.treasury_cp) : 0);
+    const state = await bastionFacilityStates(pool, id, member ? Number(g.bastion_treasury_cp) : 0);
     res.json({ ...state, custom: member ? state.custom : [], progress_visible: member,
       facilities: state.facilities.map(f => member ? f : { ...f, can_upgrade: false,
         next: f.next ? { ...f.next, requirements: f.next.requirements.map(r => ({ ...r, current: 0, met: false })) } : null }),
@@ -743,10 +757,10 @@ export function guildsRouter() {
         const current = stored?.level || 1;
         if (input.level <= current) return { level: current, replayed: true };
         if (input.level !== current + 1) throw new AppError(409, 'Melhore um nível por vez.');
-        const { cost, snapshot } = await requireBastionUpgrade(db, id, facility.room, input.level, Number(g.treasury_cp));
+        const { cost, snapshot } = await requireBastionUpgrade(db, id, facility.room, input.level, Number(g.bastion_treasury_cp));
         if (input.revision !== undefined && snapshot.revision !== input.revision)
           throw new AppError(409, 'Os requisitos mudaram. Reabra os detalhes antes de evoluir.');
-        await db.query('UPDATE player_guilds SET treasury_cp=treasury_cp-$2 WHERE id=$1', [
+        await db.query('UPDATE player_guilds SET bastion_treasury_cp=bastion_treasury_cp-$2 WHERE id=$1', [
           id,
           cost,
         ]);
@@ -755,7 +769,7 @@ export function guildsRouter() {
           [id, facility.room, input.level],
         );
         await db.query(
-          "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference) VALUES($1,$2,'upgrade',$3,$4)",
+          "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference,currency) VALUES($1,$2,'upgrade',$3,$4,'bastion')",
           [id, uid, -cost, 'facility:' + facility.room + ':' + input.level],
         );
         await db.query('INSERT INTO guild_bastion_audit(guild_id,user_id,kind,reference,document) VALUES($1,$2,$3,$4,$5)',
@@ -800,10 +814,10 @@ export function guildsRouter() {
         if (
           g.prestige < rule.prestige ||
           completed < rule.missions ||
-          Number(g.treasury_cp) < rule.gold_po * 100
+          Number(g.bastion_treasury_cp) < rule.gold_po * 100
         )
           throw new AppError(409, 'A guilda ainda não atende aos requisitos da melhoria.');
-        await db.query('UPDATE player_guilds SET treasury_cp=treasury_cp-$2 WHERE id=$1', [
+        await db.query('UPDATE player_guilds SET bastion_treasury_cp=bastion_treasury_cp-$2 WHERE id=$1', [
           id,
           rule.gold_po * 100,
         ]);
@@ -812,7 +826,7 @@ export function guildsRouter() {
           [id, oid, level],
         );
         await db.query(
-          "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference) VALUES($1,$2,'upgrade',$3,$4)",
+          "INSERT INTO player_guild_ledger(guild_id,user_id,kind,amount_cp,reference,currency) VALUES($1,$2,'upgrade',$3,$4,'bastion')",
           [id, uid, -rule.gold_po * 100, oid + ':' + level],
         );
         return { level, replayed: false };

@@ -85,7 +85,7 @@ export function GuildBastionPanel({
     });
   }
   const quantity = (kind: string, n: number) =>
-    kind === 'treasury' ? money(n) + ' PO' : n.toLocaleString('pt-BR');
+    kind === 'treasury' ? money(n) + ' CB' : n.toLocaleString('pt-BR');
   const customRequirements =
     facility?.progression.levels.flatMap((t) =>
       t.requirements.filter((r) => r.kind === 'custom'),
@@ -124,7 +124,7 @@ export function GuildBastionPanel({
                     {facility.next.requirements.map((r) => (
                       <li key={r.key} data-met={state.progress_visible && r.met}>
                         <div>
-                          <strong>{r.kind === 'treasury' ? 'Ouro do tesouro' : r.label}</strong>
+                          <strong>{r.kind === 'treasury' ? 'Créditos do tesouro' : r.label}</strong>
                           <span>
                             {state.progress_visible ? quantity(r.kind, r.current) + ' / ' : ''}
                             {quantity(r.kind, r.target)}

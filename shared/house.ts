@@ -2,6 +2,7 @@ import { z } from 'zod';
 import refitCatalog from '../data/house-refit-catalog.json';
 import expansionCatalog from '../data/house-expansion-20261008.json';
 import { houseViewRepair } from './house-view-repairs';
+import { furnishingCredits } from './economy';
 export const houseDistortionLimit = 0.12;
 const distortionPointSchema = z
   .object({
@@ -129,6 +130,7 @@ export const houseCatalog = [
   },
 ].map((item) => ({
   ...item,
+  price_cp: furnishingCredits(item) * 100,
   default_facing: houseDefaultFacing(item.id),
   default_scale: houseDefaultScale(item.id),
   image: houseItemImage(item.id),

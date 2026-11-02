@@ -7,6 +7,7 @@ import { ensureInitialRulebook } from './rulebook.js';
 import { lockCatalogPrices } from './shop-prices.js';
 import { seedArmorPieces } from './armor-catalog.js';
 import { seedClothingPieces } from './clothing-catalog.js';
+import { applyEconomyPrices, applyEconomyRulebook } from './economy-prices.js';
 import {
   withdrawnWeaponModels,
   withdrawnWeaponOffer,
@@ -140,6 +141,7 @@ export async function seed() {
       `UPDATE catalog_items c SET price_cp=o.price_cp
        FROM shop_price_overrides o WHERE o.item_id=c.id`,
     );
+    await applyEconomyPrices(client);
     // Migration 038 captured only pre-update suits. Applying each snapshot once avoids
     // duplicating pieces on subsequent seeds or on purchases through the new checkout.
     const { rows: backfills } = await client.query(
@@ -283,5 +285,6 @@ export async function seed() {
   });
   await seedLore();
   await ensureInitialRulebook();
+  await transaction(applyEconomyRulebook);
   console.log('Catálogo e cenário inicial disponíveis.');
 }

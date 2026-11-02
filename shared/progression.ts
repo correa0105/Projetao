@@ -18,12 +18,13 @@ export function rankLabel(rank: Rank) {
 export function rankTitle(level: number) {
   return rankLabel(rankName(level));
 }
+// Compatibility for older consumers: Moderate difficulty only. Payouts use missionReward.
 export const RANK_REWARD_CP: Record<Rank, number> = {
-  Ferro: 15000,
-  Bronze: 23000,
-  Adamantium: 30000,
-  Ametista: 39000,
-  Obsidiana: 50000,
+  Ferro: 12500,
+  Bronze: 30000,
+  Adamantium: 62500,
+  Ametista: 125000,
+  Obsidiana: 250000,
 };
 export const RANK_TEST_LEVELS = [4, 8, 12, 16] as const;
 export function rankName(level: number) {
