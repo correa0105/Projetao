@@ -257,6 +257,10 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
         ok(
           await req('/catalog/' + legendary.id + '/price', admin, { price_cp: 30000000 }, 'PATCH'),
         );
+        const formerlyUnpriced=items.find(i=>magicRarity(i)==='rare'&&!isConsumable(i)&&i.price_cp!==null)!;
+        await pool.query('DELETE FROM economy_price_history WHERE item_id=$1',[formerlyUnpriced.id]);
+        ok(await req('/catalog/'+formerlyUnpriced.id+'/price',admin,{price_cp:null},'PATCH'));
+        ok(await req('/catalog/'+formerlyUnpriced.id+'/price',admin,{price_cp:12340000},'PATCH'));
         const snapshot = (await pool.query('SELECT id,price_cp FROM catalog_items ORDER BY id'))
           .rows;
         await seed();

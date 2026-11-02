@@ -11,7 +11,7 @@ import { currentGoldUnlimited, spendGold } from './gold.js';
 import { configuredShopItem } from './shop-spell-configurations.js';
 import { boundSpellOptions, spellBindingSpec } from '../shared/shop-spell-bindings.js';
 import { pool } from './db.js';
-import { isConsumable, magicRarity, rarityReferencePo } from '../shared/economy.js';
+import { economyVersion, isConsumable, magicRarity, rarityReferencePo } from '../shared/economy.js';
 
 export function shopRouter() {
   const router = Router();
@@ -34,6 +34,8 @@ export function shopRouter() {
     const result = await transaction(async (client) => {
       await lockCatalogPrices(client);
       await requireAdministrator(res.locals.user.id, client);
+      const beforeOverride=(await client.query('SELECT to_jsonb(o) AS snapshot FROM shop_price_overrides o WHERE item_id=$1',[id])).rows[0]?.snapshot || null;
+      let beforePrice: number | null = null;
       if (id.startsWith('house-')) {
         const houseId = id.slice('house-'.length);
         if (!houseCatalog.some((item) => item.id === houseId))
@@ -42,8 +44,10 @@ export function shopRouter() {
           throw new AppError(400, 'Defina um preço maior que zero para o item de House.');
         await lockHousePrice(client, houseId);
         if (price_cp! % 100 !== 0) throw new AppError(400, 'O preço de House deve ser um valor inteiro em CB.');
+        beforePrice=beforeOverride?.price_cp ?? houseCatalog.find(item=>item.id===houseId)!.price_cp;
       } else {
         const item=(await client.query('SELECT id,category,raw_data,price_cp FROM catalog_items WHERE id=$1 AND active=true',[id])).rows[0];
+        beforePrice=item?.price_cp ?? null;
         if(item && magicRarity(item)==='legendary' && price_cp!==null && price_cp < rarityReferencePo.legendary*100/(isConsumable(item)?4:1))
           throw new AppError(400,'Lendários permanentes partem de 250.000 PO; consumíveis lendários, de 62.500 PO.');
         const updated = await client.query(
@@ -58,6 +62,10 @@ export function shopRouter() {
          updated_by=excluded.updated_by,updated_at=now()`,
         [id, price_cp, res.locals.user.id],
       );
+      // A previously unpriced item may not have received an initial balancing row.
+      // Mark an explicit administrator edit so a later seed cannot reprice it.
+      await client.query(`INSERT INTO economy_price_history(version,item_id,before_price_cp,after_price_cp,before_override)
+        VALUES($1,$2,$3,$4,$5) ON CONFLICT(version,item_id) DO NOTHING`,[economyVersion,id,beforePrice,price_cp,beforeOverride]);
       return { id, price_cp };
     });
     res.json(result);
