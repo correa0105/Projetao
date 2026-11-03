@@ -21,37 +21,39 @@ const server=app.listen(3027,'127.0.0.1');await new Promise<void>(r=>server.once
 const browser=await chromium.launch({channel:'msedge',headless:true});
 const context=await browser.newContext({viewport:{width:1440,height:1000}});
 await context.addInitScript('window.__name=(fn)=>fn;');
-const page=await context.newPage(),root='.local/mithral-family-20261103';await mkdir(root,{recursive:true});
+const page=await context.newPage(),root='.local/equipment-families-20261103';await mkdir(root,{recursive:true});
 const errors:string[]=[],checks:string[]=[];page.on('pageerror',e=>errors.push(e.message));
 try {
  const signup=await context.request.post(origin+'/api/auth/sign-up/email',{headers:{Origin:origin},data:{name:'Artes temáticas',email:'thematic-'+randomUUID()+'@example.test',password:'Test-'+randomUUID()}});
  expect(signup.ok()).toBe(true);await createLegacyTestCharacter((await signup.json()).user.id,'Liora');
  const registry=JSON.parse(await readFile('data/thematic-equipment-art-20261102.json','utf8'));
- const mithral=(await pool.query("SELECT id,name,image_path,raw_data->>'base_item' AS model FROM catalog_items WHERE active AND raw_data->>'magic_family'='Mithral Armor' ORDER BY id")).rows;
- expect(mithral.length).toBe(9);
- const samples=[...mithral.map(item=>[item.id,'Mithral Armor','Armadura de mitral',item.model,item.image_path]),['mariner-s-padded-armor',"Mariner's Armor",'Armadura do marinheiro','padded-armor','/shop/thematic-equipment-20261102/mariner-s-padded-armor.webp']];
+ const ids=registry.assets.filter((asset:any)=>!asset.id.includes('--')).map((asset:any)=>asset.id);
+ const samples=(await pool.query("SELECT id,name,image_path,raw_data->>'base_item' AS model,raw_data->>'magic_family' AS family,raw_data->'armor_bundle_pieces' AS pieces FROM catalog_items WHERE active AND id=ANY($1::text[]) ORDER BY id",[ids])).rows;
+ expect(samples.length).toBe(ids.length);
  for(const asset of registry.assets){const response=await context.request.get(origin+asset.path);expect(response.ok()).toBe(true);expect(response.headers()['content-type']).toContain('image/webp');}
  for(const width of [1440,390]){
   await page.setViewportSize({width,height:1000});await page.goto(origin+'/#shop');
   const search=page.getByRole('textbox',{name:'Procurar item'});await expect(search).toBeVisible();
   await page.getByRole('navigation',{name:'Categorias da loja'}).getByRole('button',{name:/^Todos\b/}).click();
-  for(const [id,family,query,model,imagePath] of samples){
-   await search.fill(query);
-   const card=page.locator('.shop-product[data-family="'+family+'"]');await expect(card).toBeVisible();
-   await card.getByRole('combobox',{name:/^Tipo de armadura de/}).selectOption(model);
+  for(const {id,family,name,model,image_path:imagePath,pieces} of samples){
+   await search.fill(name.replace(/\s*\([^)]*\)\s*$/,''));
+   const card=page.locator('.shop-product[data-family="'+family+'"],.shop-product[data-item-id="'+id+'"]').first();await expect(card).toBeVisible();
+   const selector=card.getByRole('combobox',{name:/^Tipo de (armadura|arma) de/});
+   if(await selector.count())await selector.selectOption(model);
    await expect(card).toHaveAttribute('data-item-id',id);
-   const img=card.locator('img.shop-family-object');
+   const familyImage=card.locator('img.shop-family-object');
+   const img=await familyImage.count()?familyImage:card.locator('img').first();
    await expect(img).toHaveAttribute('src',imagePath);
    expect(imagePath).toMatch(/^\/shop\/thematic-equipment-20\d{6}\//);
    await img.evaluate(async el=>{await (el as HTMLImageElement).decode();});
-   if(['breastplate','half-plate-armor'].includes(model)){
+   if(pieces&&['breastplate','half-plate-armor'].includes(model)){
     await expect(card).toContainText('Peça única de armadura');
     await expect(card).not.toContainText('Conjunto completo');
-   }else await expect(card).toContainText('Conjunto completo com 6 peças');
+   }else if(pieces)await expect(card).toContainText('Conjunto completo com 6 peças');
    await card.screenshot({path:root+'/'+id+'-'+width+'.png'});
   }
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
-  checks.push('Nove modelos de mitral e marinheiro: artes novas, seletores, peças únicas e conjuntos preservados em '+width+' px');
+  checks.push(samples.length+' modelos de armaduras, armas e capas: artes, seletores e compras preservados em '+width+' px');
  }
  expect(errors).toEqual([]);
  await writeFile(root+'/result.json',JSON.stringify({passed:true,checks,errors,decodedArtworks:registry.assets.length},null,2));

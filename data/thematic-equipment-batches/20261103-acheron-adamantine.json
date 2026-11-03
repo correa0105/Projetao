@@ -1,0 +1,812 @@
+{
+  "version": "20261103",
+  "scope": "Continuação integral: seis lâminas de Acheron, nove modelos de armadura adamantina e suas peças, 34 armas e munições adamantinas. Demais famílias continuam autorizadas e pendentes.",
+  "jobs": [
+    {
+      "id": "acheron-blade-double-bladed-scimitar",
+      "parent": "acheron-blade-double-bladed-scimitar",
+      "family": "Acheron Blade",
+      "model": "double-bladed-scimitar",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete double-bladed scimitar weapon: a central long two-hand staff grip with TWO curved cutting blades extending in opposite directions from its two ends; one continuous straight central axis, balanced and fully visible. ACHERON craft: blackened iron forged into long sharp angular facets, a real two-layer crossguard with broad descending hooks reminiscent of fortress battlements, deep oxblood leather grip, an actual dark iron caged skull pommel and a narrow blood-red stone set in the guard socket. Restrained severe militaristic construction, not spikes pasted on an ordinary sword. No floating smoke, blood, glow or printed skull pictures. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "acheron-blade-greatsword",
+      "parent": "acheron-blade-greatsword",
+      "family": "Acheron Blade",
+      "model": "greatsword",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one very long straight double-edged two-handed greatsword, broad balanced blade, long two-hand grip and robust crossguard; visibly larger and heavier than a longsword. ACHERON craft: blackened iron forged into long sharp angular facets, a real two-layer crossguard with broad descending hooks reminiscent of fortress battlements, deep oxblood leather grip, an actual dark iron caged skull pommel and a narrow blood-red stone set in the guard socket. Restrained severe militaristic construction, not spikes pasted on an ordinary sword. No floating smoke, blood, glow or printed skull pictures. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "acheron-blade-longsword",
+      "parent": "acheron-blade-longsword",
+      "family": "Acheron Blade",
+      "model": "longsword",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one straight double-edged longsword, medium long straight blade, practical crossguard, hand-and-a-half grip and pommel. ACHERON craft: blackened iron forged into long sharp angular facets, a real two-layer crossguard with broad descending hooks reminiscent of fortress battlements, deep oxblood leather grip, an actual dark iron caged skull pommel and a narrow blood-red stone set in the guard socket. Restrained severe militaristic construction, not spikes pasted on an ordinary sword. No floating smoke, blood, glow or printed skull pictures. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "acheron-blade-rapier",
+      "parent": "acheron-blade-rapier",
+      "family": "Acheron Blade",
+      "model": "rapier",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one slender straight thrusting rapier, long narrow pointed blade, single-hand grip and complex protective basket/swept hilt; never a wide cutting blade. ACHERON craft: blackened iron forged into long sharp angular facets, a real two-layer crossguard with broad descending hooks reminiscent of fortress battlements, deep oxblood leather grip, an actual dark iron caged skull pommel and a narrow blood-red stone set in the guard socket. Restrained severe militaristic construction, not spikes pasted on an ordinary sword. No floating smoke, blood, glow or printed skull pictures. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "acheron-blade-scimitar",
+      "parent": "acheron-blade-scimitar",
+      "family": "Acheron Blade",
+      "model": "scimitar",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one single-edged curved scimitar, one swept cutting blade, single-hand grip and protective curved guard. ACHERON craft: blackened iron forged into long sharp angular facets, a real two-layer crossguard with broad descending hooks reminiscent of fortress battlements, deep oxblood leather grip, an actual dark iron caged skull pommel and a narrow blood-red stone set in the guard socket. Restrained severe militaristic construction, not spikes pasted on an ordinary sword. No floating smoke, blood, glow or printed skull pictures. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "acheron-blade-shortsword",
+      "parent": "acheron-blade-shortsword",
+      "family": "Acheron Blade",
+      "model": "shortsword",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one compact straight double-edged shortsword, short broad blade, small crossguard and single-hand grip; not a longsword. ACHERON craft: blackened iron forged into long sharp angular facets, a real two-layer crossguard with broad descending hooks reminiscent of fortress battlements, deep oxblood leather grip, an actual dark iron caged skull pommel and a narrow blood-red stone set in the guard socket. Restrained severe militaristic construction, not spikes pasted on an ordinary sword. No floating smoke, blood, glow or printed skull pictures. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor",
+      "parent": "adamantine-armor",
+      "family": "Adamantine Armor",
+      "model": "plate-armor",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw ONE empty refined full-plate torso cuirass with articulated hip fauld, forged from bright blue-black adamantine. Elegant sculpted angular beveled ribs are physically raised and structural, curved layered edges and narrow riveted articulated joins, small charcoal leather straps visible only at real openings. Sleek light-looking metal plate craftsmanship, not bulky steel or printed filigree. Torso/hip armor only, no attached arms, legs, boots or head.. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. The requested real armor type determines its construction. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor--bracers",
+      "parent": "adamantine-armor",
+      "family": "Adamantine Armor",
+      "model": "plate-armor",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of articulated adamantine plate forearm bracers with their integrated plated gauntlet gloves, empty inside with plausible finger joints. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories. End each forearm vambrace cleanly at a visible EMPTY OPEN WRIST CUFF. No glove, gauntlet, finger, thumb, knuckle or hand-shaped extension."
+    },
+    {
+      "id": "adamantine-armor--feet",
+      "parent": "adamantine-armor",
+      "family": "Adamantine Armor",
+      "model": "plate-armor",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of articulated adamantine plate sabatons and fitted boot guards, overlapping functional toe plates and refined angular beveled heel ridges; no legs. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor--head",
+      "parent": "adamantine-armor",
+      "family": "Adamantine Armor",
+      "model": "plate-armor",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one closed articulated adamantine plate helmet with a fitted visor, slim sculpted angular beveled brow and refined cheek plates; completely empty, no face or eyes. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor--legs",
+      "parent": "adamantine-armor",
+      "family": "Adamantine Armor",
+      "model": "plate-armor",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete empty pair of full-length articulated adamantine plate leg armor with thigh guards, knee joints and greaves joined by visible dark straps, full coverage to both ankles; no boots or feet. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor--shoulders",
+      "parent": "adamantine-armor",
+      "family": "Adamantine Armor",
+      "model": "plate-armor",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of detached articulated adamantine plate pauldrons with layered curved plates and structural angular beveled ridges. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-breastplate",
+      "parent": "adamantine-armor-breastplate",
+      "family": "Adamantine Armor",
+      "model": "breastplate",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw ONE empty standalone adamantine BREASTPLATE ONLY: a front-and-back chest cuirass ending at the natural waist, graceful sculpted blue-black angular beveled ribs and precise curved rolled edges, real side closures. Absolutely NO separate pauldrons, sleeves, hip skirt, leggings, helmet or full suit. It is one torso armor item.. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. The requested real armor type determines its construction. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-breastplate--bracers",
+      "parent": "adamantine-armor-breastplate",
+      "family": "Adamantine Armor",
+      "model": "breastplate",
+      "slot": "bracers",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of fitted sculpted adamantine forearm bracers with narrow real dark straps; no hands. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories. End each forearm vambrace cleanly at a visible EMPTY OPEN WRIST CUFF. No glove, gauntlet, finger, thumb, knuckle or hand-shaped extension."
+    },
+    {
+      "id": "adamantine-armor-breastplate--feet",
+      "parent": "adamantine-armor-breastplate",
+      "family": "Adamantine Armor",
+      "model": "breastplate",
+      "slot": "feet",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of refined articulated adamantine protective boots with sculpted dark metal angular beveled trim and dark leather soles; no legs. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-breastplate--head",
+      "parent": "adamantine-armor-breastplate",
+      "family": "Adamantine Armor",
+      "model": "breastplate",
+      "slot": "head",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty open-face adamantine plate protective helmet with sculpted angular beveled brow and dark internal straps; no head. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-breastplate--legs",
+      "parent": "adamantine-armor-breastplate",
+      "family": "Adamantine Armor",
+      "model": "breastplate",
+      "slot": "legs",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty full-length pair of articulated adamantine protective leg armor, slim angular beveled plate ribs and dark flexible joints, coverage to both ankles; no feet. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-breastplate--shoulders",
+      "parent": "adamantine-armor-breastplate",
+      "family": "Adamantine Armor",
+      "model": "breastplate",
+      "slot": "shoulders",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of detached sculpted adamantine plate shoulder guards with curved structural dark metal ridges. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-chain-mail",
+      "parent": "adamantine-armor-chain-mail",
+      "family": "Adamantine Armor",
+      "model": "chain-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw ONE empty knee-length chainmail hauberk, long sleeves, densely woven SMALL interlocking blue-black adamantine wire links, finely tailored waist and split skirt, slim forged angular beveled-shaped edge frames and substantial riveted closures. True flexible woven metal, no plate breastpiece, no large sewn rings.. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. The requested real armor type determines its construction. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-chain-mail--bracers",
+      "parent": "adamantine-armor-chain-mail",
+      "family": "Adamantine Armor",
+      "model": "chain-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw a matched pair of fitted chainmail forearm sleeves with slim adamantine wrist rims and real charcoal straps; no hands. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories. End each forearm vambrace cleanly at a visible EMPTY OPEN WRIST CUFF. No glove, gauntlet, finger, thumb, knuckle or hand-shaped extension."
+    },
+    {
+      "id": "adamantine-armor-chain-mail--feet",
+      "parent": "adamantine-armor-chain-mail",
+      "family": "Adamantine Armor",
+      "model": "chain-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of chainmail-covered leather shoes with sculpted narrow adamantine toe edges and flexible linked insteps; no legs. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-chain-mail--head",
+      "parent": "adamantine-armor-chain-mail",
+      "family": "Adamantine Armor",
+      "model": "chain-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw a long-neck chainmail coif with open face and shaped shoulder-length mesh skirt. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-chain-mail--legs",
+      "parent": "adamantine-armor-chain-mail",
+      "family": "Adamantine Armor",
+      "model": "chain-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty full-length pair of fitted chainmail protective trousers, small linked mesh continuous to both ankles, articulated knees and leather waistband; no feet. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-chain-mail--shoulders",
+      "parent": "adamantine-armor-chain-mail",
+      "family": "Adamantine Armor",
+      "model": "chain-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw a matched left/right pair of detached flexible chainmail shoulder mantles with narrow forged edge frames. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-chain-shirt",
+      "parent": "adamantine-armor-chain-shirt",
+      "family": "Adamantine Armor",
+      "model": "chain-shirt",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw ONE empty SHORT-sleeved hip-length refined adamantine chain shirt, very fine physically linked dark metal mesh, discreet scooped lower hem, a small shaped collar and slim forged angular beveled edge closures. Supple and light, visibly shorter and simpler than a long-sleeved knee-length hauberk; no coat tails or plate chest.. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. The requested real armor type determines its construction. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-chain-shirt--bracers",
+      "parent": "adamantine-armor-chain-shirt",
+      "family": "Adamantine Armor",
+      "model": "chain-shirt",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of light fine-mesh forearm guards with fitted charcoal straps and narrow angular beveled wrist frames; no hands. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories. End each forearm vambrace cleanly at a visible EMPTY OPEN WRIST CUFF. No glove, gauntlet, finger, thumb, knuckle or hand-shaped extension."
+    },
+    {
+      "id": "adamantine-armor-chain-shirt--feet",
+      "parent": "adamantine-armor-chain-shirt",
+      "family": "Adamantine Armor",
+      "model": "chain-shirt",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of low protective dark leather shoes with light fine-chain uppers and substantial sculpted adamantine trim; no legs. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-chain-shirt--head",
+      "parent": "adamantine-armor-chain-shirt",
+      "family": "Adamantine Armor",
+      "model": "chain-shirt",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one compact open-face fine adamantine mesh coif with a short neat neck edge, not a long shoulder mantle. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-chain-shirt--legs",
+      "parent": "adamantine-armor-chain-shirt",
+      "family": "Adamantine Armor",
+      "model": "chain-shirt",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty full-length pair of light fine-chain protective trousers with precise fitted tailoring and uninterrupted mesh to both ankles; no feet. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-chain-shirt--shoulders",
+      "parent": "adamantine-armor-chain-shirt",
+      "family": "Adamantine Armor",
+      "model": "chain-shirt",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of small flexible fine-mesh shoulder caps with slim forged dark metal edges. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-half-plate-armor",
+      "parent": "adamantine-armor-half-plate-armor",
+      "family": "Adamantine Armor",
+      "model": "half-plate-armor",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw ONE empty adamantine HALF-PLATE torso harness, sculpted blue-black adamantine chest and back plates with integrated short shoulder protectors and an articulated SHORT hip tasset over visible charcoal flexible leather at the joints. Clearly partial plate coverage, one integrated armor item, not a complete suit. Structural angular beveled ribs and slim precise riveted joins. NO leggings, boots, helmet, hands or other detached armor pieces.. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. The requested real armor type determines its construction. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-half-plate-armor--bracers",
+      "parent": "adamantine-armor-half-plate-armor",
+      "family": "Adamantine Armor",
+      "model": "half-plate-armor",
+      "slot": "bracers",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of protective half-plate forearm bracers with visible leather joint gaps and substantial sculpted adamantine frames; no hands. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories. End each forearm vambrace cleanly at a visible EMPTY OPEN WRIST CUFF. No glove, gauntlet, finger, thumb, knuckle or hand-shaped extension."
+    },
+    {
+      "id": "adamantine-armor-half-plate-armor--feet",
+      "parent": "adamantine-armor-half-plate-armor",
+      "family": "Adamantine Armor",
+      "model": "half-plate-armor",
+      "slot": "feet",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of fitted leather boots with partial articulated adamantine toe and heel plates, substantial angular beveled ribs and flexible visible leather gaps; no legs. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-half-plate-armor--head",
+      "parent": "adamantine-armor-half-plate-armor",
+      "family": "Adamantine Armor",
+      "model": "half-plate-armor",
+      "slot": "head",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty compact open-face adamantine protective half-helm with sculpted dark metal brow and discreet leather straps; no head. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-half-plate-armor--legs",
+      "parent": "adamantine-armor-half-plate-armor",
+      "family": "Adamantine Armor",
+      "model": "half-plate-armor",
+      "slot": "legs",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty full-length pair of protective half-plate trousers, partial articulated adamantine thigh/knee/shin guards over continuous charcoal leather to both ankles; no feet. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-half-plate-armor--shoulders",
+      "parent": "adamantine-armor-half-plate-armor",
+      "family": "Adamantine Armor",
+      "model": "half-plate-armor",
+      "slot": "shoulders",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of compact detached half-plate shoulder guards, thin sculpted adamantine layers and visible flexible charcoal leather joins. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-ring-mail",
+      "parent": "adamantine-armor-ring-mail",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw ONE empty hip-length ring-mail armor coat, thick fitted charcoal quilted leather/cloth with individually SEWN large blue-black adamantine rings. Rings have visible round metal thickness, riveted seam anchors and dimensional overlap, each mounted on the padded foundation, NOT fine woven chainmail. Modest curved dark metal edging and real substantial closures.. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. The requested real armor type determines its construction. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-ring-mail--bracers",
+      "parent": "adamantine-armor-ring-mail",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of fitted ring-mail forearm guards, individually sewn dark metal rings on dark padded foundations, real narrow straps; no hands. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories. End each forearm vambrace cleanly at a visible EMPTY OPEN WRIST CUFF. No glove, gauntlet, finger, thumb, knuckle or hand-shaped extension."
+    },
+    {
+      "id": "adamantine-armor-ring-mail--feet",
+      "parent": "adamantine-armor-ring-mail",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of protective soft dark leather ankle boots with individually sewn dark metal adamantine rings across the padded uppers, flexible leather soles and slim dark metal trim; no legs. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-ring-mail--head",
+      "parent": "adamantine-armor-ring-mail",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one open-face fitted padded protective cap with individually sewn large adamantine rings, curved dark metal brow trim and a short neck flap; no human head. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-ring-mail--legs",
+      "parent": "adamantine-armor-ring-mail",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty full-length pair of ring-mail protective trousers with large adamantine rings individually sewn over continuous charcoal quilted cloth to both ankles; no feet. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-ring-mail--shoulders",
+      "parent": "adamantine-armor-ring-mail",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of padded shoulder guards carrying large individually sewn adamantine rings and curved dark metal edge trim. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-scale-mail",
+      "parent": "adamantine-armor-scale-mail",
+      "family": "Adamantine Armor",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw ONE empty adamantine scale-mail torso coat, many physically overlapping thin dark metal METAL scales riveted onto charcoal leather, shaped in elegant elongated angular beveled-tipped tiers that follow the chest and articulated hip panels. Scales are separate forged plates with visible edges and gaps, not printed fish illustrations; no chainmail or plain solid cuirass.. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. The requested real armor type determines its construction. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-scale-mail--bracers",
+      "parent": "adamantine-armor-scale-mail",
+      "family": "Adamantine Armor",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of fitted forearm guards made from overlapping adamantine scales with real charcoal straps; no hands. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories. End each forearm vambrace cleanly at a visible EMPTY OPEN WRIST CUFF. No glove, gauntlet, finger, thumb, knuckle or hand-shaped extension."
+    },
+    {
+      "id": "adamantine-armor-scale-mail--feet",
+      "parent": "adamantine-armor-scale-mail",
+      "family": "Adamantine Armor",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of dark leather protective boots covered in small overlapping adamantine scales, articulated insteps and sculpted dark metal toe edges; no legs. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-scale-mail--head",
+      "parent": "adamantine-armor-scale-mail",
+      "family": "Adamantine Armor",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one open-face helmet built from overlapping thin adamantine scales on a dark flexible foundation, sculpted dark metal brow rim; no human face. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-scale-mail--legs",
+      "parent": "adamantine-armor-scale-mail",
+      "family": "Adamantine Armor",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty full-length pair of protective trousers covered with articulated overlapping adamantine metal scales, visible flexible knee joins and full coverage to both ankles; no feet. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-scale-mail--shoulders",
+      "parent": "adamantine-armor-scale-mail",
+      "family": "Adamantine Armor",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of detached shoulder guards made from multiple articulated overlapping adamantine scale tiers. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-splint-armor",
+      "parent": "adamantine-armor-splint-armor",
+      "family": "Adamantine Armor",
+      "model": "splint-armor",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw ONE empty splint-armor torso and hip harness built from narrow long VERTICAL blue-black adamantine splints riveted and strapped over fitted charcoal leather. Splints follow the rib cage with real spacing and articulated waist joins; substantial angular beveled-shaped dark metal connector frames, restrained real buckles. Clearly vertical-strip construction, not chainmail, scales or a solid plate breastpiece.. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. The requested real armor type determines its construction. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-splint-armor--bracers",
+      "parent": "adamantine-armor-splint-armor",
+      "family": "Adamantine Armor",
+      "model": "splint-armor",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of forearm bracers made of narrow vertical adamantine splints riveted to charcoal leather, real buckles; no hands. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories. End each forearm vambrace cleanly at a visible EMPTY OPEN WRIST CUFF. No glove, gauntlet, finger, thumb, knuckle or hand-shaped extension."
+    },
+    {
+      "id": "adamantine-armor-splint-armor--feet",
+      "parent": "adamantine-armor-splint-armor",
+      "family": "Adamantine Armor",
+      "model": "splint-armor",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of fitted charcoal leather boots reinforced by narrow articulated adamantine splints along shin and instep, slim sculpted dark metal toe frames; no legs. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-splint-armor--head",
+      "parent": "adamantine-armor-splint-armor",
+      "family": "Adamantine Armor",
+      "model": "splint-armor",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one open-face helmet constructed from narrow vertical adamantine splints joined over a fitted dark leather skull cap, slim sculpted brow rim; no human head. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-splint-armor--legs",
+      "parent": "adamantine-armor-splint-armor",
+      "family": "Adamantine Armor",
+      "model": "splint-armor",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty full-length pair of protective leather trousers reinforced by narrow vertical adamantine splints with articulated knee gaps and continuous coverage to both ankles; no feet. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-armor-splint-armor--shoulders",
+      "parent": "adamantine-armor-splint-armor",
+      "family": "Adamantine Armor",
+      "model": "splint-armor",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of detached protective shoulder guards made from narrow articulated adamantine splints on fitted dark leather. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-spiked-armor",
+      "parent": "adamantine-spiked-armor",
+      "family": "Adamantine Armor",
+      "model": "spiked-armor",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty fitted spiked armor coat with real dark forged conical spikes rooted in substantial reinforced shoulder and chest plates over protective charcoal leather; no leggings or boots. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. The requested real armor type determines its construction. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-spiked-armor--bracers",
+      "parent": "adamantine-spiked-armor",
+      "family": "Adamantine Armor",
+      "model": "spiked-armor",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched pair of detached forearm bracers, no hands built from protective charcoal leather with substantial dark forged reinforcing plates and actual conical spikes located away from flexible joints. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories. End each forearm vambrace cleanly at a visible EMPTY OPEN WRIST CUFF. No glove, gauntlet, finger, thumb, knuckle or hand-shaped extension."
+    },
+    {
+      "id": "adamantine-spiked-armor--feet",
+      "parent": "adamantine-spiked-armor",
+      "family": "Adamantine Armor",
+      "model": "spiked-armor",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched left/right pair of protective boots or sabatons with functional soles, no legs built from protective charcoal leather with substantial dark forged reinforcing plates and actual conical spikes located away from flexible joints. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-spiked-armor--head",
+      "parent": "adamantine-spiked-armor",
+      "family": "Adamantine Armor",
+      "model": "spiked-armor",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty open-face protective helmet or coif built from protective charcoal leather with substantial dark forged reinforcing plates and actual conical spikes located away from flexible joints. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-spiked-armor--legs",
+      "parent": "adamantine-spiked-armor",
+      "family": "Adamantine Armor",
+      "model": "spiked-armor",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one empty full-length pair of protective leg armor with continuous coverage to both ankles, no feet built from protective charcoal leather with substantial dark forged reinforcing plates and actual conical spikes located away from flexible joints. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-spiked-armor--shoulders",
+      "parent": "adamantine-spiked-armor",
+      "family": "Adamantine Armor",
+      "model": "spiked-armor",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one matched left/right pair of detached shoulder guards built from protective charcoal leather with substantial dark forged reinforcing plates and actual conical spikes located away from flexible joints. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Match the exact parent model material and construction in the reference, adapted to this separate piece; do not copy a torso silhouette. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-arrow",
+      "parent": "adamantine-arrow",
+      "family": "Adamantine Weapon",
+      "model": "arrows-20",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete wooden arrow with feather fletching and a compact forged adamantine broadhead; show the entire straight shaft. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-battleaxe",
+      "parent": "adamantine-battleaxe",
+      "family": "Adamantine Weapon",
+      "model": "battleaxe",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one battleaxe, single broad cutting axehead on a medium one-hand wooden haft with room for a second hand. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-bolt",
+      "parent": "adamantine-bolt",
+      "family": "Adamantine Weapon",
+      "model": "bolts-20",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one short complete crossbow bolt with fletching and a thick compact adamantine point; show the whole straight shaft. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-club",
+      "parent": "adamantine-club",
+      "family": "Adamantine Weapon",
+      "model": "club",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one short stout single-hand wooden club with a weighted striking head; no cutting edge. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-dagger",
+      "parent": "adamantine-dagger",
+      "family": "Adamantine Weapon",
+      "model": "dagger",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one small double-edged dagger with short pointed blade and compact one-hand grip. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-energy-cell",
+      "parent": "adamantine-energy-cell",
+      "family": "Adamantine Weapon",
+      "model": "energy-cell",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one compact sealed energy ammunition cell with dark adamantine protective casing, beveled corners, copper terminals and a small recessed blue indicator; no weapon or cables. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-firearm-bullet",
+      "parent": "adamantine-firearm-bullet",
+      "family": "Adamantine Weapon",
+      "model": "firearm-bullet",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete compact firearm cartridge with a brass casing, forged dark adamantine projectile and a readable crimped joint, no gun. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-flail",
+      "parent": "adamantine-flail",
+      "family": "Adamantine Weapon",
+      "model": "flail",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one flail with one straight short handle, a real articulated metal chain and one heavy attached striking ball; all components visibly connected. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-glaive",
+      "parent": "adamantine-glaive",
+      "family": "Adamantine Weapon",
+      "model": "glaive",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete long polearm glaive, tall straight wooden shaft carrying ONE long curved cutting blade at its upper end, reinforced socket and counterweight at lower end; not a sword or axe. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-greataxe",
+      "parent": "adamantine-greataxe",
+      "family": "Adamantine Weapon",
+      "model": "greataxe",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one massive two-handed greataxe with broad heavy axehead and long two-hand haft. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-greatclub",
+      "parent": "adamantine-greatclub",
+      "family": "Adamantine Weapon",
+      "model": "greatclub",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one large two-handed wooden greatclub, long thick handle widening into a massive rounded striking head. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-greatsword",
+      "parent": "adamantine-greatsword",
+      "family": "Adamantine Weapon",
+      "model": "greatsword",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one very long straight double-edged two-handed greatsword, broad balanced blade, long two-hand grip and robust crossguard; visibly larger and heavier than a longsword. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-halberd",
+      "parent": "adamantine-halberd",
+      "family": "Adamantine Weapon",
+      "model": "halberd",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete long halberd, straight pole with a broad axe blade, opposing hook and upper spear point on the same socket. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-handaxe",
+      "parent": "adamantine-handaxe",
+      "family": "Adamantine Weapon",
+      "model": "handaxe",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one small single-hand throwing axe with short straight haft and compact cutting head. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-javelin",
+      "parent": "adamantine-javelin",
+      "family": "Adamantine Weapon",
+      "model": "javelin",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete light throwing javelin with long slim straight shaft and a small narrow spearhead. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-lance",
+      "parent": "adamantine-lance",
+      "family": "Adamantine Weapon",
+      "model": "lance",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete long cavalry lance with a strongly tapered straight shaft, narrow piercing tip and protective handguard near the grip. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-light-hammer",
+      "parent": "adamantine-light-hammer",
+      "family": "Adamantine Weapon",
+      "model": "light-hammer",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one small one-hand throwing hammer with compact metal head and short wooden haft. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-longsword",
+      "parent": "adamantine-longsword",
+      "family": "Adamantine Weapon",
+      "model": "longsword",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one straight double-edged longsword, medium long straight blade, practical crossguard, hand-and-a-half grip and pommel. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-mace",
+      "parent": "adamantine-mace",
+      "family": "Adamantine Weapon",
+      "model": "mace",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one single-hand flanged mace with short haft and a solid radial flanged metal striking head. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-maul",
+      "parent": "adamantine-maul",
+      "family": "Adamantine Weapon",
+      "model": "maul",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one large two-handed maul with long reinforced handle and massive blunt hammerhead. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-morningstar",
+      "parent": "adamantine-morningstar",
+      "family": "Adamantine Weapon",
+      "model": "morningstar",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one rigid single-hand morningstar mace with a fixed spiked round metal head, no chain. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-needle",
+      "parent": "adamantine-needle",
+      "family": "Adamantine Weapon",
+      "model": "blowgun-needles-50",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one fine blowgun dart with a narrow adamantine needle point and a short fiber tuft at the back, no syringe. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-pike",
+      "parent": "adamantine-pike",
+      "family": "Adamantine Weapon",
+      "model": "pike",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete extra-long straight pike with a small narrow spearhead at its top and simple lower ferrule. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-quarterstaff",
+      "parent": "adamantine-quarterstaff",
+      "family": "Adamantine Weapon",
+      "model": "quarterstaff",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete straight two-handed quarterstaff, a stout hardwood pole with reinforced blunt ends, no blade. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-rapier",
+      "parent": "adamantine-rapier",
+      "family": "Adamantine Weapon",
+      "model": "rapier",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one slender straight thrusting rapier, long narrow pointed blade, single-hand grip and complex protective basket/swept hilt; never a wide cutting blade. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-scimitar",
+      "parent": "adamantine-scimitar",
+      "family": "Adamantine Weapon",
+      "model": "scimitar",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one single-edged curved scimitar, one swept cutting blade, single-hand grip and protective curved guard. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-shortsword",
+      "parent": "adamantine-shortsword",
+      "family": "Adamantine Weapon",
+      "model": "shortsword",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one compact straight double-edged shortsword, short broad blade, small crossguard and single-hand grip; not a longsword. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-sickle",
+      "parent": "adamantine-sickle",
+      "family": "Adamantine Weapon",
+      "model": "sickle",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one one-hand sickle with a short grip and sharply curved crescent cutting blade. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-sling-bullet",
+      "parent": "adamantine-sling-bullet",
+      "family": "Adamantine Weapon",
+      "model": "sling-bullets-20",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one small dense ovoid forged adamantine sling bullet with a functional equatorial seam and two subtly faceted poles, no firearm casing. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-spear",
+      "parent": "adamantine-spear",
+      "family": "Adamantine Weapon",
+      "model": "spear",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete straight spear with medium-long wooden shaft and a symmetrical pointed spearhead. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-trident",
+      "parent": "adamantine-trident",
+      "family": "Adamantine Weapon",
+      "model": "trident",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one complete long trident with straight shaft and exactly THREE connected sharpened prongs. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-war-pick",
+      "parent": "adamantine-war-pick",
+      "family": "Adamantine Weapon",
+      "model": "war-pick",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one war pick with a straight one-hand haft and a long piercing pick opposed by a small hammer face. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-warhammer",
+      "parent": "adamantine-warhammer",
+      "family": "Adamantine Weapon",
+      "model": "warhammer",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one warhammer with a straight reinforced haft and a compact blunt hammerhead opposed by a short spike. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    },
+    {
+      "id": "adamantine-whip",
+      "parent": "adamantine-whip",
+      "family": "Adamantine Weapon",
+      "model": "whip",
+      "slot": "weapon",
+      "prompt": "Use case: stylized-concept. NEW native thematic inventory model. Draw one single long flexible whip, real segmented or braided leather lash attached to one grip, curved naturally in a loose S without knots. ADAMANTINE craft: extremely dense blue-black forged metal with broad angular bevels, stepped octagonal sockets, substantial squared reinforcing bars, crisp machined-looking forged facets and tightly pinned rectangular joints. Restrained warm-grey edge highlights reveal volume; no glowing effects or ornament printed on the surface. Functional charcoal leather grips and dark walnut shafts remain their real material. No delicate silver crescent frames: this family has its own powerful geometric construction. Keep every shaft and handle straight, joined components aligned and the requested weapon anatomy unmistakable. Semirealistic painted medieval fantasy RPG inventory illustration, finely crafted dimensional object, soft upper-left studio light, three-quarter view, centered and fully visible with generous transparent margin. TRUE TRANSPARENT ALPHA background. No person, skin, mannequin, bust, stand, floor, cast shadow, fog, scenery, border, labels, lettering or watermark. No pasted textures, surface pattern coatings or simple recolors. Theme must exist in the silhouette, construction, seams, articulation and real hardware. Only the requested item or matching pair, no extra accessories."
+    }
+  ]
+}

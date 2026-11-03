@@ -2,11 +2,11 @@
   "policy_version": 1,
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
-    "physical_artworks": 4162,
-    "approved_artworks": 60,
-    "pending_artworks": 4102,
-    "catalog_references": 4317,
-    "approved_references": 60
+    "physical_artworks": 4171,
+    "approved_artworks": 181,
+    "pending_artworks": 3990,
+    "catalog_references": 4326,
+    "approved_references": 181
   },
   "family_coverage": [
     {
@@ -6047,7 +6047,7 @@
     },
     {
       "family": "Cape of the Mountebank",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "cape-of-the-mountebank",
@@ -6056,8 +6056,10 @@
           "artwork_ids": [
             "cape-of-the-mountebank"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cape-of-the-mountebank"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -6358,7 +6360,7 @@
     },
     {
       "family": "Cloak of Arachnida",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "cloak-of-arachnida",
@@ -6367,14 +6369,16 @@
           "artwork_ids": [
             "cloak-of-arachnida"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cloak-of-arachnida"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Cloak of Elvenkind",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "cloak-of-elvenkind",
@@ -6383,14 +6387,16 @@
           "artwork_ids": [
             "cloak-of-elvenkind"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cloak-of-elvenkind"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Cloak of Invisibility",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "cloak-of-invisibility",
@@ -6399,14 +6405,16 @@
           "artwork_ids": [
             "cloak-of-invisibility"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cloak-of-invisibility"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Cloak of the Bat",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "cloak-of-the-bat",
@@ -6415,14 +6423,16 @@
           "artwork_ids": [
             "cloak-of-the-bat"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cloak-of-the-bat"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Cloak of the Manta Ray",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "cloak-of-the-manta-ray",
@@ -6431,8 +6441,10 @@
           "artwork_ids": [
             "cloak-of-the-manta-ray"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cloak-of-the-manta-ray"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -7116,7 +7128,7 @@
     },
     {
       "family": "Dancing Sword",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "dancing-double-bladed-scimitar",
@@ -7125,8 +7137,10 @@
           "artwork_ids": [
             "dancing-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dancing-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "dancing-sword",
@@ -7135,8 +7149,10 @@
           "artwork_ids": [
             "dancing-sword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dancing-sword"
+          ],
+          "status": "approved"
         },
         {
           "id": "dancing-sword-greatsword",
@@ -7145,8 +7161,10 @@
           "artwork_ids": [
             "dancing-sword-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dancing-sword-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "dancing-sword-rapier",
@@ -7155,8 +7173,10 @@
           "artwork_ids": [
             "dancing-sword-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dancing-sword-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "dancing-sword-scimitar",
@@ -7165,8 +7185,10 @@
           "artwork_ids": [
             "dancing-sword-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dancing-sword-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "dancing-sword-shortsword",
@@ -7175,8 +7197,10 @@
           "artwork_ids": [
             "dancing-sword-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dancing-sword-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -16061,7 +16085,7 @@
     },
     {
       "family": "Flame Tongue",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "flame-tongue",
@@ -16070,8 +16094,10 @@
           "artwork_ids": [
             "flame-tongue"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-battleaxe",
@@ -16080,8 +16106,10 @@
           "artwork_ids": [
             "flame-tongue-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-club",
@@ -16090,8 +16118,10 @@
           "artwork_ids": [
             "flame-tongue-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-dagger",
@@ -16100,8 +16130,10 @@
           "artwork_ids": [
             "flame-tongue-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-double-bladed-scimitar",
@@ -16110,8 +16142,10 @@
           "artwork_ids": [
             "flame-tongue-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-flail",
@@ -16120,8 +16154,10 @@
           "artwork_ids": [
             "flame-tongue-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-glaive",
@@ -16130,8 +16166,10 @@
           "artwork_ids": [
             "flame-tongue-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-greataxe",
@@ -16140,8 +16178,10 @@
           "artwork_ids": [
             "flame-tongue-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-greatclub",
@@ -16150,8 +16190,10 @@
           "artwork_ids": [
             "flame-tongue-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-greatsword",
@@ -16160,8 +16202,10 @@
           "artwork_ids": [
             "flame-tongue-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-halberd",
@@ -16170,8 +16214,10 @@
           "artwork_ids": [
             "flame-tongue-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-handaxe",
@@ -16180,8 +16226,10 @@
           "artwork_ids": [
             "flame-tongue-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-javelin",
@@ -16190,8 +16238,10 @@
           "artwork_ids": [
             "flame-tongue-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-lance",
@@ -16200,8 +16250,10 @@
           "artwork_ids": [
             "flame-tongue-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-light-hammer",
@@ -16210,8 +16262,10 @@
           "artwork_ids": [
             "flame-tongue-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-mace",
@@ -16220,8 +16274,10 @@
           "artwork_ids": [
             "flame-tongue-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-maul",
@@ -16230,8 +16286,10 @@
           "artwork_ids": [
             "flame-tongue-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-morningstar",
@@ -16240,8 +16298,10 @@
           "artwork_ids": [
             "flame-tongue-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-pike",
@@ -16250,8 +16310,10 @@
           "artwork_ids": [
             "flame-tongue-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-quarterstaff",
@@ -16260,8 +16322,10 @@
           "artwork_ids": [
             "flame-tongue-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-rapier",
@@ -16270,8 +16334,10 @@
           "artwork_ids": [
             "flame-tongue-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-scimitar",
@@ -16280,8 +16346,10 @@
           "artwork_ids": [
             "flame-tongue-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-shortsword",
@@ -16290,8 +16358,10 @@
           "artwork_ids": [
             "flame-tongue-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-sickle",
@@ -16300,8 +16370,10 @@
           "artwork_ids": [
             "flame-tongue-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-spear",
@@ -16310,8 +16382,10 @@
           "artwork_ids": [
             "flame-tongue-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-trident",
@@ -16320,8 +16394,10 @@
           "artwork_ids": [
             "flame-tongue-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-war-pick",
@@ -16330,8 +16406,10 @@
           "artwork_ids": [
             "flame-tongue-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-warhammer",
@@ -16340,8 +16418,10 @@
           "artwork_ids": [
             "flame-tongue-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "flame-tongue-whip",
@@ -16350,8 +16430,10 @@
           "artwork_ids": [
             "flame-tongue-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flame-tongue-whip"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -16555,7 +16637,7 @@
     },
     {
       "family": "Frost Brand",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "frost-brand",
@@ -16564,8 +16646,10 @@
           "artwork_ids": [
             "frost-brand"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "frost-brand"
+          ],
+          "status": "approved"
         },
         {
           "id": "frost-brand-double-bladed-scimitar",
@@ -16574,8 +16658,10 @@
           "artwork_ids": [
             "frost-brand-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "frost-brand-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "frost-brand-glaive",
@@ -16584,8 +16670,10 @@
           "artwork_ids": [
             "frost-brand-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "frost-brand-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "frost-brand-greatsword",
@@ -16594,8 +16682,10 @@
           "artwork_ids": [
             "frost-brand-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "frost-brand-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "frost-brand-rapier",
@@ -16604,8 +16694,10 @@
           "artwork_ids": [
             "frost-brand-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "frost-brand-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "frost-brand-scimitar",
@@ -16614,8 +16706,10 @@
           "artwork_ids": [
             "frost-brand-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "frost-brand-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "frost-brand-shortsword",
@@ -16624,8 +16718,10 @@
           "artwork_ids": [
             "frost-brand-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "frost-brand-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -20013,7 +20109,7 @@
     },
     {
       "family": "Mantle of Spell Resistance",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "mantle-of-spell-resistance",
@@ -20022,8 +20118,10 @@
           "artwork_ids": [
             "mantle-of-spell-resistance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mantle-of-spell-resistance"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -20123,7 +20221,7 @@
     },
     {
       "family": "Mariner's Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "mariner-s-breastplate",
@@ -20137,8 +20235,15 @@
             "mariner-s-breastplate--legs",
             "mariner-s-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-breastplate",
+            "mariner-s-breastplate--head",
+            "mariner-s-breastplate--shoulders",
+            "mariner-s-breastplate--bracers",
+            "mariner-s-breastplate--legs",
+            "mariner-s-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mariner-s-chain-mail",
@@ -20152,8 +20257,15 @@
             "mariner-s-chain-mail--legs",
             "mariner-s-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-chain-mail",
+            "mariner-s-chain-mail--head",
+            "mariner-s-chain-mail--shoulders",
+            "mariner-s-chain-mail--bracers",
+            "mariner-s-chain-mail--legs",
+            "mariner-s-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mariner-s-chain-shirt",
@@ -20167,8 +20279,15 @@
             "mariner-s-chain-shirt--legs",
             "mariner-s-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-chain-shirt",
+            "mariner-s-chain-shirt--head",
+            "mariner-s-chain-shirt--shoulders",
+            "mariner-s-chain-shirt--bracers",
+            "mariner-s-chain-shirt--legs",
+            "mariner-s-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mariner-s-half-plate-armor",
@@ -20182,8 +20301,15 @@
             "mariner-s-half-plate-armor--legs",
             "mariner-s-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-half-plate-armor",
+            "mariner-s-half-plate-armor--head",
+            "mariner-s-half-plate-armor--shoulders",
+            "mariner-s-half-plate-armor--bracers",
+            "mariner-s-half-plate-armor--legs",
+            "mariner-s-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mariner-s-hide-armor",
@@ -20197,8 +20323,15 @@
             "mariner-s-hide-armor--legs",
             "mariner-s-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-hide-armor",
+            "mariner-s-hide-armor--head",
+            "mariner-s-hide-armor--shoulders",
+            "mariner-s-hide-armor--bracers",
+            "mariner-s-hide-armor--legs",
+            "mariner-s-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mariner-s-leather-armor",
@@ -20212,8 +20345,15 @@
             "mariner-s-leather-armor--legs",
             "mariner-s-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-leather-armor",
+            "mariner-s-leather-armor--head",
+            "mariner-s-leather-armor--shoulders",
+            "mariner-s-leather-armor--bracers",
+            "mariner-s-leather-armor--legs",
+            "mariner-s-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mariner-s-padded-armor",
@@ -20249,8 +20389,15 @@
             "mariner-s-plate-armor--legs",
             "mariner-s-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-plate-armor",
+            "mariner-s-plate-armor--head",
+            "mariner-s-plate-armor--shoulders",
+            "mariner-s-plate-armor--bracers",
+            "mariner-s-plate-armor--legs",
+            "mariner-s-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mariner-s-ring-mail",
@@ -20264,8 +20411,15 @@
             "mariner-s-ring-mail--legs",
             "mariner-s-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-ring-mail",
+            "mariner-s-ring-mail--head",
+            "mariner-s-ring-mail--shoulders",
+            "mariner-s-ring-mail--bracers",
+            "mariner-s-ring-mail--legs",
+            "mariner-s-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mariner-s-scale-mail",
@@ -20279,8 +20433,15 @@
             "mariner-s-scale-mail--legs",
             "mariner-s-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-scale-mail",
+            "mariner-s-scale-mail--head",
+            "mariner-s-scale-mail--shoulders",
+            "mariner-s-scale-mail--bracers",
+            "mariner-s-scale-mail--legs",
+            "mariner-s-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mariner-s-spiked-armor",
@@ -20294,8 +20455,15 @@
             "mariner-s-spiked-armor--legs",
             "mariner-s-spiked-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-spiked-armor",
+            "mariner-s-spiked-armor--head",
+            "mariner-s-spiked-armor--shoulders",
+            "mariner-s-spiked-armor--bracers",
+            "mariner-s-spiked-armor--legs",
+            "mariner-s-spiked-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mariner-s-splint-armor",
@@ -20309,8 +20477,15 @@
             "mariner-s-splint-armor--legs",
             "mariner-s-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-splint-armor",
+            "mariner-s-splint-armor--head",
+            "mariner-s-splint-armor--shoulders",
+            "mariner-s-splint-armor--bracers",
+            "mariner-s-splint-armor--legs",
+            "mariner-s-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mariner-s-studded-leather-armor",
@@ -20324,8 +20499,15 @@
             "mariner-s-studded-leather-armor--legs",
             "mariner-s-studded-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mariner-s-studded-leather-armor",
+            "mariner-s-studded-leather-armor--head",
+            "mariner-s-studded-leather-armor--shoulders",
+            "mariner-s-studded-leather-armor--bracers",
+            "mariner-s-studded-leather-armor--legs",
+            "mariner-s-studded-leather-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -53237,6 +53419,23 @@
       "completed_consumers": []
     },
     {
+      "id": "3af5c365cb5dc8fa",
+      "legacy_path": "/shop/expanded/cape-of-the-mountebank.webp",
+      "family": "Cape of the Mountebank",
+      "model": "cape-of-the-mountebank",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "cape-of-the-mountebank",
+          "name": "Capa do saltimbanco"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "cape-of-the-mountebank"
+      ]
+    },
+    {
       "id": "a3cb2c58726f0369",
       "legacy_path": "/shop/magic-completion-20261009/cast-off-breastplate.svg",
       "family": "Cast-Off Armor",
@@ -54407,6 +54606,91 @@
       "completed_consumers": []
     },
     {
+      "id": "7031acfbc62613ba",
+      "legacy_path": "/shop/expanded/cloak-of-arachnida.webp",
+      "family": "Cloak of Arachnida",
+      "model": "cloak-of-arachnida",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "cloak-of-arachnida",
+          "name": "Manto da aranha"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "cloak-of-arachnida"
+      ]
+    },
+    {
+      "id": "ac53fbd6b88236c9",
+      "legacy_path": "/shop/expanded/cloak-of-elvenkind.webp",
+      "family": "Cloak of Elvenkind",
+      "model": "cloak-of-elvenkind",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "cloak-of-elvenkind",
+          "name": "Manto élfico"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "cloak-of-elvenkind"
+      ]
+    },
+    {
+      "id": "bf6a6c009d878507",
+      "legacy_path": "/shop/expanded/cloak-of-invisibility.webp",
+      "family": "Cloak of Invisibility",
+      "model": "cloak-of-invisibility",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "cloak-of-invisibility",
+          "name": "Manto da invisibilidade"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "cloak-of-invisibility"
+      ]
+    },
+    {
+      "id": "fefb44892b047fcc",
+      "legacy_path": "/shop/expanded/cloak-of-the-bat.webp",
+      "family": "Cloak of the Bat",
+      "model": "cloak-of-the-bat",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "cloak-of-the-bat",
+          "name": "Manto do morcego"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "cloak-of-the-bat"
+      ]
+    },
+    {
+      "id": "a92a34e95490528f",
+      "legacy_path": "/shop/expanded/cloak-of-the-manta-ray.webp",
+      "family": "Cloak of the Manta Ray",
+      "model": "cloak-of-the-manta-ray",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "cloak-of-the-manta-ray",
+          "name": "Manto da arraia"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "cloak-of-the-manta-ray"
+      ]
+    },
+    {
       "id": "447961cd4987f0a0",
       "legacy_path": "/shop/magic-completion-20261009/corpse-slayer-antimatter-rifle.svg",
       "family": "Corpse Slayer",
@@ -55273,8 +55557,10 @@
           "name": "Espada dançarina (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dancing-double-bladed-scimitar"
+      ]
     },
     {
       "id": "86cc931250db6b3d",
@@ -55288,8 +55574,10 @@
           "name": "Espada dançarina (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dancing-sword-greatsword"
+      ]
     },
     {
       "id": "251d3cf6e505fda7",
@@ -55303,8 +55591,10 @@
           "name": "Espada dançarina (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dancing-sword"
+      ]
     },
     {
       "id": "f3fd5572fac90d67",
@@ -55318,8 +55608,10 @@
           "name": "Espada dançarina (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dancing-sword-rapier"
+      ]
     },
     {
       "id": "08072b3fcd6f3064",
@@ -55333,8 +55625,10 @@
           "name": "Espada dançarina (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dancing-sword-scimitar"
+      ]
     },
     {
       "id": "13b4c6393d86ab2c",
@@ -55348,8 +55642,10 @@
           "name": "Espada dançarina (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dancing-sword-shortsword"
+      ]
     },
     {
       "id": "1e92e31e852572cc",
@@ -70168,8 +70464,10 @@
           "name": "Língua flamejante (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-battleaxe"
+      ]
     },
     {
       "id": "4b227f9eb6db45c8",
@@ -70183,8 +70481,10 @@
           "name": "Língua flamejante (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-club"
+      ]
     },
     {
       "id": "6afffc7dbdef6159",
@@ -70198,8 +70498,10 @@
           "name": "Língua flamejante (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-dagger"
+      ]
     },
     {
       "id": "bd4040258a5ca551",
@@ -70213,8 +70515,10 @@
           "name": "Língua flamejante (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-double-bladed-scimitar"
+      ]
     },
     {
       "id": "2b7e11320fbfb021",
@@ -70228,8 +70532,10 @@
           "name": "Língua flamejante (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-flail"
+      ]
     },
     {
       "id": "432f4b8c797622de",
@@ -70243,8 +70549,10 @@
           "name": "Língua flamejante (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-glaive"
+      ]
     },
     {
       "id": "23146886d1bb0667",
@@ -70258,8 +70566,10 @@
           "name": "Língua flamejante (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-greataxe"
+      ]
     },
     {
       "id": "d2879e6d8c6b50aa",
@@ -70273,8 +70583,10 @@
           "name": "Língua flamejante (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-greatclub"
+      ]
     },
     {
       "id": "a7f20db725f27c11",
@@ -70288,8 +70600,10 @@
           "name": "Língua flamejante (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-greatsword"
+      ]
     },
     {
       "id": "26651943589bd2c5",
@@ -70303,8 +70617,10 @@
           "name": "Língua flamejante (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-halberd"
+      ]
     },
     {
       "id": "482b4ae3ebe0b490",
@@ -70318,8 +70634,10 @@
           "name": "Língua flamejante (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-handaxe"
+      ]
     },
     {
       "id": "6211a917773396e9",
@@ -70333,8 +70651,10 @@
           "name": "Língua flamejante (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-javelin"
+      ]
     },
     {
       "id": "7cb1ed0028ca6469",
@@ -70348,8 +70668,10 @@
           "name": "Língua flamejante (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-lance"
+      ]
     },
     {
       "id": "013a167fd2c32e72",
@@ -70363,8 +70685,27 @@
           "name": "Língua flamejante (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-light-hammer"
+      ]
+    },
+    {
+      "id": "826bb116b821fcac",
+      "legacy_path": "/shop/expanded/flame-tongue.webp",
+      "family": "Flame Tongue",
+      "model": "longsword",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "flame-tongue",
+          "name": "Língua flamejante (Espada longa)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue"
+      ]
     },
     {
       "id": "6aa23aecbc249d02",
@@ -70378,8 +70719,10 @@
           "name": "Língua flamejante (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-mace"
+      ]
     },
     {
       "id": "4031b9d7ba0bc953",
@@ -70393,8 +70736,10 @@
           "name": "Língua flamejante (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-maul"
+      ]
     },
     {
       "id": "59dddaee59186888",
@@ -70408,8 +70753,10 @@
           "name": "Língua flamejante (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-morningstar"
+      ]
     },
     {
       "id": "452c71db4470a5b4",
@@ -70423,8 +70770,10 @@
           "name": "Língua flamejante (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-pike"
+      ]
     },
     {
       "id": "e2224b9685836d89",
@@ -70438,8 +70787,10 @@
           "name": "Língua flamejante (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-quarterstaff"
+      ]
     },
     {
       "id": "a8fa53252a8f0b20",
@@ -70453,8 +70804,10 @@
           "name": "Língua flamejante (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-rapier"
+      ]
     },
     {
       "id": "91cf8aef480c48aa",
@@ -70468,8 +70821,10 @@
           "name": "Língua flamejante (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-scimitar"
+      ]
     },
     {
       "id": "703877010fdd5684",
@@ -70483,8 +70838,10 @@
           "name": "Língua flamejante (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-shortsword"
+      ]
     },
     {
       "id": "8756ac325b3300c0",
@@ -70498,8 +70855,10 @@
           "name": "Língua flamejante (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-sickle"
+      ]
     },
     {
       "id": "c2b1392e35cf0d7a",
@@ -70513,8 +70872,10 @@
           "name": "Língua flamejante (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-spear"
+      ]
     },
     {
       "id": "ec81687c811ed89b",
@@ -70528,8 +70889,10 @@
           "name": "Língua flamejante (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-trident"
+      ]
     },
     {
       "id": "1b361bf6c1744028",
@@ -70543,8 +70906,10 @@
           "name": "Língua flamejante (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-war-pick"
+      ]
     },
     {
       "id": "ed404cc58cacf4d3",
@@ -70558,8 +70923,10 @@
           "name": "Língua flamejante (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-warhammer"
+      ]
     },
     {
       "id": "cf32e5ba3793ef41",
@@ -70573,8 +70940,10 @@
           "name": "Língua flamejante (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flame-tongue-whip"
+      ]
     },
     {
       "id": "f226028ff9941aaf",
@@ -70843,8 +71212,10 @@
           "name": "Marca de gelo (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "frost-brand-double-bladed-scimitar"
+      ]
     },
     {
       "id": "e66292f44d695d45",
@@ -70858,8 +71229,10 @@
           "name": "Marca de gelo (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "frost-brand-glaive"
+      ]
     },
     {
       "id": "b694d706b1e1a4d2",
@@ -70873,8 +71246,27 @@
           "name": "Marca de gelo (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "frost-brand-greatsword"
+      ]
+    },
+    {
+      "id": "750f3b6741dfb743",
+      "legacy_path": "/shop/expanded/frost-brand.webp",
+      "family": "Frost Brand",
+      "model": "longsword",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "frost-brand",
+          "name": "Marca de gelo (Espada longa)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "frost-brand"
+      ]
     },
     {
       "id": "888df3adac3b8001",
@@ -70888,8 +71280,10 @@
           "name": "Marca de gelo (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "frost-brand-rapier"
+      ]
     },
     {
       "id": "175d384cb890122d",
@@ -70903,8 +71297,10 @@
           "name": "Marca de gelo (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "frost-brand-scimitar"
+      ]
     },
     {
       "id": "369ac55b811c6087",
@@ -70918,8 +71314,10 @@
           "name": "Marca de gelo (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "frost-brand-shortsword"
+      ]
     },
     {
       "id": "e8a5014898bf46be",
@@ -77252,6 +77650,23 @@
       "completed_consumers": []
     },
     {
+      "id": "88ea83d9b1bdc784",
+      "legacy_path": "/shop/expanded/mantle-of-spell-resistance.webp",
+      "family": "Mantle of Spell Resistance",
+      "model": "mantle-of-spell-resistance",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "mantle-of-spell-resistance",
+          "name": "Manto de resistência à magia"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "mantle-of-spell-resistance"
+      ]
+    },
+    {
       "id": "dafc06fb158eecb5",
       "legacy_path": "/shop/magic-completion-20261009/mariner-s-breastplate.svg",
       "family": "Mariner's Armor",
@@ -77263,8 +77678,10 @@
           "name": "Armadura do marinheiro (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-breastplate"
+      ]
     },
     {
       "id": "ecd213753b6a769e",
@@ -77278,8 +77695,10 @@
           "name": "Armadura do marinheiro (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-breastplate--bracers"
+      ]
     },
     {
       "id": "6733b78fc42701be",
@@ -77293,8 +77712,10 @@
           "name": "Armadura do marinheiro (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-breastplate--feet"
+      ]
     },
     {
       "id": "f2be08c020761e1d",
@@ -77308,8 +77729,10 @@
           "name": "Armadura do marinheiro (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-breastplate--head"
+      ]
     },
     {
       "id": "b402d91c39073449",
@@ -77323,8 +77746,10 @@
           "name": "Armadura do marinheiro (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-breastplate--legs"
+      ]
     },
     {
       "id": "bb303b836de9aa58",
@@ -77338,8 +77763,10 @@
           "name": "Armadura do marinheiro (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-breastplate--shoulders"
+      ]
     },
     {
       "id": "083df8738a26f877",
@@ -77353,8 +77780,10 @@
           "name": "Armadura do marinheiro (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-mail"
+      ]
     },
     {
       "id": "48d5b69c51e7d985",
@@ -77368,8 +77797,10 @@
           "name": "Armadura do marinheiro (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-mail--bracers"
+      ]
     },
     {
       "id": "35a58967d125ff58",
@@ -77383,8 +77814,10 @@
           "name": "Armadura do marinheiro (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-mail--feet"
+      ]
     },
     {
       "id": "a4b8cad28c85a19d",
@@ -77398,8 +77831,10 @@
           "name": "Armadura do marinheiro (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-mail--head"
+      ]
     },
     {
       "id": "fb45ea9fdf042032",
@@ -77413,8 +77848,10 @@
           "name": "Armadura do marinheiro (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-mail--legs"
+      ]
     },
     {
       "id": "8c04b529c5b71a06",
@@ -77428,8 +77865,10 @@
           "name": "Armadura do marinheiro (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-mail--shoulders"
+      ]
     },
     {
       "id": "0110504a858214ee",
@@ -77443,8 +77882,10 @@
           "name": "Armadura do marinheiro (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-shirt"
+      ]
     },
     {
       "id": "106ede76f8695fe6",
@@ -77458,8 +77899,10 @@
           "name": "Armadura do marinheiro (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-shirt--bracers"
+      ]
     },
     {
       "id": "868f269b05be7fc6",
@@ -77473,8 +77916,10 @@
           "name": "Armadura do marinheiro (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-shirt--feet"
+      ]
     },
     {
       "id": "bb2f80e6c0f413f5",
@@ -77488,8 +77933,10 @@
           "name": "Armadura do marinheiro (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-shirt--head"
+      ]
     },
     {
       "id": "61631d25d373b23c",
@@ -77503,8 +77950,10 @@
           "name": "Armadura do marinheiro (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-shirt--legs"
+      ]
     },
     {
       "id": "81d0cd40cfaaee57",
@@ -77518,8 +77967,10 @@
           "name": "Armadura do marinheiro (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "0366a53858b55435",
@@ -77533,8 +77984,10 @@
           "name": "Armadura do marinheiro (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-half-plate-armor"
+      ]
     },
     {
       "id": "59a4b8a4f17c65ad",
@@ -77548,8 +78001,10 @@
           "name": "Armadura do marinheiro (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "3012115fddc1b2bb",
@@ -77563,8 +78018,10 @@
           "name": "Armadura do marinheiro (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-half-plate-armor--feet"
+      ]
     },
     {
       "id": "2a76cc3a79a82120",
@@ -77578,8 +78035,10 @@
           "name": "Armadura do marinheiro (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-half-plate-armor--head"
+      ]
     },
     {
       "id": "ffc3660fc7281732",
@@ -77593,8 +78052,10 @@
           "name": "Armadura do marinheiro (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-half-plate-armor--legs"
+      ]
     },
     {
       "id": "a9fc2b33001cab8e",
@@ -77608,8 +78069,10 @@
           "name": "Armadura do marinheiro (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "4c038a8d5d5e15d7",
@@ -77623,8 +78086,10 @@
           "name": "Armadura do marinheiro (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-hide-armor"
+      ]
     },
     {
       "id": "37ee52a559df3e6f",
@@ -77638,8 +78103,10 @@
           "name": "Armadura do marinheiro (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-hide-armor--bracers"
+      ]
     },
     {
       "id": "88f8b4b916fae707",
@@ -77653,8 +78120,10 @@
           "name": "Armadura do marinheiro (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-hide-armor--feet"
+      ]
     },
     {
       "id": "ba4b8e8b04605f9b",
@@ -77668,8 +78137,10 @@
           "name": "Armadura do marinheiro (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-hide-armor--head"
+      ]
     },
     {
       "id": "ac0d612bfaff0df2",
@@ -77683,8 +78154,10 @@
           "name": "Armadura do marinheiro (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-hide-armor--legs"
+      ]
     },
     {
       "id": "0c3ffba6e1e139c6",
@@ -77698,8 +78171,10 @@
           "name": "Armadura do marinheiro (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-hide-armor--shoulders"
+      ]
     },
     {
       "id": "7d9badb7b4e35471",
@@ -77713,8 +78188,10 @@
           "name": "Armadura do marinheiro (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-leather-armor"
+      ]
     },
     {
       "id": "5cefb19df9108c2d",
@@ -77728,8 +78205,10 @@
           "name": "Armadura do marinheiro (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-leather-armor--bracers"
+      ]
     },
     {
       "id": "250dc6be6afc6eb2",
@@ -77743,8 +78222,10 @@
           "name": "Armadura do marinheiro (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-leather-armor--feet"
+      ]
     },
     {
       "id": "8b72e45eb849bccf",
@@ -77758,8 +78239,10 @@
           "name": "Armadura do marinheiro (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-leather-armor--head"
+      ]
     },
     {
       "id": "5061156bbe69219f",
@@ -77773,8 +78256,10 @@
           "name": "Armadura do marinheiro (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-leather-armor--legs"
+      ]
     },
     {
       "id": "90e7c3d6caaa824c",
@@ -77788,8 +78273,10 @@
           "name": "Armadura do marinheiro (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-leather-armor--shoulders"
+      ]
     },
     {
       "id": "b521d924a3c4a5c0",
@@ -77905,8 +78392,10 @@
           "name": "Armadura do marinheiro (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-plate-armor"
+      ]
     },
     {
       "id": "930313d0a33478a0",
@@ -77920,8 +78409,10 @@
           "name": "Armadura do marinheiro (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-plate-armor--bracers"
+      ]
     },
     {
       "id": "da360fb6505cabed",
@@ -77935,8 +78426,10 @@
           "name": "Armadura do marinheiro (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-plate-armor--feet"
+      ]
     },
     {
       "id": "e1839a5c793732ba",
@@ -77950,8 +78443,10 @@
           "name": "Armadura do marinheiro (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-plate-armor--head"
+      ]
     },
     {
       "id": "25189011573d7a27",
@@ -77965,8 +78460,10 @@
           "name": "Armadura do marinheiro (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-plate-armor--legs"
+      ]
     },
     {
       "id": "e2a81205e18871d8",
@@ -77980,8 +78477,10 @@
           "name": "Armadura do marinheiro (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-plate-armor--shoulders"
+      ]
     },
     {
       "id": "aa10820e1421d74e",
@@ -77995,8 +78494,10 @@
           "name": "Armadura do marinheiro (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-ring-mail"
+      ]
     },
     {
       "id": "27624c080022cb96",
@@ -78010,8 +78511,10 @@
           "name": "Armadura do marinheiro (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-ring-mail--bracers"
+      ]
     },
     {
       "id": "72067bf6cdd31d3c",
@@ -78025,8 +78528,10 @@
           "name": "Armadura do marinheiro (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-ring-mail--feet"
+      ]
     },
     {
       "id": "2b0428fb094d954b",
@@ -78040,8 +78545,10 @@
           "name": "Armadura do marinheiro (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-ring-mail--head"
+      ]
     },
     {
       "id": "c1d1426cca530b77",
@@ -78055,8 +78562,10 @@
           "name": "Armadura do marinheiro (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-ring-mail--legs"
+      ]
     },
     {
       "id": "9ae38ce996e5bf94",
@@ -78070,8 +78579,10 @@
           "name": "Armadura do marinheiro (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-ring-mail--shoulders"
+      ]
     },
     {
       "id": "e66a06d65af6cb74",
@@ -78085,8 +78596,10 @@
           "name": "Armadura do marinheiro (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-scale-mail"
+      ]
     },
     {
       "id": "fec5c655982ff8dd",
@@ -78100,8 +78613,10 @@
           "name": "Armadura do marinheiro (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-scale-mail--bracers"
+      ]
     },
     {
       "id": "a3e43b248f0548ce",
@@ -78115,8 +78630,10 @@
           "name": "Armadura do marinheiro (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-scale-mail--feet"
+      ]
     },
     {
       "id": "8621a0b5ca63a85f",
@@ -78130,8 +78647,10 @@
           "name": "Armadura do marinheiro (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-scale-mail--head"
+      ]
     },
     {
       "id": "24252ef8d5b1e253",
@@ -78145,8 +78664,10 @@
           "name": "Armadura do marinheiro (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-scale-mail--legs"
+      ]
     },
     {
       "id": "3348665acbb2b1f8",
@@ -78160,8 +78681,10 @@
           "name": "Armadura do marinheiro (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-scale-mail--shoulders"
+      ]
     },
     {
       "id": "0931dd5a2af82286",
@@ -78175,8 +78698,10 @@
           "name": "Armadura do marinheiro (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-spiked-armor"
+      ]
     },
     {
       "id": "e15a268f0bf65654",
@@ -78190,8 +78715,10 @@
           "name": "Armadura do marinheiro (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-spiked-armor--bracers"
+      ]
     },
     {
       "id": "f49aa7d58aab4f9f",
@@ -78205,8 +78732,10 @@
           "name": "Armadura do marinheiro (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-spiked-armor--feet"
+      ]
     },
     {
       "id": "553c6993d99d31b4",
@@ -78220,8 +78749,10 @@
           "name": "Armadura do marinheiro (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-spiked-armor--head"
+      ]
     },
     {
       "id": "b77b4f095d42d1ca",
@@ -78235,8 +78766,10 @@
           "name": "Armadura do marinheiro (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-spiked-armor--legs"
+      ]
     },
     {
       "id": "747ceda984c4f376",
@@ -78250,8 +78783,10 @@
           "name": "Armadura do marinheiro (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-spiked-armor--shoulders"
+      ]
     },
     {
       "id": "b5053e98bfaed853",
@@ -78265,8 +78800,10 @@
           "name": "Armadura do marinheiro (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-splint-armor"
+      ]
     },
     {
       "id": "22bf7efaf8133b5e",
@@ -78280,8 +78817,10 @@
           "name": "Armadura do marinheiro (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-splint-armor--bracers"
+      ]
     },
     {
       "id": "d1dc15433ed6d65d",
@@ -78295,8 +78834,10 @@
           "name": "Armadura do marinheiro (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-splint-armor--feet"
+      ]
     },
     {
       "id": "31a2a7a394cf96cd",
@@ -78310,8 +78851,10 @@
           "name": "Armadura do marinheiro (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-splint-armor--head"
+      ]
     },
     {
       "id": "fc7071e789968b6b",
@@ -78325,8 +78868,10 @@
           "name": "Armadura do marinheiro (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-splint-armor--legs"
+      ]
     },
     {
       "id": "ac85df66822f60fd",
@@ -78340,8 +78885,10 @@
           "name": "Armadura do marinheiro (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-splint-armor--shoulders"
+      ]
     },
     {
       "id": "e473dae8a29070ef",
@@ -78355,8 +78902,10 @@
           "name": "Armadura do marinheiro (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-studded-leather-armor"
+      ]
     },
     {
       "id": "f7560df6df0c2ce3",
@@ -78370,8 +78919,10 @@
           "name": "Armadura do marinheiro (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-studded-leather-armor--bracers"
+      ]
     },
     {
       "id": "3d5e05815cf08bb8",
@@ -78385,8 +78936,10 @@
           "name": "Armadura do marinheiro (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-studded-leather-armor--feet"
+      ]
     },
     {
       "id": "e9152e6f0cf4d87d",
@@ -78400,8 +78953,10 @@
           "name": "Armadura do marinheiro (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-studded-leather-armor--head"
+      ]
     },
     {
       "id": "d3e17e680eced029",
@@ -78415,8 +78970,10 @@
           "name": "Armadura do marinheiro (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-studded-leather-armor--legs"
+      ]
     },
     {
       "id": "febf010f775f500e",
@@ -78430,8 +78987,10 @@
           "name": "Armadura do marinheiro (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mariner-s-studded-leather-armor--shoulders"
+      ]
     },
     {
       "id": "14f697780dc263a7",

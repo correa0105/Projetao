@@ -43,21 +43,25 @@ test('geradores antigos recusam revestimentos antes de modificar arquivos', asyn
   assert.deepEqual(await Promise.all(tracked.map(async file => hash(await readFile(file)))),before);
 });
 
-test('família Mitral tem desenho aprovado para cada tipo do seletor e suas peças', async () => {
+test('famílias publicadas têm desenho aprovado para todos os modelos e peças', async () => {
   const files=['data/shop-export/loja.json','data/equipment-catalog.json','data/emporium-expansion.json','data/animal-equipment-catalog.json','data/shop-magic-completion-20261009/catalog.json'];
   const catalog=(await Promise.all(files.map(async file=>{const data=JSON.parse(await readFile(file,'utf8'));return Array.isArray(data)?data:data.items;}))).flat();
-  const mithral=catalog.filter(item=>item.raw_data?.magic_family==='Mithral Armor');
-  assert.equal(mithral.length,9);
   const approved=new Map(registry.assets.filter((asset:any)=>asset.review==='approved').map((asset:any)=>[asset.id,asset]));
-  for(const item of mithral){
-    assert(approved.has(item.id),item.id);
-    for(const slot of ['head','shoulders','bracers','legs','feet'] as const){
-      const id=item.id+'--'+slot;
-      assert(approved.has(id),id);
-      assert.equal(armorPieceImage(item.id,slot),thematicEquipmentImage(id));
+  for(const [family,count] of [['Mithral Armor',9],["Mariner's Armor",13],['Dancing Sword',6],['Frost Brand',7],['Flame Tongue',29]] as const){
+    const models=catalog.filter(item=>item.raw_data?.magic_family===family);
+    assert.equal(models.length,count,family);
+    for(const item of models){
+      assert(approved.has(item.id),item.id);
+      if(!armorBundle(item.id))continue;
+      for(const slot of ['head','shoulders','bracers','legs','feet'] as const){
+        const id=item.id+'--'+slot;
+        assert(approved.has(id),id);
+        assert.equal(armorPieceImage(item.id,slot),thematicEquipmentImage(id));
+      }
+      assert.equal(armorBundle(item.id)!.pieces.length,['breastplate','half-plate-armor'].includes(item.raw_data.base_item)?1:6);
     }
-    assert.equal(armorBundle(item.id)!.pieces.length,['breastplate','half-plate-armor'].includes(item.raw_data.base_item)?1:6);
   }
+  for(const id of ['cape-of-the-mountebank','cloak-of-arachnida','cloak-of-elvenkind','cloak-of-invisibility','cloak-of-the-bat','cloak-of-the-manta-ray','mantle-of-spell-resistance'])assert(approved.has(id),id);
 });
 
 test('seed troca somente referências de arte e preserva compras, bens, preços e replay', async () => {

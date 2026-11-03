@@ -41,6 +41,7 @@ Este arquivo contém apenas decisões vigentes e acordos permanentes. O pedido a
 - Novas artes usam poses de descanso naturais, com leve assimetria e apoio equilibrado. Evitar corpo frontal rígido com braços retos espelhados e pernas paralelas; sem torções ou gestos exagerados. Respeitar postura escolhida, mobilidade da armadura, mãos ocupadas e câmera superior do token.
 - Itens e peças de conjunto têm desenho temático próprio: silhueta, construção, recortes, materiais e ferragens coerentes com a família. Não gerar variantes colando estampas/texturas sobre o modelo comum. Substituir todo o acervo legado desse método em lotes, conforme autorização do proprietário; progresso em `docs/THEMATIC-EQUIPMENT-ART.md`. Preservar PNGs originais e publicar cópias WebP leves, proporcionais ao uso, com alfa e sem mudar regras/bens.
 - A cobertura da arte inclui **todos os modelos de cada seletor/família**, suas peças separadas e itens como armas e capas. Concluir só um modelo não conclui o conjunto/família; cada tipo mantém construção própria dentro do tema. Peitoral/meia armadura continuam compras de peça única; novas artes não recriam peças extras para compradores novos.
+- O pedido de substituir todos os conjuntos permanece ativo entre os lotes. Não limitar a execução ao mitral nem tratar uma publicação parcial como conclusão do pedido; a autorização já abrange as outras famílias, armas, capas e acessórios, sem pedir novamente para continuar.
 
 ## Produto e compatibilidade
 
