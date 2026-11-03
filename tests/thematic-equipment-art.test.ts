@@ -17,7 +17,7 @@ const hash = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex')
 const registry = JSON.parse(await readFile('data/thematic-equipment-art-20261102.json','utf8'));
 
 test('artes nativas e cópias leves conservam alfa, proporção, integridade e referências por peça', async () => {
-  assert.equal(registry.assets.length, 12);
+  assert(registry.assets.length >= 12);
   for (const asset of registry.assets) {
     const source = await readFile(asset.original), display = await readFile('public'+asset.path);
     assert.equal(hash(source), asset.original_sha256); assert.equal(hash(display), asset.sha256);
@@ -43,6 +43,23 @@ test('geradores antigos recusam revestimentos antes de modificar arquivos', asyn
   assert.deepEqual(await Promise.all(tracked.map(async file => hash(await readFile(file)))),before);
 });
 
+test('família Mitral tem desenho aprovado para cada tipo do seletor e suas peças', async () => {
+  const files=['data/shop-export/loja.json','data/equipment-catalog.json','data/emporium-expansion.json','data/animal-equipment-catalog.json','data/shop-magic-completion-20261009/catalog.json'];
+  const catalog=(await Promise.all(files.map(async file=>{const data=JSON.parse(await readFile(file,'utf8'));return Array.isArray(data)?data:data.items;}))).flat();
+  const mithral=catalog.filter(item=>item.raw_data?.magic_family==='Mithral Armor');
+  assert.equal(mithral.length,9);
+  const approved=new Map(registry.assets.filter((asset:any)=>asset.review==='approved').map((asset:any)=>[asset.id,asset]));
+  for(const item of mithral){
+    assert(approved.has(item.id),item.id);
+    for(const slot of ['head','shoulders','bracers','legs','feet'] as const){
+      const id=item.id+'--'+slot;
+      assert(approved.has(id),id);
+      assert.equal(armorPieceImage(item.id,slot),thematicEquipmentImage(id));
+    }
+    assert.equal(armorBundle(item.id)!.pieces.length,['breastplate','half-plate-armor'].includes(item.raw_data.base_item)?1:6);
+  }
+});
+
 test('seed troca somente referências de arte e preserva compras, bens, preços e replay', async () => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname,/^\/alvorada_test_[a-f0-9]{32}$/);
   try {
@@ -50,6 +67,14 @@ test('seed troca somente referências de arte e preserva compras, bens, preços 
     const user = randomUUID();
     await pool.query('INSERT INTO "user"(id,name,email) VALUES($1,$2,$3)',[user,'Arte temática',user+'@example.test']);
     const character = await createLegacyTestCharacter(user);
+    const legacy = registry.assets.filter((asset:any)=>asset.legacy_owned_piece);
+    for(const asset of legacy){
+      const split=asset.id.lastIndexOf('--'),parent=asset.id.slice(0,split),slot=asset.id.slice(split+2);
+      await pool.query(`INSERT INTO catalog_items(id,name,original_name,category,description,weight_lb,source,source_url,raw_data,active,image_path)
+        VALUES($1,$1,$1,'Peças de armadura','Peça legada preservada',1,'Conteúdo do projeto','',$2,false,$3) ON CONFLICT(id) DO NOTHING`,
+      [asset.id,{equipment_target:'human',armor_bundle_parent:parent,armor_bundle_model_image:'legacy-parent.png',piece_slot:slot,equipment_slots:[slot]},asset.legacy_path]);
+      await pool.query('INSERT INTO inventory(character_id,item_id,quantity) VALUES($1,$2,2) ON CONFLICT(character_id,item_id) DO UPDATE SET quantity=2',[character.id,asset.id]);
+    }
     await pool.query('UPDATE characters SET gold_cp=100000000 WHERE id=$1',[character.id]);
     const parentIds = ['mithral-spiked-armor','mariner-s-padded-armor'];
     await pool.query('INSERT INTO shop_price_overrides(item_id,price_cp) VALUES($1,123456) ON CONFLICT(item_id) DO UPDATE SET price_cp=excluded.price_cp',[parentIds[0]]);
@@ -63,7 +88,7 @@ test('seed troca somente referências de arte e preserva compras, bens, preços 
       grants:(await pool.query('SELECT g.* FROM purchase_item_grants g JOIN purchases p ON p.id=g.purchase_id WHERE p.character_id=$1 ORDER BY g.item_id',[character.id])).rows,
       overrides:(await pool.query('SELECT * FROM shop_price_overrides ORDER BY item_id')).rows,
     });
-    const before = await state(); assert.equal(before.inventory.length,12);
+    const before = await state(); assert.equal(before.inventory.length,12+legacy.length);
     const normalize = (row: any) => { const result=structuredClone(row);delete result.image_path;delete result.raw_data.armor_bundle_model_image;return result; };
     const catalogBefore = (await pool.query('SELECT * FROM catalog_items ORDER BY id')).rows.map(normalize);
     for (const asset of registry.assets) await pool.query('UPDATE catalog_items SET image_path=$2 WHERE id=$1',[asset.id,asset.legacy_path]);

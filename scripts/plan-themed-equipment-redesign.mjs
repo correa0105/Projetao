@@ -46,6 +46,23 @@ for (const job of list) {
 const stats = { physical_artworks: list.length, approved_artworks: list.filter(job => job.status === 'approved').length,
   pending_artworks: list.filter(job => job.status !== 'approved').length,
   catalog_references: list.reduce((n,job) => n + job.consumers.length,0), approved_references: approved.size };
+// Include every selector model, including older native artwork that was not a
+// coating. A family cannot be called complete just because one variant is done.
+const pieceImages = JSON.parse(await fs.readFile('shared/armor-piece-images.json','utf8'));
+const families = new Map();
+for (const item of items.values()) {
+  const family=item.raw_data?.magic_family;
+  if(!family)continue;
+  const ids=[item.id,...['head','shoulders','bracers','legs','feet'].filter(slot=>pieceImages[item.id+':'+slot]).map(slot=>item.id+'--'+slot)];
+  const models=families.get(family)||[];
+  models.push({id:item.id,name:item.name,model:item.raw_data?.base_item||item.id,
+    artwork_ids:ids,approved_artwork_ids:ids.filter(id=>approved.has(id)),
+    status:ids.every(id=>approved.has(id))?'approved':'pending'});
+  families.set(family,models);
+}
+const familyCoverage=[...families].sort(([a],[b])=>a.localeCompare(b)).map(([family,models])=>({family,
+  status:models.every(model=>model.status==='approved')?'approved':'pending',
+  models:models.sort((a,b)=>a.id.localeCompare(b.id))}));
 await fs.writeFile('data/thematic-equipment-redesign-plan-20261102.json', JSON.stringify({ policy_version:1,
-  scope:'Substituir todo o acervo antigo por desenhos temáticos nativos, em lotes completos de famílias.', stats, jobs:list },null,2)+'\n');
+  scope:'Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas; substituir revestimentos por desenhos temáticos nativos.', stats, family_coverage:familyCoverage, jobs:list },null,2)+'\n');
 console.log(JSON.stringify(stats));

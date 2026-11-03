@@ -21,30 +21,37 @@ const server=app.listen(3027,'127.0.0.1');await new Promise<void>(r=>server.once
 const browser=await chromium.launch({channel:'msedge',headless:true});
 const context=await browser.newContext({viewport:{width:1440,height:1000}});
 await context.addInitScript('window.__name=(fn)=>fn;');
-const page=await context.newPage(),root='.local/thematic-equipment-20261102';await mkdir(root,{recursive:true});
+const page=await context.newPage(),root='.local/mithral-family-20261103';await mkdir(root,{recursive:true});
 const errors:string[]=[],checks:string[]=[];page.on('pageerror',e=>errors.push(e.message));
 try {
  const signup=await context.request.post(origin+'/api/auth/sign-up/email',{headers:{Origin:origin},data:{name:'Artes temáticas',email:'thematic-'+randomUUID()+'@example.test',password:'Test-'+randomUUID()}});
  expect(signup.ok()).toBe(true);await createLegacyTestCharacter((await signup.json()).user.id,'Liora');
  const registry=JSON.parse(await readFile('data/thematic-equipment-art-20261102.json','utf8'));
+ const mithral=(await pool.query("SELECT id,name,image_path,raw_data->>'base_item' AS model FROM catalog_items WHERE active AND raw_data->>'magic_family'='Mithral Armor' ORDER BY id")).rows;
+ expect(mithral.length).toBe(9);
+ const samples=[...mithral.map(item=>[item.id,'Mithral Armor','Armadura de mitral',item.model,item.image_path]),['mariner-s-padded-armor',"Mariner's Armor",'Armadura do marinheiro','padded-armor','/shop/thematic-equipment-20261102/mariner-s-padded-armor.webp']];
  for(const asset of registry.assets){const response=await context.request.get(origin+asset.path);expect(response.ok()).toBe(true);expect(response.headers()['content-type']).toContain('image/webp');}
  for(const width of [1440,390]){
   await page.setViewportSize({width,height:1000});await page.goto(origin+'/#shop');
   const search=page.getByRole('textbox',{name:'Procurar item'});await expect(search).toBeVisible();
   await page.getByRole('navigation',{name:'Categorias da loja'}).getByRole('button',{name:/^Todos\b/}).click();
-  for(const [id,family,query,model] of [['mithral-spiked-armor','Mithral Armor','Armadura de mitral','spiked-armor'],['mariner-s-padded-armor',"Mariner's Armor",'Armadura do marinheiro','padded-armor']]){
+  for(const [id,family,query,model,imagePath] of samples){
    await search.fill(query);
    const card=page.locator('.shop-product[data-family="'+family+'"]');await expect(card).toBeVisible();
    await card.getByRole('combobox',{name:/^Tipo de armadura de/}).selectOption(model);
    await expect(card).toHaveAttribute('data-item-id',id);
    const img=card.locator('img.shop-family-object');
-   await expect(img).toHaveAttribute('src','/shop/thematic-equipment-20261102/'+id+'.webp');
+   await expect(img).toHaveAttribute('src',imagePath);
+   expect(imagePath).toMatch(/^\/shop\/thematic-equipment-20\d{6}\//);
    await img.evaluate(async el=>{await (el as HTMLImageElement).decode();});
-   await expect(card).toContainText('Conjunto completo com 6 peças');
+   if(['breastplate','half-plate-armor'].includes(model)){
+    await expect(card).toContainText('Peça única de armadura');
+    await expect(card).not.toContainText('Conjunto completo');
+   }else await expect(card).toContainText('Conjunto completo com 6 peças');
    await card.screenshot({path:root+'/'+id+'-'+width+'.png'});
   }
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
-  checks.push('Duas famílias com arte nova, seleção e seis peças preservadas em '+width+' px');
+  checks.push('Nove modelos de mitral e marinheiro: artes novas, seletores, peças únicas e conjuntos preservados em '+width+' px');
  }
  expect(errors).toEqual([]);
  await writeFile(root+'/result.json',JSON.stringify({passed:true,checks,errors,decodedArtworks:registry.assets.length},null,2));

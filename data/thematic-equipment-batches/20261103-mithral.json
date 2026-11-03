@@ -1,0 +1,439 @@
+{
+  "family": "Mithral Armor",
+  "version": "20261103",
+  "scope": "Todos os nove modelos, inclusive peças legadas já possuídas; peitoral e meia armadura continuam compras de peça única.",
+  "jobs": [
+    {
+      "id": "mithral-armor",
+      "parent": "mithral-armor",
+      "model": "plate-armor",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "reference_role": "family silver craftsmanship only, never spike motifs or leather construction",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw ONE empty refined full-plate torso cuirass with articulated hip fauld, forged from bright pale mithral. Elegant sculpted crescent ribs are physically raised and structural, curved layered edges and narrow riveted articulated joins, small charcoal leather straps visible only at real openings. Sleek light-looking metal plate craftsmanship, not bulky steel or printed filigree. Torso/hip armor only, no attached arms, legs, boots or head.. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. The reference defines only the quality and refined silver craftsmanship; the requested armor type determines ALL construction. Never copy its spike silhouette or leather coat. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor--head",
+      "parent": "mithral-armor",
+      "model": "plate-armor",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one closed articulated mithral plate helmet with a fitted visor, slim sculpted crescent brow and refined cheek plates; completely empty, no face or eyes. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact plate-armor parent reference in actual construction: smooth sculpted bright pale mithral plates, structural raised crescent ribs, narrow articulated layers and discreet charcoal leather straps. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor--shoulders",
+      "parent": "mithral-armor",
+      "model": "plate-armor",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of detached articulated mithral plate pauldrons with layered curved plates and structural crescent ridges. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact plate-armor parent reference in actual construction: smooth sculpted bright pale mithral plates, structural raised crescent ribs, narrow articulated layers and discreet charcoal leather straps. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor--bracers",
+      "parent": "mithral-armor",
+      "model": "plate-armor",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of articulated mithral plate forearm bracers with their integrated plated gauntlet gloves, empty inside with plausible finger joints. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact plate-armor parent reference in actual construction: smooth sculpted bright pale mithral plates, structural raised crescent ribs, narrow articulated layers and discreet charcoal leather straps. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor--legs",
+      "parent": "mithral-armor",
+      "model": "plate-armor",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one complete empty pair of full-length articulated mithral plate leg armor with thigh guards, knee joints and greaves joined by visible dark straps, full coverage to both ankles; no boots or feet. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact plate-armor parent reference in actual construction: smooth sculpted bright pale mithral plates, structural raised crescent ribs, narrow articulated layers and discreet charcoal leather straps. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor--feet",
+      "parent": "mithral-armor",
+      "model": "plate-armor",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of articulated mithral plate sabatons and fitted boot guards, overlapping functional toe plates and refined crescent heel ridges; no legs. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact plate-armor parent reference in actual construction: smooth sculpted bright pale mithral plates, structural raised crescent ribs, narrow articulated layers and discreet charcoal leather straps. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-shirt",
+      "parent": "mithral-armor-chain-shirt",
+      "model": "chain-shirt",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "reference_role": "family silver craftsmanship only, never spike motifs or leather construction",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw ONE empty SHORT-sleeved hip-length refined mithral chain shirt, very fine physically linked silver mesh, discreet scooped lower hem, a small shaped collar and slim forged crescent edge closures. Supple and light, visibly shorter and simpler than a long-sleeved knee-length hauberk; no coat tails or plate chest.. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. The reference defines only the quality and refined silver craftsmanship; the requested armor type determines ALL construction. Never copy its spike silhouette or leather coat. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-shirt--head",
+      "parent": "mithral-armor-chain-shirt",
+      "model": "chain-shirt",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one compact open-face fine mithral mesh coif with a short neat neck edge, not a long shoulder mantle. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact chain-shirt parent reference in actual construction: very fine small pale mithral interlocking mesh, discreet charcoal bindings and slender silver crescent edge frames. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-shirt--shoulders",
+      "parent": "mithral-armor-chain-shirt",
+      "model": "chain-shirt",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of small flexible fine-mesh shoulder caps with slim forged silver edges. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact chain-shirt parent reference in actual construction: very fine small pale mithral interlocking mesh, discreet charcoal bindings and slender silver crescent edge frames. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-shirt--bracers",
+      "parent": "mithral-armor-chain-shirt",
+      "model": "chain-shirt",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of light fine-mesh forearm guards with fitted charcoal straps and narrow crescent wrist frames; no hands. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact chain-shirt parent reference in actual construction: very fine small pale mithral interlocking mesh, discreet charcoal bindings and slender silver crescent edge frames. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-shirt--legs",
+      "parent": "mithral-armor-chain-shirt",
+      "model": "chain-shirt",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one empty full-length pair of light fine-chain protective trousers with precise fitted tailoring and uninterrupted mesh to both ankles; no feet. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact chain-shirt parent reference in actual construction: very fine small pale mithral interlocking mesh, discreet charcoal bindings and slender silver crescent edge frames. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-shirt--feet",
+      "parent": "mithral-armor-chain-shirt",
+      "model": "chain-shirt",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of low protective dark leather shoes with light fine-chain uppers and slender sculpted mithral trim; no legs. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact chain-shirt parent reference in actual construction: very fine small pale mithral interlocking mesh, discreet charcoal bindings and slender silver crescent edge frames. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-scale-mail",
+      "parent": "mithral-armor-scale-mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "reference_role": "family silver craftsmanship only, never spike motifs or leather construction",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw ONE empty mithral scale-mail torso coat, many physically overlapping thin SILVER METAL scales riveted onto charcoal leather, shaped in elegant elongated crescent-tipped tiers that follow the chest and articulated hip panels. Scales are separate forged plates with visible edges and gaps, not printed fish illustrations; no chainmail or plain solid cuirass.. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. The reference defines only the quality and refined silver craftsmanship; the requested armor type determines ALL construction. Never copy its spike silhouette or leather coat. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-scale-mail--head",
+      "parent": "mithral-armor-scale-mail",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one open-face helmet built from overlapping thin mithral scales on a dark flexible foundation, sculpted silver brow rim; no human face. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact scale-mail parent reference in actual construction: separate thin overlapping pale mithral metal scales, charcoal flexible leather foundations and sculpted crescent edges. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-scale-mail--shoulders",
+      "parent": "mithral-armor-scale-mail",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of detached shoulder guards made from multiple articulated overlapping mithral scale tiers. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact scale-mail parent reference in actual construction: separate thin overlapping pale mithral metal scales, charcoal flexible leather foundations and sculpted crescent edges. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-scale-mail--bracers",
+      "parent": "mithral-armor-scale-mail",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of fitted forearm guards made from overlapping mithral scales with real charcoal straps; no hands. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact scale-mail parent reference in actual construction: separate thin overlapping pale mithral metal scales, charcoal flexible leather foundations and sculpted crescent edges. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-scale-mail--legs",
+      "parent": "mithral-armor-scale-mail",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one empty full-length pair of protective trousers covered with articulated overlapping mithral metal scales, visible flexible knee joins and full coverage to both ankles; no feet. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact scale-mail parent reference in actual construction: separate thin overlapping pale mithral metal scales, charcoal flexible leather foundations and sculpted crescent edges. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-scale-mail--feet",
+      "parent": "mithral-armor-scale-mail",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of dark leather protective boots covered in small overlapping mithral scales, articulated insteps and sculpted silver toe edges; no legs. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact scale-mail parent reference in actual construction: separate thin overlapping pale mithral metal scales, charcoal flexible leather foundations and sculpted crescent edges. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-breastplate",
+      "parent": "mithral-armor-breastplate",
+      "model": "breastplate",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "reference_role": "family silver craftsmanship only, never spike motifs or leather construction",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw ONE empty standalone mithral BREASTPLATE ONLY: a front-and-back chest cuirass ending at the natural waist, graceful sculpted pale silver crescent ribs and precise curved rolled edges, real side closures. Absolutely NO separate pauldrons, sleeves, hip skirt, leggings, helmet or full suit. It is one torso armor item.. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. The reference defines only the quality and refined silver craftsmanship; the requested armor type determines ALL construction. Never copy its spike silhouette or leather coat. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-breastplate--head",
+      "parent": "mithral-armor-breastplate",
+      "model": "breastplate",
+      "slot": "head",
+      "legacy_owned_piece": true,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one empty open-face mithral plate protective helmet with sculpted crescent brow and dark internal straps; no head. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact breastplate parent reference in actual construction: smooth sculpted pale mithral metal, slender raised crescent ribs and discreet charcoal leather straps. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-breastplate--shoulders",
+      "parent": "mithral-armor-breastplate",
+      "model": "breastplate",
+      "slot": "shoulders",
+      "legacy_owned_piece": true,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of detached sculpted mithral plate shoulder guards with curved structural silver ridges. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact breastplate parent reference in actual construction: smooth sculpted pale mithral metal, slender raised crescent ribs and discreet charcoal leather straps. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-breastplate--bracers",
+      "parent": "mithral-armor-breastplate",
+      "model": "breastplate",
+      "slot": "bracers",
+      "legacy_owned_piece": true,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of fitted sculpted mithral forearm bracers with narrow real dark straps; no hands. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact breastplate parent reference in actual construction: smooth sculpted pale mithral metal, slender raised crescent ribs and discreet charcoal leather straps. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-breastplate--legs",
+      "parent": "mithral-armor-breastplate",
+      "model": "breastplate",
+      "slot": "legs",
+      "legacy_owned_piece": true,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one empty full-length pair of articulated mithral protective leg armor, slim crescent plate ribs and dark flexible joints, coverage to both ankles; no feet. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact breastplate parent reference in actual construction: smooth sculpted pale mithral metal, slender raised crescent ribs and discreet charcoal leather straps. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-breastplate--feet",
+      "parent": "mithral-armor-breastplate",
+      "model": "breastplate",
+      "slot": "feet",
+      "legacy_owned_piece": true,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of refined articulated mithral protective boots with sculpted silver crescent trim and dark leather soles; no legs. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact breastplate parent reference in actual construction: smooth sculpted pale mithral metal, slender raised crescent ribs and discreet charcoal leather straps. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-half-plate-armor",
+      "parent": "mithral-armor-half-plate-armor",
+      "model": "half-plate-armor",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "reference_role": "family silver craftsmanship only, never spike motifs or leather construction",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw ONE empty mithral HALF-PLATE torso harness, sculpted pale mithral chest and back plates with integrated short shoulder protectors and an articulated SHORT hip tasset over visible charcoal flexible leather at the joints. Clearly partial plate coverage, one integrated armor item, not a complete suit. Structural crescent ribs and slim precise riveted joins. NO leggings, boots, helmet, hands or other detached armor pieces.. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. The reference defines only the quality and refined silver craftsmanship; the requested armor type determines ALL construction. Never copy its spike silhouette or leather coat. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-half-plate-armor--head",
+      "parent": "mithral-armor-half-plate-armor",
+      "model": "half-plate-armor",
+      "slot": "head",
+      "legacy_owned_piece": true,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one empty compact open-face mithral protective half-helm with sculpted silver brow and discreet leather straps; no head. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact half-plate-armor parent reference in actual construction: partial sculpted pale mithral plates with visible charcoal flexible leather gaps, slender crescent ribs and precise articulated joins. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-half-plate-armor--shoulders",
+      "parent": "mithral-armor-half-plate-armor",
+      "model": "half-plate-armor",
+      "slot": "shoulders",
+      "legacy_owned_piece": true,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of compact detached half-plate shoulder guards, thin sculpted mithral layers and visible flexible charcoal leather joins. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact half-plate-armor parent reference in actual construction: partial sculpted pale mithral plates with visible charcoal flexible leather gaps, slender crescent ribs and precise articulated joins. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-half-plate-armor--bracers",
+      "parent": "mithral-armor-half-plate-armor",
+      "model": "half-plate-armor",
+      "slot": "bracers",
+      "legacy_owned_piece": true,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of protective half-plate forearm bracers with visible leather joint gaps and slender sculpted mithral frames; no hands. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact half-plate-armor parent reference in actual construction: partial sculpted pale mithral plates with visible charcoal flexible leather gaps, slender crescent ribs and precise articulated joins. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-half-plate-armor--legs",
+      "parent": "mithral-armor-half-plate-armor",
+      "model": "half-plate-armor",
+      "slot": "legs",
+      "legacy_owned_piece": true,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one empty full-length pair of protective half-plate trousers, partial articulated mithral thigh/knee/shin guards over continuous charcoal leather to both ankles; no feet. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact half-plate-armor parent reference in actual construction: partial sculpted pale mithral plates with visible charcoal flexible leather gaps, slender crescent ribs and precise articulated joins. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-half-plate-armor--feet",
+      "parent": "mithral-armor-half-plate-armor",
+      "model": "half-plate-armor",
+      "slot": "feet",
+      "legacy_owned_piece": true,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of fitted leather boots with partial articulated mithral toe and heel plates, slender crescent ribs and flexible visible leather gaps; no legs. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact half-plate-armor parent reference in actual construction: partial sculpted pale mithral plates with visible charcoal flexible leather gaps, slender crescent ribs and precise articulated joins. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-ring-mail",
+      "parent": "mithral-armor-ring-mail",
+      "model": "ring-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "reference_role": "family silver craftsmanship only, never spike motifs or leather construction",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw ONE empty hip-length ring-mail armor coat, thick fitted charcoal quilted leather/cloth with individually SEWN large pale mithral rings. Rings have visible round metal thickness, riveted seam anchors and dimensional overlap, each mounted on the padded foundation, NOT fine woven chainmail. Modest curved silver edging and real slender closures.. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. The reference defines only the quality and refined silver craftsmanship; the requested armor type determines ALL construction. Never copy its spike silhouette or leather coat. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-ring-mail--head",
+      "parent": "mithral-armor-ring-mail",
+      "model": "ring-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one open-face fitted padded protective cap with individually sewn large mithral rings, curved silver brow trim and a short neck flap; no human head. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact ring-mail parent reference in actual construction: large individually sewn pale silver mithral rings on charcoal padded leather/cloth, slim forged crescent trim. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-ring-mail--shoulders",
+      "parent": "mithral-armor-ring-mail",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of padded shoulder guards carrying large individually sewn mithral rings and curved silver edge trim. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact ring-mail parent reference in actual construction: large individually sewn pale silver mithral rings on charcoal padded leather/cloth, slim forged crescent trim. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-ring-mail--bracers",
+      "parent": "mithral-armor-ring-mail",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of fitted ring-mail forearm guards, individually sewn silver rings on dark padded foundations, real narrow straps; no hands. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact ring-mail parent reference in actual construction: large individually sewn pale silver mithral rings on charcoal padded leather/cloth, slim forged crescent trim. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-ring-mail--legs",
+      "parent": "mithral-armor-ring-mail",
+      "model": "ring-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one empty full-length pair of ring-mail protective trousers with large mithral rings individually sewn over continuous charcoal quilted cloth to both ankles; no feet. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact ring-mail parent reference in actual construction: large individually sewn pale silver mithral rings on charcoal padded leather/cloth, slim forged crescent trim. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-ring-mail--feet",
+      "parent": "mithral-armor-ring-mail",
+      "model": "ring-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of protective soft dark leather ankle boots with individually sewn silver mithral rings across the padded uppers, flexible leather soles and slim silver trim; no legs. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact ring-mail parent reference in actual construction: large individually sewn pale silver mithral rings on charcoal padded leather/cloth, slim forged crescent trim. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-mail",
+      "parent": "mithral-armor-chain-mail",
+      "model": "chain-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "reference_role": "family silver craftsmanship only, never spike motifs or leather construction",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw ONE empty knee-length chainmail hauberk, long sleeves, densely woven SMALL interlocking pale mithral wire links, finely tailored waist and split skirt, slim forged crescent-shaped edge frames and delicate riveted closures. True flexible woven metal, no plate breastpiece, no large sewn rings.. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. The reference defines only the quality and refined silver craftsmanship; the requested armor type determines ALL construction. Never copy its spike silhouette or leather coat. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-mail--head",
+      "parent": "mithral-armor-chain-mail",
+      "model": "chain-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw a long-neck chainmail coif with open face and shaped shoulder-length mesh skirt. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact chain-mail parent reference in actual construction: fine small interlocking pale silver mithral chain links, charcoal bindings and narrow forged crescent rims. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-mail--shoulders",
+      "parent": "mithral-armor-chain-mail",
+      "model": "chain-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw a matched left/right pair of detached flexible chainmail shoulder mantles with narrow forged edge frames. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact chain-mail parent reference in actual construction: fine small interlocking pale silver mithral chain links, charcoal bindings and narrow forged crescent rims. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-mail--bracers",
+      "parent": "mithral-armor-chain-mail",
+      "model": "chain-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw a matched pair of fitted chainmail forearm sleeves with slim mithral wrist rims and real charcoal straps; no hands. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact chain-mail parent reference in actual construction: fine small interlocking pale silver mithral chain links, charcoal bindings and narrow forged crescent rims. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-mail--legs",
+      "parent": "mithral-armor-chain-mail",
+      "model": "chain-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one empty full-length pair of fitted chainmail protective trousers, small linked mesh continuous to both ankles, articulated knees and leather waistband; no feet. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact chain-mail parent reference in actual construction: fine small interlocking pale silver mithral chain links, charcoal bindings and narrow forged crescent rims. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-chain-mail--feet",
+      "parent": "mithral-armor-chain-mail",
+      "model": "chain-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of chainmail-covered leather shoes with sculpted narrow mithral toe edges and flexible linked insteps; no legs. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact chain-mail parent reference in actual construction: fine small interlocking pale silver mithral chain links, charcoal bindings and narrow forged crescent rims. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-splint-armor",
+      "parent": "mithral-armor-splint-armor",
+      "model": "splint-armor",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "reference_role": "family silver craftsmanship only, never spike motifs or leather construction",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw ONE empty splint-armor torso and hip harness built from narrow long VERTICAL pale mithral splints riveted and strapped over fitted charcoal leather. Splints follow the rib cage with real spacing and articulated waist joins; slender crescent-shaped silver connector frames, restrained real buckles. Clearly vertical-strip construction, not chainmail, scales or a solid plate breastpiece.. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. The reference defines only the quality and refined silver craftsmanship; the requested armor type determines ALL construction. Never copy its spike silhouette or leather coat. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-splint-armor--head",
+      "parent": "mithral-armor-splint-armor",
+      "model": "splint-armor",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one open-face helmet constructed from narrow vertical mithral splints joined over a fitted dark leather skull cap, slim sculpted brow rim; no human head. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact splint-armor parent reference in actual construction: long narrow vertical pale mithral splints, charcoal leather foundations, slim silver crescent connectors and real rivets. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-splint-armor--shoulders",
+      "parent": "mithral-armor-splint-armor",
+      "model": "splint-armor",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of detached protective shoulder guards made from narrow articulated mithral splints on fitted dark leather. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact splint-armor parent reference in actual construction: long narrow vertical pale mithral splints, charcoal leather foundations, slim silver crescent connectors and real rivets. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-splint-armor--bracers",
+      "parent": "mithral-armor-splint-armor",
+      "model": "splint-armor",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of forearm bracers made of narrow vertical mithral splints riveted to charcoal leather, real buckles; no hands. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact splint-armor parent reference in actual construction: long narrow vertical pale mithral splints, charcoal leather foundations, slim silver crescent connectors and real rivets. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-splint-armor--legs",
+      "parent": "mithral-armor-splint-armor",
+      "model": "splint-armor",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one empty full-length pair of protective leather trousers reinforced by narrow vertical mithral splints with articulated knee gaps and continuous coverage to both ankles; no feet. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact splint-armor parent reference in actual construction: long narrow vertical pale mithral splints, charcoal leather foundations, slim silver crescent connectors and real rivets. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    },
+    {
+      "id": "mithral-armor-splint-armor--feet",
+      "parent": "mithral-armor-splint-armor",
+      "model": "splint-armor",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "reference_role": "exact parent model construction and family craftsmanship",
+      "prompt": "Use case: stylized-concept. NEW unique thematic MITHRAL inventory model. Draw one matched pair of fitted charcoal leather boots reinforced by narrow articulated mithral splints along shin and instep, slim sculpted silver toe frames; no legs. Pale cold-silver mithral, subtle blue metallic reflections, elegant physical crescent curves and slim refined forging, charcoal leather only at genuine foundations or straps. No gold, colored enamel, gemstones, ornamental picture prints, glowing wallpaper or spikes unless the requested physical model is spiked armor. This piece must match the exact splint-armor parent reference in actual construction: long narrow vertical pale mithral splints, charcoal leather foundations, slim silver crescent connectors and real rivets. Do not reuse the chest silhouette or paste its surface onto another object. Semirealistic finely painted medieval fantasy RPG inventory art. Three-quarter item view, soft upper-left light. Only the requested empty item or matched pair, centered and fully visible with margin. TRUE TRANSPARENT ALPHA background. No person, mannequin, skin, bust, stand, scenery, floor, cast shadow, fog, border, labels, lettering or watermark. Build theme into silhouette, seams, articulation, dimensional material and hardware; no recolor, texture coating, pasted ornament or generic material skin."
+    }
+  ]
+}

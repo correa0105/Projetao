@@ -8,6 +8,8 @@ import sharp from 'sharp';
 const sourceFile = process.argv.find(arg => arg.startsWith('--sources='))?.slice(10);
 assert(sourceFile, 'Use --sources=arquivo-privado.json com id, source e prompt de cada arte nativa.');
 const approve = process.argv.includes('--approve-reviewed');
+const version = process.argv.find(arg => arg.startsWith('--version='))?.slice(10) || '20261102';
+assert(/^20\d{6}$/.test(version), 'Use --version=AAAAMMDD.');
 const entries = JSON.parse(await fs.readFile(sourceFile, 'utf8'));
 const manifestPath = 'data/thematic-equipment-art-20261102.json';
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -28,8 +30,8 @@ for (const entry of entries) {
   assert.equal(metadata.format, 'png');
   assert(metadata.hasAlpha && !(await sharp(bytes).stats()).isOpaque, entry.id + ': transparency required');
   assert(metadata.width >= 512 && metadata.height >= 512, entry.id + ': source too small');
-  const original = `artwork-archive/thematic-equipment-20261102/${entry.id}.png`;
-  const output = `/shop/thematic-equipment-20261102/${entry.id}.webp`;
+  const original = `artwork-archive/thematic-equipment-${version}/${entry.id}.png`;
+  const output = `/shop/thematic-equipment-${version}/${entry.id}.webp`;
   await fs.mkdir(path.dirname(original), { recursive: true });
   await fs.mkdir(path.dirname('public' + output), { recursive: true });
   try { assert.equal(hash(await fs.readFile(original)), hash(bytes), 'Preserve the existing native original'); }
@@ -45,6 +47,7 @@ for (const entry of entries) {
     : oldPieces[entry.id.slice(0,split) + ':' + entry.id.slice(split+2)]);
   assert(legacyPath, 'Unknown catalog item or armor piece: ' + entry.id);
   const record = { id: entry.id, path: output, legacy_path: legacyPath, original, generator: 'image_gen.imagegen', prompt: entry.prompt,
+    ...(entry.legacy_owned_piece ? { legacy_owned_piece: true } : {}),
     review: approve ? 'approved' : 'pending', design_method: 'original thematic construction',
     original_sha256: hash(bytes), sha256: hash(optimized), original_bytes: bytes.length, bytes: optimized.length,
     original_width: metadata.width, original_height: metadata.height, width: display.width, height: display.height };

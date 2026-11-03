@@ -8,7 +8,7 @@ import { lockCatalogPrices } from './shop-prices.js';
 import { seedArmorPieces } from './armor-catalog.js';
 import { seedClothingPieces } from './clothing-catalog.js';
 import { applyEconomyPrices, applyEconomyRulebook } from './economy-prices.js';
-import { thematicEquipmentImage } from '../shared/thematic-equipment-art.js';
+import { thematicEquipmentImage, approvedThematicEquipmentImages } from '../shared/thematic-equipment-art.js';
 import {
   withdrawnWeaponModels,
   withdrawnWeaponOffer,
@@ -170,6 +170,18 @@ export async function seed() {
       await client.query('UPDATE armor_piece_backfills SET applied_at=now() WHERE id=$1', [row.id]);
     }
     await seedArmorPieces(client);
+    // Retired partial-armor accessories can still be owned. Update their art
+    // in place without recreating catalog rows, grants or inventory units.
+    const reviewedImages = approvedThematicEquipmentImages();
+    await client.query(`UPDATE catalog_items c SET image_path=a.value
+      FROM jsonb_each_text($1::jsonb) a
+      WHERE c.id=a.key AND c.image_path IS DISTINCT FROM a.value`, [reviewedImages]);
+    await client.query(`UPDATE catalog_items c
+      SET raw_data=jsonb_set(c.raw_data,'{armor_bundle_model_image}',to_jsonb(parent.image_path))
+      FROM catalog_items parent
+      WHERE parent.id=ANY($1::text[]) AND c.raw_data->>'armor_bundle_parent'=parent.id
+      AND c.raw_data ? 'armor_bundle_model_image'
+      AND c.raw_data->>'armor_bundle_model_image' IS DISTINCT FROM parent.image_path`, [Object.keys(reviewedImages)]);
     await seedClothingPieces(client);
     const entries = [
       [
