@@ -21,3 +21,7 @@ Publicar URLs novas e versionadas para preservar cache. Manter proporção, tran
 ## Continuidade
 
 A troca integral permanece em andamento até que não haja mais trabalhos pendentes no plano. Um lote concluído não representa conclusão do acervo inteiro. Atualizar o plano após importar/aprovar novas artes e registrar a publicação de cada lote com sua evidência privada.
+
+O primeiro lote está publicado: **mitral de espinhos e acolchoada do marinheiro**, seis peças de cada família, 12 artes nativas individuais. O mitral tem armações e espinhos forjados sobre couro; o marinheiro tem recortes e canais acolchoados em ondas, cordas e fechos de conchas. São 24.526.642 bytes de originais PNG preservados e 1.050.976 bytes nas cópias WebP, redução de 95,7%. Transparência e desenho conferidos sobre claro/escuro e na loja em 1440/390 px; três testes passaram, incluindo conservação de compras, inventário, preços administrativos e replay. A publicação manteve o ilustrador ativo e as referências antigas disponíveis. Evidências em `.local/thematic-equipment-20261102/result.json`; manifesto de prompts e originais em `data/thematic-equipment-art-20261102.json`.
+
+O levantamento deste lote registra **4.161 artes físicas**, que atendem 4.316 referências de catálogo/peças. Doze artes estão substituídas e **4.149 permanecem pendentes para os próximos lotes**. Priorizar famílias completas e compartilhar uma arte somente quando os consumidores representarem o mesmo desenho físico, respeitando as variantes e o modelo real.
