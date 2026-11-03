@@ -1,5 +1,7 @@
 // Extend the existing native material-skin library without rewriting old art.
 import fs from 'node:fs/promises';
+import { rejectLegacyEquipmentCoating } from './legacy-equipment-art-policy.mjs';
+rejectLegacyEquipmentCoating();
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import sharp from 'sharp';

@@ -1,0 +1,51 @@
+import fs from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+
+const catalogs = ['data/shop-export/loja.json', 'data/equipment-catalog.json', 'data/emporium-expansion.json', 'data/animal-equipment-catalog.json', 'data/shop-magic-completion-20261009/catalog.json'];
+const items = new Map();
+for (const file of catalogs) {
+  const data = JSON.parse(await fs.readFile(file, 'utf8'));
+  for (const item of Array.isArray(data) ? data : data.items) items.set(item.id, item);
+}
+const registry = JSON.parse(await fs.readFile('data/thematic-equipment-art-20261102.json', 'utf8'));
+const approved = new Map(registry.assets.filter(asset => asset.review === 'approved').map(asset => [asset.id, asset]));
+const recipes = new Set(JSON.parse(await fs.readFile('data/shop-magic-completion-20261009/variant-recipes.json','utf8')).map(recipe => recipe.id));
+const jobs = new Map(), checked = new Map();
+function add(id, legacyPath, slot, item) {
+  if (!legacyPath) return;
+  const key = legacyPath;
+  const job = jobs.get(key) || { id: createHash('sha256').update(key).digest('hex').slice(0,16), legacy_path: legacyPath,
+    family: item?.raw_data?.magic_family || 'Família a revisar', model: item?.raw_data?.base_item || item?.id,
+    slot, consumers: [], status: 'pending' };
+  if (!job.consumers.some(consumer => consumer.id === id)) job.consumers.push({ id, name: item?.name || id });
+  jobs.set(key, job);
+}
+for (const item of items.values()) {
+  const image = item.image_path;
+  let legacy = Boolean(item.raw_data?.magic_skin) || recipes.has(item.id);
+  if (!legacy && image?.endsWith('.svg')) {
+    if (!checked.has(image)) {
+      let source = ''; try { source = await fs.readFile('public' + image, 'utf8'); } catch(error) { if(error.code !== 'ENOENT') throw error; }
+      checked.set(image, source.includes('<mask') && (source.match(/<image\b/g)||[]).length >= 2);
+    }
+    legacy = checked.get(image);
+  }
+  if (legacy) add(item.id, image, item.raw_data?.equipment_slots?.[0] || 'item', item);
+}
+const pieces = JSON.parse(await fs.readFile('data/armor-piece-art-20261012.json','utf8')).variants;
+for (const piece of pieces) add(`${piece.id}--${piece.slot}`, piece.output.replace(/^public/,''), piece.slot, items.get(piece.id));
+for (const asset of approved.values()) {
+  if (![...jobs.values()].some(job => job.consumers.some(consumer => consumer.id === asset.id)))
+    add(asset.id, asset.legacy_path, asset.id.includes('--') ? asset.id.split('--').at(-1) : 'armor', items.get(asset.id));
+}
+const list = [...jobs.values()].sort((a,b) => a.family.localeCompare(b.family) || String(a.model).localeCompare(String(b.model)) || a.slot.localeCompare(b.slot));
+for (const job of list) {
+  job.completed_consumers = job.consumers.filter(consumer => approved.has(consumer.id)).map(consumer => consumer.id);
+  if (job.completed_consumers.length === job.consumers.length) job.status = 'approved';
+}
+const stats = { physical_artworks: list.length, approved_artworks: list.filter(job => job.status === 'approved').length,
+  pending_artworks: list.filter(job => job.status !== 'approved').length,
+  catalog_references: list.reduce((n,job) => n + job.consumers.length,0), approved_references: approved.size };
+await fs.writeFile('data/thematic-equipment-redesign-plan-20261102.json', JSON.stringify({ policy_version:1,
+  scope:'Substituir todo o acervo antigo por desenhos temáticos nativos, em lotes completos de famílias.', stats, jobs:list },null,2)+'\n');
+console.log(JSON.stringify(stats));

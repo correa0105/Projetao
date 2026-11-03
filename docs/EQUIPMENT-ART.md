@@ -1,5 +1,7 @@
 # Artes de equipamentos — 01/10/2026
 
+A direção vigente para itens e conjuntos está em [THEMATIC-EQUIPMENT-ART](THEMATIC-EQUIPMENT-ART.md): construção temática própria por peça, substituição integral das sobreposições antigas em lotes e cópias leves para o site. As referências e prompts abaixo preservam a origem dos modelos, sem autorizar novas skins por textura.
+
 ## Acessórios independentes — versão vigente
 
 Luvas cosméticas, colar, tiara e charuto foram refeitos por pedido do usuário,

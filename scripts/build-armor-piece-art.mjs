@@ -1,5 +1,7 @@
 // Import original transparent cutouts and extend the existing native material-skin system.
 import fs from 'node:fs/promises';
+import { rejectLegacyEquipmentCoating } from './legacy-equipment-art-policy.mjs';
+rejectLegacyEquipmentCoating();
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';

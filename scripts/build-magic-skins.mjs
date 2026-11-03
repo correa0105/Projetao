@@ -1,4 +1,6 @@
 import fs from 'node:fs/promises';
+import { rejectLegacyEquipmentCoating } from './legacy-equipment-art-policy.mjs';
+rejectLegacyEquipmentCoating();
 import path from 'node:path';
 import crypto from 'node:crypto';
 import sharp from 'sharp';

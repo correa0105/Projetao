@@ -8,6 +8,7 @@ import { lockCatalogPrices } from './shop-prices.js';
 import { seedArmorPieces } from './armor-catalog.js';
 import { seedClothingPieces } from './clothing-catalog.js';
 import { applyEconomyPrices, applyEconomyRulebook } from './economy-prices.js';
+import { thematicEquipmentImage } from '../shared/thematic-equipment-art.js';
 import {
   withdrawnWeaponModels,
   withdrawnWeaponOffer,
@@ -36,6 +37,12 @@ export async function seed() {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
   }
   expansion.push(...animals);
+  // Apply reviewed designs after loading legacy sources. Change artwork only;
+  // keep IDs, prices, rules, ownership and existing purchases.
+  for (const item of [...catalog.items, ...equipmentCatalog, ...expansion]) {
+    const image = thematicEquipmentImage(item.id);
+    if (image) item.image_path = image;
+  }
   await transaction(async (client) => {
     await lockCatalogPrices(client);
     await client.query('UPDATE catalog_items SET active=false WHERE NOT(id=ANY($1::text[]))', [
