@@ -131,7 +131,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
     : await characterTokenCameraReference('data/vtt/premium-art/monster-berserker-v1.webp');
   const style = camera.path;
   const cameraCorrection = camera.custom
-    ? 'Reconstrua a figura inteira seguindo a câmera, o encurtamento e as proporções coerentes da referência superior. Cabeça, ombros, quadril, joelhos e pés pertencem ao mesmo corpo e apontam na mesma direção; não montar partes independentes. Postura ereta não vira cabeça abaixada ou tronco curvado. Não forçar pés e pernas a aparecer; conservar oclusão natural. A referência de câmera não fornece identidade, cor, roupa, arma ou pose de ação.'
+    ? 'Reconstrua a figura inteira seguindo a câmera, o encurtamento e as proporções coerentes da referência superior. O topo da cabeça e dos ombros domina, com rosto e peito encurtados como na referência. O personagem olha à frente no mundo, nunca para o observador acima dele. Cabeça, ombros, quadril, joelhos e pés pertencem ao mesmo corpo e apontam na mesma direção; não montar partes independentes. Conservar o alinhamento tridimensional da postura escolhida; não dobrar o pescoço nem curvar o tronco para simular a câmera. Não forçar pés e pernas a aparecer; conservar oclusão natural. A referência de câmera não fornece identidade, cor, roupa, arma ou pose de ação.'
     : 'Reconstrua TODA a projeção do corpo em zênite ortográfico real de 90 graus; corrigir apenas detalhes mantendo a pose frontal/inclinada não resolve. Topo da cabeça/ombros dominam e rosto/tronco/pernas ficam encobertos naturalmente; não abrir a câmera para mostrar detalhes ocultos.';
   const cameraReview = camera.custom
     ? 'Julgue top_down_correct pela comparação com a referência superior da imagem 3: reproduzir seu enquadramento, encurtamento e escala anatômica. Reprove retrato frontal, perfil, isometria ou câmera que não corresponda à referência. Um pequeno trecho de rosto ou roupa naturalmente visível nessa projeção não é falha. Confira cabeça, pescoço, ombros, tronco, quadril, joelhos e pés como um único corpo coerente; reprove pés invertidos, pernas projetadas artificialmente, corpo desproporcional, cabeça abaixada e curvatura não escolhida. Não exigir uma projeção matemática diferente da referência fornecida.'
@@ -206,9 +206,13 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
   ];
   try {
     let issues: string[] = [];
+    let rebuildCamera = false;
     for (let attempt = 0; attempt < 3; attempt++) {
       await unlink(result).catch(() => {});
-      const refs = attempt
+      // Editing a rejected frontal token anchors the next render to the wrong
+      // projection. Rebuild from the approved portrait and camera instead.
+      const editCandidate = attempt > 0 && !rebuildCamera;
+      const refs = editCandidate
         ? [candidate, reference, style, ...detailReferences]
         : [reference, style, ...detailReferences];
       const prompt =
@@ -219,9 +223,9 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
           ? '\nFormato de chifres escolhido, preservado na vista superior: ' + horns.instruction
           : '') +
         '\n' +
-        (attempt
+        (editCandidate
           ? `EDITE a imagem 1, o token reprovado. Imagem 2 define a identidade e os equipamentos, nunca a câmera; imagem 3 demonstra a câmera superior. Corrija os defeitos: ${JSON.stringify(issues)}. ${cameraCorrection} Preserve a identidade. Silhueta inteira com 8% de margem, alfa real, sem círculo, chão ou cenário. Use referenced_image_paths=${JSON.stringify(refs)} e transparent_background=true. Entregue JSON image_path absoluto e error vazio apenas se houver imagem real.`
-          : `${instructions}\n${animal ? `Animal: ${animal.kind} / ${animal.species_id}. Aparência: ${animal.appearance}. Nome: ${animal.name}.` : `Raça: ${job.race}. Classe: ${job.class}.`} Referências, na ordem: ${JSON.stringify(refs)}. Gere agora e retorne JSON image_path absoluto e error vazio.`) +
+          : `${instructions}\n${rebuildCamera ? `RECONSTRUIR A CÂMERA: a tentativa anterior usou uma projeção incorreta. Gere uma nova composição pela referência superior da imagem 2; imagem 1 define somente identidade e equipamentos. A imagem reprovada não é referência. Corrija também os defeitos visíveis informados: ${JSON.stringify(issues)}.\n` : ''}${animal ? `Animal: ${animal.kind} / ${animal.species_id}. Aparência: ${animal.appearance}. Nome: ${animal.name}.` : `Raça: ${job.race}. Classe: ${job.class}.`} Referências, na ordem: ${JSON.stringify(refs)}. Gere agora e retorne JSON image_path absoluto e error vazio.`) +
         '\n' + cameraCorrection + '\n' +
         magicInstructions +
         '\n' +
@@ -274,6 +278,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
       }
       const meta = await sharp(bytes, { limitInputPixels: 40_000_000 }).metadata();
       issues = review.issues;
+      rebuildCamera = !review.top_down_correct;
       if(!review.top_down_correct)issues.push(camera.custom ? cameraCorrection : 'Reconstruir a câmera em zênite ortográfico real de 90 graus, mostrando o topo da cabeça e os ombros; não entregar retrato frontal, perfil, isometria ou figura inclinada.');
       if (review.facial_hair_correct === false)
         issues.push('Corrigir barba, bigode, cor base e grisalho escolhidos nas partes visíveis; preservar a câmera superior, o rosto e o equipamento.');

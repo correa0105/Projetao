@@ -299,11 +299,15 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     PATH: process.env.PATH,
     CODEX_BIN: process.env.CODEX_BIN,
     CODEX_HOME: process.env.CODEX_HOME,
+    CHARACTER_TOKEN_CAMERA_PROFILE: process.env.CHARACTER_TOKEN_CAMERA_PROFILE,
   };
   try {
     process.env.PATH = temp + delimiter + (env.PATH || '');
     delete process.env.CODEX_BIN;
     process.env.CODEX_HOME = temp;
+    // This scenario exercises the fallback camera, independently of the
+    // illustrator's private local profile. The custom-camera suite is separate.
+    process.env.CHARACTER_TOKEN_CAMERA_PROFILE = join(temp, 'unconfigured-camera.json');
     const job = { id: randomUUID(), race: 'Humano', class: 'Guerreiro', reference: portrait };
     const pair = await generateCharacterArtPair(job);
     assert.equal(hash(pair.portrait), hash(portrait));
