@@ -207,6 +207,12 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
   try {
     let issues: string[] = [];
     let rebuildCamera = false;
+    const freshReferences = animal
+      ? [reference, style, ...detailReferences]
+      : [style, reference, ...detailReferences];
+    const freshReferenceRoles = animal
+      ? 'Imagem 1 define o animal e seu equipamento; imagem 2 define a câmera superior.'
+      : 'Imagem 1 define SOMENTE a câmera superior e a pintura; imagem 2 é o RETRATO APROVADO que define identidade e equipamentos. Use esta ordem na ferramenta de imagem.';
     for (let attempt = 0; attempt < 3; attempt++) {
       await unlink(result).catch(() => {});
       // Editing a rejected frontal token anchors the next render to the wrong
@@ -214,7 +220,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
       const editCandidate = attempt > 0 && !rebuildCamera;
       const refs = editCandidate
         ? [candidate, reference, style, ...detailReferences]
-        : [reference, style, ...detailReferences];
+        : freshReferences;
       const prompt =
         ART_ANATOMY_RULES +
         '\n' + physicalInstructions +
@@ -225,7 +231,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
         '\n' +
         (editCandidate
           ? `EDITE a imagem 1, o token reprovado. Imagem 2 define a identidade e os equipamentos, nunca a câmera; imagem 3 demonstra a câmera superior. Corrija os defeitos: ${JSON.stringify(issues)}. ${cameraCorrection} Preserve a identidade. Silhueta inteira com 8% de margem, alfa real, sem círculo, chão ou cenário. Use referenced_image_paths=${JSON.stringify(refs)} e transparent_background=true. Entregue JSON image_path absoluto e error vazio apenas se houver imagem real.`
-          : `${instructions}\n${rebuildCamera ? `RECONSTRUIR A CÂMERA: a tentativa anterior usou uma projeção incorreta. Gere uma nova composição pela referência superior da imagem 2; imagem 1 define somente identidade e equipamentos. A imagem reprovada não é referência. Corrija também os defeitos visíveis informados: ${JSON.stringify(issues)}.\n` : ''}${animal ? `Animal: ${animal.kind} / ${animal.species_id}. Aparência: ${animal.appearance}. Nome: ${animal.name}.` : `Raça: ${job.race}. Classe: ${job.class}.`} Referências, na ordem: ${JSON.stringify(refs)}. Gere agora e retorne JSON image_path absoluto e error vazio.`) +
+          : `${freshReferenceRoles}\n${instructions}\n${rebuildCamera ? `RECONSTRUIR A CÂMERA: a tentativa anterior usou uma projeção incorreta. Gere uma nova composição pela referência superior. A imagem reprovada não é referência. Corrija também os defeitos visíveis informados: ${JSON.stringify(issues)}.\n` : ''}${animal ? `Animal: ${animal.kind} / ${animal.species_id}. Aparência: ${animal.appearance}. Nome: ${animal.name}.` : `Raça: ${job.race}. Classe: ${job.class}.`} ${freshReferenceRoles} Referências, na ordem: ${JSON.stringify(refs)}. Gere agora e retorne JSON image_path absoluto e error vazio.`) +
         '\n' + cameraCorrection + '\n' +
         magicInstructions +
         '\n' +

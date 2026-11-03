@@ -69,9 +69,9 @@ let prompt='';process.stdin.on('data',chunk=>prompt+=chunk);process.stdin.on('en
     assert.deepEqual(result, token);
     const calls = JSON.parse(await readFile(capture, 'utf8'));
     assert.equal(calls.renders.length, 2);assert.equal(calls.reviews.length, 2);
-    assert.equal(resolve(calls.renders[0].images[1]), resolve(reference));
+    assert.equal(resolve(calls.renders[0].images[0]), resolve(reference));
     assert.equal(calls.renders[1].images.length, 2);
-    assert.equal(resolve(calls.renders[1].images[1]), resolve(reference));
+    assert.equal(resolve(calls.renders[1].images[0]), resolve(reference));
     assert.match(calls.renders[1].prompt, /RECONSTRUIR A CÂMERA/);
     assert.doesNotMatch(calls.renders[1].prompt, /EDITE a imagem 1/);
     for (const review of calls.reviews) {

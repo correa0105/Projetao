@@ -315,7 +315,7 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     const state = JSON.parse(await readFile(statePath, 'utf8'));
     assert.equal(state.renders.length, 2);
     assert.equal(state.reviews.length, 2);
-    assert.equal(state.renders[1].hashes[0], hash(portrait));
+    assert.equal(state.renders[1].hashes[1], hash(portrait));
     assert.match(state.renders[1].prompt, /90 graus/);
     assert.match(state.renders[1].prompt, /transparent_background=true/);
     assert.match(state.reviews[1].prompt, /mãos com pegada impossível/);
@@ -361,7 +361,7 @@ test('ilustrador gera duas imagens reais em sequência, referencia o retrato apr
     const warforged = JSON.parse(await readFile(statePath, 'utf8'));
     assert.equal(warforged.renders[0].hashes.length, 3);
     assert.equal(warforged.renders[0].hashes.at(-1), hash(await sharp('public/character-creation/warforged-heads-detailed-20261021.png').extract({left:512,top:0,width:512,height:512}).png().toBuffer()));
-    assert.equal(warforged.renders[1].hashes[0], hash(portrait));
+    assert.equal(warforged.renders[1].hashes[1], hash(portrait));
     assert.equal(warforged.renders[1].hashes.at(-1),warforged.renders[0].hashes.at(-1));
     assert.equal(warforged.renders[1].hashes.length,3);
     for (const stage of [...warforged.renders, ...warforged.reviews]) {

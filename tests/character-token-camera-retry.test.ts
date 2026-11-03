@@ -53,9 +53,9 @@ test('câmera reprovada reconstrói o token sem reutilizar a projeção errada; 
       await generateCharacterToken({ id: randomUUID(), race: 'Humano', class: 'Guerreiro', reference: portrait }, portrait);
       const state = JSON.parse(await readFile(statePath, 'utf8'));
       assert.equal(state.reviews, 2);
-      assert.deepEqual(state.renders[0].hashes, [hash(portrait), hash(camera)]);
+      assert.deepEqual(state.renders[0].hashes, [hash(camera), hash(portrait)]);
       if (failure === 'camera') {
-        assert.deepEqual(state.renders[1].hashes, [hash(portrait), hash(camera)]);
+        assert.deepEqual(state.renders[1].hashes, [hash(camera), hash(portrait)]);
         assert.match(state.renders[1].prompt, /RECONSTRUIR A CÂMERA/);
         assert.doesNotMatch(state.renders[1].prompt, /EDITE a imagem 1/);
         assert.match(state.renders[1].prompt, /Câmera frontal incorreta/);
@@ -69,7 +69,7 @@ test('câmera reprovada reconstrói o token sem reutilizar a projeção errada; 
     await assert.rejects(generateCharacterToken({ id: randomUUID(), race: 'Humano', class: 'Guerreiro', reference: portrait }, portrait), /revisão/);
     const rejected = JSON.parse(await readFile(statePath, 'utf8'));
     assert.equal(rejected.reviews, 3);
-    for (const render of rejected.renders) assert.deepEqual(render.hashes, [hash(portrait), hash(camera)]);
+    for (const render of rejected.renders) assert.deepEqual(render.hashes, [hash(camera), hash(portrait)]);
   } finally {
     for (const [name, value] of Object.entries(saved)) {
       if (value === undefined) delete process.env[name]; else process.env[name] = value;
