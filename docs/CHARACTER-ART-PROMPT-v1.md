@@ -19,6 +19,14 @@ Gere uma única ilustração usando a ferramenta nativa de imagem do Codex e a s
 - Manter camadas e oclusão naturais: acessórios encobertos podem ficar invisíveis. Não deformar escudos, tecido ou corpo para revelar um item. Capa é um manto sem mangas, solto sobre os ombros. Integrar os itens à pintura; não cole as imagens sobre o personagem.
 - A sobreposição física prevalece sobre a lista de equipamentos: capa por cima das ombreiras e da armadura; luvas por cima dos anéis, inclusive as luvas integradas às braçadeiras. Ombreiras jamais aparecem sobre a capa; anéis jamais aparecem sobre as luvas. Colares, cintos, bolsas e outros acessórios ficam atrás da roupa, armadura, tecido ou objeto que naturalmente os encobrir. Mostrar apenas as partes expostas na pose; uma peça completamente oculta continua equipada e não precisa aparecer. Não abrir, deslocar, tornar transparente ou atravessar outra peça para exibi-la.
 
+## Pose natural
+
+Escolher uma pose de descanso com presença e equilíbrio, compatível com a anatomia e os equipamentos. Preferir leve assimetria: peso um pouco maior em uma perna, a outra relaxada, pés discretamente desencontrados e braços com flexão suave e posições ligeiramente diferentes. Uma orientação sutil em três quartos pode dar naturalidade, mantendo rosto e corpo legíveis. Variar essas soluções conforme o personagem, sem repetir uma única pose em todas as artes.
+
+Postura ereta significa tronco erguido e equilíbrio, sem exigir simetria rígida. Evitar a pose de manequim da referência recusada: corpo frontal perfeitamente reto, pernas paralelas e os dois braços esticados e espelhados junto ao corpo. Mesmo com armadura completa, manter uma atitude relaxada, respeitando a mobilidade das placas. Posturas curvadas escolhidas continuam curvadas, com apoio natural.
+
+Manter o movimento discreto e plausível: sem torcer a coluna, inclinar o quadril em excesso, cruzar pernas de modo instável, abrir demais os braços ou criar passada, salto, combate ou conjuração. Mãos livres ficam relaxadas; mãos ocupadas mantêm a pegada real do equipamento ou apoio escolhido. Não inventar objetos para justificar uma pose nem afastar itens para exibi-los. As referências fornecem identidade, estilo e equipamentos; uma pose rígida nelas não precisa ser reproduzida.
+
 ## Conferência de anatomia
 
 Confira anatomia e ligação dos apêndices antes de entregar. Chifres em par têm bases alinhadas dos dois lados do crânio, respeitando perspectiva e oclusão.

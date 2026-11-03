@@ -38,6 +38,7 @@ Este arquivo contém apenas decisões vigentes e acordos permanentes. O pedido a
 - Retrato e token superior são imagens separadas, publicadas somente como par válido. Substituições aguardam escolha do dono entre antiga/nova/decidir depois; preservar arte atual, BASE/checkpoints privados e progresso recuperável. Arquivar criação salva falha remove da lista sem apagar dados do slot, histórico ou cota.
 - Preservar os originais PNG/alpha, resolução, proporção e qualidade aprovadas. O usuário autorizou cópias leves para exibição, com compressão e tamanho adequados; backgrounds, mapas, máscaras técnicas e coordenadas de atlas ficam preservados. Não substituir BASEs, checkpoints ou originais no banco por essas cópias. Arte nova deve respeitar espécie, anatomia, vista superior real, equipamentos e escolhas de aparência. Revisão anatômica/equipamento/cabeça explícita; não publicar arte reprovada nem validar anatomia só por hash.
 - Vestir parte da BASE confiável e referências reais, sem acumular roupas sobre arte já vestida. Montagem e referência do Warforged são modos exclusivos e persistentes; não misturar nem trocar o modo ao vestir. Escolhas cosméticas não concedem itens ou bônus.
+- Novas artes usam poses de descanso naturais, com leve assimetria e apoio equilibrado. Evitar corpo frontal rígido com braços retos espelhados e pernas paralelas; sem torções ou gestos exagerados. Respeitar postura escolhida, mobilidade da armadura, mãos ocupadas e câmera superior do token.
 
 ## Produto e compatibilidade
 
