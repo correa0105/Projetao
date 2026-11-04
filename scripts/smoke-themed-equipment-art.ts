@@ -22,6 +22,7 @@ const browser=await chromium.launch({channel:'msedge',headless:true});
 const context=await browser.newContext({viewport:{width:1440,height:1000}});
 await context.addInitScript('window.__name=(fn)=>fn;');
 const page=await context.newPage(),root=process.env.THEMATIC_ART_QA_DIR||'.local/equipment-families-20261103';await mkdir(root,{recursive:true});
+page.setDefaultTimeout(15000);
 const errors:string[]=[],checks:string[]=[];page.on('pageerror',e=>errors.push(e.message));
 try {
  const signup=await context.request.post(origin+'/api/auth/sign-up/email',{headers:{Origin:origin},data:{name:'Artes temáticas',email:'thematic-'+randomUUID()+'@example.test',password:'Test-'+randomUUID()}});
@@ -31,7 +32,7 @@ try {
  const samples=(await pool.query("SELECT id,name,image_path,raw_data->>'base_item' AS model,raw_data->>'magic_family' AS family,raw_data->'armor_bundle_pieces' AS pieces FROM catalog_items WHERE active AND id=ANY($1::text[]) ORDER BY id",[ids])).rows;
  expect(samples.length).toBe(ids.length);
  for(const asset of registry.assets){const response=await context.request.get(origin+asset.path);expect(response.ok()).toBe(true);expect(response.headers()['content-type']).toContain('image/webp');}
- for(const width of [1440,390]){
+ for(const width of (process.env.THEMATIC_ART_QA_WIDTHS||'1440,390').split(',').map(Number)){
   await page.setViewportSize({width,height:1000});await page.goto(origin+'/#shop');
   const search=page.getByRole('textbox',{name:'Procurar item'});await expect(search).toBeVisible();
   await page.getByRole('navigation',{name:'Categorias da loja'}).getByRole('button',{name:/^Todos\b/}).click();
@@ -45,12 +46,14 @@ try {
    const img=await familyImage.count()?familyImage:card.locator('img').first();
    await expect(img).toHaveAttribute('src',imagePath);
    expect(imagePath).toMatch(/^\/shop\/thematic-equipment-20\d{6}\//);
-   await img.evaluate(async el=>{await (el as HTMLImageElement).decode();});
+   await img.scrollIntoViewIfNeeded();
+   await expect(img).toHaveJSProperty('complete',true);
+   expect(await img.evaluate(el=>(el as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
    if(pieces&&['breastplate','half-plate-armor'].includes(model)){
     await expect(card).toContainText('Peça única de armadura');
     await expect(card).not.toContainText('Conjunto completo');
    }else if(pieces)await expect(card).toContainText('Conjunto completo com 6 peças');
-   await card.screenshot({path:root+'/'+id+'-'+width+'.png'});
+   await card.screenshot({path:root+'/'+id+'-'+width+'.png',animations:'disabled',timeout:15000});
   }
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
   checks.push(samples.length+' modelos de armaduras, armas e capas: artes, seletores e compras preservados em '+width+' px');

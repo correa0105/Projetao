@@ -3,10 +3,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4172,
-    "approved_artworks": 363,
-    "pending_artworks": 3809,
+    "approved_artworks": 470,
+    "pending_artworks": 3702,
     "catalog_references": 4327,
-    "approved_references": 363
+    "approved_references": 470
   },
   "family_coverage": [
     {
@@ -1693,7 +1693,7 @@
     },
     {
       "family": "Antimagic Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "antimagic-breastplate",
@@ -1707,8 +1707,15 @@
             "antimagic-breastplate--legs",
             "antimagic-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-breastplate",
+            "antimagic-breastplate--head",
+            "antimagic-breastplate--shoulders",
+            "antimagic-breastplate--bracers",
+            "antimagic-breastplate--legs",
+            "antimagic-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-chain-mail",
@@ -1722,8 +1729,15 @@
             "antimagic-chain-mail--legs",
             "antimagic-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-chain-mail",
+            "antimagic-chain-mail--head",
+            "antimagic-chain-mail--shoulders",
+            "antimagic-chain-mail--bracers",
+            "antimagic-chain-mail--legs",
+            "antimagic-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-chain-shirt",
@@ -1737,8 +1751,15 @@
             "antimagic-chain-shirt--legs",
             "antimagic-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-chain-shirt",
+            "antimagic-chain-shirt--head",
+            "antimagic-chain-shirt--shoulders",
+            "antimagic-chain-shirt--bracers",
+            "antimagic-chain-shirt--legs",
+            "antimagic-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-half-plate-armor",
@@ -1752,8 +1773,15 @@
             "antimagic-half-plate-armor--legs",
             "antimagic-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-half-plate-armor",
+            "antimagic-half-plate-armor--head",
+            "antimagic-half-plate-armor--shoulders",
+            "antimagic-half-plate-armor--bracers",
+            "antimagic-half-plate-armor--legs",
+            "antimagic-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-hide-armor",
@@ -1767,8 +1795,15 @@
             "antimagic-hide-armor--legs",
             "antimagic-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-hide-armor",
+            "antimagic-hide-armor--head",
+            "antimagic-hide-armor--shoulders",
+            "antimagic-hide-armor--bracers",
+            "antimagic-hide-armor--legs",
+            "antimagic-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-leather-armor",
@@ -1782,8 +1817,15 @@
             "antimagic-leather-armor--legs",
             "antimagic-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-leather-armor",
+            "antimagic-leather-armor--head",
+            "antimagic-leather-armor--shoulders",
+            "antimagic-leather-armor--bracers",
+            "antimagic-leather-armor--legs",
+            "antimagic-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-padded-armor",
@@ -1797,8 +1839,15 @@
             "antimagic-padded-armor--legs",
             "antimagic-padded-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-padded-armor",
+            "antimagic-padded-armor--head",
+            "antimagic-padded-armor--shoulders",
+            "antimagic-padded-armor--bracers",
+            "antimagic-padded-armor--legs",
+            "antimagic-padded-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-plate-armor",
@@ -1812,8 +1861,15 @@
             "antimagic-plate-armor--legs",
             "antimagic-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-plate-armor",
+            "antimagic-plate-armor--head",
+            "antimagic-plate-armor--shoulders",
+            "antimagic-plate-armor--bracers",
+            "antimagic-plate-armor--legs",
+            "antimagic-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-ring-mail",
@@ -1827,8 +1883,15 @@
             "antimagic-ring-mail--legs",
             "antimagic-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-ring-mail",
+            "antimagic-ring-mail--head",
+            "antimagic-ring-mail--shoulders",
+            "antimagic-ring-mail--bracers",
+            "antimagic-ring-mail--legs",
+            "antimagic-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-scale-mail",
@@ -1842,8 +1905,15 @@
             "antimagic-scale-mail--legs",
             "antimagic-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-scale-mail",
+            "antimagic-scale-mail--head",
+            "antimagic-scale-mail--shoulders",
+            "antimagic-scale-mail--bracers",
+            "antimagic-scale-mail--legs",
+            "antimagic-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-spiked-armor",
@@ -1857,8 +1927,15 @@
             "antimagic-spiked-armor--legs",
             "antimagic-spiked-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-spiked-armor",
+            "antimagic-spiked-armor--head",
+            "antimagic-spiked-armor--shoulders",
+            "antimagic-spiked-armor--bracers",
+            "antimagic-spiked-armor--legs",
+            "antimagic-spiked-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-splint-armor",
@@ -1872,8 +1949,15 @@
             "antimagic-splint-armor--legs",
             "antimagic-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-splint-armor",
+            "antimagic-splint-armor--head",
+            "antimagic-splint-armor--shoulders",
+            "antimagic-splint-armor--bracers",
+            "antimagic-splint-armor--legs",
+            "antimagic-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "antimagic-studded-leather-armor",
@@ -1887,8 +1971,15 @@
             "antimagic-studded-leather-armor--legs",
             "antimagic-studded-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimagic-studded-leather-armor",
+            "antimagic-studded-leather-armor--head",
+            "antimagic-studded-leather-armor--shoulders",
+            "antimagic-studded-leather-armor--bracers",
+            "antimagic-studded-leather-armor--legs",
+            "antimagic-studded-leather-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -8008,7 +8099,7 @@
     },
     {
       "family": "Defender",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "defender",
@@ -8017,8 +8108,10 @@
           "artwork_ids": [
             "defender"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-battleaxe",
@@ -8027,8 +8120,10 @@
           "artwork_ids": [
             "defender-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-club",
@@ -8037,8 +8132,10 @@
           "artwork_ids": [
             "defender-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-dagger",
@@ -8047,8 +8144,10 @@
           "artwork_ids": [
             "defender-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-double-bladed-scimitar",
@@ -8057,8 +8156,10 @@
           "artwork_ids": [
             "defender-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-flail",
@@ -8067,8 +8168,10 @@
           "artwork_ids": [
             "defender-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-glaive",
@@ -8077,8 +8180,10 @@
           "artwork_ids": [
             "defender-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-greataxe",
@@ -8087,8 +8192,10 @@
           "artwork_ids": [
             "defender-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-greatclub",
@@ -8097,8 +8204,10 @@
           "artwork_ids": [
             "defender-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-greatsword",
@@ -8107,8 +8216,10 @@
           "artwork_ids": [
             "defender-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-halberd",
@@ -8117,8 +8228,10 @@
           "artwork_ids": [
             "defender-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-handaxe",
@@ -8127,8 +8240,10 @@
           "artwork_ids": [
             "defender-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-javelin",
@@ -8137,8 +8252,10 @@
           "artwork_ids": [
             "defender-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-lance",
@@ -8147,8 +8264,10 @@
           "artwork_ids": [
             "defender-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-light-hammer",
@@ -8157,8 +8276,10 @@
           "artwork_ids": [
             "defender-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-mace",
@@ -8167,8 +8288,10 @@
           "artwork_ids": [
             "defender-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-maul",
@@ -8177,8 +8300,10 @@
           "artwork_ids": [
             "defender-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-morningstar",
@@ -8187,8 +8312,10 @@
           "artwork_ids": [
             "defender-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-pike",
@@ -8197,8 +8324,10 @@
           "artwork_ids": [
             "defender-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-quarterstaff",
@@ -8207,8 +8336,10 @@
           "artwork_ids": [
             "defender-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-rapier",
@@ -8217,8 +8348,10 @@
           "artwork_ids": [
             "defender-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-scimitar",
@@ -8227,8 +8360,10 @@
           "artwork_ids": [
             "defender-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-shortsword",
@@ -8237,8 +8372,10 @@
           "artwork_ids": [
             "defender-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-sickle",
@@ -8247,8 +8384,10 @@
           "artwork_ids": [
             "defender-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-spear",
@@ -8257,8 +8396,10 @@
           "artwork_ids": [
             "defender-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-trident",
@@ -8267,8 +8408,10 @@
           "artwork_ids": [
             "defender-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-war-pick",
@@ -8277,8 +8420,10 @@
           "artwork_ids": [
             "defender-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-warhammer",
@@ -8287,8 +8432,10 @@
           "artwork_ids": [
             "defender-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "defender-whip",
@@ -8297,8 +8444,10 @@
           "artwork_ids": [
             "defender-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "defender-whip"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -32462,8 +32611,10 @@
           "name": "Armadura antimagia (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-breastplate"
+      ]
     },
     {
       "id": "fc51477bf6377308",
@@ -32477,8 +32628,10 @@
           "name": "Armadura antimagia (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-breastplate--bracers"
+      ]
     },
     {
       "id": "144a62588f3c1d78",
@@ -32492,8 +32645,10 @@
           "name": "Armadura antimagia (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-breastplate--feet"
+      ]
     },
     {
       "id": "8cb8eaa09e844bc8",
@@ -32507,8 +32662,10 @@
           "name": "Armadura antimagia (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-breastplate--head"
+      ]
     },
     {
       "id": "467a349a7ae1ac23",
@@ -32522,8 +32679,10 @@
           "name": "Armadura antimagia (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-breastplate--legs"
+      ]
     },
     {
       "id": "370478cf7de89488",
@@ -32537,8 +32696,10 @@
           "name": "Armadura antimagia (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-breastplate--shoulders"
+      ]
     },
     {
       "id": "69a3a881b773846c",
@@ -32552,8 +32713,10 @@
           "name": "Armadura antimagia (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-mail"
+      ]
     },
     {
       "id": "ae19723fffcb0fd8",
@@ -32567,8 +32730,10 @@
           "name": "Armadura antimagia (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-mail--bracers"
+      ]
     },
     {
       "id": "e49af36408da1d13",
@@ -32582,8 +32747,10 @@
           "name": "Armadura antimagia (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-mail--feet"
+      ]
     },
     {
       "id": "922573405b9e3d34",
@@ -32597,8 +32764,10 @@
           "name": "Armadura antimagia (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-mail--head"
+      ]
     },
     {
       "id": "84f8279708da410c",
@@ -32612,8 +32781,10 @@
           "name": "Armadura antimagia (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-mail--legs"
+      ]
     },
     {
       "id": "f2a7af4cfb150c5c",
@@ -32627,8 +32798,10 @@
           "name": "Armadura antimagia (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-mail--shoulders"
+      ]
     },
     {
       "id": "dea0e45532d66a8b",
@@ -32642,8 +32815,10 @@
           "name": "Armadura antimagia (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-shirt"
+      ]
     },
     {
       "id": "04c826537db991d5",
@@ -32657,8 +32832,10 @@
           "name": "Armadura antimagia (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-shirt--bracers"
+      ]
     },
     {
       "id": "44b3741972e00f18",
@@ -32672,8 +32849,10 @@
           "name": "Armadura antimagia (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-shirt--feet"
+      ]
     },
     {
       "id": "356c97f1f5f2647a",
@@ -32687,8 +32866,10 @@
           "name": "Armadura antimagia (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-shirt--head"
+      ]
     },
     {
       "id": "ca82d5da61b50a78",
@@ -32702,8 +32883,10 @@
           "name": "Armadura antimagia (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-shirt--legs"
+      ]
     },
     {
       "id": "f1c2b3f24407dd11",
@@ -32717,8 +32900,10 @@
           "name": "Armadura antimagia (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "aae9fa157fbdbdcf",
@@ -32732,8 +32917,10 @@
           "name": "Armadura antimagia (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-half-plate-armor"
+      ]
     },
     {
       "id": "58354fc77a5763e0",
@@ -32747,8 +32934,10 @@
           "name": "Armadura antimagia (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "08e13384db49d518",
@@ -32762,8 +32951,10 @@
           "name": "Armadura antimagia (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-half-plate-armor--feet"
+      ]
     },
     {
       "id": "955fee89fe278f50",
@@ -32777,8 +32968,10 @@
           "name": "Armadura antimagia (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-half-plate-armor--head"
+      ]
     },
     {
       "id": "f7135bd072dc1ec7",
@@ -32792,8 +32985,10 @@
           "name": "Armadura antimagia (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-half-plate-armor--legs"
+      ]
     },
     {
       "id": "c3a7609242cfcae9",
@@ -32807,8 +33002,10 @@
           "name": "Armadura antimagia (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "8611f029ce08ff72",
@@ -32822,8 +33019,10 @@
           "name": "Armadura antimagia (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-hide-armor"
+      ]
     },
     {
       "id": "45fdb2124ed28b94",
@@ -32837,8 +33036,10 @@
           "name": "Armadura antimagia (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-hide-armor--bracers"
+      ]
     },
     {
       "id": "83db2a8e6fbd3624",
@@ -32852,8 +33053,10 @@
           "name": "Armadura antimagia (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-hide-armor--feet"
+      ]
     },
     {
       "id": "effc34f41ed6008c",
@@ -32867,8 +33070,10 @@
           "name": "Armadura antimagia (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-hide-armor--head"
+      ]
     },
     {
       "id": "4272b75b2bbb4710",
@@ -32882,8 +33087,10 @@
           "name": "Armadura antimagia (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-hide-armor--legs"
+      ]
     },
     {
       "id": "e5c86d9e6ee46b79",
@@ -32897,8 +33104,10 @@
           "name": "Armadura antimagia (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-hide-armor--shoulders"
+      ]
     },
     {
       "id": "c46a34ca28c8013d",
@@ -32912,8 +33121,10 @@
           "name": "Armadura antimagia (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-leather-armor"
+      ]
     },
     {
       "id": "7750474dac5afa1a",
@@ -32927,8 +33138,10 @@
           "name": "Armadura antimagia (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-leather-armor--bracers"
+      ]
     },
     {
       "id": "9fc22cb67e11096e",
@@ -32942,8 +33155,10 @@
           "name": "Armadura antimagia (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-leather-armor--feet"
+      ]
     },
     {
       "id": "d7b0769bfa6a565c",
@@ -32957,8 +33172,10 @@
           "name": "Armadura antimagia (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-leather-armor--head"
+      ]
     },
     {
       "id": "c0bda776fe2abe6f",
@@ -32972,8 +33189,10 @@
           "name": "Armadura antimagia (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-leather-armor--legs"
+      ]
     },
     {
       "id": "086565e0bd990b71",
@@ -32987,8 +33206,10 @@
           "name": "Armadura antimagia (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-leather-armor--shoulders"
+      ]
     },
     {
       "id": "9d2e30c0947cc9c6",
@@ -33002,8 +33223,10 @@
           "name": "Armadura antimagia (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-padded-armor"
+      ]
     },
     {
       "id": "acca3396d42def57",
@@ -33017,8 +33240,10 @@
           "name": "Armadura antimagia (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-padded-armor--bracers"
+      ]
     },
     {
       "id": "d5f2a5ed5b472c42",
@@ -33032,8 +33257,10 @@
           "name": "Armadura antimagia (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-padded-armor--feet"
+      ]
     },
     {
       "id": "ec6ffb7abb449b54",
@@ -33047,8 +33274,10 @@
           "name": "Armadura antimagia (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-padded-armor--head"
+      ]
     },
     {
       "id": "a1960c5691da4cb2",
@@ -33062,8 +33291,10 @@
           "name": "Armadura antimagia (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-padded-armor--legs"
+      ]
     },
     {
       "id": "df5f7c4d5b676be1",
@@ -33077,8 +33308,10 @@
           "name": "Armadura antimagia (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-padded-armor--shoulders"
+      ]
     },
     {
       "id": "d872058628ee4a44",
@@ -33092,8 +33325,10 @@
           "name": "Armadura antimagia (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-plate-armor"
+      ]
     },
     {
       "id": "529e2e3af444b1c5",
@@ -33107,8 +33342,10 @@
           "name": "Armadura antimagia (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-plate-armor--bracers"
+      ]
     },
     {
       "id": "94efa6628615cec1",
@@ -33122,8 +33359,10 @@
           "name": "Armadura antimagia (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-plate-armor--feet"
+      ]
     },
     {
       "id": "b13da4b8242e56ea",
@@ -33137,8 +33376,10 @@
           "name": "Armadura antimagia (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-plate-armor--head"
+      ]
     },
     {
       "id": "2ec7a03f05609480",
@@ -33152,8 +33393,10 @@
           "name": "Armadura antimagia (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-plate-armor--legs"
+      ]
     },
     {
       "id": "1a64eb9ba9467ee1",
@@ -33167,8 +33410,10 @@
           "name": "Armadura antimagia (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-plate-armor--shoulders"
+      ]
     },
     {
       "id": "99cbd7329ecfa70d",
@@ -33182,8 +33427,10 @@
           "name": "Armadura antimagia (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-ring-mail"
+      ]
     },
     {
       "id": "04db0b474f30e16a",
@@ -33197,8 +33444,10 @@
           "name": "Armadura antimagia (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-ring-mail--bracers"
+      ]
     },
     {
       "id": "9b57dd238604aa1d",
@@ -33212,8 +33461,10 @@
           "name": "Armadura antimagia (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-ring-mail--feet"
+      ]
     },
     {
       "id": "3dd97b6b2cd0bff5",
@@ -33227,8 +33478,10 @@
           "name": "Armadura antimagia (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-ring-mail--head"
+      ]
     },
     {
       "id": "be8339dca2795886",
@@ -33242,8 +33495,10 @@
           "name": "Armadura antimagia (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-ring-mail--legs"
+      ]
     },
     {
       "id": "fc06005f278b2e3e",
@@ -33257,8 +33512,10 @@
           "name": "Armadura antimagia (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-ring-mail--shoulders"
+      ]
     },
     {
       "id": "8d80aa8ab2abf47f",
@@ -33272,8 +33529,10 @@
           "name": "Armadura antimagia (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-scale-mail"
+      ]
     },
     {
       "id": "04846cd85ef5c2d9",
@@ -33287,8 +33546,10 @@
           "name": "Armadura antimagia (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-scale-mail--bracers"
+      ]
     },
     {
       "id": "196972160a5fc2c0",
@@ -33302,8 +33563,10 @@
           "name": "Armadura antimagia (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-scale-mail--feet"
+      ]
     },
     {
       "id": "9bd0a26c8ad471b6",
@@ -33317,8 +33580,10 @@
           "name": "Armadura antimagia (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-scale-mail--head"
+      ]
     },
     {
       "id": "9c8df9e1eb512ec7",
@@ -33332,8 +33597,10 @@
           "name": "Armadura antimagia (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-scale-mail--legs"
+      ]
     },
     {
       "id": "dcd8ad51361dfa10",
@@ -33347,8 +33614,10 @@
           "name": "Armadura antimagia (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-scale-mail--shoulders"
+      ]
     },
     {
       "id": "ae754bbdf476e709",
@@ -33362,8 +33631,10 @@
           "name": "Armadura antimagia (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-spiked-armor"
+      ]
     },
     {
       "id": "8040d1fd05082e37",
@@ -33377,8 +33648,10 @@
           "name": "Armadura antimagia (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-spiked-armor--bracers"
+      ]
     },
     {
       "id": "f711356e22adff7b",
@@ -33392,8 +33665,10 @@
           "name": "Armadura antimagia (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-spiked-armor--feet"
+      ]
     },
     {
       "id": "c52357319527331c",
@@ -33407,8 +33682,10 @@
           "name": "Armadura antimagia (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-spiked-armor--head"
+      ]
     },
     {
       "id": "268b5ad44ae77b7e",
@@ -33422,8 +33699,10 @@
           "name": "Armadura antimagia (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-spiked-armor--legs"
+      ]
     },
     {
       "id": "b20f86dc1a0ce792",
@@ -33437,8 +33716,10 @@
           "name": "Armadura antimagia (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-spiked-armor--shoulders"
+      ]
     },
     {
       "id": "2707adaae092fc2d",
@@ -33452,8 +33733,10 @@
           "name": "Armadura antimagia (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-splint-armor"
+      ]
     },
     {
       "id": "61538c1a7dc49fe9",
@@ -33467,8 +33750,10 @@
           "name": "Armadura antimagia (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-splint-armor--bracers"
+      ]
     },
     {
       "id": "5df61da5b3849fb7",
@@ -33482,8 +33767,10 @@
           "name": "Armadura antimagia (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-splint-armor--feet"
+      ]
     },
     {
       "id": "f70d0f14272a4d34",
@@ -33497,8 +33784,10 @@
           "name": "Armadura antimagia (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-splint-armor--head"
+      ]
     },
     {
       "id": "f9d5734be5a389cf",
@@ -33512,8 +33801,10 @@
           "name": "Armadura antimagia (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-splint-armor--legs"
+      ]
     },
     {
       "id": "0f906c674489565f",
@@ -33527,8 +33818,10 @@
           "name": "Armadura antimagia (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-splint-armor--shoulders"
+      ]
     },
     {
       "id": "5002de19d2fc36c9",
@@ -33542,8 +33835,10 @@
           "name": "Armadura antimagia (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-studded-leather-armor"
+      ]
     },
     {
       "id": "939ab16814567f4c",
@@ -33557,8 +33852,10 @@
           "name": "Armadura antimagia (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-studded-leather-armor--bracers"
+      ]
     },
     {
       "id": "fdf65bfb0a8f1de3",
@@ -33572,8 +33869,10 @@
           "name": "Armadura antimagia (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-studded-leather-armor--feet"
+      ]
     },
     {
       "id": "8d556e05d417edf6",
@@ -33587,8 +33886,10 @@
           "name": "Armadura antimagia (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-studded-leather-armor--head"
+      ]
     },
     {
       "id": "4f9e57d93980dbc2",
@@ -33602,8 +33903,10 @@
           "name": "Armadura antimagia (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-studded-leather-armor--legs"
+      ]
     },
     {
       "id": "7d1f63e697e79f1c",
@@ -33617,8 +33920,10 @@
           "name": "Armadura antimagia (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimagic-studded-leather-armor--shoulders"
+      ]
     },
     {
       "id": "3d6579dbffe275ee",
@@ -57067,8 +57372,10 @@
           "name": "Defensora (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-battleaxe"
+      ]
     },
     {
       "id": "ea1497a11c14f34c",
@@ -57082,8 +57389,10 @@
           "name": "Defensora (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-club"
+      ]
     },
     {
       "id": "43fbc3f0bf9da0b5",
@@ -57097,8 +57406,10 @@
           "name": "Defensora (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-dagger"
+      ]
     },
     {
       "id": "60f61bb66b95232a",
@@ -57112,8 +57423,10 @@
           "name": "Defensora (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-double-bladed-scimitar"
+      ]
     },
     {
       "id": "710014eb073b9e4e",
@@ -57127,8 +57440,10 @@
           "name": "Defensora (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-flail"
+      ]
     },
     {
       "id": "5918fe72b7800cf4",
@@ -57142,8 +57457,10 @@
           "name": "Defensora (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-glaive"
+      ]
     },
     {
       "id": "e4d56dad5076add9",
@@ -57157,8 +57474,10 @@
           "name": "Defensora (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-greataxe"
+      ]
     },
     {
       "id": "638bb3d80d4caff4",
@@ -57172,8 +57491,10 @@
           "name": "Defensora (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-greatclub"
+      ]
     },
     {
       "id": "13f180722c9e911a",
@@ -57187,8 +57508,10 @@
           "name": "Defensora (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-greatsword"
+      ]
     },
     {
       "id": "9744443c484a2e02",
@@ -57202,8 +57525,10 @@
           "name": "Defensora (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-halberd"
+      ]
     },
     {
       "id": "d2f5d1984a601579",
@@ -57217,8 +57542,10 @@
           "name": "Defensora (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-handaxe"
+      ]
     },
     {
       "id": "74422d473c6dc24d",
@@ -57232,8 +57559,10 @@
           "name": "Defensora (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-javelin"
+      ]
     },
     {
       "id": "313dc4fbd6b201e5",
@@ -57247,8 +57576,10 @@
           "name": "Defensora (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-lance"
+      ]
     },
     {
       "id": "8777e7cfd6292561",
@@ -57262,8 +57593,10 @@
           "name": "Defensora (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-light-hammer"
+      ]
     },
     {
       "id": "6ed778569ceb1a20",
@@ -57277,8 +57610,10 @@
           "name": "Defensora (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender"
+      ]
     },
     {
       "id": "05ec6132be1b7ab7",
@@ -57292,8 +57627,10 @@
           "name": "Defensora (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-mace"
+      ]
     },
     {
       "id": "a1db1ef673a1290e",
@@ -57307,8 +57644,10 @@
           "name": "Defensora (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-maul"
+      ]
     },
     {
       "id": "6873d96b297f2499",
@@ -57322,8 +57661,10 @@
           "name": "Defensora (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-morningstar"
+      ]
     },
     {
       "id": "7c979022825e4b55",
@@ -57337,8 +57678,10 @@
           "name": "Defensora (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-pike"
+      ]
     },
     {
       "id": "1768687cca281124",
@@ -57352,8 +57695,10 @@
           "name": "Defensora (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-quarterstaff"
+      ]
     },
     {
       "id": "e6ba45a8542ce16e",
@@ -57367,8 +57712,10 @@
           "name": "Defensora (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-rapier"
+      ]
     },
     {
       "id": "b8f9397aa9d7a9c9",
@@ -57382,8 +57729,10 @@
           "name": "Defensora (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-scimitar"
+      ]
     },
     {
       "id": "d6a93fd26a347014",
@@ -57397,8 +57746,10 @@
           "name": "Defensora (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-shortsword"
+      ]
     },
     {
       "id": "16b248278ad6b6e4",
@@ -57412,8 +57763,10 @@
           "name": "Defensora (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-sickle"
+      ]
     },
     {
       "id": "a725f3ae5cd03447",
@@ -57427,8 +57780,10 @@
           "name": "Defensora (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-spear"
+      ]
     },
     {
       "id": "c5c033b0257b2ef6",
@@ -57442,8 +57797,10 @@
           "name": "Defensora (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-trident"
+      ]
     },
     {
       "id": "4c239f36eb52ec68",
@@ -57457,8 +57814,10 @@
           "name": "Defensora (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-war-pick"
+      ]
     },
     {
       "id": "547d4121a3e363bb",
@@ -57472,8 +57831,10 @@
           "name": "Defensora (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-warhammer"
+      ]
     },
     {
       "id": "1f2f52457ebb9f05",
@@ -57487,8 +57848,10 @@
           "name": "Defensora (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "defender-whip"
+      ]
     },
     {
       "id": "081d4510e1d7cb4e",

@@ -46,4 +46,10 @@ Esse lote está publicado em `alvorada-cinzenta:acheron-adamantine-20261104`, co
 
 O lote de `data/thematic-equipment-batches/20261104-gleaming-vorpal-sharpness.json` completa os 13 modelos de armadura reluzente com todas as peças, cinco Vorpal e cinco Afiação: 88 artes. Os 190.011.676 bytes de PNGs originais estão preservados; as cópias WebP somam 7.848.854 bytes, redução de 95,9%. A revisão refez modelos leves que haviam recebido placas, definiu anéis realmente costurados, distinguiu a meia armadura e a espada Vorpal grande, isolou as cofias sem tronco e retirou halos. Os quatro testes de integridade/preservação passaram e a loja foi conferida em 143 modelos, nas larguras 1440/390 px. Evidências em `.local/gleaming-vorpal-sharpness-20261104/`.
 
+Esse lote está publicado em `alvorada-cinzenta:gleaming-vorpal-sharpness-20261104`, commit `15179f5df32dbb8d62932ae2c843fa76c4539a77`. A conferência da publicação confirmou 363 imagens HTTPS por hash, nove tabelas protegidas sem alterações, compras parciais preservadas e ilustrador ativo. O backup anterior ficou em `/opt/alvorada/backups/gleaming-vorpal-sharpness-20261104-before.dump`.
+
 A próxima sequência está definida em `data/thematic-equipment-batches/20261104-antimagic-defender.json`: 13 modelos de Antimagia com todas as peças e 29 modelos Defensor, totalizando 107 artes. A geração e a revisão estão em andamento; esse lote ainda não está publicado. Outras famílias continuam no pedido integral.
+
+### Antimagia e Defensor — 4 de novembro de 2026
+
+107 artes nativas revisadas em fundo claro e escuro: 13 modelos de Antimagic Armor com suas seis peças e 29 armas Defender. Os PNGs originais são preservados, com cópias WebP transparentes para a loja. Peitoral e armadura de talas tiveram a construção corrigida; a lança teve o halo removido. Total aprovado: 470 artes; 3.702 artes físicas permanecem pendentes. Leveza e dos Caídos estão em produção e ainda não entram nesta publicação.

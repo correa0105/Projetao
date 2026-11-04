@@ -47,7 +47,7 @@ test('famílias publicadas têm desenho aprovado para todos os modelos e peças'
   const files=['data/shop-export/loja.json','data/equipment-catalog.json','data/emporium-expansion.json','data/animal-equipment-catalog.json','data/shop-magic-completion-20261009/catalog.json'];
   const catalog=(await Promise.all(files.map(async file=>{const data=JSON.parse(await readFile(file,'utf8'));return Array.isArray(data)?data:data.items;}))).flat();
   const approved=new Map(registry.assets.filter((asset:any)=>asset.review==='approved').map((asset:any)=>[asset.id,asset]));
-  for(const [family,count] of [['Mithral Armor',9],["Mariner's Armor",13],['Dancing Sword',6],['Frost Brand',7],['Flame Tongue',29],['Acheron Blade',6],['Adamantine Armor',9],['Adamantine Weapon',34],['Armor of Gleaming',13],['Vorpal Sword',5],['Sword of Sharpness',5]] as const){
+  for(const [family,count] of [['Mithral Armor',9],["Mariner's Armor",13],['Dancing Sword',6],['Frost Brand',7],['Flame Tongue',29],['Acheron Blade',6],['Adamantine Armor',9],['Adamantine Weapon',34],['Armor of Gleaming',13],['Vorpal Sword',5],['Sword of Sharpness',5],['Antimagic Armor',13],['Defender',29]] as const){
     const models=catalog.filter(item=>item.raw_data?.magic_family===family);
     assert.equal(models.length,count,family);
     for(const item of models){
