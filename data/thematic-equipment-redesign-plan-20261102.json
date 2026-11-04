@@ -3,10 +3,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4172,
-    "approved_artworks": 275,
-    "pending_artworks": 3897,
+    "approved_artworks": 363,
+    "pending_artworks": 3809,
     "catalog_references": 4327,
-    "approved_references": 275
+    "approved_references": 363
   },
   "family_coverage": [
     {
@@ -1910,7 +1910,7 @@
     },
     {
       "family": "Armor of Gleaming",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "breastplate-of-gleaming",
@@ -1924,8 +1924,15 @@
             "breastplate-of-gleaming--legs",
             "breastplate-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "breastplate-of-gleaming",
+            "breastplate-of-gleaming--head",
+            "breastplate-of-gleaming--shoulders",
+            "breastplate-of-gleaming--bracers",
+            "breastplate-of-gleaming--legs",
+            "breastplate-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "chain-mail-of-gleaming",
@@ -1939,8 +1946,15 @@
             "chain-mail-of-gleaming--legs",
             "chain-mail-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "chain-mail-of-gleaming",
+            "chain-mail-of-gleaming--head",
+            "chain-mail-of-gleaming--shoulders",
+            "chain-mail-of-gleaming--bracers",
+            "chain-mail-of-gleaming--legs",
+            "chain-mail-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "chain-shirt-of-gleaming",
@@ -1954,8 +1968,15 @@
             "chain-shirt-of-gleaming--legs",
             "chain-shirt-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "chain-shirt-of-gleaming",
+            "chain-shirt-of-gleaming--head",
+            "chain-shirt-of-gleaming--shoulders",
+            "chain-shirt-of-gleaming--bracers",
+            "chain-shirt-of-gleaming--legs",
+            "chain-shirt-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "half-plate-armor-of-gleaming",
@@ -1969,8 +1990,15 @@
             "half-plate-armor-of-gleaming--legs",
             "half-plate-armor-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "half-plate-armor-of-gleaming",
+            "half-plate-armor-of-gleaming--head",
+            "half-plate-armor-of-gleaming--shoulders",
+            "half-plate-armor-of-gleaming--bracers",
+            "half-plate-armor-of-gleaming--legs",
+            "half-plate-armor-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "hide-armor-of-gleaming",
@@ -1984,8 +2012,15 @@
             "hide-armor-of-gleaming--legs",
             "hide-armor-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hide-armor-of-gleaming",
+            "hide-armor-of-gleaming--head",
+            "hide-armor-of-gleaming--shoulders",
+            "hide-armor-of-gleaming--bracers",
+            "hide-armor-of-gleaming--legs",
+            "hide-armor-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "leather-armor-of-gleaming",
@@ -1999,8 +2034,15 @@
             "leather-armor-of-gleaming--legs",
             "leather-armor-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "leather-armor-of-gleaming",
+            "leather-armor-of-gleaming--head",
+            "leather-armor-of-gleaming--shoulders",
+            "leather-armor-of-gleaming--bracers",
+            "leather-armor-of-gleaming--legs",
+            "leather-armor-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "padded-armor-of-gleaming",
@@ -2014,8 +2056,15 @@
             "padded-armor-of-gleaming--legs",
             "padded-armor-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "padded-armor-of-gleaming",
+            "padded-armor-of-gleaming--head",
+            "padded-armor-of-gleaming--shoulders",
+            "padded-armor-of-gleaming--bracers",
+            "padded-armor-of-gleaming--legs",
+            "padded-armor-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "plate-armor-of-gleaming",
@@ -2029,8 +2078,15 @@
             "plate-armor-of-gleaming--legs",
             "plate-armor-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "plate-armor-of-gleaming",
+            "plate-armor-of-gleaming--head",
+            "plate-armor-of-gleaming--shoulders",
+            "plate-armor-of-gleaming--bracers",
+            "plate-armor-of-gleaming--legs",
+            "plate-armor-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-mail-of-gleaming",
@@ -2044,8 +2100,15 @@
             "ring-mail-of-gleaming--legs",
             "ring-mail-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-mail-of-gleaming",
+            "ring-mail-of-gleaming--head",
+            "ring-mail-of-gleaming--shoulders",
+            "ring-mail-of-gleaming--bracers",
+            "ring-mail-of-gleaming--legs",
+            "ring-mail-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "scale-mail-of-gleaming",
@@ -2059,8 +2122,15 @@
             "scale-mail-of-gleaming--legs",
             "scale-mail-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scale-mail-of-gleaming",
+            "scale-mail-of-gleaming--head",
+            "scale-mail-of-gleaming--shoulders",
+            "scale-mail-of-gleaming--bracers",
+            "scale-mail-of-gleaming--legs",
+            "scale-mail-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-gleaming",
@@ -2074,8 +2144,15 @@
             "spiked-armor-of-gleaming--legs",
             "spiked-armor-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-gleaming",
+            "spiked-armor-of-gleaming--head",
+            "spiked-armor-of-gleaming--shoulders",
+            "spiked-armor-of-gleaming--bracers",
+            "spiked-armor-of-gleaming--legs",
+            "spiked-armor-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "splint-armor-of-gleaming",
@@ -2089,8 +2166,15 @@
             "splint-armor-of-gleaming--legs",
             "splint-armor-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "splint-armor-of-gleaming",
+            "splint-armor-of-gleaming--head",
+            "splint-armor-of-gleaming--shoulders",
+            "splint-armor-of-gleaming--bracers",
+            "splint-armor-of-gleaming--legs",
+            "splint-armor-of-gleaming--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "studded-leather-armor-of-gleaming",
@@ -2104,8 +2188,15 @@
             "studded-leather-armor-of-gleaming--legs",
             "studded-leather-armor-of-gleaming--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "studded-leather-armor-of-gleaming",
+            "studded-leather-armor-of-gleaming--head",
+            "studded-leather-armor-of-gleaming--shoulders",
+            "studded-leather-armor-of-gleaming--bracers",
+            "studded-leather-armor-of-gleaming--legs",
+            "studded-leather-armor-of-gleaming--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -25745,7 +25836,7 @@
     },
     {
       "family": "Sword of Sharpness",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "double-bladed-scimitar-of-sharpness",
@@ -25754,8 +25845,10 @@
           "artwork_ids": [
             "double-bladed-scimitar-of-sharpness"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "double-bladed-scimitar-of-sharpness"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-sharpness",
@@ -25764,8 +25857,10 @@
           "artwork_ids": [
             "sword-of-sharpness"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-sharpness"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-sharpness-glaive",
@@ -25774,8 +25869,10 @@
           "artwork_ids": [
             "sword-of-sharpness-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-sharpness-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-sharpness-greatsword",
@@ -25784,8 +25881,10 @@
           "artwork_ids": [
             "sword-of-sharpness-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-sharpness-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-sharpness-scimitar",
@@ -25794,8 +25893,10 @@
           "artwork_ids": [
             "sword-of-sharpness-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-sharpness-scimitar"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -26891,7 +26992,7 @@
     },
     {
       "family": "Vorpal Sword",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "vorpal-double-bladed-scimitar",
@@ -26900,8 +27001,10 @@
           "artwork_ids": [
             "vorpal-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vorpal-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "vorpal-sword",
@@ -26910,8 +27013,10 @@
           "artwork_ids": [
             "vorpal-sword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vorpal-sword"
+          ],
+          "status": "approved"
         },
         {
           "id": "vorpal-sword-glaive",
@@ -26920,8 +27025,10 @@
           "artwork_ids": [
             "vorpal-sword-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vorpal-sword-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "vorpal-sword-greatsword",
@@ -26930,8 +27037,10 @@
           "artwork_ids": [
             "vorpal-sword-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vorpal-sword-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "vorpal-sword-scimitar",
@@ -26940,8 +27049,10 @@
           "artwork_ids": [
             "vorpal-sword-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vorpal-sword-scimitar"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -33521,8 +33632,10 @@
           "name": "Armadura reluzente (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-gleaming"
+      ]
     },
     {
       "id": "4dbd170bb8857746",
@@ -33536,8 +33649,10 @@
           "name": "Armadura reluzente (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-gleaming--bracers"
+      ]
     },
     {
       "id": "4367da557336cb6b",
@@ -33551,8 +33666,10 @@
           "name": "Armadura reluzente (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-gleaming--feet"
+      ]
     },
     {
       "id": "8566e3a0ae462e05",
@@ -33566,8 +33683,10 @@
           "name": "Armadura reluzente (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-gleaming--head"
+      ]
     },
     {
       "id": "7b17eada4081efde",
@@ -33581,8 +33700,10 @@
           "name": "Armadura reluzente (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-gleaming--legs"
+      ]
     },
     {
       "id": "b9ce4cbcc3e35d81",
@@ -33596,8 +33717,10 @@
           "name": "Armadura reluzente (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "b4d3559b3f1904d3",
@@ -33611,8 +33734,10 @@
           "name": "Armadura reluzente (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-gleaming"
+      ]
     },
     {
       "id": "b3bde41ac41b9def",
@@ -33626,8 +33751,10 @@
           "name": "Armadura reluzente (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-gleaming--bracers"
+      ]
     },
     {
       "id": "a695712716b5d6f6",
@@ -33641,8 +33768,10 @@
           "name": "Armadura reluzente (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-gleaming--feet"
+      ]
     },
     {
       "id": "be5d0dd8a75c2907",
@@ -33656,8 +33785,10 @@
           "name": "Armadura reluzente (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-gleaming--head"
+      ]
     },
     {
       "id": "960068ffc468fb52",
@@ -33671,8 +33802,10 @@
           "name": "Armadura reluzente (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-gleaming--legs"
+      ]
     },
     {
       "id": "4e2b584157f9aeb1",
@@ -33686,8 +33819,10 @@
           "name": "Armadura reluzente (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "32f9f9faa1c7b072",
@@ -33701,8 +33836,10 @@
           "name": "Armadura reluzente (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-gleaming"
+      ]
     },
     {
       "id": "89cb2a98e669685f",
@@ -33716,8 +33853,10 @@
           "name": "Armadura reluzente (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-gleaming--bracers"
+      ]
     },
     {
       "id": "bc50b596c0e92a99",
@@ -33731,8 +33870,10 @@
           "name": "Armadura reluzente (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-gleaming--feet"
+      ]
     },
     {
       "id": "5f807dcd99472c6f",
@@ -33746,8 +33887,10 @@
           "name": "Armadura reluzente (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-gleaming--head"
+      ]
     },
     {
       "id": "fff1b427bc702336",
@@ -33761,8 +33904,10 @@
           "name": "Armadura reluzente (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-gleaming--legs"
+      ]
     },
     {
       "id": "ea9d8947c178c529",
@@ -33776,8 +33921,10 @@
           "name": "Armadura reluzente (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "003161d52ddbefe7",
@@ -33791,8 +33938,10 @@
           "name": "Armadura reluzente (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-gleaming"
+      ]
     },
     {
       "id": "e9d6e43f04210646",
@@ -33806,8 +33955,10 @@
           "name": "Armadura reluzente (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-gleaming--bracers"
+      ]
     },
     {
       "id": "5feb106e320c248a",
@@ -33821,8 +33972,10 @@
           "name": "Armadura reluzente (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-gleaming--feet"
+      ]
     },
     {
       "id": "cd47c7645cd6f014",
@@ -33836,8 +33989,10 @@
           "name": "Armadura reluzente (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-gleaming--head"
+      ]
     },
     {
       "id": "25ffa1892d153015",
@@ -33851,8 +34006,10 @@
           "name": "Armadura reluzente (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-gleaming--legs"
+      ]
     },
     {
       "id": "ccff5f5f7d1a61b4",
@@ -33866,8 +34023,10 @@
           "name": "Armadura reluzente (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "f5de1209f35e11ac",
@@ -33881,8 +34040,10 @@
           "name": "Armadura reluzente (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-gleaming"
+      ]
     },
     {
       "id": "3f39fef6771de9e8",
@@ -33896,8 +34057,10 @@
           "name": "Armadura reluzente (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-gleaming--bracers"
+      ]
     },
     {
       "id": "500aabef28557245",
@@ -33911,8 +34074,10 @@
           "name": "Armadura reluzente (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-gleaming--feet"
+      ]
     },
     {
       "id": "49c25dec045689e5",
@@ -33926,8 +34091,10 @@
           "name": "Armadura reluzente (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-gleaming--head"
+      ]
     },
     {
       "id": "6df270610b574358",
@@ -33941,8 +34108,10 @@
           "name": "Armadura reluzente (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-gleaming--legs"
+      ]
     },
     {
       "id": "da8e17f6e353ade2",
@@ -33956,8 +34125,10 @@
           "name": "Armadura reluzente (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "6aaf413514f4a4af",
@@ -33971,8 +34142,10 @@
           "name": "Armadura reluzente (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-gleaming"
+      ]
     },
     {
       "id": "22022d238de164ff",
@@ -33986,8 +34159,10 @@
           "name": "Armadura reluzente (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-gleaming--bracers"
+      ]
     },
     {
       "id": "47668c31af16fe6d",
@@ -34001,8 +34176,10 @@
           "name": "Armadura reluzente (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-gleaming--feet"
+      ]
     },
     {
       "id": "3e1a6a14d501789b",
@@ -34016,8 +34193,10 @@
           "name": "Armadura reluzente (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-gleaming--head"
+      ]
     },
     {
       "id": "b243f022ebdb3f45",
@@ -34031,8 +34210,10 @@
           "name": "Armadura reluzente (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-gleaming--legs"
+      ]
     },
     {
       "id": "cc86a722be2e623d",
@@ -34046,8 +34227,10 @@
           "name": "Armadura reluzente (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "f077e9f9d21c5fa6",
@@ -34061,8 +34244,10 @@
           "name": "Armadura reluzente (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-gleaming"
+      ]
     },
     {
       "id": "5b057460f62dcddb",
@@ -34076,8 +34261,10 @@
           "name": "Armadura reluzente (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-gleaming--bracers"
+      ]
     },
     {
       "id": "8ed26a079b6af4b4",
@@ -34091,8 +34278,10 @@
           "name": "Armadura reluzente (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-gleaming--feet"
+      ]
     },
     {
       "id": "818c5f1bbf488998",
@@ -34106,8 +34295,10 @@
           "name": "Armadura reluzente (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-gleaming--head"
+      ]
     },
     {
       "id": "f6152fb1a65798ba",
@@ -34121,8 +34312,10 @@
           "name": "Armadura reluzente (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-gleaming--legs"
+      ]
     },
     {
       "id": "b063bbc24a19253c",
@@ -34136,8 +34329,10 @@
           "name": "Armadura reluzente (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "9e60e0a200b95fd6",
@@ -34151,8 +34346,10 @@
           "name": "Armadura reluzente (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-gleaming"
+      ]
     },
     {
       "id": "fb0591fdb62535d9",
@@ -34166,8 +34363,10 @@
           "name": "Armadura reluzente (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-gleaming--bracers"
+      ]
     },
     {
       "id": "869f9c46e83ed5f9",
@@ -34181,8 +34380,10 @@
           "name": "Armadura reluzente (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-gleaming--feet"
+      ]
     },
     {
       "id": "3d714a5aa064d2c5",
@@ -34196,8 +34397,10 @@
           "name": "Armadura reluzente (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-gleaming--head"
+      ]
     },
     {
       "id": "4464d5993d3440c2",
@@ -34211,8 +34414,10 @@
           "name": "Armadura reluzente (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-gleaming--legs"
+      ]
     },
     {
       "id": "fe77b751437b779c",
@@ -34226,8 +34431,10 @@
           "name": "Armadura reluzente (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "c26119b3041c04b5",
@@ -34241,8 +34448,10 @@
           "name": "Armadura reluzente (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-gleaming"
+      ]
     },
     {
       "id": "4564cfb2c1735b8d",
@@ -34256,8 +34465,10 @@
           "name": "Armadura reluzente (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-gleaming--bracers"
+      ]
     },
     {
       "id": "8af468b0fe4885f5",
@@ -34271,8 +34482,10 @@
           "name": "Armadura reluzente (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-gleaming--feet"
+      ]
     },
     {
       "id": "1699dfad20e982a7",
@@ -34286,8 +34499,10 @@
           "name": "Armadura reluzente (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-gleaming--head"
+      ]
     },
     {
       "id": "949add3278f928e6",
@@ -34301,8 +34516,10 @@
           "name": "Armadura reluzente (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-gleaming--legs"
+      ]
     },
     {
       "id": "b5ed95d3760d9b6c",
@@ -34316,8 +34533,10 @@
           "name": "Armadura reluzente (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "e412a71dfc0734c1",
@@ -34331,8 +34550,10 @@
           "name": "Armadura reluzente (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-gleaming"
+      ]
     },
     {
       "id": "b2b8aab97f790d13",
@@ -34346,8 +34567,10 @@
           "name": "Armadura reluzente (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-gleaming--bracers"
+      ]
     },
     {
       "id": "f1e80903ac5be54d",
@@ -34361,8 +34584,10 @@
           "name": "Armadura reluzente (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-gleaming--feet"
+      ]
     },
     {
       "id": "c5e0c7066f273f0b",
@@ -34376,8 +34601,10 @@
           "name": "Armadura reluzente (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-gleaming--head"
+      ]
     },
     {
       "id": "c52e33459f2be880",
@@ -34391,8 +34618,10 @@
           "name": "Armadura reluzente (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-gleaming--legs"
+      ]
     },
     {
       "id": "b95c680b5c1d92f1",
@@ -34406,8 +34635,10 @@
           "name": "Armadura reluzente (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "77d044a9bbdb433c",
@@ -34421,8 +34652,10 @@
           "name": "Armadura reluzente (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-gleaming"
+      ]
     },
     {
       "id": "7311b2cab2b0485f",
@@ -34436,8 +34669,10 @@
           "name": "Armadura reluzente (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-gleaming--bracers"
+      ]
     },
     {
       "id": "07fdfd32f26e8267",
@@ -34451,8 +34686,10 @@
           "name": "Armadura reluzente (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-gleaming--feet"
+      ]
     },
     {
       "id": "e44440cf5d9fa11d",
@@ -34466,8 +34703,10 @@
           "name": "Armadura reluzente (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-gleaming--head"
+      ]
     },
     {
       "id": "57a883f864fe7079",
@@ -34481,8 +34720,10 @@
           "name": "Armadura reluzente (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-gleaming--legs"
+      ]
     },
     {
       "id": "21c9fd011d3f51fe",
@@ -34496,8 +34737,10 @@
           "name": "Armadura reluzente (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "9f05611f3b2d22ab",
@@ -34511,8 +34754,10 @@
           "name": "Armadura reluzente (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-gleaming"
+      ]
     },
     {
       "id": "b598932eb345a13c",
@@ -34526,8 +34771,10 @@
           "name": "Armadura reluzente (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-gleaming--bracers"
+      ]
     },
     {
       "id": "cfe686abd6f13411",
@@ -34541,8 +34788,10 @@
           "name": "Armadura reluzente (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-gleaming--feet"
+      ]
     },
     {
       "id": "d091b4f7f6ca02a5",
@@ -34556,8 +34805,10 @@
           "name": "Armadura reluzente (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-gleaming--head"
+      ]
     },
     {
       "id": "f2d0314830c4cb9b",
@@ -34571,8 +34822,10 @@
           "name": "Armadura reluzente (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-gleaming--legs"
+      ]
     },
     {
       "id": "2285ac256bdf9451",
@@ -34586,8 +34839,10 @@
           "name": "Armadura reluzente (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "beab334ed15c63ef",
@@ -34601,8 +34856,10 @@
           "name": "Armadura reluzente (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-gleaming"
+      ]
     },
     {
       "id": "9efadc1fe5d423f5",
@@ -34616,8 +34873,10 @@
           "name": "Armadura reluzente (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-gleaming--bracers"
+      ]
     },
     {
       "id": "d58d2389224b5cb8",
@@ -34631,8 +34890,10 @@
           "name": "Armadura reluzente (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-gleaming--feet"
+      ]
     },
     {
       "id": "c2f0f22eed2d070c",
@@ -34646,8 +34907,10 @@
           "name": "Armadura reluzente (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-gleaming--head"
+      ]
     },
     {
       "id": "f0c6cf91f312775a",
@@ -34661,8 +34924,10 @@
           "name": "Armadura reluzente (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-gleaming--legs"
+      ]
     },
     {
       "id": "9da19d976f9f0347",
@@ -34676,8 +34941,10 @@
           "name": "Armadura reluzente (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-gleaming--shoulders"
+      ]
     },
     {
       "id": "35f5da69b4b83022",
@@ -87423,8 +87690,10 @@
           "name": "Espada da afiação (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "double-bladed-scimitar-of-sharpness"
+      ]
     },
     {
       "id": "28983395cc471899",
@@ -87438,8 +87707,10 @@
           "name": "Espada da afiação (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-sharpness-glaive"
+      ]
     },
     {
       "id": "516b3144b6e4698b",
@@ -87453,8 +87724,10 @@
           "name": "Espada da afiação (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-sharpness-greatsword"
+      ]
     },
     {
       "id": "67383e0523189b51",
@@ -87468,8 +87741,10 @@
           "name": "Espada da afiação (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-sharpness"
+      ]
     },
     {
       "id": "6b71c7ce04a3ddd7",
@@ -87483,8 +87758,10 @@
           "name": "Espada da afiação (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-sharpness-scimitar"
+      ]
     },
     {
       "id": "92925e17990b8890",
@@ -89283,8 +89560,10 @@
           "name": "Espada vorpal (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vorpal-double-bladed-scimitar"
+      ]
     },
     {
       "id": "5786474385cc0d60",
@@ -89298,8 +89577,10 @@
           "name": "Espada vorpal (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vorpal-sword-glaive"
+      ]
     },
     {
       "id": "1ff66c1034ad0bac",
@@ -89313,8 +89594,10 @@
           "name": "Espada vorpal (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vorpal-sword-greatsword"
+      ]
     },
     {
       "id": "85e370ae6dbedf55",
@@ -89328,8 +89611,10 @@
           "name": "Espada vorpal (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vorpal-sword"
+      ]
     },
     {
       "id": "fb33820de7666f52",
@@ -89343,8 +89628,10 @@
           "name": "Espada vorpal (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vorpal-sword-scimitar"
+      ]
     },
     {
       "id": "5666747a1f142644",
