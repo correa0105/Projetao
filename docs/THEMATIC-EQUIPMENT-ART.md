@@ -59,3 +59,9 @@ Publicação de Antimagia e Defensor verificada em produção: 470 imagens e ref
 ### Leveza e dos Caídos
 
 138 artes nativas revisadas em fundo claro e escuro: 13 modelos de Leveza e dez dos Caídos, com seis peças cada e preservação de acessórios legados de compras parciais. Anéis, escamas e peitoral foram refeitos para respeitar a construção real; ombreiras de talas e transparências com halo foram corrigidas. As peças têm desenhos próprios e usam o modelo correspondente como referência. PNGs originais: 295120582 bytes; cópias WebP: 14280790 bytes. Total aprovado no projeto: 608 artes; 3.564 artes físicas ainda pendentes.
+
+Leveza e dos Caídos publicados e verificados em produção: 608 imagens e referências conferidas por hash via HTTPS, saúde normal e ilustrador ativo. Backup anterior preservado.
+
+### Cast-Off, Feywrought e Gloomwrought
+
+234 artes nativas revisadas em fundos claro e escuro: 13 modelos de cada família, com seis peças por modelo e preservação dos acessórios legados. Foram completadas as 14 peças pendentes de Gloomwrought e corrigido o halo nas botas de escamas. Os originais PNG e os prompts ficam preservados; as cópias WebP mantêm proporção e transparência. PNGs: 511057913 bytes; WebP: 23526182 bytes. Total aprovado: 842 artes. O acervo integral permanece em andamento. Os quatro testes de integridade e preservação de dados passaram; a loja foi conferida em 247 modelos nas larguras 1440/390 px, sem erros de página ou imagens ausentes. Evidências em `.local/castoff-fey-gloom-20261104/`. Publicação deste lote ainda pendente.

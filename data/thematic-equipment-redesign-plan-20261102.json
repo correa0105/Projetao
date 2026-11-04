@@ -3,10 +3,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4172,
-    "approved_artworks": 608,
-    "pending_artworks": 3564,
+    "approved_artworks": 842,
+    "pending_artworks": 3330,
     "catalog_references": 4327,
-    "approved_references": 608
+    "approved_references": 842
   },
   "family_coverage": [
     {
@@ -6597,7 +6597,7 @@
     },
     {
       "family": "Cast-Off Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "cast-off-breastplate",
@@ -6611,8 +6611,15 @@
             "cast-off-breastplate--legs",
             "cast-off-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-breastplate",
+            "cast-off-breastplate--head",
+            "cast-off-breastplate--shoulders",
+            "cast-off-breastplate--bracers",
+            "cast-off-breastplate--legs",
+            "cast-off-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-chain-mail",
@@ -6626,8 +6633,15 @@
             "cast-off-chain-mail--legs",
             "cast-off-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-chain-mail",
+            "cast-off-chain-mail--head",
+            "cast-off-chain-mail--shoulders",
+            "cast-off-chain-mail--bracers",
+            "cast-off-chain-mail--legs",
+            "cast-off-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-chain-shirt",
@@ -6641,8 +6655,15 @@
             "cast-off-chain-shirt--legs",
             "cast-off-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-chain-shirt",
+            "cast-off-chain-shirt--head",
+            "cast-off-chain-shirt--shoulders",
+            "cast-off-chain-shirt--bracers",
+            "cast-off-chain-shirt--legs",
+            "cast-off-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-half-plate-armor",
@@ -6656,8 +6677,15 @@
             "cast-off-half-plate-armor--legs",
             "cast-off-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-half-plate-armor",
+            "cast-off-half-plate-armor--head",
+            "cast-off-half-plate-armor--shoulders",
+            "cast-off-half-plate-armor--bracers",
+            "cast-off-half-plate-armor--legs",
+            "cast-off-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-hide-armor",
@@ -6671,8 +6699,15 @@
             "cast-off-hide-armor--legs",
             "cast-off-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-hide-armor",
+            "cast-off-hide-armor--head",
+            "cast-off-hide-armor--shoulders",
+            "cast-off-hide-armor--bracers",
+            "cast-off-hide-armor--legs",
+            "cast-off-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-leather-armor",
@@ -6686,8 +6721,15 @@
             "cast-off-leather-armor--legs",
             "cast-off-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-leather-armor",
+            "cast-off-leather-armor--head",
+            "cast-off-leather-armor--shoulders",
+            "cast-off-leather-armor--bracers",
+            "cast-off-leather-armor--legs",
+            "cast-off-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-padded-armor",
@@ -6701,8 +6743,15 @@
             "cast-off-padded-armor--legs",
             "cast-off-padded-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-padded-armor",
+            "cast-off-padded-armor--head",
+            "cast-off-padded-armor--shoulders",
+            "cast-off-padded-armor--bracers",
+            "cast-off-padded-armor--legs",
+            "cast-off-padded-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-plate-armor",
@@ -6716,8 +6765,15 @@
             "cast-off-plate-armor--legs",
             "cast-off-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-plate-armor",
+            "cast-off-plate-armor--head",
+            "cast-off-plate-armor--shoulders",
+            "cast-off-plate-armor--bracers",
+            "cast-off-plate-armor--legs",
+            "cast-off-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-ring-mail",
@@ -6731,8 +6787,15 @@
             "cast-off-ring-mail--legs",
             "cast-off-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-ring-mail",
+            "cast-off-ring-mail--head",
+            "cast-off-ring-mail--shoulders",
+            "cast-off-ring-mail--bracers",
+            "cast-off-ring-mail--legs",
+            "cast-off-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-scale-mail",
@@ -6746,8 +6809,15 @@
             "cast-off-scale-mail--legs",
             "cast-off-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-scale-mail",
+            "cast-off-scale-mail--head",
+            "cast-off-scale-mail--shoulders",
+            "cast-off-scale-mail--bracers",
+            "cast-off-scale-mail--legs",
+            "cast-off-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-spiked-armor",
@@ -6761,8 +6831,15 @@
             "cast-off-spiked-armor--legs",
             "cast-off-spiked-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-spiked-armor",
+            "cast-off-spiked-armor--head",
+            "cast-off-spiked-armor--shoulders",
+            "cast-off-spiked-armor--bracers",
+            "cast-off-spiked-armor--legs",
+            "cast-off-spiked-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-splint-armor",
@@ -6776,8 +6853,15 @@
             "cast-off-splint-armor--legs",
             "cast-off-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-splint-armor",
+            "cast-off-splint-armor--head",
+            "cast-off-splint-armor--shoulders",
+            "cast-off-splint-armor--bracers",
+            "cast-off-splint-armor--legs",
+            "cast-off-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "cast-off-studded-leather-armor",
@@ -6791,8 +6875,15 @@
             "cast-off-studded-leather-armor--legs",
             "cast-off-studded-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cast-off-studded-leather-armor",
+            "cast-off-studded-leather-armor--head",
+            "cast-off-studded-leather-armor--shoulders",
+            "cast-off-studded-leather-armor--bracers",
+            "cast-off-studded-leather-armor--legs",
+            "cast-off-studded-leather-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -16332,7 +16423,7 @@
     },
     {
       "family": "Feywrought Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "feywrought-breastplate",
@@ -16346,8 +16437,15 @@
             "feywrought-breastplate--legs",
             "feywrought-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-breastplate",
+            "feywrought-breastplate--head",
+            "feywrought-breastplate--shoulders",
+            "feywrought-breastplate--bracers",
+            "feywrought-breastplate--legs",
+            "feywrought-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-chain-mail",
@@ -16361,8 +16459,15 @@
             "feywrought-chain-mail--legs",
             "feywrought-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-chain-mail",
+            "feywrought-chain-mail--head",
+            "feywrought-chain-mail--shoulders",
+            "feywrought-chain-mail--bracers",
+            "feywrought-chain-mail--legs",
+            "feywrought-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-chain-shirt",
@@ -16376,8 +16481,15 @@
             "feywrought-chain-shirt--legs",
             "feywrought-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-chain-shirt",
+            "feywrought-chain-shirt--head",
+            "feywrought-chain-shirt--shoulders",
+            "feywrought-chain-shirt--bracers",
+            "feywrought-chain-shirt--legs",
+            "feywrought-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-half-plate-armor",
@@ -16391,8 +16503,15 @@
             "feywrought-half-plate-armor--legs",
             "feywrought-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-half-plate-armor",
+            "feywrought-half-plate-armor--head",
+            "feywrought-half-plate-armor--shoulders",
+            "feywrought-half-plate-armor--bracers",
+            "feywrought-half-plate-armor--legs",
+            "feywrought-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-hide-armor",
@@ -16406,8 +16525,15 @@
             "feywrought-hide-armor--legs",
             "feywrought-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-hide-armor",
+            "feywrought-hide-armor--head",
+            "feywrought-hide-armor--shoulders",
+            "feywrought-hide-armor--bracers",
+            "feywrought-hide-armor--legs",
+            "feywrought-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-leather-armor",
@@ -16421,8 +16547,15 @@
             "feywrought-leather-armor--legs",
             "feywrought-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-leather-armor",
+            "feywrought-leather-armor--head",
+            "feywrought-leather-armor--shoulders",
+            "feywrought-leather-armor--bracers",
+            "feywrought-leather-armor--legs",
+            "feywrought-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-padded-armor",
@@ -16436,8 +16569,15 @@
             "feywrought-padded-armor--legs",
             "feywrought-padded-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-padded-armor",
+            "feywrought-padded-armor--head",
+            "feywrought-padded-armor--shoulders",
+            "feywrought-padded-armor--bracers",
+            "feywrought-padded-armor--legs",
+            "feywrought-padded-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-plate-armor",
@@ -16451,8 +16591,15 @@
             "feywrought-plate-armor--legs",
             "feywrought-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-plate-armor",
+            "feywrought-plate-armor--head",
+            "feywrought-plate-armor--shoulders",
+            "feywrought-plate-armor--bracers",
+            "feywrought-plate-armor--legs",
+            "feywrought-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-ring-mail",
@@ -16466,8 +16613,15 @@
             "feywrought-ring-mail--legs",
             "feywrought-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-ring-mail",
+            "feywrought-ring-mail--head",
+            "feywrought-ring-mail--shoulders",
+            "feywrought-ring-mail--bracers",
+            "feywrought-ring-mail--legs",
+            "feywrought-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-scale-mail",
@@ -16481,8 +16635,15 @@
             "feywrought-scale-mail--legs",
             "feywrought-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-scale-mail",
+            "feywrought-scale-mail--head",
+            "feywrought-scale-mail--shoulders",
+            "feywrought-scale-mail--bracers",
+            "feywrought-scale-mail--legs",
+            "feywrought-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-spiked-armor",
@@ -16496,8 +16657,15 @@
             "feywrought-spiked-armor--legs",
             "feywrought-spiked-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-spiked-armor",
+            "feywrought-spiked-armor--head",
+            "feywrought-spiked-armor--shoulders",
+            "feywrought-spiked-armor--bracers",
+            "feywrought-spiked-armor--legs",
+            "feywrought-spiked-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-splint-armor",
@@ -16511,8 +16679,15 @@
             "feywrought-splint-armor--legs",
             "feywrought-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-splint-armor",
+            "feywrought-splint-armor--head",
+            "feywrought-splint-armor--shoulders",
+            "feywrought-splint-armor--bracers",
+            "feywrought-splint-armor--legs",
+            "feywrought-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "feywrought-studded-leather-armor",
@@ -16526,8 +16701,15 @@
             "feywrought-studded-leather-armor--legs",
             "feywrought-studded-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feywrought-studded-leather-armor",
+            "feywrought-studded-leather-armor--head",
+            "feywrought-studded-leather-armor--shoulders",
+            "feywrought-studded-leather-armor--bracers",
+            "feywrought-studded-leather-armor--legs",
+            "feywrought-studded-leather-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -17942,7 +18124,7 @@
     },
     {
       "family": "Gloomwrought Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "gloomwrought-breastplate",
@@ -17956,8 +18138,15 @@
             "gloomwrought-breastplate--legs",
             "gloomwrought-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-breastplate",
+            "gloomwrought-breastplate--head",
+            "gloomwrought-breastplate--shoulders",
+            "gloomwrought-breastplate--bracers",
+            "gloomwrought-breastplate--legs",
+            "gloomwrought-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-chain-mail",
@@ -17971,8 +18160,15 @@
             "gloomwrought-chain-mail--legs",
             "gloomwrought-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-chain-mail",
+            "gloomwrought-chain-mail--head",
+            "gloomwrought-chain-mail--shoulders",
+            "gloomwrought-chain-mail--bracers",
+            "gloomwrought-chain-mail--legs",
+            "gloomwrought-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-chain-shirt",
@@ -17986,8 +18182,15 @@
             "gloomwrought-chain-shirt--legs",
             "gloomwrought-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-chain-shirt",
+            "gloomwrought-chain-shirt--head",
+            "gloomwrought-chain-shirt--shoulders",
+            "gloomwrought-chain-shirt--bracers",
+            "gloomwrought-chain-shirt--legs",
+            "gloomwrought-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-half-plate-armor",
@@ -18001,8 +18204,15 @@
             "gloomwrought-half-plate-armor--legs",
             "gloomwrought-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-half-plate-armor",
+            "gloomwrought-half-plate-armor--head",
+            "gloomwrought-half-plate-armor--shoulders",
+            "gloomwrought-half-plate-armor--bracers",
+            "gloomwrought-half-plate-armor--legs",
+            "gloomwrought-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-hide-armor",
@@ -18016,8 +18226,15 @@
             "gloomwrought-hide-armor--legs",
             "gloomwrought-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-hide-armor",
+            "gloomwrought-hide-armor--head",
+            "gloomwrought-hide-armor--shoulders",
+            "gloomwrought-hide-armor--bracers",
+            "gloomwrought-hide-armor--legs",
+            "gloomwrought-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-leather-armor",
@@ -18031,8 +18248,15 @@
             "gloomwrought-leather-armor--legs",
             "gloomwrought-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-leather-armor",
+            "gloomwrought-leather-armor--head",
+            "gloomwrought-leather-armor--shoulders",
+            "gloomwrought-leather-armor--bracers",
+            "gloomwrought-leather-armor--legs",
+            "gloomwrought-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-padded-armor",
@@ -18046,8 +18270,15 @@
             "gloomwrought-padded-armor--legs",
             "gloomwrought-padded-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-padded-armor",
+            "gloomwrought-padded-armor--head",
+            "gloomwrought-padded-armor--shoulders",
+            "gloomwrought-padded-armor--bracers",
+            "gloomwrought-padded-armor--legs",
+            "gloomwrought-padded-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-plate-armor",
@@ -18061,8 +18292,15 @@
             "gloomwrought-plate-armor--legs",
             "gloomwrought-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-plate-armor",
+            "gloomwrought-plate-armor--head",
+            "gloomwrought-plate-armor--shoulders",
+            "gloomwrought-plate-armor--bracers",
+            "gloomwrought-plate-armor--legs",
+            "gloomwrought-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-ring-mail",
@@ -18076,8 +18314,15 @@
             "gloomwrought-ring-mail--legs",
             "gloomwrought-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-ring-mail",
+            "gloomwrought-ring-mail--head",
+            "gloomwrought-ring-mail--shoulders",
+            "gloomwrought-ring-mail--bracers",
+            "gloomwrought-ring-mail--legs",
+            "gloomwrought-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-scale-mail",
@@ -18091,8 +18336,15 @@
             "gloomwrought-scale-mail--legs",
             "gloomwrought-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-scale-mail",
+            "gloomwrought-scale-mail--head",
+            "gloomwrought-scale-mail--shoulders",
+            "gloomwrought-scale-mail--bracers",
+            "gloomwrought-scale-mail--legs",
+            "gloomwrought-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-spiked-armor",
@@ -18106,8 +18358,15 @@
             "gloomwrought-spiked-armor--legs",
             "gloomwrought-spiked-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-spiked-armor",
+            "gloomwrought-spiked-armor--head",
+            "gloomwrought-spiked-armor--shoulders",
+            "gloomwrought-spiked-armor--bracers",
+            "gloomwrought-spiked-armor--legs",
+            "gloomwrought-spiked-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-splint-armor",
@@ -18121,8 +18380,15 @@
             "gloomwrought-splint-armor--legs",
             "gloomwrought-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-splint-armor",
+            "gloomwrought-splint-armor--head",
+            "gloomwrought-splint-armor--shoulders",
+            "gloomwrought-splint-armor--bracers",
+            "gloomwrought-splint-armor--legs",
+            "gloomwrought-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "gloomwrought-studded-leather-armor",
@@ -18136,8 +18402,15 @@
             "gloomwrought-studded-leather-armor--legs",
             "gloomwrought-studded-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloomwrought-studded-leather-armor",
+            "gloomwrought-studded-leather-armor--head",
+            "gloomwrought-studded-leather-armor--shoulders",
+            "gloomwrought-studded-leather-armor--bracers",
+            "gloomwrought-studded-leather-armor--legs",
+            "gloomwrought-studded-leather-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -54802,8 +55075,10 @@
           "name": "Armadura de retirada rápida (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-breastplate"
+      ]
     },
     {
       "id": "3dbed7db23e3e409",
@@ -54817,8 +55092,10 @@
           "name": "Armadura de retirada rápida (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-breastplate--bracers"
+      ]
     },
     {
       "id": "35373dee595f873c",
@@ -54832,8 +55109,10 @@
           "name": "Armadura de retirada rápida (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-breastplate--feet"
+      ]
     },
     {
       "id": "0479b6b11d39de5c",
@@ -54847,8 +55126,10 @@
           "name": "Armadura de retirada rápida (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-breastplate--head"
+      ]
     },
     {
       "id": "3abe1aa635796e82",
@@ -54862,8 +55143,10 @@
           "name": "Armadura de retirada rápida (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-breastplate--legs"
+      ]
     },
     {
       "id": "32d8e7f25b3df8b3",
@@ -54877,8 +55160,10 @@
           "name": "Armadura de retirada rápida (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-breastplate--shoulders"
+      ]
     },
     {
       "id": "76ee494275d5a2ff",
@@ -54892,8 +55177,10 @@
           "name": "Armadura de retirada rápida (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-mail"
+      ]
     },
     {
       "id": "5c6f2bbdd90223b7",
@@ -54907,8 +55194,10 @@
           "name": "Armadura de retirada rápida (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-mail--bracers"
+      ]
     },
     {
       "id": "54a1506d79fd76e3",
@@ -54922,8 +55211,10 @@
           "name": "Armadura de retirada rápida (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-mail--feet"
+      ]
     },
     {
       "id": "5edddda6ede43a7d",
@@ -54937,8 +55228,10 @@
           "name": "Armadura de retirada rápida (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-mail--head"
+      ]
     },
     {
       "id": "ed2a0a019b05b1a0",
@@ -54952,8 +55245,10 @@
           "name": "Armadura de retirada rápida (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-mail--legs"
+      ]
     },
     {
       "id": "a8ed6bb2e1bc7b1a",
@@ -54967,8 +55262,10 @@
           "name": "Armadura de retirada rápida (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-mail--shoulders"
+      ]
     },
     {
       "id": "f36d9e9e8b63506c",
@@ -54982,8 +55279,10 @@
           "name": "Armadura de retirada rápida (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-shirt"
+      ]
     },
     {
       "id": "714391df70b92c8e",
@@ -54997,8 +55296,10 @@
           "name": "Armadura de retirada rápida (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-shirt--bracers"
+      ]
     },
     {
       "id": "ebf1e90650ab7471",
@@ -55012,8 +55313,10 @@
           "name": "Armadura de retirada rápida (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-shirt--feet"
+      ]
     },
     {
       "id": "8a9e0222f823279a",
@@ -55027,8 +55330,10 @@
           "name": "Armadura de retirada rápida (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-shirt--head"
+      ]
     },
     {
       "id": "ae892539f2bca3e5",
@@ -55042,8 +55347,10 @@
           "name": "Armadura de retirada rápida (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-shirt--legs"
+      ]
     },
     {
       "id": "76395cce07ed2043",
@@ -55057,8 +55364,10 @@
           "name": "Armadura de retirada rápida (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "cd1172295559b8d6",
@@ -55072,8 +55381,10 @@
           "name": "Armadura de retirada rápida (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-half-plate-armor"
+      ]
     },
     {
       "id": "79d853bc8088e4d0",
@@ -55087,8 +55398,10 @@
           "name": "Armadura de retirada rápida (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "c9350b353ca9e53e",
@@ -55102,8 +55415,10 @@
           "name": "Armadura de retirada rápida (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-half-plate-armor--feet"
+      ]
     },
     {
       "id": "8ec367bc1d210796",
@@ -55117,8 +55432,10 @@
           "name": "Armadura de retirada rápida (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-half-plate-armor--head"
+      ]
     },
     {
       "id": "2bb12bf3a98c1a64",
@@ -55132,8 +55449,10 @@
           "name": "Armadura de retirada rápida (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-half-plate-armor--legs"
+      ]
     },
     {
       "id": "59e44ee7869a4e4e",
@@ -55147,8 +55466,10 @@
           "name": "Armadura de retirada rápida (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "c874bceacc45ff80",
@@ -55162,8 +55483,10 @@
           "name": "Armadura de retirada rápida (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-hide-armor"
+      ]
     },
     {
       "id": "93eb28a828c89b76",
@@ -55177,8 +55500,10 @@
           "name": "Armadura de retirada rápida (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-hide-armor--bracers"
+      ]
     },
     {
       "id": "4b5ddf539e3ec4ad",
@@ -55192,8 +55517,10 @@
           "name": "Armadura de retirada rápida (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-hide-armor--feet"
+      ]
     },
     {
       "id": "4e89a23c6fd61088",
@@ -55207,8 +55534,10 @@
           "name": "Armadura de retirada rápida (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-hide-armor--head"
+      ]
     },
     {
       "id": "8d055a1492886efb",
@@ -55222,8 +55551,10 @@
           "name": "Armadura de retirada rápida (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-hide-armor--legs"
+      ]
     },
     {
       "id": "70d64e86d2081397",
@@ -55237,8 +55568,10 @@
           "name": "Armadura de retirada rápida (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-hide-armor--shoulders"
+      ]
     },
     {
       "id": "9f2cf2afd64d69d2",
@@ -55252,8 +55585,10 @@
           "name": "Armadura de retirada rápida (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-leather-armor"
+      ]
     },
     {
       "id": "3ac07ff4e2d7a41e",
@@ -55267,8 +55602,10 @@
           "name": "Armadura de retirada rápida (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-leather-armor--bracers"
+      ]
     },
     {
       "id": "4eae4b2ff899f2ce",
@@ -55282,8 +55619,10 @@
           "name": "Armadura de retirada rápida (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-leather-armor--feet"
+      ]
     },
     {
       "id": "7bff2c24997e9f31",
@@ -55297,8 +55636,10 @@
           "name": "Armadura de retirada rápida (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-leather-armor--head"
+      ]
     },
     {
       "id": "8b763bb92f388873",
@@ -55312,8 +55653,10 @@
           "name": "Armadura de retirada rápida (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-leather-armor--legs"
+      ]
     },
     {
       "id": "3e568d426c231115",
@@ -55327,8 +55670,10 @@
           "name": "Armadura de retirada rápida (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-leather-armor--shoulders"
+      ]
     },
     {
       "id": "027ccbaafb45da6e",
@@ -55342,8 +55687,10 @@
           "name": "Armadura de retirada rápida (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-padded-armor"
+      ]
     },
     {
       "id": "3c1de8f4e54340e4",
@@ -55357,8 +55704,10 @@
           "name": "Armadura de retirada rápida (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-padded-armor--bracers"
+      ]
     },
     {
       "id": "c8f2781b70da4cf2",
@@ -55372,8 +55721,10 @@
           "name": "Armadura de retirada rápida (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-padded-armor--feet"
+      ]
     },
     {
       "id": "05b12113b2c02acb",
@@ -55387,8 +55738,10 @@
           "name": "Armadura de retirada rápida (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-padded-armor--head"
+      ]
     },
     {
       "id": "2b86f7a07acb3e4c",
@@ -55402,8 +55755,10 @@
           "name": "Armadura de retirada rápida (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-padded-armor--legs"
+      ]
     },
     {
       "id": "08173c4b3ceacfd4",
@@ -55417,8 +55772,10 @@
           "name": "Armadura de retirada rápida (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-padded-armor--shoulders"
+      ]
     },
     {
       "id": "1135e8bf684c7b83",
@@ -55432,8 +55789,10 @@
           "name": "Armadura de retirada rápida (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-plate-armor"
+      ]
     },
     {
       "id": "7c080d3e7d919977",
@@ -55447,8 +55806,10 @@
           "name": "Armadura de retirada rápida (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-plate-armor--bracers"
+      ]
     },
     {
       "id": "ad404906fd3cfe26",
@@ -55462,8 +55823,10 @@
           "name": "Armadura de retirada rápida (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-plate-armor--feet"
+      ]
     },
     {
       "id": "c17b2c94f55cf886",
@@ -55477,8 +55840,10 @@
           "name": "Armadura de retirada rápida (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-plate-armor--head"
+      ]
     },
     {
       "id": "6f20f4d1b0087b3a",
@@ -55492,8 +55857,10 @@
           "name": "Armadura de retirada rápida (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-plate-armor--legs"
+      ]
     },
     {
       "id": "20b1b8af31afc051",
@@ -55507,8 +55874,10 @@
           "name": "Armadura de retirada rápida (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-plate-armor--shoulders"
+      ]
     },
     {
       "id": "db7d0ac78052f793",
@@ -55522,8 +55891,10 @@
           "name": "Armadura de retirada rápida (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-ring-mail"
+      ]
     },
     {
       "id": "7cfe69f53fbdb3d7",
@@ -55537,8 +55908,10 @@
           "name": "Armadura de retirada rápida (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-ring-mail--bracers"
+      ]
     },
     {
       "id": "8b6ab1b06d6f0c6b",
@@ -55552,8 +55925,10 @@
           "name": "Armadura de retirada rápida (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-ring-mail--feet"
+      ]
     },
     {
       "id": "e94811cf996d3449",
@@ -55567,8 +55942,10 @@
           "name": "Armadura de retirada rápida (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-ring-mail--head"
+      ]
     },
     {
       "id": "be418c65590c39f6",
@@ -55582,8 +55959,10 @@
           "name": "Armadura de retirada rápida (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-ring-mail--legs"
+      ]
     },
     {
       "id": "28298fc3ad11c3b0",
@@ -55597,8 +55976,10 @@
           "name": "Armadura de retirada rápida (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-ring-mail--shoulders"
+      ]
     },
     {
       "id": "c7496c4f835a8ad6",
@@ -55612,8 +55993,10 @@
           "name": "Armadura de retirada rápida (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-scale-mail"
+      ]
     },
     {
       "id": "83c4cfbb9731dccf",
@@ -55627,8 +56010,10 @@
           "name": "Armadura de retirada rápida (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-scale-mail--bracers"
+      ]
     },
     {
       "id": "6b89136ef7d4d26e",
@@ -55642,8 +56027,10 @@
           "name": "Armadura de retirada rápida (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-scale-mail--feet"
+      ]
     },
     {
       "id": "a03500db326f122f",
@@ -55657,8 +56044,10 @@
           "name": "Armadura de retirada rápida (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-scale-mail--head"
+      ]
     },
     {
       "id": "7223f498656f6d7e",
@@ -55672,8 +56061,10 @@
           "name": "Armadura de retirada rápida (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-scale-mail--legs"
+      ]
     },
     {
       "id": "2764984b1de35826",
@@ -55687,8 +56078,10 @@
           "name": "Armadura de retirada rápida (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-scale-mail--shoulders"
+      ]
     },
     {
       "id": "297048d52da9c0e5",
@@ -55702,8 +56095,10 @@
           "name": "Armadura de retirada rápida (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-spiked-armor"
+      ]
     },
     {
       "id": "b91c503ade2f6a2a",
@@ -55717,8 +56112,10 @@
           "name": "Armadura de retirada rápida (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-spiked-armor--bracers"
+      ]
     },
     {
       "id": "815f4aa4586eafc1",
@@ -55732,8 +56129,10 @@
           "name": "Armadura de retirada rápida (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-spiked-armor--feet"
+      ]
     },
     {
       "id": "81896bc533f2eee5",
@@ -55747,8 +56146,10 @@
           "name": "Armadura de retirada rápida (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-spiked-armor--head"
+      ]
     },
     {
       "id": "15e17249eec8b9c1",
@@ -55762,8 +56163,10 @@
           "name": "Armadura de retirada rápida (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-spiked-armor--legs"
+      ]
     },
     {
       "id": "1b9c27079e79a136",
@@ -55777,8 +56180,10 @@
           "name": "Armadura de retirada rápida (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-spiked-armor--shoulders"
+      ]
     },
     {
       "id": "7624a1e894af0223",
@@ -55792,8 +56197,10 @@
           "name": "Armadura de retirada rápida (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-splint-armor"
+      ]
     },
     {
       "id": "e91aed655e768ce0",
@@ -55807,8 +56214,10 @@
           "name": "Armadura de retirada rápida (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-splint-armor--bracers"
+      ]
     },
     {
       "id": "211e6d749768e0fa",
@@ -55822,8 +56231,10 @@
           "name": "Armadura de retirada rápida (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-splint-armor--feet"
+      ]
     },
     {
       "id": "800a3a3d64869bb3",
@@ -55837,8 +56248,10 @@
           "name": "Armadura de retirada rápida (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-splint-armor--head"
+      ]
     },
     {
       "id": "cc6c47e60ac2384d",
@@ -55852,8 +56265,10 @@
           "name": "Armadura de retirada rápida (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-splint-armor--legs"
+      ]
     },
     {
       "id": "f42c297fed3eb30f",
@@ -55867,8 +56282,10 @@
           "name": "Armadura de retirada rápida (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-splint-armor--shoulders"
+      ]
     },
     {
       "id": "0a5f4b4338937c31",
@@ -55882,8 +56299,10 @@
           "name": "Armadura de retirada rápida (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-studded-leather-armor"
+      ]
     },
     {
       "id": "18de939f0c419a63",
@@ -55897,8 +56316,10 @@
           "name": "Armadura de retirada rápida (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-studded-leather-armor--bracers"
+      ]
     },
     {
       "id": "fb735c6c2dfb6c43",
@@ -55912,8 +56333,10 @@
           "name": "Armadura de retirada rápida (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-studded-leather-armor--feet"
+      ]
     },
     {
       "id": "8688d1ec0f302f86",
@@ -55927,8 +56350,10 @@
           "name": "Armadura de retirada rápida (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-studded-leather-armor--head"
+      ]
     },
     {
       "id": "ca4cf679d93c33c3",
@@ -55942,8 +56367,10 @@
           "name": "Armadura de retirada rápida (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-studded-leather-armor--legs"
+      ]
     },
     {
       "id": "41b0f4210f9a3f1c",
@@ -55957,8 +56384,10 @@
           "name": "Armadura de retirada rápida (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cast-off-studded-leather-armor--shoulders"
+      ]
     },
     {
       "id": "7031acfbc62613ba",
@@ -70707,8 +71136,10 @@
           "name": "Armadura forjada no Feérico (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-breastplate"
+      ]
     },
     {
       "id": "265d3415526a2187",
@@ -70722,8 +71153,10 @@
           "name": "Armadura forjada no Feérico (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-breastplate--bracers"
+      ]
     },
     {
       "id": "439db44f75c5efdd",
@@ -70737,8 +71170,10 @@
           "name": "Armadura forjada no Feérico (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-breastplate--feet"
+      ]
     },
     {
       "id": "74e74e12455a5b6f",
@@ -70752,8 +71187,10 @@
           "name": "Armadura forjada no Feérico (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-breastplate--head"
+      ]
     },
     {
       "id": "8e93da6cc0eb86f7",
@@ -70767,8 +71204,10 @@
           "name": "Armadura forjada no Feérico (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-breastplate--legs"
+      ]
     },
     {
       "id": "3eab28a143863a2b",
@@ -70782,8 +71221,10 @@
           "name": "Armadura forjada no Feérico (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-breastplate--shoulders"
+      ]
     },
     {
       "id": "d35c33c0c35bd286",
@@ -70797,8 +71238,10 @@
           "name": "Armadura forjada no Feérico (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-mail"
+      ]
     },
     {
       "id": "f4e3989d387ece54",
@@ -70812,8 +71255,10 @@
           "name": "Armadura forjada no Feérico (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-mail--bracers"
+      ]
     },
     {
       "id": "090b47475c86ee0a",
@@ -70827,8 +71272,10 @@
           "name": "Armadura forjada no Feérico (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-mail--feet"
+      ]
     },
     {
       "id": "24ff97d55124b870",
@@ -70842,8 +71289,10 @@
           "name": "Armadura forjada no Feérico (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-mail--head"
+      ]
     },
     {
       "id": "5266c311cda8338c",
@@ -70857,8 +71306,10 @@
           "name": "Armadura forjada no Feérico (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-mail--legs"
+      ]
     },
     {
       "id": "44fcf2f96f992ccf",
@@ -70872,8 +71323,10 @@
           "name": "Armadura forjada no Feérico (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-mail--shoulders"
+      ]
     },
     {
       "id": "6ddee89770e00802",
@@ -70887,8 +71340,10 @@
           "name": "Armadura forjada no Feérico (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-shirt"
+      ]
     },
     {
       "id": "3993fcc9cd524ac8",
@@ -70902,8 +71357,10 @@
           "name": "Armadura forjada no Feérico (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-shirt--bracers"
+      ]
     },
     {
       "id": "eac84742a4be04e4",
@@ -70917,8 +71374,10 @@
           "name": "Armadura forjada no Feérico (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-shirt--feet"
+      ]
     },
     {
       "id": "6ea5fe9d49c575da",
@@ -70932,8 +71391,10 @@
           "name": "Armadura forjada no Feérico (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-shirt--head"
+      ]
     },
     {
       "id": "c6965bbe9304c6fa",
@@ -70947,8 +71408,10 @@
           "name": "Armadura forjada no Feérico (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-shirt--legs"
+      ]
     },
     {
       "id": "5ef22ee782f6d186",
@@ -70962,8 +71425,10 @@
           "name": "Armadura forjada no Feérico (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "51466bf3a42907f9",
@@ -70977,8 +71442,10 @@
           "name": "Armadura forjada no Feérico (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-half-plate-armor"
+      ]
     },
     {
       "id": "e1602d5188590eaf",
@@ -70992,8 +71459,10 @@
           "name": "Armadura forjada no Feérico (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "e6a9bc01ba99ab7b",
@@ -71007,8 +71476,10 @@
           "name": "Armadura forjada no Feérico (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-half-plate-armor--feet"
+      ]
     },
     {
       "id": "a5996b2ff08374aa",
@@ -71022,8 +71493,10 @@
           "name": "Armadura forjada no Feérico (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-half-plate-armor--head"
+      ]
     },
     {
       "id": "89e465b37280cd33",
@@ -71037,8 +71510,10 @@
           "name": "Armadura forjada no Feérico (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-half-plate-armor--legs"
+      ]
     },
     {
       "id": "24d8d1266dfda42d",
@@ -71052,8 +71527,10 @@
           "name": "Armadura forjada no Feérico (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "986f4c5213634629",
@@ -71067,8 +71544,10 @@
           "name": "Armadura forjada no Feérico (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-hide-armor"
+      ]
     },
     {
       "id": "b6db07c84a9e4a52",
@@ -71082,8 +71561,10 @@
           "name": "Armadura forjada no Feérico (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-hide-armor--bracers"
+      ]
     },
     {
       "id": "447501e10688518d",
@@ -71097,8 +71578,10 @@
           "name": "Armadura forjada no Feérico (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-hide-armor--feet"
+      ]
     },
     {
       "id": "5abb76923b076a8f",
@@ -71112,8 +71595,10 @@
           "name": "Armadura forjada no Feérico (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-hide-armor--head"
+      ]
     },
     {
       "id": "f456144a246b1585",
@@ -71127,8 +71612,10 @@
           "name": "Armadura forjada no Feérico (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-hide-armor--legs"
+      ]
     },
     {
       "id": "6b127b69e2619ac9",
@@ -71142,8 +71629,10 @@
           "name": "Armadura forjada no Feérico (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-hide-armor--shoulders"
+      ]
     },
     {
       "id": "2146d168db48edfb",
@@ -71157,8 +71646,10 @@
           "name": "Armadura forjada no Feérico (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-leather-armor"
+      ]
     },
     {
       "id": "b9d480417a86ea08",
@@ -71172,8 +71663,10 @@
           "name": "Armadura forjada no Feérico (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-leather-armor--bracers"
+      ]
     },
     {
       "id": "f358fab064e5d2f3",
@@ -71187,8 +71680,10 @@
           "name": "Armadura forjada no Feérico (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-leather-armor--feet"
+      ]
     },
     {
       "id": "2a46b3f2ad85272c",
@@ -71202,8 +71697,10 @@
           "name": "Armadura forjada no Feérico (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-leather-armor--head"
+      ]
     },
     {
       "id": "c3a22b3fb49b5433",
@@ -71217,8 +71714,10 @@
           "name": "Armadura forjada no Feérico (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-leather-armor--legs"
+      ]
     },
     {
       "id": "63bca1b3f5e04aa5",
@@ -71232,8 +71731,10 @@
           "name": "Armadura forjada no Feérico (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-leather-armor--shoulders"
+      ]
     },
     {
       "id": "549d8ca39612ed8a",
@@ -71247,8 +71748,10 @@
           "name": "Armadura forjada no Feérico (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-padded-armor"
+      ]
     },
     {
       "id": "b3bb2e9f1a09b643",
@@ -71262,8 +71765,10 @@
           "name": "Armadura forjada no Feérico (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-padded-armor--bracers"
+      ]
     },
     {
       "id": "3b4c3da3c44af9db",
@@ -71277,8 +71782,10 @@
           "name": "Armadura forjada no Feérico (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-padded-armor--feet"
+      ]
     },
     {
       "id": "532ca956f05d8866",
@@ -71292,8 +71799,10 @@
           "name": "Armadura forjada no Feérico (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-padded-armor--head"
+      ]
     },
     {
       "id": "b79bc9f645e3718e",
@@ -71307,8 +71816,10 @@
           "name": "Armadura forjada no Feérico (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-padded-armor--legs"
+      ]
     },
     {
       "id": "050afd62d5b53772",
@@ -71322,8 +71833,10 @@
           "name": "Armadura forjada no Feérico (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-padded-armor--shoulders"
+      ]
     },
     {
       "id": "d18ce402a000db9a",
@@ -71337,8 +71850,10 @@
           "name": "Armadura forjada no Feérico (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-plate-armor"
+      ]
     },
     {
       "id": "bfd146c23a534504",
@@ -71352,8 +71867,10 @@
           "name": "Armadura forjada no Feérico (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-plate-armor--bracers"
+      ]
     },
     {
       "id": "cfb182cd1ff8e6d3",
@@ -71367,8 +71884,10 @@
           "name": "Armadura forjada no Feérico (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-plate-armor--feet"
+      ]
     },
     {
       "id": "2799817cccecf429",
@@ -71382,8 +71901,10 @@
           "name": "Armadura forjada no Feérico (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-plate-armor--head"
+      ]
     },
     {
       "id": "d4a322e79c1f28b2",
@@ -71397,8 +71918,10 @@
           "name": "Armadura forjada no Feérico (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-plate-armor--legs"
+      ]
     },
     {
       "id": "bba65537f8f6ad18",
@@ -71412,8 +71935,10 @@
           "name": "Armadura forjada no Feérico (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-plate-armor--shoulders"
+      ]
     },
     {
       "id": "65d9f5a0e01ad96b",
@@ -71427,8 +71952,10 @@
           "name": "Armadura forjada no Feérico (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-ring-mail"
+      ]
     },
     {
       "id": "330b1d7a50d895c7",
@@ -71442,8 +71969,10 @@
           "name": "Armadura forjada no Feérico (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-ring-mail--bracers"
+      ]
     },
     {
       "id": "fc74fbfe2c1f081d",
@@ -71457,8 +71986,10 @@
           "name": "Armadura forjada no Feérico (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-ring-mail--feet"
+      ]
     },
     {
       "id": "0a9f6b0a2154780d",
@@ -71472,8 +72003,10 @@
           "name": "Armadura forjada no Feérico (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-ring-mail--head"
+      ]
     },
     {
       "id": "cdb4540f9f0de103",
@@ -71487,8 +72020,10 @@
           "name": "Armadura forjada no Feérico (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-ring-mail--legs"
+      ]
     },
     {
       "id": "8ebc22a2f68bc62f",
@@ -71502,8 +72037,10 @@
           "name": "Armadura forjada no Feérico (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-ring-mail--shoulders"
+      ]
     },
     {
       "id": "0e7c14d8e51291ad",
@@ -71517,8 +72054,10 @@
           "name": "Armadura forjada no Feérico (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-scale-mail"
+      ]
     },
     {
       "id": "a16c7ab1d8e3d436",
@@ -71532,8 +72071,10 @@
           "name": "Armadura forjada no Feérico (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-scale-mail--bracers"
+      ]
     },
     {
       "id": "07a435ea8733a521",
@@ -71547,8 +72088,10 @@
           "name": "Armadura forjada no Feérico (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-scale-mail--feet"
+      ]
     },
     {
       "id": "40b311758f6bf600",
@@ -71562,8 +72105,10 @@
           "name": "Armadura forjada no Feérico (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-scale-mail--head"
+      ]
     },
     {
       "id": "35eed70bb5dfc812",
@@ -71577,8 +72122,10 @@
           "name": "Armadura forjada no Feérico (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-scale-mail--legs"
+      ]
     },
     {
       "id": "4945e4ee5d2f0df8",
@@ -71592,8 +72139,10 @@
           "name": "Armadura forjada no Feérico (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-scale-mail--shoulders"
+      ]
     },
     {
       "id": "dce71af878a9ee7d",
@@ -71607,8 +72156,10 @@
           "name": "Armadura forjada no Feérico (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-spiked-armor"
+      ]
     },
     {
       "id": "cbd5fc7746c5e9fd",
@@ -71622,8 +72173,10 @@
           "name": "Armadura forjada no Feérico (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-spiked-armor--bracers"
+      ]
     },
     {
       "id": "592bba07e8fa35cf",
@@ -71637,8 +72190,10 @@
           "name": "Armadura forjada no Feérico (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-spiked-armor--feet"
+      ]
     },
     {
       "id": "be38aa1de3d2f06a",
@@ -71652,8 +72207,10 @@
           "name": "Armadura forjada no Feérico (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-spiked-armor--head"
+      ]
     },
     {
       "id": "2e3b64a04575ed24",
@@ -71667,8 +72224,10 @@
           "name": "Armadura forjada no Feérico (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-spiked-armor--legs"
+      ]
     },
     {
       "id": "485a847836c9aaef",
@@ -71682,8 +72241,10 @@
           "name": "Armadura forjada no Feérico (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-spiked-armor--shoulders"
+      ]
     },
     {
       "id": "786ab12b297f574d",
@@ -71697,8 +72258,10 @@
           "name": "Armadura forjada no Feérico (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-splint-armor"
+      ]
     },
     {
       "id": "5b1973a7ec6b6a35",
@@ -71712,8 +72275,10 @@
           "name": "Armadura forjada no Feérico (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-splint-armor--bracers"
+      ]
     },
     {
       "id": "1d3c6b5a36103e21",
@@ -71727,8 +72292,10 @@
           "name": "Armadura forjada no Feérico (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-splint-armor--feet"
+      ]
     },
     {
       "id": "89ad85d8cfa7c5d0",
@@ -71742,8 +72309,10 @@
           "name": "Armadura forjada no Feérico (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-splint-armor--head"
+      ]
     },
     {
       "id": "fb1feaaa0a61953b",
@@ -71757,8 +72326,10 @@
           "name": "Armadura forjada no Feérico (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-splint-armor--legs"
+      ]
     },
     {
       "id": "eb268851c3978883",
@@ -71772,8 +72343,10 @@
           "name": "Armadura forjada no Feérico (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-splint-armor--shoulders"
+      ]
     },
     {
       "id": "2800e6494d4f217b",
@@ -71787,8 +72360,10 @@
           "name": "Armadura forjada no Feérico (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-studded-leather-armor"
+      ]
     },
     {
       "id": "a71728bbd9c6060b",
@@ -71802,8 +72377,10 @@
           "name": "Armadura forjada no Feérico (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-studded-leather-armor--bracers"
+      ]
     },
     {
       "id": "21879d9ee84d5299",
@@ -71817,8 +72394,10 @@
           "name": "Armadura forjada no Feérico (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-studded-leather-armor--feet"
+      ]
     },
     {
       "id": "74cded554148b57b",
@@ -71832,8 +72411,10 @@
           "name": "Armadura forjada no Feérico (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-studded-leather-armor--head"
+      ]
     },
     {
       "id": "a9d9054b91d2782c",
@@ -71847,8 +72428,10 @@
           "name": "Armadura forjada no Feérico (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-studded-leather-armor--legs"
+      ]
     },
     {
       "id": "3274db6358424ab1",
@@ -71862,8 +72445,10 @@
           "name": "Armadura forjada no Feérico (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feywrought-studded-leather-armor--shoulders"
+      ]
     },
     {
       "id": "5e558ddf226f09f5",
@@ -73704,8 +74289,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-breastplate"
+      ]
     },
     {
       "id": "d66fe94a46fce0c5",
@@ -73719,8 +74306,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-breastplate--bracers"
+      ]
     },
     {
       "id": "d678a71c21c6bcb9",
@@ -73734,8 +74323,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-breastplate--feet"
+      ]
     },
     {
       "id": "5fe8b9a994b3cce8",
@@ -73749,8 +74340,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-breastplate--head"
+      ]
     },
     {
       "id": "2aea8d18b84118af",
@@ -73764,8 +74357,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-breastplate--legs"
+      ]
     },
     {
       "id": "55333f2c8d4bf40b",
@@ -73779,8 +74374,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-breastplate--shoulders"
+      ]
     },
     {
       "id": "61af6d324cecc7ba",
@@ -73794,8 +74391,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-mail"
+      ]
     },
     {
       "id": "b447a82a653c1be4",
@@ -73809,8 +74408,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-mail--bracers"
+      ]
     },
     {
       "id": "d46166d277174057",
@@ -73824,8 +74425,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-mail--feet"
+      ]
     },
     {
       "id": "19db36fb2da1f92c",
@@ -73839,8 +74442,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-mail--head"
+      ]
     },
     {
       "id": "929ce018cbc816e4",
@@ -73854,8 +74459,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-mail--legs"
+      ]
     },
     {
       "id": "a338e91e27fb861d",
@@ -73869,8 +74476,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-mail--shoulders"
+      ]
     },
     {
       "id": "d1ce7e75c4e7e4aa",
@@ -73884,8 +74493,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-shirt"
+      ]
     },
     {
       "id": "84b889a0a5fc9338",
@@ -73899,8 +74510,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-shirt--bracers"
+      ]
     },
     {
       "id": "3159b6690a3847cd",
@@ -73914,8 +74527,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-shirt--feet"
+      ]
     },
     {
       "id": "84e9d21f02c5b01d",
@@ -73929,8 +74544,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-shirt--head"
+      ]
     },
     {
       "id": "01c8c1df7082e270",
@@ -73944,8 +74561,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-shirt--legs"
+      ]
     },
     {
       "id": "a8dba19d9ec9f3c1",
@@ -73959,8 +74578,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "67f79b8b5d0c703e",
@@ -73974,8 +74595,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-half-plate-armor"
+      ]
     },
     {
       "id": "8e1287e0de977165",
@@ -73989,8 +74612,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "bedf9148b25e7b5f",
@@ -74004,8 +74629,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-half-plate-armor--feet"
+      ]
     },
     {
       "id": "6b0d0668a1bee211",
@@ -74019,8 +74646,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-half-plate-armor--head"
+      ]
     },
     {
       "id": "fd8f460abf49f7d0",
@@ -74034,8 +74663,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-half-plate-armor--legs"
+      ]
     },
     {
       "id": "12898c407aa53194",
@@ -74049,8 +74680,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "1a5cced8dfb3cefa",
@@ -74064,8 +74697,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-hide-armor"
+      ]
     },
     {
       "id": "bf06524b04824387",
@@ -74079,8 +74714,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-hide-armor--bracers"
+      ]
     },
     {
       "id": "b98e44e3f7074c5f",
@@ -74094,8 +74731,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-hide-armor--feet"
+      ]
     },
     {
       "id": "719aae89ab59a093",
@@ -74109,8 +74748,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-hide-armor--head"
+      ]
     },
     {
       "id": "f2a6b7cfe5c43e1b",
@@ -74124,8 +74765,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-hide-armor--legs"
+      ]
     },
     {
       "id": "b5a70f108775916a",
@@ -74139,8 +74782,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-hide-armor--shoulders"
+      ]
     },
     {
       "id": "11a49f6341694421",
@@ -74154,8 +74799,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-leather-armor"
+      ]
     },
     {
       "id": "f94617636b2c1466",
@@ -74169,8 +74816,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-leather-armor--bracers"
+      ]
     },
     {
       "id": "483cea2fb6f963a7",
@@ -74184,8 +74833,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-leather-armor--feet"
+      ]
     },
     {
       "id": "163e7f86ec6cdc46",
@@ -74199,8 +74850,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-leather-armor--head"
+      ]
     },
     {
       "id": "f588de87b6d30225",
@@ -74214,8 +74867,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-leather-armor--legs"
+      ]
     },
     {
       "id": "13343f619b3c83f3",
@@ -74229,8 +74884,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-leather-armor--shoulders"
+      ]
     },
     {
       "id": "f557a12eda6e0f1f",
@@ -74244,8 +74901,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-padded-armor"
+      ]
     },
     {
       "id": "56d703fe18e5ac3d",
@@ -74259,8 +74918,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-padded-armor--bracers"
+      ]
     },
     {
       "id": "f3947aede492726a",
@@ -74274,8 +74935,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-padded-armor--feet"
+      ]
     },
     {
       "id": "70db917145ab79d4",
@@ -74289,8 +74952,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-padded-armor--head"
+      ]
     },
     {
       "id": "e01aa035df23da06",
@@ -74304,8 +74969,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-padded-armor--legs"
+      ]
     },
     {
       "id": "f4b7af4f93b1980b",
@@ -74319,8 +74986,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-padded-armor--shoulders"
+      ]
     },
     {
       "id": "aab555aa7b067787",
@@ -74334,8 +75003,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-plate-armor"
+      ]
     },
     {
       "id": "8363fe2fb936500e",
@@ -74349,8 +75020,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-plate-armor--bracers"
+      ]
     },
     {
       "id": "625b6e52a59be17d",
@@ -74364,8 +75037,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-plate-armor--feet"
+      ]
     },
     {
       "id": "1792c46b8775d733",
@@ -74379,8 +75054,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-plate-armor--head"
+      ]
     },
     {
       "id": "540e53a49266765e",
@@ -74394,8 +75071,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-plate-armor--legs"
+      ]
     },
     {
       "id": "ffe58e7f244e4048",
@@ -74409,8 +75088,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-plate-armor--shoulders"
+      ]
     },
     {
       "id": "f1de56850470975d",
@@ -74424,8 +75105,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-ring-mail"
+      ]
     },
     {
       "id": "ca3559b8a348cd31",
@@ -74439,8 +75122,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-ring-mail--bracers"
+      ]
     },
     {
       "id": "a4fb9440f568fc6a",
@@ -74454,8 +75139,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-ring-mail--feet"
+      ]
     },
     {
       "id": "3d4744fb76bb00a1",
@@ -74469,8 +75156,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-ring-mail--head"
+      ]
     },
     {
       "id": "209ac4cba81aa073",
@@ -74484,8 +75173,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-ring-mail--legs"
+      ]
     },
     {
       "id": "093c207221569582",
@@ -74499,8 +75190,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-ring-mail--shoulders"
+      ]
     },
     {
       "id": "9828f6806823235b",
@@ -74514,8 +75207,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-scale-mail"
+      ]
     },
     {
       "id": "ce626a9cf26d6148",
@@ -74529,8 +75224,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-scale-mail--bracers"
+      ]
     },
     {
       "id": "7ddd6365dcf57bc5",
@@ -74544,8 +75241,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-scale-mail--feet"
+      ]
     },
     {
       "id": "c042ad716c3f828e",
@@ -74559,8 +75258,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-scale-mail--head"
+      ]
     },
     {
       "id": "5fa49c85316d9fe9",
@@ -74574,8 +75275,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-scale-mail--legs"
+      ]
     },
     {
       "id": "f7d97e8af801ba84",
@@ -74589,8 +75292,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-scale-mail--shoulders"
+      ]
     },
     {
       "id": "fa06396c8880b442",
@@ -74604,8 +75309,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-spiked-armor"
+      ]
     },
     {
       "id": "8d20011bf7d44594",
@@ -74619,8 +75326,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-spiked-armor--bracers"
+      ]
     },
     {
       "id": "3359b8152675f795",
@@ -74634,8 +75343,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-spiked-armor--feet"
+      ]
     },
     {
       "id": "e4f9792f43d15903",
@@ -74649,8 +75360,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-spiked-armor--head"
+      ]
     },
     {
       "id": "41c8a7fc2bf7c9a3",
@@ -74664,8 +75377,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-spiked-armor--legs"
+      ]
     },
     {
       "id": "bef83964f290d754",
@@ -74679,8 +75394,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-spiked-armor--shoulders"
+      ]
     },
     {
       "id": "566561e74a63d42b",
@@ -74694,8 +75411,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-splint-armor"
+      ]
     },
     {
       "id": "94337b6824a0f4ad",
@@ -74709,8 +75428,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-splint-armor--bracers"
+      ]
     },
     {
       "id": "9fec9969b7bd8d96",
@@ -74724,8 +75445,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-splint-armor--feet"
+      ]
     },
     {
       "id": "e6f80565689ca2ce",
@@ -74739,8 +75462,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-splint-armor--head"
+      ]
     },
     {
       "id": "7b8c5aad9fb891ed",
@@ -74754,8 +75479,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-splint-armor--legs"
+      ]
     },
     {
       "id": "aeb1ca30222e7dca",
@@ -74769,8 +75496,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-splint-armor--shoulders"
+      ]
     },
     {
       "id": "564bbe749621e5cf",
@@ -74784,8 +75513,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-studded-leather-armor"
+      ]
     },
     {
       "id": "48c4779bf88e4c1a",
@@ -74799,8 +75530,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-studded-leather-armor--bracers"
+      ]
     },
     {
       "id": "ca5a5c4ab0fa77ab",
@@ -74814,8 +75547,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-studded-leather-armor--feet"
+      ]
     },
     {
       "id": "18cc4c22dfce5b14",
@@ -74829,8 +75564,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-studded-leather-armor--head"
+      ]
     },
     {
       "id": "ce467c2812a9b650",
@@ -74844,8 +75581,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-studded-leather-armor--legs"
+      ]
     },
     {
       "id": "e5cec65eb66a62f3",
@@ -74859,8 +75598,10 @@
           "name": "Armadura forjada no Pendor das Sombras (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloomwrought-studded-leather-armor--shoulders"
+      ]
     },
     {
       "id": "f0838c318e927e88",
