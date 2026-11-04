@@ -13,7 +13,7 @@ const {seed}=await import('../server/seed.js');
 const {createLegacyTestCharacter}=await import('../tests/character-fixtures.js');
 await migrate();await seed();
 const {createApp}=await import('../server/app.js');
-const app=express(),client=resolve('.local/art-cancel-client-20261102');
+const app=express(),client=resolve(process.env.THEMATIC_ART_QA_CLIENT_DIR||'.local/art-cancel-client-20261102');
 app.get('/',(_req,res)=>res.sendFile(resolve(client,'index.html'),{dotfiles:'allow'}));
 app.use('/assets',express.static(resolve(client,'assets')));
 app.use(express.static(resolve('public')));app.use(createApp());
@@ -28,7 +28,8 @@ try {
  const signup=await context.request.post(origin+'/api/auth/sign-up/email',{headers:{Origin:origin},data:{name:'Artes temáticas',email:'thematic-'+randomUUID()+'@example.test',password:'Test-'+randomUUID()}});
  expect(signup.ok()).toBe(true);await createLegacyTestCharacter((await signup.json()).user.id,'Liora');
  const registry=JSON.parse(await readFile('data/thematic-equipment-art-20261102.json','utf8'));
- const ids=registry.assets.filter((asset:any)=>!asset.id.includes('--')).map((asset:any)=>asset.id);
+ const requestedIds=process.env.THEMATIC_ART_QA_IDS?.split(',');
+ const ids=registry.assets.filter((asset:any)=>!asset.id.includes('--')&&(!requestedIds||requestedIds.includes(asset.id))).map((asset:any)=>asset.id);
  const samples=(await pool.query("SELECT id,name,image_path,raw_data->>'base_item' AS model,raw_data->>'magic_family' AS family,raw_data->'armor_bundle_pieces' AS pieces FROM catalog_items WHERE active AND id=ANY($1::text[]) ORDER BY id",[ids])).rows;
  expect(samples.length).toBe(ids.length);
  for(const asset of registry.assets){const response=await context.request.get(origin+asset.path);expect(response.ok()).toBe(true);expect(response.headers()['content-type']).toContain('image/webp');}
@@ -49,6 +50,11 @@ try {
    await img.scrollIntoViewIfNeeded();
    await expect(img).toHaveJSProperty('complete',true);
    expect(await img.evaluate(el=>(el as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+   await img.evaluate(el=>(el as HTMLImageElement).decode());
+   if(process.env.THEMATIC_ART_QA_CLIENT_DIR&&await familyImage.count())await expect(img).toHaveAttribute('data-layout',await img.evaluate(el=>(el as HTMLImageElement).naturalWidth>(el as HTMLImageElement).naturalHeight*1.8?'landscape':'portrait'));
+   if(requestedIds){
+    await img.screenshot({path:root+'/'+id+'-'+width+'-object.png'});
+   }
    if(pieces&&['breastplate','half-plate-armor'].includes(model)){
     await expect(card).toContainText('Peça única de armadura');
     await expect(card).not.toContainText('Conjunto completo');

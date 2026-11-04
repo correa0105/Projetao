@@ -1,12 +1,13 @@
 {
-  "policy_version": 1,
-  "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas; substituir revestimentos por desenhos temáticos nativos.",
+  "policy_version": 2,
+  "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
-    "physical_artworks": 4172,
-    "approved_artworks": 842,
-    "pending_artworks": 3330,
-    "catalog_references": 4327,
-    "approved_references": 842
+    "physical_artworks": 4140,
+    "approved_artworks": 1064,
+    "pending_artworks": 3076,
+    "catalog_references": 4295,
+    "approved_references": 1064,
+    "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
     {
@@ -296,18 +297,6 @@
       "status": "approved",
       "models": [
         {
-          "id": "adamantine-arrow",
-          "name": "Munição adamantina (Flecha)",
-          "model": "arrows-20",
-          "artwork_ids": [
-            "adamantine-arrow"
-          ],
-          "approved_artwork_ids": [
-            "adamantine-arrow"
-          ],
-          "status": "approved"
-        },
-        {
           "id": "adamantine-battleaxe",
           "name": "Arma adamantina (Machado de batalha)",
           "model": "battleaxe",
@@ -316,18 +305,6 @@
           ],
           "approved_artwork_ids": [
             "adamantine-battleaxe"
-          ],
-          "status": "approved"
-        },
-        {
-          "id": "adamantine-bolt",
-          "name": "Munição adamantina (Virote)",
-          "model": "bolts-20",
-          "artwork_ids": [
-            "adamantine-bolt"
-          ],
-          "approved_artwork_ids": [
-            "adamantine-bolt"
           ],
           "status": "approved"
         },
@@ -352,30 +329,6 @@
           ],
           "approved_artwork_ids": [
             "adamantine-dagger"
-          ],
-          "status": "approved"
-        },
-        {
-          "id": "adamantine-energy-cell",
-          "name": "Munição adamantina (Célula de energia)",
-          "model": "energy-cell",
-          "artwork_ids": [
-            "adamantine-energy-cell"
-          ],
-          "approved_artwork_ids": [
-            "adamantine-energy-cell"
-          ],
-          "status": "approved"
-        },
-        {
-          "id": "adamantine-firearm-bullet",
-          "name": "Munição adamantina (Cartucho de arma de fogo)",
-          "model": "firearm-bullet",
-          "artwork_ids": [
-            "adamantine-firearm-bullet"
-          ],
-          "approved_artwork_ids": [
-            "adamantine-firearm-bullet"
           ],
           "status": "approved"
         },
@@ -548,18 +501,6 @@
           "status": "approved"
         },
         {
-          "id": "adamantine-needle",
-          "name": "Munição adamantina (Agulha)",
-          "model": "blowgun-needles-50",
-          "artwork_ids": [
-            "adamantine-needle"
-          ],
-          "approved_artwork_ids": [
-            "adamantine-needle"
-          ],
-          "status": "approved"
-        },
-        {
           "id": "adamantine-pike",
           "name": "Arma adamantina (Pique)",
           "model": "pike",
@@ -632,18 +573,6 @@
           "status": "approved"
         },
         {
-          "id": "adamantine-sling-bullet",
-          "name": "Munição adamantina (Bala de funda)",
-          "model": "sling-bullets-20",
-          "artwork_ids": [
-            "adamantine-sling-bullet"
-          ],
-          "approved_artwork_ids": [
-            "adamantine-sling-bullet"
-          ],
-          "status": "approved"
-        },
-        {
           "id": "adamantine-spear",
           "name": "Arma adamantina (Lança)",
           "model": "spear",
@@ -706,928 +635,6 @@
       ]
     },
     {
-      "family": "Ammunition of Slaying",
-      "status": "pending",
-      "models": [
-        {
-          "id": "ammunition-of-slaying",
-          "name": "Munição exterminadora (Flechas contra Aberrações)",
-          "model": "ammunition-of-slaying",
-          "artwork_ids": [
-            "ammunition-of-slaying"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-beasts",
-          "name": "Munição exterminadora (Flechas contra Bestas)",
-          "model": "ammunition-of-slaying-arrows-beasts",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-beasts"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-celestials",
-          "name": "Munição exterminadora (Flechas contra Celestiais)",
-          "model": "ammunition-of-slaying-arrows-celestials",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-celestials"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-constructs",
-          "name": "Munição exterminadora (Flechas contra Constructos)",
-          "model": "ammunition-of-slaying-arrows-constructs",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-constructs"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-dragons",
-          "name": "Munição exterminadora (Flechas contra Dragões)",
-          "model": "ammunition-of-slaying-arrows-dragons",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-dragons"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-elementals",
-          "name": "Munição exterminadora (Flechas contra Elementais)",
-          "model": "ammunition-of-slaying-arrows-elementals",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-elementals"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-fey",
-          "name": "Munição exterminadora (Flechas contra Feéricos)",
-          "model": "ammunition-of-slaying-arrows-fey",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-fey"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-fiends",
-          "name": "Munição exterminadora (Flechas contra Ínferos)",
-          "model": "ammunition-of-slaying-arrows-fiends",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-fiends"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-giants",
-          "name": "Munição exterminadora (Flechas contra Gigantes)",
-          "model": "ammunition-of-slaying-arrows-giants",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-giants"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-humanoids",
-          "name": "Munição exterminadora (Flechas contra Humanoides)",
-          "model": "ammunition-of-slaying-arrows-humanoids",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-humanoids"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-monstrosities",
-          "name": "Munição exterminadora (Flechas contra Monstruosidades)",
-          "model": "ammunition-of-slaying-arrows-monstrosities",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-monstrosities"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-oozes",
-          "name": "Munição exterminadora (Flechas contra Gosmas)",
-          "model": "ammunition-of-slaying-arrows-oozes",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-oozes"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-plants",
-          "name": "Munição exterminadora (Flechas contra Plantas)",
-          "model": "ammunition-of-slaying-arrows-plants",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-plants"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-arrows-undead",
-          "name": "Munição exterminadora (Flechas contra Mortos-vivos)",
-          "model": "ammunition-of-slaying-arrows-undead",
-          "artwork_ids": [
-            "ammunition-of-slaying-arrows-undead"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-aberrations",
-          "name": "Munição exterminadora (Virotes contra Aberrações)",
-          "model": "ammunition-of-slaying-bolts-aberrations",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-aberrations"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-beasts",
-          "name": "Munição exterminadora (Virotes contra Bestas)",
-          "model": "ammunition-of-slaying-bolts-beasts",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-beasts"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-celestials",
-          "name": "Munição exterminadora (Virotes contra Celestiais)",
-          "model": "ammunition-of-slaying-bolts-celestials",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-celestials"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-constructs",
-          "name": "Munição exterminadora (Virotes contra Constructos)",
-          "model": "ammunition-of-slaying-bolts-constructs",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-constructs"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-dragons",
-          "name": "Munição exterminadora (Virotes contra Dragões)",
-          "model": "ammunition-of-slaying-bolts-dragons",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-dragons"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-elementals",
-          "name": "Munição exterminadora (Virotes contra Elementais)",
-          "model": "ammunition-of-slaying-bolts-elementals",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-elementals"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-fey",
-          "name": "Munição exterminadora (Virotes contra Feéricos)",
-          "model": "ammunition-of-slaying-bolts-fey",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-fey"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-fiends",
-          "name": "Munição exterminadora (Virotes contra Ínferos)",
-          "model": "ammunition-of-slaying-bolts-fiends",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-fiends"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-giants",
-          "name": "Munição exterminadora (Virotes contra Gigantes)",
-          "model": "ammunition-of-slaying-bolts-giants",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-giants"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-humanoids",
-          "name": "Munição exterminadora (Virotes contra Humanoides)",
-          "model": "ammunition-of-slaying-bolts-humanoids",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-humanoids"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-monstrosities",
-          "name": "Munição exterminadora (Virotes contra Monstruosidades)",
-          "model": "ammunition-of-slaying-bolts-monstrosities",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-monstrosities"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-oozes",
-          "name": "Munição exterminadora (Virotes contra Gosmas)",
-          "model": "ammunition-of-slaying-bolts-oozes",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-oozes"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-plants",
-          "name": "Munição exterminadora (Virotes contra Plantas)",
-          "model": "ammunition-of-slaying-bolts-plants",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-plants"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-bolts-undead",
-          "name": "Munição exterminadora (Virotes contra Mortos-vivos)",
-          "model": "ammunition-of-slaying-bolts-undead",
-          "artwork_ids": [
-            "ammunition-of-slaying-bolts-undead"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-aberrations",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Aberrações)",
-          "model": "ammunition-of-slaying-firearm-bullets-aberrations",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-aberrations"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-beasts",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Bestas)",
-          "model": "ammunition-of-slaying-firearm-bullets-beasts",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-beasts"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-celestials",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Celestiais)",
-          "model": "ammunition-of-slaying-firearm-bullets-celestials",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-celestials"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-constructs",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Constructos)",
-          "model": "ammunition-of-slaying-firearm-bullets-constructs",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-constructs"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-dragons",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Dragões)",
-          "model": "ammunition-of-slaying-firearm-bullets-dragons",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-dragons"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-elementals",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Elementais)",
-          "model": "ammunition-of-slaying-firearm-bullets-elementals",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-elementals"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-fey",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Feéricos)",
-          "model": "ammunition-of-slaying-firearm-bullets-fey",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-fey"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-fiends",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Ínferos)",
-          "model": "ammunition-of-slaying-firearm-bullets-fiends",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-fiends"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-giants",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Gigantes)",
-          "model": "ammunition-of-slaying-firearm-bullets-giants",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-giants"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-humanoids",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Humanoides)",
-          "model": "ammunition-of-slaying-firearm-bullets-humanoids",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-humanoids"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-monstrosities",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Monstruosidades)",
-          "model": "ammunition-of-slaying-firearm-bullets-monstrosities",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-monstrosities"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-oozes",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Gosmas)",
-          "model": "ammunition-of-slaying-firearm-bullets-oozes",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-oozes"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-plants",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Plantas)",
-          "model": "ammunition-of-slaying-firearm-bullets-plants",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-plants"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-firearm-bullets-undead",
-          "name": "Munição exterminadora (Balas de arma de fogo contra Mortos-vivos)",
-          "model": "ammunition-of-slaying-firearm-bullets-undead",
-          "artwork_ids": [
-            "ammunition-of-slaying-firearm-bullets-undead"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-aberrations",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Aberrações)",
-          "model": "ammunition-of-slaying-needles-aberrations",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-aberrations"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-beasts",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Bestas)",
-          "model": "ammunition-of-slaying-needles-beasts",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-beasts"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-celestials",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Celestiais)",
-          "model": "ammunition-of-slaying-needles-celestials",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-celestials"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-constructs",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Constructos)",
-          "model": "ammunition-of-slaying-needles-constructs",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-constructs"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-dragons",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Dragões)",
-          "model": "ammunition-of-slaying-needles-dragons",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-dragons"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-elementals",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Elementais)",
-          "model": "ammunition-of-slaying-needles-elementals",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-elementals"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-fey",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Feéricos)",
-          "model": "ammunition-of-slaying-needles-fey",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-fey"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-fiends",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Ínferos)",
-          "model": "ammunition-of-slaying-needles-fiends",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-fiends"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-giants",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Gigantes)",
-          "model": "ammunition-of-slaying-needles-giants",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-giants"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-humanoids",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Humanoides)",
-          "model": "ammunition-of-slaying-needles-humanoids",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-humanoids"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-monstrosities",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Monstruosidades)",
-          "model": "ammunition-of-slaying-needles-monstrosities",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-monstrosities"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-oozes",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Gosmas)",
-          "model": "ammunition-of-slaying-needles-oozes",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-oozes"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-plants",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Plantas)",
-          "model": "ammunition-of-slaying-needles-plants",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-plants"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-needles-undead",
-          "name": "Munição exterminadora (Agulhas de zarabatana contra Mortos-vivos)",
-          "model": "ammunition-of-slaying-needles-undead",
-          "artwork_ids": [
-            "ammunition-of-slaying-needles-undead"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-aberrations",
-          "name": "Munição exterminadora (Balas de funda contra Aberrações)",
-          "model": "ammunition-of-slaying-sling-bullets-aberrations",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-aberrations"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-beasts",
-          "name": "Munição exterminadora (Balas de funda contra Bestas)",
-          "model": "ammunition-of-slaying-sling-bullets-beasts",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-beasts"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-celestials",
-          "name": "Munição exterminadora (Balas de funda contra Celestiais)",
-          "model": "ammunition-of-slaying-sling-bullets-celestials",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-celestials"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-constructs",
-          "name": "Munição exterminadora (Balas de funda contra Constructos)",
-          "model": "ammunition-of-slaying-sling-bullets-constructs",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-constructs"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-dragons",
-          "name": "Munição exterminadora (Balas de funda contra Dragões)",
-          "model": "ammunition-of-slaying-sling-bullets-dragons",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-dragons"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-elementals",
-          "name": "Munição exterminadora (Balas de funda contra Elementais)",
-          "model": "ammunition-of-slaying-sling-bullets-elementals",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-elementals"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-fey",
-          "name": "Munição exterminadora (Balas de funda contra Feéricos)",
-          "model": "ammunition-of-slaying-sling-bullets-fey",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-fey"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-fiends",
-          "name": "Munição exterminadora (Balas de funda contra Ínferos)",
-          "model": "ammunition-of-slaying-sling-bullets-fiends",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-fiends"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-giants",
-          "name": "Munição exterminadora (Balas de funda contra Gigantes)",
-          "model": "ammunition-of-slaying-sling-bullets-giants",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-giants"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-humanoids",
-          "name": "Munição exterminadora (Balas de funda contra Humanoides)",
-          "model": "ammunition-of-slaying-sling-bullets-humanoids",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-humanoids"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-monstrosities",
-          "name": "Munição exterminadora (Balas de funda contra Monstruosidades)",
-          "model": "ammunition-of-slaying-sling-bullets-monstrosities",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-monstrosities"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-oozes",
-          "name": "Munição exterminadora (Balas de funda contra Gosmas)",
-          "model": "ammunition-of-slaying-sling-bullets-oozes",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-oozes"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-plants",
-          "name": "Munição exterminadora (Balas de funda contra Plantas)",
-          "model": "ammunition-of-slaying-sling-bullets-plants",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-plants"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "ammunition-of-slaying-sling-bullets-undead",
-          "name": "Munição exterminadora (Balas de funda contra Mortos-vivos)",
-          "model": "ammunition-of-slaying-sling-bullets-undead",
-          "artwork_ids": [
-            "ammunition-of-slaying-sling-bullets-undead"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        }
-      ]
-    },
-    {
-      "family": "Ammunition, +1, +2, or +3",
-      "status": "pending",
-      "models": [
-        {
-          "id": "energy-cell-plus-1",
-          "name": "Munição mágica (Célula de energia +1)",
-          "model": "energy-cell",
-          "artwork_ids": [
-            "energy-cell-plus-1"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "energy-cell-plus-2",
-          "name": "Munição mágica (Célula de energia +2)",
-          "model": "energy-cell",
-          "artwork_ids": [
-            "energy-cell-plus-2"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "energy-cell-plus-3",
-          "name": "Munição mágica (Célula de energia +3)",
-          "model": "energy-cell",
-          "artwork_ids": [
-            "energy-cell-plus-3"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition",
-          "name": "Munição mágica (Flechas +1)",
-          "model": "magic-ammunition",
-          "artwork_ids": [
-            "magic-ammunition"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-bolts-plus-1",
-          "name": "Munição mágica (Virotes +1)",
-          "model": "magic-ammunition-bolts-plus-1",
-          "artwork_ids": [
-            "magic-ammunition-bolts-plus-1"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-bolts-plus-2",
-          "name": "Munição mágica (Virotes +2)",
-          "model": "magic-ammunition-bolts-plus-2",
-          "artwork_ids": [
-            "magic-ammunition-bolts-plus-2"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-bolts-plus-3",
-          "name": "Munição mágica (Virotes +3)",
-          "model": "magic-ammunition-bolts-plus-3",
-          "artwork_ids": [
-            "magic-ammunition-bolts-plus-3"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-firearm-bullets-plus-1",
-          "name": "Munição mágica (Balas de arma de fogo +1)",
-          "model": "magic-ammunition-firearm-bullets-plus-1",
-          "artwork_ids": [
-            "magic-ammunition-firearm-bullets-plus-1"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-firearm-bullets-plus-2",
-          "name": "Munição mágica (Balas de arma de fogo +2)",
-          "model": "magic-ammunition-firearm-bullets-plus-2",
-          "artwork_ids": [
-            "magic-ammunition-firearm-bullets-plus-2"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-firearm-bullets-plus-3",
-          "name": "Munição mágica (Balas de arma de fogo +3)",
-          "model": "magic-ammunition-firearm-bullets-plus-3",
-          "artwork_ids": [
-            "magic-ammunition-firearm-bullets-plus-3"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-needles-plus-1",
-          "name": "Munição mágica (Agulhas de zarabatana +1)",
-          "model": "magic-ammunition-needles-plus-1",
-          "artwork_ids": [
-            "magic-ammunition-needles-plus-1"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-needles-plus-2",
-          "name": "Munição mágica (Agulhas de zarabatana +2)",
-          "model": "magic-ammunition-needles-plus-2",
-          "artwork_ids": [
-            "magic-ammunition-needles-plus-2"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-needles-plus-3",
-          "name": "Munição mágica (Agulhas de zarabatana +3)",
-          "model": "magic-ammunition-needles-plus-3",
-          "artwork_ids": [
-            "magic-ammunition-needles-plus-3"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-plus-2",
-          "name": "Munição mágica (Flechas +2)",
-          "model": "magic-ammunition-plus-2",
-          "artwork_ids": [
-            "magic-ammunition-plus-2"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-plus-3",
-          "name": "Munição mágica (Flechas +3)",
-          "model": "magic-ammunition-plus-3",
-          "artwork_ids": [
-            "magic-ammunition-plus-3"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-sling-bullets-plus-1",
-          "name": "Munição mágica (Balas de funda +1)",
-          "model": "magic-ammunition-sling-bullets-plus-1",
-          "artwork_ids": [
-            "magic-ammunition-sling-bullets-plus-1"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-sling-bullets-plus-2",
-          "name": "Munição mágica (Balas de funda +2)",
-          "model": "magic-ammunition-sling-bullets-plus-2",
-          "artwork_ids": [
-            "magic-ammunition-sling-bullets-plus-2"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "magic-ammunition-sling-bullets-plus-3",
-          "name": "Munição mágica (Balas de funda +3)",
-          "model": "magic-ammunition-sling-bullets-plus-3",
-          "artwork_ids": [
-            "magic-ammunition-sling-bullets-plus-3"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "modern-bullet-plus-1",
-          "name": "Munição mágica (Cartucho moderno +1)",
-          "model": "modern-bullet",
-          "artwork_ids": [
-            "modern-bullet-plus-1"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "modern-bullet-plus-2",
-          "name": "Munição mágica (Cartucho moderno +2)",
-          "model": "modern-bullet",
-          "artwork_ids": [
-            "modern-bullet-plus-2"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "modern-bullet-plus-3",
-          "name": "Munição mágica (Cartucho moderno +3)",
-          "model": "modern-bullet",
-          "artwork_ids": [
-            "modern-bullet-plus-3"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        }
-      ]
-    },
-    {
       "family": "Amulet of Health",
       "status": "pending",
       "models": [
@@ -1677,7 +684,7 @@
     },
     {
       "family": "Animated Shield",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "animated-shield",
@@ -1686,8 +693,10 @@
           "artwork_ids": [
             "animated-shield"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "animated-shield"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -2293,7 +1302,7 @@
     },
     {
       "family": "Armor of Invulnerability",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "armor-of-invulnerability",
@@ -2307,8 +1316,15 @@
             "armor-of-invulnerability--legs",
             "armor-of-invulnerability--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-invulnerability",
+            "armor-of-invulnerability--head",
+            "armor-of-invulnerability--shoulders",
+            "armor-of-invulnerability--bracers",
+            "armor-of-invulnerability--legs",
+            "armor-of-invulnerability--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -5925,7 +4941,7 @@
     },
     {
       "family": "Arrow-Catching Shield",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "arrow-catching-shield",
@@ -5934,8 +4950,10 @@
           "artwork_ids": [
             "arrow-catching-shield"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "arrow-catching-shield"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -6113,7 +5131,7 @@
     },
     {
       "family": "Berserker Axe",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "berserker-axe",
@@ -6122,8 +5140,10 @@
           "artwork_ids": [
             "berserker-axe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "berserker-axe"
+          ],
+          "status": "approved"
         },
         {
           "id": "berserker-axe-greataxe",
@@ -6132,8 +5152,10 @@
           "artwork_ids": [
             "berserker-axe-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "berserker-axe-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "berserker-axe-halberd",
@@ -6142,8 +5164,10 @@
           "artwork_ids": [
             "berserker-axe-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "berserker-axe-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "berserker-handaxe",
@@ -6152,14 +5176,16 @@
           "artwork_ids": [
             "berserker-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "berserker-handaxe"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Blade of the Medusa",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "double-bladed-scimitar-of-the-medusa",
@@ -6168,8 +5194,10 @@
           "artwork_ids": [
             "double-bladed-scimitar-of-the-medusa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "double-bladed-scimitar-of-the-medusa"
+          ],
+          "status": "approved"
         },
         {
           "id": "greatsword-of-the-medusa",
@@ -6178,8 +5206,10 @@
           "artwork_ids": [
             "greatsword-of-the-medusa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greatsword-of-the-medusa"
+          ],
+          "status": "approved"
         },
         {
           "id": "longsword-of-the-medusa",
@@ -6188,8 +5218,10 @@
           "artwork_ids": [
             "longsword-of-the-medusa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "longsword-of-the-medusa"
+          ],
+          "status": "approved"
         },
         {
           "id": "rapier-of-the-medusa",
@@ -6198,8 +5230,10 @@
           "artwork_ids": [
             "rapier-of-the-medusa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rapier-of-the-medusa"
+          ],
+          "status": "approved"
         },
         {
           "id": "scimitar-of-the-medusa",
@@ -6208,8 +5242,10 @@
           "artwork_ids": [
             "scimitar-of-the-medusa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scimitar-of-the-medusa"
+          ],
+          "status": "approved"
         },
         {
           "id": "shortsword-of-the-medusa",
@@ -6218,80 +5254,16 @@
           "artwork_ids": [
             "shortsword-of-the-medusa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        }
-      ]
-    },
-    {
-      "family": "Bloodseeker Ammunition",
-      "status": "pending",
-      "models": [
-        {
-          "id": "bloodseeker-arrow",
-          "name": "Munição caça-feridos (Flecha)",
-          "model": "single-arrow",
-          "artwork_ids": [
-            "bloodseeker-arrow"
+          "approved_artwork_ids": [
+            "shortsword-of-the-medusa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "bloodseeker-bolt",
-          "name": "Munição caça-feridos (Virote)",
-          "model": "single-bolt",
-          "artwork_ids": [
-            "bloodseeker-bolt"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "bloodseeker-energy-cell",
-          "name": "Munição caça-feridos (Célula de energia)",
-          "model": "energy-cell",
-          "artwork_ids": [
-            "bloodseeker-energy-cell"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "bloodseeker-firearm-bullet",
-          "name": "Munição caça-feridos (Cartucho de arma de fogo)",
-          "model": "firearm-bullet",
-          "artwork_ids": [
-            "bloodseeker-firearm-bullet"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "bloodseeker-needle",
-          "name": "Munição caça-feridos (Agulha)",
-          "model": "single-needle",
-          "artwork_ids": [
-            "bloodseeker-needle"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "bloodseeker-sling-bullet",
-          "name": "Munição caça-feridos (Bala de funda)",
-          "model": "single-sling-bullet",
-          "artwork_ids": [
-            "bloodseeker-sling-bullet"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Bloodshed Blade",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "bloodshed-double-bladed-scimitar",
@@ -6300,8 +5272,10 @@
           "artwork_ids": [
             "bloodshed-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bloodshed-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "bloodshed-greatsword",
@@ -6310,8 +5284,10 @@
           "artwork_ids": [
             "bloodshed-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bloodshed-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "bloodshed-longsword",
@@ -6320,8 +5296,10 @@
           "artwork_ids": [
             "bloodshed-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bloodshed-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "bloodshed-rapier",
@@ -6330,8 +5308,10 @@
           "artwork_ids": [
             "bloodshed-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bloodshed-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "bloodshed-scimitar",
@@ -6340,8 +5320,10 @@
           "artwork_ids": [
             "bloodshed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bloodshed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "bloodshed-shortsword",
@@ -6350,8 +5332,10 @@
           "artwork_ids": [
             "bloodshed-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bloodshed-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -8705,7 +7689,7 @@
     },
     {
       "family": "Demon Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "demon-armor",
@@ -8719,8 +7703,15 @@
             "demon-armor--legs",
             "demon-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor",
+            "demon-armor--head",
+            "demon-armor--shoulders",
+            "demon-armor--bracers",
+            "demon-armor--legs",
+            "demon-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "demon-armor-breastplate",
@@ -8734,8 +7725,15 @@
             "demon-armor-breastplate--legs",
             "demon-armor-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor-breastplate",
+            "demon-armor-breastplate--head",
+            "demon-armor-breastplate--shoulders",
+            "demon-armor-breastplate--bracers",
+            "demon-armor-breastplate--legs",
+            "demon-armor-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "demon-armor-chain-mail",
@@ -8749,8 +7747,15 @@
             "demon-armor-chain-mail--legs",
             "demon-armor-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor-chain-mail",
+            "demon-armor-chain-mail--head",
+            "demon-armor-chain-mail--shoulders",
+            "demon-armor-chain-mail--bracers",
+            "demon-armor-chain-mail--legs",
+            "demon-armor-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "demon-armor-chain-shirt",
@@ -8764,8 +7769,15 @@
             "demon-armor-chain-shirt--legs",
             "demon-armor-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor-chain-shirt",
+            "demon-armor-chain-shirt--head",
+            "demon-armor-chain-shirt--shoulders",
+            "demon-armor-chain-shirt--bracers",
+            "demon-armor-chain-shirt--legs",
+            "demon-armor-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "demon-armor-half-plate-armor",
@@ -8779,8 +7791,15 @@
             "demon-armor-half-plate-armor--legs",
             "demon-armor-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor-half-plate-armor",
+            "demon-armor-half-plate-armor--head",
+            "demon-armor-half-plate-armor--shoulders",
+            "demon-armor-half-plate-armor--bracers",
+            "demon-armor-half-plate-armor--legs",
+            "demon-armor-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "demon-armor-hide-armor",
@@ -8794,8 +7813,15 @@
             "demon-armor-hide-armor--legs",
             "demon-armor-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor-hide-armor",
+            "demon-armor-hide-armor--head",
+            "demon-armor-hide-armor--shoulders",
+            "demon-armor-hide-armor--bracers",
+            "demon-armor-hide-armor--legs",
+            "demon-armor-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "demon-armor-leather-armor",
@@ -8809,8 +7835,15 @@
             "demon-armor-leather-armor--legs",
             "demon-armor-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor-leather-armor",
+            "demon-armor-leather-armor--head",
+            "demon-armor-leather-armor--shoulders",
+            "demon-armor-leather-armor--bracers",
+            "demon-armor-leather-armor--legs",
+            "demon-armor-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "demon-armor-padded-armor",
@@ -8824,8 +7857,15 @@
             "demon-armor-padded-armor--legs",
             "demon-armor-padded-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor-padded-armor",
+            "demon-armor-padded-armor--head",
+            "demon-armor-padded-armor--shoulders",
+            "demon-armor-padded-armor--bracers",
+            "demon-armor-padded-armor--legs",
+            "demon-armor-padded-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "demon-armor-ring-mail",
@@ -8839,8 +7879,15 @@
             "demon-armor-ring-mail--legs",
             "demon-armor-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor-ring-mail",
+            "demon-armor-ring-mail--head",
+            "demon-armor-ring-mail--shoulders",
+            "demon-armor-ring-mail--bracers",
+            "demon-armor-ring-mail--legs",
+            "demon-armor-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "demon-armor-scale-mail",
@@ -8854,8 +7901,15 @@
             "demon-armor-scale-mail--legs",
             "demon-armor-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor-scale-mail",
+            "demon-armor-scale-mail--head",
+            "demon-armor-scale-mail--shoulders",
+            "demon-armor-scale-mail--bracers",
+            "demon-armor-scale-mail--legs",
+            "demon-armor-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "demon-armor-splint-armor",
@@ -8869,8 +7923,15 @@
             "demon-armor-splint-armor--legs",
             "demon-armor-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor-splint-armor",
+            "demon-armor-splint-armor--head",
+            "demon-armor-splint-armor--shoulders",
+            "demon-armor-splint-armor--bracers",
+            "demon-armor-splint-armor--legs",
+            "demon-armor-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "demon-armor-studded-leather",
@@ -8884,8 +7945,15 @@
             "demon-armor-studded-leather--legs",
             "demon-armor-studded-leather--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "demon-armor-studded-leather",
+            "demon-armor-studded-leather--head",
+            "demon-armor-studded-leather--shoulders",
+            "demon-armor-studded-leather--bracers",
+            "demon-armor-studded-leather--legs",
+            "demon-armor-studded-leather--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -8899,72 +7967,6 @@
           "model": "dimensional-shackles",
           "artwork_ids": [
             "dimensional-shackles"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        }
-      ]
-    },
-    {
-      "family": "Dispelling Ammunition",
-      "status": "pending",
-      "models": [
-        {
-          "id": "dispelling-arrow",
-          "name": "Munição de dissipação (Flecha)",
-          "model": "single-arrow",
-          "artwork_ids": [
-            "dispelling-arrow"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "dispelling-bolt",
-          "name": "Munição de dissipação (Virote)",
-          "model": "single-bolt",
-          "artwork_ids": [
-            "dispelling-bolt"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "dispelling-energy-cell",
-          "name": "Munição de dissipação (Célula de energia)",
-          "model": "energy-cell",
-          "artwork_ids": [
-            "dispelling-energy-cell"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "dispelling-firearm-bullet",
-          "name": "Munição de dissipação (Cartucho de arma de fogo)",
-          "model": "firearm-bullet",
-          "artwork_ids": [
-            "dispelling-firearm-bullet"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "dispelling-needle",
-          "name": "Munição de dissipação (Agulha)",
-          "model": "single-needle",
-          "artwork_ids": [
-            "dispelling-needle"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "dispelling-sling-bullet",
-          "name": "Munição de dissipação (Bala de funda)",
-          "model": "single-sling-bullet",
-          "artwork_ids": [
-            "dispelling-sling-bullet"
           ],
           "approved_artwork_ids": [],
           "status": "pending"
@@ -9657,62 +8659,6 @@
           "model": "yklwa",
           "artwork_ids": [
             "dragon-slayer-yklwa"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        }
-      ]
-    },
-    {
-      "family": "Dried Leech",
-      "status": "pending",
-      "models": [
-        {
-          "id": "dried-leech-arrow",
-          "name": "Sanguessuga ressecada (Flecha)",
-          "model": "single-arrow",
-          "artwork_ids": [
-            "dried-leech-arrow"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "dried-leech-bolt",
-          "name": "Sanguessuga ressecada (Virote)",
-          "model": "single-bolt",
-          "artwork_ids": [
-            "dried-leech-bolt"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "dried-leech-firearm-bullet",
-          "name": "Sanguessuga ressecada (Cartucho de arma de fogo)",
-          "model": "firearm-bullet",
-          "artwork_ids": [
-            "dried-leech-firearm-bullet"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "dried-leech-needle",
-          "name": "Sanguessuga ressecada (Agulha)",
-          "model": "single-needle",
-          "artwork_ids": [
-            "dried-leech-needle"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "dried-leech-sling-bullet",
-          "name": "Sanguessuga ressecada (Bala de funda)",
-          "model": "single-sling-bullet",
-          "artwork_ids": [
-            "dried-leech-sling-bullet"
           ],
           "approved_artwork_ids": [],
           "status": "pending"
@@ -18463,72 +17409,6 @@
       ]
     },
     {
-      "family": "Goading Ammunition",
-      "status": "pending",
-      "models": [
-        {
-          "id": "goading-arrow",
-          "name": "Munição de provocação (Flecha)",
-          "model": "single-arrow",
-          "artwork_ids": [
-            "goading-arrow"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "goading-bolt",
-          "name": "Munição de provocação (Virote)",
-          "model": "single-bolt",
-          "artwork_ids": [
-            "goading-bolt"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "goading-energy-cell",
-          "name": "Munição de provocação (Célula de energia)",
-          "model": "energy-cell",
-          "artwork_ids": [
-            "goading-energy-cell"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "goading-firearm-bullet",
-          "name": "Munição de provocação (Cartucho de arma de fogo)",
-          "model": "firearm-bullet",
-          "artwork_ids": [
-            "goading-firearm-bullet"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "goading-needle",
-          "name": "Munição de provocação (Agulha)",
-          "model": "single-needle",
-          "artwork_ids": [
-            "goading-needle"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "goading-sling-bullet",
-          "name": "Munição de provocação (Bala de funda)",
-          "model": "single-sling-bullet",
-          "artwork_ids": [
-            "goading-sling-bullet"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        }
-      ]
-    },
-    {
       "family": "Hammer of Thunderbolts",
       "status": "pending",
       "models": [
@@ -21648,7 +20528,7 @@
     },
     {
       "family": "Mizzium Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "mizzium-breastplate",
@@ -21662,8 +20542,15 @@
             "mizzium-breastplate--legs",
             "mizzium-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mizzium-breastplate",
+            "mizzium-breastplate--head",
+            "mizzium-breastplate--shoulders",
+            "mizzium-breastplate--bracers",
+            "mizzium-breastplate--legs",
+            "mizzium-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mizzium-chain-mail",
@@ -21677,8 +20564,15 @@
             "mizzium-chain-mail--legs",
             "mizzium-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mizzium-chain-mail",
+            "mizzium-chain-mail--head",
+            "mizzium-chain-mail--shoulders",
+            "mizzium-chain-mail--bracers",
+            "mizzium-chain-mail--legs",
+            "mizzium-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mizzium-chain-shirt",
@@ -21692,8 +20586,15 @@
             "mizzium-chain-shirt--legs",
             "mizzium-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mizzium-chain-shirt",
+            "mizzium-chain-shirt--head",
+            "mizzium-chain-shirt--shoulders",
+            "mizzium-chain-shirt--bracers",
+            "mizzium-chain-shirt--legs",
+            "mizzium-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mizzium-half-plate-armor",
@@ -21707,8 +20608,15 @@
             "mizzium-half-plate-armor--legs",
             "mizzium-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mizzium-half-plate-armor",
+            "mizzium-half-plate-armor--head",
+            "mizzium-half-plate-armor--shoulders",
+            "mizzium-half-plate-armor--bracers",
+            "mizzium-half-plate-armor--legs",
+            "mizzium-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mizzium-plate-armor",
@@ -21722,8 +20630,15 @@
             "mizzium-plate-armor--legs",
             "mizzium-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mizzium-plate-armor",
+            "mizzium-plate-armor--head",
+            "mizzium-plate-armor--shoulders",
+            "mizzium-plate-armor--bracers",
+            "mizzium-plate-armor--legs",
+            "mizzium-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mizzium-ring-mail",
@@ -21737,8 +20652,15 @@
             "mizzium-ring-mail--legs",
             "mizzium-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mizzium-ring-mail",
+            "mizzium-ring-mail--head",
+            "mizzium-ring-mail--shoulders",
+            "mizzium-ring-mail--bracers",
+            "mizzium-ring-mail--legs",
+            "mizzium-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mizzium-scale-mail",
@@ -21752,8 +20674,15 @@
             "mizzium-scale-mail--legs",
             "mizzium-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mizzium-scale-mail",
+            "mizzium-scale-mail--head",
+            "mizzium-scale-mail--shoulders",
+            "mizzium-scale-mail--bracers",
+            "mizzium-scale-mail--legs",
+            "mizzium-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mizzium-spiked-armor",
@@ -21767,8 +20696,15 @@
             "mizzium-spiked-armor--legs",
             "mizzium-spiked-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mizzium-spiked-armor",
+            "mizzium-spiked-armor--head",
+            "mizzium-spiked-armor--shoulders",
+            "mizzium-spiked-armor--bracers",
+            "mizzium-spiked-armor--legs",
+            "mizzium-spiked-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "mizzium-splint-armor",
@@ -21782,8 +20718,15 @@
             "mizzium-splint-armor--legs",
             "mizzium-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mizzium-splint-armor",
+            "mizzium-splint-armor--head",
+            "mizzium-splint-armor--shoulders",
+            "mizzium-splint-armor--bracers",
+            "mizzium-splint-armor--legs",
+            "mizzium-splint-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -25532,7 +24475,7 @@
     },
     {
       "family": "Smoldering Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "smoldering-breastplate",
@@ -25546,8 +24489,15 @@
             "smoldering-breastplate--legs",
             "smoldering-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-breastplate",
+            "smoldering-breastplate--head",
+            "smoldering-breastplate--shoulders",
+            "smoldering-breastplate--bracers",
+            "smoldering-breastplate--legs",
+            "smoldering-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-chain-mail",
@@ -25561,8 +24511,15 @@
             "smoldering-chain-mail--legs",
             "smoldering-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-chain-mail",
+            "smoldering-chain-mail--head",
+            "smoldering-chain-mail--shoulders",
+            "smoldering-chain-mail--bracers",
+            "smoldering-chain-mail--legs",
+            "smoldering-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-chain-shirt",
@@ -25576,8 +24533,15 @@
             "smoldering-chain-shirt--legs",
             "smoldering-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-chain-shirt",
+            "smoldering-chain-shirt--head",
+            "smoldering-chain-shirt--shoulders",
+            "smoldering-chain-shirt--bracers",
+            "smoldering-chain-shirt--legs",
+            "smoldering-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-half-plate-armor",
@@ -25591,8 +24555,15 @@
             "smoldering-half-plate-armor--legs",
             "smoldering-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-half-plate-armor",
+            "smoldering-half-plate-armor--head",
+            "smoldering-half-plate-armor--shoulders",
+            "smoldering-half-plate-armor--bracers",
+            "smoldering-half-plate-armor--legs",
+            "smoldering-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-hide-armor",
@@ -25606,8 +24577,15 @@
             "smoldering-hide-armor--legs",
             "smoldering-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-hide-armor",
+            "smoldering-hide-armor--head",
+            "smoldering-hide-armor--shoulders",
+            "smoldering-hide-armor--bracers",
+            "smoldering-hide-armor--legs",
+            "smoldering-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-leather-armor",
@@ -25621,8 +24599,15 @@
             "smoldering-leather-armor--legs",
             "smoldering-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-leather-armor",
+            "smoldering-leather-armor--head",
+            "smoldering-leather-armor--shoulders",
+            "smoldering-leather-armor--bracers",
+            "smoldering-leather-armor--legs",
+            "smoldering-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-padded-armor",
@@ -25636,8 +24621,15 @@
             "smoldering-padded-armor--legs",
             "smoldering-padded-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-padded-armor",
+            "smoldering-padded-armor--head",
+            "smoldering-padded-armor--shoulders",
+            "smoldering-padded-armor--bracers",
+            "smoldering-padded-armor--legs",
+            "smoldering-padded-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-plate-armor",
@@ -25651,8 +24643,15 @@
             "smoldering-plate-armor--legs",
             "smoldering-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-plate-armor",
+            "smoldering-plate-armor--head",
+            "smoldering-plate-armor--shoulders",
+            "smoldering-plate-armor--bracers",
+            "smoldering-plate-armor--legs",
+            "smoldering-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-ring-mail",
@@ -25666,8 +24665,15 @@
             "smoldering-ring-mail--legs",
             "smoldering-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-ring-mail",
+            "smoldering-ring-mail--head",
+            "smoldering-ring-mail--shoulders",
+            "smoldering-ring-mail--bracers",
+            "smoldering-ring-mail--legs",
+            "smoldering-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-scale-mail",
@@ -25681,8 +24687,15 @@
             "smoldering-scale-mail--legs",
             "smoldering-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-scale-mail",
+            "smoldering-scale-mail--head",
+            "smoldering-scale-mail--shoulders",
+            "smoldering-scale-mail--bracers",
+            "smoldering-scale-mail--legs",
+            "smoldering-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-spiked-armor",
@@ -25696,8 +24709,15 @@
             "smoldering-spiked-armor--legs",
             "smoldering-spiked-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-spiked-armor",
+            "smoldering-spiked-armor--head",
+            "smoldering-spiked-armor--shoulders",
+            "smoldering-spiked-armor--bracers",
+            "smoldering-spiked-armor--legs",
+            "smoldering-spiked-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-splint-armor",
@@ -25711,8 +24731,15 @@
             "smoldering-splint-armor--legs",
             "smoldering-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-splint-armor",
+            "smoldering-splint-armor--head",
+            "smoldering-splint-armor--shoulders",
+            "smoldering-splint-armor--bracers",
+            "smoldering-splint-armor--legs",
+            "smoldering-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "smoldering-studded-leather-armor",
@@ -25726,8 +24753,15 @@
             "smoldering-studded-leather-armor--legs",
             "smoldering-studded-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "smoldering-studded-leather-armor",
+            "smoldering-studded-leather-armor--head",
+            "smoldering-studded-leather-armor--shoulders",
+            "smoldering-studded-leather-armor--bracers",
+            "smoldering-studded-leather-armor--legs",
+            "smoldering-studded-leather-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -27636,82 +26670,6 @@
             "vorpal-sword-scimitar"
           ],
           "status": "approved"
-        }
-      ]
-    },
-    {
-      "family": "Walloping Ammunition",
-      "status": "pending",
-      "models": [
-        {
-          "id": "walloping-arrow",
-          "name": "Munição de impacto (Flecha)",
-          "model": "single-arrow",
-          "artwork_ids": [
-            "walloping-arrow"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "walloping-bolt",
-          "name": "Munição de impacto (Virote)",
-          "model": "single-bolt",
-          "artwork_ids": [
-            "walloping-bolt"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "walloping-energy-cell",
-          "name": "Munição de impacto (Célula de energia)",
-          "model": "energy-cell",
-          "artwork_ids": [
-            "walloping-energy-cell"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "walloping-firearm-bullet",
-          "name": "Munição de impacto (Cartucho de arma de fogo)",
-          "model": "firearm-bullet",
-          "artwork_ids": [
-            "walloping-firearm-bullet"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "walloping-modern-bullet",
-          "name": "Munição de impacto (Cartucho moderno)",
-          "model": "modern-bullet",
-          "artwork_ids": [
-            "walloping-modern-bullet"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "walloping-needle",
-          "name": "Munição de impacto (Agulha)",
-          "model": "single-needle",
-          "artwork_ids": [
-            "walloping-needle"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "walloping-sling-bullet",
-          "name": "Munição de impacto (Bala de funda)",
-          "model": "single-sling-bullet",
-          "artwork_ids": [
-            "walloping-sling-bullet"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
         }
       ]
     },
@@ -31256,62 +30214,6 @@
       ]
     },
     {
-      "family": "Winged Ammunition",
-      "status": "pending",
-      "models": [
-        {
-          "id": "winged-arrow",
-          "name": "Munição alada (Flecha)",
-          "model": "single-arrow",
-          "artwork_ids": [
-            "winged-arrow"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "winged-bolt",
-          "name": "Munição alada (Virote)",
-          "model": "single-bolt",
-          "artwork_ids": [
-            "winged-bolt"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "winged-firearm-bullet",
-          "name": "Munição alada (Cartucho de arma de fogo)",
-          "model": "firearm-bullet",
-          "artwork_ids": [
-            "winged-firearm-bullet"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "winged-needle",
-          "name": "Munição alada (Agulha)",
-          "model": "single-needle",
-          "artwork_ids": [
-            "winged-needle"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        },
-        {
-          "id": "winged-sling-bullet",
-          "name": "Munição alada (Bala de funda)",
-          "model": "single-sling-bullet",
-          "artwork_ids": [
-            "winged-sling-bullet"
-          ],
-          "approved_artwork_ids": [],
-          "status": "pending"
-        }
-      ]
-    },
-    {
       "family": "Winged Boots",
       "status": "pending",
       "models": [
@@ -32366,23 +31268,6 @@
       ]
     },
     {
-      "id": "960d2eff2ecbb836",
-      "legacy_path": "/shop/magic-completion-20261009/adamantine-arrow.svg",
-      "family": "Adamantine Weapon",
-      "model": "arrows-20",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "adamantine-arrow",
-          "name": "Munição adamantina (Flecha)"
-        }
-      ],
-      "status": "approved",
-      "completed_consumers": [
-        "adamantine-arrow"
-      ]
-    },
-    {
       "id": "a571c49d18c1ba31",
       "legacy_path": "/shop/magic-completion-20261009/adamantine-battleaxe.svg",
       "family": "Adamantine Weapon",
@@ -32397,40 +31282,6 @@
       "status": "approved",
       "completed_consumers": [
         "adamantine-battleaxe"
-      ]
-    },
-    {
-      "id": "4e70260acf91da91",
-      "legacy_path": "/shop/magic-completion-20261009/adamantine-needle.svg",
-      "family": "Adamantine Weapon",
-      "model": "blowgun-needles-50",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "adamantine-needle",
-          "name": "Munição adamantina (Agulha)"
-        }
-      ],
-      "status": "approved",
-      "completed_consumers": [
-        "adamantine-needle"
-      ]
-    },
-    {
-      "id": "2dc706e0795b299a",
-      "legacy_path": "/shop/magic-completion-20261009/adamantine-bolt.svg",
-      "family": "Adamantine Weapon",
-      "model": "bolts-20",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "adamantine-bolt",
-          "name": "Munição adamantina (Virote)"
-        }
-      ],
-      "status": "approved",
-      "completed_consumers": [
-        "adamantine-bolt"
       ]
     },
     {
@@ -32465,40 +31316,6 @@
       "status": "approved",
       "completed_consumers": [
         "adamantine-dagger"
-      ]
-    },
-    {
-      "id": "0141c953ebdf292e",
-      "legacy_path": "/shop/magic-completion-20261009/adamantine-energy-cell.svg",
-      "family": "Adamantine Weapon",
-      "model": "energy-cell",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "adamantine-energy-cell",
-          "name": "Munição adamantina (Célula de energia)"
-        }
-      ],
-      "status": "approved",
-      "completed_consumers": [
-        "adamantine-energy-cell"
-      ]
-    },
-    {
-      "id": "2e11edd79e42cacb",
-      "legacy_path": "/shop/magic-completion-20261009/adamantine-firearm-bullet.svg",
-      "family": "Adamantine Weapon",
-      "model": "firearm-bullet",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "adamantine-firearm-bullet",
-          "name": "Munição adamantina (Cartucho de arma de fogo)"
-        }
-      ],
-      "status": "approved",
-      "completed_consumers": [
-        "adamantine-firearm-bullet"
       ]
     },
     {
@@ -32842,23 +31659,6 @@
       ]
     },
     {
-      "id": "102fc7974ab7ec71",
-      "legacy_path": "/shop/magic-completion-20261009/adamantine-sling-bullet.svg",
-      "family": "Adamantine Weapon",
-      "model": "sling-bullets-20",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "adamantine-sling-bullet",
-          "name": "Munição adamantina (Bala de funda)"
-        }
-      ],
-      "status": "approved",
-      "completed_consumers": [
-        "adamantine-sling-bullet"
-      ]
-    },
-    {
       "id": "45a17b09265faacc",
       "legacy_path": "/shop/magic-completion-20261009/adamantine-spear.svg",
       "family": "Adamantine Weapon",
@@ -32944,94 +31744,21 @@
       ]
     },
     {
-      "id": "853422c0190070f3",
-      "legacy_path": "/shop/magic-completion-20261009/energy-cell-plus-1.svg",
-      "family": "Ammunition, +1, +2, or +3",
-      "model": "energy-cell",
-      "slot": "main_hand",
+      "id": "1386785549c0b604",
+      "legacy_path": "/shop/expanded/animated-shield.webp",
+      "family": "Animated Shield",
+      "model": "shield",
+      "slot": "armor",
       "consumers": [
         {
-          "id": "energy-cell-plus-1",
-          "name": "Munição mágica (Célula de energia +1)"
+          "id": "animated-shield",
+          "name": "Escudo animado (Escudo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "cfc903889809676a",
-      "legacy_path": "/shop/magic-completion-20261009/energy-cell-plus-2.svg",
-      "family": "Ammunition, +1, +2, or +3",
-      "model": "energy-cell",
-      "slot": "main_hand",
-      "consumers": [
-        {
-          "id": "energy-cell-plus-2",
-          "name": "Munição mágica (Célula de energia +2)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "b0262560d4d55787",
-      "legacy_path": "/shop/magic-completion-20261009/energy-cell-plus-3.svg",
-      "family": "Ammunition, +1, +2, or +3",
-      "model": "energy-cell",
-      "slot": "main_hand",
-      "consumers": [
-        {
-          "id": "energy-cell-plus-3",
-          "name": "Munição mágica (Célula de energia +3)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "638335cda13421e6",
-      "legacy_path": "/shop/magic-completion-20261009/modern-bullet-plus-1.svg",
-      "family": "Ammunition, +1, +2, or +3",
-      "model": "modern-bullet",
-      "slot": "main_hand",
-      "consumers": [
-        {
-          "id": "modern-bullet-plus-1",
-          "name": "Munição mágica (Cartucho moderno +1)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "2887d7f6d11cf1b4",
-      "legacy_path": "/shop/magic-completion-20261009/modern-bullet-plus-2.svg",
-      "family": "Ammunition, +1, +2, or +3",
-      "model": "modern-bullet",
-      "slot": "main_hand",
-      "consumers": [
-        {
-          "id": "modern-bullet-plus-2",
-          "name": "Munição mágica (Cartucho moderno +2)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "c79f6afac6d935f0",
-      "legacy_path": "/shop/magic-completion-20261009/modern-bullet-plus-3.svg",
-      "family": "Ammunition, +1, +2, or +3",
-      "model": "modern-bullet",
-      "slot": "main_hand",
-      "consumers": [
-        {
-          "id": "modern-bullet-plus-3",
-          "name": "Munição mágica (Cartucho moderno +3)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "animated-shield"
+      ]
     },
     {
       "id": "c3f032760b36f8a7",
@@ -35686,6 +34413,23 @@
       ]
     },
     {
+      "id": "aee2307aa39f1540",
+      "legacy_path": "/shop/expanded/armor-of-invulnerability.webp",
+      "family": "Armor of Invulnerability",
+      "model": "plate-armor",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "armor-of-invulnerability",
+          "name": "Armadura da invulnerabilidade (Armadura de placas)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-invulnerability"
+      ]
+    },
+    {
       "id": "35f5da69b4b83022",
       "legacy_path": "/shop/armor-parts-20261012/armor-of-invulnerability--bracers.webp",
       "family": "Armor of Invulnerability",
@@ -35697,8 +34441,10 @@
           "name": "Armadura da invulnerabilidade (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-invulnerability--bracers"
+      ]
     },
     {
       "id": "f82e2baded556e0d",
@@ -35712,8 +34458,10 @@
           "name": "Armadura da invulnerabilidade (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-invulnerability--feet"
+      ]
     },
     {
       "id": "14fb89af79325325",
@@ -35727,8 +34475,10 @@
           "name": "Armadura da invulnerabilidade (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-invulnerability--head"
+      ]
     },
     {
       "id": "41510342dfd457d5",
@@ -35742,8 +34492,10 @@
           "name": "Armadura da invulnerabilidade (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-invulnerability--legs"
+      ]
     },
     {
       "id": "5f02a91559bb7e4e",
@@ -35757,8 +34509,10 @@
           "name": "Armadura da invulnerabilidade (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-invulnerability--shoulders"
+      ]
     },
     {
       "id": "2ab5a5f2f65f8773",
@@ -54807,6 +53561,23 @@
       "completed_consumers": []
     },
     {
+      "id": "3f5e14641a663991",
+      "legacy_path": "/shop/expanded/arrow-catching-shield.webp",
+      "family": "Arrow-Catching Shield",
+      "model": "shield",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "arrow-catching-shield",
+          "name": "Escudo apanha-flechas (Escudo)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "arrow-catching-shield"
+      ]
+    },
+    {
       "id": "0e06613dada3e61a",
       "legacy_path": "/shop/magic-skins/berserker-axe.svg",
       "family": "Berserker Axe",
@@ -54818,8 +53589,10 @@
           "name": "Machado do berserker (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "berserker-axe"
+      ]
     },
     {
       "id": "602f26b2d3272c9d",
@@ -54833,8 +53606,10 @@
           "name": "Machado do berserker (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "berserker-axe-greataxe"
+      ]
     },
     {
       "id": "c61d8f98c024dffb",
@@ -54848,8 +53623,10 @@
           "name": "Machado do berserker (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "berserker-axe-halberd"
+      ]
     },
     {
       "id": "33f76b082b922fcd",
@@ -54863,8 +53640,10 @@
           "name": "Machado do berserker (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "berserker-handaxe"
+      ]
     },
     {
       "id": "b7b8e6635e7f1d42",
@@ -54878,8 +53657,10 @@
           "name": "Lâmina de medusa (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "double-bladed-scimitar-of-the-medusa"
+      ]
     },
     {
       "id": "aa75808beb24d49e",
@@ -54893,8 +53674,10 @@
           "name": "Lâmina de medusa (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greatsword-of-the-medusa"
+      ]
     },
     {
       "id": "072c108f8e938876",
@@ -54908,8 +53691,10 @@
           "name": "Lâmina de medusa (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "longsword-of-the-medusa"
+      ]
     },
     {
       "id": "3e63c9e2cfc48b05",
@@ -54923,8 +53708,10 @@
           "name": "Lâmina de medusa (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rapier-of-the-medusa"
+      ]
     },
     {
       "id": "770d731f17039628",
@@ -54938,8 +53725,10 @@
           "name": "Lâmina de medusa (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scimitar-of-the-medusa"
+      ]
     },
     {
       "id": "04c275fe95798228",
@@ -54953,98 +53742,112 @@
           "name": "Lâmina de medusa (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shortsword-of-the-medusa"
+      ]
     },
     {
-      "id": "38043b3010752f7c",
-      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-energy-cell.svg",
-      "family": "Bloodseeker Ammunition",
-      "model": "energy-cell",
-      "slot": "item",
+      "id": "82c018b7abb8d4bb",
+      "legacy_path": "/shop/magic-completion-20261009/bloodshed-double-bladed-scimitar.webp",
+      "family": "Bloodshed Blade",
+      "model": "double-bladed-scimitar",
+      "slot": "armor",
       "consumers": [
         {
-          "id": "bloodseeker-energy-cell",
-          "name": "Munição caça-feridos (Célula de energia)"
+          "id": "bloodshed-double-bladed-scimitar",
+          "name": "Lâmina do derramamento de sangue (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bloodshed-double-bladed-scimitar"
+      ]
     },
     {
-      "id": "4e13670057fed391",
-      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-firearm-bullet.svg",
-      "family": "Bloodseeker Ammunition",
-      "model": "firearm-bullet",
-      "slot": "item",
+      "id": "065b0308d8972ebf",
+      "legacy_path": "/shop/magic-completion-20261009/bloodshed-greatsword.webp",
+      "family": "Bloodshed Blade",
+      "model": "greatsword",
+      "slot": "armor",
       "consumers": [
         {
-          "id": "bloodseeker-firearm-bullet",
-          "name": "Munição caça-feridos (Cartucho de arma de fogo)"
+          "id": "bloodshed-greatsword",
+          "name": "Lâmina do derramamento de sangue (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bloodshed-greatsword"
+      ]
     },
     {
-      "id": "46a21e32ddbe9903",
-      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-arrow.svg",
-      "family": "Bloodseeker Ammunition",
-      "model": "single-arrow",
-      "slot": "item",
+      "id": "63c55b62e4e642d5",
+      "legacy_path": "/shop/magic-completion-20261009/bloodshed-longsword.webp",
+      "family": "Bloodshed Blade",
+      "model": "longsword",
+      "slot": "armor",
       "consumers": [
         {
-          "id": "bloodseeker-arrow",
-          "name": "Munição caça-feridos (Flecha)"
+          "id": "bloodshed-longsword",
+          "name": "Lâmina do derramamento de sangue (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bloodshed-longsword"
+      ]
     },
     {
-      "id": "8a4c65ec2df4d929",
-      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-bolt.svg",
-      "family": "Bloodseeker Ammunition",
-      "model": "single-bolt",
-      "slot": "item",
+      "id": "ca08b339414020aa",
+      "legacy_path": "/shop/magic-completion-20261009/bloodshed-rapier.webp",
+      "family": "Bloodshed Blade",
+      "model": "rapier",
+      "slot": "armor",
       "consumers": [
         {
-          "id": "bloodseeker-bolt",
-          "name": "Munição caça-feridos (Virote)"
+          "id": "bloodshed-rapier",
+          "name": "Lâmina do derramamento de sangue (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bloodshed-rapier"
+      ]
     },
     {
-      "id": "02366e511c254ceb",
-      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-needle.svg",
-      "family": "Bloodseeker Ammunition",
-      "model": "single-needle",
-      "slot": "item",
+      "id": "63b8f88b5f4a2ae5",
+      "legacy_path": "/shop/magic-completion-20261009/bloodshed-scimitar.webp",
+      "family": "Bloodshed Blade",
+      "model": "scimitar",
+      "slot": "armor",
       "consumers": [
         {
-          "id": "bloodseeker-needle",
-          "name": "Munição caça-feridos (Agulha)"
+          "id": "bloodshed-scimitar",
+          "name": "Lâmina do derramamento de sangue (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bloodshed-scimitar"
+      ]
     },
     {
-      "id": "362e932b80ad90ec",
-      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-sling-bullet.svg",
-      "family": "Bloodseeker Ammunition",
-      "model": "single-sling-bullet",
-      "slot": "item",
+      "id": "1ff263726d11c7b5",
+      "legacy_path": "/shop/magic-completion-20261009/bloodshed-shortsword.webp",
+      "family": "Bloodshed Blade",
+      "model": "shortsword",
+      "slot": "armor",
       "consumers": [
         {
-          "id": "bloodseeker-sling-bullet",
-          "name": "Munição caça-feridos (Bala de funda)"
+          "id": "bloodshed-shortsword",
+          "name": "Lâmina do derramamento de sangue (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bloodshed-shortsword"
+      ]
     },
     {
       "id": "3af5c365cb5dc8fa",
@@ -58731,8 +57534,10 @@
           "name": "Armadura demoníaca (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-breastplate"
+      ]
     },
     {
       "id": "e42ebb521e0e4e49",
@@ -58746,8 +57551,10 @@
           "name": "Armadura demoníaca (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-breastplate--bracers"
+      ]
     },
     {
       "id": "8f1037f6f9232ed3",
@@ -58761,8 +57568,10 @@
           "name": "Armadura demoníaca (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-breastplate--feet"
+      ]
     },
     {
       "id": "c704c064f629e3b1",
@@ -58776,8 +57585,10 @@
           "name": "Armadura demoníaca (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-breastplate--head"
+      ]
     },
     {
       "id": "6702e8499734f4aa",
@@ -58791,8 +57602,10 @@
           "name": "Armadura demoníaca (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-breastplate--legs"
+      ]
     },
     {
       "id": "b09a99bcb7e7a1b1",
@@ -58806,8 +57619,10 @@
           "name": "Armadura demoníaca (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-breastplate--shoulders"
+      ]
     },
     {
       "id": "aedcabdf3703984b",
@@ -58821,8 +57636,10 @@
           "name": "Armadura demoníaca (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-mail"
+      ]
     },
     {
       "id": "b6145f0a0cf2ab0f",
@@ -58836,8 +57653,10 @@
           "name": "Armadura demoníaca (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-mail--bracers"
+      ]
     },
     {
       "id": "3a6cdff8cea651af",
@@ -58851,8 +57670,10 @@
           "name": "Armadura demoníaca (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-mail--feet"
+      ]
     },
     {
       "id": "05bd4e6ebd676fbc",
@@ -58866,8 +57687,10 @@
           "name": "Armadura demoníaca (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-mail--head"
+      ]
     },
     {
       "id": "de4dc74cd978c11d",
@@ -58881,8 +57704,10 @@
           "name": "Armadura demoníaca (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-mail--legs"
+      ]
     },
     {
       "id": "44390f4ff1964cb2",
@@ -58896,8 +57721,10 @@
           "name": "Armadura demoníaca (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-mail--shoulders"
+      ]
     },
     {
       "id": "d6a44e0bd84677bb",
@@ -58911,8 +57738,10 @@
           "name": "Armadura demoníaca (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-shirt"
+      ]
     },
     {
       "id": "3b8e948fa571db05",
@@ -58926,8 +57755,10 @@
           "name": "Armadura demoníaca (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-shirt--bracers"
+      ]
     },
     {
       "id": "7bc425d2c65f4697",
@@ -58941,8 +57772,10 @@
           "name": "Armadura demoníaca (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-shirt--feet"
+      ]
     },
     {
       "id": "f2ae7e8562353f05",
@@ -58956,8 +57789,10 @@
           "name": "Armadura demoníaca (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-shirt--head"
+      ]
     },
     {
       "id": "559f6fd77e52ea6d",
@@ -58971,8 +57806,10 @@
           "name": "Armadura demoníaca (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-shirt--legs"
+      ]
     },
     {
       "id": "76acf664eb09ed75",
@@ -58986,8 +57823,10 @@
           "name": "Armadura demoníaca (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "d900880186417e16",
@@ -59001,8 +57840,10 @@
           "name": "Armadura demoníaca (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-half-plate-armor"
+      ]
     },
     {
       "id": "a0623c2ea3093678",
@@ -59016,8 +57857,10 @@
           "name": "Armadura demoníaca (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "6949504f44178b47",
@@ -59031,8 +57874,10 @@
           "name": "Armadura demoníaca (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-half-plate-armor--feet"
+      ]
     },
     {
       "id": "2b3b88363c7ec90b",
@@ -59046,8 +57891,10 @@
           "name": "Armadura demoníaca (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-half-plate-armor--head"
+      ]
     },
     {
       "id": "529335feda1eb36f",
@@ -59061,8 +57908,10 @@
           "name": "Armadura demoníaca (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-half-plate-armor--legs"
+      ]
     },
     {
       "id": "9782e639efdd6598",
@@ -59076,8 +57925,10 @@
           "name": "Armadura demoníaca (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "6e53ab9dac443fa4",
@@ -59091,8 +57942,10 @@
           "name": "Armadura demoníaca (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-hide-armor"
+      ]
     },
     {
       "id": "665db94694ed4462",
@@ -59106,8 +57959,10 @@
           "name": "Armadura demoníaca (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-hide-armor--bracers"
+      ]
     },
     {
       "id": "74180855c02c71f8",
@@ -59121,8 +57976,10 @@
           "name": "Armadura demoníaca (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-hide-armor--feet"
+      ]
     },
     {
       "id": "4e2085f793350cd8",
@@ -59136,8 +57993,10 @@
           "name": "Armadura demoníaca (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-hide-armor--head"
+      ]
     },
     {
       "id": "d2a23b0b90db7293",
@@ -59151,8 +58010,10 @@
           "name": "Armadura demoníaca (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-hide-armor--legs"
+      ]
     },
     {
       "id": "eba6546a19acf3c8",
@@ -59166,8 +58027,10 @@
           "name": "Armadura demoníaca (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-hide-armor--shoulders"
+      ]
     },
     {
       "id": "f8a17e6e75271d32",
@@ -59181,8 +58044,10 @@
           "name": "Armadura demoníaca (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-leather-armor"
+      ]
     },
     {
       "id": "aaf27649991fa135",
@@ -59196,8 +58061,10 @@
           "name": "Armadura demoníaca (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-leather-armor--bracers"
+      ]
     },
     {
       "id": "d9ef80c0357e681a",
@@ -59211,8 +58078,10 @@
           "name": "Armadura demoníaca (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-leather-armor--feet"
+      ]
     },
     {
       "id": "d2a55dc6d2051b80",
@@ -59226,8 +58095,10 @@
           "name": "Armadura demoníaca (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-leather-armor--head"
+      ]
     },
     {
       "id": "718e23ce66ff653c",
@@ -59241,8 +58112,10 @@
           "name": "Armadura demoníaca (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-leather-armor--legs"
+      ]
     },
     {
       "id": "1966cf4ced2d8dce",
@@ -59256,8 +58129,10 @@
           "name": "Armadura demoníaca (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-leather-armor--shoulders"
+      ]
     },
     {
       "id": "9252fefc6d7e3c42",
@@ -59271,8 +58146,10 @@
           "name": "Armadura demoníaca (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-padded-armor"
+      ]
     },
     {
       "id": "c5bc578da3b46241",
@@ -59286,8 +58163,10 @@
           "name": "Armadura demoníaca (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-padded-armor--bracers"
+      ]
     },
     {
       "id": "b7a4e55a212d29bd",
@@ -59301,8 +58180,10 @@
           "name": "Armadura demoníaca (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-padded-armor--feet"
+      ]
     },
     {
       "id": "e9859dae8b288171",
@@ -59316,8 +58197,10 @@
           "name": "Armadura demoníaca (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-padded-armor--head"
+      ]
     },
     {
       "id": "805a9bc488d77417",
@@ -59331,8 +58214,10 @@
           "name": "Armadura demoníaca (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-padded-armor--legs"
+      ]
     },
     {
       "id": "0a2df63ef01b376c",
@@ -59346,8 +58231,27 @@
           "name": "Armadura demoníaca (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-padded-armor--shoulders"
+      ]
+    },
+    {
+      "id": "0dc2efc5b7e231d4",
+      "legacy_path": "/shop/expanded/demon-armor.webp",
+      "family": "Demon Armor",
+      "model": "plate-armor",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "demon-armor",
+          "name": "Armadura demoníaca (Armadura de placas)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor"
+      ]
     },
     {
       "id": "6124fdaa6517f155",
@@ -59361,8 +58265,10 @@
           "name": "Armadura demoníaca (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor--bracers"
+      ]
     },
     {
       "id": "190566dcf0996329",
@@ -59376,8 +58282,10 @@
           "name": "Armadura demoníaca (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor--feet"
+      ]
     },
     {
       "id": "1bd0b8eec7ab43c0",
@@ -59391,8 +58299,10 @@
           "name": "Armadura demoníaca (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor--head"
+      ]
     },
     {
       "id": "0bf080acbeeb06a8",
@@ -59406,8 +58316,10 @@
           "name": "Armadura demoníaca (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor--legs"
+      ]
     },
     {
       "id": "9531eb9d64615ca3",
@@ -59421,8 +58333,10 @@
           "name": "Armadura demoníaca (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor--shoulders"
+      ]
     },
     {
       "id": "28581166841a9c91",
@@ -59436,8 +58350,10 @@
           "name": "Armadura demoníaca (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-ring-mail"
+      ]
     },
     {
       "id": "5c024f2c5f60dfe6",
@@ -59451,8 +58367,10 @@
           "name": "Armadura demoníaca (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-ring-mail--bracers"
+      ]
     },
     {
       "id": "e3f969e9b2ba9b83",
@@ -59466,8 +58384,10 @@
           "name": "Armadura demoníaca (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-ring-mail--feet"
+      ]
     },
     {
       "id": "5e506304cecf0ea0",
@@ -59481,8 +58401,10 @@
           "name": "Armadura demoníaca (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-ring-mail--head"
+      ]
     },
     {
       "id": "976d4a8cdd62fef2",
@@ -59496,8 +58418,10 @@
           "name": "Armadura demoníaca (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-ring-mail--legs"
+      ]
     },
     {
       "id": "1189ee59863945b0",
@@ -59511,8 +58435,10 @@
           "name": "Armadura demoníaca (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-ring-mail--shoulders"
+      ]
     },
     {
       "id": "437b1c4bf9ddd9c5",
@@ -59526,8 +58452,10 @@
           "name": "Armadura demoníaca (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-scale-mail"
+      ]
     },
     {
       "id": "4846fbac2f068e11",
@@ -59541,8 +58469,10 @@
           "name": "Armadura demoníaca (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-scale-mail--bracers"
+      ]
     },
     {
       "id": "f2b8bda3b98afbbe",
@@ -59556,8 +58486,10 @@
           "name": "Armadura demoníaca (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-scale-mail--feet"
+      ]
     },
     {
       "id": "c479f353b7b0d323",
@@ -59571,8 +58503,10 @@
           "name": "Armadura demoníaca (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-scale-mail--head"
+      ]
     },
     {
       "id": "0c7edebacaa10565",
@@ -59586,8 +58520,10 @@
           "name": "Armadura demoníaca (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-scale-mail--legs"
+      ]
     },
     {
       "id": "96e1932b2b843791",
@@ -59601,8 +58537,10 @@
           "name": "Armadura demoníaca (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-scale-mail--shoulders"
+      ]
     },
     {
       "id": "64406c4c3598adca",
@@ -59616,8 +58554,10 @@
           "name": "Armadura demoníaca (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-splint-armor"
+      ]
     },
     {
       "id": "b0bdbaf32b1a9f23",
@@ -59631,8 +58571,10 @@
           "name": "Armadura demoníaca (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-splint-armor--bracers"
+      ]
     },
     {
       "id": "71fc730f36775eb6",
@@ -59646,8 +58588,10 @@
           "name": "Armadura demoníaca (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-splint-armor--feet"
+      ]
     },
     {
       "id": "a45126321e06bed8",
@@ -59661,8 +58605,10 @@
           "name": "Armadura demoníaca (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-splint-armor--head"
+      ]
     },
     {
       "id": "11f9d00f8eec1bf5",
@@ -59676,8 +58622,10 @@
           "name": "Armadura demoníaca (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-splint-armor--legs"
+      ]
     },
     {
       "id": "ab6aed78160f9628",
@@ -59691,8 +58639,10 @@
           "name": "Armadura demoníaca (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-splint-armor--shoulders"
+      ]
     },
     {
       "id": "0863229474457190",
@@ -59706,8 +58656,10 @@
           "name": "Armadura demoníaca (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-studded-leather"
+      ]
     },
     {
       "id": "da1dd3c050ef302d",
@@ -59721,8 +58673,10 @@
           "name": "Armadura demoníaca (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-studded-leather--bracers"
+      ]
     },
     {
       "id": "b0d32fb20ba0484b",
@@ -59736,8 +58690,10 @@
           "name": "Armadura demoníaca (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-studded-leather--feet"
+      ]
     },
     {
       "id": "d553bc0a1e0914b6",
@@ -59751,8 +58707,10 @@
           "name": "Armadura demoníaca (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-studded-leather--head"
+      ]
     },
     {
       "id": "a159698aa38a0f19",
@@ -59766,8 +58724,10 @@
           "name": "Armadura demoníaca (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-studded-leather--legs"
+      ]
     },
     {
       "id": "81c3a55c63987372",
@@ -59781,98 +58741,10 @@
           "name": "Armadura demoníaca (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "fd2699868c75ce9f",
-      "legacy_path": "/shop/magic-completion-20261009/dispelling-energy-cell.svg",
-      "family": "Dispelling Ammunition",
-      "model": "energy-cell",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "dispelling-energy-cell",
-          "name": "Munição de dissipação (Célula de energia)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "589612fe91c95261",
-      "legacy_path": "/shop/magic-completion-20261009/dispelling-firearm-bullet.svg",
-      "family": "Dispelling Ammunition",
-      "model": "firearm-bullet",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "dispelling-firearm-bullet",
-          "name": "Munição de dissipação (Cartucho de arma de fogo)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "e57f6001c3aa053c",
-      "legacy_path": "/shop/magic-completion-20261009/dispelling-arrow.svg",
-      "family": "Dispelling Ammunition",
-      "model": "single-arrow",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "dispelling-arrow",
-          "name": "Munição de dissipação (Flecha)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "f863654980750d26",
-      "legacy_path": "/shop/magic-completion-20261009/dispelling-bolt.svg",
-      "family": "Dispelling Ammunition",
-      "model": "single-bolt",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "dispelling-bolt",
-          "name": "Munição de dissipação (Virote)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "d03b7d143df76fa6",
-      "legacy_path": "/shop/magic-completion-20261009/dispelling-needle.svg",
-      "family": "Dispelling Ammunition",
-      "model": "single-needle",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "dispelling-needle",
-          "name": "Munição de dissipação (Agulha)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "66f7fe34d09ceda6",
-      "legacy_path": "/shop/magic-completion-20261009/dispelling-sling-bullet.svg",
-      "family": "Dispelling Ammunition",
-      "model": "single-sling-bullet",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "dispelling-sling-bullet",
-          "name": "Munição de dissipação (Bala de funda)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "demon-armor-studded-leather--shoulders"
+      ]
     },
     {
       "id": "c317a7876f6f6539",
@@ -75604,96 +74476,6 @@
       ]
     },
     {
-      "id": "f0838c318e927e88",
-      "legacy_path": "/shop/magic-completion-20261009/goading-energy-cell.svg",
-      "family": "Goading Ammunition",
-      "model": "energy-cell",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "goading-energy-cell",
-          "name": "Munição de provocação (Célula de energia)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "2e1a99caf3677974",
-      "legacy_path": "/shop/magic-completion-20261009/goading-firearm-bullet.svg",
-      "family": "Goading Ammunition",
-      "model": "firearm-bullet",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "goading-firearm-bullet",
-          "name": "Munição de provocação (Cartucho de arma de fogo)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "7208af27e0dc5ff7",
-      "legacy_path": "/shop/magic-completion-20261009/goading-arrow.svg",
-      "family": "Goading Ammunition",
-      "model": "single-arrow",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "goading-arrow",
-          "name": "Munição de provocação (Flecha)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "b0bc789b42df70b7",
-      "legacy_path": "/shop/magic-completion-20261009/goading-bolt.svg",
-      "family": "Goading Ammunition",
-      "model": "single-bolt",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "goading-bolt",
-          "name": "Munição de provocação (Virote)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "623d0f9aced42a8d",
-      "legacy_path": "/shop/magic-completion-20261009/goading-needle.svg",
-      "family": "Goading Ammunition",
-      "model": "single-needle",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "goading-needle",
-          "name": "Munição de provocação (Agulha)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "82e5ff63f5ec5b3f",
-      "legacy_path": "/shop/magic-completion-20261009/goading-sling-bullet.svg",
-      "family": "Goading Ammunition",
-      "model": "single-sling-bullet",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "goading-sling-bullet",
-          "name": "Munição de provocação (Bala de funda)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
       "id": "35b81c842097307b",
       "legacy_path": "/shop/magic-skins/hammer-of-thunderbolts.svg",
       "family": "Hammer of Thunderbolts",
@@ -82166,8 +80948,10 @@
           "name": "Armadura de mizzium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-breastplate"
+      ]
     },
     {
       "id": "ade87df9b829cec8",
@@ -82181,8 +80965,10 @@
           "name": "Armadura de mizzium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-breastplate--bracers"
+      ]
     },
     {
       "id": "4bd8851b2a2f6003",
@@ -82196,8 +80982,10 @@
           "name": "Armadura de mizzium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-breastplate--feet"
+      ]
     },
     {
       "id": "f395fd539f1eff3e",
@@ -82211,8 +80999,10 @@
           "name": "Armadura de mizzium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-breastplate--head"
+      ]
     },
     {
       "id": "44fd89d2715a924e",
@@ -82226,8 +81016,10 @@
           "name": "Armadura de mizzium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-breastplate--legs"
+      ]
     },
     {
       "id": "02376d4dd064ae59",
@@ -82241,8 +81033,10 @@
           "name": "Armadura de mizzium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-breastplate--shoulders"
+      ]
     },
     {
       "id": "8b273bfba605c4a1",
@@ -82256,8 +81050,10 @@
           "name": "Armadura de mizzium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-mail"
+      ]
     },
     {
       "id": "fbfd7850dad357e9",
@@ -82271,8 +81067,10 @@
           "name": "Armadura de mizzium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-mail--bracers"
+      ]
     },
     {
       "id": "c46b96835bec9eb5",
@@ -82286,8 +81084,10 @@
           "name": "Armadura de mizzium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-mail--feet"
+      ]
     },
     {
       "id": "a4674ebb32ff7610",
@@ -82301,8 +81101,10 @@
           "name": "Armadura de mizzium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-mail--head"
+      ]
     },
     {
       "id": "3ae7bb1c8458f622",
@@ -82316,8 +81118,10 @@
           "name": "Armadura de mizzium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-mail--legs"
+      ]
     },
     {
       "id": "7c62a401cc7cb7c2",
@@ -82331,8 +81135,10 @@
           "name": "Armadura de mizzium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-mail--shoulders"
+      ]
     },
     {
       "id": "cf1a80467aff5e32",
@@ -82346,8 +81152,10 @@
           "name": "Armadura de mizzium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-shirt"
+      ]
     },
     {
       "id": "a128de50f451abda",
@@ -82361,8 +81169,10 @@
           "name": "Armadura de mizzium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-shirt--bracers"
+      ]
     },
     {
       "id": "6cc148951ddf1747",
@@ -82376,8 +81186,10 @@
           "name": "Armadura de mizzium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-shirt--feet"
+      ]
     },
     {
       "id": "12a0a36228547ac3",
@@ -82391,8 +81203,10 @@
           "name": "Armadura de mizzium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-shirt--head"
+      ]
     },
     {
       "id": "f313df639fa5a15c",
@@ -82406,8 +81220,10 @@
           "name": "Armadura de mizzium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-shirt--legs"
+      ]
     },
     {
       "id": "f37e1de5d6e236e3",
@@ -82421,8 +81237,10 @@
           "name": "Armadura de mizzium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "288e36d63a53a229",
@@ -82436,8 +81254,10 @@
           "name": "Armadura de mizzium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-half-plate-armor"
+      ]
     },
     {
       "id": "793f7eab6b7ae6d6",
@@ -82451,8 +81271,10 @@
           "name": "Armadura de mizzium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "6933531bc8a04c3e",
@@ -82466,8 +81288,10 @@
           "name": "Armadura de mizzium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-half-plate-armor--feet"
+      ]
     },
     {
       "id": "bcf85c171367102d",
@@ -82481,8 +81305,10 @@
           "name": "Armadura de mizzium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-half-plate-armor--head"
+      ]
     },
     {
       "id": "be2f97390a0f3a76",
@@ -82496,8 +81322,10 @@
           "name": "Armadura de mizzium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-half-plate-armor--legs"
+      ]
     },
     {
       "id": "1a230aef23b59114",
@@ -82511,8 +81339,10 @@
           "name": "Armadura de mizzium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "bbdb0a6348656634",
@@ -82526,8 +81356,10 @@
           "name": "Armadura de mizzium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-plate-armor"
+      ]
     },
     {
       "id": "2b2869d7c03fbd22",
@@ -82541,8 +81373,10 @@
           "name": "Armadura de mizzium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-plate-armor--bracers"
+      ]
     },
     {
       "id": "6aea585bd2dd1f11",
@@ -82556,8 +81390,10 @@
           "name": "Armadura de mizzium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-plate-armor--feet"
+      ]
     },
     {
       "id": "a22cf04452c70135",
@@ -82571,8 +81407,10 @@
           "name": "Armadura de mizzium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-plate-armor--head"
+      ]
     },
     {
       "id": "7e11c137fdca692b",
@@ -82586,8 +81424,10 @@
           "name": "Armadura de mizzium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-plate-armor--legs"
+      ]
     },
     {
       "id": "a046dc23eb849b7a",
@@ -82601,8 +81441,10 @@
           "name": "Armadura de mizzium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-plate-armor--shoulders"
+      ]
     },
     {
       "id": "980b6ebcba973c51",
@@ -82616,8 +81458,10 @@
           "name": "Armadura de mizzium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-ring-mail"
+      ]
     },
     {
       "id": "cd1ffee72fdb4cbd",
@@ -82631,8 +81475,10 @@
           "name": "Armadura de mizzium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-ring-mail--bracers"
+      ]
     },
     {
       "id": "627b3d8b3a6ab98a",
@@ -82646,8 +81492,10 @@
           "name": "Armadura de mizzium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-ring-mail--feet"
+      ]
     },
     {
       "id": "2dc4986cf252e6b3",
@@ -82661,8 +81509,10 @@
           "name": "Armadura de mizzium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-ring-mail--head"
+      ]
     },
     {
       "id": "6615660f81d0fa6f",
@@ -82676,8 +81526,10 @@
           "name": "Armadura de mizzium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-ring-mail--legs"
+      ]
     },
     {
       "id": "a8dcfd01e5dc04f8",
@@ -82691,8 +81543,10 @@
           "name": "Armadura de mizzium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-ring-mail--shoulders"
+      ]
     },
     {
       "id": "6cfa038ebd825759",
@@ -82706,8 +81560,10 @@
           "name": "Armadura de mizzium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-scale-mail"
+      ]
     },
     {
       "id": "9b307ea940256b1a",
@@ -82721,8 +81577,10 @@
           "name": "Armadura de mizzium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-scale-mail--bracers"
+      ]
     },
     {
       "id": "eab01dd73079db1f",
@@ -82736,8 +81594,10 @@
           "name": "Armadura de mizzium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-scale-mail--feet"
+      ]
     },
     {
       "id": "02ce3b50ea4820e4",
@@ -82751,8 +81611,10 @@
           "name": "Armadura de mizzium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-scale-mail--head"
+      ]
     },
     {
       "id": "157417dfb2b95cbd",
@@ -82766,8 +81628,10 @@
           "name": "Armadura de mizzium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-scale-mail--legs"
+      ]
     },
     {
       "id": "b2632dcf13f268ab",
@@ -82781,8 +81645,10 @@
           "name": "Armadura de mizzium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-scale-mail--shoulders"
+      ]
     },
     {
       "id": "2d3ade2084fd50a8",
@@ -82796,8 +81662,10 @@
           "name": "Armadura de mizzium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-spiked-armor"
+      ]
     },
     {
       "id": "83fd8f2f3364c32c",
@@ -82811,8 +81679,10 @@
           "name": "Armadura de mizzium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-spiked-armor--bracers"
+      ]
     },
     {
       "id": "b65e7d065eee211e",
@@ -82826,8 +81696,10 @@
           "name": "Armadura de mizzium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-spiked-armor--feet"
+      ]
     },
     {
       "id": "50af27f0e2075a29",
@@ -82841,8 +81713,10 @@
           "name": "Armadura de mizzium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-spiked-armor--head"
+      ]
     },
     {
       "id": "4377fed1fda73bc4",
@@ -82856,8 +81730,10 @@
           "name": "Armadura de mizzium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-spiked-armor--legs"
+      ]
     },
     {
       "id": "d0587bcfa26dbe29",
@@ -82871,8 +81747,10 @@
           "name": "Armadura de mizzium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-spiked-armor--shoulders"
+      ]
     },
     {
       "id": "a6472743b4a754e8",
@@ -82886,8 +81764,10 @@
           "name": "Armadura de mizzium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-splint-armor"
+      ]
     },
     {
       "id": "ab875596669646a4",
@@ -82901,8 +81781,10 @@
           "name": "Armadura de mizzium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-splint-armor--bracers"
+      ]
     },
     {
       "id": "d94e82eb8f229521",
@@ -82916,8 +81798,10 @@
           "name": "Armadura de mizzium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-splint-armor--feet"
+      ]
     },
     {
       "id": "e9b55c2d394ab0e7",
@@ -82931,8 +81815,10 @@
           "name": "Armadura de mizzium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-splint-armor--head"
+      ]
     },
     {
       "id": "fe80a8b50511cfd6",
@@ -82946,8 +81832,10 @@
           "name": "Armadura de mizzium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-splint-armor--legs"
+      ]
     },
     {
       "id": "4dd1c4b1206ce76d",
@@ -82961,8 +81849,10 @@
           "name": "Armadura de mizzium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mizzium-splint-armor--shoulders"
+      ]
     },
     {
       "id": "91c4548e8c7a5642",
@@ -86786,8 +85676,10 @@
           "name": "Armadura fumegante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-breastplate"
+      ]
     },
     {
       "id": "a42335470c86b435",
@@ -86801,8 +85693,10 @@
           "name": "Armadura fumegante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-breastplate--bracers"
+      ]
     },
     {
       "id": "53b754a2bacd3a25",
@@ -86816,8 +85710,10 @@
           "name": "Armadura fumegante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-breastplate--feet"
+      ]
     },
     {
       "id": "7550a80553aed4b2",
@@ -86831,8 +85727,10 @@
           "name": "Armadura fumegante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-breastplate--head"
+      ]
     },
     {
       "id": "277f07ece3f2d94b",
@@ -86846,8 +85744,10 @@
           "name": "Armadura fumegante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-breastplate--legs"
+      ]
     },
     {
       "id": "c764b9c2e407eb01",
@@ -86861,8 +85761,10 @@
           "name": "Armadura fumegante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-breastplate--shoulders"
+      ]
     },
     {
       "id": "12f2dc9613c2ff89",
@@ -86876,8 +85778,10 @@
           "name": "Armadura fumegante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-mail"
+      ]
     },
     {
       "id": "f28d8e93d2445e99",
@@ -86891,8 +85795,10 @@
           "name": "Armadura fumegante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-mail--bracers"
+      ]
     },
     {
       "id": "55ef7c3dc5b60c2c",
@@ -86906,8 +85812,10 @@
           "name": "Armadura fumegante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-mail--feet"
+      ]
     },
     {
       "id": "6c098b655a63b605",
@@ -86921,8 +85829,10 @@
           "name": "Armadura fumegante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-mail--head"
+      ]
     },
     {
       "id": "00f93ec7c92d3b2c",
@@ -86936,8 +85846,10 @@
           "name": "Armadura fumegante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-mail--legs"
+      ]
     },
     {
       "id": "5f957729dbd945d3",
@@ -86951,8 +85863,10 @@
           "name": "Armadura fumegante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-mail--shoulders"
+      ]
     },
     {
       "id": "2c65ee53b4a35fe8",
@@ -86966,8 +85880,10 @@
           "name": "Armadura fumegante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-shirt"
+      ]
     },
     {
       "id": "3dce57deb1d82b4c",
@@ -86981,8 +85897,10 @@
           "name": "Armadura fumegante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-shirt--bracers"
+      ]
     },
     {
       "id": "82a2d0ead8f471ed",
@@ -86996,8 +85914,10 @@
           "name": "Armadura fumegante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-shirt--feet"
+      ]
     },
     {
       "id": "760f233355ba2f1f",
@@ -87011,8 +85931,10 @@
           "name": "Armadura fumegante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-shirt--head"
+      ]
     },
     {
       "id": "28f23f98a4648088",
@@ -87026,8 +85948,10 @@
           "name": "Armadura fumegante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-shirt--legs"
+      ]
     },
     {
       "id": "bca9d95faaa69bc2",
@@ -87041,8 +85965,10 @@
           "name": "Armadura fumegante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "bd52c52f2ab76720",
@@ -87056,8 +85982,10 @@
           "name": "Armadura fumegante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-half-plate-armor"
+      ]
     },
     {
       "id": "f5b28b04a3d2a829",
@@ -87071,8 +85999,10 @@
           "name": "Armadura fumegante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "8a3d033aca858376",
@@ -87086,8 +86016,10 @@
           "name": "Armadura fumegante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-half-plate-armor--feet"
+      ]
     },
     {
       "id": "f5da1dcd2e27285b",
@@ -87101,8 +86033,10 @@
           "name": "Armadura fumegante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-half-plate-armor--head"
+      ]
     },
     {
       "id": "ed9a5f0788985fae",
@@ -87116,8 +86050,10 @@
           "name": "Armadura fumegante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-half-plate-armor--legs"
+      ]
     },
     {
       "id": "3cca70e448b4600c",
@@ -87131,8 +86067,10 @@
           "name": "Armadura fumegante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "daa4b57f98c89e2f",
@@ -87146,8 +86084,10 @@
           "name": "Armadura fumegante (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-hide-armor"
+      ]
     },
     {
       "id": "9c8ee4ebe89aad42",
@@ -87161,8 +86101,10 @@
           "name": "Armadura fumegante (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-hide-armor--bracers"
+      ]
     },
     {
       "id": "1d0296b8b28b8b13",
@@ -87176,8 +86118,10 @@
           "name": "Armadura fumegante (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-hide-armor--feet"
+      ]
     },
     {
       "id": "d38cce03e3cbbf5a",
@@ -87191,8 +86135,10 @@
           "name": "Armadura fumegante (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-hide-armor--head"
+      ]
     },
     {
       "id": "6a1768a6ed43c032",
@@ -87206,8 +86152,10 @@
           "name": "Armadura fumegante (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-hide-armor--legs"
+      ]
     },
     {
       "id": "f7cb8a52164c2aeb",
@@ -87221,8 +86169,10 @@
           "name": "Armadura fumegante (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-hide-armor--shoulders"
+      ]
     },
     {
       "id": "6904979e298a925d",
@@ -87236,8 +86186,10 @@
           "name": "Armadura fumegante (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-leather-armor"
+      ]
     },
     {
       "id": "98deac6df1ea5fde",
@@ -87251,8 +86203,10 @@
           "name": "Armadura fumegante (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-leather-armor--bracers"
+      ]
     },
     {
       "id": "7980a35cebcc1f81",
@@ -87266,8 +86220,10 @@
           "name": "Armadura fumegante (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-leather-armor--feet"
+      ]
     },
     {
       "id": "4d6386f51b16e568",
@@ -87281,8 +86237,10 @@
           "name": "Armadura fumegante (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-leather-armor--head"
+      ]
     },
     {
       "id": "00a0c3dcba6b79a7",
@@ -87296,8 +86254,10 @@
           "name": "Armadura fumegante (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-leather-armor--legs"
+      ]
     },
     {
       "id": "2c16a4cfba67935f",
@@ -87311,8 +86271,10 @@
           "name": "Armadura fumegante (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-leather-armor--shoulders"
+      ]
     },
     {
       "id": "70e1c53153db13ed",
@@ -87326,8 +86288,10 @@
           "name": "Armadura fumegante (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-padded-armor"
+      ]
     },
     {
       "id": "b51af5683f31298d",
@@ -87341,8 +86305,10 @@
           "name": "Armadura fumegante (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-padded-armor--bracers"
+      ]
     },
     {
       "id": "6f98c54bd370c3f8",
@@ -87356,8 +86322,10 @@
           "name": "Armadura fumegante (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-padded-armor--feet"
+      ]
     },
     {
       "id": "9c4684e4e794101a",
@@ -87371,8 +86339,10 @@
           "name": "Armadura fumegante (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-padded-armor--head"
+      ]
     },
     {
       "id": "cfa1ceba4ad0b910",
@@ -87386,8 +86356,10 @@
           "name": "Armadura fumegante (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-padded-armor--legs"
+      ]
     },
     {
       "id": "ec9be17f20c586d4",
@@ -87401,8 +86373,10 @@
           "name": "Armadura fumegante (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-padded-armor--shoulders"
+      ]
     },
     {
       "id": "ff7c9e4414947c1d",
@@ -87416,8 +86390,10 @@
           "name": "Armadura fumegante (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-plate-armor"
+      ]
     },
     {
       "id": "904011c1c76f6b2b",
@@ -87431,8 +86407,10 @@
           "name": "Armadura fumegante (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-plate-armor--bracers"
+      ]
     },
     {
       "id": "ea4cf2b9ea236272",
@@ -87446,8 +86424,10 @@
           "name": "Armadura fumegante (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-plate-armor--feet"
+      ]
     },
     {
       "id": "64496a36d3596033",
@@ -87461,8 +86441,10 @@
           "name": "Armadura fumegante (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-plate-armor--head"
+      ]
     },
     {
       "id": "89337abe398b2e03",
@@ -87476,8 +86458,10 @@
           "name": "Armadura fumegante (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-plate-armor--legs"
+      ]
     },
     {
       "id": "9b77cbb99b545645",
@@ -87491,8 +86475,10 @@
           "name": "Armadura fumegante (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-plate-armor--shoulders"
+      ]
     },
     {
       "id": "8dc45e48cc86c079",
@@ -87506,8 +86492,10 @@
           "name": "Armadura fumegante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-ring-mail"
+      ]
     },
     {
       "id": "ef4e882c7bb956c8",
@@ -87521,8 +86509,10 @@
           "name": "Armadura fumegante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-ring-mail--bracers"
+      ]
     },
     {
       "id": "e70ebeaffe927900",
@@ -87536,8 +86526,10 @@
           "name": "Armadura fumegante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-ring-mail--feet"
+      ]
     },
     {
       "id": "c081619a827ea995",
@@ -87551,8 +86543,10 @@
           "name": "Armadura fumegante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-ring-mail--head"
+      ]
     },
     {
       "id": "75115f7693806c04",
@@ -87566,8 +86560,10 @@
           "name": "Armadura fumegante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-ring-mail--legs"
+      ]
     },
     {
       "id": "e352593fa9229491",
@@ -87581,8 +86577,10 @@
           "name": "Armadura fumegante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-ring-mail--shoulders"
+      ]
     },
     {
       "id": "83bf4bd49bb74af7",
@@ -87596,8 +86594,10 @@
           "name": "Armadura fumegante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-scale-mail"
+      ]
     },
     {
       "id": "a7741dff65999871",
@@ -87611,8 +86611,10 @@
           "name": "Armadura fumegante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-scale-mail--bracers"
+      ]
     },
     {
       "id": "172a18609ff0b630",
@@ -87626,8 +86628,10 @@
           "name": "Armadura fumegante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-scale-mail--feet"
+      ]
     },
     {
       "id": "183fca0446b088ea",
@@ -87641,8 +86645,10 @@
           "name": "Armadura fumegante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-scale-mail--head"
+      ]
     },
     {
       "id": "453acc45089d38ab",
@@ -87656,8 +86662,10 @@
           "name": "Armadura fumegante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-scale-mail--legs"
+      ]
     },
     {
       "id": "6d60335b962198fe",
@@ -87671,8 +86679,10 @@
           "name": "Armadura fumegante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-scale-mail--shoulders"
+      ]
     },
     {
       "id": "a018f100888a3907",
@@ -87686,8 +86696,10 @@
           "name": "Armadura fumegante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-spiked-armor"
+      ]
     },
     {
       "id": "721e4606dfab80ba",
@@ -87701,8 +86713,10 @@
           "name": "Armadura fumegante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-spiked-armor--bracers"
+      ]
     },
     {
       "id": "83690edc23b678a2",
@@ -87716,8 +86730,10 @@
           "name": "Armadura fumegante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-spiked-armor--feet"
+      ]
     },
     {
       "id": "36d4f9b21a799c7d",
@@ -87731,8 +86747,10 @@
           "name": "Armadura fumegante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-spiked-armor--head"
+      ]
     },
     {
       "id": "587b5cf76da782fb",
@@ -87746,8 +86764,10 @@
           "name": "Armadura fumegante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-spiked-armor--legs"
+      ]
     },
     {
       "id": "6378c6119d82d351",
@@ -87761,8 +86781,10 @@
           "name": "Armadura fumegante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-spiked-armor--shoulders"
+      ]
     },
     {
       "id": "6a9a3e4fa947ca8b",
@@ -87776,8 +86798,10 @@
           "name": "Armadura fumegante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-splint-armor"
+      ]
     },
     {
       "id": "c3ce523b80c99bea",
@@ -87791,8 +86815,10 @@
           "name": "Armadura fumegante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-splint-armor--bracers"
+      ]
     },
     {
       "id": "7edd4fead8ac7130",
@@ -87806,8 +86832,10 @@
           "name": "Armadura fumegante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-splint-armor--feet"
+      ]
     },
     {
       "id": "36efd91727f29557",
@@ -87821,8 +86849,10 @@
           "name": "Armadura fumegante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-splint-armor--head"
+      ]
     },
     {
       "id": "5846532b5bceef6f",
@@ -87836,8 +86866,10 @@
           "name": "Armadura fumegante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-splint-armor--legs"
+      ]
     },
     {
       "id": "f9bec475ae4b3818",
@@ -87851,8 +86883,10 @@
           "name": "Armadura fumegante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-splint-armor--shoulders"
+      ]
     },
     {
       "id": "5a468220c78ccaee",
@@ -87866,8 +86900,10 @@
           "name": "Armadura fumegante (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-studded-leather-armor"
+      ]
     },
     {
       "id": "90231052675703db",
@@ -87881,8 +86917,10 @@
           "name": "Armadura fumegante (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-studded-leather-armor--bracers"
+      ]
     },
     {
       "id": "5c122d15b9d28e16",
@@ -87896,8 +86934,10 @@
           "name": "Armadura fumegante (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-studded-leather-armor--feet"
+      ]
     },
     {
       "id": "f6369fc5859e2334",
@@ -87911,8 +86951,10 @@
           "name": "Armadura fumegante (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-studded-leather-armor--head"
+      ]
     },
     {
       "id": "1c31f871b4d1f7a8",
@@ -87926,8 +86968,10 @@
           "name": "Armadura fumegante (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-studded-leather-armor--legs"
+      ]
     },
     {
       "id": "85633148559f8eb1",
@@ -87941,8 +86985,10 @@
           "name": "Armadura fumegante (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "smoldering-studded-leather-armor--shoulders"
+      ]
     },
     {
       "id": "91d474e3fa727741",
@@ -91173,111 +90219,6 @@
       "completed_consumers": [
         "vorpal-sword-scimitar"
       ]
-    },
-    {
-      "id": "5666747a1f142644",
-      "legacy_path": "/shop/magic-completion-20261009/walloping-energy-cell.svg",
-      "family": "Walloping Ammunition",
-      "model": "energy-cell",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "walloping-energy-cell",
-          "name": "Munição de impacto (Célula de energia)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "c44fba3e6ca1f171",
-      "legacy_path": "/shop/magic-completion-20261009/walloping-firearm-bullet.svg",
-      "family": "Walloping Ammunition",
-      "model": "firearm-bullet",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "walloping-firearm-bullet",
-          "name": "Munição de impacto (Cartucho de arma de fogo)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "8d1c5c1fc562764e",
-      "legacy_path": "/shop/magic-completion-20261009/walloping-modern-bullet.svg",
-      "family": "Walloping Ammunition",
-      "model": "modern-bullet",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "walloping-modern-bullet",
-          "name": "Munição de impacto (Cartucho moderno)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "5850a7bdc96b99f4",
-      "legacy_path": "/shop/magic-completion-20261009/walloping-arrow.svg",
-      "family": "Walloping Ammunition",
-      "model": "single-arrow",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "walloping-arrow",
-          "name": "Munição de impacto (Flecha)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "3fdcd810fa4df9b0",
-      "legacy_path": "/shop/magic-completion-20261009/walloping-bolt.svg",
-      "family": "Walloping Ammunition",
-      "model": "single-bolt",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "walloping-bolt",
-          "name": "Munição de impacto (Virote)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "e43d53bbe18a33bc",
-      "legacy_path": "/shop/magic-completion-20261009/walloping-needle.svg",
-      "family": "Walloping Ammunition",
-      "model": "single-needle",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "walloping-needle",
-          "name": "Munição de impacto (Agulha)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
-    },
-    {
-      "id": "b855e1b7c8824f4a",
-      "legacy_path": "/shop/magic-completion-20261009/walloping-sling-bullet.svg",
-      "family": "Walloping Ammunition",
-      "model": "single-sling-bullet",
-      "slot": "item",
-      "consumers": [
-        {
-          "id": "walloping-sling-bullet",
-          "name": "Munição de impacto (Bala de funda)"
-        }
-      ],
-      "status": "pending",
-      "completed_consumers": []
     },
     {
       "id": "5421dfa1053e5fae",
@@ -96153,21 +95094,563 @@
       ],
       "status": "pending",
       "completed_consumers": []
+    }
+  ],
+  "excluded_jobs": [
+    {
+      "id": "853422c0190070f3",
+      "legacy_path": "/shop/magic-completion-20261009/energy-cell-plus-1.svg",
+      "family": "Ammunition, +1, +2, or +3",
+      "model": "energy-cell",
+      "slot": "main_hand",
+      "consumers": [
+        {
+          "id": "energy-cell-plus-1",
+          "name": "Munição mágica (Célula de energia +1)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
     },
     {
-      "id": "039b768ec77728aa",
-      "legacy_path": "/shop/magic-completion-20261009/winged-firearm-bullet.svg",
-      "family": "Winged Ammunition",
+      "id": "638335cda13421e6",
+      "legacy_path": "/shop/magic-completion-20261009/modern-bullet-plus-1.svg",
+      "family": "Ammunition, +1, +2, or +3",
+      "model": "modern-bullet",
+      "slot": "main_hand",
+      "consumers": [
+        {
+          "id": "modern-bullet-plus-1",
+          "name": "Munição mágica (Cartucho moderno +1)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "cfc903889809676a",
+      "legacy_path": "/shop/magic-completion-20261009/energy-cell-plus-2.svg",
+      "family": "Ammunition, +1, +2, or +3",
+      "model": "energy-cell",
+      "slot": "main_hand",
+      "consumers": [
+        {
+          "id": "energy-cell-plus-2",
+          "name": "Munição mágica (Célula de energia +2)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "2887d7f6d11cf1b4",
+      "legacy_path": "/shop/magic-completion-20261009/modern-bullet-plus-2.svg",
+      "family": "Ammunition, +1, +2, or +3",
+      "model": "modern-bullet",
+      "slot": "main_hand",
+      "consumers": [
+        {
+          "id": "modern-bullet-plus-2",
+          "name": "Munição mágica (Cartucho moderno +2)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "b0262560d4d55787",
+      "legacy_path": "/shop/magic-completion-20261009/energy-cell-plus-3.svg",
+      "family": "Ammunition, +1, +2, or +3",
+      "model": "energy-cell",
+      "slot": "main_hand",
+      "consumers": [
+        {
+          "id": "energy-cell-plus-3",
+          "name": "Munição mágica (Célula de energia +3)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "c79f6afac6d935f0",
+      "legacy_path": "/shop/magic-completion-20261009/modern-bullet-plus-3.svg",
+      "family": "Ammunition, +1, +2, or +3",
+      "model": "modern-bullet",
+      "slot": "main_hand",
+      "consumers": [
+        {
+          "id": "modern-bullet-plus-3",
+          "name": "Munição mágica (Cartucho moderno +3)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "960d2eff2ecbb836",
+      "legacy_path": "/shop/magic-completion-20261009/adamantine-arrow.svg",
+      "family": "Adamantine Weapon",
+      "model": "arrows-20",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "adamantine-arrow",
+          "name": "Munição adamantina (Flecha)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "2dc706e0795b299a",
+      "legacy_path": "/shop/magic-completion-20261009/adamantine-bolt.svg",
+      "family": "Adamantine Weapon",
+      "model": "bolts-20",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "adamantine-bolt",
+          "name": "Munição adamantina (Virote)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "0141c953ebdf292e",
+      "legacy_path": "/shop/magic-completion-20261009/adamantine-energy-cell.svg",
+      "family": "Adamantine Weapon",
+      "model": "energy-cell",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "adamantine-energy-cell",
+          "name": "Munição adamantina (Célula de energia)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "2e11edd79e42cacb",
+      "legacy_path": "/shop/magic-completion-20261009/adamantine-firearm-bullet.svg",
+      "family": "Adamantine Weapon",
       "model": "firearm-bullet",
       "slot": "item",
       "consumers": [
         {
-          "id": "winged-firearm-bullet",
-          "name": "Munição alada (Cartucho de arma de fogo)"
+          "id": "adamantine-firearm-bullet",
+          "name": "Munição adamantina (Cartucho de arma de fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "4e70260acf91da91",
+      "legacy_path": "/shop/magic-completion-20261009/adamantine-needle.svg",
+      "family": "Adamantine Weapon",
+      "model": "blowgun-needles-50",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "adamantine-needle",
+          "name": "Munição adamantina (Agulha)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "102fc7974ab7ec71",
+      "legacy_path": "/shop/magic-completion-20261009/adamantine-sling-bullet.svg",
+      "family": "Adamantine Weapon",
+      "model": "sling-bullets-20",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "adamantine-sling-bullet",
+          "name": "Munição adamantina (Bala de funda)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "46a21e32ddbe9903",
+      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-arrow.svg",
+      "family": "Bloodseeker Ammunition",
+      "model": "single-arrow",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "bloodseeker-arrow",
+          "name": "Munição caça-feridos (Flecha)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "8a4c65ec2df4d929",
+      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-bolt.svg",
+      "family": "Bloodseeker Ammunition",
+      "model": "single-bolt",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "bloodseeker-bolt",
+          "name": "Munição caça-feridos (Virote)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "38043b3010752f7c",
+      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-energy-cell.svg",
+      "family": "Bloodseeker Ammunition",
+      "model": "energy-cell",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "bloodseeker-energy-cell",
+          "name": "Munição caça-feridos (Célula de energia)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "4e13670057fed391",
+      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-firearm-bullet.svg",
+      "family": "Bloodseeker Ammunition",
+      "model": "firearm-bullet",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "bloodseeker-firearm-bullet",
+          "name": "Munição caça-feridos (Cartucho de arma de fogo)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "02366e511c254ceb",
+      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-needle.svg",
+      "family": "Bloodseeker Ammunition",
+      "model": "single-needle",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "bloodseeker-needle",
+          "name": "Munição caça-feridos (Agulha)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "362e932b80ad90ec",
+      "legacy_path": "/shop/magic-completion-20261009/bloodseeker-sling-bullet.svg",
+      "family": "Bloodseeker Ammunition",
+      "model": "single-sling-bullet",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "bloodseeker-sling-bullet",
+          "name": "Munição caça-feridos (Bala de funda)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "e57f6001c3aa053c",
+      "legacy_path": "/shop/magic-completion-20261009/dispelling-arrow.svg",
+      "family": "Dispelling Ammunition",
+      "model": "single-arrow",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "dispelling-arrow",
+          "name": "Munição de dissipação (Flecha)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "f863654980750d26",
+      "legacy_path": "/shop/magic-completion-20261009/dispelling-bolt.svg",
+      "family": "Dispelling Ammunition",
+      "model": "single-bolt",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "dispelling-bolt",
+          "name": "Munição de dissipação (Virote)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "fd2699868c75ce9f",
+      "legacy_path": "/shop/magic-completion-20261009/dispelling-energy-cell.svg",
+      "family": "Dispelling Ammunition",
+      "model": "energy-cell",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "dispelling-energy-cell",
+          "name": "Munição de dissipação (Célula de energia)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "589612fe91c95261",
+      "legacy_path": "/shop/magic-completion-20261009/dispelling-firearm-bullet.svg",
+      "family": "Dispelling Ammunition",
+      "model": "firearm-bullet",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "dispelling-firearm-bullet",
+          "name": "Munição de dissipação (Cartucho de arma de fogo)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "d03b7d143df76fa6",
+      "legacy_path": "/shop/magic-completion-20261009/dispelling-needle.svg",
+      "family": "Dispelling Ammunition",
+      "model": "single-needle",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "dispelling-needle",
+          "name": "Munição de dissipação (Agulha)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "66f7fe34d09ceda6",
+      "legacy_path": "/shop/magic-completion-20261009/dispelling-sling-bullet.svg",
+      "family": "Dispelling Ammunition",
+      "model": "single-sling-bullet",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "dispelling-sling-bullet",
+          "name": "Munição de dissipação (Bala de funda)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "7208af27e0dc5ff7",
+      "legacy_path": "/shop/magic-completion-20261009/goading-arrow.svg",
+      "family": "Goading Ammunition",
+      "model": "single-arrow",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "goading-arrow",
+          "name": "Munição de provocação (Flecha)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "b0bc789b42df70b7",
+      "legacy_path": "/shop/magic-completion-20261009/goading-bolt.svg",
+      "family": "Goading Ammunition",
+      "model": "single-bolt",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "goading-bolt",
+          "name": "Munição de provocação (Virote)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "f0838c318e927e88",
+      "legacy_path": "/shop/magic-completion-20261009/goading-energy-cell.svg",
+      "family": "Goading Ammunition",
+      "model": "energy-cell",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "goading-energy-cell",
+          "name": "Munição de provocação (Célula de energia)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "2e1a99caf3677974",
+      "legacy_path": "/shop/magic-completion-20261009/goading-firearm-bullet.svg",
+      "family": "Goading Ammunition",
+      "model": "firearm-bullet",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "goading-firearm-bullet",
+          "name": "Munição de provocação (Cartucho de arma de fogo)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "623d0f9aced42a8d",
+      "legacy_path": "/shop/magic-completion-20261009/goading-needle.svg",
+      "family": "Goading Ammunition",
+      "model": "single-needle",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "goading-needle",
+          "name": "Munição de provocação (Agulha)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "82e5ff63f5ec5b3f",
+      "legacy_path": "/shop/magic-completion-20261009/goading-sling-bullet.svg",
+      "family": "Goading Ammunition",
+      "model": "single-sling-bullet",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "goading-sling-bullet",
+          "name": "Munição de provocação (Bala de funda)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "5850a7bdc96b99f4",
+      "legacy_path": "/shop/magic-completion-20261009/walloping-arrow.svg",
+      "family": "Walloping Ammunition",
+      "model": "single-arrow",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "walloping-arrow",
+          "name": "Munição de impacto (Flecha)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "e43d53bbe18a33bc",
+      "legacy_path": "/shop/magic-completion-20261009/walloping-needle.svg",
+      "family": "Walloping Ammunition",
+      "model": "single-needle",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "walloping-needle",
+          "name": "Munição de impacto (Agulha)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "3fdcd810fa4df9b0",
+      "legacy_path": "/shop/magic-completion-20261009/walloping-bolt.svg",
+      "family": "Walloping Ammunition",
+      "model": "single-bolt",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "walloping-bolt",
+          "name": "Munição de impacto (Virote)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "5666747a1f142644",
+      "legacy_path": "/shop/magic-completion-20261009/walloping-energy-cell.svg",
+      "family": "Walloping Ammunition",
+      "model": "energy-cell",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "walloping-energy-cell",
+          "name": "Munição de impacto (Célula de energia)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "8d1c5c1fc562764e",
+      "legacy_path": "/shop/magic-completion-20261009/walloping-modern-bullet.svg",
+      "family": "Walloping Ammunition",
+      "model": "modern-bullet",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "walloping-modern-bullet",
+          "name": "Munição de impacto (Cartucho moderno)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "c44fba3e6ca1f171",
+      "legacy_path": "/shop/magic-completion-20261009/walloping-firearm-bullet.svg",
+      "family": "Walloping Ammunition",
+      "model": "firearm-bullet",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "walloping-firearm-bullet",
+          "name": "Munição de impacto (Cartucho de arma de fogo)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "b855e1b7c8824f4a",
+      "legacy_path": "/shop/magic-completion-20261009/walloping-sling-bullet.svg",
+      "family": "Walloping Ammunition",
+      "model": "single-sling-bullet",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "walloping-sling-bullet",
+          "name": "Munição de impacto (Bala de funda)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
     },
     {
       "id": "94299dc888c816c7",
@@ -96181,8 +95664,8 @@
           "name": "Munição alada (Flecha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
     },
     {
       "id": "146f65496838cc13",
@@ -96196,8 +95679,23 @@
           "name": "Munição alada (Virote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
+    },
+    {
+      "id": "039b768ec77728aa",
+      "legacy_path": "/shop/magic-completion-20261009/winged-firearm-bullet.svg",
+      "family": "Winged Ammunition",
+      "model": "firearm-bullet",
+      "slot": "item",
+      "consumers": [
+        {
+          "id": "winged-firearm-bullet",
+          "name": "Munição alada (Cartucho de arma de fogo)"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
     },
     {
       "id": "4cee38a51c5f4296",
@@ -96211,8 +95709,8 @@
           "name": "Munição alada (Agulha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
     },
     {
       "id": "64f2c66f38b67e7b",
@@ -96226,8 +95724,8 @@
           "name": "Munição alada (Bala de funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "excluded",
+      "reason": "Munições excluídas pelo proprietário em 2026-11-04"
     }
   ]
 }

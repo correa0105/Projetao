@@ -16,6 +16,21 @@ import { thematicEquipmentImage } from '../shared/thematic-equipment-art.js';
 const hash = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 const registry = JSON.parse(await readFile('data/thematic-equipment-art-20261102.json','utf8'));
 
+test('plano exclui munições sem retirar armas, escudos ou artes existentes', async () => {
+  const plan = JSON.parse(await readFile('data/thematic-equipment-redesign-plan-20261102.json','utf8'));
+  const active = new Set(plan.jobs.flatMap((job:any)=>job.consumers.map((consumer:any)=>consumer.id)));
+  const excluded = new Set(plan.excluded_jobs.flatMap((job:any)=>job.consumers.map((consumer:any)=>consumer.id)));
+  for (const id of ['bloodseeker-arrow','bloodseeker-bolt','bloodseeker-energy-cell','bloodseeker-firearm-bullet','bloodseeker-needle','bloodseeker-sling-bullet','adamantine-arrow']) {
+    assert(excluded.has(id), id); assert(!active.has(id), id);
+  }
+  for (const family of ['Arrow-Catching Shield','Berserker Axe','Blade of the Medusa','Bloodshed Blade'])
+    assert(plan.family_coverage.some((entry:any)=>entry.family===family), family);
+  assert.equal(plan.stats.physical_artworks,plan.jobs.length);
+  assert.equal(plan.stats.pending_artworks+plan.stats.approved_artworks,plan.jobs.length);
+  assert.equal(plan.stats.excluded_ammunition_artworks,plan.excluded_jobs.length);
+  assert(registry.assets.some((asset:any)=>asset.id==='adamantine-arrow' && asset.review==='approved'));
+});
+
 test('artes nativas e cópias leves conservam alfa, proporção, integridade e referências por peça', async () => {
   assert(registry.assets.length >= 12);
   for (const asset of registry.assets) {
@@ -47,7 +62,7 @@ test('famílias publicadas têm desenho aprovado para todos os modelos e peças'
   const files=['data/shop-export/loja.json','data/equipment-catalog.json','data/emporium-expansion.json','data/animal-equipment-catalog.json','data/shop-magic-completion-20261009/catalog.json'];
   const catalog=(await Promise.all(files.map(async file=>{const data=JSON.parse(await readFile(file,'utf8'));return Array.isArray(data)?data:data.items;}))).flat();
   const approved=new Map(registry.assets.filter((asset:any)=>asset.review==='approved').map((asset:any)=>[asset.id,asset]));
-  for(const [family,count] of [['Mithral Armor',9],["Mariner's Armor",13],['Dancing Sword',6],['Frost Brand',7],['Flame Tongue',29],['Acheron Blade',6],['Adamantine Armor',9],['Adamantine Weapon',34],['Armor of Gleaming',13],['Vorpal Sword',5],['Sword of Sharpness',5],['Antimagic Armor',13],['Defender',29],['Armor of Weightlessness',13],['Armor of the Fallen',10],['Cast-Off Armor',13],['Feywrought Armor',13],['Gloomwrought Armor',13]] as const){
+  for(const [family,count] of [['Mithral Armor',9],["Mariner's Armor",13],['Dancing Sword',6],['Frost Brand',7],['Flame Tongue',29],['Acheron Blade',6],['Adamantine Armor',9],['Adamantine Weapon',34],['Armor of Gleaming',13],['Vorpal Sword',5],['Sword of Sharpness',5],['Antimagic Armor',13],['Defender',29],['Armor of Weightlessness',13],['Armor of the Fallen',10],['Cast-Off Armor',13],['Feywrought Armor',13],['Gloomwrought Armor',13],['Demon Armor',12],['Mizzium Armor',9],['Smoldering Armor',13],['Armor of Invulnerability',1],['Animated Shield',1],['Arrow-Catching Shield',1],['Berserker Axe',4],['Blade of the Medusa',6],['Bloodshed Blade',6]] as const){
     const models=catalog.filter(item=>item.raw_data?.magic_family===family);
     assert.equal(models.length,count,family);
     for(const item of models){

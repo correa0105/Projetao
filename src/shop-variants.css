@@ -36,6 +36,15 @@
   gap: 7px;
   margin: 8px 0;
 }
+.shop-product-art .shop-family-object[data-layout='landscape'] {
+  left: -10%;
+  bottom: 7%;
+  width: 120%;
+  height: 112%;
+  object-position: center;
+  transform: rotate(-55deg);
+  transform-origin: center;
+}
 .shop-variant-selectors label {
   display: grid;
   gap: 3px;

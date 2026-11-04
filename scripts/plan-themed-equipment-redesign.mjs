@@ -11,6 +11,10 @@ const registry = JSON.parse(await fs.readFile('data/thematic-equipment-art-20261
 const approved = new Map(registry.assets.filter(asset => asset.review === 'approved').map(asset => [asset.id, asset]));
 const recipes = new Set(JSON.parse(await fs.readFile('data/shop-magic-completion-20261009/variant-recipes.json','utf8')).map(recipe => recipe.id));
 const jobs = new Map(), checked = new Map();
+const ammunitionModels = new Set(['energy-cell', 'modern-bullet', 'arrows-20', 'bolts-20', 'firearm-bullet', 'blowgun-needles-50', 'sling-bullets-20', 'single-arrow', 'single-bolt', 'single-needle', 'single-sling-bullet']);
+const isAmmunition = item => Boolean(item?.raw_data?.ammunition_type)
+  || ammunitionModels.has(item?.raw_data?.base_item || item?.id)
+  || /^A(?:\||$)/.test(item?.raw_data?.upstream_facts?.type || '');
 function add(id, legacyPath, slot, item) {
   if (!legacyPath) return;
   const key = legacyPath;
@@ -38,21 +42,25 @@ for (const asset of approved.values()) {
   if (![...jobs.values()].some(job => job.consumers.some(consumer => consumer.id === asset.id)))
     add(asset.id, asset.legacy_path, asset.id.includes('--') ? asset.id.split('--').at(-1) : 'armor', items.get(asset.id));
 }
-const list = [...jobs.values()].sort((a,b) => a.family.localeCompare(b.family) || String(a.model).localeCompare(String(b.model)) || a.slot.localeCompare(b.slot));
+const excluded = [...jobs.values()].filter(job => job.consumers.every(consumer => isAmmunition(items.get(consumer.id))))
+  .map(job => ({ ...job, status: 'excluded', reason: 'Munições excluídas pelo proprietário em 2026-11-04' }));
+const excludedIds = new Set(excluded.map(job => job.id));
+const list = [...jobs.values()].filter(job => !excludedIds.has(job.id)).sort((a,b) => a.family.localeCompare(b.family) || String(a.model).localeCompare(String(b.model)) || a.slot.localeCompare(b.slot));
 for (const job of list) {
   job.completed_consumers = job.consumers.filter(consumer => approved.has(consumer.id)).map(consumer => consumer.id);
   if (job.completed_consumers.length === job.consumers.length) job.status = 'approved';
 }
 const stats = { physical_artworks: list.length, approved_artworks: list.filter(job => job.status === 'approved').length,
   pending_artworks: list.filter(job => job.status !== 'approved').length,
-  catalog_references: list.reduce((n,job) => n + job.consumers.length,0), approved_references: approved.size };
+  catalog_references: list.reduce((n,job) => n + job.consumers.length,0),
+  approved_references: list.reduce((n,job) => n + job.completed_consumers.length,0), excluded_ammunition_artworks: excluded.length };
 // Include every selector model, including older native artwork that was not a
 // coating. A family cannot be called complete just because one variant is done.
 const pieceImages = JSON.parse(await fs.readFile('shared/armor-piece-images.json','utf8'));
 const families = new Map();
 for (const item of items.values()) {
   const family=item.raw_data?.magic_family;
-  if(!family)continue;
+  if(!family || isAmmunition(item))continue;
   const ids=[item.id,...['head','shoulders','bracers','legs','feet'].filter(slot=>pieceImages[item.id+':'+slot]).map(slot=>item.id+'--'+slot)];
   const models=families.get(family)||[];
   models.push({id:item.id,name:item.name,model:item.raw_data?.base_item||item.id,
@@ -63,6 +71,6 @@ for (const item of items.values()) {
 const familyCoverage=[...families].sort(([a],[b])=>a.localeCompare(b)).map(([family,models])=>({family,
   status:models.every(model=>model.status==='approved')?'approved':'pending',
   models:models.sort((a,b)=>a.id.localeCompare(b.id))}));
-await fs.writeFile('data/thematic-equipment-redesign-plan-20261102.json', JSON.stringify({ policy_version:1,
-  scope:'Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas; substituir revestimentos por desenhos temáticos nativos.', stats, family_coverage:familyCoverage, jobs:list },null,2)+'\n');
+await fs.writeFile('data/thematic-equipment-redesign-plan-20261102.json', JSON.stringify({ policy_version:2,
+  scope:'Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.', stats, family_coverage:familyCoverage, jobs:list, excluded_jobs:excluded },null,2)+'\n');
 console.log(JSON.stringify(stats));

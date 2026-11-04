@@ -769,6 +769,11 @@ export function Shop({
                           />
                           <img
                             className="shop-family-object"
+                            onLoad={(event) => {
+                              const image = event.currentTarget;
+                              image.dataset.layout = image.naturalWidth > image.naturalHeight * 1.8
+                                ? 'landscape' : 'portrait';
+                            }}
                             src={
                               (chosen || model?.variants[0] || offer.variants[0]).image_path || ''
                             }
