@@ -21,7 +21,7 @@ const server=app.listen(3027,'127.0.0.1');await new Promise<void>(r=>server.once
 const browser=await chromium.launch({channel:'msedge',headless:true});
 const context=await browser.newContext({viewport:{width:1440,height:1000}});
 await context.addInitScript('window.__name=(fn)=>fn;');
-const page=await context.newPage(),root='.local/equipment-families-20261103';await mkdir(root,{recursive:true});
+const page=await context.newPage(),root=process.env.THEMATIC_ART_QA_DIR||'.local/equipment-families-20261103';await mkdir(root,{recursive:true});
 const errors:string[]=[],checks:string[]=[];page.on('pageerror',e=>errors.push(e.message));
 try {
  const signup=await context.request.post(origin+'/api/auth/sign-up/email',{headers:{Origin:origin},data:{name:'Artes temáticas',email:'thematic-'+randomUUID()+'@example.test',password:'Test-'+randomUUID()}});

@@ -2,16 +2,16 @@
   "policy_version": 1,
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
-    "physical_artworks": 4171,
-    "approved_artworks": 181,
-    "pending_artworks": 3990,
-    "catalog_references": 4326,
-    "approved_references": 181
+    "physical_artworks": 4172,
+    "approved_artworks": 275,
+    "pending_artworks": 3897,
+    "catalog_references": 4327,
+    "approved_references": 275
   },
   "family_coverage": [
     {
       "family": "Acheron Blade",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "acheron-blade-double-bladed-scimitar",
@@ -20,8 +20,10 @@
           "artwork_ids": [
             "acheron-blade-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "acheron-blade-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "acheron-blade-greatsword",
@@ -30,8 +32,10 @@
           "artwork_ids": [
             "acheron-blade-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "acheron-blade-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "acheron-blade-longsword",
@@ -40,8 +44,10 @@
           "artwork_ids": [
             "acheron-blade-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "acheron-blade-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "acheron-blade-rapier",
@@ -50,8 +56,10 @@
           "artwork_ids": [
             "acheron-blade-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "acheron-blade-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "acheron-blade-scimitar",
@@ -60,8 +68,10 @@
           "artwork_ids": [
             "acheron-blade-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "acheron-blade-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "acheron-blade-shortsword",
@@ -70,14 +80,16 @@
           "artwork_ids": [
             "acheron-blade-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "acheron-blade-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Adamantine Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "adamantine-armor",
@@ -91,8 +103,15 @@
             "adamantine-armor--legs",
             "adamantine-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-armor",
+            "adamantine-armor--head",
+            "adamantine-armor--shoulders",
+            "adamantine-armor--bracers",
+            "adamantine-armor--legs",
+            "adamantine-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-armor-breastplate",
@@ -106,8 +125,15 @@
             "adamantine-armor-breastplate--legs",
             "adamantine-armor-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-armor-breastplate",
+            "adamantine-armor-breastplate--head",
+            "adamantine-armor-breastplate--shoulders",
+            "adamantine-armor-breastplate--bracers",
+            "adamantine-armor-breastplate--legs",
+            "adamantine-armor-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-armor-chain-mail",
@@ -121,8 +147,15 @@
             "adamantine-armor-chain-mail--legs",
             "adamantine-armor-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-armor-chain-mail",
+            "adamantine-armor-chain-mail--head",
+            "adamantine-armor-chain-mail--shoulders",
+            "adamantine-armor-chain-mail--bracers",
+            "adamantine-armor-chain-mail--legs",
+            "adamantine-armor-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-armor-chain-shirt",
@@ -136,8 +169,15 @@
             "adamantine-armor-chain-shirt--legs",
             "adamantine-armor-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-armor-chain-shirt",
+            "adamantine-armor-chain-shirt--head",
+            "adamantine-armor-chain-shirt--shoulders",
+            "adamantine-armor-chain-shirt--bracers",
+            "adamantine-armor-chain-shirt--legs",
+            "adamantine-armor-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-armor-half-plate-armor",
@@ -151,8 +191,15 @@
             "adamantine-armor-half-plate-armor--legs",
             "adamantine-armor-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-armor-half-plate-armor",
+            "adamantine-armor-half-plate-armor--head",
+            "adamantine-armor-half-plate-armor--shoulders",
+            "adamantine-armor-half-plate-armor--bracers",
+            "adamantine-armor-half-plate-armor--legs",
+            "adamantine-armor-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-armor-ring-mail",
@@ -166,8 +213,15 @@
             "adamantine-armor-ring-mail--legs",
             "adamantine-armor-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-armor-ring-mail",
+            "adamantine-armor-ring-mail--head",
+            "adamantine-armor-ring-mail--shoulders",
+            "adamantine-armor-ring-mail--bracers",
+            "adamantine-armor-ring-mail--legs",
+            "adamantine-armor-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-armor-scale-mail",
@@ -181,8 +235,15 @@
             "adamantine-armor-scale-mail--legs",
             "adamantine-armor-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-armor-scale-mail",
+            "adamantine-armor-scale-mail--head",
+            "adamantine-armor-scale-mail--shoulders",
+            "adamantine-armor-scale-mail--bracers",
+            "adamantine-armor-scale-mail--legs",
+            "adamantine-armor-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-armor-splint-armor",
@@ -196,8 +257,15 @@
             "adamantine-armor-splint-armor--legs",
             "adamantine-armor-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-armor-splint-armor",
+            "adamantine-armor-splint-armor--head",
+            "adamantine-armor-splint-armor--shoulders",
+            "adamantine-armor-splint-armor--bracers",
+            "adamantine-armor-splint-armor--legs",
+            "adamantine-armor-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-spiked-armor",
@@ -211,14 +279,21 @@
             "adamantine-spiked-armor--legs",
             "adamantine-spiked-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-spiked-armor",
+            "adamantine-spiked-armor--head",
+            "adamantine-spiked-armor--shoulders",
+            "adamantine-spiked-armor--bracers",
+            "adamantine-spiked-armor--legs",
+            "adamantine-spiked-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Adamantine Weapon",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "adamantine-arrow",
@@ -227,8 +302,10 @@
           "artwork_ids": [
             "adamantine-arrow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-arrow"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-battleaxe",
@@ -237,8 +314,10 @@
           "artwork_ids": [
             "adamantine-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-bolt",
@@ -247,8 +326,10 @@
           "artwork_ids": [
             "adamantine-bolt"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-bolt"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-club",
@@ -257,8 +338,10 @@
           "artwork_ids": [
             "adamantine-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-dagger",
@@ -267,8 +350,10 @@
           "artwork_ids": [
             "adamantine-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-energy-cell",
@@ -277,8 +362,10 @@
           "artwork_ids": [
             "adamantine-energy-cell"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-energy-cell"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-firearm-bullet",
@@ -287,8 +374,10 @@
           "artwork_ids": [
             "adamantine-firearm-bullet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-firearm-bullet"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-flail",
@@ -297,8 +386,10 @@
           "artwork_ids": [
             "adamantine-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-glaive",
@@ -307,8 +398,10 @@
           "artwork_ids": [
             "adamantine-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-greataxe",
@@ -317,8 +410,10 @@
           "artwork_ids": [
             "adamantine-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-greatclub",
@@ -327,8 +422,10 @@
           "artwork_ids": [
             "adamantine-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-greatsword",
@@ -337,8 +434,10 @@
           "artwork_ids": [
             "adamantine-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-halberd",
@@ -347,8 +446,10 @@
           "artwork_ids": [
             "adamantine-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-handaxe",
@@ -357,8 +458,10 @@
           "artwork_ids": [
             "adamantine-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-javelin",
@@ -367,8 +470,10 @@
           "artwork_ids": [
             "adamantine-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-lance",
@@ -377,8 +482,10 @@
           "artwork_ids": [
             "adamantine-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-light-hammer",
@@ -387,8 +494,10 @@
           "artwork_ids": [
             "adamantine-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-longsword",
@@ -397,8 +506,10 @@
           "artwork_ids": [
             "adamantine-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-mace",
@@ -407,8 +518,10 @@
           "artwork_ids": [
             "adamantine-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-maul",
@@ -417,8 +530,10 @@
           "artwork_ids": [
             "adamantine-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-morningstar",
@@ -427,8 +542,10 @@
           "artwork_ids": [
             "adamantine-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-needle",
@@ -437,8 +554,10 @@
           "artwork_ids": [
             "adamantine-needle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-needle"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-pike",
@@ -447,8 +566,10 @@
           "artwork_ids": [
             "adamantine-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-quarterstaff",
@@ -457,8 +578,10 @@
           "artwork_ids": [
             "adamantine-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-rapier",
@@ -467,8 +590,10 @@
           "artwork_ids": [
             "adamantine-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-scimitar",
@@ -477,8 +602,10 @@
           "artwork_ids": [
             "adamantine-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-shortsword",
@@ -487,8 +614,10 @@
           "artwork_ids": [
             "adamantine-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-sickle",
@@ -497,8 +626,10 @@
           "artwork_ids": [
             "adamantine-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-sling-bullet",
@@ -507,8 +638,10 @@
           "artwork_ids": [
             "adamantine-sling-bullet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-sling-bullet"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-spear",
@@ -517,8 +650,10 @@
           "artwork_ids": [
             "adamantine-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-trident",
@@ -527,8 +662,10 @@
           "artwork_ids": [
             "adamantine-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-war-pick",
@@ -537,8 +674,10 @@
           "artwork_ids": [
             "adamantine-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-warhammer",
@@ -547,8 +686,10 @@
           "artwork_ids": [
             "adamantine-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "adamantine-whip",
@@ -557,8 +698,10 @@
           "artwork_ids": [
             "adamantine-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "adamantine-whip"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -30520,8 +30663,10 @@
           "name": "Lâmina de Acheron (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "acheron-blade-double-bladed-scimitar"
+      ]
     },
     {
       "id": "422779ed76d1c243",
@@ -30535,8 +30680,10 @@
           "name": "Lâmina de Acheron (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "acheron-blade-greatsword"
+      ]
     },
     {
       "id": "f2f235ddc43a3287",
@@ -30550,8 +30697,10 @@
           "name": "Lâmina de Acheron (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "acheron-blade-longsword"
+      ]
     },
     {
       "id": "6f1c998e973a8076",
@@ -30565,8 +30714,10 @@
           "name": "Lâmina de Acheron (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "acheron-blade-rapier"
+      ]
     },
     {
       "id": "46ab016d80363476",
@@ -30580,8 +30731,10 @@
           "name": "Lâmina de Acheron (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "acheron-blade-scimitar"
+      ]
     },
     {
       "id": "f9193a5898677be9",
@@ -30595,8 +30748,10 @@
           "name": "Lâmina de Acheron (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "acheron-blade-shortsword"
+      ]
     },
     {
       "id": "a95e4c143a3cdc3e",
@@ -30610,8 +30765,10 @@
           "name": "Armadura de adamante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-breastplate"
+      ]
     },
     {
       "id": "6a843754f4b50781",
@@ -30625,8 +30782,10 @@
           "name": "Armadura de adamante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-breastplate--bracers"
+      ]
     },
     {
       "id": "5f9e59efdffb87bb",
@@ -30640,8 +30799,10 @@
           "name": "Armadura de adamante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-breastplate--feet"
+      ]
     },
     {
       "id": "936195d67d193251",
@@ -30655,8 +30816,10 @@
           "name": "Armadura de adamante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-breastplate--head"
+      ]
     },
     {
       "id": "2d4dd8f0451da44b",
@@ -30670,8 +30833,10 @@
           "name": "Armadura de adamante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-breastplate--legs"
+      ]
     },
     {
       "id": "586f846814ffef16",
@@ -30685,8 +30850,10 @@
           "name": "Armadura de adamante (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-breastplate--shoulders"
+      ]
     },
     {
       "id": "3db950fef7f7bb2e",
@@ -30700,8 +30867,10 @@
           "name": "Armadura de adamante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-mail"
+      ]
     },
     {
       "id": "a2c48e9e07f35387",
@@ -30715,8 +30884,10 @@
           "name": "Armadura de adamante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-mail--bracers"
+      ]
     },
     {
       "id": "3c3cb838c70e6225",
@@ -30730,8 +30901,10 @@
           "name": "Armadura de adamante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-mail--feet"
+      ]
     },
     {
       "id": "2aa889723ac1497a",
@@ -30745,8 +30918,10 @@
           "name": "Armadura de adamante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-mail--head"
+      ]
     },
     {
       "id": "1c72e4027acf9a9b",
@@ -30760,8 +30935,10 @@
           "name": "Armadura de adamante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-mail--legs"
+      ]
     },
     {
       "id": "0a13eeb6a8b09b3b",
@@ -30775,8 +30952,10 @@
           "name": "Armadura de adamante (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-mail--shoulders"
+      ]
     },
     {
       "id": "bfa56ae01e8d433a",
@@ -30790,8 +30969,10 @@
           "name": "Armadura de adamante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-shirt"
+      ]
     },
     {
       "id": "33c00b87311b0624",
@@ -30805,8 +30986,10 @@
           "name": "Armadura de adamante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-shirt--bracers"
+      ]
     },
     {
       "id": "1aa89d8e43e327a6",
@@ -30820,8 +31003,10 @@
           "name": "Armadura de adamante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-shirt--feet"
+      ]
     },
     {
       "id": "7cf284ea0537835e",
@@ -30835,8 +31020,10 @@
           "name": "Armadura de adamante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-shirt--head"
+      ]
     },
     {
       "id": "68947af8d0c8c7f7",
@@ -30850,8 +31037,10 @@
           "name": "Armadura de adamante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-shirt--legs"
+      ]
     },
     {
       "id": "5a7d15235d4763f1",
@@ -30865,8 +31054,10 @@
           "name": "Armadura de adamante (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "21611d1ceba1e6cf",
@@ -30880,8 +31071,10 @@
           "name": "Armadura de adamante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-half-plate-armor"
+      ]
     },
     {
       "id": "47a4e2754cd123f5",
@@ -30895,8 +31088,10 @@
           "name": "Armadura de adamante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "51588fe426fdc5b0",
@@ -30910,8 +31105,10 @@
           "name": "Armadura de adamante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-half-plate-armor--feet"
+      ]
     },
     {
       "id": "779071ef47faf681",
@@ -30925,8 +31122,10 @@
           "name": "Armadura de adamante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-half-plate-armor--head"
+      ]
     },
     {
       "id": "84246d17821626ee",
@@ -30940,8 +31139,10 @@
           "name": "Armadura de adamante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-half-plate-armor--legs"
+      ]
     },
     {
       "id": "62389cc2f0649950",
@@ -30955,8 +31156,27 @@
           "name": "Armadura de adamante (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-half-plate-armor--shoulders"
+      ]
+    },
+    {
+      "id": "2314e586f43c3e61",
+      "legacy_path": "/shop/expanded/adamantine-armor.webp",
+      "family": "Adamantine Armor",
+      "model": "plate-armor",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "adamantine-armor",
+          "name": "Armadura de adamante (Armadura de placas)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor"
+      ]
     },
     {
       "id": "36c55dbcf0233e0f",
@@ -30970,8 +31190,10 @@
           "name": "Armadura de adamante (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor--bracers"
+      ]
     },
     {
       "id": "5fba8effec2d154c",
@@ -30985,8 +31207,10 @@
           "name": "Armadura de adamante (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor--feet"
+      ]
     },
     {
       "id": "ea04643e51aa7d6c",
@@ -31000,8 +31224,10 @@
           "name": "Armadura de adamante (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor--head"
+      ]
     },
     {
       "id": "e434df42bb01daef",
@@ -31015,8 +31241,10 @@
           "name": "Armadura de adamante (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor--legs"
+      ]
     },
     {
       "id": "4fdb8c08331661f1",
@@ -31030,8 +31258,10 @@
           "name": "Armadura de adamante (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor--shoulders"
+      ]
     },
     {
       "id": "4341714782f51d8e",
@@ -31045,8 +31275,10 @@
           "name": "Armadura de adamante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-ring-mail"
+      ]
     },
     {
       "id": "ef17a5af18619a77",
@@ -31060,8 +31292,10 @@
           "name": "Armadura de adamante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-ring-mail--bracers"
+      ]
     },
     {
       "id": "19ff318042495b46",
@@ -31075,8 +31309,10 @@
           "name": "Armadura de adamante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-ring-mail--feet"
+      ]
     },
     {
       "id": "efbb6e96ab3caa88",
@@ -31090,8 +31326,10 @@
           "name": "Armadura de adamante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-ring-mail--head"
+      ]
     },
     {
       "id": "7f44bdec40de416b",
@@ -31105,8 +31343,10 @@
           "name": "Armadura de adamante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-ring-mail--legs"
+      ]
     },
     {
       "id": "bfdf3cbd6317d25e",
@@ -31120,8 +31360,10 @@
           "name": "Armadura de adamante (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-ring-mail--shoulders"
+      ]
     },
     {
       "id": "107f8369883fd3d7",
@@ -31135,8 +31377,10 @@
           "name": "Armadura de adamante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-scale-mail"
+      ]
     },
     {
       "id": "eec9a5c74f38a40c",
@@ -31150,8 +31394,10 @@
           "name": "Armadura de adamante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-scale-mail--bracers"
+      ]
     },
     {
       "id": "6e0785095ff496e9",
@@ -31165,8 +31411,10 @@
           "name": "Armadura de adamante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-scale-mail--feet"
+      ]
     },
     {
       "id": "70012b5c2af8c3a6",
@@ -31180,8 +31428,10 @@
           "name": "Armadura de adamante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-scale-mail--head"
+      ]
     },
     {
       "id": "946510f0a96304bb",
@@ -31195,8 +31445,10 @@
           "name": "Armadura de adamante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-scale-mail--legs"
+      ]
     },
     {
       "id": "198bf4d29a7e8208",
@@ -31210,8 +31462,10 @@
           "name": "Armadura de adamante (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-scale-mail--shoulders"
+      ]
     },
     {
       "id": "61e24fe108a3dcd2",
@@ -31225,8 +31479,10 @@
           "name": "Armadura de adamante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-spiked-armor"
+      ]
     },
     {
       "id": "2a56b27ff314501f",
@@ -31240,8 +31496,10 @@
           "name": "Armadura de adamante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-spiked-armor--bracers"
+      ]
     },
     {
       "id": "33e2d82cfae0a4f6",
@@ -31255,8 +31513,10 @@
           "name": "Armadura de adamante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-spiked-armor--feet"
+      ]
     },
     {
       "id": "9638924ab3179b3c",
@@ -31270,8 +31530,10 @@
           "name": "Armadura de adamante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-spiked-armor--head"
+      ]
     },
     {
       "id": "1d2ca9f43129f45c",
@@ -31285,8 +31547,10 @@
           "name": "Armadura de adamante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-spiked-armor--legs"
+      ]
     },
     {
       "id": "b62d59e4d7a61cb1",
@@ -31300,8 +31564,10 @@
           "name": "Armadura de adamante (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-spiked-armor--shoulders"
+      ]
     },
     {
       "id": "35b0d5a007d274fa",
@@ -31315,8 +31581,10 @@
           "name": "Armadura de adamante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-splint-armor"
+      ]
     },
     {
       "id": "b4bf26e5d485a9b9",
@@ -31330,8 +31598,10 @@
           "name": "Armadura de adamante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-splint-armor--bracers"
+      ]
     },
     {
       "id": "9c05195ecd5acc91",
@@ -31345,8 +31615,10 @@
           "name": "Armadura de adamante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-splint-armor--feet"
+      ]
     },
     {
       "id": "d703a3aba5562e6c",
@@ -31360,8 +31632,10 @@
           "name": "Armadura de adamante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-splint-armor--head"
+      ]
     },
     {
       "id": "98251a6aa89d9223",
@@ -31375,8 +31649,10 @@
           "name": "Armadura de adamante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-splint-armor--legs"
+      ]
     },
     {
       "id": "caf8214f321809f7",
@@ -31390,8 +31666,10 @@
           "name": "Armadura de adamante (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-armor-splint-armor--shoulders"
+      ]
     },
     {
       "id": "960d2eff2ecbb836",
@@ -31405,8 +31683,10 @@
           "name": "Munição adamantina (Flecha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-arrow"
+      ]
     },
     {
       "id": "a571c49d18c1ba31",
@@ -31420,8 +31700,10 @@
           "name": "Arma adamantina (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-battleaxe"
+      ]
     },
     {
       "id": "4e70260acf91da91",
@@ -31435,8 +31717,10 @@
           "name": "Munição adamantina (Agulha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-needle"
+      ]
     },
     {
       "id": "2dc706e0795b299a",
@@ -31450,8 +31734,10 @@
           "name": "Munição adamantina (Virote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-bolt"
+      ]
     },
     {
       "id": "7b443b2816bbc398",
@@ -31465,8 +31751,10 @@
           "name": "Arma adamantina (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-club"
+      ]
     },
     {
       "id": "e33f5da8fba1146b",
@@ -31480,8 +31768,10 @@
           "name": "Arma adamantina (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-dagger"
+      ]
     },
     {
       "id": "0141c953ebdf292e",
@@ -31495,8 +31785,10 @@
           "name": "Munição adamantina (Célula de energia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-energy-cell"
+      ]
     },
     {
       "id": "2e11edd79e42cacb",
@@ -31510,8 +31802,10 @@
           "name": "Munição adamantina (Cartucho de arma de fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-firearm-bullet"
+      ]
     },
     {
       "id": "1377f2ca7afc14ea",
@@ -31525,8 +31819,10 @@
           "name": "Arma adamantina (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-flail"
+      ]
     },
     {
       "id": "24c8a803979d3cd5",
@@ -31540,8 +31836,10 @@
           "name": "Arma adamantina (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-glaive"
+      ]
     },
     {
       "id": "e9aded424792598e",
@@ -31555,8 +31853,10 @@
           "name": "Arma adamantina (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-greataxe"
+      ]
     },
     {
       "id": "d8d909666db6add7",
@@ -31570,8 +31870,10 @@
           "name": "Arma adamantina (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-greatclub"
+      ]
     },
     {
       "id": "515c3a439ebf7fc7",
@@ -31585,8 +31887,10 @@
           "name": "Arma adamantina (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-greatsword"
+      ]
     },
     {
       "id": "74a16e0a747cafed",
@@ -31600,8 +31904,10 @@
           "name": "Arma adamantina (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-halberd"
+      ]
     },
     {
       "id": "108982327199b61f",
@@ -31615,8 +31921,10 @@
           "name": "Arma adamantina (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-handaxe"
+      ]
     },
     {
       "id": "bb2c4fb591bfcdd2",
@@ -31630,8 +31938,10 @@
           "name": "Arma adamantina (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-javelin"
+      ]
     },
     {
       "id": "4df014bd03ca73e7",
@@ -31645,8 +31955,10 @@
           "name": "Arma adamantina (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-lance"
+      ]
     },
     {
       "id": "486f7ec212d288d1",
@@ -31660,8 +31972,10 @@
           "name": "Arma adamantina (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-light-hammer"
+      ]
     },
     {
       "id": "78315d8c7b313767",
@@ -31675,8 +31989,10 @@
           "name": "Arma adamantina (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-longsword"
+      ]
     },
     {
       "id": "fdae813a50358ec6",
@@ -31690,8 +32006,10 @@
           "name": "Arma adamantina (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-mace"
+      ]
     },
     {
       "id": "1259359da2cab5f4",
@@ -31705,8 +32023,10 @@
           "name": "Arma adamantina (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-maul"
+      ]
     },
     {
       "id": "294a0a519168c61a",
@@ -31720,8 +32040,10 @@
           "name": "Arma adamantina (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-morningstar"
+      ]
     },
     {
       "id": "a4ebc660993591d9",
@@ -31735,8 +32057,10 @@
           "name": "Arma adamantina (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-pike"
+      ]
     },
     {
       "id": "e59ed9a9a1bfc01b",
@@ -31750,8 +32074,10 @@
           "name": "Arma adamantina (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-quarterstaff"
+      ]
     },
     {
       "id": "3cb10643cbf4a666",
@@ -31765,8 +32091,10 @@
           "name": "Arma adamantina (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-rapier"
+      ]
     },
     {
       "id": "1b6fad9bf199099b",
@@ -31780,8 +32108,10 @@
           "name": "Arma adamantina (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-scimitar"
+      ]
     },
     {
       "id": "ef84e2d5a75dcf37",
@@ -31795,8 +32125,10 @@
           "name": "Arma adamantina (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-shortsword"
+      ]
     },
     {
       "id": "e7ffc0185c39d5a3",
@@ -31810,8 +32142,10 @@
           "name": "Arma adamantina (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-sickle"
+      ]
     },
     {
       "id": "102fc7974ab7ec71",
@@ -31825,8 +32159,10 @@
           "name": "Munição adamantina (Bala de funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-sling-bullet"
+      ]
     },
     {
       "id": "45a17b09265faacc",
@@ -31840,8 +32176,10 @@
           "name": "Arma adamantina (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-spear"
+      ]
     },
     {
       "id": "4223101ff52cf8f2",
@@ -31855,8 +32193,10 @@
           "name": "Arma adamantina (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-trident"
+      ]
     },
     {
       "id": "a530aded3624cc09",
@@ -31870,8 +32210,10 @@
           "name": "Arma adamantina (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-war-pick"
+      ]
     },
     {
       "id": "b212136a4e035271",
@@ -31885,8 +32227,10 @@
           "name": "Arma adamantina (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-warhammer"
+      ]
     },
     {
       "id": "c217c6b05ec71309",
@@ -31900,8 +32244,10 @@
           "name": "Arma adamantina (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "adamantine-whip"
+      ]
     },
     {
       "id": "853422c0190070f3",
