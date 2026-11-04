@@ -53,3 +53,9 @@ A próxima sequência está definida em `data/thematic-equipment-batches/2026110
 ### Antimagia e Defensor — 4 de novembro de 2026
 
 107 artes nativas revisadas em fundo claro e escuro: 13 modelos de Antimagic Armor com suas seis peças e 29 armas Defender. Os PNGs originais são preservados, com cópias WebP transparentes para a loja. Peitoral e armadura de talas tiveram a construção corrigida; a lança teve o halo removido. Total aprovado: 470 artes; 3.702 artes físicas permanecem pendentes. Leveza e dos Caídos estão em produção e ainda não entram nesta publicação.
+
+Publicação de Antimagia e Defensor verificada em produção: 470 imagens e referências conferidas por hash via HTTPS; nove tabelas protegidas sem alterações, saúde normal e ilustrador ativo. Backup anterior preservado. PNGs do lote: 206.318.407 bytes; WebP: 8.220.656 bytes (96% menores).
+
+### Leveza e dos Caídos
+
+138 artes nativas revisadas em fundo claro e escuro: 13 modelos de Leveza e dez dos Caídos, com seis peças cada e preservação de acessórios legados de compras parciais. Anéis, escamas e peitoral foram refeitos para respeitar a construção real; ombreiras de talas e transparências com halo foram corrigidas. As peças têm desenhos próprios e usam o modelo correspondente como referência. PNGs originais: 295120582 bytes; cópias WebP: 14280790 bytes. Total aprovado no projeto: 608 artes; 3.564 artes físicas ainda pendentes.

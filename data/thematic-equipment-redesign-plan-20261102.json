@@ -3,10 +3,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4172,
-    "approved_artworks": 470,
-    "pending_artworks": 3702,
+    "approved_artworks": 608,
+    "pending_artworks": 3564,
     "catalog_references": 4327,
-    "approved_references": 470
+    "approved_references": 608
   },
   "family_coverage": [
     {
@@ -4270,7 +4270,7 @@
     },
     {
       "family": "Armor of the Fallen",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "breastplate-of-the-fallen",
@@ -4284,8 +4284,15 @@
             "breastplate-of-the-fallen--legs",
             "breastplate-of-the-fallen--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "breastplate-of-the-fallen",
+            "breastplate-of-the-fallen--head",
+            "breastplate-of-the-fallen--shoulders",
+            "breastplate-of-the-fallen--bracers",
+            "breastplate-of-the-fallen--legs",
+            "breastplate-of-the-fallen--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "chain-mail-of-the-fallen",
@@ -4299,8 +4306,15 @@
             "chain-mail-of-the-fallen--legs",
             "chain-mail-of-the-fallen--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "chain-mail-of-the-fallen",
+            "chain-mail-of-the-fallen--head",
+            "chain-mail-of-the-fallen--shoulders",
+            "chain-mail-of-the-fallen--bracers",
+            "chain-mail-of-the-fallen--legs",
+            "chain-mail-of-the-fallen--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "chain-shirt-of-the-fallen",
@@ -4314,8 +4328,15 @@
             "chain-shirt-of-the-fallen--legs",
             "chain-shirt-of-the-fallen--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "chain-shirt-of-the-fallen",
+            "chain-shirt-of-the-fallen--head",
+            "chain-shirt-of-the-fallen--shoulders",
+            "chain-shirt-of-the-fallen--bracers",
+            "chain-shirt-of-the-fallen--legs",
+            "chain-shirt-of-the-fallen--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "half-plate-armor-of-the-fallen",
@@ -4329,8 +4350,15 @@
             "half-plate-armor-of-the-fallen--legs",
             "half-plate-armor-of-the-fallen--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "half-plate-armor-of-the-fallen",
+            "half-plate-armor-of-the-fallen--head",
+            "half-plate-armor-of-the-fallen--shoulders",
+            "half-plate-armor-of-the-fallen--bracers",
+            "half-plate-armor-of-the-fallen--legs",
+            "half-plate-armor-of-the-fallen--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "hide-armor-of-the-fallen",
@@ -4344,8 +4372,15 @@
             "hide-armor-of-the-fallen--legs",
             "hide-armor-of-the-fallen--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hide-armor-of-the-fallen",
+            "hide-armor-of-the-fallen--head",
+            "hide-armor-of-the-fallen--shoulders",
+            "hide-armor-of-the-fallen--bracers",
+            "hide-armor-of-the-fallen--legs",
+            "hide-armor-of-the-fallen--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "plate-armor-of-the-fallen",
@@ -4359,8 +4394,15 @@
             "plate-armor-of-the-fallen--legs",
             "plate-armor-of-the-fallen--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "plate-armor-of-the-fallen",
+            "plate-armor-of-the-fallen--head",
+            "plate-armor-of-the-fallen--shoulders",
+            "plate-armor-of-the-fallen--bracers",
+            "plate-armor-of-the-fallen--legs",
+            "plate-armor-of-the-fallen--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-mail-of-the-fallen",
@@ -4374,8 +4416,15 @@
             "ring-mail-of-the-fallen--legs",
             "ring-mail-of-the-fallen--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-mail-of-the-fallen",
+            "ring-mail-of-the-fallen--head",
+            "ring-mail-of-the-fallen--shoulders",
+            "ring-mail-of-the-fallen--bracers",
+            "ring-mail-of-the-fallen--legs",
+            "ring-mail-of-the-fallen--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "scale-mail-of-the-fallen",
@@ -4389,8 +4438,15 @@
             "scale-mail-of-the-fallen--legs",
             "scale-mail-of-the-fallen--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scale-mail-of-the-fallen",
+            "scale-mail-of-the-fallen--head",
+            "scale-mail-of-the-fallen--shoulders",
+            "scale-mail-of-the-fallen--bracers",
+            "scale-mail-of-the-fallen--legs",
+            "scale-mail-of-the-fallen--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-the-fallen",
@@ -4404,8 +4460,15 @@
             "spiked-armor-of-the-fallen--legs",
             "spiked-armor-of-the-fallen--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-the-fallen",
+            "spiked-armor-of-the-fallen--head",
+            "spiked-armor-of-the-fallen--shoulders",
+            "spiked-armor-of-the-fallen--bracers",
+            "spiked-armor-of-the-fallen--legs",
+            "spiked-armor-of-the-fallen--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "splint-armor-of-the-fallen",
@@ -4419,8 +4482,15 @@
             "splint-armor-of-the-fallen--legs",
             "splint-armor-of-the-fallen--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "splint-armor-of-the-fallen",
+            "splint-armor-of-the-fallen--head",
+            "splint-armor-of-the-fallen--shoulders",
+            "splint-armor-of-the-fallen--bracers",
+            "splint-armor-of-the-fallen--legs",
+            "splint-armor-of-the-fallen--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -4972,7 +5042,7 @@
     },
     {
       "family": "Armor of Weightlessness",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "breastplate-of-weightlessness",
@@ -4986,8 +5056,15 @@
             "breastplate-of-weightlessness--legs",
             "breastplate-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "breastplate-of-weightlessness",
+            "breastplate-of-weightlessness--head",
+            "breastplate-of-weightlessness--shoulders",
+            "breastplate-of-weightlessness--bracers",
+            "breastplate-of-weightlessness--legs",
+            "breastplate-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "chain-mail-of-weightlessness",
@@ -5001,8 +5078,15 @@
             "chain-mail-of-weightlessness--legs",
             "chain-mail-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "chain-mail-of-weightlessness",
+            "chain-mail-of-weightlessness--head",
+            "chain-mail-of-weightlessness--shoulders",
+            "chain-mail-of-weightlessness--bracers",
+            "chain-mail-of-weightlessness--legs",
+            "chain-mail-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "chain-shirt-of-weightlessness",
@@ -5016,8 +5100,15 @@
             "chain-shirt-of-weightlessness--legs",
             "chain-shirt-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "chain-shirt-of-weightlessness",
+            "chain-shirt-of-weightlessness--head",
+            "chain-shirt-of-weightlessness--shoulders",
+            "chain-shirt-of-weightlessness--bracers",
+            "chain-shirt-of-weightlessness--legs",
+            "chain-shirt-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "half-plate-armor-of-weightlessness",
@@ -5031,8 +5122,15 @@
             "half-plate-armor-of-weightlessness--legs",
             "half-plate-armor-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "half-plate-armor-of-weightlessness",
+            "half-plate-armor-of-weightlessness--head",
+            "half-plate-armor-of-weightlessness--shoulders",
+            "half-plate-armor-of-weightlessness--bracers",
+            "half-plate-armor-of-weightlessness--legs",
+            "half-plate-armor-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "hide-armor-of-weightlessness",
@@ -5046,8 +5144,15 @@
             "hide-armor-of-weightlessness--legs",
             "hide-armor-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hide-armor-of-weightlessness",
+            "hide-armor-of-weightlessness--head",
+            "hide-armor-of-weightlessness--shoulders",
+            "hide-armor-of-weightlessness--bracers",
+            "hide-armor-of-weightlessness--legs",
+            "hide-armor-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "leather-armor-of-weightlessness",
@@ -5061,8 +5166,15 @@
             "leather-armor-of-weightlessness--legs",
             "leather-armor-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "leather-armor-of-weightlessness",
+            "leather-armor-of-weightlessness--head",
+            "leather-armor-of-weightlessness--shoulders",
+            "leather-armor-of-weightlessness--bracers",
+            "leather-armor-of-weightlessness--legs",
+            "leather-armor-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "padded-armor-of-weightlessness",
@@ -5076,8 +5188,15 @@
             "padded-armor-of-weightlessness--legs",
             "padded-armor-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "padded-armor-of-weightlessness",
+            "padded-armor-of-weightlessness--head",
+            "padded-armor-of-weightlessness--shoulders",
+            "padded-armor-of-weightlessness--bracers",
+            "padded-armor-of-weightlessness--legs",
+            "padded-armor-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "plate-armor-of-weightlessness",
@@ -5091,8 +5210,15 @@
             "plate-armor-of-weightlessness--legs",
             "plate-armor-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "plate-armor-of-weightlessness",
+            "plate-armor-of-weightlessness--head",
+            "plate-armor-of-weightlessness--shoulders",
+            "plate-armor-of-weightlessness--bracers",
+            "plate-armor-of-weightlessness--legs",
+            "plate-armor-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-mail-of-weightlessness",
@@ -5106,8 +5232,15 @@
             "ring-mail-of-weightlessness--legs",
             "ring-mail-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-mail-of-weightlessness",
+            "ring-mail-of-weightlessness--head",
+            "ring-mail-of-weightlessness--shoulders",
+            "ring-mail-of-weightlessness--bracers",
+            "ring-mail-of-weightlessness--legs",
+            "ring-mail-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "scale-mail-of-weightlessness",
@@ -5121,8 +5254,15 @@
             "scale-mail-of-weightlessness--legs",
             "scale-mail-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scale-mail-of-weightlessness",
+            "scale-mail-of-weightlessness--head",
+            "scale-mail-of-weightlessness--shoulders",
+            "scale-mail-of-weightlessness--bracers",
+            "scale-mail-of-weightlessness--legs",
+            "scale-mail-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-weightlessness",
@@ -5136,8 +5276,15 @@
             "spiked-armor-of-weightlessness--legs",
             "spiked-armor-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-weightlessness",
+            "spiked-armor-of-weightlessness--head",
+            "spiked-armor-of-weightlessness--shoulders",
+            "spiked-armor-of-weightlessness--bracers",
+            "spiked-armor-of-weightlessness--legs",
+            "spiked-armor-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "splint-armor-of-weightlessness",
@@ -5151,8 +5298,15 @@
             "splint-armor-of-weightlessness--legs",
             "splint-armor-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "splint-armor-of-weightlessness",
+            "splint-armor-of-weightlessness--head",
+            "splint-armor-of-weightlessness--shoulders",
+            "splint-armor-of-weightlessness--bracers",
+            "splint-armor-of-weightlessness--legs",
+            "splint-armor-of-weightlessness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "studded-leather-armor-of-weightlessness",
@@ -5166,8 +5320,15 @@
             "studded-leather-armor-of-weightlessness--legs",
             "studded-leather-armor-of-weightlessness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "studded-leather-armor-of-weightlessness",
+            "studded-leather-armor-of-weightlessness--head",
+            "studded-leather-armor-of-weightlessness--shoulders",
+            "studded-leather-armor-of-weightlessness--bracers",
+            "studded-leather-armor-of-weightlessness--legs",
+            "studded-leather-armor-of-weightlessness--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -47023,8 +47184,10 @@
           "name": "Armadura dos caídos (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-the-fallen"
+      ]
     },
     {
       "id": "f716086b2d4fcc27",
@@ -47038,8 +47201,10 @@
           "name": "Armadura dos caídos (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-the-fallen--bracers"
+      ]
     },
     {
       "id": "2af9c947c99f84f0",
@@ -47053,8 +47218,10 @@
           "name": "Armadura dos caídos (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-the-fallen--feet"
+      ]
     },
     {
       "id": "fa4769d49989be1a",
@@ -47068,8 +47235,10 @@
           "name": "Armadura dos caídos (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-the-fallen--head"
+      ]
     },
     {
       "id": "11cac45279395e91",
@@ -47083,8 +47252,10 @@
           "name": "Armadura dos caídos (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-the-fallen--legs"
+      ]
     },
     {
       "id": "c748e6769c4456e5",
@@ -47098,8 +47269,10 @@
           "name": "Armadura dos caídos (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-the-fallen--shoulders"
+      ]
     },
     {
       "id": "9345f3b5b57a98f1",
@@ -47113,8 +47286,10 @@
           "name": "Armadura dos caídos (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-the-fallen"
+      ]
     },
     {
       "id": "54f08808a9766c7e",
@@ -47128,8 +47303,10 @@
           "name": "Armadura dos caídos (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-the-fallen--bracers"
+      ]
     },
     {
       "id": "e4e97bf8a18d8ed6",
@@ -47143,8 +47320,10 @@
           "name": "Armadura dos caídos (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-the-fallen--feet"
+      ]
     },
     {
       "id": "30adda6999a8ecb0",
@@ -47158,8 +47337,10 @@
           "name": "Armadura dos caídos (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-the-fallen--head"
+      ]
     },
     {
       "id": "b8ca5bad806bf733",
@@ -47173,8 +47354,10 @@
           "name": "Armadura dos caídos (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-the-fallen--legs"
+      ]
     },
     {
       "id": "bb3fa7d9a00f292c",
@@ -47188,8 +47371,10 @@
           "name": "Armadura dos caídos (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-the-fallen--shoulders"
+      ]
     },
     {
       "id": "148197b479d9b964",
@@ -47203,8 +47388,10 @@
           "name": "Armadura dos caídos (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-the-fallen"
+      ]
     },
     {
       "id": "d80cb71eabeceaec",
@@ -47218,8 +47405,10 @@
           "name": "Armadura dos caídos (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-the-fallen--bracers"
+      ]
     },
     {
       "id": "32222f09d58ab247",
@@ -47233,8 +47422,10 @@
           "name": "Armadura dos caídos (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-the-fallen--feet"
+      ]
     },
     {
       "id": "f4881421d2c22f50",
@@ -47248,8 +47439,10 @@
           "name": "Armadura dos caídos (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-the-fallen--head"
+      ]
     },
     {
       "id": "0b32dc57f40846c3",
@@ -47263,8 +47456,10 @@
           "name": "Armadura dos caídos (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-the-fallen--legs"
+      ]
     },
     {
       "id": "aaa4da18356a127d",
@@ -47278,8 +47473,10 @@
           "name": "Armadura dos caídos (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-the-fallen--shoulders"
+      ]
     },
     {
       "id": "c23a276f93270383",
@@ -47293,8 +47490,10 @@
           "name": "Armadura dos caídos (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-the-fallen"
+      ]
     },
     {
       "id": "e18eb4ea3fd45962",
@@ -47308,8 +47507,10 @@
           "name": "Armadura dos caídos (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-the-fallen--bracers"
+      ]
     },
     {
       "id": "36d29ba3423ffd2d",
@@ -47323,8 +47524,10 @@
           "name": "Armadura dos caídos (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-the-fallen--feet"
+      ]
     },
     {
       "id": "51cc82d95ef0a6fa",
@@ -47338,8 +47541,10 @@
           "name": "Armadura dos caídos (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-the-fallen--head"
+      ]
     },
     {
       "id": "085da372cc266302",
@@ -47353,8 +47558,10 @@
           "name": "Armadura dos caídos (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-the-fallen--legs"
+      ]
     },
     {
       "id": "2ced0d345f837bdd",
@@ -47368,8 +47575,10 @@
           "name": "Armadura dos caídos (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-the-fallen--shoulders"
+      ]
     },
     {
       "id": "55f4a776f41168cc",
@@ -47383,8 +47592,10 @@
           "name": "Armadura dos caídos (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-the-fallen"
+      ]
     },
     {
       "id": "5af23809517befbc",
@@ -47398,8 +47609,10 @@
           "name": "Armadura dos caídos (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-the-fallen--bracers"
+      ]
     },
     {
       "id": "849b8339de512a6a",
@@ -47413,8 +47626,10 @@
           "name": "Armadura dos caídos (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-the-fallen--feet"
+      ]
     },
     {
       "id": "6516a9f304c0dc1c",
@@ -47428,8 +47643,10 @@
           "name": "Armadura dos caídos (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-the-fallen--head"
+      ]
     },
     {
       "id": "1cfe5a9f38266f9b",
@@ -47443,8 +47660,10 @@
           "name": "Armadura dos caídos (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-the-fallen--legs"
+      ]
     },
     {
       "id": "d65ec896a3295586",
@@ -47458,8 +47677,10 @@
           "name": "Armadura dos caídos (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-the-fallen--shoulders"
+      ]
     },
     {
       "id": "b0dff3cbb72831c5",
@@ -47473,8 +47694,10 @@
           "name": "Armadura dos caídos (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-the-fallen"
+      ]
     },
     {
       "id": "f6e553f62c0a6d64",
@@ -47488,8 +47711,10 @@
           "name": "Armadura dos caídos (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-the-fallen--bracers"
+      ]
     },
     {
       "id": "1b79fab9b2a440e2",
@@ -47503,8 +47728,10 @@
           "name": "Armadura dos caídos (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-the-fallen--feet"
+      ]
     },
     {
       "id": "99847c4a48170d86",
@@ -47518,8 +47745,10 @@
           "name": "Armadura dos caídos (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-the-fallen--head"
+      ]
     },
     {
       "id": "fc9be5a4d0a58479",
@@ -47533,8 +47762,10 @@
           "name": "Armadura dos caídos (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-the-fallen--legs"
+      ]
     },
     {
       "id": "dfa80e46c45b0a46",
@@ -47548,8 +47779,10 @@
           "name": "Armadura dos caídos (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-the-fallen--shoulders"
+      ]
     },
     {
       "id": "be2348114fac57a7",
@@ -47563,8 +47796,10 @@
           "name": "Armadura dos caídos (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-the-fallen"
+      ]
     },
     {
       "id": "ab4e2f87655658e2",
@@ -47578,8 +47813,10 @@
           "name": "Armadura dos caídos (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-the-fallen--bracers"
+      ]
     },
     {
       "id": "897bca4cd29c494f",
@@ -47593,8 +47830,10 @@
           "name": "Armadura dos caídos (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-the-fallen--feet"
+      ]
     },
     {
       "id": "64ebfe7af9ac9d4e",
@@ -47608,8 +47847,10 @@
           "name": "Armadura dos caídos (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-the-fallen--head"
+      ]
     },
     {
       "id": "875796ddaa7cfd64",
@@ -47623,8 +47864,10 @@
           "name": "Armadura dos caídos (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-the-fallen--legs"
+      ]
     },
     {
       "id": "2452f0037f25ec6e",
@@ -47638,8 +47881,10 @@
           "name": "Armadura dos caídos (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-the-fallen--shoulders"
+      ]
     },
     {
       "id": "5de350df295a5d2d",
@@ -47653,8 +47898,10 @@
           "name": "Armadura dos caídos (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-the-fallen"
+      ]
     },
     {
       "id": "982c0212297f0043",
@@ -47668,8 +47915,10 @@
           "name": "Armadura dos caídos (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-the-fallen--bracers"
+      ]
     },
     {
       "id": "d54bff424d215c0a",
@@ -47683,8 +47932,10 @@
           "name": "Armadura dos caídos (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-the-fallen--feet"
+      ]
     },
     {
       "id": "9f970f6270223f84",
@@ -47698,8 +47949,10 @@
           "name": "Armadura dos caídos (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-the-fallen--head"
+      ]
     },
     {
       "id": "9d5fd2f53d75a363",
@@ -47713,8 +47966,10 @@
           "name": "Armadura dos caídos (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-the-fallen--legs"
+      ]
     },
     {
       "id": "0a3b093f2c408fae",
@@ -47728,8 +47983,10 @@
           "name": "Armadura dos caídos (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-the-fallen--shoulders"
+      ]
     },
     {
       "id": "077b200bb5302d95",
@@ -47743,8 +48000,10 @@
           "name": "Armadura dos caídos (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-the-fallen"
+      ]
     },
     {
       "id": "c6669cc11fbd8217",
@@ -47758,8 +48017,10 @@
           "name": "Armadura dos caídos (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-the-fallen--bracers"
+      ]
     },
     {
       "id": "8f3aa14c0cdcaf48",
@@ -47773,8 +48034,10 @@
           "name": "Armadura dos caídos (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-the-fallen--feet"
+      ]
     },
     {
       "id": "2468158838fef8e4",
@@ -47788,8 +48051,10 @@
           "name": "Armadura dos caídos (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-the-fallen--head"
+      ]
     },
     {
       "id": "0cb3f038b4c41c4f",
@@ -47803,8 +48068,10 @@
           "name": "Armadura dos caídos (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-the-fallen--legs"
+      ]
     },
     {
       "id": "9a45060d45c21573",
@@ -47818,8 +48085,10 @@
           "name": "Armadura dos caídos (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-the-fallen--shoulders"
+      ]
     },
     {
       "id": "0eb524943da461fd",
@@ -47833,8 +48102,10 @@
           "name": "Armadura dos caídos (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-the-fallen"
+      ]
     },
     {
       "id": "5f25f6ff3f142f92",
@@ -47848,8 +48119,10 @@
           "name": "Armadura dos caídos (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-the-fallen--bracers"
+      ]
     },
     {
       "id": "5d2e5aca62df1ec1",
@@ -47863,8 +48136,10 @@
           "name": "Armadura dos caídos (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-the-fallen--feet"
+      ]
     },
     {
       "id": "347ca5280066145c",
@@ -47878,8 +48153,10 @@
           "name": "Armadura dos caídos (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-the-fallen--head"
+      ]
     },
     {
       "id": "86b0aa213dd3ebeb",
@@ -47893,8 +48170,10 @@
           "name": "Armadura dos caídos (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-the-fallen--legs"
+      ]
     },
     {
       "id": "b34261340cf1dfa5",
@@ -47908,8 +48187,10 @@
           "name": "Armadura dos caídos (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-the-fallen--shoulders"
+      ]
     },
     {
       "id": "12e5add2e213d3a2",
@@ -51148,8 +51429,10 @@
           "name": "Armadura da leveza (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-weightlessness"
+      ]
     },
     {
       "id": "1fbbc4ab5945df52",
@@ -51163,8 +51446,10 @@
           "name": "Armadura da leveza (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "9b66570b1d00c0ca",
@@ -51178,8 +51463,10 @@
           "name": "Armadura da leveza (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-weightlessness--feet"
+      ]
     },
     {
       "id": "9c869af0ae82a921",
@@ -51193,8 +51480,10 @@
           "name": "Armadura da leveza (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-weightlessness--head"
+      ]
     },
     {
       "id": "e8421d732c0b152b",
@@ -51208,8 +51497,10 @@
           "name": "Armadura da leveza (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-weightlessness--legs"
+      ]
     },
     {
       "id": "8d607a168939f62a",
@@ -51223,8 +51514,10 @@
           "name": "Armadura da leveza (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "breastplate-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "3456c9f39dc9cba9",
@@ -51238,8 +51531,10 @@
           "name": "Armadura da leveza (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-weightlessness"
+      ]
     },
     {
       "id": "defef74d675647df",
@@ -51253,8 +51548,10 @@
           "name": "Armadura da leveza (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "2cd67009b98afdb6",
@@ -51268,8 +51565,10 @@
           "name": "Armadura da leveza (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-weightlessness--feet"
+      ]
     },
     {
       "id": "1655baa9468a78eb",
@@ -51283,8 +51582,10 @@
           "name": "Armadura da leveza (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-weightlessness--head"
+      ]
     },
     {
       "id": "1f9cc0cf90a197b3",
@@ -51298,8 +51599,10 @@
           "name": "Armadura da leveza (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-weightlessness--legs"
+      ]
     },
     {
       "id": "2c76eb073051a373",
@@ -51313,8 +51616,10 @@
           "name": "Armadura da leveza (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-mail-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "b885a0ae4bfd6703",
@@ -51328,8 +51633,10 @@
           "name": "Armadura da leveza (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-weightlessness"
+      ]
     },
     {
       "id": "909c4fc375ab02b7",
@@ -51343,8 +51650,10 @@
           "name": "Armadura da leveza (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "bca3bf1b036f4303",
@@ -51358,8 +51667,10 @@
           "name": "Armadura da leveza (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-weightlessness--feet"
+      ]
     },
     {
       "id": "e02789357c2ff088",
@@ -51373,8 +51684,10 @@
           "name": "Armadura da leveza (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-weightlessness--head"
+      ]
     },
     {
       "id": "3c9d89d3f077d4aa",
@@ -51388,8 +51701,10 @@
           "name": "Armadura da leveza (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-weightlessness--legs"
+      ]
     },
     {
       "id": "3e055d0162aedf79",
@@ -51403,8 +51718,10 @@
           "name": "Armadura da leveza (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chain-shirt-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "d56ba8b3d7d82543",
@@ -51418,8 +51735,10 @@
           "name": "Armadura da leveza (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-weightlessness"
+      ]
     },
     {
       "id": "3b786d3b5e4ca91d",
@@ -51433,8 +51752,10 @@
           "name": "Armadura da leveza (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "0cc36b0ac5d24b6b",
@@ -51448,8 +51769,10 @@
           "name": "Armadura da leveza (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-weightlessness--feet"
+      ]
     },
     {
       "id": "c8963421322ea996",
@@ -51463,8 +51786,10 @@
           "name": "Armadura da leveza (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-weightlessness--head"
+      ]
     },
     {
       "id": "cc94bea390a7f0e6",
@@ -51478,8 +51803,10 @@
           "name": "Armadura da leveza (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-weightlessness--legs"
+      ]
     },
     {
       "id": "99f9fdcc8c5265b7",
@@ -51493,8 +51820,10 @@
           "name": "Armadura da leveza (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "half-plate-armor-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "6c85e1a9b3e925b4",
@@ -51508,8 +51837,10 @@
           "name": "Armadura da leveza (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-weightlessness"
+      ]
     },
     {
       "id": "d85024a01f57d914",
@@ -51523,8 +51854,10 @@
           "name": "Armadura da leveza (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "bdc5a3fbac7d5794",
@@ -51538,8 +51871,10 @@
           "name": "Armadura da leveza (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-weightlessness--feet"
+      ]
     },
     {
       "id": "b91870b4f60edd48",
@@ -51553,8 +51888,10 @@
           "name": "Armadura da leveza (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-weightlessness--head"
+      ]
     },
     {
       "id": "577243d10875f4e9",
@@ -51568,8 +51905,10 @@
           "name": "Armadura da leveza (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-weightlessness--legs"
+      ]
     },
     {
       "id": "762bd6fbb0d8575f",
@@ -51583,8 +51922,10 @@
           "name": "Armadura da leveza (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hide-armor-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "4d6c6bcbf70491f2",
@@ -51598,8 +51939,10 @@
           "name": "Armadura da leveza (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-weightlessness"
+      ]
     },
     {
       "id": "583d4e042caf423d",
@@ -51613,8 +51956,10 @@
           "name": "Armadura da leveza (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "5b1dc0d9a528b314",
@@ -51628,8 +51973,10 @@
           "name": "Armadura da leveza (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-weightlessness--feet"
+      ]
     },
     {
       "id": "087fade6d4abd35e",
@@ -51643,8 +51990,10 @@
           "name": "Armadura da leveza (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-weightlessness--head"
+      ]
     },
     {
       "id": "e819d62a5635953b",
@@ -51658,8 +52007,10 @@
           "name": "Armadura da leveza (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-weightlessness--legs"
+      ]
     },
     {
       "id": "c214a084e6c55761",
@@ -51673,8 +52024,10 @@
           "name": "Armadura da leveza (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "leather-armor-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "e638e95a4ea65abd",
@@ -51688,8 +52041,10 @@
           "name": "Armadura da leveza (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-weightlessness"
+      ]
     },
     {
       "id": "59471310db1175fe",
@@ -51703,8 +52058,10 @@
           "name": "Armadura da leveza (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "2a871c34e904f710",
@@ -51718,8 +52075,10 @@
           "name": "Armadura da leveza (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-weightlessness--feet"
+      ]
     },
     {
       "id": "89338fb1254ccf3c",
@@ -51733,8 +52092,10 @@
           "name": "Armadura da leveza (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-weightlessness--head"
+      ]
     },
     {
       "id": "4be7683bb46eb676",
@@ -51748,8 +52109,10 @@
           "name": "Armadura da leveza (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-weightlessness--legs"
+      ]
     },
     {
       "id": "66720eb553078cfd",
@@ -51763,8 +52126,10 @@
           "name": "Armadura da leveza (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "padded-armor-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "3d7076eda7172119",
@@ -51778,8 +52143,10 @@
           "name": "Armadura da leveza (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-weightlessness"
+      ]
     },
     {
       "id": "1b1e278b05035622",
@@ -51793,8 +52160,10 @@
           "name": "Armadura da leveza (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "08da5683c668dd27",
@@ -51808,8 +52177,10 @@
           "name": "Armadura da leveza (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-weightlessness--feet"
+      ]
     },
     {
       "id": "3136804398a908c0",
@@ -51823,8 +52194,10 @@
           "name": "Armadura da leveza (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-weightlessness--head"
+      ]
     },
     {
       "id": "a47a72291e8c06db",
@@ -51838,8 +52211,10 @@
           "name": "Armadura da leveza (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-weightlessness--legs"
+      ]
     },
     {
       "id": "bebba81c89b464c2",
@@ -51853,8 +52228,10 @@
           "name": "Armadura da leveza (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "eea583ba5d80e291",
@@ -51868,8 +52245,10 @@
           "name": "Armadura da leveza (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-weightlessness"
+      ]
     },
     {
       "id": "86e81169e722ea05",
@@ -51883,8 +52262,10 @@
           "name": "Armadura da leveza (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "55c231490407c5d3",
@@ -51898,8 +52279,10 @@
           "name": "Armadura da leveza (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-weightlessness--feet"
+      ]
     },
     {
       "id": "4a373f0c2dba7f91",
@@ -51913,8 +52296,10 @@
           "name": "Armadura da leveza (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-weightlessness--head"
+      ]
     },
     {
       "id": "b595da362bce7168",
@@ -51928,8 +52313,10 @@
           "name": "Armadura da leveza (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-weightlessness--legs"
+      ]
     },
     {
       "id": "95bcbc4a32c172d2",
@@ -51943,8 +52330,10 @@
           "name": "Armadura da leveza (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-mail-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "7f7ffb5eef08b0f5",
@@ -51958,8 +52347,10 @@
           "name": "Armadura da leveza (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-weightlessness"
+      ]
     },
     {
       "id": "6d1f190a45189c2a",
@@ -51973,8 +52364,10 @@
           "name": "Armadura da leveza (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "36c58d74ac46596a",
@@ -51988,8 +52381,10 @@
           "name": "Armadura da leveza (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-weightlessness--feet"
+      ]
     },
     {
       "id": "c4cf74e9c5c240b5",
@@ -52003,8 +52398,10 @@
           "name": "Armadura da leveza (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-weightlessness--head"
+      ]
     },
     {
       "id": "fa8f9c0849c5ff15",
@@ -52018,8 +52415,10 @@
           "name": "Armadura da leveza (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-weightlessness--legs"
+      ]
     },
     {
       "id": "a895fc5cc502f487",
@@ -52033,8 +52432,10 @@
           "name": "Armadura da leveza (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scale-mail-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "1f6311dedc2d306b",
@@ -52048,8 +52449,10 @@
           "name": "Armadura da leveza (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-weightlessness"
+      ]
     },
     {
       "id": "ce0a4758cecc4b4f",
@@ -52063,8 +52466,10 @@
           "name": "Armadura da leveza (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "e89a2f3b54cdc0fd",
@@ -52078,8 +52483,10 @@
           "name": "Armadura da leveza (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-weightlessness--feet"
+      ]
     },
     {
       "id": "096a6b2c634d9bfd",
@@ -52093,8 +52500,10 @@
           "name": "Armadura da leveza (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-weightlessness--head"
+      ]
     },
     {
       "id": "e58a1080b33b8203",
@@ -52108,8 +52517,10 @@
           "name": "Armadura da leveza (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-weightlessness--legs"
+      ]
     },
     {
       "id": "06cdc4a4b5e375f6",
@@ -52123,8 +52534,10 @@
           "name": "Armadura da leveza (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "b618fd057da8704a",
@@ -52138,8 +52551,10 @@
           "name": "Armadura da leveza (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-weightlessness"
+      ]
     },
     {
       "id": "f1cbed7ab786b1c3",
@@ -52153,8 +52568,10 @@
           "name": "Armadura da leveza (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "ddfc9593726f1438",
@@ -52168,8 +52585,10 @@
           "name": "Armadura da leveza (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-weightlessness--feet"
+      ]
     },
     {
       "id": "5300f6e72cdbfdb3",
@@ -52183,8 +52602,10 @@
           "name": "Armadura da leveza (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-weightlessness--head"
+      ]
     },
     {
       "id": "d83ef21f39021c18",
@@ -52198,8 +52619,10 @@
           "name": "Armadura da leveza (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-weightlessness--legs"
+      ]
     },
     {
       "id": "4c90e6b5d43d3def",
@@ -52213,8 +52636,10 @@
           "name": "Armadura da leveza (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "splint-armor-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "613d0403b81f48ff",
@@ -52228,8 +52653,10 @@
           "name": "Armadura da leveza (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-weightlessness"
+      ]
     },
     {
       "id": "a26ad70e767f5932",
@@ -52243,8 +52670,10 @@
           "name": "Armadura da leveza (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-weightlessness--bracers"
+      ]
     },
     {
       "id": "6b362c3905b38bbf",
@@ -52258,8 +52687,10 @@
           "name": "Armadura da leveza (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-weightlessness--feet"
+      ]
     },
     {
       "id": "45c3c71c80f860ec",
@@ -52273,8 +52704,10 @@
           "name": "Armadura da leveza (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-weightlessness--head"
+      ]
     },
     {
       "id": "86cad5fd7a6fa98e",
@@ -52288,8 +52721,10 @@
           "name": "Armadura da leveza (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-weightlessness--legs"
+      ]
     },
     {
       "id": "548c78a6a310bd4d",
@@ -52303,8 +52738,10 @@
           "name": "Armadura da leveza (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "studded-leather-armor-of-weightlessness--shoulders"
+      ]
     },
     {
       "id": "b3d26c7936c23ad6",
