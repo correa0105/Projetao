@@ -28,7 +28,36 @@ test('plano exclui munições sem retirar armas, escudos ou artes existentes', a
   assert.equal(plan.stats.physical_artworks,plan.jobs.length);
   assert.equal(plan.stats.pending_artworks+plan.stats.approved_artworks,plan.jobs.length);
   assert.equal(plan.stats.excluded_ammunition_artworks,plan.excluded_jobs.length);
+  for (const family of plan.family_coverage)
+    for (const model of family.models)
+      for (const id of model.artwork_ids) assert(active.has(id), 'Modelo/peça fora do plano de produção: '+id);
+  const tierJob = (tier:number) => plan.jobs.find((job:any)=>job.consumers.some((c:any)=>c.id===`magic-armor-chain-mail-plus-${tier}`));
+  assert(tierJob(1) && tierJob(2) && tierJob(3));
+  assert.equal(tierJob(1).id,tierJob(2).id,'O mesmo modelo compartilha a arte +1 entre os três bônus');
+  assert.equal(tierJob(2).id,tierJob(3).id);
   assert(registry.assets.some((asset:any)=>asset.id==='adamantine-arrow' && asset.review==='approved'));
+});
+
+test('13 modelos de armadura compartilham a arte +1 nos bônus +2 e +3 e nas peças', async () => {
+  const plan = JSON.parse(await readFile('data/thematic-equipment-redesign-plan-20261102.json','utf8'));
+  const jobs = plan.jobs.filter((job:any)=>job.family==='Armor, +1, +2, or +3');
+  const assets = new Map(registry.assets.map((asset:any)=>[asset.id,asset]));
+  assert.equal(jobs.length,78);
+  assert.equal(new Set(jobs.map((job:any)=>job.model)).size,13);
+  for(const job of jobs){
+    assert.equal(job.consumers.length,3,job.model+':'+job.slot);
+    const records = job.consumers.map((consumer:any)=>assets.get(consumer.id) as any);
+    assert(records.every((asset:any)=>asset?.review==='approved'));
+    const source = records.find((asset:any)=>!asset.shared_from);
+    assert(source,job.model+':'+job.slot);
+    for(const asset of records){
+      assert.equal(asset.path,source.path);
+      assert.equal(asset.original,source.original);
+      assert.equal(thematicEquipmentImage(asset.id),source.path);
+      if(asset.id!==source.id)assert.equal(asset.shared_from,source.id);
+    }
+  }
+  assert.equal(new Set(jobs.map((job:any)=>(assets.get(job.consumers[0].id) as any).path)).size,78);
 });
 
 test('artes nativas e cópias leves conservam alfa, proporção, integridade e referências por peça', async () => {

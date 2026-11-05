@@ -1,0 +1,454 @@
+{
+  "screenshots": 32,
+  "uniqueCards": 36,
+  "stats": {
+    "physical_artworks": 4487,
+    "approved_artworks": 1646,
+    "pending_artworks": 2841,
+    "catalog_references": 4643,
+    "approved_references": 1802,
+    "excluded_ammunition_artworks": 42
+  },
+  "rows": [
+    {
+      "label": "Arma de prata",
+      "family": "Silvered Weapon",
+      "matchedFamilies": [
+        "Silvered Weapon"
+      ],
+      "models": 53,
+      "artworks": 53,
+      "approved": 0,
+      "pending": 53,
+      "status": "pending"
+    },
+    {
+      "label": "Espada tocada pela lua",
+      "family": "Moon-Touched Sword",
+      "matchedFamilies": [
+        "Moon-Touched Sword"
+      ],
+      "models": 6,
+      "artworks": 6,
+      "approved": 0,
+      "pending": 6,
+      "status": "pending"
+    },
+    {
+      "label": "Garra silvestre",
+      "family": "Sylvan Talon",
+      "matchedFamilies": [
+        "Sylvan Talon"
+      ],
+      "models": 6,
+      "artworks": 6,
+      "approved": 0,
+      "pending": 6,
+      "status": "pending"
+    },
+    {
+      "label": "Arma de disparo repetido",
+      "family": "Repeating Shot",
+      "matchedFamilies": [
+        "Repeating Shot"
+      ],
+      "models": 9,
+      "artworks": 9,
+      "approved": 0,
+      "pending": 9,
+      "status": "pending"
+    },
+    {
+      "label": "Arma de retorno",
+      "family": "Returning Weapon",
+      "matchedFamilies": [
+        "Returning Weapon"
+      ],
+      "models": 7,
+      "artworks": 7,
+      "approved": 0,
+      "pending": 7,
+      "status": "pending"
+    },
+    {
+      "label": "Arma da vigilância",
+      "family": "Weapon of Warning",
+      "matchedFamilies": [
+        "Weapon of Warning"
+      ],
+      "models": 54,
+      "artworks": 54,
+      "approved": 0,
+      "pending": 54,
+      "status": "pending"
+    },
+    {
+      "label": "Arma da vingança",
+      "family": "Sword of Vengeance",
+      "matchedFamilies": [
+        "Sword of Vengeance"
+      ],
+      "models": 7,
+      "artworks": 7,
+      "approved": 0,
+      "pending": 7,
+      "status": "pending"
+    },
+    {
+      "label": "Armas com magia vinculada",
+      "family": "Enspelled Weapon",
+      "matchedFamilies": [
+        "Enspelled Weapon (Cantrip)",
+        "Enspelled Weapon (Level 1)",
+        "Enspelled Weapon (Level 2)",
+        "Enspelled Weapon (Level 3)",
+        "Enspelled Weapon (Level 4)",
+        "Enspelled Weapon (Level 5)",
+        "Enspelled Weapon (Level 6)",
+        "Enspelled Weapon (Level 7)",
+        "Enspelled Weapon (Level 8)"
+      ],
+      "models": 468,
+      "artworks": 468,
+      "approved": 0,
+      "pending": 468,
+      "status": "pending"
+    },
+    {
+      "label": "Arma mágica",
+      "family": "Weapon, +1, +2, or +3",
+      "matchedFamilies": [
+        "Weapon, +1, +2, or +3"
+      ],
+      "models": 153,
+      "artworks": 153,
+      "approved": 0,
+      "pending": 153,
+      "status": "pending"
+    },
+    {
+      "label": "Armadura mágica",
+      "family": "Armor, +1, +2, or +3",
+      "matchedFamilies": [
+        "Armor, +1, +2, or +3"
+      ],
+      "models": 39,
+      "artworks": 78,
+      "approved": 78,
+      "pending": 0,
+      "status": "approved"
+    },
+    {
+      "label": "Arma caçadora de mortos-vivos",
+      "family": "Corpse Slayer",
+      "matchedFamilies": [
+        "Corpse Slayer"
+      ],
+      "models": 51,
+      "artworks": 51,
+      "approved": 0,
+      "pending": 51,
+      "status": "pending"
+    },
+    {
+      "label": "Arma cruel",
+      "family": "Vicious Weapon",
+      "matchedFamilies": [
+        "Vicious Weapon"
+      ],
+      "models": 53,
+      "artworks": 53,
+      "approved": 0,
+      "pending": 53,
+      "status": "pending"
+    },
+    {
+      "label": "Arma da morte certa",
+      "family": "Weapon of Certain Death",
+      "matchedFamilies": [
+        "Weapon of Certain Death"
+      ],
+      "models": 51,
+      "artworks": 51,
+      "approved": 0,
+      "pending": 51,
+      "status": "pending"
+    },
+    {
+      "label": "Arma deslumbrante",
+      "family": "Dazzling Weapon",
+      "matchedFamilies": [
+        "Dazzling Weapon"
+      ],
+      "models": 53,
+      "artworks": 53,
+      "approved": 0,
+      "pending": 53,
+      "status": "pending"
+    },
+    {
+      "label": "Armadura de resistência",
+      "family": "Armor of Resistance",
+      "matchedFamilies": [
+        "Armor of Resistance"
+      ],
+      "models": 130,
+      "artworks": 780,
+      "approved": 0,
+      "pending": 780,
+      "status": "pending"
+    },
+    {
+      "label": "Armadura forjada no feérico",
+      "family": "Feywrought Armor",
+      "matchedFamilies": [
+        "Feywrought Armor"
+      ],
+      "models": 13,
+      "artworks": 78,
+      "approved": 78,
+      "pending": 0,
+      "status": "approved"
+    },
+    {
+      "label": "Espada de roubar vidas",
+      "family": "Sword of Life Stealing",
+      "matchedFamilies": [
+        "Sword of Life Stealing"
+      ],
+      "models": 7,
+      "artworks": 7,
+      "approved": 0,
+      "pending": 7,
+      "status": "pending"
+    },
+    {
+      "label": "Espada do ferimento",
+      "family": "Sword of Wounding",
+      "matchedFamilies": [
+        "Sword of Wounding"
+      ],
+      "models": 7,
+      "artworks": 7,
+      "approved": 0,
+      "pending": 7,
+      "status": "pending"
+    },
+    {
+      "label": "Lâmina do apostador",
+      "family": "Gambler's Blade",
+      "matchedFamilies": [
+        "Gambler's Blade"
+      ],
+      "models": 6,
+      "artworks": 6,
+      "approved": 0,
+      "pending": 6,
+      "status": "pending"
+    },
+    {
+      "label": "Lâmina de cristal",
+      "family": "Crystal Blade",
+      "matchedFamilies": [
+        "Crystal Blade"
+      ],
+      "models": 6,
+      "artworks": 6,
+      "approved": 0,
+      "pending": 6,
+      "status": "pending"
+    },
+    {
+      "label": "Lâmina mental",
+      "family": "Mind Blade",
+      "matchedFamilies": [
+        "Mind Blade"
+      ],
+      "models": 6,
+      "artworks": 6,
+      "approved": 0,
+      "pending": 6,
+      "status": "pending"
+    },
+    {
+      "label": "Arco do juramento",
+      "family": "Oathbow",
+      "matchedFamilies": [
+        "Oathbow"
+      ],
+      "models": 2,
+      "artworks": 2,
+      "approved": 0,
+      "pending": 2,
+      "status": "pending"
+    },
+    {
+      "label": "Arma da paralisia agonizante",
+      "family": "Weapon of Agonizing Paralysis",
+      "matchedFamilies": [
+        "Weapon of Agonizing Paralysis"
+      ],
+      "models": 32,
+      "artworks": 32,
+      "approved": 0,
+      "pending": 32,
+      "status": "pending"
+    },
+    {
+      "label": "Arma de ruidium",
+      "family": "Ruidium Weapon",
+      "matchedFamilies": [
+        "Ruidium Weapon"
+      ],
+      "models": 51,
+      "artworks": 51,
+      "approved": 0,
+      "pending": 51,
+      "status": "pending"
+    },
+    {
+      "label": "Arma do comando do trono",
+      "family": "Weapon of Throne's Command",
+      "matchedFamilies": [
+        "Weapon of Throne's Command"
+      ],
+      "models": 35,
+      "artworks": 35,
+      "approved": 0,
+      "pending": 35,
+      "status": "pending"
+    },
+    {
+      "label": "Arma quebra-força",
+      "family": "Forcebreaker Weapon",
+      "matchedFamilies": [
+        "Forcebreaker Weapon"
+      ],
+      "models": 11,
+      "artworks": 11,
+      "approved": 0,
+      "pending": 11,
+      "status": "pending"
+    },
+    {
+      "label": "Armadura do último combate",
+      "family": "Last Stand Armor",
+      "matchedFamilies": [
+        "Last Stand Armor"
+      ],
+      "models": 13,
+      "artworks": 78,
+      "approved": 0,
+      "pending": 78,
+      "status": "pending"
+    },
+    {
+      "label": "Espada da retribuição",
+      "family": "Sword of Retribution",
+      "matchedFamilies": [
+        "Sword of Retribution"
+      ],
+      "models": 6,
+      "artworks": 6,
+      "approved": 0,
+      "pending": 6,
+      "status": "pending"
+    },
+    {
+      "label": "Ladrão de nove vidas",
+      "family": "Nine Lives Stealer",
+      "matchedFamilies": [
+        "Nine Lives Stealer"
+      ],
+      "models": 53,
+      "artworks": 53,
+      "approved": 0,
+      "pending": 53,
+      "status": "pending"
+    },
+    {
+      "label": "Lâmina de metamorfose",
+      "family": "Polymorph Blade",
+      "matchedFamilies": [
+        "Polymorph Blade"
+      ],
+      "models": 6,
+      "artworks": 6,
+      "approved": 0,
+      "pending": 6,
+      "status": "pending"
+    },
+    {
+      "label": "Lâmina do tolo",
+      "family": "Fool's Blade",
+      "matchedFamilies": [
+        "Fool's Blade"
+      ],
+      "models": 6,
+      "artworks": 6,
+      "approved": 0,
+      "pending": 6,
+      "status": "pending"
+    },
+    {
+      "label": "Machado do carrasco",
+      "family": "Executioner's Axe",
+      "matchedFamilies": [
+        "Executioner's Axe"
+      ],
+      "models": 4,
+      "artworks": 4,
+      "approved": 0,
+      "pending": 4,
+      "status": "pending"
+    },
+    {
+      "label": "Vingadora sagrada",
+      "family": "Holy Avenger",
+      "matchedFamilies": [
+        "Holy Avenger"
+      ],
+      "models": 53,
+      "artworks": 53,
+      "approved": 0,
+      "pending": 53,
+      "status": "pending"
+    },
+    {
+      "label": "Lâmina da sorte",
+      "family": "Luck Blade",
+      "matchedFamilies": [
+        "Luck Blade"
+      ],
+      "models": 8,
+      "artworks": 8,
+      "approved": 0,
+      "pending": 8,
+      "status": "pending"
+    },
+    {
+      "label": "Espada dos planos",
+      "family": "Sword of the Planes",
+      "matchedFamilies": [
+        "Sword of the Planes"
+      ],
+      "models": 6,
+      "artworks": 6,
+      "approved": 0,
+      "pending": 6,
+      "status": "pending"
+    },
+    {
+      "label": "Defensora",
+      "family": "Defender",
+      "matchedFamilies": [
+        "Defender"
+      ],
+      "models": 29,
+      "artworks": 29,
+      "approved": 29,
+      "pending": 0,
+      "status": "approved"
+    }
+  ]
+}

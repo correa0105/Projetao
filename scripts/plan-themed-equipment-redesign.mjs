@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import { createHash } from 'node:crypto';
+import { magicArmorSharedArt } from './lib/magic-armor-shared-art.mjs';
 
 const catalogs = ['data/shop-export/loja.json', 'data/equipment-catalog.json', 'data/emporium-expansion.json', 'data/animal-equipment-catalog.json', 'data/shop-magic-completion-20261009/catalog.json'];
 const items = new Map();
@@ -11,13 +12,15 @@ const registry = JSON.parse(await fs.readFile('data/thematic-equipment-art-20261
 const approved = new Map(registry.assets.filter(asset => asset.review === 'approved').map(asset => [asset.id, asset]));
 const recipes = new Set(JSON.parse(await fs.readFile('data/shop-magic-completion-20261009/variant-recipes.json','utf8')).map(recipe => recipe.id));
 const jobs = new Map(), checked = new Map();
+const sharedArmorArt = magicArmorSharedArt(items);
 const ammunitionModels = new Set(['energy-cell', 'modern-bullet', 'arrows-20', 'bolts-20', 'firearm-bullet', 'blowgun-needles-50', 'sling-bullets-20', 'single-arrow', 'single-bolt', 'single-needle', 'single-sling-bullet']);
 const isAmmunition = item => Boolean(item?.raw_data?.ammunition_type)
   || ammunitionModels.has(item?.raw_data?.base_item || item?.id)
   || /^A(?:\||$)/.test(item?.raw_data?.upstream_facts?.type || '');
 function add(id, legacyPath, slot, item) {
   if (!legacyPath) return;
-  const key = legacyPath;
+  // Share only the explicitly approved +1/+2/+3 armor policy, never by old URL.
+  const key = sharedArmorArt.get(id) || id;
   const job = jobs.get(key) || { id: createHash('sha256').update(key).digest('hex').slice(0,16), legacy_path: legacyPath,
     family: item?.raw_data?.magic_family || 'Família a revisar', model: item?.raw_data?.base_item || item?.id,
     slot, consumers: [], status: 'pending' };
@@ -34,7 +37,10 @@ for (const item of items.values()) {
     }
     legacy = checked.get(image);
   }
-  if (legacy) add(item.id, image, item.raw_data?.equipment_slots?.[0] || 'item', item);
+  // Every selector model is in scope, including old native art that was never
+  // made with a coating. Otherwise family_coverage lists work missing from jobs.
+  if (legacy || (item.raw_data?.magic_family && !isAmmunition(item)))
+    add(item.id, image, item.raw_data?.equipment_slots?.[0] || 'item', item);
 }
 const pieces = JSON.parse(await fs.readFile('data/armor-piece-art-20261012.json','utf8')).variants;
 for (const piece of pieces) add(`${piece.id}--${piece.slot}`, piece.output.replace(/^public/,''), piece.slot, items.get(piece.id));
@@ -71,6 +77,7 @@ for (const item of items.values()) {
 const familyCoverage=[...families].sort(([a],[b])=>a.localeCompare(b)).map(([family,models])=>({family,
   status:models.every(model=>model.status==='approved')?'approved':'pending',
   models:models.sort((a,b)=>a.id.localeCompare(b.id))}));
-await fs.writeFile('data/thematic-equipment-redesign-plan-20261102.json', JSON.stringify({ policy_version:2,
+await fs.writeFile('data/thematic-equipment-redesign-plan-20261102.json', JSON.stringify({ policy_version:3,
+  shared_armor_policy:'Cada modelo de armadura mágica usa a arte +1 também em +2 e +3, incluindo as peças separadas.',
   scope:'Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.', stats, family_coverage:familyCoverage, jobs:list, excluded_jobs:excluded },null,2)+'\n');
 console.log(JSON.stringify(stats));
