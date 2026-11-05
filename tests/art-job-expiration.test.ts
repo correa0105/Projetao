@@ -55,6 +55,11 @@ test('limite total encerra as duas filas e bloqueia publicação tardia; retry a
     await retryCharacterArt(jid,new IllustratorError('connection','Interrompida'));
     assert.deepEqual((await pool.query('SELECT deadline_at FROM character_art_jobs WHERE id=$1',[jid])).rows[0].deadline_at,retried.deadline_at);
     await pool.query("UPDATE character_art_jobs SET status='failed' WHERE id=$1",[jid]);
+    await pool.query("UPDATE characters SET race='Warforged' WHERE id=$1",[c.id]);
+    await pool.query("UPDATE character_art_jobs SET reference_mode='construction' WHERE id=$1",[jid]);
+    assert.equal((await req('/character-art/'+jid+'/retry',{})).status,202);
+    assert.equal((await pool.query('SELECT reference_mode FROM character_art_jobs WHERE id=$1',[jid])).rows[0].reference_mode,'construction','Retomar um token não troca montagem por referência');
+    await pool.query("UPDATE character_art_jobs SET status='failed' WHERE id=$1",[jid]);
     const pet=(await pool.query(`INSERT INTO character_pets(character_id,pet_id,name,price_cp,idempotency_key)VALUES($1,'cat','Teste',0,$2)RETURNING id`,[c.id,randomUUID()])).rows[0];
     await pool.query("INSERT INTO companion_wardrobes(id,character_id,kind,pet_id)VALUES($1,$2,'pet',$1)",[pet.id,c.id]);
     const companion=(await pool.query(`INSERT INTO companion_art_jobs(user_id,character_id,wardrobe_id,kind,species_id,appearance,name,equipment_revision,reference,status,idempotency_key,deadline_at)VALUES($1,$2,$3,'pet','cat','black','Teste',0,$4,'running',$5,now()-interval '1 second')RETURNING id`,[uid,c.id,pet.id,portrait,randomUUID()])).rows[0].id;

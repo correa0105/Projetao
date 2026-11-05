@@ -558,7 +558,7 @@ export function characterArtRouter() {
       const {
         rows: [job],
       } = await client.query(
-        'SELECT id,status,character_id,creation,creation_slot,roll_generation,reference IS NOT NULL OR approved_portrait IS NOT NULL AS recoverable FROM character_art_jobs WHERE id=$1 AND user_id=$2 FOR UPDATE',
+        'SELECT id,status,character_id,creation,creation_slot,roll_generation,reference_mode,reference IS NOT NULL OR approved_portrait IS NOT NULL AS recoverable FROM character_art_jobs WHERE id=$1 AND user_id=$2 FOR UPDATE',
         [id, user],
       );
       if (!job) throw new AppError(404, 'Criação não encontrada.');
@@ -598,9 +598,9 @@ export function characterArtRouter() {
       const retrySlot=!job.character_id ? await freeCharacterSlot(client,user,replacement?.creation?.creation_slot??job.creation_slot??undefined,id,Boolean(replacement||job.creation.creation_slot)) : null;
       if(retrySlot && !replacement && job.roll_generation && retrySlot.generation!==job.roll_generation)throw new AppError(409,'Este pedido pertence a uma criação anterior do slot. Retome o preenchimento.');
       if(replacement?.creation && retrySlot)replacement.creation.creation_slot=retrySlot.slot;
-      const retryMode = canConstructWithoutReference(replacement?.creation || job.creation)
-        ? 'construction'
-        : 'reference';
+      const retryMode = job.character_id && !replacement
+        ? job.reference_mode
+        : canConstructWithoutReference(replacement?.creation || job.creation) ? 'construction' : 'reference';
       await client.query(
         "UPDATE character_art_jobs SET status='queued',error=NULL,last_error_code=NULL,next_attempt_at=now(),deadline_at=now()+interval '5 minutes',started_at=NULL,completed_at=NULL,reference=CASE WHEN $3::jsonb IS NULL THEN CASE WHEN $4='construction' AND reference_mode='reference' AND character_id IS NULL THEN NULL ELSE reference END ELSE $2::bytea END,creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END,reference_mode=$4,creation_slot=COALESCE($5,creation_slot),roll_generation=COALESCE($6,roll_generation) WHERE id=$1",
         [id, reference, replacement ? JSON.stringify(replacement.creation) : null, retryMode,retrySlot?.slot??null,retrySlot?.generation??null],
