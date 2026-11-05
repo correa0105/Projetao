@@ -137,7 +137,9 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
     ? { path: resolve('public' + animalStyle), custom: false }
     : await characterTokenCameraReference('data/vtt/premium-art/monster-berserker-v1.webp');
   const style = camera.path;
-  const cameraCorrection = camera.custom
+  const cameraCorrection = previousToken
+    ? 'Preserve a câmera elevada e o encurtamento da imagem do token existente. Mantenha a proporção entre topo da cabeça, ombros e pés e a oclusão do tronco e das pernas. Não alongar o corpo nem baixar a câmera para mostrar a roupa. Atualize os detalhes visíveis pela nova aparência; se a postura escolhida mudou, adapte o corpo no espaço tridimensional mantendo a câmera superior.'
+    : camera.custom
     ? 'Reconstrua a figura inteira seguindo a câmera, o encurtamento e as proporções coerentes da referência superior. O topo da cabeça e dos ombros domina, com rosto e peito encurtados como na referência. O personagem olha à frente no mundo, nunca para o observador acima dele. Cabeça, ombros, quadril, joelhos e pés pertencem ao mesmo corpo e apontam na mesma direção; não montar partes independentes. Conservar o alinhamento tridimensional da postura escolhida; não dobrar o pescoço nem curvar o tronco para simular a câmera. Não forçar pés e pernas a aparecer; conservar oclusão natural. A referência de câmera não fornece identidade, cor, roupa, arma ou pose de ação.'
     : 'Reconstrua TODA a projeção do corpo em zênite ortográfico real de 90 graus; corrigir apenas detalhes mantendo a pose frontal/inclinada não resolve. Topo da cabeça/ombros dominam e rosto/tronco/pernas ficam encobertos naturalmente; não abrir a câmera para mostrar detalhes ocultos.';
   const cameraReview = camera.custom
@@ -222,6 +224,11 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
       : animal
         ? 'Imagem 1 define o animal e seu equipamento; imagem 2 define a câmera superior.'
         : 'Imagem 1 define SOMENTE a câmera superior e a pintura; imagem 2 é o RETRATO APROVADO que define identidade e equipamentos. Use esta ordem na ferramenta de imagem.';
+    // Updating an existing overhead token is an edit. Asking for a second new
+    // illustration here competes with the edit and repeatedly restores a frontal body.
+    const compositionInstructions = previousToken
+      ? `Use a ferramenta nativa de imagem para EDITAR o token da imagem 1. Substitua a aparência, roupas e equipamentos pelos do retrato na imagem 2, respeitando a personalização informada. Preserve a projeção superior da imagem 1. Não use a composição frontal da imagem 2. Preserve a silhueta visível inteira com 8% de margem, fundo alfa real, sem chão, círculo, cenário ou texto. Use referenced_image_paths=${JSON.stringify(freshReferences)} e transparent_background=true. Entregue JSON image_path absoluto e error vazio somente se a ferramenta entregar imagem real.`
+      : instructions;
     for (let attempt = 0; attempt < 3; attempt++) {
       await unlink(result).catch(() => {});
       // Editing a rejected frontal token anchors the next render to the wrong
@@ -240,7 +247,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
         '\n' +
         (editCandidate
           ? `EDITE a imagem 1, o token reprovado. Imagem 2 define a identidade e os equipamentos, nunca a câmera; imagem 3 demonstra a câmera superior. Corrija os defeitos: ${JSON.stringify(issues)}. ${cameraCorrection} Preserve a identidade. Silhueta inteira com 8% de margem, alfa real, sem círculo, chão ou cenário. Use referenced_image_paths=${JSON.stringify(refs)} e transparent_background=true. Entregue JSON image_path absoluto e error vazio apenas se houver imagem real.`
-          : `${freshReferenceRoles}\n${instructions}\n${rebuildCamera ? `RECONSTRUIR A CÂMERA: a tentativa anterior usou uma projeção incorreta. Gere uma nova composição pela referência superior. A imagem reprovada não é referência. Corrija também os defeitos visíveis informados: ${JSON.stringify(issues)}.\n` : ''}${animal ? `Animal: ${animal.kind} / ${animal.species_id}. Aparência: ${animal.appearance}. Nome: ${animal.name}.` : `Raça: ${job.race}. Classe: ${job.class}.`} ${freshReferenceRoles} Referências, na ordem: ${JSON.stringify(refs)}. Gere agora e retorne JSON image_path absoluto e error vazio.`) +
+          : `${freshReferenceRoles}\n${compositionInstructions}\n${rebuildCamera ? `RECONSTRUIR A CÂMERA: a tentativa anterior usou uma projeção incorreta. ${previousToken ? 'Retome a edição do token existente com sua câmera superior preservada.' : 'Gere uma nova composição pela referência superior.'} A imagem reprovada não é referência. Corrija também os defeitos visíveis informados: ${JSON.stringify(issues)}.\n` : ''}${animal ? `Animal: ${animal.kind} / ${animal.species_id}. Aparência: ${animal.appearance}. Nome: ${animal.name}.` : `Raça: ${job.race}. Classe: ${job.class}.`} ${freshReferenceRoles} Referências, na ordem: ${JSON.stringify(refs)}. ${previousToken ? 'Edite' : 'Gere'} agora e retorne JSON image_path absoluto e error vazio.`) +
         '\n' + cameraCorrection + '\n' +
         magicInstructions +
         '\n' +

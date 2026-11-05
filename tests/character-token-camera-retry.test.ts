@@ -76,6 +76,8 @@ test('câmera reprovada reconstrói o token sem reutilizar a projeção errada; 
     assert.deepEqual(existing.renders[0].hashes, [hash(token), hash(portrait)]);
     assert.match(existing.renders[0].prompt, /EDITE esse token preservando sua câmera superior/);
     assert.match(existing.renders[0].prompt, /novo RETRATO APROVADO/);
+    assert.doesNotMatch(existing.renders[0].prompt, /Crie uma segunda ilustração original|Reconstrua a figura inteira/);
+    assert.match(existing.renders[0].prompt, /transparent_background=true/);
   } finally {
     for (const [name, value] of Object.entries(saved)) {
       if (value === undefined) delete process.env[name]; else process.env[name] = value;

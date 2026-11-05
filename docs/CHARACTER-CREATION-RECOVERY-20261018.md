@@ -34,6 +34,8 @@ A referência superior também vem primeiro nas imagens anexadas ao gerador de p
 
 Quando já existe um token do mesmo personagem ou companheiro, ele fornece a projeção para a edição: atualizar aparência e equipamentos pelo novo retrato, preservando a câmera e o alinhamento do token existente. Isso evita reconstruir repetidamente a vista superior a partir de um retrato frontal. Criações sem token anterior continuam usando a referência de câmera configurada. A revisão visual permanece obrigatória em ambos os casos.
 
+A edição de um token existente recebe instruções próprias, sem o pedido conflitante de criar uma segunda ilustração ou reconstruir toda a figura. A aparência e a postura escolhidas continuam sendo aplicadas com a câmera superior preservada.
+
 Verificação do prazo e das filas: `node scripts/test-character-tokens-isolated.mjs --deadline`, sempre em banco descartável. Cobre encerramento das duas filas, interrupção do processo, reinício, reenvio autorizado, checkpoints e recusa de publicação tardia.
 
 Verificação focada: `node --import tsx --test --test-concurrency=1 tests/character-token-camera-reference.test.ts tests/character-token-camera-retry.test.ts tests/token-canvas.test.ts`. Confere referências privadas intactas, reconstrução após reprovação de câmera, edição de defeito local e rejeição persistente sem publicar imagem inválida. O cenário de pipeline em `tests/character-token-art.test.ts` isola o perfil privado local para conferir também a câmera padrão e as revisões de anatomia, aparência, roupas e cabeça.
