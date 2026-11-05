@@ -10,7 +10,9 @@ await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
   process.exitCode = await new Promise((resolve, reject) => {
-    const args = process.argv.includes('--cancel-browser')
+    const args = process.argv.includes('--deadline')
+      ? ['--import','tsx','--test','--test-concurrency=1','tests/art-generation-deadline.test.ts','tests/art-job-expiration.test.ts','tests/character-art-publication.test.ts','tests/character-art-cancel.test.ts','tests/companion-token-illustrator.test.ts','tests/character-token-camera-retry.test.ts','tests/character-token-camera-reference.test.ts','tests/token-canvas.test.ts']
+      : process.argv.includes('--cancel-browser')
       ? ['--import','tsx','scripts/smoke-character-art-cancel.ts']
       : process.argv.includes('--cancel')
       ? ['--import','tsx','--test','tests/character-art-cancel.test.ts']

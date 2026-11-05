@@ -5,6 +5,7 @@ import { homedir } from 'node:os';
 import sharp from 'sharp';
 import { squareTokenCanvas } from './token-canvas.js';
 import { characterTokenCameraReference } from './character-token-camera-reference.js';
+import { ART_GENERATION_LIMIT_MS, artGenerationTimeLeft, withArtGenerationDeadline } from './art-generation-deadline.js';
 import { z } from 'zod';
 import {
   generateCharacterArt,
@@ -25,6 +26,8 @@ import { prepareWarforgedHeadReference } from './warforged-art-references.js';
 
 type CharacterJob = Parameters<typeof generateCharacterArt>[0] & {
   approved_portrait?: Buffer | null;
+  deadline_at?: Date | string;
+  previous_token?: Buffer | null;
 };
 export type CharacterArtPair = { portrait: Buffer; token: Buffer };
 
@@ -126,7 +129,11 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
       'token_style',
       'O modelo do token deste animal não está disponível.',
     );
-  const camera = animalStyle
+  const previousToken = job.previous_token ? join(directory, 'previous-token.png') : undefined;
+  if (previousToken) await writeFile(previousToken, job.previous_token!);
+  const camera = previousToken
+    ? { path: previousToken, custom: true }
+    : animalStyle
     ? { path: resolve('public' + animalStyle), custom: false }
     : await characterTokenCameraReference('data/vtt/premium-art/monster-berserker-v1.webp');
   const style = camera.path;
@@ -207,12 +214,14 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
   try {
     let issues: string[] = [];
     let rebuildCamera = false;
-    const freshReferences = animal
+    const freshReferences = animal && !previousToken
       ? [reference, style, ...detailReferences]
       : [style, reference, ...detailReferences];
-    const freshReferenceRoles = animal
-      ? 'Imagem 1 define o animal e seu equipamento; imagem 2 define a câmera superior.'
-      : 'Imagem 1 define SOMENTE a câmera superior e a pintura; imagem 2 é o RETRATO APROVADO que define identidade e equipamentos. Use esta ordem na ferramenta de imagem.';
+    const freshReferenceRoles = previousToken
+        ? `Imagem 1 é o token existente deste ${animal ? 'animal' : 'personagem'}. EDITE esse token preservando sua câmera superior, projeção e alinhamento do corpo. Atualize a aparência e os equipamentos conforme a imagem 2, o novo RETRATO APROVADO. A imagem 2 fornece identidade e vestimenta, nunca a pose ou câmera frontal. Use esta ordem na ferramenta de imagem.`
+      : animal
+        ? 'Imagem 1 define o animal e seu equipamento; imagem 2 define a câmera superior.'
+        : 'Imagem 1 define SOMENTE a câmera superior e a pintura; imagem 2 é o RETRATO APROVADO que define identidade e equipamentos. Use esta ordem na ferramenta de imagem.';
     for (let attempt = 0; attempt < 3; attempt++) {
       await unlink(result).catch(() => {});
       // Editing a rejected frontal token anchors the next render to the wrong
@@ -339,7 +348,7 @@ export async function generateCharacterToken(job: CharacterJob, portrait: Buffer
     );
   } finally {
     await Promise.all(
-      [reference, candidate, result, reviewPath, ...detailReferences].map((file) =>
+      [reference, candidate, result, reviewPath, ...detailReferences, ...(previousToken ? [previousToken] : [])].map((file) =>
         unlink(file).catch(() => {}),
       ),
     );
@@ -350,24 +359,25 @@ export async function generateCharacterArtPair(
   job: CharacterJob,
   checkpoint?: (portrait: Buffer) => Promise<void>,
 ): Promise<CharacterArtPair> {
-  const portrait = job.approved_portrait || (await generateCharacterArt(job));
-  if (checkpoint) await checkpoint(portrait);
-  return { portrait, token: await generateCharacterToken(job, portrait) };
+  return withArtGenerationDeadline(job.deadline_at ?? new Date(Date.now()+ART_GENERATION_LIMIT_MS), async () => {
+    const portrait = job.approved_portrait || (await generateCharacterArt(job));
+    if (checkpoint) await checkpoint(portrait);
+    const token = await generateCharacterToken(job, portrait);
+    artGenerationTimeLeft();
+    return { portrait, token };
+  });
 }
 
 export async function generateCompanionArtPair(
-  job: Parameters<typeof generateCompanionArt>[0],
+  job: Parameters<typeof generateCompanionArt>[0] & { deadline_at?: Date | string; previous_token?: Buffer | null },
 ): Promise<CharacterArtPair> {
-  const portrait = await generateCompanionArt(job);
-  const subject = {
-    kind: job.kind,
-    species_id: job.species_id,
-    appearance: job.appearance,
-    name: job.name,
-  };
-  const token = await generateCharacterToken(
-    { ...job, race: 'Humano', class: 'Guerreiro', companion: subject },
-    portrait,
-  );
-  return { portrait, token };
+  return withArtGenerationDeadline(job.deadline_at ?? new Date(Date.now()+ART_GENERATION_LIMIT_MS), async () => {
+    const portrait = await generateCompanionArt(job);
+    const subject = { kind: job.kind, species_id: job.species_id, appearance: job.appearance, name: job.name };
+    const token = await generateCharacterToken(
+      { ...job, race: 'Humano', class: 'Guerreiro', companion: subject }, portrait,
+    );
+    artGenerationTimeLeft();
+    return { portrait, token };
+  });
 }

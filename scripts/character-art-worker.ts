@@ -9,6 +9,8 @@ import {
 import { completeCompanionArt } from '../server/companion-equipment.js';
 import { checkCodexLogin, IllustratorError } from '../server/codex-illustrator.js';
 import { AppError } from '../server/services.js';
+import { ArtGenerationDeadlineError } from '../server/art-generation-deadline.js';
+import { expireArtJobs } from '../server/art-job-expiration.js';
 
 const lock = await pool.connect();
 await lock.query(
@@ -38,10 +40,10 @@ try {
   await checkCodexLogin();
   await recoverInterruptedCharacterArt();
   await pool.query(
-    "UPDATE companion_art_jobs SET status='failed',reference=NULL,error='A geração foi interrompida. A tentativa não consumiu a cota.' WHERE status='running'",
+    "UPDATE companion_art_jobs SET status='failed',completed_at=now(),error='A geração foi interrompida. A tentativa não consumiu a cota.' WHERE status='running'",
   );
   await pool.query(
-    "DELETE FROM companion_art_equipment WHERE job_id IN(SELECT id FROM companion_art_jobs WHERE status IN('failed','stale'))",
+    "DELETE FROM companion_art_equipment WHERE job_id IN(SELECT id FROM companion_art_jobs WHERE status='stale')",
   );
   // Keep the lease connection alive too: a pooled heartbeat could otherwise
   // advertise availability while the session holding the worker lock is stale.
@@ -54,6 +56,7 @@ try {
   const beat = () => {
     if (checking) return checking;
     checking = (async () => {
+      await expireArtJobs();
       let ready = false;
       try { await checkCodexLogin(); ready = true; } catch { /* Keep queued requests until the CLI recovers. */ }
       await lock.query({ ...heartbeatQuery, values: [ready] });
@@ -110,18 +113,17 @@ try {
         }
       } catch (error) {
         const code =
-          error instanceof IllustratorError
+          error instanceof IllustratorError || error instanceof ArtGenerationDeadlineError
             ? error.code
             : error instanceof AppError
               ? 'image_validation'
               : 'internal';
         const message =
-          error instanceof IllustratorError || error instanceof AppError
+          error instanceof IllustratorError || error instanceof AppError || error instanceof ArtGenerationDeadlineError
             ? error.message
             : 'Não foi possível finalizar a arte. Tente novamente.';
         if (job.queue_kind === 'companion') {
-          await pool.query("UPDATE companion_art_jobs SET status='failed',reference=NULL,error=$2 WHERE id=$1 AND status='running'", [job.id, `${message} Sua cota foi preservada.`]);
-          await pool.query('DELETE FROM companion_art_equipment WHERE job_id=$1', [job.id]);
+          await pool.query("UPDATE companion_art_jobs SET status='failed',error=$2,completed_at=now() WHERE id=$1 AND status='running'", [job.id, error instanceof ArtGenerationDeadlineError ? message : `${message} Sua cota foi preservada.`]);
           console.error(`Falha de geração: ${job.id}. Motivo: ${code}. Cota preservada.`);
         } else {
           const resumed = await retryCharacterArt(job.id, error);

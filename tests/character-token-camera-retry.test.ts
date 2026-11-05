@@ -70,6 +70,12 @@ test('câmera reprovada reconstrói o token sem reutilizar a projeção errada; 
     const rejected = JSON.parse(await readFile(statePath, 'utf8'));
     assert.equal(rejected.reviews, 3);
     for (const render of rejected.renders) assert.deepEqual(render.hashes, [hash(camera), hash(portrait)]);
+    await writeFile(statePath, JSON.stringify({ failure: 'clothing', renders: [], reviews: 0 }));
+    await generateCharacterToken({ id: randomUUID(), race: 'Humano', class: 'Guerreiro', reference: portrait, previous_token: token }, portrait);
+    const existing = JSON.parse(await readFile(statePath, 'utf8'));
+    assert.deepEqual(existing.renders[0].hashes, [hash(token), hash(portrait)]);
+    assert.match(existing.renders[0].prompt, /EDITE esse token preservando sua câmera superior/);
+    assert.match(existing.renders[0].prompt, /novo RETRATO APROVADO/);
   } finally {
     for (const [name, value] of Object.entries(saved)) {
       if (value === undefined) delete process.env[name]; else process.env[name] = value;

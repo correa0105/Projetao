@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import { sendImagePreview } from './image-preview.js';
+import { expireArtJobs } from './art-job-expiration.js';
+import { ART_GENERATION_TIMEOUT_MESSAGE } from './art-generation-deadline.js';
 import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { readFile } from 'node:fs/promises';
@@ -436,6 +438,8 @@ export async function completeCompanionArt(jobId: string, output: CharacterArtPa
     if (job.status === 'completed' || job.status === 'stale')
       return { companion_id: job.wardrobe_id, status: job.status };
     if (job.status !== 'running') throw new AppError(409, 'Pedido não está em processamento.');
+    if (new Date(job.deadline_at).getTime() <= Date.now())
+      throw new AppError(409, ART_GENERATION_TIMEOUT_MESSAGE);
     const wardrobe = (
       await db.query('SELECT * FROM companion_wardrobes WHERE id=$1 FOR UPDATE', [job.wardrobe_id])
     ).rows[0];
@@ -619,6 +623,7 @@ export function companionEquipmentRouter() {
       userId = res.locals.user.id;
     const jobs = await transaction(async (db) => {
       await lockOwner(db, userId, characterId);
+      await expireArtJobs(db, userId);
       return (
         await db.query(
           'SELECT id,status,wardrobe_id AS companion_id,kind,equipment_revision,error,created_at,completed_at FROM companion_art_jobs WHERE character_id=$1 AND user_id=$2 ORDER BY created_at DESC LIMIT 30',

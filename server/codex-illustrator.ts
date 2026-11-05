@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process';
+import { artGenerationTimeLeft, ArtGenerationDeadlineError } from './art-generation-deadline.js';
 import { resolveCodexCommand } from './codex-command.js';
 import { existsSync } from 'node:fs';
 import { mkdir, readFile, writeFile, realpath, unlink, readdir, stat } from 'node:fs/promises';
@@ -50,6 +51,9 @@ export function imageGenerationFailure(error: string) {
 }
 
 export async function runCodex(args: string[], prompt?: string, timeout = 15 * 60_000) {
+  const remaining = artGenerationTimeLeft();
+  const deadlineLimited = remaining <= timeout;
+  timeout = Math.min(timeout, remaining);
   // Invoke executable or Node entry point directly. Never pass prompts through a shell.
   const { command, prefix } = resolveCodexCommand();
   const env = { ...process.env };
@@ -70,9 +74,15 @@ export async function runCodex(args: string[], prompt?: string, timeout = 15 * 6
     let threadId: string | undefined;
     let failureCode = 'cli_exit';
     const timer = setTimeout(() => {
-      child.kill();
+      // A Node launcher on Windows can own the actual CLI process. Stop its
+      // tree as well, so a timed-out render cannot keep consuming the worker.
+      if (process.platform === 'win32' && child.pid) {
+        const killer = spawn('taskkill.exe', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' });
+        killer.on('error', () => child.kill());
+      } else child.kill();
       reject(
-        new IllustratorError('timeout', 'O ilustrador demorou além do limite. Tente novamente.'),
+        deadlineLimited ? new ArtGenerationDeadlineError()
+          : new IllustratorError('timeout', 'O ilustrador demorou além do limite. Tente novamente.'),
       );
     }, timeout);
     child.stdout.on('data', (chunk) => {

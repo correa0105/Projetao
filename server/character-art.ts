@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import { sendImagePreview } from './image-preview.js';
+import { expireArtJobs } from './art-job-expiration.js';
+import { ART_GENERATION_TIMEOUT_MESSAGE } from './art-generation-deadline.js';
 import {freeCharacterSlot} from './character-slot-rolls.js';
 import { grantCharacterStartingGold } from './character-starting-gold.js';
 import type { CharacterArtPair } from './character-token-illustrator.js';
@@ -409,6 +411,8 @@ export async function completeArt(jobId: string, output: { portrait: Buffer; tok
       await client.query('UPDATE character_art_jobs SET approved_portrait=$2 WHERE id=$1',[jobId,image]);
       return characterId as string|null;
     }
+    if (new Date(job.deadline_at).getTime() <= Date.now())
+      throw new AppError(409, ART_GENERATION_TIMEOUT_MESSAGE);
     if (job.replacement_revision != null) {
       const character = (
         await client.query(
@@ -560,7 +564,7 @@ export function characterArtRouter() {
       if (!job) throw new AppError(404, 'Criação não encontrada.');
       if((await client.query('SELECT 1 FROM character_art_archives WHERE job_id=$1 AND user_id=$2',[id,user])).rowCount)throw new AppError(409,'Esta criação foi removida dos salvos.');
       if (job.status !== 'failed') return { id: job.id, status: job.status };
-      if (!job.creation || (job.character_id && (!job.recoverable || replacement)))
+      if ((!job.creation && !job.character_id) || (job.character_id && (!job.recoverable || replacement)))
         throw new AppError(409, 'Este pedido não é uma criação pendente.');
       if (job.character_id) {
         const existing = await client.query(
@@ -590,7 +594,7 @@ export function characterArtRouter() {
       );
       if (!job.character_id && Number(count.total) >= await characterCapacity(client, user))
         throw new AppError(409, 'Limite de personagens atingido. Sua criação continua salva.');
-      characterSchema.parse(replacement?.creation || job.creation);
+      if (replacement?.creation || job.creation) characterSchema.parse(replacement?.creation || job.creation);
       const retrySlot=!job.character_id ? await freeCharacterSlot(client,user,replacement?.creation?.creation_slot??job.creation_slot??undefined,id,Boolean(replacement||job.creation.creation_slot)) : null;
       if(retrySlot && !replacement && job.roll_generation && retrySlot.generation!==job.roll_generation)throw new AppError(409,'Este pedido pertence a uma criação anterior do slot. Retome o preenchimento.');
       if(replacement?.creation && retrySlot)replacement.creation.creation_slot=retrySlot.slot;
@@ -598,7 +602,7 @@ export function characterArtRouter() {
         ? 'construction'
         : 'reference';
       await client.query(
-        "UPDATE character_art_jobs SET status='queued',error=NULL,last_error_code=NULL,next_attempt_at=now(),started_at=NULL,completed_at=NULL,reference=CASE WHEN $3::jsonb IS NULL THEN CASE WHEN $4='construction' AND reference_mode='reference' AND character_id IS NULL THEN NULL ELSE reference END ELSE $2::bytea END,creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END,reference_mode=$4,creation_slot=COALESCE($5,creation_slot),roll_generation=COALESCE($6,roll_generation) WHERE id=$1",
+        "UPDATE character_art_jobs SET status='queued',error=NULL,last_error_code=NULL,next_attempt_at=now(),deadline_at=now()+interval '5 minutes',started_at=NULL,completed_at=NULL,reference=CASE WHEN $3::jsonb IS NULL THEN CASE WHEN $4='construction' AND reference_mode='reference' AND character_id IS NULL THEN NULL ELSE reference END ELSE $2::bytea END,creation=COALESCE($3::jsonb,creation),approved_portrait=CASE WHEN $3::jsonb IS NULL THEN approved_portrait ELSE NULL END,reference_mode=$4,creation_slot=COALESCE($5,creation_slot),roll_generation=COALESCE($6,roll_generation) WHERE id=$1",
         [id, reference, replacement ? JSON.stringify(replacement.creation) : null, retryMode,retrySlot?.slot??null,retrySlot?.generation??null],
       );
       return { id, status: 'queued' };
@@ -658,6 +662,7 @@ export function characterArtRouter() {
     res.json({ ok: true });
   });
   router.get('/character-art', async (_req, res) => {
+    await expireArtJobs(pool, res.locals.user.id);
     const reviews = (
       await pool.query(
         `SELECT j.id,j.character_id,c.name,c.portrait_revision AS current_revision,
@@ -677,7 +682,7 @@ export function characterArtRouter() {
     );
     const { rows: jobs } = await pool.query(
       `SELECT j.id,j.character_id,j.creation_slot,j.status,j.error,j.created_at,j.retry_count,j.next_attempt_at,
-      (j.status='failed' AND j.creation IS NOT NULL AND (j.reference IS NOT NULL OR j.approved_portrait IS NOT NULL)) AS can_retry,
+      (j.status='failed' AND (j.creation IS NOT NULL OR (j.character_id IS NOT NULL AND j.last_error_code='generation_deadline' AND j.approved_portrait IS NOT NULL)) AND (j.reference IS NOT NULL OR j.approved_portrait IS NOT NULL)) AS can_retry,
       j.creation AS saved_creation,
       COALESCE(c.name,j.creation->>'name') AS name FROM character_art_jobs j
       LEFT JOIN characters c ON c.id=j.character_id WHERE j.user_id=$1 AND (j.character_id IS NULL OR c.deleted_at IS NULL)
