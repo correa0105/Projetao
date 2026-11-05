@@ -1,0 +1,761 @@
+{
+  "version": "20261105",
+  "jobs": [
+    {
+      "id": "dragon-scale-mail",
+      "parent": "dragon-scale-mail",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one protective armor coat made of many separate overlapping dark metal scales on a flexible charcoal foundation; each actual small scale is articulated and separately joined. DRAGON SCALE craftsmanship: weathered bronze dragon scales with dark copper hooked clasps and pointed crested scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail--head",
+      "parent": "dragon-scale-mail",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: weathered bronze dragon scales with dark copper hooked clasps and pointed crested scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail--shoulders",
+      "parent": "dragon-scale-mail",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: weathered bronze dragon scales with dark copper hooked clasps and pointed crested scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail--bracers",
+      "parent": "dragon-scale-mail",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: weathered bronze dragon scales with dark copper hooked clasps and pointed crested scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail--legs",
+      "parent": "dragon-scale-mail",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: weathered bronze dragon scales with dark copper hooked clasps and pointed crested scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail--feet",
+      "parent": "dragon-scale-mail",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: weathered bronze dragon scales with dark copper hooked clasps and pointed crested scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-black",
+      "parent": "dragon-scale-mail-black",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one protective armor coat made of many separate overlapping dark metal scales on a flexible charcoal foundation; each actual small scale is articulated and separately joined. DRAGON SCALE craftsmanship: black obsidian scales with dark copper claw clasps, compact angular scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-black--head",
+      "parent": "dragon-scale-mail-black",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: black obsidian scales with dark copper claw clasps, compact angular scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-black--shoulders",
+      "parent": "dragon-scale-mail-black",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: black obsidian scales with dark copper claw clasps, compact angular scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-black--bracers",
+      "parent": "dragon-scale-mail-black",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: black obsidian scales with dark copper claw clasps, compact angular scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-black--legs",
+      "parent": "dragon-scale-mail-black",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: black obsidian scales with dark copper claw clasps, compact angular scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-black--feet",
+      "parent": "dragon-scale-mail-black",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: black obsidian scales with dark copper claw clasps, compact angular scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-blue",
+      "parent": "dragon-scale-mail-blue",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one protective armor coat made of many separate overlapping dark metal scales on a flexible charcoal foundation; each actual small scale is articulated and separately joined. DRAGON SCALE craftsmanship: cobalt blue scales with warm brass clasp roots and angular ridged scale edges. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-blue--head",
+      "parent": "dragon-scale-mail-blue",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: cobalt blue scales with warm brass clasp roots and angular ridged scale edges. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-blue--shoulders",
+      "parent": "dragon-scale-mail-blue",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: cobalt blue scales with warm brass clasp roots and angular ridged scale edges. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-blue--bracers",
+      "parent": "dragon-scale-mail-blue",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: cobalt blue scales with warm brass clasp roots and angular ridged scale edges. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-blue--legs",
+      "parent": "dragon-scale-mail-blue",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: cobalt blue scales with warm brass clasp roots and angular ridged scale edges. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-blue--feet",
+      "parent": "dragon-scale-mail-blue",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: cobalt blue scales with warm brass clasp roots and angular ridged scale edges. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-brass",
+      "parent": "dragon-scale-mail-brass",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one protective armor coat made of many separate overlapping dark metal scales on a flexible charcoal foundation; each actual small scale is articulated and separately joined. DRAGON SCALE craftsmanship: dull brass dragon scales with bronze horn-shaped toggles and rounded scalloped scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-brass--head",
+      "parent": "dragon-scale-mail-brass",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: dull brass dragon scales with bronze horn-shaped toggles and rounded scalloped scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-brass--shoulders",
+      "parent": "dragon-scale-mail-brass",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: dull brass dragon scales with bronze horn-shaped toggles and rounded scalloped scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-brass--bracers",
+      "parent": "dragon-scale-mail-brass",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: dull brass dragon scales with bronze horn-shaped toggles and rounded scalloped scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-brass--legs",
+      "parent": "dragon-scale-mail-brass",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: dull brass dragon scales with bronze horn-shaped toggles and rounded scalloped scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-brass--feet",
+      "parent": "dragon-scale-mail-brass",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: dull brass dragon scales with bronze horn-shaped toggles and rounded scalloped scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-copper",
+      "parent": "dragon-scale-mail-copper",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one protective armor coat made of many separate overlapping dark metal scales on a flexible charcoal foundation; each actual small scale is articulated and separately joined. DRAGON SCALE craftsmanship: burnished copper dragon scales with dark bronze curled horn clasps and narrow overlapping scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-copper--head",
+      "parent": "dragon-scale-mail-copper",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: burnished copper dragon scales with dark bronze curled horn clasps and narrow overlapping scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-copper--shoulders",
+      "parent": "dragon-scale-mail-copper",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: burnished copper dragon scales with dark bronze curled horn clasps and narrow overlapping scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-copper--bracers",
+      "parent": "dragon-scale-mail-copper",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: burnished copper dragon scales with dark bronze curled horn clasps and narrow overlapping scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-copper--legs",
+      "parent": "dragon-scale-mail-copper",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: burnished copper dragon scales with dark bronze curled horn clasps and narrow overlapping scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-copper--feet",
+      "parent": "dragon-scale-mail-copper",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: burnished copper dragon scales with dark bronze curled horn clasps and narrow overlapping scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-gold",
+      "parent": "dragon-scale-mail-gold",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one protective armor coat made of many separate overlapping dark metal scales on a flexible charcoal foundation; each actual small scale is articulated and separately joined. DRAGON SCALE craftsmanship: muted antique gold dragon scales with pale ivory horn toggle clasps and long tapered scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-gold--head",
+      "parent": "dragon-scale-mail-gold",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: muted antique gold dragon scales with pale ivory horn toggle clasps and long tapered scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-gold--shoulders",
+      "parent": "dragon-scale-mail-gold",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: muted antique gold dragon scales with pale ivory horn toggle clasps and long tapered scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-gold--bracers",
+      "parent": "dragon-scale-mail-gold",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: muted antique gold dragon scales with pale ivory horn toggle clasps and long tapered scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-gold--legs",
+      "parent": "dragon-scale-mail-gold",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: muted antique gold dragon scales with pale ivory horn toggle clasps and long tapered scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-gold--feet",
+      "parent": "dragon-scale-mail-gold",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: muted antique gold dragon scales with pale ivory horn toggle clasps and long tapered scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-green",
+      "parent": "dragon-scale-mail-green",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one protective armor coat made of many separate overlapping dark metal scales on a flexible charcoal foundation; each actual small scale is articulated and separately joined. DRAGON SCALE craftsmanship: deep forest green dragon scales with dark bronze claw clasps and narrow leaf-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-green--head",
+      "parent": "dragon-scale-mail-green",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: deep forest green dragon scales with dark bronze claw clasps and narrow leaf-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-green--shoulders",
+      "parent": "dragon-scale-mail-green",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: deep forest green dragon scales with dark bronze claw clasps and narrow leaf-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-green--bracers",
+      "parent": "dragon-scale-mail-green",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: deep forest green dragon scales with dark bronze claw clasps and narrow leaf-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-green--legs",
+      "parent": "dragon-scale-mail-green",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: deep forest green dragon scales with dark bronze claw clasps and narrow leaf-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-green--feet",
+      "parent": "dragon-scale-mail-green",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: deep forest green dragon scales with dark bronze claw clasps and narrow leaf-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-red",
+      "parent": "dragon-scale-mail-red",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one protective armor coat made of many separate overlapping dark metal scales on a flexible charcoal foundation; each actual small scale is articulated and separately joined. DRAGON SCALE craftsmanship: dark crimson dragon scales with blackened iron claw clasps and broad sharply ridged scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-red--head",
+      "parent": "dragon-scale-mail-red",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: dark crimson dragon scales with blackened iron claw clasps and broad sharply ridged scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-red--shoulders",
+      "parent": "dragon-scale-mail-red",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: dark crimson dragon scales with blackened iron claw clasps and broad sharply ridged scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-red--bracers",
+      "parent": "dragon-scale-mail-red",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: dark crimson dragon scales with blackened iron claw clasps and broad sharply ridged scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-red--legs",
+      "parent": "dragon-scale-mail-red",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: dark crimson dragon scales with blackened iron claw clasps and broad sharply ridged scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-red--feet",
+      "parent": "dragon-scale-mail-red",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: dark crimson dragon scales with blackened iron claw clasps and broad sharply ridged scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-silver",
+      "parent": "dragon-scale-mail-silver",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one protective armor coat made of many separate overlapping dark metal scales on a flexible charcoal foundation; each actual small scale is articulated and separately joined. DRAGON SCALE craftsmanship: pale silver dragon scales with blue gray leather bindings, fine silver hooked clasps and slender pointed scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-silver--head",
+      "parent": "dragon-scale-mail-silver",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: pale silver dragon scales with blue gray leather bindings, fine silver hooked clasps and slender pointed scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-silver--shoulders",
+      "parent": "dragon-scale-mail-silver",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: pale silver dragon scales with blue gray leather bindings, fine silver hooked clasps and slender pointed scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-silver--bracers",
+      "parent": "dragon-scale-mail-silver",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: pale silver dragon scales with blue gray leather bindings, fine silver hooked clasps and slender pointed scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-silver--legs",
+      "parent": "dragon-scale-mail-silver",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: pale silver dragon scales with blue gray leather bindings, fine silver hooked clasps and slender pointed scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-silver--feet",
+      "parent": "dragon-scale-mail-silver",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: pale silver dragon scales with blue gray leather bindings, fine silver hooked clasps and slender pointed scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-white",
+      "parent": "dragon-scale-mail-white",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one protective armor coat made of many separate overlapping dark metal scales on a flexible charcoal foundation; each actual small scale is articulated and separately joined. DRAGON SCALE craftsmanship: ivory-white dragon scales with slate leather bindings, dull silver hooked clasps and compact frost-crystal-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-white--head",
+      "parent": "dragon-scale-mail-white",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: ivory-white dragon scales with slate leather bindings, dull silver hooked clasps and compact frost-crystal-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-white--shoulders",
+      "parent": "dragon-scale-mail-white",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: ivory-white dragon scales with slate leather bindings, dull silver hooked clasps and compact frost-crystal-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-white--bracers",
+      "parent": "dragon-scale-mail-white",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: ivory-white dragon scales with slate leather bindings, dull silver hooked clasps and compact frost-crystal-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-white--legs",
+      "parent": "dragon-scale-mail-white",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: ivory-white dragon scales with slate leather bindings, dull silver hooked clasps and compact frost-crystal-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dragon-scale-mail-white--feet",
+      "parent": "dragon-scale-mail-white",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: separate overlapping dark metal scales riveted onto a flexible charcoal foundation. DRAGON SCALE craftsmanship: ivory-white dragon scales with slate leather bindings, dull silver hooked clasps and compact frost-crystal-shaped physical scale tips. Genuine distinct overlapping dragon scales sewn on dark leather backing, not metal plate armor. Small practical horn or claw-shaped structural clasps. No actual dragon, head, wings, limbs, bones, floating scales, aura, particles or painted reptile pattern. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate",
+      "parent": "dwarven-plate",
+      "family": "Dwarven Plate",
+      "model": "plate-armor",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one dark iron PLATE TORSO HARNESS with sculpted articulated chest/back plates, flexible charcoal leather joins and a short articulated protective hip skirt; no limbs or detached accessories. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate--head",
+      "parent": "dwarven-plate",
+      "family": "Dwarven Plate",
+      "model": "plate-armor",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: sculpted articulated dark iron plates with real charcoal leather joint gaps. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate--shoulders",
+      "parent": "dwarven-plate",
+      "family": "Dwarven Plate",
+      "model": "plate-armor",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: sculpted articulated dark iron plates with real charcoal leather joint gaps. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate--bracers",
+      "parent": "dwarven-plate",
+      "family": "Dwarven Plate",
+      "model": "plate-armor",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: sculpted articulated dark iron plates with real charcoal leather joint gaps. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate--legs",
+      "parent": "dwarven-plate",
+      "family": "Dwarven Plate",
+      "model": "plate-armor",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: sculpted articulated dark iron plates with real charcoal leather joint gaps. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate--feet",
+      "parent": "dwarven-plate",
+      "family": "Dwarven Plate",
+      "model": "plate-armor",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: sculpted articulated dark iron plates with real charcoal leather joint gaps. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate-half-plate-armor",
+      "parent": "dwarven-plate-half-plate-armor",
+      "family": "Dwarven Plate",
+      "model": "half-plate-armor",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one compact HALF-PLATE torso harness: dark iron chest plates, SMALL shoulder guards and SHORT separated hip tassets with LARGE visible charcoal leather/quilted gaps at ribs and joints; partial coverage and a short silhouette. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate-half-plate-armor--head",
+      "parent": "dwarven-plate-half-plate-armor",
+      "family": "Dwarven Plate",
+      "model": "half-plate-armor",
+      "slot": "head",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: partial dark iron plates with large flexible charcoal leather or quilted gaps between all protective sections. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate-half-plate-armor--shoulders",
+      "parent": "dwarven-plate-half-plate-armor",
+      "family": "Dwarven Plate",
+      "model": "half-plate-armor",
+      "slot": "shoulders",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: partial dark iron plates with large flexible charcoal leather or quilted gaps between all protective sections. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate-half-plate-armor--bracers",
+      "parent": "dwarven-plate-half-plate-armor",
+      "family": "Dwarven Plate",
+      "model": "half-plate-armor",
+      "slot": "bracers",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: partial dark iron plates with large flexible charcoal leather or quilted gaps between all protective sections. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate-half-plate-armor--legs",
+      "parent": "dwarven-plate-half-plate-armor",
+      "family": "Dwarven Plate",
+      "model": "half-plate-armor",
+      "slot": "legs",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: partial dark iron plates with large flexible charcoal leather or quilted gaps between all protective sections. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "dwarven-plate-half-plate-armor--feet",
+      "parent": "dwarven-plate-half-plate-armor",
+      "family": "Dwarven Plate",
+      "model": "half-plate-armor",
+      "slot": "feet",
+      "legacy_owned_piece": true,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: partial dark iron plates with large flexible charcoal leather or quilted gaps between all protective sections. DWARVEN forge craftsmanship: very sturdy dark iron broad solid forged plates, raised stepped angular copper edge ribs, thick square bronze riveted hinge blocks and small inset dull amber clasp pins. Deliberate broad geometric construction, functional articulated joints, dark leather underlayers. No runic lettering, printed ornaments, scales or chainmail. Plate chest must be broad solid continuous surfaces; half plate preserves visible flexible leather joints. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain",
+      "parent": "elven-chain",
+      "family": "Elven Chain",
+      "model": "chain-mail",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one LONG-SLEEVED KNEE-LENGTH hauberk of actual fine dark interlocking metal links, flexible mesh and a split mail skirt. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain--head",
+      "parent": "elven-chain",
+      "family": "Elven Chain",
+      "model": "chain-mail",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: fine physically woven dark metal wire links with flexible mesh and protective dark leather bindings. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain--shoulders",
+      "parent": "elven-chain",
+      "family": "Elven Chain",
+      "model": "chain-mail",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: fine physically woven dark metal wire links with flexible mesh and protective dark leather bindings. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain--bracers",
+      "parent": "elven-chain",
+      "family": "Elven Chain",
+      "model": "chain-mail",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: fine physically woven dark metal wire links with flexible mesh and protective dark leather bindings. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain--legs",
+      "parent": "elven-chain",
+      "family": "Elven Chain",
+      "model": "chain-mail",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: fine physically woven dark metal wire links with flexible mesh and protective dark leather bindings. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain--feet",
+      "parent": "elven-chain",
+      "family": "Elven Chain",
+      "model": "chain-mail",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: fine physically woven dark metal wire links with flexible mesh and protective dark leather bindings. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain-chain-shirt",
+      "parent": "elven-chain-chain-shirt",
+      "family": "Elven Chain",
+      "model": "chain-shirt",
+      "slot": "armor",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one SHORT-SLEEVED HIP-LENGTH chain shirt of actual fine dark interlocking metal wire links, flexible linked mesh and short hem. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the empty torso garment/harness, no detached accessories or full suit. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain-chain-shirt--head",
+      "parent": "elven-chain-chain-shirt",
+      "family": "Elven Chain",
+      "model": "chain-shirt",
+      "slot": "head",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one EMPTY open-face protective head covering made from this EXACT material and construction: fine physically woven dark metal wire links, flexible linked mesh and narrow leather bindings. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain-chain-shirt--shoulders",
+      "parent": "elven-chain-chain-shirt",
+      "family": "Elven Chain",
+      "model": "chain-shirt",
+      "slot": "shoulders",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of detached shoulder guards made from this EXACT material and construction: fine physically woven dark metal wire links, flexible linked mesh and narrow leather bindings. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain-chain-shirt--bracers",
+      "parent": "elven-chain-chain-shirt",
+      "family": "Elven Chain",
+      "model": "chain-shirt",
+      "slot": "bracers",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched pair of hollow forearm VAMBRACES ending cleanly at EMPTY OPEN WRIST CUFFS; no gauntlets, gloves, fingers, thumbs or hand-shaped parts made from this EXACT material and construction: fine physically woven dark metal wire links, flexible linked mesh and narrow leather bindings. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain-chain-shirt--legs",
+      "parent": "elven-chain-chain-shirt",
+      "family": "Elven Chain",
+      "model": "chain-shirt",
+      "slot": "legs",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one empty full-length pair of protective trousers/leg armor with coverage continuously to both ankles, no attached feet made from this EXACT material and construction: fine physically woven dark metal wire links, flexible linked mesh and narrow leather bindings. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    },
+    {
+      "id": "elven-chain-chain-shirt--feet",
+      "parent": "elven-chain-chain-shirt",
+      "family": "Elven Chain",
+      "model": "chain-shirt",
+      "slot": "feet",
+      "legacy_owned_piece": false,
+      "prompt": "Use case: stylized-concept. Draw one matched left/right pair of protective boots with functional leather soles, no attached legs made from this EXACT material and construction: fine physically woven dark metal wire links, flexible linked mesh and narrow leather bindings. ELVEN chain craftsmanship: exceptionally fine physically interwoven pale silver metal wire rings, delicate tapered leaf-shaped silver edge clasps with opaque small moonstone pins, narrow blue-gray leather binding and graceful curved tailoring. Mesh remains dominant and visibly made from linked rings; no solid metal chest plate, no large rings sewn on cloth, no scales, printed leaves, symbols or glow. Only the requested detached piece or matching left/right pair. Headgear ends at neck with no torso or shoulders. Forearms stop at empty open wrist cuffs with no hands fingers or gloves. Legs cover upper thighs continuously to both ankles with no attached feet. Boots are separate matched left/right pair with soles and no attached legs. Semirealistic dimensional painted medieval fantasy RPG inventory art, one front three-quarter view, soft upper-left light, fully visible with generous margins, true transparent alpha outside opaque objects. No person mannequin stand floor cast shadow halo haze background text watermark. Theme must be built into actual tailoring, edges, joints and hardware. Preserve exact physical armor material."
+    }
+  ]
+}

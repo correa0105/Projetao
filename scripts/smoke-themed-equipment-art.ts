@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { chromium, expect } from '@playwright/test';
+import { withdrawnBookOffer, withdrawnWeaponOffer } from '../shared/shop-availability.js';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname)) throw Error('Banco descartável obrigatório.');
 const origin='http://localhost:3027';
 process.env.APP_ORIGIN=process.env.BETTER_AUTH_URL=origin;
@@ -30,8 +31,13 @@ try {
  const registry=JSON.parse(await readFile('data/thematic-equipment-art-20261102.json','utf8'));
  const requestedIds=process.env.THEMATIC_ART_QA_IDS?.split(',');
  const ids=registry.assets.filter((asset:any)=>!asset.id.includes('--')&&(!requestedIds||requestedIds.includes(asset.id))).map((asset:any)=>asset.id);
- const samples=(await pool.query("SELECT id,name,image_path,raw_data->>'base_item' AS model,raw_data->>'magic_family' AS family,raw_data->'armor_bundle_pieces' AS pieces FROM catalog_items WHERE active AND id=ANY($1::text[]) ORDER BY id",[ids])).rows;
- expect(samples.length).toBe(ids.length);
+ const rows=(await pool.query("SELECT id,name,image_path,active,source,raw_data,raw_data->>'base_item' AS model,raw_data->>'magic_family' AS family,raw_data->'armor_bundle_pieces' AS pieces FROM catalog_items WHERE id=ANY($1::text[]) ORDER BY id",[ids])).rows;
+ expect(rows.map((sample:any)=>sample.id).sort(), 'Todos os modelos aprovados devem permanecer no catálogo').toEqual([...ids].sort());
+ for(const row of rows.filter((sample:any)=>!sample.active)){
+  expect(withdrawnBookOffer(row)||withdrawnWeaponOffer(row)||row.family==='Drow Weapon', 'Oferta retirada por regra vigente: '+row.id).toBe(true);
+  expect(row.image_path).toBe(registry.assets.find((asset:any)=>asset.id===row.id).path);
+ }
+ const samples=rows.filter((sample:any)=>sample.active);
  for(const asset of registry.assets){const response=await context.request.get(origin+asset.path);expect(response.ok()).toBe(true);expect(response.headers()['content-type']).toContain('image/webp');}
  for(const width of (process.env.THEMATIC_ART_QA_WIDTHS||'1440,390').split(',').map(Number)){
   await page.setViewportSize({width,height:1000});await page.goto(origin+'/#shop');
@@ -42,6 +48,9 @@ try {
    const card=page.locator('.shop-product[data-family="'+family+'"],.shop-product[data-item-id="'+id+'"]').first();await expect(card).toBeVisible();
    const selector=card.getByRole('combobox',{name:/^Tipo de (armadura|arma) de/});
    if(await selector.count())await selector.selectOption(model);
+   for(const variantSelector of await card.getByRole('combobox').all()){
+    if(await variantSelector.locator('option').evaluateAll((options,wanted)=>options.some(option=>(option as HTMLOptionElement).value===wanted),id))await variantSelector.selectOption(id);
+   }
    await expect(card).toHaveAttribute('data-item-id',id);
    const familyImage=card.locator('img.shop-family-object');
    const img=await familyImage.count()?familyImage:card.locator('img').first();

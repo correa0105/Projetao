@@ -2,11 +2,11 @@
   "policy_version": 2,
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
-    "physical_artworks": 4140,
-    "approved_artworks": 1064,
-    "pending_artworks": 3076,
-    "catalog_references": 4295,
-    "approved_references": 1064,
+    "physical_artworks": 4152,
+    "approved_artworks": 1352,
+    "pending_artworks": 2800,
+    "catalog_references": 4307,
+    "approved_references": 1352,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -7975,7 +7975,7 @@
     },
     {
       "family": "Dragon Scale Mail",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "dragon-scale-mail",
@@ -7989,8 +7989,15 @@
             "dragon-scale-mail--legs",
             "dragon-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-scale-mail",
+            "dragon-scale-mail--head",
+            "dragon-scale-mail--shoulders",
+            "dragon-scale-mail--bracers",
+            "dragon-scale-mail--legs",
+            "dragon-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-scale-mail-black",
@@ -8004,8 +8011,15 @@
             "dragon-scale-mail-black--legs",
             "dragon-scale-mail-black--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-scale-mail-black",
+            "dragon-scale-mail-black--head",
+            "dragon-scale-mail-black--shoulders",
+            "dragon-scale-mail-black--bracers",
+            "dragon-scale-mail-black--legs",
+            "dragon-scale-mail-black--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-scale-mail-blue",
@@ -8019,8 +8033,15 @@
             "dragon-scale-mail-blue--legs",
             "dragon-scale-mail-blue--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-scale-mail-blue",
+            "dragon-scale-mail-blue--head",
+            "dragon-scale-mail-blue--shoulders",
+            "dragon-scale-mail-blue--bracers",
+            "dragon-scale-mail-blue--legs",
+            "dragon-scale-mail-blue--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-scale-mail-brass",
@@ -8034,8 +8055,15 @@
             "dragon-scale-mail-brass--legs",
             "dragon-scale-mail-brass--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-scale-mail-brass",
+            "dragon-scale-mail-brass--head",
+            "dragon-scale-mail-brass--shoulders",
+            "dragon-scale-mail-brass--bracers",
+            "dragon-scale-mail-brass--legs",
+            "dragon-scale-mail-brass--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-scale-mail-copper",
@@ -8049,8 +8077,15 @@
             "dragon-scale-mail-copper--legs",
             "dragon-scale-mail-copper--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-scale-mail-copper",
+            "dragon-scale-mail-copper--head",
+            "dragon-scale-mail-copper--shoulders",
+            "dragon-scale-mail-copper--bracers",
+            "dragon-scale-mail-copper--legs",
+            "dragon-scale-mail-copper--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-scale-mail-gold",
@@ -8064,8 +8099,15 @@
             "dragon-scale-mail-gold--legs",
             "dragon-scale-mail-gold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-scale-mail-gold",
+            "dragon-scale-mail-gold--head",
+            "dragon-scale-mail-gold--shoulders",
+            "dragon-scale-mail-gold--bracers",
+            "dragon-scale-mail-gold--legs",
+            "dragon-scale-mail-gold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-scale-mail-green",
@@ -8079,8 +8121,15 @@
             "dragon-scale-mail-green--legs",
             "dragon-scale-mail-green--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-scale-mail-green",
+            "dragon-scale-mail-green--head",
+            "dragon-scale-mail-green--shoulders",
+            "dragon-scale-mail-green--bracers",
+            "dragon-scale-mail-green--legs",
+            "dragon-scale-mail-green--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-scale-mail-red",
@@ -8094,8 +8143,15 @@
             "dragon-scale-mail-red--legs",
             "dragon-scale-mail-red--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-scale-mail-red",
+            "dragon-scale-mail-red--head",
+            "dragon-scale-mail-red--shoulders",
+            "dragon-scale-mail-red--bracers",
+            "dragon-scale-mail-red--legs",
+            "dragon-scale-mail-red--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-scale-mail-silver",
@@ -8109,8 +8165,15 @@
             "dragon-scale-mail-silver--legs",
             "dragon-scale-mail-silver--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-scale-mail-silver",
+            "dragon-scale-mail-silver--head",
+            "dragon-scale-mail-silver--shoulders",
+            "dragon-scale-mail-silver--bracers",
+            "dragon-scale-mail-silver--legs",
+            "dragon-scale-mail-silver--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-scale-mail-white",
@@ -8124,8 +8187,15 @@
             "dragon-scale-mail-white--legs",
             "dragon-scale-mail-white--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-scale-mail-white",
+            "dragon-scale-mail-white--head",
+            "dragon-scale-mail-white--shoulders",
+            "dragon-scale-mail-white--bracers",
+            "dragon-scale-mail-white--legs",
+            "dragon-scale-mail-white--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -10251,7 +10321,7 @@
     },
     {
       "family": "Dwarven Plate",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "dwarven-plate",
@@ -10265,8 +10335,15 @@
             "dwarven-plate--legs",
             "dwarven-plate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dwarven-plate",
+            "dwarven-plate--head",
+            "dwarven-plate--shoulders",
+            "dwarven-plate--bracers",
+            "dwarven-plate--legs",
+            "dwarven-plate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "dwarven-plate-half-plate-armor",
@@ -10280,8 +10357,15 @@
             "dwarven-plate-half-plate-armor--legs",
             "dwarven-plate-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dwarven-plate-half-plate-armor",
+            "dwarven-plate-half-plate-armor--head",
+            "dwarven-plate-half-plate-armor--shoulders",
+            "dwarven-plate-half-plate-armor--bracers",
+            "dwarven-plate-half-plate-armor--legs",
+            "dwarven-plate-half-plate-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -10397,7 +10481,7 @@
     },
     {
       "family": "Elven Chain",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "elven-chain",
@@ -10411,8 +10495,15 @@
             "elven-chain--legs",
             "elven-chain--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "elven-chain",
+            "elven-chain--head",
+            "elven-chain--shoulders",
+            "elven-chain--bracers",
+            "elven-chain--legs",
+            "elven-chain--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "elven-chain-chain-shirt",
@@ -10426,8 +10517,15 @@
             "elven-chain-chain-shirt--legs",
             "elven-chain-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "elven-chain-chain-shirt",
+            "elven-chain-chain-shirt--head",
+            "elven-chain-chain-shirt--shoulders",
+            "elven-chain-chain-shirt--bracers",
+            "elven-chain-chain-shirt--legs",
+            "elven-chain-chain-shirt--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -19471,7 +19569,7 @@
     },
     {
       "family": "Living Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "living-breastplate",
@@ -19485,8 +19583,15 @@
             "living-breastplate--legs",
             "living-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-breastplate",
+            "living-breastplate--head",
+            "living-breastplate--shoulders",
+            "living-breastplate--bracers",
+            "living-breastplate--legs",
+            "living-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-chain-mail",
@@ -19500,8 +19605,15 @@
             "living-chain-mail--legs",
             "living-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-chain-mail",
+            "living-chain-mail--head",
+            "living-chain-mail--shoulders",
+            "living-chain-mail--bracers",
+            "living-chain-mail--legs",
+            "living-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-chain-shirt",
@@ -19515,8 +19627,15 @@
             "living-chain-shirt--legs",
             "living-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-chain-shirt",
+            "living-chain-shirt--head",
+            "living-chain-shirt--shoulders",
+            "living-chain-shirt--bracers",
+            "living-chain-shirt--legs",
+            "living-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-half-plate-armor",
@@ -19530,8 +19649,15 @@
             "living-half-plate-armor--legs",
             "living-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-half-plate-armor",
+            "living-half-plate-armor--head",
+            "living-half-plate-armor--shoulders",
+            "living-half-plate-armor--bracers",
+            "living-half-plate-armor--legs",
+            "living-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-hide-armor",
@@ -19545,8 +19671,15 @@
             "living-hide-armor--legs",
             "living-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-hide-armor",
+            "living-hide-armor--head",
+            "living-hide-armor--shoulders",
+            "living-hide-armor--bracers",
+            "living-hide-armor--legs",
+            "living-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-leather-armor",
@@ -19560,8 +19693,15 @@
             "living-leather-armor--legs",
             "living-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-leather-armor",
+            "living-leather-armor--head",
+            "living-leather-armor--shoulders",
+            "living-leather-armor--bracers",
+            "living-leather-armor--legs",
+            "living-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-padded-armor",
@@ -19575,8 +19715,15 @@
             "living-padded-armor--legs",
             "living-padded-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-padded-armor",
+            "living-padded-armor--head",
+            "living-padded-armor--shoulders",
+            "living-padded-armor--bracers",
+            "living-padded-armor--legs",
+            "living-padded-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-plate-armor",
@@ -19590,8 +19737,15 @@
             "living-plate-armor--legs",
             "living-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-plate-armor",
+            "living-plate-armor--head",
+            "living-plate-armor--shoulders",
+            "living-plate-armor--bracers",
+            "living-plate-armor--legs",
+            "living-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-ring-mail",
@@ -19605,8 +19759,15 @@
             "living-ring-mail--legs",
             "living-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-ring-mail",
+            "living-ring-mail--head",
+            "living-ring-mail--shoulders",
+            "living-ring-mail--bracers",
+            "living-ring-mail--legs",
+            "living-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-scale-mail",
@@ -19620,8 +19781,15 @@
             "living-scale-mail--legs",
             "living-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-scale-mail",
+            "living-scale-mail--head",
+            "living-scale-mail--shoulders",
+            "living-scale-mail--bracers",
+            "living-scale-mail--legs",
+            "living-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-spiked-armor",
@@ -19635,8 +19803,15 @@
             "living-spiked-armor--legs",
             "living-spiked-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-spiked-armor",
+            "living-spiked-armor--head",
+            "living-spiked-armor--shoulders",
+            "living-spiked-armor--bracers",
+            "living-spiked-armor--legs",
+            "living-spiked-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-splint-armor",
@@ -19650,8 +19825,15 @@
             "living-splint-armor--legs",
             "living-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-splint-armor",
+            "living-splint-armor--head",
+            "living-splint-armor--shoulders",
+            "living-splint-armor--bracers",
+            "living-splint-armor--legs",
+            "living-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "living-studded-leather-armor",
@@ -19665,8 +19847,15 @@
             "living-studded-leather-armor--legs",
             "living-studded-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "living-studded-leather-armor",
+            "living-studded-leather-armor--head",
+            "living-studded-leather-armor--shoulders",
+            "living-studded-leather-armor--bracers",
+            "living-studded-leather-armor--legs",
+            "living-studded-leather-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -23150,7 +23339,7 @@
     },
     {
       "family": "Ruidium Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ruidium-breastplate",
@@ -23164,8 +23353,15 @@
             "ruidium-breastplate--legs",
             "ruidium-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-breastplate",
+            "ruidium-breastplate--head",
+            "ruidium-breastplate--shoulders",
+            "ruidium-breastplate--bracers",
+            "ruidium-breastplate--legs",
+            "ruidium-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-chain-mail",
@@ -23179,8 +23375,15 @@
             "ruidium-chain-mail--legs",
             "ruidium-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-chain-mail",
+            "ruidium-chain-mail--head",
+            "ruidium-chain-mail--shoulders",
+            "ruidium-chain-mail--bracers",
+            "ruidium-chain-mail--legs",
+            "ruidium-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-chain-shirt",
@@ -23194,8 +23397,15 @@
             "ruidium-chain-shirt--legs",
             "ruidium-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-chain-shirt",
+            "ruidium-chain-shirt--head",
+            "ruidium-chain-shirt--shoulders",
+            "ruidium-chain-shirt--bracers",
+            "ruidium-chain-shirt--legs",
+            "ruidium-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-half-plate-armor",
@@ -23209,8 +23419,15 @@
             "ruidium-half-plate-armor--legs",
             "ruidium-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-half-plate-armor",
+            "ruidium-half-plate-armor--head",
+            "ruidium-half-plate-armor--shoulders",
+            "ruidium-half-plate-armor--bracers",
+            "ruidium-half-plate-armor--legs",
+            "ruidium-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-plate-armor",
@@ -23224,8 +23441,15 @@
             "ruidium-plate-armor--legs",
             "ruidium-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-plate-armor",
+            "ruidium-plate-armor--head",
+            "ruidium-plate-armor--shoulders",
+            "ruidium-plate-armor--bracers",
+            "ruidium-plate-armor--legs",
+            "ruidium-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-ring-mail",
@@ -23239,8 +23463,15 @@
             "ruidium-ring-mail--legs",
             "ruidium-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-ring-mail",
+            "ruidium-ring-mail--head",
+            "ruidium-ring-mail--shoulders",
+            "ruidium-ring-mail--bracers",
+            "ruidium-ring-mail--legs",
+            "ruidium-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-scale-mail",
@@ -23254,8 +23485,15 @@
             "ruidium-scale-mail--legs",
             "ruidium-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-scale-mail",
+            "ruidium-scale-mail--head",
+            "ruidium-scale-mail--shoulders",
+            "ruidium-scale-mail--bracers",
+            "ruidium-scale-mail--legs",
+            "ruidium-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-spiked-armor",
@@ -23269,8 +23507,15 @@
             "ruidium-spiked-armor--legs",
             "ruidium-spiked-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-spiked-armor",
+            "ruidium-spiked-armor--head",
+            "ruidium-spiked-armor--shoulders",
+            "ruidium-spiked-armor--bracers",
+            "ruidium-spiked-armor--legs",
+            "ruidium-spiked-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-splint-armor",
@@ -23284,8 +23529,15 @@
             "ruidium-splint-armor--legs",
             "ruidium-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-splint-armor",
+            "ruidium-splint-armor--head",
+            "ruidium-splint-armor--shoulders",
+            "ruidium-splint-armor--bracers",
+            "ruidium-splint-armor--legs",
+            "ruidium-splint-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -24869,7 +25121,7 @@
     },
     {
       "family": "Spell-Fueling Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "spell-fueling-breastplate",
@@ -24883,8 +25135,15 @@
             "spell-fueling-breastplate--legs",
             "spell-fueling-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-breastplate",
+            "spell-fueling-breastplate--head",
+            "spell-fueling-breastplate--shoulders",
+            "spell-fueling-breastplate--bracers",
+            "spell-fueling-breastplate--legs",
+            "spell-fueling-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-fueling-chain-mail",
@@ -24898,8 +25157,15 @@
             "spell-fueling-chain-mail--legs",
             "spell-fueling-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-chain-mail",
+            "spell-fueling-chain-mail--head",
+            "spell-fueling-chain-mail--shoulders",
+            "spell-fueling-chain-mail--bracers",
+            "spell-fueling-chain-mail--legs",
+            "spell-fueling-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-fueling-chain-shirt",
@@ -24913,8 +25179,15 @@
             "spell-fueling-chain-shirt--legs",
             "spell-fueling-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-chain-shirt",
+            "spell-fueling-chain-shirt--head",
+            "spell-fueling-chain-shirt--shoulders",
+            "spell-fueling-chain-shirt--bracers",
+            "spell-fueling-chain-shirt--legs",
+            "spell-fueling-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-fueling-half-plate-armor",
@@ -24928,8 +25201,15 @@
             "spell-fueling-half-plate-armor--legs",
             "spell-fueling-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-half-plate-armor",
+            "spell-fueling-half-plate-armor--head",
+            "spell-fueling-half-plate-armor--shoulders",
+            "spell-fueling-half-plate-armor--bracers",
+            "spell-fueling-half-plate-armor--legs",
+            "spell-fueling-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-fueling-hide-armor",
@@ -24943,8 +25223,15 @@
             "spell-fueling-hide-armor--legs",
             "spell-fueling-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-hide-armor",
+            "spell-fueling-hide-armor--head",
+            "spell-fueling-hide-armor--shoulders",
+            "spell-fueling-hide-armor--bracers",
+            "spell-fueling-hide-armor--legs",
+            "spell-fueling-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-fueling-leather-armor",
@@ -24958,8 +25245,15 @@
             "spell-fueling-leather-armor--legs",
             "spell-fueling-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-leather-armor",
+            "spell-fueling-leather-armor--head",
+            "spell-fueling-leather-armor--shoulders",
+            "spell-fueling-leather-armor--bracers",
+            "spell-fueling-leather-armor--legs",
+            "spell-fueling-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-fueling-padded-armor",
@@ -24973,8 +25267,15 @@
             "spell-fueling-padded-armor--legs",
             "spell-fueling-padded-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-padded-armor",
+            "spell-fueling-padded-armor--head",
+            "spell-fueling-padded-armor--shoulders",
+            "spell-fueling-padded-armor--bracers",
+            "spell-fueling-padded-armor--legs",
+            "spell-fueling-padded-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-fueling-plate-armor",
@@ -24988,8 +25289,15 @@
             "spell-fueling-plate-armor--legs",
             "spell-fueling-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-plate-armor",
+            "spell-fueling-plate-armor--head",
+            "spell-fueling-plate-armor--shoulders",
+            "spell-fueling-plate-armor--bracers",
+            "spell-fueling-plate-armor--legs",
+            "spell-fueling-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-fueling-ring-mail",
@@ -25003,8 +25311,15 @@
             "spell-fueling-ring-mail--legs",
             "spell-fueling-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-ring-mail",
+            "spell-fueling-ring-mail--head",
+            "spell-fueling-ring-mail--shoulders",
+            "spell-fueling-ring-mail--bracers",
+            "spell-fueling-ring-mail--legs",
+            "spell-fueling-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-fueling-scale-mail",
@@ -25018,8 +25333,15 @@
             "spell-fueling-scale-mail--legs",
             "spell-fueling-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-scale-mail",
+            "spell-fueling-scale-mail--head",
+            "spell-fueling-scale-mail--shoulders",
+            "spell-fueling-scale-mail--bracers",
+            "spell-fueling-scale-mail--legs",
+            "spell-fueling-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-fueling-splint-armor",
@@ -25033,8 +25355,15 @@
             "spell-fueling-splint-armor--legs",
             "spell-fueling-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-splint-armor",
+            "spell-fueling-splint-armor--head",
+            "spell-fueling-splint-armor--shoulders",
+            "spell-fueling-splint-armor--bracers",
+            "spell-fueling-splint-armor--legs",
+            "spell-fueling-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-fueling-studded-leather-armor",
@@ -25048,8 +25377,15 @@
             "spell-fueling-studded-leather-armor--legs",
             "spell-fueling-studded-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-fueling-studded-leather-armor",
+            "spell-fueling-studded-leather-armor--head",
+            "spell-fueling-studded-leather-armor--shoulders",
+            "spell-fueling-studded-leather-armor--bracers",
+            "spell-fueling-studded-leather-armor--legs",
+            "spell-fueling-studded-leather-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -58747,6 +59083,176 @@
       ]
     },
     {
+      "id": "2a3f2146a2678439",
+      "legacy_path": "/shop/expanded/dragon-scale-mail.webp",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "dragon-scale-mail",
+          "name": "Cota de escamas de dragão (Bronze · Elétrico)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail"
+      ]
+    },
+    {
+      "id": "4906ffa3b364f054",
+      "legacy_path": "/shop/expanded/dragon-scale-mail-black.webp",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "dragon-scale-mail-black",
+          "name": "Cota de escamas de dragão (Negro · Ácido)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-black"
+      ]
+    },
+    {
+      "id": "4e1cb3434eda21a2",
+      "legacy_path": "/shop/expanded/dragon-scale-mail-blue.webp",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "dragon-scale-mail-blue",
+          "name": "Cota de escamas de dragão (Azul · Elétrico)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-blue"
+      ]
+    },
+    {
+      "id": "7348251ef6059294",
+      "legacy_path": "/shop/expanded/dragon-scale-mail-brass.webp",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "dragon-scale-mail-brass",
+          "name": "Cota de escamas de dragão (Latão · Fogo)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-brass"
+      ]
+    },
+    {
+      "id": "0bbf3106be7c2a6f",
+      "legacy_path": "/shop/expanded/dragon-scale-mail-copper.webp",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "dragon-scale-mail-copper",
+          "name": "Cota de escamas de dragão (Cobre · Ácido)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-copper"
+      ]
+    },
+    {
+      "id": "c8d0fdb77a51e6c9",
+      "legacy_path": "/shop/expanded/dragon-scale-mail-gold.webp",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "dragon-scale-mail-gold",
+          "name": "Cota de escamas de dragão (Ouro · Fogo)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-gold"
+      ]
+    },
+    {
+      "id": "b8aa2cf8a0cdaefc",
+      "legacy_path": "/shop/expanded/dragon-scale-mail-green.webp",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "dragon-scale-mail-green",
+          "name": "Cota de escamas de dragão (Verde · Veneno)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-green"
+      ]
+    },
+    {
+      "id": "f47c381a0706cb4d",
+      "legacy_path": "/shop/expanded/dragon-scale-mail-red.webp",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "dragon-scale-mail-red",
+          "name": "Cota de escamas de dragão (Vermelho · Fogo)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-red"
+      ]
+    },
+    {
+      "id": "0e11f5a7048209de",
+      "legacy_path": "/shop/expanded/dragon-scale-mail-silver.webp",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "dragon-scale-mail-silver",
+          "name": "Cota de escamas de dragão (Prata · Frio)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-silver"
+      ]
+    },
+    {
+      "id": "1cf133440dfa7855",
+      "legacy_path": "/shop/expanded/dragon-scale-mail-white.webp",
+      "family": "Dragon Scale Mail",
+      "model": "scale-mail",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "dragon-scale-mail-white",
+          "name": "Cota de escamas de dragão (Branco · Frio)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-white"
+      ]
+    },
+    {
       "id": "c317a7876f6f6539",
       "legacy_path": "/shop/armor-parts-20261012/dragon-scale-mail-black--bracers.webp",
       "family": "Dragon Scale Mail",
@@ -58758,8 +59264,10 @@
           "name": "Cota de escamas de dragão (Negro · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-black--bracers"
+      ]
     },
     {
       "id": "674a38a34f48cabc",
@@ -58773,8 +59281,10 @@
           "name": "Cota de escamas de dragão (Azul · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-blue--bracers"
+      ]
     },
     {
       "id": "3bc64645f4f640d4",
@@ -58788,8 +59298,10 @@
           "name": "Cota de escamas de dragão (Latão · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-brass--bracers"
+      ]
     },
     {
       "id": "13cfdaaf0eef521c",
@@ -58803,8 +59315,10 @@
           "name": "Cota de escamas de dragão (Cobre · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-copper--bracers"
+      ]
     },
     {
       "id": "280a47b3d5d605a8",
@@ -58818,8 +59332,10 @@
           "name": "Cota de escamas de dragão (Ouro · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-gold--bracers"
+      ]
     },
     {
       "id": "236610f3d469961c",
@@ -58833,8 +59349,10 @@
           "name": "Cota de escamas de dragão (Verde · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-green--bracers"
+      ]
     },
     {
       "id": "3ce1df64847ed84e",
@@ -58848,8 +59366,10 @@
           "name": "Cota de escamas de dragão (Vermelho · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-red--bracers"
+      ]
     },
     {
       "id": "418a2420ab94d444",
@@ -58863,8 +59383,10 @@
           "name": "Cota de escamas de dragão (Prata · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-silver--bracers"
+      ]
     },
     {
       "id": "5cac27a67f5db52c",
@@ -58878,8 +59400,10 @@
           "name": "Cota de escamas de dragão (Branco · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-white--bracers"
+      ]
     },
     {
       "id": "fc0c26acf0e3fe1c",
@@ -58893,8 +59417,10 @@
           "name": "Cota de escamas de dragão (Bronze · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail--bracers"
+      ]
     },
     {
       "id": "10be0cdf3cd2b7b3",
@@ -58908,8 +59434,10 @@
           "name": "Cota de escamas de dragão (Negro · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-black--feet"
+      ]
     },
     {
       "id": "d5408df499a992a3",
@@ -58923,8 +59451,10 @@
           "name": "Cota de escamas de dragão (Azul · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-blue--feet"
+      ]
     },
     {
       "id": "c40e61b149d1c455",
@@ -58938,8 +59468,10 @@
           "name": "Cota de escamas de dragão (Latão · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-brass--feet"
+      ]
     },
     {
       "id": "4a270d7a888f04b5",
@@ -58953,8 +59485,10 @@
           "name": "Cota de escamas de dragão (Cobre · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-copper--feet"
+      ]
     },
     {
       "id": "7cb524ff7becbedc",
@@ -58968,8 +59502,10 @@
           "name": "Cota de escamas de dragão (Ouro · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-gold--feet"
+      ]
     },
     {
       "id": "2111180d793ea8cd",
@@ -58983,8 +59519,10 @@
           "name": "Cota de escamas de dragão (Verde · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-green--feet"
+      ]
     },
     {
       "id": "5993ed42c2442e80",
@@ -58998,8 +59536,10 @@
           "name": "Cota de escamas de dragão (Vermelho · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-red--feet"
+      ]
     },
     {
       "id": "a1aed246131b3a86",
@@ -59013,8 +59553,10 @@
           "name": "Cota de escamas de dragão (Prata · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-silver--feet"
+      ]
     },
     {
       "id": "779f906fccd8f9bf",
@@ -59028,8 +59570,10 @@
           "name": "Cota de escamas de dragão (Branco · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-white--feet"
+      ]
     },
     {
       "id": "9e71da7f6a2c3b56",
@@ -59043,8 +59587,10 @@
           "name": "Cota de escamas de dragão (Bronze · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail--feet"
+      ]
     },
     {
       "id": "1782209ecc1de903",
@@ -59058,8 +59604,10 @@
           "name": "Cota de escamas de dragão (Negro · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-black--head"
+      ]
     },
     {
       "id": "257dde753065c80d",
@@ -59073,8 +59621,10 @@
           "name": "Cota de escamas de dragão (Azul · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-blue--head"
+      ]
     },
     {
       "id": "ec1852d52c0835e7",
@@ -59088,8 +59638,10 @@
           "name": "Cota de escamas de dragão (Latão · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-brass--head"
+      ]
     },
     {
       "id": "d33b7681be74e34c",
@@ -59103,8 +59655,10 @@
           "name": "Cota de escamas de dragão (Cobre · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-copper--head"
+      ]
     },
     {
       "id": "dd075425185781e1",
@@ -59118,8 +59672,10 @@
           "name": "Cota de escamas de dragão (Ouro · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-gold--head"
+      ]
     },
     {
       "id": "9f3c2aabb7ae51ed",
@@ -59133,8 +59689,10 @@
           "name": "Cota de escamas de dragão (Verde · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-green--head"
+      ]
     },
     {
       "id": "bb35f872d433db4d",
@@ -59148,8 +59706,10 @@
           "name": "Cota de escamas de dragão (Vermelho · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-red--head"
+      ]
     },
     {
       "id": "98b99249df01eed1",
@@ -59163,8 +59723,10 @@
           "name": "Cota de escamas de dragão (Prata · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-silver--head"
+      ]
     },
     {
       "id": "d914e17986fd3123",
@@ -59178,8 +59740,10 @@
           "name": "Cota de escamas de dragão (Branco · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-white--head"
+      ]
     },
     {
       "id": "065985def6901ba8",
@@ -59193,8 +59757,10 @@
           "name": "Cota de escamas de dragão (Bronze · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail--head"
+      ]
     },
     {
       "id": "b08cdc829731079b",
@@ -59208,8 +59774,10 @@
           "name": "Cota de escamas de dragão (Negro · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-black--legs"
+      ]
     },
     {
       "id": "a936430ad2ac0df5",
@@ -59223,8 +59791,10 @@
           "name": "Cota de escamas de dragão (Azul · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-blue--legs"
+      ]
     },
     {
       "id": "2c5658c8f5f6a63a",
@@ -59238,8 +59808,10 @@
           "name": "Cota de escamas de dragão (Latão · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-brass--legs"
+      ]
     },
     {
       "id": "99ba374480da9f30",
@@ -59253,8 +59825,10 @@
           "name": "Cota de escamas de dragão (Cobre · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-copper--legs"
+      ]
     },
     {
       "id": "8e2913dab4ac0739",
@@ -59268,8 +59842,10 @@
           "name": "Cota de escamas de dragão (Ouro · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-gold--legs"
+      ]
     },
     {
       "id": "8f6c6e400ba99d13",
@@ -59283,8 +59859,10 @@
           "name": "Cota de escamas de dragão (Verde · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-green--legs"
+      ]
     },
     {
       "id": "673f133284ea20a4",
@@ -59298,8 +59876,10 @@
           "name": "Cota de escamas de dragão (Vermelho · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-red--legs"
+      ]
     },
     {
       "id": "6c9f1d5ca207228d",
@@ -59313,8 +59893,10 @@
           "name": "Cota de escamas de dragão (Prata · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-silver--legs"
+      ]
     },
     {
       "id": "be6186c9a4870696",
@@ -59328,8 +59910,10 @@
           "name": "Cota de escamas de dragão (Branco · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-white--legs"
+      ]
     },
     {
       "id": "7c93218587b1f08e",
@@ -59343,8 +59927,10 @@
           "name": "Cota de escamas de dragão (Bronze · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail--legs"
+      ]
     },
     {
       "id": "50e62d817eee6052",
@@ -59358,8 +59944,10 @@
           "name": "Cota de escamas de dragão (Negro · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-black--shoulders"
+      ]
     },
     {
       "id": "e2c9a288ad4b9419",
@@ -59373,8 +59961,10 @@
           "name": "Cota de escamas de dragão (Azul · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-blue--shoulders"
+      ]
     },
     {
       "id": "5524f0e172008d6e",
@@ -59388,8 +59978,10 @@
           "name": "Cota de escamas de dragão (Latão · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-brass--shoulders"
+      ]
     },
     {
       "id": "46706c26df60274f",
@@ -59403,8 +59995,10 @@
           "name": "Cota de escamas de dragão (Cobre · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-copper--shoulders"
+      ]
     },
     {
       "id": "030c3c49cbcadad0",
@@ -59418,8 +60012,10 @@
           "name": "Cota de escamas de dragão (Ouro · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-gold--shoulders"
+      ]
     },
     {
       "id": "2cc5fc956dcb13e4",
@@ -59433,8 +60029,10 @@
           "name": "Cota de escamas de dragão (Verde · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-green--shoulders"
+      ]
     },
     {
       "id": "65422690cbe2c4af",
@@ -59448,8 +60046,10 @@
           "name": "Cota de escamas de dragão (Vermelho · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-red--shoulders"
+      ]
     },
     {
       "id": "df764de3c23cba04",
@@ -59463,8 +60063,10 @@
           "name": "Cota de escamas de dragão (Prata · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-silver--shoulders"
+      ]
     },
     {
       "id": "5c6796485195fa8f",
@@ -59478,8 +60080,10 @@
           "name": "Cota de escamas de dragão (Branco · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail-white--shoulders"
+      ]
     },
     {
       "id": "9bb1c83d269630ff",
@@ -59493,8 +60097,10 @@
           "name": "Cota de escamas de dragão (Bronze · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-scale-mail--shoulders"
+      ]
     },
     {
       "id": "e4d3567cb80bfe0e",
@@ -62598,8 +63204,10 @@
           "name": "Placas anãs (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate-half-plate-armor"
+      ]
     },
     {
       "id": "c385ac48438e8b7b",
@@ -62613,8 +63221,10 @@
           "name": "Placas anãs (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "00f36a2dcd4e6d47",
@@ -62628,8 +63238,10 @@
           "name": "Placas anãs (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate-half-plate-armor--feet"
+      ]
     },
     {
       "id": "1a9750a6b42a5b0e",
@@ -62643,8 +63255,10 @@
           "name": "Placas anãs (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate-half-plate-armor--head"
+      ]
     },
     {
       "id": "8ed24526428b224f",
@@ -62658,8 +63272,10 @@
           "name": "Placas anãs (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate-half-plate-armor--legs"
+      ]
     },
     {
       "id": "c0baf34be3aac31e",
@@ -62673,8 +63289,27 @@
           "name": "Placas anãs (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate-half-plate-armor--shoulders"
+      ]
+    },
+    {
+      "id": "c6cc2782994805d2",
+      "legacy_path": "/shop/expanded/dwarven-plate.webp",
+      "family": "Dwarven Plate",
+      "model": "plate-armor",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "dwarven-plate",
+          "name": "Placas anãs (Armadura de placas)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate"
+      ]
     },
     {
       "id": "f7f4cead376b66ec",
@@ -62688,8 +63323,10 @@
           "name": "Placas anãs (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate--bracers"
+      ]
     },
     {
       "id": "88a86a762312ceab",
@@ -62703,8 +63340,10 @@
           "name": "Placas anãs (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate--feet"
+      ]
     },
     {
       "id": "3df6bf81518c5b59",
@@ -62718,8 +63357,10 @@
           "name": "Placas anãs (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate--head"
+      ]
     },
     {
       "id": "e582995993cb9da3",
@@ -62733,8 +63374,10 @@
           "name": "Placas anãs (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate--legs"
+      ]
     },
     {
       "id": "bfc011f7c775f2af",
@@ -62748,8 +63391,27 @@
           "name": "Placas anãs (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-plate--shoulders"
+      ]
+    },
+    {
+      "id": "4a04669457b28ebd",
+      "legacy_path": "/shop/expanded/elven-chain.webp",
+      "family": "Elven Chain",
+      "model": "chain-mail",
+      "slot": "armor",
+      "consumers": [
+        {
+          "id": "elven-chain",
+          "name": "Malha élfica (Cota de malha)"
+        }
+      ],
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain"
+      ]
     },
     {
       "id": "d9adaae45335fe25",
@@ -62763,8 +63425,10 @@
           "name": "Malha élfica (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain--bracers"
+      ]
     },
     {
       "id": "78ef238c07f206f7",
@@ -62778,8 +63442,10 @@
           "name": "Malha élfica (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain--feet"
+      ]
     },
     {
       "id": "0bf9f8a048a4069b",
@@ -62793,8 +63459,10 @@
           "name": "Malha élfica (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain--head"
+      ]
     },
     {
       "id": "8ca4bfe71a043604",
@@ -62808,8 +63476,10 @@
           "name": "Malha élfica (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain--legs"
+      ]
     },
     {
       "id": "1369c039be6d3b97",
@@ -62823,8 +63493,10 @@
           "name": "Malha élfica (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain--shoulders"
+      ]
     },
     {
       "id": "12555524e2d59a18",
@@ -62838,8 +63510,10 @@
           "name": "Malha élfica (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain-chain-shirt"
+      ]
     },
     {
       "id": "73bc401e18ed4104",
@@ -62853,8 +63527,10 @@
           "name": "Malha élfica (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain-chain-shirt--bracers"
+      ]
     },
     {
       "id": "2c417faa0edb9b0c",
@@ -62868,8 +63544,10 @@
           "name": "Malha élfica (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain-chain-shirt--feet"
+      ]
     },
     {
       "id": "dc60f8e120227cb6",
@@ -62883,8 +63561,10 @@
           "name": "Malha élfica (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain-chain-shirt--head"
+      ]
     },
     {
       "id": "4fda8e2216157b61",
@@ -62898,8 +63578,10 @@
           "name": "Malha élfica (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain-chain-shirt--legs"
+      ]
     },
     {
       "id": "403a5f40ac9f8ff8",
@@ -62913,8 +63595,10 @@
           "name": "Malha élfica (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elven-chain-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "106d3ae87f90b5d0",
@@ -77307,8 +77991,10 @@
           "name": "Armadura viva (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-breastplate"
+      ]
     },
     {
       "id": "1b62ee8b4449c9fd",
@@ -77322,8 +78008,10 @@
           "name": "Armadura viva (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-breastplate--bracers"
+      ]
     },
     {
       "id": "80898921145b33a3",
@@ -77337,8 +78025,10 @@
           "name": "Armadura viva (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-breastplate--feet"
+      ]
     },
     {
       "id": "b5d6dc11a0248452",
@@ -77352,8 +78042,10 @@
           "name": "Armadura viva (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-breastplate--head"
+      ]
     },
     {
       "id": "5eed4e6b34980112",
@@ -77367,8 +78059,10 @@
           "name": "Armadura viva (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-breastplate--legs"
+      ]
     },
     {
       "id": "283aaf41bb953fc0",
@@ -77382,8 +78076,10 @@
           "name": "Armadura viva (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-breastplate--shoulders"
+      ]
     },
     {
       "id": "3228372b60e7814d",
@@ -77397,8 +78093,10 @@
           "name": "Armadura viva (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-mail"
+      ]
     },
     {
       "id": "99bcc15a77365a59",
@@ -77412,8 +78110,10 @@
           "name": "Armadura viva (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-mail--bracers"
+      ]
     },
     {
       "id": "0c6f36db9e6b4f47",
@@ -77427,8 +78127,10 @@
           "name": "Armadura viva (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-mail--feet"
+      ]
     },
     {
       "id": "12ed9885ca469cba",
@@ -77442,8 +78144,10 @@
           "name": "Armadura viva (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-mail--head"
+      ]
     },
     {
       "id": "5ecb1bae95704b8f",
@@ -77457,8 +78161,10 @@
           "name": "Armadura viva (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-mail--legs"
+      ]
     },
     {
       "id": "1f60bfede8bc04d8",
@@ -77472,8 +78178,10 @@
           "name": "Armadura viva (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-mail--shoulders"
+      ]
     },
     {
       "id": "4ccf708114630c27",
@@ -77487,8 +78195,10 @@
           "name": "Armadura viva (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-shirt"
+      ]
     },
     {
       "id": "09d7a3a3b83aaa1a",
@@ -77502,8 +78212,10 @@
           "name": "Armadura viva (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-shirt--bracers"
+      ]
     },
     {
       "id": "3298c4038c53903b",
@@ -77517,8 +78229,10 @@
           "name": "Armadura viva (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-shirt--feet"
+      ]
     },
     {
       "id": "05a9f99522a726a0",
@@ -77532,8 +78246,10 @@
           "name": "Armadura viva (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-shirt--head"
+      ]
     },
     {
       "id": "a847134abc1af8a5",
@@ -77547,8 +78263,10 @@
           "name": "Armadura viva (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-shirt--legs"
+      ]
     },
     {
       "id": "96ad293eb17e77f8",
@@ -77562,8 +78280,10 @@
           "name": "Armadura viva (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "28d7965507ef0a08",
@@ -77577,8 +78297,10 @@
           "name": "Armadura viva (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-half-plate-armor"
+      ]
     },
     {
       "id": "0a1c2227a6e52c42",
@@ -77592,8 +78314,10 @@
           "name": "Armadura viva (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "04699232e31dbb2f",
@@ -77607,8 +78331,10 @@
           "name": "Armadura viva (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-half-plate-armor--feet"
+      ]
     },
     {
       "id": "bd2ce27a846bb44b",
@@ -77622,8 +78348,10 @@
           "name": "Armadura viva (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-half-plate-armor--head"
+      ]
     },
     {
       "id": "6d94728ec52c3139",
@@ -77637,8 +78365,10 @@
           "name": "Armadura viva (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-half-plate-armor--legs"
+      ]
     },
     {
       "id": "29a3ff412baf925c",
@@ -77652,8 +78382,10 @@
           "name": "Armadura viva (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "56e5d0cc867af376",
@@ -77667,8 +78399,10 @@
           "name": "Armadura viva (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-hide-armor"
+      ]
     },
     {
       "id": "d0f932f5cab9f269",
@@ -77682,8 +78416,10 @@
           "name": "Armadura viva (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-hide-armor--bracers"
+      ]
     },
     {
       "id": "de16f12c69224d87",
@@ -77697,8 +78433,10 @@
           "name": "Armadura viva (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-hide-armor--feet"
+      ]
     },
     {
       "id": "89f18b920eff3def",
@@ -77712,8 +78450,10 @@
           "name": "Armadura viva (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-hide-armor--head"
+      ]
     },
     {
       "id": "5c1ec6a18eb564ee",
@@ -77727,8 +78467,10 @@
           "name": "Armadura viva (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-hide-armor--legs"
+      ]
     },
     {
       "id": "ff583a08a0b36294",
@@ -77742,8 +78484,10 @@
           "name": "Armadura viva (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-hide-armor--shoulders"
+      ]
     },
     {
       "id": "f5e5cfcea771a1ff",
@@ -77757,8 +78501,10 @@
           "name": "Armadura viva (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-leather-armor"
+      ]
     },
     {
       "id": "d249f2c818427e03",
@@ -77772,8 +78518,10 @@
           "name": "Armadura viva (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-leather-armor--bracers"
+      ]
     },
     {
       "id": "c74871a7521b2cc9",
@@ -77787,8 +78535,10 @@
           "name": "Armadura viva (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-leather-armor--feet"
+      ]
     },
     {
       "id": "6cd1587ea76e42a4",
@@ -77802,8 +78552,10 @@
           "name": "Armadura viva (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-leather-armor--head"
+      ]
     },
     {
       "id": "b2ac3bccc04bcfd9",
@@ -77817,8 +78569,10 @@
           "name": "Armadura viva (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-leather-armor--legs"
+      ]
     },
     {
       "id": "29f07f2aa12f7a20",
@@ -77832,8 +78586,10 @@
           "name": "Armadura viva (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-leather-armor--shoulders"
+      ]
     },
     {
       "id": "88330d0625a5c99d",
@@ -77847,8 +78603,10 @@
           "name": "Armadura viva (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-padded-armor"
+      ]
     },
     {
       "id": "b5669fc731258f03",
@@ -77862,8 +78620,10 @@
           "name": "Armadura viva (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-padded-armor--bracers"
+      ]
     },
     {
       "id": "5680950dcfe5ba8e",
@@ -77877,8 +78637,10 @@
           "name": "Armadura viva (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-padded-armor--feet"
+      ]
     },
     {
       "id": "b88c15f88d298b97",
@@ -77892,8 +78654,10 @@
           "name": "Armadura viva (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-padded-armor--head"
+      ]
     },
     {
       "id": "1ac732dd7ee2d499",
@@ -77907,8 +78671,10 @@
           "name": "Armadura viva (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-padded-armor--legs"
+      ]
     },
     {
       "id": "1c6dc8944b0fde10",
@@ -77922,8 +78688,10 @@
           "name": "Armadura viva (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-padded-armor--shoulders"
+      ]
     },
     {
       "id": "1eb0e5c30502c0d0",
@@ -77937,8 +78705,10 @@
           "name": "Armadura viva (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-plate-armor"
+      ]
     },
     {
       "id": "a519eb865fa053ed",
@@ -77952,8 +78722,10 @@
           "name": "Armadura viva (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-plate-armor--bracers"
+      ]
     },
     {
       "id": "1c63639cfc116ebc",
@@ -77967,8 +78739,10 @@
           "name": "Armadura viva (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-plate-armor--feet"
+      ]
     },
     {
       "id": "5efa34879fb69d51",
@@ -77982,8 +78756,10 @@
           "name": "Armadura viva (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-plate-armor--head"
+      ]
     },
     {
       "id": "744d2393cae09043",
@@ -77997,8 +78773,10 @@
           "name": "Armadura viva (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-plate-armor--legs"
+      ]
     },
     {
       "id": "d3e5e42a4b6336e6",
@@ -78012,8 +78790,10 @@
           "name": "Armadura viva (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-plate-armor--shoulders"
+      ]
     },
     {
       "id": "587d76a9af842d8a",
@@ -78027,8 +78807,10 @@
           "name": "Armadura viva (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-ring-mail"
+      ]
     },
     {
       "id": "53b5b06fb53a46a5",
@@ -78042,8 +78824,10 @@
           "name": "Armadura viva (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-ring-mail--bracers"
+      ]
     },
     {
       "id": "12e9bb058b0ca9c1",
@@ -78057,8 +78841,10 @@
           "name": "Armadura viva (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-ring-mail--feet"
+      ]
     },
     {
       "id": "f5faec8c6bd1571f",
@@ -78072,8 +78858,10 @@
           "name": "Armadura viva (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-ring-mail--head"
+      ]
     },
     {
       "id": "249d9304c4e14d79",
@@ -78087,8 +78875,10 @@
           "name": "Armadura viva (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-ring-mail--legs"
+      ]
     },
     {
       "id": "1e6d9b5fd1e24ac9",
@@ -78102,8 +78892,10 @@
           "name": "Armadura viva (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-ring-mail--shoulders"
+      ]
     },
     {
       "id": "670f1cbf473c524a",
@@ -78117,8 +78909,10 @@
           "name": "Armadura viva (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-scale-mail"
+      ]
     },
     {
       "id": "17a0a7c348bbfbfb",
@@ -78132,8 +78926,10 @@
           "name": "Armadura viva (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-scale-mail--bracers"
+      ]
     },
     {
       "id": "3a0dab7a331e0b6e",
@@ -78147,8 +78943,10 @@
           "name": "Armadura viva (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-scale-mail--feet"
+      ]
     },
     {
       "id": "dbe74c44aa9a10e0",
@@ -78162,8 +78960,10 @@
           "name": "Armadura viva (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-scale-mail--head"
+      ]
     },
     {
       "id": "2e4eee42f58d9ce0",
@@ -78177,8 +78977,10 @@
           "name": "Armadura viva (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-scale-mail--legs"
+      ]
     },
     {
       "id": "cce95d62f7ef1ebb",
@@ -78192,8 +78994,10 @@
           "name": "Armadura viva (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-scale-mail--shoulders"
+      ]
     },
     {
       "id": "8f1f5d7e4a843272",
@@ -78207,8 +79011,10 @@
           "name": "Armadura viva (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-spiked-armor"
+      ]
     },
     {
       "id": "691e44327472f5df",
@@ -78222,8 +79028,10 @@
           "name": "Armadura viva (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-spiked-armor--bracers"
+      ]
     },
     {
       "id": "b3cfa8af80990439",
@@ -78237,8 +79045,10 @@
           "name": "Armadura viva (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-spiked-armor--feet"
+      ]
     },
     {
       "id": "ca2ca27661ed514a",
@@ -78252,8 +79062,10 @@
           "name": "Armadura viva (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-spiked-armor--head"
+      ]
     },
     {
       "id": "92a2b88eccd68d6f",
@@ -78267,8 +79079,10 @@
           "name": "Armadura viva (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-spiked-armor--legs"
+      ]
     },
     {
       "id": "a179e735afb7765b",
@@ -78282,8 +79096,10 @@
           "name": "Armadura viva (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-spiked-armor--shoulders"
+      ]
     },
     {
       "id": "6c18fe5defbaa5ed",
@@ -78297,8 +79113,10 @@
           "name": "Armadura viva (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-splint-armor"
+      ]
     },
     {
       "id": "73a581ed3134433e",
@@ -78312,8 +79130,10 @@
           "name": "Armadura viva (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-splint-armor--bracers"
+      ]
     },
     {
       "id": "18c25f104754013a",
@@ -78327,8 +79147,10 @@
           "name": "Armadura viva (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-splint-armor--feet"
+      ]
     },
     {
       "id": "0027cc0c3b2d1f7b",
@@ -78342,8 +79164,10 @@
           "name": "Armadura viva (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-splint-armor--head"
+      ]
     },
     {
       "id": "aae95b0577b5c97a",
@@ -78357,8 +79181,10 @@
           "name": "Armadura viva (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-splint-armor--legs"
+      ]
     },
     {
       "id": "f464d0e9e5d3f560",
@@ -78372,8 +79198,10 @@
           "name": "Armadura viva (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-splint-armor--shoulders"
+      ]
     },
     {
       "id": "26f5c88f51c2aaaa",
@@ -78387,8 +79215,10 @@
           "name": "Armadura viva (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-studded-leather-armor"
+      ]
     },
     {
       "id": "a5e00fa5d206c999",
@@ -78402,8 +79232,10 @@
           "name": "Armadura viva (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-studded-leather-armor--bracers"
+      ]
     },
     {
       "id": "f4070d717a600d85",
@@ -78417,8 +79249,10 @@
           "name": "Armadura viva (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-studded-leather-armor--feet"
+      ]
     },
     {
       "id": "1dda4b6a9bfac2eb",
@@ -78432,8 +79266,10 @@
           "name": "Armadura viva (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-studded-leather-armor--head"
+      ]
     },
     {
       "id": "0c232ff5156db841",
@@ -78447,8 +79283,10 @@
           "name": "Armadura viva (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-studded-leather-armor--legs"
+      ]
     },
     {
       "id": "4b4d2e14abac7e7e",
@@ -78462,8 +79300,10 @@
           "name": "Armadura viva (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "living-studded-leather-armor--shoulders"
+      ]
     },
     {
       "id": "f3720ce28acbfd38",
@@ -83276,8 +84116,10 @@
           "name": "Armadura de ruidium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-breastplate"
+      ]
     },
     {
       "id": "e8981ab359f2d501",
@@ -83291,8 +84133,10 @@
           "name": "Armadura de ruidium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-breastplate--bracers"
+      ]
     },
     {
       "id": "dbb40b304ebe26b2",
@@ -83306,8 +84150,10 @@
           "name": "Armadura de ruidium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-breastplate--feet"
+      ]
     },
     {
       "id": "d74461dbf2ed953e",
@@ -83321,8 +84167,10 @@
           "name": "Armadura de ruidium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-breastplate--head"
+      ]
     },
     {
       "id": "9ae575d837dfdd5c",
@@ -83336,8 +84184,10 @@
           "name": "Armadura de ruidium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-breastplate--legs"
+      ]
     },
     {
       "id": "a9c755ba8844655c",
@@ -83351,8 +84201,10 @@
           "name": "Armadura de ruidium (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-breastplate--shoulders"
+      ]
     },
     {
       "id": "38a56bf5a3ae4d67",
@@ -83366,8 +84218,10 @@
           "name": "Armadura de ruidium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-mail"
+      ]
     },
     {
       "id": "92fd0bd933a895c4",
@@ -83381,8 +84235,10 @@
           "name": "Armadura de ruidium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-mail--bracers"
+      ]
     },
     {
       "id": "4bf2b53b1c6f7f2a",
@@ -83396,8 +84252,10 @@
           "name": "Armadura de ruidium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-mail--feet"
+      ]
     },
     {
       "id": "0746e47c2ed530ec",
@@ -83411,8 +84269,10 @@
           "name": "Armadura de ruidium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-mail--head"
+      ]
     },
     {
       "id": "83b0bc850c8b8a6e",
@@ -83426,8 +84286,10 @@
           "name": "Armadura de ruidium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-mail--legs"
+      ]
     },
     {
       "id": "5278f82e1958e3b2",
@@ -83441,8 +84303,10 @@
           "name": "Armadura de ruidium (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-mail--shoulders"
+      ]
     },
     {
       "id": "15ab007dd68d5d85",
@@ -83456,8 +84320,10 @@
           "name": "Armadura de ruidium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-shirt"
+      ]
     },
     {
       "id": "a7ee5d23333c255d",
@@ -83471,8 +84337,10 @@
           "name": "Armadura de ruidium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-shirt--bracers"
+      ]
     },
     {
       "id": "1e7050c7d4f8bda7",
@@ -83486,8 +84354,10 @@
           "name": "Armadura de ruidium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-shirt--feet"
+      ]
     },
     {
       "id": "67cd36553eba1703",
@@ -83501,8 +84371,10 @@
           "name": "Armadura de ruidium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-shirt--head"
+      ]
     },
     {
       "id": "6c7431399a4f859a",
@@ -83516,8 +84388,10 @@
           "name": "Armadura de ruidium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-shirt--legs"
+      ]
     },
     {
       "id": "3fa3ba1e6ac437a0",
@@ -83531,8 +84405,10 @@
           "name": "Armadura de ruidium (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "97a0efdad7af215f",
@@ -83546,8 +84422,10 @@
           "name": "Armadura de ruidium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-half-plate-armor"
+      ]
     },
     {
       "id": "f2da473059d66ce4",
@@ -83561,8 +84439,10 @@
           "name": "Armadura de ruidium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "62944d934f9f35bb",
@@ -83576,8 +84456,10 @@
           "name": "Armadura de ruidium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-half-plate-armor--feet"
+      ]
     },
     {
       "id": "f86beb2a139d9199",
@@ -83591,8 +84473,10 @@
           "name": "Armadura de ruidium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-half-plate-armor--head"
+      ]
     },
     {
       "id": "5a9f55c29844d8c9",
@@ -83606,8 +84490,10 @@
           "name": "Armadura de ruidium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-half-plate-armor--legs"
+      ]
     },
     {
       "id": "6e33625911b00f47",
@@ -83621,8 +84507,10 @@
           "name": "Armadura de ruidium (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "07418efe6358a702",
@@ -83636,8 +84524,10 @@
           "name": "Armadura de ruidium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-plate-armor"
+      ]
     },
     {
       "id": "5fa3aed8244546a7",
@@ -83651,8 +84541,10 @@
           "name": "Armadura de ruidium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-plate-armor--bracers"
+      ]
     },
     {
       "id": "863e922e7472ff6e",
@@ -83666,8 +84558,10 @@
           "name": "Armadura de ruidium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-plate-armor--feet"
+      ]
     },
     {
       "id": "9e2944a8f0e6c624",
@@ -83681,8 +84575,10 @@
           "name": "Armadura de ruidium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-plate-armor--head"
+      ]
     },
     {
       "id": "f494b77b1e6696cf",
@@ -83696,8 +84592,10 @@
           "name": "Armadura de ruidium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-plate-armor--legs"
+      ]
     },
     {
       "id": "7de4f372b7dba9cb",
@@ -83711,8 +84609,10 @@
           "name": "Armadura de ruidium (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-plate-armor--shoulders"
+      ]
     },
     {
       "id": "98391d08a73ecfeb",
@@ -83726,8 +84626,10 @@
           "name": "Armadura de ruidium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-ring-mail"
+      ]
     },
     {
       "id": "8ffcfc97f7dc25f8",
@@ -83741,8 +84643,10 @@
           "name": "Armadura de ruidium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-ring-mail--bracers"
+      ]
     },
     {
       "id": "763569fdf6c79745",
@@ -83756,8 +84660,10 @@
           "name": "Armadura de ruidium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-ring-mail--feet"
+      ]
     },
     {
       "id": "375d95fff747ebe4",
@@ -83771,8 +84677,10 @@
           "name": "Armadura de ruidium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-ring-mail--head"
+      ]
     },
     {
       "id": "b9a4dd7c4fd32877",
@@ -83786,8 +84694,10 @@
           "name": "Armadura de ruidium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-ring-mail--legs"
+      ]
     },
     {
       "id": "2c82d1ba4093c571",
@@ -83801,8 +84711,10 @@
           "name": "Armadura de ruidium (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-ring-mail--shoulders"
+      ]
     },
     {
       "id": "814252d2cdcee233",
@@ -83816,8 +84728,10 @@
           "name": "Armadura de ruidium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-scale-mail"
+      ]
     },
     {
       "id": "b31877c1dbcbbf56",
@@ -83831,8 +84745,10 @@
           "name": "Armadura de ruidium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-scale-mail--bracers"
+      ]
     },
     {
       "id": "9f6ab933db3f623e",
@@ -83846,8 +84762,10 @@
           "name": "Armadura de ruidium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-scale-mail--feet"
+      ]
     },
     {
       "id": "183445c606bcd5d5",
@@ -83861,8 +84779,10 @@
           "name": "Armadura de ruidium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-scale-mail--head"
+      ]
     },
     {
       "id": "0130ec6f584f7a1c",
@@ -83876,8 +84796,10 @@
           "name": "Armadura de ruidium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-scale-mail--legs"
+      ]
     },
     {
       "id": "c08086228d2c1d5a",
@@ -83891,8 +84813,10 @@
           "name": "Armadura de ruidium (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-scale-mail--shoulders"
+      ]
     },
     {
       "id": "6be9b2d501c9fc99",
@@ -83906,8 +84830,10 @@
           "name": "Armadura de ruidium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-spiked-armor"
+      ]
     },
     {
       "id": "f4397e375d6b4f76",
@@ -83921,8 +84847,10 @@
           "name": "Armadura de ruidium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-spiked-armor--bracers"
+      ]
     },
     {
       "id": "649d9751e9af1dbf",
@@ -83936,8 +84864,10 @@
           "name": "Armadura de ruidium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-spiked-armor--feet"
+      ]
     },
     {
       "id": "38ea3f11829b83a6",
@@ -83951,8 +84881,10 @@
           "name": "Armadura de ruidium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-spiked-armor--head"
+      ]
     },
     {
       "id": "7bab5f9fc817bdd0",
@@ -83966,8 +84898,10 @@
           "name": "Armadura de ruidium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-spiked-armor--legs"
+      ]
     },
     {
       "id": "6c92b8a3be764a4b",
@@ -83981,8 +84915,10 @@
           "name": "Armadura de ruidium (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-spiked-armor--shoulders"
+      ]
     },
     {
       "id": "f7610ebfc025a0f4",
@@ -83996,8 +84932,10 @@
           "name": "Armadura de ruidium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-splint-armor"
+      ]
     },
     {
       "id": "de4f2cb306a6a2dd",
@@ -84011,8 +84949,10 @@
           "name": "Armadura de ruidium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-splint-armor--bracers"
+      ]
     },
     {
       "id": "6c57dbcb971016a7",
@@ -84026,8 +84966,10 @@
           "name": "Armadura de ruidium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-splint-armor--feet"
+      ]
     },
     {
       "id": "0f77fbc14301b531",
@@ -84041,8 +84983,10 @@
           "name": "Armadura de ruidium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-splint-armor--head"
+      ]
     },
     {
       "id": "c23b3290489d3f94",
@@ -84056,8 +85000,10 @@
           "name": "Armadura de ruidium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-splint-armor--legs"
+      ]
     },
     {
       "id": "e1f4f93203ba73f6",
@@ -84071,8 +85017,10 @@
           "name": "Armadura de ruidium (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-splint-armor--shoulders"
+      ]
     },
     {
       "id": "f7dffe4ebf8329ca",
@@ -87002,8 +87950,10 @@
           "name": "Armadura de recuperação arcana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-breastplate"
+      ]
     },
     {
       "id": "a0a682a57098c66d",
@@ -87017,8 +87967,10 @@
           "name": "Armadura de recuperação arcana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-breastplate--bracers"
+      ]
     },
     {
       "id": "190188142d6065e0",
@@ -87032,8 +87984,10 @@
           "name": "Armadura de recuperação arcana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-breastplate--feet"
+      ]
     },
     {
       "id": "060878f7dbbe088f",
@@ -87047,8 +88001,10 @@
           "name": "Armadura de recuperação arcana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-breastplate--head"
+      ]
     },
     {
       "id": "a2240ddf5e172498",
@@ -87062,8 +88018,10 @@
           "name": "Armadura de recuperação arcana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-breastplate--legs"
+      ]
     },
     {
       "id": "8878a75198b76112",
@@ -87077,8 +88035,10 @@
           "name": "Armadura de recuperação arcana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-breastplate--shoulders"
+      ]
     },
     {
       "id": "42ae0aac249b7b1c",
@@ -87092,8 +88052,10 @@
           "name": "Armadura de recuperação arcana (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-mail"
+      ]
     },
     {
       "id": "297a5345d97a9758",
@@ -87107,8 +88069,10 @@
           "name": "Armadura de recuperação arcana (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-mail--bracers"
+      ]
     },
     {
       "id": "50716ccb919fb311",
@@ -87122,8 +88086,10 @@
           "name": "Armadura de recuperação arcana (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-mail--feet"
+      ]
     },
     {
       "id": "e3938caf7ebb31ec",
@@ -87137,8 +88103,10 @@
           "name": "Armadura de recuperação arcana (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-mail--head"
+      ]
     },
     {
       "id": "de23646036038e9e",
@@ -87152,8 +88120,10 @@
           "name": "Armadura de recuperação arcana (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-mail--legs"
+      ]
     },
     {
       "id": "eb6e27926ce55705",
@@ -87167,8 +88137,10 @@
           "name": "Armadura de recuperação arcana (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-mail--shoulders"
+      ]
     },
     {
       "id": "e325c7f103be3fd4",
@@ -87182,8 +88154,10 @@
           "name": "Armadura de recuperação arcana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-shirt"
+      ]
     },
     {
       "id": "92a2ae78c3a1bfd0",
@@ -87197,8 +88171,10 @@
           "name": "Armadura de recuperação arcana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-shirt--bracers"
+      ]
     },
     {
       "id": "ba247ea4d937c901",
@@ -87212,8 +88188,10 @@
           "name": "Armadura de recuperação arcana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-shirt--feet"
+      ]
     },
     {
       "id": "c20af7b2667bf1cb",
@@ -87227,8 +88205,10 @@
           "name": "Armadura de recuperação arcana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-shirt--head"
+      ]
     },
     {
       "id": "17d63177ae2fa46b",
@@ -87242,8 +88222,10 @@
           "name": "Armadura de recuperação arcana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-shirt--legs"
+      ]
     },
     {
       "id": "cd76c8eecf7a634d",
@@ -87257,8 +88239,10 @@
           "name": "Armadura de recuperação arcana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "b8ccec87aedcdfe0",
@@ -87272,8 +88256,10 @@
           "name": "Armadura de recuperação arcana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-half-plate-armor"
+      ]
     },
     {
       "id": "36a494dc0af8e3ee",
@@ -87287,8 +88273,10 @@
           "name": "Armadura de recuperação arcana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "5e75dbf75695a6be",
@@ -87302,8 +88290,10 @@
           "name": "Armadura de recuperação arcana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-half-plate-armor--feet"
+      ]
     },
     {
       "id": "2bd56e489104ed9a",
@@ -87317,8 +88307,10 @@
           "name": "Armadura de recuperação arcana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-half-plate-armor--head"
+      ]
     },
     {
       "id": "9b658a37cb17de93",
@@ -87332,8 +88324,10 @@
           "name": "Armadura de recuperação arcana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-half-plate-armor--legs"
+      ]
     },
     {
       "id": "0fef828dba34ee4d",
@@ -87347,8 +88341,10 @@
           "name": "Armadura de recuperação arcana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "bb629cf26a0c7e12",
@@ -87362,8 +88358,10 @@
           "name": "Armadura de recuperação arcana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-hide-armor"
+      ]
     },
     {
       "id": "ad41c98be00c0f6e",
@@ -87377,8 +88375,10 @@
           "name": "Armadura de recuperação arcana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-hide-armor--bracers"
+      ]
     },
     {
       "id": "68545d474f2f0777",
@@ -87392,8 +88392,10 @@
           "name": "Armadura de recuperação arcana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-hide-armor--feet"
+      ]
     },
     {
       "id": "ab8617fa364144eb",
@@ -87407,8 +88409,10 @@
           "name": "Armadura de recuperação arcana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-hide-armor--head"
+      ]
     },
     {
       "id": "a8bada5e8e2a168b",
@@ -87422,8 +88426,10 @@
           "name": "Armadura de recuperação arcana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-hide-armor--legs"
+      ]
     },
     {
       "id": "4d37a6cdb7ba7d61",
@@ -87437,8 +88443,10 @@
           "name": "Armadura de recuperação arcana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-hide-armor--shoulders"
+      ]
     },
     {
       "id": "60f41683f1c6861f",
@@ -87452,8 +88460,10 @@
           "name": "Armadura de recuperação arcana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-leather-armor"
+      ]
     },
     {
       "id": "17d828af727db4be",
@@ -87467,8 +88477,10 @@
           "name": "Armadura de recuperação arcana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-leather-armor--bracers"
+      ]
     },
     {
       "id": "9910bbc3a57edcc4",
@@ -87482,8 +88494,10 @@
           "name": "Armadura de recuperação arcana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-leather-armor--feet"
+      ]
     },
     {
       "id": "84dcca0ce93695fc",
@@ -87497,8 +88511,10 @@
           "name": "Armadura de recuperação arcana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-leather-armor--head"
+      ]
     },
     {
       "id": "69a5a2c1a8ecfb94",
@@ -87512,8 +88528,10 @@
           "name": "Armadura de recuperação arcana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-leather-armor--legs"
+      ]
     },
     {
       "id": "52c32ba4e61f76fe",
@@ -87527,8 +88545,10 @@
           "name": "Armadura de recuperação arcana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-leather-armor--shoulders"
+      ]
     },
     {
       "id": "343c75d6fbcacfe0",
@@ -87542,8 +88562,10 @@
           "name": "Armadura de recuperação arcana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-padded-armor"
+      ]
     },
     {
       "id": "bbf498aea3b2a7d5",
@@ -87557,8 +88579,10 @@
           "name": "Armadura de recuperação arcana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-padded-armor--bracers"
+      ]
     },
     {
       "id": "a2e4fea72bfc6113",
@@ -87572,8 +88596,10 @@
           "name": "Armadura de recuperação arcana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-padded-armor--feet"
+      ]
     },
     {
       "id": "43fee2e9ffa6ba38",
@@ -87587,8 +88613,10 @@
           "name": "Armadura de recuperação arcana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-padded-armor--head"
+      ]
     },
     {
       "id": "d405696f09799d72",
@@ -87602,8 +88630,10 @@
           "name": "Armadura de recuperação arcana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-padded-armor--legs"
+      ]
     },
     {
       "id": "1ce0683de1e21923",
@@ -87617,8 +88647,10 @@
           "name": "Armadura de recuperação arcana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-padded-armor--shoulders"
+      ]
     },
     {
       "id": "1e974624c5d1d346",
@@ -87632,8 +88664,10 @@
           "name": "Armadura de recuperação arcana (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-plate-armor"
+      ]
     },
     {
       "id": "0f726c9e98ccfe10",
@@ -87647,8 +88681,10 @@
           "name": "Armadura de recuperação arcana (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-plate-armor--bracers"
+      ]
     },
     {
       "id": "438399b0943129cf",
@@ -87662,8 +88698,10 @@
           "name": "Armadura de recuperação arcana (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-plate-armor--feet"
+      ]
     },
     {
       "id": "d44c71dbc6ec13e7",
@@ -87677,8 +88715,10 @@
           "name": "Armadura de recuperação arcana (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-plate-armor--head"
+      ]
     },
     {
       "id": "cb9551d349dd2fd8",
@@ -87692,8 +88732,10 @@
           "name": "Armadura de recuperação arcana (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-plate-armor--legs"
+      ]
     },
     {
       "id": "4585ba58b3ae7767",
@@ -87707,8 +88749,10 @@
           "name": "Armadura de recuperação arcana (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-plate-armor--shoulders"
+      ]
     },
     {
       "id": "40863eb9ef78c866",
@@ -87722,8 +88766,10 @@
           "name": "Armadura de recuperação arcana (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-ring-mail"
+      ]
     },
     {
       "id": "c2ac567433b87ab3",
@@ -87737,8 +88783,10 @@
           "name": "Armadura de recuperação arcana (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-ring-mail--bracers"
+      ]
     },
     {
       "id": "1d423cd55311c475",
@@ -87752,8 +88800,10 @@
           "name": "Armadura de recuperação arcana (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-ring-mail--feet"
+      ]
     },
     {
       "id": "553237eab4000b24",
@@ -87767,8 +88817,10 @@
           "name": "Armadura de recuperação arcana (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-ring-mail--head"
+      ]
     },
     {
       "id": "2a3916fe83723cfa",
@@ -87782,8 +88834,10 @@
           "name": "Armadura de recuperação arcana (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-ring-mail--legs"
+      ]
     },
     {
       "id": "e14623fcc97f3053",
@@ -87797,8 +88851,10 @@
           "name": "Armadura de recuperação arcana (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-ring-mail--shoulders"
+      ]
     },
     {
       "id": "2b3b9f10b6ad3b64",
@@ -87812,8 +88868,10 @@
           "name": "Armadura de recuperação arcana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-scale-mail"
+      ]
     },
     {
       "id": "c18d399eb1cf4cba",
@@ -87827,8 +88885,10 @@
           "name": "Armadura de recuperação arcana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-scale-mail--bracers"
+      ]
     },
     {
       "id": "baeda7e3ba675040",
@@ -87842,8 +88902,10 @@
           "name": "Armadura de recuperação arcana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-scale-mail--feet"
+      ]
     },
     {
       "id": "67f761fcae6caf99",
@@ -87857,8 +88919,10 @@
           "name": "Armadura de recuperação arcana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-scale-mail--head"
+      ]
     },
     {
       "id": "a2db58ae224eec66",
@@ -87872,8 +88936,10 @@
           "name": "Armadura de recuperação arcana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-scale-mail--legs"
+      ]
     },
     {
       "id": "4323e6f8c99da953",
@@ -87887,8 +88953,10 @@
           "name": "Armadura de recuperação arcana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-scale-mail--shoulders"
+      ]
     },
     {
       "id": "6fcf479602ce610d",
@@ -87902,8 +88970,10 @@
           "name": "Armadura de recuperação arcana (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-splint-armor"
+      ]
     },
     {
       "id": "8a8ff7c6fdde0516",
@@ -87917,8 +88987,10 @@
           "name": "Armadura de recuperação arcana (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-splint-armor--bracers"
+      ]
     },
     {
       "id": "f557969e413a83d0",
@@ -87932,8 +89004,10 @@
           "name": "Armadura de recuperação arcana (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-splint-armor--feet"
+      ]
     },
     {
       "id": "fddfdbc5ed9d52f6",
@@ -87947,8 +89021,10 @@
           "name": "Armadura de recuperação arcana (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-splint-armor--head"
+      ]
     },
     {
       "id": "8bca02a2988d974e",
@@ -87962,8 +89038,10 @@
           "name": "Armadura de recuperação arcana (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-splint-armor--legs"
+      ]
     },
     {
       "id": "7488e2b42dc35c89",
@@ -87977,8 +89055,10 @@
           "name": "Armadura de recuperação arcana (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-splint-armor--shoulders"
+      ]
     },
     {
       "id": "38cf645957bd20cd",
@@ -87992,8 +89072,10 @@
           "name": "Armadura de recuperação arcana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-studded-leather-armor"
+      ]
     },
     {
       "id": "d3b58636b3490199",
@@ -88007,8 +89089,10 @@
           "name": "Armadura de recuperação arcana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-studded-leather-armor--bracers"
+      ]
     },
     {
       "id": "f0553042198d0317",
@@ -88022,8 +89106,10 @@
           "name": "Armadura de recuperação arcana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-studded-leather-armor--feet"
+      ]
     },
     {
       "id": "78b49e444327e497",
@@ -88037,8 +89123,10 @@
           "name": "Armadura de recuperação arcana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-studded-leather-armor--head"
+      ]
     },
     {
       "id": "8dc08433c6758bd9",
@@ -88052,8 +89140,10 @@
           "name": "Armadura de recuperação arcana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-studded-leather-armor--legs"
+      ]
     },
     {
       "id": "0d9233a272f7cd5e",
@@ -88067,8 +89157,10 @@
           "name": "Armadura de recuperação arcana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-fueling-studded-leather-armor--shoulders"
+      ]
     },
     {
       "id": "23fb39a9b35f1d54",
