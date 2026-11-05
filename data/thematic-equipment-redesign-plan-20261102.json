@@ -3,10 +3,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4153,
-    "approved_artworks": 1424,
-    "pending_artworks": 2729,
+    "approved_artworks": 1568,
+    "pending_artworks": 2585,
     "catalog_references": 4308,
-    "approved_references": 1424,
+    "approved_references": 1568,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -3512,7 +3512,7 @@
     },
     {
       "family": "Armor of Vulnerability",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "armor-of-vulnerability",
@@ -3570,8 +3570,15 @@
             "armor-of-vulnerability-breastplate-piercing--legs",
             "armor-of-vulnerability-breastplate-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-breastplate-piercing",
+            "armor-of-vulnerability-breastplate-piercing--head",
+            "armor-of-vulnerability-breastplate-piercing--shoulders",
+            "armor-of-vulnerability-breastplate-piercing--bracers",
+            "armor-of-vulnerability-breastplate-piercing--legs",
+            "armor-of-vulnerability-breastplate-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-breastplate-slashing",
@@ -3585,8 +3592,15 @@
             "armor-of-vulnerability-breastplate-slashing--legs",
             "armor-of-vulnerability-breastplate-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-breastplate-slashing",
+            "armor-of-vulnerability-breastplate-slashing--head",
+            "armor-of-vulnerability-breastplate-slashing--shoulders",
+            "armor-of-vulnerability-breastplate-slashing--bracers",
+            "armor-of-vulnerability-breastplate-slashing--legs",
+            "armor-of-vulnerability-breastplate-slashing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-chain-mail",
@@ -3622,8 +3636,15 @@
             "armor-of-vulnerability-chain-mail-piercing--legs",
             "armor-of-vulnerability-chain-mail-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-chain-mail-piercing",
+            "armor-of-vulnerability-chain-mail-piercing--head",
+            "armor-of-vulnerability-chain-mail-piercing--shoulders",
+            "armor-of-vulnerability-chain-mail-piercing--bracers",
+            "armor-of-vulnerability-chain-mail-piercing--legs",
+            "armor-of-vulnerability-chain-mail-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-chain-mail-slashing",
@@ -3637,8 +3658,15 @@
             "armor-of-vulnerability-chain-mail-slashing--legs",
             "armor-of-vulnerability-chain-mail-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-chain-mail-slashing",
+            "armor-of-vulnerability-chain-mail-slashing--head",
+            "armor-of-vulnerability-chain-mail-slashing--shoulders",
+            "armor-of-vulnerability-chain-mail-slashing--bracers",
+            "armor-of-vulnerability-chain-mail-slashing--legs",
+            "armor-of-vulnerability-chain-mail-slashing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-chain-shirt",
@@ -3674,8 +3702,15 @@
             "armor-of-vulnerability-chain-shirt-piercing--legs",
             "armor-of-vulnerability-chain-shirt-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-chain-shirt-piercing",
+            "armor-of-vulnerability-chain-shirt-piercing--head",
+            "armor-of-vulnerability-chain-shirt-piercing--shoulders",
+            "armor-of-vulnerability-chain-shirt-piercing--bracers",
+            "armor-of-vulnerability-chain-shirt-piercing--legs",
+            "armor-of-vulnerability-chain-shirt-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-chain-shirt-slashing",
@@ -3689,8 +3724,15 @@
             "armor-of-vulnerability-chain-shirt-slashing--legs",
             "armor-of-vulnerability-chain-shirt-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-chain-shirt-slashing",
+            "armor-of-vulnerability-chain-shirt-slashing--head",
+            "armor-of-vulnerability-chain-shirt-slashing--shoulders",
+            "armor-of-vulnerability-chain-shirt-slashing--bracers",
+            "armor-of-vulnerability-chain-shirt-slashing--legs",
+            "armor-of-vulnerability-chain-shirt-slashing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-half-plate-armor",
@@ -3726,8 +3768,15 @@
             "armor-of-vulnerability-half-plate-armor-piercing--legs",
             "armor-of-vulnerability-half-plate-armor-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-half-plate-armor-piercing",
+            "armor-of-vulnerability-half-plate-armor-piercing--head",
+            "armor-of-vulnerability-half-plate-armor-piercing--shoulders",
+            "armor-of-vulnerability-half-plate-armor-piercing--bracers",
+            "armor-of-vulnerability-half-plate-armor-piercing--legs",
+            "armor-of-vulnerability-half-plate-armor-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-half-plate-armor-slashing",
@@ -3741,8 +3790,15 @@
             "armor-of-vulnerability-half-plate-armor-slashing--legs",
             "armor-of-vulnerability-half-plate-armor-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-half-plate-armor-slashing",
+            "armor-of-vulnerability-half-plate-armor-slashing--head",
+            "armor-of-vulnerability-half-plate-armor-slashing--shoulders",
+            "armor-of-vulnerability-half-plate-armor-slashing--bracers",
+            "armor-of-vulnerability-half-plate-armor-slashing--legs",
+            "armor-of-vulnerability-half-plate-armor-slashing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-hide-armor",
@@ -3778,8 +3834,15 @@
             "armor-of-vulnerability-hide-armor-piercing--legs",
             "armor-of-vulnerability-hide-armor-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-hide-armor-piercing",
+            "armor-of-vulnerability-hide-armor-piercing--head",
+            "armor-of-vulnerability-hide-armor-piercing--shoulders",
+            "armor-of-vulnerability-hide-armor-piercing--bracers",
+            "armor-of-vulnerability-hide-armor-piercing--legs",
+            "armor-of-vulnerability-hide-armor-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-hide-armor-slashing",
@@ -3793,8 +3856,15 @@
             "armor-of-vulnerability-hide-armor-slashing--legs",
             "armor-of-vulnerability-hide-armor-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-hide-armor-slashing",
+            "armor-of-vulnerability-hide-armor-slashing--head",
+            "armor-of-vulnerability-hide-armor-slashing--shoulders",
+            "armor-of-vulnerability-hide-armor-slashing--bracers",
+            "armor-of-vulnerability-hide-armor-slashing--legs",
+            "armor-of-vulnerability-hide-armor-slashing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-leather-armor",
@@ -3830,8 +3900,15 @@
             "armor-of-vulnerability-leather-armor-piercing--legs",
             "armor-of-vulnerability-leather-armor-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-leather-armor-piercing",
+            "armor-of-vulnerability-leather-armor-piercing--head",
+            "armor-of-vulnerability-leather-armor-piercing--shoulders",
+            "armor-of-vulnerability-leather-armor-piercing--bracers",
+            "armor-of-vulnerability-leather-armor-piercing--legs",
+            "armor-of-vulnerability-leather-armor-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-leather-armor-slashing",
@@ -3845,8 +3922,15 @@
             "armor-of-vulnerability-leather-armor-slashing--legs",
             "armor-of-vulnerability-leather-armor-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-leather-armor-slashing",
+            "armor-of-vulnerability-leather-armor-slashing--head",
+            "armor-of-vulnerability-leather-armor-slashing--shoulders",
+            "armor-of-vulnerability-leather-armor-slashing--bracers",
+            "armor-of-vulnerability-leather-armor-slashing--legs",
+            "armor-of-vulnerability-leather-armor-slashing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-padded-armor",
@@ -3882,8 +3966,15 @@
             "armor-of-vulnerability-padded-armor-piercing--legs",
             "armor-of-vulnerability-padded-armor-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-padded-armor-piercing",
+            "armor-of-vulnerability-padded-armor-piercing--head",
+            "armor-of-vulnerability-padded-armor-piercing--shoulders",
+            "armor-of-vulnerability-padded-armor-piercing--bracers",
+            "armor-of-vulnerability-padded-armor-piercing--legs",
+            "armor-of-vulnerability-padded-armor-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-padded-armor-slashing",
@@ -3897,8 +3988,15 @@
             "armor-of-vulnerability-padded-armor-slashing--legs",
             "armor-of-vulnerability-padded-armor-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-padded-armor-slashing",
+            "armor-of-vulnerability-padded-armor-slashing--head",
+            "armor-of-vulnerability-padded-armor-slashing--shoulders",
+            "armor-of-vulnerability-padded-armor-slashing--bracers",
+            "armor-of-vulnerability-padded-armor-slashing--legs",
+            "armor-of-vulnerability-padded-armor-slashing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-plate-armor-piercing",
@@ -3912,8 +4010,15 @@
             "armor-of-vulnerability-plate-armor-piercing--legs",
             "armor-of-vulnerability-plate-armor-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-plate-armor-piercing",
+            "armor-of-vulnerability-plate-armor-piercing--head",
+            "armor-of-vulnerability-plate-armor-piercing--shoulders",
+            "armor-of-vulnerability-plate-armor-piercing--bracers",
+            "armor-of-vulnerability-plate-armor-piercing--legs",
+            "armor-of-vulnerability-plate-armor-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-plate-armor-slashing",
@@ -3927,8 +4032,15 @@
             "armor-of-vulnerability-plate-armor-slashing--legs",
             "armor-of-vulnerability-plate-armor-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-plate-armor-slashing",
+            "armor-of-vulnerability-plate-armor-slashing--head",
+            "armor-of-vulnerability-plate-armor-slashing--shoulders",
+            "armor-of-vulnerability-plate-armor-slashing--bracers",
+            "armor-of-vulnerability-plate-armor-slashing--legs",
+            "armor-of-vulnerability-plate-armor-slashing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-ring-mail",
@@ -3964,8 +4076,15 @@
             "armor-of-vulnerability-ring-mail-piercing--legs",
             "armor-of-vulnerability-ring-mail-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-ring-mail-piercing",
+            "armor-of-vulnerability-ring-mail-piercing--head",
+            "armor-of-vulnerability-ring-mail-piercing--shoulders",
+            "armor-of-vulnerability-ring-mail-piercing--bracers",
+            "armor-of-vulnerability-ring-mail-piercing--legs",
+            "armor-of-vulnerability-ring-mail-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-ring-mail-slashing",
@@ -3979,8 +4098,15 @@
             "armor-of-vulnerability-ring-mail-slashing--legs",
             "armor-of-vulnerability-ring-mail-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-ring-mail-slashing",
+            "armor-of-vulnerability-ring-mail-slashing--head",
+            "armor-of-vulnerability-ring-mail-slashing--shoulders",
+            "armor-of-vulnerability-ring-mail-slashing--bracers",
+            "armor-of-vulnerability-ring-mail-slashing--legs",
+            "armor-of-vulnerability-ring-mail-slashing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-scale-mail",
@@ -4016,8 +4142,15 @@
             "armor-of-vulnerability-scale-mail-piercing--legs",
             "armor-of-vulnerability-scale-mail-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-scale-mail-piercing",
+            "armor-of-vulnerability-scale-mail-piercing--head",
+            "armor-of-vulnerability-scale-mail-piercing--shoulders",
+            "armor-of-vulnerability-scale-mail-piercing--bracers",
+            "armor-of-vulnerability-scale-mail-piercing--legs",
+            "armor-of-vulnerability-scale-mail-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-scale-mail-slashing",
@@ -4031,8 +4164,15 @@
             "armor-of-vulnerability-scale-mail-slashing--legs",
             "armor-of-vulnerability-scale-mail-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-scale-mail-slashing",
+            "armor-of-vulnerability-scale-mail-slashing--head",
+            "armor-of-vulnerability-scale-mail-slashing--shoulders",
+            "armor-of-vulnerability-scale-mail-slashing--bracers",
+            "armor-of-vulnerability-scale-mail-slashing--legs",
+            "armor-of-vulnerability-scale-mail-slashing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-splint-armor",
@@ -4068,8 +4208,15 @@
             "armor-of-vulnerability-splint-armor-piercing--legs",
             "armor-of-vulnerability-splint-armor-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-splint-armor-piercing",
+            "armor-of-vulnerability-splint-armor-piercing--head",
+            "armor-of-vulnerability-splint-armor-piercing--shoulders",
+            "armor-of-vulnerability-splint-armor-piercing--bracers",
+            "armor-of-vulnerability-splint-armor-piercing--legs",
+            "armor-of-vulnerability-splint-armor-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-splint-armor-slashing",
@@ -4083,8 +4230,15 @@
             "armor-of-vulnerability-splint-armor-slashing--legs",
             "armor-of-vulnerability-splint-armor-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-splint-armor-slashing",
+            "armor-of-vulnerability-splint-armor-slashing--head",
+            "armor-of-vulnerability-splint-armor-slashing--shoulders",
+            "armor-of-vulnerability-splint-armor-slashing--bracers",
+            "armor-of-vulnerability-splint-armor-slashing--legs",
+            "armor-of-vulnerability-splint-armor-slashing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-studded-leather",
@@ -4120,8 +4274,15 @@
             "armor-of-vulnerability-studded-leather-piercing--legs",
             "armor-of-vulnerability-studded-leather-piercing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-studded-leather-piercing",
+            "armor-of-vulnerability-studded-leather-piercing--head",
+            "armor-of-vulnerability-studded-leather-piercing--shoulders",
+            "armor-of-vulnerability-studded-leather-piercing--bracers",
+            "armor-of-vulnerability-studded-leather-piercing--legs",
+            "armor-of-vulnerability-studded-leather-piercing--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-vulnerability-studded-leather-slashing",
@@ -4135,8 +4296,15 @@
             "armor-of-vulnerability-studded-leather-slashing--legs",
             "armor-of-vulnerability-studded-leather-slashing--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-vulnerability-studded-leather-slashing",
+            "armor-of-vulnerability-studded-leather-slashing--head",
+            "armor-of-vulnerability-studded-leather-slashing--shoulders",
+            "armor-of-vulnerability-studded-leather-slashing--bracers",
+            "armor-of-vulnerability-studded-leather-slashing--legs",
+            "armor-of-vulnerability-studded-leather-slashing--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -47668,8 +47836,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-piercing"
+      ]
     },
     {
       "id": "fb133175f9de4663",
@@ -47683,8 +47853,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-slashing"
+      ]
     },
     {
       "id": "6159ac0caa5cf03f",
@@ -47698,8 +47870,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-piercing--bracers"
+      ]
     },
     {
       "id": "99f2e42e15e10f67",
@@ -47713,8 +47887,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-slashing--bracers"
+      ]
     },
     {
       "id": "3a621b3798e71db1",
@@ -47745,8 +47921,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-piercing--feet"
+      ]
     },
     {
       "id": "33bd9867dc42545f",
@@ -47760,8 +47938,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-slashing--feet"
+      ]
     },
     {
       "id": "f35b4b4b6ebd32ce",
@@ -47792,8 +47972,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-piercing--head"
+      ]
     },
     {
       "id": "65e40b983e508675",
@@ -47807,8 +47989,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-slashing--head"
+      ]
     },
     {
       "id": "e47406f7734c1605",
@@ -47839,8 +48023,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-piercing--legs"
+      ]
     },
     {
       "id": "73411af73f304246",
@@ -47854,8 +48040,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-slashing--legs"
+      ]
     },
     {
       "id": "b6b52b12045411f1",
@@ -47886,8 +48074,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-piercing--shoulders"
+      ]
     },
     {
       "id": "2e887d166d6a8db3",
@@ -47901,8 +48091,10 @@
           "name": "Armadura da vulnerabilidade (Peitoral · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-breastplate-slashing--shoulders"
+      ]
     },
     {
       "id": "38bc21fbb5d7c292",
@@ -47950,8 +48142,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-piercing"
+      ]
     },
     {
       "id": "8c4f03946c4dbd01",
@@ -47965,8 +48159,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-slashing"
+      ]
     },
     {
       "id": "6a1e230a675c0a54",
@@ -47980,8 +48176,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-piercing--bracers"
+      ]
     },
     {
       "id": "a99c95059a184504",
@@ -47995,8 +48193,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-slashing--bracers"
+      ]
     },
     {
       "id": "5ac7156d6c777e5f",
@@ -48027,8 +48227,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-piercing--feet"
+      ]
     },
     {
       "id": "fa7c643a88312179",
@@ -48042,8 +48244,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-slashing--feet"
+      ]
     },
     {
       "id": "f537559ebd0c9f5e",
@@ -48074,8 +48278,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-piercing--head"
+      ]
     },
     {
       "id": "ce49585afe02d8a8",
@@ -48089,8 +48295,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-slashing--head"
+      ]
     },
     {
       "id": "5e98b555f9cff82f",
@@ -48121,8 +48329,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-piercing--legs"
+      ]
     },
     {
       "id": "ab91e090faa6992b",
@@ -48136,8 +48346,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-slashing--legs"
+      ]
     },
     {
       "id": "112b34c1f77ff330",
@@ -48168,8 +48380,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-piercing--shoulders"
+      ]
     },
     {
       "id": "1d436149e76f5663",
@@ -48183,8 +48397,10 @@
           "name": "Armadura da vulnerabilidade (Cota de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-mail-slashing--shoulders"
+      ]
     },
     {
       "id": "1c7518a8c82ab682",
@@ -48232,8 +48448,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-piercing"
+      ]
     },
     {
       "id": "ed76a7ef219adaea",
@@ -48247,8 +48465,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-slashing"
+      ]
     },
     {
       "id": "46ae22d09561a189",
@@ -48262,8 +48482,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-piercing--bracers"
+      ]
     },
     {
       "id": "d495065086e2d3bb",
@@ -48277,8 +48499,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-slashing--bracers"
+      ]
     },
     {
       "id": "79bba37d3e53e02f",
@@ -48309,8 +48533,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-piercing--feet"
+      ]
     },
     {
       "id": "ae507b7ad28ab43e",
@@ -48324,8 +48550,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-slashing--feet"
+      ]
     },
     {
       "id": "ad2d366477964a3d",
@@ -48356,8 +48584,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-piercing--head"
+      ]
     },
     {
       "id": "908fe0a109e48d37",
@@ -48371,8 +48601,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-slashing--head"
+      ]
     },
     {
       "id": "57bd23b2bd0181ab",
@@ -48403,8 +48635,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-piercing--legs"
+      ]
     },
     {
       "id": "e9d308061d059bd8",
@@ -48418,8 +48652,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-slashing--legs"
+      ]
     },
     {
       "id": "4da3a8607072b7ac",
@@ -48450,8 +48686,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-piercing--shoulders"
+      ]
     },
     {
       "id": "a7db4e629bb3b932",
@@ -48465,8 +48703,10 @@
           "name": "Armadura da vulnerabilidade (Camisão de malha · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-chain-shirt-slashing--shoulders"
+      ]
     },
     {
       "id": "eea8c0d0a5f7e4d5",
@@ -48514,8 +48754,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-piercing"
+      ]
     },
     {
       "id": "bd1b60b4be3887e2",
@@ -48529,8 +48771,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-slashing"
+      ]
     },
     {
       "id": "b7aeb9e9ac994df0",
@@ -48544,8 +48788,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-piercing--bracers"
+      ]
     },
     {
       "id": "1c09cc87a3422694",
@@ -48559,8 +48805,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-slashing--bracers"
+      ]
     },
     {
       "id": "d5c14a812bb88f19",
@@ -48591,8 +48839,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-piercing--feet"
+      ]
     },
     {
       "id": "05d6dfb0318ee38b",
@@ -48606,8 +48856,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-slashing--feet"
+      ]
     },
     {
       "id": "a538f6c1c2475438",
@@ -48638,8 +48890,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-piercing--head"
+      ]
     },
     {
       "id": "775452f207d1cf11",
@@ -48653,8 +48907,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-slashing--head"
+      ]
     },
     {
       "id": "993918b446898b7d",
@@ -48685,8 +48941,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-piercing--legs"
+      ]
     },
     {
       "id": "65bfe444478f8a78",
@@ -48700,8 +48958,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-slashing--legs"
+      ]
     },
     {
       "id": "fcc9078d95247469",
@@ -48732,8 +48992,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-piercing--shoulders"
+      ]
     },
     {
       "id": "3e5b130302d94458",
@@ -48747,8 +49009,10 @@
           "name": "Armadura da vulnerabilidade (Meia armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-half-plate-armor-slashing--shoulders"
+      ]
     },
     {
       "id": "636c7d6b07709157",
@@ -48796,8 +49060,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-piercing"
+      ]
     },
     {
       "id": "157997e4bd634842",
@@ -48811,8 +49077,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-slashing"
+      ]
     },
     {
       "id": "ceb4d021bc2758b5",
@@ -48826,8 +49094,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-piercing--bracers"
+      ]
     },
     {
       "id": "19a06b5f9baf4785",
@@ -48841,8 +49111,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-slashing--bracers"
+      ]
     },
     {
       "id": "d124c366d06b13d6",
@@ -48873,8 +49145,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-piercing--feet"
+      ]
     },
     {
       "id": "54dd56f7b5f01d78",
@@ -48888,8 +49162,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-slashing--feet"
+      ]
     },
     {
       "id": "8115ee1c2b3dc632",
@@ -48920,8 +49196,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-piercing--head"
+      ]
     },
     {
       "id": "8516d1f222f1e1b9",
@@ -48935,8 +49213,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-slashing--head"
+      ]
     },
     {
       "id": "1ec56883bb2431f1",
@@ -48967,8 +49247,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-piercing--legs"
+      ]
     },
     {
       "id": "cbe398bed825ca0a",
@@ -48982,8 +49264,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-slashing--legs"
+      ]
     },
     {
       "id": "89d280d440ef8509",
@@ -49014,8 +49298,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-piercing--shoulders"
+      ]
     },
     {
       "id": "1be2d8b79c96acc6",
@@ -49029,8 +49315,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de peles · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-hide-armor-slashing--shoulders"
+      ]
     },
     {
       "id": "9b2d0321322b2de7",
@@ -49078,8 +49366,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-piercing"
+      ]
     },
     {
       "id": "c073460174402adf",
@@ -49093,8 +49383,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-slashing"
+      ]
     },
     {
       "id": "7b511c582738c316",
@@ -49108,8 +49400,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-piercing--bracers"
+      ]
     },
     {
       "id": "1df9710d95795126",
@@ -49123,8 +49417,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-slashing--bracers"
+      ]
     },
     {
       "id": "6e281c1d01484d1e",
@@ -49155,8 +49451,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-piercing--feet"
+      ]
     },
     {
       "id": "bd856fb323d4acc7",
@@ -49170,8 +49468,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-slashing--feet"
+      ]
     },
     {
       "id": "cc1a4006dd13fd6b",
@@ -49202,8 +49502,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-piercing--head"
+      ]
     },
     {
       "id": "c5032c64249bdad3",
@@ -49217,8 +49519,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-slashing--head"
+      ]
     },
     {
       "id": "d16676e341e3ab10",
@@ -49249,8 +49553,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-piercing--legs"
+      ]
     },
     {
       "id": "202a3f0d1b970a1c",
@@ -49264,8 +49570,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-slashing--legs"
+      ]
     },
     {
       "id": "927da85530a4efbf",
@@ -49296,8 +49604,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-piercing--shoulders"
+      ]
     },
     {
       "id": "499b58136eeb189f",
@@ -49311,8 +49621,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de couro · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-leather-armor-slashing--shoulders"
+      ]
     },
     {
       "id": "d3f57e2437785eee",
@@ -49360,8 +49672,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-piercing"
+      ]
     },
     {
       "id": "6eb4b2d719f29008",
@@ -49375,8 +49689,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-slashing"
+      ]
     },
     {
       "id": "47e07fa721dddd4b",
@@ -49390,8 +49706,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-piercing--bracers"
+      ]
     },
     {
       "id": "11c7ad5b01d901d7",
@@ -49405,8 +49723,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-slashing--bracers"
+      ]
     },
     {
       "id": "f6d820c0b5e74caf",
@@ -49437,8 +49757,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-piercing--feet"
+      ]
     },
     {
       "id": "affd1f87e404c498",
@@ -49452,8 +49774,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-slashing--feet"
+      ]
     },
     {
       "id": "6fc3315ba47f335d",
@@ -49484,8 +49808,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-piercing--head"
+      ]
     },
     {
       "id": "e9ecea91bf3fcbf0",
@@ -49499,8 +49825,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-slashing--head"
+      ]
     },
     {
       "id": "85ae50c49ee4618c",
@@ -49531,8 +49859,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-piercing--legs"
+      ]
     },
     {
       "id": "0bc7019f75691378",
@@ -49546,8 +49876,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-slashing--legs"
+      ]
     },
     {
       "id": "47a75e43b69a18e6",
@@ -49578,8 +49910,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-piercing--shoulders"
+      ]
     },
     {
       "id": "94325cf587a66976",
@@ -49593,8 +49927,10 @@
           "name": "Armadura da vulnerabilidade (Armadura acolchoada · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-padded-armor-slashing--shoulders"
+      ]
     },
     {
       "id": "7bba100462fc0e89",
@@ -49625,8 +49961,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-piercing"
+      ]
     },
     {
       "id": "d93b6abeaefa310a",
@@ -49640,8 +49978,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-slashing"
+      ]
     },
     {
       "id": "bae065fe96eb984d",
@@ -49672,8 +50012,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-piercing--bracers"
+      ]
     },
     {
       "id": "0ea46bcfe77a6965",
@@ -49687,8 +50029,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-slashing--bracers"
+      ]
     },
     {
       "id": "b0572c4cabe769ab",
@@ -49719,8 +50063,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-piercing--feet"
+      ]
     },
     {
       "id": "8b8e43f4940d5f04",
@@ -49734,8 +50080,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-slashing--feet"
+      ]
     },
     {
       "id": "fd27b3a9f1499657",
@@ -49766,8 +50114,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-piercing--head"
+      ]
     },
     {
       "id": "dc74643eb2be4b58",
@@ -49781,8 +50131,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-slashing--head"
+      ]
     },
     {
       "id": "f3d1711c5acdde7e",
@@ -49813,8 +50165,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-piercing--legs"
+      ]
     },
     {
       "id": "d4c73046b9696a29",
@@ -49828,8 +50182,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-slashing--legs"
+      ]
     },
     {
       "id": "3e7bd570e88d2d96",
@@ -49860,8 +50216,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-piercing--shoulders"
+      ]
     },
     {
       "id": "82d475aef215bc98",
@@ -49875,8 +50233,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de placas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-plate-armor-slashing--shoulders"
+      ]
     },
     {
       "id": "152e3a303dff4acc",
@@ -49924,8 +50284,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-piercing"
+      ]
     },
     {
       "id": "589c31dc86cf7b34",
@@ -49939,8 +50301,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-slashing"
+      ]
     },
     {
       "id": "52bde42af3bf1f3f",
@@ -49954,8 +50318,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-piercing--bracers"
+      ]
     },
     {
       "id": "fe2718d30c0aeffe",
@@ -49969,8 +50335,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-slashing--bracers"
+      ]
     },
     {
       "id": "2d2a6d1a521508fc",
@@ -50001,8 +50369,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-piercing--feet"
+      ]
     },
     {
       "id": "8f8772d5f3c67dc6",
@@ -50016,8 +50386,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-slashing--feet"
+      ]
     },
     {
       "id": "07737bcf47df9ecd",
@@ -50048,8 +50420,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-piercing--head"
+      ]
     },
     {
       "id": "60132d4e72c8278d",
@@ -50063,8 +50437,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-slashing--head"
+      ]
     },
     {
       "id": "fa38b4b41cbff5b0",
@@ -50095,8 +50471,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-piercing--legs"
+      ]
     },
     {
       "id": "dce9a2dd6ac55f1f",
@@ -50110,8 +50488,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-slashing--legs"
+      ]
     },
     {
       "id": "f8fef92285765217",
@@ -50142,8 +50522,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-piercing--shoulders"
+      ]
     },
     {
       "id": "663efe40af36c90c",
@@ -50157,8 +50539,10 @@
           "name": "Armadura da vulnerabilidade (Cota de anéis · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-ring-mail-slashing--shoulders"
+      ]
     },
     {
       "id": "64dbce47387d78db",
@@ -50206,8 +50590,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-piercing"
+      ]
     },
     {
       "id": "54d9cc4280c29a77",
@@ -50221,8 +50607,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-slashing"
+      ]
     },
     {
       "id": "aa895003cd4c126d",
@@ -50236,8 +50624,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-piercing--bracers"
+      ]
     },
     {
       "id": "8520062277160788",
@@ -50251,8 +50641,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-slashing--bracers"
+      ]
     },
     {
       "id": "b22ec1ab9c00a0b2",
@@ -50283,8 +50675,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-piercing--feet"
+      ]
     },
     {
       "id": "ce3294446ecda22e",
@@ -50298,8 +50692,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-slashing--feet"
+      ]
     },
     {
       "id": "438e66d84b50da50",
@@ -50330,8 +50726,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-piercing--head"
+      ]
     },
     {
       "id": "3039d2bf9478e634",
@@ -50345,8 +50743,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-slashing--head"
+      ]
     },
     {
       "id": "2789e66c91e06cbb",
@@ -50377,8 +50777,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-piercing--legs"
+      ]
     },
     {
       "id": "0a3b029e7b6c7e3f",
@@ -50392,8 +50794,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-slashing--legs"
+      ]
     },
     {
       "id": "678a3fe0df0a0599",
@@ -50424,8 +50828,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-piercing--shoulders"
+      ]
     },
     {
       "id": "7646eb25e73ef827",
@@ -50439,8 +50845,10 @@
           "name": "Armadura da vulnerabilidade (Cota de escamas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-scale-mail-slashing--shoulders"
+      ]
     },
     {
       "id": "c5b3278ce3e95700",
@@ -50488,8 +50896,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-piercing"
+      ]
     },
     {
       "id": "799de4b11e39749e",
@@ -50503,8 +50913,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-slashing"
+      ]
     },
     {
       "id": "e364d7120390c055",
@@ -50518,8 +50930,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-piercing--bracers"
+      ]
     },
     {
       "id": "9e4aa2c04cbb5993",
@@ -50533,8 +50947,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-slashing--bracers"
+      ]
     },
     {
       "id": "6afbb7da83d531a1",
@@ -50565,8 +50981,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-piercing--feet"
+      ]
     },
     {
       "id": "2caae771ba2b40b1",
@@ -50580,8 +50998,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-slashing--feet"
+      ]
     },
     {
       "id": "1c31aaef715a902d",
@@ -50612,8 +51032,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-piercing--head"
+      ]
     },
     {
       "id": "cdc26fd267e19d3e",
@@ -50627,8 +51049,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-slashing--head"
+      ]
     },
     {
       "id": "c3855111f3674095",
@@ -50659,8 +51083,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-piercing--legs"
+      ]
     },
     {
       "id": "e549ed2f294fd66a",
@@ -50674,8 +51100,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-slashing--legs"
+      ]
     },
     {
       "id": "cbcd6176aa9053b1",
@@ -50706,8 +51134,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-piercing--shoulders"
+      ]
     },
     {
       "id": "a423d1fb3ed4a389",
@@ -50721,8 +51151,10 @@
           "name": "Armadura da vulnerabilidade (Armadura de talas · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-splint-armor-slashing--shoulders"
+      ]
     },
     {
       "id": "52fa3851c67bf90b",
@@ -50770,8 +51202,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-piercing"
+      ]
     },
     {
       "id": "71bfba92c3e39843",
@@ -50785,8 +51219,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-slashing"
+      ]
     },
     {
       "id": "41644aaf5e70db1d",
@@ -50800,8 +51236,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-piercing--bracers"
+      ]
     },
     {
       "id": "50b3636631b9c6c3",
@@ -50815,8 +51253,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-slashing--bracers"
+      ]
     },
     {
       "id": "6ac27f3a7e45a7df",
@@ -50847,8 +51287,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-piercing--feet"
+      ]
     },
     {
       "id": "d5deba4d25ae858c",
@@ -50862,8 +51304,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-slashing--feet"
+      ]
     },
     {
       "id": "a2262a6a7e8a1313",
@@ -50894,8 +51338,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-piercing--head"
+      ]
     },
     {
       "id": "4cdcc061079b07b4",
@@ -50909,8 +51355,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-slashing--head"
+      ]
     },
     {
       "id": "1caf73c0566c7baf",
@@ -50941,8 +51389,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-piercing--legs"
+      ]
     },
     {
       "id": "96a063775b239403",
@@ -50956,8 +51406,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-slashing--legs"
+      ]
     },
     {
       "id": "864677833057993a",
@@ -50988,8 +51440,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Perfurante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-piercing--shoulders"
+      ]
     },
     {
       "id": "91c5db7b3417f0d0",
@@ -51003,8 +51457,10 @@
           "name": "Armadura da vulnerabilidade (Couro batido · Cortante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-vulnerability-studded-leather-slashing--shoulders"
+      ]
     },
     {
       "id": "ff4658c12ae8ae4f",
