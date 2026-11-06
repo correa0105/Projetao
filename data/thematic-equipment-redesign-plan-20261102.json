@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2114,
-    "pending_artworks": 2373,
+    "approved_artworks": 2192,
+    "pending_artworks": 2295,
     "catalog_references": 4643,
-    "approved_references": 2270,
+    "approved_references": 2348,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -1499,8 +1499,15 @@
             "armor-of-resistance-breastplate-poison--legs",
             "armor-of-resistance-breastplate-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-breastplate-poison",
+            "armor-of-resistance-breastplate-poison--head",
+            "armor-of-resistance-breastplate-poison--shoulders",
+            "armor-of-resistance-breastplate-poison--bracers",
+            "armor-of-resistance-breastplate-poison--legs",
+            "armor-of-resistance-breastplate-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-breastplate-psychic",
@@ -1691,8 +1698,15 @@
             "armor-of-resistance-chain-mail-poison--legs",
             "armor-of-resistance-chain-mail-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-mail-poison",
+            "armor-of-resistance-chain-mail-poison--head",
+            "armor-of-resistance-chain-mail-poison--shoulders",
+            "armor-of-resistance-chain-mail-poison--bracers",
+            "armor-of-resistance-chain-mail-poison--legs",
+            "armor-of-resistance-chain-mail-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-mail-psychic",
@@ -1883,8 +1897,15 @@
             "armor-of-resistance-chain-shirt-poison--legs",
             "armor-of-resistance-chain-shirt-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-shirt-poison",
+            "armor-of-resistance-chain-shirt-poison--head",
+            "armor-of-resistance-chain-shirt-poison--shoulders",
+            "armor-of-resistance-chain-shirt-poison--bracers",
+            "armor-of-resistance-chain-shirt-poison--legs",
+            "armor-of-resistance-chain-shirt-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-shirt-psychic",
@@ -2075,8 +2096,15 @@
             "armor-of-resistance-half-plate-armor-poison--legs",
             "armor-of-resistance-half-plate-armor-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-half-plate-armor-poison",
+            "armor-of-resistance-half-plate-armor-poison--head",
+            "armor-of-resistance-half-plate-armor-poison--shoulders",
+            "armor-of-resistance-half-plate-armor-poison--bracers",
+            "armor-of-resistance-half-plate-armor-poison--legs",
+            "armor-of-resistance-half-plate-armor-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-half-plate-armor-psychic",
@@ -2267,8 +2295,15 @@
             "armor-of-resistance-hide-armor-poison--legs",
             "armor-of-resistance-hide-armor-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-hide-armor-poison",
+            "armor-of-resistance-hide-armor-poison--head",
+            "armor-of-resistance-hide-armor-poison--shoulders",
+            "armor-of-resistance-hide-armor-poison--bracers",
+            "armor-of-resistance-hide-armor-poison--legs",
+            "armor-of-resistance-hide-armor-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-hide-armor-psychic",
@@ -2459,8 +2494,15 @@
             "armor-of-resistance-leather-armor-poison--legs",
             "armor-of-resistance-leather-armor-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-leather-armor-poison",
+            "armor-of-resistance-leather-armor-poison--head",
+            "armor-of-resistance-leather-armor-poison--shoulders",
+            "armor-of-resistance-leather-armor-poison--bracers",
+            "armor-of-resistance-leather-armor-poison--legs",
+            "armor-of-resistance-leather-armor-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-leather-armor-psychic",
@@ -2651,8 +2693,15 @@
             "armor-of-resistance-padded-armor-poison--legs",
             "armor-of-resistance-padded-armor-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-padded-armor-poison",
+            "armor-of-resistance-padded-armor-poison--head",
+            "armor-of-resistance-padded-armor-poison--shoulders",
+            "armor-of-resistance-padded-armor-poison--bracers",
+            "armor-of-resistance-padded-armor-poison--legs",
+            "armor-of-resistance-padded-armor-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-padded-armor-psychic",
@@ -2821,8 +2870,15 @@
             "armor-of-resistance-plate-armor-poison--legs",
             "armor-of-resistance-plate-armor-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-plate-armor-poison",
+            "armor-of-resistance-plate-armor-poison--head",
+            "armor-of-resistance-plate-armor-poison--shoulders",
+            "armor-of-resistance-plate-armor-poison--bracers",
+            "armor-of-resistance-plate-armor-poison--legs",
+            "armor-of-resistance-plate-armor-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-plate-armor-psychic",
@@ -3013,8 +3069,15 @@
             "armor-of-resistance-ring-mail-poison--legs",
             "armor-of-resistance-ring-mail-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-ring-mail-poison",
+            "armor-of-resistance-ring-mail-poison--head",
+            "armor-of-resistance-ring-mail-poison--shoulders",
+            "armor-of-resistance-ring-mail-poison--bracers",
+            "armor-of-resistance-ring-mail-poison--legs",
+            "armor-of-resistance-ring-mail-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-ring-mail-psychic",
@@ -3205,8 +3268,15 @@
             "armor-of-resistance-scale-mail-poison--legs",
             "armor-of-resistance-scale-mail-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-scale-mail-poison",
+            "armor-of-resistance-scale-mail-poison--head",
+            "armor-of-resistance-scale-mail-poison--shoulders",
+            "armor-of-resistance-scale-mail-poison--bracers",
+            "armor-of-resistance-scale-mail-poison--legs",
+            "armor-of-resistance-scale-mail-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-scale-mail-psychic",
@@ -3397,8 +3467,15 @@
             "armor-of-resistance-splint-armor-poison--legs",
             "armor-of-resistance-splint-armor-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-splint-armor-poison",
+            "armor-of-resistance-splint-armor-poison--head",
+            "armor-of-resistance-splint-armor-poison--shoulders",
+            "armor-of-resistance-splint-armor-poison--bracers",
+            "armor-of-resistance-splint-armor-poison--legs",
+            "armor-of-resistance-splint-armor-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-splint-armor-psychic",
@@ -3589,8 +3666,15 @@
             "armor-of-resistance-studded-leather-poison--legs",
             "armor-of-resistance-studded-leather-poison--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-studded-leather-poison",
+            "armor-of-resistance-studded-leather-poison--head",
+            "armor-of-resistance-studded-leather-poison--shoulders",
+            "armor-of-resistance-studded-leather-poison--bracers",
+            "armor-of-resistance-studded-leather-poison--legs",
+            "armor-of-resistance-studded-leather-poison--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-studded-leather-psychic",
@@ -3781,8 +3865,15 @@
             "spiked-armor-of-poison-resistance--legs",
             "spiked-armor-of-poison-resistance--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-poison-resistance",
+            "spiked-armor-of-poison-resistance--head",
+            "spiked-armor-of-poison-resistance--shoulders",
+            "spiked-armor-of-poison-resistance--bracers",
+            "spiked-armor-of-poison-resistance--legs",
+            "spiked-armor-of-poison-resistance--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-psychic-resistance",
@@ -36096,8 +36187,10 @@
           "name": "Armadura de resistência (Peitoral · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-poison"
+      ]
     },
     {
       "id": "e703947000127120",
@@ -36241,8 +36334,10 @@
           "name": "Armadura de resistência (Peitoral · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-poison--bracers"
+      ]
     },
     {
       "id": "9979db88733f22ae",
@@ -36403,8 +36498,10 @@
           "name": "Armadura de resistência (Peitoral · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-poison--feet"
+      ]
     },
     {
       "id": "9ae92058502d6178",
@@ -36565,8 +36662,10 @@
           "name": "Armadura de resistência (Peitoral · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-poison--head"
+      ]
     },
     {
       "id": "387c7a3494668866",
@@ -36727,8 +36826,10 @@
           "name": "Armadura de resistência (Peitoral · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-poison--legs"
+      ]
     },
     {
       "id": "aa4db4248baafd94",
@@ -36889,8 +36990,10 @@
           "name": "Armadura de resistência (Peitoral · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-poison--shoulders"
+      ]
     },
     {
       "id": "2a4a6a4228ef6479",
@@ -37068,8 +37171,10 @@
           "name": "Armadura de resistência (Cota de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-poison"
+      ]
     },
     {
       "id": "644ff83bbeb8d91e",
@@ -37213,8 +37318,10 @@
           "name": "Armadura de resistência (Cota de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-poison--bracers"
+      ]
     },
     {
       "id": "dfa91d7ebb378a9e",
@@ -37375,8 +37482,10 @@
           "name": "Armadura de resistência (Cota de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-poison--feet"
+      ]
     },
     {
       "id": "4ce032ad51377a39",
@@ -37537,8 +37646,10 @@
           "name": "Armadura de resistência (Cota de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-poison--head"
+      ]
     },
     {
       "id": "3e4c3b6eb610e5ed",
@@ -37699,8 +37810,10 @@
           "name": "Armadura de resistência (Cota de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-poison--legs"
+      ]
     },
     {
       "id": "a720c2bca5f736b5",
@@ -37861,8 +37974,10 @@
           "name": "Armadura de resistência (Cota de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-poison--shoulders"
+      ]
     },
     {
       "id": "9681d82b417121a5",
@@ -38040,8 +38155,10 @@
           "name": "Armadura de resistência (Camisão de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-poison"
+      ]
     },
     {
       "id": "e378111c232a53d5",
@@ -38185,8 +38302,10 @@
           "name": "Armadura de resistência (Camisão de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-poison--bracers"
+      ]
     },
     {
       "id": "06e64497a091e357",
@@ -38347,8 +38466,10 @@
           "name": "Armadura de resistência (Camisão de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-poison--feet"
+      ]
     },
     {
       "id": "a5ac09e12dfa90d2",
@@ -38509,8 +38630,10 @@
           "name": "Armadura de resistência (Camisão de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-poison--head"
+      ]
     },
     {
       "id": "f986e18c96a225ac",
@@ -38671,8 +38794,10 @@
           "name": "Armadura de resistência (Camisão de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-poison--legs"
+      ]
     },
     {
       "id": "d852e2f24a309828",
@@ -38833,8 +38958,10 @@
           "name": "Armadura de resistência (Camisão de malha · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-poison--shoulders"
+      ]
     },
     {
       "id": "d672aa3ccc4d80d5",
@@ -39012,8 +39139,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-poison"
+      ]
     },
     {
       "id": "a5b5a5d4d06d6a2d",
@@ -39157,8 +39286,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-poison--bracers"
+      ]
     },
     {
       "id": "6f7456f010102d7a",
@@ -39319,8 +39450,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-poison--feet"
+      ]
     },
     {
       "id": "ad857f0aaf8f432f",
@@ -39481,8 +39614,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-poison--head"
+      ]
     },
     {
       "id": "2c6a584d0b90c3c3",
@@ -39643,8 +39778,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-poison--legs"
+      ]
     },
     {
       "id": "869046ad6556d7bf",
@@ -39805,8 +39942,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-poison--shoulders"
+      ]
     },
     {
       "id": "aa97abee2aa8c759",
@@ -39984,8 +40123,10 @@
           "name": "Armadura de resistência (Armadura de peles · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-poison"
+      ]
     },
     {
       "id": "9e2646529b6ae986",
@@ -40129,8 +40270,10 @@
           "name": "Armadura de resistência (Armadura de peles · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-poison--bracers"
+      ]
     },
     {
       "id": "8dfc953f23a4ff40",
@@ -40291,8 +40434,10 @@
           "name": "Armadura de resistência (Armadura de peles · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-poison--feet"
+      ]
     },
     {
       "id": "fdc5ab984952de43",
@@ -40453,8 +40598,10 @@
           "name": "Armadura de resistência (Armadura de peles · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-poison--head"
+      ]
     },
     {
       "id": "05c7b1d852a4714b",
@@ -40615,8 +40762,10 @@
           "name": "Armadura de resistência (Armadura de peles · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-poison--legs"
+      ]
     },
     {
       "id": "a26c4c399a9a5f97",
@@ -40777,8 +40926,10 @@
           "name": "Armadura de resistência (Armadura de peles · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-poison--shoulders"
+      ]
     },
     {
       "id": "ece58ad1efd43ea7",
@@ -40956,8 +41107,10 @@
           "name": "Armadura de resistência (Armadura de couro · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-poison"
+      ]
     },
     {
       "id": "fa8cd22e2af1187f",
@@ -41101,8 +41254,10 @@
           "name": "Armadura de resistência (Armadura de couro · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-poison--bracers"
+      ]
     },
     {
       "id": "70ad6e6df506da65",
@@ -41263,8 +41418,10 @@
           "name": "Armadura de resistência (Armadura de couro · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-poison--feet"
+      ]
     },
     {
       "id": "d3cfaebb04fc4905",
@@ -41425,8 +41582,10 @@
           "name": "Armadura de resistência (Armadura de couro · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-poison--head"
+      ]
     },
     {
       "id": "0a4ee45138a8d6fd",
@@ -41587,8 +41746,10 @@
           "name": "Armadura de resistência (Armadura de couro · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-poison--legs"
+      ]
     },
     {
       "id": "13b5e5038c641b6d",
@@ -41749,8 +41910,10 @@
           "name": "Armadura de resistência (Armadura de couro · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-poison--shoulders"
+      ]
     },
     {
       "id": "f84454f6aac7962c",
@@ -41928,8 +42091,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-poison"
+      ]
     },
     {
       "id": "16cc37405c83c47a",
@@ -42073,8 +42238,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-poison--bracers"
+      ]
     },
     {
       "id": "023472b9fe6c4f7b",
@@ -42235,8 +42402,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-poison--feet"
+      ]
     },
     {
       "id": "ea6356009b9b3e22",
@@ -42397,8 +42566,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-poison--head"
+      ]
     },
     {
       "id": "1ef185cd29024086",
@@ -42559,8 +42730,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-poison--legs"
+      ]
     },
     {
       "id": "0c6b3691f8e590d8",
@@ -42721,8 +42894,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-poison--shoulders"
+      ]
     },
     {
       "id": "10feb6ec9e17758b",
@@ -42900,8 +43075,10 @@
           "name": "Armadura de resistência (Armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-poison"
+      ]
     },
     {
       "id": "0453876c7c0783f0",
@@ -43045,8 +43222,10 @@
           "name": "Armadura de resistência (Armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-poison--bracers"
+      ]
     },
     {
       "id": "0a41142558922798",
@@ -43207,8 +43386,10 @@
           "name": "Armadura de resistência (Armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-poison--feet"
+      ]
     },
     {
       "id": "b37dfdc58161154a",
@@ -43369,8 +43550,10 @@
           "name": "Armadura de resistência (Armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-poison--head"
+      ]
     },
     {
       "id": "41a152639678bac8",
@@ -43531,8 +43714,10 @@
           "name": "Armadura de resistência (Armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-poison--legs"
+      ]
     },
     {
       "id": "083c79424e012ef3",
@@ -43693,8 +43878,10 @@
           "name": "Armadura de resistência (Armadura de placas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-poison--shoulders"
+      ]
     },
     {
       "id": "77e5b15a184cd036",
@@ -43872,8 +44059,10 @@
           "name": "Armadura de resistência (Cota de anéis · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-poison"
+      ]
     },
     {
       "id": "9ce020ea5f94c33c",
@@ -44017,8 +44206,10 @@
           "name": "Armadura de resistência (Cota de anéis · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-poison--bracers"
+      ]
     },
     {
       "id": "fc50ee4e92fd6d75",
@@ -44179,8 +44370,10 @@
           "name": "Armadura de resistência (Cota de anéis · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-poison--feet"
+      ]
     },
     {
       "id": "b26c2f8d9267b690",
@@ -44341,8 +44534,10 @@
           "name": "Armadura de resistência (Cota de anéis · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-poison--head"
+      ]
     },
     {
       "id": "fb649e7112a8ce01",
@@ -44503,8 +44698,10 @@
           "name": "Armadura de resistência (Cota de anéis · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-poison--legs"
+      ]
     },
     {
       "id": "6e874c880e77f9c7",
@@ -44665,8 +44862,10 @@
           "name": "Armadura de resistência (Cota de anéis · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-poison--shoulders"
+      ]
     },
     {
       "id": "03f85e8c1004b7d7",
@@ -44844,8 +45043,10 @@
           "name": "Armadura de resistência (Cota de escamas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-poison"
+      ]
     },
     {
       "id": "91f8a7e176ddff4b",
@@ -44989,8 +45190,10 @@
           "name": "Armadura de resistência (Cota de escamas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-poison--bracers"
+      ]
     },
     {
       "id": "9b25fc44b08b0d68",
@@ -45151,8 +45354,10 @@
           "name": "Armadura de resistência (Cota de escamas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-poison--feet"
+      ]
     },
     {
       "id": "a2ce7ebe26e58b0b",
@@ -45313,8 +45518,10 @@
           "name": "Armadura de resistência (Cota de escamas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-poison--head"
+      ]
     },
     {
       "id": "1763ca1ed2b4a77d",
@@ -45475,8 +45682,10 @@
           "name": "Armadura de resistência (Cota de escamas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-poison--legs"
+      ]
     },
     {
       "id": "58838449836ee73e",
@@ -45637,8 +45846,10 @@
           "name": "Armadura de resistência (Cota de escamas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-poison--shoulders"
+      ]
     },
     {
       "id": "6ee58cc4b0ae0f31",
@@ -45816,8 +46027,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-poison-resistance"
+      ]
     },
     {
       "id": "3bc7ad43127e23bd",
@@ -45978,8 +46191,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-poison-resistance--bracers"
+      ]
     },
     {
       "id": "86e578095fbf9cb4",
@@ -46140,8 +46355,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-poison-resistance--feet"
+      ]
     },
     {
       "id": "37821ddd770c7009",
@@ -46302,8 +46519,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-poison-resistance--head"
+      ]
     },
     {
       "id": "11890b37cfadd4de",
@@ -46464,8 +46683,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-poison-resistance--legs"
+      ]
     },
     {
       "id": "926137b316cf7d44",
@@ -46626,8 +46847,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-poison-resistance--shoulders"
+      ]
     },
     {
       "id": "3bcf1bea1e18f66b",
@@ -46788,8 +47011,10 @@
           "name": "Armadura de resistência (Armadura de talas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-poison"
+      ]
     },
     {
       "id": "ba5abf23d3330db1",
@@ -46933,8 +47158,10 @@
           "name": "Armadura de resistência (Armadura de talas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-poison--bracers"
+      ]
     },
     {
       "id": "7cc303ffc9e67218",
@@ -47095,8 +47322,10 @@
           "name": "Armadura de resistência (Armadura de talas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-poison--feet"
+      ]
     },
     {
       "id": "9999343d7688b1f2",
@@ -47257,8 +47486,10 @@
           "name": "Armadura de resistência (Armadura de talas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-poison--head"
+      ]
     },
     {
       "id": "88cb08b2fc0d342f",
@@ -47419,8 +47650,10 @@
           "name": "Armadura de resistência (Armadura de talas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-poison--legs"
+      ]
     },
     {
       "id": "bc6d86233f2209b7",
@@ -47581,8 +47814,10 @@
           "name": "Armadura de resistência (Armadura de talas · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-poison--shoulders"
+      ]
     },
     {
       "id": "9e1b9d6fe245767a",
@@ -47760,8 +47995,10 @@
           "name": "Armadura de resistência (Couro batido · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-poison"
+      ]
     },
     {
       "id": "77a11dae588b56f0",
@@ -47905,8 +48142,10 @@
           "name": "Armadura de resistência (Couro batido · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-poison--bracers"
+      ]
     },
     {
       "id": "47f736b631b46cd8",
@@ -48067,8 +48306,10 @@
           "name": "Armadura de resistência (Couro batido · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-poison--feet"
+      ]
     },
     {
       "id": "fa4356755b55f862",
@@ -48229,8 +48470,10 @@
           "name": "Armadura de resistência (Couro batido · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-poison--head"
+      ]
     },
     {
       "id": "9e5dbf7d8ff2fb3a",
@@ -48391,8 +48634,10 @@
           "name": "Armadura de resistência (Couro batido · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-poison--legs"
+      ]
     },
     {
       "id": "9ad0027611086c61",
@@ -48553,8 +48798,10 @@
           "name": "Armadura de resistência (Couro batido · Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-poison--shoulders"
+      ]
     },
     {
       "id": "1fc5b7b65f46e391",
