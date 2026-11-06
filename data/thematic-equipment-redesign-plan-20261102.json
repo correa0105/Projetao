@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 1724,
-    "pending_artworks": 2763,
+    "approved_artworks": 1802,
+    "pending_artworks": 2685,
     "catalog_references": 4643,
-    "approved_references": 1880,
+    "approved_references": 1958,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -1389,8 +1389,15 @@
             "armor-of-resistance-breastplate-cold--legs",
             "armor-of-resistance-breastplate-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-breastplate-cold",
+            "armor-of-resistance-breastplate-cold--head",
+            "armor-of-resistance-breastplate-cold--shoulders",
+            "armor-of-resistance-breastplate-cold--bracers",
+            "armor-of-resistance-breastplate-cold--legs",
+            "armor-of-resistance-breastplate-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-breastplate-fire",
@@ -1546,8 +1553,15 @@
             "armor-of-resistance-chain-mail-cold--legs",
             "armor-of-resistance-chain-mail-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-mail-cold",
+            "armor-of-resistance-chain-mail-cold--head",
+            "armor-of-resistance-chain-mail-cold--shoulders",
+            "armor-of-resistance-chain-mail-cold--bracers",
+            "armor-of-resistance-chain-mail-cold--legs",
+            "armor-of-resistance-chain-mail-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-mail-fire",
@@ -1703,8 +1717,15 @@
             "armor-of-resistance-chain-shirt-cold--legs",
             "armor-of-resistance-chain-shirt-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-shirt-cold",
+            "armor-of-resistance-chain-shirt-cold--head",
+            "armor-of-resistance-chain-shirt-cold--shoulders",
+            "armor-of-resistance-chain-shirt-cold--bracers",
+            "armor-of-resistance-chain-shirt-cold--legs",
+            "armor-of-resistance-chain-shirt-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-shirt-fire",
@@ -1860,8 +1881,15 @@
             "armor-of-resistance-half-plate-armor-cold--legs",
             "armor-of-resistance-half-plate-armor-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-half-plate-armor-cold",
+            "armor-of-resistance-half-plate-armor-cold--head",
+            "armor-of-resistance-half-plate-armor-cold--shoulders",
+            "armor-of-resistance-half-plate-armor-cold--bracers",
+            "armor-of-resistance-half-plate-armor-cold--legs",
+            "armor-of-resistance-half-plate-armor-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-half-plate-armor-fire",
@@ -2017,8 +2045,15 @@
             "armor-of-resistance-hide-armor-cold--legs",
             "armor-of-resistance-hide-armor-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-hide-armor-cold",
+            "armor-of-resistance-hide-armor-cold--head",
+            "armor-of-resistance-hide-armor-cold--shoulders",
+            "armor-of-resistance-hide-armor-cold--bracers",
+            "armor-of-resistance-hide-armor-cold--legs",
+            "armor-of-resistance-hide-armor-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-hide-armor-fire",
@@ -2174,8 +2209,15 @@
             "armor-of-resistance-leather-armor-cold--legs",
             "armor-of-resistance-leather-armor-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-leather-armor-cold",
+            "armor-of-resistance-leather-armor-cold--head",
+            "armor-of-resistance-leather-armor-cold--shoulders",
+            "armor-of-resistance-leather-armor-cold--bracers",
+            "armor-of-resistance-leather-armor-cold--legs",
+            "armor-of-resistance-leather-armor-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-leather-armor-fire",
@@ -2331,8 +2373,15 @@
             "armor-of-resistance-padded-armor-cold--legs",
             "armor-of-resistance-padded-armor-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-padded-armor-cold",
+            "armor-of-resistance-padded-armor-cold--head",
+            "armor-of-resistance-padded-armor-cold--shoulders",
+            "armor-of-resistance-padded-armor-cold--bracers",
+            "armor-of-resistance-padded-armor-cold--legs",
+            "armor-of-resistance-padded-armor-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-padded-armor-fire",
@@ -2466,8 +2515,15 @@
             "armor-of-resistance-plate-armor-cold--legs",
             "armor-of-resistance-plate-armor-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-plate-armor-cold",
+            "armor-of-resistance-plate-armor-cold--head",
+            "armor-of-resistance-plate-armor-cold--shoulders",
+            "armor-of-resistance-plate-armor-cold--bracers",
+            "armor-of-resistance-plate-armor-cold--legs",
+            "armor-of-resistance-plate-armor-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-plate-armor-fire",
@@ -2623,8 +2679,15 @@
             "armor-of-resistance-ring-mail-cold--legs",
             "armor-of-resistance-ring-mail-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-ring-mail-cold",
+            "armor-of-resistance-ring-mail-cold--head",
+            "armor-of-resistance-ring-mail-cold--shoulders",
+            "armor-of-resistance-ring-mail-cold--bracers",
+            "armor-of-resistance-ring-mail-cold--legs",
+            "armor-of-resistance-ring-mail-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-ring-mail-fire",
@@ -2780,8 +2843,15 @@
             "armor-of-resistance-scale-mail-cold--legs",
             "armor-of-resistance-scale-mail-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-scale-mail-cold",
+            "armor-of-resistance-scale-mail-cold--head",
+            "armor-of-resistance-scale-mail-cold--shoulders",
+            "armor-of-resistance-scale-mail-cold--bracers",
+            "armor-of-resistance-scale-mail-cold--legs",
+            "armor-of-resistance-scale-mail-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-scale-mail-fire",
@@ -2937,8 +3007,15 @@
             "armor-of-resistance-splint-armor-cold--legs",
             "armor-of-resistance-splint-armor-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-splint-armor-cold",
+            "armor-of-resistance-splint-armor-cold--head",
+            "armor-of-resistance-splint-armor-cold--shoulders",
+            "armor-of-resistance-splint-armor-cold--bracers",
+            "armor-of-resistance-splint-armor-cold--legs",
+            "armor-of-resistance-splint-armor-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-splint-armor-fire",
@@ -3094,8 +3171,15 @@
             "armor-of-resistance-studded-leather-cold--legs",
             "armor-of-resistance-studded-leather-cold--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-studded-leather-cold",
+            "armor-of-resistance-studded-leather-cold--head",
+            "armor-of-resistance-studded-leather-cold--shoulders",
+            "armor-of-resistance-studded-leather-cold--bracers",
+            "armor-of-resistance-studded-leather-cold--legs",
+            "armor-of-resistance-studded-leather-cold--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-studded-leather-fire",
@@ -3251,8 +3335,15 @@
             "spiked-armor-of-cold-resistance--legs",
             "spiked-armor-of-cold-resistance--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-cold-resistance",
+            "spiked-armor-of-cold-resistance--head",
+            "spiked-armor-of-cold-resistance--shoulders",
+            "spiked-armor-of-cold-resistance--bracers",
+            "spiked-armor-of-cold-resistance--legs",
+            "spiked-armor-of-cold-resistance--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-fire-resistance",
@@ -35556,8 +35647,10 @@
           "name": "Armadura de resistência (Peitoral · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-cold"
+      ]
     },
     {
       "id": "3631464bad678e18",
@@ -35691,8 +35784,10 @@
           "name": "Armadura de resistência (Peitoral · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-cold--bracers"
+      ]
     },
     {
       "id": "d17be141c1ce046a",
@@ -35843,8 +35938,10 @@
           "name": "Armadura de resistência (Peitoral · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-cold--feet"
+      ]
     },
     {
       "id": "f2fe42c24fa0dcf1",
@@ -35995,8 +36092,10 @@
           "name": "Armadura de resistência (Peitoral · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-cold--head"
+      ]
     },
     {
       "id": "32bc453bcaa8404d",
@@ -36147,8 +36246,10 @@
           "name": "Armadura de resistência (Peitoral · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-cold--legs"
+      ]
     },
     {
       "id": "35a6ee0025a409b7",
@@ -36299,8 +36400,10 @@
           "name": "Armadura de resistência (Peitoral · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-cold--shoulders"
+      ]
     },
     {
       "id": "ded3642c56458544",
@@ -36468,8 +36571,10 @@
           "name": "Armadura de resistência (Cota de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-cold"
+      ]
     },
     {
       "id": "23ab20f6f1533dfa",
@@ -36603,8 +36708,10 @@
           "name": "Armadura de resistência (Cota de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-cold--bracers"
+      ]
     },
     {
       "id": "b2604006bdb868a3",
@@ -36755,8 +36862,10 @@
           "name": "Armadura de resistência (Cota de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-cold--feet"
+      ]
     },
     {
       "id": "797f31ca023beeae",
@@ -36907,8 +37016,10 @@
           "name": "Armadura de resistência (Cota de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-cold--head"
+      ]
     },
     {
       "id": "a6ab3208ec38a5d3",
@@ -37059,8 +37170,10 @@
           "name": "Armadura de resistência (Cota de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-cold--legs"
+      ]
     },
     {
       "id": "865cbff432676872",
@@ -37211,8 +37324,10 @@
           "name": "Armadura de resistência (Cota de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-cold--shoulders"
+      ]
     },
     {
       "id": "d7a04824a2152177",
@@ -37380,8 +37495,10 @@
           "name": "Armadura de resistência (Camisão de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-cold"
+      ]
     },
     {
       "id": "5c86cc034ae02ee6",
@@ -37515,8 +37632,10 @@
           "name": "Armadura de resistência (Camisão de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-cold--bracers"
+      ]
     },
     {
       "id": "0a04b4d0a45d565f",
@@ -37667,8 +37786,10 @@
           "name": "Armadura de resistência (Camisão de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-cold--feet"
+      ]
     },
     {
       "id": "83ef0509d7930d48",
@@ -37819,8 +37940,10 @@
           "name": "Armadura de resistência (Camisão de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-cold--head"
+      ]
     },
     {
       "id": "d4a31afe2aabd0c3",
@@ -37971,8 +38094,10 @@
           "name": "Armadura de resistência (Camisão de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-cold--legs"
+      ]
     },
     {
       "id": "01677d66c0aec3cd",
@@ -38123,8 +38248,10 @@
           "name": "Armadura de resistência (Camisão de malha · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-cold--shoulders"
+      ]
     },
     {
       "id": "83c85cdff4ee73fd",
@@ -38292,8 +38419,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-cold"
+      ]
     },
     {
       "id": "151a5f237611646a",
@@ -38427,8 +38556,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-cold--bracers"
+      ]
     },
     {
       "id": "9f28efb8759c17f6",
@@ -38579,8 +38710,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-cold--feet"
+      ]
     },
     {
       "id": "0ed246d21aba20b4",
@@ -38731,8 +38864,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-cold--head"
+      ]
     },
     {
       "id": "5053d763b60682b5",
@@ -38883,8 +39018,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-cold--legs"
+      ]
     },
     {
       "id": "33a8949070288447",
@@ -39035,8 +39172,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-cold--shoulders"
+      ]
     },
     {
       "id": "f1011dd20b967f1c",
@@ -39204,8 +39343,10 @@
           "name": "Armadura de resistência (Armadura de peles · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-cold"
+      ]
     },
     {
       "id": "68c886f608b482e0",
@@ -39339,8 +39480,10 @@
           "name": "Armadura de resistência (Armadura de peles · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-cold--bracers"
+      ]
     },
     {
       "id": "cf3c1c7be9fb7f0a",
@@ -39491,8 +39634,10 @@
           "name": "Armadura de resistência (Armadura de peles · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-cold--feet"
+      ]
     },
     {
       "id": "56a3f1fc65db87b0",
@@ -39643,8 +39788,10 @@
           "name": "Armadura de resistência (Armadura de peles · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-cold--head"
+      ]
     },
     {
       "id": "dba90d90ec89c337",
@@ -39795,8 +39942,10 @@
           "name": "Armadura de resistência (Armadura de peles · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-cold--legs"
+      ]
     },
     {
       "id": "b02ab700e632507a",
@@ -39947,8 +40096,10 @@
           "name": "Armadura de resistência (Armadura de peles · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-cold--shoulders"
+      ]
     },
     {
       "id": "ec19388602249012",
@@ -40116,8 +40267,10 @@
           "name": "Armadura de resistência (Armadura de couro · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-cold"
+      ]
     },
     {
       "id": "0545df0fe1ad8461",
@@ -40251,8 +40404,10 @@
           "name": "Armadura de resistência (Armadura de couro · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-cold--bracers"
+      ]
     },
     {
       "id": "e88d05cb69ff567c",
@@ -40403,8 +40558,10 @@
           "name": "Armadura de resistência (Armadura de couro · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-cold--feet"
+      ]
     },
     {
       "id": "87e8e29a8c82dbac",
@@ -40555,8 +40712,10 @@
           "name": "Armadura de resistência (Armadura de couro · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-cold--head"
+      ]
     },
     {
       "id": "1a26409fa03cb23e",
@@ -40707,8 +40866,10 @@
           "name": "Armadura de resistência (Armadura de couro · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-cold--legs"
+      ]
     },
     {
       "id": "ed6dcc6855cd3e31",
@@ -40859,8 +41020,10 @@
           "name": "Armadura de resistência (Armadura de couro · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-cold--shoulders"
+      ]
     },
     {
       "id": "29321c8d3587b960",
@@ -41028,8 +41191,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-cold"
+      ]
     },
     {
       "id": "9861548e68e73ccb",
@@ -41163,8 +41328,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-cold--bracers"
+      ]
     },
     {
       "id": "3e1365081b77ce88",
@@ -41315,8 +41482,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-cold--feet"
+      ]
     },
     {
       "id": "17b33bdd1b689f8a",
@@ -41467,8 +41636,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-cold--head"
+      ]
     },
     {
       "id": "70c8ea505334723e",
@@ -41619,8 +41790,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-cold--legs"
+      ]
     },
     {
       "id": "fb08edb662aafa6f",
@@ -41771,8 +41944,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-cold--shoulders"
+      ]
     },
     {
       "id": "c48f72e19f498716",
@@ -41940,8 +42115,10 @@
           "name": "Armadura de resistência (Armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-cold"
+      ]
     },
     {
       "id": "aea7cf524fb56c83",
@@ -42075,8 +42252,10 @@
           "name": "Armadura de resistência (Armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-cold--bracers"
+      ]
     },
     {
       "id": "0b5ee8fd763f7d69",
@@ -42227,8 +42406,10 @@
           "name": "Armadura de resistência (Armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-cold--feet"
+      ]
     },
     {
       "id": "3e0ff2a4f32ca396",
@@ -42379,8 +42560,10 @@
           "name": "Armadura de resistência (Armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-cold--head"
+      ]
     },
     {
       "id": "a8e1c546e2b679f2",
@@ -42531,8 +42714,10 @@
           "name": "Armadura de resistência (Armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-cold--legs"
+      ]
     },
     {
       "id": "e31c57bd04f1eb0c",
@@ -42683,8 +42868,10 @@
           "name": "Armadura de resistência (Armadura de placas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-cold--shoulders"
+      ]
     },
     {
       "id": "69ad33b6785ea212",
@@ -42852,8 +43039,10 @@
           "name": "Armadura de resistência (Cota de anéis · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-cold"
+      ]
     },
     {
       "id": "a759a92031674daf",
@@ -42987,8 +43176,10 @@
           "name": "Armadura de resistência (Cota de anéis · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-cold--bracers"
+      ]
     },
     {
       "id": "d833615c1ae09575",
@@ -43139,8 +43330,10 @@
           "name": "Armadura de resistência (Cota de anéis · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-cold--feet"
+      ]
     },
     {
       "id": "de73123c16ce644d",
@@ -43291,8 +43484,10 @@
           "name": "Armadura de resistência (Cota de anéis · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-cold--head"
+      ]
     },
     {
       "id": "ff6e2f219f60c7f5",
@@ -43443,8 +43638,10 @@
           "name": "Armadura de resistência (Cota de anéis · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-cold--legs"
+      ]
     },
     {
       "id": "fdd57088a10ffe15",
@@ -43595,8 +43792,10 @@
           "name": "Armadura de resistência (Cota de anéis · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-cold--shoulders"
+      ]
     },
     {
       "id": "67229a355f3ff353",
@@ -43764,8 +43963,10 @@
           "name": "Armadura de resistência (Cota de escamas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-cold"
+      ]
     },
     {
       "id": "4c7c4444ca73c849",
@@ -43899,8 +44100,10 @@
           "name": "Armadura de resistência (Cota de escamas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-cold--bracers"
+      ]
     },
     {
       "id": "8ca51245b0d9472c",
@@ -44051,8 +44254,10 @@
           "name": "Armadura de resistência (Cota de escamas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-cold--feet"
+      ]
     },
     {
       "id": "9b33280c0458a6df",
@@ -44203,8 +44408,10 @@
           "name": "Armadura de resistência (Cota de escamas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-cold--head"
+      ]
     },
     {
       "id": "ad3379619b2c572f",
@@ -44355,8 +44562,10 @@
           "name": "Armadura de resistência (Cota de escamas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-cold--legs"
+      ]
     },
     {
       "id": "ed518614c0fc13a3",
@@ -44507,8 +44716,10 @@
           "name": "Armadura de resistência (Cota de escamas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-cold--shoulders"
+      ]
     },
     {
       "id": "e79b2d03b3776bd8",
@@ -44676,8 +44887,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-cold-resistance"
+      ]
     },
     {
       "id": "38cfc0b62649909e",
@@ -44828,8 +45041,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-cold-resistance--bracers"
+      ]
     },
     {
       "id": "bd997b7bc5f2426d",
@@ -44980,8 +45195,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-cold-resistance--feet"
+      ]
     },
     {
       "id": "d1701c899336d94e",
@@ -45132,8 +45349,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-cold-resistance--head"
+      ]
     },
     {
       "id": "c7ee6230de27d5a3",
@@ -45284,8 +45503,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-cold-resistance--legs"
+      ]
     },
     {
       "id": "67ef40f2917fe626",
@@ -45436,8 +45657,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-cold-resistance--shoulders"
+      ]
     },
     {
       "id": "27a0f533b6888503",
@@ -45588,8 +45811,10 @@
           "name": "Armadura de resistência (Armadura de talas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-cold"
+      ]
     },
     {
       "id": "f31181f18e36968b",
@@ -45723,8 +45948,10 @@
           "name": "Armadura de resistência (Armadura de talas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-cold--bracers"
+      ]
     },
     {
       "id": "0901d5efbb1897f8",
@@ -45875,8 +46102,10 @@
           "name": "Armadura de resistência (Armadura de talas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-cold--feet"
+      ]
     },
     {
       "id": "65c954be361b54f3",
@@ -46027,8 +46256,10 @@
           "name": "Armadura de resistência (Armadura de talas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-cold--head"
+      ]
     },
     {
       "id": "3af462926c78392b",
@@ -46179,8 +46410,10 @@
           "name": "Armadura de resistência (Armadura de talas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-cold--legs"
+      ]
     },
     {
       "id": "10ce99daa91ef6f4",
@@ -46331,8 +46564,10 @@
           "name": "Armadura de resistência (Armadura de talas · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-cold--shoulders"
+      ]
     },
     {
       "id": "07a70db50e17e034",
@@ -46500,8 +46735,10 @@
           "name": "Armadura de resistência (Couro batido · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-cold"
+      ]
     },
     {
       "id": "73a526deb276b074",
@@ -46635,8 +46872,10 @@
           "name": "Armadura de resistência (Couro batido · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-cold--bracers"
+      ]
     },
     {
       "id": "b8aa5a2d8c705408",
@@ -46787,8 +47026,10 @@
           "name": "Armadura de resistência (Couro batido · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-cold--feet"
+      ]
     },
     {
       "id": "c4e5ff2af59fafb7",
@@ -46939,8 +47180,10 @@
           "name": "Armadura de resistência (Couro batido · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-cold--head"
+      ]
     },
     {
       "id": "1aa04d6364650c2b",
@@ -47091,8 +47334,10 @@
           "name": "Armadura de resistência (Couro batido · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-cold--legs"
+      ]
     },
     {
       "id": "651d6bb4c1079777",
@@ -47243,8 +47488,10 @@
           "name": "Armadura de resistência (Couro batido · Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-cold--shoulders"
+      ]
     },
     {
       "id": "c1b42f9910fdf829",
