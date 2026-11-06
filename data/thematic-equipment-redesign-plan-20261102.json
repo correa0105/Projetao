@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 1880,
-    "pending_artworks": 2607,
+    "approved_artworks": 1958,
+    "pending_artworks": 2529,
     "catalog_references": 4643,
-    "approved_references": 2036,
+    "approved_references": 2114,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -1433,8 +1433,15 @@
             "armor-of-resistance-breastplate-force--legs",
             "armor-of-resistance-breastplate-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-breastplate-force",
+            "armor-of-resistance-breastplate-force--head",
+            "armor-of-resistance-breastplate-force--shoulders",
+            "armor-of-resistance-breastplate-force--bracers",
+            "armor-of-resistance-breastplate-force--legs",
+            "armor-of-resistance-breastplate-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-breastplate-lightning",
@@ -1604,8 +1611,15 @@
             "armor-of-resistance-chain-mail-force--legs",
             "armor-of-resistance-chain-mail-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-mail-force",
+            "armor-of-resistance-chain-mail-force--head",
+            "armor-of-resistance-chain-mail-force--shoulders",
+            "armor-of-resistance-chain-mail-force--bracers",
+            "armor-of-resistance-chain-mail-force--legs",
+            "armor-of-resistance-chain-mail-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-mail-lightning",
@@ -1775,8 +1789,15 @@
             "armor-of-resistance-chain-shirt-force--legs",
             "armor-of-resistance-chain-shirt-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-shirt-force",
+            "armor-of-resistance-chain-shirt-force--head",
+            "armor-of-resistance-chain-shirt-force--shoulders",
+            "armor-of-resistance-chain-shirt-force--bracers",
+            "armor-of-resistance-chain-shirt-force--legs",
+            "armor-of-resistance-chain-shirt-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-shirt-lightning",
@@ -1946,8 +1967,15 @@
             "armor-of-resistance-half-plate-armor-force--legs",
             "armor-of-resistance-half-plate-armor-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-half-plate-armor-force",
+            "armor-of-resistance-half-plate-armor-force--head",
+            "armor-of-resistance-half-plate-armor-force--shoulders",
+            "armor-of-resistance-half-plate-armor-force--bracers",
+            "armor-of-resistance-half-plate-armor-force--legs",
+            "armor-of-resistance-half-plate-armor-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-half-plate-armor-lightning",
@@ -2117,8 +2145,15 @@
             "armor-of-resistance-hide-armor-force--legs",
             "armor-of-resistance-hide-armor-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-hide-armor-force",
+            "armor-of-resistance-hide-armor-force--head",
+            "armor-of-resistance-hide-armor-force--shoulders",
+            "armor-of-resistance-hide-armor-force--bracers",
+            "armor-of-resistance-hide-armor-force--legs",
+            "armor-of-resistance-hide-armor-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-hide-armor-lightning",
@@ -2288,8 +2323,15 @@
             "armor-of-resistance-leather-armor-force--legs",
             "armor-of-resistance-leather-armor-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-leather-armor-force",
+            "armor-of-resistance-leather-armor-force--head",
+            "armor-of-resistance-leather-armor-force--shoulders",
+            "armor-of-resistance-leather-armor-force--bracers",
+            "armor-of-resistance-leather-armor-force--legs",
+            "armor-of-resistance-leather-armor-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-leather-armor-lightning",
@@ -2459,8 +2501,15 @@
             "armor-of-resistance-padded-armor-force--legs",
             "armor-of-resistance-padded-armor-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-padded-armor-force",
+            "armor-of-resistance-padded-armor-force--head",
+            "armor-of-resistance-padded-armor-force--shoulders",
+            "armor-of-resistance-padded-armor-force--bracers",
+            "armor-of-resistance-padded-armor-force--legs",
+            "armor-of-resistance-padded-armor-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-padded-armor-lightning",
@@ -2608,8 +2657,15 @@
             "armor-of-resistance-plate-armor-force--legs",
             "armor-of-resistance-plate-armor-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-plate-armor-force",
+            "armor-of-resistance-plate-armor-force--head",
+            "armor-of-resistance-plate-armor-force--shoulders",
+            "armor-of-resistance-plate-armor-force--bracers",
+            "armor-of-resistance-plate-armor-force--legs",
+            "armor-of-resistance-plate-armor-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-plate-armor-lightning",
@@ -2779,8 +2835,15 @@
             "armor-of-resistance-ring-mail-force--legs",
             "armor-of-resistance-ring-mail-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-ring-mail-force",
+            "armor-of-resistance-ring-mail-force--head",
+            "armor-of-resistance-ring-mail-force--shoulders",
+            "armor-of-resistance-ring-mail-force--bracers",
+            "armor-of-resistance-ring-mail-force--legs",
+            "armor-of-resistance-ring-mail-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-ring-mail-lightning",
@@ -2950,8 +3013,15 @@
             "armor-of-resistance-scale-mail-force--legs",
             "armor-of-resistance-scale-mail-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-scale-mail-force",
+            "armor-of-resistance-scale-mail-force--head",
+            "armor-of-resistance-scale-mail-force--shoulders",
+            "armor-of-resistance-scale-mail-force--bracers",
+            "armor-of-resistance-scale-mail-force--legs",
+            "armor-of-resistance-scale-mail-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-scale-mail-lightning",
@@ -3121,8 +3191,15 @@
             "armor-of-resistance-splint-armor-force--legs",
             "armor-of-resistance-splint-armor-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-splint-armor-force",
+            "armor-of-resistance-splint-armor-force--head",
+            "armor-of-resistance-splint-armor-force--shoulders",
+            "armor-of-resistance-splint-armor-force--bracers",
+            "armor-of-resistance-splint-armor-force--legs",
+            "armor-of-resistance-splint-armor-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-splint-armor-lightning",
@@ -3292,8 +3369,15 @@
             "armor-of-resistance-studded-leather-force--legs",
             "armor-of-resistance-studded-leather-force--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-studded-leather-force",
+            "armor-of-resistance-studded-leather-force--head",
+            "armor-of-resistance-studded-leather-force--shoulders",
+            "armor-of-resistance-studded-leather-force--bracers",
+            "armor-of-resistance-studded-leather-force--legs",
+            "armor-of-resistance-studded-leather-force--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-studded-leather-lightning",
@@ -3463,8 +3547,15 @@
             "spiked-armor-of-force-resistance--legs",
             "spiked-armor-of-force-resistance--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-force-resistance",
+            "spiked-armor-of-force-resistance--head",
+            "spiked-armor-of-force-resistance--shoulders",
+            "spiked-armor-of-force-resistance--bracers",
+            "spiked-armor-of-force-resistance--legs",
+            "spiked-armor-of-force-resistance--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-lightning-resistance",
@@ -35772,8 +35863,10 @@
           "name": "Armadura de resistência (Peitoral · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-force"
+      ]
     },
     {
       "id": "84c97546c77846a4",
@@ -35911,8 +36004,10 @@
           "name": "Armadura de resistência (Peitoral · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-force--bracers"
+      ]
     },
     {
       "id": "3d039f9593bd6241",
@@ -36067,8 +36162,10 @@
           "name": "Armadura de resistência (Peitoral · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-force--feet"
+      ]
     },
     {
       "id": "3e24600be8cd894d",
@@ -36223,8 +36320,10 @@
           "name": "Armadura de resistência (Peitoral · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-force--head"
+      ]
     },
     {
       "id": "eb593f84b289b0ba",
@@ -36379,8 +36478,10 @@
           "name": "Armadura de resistência (Peitoral · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-force--legs"
+      ]
     },
     {
       "id": "a62e51ffff0904c7",
@@ -36535,8 +36636,10 @@
           "name": "Armadura de resistência (Peitoral · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-force--shoulders"
+      ]
     },
     {
       "id": "f51d5308ec2b7a76",
@@ -36708,8 +36811,10 @@
           "name": "Armadura de resistência (Cota de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-force"
+      ]
     },
     {
       "id": "e6f4f7f36424cb30",
@@ -36847,8 +36952,10 @@
           "name": "Armadura de resistência (Cota de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-force--bracers"
+      ]
     },
     {
       "id": "76aa997e0ec11d85",
@@ -37003,8 +37110,10 @@
           "name": "Armadura de resistência (Cota de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-force--feet"
+      ]
     },
     {
       "id": "3003e4e3e9e65659",
@@ -37159,8 +37268,10 @@
           "name": "Armadura de resistência (Cota de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-force--head"
+      ]
     },
     {
       "id": "4b809b40b99fb570",
@@ -37315,8 +37426,10 @@
           "name": "Armadura de resistência (Cota de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-force--legs"
+      ]
     },
     {
       "id": "8c8af74c28f5fc52",
@@ -37471,8 +37584,10 @@
           "name": "Armadura de resistência (Cota de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-force--shoulders"
+      ]
     },
     {
       "id": "7f68ee754df126e2",
@@ -37644,8 +37759,10 @@
           "name": "Armadura de resistência (Camisão de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-force"
+      ]
     },
     {
       "id": "4387118d5c8e65b0",
@@ -37783,8 +37900,10 @@
           "name": "Armadura de resistência (Camisão de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-force--bracers"
+      ]
     },
     {
       "id": "7fe0b9227265fa2b",
@@ -37939,8 +38058,10 @@
           "name": "Armadura de resistência (Camisão de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-force--feet"
+      ]
     },
     {
       "id": "bf6aae1e984184ba",
@@ -38095,8 +38216,10 @@
           "name": "Armadura de resistência (Camisão de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-force--head"
+      ]
     },
     {
       "id": "ac8e6ed31618b054",
@@ -38251,8 +38374,10 @@
           "name": "Armadura de resistência (Camisão de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-force--legs"
+      ]
     },
     {
       "id": "addf4b40ac293633",
@@ -38407,8 +38532,10 @@
           "name": "Armadura de resistência (Camisão de malha · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-force--shoulders"
+      ]
     },
     {
       "id": "2c86c3f66e161ce9",
@@ -38580,8 +38707,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-force"
+      ]
     },
     {
       "id": "98165d30124ac929",
@@ -38719,8 +38848,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-force--bracers"
+      ]
     },
     {
       "id": "a4f7a8394a6adc60",
@@ -38875,8 +39006,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-force--feet"
+      ]
     },
     {
       "id": "d5132580bba70748",
@@ -39031,8 +39164,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-force--head"
+      ]
     },
     {
       "id": "c87136ef61417ef5",
@@ -39187,8 +39322,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-force--legs"
+      ]
     },
     {
       "id": "ca49444d236dc53f",
@@ -39343,8 +39480,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-force--shoulders"
+      ]
     },
     {
       "id": "2a4bf9a57f08f93c",
@@ -39516,8 +39655,10 @@
           "name": "Armadura de resistência (Armadura de peles · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-force"
+      ]
     },
     {
       "id": "a6ad29c75044b8d1",
@@ -39655,8 +39796,10 @@
           "name": "Armadura de resistência (Armadura de peles · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-force--bracers"
+      ]
     },
     {
       "id": "b88223df1332dfc5",
@@ -39811,8 +39954,10 @@
           "name": "Armadura de resistência (Armadura de peles · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-force--feet"
+      ]
     },
     {
       "id": "59771dca0959cb1d",
@@ -39967,8 +40112,10 @@
           "name": "Armadura de resistência (Armadura de peles · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-force--head"
+      ]
     },
     {
       "id": "fec62224491d0767",
@@ -40123,8 +40270,10 @@
           "name": "Armadura de resistência (Armadura de peles · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-force--legs"
+      ]
     },
     {
       "id": "2baed197401cf469",
@@ -40279,8 +40428,10 @@
           "name": "Armadura de resistência (Armadura de peles · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-force--shoulders"
+      ]
     },
     {
       "id": "b8cf7d0af8e4020f",
@@ -40452,8 +40603,10 @@
           "name": "Armadura de resistência (Armadura de couro · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-force"
+      ]
     },
     {
       "id": "9a77731bf91691ca",
@@ -40591,8 +40744,10 @@
           "name": "Armadura de resistência (Armadura de couro · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-force--bracers"
+      ]
     },
     {
       "id": "3612dc5572cb566f",
@@ -40747,8 +40902,10 @@
           "name": "Armadura de resistência (Armadura de couro · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-force--feet"
+      ]
     },
     {
       "id": "6b43e3d3fc57fed5",
@@ -40903,8 +41060,10 @@
           "name": "Armadura de resistência (Armadura de couro · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-force--head"
+      ]
     },
     {
       "id": "222701f7e6172145",
@@ -41059,8 +41218,10 @@
           "name": "Armadura de resistência (Armadura de couro · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-force--legs"
+      ]
     },
     {
       "id": "01ee1aeeefaaf85a",
@@ -41215,8 +41376,10 @@
           "name": "Armadura de resistência (Armadura de couro · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-force--shoulders"
+      ]
     },
     {
       "id": "a146417d0aa96aa5",
@@ -41388,8 +41551,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-force"
+      ]
     },
     {
       "id": "2f053d2d503e77aa",
@@ -41527,8 +41692,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-force--bracers"
+      ]
     },
     {
       "id": "d6c66b0f03f98af0",
@@ -41683,8 +41850,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-force--feet"
+      ]
     },
     {
       "id": "d21b49e92cfc4f63",
@@ -41839,8 +42008,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-force--head"
+      ]
     },
     {
       "id": "13abccc9b40bafb8",
@@ -41995,8 +42166,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-force--legs"
+      ]
     },
     {
       "id": "c91a75e0f37a6738",
@@ -42151,8 +42324,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-force--shoulders"
+      ]
     },
     {
       "id": "68cd668ee93f01ca",
@@ -42324,8 +42499,10 @@
           "name": "Armadura de resistência (Armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-force"
+      ]
     },
     {
       "id": "a1309fcb76ca5866",
@@ -42463,8 +42640,10 @@
           "name": "Armadura de resistência (Armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-force--bracers"
+      ]
     },
     {
       "id": "8acaf5600bea5af1",
@@ -42619,8 +42798,10 @@
           "name": "Armadura de resistência (Armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-force--feet"
+      ]
     },
     {
       "id": "ce28dbdec29e99c4",
@@ -42775,8 +42956,10 @@
           "name": "Armadura de resistência (Armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-force--head"
+      ]
     },
     {
       "id": "7d8f68159883beb1",
@@ -42931,8 +43114,10 @@
           "name": "Armadura de resistência (Armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-force--legs"
+      ]
     },
     {
       "id": "74f0864a62554fb2",
@@ -43087,8 +43272,10 @@
           "name": "Armadura de resistência (Armadura de placas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-force--shoulders"
+      ]
     },
     {
       "id": "80917bf5fdd72615",
@@ -43260,8 +43447,10 @@
           "name": "Armadura de resistência (Cota de anéis · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-force"
+      ]
     },
     {
       "id": "92ed521149a690a1",
@@ -43399,8 +43588,10 @@
           "name": "Armadura de resistência (Cota de anéis · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-force--bracers"
+      ]
     },
     {
       "id": "a1893fc87cce7242",
@@ -43555,8 +43746,10 @@
           "name": "Armadura de resistência (Cota de anéis · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-force--feet"
+      ]
     },
     {
       "id": "08b8def1f76047e3",
@@ -43711,8 +43904,10 @@
           "name": "Armadura de resistência (Cota de anéis · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-force--head"
+      ]
     },
     {
       "id": "444c91b2d724d14f",
@@ -43867,8 +44062,10 @@
           "name": "Armadura de resistência (Cota de anéis · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-force--legs"
+      ]
     },
     {
       "id": "c906bef3638a3f08",
@@ -44023,8 +44220,10 @@
           "name": "Armadura de resistência (Cota de anéis · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-force--shoulders"
+      ]
     },
     {
       "id": "7447866dcf365aee",
@@ -44196,8 +44395,10 @@
           "name": "Armadura de resistência (Cota de escamas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-force"
+      ]
     },
     {
       "id": "69b9468c23b2d6b0",
@@ -44335,8 +44536,10 @@
           "name": "Armadura de resistência (Cota de escamas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-force--bracers"
+      ]
     },
     {
       "id": "d78e10043c838c75",
@@ -44491,8 +44694,10 @@
           "name": "Armadura de resistência (Cota de escamas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-force--feet"
+      ]
     },
     {
       "id": "e412170453b4f575",
@@ -44647,8 +44852,10 @@
           "name": "Armadura de resistência (Cota de escamas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-force--head"
+      ]
     },
     {
       "id": "14723a9cdf3f0bfd",
@@ -44803,8 +45010,10 @@
           "name": "Armadura de resistência (Cota de escamas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-force--legs"
+      ]
     },
     {
       "id": "c7d985879b457faa",
@@ -44959,8 +45168,10 @@
           "name": "Armadura de resistência (Cota de escamas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-force--shoulders"
+      ]
     },
     {
       "id": "96f2479d6a7d5461",
@@ -45132,8 +45343,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-force-resistance"
+      ]
     },
     {
       "id": "22b526aaa622b1ff",
@@ -45288,8 +45501,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-force-resistance--bracers"
+      ]
     },
     {
       "id": "775c8e195492c3c8",
@@ -45444,8 +45659,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-force-resistance--feet"
+      ]
     },
     {
       "id": "da6d1a291111af3a",
@@ -45600,8 +45817,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-force-resistance--head"
+      ]
     },
     {
       "id": "2309cbacd520308e",
@@ -45756,8 +45975,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-force-resistance--legs"
+      ]
     },
     {
       "id": "3cf34c3bb79bc1ad",
@@ -45912,8 +46133,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-force-resistance--shoulders"
+      ]
     },
     {
       "id": "72cdd4d37418e3a7",
@@ -46068,8 +46291,10 @@
           "name": "Armadura de resistência (Armadura de talas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-force"
+      ]
     },
     {
       "id": "b94cc095cbe243db",
@@ -46207,8 +46432,10 @@
           "name": "Armadura de resistência (Armadura de talas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-force--bracers"
+      ]
     },
     {
       "id": "f3c52a96545ce41b",
@@ -46363,8 +46590,10 @@
           "name": "Armadura de resistência (Armadura de talas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-force--feet"
+      ]
     },
     {
       "id": "50cab6d256c99fbe",
@@ -46519,8 +46748,10 @@
           "name": "Armadura de resistência (Armadura de talas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-force--head"
+      ]
     },
     {
       "id": "02d1711faf611a52",
@@ -46675,8 +46906,10 @@
           "name": "Armadura de resistência (Armadura de talas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-force--legs"
+      ]
     },
     {
       "id": "7b2bbbfbf499d6e9",
@@ -46831,8 +47064,10 @@
           "name": "Armadura de resistência (Armadura de talas · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-force--shoulders"
+      ]
     },
     {
       "id": "9bccc98daa3de2fc",
@@ -47004,8 +47239,10 @@
           "name": "Armadura de resistência (Couro batido · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-force"
+      ]
     },
     {
       "id": "505e46afe85ac7f0",
@@ -47143,8 +47380,10 @@
           "name": "Armadura de resistência (Couro batido · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-force--bracers"
+      ]
     },
     {
       "id": "dbbf5dfd0090a83c",
@@ -47299,8 +47538,10 @@
           "name": "Armadura de resistência (Couro batido · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-force--feet"
+      ]
     },
     {
       "id": "e9cf802de2d8b0bb",
@@ -47455,8 +47696,10 @@
           "name": "Armadura de resistência (Couro batido · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-force--head"
+      ]
     },
     {
       "id": "094f2c9f1a6fead1",
@@ -47611,8 +47854,10 @@
           "name": "Armadura de resistência (Couro batido · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-force--legs"
+      ]
     },
     {
       "id": "acbb4099c5c3fdb6",
@@ -47767,8 +48012,10 @@
           "name": "Armadura de resistência (Couro batido · Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-force--shoulders"
+      ]
     },
     {
       "id": "db8c14ab58780fc5",
