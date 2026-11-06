@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2192,
-    "pending_artworks": 2295,
+    "approved_artworks": 2270,
+    "pending_artworks": 2217,
     "catalog_references": 4643,
-    "approved_references": 2348,
+    "approved_references": 2426,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -1521,8 +1521,15 @@
             "armor-of-resistance-breastplate-psychic--legs",
             "armor-of-resistance-breastplate-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-breastplate-psychic",
+            "armor-of-resistance-breastplate-psychic--head",
+            "armor-of-resistance-breastplate-psychic--shoulders",
+            "armor-of-resistance-breastplate-psychic--bracers",
+            "armor-of-resistance-breastplate-psychic--legs",
+            "armor-of-resistance-breastplate-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-breastplate-radiant",
@@ -1720,8 +1727,15 @@
             "armor-of-resistance-chain-mail-psychic--legs",
             "armor-of-resistance-chain-mail-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-mail-psychic",
+            "armor-of-resistance-chain-mail-psychic--head",
+            "armor-of-resistance-chain-mail-psychic--shoulders",
+            "armor-of-resistance-chain-mail-psychic--bracers",
+            "armor-of-resistance-chain-mail-psychic--legs",
+            "armor-of-resistance-chain-mail-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-mail-radiant",
@@ -1919,8 +1933,15 @@
             "armor-of-resistance-chain-shirt-psychic--legs",
             "armor-of-resistance-chain-shirt-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-shirt-psychic",
+            "armor-of-resistance-chain-shirt-psychic--head",
+            "armor-of-resistance-chain-shirt-psychic--shoulders",
+            "armor-of-resistance-chain-shirt-psychic--bracers",
+            "armor-of-resistance-chain-shirt-psychic--legs",
+            "armor-of-resistance-chain-shirt-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-shirt-radiant",
@@ -2118,8 +2139,15 @@
             "armor-of-resistance-half-plate-armor-psychic--legs",
             "armor-of-resistance-half-plate-armor-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-half-plate-armor-psychic",
+            "armor-of-resistance-half-plate-armor-psychic--head",
+            "armor-of-resistance-half-plate-armor-psychic--shoulders",
+            "armor-of-resistance-half-plate-armor-psychic--bracers",
+            "armor-of-resistance-half-plate-armor-psychic--legs",
+            "armor-of-resistance-half-plate-armor-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-half-plate-armor-radiant",
@@ -2317,8 +2345,15 @@
             "armor-of-resistance-hide-armor-psychic--legs",
             "armor-of-resistance-hide-armor-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-hide-armor-psychic",
+            "armor-of-resistance-hide-armor-psychic--head",
+            "armor-of-resistance-hide-armor-psychic--shoulders",
+            "armor-of-resistance-hide-armor-psychic--bracers",
+            "armor-of-resistance-hide-armor-psychic--legs",
+            "armor-of-resistance-hide-armor-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-hide-armor-radiant",
@@ -2516,8 +2551,15 @@
             "armor-of-resistance-leather-armor-psychic--legs",
             "armor-of-resistance-leather-armor-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-leather-armor-psychic",
+            "armor-of-resistance-leather-armor-psychic--head",
+            "armor-of-resistance-leather-armor-psychic--shoulders",
+            "armor-of-resistance-leather-armor-psychic--bracers",
+            "armor-of-resistance-leather-armor-psychic--legs",
+            "armor-of-resistance-leather-armor-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-leather-armor-radiant",
@@ -2715,8 +2757,15 @@
             "armor-of-resistance-padded-armor-psychic--legs",
             "armor-of-resistance-padded-armor-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-padded-armor-psychic",
+            "armor-of-resistance-padded-armor-psychic--head",
+            "armor-of-resistance-padded-armor-psychic--shoulders",
+            "armor-of-resistance-padded-armor-psychic--bracers",
+            "armor-of-resistance-padded-armor-psychic--legs",
+            "armor-of-resistance-padded-armor-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-padded-armor-radiant",
@@ -2892,8 +2941,15 @@
             "armor-of-resistance-plate-armor-psychic--legs",
             "armor-of-resistance-plate-armor-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-plate-armor-psychic",
+            "armor-of-resistance-plate-armor-psychic--head",
+            "armor-of-resistance-plate-armor-psychic--shoulders",
+            "armor-of-resistance-plate-armor-psychic--bracers",
+            "armor-of-resistance-plate-armor-psychic--legs",
+            "armor-of-resistance-plate-armor-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-plate-armor-radiant",
@@ -3091,8 +3147,15 @@
             "armor-of-resistance-ring-mail-psychic--legs",
             "armor-of-resistance-ring-mail-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-ring-mail-psychic",
+            "armor-of-resistance-ring-mail-psychic--head",
+            "armor-of-resistance-ring-mail-psychic--shoulders",
+            "armor-of-resistance-ring-mail-psychic--bracers",
+            "armor-of-resistance-ring-mail-psychic--legs",
+            "armor-of-resistance-ring-mail-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-ring-mail-radiant",
@@ -3290,8 +3353,15 @@
             "armor-of-resistance-scale-mail-psychic--legs",
             "armor-of-resistance-scale-mail-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-scale-mail-psychic",
+            "armor-of-resistance-scale-mail-psychic--head",
+            "armor-of-resistance-scale-mail-psychic--shoulders",
+            "armor-of-resistance-scale-mail-psychic--bracers",
+            "armor-of-resistance-scale-mail-psychic--legs",
+            "armor-of-resistance-scale-mail-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-scale-mail-radiant",
@@ -3489,8 +3559,15 @@
             "armor-of-resistance-splint-armor-psychic--legs",
             "armor-of-resistance-splint-armor-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-splint-armor-psychic",
+            "armor-of-resistance-splint-armor-psychic--head",
+            "armor-of-resistance-splint-armor-psychic--shoulders",
+            "armor-of-resistance-splint-armor-psychic--bracers",
+            "armor-of-resistance-splint-armor-psychic--legs",
+            "armor-of-resistance-splint-armor-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-splint-armor-radiant",
@@ -3688,8 +3765,15 @@
             "armor-of-resistance-studded-leather-psychic--legs",
             "armor-of-resistance-studded-leather-psychic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-studded-leather-psychic",
+            "armor-of-resistance-studded-leather-psychic--head",
+            "armor-of-resistance-studded-leather-psychic--shoulders",
+            "armor-of-resistance-studded-leather-psychic--bracers",
+            "armor-of-resistance-studded-leather-psychic--legs",
+            "armor-of-resistance-studded-leather-psychic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-studded-leather-radiant",
@@ -3887,8 +3971,15 @@
             "spiked-armor-of-psychic-resistance--legs",
             "spiked-armor-of-psychic-resistance--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-psychic-resistance",
+            "spiked-armor-of-psychic-resistance--head",
+            "spiked-armor-of-psychic-resistance--shoulders",
+            "spiked-armor-of-psychic-resistance--bracers",
+            "spiked-armor-of-psychic-resistance--legs",
+            "spiked-armor-of-psychic-resistance--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-radiant-resistance",
@@ -36204,8 +36295,10 @@
           "name": "Armadura de resistência (Peitoral · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-psychic"
+      ]
     },
     {
       "id": "faa4c760317e80e0",
@@ -36351,8 +36444,10 @@
           "name": "Armadura de resistência (Peitoral · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-psychic--bracers"
+      ]
     },
     {
       "id": "a3f51da2f5029e6a",
@@ -36515,8 +36610,10 @@
           "name": "Armadura de resistência (Peitoral · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-psychic--feet"
+      ]
     },
     {
       "id": "6ecbe4f9fce079e7",
@@ -36679,8 +36776,10 @@
           "name": "Armadura de resistência (Peitoral · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-psychic--head"
+      ]
     },
     {
       "id": "41d518fc1bfa4fec",
@@ -36843,8 +36942,10 @@
           "name": "Armadura de resistência (Peitoral · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-psychic--legs"
+      ]
     },
     {
       "id": "569eba572c9ea68b",
@@ -37007,8 +37108,10 @@
           "name": "Armadura de resistência (Peitoral · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-psychic--shoulders"
+      ]
     },
     {
       "id": "6b51c8b02f76091c",
@@ -37188,8 +37291,10 @@
           "name": "Armadura de resistência (Cota de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-psychic"
+      ]
     },
     {
       "id": "d7edf4e9fd044c81",
@@ -37335,8 +37440,10 @@
           "name": "Armadura de resistência (Cota de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-psychic--bracers"
+      ]
     },
     {
       "id": "d7c9ba8534ca7bc1",
@@ -37499,8 +37606,10 @@
           "name": "Armadura de resistência (Cota de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-psychic--feet"
+      ]
     },
     {
       "id": "3e5c2caa328c8b21",
@@ -37663,8 +37772,10 @@
           "name": "Armadura de resistência (Cota de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-psychic--head"
+      ]
     },
     {
       "id": "e20b52d2dbc3af1a",
@@ -37827,8 +37938,10 @@
           "name": "Armadura de resistência (Cota de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-psychic--legs"
+      ]
     },
     {
       "id": "e545dcefcbc6c839",
@@ -37991,8 +38104,10 @@
           "name": "Armadura de resistência (Cota de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-psychic--shoulders"
+      ]
     },
     {
       "id": "adfd31af20b32746",
@@ -38172,8 +38287,10 @@
           "name": "Armadura de resistência (Camisão de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-psychic"
+      ]
     },
     {
       "id": "7d64000cb679e646",
@@ -38319,8 +38436,10 @@
           "name": "Armadura de resistência (Camisão de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-psychic--bracers"
+      ]
     },
     {
       "id": "c994a642e9b5995d",
@@ -38483,8 +38602,10 @@
           "name": "Armadura de resistência (Camisão de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-psychic--feet"
+      ]
     },
     {
       "id": "62128733a9c6d026",
@@ -38647,8 +38768,10 @@
           "name": "Armadura de resistência (Camisão de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-psychic--head"
+      ]
     },
     {
       "id": "73210a10cb1986fd",
@@ -38811,8 +38934,10 @@
           "name": "Armadura de resistência (Camisão de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-psychic--legs"
+      ]
     },
     {
       "id": "5e12cbfdb1e9d6d1",
@@ -38975,8 +39100,10 @@
           "name": "Armadura de resistência (Camisão de malha · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-psychic--shoulders"
+      ]
     },
     {
       "id": "7328b8c0e3af3770",
@@ -39156,8 +39283,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-psychic"
+      ]
     },
     {
       "id": "ee075f147a222721",
@@ -39303,8 +39432,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-psychic--bracers"
+      ]
     },
     {
       "id": "3937b783db389dad",
@@ -39467,8 +39598,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-psychic--feet"
+      ]
     },
     {
       "id": "f37ccc26bea9e98f",
@@ -39631,8 +39764,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-psychic--head"
+      ]
     },
     {
       "id": "4f6e456565d138bf",
@@ -39795,8 +39930,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-psychic--legs"
+      ]
     },
     {
       "id": "70567e8d6f640feb",
@@ -39959,8 +40096,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-psychic--shoulders"
+      ]
     },
     {
       "id": "96e7c9e2f2404059",
@@ -40140,8 +40279,10 @@
           "name": "Armadura de resistência (Armadura de peles · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-psychic"
+      ]
     },
     {
       "id": "c42a8dcfadd2c55c",
@@ -40287,8 +40428,10 @@
           "name": "Armadura de resistência (Armadura de peles · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-psychic--bracers"
+      ]
     },
     {
       "id": "8a167c04b61ca6a6",
@@ -40451,8 +40594,10 @@
           "name": "Armadura de resistência (Armadura de peles · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-psychic--feet"
+      ]
     },
     {
       "id": "7f28c75c7bdcd989",
@@ -40615,8 +40760,10 @@
           "name": "Armadura de resistência (Armadura de peles · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-psychic--head"
+      ]
     },
     {
       "id": "89553dd183c7fafc",
@@ -40779,8 +40926,10 @@
           "name": "Armadura de resistência (Armadura de peles · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-psychic--legs"
+      ]
     },
     {
       "id": "c04f79e2e30bc2cc",
@@ -40943,8 +41092,10 @@
           "name": "Armadura de resistência (Armadura de peles · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-psychic--shoulders"
+      ]
     },
     {
       "id": "8bdffaed582ce4e6",
@@ -41124,8 +41275,10 @@
           "name": "Armadura de resistência (Armadura de couro · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-psychic"
+      ]
     },
     {
       "id": "9f06218330a19b28",
@@ -41271,8 +41424,10 @@
           "name": "Armadura de resistência (Armadura de couro · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-psychic--bracers"
+      ]
     },
     {
       "id": "35f4946b913ddbf5",
@@ -41435,8 +41590,10 @@
           "name": "Armadura de resistência (Armadura de couro · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-psychic--feet"
+      ]
     },
     {
       "id": "39a660e57c663b97",
@@ -41599,8 +41756,10 @@
           "name": "Armadura de resistência (Armadura de couro · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-psychic--head"
+      ]
     },
     {
       "id": "49f46a3e566bb057",
@@ -41763,8 +41922,10 @@
           "name": "Armadura de resistência (Armadura de couro · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-psychic--legs"
+      ]
     },
     {
       "id": "6b3719b74692b3d4",
@@ -41927,8 +42088,10 @@
           "name": "Armadura de resistência (Armadura de couro · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-psychic--shoulders"
+      ]
     },
     {
       "id": "72dd62d7ea09b376",
@@ -42108,8 +42271,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-psychic"
+      ]
     },
     {
       "id": "818cc76bf105bfd4",
@@ -42255,8 +42420,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-psychic--bracers"
+      ]
     },
     {
       "id": "93efec1c8708116c",
@@ -42419,8 +42586,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-psychic--feet"
+      ]
     },
     {
       "id": "ff7dea6734bb3c55",
@@ -42583,8 +42752,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-psychic--head"
+      ]
     },
     {
       "id": "221315894f7bd715",
@@ -42747,8 +42918,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-psychic--legs"
+      ]
     },
     {
       "id": "453ffb04a92362c2",
@@ -42911,8 +43084,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-psychic--shoulders"
+      ]
     },
     {
       "id": "ed0df13e436fd5fe",
@@ -43092,8 +43267,10 @@
           "name": "Armadura de resistência (Armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-psychic"
+      ]
     },
     {
       "id": "6a29caf622ec9efb",
@@ -43239,8 +43416,10 @@
           "name": "Armadura de resistência (Armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-psychic--bracers"
+      ]
     },
     {
       "id": "f8f989cf0dca34b5",
@@ -43403,8 +43582,10 @@
           "name": "Armadura de resistência (Armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-psychic--feet"
+      ]
     },
     {
       "id": "38f8828760d41cea",
@@ -43567,8 +43748,10 @@
           "name": "Armadura de resistência (Armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-psychic--head"
+      ]
     },
     {
       "id": "9692ff2662362754",
@@ -43731,8 +43914,10 @@
           "name": "Armadura de resistência (Armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-psychic--legs"
+      ]
     },
     {
       "id": "f5b19eaf8270ce6c",
@@ -43895,8 +44080,10 @@
           "name": "Armadura de resistência (Armadura de placas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-psychic--shoulders"
+      ]
     },
     {
       "id": "96f3cc49a9bd453d",
@@ -44076,8 +44263,10 @@
           "name": "Armadura de resistência (Cota de anéis · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-psychic"
+      ]
     },
     {
       "id": "2ae3d7218d4593f3",
@@ -44223,8 +44412,10 @@
           "name": "Armadura de resistência (Cota de anéis · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-psychic--bracers"
+      ]
     },
     {
       "id": "6da4491449040969",
@@ -44387,8 +44578,10 @@
           "name": "Armadura de resistência (Cota de anéis · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-psychic--feet"
+      ]
     },
     {
       "id": "971166690a836473",
@@ -44551,8 +44744,10 @@
           "name": "Armadura de resistência (Cota de anéis · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-psychic--head"
+      ]
     },
     {
       "id": "8d218a79f1c6e04e",
@@ -44715,8 +44910,10 @@
           "name": "Armadura de resistência (Cota de anéis · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-psychic--legs"
+      ]
     },
     {
       "id": "02651a71b8f9924b",
@@ -44879,8 +45076,10 @@
           "name": "Armadura de resistência (Cota de anéis · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-psychic--shoulders"
+      ]
     },
     {
       "id": "131a8bc5d7a72109",
@@ -45060,8 +45259,10 @@
           "name": "Armadura de resistência (Cota de escamas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-psychic"
+      ]
     },
     {
       "id": "3fef1764be61ad69",
@@ -45207,8 +45408,10 @@
           "name": "Armadura de resistência (Cota de escamas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-psychic--bracers"
+      ]
     },
     {
       "id": "b2bfce3ec5b3690f",
@@ -45371,8 +45574,10 @@
           "name": "Armadura de resistência (Cota de escamas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-psychic--feet"
+      ]
     },
     {
       "id": "244b6a7dbad59b35",
@@ -45535,8 +45740,10 @@
           "name": "Armadura de resistência (Cota de escamas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-psychic--head"
+      ]
     },
     {
       "id": "70a48bb14a0662cf",
@@ -45699,8 +45906,10 @@
           "name": "Armadura de resistência (Cota de escamas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-psychic--legs"
+      ]
     },
     {
       "id": "59b05e5b693e210f",
@@ -45863,8 +46072,10 @@
           "name": "Armadura de resistência (Cota de escamas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-psychic--shoulders"
+      ]
     },
     {
       "id": "e24671a4c147498e",
@@ -46044,8 +46255,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-psychic-resistance"
+      ]
     },
     {
       "id": "91145f73cdf8c158",
@@ -46208,8 +46421,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-psychic-resistance--bracers"
+      ]
     },
     {
       "id": "b9b6ee86bafb2376",
@@ -46372,8 +46587,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-psychic-resistance--feet"
+      ]
     },
     {
       "id": "70a24e65f4da2642",
@@ -46536,8 +46753,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-psychic-resistance--head"
+      ]
     },
     {
       "id": "1b034440a5a69964",
@@ -46700,8 +46919,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-psychic-resistance--legs"
+      ]
     },
     {
       "id": "19f806f7b574f9f8",
@@ -46864,8 +47085,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-psychic-resistance--shoulders"
+      ]
     },
     {
       "id": "db753245cbca6c8e",
@@ -47028,8 +47251,10 @@
           "name": "Armadura de resistência (Armadura de talas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-psychic"
+      ]
     },
     {
       "id": "f82e63676aa30ada",
@@ -47175,8 +47400,10 @@
           "name": "Armadura de resistência (Armadura de talas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-psychic--bracers"
+      ]
     },
     {
       "id": "61755b19d7eb44d3",
@@ -47339,8 +47566,10 @@
           "name": "Armadura de resistência (Armadura de talas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-psychic--feet"
+      ]
     },
     {
       "id": "c67016e0f5b916a3",
@@ -47503,8 +47732,10 @@
           "name": "Armadura de resistência (Armadura de talas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-psychic--head"
+      ]
     },
     {
       "id": "9007ba5e2c662e15",
@@ -47667,8 +47898,10 @@
           "name": "Armadura de resistência (Armadura de talas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-psychic--legs"
+      ]
     },
     {
       "id": "ed7358a73e7d6f0f",
@@ -47831,8 +48064,10 @@
           "name": "Armadura de resistência (Armadura de talas · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-psychic--shoulders"
+      ]
     },
     {
       "id": "d8b3d750d9641317",
@@ -48012,8 +48247,10 @@
           "name": "Armadura de resistência (Couro batido · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-psychic"
+      ]
     },
     {
       "id": "417018fe215e28b6",
@@ -48159,8 +48396,10 @@
           "name": "Armadura de resistência (Couro batido · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-psychic--bracers"
+      ]
     },
     {
       "id": "dd3e4a55db573b80",
@@ -48323,8 +48562,10 @@
           "name": "Armadura de resistência (Couro batido · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-psychic--feet"
+      ]
     },
     {
       "id": "b5823f8d6546a8cb",
@@ -48487,8 +48728,10 @@
           "name": "Armadura de resistência (Couro batido · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-psychic--head"
+      ]
     },
     {
       "id": "c3e8e2daffcd594f",
@@ -48651,8 +48894,10 @@
           "name": "Armadura de resistência (Couro batido · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-psychic--legs"
+      ]
     },
     {
       "id": "fc40f26a4e7c5450",
@@ -48815,8 +49060,10 @@
           "name": "Armadura de resistência (Couro batido · Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-psychic--shoulders"
+      ]
     },
     {
       "id": "6c3226039f95d4c1",

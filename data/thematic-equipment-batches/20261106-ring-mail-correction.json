@@ -1,0 +1,2090 @@
+{
+  "version": "20261106",
+  "direction": "Anéis pequenos próximos e entrelaçados como nas três referências do proprietário; eliminar argolas gigantes sobre tecido.",
+  "previousImagesPreserved": true,
+  "referenceDirectory": ".local/ring-mail-correction-20261106/references",
+  "jobs": [
+    {
+      "physical_job": "fc9780f23fd1740d",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "adamantine-armor-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "db457b0db66f0fe9",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "adamantine-armor-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "631db91333584fec",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "adamantine-armor-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "88f72c00a6905729",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "adamantine-armor-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "d870956c8017e7bb",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "adamantine-armor-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "1a4caac266c88713",
+      "family": "Adamantine Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "adamantine-armor-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "ed8b90f65d5825dd",
+      "family": "Antimagic Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "antimagic-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "59ef78caefb0be23",
+      "family": "Antimagic Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "antimagic-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "98f836f60ddac13e",
+      "family": "Antimagic Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "antimagic-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "e8ca78bd0ab392a5",
+      "family": "Antimagic Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "antimagic-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "46417d6a69888dfa",
+      "family": "Antimagic Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "antimagic-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "0dcb45275c569444",
+      "family": "Antimagic Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "antimagic-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "cd9a16da443bae61",
+      "family": "Armor of Gleaming",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "ring-mail-of-gleaming"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "eb522756ae1ecbc4",
+      "family": "Armor of Gleaming",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "ring-mail-of-gleaming--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "e25000db5df610df",
+      "family": "Armor of Gleaming",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "ring-mail-of-gleaming--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "842d7a4c911dcb71",
+      "family": "Armor of Gleaming",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "ring-mail-of-gleaming--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "1f57620ae568131f",
+      "family": "Armor of Gleaming",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "ring-mail-of-gleaming--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "265d104ee2d7857f",
+      "family": "Armor of Gleaming",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "ring-mail-of-gleaming--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "8111f156c2153828",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-resistance-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "f8d825ae41f6d928",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-resistance-ring-mail-cold"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "a759a92031674daf",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-resistance-ring-mail-fire"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "e52956bb138c874e",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-resistance-ring-mail-force"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "92ed521149a690a1",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-resistance-ring-mail-lightning"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "72041c760b0cd728",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-resistance-ring-mail-necrotic"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "364995246f0a1c4e",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-resistance-ring-mail-poison"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "9ce020ea5f94c33c",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-resistance-ring-mail-psychic"
+      ],
+      "previous_status": "pending",
+      "status": "approved",
+      "approved_consumers": [
+        "armor-of-resistance-ring-mail-psychic"
+      ],
+      "publication": "resistance-psychic-20261105-pending"
+    },
+    {
+      "physical_job": "2ae3d7218d4593f3",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-resistance-ring-mail-radiant"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "ce6ebe25fc0ecb2d",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-resistance-ring-mail-thunder"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "753541eabda0cd7a",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-resistance-ring-mail-cold--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "d833615c1ae09575",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-resistance-ring-mail-fire--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "cb4d2a1ab826964f",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-resistance-ring-mail-force--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "a1893fc87cce7242",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-resistance-ring-mail-lightning--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "9d992f507c2e0ecc",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-resistance-ring-mail-necrotic--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "4dee7f9d1771b2f4",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-resistance-ring-mail-poison--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "fc50ee4e92fd6d75",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-resistance-ring-mail-psychic--bracers"
+      ],
+      "previous_status": "pending",
+      "status": "approved",
+      "approved_consumers": [
+        "armor-of-resistance-ring-mail-psychic--bracers"
+      ],
+      "publication": "resistance-psychic-20261105-pending"
+    },
+    {
+      "physical_job": "6da4491449040969",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-resistance-ring-mail-radiant--bracers"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "c05e57a9d6900aa8",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-resistance-ring-mail-thunder--bracers"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "9f8e2cac3a562076",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-resistance-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "3c5cad8694bc6e14",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-resistance-ring-mail-cold--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "de73123c16ce644d",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-resistance-ring-mail-fire--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "292114f2626b305e",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-resistance-ring-mail-force--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "08b8def1f76047e3",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-resistance-ring-mail-lightning--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "155d55502288423c",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-resistance-ring-mail-necrotic--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "060462153c684e5a",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-resistance-ring-mail-poison--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "b26c2f8d9267b690",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-resistance-ring-mail-psychic--feet"
+      ],
+      "previous_status": "pending",
+      "status": "approved",
+      "approved_consumers": [
+        "armor-of-resistance-ring-mail-psychic--feet"
+      ],
+      "publication": "resistance-psychic-20261105-pending"
+    },
+    {
+      "physical_job": "971166690a836473",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-resistance-ring-mail-radiant--feet"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "d059271cd3c93737",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-resistance-ring-mail-thunder--feet"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "4784bd62f1ab285c",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-resistance-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "a6dc1f3fb84c12f3",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-resistance-ring-mail-cold--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "ff6e2f219f60c7f5",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-resistance-ring-mail-fire--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "be1a9f2577b7e2fb",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-resistance-ring-mail-force--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "444c91b2d724d14f",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-resistance-ring-mail-lightning--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "5279a5398f09d8e4",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-resistance-ring-mail-necrotic--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "8b9219ac1570cf6e",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-resistance-ring-mail-poison--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "fb649e7112a8ce01",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-resistance-ring-mail-psychic--head"
+      ],
+      "previous_status": "pending",
+      "status": "approved",
+      "approved_consumers": [
+        "armor-of-resistance-ring-mail-psychic--head"
+      ],
+      "publication": "resistance-psychic-20261105-pending"
+    },
+    {
+      "physical_job": "8d218a79f1c6e04e",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-resistance-ring-mail-radiant--head"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "27b11bed0b8c5cdc",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-resistance-ring-mail-thunder--head"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "8f4bb9208162cd0e",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-resistance-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "e861eaaaef546cc2",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-resistance-ring-mail-cold--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "fdd57088a10ffe15",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-resistance-ring-mail-fire--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "6ce8668592787090",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-resistance-ring-mail-force--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "c906bef3638a3f08",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-resistance-ring-mail-lightning--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "9fc1652cabcad539",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-resistance-ring-mail-necrotic--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "cf890b8a2245811c",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-resistance-ring-mail-poison--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "6e874c880e77f9c7",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-resistance-ring-mail-psychic--legs"
+      ],
+      "previous_status": "pending",
+      "status": "approved",
+      "approved_consumers": [
+        "armor-of-resistance-ring-mail-psychic--legs"
+      ],
+      "publication": "resistance-psychic-20261105-pending"
+    },
+    {
+      "physical_job": "02651a71b8f9924b",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-resistance-ring-mail-radiant--legs"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "d540ce0b76cb01ce",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-resistance-ring-mail-thunder--legs"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "5711f614d94d3eeb",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-resistance-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "d3b6781c248f28bf",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-resistance-ring-mail-cold--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "67229a355f3ff353",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-resistance-ring-mail-fire--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "0f71883b7d5027c3",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-resistance-ring-mail-force--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "7447866dcf365aee",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-resistance-ring-mail-lightning--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "55cd5e033422d3f7",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-resistance-ring-mail-necrotic--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "ebf0ea9bf8f85698",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-resistance-ring-mail-poison--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "03f85e8c1004b7d7",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-resistance-ring-mail-psychic--shoulders"
+      ],
+      "previous_status": "pending",
+      "status": "approved",
+      "approved_consumers": [
+        "armor-of-resistance-ring-mail-psychic--shoulders"
+      ],
+      "publication": "resistance-psychic-20261105-pending"
+    },
+    {
+      "physical_job": "131a8bc5d7a72109",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-resistance-ring-mail-radiant--shoulders"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "402f70dbe2702327",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-resistance-ring-mail-thunder--shoulders"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "e7bed07e88c9ed8f",
+      "family": "Armor of Resistance",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-resistance-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "b8cf164d258a36a1",
+      "family": "Armor of the Fallen",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "ring-mail-of-the-fallen"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "182ac019dccf8a7f",
+      "family": "Armor of the Fallen",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "ring-mail-of-the-fallen--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "b887e27e65500f43",
+      "family": "Armor of the Fallen",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "ring-mail-of-the-fallen--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "d5dc6437611307a9",
+      "family": "Armor of the Fallen",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "ring-mail-of-the-fallen--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "8bc583b3b7fe823c",
+      "family": "Armor of the Fallen",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "ring-mail-of-the-fallen--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "16c1a9d3d7f4ad59",
+      "family": "Armor of the Fallen",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "ring-mail-of-the-fallen--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "b5537c80b6fff608",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "ec29e315bbb9f3ae",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-piercing"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "95e102412aa790d2",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-slashing"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "d883ac2585e3bf8a",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-piercing--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "8e08eb784370bc35",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-slashing--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "e2cd212d409d1b55",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "66253034f6e0df91",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-piercing--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "8de2246548ca0f4b",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-slashing--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "97176bac117d08df",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "8e3c8aba7cb43691",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-piercing--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "f37a74f513d6142a",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-slashing--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "3bd19a756bdd8643",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "486b6202f632a992",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-piercing--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "c9c766fc938ef524",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-slashing--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "5dc69c8ebf8b8ad0",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "c2433c27a7e03781",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-piercing--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "1d99d6bbdc8e5896",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail-slashing--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "6f721cfa1e294789",
+      "family": "Armor of Vulnerability",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "armor-of-vulnerability-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "9f6b35943f7fdcb8",
+      "family": "Armor of Weightlessness",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "ring-mail-of-weightlessness"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "6853bb929093dade",
+      "family": "Armor of Weightlessness",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "ring-mail-of-weightlessness--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "e0f6ff11fd3c3b70",
+      "family": "Armor of Weightlessness",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "ring-mail-of-weightlessness--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "bef4f50d275dc9db",
+      "family": "Armor of Weightlessness",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "ring-mail-of-weightlessness--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "e778c6677db7f881",
+      "family": "Armor of Weightlessness",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "ring-mail-of-weightlessness--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "b7545c0f4ded623b",
+      "family": "Armor of Weightlessness",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "ring-mail-of-weightlessness--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "dc3b2f7b7303c469",
+      "family": "Armor, +1, +2, or +3",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "magic-armor-ring-mail-plus-1",
+        "magic-armor-ring-mail-plus-2",
+        "magic-armor-ring-mail-plus-3"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "4f6ad4246fa2d75b",
+      "family": "Armor, +1, +2, or +3",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "magic-armor-ring-mail-plus-1--bracers",
+        "magic-armor-ring-mail-plus-2--bracers",
+        "magic-armor-ring-mail-plus-3--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "b136131e0b1d062d",
+      "family": "Armor, +1, +2, or +3",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "magic-armor-ring-mail-plus-1--feet",
+        "magic-armor-ring-mail-plus-2--feet",
+        "magic-armor-ring-mail-plus-3--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "6dee89cf42a3142d",
+      "family": "Armor, +1, +2, or +3",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "magic-armor-ring-mail-plus-1--head",
+        "magic-armor-ring-mail-plus-2--head",
+        "magic-armor-ring-mail-plus-3--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "db97f8db4841ac93",
+      "family": "Armor, +1, +2, or +3",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "magic-armor-ring-mail-plus-1--legs",
+        "magic-armor-ring-mail-plus-2--legs",
+        "magic-armor-ring-mail-plus-3--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "0b8990c5e89fd3bd",
+      "family": "Armor, +1, +2, or +3",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "magic-armor-ring-mail-plus-1--shoulders",
+        "magic-armor-ring-mail-plus-2--shoulders",
+        "magic-armor-ring-mail-plus-3--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "6a411fc2d08fe1a0",
+      "family": "Cast-Off Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "cast-off-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "85abbff6aa374c80",
+      "family": "Cast-Off Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "cast-off-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "99dcbb10158b7666",
+      "family": "Cast-Off Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "cast-off-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "9bcb3ba55b9d94d5",
+      "family": "Cast-Off Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "cast-off-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "33b98c27915742b6",
+      "family": "Cast-Off Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "cast-off-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "b09f1c529bc800f2",
+      "family": "Cast-Off Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "cast-off-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "5ebbf46a34ab2c76",
+      "family": "Demon Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "demon-armor-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "a6f50273a0fa1a3b",
+      "family": "Demon Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "demon-armor-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "665ab081995f9657",
+      "family": "Demon Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "demon-armor-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "11e0dec937d7bc66",
+      "family": "Demon Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "demon-armor-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "5773e42250d816f9",
+      "family": "Demon Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "demon-armor-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "7294c0c19f92402e",
+      "family": "Demon Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "demon-armor-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "87a2b4614117f3c1",
+      "family": "Feywrought Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "feywrought-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "002c3bf668c19620",
+      "family": "Feywrought Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "feywrought-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "fd66916ef6a77c86",
+      "family": "Feywrought Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "feywrought-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "7e6668280fa978af",
+      "family": "Feywrought Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "feywrought-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "f632569176efc066",
+      "family": "Feywrought Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "feywrought-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "e6f7d81a84487e95",
+      "family": "Feywrought Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "feywrought-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "efd089070c1b0b97",
+      "family": "Gloomwrought Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "gloomwrought-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "0e8d0c49888a56d8",
+      "family": "Gloomwrought Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "gloomwrought-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "66d32a3057a982f5",
+      "family": "Gloomwrought Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "gloomwrought-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "a3d27434f12db254",
+      "family": "Gloomwrought Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "gloomwrought-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "f2455d5b950a7dfb",
+      "family": "Gloomwrought Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "gloomwrought-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "67eddd09f5ec9f08",
+      "family": "Gloomwrought Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "gloomwrought-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "25cc7589dbeb3c0e",
+      "family": "Last Stand Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "last-stand-ring-mail"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "53960bce90dc1eea",
+      "family": "Last Stand Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "last-stand-ring-mail--bracers"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "d4b02b4225cce793",
+      "family": "Last Stand Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "last-stand-ring-mail--feet"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "c72681845e530e37",
+      "family": "Last Stand Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "last-stand-ring-mail--head"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "75d9281e440d662c",
+      "family": "Last Stand Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "last-stand-ring-mail--legs"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "36795dd34bc45968",
+      "family": "Last Stand Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "last-stand-ring-mail--shoulders"
+      ],
+      "previous_status": "pending",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "c5d84d52b1e8f7be",
+      "family": "Living Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "living-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "bfb409ee971c0849",
+      "family": "Living Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "living-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "d614ebbbe6899966",
+      "family": "Living Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "living-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "e7905d2c59c5bceb",
+      "family": "Living Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "living-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "8c4fe95e1335b113",
+      "family": "Living Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "living-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "698f13dfe20b6e6d",
+      "family": "Living Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "living-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "90ed649e3448b5e8",
+      "family": "Mariner's Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "mariner-s-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "a03f050e6d5cf48f",
+      "family": "Mariner's Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "mariner-s-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "baa07b47fcfc4a92",
+      "family": "Mariner's Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "mariner-s-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "f225844320d04a4e",
+      "family": "Mariner's Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "mariner-s-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "a3306190f58a6136",
+      "family": "Mariner's Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "mariner-s-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "536eafd85588e316",
+      "family": "Mariner's Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "mariner-s-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "3b007cbc7427b6e6",
+      "family": "Mithral Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "mithral-armor-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "d2da0ce2b2486bc1",
+      "family": "Mithral Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "mithral-armor-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "87f1183477d5c54d",
+      "family": "Mithral Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "mithral-armor-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "ad3dd5edd568c13e",
+      "family": "Mithral Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "mithral-armor-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "1b6e560cab1baadd",
+      "family": "Mithral Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "mithral-armor-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "4e47ec2133035f27",
+      "family": "Mithral Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "mithral-armor-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "41352bf892d707c8",
+      "family": "Mizzium Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "mizzium-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "c41b42ae3c1e9ea8",
+      "family": "Mizzium Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "mizzium-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "d08daaabc682303e",
+      "family": "Mizzium Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "mizzium-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "379260a47722b0ad",
+      "family": "Mizzium Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "mizzium-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "5771bfc3923d9a6e",
+      "family": "Mizzium Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "mizzium-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "f67ede8f5b15a812",
+      "family": "Mizzium Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "mizzium-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "eb3977b1bfca93a8",
+      "family": "Ruidium Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "ruidium-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "bead90bb58aab030",
+      "family": "Ruidium Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "ruidium-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "2cfbe0e085d53ae7",
+      "family": "Ruidium Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "ruidium-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "5c82f62836649704",
+      "family": "Ruidium Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "ruidium-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "43bfb278cf88b9e3",
+      "family": "Ruidium Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "ruidium-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "468d010948b2d97c",
+      "family": "Ruidium Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "ruidium-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "dc531c315e4c2c5c",
+      "family": "Smoldering Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "smoldering-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "f46f0fe1023cf8fc",
+      "family": "Smoldering Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "smoldering-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "e4fa787566a9efa1",
+      "family": "Smoldering Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "smoldering-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "555cd13e783e9fe6",
+      "family": "Smoldering Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "smoldering-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "8c3580bff48aebff",
+      "family": "Smoldering Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "smoldering-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "14c95c7273941e6a",
+      "family": "Smoldering Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "smoldering-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "077fa99286f690f6",
+      "family": "Spell-Fueling Armor",
+      "model": "ring-mail",
+      "slot": "armor",
+      "consumers": [
+        "spell-fueling-ring-mail"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "542da1dce44858f6",
+      "family": "Spell-Fueling Armor",
+      "model": "ring-mail",
+      "slot": "bracers",
+      "consumers": [
+        "spell-fueling-ring-mail--bracers"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "17c2cc3dbf05ae76",
+      "family": "Spell-Fueling Armor",
+      "model": "ring-mail",
+      "slot": "feet",
+      "consumers": [
+        "spell-fueling-ring-mail--feet"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "9ac1ae817805d3f9",
+      "family": "Spell-Fueling Armor",
+      "model": "ring-mail",
+      "slot": "head",
+      "consumers": [
+        "spell-fueling-ring-mail--head"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "b8f8745f1b5c2823",
+      "family": "Spell-Fueling Armor",
+      "model": "ring-mail",
+      "slot": "legs",
+      "consumers": [
+        "spell-fueling-ring-mail--legs"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    },
+    {
+      "physical_job": "abadb3aa988b75ad",
+      "family": "Spell-Fueling Armor",
+      "model": "ring-mail",
+      "slot": "shoulders",
+      "consumers": [
+        "spell-fueling-ring-mail--shoulders"
+      ],
+      "previous_status": "approved",
+      "status": "pending_visual_correction"
+    }
+  ]
+}
