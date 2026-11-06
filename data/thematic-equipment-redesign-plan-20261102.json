@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 1802,
-    "pending_artworks": 2685,
+    "approved_artworks": 1880,
+    "pending_artworks": 2607,
     "catalog_references": 4643,
-    "approved_references": 1958,
+    "approved_references": 2036,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -1411,8 +1411,15 @@
             "armor-of-resistance-breastplate-fire--legs",
             "armor-of-resistance-breastplate-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-breastplate-fire",
+            "armor-of-resistance-breastplate-fire--head",
+            "armor-of-resistance-breastplate-fire--shoulders",
+            "armor-of-resistance-breastplate-fire--bracers",
+            "armor-of-resistance-breastplate-fire--legs",
+            "armor-of-resistance-breastplate-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-breastplate-force",
@@ -1575,8 +1582,15 @@
             "armor-of-resistance-chain-mail-fire--legs",
             "armor-of-resistance-chain-mail-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-mail-fire",
+            "armor-of-resistance-chain-mail-fire--head",
+            "armor-of-resistance-chain-mail-fire--shoulders",
+            "armor-of-resistance-chain-mail-fire--bracers",
+            "armor-of-resistance-chain-mail-fire--legs",
+            "armor-of-resistance-chain-mail-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-mail-force",
@@ -1739,8 +1753,15 @@
             "armor-of-resistance-chain-shirt-fire--legs",
             "armor-of-resistance-chain-shirt-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-shirt-fire",
+            "armor-of-resistance-chain-shirt-fire--head",
+            "armor-of-resistance-chain-shirt-fire--shoulders",
+            "armor-of-resistance-chain-shirt-fire--bracers",
+            "armor-of-resistance-chain-shirt-fire--legs",
+            "armor-of-resistance-chain-shirt-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-shirt-force",
@@ -1903,8 +1924,15 @@
             "armor-of-resistance-half-plate-armor-fire--legs",
             "armor-of-resistance-half-plate-armor-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-half-plate-armor-fire",
+            "armor-of-resistance-half-plate-armor-fire--head",
+            "armor-of-resistance-half-plate-armor-fire--shoulders",
+            "armor-of-resistance-half-plate-armor-fire--bracers",
+            "armor-of-resistance-half-plate-armor-fire--legs",
+            "armor-of-resistance-half-plate-armor-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-half-plate-armor-force",
@@ -2067,8 +2095,15 @@
             "armor-of-resistance-hide-armor-fire--legs",
             "armor-of-resistance-hide-armor-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-hide-armor-fire",
+            "armor-of-resistance-hide-armor-fire--head",
+            "armor-of-resistance-hide-armor-fire--shoulders",
+            "armor-of-resistance-hide-armor-fire--bracers",
+            "armor-of-resistance-hide-armor-fire--legs",
+            "armor-of-resistance-hide-armor-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-hide-armor-force",
@@ -2231,8 +2266,15 @@
             "armor-of-resistance-leather-armor-fire--legs",
             "armor-of-resistance-leather-armor-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-leather-armor-fire",
+            "armor-of-resistance-leather-armor-fire--head",
+            "armor-of-resistance-leather-armor-fire--shoulders",
+            "armor-of-resistance-leather-armor-fire--bracers",
+            "armor-of-resistance-leather-armor-fire--legs",
+            "armor-of-resistance-leather-armor-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-leather-armor-force",
@@ -2395,8 +2437,15 @@
             "armor-of-resistance-padded-armor-fire--legs",
             "armor-of-resistance-padded-armor-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-padded-armor-fire",
+            "armor-of-resistance-padded-armor-fire--head",
+            "armor-of-resistance-padded-armor-fire--shoulders",
+            "armor-of-resistance-padded-armor-fire--bracers",
+            "armor-of-resistance-padded-armor-fire--legs",
+            "armor-of-resistance-padded-armor-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-padded-armor-force",
@@ -2537,8 +2586,15 @@
             "armor-of-resistance-plate-armor-fire--legs",
             "armor-of-resistance-plate-armor-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-plate-armor-fire",
+            "armor-of-resistance-plate-armor-fire--head",
+            "armor-of-resistance-plate-armor-fire--shoulders",
+            "armor-of-resistance-plate-armor-fire--bracers",
+            "armor-of-resistance-plate-armor-fire--legs",
+            "armor-of-resistance-plate-armor-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-plate-armor-force",
@@ -2701,8 +2757,15 @@
             "armor-of-resistance-ring-mail-fire--legs",
             "armor-of-resistance-ring-mail-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-ring-mail-fire",
+            "armor-of-resistance-ring-mail-fire--head",
+            "armor-of-resistance-ring-mail-fire--shoulders",
+            "armor-of-resistance-ring-mail-fire--bracers",
+            "armor-of-resistance-ring-mail-fire--legs",
+            "armor-of-resistance-ring-mail-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-ring-mail-force",
@@ -2865,8 +2928,15 @@
             "armor-of-resistance-scale-mail-fire--legs",
             "armor-of-resistance-scale-mail-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-scale-mail-fire",
+            "armor-of-resistance-scale-mail-fire--head",
+            "armor-of-resistance-scale-mail-fire--shoulders",
+            "armor-of-resistance-scale-mail-fire--bracers",
+            "armor-of-resistance-scale-mail-fire--legs",
+            "armor-of-resistance-scale-mail-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-scale-mail-force",
@@ -3029,8 +3099,15 @@
             "armor-of-resistance-splint-armor-fire--legs",
             "armor-of-resistance-splint-armor-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-splint-armor-fire",
+            "armor-of-resistance-splint-armor-fire--head",
+            "armor-of-resistance-splint-armor-fire--shoulders",
+            "armor-of-resistance-splint-armor-fire--bracers",
+            "armor-of-resistance-splint-armor-fire--legs",
+            "armor-of-resistance-splint-armor-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-splint-armor-force",
@@ -3193,8 +3270,15 @@
             "armor-of-resistance-studded-leather-fire--legs",
             "armor-of-resistance-studded-leather-fire--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-studded-leather-fire",
+            "armor-of-resistance-studded-leather-fire--head",
+            "armor-of-resistance-studded-leather-fire--shoulders",
+            "armor-of-resistance-studded-leather-fire--bracers",
+            "armor-of-resistance-studded-leather-fire--legs",
+            "armor-of-resistance-studded-leather-fire--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-studded-leather-force",
@@ -3357,8 +3441,15 @@
             "spiked-armor-of-fire-resistance--legs",
             "spiked-armor-of-fire-resistance--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-fire-resistance",
+            "spiked-armor-of-fire-resistance--head",
+            "spiked-armor-of-fire-resistance--shoulders",
+            "spiked-armor-of-fire-resistance--bracers",
+            "spiked-armor-of-fire-resistance--legs",
+            "spiked-armor-of-fire-resistance--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-force-resistance",
@@ -35664,8 +35755,10 @@
           "name": "Armadura de resistência (Peitoral · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-fire"
+      ]
     },
     {
       "id": "af71a22e3d3a3089",
@@ -35801,8 +35894,10 @@
           "name": "Armadura de resistência (Peitoral · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-fire--bracers"
+      ]
     },
     {
       "id": "1bf9aaf3944479d5",
@@ -35955,8 +36050,10 @@
           "name": "Armadura de resistência (Peitoral · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-fire--feet"
+      ]
     },
     {
       "id": "4debb54e2fe1cb09",
@@ -36109,8 +36206,10 @@
           "name": "Armadura de resistência (Peitoral · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-fire--head"
+      ]
     },
     {
       "id": "5df416b8ab0c7498",
@@ -36263,8 +36362,10 @@
           "name": "Armadura de resistência (Peitoral · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-fire--legs"
+      ]
     },
     {
       "id": "24655a55a97991c0",
@@ -36417,8 +36518,10 @@
           "name": "Armadura de resistência (Peitoral · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-fire--shoulders"
+      ]
     },
     {
       "id": "271810e241f36b23",
@@ -36588,8 +36691,10 @@
           "name": "Armadura de resistência (Cota de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-fire"
+      ]
     },
     {
       "id": "1c93a7c460880a35",
@@ -36725,8 +36830,10 @@
           "name": "Armadura de resistência (Cota de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-fire--bracers"
+      ]
     },
     {
       "id": "dc3547daa918864c",
@@ -36879,8 +36986,10 @@
           "name": "Armadura de resistência (Cota de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-fire--feet"
+      ]
     },
     {
       "id": "2e6021a3dab5e1d5",
@@ -37033,8 +37142,10 @@
           "name": "Armadura de resistência (Cota de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-fire--head"
+      ]
     },
     {
       "id": "6417f9ef2f54120e",
@@ -37187,8 +37298,10 @@
           "name": "Armadura de resistência (Cota de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-fire--legs"
+      ]
     },
     {
       "id": "eb4f11862d7f4285",
@@ -37341,8 +37454,10 @@
           "name": "Armadura de resistência (Cota de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-fire--shoulders"
+      ]
     },
     {
       "id": "0b5c97db0b68caba",
@@ -37512,8 +37627,10 @@
           "name": "Armadura de resistência (Camisão de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-fire"
+      ]
     },
     {
       "id": "71389266c36e6958",
@@ -37649,8 +37766,10 @@
           "name": "Armadura de resistência (Camisão de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-fire--bracers"
+      ]
     },
     {
       "id": "80180bbfdffb3bc6",
@@ -37803,8 +37922,10 @@
           "name": "Armadura de resistência (Camisão de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-fire--feet"
+      ]
     },
     {
       "id": "213f73047a6db411",
@@ -37957,8 +38078,10 @@
           "name": "Armadura de resistência (Camisão de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-fire--head"
+      ]
     },
     {
       "id": "d7ae1776553aa07a",
@@ -38111,8 +38234,10 @@
           "name": "Armadura de resistência (Camisão de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-fire--legs"
+      ]
     },
     {
       "id": "f19f013363a10262",
@@ -38265,8 +38390,10 @@
           "name": "Armadura de resistência (Camisão de malha · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-fire--shoulders"
+      ]
     },
     {
       "id": "3159983d2f0d4630",
@@ -38436,8 +38563,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-fire"
+      ]
     },
     {
       "id": "1ba294495afb4b4e",
@@ -38573,8 +38702,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-fire--bracers"
+      ]
     },
     {
       "id": "d719a7815edd53e6",
@@ -38727,8 +38858,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-fire--feet"
+      ]
     },
     {
       "id": "0dec3a3138a43d0d",
@@ -38881,8 +39014,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-fire--head"
+      ]
     },
     {
       "id": "a6cddb280685e994",
@@ -39035,8 +39170,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-fire--legs"
+      ]
     },
     {
       "id": "dfb6fad7ff68c9b4",
@@ -39189,8 +39326,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-fire--shoulders"
+      ]
     },
     {
       "id": "8cfde26117b9eb73",
@@ -39360,8 +39499,10 @@
           "name": "Armadura de resistência (Armadura de peles · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-fire"
+      ]
     },
     {
       "id": "de9ed94e8a40c6dc",
@@ -39497,8 +39638,10 @@
           "name": "Armadura de resistência (Armadura de peles · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-fire--bracers"
+      ]
     },
     {
       "id": "e8338303e67e28d3",
@@ -39651,8 +39794,10 @@
           "name": "Armadura de resistência (Armadura de peles · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-fire--feet"
+      ]
     },
     {
       "id": "c17966e78586acf8",
@@ -39805,8 +39950,10 @@
           "name": "Armadura de resistência (Armadura de peles · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-fire--head"
+      ]
     },
     {
       "id": "a77f842a60f44840",
@@ -39959,8 +40106,10 @@
           "name": "Armadura de resistência (Armadura de peles · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-fire--legs"
+      ]
     },
     {
       "id": "ef9a53f2906562cf",
@@ -40113,8 +40262,10 @@
           "name": "Armadura de resistência (Armadura de peles · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-fire--shoulders"
+      ]
     },
     {
       "id": "c62089d202d188a6",
@@ -40284,8 +40435,10 @@
           "name": "Armadura de resistência (Armadura de couro · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-fire"
+      ]
     },
     {
       "id": "4db2e9b1c11696df",
@@ -40421,8 +40574,10 @@
           "name": "Armadura de resistência (Armadura de couro · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-fire--bracers"
+      ]
     },
     {
       "id": "1a634b9e22bfd8ca",
@@ -40575,8 +40730,10 @@
           "name": "Armadura de resistência (Armadura de couro · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-fire--feet"
+      ]
     },
     {
       "id": "61b4ef7934a3de93",
@@ -40729,8 +40886,10 @@
           "name": "Armadura de resistência (Armadura de couro · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-fire--head"
+      ]
     },
     {
       "id": "c1a6eeb33d97da74",
@@ -40883,8 +41042,10 @@
           "name": "Armadura de resistência (Armadura de couro · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-fire--legs"
+      ]
     },
     {
       "id": "fb64984ff8b27b86",
@@ -41037,8 +41198,10 @@
           "name": "Armadura de resistência (Armadura de couro · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-fire--shoulders"
+      ]
     },
     {
       "id": "68c7a157d2a2a5c0",
@@ -41208,8 +41371,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-fire"
+      ]
     },
     {
       "id": "8d8691d8ca34a38e",
@@ -41345,8 +41510,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-fire--bracers"
+      ]
     },
     {
       "id": "8d67c029b2cdfd68",
@@ -41499,8 +41666,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-fire--feet"
+      ]
     },
     {
       "id": "aa8ab6ec3285ed8b",
@@ -41653,8 +41822,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-fire--head"
+      ]
     },
     {
       "id": "070b8b0ff13b0dfb",
@@ -41807,8 +41978,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-fire--legs"
+      ]
     },
     {
       "id": "4845be16fea85dd1",
@@ -41961,8 +42134,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-fire--shoulders"
+      ]
     },
     {
       "id": "c612ed45f2d54097",
@@ -42132,8 +42307,10 @@
           "name": "Armadura de resistência (Armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-fire"
+      ]
     },
     {
       "id": "96cbec5969ef3332",
@@ -42269,8 +42446,10 @@
           "name": "Armadura de resistência (Armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-fire--bracers"
+      ]
     },
     {
       "id": "b51f491d21726a0f",
@@ -42423,8 +42602,10 @@
           "name": "Armadura de resistência (Armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-fire--feet"
+      ]
     },
     {
       "id": "e02963b004039a11",
@@ -42577,8 +42758,10 @@
           "name": "Armadura de resistência (Armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-fire--head"
+      ]
     },
     {
       "id": "f15e39cf612c9ef8",
@@ -42731,8 +42914,10 @@
           "name": "Armadura de resistência (Armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-fire--legs"
+      ]
     },
     {
       "id": "054bafb854879f57",
@@ -42885,8 +43070,10 @@
           "name": "Armadura de resistência (Armadura de placas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-fire--shoulders"
+      ]
     },
     {
       "id": "99c2bf344be419cc",
@@ -43056,8 +43243,10 @@
           "name": "Armadura de resistência (Cota de anéis · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-fire"
+      ]
     },
     {
       "id": "e52956bb138c874e",
@@ -43193,8 +43382,10 @@
           "name": "Armadura de resistência (Cota de anéis · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-fire--bracers"
+      ]
     },
     {
       "id": "cb4d2a1ab826964f",
@@ -43347,8 +43538,10 @@
           "name": "Armadura de resistência (Cota de anéis · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-fire--feet"
+      ]
     },
     {
       "id": "292114f2626b305e",
@@ -43501,8 +43694,10 @@
           "name": "Armadura de resistência (Cota de anéis · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-fire--head"
+      ]
     },
     {
       "id": "be1a9f2577b7e2fb",
@@ -43655,8 +43850,10 @@
           "name": "Armadura de resistência (Cota de anéis · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-fire--legs"
+      ]
     },
     {
       "id": "6ce8668592787090",
@@ -43809,8 +44006,10 @@
           "name": "Armadura de resistência (Cota de anéis · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-fire--shoulders"
+      ]
     },
     {
       "id": "0f71883b7d5027c3",
@@ -43980,8 +44179,10 @@
           "name": "Armadura de resistência (Cota de escamas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-fire"
+      ]
     },
     {
       "id": "833034275965623a",
@@ -44117,8 +44318,10 @@
           "name": "Armadura de resistência (Cota de escamas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-fire--bracers"
+      ]
     },
     {
       "id": "0f92054499c690ca",
@@ -44271,8 +44474,10 @@
           "name": "Armadura de resistência (Cota de escamas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-fire--feet"
+      ]
     },
     {
       "id": "98be1a367696b735",
@@ -44425,8 +44630,10 @@
           "name": "Armadura de resistência (Cota de escamas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-fire--head"
+      ]
     },
     {
       "id": "e15ab351442d559c",
@@ -44579,8 +44786,10 @@
           "name": "Armadura de resistência (Cota de escamas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-fire--legs"
+      ]
     },
     {
       "id": "acde75108bb4366d",
@@ -44733,8 +44942,10 @@
           "name": "Armadura de resistência (Cota de escamas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-fire--shoulders"
+      ]
     },
     {
       "id": "f4159d2e415b6ea4",
@@ -44904,8 +45115,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-fire-resistance"
+      ]
     },
     {
       "id": "a69f144cf7b26168",
@@ -45058,8 +45271,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-fire-resistance--bracers"
+      ]
     },
     {
       "id": "86222ec58a2be262",
@@ -45212,8 +45427,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-fire-resistance--feet"
+      ]
     },
     {
       "id": "6f33d93015b5c7e5",
@@ -45366,8 +45583,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-fire-resistance--head"
+      ]
     },
     {
       "id": "3d63d41be03bb7e5",
@@ -45520,8 +45739,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-fire-resistance--legs"
+      ]
     },
     {
       "id": "58f52dc0855c6a47",
@@ -45674,8 +45895,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-fire-resistance--shoulders"
+      ]
     },
     {
       "id": "655f7faa59d6faf2",
@@ -45828,8 +46051,10 @@
           "name": "Armadura de resistência (Armadura de talas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-fire"
+      ]
     },
     {
       "id": "94abea93d5450e1d",
@@ -45965,8 +46190,10 @@
           "name": "Armadura de resistência (Armadura de talas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-fire--bracers"
+      ]
     },
     {
       "id": "8f8f60407a85e992",
@@ -46119,8 +46346,10 @@
           "name": "Armadura de resistência (Armadura de talas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-fire--feet"
+      ]
     },
     {
       "id": "c3a812cde22bc4cd",
@@ -46273,8 +46502,10 @@
           "name": "Armadura de resistência (Armadura de talas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-fire--head"
+      ]
     },
     {
       "id": "a57f76dfebbeeb3d",
@@ -46427,8 +46658,10 @@
           "name": "Armadura de resistência (Armadura de talas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-fire--legs"
+      ]
     },
     {
       "id": "dc24e3b708cd4f93",
@@ -46581,8 +46814,10 @@
           "name": "Armadura de resistência (Armadura de talas · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-fire--shoulders"
+      ]
     },
     {
       "id": "86b1157b6f255c34",
@@ -46752,8 +46987,10 @@
           "name": "Armadura de resistência (Couro batido · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-fire"
+      ]
     },
     {
       "id": "97c1629ce33e56ca",
@@ -46889,8 +47126,10 @@
           "name": "Armadura de resistência (Couro batido · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-fire--bracers"
+      ]
     },
     {
       "id": "9524a166908e9eff",
@@ -47043,8 +47282,10 @@
           "name": "Armadura de resistência (Couro batido · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-fire--feet"
+      ]
     },
     {
       "id": "1efea1e359111551",
@@ -47197,8 +47438,10 @@
           "name": "Armadura de resistência (Couro batido · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-fire--head"
+      ]
     },
     {
       "id": "e0049adfeac4dafb",
@@ -47351,8 +47594,10 @@
           "name": "Armadura de resistência (Couro batido · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-fire--legs"
+      ]
     },
     {
       "id": "d57b1b893b48ed85",
@@ -47505,8 +47750,10 @@
           "name": "Armadura de resistência (Couro batido · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-fire--shoulders"
+      ]
     },
     {
       "id": "281f2a38172df072",

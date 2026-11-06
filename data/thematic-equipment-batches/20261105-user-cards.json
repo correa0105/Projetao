@@ -3,10 +3,10 @@
   "uniqueCards": 36,
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 1802,
-    "pending_artworks": 2685,
+    "approved_artworks": 1880,
+    "pending_artworks": 2607,
     "catalog_references": 4643,
-    "approved_references": 1958,
+    "approved_references": 2036,
     "excluded_ammunition_artworks": 42
   },
   "rows": [
@@ -194,8 +194,8 @@
       ],
       "models": 130,
       "artworks": 780,
-      "approved": 156,
-      "pending": 624,
+      "approved": 234,
+      "pending": 546,
       "status": "pending"
     },
     {
