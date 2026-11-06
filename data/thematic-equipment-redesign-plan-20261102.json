@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 1958,
-    "pending_artworks": 2529,
+    "approved_artworks": 2036,
+    "pending_artworks": 2451,
     "catalog_references": 4643,
-    "approved_references": 2114,
+    "approved_references": 2192,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -1455,8 +1455,15 @@
             "armor-of-resistance-breastplate-lightning--legs",
             "armor-of-resistance-breastplate-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-breastplate-lightning",
+            "armor-of-resistance-breastplate-lightning--head",
+            "armor-of-resistance-breastplate-lightning--shoulders",
+            "armor-of-resistance-breastplate-lightning--bracers",
+            "armor-of-resistance-breastplate-lightning--legs",
+            "armor-of-resistance-breastplate-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-breastplate-necrotic",
@@ -1633,8 +1640,15 @@
             "armor-of-resistance-chain-mail-lightning--legs",
             "armor-of-resistance-chain-mail-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-mail-lightning",
+            "armor-of-resistance-chain-mail-lightning--head",
+            "armor-of-resistance-chain-mail-lightning--shoulders",
+            "armor-of-resistance-chain-mail-lightning--bracers",
+            "armor-of-resistance-chain-mail-lightning--legs",
+            "armor-of-resistance-chain-mail-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-mail-necrotic",
@@ -1811,8 +1825,15 @@
             "armor-of-resistance-chain-shirt-lightning--legs",
             "armor-of-resistance-chain-shirt-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-shirt-lightning",
+            "armor-of-resistance-chain-shirt-lightning--head",
+            "armor-of-resistance-chain-shirt-lightning--shoulders",
+            "armor-of-resistance-chain-shirt-lightning--bracers",
+            "armor-of-resistance-chain-shirt-lightning--legs",
+            "armor-of-resistance-chain-shirt-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-shirt-necrotic",
@@ -1989,8 +2010,15 @@
             "armor-of-resistance-half-plate-armor-lightning--legs",
             "armor-of-resistance-half-plate-armor-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-half-plate-armor-lightning",
+            "armor-of-resistance-half-plate-armor-lightning--head",
+            "armor-of-resistance-half-plate-armor-lightning--shoulders",
+            "armor-of-resistance-half-plate-armor-lightning--bracers",
+            "armor-of-resistance-half-plate-armor-lightning--legs",
+            "armor-of-resistance-half-plate-armor-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-half-plate-armor-necrotic",
@@ -2167,8 +2195,15 @@
             "armor-of-resistance-hide-armor-lightning--legs",
             "armor-of-resistance-hide-armor-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-hide-armor-lightning",
+            "armor-of-resistance-hide-armor-lightning--head",
+            "armor-of-resistance-hide-armor-lightning--shoulders",
+            "armor-of-resistance-hide-armor-lightning--bracers",
+            "armor-of-resistance-hide-armor-lightning--legs",
+            "armor-of-resistance-hide-armor-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-hide-armor-necrotic",
@@ -2345,8 +2380,15 @@
             "armor-of-resistance-leather-armor-lightning--legs",
             "armor-of-resistance-leather-armor-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-leather-armor-lightning",
+            "armor-of-resistance-leather-armor-lightning--head",
+            "armor-of-resistance-leather-armor-lightning--shoulders",
+            "armor-of-resistance-leather-armor-lightning--bracers",
+            "armor-of-resistance-leather-armor-lightning--legs",
+            "armor-of-resistance-leather-armor-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-leather-armor-necrotic",
@@ -2523,8 +2565,15 @@
             "armor-of-resistance-padded-armor-lightning--legs",
             "armor-of-resistance-padded-armor-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-padded-armor-lightning",
+            "armor-of-resistance-padded-armor-lightning--head",
+            "armor-of-resistance-padded-armor-lightning--shoulders",
+            "armor-of-resistance-padded-armor-lightning--bracers",
+            "armor-of-resistance-padded-armor-lightning--legs",
+            "armor-of-resistance-padded-armor-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-padded-armor-necrotic",
@@ -2679,8 +2728,15 @@
             "armor-of-resistance-plate-armor-lightning--legs",
             "armor-of-resistance-plate-armor-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-plate-armor-lightning",
+            "armor-of-resistance-plate-armor-lightning--head",
+            "armor-of-resistance-plate-armor-lightning--shoulders",
+            "armor-of-resistance-plate-armor-lightning--bracers",
+            "armor-of-resistance-plate-armor-lightning--legs",
+            "armor-of-resistance-plate-armor-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-plate-armor-necrotic",
@@ -2857,8 +2913,15 @@
             "armor-of-resistance-ring-mail-lightning--legs",
             "armor-of-resistance-ring-mail-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-ring-mail-lightning",
+            "armor-of-resistance-ring-mail-lightning--head",
+            "armor-of-resistance-ring-mail-lightning--shoulders",
+            "armor-of-resistance-ring-mail-lightning--bracers",
+            "armor-of-resistance-ring-mail-lightning--legs",
+            "armor-of-resistance-ring-mail-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-ring-mail-necrotic",
@@ -3035,8 +3098,15 @@
             "armor-of-resistance-scale-mail-lightning--legs",
             "armor-of-resistance-scale-mail-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-scale-mail-lightning",
+            "armor-of-resistance-scale-mail-lightning--head",
+            "armor-of-resistance-scale-mail-lightning--shoulders",
+            "armor-of-resistance-scale-mail-lightning--bracers",
+            "armor-of-resistance-scale-mail-lightning--legs",
+            "armor-of-resistance-scale-mail-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-scale-mail-necrotic",
@@ -3213,8 +3283,15 @@
             "armor-of-resistance-splint-armor-lightning--legs",
             "armor-of-resistance-splint-armor-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-splint-armor-lightning",
+            "armor-of-resistance-splint-armor-lightning--head",
+            "armor-of-resistance-splint-armor-lightning--shoulders",
+            "armor-of-resistance-splint-armor-lightning--bracers",
+            "armor-of-resistance-splint-armor-lightning--legs",
+            "armor-of-resistance-splint-armor-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-splint-armor-necrotic",
@@ -3391,8 +3468,15 @@
             "armor-of-resistance-studded-leather-lightning--legs",
             "armor-of-resistance-studded-leather-lightning--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-studded-leather-lightning",
+            "armor-of-resistance-studded-leather-lightning--head",
+            "armor-of-resistance-studded-leather-lightning--shoulders",
+            "armor-of-resistance-studded-leather-lightning--bracers",
+            "armor-of-resistance-studded-leather-lightning--legs",
+            "armor-of-resistance-studded-leather-lightning--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-studded-leather-necrotic",
@@ -3569,8 +3653,15 @@
             "spiked-armor-of-lightning-resistance--legs",
             "spiked-armor-of-lightning-resistance--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-lightning-resistance",
+            "spiked-armor-of-lightning-resistance--head",
+            "spiked-armor-of-lightning-resistance--shoulders",
+            "spiked-armor-of-lightning-resistance--bracers",
+            "spiked-armor-of-lightning-resistance--legs",
+            "spiked-armor-of-lightning-resistance--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-necrotic-resistance",
@@ -35880,8 +35971,10 @@
           "name": "Armadura de resistência (Peitoral · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-lightning"
+      ]
     },
     {
       "id": "2125b16d477ae4cf",
@@ -36021,8 +36114,10 @@
           "name": "Armadura de resistência (Peitoral · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-lightning--bracers"
+      ]
     },
     {
       "id": "db094d22c991de1d",
@@ -36179,8 +36274,10 @@
           "name": "Armadura de resistência (Peitoral · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-lightning--feet"
+      ]
     },
     {
       "id": "b2ee481f13979655",
@@ -36337,8 +36434,10 @@
           "name": "Armadura de resistência (Peitoral · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-lightning--head"
+      ]
     },
     {
       "id": "7ca691a881280af0",
@@ -36495,8 +36594,10 @@
           "name": "Armadura de resistência (Peitoral · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-lightning--legs"
+      ]
     },
     {
       "id": "619a056b7269e17a",
@@ -36653,8 +36754,10 @@
           "name": "Armadura de resistência (Peitoral · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-lightning--shoulders"
+      ]
     },
     {
       "id": "68dea20c5d4ead75",
@@ -36828,8 +36931,10 @@
           "name": "Armadura de resistência (Cota de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-lightning"
+      ]
     },
     {
       "id": "2d6cefb781d9ce7e",
@@ -36969,8 +37074,10 @@
           "name": "Armadura de resistência (Cota de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-lightning--bracers"
+      ]
     },
     {
       "id": "6e9624b2ddfdcc17",
@@ -37127,8 +37234,10 @@
           "name": "Armadura de resistência (Cota de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-lightning--feet"
+      ]
     },
     {
       "id": "1d45bf8a4700039b",
@@ -37285,8 +37394,10 @@
           "name": "Armadura de resistência (Cota de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-lightning--head"
+      ]
     },
     {
       "id": "0bd79c32eb04a468",
@@ -37443,8 +37554,10 @@
           "name": "Armadura de resistência (Cota de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-lightning--legs"
+      ]
     },
     {
       "id": "8fe7e74fa4434670",
@@ -37601,8 +37714,10 @@
           "name": "Armadura de resistência (Cota de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-lightning--shoulders"
+      ]
     },
     {
       "id": "fb985d18ddfa002e",
@@ -37776,8 +37891,10 @@
           "name": "Armadura de resistência (Camisão de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-lightning"
+      ]
     },
     {
       "id": "fbe3f4cfccc2d6dc",
@@ -37917,8 +38034,10 @@
           "name": "Armadura de resistência (Camisão de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-lightning--bracers"
+      ]
     },
     {
       "id": "99be869a5aa2518e",
@@ -38075,8 +38194,10 @@
           "name": "Armadura de resistência (Camisão de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-lightning--feet"
+      ]
     },
     {
       "id": "241157408bf32295",
@@ -38233,8 +38354,10 @@
           "name": "Armadura de resistência (Camisão de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-lightning--head"
+      ]
     },
     {
       "id": "3bb0cc143c255d6b",
@@ -38391,8 +38514,10 @@
           "name": "Armadura de resistência (Camisão de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-lightning--legs"
+      ]
     },
     {
       "id": "b7ab8a83df12a133",
@@ -38549,8 +38674,10 @@
           "name": "Armadura de resistência (Camisão de malha · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-lightning--shoulders"
+      ]
     },
     {
       "id": "a7a75d60765e9a6d",
@@ -38724,8 +38851,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-lightning"
+      ]
     },
     {
       "id": "ce1ef9df935e045e",
@@ -38865,8 +38994,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-lightning--bracers"
+      ]
     },
     {
       "id": "2dd234e420ce2986",
@@ -39023,8 +39154,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-lightning--feet"
+      ]
     },
     {
       "id": "b42b0995de6a959e",
@@ -39181,8 +39314,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-lightning--head"
+      ]
     },
     {
       "id": "e667c399fb38b945",
@@ -39339,8 +39474,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-lightning--legs"
+      ]
     },
     {
       "id": "e9752043275a6e25",
@@ -39497,8 +39634,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-lightning--shoulders"
+      ]
     },
     {
       "id": "cd0769d7b7e19b29",
@@ -39672,8 +39811,10 @@
           "name": "Armadura de resistência (Armadura de peles · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-lightning"
+      ]
     },
     {
       "id": "6ac352a9eb85cd08",
@@ -39813,8 +39954,10 @@
           "name": "Armadura de resistência (Armadura de peles · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-lightning--bracers"
+      ]
     },
     {
       "id": "090f22047dda628f",
@@ -39971,8 +40114,10 @@
           "name": "Armadura de resistência (Armadura de peles · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-lightning--feet"
+      ]
     },
     {
       "id": "abc0dd92a0316393",
@@ -40129,8 +40274,10 @@
           "name": "Armadura de resistência (Armadura de peles · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-lightning--head"
+      ]
     },
     {
       "id": "fd5bee49fcac9b6b",
@@ -40287,8 +40434,10 @@
           "name": "Armadura de resistência (Armadura de peles · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-lightning--legs"
+      ]
     },
     {
       "id": "cd3346beaa41480e",
@@ -40445,8 +40594,10 @@
           "name": "Armadura de resistência (Armadura de peles · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-lightning--shoulders"
+      ]
     },
     {
       "id": "167096bbc246749d",
@@ -40620,8 +40771,10 @@
           "name": "Armadura de resistência (Armadura de couro · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-lightning"
+      ]
     },
     {
       "id": "417f320d234ef958",
@@ -40761,8 +40914,10 @@
           "name": "Armadura de resistência (Armadura de couro · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-lightning--bracers"
+      ]
     },
     {
       "id": "79e1a359959f2b46",
@@ -40919,8 +41074,10 @@
           "name": "Armadura de resistência (Armadura de couro · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-lightning--feet"
+      ]
     },
     {
       "id": "e2b5e7f36020df99",
@@ -41077,8 +41234,10 @@
           "name": "Armadura de resistência (Armadura de couro · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-lightning--head"
+      ]
     },
     {
       "id": "1d5e3e59600f3992",
@@ -41235,8 +41394,10 @@
           "name": "Armadura de resistência (Armadura de couro · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-lightning--legs"
+      ]
     },
     {
       "id": "cc93d87c419c3949",
@@ -41393,8 +41554,10 @@
           "name": "Armadura de resistência (Armadura de couro · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-lightning--shoulders"
+      ]
     },
     {
       "id": "d95d4b7a3cd28d50",
@@ -41568,8 +41731,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-lightning"
+      ]
     },
     {
       "id": "79b47d3f8de9a2e8",
@@ -41709,8 +41874,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-lightning--bracers"
+      ]
     },
     {
       "id": "11ade20d6626bd62",
@@ -41867,8 +42034,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-lightning--feet"
+      ]
     },
     {
       "id": "72280c118bdab007",
@@ -42025,8 +42194,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-lightning--head"
+      ]
     },
     {
       "id": "fe18d36c211d36c8",
@@ -42183,8 +42354,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-lightning--legs"
+      ]
     },
     {
       "id": "a2d3144761f0de34",
@@ -42341,8 +42514,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-lightning--shoulders"
+      ]
     },
     {
       "id": "5589d3237e19ca99",
@@ -42516,8 +42691,10 @@
           "name": "Armadura de resistência (Armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-lightning"
+      ]
     },
     {
       "id": "76af89cb1fa93efc",
@@ -42657,8 +42834,10 @@
           "name": "Armadura de resistência (Armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-lightning--bracers"
+      ]
     },
     {
       "id": "8876f61c6e99aebe",
@@ -42815,8 +42994,10 @@
           "name": "Armadura de resistência (Armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-lightning--feet"
+      ]
     },
     {
       "id": "93fa390a49c248e7",
@@ -42973,8 +43154,10 @@
           "name": "Armadura de resistência (Armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-lightning--head"
+      ]
     },
     {
       "id": "9be778c190f3024d",
@@ -43131,8 +43314,10 @@
           "name": "Armadura de resistência (Armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-lightning--legs"
+      ]
     },
     {
       "id": "2037415eceaf5a12",
@@ -43289,8 +43474,10 @@
           "name": "Armadura de resistência (Armadura de placas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-lightning--shoulders"
+      ]
     },
     {
       "id": "79dacf288f7262e5",
@@ -43464,8 +43651,10 @@
           "name": "Armadura de resistência (Cota de anéis · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-lightning"
+      ]
     },
     {
       "id": "72041c760b0cd728",
@@ -43605,8 +43794,10 @@
           "name": "Armadura de resistência (Cota de anéis · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-lightning--bracers"
+      ]
     },
     {
       "id": "9d992f507c2e0ecc",
@@ -43763,8 +43954,10 @@
           "name": "Armadura de resistência (Cota de anéis · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-lightning--feet"
+      ]
     },
     {
       "id": "155d55502288423c",
@@ -43921,8 +44114,10 @@
           "name": "Armadura de resistência (Cota de anéis · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-lightning--head"
+      ]
     },
     {
       "id": "5279a5398f09d8e4",
@@ -44079,8 +44274,10 @@
           "name": "Armadura de resistência (Cota de anéis · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-lightning--legs"
+      ]
     },
     {
       "id": "9fc1652cabcad539",
@@ -44237,8 +44434,10 @@
           "name": "Armadura de resistência (Cota de anéis · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-lightning--shoulders"
+      ]
     },
     {
       "id": "55cd5e033422d3f7",
@@ -44412,8 +44611,10 @@
           "name": "Armadura de resistência (Cota de escamas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-lightning"
+      ]
     },
     {
       "id": "8479e25040fdc37f",
@@ -44553,8 +44754,10 @@
           "name": "Armadura de resistência (Cota de escamas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-lightning--bracers"
+      ]
     },
     {
       "id": "e5174ea351100e8e",
@@ -44711,8 +44914,10 @@
           "name": "Armadura de resistência (Cota de escamas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-lightning--feet"
+      ]
     },
     {
       "id": "ad7da4dfcb8e7f4d",
@@ -44869,8 +45074,10 @@
           "name": "Armadura de resistência (Cota de escamas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-lightning--head"
+      ]
     },
     {
       "id": "3d8f6aad28cb0841",
@@ -45027,8 +45234,10 @@
           "name": "Armadura de resistência (Cota de escamas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-lightning--legs"
+      ]
     },
     {
       "id": "d2431691b25c20d5",
@@ -45185,8 +45394,10 @@
           "name": "Armadura de resistência (Cota de escamas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-lightning--shoulders"
+      ]
     },
     {
       "id": "9e71f6ebe2a172b3",
@@ -45360,8 +45571,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-lightning-resistance"
+      ]
     },
     {
       "id": "968bad33684d2024",
@@ -45518,8 +45731,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-lightning-resistance--bracers"
+      ]
     },
     {
       "id": "8cb3e1f2531f4970",
@@ -45676,8 +45891,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-lightning-resistance--feet"
+      ]
     },
     {
       "id": "db5ecc3e26839988",
@@ -45834,8 +46051,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-lightning-resistance--head"
+      ]
     },
     {
       "id": "bb03008b806d1b62",
@@ -45992,8 +46211,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-lightning-resistance--legs"
+      ]
     },
     {
       "id": "1d75032e781d7290",
@@ -46150,8 +46371,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-lightning-resistance--shoulders"
+      ]
     },
     {
       "id": "8823fc82d5859a06",
@@ -46308,8 +46531,10 @@
           "name": "Armadura de resistência (Armadura de talas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-lightning"
+      ]
     },
     {
       "id": "cc4324699dba95c9",
@@ -46449,8 +46674,10 @@
           "name": "Armadura de resistência (Armadura de talas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-lightning--bracers"
+      ]
     },
     {
       "id": "6e55bb72a6d74a5e",
@@ -46607,8 +46834,10 @@
           "name": "Armadura de resistência (Armadura de talas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-lightning--feet"
+      ]
     },
     {
       "id": "df2e02cf4eb95d92",
@@ -46765,8 +46994,10 @@
           "name": "Armadura de resistência (Armadura de talas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-lightning--head"
+      ]
     },
     {
       "id": "f346b842ff28ccab",
@@ -46923,8 +47154,10 @@
           "name": "Armadura de resistência (Armadura de talas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-lightning--legs"
+      ]
     },
     {
       "id": "f36510085c3a62f1",
@@ -47081,8 +47314,10 @@
           "name": "Armadura de resistência (Armadura de talas · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-lightning--shoulders"
+      ]
     },
     {
       "id": "e163cc11743f0d7d",
@@ -47256,8 +47491,10 @@
           "name": "Armadura de resistência (Couro batido · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-lightning"
+      ]
     },
     {
       "id": "56775fb71f1c47b5",
@@ -47397,8 +47634,10 @@
           "name": "Armadura de resistência (Couro batido · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-lightning--bracers"
+      ]
     },
     {
       "id": "c89c4b1b23660292",
@@ -47555,8 +47794,10 @@
           "name": "Armadura de resistência (Couro batido · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-lightning--feet"
+      ]
     },
     {
       "id": "6451c06f06b77f29",
@@ -47713,8 +47954,10 @@
           "name": "Armadura de resistência (Couro batido · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-lightning--head"
+      ]
     },
     {
       "id": "3a39daefea1d84aa",
@@ -47871,8 +48114,10 @@
           "name": "Armadura de resistência (Couro batido · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-lightning--legs"
+      ]
     },
     {
       "id": "f337e70783566756",
@@ -48029,8 +48274,10 @@
           "name": "Armadura de resistência (Couro batido · Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-lightning--shoulders"
+      ]
     },
     {
       "id": "f2b4f15ae6d06440",
