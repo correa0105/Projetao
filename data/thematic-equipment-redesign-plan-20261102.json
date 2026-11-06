@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2036,
-    "pending_artworks": 2451,
+    "approved_artworks": 2114,
+    "pending_artworks": 2373,
     "catalog_references": 4643,
-    "approved_references": 2192,
+    "approved_references": 2270,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -1477,8 +1477,15 @@
             "armor-of-resistance-breastplate-necrotic--legs",
             "armor-of-resistance-breastplate-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-breastplate-necrotic",
+            "armor-of-resistance-breastplate-necrotic--head",
+            "armor-of-resistance-breastplate-necrotic--shoulders",
+            "armor-of-resistance-breastplate-necrotic--bracers",
+            "armor-of-resistance-breastplate-necrotic--legs",
+            "armor-of-resistance-breastplate-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-breastplate-poison",
@@ -1662,8 +1669,15 @@
             "armor-of-resistance-chain-mail-necrotic--legs",
             "armor-of-resistance-chain-mail-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-mail-necrotic",
+            "armor-of-resistance-chain-mail-necrotic--head",
+            "armor-of-resistance-chain-mail-necrotic--shoulders",
+            "armor-of-resistance-chain-mail-necrotic--bracers",
+            "armor-of-resistance-chain-mail-necrotic--legs",
+            "armor-of-resistance-chain-mail-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-mail-poison",
@@ -1847,8 +1861,15 @@
             "armor-of-resistance-chain-shirt-necrotic--legs",
             "armor-of-resistance-chain-shirt-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-shirt-necrotic",
+            "armor-of-resistance-chain-shirt-necrotic--head",
+            "armor-of-resistance-chain-shirt-necrotic--shoulders",
+            "armor-of-resistance-chain-shirt-necrotic--bracers",
+            "armor-of-resistance-chain-shirt-necrotic--legs",
+            "armor-of-resistance-chain-shirt-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-shirt-poison",
@@ -2032,8 +2053,15 @@
             "armor-of-resistance-half-plate-armor-necrotic--legs",
             "armor-of-resistance-half-plate-armor-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-half-plate-armor-necrotic",
+            "armor-of-resistance-half-plate-armor-necrotic--head",
+            "armor-of-resistance-half-plate-armor-necrotic--shoulders",
+            "armor-of-resistance-half-plate-armor-necrotic--bracers",
+            "armor-of-resistance-half-plate-armor-necrotic--legs",
+            "armor-of-resistance-half-plate-armor-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-half-plate-armor-poison",
@@ -2217,8 +2245,15 @@
             "armor-of-resistance-hide-armor-necrotic--legs",
             "armor-of-resistance-hide-armor-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-hide-armor-necrotic",
+            "armor-of-resistance-hide-armor-necrotic--head",
+            "armor-of-resistance-hide-armor-necrotic--shoulders",
+            "armor-of-resistance-hide-armor-necrotic--bracers",
+            "armor-of-resistance-hide-armor-necrotic--legs",
+            "armor-of-resistance-hide-armor-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-hide-armor-poison",
@@ -2402,8 +2437,15 @@
             "armor-of-resistance-leather-armor-necrotic--legs",
             "armor-of-resistance-leather-armor-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-leather-armor-necrotic",
+            "armor-of-resistance-leather-armor-necrotic--head",
+            "armor-of-resistance-leather-armor-necrotic--shoulders",
+            "armor-of-resistance-leather-armor-necrotic--bracers",
+            "armor-of-resistance-leather-armor-necrotic--legs",
+            "armor-of-resistance-leather-armor-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-leather-armor-poison",
@@ -2587,8 +2629,15 @@
             "armor-of-resistance-padded-armor-necrotic--legs",
             "armor-of-resistance-padded-armor-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-padded-armor-necrotic",
+            "armor-of-resistance-padded-armor-necrotic--head",
+            "armor-of-resistance-padded-armor-necrotic--shoulders",
+            "armor-of-resistance-padded-armor-necrotic--bracers",
+            "armor-of-resistance-padded-armor-necrotic--legs",
+            "armor-of-resistance-padded-armor-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-padded-armor-poison",
@@ -2750,8 +2799,15 @@
             "armor-of-resistance-plate-armor-necrotic--legs",
             "armor-of-resistance-plate-armor-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-plate-armor-necrotic",
+            "armor-of-resistance-plate-armor-necrotic--head",
+            "armor-of-resistance-plate-armor-necrotic--shoulders",
+            "armor-of-resistance-plate-armor-necrotic--bracers",
+            "armor-of-resistance-plate-armor-necrotic--legs",
+            "armor-of-resistance-plate-armor-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-plate-armor-poison",
@@ -2935,8 +2991,15 @@
             "armor-of-resistance-ring-mail-necrotic--legs",
             "armor-of-resistance-ring-mail-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-ring-mail-necrotic",
+            "armor-of-resistance-ring-mail-necrotic--head",
+            "armor-of-resistance-ring-mail-necrotic--shoulders",
+            "armor-of-resistance-ring-mail-necrotic--bracers",
+            "armor-of-resistance-ring-mail-necrotic--legs",
+            "armor-of-resistance-ring-mail-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-ring-mail-poison",
@@ -3120,8 +3183,15 @@
             "armor-of-resistance-scale-mail-necrotic--legs",
             "armor-of-resistance-scale-mail-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-scale-mail-necrotic",
+            "armor-of-resistance-scale-mail-necrotic--head",
+            "armor-of-resistance-scale-mail-necrotic--shoulders",
+            "armor-of-resistance-scale-mail-necrotic--bracers",
+            "armor-of-resistance-scale-mail-necrotic--legs",
+            "armor-of-resistance-scale-mail-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-scale-mail-poison",
@@ -3305,8 +3375,15 @@
             "armor-of-resistance-splint-armor-necrotic--legs",
             "armor-of-resistance-splint-armor-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-splint-armor-necrotic",
+            "armor-of-resistance-splint-armor-necrotic--head",
+            "armor-of-resistance-splint-armor-necrotic--shoulders",
+            "armor-of-resistance-splint-armor-necrotic--bracers",
+            "armor-of-resistance-splint-armor-necrotic--legs",
+            "armor-of-resistance-splint-armor-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-splint-armor-poison",
@@ -3490,8 +3567,15 @@
             "armor-of-resistance-studded-leather-necrotic--legs",
             "armor-of-resistance-studded-leather-necrotic--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-studded-leather-necrotic",
+            "armor-of-resistance-studded-leather-necrotic--head",
+            "armor-of-resistance-studded-leather-necrotic--shoulders",
+            "armor-of-resistance-studded-leather-necrotic--bracers",
+            "armor-of-resistance-studded-leather-necrotic--legs",
+            "armor-of-resistance-studded-leather-necrotic--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-studded-leather-poison",
@@ -3675,8 +3759,15 @@
             "spiked-armor-of-necrotic-resistance--legs",
             "spiked-armor-of-necrotic-resistance--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-necrotic-resistance",
+            "spiked-armor-of-necrotic-resistance--head",
+            "spiked-armor-of-necrotic-resistance--shoulders",
+            "spiked-armor-of-necrotic-resistance--bracers",
+            "spiked-armor-of-necrotic-resistance--legs",
+            "spiked-armor-of-necrotic-resistance--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-poison-resistance",
@@ -35988,8 +36079,10 @@
           "name": "Armadura de resistência (Peitoral · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-necrotic"
+      ]
     },
     {
       "id": "ba93fa1aa3ebe2c3",
@@ -36131,8 +36224,10 @@
           "name": "Armadura de resistência (Peitoral · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-necrotic--bracers"
+      ]
     },
     {
       "id": "8d739e17937d0d18",
@@ -36291,8 +36386,10 @@
           "name": "Armadura de resistência (Peitoral · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-necrotic--feet"
+      ]
     },
     {
       "id": "706ff784dae3d21e",
@@ -36451,8 +36548,10 @@
           "name": "Armadura de resistência (Peitoral · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-necrotic--head"
+      ]
     },
     {
       "id": "10d3279ccce9f889",
@@ -36611,8 +36710,10 @@
           "name": "Armadura de resistência (Peitoral · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-necrotic--legs"
+      ]
     },
     {
       "id": "dffe751a924d74b3",
@@ -36771,8 +36872,10 @@
           "name": "Armadura de resistência (Peitoral · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-necrotic--shoulders"
+      ]
     },
     {
       "id": "1e395f255a62830f",
@@ -36948,8 +37051,10 @@
           "name": "Armadura de resistência (Cota de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-necrotic"
+      ]
     },
     {
       "id": "14fa7fd89a948e48",
@@ -37091,8 +37196,10 @@
           "name": "Armadura de resistência (Cota de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-necrotic--bracers"
+      ]
     },
     {
       "id": "141464b7ca59c0a6",
@@ -37251,8 +37358,10 @@
           "name": "Armadura de resistência (Cota de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-necrotic--feet"
+      ]
     },
     {
       "id": "611eb4008443294d",
@@ -37411,8 +37520,10 @@
           "name": "Armadura de resistência (Cota de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-necrotic--head"
+      ]
     },
     {
       "id": "09299e17180bd015",
@@ -37571,8 +37682,10 @@
           "name": "Armadura de resistência (Cota de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-necrotic--legs"
+      ]
     },
     {
       "id": "48c8ddb3c0f6245a",
@@ -37731,8 +37844,10 @@
           "name": "Armadura de resistência (Cota de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-necrotic--shoulders"
+      ]
     },
     {
       "id": "91770701aae1aba8",
@@ -37908,8 +38023,10 @@
           "name": "Armadura de resistência (Camisão de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-necrotic"
+      ]
     },
     {
       "id": "4c31b7d2b39d2012",
@@ -38051,8 +38168,10 @@
           "name": "Armadura de resistência (Camisão de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-necrotic--bracers"
+      ]
     },
     {
       "id": "f1e9ee17ff4d3f7d",
@@ -38211,8 +38330,10 @@
           "name": "Armadura de resistência (Camisão de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-necrotic--feet"
+      ]
     },
     {
       "id": "987ca2c3aa208aae",
@@ -38371,8 +38492,10 @@
           "name": "Armadura de resistência (Camisão de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-necrotic--head"
+      ]
     },
     {
       "id": "c4375f0fd46262a0",
@@ -38531,8 +38654,10 @@
           "name": "Armadura de resistência (Camisão de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-necrotic--legs"
+      ]
     },
     {
       "id": "1e86b3dd973a72c5",
@@ -38691,8 +38816,10 @@
           "name": "Armadura de resistência (Camisão de malha · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-necrotic--shoulders"
+      ]
     },
     {
       "id": "1719c5b1964229b3",
@@ -38868,8 +38995,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-necrotic"
+      ]
     },
     {
       "id": "1da749fa9fd7be22",
@@ -39011,8 +39140,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-necrotic--bracers"
+      ]
     },
     {
       "id": "18e150a0c5cd093f",
@@ -39171,8 +39302,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-necrotic--feet"
+      ]
     },
     {
       "id": "45b2db5b97ffb39a",
@@ -39331,8 +39464,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-necrotic--head"
+      ]
     },
     {
       "id": "35d2e164f73add45",
@@ -39491,8 +39626,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-necrotic--legs"
+      ]
     },
     {
       "id": "9bf229e823f74bff",
@@ -39651,8 +39788,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-necrotic--shoulders"
+      ]
     },
     {
       "id": "2fa10178067f7d78",
@@ -39828,8 +39967,10 @@
           "name": "Armadura de resistência (Armadura de peles · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-necrotic"
+      ]
     },
     {
       "id": "2f8d640b17d793b1",
@@ -39971,8 +40112,10 @@
           "name": "Armadura de resistência (Armadura de peles · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-necrotic--bracers"
+      ]
     },
     {
       "id": "30bdd578b7ba6a11",
@@ -40131,8 +40274,10 @@
           "name": "Armadura de resistência (Armadura de peles · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-necrotic--feet"
+      ]
     },
     {
       "id": "cb03e461408bca8f",
@@ -40291,8 +40436,10 @@
           "name": "Armadura de resistência (Armadura de peles · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-necrotic--head"
+      ]
     },
     {
       "id": "e49f5cacb7c832c5",
@@ -40451,8 +40598,10 @@
           "name": "Armadura de resistência (Armadura de peles · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-necrotic--legs"
+      ]
     },
     {
       "id": "b82952b4fffc3203",
@@ -40611,8 +40760,10 @@
           "name": "Armadura de resistência (Armadura de peles · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-necrotic--shoulders"
+      ]
     },
     {
       "id": "046994360460e7d8",
@@ -40788,8 +40939,10 @@
           "name": "Armadura de resistência (Armadura de couro · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-necrotic"
+      ]
     },
     {
       "id": "192260356b9e3ea3",
@@ -40931,8 +41084,10 @@
           "name": "Armadura de resistência (Armadura de couro · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-necrotic--bracers"
+      ]
     },
     {
       "id": "38ff40a666569d62",
@@ -41091,8 +41246,10 @@
           "name": "Armadura de resistência (Armadura de couro · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-necrotic--feet"
+      ]
     },
     {
       "id": "83ff89ebb855be13",
@@ -41251,8 +41408,10 @@
           "name": "Armadura de resistência (Armadura de couro · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-necrotic--head"
+      ]
     },
     {
       "id": "41c0fd77d30df360",
@@ -41411,8 +41570,10 @@
           "name": "Armadura de resistência (Armadura de couro · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-necrotic--legs"
+      ]
     },
     {
       "id": "9bbcdfadaa8d5c20",
@@ -41571,8 +41732,10 @@
           "name": "Armadura de resistência (Armadura de couro · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-necrotic--shoulders"
+      ]
     },
     {
       "id": "8f8bf718c2ee731f",
@@ -41748,8 +41911,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-necrotic"
+      ]
     },
     {
       "id": "a30e35dc908473d9",
@@ -41891,8 +42056,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-necrotic--bracers"
+      ]
     },
     {
       "id": "4335eaa08c54b7b5",
@@ -42051,8 +42218,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-necrotic--feet"
+      ]
     },
     {
       "id": "3da98076d63a1f71",
@@ -42211,8 +42380,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-necrotic--head"
+      ]
     },
     {
       "id": "74501f6ddadac5f0",
@@ -42371,8 +42542,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-necrotic--legs"
+      ]
     },
     {
       "id": "908ed586e377976c",
@@ -42531,8 +42704,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-necrotic--shoulders"
+      ]
     },
     {
       "id": "d6fc8f203b21426f",
@@ -42708,8 +42883,10 @@
           "name": "Armadura de resistência (Armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-necrotic"
+      ]
     },
     {
       "id": "86e60c688ce08203",
@@ -42851,8 +43028,10 @@
           "name": "Armadura de resistência (Armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-necrotic--bracers"
+      ]
     },
     {
       "id": "c13ee74409031091",
@@ -43011,8 +43190,10 @@
           "name": "Armadura de resistência (Armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-necrotic--feet"
+      ]
     },
     {
       "id": "01bdb2d440dbe89d",
@@ -43171,8 +43352,10 @@
           "name": "Armadura de resistência (Armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-necrotic--head"
+      ]
     },
     {
       "id": "bdebe609a1eaf1ca",
@@ -43331,8 +43514,10 @@
           "name": "Armadura de resistência (Armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-necrotic--legs"
+      ]
     },
     {
       "id": "cdf3422e07a22314",
@@ -43491,8 +43676,10 @@
           "name": "Armadura de resistência (Armadura de placas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-necrotic--shoulders"
+      ]
     },
     {
       "id": "84838502f02547c0",
@@ -43668,8 +43855,10 @@
           "name": "Armadura de resistência (Cota de anéis · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-necrotic"
+      ]
     },
     {
       "id": "364995246f0a1c4e",
@@ -43811,8 +44000,10 @@
           "name": "Armadura de resistência (Cota de anéis · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-necrotic--bracers"
+      ]
     },
     {
       "id": "4dee7f9d1771b2f4",
@@ -43971,8 +44162,10 @@
           "name": "Armadura de resistência (Cota de anéis · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-necrotic--feet"
+      ]
     },
     {
       "id": "060462153c684e5a",
@@ -44131,8 +44324,10 @@
           "name": "Armadura de resistência (Cota de anéis · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-necrotic--head"
+      ]
     },
     {
       "id": "8b9219ac1570cf6e",
@@ -44291,8 +44486,10 @@
           "name": "Armadura de resistência (Cota de anéis · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-necrotic--legs"
+      ]
     },
     {
       "id": "cf890b8a2245811c",
@@ -44451,8 +44648,10 @@
           "name": "Armadura de resistência (Cota de anéis · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-necrotic--shoulders"
+      ]
     },
     {
       "id": "ebf0ea9bf8f85698",
@@ -44628,8 +44827,10 @@
           "name": "Armadura de resistência (Cota de escamas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-necrotic"
+      ]
     },
     {
       "id": "910e2c10a8181807",
@@ -44771,8 +44972,10 @@
           "name": "Armadura de resistência (Cota de escamas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-necrotic--bracers"
+      ]
     },
     {
       "id": "aa573aec06ea0f13",
@@ -44931,8 +45134,10 @@
           "name": "Armadura de resistência (Cota de escamas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-necrotic--feet"
+      ]
     },
     {
       "id": "7ea96ac26371e2ac",
@@ -45091,8 +45296,10 @@
           "name": "Armadura de resistência (Cota de escamas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-necrotic--head"
+      ]
     },
     {
       "id": "4f44b6264e4ad024",
@@ -45251,8 +45458,10 @@
           "name": "Armadura de resistência (Cota de escamas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-necrotic--legs"
+      ]
     },
     {
       "id": "ddf6f48cf14cf8f6",
@@ -45411,8 +45620,10 @@
           "name": "Armadura de resistência (Cota de escamas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-necrotic--shoulders"
+      ]
     },
     {
       "id": "6c001746f81673ff",
@@ -45588,8 +45799,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-necrotic-resistance"
+      ]
     },
     {
       "id": "1c2368c055ef58ca",
@@ -45748,8 +45961,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-necrotic-resistance--bracers"
+      ]
     },
     {
       "id": "b5d9b4db160f570e",
@@ -45908,8 +46123,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-necrotic-resistance--feet"
+      ]
     },
     {
       "id": "1b9c1b6a6a3238e6",
@@ -46068,8 +46285,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-necrotic-resistance--head"
+      ]
     },
     {
       "id": "8e53ec264c0a165d",
@@ -46228,8 +46447,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-necrotic-resistance--legs"
+      ]
     },
     {
       "id": "cae025ab78dd8777",
@@ -46388,8 +46609,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-necrotic-resistance--shoulders"
+      ]
     },
     {
       "id": "5c11d4d9bf0a33c4",
@@ -46548,8 +46771,10 @@
           "name": "Armadura de resistência (Armadura de talas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-necrotic"
+      ]
     },
     {
       "id": "04f979b8eafacb3b",
@@ -46691,8 +46916,10 @@
           "name": "Armadura de resistência (Armadura de talas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-necrotic--bracers"
+      ]
     },
     {
       "id": "d4f306232a3bcc2a",
@@ -46851,8 +47078,10 @@
           "name": "Armadura de resistência (Armadura de talas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-necrotic--feet"
+      ]
     },
     {
       "id": "47e781d75c52ff4e",
@@ -47011,8 +47240,10 @@
           "name": "Armadura de resistência (Armadura de talas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-necrotic--head"
+      ]
     },
     {
       "id": "03ed3f2c2982ab15",
@@ -47171,8 +47402,10 @@
           "name": "Armadura de resistência (Armadura de talas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-necrotic--legs"
+      ]
     },
     {
       "id": "1ea7dd82c288f0cf",
@@ -47331,8 +47564,10 @@
           "name": "Armadura de resistência (Armadura de talas · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-necrotic--shoulders"
+      ]
     },
     {
       "id": "0168fe47144ec867",
@@ -47508,8 +47743,10 @@
           "name": "Armadura de resistência (Couro batido · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-necrotic"
+      ]
     },
     {
       "id": "f7d77c8a80e13ed8",
@@ -47651,8 +47888,10 @@
           "name": "Armadura de resistência (Couro batido · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-necrotic--bracers"
+      ]
     },
     {
       "id": "fc994f4fcf683a48",
@@ -47811,8 +48050,10 @@
           "name": "Armadura de resistência (Couro batido · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-necrotic--feet"
+      ]
     },
     {
       "id": "1e9186cf99a8e1a2",
@@ -47971,8 +48212,10 @@
           "name": "Armadura de resistência (Couro batido · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-necrotic--head"
+      ]
     },
     {
       "id": "3ab03b20165c92b1",
@@ -48131,8 +48374,10 @@
           "name": "Armadura de resistência (Couro batido · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-necrotic--legs"
+      ]
     },
     {
       "id": "844df5f5397d7da9",
@@ -48291,8 +48536,10 @@
           "name": "Armadura de resistência (Couro batido · Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-necrotic--shoulders"
+      ]
     },
     {
       "id": "40765370969211d7",
