@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 1646,
-    "pending_artworks": 2841,
+    "approved_artworks": 1724,
+    "pending_artworks": 2763,
     "catalog_references": 4643,
-    "approved_references": 1802,
+    "approved_references": 1880,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -1345,8 +1345,15 @@
             "armor-of-resistance--legs",
             "armor-of-resistance--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance",
+            "armor-of-resistance--head",
+            "armor-of-resistance--shoulders",
+            "armor-of-resistance--bracers",
+            "armor-of-resistance--legs",
+            "armor-of-resistance--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-breastplate",
@@ -1360,8 +1367,15 @@
             "armor-of-resistance-breastplate--legs",
             "armor-of-resistance-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-breastplate",
+            "armor-of-resistance-breastplate--head",
+            "armor-of-resistance-breastplate--shoulders",
+            "armor-of-resistance-breastplate--bracers",
+            "armor-of-resistance-breastplate--legs",
+            "armor-of-resistance-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-breastplate-cold",
@@ -1510,8 +1524,15 @@
             "armor-of-resistance-chain-mail--legs",
             "armor-of-resistance-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-mail",
+            "armor-of-resistance-chain-mail--head",
+            "armor-of-resistance-chain-mail--shoulders",
+            "armor-of-resistance-chain-mail--bracers",
+            "armor-of-resistance-chain-mail--legs",
+            "armor-of-resistance-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-mail-cold",
@@ -1660,8 +1681,15 @@
             "armor-of-resistance-chain-shirt--legs",
             "armor-of-resistance-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-shirt",
+            "armor-of-resistance-chain-shirt--head",
+            "armor-of-resistance-chain-shirt--shoulders",
+            "armor-of-resistance-chain-shirt--bracers",
+            "armor-of-resistance-chain-shirt--legs",
+            "armor-of-resistance-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-shirt-cold",
@@ -1810,8 +1838,15 @@
             "armor-of-resistance-half-plate-armor--legs",
             "armor-of-resistance-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-half-plate-armor",
+            "armor-of-resistance-half-plate-armor--head",
+            "armor-of-resistance-half-plate-armor--shoulders",
+            "armor-of-resistance-half-plate-armor--bracers",
+            "armor-of-resistance-half-plate-armor--legs",
+            "armor-of-resistance-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-half-plate-armor-cold",
@@ -1960,8 +1995,15 @@
             "armor-of-resistance-hide-armor--legs",
             "armor-of-resistance-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-hide-armor",
+            "armor-of-resistance-hide-armor--head",
+            "armor-of-resistance-hide-armor--shoulders",
+            "armor-of-resistance-hide-armor--bracers",
+            "armor-of-resistance-hide-armor--legs",
+            "armor-of-resistance-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-hide-armor-cold",
@@ -2110,8 +2152,15 @@
             "armor-of-resistance-leather-armor--legs",
             "armor-of-resistance-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-leather-armor",
+            "armor-of-resistance-leather-armor--head",
+            "armor-of-resistance-leather-armor--shoulders",
+            "armor-of-resistance-leather-armor--bracers",
+            "armor-of-resistance-leather-armor--legs",
+            "armor-of-resistance-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-leather-armor-cold",
@@ -2260,8 +2309,15 @@
             "armor-of-resistance-padded-armor--legs",
             "armor-of-resistance-padded-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-padded-armor",
+            "armor-of-resistance-padded-armor--head",
+            "armor-of-resistance-padded-armor--shoulders",
+            "armor-of-resistance-padded-armor--bracers",
+            "armor-of-resistance-padded-armor--legs",
+            "armor-of-resistance-padded-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-padded-armor-cold",
@@ -2545,8 +2601,15 @@
             "armor-of-resistance-ring-mail--legs",
             "armor-of-resistance-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-ring-mail",
+            "armor-of-resistance-ring-mail--head",
+            "armor-of-resistance-ring-mail--shoulders",
+            "armor-of-resistance-ring-mail--bracers",
+            "armor-of-resistance-ring-mail--legs",
+            "armor-of-resistance-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-ring-mail-cold",
@@ -2695,8 +2758,15 @@
             "armor-of-resistance-scale-mail--legs",
             "armor-of-resistance-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-scale-mail",
+            "armor-of-resistance-scale-mail--head",
+            "armor-of-resistance-scale-mail--shoulders",
+            "armor-of-resistance-scale-mail--bracers",
+            "armor-of-resistance-scale-mail--legs",
+            "armor-of-resistance-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-scale-mail-cold",
@@ -2845,8 +2915,15 @@
             "armor-of-resistance-splint-armor--legs",
             "armor-of-resistance-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-splint-armor",
+            "armor-of-resistance-splint-armor--head",
+            "armor-of-resistance-splint-armor--shoulders",
+            "armor-of-resistance-splint-armor--bracers",
+            "armor-of-resistance-splint-armor--legs",
+            "armor-of-resistance-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-splint-armor-cold",
@@ -2995,8 +3072,15 @@
             "armor-of-resistance-studded-leather--legs",
             "armor-of-resistance-studded-leather--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-studded-leather",
+            "armor-of-resistance-studded-leather--head",
+            "armor-of-resistance-studded-leather--shoulders",
+            "armor-of-resistance-studded-leather--bracers",
+            "armor-of-resistance-studded-leather--legs",
+            "armor-of-resistance-studded-leather--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-studded-leather-cold",
@@ -3145,8 +3229,15 @@
             "spiked-armor-of-acid-resistance--legs",
             "spiked-armor-of-acid-resistance--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-acid-resistance",
+            "spiked-armor-of-acid-resistance--head",
+            "spiked-armor-of-acid-resistance--shoulders",
+            "spiked-armor-of-acid-resistance--bracers",
+            "spiked-armor-of-acid-resistance--legs",
+            "spiked-armor-of-acid-resistance--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-cold-resistance",
@@ -35448,8 +35539,10 @@
           "name": "Armadura de resistência (Peitoral · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate"
+      ]
     },
     {
       "id": "21b862649531b967",
@@ -35733,8 +35826,10 @@
           "name": "Armadura de resistência (Peitoral · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate--bracers"
+      ]
     },
     {
       "id": "fcbea59cab9de3ff",
@@ -35883,8 +35978,10 @@
           "name": "Armadura de resistência (Peitoral · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate--feet"
+      ]
     },
     {
       "id": "83978d17e2492cbc",
@@ -36033,8 +36130,10 @@
           "name": "Armadura de resistência (Peitoral · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate--head"
+      ]
     },
     {
       "id": "c6f7c42572826c2e",
@@ -36183,8 +36282,10 @@
           "name": "Armadura de resistência (Peitoral · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate--legs"
+      ]
     },
     {
       "id": "978eb248bb1a0272",
@@ -36333,8 +36434,10 @@
           "name": "Armadura de resistência (Peitoral · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate--shoulders"
+      ]
     },
     {
       "id": "b60701a5956eb9af",
@@ -36348,8 +36451,10 @@
           "name": "Armadura de resistência (Cota de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail"
+      ]
     },
     {
       "id": "b38ee9e55916a370",
@@ -36633,8 +36738,10 @@
           "name": "Armadura de resistência (Cota de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail--bracers"
+      ]
     },
     {
       "id": "52ada2764c2805f1",
@@ -36783,8 +36890,10 @@
           "name": "Armadura de resistência (Cota de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail--feet"
+      ]
     },
     {
       "id": "d6254e1fe6104e48",
@@ -36933,8 +37042,10 @@
           "name": "Armadura de resistência (Cota de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail--head"
+      ]
     },
     {
       "id": "6351883810ca24fa",
@@ -37083,8 +37194,10 @@
           "name": "Armadura de resistência (Cota de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail--legs"
+      ]
     },
     {
       "id": "3f885f71bcd22c2f",
@@ -37233,8 +37346,10 @@
           "name": "Armadura de resistência (Cota de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail--shoulders"
+      ]
     },
     {
       "id": "e15e1593485aba3e",
@@ -37248,8 +37363,10 @@
           "name": "Armadura de resistência (Camisão de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt"
+      ]
     },
     {
       "id": "12a80ed1a7435dbe",
@@ -37533,8 +37650,10 @@
           "name": "Armadura de resistência (Camisão de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt--bracers"
+      ]
     },
     {
       "id": "daeea5524bdd0218",
@@ -37683,8 +37802,10 @@
           "name": "Armadura de resistência (Camisão de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt--feet"
+      ]
     },
     {
       "id": "c3e01798380e63c6",
@@ -37833,8 +37954,10 @@
           "name": "Armadura de resistência (Camisão de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt--head"
+      ]
     },
     {
       "id": "99d07273fccf6a1b",
@@ -37983,8 +38106,10 @@
           "name": "Armadura de resistência (Camisão de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt--legs"
+      ]
     },
     {
       "id": "9b3d161238981482",
@@ -38133,8 +38258,10 @@
           "name": "Armadura de resistência (Camisão de malha · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "815a4c16f87341e2",
@@ -38148,8 +38275,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor"
+      ]
     },
     {
       "id": "92401f6b66eedd39",
@@ -38433,8 +38562,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "458e1862750521bd",
@@ -38583,8 +38714,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor--feet"
+      ]
     },
     {
       "id": "48feae7d177af22f",
@@ -38733,8 +38866,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor--head"
+      ]
     },
     {
       "id": "3320dcb1ddc0588f",
@@ -38883,8 +39018,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor--legs"
+      ]
     },
     {
       "id": "392a1d51581a5ffb",
@@ -39033,8 +39170,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "cfba35f90fa2f94f",
@@ -39048,8 +39187,10 @@
           "name": "Armadura de resistência (Armadura de peles · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor"
+      ]
     },
     {
       "id": "64629b56a39767ce",
@@ -39333,8 +39474,10 @@
           "name": "Armadura de resistência (Armadura de peles · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor--bracers"
+      ]
     },
     {
       "id": "6fdddb9c81e47fe6",
@@ -39483,8 +39626,10 @@
           "name": "Armadura de resistência (Armadura de peles · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor--feet"
+      ]
     },
     {
       "id": "9c0372abd07db780",
@@ -39633,8 +39778,10 @@
           "name": "Armadura de resistência (Armadura de peles · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor--head"
+      ]
     },
     {
       "id": "dbc43cf7b328ef75",
@@ -39783,8 +39930,10 @@
           "name": "Armadura de resistência (Armadura de peles · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor--legs"
+      ]
     },
     {
       "id": "5386e29ebc2702b8",
@@ -39933,8 +40082,10 @@
           "name": "Armadura de resistência (Armadura de peles · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor--shoulders"
+      ]
     },
     {
       "id": "f542828115a376b2",
@@ -39948,8 +40099,10 @@
           "name": "Armadura de resistência (Armadura de couro · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor"
+      ]
     },
     {
       "id": "2623a1aae8b2ebcd",
@@ -40233,8 +40386,10 @@
           "name": "Armadura de resistência (Armadura de couro · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor--bracers"
+      ]
     },
     {
       "id": "290941e707599244",
@@ -40383,8 +40538,10 @@
           "name": "Armadura de resistência (Armadura de couro · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor--feet"
+      ]
     },
     {
       "id": "92467dff8d200453",
@@ -40533,8 +40690,10 @@
           "name": "Armadura de resistência (Armadura de couro · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor--head"
+      ]
     },
     {
       "id": "3c9506e1e600c027",
@@ -40683,8 +40842,10 @@
           "name": "Armadura de resistência (Armadura de couro · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor--legs"
+      ]
     },
     {
       "id": "e800e3cb48b39139",
@@ -40833,8 +40994,10 @@
           "name": "Armadura de resistência (Armadura de couro · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor--shoulders"
+      ]
     },
     {
       "id": "08a2da9ff2a2b0e1",
@@ -40848,8 +41011,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor"
+      ]
     },
     {
       "id": "4be189df5271a21f",
@@ -41133,8 +41298,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor--bracers"
+      ]
     },
     {
       "id": "59cb273d377cb417",
@@ -41283,8 +41450,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor--feet"
+      ]
     },
     {
       "id": "b75bd2ffe458bb9d",
@@ -41433,8 +41602,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor--head"
+      ]
     },
     {
       "id": "8bfe65112028b0a7",
@@ -41583,8 +41754,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor--legs"
+      ]
     },
     {
       "id": "fcd103e73c51a46d",
@@ -41733,8 +41906,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor--shoulders"
+      ]
     },
     {
       "id": "cf79e11ab8b28e76",
@@ -41748,8 +41923,10 @@
           "name": "Armadura de resistência (Armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance"
+      ]
     },
     {
       "id": "b8010e6a39e91ba8",
@@ -42033,8 +42210,10 @@
           "name": "Armadura de resistência (Armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance--bracers"
+      ]
     },
     {
       "id": "289ef63a10e35e14",
@@ -42183,8 +42362,10 @@
           "name": "Armadura de resistência (Armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance--feet"
+      ]
     },
     {
       "id": "7fa01e7e556bb822",
@@ -42333,8 +42514,10 @@
           "name": "Armadura de resistência (Armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance--head"
+      ]
     },
     {
       "id": "816519d023fc912c",
@@ -42483,8 +42666,10 @@
           "name": "Armadura de resistência (Armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance--legs"
+      ]
     },
     {
       "id": "58fde156ce1337fd",
@@ -42633,8 +42818,10 @@
           "name": "Armadura de resistência (Armadura de placas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance--shoulders"
+      ]
     },
     {
       "id": "8111f156c2153828",
@@ -42648,8 +42835,10 @@
           "name": "Armadura de resistência (Cota de anéis · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail"
+      ]
     },
     {
       "id": "f8d825ae41f6d928",
@@ -42933,8 +43122,10 @@
           "name": "Armadura de resistência (Cota de anéis · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail--bracers"
+      ]
     },
     {
       "id": "3c5cad8694bc6e14",
@@ -43083,8 +43274,10 @@
           "name": "Armadura de resistência (Cota de anéis · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail--feet"
+      ]
     },
     {
       "id": "a6dc1f3fb84c12f3",
@@ -43233,8 +43426,10 @@
           "name": "Armadura de resistência (Cota de anéis · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail--head"
+      ]
     },
     {
       "id": "e861eaaaef546cc2",
@@ -43383,8 +43578,10 @@
           "name": "Armadura de resistência (Cota de anéis · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail--legs"
+      ]
     },
     {
       "id": "d3b6781c248f28bf",
@@ -43533,8 +43730,10 @@
           "name": "Armadura de resistência (Cota de anéis · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail--shoulders"
+      ]
     },
     {
       "id": "153edf24711e2143",
@@ -43548,8 +43747,10 @@
           "name": "Armadura de resistência (Cota de escamas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail"
+      ]
     },
     {
       "id": "c40246141dd0615f",
@@ -43833,8 +44034,10 @@
           "name": "Armadura de resistência (Cota de escamas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail--bracers"
+      ]
     },
     {
       "id": "b098b85d43724214",
@@ -43983,8 +44186,10 @@
           "name": "Armadura de resistência (Cota de escamas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail--feet"
+      ]
     },
     {
       "id": "2b744688d6211eed",
@@ -44133,8 +44338,10 @@
           "name": "Armadura de resistência (Cota de escamas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail--head"
+      ]
     },
     {
       "id": "a6063624f883a4da",
@@ -44283,8 +44490,10 @@
           "name": "Armadura de resistência (Cota de escamas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail--legs"
+      ]
     },
     {
       "id": "0c3b10e64c1ed67b",
@@ -44433,8 +44642,10 @@
           "name": "Armadura de resistência (Cota de escamas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail--shoulders"
+      ]
     },
     {
       "id": "c161ea722804d760",
@@ -44448,8 +44659,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-acid-resistance"
+      ]
     },
     {
       "id": "a1b7ca523e026714",
@@ -44598,8 +44811,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-acid-resistance--bracers"
+      ]
     },
     {
       "id": "0b67bbb1eae71c17",
@@ -44748,8 +44963,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-acid-resistance--feet"
+      ]
     },
     {
       "id": "f7e595722305f344",
@@ -44898,8 +45115,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-acid-resistance--head"
+      ]
     },
     {
       "id": "e254ceb632ff1367",
@@ -45048,8 +45267,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-acid-resistance--legs"
+      ]
     },
     {
       "id": "b4a6515dc361aaa2",
@@ -45198,8 +45419,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-acid-resistance--shoulders"
+      ]
     },
     {
       "id": "399a4c8f7f4b8d1a",
@@ -45348,8 +45571,10 @@
           "name": "Armadura de resistência (Armadura de talas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor"
+      ]
     },
     {
       "id": "1b4261e44834f5d4",
@@ -45633,8 +45858,10 @@
           "name": "Armadura de resistência (Armadura de talas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor--bracers"
+      ]
     },
     {
       "id": "573e2a9b58b05add",
@@ -45783,8 +46010,10 @@
           "name": "Armadura de resistência (Armadura de talas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor--feet"
+      ]
     },
     {
       "id": "476ceb7debfbc7a2",
@@ -45933,8 +46162,10 @@
           "name": "Armadura de resistência (Armadura de talas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor--head"
+      ]
     },
     {
       "id": "bcdd8baf8198dd97",
@@ -46083,8 +46314,10 @@
           "name": "Armadura de resistência (Armadura de talas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor--legs"
+      ]
     },
     {
       "id": "f41439f22e1e5586",
@@ -46233,8 +46466,10 @@
           "name": "Armadura de resistência (Armadura de talas · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor--shoulders"
+      ]
     },
     {
       "id": "13c3777f37ba8bae",
@@ -46248,8 +46483,10 @@
           "name": "Armadura de resistência (Couro batido · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather"
+      ]
     },
     {
       "id": "387d65f76b1a8eeb",
@@ -46533,8 +46770,10 @@
           "name": "Armadura de resistência (Couro batido · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather--bracers"
+      ]
     },
     {
       "id": "0cf2675ab8ff9452",
@@ -46683,8 +46922,10 @@
           "name": "Armadura de resistência (Couro batido · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather--feet"
+      ]
     },
     {
       "id": "b150342b471db14e",
@@ -46833,8 +47074,10 @@
           "name": "Armadura de resistência (Couro batido · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather--head"
+      ]
     },
     {
       "id": "ddf6c94f857e768d",
@@ -46983,8 +47226,10 @@
           "name": "Armadura de resistência (Couro batido · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather--legs"
+      ]
     },
     {
       "id": "37b58aa6c4a0afbf",
@@ -47133,8 +47378,10 @@
           "name": "Armadura de resistência (Couro batido · Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather--shoulders"
+      ]
     },
     {
       "id": "d867c6169dbf8ff6",
