@@ -183,3 +183,5 @@ As dez artes individuais têm fundo transparente e foram conferidas na loja em 1
 ### Lâminas de Cristal, arcos, Disparo Repetido e armas singulares
 
 As 22 artes nativas individuais cobrem os seis modelos de Lâmina de Cristal, os dois Arcos de Energia, os dois Arcos do Juramento, os nove modelos de Disparo Repetido, o Arremessador Anão, a Lâmina Solar e a Adaga de Veneno. As armas de disparo aparecem isoladas, sem munição e com fundo transparente. Os 42 trabalhos de munição excluídos no plano e as 2.863 referências de arte anteriores foram preservados. As imagens foram conferidas na loja em 1440/390 px e no inventário após compras de teste.
+
+A publicação `magic-weapons-20261107`, commit `0113f66090506c62537ef0a5df24385871ec08af`, passou na verificação das 2.885 referências HTTPS por hash. As nove tabelas protegidas foram preservadas, o site passou na verificação de saúde e o ilustrador estava ativo. Backup anterior em `/opt/alvorada/backups/magic-weapons-20261107-before.dump`. O plano geral registra 1.764 artes físicas pendentes.
