@@ -328,8 +328,8 @@
         "armor-of-resistance-ring-mail-radiant"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-radiant--r3.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "ce6ebe25fc0ecb2d",
@@ -340,8 +340,8 @@
         "armor-of-resistance-ring-mail-thunder"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-thunder--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "753541eabda0cd7a",
@@ -439,8 +439,8 @@
         "armor-of-resistance-ring-mail-radiant--bracers"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-radiant--bracers--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "c05e57a9d6900aa8",
@@ -451,8 +451,8 @@
         "armor-of-resistance-ring-mail-thunder--bracers"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-thunder--bracers--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "9f8e2cac3a562076",
@@ -562,8 +562,8 @@
         "armor-of-resistance-ring-mail-radiant--feet"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-radiant--feet--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "d059271cd3c93737",
@@ -574,8 +574,8 @@
         "armor-of-resistance-ring-mail-thunder--feet"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-thunder--feet--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "4784bd62f1ab285c",
@@ -685,8 +685,8 @@
         "armor-of-resistance-ring-mail-radiant--head"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-radiant--head--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "27b11bed0b8c5cdc",
@@ -697,8 +697,8 @@
         "armor-of-resistance-ring-mail-thunder--head"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-thunder--head--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "8f4bb9208162cd0e",
@@ -808,8 +808,8 @@
         "armor-of-resistance-ring-mail-radiant--legs"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-radiant--legs--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "d540ce0b76cb01ce",
@@ -820,8 +820,8 @@
         "armor-of-resistance-ring-mail-thunder--legs"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-thunder--legs--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "5711f614d94d3eeb",
@@ -931,8 +931,8 @@
         "armor-of-resistance-ring-mail-radiant--shoulders"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-radiant--shoulders--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "402f70dbe2702327",
@@ -943,8 +943,8 @@
         "armor-of-resistance-ring-mail-thunder--shoulders"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-thunder--shoulders--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "e7bed07e88c9ed8f",
@@ -1699,8 +1699,8 @@
         "last-stand-ring-mail"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/last-stand-ring-mail--r4.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "53960bce90dc1eea",
@@ -1711,8 +1711,8 @@
         "last-stand-ring-mail--bracers"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/last-stand-ring-mail--bracers--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "d4b02b4225cce793",
@@ -1723,8 +1723,8 @@
         "last-stand-ring-mail--feet"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/last-stand-ring-mail--feet--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "c72681845e530e37",
@@ -1735,8 +1735,8 @@
         "last-stand-ring-mail--head"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/last-stand-ring-mail--head--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "75d9281e440d662c",
@@ -1747,8 +1747,8 @@
         "last-stand-ring-mail--legs"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/last-stand-ring-mail--legs--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "36795dd34bc45968",
@@ -1759,8 +1759,8 @@
         "last-stand-ring-mail--shoulders"
       ],
       "previous_status": "pending",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/last-stand-ring-mail--shoulders--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-tenth18-20261106"
     },
     {
       "physical_job": "c5d84d52b1e8f7be",
