@@ -229,8 +229,8 @@
         "armor-of-resistance-ring-mail"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "f8d825ae41f6d928",
@@ -241,8 +241,8 @@
         "armor-of-resistance-ring-mail-cold"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-cold--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "a759a92031674daf",
@@ -253,8 +253,8 @@
         "armor-of-resistance-ring-mail-fire"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-fire--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "e52956bb138c874e",
@@ -265,7 +265,8 @@
         "armor-of-resistance-ring-mail-force"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-force--r2.png"
     },
     {
       "physical_job": "92ed521149a690a1",
@@ -276,7 +277,8 @@
         "armor-of-resistance-ring-mail-lightning"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-lightning--r2.png"
     },
     {
       "physical_job": "72041c760b0cd728",
@@ -287,7 +289,8 @@
         "armor-of-resistance-ring-mail-necrotic"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-necrotic--r2.png"
     },
     {
       "physical_job": "364995246f0a1c4e",
@@ -346,8 +349,8 @@
         "armor-of-resistance-ring-mail-cold--bracers"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-cold--bracers--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "d833615c1ae09575",
@@ -358,8 +361,8 @@
         "armor-of-resistance-ring-mail-fire--bracers"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-fire--bracers--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "cb4d2a1ab826964f",
@@ -370,7 +373,8 @@
         "armor-of-resistance-ring-mail-force--bracers"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-force--bracers--r2.png"
     },
     {
       "physical_job": "a1893fc87cce7242",
@@ -381,7 +385,8 @@
         "armor-of-resistance-ring-mail-lightning--bracers"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-lightning--bracers--r2.png"
     },
     {
       "physical_job": "9d992f507c2e0ecc",
@@ -392,7 +397,8 @@
         "armor-of-resistance-ring-mail-necrotic--bracers"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-necrotic--bracers--r2.png"
     },
     {
       "physical_job": "4dee7f9d1771b2f4",
@@ -451,8 +457,8 @@
         "armor-of-resistance-ring-mail--bracers"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail--bracers--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "3c5cad8694bc6e14",
@@ -463,8 +469,8 @@
         "armor-of-resistance-ring-mail-cold--feet"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-cold--feet--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "de73123c16ce644d",
@@ -475,8 +481,8 @@
         "armor-of-resistance-ring-mail-fire--feet"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-fire--feet--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "292114f2626b305e",
@@ -487,7 +493,8 @@
         "armor-of-resistance-ring-mail-force--feet"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-force--feet--r2.png"
     },
     {
       "physical_job": "08b8def1f76047e3",
@@ -498,7 +505,8 @@
         "armor-of-resistance-ring-mail-lightning--feet"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-lightning--feet--r2.png"
     },
     {
       "physical_job": "155d55502288423c",
@@ -509,7 +517,8 @@
         "armor-of-resistance-ring-mail-necrotic--feet"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-necrotic--feet--r2.png"
     },
     {
       "physical_job": "060462153c684e5a",
@@ -568,8 +577,8 @@
         "armor-of-resistance-ring-mail--feet"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail--feet--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "a6dc1f3fb84c12f3",
@@ -580,8 +589,8 @@
         "armor-of-resistance-ring-mail-cold--head"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-cold--head--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "ff6e2f219f60c7f5",
@@ -592,8 +601,8 @@
         "armor-of-resistance-ring-mail-fire--head"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-fire--head--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "be1a9f2577b7e2fb",
@@ -604,7 +613,8 @@
         "armor-of-resistance-ring-mail-force--head"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-force--head--r2.png"
     },
     {
       "physical_job": "444c91b2d724d14f",
@@ -615,7 +625,8 @@
         "armor-of-resistance-ring-mail-lightning--head"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-lightning--head--r2.png"
     },
     {
       "physical_job": "5279a5398f09d8e4",
@@ -626,7 +637,8 @@
         "armor-of-resistance-ring-mail-necrotic--head"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-necrotic--head--r2.png"
     },
     {
       "physical_job": "8b9219ac1570cf6e",
@@ -685,8 +697,8 @@
         "armor-of-resistance-ring-mail--head"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail--head--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "e861eaaaef546cc2",
@@ -697,8 +709,8 @@
         "armor-of-resistance-ring-mail-cold--legs"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-cold--legs--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "fdd57088a10ffe15",
@@ -709,8 +721,8 @@
         "armor-of-resistance-ring-mail-fire--legs"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-fire--legs--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "6ce8668592787090",
@@ -721,7 +733,8 @@
         "armor-of-resistance-ring-mail-force--legs"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-force--legs--r2.png"
     },
     {
       "physical_job": "c906bef3638a3f08",
@@ -732,7 +745,8 @@
         "armor-of-resistance-ring-mail-lightning--legs"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-lightning--legs--r2.png"
     },
     {
       "physical_job": "9fc1652cabcad539",
@@ -743,7 +757,8 @@
         "armor-of-resistance-ring-mail-necrotic--legs"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-necrotic--legs--r2.png"
     },
     {
       "physical_job": "cf890b8a2245811c",
@@ -802,8 +817,8 @@
         "armor-of-resistance-ring-mail--legs"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail--legs--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "d3b6781c248f28bf",
@@ -814,8 +829,8 @@
         "armor-of-resistance-ring-mail-cold--shoulders"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-cold--shoulders--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "67229a355f3ff353",
@@ -826,8 +841,8 @@
         "armor-of-resistance-ring-mail-fire--shoulders"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-fire--shoulders--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "0f71883b7d5027c3",
@@ -838,7 +853,8 @@
         "armor-of-resistance-ring-mail-force--shoulders"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-force--shoulders--r2.png"
     },
     {
       "physical_job": "7447866dcf365aee",
@@ -849,7 +865,8 @@
         "armor-of-resistance-ring-mail-lightning--shoulders"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-lightning--shoulders--r2.png"
     },
     {
       "physical_job": "55cd5e033422d3f7",
@@ -860,7 +877,8 @@
         "armor-of-resistance-ring-mail-necrotic--shoulders"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail-necrotic--shoulders--r3.png"
     },
     {
       "physical_job": "ebf0ea9bf8f85698",
@@ -919,8 +937,8 @@
         "armor-of-resistance-ring-mail--shoulders"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/armor-of-resistance-ring-mail--shoulders--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-sixth18-20261106"
     },
     {
       "physical_job": "b8cf164d258a36a1",
