@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2620,
-    "pending_artworks": 1867,
+    "approved_artworks": 2660,
+    "pending_artworks": 1827,
     "catalog_references": 4643,
-    "approved_references": 2776,
+    "approved_references": 2816,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -20277,7 +20277,7 @@
     },
     {
       "family": "Imbued Wood (Fernian Ash)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "fernian-ash-rod",
@@ -20286,8 +20286,10 @@
           "artwork_ids": [
             "fernian-ash-rod"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "fernian-ash-rod"
+          ],
+          "status": "approved"
         },
         {
           "id": "fernian-ash-staff",
@@ -20296,8 +20298,10 @@
           "artwork_ids": [
             "fernian-ash-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "fernian-ash-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "fernian-ash-wand",
@@ -20306,14 +20310,16 @@
           "artwork_ids": [
             "fernian-ash-wand"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "fernian-ash-wand"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Imbued Wood (Irian Rosewood)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "irian-rosewood-rod",
@@ -20322,8 +20328,10 @@
           "artwork_ids": [
             "irian-rosewood-rod"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "irian-rosewood-rod"
+          ],
+          "status": "approved"
         },
         {
           "id": "irian-rosewood-staff",
@@ -20332,8 +20340,10 @@
           "artwork_ids": [
             "irian-rosewood-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "irian-rosewood-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "irian-rosewood-wand",
@@ -20342,14 +20352,16 @@
           "artwork_ids": [
             "irian-rosewood-wand"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "irian-rosewood-wand"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Imbued Wood (Kythrian Manchineel)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "kythrian-manchineel-rod",
@@ -20358,8 +20370,10 @@
           "artwork_ids": [
             "kythrian-manchineel-rod"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "kythrian-manchineel-rod"
+          ],
+          "status": "approved"
         },
         {
           "id": "kythrian-manchineel-staff",
@@ -20368,8 +20382,10 @@
           "artwork_ids": [
             "kythrian-manchineel-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "kythrian-manchineel-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "kythrian-manchineel-wand",
@@ -20378,14 +20394,16 @@
           "artwork_ids": [
             "kythrian-manchineel-wand"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "kythrian-manchineel-wand"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Imbued Wood (Lamannian Oak)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "lamannian-oak-rod",
@@ -20394,8 +20412,10 @@
           "artwork_ids": [
             "lamannian-oak-rod"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "lamannian-oak-rod"
+          ],
+          "status": "approved"
         },
         {
           "id": "lamannian-oak-staff",
@@ -20404,8 +20424,10 @@
           "artwork_ids": [
             "lamannian-oak-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "lamannian-oak-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "lamannian-oak-wand",
@@ -20414,14 +20436,16 @@
           "artwork_ids": [
             "lamannian-oak-wand"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "lamannian-oak-wand"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Imbued Wood (Mabaran Ebony)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "mabaran-ebony-rod",
@@ -20430,8 +20454,10 @@
           "artwork_ids": [
             "mabaran-ebony-rod"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mabaran-ebony-rod"
+          ],
+          "status": "approved"
         },
         {
           "id": "mabaran-ebony-staff",
@@ -20440,8 +20466,10 @@
           "artwork_ids": [
             "mabaran-ebony-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mabaran-ebony-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "mabaran-ebony-wand",
@@ -20450,14 +20478,16 @@
           "artwork_ids": [
             "mabaran-ebony-wand"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mabaran-ebony-wand"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Imbued Wood (Risian Pine)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "risian-pine-rod",
@@ -20466,8 +20496,10 @@
           "artwork_ids": [
             "risian-pine-rod"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "risian-pine-rod"
+          ],
+          "status": "approved"
         },
         {
           "id": "risian-pine-staff",
@@ -20476,8 +20508,10 @@
           "artwork_ids": [
             "risian-pine-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "risian-pine-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "risian-pine-wand",
@@ -20486,14 +20520,16 @@
           "artwork_ids": [
             "risian-pine-wand"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "risian-pine-wand"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Imbued Wood (Shavarran Birch)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "shavarran-birch-rod",
@@ -20502,8 +20538,10 @@
           "artwork_ids": [
             "shavarran-birch-rod"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shavarran-birch-rod"
+          ],
+          "status": "approved"
         },
         {
           "id": "shavarran-birch-staff",
@@ -20512,8 +20550,10 @@
           "artwork_ids": [
             "shavarran-birch-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shavarran-birch-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "shavarran-birch-wand",
@@ -20522,14 +20562,16 @@
           "artwork_ids": [
             "shavarran-birch-wand"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shavarran-birch-wand"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Imbued Wood (Xorian Wenge)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "xorian-wenge-rod",
@@ -20538,8 +20580,10 @@
           "artwork_ids": [
             "xorian-wenge-rod"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "xorian-wenge-rod"
+          ],
+          "status": "approved"
         },
         {
           "id": "xorian-wenge-staff",
@@ -20548,8 +20592,10 @@
           "artwork_ids": [
             "xorian-wenge-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "xorian-wenge-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "xorian-wenge-wand",
@@ -20558,8 +20604,10 @@
           "artwork_ids": [
             "xorian-wenge-wand"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "xorian-wenge-wand"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -23233,7 +23281,7 @@
     },
     {
       "family": "Orb of Shielding (Fernian Basalt)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "fernian-basalt-crystal",
@@ -23242,8 +23290,10 @@
           "artwork_ids": [
             "fernian-basalt-crystal"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "fernian-basalt-crystal"
+          ],
+          "status": "approved"
         },
         {
           "id": "fernian-basalt-orb",
@@ -23252,14 +23302,16 @@
           "artwork_ids": [
             "fernian-basalt-orb"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "fernian-basalt-orb"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Orb of Shielding (Irian Quartz)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "irian-quartz-crystal",
@@ -23268,8 +23320,10 @@
           "artwork_ids": [
             "irian-quartz-crystal"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "irian-quartz-crystal"
+          ],
+          "status": "approved"
         },
         {
           "id": "irian-quartz-orb",
@@ -23278,14 +23332,16 @@
           "artwork_ids": [
             "irian-quartz-orb"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "irian-quartz-orb"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Orb of Shielding (Kythrian Skarn)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "kythrian-skarn-crystal",
@@ -23294,8 +23350,10 @@
           "artwork_ids": [
             "kythrian-skarn-crystal"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "kythrian-skarn-crystal"
+          ],
+          "status": "approved"
         },
         {
           "id": "kythrian-skarn-orb",
@@ -23304,14 +23362,16 @@
           "artwork_ids": [
             "kythrian-skarn-orb"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "kythrian-skarn-orb"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Orb of Shielding (Lamannian Flint)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "lamannian-flint-crystal",
@@ -23320,8 +23380,10 @@
           "artwork_ids": [
             "lamannian-flint-crystal"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "lamannian-flint-crystal"
+          ],
+          "status": "approved"
         },
         {
           "id": "lamannian-flint-orb",
@@ -23330,14 +23392,16 @@
           "artwork_ids": [
             "lamannian-flint-orb"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "lamannian-flint-orb"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Orb of Shielding (Mabaran Obsidian)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "mabaran-obsidian-crystal",
@@ -23346,8 +23410,10 @@
           "artwork_ids": [
             "mabaran-obsidian-crystal"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mabaran-obsidian-crystal"
+          ],
+          "status": "approved"
         },
         {
           "id": "mabaran-obsidian-orb",
@@ -23356,14 +23422,16 @@
           "artwork_ids": [
             "mabaran-obsidian-orb"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mabaran-obsidian-orb"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Orb of Shielding (Risian Shale)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "risian-shale-crystal",
@@ -23372,8 +23440,10 @@
           "artwork_ids": [
             "risian-shale-crystal"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "risian-shale-crystal"
+          ],
+          "status": "approved"
         },
         {
           "id": "risian-shale-orb",
@@ -23382,14 +23452,16 @@
           "artwork_ids": [
             "risian-shale-orb"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "risian-shale-orb"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Orb of Shielding (Shavarran Chert)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "shavarran-chert-crystal",
@@ -23398,8 +23470,10 @@
           "artwork_ids": [
             "shavarran-chert-crystal"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shavarran-chert-crystal"
+          ],
+          "status": "approved"
         },
         {
           "id": "shavarran-chert-orb",
@@ -23408,14 +23482,16 @@
           "artwork_ids": [
             "shavarran-chert-orb"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shavarran-chert-orb"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Orb of Shielding (Xorian Marble)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "xorian-marble-crystal",
@@ -23424,8 +23500,10 @@
           "artwork_ids": [
             "xorian-marble-crystal"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "xorian-marble-crystal"
+          ],
+          "status": "approved"
         },
         {
           "id": "xorian-marble-orb",
@@ -23434,8 +23512,10 @@
           "artwork_ids": [
             "xorian-marble-orb"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "xorian-marble-orb"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -82326,8 +82406,10 @@
           "name": "Bastão de freixo de Fernia imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "fernian-ash-rod"
+      ]
     },
     {
       "id": "444f4b4c4f98da9d",
@@ -82341,8 +82423,10 @@
           "name": "Cajado de freixo de Fernia imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "fernian-ash-staff"
+      ]
     },
     {
       "id": "6f527d1496fe4ab8",
@@ -82356,8 +82440,10 @@
           "name": "Varinha de freixo de Fernia imbuída"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "fernian-ash-wand"
+      ]
     },
     {
       "id": "2995f97a924fc72e",
@@ -82371,8 +82457,10 @@
           "name": "Bastão de jacarandá de Irian imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "irian-rosewood-rod"
+      ]
     },
     {
       "id": "09387061ad65ae4d",
@@ -82386,8 +82474,10 @@
           "name": "Cajado de jacarandá de Irian imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "irian-rosewood-staff"
+      ]
     },
     {
       "id": "d81420bbae2dc01e",
@@ -82401,8 +82491,10 @@
           "name": "Varinha de jacarandá de Irian imbuída"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "irian-rosewood-wand"
+      ]
     },
     {
       "id": "e767b311225e1564",
@@ -82416,8 +82508,10 @@
           "name": "Bastão de manchineel de Kythri imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "kythrian-manchineel-rod"
+      ]
     },
     {
       "id": "e51850e3f2d3a3e5",
@@ -82431,8 +82525,10 @@
           "name": "Cajado de manchineel de Kythri imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "kythrian-manchineel-staff"
+      ]
     },
     {
       "id": "2174dcfc3489a41e",
@@ -82446,8 +82542,10 @@
           "name": "Varinha de manchineel de Kythri imbuída"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "kythrian-manchineel-wand"
+      ]
     },
     {
       "id": "41cb34b7add6c267",
@@ -82461,8 +82559,10 @@
           "name": "Bastão de carvalho de Lamannia imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "lamannian-oak-rod"
+      ]
     },
     {
       "id": "7056694c87a353c4",
@@ -82476,8 +82576,10 @@
           "name": "Cajado de carvalho de Lamannia imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "lamannian-oak-staff"
+      ]
     },
     {
       "id": "d28b2785bb266478",
@@ -82491,8 +82593,10 @@
           "name": "Varinha de carvalho de Lamannia imbuída"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "lamannian-oak-wand"
+      ]
     },
     {
       "id": "770b5e101c33ed6c",
@@ -82506,8 +82610,10 @@
           "name": "Bastão de ébano de Mabar imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mabaran-ebony-rod"
+      ]
     },
     {
       "id": "3745eef99c2a635b",
@@ -82521,8 +82627,10 @@
           "name": "Cajado de ébano de Mabar imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mabaran-ebony-staff"
+      ]
     },
     {
       "id": "9214468a6dd94376",
@@ -82536,8 +82644,10 @@
           "name": "Varinha de ébano de Mabar imbuída"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mabaran-ebony-wand"
+      ]
     },
     {
       "id": "9c61a2d496ac1be7",
@@ -82551,8 +82661,10 @@
           "name": "Bastão de pinheiro de Risia imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "risian-pine-rod"
+      ]
     },
     {
       "id": "a2db144d33c0c278",
@@ -82566,8 +82678,10 @@
           "name": "Cajado de pinheiro de Risia imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "risian-pine-staff"
+      ]
     },
     {
       "id": "d54c9657a3a6db95",
@@ -82581,8 +82695,10 @@
           "name": "Varinha de pinheiro de Risia imbuída"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "risian-pine-wand"
+      ]
     },
     {
       "id": "69382701f7701cfc",
@@ -82596,8 +82712,10 @@
           "name": "Bastão de bétula de Shavarath imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shavarran-birch-rod"
+      ]
     },
     {
       "id": "793bc761ea800ae6",
@@ -82611,8 +82729,10 @@
           "name": "Cajado de bétula de Shavarath imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shavarran-birch-staff"
+      ]
     },
     {
       "id": "7f14c8163f98fd6c",
@@ -82626,8 +82746,10 @@
           "name": "Varinha de bétula de Shavarath imbuída"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shavarran-birch-wand"
+      ]
     },
     {
       "id": "466f0564f6b0d403",
@@ -82641,8 +82763,10 @@
           "name": "Bastão de wengué de Xoriat imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "xorian-wenge-rod"
+      ]
     },
     {
       "id": "065f20e1a9061bf4",
@@ -82656,8 +82780,10 @@
           "name": "Cajado de wengué de Xoriat imbuído"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "xorian-wenge-staff"
+      ]
     },
     {
       "id": "297a24b97aa39f6b",
@@ -82671,8 +82797,10 @@
           "name": "Varinha de wengué de Xoriat imbuída"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "xorian-wenge-wand"
+      ]
     },
     {
       "id": "d902b8f349dd81ea",
@@ -90304,8 +90432,10 @@
           "name": "Cristal de proteção — Basalto de Fernia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "fernian-basalt-crystal"
+      ]
     },
     {
       "id": "d30905a44afbdfaa",
@@ -90319,8 +90449,10 @@
           "name": "Orbe de proteção — Basalto de Fernia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "fernian-basalt-orb"
+      ]
     },
     {
       "id": "24d0ae51837eac8a",
@@ -90334,8 +90466,10 @@
           "name": "Cristal de proteção — Quartzo de Irian"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "irian-quartz-crystal"
+      ]
     },
     {
       "id": "a9626871ba7a4d41",
@@ -90349,8 +90483,10 @@
           "name": "Orbe de proteção — Quartzo de Irian"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "irian-quartz-orb"
+      ]
     },
     {
       "id": "95d139baba6e1a7a",
@@ -90364,8 +90500,10 @@
           "name": "Cristal de proteção — Skarn de Kythri"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "kythrian-skarn-crystal"
+      ]
     },
     {
       "id": "32c63269ff9ec4e9",
@@ -90379,8 +90517,10 @@
           "name": "Orbe de proteção — Skarn de Kythri"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "kythrian-skarn-orb"
+      ]
     },
     {
       "id": "7709e7c6ac2c71b1",
@@ -90394,8 +90534,10 @@
           "name": "Cristal de proteção — Sílex de Lamannia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "lamannian-flint-crystal"
+      ]
     },
     {
       "id": "f680a8b751076416",
@@ -90409,8 +90551,10 @@
           "name": "Orbe de proteção — Sílex de Lamannia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "lamannian-flint-orb"
+      ]
     },
     {
       "id": "c4b375c0fe8156d3",
@@ -90424,8 +90568,10 @@
           "name": "Cristal de proteção — Obsidiana de Mabar"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mabaran-obsidian-crystal"
+      ]
     },
     {
       "id": "4e2649eace094366",
@@ -90439,8 +90585,10 @@
           "name": "Orbe de proteção — Obsidiana de Mabar"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mabaran-obsidian-orb"
+      ]
     },
     {
       "id": "8a762eec0be1e7b5",
@@ -90454,8 +90602,10 @@
           "name": "Cristal de proteção — Xisto de Risia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "risian-shale-crystal"
+      ]
     },
     {
       "id": "f0d4a52211709bd0",
@@ -90469,8 +90619,10 @@
           "name": "Orbe de proteção — Xisto de Risia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "risian-shale-orb"
+      ]
     },
     {
       "id": "c1614db02a94b93a",
@@ -90484,8 +90636,10 @@
           "name": "Cristal de proteção — Chert de Shavarath"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shavarran-chert-crystal"
+      ]
     },
     {
       "id": "297b724b29fb06de",
@@ -90499,8 +90653,10 @@
           "name": "Orbe de proteção — Chert de Shavarath"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shavarran-chert-orb"
+      ]
     },
     {
       "id": "86fd5221f5dbb486",
@@ -90514,8 +90670,10 @@
           "name": "Cristal de proteção — Mármore de Xoriat"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "xorian-marble-crystal"
+      ]
     },
     {
       "id": "bf40d295eb6e41e3",
@@ -90529,8 +90687,10 @@
           "name": "Orbe de proteção — Mármore de Xoriat"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "xorian-marble-orb"
+      ]
     },
     {
       "id": "c7af9333406a2da6",

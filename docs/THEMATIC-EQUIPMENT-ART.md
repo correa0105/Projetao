@@ -159,3 +159,7 @@ Oito vestes tramontanas usam os originais aprovados e 40 peças novas de tecido 
 ### Vestes, botas, cintos e amuletos
 
 Sete vestes, quatro pares de botas, seis cintos e três amuletos receberam artes nativas. A loja em 1440/390 px e as compras de teste no inventário passaram. Publicação confirmada em `wondrous-wearables-20261107`, commit `0c1823f2b03374f31a95e7d523c1c035fd5e8d8c`: 2.752 referências HTTPS conferidas por hash, nove tabelas protegidas sem alterações, site saudável e ilustrador ativo. Backup anterior em `/opt/alvorada/backups/wondrous-wearables-20261107-before.dump`.
+
+### Arma de Prata e Espada Tocada pela Lua
+
+Publicação parcial de 29 dos 53 modelos de Arma de Prata e da cimitarra de duas lâminas entre os seis modelos de Espada Tocada pela Lua. As 24 ofertas ativas foram conferidas em 1440/390 px e as seis artes de modelos retirados continuam acessíveis a proprietários pelo inventário. A moderação do gerador bloqueou pedidos de algumas variantes de armas. O plano conserva os modelos sem arte aprovada como pendentes. Publicação confirmada em `weapon-art-partial-20261107`, commit `ab7dabb16c6a1fc28420c6e2a1f0e52576be1c4e`: 2.782 referências HTTPS conferidas por hash, nove tabelas protegidas sem alterações, site saudável e ilustrador ativo. Backup anterior em `/opt/alvorada/backups/weapon-art-partial-20261107-before.dump`.
