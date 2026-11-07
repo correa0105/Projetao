@@ -157,7 +157,8 @@
         "ring-mail-of-gleaming"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-gleaming--r2.png"
     },
     {
       "physical_job": "eb522756ae1ecbc4",
@@ -168,7 +169,8 @@
         "ring-mail-of-gleaming--bracers"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-gleaming--bracers--r2.png"
     },
     {
       "physical_job": "e25000db5df610df",
@@ -179,7 +181,8 @@
         "ring-mail-of-gleaming--feet"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-gleaming--feet--r2.png"
     },
     {
       "physical_job": "842d7a4c911dcb71",
@@ -190,7 +193,8 @@
         "ring-mail-of-gleaming--head"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-gleaming--head--r2.png"
     },
     {
       "physical_job": "1f57620ae568131f",
@@ -201,7 +205,8 @@
         "ring-mail-of-gleaming--legs"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-gleaming--legs--r2.png"
     },
     {
       "physical_job": "265d104ee2d7857f",
@@ -212,7 +217,8 @@
         "ring-mail-of-gleaming--shoulders"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-gleaming--shoulders--r2.png"
     },
     {
       "physical_job": "8111f156c2153828",
@@ -1171,7 +1177,8 @@
         "ring-mail-of-weightlessness"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-weightlessness--r2.png"
     },
     {
       "physical_job": "6853bb929093dade",
@@ -1182,7 +1189,8 @@
         "ring-mail-of-weightlessness--bracers"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-weightlessness--bracers--r2.png"
     },
     {
       "physical_job": "e0f6ff11fd3c3b70",
@@ -1193,7 +1201,8 @@
         "ring-mail-of-weightlessness--feet"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-weightlessness--feet--r2.png"
     },
     {
       "physical_job": "bef4f50d275dc9db",
@@ -1204,7 +1213,8 @@
         "ring-mail-of-weightlessness--head"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-weightlessness--head--r2.png"
     },
     {
       "physical_job": "e778c6677db7f881",
@@ -1215,7 +1225,8 @@
         "ring-mail-of-weightlessness--legs"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-weightlessness--legs--r2.png"
     },
     {
       "physical_job": "b7545c0f4ded623b",
@@ -1226,7 +1237,8 @@
         "ring-mail-of-weightlessness--shoulders"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ring-mail-of-weightlessness--shoulders--r2.png"
     },
     {
       "physical_job": "dc3b2f7b7303c469",
