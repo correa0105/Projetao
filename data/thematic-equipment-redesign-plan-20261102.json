@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2701,
-    "pending_artworks": 1786,
+    "approved_artworks": 2723,
+    "pending_artworks": 1764,
     "catalog_references": 4643,
-    "approved_references": 2857,
+    "approved_references": 2879,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -8053,7 +8053,7 @@
     },
     {
       "family": "Crystal Blade",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "crystal-double-bladed-scimitar",
@@ -8062,8 +8062,10 @@
           "artwork_ids": [
             "crystal-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "crystal-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "crystal-greatsword",
@@ -8072,8 +8074,10 @@
           "artwork_ids": [
             "crystal-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "crystal-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "crystal-longsword",
@@ -8082,8 +8086,10 @@
           "artwork_ids": [
             "crystal-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "crystal-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "crystal-rapier",
@@ -8092,8 +8098,10 @@
           "artwork_ids": [
             "crystal-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "crystal-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "crystal-scimitar",
@@ -8102,8 +8110,10 @@
           "artwork_ids": [
             "crystal-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "crystal-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "crystal-shortsword",
@@ -8112,8 +8122,10 @@
           "artwork_ids": [
             "crystal-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "crystal-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -8151,7 +8163,7 @@
     },
     {
       "family": "Dagger of Venom",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "dagger-of-venom",
@@ -8160,8 +8172,10 @@
           "artwork_ids": [
             "dagger-of-venom"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dagger-of-venom"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -11857,7 +11871,7 @@
     },
     {
       "family": "Dwarven Thrower",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "dwarven-thrower",
@@ -11866,8 +11880,10 @@
           "artwork_ids": [
             "dwarven-thrower"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dwarven-thrower"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -12031,7 +12047,7 @@
     },
     {
       "family": "Energy Bow",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "energy-bow",
@@ -12040,8 +12056,10 @@
           "artwork_ids": [
             "energy-bow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "energy-bow"
+          ],
+          "status": "approved"
         },
         {
           "id": "energy-bow-shortbow",
@@ -12050,8 +12068,10 @@
           "artwork_ids": [
             "energy-bow-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "energy-bow-shortbow"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -23281,7 +23301,7 @@
     },
     {
       "family": "Oathbow",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "oathbow",
@@ -23290,8 +23310,10 @@
           "artwork_ids": [
             "oathbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "oathbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "oathbow-shortbow",
@@ -23300,8 +23322,10 @@
           "artwork_ids": [
             "oathbow-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "oathbow-shortbow"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -24247,7 +24271,7 @@
     },
     {
       "family": "Repeating Shot",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "repeating-blowgun",
@@ -24256,8 +24280,10 @@
           "artwork_ids": [
             "repeating-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "repeating-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "repeating-hand-crossbow",
@@ -24266,8 +24292,10 @@
           "artwork_ids": [
             "repeating-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "repeating-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "repeating-heavy-crossbow",
@@ -24276,8 +24304,10 @@
           "artwork_ids": [
             "repeating-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "repeating-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "repeating-light-crossbow",
@@ -24286,8 +24316,10 @@
           "artwork_ids": [
             "repeating-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "repeating-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "repeating-longbow",
@@ -24296,8 +24328,10 @@
           "artwork_ids": [
             "repeating-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "repeating-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "repeating-musket",
@@ -24306,8 +24340,10 @@
           "artwork_ids": [
             "repeating-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "repeating-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "repeating-pistol",
@@ -24316,8 +24352,10 @@
           "artwork_ids": [
             "repeating-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "repeating-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "repeating-shortbow",
@@ -24326,8 +24364,10 @@
           "artwork_ids": [
             "repeating-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "repeating-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "repeating-sling",
@@ -24336,8 +24376,10 @@
           "artwork_ids": [
             "repeating-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "repeating-sling"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -27439,7 +27481,7 @@
     },
     {
       "family": "Sun Blade",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "sun-blade",
@@ -27448,8 +27490,10 @@
           "artwork_ids": [
             "sun-blade"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sun-blade"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -61206,8 +61250,10 @@
           "name": "Lâmina de cristal (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "crystal-double-bladed-scimitar"
+      ]
     },
     {
       "id": "1e76fb48d6445ef7",
@@ -61221,8 +61267,10 @@
           "name": "Lâmina de cristal (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "crystal-greatsword"
+      ]
     },
     {
       "id": "f0cab3bdfb0691e0",
@@ -61236,8 +61284,10 @@
           "name": "Lâmina de cristal (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "crystal-longsword"
+      ]
     },
     {
       "id": "a27bb9b2b234f773",
@@ -61251,8 +61301,10 @@
           "name": "Lâmina de cristal (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "crystal-rapier"
+      ]
     },
     {
       "id": "29af58f23b32012e",
@@ -61266,8 +61318,10 @@
           "name": "Lâmina de cristal (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "crystal-scimitar"
+      ]
     },
     {
       "id": "22dc299b5c97f4ed",
@@ -61281,8 +61335,10 @@
           "name": "Lâmina de cristal (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "crystal-shortsword"
+      ]
     },
     {
       "id": "9e27a27e79690f21",
@@ -61326,8 +61382,10 @@
           "name": "Adaga de veneno (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dagger-of-venom"
+      ]
     },
     {
       "id": "3a9826416067ea67",
@@ -68367,8 +68425,10 @@
           "name": "Arremessador anão (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dwarven-thrower"
+      ]
     },
     {
       "id": "751aac108639faf4",
@@ -68705,8 +68765,10 @@
           "name": "Arco de energia (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "energy-bow"
+      ]
     },
     {
       "id": "3ee52f0a6344adc4",
@@ -68720,8 +68782,10 @@
           "name": "Arco de energia (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "energy-bow-shortbow"
+      ]
     },
     {
       "id": "a22a7bdd7f22a2db",
@@ -90513,8 +90577,10 @@
           "name": "Arco do juramento (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "oathbow"
+      ]
     },
     {
       "id": "c9cbaedcf43e3208",
@@ -90528,8 +90594,10 @@
           "name": "Arco do juramento (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "oathbow-shortbow"
+      ]
     },
     {
       "id": "fdb8a36af3d46d7b",
@@ -91741,8 +91809,10 @@
           "name": "Arma de disparo repetido (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "repeating-blowgun"
+      ]
     },
     {
       "id": "0e9759230b49853f",
@@ -91756,8 +91826,10 @@
           "name": "Arma de disparo repetido (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "repeating-hand-crossbow"
+      ]
     },
     {
       "id": "d2b81d205c30bf2f",
@@ -91771,8 +91843,10 @@
           "name": "Arma de disparo repetido (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "repeating-heavy-crossbow"
+      ]
     },
     {
       "id": "6954c654d05c25df",
@@ -91786,8 +91860,10 @@
           "name": "Arma de disparo repetido (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "repeating-light-crossbow"
+      ]
     },
     {
       "id": "a40f7fa603dbf96a",
@@ -91801,8 +91877,10 @@
           "name": "Arma de disparo repetido (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "repeating-longbow"
+      ]
     },
     {
       "id": "2eecf5c6fb88de7d",
@@ -91816,8 +91894,10 @@
           "name": "Arma de disparo repetido (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "repeating-musket"
+      ]
     },
     {
       "id": "69b0c534f3d6d0b8",
@@ -91831,8 +91911,10 @@
           "name": "Arma de disparo repetido (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "repeating-pistol"
+      ]
     },
     {
       "id": "68c89c14ee7af753",
@@ -91846,8 +91928,10 @@
           "name": "Arma de disparo repetido (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "repeating-shortbow"
+      ]
     },
     {
       "id": "0433bfbe10b9cd62",
@@ -91861,8 +91945,10 @@
           "name": "Arma de disparo repetido (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "repeating-sling"
+      ]
     },
     {
       "id": "80aaf8d06362b0e0",
@@ -98270,8 +98356,10 @@
           "name": "Lâmina solar (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sun-blade"
+      ]
     },
     {
       "id": "41d16470f1e9731c",

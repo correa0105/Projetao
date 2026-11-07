@@ -3,10 +3,10 @@
   "uniqueCards": 36,
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2701,
-    "pending_artworks": 1786,
+    "approved_artworks": 2723,
+    "pending_artworks": 1764,
     "catalog_references": 4643,
-    "approved_references": 2857,
+    "approved_references": 2879,
     "excluded_ammunition_artworks": 42
   },
   "rows": [
@@ -54,9 +54,9 @@
       ],
       "models": 9,
       "artworks": 9,
-      "approved": 0,
-      "pending": 9,
-      "status": "pending"
+      "approved": 9,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma de retorno",
@@ -254,9 +254,9 @@
       ],
       "models": 6,
       "artworks": 6,
-      "approved": 0,
-      "pending": 6,
-      "status": "pending"
+      "approved": 6,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Lâmina mental",
@@ -278,9 +278,9 @@
       ],
       "models": 2,
       "artworks": 2,
-      "approved": 0,
-      "pending": 2,
-      "status": "pending"
+      "approved": 2,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma da paralisia agonizante",
