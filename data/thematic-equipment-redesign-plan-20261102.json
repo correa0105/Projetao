@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2432,
-    "pending_artworks": 2055,
+    "approved_artworks": 2504,
+    "pending_artworks": 1983,
     "catalog_references": 4643,
-    "approved_references": 2588,
+    "approved_references": 2660,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -20758,7 +20758,7 @@
     },
     {
       "family": "Last Stand Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "last-stand-breastplate",
@@ -20772,8 +20772,15 @@
             "last-stand-breastplate--legs",
             "last-stand-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-breastplate",
+            "last-stand-breastplate--head",
+            "last-stand-breastplate--shoulders",
+            "last-stand-breastplate--bracers",
+            "last-stand-breastplate--legs",
+            "last-stand-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-chain-mail",
@@ -20787,8 +20794,15 @@
             "last-stand-chain-mail--legs",
             "last-stand-chain-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-chain-mail",
+            "last-stand-chain-mail--head",
+            "last-stand-chain-mail--shoulders",
+            "last-stand-chain-mail--bracers",
+            "last-stand-chain-mail--legs",
+            "last-stand-chain-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-chain-shirt",
@@ -20802,8 +20816,15 @@
             "last-stand-chain-shirt--legs",
             "last-stand-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-chain-shirt",
+            "last-stand-chain-shirt--head",
+            "last-stand-chain-shirt--shoulders",
+            "last-stand-chain-shirt--bracers",
+            "last-stand-chain-shirt--legs",
+            "last-stand-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-half-plate-armor",
@@ -20817,8 +20838,15 @@
             "last-stand-half-plate-armor--legs",
             "last-stand-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-half-plate-armor",
+            "last-stand-half-plate-armor--head",
+            "last-stand-half-plate-armor--shoulders",
+            "last-stand-half-plate-armor--bracers",
+            "last-stand-half-plate-armor--legs",
+            "last-stand-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-hide-armor",
@@ -20832,8 +20860,15 @@
             "last-stand-hide-armor--legs",
             "last-stand-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-hide-armor",
+            "last-stand-hide-armor--head",
+            "last-stand-hide-armor--shoulders",
+            "last-stand-hide-armor--bracers",
+            "last-stand-hide-armor--legs",
+            "last-stand-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-leather-armor",
@@ -20847,8 +20882,15 @@
             "last-stand-leather-armor--legs",
             "last-stand-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-leather-armor",
+            "last-stand-leather-armor--head",
+            "last-stand-leather-armor--shoulders",
+            "last-stand-leather-armor--bracers",
+            "last-stand-leather-armor--legs",
+            "last-stand-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-padded-armor",
@@ -20862,8 +20904,15 @@
             "last-stand-padded-armor--legs",
             "last-stand-padded-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-padded-armor",
+            "last-stand-padded-armor--head",
+            "last-stand-padded-armor--shoulders",
+            "last-stand-padded-armor--bracers",
+            "last-stand-padded-armor--legs",
+            "last-stand-padded-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-plate-armor",
@@ -20877,8 +20926,15 @@
             "last-stand-plate-armor--legs",
             "last-stand-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-plate-armor",
+            "last-stand-plate-armor--head",
+            "last-stand-plate-armor--shoulders",
+            "last-stand-plate-armor--bracers",
+            "last-stand-plate-armor--legs",
+            "last-stand-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-ring-mail",
@@ -20914,8 +20970,15 @@
             "last-stand-scale-mail--legs",
             "last-stand-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-scale-mail",
+            "last-stand-scale-mail--head",
+            "last-stand-scale-mail--shoulders",
+            "last-stand-scale-mail--bracers",
+            "last-stand-scale-mail--legs",
+            "last-stand-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-spiked-armor",
@@ -20929,8 +20992,15 @@
             "last-stand-spiked-armor--legs",
             "last-stand-spiked-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-spiked-armor",
+            "last-stand-spiked-armor--head",
+            "last-stand-spiked-armor--shoulders",
+            "last-stand-spiked-armor--bracers",
+            "last-stand-spiked-armor--legs",
+            "last-stand-spiked-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-splint-armor",
@@ -20944,8 +21014,15 @@
             "last-stand-splint-armor--legs",
             "last-stand-splint-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-splint-armor",
+            "last-stand-splint-armor--head",
+            "last-stand-splint-armor--shoulders",
+            "last-stand-splint-armor--bracers",
+            "last-stand-splint-armor--legs",
+            "last-stand-splint-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-studded-leather-armor",
@@ -20959,8 +21036,15 @@
             "last-stand-studded-leather-armor--legs",
             "last-stand-studded-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-studded-leather-armor",
+            "last-stand-studded-leather-armor--head",
+            "last-stand-studded-leather-armor--shoulders",
+            "last-stand-studded-leather-armor--bracers",
+            "last-stand-studded-leather-armor--legs",
+            "last-stand-studded-leather-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -82672,8 +82756,10 @@
           "name": "Armadura do último combate (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-breastplate"
+      ]
     },
     {
       "id": "b8a64fd85dacbd21",
@@ -82687,8 +82773,10 @@
           "name": "Armadura do último combate (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-breastplate--bracers"
+      ]
     },
     {
       "id": "a8410de637f70449",
@@ -82702,8 +82790,10 @@
           "name": "Armadura do último combate (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-breastplate--feet"
+      ]
     },
     {
       "id": "3ad91b982e12664b",
@@ -82717,8 +82807,10 @@
           "name": "Armadura do último combate (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-breastplate--head"
+      ]
     },
     {
       "id": "511d4fd44951cd3c",
@@ -82732,8 +82824,10 @@
           "name": "Armadura do último combate (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-breastplate--legs"
+      ]
     },
     {
       "id": "3a0ad516ebc46ae9",
@@ -82747,8 +82841,10 @@
           "name": "Armadura do último combate (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-breastplate--shoulders"
+      ]
     },
     {
       "id": "c5fab14e24a15b1a",
@@ -82762,8 +82858,10 @@
           "name": "Armadura do último combate (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-mail"
+      ]
     },
     {
       "id": "66ec11c3c838f3e9",
@@ -82777,8 +82875,10 @@
           "name": "Armadura do último combate (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-mail--bracers"
+      ]
     },
     {
       "id": "43484fc43e1188ef",
@@ -82792,8 +82892,10 @@
           "name": "Armadura do último combate (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-mail--feet"
+      ]
     },
     {
       "id": "a831a82c87c2e5ff",
@@ -82807,8 +82909,10 @@
           "name": "Armadura do último combate (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-mail--head"
+      ]
     },
     {
       "id": "11200da488def798",
@@ -82822,8 +82926,10 @@
           "name": "Armadura do último combate (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-mail--legs"
+      ]
     },
     {
       "id": "69bcc6c4dd851727",
@@ -82837,8 +82943,10 @@
           "name": "Armadura do último combate (Cota de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-mail--shoulders"
+      ]
     },
     {
       "id": "994b260dbe1a1d5f",
@@ -82852,8 +82960,10 @@
           "name": "Armadura do último combate (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-shirt"
+      ]
     },
     {
       "id": "31e3b66d90068502",
@@ -82867,8 +82977,10 @@
           "name": "Armadura do último combate (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-shirt--bracers"
+      ]
     },
     {
       "id": "4c0c32b41cd11968",
@@ -82882,8 +82994,10 @@
           "name": "Armadura do último combate (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-shirt--feet"
+      ]
     },
     {
       "id": "60da143322e49932",
@@ -82897,8 +83011,10 @@
           "name": "Armadura do último combate (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-shirt--head"
+      ]
     },
     {
       "id": "2dd51b19ab42fbff",
@@ -82912,8 +83028,10 @@
           "name": "Armadura do último combate (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-shirt--legs"
+      ]
     },
     {
       "id": "5d3cd45fe01fcc70",
@@ -82927,8 +83045,10 @@
           "name": "Armadura do último combate (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "34938e59b13eec33",
@@ -82942,8 +83062,10 @@
           "name": "Armadura do último combate (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-half-plate-armor"
+      ]
     },
     {
       "id": "41875447a937c1ea",
@@ -82957,8 +83079,10 @@
           "name": "Armadura do último combate (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "60574ddba79d774e",
@@ -82972,8 +83096,10 @@
           "name": "Armadura do último combate (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-half-plate-armor--feet"
+      ]
     },
     {
       "id": "a61cae475be9768a",
@@ -82987,8 +83113,10 @@
           "name": "Armadura do último combate (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-half-plate-armor--head"
+      ]
     },
     {
       "id": "c8331af1d2a2a879",
@@ -83002,8 +83130,10 @@
           "name": "Armadura do último combate (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-half-plate-armor--legs"
+      ]
     },
     {
       "id": "b7c9c1debff24905",
@@ -83017,8 +83147,10 @@
           "name": "Armadura do último combate (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "7b3fa33a914cad9d",
@@ -83032,8 +83164,10 @@
           "name": "Armadura do último combate (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-hide-armor"
+      ]
     },
     {
       "id": "c0a032f243d76c1f",
@@ -83047,8 +83181,10 @@
           "name": "Armadura do último combate (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-hide-armor--bracers"
+      ]
     },
     {
       "id": "1cd5cd9c601e7824",
@@ -83062,8 +83198,10 @@
           "name": "Armadura do último combate (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-hide-armor--feet"
+      ]
     },
     {
       "id": "796176dbc6a09f19",
@@ -83077,8 +83215,10 @@
           "name": "Armadura do último combate (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-hide-armor--head"
+      ]
     },
     {
       "id": "25588ee29254c98d",
@@ -83092,8 +83232,10 @@
           "name": "Armadura do último combate (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-hide-armor--legs"
+      ]
     },
     {
       "id": "9f174fb5da2244c2",
@@ -83107,8 +83249,10 @@
           "name": "Armadura do último combate (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-hide-armor--shoulders"
+      ]
     },
     {
       "id": "ed217cddec6ae801",
@@ -83122,8 +83266,10 @@
           "name": "Armadura do último combate (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-leather-armor"
+      ]
     },
     {
       "id": "789d346f70a47dd0",
@@ -83137,8 +83283,10 @@
           "name": "Armadura do último combate (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-leather-armor--bracers"
+      ]
     },
     {
       "id": "bb78ee9e17182ebc",
@@ -83152,8 +83300,10 @@
           "name": "Armadura do último combate (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-leather-armor--feet"
+      ]
     },
     {
       "id": "0bc10780b0ee5514",
@@ -83167,8 +83317,10 @@
           "name": "Armadura do último combate (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-leather-armor--head"
+      ]
     },
     {
       "id": "bbc9924aaed06ce7",
@@ -83182,8 +83334,10 @@
           "name": "Armadura do último combate (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-leather-armor--legs"
+      ]
     },
     {
       "id": "a8403c96d6d045be",
@@ -83197,8 +83351,10 @@
           "name": "Armadura do último combate (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-leather-armor--shoulders"
+      ]
     },
     {
       "id": "036a014b7a46066e",
@@ -83212,8 +83368,10 @@
           "name": "Armadura do último combate (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-padded-armor"
+      ]
     },
     {
       "id": "2f4dfde8449c7942",
@@ -83227,8 +83385,10 @@
           "name": "Armadura do último combate (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-padded-armor--bracers"
+      ]
     },
     {
       "id": "1905e79dd86ce4dc",
@@ -83242,8 +83402,10 @@
           "name": "Armadura do último combate (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-padded-armor--feet"
+      ]
     },
     {
       "id": "af2bd3af69c0b684",
@@ -83257,8 +83419,10 @@
           "name": "Armadura do último combate (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-padded-armor--head"
+      ]
     },
     {
       "id": "bad3d4c30813916d",
@@ -83272,8 +83436,10 @@
           "name": "Armadura do último combate (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-padded-armor--legs"
+      ]
     },
     {
       "id": "cd8059a313a968aa",
@@ -83287,8 +83453,10 @@
           "name": "Armadura do último combate (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-padded-armor--shoulders"
+      ]
     },
     {
       "id": "1858e87eeffcd578",
@@ -83302,8 +83470,10 @@
           "name": "Armadura do último combate (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-plate-armor"
+      ]
     },
     {
       "id": "849eb4074cf3e1cf",
@@ -83317,8 +83487,10 @@
           "name": "Armadura do último combate (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-plate-armor--bracers"
+      ]
     },
     {
       "id": "5e7a0374c5393afb",
@@ -83332,8 +83504,10 @@
           "name": "Armadura do último combate (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-plate-armor--feet"
+      ]
     },
     {
       "id": "8d0ede7df75aa5a6",
@@ -83347,8 +83521,10 @@
           "name": "Armadura do último combate (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-plate-armor--head"
+      ]
     },
     {
       "id": "8394e4f5ca2eb25e",
@@ -83362,8 +83538,10 @@
           "name": "Armadura do último combate (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-plate-armor--legs"
+      ]
     },
     {
       "id": "fe6aefc7ed7e7a69",
@@ -83377,8 +83555,10 @@
           "name": "Armadura do último combate (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-plate-armor--shoulders"
+      ]
     },
     {
       "id": "25cc7589dbeb3c0e",
@@ -83494,8 +83674,10 @@
           "name": "Armadura do último combate (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-scale-mail"
+      ]
     },
     {
       "id": "d091c9d1ab826ecd",
@@ -83509,8 +83691,10 @@
           "name": "Armadura do último combate (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-scale-mail--bracers"
+      ]
     },
     {
       "id": "020f9a117492082a",
@@ -83524,8 +83708,10 @@
           "name": "Armadura do último combate (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-scale-mail--feet"
+      ]
     },
     {
       "id": "8d8a10122f9aa5f9",
@@ -83539,8 +83725,10 @@
           "name": "Armadura do último combate (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-scale-mail--head"
+      ]
     },
     {
       "id": "dc63111b30cad0b4",
@@ -83554,8 +83742,10 @@
           "name": "Armadura do último combate (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-scale-mail--legs"
+      ]
     },
     {
       "id": "6b27a01fa05c7d29",
@@ -83569,8 +83759,10 @@
           "name": "Armadura do último combate (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-scale-mail--shoulders"
+      ]
     },
     {
       "id": "ef56fdc5acfb556c",
@@ -83584,8 +83776,10 @@
           "name": "Armadura do último combate (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-spiked-armor"
+      ]
     },
     {
       "id": "def15f4987825a67",
@@ -83599,8 +83793,10 @@
           "name": "Armadura do último combate (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-spiked-armor--bracers"
+      ]
     },
     {
       "id": "473b9393a950fa79",
@@ -83614,8 +83810,10 @@
           "name": "Armadura do último combate (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-spiked-armor--feet"
+      ]
     },
     {
       "id": "3f842a56823a2f56",
@@ -83629,8 +83827,10 @@
           "name": "Armadura do último combate (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-spiked-armor--head"
+      ]
     },
     {
       "id": "c9acaacfa8d5327d",
@@ -83644,8 +83844,10 @@
           "name": "Armadura do último combate (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-spiked-armor--legs"
+      ]
     },
     {
       "id": "eb65d8b234388dd4",
@@ -83659,8 +83861,10 @@
           "name": "Armadura do último combate (Armadura de espinhos)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-spiked-armor--shoulders"
+      ]
     },
     {
       "id": "5da776e03eb92123",
@@ -83674,8 +83878,10 @@
           "name": "Armadura do último combate (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-splint-armor"
+      ]
     },
     {
       "id": "590dcf33096ed8de",
@@ -83689,8 +83895,10 @@
           "name": "Armadura do último combate (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-splint-armor--bracers"
+      ]
     },
     {
       "id": "d631a888cf88451c",
@@ -83704,8 +83912,10 @@
           "name": "Armadura do último combate (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-splint-armor--feet"
+      ]
     },
     {
       "id": "c2b60670eae44b17",
@@ -83719,8 +83929,10 @@
           "name": "Armadura do último combate (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-splint-armor--head"
+      ]
     },
     {
       "id": "1332a380cbfb458d",
@@ -83734,8 +83946,10 @@
           "name": "Armadura do último combate (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-splint-armor--legs"
+      ]
     },
     {
       "id": "447867f742e88670",
@@ -83749,8 +83963,10 @@
           "name": "Armadura do último combate (Armadura de talas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-splint-armor--shoulders"
+      ]
     },
     {
       "id": "12930359a84f3fe2",
@@ -83764,8 +83980,10 @@
           "name": "Armadura do último combate (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-studded-leather-armor"
+      ]
     },
     {
       "id": "edbae5281d51072d",
@@ -83779,8 +83997,10 @@
           "name": "Armadura do último combate (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-studded-leather-armor--bracers"
+      ]
     },
     {
       "id": "106357319c2cf5e3",
@@ -83794,8 +84014,10 @@
           "name": "Armadura do último combate (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-studded-leather-armor--feet"
+      ]
     },
     {
       "id": "375a0aee42016bc4",
@@ -83809,8 +84031,10 @@
           "name": "Armadura do último combate (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-studded-leather-armor--head"
+      ]
     },
     {
       "id": "a5b4f48d7f6d5a60",
@@ -83824,8 +84048,10 @@
           "name": "Armadura do último combate (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-studded-leather-armor--legs"
+      ]
     },
     {
       "id": "8a24e2b02af4f014",
@@ -83839,8 +84065,10 @@
           "name": "Armadura do último combate (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-studded-leather-armor--shoulders"
+      ]
     },
     {
       "id": "e2feb84427fd5787",

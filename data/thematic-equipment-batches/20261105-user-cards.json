@@ -3,10 +3,10 @@
   "uniqueCards": 36,
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2432,
-    "pending_artworks": 2055,
+    "approved_artworks": 2504,
+    "pending_artworks": 1983,
     "catalog_references": 4643,
-    "approved_references": 2588,
+    "approved_references": 2660,
     "excluded_ammunition_artworks": 42
   },
   "rows": [
@@ -338,9 +338,9 @@
       ],
       "models": 13,
       "artworks": 78,
-      "approved": 6,
-      "pending": 72,
-      "status": "pending"
+      "approved": 78,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Espada da retribuição",
