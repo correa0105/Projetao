@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2691,
-    "pending_artworks": 1796,
+    "approved_artworks": 2701,
+    "pending_artworks": 1786,
     "catalog_references": 4643,
-    "approved_references": 2847,
+    "approved_references": 2857,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -8781,7 +8781,7 @@
     },
     {
       "family": "Decanter of Endless Water",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "decanter-of-endless-water",
@@ -8790,8 +8790,10 @@
           "artwork_ids": [
             "decanter-of-endless-water"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "decanter-of-endless-water"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -11751,7 +11753,7 @@
     },
     {
       "family": "Dust of Disappearance",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "dust-of-disappearance",
@@ -11760,14 +11762,16 @@
           "artwork_ids": [
             "dust-of-disappearance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dust-of-disappearance"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Dust of Dryness",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "dust-of-dryness",
@@ -11776,14 +11780,16 @@
           "artwork_ids": [
             "dust-of-dryness"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dust-of-dryness"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Dust of Sneezing and Choking",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "dust-of-sneezing-and-choking",
@@ -11792,8 +11798,10 @@
           "artwork_ids": [
             "dust-of-sneezing-and-choking"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dust-of-sneezing-and-choking"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -11883,7 +11891,7 @@
     },
     {
       "family": "Efreeti Bottle",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "efreeti-bottle",
@@ -11892,8 +11900,10 @@
           "artwork_ids": [
             "efreeti-bottle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "efreeti-bottle"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -11953,7 +11963,7 @@
     },
     {
       "family": "Elixir of Health",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "elixir-of-health",
@@ -11962,8 +11972,10 @@
           "artwork_ids": [
             "elixir-of-health"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "elixir-of-health"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -16779,7 +16791,7 @@
     },
     {
       "family": "Eversmoking Bottle",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "eversmoking-bottle",
@@ -16788,8 +16800,10 @@
           "artwork_ids": [
             "eversmoking-bottle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "eversmoking-bottle"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -23293,7 +23307,7 @@
     },
     {
       "family": "Oil of Etherealness",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "oil-of-etherealness",
@@ -23302,8 +23316,10 @@
           "artwork_ids": [
             "oil-of-etherealness"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "oil-of-etherealness"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -26807,7 +26823,7 @@
     },
     {
       "family": "Sovereign Glue",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "sovereign-glue",
@@ -26816,8 +26832,10 @@
           "artwork_ids": [
             "sovereign-glue"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sovereign-glue"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -28239,7 +28257,7 @@
     },
     {
       "family": "Universal Solvent",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "universal-solvent",
@@ -28248,8 +28266,10 @@
           "artwork_ids": [
             "universal-solvent"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "universal-solvent"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -62218,8 +62238,10 @@
           "name": "Decantador de água infinita"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "decanter-of-endless-water"
+      ]
     },
     {
       "id": "1ee96a04fa57a936",
@@ -68090,8 +68112,10 @@
           "name": "Pó do desaparecimento"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dust-of-disappearance"
+      ]
     },
     {
       "id": "33d053119a795511",
@@ -68105,8 +68129,10 @@
           "name": "Pó da secura"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dust-of-dryness"
+      ]
     },
     {
       "id": "88e4e94f5da1bfdc",
@@ -68120,8 +68146,10 @@
           "name": "Pó de espirrar e engasgar"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dust-of-sneezing-and-choking"
+      ]
     },
     {
       "id": "fad0494c0418998e",
@@ -68371,8 +68399,10 @@
           "name": "Garrafa do efreeti"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "efreeti-bottle"
+      ]
     },
     {
       "id": "47f471de3e9d0547",
@@ -68454,8 +68484,10 @@
           "name": "Elixir da saúde"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elixir-of-health"
+      ]
     },
     {
       "id": "20716374310bd190",
@@ -75723,8 +75755,10 @@
           "name": "Garrafa de fumaça infinita"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "eversmoking-bottle"
+      ]
     },
     {
       "id": "bc1d17c424cb1b44",
@@ -90509,8 +90543,10 @@
           "name": "Óleo da eterealidade"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "oil-of-etherealness"
+      ]
     },
     {
       "id": "f308ffcf0caef795",
@@ -96646,8 +96682,10 @@
           "name": "Cola soberana"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sovereign-glue"
+      ]
     },
     {
       "id": "622f137718b5fcbf",
@@ -99853,8 +99891,10 @@
           "name": "Solvente universal"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "universal-solvent"
+      ]
     },
     {
       "id": "5afa9c713a7bea3b",
