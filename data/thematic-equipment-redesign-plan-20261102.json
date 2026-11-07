@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2660,
-    "pending_artworks": 1827,
+    "approved_artworks": 2676,
+    "pending_artworks": 1811,
     "catalog_references": 4643,
-    "approved_references": 2816,
+    "approved_references": 2832,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -6401,7 +6401,7 @@
     },
     {
       "family": "Bag of Beans",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "bag-of-beans",
@@ -6410,14 +6410,16 @@
           "artwork_ids": [
             "bag-of-beans"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bag-of-beans"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Bag of Devouring",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "bag-of-devouring",
@@ -6426,14 +6428,16 @@
           "artwork_ids": [
             "bag-of-devouring"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bag-of-devouring"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Bag of Tricks",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "bag-of-tricks",
@@ -6442,8 +6446,10 @@
           "artwork_ids": [
             "bag-of-tricks"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bag-of-tricks"
+          ],
+          "status": "approved"
         },
         {
           "id": "bag-of-tricks-rust",
@@ -6452,8 +6458,10 @@
           "artwork_ids": [
             "bag-of-tricks-rust"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bag-of-tricks-rust"
+          ],
+          "status": "approved"
         },
         {
           "id": "bag-of-tricks-tan",
@@ -6462,8 +6470,10 @@
           "artwork_ids": [
             "bag-of-tricks-tan"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bag-of-tricks-tan"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -6867,7 +6877,7 @@
     },
     {
       "family": "Bowl of Commanding Water Elementals",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "bowl-of-commanding-water-elementals",
@@ -6876,8 +6886,10 @@
           "artwork_ids": [
             "bowl-of-commanding-water-elementals"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bowl-of-commanding-water-elementals"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -6915,7 +6927,7 @@
     },
     {
       "family": "Brazier of Commanding Fire Elementals",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "brazier-of-commanding-fire-elementals",
@@ -6924,8 +6936,10 @@
           "artwork_ids": [
             "brazier-of-commanding-fire-elementals"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "brazier-of-commanding-fire-elementals"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -7335,7 +7349,7 @@
     },
     {
       "family": "Censer of Controlling Air Elementals",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "censer-of-controlling-air-elementals",
@@ -7344,8 +7358,10 @@
           "artwork_ids": [
             "censer-of-controlling-air-elementals"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "censer-of-controlling-air-elementals"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -11849,7 +11865,7 @@
     },
     {
       "family": "Efficient Quiver",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "efficient-quiver",
@@ -11858,8 +11874,10 @@
           "artwork_ids": [
             "efficient-quiver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "efficient-quiver"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -11881,7 +11899,7 @@
     },
     {
       "family": "Elemental Gem",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "elemental-gem",
@@ -11890,8 +11908,10 @@
           "artwork_ids": [
             "elemental-gem"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "elemental-gem"
+          ],
+          "status": "approved"
         },
         {
           "id": "elemental-gem-earth",
@@ -11900,8 +11920,10 @@
           "artwork_ids": [
             "elemental-gem-earth"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "elemental-gem-earth"
+          ],
+          "status": "approved"
         },
         {
           "id": "elemental-gem-fire",
@@ -11910,8 +11932,10 @@
           "artwork_ids": [
             "elemental-gem-fire"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "elemental-gem-fire"
+          ],
+          "status": "approved"
         },
         {
           "id": "elemental-gem-water",
@@ -11920,8 +11944,10 @@
           "artwork_ids": [
             "elemental-gem-water"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "elemental-gem-water"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -17671,7 +17697,7 @@
     },
     {
       "family": "Folding Boat",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "folding-boat",
@@ -17680,8 +17706,10 @@
           "artwork_ids": [
             "folding-boat"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "folding-boat"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -19003,7 +19031,7 @@
     },
     {
       "family": "Handy Haversack",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "handy-haversack",
@@ -19012,8 +19040,10 @@
           "artwork_ids": [
             "handy-haversack"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "handy-haversack"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -27327,7 +27357,7 @@
     },
     {
       "family": "Stone of Controlling Earth Elementals",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "stone-of-controlling-earth-elementals",
@@ -27336,8 +27366,10 @@
           "artwork_ids": [
             "stone-of-controlling-earth-elementals"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "stone-of-controlling-earth-elementals"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -58113,8 +58145,10 @@
           "name": "Bolsa de feijões"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bag-of-beans"
+      ]
     },
     {
       "id": "11340e5530e10e39",
@@ -58128,8 +58162,10 @@
           "name": "Bolsa devoradora"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bag-of-devouring"
+      ]
     },
     {
       "id": "ec4286d1d90a5016",
@@ -58143,8 +58179,10 @@
           "name": "Bolsa de truques (Cinza)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bag-of-tricks"
+      ]
     },
     {
       "id": "bdcdee80a102e06b",
@@ -58158,8 +58196,10 @@
           "name": "Bolsa de truques (Ferrugem)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bag-of-tricks-rust"
+      ]
     },
     {
       "id": "83838a3fb38217fc",
@@ -58173,8 +58213,10 @@
           "name": "Bolsa de truques (Castanha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bag-of-tricks-tan"
+      ]
     },
     {
       "id": "930c4b689b8bad09",
@@ -58660,8 +58702,10 @@
           "name": "Tigela de comandar elementais da água"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bowl-of-commanding-water-elementals"
+      ]
     },
     {
       "id": "9cb9c4263cfa7f43",
@@ -58705,8 +58749,10 @@
           "name": "Braseiro de comandar elementais do fogo"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "brazier-of-commanding-fire-elementals"
+      ]
     },
     {
       "id": "d7acb4c30cb39377",
@@ -60168,8 +60214,10 @@
           "name": "Incensário de controlar elementais do ar"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "censer-of-controlling-air-elementals"
+      ]
     },
     {
       "id": "490dbabf86d5c76e",
@@ -68276,8 +68324,10 @@
           "name": "Aljava eficiente"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "efficient-quiver"
+      ]
     },
     {
       "id": "4370cd0c31fb4536",
@@ -68306,8 +68356,10 @@
           "name": "Gema elemental (Safira azul · Ar)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elemental-gem"
+      ]
     },
     {
       "id": "af17f725c3e1d029",
@@ -68321,8 +68373,10 @@
           "name": "Gema elemental (Diamante amarelo · Terra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elemental-gem-earth"
+      ]
     },
     {
       "id": "93943f37f160bbc8",
@@ -68336,8 +68390,10 @@
           "name": "Gema elemental (Coríndon vermelho · Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elemental-gem-fire"
+      ]
     },
     {
       "id": "317802b25c2a3786",
@@ -68351,8 +68407,10 @@
           "name": "Gema elemental (Esmeralda · Água)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "elemental-gem-water"
+      ]
     },
     {
       "id": "3bdf9b98af5f60d6",
@@ -77799,8 +77857,10 @@
           "name": "Barco dobrável"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "folding-boat"
+      ]
     },
     {
       "id": "1fdb39a8ba37cfb5",
@@ -80621,8 +80681,10 @@
           "name": "Mochila prática"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "handy-haversack"
+      ]
     },
     {
       "id": "22c4ebf863c40dfe",
@@ -98078,8 +98140,10 @@
           "name": "Pedra de controlar elementais da terra"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "stone-of-controlling-earth-elementals"
+      ]
     },
     {
       "id": "14cfd95e2ce66b3a",
