@@ -155,3 +155,7 @@ Os 13 modelos e suas peças estão completos. São 72 artes novas com ferragens 
 ### Tramontana, Couro Batido Glamouroso e Eterealidade
 
 Oito vestes tramontanas usam os originais aprovados e 40 peças novas de tecido com acabamentos próprios. Os três modelos de Couro Batido Glamouroso e Eterealidade receberam 18 artes novas. As ofertas ativas foram conferidas em 1440/390 px e as artes tramontanas foram verificadas no inventário de acervo, conforme a retirada de Arcana Unleashed da loja. Publicação confirmada em `armor-finishes-20261107`, commit `bb10dbf376d7d562f2df815c4aae8c3871652aba`: 2.732 referências HTTPS conferidas por hash, nove tabelas protegidas sem alterações, site saudável e ilustrador ativo. Backup anterior em `/opt/alvorada/backups/armor-finishes-20261107-before.dump`.
+
+### Vestes, botas, cintos e amuletos
+
+Sete vestes, quatro pares de botas, seis cintos e três amuletos receberam artes nativas. A loja em 1440/390 px e as compras de teste no inventário passaram. Publicação confirmada em `wondrous-wearables-20261107`, commit `0c1823f2b03374f31a95e7d523c1c035fd5e8d8c`: 2.752 referências HTTPS conferidas por hash, nove tabelas protegidas sem alterações, site saudável e ilustrador ativo. Backup anterior em `/opt/alvorada/backups/wondrous-wearables-20261107-before.dump`.

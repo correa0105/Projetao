@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2590,
-    "pending_artworks": 1897,
+    "approved_artworks": 2620,
+    "pending_artworks": 1867,
     "catalog_references": 4643,
-    "approved_references": 2746,
+    "approved_references": 2776,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -22490,8 +22490,10 @@
           "artwork_ids": [
             "moon-touched-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "moon-touched-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "moon-touched-greatsword",
@@ -25788,8 +25790,10 @@
           "artwork_ids": [
             "silvered-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-automatic-rifle",
@@ -25798,8 +25802,10 @@
           "artwork_ids": [
             "silvered-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-battleaxe",
@@ -25808,8 +25814,10 @@
           "artwork_ids": [
             "silvered-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-blowgun",
@@ -25818,8 +25826,10 @@
           "artwork_ids": [
             "silvered-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-club",
@@ -25828,8 +25838,10 @@
           "artwork_ids": [
             "silvered-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-dagger",
@@ -25838,8 +25850,10 @@
           "artwork_ids": [
             "silvered-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-dart",
@@ -25868,8 +25882,10 @@
           "artwork_ids": [
             "silvered-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-glaive",
@@ -25878,8 +25894,10 @@
           "artwork_ids": [
             "silvered-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-greataxe",
@@ -25898,8 +25916,10 @@
           "artwork_ids": [
             "silvered-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-greatsword",
@@ -25928,8 +25948,10 @@
           "artwork_ids": [
             "silvered-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-handaxe",
@@ -25968,8 +25990,10 @@
           "artwork_ids": [
             "silvered-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-hunting-rifle",
@@ -25978,8 +26002,10 @@
           "artwork_ids": [
             "silvered-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-javelin",
@@ -25998,8 +26024,10 @@
           "artwork_ids": [
             "silvered-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-laser-pistol",
@@ -26008,8 +26036,10 @@
           "artwork_ids": [
             "silvered-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-laser-rifle",
@@ -26018,8 +26048,10 @@
           "artwork_ids": [
             "silvered-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-light-crossbow",
@@ -26038,8 +26070,10 @@
           "artwork_ids": [
             "silvered-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-light-repeating-crossbow",
@@ -26078,8 +26112,10 @@
           "artwork_ids": [
             "silvered-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-maul",
@@ -26118,8 +26154,10 @@
           "artwork_ids": [
             "silvered-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-pistol",
@@ -26128,8 +26166,10 @@
           "artwork_ids": [
             "silvered-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-quarterstaff",
@@ -26138,8 +26178,10 @@
           "artwork_ids": [
             "silvered-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-rapier",
@@ -26158,8 +26200,10 @@
           "artwork_ids": [
             "silvered-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-scimitar",
@@ -26178,8 +26222,10 @@
           "artwork_ids": [
             "silvered-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-shortbow",
@@ -26198,8 +26244,10 @@
           "artwork_ids": [
             "silvered-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-shotgun",
@@ -26238,8 +26286,10 @@
           "artwork_ids": [
             "silvered-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-staff",
@@ -26248,8 +26298,10 @@
           "artwork_ids": [
             "silvered-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-trident",
@@ -26258,8 +26310,10 @@
           "artwork_ids": [
             "silvered-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-war-pick",
@@ -26268,8 +26322,10 @@
           "artwork_ids": [
             "silvered-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-warhammer",
@@ -26278,8 +26334,10 @@
           "artwork_ids": [
             "silvered-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-whip",
@@ -26298,8 +26356,10 @@
           "artwork_ids": [
             "silvered-wooden-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-wooden-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-yklwa",
@@ -89207,8 +89267,10 @@
           "name": "Espada tocada pela lua (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "moon-touched-double-bladed-scimitar"
+      ]
     },
     {
       "id": "bb0dd8c7806d792e",
@@ -94123,8 +94185,10 @@
           "name": "Arma de prata (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-antimatter-rifle"
+      ]
     },
     {
       "id": "a9dc015e03562381",
@@ -94138,8 +94202,10 @@
           "name": "Arma de prata (Bastão de foco arcano)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-staff"
+      ]
     },
     {
       "id": "e113fc73bc0e57f6",
@@ -94153,8 +94219,10 @@
           "name": "Arma de prata (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-automatic-rifle"
+      ]
     },
     {
       "id": "c0f6013564a2e730",
@@ -94168,8 +94236,10 @@
           "name": "Arma de prata (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-battleaxe"
+      ]
     },
     {
       "id": "2addff8df69769db",
@@ -94183,8 +94253,10 @@
           "name": "Arma de prata (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-blowgun"
+      ]
     },
     {
       "id": "766e5498f952e71f",
@@ -94198,8 +94270,10 @@
           "name": "Arma de prata (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-club"
+      ]
     },
     {
       "id": "2bcd8b683f62ef22",
@@ -94213,8 +94287,10 @@
           "name": "Arma de prata (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-dagger"
+      ]
     },
     {
       "id": "c2988fe4cac3810a",
@@ -94258,8 +94334,10 @@
           "name": "Arma de prata (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-flail"
+      ]
     },
     {
       "id": "e765452dd8a90f18",
@@ -94273,8 +94351,10 @@
           "name": "Arma de prata (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-glaive"
+      ]
     },
     {
       "id": "68cab89f135d3130",
@@ -94303,8 +94383,10 @@
           "name": "Arma de prata (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-greatclub"
+      ]
     },
     {
       "id": "ca0c00bf6c382dcd",
@@ -94348,8 +94430,10 @@
           "name": "Arma de prata (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-hand-crossbow"
+      ]
     },
     {
       "id": "b1f6242bbbbdedea",
@@ -94408,8 +94492,10 @@
           "name": "Arma de prata (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-hoopak"
+      ]
     },
     {
       "id": "16e9b1de6e32ca4b",
@@ -94423,8 +94509,10 @@
           "name": "Arma de prata (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-hunting-rifle"
+      ]
     },
     {
       "id": "d42e020b8af29c75",
@@ -94453,8 +94541,10 @@
           "name": "Arma de prata (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-lance"
+      ]
     },
     {
       "id": "50d98ce5b903503a",
@@ -94468,8 +94558,10 @@
           "name": "Arma de prata (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-laser-pistol"
+      ]
     },
     {
       "id": "c88fe03d0631b14a",
@@ -94483,8 +94575,10 @@
           "name": "Arma de prata (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-laser-rifle"
+      ]
     },
     {
       "id": "2c380ba8bd7c81c2",
@@ -94513,8 +94607,10 @@
           "name": "Arma de prata (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-light-hammer"
+      ]
     },
     {
       "id": "5448020e14a89e53",
@@ -94573,8 +94669,10 @@
           "name": "Arma de prata (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-mace"
+      ]
     },
     {
       "id": "60cbac0dbafbffc0",
@@ -94633,8 +94731,10 @@
           "name": "Arma de prata (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-pike"
+      ]
     },
     {
       "id": "508537c53bfa0708",
@@ -94648,8 +94748,10 @@
           "name": "Arma de prata (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-pistol"
+      ]
     },
     {
       "id": "c9b924ed773a322b",
@@ -94663,8 +94765,10 @@
           "name": "Arma de prata (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-quarterstaff"
+      ]
     },
     {
       "id": "5de516f1330eb368",
@@ -94693,8 +94797,10 @@
           "name": "Arma de prata (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-revolver"
+      ]
     },
     {
       "id": "a29e96c9edeaf778",
@@ -94723,8 +94829,10 @@
           "name": "Arma de prata (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-semiautomatic-pistol"
+      ]
     },
     {
       "id": "76f51ff01683f7a3",
@@ -94753,8 +94861,10 @@
           "name": "Arma de prata (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-shortsword"
+      ]
     },
     {
       "id": "eadf36a11a3ee712",
@@ -94813,8 +94923,10 @@
           "name": "Arma de prata (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-spear"
+      ]
     },
     {
       "id": "80f2e2b8acba248d",
@@ -94828,8 +94940,10 @@
           "name": "Arma de prata (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-trident"
+      ]
     },
     {
       "id": "b924d482e44b10a1",
@@ -94843,8 +94957,10 @@
           "name": "Arma de prata (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-war-pick"
+      ]
     },
     {
       "id": "501b8d059d242b78",
@@ -94858,8 +94974,10 @@
           "name": "Arma de prata (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-warhammer"
+      ]
     },
     {
       "id": "f0afbaf4ae0ab078",
@@ -94888,8 +95006,10 @@
           "name": "Arma de prata (Bastão de foco druídico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-wooden-staff"
+      ]
     },
     {
       "id": "bfe9ff12a284b90d",
