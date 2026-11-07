@@ -1405,8 +1405,8 @@
         "demon-armor-ring-mail"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/demon-armor-ring-mail--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "a6f50273a0fa1a3b",
@@ -1417,8 +1417,8 @@
         "demon-armor-ring-mail--bracers"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/demon-armor-ring-mail--bracers--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "665ab081995f9657",
@@ -1429,8 +1429,8 @@
         "demon-armor-ring-mail--feet"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/demon-armor-ring-mail--feet--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "11e0dec937d7bc66",
@@ -1441,8 +1441,8 @@
         "demon-armor-ring-mail--head"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/demon-armor-ring-mail--head--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "5773e42250d816f9",
@@ -1453,8 +1453,8 @@
         "demon-armor-ring-mail--legs"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/demon-armor-ring-mail--legs--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "7294c0c19f92402e",
@@ -1465,8 +1465,8 @@
         "demon-armor-ring-mail--shoulders"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/demon-armor-ring-mail--shoulders--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "87a2b4614117f3c1",
@@ -1549,8 +1549,8 @@
         "gloomwrought-ring-mail"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/gloomwrought-ring-mail--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "0e8d0c49888a56d8",
@@ -1561,8 +1561,8 @@
         "gloomwrought-ring-mail--bracers"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/gloomwrought-ring-mail--bracers--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "66d32a3057a982f5",
@@ -1573,8 +1573,8 @@
         "gloomwrought-ring-mail--feet"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/gloomwrought-ring-mail--feet--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "a3d27434f12db254",
@@ -1585,8 +1585,8 @@
         "gloomwrought-ring-mail--head"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/gloomwrought-ring-mail--head--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "f2455d5b950a7dfb",
@@ -1597,8 +1597,8 @@
         "gloomwrought-ring-mail--legs"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/gloomwrought-ring-mail--legs--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "67eddd09f5ec9f08",
@@ -1609,8 +1609,8 @@
         "gloomwrought-ring-mail--shoulders"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/gloomwrought-ring-mail--shoulders--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "25cc7589dbeb3c0e",
@@ -1687,7 +1687,8 @@
         "living-ring-mail"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/living-ring-mail--r2.png"
     },
     {
       "physical_job": "bfb409ee971c0849",
@@ -1698,7 +1699,8 @@
         "living-ring-mail--bracers"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/living-ring-mail--bracers--r2.png"
     },
     {
       "physical_job": "d614ebbbe6899966",
@@ -1709,7 +1711,8 @@
         "living-ring-mail--feet"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/living-ring-mail--feet--r2.png"
     },
     {
       "physical_job": "e7905d2c59c5bceb",
@@ -1720,7 +1723,8 @@
         "living-ring-mail--head"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/living-ring-mail--head--r2.png"
     },
     {
       "physical_job": "8c4fe95e1335b113",
@@ -1731,7 +1735,8 @@
         "living-ring-mail--legs"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/living-ring-mail--legs--r2.png"
     },
     {
       "physical_job": "698f13dfe20b6e6d",
@@ -1742,7 +1747,8 @@
         "living-ring-mail--shoulders"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/living-ring-mail--shoulders--r2.png"
     },
     {
       "physical_job": "90ed649e3448b5e8",
@@ -1897,8 +1903,8 @@
         "mizzium-ring-mail"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/mizzium-ring-mail--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "c41b42ae3c1e9ea8",
@@ -1909,8 +1915,8 @@
         "mizzium-ring-mail--bracers"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/mizzium-ring-mail--bracers--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "d08daaabc682303e",
@@ -1921,8 +1927,8 @@
         "mizzium-ring-mail--feet"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/mizzium-ring-mail--feet--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "379260a47722b0ad",
@@ -1933,8 +1939,8 @@
         "mizzium-ring-mail--head"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/mizzium-ring-mail--head--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "5771bfc3923d9a6e",
@@ -1945,8 +1951,8 @@
         "mizzium-ring-mail--legs"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/mizzium-ring-mail--legs--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "f67ede8f5b15a812",
@@ -1957,8 +1963,8 @@
         "mizzium-ring-mail--shoulders"
       ],
       "previous_status": "approved",
-      "status": "visually_reviewed",
-      "corrected_source": ".local/ring-mail-correction-20261106/mizzium-ring-mail--shoulders--r2.png"
+      "status": "approved",
+      "publication": "ring-mail-correction-fourth18-20261106"
     },
     {
       "physical_job": "eb3977b1bfca93a8",
@@ -1969,7 +1975,8 @@
         "ruidium-ring-mail"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ruidium-ring-mail--r2.png"
     },
     {
       "physical_job": "bead90bb58aab030",
@@ -1980,7 +1987,8 @@
         "ruidium-ring-mail--bracers"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ruidium-ring-mail--bracers--r2.png"
     },
     {
       "physical_job": "2cfbe0e085d53ae7",
@@ -1991,7 +1999,8 @@
         "ruidium-ring-mail--feet"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ruidium-ring-mail--feet--r2.png"
     },
     {
       "physical_job": "5c82f62836649704",
@@ -2002,7 +2011,8 @@
         "ruidium-ring-mail--head"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ruidium-ring-mail--head--r2.png"
     },
     {
       "physical_job": "43bfb278cf88b9e3",
@@ -2013,7 +2023,8 @@
         "ruidium-ring-mail--legs"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ruidium-ring-mail--legs--r2.png"
     },
     {
       "physical_job": "468d010948b2d97c",
@@ -2024,7 +2035,8 @@
         "ruidium-ring-mail--shoulders"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/ruidium-ring-mail--shoulders--r2.png"
     },
     {
       "physical_job": "dc531c315e4c2c5c",
@@ -2035,7 +2047,8 @@
         "smoldering-ring-mail"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/smoldering-ring-mail--r2.png"
     },
     {
       "physical_job": "f46f0fe1023cf8fc",
@@ -2046,7 +2059,8 @@
         "smoldering-ring-mail--bracers"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/smoldering-ring-mail--bracers--r2.png"
     },
     {
       "physical_job": "e4fa787566a9efa1",
@@ -2057,7 +2071,8 @@
         "smoldering-ring-mail--feet"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/smoldering-ring-mail--feet--r2.png"
     },
     {
       "physical_job": "555cd13e783e9fe6",
@@ -2068,7 +2083,8 @@
         "smoldering-ring-mail--head"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/smoldering-ring-mail--head--r2.png"
     },
     {
       "physical_job": "8c3580bff48aebff",
@@ -2079,7 +2095,8 @@
         "smoldering-ring-mail--legs"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/smoldering-ring-mail--legs--r2.png"
     },
     {
       "physical_job": "14c95c7273941e6a",
@@ -2090,7 +2107,8 @@
         "smoldering-ring-mail--shoulders"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/smoldering-ring-mail--shoulders--r2.png"
     },
     {
       "physical_job": "077fa99286f690f6",
