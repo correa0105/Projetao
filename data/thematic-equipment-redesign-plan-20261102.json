@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2570,
-    "pending_artworks": 1917,
+    "approved_artworks": 2590,
+    "pending_artworks": 1897,
     "catalog_references": 4643,
-    "approved_references": 2726,
+    "approved_references": 2746,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -637,7 +637,7 @@
     },
     {
       "family": "Amulet of Health",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "amulet-of-health",
@@ -646,14 +646,16 @@
           "artwork_ids": [
             "amulet-of-health"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "amulet-of-health"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Amulet of Proof against Detection and Location",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "amulet-of-proof-against-detection-and-location",
@@ -662,14 +664,16 @@
           "artwork_ids": [
             "amulet-of-proof-against-detection-and-location"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "amulet-of-proof-against-detection-and-location"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Amulet of the Planes",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "amulet-of-the-planes",
@@ -678,8 +682,10 @@
           "artwork_ids": [
             "amulet-of-the-planes"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "amulet-of-the-planes"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -6495,7 +6501,7 @@
     },
     {
       "family": "Belt of Dwarvenkind",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "belt-of-dwarvenkind",
@@ -6504,14 +6510,16 @@
           "artwork_ids": [
             "belt-of-dwarvenkind"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "belt-of-dwarvenkind"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Belt of Giant Strength",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "belt-of-giant-strength",
@@ -6520,8 +6528,10 @@
           "artwork_ids": [
             "belt-of-giant-strength"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "belt-of-giant-strength"
+          ],
+          "status": "approved"
         },
         {
           "id": "belt-of-giant-strength-cloud",
@@ -6530,8 +6540,10 @@
           "artwork_ids": [
             "belt-of-giant-strength-cloud"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "belt-of-giant-strength-cloud"
+          ],
+          "status": "approved"
         },
         {
           "id": "belt-of-giant-strength-fire",
@@ -6540,8 +6552,10 @@
           "artwork_ids": [
             "belt-of-giant-strength-fire"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "belt-of-giant-strength-fire"
+          ],
+          "status": "approved"
         },
         {
           "id": "belt-of-giant-strength-frost-stone",
@@ -6550,8 +6564,10 @@
           "artwork_ids": [
             "belt-of-giant-strength-frost-stone"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "belt-of-giant-strength-frost-stone"
+          ],
+          "status": "approved"
         },
         {
           "id": "belt-of-giant-strength-storm",
@@ -6560,8 +6576,10 @@
           "artwork_ids": [
             "belt-of-giant-strength-storm"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "belt-of-giant-strength-storm"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -6777,7 +6795,7 @@
     },
     {
       "family": "Boots of Levitation",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "boots-of-levitation",
@@ -6786,14 +6804,16 @@
           "artwork_ids": [
             "boots-of-levitation"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "boots-of-levitation"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Boots of Speed",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "boots-of-speed",
@@ -6802,14 +6822,16 @@
           "artwork_ids": [
             "boots-of-speed"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "boots-of-speed"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Boots of Striding and Springing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "boots-of-striding-and-springing",
@@ -6818,14 +6840,16 @@
           "artwork_ids": [
             "boots-of-striding-and-springing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "boots-of-striding-and-springing"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Boots of the Winterlands",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "boots-of-the-winterlands",
@@ -6834,8 +6858,10 @@
           "artwork_ids": [
             "boots-of-the-winterlands"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "boots-of-the-winterlands"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -24659,7 +24685,7 @@
     },
     {
       "family": "Robe of Eyes",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "robe-of-eyes",
@@ -24668,14 +24694,16 @@
           "artwork_ids": [
             "robe-of-eyes"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "robe-of-eyes"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Robe of Scintillating Colors",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "robe-of-scintillating-colors",
@@ -24684,14 +24712,16 @@
           "artwork_ids": [
             "robe-of-scintillating-colors"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "robe-of-scintillating-colors"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Robe of Stars",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "robe-of-stars",
@@ -24700,14 +24730,16 @@
           "artwork_ids": [
             "robe-of-stars"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "robe-of-stars"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Robe of the Archmagi",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "robe-of-the-archmagi",
@@ -24716,8 +24748,10 @@
           "artwork_ids": [
             "robe-of-the-archmagi"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "robe-of-the-archmagi"
+          ],
+          "status": "approved"
         },
         {
           "id": "robe-of-the-archmagi-black",
@@ -24726,8 +24760,10 @@
           "artwork_ids": [
             "robe-of-the-archmagi-black"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "robe-of-the-archmagi-black"
+          ],
+          "status": "approved"
         },
         {
           "id": "robe-of-the-archmagi-gray",
@@ -24736,14 +24772,16 @@
           "artwork_ids": [
             "robe-of-the-archmagi-gray"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "robe-of-the-archmagi-gray"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Robe of Useful Items",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "robe-of-useful-items",
@@ -24752,8 +24790,10 @@
           "artwork_ids": [
             "robe-of-useful-items"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "robe-of-useful-items"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -33695,8 +33735,10 @@
           "name": "Amuleto da saúde"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "amulet-of-health"
+      ]
     },
     {
       "id": "37082dd4c748db63",
@@ -33710,8 +33752,10 @@
           "name": "Amuleto contra detecção e localização"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "amulet-of-proof-against-detection-and-location"
+      ]
     },
     {
       "id": "1d1fcc36c9d2c21f",
@@ -33725,8 +33769,10 @@
           "name": "Amuleto dos planos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "amulet-of-the-planes"
+      ]
     },
     {
       "id": "005a03bf6922df5b",
@@ -58032,8 +58078,10 @@
           "name": "Cinto dos anões"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "belt-of-dwarvenkind"
+      ]
     },
     {
       "id": "29e24b3d8e1d4eb6",
@@ -58047,8 +58095,10 @@
           "name": "Cinto de força de gigante (Gigante da colina)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "belt-of-giant-strength"
+      ]
     },
     {
       "id": "3f5119016b98b461",
@@ -58062,8 +58112,10 @@
           "name": "Cinto de força de gigante (Gigante das nuvens)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "belt-of-giant-strength-cloud"
+      ]
     },
     {
       "id": "e15dc4f670ab213e",
@@ -58077,8 +58129,10 @@
           "name": "Cinto de força de gigante (Gigante do fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "belt-of-giant-strength-fire"
+      ]
     },
     {
       "id": "cb4aa1a1747cdeb8",
@@ -58092,8 +58146,10 @@
           "name": "Cinto de força de gigante (Gigante do gelo ou da pedra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "belt-of-giant-strength-frost-stone"
+      ]
     },
     {
       "id": "257c087e6c142998",
@@ -58107,8 +58163,10 @@
           "name": "Cinto de força de gigante (Gigante da tempestade)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "belt-of-giant-strength-storm"
+      ]
     },
     {
       "id": "c0ad17a34f041005",
@@ -58394,8 +58452,10 @@
           "name": "Botas de levitação"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "boots-of-levitation"
+      ]
     },
     {
       "id": "172be428059fde1a",
@@ -58409,8 +58469,10 @@
           "name": "Botas de velocidade"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "boots-of-speed"
+      ]
     },
     {
       "id": "e57ef0206e55663f",
@@ -58424,8 +58486,10 @@
           "name": "Botas de caminhar e saltar"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "boots-of-striding-and-springing"
+      ]
     },
     {
       "id": "09737b07a8179d89",
@@ -58439,8 +58503,10 @@
           "name": "Botas das terras geladas"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "boots-of-the-winterlands"
+      ]
     },
     {
       "id": "191b502efc34611c",
@@ -92000,8 +92066,10 @@
           "name": "Robe dos olhos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "robe-of-eyes"
+      ]
     },
     {
       "id": "449daef20e6c35fe",
@@ -92015,8 +92083,10 @@
           "name": "Robe das cores cintilantes"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "robe-of-scintillating-colors"
+      ]
     },
     {
       "id": "fc6179892e96497c",
@@ -92030,8 +92100,10 @@
           "name": "Robe das estrelas"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "robe-of-stars"
+      ]
     },
     {
       "id": "73a99071bcb0d58d",
@@ -92045,8 +92117,10 @@
           "name": "Robe dos arquimagos (Branco · Bom)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "robe-of-the-archmagi"
+      ]
     },
     {
       "id": "50a45d8c9fea4767",
@@ -92060,8 +92134,10 @@
           "name": "Robe dos arquimagos (Preto · Mau)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "robe-of-the-archmagi-black"
+      ]
     },
     {
       "id": "cac8e52dfe33cadb",
@@ -92075,8 +92151,10 @@
           "name": "Robe dos arquimagos (Cinza · Neutro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "robe-of-the-archmagi-gray"
+      ]
     },
     {
       "id": "ac5d3cf0e722e601",
@@ -92090,8 +92168,10 @@
           "name": "Robe dos itens úteis"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "robe-of-useful-items"
+      ]
     },
     {
       "id": "89ed104e77763e43",

@@ -151,3 +151,7 @@ Resistência Radiante, Resistência a Trovão e Último Combate: 18 imagens nova
 ### Armadura do Último Combate
 
 Os 13 modelos e suas peças estão completos. São 72 artes novas com ferragens de ferro, tiras rebitadas e viés vinho, além das seis artes já publicadas da cota de anéis. Loja e inventário conferidos em 1440/390 px. Publicação confirmada em `last-stand-20261107`, commit `9db027def678a22a0369b4c17c2f7e8bc411a93e`: 2.666 referências HTTPS conferidas por hash, nove tabelas protegidas sem alterações, site saudável e ilustrador ativo. Backup anterior em `/opt/alvorada/backups/last-stand-20261107-before.dump`.
+
+### Tramontana, Couro Batido Glamouroso e Eterealidade
+
+Oito vestes tramontanas usam os originais aprovados e 40 peças novas de tecido com acabamentos próprios. Os três modelos de Couro Batido Glamouroso e Eterealidade receberam 18 artes novas. As ofertas ativas foram conferidas em 1440/390 px e as artes tramontanas foram verificadas no inventário de acervo, conforme a retirada de Arcana Unleashed da loja. Publicação confirmada em `armor-finishes-20261107`, commit `bb10dbf376d7d562f2df815c4aae8c3871652aba`: 2.732 referências HTTPS conferidas por hash, nove tabelas protegidas sem alterações, site saudável e ilustrador ativo. Backup anterior em `/opt/alvorada/backups/armor-finishes-20261107-before.dump`.
