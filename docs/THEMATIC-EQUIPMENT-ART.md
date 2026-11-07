@@ -171,3 +171,11 @@ As 40 artes foram geradas individualmente. Oito madeiras têm bastão, cajado e 
 ### Bolsas, aljava, barco e objetos elementais
 
 As 16 artes individuais foram conferidas na loja em 1440/390 px e no inventário de compras de teste. A publicação `wondrous-objects-20261107`, commit `41ad390313e1f1860fd124f1758637ac3d97a3a5`, passou na verificação das 2.838 referências HTTPS por hash. As nove tabelas protegidas foram preservadas, o site passou na verificação de saúde e o ilustrador estava ativo. Backup anterior em `/opt/alvorada/backups/wondrous-objects-20261107-before.dump`.
+
+### Talismãs de Pena e Estatuetas de Poder Maravilhoso
+
+Seis talismãs e nove estatuetas receberam artes individuais com transparência, conferidas na loja em 1440/390 px e no inventário de compras de teste. A publicação `wondrous-figurines-20261107`, commit `81abe699ec6b2a49ae862977e18f0a4c8e528bcc`, passou na verificação das 2.853 referências HTTPS por hash. As nove tabelas protegidas foram preservadas, o site passou na verificação de saúde e o ilustrador estava ativo. Backup anterior em `/opt/alvorada/backups/wondrous-figurines-20261107-before.dump`.
+
+### Frascos, pós e objetos mágicos
+
+As dez artes individuais têm fundo transparente e foram conferidas na loja em 1440/390 px e no inventário de compras de teste. A publicação `wondrous-vessels-20261107`, commit `491badbedb1da294b622e2a0578bbdc5e161bbf4`, passou na verificação das 2.863 referências HTTPS por hash. As nove tabelas protegidas foram preservadas, o site passou na verificação de saúde e o ilustrador estava ativo. Backup anterior em `/opt/alvorada/backups/wondrous-vessels-20261107-before.dump`. O plano geral registra 1.786 artes físicas pendentes.
