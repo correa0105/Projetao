@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2504,
-    "pending_artworks": 1983,
+    "approved_artworks": 2570,
+    "pending_artworks": 1917,
     "catalog_references": 4643,
-    "approved_references": 2660,
+    "approved_references": 2726,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -18583,7 +18583,7 @@
     },
     {
       "family": "Glamoured Studded Leather",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "glamoured-studded-leather",
@@ -18597,8 +18597,15 @@
             "glamoured-studded-leather--legs",
             "glamoured-studded-leather--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "glamoured-studded-leather",
+            "glamoured-studded-leather--head",
+            "glamoured-studded-leather--shoulders",
+            "glamoured-studded-leather--bracers",
+            "glamoured-studded-leather--legs",
+            "glamoured-studded-leather--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -23518,7 +23525,7 @@
     },
     {
       "family": "Plate Armor of Etherealness",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "plate-armor-of-etherealness",
@@ -23532,8 +23539,15 @@
             "plate-armor-of-etherealness--legs",
             "plate-armor-of-etherealness--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "plate-armor-of-etherealness",
+            "plate-armor-of-etherealness--head",
+            "plate-armor-of-etherealness--shoulders",
+            "plate-armor-of-etherealness--bracers",
+            "plate-armor-of-etherealness--legs",
+            "plate-armor-of-etherealness--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "plate-armor-of-etherealness-half-plate-armor",
@@ -23547,8 +23561,15 @@
             "plate-armor-of-etherealness-half-plate-armor--legs",
             "plate-armor-of-etherealness-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "plate-armor-of-etherealness-half-plate-armor",
+            "plate-armor-of-etherealness-half-plate-armor--head",
+            "plate-armor-of-etherealness-half-plate-armor--shoulders",
+            "plate-armor-of-etherealness-half-plate-armor--bracers",
+            "plate-armor-of-etherealness-half-plate-armor--legs",
+            "plate-armor-of-etherealness-half-plate-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -27778,7 +27799,7 @@
     },
     {
       "family": "Tramontane Armor",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "tramontane-breastplate",
@@ -27792,8 +27813,15 @@
             "tramontane-breastplate--legs",
             "tramontane-breastplate--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "tramontane-breastplate",
+            "tramontane-breastplate--head",
+            "tramontane-breastplate--shoulders",
+            "tramontane-breastplate--bracers",
+            "tramontane-breastplate--legs",
+            "tramontane-breastplate--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "tramontane-chain-shirt",
@@ -27807,8 +27835,15 @@
             "tramontane-chain-shirt--legs",
             "tramontane-chain-shirt--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "tramontane-chain-shirt",
+            "tramontane-chain-shirt--head",
+            "tramontane-chain-shirt--shoulders",
+            "tramontane-chain-shirt--bracers",
+            "tramontane-chain-shirt--legs",
+            "tramontane-chain-shirt--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "tramontane-half-plate-armor",
@@ -27822,8 +27857,15 @@
             "tramontane-half-plate-armor--legs",
             "tramontane-half-plate-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "tramontane-half-plate-armor",
+            "tramontane-half-plate-armor--head",
+            "tramontane-half-plate-armor--shoulders",
+            "tramontane-half-plate-armor--bracers",
+            "tramontane-half-plate-armor--legs",
+            "tramontane-half-plate-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "tramontane-hide-armor",
@@ -27837,8 +27879,15 @@
             "tramontane-hide-armor--legs",
             "tramontane-hide-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "tramontane-hide-armor",
+            "tramontane-hide-armor--head",
+            "tramontane-hide-armor--shoulders",
+            "tramontane-hide-armor--bracers",
+            "tramontane-hide-armor--legs",
+            "tramontane-hide-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "tramontane-leather-armor",
@@ -27852,8 +27901,15 @@
             "tramontane-leather-armor--legs",
             "tramontane-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "tramontane-leather-armor",
+            "tramontane-leather-armor--head",
+            "tramontane-leather-armor--shoulders",
+            "tramontane-leather-armor--bracers",
+            "tramontane-leather-armor--legs",
+            "tramontane-leather-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "tramontane-padded-armor",
@@ -27867,8 +27923,15 @@
             "tramontane-padded-armor--legs",
             "tramontane-padded-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "tramontane-padded-armor",
+            "tramontane-padded-armor--head",
+            "tramontane-padded-armor--shoulders",
+            "tramontane-padded-armor--bracers",
+            "tramontane-padded-armor--legs",
+            "tramontane-padded-armor--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "tramontane-scale-mail",
@@ -27882,8 +27945,15 @@
             "tramontane-scale-mail--legs",
             "tramontane-scale-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "tramontane-scale-mail",
+            "tramontane-scale-mail--head",
+            "tramontane-scale-mail--shoulders",
+            "tramontane-scale-mail--bracers",
+            "tramontane-scale-mail--legs",
+            "tramontane-scale-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "tramontane-studded-leather-armor",
@@ -27897,8 +27967,15 @@
             "tramontane-studded-leather-armor--legs",
             "tramontane-studded-leather-armor--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "tramontane-studded-leather-armor",
+            "tramontane-studded-leather-armor--head",
+            "tramontane-studded-leather-armor--shoulders",
+            "tramontane-studded-leather-armor--bracers",
+            "tramontane-studded-leather-armor--legs",
+            "tramontane-studded-leather-armor--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -78835,8 +78912,10 @@
           "name": "Couro batido glamouroso (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "glamoured-studded-leather"
+      ]
     },
     {
       "id": "003ed0aac241db6c",
@@ -78850,8 +78929,10 @@
           "name": "Couro batido glamouroso (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "glamoured-studded-leather--bracers"
+      ]
     },
     {
       "id": "81e8acc1e5e32e55",
@@ -78865,8 +78946,10 @@
           "name": "Couro batido glamouroso (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "glamoured-studded-leather--feet"
+      ]
     },
     {
       "id": "fb5d08857c23d116",
@@ -78880,8 +78963,10 @@
           "name": "Couro batido glamouroso (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "glamoured-studded-leather--head"
+      ]
     },
     {
       "id": "991541f8f459d753",
@@ -78895,8 +78980,10 @@
           "name": "Couro batido glamouroso (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "glamoured-studded-leather--legs"
+      ]
     },
     {
       "id": "f6589921c921f6a1",
@@ -78910,8 +78997,10 @@
           "name": "Couro batido glamouroso (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "glamoured-studded-leather--shoulders"
+      ]
     },
     {
       "id": "b981b8bd5da16c9d",
@@ -90432,8 +90521,10 @@
           "name": "Armadura de placas da eterealidade (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness-half-plate-armor"
+      ]
     },
     {
       "id": "add70d35ac4dda2f",
@@ -90447,8 +90538,10 @@
           "name": "Armadura de placas da eterealidade (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "debda3b3132de35a",
@@ -90462,8 +90555,10 @@
           "name": "Armadura de placas da eterealidade (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness-half-plate-armor--feet"
+      ]
     },
     {
       "id": "22be204e4c862fff",
@@ -90477,8 +90572,10 @@
           "name": "Armadura de placas da eterealidade (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness-half-plate-armor--head"
+      ]
     },
     {
       "id": "96f5ab1651c843a2",
@@ -90492,8 +90589,10 @@
           "name": "Armadura de placas da eterealidade (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness-half-plate-armor--legs"
+      ]
     },
     {
       "id": "fa4cc0a901d15091",
@@ -90507,8 +90606,10 @@
           "name": "Armadura de placas da eterealidade (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "952bd464061beb38",
@@ -90522,8 +90623,10 @@
           "name": "Armadura de placas da eterealidade (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness"
+      ]
     },
     {
       "id": "8decaec1efaf5e4c",
@@ -90537,8 +90640,10 @@
           "name": "Armadura de placas da eterealidade (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness--bracers"
+      ]
     },
     {
       "id": "08b62745eb4f0d9b",
@@ -90552,8 +90657,10 @@
           "name": "Armadura de placas da eterealidade (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness--feet"
+      ]
     },
     {
       "id": "8fb3e805b0aeb17b",
@@ -90567,8 +90674,10 @@
           "name": "Armadura de placas da eterealidade (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness--head"
+      ]
     },
     {
       "id": "1732dafc6643279d",
@@ -90582,8 +90691,10 @@
           "name": "Armadura de placas da eterealidade (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness--legs"
+      ]
     },
     {
       "id": "f7342aee0a423ea6",
@@ -90597,8 +90708,10 @@
           "name": "Armadura de placas da eterealidade (Armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "plate-armor-of-etherealness--shoulders"
+      ]
     },
     {
       "id": "9d37ae0a0ad92e95",
@@ -98425,8 +98538,10 @@
           "name": "Armadura tramontana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-breastplate"
+      ]
     },
     {
       "id": "da069fcd4f224e3e",
@@ -98440,8 +98555,10 @@
           "name": "Armadura tramontana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-breastplate--bracers"
+      ]
     },
     {
       "id": "a0aabf75bc7ed589",
@@ -98455,8 +98572,10 @@
           "name": "Armadura tramontana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-breastplate--feet"
+      ]
     },
     {
       "id": "c391214f3279c272",
@@ -98470,8 +98589,10 @@
           "name": "Armadura tramontana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-breastplate--head"
+      ]
     },
     {
       "id": "58633adbd9446491",
@@ -98485,8 +98606,10 @@
           "name": "Armadura tramontana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-breastplate--legs"
+      ]
     },
     {
       "id": "21da3a24d8b1a891",
@@ -98500,8 +98623,10 @@
           "name": "Armadura tramontana (Peitoral)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-breastplate--shoulders"
+      ]
     },
     {
       "id": "1186b2a925c4c466",
@@ -98515,8 +98640,10 @@
           "name": "Armadura tramontana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-chain-shirt"
+      ]
     },
     {
       "id": "2c271e5b2472c6a6",
@@ -98530,8 +98657,10 @@
           "name": "Armadura tramontana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-chain-shirt--bracers"
+      ]
     },
     {
       "id": "b421f1b1afde11c7",
@@ -98545,8 +98674,10 @@
           "name": "Armadura tramontana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-chain-shirt--feet"
+      ]
     },
     {
       "id": "48ccc77913fa0bf4",
@@ -98560,8 +98691,10 @@
           "name": "Armadura tramontana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-chain-shirt--head"
+      ]
     },
     {
       "id": "5794d0745886d3e2",
@@ -98575,8 +98708,10 @@
           "name": "Armadura tramontana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-chain-shirt--legs"
+      ]
     },
     {
       "id": "8babc1e3f50bd888",
@@ -98590,8 +98725,10 @@
           "name": "Armadura tramontana (Camisão de malha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-chain-shirt--shoulders"
+      ]
     },
     {
       "id": "a24eb11a9ac47574",
@@ -98605,8 +98742,10 @@
           "name": "Armadura tramontana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-half-plate-armor"
+      ]
     },
     {
       "id": "7dab5f0b647f498e",
@@ -98620,8 +98759,10 @@
           "name": "Armadura tramontana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-half-plate-armor--bracers"
+      ]
     },
     {
       "id": "22f412745806aebc",
@@ -98635,8 +98776,10 @@
           "name": "Armadura tramontana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-half-plate-armor--feet"
+      ]
     },
     {
       "id": "5d8fba6b2c323d1b",
@@ -98650,8 +98793,10 @@
           "name": "Armadura tramontana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-half-plate-armor--head"
+      ]
     },
     {
       "id": "ce5365d863108589",
@@ -98665,8 +98810,10 @@
           "name": "Armadura tramontana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-half-plate-armor--legs"
+      ]
     },
     {
       "id": "4f672bfa46181773",
@@ -98680,8 +98827,10 @@
           "name": "Armadura tramontana (Meia armadura de placas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-half-plate-armor--shoulders"
+      ]
     },
     {
       "id": "f426202f90fc4355",
@@ -98695,8 +98844,10 @@
           "name": "Armadura tramontana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-hide-armor"
+      ]
     },
     {
       "id": "a1db459404f863dd",
@@ -98710,8 +98861,10 @@
           "name": "Armadura tramontana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-hide-armor--bracers"
+      ]
     },
     {
       "id": "e64c15439ec841fa",
@@ -98725,8 +98878,10 @@
           "name": "Armadura tramontana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-hide-armor--feet"
+      ]
     },
     {
       "id": "bd24bd4cc65710b1",
@@ -98740,8 +98895,10 @@
           "name": "Armadura tramontana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-hide-armor--head"
+      ]
     },
     {
       "id": "827021a543ccae64",
@@ -98755,8 +98912,10 @@
           "name": "Armadura tramontana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-hide-armor--legs"
+      ]
     },
     {
       "id": "8a13355d3dd8ce55",
@@ -98770,8 +98929,10 @@
           "name": "Armadura tramontana (Armadura de peles)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-hide-armor--shoulders"
+      ]
     },
     {
       "id": "e45059801c176baa",
@@ -98785,8 +98946,10 @@
           "name": "Armadura tramontana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-leather-armor"
+      ]
     },
     {
       "id": "4cc11ad47ae0655d",
@@ -98800,8 +98963,10 @@
           "name": "Armadura tramontana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-leather-armor--bracers"
+      ]
     },
     {
       "id": "95e9aa6efb2b307d",
@@ -98815,8 +98980,10 @@
           "name": "Armadura tramontana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-leather-armor--feet"
+      ]
     },
     {
       "id": "89d1d730a19c02c2",
@@ -98830,8 +98997,10 @@
           "name": "Armadura tramontana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-leather-armor--head"
+      ]
     },
     {
       "id": "e6fd84cd72d6af6f",
@@ -98845,8 +99014,10 @@
           "name": "Armadura tramontana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-leather-armor--legs"
+      ]
     },
     {
       "id": "ff79b210c808cdf4",
@@ -98860,8 +99031,10 @@
           "name": "Armadura tramontana (Armadura de couro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-leather-armor--shoulders"
+      ]
     },
     {
       "id": "10cf6b9133784e5c",
@@ -98875,8 +99048,10 @@
           "name": "Armadura tramontana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-padded-armor"
+      ]
     },
     {
       "id": "b30606706b1d7b6a",
@@ -98890,8 +99065,10 @@
           "name": "Armadura tramontana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-padded-armor--bracers"
+      ]
     },
     {
       "id": "ec13c0cfc15133c9",
@@ -98905,8 +99082,10 @@
           "name": "Armadura tramontana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-padded-armor--feet"
+      ]
     },
     {
       "id": "a1ea17209b567610",
@@ -98920,8 +99099,10 @@
           "name": "Armadura tramontana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-padded-armor--head"
+      ]
     },
     {
       "id": "800fbe6a35fe2df4",
@@ -98935,8 +99116,10 @@
           "name": "Armadura tramontana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-padded-armor--legs"
+      ]
     },
     {
       "id": "4b661926f02f6c4f",
@@ -98950,8 +99133,10 @@
           "name": "Armadura tramontana (Armadura acolchoada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-padded-armor--shoulders"
+      ]
     },
     {
       "id": "50d94707b4d213ab",
@@ -98965,8 +99150,10 @@
           "name": "Armadura tramontana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-scale-mail"
+      ]
     },
     {
       "id": "263a836c8424167c",
@@ -98980,8 +99167,10 @@
           "name": "Armadura tramontana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-scale-mail--bracers"
+      ]
     },
     {
       "id": "4bd2dbd275007b7c",
@@ -98995,8 +99184,10 @@
           "name": "Armadura tramontana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-scale-mail--feet"
+      ]
     },
     {
       "id": "afca8d82ececb685",
@@ -99010,8 +99201,10 @@
           "name": "Armadura tramontana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-scale-mail--head"
+      ]
     },
     {
       "id": "51ad048131018405",
@@ -99025,8 +99218,10 @@
           "name": "Armadura tramontana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-scale-mail--legs"
+      ]
     },
     {
       "id": "cfc95509d911fda3",
@@ -99040,8 +99235,10 @@
           "name": "Armadura tramontana (Cota de escamas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-scale-mail--shoulders"
+      ]
     },
     {
       "id": "404a75ffa4ab47bc",
@@ -99055,8 +99252,10 @@
           "name": "Armadura tramontana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-studded-leather-armor"
+      ]
     },
     {
       "id": "5c49463acaf4af5a",
@@ -99070,8 +99269,10 @@
           "name": "Armadura tramontana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-studded-leather-armor--bracers"
+      ]
     },
     {
       "id": "a3f1afe2049e4540",
@@ -99085,8 +99286,10 @@
           "name": "Armadura tramontana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-studded-leather-armor--feet"
+      ]
     },
     {
       "id": "1fc39fe246e2dd6d",
@@ -99100,8 +99303,10 @@
           "name": "Armadura tramontana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-studded-leather-armor--head"
+      ]
     },
     {
       "id": "8c313de20bf48c7e",
@@ -99115,8 +99320,10 @@
           "name": "Armadura tramontana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-studded-leather-armor--legs"
+      ]
     },
     {
       "id": "cde986ea51cc4f38",
@@ -99130,8 +99337,10 @@
           "name": "Armadura tramontana (Couro batido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tramontane-studded-leather-armor--shoulders"
+      ]
     },
     {
       "id": "23407e476aa39892",
