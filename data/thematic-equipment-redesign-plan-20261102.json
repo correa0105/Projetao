@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2270,
-    "pending_artworks": 2217,
+    "approved_artworks": 2288,
+    "pending_artworks": 2199,
     "catalog_references": 4643,
-    "approved_references": 2426,
+    "approved_references": 2444,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -3169,8 +3169,15 @@
             "armor-of-resistance-ring-mail-radiant--legs",
             "armor-of-resistance-ring-mail-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-ring-mail-radiant",
+            "armor-of-resistance-ring-mail-radiant--head",
+            "armor-of-resistance-ring-mail-radiant--shoulders",
+            "armor-of-resistance-ring-mail-radiant--bracers",
+            "armor-of-resistance-ring-mail-radiant--legs",
+            "armor-of-resistance-ring-mail-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-ring-mail-thunder",
@@ -3184,8 +3191,15 @@
             "armor-of-resistance-ring-mail-thunder--legs",
             "armor-of-resistance-ring-mail-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-ring-mail-thunder",
+            "armor-of-resistance-ring-mail-thunder--head",
+            "armor-of-resistance-ring-mail-thunder--shoulders",
+            "armor-of-resistance-ring-mail-thunder--bracers",
+            "armor-of-resistance-ring-mail-thunder--legs",
+            "armor-of-resistance-ring-mail-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-scale-mail",
@@ -20710,8 +20724,15 @@
             "last-stand-ring-mail--legs",
             "last-stand-ring-mail--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "last-stand-ring-mail",
+            "last-stand-ring-mail--head",
+            "last-stand-ring-mail--shoulders",
+            "last-stand-ring-mail--bracers",
+            "last-stand-ring-mail--legs",
+            "last-stand-ring-mail--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "last-stand-scale-mail",
@@ -44280,8 +44301,10 @@
           "name": "Armadura de resistência (Cota de anéis · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-radiant"
+      ]
     },
     {
       "id": "ce6ebe25fc0ecb2d",
@@ -44295,8 +44318,10 @@
           "name": "Armadura de resistência (Cota de anéis · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-thunder"
+      ]
     },
     {
       "id": "753541eabda0cd7a",
@@ -44429,8 +44454,10 @@
           "name": "Armadura de resistência (Cota de anéis · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-radiant--bracers"
+      ]
     },
     {
       "id": "c05e57a9d6900aa8",
@@ -44444,8 +44471,10 @@
           "name": "Armadura de resistência (Cota de anéis · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-thunder--bracers"
+      ]
     },
     {
       "id": "9f8e2cac3a562076",
@@ -44595,8 +44624,10 @@
           "name": "Armadura de resistência (Cota de anéis · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-radiant--feet"
+      ]
     },
     {
       "id": "d059271cd3c93737",
@@ -44610,8 +44641,10 @@
           "name": "Armadura de resistência (Cota de anéis · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-thunder--feet"
+      ]
     },
     {
       "id": "4784bd62f1ab285c",
@@ -44761,8 +44794,10 @@
           "name": "Armadura de resistência (Cota de anéis · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-radiant--head"
+      ]
     },
     {
       "id": "27b11bed0b8c5cdc",
@@ -44776,8 +44811,10 @@
           "name": "Armadura de resistência (Cota de anéis · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-thunder--head"
+      ]
     },
     {
       "id": "8f4bb9208162cd0e",
@@ -44927,8 +44964,10 @@
           "name": "Armadura de resistência (Cota de anéis · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-radiant--legs"
+      ]
     },
     {
       "id": "d540ce0b76cb01ce",
@@ -44942,8 +44981,10 @@
           "name": "Armadura de resistência (Cota de anéis · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-thunder--legs"
+      ]
     },
     {
       "id": "5711f614d94d3eeb",
@@ -45093,8 +45134,10 @@
           "name": "Armadura de resistência (Cota de anéis · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-radiant--shoulders"
+      ]
     },
     {
       "id": "402f70dbe2702327",
@@ -45108,8 +45151,10 @@
           "name": "Armadura de resistência (Cota de anéis · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-ring-mail-thunder--shoulders"
+      ]
     },
     {
       "id": "e7bed07e88c9ed8f",
@@ -82891,8 +82936,10 @@
           "name": "Armadura do último combate (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-ring-mail"
+      ]
     },
     {
       "id": "53960bce90dc1eea",
@@ -82906,8 +82953,10 @@
           "name": "Armadura do último combate (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-ring-mail--bracers"
+      ]
     },
     {
       "id": "d4b02b4225cce793",
@@ -82921,8 +82970,10 @@
           "name": "Armadura do último combate (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-ring-mail--feet"
+      ]
     },
     {
       "id": "c72681845e530e37",
@@ -82936,8 +82987,10 @@
           "name": "Armadura do último combate (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-ring-mail--head"
+      ]
     },
     {
       "id": "75d9281e440d662c",
@@ -82951,8 +83004,10 @@
           "name": "Armadura do último combate (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-ring-mail--legs"
+      ]
     },
     {
       "id": "36795dd34bc45968",
@@ -82966,8 +83021,10 @@
           "name": "Armadura do último combate (Cota de anéis)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "last-stand-ring-mail--shoulders"
+      ]
     },
     {
       "id": "743de60e6c9325e9",
