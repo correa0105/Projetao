@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2676,
-    "pending_artworks": 1811,
+    "approved_artworks": 2691,
+    "pending_artworks": 1796,
     "catalog_references": 4643,
-    "approved_references": 2832,
+    "approved_references": 2847,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -16889,7 +16889,7 @@
     },
     {
       "family": "Feather Token",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "feather-token",
@@ -16898,8 +16898,10 @@
           "artwork_ids": [
             "feather-token"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feather-token"
+          ],
+          "status": "approved"
         },
         {
           "id": "feather-token-bird",
@@ -16908,8 +16910,10 @@
           "artwork_ids": [
             "feather-token-bird"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feather-token-bird"
+          ],
+          "status": "approved"
         },
         {
           "id": "feather-token-fan",
@@ -16918,8 +16922,10 @@
           "artwork_ids": [
             "feather-token-fan"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feather-token-fan"
+          ],
+          "status": "approved"
         },
         {
           "id": "feather-token-swan-boat",
@@ -16928,8 +16934,10 @@
           "artwork_ids": [
             "feather-token-swan-boat"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feather-token-swan-boat"
+          ],
+          "status": "approved"
         },
         {
           "id": "feather-token-tree",
@@ -16938,8 +16946,10 @@
           "artwork_ids": [
             "feather-token-tree"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feather-token-tree"
+          ],
+          "status": "approved"
         },
         {
           "id": "feather-token-whip",
@@ -16948,8 +16958,10 @@
           "artwork_ids": [
             "feather-token-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "feather-token-whip"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -17247,7 +17259,7 @@
     },
     {
       "family": "Figurine of Wondrous Power",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "figurine-of-wondrous-power",
@@ -17256,8 +17268,10 @@
           "artwork_ids": [
             "figurine-of-wondrous-power"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "figurine-of-wondrous-power"
+          ],
+          "status": "approved"
         },
         {
           "id": "figurine-of-wondrous-power-ebony-fly",
@@ -17266,8 +17280,10 @@
           "artwork_ids": [
             "figurine-of-wondrous-power-ebony-fly"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "figurine-of-wondrous-power-ebony-fly"
+          ],
+          "status": "approved"
         },
         {
           "id": "figurine-of-wondrous-power-golden-lions",
@@ -17276,8 +17292,10 @@
           "artwork_ids": [
             "figurine-of-wondrous-power-golden-lions"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "figurine-of-wondrous-power-golden-lions"
+          ],
+          "status": "approved"
         },
         {
           "id": "figurine-of-wondrous-power-ivory-goats",
@@ -17286,8 +17304,10 @@
           "artwork_ids": [
             "figurine-of-wondrous-power-ivory-goats"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "figurine-of-wondrous-power-ivory-goats"
+          ],
+          "status": "approved"
         },
         {
           "id": "figurine-of-wondrous-power-marble-elephant",
@@ -17296,8 +17316,10 @@
           "artwork_ids": [
             "figurine-of-wondrous-power-marble-elephant"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "figurine-of-wondrous-power-marble-elephant"
+          ],
+          "status": "approved"
         },
         {
           "id": "figurine-of-wondrous-power-obsidian-steed",
@@ -17306,8 +17328,10 @@
           "artwork_ids": [
             "figurine-of-wondrous-power-obsidian-steed"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "figurine-of-wondrous-power-obsidian-steed"
+          ],
+          "status": "approved"
         },
         {
           "id": "figurine-of-wondrous-power-onyx-dog",
@@ -17316,8 +17340,10 @@
           "artwork_ids": [
             "figurine-of-wondrous-power-onyx-dog"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "figurine-of-wondrous-power-onyx-dog"
+          ],
+          "status": "approved"
         },
         {
           "id": "figurine-of-wondrous-power-serpentine-owl",
@@ -17326,8 +17352,10 @@
           "artwork_ids": [
             "figurine-of-wondrous-power-serpentine-owl"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "figurine-of-wondrous-power-serpentine-owl"
+          ],
+          "status": "approved"
         },
         {
           "id": "figurine-of-wondrous-power-silver-raven",
@@ -17336,8 +17364,10 @@
           "artwork_ids": [
             "figurine-of-wondrous-power-silver-raven"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "figurine-of-wondrous-power-silver-raven"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -75813,8 +75843,10 @@
           "name": "Talismã de pena (Âncora)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feather-token"
+      ]
     },
     {
       "id": "ac7cc1cade120e07",
@@ -75828,8 +75860,10 @@
           "name": "Talismã de pena (Ave)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feather-token-bird"
+      ]
     },
     {
       "id": "345c3acc03eee1e6",
@@ -75843,8 +75877,10 @@
           "name": "Talismã de pena (Leque)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feather-token-fan"
+      ]
     },
     {
       "id": "81f22c92d6e4f939",
@@ -75858,8 +75894,10 @@
           "name": "Talismã de pena (Barco cisne)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feather-token-swan-boat"
+      ]
     },
     {
       "id": "7717867ee3f34f17",
@@ -75873,8 +75911,10 @@
           "name": "Talismã de pena (Árvore)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feather-token-tree"
+      ]
     },
     {
       "id": "3bdda758c19ab360",
@@ -75888,8 +75928,10 @@
           "name": "Talismã de pena (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "feather-token-whip"
+      ]
     },
     {
       "id": "20965183b000e046",
@@ -77229,8 +77271,10 @@
           "name": "Estatueta de poder maravilhoso (Grifo de bronze)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "figurine-of-wondrous-power"
+      ]
     },
     {
       "id": "397685a2ed2a3baf",
@@ -77244,8 +77288,10 @@
           "name": "Estatueta de poder maravilhoso (Mosca de ébano)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "figurine-of-wondrous-power-ebony-fly"
+      ]
     },
     {
       "id": "6017b55e89b9369c",
@@ -77259,8 +77305,10 @@
           "name": "Estatueta de poder maravilhoso (Leões de ouro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "figurine-of-wondrous-power-golden-lions"
+      ]
     },
     {
       "id": "7c90999c23d9f272",
@@ -77274,8 +77322,10 @@
           "name": "Estatueta de poder maravilhoso (Cabras de marfim)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "figurine-of-wondrous-power-ivory-goats"
+      ]
     },
     {
       "id": "125dbe9bc1a7764a",
@@ -77289,8 +77339,10 @@
           "name": "Estatueta de poder maravilhoso (Elefante de mármore)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "figurine-of-wondrous-power-marble-elephant"
+      ]
     },
     {
       "id": "980d2bb5f8e11e57",
@@ -77304,8 +77356,10 @@
           "name": "Estatueta de poder maravilhoso (Corcel de obsidiana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "figurine-of-wondrous-power-obsidian-steed"
+      ]
     },
     {
       "id": "36099333cdc14759",
@@ -77319,8 +77373,10 @@
           "name": "Estatueta de poder maravilhoso (Cão de ônix)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "figurine-of-wondrous-power-onyx-dog"
+      ]
     },
     {
       "id": "819cd0d3aacac11e",
@@ -77334,8 +77390,10 @@
           "name": "Estatueta de poder maravilhoso (Coruja de serpentina)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "figurine-of-wondrous-power-serpentine-owl"
+      ]
     },
     {
       "id": "2c7cd6e3dc52c048",
@@ -77349,8 +77407,10 @@
           "name": "Estatueta de poder maravilhoso (Corvo de prata)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "figurine-of-wondrous-power-silver-raven"
+      ]
     },
     {
       "id": "20b21e383d80dcca",
