@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2360,
-    "pending_artworks": 2127,
+    "approved_artworks": 2432,
+    "pending_artworks": 2055,
     "catalog_references": 4643,
-    "approved_references": 2516,
+    "approved_references": 2588,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -1331,7 +1331,7 @@
     },
     {
       "family": "Armor of Resistance",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "armor-of-resistance",
@@ -1565,8 +1565,15 @@
             "armor-of-resistance-breastplate-thunder--legs",
             "armor-of-resistance-breastplate-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-breastplate-thunder",
+            "armor-of-resistance-breastplate-thunder--head",
+            "armor-of-resistance-breastplate-thunder--shoulders",
+            "armor-of-resistance-breastplate-thunder--bracers",
+            "armor-of-resistance-breastplate-thunder--legs",
+            "armor-of-resistance-breastplate-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-mail",
@@ -1778,8 +1785,15 @@
             "armor-of-resistance-chain-mail-thunder--legs",
             "armor-of-resistance-chain-mail-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-mail-thunder",
+            "armor-of-resistance-chain-mail-thunder--head",
+            "armor-of-resistance-chain-mail-thunder--shoulders",
+            "armor-of-resistance-chain-mail-thunder--bracers",
+            "armor-of-resistance-chain-mail-thunder--legs",
+            "armor-of-resistance-chain-mail-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-shirt",
@@ -1991,8 +2005,15 @@
             "armor-of-resistance-chain-shirt-thunder--legs",
             "armor-of-resistance-chain-shirt-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-shirt-thunder",
+            "armor-of-resistance-chain-shirt-thunder--head",
+            "armor-of-resistance-chain-shirt-thunder--shoulders",
+            "armor-of-resistance-chain-shirt-thunder--bracers",
+            "armor-of-resistance-chain-shirt-thunder--legs",
+            "armor-of-resistance-chain-shirt-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-half-plate-armor",
@@ -2204,8 +2225,15 @@
             "armor-of-resistance-half-plate-armor-thunder--legs",
             "armor-of-resistance-half-plate-armor-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-half-plate-armor-thunder",
+            "armor-of-resistance-half-plate-armor-thunder--head",
+            "armor-of-resistance-half-plate-armor-thunder--shoulders",
+            "armor-of-resistance-half-plate-armor-thunder--bracers",
+            "armor-of-resistance-half-plate-armor-thunder--legs",
+            "armor-of-resistance-half-plate-armor-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-hide-armor",
@@ -2417,8 +2445,15 @@
             "armor-of-resistance-hide-armor-thunder--legs",
             "armor-of-resistance-hide-armor-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-hide-armor-thunder",
+            "armor-of-resistance-hide-armor-thunder--head",
+            "armor-of-resistance-hide-armor-thunder--shoulders",
+            "armor-of-resistance-hide-armor-thunder--bracers",
+            "armor-of-resistance-hide-armor-thunder--legs",
+            "armor-of-resistance-hide-armor-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-leather-armor",
@@ -2630,8 +2665,15 @@
             "armor-of-resistance-leather-armor-thunder--legs",
             "armor-of-resistance-leather-armor-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-leather-armor-thunder",
+            "armor-of-resistance-leather-armor-thunder--head",
+            "armor-of-resistance-leather-armor-thunder--shoulders",
+            "armor-of-resistance-leather-armor-thunder--bracers",
+            "armor-of-resistance-leather-armor-thunder--legs",
+            "armor-of-resistance-leather-armor-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-padded-armor",
@@ -2843,8 +2885,15 @@
             "armor-of-resistance-padded-armor-thunder--legs",
             "armor-of-resistance-padded-armor-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-padded-armor-thunder",
+            "armor-of-resistance-padded-armor-thunder--head",
+            "armor-of-resistance-padded-armor-thunder--shoulders",
+            "armor-of-resistance-padded-armor-thunder--bracers",
+            "armor-of-resistance-padded-armor-thunder--legs",
+            "armor-of-resistance-padded-armor-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-plate-armor-cold",
@@ -3034,8 +3083,15 @@
             "armor-of-resistance-plate-armor-thunder--legs",
             "armor-of-resistance-plate-armor-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-plate-armor-thunder",
+            "armor-of-resistance-plate-armor-thunder--head",
+            "armor-of-resistance-plate-armor-thunder--shoulders",
+            "armor-of-resistance-plate-armor-thunder--bracers",
+            "armor-of-resistance-plate-armor-thunder--legs",
+            "armor-of-resistance-plate-armor-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-ring-mail",
@@ -3467,8 +3523,15 @@
             "armor-of-resistance-scale-mail-thunder--legs",
             "armor-of-resistance-scale-mail-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-scale-mail-thunder",
+            "armor-of-resistance-scale-mail-thunder--head",
+            "armor-of-resistance-scale-mail-thunder--shoulders",
+            "armor-of-resistance-scale-mail-thunder--bracers",
+            "armor-of-resistance-scale-mail-thunder--legs",
+            "armor-of-resistance-scale-mail-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-splint-armor",
@@ -3680,8 +3743,15 @@
             "armor-of-resistance-splint-armor-thunder--legs",
             "armor-of-resistance-splint-armor-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-splint-armor-thunder",
+            "armor-of-resistance-splint-armor-thunder--head",
+            "armor-of-resistance-splint-armor-thunder--shoulders",
+            "armor-of-resistance-splint-armor-thunder--bracers",
+            "armor-of-resistance-splint-armor-thunder--legs",
+            "armor-of-resistance-splint-armor-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-studded-leather",
@@ -3893,8 +3963,15 @@
             "armor-of-resistance-studded-leather-thunder--legs",
             "armor-of-resistance-studded-leather-thunder--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-studded-leather-thunder",
+            "armor-of-resistance-studded-leather-thunder--head",
+            "armor-of-resistance-studded-leather-thunder--shoulders",
+            "armor-of-resistance-studded-leather-thunder--bracers",
+            "armor-of-resistance-studded-leather-thunder--legs",
+            "armor-of-resistance-studded-leather-thunder--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-acid-resistance",
@@ -4106,8 +4183,15 @@
             "spiked-armor-of-thunder-resistance--legs",
             "spiked-armor-of-thunder-resistance--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-thunder-resistance",
+            "spiked-armor-of-thunder-resistance--head",
+            "spiked-armor-of-thunder-resistance--shoulders",
+            "spiked-armor-of-thunder-resistance--bracers",
+            "spiked-armor-of-thunder-resistance--legs",
+            "spiked-armor-of-thunder-resistance--feet"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -36434,8 +36518,10 @@
           "name": "Armadura de resistência (Peitoral · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-thunder"
+      ]
     },
     {
       "id": "115dd240793385c9",
@@ -36585,8 +36671,10 @@
           "name": "Armadura de resistência (Peitoral · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-thunder--bracers"
+      ]
     },
     {
       "id": "c9236bd06c36ab7e",
@@ -36753,8 +36841,10 @@
           "name": "Armadura de resistência (Peitoral · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-thunder--feet"
+      ]
     },
     {
       "id": "ff15e8deafbe9c52",
@@ -36921,8 +37011,10 @@
           "name": "Armadura de resistência (Peitoral · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-thunder--head"
+      ]
     },
     {
       "id": "53049e6d4c20cde3",
@@ -37089,8 +37181,10 @@
           "name": "Armadura de resistência (Peitoral · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-thunder--legs"
+      ]
     },
     {
       "id": "99e359f4501d440b",
@@ -37257,8 +37351,10 @@
           "name": "Armadura de resistência (Peitoral · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-thunder--shoulders"
+      ]
     },
     {
       "id": "8403d85dfe0e9598",
@@ -37442,8 +37538,10 @@
           "name": "Armadura de resistência (Cota de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-thunder"
+      ]
     },
     {
       "id": "ec063d13da6b1930",
@@ -37593,8 +37691,10 @@
           "name": "Armadura de resistência (Cota de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-thunder--bracers"
+      ]
     },
     {
       "id": "1cd204f18a26d36e",
@@ -37761,8 +37861,10 @@
           "name": "Armadura de resistência (Cota de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-thunder--feet"
+      ]
     },
     {
       "id": "229aefed87f7e7d1",
@@ -37929,8 +38031,10 @@
           "name": "Armadura de resistência (Cota de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-thunder--head"
+      ]
     },
     {
       "id": "cdfc73fbce354940",
@@ -38097,8 +38201,10 @@
           "name": "Armadura de resistência (Cota de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-thunder--legs"
+      ]
     },
     {
       "id": "e4363343cd07f6f4",
@@ -38265,8 +38371,10 @@
           "name": "Armadura de resistência (Cota de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-thunder--shoulders"
+      ]
     },
     {
       "id": "3f9e2202faa85a2e",
@@ -38450,8 +38558,10 @@
           "name": "Armadura de resistência (Camisão de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-thunder"
+      ]
     },
     {
       "id": "82bf66e8623b9972",
@@ -38601,8 +38711,10 @@
           "name": "Armadura de resistência (Camisão de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-thunder--bracers"
+      ]
     },
     {
       "id": "277d852a650cdc69",
@@ -38769,8 +38881,10 @@
           "name": "Armadura de resistência (Camisão de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-thunder--feet"
+      ]
     },
     {
       "id": "9430fd54294326fb",
@@ -38937,8 +39051,10 @@
           "name": "Armadura de resistência (Camisão de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-thunder--head"
+      ]
     },
     {
       "id": "91cf1e1a25acfbde",
@@ -39105,8 +39221,10 @@
           "name": "Armadura de resistência (Camisão de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-thunder--legs"
+      ]
     },
     {
       "id": "0d0c02d4aa66de32",
@@ -39273,8 +39391,10 @@
           "name": "Armadura de resistência (Camisão de malha · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-thunder--shoulders"
+      ]
     },
     {
       "id": "09a955d030514603",
@@ -39458,8 +39578,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-thunder"
+      ]
     },
     {
       "id": "0e8562cd56891699",
@@ -39609,8 +39731,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-thunder--bracers"
+      ]
     },
     {
       "id": "056a81a78351668f",
@@ -39777,8 +39901,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-thunder--feet"
+      ]
     },
     {
       "id": "d6a481ea437f1013",
@@ -39945,8 +40071,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-thunder--head"
+      ]
     },
     {
       "id": "e5cf8e511a21a21d",
@@ -40113,8 +40241,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-thunder--legs"
+      ]
     },
     {
       "id": "f97942ca4750889d",
@@ -40281,8 +40411,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-thunder--shoulders"
+      ]
     },
     {
       "id": "98fc6ce066348541",
@@ -40466,8 +40598,10 @@
           "name": "Armadura de resistência (Armadura de peles · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-thunder"
+      ]
     },
     {
       "id": "548bb7af568ade4f",
@@ -40617,8 +40751,10 @@
           "name": "Armadura de resistência (Armadura de peles · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-thunder--bracers"
+      ]
     },
     {
       "id": "0cb33d761b28da31",
@@ -40785,8 +40921,10 @@
           "name": "Armadura de resistência (Armadura de peles · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-thunder--feet"
+      ]
     },
     {
       "id": "e91ca4387431dc6f",
@@ -40953,8 +41091,10 @@
           "name": "Armadura de resistência (Armadura de peles · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-thunder--head"
+      ]
     },
     {
       "id": "c67bc0f5867dc8ba",
@@ -41121,8 +41261,10 @@
           "name": "Armadura de resistência (Armadura de peles · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-thunder--legs"
+      ]
     },
     {
       "id": "2f98a1faf59f2785",
@@ -41289,8 +41431,10 @@
           "name": "Armadura de resistência (Armadura de peles · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-thunder--shoulders"
+      ]
     },
     {
       "id": "832c2c37d4d074d6",
@@ -41474,8 +41618,10 @@
           "name": "Armadura de resistência (Armadura de couro · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-thunder"
+      ]
     },
     {
       "id": "c00def7db968477d",
@@ -41625,8 +41771,10 @@
           "name": "Armadura de resistência (Armadura de couro · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-thunder--bracers"
+      ]
     },
     {
       "id": "ed98d153bf4525a9",
@@ -41793,8 +41941,10 @@
           "name": "Armadura de resistência (Armadura de couro · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-thunder--feet"
+      ]
     },
     {
       "id": "a62ef8f135afbb1d",
@@ -41961,8 +42111,10 @@
           "name": "Armadura de resistência (Armadura de couro · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-thunder--head"
+      ]
     },
     {
       "id": "225030a7fc6dd0d7",
@@ -42129,8 +42281,10 @@
           "name": "Armadura de resistência (Armadura de couro · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-thunder--legs"
+      ]
     },
     {
       "id": "22baaa2c912c7fd7",
@@ -42297,8 +42451,10 @@
           "name": "Armadura de resistência (Armadura de couro · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-thunder--shoulders"
+      ]
     },
     {
       "id": "824843a6bd738fe8",
@@ -42482,8 +42638,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-thunder"
+      ]
     },
     {
       "id": "c9ebc869eaad0785",
@@ -42633,8 +42791,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-thunder--bracers"
+      ]
     },
     {
       "id": "8ba777f371449b8d",
@@ -42801,8 +42961,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-thunder--feet"
+      ]
     },
     {
       "id": "3148295a91978d87",
@@ -42969,8 +43131,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-thunder--head"
+      ]
     },
     {
       "id": "b22a9aba48df05ca",
@@ -43137,8 +43301,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-thunder--legs"
+      ]
     },
     {
       "id": "31c525e8c30e9520",
@@ -43305,8 +43471,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-thunder--shoulders"
+      ]
     },
     {
       "id": "74cf01cd31c55353",
@@ -43490,8 +43658,10 @@
           "name": "Armadura de resistência (Armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-thunder"
+      ]
     },
     {
       "id": "c4c2ef87a75a0580",
@@ -43641,8 +43811,10 @@
           "name": "Armadura de resistência (Armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-thunder--bracers"
+      ]
     },
     {
       "id": "d21b99f9833af431",
@@ -43809,8 +43981,10 @@
           "name": "Armadura de resistência (Armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-thunder--feet"
+      ]
     },
     {
       "id": "9e09d7b7dcba5449",
@@ -43977,8 +44151,10 @@
           "name": "Armadura de resistência (Armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-thunder--head"
+      ]
     },
     {
       "id": "a157cf045e81c7ba",
@@ -44145,8 +44321,10 @@
           "name": "Armadura de resistência (Armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-thunder--legs"
+      ]
     },
     {
       "id": "4db3ca6be86ff5a0",
@@ -44313,8 +44491,10 @@
           "name": "Armadura de resistência (Armadura de placas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-thunder--shoulders"
+      ]
     },
     {
       "id": "01329938322b0684",
@@ -45518,8 +45698,10 @@
           "name": "Armadura de resistência (Cota de escamas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-thunder"
+      ]
     },
     {
       "id": "66c358562afb4f31",
@@ -45669,8 +45851,10 @@
           "name": "Armadura de resistência (Cota de escamas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-thunder--bracers"
+      ]
     },
     {
       "id": "3f5fa20f383c54aa",
@@ -45837,8 +46021,10 @@
           "name": "Armadura de resistência (Cota de escamas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-thunder--feet"
+      ]
     },
     {
       "id": "e852e925ac2391b4",
@@ -46005,8 +46191,10 @@
           "name": "Armadura de resistência (Cota de escamas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-thunder--head"
+      ]
     },
     {
       "id": "3031de05b418af2b",
@@ -46173,8 +46361,10 @@
           "name": "Armadura de resistência (Cota de escamas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-thunder--legs"
+      ]
     },
     {
       "id": "95a091aeff9f3d74",
@@ -46341,8 +46531,10 @@
           "name": "Armadura de resistência (Cota de escamas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-thunder--shoulders"
+      ]
     },
     {
       "id": "de54415ef3ea4bec",
@@ -46526,8 +46718,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-thunder-resistance"
+      ]
     },
     {
       "id": "6f0c844f238963af",
@@ -46694,8 +46888,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-thunder-resistance--bracers"
+      ]
     },
     {
       "id": "5534fa3b971f03d3",
@@ -46862,8 +47058,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-thunder-resistance--feet"
+      ]
     },
     {
       "id": "e2c641a9c85b9d3f",
@@ -47030,8 +47228,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-thunder-resistance--head"
+      ]
     },
     {
       "id": "099e9ae6e1b177b8",
@@ -47198,8 +47398,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-thunder-resistance--legs"
+      ]
     },
     {
       "id": "11b41dcbc59c9111",
@@ -47366,8 +47568,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-thunder-resistance--shoulders"
+      ]
     },
     {
       "id": "8a7af22ecdd57547",
@@ -47534,8 +47738,10 @@
           "name": "Armadura de resistência (Armadura de talas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-thunder"
+      ]
     },
     {
       "id": "be6a0e3dce4de74c",
@@ -47685,8 +47891,10 @@
           "name": "Armadura de resistência (Armadura de talas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-thunder--bracers"
+      ]
     },
     {
       "id": "63d3e99c74e1859f",
@@ -47853,8 +48061,10 @@
           "name": "Armadura de resistência (Armadura de talas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-thunder--feet"
+      ]
     },
     {
       "id": "46aa10742b201afb",
@@ -48021,8 +48231,10 @@
           "name": "Armadura de resistência (Armadura de talas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-thunder--head"
+      ]
     },
     {
       "id": "16bd0bf4972fa0fe",
@@ -48189,8 +48401,10 @@
           "name": "Armadura de resistência (Armadura de talas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-thunder--legs"
+      ]
     },
     {
       "id": "cb4ae75a32e083cb",
@@ -48357,8 +48571,10 @@
           "name": "Armadura de resistência (Armadura de talas · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-thunder--shoulders"
+      ]
     },
     {
       "id": "65f60b59088fdf82",
@@ -48542,8 +48758,10 @@
           "name": "Armadura de resistência (Couro batido · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-thunder"
+      ]
     },
     {
       "id": "d95c37f377fe3f66",
@@ -48693,8 +48911,10 @@
           "name": "Armadura de resistência (Couro batido · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-thunder--bracers"
+      ]
     },
     {
       "id": "5b338d9d5c10b500",
@@ -48861,8 +49081,10 @@
           "name": "Armadura de resistência (Couro batido · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-thunder--feet"
+      ]
     },
     {
       "id": "b59c8a9ea9e97afa",
@@ -49029,8 +49251,10 @@
           "name": "Armadura de resistência (Couro batido · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-thunder--head"
+      ]
     },
     {
       "id": "0d6764a524b0254d",
@@ -49197,8 +49421,10 @@
           "name": "Armadura de resistência (Couro batido · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-thunder--legs"
+      ]
     },
     {
       "id": "22e9d1d50c1a63fa",
@@ -49365,8 +49591,10 @@
           "name": "Armadura de resistência (Couro batido · Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-thunder--shoulders"
+      ]
     },
     {
       "id": "781cc1a7aed14aaa",
