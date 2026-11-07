@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2288,
-    "pending_artworks": 2199,
+    "approved_artworks": 2360,
+    "pending_artworks": 2127,
     "catalog_references": 4643,
-    "approved_references": 2444,
+    "approved_references": 2516,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -1543,8 +1543,15 @@
             "armor-of-resistance-breastplate-radiant--legs",
             "armor-of-resistance-breastplate-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-breastplate-radiant",
+            "armor-of-resistance-breastplate-radiant--head",
+            "armor-of-resistance-breastplate-radiant--shoulders",
+            "armor-of-resistance-breastplate-radiant--bracers",
+            "armor-of-resistance-breastplate-radiant--legs",
+            "armor-of-resistance-breastplate-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-breastplate-thunder",
@@ -1749,8 +1756,15 @@
             "armor-of-resistance-chain-mail-radiant--legs",
             "armor-of-resistance-chain-mail-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-mail-radiant",
+            "armor-of-resistance-chain-mail-radiant--head",
+            "armor-of-resistance-chain-mail-radiant--shoulders",
+            "armor-of-resistance-chain-mail-radiant--bracers",
+            "armor-of-resistance-chain-mail-radiant--legs",
+            "armor-of-resistance-chain-mail-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-mail-thunder",
@@ -1955,8 +1969,15 @@
             "armor-of-resistance-chain-shirt-radiant--legs",
             "armor-of-resistance-chain-shirt-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-chain-shirt-radiant",
+            "armor-of-resistance-chain-shirt-radiant--head",
+            "armor-of-resistance-chain-shirt-radiant--shoulders",
+            "armor-of-resistance-chain-shirt-radiant--bracers",
+            "armor-of-resistance-chain-shirt-radiant--legs",
+            "armor-of-resistance-chain-shirt-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-chain-shirt-thunder",
@@ -2161,8 +2182,15 @@
             "armor-of-resistance-half-plate-armor-radiant--legs",
             "armor-of-resistance-half-plate-armor-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-half-plate-armor-radiant",
+            "armor-of-resistance-half-plate-armor-radiant--head",
+            "armor-of-resistance-half-plate-armor-radiant--shoulders",
+            "armor-of-resistance-half-plate-armor-radiant--bracers",
+            "armor-of-resistance-half-plate-armor-radiant--legs",
+            "armor-of-resistance-half-plate-armor-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-half-plate-armor-thunder",
@@ -2367,8 +2395,15 @@
             "armor-of-resistance-hide-armor-radiant--legs",
             "armor-of-resistance-hide-armor-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-hide-armor-radiant",
+            "armor-of-resistance-hide-armor-radiant--head",
+            "armor-of-resistance-hide-armor-radiant--shoulders",
+            "armor-of-resistance-hide-armor-radiant--bracers",
+            "armor-of-resistance-hide-armor-radiant--legs",
+            "armor-of-resistance-hide-armor-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-hide-armor-thunder",
@@ -2573,8 +2608,15 @@
             "armor-of-resistance-leather-armor-radiant--legs",
             "armor-of-resistance-leather-armor-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-leather-armor-radiant",
+            "armor-of-resistance-leather-armor-radiant--head",
+            "armor-of-resistance-leather-armor-radiant--shoulders",
+            "armor-of-resistance-leather-armor-radiant--bracers",
+            "armor-of-resistance-leather-armor-radiant--legs",
+            "armor-of-resistance-leather-armor-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-leather-armor-thunder",
@@ -2779,8 +2821,15 @@
             "armor-of-resistance-padded-armor-radiant--legs",
             "armor-of-resistance-padded-armor-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-padded-armor-radiant",
+            "armor-of-resistance-padded-armor-radiant--head",
+            "armor-of-resistance-padded-armor-radiant--shoulders",
+            "armor-of-resistance-padded-armor-radiant--bracers",
+            "armor-of-resistance-padded-armor-radiant--legs",
+            "armor-of-resistance-padded-armor-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-padded-armor-thunder",
@@ -2963,8 +3012,15 @@
             "armor-of-resistance-plate-armor-radiant--legs",
             "armor-of-resistance-plate-armor-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-plate-armor-radiant",
+            "armor-of-resistance-plate-armor-radiant--head",
+            "armor-of-resistance-plate-armor-radiant--shoulders",
+            "armor-of-resistance-plate-armor-radiant--bracers",
+            "armor-of-resistance-plate-armor-radiant--legs",
+            "armor-of-resistance-plate-armor-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-plate-armor-thunder",
@@ -3389,8 +3445,15 @@
             "armor-of-resistance-scale-mail-radiant--legs",
             "armor-of-resistance-scale-mail-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-scale-mail-radiant",
+            "armor-of-resistance-scale-mail-radiant--head",
+            "armor-of-resistance-scale-mail-radiant--shoulders",
+            "armor-of-resistance-scale-mail-radiant--bracers",
+            "armor-of-resistance-scale-mail-radiant--legs",
+            "armor-of-resistance-scale-mail-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-scale-mail-thunder",
@@ -3595,8 +3658,15 @@
             "armor-of-resistance-splint-armor-radiant--legs",
             "armor-of-resistance-splint-armor-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-splint-armor-radiant",
+            "armor-of-resistance-splint-armor-radiant--head",
+            "armor-of-resistance-splint-armor-radiant--shoulders",
+            "armor-of-resistance-splint-armor-radiant--bracers",
+            "armor-of-resistance-splint-armor-radiant--legs",
+            "armor-of-resistance-splint-armor-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-splint-armor-thunder",
@@ -3801,8 +3871,15 @@
             "armor-of-resistance-studded-leather-radiant--legs",
             "armor-of-resistance-studded-leather-radiant--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "armor-of-resistance-studded-leather-radiant",
+            "armor-of-resistance-studded-leather-radiant--head",
+            "armor-of-resistance-studded-leather-radiant--shoulders",
+            "armor-of-resistance-studded-leather-radiant--bracers",
+            "armor-of-resistance-studded-leather-radiant--legs",
+            "armor-of-resistance-studded-leather-radiant--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "armor-of-resistance-studded-leather-thunder",
@@ -4007,8 +4084,15 @@
             "spiked-armor-of-radiant-resistance--legs",
             "spiked-armor-of-radiant-resistance--feet"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spiked-armor-of-radiant-resistance",
+            "spiked-armor-of-radiant-resistance--head",
+            "spiked-armor-of-radiant-resistance--shoulders",
+            "spiked-armor-of-radiant-resistance--bracers",
+            "spiked-armor-of-radiant-resistance--legs",
+            "spiked-armor-of-radiant-resistance--feet"
+          ],
+          "status": "approved"
         },
         {
           "id": "spiked-armor-of-thunder-resistance",
@@ -36333,8 +36417,10 @@
           "name": "Armadura de resistência (Peitoral · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-radiant"
+      ]
     },
     {
       "id": "75031954f1c5d47a",
@@ -36482,8 +36568,10 @@
           "name": "Armadura de resistência (Peitoral · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-radiant--bracers"
+      ]
     },
     {
       "id": "94df0c78c2c90403",
@@ -36648,8 +36736,10 @@
           "name": "Armadura de resistência (Peitoral · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-radiant--feet"
+      ]
     },
     {
       "id": "c9934ea3627d077f",
@@ -36814,8 +36904,10 @@
           "name": "Armadura de resistência (Peitoral · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-radiant--head"
+      ]
     },
     {
       "id": "75c85a8492a40bcf",
@@ -36980,8 +37072,10 @@
           "name": "Armadura de resistência (Peitoral · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-radiant--legs"
+      ]
     },
     {
       "id": "2b63dcffb56411c8",
@@ -37146,8 +37240,10 @@
           "name": "Armadura de resistência (Peitoral · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-breastplate-radiant--shoulders"
+      ]
     },
     {
       "id": "1f3e4a2282c79fb6",
@@ -37329,8 +37425,10 @@
           "name": "Armadura de resistência (Cota de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-radiant"
+      ]
     },
     {
       "id": "e1584762dcbe76e8",
@@ -37478,8 +37576,10 @@
           "name": "Armadura de resistência (Cota de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-radiant--bracers"
+      ]
     },
     {
       "id": "7468650e1335ccfb",
@@ -37644,8 +37744,10 @@
           "name": "Armadura de resistência (Cota de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-radiant--feet"
+      ]
     },
     {
       "id": "f4a4c382300c0d8a",
@@ -37810,8 +37912,10 @@
           "name": "Armadura de resistência (Cota de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-radiant--head"
+      ]
     },
     {
       "id": "66bb9510d0ac9e35",
@@ -37976,8 +38080,10 @@
           "name": "Armadura de resistência (Cota de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-radiant--legs"
+      ]
     },
     {
       "id": "0060cae51b84c50d",
@@ -38142,8 +38248,10 @@
           "name": "Armadura de resistência (Cota de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-mail-radiant--shoulders"
+      ]
     },
     {
       "id": "0fde4e75960cc4df",
@@ -38325,8 +38433,10 @@
           "name": "Armadura de resistência (Camisão de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-radiant"
+      ]
     },
     {
       "id": "e05b1c4a2489780b",
@@ -38474,8 +38584,10 @@
           "name": "Armadura de resistência (Camisão de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-radiant--bracers"
+      ]
     },
     {
       "id": "f1ca94b1e5308e3d",
@@ -38640,8 +38752,10 @@
           "name": "Armadura de resistência (Camisão de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-radiant--feet"
+      ]
     },
     {
       "id": "a23f07fea9aa9b9c",
@@ -38806,8 +38920,10 @@
           "name": "Armadura de resistência (Camisão de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-radiant--head"
+      ]
     },
     {
       "id": "116f6a9d31ba4d76",
@@ -38972,8 +39088,10 @@
           "name": "Armadura de resistência (Camisão de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-radiant--legs"
+      ]
     },
     {
       "id": "05eb4fbeea071ad3",
@@ -39138,8 +39256,10 @@
           "name": "Armadura de resistência (Camisão de malha · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-chain-shirt-radiant--shoulders"
+      ]
     },
     {
       "id": "af58e7a38cbf5714",
@@ -39321,8 +39441,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-radiant"
+      ]
     },
     {
       "id": "68bc0d1b40bb2b84",
@@ -39470,8 +39592,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-radiant--bracers"
+      ]
     },
     {
       "id": "8993f5cadaf9a3cf",
@@ -39636,8 +39760,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-radiant--feet"
+      ]
     },
     {
       "id": "bd1ae72501dafca9",
@@ -39802,8 +39928,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-radiant--head"
+      ]
     },
     {
       "id": "5394acb861c84c2e",
@@ -39968,8 +40096,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-radiant--legs"
+      ]
     },
     {
       "id": "5d2a16a204966182",
@@ -40134,8 +40264,10 @@
           "name": "Armadura de resistência (Meia armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-half-plate-armor-radiant--shoulders"
+      ]
     },
     {
       "id": "a187f5c35d027c6f",
@@ -40317,8 +40449,10 @@
           "name": "Armadura de resistência (Armadura de peles · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-radiant"
+      ]
     },
     {
       "id": "8d7ccad04d71c839",
@@ -40466,8 +40600,10 @@
           "name": "Armadura de resistência (Armadura de peles · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-radiant--bracers"
+      ]
     },
     {
       "id": "4eb60a81122c97d4",
@@ -40632,8 +40768,10 @@
           "name": "Armadura de resistência (Armadura de peles · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-radiant--feet"
+      ]
     },
     {
       "id": "ba64b55958bd6cd3",
@@ -40798,8 +40936,10 @@
           "name": "Armadura de resistência (Armadura de peles · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-radiant--head"
+      ]
     },
     {
       "id": "a744132b801b2075",
@@ -40964,8 +41104,10 @@
           "name": "Armadura de resistência (Armadura de peles · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-radiant--legs"
+      ]
     },
     {
       "id": "459709ac25381620",
@@ -41130,8 +41272,10 @@
           "name": "Armadura de resistência (Armadura de peles · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-hide-armor-radiant--shoulders"
+      ]
     },
     {
       "id": "17a86798580def30",
@@ -41313,8 +41457,10 @@
           "name": "Armadura de resistência (Armadura de couro · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-radiant"
+      ]
     },
     {
       "id": "299010791d9e84ba",
@@ -41462,8 +41608,10 @@
           "name": "Armadura de resistência (Armadura de couro · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-radiant--bracers"
+      ]
     },
     {
       "id": "d27714d137c4d257",
@@ -41628,8 +41776,10 @@
           "name": "Armadura de resistência (Armadura de couro · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-radiant--feet"
+      ]
     },
     {
       "id": "0f7723283177b6a3",
@@ -41794,8 +41944,10 @@
           "name": "Armadura de resistência (Armadura de couro · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-radiant--head"
+      ]
     },
     {
       "id": "b73aa909f8c48752",
@@ -41960,8 +42112,10 @@
           "name": "Armadura de resistência (Armadura de couro · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-radiant--legs"
+      ]
     },
     {
       "id": "aef45dc7639044eb",
@@ -42126,8 +42280,10 @@
           "name": "Armadura de resistência (Armadura de couro · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-leather-armor-radiant--shoulders"
+      ]
     },
     {
       "id": "3f4b4315ce7024cf",
@@ -42309,8 +42465,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-radiant"
+      ]
     },
     {
       "id": "348e30428037ccd6",
@@ -42458,8 +42616,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-radiant--bracers"
+      ]
     },
     {
       "id": "ddcec303e549d19e",
@@ -42624,8 +42784,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-radiant--feet"
+      ]
     },
     {
       "id": "d8819fc0ddd1c3a6",
@@ -42790,8 +42952,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-radiant--head"
+      ]
     },
     {
       "id": "4df3017b4be0a454",
@@ -42956,8 +43120,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-radiant--legs"
+      ]
     },
     {
       "id": "8b1fe904035bbe4b",
@@ -43122,8 +43288,10 @@
           "name": "Armadura de resistência (Armadura acolchoada · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-padded-armor-radiant--shoulders"
+      ]
     },
     {
       "id": "e18f0d160f130093",
@@ -43305,8 +43473,10 @@
           "name": "Armadura de resistência (Armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-radiant"
+      ]
     },
     {
       "id": "77683ef014231448",
@@ -43454,8 +43624,10 @@
           "name": "Armadura de resistência (Armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-radiant--bracers"
+      ]
     },
     {
       "id": "007fea46de228ed3",
@@ -43620,8 +43792,10 @@
           "name": "Armadura de resistência (Armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-radiant--feet"
+      ]
     },
     {
       "id": "4bf49a657f91ceac",
@@ -43786,8 +43960,10 @@
           "name": "Armadura de resistência (Armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-radiant--head"
+      ]
     },
     {
       "id": "aebaa0083dd24b0c",
@@ -43952,8 +44128,10 @@
           "name": "Armadura de resistência (Armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-radiant--legs"
+      ]
     },
     {
       "id": "1d7ebb290a97ddf8",
@@ -44118,8 +44296,10 @@
           "name": "Armadura de resistência (Armadura de placas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-plate-armor-radiant--shoulders"
+      ]
     },
     {
       "id": "eb1f5f05cac6ae43",
@@ -45321,8 +45501,10 @@
           "name": "Armadura de resistência (Cota de escamas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-radiant"
+      ]
     },
     {
       "id": "fbe19078fa23af48",
@@ -45470,8 +45652,10 @@
           "name": "Armadura de resistência (Cota de escamas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-radiant--bracers"
+      ]
     },
     {
       "id": "f23698d2382cdeeb",
@@ -45636,8 +45820,10 @@
           "name": "Armadura de resistência (Cota de escamas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-radiant--feet"
+      ]
     },
     {
       "id": "5235bafb3dc0463c",
@@ -45802,8 +45988,10 @@
           "name": "Armadura de resistência (Cota de escamas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-radiant--head"
+      ]
     },
     {
       "id": "c200958f7f9117f5",
@@ -45968,8 +46156,10 @@
           "name": "Armadura de resistência (Cota de escamas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-radiant--legs"
+      ]
     },
     {
       "id": "3d3268538a47edf1",
@@ -46134,8 +46324,10 @@
           "name": "Armadura de resistência (Cota de escamas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-scale-mail-radiant--shoulders"
+      ]
     },
     {
       "id": "6cd278bfa0f487fd",
@@ -46317,8 +46509,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-radiant-resistance"
+      ]
     },
     {
       "id": "89121cdfff432354",
@@ -46483,8 +46677,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-radiant-resistance--bracers"
+      ]
     },
     {
       "id": "03eacbf1efc77258",
@@ -46649,8 +46845,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-radiant-resistance--feet"
+      ]
     },
     {
       "id": "bbe153786e204355",
@@ -46815,8 +47013,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-radiant-resistance--head"
+      ]
     },
     {
       "id": "27e3621014dbeeb0",
@@ -46981,8 +47181,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-radiant-resistance--legs"
+      ]
     },
     {
       "id": "63985556360d164b",
@@ -47147,8 +47349,10 @@
           "name": "Armadura de resistência (Armadura de espinhos · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spiked-armor-of-radiant-resistance--shoulders"
+      ]
     },
     {
       "id": "af6c37ed4606eb5c",
@@ -47313,8 +47517,10 @@
           "name": "Armadura de resistência (Armadura de talas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-radiant"
+      ]
     },
     {
       "id": "2672bcabaa0c7e30",
@@ -47462,8 +47668,10 @@
           "name": "Armadura de resistência (Armadura de talas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-radiant--bracers"
+      ]
     },
     {
       "id": "46e0344ae374dde5",
@@ -47628,8 +47836,10 @@
           "name": "Armadura de resistência (Armadura de talas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-radiant--feet"
+      ]
     },
     {
       "id": "3532105b5b632bb4",
@@ -47794,8 +48004,10 @@
           "name": "Armadura de resistência (Armadura de talas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-radiant--head"
+      ]
     },
     {
       "id": "03dd53a271e26e8b",
@@ -47960,8 +48172,10 @@
           "name": "Armadura de resistência (Armadura de talas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-radiant--legs"
+      ]
     },
     {
       "id": "0253f2e815676d22",
@@ -48126,8 +48340,10 @@
           "name": "Armadura de resistência (Armadura de talas · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-splint-armor-radiant--shoulders"
+      ]
     },
     {
       "id": "4c77c7c7dc1adaed",
@@ -48309,8 +48525,10 @@
           "name": "Armadura de resistência (Couro batido · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-radiant"
+      ]
     },
     {
       "id": "259711a9d7399e00",
@@ -48458,8 +48676,10 @@
           "name": "Armadura de resistência (Couro batido · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-radiant--bracers"
+      ]
     },
     {
       "id": "08b3d84946b6e8c7",
@@ -48624,8 +48844,10 @@
           "name": "Armadura de resistência (Couro batido · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-radiant--feet"
+      ]
     },
     {
       "id": "356bfc341de24575",
@@ -48790,8 +49012,10 @@
           "name": "Armadura de resistência (Couro batido · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-radiant--head"
+      ]
     },
     {
       "id": "16ef16edc1a505d2",
@@ -48956,8 +49180,10 @@
           "name": "Armadura de resistência (Couro batido · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-radiant--legs"
+      ]
     },
     {
       "id": "2ee3062c2a36f1cd",
@@ -49122,8 +49348,10 @@
           "name": "Armadura de resistência (Couro batido · Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "armor-of-resistance-studded-leather-radiant--shoulders"
+      ]
     },
     {
       "id": "75b7aec23f65dbfd",
