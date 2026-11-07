@@ -86,7 +86,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "59ef78caefb0be23",
@@ -98,7 +98,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "98f836f60ddac13e",
@@ -110,7 +110,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "e8ca78bd0ab392a5",
@@ -122,7 +122,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "46417d6a69888dfa",
@@ -134,7 +134,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "0dcb45275c569444",
@@ -146,7 +146,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "cd9a16da443bae61",
@@ -158,7 +158,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "eb522756ae1ecbc4",
@@ -170,7 +170,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "e25000db5df610df",
@@ -182,7 +182,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "842d7a4c911dcb71",
@@ -194,7 +194,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "1f57620ae568131f",
@@ -206,7 +206,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "265d104ee2d7857f",
@@ -218,7 +218,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "8111f156c2153828",
@@ -1184,7 +1184,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "6853bb929093dade",
@@ -1196,7 +1196,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "e0f6ff11fd3c3b70",
@@ -1208,7 +1208,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "bef4f50d275dc9db",
@@ -1220,7 +1220,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "e778c6677db7f881",
@@ -1232,7 +1232,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "b7545c0f4ded623b",
@@ -1244,7 +1244,7 @@
       ],
       "previous_status": "approved",
       "status": "approved",
-      "publication": "ring-mail-correction-second18-20261106-pending"
+      "publication": "ring-mail-correction-second18-20261106"
     },
     {
       "physical_job": "dc3b2f7b7303c469",
@@ -1333,7 +1333,8 @@
         "cast-off-ring-mail"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/cast-off-ring-mail--r2.png"
     },
     {
       "physical_job": "85abbff6aa374c80",
@@ -1344,7 +1345,8 @@
         "cast-off-ring-mail--bracers"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/cast-off-ring-mail--bracers--r2.png"
     },
     {
       "physical_job": "99dcbb10158b7666",
@@ -1355,7 +1357,8 @@
         "cast-off-ring-mail--feet"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/cast-off-ring-mail--feet--r2.png"
     },
     {
       "physical_job": "9bcb3ba55b9d94d5",
@@ -1366,7 +1369,8 @@
         "cast-off-ring-mail--head"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/cast-off-ring-mail--head--r2.png"
     },
     {
       "physical_job": "33b98c27915742b6",
@@ -1377,7 +1381,8 @@
         "cast-off-ring-mail--legs"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/cast-off-ring-mail--legs--r2.png"
     },
     {
       "physical_job": "b09f1c529bc800f2",
@@ -1388,7 +1393,8 @@
         "cast-off-ring-mail--shoulders"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/cast-off-ring-mail--shoulders--r2.png"
     },
     {
       "physical_job": "5ebbf46a34ab2c76",
@@ -1465,7 +1471,8 @@
         "feywrought-ring-mail"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/feywrought-ring-mail--r2.png"
     },
     {
       "physical_job": "002c3bf668c19620",
@@ -1476,7 +1483,8 @@
         "feywrought-ring-mail--bracers"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/feywrought-ring-mail--bracers--r3.png"
     },
     {
       "physical_job": "fd66916ef6a77c86",
@@ -1487,7 +1495,8 @@
         "feywrought-ring-mail--feet"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/feywrought-ring-mail--feet--r2.png"
     },
     {
       "physical_job": "7e6668280fa978af",
@@ -1498,7 +1507,8 @@
         "feywrought-ring-mail--head"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/feywrought-ring-mail--head--r2.png"
     },
     {
       "physical_job": "f632569176efc066",
@@ -1509,7 +1519,8 @@
         "feywrought-ring-mail--legs"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/feywrought-ring-mail--legs--r2.png"
     },
     {
       "physical_job": "e6f7d81a84487e95",
@@ -1520,7 +1531,8 @@
         "feywrought-ring-mail--shoulders"
       ],
       "previous_status": "approved",
-      "status": "pending_visual_correction"
+      "status": "visually_reviewed",
+      "corrected_source": ".local/ring-mail-correction-20261106/feywrought-ring-mail--shoulders--r2.png"
     },
     {
       "physical_job": "efd089070c1b0b97",
