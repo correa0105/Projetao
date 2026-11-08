@@ -3,10 +3,10 @@
   "uniqueCards": 36,
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 4262,
-    "pending_artworks": 225,
+    "approved_artworks": 4274,
+    "pending_artworks": 213,
     "catalog_references": 4643,
-    "approved_references": 4418,
+    "approved_references": 4430,
     "excluded_ammunition_artworks": 42
   },
   "rows": [
@@ -18,9 +18,9 @@
       ],
       "models": 53,
       "artworks": 53,
-      "approved": 46,
-      "pending": 7,
-      "status": "pending"
+      "approved": 53,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Espada tocada pela lua",
@@ -30,9 +30,9 @@
       ],
       "models": 6,
       "artworks": 6,
-      "approved": 5,
-      "pending": 1,
-      "status": "pending"
+      "approved": 6,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Garra silvestre",
@@ -42,9 +42,9 @@
       ],
       "models": 6,
       "artworks": 6,
-      "approved": 2,
-      "pending": 4,
-      "status": "pending"
+      "approved": 6,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma de disparo repetido",

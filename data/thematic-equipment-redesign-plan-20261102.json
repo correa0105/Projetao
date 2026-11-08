@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 4262,
-    "pending_artworks": 225,
+    "approved_artworks": 4274,
+    "pending_artworks": 213,
     "catalog_references": 4643,
-    "approved_references": 4418,
+    "approved_references": 4430,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -24595,7 +24595,7 @@
     },
     {
       "family": "Moon-Touched Sword",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "moon-touched-double-bladed-scimitar",
@@ -24664,8 +24664,10 @@
           "artwork_ids": [
             "moon-touched-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "moon-touched-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -28197,7 +28199,7 @@
     },
     {
       "family": "Silvered Weapon",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "silvered-antimatter-rifle",
@@ -28278,8 +28280,10 @@
           "artwork_ids": [
             "silvered-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-double-bladed-scimitar",
@@ -28396,8 +28400,10 @@
           "artwork_ids": [
             "silvered-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-hooked-shortspear",
@@ -28406,8 +28412,10 @@
           "artwork_ids": [
             "silvered-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-hoopak",
@@ -28512,8 +28520,10 @@
           "artwork_ids": [
             "silvered-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-longbow",
@@ -28522,8 +28532,10 @@
           "artwork_ids": [
             "silvered-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-longsword",
@@ -28796,8 +28808,10 @@
           "artwork_ids": [
             "silvered-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-wooden-staff",
@@ -28818,8 +28832,10 @@
           "artwork_ids": [
             "silvered-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-yklwa"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -30243,7 +30259,7 @@
     },
     {
       "family": "Sylvan Talon",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "sylvan-talon-dagger",
@@ -30252,8 +30268,10 @@
           "artwork_ids": [
             "sylvan-talon-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sylvan-talon-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "sylvan-talon-rapier",
@@ -30286,8 +30304,10 @@
           "artwork_ids": [
             "sylvan-talon-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sylvan-talon-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "sylvan-talon-sickle",
@@ -30296,8 +30316,10 @@
           "artwork_ids": [
             "sylvan-talon-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sylvan-talon-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "sylvan-talon-spear",
@@ -30306,8 +30328,10 @@
           "artwork_ids": [
             "sylvan-talon-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sylvan-talon-spear"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -94750,8 +94774,10 @@
           "name": "Espada tocada pela lua (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "moon-touched-shortsword"
+      ]
     },
     {
       "id": "9d49e387d325e74f",
@@ -100004,8 +100030,10 @@
           "name": "Arma de prata (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-dart"
+      ]
     },
     {
       "id": "59fb5dd9b3571ed8",
@@ -100172,8 +100200,10 @@
           "name": "Arma de prata (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-heavy-crossbow"
+      ]
     },
     {
       "id": "4876449107682eba",
@@ -100187,8 +100217,10 @@
           "name": "Arma de prata (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-hooked-shortspear"
+      ]
     },
     {
       "id": "fe809a748611e3cc",
@@ -100338,8 +100370,10 @@
           "name": "Arma de prata (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-light-repeating-crossbow"
+      ]
     },
     {
       "id": "af403bf82e3627d0",
@@ -100353,8 +100387,10 @@
           "name": "Arma de prata (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-longbow"
+      ]
     },
     {
       "id": "4036b2f8522b40e6",
@@ -100725,8 +100761,10 @@
           "name": "Arma de prata (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-whip"
+      ]
     },
     {
       "id": "9b2cf4190767a123",
@@ -100757,8 +100795,10 @@
           "name": "Arma de prata (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-yklwa"
+      ]
     },
     {
       "id": "3bfd448b5fdd85a7",
@@ -104349,8 +104389,10 @@
           "name": "Garra silvestre (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sylvan-talon-dagger"
+      ]
     },
     {
       "id": "e18a3f0fa6eb3d1f",
@@ -104398,8 +104440,10 @@
           "name": "Garra silvestre (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sylvan-talon-shortsword"
+      ]
     },
     {
       "id": "31b9ea3ea4f8173e",
@@ -104413,8 +104457,10 @@
           "name": "Garra silvestre (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sylvan-talon-sickle"
+      ]
     },
     {
       "id": "882ff1518379cce1",
@@ -104428,8 +104474,10 @@
           "name": "Garra silvestre (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sylvan-talon-spear"
+      ]
     },
     {
       "id": "a71e8fe9d73eba57",
