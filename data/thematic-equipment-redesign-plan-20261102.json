@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 3979,
-    "pending_artworks": 508,
+    "approved_artworks": 4237,
+    "pending_artworks": 250,
     "catalog_references": 4643,
-    "approved_references": 4135,
+    "approved_references": 4393,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -10543,7 +10543,7 @@
     },
     {
       "family": "Drow Weapon",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "drow-1-antimatter-rifle",
@@ -10552,8 +10552,10 @@
           "artwork_ids": [
             "drow-1-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-automatic-rifle",
@@ -10562,8 +10564,10 @@
           "artwork_ids": [
             "drow-1-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-battleaxe",
@@ -10572,8 +10576,10 @@
           "artwork_ids": [
             "drow-1-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-blowgun",
@@ -10582,8 +10588,10 @@
           "artwork_ids": [
             "drow-1-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-club",
@@ -10592,8 +10600,10 @@
           "artwork_ids": [
             "drow-1-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-dagger",
@@ -10602,8 +10612,10 @@
           "artwork_ids": [
             "drow-1-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-dart",
@@ -10612,8 +10624,10 @@
           "artwork_ids": [
             "drow-1-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-double-bladed-scimitar",
@@ -10622,8 +10636,10 @@
           "artwork_ids": [
             "drow-1-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-flail",
@@ -10632,8 +10648,10 @@
           "artwork_ids": [
             "drow-1-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-glaive",
@@ -10642,8 +10660,10 @@
           "artwork_ids": [
             "drow-1-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-greataxe",
@@ -10652,8 +10672,10 @@
           "artwork_ids": [
             "drow-1-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-greatclub",
@@ -10662,8 +10684,10 @@
           "artwork_ids": [
             "drow-1-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-greatsword",
@@ -10672,8 +10696,10 @@
           "artwork_ids": [
             "drow-1-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-halberd",
@@ -10682,8 +10708,10 @@
           "artwork_ids": [
             "drow-1-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-hand-crossbow",
@@ -10692,8 +10720,10 @@
           "artwork_ids": [
             "drow-1-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-handaxe",
@@ -10702,8 +10732,10 @@
           "artwork_ids": [
             "drow-1-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-heavy-crossbow",
@@ -10712,8 +10744,10 @@
           "artwork_ids": [
             "drow-1-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-hooked-shortspear",
@@ -10722,8 +10756,10 @@
           "artwork_ids": [
             "drow-1-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-hoopak",
@@ -10732,8 +10768,10 @@
           "artwork_ids": [
             "drow-1-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-hunting-rifle",
@@ -10742,8 +10780,10 @@
           "artwork_ids": [
             "drow-1-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-javelin",
@@ -10752,8 +10792,10 @@
           "artwork_ids": [
             "drow-1-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-lance",
@@ -10762,8 +10804,10 @@
           "artwork_ids": [
             "drow-1-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-laser-pistol",
@@ -10772,8 +10816,10 @@
           "artwork_ids": [
             "drow-1-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-laser-rifle",
@@ -10782,8 +10828,10 @@
           "artwork_ids": [
             "drow-1-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-light-crossbow",
@@ -10792,8 +10840,10 @@
           "artwork_ids": [
             "drow-1-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-light-hammer",
@@ -10802,8 +10852,10 @@
           "artwork_ids": [
             "drow-1-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-light-repeating-crossbow",
@@ -10812,8 +10864,10 @@
           "artwork_ids": [
             "drow-1-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-longbow",
@@ -10822,8 +10876,10 @@
           "artwork_ids": [
             "drow-1-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-longsword",
@@ -10832,8 +10888,10 @@
           "artwork_ids": [
             "drow-1-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-mace",
@@ -10842,8 +10900,10 @@
           "artwork_ids": [
             "drow-1-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-maul",
@@ -10852,8 +10912,10 @@
           "artwork_ids": [
             "drow-1-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-morningstar",
@@ -10862,8 +10924,10 @@
           "artwork_ids": [
             "drow-1-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-musket",
@@ -10872,8 +10936,10 @@
           "artwork_ids": [
             "drow-1-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-pike",
@@ -10882,8 +10948,10 @@
           "artwork_ids": [
             "drow-1-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-pistol",
@@ -10892,8 +10960,10 @@
           "artwork_ids": [
             "drow-1-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-quarterstaff",
@@ -10902,8 +10972,10 @@
           "artwork_ids": [
             "drow-1-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-rapier",
@@ -10912,8 +10984,10 @@
           "artwork_ids": [
             "drow-1-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-revolver",
@@ -10922,8 +10996,10 @@
           "artwork_ids": [
             "drow-1-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-scimitar",
@@ -10932,8 +11008,10 @@
           "artwork_ids": [
             "drow-1-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-semiautomatic-pistol",
@@ -10942,8 +11020,10 @@
           "artwork_ids": [
             "drow-1-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-shortbow",
@@ -10952,8 +11032,10 @@
           "artwork_ids": [
             "drow-1-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-shortsword",
@@ -10962,8 +11044,10 @@
           "artwork_ids": [
             "drow-1-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-shotgun",
@@ -10972,8 +11056,10 @@
           "artwork_ids": [
             "drow-1-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-sickle",
@@ -10982,8 +11068,10 @@
           "artwork_ids": [
             "drow-1-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-sling",
@@ -10992,8 +11080,10 @@
           "artwork_ids": [
             "drow-1-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-spear",
@@ -11002,8 +11092,10 @@
           "artwork_ids": [
             "drow-1-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-trident",
@@ -11012,8 +11104,10 @@
           "artwork_ids": [
             "drow-1-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-war-pick",
@@ -11022,8 +11116,10 @@
           "artwork_ids": [
             "drow-1-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-warhammer",
@@ -11032,8 +11128,10 @@
           "artwork_ids": [
             "drow-1-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-whip",
@@ -11042,8 +11140,10 @@
           "artwork_ids": [
             "drow-1-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-1-yklwa",
@@ -11052,8 +11152,10 @@
           "artwork_ids": [
             "drow-1-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-1-yklwa"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-antimatter-rifle",
@@ -11062,8 +11164,10 @@
           "artwork_ids": [
             "drow-2-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-automatic-rifle",
@@ -11072,8 +11176,10 @@
           "artwork_ids": [
             "drow-2-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-battleaxe",
@@ -11082,8 +11188,10 @@
           "artwork_ids": [
             "drow-2-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-blowgun",
@@ -11092,8 +11200,10 @@
           "artwork_ids": [
             "drow-2-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-club",
@@ -11102,8 +11212,10 @@
           "artwork_ids": [
             "drow-2-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-dagger",
@@ -11112,8 +11224,10 @@
           "artwork_ids": [
             "drow-2-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-dart",
@@ -11122,8 +11236,10 @@
           "artwork_ids": [
             "drow-2-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-double-bladed-scimitar",
@@ -11132,8 +11248,10 @@
           "artwork_ids": [
             "drow-2-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-flail",
@@ -11142,8 +11260,10 @@
           "artwork_ids": [
             "drow-2-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-glaive",
@@ -11152,8 +11272,10 @@
           "artwork_ids": [
             "drow-2-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-greataxe",
@@ -11162,8 +11284,10 @@
           "artwork_ids": [
             "drow-2-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-greatclub",
@@ -11172,8 +11296,10 @@
           "artwork_ids": [
             "drow-2-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-greatsword",
@@ -11182,8 +11308,10 @@
           "artwork_ids": [
             "drow-2-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-halberd",
@@ -11192,8 +11320,10 @@
           "artwork_ids": [
             "drow-2-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-hand-crossbow",
@@ -11202,8 +11332,10 @@
           "artwork_ids": [
             "drow-2-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-handaxe",
@@ -11212,8 +11344,10 @@
           "artwork_ids": [
             "drow-2-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-heavy-crossbow",
@@ -11222,8 +11356,10 @@
           "artwork_ids": [
             "drow-2-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-hooked-shortspear",
@@ -11232,8 +11368,10 @@
           "artwork_ids": [
             "drow-2-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-hoopak",
@@ -11242,8 +11380,10 @@
           "artwork_ids": [
             "drow-2-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-hunting-rifle",
@@ -11252,8 +11392,10 @@
           "artwork_ids": [
             "drow-2-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-javelin",
@@ -11262,8 +11404,10 @@
           "artwork_ids": [
             "drow-2-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-lance",
@@ -11272,8 +11416,10 @@
           "artwork_ids": [
             "drow-2-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-laser-pistol",
@@ -11282,8 +11428,10 @@
           "artwork_ids": [
             "drow-2-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-laser-rifle",
@@ -11292,8 +11440,10 @@
           "artwork_ids": [
             "drow-2-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-light-crossbow",
@@ -11302,8 +11452,10 @@
           "artwork_ids": [
             "drow-2-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-light-hammer",
@@ -11312,8 +11464,10 @@
           "artwork_ids": [
             "drow-2-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-light-repeating-crossbow",
@@ -11322,8 +11476,10 @@
           "artwork_ids": [
             "drow-2-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-longbow",
@@ -11332,8 +11488,10 @@
           "artwork_ids": [
             "drow-2-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-longsword",
@@ -11342,8 +11500,10 @@
           "artwork_ids": [
             "drow-2-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-mace",
@@ -11352,8 +11512,10 @@
           "artwork_ids": [
             "drow-2-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-maul",
@@ -11362,8 +11524,10 @@
           "artwork_ids": [
             "drow-2-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-morningstar",
@@ -11372,8 +11536,10 @@
           "artwork_ids": [
             "drow-2-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-musket",
@@ -11382,8 +11548,10 @@
           "artwork_ids": [
             "drow-2-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-pike",
@@ -11392,8 +11560,10 @@
           "artwork_ids": [
             "drow-2-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-pistol",
@@ -11402,8 +11572,10 @@
           "artwork_ids": [
             "drow-2-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-quarterstaff",
@@ -11412,8 +11584,10 @@
           "artwork_ids": [
             "drow-2-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-rapier",
@@ -11422,8 +11596,10 @@
           "artwork_ids": [
             "drow-2-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-revolver",
@@ -11432,8 +11608,10 @@
           "artwork_ids": [
             "drow-2-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-scimitar",
@@ -11442,8 +11620,10 @@
           "artwork_ids": [
             "drow-2-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-semiautomatic-pistol",
@@ -11452,8 +11632,10 @@
           "artwork_ids": [
             "drow-2-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-shortbow",
@@ -11462,8 +11644,10 @@
           "artwork_ids": [
             "drow-2-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-shortsword",
@@ -11472,8 +11656,10 @@
           "artwork_ids": [
             "drow-2-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-shotgun",
@@ -11482,8 +11668,10 @@
           "artwork_ids": [
             "drow-2-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-sickle",
@@ -11492,8 +11680,10 @@
           "artwork_ids": [
             "drow-2-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-sling",
@@ -11502,8 +11692,10 @@
           "artwork_ids": [
             "drow-2-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-spear",
@@ -11512,8 +11704,10 @@
           "artwork_ids": [
             "drow-2-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-trident",
@@ -11522,8 +11716,10 @@
           "artwork_ids": [
             "drow-2-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-war-pick",
@@ -11532,8 +11728,10 @@
           "artwork_ids": [
             "drow-2-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-warhammer",
@@ -11542,8 +11740,10 @@
           "artwork_ids": [
             "drow-2-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-whip",
@@ -11552,8 +11752,10 @@
           "artwork_ids": [
             "drow-2-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-2-yklwa",
@@ -11562,8 +11764,10 @@
           "artwork_ids": [
             "drow-2-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-2-yklwa"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-antimatter-rifle",
@@ -11572,8 +11776,10 @@
           "artwork_ids": [
             "drow-3-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-automatic-rifle",
@@ -11582,8 +11788,10 @@
           "artwork_ids": [
             "drow-3-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-battleaxe",
@@ -11592,8 +11800,10 @@
           "artwork_ids": [
             "drow-3-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-blowgun",
@@ -11602,8 +11812,10 @@
           "artwork_ids": [
             "drow-3-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-club",
@@ -11612,8 +11824,10 @@
           "artwork_ids": [
             "drow-3-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-dagger",
@@ -11622,8 +11836,10 @@
           "artwork_ids": [
             "drow-3-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-dart",
@@ -11632,8 +11848,10 @@
           "artwork_ids": [
             "drow-3-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-double-bladed-scimitar",
@@ -11642,8 +11860,10 @@
           "artwork_ids": [
             "drow-3-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-flail",
@@ -11652,8 +11872,10 @@
           "artwork_ids": [
             "drow-3-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-glaive",
@@ -11662,8 +11884,10 @@
           "artwork_ids": [
             "drow-3-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-greataxe",
@@ -11672,8 +11896,10 @@
           "artwork_ids": [
             "drow-3-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-greatclub",
@@ -11682,8 +11908,10 @@
           "artwork_ids": [
             "drow-3-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-greatsword",
@@ -11692,8 +11920,10 @@
           "artwork_ids": [
             "drow-3-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-halberd",
@@ -11702,8 +11932,10 @@
           "artwork_ids": [
             "drow-3-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-hand-crossbow",
@@ -11712,8 +11944,10 @@
           "artwork_ids": [
             "drow-3-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-handaxe",
@@ -11722,8 +11956,10 @@
           "artwork_ids": [
             "drow-3-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-heavy-crossbow",
@@ -11732,8 +11968,10 @@
           "artwork_ids": [
             "drow-3-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-hooked-shortspear",
@@ -11742,8 +11980,10 @@
           "artwork_ids": [
             "drow-3-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-hoopak",
@@ -11752,8 +11992,10 @@
           "artwork_ids": [
             "drow-3-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-hunting-rifle",
@@ -11762,8 +12004,10 @@
           "artwork_ids": [
             "drow-3-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-javelin",
@@ -11772,8 +12016,10 @@
           "artwork_ids": [
             "drow-3-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-lance",
@@ -11782,8 +12028,10 @@
           "artwork_ids": [
             "drow-3-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-laser-pistol",
@@ -11792,8 +12040,10 @@
           "artwork_ids": [
             "drow-3-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-laser-rifle",
@@ -11802,8 +12052,10 @@
           "artwork_ids": [
             "drow-3-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-light-crossbow",
@@ -11812,8 +12064,10 @@
           "artwork_ids": [
             "drow-3-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-light-hammer",
@@ -11822,8 +12076,10 @@
           "artwork_ids": [
             "drow-3-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-light-repeating-crossbow",
@@ -11832,8 +12088,10 @@
           "artwork_ids": [
             "drow-3-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-longbow",
@@ -11842,8 +12100,10 @@
           "artwork_ids": [
             "drow-3-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-longsword",
@@ -11852,8 +12112,10 @@
           "artwork_ids": [
             "drow-3-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-mace",
@@ -11862,8 +12124,10 @@
           "artwork_ids": [
             "drow-3-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-maul",
@@ -11872,8 +12136,10 @@
           "artwork_ids": [
             "drow-3-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-morningstar",
@@ -11882,8 +12148,10 @@
           "artwork_ids": [
             "drow-3-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-musket",
@@ -11892,8 +12160,10 @@
           "artwork_ids": [
             "drow-3-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-pike",
@@ -11902,8 +12172,10 @@
           "artwork_ids": [
             "drow-3-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-pistol",
@@ -11912,8 +12184,10 @@
           "artwork_ids": [
             "drow-3-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-quarterstaff",
@@ -11922,8 +12196,10 @@
           "artwork_ids": [
             "drow-3-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-rapier",
@@ -11932,8 +12208,10 @@
           "artwork_ids": [
             "drow-3-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-revolver",
@@ -11942,8 +12220,10 @@
           "artwork_ids": [
             "drow-3-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-scimitar",
@@ -11952,8 +12232,10 @@
           "artwork_ids": [
             "drow-3-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-semiautomatic-pistol",
@@ -11962,8 +12244,10 @@
           "artwork_ids": [
             "drow-3-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-shortbow",
@@ -11972,8 +12256,10 @@
           "artwork_ids": [
             "drow-3-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-shortsword",
@@ -11982,8 +12268,10 @@
           "artwork_ids": [
             "drow-3-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-shotgun",
@@ -11992,8 +12280,10 @@
           "artwork_ids": [
             "drow-3-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-sickle",
@@ -12002,8 +12292,10 @@
           "artwork_ids": [
             "drow-3-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-sling",
@@ -12012,8 +12304,10 @@
           "artwork_ids": [
             "drow-3-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-spear",
@@ -12022,8 +12316,10 @@
           "artwork_ids": [
             "drow-3-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-trident",
@@ -12032,8 +12328,10 @@
           "artwork_ids": [
             "drow-3-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-war-pick",
@@ -12042,8 +12340,10 @@
           "artwork_ids": [
             "drow-3-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-warhammer",
@@ -12052,8 +12352,10 @@
           "artwork_ids": [
             "drow-3-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-whip",
@@ -12062,8 +12364,10 @@
           "artwork_ids": [
             "drow-3-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "drow-3-yklwa",
@@ -12072,8 +12376,10 @@
           "artwork_ids": [
             "drow-3-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "drow-3-yklwa"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -28108,8 +28414,10 @@
           "artwork_ids": [
             "silvered-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-lance",
@@ -28196,8 +28504,10 @@
           "artwork_ids": [
             "silvered-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-mace",
@@ -28218,8 +28528,10 @@
           "artwork_ids": [
             "silvered-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-morningstar",
@@ -28228,8 +28540,10 @@
           "artwork_ids": [
             "silvered-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-musket",
@@ -28238,8 +28552,10 @@
           "artwork_ids": [
             "silvered-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-pike",
@@ -28284,8 +28600,10 @@
           "artwork_ids": [
             "silvered-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-revolver",
@@ -28306,8 +28624,10 @@
           "artwork_ids": [
             "silvered-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-semiautomatic-pistol",
@@ -28328,8 +28648,10 @@
           "artwork_ids": [
             "silvered-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-shortsword",
@@ -28350,8 +28672,10 @@
           "artwork_ids": [
             "silvered-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-sickle",
@@ -28360,8 +28684,10 @@
           "artwork_ids": [
             "silvered-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-sling",
@@ -33468,8 +33794,10 @@
           "artwork_ids": [
             "hoopak-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hoopak-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "hoopak-plus-3",
@@ -33478,8 +33806,10 @@
           "artwork_ids": [
             "hoopak-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hoopak-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "hunting-rifle-plus-1",
@@ -33488,8 +33818,10 @@
           "artwork_ids": [
             "hunting-rifle-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hunting-rifle-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "hunting-rifle-plus-2",
@@ -33508,8 +33840,10 @@
           "artwork_ids": [
             "hunting-rifle-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hunting-rifle-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-pistol-plus-1",
@@ -33518,8 +33852,10 @@
           "artwork_ids": [
             "laser-pistol-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-pistol-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-pistol-plus-2",
@@ -33528,8 +33864,10 @@
           "artwork_ids": [
             "laser-pistol-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-pistol-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-pistol-plus-3",
@@ -33538,8 +33876,10 @@
           "artwork_ids": [
             "laser-pistol-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-pistol-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-rifle-plus-1",
@@ -33548,8 +33888,10 @@
           "artwork_ids": [
             "laser-rifle-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-rifle-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-rifle-plus-2",
@@ -33558,8 +33900,10 @@
           "artwork_ids": [
             "laser-rifle-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-rifle-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-rifle-plus-3",
@@ -33568,8 +33912,10 @@
           "artwork_ids": [
             "laser-rifle-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-rifle-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "light-repeating-crossbow-plus-1",
@@ -33578,8 +33924,10 @@
           "artwork_ids": [
             "light-repeating-crossbow-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "light-repeating-crossbow-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "light-repeating-crossbow-plus-2",
@@ -33588,8 +33936,10 @@
           "artwork_ids": [
             "light-repeating-crossbow-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "light-repeating-crossbow-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "light-repeating-crossbow-plus-3",
@@ -33598,8 +33948,10 @@
           "artwork_ids": [
             "light-repeating-crossbow-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "light-repeating-crossbow-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon",
@@ -33608,8 +33960,10 @@
           "artwork_ids": [
             "magic-weapon"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-battleaxe-plus-1",
@@ -34114,8 +34468,10 @@
           "artwork_ids": [
             "magic-weapon-javelin-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-javelin-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-javelin-plus-2",
@@ -34124,8 +34480,10 @@
           "artwork_ids": [
             "magic-weapon-javelin-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-javelin-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-javelin-plus-3",
@@ -34134,8 +34492,10 @@
           "artwork_ids": [
             "magic-weapon-javelin-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-javelin-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-lance-plus-1",
@@ -34144,8 +34504,10 @@
           "artwork_ids": [
             "magic-weapon-lance-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-lance-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-lance-plus-2",
@@ -34154,8 +34516,10 @@
           "artwork_ids": [
             "magic-weapon-lance-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-lance-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-lance-plus-3",
@@ -34164,8 +34528,10 @@
           "artwork_ids": [
             "magic-weapon-lance-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-lance-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-light-crossbow-plus-1",
@@ -34174,8 +34540,10 @@
           "artwork_ids": [
             "magic-weapon-light-crossbow-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-light-crossbow-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-light-crossbow-plus-2",
@@ -34184,8 +34552,10 @@
           "artwork_ids": [
             "magic-weapon-light-crossbow-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-light-crossbow-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-light-crossbow-plus-3",
@@ -34194,8 +34564,10 @@
           "artwork_ids": [
             "magic-weapon-light-crossbow-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-light-crossbow-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-light-hammer-plus-1",
@@ -34204,8 +34576,10 @@
           "artwork_ids": [
             "magic-weapon-light-hammer-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-light-hammer-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-light-hammer-plus-2",
@@ -34214,8 +34588,10 @@
           "artwork_ids": [
             "magic-weapon-light-hammer-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-light-hammer-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-light-hammer-plus-3",
@@ -34224,8 +34600,10 @@
           "artwork_ids": [
             "magic-weapon-light-hammer-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-light-hammer-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-longbow-plus-1",
@@ -34234,8 +34612,10 @@
           "artwork_ids": [
             "magic-weapon-longbow-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-longbow-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-longbow-plus-2",
@@ -34244,8 +34624,10 @@
           "artwork_ids": [
             "magic-weapon-longbow-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-longbow-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-longbow-plus-3",
@@ -34254,8 +34636,10 @@
           "artwork_ids": [
             "magic-weapon-longbow-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-longbow-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-longsword-plus-2",
@@ -34264,8 +34648,10 @@
           "artwork_ids": [
             "magic-weapon-longsword-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-longsword-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-longsword-plus-3",
@@ -34274,8 +34660,10 @@
           "artwork_ids": [
             "magic-weapon-longsword-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-longsword-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-mace-plus-1",
@@ -34284,8 +34672,10 @@
           "artwork_ids": [
             "magic-weapon-mace-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-mace-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-mace-plus-2",
@@ -34294,8 +34684,10 @@
           "artwork_ids": [
             "magic-weapon-mace-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-mace-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-mace-plus-3",
@@ -34304,8 +34696,10 @@
           "artwork_ids": [
             "magic-weapon-mace-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-mace-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-maul-plus-1",
@@ -34314,8 +34708,10 @@
           "artwork_ids": [
             "magic-weapon-maul-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-maul-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-maul-plus-2",
@@ -34324,8 +34720,10 @@
           "artwork_ids": [
             "magic-weapon-maul-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-maul-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-maul-plus-3",
@@ -34334,8 +34732,10 @@
           "artwork_ids": [
             "magic-weapon-maul-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-maul-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-morningstar-plus-1",
@@ -34344,8 +34744,10 @@
           "artwork_ids": [
             "magic-weapon-morningstar-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-morningstar-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-morningstar-plus-2",
@@ -34354,8 +34756,10 @@
           "artwork_ids": [
             "magic-weapon-morningstar-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-morningstar-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-morningstar-plus-3",
@@ -34364,8 +34768,10 @@
           "artwork_ids": [
             "magic-weapon-morningstar-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-morningstar-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-musket-plus-1",
@@ -34374,8 +34780,10 @@
           "artwork_ids": [
             "magic-weapon-musket-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-musket-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-musket-plus-2",
@@ -34384,8 +34792,10 @@
           "artwork_ids": [
             "magic-weapon-musket-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-musket-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-musket-plus-3",
@@ -34394,8 +34804,10 @@
           "artwork_ids": [
             "magic-weapon-musket-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-musket-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-pike-plus-1",
@@ -34404,8 +34816,10 @@
           "artwork_ids": [
             "magic-weapon-pike-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-pike-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-pike-plus-2",
@@ -34414,8 +34828,10 @@
           "artwork_ids": [
             "magic-weapon-pike-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-pike-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-pike-plus-3",
@@ -34424,8 +34840,10 @@
           "artwork_ids": [
             "magic-weapon-pike-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-pike-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-pistol-plus-1",
@@ -34434,8 +34852,10 @@
           "artwork_ids": [
             "magic-weapon-pistol-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-pistol-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-pistol-plus-2",
@@ -34444,8 +34864,10 @@
           "artwork_ids": [
             "magic-weapon-pistol-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-pistol-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-pistol-plus-3",
@@ -34454,8 +34876,10 @@
           "artwork_ids": [
             "magic-weapon-pistol-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-pistol-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-quarterstaff-plus-1",
@@ -34464,8 +34888,10 @@
           "artwork_ids": [
             "magic-weapon-quarterstaff-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-quarterstaff-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-quarterstaff-plus-2",
@@ -34474,8 +34900,10 @@
           "artwork_ids": [
             "magic-weapon-quarterstaff-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-quarterstaff-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-quarterstaff-plus-3",
@@ -34484,8 +34912,10 @@
           "artwork_ids": [
             "magic-weapon-quarterstaff-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-quarterstaff-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-rapier-plus-1",
@@ -34494,8 +34924,10 @@
           "artwork_ids": [
             "magic-weapon-rapier-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-rapier-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-rapier-plus-2",
@@ -34504,8 +34936,10 @@
           "artwork_ids": [
             "magic-weapon-rapier-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-rapier-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-rapier-plus-3",
@@ -34514,8 +34948,10 @@
           "artwork_ids": [
             "magic-weapon-rapier-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-rapier-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-scimitar-plus-1",
@@ -34524,8 +34960,10 @@
           "artwork_ids": [
             "magic-weapon-scimitar-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-scimitar-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-scimitar-plus-2",
@@ -34534,8 +34972,10 @@
           "artwork_ids": [
             "magic-weapon-scimitar-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-scimitar-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-scimitar-plus-3",
@@ -34544,8 +34984,10 @@
           "artwork_ids": [
             "magic-weapon-scimitar-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-scimitar-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-shortbow-plus-1",
@@ -34554,8 +34996,10 @@
           "artwork_ids": [
             "magic-weapon-shortbow-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-shortbow-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-shortbow-plus-2",
@@ -34564,8 +35008,10 @@
           "artwork_ids": [
             "magic-weapon-shortbow-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-shortbow-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-shortbow-plus-3",
@@ -34574,8 +35020,10 @@
           "artwork_ids": [
             "magic-weapon-shortbow-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-shortbow-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-shortsword-plus-1",
@@ -34584,8 +35032,10 @@
           "artwork_ids": [
             "magic-weapon-shortsword-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-shortsword-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-shortsword-plus-2",
@@ -34594,8 +35044,10 @@
           "artwork_ids": [
             "magic-weapon-shortsword-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-shortsword-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-shortsword-plus-3",
@@ -34604,8 +35056,10 @@
           "artwork_ids": [
             "magic-weapon-shortsword-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-shortsword-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-sickle-plus-1",
@@ -34624,8 +35078,10 @@
           "artwork_ids": [
             "magic-weapon-sickle-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-sickle-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-sickle-plus-3",
@@ -34634,8 +35090,10 @@
           "artwork_ids": [
             "magic-weapon-sickle-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-sickle-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-sling-plus-1",
@@ -34644,8 +35102,10 @@
           "artwork_ids": [
             "magic-weapon-sling-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-sling-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-sling-plus-2",
@@ -34654,8 +35114,10 @@
           "artwork_ids": [
             "magic-weapon-sling-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-sling-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-sling-plus-3",
@@ -34664,8 +35126,10 @@
           "artwork_ids": [
             "magic-weapon-sling-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-sling-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-spear-plus-1",
@@ -34674,8 +35138,10 @@
           "artwork_ids": [
             "magic-weapon-spear-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-spear-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-spear-plus-2",
@@ -34684,8 +35150,10 @@
           "artwork_ids": [
             "magic-weapon-spear-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-spear-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-spear-plus-3",
@@ -34694,8 +35162,10 @@
           "artwork_ids": [
             "magic-weapon-spear-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-spear-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-trident-plus-1",
@@ -34704,8 +35174,10 @@
           "artwork_ids": [
             "magic-weapon-trident-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-trident-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-trident-plus-2",
@@ -34714,8 +35186,10 @@
           "artwork_ids": [
             "magic-weapon-trident-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-trident-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-trident-plus-3",
@@ -34724,8 +35198,10 @@
           "artwork_ids": [
             "magic-weapon-trident-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-trident-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-war-pick-plus-1",
@@ -34734,8 +35210,10 @@
           "artwork_ids": [
             "magic-weapon-war-pick-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-war-pick-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-war-pick-plus-2",
@@ -34744,8 +35222,10 @@
           "artwork_ids": [
             "magic-weapon-war-pick-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-war-pick-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-war-pick-plus-3",
@@ -34754,8 +35234,10 @@
           "artwork_ids": [
             "magic-weapon-war-pick-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-war-pick-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-warhammer-plus-1",
@@ -34764,8 +35246,10 @@
           "artwork_ids": [
             "magic-weapon-warhammer-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-warhammer-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-warhammer-plus-2",
@@ -34774,8 +35258,10 @@
           "artwork_ids": [
             "magic-weapon-warhammer-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-warhammer-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-warhammer-plus-3",
@@ -34784,8 +35270,10 @@
           "artwork_ids": [
             "magic-weapon-warhammer-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-warhammer-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-whip-plus-1",
@@ -34794,8 +35282,10 @@
           "artwork_ids": [
             "magic-weapon-whip-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-whip-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-whip-plus-2",
@@ -34804,8 +35294,10 @@
           "artwork_ids": [
             "magic-weapon-whip-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-whip-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-whip-plus-3",
@@ -34814,8 +35306,10 @@
           "artwork_ids": [
             "magic-weapon-whip-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-whip-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "revolver-plus-1",
@@ -34824,8 +35318,10 @@
           "artwork_ids": [
             "revolver-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "revolver-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "revolver-plus-2",
@@ -34834,8 +35330,10 @@
           "artwork_ids": [
             "revolver-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "revolver-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "revolver-plus-3",
@@ -34844,8 +35342,10 @@
           "artwork_ids": [
             "revolver-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "revolver-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "semiautomatic-pistol-plus-1",
@@ -34854,8 +35354,10 @@
           "artwork_ids": [
             "semiautomatic-pistol-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "semiautomatic-pistol-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "semiautomatic-pistol-plus-2",
@@ -34864,8 +35366,10 @@
           "artwork_ids": [
             "semiautomatic-pistol-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "semiautomatic-pistol-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "semiautomatic-pistol-plus-3",
@@ -34874,8 +35378,10 @@
           "artwork_ids": [
             "semiautomatic-pistol-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "semiautomatic-pistol-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "shotgun-plus-1",
@@ -34884,8 +35390,10 @@
           "artwork_ids": [
             "shotgun-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shotgun-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "shotgun-plus-2",
@@ -34894,8 +35402,10 @@
           "artwork_ids": [
             "shotgun-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shotgun-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "shotgun-plus-3",
@@ -34904,8 +35414,10 @@
           "artwork_ids": [
             "shotgun-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shotgun-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "yklwa-plus-1",
@@ -34914,8 +35426,10 @@
           "artwork_ids": [
             "yklwa-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "yklwa-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "yklwa-plus-2",
@@ -34924,8 +35438,10 @@
           "artwork_ids": [
             "yklwa-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "yklwa-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "yklwa-plus-3",
@@ -68699,8 +69215,10 @@
           "name": "Arma drow (Rifle de antimatéria +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-antimatter-rifle"
+      ]
     },
     {
       "id": "073dca198a96ab97",
@@ -68714,8 +69232,10 @@
           "name": "Arma drow (Rifle de antimatéria +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-antimatter-rifle"
+      ]
     },
     {
       "id": "5751469159de95fc",
@@ -68729,8 +69249,10 @@
           "name": "Arma drow (Rifle de antimatéria +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-antimatter-rifle"
+      ]
     },
     {
       "id": "da501c1ce2d7cdc1",
@@ -68744,8 +69266,10 @@
           "name": "Arma drow (Rifle automático +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-automatic-rifle"
+      ]
     },
     {
       "id": "1c7fd2de689f95a3",
@@ -68759,8 +69283,10 @@
           "name": "Arma drow (Rifle automático +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-automatic-rifle"
+      ]
     },
     {
       "id": "d2032dde22a1b52e",
@@ -68774,8 +69300,10 @@
           "name": "Arma drow (Rifle automático +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-automatic-rifle"
+      ]
     },
     {
       "id": "dde829117c69f79e",
@@ -68789,8 +69317,10 @@
           "name": "Arma drow (Machado de batalha +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-battleaxe"
+      ]
     },
     {
       "id": "996dbca9354be5ac",
@@ -68804,8 +69334,10 @@
           "name": "Arma drow (Machado de batalha +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-battleaxe"
+      ]
     },
     {
       "id": "e2a59d9d255a3c0d",
@@ -68819,8 +69351,10 @@
           "name": "Arma drow (Machado de batalha +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-battleaxe"
+      ]
     },
     {
       "id": "e6bf4389b74559c6",
@@ -68834,8 +69368,10 @@
           "name": "Arma drow (Zarabatana +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-blowgun"
+      ]
     },
     {
       "id": "cf99eefcb958f724",
@@ -68849,8 +69385,10 @@
           "name": "Arma drow (Zarabatana +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-blowgun"
+      ]
     },
     {
       "id": "d1cbd9c9dece65d9",
@@ -68864,8 +69402,10 @@
           "name": "Arma drow (Zarabatana +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-blowgun"
+      ]
     },
     {
       "id": "1aad61c038c6f263",
@@ -68879,8 +69419,10 @@
           "name": "Arma drow (Clava +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-club"
+      ]
     },
     {
       "id": "99d18064d79b1172",
@@ -68894,8 +69436,10 @@
           "name": "Arma drow (Clava +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-club"
+      ]
     },
     {
       "id": "2d6d8fa5aaac7c1f",
@@ -68909,8 +69453,10 @@
           "name": "Arma drow (Clava +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-club"
+      ]
     },
     {
       "id": "890dbfa5c9d8484a",
@@ -68924,8 +69470,10 @@
           "name": "Arma drow (Adaga +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-dagger"
+      ]
     },
     {
       "id": "071f5fe67892c05d",
@@ -68939,8 +69487,10 @@
           "name": "Arma drow (Adaga +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-dagger"
+      ]
     },
     {
       "id": "8922f24fcb18690a",
@@ -68954,8 +69504,10 @@
           "name": "Arma drow (Adaga +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-dagger"
+      ]
     },
     {
       "id": "b66fc7d5c8bacc5a",
@@ -68969,8 +69521,10 @@
           "name": "Arma drow (Dardo +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-dart"
+      ]
     },
     {
       "id": "222cf0374993727c",
@@ -68984,8 +69538,10 @@
           "name": "Arma drow (Dardo +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-dart"
+      ]
     },
     {
       "id": "91cbe3be74e1ccf7",
@@ -68999,8 +69555,10 @@
           "name": "Arma drow (Dardo +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-dart"
+      ]
     },
     {
       "id": "cd53ecb9b0c0c4b5",
@@ -69014,8 +69572,10 @@
           "name": "Arma drow (Cimitarra de duas lâminas +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-double-bladed-scimitar"
+      ]
     },
     {
       "id": "b93c5763196e2300",
@@ -69029,8 +69589,10 @@
           "name": "Arma drow (Cimitarra de duas lâminas +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-double-bladed-scimitar"
+      ]
     },
     {
       "id": "9002fc0a4a93a625",
@@ -69044,8 +69606,10 @@
           "name": "Arma drow (Cimitarra de duas lâminas +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-double-bladed-scimitar"
+      ]
     },
     {
       "id": "48c5b9e21d16aa96",
@@ -69059,8 +69623,10 @@
           "name": "Arma drow (Mangual +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-flail"
+      ]
     },
     {
       "id": "3af9acb153f31bf9",
@@ -69074,8 +69640,10 @@
           "name": "Arma drow (Mangual +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-flail"
+      ]
     },
     {
       "id": "097418dc81f4ba51",
@@ -69089,8 +69657,10 @@
           "name": "Arma drow (Mangual +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-flail"
+      ]
     },
     {
       "id": "c5682fe158940261",
@@ -69104,8 +69674,10 @@
           "name": "Arma drow (Glaive +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-glaive"
+      ]
     },
     {
       "id": "ea9e4cc75428fd80",
@@ -69119,8 +69691,10 @@
           "name": "Arma drow (Glaive +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-glaive"
+      ]
     },
     {
       "id": "56798ceea0fff517",
@@ -69134,8 +69708,10 @@
           "name": "Arma drow (Glaive +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-glaive"
+      ]
     },
     {
       "id": "ea0d47e4e10b5897",
@@ -69149,8 +69725,10 @@
           "name": "Arma drow (Machado grande +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-greataxe"
+      ]
     },
     {
       "id": "ce43fa93a6bad3e2",
@@ -69164,8 +69742,10 @@
           "name": "Arma drow (Machado grande +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-greataxe"
+      ]
     },
     {
       "id": "b79675054536747d",
@@ -69179,8 +69759,10 @@
           "name": "Arma drow (Machado grande +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-greataxe"
+      ]
     },
     {
       "id": "14f84273d0ff2571",
@@ -69194,8 +69776,10 @@
           "name": "Arma drow (Clava grande +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-greatclub"
+      ]
     },
     {
       "id": "08fcd7cbd0a45b10",
@@ -69209,8 +69793,10 @@
           "name": "Arma drow (Clava grande +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-greatclub"
+      ]
     },
     {
       "id": "391b64e0536762c2",
@@ -69224,8 +69810,10 @@
           "name": "Arma drow (Clava grande +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-greatclub"
+      ]
     },
     {
       "id": "127e3d4e29646139",
@@ -69239,8 +69827,10 @@
           "name": "Arma drow (Espada grande +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-greatsword"
+      ]
     },
     {
       "id": "f958757877232ebb",
@@ -69254,8 +69844,10 @@
           "name": "Arma drow (Espada grande +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-greatsword"
+      ]
     },
     {
       "id": "7020ef1b5223146a",
@@ -69269,8 +69861,10 @@
           "name": "Arma drow (Espada grande +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-greatsword"
+      ]
     },
     {
       "id": "7561ef04136c8f72",
@@ -69284,8 +69878,10 @@
           "name": "Arma drow (Alabarda +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-halberd"
+      ]
     },
     {
       "id": "ca72d2c0e36114dd",
@@ -69299,8 +69895,10 @@
           "name": "Arma drow (Alabarda +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-halberd"
+      ]
     },
     {
       "id": "f39a160ab5815c09",
@@ -69314,8 +69912,10 @@
           "name": "Arma drow (Alabarda +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-halberd"
+      ]
     },
     {
       "id": "53ddaef572dcea11",
@@ -69329,8 +69929,10 @@
           "name": "Arma drow (Besta de mão +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-hand-crossbow"
+      ]
     },
     {
       "id": "e17b64c21454a262",
@@ -69344,8 +69946,10 @@
           "name": "Arma drow (Besta de mão +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-hand-crossbow"
+      ]
     },
     {
       "id": "e35a03531691d6a6",
@@ -69359,8 +69963,10 @@
           "name": "Arma drow (Besta de mão +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-hand-crossbow"
+      ]
     },
     {
       "id": "cbe58b6af14a20ca",
@@ -69374,8 +69980,10 @@
           "name": "Arma drow (Machadinha +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-handaxe"
+      ]
     },
     {
       "id": "a498c1269452d920",
@@ -69389,8 +69997,10 @@
           "name": "Arma drow (Machadinha +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-handaxe"
+      ]
     },
     {
       "id": "cf1def046ed7ea6d",
@@ -69404,8 +70014,10 @@
           "name": "Arma drow (Machadinha +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-handaxe"
+      ]
     },
     {
       "id": "5684a6c9875cdeb9",
@@ -69419,8 +70031,10 @@
           "name": "Arma drow (Besta pesada +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-heavy-crossbow"
+      ]
     },
     {
       "id": "911700dc8748e655",
@@ -69434,8 +70048,10 @@
           "name": "Arma drow (Besta pesada +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-heavy-crossbow"
+      ]
     },
     {
       "id": "b1da05b21eebd9d7",
@@ -69449,8 +70065,10 @@
           "name": "Arma drow (Besta pesada +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-heavy-crossbow"
+      ]
     },
     {
       "id": "adc7d34f7006a6b5",
@@ -69464,8 +70082,10 @@
           "name": "Arma drow (Lança curta com gancho +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-hooked-shortspear"
+      ]
     },
     {
       "id": "2dbc657b746d78e1",
@@ -69479,8 +70099,10 @@
           "name": "Arma drow (Lança curta com gancho +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-hooked-shortspear"
+      ]
     },
     {
       "id": "236994e0832faaad",
@@ -69494,8 +70116,10 @@
           "name": "Arma drow (Lança curta com gancho +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-hooked-shortspear"
+      ]
     },
     {
       "id": "ba2d7122f82b508f",
@@ -69509,8 +70133,10 @@
           "name": "Arma drow (Hoopak +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-hoopak"
+      ]
     },
     {
       "id": "d83ea4daacfc4333",
@@ -69524,8 +70150,10 @@
           "name": "Arma drow (Hoopak +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-hoopak"
+      ]
     },
     {
       "id": "e4847b1e43b1fdb0",
@@ -69539,8 +70167,10 @@
           "name": "Arma drow (Hoopak +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-hoopak"
+      ]
     },
     {
       "id": "3ac8ed1d1fce358b",
@@ -69554,8 +70184,10 @@
           "name": "Arma drow (Rifle de caça +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-hunting-rifle"
+      ]
     },
     {
       "id": "5e39df3f8036e959",
@@ -69569,8 +70201,10 @@
           "name": "Arma drow (Rifle de caça +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-hunting-rifle"
+      ]
     },
     {
       "id": "dc4985c509b8ecaf",
@@ -69584,8 +70218,10 @@
           "name": "Arma drow (Rifle de caça +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-hunting-rifle"
+      ]
     },
     {
       "id": "35a415e785994226",
@@ -69599,8 +70235,10 @@
           "name": "Arma drow (Azagaia +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-javelin"
+      ]
     },
     {
       "id": "9567c8648c588790",
@@ -69614,8 +70252,10 @@
           "name": "Arma drow (Azagaia +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-javelin"
+      ]
     },
     {
       "id": "e68f50dde24b913b",
@@ -69629,8 +70269,10 @@
           "name": "Arma drow (Azagaia +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-javelin"
+      ]
     },
     {
       "id": "c3512e2d55414ab8",
@@ -69644,8 +70286,10 @@
           "name": "Arma drow (Lança de cavalaria +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-lance"
+      ]
     },
     {
       "id": "704e003d10bca2d6",
@@ -69659,8 +70303,10 @@
           "name": "Arma drow (Lança de cavalaria +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-lance"
+      ]
     },
     {
       "id": "cc4b055dfd90c8cf",
@@ -69674,8 +70320,10 @@
           "name": "Arma drow (Lança de cavalaria +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-lance"
+      ]
     },
     {
       "id": "42d9bae1c7254ca6",
@@ -69689,8 +70337,10 @@
           "name": "Arma drow (Pistola laser +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-laser-pistol"
+      ]
     },
     {
       "id": "76fd131304aa56fc",
@@ -69704,8 +70354,10 @@
           "name": "Arma drow (Pistola laser +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-laser-pistol"
+      ]
     },
     {
       "id": "21cd101985c20a6c",
@@ -69719,8 +70371,10 @@
           "name": "Arma drow (Pistola laser +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-laser-pistol"
+      ]
     },
     {
       "id": "1db9cb94ad97520b",
@@ -69734,8 +70388,10 @@
           "name": "Arma drow (Rifle laser +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-laser-rifle"
+      ]
     },
     {
       "id": "142779d47579348f",
@@ -69749,8 +70405,10 @@
           "name": "Arma drow (Rifle laser +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-laser-rifle"
+      ]
     },
     {
       "id": "d8dcc5dd7228b422",
@@ -69764,8 +70422,10 @@
           "name": "Arma drow (Rifle laser +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-laser-rifle"
+      ]
     },
     {
       "id": "63ee92fe266c8ce0",
@@ -69779,8 +70439,10 @@
           "name": "Arma drow (Besta leve +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-light-crossbow"
+      ]
     },
     {
       "id": "f183fdc8890c9943",
@@ -69794,8 +70456,10 @@
           "name": "Arma drow (Besta leve +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-light-crossbow"
+      ]
     },
     {
       "id": "467e6af7d52d6e43",
@@ -69809,8 +70473,10 @@
           "name": "Arma drow (Besta leve +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-light-crossbow"
+      ]
     },
     {
       "id": "5fc03a4a10a25616",
@@ -69824,8 +70490,10 @@
           "name": "Arma drow (Martelo leve +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-light-hammer"
+      ]
     },
     {
       "id": "ec7c55d35f3eb26d",
@@ -69839,8 +70507,10 @@
           "name": "Arma drow (Martelo leve +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-light-hammer"
+      ]
     },
     {
       "id": "191cd852f4408409",
@@ -69854,8 +70524,10 @@
           "name": "Arma drow (Martelo leve +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-light-hammer"
+      ]
     },
     {
       "id": "567b1b8251d29d38",
@@ -69869,8 +70541,10 @@
           "name": "Arma drow (Besta leve de repetição +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-light-repeating-crossbow"
+      ]
     },
     {
       "id": "ec0fffad120ca084",
@@ -69884,8 +70558,10 @@
           "name": "Arma drow (Besta leve de repetição +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-light-repeating-crossbow"
+      ]
     },
     {
       "id": "82271073ffc60b71",
@@ -69899,8 +70575,10 @@
           "name": "Arma drow (Besta leve de repetição +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-light-repeating-crossbow"
+      ]
     },
     {
       "id": "50fe5b0bac30393f",
@@ -69914,8 +70592,10 @@
           "name": "Arma drow (Arco longo +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-longbow"
+      ]
     },
     {
       "id": "789358fce2620959",
@@ -69929,8 +70609,10 @@
           "name": "Arma drow (Arco longo +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-longbow"
+      ]
     },
     {
       "id": "39daad704ab85c8d",
@@ -69944,8 +70626,10 @@
           "name": "Arma drow (Arco longo +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-longbow"
+      ]
     },
     {
       "id": "4e8574d1b1214f0d",
@@ -69959,8 +70643,10 @@
           "name": "Arma drow (Espada longa +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-longsword"
+      ]
     },
     {
       "id": "2cc53756d8810aa6",
@@ -69974,8 +70660,10 @@
           "name": "Arma drow (Espada longa +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-longsword"
+      ]
     },
     {
       "id": "12b472e9f3de4232",
@@ -69989,8 +70677,10 @@
           "name": "Arma drow (Espada longa +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-longsword"
+      ]
     },
     {
       "id": "b9ca7a2f397a3b9d",
@@ -70004,8 +70694,10 @@
           "name": "Arma drow (Maça +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-mace"
+      ]
     },
     {
       "id": "d314dad76e9cd934",
@@ -70019,8 +70711,10 @@
           "name": "Arma drow (Maça +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-mace"
+      ]
     },
     {
       "id": "536913dcdf289579",
@@ -70034,8 +70728,10 @@
           "name": "Arma drow (Maça +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-mace"
+      ]
     },
     {
       "id": "ec341de9c02d0d9f",
@@ -70049,8 +70745,10 @@
           "name": "Arma drow (Malho +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-maul"
+      ]
     },
     {
       "id": "206ac5b002a1fd78",
@@ -70064,8 +70762,10 @@
           "name": "Arma drow (Malho +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-maul"
+      ]
     },
     {
       "id": "4f0e4b1006401919",
@@ -70079,8 +70779,10 @@
           "name": "Arma drow (Malho +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-maul"
+      ]
     },
     {
       "id": "0406cf4c5869707d",
@@ -70094,8 +70796,10 @@
           "name": "Arma drow (Estrela da manhã +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-morningstar"
+      ]
     },
     {
       "id": "975017ef86690653",
@@ -70109,8 +70813,10 @@
           "name": "Arma drow (Estrela da manhã +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-morningstar"
+      ]
     },
     {
       "id": "2692887b1dcf25f6",
@@ -70124,8 +70830,10 @@
           "name": "Arma drow (Estrela da manhã +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-morningstar"
+      ]
     },
     {
       "id": "4b58719046d7baf0",
@@ -70139,8 +70847,10 @@
           "name": "Arma drow (Mosquete +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-musket"
+      ]
     },
     {
       "id": "978a526f9f4fc36b",
@@ -70154,8 +70864,10 @@
           "name": "Arma drow (Mosquete +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-musket"
+      ]
     },
     {
       "id": "a075317ac8b0a5d9",
@@ -70169,8 +70881,10 @@
           "name": "Arma drow (Mosquete +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-musket"
+      ]
     },
     {
       "id": "e5e31a0fecacab7c",
@@ -70184,8 +70898,10 @@
           "name": "Arma drow (Pique +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-pike"
+      ]
     },
     {
       "id": "694e96f0733164ed",
@@ -70199,8 +70915,10 @@
           "name": "Arma drow (Pique +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-pike"
+      ]
     },
     {
       "id": "e7f2347fc114f6f1",
@@ -70214,8 +70932,10 @@
           "name": "Arma drow (Pique +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-pike"
+      ]
     },
     {
       "id": "3ff5b8c9d2c09f09",
@@ -70229,8 +70949,10 @@
           "name": "Arma drow (Pistola +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-pistol"
+      ]
     },
     {
       "id": "3009f0b6e0c799ff",
@@ -70244,8 +70966,10 @@
           "name": "Arma drow (Pistola +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-pistol"
+      ]
     },
     {
       "id": "372ccc48d5d9c414",
@@ -70259,8 +70983,10 @@
           "name": "Arma drow (Pistola +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-pistol"
+      ]
     },
     {
       "id": "cf4cb447ea41e519",
@@ -70274,8 +71000,10 @@
           "name": "Arma drow (Bordão +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-quarterstaff"
+      ]
     },
     {
       "id": "73bbfa3a3fd498f2",
@@ -70289,8 +71017,10 @@
           "name": "Arma drow (Bordão +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-quarterstaff"
+      ]
     },
     {
       "id": "3bf4fa0d82352a0b",
@@ -70304,8 +71034,10 @@
           "name": "Arma drow (Bordão +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-quarterstaff"
+      ]
     },
     {
       "id": "ad97ea6d7643f6e6",
@@ -70319,8 +71051,10 @@
           "name": "Arma drow (Rapieira +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-rapier"
+      ]
     },
     {
       "id": "f81035890b9c9e68",
@@ -70334,8 +71068,10 @@
           "name": "Arma drow (Rapieira +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-rapier"
+      ]
     },
     {
       "id": "59f867491cf941dd",
@@ -70349,8 +71085,10 @@
           "name": "Arma drow (Rapieira +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-rapier"
+      ]
     },
     {
       "id": "e9782f5dfe31a27f",
@@ -70364,8 +71102,10 @@
           "name": "Arma drow (Revólver +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-revolver"
+      ]
     },
     {
       "id": "d795cbd1adcecc68",
@@ -70379,8 +71119,10 @@
           "name": "Arma drow (Revólver +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-revolver"
+      ]
     },
     {
       "id": "6c17231848c82181",
@@ -70394,8 +71136,10 @@
           "name": "Arma drow (Revólver +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-revolver"
+      ]
     },
     {
       "id": "5d001ec84ecdfc56",
@@ -70409,8 +71153,10 @@
           "name": "Arma drow (Cimitarra +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-scimitar"
+      ]
     },
     {
       "id": "995b783fd1a61e86",
@@ -70424,8 +71170,10 @@
           "name": "Arma drow (Cimitarra +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-scimitar"
+      ]
     },
     {
       "id": "9a01c65286122f00",
@@ -70439,8 +71187,10 @@
           "name": "Arma drow (Cimitarra +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-scimitar"
+      ]
     },
     {
       "id": "3983a68a122d5c56",
@@ -70454,8 +71204,10 @@
           "name": "Arma drow (Pistola semiautomática +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-semiautomatic-pistol"
+      ]
     },
     {
       "id": "41ad5c723d73a561",
@@ -70469,8 +71221,10 @@
           "name": "Arma drow (Pistola semiautomática +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-semiautomatic-pistol"
+      ]
     },
     {
       "id": "b747f5a8fb6f07df",
@@ -70484,8 +71238,10 @@
           "name": "Arma drow (Pistola semiautomática +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-semiautomatic-pistol"
+      ]
     },
     {
       "id": "9935b9c38656765b",
@@ -70499,8 +71255,10 @@
           "name": "Arma drow (Arco curto +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-shortbow"
+      ]
     },
     {
       "id": "f0b6106a8dd63f99",
@@ -70514,8 +71272,10 @@
           "name": "Arma drow (Arco curto +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-shortbow"
+      ]
     },
     {
       "id": "804adbcc6cf49d5d",
@@ -70529,8 +71289,10 @@
           "name": "Arma drow (Arco curto +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-shortbow"
+      ]
     },
     {
       "id": "0c66ddf7d96696f2",
@@ -70544,8 +71306,10 @@
           "name": "Arma drow (Espada curta +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-shortsword"
+      ]
     },
     {
       "id": "d702565e7ff66413",
@@ -70559,8 +71323,10 @@
           "name": "Arma drow (Espada curta +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-shortsword"
+      ]
     },
     {
       "id": "88d0036140ab2026",
@@ -70574,8 +71340,10 @@
           "name": "Arma drow (Espada curta +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-shortsword"
+      ]
     },
     {
       "id": "d67b3487f1976ab6",
@@ -70589,8 +71357,10 @@
           "name": "Arma drow (Espingarda +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-shotgun"
+      ]
     },
     {
       "id": "65d18c4e388a292e",
@@ -70604,8 +71374,10 @@
           "name": "Arma drow (Espingarda +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-shotgun"
+      ]
     },
     {
       "id": "b330a66c2974315f",
@@ -70619,8 +71391,10 @@
           "name": "Arma drow (Espingarda +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-shotgun"
+      ]
     },
     {
       "id": "3af2eadb599227ef",
@@ -70634,8 +71408,10 @@
           "name": "Arma drow (Foice +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-sickle"
+      ]
     },
     {
       "id": "f82a936bdd7f5dcd",
@@ -70649,8 +71425,10 @@
           "name": "Arma drow (Foice +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-sickle"
+      ]
     },
     {
       "id": "72467f6a9e2bee6d",
@@ -70664,8 +71442,10 @@
           "name": "Arma drow (Foice +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-sickle"
+      ]
     },
     {
       "id": "9ddd667f33e59f6a",
@@ -70679,8 +71459,10 @@
           "name": "Arma drow (Funda +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-sling"
+      ]
     },
     {
       "id": "bbd44a8fd10d1240",
@@ -70694,8 +71476,10 @@
           "name": "Arma drow (Funda +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-sling"
+      ]
     },
     {
       "id": "ae224dcbf85f3bc4",
@@ -70709,8 +71493,10 @@
           "name": "Arma drow (Funda +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-sling"
+      ]
     },
     {
       "id": "d518b93d91f120cb",
@@ -70724,8 +71510,10 @@
           "name": "Arma drow (Lança +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-spear"
+      ]
     },
     {
       "id": "0193e2c0b5dc478c",
@@ -70739,8 +71527,10 @@
           "name": "Arma drow (Lança +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-spear"
+      ]
     },
     {
       "id": "f24af6d1d2c53142",
@@ -70754,8 +71544,10 @@
           "name": "Arma drow (Lança +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-spear"
+      ]
     },
     {
       "id": "96e586a46121fd47",
@@ -70769,8 +71561,10 @@
           "name": "Arma drow (Tridente +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-trident"
+      ]
     },
     {
       "id": "e73e96ac6281cf09",
@@ -70784,8 +71578,10 @@
           "name": "Arma drow (Tridente +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-trident"
+      ]
     },
     {
       "id": "7d2d8860891402af",
@@ -70799,8 +71595,10 @@
           "name": "Arma drow (Tridente +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-trident"
+      ]
     },
     {
       "id": "9e7004574daf63c4",
@@ -70814,8 +71612,10 @@
           "name": "Arma drow (Picareta de guerra +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-war-pick"
+      ]
     },
     {
       "id": "f00924eb03752fd1",
@@ -70829,8 +71629,10 @@
           "name": "Arma drow (Picareta de guerra +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-war-pick"
+      ]
     },
     {
       "id": "8296e0e005f826a8",
@@ -70844,8 +71646,10 @@
           "name": "Arma drow (Picareta de guerra +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-war-pick"
+      ]
     },
     {
       "id": "2c80230bc25341b4",
@@ -70859,8 +71663,10 @@
           "name": "Arma drow (Martelo de guerra +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-warhammer"
+      ]
     },
     {
       "id": "728536be4ac904a0",
@@ -70874,8 +71680,10 @@
           "name": "Arma drow (Martelo de guerra +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-warhammer"
+      ]
     },
     {
       "id": "44ce5d991a91ecf6",
@@ -70889,8 +71697,10 @@
           "name": "Arma drow (Martelo de guerra +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-warhammer"
+      ]
     },
     {
       "id": "083d5595a144b869",
@@ -70904,8 +71714,10 @@
           "name": "Arma drow (Chicote +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-whip"
+      ]
     },
     {
       "id": "85f5e2e72ae55d2b",
@@ -70919,8 +71731,10 @@
           "name": "Arma drow (Chicote +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-whip"
+      ]
     },
     {
       "id": "dd3c9ffb95290ef3",
@@ -70934,8 +71748,10 @@
           "name": "Arma drow (Chicote +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-whip"
+      ]
     },
     {
       "id": "f850d0eab3677a41",
@@ -70949,8 +71765,10 @@
           "name": "Arma drow (Yklwa +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-1-yklwa"
+      ]
     },
     {
       "id": "4609b9970abd6896",
@@ -70964,8 +71782,10 @@
           "name": "Arma drow (Yklwa +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-2-yklwa"
+      ]
     },
     {
       "id": "d7b28263fd602664",
@@ -70979,8 +71799,10 @@
           "name": "Arma drow (Yklwa +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "drow-3-yklwa"
+      ]
     },
     {
       "id": "95adaa20c1aad6ca",
@@ -99338,8 +100160,10 @@
           "name": "Arma de prata (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-javelin"
+      ]
     },
     {
       "id": "0664eb3561808893",
@@ -99466,8 +100290,10 @@
           "name": "Arma de prata (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-longsword"
+      ]
     },
     {
       "id": "3d4bd643b32f3662",
@@ -99498,8 +100324,10 @@
           "name": "Arma de prata (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-maul"
+      ]
     },
     {
       "id": "e7bd5fe28420c9ed",
@@ -99513,8 +100341,10 @@
           "name": "Arma de prata (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-morningstar"
+      ]
     },
     {
       "id": "a6bdf5c839571227",
@@ -99528,8 +100358,10 @@
           "name": "Arma de prata (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-musket"
+      ]
     },
     {
       "id": "70867d930faec9b9",
@@ -99594,8 +100426,10 @@
           "name": "Arma de prata (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-rapier"
+      ]
     },
     {
       "id": "fdb75dedefa05039",
@@ -99626,8 +100460,10 @@
           "name": "Arma de prata (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-scimitar"
+      ]
     },
     {
       "id": "d7ce32ad66546371",
@@ -99658,8 +100494,10 @@
           "name": "Arma de prata (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-shortbow"
+      ]
     },
     {
       "id": "4f30dda33462c881",
@@ -99690,8 +100528,10 @@
           "name": "Arma de prata (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-shotgun"
+      ]
     },
     {
       "id": "3e3da75c2c0b7fd7",
@@ -99705,8 +100545,10 @@
           "name": "Arma de prata (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-sickle"
+      ]
     },
     {
       "id": "31043ed292e016b9",
@@ -109530,8 +110372,10 @@
           "name": "Arma mágica (Hoopak +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hoopak-plus-2"
+      ]
     },
     {
       "id": "44acc29d46adf84f",
@@ -109545,8 +110389,10 @@
           "name": "Arma mágica (Hoopak +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hoopak-plus-3"
+      ]
     },
     {
       "id": "08ec8c6197440ece",
@@ -109560,8 +110406,10 @@
           "name": "Arma mágica (Rifle de caça +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hunting-rifle-plus-1"
+      ]
     },
     {
       "id": "ac87e87c24244a78",
@@ -109590,8 +110438,10 @@
           "name": "Arma mágica (Rifle de caça +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hunting-rifle-plus-3"
+      ]
     },
     {
       "id": "2b5338023c7b9990",
@@ -109605,8 +110455,10 @@
           "name": "Arma mágica (Azagaia +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-javelin-plus-1"
+      ]
     },
     {
       "id": "55d97cece0d0801a",
@@ -109620,8 +110472,10 @@
           "name": "Arma mágica (Azagaia +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-javelin-plus-2"
+      ]
     },
     {
       "id": "13f90229bc1bd16f",
@@ -109635,8 +110489,10 @@
           "name": "Arma mágica (Azagaia +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-javelin-plus-3"
+      ]
     },
     {
       "id": "6bd60e92086e2e1e",
@@ -109650,8 +110506,10 @@
           "name": "Arma mágica (Lança de cavalaria +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-lance-plus-1"
+      ]
     },
     {
       "id": "63c8b4a37dba364c",
@@ -109665,8 +110523,10 @@
           "name": "Arma mágica (Lança de cavalaria +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-lance-plus-2"
+      ]
     },
     {
       "id": "ed538958947f0cac",
@@ -109680,8 +110540,10 @@
           "name": "Arma mágica (Lança de cavalaria +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-lance-plus-3"
+      ]
     },
     {
       "id": "55741f4fce0886e4",
@@ -109695,8 +110557,10 @@
           "name": "Arma mágica (Pistola laser +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-pistol-plus-1"
+      ]
     },
     {
       "id": "adfabfc9ca90ca92",
@@ -109710,8 +110574,10 @@
           "name": "Arma mágica (Pistola laser +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-pistol-plus-2"
+      ]
     },
     {
       "id": "c82bfbb71e292ac9",
@@ -109725,8 +110591,10 @@
           "name": "Arma mágica (Pistola laser +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-pistol-plus-3"
+      ]
     },
     {
       "id": "6019b211ad308e6d",
@@ -109740,8 +110608,10 @@
           "name": "Arma mágica (Rifle laser +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-rifle-plus-1"
+      ]
     },
     {
       "id": "a3d723c2ab7b5fb6",
@@ -109755,8 +110625,10 @@
           "name": "Arma mágica (Rifle laser +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-rifle-plus-2"
+      ]
     },
     {
       "id": "e58da3a2d92b75f8",
@@ -109770,8 +110642,10 @@
           "name": "Arma mágica (Rifle laser +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-rifle-plus-3"
+      ]
     },
     {
       "id": "d89e1d419cec9118",
@@ -109785,8 +110659,10 @@
           "name": "Arma mágica (Besta leve +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-light-crossbow-plus-1"
+      ]
     },
     {
       "id": "06d1bd116a444186",
@@ -109800,8 +110676,10 @@
           "name": "Arma mágica (Besta leve +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-light-crossbow-plus-2"
+      ]
     },
     {
       "id": "f9ce9af10aa2445f",
@@ -109815,8 +110693,10 @@
           "name": "Arma mágica (Besta leve +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-light-crossbow-plus-3"
+      ]
     },
     {
       "id": "7ada9d653fe61622",
@@ -109830,8 +110710,10 @@
           "name": "Arma mágica (Martelo leve +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-light-hammer-plus-1"
+      ]
     },
     {
       "id": "435e8cfe224779b0",
@@ -109845,8 +110727,10 @@
           "name": "Arma mágica (Martelo leve +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-light-hammer-plus-2"
+      ]
     },
     {
       "id": "a12745b2cc167a7c",
@@ -109860,8 +110744,10 @@
           "name": "Arma mágica (Martelo leve +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-light-hammer-plus-3"
+      ]
     },
     {
       "id": "063e5d957b29b0f5",
@@ -109875,8 +110761,10 @@
           "name": "Arma mágica (Besta leve de repetição +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "light-repeating-crossbow-plus-1"
+      ]
     },
     {
       "id": "f6b4484c5899201f",
@@ -109890,8 +110778,10 @@
           "name": "Arma mágica (Besta leve de repetição +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "light-repeating-crossbow-plus-2"
+      ]
     },
     {
       "id": "158ef39d9ef8da12",
@@ -109905,8 +110795,10 @@
           "name": "Arma mágica (Besta leve de repetição +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "light-repeating-crossbow-plus-3"
+      ]
     },
     {
       "id": "23191fef5532dfb8",
@@ -109920,8 +110812,10 @@
           "name": "Arma mágica (Arco longo +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-longbow-plus-1"
+      ]
     },
     {
       "id": "1c5f85b67b0e5544",
@@ -109935,8 +110829,10 @@
           "name": "Arma mágica (Arco longo +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-longbow-plus-2"
+      ]
     },
     {
       "id": "63f7242279351d2b",
@@ -109950,8 +110846,10 @@
           "name": "Arma mágica (Arco longo +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-longbow-plus-3"
+      ]
     },
     {
       "id": "11b8cc22bde7924b",
@@ -109965,8 +110863,10 @@
           "name": "Arma mágica (Espada longa +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon"
+      ]
     },
     {
       "id": "811d145db082da91",
@@ -109980,8 +110880,10 @@
           "name": "Arma mágica (Espada longa +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-longsword-plus-2"
+      ]
     },
     {
       "id": "f1003321aac82951",
@@ -109995,8 +110897,10 @@
           "name": "Arma mágica (Espada longa +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-longsword-plus-3"
+      ]
     },
     {
       "id": "1b0d09bd383b8112",
@@ -110010,8 +110914,10 @@
           "name": "Arma mágica (Maça +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-mace-plus-1"
+      ]
     },
     {
       "id": "92fc57c09b71ec4d",
@@ -110025,8 +110931,10 @@
           "name": "Arma mágica (Maça +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-mace-plus-2"
+      ]
     },
     {
       "id": "0af573f7b8b26cd1",
@@ -110040,8 +110948,10 @@
           "name": "Arma mágica (Maça +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-mace-plus-3"
+      ]
     },
     {
       "id": "a51cfde7b2a67079",
@@ -110055,8 +110965,10 @@
           "name": "Arma mágica (Malho +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-maul-plus-1"
+      ]
     },
     {
       "id": "493eac620bde5585",
@@ -110070,8 +110982,10 @@
           "name": "Arma mágica (Malho +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-maul-plus-2"
+      ]
     },
     {
       "id": "c42deffede368a27",
@@ -110085,8 +110999,10 @@
           "name": "Arma mágica (Malho +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-maul-plus-3"
+      ]
     },
     {
       "id": "7cb05bee6b01dc0e",
@@ -110100,8 +111016,10 @@
           "name": "Arma mágica (Estrela da manhã +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-morningstar-plus-1"
+      ]
     },
     {
       "id": "1c47f85a12f01636",
@@ -110115,8 +111033,10 @@
           "name": "Arma mágica (Estrela da manhã +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-morningstar-plus-2"
+      ]
     },
     {
       "id": "d1598ff91a46e9b3",
@@ -110130,8 +111050,10 @@
           "name": "Arma mágica (Estrela da manhã +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-morningstar-plus-3"
+      ]
     },
     {
       "id": "97524ee6d08cc0a3",
@@ -110145,8 +111067,10 @@
           "name": "Arma mágica (Mosquete +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-musket-plus-1"
+      ]
     },
     {
       "id": "a08a0918597046a4",
@@ -110160,8 +111084,10 @@
           "name": "Arma mágica (Mosquete +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-musket-plus-2"
+      ]
     },
     {
       "id": "2fc48a1aa7ad3d7f",
@@ -110175,8 +111101,10 @@
           "name": "Arma mágica (Mosquete +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-musket-plus-3"
+      ]
     },
     {
       "id": "0eb8ab505e23d772",
@@ -110190,8 +111118,10 @@
           "name": "Arma mágica (Pique +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-pike-plus-1"
+      ]
     },
     {
       "id": "256df3854b92f38e",
@@ -110205,8 +111135,10 @@
           "name": "Arma mágica (Pique +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-pike-plus-2"
+      ]
     },
     {
       "id": "b7f8dacd044bef5a",
@@ -110220,8 +111152,10 @@
           "name": "Arma mágica (Pique +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-pike-plus-3"
+      ]
     },
     {
       "id": "5c899b29778b09ca",
@@ -110235,8 +111169,10 @@
           "name": "Arma mágica (Pistola +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-pistol-plus-1"
+      ]
     },
     {
       "id": "58eb666c4488d964",
@@ -110250,8 +111186,10 @@
           "name": "Arma mágica (Pistola +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-pistol-plus-2"
+      ]
     },
     {
       "id": "6ca1faf2a45a08e0",
@@ -110265,8 +111203,10 @@
           "name": "Arma mágica (Pistola +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-pistol-plus-3"
+      ]
     },
     {
       "id": "f094cbe4ed04668a",
@@ -110280,8 +111220,10 @@
           "name": "Arma mágica (Bordão +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-quarterstaff-plus-1"
+      ]
     },
     {
       "id": "f2d4f7732d30c31e",
@@ -110295,8 +111237,10 @@
           "name": "Arma mágica (Bordão +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-quarterstaff-plus-2"
+      ]
     },
     {
       "id": "9f8b8924b7984e42",
@@ -110310,8 +111254,10 @@
           "name": "Arma mágica (Bordão +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-quarterstaff-plus-3"
+      ]
     },
     {
       "id": "bdd293e808acc31a",
@@ -110325,8 +111271,10 @@
           "name": "Arma mágica (Rapieira +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-rapier-plus-1"
+      ]
     },
     {
       "id": "c3530f6586545cc9",
@@ -110340,8 +111288,10 @@
           "name": "Arma mágica (Rapieira +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-rapier-plus-2"
+      ]
     },
     {
       "id": "b18fc6a35343d137",
@@ -110355,8 +111305,10 @@
           "name": "Arma mágica (Rapieira +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-rapier-plus-3"
+      ]
     },
     {
       "id": "ffd32c123b58d997",
@@ -110370,8 +111322,10 @@
           "name": "Arma mágica (Revólver +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "revolver-plus-1"
+      ]
     },
     {
       "id": "f4e99b2f99346a34",
@@ -110385,8 +111339,10 @@
           "name": "Arma mágica (Revólver +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "revolver-plus-2"
+      ]
     },
     {
       "id": "57c613e5477683a6",
@@ -110400,8 +111356,10 @@
           "name": "Arma mágica (Revólver +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "revolver-plus-3"
+      ]
     },
     {
       "id": "8f84f54bb9ac0211",
@@ -110415,8 +111373,10 @@
           "name": "Arma mágica (Cimitarra +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-scimitar-plus-1"
+      ]
     },
     {
       "id": "eec958c8bbd538a1",
@@ -110430,8 +111390,10 @@
           "name": "Arma mágica (Cimitarra +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-scimitar-plus-2"
+      ]
     },
     {
       "id": "44f276900e7b13a3",
@@ -110445,8 +111407,10 @@
           "name": "Arma mágica (Cimitarra +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-scimitar-plus-3"
+      ]
     },
     {
       "id": "0d010afb09fab830",
@@ -110460,8 +111424,10 @@
           "name": "Arma mágica (Pistola semiautomática +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "semiautomatic-pistol-plus-1"
+      ]
     },
     {
       "id": "6893428916ebfe84",
@@ -110475,8 +111441,10 @@
           "name": "Arma mágica (Pistola semiautomática +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "semiautomatic-pistol-plus-2"
+      ]
     },
     {
       "id": "6927df949c77a3f2",
@@ -110490,8 +111458,10 @@
           "name": "Arma mágica (Pistola semiautomática +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "semiautomatic-pistol-plus-3"
+      ]
     },
     {
       "id": "1b5267ad8708cfe8",
@@ -110505,8 +111475,10 @@
           "name": "Arma mágica (Arco curto +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-shortbow-plus-1"
+      ]
     },
     {
       "id": "76c30e93d2d84de7",
@@ -110520,8 +111492,10 @@
           "name": "Arma mágica (Arco curto +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-shortbow-plus-2"
+      ]
     },
     {
       "id": "912a8d577c63ffb9",
@@ -110535,8 +111509,10 @@
           "name": "Arma mágica (Arco curto +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-shortbow-plus-3"
+      ]
     },
     {
       "id": "6a4a0aee62c76aab",
@@ -110550,8 +111526,10 @@
           "name": "Arma mágica (Espada curta +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-shortsword-plus-1"
+      ]
     },
     {
       "id": "35351749248e15d5",
@@ -110565,8 +111543,10 @@
           "name": "Arma mágica (Espada curta +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-shortsword-plus-2"
+      ]
     },
     {
       "id": "e58604d0a27e0f98",
@@ -110580,8 +111560,10 @@
           "name": "Arma mágica (Espada curta +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-shortsword-plus-3"
+      ]
     },
     {
       "id": "2c20398223b1268d",
@@ -110595,8 +111577,10 @@
           "name": "Arma mágica (Espingarda +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shotgun-plus-1"
+      ]
     },
     {
       "id": "8d6934125988c4a2",
@@ -110610,8 +111594,10 @@
           "name": "Arma mágica (Espingarda +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shotgun-plus-2"
+      ]
     },
     {
       "id": "cfd503e7ae35cdb6",
@@ -110625,8 +111611,10 @@
           "name": "Arma mágica (Espingarda +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shotgun-plus-3"
+      ]
     },
     {
       "id": "660a22b514e0fbdb",
@@ -110655,8 +111643,10 @@
           "name": "Arma mágica (Foice +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-sickle-plus-2"
+      ]
     },
     {
       "id": "26c8a6d0ac80f8fa",
@@ -110670,8 +111660,10 @@
           "name": "Arma mágica (Foice +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-sickle-plus-3"
+      ]
     },
     {
       "id": "f0daeb7f74ff6c0f",
@@ -110685,8 +111677,10 @@
           "name": "Arma mágica (Funda +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-sling-plus-1"
+      ]
     },
     {
       "id": "168041b4fc7c7ada",
@@ -110700,8 +111694,10 @@
           "name": "Arma mágica (Funda +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-sling-plus-2"
+      ]
     },
     {
       "id": "d280ce472bbfe580",
@@ -110715,8 +111711,10 @@
           "name": "Arma mágica (Funda +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-sling-plus-3"
+      ]
     },
     {
       "id": "567e154de5cbcb80",
@@ -110730,8 +111728,10 @@
           "name": "Arma mágica (Lança +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-spear-plus-1"
+      ]
     },
     {
       "id": "ce0473000ea35ec3",
@@ -110745,8 +111745,10 @@
           "name": "Arma mágica (Lança +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-spear-plus-2"
+      ]
     },
     {
       "id": "a7504ddba740defe",
@@ -110760,8 +111762,10 @@
           "name": "Arma mágica (Lança +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-spear-plus-3"
+      ]
     },
     {
       "id": "d664a43c4c312b44",
@@ -110775,8 +111779,10 @@
           "name": "Arma mágica (Tridente +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-trident-plus-1"
+      ]
     },
     {
       "id": "ab15ead3236e7e92",
@@ -110790,8 +111796,10 @@
           "name": "Arma mágica (Tridente +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-trident-plus-2"
+      ]
     },
     {
       "id": "f3b2172f68c3dbca",
@@ -110805,8 +111813,10 @@
           "name": "Arma mágica (Tridente +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-trident-plus-3"
+      ]
     },
     {
       "id": "393e31e1b195deb6",
@@ -110820,8 +111830,10 @@
           "name": "Arma mágica (Picareta de guerra +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-war-pick-plus-1"
+      ]
     },
     {
       "id": "b2b585825999f301",
@@ -110835,8 +111847,10 @@
           "name": "Arma mágica (Picareta de guerra +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-war-pick-plus-2"
+      ]
     },
     {
       "id": "c155948fa6386272",
@@ -110850,8 +111864,10 @@
           "name": "Arma mágica (Picareta de guerra +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-war-pick-plus-3"
+      ]
     },
     {
       "id": "55cf38db8b37cfa5",
@@ -110865,8 +111881,10 @@
           "name": "Arma mágica (Martelo de guerra +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-warhammer-plus-1"
+      ]
     },
     {
       "id": "c727888a9caaf9f9",
@@ -110880,8 +111898,10 @@
           "name": "Arma mágica (Martelo de guerra +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-warhammer-plus-2"
+      ]
     },
     {
       "id": "db5fc21a7330f9d1",
@@ -110895,8 +111915,10 @@
           "name": "Arma mágica (Martelo de guerra +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-warhammer-plus-3"
+      ]
     },
     {
       "id": "8fab417d71444c00",
@@ -110910,8 +111932,10 @@
           "name": "Arma mágica (Chicote +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-whip-plus-1"
+      ]
     },
     {
       "id": "4235e2951bd1f0fc",
@@ -110925,8 +111949,10 @@
           "name": "Arma mágica (Chicote +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-whip-plus-2"
+      ]
     },
     {
       "id": "483a4e8f044b0497",
@@ -110940,8 +111966,10 @@
           "name": "Arma mágica (Chicote +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-whip-plus-3"
+      ]
     },
     {
       "id": "36e71f95eae2c219",
@@ -110955,8 +111983,10 @@
           "name": "Arma mágica (Yklwa +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "yklwa-plus-1"
+      ]
     },
     {
       "id": "acd16c36f4884478",
@@ -110970,8 +112000,10 @@
           "name": "Arma mágica (Yklwa +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "yklwa-plus-2"
+      ]
     },
     {
       "id": "d65bb9f938e4af73",
