@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2780,
-    "pending_artworks": 1707,
+    "approved_artworks": 2929,
+    "pending_artworks": 1558,
     "catalog_references": 4643,
-    "approved_references": 2936,
+    "approved_references": 3085,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -8259,7 +8259,7 @@
     },
     {
       "family": "Dazzling Weapon",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "dazzling-antimatter-rifle",
@@ -8268,8 +8268,10 @@
           "artwork_ids": [
             "dazzling-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-automatic-rifle",
@@ -8278,8 +8280,10 @@
           "artwork_ids": [
             "dazzling-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-battleaxe",
@@ -8288,8 +8292,10 @@
           "artwork_ids": [
             "dazzling-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-blowgun",
@@ -8298,8 +8304,10 @@
           "artwork_ids": [
             "dazzling-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-club",
@@ -8308,8 +8316,10 @@
           "artwork_ids": [
             "dazzling-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-dagger",
@@ -8318,8 +8328,10 @@
           "artwork_ids": [
             "dazzling-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-dart",
@@ -8328,8 +8340,10 @@
           "artwork_ids": [
             "dazzling-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-double-bladed-scimitar",
@@ -8338,8 +8352,10 @@
           "artwork_ids": [
             "dazzling-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-flail",
@@ -8348,8 +8364,10 @@
           "artwork_ids": [
             "dazzling-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-glaive",
@@ -8358,8 +8376,10 @@
           "artwork_ids": [
             "dazzling-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-greataxe",
@@ -8368,8 +8388,10 @@
           "artwork_ids": [
             "dazzling-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-greatclub",
@@ -8378,8 +8400,10 @@
           "artwork_ids": [
             "dazzling-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-greatsword",
@@ -8388,8 +8412,10 @@
           "artwork_ids": [
             "dazzling-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-halberd",
@@ -8398,8 +8424,10 @@
           "artwork_ids": [
             "dazzling-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-hand-crossbow",
@@ -8408,8 +8436,10 @@
           "artwork_ids": [
             "dazzling-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-handaxe",
@@ -8418,8 +8448,10 @@
           "artwork_ids": [
             "dazzling-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-heavy-crossbow",
@@ -8428,8 +8460,10 @@
           "artwork_ids": [
             "dazzling-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-hooked-shortspear",
@@ -8438,8 +8472,10 @@
           "artwork_ids": [
             "dazzling-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-hoopak",
@@ -8448,8 +8484,10 @@
           "artwork_ids": [
             "dazzling-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-hunting-rifle",
@@ -8458,8 +8496,10 @@
           "artwork_ids": [
             "dazzling-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-javelin",
@@ -8468,8 +8508,10 @@
           "artwork_ids": [
             "dazzling-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-lance",
@@ -8478,8 +8520,10 @@
           "artwork_ids": [
             "dazzling-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-laser-pistol",
@@ -8488,8 +8532,10 @@
           "artwork_ids": [
             "dazzling-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-laser-rifle",
@@ -8498,8 +8544,10 @@
           "artwork_ids": [
             "dazzling-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-light-crossbow",
@@ -8508,8 +8556,10 @@
           "artwork_ids": [
             "dazzling-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-light-hammer",
@@ -8518,8 +8568,10 @@
           "artwork_ids": [
             "dazzling-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-light-repeating-crossbow",
@@ -8528,8 +8580,10 @@
           "artwork_ids": [
             "dazzling-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-longbow",
@@ -8538,8 +8592,10 @@
           "artwork_ids": [
             "dazzling-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-longsword",
@@ -8548,8 +8604,10 @@
           "artwork_ids": [
             "dazzling-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-mace",
@@ -8558,8 +8616,10 @@
           "artwork_ids": [
             "dazzling-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-maul",
@@ -8568,8 +8628,10 @@
           "artwork_ids": [
             "dazzling-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-morningstar",
@@ -8578,8 +8640,10 @@
           "artwork_ids": [
             "dazzling-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-musket",
@@ -8588,8 +8652,10 @@
           "artwork_ids": [
             "dazzling-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-pike",
@@ -8598,8 +8664,10 @@
           "artwork_ids": [
             "dazzling-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-pistol",
@@ -8608,8 +8676,10 @@
           "artwork_ids": [
             "dazzling-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-quarterstaff",
@@ -8618,8 +8688,10 @@
           "artwork_ids": [
             "dazzling-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-rapier",
@@ -8628,8 +8700,10 @@
           "artwork_ids": [
             "dazzling-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-revolver",
@@ -8638,8 +8712,10 @@
           "artwork_ids": [
             "dazzling-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-scimitar",
@@ -8648,8 +8724,10 @@
           "artwork_ids": [
             "dazzling-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-semiautomatic-pistol",
@@ -8658,8 +8736,10 @@
           "artwork_ids": [
             "dazzling-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-shortbow",
@@ -8668,8 +8748,10 @@
           "artwork_ids": [
             "dazzling-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-shortsword",
@@ -8678,8 +8760,10 @@
           "artwork_ids": [
             "dazzling-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-shotgun",
@@ -8688,8 +8772,10 @@
           "artwork_ids": [
             "dazzling-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-sickle",
@@ -8698,8 +8784,10 @@
           "artwork_ids": [
             "dazzling-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-sling",
@@ -8708,8 +8796,10 @@
           "artwork_ids": [
             "dazzling-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-spear",
@@ -8718,8 +8808,10 @@
           "artwork_ids": [
             "dazzling-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-staff",
@@ -8728,8 +8820,10 @@
           "artwork_ids": [
             "dazzling-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-trident",
@@ -8738,8 +8832,10 @@
           "artwork_ids": [
             "dazzling-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-war-pick",
@@ -8748,8 +8844,10 @@
           "artwork_ids": [
             "dazzling-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-warhammer",
@@ -8758,8 +8856,10 @@
           "artwork_ids": [
             "dazzling-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-whip",
@@ -8768,8 +8868,10 @@
           "artwork_ids": [
             "dazzling-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-wooden-staff",
@@ -8778,8 +8880,10 @@
           "artwork_ids": [
             "dazzling-wooden-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-wooden-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "dazzling-yklwa",
@@ -8788,8 +8892,10 @@
           "artwork_ids": [
             "dazzling-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dazzling-yklwa"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -9704,8 +9810,10 @@
           "artwork_ids": [
             "dragon-slayer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-antimatter-rifle",
@@ -9714,8 +9822,10 @@
           "artwork_ids": [
             "dragon-slayer-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-automatic-rifle",
@@ -9724,8 +9834,10 @@
           "artwork_ids": [
             "dragon-slayer-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-battleaxe",
@@ -9734,8 +9846,10 @@
           "artwork_ids": [
             "dragon-slayer-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-blowgun",
@@ -9744,8 +9858,10 @@
           "artwork_ids": [
             "dragon-slayer-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-club",
@@ -9754,8 +9870,10 @@
           "artwork_ids": [
             "dragon-slayer-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-dagger",
@@ -9764,8 +9882,10 @@
           "artwork_ids": [
             "dragon-slayer-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-dart",
@@ -9774,8 +9894,10 @@
           "artwork_ids": [
             "dragon-slayer-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-double-bladed-scimitar",
@@ -9784,8 +9906,10 @@
           "artwork_ids": [
             "dragon-slayer-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-flail",
@@ -9794,8 +9918,10 @@
           "artwork_ids": [
             "dragon-slayer-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-glaive",
@@ -9804,8 +9930,10 @@
           "artwork_ids": [
             "dragon-slayer-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-greataxe",
@@ -9814,8 +9942,10 @@
           "artwork_ids": [
             "dragon-slayer-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-greatclub",
@@ -9824,8 +9954,10 @@
           "artwork_ids": [
             "dragon-slayer-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-greatsword",
@@ -9834,8 +9966,10 @@
           "artwork_ids": [
             "dragon-slayer-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-halberd",
@@ -9844,8 +9978,10 @@
           "artwork_ids": [
             "dragon-slayer-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-hand-crossbow",
@@ -9854,8 +9990,10 @@
           "artwork_ids": [
             "dragon-slayer-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-handaxe",
@@ -9864,8 +10002,10 @@
           "artwork_ids": [
             "dragon-slayer-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-heavy-crossbow",
@@ -9874,8 +10014,10 @@
           "artwork_ids": [
             "dragon-slayer-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-hooked-shortspear",
@@ -9884,8 +10026,10 @@
           "artwork_ids": [
             "dragon-slayer-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-hoopak",
@@ -9894,8 +10038,10 @@
           "artwork_ids": [
             "dragon-slayer-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-hunting-rifle",
@@ -9904,8 +10050,10 @@
           "artwork_ids": [
             "dragon-slayer-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-javelin",
@@ -9914,8 +10062,10 @@
           "artwork_ids": [
             "dragon-slayer-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-lance",
@@ -9924,8 +10074,10 @@
           "artwork_ids": [
             "dragon-slayer-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-laser-pistol",
@@ -9934,8 +10086,10 @@
           "artwork_ids": [
             "dragon-slayer-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-laser-rifle",
@@ -9944,8 +10098,10 @@
           "artwork_ids": [
             "dragon-slayer-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-light-crossbow",
@@ -9954,8 +10110,10 @@
           "artwork_ids": [
             "dragon-slayer-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-light-hammer",
@@ -9964,8 +10122,10 @@
           "artwork_ids": [
             "dragon-slayer-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-light-repeating-crossbow",
@@ -9974,8 +10134,10 @@
           "artwork_ids": [
             "dragon-slayer-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-longbow",
@@ -9984,8 +10146,10 @@
           "artwork_ids": [
             "dragon-slayer-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-mace",
@@ -9994,8 +10158,10 @@
           "artwork_ids": [
             "dragon-slayer-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-maul",
@@ -10004,8 +10170,10 @@
           "artwork_ids": [
             "dragon-slayer-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-morningstar",
@@ -10014,8 +10182,10 @@
           "artwork_ids": [
             "dragon-slayer-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-musket",
@@ -10024,8 +10194,10 @@
           "artwork_ids": [
             "dragon-slayer-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-pike",
@@ -10034,8 +10206,10 @@
           "artwork_ids": [
             "dragon-slayer-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-pistol",
@@ -10044,8 +10218,10 @@
           "artwork_ids": [
             "dragon-slayer-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-quarterstaff",
@@ -10054,8 +10230,10 @@
           "artwork_ids": [
             "dragon-slayer-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-rapier",
@@ -10064,8 +10242,10 @@
           "artwork_ids": [
             "dragon-slayer-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-revolver",
@@ -10074,8 +10254,10 @@
           "artwork_ids": [
             "dragon-slayer-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-scimitar",
@@ -10084,8 +10266,10 @@
           "artwork_ids": [
             "dragon-slayer-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-semiautomatic-pistol",
@@ -10094,8 +10278,10 @@
           "artwork_ids": [
             "dragon-slayer-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-shortbow",
@@ -10104,8 +10290,10 @@
           "artwork_ids": [
             "dragon-slayer-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-shortsword",
@@ -10114,8 +10302,10 @@
           "artwork_ids": [
             "dragon-slayer-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-shotgun",
@@ -10124,8 +10314,10 @@
           "artwork_ids": [
             "dragon-slayer-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-sickle",
@@ -10134,8 +10326,10 @@
           "artwork_ids": [
             "dragon-slayer-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-sling",
@@ -10154,8 +10348,10 @@
           "artwork_ids": [
             "dragon-slayer-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-staff",
@@ -10164,8 +10360,10 @@
           "artwork_ids": [
             "dragon-slayer-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-trident",
@@ -10174,8 +10372,10 @@
           "artwork_ids": [
             "dragon-slayer-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-war-pick",
@@ -10184,8 +10384,10 @@
           "artwork_ids": [
             "dragon-slayer-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-warhammer",
@@ -10194,8 +10396,10 @@
           "artwork_ids": [
             "dragon-slayer-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-whip",
@@ -10204,8 +10408,10 @@
           "artwork_ids": [
             "dragon-slayer-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-wooden-staff",
@@ -10214,8 +10420,10 @@
           "artwork_ids": [
             "dragon-slayer-wooden-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-wooden-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-yklwa",
@@ -10224,8 +10432,10 @@
           "artwork_ids": [
             "dragon-slayer-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-yklwa"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -17865,7 +18075,7 @@
     },
     {
       "family": "Forcebreaker Weapon",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "forcebreaker-club",
@@ -17874,8 +18084,10 @@
           "artwork_ids": [
             "forcebreaker-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "forcebreaker-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "forcebreaker-flail",
@@ -17884,8 +18096,10 @@
           "artwork_ids": [
             "forcebreaker-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "forcebreaker-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "forcebreaker-greatclub",
@@ -17894,8 +18108,10 @@
           "artwork_ids": [
             "forcebreaker-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "forcebreaker-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "forcebreaker-light-hammer",
@@ -17904,8 +18120,10 @@
           "artwork_ids": [
             "forcebreaker-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "forcebreaker-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "forcebreaker-mace",
@@ -17914,8 +18132,10 @@
           "artwork_ids": [
             "forcebreaker-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "forcebreaker-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "forcebreaker-maul",
@@ -17924,8 +18144,10 @@
           "artwork_ids": [
             "forcebreaker-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "forcebreaker-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "forcebreaker-quarterstaff",
@@ -17934,8 +18156,10 @@
           "artwork_ids": [
             "forcebreaker-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "forcebreaker-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "forcebreaker-sling",
@@ -17944,8 +18168,10 @@
           "artwork_ids": [
             "forcebreaker-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "forcebreaker-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "forcebreaker-staff",
@@ -17954,8 +18180,10 @@
           "artwork_ids": [
             "forcebreaker-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "forcebreaker-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "forcebreaker-warhammer",
@@ -17964,8 +18192,10 @@
           "artwork_ids": [
             "forcebreaker-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "forcebreaker-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "forcebreaker-wooden-staff",
@@ -17974,8 +18204,10 @@
           "artwork_ids": [
             "forcebreaker-wooden-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "forcebreaker-wooden-staff"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -27609,7 +27841,7 @@
     },
     {
       "family": "Sword of Life Stealing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "double-bladed-scimitar-of-life-stealing",
@@ -27618,8 +27850,10 @@
           "artwork_ids": [
             "double-bladed-scimitar-of-life-stealing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "double-bladed-scimitar-of-life-stealing"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-life-stealing",
@@ -27628,8 +27862,10 @@
           "artwork_ids": [
             "sword-of-life-stealing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-life-stealing"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-life-stealing-glaive",
@@ -27638,8 +27874,10 @@
           "artwork_ids": [
             "sword-of-life-stealing-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-life-stealing-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-life-stealing-greatsword",
@@ -27648,8 +27886,10 @@
           "artwork_ids": [
             "sword-of-life-stealing-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-life-stealing-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-life-stealing-rapier",
@@ -27658,8 +27898,10 @@
           "artwork_ids": [
             "sword-of-life-stealing-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-life-stealing-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-life-stealing-scimitar",
@@ -27668,8 +27910,10 @@
           "artwork_ids": [
             "sword-of-life-stealing-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-life-stealing-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-life-stealing-shortsword",
@@ -27678,14 +27922,16 @@
           "artwork_ids": [
             "sword-of-life-stealing-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-life-stealing-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Sword of Retribution",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "double-bladed-scimitar-of-retribution",
@@ -27694,8 +27940,10 @@
           "artwork_ids": [
             "double-bladed-scimitar-of-retribution"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "double-bladed-scimitar-of-retribution"
+          ],
+          "status": "approved"
         },
         {
           "id": "greatsword-of-retribution",
@@ -27704,8 +27952,10 @@
           "artwork_ids": [
             "greatsword-of-retribution"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greatsword-of-retribution"
+          ],
+          "status": "approved"
         },
         {
           "id": "longsword-of-retribution",
@@ -27714,8 +27964,10 @@
           "artwork_ids": [
             "longsword-of-retribution"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "longsword-of-retribution"
+          ],
+          "status": "approved"
         },
         {
           "id": "rapier-of-retribution",
@@ -27724,8 +27976,10 @@
           "artwork_ids": [
             "rapier-of-retribution"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rapier-of-retribution"
+          ],
+          "status": "approved"
         },
         {
           "id": "scimitar-of-retribution",
@@ -27734,8 +27988,10 @@
           "artwork_ids": [
             "scimitar-of-retribution"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scimitar-of-retribution"
+          ],
+          "status": "approved"
         },
         {
           "id": "shortsword-of-retribution",
@@ -27744,8 +28000,10 @@
           "artwork_ids": [
             "shortsword-of-retribution"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shortsword-of-retribution"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -27817,7 +28075,7 @@
     },
     {
       "family": "Sword of the Planes",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "double-bladed-scimitar-of-the-planes",
@@ -27826,8 +28084,10 @@
           "artwork_ids": [
             "double-bladed-scimitar-of-the-planes"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "double-bladed-scimitar-of-the-planes"
+          ],
+          "status": "approved"
         },
         {
           "id": "greatsword-of-the-planes",
@@ -27836,8 +28096,10 @@
           "artwork_ids": [
             "greatsword-of-the-planes"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greatsword-of-the-planes"
+          ],
+          "status": "approved"
         },
         {
           "id": "longsword-of-the-planes",
@@ -27846,8 +28108,10 @@
           "artwork_ids": [
             "longsword-of-the-planes"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "longsword-of-the-planes"
+          ],
+          "status": "approved"
         },
         {
           "id": "rapier-of-the-planes",
@@ -27856,8 +28120,10 @@
           "artwork_ids": [
             "rapier-of-the-planes"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rapier-of-the-planes"
+          ],
+          "status": "approved"
         },
         {
           "id": "scimitar-of-the-planes",
@@ -27866,8 +28132,10 @@
           "artwork_ids": [
             "scimitar-of-the-planes"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scimitar-of-the-planes"
+          ],
+          "status": "approved"
         },
         {
           "id": "shortsword-of-the-planes",
@@ -27876,14 +28144,16 @@
           "artwork_ids": [
             "shortsword-of-the-planes"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shortsword-of-the-planes"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Sword of Vengeance",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "double-bladed-scimitar-of-vengeance",
@@ -27892,8 +28162,10 @@
           "artwork_ids": [
             "double-bladed-scimitar-of-vengeance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "double-bladed-scimitar-of-vengeance"
+          ],
+          "status": "approved"
         },
         {
           "id": "glaive-of-vengeance",
@@ -27902,8 +28174,10 @@
           "artwork_ids": [
             "glaive-of-vengeance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "glaive-of-vengeance"
+          ],
+          "status": "approved"
         },
         {
           "id": "greatsword-of-vengeance",
@@ -27912,8 +28186,10 @@
           "artwork_ids": [
             "greatsword-of-vengeance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greatsword-of-vengeance"
+          ],
+          "status": "approved"
         },
         {
           "id": "longsword-of-vengeance",
@@ -27922,8 +28198,10 @@
           "artwork_ids": [
             "longsword-of-vengeance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "longsword-of-vengeance"
+          ],
+          "status": "approved"
         },
         {
           "id": "rapier-of-vengeance",
@@ -27932,8 +28210,10 @@
           "artwork_ids": [
             "rapier-of-vengeance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rapier-of-vengeance"
+          ],
+          "status": "approved"
         },
         {
           "id": "scimitar-of-vengeance",
@@ -27942,8 +28222,10 @@
           "artwork_ids": [
             "scimitar-of-vengeance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scimitar-of-vengeance"
+          ],
+          "status": "approved"
         },
         {
           "id": "shortsword-of-vengeance",
@@ -27952,14 +28234,16 @@
           "artwork_ids": [
             "shortsword-of-vengeance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shortsword-of-vengeance"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Sword of Wounding",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "double-bladed-scimitar-of-wounding",
@@ -27968,8 +28252,10 @@
           "artwork_ids": [
             "double-bladed-scimitar-of-wounding"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "double-bladed-scimitar-of-wounding"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-wounding",
@@ -27978,8 +28264,10 @@
           "artwork_ids": [
             "sword-of-wounding"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-wounding"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-wounding-glaive",
@@ -27988,8 +28276,10 @@
           "artwork_ids": [
             "sword-of-wounding-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-wounding-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-wounding-greatsword",
@@ -27998,8 +28288,10 @@
           "artwork_ids": [
             "sword-of-wounding-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-wounding-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-wounding-rapier",
@@ -28008,8 +28300,10 @@
           "artwork_ids": [
             "sword-of-wounding-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-wounding-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-wounding-scimitar",
@@ -28018,8 +28312,10 @@
           "artwork_ids": [
             "sword-of-wounding-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-wounding-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "sword-of-wounding-shortsword",
@@ -28028,8 +28324,10 @@
           "artwork_ids": [
             "sword-of-wounding-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sword-of-wounding-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -61615,8 +61913,10 @@
           "name": "Arma deslumbrante (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-antimatter-rifle"
+      ]
     },
     {
       "id": "e57367aaff74e754",
@@ -61630,8 +61930,10 @@
           "name": "Arma deslumbrante (Bastão de foco arcano)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-staff"
+      ]
     },
     {
       "id": "c500fad09c5e5486",
@@ -61645,8 +61947,10 @@
           "name": "Arma deslumbrante (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-automatic-rifle"
+      ]
     },
     {
       "id": "0bb0fa9df384755e",
@@ -61660,8 +61964,10 @@
           "name": "Arma deslumbrante (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-battleaxe"
+      ]
     },
     {
       "id": "44edd974218c6f42",
@@ -61675,8 +61981,10 @@
           "name": "Arma deslumbrante (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-blowgun"
+      ]
     },
     {
       "id": "5dce911a78380d39",
@@ -61690,8 +61998,10 @@
           "name": "Arma deslumbrante (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-club"
+      ]
     },
     {
       "id": "8701c6ecd0ff5d42",
@@ -61705,8 +62015,10 @@
           "name": "Arma deslumbrante (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-dagger"
+      ]
     },
     {
       "id": "73d6555094d34b95",
@@ -61720,8 +62032,10 @@
           "name": "Arma deslumbrante (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-dart"
+      ]
     },
     {
       "id": "8188563f28e4783d",
@@ -61735,8 +62049,10 @@
           "name": "Arma deslumbrante (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-double-bladed-scimitar"
+      ]
     },
     {
       "id": "20e3681c1e0cde7f",
@@ -61750,8 +62066,10 @@
           "name": "Arma deslumbrante (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-flail"
+      ]
     },
     {
       "id": "81f677370d233769",
@@ -61765,8 +62083,10 @@
           "name": "Arma deslumbrante (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-glaive"
+      ]
     },
     {
       "id": "18643d1977fa1b74",
@@ -61780,8 +62100,10 @@
           "name": "Arma deslumbrante (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-greataxe"
+      ]
     },
     {
       "id": "f92893a87ce09179",
@@ -61795,8 +62117,10 @@
           "name": "Arma deslumbrante (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-greatclub"
+      ]
     },
     {
       "id": "ebf45978a9fb55e0",
@@ -61810,8 +62134,10 @@
           "name": "Arma deslumbrante (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-greatsword"
+      ]
     },
     {
       "id": "4e57648ef5485f56",
@@ -61825,8 +62151,10 @@
           "name": "Arma deslumbrante (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-halberd"
+      ]
     },
     {
       "id": "3f916420b49420f5",
@@ -61840,8 +62168,10 @@
           "name": "Arma deslumbrante (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-hand-crossbow"
+      ]
     },
     {
       "id": "1d59bf455db002c1",
@@ -61855,8 +62185,10 @@
           "name": "Arma deslumbrante (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-handaxe"
+      ]
     },
     {
       "id": "e24fd6104741aabe",
@@ -61870,8 +62202,10 @@
           "name": "Arma deslumbrante (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-heavy-crossbow"
+      ]
     },
     {
       "id": "3b0c733f5177abb9",
@@ -61885,8 +62219,10 @@
           "name": "Arma deslumbrante (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-hooked-shortspear"
+      ]
     },
     {
       "id": "04f09fa8010d1797",
@@ -61900,8 +62236,10 @@
           "name": "Arma deslumbrante (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-hoopak"
+      ]
     },
     {
       "id": "be1c84cd1c1dfa5f",
@@ -61915,8 +62253,10 @@
           "name": "Arma deslumbrante (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-hunting-rifle"
+      ]
     },
     {
       "id": "17d66ebdd36272a5",
@@ -61930,8 +62270,10 @@
           "name": "Arma deslumbrante (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-javelin"
+      ]
     },
     {
       "id": "d3babb96a203f594",
@@ -61945,8 +62287,10 @@
           "name": "Arma deslumbrante (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-lance"
+      ]
     },
     {
       "id": "e335b18fdeaf1684",
@@ -61960,8 +62304,10 @@
           "name": "Arma deslumbrante (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-laser-pistol"
+      ]
     },
     {
       "id": "a94603fe6cfec8e9",
@@ -61975,8 +62321,10 @@
           "name": "Arma deslumbrante (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-laser-rifle"
+      ]
     },
     {
       "id": "db2ada7e488024e1",
@@ -61990,8 +62338,10 @@
           "name": "Arma deslumbrante (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-light-crossbow"
+      ]
     },
     {
       "id": "e6691a8519063a29",
@@ -62005,8 +62355,10 @@
           "name": "Arma deslumbrante (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-light-hammer"
+      ]
     },
     {
       "id": "4b5d983c607f2a91",
@@ -62020,8 +62372,10 @@
           "name": "Arma deslumbrante (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-light-repeating-crossbow"
+      ]
     },
     {
       "id": "1ef7116019e24f1a",
@@ -62035,8 +62389,10 @@
           "name": "Arma deslumbrante (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-longbow"
+      ]
     },
     {
       "id": "5423dc610332dc04",
@@ -62050,8 +62406,10 @@
           "name": "Arma deslumbrante (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-longsword"
+      ]
     },
     {
       "id": "2c6bc8cb17ace03a",
@@ -62065,8 +62423,10 @@
           "name": "Arma deslumbrante (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-mace"
+      ]
     },
     {
       "id": "9fc09ad1f840248f",
@@ -62080,8 +62440,10 @@
           "name": "Arma deslumbrante (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-maul"
+      ]
     },
     {
       "id": "7dec046d0f517e7c",
@@ -62095,8 +62457,10 @@
           "name": "Arma deslumbrante (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-morningstar"
+      ]
     },
     {
       "id": "ecad97e2f0a459bd",
@@ -62110,8 +62474,10 @@
           "name": "Arma deslumbrante (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-musket"
+      ]
     },
     {
       "id": "976469e0b676b043",
@@ -62125,8 +62491,10 @@
           "name": "Arma deslumbrante (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-pike"
+      ]
     },
     {
       "id": "b234fc37e0d224e7",
@@ -62140,8 +62508,10 @@
           "name": "Arma deslumbrante (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-pistol"
+      ]
     },
     {
       "id": "e19665868e506e79",
@@ -62155,8 +62525,10 @@
           "name": "Arma deslumbrante (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-quarterstaff"
+      ]
     },
     {
       "id": "fb72ec2024be8e96",
@@ -62170,8 +62542,10 @@
           "name": "Arma deslumbrante (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-rapier"
+      ]
     },
     {
       "id": "0b5b017783629a67",
@@ -62185,8 +62559,10 @@
           "name": "Arma deslumbrante (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-revolver"
+      ]
     },
     {
       "id": "71d69306d1334a20",
@@ -62200,8 +62576,10 @@
           "name": "Arma deslumbrante (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-scimitar"
+      ]
     },
     {
       "id": "e9bef72a35dd4b8a",
@@ -62215,8 +62593,10 @@
           "name": "Arma deslumbrante (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-semiautomatic-pistol"
+      ]
     },
     {
       "id": "ad96bd122f418550",
@@ -62230,8 +62610,10 @@
           "name": "Arma deslumbrante (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-shortbow"
+      ]
     },
     {
       "id": "4b63dc43cab5d9d9",
@@ -62245,8 +62627,10 @@
           "name": "Arma deslumbrante (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-shortsword"
+      ]
     },
     {
       "id": "a0085ce040754f14",
@@ -62260,8 +62644,10 @@
           "name": "Arma deslumbrante (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-shotgun"
+      ]
     },
     {
       "id": "1ff0dd4209ebaf01",
@@ -62275,8 +62661,10 @@
           "name": "Arma deslumbrante (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-sickle"
+      ]
     },
     {
       "id": "e07f269f8825695e",
@@ -62290,8 +62678,10 @@
           "name": "Arma deslumbrante (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-sling"
+      ]
     },
     {
       "id": "e22242e2d47edd59",
@@ -62305,8 +62695,10 @@
           "name": "Arma deslumbrante (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-spear"
+      ]
     },
     {
       "id": "97b973f52d7dd938",
@@ -62320,8 +62712,10 @@
           "name": "Arma deslumbrante (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-trident"
+      ]
     },
     {
       "id": "6d8909b4349b6ffa",
@@ -62335,8 +62729,10 @@
           "name": "Arma deslumbrante (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-war-pick"
+      ]
     },
     {
       "id": "f373a3a21c23a7f3",
@@ -62350,8 +62746,10 @@
           "name": "Arma deslumbrante (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-warhammer"
+      ]
     },
     {
       "id": "49879b77b36ebe5f",
@@ -62365,8 +62763,10 @@
           "name": "Arma deslumbrante (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-whip"
+      ]
     },
     {
       "id": "c717e11d31d9fdc3",
@@ -62380,8 +62780,10 @@
           "name": "Arma deslumbrante (Bastão de foco druídico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-wooden-staff"
+      ]
     },
     {
       "id": "68e3714c1d573879",
@@ -62395,8 +62797,10 @@
           "name": "Arma deslumbrante (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dazzling-yklwa"
+      ]
     },
     {
       "id": "a92e419d1a9bebdb",
@@ -65194,8 +65598,10 @@
           "name": "Matadora de dragões (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-antimatter-rifle"
+      ]
     },
     {
       "id": "0c367ef2ce6a020e",
@@ -65209,8 +65615,10 @@
           "name": "Matadora de dragões (Bastão de foco arcano)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-staff"
+      ]
     },
     {
       "id": "50b74a422ec85f35",
@@ -65224,8 +65632,10 @@
           "name": "Matadora de dragões (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-automatic-rifle"
+      ]
     },
     {
       "id": "65572aebaef45444",
@@ -65239,8 +65649,10 @@
           "name": "Matadora de dragões (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-battleaxe"
+      ]
     },
     {
       "id": "450f1e365d146627",
@@ -65254,8 +65666,10 @@
           "name": "Matadora de dragões (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-blowgun"
+      ]
     },
     {
       "id": "23e13ef0d024a38e",
@@ -65269,8 +65683,10 @@
           "name": "Matadora de dragões (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-club"
+      ]
     },
     {
       "id": "1e3aaa3c801df912",
@@ -65284,8 +65700,10 @@
           "name": "Matadora de dragões (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-dagger"
+      ]
     },
     {
       "id": "97e257fc657935b9",
@@ -65299,8 +65717,10 @@
           "name": "Matadora de dragões (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-dart"
+      ]
     },
     {
       "id": "97a0ab8a2522b1ae",
@@ -65314,8 +65734,10 @@
           "name": "Matadora de dragões (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-double-bladed-scimitar"
+      ]
     },
     {
       "id": "024e4ad35826f791",
@@ -65329,8 +65751,10 @@
           "name": "Matadora de dragões (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-flail"
+      ]
     },
     {
       "id": "2d8e3ee34c885056",
@@ -65344,8 +65768,10 @@
           "name": "Matadora de dragões (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-glaive"
+      ]
     },
     {
       "id": "a2f84319c7eb7ba1",
@@ -65359,8 +65785,10 @@
           "name": "Matadora de dragões (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-greataxe"
+      ]
     },
     {
       "id": "7d94f09bb073b44c",
@@ -65374,8 +65802,10 @@
           "name": "Matadora de dragões (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-greatclub"
+      ]
     },
     {
       "id": "d0584f7d65d26112",
@@ -65389,8 +65819,10 @@
           "name": "Matadora de dragões (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-greatsword"
+      ]
     },
     {
       "id": "ede4b433e0c1df99",
@@ -65404,8 +65836,10 @@
           "name": "Matadora de dragões (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-halberd"
+      ]
     },
     {
       "id": "48f0eb7704adad8f",
@@ -65419,8 +65853,10 @@
           "name": "Matadora de dragões (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-hand-crossbow"
+      ]
     },
     {
       "id": "4f5602bdeb5e016d",
@@ -65434,8 +65870,10 @@
           "name": "Matadora de dragões (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-handaxe"
+      ]
     },
     {
       "id": "5f465a3ad0d9033b",
@@ -65449,8 +65887,10 @@
           "name": "Matadora de dragões (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-heavy-crossbow"
+      ]
     },
     {
       "id": "b1caec1fe94c45d0",
@@ -65464,8 +65904,10 @@
           "name": "Matadora de dragões (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-hooked-shortspear"
+      ]
     },
     {
       "id": "59aceee8ee34243c",
@@ -65479,8 +65921,10 @@
           "name": "Matadora de dragões (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-hoopak"
+      ]
     },
     {
       "id": "3a9001eef3c1ce27",
@@ -65494,8 +65938,10 @@
           "name": "Matadora de dragões (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-hunting-rifle"
+      ]
     },
     {
       "id": "97698170310f1d0a",
@@ -65509,8 +65955,10 @@
           "name": "Matadora de dragões (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-javelin"
+      ]
     },
     {
       "id": "80901ec94d5712ea",
@@ -65524,8 +65972,10 @@
           "name": "Matadora de dragões (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-lance"
+      ]
     },
     {
       "id": "3676bafcfc630432",
@@ -65539,8 +65989,10 @@
           "name": "Matadora de dragões (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-laser-pistol"
+      ]
     },
     {
       "id": "4cd355932f303b79",
@@ -65554,8 +66006,10 @@
           "name": "Matadora de dragões (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-laser-rifle"
+      ]
     },
     {
       "id": "c12fee6c058686e8",
@@ -65569,8 +66023,10 @@
           "name": "Matadora de dragões (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-light-crossbow"
+      ]
     },
     {
       "id": "f7e98b5ad1e23959",
@@ -65584,8 +66040,10 @@
           "name": "Matadora de dragões (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-light-hammer"
+      ]
     },
     {
       "id": "6c885b0e74df5a27",
@@ -65599,8 +66057,10 @@
           "name": "Matadora de dragões (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-light-repeating-crossbow"
+      ]
     },
     {
       "id": "7fbae23c57742592",
@@ -65614,8 +66074,10 @@
           "name": "Matadora de dragões (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-longbow"
+      ]
     },
     {
       "id": "0c6e6a8ab2dd0095",
@@ -65629,8 +66091,10 @@
           "name": "Matadora de dragões (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer"
+      ]
     },
     {
       "id": "dcae167cf3a45f8f",
@@ -65644,8 +66108,10 @@
           "name": "Matadora de dragões (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-mace"
+      ]
     },
     {
       "id": "3db26b83b0a3f986",
@@ -65659,8 +66125,10 @@
           "name": "Matadora de dragões (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-maul"
+      ]
     },
     {
       "id": "7d88a32a1a9be4a7",
@@ -65674,8 +66142,10 @@
           "name": "Matadora de dragões (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-morningstar"
+      ]
     },
     {
       "id": "7b507deef6f7a855",
@@ -65689,8 +66159,10 @@
           "name": "Matadora de dragões (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-musket"
+      ]
     },
     {
       "id": "cfe053069adc41cb",
@@ -65704,8 +66176,10 @@
           "name": "Matadora de dragões (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-pike"
+      ]
     },
     {
       "id": "86200c8b6f645fd6",
@@ -65719,8 +66193,10 @@
           "name": "Matadora de dragões (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-pistol"
+      ]
     },
     {
       "id": "790ed5070738fb68",
@@ -65734,8 +66210,10 @@
           "name": "Matadora de dragões (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-quarterstaff"
+      ]
     },
     {
       "id": "49b72d0a81bd1c0b",
@@ -65749,8 +66227,10 @@
           "name": "Matadora de dragões (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-rapier"
+      ]
     },
     {
       "id": "948d640365ca2031",
@@ -65764,8 +66244,10 @@
           "name": "Matadora de dragões (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-revolver"
+      ]
     },
     {
       "id": "1013ebd20d583774",
@@ -65779,8 +66261,10 @@
           "name": "Matadora de dragões (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-scimitar"
+      ]
     },
     {
       "id": "20db6c3d3a1f731c",
@@ -65794,8 +66278,10 @@
           "name": "Matadora de dragões (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-semiautomatic-pistol"
+      ]
     },
     {
       "id": "1eb4882ea548df72",
@@ -65809,8 +66295,10 @@
           "name": "Matadora de dragões (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-shortbow"
+      ]
     },
     {
       "id": "0002f03cb1fde3d6",
@@ -65824,8 +66312,10 @@
           "name": "Matadora de dragões (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-shortsword"
+      ]
     },
     {
       "id": "6819533dbf282fb7",
@@ -65839,8 +66329,10 @@
           "name": "Matadora de dragões (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-shotgun"
+      ]
     },
     {
       "id": "fc79208418c80377",
@@ -65854,8 +66346,10 @@
           "name": "Matadora de dragões (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-sickle"
+      ]
     },
     {
       "id": "fa35f06ce18df2a4",
@@ -65884,8 +66378,10 @@
           "name": "Matadora de dragões (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-spear"
+      ]
     },
     {
       "id": "32798b35f6576656",
@@ -65899,8 +66395,10 @@
           "name": "Matadora de dragões (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-trident"
+      ]
     },
     {
       "id": "08d89e2b79bf218f",
@@ -65914,8 +66412,10 @@
           "name": "Matadora de dragões (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-war-pick"
+      ]
     },
     {
       "id": "95caa056b754cb4e",
@@ -65929,8 +66429,10 @@
           "name": "Matadora de dragões (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-warhammer"
+      ]
     },
     {
       "id": "acd6e25c91e5bac8",
@@ -65944,8 +66446,10 @@
           "name": "Matadora de dragões (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-whip"
+      ]
     },
     {
       "id": "8721706dd4515698",
@@ -65959,8 +66463,10 @@
           "name": "Matadora de dragões (Bastão de foco druídico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-wooden-staff"
+      ]
     },
     {
       "id": "f0a824621f202988",
@@ -65974,8 +66480,10 @@
           "name": "Matadora de dragões (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-yklwa"
+      ]
     },
     {
       "id": "d40437f36301aa51",
@@ -78256,8 +78764,10 @@
           "name": "Arma quebra-força (Bastão de foco arcano)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "forcebreaker-staff"
+      ]
     },
     {
       "id": "d49cc3944fdfc8f7",
@@ -78271,8 +78781,10 @@
           "name": "Arma quebra-força (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "forcebreaker-club"
+      ]
     },
     {
       "id": "db7df7b628c38703",
@@ -78286,8 +78798,10 @@
           "name": "Arma quebra-força (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "forcebreaker-flail"
+      ]
     },
     {
       "id": "ff50269fac98b639",
@@ -78301,8 +78815,10 @@
           "name": "Arma quebra-força (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "forcebreaker-greatclub"
+      ]
     },
     {
       "id": "0d21043fb333a566",
@@ -78316,8 +78832,10 @@
           "name": "Arma quebra-força (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "forcebreaker-light-hammer"
+      ]
     },
     {
       "id": "07b14f59601019c6",
@@ -78331,8 +78849,10 @@
           "name": "Arma quebra-força (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "forcebreaker-mace"
+      ]
     },
     {
       "id": "c99a03ed0a6c0ca8",
@@ -78346,8 +78866,10 @@
           "name": "Arma quebra-força (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "forcebreaker-maul"
+      ]
     },
     {
       "id": "2f9ab5b355db6d65",
@@ -78361,8 +78883,10 @@
           "name": "Arma quebra-força (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "forcebreaker-quarterstaff"
+      ]
     },
     {
       "id": "3f272b9e08b53ad8",
@@ -78376,8 +78900,10 @@
           "name": "Arma quebra-força (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "forcebreaker-sling"
+      ]
     },
     {
       "id": "2518c7013b41b55e",
@@ -78391,8 +78917,10 @@
           "name": "Arma quebra-força (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "forcebreaker-warhammer"
+      ]
     },
     {
       "id": "7d80d3b71739ad72",
@@ -78406,8 +78934,10 @@
           "name": "Arma quebra-força (Bastão de foco druídico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "forcebreaker-wooden-staff"
+      ]
     },
     {
       "id": "679d3660f5ed4f90",
@@ -98597,8 +99127,10 @@
           "name": "Espada de roubar vidas (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "double-bladed-scimitar-of-life-stealing"
+      ]
     },
     {
       "id": "c50967794d54b137",
@@ -98612,8 +99144,10 @@
           "name": "Espada de roubar vidas (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-life-stealing-glaive"
+      ]
     },
     {
       "id": "07dc5df79cfd2275",
@@ -98627,8 +99161,10 @@
           "name": "Espada de roubar vidas (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-life-stealing-greatsword"
+      ]
     },
     {
       "id": "ddadb4c697d48410",
@@ -98642,8 +99178,10 @@
           "name": "Espada de roubar vidas (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-life-stealing"
+      ]
     },
     {
       "id": "43736f9090fc5893",
@@ -98657,8 +99195,10 @@
           "name": "Espada de roubar vidas (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-life-stealing-rapier"
+      ]
     },
     {
       "id": "8746c6199f6136ae",
@@ -98672,8 +99212,10 @@
           "name": "Espada de roubar vidas (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-life-stealing-scimitar"
+      ]
     },
     {
       "id": "7dd8246bed1794e2",
@@ -98687,8 +99229,10 @@
           "name": "Espada de roubar vidas (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-life-stealing-shortsword"
+      ]
     },
     {
       "id": "82e577d2ba4c3e7e",
@@ -98702,8 +99246,10 @@
           "name": "Espada da retribuição (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "double-bladed-scimitar-of-retribution"
+      ]
     },
     {
       "id": "a30d969c8d2f15d4",
@@ -98717,8 +99263,10 @@
           "name": "Espada da retribuição (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greatsword-of-retribution"
+      ]
     },
     {
       "id": "81ee03cee698fade",
@@ -98732,8 +99280,10 @@
           "name": "Espada da retribuição (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "longsword-of-retribution"
+      ]
     },
     {
       "id": "2bedbd0abbf3257d",
@@ -98747,8 +99297,10 @@
           "name": "Espada da retribuição (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rapier-of-retribution"
+      ]
     },
     {
       "id": "d20a7a1b777b55c0",
@@ -98762,8 +99314,10 @@
           "name": "Espada da retribuição (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scimitar-of-retribution"
+      ]
     },
     {
       "id": "e064c100d38b42cb",
@@ -98777,8 +99331,10 @@
           "name": "Espada da retribuição (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shortsword-of-retribution"
+      ]
     },
     {
       "id": "a7552912f8fc889a",
@@ -98877,8 +99433,10 @@
           "name": "Espada dos planos (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "double-bladed-scimitar-of-the-planes"
+      ]
     },
     {
       "id": "b9eed80b070fd357",
@@ -98892,8 +99450,10 @@
           "name": "Espada dos planos (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greatsword-of-the-planes"
+      ]
     },
     {
       "id": "56a5f8c66656c5b7",
@@ -98907,8 +99467,10 @@
           "name": "Espada dos planos (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "longsword-of-the-planes"
+      ]
     },
     {
       "id": "d21fe571fbf31457",
@@ -98922,8 +99484,10 @@
           "name": "Espada dos planos (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rapier-of-the-planes"
+      ]
     },
     {
       "id": "6e920e124628ee5a",
@@ -98937,8 +99501,10 @@
           "name": "Espada dos planos (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scimitar-of-the-planes"
+      ]
     },
     {
       "id": "0ce8ca1814567454",
@@ -98952,8 +99518,10 @@
           "name": "Espada dos planos (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shortsword-of-the-planes"
+      ]
     },
     {
       "id": "a86d2ea0013fa0c2",
@@ -98967,8 +99535,10 @@
           "name": "Arma da vingança (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "double-bladed-scimitar-of-vengeance"
+      ]
     },
     {
       "id": "300df0644e3baa7e",
@@ -98982,8 +99552,10 @@
           "name": "Arma da vingança (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "glaive-of-vengeance"
+      ]
     },
     {
       "id": "91a7722e18779235",
@@ -98997,8 +99569,10 @@
           "name": "Arma da vingança (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greatsword-of-vengeance"
+      ]
     },
     {
       "id": "be40efa09634a336",
@@ -99012,8 +99586,10 @@
           "name": "Arma da vingança (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "longsword-of-vengeance"
+      ]
     },
     {
       "id": "c23b1cdec6f2b249",
@@ -99027,8 +99603,10 @@
           "name": "Arma da vingança (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rapier-of-vengeance"
+      ]
     },
     {
       "id": "590e2e4fb996928e",
@@ -99042,8 +99620,10 @@
           "name": "Arma da vingança (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scimitar-of-vengeance"
+      ]
     },
     {
       "id": "3346d69f88dd4a9f",
@@ -99057,8 +99637,10 @@
           "name": "Arma da vingança (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shortsword-of-vengeance"
+      ]
     },
     {
       "id": "7b0825fa9e8459b4",
@@ -99072,8 +99654,10 @@
           "name": "Espada do ferimento (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "double-bladed-scimitar-of-wounding"
+      ]
     },
     {
       "id": "429437640a412383",
@@ -99087,8 +99671,10 @@
           "name": "Espada do ferimento (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-wounding-glaive"
+      ]
     },
     {
       "id": "530f2098d1c5c1b7",
@@ -99102,8 +99688,10 @@
           "name": "Espada do ferimento (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-wounding-greatsword"
+      ]
     },
     {
       "id": "0116a110139f18ba",
@@ -99117,8 +99705,10 @@
           "name": "Espada do ferimento (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-wounding"
+      ]
     },
     {
       "id": "b013c84103bb75ab",
@@ -99132,8 +99722,10 @@
           "name": "Espada do ferimento (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-wounding-rapier"
+      ]
     },
     {
       "id": "3a38e7a4c2a79e1b",
@@ -99147,8 +99739,10 @@
           "name": "Espada do ferimento (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-wounding-scimitar"
+      ]
     },
     {
       "id": "511de29c2ca04afb",
@@ -99162,8 +99756,10 @@
           "name": "Espada do ferimento (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sword-of-wounding-shortsword"
+      ]
     },
     {
       "id": "99fb5857dffa4d70",

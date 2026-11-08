@@ -3,10 +3,10 @@
   "uniqueCards": 36,
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2780,
-    "pending_artworks": 1707,
+    "approved_artworks": 2929,
+    "pending_artworks": 1558,
     "catalog_references": 4643,
-    "approved_references": 2936,
+    "approved_references": 3085,
     "excluded_ammunition_artworks": 42
   },
   "rows": [
@@ -90,9 +90,9 @@
       ],
       "models": 7,
       "artworks": 7,
-      "approved": 0,
-      "pending": 7,
-      "status": "pending"
+      "approved": 7,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Armas com magia vinculada",
@@ -182,9 +182,9 @@
       ],
       "models": 53,
       "artworks": 53,
-      "approved": 0,
-      "pending": 53,
-      "status": "pending"
+      "approved": 53,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Armadura de resistência",
@@ -218,9 +218,9 @@
       ],
       "models": 7,
       "artworks": 7,
-      "approved": 0,
-      "pending": 7,
-      "status": "pending"
+      "approved": 7,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Espada do ferimento",
@@ -230,9 +230,9 @@
       ],
       "models": 7,
       "artworks": 7,
-      "approved": 0,
-      "pending": 7,
-      "status": "pending"
+      "approved": 7,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Lâmina do apostador",
@@ -326,9 +326,9 @@
       ],
       "models": 11,
       "artworks": 11,
-      "approved": 0,
-      "pending": 11,
-      "status": "pending"
+      "approved": 11,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Armadura do último combate",
@@ -350,9 +350,9 @@
       ],
       "models": 6,
       "artworks": 6,
-      "approved": 0,
-      "pending": 6,
-      "status": "pending"
+      "approved": 6,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Ladrão de nove vidas",
@@ -434,9 +434,9 @@
       ],
       "models": 6,
       "artworks": 6,
-      "approved": 0,
-      "pending": 6,
-      "status": "pending"
+      "approved": 6,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Defensora",
